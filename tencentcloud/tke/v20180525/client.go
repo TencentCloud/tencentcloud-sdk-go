@@ -1059,6 +1059,7 @@ func NewCreateClusterNodePoolResponse() (response *CreateClusterNodePoolResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
 //  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -1079,6 +1080,7 @@ func (c *Client) CreateClusterNodePool(request *CreateClusterNodePoolRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
 //  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -2727,6 +2729,7 @@ func NewDeleteClusterNodePoolResponse() (response *DeleteClusterNodePoolResponse
 // 删除节点池
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -2740,6 +2743,7 @@ func (c *Client) DeleteClusterNodePool(request *DeleteClusterNodePoolRequest) (r
 // 删除节点池
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -9464,6 +9468,7 @@ func NewModifyClusterAsGroupOptionAttributeResponse() (response *ModifyClusterAs
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
@@ -9490,6 +9495,7 @@ func (c *Client) ModifyClusterAsGroupOptionAttribute(request *ModifyClusterAsGro
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"

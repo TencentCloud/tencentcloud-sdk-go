@@ -51,6 +51,10 @@ type DetailResults struct {
 	// 该字段用于返回当前标签（Label）下的二级标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+
+	// 该字段用于返回当前一级标签（Label）下的关键词、子标签及分数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type Device struct {
@@ -84,6 +88,20 @@ type RiskDetails struct {
 
 	// 该字段用于返回账号信息检测对应的风险等级，取值为：**1**（疑似存在风险）和**2**（存在恶意风险）。
 	Level *int64 `json:"Level,omitempty" name:"Level"`
+}
+
+type Tag struct {
+	// 该字段用于返回命中的关键词
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 该字段用于返回子标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+
+	// 该字段用于返回子标签对应的分数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
 }
 
 // Predefined struct for user

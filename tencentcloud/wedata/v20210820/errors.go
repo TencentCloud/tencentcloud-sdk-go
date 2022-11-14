@@ -35,11 +35,26 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 外部系统调用异常。
+	INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+
 	// 调用云API失败。
 	INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 名称重复。
+	INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+
+	// 查询过滤条件参数错误。
+	INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+
+	// 规则不存在。
+	INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
+
+	// 服务繁忙，请稍后重试。
+	INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
 
 	// 工作空间不存在。
 	INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
@@ -76,6 +91,9 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 用户不是当前项目成员。
+	UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

@@ -149,6 +149,7 @@ func NewAssociateSecurityGroupsResponse() (response *AssociateSecurityGroupsResp
 //  INVALIDPARAMETER_SGCHECKFAIL = "InvalidParameter.SGCheckFail"
 //  RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = "ResourceNotFound.ProductConfigNotExistedError"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  RESOURCEUNAVAILABLE_SGCHECKFAIL = "ResourceUnavailable.SGCheckFail"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     return c.AssociateSecurityGroupsWithContext(context.Background(), request)
@@ -184,6 +185,7 @@ func (c *Client) AssociateSecurityGroups(request *AssociateSecurityGroupsRequest
 //  INVALIDPARAMETER_SGCHECKFAIL = "InvalidParameter.SGCheckFail"
 //  RESOURCENOTFOUND_PRODUCTCONFIGNOTEXISTEDERROR = "ResourceNotFound.ProductConfigNotExistedError"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  RESOURCEUNAVAILABLE_SGCHECKFAIL = "ResourceUnavailable.SGCheckFail"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request *AssociateSecurityGroupsRequest) (response *AssociateSecurityGroupsResponse, err error) {
     if request == nil {
@@ -4222,7 +4224,7 @@ func NewTerminateDedicatedDBInstanceResponse() (response *TerminateDedicatedDBIn
 }
 
 // TerminateDedicatedDBInstance
-// 本接口（IsolateDedicatedDBInstance）用于销毁已隔离的独享云数据库实例。
+// 本接口（TerminateDedicatedDBInstance）用于销毁已隔离的独享云数据库实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
@@ -4236,7 +4238,7 @@ func (c *Client) TerminateDedicatedDBInstance(request *TerminateDedicatedDBInsta
 }
 
 // TerminateDedicatedDBInstance
-// 本接口（IsolateDedicatedDBInstance）用于销毁已隔离的独享云数据库实例。
+// 本接口（TerminateDedicatedDBInstance）用于销毁已隔离的独享云数据库实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"

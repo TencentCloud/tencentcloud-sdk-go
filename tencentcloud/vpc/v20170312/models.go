@@ -20793,6 +20793,14 @@ type NetworkInterface struct {
 	// 用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 服务质量级别：
+	// <li>`DEFAULT`：默认</li>
+	// <li>`PT`：云金</li>
+	// <li>`AU`：云银</li>
+	// <li>`AG`：云铜</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 }
 
 type NetworkInterfaceAttachment struct {

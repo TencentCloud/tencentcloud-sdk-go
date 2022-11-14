@@ -961,6 +961,7 @@ type ChannelDescribeEmployeesRequestParams struct {
 
 	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
+	// 查询离职员工时，Key为Status，Values为["QuiteJob"]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0，最大为20000
@@ -981,6 +982,7 @@ type ChannelDescribeEmployeesRequest struct {
 
 	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
+	// 查询离职员工时，Key为Status，Values为["QuiteJob"]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0，最大为20000
@@ -1448,6 +1450,12 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
 	MenuStatus *string `json:"MenuStatus,omitempty" name:"MenuStatus"`
 
+	// 链接跳转类型："PC"-PC控制台，“CHANNEL”-H5跳转到电子签小程序；“APP”-第三方APP或小程序跳转电子签小程序，默认为PC控制台
+	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
+
+	// 触发自动跳转事件，仅对App类型有效，"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
+	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitempty" name:"AutoJumpBackEvent"`
+
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -1477,6 +1485,12 @@ type CreateConsoleLoginUrlRequest struct {
 	// 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
 	MenuStatus *string `json:"MenuStatus,omitempty" name:"MenuStatus"`
 
+	// 链接跳转类型："PC"-PC控制台，“CHANNEL”-H5跳转到电子签小程序；“APP”-第三方APP或小程序跳转电子签小程序，默认为PC控制台
+	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
+
+	// 触发自动跳转事件，仅对App类型有效，"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
+	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitempty" name:"AutoJumpBackEvent"`
+
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -1500,6 +1514,8 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	delete(f, "ModuleId")
 	delete(f, "UniformSocialCreditCode")
 	delete(f, "MenuStatus")
+	delete(f, "Endpoint")
+	delete(f, "AutoJumpBackEvent")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleLoginUrlRequest has unknown keys!", "")
@@ -1509,13 +1525,19 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConsoleLoginUrlResponseParams struct {
-	// 子客Web控制台url，此链接5分钟内有效，且只能访问一次。同时需要注意：
-	// 1. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）；
-	// 2. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
+	// 子客Web控制台url注意事项：
+	// 1. 所有类型的链接在企业未认证/员工未认证完成时，只要在有效期内（一年）都可以访问
+	// 2. 若企业认证完成且员工认证完成后，重新获取pc端的链接5分钟之内有效，且只能访问一次
+	// 3. 若企业认证完成且员工认证完成后，重新获取H5/APP的链接只要在有效期内（一年）都可以访问
+	// 4. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）
+	// 5. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
 	ConsoleUrl *string `json:"ConsoleUrl,omitempty" name:"ConsoleUrl"`
 
 	// 渠道子客企业是否已开通腾讯电子签
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 当前经办人是否已认证（false:未认证 true:已认证）
+	ProxyOperatorIsVerified *bool `json:"ProxyOperatorIsVerified,omitempty" name:"ProxyOperatorIsVerified"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1545,10 +1567,13 @@ type CreateFlowsByTemplatesRequestParams struct {
 	// 多个合同（签署流程）信息，最多支持20个
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
 
-	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls（此Url返回的是PDF文件流 ）；
+	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls；
 	// 预览链接有效期300秒；
 	// 同时，如果预览的文件中指定了动态表格控件，需要进行异步合成；此时此接口返回的是合成前的文档预览链接，而合成完成后的文档预览链接会通过：回调通知的方式、或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
+
+	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -1563,10 +1588,13 @@ type CreateFlowsByTemplatesRequest struct {
 	// 多个合同（签署流程）信息，最多支持20个
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
 
-	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls（此Url返回的是PDF文件流 ）；
+	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls；
 	// 预览链接有效期300秒；
 	// 同时，如果预览的文件中指定了动态表格控件，需要进行异步合成；此时此接口返回的是合成前的文档预览链接，而合成完成后的文档预览链接会通过：回调通知的方式、或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
+
+	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -1587,6 +1615,7 @@ func (r *CreateFlowsByTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "FlowInfos")
 	delete(f, "NeedPreview")
+	delete(f, "PreviewType")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowsByTemplatesRequest has unknown keys!", "")
@@ -2074,6 +2103,9 @@ type DescribeTemplatesRequestParams struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否获取模板预览链接
+	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
 }
 
 type DescribeTemplatesRequest struct {
@@ -2102,6 +2134,9 @@ type DescribeTemplatesRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否获取模板预览链接
+	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -2124,6 +2159,7 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "QueryAllComponents")
 	delete(f, "TemplateName")
 	delete(f, "Operator")
+	delete(f, "WithPreviewUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}
@@ -2333,13 +2369,13 @@ type FlowApproverInfo struct {
 	// 签署人姓名，最大长度50个字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 经办人身份证件类型
+	// 签署人身份证件类型
 	// 1.ID_CARD 居民身份证
 	// 2.HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证
 	// 3.HONGKONG_AND_MACAO 港澳居民来往内地通行证
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
-	// 经办人证件号
+	// 签署人证件号
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 
 	// 签署人手机号，脱敏显示。大陆手机号为11位，暂不支持海外手机号。
@@ -3184,6 +3220,9 @@ type SyncProxyOrganizationRequestParams struct {
 	// 渠道侧合作企业统一社会信用代码，最大长度200个字符
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
+	// 渠道侧合作企业法人/负责人姓名
+	ProxyLegalName *string `json:"ProxyLegalName,omitempty" name:"ProxyLegalName"`
+
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -3203,6 +3242,9 @@ type SyncProxyOrganizationRequest struct {
 
 	// 渠道侧合作企业统一社会信用代码，最大长度200个字符
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
+
+	// 渠道侧合作企业法人/负责人姓名
+	ProxyLegalName *string `json:"ProxyLegalName,omitempty" name:"ProxyLegalName"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -3224,6 +3266,7 @@ func (r *SyncProxyOrganizationRequest) FromJsonString(s string) error {
 	delete(f, "ProxyOrganizationName")
 	delete(f, "BusinessLicense")
 	delete(f, "UniformSocialCreditCode")
+	delete(f, "ProxyLegalName")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncProxyOrganizationRequest has unknown keys!", "")
@@ -3293,6 +3336,10 @@ type TemplateInfo struct {
 
 	// 模板创建的时间戳（精确到秒）
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 模板的预览链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 }
 
 type UploadFile struct {

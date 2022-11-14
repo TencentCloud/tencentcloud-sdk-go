@@ -122,6 +122,9 @@ const (
 	// 当前域名已开启流量调度功能。
 	INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = "InvalidParameter.DomainOnTrafficScheduling"
 
+	// 非法操作。
+	INVALIDPARAMETER_ERRINVALIDACTION = "InvalidParameter.ErrInvalidAction"
+
 	// 非法操作-非法参数。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 
@@ -169,6 +172,9 @@ const (
 
 	// 无效的自定义错误页面。
 	INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = "InvalidParameter.InvalidErrorPageRedirectUrl"
+
+	// 无效的HTTPS HSTS。
+	INVALIDPARAMETER_INVALIDHTTPSHSTSMAXAGE = "InvalidParameter.InvalidHttpsHstsMaxAge"
 
 	// 无效的HTTPS TLS版本。
 	INVALIDPARAMETER_INVALIDHTTPSTLSVERSION = "InvalidParameter.InvalidHttpsTlsVersion"

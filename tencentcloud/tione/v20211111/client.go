@@ -1154,6 +1154,7 @@ func NewDeleteTrainingTaskResponse() (response *DeleteTrainingTaskResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -1166,6 +1167,7 @@ func (c *Client) DeleteTrainingTask(request *DeleteTrainingTaskRequest) (respons
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"

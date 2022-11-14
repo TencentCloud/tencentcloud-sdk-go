@@ -777,6 +777,102 @@ func (c *Client) CheckAlarmRegularNameExistWithContext(ctx context.Context, requ
     return
 }
 
+func NewCheckDuplicateRuleNameRequest() (request *CheckDuplicateRuleNameRequest) {
+    request = &CheckDuplicateRuleNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CheckDuplicateRuleName")
+    
+    
+    return
+}
+
+func NewCheckDuplicateRuleNameResponse() (response *CheckDuplicateRuleNameResponse) {
+    response = &CheckDuplicateRuleNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckDuplicateRuleName
+// 检查规则名称是否重复
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CheckDuplicateRuleName(request *CheckDuplicateRuleNameRequest) (response *CheckDuplicateRuleNameResponse, err error) {
+    return c.CheckDuplicateRuleNameWithContext(context.Background(), request)
+}
+
+// CheckDuplicateRuleName
+// 检查规则名称是否重复
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CheckDuplicateRuleNameWithContext(ctx context.Context, request *CheckDuplicateRuleNameRequest) (response *CheckDuplicateRuleNameResponse, err error) {
+    if request == nil {
+        request = NewCheckDuplicateRuleNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckDuplicateRuleName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckDuplicateRuleNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckDuplicateTemplateNameRequest() (request *CheckDuplicateTemplateNameRequest) {
+    request = &CheckDuplicateTemplateNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CheckDuplicateTemplateName")
+    
+    
+    return
+}
+
+func NewCheckDuplicateTemplateNameResponse() (response *CheckDuplicateTemplateNameResponse) {
+    response = &CheckDuplicateTemplateNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckDuplicateTemplateName
+// 检查规则模板名称是否重复
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CheckDuplicateTemplateName(request *CheckDuplicateTemplateNameRequest) (response *CheckDuplicateTemplateNameResponse, err error) {
+    return c.CheckDuplicateTemplateNameWithContext(context.Background(), request)
+}
+
+// CheckDuplicateTemplateName
+// 检查规则模板名称是否重复
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CheckDuplicateTemplateNameWithContext(ctx context.Context, request *CheckDuplicateTemplateNameRequest) (response *CheckDuplicateTemplateNameResponse, err error) {
+    if request == nil {
+        request = NewCheckDuplicateTemplateNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckDuplicateTemplateName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckDuplicateTemplateNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckIntegrationNodeNameExistsRequest() (request *CheckIntegrationNodeNameExistsRequest) {
     request = &CheckIntegrationNodeNameExistsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -921,6 +1017,54 @@ func (c *Client) CheckTaskNameExistWithContext(ctx context.Context, request *Che
     return
 }
 
+func NewCommitExportTaskRequest() (request *CommitExportTaskRequest) {
+    request = &CommitExportTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CommitExportTask")
+    
+    
+    return
+}
+
+func NewCommitExportTaskResponse() (response *CommitExportTaskResponse) {
+    response = &CommitExportTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CommitExportTask
+// 提交数据导出任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CommitExportTask(request *CommitExportTaskRequest) (response *CommitExportTaskResponse, err error) {
+    return c.CommitExportTaskWithContext(context.Background(), request)
+}
+
+// CommitExportTask
+// 提交数据导出任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CommitExportTaskWithContext(ctx context.Context, request *CommitExportTaskRequest) (response *CommitExportTaskResponse, err error) {
+    if request == nil {
+        request = NewCommitExportTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CommitExportTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCommitExportTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCommitIntegrationTaskRequest() (request *CommitIntegrationTaskRequest) {
     request = &CommitIntegrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -997,6 +1141,166 @@ func (c *Client) CommitIntegrationTaskWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewCommitIntegrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCommitRuleGroupExecResultRequest() (request *CommitRuleGroupExecResultRequest) {
+    request = &CommitRuleGroupExecResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CommitRuleGroupExecResult")
+    
+    
+    return
+}
+
+func NewCommitRuleGroupExecResultResponse() (response *CommitRuleGroupExecResultResponse) {
+    response = &CommitRuleGroupExecResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CommitRuleGroupExecResult
+// Runner 规则检测结果上报
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CommitRuleGroupExecResult(request *CommitRuleGroupExecResultRequest) (response *CommitRuleGroupExecResultResponse, err error) {
+    return c.CommitRuleGroupExecResultWithContext(context.Background(), request)
+}
+
+// CommitRuleGroupExecResult
+// Runner 规则检测结果上报
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CommitRuleGroupExecResultWithContext(ctx context.Context, request *CommitRuleGroupExecResultRequest) (response *CommitRuleGroupExecResultResponse, err error) {
+    if request == nil {
+        request = NewCommitRuleGroupExecResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CommitRuleGroupExecResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCommitRuleGroupExecResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCommitRuleGroupTaskRequest() (request *CommitRuleGroupTaskRequest) {
+    request = &CommitRuleGroupTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CommitRuleGroupTask")
+    
+    
+    return
+}
+
+func NewCommitRuleGroupTaskResponse() (response *CommitRuleGroupTaskResponse) {
+    response = &CommitRuleGroupTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CommitRuleGroupTask
+// 提交规则组运行任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CommitRuleGroupTask(request *CommitRuleGroupTaskRequest) (response *CommitRuleGroupTaskResponse, err error) {
+    return c.CommitRuleGroupTaskWithContext(context.Background(), request)
+}
+
+// CommitRuleGroupTask
+// 提交规则组运行任务接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CommitRuleGroupTaskWithContext(ctx context.Context, request *CommitRuleGroupTaskRequest) (response *CommitRuleGroupTaskResponse, err error) {
+    if request == nil {
+        request = NewCommitRuleGroupTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CommitRuleGroupTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCommitRuleGroupTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1537,6 +1841,106 @@ func (c *Client) CreateOrUpdateResourceWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewCreateOrUpdateResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRuleRequest() (request *CreateRuleRequest) {
+    request = &CreateRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateRule")
+    
+    
+    return
+}
+
+func NewCreateRuleResponse() (response *CreateRuleResponse) {
+    response = &CreateRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRule
+// 创建质量规则接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
+    return c.CreateRuleWithContext(context.Background(), request)
+}
+
+// CreateRule
+// 创建质量规则接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRuleTemplateRequest() (request *CreateRuleTemplateRequest) {
+    request = &CreateRuleTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateRuleTemplate")
+    
+    
+    return
+}
+
+func NewCreateRuleTemplateResponse() (response *CreateRuleTemplateResponse) {
+    response = &CreateRuleTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRuleTemplate
+// 创建规则模版
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) CreateRuleTemplate(request *CreateRuleTemplateRequest) (response *CreateRuleTemplateResponse, err error) {
+    return c.CreateRuleTemplateWithContext(context.Background(), request)
+}
+
+// CreateRuleTemplate
+// 创建规则模版
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) CreateRuleTemplateWithContext(ctx context.Context, request *CreateRuleTemplateRequest) (response *CreateRuleTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateRuleTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRuleTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRuleTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -2163,6 +2567,110 @@ func (c *Client) DeleteResourceWithContext(ctx context.Context, request *DeleteR
     return
 }
 
+func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
+    request = &DeleteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteRule")
+    
+    
+    return
+}
+
+func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
+    response = &DeleteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRule
+// 删除质量规则接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
+    return c.DeleteRuleWithContext(context.Background(), request)
+}
+
+// DeleteRule
+// 删除质量规则接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRuleTemplateRequest() (request *DeleteRuleTemplateRequest) {
+    request = &DeleteRuleTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteRuleTemplate")
+    
+    
+    return
+}
+
+func NewDeleteRuleTemplateResponse() (response *DeleteRuleTemplateResponse) {
+    response = &DeleteRuleTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRuleTemplate
+// 删除规则模版
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteRuleTemplate(request *DeleteRuleTemplateRequest) (response *DeleteRuleTemplateResponse, err error) {
+    return c.DeleteRuleTemplateWithContext(context.Background(), request)
+}
+
+// DeleteRuleTemplate
+// 删除规则模版
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteRuleTemplateWithContext(ctx context.Context, request *DeleteRuleTemplateRequest) (response *DeleteRuleTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteRuleTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRuleTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRuleTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTaskAlarmRegularRequest() (request *DeleteTaskAlarmRegularRequest) {
     request = &DeleteTaskAlarmRegularRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2463,6 +2971,158 @@ func (c *Client) DescribeClusterNamespaceListWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeClusterNamespaceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataBasesRequest() (request *DescribeDataBasesRequest) {
+    request = &DescribeDataBasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataBases")
+    
+    
+    return
+}
+
+func NewDescribeDataBasesResponse() (response *DescribeDataBasesResponse) {
+    response = &DescribeDataBasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataBases
+// 查询数据来源列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeDataBases(request *DescribeDataBasesRequest) (response *DescribeDataBasesResponse, err error) {
+    return c.DescribeDataBasesWithContext(context.Background(), request)
+}
+
+// DescribeDataBases
+// 查询数据来源列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeDataBasesWithContext(ctx context.Context, request *DescribeDataBasesRequest) (response *DescribeDataBasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataBasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataBases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataBasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataCheckStatRequest() (request *DescribeDataCheckStatRequest) {
+    request = &DescribeDataCheckStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataCheckStat")
+    
+    
+    return
+}
+
+func NewDescribeDataCheckStatResponse() (response *DescribeDataCheckStatResponse) {
+    response = &DescribeDataCheckStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataCheckStat
+// 数据质量的概览页面数据监测情况接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeDataCheckStat(request *DescribeDataCheckStatRequest) (response *DescribeDataCheckStatResponse, err error) {
+    return c.DescribeDataCheckStatWithContext(context.Background(), request)
+}
+
+// DescribeDataCheckStat
+// 数据质量的概览页面数据监测情况接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeDataCheckStatWithContext(ctx context.Context, request *DescribeDataCheckStatRequest) (response *DescribeDataCheckStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataCheckStatRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataCheckStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataCheckStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataObjectsRequest() (request *DescribeDataObjectsRequest) {
+    request = &DescribeDataObjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataObjects")
+    
+    
+    return
+}
+
+func NewDescribeDataObjectsResponse() (response *DescribeDataObjectsResponse) {
+    response = &DescribeDataObjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataObjects
+// 查询规则组数据对象列表
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeDataObjects(request *DescribeDataObjectsRequest) (response *DescribeDataObjectsResponse, err error) {
+    return c.DescribeDataObjectsWithContext(context.Background(), request)
+}
+
+// DescribeDataObjects
+// 查询规则组数据对象列表
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeDataObjectsWithContext(ctx context.Context, request *DescribeDataObjectsRequest) (response *DescribeDataObjectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataObjectsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataObjects require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataObjectsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2839,6 +3499,122 @@ func (c *Client) DescribeDependTasksNewWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeDimensionScoreRequest() (request *DescribeDimensionScoreRequest) {
+    request = &DescribeDimensionScoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDimensionScore")
+    
+    
+    return
+}
+
+func NewDescribeDimensionScoreResponse() (response *DescribeDimensionScoreResponse) {
+    response = &DescribeDimensionScoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDimensionScore
+// 质量报告-查询质量评分
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDimensionScore(request *DescribeDimensionScoreRequest) (response *DescribeDimensionScoreResponse, err error) {
+    return c.DescribeDimensionScoreWithContext(context.Background(), request)
+}
+
+// DescribeDimensionScore
+// 质量报告-查询质量评分
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDimensionScoreWithContext(ctx context.Context, request *DescribeDimensionScoreRequest) (response *DescribeDimensionScoreResponse, err error) {
+    if request == nil {
+        request = NewDescribeDimensionScoreRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDimensionScore require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDimensionScoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExecStrategyRequest() (request *DescribeExecStrategyRequest) {
+    request = &DescribeExecStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeExecStrategy")
+    
+    
+    return
+}
+
+func NewDescribeExecStrategyResponse() (response *DescribeExecStrategyResponse) {
+    response = &DescribeExecStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExecStrategy
+// 查询规则组执行策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeExecStrategy(request *DescribeExecStrategyRequest) (response *DescribeExecStrategyResponse, err error) {
+    return c.DescribeExecStrategyWithContext(context.Background(), request)
+}
+
+// DescribeExecStrategy
+// 查询规则组执行策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeExecStrategyWithContext(ctx context.Context, request *DescribeExecStrategyRequest) (response *DescribeExecStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeExecStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExecStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExecStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFolderListRequest() (request *DescribeFolderListRequest) {
     request = &DescribeFolderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2863,7 +3639,9 @@ func NewDescribeFolderListResponse() (response *DescribeFolderListResponse) {
 // 拉取文件夹目录
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeFolderList(request *DescribeFolderListRequest) (response *DescribeFolderListResponse, err error) {
     return c.DescribeFolderListWithContext(context.Background(), request)
 }
@@ -2874,7 +3652,9 @@ func (c *Client) DescribeFolderList(request *DescribeFolderListRequest) (respons
 // 拉取文件夹目录
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeFolderListWithContext(ctx context.Context, request *DescribeFolderListRequest) (response *DescribeFolderListResponse, err error) {
     if request == nil {
         request = NewDescribeFolderListRequest()
@@ -3471,6 +4251,54 @@ func (c *Client) DescribeInstanceLogsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeInstanceLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
+    request = &DescribeInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInstances")
+    
+    
+    return
+}
+
+func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
+    response = &DescribeInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstances
+// 数据质量，查询调度任务的实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    return c.DescribeInstancesWithContext(context.Background(), request)
+}
+
+// DescribeInstances
+// 数据质量，查询调度任务的实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4175,6 +5003,58 @@ func (c *Client) DescribeKafkaTopicInfoWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeMonitorsByPageRequest() (request *DescribeMonitorsByPageRequest) {
+    request = &DescribeMonitorsByPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeMonitorsByPage")
+    
+    
+    return
+}
+
+func NewDescribeMonitorsByPageResponse() (response *DescribeMonitorsByPageResponse) {
+    response = &DescribeMonitorsByPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMonitorsByPage
+// 分页查询质量监控组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeMonitorsByPage(request *DescribeMonitorsByPageRequest) (response *DescribeMonitorsByPageResponse, err error) {
+    return c.DescribeMonitorsByPageWithContext(context.Background(), request)
+}
+
+// DescribeMonitorsByPage
+// 分页查询质量监控组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeMonitorsByPageWithContext(ctx context.Context, request *DescribeMonitorsByPageRequest) (response *DescribeMonitorsByPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeMonitorsByPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMonitorsByPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMonitorsByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOfflineTaskTokenRequest() (request *DescribeOfflineTaskTokenRequest) {
     request = &DescribeOfflineTaskTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4197,23 +5077,9 @@ func NewDescribeOfflineTaskTokenResponse() (response *DescribeOfflineTaskTokenRe
 // 获取离线任务长连接Token
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineTaskToken(request *DescribeOfflineTaskTokenRequest) (response *DescribeOfflineTaskTokenResponse, err error) {
     return c.DescribeOfflineTaskTokenWithContext(context.Background(), request)
 }
@@ -4222,23 +5088,9 @@ func (c *Client) DescribeOfflineTaskToken(request *DescribeOfflineTaskTokenReque
 // 获取离线任务长连接Token
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeOfflineTaskTokenWithContext(ctx context.Context, request *DescribeOfflineTaskTokenRequest) (response *DescribeOfflineTaskTokenResponse, err error) {
     if request == nil {
         request = NewDescribeOfflineTaskTokenRequest()
@@ -4303,6 +5155,54 @@ func (c *Client) DescribeOrganizationalFunctionsWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeProdTasksRequest() (request *DescribeProdTasksRequest) {
+    request = &DescribeProdTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeProdTasks")
+    
+    
+    return
+}
+
+func NewDescribeProdTasksResponse() (response *DescribeProdTasksResponse) {
+    response = &DescribeProdTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProdTasks
+// 数据质量获取生产调度任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeProdTasks(request *DescribeProdTasksRequest) (response *DescribeProdTasksResponse, err error) {
+    return c.DescribeProdTasksWithContext(context.Background(), request)
+}
+
+// DescribeProdTasks
+// 数据质量获取生产调度任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeProdTasksWithContext(ctx context.Context, request *DescribeProdTasksRequest) (response *DescribeProdTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeProdTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProdTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProdTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
     request = &DescribeProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4353,6 +5253,124 @@ func (c *Client) DescribeProjectWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeQualityScoreRequest() (request *DescribeQualityScoreRequest) {
+    request = &DescribeQualityScoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeQualityScore")
+    
+    
+    return
+}
+
+func NewDescribeQualityScoreResponse() (response *DescribeQualityScoreResponse) {
+    response = &DescribeQualityScoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQualityScore
+// 质量报告-质量评分
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeQualityScore(request *DescribeQualityScoreRequest) (response *DescribeQualityScoreResponse, err error) {
+    return c.DescribeQualityScoreWithContext(context.Background(), request)
+}
+
+// DescribeQualityScore
+// 质量报告-质量评分
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeQualityScoreWithContext(ctx context.Context, request *DescribeQualityScoreRequest) (response *DescribeQualityScoreResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityScoreRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQualityScore require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQualityScoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQualityScoreTrendRequest() (request *DescribeQualityScoreTrendRequest) {
+    request = &DescribeQualityScoreTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeQualityScoreTrend")
+    
+    
+    return
+}
+
+func NewDescribeQualityScoreTrendResponse() (response *DescribeQualityScoreTrendResponse) {
+    response = &DescribeQualityScoreTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQualityScoreTrend
+// 质量报告-质量分周期趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeQualityScoreTrend(request *DescribeQualityScoreTrendRequest) (response *DescribeQualityScoreTrendResponse, err error) {
+    return c.DescribeQualityScoreTrendWithContext(context.Background(), request)
+}
+
+// DescribeQualityScoreTrend
+// 质量报告-质量分周期趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeQualityScoreTrendWithContext(ctx context.Context, request *DescribeQualityScoreTrendRequest) (response *DescribeQualityScoreTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityScoreTrendRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQualityScoreTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQualityScoreTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRealTimeTaskInstanceNodeInfoRequest() (request *DescribeRealTimeTaskInstanceNodeInfoRequest) {
     request = &DescribeRealTimeTaskInstanceNodeInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4375,8 +5393,13 @@ func NewDescribeRealTimeTaskInstanceNodeInfoResponse() (response *DescribeRealTi
 // 查询实时任务实例节点信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRealTimeTaskInstanceNodeInfo(request *DescribeRealTimeTaskInstanceNodeInfoRequest) (response *DescribeRealTimeTaskInstanceNodeInfoResponse, err error) {
     return c.DescribeRealTimeTaskInstanceNodeInfoWithContext(context.Background(), request)
 }
@@ -4385,8 +5408,13 @@ func (c *Client) DescribeRealTimeTaskInstanceNodeInfo(request *DescribeRealTimeT
 // 查询实时任务实例节点信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRealTimeTaskInstanceNodeInfoWithContext(ctx context.Context, request *DescribeRealTimeTaskInstanceNodeInfoRequest) (response *DescribeRealTimeTaskInstanceNodeInfoResponse, err error) {
     if request == nil {
         request = NewDescribeRealTimeTaskInstanceNodeInfoRequest()
@@ -4425,8 +5453,13 @@ func NewDescribeRealTimeTaskMetricOverviewResponse() (response *DescribeRealTime
 // 实时任务运行指标概览
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRealTimeTaskMetricOverview(request *DescribeRealTimeTaskMetricOverviewRequest) (response *DescribeRealTimeTaskMetricOverviewResponse, err error) {
     return c.DescribeRealTimeTaskMetricOverviewWithContext(context.Background(), request)
 }
@@ -4435,8 +5468,13 @@ func (c *Client) DescribeRealTimeTaskMetricOverview(request *DescribeRealTimeTas
 // 实时任务运行指标概览
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRealTimeTaskMetricOverviewWithContext(ctx context.Context, request *DescribeRealTimeTaskMetricOverviewRequest) (response *DescribeRealTimeTaskMetricOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeRealTimeTaskMetricOverviewRequest()
@@ -4475,8 +5513,13 @@ func NewDescribeRealTimeTaskSpeedResponse() (response *DescribeRealTimeTaskSpeed
 // 实时任务同步速度趋势
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRealTimeTaskSpeed(request *DescribeRealTimeTaskSpeedRequest) (response *DescribeRealTimeTaskSpeedResponse, err error) {
     return c.DescribeRealTimeTaskSpeedWithContext(context.Background(), request)
 }
@@ -4485,8 +5528,13 @@ func (c *Client) DescribeRealTimeTaskSpeed(request *DescribeRealTimeTaskSpeedReq
 // 实时任务同步速度趋势
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRealTimeTaskSpeedWithContext(ctx context.Context, request *DescribeRealTimeTaskSpeedRequest) (response *DescribeRealTimeTaskSpeedResponse, err error) {
     if request == nil {
         request = NewDescribeRealTimeTaskSpeedRequest()
@@ -4599,6 +5647,1154 @@ func (c *Client) DescribeResourceManagePathTreesWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeRuleRequest() (request *DescribeRuleRequest) {
+    request = &DescribeRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRule")
+    
+    
+    return
+}
+
+func NewDescribeRuleResponse() (response *DescribeRuleResponse) {
+    response = &DescribeRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRule
+// 查询规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
+func (c *Client) DescribeRule(request *DescribeRuleRequest) (response *DescribeRuleResponse, err error) {
+    return c.DescribeRuleWithContext(context.Background(), request)
+}
+
+// DescribeRule
+// 查询规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
+func (c *Client) DescribeRuleWithContext(ctx context.Context, request *DescribeRuleRequest) (response *DescribeRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleDataSourcesRequest() (request *DescribeRuleDataSourcesRequest) {
+    request = &DescribeRuleDataSourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleDataSources")
+    
+    
+    return
+}
+
+func NewDescribeRuleDataSourcesResponse() (response *DescribeRuleDataSourcesResponse) {
+    response = &DescribeRuleDataSourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleDataSources
+// 查询质量规则数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleDataSources(request *DescribeRuleDataSourcesRequest) (response *DescribeRuleDataSourcesResponse, err error) {
+    return c.DescribeRuleDataSourcesWithContext(context.Background(), request)
+}
+
+// DescribeRuleDataSources
+// 查询质量规则数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleDataSourcesWithContext(ctx context.Context, request *DescribeRuleDataSourcesRequest) (response *DescribeRuleDataSourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleDataSourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleDataSources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleDataSourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleDimStatRequest() (request *DescribeRuleDimStatRequest) {
+    request = &DescribeRuleDimStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleDimStat")
+    
+    
+    return
+}
+
+func NewDescribeRuleDimStatResponse() (response *DescribeRuleDimStatResponse) {
+    response = &DescribeRuleDimStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleDimStat
+// 数据质量概览页面触发维度分布统计接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleDimStat(request *DescribeRuleDimStatRequest) (response *DescribeRuleDimStatResponse, err error) {
+    return c.DescribeRuleDimStatWithContext(context.Background(), request)
+}
+
+// DescribeRuleDimStat
+// 数据质量概览页面触发维度分布统计接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleDimStatWithContext(ctx context.Context, request *DescribeRuleDimStatRequest) (response *DescribeRuleDimStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleDimStatRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleDimStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleDimStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleExecDetailRequest() (request *DescribeRuleExecDetailRequest) {
+    request = &DescribeRuleExecDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecDetail")
+    
+    
+    return
+}
+
+func NewDescribeRuleExecDetailResponse() (response *DescribeRuleExecDetailResponse) {
+    response = &DescribeRuleExecDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleExecDetail
+// 查询规则执行结果详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecDetail(request *DescribeRuleExecDetailRequest) (response *DescribeRuleExecDetailResponse, err error) {
+    return c.DescribeRuleExecDetailWithContext(context.Background(), request)
+}
+
+// DescribeRuleExecDetail
+// 查询规则执行结果详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecDetailWithContext(ctx context.Context, request *DescribeRuleExecDetailRequest) (response *DescribeRuleExecDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleExecDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleExecDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleExecDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleExecExportResultRequest() (request *DescribeRuleExecExportResultRequest) {
+    request = &DescribeRuleExecExportResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecExportResult")
+    
+    
+    return
+}
+
+func NewDescribeRuleExecExportResultResponse() (response *DescribeRuleExecExportResultResponse) {
+    response = &DescribeRuleExecExportResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleExecExportResult
+// 查询规则执行导出结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecExportResult(request *DescribeRuleExecExportResultRequest) (response *DescribeRuleExecExportResultResponse, err error) {
+    return c.DescribeRuleExecExportResultWithContext(context.Background(), request)
+}
+
+// DescribeRuleExecExportResult
+// 查询规则执行导出结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecExportResultWithContext(ctx context.Context, request *DescribeRuleExecExportResultRequest) (response *DescribeRuleExecExportResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleExecExportResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleExecExportResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleExecExportResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleExecHistoryRequest() (request *DescribeRuleExecHistoryRequest) {
+    request = &DescribeRuleExecHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecHistory")
+    
+    
+    return
+}
+
+func NewDescribeRuleExecHistoryResponse() (response *DescribeRuleExecHistoryResponse) {
+    response = &DescribeRuleExecHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleExecHistory
+// 查询规则执行历史， 最近30条
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRuleExecHistory(request *DescribeRuleExecHistoryRequest) (response *DescribeRuleExecHistoryResponse, err error) {
+    return c.DescribeRuleExecHistoryWithContext(context.Background(), request)
+}
+
+// DescribeRuleExecHistory
+// 查询规则执行历史， 最近30条
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRuleExecHistoryWithContext(ctx context.Context, request *DescribeRuleExecHistoryRequest) (response *DescribeRuleExecHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleExecHistoryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleExecHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleExecHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleExecLogRequest() (request *DescribeRuleExecLogRequest) {
+    request = &DescribeRuleExecLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecLog")
+    
+    
+    return
+}
+
+func NewDescribeRuleExecLogResponse() (response *DescribeRuleExecLogResponse) {
+    response = &DescribeRuleExecLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleExecLog
+// 规则执行日志查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+func (c *Client) DescribeRuleExecLog(request *DescribeRuleExecLogRequest) (response *DescribeRuleExecLogResponse, err error) {
+    return c.DescribeRuleExecLogWithContext(context.Background(), request)
+}
+
+// DescribeRuleExecLog
+// 规则执行日志查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+func (c *Client) DescribeRuleExecLogWithContext(ctx context.Context, request *DescribeRuleExecLogRequest) (response *DescribeRuleExecLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleExecLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleExecLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleExecLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleExecResultsRequest() (request *DescribeRuleExecResultsRequest) {
+    request = &DescribeRuleExecResultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecResults")
+    
+    
+    return
+}
+
+func NewDescribeRuleExecResultsResponse() (response *DescribeRuleExecResultsResponse) {
+    response = &DescribeRuleExecResultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleExecResults
+// 规则执行结果列表查询
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecResults(request *DescribeRuleExecResultsRequest) (response *DescribeRuleExecResultsResponse, err error) {
+    return c.DescribeRuleExecResultsWithContext(context.Background(), request)
+}
+
+// DescribeRuleExecResults
+// 规则执行结果列表查询
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecResultsWithContext(ctx context.Context, request *DescribeRuleExecResultsRequest) (response *DescribeRuleExecResultsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleExecResultsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleExecResults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleExecResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleExecResultsByPageRequest() (request *DescribeRuleExecResultsByPageRequest) {
+    request = &DescribeRuleExecResultsByPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecResultsByPage")
+    
+    
+    return
+}
+
+func NewDescribeRuleExecResultsByPageResponse() (response *DescribeRuleExecResultsByPageResponse) {
+    response = &DescribeRuleExecResultsByPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleExecResultsByPage
+// 分页查询规则执行结果列表
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecResultsByPage(request *DescribeRuleExecResultsByPageRequest) (response *DescribeRuleExecResultsByPageResponse, err error) {
+    return c.DescribeRuleExecResultsByPageWithContext(context.Background(), request)
+}
+
+// DescribeRuleExecResultsByPage
+// 分页查询规则执行结果列表
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecResultsByPageWithContext(ctx context.Context, request *DescribeRuleExecResultsByPageRequest) (response *DescribeRuleExecResultsByPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleExecResultsByPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleExecResultsByPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleExecResultsByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleExecStatRequest() (request *DescribeRuleExecStatRequest) {
+    request = &DescribeRuleExecStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleExecStat")
+    
+    
+    return
+}
+
+func NewDescribeRuleExecStatResponse() (response *DescribeRuleExecStatResponse) {
+    response = &DescribeRuleExecStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleExecStat
+// 数据质量概览页面规则运行情况接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecStat(request *DescribeRuleExecStatRequest) (response *DescribeRuleExecStatResponse, err error) {
+    return c.DescribeRuleExecStatWithContext(context.Background(), request)
+}
+
+// DescribeRuleExecStat
+// 数据质量概览页面规则运行情况接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleExecStatWithContext(ctx context.Context, request *DescribeRuleExecStatRequest) (response *DescribeRuleExecStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleExecStatRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleExecStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleExecStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleGroupRequest() (request *DescribeRuleGroupRequest) {
+    request = &DescribeRuleGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleGroup")
+    
+    
+    return
+}
+
+func NewDescribeRuleGroupResponse() (response *DescribeRuleGroupResponse) {
+    response = &DescribeRuleGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleGroup
+// 查询规则组详情接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleGroup(request *DescribeRuleGroupRequest) (response *DescribeRuleGroupResponse, err error) {
+    return c.DescribeRuleGroupWithContext(context.Background(), request)
+}
+
+// DescribeRuleGroup
+// 查询规则组详情接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleGroupWithContext(ctx context.Context, request *DescribeRuleGroupRequest) (response *DescribeRuleGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleGroupExecResultsByPageRequest() (request *DescribeRuleGroupExecResultsByPageRequest) {
+    request = &DescribeRuleGroupExecResultsByPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleGroupExecResultsByPage")
+    
+    
+    return
+}
+
+func NewDescribeRuleGroupExecResultsByPageResponse() (response *DescribeRuleGroupExecResultsByPageResponse) {
+    response = &DescribeRuleGroupExecResultsByPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleGroupExecResultsByPage
+// 规则组执行结果分页查询接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupExecResultsByPage(request *DescribeRuleGroupExecResultsByPageRequest) (response *DescribeRuleGroupExecResultsByPageResponse, err error) {
+    return c.DescribeRuleGroupExecResultsByPageWithContext(context.Background(), request)
+}
+
+// DescribeRuleGroupExecResultsByPage
+// 规则组执行结果分页查询接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupExecResultsByPageWithContext(ctx context.Context, request *DescribeRuleGroupExecResultsByPageRequest) (response *DescribeRuleGroupExecResultsByPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleGroupExecResultsByPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleGroupExecResultsByPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleGroupExecResultsByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleGroupExecResultsByPageWithoutAuthRequest() (request *DescribeRuleGroupExecResultsByPageWithoutAuthRequest) {
+    request = &DescribeRuleGroupExecResultsByPageWithoutAuthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleGroupExecResultsByPageWithoutAuth")
+    
+    
+    return
+}
+
+func NewDescribeRuleGroupExecResultsByPageWithoutAuthResponse() (response *DescribeRuleGroupExecResultsByPageWithoutAuthResponse) {
+    response = &DescribeRuleGroupExecResultsByPageWithoutAuthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleGroupExecResultsByPageWithoutAuth
+// 规则组执行结果分页查询接口不带鉴权
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupExecResultsByPageWithoutAuth(request *DescribeRuleGroupExecResultsByPageWithoutAuthRequest) (response *DescribeRuleGroupExecResultsByPageWithoutAuthResponse, err error) {
+    return c.DescribeRuleGroupExecResultsByPageWithoutAuthWithContext(context.Background(), request)
+}
+
+// DescribeRuleGroupExecResultsByPageWithoutAuth
+// 规则组执行结果分页查询接口不带鉴权
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupExecResultsByPageWithoutAuthWithContext(ctx context.Context, request *DescribeRuleGroupExecResultsByPageWithoutAuthRequest) (response *DescribeRuleGroupExecResultsByPageWithoutAuthResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleGroupExecResultsByPageWithoutAuthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleGroupExecResultsByPageWithoutAuth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleGroupExecResultsByPageWithoutAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleGroupSubscriptionRequest() (request *DescribeRuleGroupSubscriptionRequest) {
+    request = &DescribeRuleGroupSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleGroupSubscription")
+    
+    
+    return
+}
+
+func NewDescribeRuleGroupSubscriptionResponse() (response *DescribeRuleGroupSubscriptionResponse) {
+    response = &DescribeRuleGroupSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleGroupSubscription
+// 查询规则组订阅信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupSubscription(request *DescribeRuleGroupSubscriptionRequest) (response *DescribeRuleGroupSubscriptionResponse, err error) {
+    return c.DescribeRuleGroupSubscriptionWithContext(context.Background(), request)
+}
+
+// DescribeRuleGroupSubscription
+// 查询规则组订阅信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupSubscriptionWithContext(ctx context.Context, request *DescribeRuleGroupSubscriptionRequest) (response *DescribeRuleGroupSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleGroupSubscriptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleGroupSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleGroupSubscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleGroupTableRequest() (request *DescribeRuleGroupTableRequest) {
+    request = &DescribeRuleGroupTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleGroupTable")
+    
+    
+    return
+}
+
+func NewDescribeRuleGroupTableResponse() (response *DescribeRuleGroupTableResponse) {
+    response = &DescribeRuleGroupTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleGroupTable
+// 查询表绑定执行规则组信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupTable(request *DescribeRuleGroupTableRequest) (response *DescribeRuleGroupTableResponse, err error) {
+    return c.DescribeRuleGroupTableWithContext(context.Background(), request)
+}
+
+// DescribeRuleGroupTable
+// 查询表绑定执行规则组信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupTableWithContext(ctx context.Context, request *DescribeRuleGroupTableRequest) (response *DescribeRuleGroupTableResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleGroupTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleGroupTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleGroupTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleGroupsByPageRequest() (request *DescribeRuleGroupsByPageRequest) {
+    request = &DescribeRuleGroupsByPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleGroupsByPage")
+    
+    
+    return
+}
+
+func NewDescribeRuleGroupsByPageResponse() (response *DescribeRuleGroupsByPageResponse) {
+    response = &DescribeRuleGroupsByPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleGroupsByPage
+// 【过滤条件】
+//
+// {表名称TableName,支持模糊匹配}       {表负责人TableOwnerName,支持模糊匹配}      {监控方式MonitorTypes，1.未配置 2.关联生产调度 3.离线周期检测,支持多选}  {订阅人ReceiverUin}
+//
+// 【必要字段】
+//
+// {数据来源DatasourceId}
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupsByPage(request *DescribeRuleGroupsByPageRequest) (response *DescribeRuleGroupsByPageResponse, err error) {
+    return c.DescribeRuleGroupsByPageWithContext(context.Background(), request)
+}
+
+// DescribeRuleGroupsByPage
+// 【过滤条件】
+//
+// {表名称TableName,支持模糊匹配}       {表负责人TableOwnerName,支持模糊匹配}      {监控方式MonitorTypes，1.未配置 2.关联生产调度 3.离线周期检测,支持多选}  {订阅人ReceiverUin}
+//
+// 【必要字段】
+//
+// {数据来源DatasourceId}
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleGroupsByPageWithContext(ctx context.Context, request *DescribeRuleGroupsByPageRequest) (response *DescribeRuleGroupsByPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleGroupsByPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleGroupsByPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleGroupsByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleHistoryByPageRequest() (request *DescribeRuleHistoryByPageRequest) {
+    request = &DescribeRuleHistoryByPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleHistoryByPage")
+    
+    
+    return
+}
+
+func NewDescribeRuleHistoryByPageResponse() (response *DescribeRuleHistoryByPageResponse) {
+    response = &DescribeRuleHistoryByPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleHistoryByPage
+// 过滤条件【必要字段】{ruleId}
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleHistoryByPage(request *DescribeRuleHistoryByPageRequest) (response *DescribeRuleHistoryByPageResponse, err error) {
+    return c.DescribeRuleHistoryByPageWithContext(context.Background(), request)
+}
+
+// DescribeRuleHistoryByPage
+// 过滤条件【必要字段】{ruleId}
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+func (c *Client) DescribeRuleHistoryByPageWithContext(ctx context.Context, request *DescribeRuleHistoryByPageRequest) (response *DescribeRuleHistoryByPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleHistoryByPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleHistoryByPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleHistoryByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleTablesByPageRequest() (request *DescribeRuleTablesByPageRequest) {
+    request = &DescribeRuleTablesByPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleTablesByPage")
+    
+    
+    return
+}
+
+func NewDescribeRuleTablesByPageResponse() (response *DescribeRuleTablesByPageResponse) {
+    response = &DescribeRuleTablesByPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleTablesByPage
+// 获取表列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRuleTablesByPage(request *DescribeRuleTablesByPageRequest) (response *DescribeRuleTablesByPageResponse, err error) {
+    return c.DescribeRuleTablesByPageWithContext(context.Background(), request)
+}
+
+// DescribeRuleTablesByPage
+// 获取表列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRuleTablesByPageWithContext(ctx context.Context, request *DescribeRuleTablesByPageRequest) (response *DescribeRuleTablesByPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleTablesByPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleTablesByPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleTablesByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleTemplateRequest() (request *DescribeRuleTemplateRequest) {
+    request = &DescribeRuleTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleTemplate")
+    
+    
+    return
+}
+
+func NewDescribeRuleTemplateResponse() (response *DescribeRuleTemplateResponse) {
+    response = &DescribeRuleTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleTemplate
+// 查询模板详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRuleTemplate(request *DescribeRuleTemplateRequest) (response *DescribeRuleTemplateResponse, err error) {
+    return c.DescribeRuleTemplateWithContext(context.Background(), request)
+}
+
+// DescribeRuleTemplate
+// 查询模板详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRuleTemplateWithContext(ctx context.Context, request *DescribeRuleTemplateRequest) (response *DescribeRuleTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleTemplatesRequest() (request *DescribeRuleTemplatesRequest) {
+    request = &DescribeRuleTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleTemplates")
+    
+    
+    return
+}
+
+func NewDescribeRuleTemplatesResponse() (response *DescribeRuleTemplatesResponse) {
+    response = &DescribeRuleTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleTemplates
+// 查询规则模版列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRuleTemplates(request *DescribeRuleTemplatesRequest) (response *DescribeRuleTemplatesResponse, err error) {
+    return c.DescribeRuleTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeRuleTemplates
+// 查询规则模版列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRuleTemplatesWithContext(ctx context.Context, request *DescribeRuleTemplatesRequest) (response *DescribeRuleTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleTemplatesByPageRequest() (request *DescribeRuleTemplatesByPageRequest) {
+    request = &DescribeRuleTemplatesByPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRuleTemplatesByPage")
+    
+    
+    return
+}
+
+func NewDescribeRuleTemplatesByPageResponse() (response *DescribeRuleTemplatesByPageResponse) {
+    response = &DescribeRuleTemplatesByPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleTemplatesByPage
+// 过滤条件】 {模版名称Name,支持模糊匹配} {模版类型type，1.系统模版 2.自定义模版} {质量检测维度QualityDims, 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性} 【排序字段】 { 引用数排序类型CitationOrderType，根据引用数量排序 ASC DESC}
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleTemplatesByPage(request *DescribeRuleTemplatesByPageRequest) (response *DescribeRuleTemplatesByPageResponse, err error) {
+    return c.DescribeRuleTemplatesByPageWithContext(context.Background(), request)
+}
+
+// DescribeRuleTemplatesByPage
+// 过滤条件】 {模版名称Name,支持模糊匹配} {模版类型type，1.系统模版 2.自定义模版} {质量检测维度QualityDims, 1.准确性 2.唯一性 3.完整性 4.一致性 5.及时性 6.有效性} 【排序字段】 { 引用数排序类型CitationOrderType，根据引用数量排序 ASC DESC}
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRuleTemplatesByPageWithContext(ctx context.Context, request *DescribeRuleTemplatesByPageRequest) (response *DescribeRuleTemplatesByPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleTemplatesByPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleTemplatesByPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleTemplatesByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRulesRequest() (request *DescribeRulesRequest) {
+    request = &DescribeRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRules")
+    
+    
+    return
+}
+
+func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
+    response = &DescribeRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRules
+// 查询质量规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
+    return c.DescribeRulesWithContext(context.Background(), request)
+}
+
+// DescribeRules
+// 查询质量规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRulesWithContext(ctx context.Context, request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRulesByPageRequest() (request *DescribeRulesByPageRequest) {
+    request = &DescribeRulesByPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRulesByPage")
+    
+    
+    return
+}
+
+func NewDescribeRulesByPageResponse() (response *DescribeRulesByPageResponse) {
+    response = &DescribeRulesByPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRulesByPage
+// 分页查询质量规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRulesByPage(request *DescribeRulesByPageRequest) (response *DescribeRulesByPageResponse, err error) {
+    return c.DescribeRulesByPageWithContext(context.Background(), request)
+}
+
+// DescribeRulesByPage
+// 分页查询质量规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeRulesByPageWithContext(ctx context.Context, request *DescribeRulesByPageRequest) (response *DescribeRulesByPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRulesByPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRulesByPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRulesByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeStandardRuleDetailInfoListRequest() (request *DescribeStandardRuleDetailInfoListRequest) {
     request = &DescribeStandardRuleDetailInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4621,7 +6817,8 @@ func NewDescribeStandardRuleDetailInfoListResponse() (response *DescribeStandard
 // 获取数据标准规则详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeStandardRuleDetailInfoList(request *DescribeStandardRuleDetailInfoListRequest) (response *DescribeStandardRuleDetailInfoListResponse, err error) {
     return c.DescribeStandardRuleDetailInfoListWithContext(context.Background(), request)
 }
@@ -4630,7 +6827,8 @@ func (c *Client) DescribeStandardRuleDetailInfoList(request *DescribeStandardRul
 // 获取数据标准规则详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeStandardRuleDetailInfoListWithContext(ctx context.Context, request *DescribeStandardRuleDetailInfoListRequest) (response *DescribeStandardRuleDetailInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeStandardRuleDetailInfoListRequest()
@@ -4679,6 +6877,7 @@ func NewDescribeStreamTaskLogListResponse() (response *DescribeStreamTaskLogList
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeStreamTaskLogList(request *DescribeStreamTaskLogListRequest) (response *DescribeStreamTaskLogListResponse, err error) {
     return c.DescribeStreamTaskLogListWithContext(context.Background(), request)
@@ -4698,6 +6897,7 @@ func (c *Client) DescribeStreamTaskLogList(request *DescribeStreamTaskLogListReq
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeStreamTaskLogListWithContext(ctx context.Context, request *DescribeStreamTaskLogListRequest) (response *DescribeStreamTaskLogListResponse, err error) {
     if request == nil {
@@ -4763,6 +6963,68 @@ func (c *Client) DescribeTableInfoListWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeTableQualityDetailsRequest() (request *DescribeTableQualityDetailsRequest) {
+    request = &DescribeTableQualityDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTableQualityDetails")
+    
+    
+    return
+}
+
+func NewDescribeTableQualityDetailsResponse() (response *DescribeTableQualityDetailsResponse) {
+    response = &DescribeTableQualityDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTableQualityDetails
+// 质量报告-查询表质量详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTableQualityDetails(request *DescribeTableQualityDetailsRequest) (response *DescribeTableQualityDetailsResponse, err error) {
+    return c.DescribeTableQualityDetailsWithContext(context.Background(), request)
+}
+
+// DescribeTableQualityDetails
+// 质量报告-查询表质量详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeTableQualityDetailsWithContext(ctx context.Context, request *DescribeTableQualityDetailsRequest) (response *DescribeTableQualityDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableQualityDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableQualityDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableQualityDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTableSchemaInfoRequest() (request *DescribeTableSchemaInfoRequest) {
     request = &DescribeTableSchemaInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4807,6 +7069,70 @@ func (c *Client) DescribeTableSchemaInfoWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeTableSchemaInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTableScoreTrendRequest() (request *DescribeTableScoreTrendRequest) {
+    request = &DescribeTableScoreTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTableScoreTrend")
+    
+    
+    return
+}
+
+func NewDescribeTableScoreTrendResponse() (response *DescribeTableScoreTrendResponse) {
+    response = &DescribeTableScoreTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTableScoreTrend
+// 查询表得分趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTableScoreTrend(request *DescribeTableScoreTrendRequest) (response *DescribeTableScoreTrendResponse, err error) {
+    return c.DescribeTableScoreTrendWithContext(context.Background(), request)
+}
+
+// DescribeTableScoreTrend
+// 查询表得分趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeTableScoreTrendWithContext(ctx context.Context, request *DescribeTableScoreTrendRequest) (response *DescribeTableScoreTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableScoreTrendRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableScoreTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableScoreTrendResponse()
     err = c.Send(request, response)
     return
 }
@@ -5321,6 +7647,206 @@ func (c *Client) DescribeTasksByPageWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeTasksByPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTemplateDimCountRequest() (request *DescribeTemplateDimCountRequest) {
+    request = &DescribeTemplateDimCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTemplateDimCount")
+    
+    
+    return
+}
+
+func NewDescribeTemplateDimCountResponse() (response *DescribeTemplateDimCountResponse) {
+    response = &DescribeTemplateDimCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTemplateDimCount
+// 查询规则模版维度分布情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeTemplateDimCount(request *DescribeTemplateDimCountRequest) (response *DescribeTemplateDimCountResponse, err error) {
+    return c.DescribeTemplateDimCountWithContext(context.Background(), request)
+}
+
+// DescribeTemplateDimCount
+// 查询规则模版维度分布情况
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeTemplateDimCountWithContext(ctx context.Context, request *DescribeTemplateDimCountRequest) (response *DescribeTemplateDimCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeTemplateDimCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTemplateDimCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTemplateDimCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTemplateHistoryRequest() (request *DescribeTemplateHistoryRequest) {
+    request = &DescribeTemplateHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTemplateHistory")
+    
+    
+    return
+}
+
+func NewDescribeTemplateHistoryResponse() (response *DescribeTemplateHistoryResponse) {
+    response = &DescribeTemplateHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTemplateHistory
+// 查询规则模版操作记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeTemplateHistory(request *DescribeTemplateHistoryRequest) (response *DescribeTemplateHistoryResponse, err error) {
+    return c.DescribeTemplateHistoryWithContext(context.Background(), request)
+}
+
+// DescribeTemplateHistory
+// 查询规则模版操作记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeTemplateHistoryWithContext(ctx context.Context, request *DescribeTemplateHistoryRequest) (response *DescribeTemplateHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeTemplateHistoryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTemplateHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTemplateHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTopTableStatRequest() (request *DescribeTopTableStatRequest) {
+    request = &DescribeTopTableStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTopTableStat")
+    
+    
+    return
+}
+
+func NewDescribeTopTableStatResponse() (response *DescribeTopTableStatResponse) {
+    response = &DescribeTopTableStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopTableStat
+// 数据质量概览页面表排行接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeTopTableStat(request *DescribeTopTableStatRequest) (response *DescribeTopTableStatResponse, err error) {
+    return c.DescribeTopTableStatWithContext(context.Background(), request)
+}
+
+// DescribeTopTableStat
+// 数据质量概览页面表排行接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeTopTableStatWithContext(ctx context.Context, request *DescribeTopTableStatRequest) (response *DescribeTopTableStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopTableStatRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopTableStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopTableStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrendStatRequest() (request *DescribeTrendStatRequest) {
+    request = &DescribeTrendStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTrendStat")
+    
+    
+    return
+}
+
+func NewDescribeTrendStatResponse() (response *DescribeTrendStatResponse) {
+    response = &DescribeTrendStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTrendStat
+// 数据质量概览页面趋势变化接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeTrendStat(request *DescribeTrendStatRequest) (response *DescribeTrendStatResponse, err error) {
+    return c.DescribeTrendStatWithContext(context.Background(), request)
+}
+
+// DescribeTrendStat
+// 数据质量概览页面趋势变化接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+func (c *Client) DescribeTrendStatWithContext(ctx context.Context, request *DescribeTrendStatRequest) (response *DescribeTrendStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrendStatRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrendStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrendStatResponse()
     err = c.Send(request, response)
     return
 }
@@ -6275,6 +8801,110 @@ func (c *Client) ModifyDataSourceWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewModifyDimensionWeightRequest() (request *ModifyDimensionWeightRequest) {
+    request = &ModifyDimensionWeightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyDimensionWeight")
+    
+    
+    return
+}
+
+func NewModifyDimensionWeightResponse() (response *ModifyDimensionWeightResponse) {
+    response = &ModifyDimensionWeightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDimensionWeight
+// 质量报告-修改维度权限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDimensionWeight(request *ModifyDimensionWeightRequest) (response *ModifyDimensionWeightResponse, err error) {
+    return c.ModifyDimensionWeightWithContext(context.Background(), request)
+}
+
+// ModifyDimensionWeight
+// 质量报告-修改维度权限
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyDimensionWeightWithContext(ctx context.Context, request *ModifyDimensionWeightRequest) (response *ModifyDimensionWeightResponse, err error) {
+    if request == nil {
+        request = NewModifyDimensionWeightRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDimensionWeight require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDimensionWeightResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyExecStrategyRequest() (request *ModifyExecStrategyRequest) {
+    request = &ModifyExecStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyExecStrategy")
+    
+    
+    return
+}
+
+func NewModifyExecStrategyResponse() (response *ModifyExecStrategyResponse) {
+    response = &ModifyExecStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyExecStrategy
+// 更新规则组执行策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+func (c *Client) ModifyExecStrategy(request *ModifyExecStrategyRequest) (response *ModifyExecStrategyResponse, err error) {
+    return c.ModifyExecStrategyWithContext(context.Background(), request)
+}
+
+// ModifyExecStrategy
+// 更新规则组执行策略
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+func (c *Client) ModifyExecStrategyWithContext(ctx context.Context, request *ModifyExecStrategyRequest) (response *ModifyExecStrategyResponse, err error) {
+    if request == nil {
+        request = NewModifyExecStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyExecStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyExecStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyFolderRequest() (request *ModifyFolderRequest) {
     request = &ModifyFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6299,7 +8929,7 @@ func NewModifyFolderResponse() (response *ModifyFolderResponse) {
 // 文件夹更新
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {
     return c.ModifyFolderWithContext(context.Background(), request)
 }
@@ -6310,7 +8940,7 @@ func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFol
 // 文件夹更新
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 func (c *Client) ModifyFolderWithContext(ctx context.Context, request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {
     if request == nil {
         request = NewModifyFolderRequest()
@@ -6485,6 +9115,198 @@ func (c *Client) ModifyIntegrationTaskWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyIntegrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMonitorStatusRequest() (request *ModifyMonitorStatusRequest) {
+    request = &ModifyMonitorStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyMonitorStatus")
+    
+    
+    return
+}
+
+func NewModifyMonitorStatusResponse() (response *ModifyMonitorStatusResponse) {
+    response = &ModifyMonitorStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyMonitorStatus
+// 更新监控状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+func (c *Client) ModifyMonitorStatus(request *ModifyMonitorStatusRequest) (response *ModifyMonitorStatusResponse, err error) {
+    return c.ModifyMonitorStatusWithContext(context.Background(), request)
+}
+
+// ModifyMonitorStatus
+// 更新监控状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+func (c *Client) ModifyMonitorStatusWithContext(ctx context.Context, request *ModifyMonitorStatusRequest) (response *ModifyMonitorStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyMonitorStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMonitorStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMonitorStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRuleRequest() (request *ModifyRuleRequest) {
+    request = &ModifyRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyRule")
+    
+    
+    return
+}
+
+func NewModifyRuleResponse() (response *ModifyRuleResponse) {
+    response = &ModifyRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRule
+// 更新质量规则接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
+func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
+    return c.ModifyRuleWithContext(context.Background(), request)
+}
+
+// ModifyRule
+// 更新质量规则接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
+func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRuleGroupSubscriptionRequest() (request *ModifyRuleGroupSubscriptionRequest) {
+    request = &ModifyRuleGroupSubscriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyRuleGroupSubscription")
+    
+    
+    return
+}
+
+func NewModifyRuleGroupSubscriptionResponse() (response *ModifyRuleGroupSubscriptionResponse) {
+    response = &ModifyRuleGroupSubscriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRuleGroupSubscription
+// 更新规则组订阅信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) ModifyRuleGroupSubscription(request *ModifyRuleGroupSubscriptionRequest) (response *ModifyRuleGroupSubscriptionResponse, err error) {
+    return c.ModifyRuleGroupSubscriptionWithContext(context.Background(), request)
+}
+
+// ModifyRuleGroupSubscription
+// 更新规则组订阅信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) ModifyRuleGroupSubscriptionWithContext(ctx context.Context, request *ModifyRuleGroupSubscriptionRequest) (response *ModifyRuleGroupSubscriptionResponse, err error) {
+    if request == nil {
+        request = NewModifyRuleGroupSubscriptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRuleGroupSubscription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRuleGroupSubscriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRuleTemplateRequest() (request *ModifyRuleTemplateRequest) {
+    request = &ModifyRuleTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyRuleTemplate")
+    
+    
+    return
+}
+
+func NewModifyRuleTemplateResponse() (response *ModifyRuleTemplateResponse) {
+    response = &ModifyRuleTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRuleTemplate
+// 编辑规则模版
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) ModifyRuleTemplate(request *ModifyRuleTemplateRequest) (response *ModifyRuleTemplateResponse, err error) {
+    return c.ModifyRuleTemplateWithContext(context.Background(), request)
+}
+
+// ModifyRuleTemplate
+// 编辑规则模版
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+func (c *Client) ModifyRuleTemplateWithContext(ctx context.Context, request *ModifyRuleTemplateRequest) (response *ModifyRuleTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyRuleTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRuleTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRuleTemplateResponse()
     err = c.Send(request, response)
     return
 }

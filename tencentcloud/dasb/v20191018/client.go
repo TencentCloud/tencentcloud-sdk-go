@@ -67,6 +67,7 @@ func NewAddDeviceGroupMembersResponse() (response *AddDeviceGroupMembersResponse
 // 添加资产组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -79,6 +80,7 @@ func (c *Client) AddDeviceGroupMembers(request *AddDeviceGroupMembersRequest) (r
 // 添加资产组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -121,6 +123,7 @@ func NewAddUserGroupMembersResponse() (response *AddUserGroupMembersResponse) {
 // 添加用户组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -133,6 +136,7 @@ func (c *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (respo
 // 添加用户组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -261,6 +265,7 @@ func NewCreateAclResponse() (response *CreateAclResponse) {
 // 新建访问权限
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -271,6 +276,7 @@ func NewCreateAclResponse() (response *CreateAclResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAcl(request *CreateAclRequest) (response *CreateAclResponse, err error) {
     return c.CreateAclWithContext(context.Background(), request)
 }
@@ -279,6 +285,7 @@ func (c *Client) CreateAcl(request *CreateAclRequest) (response *CreateAclRespon
 // 新建访问权限
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -289,6 +296,7 @@ func (c *Client) CreateAcl(request *CreateAclRequest) (response *CreateAclRespon
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAclWithContext(ctx context.Context, request *CreateAclRequest) (response *CreateAclResponse, err error) {
     if request == nil {
         request = NewCreateAclRequest()
@@ -412,6 +420,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -439,6 +448,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -501,6 +511,7 @@ func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
     return c.CreateUserGroupWithContext(context.Background(), request)
 }
@@ -515,6 +526,7 @@ func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *Cre
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
     if request == nil {
         request = NewCreateUserGroupRequest()
@@ -605,6 +617,8 @@ func NewDeleteDeviceGroupMembersResponse() (response *DeleteDeviceGroupMembersRe
 // 删除资产组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -616,6 +630,8 @@ func (c *Client) DeleteDeviceGroupMembers(request *DeleteDeviceGroupMembersReque
 // 删除资产组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -657,6 +673,7 @@ func NewDeleteDeviceGroupsResponse() (response *DeleteDeviceGroupsResponse) {
 // 删除资产组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -668,6 +685,7 @@ func (c *Client) DeleteDeviceGroups(request *DeleteDeviceGroupsRequest) (respons
 // 删除资产组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -761,6 +779,7 @@ func NewDeleteUserGroupsResponse() (response *DeleteUserGroupsResponse) {
 // 删除用户组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -772,6 +791,7 @@ func (c *Client) DeleteUserGroups(request *DeleteUserGroupsRequest) (response *D
 // 删除用户组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -813,6 +833,7 @@ func NewDeleteUsersResponse() (response *DeleteUsersResponse) {
 // 删除用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -824,6 +845,7 @@ func (c *Client) DeleteUsers(request *DeleteUsersRequest) (response *DeleteUsers
 // 删除用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -977,6 +999,8 @@ func NewDescribeDeviceGroupMembersResponse() (response *DescribeDeviceGroupMembe
 // 查询资产组成员列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -989,6 +1013,8 @@ func (c *Client) DescribeDeviceGroupMembers(request *DescribeDeviceGroupMembersR
 // 查询资产组成员列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1091,6 +1117,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
     return c.DescribeDevicesWithContext(context.Background(), request)
 }
@@ -1103,6 +1130,7 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *DescribeDevicesRequest) (response *DescribeDevicesResponse, err error) {
     if request == nil {
         request = NewDescribeDevicesRequest()

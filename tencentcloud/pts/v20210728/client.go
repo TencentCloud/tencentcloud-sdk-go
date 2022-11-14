@@ -331,7 +331,7 @@ func NewCreateCronJobResponse() (response *CreateCronJobResponse) {
 // 创建定时任务
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateCronJob(request *CreateCronJobRequest) (response *CreateCronJobResponse, err error) {
     return c.CreateCronJobWithContext(context.Background(), request)
 }
@@ -340,7 +340,7 @@ func (c *Client) CreateCronJob(request *CreateCronJobRequest) (response *CreateC
 // 创建定时任务
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateCronJobWithContext(ctx context.Context, request *CreateCronJobRequest) (response *CreateCronJobResponse, err error) {
     if request == nil {
         request = NewCreateCronJobRequest()

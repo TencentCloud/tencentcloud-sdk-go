@@ -46,14 +46,14 @@ type AccountQuotaOverview struct {
 }
 
 type ActionTimer struct {
-	// 扩展数据
-	Externals *Externals `json:"Externals,omitempty" name:"Externals"`
-
 	// 定时器名称，目前仅支持销毁一个值：TerminateInstances。
 	TimerAction *string `json:"TimerAction,omitempty" name:"TimerAction"`
 
 	// 执行时间，格式形如：2018-5-29 11:26:40,执行时间必须大于当前时间5分钟。
 	ActionTime *string `json:"ActionTime,omitempty" name:"ActionTime"`
+
+	// 扩展数据
+	Externals *Externals `json:"Externals,omitempty" name:"Externals"`
 }
 
 // Predefined struct for user

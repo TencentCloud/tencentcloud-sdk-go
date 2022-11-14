@@ -1,3 +1,328 @@
+# Release v1.0.537
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 97 次发布
+
+发布时间：2022-11-15 06:17:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ActionTimer](https://cloud.tencent.com/document/api/213/15753#ActionTimer)
+
+	* <font color="#dd0000">**修改成员**：</font>Externals
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 27 次发布
+
+发布时间：2022-11-15 06:24:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDocument](https://cloud.tencent.com/document/api/1323/70364)
+
+	* 新增入参：PreviewType
+
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+
+	* 新增入参：PreviewType
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 43 次发布
+
+发布时间：2022-11-15 06:24:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
+
+	* 新增入参：PreviewType
+
+* [DescribeTemplates](https://cloud.tencent.com/document/api/1420/61521)
+
+	* 新增入参：WithPreviewUrl
+
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* 新增成员：PreviewUrl
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 82 次发布
+
+发布时间：2022-11-15 06:33:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StructuralItem](https://cloud.tencent.com/document/api/866/33527#StructuralItem)
+
+	* 新增成员：Row
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 40 次发布
+
+发布时间：2022-11-15 06:41:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [VpcConfig](https://cloud.tencent.com/document/api/1179/46089#VpcConfig)
+
+修改数据结构：
+
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+
+	* 新增成员：Vpcs, IsVip
+
+
+
+
+## 文本内容安全(tms) 版本：2020-12-29
+
+### 第 4 次发布
+
+发布时间：2022-11-15 06:45:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/1124/51861#Tag)
+
+修改数据结构：
+
+* [DetailResults](https://cloud.tencent.com/document/api/1124/51861#DetailResults)
+
+	* 新增成员：Tags
+
+
+
+
+## 文本内容安全(tms) 版本：2020-07-13
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 127 次发布
+
+发布时间：2022-11-15 06:48:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateImageSpriteTemplate](https://cloud.tencent.com/document/api/266/37788)
+
+	* 新增入参：Format
+
+* [ModifyImageSpriteTemplate](https://cloud.tencent.com/document/api/266/37776)
+
+	* 新增入参：Format
+
+
+修改数据结构：
+
+* [ImageSpriteTemplate](https://cloud.tencent.com/document/api/266/31773#ImageSpriteTemplate)
+
+	* 新增成员：Format
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 128 次发布
+
+发布时间：2022-11-15 06:49:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
+
+	* 新增成员：QosLevel
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 12 次发布
+
+发布时间：2022-11-15 06:51:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckDuplicateRuleName](https://cloud.tencent.com/document/api/1267/82842)
+* [CheckDuplicateTemplateName](https://cloud.tencent.com/document/api/1267/82841)
+* [CommitExportTask](https://cloud.tencent.com/document/api/1267/82840)
+* [CommitRuleGroupExecResult](https://cloud.tencent.com/document/api/1267/82839)
+* [CommitRuleGroupTask](https://cloud.tencent.com/document/api/1267/82838)
+* [CreateRule](https://cloud.tencent.com/document/api/1267/82837)
+* [CreateRuleTemplate](https://cloud.tencent.com/document/api/1267/82836)
+* [DeleteRule](https://cloud.tencent.com/document/api/1267/82835)
+* [DeleteRuleTemplate](https://cloud.tencent.com/document/api/1267/82834)
+* [DescribeDataBases](https://cloud.tencent.com/document/api/1267/82833)
+* [DescribeDataCheckStat](https://cloud.tencent.com/document/api/1267/82832)
+* [DescribeDataObjects](https://cloud.tencent.com/document/api/1267/82831)
+* [DescribeDimensionScore](https://cloud.tencent.com/document/api/1267/82830)
+* [DescribeExecStrategy](https://cloud.tencent.com/document/api/1267/82829)
+* [DescribeInstances](https://cloud.tencent.com/document/api/1267/82828)
+* [DescribeMonitorsByPage](https://cloud.tencent.com/document/api/1267/82827)
+* [DescribeProdTasks](https://cloud.tencent.com/document/api/1267/82826)
+* [DescribeQualityScore](https://cloud.tencent.com/document/api/1267/82825)
+* [DescribeQualityScoreTrend](https://cloud.tencent.com/document/api/1267/82824)
+* [DescribeRule](https://cloud.tencent.com/document/api/1267/82823)
+* [DescribeRuleDataSources](https://cloud.tencent.com/document/api/1267/82822)
+* [DescribeRuleDimStat](https://cloud.tencent.com/document/api/1267/82821)
+* [DescribeRuleExecDetail](https://cloud.tencent.com/document/api/1267/82820)
+* [DescribeRuleExecExportResult](https://cloud.tencent.com/document/api/1267/82819)
+* [DescribeRuleExecHistory](https://cloud.tencent.com/document/api/1267/82818)
+* [DescribeRuleExecLog](https://cloud.tencent.com/document/api/1267/82817)
+* [DescribeRuleExecResults](https://cloud.tencent.com/document/api/1267/82816)
+* [DescribeRuleExecResultsByPage](https://cloud.tencent.com/document/api/1267/82815)
+* [DescribeRuleExecStat](https://cloud.tencent.com/document/api/1267/82814)
+* [DescribeRuleGroup](https://cloud.tencent.com/document/api/1267/82813)
+* [DescribeRuleGroupExecResultsByPage](https://cloud.tencent.com/document/api/1267/82812)
+* [DescribeRuleGroupExecResultsByPageWithoutAuth](https://cloud.tencent.com/document/api/1267/82811)
+* [DescribeRuleGroupSubscription](https://cloud.tencent.com/document/api/1267/82810)
+* [DescribeRuleGroupTable](https://cloud.tencent.com/document/api/1267/82809)
+* [DescribeRuleGroupsByPage](https://cloud.tencent.com/document/api/1267/82808)
+* [DescribeRuleHistoryByPage](https://cloud.tencent.com/document/api/1267/82807)
+* [DescribeRuleTablesByPage](https://cloud.tencent.com/document/api/1267/82806)
+* [DescribeRuleTemplate](https://cloud.tencent.com/document/api/1267/82805)
+* [DescribeRuleTemplates](https://cloud.tencent.com/document/api/1267/82804)
+* [DescribeRuleTemplatesByPage](https://cloud.tencent.com/document/api/1267/82788)
+* [DescribeRules](https://cloud.tencent.com/document/api/1267/82803)
+* [DescribeRulesByPage](https://cloud.tencent.com/document/api/1267/82802)
+* [DescribeTableQualityDetails](https://cloud.tencent.com/document/api/1267/82801)
+* [DescribeTableScoreTrend](https://cloud.tencent.com/document/api/1267/82800)
+* [DescribeTemplateDimCount](https://cloud.tencent.com/document/api/1267/82799)
+* [DescribeTemplateHistory](https://cloud.tencent.com/document/api/1267/82798)
+* [DescribeTopTableStat](https://cloud.tencent.com/document/api/1267/82797)
+* [DescribeTrendStat](https://cloud.tencent.com/document/api/1267/82796)
+* [ModifyDimensionWeight](https://cloud.tencent.com/document/api/1267/82795)
+* [ModifyExecStrategy](https://cloud.tencent.com/document/api/1267/82794)
+* [ModifyMonitorStatus](https://cloud.tencent.com/document/api/1267/82793)
+* [ModifyRule](https://cloud.tencent.com/document/api/1267/82792)
+* [ModifyRuleGroupSubscription](https://cloud.tencent.com/document/api/1267/82791)
+* [ModifyRuleTemplate](https://cloud.tencent.com/document/api/1267/82790)
+
+新增数据结构：
+
+* [CompareResult](https://cloud.tencent.com/document/api/1267/76336#CompareResult)
+* [CompareResultItem](https://cloud.tencent.com/document/api/1267/76336#CompareResultItem)
+* [CompareRule](https://cloud.tencent.com/document/api/1267/76336#CompareRule)
+* [CompareRuleItem](https://cloud.tencent.com/document/api/1267/76336#CompareRuleItem)
+* [DailyScoreInfo](https://cloud.tencent.com/document/api/1267/76336#DailyScoreInfo)
+* [DataCheckStat](https://cloud.tencent.com/document/api/1267/76336#DataCheckStat)
+* [DatabaseInfo](https://cloud.tencent.com/document/api/1267/76336#DatabaseInfo)
+* [DimensionCount](https://cloud.tencent.com/document/api/1267/76336#DimensionCount)
+* [DimensionScore](https://cloud.tencent.com/document/api/1267/76336#DimensionScore)
+* [DimensionScoreInfo](https://cloud.tencent.com/document/api/1267/76336#DimensionScoreInfo)
+* [ExportTaskInfo](https://cloud.tencent.com/document/api/1267/76336#ExportTaskInfo)
+* [FieldConfig](https://cloud.tencent.com/document/api/1267/76336#FieldConfig)
+* [ProdSchedulerTask](https://cloud.tencent.com/document/api/1267/76336#ProdSchedulerTask)
+* [QualityScore](https://cloud.tencent.com/document/api/1267/76336#QualityScore)
+* [QualityScoreTrend](https://cloud.tencent.com/document/api/1267/76336#QualityScoreTrend)
+* [Rule](https://cloud.tencent.com/document/api/1267/76336#Rule)
+* [RuleConfig](https://cloud.tencent.com/document/api/1267/76336#RuleConfig)
+* [RuleDimCnt](https://cloud.tencent.com/document/api/1267/76336#RuleDimCnt)
+* [RuleDimStat](https://cloud.tencent.com/document/api/1267/76336#RuleDimStat)
+* [RuleExecConfig](https://cloud.tencent.com/document/api/1267/76336#RuleExecConfig)
+* [RuleExecDateStat](https://cloud.tencent.com/document/api/1267/76336#RuleExecDateStat)
+* [RuleExecExportResult](https://cloud.tencent.com/document/api/1267/76336#RuleExecExportResult)
+* [RuleExecLog](https://cloud.tencent.com/document/api/1267/76336#RuleExecLog)
+* [RuleExecResult](https://cloud.tencent.com/document/api/1267/76336#RuleExecResult)
+* [RuleExecResultDetail](https://cloud.tencent.com/document/api/1267/76336#RuleExecResultDetail)
+* [RuleExecResultPage](https://cloud.tencent.com/document/api/1267/76336#RuleExecResultPage)
+* [RuleExecStat](https://cloud.tencent.com/document/api/1267/76336#RuleExecStat)
+* [RuleFieldConfig](https://cloud.tencent.com/document/api/1267/76336#RuleFieldConfig)
+* [RuleGroup](https://cloud.tencent.com/document/api/1267/76336#RuleGroup)
+* [RuleGroupExecResult](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecResult)
+* [RuleGroupExecResultPage](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecResultPage)
+* [RuleGroupExecStrategy](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecStrategy)
+* [RuleGroupMonitor](https://cloud.tencent.com/document/api/1267/76336#RuleGroupMonitor)
+* [RuleGroupMonitorPage](https://cloud.tencent.com/document/api/1267/76336#RuleGroupMonitorPage)
+* [RuleGroupPage](https://cloud.tencent.com/document/api/1267/76336#RuleGroupPage)
+* [RuleGroupSchedulerInfo](https://cloud.tencent.com/document/api/1267/76336#RuleGroupSchedulerInfo)
+* [RuleGroupSubscribe](https://cloud.tencent.com/document/api/1267/76336#RuleGroupSubscribe)
+* [RuleGroupTable](https://cloud.tencent.com/document/api/1267/76336#RuleGroupTable)
+* [RuleGroupTableInnerInfo](https://cloud.tencent.com/document/api/1267/76336#RuleGroupTableInnerInfo)
+* [RuleHistory](https://cloud.tencent.com/document/api/1267/76336#RuleHistory)
+* [RuleHistoryPage](https://cloud.tencent.com/document/api/1267/76336#RuleHistoryPage)
+* [RulePage](https://cloud.tencent.com/document/api/1267/76336#RulePage)
+* [RuleTemplate](https://cloud.tencent.com/document/api/1267/76336#RuleTemplate)
+* [RuleTemplateHistory](https://cloud.tencent.com/document/api/1267/76336#RuleTemplateHistory)
+* [RuleTemplateHistoryPage](https://cloud.tencent.com/document/api/1267/76336#RuleTemplateHistoryPage)
+* [RuleTemplatePage](https://cloud.tencent.com/document/api/1267/76336#RuleTemplatePage)
+* [RunnerRuleExecResult](https://cloud.tencent.com/document/api/1267/76336#RunnerRuleExecResult)
+* [SourceObject](https://cloud.tencent.com/document/api/1267/76336#SourceObject)
+* [SubscribeReceiver](https://cloud.tencent.com/document/api/1267/76336#SubscribeReceiver)
+* [TableConfig](https://cloud.tencent.com/document/api/1267/76336#TableConfig)
+* [TableQualityDetail](https://cloud.tencent.com/document/api/1267/76336#TableQualityDetail)
+* [TableQualityDetailPage](https://cloud.tencent.com/document/api/1267/76336#TableQualityDetailPage)
+* [TableScoreStatisticsInfo](https://cloud.tencent.com/document/api/1267/76336#TableScoreStatisticsInfo)
+* [ThresholdValue](https://cloud.tencent.com/document/api/1267/76336#ThresholdValue)
+* [TopTableStat](https://cloud.tencent.com/document/api/1267/76336#TopTableStat)
+* [TopTableStatItem](https://cloud.tencent.com/document/api/1267/76336#TopTableStatItem)
+* [WeightInfo](https://cloud.tencent.com/document/api/1267/76336#WeightInfo)
+
+
+
 # Release v1.0.536
 
 ## 定制建模(afc) 版本：2020-02-26

@@ -1581,6 +1581,7 @@ func NewDescribeCloudBaseRunOperationTypesResponse() (response *DescribeCloudBas
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCloudBaseRunOperationTypes(request *DescribeCloudBaseRunOperationTypesRequest) (response *DescribeCloudBaseRunOperationTypesResponse, err error) {
     return c.DescribeCloudBaseRunOperationTypesWithContext(context.Background(), request)
 }
@@ -1591,6 +1592,7 @@ func (c *Client) DescribeCloudBaseRunOperationTypes(request *DescribeCloudBaseRu
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCloudBaseRunOperationTypesWithContext(ctx context.Context, request *DescribeCloudBaseRunOperationTypesRequest) (response *DescribeCloudBaseRunOperationTypesResponse, err error) {
     if request == nil {
         request = NewDescribeCloudBaseRunOperationTypesRequest()

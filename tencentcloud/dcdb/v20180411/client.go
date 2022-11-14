@@ -2747,6 +2747,7 @@ func NewIsolateDedicatedDBInstanceResponse() (response *IsolateDedicatedDBInstan
 //  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
 func (c *Client) IsolateDedicatedDBInstance(request *IsolateDedicatedDBInstanceRequest) (response *IsolateDedicatedDBInstanceResponse, err error) {
     return c.IsolateDedicatedDBInstanceWithContext(context.Background(), request)
 }
@@ -2761,6 +2762,7 @@ func (c *Client) IsolateDedicatedDBInstance(request *IsolateDedicatedDBInstanceR
 //  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
 func (c *Client) IsolateDedicatedDBInstanceWithContext(ctx context.Context, request *IsolateDedicatedDBInstanceRequest) (response *IsolateDedicatedDBInstanceResponse, err error) {
     if request == nil {
         request = NewIsolateDedicatedDBInstanceRequest()
@@ -3840,7 +3842,7 @@ func NewTerminateDedicatedDBInstanceResponse() (response *TerminateDedicatedDBIn
 }
 
 // TerminateDedicatedDBInstance
-// 本接口（IsolateDedicatedDBInstance）用于销毁已隔离的独享分布式数据库实例。
+// 本接口（TerminateDedicatedDBInstance）用于销毁已隔离的独享分布式数据库实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
@@ -3854,7 +3856,7 @@ func (c *Client) TerminateDedicatedDBInstance(request *TerminateDedicatedDBInsta
 }
 
 // TerminateDedicatedDBInstance
-// 本接口（IsolateDedicatedDBInstance）用于销毁已隔离的独享分布式数据库实例。
+// 本接口（TerminateDedicatedDBInstance）用于销毁已隔离的独享分布式数据库实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"

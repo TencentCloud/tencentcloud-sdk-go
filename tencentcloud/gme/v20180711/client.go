@@ -1174,7 +1174,7 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 }
 
 // ScanVoice
-// 本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音分析服务。
+// 本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音内容安全服务。
 //
 // </br></br>
 //
@@ -1182,7 +1182,7 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 //
 // <h4><b>功能试用说明：</b></h4>
 //
-// <li>打开前往<a href="https://console.cloud.tencent.com/gamegme/tryout">控制台 - 产品试用</a>免费试用语音分析服务。</li>
+// <li>打开前往<a href="https://console.cloud.tencent.com/gamegme/tryout">控制台 - 产品试用</a>免费试用语音内容安全服务。</li>
 //
 // </br>
 //
@@ -1260,9 +1260,11 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 //
 // <p>ad :广告</p>
 //
-// <p>contraband :违禁</p>
+// <p>illegal :违法</p>
 //
-// <p>customized:自定义词库。目前白名单开放，如有需要请<a href="https://cloud.tencent.com/apply/p/8809fjcik56">联系我们</a>。</p>
+// <p>moan :呻吟</p>
+//
+// <p>customized:自定义词库</p>
 //
 // </td>
 //
@@ -1461,7 +1463,7 @@ func (c *Client) ScanVoice(request *ScanVoiceRequest) (response *ScanVoiceRespon
 }
 
 // ScanVoice
-// 本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音分析服务。
+// 本接口(ScanVoice)用于提交语音检测任务，检测任务列表最多支持100个。使用前请您登录[控制台 - 服务配置](https://console.cloud.tencent.com/gamegme/conf)开启语音内容安全服务。
 //
 // </br></br>
 //
@@ -1469,7 +1471,7 @@ func (c *Client) ScanVoice(request *ScanVoiceRequest) (response *ScanVoiceRespon
 //
 // <h4><b>功能试用说明：</b></h4>
 //
-// <li>打开前往<a href="https://console.cloud.tencent.com/gamegme/tryout">控制台 - 产品试用</a>免费试用语音分析服务。</li>
+// <li>打开前往<a href="https://console.cloud.tencent.com/gamegme/tryout">控制台 - 产品试用</a>免费试用语音内容安全服务。</li>
 //
 // </br>
 //
@@ -1547,9 +1549,11 @@ func (c *Client) ScanVoice(request *ScanVoiceRequest) (response *ScanVoiceRespon
 //
 // <p>ad :广告</p>
 //
-// <p>contraband :违禁</p>
+// <p>illegal :违法</p>
 //
-// <p>customized:自定义词库。目前白名单开放，如有需要请<a href="https://cloud.tencent.com/apply/p/8809fjcik56">联系我们</a>。</p>
+// <p>moan :呻吟</p>
+//
+// <p>customized:自定义词库</p>
 //
 // </td>
 //

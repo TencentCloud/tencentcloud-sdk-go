@@ -5828,7 +5828,7 @@ func (r *DescribePublishersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRabbitMQNodeListRequestParams struct {
-	// 不适用，默认参数
+	// rabbitmq集群ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 偏移量
@@ -5841,7 +5841,7 @@ type DescribeRabbitMQNodeListRequestParams struct {
 type DescribeRabbitMQNodeListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 不适用，默认参数
+	// rabbitmq集群ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 偏移量
@@ -8995,6 +8995,14 @@ type RocketMQClusterInfo struct {
 	// 是否支持命名空间接入点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportNamespaceEndpoint *bool `json:"SupportNamespaceEndpoint,omitempty" name:"SupportNamespaceEndpoint"`
+
+	// VPC信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vpcs []*VpcConfig `json:"Vpcs,omitempty" name:"Vpcs"`
+
+	// 是否为专享实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsVip *bool `json:"IsVip,omitempty" name:"IsVip"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -9812,4 +9820,12 @@ type VpcBindRecord struct {
 	// 说明，128个字符以内
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type VpcConfig struct {
+	// vpc的id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }

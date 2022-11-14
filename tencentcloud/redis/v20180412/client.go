@@ -4927,6 +4927,7 @@ func NewSwitchProxyResponse() (response *SwitchProxyResponse) {
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 func (c *Client) SwitchProxy(request *SwitchProxyRequest) (response *SwitchProxyResponse, err error) {
     return c.SwitchProxyWithContext(context.Background(), request)
@@ -4940,6 +4941,7 @@ func (c *Client) SwitchProxy(request *SwitchProxyRequest) (response *SwitchProxy
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 func (c *Client) SwitchProxyWithContext(ctx context.Context, request *SwitchProxyRequest) (response *SwitchProxyResponse, err error) {
     if request == nil {

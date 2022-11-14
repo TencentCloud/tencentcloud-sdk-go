@@ -1567,9 +1567,7 @@ func NewModifyExtensionResponse() (response *ModifyExtensionResponse) {
 // 修改话机账号(绑定技能组、绑定坐席账号)
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ModifyExtension(request *ModifyExtensionRequest) (response *ModifyExtensionResponse, err error) {
     return c.ModifyExtensionWithContext(context.Background(), request)
 }
@@ -1578,9 +1576,7 @@ func (c *Client) ModifyExtension(request *ModifyExtensionRequest) (response *Mod
 // 修改话机账号(绑定技能组、绑定坐席账号)
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ModifyExtensionWithContext(ctx context.Context, request *ModifyExtensionRequest) (response *ModifyExtensionResponse, err error) {
     if request == nil {
         request = NewModifyExtensionRequest()

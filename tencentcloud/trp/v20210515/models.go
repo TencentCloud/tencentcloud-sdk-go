@@ -3840,15 +3840,15 @@ type TraceData struct {
 }
 
 type TraceItem struct {
-	// 名称
+	// 字段名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 单个值
+	// 字段值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 类型
+	// 类型 text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 

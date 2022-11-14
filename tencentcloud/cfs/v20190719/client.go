@@ -1697,6 +1697,7 @@ func NewDescribeUserQuotaResponse() (response *DescribeUserQuotaResponse) {
 // 查询文件系统配额
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (response *DescribeUserQuotaResponse, err error) {
     return c.DescribeUserQuotaWithContext(context.Background(), request)
@@ -1706,6 +1707,7 @@ func (c *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (response 
 // 查询文件系统配额
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *DescribeUserQuotaRequest) (response *DescribeUserQuotaResponse, err error) {
     if request == nil {

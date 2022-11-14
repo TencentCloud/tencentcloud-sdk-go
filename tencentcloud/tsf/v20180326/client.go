@@ -141,7 +141,10 @@ func NewAddInstancesResponse() (response *AddInstancesResponse) {
 // 添加云主机节点至TSF集群
 //
 // 可能返回的错误码:
+//  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = "InvalidParameterValue.InstanceInvalidImage"
+//  MISSINGPARAMETER_INSTANCEIMPORTMODENULL = "MissingParameter.InstanceImportModeNull"
 //  RESOURCEINUSE_INSTANCEHASBEENUSED = "ResourceInUse.InstanceHasBeenUsed"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstancesResponse, err error) {
@@ -152,7 +155,10 @@ func (c *Client) AddInstances(request *AddInstancesRequest) (response *AddInstan
 // 添加云主机节点至TSF集群
 //
 // 可能返回的错误码:
+//  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCEINVALIDIMAGE = "InvalidParameterValue.InstanceInvalidImage"
+//  MISSINGPARAMETER_INSTANCEIMPORTMODENULL = "MissingParameter.InstanceImportModeNull"
 //  RESOURCEINUSE_INSTANCEHASBEENUSED = "ResourceInUse.InstanceHasBeenUsed"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 func (c *Client) AddInstancesWithContext(ctx context.Context, request *AddInstancesRequest) (response *AddInstancesResponse, err error) {
@@ -2918,6 +2924,7 @@ func NewDeleteServerlessGroupResponse() (response *DeleteServerlessGroupResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INVALIDPARAMETERVALUE_GROUPDELETECLUSTERTYPEMISMATCH = "InvalidParameterValue.GroupDeleteClusterTypeMismatch"
 //  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
 //  RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
@@ -2930,6 +2937,7 @@ func (c *Client) DeleteServerlessGroup(request *DeleteServerlessGroupRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INVALIDPARAMETERVALUE_GROUPDELETECLUSTERTYPEMISMATCH = "InvalidParameterValue.GroupDeleteClusterTypeMismatch"
 //  INVALIDPARAMETERVALUE_GROUPIDNULL = "InvalidParameterValue.GroupIdNull"
 //  RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"

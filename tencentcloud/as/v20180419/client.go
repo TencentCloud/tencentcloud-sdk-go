@@ -774,6 +774,7 @@ func NewCreateLifecycleHookResponse() (response *CreateLifecycleHookResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLCMQERROR = "InternalError.CallCmqError"
 //  INTERNALERROR_CALLTATERROR = "InternalError.CallTATError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -842,6 +843,7 @@ func (c *Client) CreateLifecycleHook(request *CreateLifecycleHookRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLCMQERROR = "InternalError.CallCmqError"
 //  INTERNALERROR_CALLTATERROR = "InternalError.CallTATError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4076,6 +4078,7 @@ func NewUpgradeLifecycleHookResponse() (response *UpgradeLifecycleHookResponse) 
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 //  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
 //  RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.CmqTopicHasNoSubscriber"
+//  RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.TDMQCMQTopicHasNoSubscriber"
 func (c *Client) UpgradeLifecycleHook(request *UpgradeLifecycleHookRequest) (response *UpgradeLifecycleHookResponse, err error) {
     return c.UpgradeLifecycleHookWithContext(context.Background(), request)
 }
@@ -4103,6 +4106,7 @@ func (c *Client) UpgradeLifecycleHook(request *UpgradeLifecycleHookRequest) (res
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 //  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
 //  RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.CmqTopicHasNoSubscriber"
+//  RESOURCEUNAVAILABLE_TDMQCMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.TDMQCMQTopicHasNoSubscriber"
 func (c *Client) UpgradeLifecycleHookWithContext(ctx context.Context, request *UpgradeLifecycleHookRequest) (response *UpgradeLifecycleHookResponse, err error) {
     if request == nil {
         request = NewUpgradeLifecycleHookRequest()

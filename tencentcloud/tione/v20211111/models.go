@@ -3698,14 +3698,14 @@ func (r *DescribeModelServiceCallInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelServiceGroupRequestParams struct {
-	// 无
+	// 服务组ID
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
 }
 
 type DescribeModelServiceGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// 服务组ID
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
 }
 

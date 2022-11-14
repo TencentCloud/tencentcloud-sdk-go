@@ -1627,6 +1627,7 @@ func NewDescribeTrtcUsageResponse() (response *DescribeTrtcUsageResponse) {
 // - 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeTrtcUsage(request *DescribeTrtcUsageRequest) (response *DescribeTrtcUsageResponse, err error) {
     return c.DescribeTrtcUsageWithContext(context.Background(), request)
@@ -1646,6 +1647,7 @@ func (c *Client) DescribeTrtcUsage(request *DescribeTrtcUsageRequest) (response 
 // - 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeTrtcUsageWithContext(ctx context.Context, request *DescribeTrtcUsageRequest) (response *DescribeTrtcUsageResponse, err error) {
     if request == nil {

@@ -468,6 +468,7 @@ func NewDeleteCertificateResponse() (response *DeleteCertificateResponse) {
 //  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
 //  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
 //  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) (response *DeleteCertificateResponse, err error) {
     return c.DeleteCertificateWithContext(context.Background(), request)
 }
@@ -495,6 +496,7 @@ func (c *Client) DeleteCertificate(request *DeleteCertificateRequest) (response 
 //  FAILEDOPERATION_ORDERALREADYREPLACED = "FailedOperation.OrderAlreadyReplaced"
 //  FAILEDOPERATION_ORDERREPLACEFAILED = "FailedOperation.OrderReplaceFailed"
 //  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DeleteCertificateWithContext(ctx context.Context, request *DeleteCertificateRequest) (response *DeleteCertificateResponse, err error) {
     if request == nil {
         request = NewDeleteCertificateRequest()

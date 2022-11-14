@@ -6861,6 +6861,9 @@ type StructuralItem struct {
 	// 文本行在旋转纠正之后的图像中的像素
 	// 坐标。
 	ItemCoord *ItemCoord `json:"ItemCoord,omitempty" name:"ItemCoord"`
+
+	// 字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
+	Row *int64 `json:"Row,omitempty" name:"Row"`
 }
 
 type TableCell struct {

@@ -2290,6 +2290,7 @@ func NewModifyDiskBackupQuotaResponse() (response *ModifyDiskBackupQuotaResponse
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
 //  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
 func (c *Client) ModifyDiskBackupQuota(request *ModifyDiskBackupQuotaRequest) (response *ModifyDiskBackupQuotaResponse, err error) {
     return c.ModifyDiskBackupQuotaWithContext(context.Background(), request)
@@ -2302,6 +2303,7 @@ func (c *Client) ModifyDiskBackupQuota(request *ModifyDiskBackupQuotaRequest) (r
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  TRADEDEALCONFLICT = "TradeDealConflict"
 //  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
 func (c *Client) ModifyDiskBackupQuotaWithContext(ctx context.Context, request *ModifyDiskBackupQuotaRequest) (response *ModifyDiskBackupQuotaResponse, err error) {
     if request == nil {

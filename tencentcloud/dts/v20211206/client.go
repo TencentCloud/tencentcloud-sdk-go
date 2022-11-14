@@ -724,6 +724,7 @@ func NewDescribeCheckSyncJobResultResponse() (response *DescribeCheckSyncJobResu
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 func (c *Client) DescribeCheckSyncJobResult(request *DescribeCheckSyncJobResultRequest) (response *DescribeCheckSyncJobResultResponse, err error) {
     return c.DescribeCheckSyncJobResultWithContext(context.Background(), request)
 }
@@ -733,6 +734,7 @@ func (c *Client) DescribeCheckSyncJobResult(request *DescribeCheckSyncJobResultR
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 func (c *Client) DescribeCheckSyncJobResultWithContext(ctx context.Context, request *DescribeCheckSyncJobResultRequest) (response *DescribeCheckSyncJobResultResponse, err error) {
     if request == nil {
         request = NewDescribeCheckSyncJobResultRequest()
@@ -1574,6 +1576,7 @@ func NewIsolateSyncJobResponse() (response *IsolateSyncJobResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) IsolateSyncJob(request *IsolateSyncJobRequest) (response *IsolateSyncJobResponse, err error) {
     return c.IsolateSyncJobWithContext(context.Background(), request)
@@ -1584,6 +1587,7 @@ func (c *Client) IsolateSyncJob(request *IsolateSyncJobRequest) (response *Isola
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) IsolateSyncJobWithContext(ctx context.Context, request *IsolateSyncJobRequest) (response *IsolateSyncJobResponse, err error) {
     if request == nil {
@@ -2800,6 +2804,7 @@ func NewStopSyncJobResponse() (response *StopSyncJobResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 func (c *Client) StopSyncJob(request *StopSyncJobRequest) (response *StopSyncJobResponse, err error) {
     return c.StopSyncJobWithContext(context.Background(), request)
 }
@@ -2809,6 +2814,7 @@ func (c *Client) StopSyncJob(request *StopSyncJobRequest) (response *StopSyncJob
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
 func (c *Client) StopSyncJobWithContext(ctx context.Context, request *StopSyncJobRequest) (response *StopSyncJobResponse, err error) {
     if request == nil {
         request = NewStopSyncJobRequest()

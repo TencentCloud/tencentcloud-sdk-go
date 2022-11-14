@@ -4400,6 +4400,7 @@ func NewDetachPluginResponse() (response *DetachPluginResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DetachPlugin(request *DetachPluginRequest) (response *DetachPluginResponse, err error) {
     return c.DetachPluginWithContext(context.Background(), request)
@@ -4416,6 +4417,7 @@ func (c *Client) DetachPlugin(request *DetachPluginRequest) (response *DetachPlu
 //  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 func (c *Client) DetachPluginWithContext(ctx context.Context, request *DetachPluginRequest) (response *DetachPluginResponse, err error) {
     if request == nil {

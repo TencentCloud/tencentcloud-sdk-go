@@ -912,6 +912,7 @@ func NewDescribeUsersForUserManagerResponse() (response *DescribeUsersForUserMan
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) DescribeUsersForUserManager(request *DescribeUsersForUserManagerRequest) (response *DescribeUsersForUserManagerResponse, err error) {
     return c.DescribeUsersForUserManagerWithContext(context.Background(), request)
@@ -924,6 +925,7 @@ func (c *Client) DescribeUsersForUserManager(request *DescribeUsersForUserManage
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) DescribeUsersForUserManagerWithContext(ctx context.Context, request *DescribeUsersForUserManagerRequest) (response *DescribeUsersForUserManagerResponse, err error) {
     if request == nil {
@@ -1791,6 +1793,7 @@ func NewScaleOutInstanceResponse() (response *ScaleOutInstanceResponse) {
 // 实例扩容
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = "FailedOperation.DuplicateOrderNotAllowed"
 //  FAILEDOPERATION_NOTSUPPORTPOD = "FailedOperation.NotSupportPod"
 //  INTERNALERROR = "InternalError"
@@ -1851,6 +1854,7 @@ func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *S
 // 实例扩容
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = "FailedOperation.DuplicateOrderNotAllowed"
 //  FAILEDOPERATION_NOTSUPPORTPOD = "FailedOperation.NotSupportPod"
 //  INTERNALERROR = "InternalError"

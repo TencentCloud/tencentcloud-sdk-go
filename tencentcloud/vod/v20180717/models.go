@@ -3714,6 +3714,13 @@ type CreateImageSpriteTemplateRequestParams struct {
 	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
+
+	// 图片格式，取值：
+	// <li> jpg：jpg 格式；</li>
+	// <li> png：png 格式；</li>
+	// <li> webp：webp 格式。</li>
+	// 默认值：jpg。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 type CreateImageSpriteTemplateRequest struct {
@@ -3771,6 +3778,13 @@ type CreateImageSpriteTemplateRequest struct {
 	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
+
+	// 图片格式，取值：
+	// <li> jpg：jpg 格式；</li>
+	// <li> png：png 格式；</li>
+	// <li> webp：webp 格式。</li>
+	// 默认值：jpg。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
@@ -3796,6 +3810,7 @@ func (r *CreateImageSpriteTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Width")
 	delete(f, "Height")
 	delete(f, "ResolutionAdaptive")
+	delete(f, "Format")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageSpriteTemplateRequest has unknown keys!", "")
 	}
@@ -11156,6 +11171,9 @@ type ImageSpriteTemplate struct {
 
 	// 模板描述信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片格式。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 type ImageTransform struct {
@@ -13541,6 +13559,12 @@ type ModifyImageSpriteTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片格式，取值：
+	// <li> jpg：jpg 格式；</li>
+	// <li> png：png 格式；</li>
+	// <li> webp：webp 格式。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 type ModifyImageSpriteTemplateRequest struct {
@@ -13591,6 +13615,12 @@ type ModifyImageSpriteTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片格式，取值：
+	// <li> jpg：jpg 格式；</li>
+	// <li> png：png 格式；</li>
+	// <li> webp：webp 格式。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {
@@ -13617,6 +13647,7 @@ func (r *ModifyImageSpriteTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ColumnCount")
 	delete(f, "FillType")
 	delete(f, "Comment")
+	delete(f, "Format")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyImageSpriteTemplateRequest has unknown keys!", "")
 	}

@@ -8698,6 +8698,7 @@ func NewDescribeSecurityEventStatResponse() (response *DescribeSecurityEventStat
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityEventStat(request *DescribeSecurityEventStatRequest) (response *DescribeSecurityEventStatResponse, err error) {
     return c.DescribeSecurityEventStatWithContext(context.Background(), request)
 }
@@ -8707,6 +8708,7 @@ func (c *Client) DescribeSecurityEventStat(request *DescribeSecurityEventStatReq
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityEventStatWithContext(ctx context.Context, request *DescribeSecurityEventStatRequest) (response *DescribeSecurityEventStatResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityEventStatRequest()
@@ -8748,6 +8750,7 @@ func NewDescribeSecurityEventsCntResponse() (response *DescribeSecurityEventsCnt
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityEventsCnt(request *DescribeSecurityEventsCntRequest) (response *DescribeSecurityEventsCntResponse, err error) {
     return c.DescribeSecurityEventsCntWithContext(context.Background(), request)
 }
@@ -8759,6 +8762,7 @@ func (c *Client) DescribeSecurityEventsCnt(request *DescribeSecurityEventsCntReq
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSecurityEventsCntWithContext(ctx context.Context, request *DescribeSecurityEventsCntRequest) (response *DescribeSecurityEventsCntResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityEventsCntRequest()

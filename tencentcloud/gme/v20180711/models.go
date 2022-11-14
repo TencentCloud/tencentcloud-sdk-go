@@ -1753,7 +1753,7 @@ type ScanVoiceRequestParams struct {
 	// 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 
-	// 语言，目前jp代表日语
+	// 语种，不传默认中文
 	Lang *string `json:"Lang,omitempty" name:"Lang"`
 }
 
@@ -1777,7 +1777,7 @@ type ScanVoiceRequest struct {
 	// 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 
-	// 语言，目前jp代表日语
+	// 语种，不传默认中文
 	Lang *string `json:"Lang,omitempty" name:"Lang"`
 }
 

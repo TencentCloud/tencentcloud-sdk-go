@@ -2014,10 +2014,10 @@ type DescribeRecordRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。DomainId是域名的资源ID，可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2027,10 +2027,10 @@ type DescribeRecordRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。DomainId是域名的资源ID，可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 

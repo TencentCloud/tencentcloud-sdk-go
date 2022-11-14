@@ -543,11 +543,14 @@ type CreateDocumentRequestParams struct {
 	// 预览链接有效期300秒；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
-	// 客户端Token，保持接口幂等性,最大长度64个字符
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 客户端Token，保持接口幂等性,最大长度64个字符
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 type CreateDocumentRequest struct {
@@ -572,11 +575,14 @@ type CreateDocumentRequest struct {
 	// 预览链接有效期300秒；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
-	// 客户端Token，保持接口幂等性,最大长度64个字符
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 客户端Token，保持接口幂等性,最大长度64个字符
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateDocumentRequest) ToJsonString() string {
@@ -597,8 +603,9 @@ func (r *CreateDocumentRequest) FromJsonString(s string) error {
 	delete(f, "FileNames")
 	delete(f, "FormFields")
 	delete(f, "NeedPreview")
-	delete(f, "ClientToken")
+	delete(f, "PreviewType")
 	delete(f, "Agent")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDocumentRequest has unknown keys!", "")
 	}
@@ -732,8 +739,8 @@ type CreateFlowByFilesRequestParams struct {
 	// 注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
-	// 签署流程描述,最大长度1000个字符
-	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
 	// 签署流程的签署截止时间。
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
@@ -765,6 +772,9 @@ type CreateFlowByFilesRequestParams struct {
 	// MobileCheck：手机号验证
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
+
+	// 签署流程描述,最大长度1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -798,8 +808,8 @@ type CreateFlowByFilesRequest struct {
 	// 注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
-	// 签署流程描述,最大长度1000个字符
-	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
+	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
 	// 签署流程的签署截止时间。
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
@@ -831,6 +841,9 @@ type CreateFlowByFilesRequest struct {
 	// MobileCheck：手机号验证
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
+
+	// 签署流程描述,最大长度1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -853,7 +866,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "Components")
 	delete(f, "CcInfos")
 	delete(f, "NeedPreview")
-	delete(f, "FlowDescription")
+	delete(f, "PreviewType")
 	delete(f, "Deadline")
 	delete(f, "Unordered")
 	delete(f, "CustomShowMap")
@@ -861,6 +874,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "UserData")
 	delete(f, "Agent")
 	delete(f, "ApproverVerifyType")
+	delete(f, "FlowDescription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}

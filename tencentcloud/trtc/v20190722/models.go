@@ -3300,15 +3300,15 @@ type SubscribeStreamUserIds struct {
 }
 
 type TRTCDataResp struct {
-	// StatementID值
+	// StatementID值，监控仪表盘下固定为0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatementID *int64 `json:"StatementID,omitempty" name:"StatementID"`
 
-	// Series数据
+	// 查询结果数据，以Columns-Values形式返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Series []*SeriesInfo `json:"Series,omitempty" name:"Series"`
 
-	// Total值
+	// Total值，监控仪表盘功能下固定为1。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 }

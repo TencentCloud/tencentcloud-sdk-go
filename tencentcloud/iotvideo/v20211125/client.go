@@ -122,6 +122,7 @@ func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
 //  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
     return c.BatchUpdateFirmwareWithContext(context.Background(), request)
 }
@@ -133,6 +134,7 @@ func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (respo
 //  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) BatchUpdateFirmwareWithContext(ctx context.Context, request *BatchUpdateFirmwareRequest) (response *BatchUpdateFirmwareResponse, err error) {
     if request == nil {
         request = NewBatchUpdateFirmwareRequest()
