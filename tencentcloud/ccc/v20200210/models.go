@@ -620,6 +620,9 @@ type CreateStaffRequestParams struct {
 
 	// 客服信息，个数不超过 10
 	Staffs []*SeatUserInfo `json:"Staffs,omitempty" name:"Staffs"`
+
+	// 是否发送密码邮件，默认true
+	SendPassword *bool `json:"SendPassword,omitempty" name:"SendPassword"`
 }
 
 type CreateStaffRequest struct {
@@ -630,6 +633,9 @@ type CreateStaffRequest struct {
 
 	// 客服信息，个数不超过 10
 	Staffs []*SeatUserInfo `json:"Staffs,omitempty" name:"Staffs"`
+
+	// 是否发送密码邮件，默认true
+	SendPassword *bool `json:"SendPassword,omitempty" name:"SendPassword"`
 }
 
 func (r *CreateStaffRequest) ToJsonString() string {
@@ -646,6 +652,7 @@ func (r *CreateStaffRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	delete(f, "Staffs")
+	delete(f, "SendPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStaffRequest has unknown keys!", "")
 	}

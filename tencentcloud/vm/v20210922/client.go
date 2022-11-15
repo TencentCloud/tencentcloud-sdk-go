@@ -142,7 +142,21 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 }
 
 // CreateVideoModerationTask
-// 通过URL或存储桶创建审核任务
+// 通过URL或存储桶创建审核任务。
+//
+// 
+//
+// ### 直播断流处理说明：
+//
+// - 请确认已对接[取消任务](https://cloud.tencent.com/document/product/1265/80018)。
+//
+// - 如果直播任务取消/结束，则终止直播拉流并退出审核。
+//
+// - 如果直播任务没有取消/结束，直播视频推流因故中断，产品将在将在10分钟内持续拉流重试。如果10分钟检测到图片截帧/音频切片数据，则恢复正常审核，反之，则终止拉流并退出审核。在拉流终止后，用户如有审核需求，需重新送审。
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -168,7 +182,21 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 }
 
 // CreateVideoModerationTask
-// 通过URL或存储桶创建审核任务
+// 通过URL或存储桶创建审核任务。
+//
+// 
+//
+// ### 直播断流处理说明：
+//
+// - 请确认已对接[取消任务](https://cloud.tencent.com/document/product/1265/80018)。
+//
+// - 如果直播任务取消/结束，则终止直播拉流并退出审核。
+//
+// - 如果直播任务没有取消/结束，直播视频推流因故中断，产品将在将在10分钟内持续拉流重试。如果10分钟检测到图片截帧/音频切片数据，则恢复正常审核，反之，则终止拉流并退出审核。在拉流终止后，用户如有审核需求，需重新送审。
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"

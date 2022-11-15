@@ -21,48 +21,61 @@ import (
 )
 
 type AbstractRuntimeMC struct {
-	// 运行时id
+	// 环境id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 
-	// 运行时名称，用户输入，同一uin内唯一
+	// 环境名称，用户输入，同一uin内唯一
 	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
 
-	// 运行时类型：0: sandbox, 1:shared, 2:private
+	// 环境类型：0: sandbox, 1:shared, 2:private
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 运行时所在地域，tianjin，beijiing，guangzhou等
+	// 环境所在地域，tianjin，beijiing，guangzhou等
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 运行时所在地域，tianjin，beijiing，guangzhou等（同Zone）
+	// 环境所在地域，tianjin，beijiing，guangzhou等（同Zone）
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 运行时应用listener地址后缀
+	// 环境应用listener地址后缀
 	Addr *string `json:"Addr,omitempty" name:"Addr"`
 
-	// 运行时状态
+	// 环境状态
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 运行时过期时间
+	// 环境过期时间
 	ExpiredAt *int64 `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
+
+	// 环境运行类型：0:运行时类型、1:api类型
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
+
+	// 是否已在当前环境发布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deployed *bool `json:"Deployed,omitempty" name:"Deployed"`
 }
 
 // Predefined struct for user
 type GetRuntimeMCRequestParams struct {
-	// 运行时id
+	// 环境id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 
-	// 运行时地域
+	// 环境地域
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 环境运行类型：0:运行时类型、1:api类型
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 type GetRuntimeMCRequest struct {
 	*tchttp.BaseRequest
 	
-	// 运行时id
+	// 环境id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 
-	// 运行时地域
+	// 环境地域
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 环境运行类型：0:运行时类型、1:api类型
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 func (r *GetRuntimeMCRequest) ToJsonString() string {
@@ -79,6 +92,7 @@ func (r *GetRuntimeMCRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RuntimeId")
 	delete(f, "Zone")
+	delete(f, "RuntimeClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRuntimeMCRequest has unknown keys!", "")
 	}
@@ -129,6 +143,9 @@ type GetRuntimeResourceMonitorMetricMCRequestParams struct {
 
 	// 采样粒度：60(s), 300(s), 3600(s), 86400(s)
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 环境运行类型：0:运行时类型、1:api类型
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 type GetRuntimeResourceMonitorMetricMCRequest struct {
@@ -151,6 +168,9 @@ type GetRuntimeResourceMonitorMetricMCRequest struct {
 
 	// 采样粒度：60(s), 300(s), 3600(s), 86400(s)
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 环境运行类型：0:运行时类型、1:api类型
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 func (r *GetRuntimeResourceMonitorMetricMCRequest) ToJsonString() string {
@@ -171,6 +191,7 @@ func (r *GetRuntimeResourceMonitorMetricMCRequest) FromJsonString(s string) erro
 	delete(f, "MetricType")
 	delete(f, "RateType")
 	delete(f, "Interval")
+	delete(f, "RuntimeClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRuntimeResourceMonitorMetricMCRequest has unknown keys!", "")
 	}
@@ -383,12 +404,15 @@ func (r *ListRuntimeDeployedInstancesMCResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ListRuntimesMCRequestParams struct {
-
+	// 环境运行类型：0:运行时类型、1:api类型
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 type ListRuntimesMCRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境运行类型：0:运行时类型、1:api类型
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 func (r *ListRuntimesMCRequest) ToJsonString() string {
@@ -403,7 +427,7 @@ func (r *ListRuntimesMCRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RuntimeClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListRuntimesMCRequest has unknown keys!", "")
 	}
@@ -478,37 +502,63 @@ type RuntimeDeployedInstanceMC struct {
 
 	// 应用类型：0:NormalApp普通应用 1:TemplateApp模板应用 2:LightApp轻应用 3:MicroConnTemplate微连接模板 4:MicroConnApp微连接应用
 	ProjectType *int64 `json:"ProjectType,omitempty" name:"ProjectType"`
+
+	// 应用版本：0:旧版 1:3.0新控制台
+	ProjectVersion *int64 `json:"ProjectVersion,omitempty" name:"ProjectVersion"`
+}
+
+type RuntimeExtensionMC struct {
+	// 扩展组件类型：0:cdc
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 部署规格vcore数
+	Size *float64 `json:"Size,omitempty" name:"Size"`
+
+	// 副本数
+	Replica *int64 `json:"Replica,omitempty" name:"Replica"`
+
+	// 扩展组件名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 状态 1:未启用 2:已启用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreatedAt *int64 `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 修改时间
+	UpdatedAt *int64 `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
 }
 
 type RuntimeMC struct {
-	// 运行时id
+	// 环境id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 
 	// 主账号uin
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
-	// 运行时名称，用户输入，同一uin内唯一
+	// 环境名称，用户输入，同一uin内唯一
 	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
 
-	// 运行时所在地域，tianjin，beijiing，guangzhou等
+	// 环境所在地域，tianjin，beijiing，guangzhou等
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 运行时类型：0: sandbox, 1:shared, 2:private
+	// 环境类型：0: sandbox, 1:shared, 2:private 3: trial
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 运行时状态：1:running, 2:deleting, 3:creating, 4:scaling, 5:unavailable, 6:deleted, 7:errored
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 运行时创建时间
+	// 环境创建时间
 	CreatedAt *int64 `json:"CreatedAt,omitempty" name:"CreatedAt"`
 
-	// 运行时更新时间
+	// 环境更新时间
 	UpdatedAt *int64 `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
 
-	// 运行时资源配置，worker总配额，0:0vCore0G, 1:1vCore2G, 2:2vCore4G, 4:4vCore8G, 8:8vCore16G, 12:12vCore24G, 16:16vCore32G, 100:unlimited
+	// 环境资源配置，worker总配额，0:0vCore0G, 1:1vCore2G, 2:2vCore4G, 4:4vCore8G, 8:8vCore16G, 12:12vCore24G, 16:16vCore32G, 100:unlimited
 	WorkerSize *int64 `json:"WorkerSize,omitempty" name:"WorkerSize"`
 
-	// 运行时资源配置，worker副本数
+	// 环境资源配置，worker副本数
 	WorkerReplica *int64 `json:"WorkerReplica,omitempty" name:"WorkerReplica"`
 
 	// 正在运行的应用实例数量
@@ -526,11 +576,11 @@ type RuntimeMC struct {
 	// 内存上限 MB
 	MemoryLimit *float64 `json:"MemoryLimit,omitempty" name:"MemoryLimit"`
 
-	// 运行时过期时间
+	// 环境过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredAt *int64 `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
 
-	// 收费类型：0:缺省，1:通过订单页自助下单(支持续费/升配等操作)
+	// 收费类型：0:缺省，1:自助下单页购买(支持续费/升配等操作)，2:代销下单页购买
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
 
@@ -541,4 +591,24 @@ type RuntimeMC struct {
 	// 是否开启自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" name:"AutoRenewal"`
+
+	// 扩展组件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkerExtensions []*RuntimeExtensionMC `json:"WorkerExtensions,omitempty" name:"WorkerExtensions"`
+
+	// 环境类型：0: sandbox, 1:shared, 2:private 3: trial
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeType *int64 `json:"RuntimeType,omitempty" name:"RuntimeType"`
+
+	// 环境运行类型：0:运行时类型、1:api类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
+
+	// 已使用出带宽 Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthOutUsed *float64 `json:"BandwidthOutUsed,omitempty" name:"BandwidthOutUsed"`
+
+	// 出带宽上限 Mbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthOutLimit *float64 `json:"BandwidthOutLimit,omitempty" name:"BandwidthOutLimit"`
 }

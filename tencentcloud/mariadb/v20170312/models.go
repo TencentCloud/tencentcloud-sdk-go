@@ -3112,6 +3112,11 @@ type DescribePriceRequestParams struct {
 
 	// 付费类型。postpaid：按量付费   prepaid：预付费
 	Paymode *string `json:"Paymode,omitempty" name:"Paymode"`
+
+	// 价格金额单位，不传默认单位为分，取值：  
+	// * pent：分
+	// * microPent：微分
+	AmountUnit *string `json:"AmountUnit,omitempty" name:"AmountUnit"`
 }
 
 type DescribePriceRequest struct {
@@ -3140,6 +3145,11 @@ type DescribePriceRequest struct {
 
 	// 付费类型。postpaid：按量付费   prepaid：预付费
 	Paymode *string `json:"Paymode,omitempty" name:"Paymode"`
+
+	// 价格金额单位，不传默认单位为分，取值：  
+	// * pent：分
+	// * microPent：微分
+	AmountUnit *string `json:"AmountUnit,omitempty" name:"AmountUnit"`
 }
 
 func (r *DescribePriceRequest) ToJsonString() string {
@@ -3161,6 +3171,7 @@ func (r *DescribePriceRequest) FromJsonString(s string) error {
 	delete(f, "Period")
 	delete(f, "Count")
 	delete(f, "Paymode")
+	delete(f, "AmountUnit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePriceRequest has unknown keys!", "")
 	}
@@ -3169,10 +3180,14 @@ func (r *DescribePriceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePriceResponseParams struct {
-	// 原价，单位：分
+	// 原价  
+	// * 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+	// * 币种：国内站为人民币，国际站为美元
 	OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-	// 实际价格，单位：分。受折扣等影响，可能和原价不同。
+	// 实际价格，受折扣等影响，可能和原价不同
+	// * 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+	// * 币种：国内站人民币，国际站美元
 	Price *int64 `json:"Price,omitempty" name:"Price"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3269,6 +3284,11 @@ type DescribeRenewalPriceRequestParams struct {
 
 	// 续费时长，单位：月。不传则默认为1个月。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 价格金额单位，不传默认单位为分，取值：  
+	// * pent：分
+	// * microPent：微分
+	AmountUnit *string `json:"AmountUnit,omitempty" name:"AmountUnit"`
 }
 
 type DescribeRenewalPriceRequest struct {
@@ -3279,6 +3299,11 @@ type DescribeRenewalPriceRequest struct {
 
 	// 续费时长，单位：月。不传则默认为1个月。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 价格金额单位，不传默认单位为分，取值：  
+	// * pent：分
+	// * microPent：微分
+	AmountUnit *string `json:"AmountUnit,omitempty" name:"AmountUnit"`
 }
 
 func (r *DescribeRenewalPriceRequest) ToJsonString() string {
@@ -3295,6 +3320,7 @@ func (r *DescribeRenewalPriceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Period")
+	delete(f, "AmountUnit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRenewalPriceRequest has unknown keys!", "")
 	}
@@ -3303,10 +3329,14 @@ func (r *DescribeRenewalPriceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRenewalPriceResponseParams struct {
-	// 原价，单位：分
+	// 原价  
+	// * 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+	// * 币种：国内站为人民币，国际站为美元
 	OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-	// 实际价格，单位：分。受折扣等影响，可能和原价不同。
+	// 实际价格，受折扣等影响，可能和原价不同
+	// * 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+	// * 币种：国内站人民币，国际站美元
 	Price *int64 `json:"Price,omitempty" name:"Price"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3398,6 +3428,11 @@ type DescribeUpgradePriceRequestParams struct {
 
 	// 新节点数，传0表示节点数不变
 	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 价格金额单位，不传默认单位为分，取值：  
+	// * pent：分
+	// * microPent：微分
+	AmountUnit *string `json:"AmountUnit,omitempty" name:"AmountUnit"`
 }
 
 type DescribeUpgradePriceRequest struct {
@@ -3416,6 +3451,11 @@ type DescribeUpgradePriceRequest struct {
 
 	// 新节点数，传0表示节点数不变
 	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 价格金额单位，不传默认单位为分，取值：  
+	// * pent：分
+	// * microPent：微分
+	AmountUnit *string `json:"AmountUnit,omitempty" name:"AmountUnit"`
 }
 
 func (r *DescribeUpgradePriceRequest) ToJsonString() string {
@@ -3434,6 +3474,7 @@ func (r *DescribeUpgradePriceRequest) FromJsonString(s string) error {
 	delete(f, "Memory")
 	delete(f, "Storage")
 	delete(f, "NodeCount")
+	delete(f, "AmountUnit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUpgradePriceRequest has unknown keys!", "")
 	}
@@ -3442,10 +3483,14 @@ func (r *DescribeUpgradePriceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUpgradePriceResponseParams struct {
-	// 原价，单位：分
+	// 原价  
+	// * 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+	// * 币种：国内站为人民币，国际站为美元
 	OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-	// 实际价格，单位：分。受折扣等影响，可能和原价不同。
+	// 实际价格，受折扣等影响，可能和原价不同
+	// * 单位：默认为分，若请求参数带有AmountUnit，参考AmountUnit描述
+	// * 币种：国内站人民币，国际站美元
 	Price *int64 `json:"Price,omitempty" name:"Price"`
 
 	// 变配明细计算公式

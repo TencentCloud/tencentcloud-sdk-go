@@ -1022,11 +1022,11 @@ func (r *DescribeTopicDetailResponse) FromJsonString(s string) error {
 }
 
 type Filter struct {
-	// 过滤参数的名字
-	Name *string `json:"Name,omitempty" name:"Name"`
-
 	// 数值
 	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 过滤参数的名字
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 // Predefined struct for user

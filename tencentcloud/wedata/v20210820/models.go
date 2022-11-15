@@ -3867,6 +3867,14 @@ type DatabaseInfo struct {
 	// 数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceType *uint64 `json:"DatasourceType,omitempty" name:"DatasourceType"`
+
+	// 数据库原始名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginDatabaseName *string `json:"OriginDatabaseName,omitempty" name:"OriginDatabaseName"`
+
+	// schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginSchemaName *string `json:"OriginSchemaName,omitempty" name:"OriginSchemaName"`
 }
 
 type DatasourceBaseInfo struct {
@@ -5040,6 +5048,9 @@ type DescribeDataBasesRequestParams struct {
 
 	// 数据源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	DsTypes []*uint64 `json:"DsTypes,omitempty" name:"DsTypes"`
 }
 
 type DescribeDataBasesRequest struct {
@@ -5050,6 +5061,9 @@ type DescribeDataBasesRequest struct {
 
 	// 数据源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	DsTypes []*uint64 `json:"DsTypes,omitempty" name:"DsTypes"`
 }
 
 func (r *DescribeDataBasesRequest) ToJsonString() string {
@@ -5066,6 +5080,7 @@ func (r *DescribeDataBasesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "DatasourceId")
+	delete(f, "DsTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataBasesRequest has unknown keys!", "")
 	}
@@ -8946,6 +8961,9 @@ type DescribeRuleDataSourcesRequestParams struct {
 
 	// 数据来源Id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	DsTypes []*uint64 `json:"DsTypes,omitempty" name:"DsTypes"`
 }
 
 type DescribeRuleDataSourcesRequest struct {
@@ -8956,6 +8974,9 @@ type DescribeRuleDataSourcesRequest struct {
 
 	// 数据来源Id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	DsTypes []*uint64 `json:"DsTypes,omitempty" name:"DsTypes"`
 }
 
 func (r *DescribeRuleDataSourcesRequest) ToJsonString() string {
@@ -8972,6 +8993,7 @@ func (r *DescribeRuleDataSourcesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "DatasourceId")
+	delete(f, "DsTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuleDataSourcesRequest has unknown keys!", "")
 	}
@@ -10407,6 +10429,9 @@ type DescribeRuleTemplatesRequestParams struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 源端对应的引擎类型
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitempty" name:"SourceEngineTypes"`
 }
 
 type DescribeRuleTemplatesRequest struct {
@@ -10420,6 +10445,9 @@ type DescribeRuleTemplatesRequest struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 源端对应的引擎类型
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitempty" name:"SourceEngineTypes"`
 }
 
 func (r *DescribeRuleTemplatesRequest) ToJsonString() string {
@@ -10437,6 +10465,7 @@ func (r *DescribeRuleTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "SourceObjectType")
 	delete(f, "ProjectId")
+	delete(f, "SourceEngineTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuleTemplatesRequest has unknown keys!", "")
 	}

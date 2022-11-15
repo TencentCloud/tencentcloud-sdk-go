@@ -863,6 +863,10 @@ type DataDiskPrice struct {
 
 	// 折后总价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 数据盘挂载的实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 // Predefined struct for user
@@ -4050,32 +4054,32 @@ func (r *InquirePriceRenewDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceRenewInstancesRequestParams struct {
-	// 待续费的实例。
+	// 待续费的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573 )接口返回值中的InstanceId获取。每次请求批量实例的上限为50。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
 
-	// 是否续费数据盘
+	// 是否续费数据盘。默认值: false, 即不续费。
 	RenewDataDisk *bool `json:"RenewDataDisk,omitempty" name:"RenewDataDisk"`
 
-	// 数据盘是否对齐实例到期时间
+	// 数据盘是否对齐实例到期时间。默认值: false, 即不对齐。
 	AlignInstanceExpiredTime *bool `json:"AlignInstanceExpiredTime,omitempty" name:"AlignInstanceExpiredTime"`
 }
 
 type InquirePriceRenewInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待续费的实例。
+	// 待续费的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573 )接口返回值中的InstanceId获取。每次请求批量实例的上限为50。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
 
-	// 是否续费数据盘
+	// 是否续费数据盘。默认值: false, 即不续费。
 	RenewDataDisk *bool `json:"RenewDataDisk,omitempty" name:"RenewDataDisk"`
 
-	// 数据盘是否对齐实例到期时间
+	// 数据盘是否对齐实例到期时间。默认值: false, 即不对齐。
 	AlignInstanceExpiredTime *bool `json:"AlignInstanceExpiredTime,omitempty" name:"AlignInstanceExpiredTime"`
 }
 
@@ -4103,12 +4107,16 @@ func (r *InquirePriceRenewInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceRenewInstancesResponseParams struct {
-	// 询价信息。
+	// 询价信息。默认为列表中第一个实例的价格信息。
 	Price *Price `json:"Price,omitempty" name:"Price"`
 
 	// 数据盘价格信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDiskPriceSet []*DataDiskPrice `json:"DataDiskPriceSet,omitempty" name:"DataDiskPriceSet"`
+
+	// 待续费实例价格列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancePriceDetailSet []*InstancePriceDetail `json:"InstancePriceDetailSet,omitempty" name:"InstancePriceDetailSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4260,6 +4268,16 @@ type InstancePrice struct {
 
 	// 折后价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+}
+
+type InstancePriceDetail struct {
+	// 实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 询价信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancePrice *InstancePrice `json:"InstancePrice,omitempty" name:"InstancePrice"`
 }
 
 type InstanceReturnable struct {

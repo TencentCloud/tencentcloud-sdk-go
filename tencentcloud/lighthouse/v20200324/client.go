@@ -3477,7 +3477,6 @@ func NewInquirePriceRenewInstancesResponse() (response *InquirePriceRenewInstanc
 // 本接口（InquirePriceRenewInstances）用于续费实例询价。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
@@ -3494,7 +3493,6 @@ func (c *Client) InquirePriceRenewInstances(request *InquirePriceRenewInstancesR
 // 本接口（InquirePriceRenewInstances）用于续费实例询价。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INTERNALERROR_TRADEGETPRICEFAILED = "InternalError.TradeGetPriceFailed"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"

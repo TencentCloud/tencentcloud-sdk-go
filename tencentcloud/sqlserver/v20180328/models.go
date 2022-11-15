@@ -202,7 +202,7 @@ type Backup struct {
 	// 备份策略（0-实例备份；1-多库备份）
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
-	// 备份方式，0-定时备份；1-手动临时备份
+	// 备份方式，0-定时备份；1-手动临时备份；2-定期备份
 	BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
 
 	// 备份任务名称，可自定义
@@ -3337,7 +3337,7 @@ type DescribeBackupsRequestParams struct {
 	// 按照备份策略筛选，0-实例备份，1-多库备份，不填则不筛选此项
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
-	// 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，不填则不筛选此项
+	// 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，2-定期备份，不填则不筛选此项
 	BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
 
 	// 按照备份ID筛选，不填则不筛选此项
@@ -3380,7 +3380,7 @@ type DescribeBackupsRequest struct {
 	// 按照备份策略筛选，0-实例备份，1-多库备份，不填则不筛选此项
 	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
 
-	// 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，不填则不筛选此项
+	// 按照备份方式筛选，0-后台自动定时备份，1-用户手动临时备份，2-定期备份，不填则不筛选此项
 	BackupWay *int64 `json:"BackupWay,omitempty" name:"BackupWay"`
 
 	// 按照备份ID筛选，不填则不筛选此项
@@ -6699,6 +6699,21 @@ type ModifyBackupStrategyRequestParams struct {
 
 	// 数据(日志)备份保留时间，取值[3-1830]天，默认7天
 	BackupSaveDays *uint64 `json:"BackupSaveDays,omitempty" name:"BackupSaveDays"`
+
+	// 定期备份状态 enable-开启，disable-关闭，默认关闭
+	RegularBackupEnable *string `json:"RegularBackupEnable,omitempty" name:"RegularBackupEnable"`
+
+	// 定期备份保留天数 [90 - 3650]天，默认365天
+	RegularBackupSaveDays *uint64 `json:"RegularBackupSaveDays,omitempty" name:"RegularBackupSaveDays"`
+
+	// 定期备份策略 years-每年，quarters-每季度，months-每月，默认months
+	RegularBackupStrategy *string `json:"RegularBackupStrategy,omitempty" name:"RegularBackupStrategy"`
+
+	// 定期备份保留个数，默认1个
+	RegularBackupCounts *uint64 `json:"RegularBackupCounts,omitempty" name:"RegularBackupCounts"`
+
+	// 定期备份开始日期，格式-YYYY-MM-DD 默认当前日期
+	RegularBackupStartTime *string `json:"RegularBackupStartTime,omitempty" name:"RegularBackupStartTime"`
 }
 
 type ModifyBackupStrategyRequest struct {
@@ -6724,6 +6739,21 @@ type ModifyBackupStrategyRequest struct {
 
 	// 数据(日志)备份保留时间，取值[3-1830]天，默认7天
 	BackupSaveDays *uint64 `json:"BackupSaveDays,omitempty" name:"BackupSaveDays"`
+
+	// 定期备份状态 enable-开启，disable-关闭，默认关闭
+	RegularBackupEnable *string `json:"RegularBackupEnable,omitempty" name:"RegularBackupEnable"`
+
+	// 定期备份保留天数 [90 - 3650]天，默认365天
+	RegularBackupSaveDays *uint64 `json:"RegularBackupSaveDays,omitempty" name:"RegularBackupSaveDays"`
+
+	// 定期备份策略 years-每年，quarters-每季度，months-每月，默认months
+	RegularBackupStrategy *string `json:"RegularBackupStrategy,omitempty" name:"RegularBackupStrategy"`
+
+	// 定期备份保留个数，默认1个
+	RegularBackupCounts *uint64 `json:"RegularBackupCounts,omitempty" name:"RegularBackupCounts"`
+
+	// 定期备份开始日期，格式-YYYY-MM-DD 默认当前日期
+	RegularBackupStartTime *string `json:"RegularBackupStartTime,omitempty" name:"RegularBackupStartTime"`
 }
 
 func (r *ModifyBackupStrategyRequest) ToJsonString() string {
@@ -6745,6 +6775,11 @@ func (r *ModifyBackupStrategyRequest) FromJsonString(s string) error {
 	delete(f, "BackupModel")
 	delete(f, "BackupCycle")
 	delete(f, "BackupSaveDays")
+	delete(f, "RegularBackupEnable")
+	delete(f, "RegularBackupSaveDays")
+	delete(f, "RegularBackupStrategy")
+	delete(f, "RegularBackupCounts")
+	delete(f, "RegularBackupStartTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupStrategyRequest has unknown keys!", "")
 	}

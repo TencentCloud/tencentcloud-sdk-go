@@ -340,6 +340,45 @@ type CFSOption struct {
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 }
 
+type ClusterActivity struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群活动ID。
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 集群活动类型。
+	ActivityType *string `json:"ActivityType,omitempty" name:"ActivityType"`
+
+	// 集群活动状态。取值范围：<br><li>PENDING：等待运行<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>PARTIALLY_SUCCESSFUL：活动部分成功<br><li>FAILED：活动失败
+	ActivityStatus *string `json:"ActivityStatus,omitempty" name:"ActivityStatus"`
+
+	// 集群活动状态码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityStatusCode *string `json:"ActivityStatusCode,omitempty" name:"ActivityStatusCode"`
+
+	// 集群活动结果详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultDetail *string `json:"ResultDetail,omitempty" name:"ResultDetail"`
+
+	// 集群活动起因。
+	Cause *string `json:"Cause,omitempty" name:"Cause"`
+
+	// 集群活动描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 集群活动相关节点活动集合。
+	RelatedNodeActivitySet []*NodeActivity `json:"RelatedNodeActivitySet,omitempty" name:"RelatedNodeActivitySet"`
+
+	// 集群活动开始时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 集群活动结束时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type ClusterOverview struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -731,6 +770,80 @@ func (r *DeleteNodesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterActivitiesRequestParams struct {
+	// 集群ID。通过该参数指定需要查询活动历史记录的集群。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeClusterActivitiesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。通过该参数指定需要查询活动历史记录的集群。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeClusterActivitiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterActivitiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterActivitiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterActivitiesResponseParams struct {
+	// 集群活动历史记录列表。
+	ClusterActivitySet []*ClusterActivity `json:"ClusterActivitySet,omitempty" name:"ClusterActivitySet"`
+
+	// 集群活动历史记录数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterActivitiesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterActivitiesResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterActivitiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterActivitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClustersRequestParams struct {
 	// 集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
@@ -927,6 +1040,23 @@ type ManagerNodeOverview struct {
 	// 管控节点ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+}
+
+type NodeActivity struct {
+	// 节点活动所在的实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInstanceId *string `json:"NodeInstanceId,omitempty" name:"NodeInstanceId"`
+
+	// 节点活动状态。取值范围：<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>FAILED：活动失败
+	NodeActivityStatus *string `json:"NodeActivityStatus,omitempty" name:"NodeActivityStatus"`
+
+	// 节点活动状态码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeActivityStatusCode *string `json:"NodeActivityStatusCode,omitempty" name:"NodeActivityStatusCode"`
+
+	// 节点活动状态原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeActivityStatusReason *string `json:"NodeActivityStatusReason,omitempty" name:"NodeActivityStatusReason"`
 }
 
 type Placement struct {

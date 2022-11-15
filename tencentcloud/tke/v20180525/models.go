@@ -10174,6 +10174,9 @@ func (r *DescribeVpcCniPodLimitsResponse) FromJsonString(s string) error {
 type DisableClusterAuditRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitempty" name:"DeleteLogSetAndTopic"`
 }
 
 type DisableClusterAuditRequest struct {
@@ -10181,6 +10184,9 @@ type DisableClusterAuditRequest struct {
 	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitempty" name:"DeleteLogSetAndTopic"`
 }
 
 func (r *DisableClusterAuditRequest) ToJsonString() string {
@@ -10196,6 +10202,7 @@ func (r *DisableClusterAuditRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "DeleteLogSetAndTopic")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableClusterAuditRequest has unknown keys!", "")
 	}
@@ -10282,6 +10289,9 @@ func (r *DisableClusterDeletionProtectionResponse) FromJsonString(s string) erro
 type DisableEventPersistenceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitempty" name:"DeleteLogSetAndTopic"`
 }
 
 type DisableEventPersistenceRequest struct {
@@ -10289,6 +10299,9 @@ type DisableEventPersistenceRequest struct {
 	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 取值为true代表关闭集群审计时删除默认创建的日志集和主题，false代表不删除
+	DeleteLogSetAndTopic *bool `json:"DeleteLogSetAndTopic,omitempty" name:"DeleteLogSetAndTopic"`
 }
 
 func (r *DisableEventPersistenceRequest) ToJsonString() string {
@@ -10304,6 +10317,7 @@ func (r *DisableEventPersistenceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "DeleteLogSetAndTopic")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableEventPersistenceRequest has unknown keys!", "")
 	}

@@ -1535,6 +1535,77 @@ func (r *DescribeAutoDenyIPResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDomainDetailsSaasRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名id
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeDomainDetailsSaasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名id
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDomainDetailsSaasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainDetailsSaasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainDetailsSaasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainDetailsSaasResponseParams struct {
+	// 域名详情
+	DomainsPartInfo *DomainsPartInfo `json:"DomainsPartInfo,omitempty" name:"DomainsPartInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainDetailsSaasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainDetailsSaasResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainDetailsSaasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainDetailsSaasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDomainWhiteRulesRequestParams struct {
 	// 需要查询的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -1631,10 +1702,10 @@ func (r *DescribeDomainWhiteRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainsRequestParams struct {
-	// 偏移
+	// 数据偏移量，从1开始。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 容量
+	// 返回域名的数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤数组
@@ -1644,10 +1715,10 @@ type DescribeDomainsRequestParams struct {
 type DescribeDomainsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移
+	// 数据偏移量，从1开始。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 容量
+	// 返回域名的数量
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤数组
@@ -2404,7 +2475,77 @@ func (r *DescribeWafThreatenIntelligenceResponse) FromJsonString(s string) error
 }
 
 type DomainInfo struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// cname地址
+	Cname *string `json:"Cname,omitempty" name:"Cname"`
+
+	// 实例类型
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 日志包
+	ClsStatus *uint64 `json:"ClsStatus,omitempty" name:"ClsStatus"`
+
+	// clb模式
+	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
+
+	// waf开关
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 防御模式
+	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+
+	// AI防御模式
+	Engine *uint64 `json:"Engine,omitempty" name:"Engine"`
+
+	// CC列表
+	CCList []*string `json:"CCList,omitempty" name:"CCList"`
+
+	// 回源ip
+	RsList []*string `json:"RsList,omitempty" name:"RsList"`
+
+	// 服务端口配置
+	Ports []*PortInfo `json:"Ports,omitempty" name:"Ports"`
+
+	// 负载均衡器
+	LoadBalancerSet []*LoadBalancerPackageNew `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
+
+	// 用户id
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// clb状态
+	State *int64 `json:"State,omitempty" name:"State"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 0关闭 1开启
+	Ipv6Status *int64 `json:"Ipv6Status,omitempty" name:"Ipv6Status"`
+
+	// 0关闭 1开启
+	BotStatus *int64 `json:"BotStatus,omitempty" name:"BotStatus"`
+
+	// 版本信息
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+
+	// 是否开启投递CLS功能
+	PostCLSStatus *int64 `json:"PostCLSStatus,omitempty" name:"PostCLSStatus"`
+
+	// 是否开启投递CKafka功能
+	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitempty" name:"PostCKafkaStatus"`
 }
 
 type DomainPackageNew struct {
@@ -2422,6 +2563,81 @@ type DomainPackageNew struct {
 
 	// 套餐购买地域，clb-waf暂时没有用到
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type DomainsPartInfo struct {
+	// 是否开启httpRewrite
+	HttpsRewrite *uint64 `json:"HttpsRewrite,omitempty" name:"HttpsRewrite"`
+
+	// https回源端口
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitempty" name:"HttpsUpstreamPort"`
+
+	// 是否是cdn
+	IsCdn *uint64 `json:"IsCdn,omitempty" name:"IsCdn"`
+
+	// 是否开启gray
+	IsGray *uint64 `json:"IsGray,omitempty" name:"IsGray"`
+
+	// 是否是http2
+	IsHttp2 *uint64 `json:"IsHttp2,omitempty" name:"IsHttp2"`
+
+	// 是否开启websocket
+	IsWebsocket *uint64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
+
+	// 负载均衡
+	LoadBalance *uint64 `json:"LoadBalance,omitempty" name:"LoadBalance"`
+
+	// 防御模式
+	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 私钥
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+	// ssl id
+	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+
+	// 回源域名
+	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
+
+	// 回源类型
+	UpstreamType *uint64 `json:"UpstreamType,omitempty" name:"UpstreamType"`
+
+	// 回源ip
+	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
+
+	// 服务端口配置
+	Ports []*PortInfo `json:"Ports,omitempty" name:"Ports"`
+
+	// 证书类型
+	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 回源方式
+	UpstreamScheme *string `json:"UpstreamScheme,omitempty" name:"UpstreamScheme"`
+
+	// 日志包
+	Cls *uint64 `json:"Cls,omitempty" name:"Cls"`
+
+	// 一级cname
+	Cname *string `json:"Cname,omitempty" name:"Cname"`
+
+	// 是否长连接
+	IsKeepAlive *uint64 `json:"IsKeepAlive,omitempty" name:"IsKeepAlive"`
+
+	// 是否开启主动健康检测，1表示开启，0表示不开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveCheck *uint64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+
+	// TLS版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+
+	// 加密套件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+
+	// 模版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -2729,6 +2945,10 @@ type IpHitItemsData struct {
 
 	// 总数目
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+type LoadBalancerPackageNew struct {
+
 }
 
 // Predefined struct for user
@@ -3156,6 +3376,10 @@ func (r *ModifyWafThreatenIntelligenceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyWafThreatenIntelligenceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PortInfo struct {
+
 }
 
 type PortItem struct {

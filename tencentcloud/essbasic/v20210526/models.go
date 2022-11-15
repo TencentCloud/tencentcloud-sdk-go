@@ -3456,6 +3456,10 @@ type UsageDetail struct {
 	// 撤回数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cancel *uint64 `json:"Cancel,omitempty" name:"Cancel"`
+
+	// 消耗渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowChannel *string `json:"FlowChannel,omitempty" name:"FlowChannel"`
 }
 
 type UserInfo struct {

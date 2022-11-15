@@ -1305,6 +1305,10 @@ type EncryptedPhoneVerificationResponseParams struct {
 	// 业务结果描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
+	// 运营商名称。
+	// 取值范围为["移动","联通","电信",""]
+	ISP *string `json:"ISP,omitempty" name:"ISP"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2002,7 +2006,7 @@ type GetFaceIdTokenRequestParams struct {
 	// CompareLib为商业库时必传。
 	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
 
-	// CompareLib为商业库库时必传。
+	// CompareLib为商业库时必传。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// CompareLib为上传照片比对时必传，Base64后图片最大8MB。
@@ -2018,6 +2022,9 @@ type GetFaceIdTokenRequestParams struct {
 	// 默认为false，设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。开通地址见https://console.cloud.tencent.com/faceid/cos
 	// 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
 	UseCos *bool `json:"UseCos,omitempty" name:"UseCos"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 type GetFaceIdTokenRequest struct {
@@ -2029,7 +2036,7 @@ type GetFaceIdTokenRequest struct {
 	// CompareLib为商业库时必传。
 	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
 
-	// CompareLib为商业库库时必传。
+	// CompareLib为商业库时必传。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// CompareLib为上传照片比对时必传，Base64后图片最大8MB。
@@ -2045,6 +2052,9 @@ type GetFaceIdTokenRequest struct {
 	// 默认为false，设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。开通地址见https://console.cloud.tencent.com/faceid/cos
 	// 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
 	UseCos *bool `json:"UseCos,omitempty" name:"UseCos"`
+
+	// 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *GetFaceIdTokenRequest) ToJsonString() string {
@@ -2066,6 +2076,7 @@ func (r *GetFaceIdTokenRequest) FromJsonString(s string) error {
 	delete(f, "Meta")
 	delete(f, "Extra")
 	delete(f, "UseCos")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetFaceIdTokenRequest has unknown keys!", "")
 	}

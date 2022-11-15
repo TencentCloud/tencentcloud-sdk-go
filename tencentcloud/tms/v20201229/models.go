@@ -202,6 +202,10 @@ type TextModerationResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 
+	// 该字段用于返回上下文关联文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContextText *string `json:"ContextText,omitempty" name:"ContextText"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
