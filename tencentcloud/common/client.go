@@ -469,7 +469,7 @@ func (c *Client) WithCredential(cred CredentialIface) *Client {
 }
 
 func (c *Client) WithRequestClient(rc string) *Client {
-	const reRequestClient = "^[0-9a-zA-Z-_ ,;]+$"
+	const reRequestClient = "^[0-9a-zA-Z-_ ,;.]+$"
 
 	if len(rc) > 128 {
 		c.logger.Println("the length of RequestClient should be within 128 characters, it will be truncated")
