@@ -169,6 +169,66 @@ func (c *Client) BindOrganizationMemberAuthAccountWithContext(ctx context.Contex
     return
 }
 
+func NewCancelOrganizationMemberAuthAccountRequest() (request *CancelOrganizationMemberAuthAccountRequest) {
+    request = &CancelOrganizationMemberAuthAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CancelOrganizationMemberAuthAccount")
+    
+    
+    return
+}
+
+func NewCancelOrganizationMemberAuthAccountResponse() (response *CancelOrganizationMemberAuthAccountResponse) {
+    response = &CancelOrganizationMemberAuthAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelOrganizationMemberAuthAccount
+// 取消组织成员和子账号的授权绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
+//  FAILEDOPERATION_SUBACCOUNTNOTEXIST = "FailedOperation.SubAccountNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) CancelOrganizationMemberAuthAccount(request *CancelOrganizationMemberAuthAccountRequest) (response *CancelOrganizationMemberAuthAccountResponse, err error) {
+    return c.CancelOrganizationMemberAuthAccountWithContext(context.Background(), request)
+}
+
+// CancelOrganizationMemberAuthAccount
+// 取消组织成员和子账号的授权绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
+//  FAILEDOPERATION_SUBACCOUNTNOTEXIST = "FailedOperation.SubAccountNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERNOTEXIST = "ResourceNotFound.MemberNotExist"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) CancelOrganizationMemberAuthAccountWithContext(ctx context.Context, request *CancelOrganizationMemberAuthAccountRequest) (response *CancelOrganizationMemberAuthAccountResponse, err error) {
+    if request == nil {
+        request = NewCancelOrganizationMemberAuthAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelOrganizationMemberAuthAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelOrganizationMemberAuthAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrganizationMemberRequest() (request *CreateOrganizationMemberRequest) {
     request = &CreateOrganizationMemberRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -577,6 +637,58 @@ func (c *Client) DescribeOrganizationAuthNodeWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeOrganizationAuthNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOrganizationMemberAuthAccountsRequest() (request *DescribeOrganizationMemberAuthAccountsRequest) {
+    request = &DescribeOrganizationMemberAuthAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeOrganizationMemberAuthAccounts")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationMemberAuthAccountsResponse() (response *DescribeOrganizationMemberAuthAccountsResponse) {
+    response = &DescribeOrganizationMemberAuthAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrganizationMemberAuthAccounts
+// 获取组织成员被绑定的子账号列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DescribeOrganizationMemberAuthAccounts(request *DescribeOrganizationMemberAuthAccountsRequest) (response *DescribeOrganizationMemberAuthAccountsResponse, err error) {
+    return c.DescribeOrganizationMemberAuthAccountsWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationMemberAuthAccounts
+// 获取组织成员被绑定的子账号列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DescribeOrganizationMemberAuthAccountsWithContext(ctx context.Context, request *DescribeOrganizationMemberAuthAccountsRequest) (response *DescribeOrganizationMemberAuthAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationMemberAuthAccountsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationMemberAuthAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationMemberAuthAccountsResponse()
     err = c.Send(request, response)
     return
 }

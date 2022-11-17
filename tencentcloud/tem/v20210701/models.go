@@ -3646,14 +3646,32 @@ type HorizontalAutoscaler struct {
 	// 最大实例数（可以不传）
 	MaxReplicas *int64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
 
-	// 指标度量（CPU or MEMORY）
+	// 指标度量
+	// CPU（CPU使用率，%）
+	// MEMORY（内存使用率，%）
+	// CPU_CORE_USED（CPU使用量，core）
+	// MEMORY_SIZE_USED(内存使用量，MiB)
+	// NETWORK_BANDWIDTH_RECEIVE(网络入带宽，MBps)
+	// NETWORK_BANDWIDTH_TRANSMIT(网络出带宽，MBps)
+	// NETWORK_TRAFFIC_RECEIVE(网络入流量，MiB/s)
+	// NETWORK_TRAFFIC_TRANSMIT(网络出流量，MiB/s)
+	// NETWORK_PACKETS_RECEIVE(网络入包量，Count/s)
+	// NETWORK_PACKETS_TRANSMIT(网络出包量，Count/s)
+	// FS_IOPS_WRITE(磁盘写次数，Count/s)
+	// FS_IOPS_READ(磁盘读次数，Count/s)
+	// FS_SIZE_WRITE(磁盘写大小，MiB/s)
+	// FS_SIZE_READ(磁盘读大小，MiB/s)
 	Metrics *string `json:"Metrics,omitempty" name:"Metrics"`
 
-	// 阈值（百分比）
+	// 阈值（整数）
 	Threshold *int64 `json:"Threshold,omitempty" name:"Threshold"`
 
 	// 是否启用
 	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 阈值（小数，优先使用）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DoubleThreshold *float64 `json:"DoubleThreshold,omitempty" name:"DoubleThreshold"`
 }
 
 type IngressInfo struct {

@@ -5309,6 +5309,54 @@ func (c *Client) DescribeBruteAttackRulesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeClientExceptionRequest() (request *DescribeClientExceptionRequest) {
+    request = &DescribeClientExceptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeClientException")
+    
+    
+    return
+}
+
+func NewDescribeClientExceptionResponse() (response *DescribeClientExceptionResponse) {
+    response = &DescribeClientExceptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClientException
+// 获取客户端异常事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeClientException(request *DescribeClientExceptionRequest) (response *DescribeClientExceptionResponse, err error) {
+    return c.DescribeClientExceptionWithContext(context.Background(), request)
+}
+
+// DescribeClientException
+// 获取客户端异常事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeClientExceptionWithContext(ctx context.Context, request *DescribeClientExceptionRequest) (response *DescribeClientExceptionResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientExceptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientException require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientExceptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeComponentStatisticsRequest() (request *DescribeComponentStatisticsRequest) {
     request = &DescribeComponentStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},

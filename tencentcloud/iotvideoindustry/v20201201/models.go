@@ -4176,7 +4176,7 @@ type DescribeLiveStreamRequestParams struct {
 	// 频道ID
 	LiveChannelId *string `json:"LiveChannelId,omitempty" name:"LiveChannelId"`
 
-	// 过期时间
+	// 过期时间 秒级unix时间戳
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
@@ -4186,7 +4186,7 @@ type DescribeLiveStreamRequest struct {
 	// 频道ID
 	LiveChannelId *string `json:"LiveChannelId,omitempty" name:"LiveChannelId"`
 
-	// 过期时间
+	// 过期时间 秒级unix时间戳
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 

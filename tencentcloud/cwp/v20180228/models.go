@@ -9490,6 +9490,94 @@ func (r *DescribeBruteAttackRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClientExceptionRequestParams struct {
+	// 客户端异常类型 1:客户端离线，2:客户端卸载
+	ExceptionType *int64 `json:"ExceptionType,omitempty" name:"ExceptionType"`
+
+	// 分页的偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，不为0，最大值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 起始时间 `2006-01-02 15:04:05` 格式
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间 `2006-01-02 15:04:05` 格式
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type DescribeClientExceptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户端异常类型 1:客户端离线，2:客户端卸载
+	ExceptionType *int64 `json:"ExceptionType,omitempty" name:"ExceptionType"`
+
+	// 分页的偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，不为0，最大值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 起始时间 `2006-01-02 15:04:05` 格式
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间 `2006-01-02 15:04:05` 格式
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeClientExceptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientExceptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ExceptionType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientExceptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientExceptionResponseParams struct {
+	// 事件总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 事件详情
+	Records []*RecordInfo `json:"Records,omitempty" name:"Records"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClientExceptionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClientExceptionResponseParams `json:"Response"`
+}
+
+func (r *DescribeClientExceptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientExceptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeComponentStatisticsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -20324,6 +20412,26 @@ type ProtectStat struct {
 
 	// 数量
 	Num *uint64 `json:"Num,omitempty" name:"Num"`
+}
+
+type RecordInfo struct {
+	// 主机ip
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 主机实例id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 客户端离线时间
+	OfflineTime *string `json:"OfflineTime,omitempty" name:"OfflineTime"`
+
+	// 客户端卸载时间
+	UninstallTime *string `json:"UninstallTime,omitempty" name:"UninstallTime"`
+
+	// 客户端卸载调用链
+	UninstallCmd *string `json:"UninstallCmd,omitempty" name:"UninstallCmd"`
+
+	// 客户端uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 // Predefined struct for user

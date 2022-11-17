@@ -30,6 +30,9 @@ type AddDeviceRequestParams struct {
 
 	// 新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
 	DataKey *string `json:"DataKey,omitempty" name:"DataKey"`
+
+	// 是否设置预置密钥
+	Encrypted *bool `json:"Encrypted,omitempty" name:"Encrypted"`
 }
 
 type AddDeviceRequest struct {
@@ -43,6 +46,9 @@ type AddDeviceRequest struct {
 
 	// 新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
 	DataKey *string `json:"DataKey,omitempty" name:"DataKey"`
+
+	// 是否设置预置密钥
+	Encrypted *bool `json:"Encrypted,omitempty" name:"Encrypted"`
 }
 
 func (r *AddDeviceRequest) ToJsonString() string {
@@ -60,6 +66,7 @@ func (r *AddDeviceRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "Remark")
 	delete(f, "DataKey")
+	delete(f, "Encrypted")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddDeviceRequest has unknown keys!", "")
 	}
@@ -68,11 +75,15 @@ func (r *AddDeviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddDeviceResponseParams struct {
-	// 后台生成的base64字符串密钥
+	// 经过加密算法加密后的base64格式密钥
 	DataKey *string `json:"DataKey,omitempty" name:"DataKey"`
 
 	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 签名字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Signature *string `json:"Signature,omitempty" name:"Signature"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -336,6 +336,9 @@ type CreateCustomizationRequestParams struct {
 
 	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+
+	// 模型名称，名称长度不超过36，默认为BizId。
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
 }
 
 type CreateCustomizationRequest struct {
@@ -346,6 +349,9 @@ type CreateCustomizationRequest struct {
 
 	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+
+	// 模型名称，名称长度不超过36，默认为BizId。
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
 }
 
 func (r *CreateCustomizationRequest) ToJsonString() string {
@@ -362,6 +368,7 @@ func (r *CreateCustomizationRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BizId")
 	delete(f, "TextUrl")
+	delete(f, "ModelName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomizationRequest has unknown keys!", "")
 	}
@@ -464,8 +471,17 @@ type CustomizationConfigs struct {
 	// 模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
-	// 模型状态，-1下线状态，1上线状态, 0训练中, -2训练失败
+	// 模型状态，-1下线状态，1上线状态, 0训练中, -2训练失败, 3上线中, 4下线中
 	ModelState *int64 `json:"ModelState,omitempty" name:"ModelState"`
+
+	// 模型名称
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+
+	// 更新时间，11位时间戳
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 // Predefined struct for user
@@ -1407,7 +1423,7 @@ type ModifyCustomizationRequestParams struct {
 	// 应用 ID，登录控制台创建应用得到的AppID
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 文本文件
+	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
 
 	// 要修改的模型ID
@@ -1420,7 +1436,7 @@ type ModifyCustomizationRequest struct {
 	// 应用 ID，登录控制台创建应用得到的AppID
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 文本文件
+	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
 
 	// 要修改的模型ID

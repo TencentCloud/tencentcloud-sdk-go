@@ -170,6 +170,74 @@ func (r *BindOrganizationMemberAuthAccountResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type CancelOrganizationMemberAuthAccountRequestParams struct {
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 组织子账号Uin。
+	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitempty" name:"OrgSubAccountUin"`
+}
+
+type CancelOrganizationMemberAuthAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 组织子账号Uin。
+	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitempty" name:"OrgSubAccountUin"`
+}
+
+func (r *CancelOrganizationMemberAuthAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelOrganizationMemberAuthAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	delete(f, "PolicyId")
+	delete(f, "OrgSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelOrganizationMemberAuthAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelOrganizationMemberAuthAccountResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CancelOrganizationMemberAuthAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelOrganizationMemberAuthAccountResponseParams `json:"Response"`
+}
+
+func (r *CancelOrganizationMemberAuthAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelOrganizationMemberAuthAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrganizationMemberPolicyRequestParams struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
@@ -543,6 +611,89 @@ func (r *DescribeOrganizationAuthNodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeOrganizationAuthNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationMemberAuthAccountsRequestParams struct {
+	// 偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+type DescribeOrganizationMemberAuthAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *DescribeOrganizationMemberAuthAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationMemberAuthAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "MemberUin")
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationMemberAuthAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationMemberAuthAccountsResponseParams struct {
+	// 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OrgMemberAuthAccount `json:"Items,omitempty" name:"Items"`
+
+	// 总数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationMemberAuthAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationMemberAuthAccountsResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationMemberAuthAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationMemberAuthAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1250,6 +1401,44 @@ type OrgMember struct {
 	// 成员权限状态 已确认：Confirmed ，待确认：UnConfirmed
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PermissionStatus *string `json:"PermissionStatus,omitempty" name:"PermissionStatus"`
+}
+
+type OrgMemberAuthAccount struct {
+	// 组织子账号Uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgSubAccountUin *int64 `json:"OrgSubAccountUin,omitempty" name:"OrgSubAccountUin"`
+
+	// 策略ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 身份ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityId *int64 `json:"IdentityId,omitempty" name:"IdentityId"`
+
+	// 身份角色名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityRoleName *string `json:"IdentityRoleName,omitempty" name:"IdentityRoleName"`
+
+	// 身份角色别名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityRoleAliasName *string `json:"IdentityRoleAliasName,omitempty" name:"IdentityRoleAliasName"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 子账号名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgSubAccountName *string `json:"OrgSubAccountName,omitempty" name:"OrgSubAccountName"`
 }
 
 type OrgMemberAuthIdentity struct {

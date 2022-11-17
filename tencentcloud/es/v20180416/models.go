@@ -1733,6 +1733,9 @@ type DescribeLogstashInstancesRequestParams struct {
 
 	// VpcId 筛选项
 	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
+
+	// 标签信息列表
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
 }
 
 type DescribeLogstashInstancesRequest struct {
@@ -1761,6 +1764,9 @@ type DescribeLogstashInstancesRequest struct {
 
 	// VpcId 筛选项
 	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
+
+	// 标签信息列表
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
 }
 
 func (r *DescribeLogstashInstancesRequest) ToJsonString() string {
@@ -1783,6 +1789,7 @@ func (r *DescribeLogstashInstancesRequest) FromJsonString(s string) error {
 	delete(f, "OrderByKey")
 	delete(f, "OrderByType")
 	delete(f, "VpcIds")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogstashInstancesRequest has unknown keys!", "")
 	}
@@ -2722,6 +2729,18 @@ type LogstashInstanceInfo struct {
 	// 可维护时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
+
+	// CPU数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuNum *uint64 `json:"CpuNum,omitempty" name:"CpuNum"`
+
+	// 实例标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
+
+	// 内存大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 }
 
 type LogstashNodeInfo struct {
@@ -3215,6 +3234,12 @@ type RestartNodesRequestParams struct {
 
 	// 是否强制重启
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
+
+	// 可选重启模式"in-place","blue-green"，分别表示重启，蓝绿重启；默认值为"in-place"
+	RestartMode *string `json:"RestartMode,omitempty" name:"RestartMode"`
+
+	// 节点状态，在蓝绿模式中使用；离线节点蓝绿有风险
+	IsOffline *bool `json:"IsOffline,omitempty" name:"IsOffline"`
 }
 
 type RestartNodesRequest struct {
@@ -3228,6 +3253,12 @@ type RestartNodesRequest struct {
 
 	// 是否强制重启
 	ForceRestart *bool `json:"ForceRestart,omitempty" name:"ForceRestart"`
+
+	// 可选重启模式"in-place","blue-green"，分别表示重启，蓝绿重启；默认值为"in-place"
+	RestartMode *string `json:"RestartMode,omitempty" name:"RestartMode"`
+
+	// 节点状态，在蓝绿模式中使用；离线节点蓝绿有风险
+	IsOffline *bool `json:"IsOffline,omitempty" name:"IsOffline"`
 }
 
 func (r *RestartNodesRequest) ToJsonString() string {
@@ -3245,6 +3276,8 @@ func (r *RestartNodesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "NodeNames")
 	delete(f, "ForceRestart")
+	delete(f, "RestartMode")
+	delete(f, "IsOffline")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartNodesRequest has unknown keys!", "")
 	}

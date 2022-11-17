@@ -69,6 +69,9 @@ func NewAddDeviceResponse() (response *AddDeviceResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_DUPLICATEDATAKEY = "InternalError.DuplicateDataKey"
+//  INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
+//  INTERNALERROR_UNDEFINEDENCRYPTEDKEY = "InternalError.UndefinedEncryptedKey"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) AddDevice(request *AddDeviceRequest) (response *AddDeviceResponse, err error) {
     return c.AddDeviceWithContext(context.Background(), request)
@@ -80,6 +83,9 @@ func (c *Client) AddDevice(request *AddDeviceRequest) (response *AddDeviceRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_DUPLICATEDATAKEY = "InternalError.DuplicateDataKey"
+//  INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
+//  INTERNALERROR_UNDEFINEDENCRYPTEDKEY = "InternalError.UndefinedEncryptedKey"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceRequest) (response *AddDeviceResponse, err error) {
     if request == nil {

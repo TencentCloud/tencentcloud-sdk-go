@@ -26,11 +26,20 @@ const (
 	// 请求控制器发生错误。
 	INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 
+	// 设备密钥已存在。
+	INTERNALERROR_DUPLICATEDATAKEY = "InternalError.DuplicateDataKey"
+
+	// 设备名已存在。
+	INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
+
 	// 文件读写异常。
 	INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
 
 	// 智研流量数据请求错误。
 	INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+
+	// 预置密钥尚未创建。
+	INTERNALERROR_UNDEFINEDENCRYPTEDKEY = "InternalError.UndefinedEncryptedKey"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"

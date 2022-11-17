@@ -459,6 +459,9 @@ type CreateFunctionRequestParams struct {
 
 	// HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
 	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitempty" name:"ProtocolParams"`
+
+	// 单实例多并发配置。只支持Web函数。
+	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitempty" name:"InstanceConcurrencyConfig"`
 }
 
 type CreateFunctionRequest struct {
@@ -541,6 +544,9 @@ type CreateFunctionRequest struct {
 
 	// HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
 	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitempty" name:"ProtocolParams"`
+
+	// 单实例多并发配置。只支持Web函数。
+	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitempty" name:"InstanceConcurrencyConfig"`
 }
 
 func (r *CreateFunctionRequest) ToJsonString() string {
@@ -581,6 +587,7 @@ func (r *CreateFunctionRequest) FromJsonString(s string) error {
 	delete(f, "TraceEnable")
 	delete(f, "ProtocolType")
 	delete(f, "ProtocolParams")
+	delete(f, "InstanceConcurrencyConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFunctionRequest has unknown keys!", "")
 	}
@@ -2460,6 +2467,20 @@ type ImageConfig struct {
 	// 容器的启动参数。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 CMD。传入规范，以“空格”作为参数的分割标识，例如 -u app.py
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Args *string `json:"Args,omitempty" name:"Args"`
+
+	// 镜像加速开关，默认False
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerImageAccelerate *bool `json:"ContainerImageAccelerate,omitempty" name:"ContainerImageAccelerate"`
+}
+
+type InstanceConcurrencyConfig struct {
+	// 是否开启智能动态并发。'FALSE'时是静态并发。''时取消多并发配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DynamicEnabled *string `json:"DynamicEnabled,omitempty" name:"DynamicEnabled"`
+
+	// 单实例并发数最大值。取值范围 [1,100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConcurrency *uint64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
 }
 
 // Predefined struct for user
@@ -4602,6 +4623,9 @@ type UpdateFunctionConfigurationRequestParams struct {
 
 	// HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
 	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitempty" name:"ProtocolParams"`
+
+	// 单实例多并发配置。只支持Web函数。
+	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitempty" name:"InstanceConcurrencyConfig"`
 }
 
 type UpdateFunctionConfigurationRequest struct {
@@ -4666,6 +4690,9 @@ type UpdateFunctionConfigurationRequest struct {
 
 	// HTTP函数配置ProtocolType访问协议，当前协议可配置的参数
 	ProtocolParams *ProtocolParams `json:"ProtocolParams,omitempty" name:"ProtocolParams"`
+
+	// 单实例多并发配置。只支持Web函数。
+	InstanceConcurrencyConfig *InstanceConcurrencyConfig `json:"InstanceConcurrencyConfig,omitempty" name:"InstanceConcurrencyConfig"`
 }
 
 func (r *UpdateFunctionConfigurationRequest) ToJsonString() string {
@@ -4700,6 +4727,7 @@ func (r *UpdateFunctionConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "CfsConfig")
 	delete(f, "InitTimeout")
 	delete(f, "ProtocolParams")
+	delete(f, "InstanceConcurrencyConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFunctionConfigurationRequest has unknown keys!", "")
 	}

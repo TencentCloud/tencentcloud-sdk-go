@@ -1,3 +1,388 @@
+# Release v1.0.539
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 63 次发布
+
+发布时间：2022-11-17 06:19:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClientException](https://cloud.tencent.com/document/api/296/82997)
+
+新增数据结构：
+
+* [RecordInfo](https://cloud.tencent.com/document/api/296/19867#RecordInfo)
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 40 次发布
+
+发布时间：2022-11-17 06:25:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogstashInstances](https://cloud.tencent.com/document/api/845/77239)
+
+	* 新增入参：TagList
+
+* [RestartNodes](https://cloud.tencent.com/document/api/845/48473)
+
+	* 新增入参：RestartMode, IsOffline
+
+
+修改数据结构：
+
+* [LogstashInstanceInfo](https://cloud.tencent.com/document/api/845/30634#LogstashInstanceInfo)
+
+	* 新增成员：CpuNum, TagList, MemSize
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 29 次发布
+
+发布时间：2022-11-17 06:26:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+
+	* 新增成员：KeywordOrder, KeywordPage, RelativeLocation, KeywordIndexes
+
+
+### 第 28 次发布
+
+发布时间：2022-11-16 16:58:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)
+
+	* 新增出参：ReportId, Status
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 46 次发布
+
+发布时间：2022-11-17 06:26:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：KeywordPage, RelativeLocation, KeywordIndexes
+
+
+### 第 45 次发布
+
+发布时间：2022-11-16 16:57:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowSignReview](https://cloud.tencent.com/document/api/1420/78953)
+
+	* 新增入参：RecipientId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 27 次发布
+
+发布时间：2022-11-17 06:27:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCustomization](https://cloud.tencent.com/document/api/607/78906)
+
+	* 新增入参：ModelName
+
+
+修改数据结构：
+
+* [CustomizationConfigs](https://cloud.tencent.com/document/api/607/35375#CustomizationConfigs)
+
+	* 新增成员：ModelName, TextUrl, UpdateTime
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 36 次发布
+
+发布时间：2022-11-17 06:33:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyInstancesBundle](https://cloud.tencent.com/document/api/1207/82998)
+
+
+
+## 移动网络加速(mna) 版本：2021-01-19
+
+### 第 8 次发布
+
+发布时间：2022-11-17 06:34:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddDevice](https://cloud.tencent.com/document/api/1385/80483)
+
+	* 新增入参：Encrypted
+
+	* 新增出参：Signature
+
+
+
+
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 14 次发布
+
+发布时间：2022-11-17 06:38:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelOrganizationMemberAuthAccount](https://cloud.tencent.com/document/api/850/83000)
+* [DescribeOrganizationMemberAuthAccounts](https://cloud.tencent.com/document/api/850/82999)
+
+新增数据结构：
+
+* [OrgMemberAuthAccount](https://cloud.tencent.com/document/api/850/67060#OrgMemberAuthAccount)
+
+
+
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 47 次发布
+
+发布时间：2022-11-17 06:40:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：InstanceConcurrencyConfig
+
+* [UpdateFunctionConfiguration](https://cloud.tencent.com/document/api/583/18580)
+
+	* 新增入参：InstanceConcurrencyConfig
+
+
+新增数据结构：
+
+* [InstanceConcurrencyConfig](https://cloud.tencent.com/document/api/583/17244#InstanceConcurrencyConfig)
+
+修改数据结构：
+
+* [ImageConfig](https://cloud.tencent.com/document/api/583/17244#ImageConfig)
+
+	* 新增成员：ContainerImageAccelerate
+
+
+
+
+## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 4 次发布
+
+发布时间：2022-11-17 06:47:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddLabel](https://cloud.tencent.com/document/api/1439/83041)
+* [CancelAuthorityIssuer](https://cloud.tencent.com/document/api/1439/83040)
+* [CheckChain](https://cloud.tencent.com/document/api/1439/83039)
+* [CheckDidDeploy](https://cloud.tencent.com/document/api/1439/83038)
+* [CreateDidService](https://cloud.tencent.com/document/api/1439/83037)
+* [CreateLabel](https://cloud.tencent.com/document/api/1439/83036)
+* [CreateTDidByPrivateKey](https://cloud.tencent.com/document/api/1439/83035)
+* [DeployByName](https://cloud.tencent.com/document/api/1439/83034)
+* [DownCpt](https://cloud.tencent.com/document/api/1439/83033)
+* [EnableHash](https://cloud.tencent.com/document/api/1439/83032)
+* [GetAgencyTDid](https://cloud.tencent.com/document/api/1439/83031)
+* [GetAuthoritiesList](https://cloud.tencent.com/document/api/1439/83030)
+* [GetConsortiumClusterList](https://cloud.tencent.com/document/api/1439/83029)
+* [GetConsortiumList](https://cloud.tencent.com/document/api/1439/83028)
+* [GetCptInfo](https://cloud.tencent.com/document/api/1439/83027)
+* [GetCptList](https://cloud.tencent.com/document/api/1439/83026)
+* [GetCredentialCptRank](https://cloud.tencent.com/document/api/1439/83025)
+* [GetCredentialIssueRank](https://cloud.tencent.com/document/api/1439/83024)
+* [GetCredentialIssueTrend](https://cloud.tencent.com/document/api/1439/83023)
+* [GetCredentialStatus](https://cloud.tencent.com/document/api/1439/83022)
+* [GetDataPanel](https://cloud.tencent.com/document/api/1439/83021)
+* [GetDeployInfo](https://cloud.tencent.com/document/api/1439/83020)
+* [GetDeployList](https://cloud.tencent.com/document/api/1439/83019)
+* [GetDidClusterDetail](https://cloud.tencent.com/document/api/1439/83018)
+* [GetDidClusterList](https://cloud.tencent.com/document/api/1439/83017)
+* [GetDidDetail](https://cloud.tencent.com/document/api/1439/83016)
+* [GetDidList](https://cloud.tencent.com/document/api/1439/83015)
+* [GetDidRegisterTrend](https://cloud.tencent.com/document/api/1439/83014)
+* [GetDidServiceDetail](https://cloud.tencent.com/document/api/1439/83013)
+* [GetDidServiceList](https://cloud.tencent.com/document/api/1439/83012)
+* [GetGroupList](https://cloud.tencent.com/document/api/1439/83011)
+* [GetLabelList](https://cloud.tencent.com/document/api/1439/83010)
+* [GetPolicyList](https://cloud.tencent.com/document/api/1439/83009)
+* [GetPublicKey](https://cloud.tencent.com/document/api/1439/83008)
+* [QueryPolicy](https://cloud.tencent.com/document/api/1439/83007)
+* [RecognizeAuthorityIssuer](https://cloud.tencent.com/document/api/1439/83006)
+* [RegisterClaimPolicy](https://cloud.tencent.com/document/api/1439/83005)
+* [RegisterCpt](https://cloud.tencent.com/document/api/1439/83004)
+* [RegisterIssuer](https://cloud.tencent.com/document/api/1439/83003)
+* [RemoveHash](https://cloud.tencent.com/document/api/1439/83002)
+* [VerifyPurchase](https://cloud.tencent.com/document/api/1439/83001)
+
+新增数据结构：
+
+* [Authority](https://cloud.tencent.com/document/api/1439/60283#Authority)
+* [BcosClusterItem](https://cloud.tencent.com/document/api/1439/60283#BcosClusterItem)
+* [ConsortiumItem](https://cloud.tencent.com/document/api/1439/60283#ConsortiumItem)
+* [Contract](https://cloud.tencent.com/document/api/1439/60283#Contract)
+* [CptIssueRank](https://cloud.tencent.com/document/api/1439/60283#CptIssueRank)
+* [CptListData](https://cloud.tencent.com/document/api/1439/60283#CptListData)
+* [DidCluster](https://cloud.tencent.com/document/api/1439/60283#DidCluster)
+* [DidData](https://cloud.tencent.com/document/api/1439/60283#DidData)
+* [DidServiceInfo](https://cloud.tencent.com/document/api/1439/60283#DidServiceInfo)
+* [Group](https://cloud.tencent.com/document/api/1439/60283#Group)
+* [Identity](https://cloud.tencent.com/document/api/1439/60283#Identity)
+* [Label](https://cloud.tencent.com/document/api/1439/60283#Label)
+* [Policy](https://cloud.tencent.com/document/api/1439/60283#Policy)
+* [Task](https://cloud.tencent.com/document/api/1439/60283#Task)
+* [Trend](https://cloud.tencent.com/document/api/1439/60283#Trend)
+
+
+
+## 弹性微服务 TEM(tem) 版本：2021-07-01
+
+### 第 35 次发布
+
+发布时间：2022-11-17 06:48:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HorizontalAutoscaler](https://cloud.tencent.com/document/api/1371/60171#HorizontalAutoscaler)
+
+	* 新增成员：DoubleThreshold
+
+
+
+
+## 弹性微服务 TEM(tem) 版本：2020-12-21
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 13 次发布
+
+发布时间：2022-11-17 06:49:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindZoneToPlan](https://cloud.tencent.com/document/api/1552/83042)
+
+修改接口：
+
+* [CreateZone](https://cloud.tencent.com/document/api/1552/80719)
+
+	* 新增入参：AliasZoneName
+
+* [DescribeZones](https://cloud.tencent.com/document/api/1552/80713)
+
+	* 新增入参：Order, Direction
+
+* [ModifyZone](https://cloud.tencent.com/document/api/1552/80709)
+
+	* 新增入参：AliasZoneName
+
+
+修改数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
+
+	* 新增成员：ActiveStatus, AliasZoneName
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.538
 
 ## 弹性伸缩(as) 版本：2018-04-19

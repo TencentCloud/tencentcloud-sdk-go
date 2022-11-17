@@ -756,6 +756,9 @@ type ChannelCreateFlowSignReviewRequestParams struct {
 	// 审核原因 
 	// 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
 	ReviewMessage *string `json:"ReviewMessage,omitempty" name:"ReviewMessage"`
+
+	// 签署节点审核时需要指定
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 }
 
 type ChannelCreateFlowSignReviewRequest struct {
@@ -776,6 +779,9 @@ type ChannelCreateFlowSignReviewRequest struct {
 	// 审核原因 
 	// 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
 	ReviewMessage *string `json:"ReviewMessage,omitempty" name:"ReviewMessage"`
+
+	// 签署节点审核时需要指定
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 }
 
 func (r *ChannelCreateFlowSignReviewRequest) ToJsonString() string {
@@ -794,6 +800,7 @@ func (r *ChannelCreateFlowSignReviewRequest) FromJsonString(s string) error {
 	delete(f, "FlowId")
 	delete(f, "ReviewType")
 	delete(f, "ReviewMessage")
+	delete(f, "RecipientId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowSignReviewRequest has unknown keys!", "")
 	}
@@ -1340,7 +1347,8 @@ type Component struct {
 	// DYNAMIC_TABLE - 动态表格控件；
 	// ATTACHMENT - 附件控件；
 	// SELECTOR - 选择器控件；
-	// DATE - 日期控件；默认是格式化为xxxx年xx月xx日
+	// DATE - 日期控件；默认是格式化为xxxx年xx月xx日；
+	// DISTRICT - 省市区行政区划控件；
 	// 
 	// 如果是SignComponent控件类型，则可选的字段为
 	// SIGN_SEAL - 签署印章控件；
@@ -1388,12 +1396,27 @@ type Component struct {
 	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
 
 	// 参数控件样式，json格式表述
+	// 
 	// 不同类型的控件会有部分非通用参数
+	// 
 	// TEXT/MULTI_LINE_TEXT控件可以指定
 	// 1 Font：目前只支持黑体、宋体
 	// 2 FontSize： 范围12-72
 	// 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
 	// 例如：{"FontSize":12}
+	// 
+	// ComponentType为FILL_IMAGE时，支持以下参数：
+	// NotMakeImageCenter：bool。是否设置图片居中。false：居中（默认）。 true: 不居中
+	// FillMethod: int. 填充方式。0-铺满（默认）；1-等比例缩放
+	// 
+	// ComponentType为SIGN_SIGNATURE类型可以控制签署方式
+	// {“ComponentTypeLimit”: [“xxx”]}
+	// xxx可以为：
+	// HANDWRITE – 手写签名
+	// BORDERLESS_ESIGN – 自动生成无边框腾讯体
+	// OCR_ESIGN -- AI智能识别手写签名
+	// ESIGN -- 个人印章类型
+	// 如：{“ComponentTypeLimit”: [“BORDERLESS_ESIGN”]}
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
 	// 控件填充vaule，ComponentType和传入值类型对应关系：
@@ -1424,6 +1447,15 @@ type Component struct {
 
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
+
+	// 指定关键字页码
+	KeywordPage *int64 `json:"KeywordPage,omitempty" name:"KeywordPage"`
+
+	// 关键字位置模式
+	RelativeLocation *string `json:"RelativeLocation,omitempty" name:"RelativeLocation"`
+
+	// 关键字索引
+	KeywordIndexes []*int64 `json:"KeywordIndexes,omitempty" name:"KeywordIndexes"`
 }
 
 // Predefined struct for user

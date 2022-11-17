@@ -1178,7 +1178,7 @@ func NewCreateFlowEvidenceReportResponse() (response *CreateFlowEvidenceReportRe
 }
 
 // CreateFlowEvidenceReport
-// 创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
+// 创建出证报告，返回报告 ID。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -1196,7 +1196,7 @@ func (c *Client) CreateFlowEvidenceReport(request *CreateFlowEvidenceReportReque
 }
 
 // CreateFlowEvidenceReport
-// 创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
+// 创建出证报告，返回报告 ID。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

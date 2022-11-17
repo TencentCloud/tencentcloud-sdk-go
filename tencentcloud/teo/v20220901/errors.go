@@ -236,8 +236,14 @@ const (
 	// 无效的缓存键。
 	INVALIDPARAMETER_KEYRULESINVALIDQUERYSTRINGVALUE = "InvalidParameter.KeyRulesInvalidQueryStringValue"
 
+	// 参数长度超过限制。
+	INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = "InvalidParameter.LengthExceedsLimit"
+
 	// 参数错误。
 	INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+
+	// 套餐不存在。
+	INVALIDPARAMETER_PLANNOTFOUND = "InvalidParameter.PlanNotFound"
 
 	// 参数错误
 	INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
@@ -253,6 +259,9 @@ const (
 
 	// 文件上传链接存在问题。
 	INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
+
+	// 站点已被绑定。
+	INVALIDPARAMETER_ZONEHASBEENBOUND = "InvalidParameter.ZoneHasBeenBound"
 
 	// 站点不存在。
 	INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
@@ -334,6 +343,9 @@ const (
 
 	// 已存在相同的别称域名。
 	RESOURCEINUSE_DUPLICATENAME = "ResourceInUse.DuplicateName"
+
+	// 资源已被泛域名占用。
+	RESOURCEINUSE_GENERICHOST = "ResourceInUse.GenericHost"
 
 	// 资源被本账号的子域名占用。
 	RESOURCEINUSE_HOST = "ResourceInUse.Host"

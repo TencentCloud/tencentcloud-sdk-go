@@ -938,11 +938,11 @@ type DBInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountMode *string `json:"AccountMode,omitempty" name:"AccountMode"`
 
-	// 临时秘钥Id
+	// 临时密钥Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
 
-	// 临时秘钥Key
+	// 临时密钥Key
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
 
@@ -1470,13 +1470,13 @@ type DescribeMigrateDBInstancesRequestParams struct {
 	// 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
 	AccountMode *string `json:"AccountMode,omitempty" name:"AccountMode"`
 
-	// 临时秘钥Id，若为跨账号资源此项必填
+	// 临时密钥Id，若为跨账号资源此项必填
 	TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
 
-	// 临时秘钥Key，若为跨账号资源此项必填
+	// 临时密钥Key，若为跨账号资源此项必填
 	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
 
-	// 临时秘钥Token，若为跨账号资源此项必填
+	// 临时密钥Token，若为跨账号资源此项必填
 	TmpToken *string `json:"TmpToken,omitempty" name:"TmpToken"`
 }
 
@@ -1504,13 +1504,13 @@ type DescribeMigrateDBInstancesRequest struct {
 	// 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
 	AccountMode *string `json:"AccountMode,omitempty" name:"AccountMode"`
 
-	// 临时秘钥Id，若为跨账号资源此项必填
+	// 临时密钥Id，若为跨账号资源此项必填
 	TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
 
-	// 临时秘钥Key，若为跨账号资源此项必填
+	// 临时密钥Key，若为跨账号资源此项必填
 	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
 
-	// 临时秘钥Token，若为跨账号资源此项必填
+	// 临时密钥Token，若为跨账号资源此项必填
 	TmpToken *string `json:"TmpToken,omitempty" name:"TmpToken"`
 }
 
@@ -2345,11 +2345,11 @@ type Endpoint struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountRole *string `json:"AccountRole,omitempty" name:"AccountRole"`
 
-	// 临时秘钥Id，如果为跨账号实例此项必填
+	// 临时密钥Id，如果为跨账号实例此项必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
 
-	// 临时秘钥Key，如果为跨账号实例此项必填
+	// 临时密钥Key，如果为跨账号实例此项必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
 

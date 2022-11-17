@@ -58,7 +58,7 @@ type CreateSessionRequestParams struct {
 	// 帧率，可设置为30、45、60、90、120、144
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 【已废弃】只在TrylockWorker时生效
+	// 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
 	// 【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
@@ -118,7 +118,7 @@ type CreateSessionRequest struct {
 	// 帧率，可设置为30、45、60、90、120、144
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 【已废弃】只在TrylockWorker时生效
+	// 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
 	// 【已废弃】优化项，便于客户灰度开启新的优化项，默认为0
@@ -606,7 +606,7 @@ type TrylockWorkerRequestParams struct {
 	// 【废弃】资源池编号
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 
-	// 【必选】用户IP，用于就近调度，不填将严重影响用户体验
+	// 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
 	// 分组ID
@@ -628,7 +628,7 @@ type TrylockWorkerRequest struct {
 	// 【废弃】资源池编号
 	SetNo *uint64 `json:"SetNo,omitempty" name:"SetNo"`
 
-	// 【必选】用户IP，用于就近调度，不填将严重影响用户体验
+	// 【必选】用户IP，用户客户端的公网IP，用于就近调度，不填将严重影响用户体验
 	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
 
 	// 分组ID

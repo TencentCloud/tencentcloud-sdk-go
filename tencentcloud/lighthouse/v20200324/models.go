@@ -4830,6 +4830,80 @@ func (r *ModifyInstancesAttributeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyInstancesBundleRequestParams struct {
+	// 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为30。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
+	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
+
+	// 是否自动抵扣代金券。取值范围：
+	// true：表示自动抵扣代金券
+	// false：表示不自动抵扣代金券
+	// 默认取值：false。
+	AutoVoucher *bool `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+}
+
+type ModifyInstancesBundleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为30。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
+	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
+
+	// 是否自动抵扣代金券。取值范围：
+	// true：表示自动抵扣代金券
+	// false：表示不自动抵扣代金券
+	// 默认取值：false。
+	AutoVoucher *bool `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+}
+
+func (r *ModifyInstancesBundleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancesBundleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "BundleId")
+	delete(f, "AutoVoucher")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstancesBundleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstancesBundleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyInstancesBundleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstancesBundleResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstancesBundleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstancesBundleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyInstancesLoginKeyPairAttributeRequestParams struct {
 	// 实例 ID 列表。每次请求批量实例的上限为 100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`

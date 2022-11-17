@@ -276,7 +276,8 @@ type Component struct {
 	// DYNAMIC_TABLE - 动态表格控件；
 	// ATTACHMENT - 附件控件；
 	// SELECTOR - 选择器控件；
-	// DATE - 日期控件；默认是格式化为xxxx年xx月xx日
+	// DATE - 日期控件；默认是格式化为xxxx年xx月xx日；
+	// DISTRICT - 省市区行政区划控件；
 	// 
 	// 如果是SignComponent控件类型，则可选的字段为
 	// SIGN_SEAL - 签署印章控件；
@@ -317,6 +318,12 @@ type Component struct {
 	ComponentRequired *bool `json:"ComponentRequired,omitempty" name:"ComponentRequired"`
 
 	// 扩展参数：
+	// 为JSON格式。
+	// 
+	// ComponentType为FILL_IMAGE时，支持以下参数：
+	// NotMakeImageCenter：bool。是否设置图片居中。false：居中（默认）。 true: 不居中
+	// FillMethod: int. 填充方式。0-铺满（默认）；1-等比例缩放
+	// 
 	// ComponentType为SIGN_SIGNATURE类型可以控制签署方式
 	// {“ComponentTypeLimit”: [“xxx”]}
 	// xxx可以为：
@@ -358,6 +365,18 @@ type Component struct {
 
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
+
+	// 指定关键字排序规则
+	KeywordOrder *string `json:"KeywordOrder,omitempty" name:"KeywordOrder"`
+
+	// 指定关键字页码
+	KeywordPage *int64 `json:"KeywordPage,omitempty" name:"KeywordPage"`
+
+	// 关键字位置模式
+	RelativeLocation *string `json:"RelativeLocation,omitempty" name:"RelativeLocation"`
+
+	// 关键字索引
+	KeywordIndexes []*int64 `json:"KeywordIndexes,omitempty" name:"KeywordIndexes"`
 }
 
 // Predefined struct for user
@@ -955,8 +974,18 @@ func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowEvidenceReportResponseParams struct {
-	// 出证报告 URL（有效期5分钟）
+	// 出证报告 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+
+	// 废除，字段无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+
+	// 执行中：EvidenceStatusExecuting
+	// 成功：EvidenceStatusSuccess
+	// 失败：EvidenceStatusFailed
+	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

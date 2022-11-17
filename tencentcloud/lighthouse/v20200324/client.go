@@ -4085,6 +4085,90 @@ func (c *Client) ModifyInstancesAttributeWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyInstancesBundleRequest() (request *ModifyInstancesBundleRequest) {
+    request = &ModifyInstancesBundleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyInstancesBundle")
+    
+    
+    return
+}
+
+func NewModifyInstancesBundleResponse() (response *ModifyInstancesBundleResponse) {
+    response = &ModifyInstancesBundleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstancesBundle
+// 本接口(ModifyInstancesBundle)用于变更一个或多个轻量应用服务器实例套餐。
+//
+// * 只有状态为 RUNNING，STOPPED的实例才可以进行此操作。
+//
+// * 支持批量操作。每次请求批量实例的上限为 30。
+//
+// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
+//  FAILEDOPERATION_MODIFYINSTANCESBUNDLEFAILED = "FailedOperation.ModifyInstancesBundleFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = "OperationDenied.BundleNotSupportModify"
+//  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) ModifyInstancesBundle(request *ModifyInstancesBundleRequest) (response *ModifyInstancesBundleResponse, err error) {
+    return c.ModifyInstancesBundleWithContext(context.Background(), request)
+}
+
+// ModifyInstancesBundle
+// 本接口(ModifyInstancesBundle)用于变更一个或多个轻量应用服务器实例套餐。
+//
+// * 只有状态为 RUNNING，STOPPED的实例才可以进行此操作。
+//
+// * 支持批量操作。每次请求批量实例的上限为 30。
+//
+// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
+//  FAILEDOPERATION_MODIFYINSTANCESBUNDLEFAILED = "FailedOperation.ModifyInstancesBundleFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = "OperationDenied.BundleNotSupportModify"
+//  OPERATIONDENIED_INSTANCECREATING = "OperationDenied.InstanceCreating"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+func (c *Client) ModifyInstancesBundleWithContext(ctx context.Context, request *ModifyInstancesBundleRequest) (response *ModifyInstancesBundleResponse, err error) {
+    if request == nil {
+        request = NewModifyInstancesBundleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstancesBundle require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstancesBundleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstancesLoginKeyPairAttributeRequest() (request *ModifyInstancesLoginKeyPairAttributeRequest) {
     request = &ModifyInstancesLoginKeyPairAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -228,6 +228,7 @@ func NewCreateCustomizationResponse() (response *CreateCustomizationResponse) {
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) CreateCustomization(request *CreateCustomizationRequest) (response *CreateCustomizationResponse, err error) {
     return c.CreateCustomizationWithContext(context.Background(), request)
 }
@@ -237,6 +238,7 @@ func (c *Client) CreateCustomization(request *CreateCustomizationRequest) (respo
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) CreateCustomizationWithContext(ctx context.Context, request *CreateCustomizationRequest) (response *CreateCustomizationResponse, err error) {
     if request == nil {
         request = NewCreateCustomizationRequest()
@@ -276,6 +278,7 @@ func NewCreateScanUserResponse() (response *CreateScanUserResponse) {
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
     return c.CreateScanUserWithContext(context.Background(), request)
 }
@@ -285,6 +288,7 @@ func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *Creat
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) CreateScanUserWithContext(ctx context.Context, request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
     if request == nil {
         request = NewCreateScanUserRequest()
@@ -323,7 +327,7 @@ func NewDeleteCustomizationResponse() (response *DeleteCustomizationResponse) {
 // 用户通过该接口可以删除语音消息转文本自学习模型
 //
 // 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) DeleteCustomization(request *DeleteCustomizationRequest) (response *DeleteCustomizationResponse, err error) {
     return c.DeleteCustomizationWithContext(context.Background(), request)
 }
@@ -332,7 +336,7 @@ func (c *Client) DeleteCustomization(request *DeleteCustomizationRequest) (respo
 // 用户通过该接口可以删除语音消息转文本自学习模型
 //
 // 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) DeleteCustomizationWithContext(ctx context.Context, request *DeleteCustomizationRequest) (response *DeleteCustomizationResponse, err error) {
     if request == nil {
         request = NewDeleteCustomizationRequest()
@@ -916,6 +920,7 @@ func NewGetCustomizationListResponse() (response *GetCustomizationListResponse) 
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (response *GetCustomizationListResponse, err error) {
     return c.GetCustomizationListWithContext(context.Background(), request)
 }
@@ -925,6 +930,7 @@ func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (res
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) GetCustomizationListWithContext(ctx context.Context, request *GetCustomizationListRequest) (response *GetCustomizationListResponse, err error) {
     if request == nil {
         request = NewGetCustomizationListRequest()
@@ -1031,6 +1037,7 @@ func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
     return c.ModifyCustomizationWithContext(context.Background(), request)
 }
@@ -1041,6 +1048,7 @@ func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (respo
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) ModifyCustomizationWithContext(ctx context.Context, request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
     if request == nil {
         request = NewModifyCustomizationRequest()
@@ -1079,8 +1087,7 @@ func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateRe
 // 通过该接口，用户可以修改语音消息转文本自学习模型状态，上下线自学习模型
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
     return c.ModifyCustomizationStateWithContext(context.Background(), request)
 }
@@ -1089,8 +1096,7 @@ func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateReque
 // 通过该接口，用户可以修改语音消息转文本自学习模型状态，上下线自学习模型
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
     if request == nil {
         request = NewModifyCustomizationStateRequest()

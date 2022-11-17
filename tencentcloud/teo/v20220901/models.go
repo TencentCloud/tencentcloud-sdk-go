@@ -390,6 +390,67 @@ type BillingDataFilter struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type BindZoneToPlanRequestParams struct {
+	// 未绑定套餐的站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 待绑定的目标套餐ID。
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+}
+
+type BindZoneToPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// 未绑定套餐的站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 待绑定的目标套餐ID。
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+}
+
+func (r *BindZoneToPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindZoneToPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "PlanId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindZoneToPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindZoneToPlanResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BindZoneToPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *BindZoneToPlanResponseParams `json:"Response"`
+}
+
+func (r *BindZoneToPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindZoneToPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BotConfig struct {
 	// bot开关，取值有：
 	// <li>on：开启；</li>
@@ -2539,6 +2600,9 @@ type CreateZoneRequestParams struct {
 	// <li> true：允许重复接入；</li>
 	// <li> false：不允许重复接入。</li>不填写使用默认值false。
 	AllowDuplicates *bool `json:"AllowDuplicates,omitempty" name:"AllowDuplicates"`
+
+	// 站点别名。数字、英文、-和_组合，限制20个字符。
+	AliasZoneName *string `json:"AliasZoneName,omitempty" name:"AliasZoneName"`
 }
 
 type CreateZoneRequest struct {
@@ -2562,6 +2626,9 @@ type CreateZoneRequest struct {
 	// <li> true：允许重复接入；</li>
 	// <li> false：不允许重复接入。</li>不填写使用默认值false。
 	AllowDuplicates *bool `json:"AllowDuplicates,omitempty" name:"AllowDuplicates"`
+
+	// 站点别名。数字、英文、-和_组合，限制20个字符。
+	AliasZoneName *string `json:"AliasZoneName,omitempty" name:"AliasZoneName"`
 }
 
 func (r *CreateZoneRequest) ToJsonString() string {
@@ -2581,6 +2648,7 @@ func (r *CreateZoneRequest) FromJsonString(s string) error {
 	delete(f, "JumpStart")
 	delete(f, "Tags")
 	delete(f, "AllowDuplicates")
+	delete(f, "AliasZoneName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateZoneRequest has unknown keys!", "")
 	}
@@ -9944,6 +10012,20 @@ type DescribeZonesRequestParams struct {
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段，取值有：
+	// <li> type：接入类型；</li>
+	// <li> area：加速区域；</li>
+	// <li> create-time：创建时间；</li>
+	// <li> zone-name：站点名称；</li>
+	// <li> use-time：最近使用时间；</li>
+	// <li> active-status：生效状态。</li>不填写使用默认值create-time。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方向，取值有：
+	// <li> asc：从小到大排序；</li>
+	// <li> desc：从大到小排序。</li>不填写使用默认值desc。
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
 }
 
 type DescribeZonesRequest struct {
@@ -9958,6 +10040,20 @@ type DescribeZonesRequest struct {
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段，取值有：
+	// <li> type：接入类型；</li>
+	// <li> area：加速区域；</li>
+	// <li> create-time：创建时间；</li>
+	// <li> zone-name：站点名称；</li>
+	// <li> use-time：最近使用时间；</li>
+	// <li> active-status：生效状态。</li>不填写使用默认值create-time。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方向，取值有：
+	// <li> asc：从小到大排序；</li>
+	// <li> desc：从大到小排序。</li>不填写使用默认值desc。
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
 }
 
 func (r *DescribeZonesRequest) ToJsonString() string {
@@ -9975,6 +10071,8 @@ func (r *DescribeZonesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "Direction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZonesRequest has unknown keys!", "")
 	}
@@ -13084,6 +13182,9 @@ type ModifyZoneRequestParams struct {
 
 	// 自定义站点信息，以替代系统默认分配的名称服务器。不填写保持原有配置。
 	VanityNameServers *VanityNameServers `json:"VanityNameServers,omitempty" name:"VanityNameServers"`
+
+	// 站点别名。数字、英文、-和_组合，限制20个字符。
+	AliasZoneName *string `json:"AliasZoneName,omitempty" name:"AliasZoneName"`
 }
 
 type ModifyZoneRequest struct {
@@ -13099,6 +13200,9 @@ type ModifyZoneRequest struct {
 
 	// 自定义站点信息，以替代系统默认分配的名称服务器。不填写保持原有配置。
 	VanityNameServers *VanityNameServers `json:"VanityNameServers,omitempty" name:"VanityNameServers"`
+
+	// 站点别名。数字、英文、-和_组合，限制20个字符。
+	AliasZoneName *string `json:"AliasZoneName,omitempty" name:"AliasZoneName"`
 }
 
 func (r *ModifyZoneRequest) ToJsonString() string {
@@ -13116,6 +13220,7 @@ func (r *ModifyZoneRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "Type")
 	delete(f, "VanityNameServers")
+	delete(f, "AliasZoneName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyZoneRequest has unknown keys!", "")
 	}
@@ -15221,6 +15326,16 @@ type Zone struct {
 	// 用户自定义 NS IP 信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VanityNameServersIps []*VanityNameServersIps `json:"VanityNameServersIps,omitempty" name:"VanityNameServersIps"`
+
+	// 展示状态，取值有：
+	// <li> active：已启用；</li>
+	// <li> inactive：未生效；</li>
+	// <li> paused：已停用。</li>
+	ActiveStatus *string `json:"ActiveStatus,omitempty" name:"ActiveStatus"`
+
+	// 站点别名。数字、英文、-和_组合，限制20个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasZoneName *string `json:"AliasZoneName,omitempty" name:"AliasZoneName"`
 }
 
 type ZoneSetting struct {
