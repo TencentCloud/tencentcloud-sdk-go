@@ -11440,11 +11440,19 @@ type PullStreamTaskInfo struct {
 	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 拉流源所在地域（请就近选取）：
+	// 任务创建所在地域：
 	// ap-beijing - 华北地区(北京)，
 	// ap-shanghai -华东地区(上海)，
 	// ap-guangzhou -华南地区(广州)，
-	// ap-mumbai - 印度。
+	// ap-mumbai - 印度，
+	// ap-hongkong - 香港，
+	// eu-frankfurt - 德国，
+	// ap-seoul - 韩国，
+	// ap-bangkok - 泰国，
+	// ap-singapore - 新加坡，
+	// na-siliconvalley - 美西，
+	// na-ashburn - 美东，
+	// ap-tokyo - 日本。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 点播拉流转推循环次数。

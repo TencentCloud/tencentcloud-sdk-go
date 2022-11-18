@@ -125,6 +125,60 @@ type Context struct {
 }
 
 // Predefined struct for user
+type CreateEncryptedKeyRequestParams struct {
+
+}
+
+type CreateEncryptedKeyRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateEncryptedKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEncryptedKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEncryptedKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEncryptedKeyResponseParams struct {
+	// 预置密钥
+	EncryptedKey *string `json:"EncryptedKey,omitempty" name:"EncryptedKey"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateEncryptedKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEncryptedKeyResponseParams `json:"Response"`
+}
+
+func (r *CreateEncryptedKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEncryptedKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateQosRequestParams struct {
 	// 加速业务源地址信息，SrcIpv6和（SrcIpv4+SrcPublicIpv4）二选一，目前Ipv6不可用，全部填写以Ipv4参数为准。
 	SrcAddressInfo *SrcAddressInfo `json:"SrcAddressInfo,omitempty" name:"SrcAddressInfo"`
@@ -821,6 +875,60 @@ func (r *GetFlowStatisticResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFlowStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetPublicKeyRequestParams struct {
+
+}
+
+type GetPublicKeyRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetPublicKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPublicKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPublicKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetPublicKeyResponseParams struct {
+	// 非对称公钥
+	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetPublicKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *GetPublicKeyResponseParams `json:"Response"`
+}
+
+func (r *GetPublicKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPublicKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

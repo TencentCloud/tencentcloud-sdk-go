@@ -260,4 +260,13 @@ type User struct {
 
 	// 该字段表示业务用户的简介信息，支持汉字、英文及特殊符号，长度不超过5000个汉字字符。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 该字段表示业务群聊场景时的房间ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 该字段表示消息接受者ID
+	ReceiverId *string `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 消息生成时间，精确到毫秒
+	SendTime *int64 `json:"SendTime,omitempty" name:"SendTime"`
 }

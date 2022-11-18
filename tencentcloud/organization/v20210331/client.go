@@ -188,7 +188,7 @@ func NewCancelOrganizationMemberAuthAccountResponse() (response *CancelOrganizat
 }
 
 // CancelOrganizationMemberAuthAccount
-// 取消组织成员和子账号的授权绑定关系
+// 取消组织成员和组织管理员子账号的授权关系
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
@@ -203,7 +203,7 @@ func (c *Client) CancelOrganizationMemberAuthAccount(request *CancelOrganization
 }
 
 // CancelOrganizationMemberAuthAccount
-// 取消组织成员和子账号的授权绑定关系
+// 取消组织成员和组织管理员子账号的授权关系
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
@@ -660,7 +660,7 @@ func NewDescribeOrganizationMemberAuthAccountsResponse() (response *DescribeOrga
 }
 
 // DescribeOrganizationMemberAuthAccounts
-// 获取组织成员被绑定的子账号列表
+// 获取组织成员被绑定授权关系的子账号列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -671,7 +671,7 @@ func (c *Client) DescribeOrganizationMemberAuthAccounts(request *DescribeOrganiz
 }
 
 // DescribeOrganizationMemberAuthAccounts
-// 获取组织成员被绑定的子账号列表
+// 获取组织成员被绑定授权关系的子账号列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

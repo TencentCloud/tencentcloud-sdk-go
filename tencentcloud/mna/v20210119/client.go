@@ -103,6 +103,54 @@ func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceReq
     return
 }
 
+func NewCreateEncryptedKeyRequest() (request *CreateEncryptedKeyRequest) {
+    request = &CreateEncryptedKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "CreateEncryptedKey")
+    
+    
+    return
+}
+
+func NewCreateEncryptedKeyResponse() (response *CreateEncryptedKeyResponse) {
+    response = &CreateEncryptedKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEncryptedKey
+// 通过此接口设置和更新预置密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateEncryptedKey(request *CreateEncryptedKeyRequest) (response *CreateEncryptedKeyResponse, err error) {
+    return c.CreateEncryptedKeyWithContext(context.Background(), request)
+}
+
+// CreateEncryptedKey
+// 通过此接口设置和更新预置密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateEncryptedKeyWithContext(ctx context.Context, request *CreateEncryptedKeyRequest) (response *CreateEncryptedKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateEncryptedKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEncryptedKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEncryptedKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateQosRequest() (request *CreateQosRequest) {
     request = &CreateQosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -501,6 +549,54 @@ func (c *Client) GetFlowStatisticWithContext(ctx context.Context, request *GetFl
     request.SetContext(ctx)
     
     response = NewGetFlowStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetPublicKeyRequest() (request *GetPublicKeyRequest) {
+    request = &GetPublicKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetPublicKey")
+    
+    
+    return
+}
+
+func NewGetPublicKeyResponse() (response *GetPublicKeyResponse) {
+    response = &GetPublicKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetPublicKey
+// 获取公钥用于验签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) GetPublicKey(request *GetPublicKeyRequest) (response *GetPublicKeyResponse, err error) {
+    return c.GetPublicKeyWithContext(context.Background(), request)
+}
+
+// GetPublicKey
+// 获取公钥用于验签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) GetPublicKeyWithContext(ctx context.Context, request *GetPublicKeyRequest) (response *GetPublicKeyResponse, err error) {
+    if request == nil {
+        request = NewGetPublicKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPublicKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetPublicKeyResponse()
     err = c.Send(request, response)
     return
 }

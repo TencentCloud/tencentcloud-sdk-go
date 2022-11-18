@@ -790,7 +790,7 @@ type CdbSellConfig struct {
 	// 状态值，0 表示该规格对外售卖
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 实例类型，可能的取值范围有：UNIVERSAL (通用型), EXCLUSIVE (独享型), BASIC (基础型)
+	// 实例类型，可能的取值范围有：UNIVERSAL (通用型), EXCLUSIVE (独享型), BASIC (基础型), BASIC_V2 (基础型v2)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 

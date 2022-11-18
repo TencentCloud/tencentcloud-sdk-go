@@ -2470,6 +2470,14 @@ type CreateInput struct {
 
 	// 输入的RTSP_PULL配置信息。
 	RTSPPullSettings *CreateInputRTSPPullSettings `json:"RTSPPullSettings,omitempty" name:"RTSPPullSettings"`
+
+	// 输入的HLS_PULL配置信息。
+	HLSPullSettings *CreateInputHLSPullSettings `json:"HLSPullSettings,omitempty" name:"HLSPullSettings"`
+}
+
+type CreateInputHLSPullSettings struct {
+	// HLS源站的源站地址，有且只能有一个。
+	SourceAddresses []*HLSPullSourceAddress `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
 }
 
 type CreateInputRTMPPullSettings struct {
@@ -4874,6 +4882,12 @@ type DescribeFlow struct {
 	OutputGroup []*DescribeOutput `json:"OutputGroup,omitempty" name:"OutputGroup"`
 }
 
+type DescribeHLSPullSourceAddress struct {
+	// HLS源站的Url地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
 // Predefined struct for user
 type DescribeImageSpriteTemplatesRequestParams struct {
 	// 雪碧图模板唯一标识过滤条件，数组长度限制：100。
@@ -5004,6 +5018,15 @@ type DescribeInput struct {
 	// 输入的RTSP_PULL配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTSPPullSettings *DescribeInputRTSPPullSettings `json:"RTSPPullSettings,omitempty" name:"RTSPPullSettings"`
+
+	// 输入的HLS_PULL配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HLSPullSettings *DescribeInputHLSPullSettings `json:"HLSPullSettings,omitempty" name:"HLSPullSettings"`
+}
+
+type DescribeInputHLSPullSettings struct {
+	// HLS源站地址信息。
+	SourceAddresses []*DescribeHLSPullSourceAddress `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
 }
 
 type DescribeInputRTMPPullSettings struct {
@@ -5170,6 +5193,21 @@ type DescribeOutput struct {
 	// 输出的RTSP拉流配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTSPPullSettings *DescribeOutputRTSPPullSettings `json:"RTSPPullSettings,omitempty" name:"RTSPPullSettings"`
+
+	// 输出的HLS拉流配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HLSPullSettings *DescribeOutputHLSPullSettings `json:"HLSPullSettings,omitempty" name:"HLSPullSettings"`
+}
+
+type DescribeOutputHLSPullServerUrl struct {
+	// HLS拉流地址的Url。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type DescribeOutputHLSPullSettings struct {
+	// HLS拉流地址列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerUrls []*DescribeOutputHLSPullServerUrl `json:"ServerUrls,omitempty" name:"ServerUrls"`
 }
 
 type DescribeOutputRTMPPullServerUrl struct {
@@ -7579,6 +7617,11 @@ type FrameTagConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type HLSPullSourceAddress struct {
+	// HLS源站的Url地址。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
 type HdrConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -9564,6 +9607,9 @@ type ModifyInput struct {
 
 	// RTSP_PULL的配置信息。
 	RTSPPullSettings *CreateInputRTSPPullSettings `json:"RTSPPullSettings,omitempty" name:"RTSPPullSettings"`
+
+	// HLS_PULL的配置信息。
+	HLSPullSettings *CreateInputHLSPullSettings `json:"HLSPullSettings,omitempty" name:"HLSPullSettings"`
 }
 
 type ModifyOutputInfo struct {

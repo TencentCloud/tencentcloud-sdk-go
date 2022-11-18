@@ -68,6 +68,9 @@ const (
 	// 官方云盘实例不存在或不属于当前账号。
 	RESOURCENOTFOUND_OFFICIALINSTANCE = "ResourceNotFound.OfficialInstance"
 
+	// 尚未开通 COS 数据处理（数据万象）服务。
+	UNAUTHORIZEDOPERATION_CREATEMEDIABUCKET = "UnauthorizedOperation.CreateMediaBucket"
+
 	// 未授予 cam:PassRole 权限。
 	UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 

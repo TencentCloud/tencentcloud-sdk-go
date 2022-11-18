@@ -991,6 +991,9 @@ type CreateLaunchConfigurationRequestParams struct {
 	// 高性能计算集群ID。<br>
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
 }
 
 type CreateLaunchConfigurationRequest struct {
@@ -1079,6 +1082,9 @@ type CreateLaunchConfigurationRequest struct {
 	// 高性能计算集群ID。<br>
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -1116,6 +1122,7 @@ func (r *CreateLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargePrepaid")
 	delete(f, "DiskTypePolicy")
 	delete(f, "HpcClusterId")
+	delete(f, "IPv6InternetAccessible")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchConfigurationRequest has unknown keys!", "")
 	}
@@ -3253,6 +3260,22 @@ type HostNameSettings struct {
 	HostNameStyle *string `json:"HostNameStyle,omitempty" name:"HostNameStyle"`
 }
 
+type IPv6InternetAccessible struct {
+	// 网络计费模式。取值包括TRAFFIC_POSTPAID_BY_HOUR、BANDWIDTH_PACKAGE，默认取值为TRAFFIC_POSTPAID_BY_HOUR。查看当前账户类型可参考[账户类型说明](https://cloud.tencent.com/document/product/1199/49090#judge)。
+	// <br><li> IPv6对标准账户类型支持TRAFFIC_POSTPAID_BY_HOUR。
+	// <br><li> IPv6对传统账户类型支持BANDWIDTH_PACKAGE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
+
+	// 公网出带宽上限，单位：Mbps。<br>默认值：0Mbps，此时不为IPv6分配公网带宽。不同机型、可用区、计费模式的带宽上限范围不一致，具体限制详见[公网带宽上限](https://cloud.tencent.com/document/product/213/12523)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 带宽包ID。可通过[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
+}
+
 type Instance struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -3486,6 +3509,9 @@ type LaunchConfiguration struct {
 	// 高性能计算集群ID。<br>
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// IPv6公网带宽相关信息设置。
+	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
 }
 
 type LifecycleActionResultInfo struct {
@@ -4016,6 +4042,9 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 	// 高性能计算集群ID。<br>
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
 }
 
 type ModifyLaunchConfigurationAttributesRequest struct {
@@ -4103,6 +4132,9 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 高性能计算集群ID。<br>
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -4136,6 +4168,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "EnhancedService")
 	delete(f, "CamRoleName")
 	delete(f, "HpcClusterId")
+	delete(f, "IPv6InternetAccessible")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}
@@ -5370,6 +5403,9 @@ type UpgradeLaunchConfigurationRequestParams struct {
 	// <br><li>ORIGINAL：使用设置的云盘类型
 	// <br><li>AUTOMATIC：自动选择当前可用的云盘类型
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
+
+	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
 }
 
 type UpgradeLaunchConfigurationRequest struct {
@@ -5447,6 +5483,9 @@ type UpgradeLaunchConfigurationRequest struct {
 	// <br><li>ORIGINAL：使用设置的云盘类型
 	// <br><li>AUTOMATIC：自动选择当前可用的云盘类型
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
+
+	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
 }
 
 func (r *UpgradeLaunchConfigurationRequest) ToJsonString() string {
@@ -5482,6 +5521,7 @@ func (r *UpgradeLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "InstanceNameSettings")
 	delete(f, "InstanceChargePrepaid")
 	delete(f, "DiskTypePolicy")
+	delete(f, "IPv6InternetAccessible")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeLaunchConfigurationRequest has unknown keys!", "")
 	}

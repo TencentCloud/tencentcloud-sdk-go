@@ -75,6 +75,7 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASS = "InvalidParameterValue.CosStorageClass"
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASSINTELLIGENTTIERING = "InvalidParameterValue.CosStorageClassIntelligentTiering"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNAUTHORIZEDOPERATION_CREATEMEDIABUCKET = "UnauthorizedOperation.CreateMediaBucket"
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
 func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateLibraryResponse, err error) {
@@ -93,6 +94,7 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASS = "InvalidParameterValue.CosStorageClass"
 //  INVALIDPARAMETERVALUE_COSSTORAGECLASSINTELLIGENTTIERING = "InvalidParameterValue.CosStorageClassIntelligentTiering"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNAUTHORIZEDOPERATION_CREATEMEDIABUCKET = "UnauthorizedOperation.CreateMediaBucket"
 //  UNAUTHORIZEDOPERATION_PASSROLE = "UnauthorizedOperation.PassRole"
 //  UNAUTHORIZEDOPERATION_SERVICELINKEDROLE = "UnauthorizedOperation.ServiceLinkedRole"
 func (c *Client) CreateLibraryWithContext(ctx context.Context, request *CreateLibraryRequest) (response *CreateLibraryResponse, err error) {

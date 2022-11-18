@@ -5285,6 +5285,77 @@ type ModelInputInfo struct {
 }
 
 // Predefined struct for user
+type ModifyModelServicePartialConfigRequestParams struct {
+	// 在线推理服务Id，需已存在
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 更新后服务不重启，定时停止的配置
+	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
+
+	// 更新后服务不重启，服务对应限流限频配置
+	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+}
+
+type ModifyModelServicePartialConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 在线推理服务Id，需已存在
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 更新后服务不重启，定时停止的配置
+	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
+
+	// 更新后服务不重启，服务对应限流限频配置
+	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+}
+
+func (r *ModifyModelServicePartialConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelServicePartialConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "ScheduledAction")
+	delete(f, "ServiceLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServicePartialConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelServicePartialConfigResponseParams struct {
+	// 被修改后的服务配置
+	Service *Service `json:"Service,omitempty" name:"Service"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyModelServicePartialConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyModelServicePartialConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyModelServicePartialConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelServicePartialConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyServiceGroupWeightsRequestParams struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`

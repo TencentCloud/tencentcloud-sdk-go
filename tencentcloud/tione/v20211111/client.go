@@ -3467,6 +3467,70 @@ func (c *Client) DescribeTrainingTasksWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyModelServicePartialConfigRequest() (request *ModifyModelServicePartialConfigRequest) {
+    request = &ModifyModelServicePartialConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyModelServicePartialConfig")
+    
+    
+    return
+}
+
+func NewModifyModelServicePartialConfigResponse() (response *ModifyModelServicePartialConfigResponse) {
+    response = &ModifyModelServicePartialConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyModelServicePartialConfig
+// 增量更新在线推理服务的部分配置，不更新的配置项不需要传入
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyModelServicePartialConfig(request *ModifyModelServicePartialConfigRequest) (response *ModifyModelServicePartialConfigResponse, err error) {
+    return c.ModifyModelServicePartialConfigWithContext(context.Background(), request)
+}
+
+// ModifyModelServicePartialConfig
+// 增量更新在线推理服务的部分配置，不更新的配置项不需要传入
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyModelServicePartialConfigWithContext(ctx context.Context, request *ModifyModelServicePartialConfigRequest) (response *ModifyModelServicePartialConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyModelServicePartialConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModelServicePartialConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyModelServicePartialConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyServiceGroupWeightsRequest() (request *ModifyServiceGroupWeightsRequest) {
     request = &ModifyServiceGroupWeightsRequest{
         BaseRequest: &tchttp.BaseRequest{},

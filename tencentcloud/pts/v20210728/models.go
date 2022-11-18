@@ -3887,6 +3887,14 @@ type Job struct {
 	// 通知事件回调
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotificationHooks []*NotificationHook `json:"NotificationHooks,omitempty" name:"NotificationHooks"`
+
+	// 每秒接收字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkReceiveRate *float64 `json:"NetworkReceiveRate,omitempty" name:"NetworkReceiveRate"`
+
+	// 每秒发送字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkSendRate *float64 `json:"NetworkSendRate,omitempty" name:"NetworkSendRate"`
 }
 
 type Label struct {

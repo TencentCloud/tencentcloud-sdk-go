@@ -3369,7 +3369,7 @@ type TemplateInfo struct {
 	// 模板创建的时间戳（精确到秒）
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
-	// 模板的预览链接
+	// 模板的H5预览链接,可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 }

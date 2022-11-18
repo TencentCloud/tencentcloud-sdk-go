@@ -10988,6 +10988,12 @@ type UpdateExporterIntegrationRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// 类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 配置内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
 	// Kubernetes 集群类型，取值如下：
 	// <li> 1= 容器集群(TKE) </li>
 	// <li> 2=弹性集群<EKS> </li>
@@ -10996,12 +11002,6 @@ type UpdateExporterIntegrationRequestParams struct {
 
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 类型
-	Kind *string `json:"Kind,omitempty" name:"Kind"`
-
-	// 配置内容
-	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 type UpdateExporterIntegrationRequest struct {
@@ -11010,6 +11010,12 @@ type UpdateExporterIntegrationRequest struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// 类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 配置内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
 	// Kubernetes 集群类型，取值如下：
 	// <li> 1= 容器集群(TKE) </li>
 	// <li> 2=弹性集群<EKS> </li>
@@ -11018,12 +11024,6 @@ type UpdateExporterIntegrationRequest struct {
 
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 类型
-	Kind *string `json:"Kind,omitempty" name:"Kind"`
-
-	// 配置内容
-	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 func (r *UpdateExporterIntegrationRequest) ToJsonString() string {
@@ -11039,10 +11039,10 @@ func (r *UpdateExporterIntegrationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "KubeType")
-	delete(f, "ClusterId")
 	delete(f, "Kind")
 	delete(f, "Content")
+	delete(f, "KubeType")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateExporterIntegrationRequest has unknown keys!", "")
 	}
