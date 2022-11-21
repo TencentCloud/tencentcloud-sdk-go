@@ -2251,6 +2251,66 @@ func (c *Client) DescribeDeviceDataHistoryWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDeviceLocationSolveRequest() (request *DescribeDeviceLocationSolveRequest) {
+    request = &DescribeDeviceLocationSolveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceLocationSolve")
+    
+    
+    return
+}
+
+func NewDescribeDeviceLocationSolveResponse() (response *DescribeDeviceLocationSolveResponse) {
+    response = &DescribeDeviceLocationSolveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeviceLocationSolve
+// 获取实时位置解析
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_MODULENOTEXIST = "ResourceNotFound.ModuleNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDeviceLocationSolve(request *DescribeDeviceLocationSolveRequest) (response *DescribeDeviceLocationSolveResponse, err error) {
+    return c.DescribeDeviceLocationSolveWithContext(context.Background(), request)
+}
+
+// DescribeDeviceLocationSolve
+// 获取实时位置解析
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_MODULENOTEXIST = "ResourceNotFound.ModuleNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDeviceLocationSolveWithContext(ctx context.Context, request *DescribeDeviceLocationSolveRequest) (response *DescribeDeviceLocationSolveResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceLocationSolveRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceLocationSolve require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceLocationSolveResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicePositionListRequest() (request *DescribeDevicePositionListRequest) {
     request = &DescribeDevicePositionListRequest{
         BaseRequest: &tchttp.BaseRequest{},

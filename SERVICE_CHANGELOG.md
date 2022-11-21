@@ -1,126 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 60 次发布
+### 第 36 次发布
 
-发布时间：2022-11-18 06:08:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447)
-
-	* 新增入参：IPv6InternetAccessible
-
-* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
-
-	* 新增入参：IPv6InternetAccessible
-
-* [UpgradeLaunchConfiguration](https://cloud.tencent.com/document/api/377/35199)
-
-	* 新增入参：IPv6InternetAccessible
-
-
-新增数据结构：
-
-* [IPv6InternetAccessible](https://cloud.tencent.com/document/api/377/20453#IPv6InternetAccessible)
-
-修改数据结构：
-
-* [LaunchConfiguration](https://cloud.tencent.com/document/api/377/20453#LaunchConfiguration)
-
-	* 新增成员：IPv6InternetAccessible
-
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 68 次发布
-
-发布时间：2022-11-18 06:38:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpdateExporterIntegration](https://cloud.tencent.com/document/api/248/76005)
-
-	* <font color="#dd0000">**修改入参**：</font>KubeType, ClusterId
-
-
-
-
-## 媒体处理(mps) 版本：2019-06-12
-
-### 第 46 次发布
-
-发布时间：2022-11-18 06:39:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [CreateInputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#CreateInputHLSPullSettings)
-* [DescribeHLSPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#DescribeHLSPullSourceAddress)
-* [DescribeInputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputHLSPullSettings)
-* [DescribeOutputHLSPullServerUrl](https://cloud.tencent.com/document/api/862/37615#DescribeOutputHLSPullServerUrl)
-* [DescribeOutputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputHLSPullSettings)
-* [HLSPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#HLSPullSourceAddress)
-
-修改数据结构：
-
-* [CreateInput](https://cloud.tencent.com/document/api/862/37615#CreateInput)
-
-	* 新增成员：HLSPullSettings
-
-* [DescribeInput](https://cloud.tencent.com/document/api/862/37615#DescribeInput)
-
-	* 新增成员：HLSPullSettings
-
-* [DescribeOutput](https://cloud.tencent.com/document/api/862/37615#DescribeOutput)
-
-	* 新增成员：HLSPullSettings
-
-* [ModifyInput](https://cloud.tencent.com/document/api/862/37615#ModifyInput)
-
-	* 新增成员：HLSPullSettings
-
-
-
-
-## 云压测(pts) 版本：2021-07-28
-
-### 第 7 次发布
-
-发布时间：2022-11-18 06:42:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Job](https://cloud.tencent.com/document/api/1484/78100#Job)
-
-	* 新增成员：NetworkReceiveRate, NetworkSendRate
-
-
-
-
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
-
-### 第 9 次发布
-
-发布时间：2022-11-18 06:53:56
+发布时间：2022-11-21 06:12:39
 
 本次发布包含了以下内容：
 
@@ -128,42 +12,23 @@
 
 新增接口：
 
-* [ModifyModelServicePartialConfig](https://cloud.tencent.com/document/api/851/83077)
+* [CreateCarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/83127)
+* [DescribeActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/83126)
+* [DescribeCarrierPrivilegeNumberApplicants](https://cloud.tencent.com/document/api/679/83125)
+
+新增数据结构：
+
+* [ActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/47715#ActiveCarrierPrivilegeNumber)
+* [CarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/47715#CarrierPrivilegeNumberApplicant)
+* [Filter](https://cloud.tencent.com/document/api/679/47715#Filter)
 
 
 
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+## 文件存储(cfs) 版本：2019-07-19
 
+### 第 13 次发布
 
-
-## 文本内容安全(tms) 版本：2020-12-29
-
-### 第 6 次发布
-
-发布时间：2022-11-18 06:55:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [User](https://cloud.tencent.com/document/api/1124/51861#User)
-
-	* 新增成员：RoomId, ReceiverId, SendTime
-
-
-
-
-## 文本内容安全(tms) 版本：2020-07-13
-
-
-
-## 语音合成(tts) 版本：2019-08-23
-
-### 第 8 次发布
-
-发布时间：2022-11-18 06:58:13
+发布时间：2022-11-21 06:14:58
 
 本次发布包含了以下内容：
 
@@ -171,9 +36,89 @@
 
 修改接口：
 
-* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+* [DeleteCfsSnapshot](https://cloud.tencent.com/document/api/582/80199)
 
-	* 新增入参：SegmentRate
+	* 新增入参：SnapshotIds
+
+	* <font color="#dd0000">**修改入参**：</font>SnapshotId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 47 次发布
+
+发布时间：2022-11-18 20:21:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateBoundFlows](https://cloud.tencent.com/document/api/1420/83118)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 47 次发布
+
+发布时间：2022-11-21 06:32:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDeviceLocationSolve](https://cloud.tencent.com/document/api/1081/83128)
+
+新增数据结构：
+
+* [WifiInfo](https://cloud.tencent.com/document/api/1081/34988#WifiInfo)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 23 次发布
+
+发布时间：2022-11-21 06:46:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)
+
+	* 新增成员：Resources
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 129 次发布
+
+发布时间：2022-11-21 06:55:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：GPUArgs, UserScript, IgnoreExistedNode, DockerGraphPath
 
 
 
@@ -3847,7 +3792,7 @@
 
 新增数据结构：
 
-* [[IPv6InternetAccessible](https://cloud.tencent.com/document/api/377/20453#IPv6InternetAccessible)](https://cloud.tencent.com/document/api/377/20453#[IPv6InternetAccessible](https://cloud.tencent.com/document/api/377/20453#IPv6InternetAccessible))
+* [IPv6InternetAccessible](https://cloud.tencent.com/document/api/377/20453#IPv6InternetAccessible)
 
 修改数据结构：
 
@@ -11506,6 +11451,26 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 36 次发布
+
+发布时间：2022-11-21 06:12:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/83127)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/83126)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCarrierPrivilegeNumberApplicants](https://cloud.tencent.com/document/api/679/83125)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/47715#ActiveCarrierPrivilegeNumber)](https://cloud.tencent.com/document/api/679/47715#[ActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/47715#ActiveCarrierPrivilegeNumber))
+* [[CarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/47715#CarrierPrivilegeNumberApplicant)](https://cloud.tencent.com/document/api/679/47715#[CarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/47715#CarrierPrivilegeNumberApplicant))
+* [[Filter](https://cloud.tencent.com/document/api/679/47715#Filter)](https://cloud.tencent.com/document/api/679/47715#[Filter](https://cloud.tencent.com/document/api/679/47715#Filter))
+
 ### 第 35 次发布
 
 发布时间：2022-11-16 06:11:21
@@ -17080,6 +17045,23 @@
 
 
 ## 文件存储(cfs) 版本：2019-07-19
+
+### 第 13 次发布
+
+发布时间：2022-11-21 06:14:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteCfsSnapshot](https://cloud.tencent.com/document/api/582/80199)
+
+	* 新增入参：SnapshotIds
+
+	* <font color="#dd0000">**修改入参**：</font>SnapshotId
+
 
 ### 第 12 次发布
 
@@ -40975,6 +40957,18 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 47 次发布
+
+发布时间：2022-11-18 20:21:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChannelCreateBoundFlows](https://cloud.tencent.com/document/api/1420/83118)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 46 次发布
 
 发布时间：2022-11-17 06:26:33
@@ -48594,6 +48588,22 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 47 次发布
+
+发布时间：2022-11-21 06:32:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDeviceLocationSolve](https://cloud.tencent.com/document/api/1081/83128)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[WifiInfo](https://cloud.tencent.com/document/api/1081/34988#WifiInfo)](https://cloud.tencent.com/document/api/1081/34988#[WifiInfo](https://cloud.tencent.com/document/api/1081/34988#WifiInfo))
 
 ### 第 46 次发布
 
@@ -58116,12 +58126,12 @@
 
 新增数据结构：
 
-* [[CreateInputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#CreateInputHLSPullSettings)](https://cloud.tencent.com/document/api/862/37615#[CreateInputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#CreateInputHLSPullSettings))
-* [[DescribeHLSPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#DescribeHLSPullSourceAddress)](https://cloud.tencent.com/document/api/862/37615#[DescribeHLSPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#DescribeHLSPullSourceAddress))
-* [[DescribeInputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputHLSPullSettings)](https://cloud.tencent.com/document/api/862/37615#[DescribeInputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputHLSPullSettings))
-* [[DescribeOutputHLSPullServerUrl](https://cloud.tencent.com/document/api/862/37615#DescribeOutputHLSPullServerUrl)](https://cloud.tencent.com/document/api/862/37615#[DescribeOutputHLSPullServerUrl](https://cloud.tencent.com/document/api/862/37615#DescribeOutputHLSPullServerUrl))
-* [[DescribeOutputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputHLSPullSettings)](https://cloud.tencent.com/document/api/862/37615#[DescribeOutputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputHLSPullSettings))
-* [[HLSPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#HLSPullSourceAddress)](https://cloud.tencent.com/document/api/862/37615#[HLSPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#HLSPullSourceAddress))
+* [CreateInputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#CreateInputHLSPullSettings)
+* [DescribeHLSPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#DescribeHLSPullSourceAddress)
+* [DescribeInputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputHLSPullSettings)
+* [DescribeOutputHLSPullServerUrl](https://cloud.tencent.com/document/api/862/37615#DescribeOutputHLSPullServerUrl)
+* [DescribeOutputHLSPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputHLSPullSettings)
+* [HLSPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#HLSPullSourceAddress)
 
 修改数据结构：
 
@@ -69748,6 +69758,21 @@
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 23 次发布
+
+发布时间：2022-11-21 06:46:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)
+
+	* 新增成员：Resources
+
 
 ### 第 22 次发布
 
@@ -82534,7 +82559,7 @@
 
 新增接口：
 
-* [[ModifyModelServicePartialConfig](https://cloud.tencent.com/document/api/851/83077)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyModelServicePartialConfig](https://cloud.tencent.com/document/api/851/83077)
 
 ### 第 8 次发布
 
@@ -83339,6 +83364,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 129 次发布
+
+发布时间：2022-11-21 06:55:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：GPUArgs, UserScript, IgnoreExistedNode, DockerGraphPath
+
 
 ### 第 128 次发布
 

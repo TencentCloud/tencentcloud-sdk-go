@@ -20,6 +20,20 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ActiveCarrierPrivilegeNumber struct {
+	// 实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 主叫号码
+	Caller *string `json:"Caller,omitempty" name:"Caller"`
+
+	// 被叫号码
+	Callee *string `json:"Callee,omitempty" name:"Callee"`
+
+	// 生效unix时间戳(秒)
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 type AutoCalloutTaskCalleeInfo struct {
 	// 被叫号码
 	Callee *string `json:"Callee,omitempty" name:"Callee"`
@@ -181,6 +195,33 @@ type CallInSkillGroupMetrics struct {
 
 	// 技能组名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type CarrierPrivilegeNumberApplicant struct {
+	// 实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 申请单Id
+	ApplicantId *uint64 `json:"ApplicantId,omitempty" name:"ApplicantId"`
+
+	// 主叫号码列表
+	Callers []*string `json:"Callers,omitempty" name:"Callers"`
+
+	// 被叫号码列表
+	Callees []*string `json:"Callees,omitempty" name:"Callees"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 审批状态:1 待审核、2 通过、3 拒绝
+	State *int64 `json:"State,omitempty" name:"State"`
+
+	// 创建时间，unix时间戳(秒)
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间，unix时间戳(秒)
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 // Predefined struct for user
@@ -472,6 +513,84 @@ func (r *CreateCallOutSessionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCallOutSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCarrierPrivilegeNumberApplicantRequestParams struct {
+	// SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 主叫号码，必须为实例中存在的号码，格式为0086xxxx（暂时只支持国内号码）
+	Callers []*string `json:"Callers,omitempty" name:"Callers"`
+
+	// 被叫号码，必须为实例中坐席绑定的手机号码，格式为0086xxxx（暂时只支持国内号码）
+	Callees []*string `json:"Callees,omitempty" name:"Callees"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type CreateCarrierPrivilegeNumberApplicantRequest struct {
+	*tchttp.BaseRequest
+	
+	// SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 主叫号码，必须为实例中存在的号码，格式为0086xxxx（暂时只支持国内号码）
+	Callers []*string `json:"Callers,omitempty" name:"Callers"`
+
+	// 被叫号码，必须为实例中坐席绑定的手机号码，格式为0086xxxx（暂时只支持国内号码）
+	Callees []*string `json:"Callees,omitempty" name:"Callees"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateCarrierPrivilegeNumberApplicantRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCarrierPrivilegeNumberApplicantRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Callers")
+	delete(f, "Callees")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCarrierPrivilegeNumberApplicantRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCarrierPrivilegeNumberApplicantResponseParams struct {
+	// 申请单Id
+	ApplicantId *uint64 `json:"ApplicantId,omitempty" name:"ApplicantId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCarrierPrivilegeNumberApplicantResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCarrierPrivilegeNumberApplicantResponseParams `json:"Response"`
+}
+
+func (r *CreateCarrierPrivilegeNumberApplicantResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCarrierPrivilegeNumberApplicantResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -890,6 +1009,90 @@ func (r *DeleteStaffResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeActiveCarrierPrivilegeNumberRequestParams struct {
+	// 实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 默认0
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 默认10，最大100
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 筛选条件 Name支持PhoneNumber(按号码模糊查找)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeActiveCarrierPrivilegeNumberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 默认0
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 默认10，最大100
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 筛选条件 Name支持PhoneNumber(按号码模糊查找)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeActiveCarrierPrivilegeNumberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActiveCarrierPrivilegeNumberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActiveCarrierPrivilegeNumberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActiveCarrierPrivilegeNumberResponseParams struct {
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 生效列表
+	ActiveCarrierPrivilegeNumbers []*ActiveCarrierPrivilegeNumber `json:"ActiveCarrierPrivilegeNumbers,omitempty" name:"ActiveCarrierPrivilegeNumbers"`
+
+	// 待审核单号
+	PendingApplicantIds []*uint64 `json:"PendingApplicantIds,omitempty" name:"PendingApplicantIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeActiveCarrierPrivilegeNumberResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeActiveCarrierPrivilegeNumberResponseParams `json:"Response"`
+}
+
+func (r *DescribeActiveCarrierPrivilegeNumberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActiveCarrierPrivilegeNumberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAutoCalloutTaskRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1191,6 +1394,87 @@ func (r *DescribeCallInMetricsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCallInMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCarrierPrivilegeNumberApplicantsRequestParams struct {
+	// 实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 默认0，从0开始
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 默认10，最大100
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 筛选条件,Name支持ApplicantId,PhoneNumber(按号码模糊查找)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeCarrierPrivilegeNumberApplicantsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 默认0，从0开始
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 默认10，最大100
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 筛选条件,Name支持ApplicantId,PhoneNumber(按号码模糊查找)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeCarrierPrivilegeNumberApplicantsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCarrierPrivilegeNumberApplicantsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCarrierPrivilegeNumberApplicantsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCarrierPrivilegeNumberApplicantsResponseParams struct {
+	// 筛选出的总申请单数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 申请单列表
+	Applicants []*CarrierPrivilegeNumberApplicant `json:"Applicants,omitempty" name:"Applicants"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCarrierPrivilegeNumberApplicantsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCarrierPrivilegeNumberApplicantsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCarrierPrivilegeNumberApplicantsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCarrierPrivilegeNumberApplicantsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2362,6 +2646,16 @@ type ExtensionInfo struct {
 
 	// 绑定坐席名称
 	RelationName *string `json:"RelationName,omitempty" name:"RelationName"`
+}
+
+type Filter struct {
+	// 筛选字段名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 筛选条件值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type IMCdrInfo struct {

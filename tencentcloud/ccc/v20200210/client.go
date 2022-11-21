@@ -275,6 +275,74 @@ func (c *Client) CreateCallOutSessionWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateCarrierPrivilegeNumberApplicantRequest() (request *CreateCarrierPrivilegeNumberApplicantRequest) {
+    request = &CreateCarrierPrivilegeNumberApplicantRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateCarrierPrivilegeNumberApplicant")
+    
+    
+    return
+}
+
+func NewCreateCarrierPrivilegeNumberApplicantResponse() (response *CreateCarrierPrivilegeNumberApplicantResponse) {
+    response = &CreateCarrierPrivilegeNumberApplicantResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCarrierPrivilegeNumberApplicant
+// 用于无限频率地呼叫坐席手机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
+//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+//  FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCarrierPrivilegeNumberApplicant(request *CreateCarrierPrivilegeNumberApplicantRequest) (response *CreateCarrierPrivilegeNumberApplicantResponse, err error) {
+    return c.CreateCarrierPrivilegeNumberApplicantWithContext(context.Background(), request)
+}
+
+// CreateCarrierPrivilegeNumberApplicant
+// 用于无限频率地呼叫坐席手机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
+//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+//  FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCarrierPrivilegeNumberApplicantWithContext(ctx context.Context, request *CreateCarrierPrivilegeNumberApplicantRequest) (response *CreateCarrierPrivilegeNumberApplicantResponse, err error) {
+    if request == nil {
+        request = NewCreateCarrierPrivilegeNumberApplicantRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCarrierPrivilegeNumberApplicant require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCarrierPrivilegeNumberApplicantResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExtensionRequest() (request *CreateExtensionRequest) {
     request = &CreateExtensionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -619,6 +687,58 @@ func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaf
     return
 }
 
+func NewDescribeActiveCarrierPrivilegeNumberRequest() (request *DescribeActiveCarrierPrivilegeNumberRequest) {
+    request = &DescribeActiveCarrierPrivilegeNumberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeActiveCarrierPrivilegeNumber")
+    
+    
+    return
+}
+
+func NewDescribeActiveCarrierPrivilegeNumberResponse() (response *DescribeActiveCarrierPrivilegeNumberResponse) {
+    response = &DescribeActiveCarrierPrivilegeNumberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeActiveCarrierPrivilegeNumber
+// 查询生效运营商白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeActiveCarrierPrivilegeNumber(request *DescribeActiveCarrierPrivilegeNumberRequest) (response *DescribeActiveCarrierPrivilegeNumberResponse, err error) {
+    return c.DescribeActiveCarrierPrivilegeNumberWithContext(context.Background(), request)
+}
+
+// DescribeActiveCarrierPrivilegeNumber
+// 查询生效运营商白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeActiveCarrierPrivilegeNumberWithContext(ctx context.Context, request *DescribeActiveCarrierPrivilegeNumberRequest) (response *DescribeActiveCarrierPrivilegeNumberResponse, err error) {
+    if request == nil {
+        request = NewDescribeActiveCarrierPrivilegeNumberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeActiveCarrierPrivilegeNumber require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeActiveCarrierPrivilegeNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoCalloutTaskRequest() (request *DescribeAutoCalloutTaskRequest) {
     request = &DescribeAutoCalloutTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -831,6 +951,62 @@ func (c *Client) DescribeCallInMetricsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeCallInMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCarrierPrivilegeNumberApplicantsRequest() (request *DescribeCarrierPrivilegeNumberApplicantsRequest) {
+    request = &DescribeCarrierPrivilegeNumberApplicantsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeCarrierPrivilegeNumberApplicants")
+    
+    
+    return
+}
+
+func NewDescribeCarrierPrivilegeNumberApplicantsResponse() (response *DescribeCarrierPrivilegeNumberApplicantsResponse) {
+    response = &DescribeCarrierPrivilegeNumberApplicantsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCarrierPrivilegeNumberApplicants
+// 查询单状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeCarrierPrivilegeNumberApplicants(request *DescribeCarrierPrivilegeNumberApplicantsRequest) (response *DescribeCarrierPrivilegeNumberApplicantsResponse, err error) {
+    return c.DescribeCarrierPrivilegeNumberApplicantsWithContext(context.Background(), request)
+}
+
+// DescribeCarrierPrivilegeNumberApplicants
+// 查询单状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeCarrierPrivilegeNumberApplicantsWithContext(ctx context.Context, request *DescribeCarrierPrivilegeNumberApplicantsRequest) (response *DescribeCarrierPrivilegeNumberApplicantsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCarrierPrivilegeNumberApplicantsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCarrierPrivilegeNumberApplicants require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCarrierPrivilegeNumberApplicantsResponse()
     err = c.Send(request, response)
     return
 }

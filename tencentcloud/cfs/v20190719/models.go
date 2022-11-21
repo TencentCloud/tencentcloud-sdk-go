@@ -914,6 +914,9 @@ func (r *DeleteCfsRuleResponse) FromJsonString(s string) error {
 type DeleteCfsSnapshotRequestParams struct {
 	// 文件系统快照id
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 需要删除的文件文件系统快照ID 列表，快照ID，跟ID列表至少填一项
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 }
 
 type DeleteCfsSnapshotRequest struct {
@@ -921,6 +924,9 @@ type DeleteCfsSnapshotRequest struct {
 	
 	// 文件系统快照id
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 需要删除的文件文件系统快照ID 列表，快照ID，跟ID列表至少填一项
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 }
 
 func (r *DeleteCfsSnapshotRequest) ToJsonString() string {
@@ -936,6 +942,7 @@ func (r *DeleteCfsSnapshotRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SnapshotId")
+	delete(f, "SnapshotIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCfsSnapshotRequest has unknown keys!", "")
 	}

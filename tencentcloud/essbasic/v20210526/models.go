@@ -403,6 +403,76 @@ func (r *ChannelCreateBatchCancelFlowUrlResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type ChannelCreateBoundFlowsRequestParams struct {
+	// 应用信息
+	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 领取的合同id列表
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelCreateBoundFlowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用信息
+	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 领取的合同id列表
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelCreateBoundFlowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateBoundFlowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowIds")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBoundFlowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateBoundFlowsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateBoundFlowsResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateBoundFlowsResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateBoundFlowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateBoundFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateConvertTaskApiRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`

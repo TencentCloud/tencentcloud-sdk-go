@@ -792,9 +792,13 @@ type DeployedResources struct {
 	// 资源标识:clb,cdn,live,waf,antiddos
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 关联资源ID或关联域名
+	// 不建议使用。字段返回和Resources相同。本字段后续只返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 关联资源ID或关联域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources []*string `json:"Resources,omitempty" name:"Resources"`
 }
 
 // Predefined struct for user

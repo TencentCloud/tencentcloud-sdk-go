@@ -728,6 +728,9 @@ const (
 	// 指定的实例付费模式或者网络付费模式不支持共享带宽包
 	UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 
+	// 所选择的边缘可用区不支持云盘操作。
+	UNSUPPORTEDOPERATION_EDGEZONENOTSUPPORTCLOUDDISK = "UnsupportedOperation.EdgeZoneNotSupportCloudDisk"
+
 	// 云服务器绑定了弹性网卡，请解绑弹性网卡后再切换私有网络。
 	UNSUPPORTEDOPERATION_ELASTICNETWORKINTERFACE = "UnsupportedOperation.ElasticNetworkInterface"
 

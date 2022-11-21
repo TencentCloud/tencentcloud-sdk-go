@@ -1164,7 +1164,7 @@ func NewDescribeTRTCMarketQualityMetricDataResponse() (response *DescribeTRTCMar
 //
 // 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
 //
-// 2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+// 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1202,7 +1202,7 @@ func (c *Client) DescribeTRTCMarketQualityMetricData(request *DescribeTRTCMarket
 //
 // 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
 //
-// 2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+// 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1268,7 +1268,7 @@ func NewDescribeTRTCMarketScaleMetricDataResponse() (response *DescribeTRTCMarke
 //
 // 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
 //
-// 2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+// 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1304,7 +1304,7 @@ func (c *Client) DescribeTRTCMarketScaleMetricData(request *DescribeTRTCMarketSc
 //
 // 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
 //
-// 2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+// 2.查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1366,7 +1366,7 @@ func NewDescribeTRTCRealTimeQualityMetricDataResponse() (response *DescribeTRTCR
 //
 // 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
 //
-// 2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+// 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1398,7 +1398,7 @@ func (c *Client) DescribeTRTCRealTimeQualityMetricData(request *DescribeTRTCReal
 //
 // 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
 //
-// 2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+// 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1460,7 +1460,7 @@ func NewDescribeTRTCRealTimeScaleMetricDataResponse() (response *DescribeTRTCRea
 //
 // 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
 //
-// 2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+// 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1492,7 +1492,7 @@ func (c *Client) DescribeTRTCRealTimeScaleMetricData(request *DescribeTRTCRealTi
 //
 // 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
 //
-// 2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+// 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

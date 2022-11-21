@@ -319,6 +319,112 @@ func (c *Client) ChannelCreateBatchCancelFlowUrlWithContext(ctx context.Context,
     return
 }
 
+func NewChannelCreateBoundFlowsRequest() (request *ChannelCreateBoundFlowsRequest) {
+    request = &ChannelCreateBoundFlowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateBoundFlows")
+    
+    
+    return
+}
+
+func NewChannelCreateBoundFlowsResponse() (response *ChannelCreateBoundFlowsResponse) {
+    response = &ChannelCreateBoundFlowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateBoundFlows
+// 此接口（CreateConsoleLoginUrl）用于渠道子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_HASAUTHORIZED = "FailedOperation.HasAuthorized"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
+//  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_COMPANYACTIVEINFO = "MissingParameter.CompanyActiveInfo"
+//  MISSINGPARAMETER_ORGOPENID = "MissingParameter.OrgOpenId"
+//  MISSINGPARAMETER_PROXYOPERATOROPENID = "MissingParameter.ProxyOperatorOpenId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_APPLICATIONID = "ResourceNotFound.ApplicationId"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ChannelCreateBoundFlows(request *ChannelCreateBoundFlowsRequest) (response *ChannelCreateBoundFlowsResponse, err error) {
+    return c.ChannelCreateBoundFlowsWithContext(context.Background(), request)
+}
+
+// ChannelCreateBoundFlows
+// 此接口（CreateConsoleLoginUrl）用于渠道子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_HASAUTHORIZED = "FailedOperation.HasAuthorized"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
+//  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_COMPANYACTIVEINFO = "MissingParameter.CompanyActiveInfo"
+//  MISSINGPARAMETER_ORGOPENID = "MissingParameter.OrgOpenId"
+//  MISSINGPARAMETER_PROXYOPERATOROPENID = "MissingParameter.ProxyOperatorOpenId"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_APPLICATIONID = "ResourceNotFound.ApplicationId"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ChannelCreateBoundFlowsWithContext(ctx context.Context, request *ChannelCreateBoundFlowsRequest) (response *ChannelCreateBoundFlowsResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateBoundFlowsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateBoundFlows require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateBoundFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateConvertTaskApiRequest() (request *ChannelCreateConvertTaskApiRequest) {
     request = &ChannelCreateConvertTaskApiRequest{
         BaseRequest: &tchttp.BaseRequest{},

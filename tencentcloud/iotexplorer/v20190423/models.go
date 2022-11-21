@@ -2541,6 +2541,101 @@ func (r *DescribeDeviceDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDeviceLocationSolveRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 定位解析类型，wifi或GNSSNavigation
+	LocationType *string `json:"LocationType,omitempty" name:"LocationType"`
+
+	// LoRaEdge卫星导航电文
+	GNSSNavigation *string `json:"GNSSNavigation,omitempty" name:"GNSSNavigation"`
+
+	// wifi信息
+	WiFiInfo []*WifiInfo `json:"WiFiInfo,omitempty" name:"WiFiInfo"`
+}
+
+type DescribeDeviceLocationSolveRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 定位解析类型，wifi或GNSSNavigation
+	LocationType *string `json:"LocationType,omitempty" name:"LocationType"`
+
+	// LoRaEdge卫星导航电文
+	GNSSNavigation *string `json:"GNSSNavigation,omitempty" name:"GNSSNavigation"`
+
+	// wifi信息
+	WiFiInfo []*WifiInfo `json:"WiFiInfo,omitempty" name:"WiFiInfo"`
+}
+
+func (r *DescribeDeviceLocationSolveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceLocationSolveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "LocationType")
+	delete(f, "GNSSNavigation")
+	delete(f, "WiFiInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceLocationSolveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceLocationSolveResponseParams struct {
+	// 经度
+	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
+
+	// 维度
+	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
+
+	// 类型
+	LocationType *string `json:"LocationType,omitempty" name:"LocationType"`
+
+	// 误差精度预估，单位为米
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Accuracy *float64 `json:"Accuracy,omitempty" name:"Accuracy"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceLocationSolveResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceLocationSolveResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceLocationSolveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceLocationSolveResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDevicePositionListRequestParams struct {
 	// 产品标识列表
 	ProductIdList []*string `json:"ProductIdList,omitempty" name:"ProductIdList"`
@@ -7638,4 +7733,12 @@ func (r *UploadFirmwareResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadFirmwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WifiInfo struct {
+	// mac地址
+	MAC *string `json:"MAC,omitempty" name:"MAC"`
+
+	// 信号强度
+	RSSI *int64 `json:"RSSI,omitempty" name:"RSSI"`
 }

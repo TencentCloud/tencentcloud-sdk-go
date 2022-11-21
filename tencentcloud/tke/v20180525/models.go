@@ -12551,6 +12551,15 @@ type ModifyClusterNodePoolRequestParams struct {
 	// 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
 	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
 
+	// GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性
+	GPUArgs *GPUArgs `json:"GPUArgs,omitempty" name:"GPUArgs"`
+
+	// base64编码后的自定义脚本
+	UserScript *string `json:"UserScript,omitempty" name:"UserScript"`
+
+	// 更新label和taint时忽略存量节点
+	IgnoreExistedNode *bool `json:"IgnoreExistedNode,omitempty" name:"IgnoreExistedNode"`
+
 	// 节点自定义参数
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
 
@@ -12562,6 +12571,9 @@ type ModifyClusterNodePoolRequestParams struct {
 
 	// 删除保护开关
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
+
+	// dockerd --graph 指定值, 默认为 /var/lib/docker
+	DockerGraphPath *string `json:"DockerGraphPath,omitempty" name:"DockerGraphPath"`
 }
 
 type ModifyClusterNodePoolRequest struct {
@@ -12597,6 +12609,15 @@ type ModifyClusterNodePoolRequest struct {
 	// 镜像版本，"DOCKER_CUSTOMIZE"(容器定制版),"GENERAL"(普通版本，默认值)
 	OsCustomizeType *string `json:"OsCustomizeType,omitempty" name:"OsCustomizeType"`
 
+	// GPU驱动版本，CUDA版本，cuDNN版本以及是否启用MIG特性
+	GPUArgs *GPUArgs `json:"GPUArgs,omitempty" name:"GPUArgs"`
+
+	// base64编码后的自定义脚本
+	UserScript *string `json:"UserScript,omitempty" name:"UserScript"`
+
+	// 更新label和taint时忽略存量节点
+	IgnoreExistedNode *bool `json:"IgnoreExistedNode,omitempty" name:"IgnoreExistedNode"`
+
 	// 节点自定义参数
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
 
@@ -12608,6 +12629,9 @@ type ModifyClusterNodePoolRequest struct {
 
 	// 删除保护开关
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
+
+	// dockerd --graph 指定值, 默认为 /var/lib/docker
+	DockerGraphPath *string `json:"DockerGraphPath,omitempty" name:"DockerGraphPath"`
 }
 
 func (r *ModifyClusterNodePoolRequest) ToJsonString() string {
@@ -12632,10 +12656,14 @@ func (r *ModifyClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "EnableAutoscale")
 	delete(f, "OsName")
 	delete(f, "OsCustomizeType")
+	delete(f, "GPUArgs")
+	delete(f, "UserScript")
+	delete(f, "IgnoreExistedNode")
 	delete(f, "ExtraArgs")
 	delete(f, "Tags")
 	delete(f, "Unschedulable")
 	delete(f, "DeletionProtection")
+	delete(f, "DockerGraphPath")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterNodePoolRequest has unknown keys!", "")
 	}

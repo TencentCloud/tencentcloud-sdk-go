@@ -1,3 +1,128 @@
+# Release v1.0.541
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 36 次发布
+
+发布时间：2022-11-21 06:12:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/83127)
+* [DescribeActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/83126)
+* [DescribeCarrierPrivilegeNumberApplicants](https://cloud.tencent.com/document/api/679/83125)
+
+新增数据结构：
+
+* [ActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/47715#ActiveCarrierPrivilegeNumber)
+* [CarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/47715#CarrierPrivilegeNumberApplicant)
+* [Filter](https://cloud.tencent.com/document/api/679/47715#Filter)
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 13 次发布
+
+发布时间：2022-11-21 06:14:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteCfsSnapshot](https://cloud.tencent.com/document/api/582/80199)
+
+	* 新增入参：SnapshotIds
+
+	* <font color="#dd0000">**修改入参**：</font>SnapshotId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 47 次发布
+
+发布时间：2022-11-18 20:21:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateBoundFlows](https://cloud.tencent.com/document/api/1420/83118)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 47 次发布
+
+发布时间：2022-11-21 06:32:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDeviceLocationSolve](https://cloud.tencent.com/document/api/1081/83128)
+
+新增数据结构：
+
+* [WifiInfo](https://cloud.tencent.com/document/api/1081/34988#WifiInfo)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 23 次发布
+
+发布时间：2022-11-21 06:46:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)
+
+	* 新增成员：Resources
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 129 次发布
+
+发布时间：2022-11-21 06:55:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：GPUArgs, UserScript, IgnoreExistedNode, DockerGraphPath
+
+
+
+
 # Release v1.0.540
 
 ## 弹性伸缩(as) 版本：2018-04-19
