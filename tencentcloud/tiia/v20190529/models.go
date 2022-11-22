@@ -126,6 +126,34 @@ type Attribute struct {
 	Details *string `json:"Details,omitempty" name:"Details"`
 }
 
+type AttributesForBody struct {
+	// 人体框。当不开启人体检测时，内部参数默认为0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rect *ImageRect `json:"Rect,omitempty" name:"Rect"`
+
+	// 人体检测置信度。取值0-1之间，当不开启人体检测开关时默认为0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectConfidence *float64 `json:"DetectConfidence,omitempty" name:"DetectConfidence"`
+
+	// 属性信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Attributes []*BodyAttributes `json:"Attributes,omitempty" name:"Attributes"`
+}
+
+type BodyAttributes struct {
+	// 属性值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 置信度，取值0-1之间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 属性名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type Box struct {
 	// 图像主体区域。
 	Rect *ImageRect `json:"Rect,omitempty" name:"Rect"`
@@ -850,6 +878,111 @@ func (r *DescribeImagesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetectChefDressRequestParams struct {
+	// 图片的 Url 。
+	// ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
+	// • 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过 3840 x 2160pixel。
+	// 建议：
+	// • 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// 注意：图片需要base64编码，并且要去掉编码头部。
+	// 支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过5M。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 人体检测模型开关，“true”为开启，“false”为关闭
+	// 默认为开启，开启后可先对图片中的人体进行检测之后再进行属性识别
+	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
+
+	// 人体优选开关，“true”为开启，“false”为关闭
+	// 开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
+	// 默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
+	// 人体优选开启时，检测到的人体分辨率不超过1920*1080 pixel
+	EnablePreferred *bool `json:"EnablePreferred,omitempty" name:"EnablePreferred"`
+}
+
+type DetectChefDressRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Url 。
+	// ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
+	// • 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过 3840 x 2160pixel。
+	// 建议：
+	// • 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// 注意：图片需要base64编码，并且要去掉编码头部。
+	// 支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过5M。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 人体检测模型开关，“true”为开启，“false”为关闭
+	// 默认为开启，开启后可先对图片中的人体进行检测之后再进行属性识别
+	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
+
+	// 人体优选开关，“true”为开启，“false”为关闭
+	// 开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
+	// 默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
+	// 人体优选开启时，检测到的人体分辨率不超过1920*1080 pixel
+	EnablePreferred *bool `json:"EnablePreferred,omitempty" name:"EnablePreferred"`
+}
+
+func (r *DetectChefDressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectChefDressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "EnableDetect")
+	delete(f, "EnablePreferred")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectChefDressRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetectChefDressResponseParams struct {
+	// 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bodies []*AttributesForBody `json:"Bodies,omitempty" name:"Bodies"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DetectChefDressResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectChefDressResponseParams `json:"Response"`
+}
+
+func (r *DetectChefDressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectChefDressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1683,6 +1816,113 @@ func (r *DetectProductResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DetectProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetectSecurityRequestParams struct {
+	// 图片的 Url 。
+	// ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
+	// • 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过3840 x 2160 pixel。
+	// 建议：
+	// • 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。
+	// 最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// 注意：图片需要base64编码，并且要去掉编码头部。
+	// 支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过5M。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 人体检测模型开关，“true”为开启，“false”为关闭
+	// 开启后可先对图片中的人体进行检测之后再进行属性识别，默认为开启
+	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
+
+	// 人体优选开关，“true”为开启，“false”为关闭
+	// 开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
+	// 默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
+	// 如开启人体优选，检测到的人体分辨率需不大于1920*1080 pixel
+	EnablePreferred *bool `json:"EnablePreferred,omitempty" name:"EnablePreferred"`
+}
+
+type DetectSecurityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Url 。
+	// ImageUrl和ImageBase64必须提供一个，同时存在时优先使用ImageUrl字段。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、不支持 GIF 图片。
+	// • 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过3840 x 2160 pixel。
+	// 建议：
+	// • 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。
+	// 最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// 注意：图片需要base64编码，并且要去掉编码头部。
+	// 支持的图片格式：PNG、JPG、JPEG、暂不支持GIF格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过5M。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 人体检测模型开关，“true”为开启，“false”为关闭
+	// 开启后可先对图片中的人体进行检测之后再进行属性识别，默认为开启
+	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
+
+	// 人体优选开关，“true”为开启，“false”为关闭
+	// 开启后自动对检测质量低的人体进行优选过滤，有助于提高属性识别的准确率。
+	// 默认为开启，仅在人体检测开关开启时可配置，人体检测模型关闭时人体优选也关闭
+	// 如开启人体优选，检测到的人体分辨率需不大于1920*1080 pixel
+	EnablePreferred *bool `json:"EnablePreferred,omitempty" name:"EnablePreferred"`
+}
+
+func (r *DetectSecurityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectSecurityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "EnableDetect")
+	delete(f, "EnablePreferred")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectSecurityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetectSecurityResponseParams struct {
+	// 识别到的人体属性信息。单个人体属性信息包括人体检测置信度，属性信息，人体检测框。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bodies []*AttributesForBody `json:"Bodies,omitempty" name:"Bodies"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DetectSecurityResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectSecurityResponseParams `json:"Response"`
+}
+
+func (r *DetectSecurityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectSecurityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

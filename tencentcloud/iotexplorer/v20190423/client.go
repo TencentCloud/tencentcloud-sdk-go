@@ -2279,6 +2279,7 @@ func NewDescribeDeviceLocationSolveResponse() (response *DescribeDeviceLocationS
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MODULENOTEXIST = "ResourceNotFound.ModuleNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDeviceLocationSolve(request *DescribeDeviceLocationSolveRequest) (response *DescribeDeviceLocationSolveResponse, err error) {
     return c.DescribeDeviceLocationSolveWithContext(context.Background(), request)
@@ -2294,6 +2295,7 @@ func (c *Client) DescribeDeviceLocationSolve(request *DescribeDeviceLocationSolv
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MODULENOTEXIST = "ResourceNotFound.ModuleNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeDeviceLocationSolveWithContext(ctx context.Context, request *DescribeDeviceLocationSolveRequest) (response *DescribeDeviceLocationSolveResponse, err error) {
     if request == nil {

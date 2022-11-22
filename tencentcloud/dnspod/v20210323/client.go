@@ -45,6 +45,126 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCheckRecordSnapshotRollbackRequest() (request *CheckRecordSnapshotRollbackRequest) {
+    request = &CheckRecordSnapshotRollbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "CheckRecordSnapshotRollback")
+    
+    
+    return
+}
+
+func NewCheckRecordSnapshotRollbackResponse() (response *CheckRecordSnapshotRollbackResponse) {
+    response = &CheckRecordSnapshotRollbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckRecordSnapshotRollback
+// 回滚前检查单条记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) CheckRecordSnapshotRollback(request *CheckRecordSnapshotRollbackRequest) (response *CheckRecordSnapshotRollbackResponse, err error) {
+    return c.CheckRecordSnapshotRollbackWithContext(context.Background(), request)
+}
+
+// CheckRecordSnapshotRollback
+// 回滚前检查单条记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) CheckRecordSnapshotRollbackWithContext(ctx context.Context, request *CheckRecordSnapshotRollbackRequest) (response *CheckRecordSnapshotRollbackResponse, err error) {
+    if request == nil {
+        request = NewCheckRecordSnapshotRollbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckRecordSnapshotRollback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckRecordSnapshotRollbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCheckSnapshotRollbackRequest() (request *CheckSnapshotRollbackRequest) {
+    request = &CheckSnapshotRollbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "CheckSnapshotRollback")
+    
+    
+    return
+}
+
+func NewCheckSnapshotRollbackResponse() (response *CheckSnapshotRollbackResponse) {
+    response = &CheckSnapshotRollbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckSnapshotRollback
+// 快照回滚前检查
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) CheckSnapshotRollback(request *CheckSnapshotRollbackRequest) (response *CheckSnapshotRollbackResponse, err error) {
+    return c.CheckSnapshotRollbackWithContext(context.Background(), request)
+}
+
+// CheckSnapshotRollback
+// 快照回滚前检查
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) CheckSnapshotRollbackWithContext(ctx context.Context, request *CheckSnapshotRollbackRequest) (response *CheckSnapshotRollbackResponse, err error) {
+    if request == nil {
+        request = NewCheckSnapshotRollbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckSnapshotRollback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckSnapshotRollbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDealRequest() (request *CreateDealRequest) {
     request = &CreateDealRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -811,6 +931,66 @@ func (c *Client) CreateRecordBatchWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateSnapshotRequest() (request *CreateSnapshotRequest) {
+    request = &CreateSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "CreateSnapshot")
+    
+    
+    return
+}
+
+func NewCreateSnapshotResponse() (response *CreateSnapshotResponse) {
+    response = &CreateSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSnapshot
+// 创建快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) CreateSnapshot(request *CreateSnapshotRequest) (response *CreateSnapshotResponse, err error) {
+    return c.CreateSnapshotWithContext(context.Background(), request)
+}
+
+// CreateSnapshot
+// 创建快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateSnapshotRequest) (response *CreateSnapshotResponse, err error) {
+    if request == nil {
+        request = NewCreateSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDomainRequest() (request *DeleteDomainRequest) {
     request = &DeleteDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1121,6 +1301,66 @@ func (c *Client) DeleteShareDomainWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteShareDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSnapshotRequest() (request *DeleteSnapshotRequest) {
+    request = &DeleteSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DeleteSnapshot")
+    
+    
+    return
+}
+
+func NewDeleteSnapshotResponse() (response *DeleteSnapshotResponse) {
+    response = &DeleteSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSnapshot
+// 删除快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (response *DeleteSnapshotResponse, err error) {
+    return c.DeleteSnapshotWithContext(context.Background(), request)
+}
+
+// DeleteSnapshot
+// 删除快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteSnapshotRequest) (response *DeleteSnapshotResponse, err error) {
+    if request == nil {
+        request = NewDeleteSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSnapshotResponse()
     err = c.Send(request, response)
     return
 }
@@ -1977,6 +2217,66 @@ func (c *Client) DescribeRecordListWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeRecordSnapshotRollbackResultRequest() (request *DescribeRecordSnapshotRollbackResultRequest) {
+    request = &DescribeRecordSnapshotRollbackResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordSnapshotRollbackResult")
+    
+    
+    return
+}
+
+func NewDescribeRecordSnapshotRollbackResultResponse() (response *DescribeRecordSnapshotRollbackResultResponse) {
+    response = &DescribeRecordSnapshotRollbackResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRecordSnapshotRollbackResult
+// 查询解析记录重新回滚的结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeRecordSnapshotRollbackResult(request *DescribeRecordSnapshotRollbackResultRequest) (response *DescribeRecordSnapshotRollbackResultResponse, err error) {
+    return c.DescribeRecordSnapshotRollbackResultWithContext(context.Background(), request)
+}
+
+// DescribeRecordSnapshotRollbackResult
+// 查询解析记录重新回滚的结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeRecordSnapshotRollbackResultWithContext(ctx context.Context, request *DescribeRecordSnapshotRollbackResultRequest) (response *DescribeRecordSnapshotRollbackResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordSnapshotRollbackResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordSnapshotRollbackResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordSnapshotRollbackResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecordTypeRequest() (request *DescribeRecordTypeRequest) {
     request = &DescribeRecordTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2057,6 +2357,246 @@ func (c *Client) DescribeRecordTypeWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeRecordTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSnapshotConfigRequest() (request *DescribeSnapshotConfigRequest) {
+    request = &DescribeSnapshotConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeSnapshotConfig")
+    
+    
+    return
+}
+
+func NewDescribeSnapshotConfigResponse() (response *DescribeSnapshotConfigResponse) {
+    response = &DescribeSnapshotConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSnapshotConfig
+// 查询解析快照配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeSnapshotConfig(request *DescribeSnapshotConfigRequest) (response *DescribeSnapshotConfigResponse, err error) {
+    return c.DescribeSnapshotConfigWithContext(context.Background(), request)
+}
+
+// DescribeSnapshotConfig
+// 查询解析快照配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeSnapshotConfigWithContext(ctx context.Context, request *DescribeSnapshotConfigRequest) (response *DescribeSnapshotConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshotConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSnapshotConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSnapshotListRequest() (request *DescribeSnapshotListRequest) {
+    request = &DescribeSnapshotListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeSnapshotList")
+    
+    
+    return
+}
+
+func NewDescribeSnapshotListResponse() (response *DescribeSnapshotListResponse) {
+    response = &DescribeSnapshotListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSnapshotList
+// 查询快照列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeSnapshotList(request *DescribeSnapshotListRequest) (response *DescribeSnapshotListResponse, err error) {
+    return c.DescribeSnapshotListWithContext(context.Background(), request)
+}
+
+// DescribeSnapshotList
+// 查询快照列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeSnapshotListWithContext(ctx context.Context, request *DescribeSnapshotListRequest) (response *DescribeSnapshotListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshotList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSnapshotListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSnapshotRollbackResultRequest() (request *DescribeSnapshotRollbackResultRequest) {
+    request = &DescribeSnapshotRollbackResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeSnapshotRollbackResult")
+    
+    
+    return
+}
+
+func NewDescribeSnapshotRollbackResultResponse() (response *DescribeSnapshotRollbackResultResponse) {
+    response = &DescribeSnapshotRollbackResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSnapshotRollbackResult
+// 查询快照回滚结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeSnapshotRollbackResult(request *DescribeSnapshotRollbackResultRequest) (response *DescribeSnapshotRollbackResultResponse, err error) {
+    return c.DescribeSnapshotRollbackResultWithContext(context.Background(), request)
+}
+
+// DescribeSnapshotRollbackResult
+// 查询快照回滚结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeSnapshotRollbackResultWithContext(ctx context.Context, request *DescribeSnapshotRollbackResultRequest) (response *DescribeSnapshotRollbackResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotRollbackResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshotRollbackResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSnapshotRollbackResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSnapshotRollbackTaskRequest() (request *DescribeSnapshotRollbackTaskRequest) {
+    request = &DescribeSnapshotRollbackTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeSnapshotRollbackTask")
+    
+    
+    return
+}
+
+func NewDescribeSnapshotRollbackTaskResponse() (response *DescribeSnapshotRollbackTaskResponse) {
+    response = &DescribeSnapshotRollbackTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSnapshotRollbackTask
+// 查询最近一次回滚
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeSnapshotRollbackTask(request *DescribeSnapshotRollbackTaskRequest) (response *DescribeSnapshotRollbackTaskResponse, err error) {
+    return c.DescribeSnapshotRollbackTaskWithContext(context.Background(), request)
+}
+
+// DescribeSnapshotRollbackTask
+// 查询最近一次回滚
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeSnapshotRollbackTaskWithContext(ctx context.Context, request *DescribeSnapshotRollbackTaskRequest) (response *DescribeSnapshotRollbackTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotRollbackTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshotRollbackTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSnapshotRollbackTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -2177,6 +2717,66 @@ func (c *Client) DescribeUserDetailWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeUserDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadSnapshotRequest() (request *DownloadSnapshotRequest) {
+    request = &DownloadSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DownloadSnapshot")
+    
+    
+    return
+}
+
+func NewDownloadSnapshotResponse() (response *DownloadSnapshotResponse) {
+    response = &DownloadSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DownloadSnapshot
+// 下载快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DownloadSnapshot(request *DownloadSnapshotRequest) (response *DownloadSnapshotResponse, err error) {
+    return c.DownloadSnapshotWithContext(context.Background(), request)
+}
+
+// DownloadSnapshot
+// 下载快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DownloadSnapshotWithContext(ctx context.Context, request *DownloadSnapshotRequest) (response *DownloadSnapshotResponse, err error) {
+    if request == nil {
+        request = NewDownloadSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadSnapshotResponse()
     err = c.Send(request, response)
     return
 }
@@ -3455,6 +4055,66 @@ func (c *Client) ModifyRecordStatusWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifySnapshotConfigRequest() (request *ModifySnapshotConfigRequest) {
+    request = &ModifySnapshotConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "ModifySnapshotConfig")
+    
+    
+    return
+}
+
+func NewModifySnapshotConfigResponse() (response *ModifySnapshotConfigResponse) {
+    response = &ModifySnapshotConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySnapshotConfig
+// 修改快照配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) ModifySnapshotConfig(request *ModifySnapshotConfigRequest) (response *ModifySnapshotConfigResponse, err error) {
+    return c.ModifySnapshotConfigWithContext(context.Background(), request)
+}
+
+// ModifySnapshotConfig
+// 修改快照配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) ModifySnapshotConfigWithContext(ctx context.Context, request *ModifySnapshotConfigRequest) (response *ModifySnapshotConfigResponse, err error) {
+    if request == nil {
+        request = NewModifySnapshotConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySnapshotConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySnapshotConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySubdomainStatusRequest() (request *ModifySubdomainStatusRequest) {
     request = &ModifySubdomainStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4065,6 +4725,126 @@ func (c *Client) PayOrderWithBalanceWithContext(ctx context.Context, request *Pa
     request.SetContext(ctx)
     
     response = NewPayOrderWithBalanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRollbackRecordSnapshotRequest() (request *RollbackRecordSnapshotRequest) {
+    request = &RollbackRecordSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "RollbackRecordSnapshot")
+    
+    
+    return
+}
+
+func NewRollbackRecordSnapshotResponse() (response *RollbackRecordSnapshotResponse) {
+    response = &RollbackRecordSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RollbackRecordSnapshot
+// 重新回滚指定解析记录快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) RollbackRecordSnapshot(request *RollbackRecordSnapshotRequest) (response *RollbackRecordSnapshotResponse, err error) {
+    return c.RollbackRecordSnapshotWithContext(context.Background(), request)
+}
+
+// RollbackRecordSnapshot
+// 重新回滚指定解析记录快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) RollbackRecordSnapshotWithContext(ctx context.Context, request *RollbackRecordSnapshotRequest) (response *RollbackRecordSnapshotResponse, err error) {
+    if request == nil {
+        request = NewRollbackRecordSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollbackRecordSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRollbackRecordSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRollbackSnapshotRequest() (request *RollbackSnapshotRequest) {
+    request = &RollbackSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "RollbackSnapshot")
+    
+    
+    return
+}
+
+func NewRollbackSnapshotResponse() (response *RollbackSnapshotResponse) {
+    response = &RollbackSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RollbackSnapshot
+// 回滚快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) RollbackSnapshot(request *RollbackSnapshotRequest) (response *RollbackSnapshotResponse, err error) {
+    return c.RollbackSnapshotWithContext(context.Background(), request)
+}
+
+// RollbackSnapshot
+// 回滚快照
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) RollbackSnapshotWithContext(ctx context.Context, request *RollbackSnapshotRequest) (response *RollbackSnapshotResponse, err error) {
+    if request == nil {
+        request = NewRollbackSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollbackSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRollbackSnapshotResponse()
     err = c.Send(request, response)
     return
 }

@@ -1917,8 +1917,7 @@ func NewCreateRuleTemplateResponse() (response *CreateRuleTemplateResponse) {
 // 创建规则模版
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
-//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateRuleTemplate(request *CreateRuleTemplateRequest) (response *CreateRuleTemplateResponse, err error) {
     return c.CreateRuleTemplateWithContext(context.Background(), request)
 }
@@ -1927,8 +1926,7 @@ func (c *Client) CreateRuleTemplate(request *CreateRuleTemplateRequest) (respons
 // 创建规则模版
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
-//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateRuleTemplateWithContext(ctx context.Context, request *CreateRuleTemplateRequest) (response *CreateRuleTemplateResponse, err error) {
     if request == nil {
         request = NewCreateRuleTemplateRequest()
@@ -5393,13 +5391,7 @@ func NewDescribeRealTimeTaskInstanceNodeInfoResponse() (response *DescribeRealTi
 // 查询实时任务实例节点信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRealTimeTaskInstanceNodeInfo(request *DescribeRealTimeTaskInstanceNodeInfoRequest) (response *DescribeRealTimeTaskInstanceNodeInfoResponse, err error) {
     return c.DescribeRealTimeTaskInstanceNodeInfoWithContext(context.Background(), request)
 }
@@ -5408,13 +5400,7 @@ func (c *Client) DescribeRealTimeTaskInstanceNodeInfo(request *DescribeRealTimeT
 // 查询实时任务实例节点信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRealTimeTaskInstanceNodeInfoWithContext(ctx context.Context, request *DescribeRealTimeTaskInstanceNodeInfoRequest) (response *DescribeRealTimeTaskInstanceNodeInfoResponse, err error) {
     if request == nil {
         request = NewDescribeRealTimeTaskInstanceNodeInfoRequest()
@@ -5453,13 +5439,7 @@ func NewDescribeRealTimeTaskMetricOverviewResponse() (response *DescribeRealTime
 // 实时任务运行指标概览
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRealTimeTaskMetricOverview(request *DescribeRealTimeTaskMetricOverviewRequest) (response *DescribeRealTimeTaskMetricOverviewResponse, err error) {
     return c.DescribeRealTimeTaskMetricOverviewWithContext(context.Background(), request)
 }
@@ -5468,13 +5448,7 @@ func (c *Client) DescribeRealTimeTaskMetricOverview(request *DescribeRealTimeTas
 // 实时任务运行指标概览
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRealTimeTaskMetricOverviewWithContext(ctx context.Context, request *DescribeRealTimeTaskMetricOverviewRequest) (response *DescribeRealTimeTaskMetricOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeRealTimeTaskMetricOverviewRequest()
@@ -5513,13 +5487,7 @@ func NewDescribeRealTimeTaskSpeedResponse() (response *DescribeRealTimeTaskSpeed
 // 实时任务同步速度趋势
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRealTimeTaskSpeed(request *DescribeRealTimeTaskSpeedRequest) (response *DescribeRealTimeTaskSpeedResponse, err error) {
     return c.DescribeRealTimeTaskSpeedWithContext(context.Background(), request)
 }
@@ -5528,13 +5496,7 @@ func (c *Client) DescribeRealTimeTaskSpeed(request *DescribeRealTimeTaskSpeedReq
 // 实时任务同步速度趋势
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRealTimeTaskSpeedWithContext(ctx context.Context, request *DescribeRealTimeTaskSpeedRequest) (response *DescribeRealTimeTaskSpeedResponse, err error) {
     if request == nil {
         request = NewDescribeRealTimeTaskSpeedRequest()
@@ -9142,6 +9104,7 @@ func NewModifyMonitorStatusResponse() (response *ModifyMonitorStatusResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMonitorStatus(request *ModifyMonitorStatusRequest) (response *ModifyMonitorStatusResponse, err error) {
     return c.ModifyMonitorStatusWithContext(context.Background(), request)
 }
@@ -9151,6 +9114,7 @@ func (c *Client) ModifyMonitorStatus(request *ModifyMonitorStatusRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMonitorStatusWithContext(ctx context.Context, request *ModifyMonitorStatusRequest) (response *ModifyMonitorStatusResponse, err error) {
     if request == nil {
         request = NewModifyMonitorStatusRequest()

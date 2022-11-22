@@ -1205,6 +1205,7 @@ func NewDescribeTagsSeqResponse() (response *DescribeTagsSeqResponse) {
 // 用于查询已建立的标签列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_OFFSETINVALID = "InvalidParameterValue.OffsetInvalid"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagsSeq(request *DescribeTagsSeqRequest) (response *DescribeTagsSeqResponse, err error) {
@@ -1215,6 +1216,7 @@ func (c *Client) DescribeTagsSeq(request *DescribeTagsSeqRequest) (response *Des
 // 用于查询已建立的标签列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_OFFSETINVALID = "InvalidParameterValue.OffsetInvalid"
 //  INVALIDPARAMETERVALUE_UININVALID = "InvalidParameterValue.UinInvalid"
 func (c *Client) DescribeTagsSeqWithContext(ctx context.Context, request *DescribeTagsSeqRequest) (response *DescribeTagsSeqResponse, err error) {

@@ -3970,6 +3970,7 @@ func NewDescribeBusinessLogConfigResponse() (response *DescribeBusinessLogConfig
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -3983,6 +3984,7 @@ func (c *Client) DescribeBusinessLogConfig(request *DescribeBusinessLogConfigReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -9305,6 +9307,7 @@ func NewModifyContainerGroupResponse() (response *ModifyContainerGroupResponse) 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPACCESSTYPENULL = "InvalidParameterValue.ContainergroupAccesstypeNull"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
 func (c *Client) ModifyContainerGroup(request *ModifyContainerGroupRequest) (response *ModifyContainerGroupResponse, err error) {
     return c.ModifyContainerGroupWithContext(context.Background(), request)
 }
@@ -9315,6 +9318,7 @@ func (c *Client) ModifyContainerGroup(request *ModifyContainerGroupRequest) (res
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPACCESSTYPENULL = "InvalidParameterValue.ContainergroupAccesstypeNull"
 //  INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
 func (c *Client) ModifyContainerGroupWithContext(ctx context.Context, request *ModifyContainerGroupRequest) (response *ModifyContainerGroupResponse, err error) {
     if request == nil {
         request = NewModifyContainerGroupRequest()
@@ -10366,6 +10370,7 @@ func NewReleaseConfigResponse() (response *ReleaseConfigResponse) {
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_GROUPIDREQUIRED = "MissingParameter.GroupIdRequired"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ReleaseConfig(request *ReleaseConfigRequest) (response *ReleaseConfigResponse, err error) {
     return c.ReleaseConfigWithContext(context.Background(), request)
@@ -10386,6 +10391,7 @@ func (c *Client) ReleaseConfig(request *ReleaseConfigRequest) (response *Release
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_GROUPIDREQUIRED = "MissingParameter.GroupIdRequired"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) ReleaseConfigWithContext(ctx context.Context, request *ReleaseConfigRequest) (response *ReleaseConfigResponse, err error) {
     if request == nil {

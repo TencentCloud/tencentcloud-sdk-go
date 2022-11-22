@@ -827,6 +827,9 @@ const (
 	// 分组ID不能为空。
 	MISSINGPARAMETER_GROUPIDNULL = "MissingParameter.GroupIdNull"
 
+	// 部署组ID未填写。
+	MISSINGPARAMETER_GROUPIDREQUIRED = "MissingParameter.GroupIdRequired"
+
 	// 分组所属命名空间不能为空。
 	MISSINGPARAMETER_GROUPNAMESPACENULL = "MissingParameter.GroupNamespaceNull"
 

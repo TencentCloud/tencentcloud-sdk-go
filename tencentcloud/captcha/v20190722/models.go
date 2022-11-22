@@ -1359,7 +1359,7 @@ func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTicketStatisticsRequestParams struct {
-	// 验证码appid
+	// 验证码AppId
 	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
 
 	// 开始时间字符串
@@ -1375,7 +1375,7 @@ type GetTicketStatisticsRequestParams struct {
 type GetTicketStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 验证码appid
+	// 验证码AppId
 	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
 
 	// 开始时间字符串

@@ -483,6 +483,7 @@ func NewCreateReceiverDetailWithDataResponse() (response *CreateReceiverDetailWi
 //  INVALIDPARAMETERVALUE_TEMPLATEDATALENLIMIT = "InvalidParameterValue.TemplateDataLenLimit"
 //  LIMITEXCEEDED_RECEIVERDETAILCOUNTLIMIT = "LimitExceeded.ReceiverDetailCountLimit"
 //  LIMITEXCEEDED_RECEIVERDETAILREQUESTLIMIT = "LimitExceeded.ReceiverDetailRequestLimit"
+//  MISSINGPARAMETER_EMAILSNECESSARY = "MissingParameter.EmailsNecessary"
 //  OPERATIONDENIED_RECEIVERISOPERATING = "OperationDenied.ReceiverIsOperating"
 //  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
 func (c *Client) CreateReceiverDetailWithData(request *CreateReceiverDetailWithDataRequest) (response *CreateReceiverDetailWithDataResponse, err error) {
@@ -501,6 +502,7 @@ func (c *Client) CreateReceiverDetailWithData(request *CreateReceiverDetailWithD
 //  INVALIDPARAMETERVALUE_TEMPLATEDATALENLIMIT = "InvalidParameterValue.TemplateDataLenLimit"
 //  LIMITEXCEEDED_RECEIVERDETAILCOUNTLIMIT = "LimitExceeded.ReceiverDetailCountLimit"
 //  LIMITEXCEEDED_RECEIVERDETAILREQUESTLIMIT = "LimitExceeded.ReceiverDetailRequestLimit"
+//  MISSINGPARAMETER_EMAILSNECESSARY = "MissingParameter.EmailsNecessary"
 //  OPERATIONDENIED_RECEIVERISOPERATING = "OperationDenied.ReceiverIsOperating"
 //  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
 func (c *Client) CreateReceiverDetailWithDataWithContext(ctx context.Context, request *CreateReceiverDetailWithDataRequest) (response *CreateReceiverDetailWithDataResponse, err error) {

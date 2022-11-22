@@ -19185,6 +19185,9 @@ type ModifyNetworkInterfaceQosRequestParams struct {
 
 	// 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
+	// DirectSend端口范围最大值。
+	DirectSendMaxPort *uint64 `json:"DirectSendMaxPort,omitempty" name:"DirectSendMaxPort"`
 }
 
 type ModifyNetworkInterfaceQosRequest struct {
@@ -19195,6 +19198,9 @@ type ModifyNetworkInterfaceQosRequest struct {
 
 	// 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
+	// DirectSend端口范围最大值。
+	DirectSendMaxPort *uint64 `json:"DirectSendMaxPort,omitempty" name:"DirectSendMaxPort"`
 }
 
 func (r *ModifyNetworkInterfaceQosRequest) ToJsonString() string {
@@ -19211,6 +19217,7 @@ func (r *ModifyNetworkInterfaceQosRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NetworkInterfaceIds")
 	delete(f, "QosLevel")
+	delete(f, "DirectSendMaxPort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkInterfaceQosRequest has unknown keys!", "")
 	}

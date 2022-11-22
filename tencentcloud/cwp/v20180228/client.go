@@ -11849,6 +11849,7 @@ func NewModifyBaselinePolicyResponse() (response *ModifyBaselinePolicyResponse) 
 // 更改基线策略设置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyBaselinePolicy(request *ModifyBaselinePolicyRequest) (response *ModifyBaselinePolicyResponse, err error) {
@@ -11859,6 +11860,7 @@ func (c *Client) ModifyBaselinePolicy(request *ModifyBaselinePolicyRequest) (res
 // 更改基线策略设置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyBaselinePolicyWithContext(ctx context.Context, request *ModifyBaselinePolicyRequest) (response *ModifyBaselinePolicyResponse, err error) {

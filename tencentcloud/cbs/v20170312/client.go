@@ -1021,6 +1021,7 @@ func NewDescribeDiskAssociatedAutoSnapshotPolicyResponse() (response *DescribeDi
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDiskAssociatedAutoSnapshotPolicy(request *DescribeDiskAssociatedAutoSnapshotPolicyRequest) (response *DescribeDiskAssociatedAutoSnapshotPolicyResponse, err error) {
     return c.DescribeDiskAssociatedAutoSnapshotPolicyWithContext(context.Background(), request)
 }
@@ -1031,6 +1032,7 @@ func (c *Client) DescribeDiskAssociatedAutoSnapshotPolicy(request *DescribeDiskA
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDiskAssociatedAutoSnapshotPolicyWithContext(ctx context.Context, request *DescribeDiskAssociatedAutoSnapshotPolicyRequest) (response *DescribeDiskAssociatedAutoSnapshotPolicyResponse, err error) {
     if request == nil {
         request = NewDescribeDiskAssociatedAutoSnapshotPolicyRequest()

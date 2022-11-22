@@ -613,6 +613,9 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// MobileCheck：手机号验证
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
+
+	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
 }
 
 type ChannelCreateFlowByFilesRequest struct {
@@ -665,6 +668,9 @@ type ChannelCreateFlowByFilesRequest struct {
 	// MobileCheck：手机号验证
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
+
+	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
 }
 
 func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
@@ -694,6 +700,7 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "NeedSignReview")
 	delete(f, "Operator")
 	delete(f, "ApproverVerifyType")
+	delete(f, "SignBeanTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -1517,6 +1524,10 @@ type Component struct {
 
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
+
+	// 渠道控件ID。
+	// 如果不为空，属于渠道预设控件；
+	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
 
 	// 指定关键字页码
 	KeywordPage *int64 `json:"KeywordPage,omitempty" name:"KeywordPage"`
@@ -2491,6 +2502,7 @@ type FlowApproverInfo struct {
 	NotChannelOrganization *bool `json:"NotChannelOrganization,omitempty" name:"NotChannelOrganization"`
 
 	// 用户侧第三方id，最大长度64个字符
+	// 当签署方为同一渠道下的员工时，该字段若不指定，则发起【待领取】的流程
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
@@ -3442,6 +3454,10 @@ type TemplateInfo struct {
 	// 模板的H5预览链接,可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
+
+	// 渠道模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
 }
 
 type UploadFile struct {

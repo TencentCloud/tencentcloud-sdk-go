@@ -67,6 +67,7 @@ func NewAddDeviceGroupMembersResponse() (response *AddDeviceGroupMembersResponse
 // 添加资产组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
@@ -80,6 +81,7 @@ func (c *Client) AddDeviceGroupMembers(request *AddDeviceGroupMembersRequest) (r
 // 添加资产组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
@@ -1221,6 +1223,7 @@ func NewDescribeUserGroupMembersResponse() (response *DescribeUserGroupMembersRe
 // 查询用户组成员列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1233,6 +1236,7 @@ func (c *Client) DescribeUserGroupMembers(request *DescribeUserGroupMembersReque
 // 查询用户组成员列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

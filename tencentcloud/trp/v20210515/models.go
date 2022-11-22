@@ -343,6 +343,9 @@ type CreateCodePackRequestParams struct {
 
 	// 码包规格
 	PackSpec []*PackSpec `json:"PackSpec,omitempty" name:"PackSpec"`
+
+	// 批次ID，如果传了生码后会同时绑定批次，并激活码
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 type CreateCodePackRequest struct {
@@ -371,6 +374,9 @@ type CreateCodePackRequest struct {
 
 	// 码包规格
 	PackSpec []*PackSpec `json:"PackSpec,omitempty" name:"PackSpec"`
+
+	// 批次ID，如果传了生码后会同时绑定批次，并激活码
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 func (r *CreateCodePackRequest) ToJsonString() string {
@@ -393,6 +399,7 @@ func (r *CreateCodePackRequest) FromJsonString(s string) error {
 	delete(f, "PackType")
 	delete(f, "PackLevel")
 	delete(f, "PackSpec")
+	delete(f, "BatchId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodePackRequest has unknown keys!", "")
 	}
@@ -563,6 +570,9 @@ type CreateCustomPackRequestParams struct {
 
 	// 码段配置，和CustomId二选一必填
 	CodeParts []*CodePart `json:"CodeParts,omitempty" name:"CodeParts"`
+
+	// 批次ID，如果传了生码后会同时绑定批次，并激活码
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 type CreateCustomPackRequest struct {
@@ -591,6 +601,9 @@ type CreateCustomPackRequest struct {
 
 	// 码段配置，和CustomId二选一必填
 	CodeParts []*CodePart `json:"CodeParts,omitempty" name:"CodeParts"`
+
+	// 批次ID，如果传了生码后会同时绑定批次，并激活码
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 func (r *CreateCustomPackRequest) ToJsonString() string {
@@ -613,6 +626,7 @@ func (r *CreateCustomPackRequest) FromJsonString(s string) error {
 	delete(f, "PackSpec")
 	delete(f, "CustomId")
 	delete(f, "CodeParts")
+	delete(f, "BatchId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomPackRequest has unknown keys!", "")
 	}
@@ -3094,6 +3108,9 @@ type ModifyCustomRuleStatusRequestParams struct {
 
 	// 码规则状态 0:未生效 1:已生效 -1:已失效
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 }
 
 type ModifyCustomRuleStatusRequest struct {
@@ -3104,6 +3121,9 @@ type ModifyCustomRuleStatusRequest struct {
 
 	// 码规则状态 0:未生效 1:已生效 -1:已失效
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 }
 
 func (r *ModifyCustomRuleStatusRequest) ToJsonString() string {
@@ -3120,6 +3140,7 @@ func (r *ModifyCustomRuleStatusRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CustomId")
 	delete(f, "Status")
+	delete(f, "CorpId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomRuleStatusRequest has unknown keys!", "")
 	}

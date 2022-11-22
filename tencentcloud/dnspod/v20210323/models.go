@@ -103,6 +103,177 @@ type BatchRecordInfo struct {
 }
 
 // Predefined struct for user
+type CheckRecordSnapshotRollbackRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 解析记录信息
+	Record *SnapshotRecord `json:"Record,omitempty" name:"Record"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type CheckRecordSnapshotRollbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 解析记录信息
+	Record *SnapshotRecord `json:"Record,omitempty" name:"Record"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *CheckRecordSnapshotRollbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckRecordSnapshotRollbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SnapshotId")
+	delete(f, "Record")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckRecordSnapshotRollbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckRecordSnapshotRollbackResponseParams struct {
+	// 错误原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckRecordSnapshotRollbackResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckRecordSnapshotRollbackResponseParams `json:"Response"`
+}
+
+func (r *CheckRecordSnapshotRollbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckRecordSnapshotRollbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckSnapshotRollbackRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type CheckSnapshotRollbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *CheckSnapshotRollbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckSnapshotRollbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SnapshotId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckSnapshotRollbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckSnapshotRollbackResponseParams struct {
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 回滚时长（分钟）
+	CostMinutes *uint64 `json:"CostMinutes,omitempty" name:"CostMinutes"`
+
+	// 快照所属域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 解析记录总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 值为 1，表示超时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+
+	// 检查失败数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Failed *uint64 `json:"Failed,omitempty" name:"Failed"`
+
+	// 失败记录信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedRecordList []*SnapshotRecord `json:"FailedRecordList,omitempty" name:"FailedRecordList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckSnapshotRollbackResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckSnapshotRollbackResponseParams `json:"Response"`
+}
+
+func (r *CheckSnapshotRollbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckSnapshotRollbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDealRequestParams struct {
 	// 询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）
 	DealType *uint64 `json:"DealType,omitempty" name:"DealType"`
@@ -839,6 +1010,67 @@ func (r *CreateRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSnapshotRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type CreateSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *CreateSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSnapshotResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSnapshotResponseParams `json:"Response"`
+}
+
+func (r *CreateSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Deals struct {
 	// 子订单ID
 	DealId *string `json:"DealId,omitempty" name:"DealId"`
@@ -1109,6 +1341,74 @@ func (r *DeleteShareDomainResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteShareDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSnapshotRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DeleteSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DeleteSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SnapshotId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSnapshotResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSnapshotResponseParams `json:"Response"`
+}
+
+func (r *DeleteSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2081,6 +2381,112 @@ func (r *DescribeRecordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecordSnapshotRollbackResultRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 回滚任务 ID
+	JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeRecordSnapshotRollbackResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 回滚任务 ID
+	JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeRecordSnapshotRollbackResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordSnapshotRollbackResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "JobId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordSnapshotRollbackResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordSnapshotRollbackResultResponseParams struct {
+	// 回滚任务 ID
+	JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 回滚状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 失败的记录信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedRecordList []*SnapshotRecord `json:"FailedRecordList,omitempty" name:"FailedRecordList"`
+
+	// 所属域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 回滚进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 回滚剩余时间（单位：分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeftMinutes *uint64 `json:"LeftMinutes,omitempty" name:"LeftMinutes"`
+
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 失败记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Failed *uint64 `json:"Failed,omitempty" name:"Failed"`
+
+	// 成功记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Success *uint64 `json:"Success,omitempty" name:"Success"`
+
+	// 快照下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordSnapshotRollbackResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordSnapshotRollbackResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordSnapshotRollbackResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordSnapshotRollbackResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRecordTypeRequestParams struct {
 	// 域名等级。
 	// + 旧套餐：D_FREE、D_PLUS、D_EXTRA、D_EXPERT、D_ULTRA 分别对应免费套餐、个人豪华、企业1、企业2、企业3。
@@ -2138,6 +2544,322 @@ func (r *DescribeRecordTypeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRecordTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotConfigRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeSnapshotConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeSnapshotConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotConfigResponseParams struct {
+	// 解析快照配置
+	SnapshotConfig *SnapshotConfig `json:"SnapshotConfig,omitempty" name:"SnapshotConfig"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSnapshotConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSnapshotConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeSnapshotConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotListRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeSnapshotListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeSnapshotListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotListResponseParams struct {
+	// 分页信息
+	Info *SnapshotPageInfo `json:"Info,omitempty" name:"Info"`
+
+	// 快照列表
+	SnapshotList []*SnapshotInfo `json:"SnapshotList,omitempty" name:"SnapshotList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSnapshotListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSnapshotListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSnapshotListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotRollbackResultRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照回滚任务 ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeSnapshotRollbackResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照回滚任务 ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeSnapshotRollbackResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotRollbackResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "TaskId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotRollbackResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotRollbackResultResponseParams struct {
+	// 快照所属域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 回滚剩余时间（分钟）
+	LeftMinutes *uint64 `json:"LeftMinutes,omitempty" name:"LeftMinutes"`
+
+	// 回滚进度百分比
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 快照 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 回滚状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 快照回滚任务 ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 成功数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Success *uint64 `json:"Success,omitempty" name:"Success"`
+
+	// 失败数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Failed *uint64 `json:"Failed,omitempty" name:"Failed"`
+
+	// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 失败详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedRecordList []*SnapshotRecord `json:"FailedRecordList,omitempty" name:"FailedRecordList"`
+
+	// 快照的下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSnapshotRollbackResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSnapshotRollbackResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeSnapshotRollbackResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotRollbackResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotRollbackTaskRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeSnapshotRollbackTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeSnapshotRollbackTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotRollbackTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotRollbackTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotRollbackTaskResponseParams struct {
+	// 快照所属域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 回滚状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 快照回滚任务 ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 总数量
+	RecordCount *uint64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 开始回滚时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSnapshotRollbackTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSnapshotRollbackTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeSnapshotRollbackTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotRollbackTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2541,6 +3263,77 @@ type DomainShareInfo struct {
 
 	// 共享状态“enabled”：共享成功。“pending”：共享到的账号不存在, 等待注册
 	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type DownloadSnapshotRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DownloadSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DownloadSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SnapshotId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DownloadSnapshotResponseParams struct {
+	// 快照下载链接
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DownloadSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *DownloadSnapshotResponseParams `json:"Response"`
+}
+
+func (r *DownloadSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type GroupInfo struct {
@@ -3509,6 +4302,74 @@ func (r *ModifyRecordStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySnapshotConfigRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 备件间隔：空字符串-不备份，half_hour-每半小时，hourly-每小时，daily-每天，monthly-每月
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type ModifySnapshotConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 备件间隔：空字符串-不备份，half_hour-每半小时，hourly-每小时，daily-每天，monthly-每月
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *ModifySnapshotConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySnapshotConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Period")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySnapshotConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySnapshotConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifySnapshotConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySnapshotConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifySnapshotConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySnapshotConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySubdomainStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -3831,6 +4692,234 @@ type RecordListItem struct {
 	// MX值，只有MX记录有
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MX *uint64 `json:"MX,omitempty" name:"MX"`
+}
+
+// Predefined struct for user
+type RollbackRecordSnapshotRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 解析记录信息
+	RecordList []*SnapshotRecord `json:"RecordList,omitempty" name:"RecordList"`
+
+	// 之前的快照回滚任务 ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type RollbackRecordSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 解析记录信息
+	RecordList []*SnapshotRecord `json:"RecordList,omitempty" name:"RecordList"`
+
+	// 之前的快照回滚任务 ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *RollbackRecordSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackRecordSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SnapshotId")
+	delete(f, "RecordList")
+	delete(f, "TaskId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackRecordSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackRecordSnapshotResponseParams struct {
+	// 回滚任务 ID
+	JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RollbackRecordSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *RollbackRecordSnapshotResponseParams `json:"Response"`
+}
+
+func (r *RollbackRecordSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackRecordSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackSnapshotRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type RollbackSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *RollbackSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SnapshotId")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackSnapshotResponseParams struct {
+	// 回滚任务 ID，用来查询回滚状态
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RollbackSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *RollbackSnapshotResponseParams `json:"Response"`
+}
+
+func (r *RollbackSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SnapshotConfig struct {
+	// 配置类型：空字符串-不备份，half_hour-每半小时，hourly-每小时，daily-每天，monthly-每月
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 添加时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 所属域名 ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 配置 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 快照数量
+	SnapshotCount *uint64 `json:"SnapshotCount,omitempty" name:"SnapshotCount"`
+
+	// 状态：enable-启用，disable-禁用
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 更新时间
+	UpdatedOn *string `json:"UpdatedOn,omitempty" name:"UpdatedOn"`
+}
+
+type SnapshotInfo struct {
+	// 快照的对象存储地址
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+
+	// 添加时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 所属域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 快照记录 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 域名解析记录数
+	RecordCount *string `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 状态：normal-正常，create-备份中
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type SnapshotPageInfo struct {
+	// 快照总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+}
+
+type SnapshotRecord struct {
+	// 子域名
+	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+
+	// 记录类型
+	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+
+	// 解析线路
+	RecordLine *string `json:"RecordLine,omitempty" name:"RecordLine"`
+
+	// 解析值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// TTL(秒)
+	TTL *string `json:"TTL,omitempty" name:"TTL"`
+
+	// 解析记录 ID
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+
+	// MX优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MX *string `json:"MX,omitempty" name:"MX"`
 }
 
 type SubdomainAliasAnalyticsItem struct {

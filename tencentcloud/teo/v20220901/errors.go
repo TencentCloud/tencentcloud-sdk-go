@@ -134,6 +134,9 @@ const (
 	// 非法操作-非法参数-参数值数量超出限制。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = "InvalidParameter.ErrInvalidActionParamTooManyValues"
 
+	// 非法条件-非法忽略大小写。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = "InvalidParameter.ErrInvalidConditionIgnoreCase"
+
 	// 非法条件-非法参数名称-匹配类型不支持参数名称。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONNAMETARGETNOTSUPPORTNAME = "InvalidParameter.ErrInvalidConditionNameTargetNotSupportName"
 
@@ -286,6 +289,9 @@ const (
 
 	// DNS 记录名称错误。
 	INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
+
+	// 加速域名状态不符合要求。
+	INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
 
 	// DNS 代理域名错误。
 	INVALIDPARAMETERVALUE_INVALIDPROXYNAME = "InvalidParameterValue.InvalidProxyName"

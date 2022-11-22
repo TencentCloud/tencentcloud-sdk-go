@@ -644,6 +644,7 @@ func NewDescribeMixTranscodingUsageResponse() (response *DescribeMixTranscodingU
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeMixTranscodingUsage(request *DescribeMixTranscodingUsageRequest) (response *DescribeMixTranscodingUsageResponse, err error) {
     return c.DescribeMixTranscodingUsageWithContext(context.Background(), request)
 }
@@ -663,6 +664,7 @@ func (c *Client) DescribeMixTranscodingUsage(request *DescribeMixTranscodingUsag
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeMixTranscodingUsageWithContext(ctx context.Context, request *DescribeMixTranscodingUsageRequest) (response *DescribeMixTranscodingUsageResponse, err error) {
     if request == nil {
         request = NewDescribeMixTranscodingUsageRequest()
@@ -2601,6 +2603,7 @@ func NewStartMCUMixTranscodeByStrRoomIdResponse() (response *StartMCUMixTranscod
 // 3、客户端混流和服务端混流不能混用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  INTERNALERROR = "InternalError"
@@ -2682,6 +2685,7 @@ func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeBy
 // 3、客户端混流和服务端混流不能混用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  INTERNALERROR = "InternalError"

@@ -146,9 +146,11 @@ func NewCreateApplicationAutoscalerResponse() (response *CreateApplicationAutosc
 //  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 //  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
 //  INVALIDPARAMETERVALUE_HPAMETRICSINVALID = "InvalidParameterValue.HpaMetricsInvalid"
+//  INVALIDPARAMETERVALUE_HPATHRESHOLDINVALID = "InvalidParameterValue.HpaThresholdInvalid"
 //  INVALIDPARAMETERVALUE_INVALIDCRONSCALERPERIOD = "InvalidParameterValue.InvalidCronScalerPeriod"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_SCALERNAMEDUPLICATED = "InvalidParameterValue.ScalerNameDuplicated"
+//  MISSINGPARAMETER_AUTOSCALERNAMENULL = "MissingParameter.AutoScalerNameNull"
 //  MISSINGPARAMETER_MINMAXNUMNULL = "MissingParameter.MinMaxNumNull"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
@@ -167,9 +169,11 @@ func (c *Client) CreateApplicationAutoscaler(request *CreateApplicationAutoscale
 //  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 //  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
 //  INVALIDPARAMETERVALUE_HPAMETRICSINVALID = "InvalidParameterValue.HpaMetricsInvalid"
+//  INVALIDPARAMETERVALUE_HPATHRESHOLDINVALID = "InvalidParameterValue.HpaThresholdInvalid"
 //  INVALIDPARAMETERVALUE_INVALIDCRONSCALERPERIOD = "InvalidParameterValue.InvalidCronScalerPeriod"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_SCALERNAMEDUPLICATED = "InvalidParameterValue.ScalerNameDuplicated"
+//  MISSINGPARAMETER_AUTOSCALERNAMENULL = "MissingParameter.AutoScalerNameNull"
 //  MISSINGPARAMETER_MINMAXNUMNULL = "MissingParameter.MinMaxNumNull"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
@@ -851,6 +855,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 // 应用部署
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
@@ -897,6 +902,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 // 应用部署
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
@@ -2270,6 +2276,7 @@ func NewModifyApplicationAutoscalerResponse() (response *ModifyApplicationAutosc
 //  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 //  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
 //  INVALIDPARAMETERVALUE_HPAMINMAXINVALID = "InvalidParameterValue.HpaMinMaxInvalid"
+//  MISSINGPARAMETER_MINMAXNUMNULL = "MissingParameter.MinMaxNumNull"
 //  MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
@@ -2286,6 +2293,7 @@ func (c *Client) ModifyApplicationAutoscaler(request *ModifyApplicationAutoscale
 //  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 //  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
 //  INVALIDPARAMETERVALUE_HPAMINMAXINVALID = "InvalidParameterValue.HpaMinMaxInvalid"
+//  MISSINGPARAMETER_MINMAXNUMNULL = "MissingParameter.MinMaxNumNull"
 //  MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
@@ -2721,6 +2729,7 @@ func NewRestartApplicationResponse() (response *RestartApplicationResponse) {
 // 服务重启
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
@@ -2735,6 +2744,7 @@ func (c *Client) RestartApplication(request *RestartApplicationRequest) (respons
 // 服务重启
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"

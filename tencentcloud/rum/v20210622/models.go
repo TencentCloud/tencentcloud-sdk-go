@@ -591,6 +591,9 @@ type CreateWhitelistResponseParams struct {
 	// 消息
 	Msg *string `json:"Msg,omitempty" name:"Msg"`
 
+	// 白名单ID
+	ID *uint64 `json:"ID,omitempty" name:"ID"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

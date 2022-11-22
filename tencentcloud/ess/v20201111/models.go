@@ -794,6 +794,9 @@ type CreateFlowByFilesRequestParams struct {
 
 	// 签署流程描述,最大长度1000个字符
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
+	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -863,6 +866,9 @@ type CreateFlowByFilesRequest struct {
 
 	// 签署流程描述,最大长度1000个字符
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
+	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -894,6 +900,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "ApproverVerifyType")
 	delete(f, "FlowDescription")
+	delete(f, "SignBeanTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}

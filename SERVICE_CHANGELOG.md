@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## DNSPod(dnspod) 版本：2021-03-23
 
-### 第 36 次发布
+### 第 9 次发布
 
-发布时间：2022-11-21 06:12:39
+发布时间：2022-11-22 06:27:31
 
 本次发布包含了以下内容：
 
@@ -12,23 +12,34 @@
 
 新增接口：
 
-* [CreateCarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/83127)
-* [DescribeActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/83126)
-* [DescribeCarrierPrivilegeNumberApplicants](https://cloud.tencent.com/document/api/679/83125)
+* [CheckRecordSnapshotRollback](https://cloud.tencent.com/document/api/1427/83186)
+* [CheckSnapshotRollback](https://cloud.tencent.com/document/api/1427/83185)
+* [CreateSnapshot](https://cloud.tencent.com/document/api/1427/83184)
+* [DeleteSnapshot](https://cloud.tencent.com/document/api/1427/83183)
+* [DescribeRecordSnapshotRollbackResult](https://cloud.tencent.com/document/api/1427/83182)
+* [DescribeSnapshotConfig](https://cloud.tencent.com/document/api/1427/83181)
+* [DescribeSnapshotList](https://cloud.tencent.com/document/api/1427/83180)
+* [DescribeSnapshotRollbackResult](https://cloud.tencent.com/document/api/1427/83179)
+* [DescribeSnapshotRollbackTask](https://cloud.tencent.com/document/api/1427/83178)
+* [DownloadSnapshot](https://cloud.tencent.com/document/api/1427/83177)
+* [ModifySnapshotConfig](https://cloud.tencent.com/document/api/1427/83176)
+* [RollbackRecordSnapshot](https://cloud.tencent.com/document/api/1427/83175)
+* [RollbackSnapshot](https://cloud.tencent.com/document/api/1427/83174)
 
 新增数据结构：
 
-* [ActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/47715#ActiveCarrierPrivilegeNumber)
-* [CarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/47715#CarrierPrivilegeNumberApplicant)
-* [Filter](https://cloud.tencent.com/document/api/679/47715#Filter)
+* [SnapshotConfig](https://cloud.tencent.com/document/api/1427/56185#SnapshotConfig)
+* [SnapshotInfo](https://cloud.tencent.com/document/api/1427/56185#SnapshotInfo)
+* [SnapshotPageInfo](https://cloud.tencent.com/document/api/1427/56185#SnapshotPageInfo)
+* [SnapshotRecord](https://cloud.tencent.com/document/api/1427/56185#SnapshotRecord)
 
 
 
-## 文件存储(cfs) 版本：2019-07-19
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 13 次发布
+### 第 30 次发布
 
-发布时间：2022-11-21 06:14:58
+发布时间：2022-11-21 15:12:52
 
 本次发布包含了以下内容：
 
@@ -36,60 +47,18 @@
 
 修改接口：
 
-* [DeleteCfsSnapshot](https://cloud.tencent.com/document/api/582/80199)
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
 
-	* 新增入参：SnapshotIds
-
-	* <font color="#dd0000">**修改入参**：</font>SnapshotId
+	* 新增入参：SignBeanTag
 
 
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 47 次发布
+### 第 50 次发布
 
-发布时间：2022-11-18 20:21:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ChannelCreateBoundFlows](https://cloud.tencent.com/document/api/1420/83118)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 47 次发布
-
-发布时间：2022-11-21 06:32:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDeviceLocationSolve](https://cloud.tencent.com/document/api/1081/83128)
-
-新增数据结构：
-
-* [WifiInfo](https://cloud.tencent.com/document/api/1081/34988#WifiInfo)
-
-
-
-## SSL 证书(ssl) 版本：2019-12-05
-
-### 第 23 次发布
-
-发布时间：2022-11-21 06:46:02
+发布时间：2022-11-21 19:31:59
 
 本次发布包含了以下内容：
 
@@ -97,18 +66,29 @@
 
 修改数据结构：
 
-* [DeployedResources](https://cloud.tencent.com/document/api/400/41679#DeployedResources)
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
 
-	* 新增成员：Resources
-
-
+	* 新增成员：ChannelComponentId
 
 
-## 容器服务(tke) 版本：2018-05-25
+### 第 49 次发布
 
-### 第 129 次发布
+发布时间：2022-11-21 17:22:12
 
-发布时间：2022-11-21 06:55:04
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* 新增成员：ChannelTemplateId
+
+
+### 第 48 次发布
+
+发布时间：2022-11-21 15:12:25
 
 本次发布包含了以下内容：
 
@@ -116,9 +96,150 @@
 
 修改接口：
 
-* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+* [ChannelCreateFlowByFiles](https://cloud.tencent.com/document/api/1420/73068)
 
-	* 新增入参：GPUArgs, UserScript, IgnoreExistedNode, DockerGraphPath
+	* 新增入参：SignBeanTag
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 47 次发布
+
+发布时间：2022-11-22 06:43:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ResilientStreamConf](https://cloud.tencent.com/document/api/862/37615#ResilientStreamConf)
+
+修改数据结构：
+
+* [CreateInput](https://cloud.tencent.com/document/api/862/37615#CreateInput)
+
+	* 新增成员：ResilientStream
+
+* [DescribeInput](https://cloud.tencent.com/document/api/862/37615#DescribeInput)
+
+	* 新增成员：ResilientStream
+
+* [ModifyInput](https://cloud.tencent.com/document/api/862/37615#ModifyInput)
+
+	* 新增成员：ResilientStream
+
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 17 次发布
+
+发布时间：2022-11-22 06:49:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWhitelist](https://cloud.tencent.com/document/api/1464/69243)
+
+	* 新增出参：ID
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 30 次发布
+
+发布时间：2022-11-22 07:01:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DetectChefDress](https://cloud.tencent.com/document/api/865/83188)
+* [DetectSecurity](https://cloud.tencent.com/document/api/865/83187)
+
+新增数据结构：
+
+* [AttributesForBody](https://cloud.tencent.com/document/api/865/35474#AttributesForBody)
+* [BodyAttributes](https://cloud.tencent.com/document/api/865/35474#BodyAttributes)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 130 次发布
+
+发布时间：2022-11-22 07:03:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SubnetInfos](https://cloud.tencent.com/document/api/457/31866#SubnetInfos)
+
+	* 新增成员：Os, Arch
+
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 10 次发布
+
+发布时间：2022-11-22 07:04:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodePack](https://cloud.tencent.com/document/api/1458/75028)
+
+	* 新增入参：BatchId
+
+* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
+
+	* 新增入参：BatchId
+
+* [ModifyCustomRuleStatus](https://cloud.tencent.com/document/api/1458/81458)
+
+	* 新增入参：CorpId
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 129 次发布
+
+发布时间：2022-11-22 07:10:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyNetworkInterfaceQos](https://cloud.tencent.com/document/api/215/55136)
+
+	* 新增入参：DirectSendMaxPort
 
 
 
@@ -11461,15 +11582,15 @@
 
 新增接口：
 
-* [[CreateCarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/83127)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/83126)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCarrierPrivilegeNumberApplicants](https://cloud.tencent.com/document/api/679/83125)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/83127)
+* [DescribeActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/83126)
+* [DescribeCarrierPrivilegeNumberApplicants](https://cloud.tencent.com/document/api/679/83125)
 
 新增数据结构：
 
-* [[ActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/47715#ActiveCarrierPrivilegeNumber)](https://cloud.tencent.com/document/api/679/47715#[ActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/47715#ActiveCarrierPrivilegeNumber))
-* [[CarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/47715#CarrierPrivilegeNumberApplicant)](https://cloud.tencent.com/document/api/679/47715#[CarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/47715#CarrierPrivilegeNumberApplicant))
-* [[Filter](https://cloud.tencent.com/document/api/679/47715#Filter)](https://cloud.tencent.com/document/api/679/47715#[Filter](https://cloud.tencent.com/document/api/679/47715#Filter))
+* [ActiveCarrierPrivilegeNumber](https://cloud.tencent.com/document/api/679/47715#ActiveCarrierPrivilegeNumber)
+* [CarrierPrivilegeNumberApplicant](https://cloud.tencent.com/document/api/679/47715#CarrierPrivilegeNumberApplicant)
+* [Filter](https://cloud.tencent.com/document/api/679/47715#Filter)
 
 ### 第 35 次发布
 
@@ -34790,6 +34911,37 @@
 
 ## DNSPod(dnspod) 版本：2021-03-23
 
+### 第 9 次发布
+
+发布时间：2022-11-22 06:27:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckRecordSnapshotRollback](https://cloud.tencent.com/document/api/1427/83186)](https://cloud.tencent.com/document/api/#/#)
+* [[CheckSnapshotRollback](https://cloud.tencent.com/document/api/1427/83185)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSnapshot](https://cloud.tencent.com/document/api/1427/83184)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSnapshot](https://cloud.tencent.com/document/api/1427/83183)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordSnapshotRollbackResult](https://cloud.tencent.com/document/api/1427/83182)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSnapshotConfig](https://cloud.tencent.com/document/api/1427/83181)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSnapshotList](https://cloud.tencent.com/document/api/1427/83180)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSnapshotRollbackResult](https://cloud.tencent.com/document/api/1427/83179)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSnapshotRollbackTask](https://cloud.tencent.com/document/api/1427/83178)](https://cloud.tencent.com/document/api/#/#)
+* [[DownloadSnapshot](https://cloud.tencent.com/document/api/1427/83177)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySnapshotConfig](https://cloud.tencent.com/document/api/1427/83176)](https://cloud.tencent.com/document/api/#/#)
+* [[RollbackRecordSnapshot](https://cloud.tencent.com/document/api/1427/83175)](https://cloud.tencent.com/document/api/#/#)
+* [[RollbackSnapshot](https://cloud.tencent.com/document/api/1427/83174)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[SnapshotConfig](https://cloud.tencent.com/document/api/1427/56185#SnapshotConfig)](https://cloud.tencent.com/document/api/1427/56185#[SnapshotConfig](https://cloud.tencent.com/document/api/1427/56185#SnapshotConfig))
+* [[SnapshotInfo](https://cloud.tencent.com/document/api/1427/56185#SnapshotInfo)](https://cloud.tencent.com/document/api/1427/56185#[SnapshotInfo](https://cloud.tencent.com/document/api/1427/56185#SnapshotInfo))
+* [[SnapshotPageInfo](https://cloud.tencent.com/document/api/1427/56185#SnapshotPageInfo)](https://cloud.tencent.com/document/api/1427/56185#[SnapshotPageInfo](https://cloud.tencent.com/document/api/1427/56185#SnapshotPageInfo))
+* [[SnapshotRecord](https://cloud.tencent.com/document/api/1427/56185#SnapshotRecord)](https://cloud.tencent.com/document/api/1427/56185#[SnapshotRecord](https://cloud.tencent.com/document/api/1427/56185#SnapshotRecord))
+
 ### 第 8 次发布
 
 发布时间：2022-09-16 06:21:57
@@ -40323,6 +40475,21 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 30 次发布
+
+发布时间：2022-11-21 15:12:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+
+	* 新增入参：SignBeanTag
+
+
 ### 第 29 次发布
 
 发布时间：2022-11-17 06:26:17
@@ -40957,6 +41124,51 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 50 次发布
+
+发布时间：2022-11-21 19:31:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：ChannelComponentId
+
+
+### 第 49 次发布
+
+发布时间：2022-11-21 17:22:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* 新增成员：ChannelTemplateId
+
+
+### 第 48 次发布
+
+发布时间：2022-11-21 15:12:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowByFiles](https://cloud.tencent.com/document/api/1420/73068)
+
+	* 新增入参：SignBeanTag
+
+
 ### 第 47 次发布
 
 发布时间：2022-11-18 20:21:39
@@ -40967,7 +41179,7 @@
 
 新增接口：
 
-* [[ChannelCreateBoundFlows](https://cloud.tencent.com/document/api/1420/83118)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCreateBoundFlows](https://cloud.tencent.com/document/api/1420/83118)
 
 ### 第 46 次发布
 
@@ -48599,11 +48811,11 @@
 
 新增接口：
 
-* [[DescribeDeviceLocationSolve](https://cloud.tencent.com/document/api/1081/83128)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDeviceLocationSolve](https://cloud.tencent.com/document/api/1081/83128)
 
 新增数据结构：
 
-* [[WifiInfo](https://cloud.tencent.com/document/api/1081/34988#WifiInfo)](https://cloud.tencent.com/document/api/1081/34988#[WifiInfo](https://cloud.tencent.com/document/api/1081/34988#WifiInfo))
+* [WifiInfo](https://cloud.tencent.com/document/api/1081/34988#WifiInfo)
 
 ### 第 46 次发布
 
@@ -58116,6 +58328,33 @@
 
 ## 媒体处理(mps) 版本：2019-06-12
 
+### 第 47 次发布
+
+发布时间：2022-11-22 06:43:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[ResilientStreamConf](https://cloud.tencent.com/document/api/862/37615#ResilientStreamConf)](https://cloud.tencent.com/document/api/862/37615#[ResilientStreamConf](https://cloud.tencent.com/document/api/862/37615#ResilientStreamConf))
+
+修改数据结构：
+
+* [CreateInput](https://cloud.tencent.com/document/api/862/37615#CreateInput)
+
+	* 新增成员：ResilientStream
+
+* [DescribeInput](https://cloud.tencent.com/document/api/862/37615#DescribeInput)
+
+	* 新增成员：ResilientStream
+
+* [ModifyInput](https://cloud.tencent.com/document/api/862/37615#ModifyInput)
+
+	* 新增成员：ResilientStream
+
+
 ### 第 46 次发布
 
 发布时间：2022-11-18 06:39:04
@@ -66178,6 +66417,21 @@
 
 
 ## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 17 次发布
+
+发布时间：2022-11-22 06:49:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWhitelist](https://cloud.tencent.com/document/api/1464/69243)
+
+	* 新增出参：ID
+
 
 ### 第 16 次发布
 
@@ -81710,6 +81964,24 @@
 
 ## 图像分析(tiia) 版本：2019-05-29
 
+### 第 30 次发布
+
+发布时间：2022-11-22 07:01:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DetectChefDress](https://cloud.tencent.com/document/api/865/83188)](https://cloud.tencent.com/document/api/#/#)
+* [[DetectSecurity](https://cloud.tencent.com/document/api/865/83187)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AttributesForBody](https://cloud.tencent.com/document/api/865/35474#AttributesForBody)](https://cloud.tencent.com/document/api/865/35474#[AttributesForBody](https://cloud.tencent.com/document/api/865/35474#AttributesForBody))
+* [[BodyAttributes](https://cloud.tencent.com/document/api/865/35474#BodyAttributes)](https://cloud.tencent.com/document/api/865/35474#[BodyAttributes](https://cloud.tencent.com/document/api/865/35474#BodyAttributes))
+
 ### 第 29 次发布
 
 发布时间：2022-11-09 06:57:46
@@ -83364,6 +83636,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 130 次发布
+
+发布时间：2022-11-22 07:03:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SubnetInfos](https://cloud.tencent.com/document/api/457/31866#SubnetInfos)
+
+	* 新增成员：Os, Arch
+
 
 ### 第 129 次发布
 
@@ -86351,6 +86638,29 @@
 
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 10 次发布
+
+发布时间：2022-11-22 07:04:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodePack](https://cloud.tencent.com/document/api/1458/75028)
+
+	* 新增入参：BatchId
+
+* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
+
+	* 新增入参：BatchId
+
+* [ModifyCustomRuleStatus](https://cloud.tencent.com/document/api/1458/81458)
+
+	* 新增入参：CorpId
+
 
 ### 第 9 次发布
 
@@ -94144,6 +94454,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 129 次发布
+
+发布时间：2022-11-22 07:10:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyNetworkInterfaceQos](https://cloud.tencent.com/document/api/215/55136)
+
+	* 新增入参：DirectSendMaxPort
+
 
 ### 第 128 次发布
 

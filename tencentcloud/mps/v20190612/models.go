@@ -2473,6 +2473,9 @@ type CreateInput struct {
 
 	// 输入的HLS_PULL配置信息。
 	HLSPullSettings *CreateInputHLSPullSettings `json:"HLSPullSettings,omitempty" name:"HLSPullSettings"`
+
+	// 延播平滑吐流配置信息。
+	ResilientStream *ResilientStreamConf `json:"ResilientStream,omitempty" name:"ResilientStream"`
 }
 
 type CreateInputHLSPullSettings struct {
@@ -5022,6 +5025,10 @@ type DescribeInput struct {
 	// 输入的HLS_PULL配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HLSPullSettings *DescribeInputHLSPullSettings `json:"HLSPullSettings,omitempty" name:"HLSPullSettings"`
+
+	// 延播平滑吐流配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResilientStream *ResilientStreamConf `json:"ResilientStream,omitempty" name:"ResilientStream"`
 }
 
 type DescribeInputHLSPullSettings struct {
@@ -9610,6 +9617,9 @@ type ModifyInput struct {
 
 	// HLS_PULL的配置信息。
 	HLSPullSettings *CreateInputHLSPullSettings `json:"HLSPullSettings,omitempty" name:"HLSPullSettings"`
+
+	// 延播平滑吐流配置信息。
+	ResilientStream *ResilientStreamConf `json:"ResilientStream,omitempty" name:"ResilientStream"`
 }
 
 type ModifyOutputInfo struct {
@@ -11720,6 +11730,16 @@ func (r *ResetWorkflowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResetWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResilientStreamConf struct {
+	// 是否开启延播平滑吐流，true开启，false不开启，默认不开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 延播时间，单位秒，目前支持的范围为10~300秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BufferTime *uint64 `json:"BufferTime,omitempty" name:"BufferTime"`
 }
 
 type SRTAddressDestination struct {

@@ -612,6 +612,7 @@ func NewCreateTriggerResponse() (response *CreateTriggerResponse) {
 //  INVALIDPARAMETERVALUE_CDN = "InvalidParameterValue.Cdn"
 //  INVALIDPARAMETERVALUE_CKAFKA = "InvalidParameterValue.Ckafka"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
+//  INVALIDPARAMETERVALUE_COSNOTIFYRULECONFLICT = "InvalidParameterValue.CosNotifyRuleConflict"
 //  INVALIDPARAMETERVALUE_CUSTOMARGUMENT = "InvalidParameterValue.CustomArgument"
 //  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
@@ -672,6 +673,7 @@ func (c *Client) CreateTrigger(request *CreateTriggerRequest) (response *CreateT
 //  INVALIDPARAMETERVALUE_CDN = "InvalidParameterValue.Cdn"
 //  INVALIDPARAMETERVALUE_CKAFKA = "InvalidParameterValue.Ckafka"
 //  INVALIDPARAMETERVALUE_COS = "InvalidParameterValue.Cos"
+//  INVALIDPARAMETERVALUE_COSNOTIFYRULECONFLICT = "InvalidParameterValue.CosNotifyRuleConflict"
 //  INVALIDPARAMETERVALUE_CUSTOMARGUMENT = "InvalidParameterValue.CustomArgument"
 //  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
@@ -1656,6 +1658,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
 //  INTERNALERROR_ES = "InternalError.ES"
 //  INTERNALERROR_EXCEPTION = "InternalError.Exception"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_CLS = "InvalidParameter.Cls"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETER_ROLECHECK = "InvalidParameter.RoleCheck"
@@ -1673,6 +1676,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_ROLECHECK = "ResourceNotFound.RoleCheck"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREGION = "UnsupportedOperation.NotSupportRegion"
 func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *GetFunctionLogsResponse, err error) {
     return c.GetFunctionLogsWithContext(context.Background(), request)
 }
@@ -1688,6 +1692,7 @@ func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *Get
 //  INTERNALERROR_ES = "InternalError.ES"
 //  INTERNALERROR_EXCEPTION = "InternalError.Exception"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_CLS = "InvalidParameter.Cls"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETER_ROLECHECK = "InvalidParameter.RoleCheck"
@@ -1705,6 +1710,7 @@ func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *Get
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_ROLECHECK = "ResourceNotFound.RoleCheck"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREGION = "UnsupportedOperation.NotSupportRegion"
 func (c *Client) GetFunctionLogsWithContext(ctx context.Context, request *GetFunctionLogsRequest) (response *GetFunctionLogsResponse, err error) {
     if request == nil {
         request = NewGetFunctionLogsRequest()
@@ -1877,6 +1883,7 @@ func NewGetRequestStatusResponse() (response *GetRequestStatusResponse) {
 //  INVALIDPARAMETERVALUE_RETCODE = "InvalidParameterValue.RetCode"
 //  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
 //  INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 func (c *Client) GetRequestStatus(request *GetRequestStatusRequest) (response *GetRequestStatusResponse, err error) {
@@ -1899,6 +1906,7 @@ func (c *Client) GetRequestStatus(request *GetRequestStatusRequest) (response *G
 //  INVALIDPARAMETERVALUE_RETCODE = "InvalidParameterValue.RetCode"
 //  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
 //  INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 func (c *Client) GetRequestStatusWithContext(ctx context.Context, request *GetRequestStatusRequest) (response *GetRequestStatusResponse, err error) {
@@ -3339,6 +3347,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
 //  INVALIDPARAMETERVALUE_APMCONFIG = "InvalidParameterValue.ApmConfig"
 //  INVALIDPARAMETERVALUE_APMCONFIGINSTANCEID = "InvalidParameterValue.ApmConfigInstanceId"
 //  INVALIDPARAMETERVALUE_APMCONFIGREGION = "InvalidParameterValue.ApmConfigRegion"
@@ -3412,6 +3421,7 @@ func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfiguratio
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
 //  INVALIDPARAMETERVALUE_APMCONFIG = "InvalidParameterValue.ApmConfig"
 //  INVALIDPARAMETERVALUE_APMCONFIGINSTANCEID = "InvalidParameterValue.ApmConfigInstanceId"
 //  INVALIDPARAMETERVALUE_APMCONFIGREGION = "InvalidParameterValue.ApmConfigRegion"

@@ -335,6 +335,7 @@ func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
 // 通过searchType搜索已经添加的域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDDOMAIN = "InvalidParameter.InvalidDomain"
 //  INVALIDPARAMETERVALUE_INVALIDSEARCHTYPE = "InvalidParameterValue.InvalidSearchType"
 func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *DescribeDomainsResponse, err error) {
@@ -345,6 +346,7 @@ func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *Des
 // 通过searchType搜索已经添加的域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDDOMAIN = "InvalidParameter.InvalidDomain"
 //  INVALIDPARAMETERVALUE_INVALIDSEARCHTYPE = "InvalidParameterValue.InvalidSearchType"
 func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *DescribeDomainsRequest) (response *DescribeDomainsResponse, err error) {

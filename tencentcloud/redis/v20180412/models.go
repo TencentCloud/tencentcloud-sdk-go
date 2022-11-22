@@ -7518,38 +7518,38 @@ type TradeDealDetail struct {
 
 // Predefined struct for user
 type UpgradeInstanceRequestParams struct {
-	// 实例ID
+	// 待变更实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分片大小 单位 MB。该参数不支持与RedisShardNum或RedisReplicasNum同时输入。
+	// 指实例每个分片内存变更后的大小。<ul><li>单位 MB。</li><li>每次只能修改参数MemSize、RedisShardNum和RedisReplicasNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li></ul>
 	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// 分片数量，标准架构不需要填写。该参数不支持与RedisReplicasNum或MemSize同时输入。
+	// 指实例变更后的分片数量。<ul><li>标准架构不需要配置该参数，集群架构为必填参数。</li><li>集群架构，每次只能修改参数RedisShardNum、MemSize和RedisReplicasNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li></ul>
 	RedisShardNum *uint64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
-	// 副本数量，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
+	// 指实例变更后的副本数量。<ul><li>每次只能修改参数RedisReplicasNum、MemSize和RedisShardNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li><li>多AZ实例修改副本时必须要传入NodeSet。</li></ul>
 	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
-	// 多AZ实例增加副本时的附带信息，非多AZ实例不需要传此参数。多AZ增加副本时此参数为必传参数，传入要增加的副本的信息，包括副本的可用区和副本的类型（NodeType为1）
+	// 多AZ实例，增加副本时的附带信息，包括副本的可用区和副本的类型（NodeType为1）。非多AZ实例不需要配置该参数。
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitempty" name:"NodeSet"`
 }
 
 type UpgradeInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 待变更实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分片大小 单位 MB。该参数不支持与RedisShardNum或RedisReplicasNum同时输入。
+	// 指实例每个分片内存变更后的大小。<ul><li>单位 MB。</li><li>每次只能修改参数MemSize、RedisShardNum和RedisReplicasNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li></ul>
 	MemSize *uint64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// 分片数量，标准架构不需要填写。该参数不支持与RedisReplicasNum或MemSize同时输入。
+	// 指实例变更后的分片数量。<ul><li>标准架构不需要配置该参数，集群架构为必填参数。</li><li>集群架构，每次只能修改参数RedisShardNum、MemSize和RedisReplicasNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li></ul>
 	RedisShardNum *uint64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
-	// 副本数量，多AZ实例修改副本时必须要传入NodeSet。该参数不支持与RedisShardNum或MemSize同时输入。
+	// 指实例变更后的副本数量。<ul><li>每次只能修改参数RedisReplicasNum、MemSize和RedisShardNum其中的一个，不能同时修改。且修改其中一个参数时，其他两个参数需输入实例原有的配置规格。</li><li>多AZ实例修改副本时必须要传入NodeSet。</li></ul>
 	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
-	// 多AZ实例增加副本时的附带信息，非多AZ实例不需要传此参数。多AZ增加副本时此参数为必传参数，传入要增加的副本的信息，包括副本的可用区和副本的类型（NodeType为1）
+	// 多AZ实例，增加副本时的附带信息，包括副本的可用区和副本的类型（NodeType为1）。非多AZ实例不需要配置该参数。
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitempty" name:"NodeSet"`
 }
 
@@ -7578,7 +7578,7 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeInstanceResponseParams struct {
-	// 订单ID
+	// 订单ID。
 	DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

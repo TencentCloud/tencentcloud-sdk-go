@@ -1251,6 +1251,7 @@ func NewCreateSpeedTestingResponse() (response *CreateSpeedTestingResponse) {
 // 对用户指定的域名进行一次站点拨测
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1263,6 +1264,7 @@ func (c *Client) CreateSpeedTesting(request *CreateSpeedTestingRequest) (respons
 // 对用户指定的域名进行一次站点拨测
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1442,6 +1444,7 @@ func NewDeleteApplicationProxyResponse() (response *DeleteApplicationProxyRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
     return c.DeleteApplicationProxyWithContext(context.Background(), request)
 }
@@ -1451,6 +1454,7 @@ func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteApplicationProxyWithContext(ctx context.Context, request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationProxyRequest()
@@ -3815,6 +3819,7 @@ func NewDescribeSecurityGroupManagedRulesResponse() (response *DescribeSecurityG
 // 获取托管规则组
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeSecurityGroupManagedRules(request *DescribeSecurityGroupManagedRulesRequest) (response *DescribeSecurityGroupManagedRulesResponse, err error) {
     return c.DescribeSecurityGroupManagedRulesWithContext(context.Background(), request)
@@ -3824,6 +3829,7 @@ func (c *Client) DescribeSecurityGroupManagedRules(request *DescribeSecurityGrou
 // 获取托管规则组
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeSecurityGroupManagedRulesWithContext(ctx context.Context, request *DescribeSecurityGroupManagedRulesRequest) (response *DescribeSecurityGroupManagedRulesResponse, err error) {
     if request == nil {
@@ -3863,6 +3869,7 @@ func NewDescribeSecurityPolicyResponse() (response *DescribeSecurityPolicyRespon
 // 查询安全防护配置详情。请求参数中ZoneId+Entity或TemplateId至少填一项。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeSecurityPolicy(request *DescribeSecurityPolicyRequest) (response *DescribeSecurityPolicyResponse, err error) {
     return c.DescribeSecurityPolicyWithContext(context.Background(), request)
@@ -3872,6 +3879,7 @@ func (c *Client) DescribeSecurityPolicy(request *DescribeSecurityPolicyRequest) 
 // 查询安全防护配置详情。请求参数中ZoneId+Entity或TemplateId至少填一项。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeSecurityPolicyWithContext(ctx context.Context, request *DescribeSecurityPolicyRequest) (response *DescribeSecurityPolicyResponse, err error) {
     if request == nil {
@@ -3911,6 +3919,7 @@ func NewDescribeSecurityPolicyListResponse() (response *DescribeSecurityPolicyLi
 // 查询全部安全实例
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeSecurityPolicyList(request *DescribeSecurityPolicyListRequest) (response *DescribeSecurityPolicyListResponse, err error) {
     return c.DescribeSecurityPolicyListWithContext(context.Background(), request)
@@ -3920,6 +3929,7 @@ func (c *Client) DescribeSecurityPolicyList(request *DescribeSecurityPolicyListR
 // 查询全部安全实例
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeSecurityPolicyListWithContext(ctx context.Context, request *DescribeSecurityPolicyListRequest) (response *DescribeSecurityPolicyListResponse, err error) {
     if request == nil {
@@ -4324,6 +4334,7 @@ func NewDescribeTimingL4DataResponse() (response *DescribeTimingL4DataResponse) 
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeTimingL4Data(request *DescribeTimingL4DataRequest) (response *DescribeTimingL4DataResponse, err error) {
@@ -4337,6 +4348,7 @@ func (c *Client) DescribeTimingL4Data(request *DescribeTimingL4DataRequest) (res
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeTimingL4DataWithContext(ctx context.Context, request *DescribeTimingL4DataRequest) (response *DescribeTimingL4DataResponse, err error) {
@@ -4489,6 +4501,7 @@ func NewDescribeTopL7AnalysisDataResponse() (response *DescribeTopL7AnalysisData
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -4502,6 +4515,7 @@ func (c *Client) DescribeTopL7AnalysisData(request *DescribeTopL7AnalysisDataReq
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -5000,6 +5014,7 @@ func NewDescribeZoneDDoSPolicyResponse() (response *DescribeZoneDDoSPolicyRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeZoneDDoSPolicy(request *DescribeZoneDDoSPolicyRequest) (response *DescribeZoneDDoSPolicyResponse, err error) {
@@ -5011,6 +5026,7 @@ func (c *Client) DescribeZoneDDoSPolicy(request *DescribeZoneDDoSPolicyRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeZoneDDoSPolicyWithContext(ctx context.Context, request *DescribeZoneDDoSPolicyRequest) (response *DescribeZoneDDoSPolicyResponse, err error) {
@@ -6250,6 +6266,7 @@ func NewModifyRuleResponse() (response *ModifyRuleResponse) {
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMDUPLICATENAME = "InvalidParameter.ErrInvalidActionParamDuplicateName"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = "InvalidParameter.ErrInvalidActionParamTooManyValues"
+//  INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = "InvalidParameter.ErrInvalidConditionIgnoreCase"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONNAMETARGETNOTSUPPORTNAME = "InvalidParameter.ErrInvalidConditionNameTargetNotSupportName"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUE = "InvalidParameter.ErrInvalidConditionValueBadValue"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUECONTAINFILENAMEEXTENSION = "InvalidParameter.ErrInvalidConditionValueBadValueContainFileNameExtension"
@@ -6282,6 +6299,7 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMDUPLICATENAME = "InvalidParameter.ErrInvalidActionParamDuplicateName"
 //  INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = "InvalidParameter.ErrInvalidActionParamTooManyValues"
+//  INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = "InvalidParameter.ErrInvalidConditionIgnoreCase"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONNAMETARGETNOTSUPPORTNAME = "InvalidParameter.ErrInvalidConditionNameTargetNotSupportName"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUE = "InvalidParameter.ErrInvalidConditionValueBadValue"
 //  INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUECONTAINFILENAMEEXTENSION = "InvalidParameter.ErrInvalidConditionValueBadValueContainFileNameExtension"

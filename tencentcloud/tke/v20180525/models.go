@@ -14821,6 +14821,12 @@ type SubnetInfos struct {
 
 	// 安全组id
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
+
+	// 系统
+	Os *string `json:"Os,omitempty" name:"Os"`
+
+	// 硬件架构
+	Arch *string `json:"Arch,omitempty" name:"Arch"`
 }
 
 // Predefined struct for user
