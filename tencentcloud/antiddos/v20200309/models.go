@@ -7850,6 +7850,24 @@ type ModifyDDoSThresholdRequestParams struct {
 
 	// UDP FLOOD包量阈值
 	UdpFloodPktThreshold *uint64 `json:"UdpFloodPktThreshold,omitempty" name:"UdpFloodPktThreshold"`
+
+	// ACK FLOOD流量阈值
+	AckFloodThreshold *uint64 `json:"AckFloodThreshold,omitempty" name:"AckFloodThreshold"`
+
+	// ACK FLOOD包量阈值
+	AckFloodPktThreshold *uint64 `json:"AckFloodPktThreshold,omitempty" name:"AckFloodPktThreshold"`
+
+	// SYNACK FLOOD流量阈值
+	SynAckFloodThreshold *uint64 `json:"SynAckFloodThreshold,omitempty" name:"SynAckFloodThreshold"`
+
+	// SYNACK FLOOD包量阈值
+	SynAckFloodPktThreshold *uint64 `json:"SynAckFloodPktThreshold,omitempty" name:"SynAckFloodPktThreshold"`
+
+	// RST FLOOD流量阈值
+	RstFloodThreshold *uint64 `json:"RstFloodThreshold,omitempty" name:"RstFloodThreshold"`
+
+	// RST FLOOD包量阈值
+	RstFloodPktThreshold *uint64 `json:"RstFloodPktThreshold,omitempty" name:"RstFloodPktThreshold"`
 }
 
 type ModifyDDoSThresholdRequest struct {
@@ -7879,6 +7897,24 @@ type ModifyDDoSThresholdRequest struct {
 
 	// UDP FLOOD包量阈值
 	UdpFloodPktThreshold *uint64 `json:"UdpFloodPktThreshold,omitempty" name:"UdpFloodPktThreshold"`
+
+	// ACK FLOOD流量阈值
+	AckFloodThreshold *uint64 `json:"AckFloodThreshold,omitempty" name:"AckFloodThreshold"`
+
+	// ACK FLOOD包量阈值
+	AckFloodPktThreshold *uint64 `json:"AckFloodPktThreshold,omitempty" name:"AckFloodPktThreshold"`
+
+	// SYNACK FLOOD流量阈值
+	SynAckFloodThreshold *uint64 `json:"SynAckFloodThreshold,omitempty" name:"SynAckFloodThreshold"`
+
+	// SYNACK FLOOD包量阈值
+	SynAckFloodPktThreshold *uint64 `json:"SynAckFloodPktThreshold,omitempty" name:"SynAckFloodPktThreshold"`
+
+	// RST FLOOD流量阈值
+	RstFloodThreshold *uint64 `json:"RstFloodThreshold,omitempty" name:"RstFloodThreshold"`
+
+	// RST FLOOD包量阈值
+	RstFloodPktThreshold *uint64 `json:"RstFloodPktThreshold,omitempty" name:"RstFloodPktThreshold"`
 }
 
 func (r *ModifyDDoSThresholdRequest) ToJsonString() string {
@@ -7901,6 +7937,12 @@ func (r *ModifyDDoSThresholdRequest) FromJsonString(s string) error {
 	delete(f, "SynFloodPktThreshold")
 	delete(f, "UdpFloodThreshold")
 	delete(f, "UdpFloodPktThreshold")
+	delete(f, "AckFloodThreshold")
+	delete(f, "AckFloodPktThreshold")
+	delete(f, "SynAckFloodThreshold")
+	delete(f, "SynAckFloodPktThreshold")
+	delete(f, "RstFloodThreshold")
+	delete(f, "RstFloodPktThreshold")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDDoSThresholdRequest has unknown keys!", "")
 	}
@@ -8493,6 +8535,30 @@ type ProtectThresholdRelation struct {
 	// UDP FLOOD包量阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UdpFloodPktThreshold *uint64 `json:"UdpFloodPktThreshold,omitempty" name:"UdpFloodPktThreshold"`
+
+	// ACK FLOOD流量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AckFloodThreshold *uint64 `json:"AckFloodThreshold,omitempty" name:"AckFloodThreshold"`
+
+	// ACK FLOOD包量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AckFloodPktThreshold *uint64 `json:"AckFloodPktThreshold,omitempty" name:"AckFloodPktThreshold"`
+
+	// SYNACK FLOOD流量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SynAckFloodThreshold *uint64 `json:"SynAckFloodThreshold,omitempty" name:"SynAckFloodThreshold"`
+
+	// SYNACK FLOOD包量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SynAckFloodPktThreshold *uint64 `json:"SynAckFloodPktThreshold,omitempty" name:"SynAckFloodPktThreshold"`
+
+	// RST FLOOD流量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RstFloodThreshold *uint64 `json:"RstFloodThreshold,omitempty" name:"RstFloodThreshold"`
+
+	// RST FLOOD包量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RstFloodPktThreshold *uint64 `json:"RstFloodPktThreshold,omitempty" name:"RstFloodPktThreshold"`
 }
 
 type ProtocolBlockConfig struct {

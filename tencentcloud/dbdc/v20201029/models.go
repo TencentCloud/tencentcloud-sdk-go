@@ -814,6 +814,9 @@ type HostDetail struct {
 
 	// 计费ID
 	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 独享集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type InstanceDetail struct {

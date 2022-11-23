@@ -3568,12 +3568,75 @@ func (r *DescribeMaintainPeriodResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeParamTemplatesRequestParams struct {
+	// 数据库引擎版本号
+	EngineVersions []*string `json:"EngineVersions,omitempty" name:"EngineVersions"`
 
+	// 模版名称
+	TemplateNames []*string `json:"TemplateNames,omitempty" name:"TemplateNames"`
+
+	// 模版ID
+	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds"`
+
+	// 数据库类型，可选值：NORMAL，SERVERLESS
+	DbModes []*string `json:"DbModes,omitempty" name:"DbModes"`
+
+	// 查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询限制条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询的模板对应的产品类型
+	Products []*string `json:"Products,omitempty" name:"Products"`
+
+	// 模版类型
+	TemplateTypes []*string `json:"TemplateTypes,omitempty" name:"TemplateTypes"`
+
+	// 版本类型
+	EngineTypes []*string `json:"EngineTypes,omitempty" name:"EngineTypes"`
+
+	// 返回结果的排序字段
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式（asc、desc）
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 type DescribeParamTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 数据库引擎版本号
+	EngineVersions []*string `json:"EngineVersions,omitempty" name:"EngineVersions"`
+
+	// 模版名称
+	TemplateNames []*string `json:"TemplateNames,omitempty" name:"TemplateNames"`
+
+	// 模版ID
+	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds"`
+
+	// 数据库类型，可选值：NORMAL，SERVERLESS
+	DbModes []*string `json:"DbModes,omitempty" name:"DbModes"`
+
+	// 查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询限制条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询的模板对应的产品类型
+	Products []*string `json:"Products,omitempty" name:"Products"`
+
+	// 模版类型
+	TemplateTypes []*string `json:"TemplateTypes,omitempty" name:"TemplateTypes"`
+
+	// 版本类型
+	EngineTypes []*string `json:"EngineTypes,omitempty" name:"EngineTypes"`
+
+	// 返回结果的排序字段
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式（asc、desc）
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeParamTemplatesRequest) ToJsonString() string {
@@ -3588,7 +3651,17 @@ func (r *DescribeParamTemplatesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "EngineVersions")
+	delete(f, "TemplateNames")
+	delete(f, "TemplateIds")
+	delete(f, "DbModes")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Products")
+	delete(f, "TemplateTypes")
+	delete(f, "EngineTypes")
+	delete(f, "OrderBy")
+	delete(f, "OrderDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParamTemplatesRequest has unknown keys!", "")
 	}
@@ -5500,6 +5573,13 @@ type ParamTemplateListInfo struct {
 
 	// 引擎版本
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+
+	// 数据库类型，可选值：NORMAL，SERVERLESS
+	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
+
+	// 参数模板详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamInfoSet []*TemplateParamInfo `json:"ParamInfoSet,omitempty" name:"ParamInfoSet"`
 }
 
 // Predefined struct for user
@@ -5819,13 +5899,13 @@ type RollBackClusterRequestParams struct {
 	// 期望回档时间
 	ExpectTime *string `json:"ExpectTime,omitempty" name:"ExpectTime"`
 
-	// 期望阈值
+	// 期望阈值（已废弃）
 	ExpectTimeThresh *uint64 `json:"ExpectTimeThresh,omitempty" name:"ExpectTimeThresh"`
 
 	// 回档数据库列表
 	RollbackDatabases []*RollbackDatabase `json:"RollbackDatabases,omitempty" name:"RollbackDatabases"`
 
-	// 回档数据库表
+	// 回档数据库表列表
 	RollbackTables []*RollbackTable `json:"RollbackTables,omitempty" name:"RollbackTables"`
 }
 
@@ -5844,13 +5924,13 @@ type RollBackClusterRequest struct {
 	// 期望回档时间
 	ExpectTime *string `json:"ExpectTime,omitempty" name:"ExpectTime"`
 
-	// 期望阈值
+	// 期望阈值（已废弃）
 	ExpectTimeThresh *uint64 `json:"ExpectTimeThresh,omitempty" name:"ExpectTimeThresh"`
 
 	// 回档数据库列表
 	RollbackDatabases []*RollbackDatabase `json:"RollbackDatabases,omitempty" name:"RollbackDatabases"`
 
-	// 回档数据库表
+	// 回档数据库表列表
 	RollbackTables []*RollbackTable `json:"RollbackTables,omitempty" name:"RollbackTables"`
 }
 
@@ -6153,6 +6233,38 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TemplateParamInfo struct {
+	// 当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 默认值
+	Default *string `json:"Default,omitempty" name:"Default"`
+
+	// 参数类型为enum时可选的值类型集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
+
+	// 参数类型为float/integer时的最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Max *string `json:"Max,omitempty" name:"Max"`
+
+	// 参数类型为float/integer时的最小值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Min *string `json:"Min,omitempty" name:"Min"`
+
+	// 参数名称
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 是否需要重启
+	NeedReboot *int64 `json:"NeedReboot,omitempty" name:"NeedReboot"`
+
+	// 参数描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 参数类型，integer/float/string/enum
+	ParamType *string `json:"ParamType,omitempty" name:"ParamType"`
 }
 
 type TradePrice struct {

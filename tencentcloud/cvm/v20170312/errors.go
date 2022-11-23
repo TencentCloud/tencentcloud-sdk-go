@@ -578,6 +578,9 @@ const (
 	// 正在运行中的镜像导出任务已达上限，请等待已有任务完成后，再次发起重试。
 	LIMITEXCEEDED_EXPORTIMAGETASKLIMITEXCEEDED = "LimitExceeded.ExportImageTaskLimitExceeded"
 
+	// 已达创建高性能计算集群数的上限。
+	LIMITEXCEEDED_HPCCLUSTERQUOTA = "LimitExceeded.HpcClusterQuota"
+
 	// IP数量超过网卡上限。
 	LIMITEXCEEDED_IPV6ADDRESSNUM = "LimitExceeded.IPv6AddressNum"
 
@@ -649,6 +652,9 @@ const (
 
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
+
+	// 高性能计算集群使用中。
+	RESOURCEINUSE_HPCCLUSTER = "ResourceInUse.HpcCluster"
 
 	// 该可用区已售罄
 	RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = "ResourceInsufficient.AvailabilityZoneSoldOut"
@@ -821,6 +827,9 @@ const (
 	// 不支持已启用销毁保护的实例，请先到设置实例销毁保护，关闭实例销毁保护，然后重试。
 	UNSUPPORTEDOPERATION_INSTANCESPROTECTED = "UnsupportedOperation.InstancesProtected"
 
+	// 用户创建高性能集群配额已达上限。
+	UNSUPPORTEDOPERATION_INSUFFICIENTCLUSTERQUOTA = "UnsupportedOperation.InsufficientClusterQuota"
+
 	// 不支持调整数据盘。
 	UNSUPPORTEDOPERATION_INVALIDDATADISK = "UnsupportedOperation.InvalidDataDisk"
 
@@ -838,6 +847,9 @@ const (
 
 	// 指定的地域不支持加密盘。
 	UNSUPPORTEDOPERATION_INVALIDREGIONDISKENCRYPT = "UnsupportedOperation.InvalidRegionDiskEncrypt"
+
+	// 该可用区不可售卖。
+	UNSUPPORTEDOPERATION_INVALIDZONE = "UnsupportedOperation.InvalidZone"
 
 	// 密钥不支持Windows操作系统
 	UNSUPPORTEDOPERATION_KEYPAIRUNSUPPORTEDWINDOWS = "UnsupportedOperation.KeyPairUnsupportedWindows"

@@ -1513,6 +1513,33 @@ type DBParamValue struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type DCNReplicaConfig struct {
+	// DCN 运行状态，START为正常运行，STOP为暂停
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoReplicationMode *string `json:"RoReplicationMode,omitempty" name:"RoReplicationMode"`
+
+	// 延迟复制的类型，DEFAULT为正常，DUE_TIME为指定时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelayReplicationType *string `json:"DelayReplicationType,omitempty" name:"DelayReplicationType"`
+
+	// 延迟复制的指定时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DueTime *string `json:"DueTime,omitempty" name:"DueTime"`
+
+	// 延迟复制时的延迟秒数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicationDelay *int64 `json:"ReplicationDelay,omitempty" name:"ReplicationDelay"`
+}
+
+type DCNReplicaStatus struct {
+	// DCN 的运行状态，START为正常运行，STOP为暂停，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 当前延迟情况，取备实例的 master 节点的 delay 值
+	Delay *int64 `json:"Delay,omitempty" name:"Delay"`
+}
+
 type Database struct {
 	// 数据库名称
 	DbName *string `json:"DbName,omitempty" name:"DbName"`
@@ -1600,6 +1627,17 @@ type DcnDetailItem struct {
 
 	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// DCN复制的配置信息；对于主实例，此字段为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaConfig *DCNReplicaConfig `json:"ReplicaConfig,omitempty" name:"ReplicaConfig"`
+
+	// DCN复制的状态；对于主实例，此字段为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaStatus *DCNReplicaStatus `json:"ReplicaStatus,omitempty" name:"ReplicaStatus"`
+
+	// 是否开启了 kms
+	EncryptStatus *int64 `json:"EncryptStatus,omitempty" name:"EncryptStatus"`
 }
 
 type Deal struct {
@@ -1615,7 +1653,7 @@ type Deal struct {
 	// 关联的流程 Id，可用于查询流程执行状态
 	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+	// 只有创建实例且已完成发货的订单会填充该字段，表示该订单创建的实例的 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 

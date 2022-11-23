@@ -1845,6 +1845,54 @@ func (c *Client) CreateOrUpdateResourceWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateResourcePathRequest() (request *CreateResourcePathRequest) {
+    request = &CreateResourcePathRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateResourcePath")
+    
+    
+    return
+}
+
+func NewCreateResourcePathResponse() (response *CreateResourcePathResponse) {
+    response = &CreateResourcePathResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateResourcePath
+// 文件路径的根目录为 /datastudio/resource，如果要在根目录下创建 aaa 文件夹，FilePath的值应该为 /datastudio/resource，如果根目录下已经创建了 aaa 文件夹，要在 aaa 下创建  bbb 文件夹，FilePath的值应该为 /datastudio/resource/aaa
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateResourcePath(request *CreateResourcePathRequest) (response *CreateResourcePathResponse, err error) {
+    return c.CreateResourcePathWithContext(context.Background(), request)
+}
+
+// CreateResourcePath
+// 文件路径的根目录为 /datastudio/resource，如果要在根目录下创建 aaa 文件夹，FilePath的值应该为 /datastudio/resource，如果根目录下已经创建了 aaa 文件夹，要在 aaa 下创建  bbb 文件夹，FilePath的值应该为 /datastudio/resource/aaa
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateResourcePathWithContext(ctx context.Context, request *CreateResourcePathRequest) (response *CreateResourcePathResponse, err error) {
+    if request == nil {
+        request = NewCreateResourcePathRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateResourcePath require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateResourcePathResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRuleRequest() (request *CreateRuleRequest) {
     request = &CreateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

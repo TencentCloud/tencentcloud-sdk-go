@@ -931,6 +931,66 @@ func (c *Client) CreateRecordBatchWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateRecordGroupRequest() (request *CreateRecordGroupRequest) {
+    request = &CreateRecordGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "CreateRecordGroup")
+    
+    
+    return
+}
+
+func NewCreateRecordGroupResponse() (response *CreateRecordGroupResponse) {
+    response = &CreateRecordGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRecordGroup
+// 添加记录分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) CreateRecordGroup(request *CreateRecordGroupRequest) (response *CreateRecordGroupResponse, err error) {
+    return c.CreateRecordGroupWithContext(context.Background(), request)
+}
+
+// CreateRecordGroup
+// 添加记录分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) CreateRecordGroupWithContext(ctx context.Context, request *CreateRecordGroupRequest) (response *CreateRecordGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateRecordGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRecordGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRecordGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSnapshotRequest() (request *CreateSnapshotRequest) {
     request = &CreateSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1235,6 +1295,66 @@ func (c *Client) DeleteRecordWithContext(ctx context.Context, request *DeleteRec
     request.SetContext(ctx)
     
     response = NewDeleteRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRecordGroupRequest() (request *DeleteRecordGroupRequest) {
+    request = &DeleteRecordGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DeleteRecordGroup")
+    
+    
+    return
+}
+
+func NewDeleteRecordGroupResponse() (response *DeleteRecordGroupResponse) {
+    response = &DeleteRecordGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRecordGroup
+// 删除记录分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DeleteRecordGroup(request *DeleteRecordGroupRequest) (response *DeleteRecordGroupResponse, err error) {
+    return c.DeleteRecordGroupWithContext(context.Background(), request)
+}
+
+// DeleteRecordGroup
+// 删除记录分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DeleteRecordGroupWithContext(ctx context.Context, request *DeleteRecordGroupRequest) (response *DeleteRecordGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteRecordGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecordGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRecordGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -2037,6 +2157,66 @@ func (c *Client) DescribeRecordWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRecordGroupListRequest() (request *DescribeRecordGroupListRequest) {
+    request = &DescribeRecordGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordGroupList")
+    
+    
+    return
+}
+
+func NewDescribeRecordGroupListResponse() (response *DescribeRecordGroupListResponse) {
+    response = &DescribeRecordGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRecordGroupList
+// 查询解析记录分组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeRecordGroupList(request *DescribeRecordGroupListRequest) (response *DescribeRecordGroupListResponse, err error) {
+    return c.DescribeRecordGroupListWithContext(context.Background(), request)
+}
+
+// DescribeRecordGroupList
+// 查询解析记录分组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeRecordGroupListWithContext(ctx context.Context, request *DescribeRecordGroupListRequest) (response *DescribeRecordGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordGroupListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordGroupListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3823,6 +4003,66 @@ func (c *Client) ModifyRecordBatchWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyRecordGroupRequest() (request *ModifyRecordGroupRequest) {
+    request = &ModifyRecordGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordGroup")
+    
+    
+    return
+}
+
+func NewModifyRecordGroupResponse() (response *ModifyRecordGroupResponse) {
+    response = &ModifyRecordGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRecordGroup
+// 修改记录分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) ModifyRecordGroup(request *ModifyRecordGroupRequest) (response *ModifyRecordGroupResponse, err error) {
+    return c.ModifyRecordGroupWithContext(context.Background(), request)
+}
+
+// ModifyRecordGroup
+// 修改记录分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) ModifyRecordGroupWithContext(ctx context.Context, request *ModifyRecordGroupRequest) (response *ModifyRecordGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyRecordGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRecordGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRecordRemarkRequest() (request *ModifyRecordRemarkRequest) {
     request = &ModifyRecordRemarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4051,6 +4291,66 @@ func (c *Client) ModifyRecordStatusWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyRecordStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRecordToGroupRequest() (request *ModifyRecordToGroupRequest) {
+    request = &ModifyRecordToGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordToGroup")
+    
+    
+    return
+}
+
+func NewModifyRecordToGroupResponse() (response *ModifyRecordToGroupResponse) {
+    response = &ModifyRecordToGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRecordToGroup
+// 将记录添加到分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) ModifyRecordToGroup(request *ModifyRecordToGroupRequest) (response *ModifyRecordToGroupResponse, err error) {
+    return c.ModifyRecordToGroupWithContext(context.Background(), request)
+}
+
+// ModifyRecordToGroup
+// 将记录添加到分组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) ModifyRecordToGroupWithContext(ctx context.Context, request *ModifyRecordToGroupRequest) (response *ModifyRecordToGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyRecordToGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordToGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRecordToGroupResponse()
     err = c.Send(request, response)
     return
 }

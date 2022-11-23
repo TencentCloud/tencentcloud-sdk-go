@@ -1,3 +1,309 @@
+# Release v1.0.543
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 46 次发布
+
+发布时间：2022-11-23 06:03:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/1021/69190)
+
+	* 新增入参：AckFloodThreshold, AckFloodPktThreshold, SynAckFloodThreshold, SynAckFloodPktThreshold, RstFloodThreshold, RstFloodPktThreshold
+
+
+修改数据结构：
+
+* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)
+
+	* 新增成员：AckFloodThreshold, AckFloodPktThreshold, SynAckFloodThreshold, SynAckFloodPktThreshold, RstFloodThreshold, RstFloodPktThreshold
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 98 次发布
+
+发布时间：2022-11-23 06:18:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateHpcCluster](https://cloud.tencent.com/document/api/213/83222)
+* [DeleteHpcClusters](https://cloud.tencent.com/document/api/213/83221)
+* [DescribeHpcClusters](https://cloud.tencent.com/document/api/213/83220)
+* [ModifyHpcClusterAttribute](https://cloud.tencent.com/document/api/213/83219)
+
+新增数据结构：
+
+* [HpcClusterInfo](https://cloud.tencent.com/document/api/213/15753#HpcClusterInfo)
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 31 次发布
+
+发布时间：2022-11-23 06:21:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeParamTemplates](https://cloud.tencent.com/document/api/1003/77805)
+
+	* 新增入参：EngineVersions, TemplateNames, TemplateIds, DbModes, Offset, Limit, Products, TemplateTypes, EngineTypes, OrderBy, OrderDirection
+
+
+新增数据结构：
+
+* [TemplateParamInfo](https://cloud.tencent.com/document/api/1003/48097#TemplateParamInfo)
+
+修改数据结构：
+
+* [ParamTemplateListInfo](https://cloud.tencent.com/document/api/1003/48097#ParamTemplateListInfo)
+
+	* 新增成员：DbMode, ParamInfoSet
+
+
+
+
+## 云数据库独享集群(dbdc) 版本：2020-10-29
+
+### 第 4 次发布
+
+发布时间：2022-11-23 06:23:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HostDetail](https://cloud.tencent.com/document/api/1322/74754#HostDetail)
+
+	* 新增成员：InstanceId
+
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 49 次发布
+
+发布时间：2022-11-23 06:23:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/557/16142#DcnDetailItem)
+
+	* 新增成员：EncryptStatus
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 10 次发布
+
+发布时间：2022-11-23 06:24:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRecordGroup](https://cloud.tencent.com/document/api/1427/83227)
+* [DeleteRecordGroup](https://cloud.tencent.com/document/api/1427/83226)
+* [DescribeRecordGroupList](https://cloud.tencent.com/document/api/1427/83225)
+* [ModifyRecordGroup](https://cloud.tencent.com/document/api/1427/83224)
+* [ModifyRecordToGroup](https://cloud.tencent.com/document/api/1427/83223)
+
+新增数据结构：
+
+* [RecordGroupInfo](https://cloud.tencent.com/document/api/1427/56185#RecordGroupInfo)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 48 次发布
+
+发布时间：2022-11-23 06:38:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DCNReplicaConfig](https://cloud.tencent.com/document/api/237/16191#DCNReplicaConfig)
+* [DCNReplicaStatus](https://cloud.tencent.com/document/api/237/16191#DCNReplicaStatus)
+
+修改数据结构：
+
+* [DcnDetailItem](https://cloud.tencent.com/document/api/237/16191#DcnDetailItem)
+
+	* 新增成员：ReplicaConfig, ReplicaStatus, EncryptStatus
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 48 次发布
+
+发布时间：2022-11-23 06:41:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LiveStreamTaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#LiveStreamTaskNotifyConfig)
+
+	* <font color="#dd0000">**修改成员**：</font>CmqModel, CmqRegion
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 83 次发布
+
+发布时间：2022-11-23 06:43:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OnlineTaxiItineraryInfo](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItineraryInfo)
+
+	* 新增成员：Row
+
+
+
+
+## 智能媒资托管(smh) 版本：2021-07-12
+
+### 第 4 次发布
+
+发布时间：2022-11-23 06:47:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SendSmsCode](https://cloud.tencent.com/document/api/1339/69080)
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceId
+
+* [VerifySmsCode](https://cloud.tencent.com/document/api/1339/69079)
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceId
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 14 次发布
+
+发布时间：2022-11-23 06:56:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeBillingData
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BillingDataFilter
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 10 次发布
+
+发布时间：2022-11-23 06:59:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 14 次发布
+
+发布时间：2022-11-23 07:08:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateResourcePath](https://cloud.tencent.com/document/api/1267/83229)
+
+修改接口：
+
+* [GenHiveTableDDLSql](https://cloud.tencent.com/document/api/1267/82483)
+
+	* 新增入参：SourceFieldInfoList
+
+
+新增数据结构：
+
+* [SourceFieldInfo](https://cloud.tencent.com/document/api/1267/76336#SourceFieldInfo)
+
+修改数据结构：
+
+* [IntegrationNodeSchema](https://cloud.tencent.com/document/api/1267/76336#IntegrationNodeSchema)
+
+	* 新增成员：Alias
+
+
+
+
 # Release v1.0.542
 
 ## DNSPod(dnspod) 版本：2021-03-23

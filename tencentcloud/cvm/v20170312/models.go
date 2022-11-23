@@ -636,6 +636,78 @@ func (r *CreateDisasterRecoverGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateHpcClusterRequestParams struct {
+	// 可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 高性能计算集群名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 高性能计算集群备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type CreateHpcClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 高性能计算集群名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 高性能计算集群备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateHpcClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHpcClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "Name")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHpcClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHpcClusterResponseParams struct {
+	// 高性能计算集群信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HpcClusterSet []*HpcClusterInfo `json:"HpcClusterSet,omitempty" name:"HpcClusterSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateHpcClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHpcClusterResponseParams `json:"Response"`
+}
+
+func (r *CreateHpcClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHpcClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateImageRequestParams struct {
 	// 镜像名称
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
@@ -1440,6 +1512,60 @@ func (r *DeleteDisasterRecoverGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteHpcClustersRequestParams struct {
+	// 高性能计算集群ID列表。
+	HpcClusterIds []*string `json:"HpcClusterIds,omitempty" name:"HpcClusterIds"`
+}
+
+type DeleteHpcClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 高性能计算集群ID列表。
+	HpcClusterIds []*string `json:"HpcClusterIds,omitempty" name:"HpcClusterIds"`
+}
+
+func (r *DeleteHpcClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHpcClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HpcClusterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteHpcClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteHpcClustersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteHpcClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteHpcClustersResponseParams `json:"Response"`
+}
+
+func (r *DeleteHpcClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteHpcClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteImagesRequestParams struct {
 	// 准备删除的镜像Id列表
 	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
@@ -2140,6 +2266,94 @@ func (r *DescribeHostsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeHostsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHpcClustersRequestParams struct {
+	// 高性能计算集群ID数组。
+	HpcClusterIds []*string `json:"HpcClusterIds,omitempty" name:"HpcClusterIds"`
+
+	// 高性能计算集群名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 偏移量, 默认值0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 本次请求量, 默认值20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeHpcClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 高性能计算集群ID数组。
+	HpcClusterIds []*string `json:"HpcClusterIds,omitempty" name:"HpcClusterIds"`
+
+	// 高性能计算集群名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 偏移量, 默认值0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 本次请求量, 默认值20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeHpcClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHpcClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HpcClusterIds")
+	delete(f, "Name")
+	delete(f, "Zone")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHpcClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHpcClustersResponseParams struct {
+	// 高性能计算集群信息。
+	HpcClusterSet []*HpcClusterInfo `json:"HpcClusterSet,omitempty" name:"HpcClusterSet"`
+
+	// 高性能计算集群总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHpcClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHpcClustersResponseParams `json:"Response"`
+}
+
+func (r *DescribeHpcClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHpcClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4280,6 +4494,36 @@ type HostResource struct {
 	GpuAvailable *uint64 `json:"GpuAvailable,omitempty" name:"GpuAvailable"`
 }
 
+type HpcClusterInfo struct {
+	// 高性能计算集群ID
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// 高性能计算集群名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 高性能计算集群备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 集群下设备容量
+	CvmQuotaTotal *uint64 `json:"CvmQuotaTotal,omitempty" name:"CvmQuotaTotal"`
+
+	// 集群所在可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 集群当前已有设备量
+	CurrentNum *uint64 `json:"CurrentNum,omitempty" name:"CurrentNum"`
+
+	// 集群创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 集群内实例ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+}
+
 type Image struct {
 	// 镜像ID
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
@@ -6181,6 +6425,74 @@ func (r *ModifyHostsAttributeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyHostsAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyHpcClusterAttributeRequestParams struct {
+	// 高性能计算集群ID。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// 高性能计算集群新名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 高性能计算集群新备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type ModifyHpcClusterAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 高性能计算集群ID。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
+
+	// 高性能计算集群新名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 高性能计算集群新备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyHpcClusterAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHpcClusterAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HpcClusterId")
+	delete(f, "Name")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyHpcClusterAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyHpcClusterAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyHpcClusterAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyHpcClusterAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyHpcClusterAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHpcClusterAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

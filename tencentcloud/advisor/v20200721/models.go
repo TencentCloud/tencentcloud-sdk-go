@@ -135,7 +135,7 @@ type DescribeTaskStrategyRisksRequestParams struct {
 	// 评估项ID
 	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
 
-	// 限制数量,默认100
+	// 返回数量,默认值为100,最大值为200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量,默认0
@@ -154,7 +154,7 @@ type DescribeTaskStrategyRisksRequest struct {
 	// 评估项ID
 	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
 
-	// 限制数量,默认100
+	// 返回数量,默认值为100,最大值为200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量,默认0

@@ -497,6 +497,60 @@ func (c *Client) CreateDisasterRecoverGroupWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateHpcClusterRequest() (request *CreateHpcClusterRequest) {
+    request = &CreateHpcClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "CreateHpcCluster")
+    
+    
+    return
+}
+
+func NewCreateHpcClusterResponse() (response *CreateHpcClusterResponse) {
+    response = &CreateHpcClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateHpcCluster
+// 创建高性能计算集群
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  LIMITEXCEEDED_HPCCLUSTERQUOTA = "LimitExceeded.HpcClusterQuota"
+//  UNSUPPORTEDOPERATION_INSUFFICIENTCLUSTERQUOTA = "UnsupportedOperation.InsufficientClusterQuota"
+func (c *Client) CreateHpcCluster(request *CreateHpcClusterRequest) (response *CreateHpcClusterResponse, err error) {
+    return c.CreateHpcClusterWithContext(context.Background(), request)
+}
+
+// CreateHpcCluster
+// 创建高性能计算集群
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  LIMITEXCEEDED_HPCCLUSTERQUOTA = "LimitExceeded.HpcClusterQuota"
+//  UNSUPPORTEDOPERATION_INSUFFICIENTCLUSTERQUOTA = "UnsupportedOperation.InsufficientClusterQuota"
+func (c *Client) CreateHpcClusterWithContext(ctx context.Context, request *CreateHpcClusterRequest) (response *CreateHpcClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateHpcClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHpcCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHpcClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageRequest() (request *CreateImageRequest) {
     request = &CreateImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1185,6 +1239,56 @@ func (c *Client) DeleteDisasterRecoverGroupsWithContext(ctx context.Context, req
     return
 }
 
+func NewDeleteHpcClustersRequest() (request *DeleteHpcClustersRequest) {
+    request = &DeleteHpcClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DeleteHpcClusters")
+    
+    
+    return
+}
+
+func NewDeleteHpcClustersResponse() (response *DeleteHpcClustersResponse) {
+    response = &DeleteHpcClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteHpcClusters
+// 当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除改集群。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_HPCCLUSTER = "ResourceInUse.HpcCluster"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+func (c *Client) DeleteHpcClusters(request *DeleteHpcClustersRequest) (response *DeleteHpcClustersResponse, err error) {
+    return c.DeleteHpcClustersWithContext(context.Background(), request)
+}
+
+// DeleteHpcClusters
+// 当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除改集群。
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_HPCCLUSTER = "ResourceInUse.HpcCluster"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+func (c *Client) DeleteHpcClustersWithContext(ctx context.Context, request *DeleteHpcClustersRequest) (response *DeleteHpcClustersResponse, err error) {
+    if request == nil {
+        request = NewDeleteHpcClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteHpcClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteHpcClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteImagesRequest() (request *DeleteImagesRequest) {
     request = &DeleteImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1815,6 +1919,56 @@ func (c *Client) DescribeHostsWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeHpcClustersRequest() (request *DescribeHpcClustersRequest) {
+    request = &DescribeHpcClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeHpcClusters")
+    
+    
+    return
+}
+
+func NewDescribeHpcClustersResponse() (response *DescribeHpcClustersResponse) {
+    response = &DescribeHpcClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHpcClusters
+// 查询高性能集群信息
+//
+// 可能返回的错误码:
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  UNSUPPORTEDOPERATION_INVALIDZONE = "UnsupportedOperation.InvalidZone"
+func (c *Client) DescribeHpcClusters(request *DescribeHpcClustersRequest) (response *DescribeHpcClustersResponse, err error) {
+    return c.DescribeHpcClustersWithContext(context.Background(), request)
+}
+
+// DescribeHpcClusters
+// 查询高性能集群信息
+//
+// 可能返回的错误码:
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  UNSUPPORTEDOPERATION_INVALIDZONE = "UnsupportedOperation.InvalidZone"
+func (c *Client) DescribeHpcClustersWithContext(ctx context.Context, request *DescribeHpcClustersRequest) (response *DescribeHpcClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeHpcClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHpcClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHpcClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeImageQuotaRequest() (request *DescribeImageQuotaRequest) {
     request = &DescribeImageQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1837,12 +1991,8 @@ func NewDescribeImageQuotaResponse() (response *DescribeImageQuotaResponse) {
 // 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
 //
 // 可能返回的错误码:
-//  INVALIDFILTER = "InvalidFilter"
-//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDZONE = "UnsupportedOperation.InvalidZone"
 func (c *Client) DescribeImageQuota(request *DescribeImageQuotaRequest) (response *DescribeImageQuotaResponse, err error) {
     return c.DescribeImageQuotaWithContext(context.Background(), request)
 }
@@ -1851,12 +2001,8 @@ func (c *Client) DescribeImageQuota(request *DescribeImageQuotaRequest) (respons
 // 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
 //
 // 可能返回的错误码:
-//  INVALIDFILTER = "InvalidFilter"
-//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDZONE = "UnsupportedOperation.InvalidZone"
 func (c *Client) DescribeImageQuotaWithContext(ctx context.Context, request *DescribeImageQuotaRequest) (response *DescribeImageQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeImageQuotaRequest()
@@ -4861,6 +5007,56 @@ func (c *Client) ModifyHostsAttributeWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyHostsAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyHpcClusterAttributeRequest() (request *ModifyHpcClusterAttributeRequest) {
+    request = &ModifyHpcClusterAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyHpcClusterAttribute")
+    
+    
+    return
+}
+
+func NewModifyHpcClusterAttributeResponse() (response *ModifyHpcClusterAttributeResponse) {
+    response = &ModifyHpcClusterAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyHpcClusterAttribute
+// 修改高性能计算集群属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+func (c *Client) ModifyHpcClusterAttribute(request *ModifyHpcClusterAttributeRequest) (response *ModifyHpcClusterAttributeResponse, err error) {
+    return c.ModifyHpcClusterAttributeWithContext(context.Background(), request)
+}
+
+// ModifyHpcClusterAttribute
+// 修改高性能计算集群属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_HPCCLUSTER = "ResourceNotFound.HpcCluster"
+func (c *Client) ModifyHpcClusterAttributeWithContext(ctx context.Context, request *ModifyHpcClusterAttributeRequest) (response *ModifyHpcClusterAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyHpcClusterAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHpcClusterAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyHpcClusterAttributeResponse()
     err = c.Send(request, response)
     return
 }

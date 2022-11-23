@@ -3119,6 +3119,78 @@ func (r *CreateOrUpdateResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateResourcePathRequestParams struct {
+	// 文件夹名称，如 aaa
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件夹所属父目录，请注意，根目录为 /datastudio/resource
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type CreateResourcePathRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件夹名称，如 aaa
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件夹所属父目录，请注意，根目录为 /datastudio/resource
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *CreateResourcePathRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResourcePathRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "FilePath")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourcePathRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateResourcePathResponseParams struct {
+	// 新建成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateResourcePathResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateResourcePathResponseParams `json:"Response"`
+}
+
+func (r *CreateResourcePathResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResourcePathResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRuleRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -12880,6 +12952,9 @@ type GenHiveTableDDLSqlRequestParams struct {
 
 	// schema名称
 	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 上游节点的字段信息
+	SourceFieldInfoList []*SourceFieldInfo `json:"SourceFieldInfoList,omitempty" name:"SourceFieldInfoList"`
 }
 
 type GenHiveTableDDLSqlRequest struct {
@@ -12911,6 +12986,9 @@ type GenHiveTableDDLSqlRequest struct {
 
 	// schema名称
 	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 上游节点的字段信息
+	SourceFieldInfoList []*SourceFieldInfo `json:"SourceFieldInfoList,omitempty" name:"SourceFieldInfoList"`
 }
 
 func (r *GenHiveTableDDLSqlRequest) ToJsonString() string {
@@ -12934,6 +13012,7 @@ func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
 	delete(f, "TableName")
 	delete(f, "SinkType")
 	delete(f, "SchemaName")
+	delete(f, "SourceFieldInfoList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenHiveTableDDLSqlRequest has unknown keys!", "")
 	}
@@ -13548,6 +13627,10 @@ type IntegrationNodeSchema struct {
 	// schema拓展属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Properties []*RecordField `json:"Properties,omitempty" name:"Properties"`
+
+	// schema别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
 type IntegrationNodeSchemaMapping struct {
@@ -18166,6 +18249,17 @@ type SimpleTaskInfo struct {
 
 	// 任务名
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+type SourceFieldInfo struct {
+	// 字段名称
+	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+
+	// 字段类型
+	FieldType *string `json:"FieldType,omitempty" name:"FieldType"`
+
+	// 字段别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
 type SourceObject struct {

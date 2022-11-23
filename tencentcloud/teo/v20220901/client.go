@@ -2017,58 +2017,6 @@ func (c *Client) DescribeAvailablePlansWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeBillingDataRequest() (request *DescribeBillingDataRequest) {
-    request = &DescribeBillingDataRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "DescribeBillingData")
-    
-    
-    return
-}
-
-func NewDescribeBillingDataResponse() (response *DescribeBillingDataResponse) {
-    response = &DescribeBillingDataResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeBillingData
-// 获取计费数据。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-func (c *Client) DescribeBillingData(request *DescribeBillingDataRequest) (response *DescribeBillingDataResponse, err error) {
-    return c.DescribeBillingDataWithContext(context.Background(), request)
-}
-
-// DescribeBillingData
-// 获取计费数据。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-func (c *Client) DescribeBillingDataWithContext(ctx context.Context, request *DescribeBillingDataRequest) (response *DescribeBillingDataResponse, err error) {
-    if request == nil {
-        request = NewDescribeBillingDataRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBillingData require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBillingDataResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeBotClientIpListRequest() (request *DescribeBotClientIpListRequest) {
     request = &DescribeBotClientIpListRequest{
         BaseRequest: &tchttp.BaseRequest{},

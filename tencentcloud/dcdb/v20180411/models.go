@@ -1414,6 +1414,9 @@ type DcnDetailItem struct {
 
 	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 是否开启了 kms
+	EncryptStatus *int64 `json:"EncryptStatus,omitempty" name:"EncryptStatus"`
 }
 
 type Deal struct {
@@ -1429,7 +1432,7 @@ type Deal struct {
 	// 关联的流程 Id，可用于查询流程执行状态
 	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 只有创建实例的订单会填充该字段，表示该订单创建的实例的 ID。
+	// 只有创建实例且已完成发货的订单会填充该字段，表示该订单创建的实例的 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
