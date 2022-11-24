@@ -1,3 +1,276 @@
+# Release v1.0.544
+
+## 云审计(cloudaudit) 版本：2019-03-19
+
+### 第 12 次发布
+
+发布时间：2022-11-24 06:19:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAuditTrack](https://cloud.tencent.com/document/api/629/83247)
+
+修改接口：
+
+* [CreateAuditTrack](https://cloud.tencent.com/document/api/629/70383)
+
+	* 新增入参：Name, ActionType, ResourceType, Status, EventNames, Storage, TrackForAllMembers
+
+	* 新增出参：TrackId
+
+* [DeleteAuditTrack](https://cloud.tencent.com/document/api/629/70382)
+
+	* 新增入参：TrackId
+
+* [DescribeAuditTracks](https://cloud.tencent.com/document/api/629/69204)
+
+	* 新增入参：PageNumber, PageSize
+
+	* 新增出参：Tracks, TotalCount
+
+* [ModifyAuditTrack](https://cloud.tencent.com/document/api/629/70381)
+
+	* 新增入参：TrackId, Name, ActionType, ResourceType, Status, EventNames, Storage, TrackForAllMembers
+
+
+新增数据结构：
+
+* [Storage](https://cloud.tencent.com/document/api/629/35353#Storage)
+* [Tracks](https://cloud.tencent.com/document/api/629/35353#Tracks)
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 34 次发布
+
+发布时间：2022-11-24 06:27:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DataGovernPolicy](https://cloud.tencent.com/document/api/1342/53778#DataGovernPolicy)
+
+修改数据结构：
+
+* [DatabaseResponseInfo](https://cloud.tencent.com/document/api/1342/53778#DatabaseResponseInfo)
+
+	* 新增成员：GovernPolicy, DatabaseId
+
+* [TableBaseInfo](https://cloud.tencent.com/document/api/1342/53778#TableBaseInfo)
+
+	* 新增成员：GovernPolicy
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 39 次发布
+
+发布时间：2022-11-24 06:31:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceUpdateInstance](https://cloud.tencent.com/document/api/589/38063)
+
+	* 新增入参：ResourceIdList
+
+	* 新增出参：PriceDetail
+
+* [ModifyResourceScheduleConfig](https://cloud.tencent.com/document/api/589/73096)
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [PriceDetail](https://cloud.tencent.com/document/api/589/33981#PriceDetail)
+
+修改数据结构：
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：DisableApiTermination, TradeVersion
+
+* [Placement](https://cloud.tencent.com/document/api/589/33981#Placement)
+
+	* <font color="#dd0000">**修改成员**：</font>ProjectId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 51 次发布
+
+发布时间：2022-11-24 06:32:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConsoleLoginUrl](https://cloud.tencent.com/document/api/1420/61524)
+
+	* 新增入参：AuthorizationTypes
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 28 次发布
+
+发布时间：2022-11-24 06:34:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeApplicationList](https://cloud.tencent.com/document/api/607/83252)
+
+新增数据结构：
+
+* [ApplicationList](https://cloud.tencent.com/document/api/607/35375#ApplicationList)
+* [Filter](https://cloud.tencent.com/document/api/607/35375#Filter)
+* [ServiceStatus](https://cloud.tencent.com/document/api/607/35375#ServiceStatus)
+* [StatusInfo](https://cloud.tencent.com/document/api/607/35375#StatusInfo)
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 30 次发布
+
+发布时间：2022-11-24 06:46:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBInstanceNetInfo](https://cloud.tencent.com/document/api/409/16778#DBInstanceNetInfo)
+
+	* 新增成员：ProtocolType
+
+
+
+
+## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
+
+### 第 14 次发布
+
+发布时间：2022-11-24 06:52:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyChainMakerBatchUserCert](https://cloud.tencent.com/document/api/663/83253)
+
+新增数据结构：
+
+* [SignCertCsr](https://cloud.tencent.com/document/api/663/19466#SignCertCsr)
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 18 次发布
+
+发布时间：2022-11-24 06:54:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAccessLogConfig](https://cloud.tencent.com/document/api/1261/83255)
+* [ModifyAccessLogConfig](https://cloud.tencent.com/document/api/1261/83254)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 32 次发布
+
+发布时间：2022-11-24 06:55:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateHostExportJob](https://cloud.tencent.com/document/api/1285/81688)
+
+	* <font color="#dd0000">**修改入参**：</font>ExportField
+
+* [DescribeAssetHostDetail](https://cloud.tencent.com/document/api/1285/65508)
+
+	* 新增出参：Project, Tags
+
+
+新增数据结构：
+
+* [ProjectInfo](https://cloud.tencent.com/document/api/1285/65614#ProjectInfo)
+* [TagInfo](https://cloud.tencent.com/document/api/1285/65614#TagInfo)
+
+修改数据结构：
+
+* [HostInfo](https://cloud.tencent.com/document/api/1285/65614#HostInfo)
+
+	* 新增成员：Project, Tags
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 15 次发布
+
+发布时间：2022-11-24 06:59:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition)
+
+	* 新增成员：IgnoreNameCase
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.543
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

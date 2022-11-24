@@ -425,7 +425,7 @@ type CreateTawInstanceRequestParams struct {
 	// 片区Id，(至少大于0)
 	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
 
-	// 计费类型, (1=后付费，2=预付费)
+	// 计费类型, (1=后付费)
 	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 数据保存时间，(至少大于0)
@@ -456,7 +456,7 @@ type CreateTawInstanceRequest struct {
 	// 片区Id，(至少大于0)
 	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
 
-	// 计费类型, (1=后付费，2=预付费)
+	// 计费类型, (1=后付费)
 	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 数据保存时间，(至少大于0)
@@ -5414,10 +5414,10 @@ type DescribeTawInstancesRequestParams struct {
 	// 片区Id
 	AreaIds []*int64 `json:"AreaIds,omitempty" name:"AreaIds"`
 
-	// 实例状态(1=创建中，2=运行中，3=异常，4=重启中，5=停止中，6=已停止，7=销毁中，8=已销毁)
+	// 实例状态(1=创建中，2=运行中，3=异常，4=重启中，5=停止中，6=已停止，7=销毁中，8=已销毁), 该参数已废弃，请在Filters内注明
 	InstanceStatuses []*int64 `json:"InstanceStatuses,omitempty" name:"InstanceStatuses"`
 
-	// 实例Id
+	// 实例Id, 该参数已废弃，请在Filters内注明
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 过滤参数；demo模式传{"Name": "IsDemo", "Values":["1"]}
@@ -5445,10 +5445,10 @@ type DescribeTawInstancesRequest struct {
 	// 片区Id
 	AreaIds []*int64 `json:"AreaIds,omitempty" name:"AreaIds"`
 
-	// 实例状态(1=创建中，2=运行中，3=异常，4=重启中，5=停止中，6=已停止，7=销毁中，8=已销毁)
+	// 实例状态(1=创建中，2=运行中，3=异常，4=重启中，5=停止中，6=已停止，7=销毁中，8=已销毁), 该参数已废弃，请在Filters内注明
 	InstanceStatuses []*int64 `json:"InstanceStatuses,omitempty" name:"InstanceStatuses"`
 
-	// 实例Id
+	// 实例Id, 该参数已废弃，请在Filters内注明
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 过滤参数；demo模式传{"Name": "IsDemo", "Values":["1"]}

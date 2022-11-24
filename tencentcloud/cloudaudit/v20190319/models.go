@@ -210,12 +210,51 @@ func (r *CreateAuditResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAuditTrackRequestParams struct {
+	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 跟踪事件类型（读：Read；写：Write；全部：*）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+	EventNames []*string `json:"EventNames,omitempty" name:"EventNames"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitempty" name:"Storage"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitempty" name:"TrackForAllMembers"`
 }
 
 type CreateAuditTrackRequest struct {
 	*tchttp.BaseRequest
 	
+	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 跟踪事件类型（读：Read；写：Write；全部：*）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+	EventNames []*string `json:"EventNames,omitempty" name:"EventNames"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitempty" name:"Storage"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitempty" name:"TrackForAllMembers"`
 }
 
 func (r *CreateAuditTrackRequest) ToJsonString() string {
@@ -230,7 +269,13 @@ func (r *CreateAuditTrackRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Name")
+	delete(f, "ActionType")
+	delete(f, "ResourceType")
+	delete(f, "Status")
+	delete(f, "EventNames")
+	delete(f, "Storage")
+	delete(f, "TrackForAllMembers")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditTrackRequest has unknown keys!", "")
 	}
@@ -239,6 +284,9 @@ func (r *CreateAuditTrackRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAuditTrackResponseParams struct {
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitempty" name:"TrackId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -318,12 +366,15 @@ func (r *DeleteAuditResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAuditTrackRequestParams struct {
-
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitempty" name:"TrackId"`
 }
 
 type DeleteAuditTrackRequest struct {
 	*tchttp.BaseRequest
 	
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitempty" name:"TrackId"`
 }
 
 func (r *DeleteAuditTrackRequest) ToJsonString() string {
@@ -338,7 +389,7 @@ func (r *DeleteAuditTrackRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TrackId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditTrackRequest has unknown keys!", "")
 	}
@@ -461,13 +512,101 @@ func (r *DescribeAuditResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeAuditTracksRequestParams struct {
+type DescribeAuditTrackRequestParams struct {
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitempty" name:"TrackId"`
+}
 
+type DescribeAuditTrackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitempty" name:"TrackId"`
+}
+
+func (r *DescribeAuditTrackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditTrackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrackId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditTrackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditTrackResponseParams struct {
+	// 跟踪集名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 跟踪事件类型（读：Read；写：Write；全部：*）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 跟踪事件所属产品（如：cos，全部：*）
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 跟踪事件接口名列表（全部：[*]）
+	EventNames []*string `json:"EventNames,omitempty" name:"EventNames"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitempty" name:"Storage"`
+
+	// 跟踪集创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitempty" name:"TrackForAllMembers"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditTrackResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditTrackResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditTrackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditTrackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditTracksRequestParams struct {
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数目
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 type DescribeAuditTracksRequest struct {
 	*tchttp.BaseRequest
 	
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数目
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 func (r *DescribeAuditTracksRequest) ToJsonString() string {
@@ -482,7 +621,8 @@ func (r *DescribeAuditTracksRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditTracksRequest has unknown keys!", "")
 	}
@@ -491,6 +631,12 @@ func (r *DescribeAuditTracksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditTracksResponseParams struct {
+	// 跟踪集列表
+	Tracks []*Tracks `json:"Tracks,omitempty" name:"Tracks"`
+
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1144,12 +1290,57 @@ type LookupAttribute struct {
 
 // Predefined struct for user
 type ModifyAuditTrackRequestParams struct {
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitempty" name:"TrackId"`
 
+	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 跟踪事件类型（读：Read；写：Write；全部：*）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+	EventNames []*string `json:"EventNames,omitempty" name:"EventNames"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitempty" name:"Storage"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitempty" name:"TrackForAllMembers"`
 }
 
 type ModifyAuditTrackRequest struct {
 	*tchttp.BaseRequest
 	
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitempty" name:"TrackId"`
+
+	// 跟踪集名称，仅支持大小写字母、数字、-以及_的组合，3-48个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 跟踪事件类型（读：Read；写：Write；全部：*）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 跟踪事件所属产品（支持全部产品或单个产品，如：cos，全部：*）
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 跟踪事件接口名列表（ResourceType为 * 时，EventNames必须为全部：["*"]；指定ResourceType时，支持全部接口：["*"]；支持部分接口：["cos", "cls"]，接口列表上限10个）
+	EventNames []*string `json:"EventNames,omitempty" name:"EventNames"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitempty" name:"Storage"`
+
+	// 是否开启将集团成员操作日志投递到集团管理账号或者可信服务管理账号(0：未开启，1：开启，只能集团管理账号或者可信服务管理账号开启此项功能)
+	TrackForAllMembers *uint64 `json:"TrackForAllMembers,omitempty" name:"TrackForAllMembers"`
 }
 
 func (r *ModifyAuditTrackRequest) ToJsonString() string {
@@ -1164,7 +1355,14 @@ func (r *ModifyAuditTrackRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TrackId")
+	delete(f, "Name")
+	delete(f, "ActionType")
+	delete(f, "ResourceType")
+	delete(f, "Status")
+	delete(f, "EventNames")
+	delete(f, "Storage")
+	delete(f, "TrackForAllMembers")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuditTrackRequest has unknown keys!", "")
 	}
@@ -1314,6 +1512,46 @@ func (r *StopLoggingResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopLoggingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Storage struct {
+	// 存储类型（目前支持 cos、cls）
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 存储所在地域
+	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+	// 存储名称(cos：存储名称为用户自定义的存储桶名称，不包含"-APPID"，仅支持小写字母、数字以及中划线"-"的组合，不能超过50字符，且不支持中划线"-"开头或结尾； cls：存储名称为日志主题id，字符长度为1-50个字符)
+	StorageName *string `json:"StorageName,omitempty" name:"StorageName"`
+
+	// 存储目录前缀，cos日志文件前缀仅支持字母和数字的组合，3-40个字符
+	StoragePrefix *string `json:"StoragePrefix,omitempty" name:"StoragePrefix"`
+}
+
+type Tracks struct {
+	// 跟踪集名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 跟踪事件类型（读：Read；写：Write；全部：*）
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 跟踪事件所属产品（如：cos，全部：*）
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 跟踪集状态（未开启：0；开启：1）
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 跟踪事件接口名列表（全部：[*]）
+	EventNames []*string `json:"EventNames,omitempty" name:"EventNames"`
+
+	// 数据投递存储（目前支持 cos、cls）
+	Storage *Storage `json:"Storage,omitempty" name:"Storage"`
+
+	// 跟踪集创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 跟踪集 ID
+	TrackId *uint64 `json:"TrackId,omitempty" name:"TrackId"`
 }
 
 // Predefined struct for user

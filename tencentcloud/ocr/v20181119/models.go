@@ -4911,7 +4911,7 @@ type QrcodeResultsInfo struct {
 	// 二维码/条形码包含的地址
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 二维码/条形码坐标（二维码会返回位置坐标，条形码暂不返回位置坐标，因此默认X和Y返回值均为-1）
+	// 二维码/条形码坐标
 	Position *QrcodePositionObj `json:"Position,omitempty" name:"Position"`
 }
 

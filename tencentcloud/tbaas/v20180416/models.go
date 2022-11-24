@@ -21,6 +21,71 @@ import (
 )
 
 // Predefined struct for user
+type ApplyChainMakerBatchUserCertRequestParams struct {
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 证书标识和证书请求文件，可参考TBaaS证书生成相关文档生成证书请求文件
+	SignUserCsrList []*SignCertCsr `json:"SignUserCsrList,omitempty" name:"SignUserCsrList"`
+}
+
+type ApplyChainMakerBatchUserCertRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 证书标识和证书请求文件，可参考TBaaS证书生成相关文档生成证书请求文件
+	SignUserCsrList []*SignCertCsr `json:"SignUserCsrList,omitempty" name:"SignUserCsrList"`
+}
+
+func (r *ApplyChainMakerBatchUserCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyChainMakerBatchUserCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "SignUserCsrList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyChainMakerBatchUserCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyChainMakerBatchUserCertResponseParams struct {
+	// 成功生成的用户证书的base64编码字符串列表，与SignUserCsrList一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignUserCrtList []*string `json:"SignUserCrtList,omitempty" name:"SignUserCrtList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ApplyChainMakerBatchUserCertResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplyChainMakerBatchUserCertResponseParams `json:"Response"`
+}
+
+func (r *ApplyChainMakerBatchUserCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyChainMakerBatchUserCertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ApplyUserCertRequestParams struct {
 	// 模块名，固定字段：cert_mng
 	Module *string `json:"Module,omitempty" name:"Module"`
@@ -3406,6 +3471,14 @@ func (r *QueryResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SignCertCsr struct {
+	// 用户签名证书的标识，会存在于用户申请的证书中
+	CertMark *string `json:"CertMark,omitempty" name:"CertMark"`
+
+	// 用户申请签名证书所需要的证书请求文件的base64编码
+	SignCsrContent *string `json:"SignCsrContent,omitempty" name:"SignCsrContent"`
 }
 
 // Predefined struct for user

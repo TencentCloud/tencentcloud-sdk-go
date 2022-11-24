@@ -2601,6 +2601,9 @@ type InquiryPriceUpdateInstanceRequestParams struct {
 	// 货币种类。取值范围：
 	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 批量变配资源ID列表
+	ResourceIdList []*string `json:"ResourceIdList,omitempty" name:"ResourceIdList"`
 }
 
 type InquiryPriceUpdateInstanceRequest struct {
@@ -2630,6 +2633,9 @@ type InquiryPriceUpdateInstanceRequest struct {
 	// 货币种类。取值范围：
 	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 批量变配资源ID列表
+	ResourceIdList []*string `json:"ResourceIdList,omitempty" name:"ResourceIdList"`
 }
 
 func (r *InquiryPriceUpdateInstanceRequest) ToJsonString() string {
@@ -2650,6 +2656,7 @@ func (r *InquiryPriceUpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "Placement")
 	delete(f, "Currency")
+	delete(f, "ResourceIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceUpdateInstanceRequest has unknown keys!", "")
 	}
@@ -2675,6 +2682,10 @@ type InquiryPriceUpdateInstanceResponseParams struct {
 	// 变配的时长。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 价格详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceDetail []*PriceDetail `json:"PriceDetail,omitempty" name:"PriceDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2915,6 +2926,10 @@ type ModifyResourceScheduleConfigResponseParams struct {
 	// 校验错误信息，如果不为空，则说明校验失败，配置没有成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 返回数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3266,6 +3281,14 @@ type NodeHardwareInfo struct {
 	// 服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceClient *string `json:"ServiceClient,omitempty" name:"ServiceClient"`
+
+	// 该实例是否开启实例保护，true为开启 false为关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisableApiTermination *bool `json:"DisableApiTermination,omitempty" name:"DisableApiTermination"`
+
+	// 0表示老计费，1表示新计费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeVersion *int64 `json:"TradeVersion,omitempty" name:"TradeVersion"`
 }
 
 type OutterResource struct {
@@ -3321,11 +3344,11 @@ type PersistentVolumeContext struct {
 }
 
 type Placement struct {
-	// 实例所属项目ID。该参数可以通过调用 DescribeProject 的返回值中的 projectId 字段来获取。填0为默认项目。
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
-	// 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用 DescribeZones 的返回值中的Zone字段来获取。
+	// 实例所属的可用区，例如ap-guangzhou-1。该参数也可以通过调用[DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type PodParameter struct {
@@ -3576,6 +3599,20 @@ type PreExecuteFileSettings struct {
 
 	// cos的appid，已废弃
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
+}
+
+type PriceDetail struct {
+	// 节点ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 价格计算公式
+	Formula *string `json:"Formula,omitempty" name:"Formula"`
+
+	// 原价
+	OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
+
+	// 折扣价
+	DiscountCost *float64 `json:"DiscountCost,omitempty" name:"DiscountCost"`
 }
 
 type PriceResource struct {

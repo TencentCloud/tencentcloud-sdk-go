@@ -1748,6 +1748,10 @@ type DBInstanceNetInfo struct {
 	// 子网ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
 }
 
 type DBNode struct {

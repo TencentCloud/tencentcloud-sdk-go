@@ -26,6 +26,15 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 计费相关 - 账户余额不足。
+	FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+
+	// 计费相关 - 账户没有付费权限。
+	FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+
+	// 计费相关 - 计费参数无效。
+	FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
+
 	// CLS调用失败
 	FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
 

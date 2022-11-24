@@ -113,6 +113,9 @@ const (
 	// 营业执照格式不合法。
 	INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
 
+	// 撤销理由填写格式错误。
+	INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
+
 	// 证件类型错误。
 	INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
 

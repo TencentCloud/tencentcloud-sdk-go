@@ -639,6 +639,66 @@ func (c *Client) DescribeApplicationDataWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeApplicationListRequest() (request *DescribeApplicationListRequest) {
+    request = &DescribeApplicationListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "DescribeApplicationList")
+    
+    
+    return
+}
+
+func NewDescribeApplicationListResponse() (response *DescribeApplicationListResponse) {
+    response = &DescribeApplicationListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplicationList
+// 本接口(DescribeApplicationList)用于查询自己账号下的应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApplicationList(request *DescribeApplicationListRequest) (response *DescribeApplicationListResponse, err error) {
+    return c.DescribeApplicationListWithContext(context.Background(), request)
+}
+
+// DescribeApplicationList
+// 本接口(DescribeApplicationList)用于查询自己账号下的应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApplicationListWithContext(ctx context.Context, request *DescribeApplicationListRequest) (response *DescribeApplicationListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRealtimeScanConfigRequest() (request *DescribeRealtimeScanConfigRequest) {
     request = &DescribeRealtimeScanConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

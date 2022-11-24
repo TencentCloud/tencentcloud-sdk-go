@@ -45,6 +45,70 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewApplyChainMakerBatchUserCertRequest() (request *ApplyChainMakerBatchUserCertRequest) {
+    request = &ApplyChainMakerBatchUserCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tbaas", APIVersion, "ApplyChainMakerBatchUserCert")
+    
+    
+    return
+}
+
+func NewApplyChainMakerBatchUserCertResponse() (response *ApplyChainMakerBatchUserCertResponse) {
+    response = &ApplyChainMakerBatchUserCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyChainMakerBatchUserCert
+// 批量申请长安链用户签名证书
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) ApplyChainMakerBatchUserCert(request *ApplyChainMakerBatchUserCertRequest) (response *ApplyChainMakerBatchUserCertResponse, err error) {
+    return c.ApplyChainMakerBatchUserCertWithContext(context.Background(), request)
+}
+
+// ApplyChainMakerBatchUserCert
+// 批量申请长安链用户签名证书
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BAASSTOPSERVING = "FailedOperation.BaaSStopServing"
+//  FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
+//  FAILEDOPERATION_USERINBLACKLIST = "FailedOperation.UserInBlackList"
+//  FAILEDOPERATION_USERNOJOINDEMOCLUSTER = "FailedOperation.UserNoJoinDemoCluster"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+func (c *Client) ApplyChainMakerBatchUserCertWithContext(ctx context.Context, request *ApplyChainMakerBatchUserCertRequest) (response *ApplyChainMakerBatchUserCertResponse, err error) {
+    if request == nil {
+        request = NewApplyChainMakerBatchUserCertRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyChainMakerBatchUserCert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyChainMakerBatchUserCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyUserCertRequest() (request *ApplyUserCertRequest) {
     request = &ApplyUserCertRequest{
         BaseRequest: &tchttp.BaseRequest{},

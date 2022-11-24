@@ -2516,6 +2516,10 @@ type DataFormat struct {
 	AVRO *Other `json:"AVRO,omitempty" name:"AVRO"`
 }
 
+type DataGovernPolicy struct {
+
+}
+
 type DatabaseInfo struct {
 	// 数据库名称，长度0~128，支持数字、字母下划线，不允许数字大头，统一转换为小写。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
@@ -2564,6 +2568,14 @@ type DatabaseResponseInfo struct {
 	// 建库用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserSubUin *string `json:"UserSubUin,omitempty" name:"UserSubUin"`
+
+	// 数据治理配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GovernPolicy *DataGovernPolicy `json:"GovernPolicy,omitempty" name:"GovernPolicy"`
+
+	// 数据库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseId *string `json:"DatabaseId,omitempty" name:"DatabaseId"`
 }
 
 // Predefined struct for user
@@ -6012,6 +6024,10 @@ type TableBaseInfo struct {
 	// 建表用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserSubUin *string `json:"UserSubUin,omitempty" name:"UserSubUin"`
+
+	// 数据治理配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GovernPolicy *DataGovernPolicy `json:"GovernPolicy,omitempty" name:"GovernPolicy"`
 }
 
 type TableInfo struct {

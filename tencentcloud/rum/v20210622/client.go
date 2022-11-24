@@ -423,6 +423,9 @@ func NewCreateTawInstanceResponse() (response *CreateTawInstanceResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -436,6 +439,9 @@ func (c *Client) CreateTawInstance(request *CreateTawInstanceRequest) (response 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CHARGENOBALANCE = "FailedOperation.ChargeNoBalance"
+//  FAILEDOPERATION_CHARGENOPAYRIGHT = "FailedOperation.ChargeNoPayRight"
+//  FAILEDOPERATION_CHARGEPARAMINVALID = "FailedOperation.ChargeParamInvalid"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"

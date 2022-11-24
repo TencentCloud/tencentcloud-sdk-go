@@ -4209,16 +4209,23 @@ func (r *CreateExportComplianceStatusListJobResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type CreateHostExportJobRequestParams struct {
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为10000
+	// 过滤条件。
+	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
+	// <li>HostName - String - 是否必填：否 - 主机名筛选</li>
+	// <li>Group- String - 是否必填：否 - 主机群组搜索</li>
+	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
+	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
+	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
+	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
+	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
+	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
+	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// 需要返回的数量，默认为10，最大值为10000
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序字段
@@ -4226,21 +4233,31 @@ type CreateHostExportJobRequestParams struct {
 
 	// 升序降序,asc desc
 	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
 }
 
 type CreateHostExportJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为10000
+	// 过滤条件。
+	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
+	// <li>HostName - String - 是否必填：否 - 主机名筛选</li>
+	// <li>Group- String - 是否必填：否 - 主机群组搜索</li>
+	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
+	// <li>HostID- string - 是否必填：否 - 主机id搜索</li>
+	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
+	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
+	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
+	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
+	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// 需要返回的数量，默认为10，最大值为10000
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序字段
@@ -4248,6 +4265,9 @@ type CreateHostExportJobRequest struct {
 
 	// 升序降序,asc desc
 	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
 }
 
 func (r *CreateHostExportJobRequest) ToJsonString() string {
@@ -4262,12 +4282,12 @@ func (r *CreateHostExportJobRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ExportField")
 	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "By")
 	delete(f, "Order")
+	delete(f, "ExportField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHostExportJobRequest has unknown keys!", "")
 	}
@@ -9031,6 +9051,12 @@ type DescribeAssetHostDetailResponseParams struct {
 	// 地域ID
 	RegionID *int64 `json:"RegionID,omitempty" name:"RegionID"`
 
+	// 所属项目
+	Project *ProjectInfo `json:"Project,omitempty" name:"Project"`
+
+	// 标签
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -9068,6 +9094,8 @@ type DescribeAssetHostListRequestParams struct {
 	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
 	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
 	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
+	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
+	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -9095,6 +9123,8 @@ type DescribeAssetHostListRequest struct {
 	// <li>DockerVersion- string - 是否必填：否 - docker版本搜索</li>
 	// <li>MachineType- string - 是否必填：否 - 主机来源MachineType搜索，"ALL":"全部"(或不传该字段),主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；</li>
 	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
+	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
+	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -23195,6 +23225,14 @@ type HostInfo struct {
 
 	// 地域ID
 	RegionID *int64 `json:"RegionID,omitempty" name:"RegionID"`
+
+	// 所属项目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Project *ProjectInfo `json:"Project,omitempty" name:"Project"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 }
 
 type ImageAutoAuthorizedTask struct {
@@ -26604,6 +26642,14 @@ type ProcessInfo struct {
 	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
 }
 
+type ProjectInfo struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 项目ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+}
+
 type PromotionActivityContent struct {
 	// 月数
 	MonthNum *uint64 `json:"MonthNum,omitempty" name:"MonthNum"`
@@ -28071,6 +28117,14 @@ func (r *SyncAssetImageRegistryAssetResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SyncAssetImageRegistryAssetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TagInfo struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UnauthorizedCoresTendency struct {

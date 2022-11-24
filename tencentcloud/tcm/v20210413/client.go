@@ -163,6 +163,60 @@ func (c *Client) DeleteMeshWithContext(ctx context.Context, request *DeleteMeshR
     return
 }
 
+func NewDescribeAccessLogConfigRequest() (request *DescribeAccessLogConfigRequest) {
+    request = &DescribeAccessLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcm", APIVersion, "DescribeAccessLogConfig")
+    
+    
+    return
+}
+
+func NewDescribeAccessLogConfigResponse() (response *DescribeAccessLogConfigResponse) {
+    response = &DescribeAccessLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAccessLogConfig
+// 获取AccessLog配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessLogConfig(request *DescribeAccessLogConfigRequest) (response *DescribeAccessLogConfigResponse, err error) {
+    return c.DescribeAccessLogConfigWithContext(context.Background(), request)
+}
+
+// DescribeAccessLogConfig
+// 获取AccessLog配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessLogConfigWithContext(ctx context.Context, request *DescribeAccessLogConfigRequest) (response *DescribeAccessLogConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMeshRequest() (request *DescribeMeshRequest) {
     request = &DescribeMeshRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -391,6 +445,64 @@ func (c *Client) LinkPrometheusWithContext(ctx context.Context, request *LinkPro
     request.SetContext(ctx)
     
     response = NewLinkPrometheusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccessLogConfigRequest() (request *ModifyAccessLogConfigRequest) {
+    request = &ModifyAccessLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcm", APIVersion, "ModifyAccessLogConfig")
+    
+    
+    return
+}
+
+func NewModifyAccessLogConfigResponse() (response *ModifyAccessLogConfigResponse) {
+    response = &ModifyAccessLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAccessLogConfig
+// 修改访问日志配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAccessLogConfig(request *ModifyAccessLogConfigRequest) (response *ModifyAccessLogConfigResponse, err error) {
+    return c.ModifyAccessLogConfigWithContext(context.Background(), request)
+}
+
+// ModifyAccessLogConfig
+// 修改访问日志配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyAccessLogConfigWithContext(ctx context.Context, request *ModifyAccessLogConfigRequest) (response *ModifyAccessLogConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyAccessLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccessLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccessLogConfigResponse()
     err = c.Send(request, response)
     return
 }

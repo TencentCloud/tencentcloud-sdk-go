@@ -316,7 +316,7 @@ func NewDescribeClusterNodesResponse() (response *DescribeClusterNodesResponse) 
 }
 
 // DescribeClusterNodes
-// 查询硬件节点信息
+// 查询集群节点信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -349,7 +349,7 @@ func (c *Client) DescribeClusterNodes(request *DescribeClusterNodesRequest) (res
 }
 
 // DescribeClusterNodes
-// 查询硬件节点信息
+// 查询集群节点信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1556,7 +1556,7 @@ func NewModifyResourceScheduleConfigResponse() (response *ModifyResourceSchedule
 }
 
 // ModifyResourceScheduleConfig
-// 修改yarn资源调度的资源配置
+// 修改YARN资源调度的资源配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1569,7 +1569,7 @@ func (c *Client) ModifyResourceScheduleConfig(request *ModifyResourceScheduleCon
 }
 
 // ModifyResourceScheduleConfig
-// 修改yarn资源调度的资源配置
+// 修改YARN资源调度的资源配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1790,7 +1790,7 @@ func NewScaleOutInstanceResponse() (response *ScaleOutInstanceResponse) {
 }
 
 // ScaleOutInstance
-// 实例扩容
+// 扩容节点
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1851,7 +1851,7 @@ func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *S
 }
 
 // ScaleOutInstance
-// 实例扩容
+// 扩容节点
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

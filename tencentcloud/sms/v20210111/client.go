@@ -569,6 +569,7 @@ func NewDescribePhoneNumberInfoResponse() (response *DescribePhoneNumberInfoResp
 // 可能返回的错误码:
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
 //  FAILEDOPERATION_PHONENUMBERPARSEFAIL = "FailedOperation.PhoneNumberParseFail"
+//  INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
 //  LIMITEXCEEDED_PHONENUMBERCOUNTLIMIT = "LimitExceeded.PhoneNumberCountLimit"
 func (c *Client) DescribePhoneNumberInfo(request *DescribePhoneNumberInfoRequest) (response *DescribePhoneNumberInfoResponse, err error) {
     return c.DescribePhoneNumberInfoWithContext(context.Background(), request)
@@ -582,6 +583,7 @@ func (c *Client) DescribePhoneNumberInfo(request *DescribePhoneNumberInfoRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION_JSONPARSEFAIL = "FailedOperation.JsonParseFail"
 //  FAILEDOPERATION_PHONENUMBERPARSEFAIL = "FailedOperation.PhoneNumberParseFail"
+//  INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
 //  LIMITEXCEEDED_PHONENUMBERCOUNTLIMIT = "LimitExceeded.PhoneNumberCountLimit"
 func (c *Client) DescribePhoneNumberInfoWithContext(ctx context.Context, request *DescribePhoneNumberInfoRequest) (response *DescribePhoneNumberInfoResponse, err error) {
     if request == nil {

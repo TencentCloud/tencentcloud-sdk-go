@@ -116,6 +116,29 @@ type ApplicationDataStatistics struct {
 	PcuDataSum []*StatisticsItem `json:"PcuDataSum,omitempty" name:"PcuDataSum"`
 }
 
+type ApplicationList struct {
+	// 服务开关状态
+	ServiceConf *ServiceStatus `json:"ServiceConf,omitempty" name:"ServiceConf"`
+
+	// 应用ID(AppID)
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 应用名称
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 项目ID，默认为0
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 应用状态，返回0表示正常，1表示关闭，2表示欠费停服，3表示欠费回收
+	AppStatus *uint64 `json:"AppStatus,omitempty" name:"AppStatus"`
+
+	// 创建时间，Unix时间戳格式
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 应用类型，无需关注此数值
+	AppType *uint64 `json:"AppType,omitempty" name:"AppType"`
+}
+
 type AudioTextStatisticsItem struct {
 	// 统计值，单位：秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -924,6 +947,101 @@ func (r *DescribeApplicationDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeApplicationListRequestParams struct {
+	// 项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码ID，0表示第一页，以此后推。默认填0
+	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示应用数量。默认填200
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用
+	SearchText *string `json:"SearchText,omitempty" name:"SearchText"`
+
+	// 标签列表
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 查找过滤关键字列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeApplicationListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码ID，0表示第一页，以此后推。默认填0
+	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 每页展示应用数量。默认填200
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用
+	SearchText *string `json:"SearchText,omitempty" name:"SearchText"`
+
+	// 标签列表
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 查找过滤关键字列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeApplicationListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "SearchText")
+	delete(f, "TagSet")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationListResponseParams struct {
+	// 获取应用列表返回
+	ApplicationList []*ApplicationList `json:"ApplicationList,omitempty" name:"ApplicationList"`
+
+	// 应用总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeApplicationListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApplicationListResponseParams `json:"Response"`
+}
+
+func (r *DescribeApplicationListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRealtimeScanConfigRequestParams struct {
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
@@ -1278,6 +1396,14 @@ func (r *DescribeUserInAndOutTimeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUserInAndOutTimeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Filter struct {
+	// 要过滤的字段名, 比如"AppName"
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 多个关键字
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 // Predefined struct for user
@@ -1855,12 +1981,39 @@ type ScanVoiceResult struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
+type ServiceStatus struct {
+	// 实时语音服务开关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealTimeSpeech *StatusInfo `json:"RealTimeSpeech,omitempty" name:"RealTimeSpeech"`
+
+	// 语音消息服务开关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceMessage *StatusInfo `json:"VoiceMessage,omitempty" name:"VoiceMessage"`
+
+	// 语音内容安全服务开关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Porn *StatusInfo `json:"Porn,omitempty" name:"Porn"`
+
+	// 语音录制服务开关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Live *StatusInfo `json:"Live,omitempty" name:"Live"`
+
+	// 语音转文本服务开关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealTimeAsr *StatusInfo `json:"RealTimeAsr,omitempty" name:"RealTimeAsr"`
+}
+
 type StatisticsItem struct {
 	// 日期，格式为年-月-日，如2018-07-13
 	StatDate *string `json:"StatDate,omitempty" name:"StatDate"`
 
 	// 统计值
 	Data *uint64 `json:"Data,omitempty" name:"Data"`
+}
+
+type StatusInfo struct {
+	// 服务开关状态， 0-正常，1-关闭
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type StreamTextStatisticsItem struct {

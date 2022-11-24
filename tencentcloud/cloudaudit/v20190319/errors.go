@@ -20,8 +20,20 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 检查cls日志主题是否存在失败。
+	FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+
+	// 检查cos桶是否存在失败。
+	FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+
 	// 创建COS存储桶失败
 	FAILEDOPERATION_CREATEBUCKETFAIL = "FailedOperation.CreateBucketFail"
+
+	// 拉取cls日志主题失败。
+	FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+
+	// 拉取cos存储桶列表失败。
+	FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -76,6 +88,9 @@ const (
 
 	// 跟踪集名称不符合规则
 	INVALIDPARAMETERVALUE_AUDITNAMEERROR = "InvalidParameterValue.AuditNameError"
+
+	// 跟踪集名称不支持修改。
+	INVALIDPARAMETERVALUE_AUDITTRACKNAMENOTSUPPORTMODIFY = "InvalidParameterValue.AuditTrackNameNotSupportModify"
 
 	// 云审计目前不支持输入的cmq地域
 	INVALIDPARAMETERVALUE_CMQREGIONERROR = "InvalidParameterValue.CmqRegionError"
@@ -145,6 +160,9 @@ const (
 
 	// cos存储桶已经存在
 	RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 跟踪集不存在
 	RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"

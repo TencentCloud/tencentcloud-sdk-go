@@ -385,6 +385,77 @@ type DeployConfig struct {
 }
 
 // Predefined struct for user
+type DescribeAccessLogConfigRequestParams struct {
+	// mesh名字
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+}
+
+type DescribeAccessLogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// mesh名字
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+}
+
+func (r *DescribeAccessLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MeshId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessLogConfigResponseParams struct {
+	// 访问日志输出路径。默认 /dev/stdout
+	File *string `json:"File,omitempty" name:"File"`
+
+	// 访问日志的格式。
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 访问日志输出编码。默认 “TEXT”。除此之外还有“JSON”
+	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+
+	// 选中的范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
+
+	// 采用的模板，可取值为"istio, trace，默认为istio
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Template *string `json:"Template,omitempty" name:"Template"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAccessLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccessLogConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccessLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMeshListRequestParams struct {
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -971,6 +1042,123 @@ type MetricSpec struct {
 
 	// 使用资源指标扩进行自动扩缩容
 	Resource *ResourceMetricSource `json:"Resource,omitempty" name:"Resource"`
+}
+
+// Predefined struct for user
+type ModifyAccessLogConfigRequestParams struct {
+	// mesh ID
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 选中的范围
+	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
+
+	// 采用的模板，可选值：istio（默认）、trace、custom
+	Template *string `json:"Template,omitempty" name:"Template"`
+
+	// 是否启用
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 腾讯云日志服务相关参数
+	CLS *CLS `json:"CLS,omitempty" name:"CLS"`
+
+	// 编码格式，可选值：TEXT、JSON
+	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+
+	// 日志格式
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 是否启用标准输出
+	EnableStdout *bool `json:"EnableStdout,omitempty" name:"EnableStdout"`
+
+	// 是否启动GRPC第三方服务器
+	EnableServer *bool `json:"EnableServer,omitempty" name:"EnableServer"`
+
+	// GRPC第三方服务器地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+}
+
+type ModifyAccessLogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// mesh ID
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 选中的范围
+	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
+
+	// 采用的模板，可选值：istio（默认）、trace、custom
+	Template *string `json:"Template,omitempty" name:"Template"`
+
+	// 是否启用
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 腾讯云日志服务相关参数
+	CLS *CLS `json:"CLS,omitempty" name:"CLS"`
+
+	// 编码格式，可选值：TEXT、JSON
+	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+
+	// 日志格式
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 是否启用标准输出
+	EnableStdout *bool `json:"EnableStdout,omitempty" name:"EnableStdout"`
+
+	// 是否启动GRPC第三方服务器
+	EnableServer *bool `json:"EnableServer,omitempty" name:"EnableServer"`
+
+	// GRPC第三方服务器地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+}
+
+func (r *ModifyAccessLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MeshId")
+	delete(f, "SelectedRange")
+	delete(f, "Template")
+	delete(f, "Enable")
+	delete(f, "CLS")
+	delete(f, "Encoding")
+	delete(f, "Format")
+	delete(f, "EnableStdout")
+	delete(f, "EnableServer")
+	delete(f, "Address")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccessLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccessLogConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAccessLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccessLogConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccessLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccessLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

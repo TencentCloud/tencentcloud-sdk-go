@@ -175,10 +175,17 @@ func NewCreateAuditTrackResponse() (response *CreateAuditTrackResponse) {
 // 创建跟踪集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+//  FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+//  FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+//  FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAuditTrack(request *CreateAuditTrackRequest) (response *CreateAuditTrackResponse, err error) {
     return c.CreateAuditTrackWithContext(context.Background(), request)
 }
@@ -187,10 +194,17 @@ func (c *Client) CreateAuditTrack(request *CreateAuditTrackRequest) (response *C
 // 创建跟踪集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+//  FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+//  FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+//  FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAuditTrackWithContext(ctx context.Context, request *CreateAuditTrackRequest) (response *CreateAuditTrackResponse, err error) {
     if request == nil {
         request = NewCreateAuditTrackRequest()
@@ -283,6 +297,7 @@ func NewDeleteAuditTrackResponse() (response *DeleteAuditTrackResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) DeleteAuditTrack(request *DeleteAuditTrackRequest) (response *DeleteAuditTrackResponse, err error) {
     return c.DeleteAuditTrackWithContext(context.Background(), request)
 }
@@ -295,6 +310,7 @@ func (c *Client) DeleteAuditTrack(request *DeleteAuditTrackRequest) (response *D
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) DeleteAuditTrackWithContext(ctx context.Context, request *DeleteAuditTrackRequest) (response *DeleteAuditTrackResponse, err error) {
     if request == nil {
         request = NewDeleteAuditTrackRequest()
@@ -357,6 +373,62 @@ func (c *Client) DescribeAuditWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeAuditResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditTrackRequest() (request *DescribeAuditTrackRequest) {
+    request = &DescribeAuditTrackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cloudaudit", APIVersion, "DescribeAuditTrack")
+    
+    
+    return
+}
+
+func NewDescribeAuditTrackResponse() (response *DescribeAuditTrackResponse) {
+    response = &DescribeAuditTrackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAuditTrack
+// 查询云审计跟踪集详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
+func (c *Client) DescribeAuditTrack(request *DescribeAuditTrackRequest) (response *DescribeAuditTrackResponse, err error) {
+    return c.DescribeAuditTrackWithContext(context.Background(), request)
+}
+
+// DescribeAuditTrack
+// 查询云审计跟踪集详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
+func (c *Client) DescribeAuditTrackWithContext(ctx context.Context, request *DescribeAuditTrackRequest) (response *DescribeAuditTrackResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditTrackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditTrack require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditTrackResponse()
     err = c.Send(request, response)
     return
 }
@@ -841,10 +913,19 @@ func NewModifyAuditTrackResponse() (response *ModifyAuditTrackResponse) {
 // 修改云审计跟踪
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+//  FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+//  FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+//  FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_AUDITTRACKNAMENOTSUPPORTMODIFY = "InvalidParameterValue.AuditTrackNameNotSupportModify"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) ModifyAuditTrack(request *ModifyAuditTrackRequest) (response *ModifyAuditTrackResponse, err error) {
     return c.ModifyAuditTrackWithContext(context.Background(), request)
 }
@@ -853,10 +934,19 @@ func (c *Client) ModifyAuditTrack(request *ModifyAuditTrackRequest) (response *M
 // 修改云审计跟踪
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKCLSTOPICISEXISTFAILED = "FailedOperation.CheckClsTopicIsExistFailed"
+//  FAILEDOPERATION_CHECKCOSBUCKETISEXISTFAILED = "FailedOperation.CheckCosBucketIsExistFailed"
+//  FAILEDOPERATION_GETCLSTOPICFAILED = "FailedOperation.GetClsTopicFailed"
+//  FAILEDOPERATION_GETCOSBUCKETLISTFAILED = "FailedOperation.GetCosBucketListFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SEARCHERROR = "InternalError.SearchError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_ALIASALREADYEXISTS = "InvalidParameterValue.AliasAlreadyExists"
+//  INVALIDPARAMETERVALUE_AUDITTRACKNAMENOTSUPPORTMODIFY = "InvalidParameterValue.AuditTrackNameNotSupportModify"
+//  INVALIDPARAMETERVALUE_COSREGIONERROR = "InvalidParameterValue.CosRegionError"
 //  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
 func (c *Client) ModifyAuditTrackWithContext(ctx context.Context, request *ModifyAuditTrackRequest) (response *ModifyAuditTrackResponse, err error) {
     if request == nil {
         request = NewModifyAuditTrackRequest()
