@@ -418,7 +418,7 @@ type CreateDomainAliasRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -431,7 +431,7 @@ type CreateDomainAliasRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -676,7 +676,7 @@ type CreateDomainRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名分组ID
+	// 域名分组ID。可以通过接口DescribeDomainGroupList查看当前域名分组信息
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 是否星标域名，”yes”、”no” 分别代表是和否。
@@ -689,7 +689,7 @@ type CreateDomainRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名分组ID
+	// 域名分组ID。可以通过接口DescribeDomainGroupList查看当前域名分组信息
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 是否星标域名，”yes”、”no” 分别代表是和否。
@@ -1152,26 +1152,26 @@ type Deals struct {
 
 // Predefined struct for user
 type DeleteDomainAliasRequestParams struct {
-	// 域名别名ID
+	// 域名别名ID。可以通过接口DescribeDomainAliasList查到所有的域名别名列表以及对应的ID
 	DomainAliasId *int64 `json:"DomainAliasId,omitempty" name:"DomainAliasId"`
 
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
 type DeleteDomainAliasRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名别名ID
+	// 域名别名ID。可以通过接口DescribeDomainAliasList查到所有的域名别名列表以及对应的ID
 	DomainAliasId *int64 `json:"DomainAliasId,omitempty" name:"DomainAliasId"`
 
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	// 域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1223,7 +1223,7 @@ type DeleteDomainRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1233,7 +1233,7 @@ type DeleteDomainRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1352,10 +1352,10 @@ type DeleteRecordRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1365,10 +1365,10 @@ type DeleteRecordRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1423,7 +1423,7 @@ type DeleteShareDomainRequestParams struct {
 	// 域名共享的账号
 	Account *string `json:"Account,omitempty" name:"Account"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1436,7 +1436,7 @@ type DeleteShareDomainRequest struct {
 	// 域名共享的账号
 	Account *string `json:"Account,omitempty" name:"Account"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1586,14 +1586,14 @@ type DescribeBatchTaskDetail struct {
 
 // Predefined struct for user
 type DescribeBatchTaskRequestParams struct {
-	// 任务ID
+	// 任务ID。操作批量接口时会返回JobId
 	JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
 }
 
 type DescribeBatchTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务ID。操作批量接口时会返回JobId
 	JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
 }
 
@@ -1661,7 +1661,7 @@ type DescribeDomainAliasListRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	// 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1671,7 +1671,7 @@ type DescribeDomainAliasListRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain
+	// 域名ID,域名ID，参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *int64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1734,7 +1734,7 @@ type DescribeDomainAnalyticsRequestParams struct {
 	// DATE:按天维度统计 HOUR:按小时维度统计
 	DnsFormat *string `json:"DnsFormat,omitempty" name:"DnsFormat"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1753,7 +1753,7 @@ type DescribeDomainAnalyticsRequest struct {
 	// DATE:按天维度统计 HOUR:按小时维度统计
 	DnsFormat *string `json:"DnsFormat,omitempty" name:"DnsFormat"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -1958,7 +1958,7 @@ type DescribeDomainLogListRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 记录开始的偏移，第一条记录为 0，依次类推，默认为0
@@ -1974,7 +1974,7 @@ type DescribeDomainLogListRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 记录开始的偏移，第一条记录为 0，依次类推，默认为0
@@ -2043,7 +2043,7 @@ type DescribeDomainPurviewRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2053,7 +2053,7 @@ type DescribeDomainPurviewRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2107,7 +2107,7 @@ type DescribeDomainRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2117,7 +2117,7 @@ type DescribeDomainRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2171,7 +2171,7 @@ type DescribeDomainShareInfoRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2181,7 +2181,7 @@ type DescribeDomainShareInfoRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2321,7 +2321,7 @@ type DescribeRecordLineListRequestParams struct {
 	// + 新套餐：DP_FREE、DP_PLUS、DP_EXTRA、DP_EXPERT、DP_ULTRA 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版。
 	DomainGrade *string `json:"DomainGrade,omitempty" name:"DomainGrade"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2336,7 +2336,7 @@ type DescribeRecordLineListRequest struct {
 	// + 新套餐：DP_FREE、DP_PLUS、DP_EXTRA、DP_EXPERT、DP_ULTRA 分别对应新免费、个人专业版、企业创业版、企业标准版、企业旗舰版。
 	DomainGrade *string `json:"DomainGrade,omitempty" name:"DomainGrade"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2394,7 +2394,7 @@ type DescribeRecordListRequestParams struct {
 	// 要获取的解析记录所属的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数
+	// 要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数。 可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录
@@ -2403,13 +2403,13 @@ type DescribeRecordListRequestParams struct {
 	// 获取某种类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等
 	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
 
-	// 获取某条线路名称的解析记录
+	// 获取某条线路名称的解析记录。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
 	RecordLine *string `json:"RecordLine,omitempty" name:"RecordLine"`
 
-	// 获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数
+	// 获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
 	RecordLineId *string `json:"RecordLineId,omitempty" name:"RecordLineId"`
 
-	// 获取某个分组下的解析记录时，传这个分组Id
+	// 获取某个分组下的解析记录时，传这个分组Id。
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 通过关键字搜索解析记录，当前支持搜索主机头和记录值
@@ -2434,7 +2434,7 @@ type DescribeRecordListRequest struct {
 	// 要获取的解析记录所属的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数
+	// 要获取的解析记录所属的域名Id，如果传了DomainId，系统将会忽略Domain参数。 可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录
@@ -2443,13 +2443,13 @@ type DescribeRecordListRequest struct {
 	// 获取某种类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等
 	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
 
-	// 获取某条线路名称的解析记录
+	// 获取某条线路名称的解析记录。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
 	RecordLine *string `json:"RecordLine,omitempty" name:"RecordLine"`
 
-	// 获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数
+	// 获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
 	RecordLineId *string `json:"RecordLineId,omitempty" name:"RecordLineId"`
 
-	// 获取某个分组下的解析记录时，传这个分组Id
+	// 获取某个分组下的解析记录时，传这个分组Id。
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 通过关键字搜索解析记录，当前支持搜索主机头和记录值
@@ -2534,7 +2534,7 @@ type DescribeRecordRequestParams struct {
 	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。DomainId是域名的资源ID，可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -2547,7 +2547,7 @@ type DescribeRecordRequest struct {
 	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。DomainId是域名的资源ID，可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3097,7 +3097,7 @@ type DescribeSubdomainAnalyticsRequestParams struct {
 	// DATE:按天维度统计 HOUR:按小时维度统计
 	DnsFormat *string `json:"DnsFormat,omitempty" name:"DnsFormat"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3119,7 +3119,7 @@ type DescribeSubdomainAnalyticsRequest struct {
 	// DATE:按天维度统计 HOUR:按小时维度统计
 	DnsFormat *string `json:"DnsFormat,omitempty" name:"DnsFormat"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3567,6 +3567,15 @@ type GroupInfo struct {
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 }
 
+type KeyValue struct {
+	// 键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type LineGroupInfo struct {
 	// 线路分组ID
 	LineId *string `json:"LineId,omitempty" name:"LineId"`
@@ -3608,7 +3617,7 @@ type ModifyDomainLockRequestParams struct {
 	// 域名要锁定的天数，最多可锁定的天数可以通过获取域名权限接口获取。
 	LockDays *uint64 `json:"LockDays,omitempty" name:"LockDays"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3621,7 +3630,7 @@ type ModifyDomainLockRequest struct {
 	// 域名要锁定的天数，最多可锁定的天数可以通过获取域名权限接口获取。
 	LockDays *uint64 `json:"LockDays,omitempty" name:"LockDays"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3679,7 +3688,7 @@ type ModifyDomainOwnerRequestParams struct {
 	// 域名需要转入的账号，支持Uin或者邮箱格式
 	Account *string `json:"Account,omitempty" name:"Account"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3692,7 +3701,7 @@ type ModifyDomainOwnerRequest struct {
 	// 域名需要转入的账号，支持Uin或者邮箱格式
 	Account *string `json:"Account,omitempty" name:"Account"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3744,7 +3753,7 @@ type ModifyDomainRemarkRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 域名备注，删除备注请提交空内容。
@@ -3757,7 +3766,7 @@ type ModifyDomainRemarkRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 域名备注，删除备注请提交空内容。
@@ -3815,7 +3824,7 @@ type ModifyDomainStatusRequestParams struct {
 	// 域名状态，”enable” 、”disable” 分别代表启用和暂停
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3828,7 +3837,7 @@ type ModifyDomainStatusRequest struct {
 	// 域名状态，”enable” 、”disable” 分别代表启用和暂停
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3883,7 +3892,7 @@ type ModifyDomainUnlockRequestParams struct {
 	// 域名解锁码，锁定的时候会返回。
 	LockCode *string `json:"LockCode,omitempty" name:"LockCode"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3896,7 +3905,7 @@ type ModifyDomainUnlockRequest struct {
 	// 域名解锁码，锁定的时候会返回。
 	LockCode *string `json:"LockCode,omitempty" name:"LockCode"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -3948,7 +3957,7 @@ type ModifyDynamicDNSRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录ID。
+	// 记录ID。 可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
 	// 记录线路，通过 API 记录线路获得，中文，比如：默认。
@@ -3957,7 +3966,7 @@ type ModifyDynamicDNSRequestParams struct {
 	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 主机记录，如 www，如果不传，默认为 @。
@@ -3976,7 +3985,7 @@ type ModifyDynamicDNSRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录ID。
+	// 记录ID。 可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
 	// 记录线路，通过 API 记录线路获得，中文，比如：默认。
@@ -3985,7 +3994,7 @@ type ModifyDynamicDNSRequest struct {
 	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 主机记录，如 www，如果不传，默认为 @。
@@ -4051,7 +4060,7 @@ func (r *ModifyDynamicDNSResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPackageAutoRenewRequestParams struct {
-	// 资源ID
+	// 资源ID。可以在控制台查看所有的资源
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// enable 开启自动续费；disable 关闭自动续费
@@ -4061,7 +4070,7 @@ type ModifyPackageAutoRenewRequestParams struct {
 type ModifyPackageAutoRenewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源ID
+	// 资源ID。可以在控制台查看所有的资源
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// enable 开启自动续费；disable 关闭自动续费
@@ -4145,7 +4154,7 @@ type ModifyRecordBatchDetail struct {
 
 // Predefined struct for user
 type ModifyRecordBatchRequestParams struct {
-	// 记录ID数组
+	// 记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordIdList []*uint64 `json:"RecordIdList,omitempty" name:"RecordIdList"`
 
 	// 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
@@ -4164,7 +4173,7 @@ type ModifyRecordBatchRequestParams struct {
 type ModifyRecordBatchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 记录ID数组
+	// 记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordIdList []*uint64 `json:"RecordIdList,omitempty" name:"RecordIdList"`
 
 	// 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
@@ -4228,6 +4237,84 @@ func (r *ModifyRecordBatchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyRecordBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRecordFieldsRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 记录 ID 。
+	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 要修改的记录属性和值，支持：sub_domain，record_line，record_line_id，record_type，value，ttl，status，mx，weight
+	FieldList []*KeyValue `json:"FieldList,omitempty" name:"FieldList"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type ModifyRecordFieldsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 记录 ID 。
+	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 要修改的记录属性和值，支持：sub_domain，record_line，record_line_id，record_type，value，ttl，status，mx，weight
+	FieldList []*KeyValue `json:"FieldList,omitempty" name:"FieldList"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *ModifyRecordFieldsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordFieldsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "RecordId")
+	delete(f, "FieldList")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordFieldsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRecordFieldsResponseParams struct {
+	// 记录ID
+	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRecordFieldsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRecordFieldsResponseParams `json:"Response"`
+}
+
+func (r *ModifyRecordFieldsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordFieldsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4314,10 +4401,10 @@ type ModifyRecordRemarkRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 解析记录备注，删除备注请提交空内容。
@@ -4330,10 +4417,10 @@ type ModifyRecordRemarkRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 解析记录备注，删除备注请提交空内容。
@@ -4398,10 +4485,10 @@ type ModifyRecordRequestParams struct {
 	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 主机记录，如 www，如果不传，默认为 @。
@@ -4438,10 +4525,10 @@ type ModifyRecordRequest struct {
 	// 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 主机记录，如 www，如果不传，默认为 @。
@@ -4523,13 +4610,13 @@ type ModifyRecordStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
 	// 记录的状态。取值范围为 ENABLE 和 DISABLE。如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -4539,13 +4626,13 @@ type ModifyRecordStatusRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 记录 ID 。
+	// 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
 	RecordId *uint64 `json:"RecordId,omitempty" name:"RecordId"`
 
 	// 记录的状态。取值范围为 ENABLE 和 DISABLE。如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 }
 
@@ -4750,7 +4837,7 @@ type ModifySubdomainStatusRequestParams struct {
 	// 记录状态。允许的值为disable。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 主机记录，如 www，如果不传，默认为 @。
@@ -4769,7 +4856,7 @@ type ModifySubdomainStatusRequest struct {
 	// 记录状态。允许的值为disable。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
 
 	// 主机记录，如 www，如果不传，默认为 @。
@@ -4823,7 +4910,7 @@ func (r *ModifySubdomainStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyVasAutoRenewStatusRequestParams struct {
-	// 资源ID
+	// 资源ID。可以从控制台查看所有的资源
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// enable 开启自动续费；disable 关闭自动续费
@@ -4833,7 +4920,7 @@ type ModifyVasAutoRenewStatusRequestParams struct {
 type ModifyVasAutoRenewStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源ID
+	// 资源ID。可以从控制台查看所有的资源
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// enable 开启自动续费；disable 关闭自动续费
@@ -4887,7 +4974,7 @@ type PayOrderWithBalanceRequestParams struct {
 	// 需要支付的大订单号数组
 	BigDealIdList []*string `json:"BigDealIdList,omitempty" name:"BigDealIdList"`
 
-	// 代金券ID数组
+	// 代金券ID数组。可以从控制台查到拥有的代金券
 	VoucherIdList []*string `json:"VoucherIdList,omitempty" name:"VoucherIdList"`
 }
 
@@ -4897,7 +4984,7 @@ type PayOrderWithBalanceRequest struct {
 	// 需要支付的大订单号数组
 	BigDealIdList []*string `json:"BigDealIdList,omitempty" name:"BigDealIdList"`
 
-	// 代金券ID数组
+	// 代金券ID数组。可以从控制台查到拥有的代金券
 	VoucherIdList []*string `json:"VoucherIdList,omitempty" name:"VoucherIdList"`
 }
 

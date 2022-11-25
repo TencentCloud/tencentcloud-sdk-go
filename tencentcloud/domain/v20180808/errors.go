@@ -20,7 +20,7 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 域名查询失败，请稍后重试。
+	// 域名查询失败，请稍后重试该功能。
 	FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
 
 	// 创建模板操作失败。
@@ -74,7 +74,7 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
-	// 网络错误，请稍后重试。
+	// 网络报错，请稍后重试。
 	INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 
 	// 参数错误。
@@ -92,13 +92,13 @@ const (
 	// 无权限自定义DNS。
 	INVALIDPARAMETER_CUSTOMDNSNOTALLOWED = "InvalidParameter.CustomDnsNotAllowed"
 
-	// 域名输入为空或者不合法。
+	// 域名输入为空或者不正确。
 	INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
 
 	// 存在重复域名，请检查后重新提交。
 	INVALIDPARAMETER_DUPLICATEDOMAINEXISTS = "InvalidParameter.DuplicateDomainExists"
 
-	// 邮箱为空或者不合法。
+	// 邮箱为空或者不正确。
 	INVALIDPARAMETER_EMAILISINVALID = "InvalidParameter.EmailIsInvalid"
 
 	// 仅支持已验证的电子邮箱，请先在控制台创建后使用

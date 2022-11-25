@@ -131,7 +131,7 @@ const (
 	// 上传的转码图片格式错误，请参照 API 接口说明中对改字段的说明，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	INVALIDPARAMETERVALUE_IMAGEINVALID = "InvalidParameterValue.ImageInvalid"
 
-	// 手机号格式错误，请参考 [1016错误详解](https://cloud.tencent.com/document/product/382/9558#.E8.BF.94.E5.9B.9E1016.E9.94.99.E8.AF.AF.E5.A6.82.E4.BD.95.E5.A4.84.E7.90.86.EF.BC.9F)。
+	// 手机号格式错误。
 	INVALIDPARAMETERVALUE_INCORRECTPHONENUMBER = "InvalidParameterValue.IncorrectPhoneNumber"
 
 	// DocumentType 字段校验错误，请参照 API 接口说明中对改字段的说明，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。

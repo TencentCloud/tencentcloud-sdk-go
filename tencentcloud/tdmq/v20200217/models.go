@@ -9003,6 +9003,10 @@ type RocketMQClusterInfo struct {
 	// 是否为专享实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVip *bool `json:"IsVip,omitempty" name:"IsVip"`
+
+	// Rocketmq集群标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RocketMQFlag *bool `json:"RocketMQFlag,omitempty" name:"RocketMQFlag"`
 }
 
 type RocketMQClusterRecentStats struct {

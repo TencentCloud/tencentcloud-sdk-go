@@ -4987,6 +4987,16 @@ type CloudOrderReturn struct {
 	// 支付方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 平台应收金额
+	// 单位：分，需要注意的是，TotalAmt=TotalPlatformIncome+TotalMchIncome
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPlatformIncome *int64 `json:"TotalPlatformIncome,omitempty" name:"TotalPlatformIncome"`
+
+	// 商户应收金额
+	// 单位：分，需要注意的是，TotalAmt=TotalPlatformIncome+TotalMchIncome
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalMchIncome *int64 `json:"TotalMchIncome,omitempty" name:"TotalMchIncome"`
 }
 
 type CloudSettleInfo struct {

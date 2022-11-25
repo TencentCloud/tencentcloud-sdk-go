@@ -1,3 +1,126 @@
+# Release v1.0.545
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 93 次发布
+
+发布时间：2022-11-25 06:20:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CloudOrderReturn](https://cloud.tencent.com/document/api/1122/40683#CloudOrderReturn)
+
+	* 新增成员：TotalPlatformIncome, TotalMchIncome
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 11 次发布
+
+发布时间：2022-11-25 06:28:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyRecordFields](https://cloud.tencent.com/document/api/1427/83364)
+
+新增数据结构：
+
+* [KeyValue](https://cloud.tencent.com/document/api/1427/56185#KeyValue)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 27 次发布
+
+发布时间：2022-11-25 06:45:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstance](https://cloud.tencent.com/document/api/240/38571)
+
+	* 新增入参：ReadonlyNodeNum, ReadonlyNodeAvailabilityZoneList, HiddenZone
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 33 次发布
+
+发布时间：2022-11-25 06:59:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateK8sApiAbnormalEventExportJob](https://cloud.tencent.com/document/api/1285/83380)
+* [CreateK8sApiAbnormalRuleExportJob](https://cloud.tencent.com/document/api/1285/83379)
+* [CreateK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83378)
+* [DeleteK8sApiAbnormalRule](https://cloud.tencent.com/document/api/1285/83377)
+* [DescribeAssetClusterList](https://cloud.tencent.com/document/api/1285/83376)
+* [DescribeK8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/83375)
+* [DescribeK8sApiAbnormalEventList](https://cloud.tencent.com/document/api/1285/83374)
+* [DescribeK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83373)
+* [DescribeK8sApiAbnormalRuleList](https://cloud.tencent.com/document/api/1285/83372)
+* [DescribeK8sApiAbnormalRuleScopeList](https://cloud.tencent.com/document/api/1285/83371)
+* [DescribeK8sApiAbnormalSummary](https://cloud.tencent.com/document/api/1285/83370)
+* [DescribeK8sApiAbnormalTendency](https://cloud.tencent.com/document/api/1285/83369)
+* [ModifyK8sApiAbnormalEventStatus](https://cloud.tencent.com/document/api/1285/83368)
+* [ModifyK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83367)
+* [ModifyK8sApiAbnormalRuleStatus](https://cloud.tencent.com/document/api/1285/83366)
+
+新增数据结构：
+
+* [AssetClusterListItem](https://cloud.tencent.com/document/api/1285/65614#AssetClusterListItem)
+* [K8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventInfo)
+* [K8sApiAbnormalEventListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventListItem)
+* [K8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleInfo)
+* [K8sApiAbnormalRuleListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleListItem)
+* [K8sApiAbnormalRuleScopeInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleScopeInfo)
+* [K8sApiAbnormalTendencyItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalTendencyItem)
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 41 次发布
+
+发布时间：2022-11-25 07:03:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+
+	* 新增成员：RocketMQFlag
+
+
+
+
 # Release v1.0.544
 
 ## 云审计(cloudaudit) 版本：2019-03-19

@@ -863,7 +863,7 @@ const (
 	// 从市场镜像创建的自定义镜像不支持导出。
 	UNSUPPORTEDOPERATION_MARKETIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.MarketImageExportUnsupported"
 
-	// 不支持修改系统盘的加密属性，比如使用非加密镜像重装加密系统盘。
+	// 不支持修改系统盘的加密属性，例如使用非加密镜像重装加密系统盘。
 	UNSUPPORTEDOPERATION_MODIFYENCRYPTIONNOTSUPPORTED = "UnsupportedOperation.ModifyEncryptionNotSupported"
 
 	// 绑定负载均衡的实例，不支持修改vpc属性。

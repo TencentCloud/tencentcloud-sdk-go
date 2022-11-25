@@ -579,7 +579,7 @@ type CreateDBInstanceRequestParams struct {
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 查询子网列表
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
+	// 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。 自定义密码格式为8-32个字符长度，至少包含字母、数字和字符（!@#%^*()_）中的两种
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 实例标签信息
@@ -617,6 +617,15 @@ type CreateDBInstanceRequestParams struct {
 
 	// mongos 数量，购买MongoDB 4.2 WiredTiger存储引擎版本的分片集群时必须填写，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。注：为了保障高可用，最低需要购买3个mongos，上限为32个
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitempty" name:"MongosNodeNum"`
+
+	// 只读节点数量，最大不超过7个
+	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitempty" name:"ReadonlyNodeNum"`
+
+	// 只读节点部署可用区
+	ReadonlyNodeAvailabilityZoneList []*string `json:"ReadonlyNodeAvailabilityZoneList,omitempty" name:"ReadonlyNodeAvailabilityZoneList"`
+
+	// Hidden节点所在的可用区，跨可用区实例必传
+	HiddenZone *string `json:"HiddenZone,omitempty" name:"HiddenZone"`
 }
 
 type CreateDBInstanceRequest struct {
@@ -661,7 +670,7 @@ type CreateDBInstanceRequest struct {
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 查询子网列表
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。密码必须是8-16位字符，且至少包含字母、数字和字符 !@#%^*() 中的两种
+	// 实例密码，不设置该参数则默认密码规则为 实例ID+"@"+主账户uin。举例实例id为cmgo-higv73ed，uin为100000001，则默认密码为"cmgo-higv73ed@100000001"。 自定义密码格式为8-32个字符长度，至少包含字母、数字和字符（!@#%^*()_）中的两种
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 实例标签信息
@@ -699,6 +708,15 @@ type CreateDBInstanceRequest struct {
 
 	// mongos 数量，购买MongoDB 4.2 WiredTiger存储引擎版本的分片集群时必须填写，具体支持的售卖版本请参照查询云数据库的售卖规格（DescribeSpecInfo）返回结果。注：为了保障高可用，最低需要购买3个mongos，上限为32个
 	MongosNodeNum *uint64 `json:"MongosNodeNum,omitempty" name:"MongosNodeNum"`
+
+	// 只读节点数量，最大不超过7个
+	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitempty" name:"ReadonlyNodeNum"`
+
+	// 只读节点部署可用区
+	ReadonlyNodeAvailabilityZoneList []*string `json:"ReadonlyNodeAvailabilityZoneList,omitempty" name:"ReadonlyNodeAvailabilityZoneList"`
+
+	// Hidden节点所在的可用区，跨可用区实例必传
+	HiddenZone *string `json:"HiddenZone,omitempty" name:"HiddenZone"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -739,6 +757,9 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MongosCpu")
 	delete(f, "MongosMemory")
 	delete(f, "MongosNodeNum")
+	delete(f, "ReadonlyNodeNum")
+	delete(f, "ReadonlyNodeAvailabilityZoneList")
+	delete(f, "HiddenZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
 	}

@@ -1510,20 +1510,20 @@ func (r *DescribeAutoBackupConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupUrlRequestParams struct {
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份ID，通过DescribeInstanceBackups接口可查
+	// 备份 ID，可通过DescribeInstanceBackups接口返回的参数 BackupSet 获取。
 	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
 }
 
 type DescribeBackupUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份ID，通过DescribeInstanceBackups接口可查
+	// 备份 ID，可通过DescribeInstanceBackups接口返回的参数 BackupSet 获取。
 	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
 }
 
@@ -1559,7 +1559,7 @@ type DescribeBackupUrlResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filenames []*string `json:"Filenames,omitempty" name:"Filenames"`
 
-	// 备份文件信息列表
+	// 备份文件信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupInfos []*BackupDownloadInfo `json:"BackupInfos,omitempty" name:"BackupInfos"`
 

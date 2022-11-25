@@ -2326,7 +2326,7 @@ func NewDescribeRecordListResponse() (response *DescribeRecordListResponse) {
 }
 
 // DescribeRecordList
-// 获取某个域名下的解析记录
+// 获取某个域名下的解析记录列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2356,7 +2356,7 @@ func (c *Client) DescribeRecordList(request *DescribeRecordListRequest) (respons
 }
 
 // DescribeRecordList
-// 获取某个域名下的解析记录
+// 获取某个域名下的解析记录列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3999,6 +3999,154 @@ func (c *Client) ModifyRecordBatchWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyRecordBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRecordFieldsRequest() (request *ModifyRecordFieldsRequest) {
+    request = &ModifyRecordFieldsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordFields")
+    
+    
+    return
+}
+
+func NewModifyRecordFieldsResponse() (response *ModifyRecordFieldsResponse) {
+    response = &ModifyRecordFieldsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRecordFields
+// 修改记录可选字段
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
+//  FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
+//  INVALIDPARAMETER_CUSTOMMESSAGE = "InvalidParameter.CustomMessage"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINNOTALLOWEDMODIFYRECORDS = "InvalidParameter.DomainNotAllowedModifyRecords"
+//  INVALIDPARAMETER_DOMAINNOTBEIAN = "InvalidParameter.DomainNotBeian"
+//  INVALIDPARAMETER_DOMAINRECORDEXIST = "InvalidParameter.DomainRecordExist"
+//  INVALIDPARAMETER_EMAILNOTVERIFIED = "InvalidParameter.EmailNotVerified"
+//  INVALIDPARAMETER_INVALIDWEIGHT = "InvalidParameter.InvalidWeight"
+//  INVALIDPARAMETER_LOGINTOKENIDERROR = "InvalidParameter.LoginTokenIdError"
+//  INVALIDPARAMETER_LOGINTOKENNOTEXISTS = "InvalidParameter.LoginTokenNotExists"
+//  INVALIDPARAMETER_LOGINTOKENVALIDATEFAILED = "InvalidParameter.LoginTokenValidateFailed"
+//  INVALIDPARAMETER_MOBILENOTVERIFIED = "InvalidParameter.MobileNotVerified"
+//  INVALIDPARAMETER_MXINVALID = "InvalidParameter.MxInvalid"
+//  INVALIDPARAMETER_RECORDIDINVALID = "InvalidParameter.RecordIdInvalid"
+//  INVALIDPARAMETER_RECORDLINEINVALID = "InvalidParameter.RecordLineInvalid"
+//  INVALIDPARAMETER_RECORDTYPEINVALID = "InvalidParameter.RecordTypeInvalid"
+//  INVALIDPARAMETER_RECORDVALUEINVALID = "InvalidParameter.RecordValueInvalid"
+//  INVALIDPARAMETER_RECORDVALUELENGTHINVALID = "InvalidParameter.RecordValueLengthInvalid"
+//  INVALIDPARAMETER_REQUESTIPLIMITED = "InvalidParameter.RequestIpLimited"
+//  INVALIDPARAMETER_SUBDOMAININVALID = "InvalidParameter.SubdomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+//  INVALIDPARAMETER_URLVALUEILLEGAL = "InvalidParameter.UrlValueIllegal"
+//  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  INVALIDPARAMETERVALUE_USERIDINVALID = "InvalidParameterValue.UserIdInvalid"
+//  LIMITEXCEEDED_AAAACOUNTLIMIT = "LimitExceeded.AAAACountLimit"
+//  LIMITEXCEEDED_ATNSRECORDLIMIT = "LimitExceeded.AtNsRecordLimit"
+//  LIMITEXCEEDED_FAILEDLOGINLIMITEXCEEDED = "LimitExceeded.FailedLoginLimitExceeded"
+//  LIMITEXCEEDED_HIDDENURLEXCEEDED = "LimitExceeded.HiddenUrlExceeded"
+//  LIMITEXCEEDED_NSCOUNTLIMIT = "LimitExceeded.NsCountLimit"
+//  LIMITEXCEEDED_RECORDTTLLIMIT = "LimitExceeded.RecordTtlLimit"
+//  LIMITEXCEEDED_SRVCOUNTLIMIT = "LimitExceeded.SrvCountLimit"
+//  LIMITEXCEEDED_SUBDOMAINLEVELLIMIT = "LimitExceeded.SubdomainLevelLimit"
+//  LIMITEXCEEDED_SUBDOMAINROLLLIMIT = "LimitExceeded.SubdomainRollLimit"
+//  LIMITEXCEEDED_SUBDOMAINWCARDLIMIT = "LimitExceeded.SubdomainWcardLimit"
+//  LIMITEXCEEDED_URLCOUNTLIMIT = "LimitExceeded.UrlCountLimit"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_IPINBLACKLISTNOTALLOWED = "OperationDenied.IPInBlacklistNotAllowed"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  OPERATIONDENIED_NOTADMIN = "OperationDenied.NotAdmin"
+//  OPERATIONDENIED_NOTAGENT = "OperationDenied.NotAgent"
+//  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+func (c *Client) ModifyRecordFields(request *ModifyRecordFieldsRequest) (response *ModifyRecordFieldsResponse, err error) {
+    return c.ModifyRecordFieldsWithContext(context.Background(), request)
+}
+
+// ModifyRecordFields
+// 修改记录可选字段
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
+//  FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
+//  INVALIDPARAMETER_CUSTOMMESSAGE = "InvalidParameter.CustomMessage"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINNOTALLOWEDMODIFYRECORDS = "InvalidParameter.DomainNotAllowedModifyRecords"
+//  INVALIDPARAMETER_DOMAINNOTBEIAN = "InvalidParameter.DomainNotBeian"
+//  INVALIDPARAMETER_DOMAINRECORDEXIST = "InvalidParameter.DomainRecordExist"
+//  INVALIDPARAMETER_EMAILNOTVERIFIED = "InvalidParameter.EmailNotVerified"
+//  INVALIDPARAMETER_INVALIDWEIGHT = "InvalidParameter.InvalidWeight"
+//  INVALIDPARAMETER_LOGINTOKENIDERROR = "InvalidParameter.LoginTokenIdError"
+//  INVALIDPARAMETER_LOGINTOKENNOTEXISTS = "InvalidParameter.LoginTokenNotExists"
+//  INVALIDPARAMETER_LOGINTOKENVALIDATEFAILED = "InvalidParameter.LoginTokenValidateFailed"
+//  INVALIDPARAMETER_MOBILENOTVERIFIED = "InvalidParameter.MobileNotVerified"
+//  INVALIDPARAMETER_MXINVALID = "InvalidParameter.MxInvalid"
+//  INVALIDPARAMETER_RECORDIDINVALID = "InvalidParameter.RecordIdInvalid"
+//  INVALIDPARAMETER_RECORDLINEINVALID = "InvalidParameter.RecordLineInvalid"
+//  INVALIDPARAMETER_RECORDTYPEINVALID = "InvalidParameter.RecordTypeInvalid"
+//  INVALIDPARAMETER_RECORDVALUEINVALID = "InvalidParameter.RecordValueInvalid"
+//  INVALIDPARAMETER_RECORDVALUELENGTHINVALID = "InvalidParameter.RecordValueLengthInvalid"
+//  INVALIDPARAMETER_REQUESTIPLIMITED = "InvalidParameter.RequestIpLimited"
+//  INVALIDPARAMETER_SUBDOMAININVALID = "InvalidParameter.SubdomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+//  INVALIDPARAMETER_URLVALUEILLEGAL = "InvalidParameter.UrlValueIllegal"
+//  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  INVALIDPARAMETERVALUE_USERIDINVALID = "InvalidParameterValue.UserIdInvalid"
+//  LIMITEXCEEDED_AAAACOUNTLIMIT = "LimitExceeded.AAAACountLimit"
+//  LIMITEXCEEDED_ATNSRECORDLIMIT = "LimitExceeded.AtNsRecordLimit"
+//  LIMITEXCEEDED_FAILEDLOGINLIMITEXCEEDED = "LimitExceeded.FailedLoginLimitExceeded"
+//  LIMITEXCEEDED_HIDDENURLEXCEEDED = "LimitExceeded.HiddenUrlExceeded"
+//  LIMITEXCEEDED_NSCOUNTLIMIT = "LimitExceeded.NsCountLimit"
+//  LIMITEXCEEDED_RECORDTTLLIMIT = "LimitExceeded.RecordTtlLimit"
+//  LIMITEXCEEDED_SRVCOUNTLIMIT = "LimitExceeded.SrvCountLimit"
+//  LIMITEXCEEDED_SUBDOMAINLEVELLIMIT = "LimitExceeded.SubdomainLevelLimit"
+//  LIMITEXCEEDED_SUBDOMAINROLLLIMIT = "LimitExceeded.SubdomainRollLimit"
+//  LIMITEXCEEDED_SUBDOMAINWCARDLIMIT = "LimitExceeded.SubdomainWcardLimit"
+//  LIMITEXCEEDED_URLCOUNTLIMIT = "LimitExceeded.UrlCountLimit"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_IPINBLACKLISTNOTALLOWED = "OperationDenied.IPInBlacklistNotAllowed"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  OPERATIONDENIED_NOTADMIN = "OperationDenied.NotAdmin"
+//  OPERATIONDENIED_NOTAGENT = "OperationDenied.NotAgent"
+//  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+func (c *Client) ModifyRecordFieldsWithContext(ctx context.Context, request *ModifyRecordFieldsRequest) (response *ModifyRecordFieldsResponse, err error) {
+    if request == nil {
+        request = NewModifyRecordFieldsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordFields require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRecordFieldsResponse()
     err = c.Send(request, response)
     return
 }

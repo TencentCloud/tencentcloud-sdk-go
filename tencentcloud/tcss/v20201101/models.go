@@ -1762,6 +1762,28 @@ type AffectedWorkloadItem struct {
 	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
 }
 
+type AssetClusterListItem struct {
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群状态
+	// CSR_RUNNING: 运行中
+	// CSR_EXCEPTION:异常
+	// CSR_DEL:已经删除
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 绑定规则名称
+	BindRuleName *string `json:"BindRuleName,omitempty" name:"BindRuleName"`
+
+	// 集群类型:
+	// CT_TKE: TKE集群
+	// CT_USER_CREATE: 用户自建集群
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+}
+
 type AssetFilters struct {
 	// 过滤键的名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -4423,6 +4445,253 @@ func (r *CreateImageExportJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateK8sApiAbnormalEventExportJobRequestParams struct {
+	// 过滤条件。
+	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
+	// <li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li>
+	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
+	// <li>Status - string  - 是否必填: 否 -事件状态筛选</li>
+	// <li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li>
+	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
+	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
+	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+}
+
+type CreateK8sApiAbnormalEventExportJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
+	// <li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li>
+	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
+	// <li>Status - string  - 是否必填: 否 -事件状态筛选</li>
+	// <li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li>
+	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
+	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
+	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+}
+
+func (r *CreateK8sApiAbnormalEventExportJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateK8sApiAbnormalEventExportJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "ExportField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateK8sApiAbnormalEventExportJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateK8sApiAbnormalEventExportJobResponseParams struct {
+	// 导出任务ID，前端拿着任务ID查询任务进度
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateK8sApiAbnormalEventExportJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateK8sApiAbnormalEventExportJobResponseParams `json:"Response"`
+}
+
+func (r *CreateK8sApiAbnormalEventExportJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateK8sApiAbnormalEventExportJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateK8sApiAbnormalRuleExportJobRequestParams struct {
+	// 过滤条件。
+	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
+	// <li>Status - string  - 是否必填: 否 -状态</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By []*string `json:"By,omitempty" name:"By"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+}
+
+type CreateK8sApiAbnormalRuleExportJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
+	// <li>Status - string  - 是否必填: 否 -状态</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By []*string `json:"By,omitempty" name:"By"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+}
+
+func (r *CreateK8sApiAbnormalRuleExportJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateK8sApiAbnormalRuleExportJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "ExportField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateK8sApiAbnormalRuleExportJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateK8sApiAbnormalRuleExportJobResponseParams struct {
+	// 导出任务ID，前端拿着任务ID查询任务进度
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateK8sApiAbnormalRuleExportJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateK8sApiAbnormalRuleExportJobResponseParams `json:"Response"`
+}
+
+func (r *CreateK8sApiAbnormalRuleExportJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateK8sApiAbnormalRuleExportJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateK8sApiAbnormalRuleInfoRequestParams struct {
+	// 规则详情
+	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+
+	// 拷贝规则ID(适用于复制规则场景)
+	CopySrcRuleID *string `json:"CopySrcRuleID,omitempty" name:"CopySrcRuleID"`
+
+	// 事件ID(适用于事件加白场景)
+	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+}
+
+type CreateK8sApiAbnormalRuleInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则详情
+	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+
+	// 拷贝规则ID(适用于复制规则场景)
+	CopySrcRuleID *string `json:"CopySrcRuleID,omitempty" name:"CopySrcRuleID"`
+
+	// 事件ID(适用于事件加白场景)
+	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+}
+
+func (r *CreateK8sApiAbnormalRuleInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateK8sApiAbnormalRuleInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleInfo")
+	delete(f, "CopySrcRuleID")
+	delete(f, "EventID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateK8sApiAbnormalRuleInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateK8sApiAbnormalRuleInfoResponseParams struct {
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateK8sApiAbnormalRuleInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateK8sApiAbnormalRuleInfoResponseParams `json:"Response"`
+}
+
+func (r *CreateK8sApiAbnormalRuleInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateK8sApiAbnormalRuleInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNetworkFirewallClusterRefreshRequestParams struct {
 
 }
@@ -6419,6 +6688,60 @@ func (r *DeleteIgnoreVulResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteIgnoreVulResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteK8sApiAbnormalRuleRequestParams struct {
+	// 规则ID集合
+	RuleIDSet []*string `json:"RuleIDSet,omitempty" name:"RuleIDSet"`
+}
+
+type DeleteK8sApiAbnormalRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID集合
+	RuleIDSet []*string `json:"RuleIDSet,omitempty" name:"RuleIDSet"`
+}
+
+func (r *DeleteK8sApiAbnormalRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteK8sApiAbnormalRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIDSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteK8sApiAbnormalRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteK8sApiAbnormalRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteK8sApiAbnormalRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteK8sApiAbnormalRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteK8sApiAbnormalRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteK8sApiAbnormalRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8540,6 +8863,100 @@ func (r *DescribeAssetAppServiceListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAssetAppServiceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetClusterListRequestParams struct {
+	// 过滤条件。
+	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
+	// <li>Status - string  - 是否必填: 否 -集群状态</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段。
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeAssetClusterListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
+	// <li>Status - string  - 是否必填: 否 -集群状态</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段。
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeAssetClusterListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetClusterListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetClusterListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetClusterListResponseParams struct {
+	// 集群列表
+	List []*AssetClusterListItem `json:"List,omitempty" name:"List"`
+
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAssetClusterListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAssetClusterListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAssetClusterListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetClusterListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15566,6 +15983,532 @@ func (r *DescribeInspectionReportResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInspectionReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalEventInfoRequestParams struct {
+	// 事件ID
+	ID *uint64 `json:"ID,omitempty" name:"ID"`
+}
+
+type DescribeK8sApiAbnormalEventInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件ID
+	ID *uint64 `json:"ID,omitempty" name:"ID"`
+}
+
+func (r *DescribeK8sApiAbnormalEventInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalEventInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeK8sApiAbnormalEventInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalEventInfoResponseParams struct {
+	// 事件详情
+	Info *K8sApiAbnormalEventInfo `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeK8sApiAbnormalEventInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeK8sApiAbnormalEventInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeK8sApiAbnormalEventInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalEventInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalEventListRequestParams struct {
+	// 过滤条件。
+	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
+	// <li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li>
+	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
+	// <li>Status - string  - 是否必填: 否 -事件状态筛选</li>
+	// <li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li>
+	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
+	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
+	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	// LatestFoundTime: 最近生成时间
+	// AlarmCount: 告警数量
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeK8sApiAbnormalEventListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
+	// <li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li>
+	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
+	// <li>Status - string  - 是否必填: 否 -事件状态筛选</li>
+	// <li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li>
+	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
+	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
+	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	// LatestFoundTime: 最近生成时间
+	// AlarmCount: 告警数量
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeK8sApiAbnormalEventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalEventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeK8sApiAbnormalEventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalEventListResponseParams struct {
+	// 事件列表
+	List []*K8sApiAbnormalEventListItem `json:"List,omitempty" name:"List"`
+
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeK8sApiAbnormalEventListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeK8sApiAbnormalEventListResponseParams `json:"Response"`
+}
+
+func (r *DescribeK8sApiAbnormalEventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalRuleInfoRequestParams struct {
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+}
+
+type DescribeK8sApiAbnormalRuleInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+}
+
+func (r *DescribeK8sApiAbnormalRuleInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalRuleInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeK8sApiAbnormalRuleInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalRuleInfoResponseParams struct {
+	// 规则详情
+	Info *K8sApiAbnormalRuleInfo `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeK8sApiAbnormalRuleInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeK8sApiAbnormalRuleInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeK8sApiAbnormalRuleInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalRuleInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalRuleListRequestParams struct {
+	// 过滤条件。
+	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
+	// <li>Status - string  - 是否必填: 否 -状态</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段。
+	// <li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
+	// <li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeK8sApiAbnormalRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
+	// <li>Status - string  - 是否必填: 否 -状态</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段。
+	// <li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
+	// <li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeK8sApiAbnormalRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeK8sApiAbnormalRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalRuleListResponseParams struct {
+	// 规则列表
+	List []*K8sApiAbnormalRuleListItem `json:"List,omitempty" name:"List"`
+
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeK8sApiAbnormalRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeK8sApiAbnormalRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeK8sApiAbnormalRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalRuleScopeListRequestParams struct {
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// <li>Action - string -是否必填: 否 - 执行动作</li>
+	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeK8sApiAbnormalRuleScopeListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// <li>Action - string -是否必填: 否 - 执行动作</li>
+	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeK8sApiAbnormalRuleScopeListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalRuleScopeListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleID")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeK8sApiAbnormalRuleScopeListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalRuleScopeListResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 列表
+	List []*K8sApiAbnormalRuleScopeInfo `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeK8sApiAbnormalRuleScopeListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeK8sApiAbnormalRuleScopeListResponseParams `json:"Response"`
+}
+
+func (r *DescribeK8sApiAbnormalRuleScopeListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalRuleScopeListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalSummaryRequestParams struct {
+
+}
+
+type DescribeK8sApiAbnormalSummaryRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeK8sApiAbnormalSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeK8sApiAbnormalSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalSummaryResponseParams struct {
+	// 待处理事件个数
+	UnhandleEventCount *uint64 `json:"UnhandleEventCount,omitempty" name:"UnhandleEventCount"`
+
+	// 待处理高危事件个数
+	UnhandleHighLevelEventCount *uint64 `json:"UnhandleHighLevelEventCount,omitempty" name:"UnhandleHighLevelEventCount"`
+
+	// 待处理中危事件个数
+	UnhandleMediumLevelEventCount *uint64 `json:"UnhandleMediumLevelEventCount,omitempty" name:"UnhandleMediumLevelEventCount"`
+
+	// 待处理低危事件个数
+	UnhandleLowLevelEventCount *uint64 `json:"UnhandleLowLevelEventCount,omitempty" name:"UnhandleLowLevelEventCount"`
+
+	// 待处理提示级别事件个数
+	UnhandleNoticeLevelEventCount *uint64 `json:"UnhandleNoticeLevelEventCount,omitempty" name:"UnhandleNoticeLevelEventCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeK8sApiAbnormalSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeK8sApiAbnormalSummaryResponseParams `json:"Response"`
+}
+
+func (r *DescribeK8sApiAbnormalSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalTendencyRequestParams struct {
+	// 趋势周期(默认为7天)
+	TendencyPeriod *uint64 `json:"TendencyPeriod,omitempty" name:"TendencyPeriod"`
+}
+
+type DescribeK8sApiAbnormalTendencyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 趋势周期(默认为7天)
+	TendencyPeriod *uint64 `json:"TendencyPeriod,omitempty" name:"TendencyPeriod"`
+}
+
+func (r *DescribeK8sApiAbnormalTendencyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalTendencyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TendencyPeriod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeK8sApiAbnormalTendencyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeK8sApiAbnormalTendencyResponseParams struct {
+	// 趋势列表
+	List []*K8sApiAbnormalTendencyItem `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeK8sApiAbnormalTendencyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeK8sApiAbnormalTendencyResponseParams `json:"Response"`
+}
+
+func (r *DescribeK8sApiAbnormalTendencyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeK8sApiAbnormalTendencyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -23940,6 +24883,237 @@ func (r *InitializeUserComplianceEnvironmentResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type K8sApiAbnormalEventInfo struct {
+	// 命中规则名称
+	MatchRuleName *string `json:"MatchRuleName,omitempty" name:"MatchRuleName"`
+
+	// 命中规则类型
+	MatchRuleType *string `json:"MatchRuleType,omitempty" name:"MatchRuleType"`
+
+	// 告警等级
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群运行状态
+	ClusterRunningStatus *string `json:"ClusterRunningStatus,omitempty" name:"ClusterRunningStatus"`
+
+	// 初次生成时间
+	FirstCreateTime *string `json:"FirstCreateTime,omitempty" name:"FirstCreateTime"`
+
+	// 最近一次生成时间
+	LastCreateTime *string `json:"LastCreateTime,omitempty" name:"LastCreateTime"`
+
+	// 告警数量
+	AlarmCount *uint64 `json:"AlarmCount,omitempty" name:"AlarmCount"`
+
+	// 状态
+	// "EVENT_UNDEAL":未处理
+	// "EVENT_DEALED": 已处理
+	// "EVENT_IGNORE": 忽略
+	// "EVENT_DEL": 删除
+	// "EVENT_ADD_WHITE": 加白
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 集群masterIP
+	ClusterMasterIP *string `json:"ClusterMasterIP,omitempty" name:"ClusterMasterIP"`
+
+	// k8s版本
+	K8sVersion *string `json:"K8sVersion,omitempty" name:"K8sVersion"`
+
+	// 运行时组件
+	RunningComponent []*string `json:"RunningComponent,omitempty" name:"RunningComponent"`
+
+	// 描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 建议
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 请求信息
+	Info *string `json:"Info,omitempty" name:"Info"`
+
+	// 规则ID
+	MatchRuleID *string `json:"MatchRuleID,omitempty" name:"MatchRuleID"`
+
+	// 高亮字段数组
+	HighLightFields []*string `json:"HighLightFields,omitempty" name:"HighLightFields"`
+
+	// 命中规则
+	MatchRule *K8sApiAbnormalRuleScopeInfo `json:"MatchRule,omitempty" name:"MatchRule"`
+}
+
+type K8sApiAbnormalEventListItem struct {
+	// 事件ID
+	ID *uint64 `json:"ID,omitempty" name:"ID"`
+
+	// 命中规则类型
+	MatchRuleType *string `json:"MatchRuleType,omitempty" name:"MatchRuleType"`
+
+	// 威胁等级
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群运行状态
+	ClusterRunningStatus *string `json:"ClusterRunningStatus,omitempty" name:"ClusterRunningStatus"`
+
+	// 初次生成时间
+	FirstCreateTime *string `json:"FirstCreateTime,omitempty" name:"FirstCreateTime"`
+
+	// 最近一次生成时间
+	LastCreateTime *string `json:"LastCreateTime,omitempty" name:"LastCreateTime"`
+
+	// 告警数量
+	AlarmCount *uint64 `json:"AlarmCount,omitempty" name:"AlarmCount"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 规则类型
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 描述信息
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 解决方案
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 命中规则
+	MatchRule *K8sApiAbnormalRuleScopeInfo `json:"MatchRule,omitempty" name:"MatchRule"`
+}
+
+type K8sApiAbnormalRuleInfo struct {
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 状态
+	Status *bool `json:"Status,omitempty" name:"Status"`
+
+	// 规则信息列表
+	RuleInfoList []*K8sApiAbnormalRuleScopeInfo `json:"RuleInfoList,omitempty" name:"RuleInfoList"`
+
+	// 生效集群IDSet
+	EffectClusterIDSet []*string `json:"EffectClusterIDSet,omitempty" name:"EffectClusterIDSet"`
+
+	// 规则类型
+	// RT_SYSTEM 系统规则
+	// RT_USER 用户自定义
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 是否所有集群生效
+	EffectAllCluster *bool `json:"EffectAllCluster,omitempty" name:"EffectAllCluster"`
+
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+}
+
+type K8sApiAbnormalRuleListItem struct {
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则类型
+	// RT_SYSTEM 系统规则
+	// RT_USER 用户自定义
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 受影响集群总数
+	EffectClusterCount *uint64 `json:"EffectClusterCount,omitempty" name:"EffectClusterCount"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 编辑账号
+	OprUin *string `json:"OprUin,omitempty" name:"OprUin"`
+
+	// 状态
+	Status *bool `json:"Status,omitempty" name:"Status"`
+}
+
+type K8sApiAbnormalRuleScopeInfo struct {
+	// 范围
+	// 系统事件:
+	// ANONYMOUS_ACCESS: 匿名访问
+	// ABNORMAL_UA_REQ: 异常UA请求
+	// ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动
+	// GET_CREDENTIALS: 凭据信息获取
+	// MOUNT_SENSITIVE_PATH: 敏感路径挂载
+	// COMMAND_RUN: 命令执行
+	// PRIVILEGE_CONTAINER: 特权容器
+	// EXCEPTION_CRONTAB_TASK: 异常定时任务
+	// STATICS_POD: 静态pod创建
+	// ABNORMAL_CREATE_POD: 异常pod创建
+	// USER_DEFINED: 用户自定义
+	Scope *string `json:"Scope,omitempty" name:"Scope"`
+
+	// 动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 开关状态(true:开 false:关) 适用于系统规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *bool `json:"Status,omitempty" name:"Status"`
+
+	// 是否被删除 适用于自定义规则入参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDelete *bool `json:"IsDelete,omitempty" name:"IsDelete"`
+}
+
+type K8sApiAbnormalTendencyItem struct {
+	// 日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 异常UA请求事件数
+	ExceptionUARequestCount *uint64 `json:"ExceptionUARequestCount,omitempty" name:"ExceptionUARequestCount"`
+
+	// 匿名用户权限事件数
+	AnonymousUserRightCount *uint64 `json:"AnonymousUserRightCount,omitempty" name:"AnonymousUserRightCount"`
+
+	// 凭据信息获取事件数
+	CredentialInformationObtainCount *uint64 `json:"CredentialInformationObtainCount,omitempty" name:"CredentialInformationObtainCount"`
+
+	// 敏感数据挂载事件数
+	SensitiveDataMountCount *uint64 `json:"SensitiveDataMountCount,omitempty" name:"SensitiveDataMountCount"`
+
+	// 命令执行事件数
+	CmdExecCount *uint64 `json:"CmdExecCount,omitempty" name:"CmdExecCount"`
+
+	// 异常定时任务事件数
+	AbnormalScheduledTaskCount *uint64 `json:"AbnormalScheduledTaskCount,omitempty" name:"AbnormalScheduledTaskCount"`
+
+	// 静态Pod创建数
+	StaticsPodCreateCount *uint64 `json:"StaticsPodCreateCount,omitempty" name:"StaticsPodCreateCount"`
+
+	// 可疑容器创建数
+	DoubtfulContainerCreateCount *uint64 `json:"DoubtfulContainerCreateCount,omitempty" name:"DoubtfulContainerCreateCount"`
+
+	// 自定义规则事件数
+	UserDefinedRuleCount *uint64 `json:"UserDefinedRuleCount,omitempty" name:"UserDefinedRuleCount"`
+
+	// 匿名访问事件数
+	AnonymousAccessCount *uint64 `json:"AnonymousAccessCount,omitempty" name:"AnonymousAccessCount"`
+
+	// 特权容器事件数
+	PrivilegeContainerCount *uint64 `json:"PrivilegeContainerCount,omitempty" name:"PrivilegeContainerCount"`
+}
+
 // Predefined struct for user
 type ModifyAbnormalProcessRuleStatusRequestParams struct {
 	// 策略的ids
@@ -25023,6 +26197,189 @@ func (r *ModifyImageAuthorizedResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyImageAuthorizedResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyK8sApiAbnormalEventStatusRequestParams struct {
+	// 事件ID集合
+	EventIDSet []*uint64 `json:"EventIDSet,omitempty" name:"EventIDSet"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type ModifyK8sApiAbnormalEventStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件ID集合
+	EventIDSet []*uint64 `json:"EventIDSet,omitempty" name:"EventIDSet"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyK8sApiAbnormalEventStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyK8sApiAbnormalEventStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventIDSet")
+	delete(f, "Status")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyK8sApiAbnormalEventStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyK8sApiAbnormalEventStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyK8sApiAbnormalEventStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyK8sApiAbnormalEventStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyK8sApiAbnormalEventStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyK8sApiAbnormalEventStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyK8sApiAbnormalRuleInfoRequestParams struct {
+	// 规则详情
+	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+}
+
+type ModifyK8sApiAbnormalRuleInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则详情
+	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+}
+
+func (r *ModifyK8sApiAbnormalRuleInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyK8sApiAbnormalRuleInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyK8sApiAbnormalRuleInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyK8sApiAbnormalRuleInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyK8sApiAbnormalRuleInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyK8sApiAbnormalRuleInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyK8sApiAbnormalRuleInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyK8sApiAbnormalRuleInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyK8sApiAbnormalRuleStatusRequestParams struct {
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 状态(ture:开 false:关)
+	Status *bool `json:"Status,omitempty" name:"Status"`
+}
+
+type ModifyK8sApiAbnormalRuleStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID
+	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 状态(ture:开 false:关)
+	Status *bool `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyK8sApiAbnormalRuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyK8sApiAbnormalRuleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleID")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyK8sApiAbnormalRuleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyK8sApiAbnormalRuleStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyK8sApiAbnormalRuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyK8sApiAbnormalRuleStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyK8sApiAbnormalRuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyK8sApiAbnormalRuleStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

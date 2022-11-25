@@ -2219,6 +2219,156 @@ func (c *Client) CreateImageExportJobWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateK8sApiAbnormalEventExportJobRequest() (request *CreateK8sApiAbnormalEventExportJobRequest) {
+    request = &CreateK8sApiAbnormalEventExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "CreateK8sApiAbnormalEventExportJob")
+    
+    
+    return
+}
+
+func NewCreateK8sApiAbnormalEventExportJobResponse() (response *CreateK8sApiAbnormalEventExportJobResponse) {
+    response = &CreateK8sApiAbnormalEventExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateK8sApiAbnormalEventExportJob
+// 创建k8s api异常事件导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateK8sApiAbnormalEventExportJob(request *CreateK8sApiAbnormalEventExportJobRequest) (response *CreateK8sApiAbnormalEventExportJobResponse, err error) {
+    return c.CreateK8sApiAbnormalEventExportJobWithContext(context.Background(), request)
+}
+
+// CreateK8sApiAbnormalEventExportJob
+// 创建k8s api异常事件导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateK8sApiAbnormalEventExportJobWithContext(ctx context.Context, request *CreateK8sApiAbnormalEventExportJobRequest) (response *CreateK8sApiAbnormalEventExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateK8sApiAbnormalEventExportJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateK8sApiAbnormalEventExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateK8sApiAbnormalEventExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateK8sApiAbnormalRuleExportJobRequest() (request *CreateK8sApiAbnormalRuleExportJobRequest) {
+    request = &CreateK8sApiAbnormalRuleExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "CreateK8sApiAbnormalRuleExportJob")
+    
+    
+    return
+}
+
+func NewCreateK8sApiAbnormalRuleExportJobResponse() (response *CreateK8sApiAbnormalRuleExportJobResponse) {
+    response = &CreateK8sApiAbnormalRuleExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateK8sApiAbnormalRuleExportJob
+// 创建k8sApi异常规则导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateK8sApiAbnormalRuleExportJob(request *CreateK8sApiAbnormalRuleExportJobRequest) (response *CreateK8sApiAbnormalRuleExportJobResponse, err error) {
+    return c.CreateK8sApiAbnormalRuleExportJobWithContext(context.Background(), request)
+}
+
+// CreateK8sApiAbnormalRuleExportJob
+// 创建k8sApi异常规则导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateK8sApiAbnormalRuleExportJobWithContext(ctx context.Context, request *CreateK8sApiAbnormalRuleExportJobRequest) (response *CreateK8sApiAbnormalRuleExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateK8sApiAbnormalRuleExportJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateK8sApiAbnormalRuleExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateK8sApiAbnormalRuleExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateK8sApiAbnormalRuleInfoRequest() (request *CreateK8sApiAbnormalRuleInfoRequest) {
+    request = &CreateK8sApiAbnormalRuleInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "CreateK8sApiAbnormalRuleInfo")
+    
+    
+    return
+}
+
+func NewCreateK8sApiAbnormalRuleInfoResponse() (response *CreateK8sApiAbnormalRuleInfoResponse) {
+    response = &CreateK8sApiAbnormalRuleInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateK8sApiAbnormalRuleInfo
+// 创建k8sapi异常事件规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateK8sApiAbnormalRuleInfo(request *CreateK8sApiAbnormalRuleInfoRequest) (response *CreateK8sApiAbnormalRuleInfoResponse, err error) {
+    return c.CreateK8sApiAbnormalRuleInfoWithContext(context.Background(), request)
+}
+
+// CreateK8sApiAbnormalRuleInfo
+// 创建k8sapi异常事件规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateK8sApiAbnormalRuleInfoWithContext(ctx context.Context, request *CreateK8sApiAbnormalRuleInfoRequest) (response *CreateK8sApiAbnormalRuleInfoResponse, err error) {
+    if request == nil {
+        request = NewCreateK8sApiAbnormalRuleInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateK8sApiAbnormalRuleInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateK8sApiAbnormalRuleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNetworkFirewallClusterRefreshRequest() (request *CreateNetworkFirewallClusterRefreshRequest) {
     request = &CreateNetworkFirewallClusterRefreshRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3821,6 +3971,56 @@ func (c *Client) DeleteIgnoreVulWithContext(ctx context.Context, request *Delete
     request.SetContext(ctx)
     
     response = NewDeleteIgnoreVulResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteK8sApiAbnormalRuleRequest() (request *DeleteK8sApiAbnormalRuleRequest) {
+    request = &DeleteK8sApiAbnormalRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DeleteK8sApiAbnormalRule")
+    
+    
+    return
+}
+
+func NewDeleteK8sApiAbnormalRuleResponse() (response *DeleteK8sApiAbnormalRuleResponse) {
+    response = &DeleteK8sApiAbnormalRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteK8sApiAbnormalRule
+// 删除k8sapi异常事件规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteK8sApiAbnormalRule(request *DeleteK8sApiAbnormalRuleRequest) (response *DeleteK8sApiAbnormalRuleResponse, err error) {
+    return c.DeleteK8sApiAbnormalRuleWithContext(context.Background(), request)
+}
+
+// DeleteK8sApiAbnormalRule
+// 删除k8sapi异常事件规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteK8sApiAbnormalRuleWithContext(ctx context.Context, request *DeleteK8sApiAbnormalRuleRequest) (response *DeleteK8sApiAbnormalRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteK8sApiAbnormalRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteK8sApiAbnormalRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteK8sApiAbnormalRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -5503,6 +5703,56 @@ func (c *Client) DescribeAssetAppServiceListWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeAssetAppServiceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetClusterListRequest() (request *DescribeAssetClusterListRequest) {
+    request = &DescribeAssetClusterListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetClusterList")
+    
+    
+    return
+}
+
+func NewDescribeAssetClusterListResponse() (response *DescribeAssetClusterListResponse) {
+    response = &DescribeAssetClusterListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetClusterList
+// 查询集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAssetClusterList(request *DescribeAssetClusterListRequest) (response *DescribeAssetClusterListResponse, err error) {
+    return c.DescribeAssetClusterListWithContext(context.Background(), request)
+}
+
+// DescribeAssetClusterList
+// 查询集群列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAssetClusterListWithContext(ctx context.Context, request *DescribeAssetClusterListRequest) (response *DescribeAssetClusterListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetClusterListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetClusterList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetClusterListResponse()
     err = c.Send(request, response)
     return
 }
@@ -10035,6 +10285,356 @@ func (c *Client) DescribeInspectionReportWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeInspectionReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeK8sApiAbnormalEventInfoRequest() (request *DescribeK8sApiAbnormalEventInfoRequest) {
+    request = &DescribeK8sApiAbnormalEventInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeK8sApiAbnormalEventInfo")
+    
+    
+    return
+}
+
+func NewDescribeK8sApiAbnormalEventInfoResponse() (response *DescribeK8sApiAbnormalEventInfoResponse) {
+    response = &DescribeK8sApiAbnormalEventInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeK8sApiAbnormalEventInfo
+// 查询k8s api 异常事件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalEventInfo(request *DescribeK8sApiAbnormalEventInfoRequest) (response *DescribeK8sApiAbnormalEventInfoResponse, err error) {
+    return c.DescribeK8sApiAbnormalEventInfoWithContext(context.Background(), request)
+}
+
+// DescribeK8sApiAbnormalEventInfo
+// 查询k8s api 异常事件详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalEventInfoWithContext(ctx context.Context, request *DescribeK8sApiAbnormalEventInfoRequest) (response *DescribeK8sApiAbnormalEventInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeK8sApiAbnormalEventInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeK8sApiAbnormalEventInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeK8sApiAbnormalEventInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeK8sApiAbnormalEventListRequest() (request *DescribeK8sApiAbnormalEventListRequest) {
+    request = &DescribeK8sApiAbnormalEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeK8sApiAbnormalEventList")
+    
+    
+    return
+}
+
+func NewDescribeK8sApiAbnormalEventListResponse() (response *DescribeK8sApiAbnormalEventListResponse) {
+    response = &DescribeK8sApiAbnormalEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeK8sApiAbnormalEventList
+// 查询k8s api异常事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalEventList(request *DescribeK8sApiAbnormalEventListRequest) (response *DescribeK8sApiAbnormalEventListResponse, err error) {
+    return c.DescribeK8sApiAbnormalEventListWithContext(context.Background(), request)
+}
+
+// DescribeK8sApiAbnormalEventList
+// 查询k8s api异常事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalEventListWithContext(ctx context.Context, request *DescribeK8sApiAbnormalEventListRequest) (response *DescribeK8sApiAbnormalEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeK8sApiAbnormalEventListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeK8sApiAbnormalEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeK8sApiAbnormalEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeK8sApiAbnormalRuleInfoRequest() (request *DescribeK8sApiAbnormalRuleInfoRequest) {
+    request = &DescribeK8sApiAbnormalRuleInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeK8sApiAbnormalRuleInfo")
+    
+    
+    return
+}
+
+func NewDescribeK8sApiAbnormalRuleInfoResponse() (response *DescribeK8sApiAbnormalRuleInfoResponse) {
+    response = &DescribeK8sApiAbnormalRuleInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeK8sApiAbnormalRuleInfo
+// 查询k8sapi异常请求规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalRuleInfo(request *DescribeK8sApiAbnormalRuleInfoRequest) (response *DescribeK8sApiAbnormalRuleInfoResponse, err error) {
+    return c.DescribeK8sApiAbnormalRuleInfoWithContext(context.Background(), request)
+}
+
+// DescribeK8sApiAbnormalRuleInfo
+// 查询k8sapi异常请求规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalRuleInfoWithContext(ctx context.Context, request *DescribeK8sApiAbnormalRuleInfoRequest) (response *DescribeK8sApiAbnormalRuleInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeK8sApiAbnormalRuleInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeK8sApiAbnormalRuleInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeK8sApiAbnormalRuleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeK8sApiAbnormalRuleListRequest() (request *DescribeK8sApiAbnormalRuleListRequest) {
+    request = &DescribeK8sApiAbnormalRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeK8sApiAbnormalRuleList")
+    
+    
+    return
+}
+
+func NewDescribeK8sApiAbnormalRuleListResponse() (response *DescribeK8sApiAbnormalRuleListResponse) {
+    response = &DescribeK8sApiAbnormalRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeK8sApiAbnormalRuleList
+// 查询k8sapi异常请求规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalRuleList(request *DescribeK8sApiAbnormalRuleListRequest) (response *DescribeK8sApiAbnormalRuleListResponse, err error) {
+    return c.DescribeK8sApiAbnormalRuleListWithContext(context.Background(), request)
+}
+
+// DescribeK8sApiAbnormalRuleList
+// 查询k8sapi异常请求规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalRuleListWithContext(ctx context.Context, request *DescribeK8sApiAbnormalRuleListRequest) (response *DescribeK8sApiAbnormalRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeK8sApiAbnormalRuleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeK8sApiAbnormalRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeK8sApiAbnormalRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeK8sApiAbnormalRuleScopeListRequest() (request *DescribeK8sApiAbnormalRuleScopeListRequest) {
+    request = &DescribeK8sApiAbnormalRuleScopeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeK8sApiAbnormalRuleScopeList")
+    
+    
+    return
+}
+
+func NewDescribeK8sApiAbnormalRuleScopeListResponse() (response *DescribeK8sApiAbnormalRuleScopeListResponse) {
+    response = &DescribeK8sApiAbnormalRuleScopeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeK8sApiAbnormalRuleScopeList
+// 查询k8s api 异常规则中范围列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalRuleScopeList(request *DescribeK8sApiAbnormalRuleScopeListRequest) (response *DescribeK8sApiAbnormalRuleScopeListResponse, err error) {
+    return c.DescribeK8sApiAbnormalRuleScopeListWithContext(context.Background(), request)
+}
+
+// DescribeK8sApiAbnormalRuleScopeList
+// 查询k8s api 异常规则中范围列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalRuleScopeListWithContext(ctx context.Context, request *DescribeK8sApiAbnormalRuleScopeListRequest) (response *DescribeK8sApiAbnormalRuleScopeListResponse, err error) {
+    if request == nil {
+        request = NewDescribeK8sApiAbnormalRuleScopeListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeK8sApiAbnormalRuleScopeList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeK8sApiAbnormalRuleScopeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeK8sApiAbnormalSummaryRequest() (request *DescribeK8sApiAbnormalSummaryRequest) {
+    request = &DescribeK8sApiAbnormalSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeK8sApiAbnormalSummary")
+    
+    
+    return
+}
+
+func NewDescribeK8sApiAbnormalSummaryResponse() (response *DescribeK8sApiAbnormalSummaryResponse) {
+    response = &DescribeK8sApiAbnormalSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeK8sApiAbnormalSummary
+// 查询k8sapi异常事件统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalSummary(request *DescribeK8sApiAbnormalSummaryRequest) (response *DescribeK8sApiAbnormalSummaryResponse, err error) {
+    return c.DescribeK8sApiAbnormalSummaryWithContext(context.Background(), request)
+}
+
+// DescribeK8sApiAbnormalSummary
+// 查询k8sapi异常事件统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalSummaryWithContext(ctx context.Context, request *DescribeK8sApiAbnormalSummaryRequest) (response *DescribeK8sApiAbnormalSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeK8sApiAbnormalSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeK8sApiAbnormalSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeK8sApiAbnormalSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeK8sApiAbnormalTendencyRequest() (request *DescribeK8sApiAbnormalTendencyRequest) {
+    request = &DescribeK8sApiAbnormalTendencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeK8sApiAbnormalTendency")
+    
+    
+    return
+}
+
+func NewDescribeK8sApiAbnormalTendencyResponse() (response *DescribeK8sApiAbnormalTendencyResponse) {
+    response = &DescribeK8sApiAbnormalTendencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeK8sApiAbnormalTendency
+// 查询k8sapi异常事件趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalTendency(request *DescribeK8sApiAbnormalTendencyRequest) (response *DescribeK8sApiAbnormalTendencyResponse, err error) {
+    return c.DescribeK8sApiAbnormalTendencyWithContext(context.Background(), request)
+}
+
+// DescribeK8sApiAbnormalTendency
+// 查询k8sapi异常事件趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeK8sApiAbnormalTendencyWithContext(ctx context.Context, request *DescribeK8sApiAbnormalTendencyRequest) (response *DescribeK8sApiAbnormalTendencyResponse, err error) {
+    if request == nil {
+        request = NewDescribeK8sApiAbnormalTendencyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeK8sApiAbnormalTendency require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeK8sApiAbnormalTendencyResponse()
     err = c.Send(request, response)
     return
 }
@@ -16191,6 +16791,156 @@ func (c *Client) ModifyImageAuthorizedWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyImageAuthorizedResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyK8sApiAbnormalEventStatusRequest() (request *ModifyK8sApiAbnormalEventStatusRequest) {
+    request = &ModifyK8sApiAbnormalEventStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "ModifyK8sApiAbnormalEventStatus")
+    
+    
+    return
+}
+
+func NewModifyK8sApiAbnormalEventStatusResponse() (response *ModifyK8sApiAbnormalEventStatusResponse) {
+    response = &ModifyK8sApiAbnormalEventStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyK8sApiAbnormalEventStatus
+// 修改k8sapi异常事件状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyK8sApiAbnormalEventStatus(request *ModifyK8sApiAbnormalEventStatusRequest) (response *ModifyK8sApiAbnormalEventStatusResponse, err error) {
+    return c.ModifyK8sApiAbnormalEventStatusWithContext(context.Background(), request)
+}
+
+// ModifyK8sApiAbnormalEventStatus
+// 修改k8sapi异常事件状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyK8sApiAbnormalEventStatusWithContext(ctx context.Context, request *ModifyK8sApiAbnormalEventStatusRequest) (response *ModifyK8sApiAbnormalEventStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyK8sApiAbnormalEventStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyK8sApiAbnormalEventStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyK8sApiAbnormalEventStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyK8sApiAbnormalRuleInfoRequest() (request *ModifyK8sApiAbnormalRuleInfoRequest) {
+    request = &ModifyK8sApiAbnormalRuleInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "ModifyK8sApiAbnormalRuleInfo")
+    
+    
+    return
+}
+
+func NewModifyK8sApiAbnormalRuleInfoResponse() (response *ModifyK8sApiAbnormalRuleInfoResponse) {
+    response = &ModifyK8sApiAbnormalRuleInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyK8sApiAbnormalRuleInfo
+// 修改k8sapi异常规则信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyK8sApiAbnormalRuleInfo(request *ModifyK8sApiAbnormalRuleInfoRequest) (response *ModifyK8sApiAbnormalRuleInfoResponse, err error) {
+    return c.ModifyK8sApiAbnormalRuleInfoWithContext(context.Background(), request)
+}
+
+// ModifyK8sApiAbnormalRuleInfo
+// 修改k8sapi异常规则信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyK8sApiAbnormalRuleInfoWithContext(ctx context.Context, request *ModifyK8sApiAbnormalRuleInfoRequest) (response *ModifyK8sApiAbnormalRuleInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyK8sApiAbnormalRuleInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyK8sApiAbnormalRuleInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyK8sApiAbnormalRuleInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyK8sApiAbnormalRuleStatusRequest() (request *ModifyK8sApiAbnormalRuleStatusRequest) {
+    request = &ModifyK8sApiAbnormalRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "ModifyK8sApiAbnormalRuleStatus")
+    
+    
+    return
+}
+
+func NewModifyK8sApiAbnormalRuleStatusResponse() (response *ModifyK8sApiAbnormalRuleStatusResponse) {
+    response = &ModifyK8sApiAbnormalRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyK8sApiAbnormalRuleStatus
+// 修改k8sapi异常事件规则状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyK8sApiAbnormalRuleStatus(request *ModifyK8sApiAbnormalRuleStatusRequest) (response *ModifyK8sApiAbnormalRuleStatusResponse, err error) {
+    return c.ModifyK8sApiAbnormalRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifyK8sApiAbnormalRuleStatus
+// 修改k8sapi异常事件规则状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyK8sApiAbnormalRuleStatusWithContext(ctx context.Context, request *ModifyK8sApiAbnormalRuleStatusRequest) (response *ModifyK8sApiAbnormalRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyK8sApiAbnormalRuleStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyK8sApiAbnormalRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyK8sApiAbnormalRuleStatusResponse()
     err = c.Send(request, response)
     return
 }
