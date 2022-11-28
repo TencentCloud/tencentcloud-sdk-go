@@ -53,6 +53,9 @@ const (
 	// 网络错误。
 	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetWorkError"
 
+	// 无需做降码率处理。
+	FAILEDOPERATION_NONEEDTOREDUCEMEDIABITRATE = "FailedOperation.NoNeedToReduceMediaBitrate"
+
 	// 没有开通该接口使用权限。
 	FAILEDOPERATION_NOPRIVILEGES = "FailedOperation.NoPrivileges"
 

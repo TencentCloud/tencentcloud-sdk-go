@@ -3014,13 +3014,13 @@ func NewModifyBlockIgnoreListResponse() (response *ModifyBlockIgnoreListResponse
 }
 
 // ModifyBlockIgnoreList
-// 支持对拦截列表、忽略列表如下操作：
+// 支持对封禁列表、放通列表如下操作：
 //
-// 批量增加拦截IP、忽略IP/域名
+// 批量增加封禁IP、放通IP/域名
 //
-// 批量删除拦截IP、忽略IP/域名
+// 批量删除封禁IP、放通IP/域名
 //
-// 批量修改拦截IP、忽略IP/域名生效事件
+// 批量修改封禁IP、放通IP/域名生效事件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3032,13 +3032,13 @@ func (c *Client) ModifyBlockIgnoreList(request *ModifyBlockIgnoreListRequest) (r
 }
 
 // ModifyBlockIgnoreList
-// 支持对拦截列表、忽略列表如下操作：
+// 支持对封禁列表、放通列表如下操作：
 //
-// 批量增加拦截IP、忽略IP/域名
+// 批量增加封禁IP、放通IP/域名
 //
-// 批量删除拦截IP、忽略IP/域名
+// 批量删除封禁IP、放通IP/域名
 //
-// 批量修改拦截IP、忽略IP/域名生效事件
+// 批量修改封禁IP、放通IP/域名生效事件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

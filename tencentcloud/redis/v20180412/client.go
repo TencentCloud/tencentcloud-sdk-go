@@ -1232,7 +1232,7 @@ func NewDescribeBackupUrlResponse() (response *DescribeBackupUrlResponse) {
 }
 
 // DescribeBackupUrl
-// 查询备份Rdb下载地址
+// 本接口（DescribeBackupUrl）用于查询备份 Rdb 文件的下载地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1252,7 +1252,7 @@ func (c *Client) DescribeBackupUrl(request *DescribeBackupUrlRequest) (response 
 }
 
 // DescribeBackupUrl
-// 查询备份Rdb下载地址
+// 本接口（DescribeBackupUrl）用于查询备份 Rdb 文件的下载地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

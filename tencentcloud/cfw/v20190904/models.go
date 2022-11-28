@@ -4024,7 +4024,7 @@ func (r *ModifyAssetScanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBlockIgnoreListRequestParams struct {
-	// 1拦截列表 2 忽略列表
+	// 1封禁列表 2 放通列表
 	RuleType *int64 `json:"RuleType,omitempty" name:"RuleType"`
 
 	// IP、Domain二选一，不能同时为空
@@ -4036,14 +4036,14 @@ type ModifyBlockIgnoreListRequestParams struct {
 	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
+	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type ModifyBlockIgnoreListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 1拦截列表 2 忽略列表
+	// 1封禁列表 2 放通列表
 	RuleType *int64 `json:"RuleType,omitempty" name:"RuleType"`
 
 	// IP、Domain二选一，不能同时为空
@@ -4055,7 +4055,7 @@ type ModifyBlockIgnoreListRequest struct {
 	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
+	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填，必须大于当前时间且大于StartTime
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 

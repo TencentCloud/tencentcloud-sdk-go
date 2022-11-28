@@ -477,7 +477,7 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 资源类型 取值范围doc,docx,html,excel之一
+	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -499,7 +499,7 @@ type ChannelCreateConvertTaskApiRequest struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 资源类型 取值范围doc,docx,html,excel之一
+	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -1540,6 +1540,87 @@ type Component struct {
 }
 
 // Predefined struct for user
+type CreateChannelFlowEvidenceReportRequestParams struct {
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type CreateChannelFlowEvidenceReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *CreateChannelFlowEvidenceReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelFlowEvidenceReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelFlowEvidenceReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChannelFlowEvidenceReportResponseParams struct {
+	// 废除，字段无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+
+	// 出证报告 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+
+	// 执行中：EvidenceStatusExecuting
+	// 成功：EvidenceStatusSuccess
+	// 失败：EvidenceStatusFailed
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateChannelFlowEvidenceReportResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateChannelFlowEvidenceReportResponseParams `json:"Response"`
+}
+
+func (r *CreateChannelFlowEvidenceReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelFlowEvidenceReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateConsoleLoginUrlRequestParams struct {
 	// 应用信息
 	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
@@ -2024,6 +2105,83 @@ type Department struct {
 	// 部门名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DepartmentName *string `json:"DepartmentName,omitempty" name:"DepartmentName"`
+}
+
+// Predefined struct for user
+type DescribeChannelFlowEvidenceReportRequestParams struct {
+	// 出证报告编号
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type DescribeChannelFlowEvidenceReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 出证报告编号
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *DescribeChannelFlowEvidenceReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelFlowEvidenceReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReportId")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelFlowEvidenceReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChannelFlowEvidenceReportResponseParams struct {
+	// 出证报告 URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+
+	// 执行中：EvidenceStatusExecuting
+	// 成功：EvidenceStatusSuccess
+	// 失败：EvidenceStatusFailed
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeChannelFlowEvidenceReportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChannelFlowEvidenceReportResponseParams `json:"Response"`
+}
+
+func (r *DescribeChannelFlowEvidenceReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelFlowEvidenceReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

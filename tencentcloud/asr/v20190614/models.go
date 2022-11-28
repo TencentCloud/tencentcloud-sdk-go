@@ -397,6 +397,8 @@ type CreateRecTaskRequestParams struct {
 	// • 16k_en_edu 英文教育；
 	// • 16k_zh_medical  医疗；
 	// • 16k_th 泰语；
+	// • 16k_zh-PY 中英粤;
+	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
 	// 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
@@ -448,6 +450,12 @@ type CreateRecTaskRequestParams struct {
 
 	// 是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
 	FilterModal *int64 `json:"FilterModal,omitempty" name:"FilterModal"`
+
+	// 情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。0:不开启，1:开启
+	EmotionalEnergy *int64 `json:"EmotionalEnergy,omitempty" name:"EmotionalEnergy"`
+
+	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”、“蜜汁”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
+	ReinforceHotword *int64 `json:"ReinforceHotword,omitempty" name:"ReinforceHotword"`
 }
 
 type CreateRecTaskRequest struct {
@@ -467,6 +475,8 @@ type CreateRecTaskRequest struct {
 	// • 16k_en_edu 英文教育；
 	// • 16k_zh_medical  医疗；
 	// • 16k_th 泰语；
+	// • 16k_zh-PY 中英粤;
+	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
 	// 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
@@ -518,6 +528,12 @@ type CreateRecTaskRequest struct {
 
 	// 是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
 	FilterModal *int64 `json:"FilterModal,omitempty" name:"FilterModal"`
+
+	// 情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。0:不开启，1:开启
+	EmotionalEnergy *int64 `json:"EmotionalEnergy,omitempty" name:"EmotionalEnergy"`
+
+	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”、“蜜汁”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
+	ReinforceHotword *int64 `json:"ReinforceHotword,omitempty" name:"ReinforceHotword"`
 }
 
 func (r *CreateRecTaskRequest) ToJsonString() string {
@@ -549,6 +565,8 @@ func (r *CreateRecTaskRequest) FromJsonString(s string) error {
 	delete(f, "Extra")
 	delete(f, "FilterPunc")
 	delete(f, "FilterModal")
+	delete(f, "EmotionalEnergy")
+	delete(f, "ReinforceHotword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecTaskRequest has unknown keys!", "")
 	}
@@ -1348,6 +1366,14 @@ type SentenceDetail struct {
 	// 声道或说话人 Id（请求中如果设置了 speaker_diarization或者ChannelNum为双声道，可区分说话人或声道）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpeakerId *int64 `json:"SpeakerId,omitempty" name:"SpeakerId"`
+
+	// 情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmotionalEnergy *float64 `json:"EmotionalEnergy,omitempty" name:"EmotionalEnergy"`
+
+	// 本句与上一句之间的静音时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SilenceTime *int64 `json:"SilenceTime,omitempty" name:"SilenceTime"`
 }
 
 // Predefined struct for user
@@ -1368,6 +1394,8 @@ type SentenceRecognitionRequestParams struct {
 	// • 16k_ca：16k 粤语；
 	// • 16k_ja：16k 日语；
 	// • 16k_zh_medical：16k 医疗；
+	// • 16k_zh-PY 中英粤;
+	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
@@ -1408,6 +1436,9 @@ type SentenceRecognitionRequestParams struct {
 
 	// 自学习模型 id。如设置了该参数，将生效对应的自学习模型。
 	CustomizationId *string `json:"CustomizationId,omitempty" name:"CustomizationId"`
+
+	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”、“蜜汁”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
+	ReinforceHotword *int64 `json:"ReinforceHotword,omitempty" name:"ReinforceHotword"`
 }
 
 type SentenceRecognitionRequest struct {
@@ -1429,6 +1460,8 @@ type SentenceRecognitionRequest struct {
 	// • 16k_ca：16k 粤语；
 	// • 16k_ja：16k 日语；
 	// • 16k_zh_medical：16k 医疗；
+	// • 16k_zh-PY 中英粤;
+	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
@@ -1469,6 +1502,9 @@ type SentenceRecognitionRequest struct {
 
 	// 自学习模型 id。如设置了该参数，将生效对应的自学习模型。
 	CustomizationId *string `json:"CustomizationId,omitempty" name:"CustomizationId"`
+
+	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”、“蜜汁”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
+	ReinforceHotword *int64 `json:"ReinforceHotword,omitempty" name:"ReinforceHotword"`
 }
 
 func (r *SentenceRecognitionRequest) ToJsonString() string {
@@ -1499,6 +1535,7 @@ func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "ConvertNumMode")
 	delete(f, "HotwordId")
 	delete(f, "CustomizationId")
+	delete(f, "ReinforceHotword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceRecognitionRequest has unknown keys!", "")
 	}

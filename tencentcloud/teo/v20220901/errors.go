@@ -251,7 +251,7 @@ const (
 	// 参数错误
 	INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
 
-	// 参数错误-setting非法参数。
+	// 配置项参数错误。
 	INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
 
 	// 资源存在错误。

@@ -452,7 +452,7 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConvertTaskApiRequestParams struct {
-	// 资源类型 取值范围doc,docx,html,excel之一
+	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -474,7 +474,7 @@ type CreateConvertTaskApiRequestParams struct {
 type CreateConvertTaskApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源类型 取值范围doc,docx,html,excel之一
+	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -1459,6 +1459,114 @@ func (r *CreateMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePrepareFlowRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 资源Id,通过上传uploadfile接口获得
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 合同名称
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 是否顺序签署(true:无序签,false:顺序签)
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 签署流程的签署截止时间。
+	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 用户自定义合同类型
+	UserFlowTypeId *string `json:"UserFlowTypeId,omitempty" name:"UserFlowTypeId"`
+
+	// 签署流程参与者信息，最大限制50方
+	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
+
+	// 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
+}
+
+type CreatePrepareFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 资源Id,通过上传uploadfile接口获得
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 合同名称
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 是否顺序签署(true:无序签,false:顺序签)
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 签署流程的签署截止时间。
+	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 用户自定义合同类型
+	UserFlowTypeId *string `json:"UserFlowTypeId,omitempty" name:"UserFlowTypeId"`
+
+	// 签署流程参与者信息，最大限制50方
+	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
+
+	// 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
+}
+
+func (r *CreatePrepareFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ResourceId")
+	delete(f, "FlowName")
+	delete(f, "Unordered")
+	delete(f, "Deadline")
+	delete(f, "UserFlowTypeId")
+	delete(f, "Approvers")
+	delete(f, "IntelligentStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrepareFlowResponseParams struct {
+	// 快速发起预览链接
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreatePrepareFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrepareFlowResponseParams `json:"Response"`
+}
+
+func (r *CreatePrepareFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrepareFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSchemeUrlRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -1877,6 +1985,76 @@ func (r *DescribeFlowBriefsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeFlowBriefsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlowEvidenceReportRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 出证报告编号
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+}
+
+type DescribeFlowEvidenceReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 出证报告编号
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+}
+
+func (r *DescribeFlowEvidenceReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowEvidenceReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ReportId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowEvidenceReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlowEvidenceReportResponseParams struct {
+	// 报告 URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+
+	// 执行中：EvidenceStatusExecuting
+	// 成功：EvidenceStatusSuccess
+	// 失败：EvidenceStatusFailed
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFlowEvidenceReportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlowEvidenceReportResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlowEvidenceReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowEvidenceReportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

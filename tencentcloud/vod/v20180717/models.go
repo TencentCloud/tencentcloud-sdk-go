@@ -305,6 +305,9 @@ type AiAnalysisTaskClassificationResult struct {
 	// 智能分类任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskClassificationOutput `json:"Output,omitempty" name:"Output"`
+
+	// 智能分类任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiAnalysisTaskCoverInput struct {
@@ -343,6 +346,9 @@ type AiAnalysisTaskCoverResult struct {
 	// 智能封面任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskCoverOutput `json:"Output,omitempty" name:"Output"`
+
+	// 智能封面任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiAnalysisTaskFrameTagInput struct {
@@ -381,6 +387,9 @@ type AiAnalysisTaskFrameTagResult struct {
 	// 智能按帧标签任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskFrameTagOutput `json:"Output,omitempty" name:"Output"`
+
+	// 智能按帧标签任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiAnalysisTaskHighlightInput struct {
@@ -419,6 +428,9 @@ type AiAnalysisTaskHighlightResult struct {
 	// 智能精彩片段任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskHighlightOutput `json:"Output,omitempty" name:"Output"`
+
+	// 智能精彩片段任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiAnalysisTaskInput struct {
@@ -462,6 +474,9 @@ type AiAnalysisTaskTagResult struct {
 	// 智能标签任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskTagOutput `json:"Output,omitempty" name:"Output"`
+
+	// 智能标签任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiContentReviewResult struct {
@@ -666,6 +681,9 @@ type AiRecognitionTaskAsrWordsResult struct {
 	// 语音关键词识别任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskAsrWordsResultOutput `json:"Output,omitempty" name:"Output"`
+
+	// 语音关键词识别任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiRecognitionTaskAsrWordsResultInput struct {
@@ -723,6 +741,9 @@ type AiRecognitionTaskFaceResult struct {
 	// 人脸识别任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskFaceResultOutput `json:"Output,omitempty" name:"Output"`
+
+	// 人脸识别任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiRecognitionTaskFaceResultInput struct {
@@ -791,6 +812,9 @@ type AiRecognitionTaskHeadTailResult struct {
 	// 视频片头片尾识别任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskHeadTailResultOutput `json:"Output,omitempty" name:"Output"`
+
+	// 视频片头片尾识别任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiRecognitionTaskHeadTailResultInput struct {
@@ -836,6 +860,9 @@ type AiRecognitionTaskObjectResult struct {
 	// 物体识别任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskObjectResultOutput `json:"Output,omitempty" name:"Output"`
+
+	// 物体识别任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiRecognitionTaskObjectResultInput struct {
@@ -896,6 +923,9 @@ type AiRecognitionTaskOcrFullTextResult struct {
 	// 文本全文识别任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskOcrFullTextResultOutput `json:"Output,omitempty" name:"Output"`
+
+	// 文本全文识别任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiRecognitionTaskOcrFullTextResultInput struct {
@@ -956,6 +986,9 @@ type AiRecognitionTaskOcrWordsResult struct {
 	// 文本关键词识别任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskOcrWordsResultOutput `json:"Output,omitempty" name:"Output"`
+
+	// 文本关键词识别任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiRecognitionTaskOcrWordsResultInput struct {
@@ -1017,6 +1050,9 @@ type AiRecognitionTaskSegmentResult struct {
 	// 视频拆条任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskSegmentResultOutput `json:"Output,omitempty" name:"Output"`
+
+	// 视频拆条任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiRecognitionTaskSegmentResultInput struct {
@@ -1299,6 +1335,9 @@ type AiReviewTaskPoliticalAsrResult struct {
 
 	// 音视频审核 Asr 文字涉及令人不适宜信息的任务输出。
 	Output *AiReviewPoliticalAsrTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核 Asr 文字涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskPoliticalOcrResult struct {
@@ -1341,6 +1380,9 @@ type AiReviewTaskPoliticalResult struct {
 	// 音视频审核涉及令人不适宜信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskPornAsrResult struct {
@@ -1362,6 +1404,9 @@ type AiReviewTaskPornAsrResult struct {
 	// 音视频审核 Asr 文字涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornAsrTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核 Asr 文字涉及令人反感的信息的任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskPornOcrResult struct {
@@ -1383,6 +1428,9 @@ type AiReviewTaskPornOcrResult struct {
 	// Ocr 文字音视频审核涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornOcrTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// Ocr 文字音视频审核涉及令人反感的信息的任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskPornResult struct {
@@ -1404,6 +1452,9 @@ type AiReviewTaskPornResult struct {
 	// 音视频审核涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核涉及令人反感的信息的任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskProhibitedAsrResult struct {
@@ -1425,6 +1476,9 @@ type AiReviewTaskProhibitedAsrResult struct {
 	// 音视频审核 Asr 文字鉴违禁任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewProhibitedAsrTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核 Asr 文字鉴违禁任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskProhibitedOcrResult struct {
@@ -1446,6 +1500,9 @@ type AiReviewTaskProhibitedOcrResult struct {
 	// 音视频审核 Ocr 文字鉴违禁任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewProhibitedOcrTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核 Ocr 文字鉴违禁任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskTerrorismOcrResult struct {
@@ -1467,6 +1524,9 @@ type AiReviewTaskTerrorismOcrResult struct {
 	// 音视频审核 Ocr 文字涉及令人不安全的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismOcrTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核 Ocr 文字涉及令人不安全的信息的任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskTerrorismResult struct {
@@ -1488,6 +1548,9 @@ type AiReviewTaskTerrorismResult struct {
 	// 音视频审核涉及令人不安全的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核涉及令人不安全的信息的任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTerrorismOcrTaskInput struct {
@@ -9473,7 +9536,6 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>FastClipMedia：快速剪辑任务；</li>
 	// <li>RemoveWatermarkTask：智能去除水印任务；</li>
 	// <li> ReviewAudioVideo：音视频审核任务。</li>
-	// <li> ReduceMediaBitrate：降码率任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -9551,7 +9613,7 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReviewAudioVideoTask *ReviewAudioVideoTask `json:"ReviewAudioVideoTask,omitempty" name:"ReviewAudioVideoTask"`
 
-	// 降码率任务信息，仅当 TaskType 为 ReduceMediaBitrate，该字段有值。
+	// 该字段已无效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReduceMediaBitrateTask *ReduceMediaBitrateTask `json:"ReduceMediaBitrateTask,omitempty" name:"ReduceMediaBitrateTask"`
 
@@ -10455,8 +10517,8 @@ type EventContent struct {
 	// <li>ComposeMediaComplete：制作媒体文件完成；</li>
 	// <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
 	// <li>FastClipMediaComplete：快速剪辑完成；</li>
-	// <li>ReviewAudioVideoComplete：音视频审核完成。</li>
-	// <li>ExtractTraceWatermarkComplete：提取溯源水印完成。</li>
+	// <li>ReviewAudioVideoComplete：音视频审核完成；</li>
+	// <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
 	// <b>兼容 2017 版的事件类型：</b>
 	// <li>TranscodeComplete：视频转码完成；</li>
 	// <li>ConcatComplete：视频拼接完成；</li>
@@ -10537,7 +10599,7 @@ type EventContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReviewAudioVideoCompleteEvent *ReviewAudioVideoTask `json:"ReviewAudioVideoCompleteEvent,omitempty" name:"ReviewAudioVideoCompleteEvent"`
 
-	// 降码率完成事件，当事件类型为 ReduceMediaBitrateComplete 时有效。
+	// 该字段已无效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReduceMediaBitrateCompleteEvent *ReduceMediaBitrateTask `json:"ReduceMediaBitrateCompleteEvent,omitempty" name:"ReduceMediaBitrateCompleteEvent"`
 }
@@ -12126,6 +12188,9 @@ type MediaProcessTaskAnimatedGraphicResult struct {
 	// 转动图任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaAnimatedGraphicsItem `json:"Output,omitempty" name:"Output"`
+
+	// 转动图任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type MediaProcessTaskCoverBySnapshotResult struct {
@@ -12146,6 +12211,9 @@ type MediaProcessTaskCoverBySnapshotResult struct {
 
 	// 对视频截图做封面任务的输出。
 	Output *CoverBySnapshotTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 对视频截图做封面任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type MediaProcessTaskImageSpriteResult struct {
@@ -12167,6 +12235,9 @@ type MediaProcessTaskImageSpriteResult struct {
 	// 对视频截雪碧图任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaImageSpriteItem `json:"Output,omitempty" name:"Output"`
+
+	// 对视频截雪碧图任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type MediaProcessTaskInput struct {
@@ -12251,6 +12322,9 @@ type MediaProcessTaskSampleSnapshotResult struct {
 	// 对视频做采样截图任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaSampleSnapshotItem `json:"Output,omitempty" name:"Output"`
+
+	// 对视频做采样截图任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type MediaProcessTaskSnapshotByTimeOffsetResult struct {
@@ -12272,6 +12346,9 @@ type MediaProcessTaskSnapshotByTimeOffsetResult struct {
 	// 对视频按指定时间点截图任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaSnapshotByTimeOffsetItem `json:"Output,omitempty" name:"Output"`
+
+	// 对视频按指定时间点截图任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type MediaProcessTaskTranscodeResult struct {
@@ -15810,6 +15887,14 @@ type ProcedureTask struct {
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 操作者。取值范围：
+	// <li>System: 表示系统触发。</li>
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 操作类型。取值范围：
+	// <li>TSC: 表示使用极速高清进行智能降码。</li>
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
 }
 
 type ProcedureTemplate struct {
@@ -16667,6 +16752,9 @@ type PullUploadTask struct {
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 转拉任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 // Predefined struct for user
@@ -18464,6 +18552,9 @@ type SplitMediaTask struct {
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 视频拆条任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type SplitMediaTaskConfig struct {

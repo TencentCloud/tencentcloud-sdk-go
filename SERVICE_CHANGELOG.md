@@ -1,49 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 93 次发布
+### 第 21 次发布
 
-发布时间：2022-11-25 06:20:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CloudOrderReturn](https://cloud.tencent.com/document/api/1122/40683#CloudOrderReturn)
-
-	* 新增成员：TotalPlatformIncome, TotalMchIncome
-
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 11 次发布
-
-发布时间：2022-11-25 06:28:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyRecordFields](https://cloud.tencent.com/document/api/1427/83364)
-
-新增数据结构：
-
-* [KeyValue](https://cloud.tencent.com/document/api/1427/56185#KeyValue)
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
-
-### 第 27 次发布
-
-发布时间：2022-11-25 06:45:10
+发布时间：2022-11-28 06:10:45
 
 本次发布包含了以下内容：
 
@@ -51,22 +12,29 @@
 
 修改接口：
 
-* [CreateDBInstance](https://cloud.tencent.com/document/api/240/38571)
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
 
-	* 新增入参：ReadonlyNodeNum, ReadonlyNodeAvailabilityZoneList, HiddenZone
+	* 新增入参：EmotionalEnergy, ReinforceHotword
 
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
 
-
-
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
-
+	* 新增入参：ReinforceHotword
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
+修改数据结构：
 
-### 第 33 次发布
+* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
 
-发布时间：2022-11-25 06:59:05
+	* 新增成员：EmotionalEnergy, SilenceTime
+
+
+
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 1 次发布
+
+发布时间：2022-11-25 17:33:17
 
 本次发布包含了以下内容：
 
@@ -74,39 +42,76 @@
 
 新增接口：
 
-* [CreateK8sApiAbnormalEventExportJob](https://cloud.tencent.com/document/api/1285/83380)
-* [CreateK8sApiAbnormalRuleExportJob](https://cloud.tencent.com/document/api/1285/83379)
-* [CreateK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83378)
-* [DeleteK8sApiAbnormalRule](https://cloud.tencent.com/document/api/1285/83377)
-* [DescribeAssetClusterList](https://cloud.tencent.com/document/api/1285/83376)
-* [DescribeK8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/83375)
-* [DescribeK8sApiAbnormalEventList](https://cloud.tencent.com/document/api/1285/83374)
-* [DescribeK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83373)
-* [DescribeK8sApiAbnormalRuleList](https://cloud.tencent.com/document/api/1285/83372)
-* [DescribeK8sApiAbnormalRuleScopeList](https://cloud.tencent.com/document/api/1285/83371)
-* [DescribeK8sApiAbnormalSummary](https://cloud.tencent.com/document/api/1285/83370)
-* [DescribeK8sApiAbnormalTendency](https://cloud.tencent.com/document/api/1285/83369)
-* [ModifyK8sApiAbnormalEventStatus](https://cloud.tencent.com/document/api/1285/83368)
-* [ModifyK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83367)
-* [ModifyK8sApiAbnormalRuleStatus](https://cloud.tencent.com/document/api/1285/83366)
+* [ActionAlterCkUser](https://cloud.tencent.com/document/api/1299/83425)
+* [CreateBackUpSchedule](https://cloud.tencent.com/document/api/1299/83424)
+* [DescribeCkSqlApis](https://cloud.tencent.com/document/api/1299/83428)
+* [DescribeInstanceShards](https://cloud.tencent.com/document/api/1299/83427)
+* [ModifyClusterConfigs](https://cloud.tencent.com/document/api/1299/83423)
+* [ModifyUserNewPrivilege](https://cloud.tencent.com/document/api/1299/83422)
+* [OpenBackUp](https://cloud.tencent.com/document/api/1299/83421)
 
 新增数据结构：
 
-* [AssetClusterListItem](https://cloud.tencent.com/document/api/1285/65614#AssetClusterListItem)
-* [K8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventInfo)
-* [K8sApiAbnormalEventListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventListItem)
-* [K8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleInfo)
-* [K8sApiAbnormalRuleListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleListItem)
-* [K8sApiAbnormalRuleScopeInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleScopeInfo)
-* [K8sApiAbnormalTendencyItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalTendencyItem)
+* [BackupTableContent](https://cloud.tencent.com/document/api/1299/83429#BackupTableContent)
+* [CkUserAlterInfo](https://cloud.tencent.com/document/api/1299/83429#CkUserAlterInfo)
+* [ConfigSubmitContext](https://cloud.tencent.com/document/api/1299/83429#ConfigSubmitContext)
 
 
 
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 41 次发布
+### 第 32 次发布
 
-发布时间：2022-11-25 07:03:54
+发布时间：2022-11-25 18:17:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/83441)
+
+### 第 31 次发布
+
+发布时间：2022-11-25 16:12:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 52 次发布
+
+发布时间：2022-11-25 18:17:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)
+* [DescribeChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/83442)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 128 次发布
+
+发布时间：2022-11-28 07:19:44
 
 本次发布包含了以下内容：
 
@@ -114,9 +119,121 @@
 
 修改数据结构：
 
-* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+* [AiAnalysisTaskClassificationResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskClassificationResult)
 
-	* 新增成员：RocketMQFlag
+	* 新增成员：Progress
+
+* [AiAnalysisTaskCoverResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskCoverResult)
+
+	* 新增成员：Progress
+
+* [AiAnalysisTaskFrameTagResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskFrameTagResult)
+
+	* 新增成员：Progress
+
+* [AiAnalysisTaskHighlightResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskHighlightResult)
+
+	* 新增成员：Progress
+
+* [AiAnalysisTaskTagResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskTagResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskAsrWordsResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrWordsResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskFaceResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskFaceResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskHeadTailResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskHeadTailResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskObjectResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskOcrFullTextResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskOcrFullTextResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskOcrWordsResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskOcrWordsResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskSegmentResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskSegmentResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPoliticalAsrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPoliticalAsrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPoliticalResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPoliticalResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPornAsrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPornAsrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPornOcrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPornOcrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPornResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPornResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskProhibitedAsrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskProhibitedAsrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskProhibitedOcrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskProhibitedOcrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskTerrorismOcrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskTerrorismOcrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskTerrorismResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskTerrorismResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskAnimatedGraphicResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskAnimatedGraphicResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskCoverBySnapshotResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskCoverBySnapshotResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskImageSpriteResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskImageSpriteResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskSampleSnapshotResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskSampleSnapshotResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskSnapshotByTimeOffsetResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskSnapshotByTimeOffsetResult)
+
+	* 新增成员：Progress
+
+* [ProcedureTask](https://cloud.tencent.com/document/api/266/31773#ProcedureTask)
+
+	* 新增成员：Operator, OperationType
+
+* [PullUploadTask](https://cloud.tencent.com/document/api/266/31773#PullUploadTask)
+
+	* 新增成员：Progress
+
+* [SplitMediaTask](https://cloud.tencent.com/document/api/266/31773#SplitMediaTask)
+
+	* 新增成员：Progress
 
 
 
@@ -5123,6 +5240,32 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 21 次发布
+
+发布时间：2022-11-28 06:10:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：EmotionalEnergy, ReinforceHotword
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* 新增入参：ReinforceHotword
+
+
+修改数据结构：
+
+* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
+
+	* 新增成员：EmotionalEnergy, SilenceTime
+
 
 ### 第 20 次发布
 
@@ -16960,6 +17103,35 @@
 * [CdsAuditInstance](https://cloud.tencent.com/document/api/856/33913#CdsAuditInstance)
 * [DbauditTypesInfo](https://cloud.tencent.com/document/api/856/33913#DbauditTypesInfo)
 * [RegionInfo](https://cloud.tencent.com/document/api/856/33913#RegionInfo)
+
+
+
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 1 次发布
+
+发布时间：2022-11-25 17:33:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ActionAlterCkUser](https://cloud.tencent.com/document/api/1299/83425)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateBackUpSchedule](https://cloud.tencent.com/document/api/1299/83424)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCkSqlApis](https://cloud.tencent.com/document/api/1299/83428)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstanceShards](https://cloud.tencent.com/document/api/1299/83427)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyClusterConfigs](https://cloud.tencent.com/document/api/1299/83423)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyUserNewPrivilege](https://cloud.tencent.com/document/api/1299/83422)](https://cloud.tencent.com/document/api/#/#)
+* [[OpenBackUp](https://cloud.tencent.com/document/api/1299/83421)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BackupTableContent](https://cloud.tencent.com/document/api/1299/83429#BackupTableContent)](https://cloud.tencent.com/document/api/1299/83429#[BackupTableContent](https://cloud.tencent.com/document/api/1299/83429#BackupTableContent))
+* [[CkUserAlterInfo](https://cloud.tencent.com/document/api/1299/83429#CkUserAlterInfo)](https://cloud.tencent.com/document/api/1299/83429#[CkUserAlterInfo](https://cloud.tencent.com/document/api/1299/83429#CkUserAlterInfo))
+* [[ConfigSubmitContext](https://cloud.tencent.com/document/api/1299/83429#ConfigSubmitContext)](https://cloud.tencent.com/document/api/1299/83429#[ConfigSubmitContext](https://cloud.tencent.com/document/api/1299/83429#ConfigSubmitContext))
 
 
 
@@ -34973,11 +35145,11 @@
 
 新增接口：
 
-* [[ModifyRecordFields](https://cloud.tencent.com/document/api/1427/83364)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyRecordFields](https://cloud.tencent.com/document/api/1427/83364)
 
 新增数据结构：
 
-* [[KeyValue](https://cloud.tencent.com/document/api/1427/56185#KeyValue)](https://cloud.tencent.com/document/api/1427/56185#[KeyValue](https://cloud.tencent.com/document/api/1427/56185#KeyValue))
+* [KeyValue](https://cloud.tencent.com/document/api/1427/56185#KeyValue)
 
 ### 第 10 次发布
 
@@ -40599,6 +40771,30 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 32 次发布
+
+发布时间：2022-11-25 18:17:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/83441)](https://cloud.tencent.com/document/api/#/#)
+
+### 第 31 次发布
+
+发布时间：2022-11-25 16:12:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 30 次发布
 
 发布时间：2022-11-21 15:12:52
@@ -41247,6 +41443,19 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 52 次发布
+
+发布时间：2022-11-25 18:17:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/83442)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 51 次发布
 
@@ -76434,31 +76643,31 @@
 
 新增接口：
 
-* [[CreateK8sApiAbnormalEventExportJob](https://cloud.tencent.com/document/api/1285/83380)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateK8sApiAbnormalRuleExportJob](https://cloud.tencent.com/document/api/1285/83379)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83378)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteK8sApiAbnormalRule](https://cloud.tencent.com/document/api/1285/83377)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAssetClusterList](https://cloud.tencent.com/document/api/1285/83376)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeK8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/83375)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeK8sApiAbnormalEventList](https://cloud.tencent.com/document/api/1285/83374)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83373)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeK8sApiAbnormalRuleList](https://cloud.tencent.com/document/api/1285/83372)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeK8sApiAbnormalRuleScopeList](https://cloud.tencent.com/document/api/1285/83371)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeK8sApiAbnormalSummary](https://cloud.tencent.com/document/api/1285/83370)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeK8sApiAbnormalTendency](https://cloud.tencent.com/document/api/1285/83369)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyK8sApiAbnormalEventStatus](https://cloud.tencent.com/document/api/1285/83368)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83367)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyK8sApiAbnormalRuleStatus](https://cloud.tencent.com/document/api/1285/83366)](https://cloud.tencent.com/document/api/#/#)
+* [CreateK8sApiAbnormalEventExportJob](https://cloud.tencent.com/document/api/1285/83380)
+* [CreateK8sApiAbnormalRuleExportJob](https://cloud.tencent.com/document/api/1285/83379)
+* [CreateK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83378)
+* [DeleteK8sApiAbnormalRule](https://cloud.tencent.com/document/api/1285/83377)
+* [DescribeAssetClusterList](https://cloud.tencent.com/document/api/1285/83376)
+* [DescribeK8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/83375)
+* [DescribeK8sApiAbnormalEventList](https://cloud.tencent.com/document/api/1285/83374)
+* [DescribeK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83373)
+* [DescribeK8sApiAbnormalRuleList](https://cloud.tencent.com/document/api/1285/83372)
+* [DescribeK8sApiAbnormalRuleScopeList](https://cloud.tencent.com/document/api/1285/83371)
+* [DescribeK8sApiAbnormalSummary](https://cloud.tencent.com/document/api/1285/83370)
+* [DescribeK8sApiAbnormalTendency](https://cloud.tencent.com/document/api/1285/83369)
+* [ModifyK8sApiAbnormalEventStatus](https://cloud.tencent.com/document/api/1285/83368)
+* [ModifyK8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/83367)
+* [ModifyK8sApiAbnormalRuleStatus](https://cloud.tencent.com/document/api/1285/83366)
 
 新增数据结构：
 
-* [[AssetClusterListItem](https://cloud.tencent.com/document/api/1285/65614#AssetClusterListItem)](https://cloud.tencent.com/document/api/1285/65614#[AssetClusterListItem](https://cloud.tencent.com/document/api/1285/65614#AssetClusterListItem))
-* [[K8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventInfo)](https://cloud.tencent.com/document/api/1285/65614#[K8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventInfo))
-* [[K8sApiAbnormalEventListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventListItem)](https://cloud.tencent.com/document/api/1285/65614#[K8sApiAbnormalEventListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventListItem))
-* [[K8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleInfo)](https://cloud.tencent.com/document/api/1285/65614#[K8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleInfo))
-* [[K8sApiAbnormalRuleListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleListItem)](https://cloud.tencent.com/document/api/1285/65614#[K8sApiAbnormalRuleListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleListItem))
-* [[K8sApiAbnormalRuleScopeInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleScopeInfo)](https://cloud.tencent.com/document/api/1285/65614#[K8sApiAbnormalRuleScopeInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleScopeInfo))
-* [[K8sApiAbnormalTendencyItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalTendencyItem)](https://cloud.tencent.com/document/api/1285/65614#[K8sApiAbnormalTendencyItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalTendencyItem))
+* [AssetClusterListItem](https://cloud.tencent.com/document/api/1285/65614#AssetClusterListItem)
+* [K8sApiAbnormalEventInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventInfo)
+* [K8sApiAbnormalEventListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalEventListItem)
+* [K8sApiAbnormalRuleInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleInfo)
+* [K8sApiAbnormalRuleListItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleListItem)
+* [K8sApiAbnormalRuleScopeInfo](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalRuleScopeInfo)
+* [K8sApiAbnormalTendencyItem](https://cloud.tencent.com/document/api/1285/65614#K8sApiAbnormalTendencyItem)
 
 ### 第 32 次发布
 
@@ -91451,6 +91660,133 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 128 次发布
+
+发布时间：2022-11-28 07:19:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiAnalysisTaskClassificationResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskClassificationResult)
+
+	* 新增成员：Progress
+
+* [AiAnalysisTaskCoverResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskCoverResult)
+
+	* 新增成员：Progress
+
+* [AiAnalysisTaskFrameTagResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskFrameTagResult)
+
+	* 新增成员：Progress
+
+* [AiAnalysisTaskHighlightResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskHighlightResult)
+
+	* 新增成员：Progress
+
+* [AiAnalysisTaskTagResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskTagResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskAsrWordsResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrWordsResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskFaceResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskFaceResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskHeadTailResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskHeadTailResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskObjectResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskOcrFullTextResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskOcrFullTextResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskOcrWordsResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskOcrWordsResult)
+
+	* 新增成员：Progress
+
+* [AiRecognitionTaskSegmentResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskSegmentResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPoliticalAsrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPoliticalAsrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPoliticalResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPoliticalResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPornAsrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPornAsrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPornOcrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPornOcrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskPornResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPornResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskProhibitedAsrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskProhibitedAsrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskProhibitedOcrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskProhibitedOcrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskTerrorismOcrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskTerrorismOcrResult)
+
+	* 新增成员：Progress
+
+* [AiReviewTaskTerrorismResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskTerrorismResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskAnimatedGraphicResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskAnimatedGraphicResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskCoverBySnapshotResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskCoverBySnapshotResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskImageSpriteResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskImageSpriteResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskSampleSnapshotResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskSampleSnapshotResult)
+
+	* 新增成员：Progress
+
+* [MediaProcessTaskSnapshotByTimeOffsetResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskSnapshotByTimeOffsetResult)
+
+	* 新增成员：Progress
+
+* [ProcedureTask](https://cloud.tencent.com/document/api/266/31773#ProcedureTask)
+
+	* 新增成员：Operator, OperationType
+
+* [PullUploadTask](https://cloud.tencent.com/document/api/266/31773#PullUploadTask)
+
+	* 新增成员：Progress
+
+* [SplitMediaTask](https://cloud.tencent.com/document/api/266/31773#SplitMediaTask)
+
+	* 新增成员：Progress
+
 
 ### 第 127 次发布
 
