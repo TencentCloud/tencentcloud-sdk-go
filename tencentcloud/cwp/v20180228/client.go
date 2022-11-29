@@ -12919,6 +12919,7 @@ func NewStartBaselineDetectResponse() (response *StartBaselineDetectResponse) {
 // 检测基线
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) StartBaselineDetect(request *StartBaselineDetectRequest) (response *StartBaselineDetectResponse, err error) {
@@ -12929,6 +12930,7 @@ func (c *Client) StartBaselineDetect(request *StartBaselineDetectRequest) (respo
 // 检测基线
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) StartBaselineDetectWithContext(ctx context.Context, request *StartBaselineDetectRequest) (response *StartBaselineDetectResponse, err error) {

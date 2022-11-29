@@ -1,3 +1,224 @@
+# Release v1.0.547
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 105 次发布
+
+发布时间：2022-11-29 06:19:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyCDBProxy
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* RoWeight
+
+
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 113 次发布
+
+发布时间：2022-11-29 06:20:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeIpStatus](https://cloud.tencent.com/document/api/228/41954)
+
+	* 新增入参：AbbreviationIpv6
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 99 次发布
+
+发布时间：2022-11-29 06:30:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SyncImages](https://cloud.tencent.com/document/api/213/15711)
+
+	* 新增入参：ImageSetRequired
+
+	* 新增出参：ImageSet
+
+
+新增数据结构：
+
+* [SyncImage](https://cloud.tencent.com/document/api/213/15753#SyncImage)
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 50 次发布
+
+发布时间：2022-11-29 06:37:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyAccountPrivileges](https://cloud.tencent.com/document/api/557/83475)
+
+新增数据结构：
+
+* [Account](https://cloud.tencent.com/document/api/557/16142#Account)
+* [ColumnPrivilege](https://cloud.tencent.com/document/api/557/16142#ColumnPrivilege)
+* [DatabasePrivilege](https://cloud.tencent.com/document/api/557/16142#DatabasePrivilege)
+* [TablePrivilege](https://cloud.tencent.com/document/api/557/16142#TablePrivilege)
+* [ViewPrivileges](https://cloud.tencent.com/document/api/557/16142#ViewPrivileges)
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 51 次发布
+
+发布时间：2022-11-29 06:46:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectAuth](https://cloud.tencent.com/document/api/1007/31816)
+
+	* 新增入参：Config
+
+
+新增数据结构：
+
+* [RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig)
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 48 次发布
+
+发布时间：2022-11-29 06:52:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceInfo)
+
+	* 新增成员：IsLora
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 31 次发布
+
+发布时间：2022-11-29 07:09:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ParamSpecRelation](https://cloud.tencent.com/document/api/409/16778#ParamSpecRelation)
+* [ParamVersionRelation](https://cloud.tencent.com/document/api/409/16778#ParamVersionRelation)
+
+修改数据结构：
+
+* [ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo)
+
+	* 新增成员：StandbyRelated, VersionRelationSet, SpecRelationSet
+
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 19 次发布
+
+发布时间：2022-11-29 07:19:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccessLogConfig](https://cloud.tencent.com/document/api/1261/83255)
+
+	* 新增出参：CLS, Address, EnableServer, EnableStdout, Enable
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 16 次发布
+
+发布时间：2022-11-29 07:26:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSecurityDropPage](https://cloud.tencent.com/document/api/1552/80682)
+
+	* 新增入参：TemplateId
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 11 次发布
+
+发布时间：2022-11-29 07:29:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WorkloadStatus](https://cloud.tencent.com/document/api/851/75051#WorkloadStatus)
+
+	* 新增成员：Conditions
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
 # Release v1.0.546
 
 ## 语音识别(asr) 版本：2019-06-14

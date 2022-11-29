@@ -1036,6 +1036,105 @@ func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type ChannelCreateReleaseFlowRequestParams struct {
+	// 待解除的流程编号（即原流程的编号）
+	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitempty" name:"NeedRelievedFlowId"`
+
+	// 解除协议内容
+	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitempty" name:"ReliveInfo"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（比如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，解除协议的签署人数量不能多于原流程的签署人数量
+	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitempty" name:"ReleasedApprovers"`
+
+	// 签署完回调url，最大长度1000个字符
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 机构信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelCreateReleaseFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待解除的流程编号（即原流程的编号）
+	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitempty" name:"NeedRelievedFlowId"`
+
+	// 解除协议内容
+	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitempty" name:"ReliveInfo"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（比如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，解除协议的签署人数量不能多于原流程的签署人数量
+	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitempty" name:"ReleasedApprovers"`
+
+	// 签署完回调url，最大长度1000个字符
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 机构信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelCreateReleaseFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateReleaseFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NeedRelievedFlowId")
+	delete(f, "ReliveInfo")
+	delete(f, "Agent")
+	delete(f, "ReleasedApprovers")
+	delete(f, "CallbackUrl")
+	delete(f, "Organization")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateReleaseFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateReleaseFlowResponseParams struct {
+	// 解除协议流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateReleaseFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateReleaseFlowResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateReleaseFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateReleaseFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelDescribeEmployeesRequestParams struct {
 	// 返回最大数量，最大为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -1146,7 +1245,7 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 	// 偏移量，默认为0，最大为20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询信息类型，为0时不返回授权用户，为1时返回
+	// 查询信息类型，为1时返回授权用户，为其他值时不返回
 	InfoType *int64 `json:"InfoType,omitempty" name:"InfoType"`
 
 	// 印章id（没有输入返回所有）
@@ -1165,7 +1264,7 @@ type ChannelDescribeOrganizationSealsRequest struct {
 	// 偏移量，默认为0，最大为20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询信息类型，为0时不返回授权用户，为1时返回
+	// 查询信息类型，为1时返回授权用户，为其他值时不返回
 	InfoType *int64 `json:"InfoType,omitempty" name:"InfoType"`
 
 	// 印章id（没有输入返回所有）
@@ -3249,6 +3348,57 @@ type Recipient struct {
 
 	// 是否是发起方
 	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
+}
+
+type ReleasedApprover struct {
+	// 企业签署方工商营业执照上的企业名称，签署方为非发起方企业场景下必传，最大长度64个字符
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 签署人在原流程中的签署人列表中的顺序序号（从0开始，按顺序依次递增），如果不清楚原流程中的签署人列表，可以通过DescribeFlows接口查看
+	ApproverNumber *uint64 `json:"ApproverNumber,omitempty" name:"ApproverNumber"`
+
+	// 签署人类型，目前仅支持
+	// ORGANIZATION-企业
+	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
+
+	// 签署人姓名，最大长度50个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 签署人身份证件类型
+	// 1.ID_CARD 居民身份证
+	// 2.HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证
+	// 3.HONGKONG_AND_MACAO 港澳居民来往内地通行证
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 签署人证件号
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+
+	// 签署人手机号，脱敏显示。大陆手机号为11位，暂不支持海外手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
+
+	// 用户侧第三方id，最大长度64个字符
+	// 当签署方为同一渠道下的员工时，该字必传
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
+type RelieveInfo struct {
+	// 解除理由，最大支持200个字
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 解除后仍然有效的条款，保留条款，最大支持200个字
+	RemainInForceItem *string `json:"RemainInForceItem,omitempty" name:"RemainInForceItem"`
+
+	// 原合同事项处理-费用结算，最大支持200个字
+	OriginalExpenseSettlement *string `json:"OriginalExpenseSettlement,omitempty" name:"OriginalExpenseSettlement"`
+
+	// 原合同事项处理-其他事项，最大支持200个字
+	OriginalOtherSettlement *string `json:"OriginalOtherSettlement,omitempty" name:"OriginalOtherSettlement"`
+
+	// 其他约定，最大支持200个字
+	OtherDeals *string `json:"OtherDeals,omitempty" name:"OtherDeals"`
 }
 
 type ResourceUrlInfo struct {

@@ -2409,10 +2409,10 @@ func (r *CreateRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecurityDropPageRequestParams struct {
-	// 站点Id。
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 站点子域名。
+	// 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
 
 	// 自定义页面的文件名。
@@ -2430,15 +2430,18 @@ type CreateSecurityDropPageRequestParams struct {
 	// <li> waf ：托管规则模块；</li>
 	// <li> rate：自定义规则模块。</li>
 	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type CreateSecurityDropPageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点Id。
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 站点子域名。
+	// 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
 
 	// 自定义页面的文件名。
@@ -2456,6 +2459,9 @@ type CreateSecurityDropPageRequest struct {
 	// <li> waf ：托管规则模块；</li>
 	// <li> rate：自定义规则模块。</li>
 	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *CreateSecurityDropPageRequest) ToJsonString() string {
@@ -2476,6 +2482,7 @@ func (r *CreateSecurityDropPageRequest) FromJsonString(s string) error {
 	delete(f, "Content")
 	delete(f, "Type")
 	delete(f, "Module")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSecurityDropPageRequest has unknown keys!", "")
 	}

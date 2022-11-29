@@ -1145,11 +1145,7 @@ func NewDescribeExtensionsResponse() (response *DescribeExtensionsResponse) {
 // 查询话机列表信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
-//  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
 func (c *Client) DescribeExtensions(request *DescribeExtensionsRequest) (response *DescribeExtensionsResponse, err error) {
     return c.DescribeExtensionsWithContext(context.Background(), request)
 }
@@ -1158,11 +1154,7 @@ func (c *Client) DescribeExtensions(request *DescribeExtensionsRequest) (respons
 // 查询话机列表信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
-//  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
 func (c *Client) DescribeExtensionsWithContext(ctx context.Context, request *DescribeExtensionsRequest) (response *DescribeExtensionsResponse, err error) {
     if request == nil {
         request = NewDescribeExtensionsRequest()

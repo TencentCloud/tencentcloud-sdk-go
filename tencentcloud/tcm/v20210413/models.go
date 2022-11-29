@@ -432,8 +432,23 @@ type DescribeAccessLogConfigResponseParams struct {
 	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
 
 	// 采用的模板，可取值为"istio, trace，默认为istio
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Template *string `json:"Template,omitempty" name:"Template"`
+
+	// 腾讯云日志服务相关参数
+	CLS *CLS `json:"CLS,omitempty" name:"CLS"`
+
+	// GRPC第三方服务器地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 是否启用GRPC第三方服务器
+	EnableServer *bool `json:"EnableServer,omitempty" name:"EnableServer"`
+
+	// 是否启用标准输出
+	EnableStdout *bool `json:"EnableStdout,omitempty" name:"EnableStdout"`
+
+	// 是否启用访问日志采集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

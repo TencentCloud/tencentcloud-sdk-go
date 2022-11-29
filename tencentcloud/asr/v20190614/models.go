@@ -1378,7 +1378,7 @@ type SentenceDetail struct {
 
 // Predefined struct for user
 type SentenceRecognitionRequestParams struct {
-	// 腾讯云项目 ID，废弃参数，默认填写0即可。
+	// 腾讯云项目 ID，废弃参数，填写0即可。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 子服务类型。2： 一句话识别。
@@ -1404,7 +1404,7 @@ type SentenceRecognitionRequestParams struct {
 	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
 	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
-	// 用户端对此任务的唯一标识。废弃参数，忽略即可。
+	// 废弃参数，填写任意字符串即可。
 	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
 	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
@@ -1444,7 +1444,7 @@ type SentenceRecognitionRequestParams struct {
 type SentenceRecognitionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 腾讯云项目 ID，废弃参数，默认填写0即可。
+	// 腾讯云项目 ID，废弃参数，填写0即可。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 子服务类型。2： 一句话识别。
@@ -1470,7 +1470,7 @@ type SentenceRecognitionRequest struct {
 	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
 	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
-	// 用户端对此任务的唯一标识。废弃参数，忽略即可。
+	// 废弃参数，填写任意字符串即可。
 	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
 	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。

@@ -1107,6 +1107,7 @@ func NewCreateTopicIpWhiteListResponse() (response *CreateTopicIpWhiteListRespon
 // 创建主题ip白名单
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
@@ -1128,6 +1129,7 @@ func (c *Client) CreateTopicIpWhiteList(request *CreateTopicIpWhiteListRequest) 
 // 创建主题ip白名单
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"

@@ -4243,10 +4243,10 @@ func (r *InquiryPriceRenewDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceRenewDBInstanceResponseParams struct {
-	// 总费用，打折前的。比如24650表示246.5元
+	// 刊例价，单位为分。如24650表示246.5元
 	OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-	// 实际需要付款金额。比如24650表示246.5元
+	// 折后实际付款金额，单位为分。如24650表示246.5元
 	Price *int64 `json:"Price,omitempty" name:"Price"`
 
 	// 币种。例如，CNY：人民币。
@@ -5409,7 +5409,7 @@ type ParamInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamValueType *string `json:"ParamValueType,omitempty" name:"ParamValueType"`
 
-	// 参数值 单位。参数没有单位是，该字段返回空
+	// 参数值 单位。参数没有单位时，该字段返回空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
 
@@ -5421,13 +5421,13 @@ type ParamInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 枚举类型参数，取值范围
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
-
 	// 数值类型（integer、real）参数，取值下界
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *float64 `json:"Max,omitempty" name:"Max"`
+
+	// 枚举类型参数，取值范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 
 	// 数值类型（integer、real）参数，取值上界
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5464,6 +5464,78 @@ type ParamInfo struct {
 	// 参数最后一次修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTime *string `json:"LastModifyTime,omitempty" name:"LastModifyTime"`
+
+	// 参数存在主备制约，0：无主备制约关系，1:备机参数值需比主机大，2:主机参数值需比备机大
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandbyRelated *int64 `json:"StandbyRelated,omitempty" name:"StandbyRelated"`
+
+	// 参数版本关联信息，存储具体内核版本下的具体参数信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionRelationSet []*ParamVersionRelation `json:"VersionRelationSet,omitempty" name:"VersionRelationSet"`
+
+	// 参数规格关联信息，存储具体规格下具体的参数信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecRelationSet []*ParamSpecRelation `json:"SpecRelationSet,omitempty" name:"SpecRelationSet"`
+}
+
+type ParamSpecRelation struct {
+	// 参数名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数信息所属规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *string `json:"Memory,omitempty" name:"Memory"`
+
+	// 参数在该规格下的默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 参数值单位。参数没有单位时，该字段返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 数值类型（integer、real）参数，取值上界
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Max *float64 `json:"Max,omitempty" name:"Max"`
+
+	// 数值类型（integer、real）参数，取值下界
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Min *float64 `json:"Min,omitempty" name:"Min"`
+
+	// 枚举类型参数，取值范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
+}
+
+type ParamVersionRelation struct {
+	// 参数名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数信息所属内核版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
+
+	// 参数在该版本该规格下的默认值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 参数值单位。参数没有单位时，该字段返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 数值类型（integer、real）参数，取值上界
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Max *float64 `json:"Max,omitempty" name:"Max"`
+
+	// 数值类型（integer、real）参数，取值下界
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Min *float64 `json:"Min,omitempty" name:"Min"`
+
+	// 枚举类型参数，取值范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 }
 
 type PgDeal struct {

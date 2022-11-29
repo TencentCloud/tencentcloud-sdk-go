@@ -7242,4 +7242,7 @@ type WorkloadStatus struct {
 
 	// 工作负载的状况信息
 	StatefulSetCondition []*StatefulSetCondition `json:"StatefulSetCondition,omitempty" name:"StatefulSetCondition"`
+
+	// 工作负载历史的状况信息
+	Conditions []*StatefulSetCondition `json:"Conditions,omitempty" name:"Conditions"`
 }

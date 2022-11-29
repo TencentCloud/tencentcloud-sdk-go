@@ -6115,6 +6115,7 @@ func NewRestoreInstanceResponse() (response *RestoreInstanceResponse) {
 // 本接口（RestoreInstance）用于根据备份文件恢复实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
@@ -6133,6 +6134,7 @@ func (c *Client) RestoreInstance(request *RestoreInstanceRequest) (response *Res
 // 本接口（RestoreInstance）用于根据备份文件恢复实例。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"

@@ -3951,6 +3951,10 @@ type DeviceInfo struct {
 	// 设备类型（设备、子设备、网关）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 是否是 lora 设备
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLora *bool `json:"IsLora,omitempty" name:"IsLora"`
 }
 
 type DevicePositionItem struct {

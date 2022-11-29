@@ -291,6 +291,7 @@ func NewMatchKBPURLListResponse() (response *MatchKBPURLListResponse) {
 // 本接口(MatchKBPURLList)用于在知识库中匹配与特征对应的开源组件列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -303,6 +304,7 @@ func (c *Client) MatchKBPURLList(request *MatchKBPURLListRequest) (response *Mat
 // 本接口(MatchKBPURLList)用于在知识库中匹配与特征对应的开源组件列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

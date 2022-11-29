@@ -836,6 +836,9 @@ const (
 	// 不支持指定的磁盘
 	UNSUPPORTEDOPERATION_INVALIDDISK = "UnsupportedOperation.InvalidDisk"
 
+	// 不支持带有云硬盘备份点。
+	UNSUPPORTEDOPERATION_INVALIDDISKBACKUPQUOTA = "UnsupportedOperation.InvalidDiskBackupQuota"
+
 	// 镜像许可类型与实例不符，请选择其他镜像。
 	UNSUPPORTEDOPERATION_INVALIDIMAGELICENSETYPEFORRESET = "UnsupportedOperation.InvalidImageLicenseTypeForReset"
 

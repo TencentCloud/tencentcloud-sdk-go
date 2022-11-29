@@ -20,6 +20,14 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Account struct {
+	// 账户的名称
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 账户的域名
+	Host *string `json:"Host,omitempty" name:"Host"`
+}
+
 // Predefined struct for user
 type ActiveHourDCDBInstanceRequestParams struct {
 	// 待升级的实例ID列表。形如：["dcdbt-ow728lmc"]，可以通过 DescribeDCDBInstances 查询实例详情获得。
@@ -381,6 +389,20 @@ func (r *CloseDBExtranetAccessResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CloseDBExtranetAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ColumnPrivilege struct {
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据库表名
+	Table *string `json:"Table,omitempty" name:"Table"`
+
+	// 数据库列名
+	Column *string `json:"Column,omitempty" name:"Column"`
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
 type ConstraintRange struct {
@@ -1343,6 +1365,14 @@ type Database struct {
 type DatabaseFunction struct {
 	// 函数名称
 	Func *string `json:"Func,omitempty" name:"Func"`
+}
+
+type DatabasePrivilege struct {
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
 }
 
 type DatabaseProcedure struct {
@@ -4371,6 +4401,115 @@ func (r *ModifyAccountDescriptionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyAccountPrivilegesRequestParams struct {
+	// 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库的账号，包括用户名和域名。
+	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts"`
+
+	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，该字段传空数组。
+	GlobalPrivileges []*string `json:"GlobalPrivileges,omitempty" name:"GlobalPrivileges"`
+
+	// 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges,omitempty" name:"DatabasePrivileges"`
+
+	// 数据库中表的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	TablePrivileges []*TablePrivilege `json:"TablePrivileges,omitempty" name:"TablePrivileges"`
+
+	// 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges"`
+
+	// 数据库视图的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	ViewPrivileges []*ViewPrivileges `json:"ViewPrivileges,omitempty" name:"ViewPrivileges"`
+}
+
+type ModifyAccountPrivilegesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：tdsql-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库的账号，包括用户名和域名。
+	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts"`
+
+	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，该字段传空数组。
+	GlobalPrivileges []*string `json:"GlobalPrivileges,omitempty" name:"GlobalPrivileges"`
+
+	// 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	DatabasePrivileges []*DatabasePrivilege `json:"DatabasePrivileges,omitempty" name:"DatabasePrivileges"`
+
+	// 数据库中表的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	TablePrivileges []*TablePrivilege `json:"TablePrivileges,omitempty" name:"TablePrivileges"`
+
+	// 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	ColumnPrivileges []*ColumnPrivilege `json:"ColumnPrivileges,omitempty" name:"ColumnPrivileges"`
+
+	// 数据库视图的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
+	// 注意，不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组。
+	ViewPrivileges []*ViewPrivileges `json:"ViewPrivileges,omitempty" name:"ViewPrivileges"`
+}
+
+func (r *ModifyAccountPrivilegesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountPrivilegesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Accounts")
+	delete(f, "GlobalPrivileges")
+	delete(f, "DatabasePrivileges")
+	delete(f, "TablePrivileges")
+	delete(f, "ColumnPrivileges")
+	delete(f, "ViewPrivileges")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccountPrivilegesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccountPrivilegesResponseParams struct {
+	// 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAccountPrivilegesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccountPrivilegesResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccountPrivilegesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountPrivilegesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceNameRequestParams struct {
 	// 实例ID，形如tdsql-hdaprz0v
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -5602,6 +5741,17 @@ type TableColumn struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+type TablePrivilege struct {
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据库表名
+	Table *string `json:"Table,omitempty" name:"Table"`
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
+}
+
 // Predefined struct for user
 type TerminateDedicatedDBInstanceRequestParams struct {
 	// 实例 Id，形如：dcdbt-ow728lmc。
@@ -5805,6 +5955,17 @@ type UserTaskInfo struct {
 
 	// 地域ID
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+}
+
+type ViewPrivileges struct {
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据库视图名
+	View *string `json:"View,omitempty" name:"View"`
+
+	// 权限信息
+	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
 type ZonesInfo struct {

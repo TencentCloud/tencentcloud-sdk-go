@@ -565,6 +565,7 @@ func NewCheckPhoneAndNameResponse() (response *CheckPhoneAndNameResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
@@ -581,6 +582,7 @@ func (c *Client) CheckPhoneAndName(request *CheckPhoneAndNameRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_UNSUPPORTENCRYPTFIELD = "InvalidParameter.UnsupportEncryptField"
 //  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"

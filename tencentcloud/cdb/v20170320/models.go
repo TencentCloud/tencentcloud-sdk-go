@@ -9536,109 +9536,6 @@ func (r *ModifyCDBProxyDescResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type ModifyCDBProxyRequestParams struct {
-	// 数据库代理组唯一ID
-	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
-
-	// 是否开始延迟剔除，默认false，取值："true" | "false"
-	IsKickout *bool `json:"IsKickout,omitempty" name:"IsKickout"`
-
-	// 最少保留数，最小为0，最大为实例数量
-	MinCount *uint64 `json:"MinCount,omitempty" name:"MinCount"`
-
-	// 延迟剔除的阈值；如果IsKickOut="true", 该字段必填
-	MaxDelay *uint64 `json:"MaxDelay,omitempty" name:"MaxDelay"`
-
-	// 读写权重分配模式；系统自动分配："system"， 自定义："custom"
-	WeightMode *string `json:"WeightMode,omitempty" name:"WeightMode"`
-
-	// 实例只读权重
-	RoWeightValues *RoWeight `json:"RoWeightValues,omitempty" name:"RoWeightValues"`
-
-	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，默认false，取值："true" | "false"
-	FailOver *bool `json:"FailOver,omitempty" name:"FailOver"`
-
-	// 是否自动添加只读实例，默认false，取值："true" | "false"
-	AutoAddRo *bool `json:"AutoAddRo,omitempty" name:"AutoAddRo"`
-}
-
-type ModifyCDBProxyRequest struct {
-	*tchttp.BaseRequest
-	
-	// 数据库代理组唯一ID
-	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
-
-	// 是否开始延迟剔除，默认false，取值："true" | "false"
-	IsKickout *bool `json:"IsKickout,omitempty" name:"IsKickout"`
-
-	// 最少保留数，最小为0，最大为实例数量
-	MinCount *uint64 `json:"MinCount,omitempty" name:"MinCount"`
-
-	// 延迟剔除的阈值；如果IsKickOut="true", 该字段必填
-	MaxDelay *uint64 `json:"MaxDelay,omitempty" name:"MaxDelay"`
-
-	// 读写权重分配模式；系统自动分配："system"， 自定义："custom"
-	WeightMode *string `json:"WeightMode,omitempty" name:"WeightMode"`
-
-	// 实例只读权重
-	RoWeightValues *RoWeight `json:"RoWeightValues,omitempty" name:"RoWeightValues"`
-
-	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，默认false，取值："true" | "false"
-	FailOver *bool `json:"FailOver,omitempty" name:"FailOver"`
-
-	// 是否自动添加只读实例，默认false，取值："true" | "false"
-	AutoAddRo *bool `json:"AutoAddRo,omitempty" name:"AutoAddRo"`
-}
-
-func (r *ModifyCDBProxyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyCDBProxyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ProxyGroupId")
-	delete(f, "IsKickout")
-	delete(f, "MinCount")
-	delete(f, "MaxDelay")
-	delete(f, "WeightMode")
-	delete(f, "RoWeightValues")
-	delete(f, "FailOver")
-	delete(f, "AutoAddRo")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCDBProxyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyCDBProxyResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type ModifyCDBProxyResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyCDBProxyResponseParams `json:"Response"`
-}
-
-func (r *ModifyCDBProxyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyCDBProxyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ModifyCDBProxyVipVPortRequestParams struct {
 	// 代理组ID
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
@@ -11695,10 +11592,6 @@ type RoVipInfo struct {
 
 	// 只读vip
 	RoVip *string `json:"RoVip,omitempty" name:"RoVip"`
-}
-
-type RoWeight struct {
-
 }
 
 type RoWeightValue struct {

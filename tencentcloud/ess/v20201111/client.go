@@ -278,7 +278,10 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+//  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (response *CreateConvertTaskApiResponse, err error) {
@@ -290,7 +293,10 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+//  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 func (c *Client) CreateConvertTaskApiWithContext(ctx context.Context, request *CreateConvertTaskApiRequest) (response *CreateConvertTaskApiResponse, err error) {
@@ -561,6 +567,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 // | content    | String  | 表头单元格内容，字数不超过100                         |
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 //  FAILEDOPERATION_PREVIEWURLFAIL = "FailedOperation.PreViewUrlFail"
@@ -840,6 +847,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 // | content    | String  | 表头单元格内容，字数不超过100                         |
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 //  FAILEDOPERATION_PREVIEWURLFAIL = "FailedOperation.PreViewUrlFail"

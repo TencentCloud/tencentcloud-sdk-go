@@ -886,6 +886,9 @@ type DetectAuthRequestParams struct {
 
 	// 意愿核身（问答模式）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持一个播报文本+回答文本。
 	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
+
+	// RuleId相关配置
+	Config *RuleIdConfig `json:"Config,omitempty" name:"Config"`
 }
 
 type DetectAuthRequest struct {
@@ -922,6 +925,9 @@ type DetectAuthRequest struct {
 
 	// 意愿核身（问答模式）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持一个播报文本+回答文本。
 	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
+
+	// RuleId相关配置
+	Config *RuleIdConfig `json:"Config,omitempty" name:"Config"`
 }
 
 func (r *DetectAuthRequest) ToJsonString() string {
@@ -946,6 +952,7 @@ func (r *DetectAuthRequest) FromJsonString(s string) error {
 	delete(f, "Encryption")
 	delete(f, "IntentionVerifyText")
 	delete(f, "IntentionQuestions")
+	delete(f, "Config")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectAuthRequest has unknown keys!", "")
 	}
@@ -3957,6 +3964,11 @@ func (r *PhoneVerificationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PhoneVerificationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RuleIdConfig struct {
+	// 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
+	IntentionRecognition *bool `json:"IntentionRecognition,omitempty" name:"IntentionRecognition"`
 }
 
 type WeChatBillDetail struct {

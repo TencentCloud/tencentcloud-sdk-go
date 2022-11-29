@@ -2318,7 +2318,7 @@ func NewDescribeIpStatusResponse() (response *DescribeIpStatusResponse) {
 }
 
 // DescribeIpStatus
-// DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细。注意事项：暂不支持查询边缘节点信息。
+// DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细。注意事项：暂不支持查询边缘节点信息并且数据会存在一定延迟。
 //
 // 
 //
@@ -2342,7 +2342,7 @@ func (c *Client) DescribeIpStatus(request *DescribeIpStatusRequest) (response *D
 }
 
 // DescribeIpStatus
-// DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细。注意事项：暂不支持查询边缘节点信息。
+// DescribeIpStatus 用于查询域名所在加速平台的边缘节点、回源节点明细。注意事项：暂不支持查询边缘节点信息并且数据会存在一定延迟。
 //
 // 
 //

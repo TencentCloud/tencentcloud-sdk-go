@@ -8827,6 +8827,14 @@ type StorageBlock struct {
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
 
+type SyncImage struct {
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 // Predefined struct for user
 type SyncImagesRequestParams struct {
 	// 镜像ID列表 ，镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取。<br><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。<br>镜像ID必须满足限制：<br><li>镜像ID对应的镜像状态必须为`NORMAL`。<br>镜像状态请参考[镜像数据表](https://cloud.tencent.com/document/product/213/15753#Image)。
@@ -8840,6 +8848,9 @@ type SyncImagesRequestParams struct {
 
 	// 目标镜像名称。
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 是否需要返回目的地域的镜像ID。
+	ImageSetRequired *bool `json:"ImageSetRequired,omitempty" name:"ImageSetRequired"`
 }
 
 type SyncImagesRequest struct {
@@ -8856,6 +8867,9 @@ type SyncImagesRequest struct {
 
 	// 目标镜像名称。
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 是否需要返回目的地域的镜像ID。
+	ImageSetRequired *bool `json:"ImageSetRequired,omitempty" name:"ImageSetRequired"`
 }
 
 func (r *SyncImagesRequest) ToJsonString() string {
@@ -8874,6 +8888,7 @@ func (r *SyncImagesRequest) FromJsonString(s string) error {
 	delete(f, "DestinationRegions")
 	delete(f, "DryRun")
 	delete(f, "ImageName")
+	delete(f, "ImageSetRequired")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncImagesRequest has unknown keys!", "")
 	}
@@ -8882,6 +8897,9 @@ func (r *SyncImagesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SyncImagesResponseParams struct {
+	// 目的地域的镜像ID信息。
+	ImageSet []*SyncImage `json:"ImageSet,omitempty" name:"ImageSet"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

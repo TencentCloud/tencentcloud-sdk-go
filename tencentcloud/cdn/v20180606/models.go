@@ -4271,6 +4271,9 @@ type DescribeIpStatusRequestParams struct {
 
 	// 是否查询节点 IPV6 信息。
 	ShowIpv6 *bool `json:"ShowIpv6,omitempty" name:"ShowIpv6"`
+
+	// 是否对IPV6进行缩写。
+	AbbreviationIpv6 *bool `json:"AbbreviationIpv6,omitempty" name:"AbbreviationIpv6"`
 }
 
 type DescribeIpStatusRequest struct {
@@ -4296,6 +4299,9 @@ type DescribeIpStatusRequest struct {
 
 	// 是否查询节点 IPV6 信息。
 	ShowIpv6 *bool `json:"ShowIpv6,omitempty" name:"ShowIpv6"`
+
+	// 是否对IPV6进行缩写。
+	AbbreviationIpv6 *bool `json:"AbbreviationIpv6,omitempty" name:"AbbreviationIpv6"`
 }
 
 func (r *DescribeIpStatusRequest) ToJsonString() string {
@@ -4315,6 +4321,7 @@ func (r *DescribeIpStatusRequest) FromJsonString(s string) error {
 	delete(f, "Area")
 	delete(f, "Segment")
 	delete(f, "ShowIpv6")
+	delete(f, "AbbreviationIpv6")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpStatusRequest has unknown keys!", "")
 	}
@@ -9526,7 +9533,7 @@ type OriginPullTimeout struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectTimeout *uint64 `json:"ConnectTimeout,omitempty" name:"ConnectTimeout"`
 
-	// 回源接收超时时间，单位为秒，要求10 ~ 60之间
+	// 回源接收超时时间，单位为秒，要求10 ~ 300之间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveTimeout *uint64 `json:"ReceiveTimeout,omitempty" name:"ReceiveTimeout"`
 }
@@ -11638,7 +11645,7 @@ type UpdateDomainConfigRequestParams struct {
 	// 缓存过期时间配置
 	Cache *Cache `json:"Cache,omitempty" name:"Cache"`
 
-	// 跨国链路优化配置
+	// 跨国链路优化配置（已下线）
 	OriginPullOptimization *OriginPullOptimization `json:"OriginPullOptimization,omitempty" name:"OriginPullOptimization"`
 
 	// Https 加速配置
@@ -11791,7 +11798,7 @@ type UpdateDomainConfigRequest struct {
 	// 缓存过期时间配置
 	Cache *Cache `json:"Cache,omitempty" name:"Cache"`
 
-	// 跨国链路优化配置
+	// 跨国链路优化配置（已下线）
 	OriginPullOptimization *OriginPullOptimization `json:"OriginPullOptimization,omitempty" name:"OriginPullOptimization"`
 
 	// Https 加速配置

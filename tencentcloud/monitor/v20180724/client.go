@@ -3234,6 +3234,7 @@ func NewDescribeGrafanaInstancesResponse() (response *DescribeGrafanaInstancesRe
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
@@ -3247,6 +3248,7 @@ func (c *Client) DescribeGrafanaInstances(request *DescribeGrafanaInstancesReque
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"

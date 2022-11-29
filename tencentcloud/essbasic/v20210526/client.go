@@ -511,6 +511,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -571,6 +572,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -688,6 +690,7 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
@@ -738,6 +741,7 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
@@ -911,6 +915,78 @@ func (c *Client) ChannelCreateMultiFlowSignQRCodeWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewChannelCreateMultiFlowSignQRCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelCreateReleaseFlowRequest() (request *ChannelCreateReleaseFlowRequest) {
+    request = &ChannelCreateReleaseFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateReleaseFlow")
+    
+    
+    return
+}
+
+func NewChannelCreateReleaseFlowResponse() (response *ChannelCreateReleaseFlowResponse) {
+    response = &ChannelCreateReleaseFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateReleaseFlow
+// 渠道版发起解除协议，主要应用场景为：基于一份已经签署的合同，进行解除操作。
+//
+// 合同发起人必须在电子签已经进行实名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ChannelCreateReleaseFlow(request *ChannelCreateReleaseFlowRequest) (response *ChannelCreateReleaseFlowResponse, err error) {
+    return c.ChannelCreateReleaseFlowWithContext(context.Background(), request)
+}
+
+// ChannelCreateReleaseFlow
+// 渠道版发起解除协议，主要应用场景为：基于一份已经签署的合同，进行解除操作。
+//
+// 合同发起人必须在电子签已经进行实名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ChannelCreateReleaseFlowWithContext(ctx context.Context, request *ChannelCreateReleaseFlowRequest) (response *ChannelCreateReleaseFlowResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateReleaseFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateReleaseFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateReleaseFlowResponse()
     err = c.Send(request, response)
     return
 }
@@ -1126,6 +1202,7 @@ func NewChannelVerifyPdfResponse() (response *ChannelVerifyPdfResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelVerifyPdf(request *ChannelVerifyPdfRequest) (response *ChannelVerifyPdfResponse, err error) {
     return c.ChannelVerifyPdfWithContext(context.Background(), request)
 }
@@ -1137,6 +1214,7 @@ func (c *Client) ChannelVerifyPdf(request *ChannelVerifyPdfRequest) (response *C
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelVerifyPdfWithContext(ctx context.Context, request *ChannelVerifyPdfRequest) (response *ChannelVerifyPdfResponse, err error) {
     if request == nil {
         request = NewChannelVerifyPdfRequest()

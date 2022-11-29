@@ -512,7 +512,7 @@ func NewDescribeInstanceRenewNodesResponse() (response *DescribeInstanceRenewNod
 }
 
 // DescribeInstanceRenewNodes
-// 预付费集群隔离后续费资源查询
+// 查询待续费节点信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -544,7 +544,7 @@ func (c *Client) DescribeInstanceRenewNodes(request *DescribeInstanceRenewNodesR
 }
 
 // DescribeInstanceRenewNodes
-// 预付费集群隔离后续费资源查询
+// 查询待续费节点信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -606,7 +606,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 }
 
 // DescribeInstances
-// 查询EMR实例
+// 查询集群实例信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -641,7 +641,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 }
 
 // DescribeInstances
-// 查询EMR实例
+// 查询集群实例信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -706,7 +706,7 @@ func NewDescribeInstancesListResponse() (response *DescribeInstancesListResponse
 }
 
 // DescribeInstancesList
-// EMR集群实例列表查询
+// 查询集群列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -738,7 +738,7 @@ func (c *Client) DescribeInstancesList(request *DescribeInstancesListRequest) (r
 }
 
 // DescribeInstancesList
-// EMR集群实例列表查询
+// 查询集群列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -850,7 +850,7 @@ func NewDescribeResourceScheduleResponse() (response *DescribeResourceScheduleRe
 }
 
 // DescribeResourceSchedule
-// 获取yarn资源调度页面的数据
+// 查询YARN资源调度数据信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -863,7 +863,7 @@ func (c *Client) DescribeResourceSchedule(request *DescribeResourceScheduleReque
 }
 
 // DescribeResourceSchedule
-// 获取yarn资源调度页面的数据
+// 查询YARN资源调度数据信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1500,7 +1500,7 @@ func NewModifyResourcePoolsResponse() (response *ModifyResourcePoolsResponse) {
 }
 
 // ModifyResourcePools
-// 刷新动态资源池
+// 刷新YARN的动态资源池
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1513,7 +1513,7 @@ func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (respo
 }
 
 // ModifyResourcePools
-// 刷新动态资源池
+// 刷新YARN的动态资源池
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
