@@ -548,7 +548,7 @@ type DescribeRoomResponseParams struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 17)
+	// 最大连麦人数（不包括老师）。取值范围[0, 16]
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：

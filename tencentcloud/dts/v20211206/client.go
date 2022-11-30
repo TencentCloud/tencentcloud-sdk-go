@@ -1442,7 +1442,7 @@ func NewDestroySyncJobResponse() (response *DestroySyncJobResponse) {
 }
 
 // DestroySyncJob
-// 下线同步任务，任务在已隔离状态下可以通过此操作进行任务下线，即彻底删除任务。下线操作后可通过查询同步任务信息接口DescribeSyncJobs，获取下线后任务列表，此操作成功后无法看到此任务表示下线成功。
+// 下线同步任务，任务在已隔离状态下可以通过此操作进行任务下线，即彻底删除任务。下线操作后可通过查询同步任务信息接口DescribeSyncJobs获取任务列表查看状态，此操作成功后无法看到此任务表示下线成功。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
@@ -1452,7 +1452,7 @@ func (c *Client) DestroySyncJob(request *DestroySyncJobRequest) (response *Destr
 }
 
 // DestroySyncJob
-// 下线同步任务，任务在已隔离状态下可以通过此操作进行任务下线，即彻底删除任务。下线操作后可通过查询同步任务信息接口DescribeSyncJobs，获取下线后任务列表，此操作成功后无法看到此任务表示下线成功。
+// 下线同步任务，任务在已隔离状态下可以通过此操作进行任务下线，即彻底删除任务。下线操作后可通过查询同步任务信息接口DescribeSyncJobs获取任务列表查看状态，此操作成功后无法看到此任务表示下线成功。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
@@ -1576,7 +1576,7 @@ func NewIsolateSyncJobResponse() (response *IsolateSyncJobResponse) {
 }
 
 // IsolateSyncJob
-// 销毁(隔离)同步任务，销毁后可通过查询同步任务信息接口DescribeSyncJobs，获取销毁后状态。在任务销毁后可进行解除隔离(RecoverSyncJob)操作或直接进行立即下线操作。对于不计费任务，调用此接口后会直接删除任务，无法进行恢复操作。
+// 隔离同步任务，隔离后可通过查询同步任务信息接口DescribeSyncJobs获取隔离后状态。在任务隔离后可进行解除隔离(RecoverSyncJob)操作或直接进行下线操作。对于不计费任务，调用此接口后会直接删除任务，无法进行恢复操作。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
@@ -1587,7 +1587,7 @@ func (c *Client) IsolateSyncJob(request *IsolateSyncJobRequest) (response *Isola
 }
 
 // IsolateSyncJob
-// 销毁(隔离)同步任务，销毁后可通过查询同步任务信息接口DescribeSyncJobs，获取销毁后状态。在任务销毁后可进行解除隔离(RecoverSyncJob)操作或直接进行立即下线操作。对于不计费任务，调用此接口后会直接删除任务，无法进行恢复操作。
+// 隔离同步任务，隔离后可通过查询同步任务信息接口DescribeSyncJobs获取隔离后状态。在任务隔离后可进行解除隔离(RecoverSyncJob)操作或直接进行下线操作。对于不计费任务，调用此接口后会直接删除任务，无法进行恢复操作。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"

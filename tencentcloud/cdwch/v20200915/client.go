@@ -237,6 +237,54 @@ func (c *Client) DescribeInstanceShardsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeSpecRequest() (request *DescribeSpecRequest) {
+    request = &DescribeSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeSpec")
+    
+    
+    return
+}
+
+func NewDescribeSpecResponse() (response *DescribeSpecResponse) {
+    response = &DescribeSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSpec
+// 购买页拉取集群的数据节点和zookeeper节点的规格列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeSpec(request *DescribeSpecRequest) (response *DescribeSpecResponse, err error) {
+    return c.DescribeSpecWithContext(context.Background(), request)
+}
+
+// DescribeSpec
+// 购买页拉取集群的数据节点和zookeeper节点的规格列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeSpecWithContext(ctx context.Context, request *DescribeSpecRequest) (response *DescribeSpecResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpecRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterConfigsRequest() (request *ModifyClusterConfigsRequest) {
     request = &ModifyClusterConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},

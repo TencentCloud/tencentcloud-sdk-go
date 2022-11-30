@@ -2890,7 +2890,7 @@ type Placement struct {
 	// 实例所属的专用宿主机ID列表，仅用于入参。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
 	HostIds []*string `json:"HostIds,omitempty" name:"HostIds"`
 
-	// 指定母机ip生产子机
+	// 指定母机IP生产子机
 	HostIps []*string `json:"HostIps,omitempty" name:"HostIps"`
 
 	// 实例所属的专用宿主机ID，仅用于出参。

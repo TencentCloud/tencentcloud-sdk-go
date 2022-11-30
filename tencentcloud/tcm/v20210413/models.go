@@ -424,14 +424,14 @@ type DescribeAccessLogConfigResponseParams struct {
 	// 访问日志的格式。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
-	// 访问日志输出编码。默认 “TEXT”。除此之外还有“JSON”
+	// 访问日志输出编码，可取值为 "TEXT" 或 "JSON"，默认 TEXT"
 	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
 
 	// 选中的范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
 
-	// 采用的模板，可取值为"istio, trace，默认为istio
+	// 采用的模板，可取值为"istio" 或 "trace"，默认为"istio"
 	Template *string `json:"Template,omitempty" name:"Template"`
 
 	// 腾讯云日志服务相关参数

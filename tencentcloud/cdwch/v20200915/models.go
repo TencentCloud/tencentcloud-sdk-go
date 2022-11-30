@@ -343,6 +343,101 @@ func (r *DescribeInstanceShardsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSpecRequestParams struct {
+	// 地域信息，例如"ap-guangzhou-1"
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 计费类型，PREPAID 包年包月，POSTPAID_BY_HOUR 按量计费
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 是否弹性ck
+	IsElastic *bool `json:"IsElastic,omitempty" name:"IsElastic"`
+}
+
+type DescribeSpecRequest struct {
+	*tchttp.BaseRequest
+	
+	// 地域信息，例如"ap-guangzhou-1"
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 计费类型，PREPAID 包年包月，POSTPAID_BY_HOUR 按量计费
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 是否弹性ck
+	IsElastic *bool `json:"IsElastic,omitempty" name:"IsElastic"`
+}
+
+func (r *DescribeSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "PayMode")
+	delete(f, "IsElastic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSpecResponseParams struct {
+	// zookeeper节点规格描述
+	CommonSpec []*ResourceSpec `json:"CommonSpec,omitempty" name:"CommonSpec"`
+
+	// 数据节点规格描述
+	DataSpec []*ResourceSpec `json:"DataSpec,omitempty" name:"DataSpec"`
+
+	// 云盘列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachCBSSpec []*DiskSpec `json:"AttachCBSSpec,omitempty" name:"AttachCBSSpec"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSpecResponseParams `json:"Response"`
+}
+
+func (r *DescribeSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpecResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DiskSpec struct {
+	// 磁盘类型，例如“CLOUD_SSD", "LOCAL_SSD"等
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 磁盘类型说明，例如"云SSD", "本地SSD"等
+	DiskDesc *string `json:"DiskDesc,omitempty" name:"DiskDesc"`
+
+	// 磁盘最小规格大小，单位G
+	MinDiskSize *int64 `json:"MinDiskSize,omitempty" name:"MinDiskSize"`
+
+	// 磁盘最大规格大小，单位G
+	MaxDiskSize *int64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
+
+	// 磁盘数目
+	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
+}
+
+// Predefined struct for user
 type ModifyClusterConfigsRequestParams struct {
 	// 集群ID，例如cdwch-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -533,4 +628,43 @@ func (r *OpenBackUpResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OpenBackUpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceSpec struct {
+	// 规格名称，例如“SCH1"
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// cpu核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存大小，单位G
+	Mem *int64 `json:"Mem,omitempty" name:"Mem"`
+
+	// 分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 系统盘描述信息
+	SystemDisk *DiskSpec `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 数据盘描述信息
+	DataDisk *DiskSpec `json:"DataDisk,omitempty" name:"DataDisk"`
+
+	// 最大节点数目限制
+	MaxNodeSize *int64 `json:"MaxNodeSize,omitempty" name:"MaxNodeSize"`
+
+	// 是否可用，false代表售罄
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Available *bool `json:"Available,omitempty" name:"Available"`
+
+	// 规格描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputeSpecDesc *string `json:"ComputeSpecDesc,omitempty" name:"ComputeSpecDesc"`
+
+	// 规格名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 库存数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceQuota *int64 `json:"InstanceQuota,omitempty" name:"InstanceQuota"`
 }

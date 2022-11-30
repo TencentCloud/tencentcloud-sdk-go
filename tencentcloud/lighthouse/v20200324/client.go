@@ -1111,6 +1111,54 @@ func (c *Client) DeleteSnapshotsWithContext(ctx context.Context, request *Delete
     return
 }
 
+func NewDescribeAllScenesRequest() (request *DescribeAllScenesRequest) {
+    request = &DescribeAllScenesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeAllScenes")
+    
+    
+    return
+}
+
+func NewDescribeAllScenesResponse() (response *DescribeAllScenesResponse) {
+    response = &DescribeAllScenesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAllScenes
+// 本接口(DescribeAllScenes)用于查询全地域使用场景列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAllScenes(request *DescribeAllScenesRequest) (response *DescribeAllScenesResponse, err error) {
+    return c.DescribeAllScenesWithContext(context.Background(), request)
+}
+
+// DescribeAllScenes
+// 本接口(DescribeAllScenes)用于查询全地域使用场景列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAllScenesWithContext(ctx context.Context, request *DescribeAllScenesRequest) (response *DescribeAllScenesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllScenesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllScenes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllScenesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBlueprintInstancesRequest() (request *DescribeBlueprintInstancesRequest) {
     request = &DescribeBlueprintInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2749,6 +2797,66 @@ func (c *Client) DescribeResetInstanceBlueprintsWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeResetInstanceBlueprintsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScenesRequest() (request *DescribeScenesRequest) {
+    request = &DescribeScenesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeScenes")
+    
+    
+    return
+}
+
+func NewDescribeScenesResponse() (response *DescribeScenesResponse) {
+    response = &DescribeScenesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScenes
+// 本接口(DescribeScenes)用于查看使用场景列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeScenes(request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
+    return c.DescribeScenesWithContext(context.Background(), request)
+}
+
+// DescribeScenes
+// 本接口(DescribeScenes)用于查看使用场景列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDSCENEIDMALFORMED = "InvalidParameterValue.InvalidSceneIdMalformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeScenesWithContext(ctx context.Context, request *DescribeScenesRequest) (response *DescribeScenesResponse, err error) {
+    if request == nil {
+        request = NewDescribeScenesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScenes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScenesResponse()
     err = c.Send(request, response)
     return
 }

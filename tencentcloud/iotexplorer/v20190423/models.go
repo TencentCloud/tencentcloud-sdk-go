@@ -2605,7 +2605,7 @@ type DescribeDeviceLocationSolveResponseParams struct {
 	// 经度
 	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
 
-	// 维度
+	// 纬度
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 
 	// 类型

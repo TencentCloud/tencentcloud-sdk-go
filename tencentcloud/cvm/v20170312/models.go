@@ -728,7 +728,7 @@ type CreateImageRequestParams struct {
 	// 关于Sysprep的详情请参考[链接](https://cloud.tencent.com/document/product/213/43498)。
 	Sysprep *string `json:"Sysprep,omitempty" name:"Sysprep"`
 
-	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘Id
+	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘ID
 	DataDiskIds []*string `json:"DataDiskIds,omitempty" name:"DataDiskIds"`
 
 	// 基于快照创建镜像，指定快照ID，必须包含一个系统盘快照。不可与InstanceId同时传入。
@@ -763,7 +763,7 @@ type CreateImageRequest struct {
 	// 关于Sysprep的详情请参考[链接](https://cloud.tencent.com/document/product/213/43498)。
 	Sysprep *string `json:"Sysprep,omitempty" name:"Sysprep"`
 
-	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘Id
+	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘ID
 	DataDiskIds []*string `json:"DataDiskIds,omitempty" name:"DataDiskIds"`
 
 	// 基于快照创建镜像，指定快照ID，必须包含一个系统盘快照。不可与InstanceId同时传入。
@@ -4427,7 +4427,7 @@ type HostItem struct {
 	// 专用宿主机实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
 
-	// 专用宿主机实例id
+	// 专用宿主机实例ID
 	HostId *string `json:"HostId,omitempty" name:"HostId"`
 
 	// 专用宿主机实例类型
@@ -4454,7 +4454,7 @@ type HostItem struct {
 	// 专用宿主机实例状态
 	HostState *string `json:"HostState,omitempty" name:"HostState"`
 
-	// 专用宿主机实例ip
+	// 专用宿主机实例IP
 	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
 
 	// 专用宿主机实例资源信息
@@ -4466,10 +4466,10 @@ type HostItem struct {
 }
 
 type HostResource struct {
-	// 专用宿主机实例总cpu核数
+	// 专用宿主机实例总CPU核数
 	CpuTotal *uint64 `json:"CpuTotal,omitempty" name:"CpuTotal"`
 
-	// 专用宿主机实例可用cpu核数
+	// 专用宿主机实例可用CPU核数
 	CpuAvailable *uint64 `json:"CpuAvailable,omitempty" name:"CpuAvailable"`
 
 	// 专用宿主机实例总内存大小（单位为:GiB）
@@ -4589,11 +4589,11 @@ type Image struct {
 }
 
 type ImageOsList struct {
-	// 支持的windows操作系统。
+	// 支持的Windows操作系统。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Windows []*string `json:"Windows,omitempty" name:"Windows"`
 
-	// 支持的linux操作系统
+	// 支持的Linux操作系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Linux []*string `json:"Linux,omitempty" name:"Linux"`
 }
@@ -6118,7 +6118,7 @@ type LaunchTemplateVersionData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 
-	// 置放群组id，仅支持指定一个。
+	// 置放群组ID，仅支持指定一个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
 
@@ -7238,7 +7238,7 @@ type Placement struct {
 	// 实例所属的专用宿主机ID列表，仅用于入参。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
 	HostIds []*string `json:"HostIds,omitempty" name:"HostIds"`
 
-	// 指定母机ip生产子机
+	// 指定母机IP生产子机
 	HostIps []*string `json:"HostIps,omitempty" name:"HostIps"`
 
 	// 实例所属的专用宿主机ID，仅用于出参。
@@ -7821,8 +7821,8 @@ type ReservedInstancePriceItem struct {
 	// 计量单位：秒
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 
-	// 预留实例计费的平台描述（即操作系统）。形如：linux。
-	// 返回项： linux 。
+	// 预留实例计费的平台描述（即操作系统）。形如：Linux。
+	// 返回项： Linux 。
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
 }
 

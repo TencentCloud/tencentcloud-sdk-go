@@ -706,7 +706,7 @@ func (r *CreateMigrationServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSyncJobRequestParams struct {
-	// 支付类型，PrePay：包年包月  PostPay：按时按量
+	// 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
@@ -724,19 +724,19 @@ type CreateSyncJobRequestParams struct {
 	// 同步任务规格，Standard:标准版
 	Specification *string `json:"Specification,omitempty" name:"Specification"`
 
-	// 无
+	// 标签信息
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 
-	// 同步任务数量
+	// 一次购买的同步任务数量，取值范围为[1, 10]，默认为1
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 自动续费标识
+	// 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费，默认为此值）
 	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
-	// 同步链路规格
+	// 同步链路规格，如micro,small,medium,large，默认为medium
 	InstanceClass *string `json:"InstanceClass,omitempty" name:"InstanceClass"`
 
-	// 同步链路名称
+	// 同步任务名称
 	JobName *string `json:"JobName,omitempty" name:"JobName"`
 
 	// 创建类似任务的现有任务Id
@@ -746,7 +746,7 @@ type CreateSyncJobRequestParams struct {
 type CreateSyncJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 支付类型，PrePay：包年包月  PostPay：按时按量
+	// 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 源端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
@@ -764,19 +764,19 @@ type CreateSyncJobRequest struct {
 	// 同步任务规格，Standard:标准版
 	Specification *string `json:"Specification,omitempty" name:"Specification"`
 
-	// 无
+	// 标签信息
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 
-	// 同步任务数量
+	// 一次购买的同步任务数量，取值范围为[1, 10]，默认为1
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 自动续费标识
+	// 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费，默认为此值）
 	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
-	// 同步链路规格
+	// 同步链路规格，如micro,small,medium,large，默认为medium
 	InstanceClass *string `json:"InstanceClass,omitempty" name:"InstanceClass"`
 
-	// 同步链路名称
+	// 同步任务名称
 	JobName *string `json:"JobName,omitempty" name:"JobName"`
 
 	// 创建类似任务的现有任务Id

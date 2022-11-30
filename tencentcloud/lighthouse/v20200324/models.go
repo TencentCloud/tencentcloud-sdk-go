@@ -1111,6 +1111,80 @@ type DeniedAction struct {
 }
 
 // Predefined struct for user
+type DescribeAllScenesRequestParams struct {
+	// 使用场景ID列表。
+	SceneIds []*string `json:"SceneIds,omitempty" name:"SceneIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeAllScenesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 使用场景ID列表。
+	SceneIds []*string `json:"SceneIds,omitempty" name:"SceneIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAllScenesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllScenesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SceneIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllScenesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAllScenesResponseParams struct {
+	// 使用场景详细信息列表。
+	SceneInfoSet []*SceneInfo `json:"SceneInfoSet,omitempty" name:"SceneInfoSet"`
+
+	// 使用场景详细信息总数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAllScenesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAllScenesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAllScenesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllScenesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBlueprintInstancesRequestParams struct {
 	// 实例 ID 列表，当前最多支持 1 个。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -3033,6 +3107,80 @@ func (r *DescribeResetInstanceBlueprintsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeResetInstanceBlueprintsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScenesRequestParams struct {
+	// 使用场景ID列表。
+	SceneIds []*string `json:"SceneIds,omitempty" name:"SceneIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeScenesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 使用场景ID列表。
+	SceneIds []*string `json:"SceneIds,omitempty" name:"SceneIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeScenesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScenesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SceneIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScenesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScenesResponseParams struct {
+	// 使用场景列表。
+	SceneSet []*Scene `json:"SceneSet,omitempty" name:"SceneSet"`
+
+	// 使用场景总数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeScenesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScenesResponseParams `json:"Response"`
+}
+
+func (r *DescribeScenesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScenesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5499,6 +5647,28 @@ func (r *ResetInstancesPasswordResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResetInstancesPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Scene struct {
+	// 使用场景Id
+	SceneId *string `json:"SceneId,omitempty" name:"SceneId"`
+
+	// 使用场景展示名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 使用场景描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type SceneInfo struct {
+	// 使用场景Id。
+	SceneId *string `json:"SceneId,omitempty" name:"SceneId"`
+
+	// 使用场景展示名称。
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 使用场景描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type Snapshot struct {

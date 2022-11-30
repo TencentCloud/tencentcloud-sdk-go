@@ -21,19 +21,19 @@ import (
 )
 
 type Agent struct {
-	// 腾讯电子签颁发给渠道的应用ID，32位字符串
+	// 应用的唯一标识。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
-	// 渠道/平台合作企业的企业ID，最大64位字符串
+	// 渠道平台自定义，对于渠道子客企业的唯一标识。一个渠道子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要渠道平台保存），最大64位字符串
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
-	// 渠道/平台合作企业经办人（操作员）
+	// 渠道子客企业中的员工/经办人，通过渠道平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
 	ProxyOperator *UserInfo `json:"ProxyOperator,omitempty" name:"ProxyOperator"`
 
-	// 腾讯电子签颁发给渠道侧合作企业的应用ID
+	// 在子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
 	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
 
-	// 内部参数，腾讯电子签颁发给渠道侧合作企业的企业ID，不需要传
+	// 内部参数，暂未开放使用
 	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitempty" name:"ProxyOrganizationId"`
 }
 
@@ -411,7 +411,7 @@ type ChannelCreateBoundFlowsRequestParams struct {
 	// 领取的合同id列表
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -425,7 +425,7 @@ type ChannelCreateBoundFlowsRequest struct {
 	// 领取的合同id列表
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1037,16 +1037,16 @@ func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelCreateReleaseFlowRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
 	// 待解除的流程编号（即原流程的编号）
 	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitempty" name:"NeedRelievedFlowId"`
 
 	// 解除协议内容
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitempty" name:"ReliveInfo"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（比如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，解除协议的签署人数量不能多于原流程的签署人数量
+	// 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，解除协议的签署人数量不能多于原流程的签署人数量
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitempty" name:"ReleasedApprovers"`
 
 	// 签署完回调url，最大长度1000个字符
@@ -1062,16 +1062,16 @@ type ChannelCreateReleaseFlowRequestParams struct {
 type ChannelCreateReleaseFlowRequest struct {
 	*tchttp.BaseRequest
 	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
 	// 待解除的流程编号（即原流程的编号）
 	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitempty" name:"NeedRelievedFlowId"`
 
 	// 解除协议内容
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitempty" name:"ReliveInfo"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（比如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，解除协议的签署人数量不能多于原流程的签署人数量
+	// 非必须，解除协议的本企业签署人列表，默认使用原流程的签署人列表；当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业的其他签署人来替换原流程中的原签署人，注意需要指明ApproverNumber来代表需要替换哪一个签署人，解除协议的签署人数量不能多于原流程的签署人数量
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitempty" name:"ReleasedApprovers"`
 
 	// 签署完回调url，最大长度1000个字符
@@ -1096,9 +1096,9 @@ func (r *ChannelCreateReleaseFlowRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Agent")
 	delete(f, "NeedRelievedFlowId")
 	delete(f, "ReliveInfo")
-	delete(f, "Agent")
 	delete(f, "ReleasedApprovers")
 	delete(f, "CallbackUrl")
 	delete(f, "Organization")
@@ -1967,10 +1967,10 @@ type CreateSealByImageRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 印章名称，最大长度不超过30字符
+	// 印章名称，最大长度不超过50字符
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
 
-	// 印章图片base64
+	// 印章图片base64，大小不超过10M（原始图片不超过7.6M）
 	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 操作者的信息
@@ -1983,10 +1983,10 @@ type CreateSealByImageRequest struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 印章名称，最大长度不超过30字符
+	// 印章名称，最大长度不超过50字符
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
 
-	// 印章图片base64
+	// 印章图片base64，大小不超过10M（原始图片不超过7.6M）
 	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 操作者的信息
@@ -2483,6 +2483,9 @@ type DescribeTemplatesRequestParams struct {
 
 	// 是否获取模板预览链接
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
+
+	// 是否获取模板的PDF文件链接-渠道版需要开启白名单时才能使用。
+	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
 }
 
 type DescribeTemplatesRequest struct {
@@ -2514,6 +2517,9 @@ type DescribeTemplatesRequest struct {
 
 	// 是否获取模板预览链接
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
+
+	// 是否获取模板的PDF文件链接-渠道版需要开启白名单时才能使用。
+	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -2537,6 +2543,7 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "TemplateName")
 	delete(f, "Operator")
 	delete(f, "WithPreviewUrl")
+	delete(f, "WithPdfUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}
@@ -3302,7 +3309,7 @@ func (r *PrepareFlowsResponse) FromJsonString(s string) error {
 }
 
 type ProxyOrganizationOperator struct {
-	// 经办人ID（渠道颁发），最大长度64个字符
+	// 对应Agent-ProxyOperator-OpenId。渠道平台自定义，对渠道子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（比如，可以使用经办人企业名+员工身份证的hash值，需要渠道平台保存），最大64位字符串
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 经办人姓名，最大长度50个字符
@@ -3748,11 +3755,11 @@ type TemplateInfo struct {
 	// 模板控件信息结构
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
-	// 签署区模板信息结构
-	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
-
 	// 模板中的流程参与人信息
 	Recipients []*Recipient `json:"Recipients,omitempty" name:"Recipients"`
+
+	// 签署区模板信息结构
+	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
 	// 模板类型：1-静默签；3-普通模板
 	TemplateType *int64 `json:"TemplateType,omitempty" name:"TemplateType"`
@@ -3771,8 +3778,11 @@ type TemplateInfo struct {
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 
 	// 渠道模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
+
+	// 渠道版-模板PDF文件链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PdfUrl *string `json:"PdfUrl,omitempty" name:"PdfUrl"`
 }
 
 type UploadFile struct {
@@ -3896,18 +3906,18 @@ type UsageDetail struct {
 }
 
 type UserInfo struct {
-	// 用户在渠道的编号，最大64位字符串
+	// 渠道平台自定义，对渠道子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要渠道平台保存），最大64位字符串
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 用户的来源渠道
+	// 内部参数，暂未开放使用
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
-	// 自定义用户编号
+	// 内部参数，暂未开放使用
 	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
 
-	// 用户真实IP
+	// 内部参数，暂未开放使用
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
-	// 用户代理IP
+	// 内部参数，暂未开放使用
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
 }

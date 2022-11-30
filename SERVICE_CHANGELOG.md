@@ -1,74 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
 
-### 第 105 次发布
+### 第 2 次发布
 
-发布时间：2022-11-29 06:19:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* ModifyCDBProxy
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* RoWeight
-
-
-
-## 内容分发网络 CDN(cdn) 版本：2018-06-06
-
-### 第 113 次发布
-
-发布时间：2022-11-29 06:20:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeIpStatus](https://cloud.tencent.com/document/api/228/41954)
-
-	* 新增入参：AbbreviationIpv6
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 99 次发布
-
-发布时间：2022-11-29 06:30:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SyncImages](https://cloud.tencent.com/document/api/213/15711)
-
-	* 新增入参：ImageSetRequired
-
-	* 新增出参：ImageSet
-
-
-新增数据结构：
-
-* [SyncImage](https://cloud.tencent.com/document/api/213/15753#SyncImage)
-
-
-
-## TDSQL MySQL 版(dcdb) 版本：2018-04-11
-
-### 第 50 次发布
-
-发布时间：2022-11-29 06:37:37
+发布时间：2022-11-30 06:17:14
 
 本次发布包含了以下内容：
 
@@ -76,146 +12,34 @@
 
 新增接口：
 
-* [ModifyAccountPrivileges](https://cloud.tencent.com/document/api/557/83475)
+* [DescribeSpec](https://cloud.tencent.com/document/api/1299/83510)
 
 新增数据结构：
 
-* [Account](https://cloud.tencent.com/document/api/557/16142#Account)
-* [ColumnPrivilege](https://cloud.tencent.com/document/api/557/16142#ColumnPrivilege)
-* [DatabasePrivilege](https://cloud.tencent.com/document/api/557/16142#DatabasePrivilege)
-* [TablePrivilege](https://cloud.tencent.com/document/api/557/16142#TablePrivilege)
-* [ViewPrivileges](https://cloud.tencent.com/document/api/557/16142#ViewPrivileges)
+* [DiskSpec](https://cloud.tencent.com/document/api/1299/83429#DiskSpec)
+* [ResourceSpec](https://cloud.tencent.com/document/api/1299/83429#ResourceSpec)
 
 
 
-## 人脸核身(faceid) 版本：2018-03-01
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 51 次发布
+### 第 37 次发布
 
-发布时间：2022-11-29 06:46:33
+发布时间：2022-11-30 06:44:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DetectAuth](https://cloud.tencent.com/document/api/1007/31816)
-
-	* 新增入参：Config
-
+* [DescribeAllScenes](https://cloud.tencent.com/document/api/1207/83513)
+* [DescribeScenes](https://cloud.tencent.com/document/api/1207/83512)
 
 新增数据结构：
 
-* [RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig)
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 48 次发布
-
-发布时间：2022-11-29 06:52:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DeviceInfo](https://cloud.tencent.com/document/api/1081/34988#DeviceInfo)
-
-	* 新增成员：IsLora
-
-
-
-
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
-
-### 第 31 次发布
-
-发布时间：2022-11-29 07:09:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [ParamSpecRelation](https://cloud.tencent.com/document/api/409/16778#ParamSpecRelation)
-* [ParamVersionRelation](https://cloud.tencent.com/document/api/409/16778#ParamVersionRelation)
-
-修改数据结构：
-
-* [ParamInfo](https://cloud.tencent.com/document/api/409/16778#ParamInfo)
-
-	* 新增成员：StandbyRelated, VersionRelationSet, SpecRelationSet
-
-
-
-
-## 服务网格(tcm) 版本：2021-04-13
-
-### 第 19 次发布
-
-发布时间：2022-11-29 07:19:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAccessLogConfig](https://cloud.tencent.com/document/api/1261/83255)
-
-	* 新增出参：CLS, Address, EnableServer, EnableStdout, Enable
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 16 次发布
-
-发布时间：2022-11-29 07:26:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSecurityDropPage](https://cloud.tencent.com/document/api/1552/80682)
-
-	* 新增入参：TemplateId
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
-
-### 第 11 次发布
-
-发布时间：2022-11-29 07:29:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [WorkloadStatus](https://cloud.tencent.com/document/api/851/75051#WorkloadStatus)
-
-	* 新增成员：Conditions
-
-
-
-
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+* [Scene](https://cloud.tencent.com/document/api/1207/47576#Scene)
+* [SceneInfo](https://cloud.tencent.com/document/api/1207/47576#SceneInfo)
 
 
 
@@ -17121,6 +16945,23 @@
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
 
+### 第 2 次发布
+
+发布时间：2022-11-30 06:17:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSpec](https://cloud.tencent.com/document/api/1299/83510)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DiskSpec](https://cloud.tencent.com/document/api/1299/83429#DiskSpec)](https://cloud.tencent.com/document/api/1299/83429#[DiskSpec](https://cloud.tencent.com/document/api/1299/83429#DiskSpec))
+* [[ResourceSpec](https://cloud.tencent.com/document/api/1299/83429#ResourceSpec)](https://cloud.tencent.com/document/api/1299/83429#[ResourceSpec](https://cloud.tencent.com/document/api/1299/83429#ResourceSpec))
+
 ### 第 1 次发布
 
 发布时间：2022-11-25 17:33:17
@@ -27113,7 +26954,7 @@
 
 新增数据结构：
 
-* [[SyncImage](https://cloud.tencent.com/document/api/213/15753#SyncImage)](https://cloud.tencent.com/document/api/213/15753#[SyncImage](https://cloud.tencent.com/document/api/213/15753#SyncImage))
+* [SyncImage](https://cloud.tencent.com/document/api/213/15753#SyncImage)
 
 ### 第 98 次发布
 
@@ -33413,15 +33254,15 @@
 
 新增接口：
 
-* [[ModifyAccountPrivileges](https://cloud.tencent.com/document/api/557/83475)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyAccountPrivileges](https://cloud.tencent.com/document/api/557/83475)
 
 新增数据结构：
 
-* [[Account](https://cloud.tencent.com/document/api/557/16142#Account)](https://cloud.tencent.com/document/api/557/16142#[Account](https://cloud.tencent.com/document/api/557/16142#Account))
-* [[ColumnPrivilege](https://cloud.tencent.com/document/api/557/16142#ColumnPrivilege)](https://cloud.tencent.com/document/api/557/16142#[ColumnPrivilege](https://cloud.tencent.com/document/api/557/16142#ColumnPrivilege))
-* [[DatabasePrivilege](https://cloud.tencent.com/document/api/557/16142#DatabasePrivilege)](https://cloud.tencent.com/document/api/557/16142#[DatabasePrivilege](https://cloud.tencent.com/document/api/557/16142#DatabasePrivilege))
-* [[TablePrivilege](https://cloud.tencent.com/document/api/557/16142#TablePrivilege)](https://cloud.tencent.com/document/api/557/16142#[TablePrivilege](https://cloud.tencent.com/document/api/557/16142#TablePrivilege))
-* [[ViewPrivileges](https://cloud.tencent.com/document/api/557/16142#ViewPrivileges)](https://cloud.tencent.com/document/api/557/16142#[ViewPrivileges](https://cloud.tencent.com/document/api/557/16142#ViewPrivileges))
+* [Account](https://cloud.tencent.com/document/api/557/16142#Account)
+* [ColumnPrivilege](https://cloud.tencent.com/document/api/557/16142#ColumnPrivilege)
+* [DatabasePrivilege](https://cloud.tencent.com/document/api/557/16142#DatabasePrivilege)
+* [TablePrivilege](https://cloud.tencent.com/document/api/557/16142#TablePrivilege)
+* [ViewPrivileges](https://cloud.tencent.com/document/api/557/16142#ViewPrivileges)
 
 ### 第 49 次发布
 
@@ -41497,6 +41338,28 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 54 次发布
+
+发布时间：2022-11-29 17:04:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTemplates](https://cloud.tencent.com/document/api/1420/61521)
+
+	* 新增入参：WithPdfUrl
+
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* 新增成员：PdfUrl
+
+
 ### 第 53 次发布
 
 发布时间：2022-11-28 10:42:34
@@ -42586,7 +42449,7 @@
 
 新增数据结构：
 
-* [[RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig)](https://cloud.tencent.com/document/api/1007/41958#[RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig))
+* [RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig)
 
 ### 第 50 次发布
 
@@ -52621,6 +52484,24 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 37 次发布
+
+发布时间：2022-11-30 06:44:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAllScenes](https://cloud.tencent.com/document/api/1207/83513)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeScenes](https://cloud.tencent.com/document/api/1207/83512)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Scene](https://cloud.tencent.com/document/api/1207/47576#Scene)](https://cloud.tencent.com/document/api/1207/47576#[Scene](https://cloud.tencent.com/document/api/1207/47576#Scene))
+* [[SceneInfo](https://cloud.tencent.com/document/api/1207/47576#SceneInfo)](https://cloud.tencent.com/document/api/1207/47576#[SceneInfo](https://cloud.tencent.com/document/api/1207/47576#SceneInfo))
 
 ### 第 36 次发布
 
@@ -64420,8 +64301,8 @@
 
 新增数据结构：
 
-* [[ParamSpecRelation](https://cloud.tencent.com/document/api/409/16778#ParamSpecRelation)](https://cloud.tencent.com/document/api/409/16778#[ParamSpecRelation](https://cloud.tencent.com/document/api/409/16778#ParamSpecRelation))
-* [[ParamVersionRelation](https://cloud.tencent.com/document/api/409/16778#ParamVersionRelation)](https://cloud.tencent.com/document/api/409/16778#[ParamVersionRelation](https://cloud.tencent.com/document/api/409/16778#ParamVersionRelation))
+* [ParamSpecRelation](https://cloud.tencent.com/document/api/409/16778#ParamSpecRelation)
+* [ParamVersionRelation](https://cloud.tencent.com/document/api/409/16778#ParamVersionRelation)
 
 修改数据结构：
 
