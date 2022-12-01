@@ -1,3 +1,31 @@
+# Release v1.0.549
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 129 次发布
+
+发布时间：2022-12-01 07:13:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReviewAudioVideo](https://cloud.tencent.com/document/api/266/80283)
+
+	* 新增入参：Definition
+
+
+修改数据结构：
+
+* [ReviewAudioVideoTaskInput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskInput)
+
+	* 新增成员：Definition
+
+
+
+
 # Release v1.0.548
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15

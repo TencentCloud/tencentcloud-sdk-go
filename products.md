@@ -89,7 +89,7 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2022-11-16 06:22:42 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2022-11-29 06:43:55 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2022-11-30 06:34:30 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2022-11-25 18:17:09 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2022-12-01 06:35:57 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-11-29 17:04:20 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2022-06-15 06:09:10 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2022-11-29 06:46:33 |
@@ -209,7 +209,7 @@
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2022-04-04 07:22:44 |
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2022-11-16 06:46:30 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2022-04-04 07:22:54 |
-| vod | [云点播](https://cloud.tencent.com/document/product/266) | 2022-11-28 07:19:44 |
+| vod | [云点播](https://cloud.tencent.com/document/product/266) | 2022-12-01 07:13:39 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2022-11-22 07:10:00 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2022-11-16 06:48:54 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2022-10-12 07:10:28 |

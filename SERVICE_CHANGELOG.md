@@ -1,45 +1,28 @@
 # 本版本更新包含以下内容：
 
-## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+## 云点播(vod) 版本：2018-07-17
 
-### 第 2 次发布
+### 第 129 次发布
 
-发布时间：2022-11-30 06:17:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSpec](https://cloud.tencent.com/document/api/1299/83510)
-
-新增数据结构：
-
-* [DiskSpec](https://cloud.tencent.com/document/api/1299/83429#DiskSpec)
-* [ResourceSpec](https://cloud.tencent.com/document/api/1299/83429#ResourceSpec)
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 37 次发布
-
-发布时间：2022-11-30 06:44:08
+发布时间：2022-12-01 07:13:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeAllScenes](https://cloud.tencent.com/document/api/1207/83513)
-* [DescribeScenes](https://cloud.tencent.com/document/api/1207/83512)
+* [ReviewAudioVideo](https://cloud.tencent.com/document/api/266/80283)
 
-新增数据结构：
+	* 新增入参：Definition
 
-* [Scene](https://cloud.tencent.com/document/api/1207/47576#Scene)
-* [SceneInfo](https://cloud.tencent.com/document/api/1207/47576#SceneInfo)
+
+修改数据结构：
+
+* [ReviewAudioVideoTaskInput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskInput)
+
+	* 新增成员：Definition
+
 
 
 
@@ -16955,12 +16938,12 @@
 
 新增接口：
 
-* [[DescribeSpec](https://cloud.tencent.com/document/api/1299/83510)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSpec](https://cloud.tencent.com/document/api/1299/83510)
 
 新增数据结构：
 
-* [[DiskSpec](https://cloud.tencent.com/document/api/1299/83429#DiskSpec)](https://cloud.tencent.com/document/api/1299/83429#[DiskSpec](https://cloud.tencent.com/document/api/1299/83429#DiskSpec))
-* [[ResourceSpec](https://cloud.tencent.com/document/api/1299/83429#ResourceSpec)](https://cloud.tencent.com/document/api/1299/83429#[ResourceSpec](https://cloud.tencent.com/document/api/1299/83429#ResourceSpec))
+* [DiskSpec](https://cloud.tencent.com/document/api/1299/83429#DiskSpec)
+* [ResourceSpec](https://cloud.tencent.com/document/api/1299/83429#ResourceSpec)
 
 ### 第 1 次发布
 
@@ -52495,13 +52478,13 @@
 
 新增接口：
 
-* [[DescribeAllScenes](https://cloud.tencent.com/document/api/1207/83513)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeScenes](https://cloud.tencent.com/document/api/1207/83512)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAllScenes](https://cloud.tencent.com/document/api/1207/83513)
+* [DescribeScenes](https://cloud.tencent.com/document/api/1207/83512)
 
 新增数据结构：
 
-* [[Scene](https://cloud.tencent.com/document/api/1207/47576#Scene)](https://cloud.tencent.com/document/api/1207/47576#[Scene](https://cloud.tencent.com/document/api/1207/47576#Scene))
-* [[SceneInfo](https://cloud.tencent.com/document/api/1207/47576#SceneInfo)](https://cloud.tencent.com/document/api/1207/47576#[SceneInfo](https://cloud.tencent.com/document/api/1207/47576#SceneInfo))
+* [Scene](https://cloud.tencent.com/document/api/1207/47576#Scene)
+* [SceneInfo](https://cloud.tencent.com/document/api/1207/47576#SceneInfo)
 
 ### 第 36 次发布
 
@@ -91710,6 +91693,28 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 129 次发布
+
+发布时间：2022-12-01 07:13:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReviewAudioVideo](https://cloud.tencent.com/document/api/266/80283)
+
+	* 新增入参：Definition
+
+
+修改数据结构：
+
+* [ReviewAudioVideoTaskInput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskInput)
+
+	* 新增成员：Definition
+
 
 ### 第 128 次发布
 
