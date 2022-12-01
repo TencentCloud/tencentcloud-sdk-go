@@ -450,7 +450,12 @@ func (c *Client) Init(region string) *Client {
 		transport = ht.Clone()
 	}
 
-	c.httpClient = &http.Client{Transport: transport}
+	c.httpClient = &http.Client{
+		Transport: transport,
+		// disable redirect
+		CheckRedirect: func(req *http.Request, via []*http.Request) error {
+			return http.ErrUseLastResponse
+		}}
 	c.region = region
 	c.signMethod = "TC3-HMAC-SHA256"
 	c.debug = false

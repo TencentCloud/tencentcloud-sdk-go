@@ -40,6 +40,16 @@ func (c *Client) sendWithNetworkFailureRetry(req *http.Request, retryable bool) 
 			}
 		}
 
+		// TencentCloudApi may return 302 when not ready
+		if err == nil && resp.StatusCode == http.StatusFound {
+			duration := durationFunc(idx)
+			if c.debug {
+				c.logger.Printf(tplNetworkFailureRetry, idx, maxRetries, duration.Seconds(), "302")
+			}
+			time.Sleep(duration)
+			continue
+		}
+
 		if err != nil {
 			msg := fmt.Sprintf("Fail to get response because %s", err)
 			err = errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
@@ -70,6 +80,7 @@ func safeDurationFunc(durationFunc profile.DurationFunc) profile.DurationFunc {
 // request with `ClientToken` means it's idempotent and retryable,
 // unretryable request SHOULDN'T retry for temporary network failure
 func isRetryable(obj interface{}) bool {
+	return true
 	// obj Must be struct ptr
 	getType := reflect.TypeOf(obj)
 	if getType.Kind() != reflect.Ptr || getType.Elem().Kind() != reflect.Struct {
