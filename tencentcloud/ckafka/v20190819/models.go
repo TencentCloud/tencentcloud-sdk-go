@@ -1527,6 +1527,105 @@ func (r *CreateDatahubTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateInstancePostRequestParams struct {
+	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例带宽
+	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
+
+	// vpcId，不填默认基础网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id，vpc网络需要传该参数，基础网络可以不传
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitempty" name:"MsgRetentionTime"`
+
+	// 可用区
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 创建实例时可以选择集群Id, 该入参表示集群Id
+	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type CreateInstancePostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例带宽
+	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
+
+	// vpcId，不填默认基础网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id，vpc网络需要传该参数，基础网络可以不传
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitempty" name:"MsgRetentionTime"`
+
+	// 可用区
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 创建实例时可以选择集群Id, 该入参表示集群Id
+	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *CreateInstancePostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstancePostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	delete(f, "BandWidth")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "MsgRetentionTime")
+	delete(f, "ZoneId")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInstancePostResponseParams struct {
+	// 返回结果
+	Result *JgwOperateResponse `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateInstancePostResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInstancePostResponseParams `json:"Response"`
+}
+
+func (r *CreateInstancePostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInstancePostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateInstancePreData struct {
 	// CreateInstancePre返回固定为0，不能作为CheckTaskStatus的查询条件。只是为了保证和后台数据结构对齐。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6157,6 +6256,291 @@ type GroupResponse struct {
 	GroupList []*DescribeGroup `json:"GroupList,omitempty" name:"GroupList"`
 }
 
+// Predefined struct for user
+type InquireCkafkaPriceRequestParams struct {
+	// 国内站标准版填写standards2, 专业版填写profession
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 购买/续费付费类型(购买时不填的话, 默认获取购买包年包月一个月的费用)
+	InstanceChargeParam *InstanceChargeParam `json:"InstanceChargeParam,omitempty" name:"InstanceChargeParam"`
+
+	// 购买/续费时购买的实例数量(不填时, 默认为1个)
+	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 实例内网带宽大小, 单位MB/s (购买时必填)
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 实例的硬盘购买类型以及大小 (购买时必填)
+	InquiryDiskParam *InquiryDiskParam `json:"InquiryDiskParam,omitempty" name:"InquiryDiskParam"`
+
+	// 实例消息保留时间大小, 单位小时 (购买时必填)
+	MessageRetention *int64 `json:"MessageRetention,omitempty" name:"MessageRetention"`
+
+	// 购买实例topic数, 单位个 (购买时必填)
+	Topic *int64 `json:"Topic,omitempty" name:"Topic"`
+
+	// 购买实例分区数, 单位个 (购买时必填)
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 购买地域, 可通过查看DescribeCkafkaZone这个接口获取ZoneId
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 标记操作, 新购填写purchase, 续费填写renew, (不填时, 默认为purchase)
+	CategoryAction *string `json:"CategoryAction,omitempty" name:"CategoryAction"`
+
+	// 国内站购买的版本, sv_ckafka_instance_s2_1(入门型), sv_ckafka_instance_s2_2(标准版), sv_ckafka_instance_s2_3(进阶型), 如果instanceType为standards2, 但该参数为空, 则默认值为sv_ckafka_instance_s2_1
+	BillType *string `json:"BillType,omitempty" name:"BillType"`
+
+	// 公网带宽计费模式, 目前只有专业版支持公网带宽 (购买公网带宽时必填)
+	PublicNetworkParam *InquiryPublicNetworkParam `json:"PublicNetworkParam,omitempty" name:"PublicNetworkParam"`
+
+	// 续费时的实例id, 续费时填写
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type InquireCkafkaPriceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 国内站标准版填写standards2, 专业版填写profession
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 购买/续费付费类型(购买时不填的话, 默认获取购买包年包月一个月的费用)
+	InstanceChargeParam *InstanceChargeParam `json:"InstanceChargeParam,omitempty" name:"InstanceChargeParam"`
+
+	// 购买/续费时购买的实例数量(不填时, 默认为1个)
+	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 实例内网带宽大小, 单位MB/s (购买时必填)
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 实例的硬盘购买类型以及大小 (购买时必填)
+	InquiryDiskParam *InquiryDiskParam `json:"InquiryDiskParam,omitempty" name:"InquiryDiskParam"`
+
+	// 实例消息保留时间大小, 单位小时 (购买时必填)
+	MessageRetention *int64 `json:"MessageRetention,omitempty" name:"MessageRetention"`
+
+	// 购买实例topic数, 单位个 (购买时必填)
+	Topic *int64 `json:"Topic,omitempty" name:"Topic"`
+
+	// 购买实例分区数, 单位个 (购买时必填)
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 购买地域, 可通过查看DescribeCkafkaZone这个接口获取ZoneId
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 标记操作, 新购填写purchase, 续费填写renew, (不填时, 默认为purchase)
+	CategoryAction *string `json:"CategoryAction,omitempty" name:"CategoryAction"`
+
+	// 国内站购买的版本, sv_ckafka_instance_s2_1(入门型), sv_ckafka_instance_s2_2(标准版), sv_ckafka_instance_s2_3(进阶型), 如果instanceType为standards2, 但该参数为空, 则默认值为sv_ckafka_instance_s2_1
+	BillType *string `json:"BillType,omitempty" name:"BillType"`
+
+	// 公网带宽计费模式, 目前只有专业版支持公网带宽 (购买公网带宽时必填)
+	PublicNetworkParam *InquiryPublicNetworkParam `json:"PublicNetworkParam,omitempty" name:"PublicNetworkParam"`
+
+	// 续费时的实例id, 续费时填写
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *InquireCkafkaPriceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquireCkafkaPriceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "InstanceChargeParam")
+	delete(f, "InstanceNum")
+	delete(f, "Bandwidth")
+	delete(f, "InquiryDiskParam")
+	delete(f, "MessageRetention")
+	delete(f, "Topic")
+	delete(f, "Partition")
+	delete(f, "ZoneIds")
+	delete(f, "CategoryAction")
+	delete(f, "BillType")
+	delete(f, "PublicNetworkParam")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquireCkafkaPriceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InquireCkafkaPriceResp struct {
+	// 实例价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancePrice *InquiryPrice `json:"InstancePrice,omitempty" name:"InstancePrice"`
+
+	// 公网带宽价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicNetworkBandwidthPrice *InquiryPrice `json:"PublicNetworkBandwidthPrice,omitempty" name:"PublicNetworkBandwidthPrice"`
+}
+
+// Predefined struct for user
+type InquireCkafkaPriceResponseParams struct {
+	// 出参
+	Result *InquireCkafkaPriceResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type InquireCkafkaPriceResponse struct {
+	*tchttp.BaseResponse
+	Response *InquireCkafkaPriceResponseParams `json:"Response"`
+}
+
+func (r *InquireCkafkaPriceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquireCkafkaPriceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InquiryBasePrice struct {
+	// 单位原价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
+
+	// 折扣单位价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
+
+	// 合计原价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+	// 折扣合计价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 折扣(单位是%)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 商品数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 付费货币
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 硬盘专用返回参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 购买时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位("m"按月, "h"按小时)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 购买数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+}
+
+type InquiryDetailPrice struct {
+	// 额外内网带宽价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthPrice *InquiryBasePrice `json:"BandwidthPrice,omitempty" name:"BandwidthPrice"`
+
+	// 硬盘价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskPrice *InquiryBasePrice `json:"DiskPrice,omitempty" name:"DiskPrice"`
+
+	// 额外分区价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionPrice *InquiryBasePrice `json:"PartitionPrice,omitempty" name:"PartitionPrice"`
+
+	// 额外Topic价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicPrice *InquiryBasePrice `json:"TopicPrice,omitempty" name:"TopicPrice"`
+
+	// 实例套餐价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTypePrice *InquiryBasePrice `json:"InstanceTypePrice,omitempty" name:"InstanceTypePrice"`
+}
+
+type InquiryDiskParam struct {
+	// 购买硬盘类型: SSD(SSD), CLOUD_SSD(SSD云硬盘), CLOUD_PREMIUM(高性能云硬盘), CLOUD_BASIC(云盘)
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 购买硬盘大小: 单位GB
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
+type InquiryPrice struct {
+	// 单位原价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
+
+	// 折扣单位价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
+
+	// 合计原价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+	// 折扣合计价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 折扣(单位是%)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 商品数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 付费货币
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 硬盘专用返回参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 购买时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位("m"按月, "h"按小时)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 购买数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+
+	// 详细类别的价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetailPrices *InquiryDetailPrice `json:"DetailPrices,omitempty" name:"DetailPrices"`
+}
+
+type InquiryPublicNetworkParam struct {
+	// 公网计费模式: BANDWIDTH_PREPAID(包年包月), BANDWIDTH_POSTPAID_BY_HOUR(带宽按小时计费)
+	PublicNetworkChargeType *string `json:"PublicNetworkChargeType,omitempty" name:"PublicNetworkChargeType"`
+
+	// 公网带宽, 单位MB
+	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
+}
+
 type Instance struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -6292,6 +6676,14 @@ type InstanceAttributesResponse struct {
 	// 动态硬盘扩容策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitempty" name:"DynamicDiskConfig"`
+}
+
+type InstanceChargeParam struct {
+	// 实例付费类型: PREPAID(包年包月), POSTPAID_BY_HOUR(按量付费)
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 购买时长: 包年包月时需要填写, 按量计费无需填写
+	InstanceChargePeriod *int64 `json:"InstanceChargePeriod,omitempty" name:"InstanceChargePeriod"`
 }
 
 type InstanceConfigDO struct {

@@ -1159,6 +1159,78 @@ func (c *Client) CreateClusterNodePoolFromExistingAsgWithContext(ctx context.Con
     return
 }
 
+func NewCreateClusterReleaseRequest() (request *CreateClusterReleaseRequest) {
+    request = &CreateClusterReleaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterRelease")
+    
+    
+    return
+}
+
+func NewCreateClusterReleaseResponse() (response *CreateClusterReleaseResponse) {
+    response = &CreateClusterReleaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateClusterRelease
+// 在应用市场中集群创建应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateClusterRelease(request *CreateClusterReleaseRequest) (response *CreateClusterReleaseResponse, err error) {
+    return c.CreateClusterReleaseWithContext(context.Background(), request)
+}
+
+// CreateClusterRelease
+// 在应用市场中集群创建应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateClusterReleaseWithContext(ctx context.Context, request *CreateClusterReleaseRequest) (response *CreateClusterReleaseResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterReleaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusterRelease require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateClusterReleaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateClusterRouteRequest() (request *CreateClusterRouteRequest) {
     request = &CreateClusterRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},

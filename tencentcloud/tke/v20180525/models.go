@@ -1740,6 +1740,134 @@ func (r *CreateClusterNodePoolResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateClusterReleaseRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 应用名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 应用命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 制品名称或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
+	Chart *string `json:"Chart,omitempty" name:"Chart"`
+
+	// 自定义参数
+	Values *ReleaseValues `json:"Values,omitempty" name:"Values"`
+
+	// 制品来源，范围：tke-market/tcr/other
+	ChartFrom *string `json:"ChartFrom,omitempty" name:"ChartFrom"`
+
+	// 制品版本
+	ChartVersion *string `json:"ChartVersion,omitempty" name:"ChartVersion"`
+
+	// 制品仓库URL地址
+	ChartRepoURL *string `json:"ChartRepoURL,omitempty" name:"ChartRepoURL"`
+
+	// 制品访问用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 制品访问密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 制品命名空间
+	ChartNamespace *string `json:"ChartNamespace,omitempty" name:"ChartNamespace"`
+}
+
+type CreateClusterReleaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 应用名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 应用命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 制品名称或从第三方repo 安装chart时，制品压缩包下载地址, 不支持重定向类型chart 地址，结尾为*.tgz
+	Chart *string `json:"Chart,omitempty" name:"Chart"`
+
+	// 自定义参数
+	Values *ReleaseValues `json:"Values,omitempty" name:"Values"`
+
+	// 制品来源，范围：tke-market/tcr/other
+	ChartFrom *string `json:"ChartFrom,omitempty" name:"ChartFrom"`
+
+	// 制品版本
+	ChartVersion *string `json:"ChartVersion,omitempty" name:"ChartVersion"`
+
+	// 制品仓库URL地址
+	ChartRepoURL *string `json:"ChartRepoURL,omitempty" name:"ChartRepoURL"`
+
+	// 制品访问用户名
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 制品访问密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 制品命名空间
+	ChartNamespace *string `json:"ChartNamespace,omitempty" name:"ChartNamespace"`
+}
+
+func (r *CreateClusterReleaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterReleaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Name")
+	delete(f, "Namespace")
+	delete(f, "Chart")
+	delete(f, "Values")
+	delete(f, "ChartFrom")
+	delete(f, "ChartVersion")
+	delete(f, "ChartRepoURL")
+	delete(f, "Username")
+	delete(f, "Password")
+	delete(f, "ChartNamespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterReleaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateClusterReleaseResponseParams struct {
+	// 应用详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Release *PendingRelease `json:"Release,omitempty" name:"Release"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateClusterReleaseResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateClusterReleaseResponseParams `json:"Response"`
+}
+
+func (r *CreateClusterReleaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterReleaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateClusterRequestParams struct {
 	// 集群容器网络配置信息
 	ClusterCIDRSettings *ClusterCIDRSettings `json:"ClusterCIDRSettings,omitempty" name:"ClusterCIDRSettings"`
@@ -13480,6 +13608,36 @@ type OIDCConfigAuthenticationOptions struct {
 	AutoInstallPodIdentityWebhookAddon *bool `json:"AutoInstallPodIdentityWebhookAddon,omitempty" name:"AutoInstallPodIdentityWebhookAddon"`
 }
 
+type PendingRelease struct {
+	// 应用状态详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Condition *string `json:"Condition,omitempty" name:"Condition"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitempty" name:"ID"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 应用命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 应用状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+}
+
 type PodLimitsByType struct {
 	// TKE共享网卡非固定IP模式可支持的Pod数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -14278,6 +14436,14 @@ type RegionInstance struct {
 	// 地域白名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type ReleaseValues struct {
+	// 自定义参数原始值
+	RawOriginal *string `json:"RawOriginal,omitempty" name:"RawOriginal"`
+
+	// 自定义参数值类型
+	ValuesType *string `json:"ValuesType,omitempty" name:"ValuesType"`
 }
 
 // Predefined struct for user

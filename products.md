@@ -52,7 +52,7 @@
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2022-06-27 06:06:02 |
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
-| ckafka | [消息队列 CKafka](https://cloud.tencent.com/document/product/597) | 2022-11-03 06:14:10 |
+| ckafka | [消息队列 CKafka](https://cloud.tencent.com/document/product/597) | 2022-12-02 06:19:08 |
 | clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2022-11-01 06:15:44 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2022-11-24 06:19:10 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2022-11-02 06:13:26 |
@@ -196,7 +196,7 @@
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2022-11-22 07:01:36 |
 | tione | [腾讯云 TI 平台 TI-ONE](https://cloud.tencent.com/document/product/851) | 2022-11-29 07:29:47 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2022-11-24 07:03:21 |
-| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-11-22 07:03:00 |
+| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-12-02 07:08:12 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2022-11-18 06:55:59 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2022-11-02 06:48:15 |
