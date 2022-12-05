@@ -1260,7 +1260,7 @@ func NewDeleteHpcClustersResponse() (response *DeleteHpcClustersResponse) {
 }
 
 // DeleteHpcClusters
-// 当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除改集群。
+// 当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除该集群。
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE_HPCCLUSTER = "ResourceInUse.HpcCluster"
@@ -1270,7 +1270,7 @@ func (c *Client) DeleteHpcClusters(request *DeleteHpcClustersRequest) (response 
 }
 
 // DeleteHpcClusters
-// 当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除改集群。
+// 当高性能计算集群为空, 即集群内没有任何设备时候, 可以删除该集群。
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE_HPCCLUSTER = "ResourceInUse.HpcCluster"

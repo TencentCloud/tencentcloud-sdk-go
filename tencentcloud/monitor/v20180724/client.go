@@ -4257,6 +4257,60 @@ func (c *Client) DescribePrometheusScrapeJobsWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribePrometheusZonesRequest() (request *DescribePrometheusZonesRequest) {
+    request = &DescribePrometheusZonesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusZones")
+    
+    
+    return
+}
+
+func NewDescribePrometheusZonesResponse() (response *DescribePrometheusZonesResponse) {
+    response = &DescribePrometheusZonesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusZones
+// 列出 Prometheus 服务可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePrometheusZones(request *DescribePrometheusZonesRequest) (response *DescribePrometheusZonesResponse, err error) {
+    return c.DescribePrometheusZonesWithContext(context.Background(), request)
+}
+
+// DescribePrometheusZones
+// 列出 Prometheus 服务可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePrometheusZonesWithContext(ctx context.Context, request *DescribePrometheusZonesRequest) (response *DescribePrometheusZonesResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusZonesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusZones require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecordingRulesRequest() (request *DescribeRecordingRulesRequest) {
     request = &DescribeRecordingRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},

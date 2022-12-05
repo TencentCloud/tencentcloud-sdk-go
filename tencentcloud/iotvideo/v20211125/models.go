@@ -205,6 +205,9 @@ type BatchUpdateFirmwareRequestParams struct {
 
 	// 需要升级的设备名称列表
 	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
+
+	// 固件升级任务默认超时时间。 最小取值60秒，最大为3600秒
+	TimeoutInterval *int64 `json:"TimeoutInterval,omitempty" name:"TimeoutInterval"`
 }
 
 type BatchUpdateFirmwareRequest struct {
@@ -233,6 +236,9 @@ type BatchUpdateFirmwareRequest struct {
 
 	// 需要升级的设备名称列表
 	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
+
+	// 固件升级任务默认超时时间。 最小取值60秒，最大为3600秒
+	TimeoutInterval *int64 `json:"TimeoutInterval,omitempty" name:"TimeoutInterval"`
 }
 
 func (r *BatchUpdateFirmwareRequest) ToJsonString() string {
@@ -255,6 +261,7 @@ func (r *BatchUpdateFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FileMd5")
 	delete(f, "FileSize")
 	delete(f, "DeviceNames")
+	delete(f, "TimeoutInterval")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateFirmwareRequest has unknown keys!", "")
 	}
@@ -4430,6 +4437,10 @@ type DescribeFirmwareResponseParams struct {
 	// 产品名称
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 
+	// 固件升级模块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -5884,6 +5895,10 @@ type FirmwareInfo struct {
 
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 固件升级模块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
 }
 
 type FirmwareTaskInfo struct {
@@ -7780,6 +7795,9 @@ type UploadFirmwareRequestParams struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitempty" name:"FirmwareDescription"`
+
+	// 固件升级模块；可选值 mcu|moudule
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
 }
 
 type UploadFirmwareRequest struct {
@@ -7802,6 +7820,9 @@ type UploadFirmwareRequest struct {
 
 	// 固件描述
 	FirmwareDescription *string `json:"FirmwareDescription,omitempty" name:"FirmwareDescription"`
+
+	// 固件升级模块；可选值 mcu|moudule
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
 }
 
 func (r *UploadFirmwareRequest) ToJsonString() string {
@@ -7822,6 +7843,7 @@ func (r *UploadFirmwareRequest) FromJsonString(s string) error {
 	delete(f, "FileSize")
 	delete(f, "FirmwareName")
 	delete(f, "FirmwareDescription")
+	delete(f, "FwType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFirmwareRequest has unknown keys!", "")
 	}

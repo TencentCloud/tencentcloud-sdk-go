@@ -569,6 +569,10 @@ type BackupInfo struct {
 
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份文件是否加密， on-加密， off-未加密
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptionFlag *string `json:"EncryptionFlag,omitempty" name:"EncryptionFlag"`
 }
 
 type BackupItem struct {

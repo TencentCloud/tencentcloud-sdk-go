@@ -1595,6 +1595,22 @@ type ApplyFlexPaymentResult struct {
 
 	// 税金
 	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 增值税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vat *string `json:"Vat,omitempty" name:"Vat"`
+
+	// 个人所得税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndividualIncomeTax *string `json:"IndividualIncomeTax,omitempty" name:"IndividualIncomeTax"`
+
+	// 附加税总税额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdditionalTaxSum *string `json:"AdditionalTaxSum,omitempty" name:"AdditionalTaxSum"`
+
+	// 附加税税项。格式为JSON格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdditionalTaxItem *string `json:"AdditionalTaxItem,omitempty" name:"AdditionalTaxItem"`
 }
 
 // Predefined struct for user
@@ -10621,6 +10637,9 @@ type CreateSinglePaymentData struct {
 // Predefined struct for user
 type CreateSinglePaymentRequestParams struct {
 	// 转账类型
+	// 1 微信企业付款 
+	// 2 支付宝转账 
+	// 3 平安银企直连代发转账
 	TransferType *uint64 `json:"TransferType,omitempty" name:"TransferType"`
 
 	// 订单流水号
@@ -10652,6 +10671,9 @@ type CreateSinglePaymentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 转账类型
+	// 1 微信企业付款 
+	// 2 支付宝转账 
+	// 3 平安银企直连代发转账
 	TransferType *uint64 `json:"TransferType,omitempty" name:"TransferType"`
 
 	// 订单流水号
@@ -15706,6 +15728,22 @@ type PaymentOrderResult struct {
 	// 渠道支付订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 增值税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vat *string `json:"Vat,omitempty" name:"Vat"`
+
+	// 个人所得税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndividualIncomeTax *string `json:"IndividualIncomeTax,omitempty" name:"IndividualIncomeTax"`
+
+	// 附加税总税额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdditionalTaxSum *string `json:"AdditionalTaxSum,omitempty" name:"AdditionalTaxSum"`
+
+	// 附加税税项。格式为JSON格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdditionalTaxItem *string `json:"AdditionalTaxItem,omitempty" name:"AdditionalTaxItem"`
 }
 
 type PaymentOrderStatusResult struct {
@@ -19336,6 +19374,9 @@ type QueryFlexPayeeAccountBalanceRequestParams struct {
 	// __test__:测试环境
 	// 缺省默认为生产环境
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 快照日期。格式yyyy-MM-dd
+	SnapshotDate *string `json:"SnapshotDate,omitempty" name:"SnapshotDate"`
 }
 
 type QueryFlexPayeeAccountBalanceRequest struct {
@@ -19355,6 +19396,9 @@ type QueryFlexPayeeAccountBalanceRequest struct {
 	// __test__:测试环境
 	// 缺省默认为生产环境
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 快照日期。格式yyyy-MM-dd
+	SnapshotDate *string `json:"SnapshotDate,omitempty" name:"SnapshotDate"`
 }
 
 func (r *QueryFlexPayeeAccountBalanceRequest) ToJsonString() string {
@@ -19372,6 +19416,7 @@ func (r *QueryFlexPayeeAccountBalanceRequest) FromJsonString(s string) error {
 	delete(f, "PayeeId")
 	delete(f, "IncomeType")
 	delete(f, "Environment")
+	delete(f, "SnapshotDate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeAccountBalanceRequest has unknown keys!", "")
 	}
@@ -21663,7 +21708,7 @@ type QueryOpenBankBankBranchListRequestParams struct {
 	// 银行简称。
 	BankAbbreviation *string `json:"BankAbbreviation,omitempty" name:"BankAbbreviation"`
 
-	// 页码。Index和Count必须大于等于1。
+	// 页码。Index和Count必须大于等于1。Count建议不超过100。
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
 
 	// 环境类型。
@@ -21696,7 +21741,7 @@ type QueryOpenBankBankBranchListRequest struct {
 	// 银行简称。
 	BankAbbreviation *string `json:"BankAbbreviation,omitempty" name:"BankAbbreviation"`
 
-	// 页码。Index和Count必须大于等于1。
+	// 页码。Index和Count必须大于等于1。Count建议不超过100。
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
 
 	// 环境类型。

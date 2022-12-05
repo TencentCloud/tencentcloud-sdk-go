@@ -7252,6 +7252,64 @@ func (r *DescribePrometheusScrapeJobsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusZonesRequestParams struct {
+	// 地域 ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+}
+
+type DescribePrometheusZonesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 地域 ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+}
+
+func (r *DescribePrometheusZonesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusZonesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusZonesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusZonesResponseParams struct {
+	// 区域列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneSet []*PrometheusZoneItem `json:"ZoneSet,omitempty" name:"ZoneSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusZonesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusZonesResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusZonesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusZonesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRecordingRulesRequestParams struct {
 	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -9833,6 +9891,23 @@ type PrometheusTag struct {
 	// 标签对应的值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type PrometheusZoneItem struct {
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 可用区 ID
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 可用区状态( 0: 不可用；1: 可用)
+	ZoneState *int64 `json:"ZoneState,omitempty" name:"ZoneState"`
+
+	// 地域 ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 可用区名（目前为中文）
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 }
 
 // Predefined struct for user

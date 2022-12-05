@@ -1944,7 +1944,7 @@ func (r *DescribeMigrationJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSyncJobsRequestParams struct {
-	// 同步任务id
+	// 同步任务id，如sync-werwfs23
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// 同步任务名
@@ -1981,7 +1981,7 @@ type DescribeSyncJobsRequestParams struct {
 type DescribeSyncJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 同步任务id
+	// 同步任务id，如sync-werwfs23
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// 同步任务名
@@ -2356,6 +2356,10 @@ type Endpoint struct {
 	// 临时Token，如果为跨账号实例此项必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpToken *string `json:"TmpToken,omitempty" name:"TmpToken"`
+
+	// 外部角色id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleExternalId *string `json:"RoleExternalId,omitempty" name:"RoleExternalId"`
 }
 
 type ErrorInfoItem struct {
@@ -3681,6 +3685,10 @@ type StepTip struct {
 	// 帮助文档
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HelpDoc *string `json:"HelpDoc,omitempty" name:"HelpDoc"`
+
+	// 当前步骤跳过信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkipInfo *string `json:"SkipInfo,omitempty" name:"SkipInfo"`
 }
 
 // Predefined struct for user
@@ -3887,7 +3895,7 @@ type SyncDetailInfo struct {
 }
 
 type SyncJobInfo struct {
-	// 同步任务id
+	// 同步任务id，如：sync-btso140
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
@@ -3895,15 +3903,15 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobName *string `json:"JobName,omitempty" name:"JobName"`
 
-	// 付款方式
+	// 付款方式，PostPay(按量付费)、PrePay(包年包月)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 运行模式
+	// 运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
 
-	// 期待运行时间
+	// 期待运行时间，格式为 yyyy-mm-dd hh:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpectRunTime *string `json:"ExpectRunTime,omitempty" name:"ExpectRunTime"`
 
@@ -3927,19 +3935,19 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Specification *string `json:"Specification,omitempty" name:"Specification"`
 
-	// 过期时间
+	// 过期时间，格式为 yyyy-mm-dd hh:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 源端地域
+	// 源端地域，如：ap-guangzhou等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcRegion *string `json:"SrcRegion,omitempty" name:"SrcRegion"`
 
-	// 源端数据库类型
+	// 源端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitempty" name:"SrcDatabaseType"`
 
-	// 源端接入类型
+	// 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
@@ -3947,15 +3955,15 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
-	// 目标端地域
+	// 目标端地域，如：ap-guangzhou等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstRegion *string `json:"DstRegion,omitempty" name:"DstRegion"`
 
-	// 目标端数据库类型
+	// 目标端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstDatabaseType *string `json:"DstDatabaseType,omitempty" name:"DstDatabaseType"`
 
-	// 目标端接入类型
+	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
 
@@ -3963,29 +3971,45 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
 
-	// 创建时间
+	// 创建时间，格式为 yyyy-mm-dd hh:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 开始时间
+	// 开始时间，格式为 yyyy-mm-dd hh:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间，格式为 yyyy-mm-dd hh:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 任务状态
+	// 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已停止)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 标签相关
+	// 标签相关信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 
 	// 同步任务运行步骤信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *SyncDetailInfo `json:"Detail,omitempty" name:"Detail"`
+
+	// 用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TradeStatus *string `json:"TradeStatus,omitempty" name:"TradeStatus"`
+
+	// 同步链路规格，如micro,small,medium,large
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceClass *string `json:"InstanceClass,omitempty" name:"InstanceClass"`
+
+	// 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+
+	// 下线时间，格式为 yyyy-mm-dd hh:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTime *string `json:"OfflineTime,omitempty" name:"OfflineTime"`
 }
 
 type Table struct {

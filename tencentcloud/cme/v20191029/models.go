@@ -2240,7 +2240,7 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 导出项目输出信息。
+	// 导出项目输出信息。仅当 TaskType 为 VIDEO_EDIT_PROJECT_EXPORT 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoEditProjectOutput *VideoEditProjectOutput `json:"VideoEditProjectOutput,omitempty" name:"VideoEditProjectOutput"`
 

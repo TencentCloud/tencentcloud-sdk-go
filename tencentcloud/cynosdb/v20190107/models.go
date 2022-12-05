@@ -5754,6 +5754,81 @@ func (r *RemoveClusterSlaveZoneResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ResetAccountPasswordRequestParams struct {
+	// 数据库账号名
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 数据库账号新密码
+	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 主机，不填默认为"%"
+	Host *string `json:"Host,omitempty" name:"Host"`
+}
+
+type ResetAccountPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库账号名
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 数据库账号新密码
+	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 主机，不填默认为"%"
+	Host *string `json:"Host,omitempty" name:"Host"`
+}
+
+func (r *ResetAccountPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetAccountPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccountName")
+	delete(f, "AccountPassword")
+	delete(f, "ClusterId")
+	delete(f, "Host")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetAccountPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetAccountPasswordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ResetAccountPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetAccountPasswordResponseParams `json:"Response"`
+}
+
+func (r *ResetAccountPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetAccountPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResumeServerlessRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -6016,6 +6091,167 @@ type RollbackTimeRange struct {
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
 }
 
+// Predefined struct for user
+type SearchClusterDatabasesRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 是否精确搜索。
+	// 0: 模糊搜索 1:精确搜索 
+	// 默认为0
+	MatchType *int64 `json:"MatchType,omitempty" name:"MatchType"`
+}
+
+type SearchClusterDatabasesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 是否精确搜索。
+	// 0: 模糊搜索 1:精确搜索 
+	// 默认为0
+	MatchType *int64 `json:"MatchType,omitempty" name:"MatchType"`
+}
+
+func (r *SearchClusterDatabasesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchClusterDatabasesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Database")
+	delete(f, "MatchType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchClusterDatabasesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchClusterDatabasesResponseParams struct {
+	// 数据库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Databases []*string `json:"Databases,omitempty" name:"Databases"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchClusterDatabasesResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchClusterDatabasesResponseParams `json:"Response"`
+}
+
+func (r *SearchClusterDatabasesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchClusterDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchClusterTablesRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据表名
+	Table *string `json:"Table,omitempty" name:"Table"`
+
+	// 数据表类型：
+	// view：只返回 view，
+	// base_table： 只返回基本表，
+	// all：返回 view 和表
+	TableType *string `json:"TableType,omitempty" name:"TableType"`
+}
+
+type SearchClusterTablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 数据库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 数据表名
+	Table *string `json:"Table,omitempty" name:"Table"`
+
+	// 数据表类型：
+	// view：只返回 view，
+	// base_table： 只返回基本表，
+	// all：返回 view 和表
+	TableType *string `json:"TableType,omitempty" name:"TableType"`
+}
+
+func (r *SearchClusterTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchClusterTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Database")
+	delete(f, "Table")
+	delete(f, "TableType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchClusterTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchClusterTablesResponseParams struct {
+	// 数据表列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tables []*DatabaseTables `json:"Tables,omitempty" name:"Tables"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchClusterTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchClusterTablesResponseParams `json:"Response"`
+}
+
+func (r *SearchClusterTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchClusterTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SecurityGroup struct {
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -6213,6 +6449,91 @@ func (r *SwitchClusterZoneResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SwitchClusterZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchProxyVpcRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 字符串vpc id
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 字符串子网id
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 旧地址回收时间
+	OldIpReserveHours *int64 `json:"OldIpReserveHours,omitempty" name:"OldIpReserveHours"`
+
+	// 数据库代理组Id
+	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
+}
+
+type SwitchProxyVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 字符串vpc id
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 字符串子网id
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 旧地址回收时间
+	OldIpReserveHours *int64 `json:"OldIpReserveHours,omitempty" name:"OldIpReserveHours"`
+
+	// 数据库代理组Id
+	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
+}
+
+func (r *SwitchProxyVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchProxyVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "UniqVpcId")
+	delete(f, "UniqSubnetId")
+	delete(f, "OldIpReserveHours")
+	delete(f, "ProxyGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchProxyVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchProxyVpcResponseParams struct {
+	// 异步任务id。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SwitchProxyVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchProxyVpcResponseParams `json:"Response"`
+}
+
+func (r *SwitchProxyVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchProxyVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

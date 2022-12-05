@@ -1694,26 +1694,26 @@ func (r *ModifyCustomizationStateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserMicStatusRequestParams struct {
-	// 应用ID
+	// 来自 [腾讯云控制台](https://console.cloud.tencent.com/gamegme) 的 GME 服务提供的 AppID，获取请参考 [语音服务开通指引](https://cloud.tencent.com/document/product/607/10782#.E9.87.8D.E7.82.B9.E5.8F.82.E6.95.B0)。
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 房间ID
+	// 实时语音房间号。
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 用户麦克风状态，数组长度不超过20
+	// 需要操作的房间内用户以及该用户的目标麦克风状态。
 	Users []*UserMicStatus `json:"Users,omitempty" name:"Users"`
 }
 
 type ModifyUserMicStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 来自 [腾讯云控制台](https://console.cloud.tencent.com/gamegme) 的 GME 服务提供的 AppID，获取请参考 [语音服务开通指引](https://cloud.tencent.com/document/product/607/10782#.E9.87.8D.E7.82.B9.E5.8F.82.E6.95.B0)。
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 房间ID
+	// 实时语音房间号。
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 用户麦克风状态，数组长度不超过20
+	// 需要操作的房间内用户以及该用户的目标麦克风状态。
 	Users []*UserMicStatus `json:"Users,omitempty" name:"Users"`
 }
 
@@ -1740,10 +1740,10 @@ func (r *ModifyUserMicStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserMicStatusResponseParams struct {
-	// 返回结果：0为成功，非0为失败
+	// 返回结果：0为成功，非0为失败。
 	Result *int64 `json:"Result,omitempty" name:"Result"`
 
-	// 错误信息
+	// 错误信息。
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2190,10 +2190,10 @@ func (r *UpdateScanUsersResponse) FromJsonString(s string) error {
 }
 
 type UserMicStatus struct {
-	// 用户ID
+	// 客户端用于标识用户的Openid。
 	Uid *int64 `json:"Uid,omitempty" name:"Uid"`
 
-	// 是否开麦 。1闭麦  2开麦
+	// 开麦状态。1表示关闭麦克风，2表示打开麦克风。
 	EnableMic *int64 `json:"EnableMic,omitempty" name:"EnableMic"`
 }
 

@@ -1277,7 +1277,7 @@ type DescribeBlueprintsRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// 
-	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds 和 Filters 。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -1315,7 +1315,7 @@ type DescribeBlueprintsRequest struct {
 	// 类型：String
 	// 必选：否
 	// 
-	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds 和 Filters 。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -4298,6 +4298,9 @@ type InquirePriceRenewInstancesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePriceDetailSet []*InstancePriceDetail `json:"InstancePriceDetailSet,omitempty" name:"InstancePriceDetailSet"`
 
+	// 总计价格。
+	TotalPrice *TotalPrice `json:"TotalPrice,omitempty" name:"TotalPrice"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -5989,6 +5992,16 @@ func (r *TerminateInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TerminateInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TotalPrice struct {
+	// 原始总计价格。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+	// 折扣总计价格。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
 }
 
 type TrafficPackage struct {

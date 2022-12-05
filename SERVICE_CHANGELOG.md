@@ -1,10 +1,97 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 CKafka(ckafka) 版本：2019-08-19
+## 批量计算(batch) 版本：2017-03-12
 
-### 第 64 次发布
+### 第 43 次发布
 
-发布时间：2022-12-02 06:19:08
+发布时间：2022-12-05 06:18:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Docker](https://cloud.tencent.com/document/api/599/15912#Docker)
+
+	* 新增成员：DockerRunOption
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 106 次发布
+
+发布时间：2022-12-05 06:24:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
+
+	* 新增成员：EncryptionFlag
+
+
+
+
+## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 52 次发布
+
+发布时间：2022-12-05 06:32:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MaterialInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>BasicInfo, VideoMaterial, AudioMaterial, ImageMaterial, LinkMaterial, VideoEditTemplateMaterial, OtherMaterial
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 94 次发布
+
+发布时间：2022-12-05 06:33:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [QueryFlexPayeeAccountBalance](https://cloud.tencent.com/document/api/1122/74969)
+
+	* 新增入参：SnapshotDate
+
+
+修改数据结构：
+
+* [ApplyFlexPaymentResult](https://cloud.tencent.com/document/api/1122/40683#ApplyFlexPaymentResult)
+
+	* 新增成员：Vat, IndividualIncomeTax, AdditionalTaxSum, AdditionalTaxItem
+
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+
+	* 新增成员：Vat, IndividualIncomeTax, AdditionalTaxSum, AdditionalTaxItem
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 32 次发布
+
+发布时间：2022-12-05 06:38:55
 
 本次发布包含了以下内容：
 
@@ -12,26 +99,122 @@
 
 新增接口：
 
-* [CreateInstancePost](https://cloud.tencent.com/document/api/597/83553)
-* [InquireCkafkaPrice](https://cloud.tencent.com/document/api/597/83552)
+* [ResetAccountPassword](https://cloud.tencent.com/document/api/1003/83592)
+* [SearchClusterDatabases](https://cloud.tencent.com/document/api/1003/83594)
+* [SearchClusterTables](https://cloud.tencent.com/document/api/1003/83593)
+* [SwitchProxyVpc](https://cloud.tencent.com/document/api/1003/83595)
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 2 次发布
+
+发布时间：2022-12-05 06:45:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Endpoint](https://cloud.tencent.com/document/api/571/82108#Endpoint)
+
+	* 新增成员：RoleExternalId
+
+* [StepTip](https://cloud.tencent.com/document/api/571/82108#StepTip)
+
+	* 新增成员：SkipInfo
+
+* [SyncJobInfo](https://cloud.tencent.com/document/api/571/82108#SyncJobInfo)
+
+	* 新增成员：TradeStatus, InstanceClass, AutoRenew, OfflineTime
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 10 次发布
+
+发布时间：2022-12-05 06:57:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FirmwareInfo](https://cloud.tencent.com/document/api/1131/76635#FirmwareInfo)
+
+	* 新增成员：FwType
+
+
+### 第 9 次发布
+
+发布时间：2022-12-02 11:32:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BatchUpdateFirmware](https://cloud.tencent.com/document/api/1131/77483)
+
+	* 新增入参：TimeoutInterval
+
+* [DescribeFirmware](https://cloud.tencent.com/document/api/1131/77479)
+
+	* 新增出参：FwType
+
+* [UploadFirmware](https://cloud.tencent.com/document/api/1131/77468)
+
+	* 新增入参：FwType
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 38 次发布
+
+发布时间：2022-12-05 07:01:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquirePriceRenewInstances](https://cloud.tencent.com/document/api/1207/55557)
+
+	* 新增出参：TotalPrice
+
 
 新增数据结构：
 
-* [InquireCkafkaPriceResp](https://cloud.tencent.com/document/api/597/40861#InquireCkafkaPriceResp)
-* [InquiryBasePrice](https://cloud.tencent.com/document/api/597/40861#InquiryBasePrice)
-* [InquiryDetailPrice](https://cloud.tencent.com/document/api/597/40861#InquiryDetailPrice)
-* [InquiryDiskParam](https://cloud.tencent.com/document/api/597/40861#InquiryDiskParam)
-* [InquiryPrice](https://cloud.tencent.com/document/api/597/40861#InquiryPrice)
-* [InquiryPublicNetworkParam](https://cloud.tencent.com/document/api/597/40861#InquiryPublicNetworkParam)
-* [InstanceChargeParam](https://cloud.tencent.com/document/api/597/40861#InstanceChargeParam)
+* [TotalPrice](https://cloud.tencent.com/document/api/1207/47576#TotalPrice)
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 131 次发布
+### 第 69 次发布
 
-发布时间：2022-12-02 07:08:12
+发布时间：2022-12-05 07:04:52
 
 本次发布包含了以下内容：
 
@@ -39,12 +222,11 @@
 
 新增接口：
 
-* [CreateClusterRelease](https://cloud.tencent.com/document/api/457/83554)
+* [DescribePrometheusZones](https://cloud.tencent.com/document/api/248/83596)
 
 新增数据结构：
 
-* [PendingRelease](https://cloud.tencent.com/document/api/457/31866#PendingRelease)
-* [ReleaseValues](https://cloud.tencent.com/document/api/457/31866#ReleaseValues)
+* [PrometheusZoneItem](https://cloud.tencent.com/document/api/248/30354#PrometheusZoneItem)
 
 
 
@@ -5589,6 +5771,21 @@
 
 
 ## 批量计算(batch) 版本：2017-03-12
+
+### 第 43 次发布
+
+发布时间：2022-12-05 06:18:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Docker](https://cloud.tencent.com/document/api/599/15912#Docker)
+
+	* 新增成员：DockerRunOption
+
 
 ### 第 42 次发布
 
@@ -12085,6 +12282,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 106 次发布
+
+发布时间：2022-12-05 06:24:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
+
+	* 新增成员：EncryptionFlag
+
 
 ### 第 105 次发布
 
@@ -18666,18 +18878,18 @@
 
 新增接口：
 
-* [[CreateInstancePost](https://cloud.tencent.com/document/api/597/83553)](https://cloud.tencent.com/document/api/#/#)
-* [[InquireCkafkaPrice](https://cloud.tencent.com/document/api/597/83552)](https://cloud.tencent.com/document/api/#/#)
+* [CreateInstancePost](https://cloud.tencent.com/document/api/597/83553)
+* [InquireCkafkaPrice](https://cloud.tencent.com/document/api/597/83552)
 
 新增数据结构：
 
-* [[InquireCkafkaPriceResp](https://cloud.tencent.com/document/api/597/40861#InquireCkafkaPriceResp)](https://cloud.tencent.com/document/api/597/40861#[InquireCkafkaPriceResp](https://cloud.tencent.com/document/api/597/40861#InquireCkafkaPriceResp))
-* [[InquiryBasePrice](https://cloud.tencent.com/document/api/597/40861#InquiryBasePrice)](https://cloud.tencent.com/document/api/597/40861#[InquiryBasePrice](https://cloud.tencent.com/document/api/597/40861#InquiryBasePrice))
-* [[InquiryDetailPrice](https://cloud.tencent.com/document/api/597/40861#InquiryDetailPrice)](https://cloud.tencent.com/document/api/597/40861#[InquiryDetailPrice](https://cloud.tencent.com/document/api/597/40861#InquiryDetailPrice))
-* [[InquiryDiskParam](https://cloud.tencent.com/document/api/597/40861#InquiryDiskParam)](https://cloud.tencent.com/document/api/597/40861#[InquiryDiskParam](https://cloud.tencent.com/document/api/597/40861#InquiryDiskParam))
-* [[InquiryPrice](https://cloud.tencent.com/document/api/597/40861#InquiryPrice)](https://cloud.tencent.com/document/api/597/40861#[InquiryPrice](https://cloud.tencent.com/document/api/597/40861#InquiryPrice))
-* [[InquiryPublicNetworkParam](https://cloud.tencent.com/document/api/597/40861#InquiryPublicNetworkParam)](https://cloud.tencent.com/document/api/597/40861#[InquiryPublicNetworkParam](https://cloud.tencent.com/document/api/597/40861#InquiryPublicNetworkParam))
-* [[InstanceChargeParam](https://cloud.tencent.com/document/api/597/40861#InstanceChargeParam)](https://cloud.tencent.com/document/api/597/40861#[InstanceChargeParam](https://cloud.tencent.com/document/api/597/40861#InstanceChargeParam))
+* [InquireCkafkaPriceResp](https://cloud.tencent.com/document/api/597/40861#InquireCkafkaPriceResp)
+* [InquiryBasePrice](https://cloud.tencent.com/document/api/597/40861#InquiryBasePrice)
+* [InquiryDetailPrice](https://cloud.tencent.com/document/api/597/40861#InquiryDetailPrice)
+* [InquiryDiskParam](https://cloud.tencent.com/document/api/597/40861#InquiryDiskParam)
+* [InquiryPrice](https://cloud.tencent.com/document/api/597/40861#InquiryPrice)
+* [InquiryPublicNetworkParam](https://cloud.tencent.com/document/api/597/40861#InquiryPublicNetworkParam)
+* [InstanceChargeParam](https://cloud.tencent.com/document/api/597/40861#InstanceChargeParam)
 
 ### 第 63 次发布
 
@@ -22779,6 +22991,21 @@
 
 ## 多媒体创作引擎(cme) 版本：2019-10-29
 
+### 第 52 次发布
+
+发布时间：2022-12-05 06:32:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MaterialInfo](https://cloud.tencent.com/document/api/1156/40360#MaterialInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>BasicInfo, VideoMaterial, AudioMaterial, ImageMaterial, LinkMaterial, VideoEditTemplateMaterial, OtherMaterial
+
+
 ### 第 51 次发布
 
 发布时间：2022-08-24 06:19:05
@@ -24357,6 +24584,32 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 94 次发布
+
+发布时间：2022-12-05 06:33:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [QueryFlexPayeeAccountBalance](https://cloud.tencent.com/document/api/1122/74969)
+
+	* 新增入参：SnapshotDate
+
+
+修改数据结构：
+
+* [ApplyFlexPaymentResult](https://cloud.tencent.com/document/api/1122/40683#ApplyFlexPaymentResult)
+
+	* 新增成员：Vat, IndividualIncomeTax, AdditionalTaxSum, AdditionalTaxItem
+
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+
+	* 新增成员：Vat, IndividualIncomeTax, AdditionalTaxSum, AdditionalTaxItem
+
 
 ### 第 93 次发布
 
@@ -30875,6 +31128,21 @@
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 32 次发布
+
+发布时间：2022-12-05 06:38:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ResetAccountPassword](https://cloud.tencent.com/document/api/1003/83592)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchClusterDatabases](https://cloud.tencent.com/document/api/1003/83594)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchClusterTables](https://cloud.tencent.com/document/api/1003/83593)](https://cloud.tencent.com/document/api/#/#)
+* [[SwitchProxyVpc](https://cloud.tencent.com/document/api/1003/83595)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 31 次发布
 
 发布时间：2022-11-23 06:21:08
@@ -36300,6 +36568,29 @@
 
 
 ## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 2 次发布
+
+发布时间：2022-12-05 06:45:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Endpoint](https://cloud.tencent.com/document/api/571/82108#Endpoint)
+
+	* 新增成员：RoleExternalId
+
+* [StepTip](https://cloud.tencent.com/document/api/571/82108#StepTip)
+
+	* 新增成员：SkipInfo
+
+* [SyncJobInfo](https://cloud.tencent.com/document/api/571/82108#SyncJobInfo)
+
+	* 新增成员：TradeStatus, InstanceClass, AutoRenew, OfflineTime
+
 
 ### 第 1 次发布
 
@@ -50997,6 +51288,44 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
+### 第 10 次发布
+
+发布时间：2022-12-05 06:57:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FirmwareInfo](https://cloud.tencent.com/document/api/1131/76635#FirmwareInfo)
+
+	* 新增成员：FwType
+
+
+### 第 9 次发布
+
+发布时间：2022-12-02 11:32:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BatchUpdateFirmware](https://cloud.tencent.com/document/api/1131/77483)
+
+	* 新增入参：TimeoutInterval
+
+* [DescribeFirmware](https://cloud.tencent.com/document/api/1131/77479)
+
+	* 新增出参：FwType
+
+* [UploadFirmware](https://cloud.tencent.com/document/api/1131/77468)
+
+	* 新增入参：FwType
+
+
 ### 第 8 次发布
 
 发布时间：2022-11-03 06:28:16
@@ -52512,6 +52841,25 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 38 次发布
+
+发布时间：2022-12-05 07:01:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquirePriceRenewInstances](https://cloud.tencent.com/document/api/1207/55557)
+
+	* 新增出参：TotalPrice
+
+
+新增数据结构：
+
+* [[TotalPrice](https://cloud.tencent.com/document/api/1207/47576#TotalPrice)](https://cloud.tencent.com/document/api/1207/47576#[TotalPrice](https://cloud.tencent.com/document/api/1207/47576#TotalPrice))
 
 ### 第 37 次发布
 
@@ -57264,6 +57612,22 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 69 次发布
+
+发布时间：2022-12-05 07:04:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePrometheusZones](https://cloud.tencent.com/document/api/248/83596)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PrometheusZoneItem](https://cloud.tencent.com/document/api/248/30354#PrometheusZoneItem)](https://cloud.tencent.com/document/api/248/30354#[PrometheusZoneItem](https://cloud.tencent.com/document/api/248/30354#PrometheusZoneItem))
 
 ### 第 68 次发布
 
@@ -84345,12 +84709,12 @@
 
 新增接口：
 
-* [[CreateClusterRelease](https://cloud.tencent.com/document/api/457/83554)](https://cloud.tencent.com/document/api/#/#)
+* [CreateClusterRelease](https://cloud.tencent.com/document/api/457/83554)
 
 新增数据结构：
 
-* [[PendingRelease](https://cloud.tencent.com/document/api/457/31866#PendingRelease)](https://cloud.tencent.com/document/api/457/31866#[PendingRelease](https://cloud.tencent.com/document/api/457/31866#PendingRelease))
-* [[ReleaseValues](https://cloud.tencent.com/document/api/457/31866#ReleaseValues)](https://cloud.tencent.com/document/api/457/31866#[ReleaseValues](https://cloud.tencent.com/document/api/457/31866#ReleaseValues))
+* [PendingRelease](https://cloud.tencent.com/document/api/457/31866#PendingRelease)
+* [ReleaseValues](https://cloud.tencent.com/document/api/457/31866#ReleaseValues)
 
 ### 第 130 次发布
 

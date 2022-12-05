@@ -3859,6 +3859,82 @@ func (c *Client) RemoveClusterSlaveZoneWithContext(ctx context.Context, request 
     return
 }
 
+func NewResetAccountPasswordRequest() (request *ResetAccountPasswordRequest) {
+    request = &ResetAccountPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ResetAccountPassword")
+    
+    
+    return
+}
+
+func NewResetAccountPasswordResponse() (response *ResetAccountPasswordResponse) {
+    response = &ResetAccountPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetAccountPassword
+// 本接口(ResetAccountPassword)用于重置实例的数据库账号密码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_OPERATIONNOTSUPPORT = "InternalError.OperationNotSupport"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INTERNALACCOUNT = "InvalidParameterValue.InternalAccount"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORDVALUEERROR = "InvalidParameterValue.InvalidPasswordValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (response *ResetAccountPasswordResponse, err error) {
+    return c.ResetAccountPasswordWithContext(context.Background(), request)
+}
+
+// ResetAccountPassword
+// 本接口(ResetAccountPassword)用于重置实例的数据库账号密码。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_OPERATIONNOTSUPPORT = "InternalError.OperationNotSupport"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INTERNALACCOUNT = "InvalidParameterValue.InternalAccount"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORDVALUEERROR = "InvalidParameterValue.InvalidPasswordValueError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ResetAccountPasswordWithContext(ctx context.Context, request *ResetAccountPasswordRequest) (response *ResetAccountPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetAccountPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetAccountPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetAccountPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeServerlessRequest() (request *ResumeServerlessRequest) {
     request = &ResumeServerlessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4105,6 +4181,112 @@ func (c *Client) RollBackClusterWithContext(ctx context.Context, request *RollBa
     return
 }
 
+func NewSearchClusterDatabasesRequest() (request *SearchClusterDatabasesRequest) {
+    request = &SearchClusterDatabasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "SearchClusterDatabases")
+    
+    
+    return
+}
+
+func NewSearchClusterDatabasesResponse() (response *SearchClusterDatabasesResponse) {
+    response = &SearchClusterDatabasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchClusterDatabases
+// 本接口(SearchClusterDatabases)搜索集群database列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) SearchClusterDatabases(request *SearchClusterDatabasesRequest) (response *SearchClusterDatabasesResponse, err error) {
+    return c.SearchClusterDatabasesWithContext(context.Background(), request)
+}
+
+// SearchClusterDatabases
+// 本接口(SearchClusterDatabases)搜索集群database列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) SearchClusterDatabasesWithContext(ctx context.Context, request *SearchClusterDatabasesRequest) (response *SearchClusterDatabasesResponse, err error) {
+    if request == nil {
+        request = NewSearchClusterDatabasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchClusterDatabases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchClusterDatabasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchClusterTablesRequest() (request *SearchClusterTablesRequest) {
+    request = &SearchClusterTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "SearchClusterTables")
+    
+    
+    return
+}
+
+func NewSearchClusterTablesResponse() (response *SearchClusterTablesResponse) {
+    response = &SearchClusterTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchClusterTables
+// 本接口(SearchClusterTables)搜索集群数据表列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) SearchClusterTables(request *SearchClusterTablesRequest) (response *SearchClusterTablesResponse, err error) {
+    return c.SearchClusterTablesWithContext(context.Background(), request)
+}
+
+// SearchClusterTables
+// 本接口(SearchClusterTables)搜索集群数据表列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) SearchClusterTablesWithContext(ctx context.Context, request *SearchClusterTablesRequest) (response *SearchClusterTablesResponse, err error) {
+    if request == nil {
+        request = NewSearchClusterTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchClusterTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchClusterTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetRenewFlagRequest() (request *SetRenewFlagRequest) {
     request = &SetRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4235,6 +4417,66 @@ func (c *Client) SwitchClusterZoneWithContext(ctx context.Context, request *Swit
     request.SetContext(ctx)
     
     response = NewSwitchClusterZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchProxyVpcRequest() (request *SwitchProxyVpcRequest) {
+    request = &SwitchProxyVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "SwitchProxyVpc")
+    
+    
+    return
+}
+
+func NewSwitchProxyVpcResponse() (response *SwitchProxyVpcResponse) {
+    response = &SwitchProxyVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchProxyVpc
+// 本接口(SwitchProxyVpc)更换数据库代理vpc
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) SwitchProxyVpc(request *SwitchProxyVpcRequest) (response *SwitchProxyVpcResponse, err error) {
+    return c.SwitchProxyVpcWithContext(context.Background(), request)
+}
+
+// SwitchProxyVpc
+// 本接口(SwitchProxyVpc)更换数据库代理vpc
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) SwitchProxyVpcWithContext(ctx context.Context, request *SwitchProxyVpcRequest) (response *SwitchProxyVpcResponse, err error) {
+    if request == nil {
+        request = NewSwitchProxyVpcRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchProxyVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchProxyVpcResponse()
     err = c.Send(request, response)
     return
 }

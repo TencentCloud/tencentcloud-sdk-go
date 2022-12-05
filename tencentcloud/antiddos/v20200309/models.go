@@ -1219,7 +1219,7 @@ type CreateCcGeoIPBlockConfigRequestParams struct {
 	// 协议类型
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// CC区域封禁配置，填写参数时配置ID请为空
+	// CC区域封禁配置
 	CcGeoIPBlockConfig *CcGeoIPBlockConfig `json:"CcGeoIPBlockConfig,omitempty" name:"CcGeoIPBlockConfig"`
 }
 
@@ -1238,7 +1238,7 @@ type CreateCcGeoIPBlockConfigRequest struct {
 	// 协议类型
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// CC区域封禁配置，填写参数时配置ID请为空
+	// CC区域封禁配置
 	CcGeoIPBlockConfig *CcGeoIPBlockConfig `json:"CcGeoIPBlockConfig,omitempty" name:"CcGeoIPBlockConfig"`
 }
 
@@ -6219,10 +6219,10 @@ type DescribeOverviewAttackTrendRequestParams struct {
 	// 周期，当前仅支持86400
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 起始时间
+	// 统计开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 统计结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -6238,10 +6238,10 @@ type DescribeOverviewAttackTrendRequest struct {
 	// 周期，当前仅支持86400
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 起始时间
+	// 统计开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 统计结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -6273,10 +6273,10 @@ type DescribeOverviewAttackTrendResponseParams struct {
 	// 攻击类型
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 起始时间
+	// 统计起始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 统计结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 周期
@@ -6722,7 +6722,7 @@ func (r *DescribePendingRiskInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePendingRiskInfoResponseParams struct {
-	// 是否为付费用户
+	// 是否为付费用户，true：付费用户， false：普通用户
 	IsPaidUsr *bool `json:"IsPaidUsr,omitempty" name:"IsPaidUsr"`
 
 	// 攻击中的资源数量
@@ -7544,7 +7544,7 @@ type ModifyDDoSBlackWhiteIpListRequestParams struct {
 	// 资源Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 当前黑名单类型，取值black时黑名单；取值white时白名单
+	// 当前配置的黑白名单类型，取值black时表示黑名单；取值white时表示白名单
 	OldIpType *string `json:"OldIpType,omitempty" name:"OldIpType"`
 
 	// 当前配置的Ip段，包含ip与掩码
@@ -7563,7 +7563,7 @@ type ModifyDDoSBlackWhiteIpListRequest struct {
 	// 资源Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 当前黑名单类型，取值black时黑名单；取值white时白名单
+	// 当前配置的黑白名单类型，取值black时表示黑名单；取值white时表示白名单
 	OldIpType *string `json:"OldIpType,omitempty" name:"OldIpType"`
 
 	// 当前配置的Ip段，包含ip与掩码

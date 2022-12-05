@@ -1913,9 +1913,11 @@ type GetFunctionRequestParams struct {
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
 	// 函数的版本号
+	// 默认值: $LATEST
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
 	// 函数所属命名空间
+	// 默认值: default
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 是否显示代码, TRUE表示显示代码，FALSE表示不显示代码,大于1M的入口文件不会显示
@@ -1929,9 +1931,11 @@ type GetFunctionRequest struct {
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
 	// 函数的版本号
+	// 默认值: $LATEST
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
 	// 函数所属命名空间
+	// 默认值: default
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 是否显示代码, TRUE表示显示代码，FALSE表示不显示代码,大于1M的入口文件不会显示
@@ -4583,6 +4587,7 @@ type UpdateFunctionConfigurationRequestParams struct {
 	Environment *Environment `json:"Environment,omitempty" name:"Environment"`
 
 	// 函数所属命名空间
+	// 默认值: default
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 函数的私有网络配置
@@ -4650,6 +4655,7 @@ type UpdateFunctionConfigurationRequest struct {
 	Environment *Environment `json:"Environment,omitempty" name:"Environment"`
 
 	// 函数所属命名空间
+	// 默认值: default
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 函数的私有网络配置
