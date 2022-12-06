@@ -1096,6 +1096,7 @@ func NewModifyDomainDNSBatchResponse() (response *ModifyDomainDNSBatchResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINEXPIREDUNSUPPORTED = "FailedOperation.DomainExpiredUnsupported"
 //  FAILEDOPERATION_SETDOMAINDNSFAILED = "FailedOperation.SetDomainDnsFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
@@ -1119,6 +1120,7 @@ func (c *Client) ModifyDomainDNSBatch(request *ModifyDomainDNSBatchRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOMAINEXPIREDUNSUPPORTED = "FailedOperation.DomainExpiredUnsupported"
 //  FAILEDOPERATION_SETDOMAINDNSFAILED = "FailedOperation.SetDomainDnsFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"

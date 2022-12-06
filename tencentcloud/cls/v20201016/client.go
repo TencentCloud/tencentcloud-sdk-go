@@ -452,7 +452,7 @@ func NewCreateConfigExtraResponse() (response *CreateConfigExtraResponse) {
 }
 
 // CreateConfigExtra
-// 本接口用于创建特殊采集配置任务
+// 本接口用于创建特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -471,7 +471,7 @@ func (c *Client) CreateConfigExtra(request *CreateConfigExtraRequest) (response 
 }
 
 // CreateConfigExtra
-// 本接口用于创建特殊采集配置任务
+// 本接口用于创建特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1220,7 +1220,7 @@ func NewDeleteConfigExtraResponse() (response *DeleteConfigExtraResponse) {
 }
 
 // DeleteConfigExtra
-// 本接口用于删除特殊采集规则配置
+// 本接口用于删除特殊采集规则配置，特殊采集配置应用于自建K8S环境的采集Agent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1237,7 +1237,7 @@ func (c *Client) DeleteConfigExtra(request *DeleteConfigExtraRequest) (response 
 }
 
 // DeleteConfigExtra
-// 本接口用于删除特殊采集规则配置
+// 本接口用于删除特殊采集规则配置，特殊采集配置应用于自建K8S环境的采集Agent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1994,7 +1994,7 @@ func NewDescribeConfigExtrasResponse() (response *DescribeConfigExtrasResponse) 
 }
 
 // DescribeConfigExtras
-// 本接口用于获取特殊采集配置
+// 本接口用于获取特殊采集配置，特殊采集配置应用于自建K8S环境的采集Agent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2011,7 +2011,7 @@ func (c *Client) DescribeConfigExtras(request *DescribeConfigExtrasRequest) (res
 }
 
 // DescribeConfigExtras
-// 本接口用于获取特殊采集配置
+// 本接口用于获取特殊采集配置，特殊采集配置应用于自建K8S环境的采集Agent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3472,7 +3472,7 @@ func NewModifyConfigExtraResponse() (response *ModifyConfigExtraResponse) {
 }
 
 // ModifyConfigExtra
-// 本接口用于修改特殊采集配置任务
+// 本接口用于修改特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3490,7 +3490,7 @@ func (c *Client) ModifyConfigExtra(request *ModifyConfigExtraRequest) (response 
 }
 
 // ModifyConfigExtra
-// 本接口用于修改特殊采集配置任务
+// 本接口用于修改特殊采集配置任务，特殊采集配置应用于自建K8S环境的采集Agent
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -35,6 +35,9 @@ type Account struct {
 
 	// 主机
 	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 用户最大连接数
+	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
 type AccountParam struct {
@@ -1580,6 +1583,25 @@ type CynosdbInstance struct {
 
 	// 存储付费类型
 	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// 物理区
+	PhysicalZone *string `json:"PhysicalZone,omitempty" name:"PhysicalZone"`
+
+	// 商业类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*ObjectTask `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 是否冻结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFreeze *string `json:"IsFreeze,omitempty" name:"IsFreeze"`
+
+	// 资源标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -4604,6 +4626,10 @@ func (r *IsolateInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifiableInfo struct {
+
+}
+
 // Predefined struct for user
 type ModifyAccountParamsRequestParams struct {
 	// 集群id，不超过32个字符
@@ -5548,6 +5574,22 @@ type ParamInfo struct {
 
 	// 参数描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否为全局参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsGlobal *int64 `json:"IsGlobal,omitempty" name:"IsGlobal"`
+
+	// 参数是否可修改
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiableInfo *ModifiableInfo `json:"ModifiableInfo,omitempty" name:"ModifiableInfo"`
+
+	// 是否为函数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFunc *bool `json:"IsFunc,omitempty" name:"IsFunc"`
+
+	// 函数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Func *string `json:"Func,omitempty" name:"Func"`
 }
 
 type ParamItem struct {
@@ -6466,7 +6508,7 @@ type SwitchProxyVpcRequestParams struct {
 	// 旧地址回收时间
 	OldIpReserveHours *int64 `json:"OldIpReserveHours,omitempty" name:"OldIpReserveHours"`
 
-	// 数据库代理组Id
+	// 数据库代理组Id（该参数为必填项，可以通过DescribeProxies接口获得）
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 }
 
@@ -6485,7 +6527,7 @@ type SwitchProxyVpcRequest struct {
 	// 旧地址回收时间
 	OldIpReserveHours *int64 `json:"OldIpReserveHours,omitempty" name:"OldIpReserveHours"`
 
-	// 数据库代理组Id
+	// 数据库代理组Id（该参数为必填项，可以通过DescribeProxies接口获得）
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 }
 

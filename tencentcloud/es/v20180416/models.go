@@ -3826,7 +3826,7 @@ type UpdateInstanceRequestParams struct {
 	// 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 访问控制列表
+	// 可视化组件（Kibana、Cerebro）的公网访问策略
 	EsAcl *EsAcl `json:"EsAcl,omitempty" name:"EsAcl"`
 
 	// 已废弃请使用NodeInfoList
@@ -3944,7 +3944,7 @@ type UpdateInstanceRequest struct {
 	// 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 访问控制列表
+	// 可视化组件（Kibana、Cerebro）的公网访问策略
 	EsAcl *EsAcl `json:"EsAcl,omitempty" name:"EsAcl"`
 
 	// 已废弃请使用NodeInfoList

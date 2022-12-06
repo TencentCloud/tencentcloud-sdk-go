@@ -4405,6 +4405,8 @@ func NewModifyStreamLinkOutputInfoResponse() (response *ModifyStreamLinkOutputIn
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_OUTPUT = "InvalidParameter.Output"
 //  INVALIDPARAMETER_OUTPUTID = "InvalidParameter.OutputId"
 //  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
@@ -4419,6 +4421,8 @@ func (c *Client) ModifyStreamLinkOutputInfo(request *ModifyStreamLinkOutputInfoR
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_OUTPUT = "InvalidParameter.Output"
 //  INVALIDPARAMETER_OUTPUTID = "InvalidParameter.OutputId"
 //  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"

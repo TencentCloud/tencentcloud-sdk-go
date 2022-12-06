@@ -38,6 +38,9 @@ const (
 	// 查询模板操作失败。
 	FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
 
+	// 域名已过期，不允许操作。
+	FAILEDOPERATION_DOMAINEXPIREDUNSUPPORTED = "FailedOperation.DomainExpiredUnsupported"
+
 	// 获取域名价格列表失败。
 	FAILEDOPERATION_DOMAINPRICELISTFAILED = "FailedOperation.DomainPriceListFailed"
 

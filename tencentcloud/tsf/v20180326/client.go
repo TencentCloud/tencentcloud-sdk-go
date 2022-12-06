@@ -263,6 +263,7 @@ func NewAssociateConfigWithGroupResponse() (response *AssociateConfigWithGroupRe
 // 可能返回的错误码:
 //  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGCLOUDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgCloudParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) AssociateConfigWithGroup(request *AssociateConfigWithGroupRequest) (response *AssociateConfigWithGroupResponse, err error) {
     return c.AssociateConfigWithGroupWithContext(context.Background(), request)
 }
@@ -273,6 +274,7 @@ func (c *Client) AssociateConfigWithGroup(request *AssociateConfigWithGroupReque
 // 可能返回的错误码:
 //  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGCLOUDPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgCloudParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) AssociateConfigWithGroupWithContext(ctx context.Context, request *AssociateConfigWithGroupRequest) (response *AssociateConfigWithGroupResponse, err error) {
     if request == nil {
         request = NewAssociateConfigWithGroupRequest()

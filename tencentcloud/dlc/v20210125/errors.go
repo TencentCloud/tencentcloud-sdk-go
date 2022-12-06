@@ -77,6 +77,9 @@ const (
 	// 无效的工作组Id。
 	INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
 
+	// 无效的最大结果数。
+	INVALIDPARAMETER_INVALIDMAXRESULTS = "InvalidParameter.InvalidMaxResults"
+
 	// 无效的Offset值。
 	INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 

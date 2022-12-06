@@ -75,6 +75,7 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_DUPTASK = "InvalidParameter.DupTask"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -94,6 +95,7 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_DUPTASK = "InvalidParameter.DupTask"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -132,9 +134,7 @@ func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
 }
 
 // ChannelCancelFlow
-// 渠道版撤销签署流程接口
-//
-// 仅支持未签署完成的合同
+// 渠道版撤销签署流程接口，可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
 //
 // 注意:
 //
@@ -151,6 +151,7 @@ func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -160,9 +161,7 @@ func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response 
 }
 
 // ChannelCancelFlow
-// 渠道版撤销签署流程接口
-//
-// 仅支持未签署完成的合同
+// 渠道版撤销签署流程接口，可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
 //
 // 注意:
 //
@@ -179,6 +178,7 @@ func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response 
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -282,6 +282,8 @@ func NewChannelCreateBatchCancelFlowUrlResponse() (response *ChannelCreateBatchC
 //
 // 接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
 //
+// 可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
+//
 // 注意:
 //
 // 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
@@ -300,6 +302,8 @@ func (c *Client) ChannelCreateBatchCancelFlowUrl(request *ChannelCreateBatchCanc
 // 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
 //
 // 接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
+//
+// 可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
 //
 // 注意:
 //
@@ -681,6 +685,7 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 //  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
 //  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
 //  INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
@@ -732,6 +737,7 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 //  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
 //  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
 //  INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
@@ -1256,6 +1262,7 @@ func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEv
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
@@ -1273,6 +1280,7 @@ func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvide
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
@@ -1332,6 +1340,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
 //  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
@@ -1376,6 +1385,7 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
 //  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
@@ -1546,6 +1556,7 @@ func NewCreateSealByImageResponse() (response *CreateSealByImageResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_IMAGE = "InvalidParameter.Image"
 //  INVALIDPARAMETER_LIMITSEALNAME = "InvalidParameter.LimitSealName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
 //  MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
 //  MISSINGPARAMETER_SEALIMAGE = "MissingParameter.SealImage"
@@ -1568,6 +1579,7 @@ func (c *Client) CreateSealByImage(request *CreateSealByImageRequest) (response 
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_IMAGE = "InvalidParameter.Image"
 //  INVALIDPARAMETER_LIMITSEALNAME = "InvalidParameter.LimitSealName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
 //  MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
 //  MISSINGPARAMETER_SEALIMAGE = "MissingParameter.SealImage"
@@ -1763,6 +1775,7 @@ func NewDescribeChannelFlowEvidenceReportResponse() (response *DescribeChannelFl
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
@@ -1780,6 +1793,7 @@ func (c *Client) DescribeChannelFlowEvidenceReport(request *DescribeChannelFlowE
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"

@@ -232,6 +232,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trdp"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trp"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse"

@@ -131,6 +131,12 @@ const (
 	// 该操作不能执行。
 	OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 
+	// 操作被拒绝。
+	OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+
+	// 请求次数超限。
+	REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 

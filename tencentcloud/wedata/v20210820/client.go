@@ -7530,7 +7530,6 @@ func NewDescribeTaskReportDetailListResponse() (response *DescribeTaskReportDeta
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTaskReportDetailList(request *DescribeTaskReportDetailListRequest) (response *DescribeTaskReportDetailListResponse, err error) {
     return c.DescribeTaskReportDetailListWithContext(context.Background(), request)
 }
@@ -7540,7 +7539,6 @@ func (c *Client) DescribeTaskReportDetailList(request *DescribeTaskReportDetailL
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTaskReportDetailListWithContext(ctx context.Context, request *DescribeTaskReportDetailListRequest) (response *DescribeTaskReportDetailListResponse, err error) {
     if request == nil {
         request = NewDescribeTaskReportDetailListRequest()

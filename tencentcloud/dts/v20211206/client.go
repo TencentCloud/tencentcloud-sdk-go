@@ -2804,7 +2804,7 @@ func NewStopSyncJobResponse() (response *StopSyncJobResponse) {
 }
 
 // StopSyncJob
-// 终止同步任务
+// 结束同步任务，操作后可通过查询同步任务信息接口DescribeSyncJobs，获取操作后的状态。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -2814,7 +2814,7 @@ func (c *Client) StopSyncJob(request *StopSyncJobRequest) (response *StopSyncJob
 }
 
 // StopSyncJob
-// 终止同步任务
+// 结束同步任务，操作后可通过查询同步任务信息接口DescribeSyncJobs，获取操作后的状态。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"

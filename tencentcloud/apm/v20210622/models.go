@@ -20,6 +20,16 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type APMKV struct {
+	// Key值定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// Value值定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitempty" name:"Value"`
+}
+
 type APMKVItem struct {
 	// Key值定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -75,6 +85,10 @@ type ApmField struct {
 
 	// 请求数
 	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 同环比上周期具体数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastPeriodValue []*APMKV `json:"LastPeriodValue,omitempty" name:"LastPeriodValue"`
 }
 
 type ApmInstanceDetail struct {

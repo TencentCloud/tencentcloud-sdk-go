@@ -282,19 +282,22 @@ type Component struct {
 	// 如果是SignComponent控件类型，则可选的字段为
 	// SIGN_SEAL - 签署印章控件；
 	// SIGN_DATE - 签署日期控件；
-	// DATE， 日期控件，默认是格式化为xxxx年xx月xx日
 	// SIGN_SIGNATURE - 用户签名控件；
 	// SIGN_PERSONAL_SEAL - 个人签署印章控件（使用文件发起暂不支持此类型）；
 	// SIGN_PAGING_SEAL - 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight
+	// SIGN_OPINION - 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认
 	// 
 	// 表单域的控件不能作为印章和签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
 
-	// 参数控件宽度，单位pt
-	ComponentWidth *float64 `json:"ComponentWidth,omitempty" name:"ComponentWidth"`
+	// 控件所属文件的序号（模板中的resourceId排列序号，取值为：0-N）
+	FileIndex *int64 `json:"FileIndex,omitempty" name:"FileIndex"`
 
 	// 参数控件高度，单位pt
 	ComponentHeight *float64 `json:"ComponentHeight,omitempty" name:"ComponentHeight"`
+
+	// 参数控件宽度，单位pt
+	ComponentWidth *float64 `json:"ComponentWidth,omitempty" name:"ComponentWidth"`
 
 	// 参数控件所在页码，取值为：1-N
 	ComponentPage *int64 `json:"ComponentPage,omitempty" name:"ComponentPage"`
@@ -305,9 +308,6 @@ type Component struct {
 	// 参数控件Y位置，单位pt
 	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
 
-	// 控件所属文件的序号（模板中的resourceId排列序号，取值为：0-N）
-	FileIndex *int64 `json:"FileIndex,omitempty" name:"FileIndex"`
-
 	// GenerateMode==KEYWORD 指定关键字
 	ComponentId *string `json:"ComponentId,omitempty" name:"ComponentId"`
 
@@ -316,6 +316,9 @@ type Component struct {
 
 	// 是否必选，默认为false
 	ComponentRequired *bool `json:"ComponentRequired,omitempty" name:"ComponentRequired"`
+
+	// 控件关联的签署人ID
+	ComponentRecipientId *string `json:"ComponentRecipientId,omitempty" name:"ComponentRecipientId"`
 
 	// 扩展参数：
 	// 为JSON格式。
@@ -334,8 +337,8 @@ type Component struct {
 	// 如：{“ComponentTypeLimit”: [“BORDERLESS_ESIGN”]}
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
-	// 控件关联的签署人ID
-	ComponentRecipientId *string `json:"ComponentRecipientId,omitempty" name:"ComponentRecipientId"`
+	// 是否是表单域类型，默认不存在
+	IsFormType *bool `json:"IsFormType,omitempty" name:"IsFormType"`
 
 	// 控件填充vaule，ComponentType和传入值类型对应关系：
 	// TEXT - 文本内容
@@ -349,22 +352,25 @@ type Component struct {
 	// SIGN_PAGING_SEAL - 可以指定印章ID，于控制台查询获取
 	ComponentValue *string `json:"ComponentValue,omitempty" name:"ComponentValue"`
 
-	// 是否是表单域类型，默认不存在
-	IsFormType *bool `json:"IsFormType,omitempty" name:"IsFormType"`
-
 	// NORMAL 正常模式，使用坐标制定签署控件位置
 	// FIELD 表单域，需使用ComponentName指定表单域名称
 	// KEYWORD 关键字，使用ComponentId指定关键字
 	GenerateMode *string `json:"GenerateMode,omitempty" name:"GenerateMode"`
 
-	// 日期控件类型字号
+	// 日期签署控件的字号，默认为 12
 	ComponentDateFontSize *int64 `json:"ComponentDateFontSize,omitempty" name:"ComponentDateFontSize"`
+
+	// 渠道版控件 id 标识
+	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
 
 	// 指定关键字时横坐标偏移量，单位pt
 	OffsetX *float64 `json:"OffsetX,omitempty" name:"OffsetX"`
 
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
+
+	// //渠道子客控件来源。0-渠道指定；1-用户自定义
+	ChannelComponentSource *uint64 `json:"ChannelComponentSource,omitempty" name:"ChannelComponentSource"`
 
 	// 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 	// 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。

@@ -23,7 +23,7 @@ const (
 	// 不能从Root单元删除成员。
 	FAILEDOPERATION_DISABLEDELETEMEMBERFROMROOTNODE = "FailedOperation.DisableDeleteMemberFromRootNode"
 
-	// 不能退出自己创业的企业组织。
+	// 不能退出自己创建的企业组织。
 	FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = "FailedOperation.DisableQuitSelfCreatedOrganization"
 
 	// 已经加入企业组织。

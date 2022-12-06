@@ -3578,6 +3578,7 @@ func NewListPoliciesResponse() (response *ListPoliciesResponse) {
 //  INVALIDPARAMETER_KEYWORDERROR = "InvalidParameter.KeywordError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SCOPEERROR = "InvalidParameter.ScopeError"
+//  INVALIDPARAMETER_SEARCHKEYWORDLENGTHERROR = "InvalidParameter.SearchKeywordLengthError"
 //  INVALIDPARAMETER_SERVICETYPEERROR = "InvalidParameter.ServiceTypeError"
 //  INVALIDPARAMETER_UINERROR = "InvalidParameter.UinError"
 func (c *Client) ListPolicies(request *ListPoliciesRequest) (response *ListPoliciesResponse, err error) {
@@ -3593,6 +3594,7 @@ func (c *Client) ListPolicies(request *ListPoliciesRequest) (response *ListPolic
 //  INVALIDPARAMETER_KEYWORDERROR = "InvalidParameter.KeywordError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SCOPEERROR = "InvalidParameter.ScopeError"
+//  INVALIDPARAMETER_SEARCHKEYWORDLENGTHERROR = "InvalidParameter.SearchKeywordLengthError"
 //  INVALIDPARAMETER_SERVICETYPEERROR = "InvalidParameter.ServiceTypeError"
 //  INVALIDPARAMETER_UINERROR = "InvalidParameter.UinError"
 func (c *Client) ListPoliciesWithContext(ctx context.Context, request *ListPoliciesRequest) (response *ListPoliciesResponse, err error) {

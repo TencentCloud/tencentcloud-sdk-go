@@ -1532,6 +1532,7 @@ type Component struct {
 	// SIGN_SIGNATURE - 用户签名控件；
 	// SIGN_PERSONAL_SEAL - 个人签署印章控件（使用文件发起暂不支持此类型）；
 	// SIGN_PAGING_SEAL - 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight
+	// SIGN_OPINION - 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认
 	// 
 	// 表单域的控件不能作为印章和签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
@@ -2586,7 +2587,7 @@ func (r *DescribeTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUsageRequestParams struct {
-	// 应用信息
+	// 应用信息，此接口Agent.AppId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 开始时间，例如：2021-03-21
@@ -2614,7 +2615,7 @@ type DescribeUsageRequestParams struct {
 type DescribeUsageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用信息
+	// 应用信息，此接口Agent.AppId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 开始时间，例如：2021-03-21
@@ -2779,11 +2780,11 @@ type FlowApproverInfo struct {
 	// 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
-	// 签署人类型，PERSON-个人；
-	// PERSON_AUTO_SIGN-个人自动签；
-	// ORGANIZATION-企业；
-	// ENTERPRISESERVER-企业静默签;
-	// 注：ENTERPRISESERVER 类型仅用于使用文件创建签署流程（ChannelCreateFlowByFiles）接口；
+	// 签署人类型
+	// PERSON-个人/自然人；
+	// PERSON_AUTO_SIGN-个人自动签（定制化场景下使用）；
+	// ORGANIZATION-企业（企业签署方或模版发起时的企业静默签）；
+	// ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
 	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；

@@ -611,7 +611,7 @@ type CreateMigrationServiceRequestParams struct {
 	// 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
 	DstRegion *string `json:"DstRegion,omitempty" name:"DstRegion"`
 
-	// 实例规格，包括：micro、small、medium、large、xlarge、2xlarge
+	// 实例规格，包括：small、medium、large、xlarge、2xlarge
 	InstanceClass *string `json:"InstanceClass,omitempty" name:"InstanceClass"`
 
 	// 购买数量，范围为[1,15]，默认为1
@@ -639,7 +639,7 @@ type CreateMigrationServiceRequest struct {
 	// 目标实例地域，如：ap-guangzhou。注意，目标地域必须和API请求地域保持一致。
 	DstRegion *string `json:"DstRegion,omitempty" name:"DstRegion"`
 
-	// 实例规格，包括：micro、small、medium、large、xlarge、2xlarge
+	// 实例规格，包括：small、medium、large、xlarge、2xlarge
 	InstanceClass *string `json:"InstanceClass,omitempty" name:"InstanceClass"`
 
 	// 购买数量，范围为[1,15]，默认为1
@@ -3979,13 +3979,13 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
+	// 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
 	// 结束时间，格式为 yyyy-mm-dd hh:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已停止)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 标签相关信息
 	// 注意：此字段可能返回 null，表示取不到有效值。

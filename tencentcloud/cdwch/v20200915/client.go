@@ -160,7 +160,7 @@ func NewDescribeCkSqlApisResponse() (response *DescribeCkSqlApisResponse) {
 }
 
 // DescribeCkSqlApis
-// 针对驱动sql命令查询ck集群接口
+// 查询集群用户、集群表，数据库等相关信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -169,7 +169,7 @@ func (c *Client) DescribeCkSqlApis(request *DescribeCkSqlApisRequest) (response 
 }
 
 // DescribeCkSqlApis
-// 针对驱动sql命令查询ck集群接口
+// 查询集群用户、集群表，数据库等相关信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

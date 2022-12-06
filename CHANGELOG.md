@@ -1,3 +1,161 @@
+# Release v1.0.552
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 14 次发布
+
+发布时间：2022-12-06 06:16:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [APMKV](https://cloud.tencent.com/document/api/1463/64927#APMKV)
+
+修改数据结构：
+
+* [ApmField](https://cloud.tencent.com/document/api/1463/64927#ApmField)
+
+	* 新增成员：LastPeriodValue
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 33 次发布
+
+发布时间：2022-12-06 06:33:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ModifiableInfo](https://cloud.tencent.com/document/api/1003/48097#ModifiableInfo)
+
+修改数据结构：
+
+* [Account](https://cloud.tencent.com/document/api/1003/48097#Account)
+
+	* 新增成员：MaxUserConnections
+
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+
+	* 新增成员：PhysicalZone, BusinessType, Tasks, IsFreeze, ResourceTags
+
+* [ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo)
+
+	* 新增成员：IsGlobal, ModifiableInfo, IsFunc, Func
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 33 次发布
+
+发布时间：2022-12-06 06:41:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+
+	* 新增成员：ChannelComponentId, ChannelComponentSource
+
+
+
+
+## 设备安全(tds) 版本：2022-08-01
+
+### 第 2 次发布
+
+发布时间：2022-12-06 07:10:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFraudUltimate](https://cloud.tencent.com/document/api/1628/83695)
+
+
+
+## 流量风险决策平台(trdp) 版本：2022-07-26
+
+### 第 1 次发布
+
+发布时间：2022-12-05 10:34:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [EvaluateUserRisk](https://cloud.tencent.com/document/api/1604/83624)
+
+新增数据结构：
+
+* [AccountInfo](https://cloud.tencent.com/document/api/1604/83625#AccountInfo)
+* [DeviceDetailInfo](https://cloud.tencent.com/document/api/1604/83625#DeviceDetailInfo)
+* [DeviceFingerprintInfo](https://cloud.tencent.com/document/api/1604/83625#DeviceFingerprintInfo)
+* [EvaluationResult](https://cloud.tencent.com/document/api/1604/83625#EvaluationResult)
+* [MarketingInfo](https://cloud.tencent.com/document/api/1604/83625#MarketingInfo)
+* [UniversalAccountInfo](https://cloud.tencent.com/document/api/1604/83625#UniversalAccountInfo)
+* [UserInfo](https://cloud.tencent.com/document/api/1604/83625#UserInfo)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 43 次发布
+
+发布时间：2022-12-06 07:15:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StartPublishCdnStream](https://cloud.tencent.com/document/api/647/81479)
+* [StopPublishCdnStream](https://cloud.tencent.com/document/api/647/81478)
+* [UpdatePublishCdnStream](https://cloud.tencent.com/document/api/647/81477)
+
+新增数据结构：
+
+* [AgentParams](https://cloud.tencent.com/document/api/647/44055#AgentParams)
+* [AudioEncode](https://cloud.tencent.com/document/api/647/44055#AudioEncode)
+* [MaxVideoUser](https://cloud.tencent.com/document/api/647/44055#MaxVideoUser)
+* [McuAudioParams](https://cloud.tencent.com/document/api/647/44055#McuAudioParams)
+* [McuCustomCrop](https://cloud.tencent.com/document/api/647/44055#McuCustomCrop)
+* [McuFeedBackRoomParams](https://cloud.tencent.com/document/api/647/44055#McuFeedBackRoomParams)
+* [McuLayout](https://cloud.tencent.com/document/api/647/44055#McuLayout)
+* [McuLayoutParams](https://cloud.tencent.com/document/api/647/44055#McuLayoutParams)
+* [McuLayoutVolume](https://cloud.tencent.com/document/api/647/44055#McuLayoutVolume)
+* [McuPassThrough](https://cloud.tencent.com/document/api/647/44055#McuPassThrough)
+* [McuPublishCdnParam](https://cloud.tencent.com/document/api/647/44055#McuPublishCdnParam)
+* [McuSeiParams](https://cloud.tencent.com/document/api/647/44055#McuSeiParams)
+* [McuUserInfoParams](https://cloud.tencent.com/document/api/647/44055#McuUserInfoParams)
+* [McuVideoParams](https://cloud.tencent.com/document/api/647/44055#McuVideoParams)
+* [McuWaterMarkImage](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkImage)
+* [McuWaterMarkParams](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkParams)
+* [MixUserInfo](https://cloud.tencent.com/document/api/647/44055#MixUserInfo)
+* [SingleSubscribeParams](https://cloud.tencent.com/document/api/647/44055#SingleSubscribeParams)
+* [UserMediaStream](https://cloud.tencent.com/document/api/647/44055#UserMediaStream)
+* [VideoEncode](https://cloud.tencent.com/document/api/647/44055#VideoEncode)
+
+
+
 # Release v1.0.551
 
 ## 批量计算(batch) 版本：2017-03-12

@@ -6219,10 +6219,10 @@ type DescribeOverviewAttackTrendRequestParams struct {
 	// 周期，当前仅支持86400
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 统计开始时间
+	// 防护概览攻击趋势开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 统计结束时间
+	// 防护概览攻击趋势结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -6238,10 +6238,10 @@ type DescribeOverviewAttackTrendRequest struct {
 	// 周期，当前仅支持86400
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 统计开始时间
+	// 防护概览攻击趋势开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 统计结束时间
+	// 防护概览攻击趋势结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -6273,10 +6273,10 @@ type DescribeOverviewAttackTrendResponseParams struct {
 	// 攻击类型
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 统计起始时间
+	// 防护概览攻击趋势起始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 统计结束时间
+	// 防护概览攻击趋势结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 周期

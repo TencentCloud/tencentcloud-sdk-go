@@ -129,6 +129,48 @@ func (c *Client) DescribeFraudPremiumWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeFraudUltimateRequest() (request *DescribeFraudUltimateRequest) {
+    request = &DescribeFraudUltimateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tds", APIVersion, "DescribeFraudUltimate")
+    
+    
+    return
+}
+
+func NewDescribeFraudUltimateResponse() (response *DescribeFraudUltimateResponse) {
+    response = &DescribeFraudUltimateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFraudUltimate
+// 查询设备标识及风险（旗舰版）
+func (c *Client) DescribeFraudUltimate(request *DescribeFraudUltimateRequest) (response *DescribeFraudUltimateResponse, err error) {
+    return c.DescribeFraudUltimateWithContext(context.Background(), request)
+}
+
+// DescribeFraudUltimate
+// 查询设备标识及风险（旗舰版）
+func (c *Client) DescribeFraudUltimateWithContext(ctx context.Context, request *DescribeFraudUltimateRequest) (response *DescribeFraudUltimateResponse, err error) {
+    if request == nil {
+        request = NewDescribeFraudUltimateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFraudUltimate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFraudUltimateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrustedIDRequest() (request *DescribeTrustedIDRequest) {
     request = &DescribeTrustedIDRequest{
         BaseRequest: &tchttp.BaseRequest{},
