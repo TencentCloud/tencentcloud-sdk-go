@@ -212,6 +212,20 @@ type CodePart struct {
 	Ext *string `json:"Ext,omitempty" name:"Ext"`
 }
 
+type CorpQuota struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 企业名称
+	CorpName *string `json:"CorpName,omitempty" name:"CorpName"`
+
+	// 额度
+	Quota *Quota `json:"Quota,omitempty" name:"Quota"`
+
+	// 额度使用量
+	UsageQuota *UsageQuota `json:"UsageQuota,omitempty" name:"UsageQuota"`
+}
+
 // Predefined struct for user
 type CreateCodeBatchRequestParams struct {
 	// 企业ID
@@ -2023,6 +2037,89 @@ func (r *DescribeCodesByPackResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCorpQuotasRequestParams struct {
+	// 渠道商ID，不要传
+	AgentId *uint64 `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 搜索企业ID
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+type DescribeCorpQuotasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商ID，不要传
+	AgentId *uint64 `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 搜索企业ID
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+func (r *DescribeCorpQuotasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCorpQuotasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCorpQuotasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCorpQuotasResponseParams struct {
+	// 子企业额度使用情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpQuotas []*CorpQuota `json:"CorpQuotas,omitempty" name:"CorpQuotas"`
+
+	// 记录总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCorpQuotasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCorpQuotasResponseParams `json:"Response"`
+}
+
+func (r *DescribeCorpQuotasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCorpQuotasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCustomRuleByIdRequestParams struct {
 	// 码规则ID
 	CustomId *string `json:"CustomId,omitempty" name:"CustomId"`
@@ -3763,6 +3860,60 @@ type Product struct {
 	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
 }
 
+type Quota struct {
+	// 服务开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 服务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 配额ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaId *uint64 `json:"QuotaId,omitempty" name:"QuotaId"`
+
+	// 企业ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 开通服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Services []*string `json:"Services,omitempty" name:"Services"`
+
+	// 工厂配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FactoryQuota *int64 `json:"FactoryQuota,omitempty" name:"FactoryQuota"`
+
+	// 产品配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemQuota *int64 `json:"ItemQuota,omitempty" name:"ItemQuota"`
+
+	// 溯源码配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrackQuota *int64 `json:"TrackQuota,omitempty" name:"TrackQuota"`
+
+	// 销售码配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SaleQuota *int64 `json:"SaleQuota,omitempty" name:"SaleQuota"`
+
+	// 上链配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChainQuota *int64 `json:"ChainQuota,omitempty" name:"ChainQuota"`
+
+	// 风控配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskQuota *int64 `json:"RiskQuota,omitempty" name:"RiskQuota"`
+
+	// 溯源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrackType *int64 `json:"TrackType,omitempty" name:"TrackType"`
+
+	// 开通版本 basic standard enterprise
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+}
+
 type TraceCode struct {
 	// 二维码
 	Code *string `json:"Code,omitempty" name:"Code"`
@@ -3892,4 +4043,38 @@ type TraceItem struct {
 	// 扩展字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *string `json:"Ext,omitempty" name:"Ext"`
+}
+
+type UsageQuota struct {
+	// 企业ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 商户配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FactoryCnt *int64 `json:"FactoryCnt,omitempty" name:"FactoryCnt"`
+
+	// 商品数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemCnt *int64 `json:"ItemCnt,omitempty" name:"ItemCnt"`
+
+	// 溯源码量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrackCnt *int64 `json:"TrackCnt,omitempty" name:"TrackCnt"`
+
+	// 营销码额度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SaleCnt *int64 `json:"SaleCnt,omitempty" name:"SaleCnt"`
+
+	// 区块链上链次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChainCnt *int64 `json:"ChainCnt,omitempty" name:"ChainCnt"`
+
+	// 营销风控次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskCnt *int64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }

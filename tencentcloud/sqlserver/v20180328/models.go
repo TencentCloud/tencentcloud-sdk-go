@@ -2141,6 +2141,13 @@ type DBInstance struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
+
+	// 是否跨AZ
+	IsDrZone *bool `json:"IsDrZone,omitempty" name:"IsDrZone"`
+
+	// 备可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZones *SlaveZones `json:"SlaveZones,omitempty" name:"SlaveZones"`
 }
 
 type DBPrivilege struct {
@@ -2773,6 +2780,15 @@ type DescribeAccountsRequestParams struct {
 
 	// 分页返回，页编号，默认值为第0页
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 账号名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// createTime,updateTime,passTime" note:"排序字段，默认按照账号创建时间倒序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序规则（desc-降序，asc-升序），默认desc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 type DescribeAccountsRequest struct {
@@ -2786,6 +2802,15 @@ type DescribeAccountsRequest struct {
 
 	// 分页返回，页编号，默认值为第0页
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 账号名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// createTime,updateTime,passTime" note:"排序字段，默认按照账号创建时间倒序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序规则（desc-降序，asc-升序），默认desc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -2803,6 +2828,9 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Name")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountsRequest has unknown keys!", "")
 	}
@@ -4095,6 +4123,12 @@ type DescribeDBsRequestParams struct {
 
 	// 分页返回，页编号，默认值为第0页
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 排序规则（desc-降序，asc-升序），默认desc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 type DescribeDBsRequest struct {
@@ -4108,6 +4142,12 @@ type DescribeDBsRequest struct {
 
 	// 分页返回，页编号，默认值为第0页
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 排序规则（desc-降序，asc-升序），默认desc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 func (r *DescribeDBsRequest) ToJsonString() string {
@@ -4125,6 +4165,8 @@ func (r *DescribeDBsRequest) FromJsonString(s string) error {
 	delete(f, "InstanceIdSet")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Name")
+	delete(f, "OrderByType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBsRequest has unknown keys!", "")
 	}
@@ -9093,6 +9135,14 @@ type SecurityGroupPolicy struct {
 
 	// 规则限定的方向，OUTPUT-出战规则  INPUT-进站规则
 	Dir *string `json:"Dir,omitempty" name:"Dir"`
+}
+
+type SlaveZones struct {
+	// 备可用区地域码
+	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
+
+	// 备可用区
+	SlaveZoneName *string `json:"SlaveZoneName,omitempty" name:"SlaveZoneName"`
 }
 
 type SlowlogInfo struct {

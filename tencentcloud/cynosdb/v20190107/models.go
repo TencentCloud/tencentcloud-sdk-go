@@ -511,6 +511,12 @@ type AuditLogFilter struct {
 
 	// SQL 语句。支持传递多个sql语句。
 	Sqls []*string `json:"Sqls,omitempty" name:"Sqls"`
+
+	// 返回行数。
+	SentRows *uint64 `json:"SentRows,omitempty" name:"SentRows"`
+
+	// 线程ID。
+	ThreadId []*string `json:"ThreadId,omitempty" name:"ThreadId"`
 }
 
 type BackupFileInfo struct {
@@ -626,6 +632,12 @@ type ClusterParamModifyLog struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 // Predefined struct for user
@@ -6679,6 +6691,9 @@ type UpgradeInstanceRequestParams struct {
 
 	// 交易模式 0-下单并支付 1-下单
 	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
+
+	// NormalUpgrade：普通变配，FastUpgrade：极速变配，若变配过程判断会造成闪断，变配流程会终止。
+	UpgradeMode *string `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
 }
 
 type UpgradeInstanceRequest struct {
@@ -6707,6 +6722,9 @@ type UpgradeInstanceRequest struct {
 
 	// 交易模式 0-下单并支付 1-下单
 	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
+
+	// NormalUpgrade：普通变配，FastUpgrade：极速变配，若变配过程判断会造成闪断，变配流程会终止。
+	UpgradeMode *string `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -6729,6 +6747,7 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AutoVoucher")
 	delete(f, "DbType")
 	delete(f, "DealMode")
+	delete(f, "UpgradeMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}

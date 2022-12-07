@@ -4792,7 +4792,7 @@ func NewInquiryPriceTerminateInstancesResponse() (response *InquiryPriceTerminat
 //
 // * 查询退还实例可以返还的费用。
 //
-// * 支持批量操作，每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定[错误码](#4.-.E9.94.99.E8.AF.AF.E7.A0.81)返回。
+// * 支持批量操作，每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INQUIRYREFUNDPRICEFAILED = "FailedOperation.InquiryRefundPriceFailed"
@@ -4821,7 +4821,7 @@ func (c *Client) InquiryPriceTerminateInstances(request *InquiryPriceTerminateIn
 //
 // * 查询退还实例可以返还的费用。
 //
-// * 支持批量操作，每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定[错误码](#4.-.E9.94.99.E8.AF.AF.E7.A0.81)返回。
+// * 支持批量操作，每次请求批量实例的上限为100。如果批量实例存在不允许操作的实例，操作会以特定错误码返回。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INQUIRYREFUNDPRICEFAILED = "FailedOperation.InquiryRefundPriceFailed"

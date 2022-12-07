@@ -111,7 +111,7 @@ type DeviceDetailInfo struct {
 	// Android设备
 	VendorId *string `json:"VendorId,omitempty" name:"VendorId"`
 
-	// 安卓API等级
+	// Android API等级
 	// Android设备
 	AndroidApiLevel *string `json:"AndroidApiLevel,omitempty" name:"AndroidApiLevel"`
 
@@ -167,11 +167,11 @@ type DeviceDetailInfo struct {
 	// Android设备
 	ChargeStatus *string `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
 
-	// 网络类型：2G/3G/4G/5G/WiFi/WWAN/other
+	// 网络类型：2G/3G/4G/5G/Wi-Fi/WWAN/other
 	// Android设备
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
-	// WiFi MAC地址
+	// Wi-Fi MAC地址
 	// Android设备
 	WifiMac *string `json:"WifiMac,omitempty" name:"WifiMac"`
 
@@ -214,7 +214,7 @@ type EvaluateUserRiskRequestParams struct {
 
 	// 场景Code，不传默认活动防刷；
 	// e_activity_antirush；活动防刷场景
-	// e_login_protection；登陆保护场景
+	// e_login_protection；登录保护场景
 	// e_register_protection：注册保护场景
 	SceneCode *string `json:"SceneCode,omitempty" name:"SceneCode"`
 
@@ -242,7 +242,7 @@ type EvaluateUserRiskRequest struct {
 
 	// 场景Code，不传默认活动防刷；
 	// e_activity_antirush；活动防刷场景
-	// e_login_protection；登陆保护场景
+	// e_login_protection；登录保护场景
 	// e_register_protection：注册保护场景
 	SceneCode *string `json:"SceneCode,omitempty" name:"SceneCode"`
 
@@ -314,30 +314,30 @@ type EvaluationResult struct {
 
 	// 风险标签，请参考官网风险类型
 	// 账号风险
-	// 1 账号信用低,账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
-	// 11 疑似 低活跃账号,账号活跃度与正常用户有差异
+	// 1 账号信用低 账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
+	// 11 疑似低活跃账号 账号活跃度与正常用户有差异
 	// 2 垃圾账号 疑似批量注册小号，近期存在严重违规或大量举报
 	// 21 疑似小号 账号有疑似线上养号，小号等行为
 	// 22 疑似违规账号 账号曾有违规行为、曾被举报过、曾因违规被处罚过等
-	// 3 无效账号 送检账号参数无法成功解析，请检查微信 openid 是否有误/appid与QQopenid无法关联/微信openid权限是否有开通/手机号是否为中国大陆手机号；
+	// 3 无效账号 送检账号参数无法成功解析，请检查微信 Openid 是否有误/Appid与QQopenid无法关联/微信Openid权限是否有开通/手机号是否为中国大陆手机号
 	// 4 黑名单 该账号在业务侧有过拉黑记录
 	// 5 白名单 业务自行有添加过白名单记录
 	// 行为风险
-	// 101 批量操作 存在 ip/设备/环境等因素的聚集性异常
-	// 1011 疑似 IP 属性聚集，出现 IP 聚集
-	// 1012 疑似 设备属性聚集 出现设备聚集
+	// 101 批量操作存在 IP/设备/环境等因素的聚集性异常
+	// 1011 疑似 IP 属性聚集 出现 IP 聚集
+	// 1012 疑似设备属性聚集 出现设备聚集
 	// 102 自动机 疑似自动机批量请求
 	// 103 恶意行为-网赚 疑似网赚
-	// 104 微信登录态无效 检查 WeChatAccessToken 参数，是否已经失效；
-	// 201 环境风险 环境异常 操作 ip/设备/环境存在异常。当前 ip 为非常用 ip 或恶意 ip 段
-	// 2011 疑似 非常用IP 请求 当前请求 IP 非该账号常用 IP
-	// 2012 疑似 IP 异常 使用 idc 机房 ip 或 使用代理 ip 或 使用恶意 ip 等
-	// 205 非公网有效ip 传进来的 IP 地址为内网 ip 地址或者 ip 保留地址；
+	// 104 微信登录态无效 检查 WeChatAccessToken 参数，是否已经失效
+	// 201 环境风险 环境异常 操作 IP/设备/环境存在异常。当前 IP 为非常用 IP 或恶意 IP 段
+	// 2011 疑似非常用 IP 请求 当前请求 IP 非该账号常用 IP
+	// 2012 疑似 IP 异常 使用 idc 机房 IP 或使用代理 IP 或使用恶意 IP 等
+	// 205 非公网有效IP 传进来的 IP 地址为内网 IP 地址或者 IP 保留地址
 	// 设备风险
 	// 206 设备异常 该设备存在异常的使用行为
-	// 2061 疑似 非常用设备 当前请求的设备非该账号常用设备
-	// 2062 疑似 虚拟设备 请求设备为模拟器、脚本、云设备等虚拟设备
-	// 2063 疑似 群控设备 请求设备为猫池、手机墙等群控设备
+	// 2061 疑似非常用设备 当前请求的设备非该账号常用设备
+	// 2062 疑似虚拟设备 请求设备为模拟器、脚本、云设备等虚拟设备
+	// 2063 疑似群控设备 请求设备为猫池、手机墙等群控设备
 	// 10201 设备处于开发者模式 来源于Android
 	// 10202 设备疑似 Root 来源于Android
 	// 10203 疑似应用被注 来源于Android
@@ -429,7 +429,7 @@ type UserInfo struct {
 	// 来源渠道编码
 	ChannelSource *string `json:"ChannelSource,omitempty" name:"ChannelSource"`
 
-	// 用户登录平台。1：安卓 2：iOS 3：H5 4：小程序
+	// 用户登录平台。1：Android 2：iOS 3：H5 4：小程序
 	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
 
 	// 姓名

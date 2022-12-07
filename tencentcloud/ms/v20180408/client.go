@@ -241,8 +241,11 @@ func NewCreateScanInstancesResponse() (response *CreateScanInstancesResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateScanInstances(request *CreateScanInstancesRequest) (response *CreateScanInstancesResponse, err error) {
     return c.CreateScanInstancesWithContext(context.Background(), request)
 }
@@ -253,8 +256,11 @@ func (c *Client) CreateScanInstances(request *CreateScanInstancesRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateScanInstancesWithContext(ctx context.Context, request *CreateScanInstancesRequest) (response *CreateScanInstancesResponse, err error) {
     if request == nil {
         request = NewCreateScanInstancesRequest()
@@ -423,7 +429,10 @@ func NewDeleteScanInstancesResponse() (response *DeleteScanInstancesResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScanInstances(request *DeleteScanInstancesRequest) (response *DeleteScanInstancesResponse, err error) {
     return c.DeleteScanInstancesWithContext(context.Background(), request)
 }
@@ -434,7 +443,10 @@ func (c *Client) DeleteScanInstances(request *DeleteScanInstancesRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScanInstancesWithContext(ctx context.Context, request *DeleteScanInstancesRequest) (response *DeleteScanInstancesResponse, err error) {
     if request == nil {
         request = NewDeleteScanInstancesRequest()
@@ -665,12 +677,15 @@ func NewDescribeScanInstancesResponse() (response *DescribeScanInstancesResponse
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
 //  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
 //  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
 //  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanInstances(request *DescribeScanInstancesRequest) (response *DescribeScanInstancesResponse, err error) {
     return c.DescribeScanInstancesWithContext(context.Background(), request)
 }
@@ -683,12 +698,15 @@ func (c *Client) DescribeScanInstances(request *DescribeScanInstancesRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
 //  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
 //  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
 //  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanInstancesWithContext(ctx context.Context, request *DescribeScanInstancesRequest) (response *DescribeScanInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeScanInstancesRequest()
@@ -729,8 +747,12 @@ func NewDescribeScanResultsResponse() (response *DescribeScanResultsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanResults(request *DescribeScanResultsRequest) (response *DescribeScanResultsResponse, err error) {
     return c.DescribeScanResultsWithContext(context.Background(), request)
 }
@@ -741,8 +763,12 @@ func (c *Client) DescribeScanResults(request *DescribeScanResultsRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanResultsWithContext(ctx context.Context, request *DescribeScanResultsRequest) (response *DescribeScanResultsResponse, err error) {
     if request == nil {
         request = NewDescribeScanResultsRequest()

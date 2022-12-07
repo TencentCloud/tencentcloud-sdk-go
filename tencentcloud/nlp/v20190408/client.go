@@ -687,6 +687,7 @@ func NewKeywordsExtractionResponse() (response *KeywordsExtractionResponse) {
 // 基于关键词提取平台，通过对文本内容进行深度分析，提取出文本内容中的关键信息，为用户实现诸如新闻内容关键词自动提取、评论关键词提取等提供基础服务。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
@@ -706,6 +707,7 @@ func (c *Client) KeywordsExtraction(request *KeywordsExtractionRequest) (respons
 // 基于关键词提取平台，通过对文本内容进行深度分析，提取出文本内容中的关键信息，为用户实现诸如新闻内容关键词自动提取、评论关键词提取等提供基础服务。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"

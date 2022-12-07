@@ -1267,6 +1267,106 @@ func (c *Client) ConfirmNetworkFirewallPolicyWithContext(ctx context.Context, re
     return
 }
 
+func NewCreateAbnormalProcessRulesExportJobRequest() (request *CreateAbnormalProcessRulesExportJobRequest) {
+    request = &CreateAbnormalProcessRulesExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "CreateAbnormalProcessRulesExportJob")
+    
+    
+    return
+}
+
+func NewCreateAbnormalProcessRulesExportJobResponse() (response *CreateAbnormalProcessRulesExportJobResponse) {
+    response = &CreateAbnormalProcessRulesExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAbnormalProcessRulesExportJob
+// 创建异常进程规则导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAbnormalProcessRulesExportJob(request *CreateAbnormalProcessRulesExportJobRequest) (response *CreateAbnormalProcessRulesExportJobResponse, err error) {
+    return c.CreateAbnormalProcessRulesExportJobWithContext(context.Background(), request)
+}
+
+// CreateAbnormalProcessRulesExportJob
+// 创建异常进程规则导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAbnormalProcessRulesExportJobWithContext(ctx context.Context, request *CreateAbnormalProcessRulesExportJobRequest) (response *CreateAbnormalProcessRulesExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateAbnormalProcessRulesExportJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAbnormalProcessRulesExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAbnormalProcessRulesExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAccessControlsRuleExportJobRequest() (request *CreateAccessControlsRuleExportJobRequest) {
+    request = &CreateAccessControlsRuleExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "CreateAccessControlsRuleExportJob")
+    
+    
+    return
+}
+
+func NewCreateAccessControlsRuleExportJobResponse() (response *CreateAccessControlsRuleExportJobResponse) {
+    response = &CreateAccessControlsRuleExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAccessControlsRuleExportJob
+// 创建文件篡改规则导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAccessControlsRuleExportJob(request *CreateAccessControlsRuleExportJobRequest) (response *CreateAccessControlsRuleExportJobResponse, err error) {
+    return c.CreateAccessControlsRuleExportJobWithContext(context.Background(), request)
+}
+
+// CreateAccessControlsRuleExportJob
+// 创建文件篡改规则导出任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAccessControlsRuleExportJobWithContext(ctx context.Context, request *CreateAccessControlsRuleExportJobRequest) (response *CreateAccessControlsRuleExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateAccessControlsRuleExportJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccessControlsRuleExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAccessControlsRuleExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAssetImageRegistryScanTaskRequest() (request *CreateAssetImageRegistryScanTaskRequest) {
     request = &CreateAssetImageRegistryScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

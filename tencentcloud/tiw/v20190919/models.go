@@ -876,6 +876,112 @@ func (r *DescribeTIWDailyUsageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTIWRoomDailyUsageRequestParams struct {
+	// 互动白板应用SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需要查询的子产品用量，支持传入以下值
+	// - sp_tiw_board: 互动白板时长，单位为分钟
+	// - sp_tiw_ric: 实时录制时长，单位分钟
+	SubProduct *string `json:"SubProduct,omitempty" name:"SubProduct"`
+
+	// 开始时间，格式YYYY-MM-DD，查询结果里包括该天数据
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式YYYY-MM-DD，查询结果里包括该天数据，单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 需要查询的房间ID列表，不填默认查询全部房间
+	RoomIDs []*uint64 `json:"RoomIDs,omitempty" name:"RoomIDs"`
+
+	// 查询偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每次查询返回条目限制，默认为20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeTIWRoomDailyUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 互动白板应用SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需要查询的子产品用量，支持传入以下值
+	// - sp_tiw_board: 互动白板时长，单位为分钟
+	// - sp_tiw_ric: 实时录制时长，单位分钟
+	SubProduct *string `json:"SubProduct,omitempty" name:"SubProduct"`
+
+	// 开始时间，格式YYYY-MM-DD，查询结果里包括该天数据
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式YYYY-MM-DD，查询结果里包括该天数据，单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 需要查询的房间ID列表，不填默认查询全部房间
+	RoomIDs []*uint64 `json:"RoomIDs,omitempty" name:"RoomIDs"`
+
+	// 查询偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每次查询返回条目限制，默认为20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTIWRoomDailyUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTIWRoomDailyUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SubProduct")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "RoomIDs")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTIWRoomDailyUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTIWRoomDailyUsageResponseParams struct {
+	// 指定区间指定产品的房间用量列表
+	Usages []*RoomUsageDataItem `json:"Usages,omitempty" name:"Usages"`
+
+	// 用量列表总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTIWRoomDailyUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTIWRoomDailyUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTIWRoomDailyUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTIWRoomDailyUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTranscodeCallbackRequestParams struct {
 	// 应用的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1556,6 +1662,26 @@ func (r *ResumeOnlineRecordResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResumeOnlineRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RoomUsageDataItem struct {
+	// 日期，格式为YYYY-MM-DD
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 白板应用SDKAppID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 互动白板子产品，请求参数传入的一致
+	// - sp_tiw_board: 互动白板时长
+	// - sp_tiw_ric: 实时录制时长
+	SubProduct *string `json:"SubProduct,omitempty" name:"SubProduct"`
+
+	// 用量值
+	// - 白板时长、实时录制时长单位为分钟
+	Value *float64 `json:"Value,omitempty" name:"Value"`
+
+	// 互动白板房间号
+	RoomID *uint64 `json:"RoomID,omitempty" name:"RoomID"`
 }
 
 // Predefined struct for user

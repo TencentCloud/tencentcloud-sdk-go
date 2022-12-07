@@ -8629,8 +8629,6 @@ type CreateOpenBankMerchantRequestParams struct {
 
 	// 渠道名称。
 	// __TENPAY__: 商企付
-	// __WECHAT__: 微信支付
-	// __ALIPAY__: 支付宝
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 外部商户名称。
@@ -8660,8 +8658,6 @@ type CreateOpenBankMerchantRequest struct {
 
 	// 渠道名称。
 	// __TENPAY__: 商企付
-	// __WECHAT__: 微信支付
-	// __ALIPAY__: 支付宝
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 外部商户名称。
@@ -9086,7 +9082,7 @@ type CreateOpenBankRechargeOrderRequestParams struct {
 	// 通知地址，如www.test.com。
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 
-	// 备注信息。
+	// 备注信息。限制200个字符。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 环境类型。
@@ -9135,7 +9131,7 @@ type CreateOpenBankRechargeOrderRequest struct {
 	// 通知地址，如www.test.com。
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 
-	// 备注信息。
+	// 备注信息。限制200个字符。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 环境类型。

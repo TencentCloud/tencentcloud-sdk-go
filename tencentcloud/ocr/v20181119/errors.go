@@ -41,6 +41,9 @@ const (
 	// 身份证信息不合法（身份证号、姓名字段校验非法等）。
 	FAILEDOPERATION_IDCARDINFOILLEGAL = "FailedOperation.IdCardInfoIllegal"
 
+	// 银行卡信息非法。
+	FAILEDOPERATION_ILLEGALBANKCARDERROR = "FailedOperation.IllegalBankCardError"
+
 	// 图片模糊。
 	FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
 
@@ -67,6 +70,9 @@ const (
 
 	// 照片中存在多张卡。
 	FAILEDOPERATION_MULTICARDERROR = "FailedOperation.MultiCardError"
+
+	// 非银行卡。
+	FAILEDOPERATION_NOBANKCARDERROR = "FailedOperation.NoBankCardError"
 
 	// 非营业执照。
 	FAILEDOPERATION_NOBIZLICENSE = "FailedOperation.NoBizLicense"

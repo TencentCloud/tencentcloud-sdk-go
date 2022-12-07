@@ -8294,7 +8294,7 @@ type TagInfo struct {
 	// Tag名称
 	TagName *string `json:"TagName,omitempty" name:"TagName"`
 
-	// 镜像Id
+	// 制品的 ID
 	TagId *string `json:"TagId,omitempty" name:"TagId"`
 
 	// docker image 可以看到的id
@@ -8303,36 +8303,39 @@ type TagInfo struct {
 	// 大小
 	Size *string `json:"Size,omitempty" name:"Size"`
 
-	// 镜像的创建时间
+	// 制品的创建时间
 	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
 
-	// 镜像创建至今时间长度
+	// 制品创建至今时间长度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationDays *string `json:"DurationDays,omitempty" name:"DurationDays"`
 
-	// 镜像的作者
+	// 标注的制品作者
 	Author *string `json:"Author,omitempty" name:"Author"`
 
-	// 次镜像建议运行的系统架构
+	// 标注的制品平台
 	Architecture *string `json:"Architecture,omitempty" name:"Architecture"`
 
-	// 创建此镜像的docker版本
+	// 创建制品的 Docker 版本
 	DockerVersion *string `json:"DockerVersion,omitempty" name:"DockerVersion"`
 
-	// 此镜像建议运行系统
+	// 标注的制品操作系统
 	OS *string `json:"OS,omitempty" name:"OS"`
 
-	// SizeByte
+	// 制品大小
 	SizeByte *int64 `json:"SizeByte,omitempty" name:"SizeByte"`
 
-	// Id
+	// 序号
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
 	// 数据更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 镜像更新时间
+	// 制品更新时间
 	PushTime *string `json:"PushTime,omitempty" name:"PushTime"`
+
+	// 制品类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
 }
 
 type TagInfoResp struct {

@@ -638,7 +638,7 @@ func NewDeleteCompareTaskResponse() (response *DeleteCompareTaskResponse) {
 }
 
 // DeleteCompareTask
-// 删除一致性校验任务
+// 删除一致性校验任务。当一致性校验任务状态为success、failed、canceled 时可以执行此操作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -664,7 +664,7 @@ func (c *Client) DeleteCompareTask(request *DeleteCompareTaskRequest) (response 
 }
 
 // DeleteCompareTask
-// 删除一致性校验任务
+// 删除一致性校验任务。当一致性校验任务状态为success、failed、canceled 时可以执行此操作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"

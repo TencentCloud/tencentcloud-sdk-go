@@ -83,6 +83,9 @@ const (
 	// 后端服务超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 
+	// Rpc调用失败。
+	FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+
 	// 检索人脸个数超过限制。
 	FAILEDOPERATION_SEARCHFACESEXCEED = "FailedOperation.SearchFacesExceed"
 

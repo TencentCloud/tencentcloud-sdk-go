@@ -17,6 +17,9 @@ package v20180301
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+
 	// 未检测到闭眼动作。
 	FAILEDOPERATION_ACTIONCLOSEEYE = "FailedOperation.ActionCloseEye"
 

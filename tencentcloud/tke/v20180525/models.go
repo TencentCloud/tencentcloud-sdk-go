@@ -1756,7 +1756,7 @@ type CreateClusterReleaseRequestParams struct {
 	// 自定义参数
 	Values *ReleaseValues `json:"Values,omitempty" name:"Values"`
 
-	// 制品来源，范围：tke-market/tcr/other
+	// 制品来源，范围：tke 应用市场/第三方chart
 	ChartFrom *string `json:"ChartFrom,omitempty" name:"ChartFrom"`
 
 	// 制品版本
@@ -1773,6 +1773,9 @@ type CreateClusterReleaseRequestParams struct {
 
 	// 制品命名空间
 	ChartNamespace *string `json:"ChartNamespace,omitempty" name:"ChartNamespace"`
+
+	// 集群类型，支持传 tke, eks, tkeedge, exernal(注册集群）
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 }
 
 type CreateClusterReleaseRequest struct {
@@ -1793,7 +1796,7 @@ type CreateClusterReleaseRequest struct {
 	// 自定义参数
 	Values *ReleaseValues `json:"Values,omitempty" name:"Values"`
 
-	// 制品来源，范围：tke-market/tcr/other
+	// 制品来源，范围：tke 应用市场/第三方chart
 	ChartFrom *string `json:"ChartFrom,omitempty" name:"ChartFrom"`
 
 	// 制品版本
@@ -1810,6 +1813,9 @@ type CreateClusterReleaseRequest struct {
 
 	// 制品命名空间
 	ChartNamespace *string `json:"ChartNamespace,omitempty" name:"ChartNamespace"`
+
+	// 集群类型，支持传 tke, eks, tkeedge, exernal(注册集群）
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 }
 
 func (r *CreateClusterReleaseRequest) ToJsonString() string {
@@ -1835,6 +1841,7 @@ func (r *CreateClusterReleaseRequest) FromJsonString(s string) error {
 	delete(f, "Username")
 	delete(f, "Password")
 	delete(f, "ChartNamespace")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterReleaseRequest has unknown keys!", "")
 	}

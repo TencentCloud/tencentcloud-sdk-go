@@ -14849,6 +14849,9 @@ type ModifyRuleGroupSubscriptionRequestParams struct {
 
 	// 数据表Id
 	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 群机器人webhook信息
+	WebHooks []*SubscribeWebHook `json:"WebHooks,omitempty" name:"WebHooks"`
 }
 
 type ModifyRuleGroupSubscriptionRequest struct {
@@ -14874,6 +14877,9 @@ type ModifyRuleGroupSubscriptionRequest struct {
 
 	// 数据表Id
 	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 群机器人webhook信息
+	WebHooks []*SubscribeWebHook `json:"WebHooks,omitempty" name:"WebHooks"`
 }
 
 func (r *ModifyRuleGroupSubscriptionRequest) ToJsonString() string {
@@ -14895,6 +14901,7 @@ func (r *ModifyRuleGroupSubscriptionRequest) FromJsonString(s string) error {
 	delete(f, "DatabaseId")
 	delete(f, "DatasourceId")
 	delete(f, "TableId")
+	delete(f, "WebHooks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleGroupSubscriptionRequest has unknown keys!", "")
 	}
@@ -17692,6 +17699,10 @@ type RuleGroupSubscribe struct {
 	// 订阅方式 1.邮件email  2.短信sms
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeType []*uint64 `json:"SubscribeType,omitempty" name:"SubscribeType"`
+
+	// 群机器人配置的webhook信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebHooks []*SubscribeWebHook `json:"WebHooks,omitempty" name:"WebHooks"`
 }
 
 type RuleGroupTable struct {
@@ -18674,6 +18685,16 @@ type SubscribeReceiver struct {
 	// 接收人名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiverName *string `json:"ReceiverName,omitempty" name:"ReceiverName"`
+}
+
+type SubscribeWebHook struct {
+	// 群机器人类型，当前支持飞书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HookType *string `json:"HookType,omitempty" name:"HookType"`
+
+	// 群机器人webhook地址，配置方式参考https://cloud.tencent.com/document/product/1254/70736
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HookAddress *string `json:"HookAddress,omitempty" name:"HookAddress"`
 }
 
 // Predefined struct for user

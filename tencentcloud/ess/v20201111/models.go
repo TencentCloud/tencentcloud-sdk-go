@@ -2133,23 +2133,36 @@ type DescribeFlowTemplatesRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	// 企业组织相关信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
-	// 查询个数，默认20，最大200
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询偏移位置，默认0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+	// 查询个数，默认20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 这个参数跟下面的IsChannel参数配合使用。
+	// IsChannel=false时，ApplicationId参数不起任何作用。
+	// IsChannel=true时，ApplicationId为空，查询所有渠道模板列表；ApplicationId不为空，查询指定渠道下的模板列表
+	// ApplicationId为空，查询渠道模板列表
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 默认为false，查询SaaS模板库列表；
+	// 为true，查询渠道模板库管理列表
+	IsChannel *bool `json:"IsChannel,omitempty" name:"IsChannel"`
 
 	// 暂未开放
 	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 }
 
 type DescribeFlowTemplatesRequest struct {
@@ -2158,23 +2171,36 @@ type DescribeFlowTemplatesRequest struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	// 企业组织相关信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
-	// 查询个数，默认20，最大200
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询偏移位置，默认0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+	// 查询个数，默认20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 这个参数跟下面的IsChannel参数配合使用。
+	// IsChannel=false时，ApplicationId参数不起任何作用。
+	// IsChannel=true时，ApplicationId为空，查询所有渠道模板列表；ApplicationId不为空，查询指定渠道下的模板列表
+	// ApplicationId为空，查询渠道模板列表
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 默认为false，查询SaaS模板库列表；
+	// 为true，查询渠道模板库管理列表
+	IsChannel *bool `json:"IsChannel,omitempty" name:"IsChannel"`
 
 	// 暂未开放
 	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 }
 
 func (r *DescribeFlowTemplatesRequest) ToJsonString() string {
@@ -2190,12 +2216,15 @@ func (r *DescribeFlowTemplatesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Operator")
-	delete(f, "Filters")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "ContentType")
-	delete(f, "GenerateSource")
+	delete(f, "Organization")
 	delete(f, "Agent")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "ApplicationId")
+	delete(f, "IsChannel")
+	delete(f, "GenerateSource")
+	delete(f, "ContentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowTemplatesRequest has unknown keys!", "")
 	}
@@ -3195,6 +3224,13 @@ type TemplateInfo struct {
 
 	// 发起人角色信息
 	Promoter *Recipient `json:"Promoter,omitempty" name:"Promoter"`
+
+	// 模板创建组织id
+	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
+
+	// 模板预览链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 }
 
 type UploadFile struct {

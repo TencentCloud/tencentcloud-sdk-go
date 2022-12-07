@@ -471,6 +471,22 @@ type ApiGroupInfo struct {
 	// 网关实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 命名空间参数key值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceNameKey *string `json:"NamespaceNameKey,omitempty" name:"NamespaceNameKey"`
+
+	// 微服务名参数key值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceNameKey *string `json:"ServiceNameKey,omitempty" name:"ServiceNameKey"`
+
+	// 命名空间参数位置，path，header或query，默认是path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceNameKeyPosition *string `json:"NamespaceNameKeyPosition,omitempty" name:"NamespaceNameKeyPosition"`
+
+	// 微服务名参数位置，path，header或query，默认是path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceNameKeyPosition *string `json:"ServiceNameKeyPosition,omitempty" name:"ServiceNameKeyPosition"`
 }
 
 type ApiInfo struct {
@@ -1677,6 +1693,14 @@ type ContainerGroupDeploy struct {
 	// 仓库类型 (person, tcr)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
+
+	// 预热配置设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
+
+	// Envoy网关服务配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitempty" name:"GatewayConfig"`
 }
 
 type ContainerGroupDetail struct {
@@ -2034,6 +2058,18 @@ type CreateApiGroupRequestParams struct {
 
 	// 网关实体ID
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 命名空间参数key值
+	NamespaceNameKey *string `json:"NamespaceNameKey,omitempty" name:"NamespaceNameKey"`
+
+	// 微服务名参数key值
+	ServiceNameKey *string `json:"ServiceNameKey,omitempty" name:"ServiceNameKey"`
+
+	// 命名空间参数位置，path，header或query，默认是path
+	NamespaceNameKeyPosition *string `json:"NamespaceNameKeyPosition,omitempty" name:"NamespaceNameKeyPosition"`
+
+	// 微服务名参数位置，path，header或query，默认是path
+	ServiceNameKeyPosition *string `json:"ServiceNameKeyPosition,omitempty" name:"ServiceNameKeyPosition"`
 }
 
 type CreateApiGroupRequest struct {
@@ -2056,6 +2092,18 @@ type CreateApiGroupRequest struct {
 
 	// 网关实体ID
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 命名空间参数key值
+	NamespaceNameKey *string `json:"NamespaceNameKey,omitempty" name:"NamespaceNameKey"`
+
+	// 微服务名参数key值
+	ServiceNameKey *string `json:"ServiceNameKey,omitempty" name:"ServiceNameKey"`
+
+	// 命名空间参数位置，path，header或query，默认是path
+	NamespaceNameKeyPosition *string `json:"NamespaceNameKeyPosition,omitempty" name:"NamespaceNameKeyPosition"`
+
+	// 微服务名参数位置，path，header或query，默认是path
+	ServiceNameKeyPosition *string `json:"ServiceNameKeyPosition,omitempty" name:"ServiceNameKeyPosition"`
 }
 
 func (r *CreateApiGroupRequest) ToJsonString() string {
@@ -2076,6 +2124,10 @@ func (r *CreateApiGroupRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "GroupType")
 	delete(f, "GatewayInstanceId")
+	delete(f, "NamespaceNameKey")
+	delete(f, "ServiceNameKey")
+	delete(f, "NamespaceNameKeyPosition")
+	delete(f, "ServiceNameKeyPosition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApiGroupRequest has unknown keys!", "")
 	}
@@ -5786,6 +5838,7 @@ func (r *DescribeApiGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiGroupResponseParams struct {
 	// API分组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiGroupInfo `json:"Result,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7298,6 +7351,7 @@ func (r *DescribeContainerGroupDeployInfoRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeContainerGroupDeployInfoResponseParams struct {
 	// 获取部署组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ContainerGroupDeploy `json:"Result,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -13856,6 +13910,10 @@ type GatewayApiGroupVo struct {
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
 }
 
+type GatewayConfig struct {
+
+}
+
 type GatewayDeployGroup struct {
 	// 网关部署组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -19169,6 +19227,18 @@ type UpdateApiGroupRequestParams struct {
 
 	// 分组上下文
 	GroupContext *string `json:"GroupContext,omitempty" name:"GroupContext"`
+
+	// 命名空间参数key值
+	NamespaceNameKey *string `json:"NamespaceNameKey,omitempty" name:"NamespaceNameKey"`
+
+	// 微服务名参数key值
+	ServiceNameKey *string `json:"ServiceNameKey,omitempty" name:"ServiceNameKey"`
+
+	// 命名空间参数位置，path，header或query，默认是path
+	NamespaceNameKeyPosition *string `json:"NamespaceNameKeyPosition,omitempty" name:"NamespaceNameKeyPosition"`
+
+	// 微服务名参数位置，path，header或query，默认是path
+	ServiceNameKeyPosition *string `json:"ServiceNameKeyPosition,omitempty" name:"ServiceNameKeyPosition"`
 }
 
 type UpdateApiGroupRequest struct {
@@ -19188,6 +19258,18 @@ type UpdateApiGroupRequest struct {
 
 	// 分组上下文
 	GroupContext *string `json:"GroupContext,omitempty" name:"GroupContext"`
+
+	// 命名空间参数key值
+	NamespaceNameKey *string `json:"NamespaceNameKey,omitempty" name:"NamespaceNameKey"`
+
+	// 微服务名参数key值
+	ServiceNameKey *string `json:"ServiceNameKey,omitempty" name:"ServiceNameKey"`
+
+	// 命名空间参数位置，path，header或query，默认是path
+	NamespaceNameKeyPosition *string `json:"NamespaceNameKeyPosition,omitempty" name:"NamespaceNameKeyPosition"`
+
+	// 微服务名参数位置，path，header或query，默认是path
+	ServiceNameKeyPosition *string `json:"ServiceNameKeyPosition,omitempty" name:"ServiceNameKeyPosition"`
 }
 
 func (r *UpdateApiGroupRequest) ToJsonString() string {
@@ -19207,6 +19289,10 @@ func (r *UpdateApiGroupRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "AuthType")
 	delete(f, "GroupContext")
+	delete(f, "NamespaceNameKey")
+	delete(f, "ServiceNameKey")
+	delete(f, "NamespaceNameKeyPosition")
+	delete(f, "ServiceNameKeyPosition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateApiGroupRequest has unknown keys!", "")
 	}
@@ -19216,6 +19302,7 @@ func (r *UpdateApiGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateApiGroupResponseParams struct {
 	// 返回结果，true: 成功, false: 失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19919,6 +20006,10 @@ type VmGroup struct {
 	// 预热属性配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
+
+	// Envoy网关配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitempty" name:"GatewayConfig"`
 }
 
 type VmGroupOther struct {

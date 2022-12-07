@@ -137,7 +137,7 @@ type CreateBackUpScheduleRequestParams struct {
 	// 编辑时需要传
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 
-	// 选择的星期 逗号分隔
+	// 选择的星期 逗号分隔，例如 2 代表周二
 	WeekDays *string `json:"WeekDays,omitempty" name:"WeekDays"`
 
 	// 执行小时
@@ -153,7 +153,7 @@ type CreateBackUpScheduleRequest struct {
 	// 编辑时需要传
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 
-	// 选择的星期 逗号分隔
+	// 选择的星期 逗号分隔，例如 2 代表周二
 	WeekDays *string `json:"WeekDays,omitempty" name:"WeekDays"`
 
 	// 执行小时

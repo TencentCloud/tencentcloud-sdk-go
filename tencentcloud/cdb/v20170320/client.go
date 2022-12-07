@@ -99,56 +99,6 @@ func (c *Client) AddTimeWindowWithContext(ctx context.Context, request *AddTimeW
     return
 }
 
-func NewApplyCDBProxyRequest() (request *ApplyCDBProxyRequest) {
-    request = &ApplyCDBProxyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "ApplyCDBProxy")
-    
-    
-    return
-}
-
-func NewApplyCDBProxyResponse() (response *ApplyCDBProxyResponse) {
-    response = &ApplyCDBProxyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ApplyCDBProxy
-// 针对主实例申请创建数据库代理。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_REPEATCREATEPROXYERROR = "FailedOperation.RepeatCreateProxyError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) ApplyCDBProxy(request *ApplyCDBProxyRequest) (response *ApplyCDBProxyResponse, err error) {
-    return c.ApplyCDBProxyWithContext(context.Background(), request)
-}
-
-// ApplyCDBProxy
-// 针对主实例申请创建数据库代理。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_REPEATCREATEPROXYERROR = "FailedOperation.RepeatCreateProxyError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) ApplyCDBProxyWithContext(ctx context.Context, request *ApplyCDBProxyRequest) (response *ApplyCDBProxyResponse, err error) {
-    if request == nil {
-        request = NewApplyCDBProxyRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ApplyCDBProxy require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewApplyCDBProxyResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

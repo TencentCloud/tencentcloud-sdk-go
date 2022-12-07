@@ -2690,9 +2690,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 }
 
 // DescribeFlowTemplates
-// 二期接口-查询模板
-//
-// 适用场景：当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取自己主体下的模板列表，以及每个模板内的控件信息。该接口常用来配合“创建电子文档”接口作为前置的接口使用。
+// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。该接口常用来配合“创建电子文档”接口作为前置的接口使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2717,9 +2715,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 }
 
 // DescribeFlowTemplates
-// 二期接口-查询模板
-//
-// 适用场景：当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取自己主体下的模板列表，以及每个模板内的控件信息。该接口常用来配合“创建电子文档”接口作为前置的接口使用。
+// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。该接口常用来配合“创建电子文档”接口作为前置的接口使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

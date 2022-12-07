@@ -1180,7 +1180,7 @@ func NewCreateClusterReleaseResponse() (response *CreateClusterReleaseResponse) 
 }
 
 // CreateClusterRelease
-// 在应用市场中集群创建应用
+// 在应用市场中给集群创建应用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1201,7 +1201,7 @@ func (c *Client) CreateClusterRelease(request *CreateClusterReleaseRequest) (res
 }
 
 // CreateClusterRelease
-// 在应用市场中集群创建应用
+// 在应用市场中给集群创建应用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

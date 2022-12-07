@@ -2383,6 +2383,12 @@ type InstanceTypeQuotaItem struct {
 
 	// 实例备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。
+	GpuCount *float64 `json:"GpuCount,omitempty" name:"GpuCount"`
+
+	// 实例的CPU主频信息
+	Frequency *string `json:"Frequency,omitempty" name:"Frequency"`
 }
 
 type InternetAccessible struct {

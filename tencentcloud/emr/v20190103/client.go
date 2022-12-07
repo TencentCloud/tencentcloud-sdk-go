@@ -297,6 +297,58 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     return
 }
 
+func NewDeleteUserManagerUserListRequest() (request *DeleteUserManagerUserListRequest) {
+    request = &DeleteUserManagerUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DeleteUserManagerUserList")
+    
+    
+    return
+}
+
+func NewDeleteUserManagerUserListResponse() (response *DeleteUserManagerUserListResponse) {
+    response = &DeleteUserManagerUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteUserManagerUserList
+// 删除用户列表（用户管理）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DeleteUserManagerUserList(request *DeleteUserManagerUserListRequest) (response *DeleteUserManagerUserListResponse, err error) {
+    return c.DeleteUserManagerUserListWithContext(context.Background(), request)
+}
+
+// DeleteUserManagerUserList
+// 删除用户列表（用户管理）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DeleteUserManagerUserListWithContext(ctx context.Context, request *DeleteUserManagerUserListRequest) (response *DeleteUserManagerUserListResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserManagerUserListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserManagerUserList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserManagerUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterNodesRequest() (request *DescribeClusterNodesRequest) {
     request = &DescribeClusterNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

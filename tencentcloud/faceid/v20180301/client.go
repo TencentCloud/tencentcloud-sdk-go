@@ -265,6 +265,7 @@ func NewCheckBankCardInformationResponse() (response *CheckBankCardInformationRe
 // 银行卡基础信息查询
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
@@ -282,6 +283,7 @@ func (c *Client) CheckBankCardInformation(request *CheckBankCardInformationReque
 // 银行卡基础信息查询
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
@@ -627,6 +629,7 @@ func NewDetectAuthResponse() (response *DetectAuthResponse) {
 // 每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -646,6 +649,7 @@ func (c *Client) DetectAuth(request *DetectAuthRequest) (response *DetectAuthRes
 // 每次调用人脸核身SaaS化服务前，需先调用本接口获取BizToken，用来串联核身流程，在验证完成后，用于获取验证结果信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -825,6 +829,7 @@ func NewGetDetectInfoResponse() (response *GetDetectInfoResponse) {
 // 完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
@@ -842,6 +847,7 @@ func (c *Client) GetDetectInfo(request *GetDetectInfoRequest) (response *GetDete
 // 完成验证后，用BizToken调用本接口获取结果信息，BizToken生成后三天内（3\*24\*3,600秒）可多次拉取。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
@@ -1205,6 +1211,7 @@ func NewGetLiveCodeResponse() (response *GetLiveCodeResponse) {
 // 使用数字活体检测模式前，需调用本接口获取数字验证码。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1221,6 +1228,7 @@ func (c *Client) GetLiveCode(request *GetLiveCodeRequest) (response *GetLiveCode
 // 使用数字活体检测模式前，需调用本接口获取数字验证码。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1439,6 +1447,7 @@ func NewIdCardOCRVerificationResponse() (response *IdCardOCRVerificationResponse
 // 本接口用于校验姓名和身份证号的真实性和一致性，您可以通过输入姓名和身份证号或传入身份证人像面照片提供所需验证信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -1464,6 +1473,7 @@ func (c *Client) IdCardOCRVerification(request *IdCardOCRVerificationRequest) (r
 // 本接口用于校验姓名和身份证号的真实性和一致性，您可以通过输入姓名和身份证号或传入身份证人像面照片提供所需验证信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -1519,6 +1529,7 @@ func NewIdCardVerificationResponse() (response *IdCardVerificationResponse) {
 // 传入姓名和身份证号，校验两者的真实性和一致性。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
@@ -1537,6 +1548,7 @@ func (c *Client) IdCardVerification(request *IdCardVerificationRequest) (respons
 // 传入姓名和身份证号，校验两者的真实性和一致性。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_DECRYPTSYSTEMERROR = "FailedOperation.DecryptSystemError"
 //  FAILEDOPERATION_STSUNAUTHERRERROR = "FailedOperation.StsUnAuthErrError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
@@ -1817,6 +1829,7 @@ func NewLivenessCompareResponse() (response *LivenessCompareResponse) {
 // 传入视频和照片，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与上传照片是否属于同一个人。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACTIONCLOSEEYE = "FailedOperation.ActionCloseEye"
 //  FAILEDOPERATION_ACTIONFACECLOSE = "FailedOperation.ActionFaceClose"
 //  FAILEDOPERATION_ACTIONFACEFAR = "FailedOperation.ActionFaceFar"
@@ -1877,6 +1890,7 @@ func (c *Client) LivenessCompare(request *LivenessCompareRequest) (response *Liv
 // 传入视频和照片，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与上传照片是否属于同一个人。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACTIONCLOSEEYE = "FailedOperation.ActionCloseEye"
 //  FAILEDOPERATION_ACTIONFACECLOSE = "FailedOperation.ActionFaceClose"
 //  FAILEDOPERATION_ACTIONFACEFAR = "FailedOperation.ActionFaceFar"
@@ -1967,6 +1981,7 @@ func NewLivenessRecognitionResponse() (response *LivenessRecognitionResponse) {
 // 传入视频和身份信息，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与权威库的证件照是否属于同一个人。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACTIONCLOSEEYE = "FailedOperation.ActionCloseEye"
 //  FAILEDOPERATION_ACTIONFACECLOSE = "FailedOperation.ActionFaceClose"
 //  FAILEDOPERATION_ACTIONFACEFAR = "FailedOperation.ActionFaceFar"
@@ -2029,6 +2044,7 @@ func (c *Client) LivenessRecognition(request *LivenessRecognitionRequest) (respo
 // 传入视频和身份信息，先判断视频中是否为真人，判断为真人后，再判断该视频中的人与权威库的证件照是否属于同一个人。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACTIONCLOSEEYE = "FailedOperation.ActionCloseEye"
 //  FAILEDOPERATION_ACTIONFACECLOSE = "FailedOperation.ActionFaceClose"
 //  FAILEDOPERATION_ACTIONFACEFAR = "FailedOperation.ActionFaceFar"

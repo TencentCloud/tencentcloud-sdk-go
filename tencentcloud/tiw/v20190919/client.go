@@ -551,6 +551,76 @@ func (c *Client) DescribeTIWDailyUsageWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeTIWRoomDailyUsageRequest() (request *DescribeTIWRoomDailyUsageRequest) {
+    request = &DescribeTIWRoomDailyUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeTIWRoomDailyUsage")
+    
+    
+    return
+}
+
+func NewDescribeTIWRoomDailyUsageResponse() (response *DescribeTIWRoomDailyUsageResponse) {
+    response = &DescribeTIWRoomDailyUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTIWRoomDailyUsage
+// 查询互动白板房间维度每天计费用量。
+//
+// 1. 单次查询统计区间最多不能超过31天。
+//
+// 2. 由于统计延迟等原因，暂时不支持查询当天数据，建议在次日上午7点以后再来查询前一天的用量，例如在10月27日上午7点后，再来查询到10月26日整天的用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeTIWRoomDailyUsage(request *DescribeTIWRoomDailyUsageRequest) (response *DescribeTIWRoomDailyUsageResponse, err error) {
+    return c.DescribeTIWRoomDailyUsageWithContext(context.Background(), request)
+}
+
+// DescribeTIWRoomDailyUsage
+// 查询互动白板房间维度每天计费用量。
+//
+// 1. 单次查询统计区间最多不能超过31天。
+//
+// 2. 由于统计延迟等原因，暂时不支持查询当天数据，建议在次日上午7点以后再来查询前一天的用量，例如在10月27日上午7点后，再来查询到10月26日整天的用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeTIWRoomDailyUsageWithContext(ctx context.Context, request *DescribeTIWRoomDailyUsageRequest) (response *DescribeTIWRoomDailyUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTIWRoomDailyUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTIWRoomDailyUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTIWRoomDailyUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTranscodeRequest() (request *DescribeTranscodeRequest) {
     request = &DescribeTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

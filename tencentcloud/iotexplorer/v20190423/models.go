@@ -388,11 +388,11 @@ type CallDeviceActionSyncResponseParams struct {
 	// 调用Id
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 输出参数
+	// 输出参数，取值设备端上报$thing/up/action method为action_reply 的 response字段，物模型协议参考https://cloud.tencent.com/document/product/1081/34916#.E8.AE.BE.E5.A4.87.E8.A1.8C.E4.B8.BA.E8.B0.83.E7.94.A8
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputParams *string `json:"OutputParams,omitempty" name:"OutputParams"`
 
-	// 返回状态，当设备不在线等部分情况，会通过该 Status 返回。
+	// 返回状态，取值设备端上报$thing/up/action	method为action_reply 的 status字段，如果不包含status字段，则取默认值，空字符串，物模型协议参考https://cloud.tencent.com/document/product/1081/34916#.E8.AE.BE.E5.A4.87.E8.A1.8C.E4.B8.BA.E8.B0.83.E7.94.A8
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

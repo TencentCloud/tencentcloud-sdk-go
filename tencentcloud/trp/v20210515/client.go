@@ -1131,6 +1131,58 @@ func (c *Client) DescribeCodesByPackWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeCorpQuotasRequest() (request *DescribeCorpQuotasRequest) {
+    request = &DescribeCorpQuotasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeCorpQuotas")
+    
+    
+    return
+}
+
+func NewDescribeCorpQuotasResponse() (response *DescribeCorpQuotasResponse) {
+    response = &DescribeCorpQuotasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCorpQuotas
+// 查询渠道商下属企业额度使用情况
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCorpQuotas(request *DescribeCorpQuotasRequest) (response *DescribeCorpQuotasResponse, err error) {
+    return c.DescribeCorpQuotasWithContext(context.Background(), request)
+}
+
+// DescribeCorpQuotas
+// 查询渠道商下属企业额度使用情况
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCorpQuotasWithContext(ctx context.Context, request *DescribeCorpQuotasRequest) (response *DescribeCorpQuotasResponse, err error) {
+    if request == nil {
+        request = NewDescribeCorpQuotasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCorpQuotas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCorpQuotasResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomRuleByIdRequest() (request *DescribeCustomRuleByIdRequest) {
     request = &DescribeCustomRuleByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
