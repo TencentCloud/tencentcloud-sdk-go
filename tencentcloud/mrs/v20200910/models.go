@@ -540,6 +540,9 @@ type ImageToClassRequestParams struct {
 
 	// 不填，默认为0
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 用户类型，新客户传1，老客户可不传
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 type ImageToClassRequest struct {
@@ -553,6 +556,9 @@ type ImageToClassRequest struct {
 
 	// 不填，默认为0
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 用户类型，新客户传1，老客户可不传
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 func (r *ImageToClassRequest) ToJsonString() string {
@@ -570,6 +576,7 @@ func (r *ImageToClassRequest) FromJsonString(s string) error {
 	delete(f, "ImageInfoList")
 	delete(f, "HandleParam")
 	delete(f, "Type")
+	delete(f, "UserType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageToClassRequest has unknown keys!", "")
 	}
@@ -616,6 +623,9 @@ type ImageToObjectRequestParams struct {
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
 	// 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
 	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
+
+	// 用户类型，新客户传1，老客户可不传
+	UserType *int64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 type ImageToObjectRequest struct {
@@ -633,6 +643,9 @@ type ImageToObjectRequest struct {
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
 	// 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
 	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
+
+	// 用户类型，新客户传1，老客户可不传
+	UserType *int64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 func (r *ImageToObjectRequest) ToJsonString() string {
@@ -651,6 +664,7 @@ func (r *ImageToObjectRequest) FromJsonString(s string) error {
 	delete(f, "HandleParam")
 	delete(f, "Type")
 	delete(f, "IsUsedClassify")
+	delete(f, "UserType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageToObjectRequest has unknown keys!", "")
 	}
@@ -1538,6 +1552,9 @@ type Template struct {
 type TextToClassRequestParams struct {
 	// 报告文本
 	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 用户类型，新客户传1，老客户可不传
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 type TextToClassRequest struct {
@@ -1545,6 +1562,9 @@ type TextToClassRequest struct {
 	
 	// 报告文本
 	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 用户类型，新客户传1，老客户可不传
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 func (r *TextToClassRequest) ToJsonString() string {
@@ -1560,6 +1580,7 @@ func (r *TextToClassRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Text")
+	delete(f, "UserType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToClassRequest has unknown keys!", "")
 	}
@@ -1602,6 +1623,9 @@ type TextToObjectRequestParams struct {
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
 	// 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
 	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
+
+	// 用户类型，新客户传1，老客户可不传
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 type TextToObjectRequest struct {
@@ -1616,6 +1640,9 @@ type TextToObjectRequest struct {
 	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
 	// 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
 	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
+
+	// 用户类型，新客户传1，老客户可不传
+	UserType *uint64 `json:"UserType,omitempty" name:"UserType"`
 }
 
 func (r *TextToObjectRequest) ToJsonString() string {
@@ -1633,6 +1660,7 @@ func (r *TextToObjectRequest) FromJsonString(s string) error {
 	delete(f, "Text")
 	delete(f, "Type")
 	delete(f, "IsUsedClassify")
+	delete(f, "UserType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToObjectRequest has unknown keys!", "")
 	}

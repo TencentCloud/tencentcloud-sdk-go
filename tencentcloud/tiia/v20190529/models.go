@@ -2421,13 +2421,13 @@ type SearchImageRequestParams struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 匹配阈值。
-	// 只有图片相似度分数超过MatchThreshold值的结果才会返回。
-	// 默认值：
+	// 只有图片相似度分数超过匹配阈值的结果才会返回。
+	// 当MatchThreshold为0（默认值）时，各服务类型将按照以下默认的匹配阈值进行结果过滤：
 	// • 相同图像搜索：50。
 	// • 商品图像搜索：28。
 	// • 相似图像搜索：56。
 	// 建议：
-	// 可以手动调整MatchThreshold值来控制输出结果的范围。如果发现无检索结果，建议调整为较低的阈值。
+	// 可以手动调整MatchThreshold值来控制输出结果的范围。如果发现无检索结果，可能是因为图片相似度较低导致检索结果被匹配阈值过滤，建议调整为较低的阈值后再次尝试检索。
 	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`
 
 	// 标签过滤条件。
@@ -2490,13 +2490,13 @@ type SearchImageRequest struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 匹配阈值。
-	// 只有图片相似度分数超过MatchThreshold值的结果才会返回。
-	// 默认值：
+	// 只有图片相似度分数超过匹配阈值的结果才会返回。
+	// 当MatchThreshold为0（默认值）时，各服务类型将按照以下默认的匹配阈值进行结果过滤：
 	// • 相同图像搜索：50。
 	// • 商品图像搜索：28。
 	// • 相似图像搜索：56。
 	// 建议：
-	// 可以手动调整MatchThreshold值来控制输出结果的范围。如果发现无检索结果，建议调整为较低的阈值。
+	// 可以手动调整MatchThreshold值来控制输出结果的范围。如果发现无检索结果，可能是因为图片相似度较低导致检索结果被匹配阈值过滤，建议调整为较低的阈值后再次尝试检索。
 	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`
 
 	// 标签过滤条件。

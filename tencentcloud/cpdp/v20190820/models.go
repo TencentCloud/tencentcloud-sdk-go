@@ -15740,6 +15740,10 @@ type PaymentOrderResult struct {
 	// 附加税税项。格式为JSON格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdditionalTaxItem *string `json:"AdditionalTaxItem,omitempty" name:"AdditionalTaxItem"`
+
+	// 失败原因。当Status为FAILED时，改字段为失败的原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
 }
 
 type PaymentOrderStatusResult struct {
@@ -15754,6 +15758,10 @@ type PaymentOrderStatusResult struct {
 
 	// 状态描述
 	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 失败原因。当Status为FAILED时，改字段为失败的原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
 }
 
 type PaymentOrders struct {

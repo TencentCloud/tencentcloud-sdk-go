@@ -2870,6 +2870,15 @@ type DescribeClusterParamLogsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
+	// 实例ID列表，用来记录具体操作哪些实例
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 排序字段，定义在回返结果的基于哪个字段进行排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 定义具体的排序规则，限定为desc,asc,DESC,ASC其中之一
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
 	// 返回数量，默认为 20，取值范围为(0,100]
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -2882,6 +2891,15 @@ type DescribeClusterParamLogsRequest struct {
 	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID列表，用来记录具体操作哪些实例
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 排序字段，定义在回返结果的基于哪个字段进行排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 定义具体的排序规则，限定为desc,asc,DESC,ASC其中之一
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
 	// 返回数量，默认为 20，取值范围为(0,100]
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -2903,6 +2921,9 @@ func (r *DescribeClusterParamLogsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "InstanceIds")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	if len(f) > 0 {

@@ -1,3 +1,211 @@
+# Release v1.0.554
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 38 次发布
+
+发布时间：2022-12-08 01:17:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：Remark
+
+	* <font color="#dd0000">**修改成员**：</font>Caller, Callee, Time, Direction, Duration, RecordURL, SeatUser, EndStatus, SkillGroup, CallerLocation, IVRDuration, RingTimestamp, AcceptTimestamp, EndedTimestamp, IVRKeyPressed, HungUpSide, ServeParticipants, SkillGroupId, EndStatusString, StartTimestamp, QueuedTimestamp, PostIVRKeyPressed, QueuedSkillGroupId, SessionId, ProtectedCaller, ProtectedCallee, Uui, IVRKeyPressedEx, AsrUrl, CustomRecordURL
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 95 次发布
+
+发布时间：2022-12-08 01:21:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+
+	* 新增成员：FailReason
+
+* [PaymentOrderStatusResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderStatusResult)
+
+	* 新增成员：FailReason
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 35 次发布
+
+发布时间：2022-12-08 01:24:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterParamLogs](https://cloud.tencent.com/document/api/1003/70118)
+
+	* 新增入参：InstanceIds, OrderBy, OrderByType
+
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 14 次发布
+
+发布时间：2022-12-08 01:38:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImageToClass](https://cloud.tencent.com/document/api/1314/56229)
+
+	* 新增入参：UserType
+
+* [ImageToObject](https://cloud.tencent.com/document/api/1314/56228)
+
+	* 新增入参：UserType
+
+* [TextToClass](https://cloud.tencent.com/document/api/1314/56227)
+
+	* 新增入参：UserType
+
+* [TextToObject](https://cloud.tencent.com/document/api/1314/56226)
+
+	* 新增入参：UserType
+
+
+修改数据结构：
+
+* [MedDoc](https://cloud.tencent.com/document/api/1314/56230#MedDoc)
+
+	* <font color="#dd0000">**修改成员**：</font>Advice, Diagnosis, DiseaseMedicalHistory, PersonalMedicalHistory, ObstericalMedicalHistory, FamilyMedicalHistory, MenstrualMedicalHistory, TreatmentRecord
+
+
+
+
+## 云压测(pts) 版本：2021-07-28
+
+### 第 8 次发布
+
+发布时间：2022-12-08 01:40:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Job](https://cloud.tencent.com/document/api/1484/78100#Job)
+
+	* 新增成员：Message
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 12 次发布
+
+发布时间：2022-12-08 01:49:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Service](https://cloud.tencent.com/document/api/851/75051#Service)
+
+	* 新增成员：CreateFailedReason, ResourceGroupName, Tags
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 133 次发布
+
+发布时间：2022-12-08 01:50:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelClusterRelease](https://cloud.tencent.com/document/api/457/83759)
+* [DescribeClusterPendingReleases](https://cloud.tencent.com/document/api/457/83758)
+* [DescribeClusterReleaseDetails](https://cloud.tencent.com/document/api/457/83757)
+* [DescribeClusterReleaseHistory](https://cloud.tencent.com/document/api/457/83756)
+* [DescribeClusterReleases](https://cloud.tencent.com/document/api/457/83755)
+* [RollbackClusterRelease](https://cloud.tencent.com/document/api/457/83754)
+* [UninstallClusterRelease](https://cloud.tencent.com/document/api/457/83753)
+* [UpgradeClusterRelease](https://cloud.tencent.com/document/api/457/83752)
+
+修改接口：
+
+* [UpdateImageCache](https://cloud.tencent.com/document/api/457/70857)
+
+	* 新增入参：ImageRegistryCredentials, Images, ImageCacheSize, RetentionDays, SecurityGroupIds
+
+
+新增数据结构：
+
+* [Release](https://cloud.tencent.com/document/api/457/31866#Release)
+* [ReleaseDetails](https://cloud.tencent.com/document/api/457/31866#ReleaseDetails)
+* [ReleaseHistory](https://cloud.tencent.com/document/api/457/31866#ReleaseHistory)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 44 次发布
+
+发布时间：2022-12-08 01:52:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MixLayoutParams](https://cloud.tencent.com/document/api/647/44055#MixLayoutParams)
+
+	* 新增成员：RenderMode, MaxResolutionUserAlign
+
+* [RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams)
+
+	* 新增成员：MaxMediaFileDuration
+
+* [TencentVod](https://cloud.tencent.com/document/api/647/44055#TencentVod)
+
+	* 新增成员：UserDefineRecordId
+
+
+
+
 # Release v1.0.553
 
 ## 批量计算(batch) 版本：2017-03-12

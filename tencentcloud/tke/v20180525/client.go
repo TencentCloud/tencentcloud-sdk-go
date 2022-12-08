@@ -399,6 +399,76 @@ func (c *Client) AddVpcCniSubnetsWithContext(ctx context.Context, request *AddVp
     return
 }
 
+func NewCancelClusterReleaseRequest() (request *CancelClusterReleaseRequest) {
+    request = &CancelClusterReleaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CancelClusterRelease")
+    
+    
+    return
+}
+
+func NewCancelClusterReleaseResponse() (response *CancelClusterReleaseResponse) {
+    response = &CancelClusterReleaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelClusterRelease
+// 在应用市场中取消安装失败的应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CancelClusterRelease(request *CancelClusterReleaseRequest) (response *CancelClusterReleaseResponse, err error) {
+    return c.CancelClusterReleaseWithContext(context.Background(), request)
+}
+
+// CancelClusterRelease
+// 在应用市场中取消安装失败的应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CancelClusterReleaseWithContext(ctx context.Context, request *CancelClusterReleaseRequest) (response *CancelClusterReleaseResponse, err error) {
+    if request == nil {
+        request = NewCancelClusterReleaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelClusterRelease require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelClusterReleaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckEdgeClusterCIDRRequest() (request *CheckEdgeClusterCIDRRequest) {
     request = &CheckEdgeClusterCIDRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5035,6 +5105,300 @@ func (c *Client) DescribeClusterNodePoolsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeClusterNodePoolsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterPendingReleasesRequest() (request *DescribeClusterPendingReleasesRequest) {
+    request = &DescribeClusterPendingReleasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterPendingReleases")
+    
+    
+    return
+}
+
+func NewDescribeClusterPendingReleasesResponse() (response *DescribeClusterPendingReleasesResponse) {
+    response = &DescribeClusterPendingReleasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterPendingReleases
+// 在应用市场中查询正在安装中的应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterPendingReleases(request *DescribeClusterPendingReleasesRequest) (response *DescribeClusterPendingReleasesResponse, err error) {
+    return c.DescribeClusterPendingReleasesWithContext(context.Background(), request)
+}
+
+// DescribeClusterPendingReleases
+// 在应用市场中查询正在安装中的应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterPendingReleasesWithContext(ctx context.Context, request *DescribeClusterPendingReleasesRequest) (response *DescribeClusterPendingReleasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterPendingReleasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterPendingReleases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterPendingReleasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterReleaseDetailsRequest() (request *DescribeClusterReleaseDetailsRequest) {
+    request = &DescribeClusterReleaseDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterReleaseDetails")
+    
+    
+    return
+}
+
+func NewDescribeClusterReleaseDetailsResponse() (response *DescribeClusterReleaseDetailsResponse) {
+    response = &DescribeClusterReleaseDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterReleaseDetails
+// 查询通过应用市场安装的某个应用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterReleaseDetails(request *DescribeClusterReleaseDetailsRequest) (response *DescribeClusterReleaseDetailsResponse, err error) {
+    return c.DescribeClusterReleaseDetailsWithContext(context.Background(), request)
+}
+
+// DescribeClusterReleaseDetails
+// 查询通过应用市场安装的某个应用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterReleaseDetailsWithContext(ctx context.Context, request *DescribeClusterReleaseDetailsRequest) (response *DescribeClusterReleaseDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterReleaseDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterReleaseDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterReleaseDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterReleaseHistoryRequest() (request *DescribeClusterReleaseHistoryRequest) {
+    request = &DescribeClusterReleaseHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterReleaseHistory")
+    
+    
+    return
+}
+
+func NewDescribeClusterReleaseHistoryResponse() (response *DescribeClusterReleaseHistoryResponse) {
+    response = &DescribeClusterReleaseHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterReleaseHistory
+// 查询集群在应用市场中某个已安装应用的版本历史
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterReleaseHistory(request *DescribeClusterReleaseHistoryRequest) (response *DescribeClusterReleaseHistoryResponse, err error) {
+    return c.DescribeClusterReleaseHistoryWithContext(context.Background(), request)
+}
+
+// DescribeClusterReleaseHistory
+// 查询集群在应用市场中某个已安装应用的版本历史
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterReleaseHistoryWithContext(ctx context.Context, request *DescribeClusterReleaseHistoryRequest) (response *DescribeClusterReleaseHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterReleaseHistoryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterReleaseHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterReleaseHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterReleasesRequest() (request *DescribeClusterReleasesRequest) {
+    request = &DescribeClusterReleasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterReleases")
+    
+    
+    return
+}
+
+func NewDescribeClusterReleasesResponse() (response *DescribeClusterReleasesResponse) {
+    response = &DescribeClusterReleasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterReleases
+// 查询集群在应用市场中已安装应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterReleases(request *DescribeClusterReleasesRequest) (response *DescribeClusterReleasesResponse, err error) {
+    return c.DescribeClusterReleasesWithContext(context.Background(), request)
+}
+
+// DescribeClusterReleases
+// 查询集群在应用市场中已安装应用列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeClusterReleasesWithContext(ctx context.Context, request *DescribeClusterReleasesRequest) (response *DescribeClusterReleasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterReleasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterReleases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterReleasesResponse()
     err = c.Send(request, response)
     return
 }
@@ -10619,6 +10983,72 @@ func (c *Client) RestartEKSContainerInstancesWithContext(ctx context.Context, re
     return
 }
 
+func NewRollbackClusterReleaseRequest() (request *RollbackClusterReleaseRequest) {
+    request = &RollbackClusterReleaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "RollbackClusterRelease")
+    
+    
+    return
+}
+
+func NewRollbackClusterReleaseResponse() (response *RollbackClusterReleaseResponse) {
+    response = &RollbackClusterReleaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RollbackClusterRelease
+// 在应用市场中集群回滚应用至某个历史版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) RollbackClusterRelease(request *RollbackClusterReleaseRequest) (response *RollbackClusterReleaseResponse, err error) {
+    return c.RollbackClusterReleaseWithContext(context.Background(), request)
+}
+
+// RollbackClusterRelease
+// 在应用市场中集群回滚应用至某个历史版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) RollbackClusterReleaseWithContext(ctx context.Context, request *RollbackClusterReleaseRequest) (response *RollbackClusterReleaseResponse, err error) {
+    if request == nil {
+        request = NewRollbackClusterReleaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollbackClusterRelease require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRollbackClusterReleaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunPrometheusInstanceRequest() (request *RunPrometheusInstanceRequest) {
     request = &RunPrometheusInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10975,6 +11405,76 @@ func (c *Client) SyncPrometheusTemplateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewSyncPrometheusTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUninstallClusterReleaseRequest() (request *UninstallClusterReleaseRequest) {
+    request = &UninstallClusterReleaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "UninstallClusterRelease")
+    
+    
+    return
+}
+
+func NewUninstallClusterReleaseResponse() (response *UninstallClusterReleaseResponse) {
+    response = &UninstallClusterReleaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UninstallClusterRelease
+// 在应用市场中集群删除某个应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UninstallClusterRelease(request *UninstallClusterReleaseRequest) (response *UninstallClusterReleaseResponse, err error) {
+    return c.UninstallClusterReleaseWithContext(context.Background(), request)
+}
+
+// UninstallClusterRelease
+// 在应用市场中集群删除某个应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UninstallClusterReleaseWithContext(ctx context.Context, request *UninstallClusterReleaseRequest) (response *UninstallClusterReleaseResponse, err error) {
+    if request == nil {
+        request = NewUninstallClusterReleaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UninstallClusterRelease require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUninstallClusterReleaseResponse()
     err = c.Send(request, response)
     return
 }
@@ -11525,6 +12025,78 @@ func (c *Client) UpgradeClusterInstancesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewUpgradeClusterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeClusterReleaseRequest() (request *UpgradeClusterReleaseRequest) {
+    request = &UpgradeClusterReleaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "UpgradeClusterRelease")
+    
+    
+    return
+}
+
+func NewUpgradeClusterReleaseResponse() (response *UpgradeClusterReleaseResponse) {
+    response = &UpgradeClusterReleaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeClusterRelease
+// 升级集群中已安装的应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpgradeClusterRelease(request *UpgradeClusterReleaseRequest) (response *UpgradeClusterReleaseResponse, err error) {
+    return c.UpgradeClusterReleaseWithContext(context.Background(), request)
+}
+
+// UpgradeClusterRelease
+// 升级集群中已安装的应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MARKETGETAUTHFAILED = "FailedOperation.MarketGetAuthFailed"
+//  FAILEDOPERATION_MARKETRELEASEOPERATION = "FailedOperation.MarketReleaseOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MARKETGETAUTHFAILED = "InternalError.MarketGetAuthFailed"
+//  INTERNALERROR_MARKETINTERNALSERVERERROR = "InternalError.MarketInternalServerError"
+//  INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) UpgradeClusterReleaseWithContext(ctx context.Context, request *UpgradeClusterReleaseRequest) (response *UpgradeClusterReleaseResponse, err error) {
+    if request == nil {
+        request = NewUpgradeClusterReleaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeClusterRelease require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeClusterReleaseResponse()
     err = c.Send(request, response)
     return
 }

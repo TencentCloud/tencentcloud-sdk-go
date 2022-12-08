@@ -3588,6 +3588,10 @@ type TelCdrInfo struct {
 	// 录音转存第三方COS地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRecordURL *string `json:"CustomRecordURL,omitempty" name:"CustomRecordURL"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 // Predefined struct for user

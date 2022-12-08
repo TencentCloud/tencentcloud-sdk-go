@@ -3575,7 +3575,7 @@ type File struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 用户账号的 App ID
+	// 此字段不再使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppID *int64 `json:"AppID,omitempty" name:"AppID"`
 
@@ -3746,7 +3746,7 @@ type Job struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Load *Load `json:"Load,omitempty" name:"Load"`
 
-	// deprecated
+	// 此字段不再使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Configs []*string `json:"Configs,omitempty" name:"Configs"`
 
@@ -3754,7 +3754,7 @@ type Job struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Datasets []*TestData `json:"Datasets,omitempty" name:"Datasets"`
 
-	// deprecated
+	// 此字段不再使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extensions []*string `json:"Extensions,omitempty" name:"Extensions"`
 
@@ -3788,7 +3788,7 @@ type Job struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobOwner *string `json:"JobOwner,omitempty" name:"JobOwner"`
 
-	// deprecated
+	// 此字段不再使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadSources *LoadSource `json:"LoadSources,omitempty" name:"LoadSources"`
 
@@ -3824,7 +3824,7 @@ type Job struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseTimeP90 *float64 `json:"ResponseTimeP90,omitempty" name:"ResponseTimeP90"`
 
-	// deprecated
+	// 此字段不再使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scripts []*string `json:"Scripts,omitempty" name:"Scripts"`
 
@@ -3895,6 +3895,10 @@ type Job struct {
 	// 每秒发送字节数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkSendRate *float64 `json:"NetworkSendRate,omitempty" name:"NetworkSendRate"`
+
+	// 任务状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
 type Label struct {
