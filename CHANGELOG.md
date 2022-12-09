@@ -1,3 +1,21 @@
+# Release v1.0.556
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 131 次发布
+
+发布时间：2022-12-09 10:06:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFileAttributes](https://cloud.tencent.com/document/api/266/83796)
+
+
+
 # Release v1.0.555
 
 ## 批量计算(batch) 版本：2017-03-12

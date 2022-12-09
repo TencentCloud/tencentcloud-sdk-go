@@ -4025,6 +4025,86 @@ func (c *Client) DescribeEventsStateWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeFileAttributesRequest() (request *DescribeFileAttributesRequest) {
+    request = &DescribeFileAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeFileAttributes")
+    
+    
+    return
+}
+
+func NewDescribeFileAttributesResponse() (response *DescribeFileAttributesResponse) {
+    response = &DescribeFileAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFileAttributes
+// 用于异步获取文件属性。
+//
+// - 当前仅支持获取源文件的 Md5。
+//
+// - 对输入文件为 HLS 或 DASH 的情况，仅获取索引文件的属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_TASKDUPLICATE = "FailedOperation.TaskDuplicate"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETFILEINFOERROR = "InternalError.GetFileInfoError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeFileAttributes(request *DescribeFileAttributesRequest) (response *DescribeFileAttributesResponse, err error) {
+    return c.DescribeFileAttributesWithContext(context.Background(), request)
+}
+
+// DescribeFileAttributes
+// 用于异步获取文件属性。
+//
+// - 当前仅支持获取源文件的 Md5。
+//
+// - 对输入文件为 HLS 或 DASH 的情况，仅获取索引文件的属性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_TASKDUPLICATE = "FailedOperation.TaskDuplicate"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETFILEINFOERROR = "InternalError.GetFileInfoError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FILEID = "InvalidParameterValue.FileId"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeFileAttributesWithContext(ctx context.Context, request *DescribeFileAttributesRequest) (response *DescribeFileAttributesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileAttributesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHeadTailTemplatesRequest() (request *DescribeHeadTailTemplatesRequest) {
     request = &DescribeHeadTailTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},

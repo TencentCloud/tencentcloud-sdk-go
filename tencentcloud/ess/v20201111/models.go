@@ -1469,7 +1469,7 @@ type CreatePrepareFlowRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 资源Id,通过上传uploadfile接口获得
+	// 资源Id，通过多文件上传（UploadFiles）接口获得
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 合同名称
@@ -1498,7 +1498,7 @@ type CreatePrepareFlowRequest struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 资源Id,通过上传uploadfile接口获得
+	// 资源Id，通过多文件上传（UploadFiles）接口获得
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 合同名称
@@ -3253,26 +3253,26 @@ type UploadFilesRequestParams struct {
 	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
-	// 调用方信息
+	// 调用方信息，其中OperatorId为必填字段，即用户的UserId
 	Caller *Caller `json:"Caller,omitempty" name:"Caller"`
 
 	// 上传文件内容数组，最多支持20个文件
 	FileInfos []*UploadFile `json:"FileInfos,omitempty" name:"FileInfos"`
 
-	// 不再使用，上传文件链接数组，最多支持20个URL
-	FileUrls *string `json:"FileUrls,omitempty" name:"FileUrls"`
-
-	// 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
-	// true--是，处理置白
-	// false--否，不处理
-	CoverRect *bool `json:"CoverRect,omitempty" name:"CoverRect"`
-
 	// 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
 	// 如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
+	// 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
+	// true--是，处理置白
+	// 默认为false--否，不处理
+	CoverRect *bool `json:"CoverRect,omitempty" name:"CoverRect"`
+
 	// 用户自定义ID数组，与上传文件一一对应
 	CustomIds []*string `json:"CustomIds,omitempty" name:"CustomIds"`
+
+	// 不再使用，上传文件链接数组，最多支持20个URL
+	FileUrls *string `json:"FileUrls,omitempty" name:"FileUrls"`
 }
 
 type UploadFilesRequest struct {
@@ -3284,26 +3284,26 @@ type UploadFilesRequest struct {
 	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
-	// 调用方信息
+	// 调用方信息，其中OperatorId为必填字段，即用户的UserId
 	Caller *Caller `json:"Caller,omitempty" name:"Caller"`
 
 	// 上传文件内容数组，最多支持20个文件
 	FileInfos []*UploadFile `json:"FileInfos,omitempty" name:"FileInfos"`
 
-	// 不再使用，上传文件链接数组，最多支持20个URL
-	FileUrls *string `json:"FileUrls,omitempty" name:"FileUrls"`
-
-	// 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
-	// true--是，处理置白
-	// false--否，不处理
-	CoverRect *bool `json:"CoverRect,omitempty" name:"CoverRect"`
-
 	// 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
 	// 如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
+	// 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
+	// true--是，处理置白
+	// 默认为false--否，不处理
+	CoverRect *bool `json:"CoverRect,omitempty" name:"CoverRect"`
+
 	// 用户自定义ID数组，与上传文件一一对应
 	CustomIds []*string `json:"CustomIds,omitempty" name:"CustomIds"`
+
+	// 不再使用，上传文件链接数组，最多支持20个URL
+	FileUrls *string `json:"FileUrls,omitempty" name:"FileUrls"`
 }
 
 func (r *UploadFilesRequest) ToJsonString() string {
@@ -3321,10 +3321,10 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 	delete(f, "BusinessType")
 	delete(f, "Caller")
 	delete(f, "FileInfos")
-	delete(f, "FileUrls")
-	delete(f, "CoverRect")
 	delete(f, "FileType")
+	delete(f, "CoverRect")
 	delete(f, "CustomIds")
+	delete(f, "FileUrls")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFilesRequest has unknown keys!", "")
 	}

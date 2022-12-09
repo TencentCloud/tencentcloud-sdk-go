@@ -89,8 +89,8 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2022-11-16 06:22:42 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2022-12-08 01:29:13 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2022-12-09 01:34:26 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2022-12-09 01:34:50 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-12-08 17:53:00 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2022-12-09 15:06:24 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-12-09 15:06:08 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2022-06-15 06:09:10 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2022-12-07 06:39:49 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2022-04-04 06:43:06 |
@@ -133,7 +133,7 @@
 | monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2022-12-09 01:46:06 |
 | mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2022-11-23 06:41:18 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2022-12-08 01:38:36 |
-| ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2022-12-08 01:38:47 |
+| ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2022-12-09 15:05:58 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2022-04-04 07:00:13 |
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2022-12-09 01:49:39 |
@@ -210,7 +210,7 @@
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2022-04-04 07:22:44 |
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2022-11-16 06:46:30 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2022-04-04 07:22:54 |
-| vod | [云点播](https://cloud.tencent.com/document/product/266) | 2022-12-09 02:12:52 |
+| vod | [云点播](https://cloud.tencent.com/document/product/266) | 2022-12-09 10:06:16 |
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2022-12-05 07:38:38 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2022-12-09 02:16:48 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2022-10-12 07:10:28 |
