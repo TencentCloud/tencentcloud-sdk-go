@@ -448,6 +448,12 @@ type CreateTawInstanceRequestParams struct {
 
 	// 实例购买渠道("cdn" 等)
 	BuyingChannel *string `json:"BuyingChannel,omitempty" name:"BuyingChannel"`
+
+	// 预付费资源包类型(仅预付费需要)
+	ResourcePackageType *uint64 `json:"ResourcePackageType,omitempty" name:"ResourcePackageType"`
+
+	// 预付费资源包数量(仅预付费需要)
+	ResourcePackageNum *uint64 `json:"ResourcePackageNum,omitempty" name:"ResourcePackageNum"`
 }
 
 type CreateTawInstanceRequest struct {
@@ -479,6 +485,12 @@ type CreateTawInstanceRequest struct {
 
 	// 实例购买渠道("cdn" 等)
 	BuyingChannel *string `json:"BuyingChannel,omitempty" name:"BuyingChannel"`
+
+	// 预付费资源包类型(仅预付费需要)
+	ResourcePackageType *uint64 `json:"ResourcePackageType,omitempty" name:"ResourcePackageType"`
+
+	// 预付费资源包数量(仅预付费需要)
+	ResourcePackageNum *uint64 `json:"ResourcePackageNum,omitempty" name:"ResourcePackageNum"`
 }
 
 func (r *CreateTawInstanceRequest) ToJsonString() string {
@@ -502,6 +514,8 @@ func (r *CreateTawInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CountNum")
 	delete(f, "PeriodRetain")
 	delete(f, "BuyingChannel")
+	delete(f, "ResourcePackageType")
+	delete(f, "ResourcePackageNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTawInstanceRequest has unknown keys!", "")
 	}
@@ -512,6 +526,10 @@ func (r *CreateTawInstanceRequest) FromJsonString(s string) error {
 type CreateTawInstanceResponseParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 预付费订单 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

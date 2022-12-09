@@ -1659,6 +1659,22 @@ type PrivateZone struct {
 
 	// CNAME加速状态：开通：ENABLED, 关闭，DISABLED
 	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
+
+	// 转发规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForwardRuleName *string `json:"ForwardRuleName,omitempty" name:"ForwardRuleName"`
+
+	// 转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForwardRuleType *string `json:"ForwardRuleType,omitempty" name:"ForwardRuleType"`
+
+	// 转发的地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForwardAddress *string `json:"ForwardAddress,omitempty" name:"ForwardAddress"`
+
+	// 终端节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndPointName *string `json:"EndPointName,omitempty" name:"EndPointName"`
 }
 
 type PrivateZoneRecord struct {

@@ -1180,13 +1180,13 @@ func (r *CreateAlarmPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAlertRuleRequestParams struct {
-	// Prometheus 实例 ID
+	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 规则表达式
+	// 规则表达式，可参考<a href="https://cloud.tencent.com/document/product/1416/56008">告警规则说明</a>
 	Expr *string `json:"Expr,omitempty" name:"Expr"`
 
 	// 告警通知模板 ID 列表
@@ -1215,13 +1215,13 @@ type CreateAlertRuleRequestParams struct {
 type CreateAlertRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 实例 ID
+	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 规则表达式
+	// 规则表达式，可参考<a href="https://cloud.tencent.com/document/product/1416/56008">告警规则说明</a>
 	Expr *string `json:"Expr,omitempty" name:"Expr"`
 
 	// 告警通知模板 ID 列表
@@ -1987,26 +1987,26 @@ func (r *CreatePrometheusMultiTenantInstancePostPayModeResponse) FromJsonString(
 
 // Predefined struct for user
 type CreatePrometheusScrapeJobRequestParams struct {
-	// 实例 ID
+	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Agent ID
+	// Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
 	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
 
-	// 任务内容
+	// 抓取任务配置，格式：job_name:xx
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
 type CreatePrometheusScrapeJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Agent ID
+	// Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
 	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
 
-	// 任务内容
+	// 抓取任务配置，格式：job_name:xx
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
@@ -3025,7 +3025,7 @@ func (r *DeleteSSOAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteServiceDiscoveryRequestParams struct {
-	// Prometheus 实例 ID
+	// Prometheus 实例 ID，例如：prom-sdfk2342a
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
@@ -3048,7 +3048,7 @@ type DeleteServiceDiscoveryRequestParams struct {
 type DeleteServiceDiscoveryRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 实例 ID
+	// Prometheus 实例 ID，例如：prom-sdfk2342a
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// <li>类型是 TKE，为对应的腾讯云容器服务集群 ID</li>
@@ -5177,14 +5177,14 @@ func (r *DescribeGrafanaChannelsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaConfigRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeGrafanaConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -5552,14 +5552,14 @@ func (r *DescribeGrafanaNotificationChannelsResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeGrafanaWhiteListRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeGrafanaWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -5609,20 +5609,20 @@ func (r *DescribeGrafanaWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstalledPluginsRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-kleu3gt0
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 按插件 ID 过滤
+	// 按插件 ID 过滤，例如：grafana-piechart-panel，可通过接口 DescribeInstalledPlugins 查看已安装的插件 ID
 	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
 }
 
 type DescribeInstalledPluginsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-kleu3gt0
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 按插件 ID 过滤
+	// 按插件 ID 过滤，例如：grafana-piechart-panel，可通过接口 DescribeInstalledPlugins 查看已安装的插件 ID
 	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
 }
 
@@ -7413,20 +7413,20 @@ func (r *DescribeRecordingRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSOAccountRequestParams struct {
-	// 实例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 按账号 UIN 进行过滤
+	// 填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 type DescribeSSOAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 按账号 UIN 进行过滤
+	// 填写对应的账号 ID，将会按账号 ID 进行过滤，例如：10000
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
@@ -7783,20 +7783,20 @@ type DimensionsDesc struct {
 
 // Predefined struct for user
 type EnableGrafanaInternetRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-kleu3gt0
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 
-	// 开启或关闭
+	// 开启或关闭公网访问，true为开启，false 为不开启
 	EnableInternet *bool `json:"EnableInternet,omitempty" name:"EnableInternet"`
 }
 
 type EnableGrafanaInternetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-kleu3gt0
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 
-	// 开启或关闭
+	// 开启或关闭公网访问，true为开启，false 为不开启
 	EnableInternet *bool `json:"EnableInternet,omitempty" name:"EnableInternet"`
 }
 
@@ -7844,20 +7844,20 @@ func (r *EnableGrafanaInternetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableGrafanaSSORequestParams struct {
-	// 是否开启 SSO
+	// 是否开启 SSO，true为开启，false 为不开启
 	EnableSSO *bool `json:"EnableSSO,omitempty" name:"EnableSSO"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type EnableGrafanaSSORequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否开启 SSO
+	// 是否开启 SSO，true为开启，false 为不开启
 	EnableSSO *bool `json:"EnableSSO,omitempty" name:"EnableSSO"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -7905,20 +7905,20 @@ func (r *EnableGrafanaSSOResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableSSOCamCheckRequestParams struct {
-	// 实例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 是否开启cam鉴权
+	// 是否开启 cam 鉴权，true为开启，false 为不开启
 	EnableSSOCamCheck *bool `json:"EnableSSOCamCheck,omitempty" name:"EnableSSOCamCheck"`
 }
 
 type EnableSSOCamCheckRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 是否开启cam鉴权
+	// 是否开启 cam 鉴权，true为开启，false 为不开启
 	EnableSSOCamCheck *bool `json:"EnableSSOCamCheck,omitempty" name:"EnableSSOCamCheck"`
 }
 
@@ -10732,20 +10732,20 @@ func (r *UninstallGrafanaDashboardResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UninstallGrafanaPluginsRequestParams struct {
-	// 插件 ID 数组
+	// 插件 ID 数组，例如"PluginIds": [ "grafana-clock-panel" ]，可通过 DescribePluginOverviews 获取 PluginId
 	PluginIds []*string `json:"PluginIds,omitempty" name:"PluginIds"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefg
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type UninstallGrafanaPluginsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 插件 ID 数组
+	// 插件 ID 数组，例如"PluginIds": [ "grafana-clock-panel" ]，可通过 DescribePluginOverviews 获取 PluginId
 	PluginIds []*string `json:"PluginIds,omitempty" name:"PluginIds"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefg
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -11345,13 +11345,13 @@ func (r *UpdateGrafanaIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateGrafanaNotificationChannelRequestParams struct {
-	// 通道 ID
+	// 通道 ID，例如：nchannel-abcd1234
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 渠道名
+	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 接受告警通道 ID 数组
@@ -11367,13 +11367,13 @@ type UpdateGrafanaNotificationChannelRequestParams struct {
 type UpdateGrafanaNotificationChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道 ID
+	// 通道 ID，例如：nchannel-abcd1234
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 渠道名
+	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 接受告警通道 ID 数组
@@ -11434,20 +11434,20 @@ func (r *UpdateGrafanaNotificationChannelResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type UpdateGrafanaWhiteListRequestParams struct {
-	// 实例名
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 白名单数组
+	// 白名单数组，输入公网域名 IP ，例如：127.0.0.1，可通过接口 DescribeGrafanaWhiteList 查看
 	Whitelist []*string `json:"Whitelist,omitempty" name:"Whitelist"`
 }
 
 type UpdateGrafanaWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 白名单数组
+	// 白名单数组，输入公网域名 IP ，例如：127.0.0.1，可通过接口 DescribeGrafanaWhiteList 查看
 	Whitelist []*string `json:"Whitelist,omitempty" name:"Whitelist"`
 }
 
@@ -11495,10 +11495,10 @@ func (r *UpdateGrafanaWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdatePrometheusAgentStatusRequestParams struct {
-	// 实例 ID
+	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Agent ID 列表
+	// Agent ID 列表，例如：agent-abcd1234，可在控制台 Agent 管理中获取
 	AgentIds []*string `json:"AgentIds,omitempty" name:"AgentIds"`
 
 	// 要更新的状态
@@ -11510,10 +11510,10 @@ type UpdatePrometheusAgentStatusRequestParams struct {
 type UpdatePrometheusAgentStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Agent ID 列表
+	// Agent ID 列表，例如：agent-abcd1234，可在控制台 Agent 管理中获取
 	AgentIds []*string `json:"AgentIds,omitempty" name:"AgentIds"`
 
 	// 要更新的状态
@@ -11567,32 +11567,32 @@ func (r *UpdatePrometheusAgentStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdatePrometheusScrapeJobRequestParams struct {
-	// 实例 ID
+	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Agent ID
+	// Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
 	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
 
-	// 抓取任务 ID
+	// 抓取任务 ID，例如：job-abcd1234，可在控制台 Agent 管理-抓取任务配置中获取
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
-	// 抓取任务配置
+	// 抓取任务配置，格式：job_name:xx
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
 type UpdatePrometheusScrapeJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// Agent ID
+	// Agent ID，例如：agent-abcd1234，可在控制台 Agent 管理中获取
 	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
 
-	// 抓取任务 ID
+	// 抓取任务 ID，例如：job-abcd1234，可在控制台 Agent 管理-抓取任务配置中获取
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
-	// 抓取任务配置
+	// 抓取任务配置，格式：job_name:xx
 	Config *string `json:"Config,omitempty" name:"Config"`
 }
 
@@ -11736,10 +11736,10 @@ func (r *UpdateRecordingRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateSSOAccountRequestParams struct {
-	// 示例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 用户账号ID
+	// 用户账号 ID ，例如：10000000
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 权限
@@ -11752,10 +11752,10 @@ type UpdateSSOAccountRequestParams struct {
 type UpdateSSOAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 示例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 用户账号ID
+	// 用户账号 ID ，例如：10000000
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 权限
@@ -11999,20 +11999,20 @@ func (r *UpgradeGrafanaDashboardResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeGrafanaInstanceRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 版本别名
+	// 版本别名，例如：v7.4.2
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
 type UpgradeGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 版本别名
+	// 版本别名，例如：v7.4.2
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 

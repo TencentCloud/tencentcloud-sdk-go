@@ -612,6 +612,12 @@ type CreateEnvironmentRequestParams struct {
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 环境类型：test、pre、prod
+	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
+
+	// 创建环境的region
+	CreateRegion *string `json:"CreateRegion,omitempty" name:"CreateRegion"`
 }
 
 type CreateEnvironmentRequest struct {
@@ -640,6 +646,12 @@ type CreateEnvironmentRequest struct {
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 环境类型：test、pre、prod
+	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
+
+	// 创建环境的region
+	CreateRegion *string `json:"CreateRegion,omitempty" name:"CreateRegion"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -662,6 +674,8 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 	delete(f, "SourceChannel")
 	delete(f, "EnableTswTraceService")
 	delete(f, "Tags")
+	delete(f, "EnvType")
+	delete(f, "CreateRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
 	}
@@ -2083,6 +2097,9 @@ type DescribeApplicationsRequestParams struct {
 
 	// 查询过滤器
 	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段
+	SortInfo *SortType `json:"SortInfo,omitempty" name:"SortInfo"`
 }
 
 type DescribeApplicationsRequest struct {
@@ -2108,6 +2125,9 @@ type DescribeApplicationsRequest struct {
 
 	// 查询过滤器
 	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段
+	SortInfo *SortType `json:"SortInfo,omitempty" name:"SortInfo"`
 }
 
 func (r *DescribeApplicationsRequest) ToJsonString() string {
@@ -2129,6 +2149,7 @@ func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
 	delete(f, "ApplicationId")
 	delete(f, "Keyword")
 	delete(f, "Filters")
+	delete(f, "SortInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationsRequest has unknown keys!", "")
 	}
@@ -2598,6 +2619,9 @@ type DescribeEnvironmentsRequestParams struct {
 
 	// 查询过滤器
 	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段
+	SortInfo *SortType `json:"SortInfo,omitempty" name:"SortInfo"`
 }
 
 type DescribeEnvironmentsRequest struct {
@@ -2614,6 +2638,9 @@ type DescribeEnvironmentsRequest struct {
 
 	// 查询过滤器
 	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段
+	SortInfo *SortType `json:"SortInfo,omitempty" name:"SortInfo"`
 }
 
 func (r *DescribeEnvironmentsRequest) ToJsonString() string {
@@ -2632,6 +2659,7 @@ func (r *DescribeEnvironmentsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "SourceChannel")
 	delete(f, "Filters")
+	delete(f, "SortInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentsRequest has unknown keys!", "")
 	}
@@ -4308,6 +4336,9 @@ type ModifyEnvironmentRequestParams struct {
 
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 环境类型：test、pre、prod
+	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
 }
 
 type ModifyEnvironmentRequest struct {
@@ -4330,6 +4361,9 @@ type ModifyEnvironmentRequest struct {
 
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 环境类型：test、pre、prod
+	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
 }
 
 func (r *ModifyEnvironmentRequest) ToJsonString() string {
@@ -4350,6 +4384,7 @@ func (r *ModifyEnvironmentRequest) FromJsonString(s string) error {
 	delete(f, "Vpc")
 	delete(f, "SubnetIds")
 	delete(f, "SourceChannel")
+	delete(f, "EnvType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnvironmentRequest has unknown keys!", "")
 	}
@@ -4576,6 +4611,10 @@ type NamespaceInfo struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 环境类型：test、pre、prod
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
 }
 
 type NamespacePage struct {
@@ -5312,6 +5351,14 @@ type ServiceVersionBrief struct {
 	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
 }
 
+type SortType struct {
+	// 排序字段名称
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 0：升序，1：倒序
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
 // Predefined struct for user
 type StopApplicationRequestParams struct {
 	// 服务id
@@ -5567,6 +5614,14 @@ type TemNamespaceInfo struct {
 	// 资源是否有权限
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasAuthority *bool `json:"HasAuthority,omitempty" name:"HasAuthority"`
+
+	// 环境类型: test、pre、prod
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
+
+	// 地域码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type TemService struct {

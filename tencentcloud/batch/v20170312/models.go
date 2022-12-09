@@ -2877,6 +2877,10 @@ type OutputMapping struct {
 
 	// 目的端路径
 	DestinationPath *string `json:"DestinationPath,omitempty" name:"DestinationPath"`
+
+	// 输出映射选项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputMappingOption *OutputMappingOption `json:"OutputMappingOption,omitempty" name:"OutputMappingOption"`
 }
 
 type OutputMappingConfig struct {
@@ -2888,6 +2892,14 @@ type OutputMappingConfig struct {
 
 	// worker分块大小，单位MB
 	WorkerPartSize *int64 `json:"WorkerPartSize,omitempty" name:"WorkerPartSize"`
+}
+
+type OutputMappingOption struct {
+	// 容器场景下,输出选项从实例映射到容器内的实例侧的工作空间。
+	// BATCH_WORKSPACE: 工作空间为BATCH在实例内定义的工作空间，BATCH侧保证作业之间的隔离。（默认）
+	// GLOBAL_WORKSPACE: 工作空间为实例操作系统空间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Workspace *string `json:"Workspace,omitempty" name:"Workspace"`
 }
 
 type Placement struct {

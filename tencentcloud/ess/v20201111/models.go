@@ -3070,6 +3070,10 @@ type Staff struct {
 	// 员工实名时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifiedOn *int64 `json:"VerifiedOn,omitempty" name:"VerifiedOn"`
+
+	// 员工是否离职：0-未离职，1-离职
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuiteJob *int64 `json:"QuiteJob,omitempty" name:"QuiteJob"`
 }
 
 type StaffRole struct {

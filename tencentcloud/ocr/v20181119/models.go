@@ -6540,6 +6540,14 @@ type SealInfo struct {
 
 	// 印章其它文本内容
 	OtherTexts []*string `json:"OtherTexts,omitempty" name:"OtherTexts"`
+
+	// 印章类型，表示为:
+	// 圆形印章：0
+	// 椭圆形印章：1
+	// 方形印章：2
+	// 菱形印章：3
+	// 三角形印章：4
+	SealShape *string `json:"SealShape,omitempty" name:"SealShape"`
 }
 
 // Predefined struct for user

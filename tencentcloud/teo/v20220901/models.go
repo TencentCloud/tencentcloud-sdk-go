@@ -39,6 +39,7 @@ type AclCondition struct {
 	// <li>accept：请求内容类型；</li>
 	// <li>method：请求方式；</li>
 	// <li>header：请求头部；</li>
+	// <li>app_proto：应用层协议；</li>
 	// <li>sip_proto：网络层协议。</li>
 	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
 
@@ -469,29 +470,28 @@ type BotLog struct {
 	// URI。
 	RequestUri *string `json:"RequestUri,omitempty" name:"RequestUri"`
 
-	// 攻击类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
-
 	// 请求方法。
 	RequestMethod *string `json:"RequestMethod,omitempty" name:"RequestMethod"`
 
 	// 攻击内容。
 	AttackContent *string `json:"AttackContent,omitempty" name:"AttackContent"`
 
-	// 攻击等级。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	// IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)。
+	SipCountryCode *string `json:"SipCountryCode,omitempty" name:"SipCountryCode"`
+
+	// user agent。
+	Ua *string `json:"Ua,omitempty" name:"Ua"`
+
+	// 攻击事件ID。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
 
 	// 规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
 
-	// IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)。
-	SipCountryCode *string `json:"SipCountryCode,omitempty" name:"SipCountryCode"`
-
-	// 请求（事件）ID。
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	// 攻击类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
 
 	// 处置方式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -501,8 +501,9 @@ type BotLog struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpLog *string `json:"HttpLog,omitempty" name:"HttpLog"`
 
-	// user agent。
-	Ua *string `json:"Ua,omitempty" name:"Ua"`
+	// 攻击等级。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
 
 	// 检出方法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -523,6 +524,10 @@ type BotLog struct {
 	// Bot标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 日志所属的区域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type BotManagedRule struct {
@@ -7613,9 +7618,6 @@ func (r *DescribeSecurityPortraitRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecurityRuleIdRequestParams struct {
-	// 规则Id数组。
-	RuleIdList []*int64 `json:"RuleIdList,omitempty" name:"RuleIdList"`
-
 	// 规则类型，取值有：
 	// <li>waf：web托管规则；</li>
 	// <li>acl：自定义规则；</li>
@@ -7625,14 +7627,17 @@ type DescribeSecurityRuleIdRequestParams struct {
 
 	// 子域名/应用名。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
+	// 规则Id数组。 当为空时查询 子域名或者应用名下所有规则
+	RuleIdList []*int64 `json:"RuleIdList,omitempty" name:"RuleIdList"`
+
+	// 子域名数组。
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
 type DescribeSecurityRuleIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 规则Id数组。
-	RuleIdList []*int64 `json:"RuleIdList,omitempty" name:"RuleIdList"`
-
 	// 规则类型，取值有：
 	// <li>waf：web托管规则；</li>
 	// <li>acl：自定义规则；</li>
@@ -7642,6 +7647,12 @@ type DescribeSecurityRuleIdRequest struct {
 
 	// 子域名/应用名。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
+	// 规则Id数组。 当为空时查询 子域名或者应用名下所有规则
+	RuleIdList []*int64 `json:"RuleIdList,omitempty" name:"RuleIdList"`
+
+	// 子域名数组。
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
 func (r *DescribeSecurityRuleIdRequest) ToJsonString() string {
@@ -7656,9 +7667,10 @@ func (r *DescribeSecurityRuleIdRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "RuleIdList")
 	delete(f, "RuleType")
 	delete(f, "Entity")
+	delete(f, "RuleIdList")
+	delete(f, "Domains")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityRuleIdRequest has unknown keys!", "")
 	}
@@ -7667,8 +7679,13 @@ func (r *DescribeSecurityRuleIdRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecurityRuleIdResponseParams struct {
-	// 规则列表。
+	// 托管规则类型的规则列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	WafGroupRules []*WafGroupRule `json:"WafGroupRules,omitempty" name:"WafGroupRules"`
+
+	// 自定义规则、速率限制、Bot规则的规则列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityRules []*SecurityRule `json:"SecurityRules,omitempty" name:"SecurityRules"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10767,8 +10784,16 @@ type IpTableRule struct {
 	// <li>area：对ip所属地区匹配。</li>
 	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
 
-	// 匹配内容。
-	MatchContent *string `json:"MatchContent,omitempty" name:"MatchContent"`
+	// 规则的匹配方式，默认为空代表等于。
+	// 取值有：
+	// <li> is_emty：配置为空；</li>
+	// <li> not_exists：配置为不存在；</li>
+	// <li> include：包含；</li>
+	// <li> not_include：不包含；</li>
+	// <li> equal：等于；</li>
+	// <li> not_equal：不等于。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
 	// 规则id。仅出参使用。
 	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
@@ -10781,6 +10806,13 @@ type IpTableRule struct {
 	// <li> off：未启用。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 规则名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 匹配内容。当 Operator为is_emty 或not_exists时，此值允许为空。
+	MatchContent *string `json:"MatchContent,omitempty" name:"MatchContent"`
 }
 
 type Ipv6 struct {
@@ -13732,6 +13764,9 @@ type RateLimitIntelligence struct {
 	// <li>monitor：观察；</li>
 	// <li>alg：挑战。</li>
 	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 规则id，仅出参使用。
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
 }
 
 type RateLimitIntelligenceRuleDetail struct {
@@ -14299,21 +14334,14 @@ type SecEntryValue struct {
 }
 
 type SecHitRuleInfo struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
 	// 规则ID。
 	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
 
 	// 规则类型名称。
 	RuleTypeName *string `json:"RuleTypeName,omitempty" name:"RuleTypeName"`
-
-	// 执行动作（处置方式），取值有：
-	// <li>trans ：通过 ；</li>
-	// <li>alg ：算法挑战 ；</li>
-	// <li>drop ：丢弃 ；</li>
-	// <li>ban ：封禁源ip ；</li>
-	// <li>redirect ：重定向 ；</li>
-	// <li>page ：返回指定页面 ；</li>
-	// <li>monitor ：观察 。</li>
-	Action *string `json:"Action,omitempty" name:"Action"`
 
 	// 命中时间，采用unix秒级时间戳。
 	HitTime *int64 `json:"HitTime,omitempty" name:"HitTime"`
@@ -14327,6 +14355,16 @@ type SecHitRuleInfo struct {
 	// 子域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
+	// 执行动作（处置方式），取值有：
+	// <li>trans ：通过 ；</li>
+	// <li>alg ：算法挑战 ；</li>
+	// <li>drop ：丢弃 ；</li>
+	// <li>ban ：封禁源ip ；</li>
+	// <li>redirect ：重定向 ；</li>
+	// <li>page ：返回指定页面 ；</li>
+	// <li>monitor ：观察 。</li>
+	Action *string `json:"Action,omitempty" name:"Action"`
+
 	// Bot标签，取值有:
 	// <li>evil_bot：恶意Bot；</li>
 	// <li>suspect_bot：疑似Bot；</li>
@@ -14334,6 +14372,17 @@ type SecHitRuleInfo struct {
 	// <li>normal：正常请求；</li>
 	// <li>none：未分类。</li>
 	BotLabel *string `json:"BotLabel,omitempty" name:"BotLabel"`
+
+	// 规则是否启用。
+	RuleEnabled *bool `json:"RuleEnabled,omitempty" name:"RuleEnabled"`
+
+	// 规则是否启用监控告警。
+	AlarmEnabled *bool `json:"AlarmEnabled,omitempty" name:"AlarmEnabled"`
+
+	// 规则是否存在，取值有：
+	// <li>true: 规则不存在；</li>
+	// <li>false: 规则存在。</li>
+	RuleDeleted *bool `json:"RuleDeleted,omitempty" name:"RuleDeleted"`
 }
 
 type SecRuleRelatedInfo struct {
@@ -14370,6 +14419,24 @@ type SecRuleRelatedInfo struct {
 	// 攻击内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackContent *string `json:"AttackContent,omitempty" name:"AttackContent"`
+
+	// 规则类型，取值有：
+	// <li>waf: 托管规则；</li>
+	// <li>acl：自定义规则；</li>
+	// <li>rate：速率限制规则；</li>
+	// <li>bot：bot防护规则。</li>
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 规则是否开启。
+	RuleEnabled *bool `json:"RuleEnabled,omitempty" name:"RuleEnabled"`
+
+	// 规则是否存在，取值有：
+	// <li>true: 规则不存在；</li>
+	// <li>false: 规则存在。</li>
+	RuleDeleted *bool `json:"RuleDeleted,omitempty" name:"RuleDeleted"`
+
+	// 规则是否启用监控告警。
+	AlarmEnabled *bool `json:"AlarmEnabled,omitempty" name:"AlarmEnabled"`
 }
 
 type SecurityConfig struct {
@@ -14421,6 +14488,43 @@ type SecurityEntity struct {
 	// <li> domain：7层子域名； </li>
 	// <li> application：4层应用名。 </li>
 	EntityType *string `json:"EntityType,omitempty" name:"EntityType"`
+}
+
+type SecurityRule struct {
+	// 规则id。
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 规则类型名。
+	RuleTypeName *string `json:"RuleTypeName,omitempty" name:"RuleTypeName"`
+
+	// 等级描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleLevelDesc *string `json:"RuleLevelDesc,omitempty" name:"RuleLevelDesc"`
+
+	// 规则类型id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTypeId *int64 `json:"RuleTypeId,omitempty" name:"RuleTypeId"`
+
+	// 规则类型描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTypeDesc *string `json:"RuleTypeDesc,omitempty" name:"RuleTypeDesc"`
+
+	// 规则标签。部分类型的规则不存在该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTags []*string `json:"RuleTags,omitempty" name:"RuleTags"`
+
+	// 状态，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>为空时对应接口Status无意义，例如仅查询规则详情时。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 子域名/应用名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Entity *string `json:"Entity,omitempty" name:"Entity"`
 }
 
 type SecurityType struct {
@@ -15122,6 +15226,10 @@ type WebLogs struct {
 	// 请求类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReqMethod *string `json:"ReqMethod,omitempty" name:"ReqMethod"`
+
+	// 日志所属区域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type WebSocket struct {

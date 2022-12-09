@@ -542,12 +542,16 @@ type CertificateOutput struct {
 	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
 	SSLMode *string `json:"SSLMode,omitempty" name:"SSLMode"`
 
-	// 服务端证书的 ID。
+	// 服务端证书的ID。
 	CertId *string `json:"CertId,omitempty" name:"CertId"`
 
 	// 客户端证书的 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertCaId *string `json:"CertCaId,omitempty" name:"CertCaId"`
+
+	// 多本服务器证书场景扩展的服务器证书ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtCertIds []*string `json:"ExtCertIds,omitempty" name:"ExtCertIds"`
 }
 
 type ClassicalHealth struct {
@@ -5041,6 +5045,10 @@ type Listener struct {
 	// 监听器的属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttrFlags []*string `json:"AttrFlags,omitempty" name:"AttrFlags"`
+
+	// 绑定的目标组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetGroupList []*BasicTargetGroupInfo `json:"TargetGroupList,omitempty" name:"TargetGroupList"`
 }
 
 type ListenerBackend struct {
@@ -5455,6 +5463,18 @@ type LoadBalancerDetail struct {
 	// 转发规则的域名列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domains *string `json:"Domains,omitempty" name:"Domains"`
+
+	// 多可用区负载均衡实例所选备区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZone []*string `json:"SlaveZone,omitempty" name:"SlaveZone"`
+
+	// 内网负载均衡实例所在可用区，由白名单CLB_Internal_Zone控制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
 }
 
 type LoadBalancerHealth struct {
@@ -7285,6 +7305,10 @@ type RuleOutput struct {
 	// 转发规则的域名列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 绑定的目标组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetGroupList []*BasicTargetGroupInfo `json:"TargetGroupList,omitempty" name:"TargetGroupList"`
 }
 
 type RuleTargets struct {
@@ -7808,6 +7832,10 @@ type ZoneInfo struct {
 	// 可用区是否是LocalZone可用区，如：false
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalZone *bool `json:"LocalZone,omitempty" name:"LocalZone"`
+
+	// 可用区是否是EdgeZone可用区，如：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EdgeZone *bool `json:"EdgeZone,omitempty" name:"EdgeZone"`
 }
 
 type ZoneResource struct {

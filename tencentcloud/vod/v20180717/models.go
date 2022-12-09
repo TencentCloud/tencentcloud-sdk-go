@@ -7825,6 +7825,47 @@ func (r *DescribeEventsStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFileAttributesTask struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 获取媒体文件属性任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *DescribeFileAttributesTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+type DescribeFileAttributesTaskOutput struct {
+	// 媒体文件的 Md5 值。
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+}
+
 // Predefined struct for user
 type DescribeHeadTailTemplatesRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -9535,6 +9576,7 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>PullUpload：拉取上传媒体文件任务；</li>
 	// <li>FastClipMedia：快速剪辑任务；</li>
 	// <li>RemoveWatermarkTask：智能去除水印任务；</li>
+	// <li>DescribeFileAttributesTask：获取文件属性任务；</li>
 	// <li> ReviewAudioVideo：音视频审核任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
@@ -9616,6 +9658,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 该字段已无效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReduceMediaBitrateTask *ReduceMediaBitrateTask `json:"ReduceMediaBitrateTask,omitempty" name:"ReduceMediaBitrateTask"`
+
+	// 获取文件属性任务信息，仅当 TaskType 为 DescribeFileAttributes，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DescribeFileAttributesTask *DescribeFileAttributesTask `json:"DescribeFileAttributesTask,omitempty" name:"DescribeFileAttributesTask"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10519,6 +10565,7 @@ type EventContent struct {
 	// <li>FastClipMediaComplete：快速剪辑完成；</li>
 	// <li>ReviewAudioVideoComplete：音视频审核完成；</li>
 	// <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
+	// <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
 	// <b>兼容 2017 版的事件类型：</b>
 	// <li>TranscodeComplete：视频转码完成；</li>
 	// <li>ConcatComplete：视频拼接完成；</li>
@@ -10602,6 +10649,10 @@ type EventContent struct {
 	// 该字段已无效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReduceMediaBitrateCompleteEvent *ReduceMediaBitrateTask `json:"ReduceMediaBitrateCompleteEvent,omitempty" name:"ReduceMediaBitrateCompleteEvent"`
+
+	// 获取文件属性完成事件，当事件类型为 DescribeFileAttributesComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DescribeFileAttributesCompleteEvent *DescribeFileAttributesTask `json:"DescribeFileAttributesCompleteEvent,omitempty" name:"DescribeFileAttributesCompleteEvent"`
 }
 
 // Predefined struct for user
@@ -12088,6 +12139,10 @@ type MediaMetaData struct {
 
 	// 音频时长，单位：秒。
 	AudioDuration *float64 `json:"AudioDuration,omitempty" name:"AudioDuration"`
+
+	// 媒体文件的 Md5 值。
+	// <li><font color=red>注意</font>：如需要获取媒体文件的 Md5，调用 DescribeFileAttributes 接口，待任务执行完成后获取。</li>
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
 type MediaMiniProgramReviewElem struct {
@@ -17511,6 +17566,13 @@ type ReviewAudioVideoSegmentItem struct {
 
 	// 当 Form 为 OCR 或 ASR 时有效，表示嫌疑片段命中的违规关键词列表。
 	KeywordSet []*string `json:"KeywordSet,omitempty" name:"KeywordSet"`
+
+	// 嫌疑图片 URL （图片不会永久存储，到达
+	//  PicUrlExpireTime 时间点后图片将被删除）。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	PicUrlExpireTime *string `json:"PicUrlExpireTime,omitempty" name:"PicUrlExpireTime"`
 }
 
 type ReviewAudioVideoTask struct {

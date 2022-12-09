@@ -170,6 +170,9 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 当前私有域已转发至其他DNS服务。
+	RESOURCEINUSE_ZONEBINDFORWARDRULE = "ResourceInUse.ZoneBindForwardRule"
+
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 

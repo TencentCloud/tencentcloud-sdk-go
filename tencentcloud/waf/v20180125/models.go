@@ -439,6 +439,12 @@ type AddSpartaProtectionRequestParams struct {
 
 	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
 	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+
+	// 300s
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+
+	// 300s
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -527,6 +533,12 @@ type AddSpartaProtectionRequest struct {
 
 	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
 	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+
+	// 300s
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+
+	// 300s
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -569,6 +581,8 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "TLSVersion")
 	delete(f, "Ciphers")
 	delete(f, "CipherTemplate")
+	delete(f, "ProxyReadTimeout")
+	delete(f, "ProxySendTimeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -2638,6 +2652,14 @@ type DomainsPartInfo struct {
 	// 模版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+
+	// 300s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+
+	// 300s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -2887,6 +2909,14 @@ type InstanceInfo struct {
 	// qps弹性计费上限
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBilling *uint64 `json:"ElasticBilling,omitempty" name:"ElasticBilling"`
+
+	// 攻击日志投递开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackLogPost *int64 `json:"AttackLogPost,omitempty" name:"AttackLogPost"`
+
+	// 带宽峰值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxBandwidth *uint64 `json:"MaxBandwidth,omitempty" name:"MaxBandwidth"`
 }
 
 type IpAccessControlData struct {
