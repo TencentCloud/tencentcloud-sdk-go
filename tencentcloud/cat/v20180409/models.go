@@ -1068,7 +1068,15 @@ type ProbeTask struct {
 	// 任务 ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 任务类型
+	// 拨测类型
+	// <li>1 = 页面浏览</li>
+	// <li> 2 =文件上传 </li>
+	// <li> 3 = 文件下载</li>
+	// <li> 4 = 端口性能 </li>
+	// <li> 5 = 网络质量 </li>
+	// <li> 6 =流媒体 </li>
+	// 
+	// 即时拨测只支持页面浏览，网络质量，文件下载
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 拨测节点列表
@@ -1081,6 +1089,16 @@ type ProbeTask struct {
 	Parameters *string `json:"Parameters,omitempty" name:"Parameters"`
 
 	// 任务状态
+	// <li>1 = 创建中</li>
+	// <li> 2 = 运行中 </li>
+	// <li> 3 = 运行异常 </li>
+	// <li> 4 = 暂停中 </li>
+	// <li> 5 = 暂停异常 </li>
+	// <li> 6 = 任务暂停 </li>
+	// <li> 7 = 任务删除中 </li>
+	// <li> 8 = 任务删除异常 </li>
+	// <li> 9 = 任务删除</li>
+	// <li> 10 = 定时任务暂停中 </li>
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 目标地址
@@ -1109,6 +1127,8 @@ type ProbeTask struct {
 	Cron *string `json:"Cron,omitempty" name:"Cron"`
 
 	// 定时任务启动状态
+	// <li>1 = 定时任务表达式生效</li>
+	// <li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronState *int64 `json:"CronState,omitempty" name:"CronState"`
 

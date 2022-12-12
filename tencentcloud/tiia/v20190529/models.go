@@ -272,7 +272,9 @@ type CreateGroupRequestParams struct {
 	// 图库名称描述。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 图库可容纳的最大图片数量。
+	// 图库可容纳的最大图片特征数量，一张图片对应一条图片特征数据。
+	// 达到最大容量后无法在图库中继续创建图片，否则将会报错。
+	// MaxCapacity不支持修改，请合理评估容量上限，按需创建。
 	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
 
 	// 图库简介。
@@ -281,11 +283,14 @@ type CreateGroupRequestParams struct {
 	// 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
 	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
 
-	// 图库类型，对应不同的图像搜索服务类型，默认为4。1～3为历史版本，不推荐。
+	// 图库类型，用于决定图像搜索的服务类型和算法版本，默认为4。
+	// GroupType不支持修改，若不确定适用的服务类型，建议先对不同类型分别小规模测试后再开始正式使用。
 	// 参数取值：
-	// 4：相同图像搜索。
-	// 5：商品图像搜索。
-	// 6：相似图像搜索。
+	// 4：通用图像搜索1.0版。
+	// 7：商品图像搜索2.0升级版。
+	// 5：商品图像搜索1.0版。
+	// 6：图案花纹搜索1.0版。
+	// 1 - 3：通用图像搜索旧版，不推荐使用。
 	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
 }
 
@@ -298,7 +303,9 @@ type CreateGroupRequest struct {
 	// 图库名称描述。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 图库可容纳的最大图片数量。
+	// 图库可容纳的最大图片特征数量，一张图片对应一条图片特征数据。
+	// 达到最大容量后无法在图库中继续创建图片，否则将会报错。
+	// MaxCapacity不支持修改，请合理评估容量上限，按需创建。
 	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
 
 	// 图库简介。
@@ -307,11 +314,14 @@ type CreateGroupRequest struct {
 	// 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
 	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
 
-	// 图库类型，对应不同的图像搜索服务类型，默认为4。1～3为历史版本，不推荐。
+	// 图库类型，用于决定图像搜索的服务类型和算法版本，默认为4。
+	// GroupType不支持修改，若不确定适用的服务类型，建议先对不同类型分别小规模测试后再开始正式使用。
 	// 参数取值：
-	// 4：相同图像搜索。
-	// 5：商品图像搜索。
-	// 6：相似图像搜索。
+	// 4：通用图像搜索1.0版。
+	// 7：商品图像搜索2.0升级版。
+	// 5：商品图像搜索1.0版。
+	// 6：图案花纹搜索1.0版。
+	// 1 - 3：通用图像搜索旧版，不推荐使用。
 	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
 }
 
@@ -2414,7 +2424,7 @@ type SearchImageRequestParams struct {
 
 	// 返回结果的数量，默认值为10，最大值为100。
 	// 按照相似度分数由高到低排序。
-	// **<font color=#1E90FF>注意：服务类型为相似图像搜索时返回数量限制为1，即返回top1的结果。</font>**
+	// **<font color=#1E90FF>服务类型为图案花纹搜索时Limit = 1，最多只能返回1个结果。</font>**
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 返回结果的起始序号，默认值为0。
@@ -2423,9 +2433,10 @@ type SearchImageRequestParams struct {
 	// 匹配阈值。
 	// 只有图片相似度分数超过匹配阈值的结果才会返回。
 	// 当MatchThreshold为0（默认值）时，各服务类型将按照以下默认的匹配阈值进行结果过滤：
-	// • 相同图像搜索：50。
-	// • 商品图像搜索：28。
-	// • 相似图像搜索：56。
+	// • 通用图像搜索1.0版：50。
+	// • 商品图像搜索2.0升级版：45。
+	// • 商品图像搜索1.0版：28。
+	// • 图案花纹搜索1.0版：56。
 	// 建议：
 	// 可以手动调整MatchThreshold值来控制输出结果的范围。如果发现无检索结果，可能是因为图片相似度较低导致检索结果被匹配阈值过滤，建议调整为较低的阈值后再次尝试检索。
 	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`
@@ -2483,7 +2494,7 @@ type SearchImageRequest struct {
 
 	// 返回结果的数量，默认值为10，最大值为100。
 	// 按照相似度分数由高到低排序。
-	// **<font color=#1E90FF>注意：服务类型为相似图像搜索时返回数量限制为1，即返回top1的结果。</font>**
+	// **<font color=#1E90FF>服务类型为图案花纹搜索时Limit = 1，最多只能返回1个结果。</font>**
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 返回结果的起始序号，默认值为0。
@@ -2492,9 +2503,10 @@ type SearchImageRequest struct {
 	// 匹配阈值。
 	// 只有图片相似度分数超过匹配阈值的结果才会返回。
 	// 当MatchThreshold为0（默认值）时，各服务类型将按照以下默认的匹配阈值进行结果过滤：
-	// • 相同图像搜索：50。
-	// • 商品图像搜索：28。
-	// • 相似图像搜索：56。
+	// • 通用图像搜索1.0版：50。
+	// • 商品图像搜索2.0升级版：45。
+	// • 商品图像搜索1.0版：28。
+	// • 图案花纹搜索1.0版：56。
 	// 建议：
 	// 可以手动调整MatchThreshold值来控制输出结果的范围。如果发现无检索结果，可能是因为图片相似度较低导致检索结果被匹配阈值过滤，建议调整为较低的阈值后再次尝试检索。
 	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`

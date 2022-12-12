@@ -1,3 +1,129 @@
+# Release v1.0.557
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 47 次发布
+
+发布时间：2022-12-12 01:06:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeListBGPIPInstances](https://cloud.tencent.com/document/api/1021/57524)
+
+	* 新增入参：FilterConvoy
+
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+
+	* 新增入参：FilterTrialFlag, FilterConvoy
+
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：ConvoyId
+
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 3 次发布
+
+发布时间：2022-12-12 01:23:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SkipCheckItem](https://cloud.tencent.com/document/api/571/83864)
+* [SkipSyncCheckItem](https://cloud.tencent.com/document/api/571/83865)
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 41 次发布
+
+发布时间：2022-12-12 01:25:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField)
+
+	* 新增成员：IndexDocs
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 85 次发布
+
+发布时间：2022-12-12 01:39:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SealOCR](https://cloud.tencent.com/document/api/866/45807)
+
+	* 新增出参：SealShape
+
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 27 次发布
+
+发布时间：2022-12-12 01:52:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTranscode](https://cloud.tencent.com/document/api/1137/40060)
+
+	* 新增入参：AutoHandleUnsupportedElement
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 130 次发布
+
+发布时间：2022-12-12 01:57:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ReturnNormalAddresses](https://cloud.tencent.com/document/api/215/83866)
+
+
+
 # Release v1.0.556
 
 ## 云点播(vod) 版本：2018-07-17

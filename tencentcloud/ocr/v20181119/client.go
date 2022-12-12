@@ -4888,6 +4888,10 @@ func NewSealOCRResponse() (response *SealOCRResponse) {
 // SealOCR
 // 本接口支持各类印章识别，包括发票章，财务章等，适用于公文，票据等场景。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -4904,6 +4908,10 @@ func (c *Client) SealOCR(request *SealOCRRequest) (response *SealOCRResponse, er
 
 // SealOCR
 // 本接口支持各类印章识别，包括发票章，财务章等，适用于公文，票据等场景。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

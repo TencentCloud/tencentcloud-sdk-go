@@ -2179,6 +2179,10 @@ type IndexMetaField struct {
 	// 索引所属集群APP ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 索引文档数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexDocs *uint64 `json:"IndexDocs,omitempty" name:"IndexDocs"`
 }
 
 type IndexOptionsField struct {

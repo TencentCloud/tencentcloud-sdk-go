@@ -6607,6 +6607,14 @@ type SealOCRResponseParams struct {
 	// 全部印章信息
 	SealInfos []*SealInfo `json:"SealInfos,omitempty" name:"SealInfos"`
 
+	// 印章类型，表示为：
+	// 圆形印章：0
+	// 椭圆形印章：1
+	// 方形印章：2
+	// 菱形印章：3
+	// 三角形印章：4
+	SealShape *string `json:"SealShape,omitempty" name:"SealShape"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

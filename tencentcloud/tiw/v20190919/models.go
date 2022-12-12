@@ -195,6 +195,14 @@ type CreateTranscodeRequestParams struct {
 	// 
 	// 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
 	MinScaleResolution *string `json:"MinScaleResolution,omitempty" name:"MinScaleResolution"`
+
+	// 是否对不支持元素开启自动处理的功能。默认不开启。
+	// 
+	// 在开启自动处理的情况下，会自动进行如下处理：
+	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
+	// 2. 自动翻页：移除PPT上所有的自动翻页设置
+	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
+	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitempty" name:"AutoHandleUnsupportedElement"`
 }
 
 type CreateTranscodeRequest struct {
@@ -241,6 +249,14 @@ type CreateTranscodeRequest struct {
 	// 
 	// 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
 	MinScaleResolution *string `json:"MinScaleResolution,omitempty" name:"MinScaleResolution"`
+
+	// 是否对不支持元素开启自动处理的功能。默认不开启。
+	// 
+	// 在开启自动处理的情况下，会自动进行如下处理：
+	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
+	// 2. 自动翻页：移除PPT上所有的自动翻页设置
+	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
+	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitempty" name:"AutoHandleUnsupportedElement"`
 }
 
 func (r *CreateTranscodeRequest) ToJsonString() string {
@@ -264,6 +280,7 @@ func (r *CreateTranscodeRequest) FromJsonString(s string) error {
 	delete(f, "ExtraData")
 	delete(f, "Priority")
 	delete(f, "MinScaleResolution")
+	delete(f, "AutoHandleUnsupportedElement")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeRequest has unknown keys!", "")
 	}

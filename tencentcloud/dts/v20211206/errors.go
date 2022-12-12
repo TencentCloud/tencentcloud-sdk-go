@@ -33,6 +33,9 @@ const (
 	DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
 
 	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
+	// 操作失败。
 	FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 
 	// 禁止该操作。
@@ -100,6 +103,9 @@ const (
 
 	// 参数无效。
 	INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+
+	// 参数取值错误。
+	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
 	// 数据转换错误。
 	INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"

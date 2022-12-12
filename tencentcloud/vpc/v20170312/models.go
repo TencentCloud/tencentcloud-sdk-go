@@ -1063,7 +1063,7 @@ type AssociateAddressRequestParams struct {
 	// 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
 	AddressId *string `json:"AddressId,omitempty" name:"AddressId"`
 
-	// 要绑定的实例 ID。实例 ID 形如：`ins-11112222`。可通过登录[控制台](https://console.cloud.tencent.com/cvm)查询，也可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
+	// 要绑定的实例 ID。实例 ID 形如：`ins-11112222`、`lb-11112222`。可通过登录[控制台](https://console.cloud.tencent.com/cvm)查询，也可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：`eni-11112222`。`NetworkInterfaceId` 与 `InstanceId` 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的`networkInterfaceId`获取。
@@ -1082,7 +1082,7 @@ type AssociateAddressRequest struct {
 	// 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。
 	AddressId *string `json:"AddressId,omitempty" name:"AddressId"`
 
-	// 要绑定的实例 ID。实例 ID 形如：`ins-11112222`。可通过登录[控制台](https://console.cloud.tencent.com/cvm)查询，也可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
+	// 要绑定的实例 ID。实例 ID 形如：`ins-11112222`、`lb-11112222`。可通过登录[控制台](https://console.cloud.tencent.com/cvm)查询，也可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：`eni-11112222`。`NetworkInterfaceId` 与 `InstanceId` 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的`networkInterfaceId`获取。
@@ -22173,6 +22173,60 @@ type ResourceDashboard struct {
 
 	// 路由表。
 	RouteTable *uint64 `json:"RouteTable,omitempty" name:"RouteTable"`
+}
+
+// Predefined struct for user
+type ReturnNormalAddressesRequestParams struct {
+	// 1
+	AddressIps []*string `json:"AddressIps,omitempty" name:"AddressIps"`
+}
+
+type ReturnNormalAddressesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 1
+	AddressIps []*string `json:"AddressIps,omitempty" name:"AddressIps"`
+}
+
+func (r *ReturnNormalAddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReturnNormalAddressesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddressIps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReturnNormalAddressesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReturnNormalAddressesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ReturnNormalAddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *ReturnNormalAddressesResponseParams `json:"Response"`
+}
+
+func (r *ReturnNormalAddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReturnNormalAddressesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Route struct {

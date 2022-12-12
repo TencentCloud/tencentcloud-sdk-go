@@ -948,6 +948,8 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 //
 // * 将 EIP 绑定到指定网卡的内网 IP上（非主网卡的主内网IP），则必须先解绑该 EIP，才能再绑定新的。
 //
+// * 将EIP绑定到绑定内网型CLB实例的功能处于内测阶段，如需使用，请提交内测申请。
+//
 // * 将 EIP 绑定到NAT网关，请使用接口[AssociateNatGatewayAddress](https://cloud.tencent.com/document/product/215/36722)
 //
 // * EIP 如果欠费或被封堵，则不能被绑定。
@@ -1005,6 +1007,8 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *A
 // * 将 EIP 绑定到主网卡的主内网IP上，绑定过程会把其上绑定的普通公网 IP 自动解绑并释放。
 //
 // * 将 EIP 绑定到指定网卡的内网 IP上（非主网卡的主内网IP），则必须先解绑该 EIP，才能再绑定新的。
+//
+// * 将EIP绑定到绑定内网型CLB实例的功能处于内测阶段，如需使用，请提交内测申请。
 //
 // * 将 EIP 绑定到NAT网关，请使用接口[AssociateNatGatewayAddress](https://cloud.tencent.com/document/product/215/36722)
 //
@@ -17811,6 +17815,62 @@ func (c *Client) ResetVpnGatewayInternetMaxBandwidthWithContext(ctx context.Cont
     request.SetContext(ctx)
     
     response = NewResetVpnGatewayInternetMaxBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReturnNormalAddressesRequest() (request *ReturnNormalAddressesRequest) {
+    request = &ReturnNormalAddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ReturnNormalAddresses")
+    
+    
+    return
+}
+
+func NewReturnNormalAddressesResponse() (response *ReturnNormalAddressesResponse) {
+    response = &ReturnNormalAddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReturnNormalAddresses
+// 本接口（ReturnNormalAddresses）用于解绑并释放普通公网IP。
+//
+// 为完善公网IP的访问管理功能，此接口于2022年12月15日升级优化鉴权功能，升级后子用户调用此接口需向主账号申请CAM策略授权，否则可能调用失败。您可以提前为子账号配置操作授权，详情见 授权指南(https://cloud.tencent.com/document/product/598/34545)。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ADDRESSIPSNOTFOUND = "InvalidParameterValue.AddressIpsNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = "UnsupportedOperation.NotSupportedAddressIpsChargeType"
+func (c *Client) ReturnNormalAddresses(request *ReturnNormalAddressesRequest) (response *ReturnNormalAddressesResponse, err error) {
+    return c.ReturnNormalAddressesWithContext(context.Background(), request)
+}
+
+// ReturnNormalAddresses
+// 本接口（ReturnNormalAddresses）用于解绑并释放普通公网IP。
+//
+// 为完善公网IP的访问管理功能，此接口于2022年12月15日升级优化鉴权功能，升级后子用户调用此接口需向主账号申请CAM策略授权，否则可能调用失败。您可以提前为子账号配置操作授权，详情见 授权指南(https://cloud.tencent.com/document/product/598/34545)。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ADDRESSIPSNOTFOUND = "InvalidParameterValue.AddressIpsNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = "UnsupportedOperation.NotSupportedAddressIpsChargeType"
+func (c *Client) ReturnNormalAddressesWithContext(ctx context.Context, request *ReturnNormalAddressesRequest) (response *ReturnNormalAddressesResponse, err error) {
+    if request == nil {
+        request = NewReturnNormalAddressesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReturnNormalAddresses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReturnNormalAddressesResponse()
     err = c.Send(request, response)
     return
 }

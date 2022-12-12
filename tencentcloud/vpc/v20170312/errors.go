@@ -137,6 +137,9 @@ const (
 	// 此IPv6地址未发布。
 	INVALIDPARAMETERVALUE_ADDRESSIPNOTPUBLIC = "InvalidParameterValue.AddressIpNotPublic"
 
+	// 未查询到该地址。
+	INVALIDPARAMETERVALUE_ADDRESSIPSNOTFOUND = "InvalidParameterValue.AddressIpsNotFound"
+
 	// 该地址不可与此实例申请。
 	INVALIDPARAMETERVALUE_ADDRESSNOTAPPLICABLE = "InvalidParameterValue.AddressNotApplicable"
 
@@ -760,6 +763,9 @@ const (
 
 	// 不支持删除默认路由表。
 	UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultRouteTable"
+
+	// 该地址类型不支持释放操作。
+	UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = "UnsupportedOperation.NotSupportedAddressIpsChargeType"
 
 	// 当前云联网不支持更新路由发布。
 	UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = "UnsupportedOperation.NotSupportedUpdateCcnRoutePublish"

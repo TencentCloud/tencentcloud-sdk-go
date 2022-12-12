@@ -3404,6 +3404,128 @@ type RoleItem struct {
 	NewRoleName *string `json:"NewRoleName,omitempty" name:"NewRoleName"`
 }
 
+// Predefined struct for user
+type SkipCheckItemRequestParams struct {
+	// 数据迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
+	StepIds []*string `json:"StepIds,omitempty" name:"StepIds"`
+}
+
+type SkipCheckItemRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
+	StepIds []*string `json:"StepIds,omitempty" name:"StepIds"`
+}
+
+func (r *SkipCheckItemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SkipCheckItemRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "StepIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SkipCheckItemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SkipCheckItemResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SkipCheckItemResponse struct {
+	*tchttp.BaseResponse
+	Response *SkipCheckItemResponseParams `json:"Response"`
+}
+
+func (r *SkipCheckItemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SkipCheckItemResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SkipSyncCheckItemRequestParams struct {
+	// 任务id，如：sync-4ddgid2
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 需要跳过校验项的步骤id，需要通过`DescribeCheckSyncJobResult`接口返回StepInfos[i].StepId字段获取，例如：["OptimizeCheck"]
+	StepIds []*string `json:"StepIds,omitempty" name:"StepIds"`
+}
+
+type SkipSyncCheckItemRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id，如：sync-4ddgid2
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 需要跳过校验项的步骤id，需要通过`DescribeCheckSyncJobResult`接口返回StepInfos[i].StepId字段获取，例如：["OptimizeCheck"]
+	StepIds []*string `json:"StepIds,omitempty" name:"StepIds"`
+}
+
+func (r *SkipSyncCheckItemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SkipSyncCheckItemRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "StepIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SkipSyncCheckItemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SkipSyncCheckItemResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SkipSyncCheckItemResponse struct {
+	*tchttp.BaseResponse
+	Response *SkipSyncCheckItemResponseParams `json:"Response"`
+}
+
+func (r *SkipSyncCheckItemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SkipSyncCheckItemResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SkippedDetail struct {
 	// 跳过的表数量
 	// 注意：此字段可能返回 null，表示取不到有效值。

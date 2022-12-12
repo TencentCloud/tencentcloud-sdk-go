@@ -321,6 +321,10 @@ type BGPIPInstance struct {
 	// 资源实例版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceVersion *uint64 `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
+
+	// 重保实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConvoyId *string `json:"ConvoyId,omitempty" name:"ConvoyId"`
 }
 
 type BGPIPInstanceSpecification struct {
@@ -4771,7 +4775,7 @@ type DescribeListBGPIPInstancesRequestParams struct {
 	// 是否只获取安全加速实例。填写时，只能填写1或者0。当填写1时，表示返回安全加速实例。当填写0时，表示返回非安全加速实例。
 	FilterDamDDoSStatus *int64 `json:"FilterDamDDoSStatus,omitempty" name:"FilterDamDDoSStatus"`
 
-	// 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking
+	// 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking，试用资源填trial
 	FilterStatus *string `json:"FilterStatus,omitempty" name:"FilterStatus"`
 
 	// 获取特定的实例Cname
@@ -4785,6 +4789,9 @@ type DescribeListBGPIPInstancesRequestParams struct {
 
 	// 按照套餐类型进行过滤
 	FilterPackType []*string `json:"FilterPackType,omitempty" name:"FilterPackType"`
+
+	// 重保护航搜索
+	FilterConvoy *uint64 `json:"FilterConvoy,omitempty" name:"FilterConvoy"`
 }
 
 type DescribeListBGPIPInstancesRequest struct {
@@ -4826,7 +4833,7 @@ type DescribeListBGPIPInstancesRequest struct {
 	// 是否只获取安全加速实例。填写时，只能填写1或者0。当填写1时，表示返回安全加速实例。当填写0时，表示返回非安全加速实例。
 	FilterDamDDoSStatus *int64 `json:"FilterDamDDoSStatus,omitempty" name:"FilterDamDDoSStatus"`
 
-	// 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking
+	// 获取特定状态的资源，运行中填idle，攻击中填attacking，封堵中填blocking，试用资源填trial
 	FilterStatus *string `json:"FilterStatus,omitempty" name:"FilterStatus"`
 
 	// 获取特定的实例Cname
@@ -4840,6 +4847,9 @@ type DescribeListBGPIPInstancesRequest struct {
 
 	// 按照套餐类型进行过滤
 	FilterPackType []*string `json:"FilterPackType,omitempty" name:"FilterPackType"`
+
+	// 重保护航搜索
+	FilterConvoy *uint64 `json:"FilterConvoy,omitempty" name:"FilterConvoy"`
 }
 
 func (r *DescribeListBGPIPInstancesRequest) ToJsonString() string {
@@ -4869,6 +4879,7 @@ func (r *DescribeListBGPIPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterInstanceIdList")
 	delete(f, "FilterTag")
 	delete(f, "FilterPackType")
+	delete(f, "FilterConvoy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPIPInstancesRequest has unknown keys!", "")
 	}
@@ -4946,6 +4957,12 @@ type DescribeListBGPInstancesRequestParams struct {
 
 	// 标签搜索
 	FilterTag *TagFilter `json:"FilterTag,omitempty" name:"FilterTag"`
+
+	// 试用资源搜索，1: 应急防护资源；2：PLG试用资源
+	FilterTrialFlag *uint64 `json:"FilterTrialFlag,omitempty" name:"FilterTrialFlag"`
+
+	// 重保护航搜索
+	FilterConvoy *uint64 `json:"FilterConvoy,omitempty" name:"FilterConvoy"`
 }
 
 type DescribeListBGPInstancesRequest struct {
@@ -4992,6 +5009,12 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 标签搜索
 	FilterTag *TagFilter `json:"FilterTag,omitempty" name:"FilterTag"`
+
+	// 试用资源搜索，1: 应急防护资源；2：PLG试用资源
+	FilterTrialFlag *uint64 `json:"FilterTrialFlag,omitempty" name:"FilterTrialFlag"`
+
+	// 重保护航搜索
+	FilterConvoy *uint64 `json:"FilterConvoy,omitempty" name:"FilterConvoy"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -5020,6 +5043,8 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterLightFlag")
 	delete(f, "FilterChannelFlag")
 	delete(f, "FilterTag")
+	delete(f, "FilterTrialFlag")
+	delete(f, "FilterConvoy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}

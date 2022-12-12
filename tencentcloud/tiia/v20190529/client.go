@@ -160,15 +160,57 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 //
 // 
 //
-// | 服务类型 | GroupType入参 |功能描述 |
+// <table>
 //
-// |  :----------  | :----- |:-----------------  |
+//     <th>服务类型</th><th>GroupType</th><th>功能描述</th>
 //
-// | 相同图像搜索<div style="width: 70pt"> | 4 |在自建图片库中搜索相同原图或高相似图，并给出相似度打分，可支持裁剪、翻转、调色、加水印等二次编辑后的图片搜索。适用于图片版权保护、原图查询等场景。|
+//     <tr>
 //
-// | 商品图像搜索<div style="width: 70pt"> | 5 |在自建图库中搜索同款商品，并给出相似度打分。对于服饰类商品可支持识别服饰类别、属性等信息。适用于商品分类、检索、推荐等电商场景。|
+//         <td>通用图像搜索</td>
 //
-// | 相似图像搜索<div style="width: 70pt"> | 6 |在自建图库中搜索相似的图案、logo、纹理等图像元素或主体，并给出相似度打分。|
+//         <td>4</td>
+//
+//         <td>通用图像搜索1.0版。<br>在自建图片库中搜索相同原图或相似图片集，并给出相似度打分，可支持裁剪、翻转、调色、加水印等二次编辑后的图片搜索。适用于图片版权保护、原图查询等场景。</td>
+//
+//     </tr>
+//
+//     <tr>
+//
+//         <td rowspan="2">商品图像搜索</td>
+//
+//         <td>7</td><td>商品图像搜索2.0升级版。<br>
+//
+//         在自建图库中搜索同款或相似商品，并给出相似度打分。对于服饰类商品可支持识别服饰类别、属性等信息。适用于商品分类、检索、推荐等电商场景。</td>
+//
+//     </tr>
+//
+//      <tr>
+//
+//         <td>5</td>
+//
+//         <td>商品图像搜索1.0版。<br>
+//
+//         功能和2.0升级版类似。</td>
+//
+//     </tr>
+//
+//     <tr>
+//
+//     <td>图案花纹搜索</td><td>6</td><td>图案花纹搜索1.0版。<br>
+//
+//     在自建图库中搜索相似的图案、logo、纹理等图像元素或主体，并给出相似度打分。</td>
+//
+//     </tr>
+//
+// </table> 
+//
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+//
+// 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -200,15 +242,57 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
 //
 // 
 //
-// | 服务类型 | GroupType入参 |功能描述 |
+// <table>
 //
-// |  :----------  | :----- |:-----------------  |
+//     <th>服务类型</th><th>GroupType</th><th>功能描述</th>
 //
-// | 相同图像搜索<div style="width: 70pt"> | 4 |在自建图片库中搜索相同原图或高相似图，并给出相似度打分，可支持裁剪、翻转、调色、加水印等二次编辑后的图片搜索。适用于图片版权保护、原图查询等场景。|
+//     <tr>
 //
-// | 商品图像搜索<div style="width: 70pt"> | 5 |在自建图库中搜索同款商品，并给出相似度打分。对于服饰类商品可支持识别服饰类别、属性等信息。适用于商品分类、检索、推荐等电商场景。|
+//         <td>通用图像搜索</td>
 //
-// | 相似图像搜索<div style="width: 70pt"> | 6 |在自建图库中搜索相似的图案、logo、纹理等图像元素或主体，并给出相似度打分。|
+//         <td>4</td>
+//
+//         <td>通用图像搜索1.0版。<br>在自建图片库中搜索相同原图或相似图片集，并给出相似度打分，可支持裁剪、翻转、调色、加水印等二次编辑后的图片搜索。适用于图片版权保护、原图查询等场景。</td>
+//
+//     </tr>
+//
+//     <tr>
+//
+//         <td rowspan="2">商品图像搜索</td>
+//
+//         <td>7</td><td>商品图像搜索2.0升级版。<br>
+//
+//         在自建图库中搜索同款或相似商品，并给出相似度打分。对于服饰类商品可支持识别服饰类别、属性等信息。适用于商品分类、检索、推荐等电商场景。</td>
+//
+//     </tr>
+//
+//      <tr>
+//
+//         <td>5</td>
+//
+//         <td>商品图像搜索1.0版。<br>
+//
+//         功能和2.0升级版类似。</td>
+//
+//     </tr>
+//
+//     <tr>
+//
+//     <td>图案花纹搜索</td><td>6</td><td>图案花纹搜索1.0版。<br>
+//
+//     在自建图库中搜索相似的图案、logo、纹理等图像元素或主体，并给出相似度打分。</td>
+//
+//     </tr>
+//
+// </table> 
+//
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+//
+// 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -266,7 +350,15 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 }
 
 // CreateImage
-// 创建图片，并添加对应图片的自定义信息。模型将在创建图片时自动提取图像特征并存储到指定的图片库中。
+// 创建图片，并添加对应图片的自定义信息。模型将在创建图片时自动提取图像特征并存储到指定的图片库中，每创建一张图片会对应提取和存储一条图片特征数据。
+//
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+//
+// 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -309,7 +401,15 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
 }
 
 // CreateImage
-// 创建图片，并添加对应图片的自定义信息。模型将在创建图片时自动提取图像特征并存储到指定的图片库中。
+// 创建图片，并添加对应图片的自定义信息。模型将在创建图片时自动提取图像特征并存储到指定的图片库中，每创建一张图片会对应提取和存储一条图片特征数据。
+//
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+//
+// 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -472,6 +572,12 @@ func NewDeleteImagesResponse() (response *DeleteImagesResponse) {
 // DeleteImages
 // 删除图片。
 //
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_IMAGEDELETEFAILED = "FailedOperation.ImageDeleteFailed"
 //  FAILEDOPERATION_IMAGENOTFOUNDINFO = "FailedOperation.ImageNotFoundInfo"
@@ -495,6 +601,12 @@ func (c *Client) DeleteImages(request *DeleteImagesRequest) (response *DeleteIma
 
 // DeleteImages
 // 删除图片。
+//
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IMAGEDELETEFAILED = "FailedOperation.ImageDeleteFailed"
@@ -550,6 +662,12 @@ func NewDescribeGroupsResponse() (response *DescribeGroupsResponse) {
 // DescribeGroups
 // 查询所有的图库信息。
 //
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
@@ -566,6 +684,12 @@ func (c *Client) DescribeGroups(request *DescribeGroupsRequest) (response *Descr
 
 // DescribeGroups
 // 查询所有的图库信息。
+//
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
@@ -614,6 +738,12 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 // DescribeImages
 // 获取指定图片库中的图片列表。
 //
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_IMAGENOTFOUNDINFO = "FailedOperation.ImageNotFoundInfo"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
@@ -635,6 +765,12 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
 
 // DescribeImages
 // 获取指定图片库中的图片列表。
+//
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_IMAGENOTFOUNDINFO = "FailedOperation.ImageNotFoundInfo"
@@ -2076,6 +2212,12 @@ func NewSearchImageResponse() (response *SearchImageResponse) {
 // SearchImage
 // 本接口用于对一张图片，在指定图片库中检索出与之相似的图片列表。
 //
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -2111,6 +2253,12 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
 
 // SearchImage
 // 本接口用于对一张图片，在指定图片库中检索出与之相似的图片列表。
+//
+// 
+//
+// >   
+//
+// - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
