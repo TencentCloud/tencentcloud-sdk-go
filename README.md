@@ -51,16 +51,6 @@ v1.0.170后可以按照产品下载，您只需下载基础包和对应的产品
     go get -v -u github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm
     ```
 
-### 全部安装
-
-此模式支持 GOPATH 和 Go Modules
-
-此方式会一次性下载腾讯云所有产品的包：
-
-```bash
-go get -v -u github.com/tencentcloud/tencentcloud-sdk-go
-```
-
 注意：为了支持 go mod，SDK 版本号从 v3.x 降到了 v1.x。并于2021.05.10移除了所有`v3.0.*`和`3.0.*`的tag，如需追溯以前的tag，请参考项目根目录下的 `commit2tag` 文件。
 
 ## 通过源码安装
