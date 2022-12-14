@@ -1,3 +1,25 @@
+# Release v1.0.559
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 96 次发布
+
+发布时间：2022-12-14 11:33:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryFlexPlatformAccountBalance](https://cloud.tencent.com/document/api/1122/84021)
+
+新增数据结构：
+
+* [PlatformAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PlatformAccountBalanceResult)
+
+
+
 # Release v1.0.558
 
 ## 负载均衡(clb) 版本：2018-03-17

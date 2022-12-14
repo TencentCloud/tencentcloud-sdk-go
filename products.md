@@ -61,7 +61,7 @@
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2022-12-05 06:32:09 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2022-11-16 06:15:44 |
 | cms | [内容安全](https://cloud.tencent.com/document/product) | 2020-10-29 08:03:08 |
-| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-12-12 01:17:00 |
+| cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-12-14 11:33:48 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2022-12-07 06:29:50 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2022-12-13 10:22:29 |
@@ -90,7 +90,7 @@
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2022-12-13 10:29:37 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2022-12-12 01:25:49 |
 | ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2022-12-14 01:27:17 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-12-14 01:27:32 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-12-14 11:12:58 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2022-06-15 06:09:10 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2022-12-07 06:39:49 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2022-04-04 06:43:06 |
