@@ -1600,70 +1600,6 @@ func (r *CreateClusterInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type CreateClusterNodePoolFromExistingAsgRequestParams struct {
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 伸缩组ID
-	AutoscalingGroupId *string `json:"AutoscalingGroupId,omitempty" name:"AutoscalingGroupId"`
-}
-
-type CreateClusterNodePoolFromExistingAsgRequest struct {
-	*tchttp.BaseRequest
-	
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 伸缩组ID
-	AutoscalingGroupId *string `json:"AutoscalingGroupId,omitempty" name:"AutoscalingGroupId"`
-}
-
-func (r *CreateClusterNodePoolFromExistingAsgRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateClusterNodePoolFromExistingAsgRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterId")
-	delete(f, "AutoscalingGroupId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterNodePoolFromExistingAsgRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateClusterNodePoolFromExistingAsgResponseParams struct {
-	// 节点池ID
-	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type CreateClusterNodePoolFromExistingAsgResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateClusterNodePoolFromExistingAsgResponseParams `json:"Response"`
-}
-
-func (r *CreateClusterNodePoolFromExistingAsgResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateClusterNodePoolFromExistingAsgResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CreateClusterNodePoolRequestParams struct {
 	// cluster id
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -2877,6 +2813,16 @@ type CreateImageCacheRequestParams struct {
 
 	// 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
 	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+
+	// 指定拉取镜像仓库的镜像时不校验证书。如["harbor.example.com"]。
+	RegistrySkipVerifyList []*string `json:"RegistrySkipVerifyList,omitempty" name:"RegistrySkipVerifyList"`
+
+	// 指定拉取镜像仓库的镜像时使用 HTTP 协议。如["harbor.example.com"]。
+	RegistryHttpEndPointList []*string `json:"RegistryHttpEndPointList,omitempty" name:"RegistryHttpEndPointList"`
+
+	// 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
+	// "nameserver 4.4.4.4\nnameserver 8.8.8.8"
+	ResolveConfig *string `json:"ResolveConfig,omitempty" name:"ResolveConfig"`
 }
 
 type CreateImageCacheRequest struct {
@@ -2915,6 +2861,16 @@ type CreateImageCacheRequest struct {
 
 	// 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
 	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+
+	// 指定拉取镜像仓库的镜像时不校验证书。如["harbor.example.com"]。
+	RegistrySkipVerifyList []*string `json:"RegistrySkipVerifyList,omitempty" name:"RegistrySkipVerifyList"`
+
+	// 指定拉取镜像仓库的镜像时使用 HTTP 协议。如["harbor.example.com"]。
+	RegistryHttpEndPointList []*string `json:"RegistryHttpEndPointList,omitempty" name:"RegistryHttpEndPointList"`
+
+	// 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
+	// "nameserver 4.4.4.4\nnameserver 8.8.8.8"
+	ResolveConfig *string `json:"ResolveConfig,omitempty" name:"ResolveConfig"`
 }
 
 func (r *CreateImageCacheRequest) ToJsonString() string {
@@ -2940,6 +2896,9 @@ func (r *CreateImageCacheRequest) FromJsonString(s string) error {
 	delete(f, "AutoCreateEipAttribute")
 	delete(f, "ImageCacheSize")
 	delete(f, "RetentionDays")
+	delete(f, "RegistrySkipVerifyList")
+	delete(f, "RegistryHttpEndPointList")
+	delete(f, "ResolveConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageCacheRequest has unknown keys!", "")
 	}

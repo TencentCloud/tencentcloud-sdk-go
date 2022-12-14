@@ -495,6 +495,7 @@ func NewCreateAIRecognitionTemplateResponse() (response *CreateAIRecognitionTemp
 // 创建用户自定义音视频内容识别模板，数量上限：50。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
@@ -518,6 +519,7 @@ func (c *Client) CreateAIRecognitionTemplate(request *CreateAIRecognitionTemplat
 // 创建用户自定义音视频内容识别模板，数量上限：50。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"

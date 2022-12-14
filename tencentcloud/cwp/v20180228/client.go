@@ -13199,6 +13199,7 @@ func NewSyncBaselineDetectSummaryResponse() (response *SyncBaselineDetectSummary
 // 同步基线检测进度概要
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) SyncBaselineDetectSummary(request *SyncBaselineDetectSummaryRequest) (response *SyncBaselineDetectSummaryResponse, err error) {
     return c.SyncBaselineDetectSummaryWithContext(context.Background(), request)
@@ -13208,6 +13209,7 @@ func (c *Client) SyncBaselineDetectSummary(request *SyncBaselineDetectSummaryReq
 // 同步基线检测进度概要
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) SyncBaselineDetectSummaryWithContext(ctx context.Context, request *SyncBaselineDetectSummaryRequest) (response *SyncBaselineDetectSummaryResponse, err error) {
     if request == nil {

@@ -742,14 +742,14 @@ type CLSNotice struct {
 
 // Predefined struct for user
 type CleanGrafanaInstanceRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type CleanGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -1485,26 +1485,26 @@ func (r *CreateGrafanaInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaIntegrationRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 类型
+	// 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
 	Kind *string `json:"Kind,omitempty" name:"Kind"`
 
-	// 配置
+	// 集成配置
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 type CreateGrafanaIntegrationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 类型
+	// 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
 	Kind *string `json:"Kind,omitempty" name:"Kind"`
 
-	// 配置
+	// 集成配置
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
@@ -1557,10 +1557,10 @@ func (r *CreateGrafanaIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaNotificationChannelRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 渠道名
+	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 默认为1，已废弃，请使用 OrganizationIds
@@ -1579,10 +1579,10 @@ type CreateGrafanaNotificationChannelRequestParams struct {
 type CreateGrafanaNotificationChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 渠道名
+	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 默认为1，已废弃，请使用 OrganizationIds
@@ -2145,10 +2145,10 @@ func (r *CreateRecordingRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSSOAccountRequestParams struct {
-	// 实例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 用户账号ID
+	// 用户账号 ID ，例如：10000000
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 权限
@@ -2161,10 +2161,10 @@ type CreateSSOAccountRequestParams struct {
 type CreateSSOAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 用户账号ID
+	// 用户账号 ID ，例如：10000000
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 权限
@@ -2652,20 +2652,20 @@ func (r *DeleteGrafanaInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGrafanaIntegrationRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 集成 ID
+	// 集成 ID，可在实例详情-云产品集成-集成列表查看。例如：integration-abcd1234
 	IntegrationId *string `json:"IntegrationId,omitempty" name:"IntegrationId"`
 }
 
 type DeleteGrafanaIntegrationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 集成 ID
+	// 集成 ID，可在实例详情-云产品集成-集成列表查看。例如：integration-abcd1234
 	IntegrationId *string `json:"IntegrationId,omitempty" name:"IntegrationId"`
 }
 
@@ -2713,20 +2713,20 @@ func (r *DeleteGrafanaIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGrafanaNotificationChannelRequestParams struct {
-	// 通道 ID 数组
+	// 通道 ID 数组。例如：nchannel-abcd1234
 	ChannelIDs []*string `json:"ChannelIDs,omitempty" name:"ChannelIDs"`
 
-	// 实例名
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DeleteGrafanaNotificationChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道 ID 数组
+	// 通道 ID 数组。例如：nchannel-abcd1234
 	ChannelIDs []*string `json:"ChannelIDs,omitempty" name:"ChannelIDs"`
 
-	// 实例名
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -2964,20 +2964,20 @@ func (r *DeleteRecordingRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSSOAccountRequestParams struct {
-	// 实例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 用户账号ID
+	// 用户账号 ID ，例如：10000000
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 type DeleteSSOAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 用户账号ID
+	// 用户账号 ID ，例如：10000000
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
@@ -4937,14 +4937,14 @@ func (r *DescribeConditionsTemplateListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDNSConfigRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeDNSConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -5085,7 +5085,7 @@ func (r *DescribeExporterIntegrationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaChannelsRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 偏移量
@@ -5094,20 +5094,20 @@ type DescribeGrafanaChannelsRequestParams struct {
 	// 查询数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 渠道名
+	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 渠道 ID
+	// 告警通道 ID，例如：nchannel-abcd1234
 	ChannelIds []*string `json:"ChannelIds,omitempty" name:"ChannelIds"`
 
-	// 状态
+	// 告警通道状态
 	ChannelState *int64 `json:"ChannelState,omitempty" name:"ChannelState"`
 }
 
 type DescribeGrafanaChannelsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 偏移量
@@ -5116,13 +5116,13 @@ type DescribeGrafanaChannelsRequest struct {
 	// 查询数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 渠道名
+	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 渠道 ID
+	// 告警通道 ID，例如：nchannel-abcd1234
 	ChannelIds []*string `json:"ChannelIds,omitempty" name:"ChannelIds"`
 
-	// 状态
+	// 告警通道状态
 	ChannelState *int64 `json:"ChannelState,omitempty" name:"ChannelState"`
 }
 
@@ -5234,14 +5234,14 @@ func (r *DescribeGrafanaConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaEnvironmentsRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：Grafana 实例 ID，例如：grafana-abcdefghGrafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeGrafanaEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：Grafana 实例 ID，例如：grafana-abcdefghGrafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -5297,10 +5297,10 @@ type DescribeGrafanaInstancesRequestParams struct {
 	// 查询数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 实例 ID 数组
+	// Grafana 实例 ID 数组
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 实例名，支持前缀模糊搜索
+	// Grafana 实例名，支持前缀模糊搜索
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 查询状态
@@ -5319,10 +5319,10 @@ type DescribeGrafanaInstancesRequest struct {
 	// 查询数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 实例 ID 数组
+	// Grafana 实例 ID 数组
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 实例名，支持前缀模糊搜索
+	// Grafana 实例名，支持前缀模糊搜索
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 查询状态
@@ -5460,7 +5460,7 @@ func (r *DescribeGrafanaIntegrationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaNotificationChannelsRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 偏移量
@@ -5469,20 +5469,20 @@ type DescribeGrafanaNotificationChannelsRequestParams struct {
 	// 查询数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 渠道名
+	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 渠道 ID
+	// 告警通道 ID，例如：nchannel-abcd1234
 	ChannelIDs []*string `json:"ChannelIDs,omitempty" name:"ChannelIDs"`
 
-	// 状态
+	// 告警通道状态
 	ChannelState *int64 `json:"ChannelState,omitempty" name:"ChannelState"`
 }
 
 type DescribeGrafanaNotificationChannelsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 偏移量
@@ -5491,13 +5491,13 @@ type DescribeGrafanaNotificationChannelsRequest struct {
 	// 查询数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 渠道名
+	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 渠道 ID
+	// 告警通道 ID，例如：nchannel-abcd1234
 	ChannelIDs []*string `json:"ChannelIDs,omitempty" name:"ChannelIDs"`
 
-	// 状态
+	// 告警通道状态
 	ChannelState *int64 `json:"ChannelState,omitempty" name:"ChannelState"`
 }
 
@@ -8328,7 +8328,7 @@ type InstallPluginsRequestParams struct {
 	// 插件信息
 	Plugins []*GrafanaPlugin `json:"Plugins,omitempty" name:"Plugins"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -8338,7 +8338,7 @@ type InstallPluginsRequest struct {
 	// 插件信息
 	Plugins []*GrafanaPlugin `json:"Plugins,omitempty" name:"Plugins"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -9170,20 +9170,20 @@ func (r *ModifyAlarmReceiversResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyGrafanaInstanceRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// Grafana 实例名称，例如：test
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 type ModifyGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// Grafana 实例名称，例如：test
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
@@ -10061,14 +10061,14 @@ type RecordingRuleSet struct {
 
 // Predefined struct for user
 type ResumeGrafanaInstanceRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type ResumeGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -10999,7 +10999,7 @@ func (r *UpdateAlertRuleStateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateDNSConfigRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// DNS 数组
@@ -11009,7 +11009,7 @@ type UpdateDNSConfigRequestParams struct {
 type UpdateDNSConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// DNS 数组
@@ -11209,7 +11209,7 @@ func (r *UpdateGrafanaConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateGrafanaEnvironmentsRequestParams struct {
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 环境变量字符串
@@ -11219,7 +11219,7 @@ type UpdateGrafanaEnvironmentsRequestParams struct {
 type UpdateGrafanaEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 环境变量字符串
@@ -11270,13 +11270,13 @@ func (r *UpdateGrafanaEnvironmentsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateGrafanaIntegrationRequestParams struct {
-	// 集成 ID
+	// 集成 ID，可在实例详情-云产品集成-集成列表查看。例如：integration-abcd1234
 	IntegrationId *string `json:"IntegrationId,omitempty" name:"IntegrationId"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 集成类型
+	// 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
 	Kind *string `json:"Kind,omitempty" name:"Kind"`
 
 	// 集成内容
@@ -11286,13 +11286,13 @@ type UpdateGrafanaIntegrationRequestParams struct {
 type UpdateGrafanaIntegrationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集成 ID
+	// 集成 ID，可在实例详情-云产品集成-集成列表查看。例如：integration-abcd1234
 	IntegrationId *string `json:"IntegrationId,omitempty" name:"IntegrationId"`
 
-	// 实例 ID
+	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 集成类型
+	// 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
 	Kind *string `json:"Kind,omitempty" name:"Kind"`
 
 	// 集成内容

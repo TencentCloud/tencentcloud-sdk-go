@@ -65,12 +65,18 @@ func NewBindPrometheusManagedGrafanaResponse() (response *BindPrometheusManagedG
 
 // BindPrometheusManagedGrafana
 // 绑定 Grafana 可视化服务实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) BindPrometheusManagedGrafana(request *BindPrometheusManagedGrafanaRequest) (response *BindPrometheusManagedGrafanaResponse, err error) {
     return c.BindPrometheusManagedGrafanaWithContext(context.Background(), request)
 }
 
 // BindPrometheusManagedGrafana
 // 绑定 Grafana 可视化服务实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) BindPrometheusManagedGrafanaWithContext(ctx context.Context, request *BindPrometheusManagedGrafanaRequest) (response *BindPrometheusManagedGrafanaResponse, err error) {
     if request == nil {
         request = NewBindPrometheusManagedGrafanaRequest()

@@ -3001,10 +3001,10 @@ type ModifyDisksChargeTypeRequestParams struct {
 	// 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	// 设置为预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
 
-	// 后付费模式
+	// 设置为后付费模式
 	DiskChargePostpaid *bool `json:"DiskChargePostpaid,omitempty" name:"DiskChargePostpaid"`
 }
 
@@ -3014,10 +3014,10 @@ type ModifyDisksChargeTypeRequest struct {
 	// 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	// 设置为预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
 
-	// 后付费模式
+	// 设置为后付费模式
 	DiskChargePostpaid *bool `json:"DiskChargePostpaid,omitempty" name:"DiskChargePostpaid"`
 }
 

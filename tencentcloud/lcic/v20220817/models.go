@@ -913,7 +913,7 @@ type ModifyAppRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 回调地址。
+	// 回调地址。端口目前仅支持80、443
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 }
 
@@ -923,7 +923,7 @@ type ModifyAppRequest struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 回调地址。
+	// 回调地址。端口目前仅支持80、443
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
 }
 

@@ -1179,58 +1179,6 @@ func (c *Client) CreateClusterNodePoolWithContext(ctx context.Context, request *
     return
 }
 
-func NewCreateClusterNodePoolFromExistingAsgRequest() (request *CreateClusterNodePoolFromExistingAsgRequest) {
-    request = &CreateClusterNodePoolFromExistingAsgRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterNodePoolFromExistingAsg")
-    
-    
-    return
-}
-
-func NewCreateClusterNodePoolFromExistingAsgResponse() (response *CreateClusterNodePoolFromExistingAsgResponse) {
-    response = &CreateClusterNodePoolFromExistingAsgResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateClusterNodePoolFromExistingAsg
-// 从伸缩组创建节点池
-//
-// 可能返回的错误码:
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
-//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) CreateClusterNodePoolFromExistingAsg(request *CreateClusterNodePoolFromExistingAsgRequest) (response *CreateClusterNodePoolFromExistingAsgResponse, err error) {
-    return c.CreateClusterNodePoolFromExistingAsgWithContext(context.Background(), request)
-}
-
-// CreateClusterNodePoolFromExistingAsg
-// 从伸缩组创建节点池
-//
-// 可能返回的错误码:
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
-//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) CreateClusterNodePoolFromExistingAsgWithContext(ctx context.Context, request *CreateClusterNodePoolFromExistingAsgRequest) (response *CreateClusterNodePoolFromExistingAsgResponse, err error) {
-    if request == nil {
-        request = NewCreateClusterNodePoolFromExistingAsgRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateClusterNodePoolFromExistingAsg require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateClusterNodePoolFromExistingAsgResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateClusterReleaseRequest() (request *CreateClusterReleaseRequest) {
     request = &CreateClusterReleaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9662,6 +9610,7 @@ func NewGetUpgradeInstanceProgressResponse() (response *GetUpgradeInstanceProgre
 //
 // 可能返回的错误码:
 //  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) GetUpgradeInstanceProgress(request *GetUpgradeInstanceProgressRequest) (response *GetUpgradeInstanceProgressResponse, err error) {
     return c.GetUpgradeInstanceProgressWithContext(context.Background(), request)
@@ -9672,6 +9621,7 @@ func (c *Client) GetUpgradeInstanceProgress(request *GetUpgradeInstanceProgressR
 //
 // 可能返回的错误码:
 //  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) GetUpgradeInstanceProgressWithContext(ctx context.Context, request *GetUpgradeInstanceProgressRequest) (response *GetUpgradeInstanceProgressResponse, err error) {
     if request == nil {
@@ -11307,6 +11257,7 @@ func NewSyncPrometheusTempResponse() (response *SyncPrometheusTempResponse) {
 //  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SyncPrometheusTemp(request *SyncPrometheusTempRequest) (response *SyncPrometheusTempResponse, err error) {
     return c.SyncPrometheusTempWithContext(context.Background(), request)
 }
@@ -11325,6 +11276,7 @@ func (c *Client) SyncPrometheusTemp(request *SyncPrometheusTempRequest) (respons
 //  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SyncPrometheusTempWithContext(ctx context.Context, request *SyncPrometheusTempRequest) (response *SyncPrometheusTempResponse, err error) {
     if request == nil {
         request = NewSyncPrometheusTempRequest()

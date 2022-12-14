@@ -959,7 +959,7 @@ type ResourceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 资源状态
+	// 资源状态，1-正常，2-隔离，3-销毁
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
@@ -979,7 +979,7 @@ type ResourceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Model *string `json:"Model,omitempty" name:"Model"`
 
-	// 资源类型
+	// 云加密机类型id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VsmType *int64 `json:"VsmType,omitempty" name:"VsmType"`
 

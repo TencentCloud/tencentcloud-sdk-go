@@ -918,6 +918,7 @@ func NewDescribeRelayUsageResponse() (response *DescribeRelayUsageResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeRelayUsage(request *DescribeRelayUsageRequest) (response *DescribeRelayUsageResponse, err error) {
     return c.DescribeRelayUsageWithContext(context.Background(), request)
 }
@@ -937,6 +938,7 @@ func (c *Client) DescribeRelayUsage(request *DescribeRelayUsageRequest) (respons
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeRelayUsageWithContext(ctx context.Context, request *DescribeRelayUsageRequest) (response *DescribeRelayUsageResponse, err error) {
     if request == nil {
         request = NewDescribeRelayUsageRequest()

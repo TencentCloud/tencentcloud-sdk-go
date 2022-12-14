@@ -1564,6 +1564,9 @@ func (r *EnableKeyResponse) FromJsonString(s string) error {
 type EnableKeyRotationRequestParams struct {
 	// CMK唯一标识符
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 密钥轮转周期，单位天，允许范围 7 ~ 365，默认值 365。
+	RotateDays *uint64 `json:"RotateDays,omitempty" name:"RotateDays"`
 }
 
 type EnableKeyRotationRequest struct {
@@ -1571,6 +1574,9 @@ type EnableKeyRotationRequest struct {
 	
 	// CMK唯一标识符
 	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 密钥轮转周期，单位天，允许范围 7 ~ 365，默认值 365。
+	RotateDays *uint64 `json:"RotateDays,omitempty" name:"RotateDays"`
 }
 
 func (r *EnableKeyRotationRequest) ToJsonString() string {
@@ -1586,6 +1592,7 @@ func (r *EnableKeyRotationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "KeyId")
+	delete(f, "RotateDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableKeyRotationRequest has unknown keys!", "")
 	}

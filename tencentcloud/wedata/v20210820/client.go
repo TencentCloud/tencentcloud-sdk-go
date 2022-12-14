@@ -115,6 +115,7 @@ func NewBatchDeleteIntegrationTasksResponse() (response *BatchDeleteIntegrationT
 // 批量删除集成任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteIntegrationTasks(request *BatchDeleteIntegrationTasksRequest) (response *BatchDeleteIntegrationTasksResponse, err error) {
     return c.BatchDeleteIntegrationTasksWithContext(context.Background(), request)
@@ -124,6 +125,7 @@ func (c *Client) BatchDeleteIntegrationTasks(request *BatchDeleteIntegrationTask
 // 批量删除集成任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteIntegrationTasksWithContext(ctx context.Context, request *BatchDeleteIntegrationTasksRequest) (response *BatchDeleteIntegrationTasksResponse, err error) {
     if request == nil {
@@ -165,6 +167,7 @@ func NewBatchDeleteTasksNewResponse() (response *BatchDeleteTasksNewResponse) {
 // 批量删除任务，仅对任务状态为”已停止“有效；
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteTasksNew(request *BatchDeleteTasksNewRequest) (response *BatchDeleteTasksNewResponse, err error) {
     return c.BatchDeleteTasksNewWithContext(context.Background(), request)
@@ -176,6 +179,7 @@ func (c *Client) BatchDeleteTasksNew(request *BatchDeleteTasksNewRequest) (respo
 // 批量删除任务，仅对任务状态为”已停止“有效；
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteTasksNewWithContext(ctx context.Context, request *BatchDeleteTasksNewRequest) (response *BatchDeleteTasksNewResponse, err error) {
     if request == nil {

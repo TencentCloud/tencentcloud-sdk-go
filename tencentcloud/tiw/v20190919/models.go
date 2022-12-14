@@ -200,7 +200,7 @@ type CreateTranscodeRequestParams struct {
 	// 
 	// 在开启自动处理的情况下，会自动进行如下处理：
 	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
-	// 2. 自动翻页：移除PPT上所有的自动翻页设置
+	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
 	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitempty" name:"AutoHandleUnsupportedElement"`
 }
@@ -254,7 +254,7 @@ type CreateTranscodeRequest struct {
 	// 
 	// 在开启自动处理的情况下，会自动进行如下处理：
 	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
-	// 2. 自动翻页：移除PPT上所有的自动翻页设置
+	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
 	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
 	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitempty" name:"AutoHandleUnsupportedElement"`
 }

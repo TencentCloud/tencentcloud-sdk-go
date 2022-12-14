@@ -411,6 +411,7 @@ func NewDeleteAttackDownloadRecordResponse() (response *DeleteAttackDownloadReco
 // 删除攻击日志下载任务记录
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteAttackDownloadRecord(request *DeleteAttackDownloadRecordRequest) (response *DeleteAttackDownloadRecordResponse, err error) {
@@ -421,6 +422,7 @@ func (c *Client) DeleteAttackDownloadRecord(request *DeleteAttackDownloadRecordR
 // 删除攻击日志下载任务记录
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteAttackDownloadRecordWithContext(ctx context.Context, request *DeleteAttackDownloadRecordRequest) (response *DeleteAttackDownloadRecordResponse, err error) {
@@ -1705,6 +1707,7 @@ func NewGetAttackDownloadRecordsResponse() (response *GetAttackDownloadRecordsRe
 // 查询下载攻击日志任务记录列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetAttackDownloadRecords(request *GetAttackDownloadRecordsRequest) (response *GetAttackDownloadRecordsResponse, err error) {
@@ -1715,6 +1718,7 @@ func (c *Client) GetAttackDownloadRecords(request *GetAttackDownloadRecordsReque
 // 查询下载攻击日志任务记录列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetAttackDownloadRecordsWithContext(ctx context.Context, request *GetAttackDownloadRecordsRequest) (response *GetAttackDownloadRecordsResponse, err error) {
@@ -1842,6 +1846,7 @@ func NewModifyCustomRuleStatusResponse() (response *ModifyCustomRuleStatusRespon
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCustomRuleStatus(request *ModifyCustomRuleStatusRequest) (response *ModifyCustomRuleStatusResponse, err error) {
     return c.ModifyCustomRuleStatusWithContext(context.Background(), request)
 }
@@ -1851,6 +1856,7 @@ func (c *Client) ModifyCustomRuleStatus(request *ModifyCustomRuleStatusRequest) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCustomRuleStatusWithContext(ctx context.Context, request *ModifyCustomRuleStatusRequest) (response *ModifyCustomRuleStatusResponse, err error) {
     if request == nil {
         request = NewModifyCustomRuleStatusRequest()

@@ -2413,6 +2413,7 @@ func NewDownloadDeviceResourceResponse() (response *DownloadDeviceResourceRespon
 // 本接口（DownloadDeviceResource）用于下载设备资源
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_RESOURCEFILENOTMATCH = "FailedOperation.ResourceFileNotMatch"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
@@ -2428,6 +2429,7 @@ func (c *Client) DownloadDeviceResource(request *DownloadDeviceResourceRequest) 
 // 本接口（DownloadDeviceResource）用于下载设备资源
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_RESOURCEFILENOTMATCH = "FailedOperation.ResourceFileNotMatch"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_PRODUCTEXCEEDLIMIT = "LimitExceeded.ProductExceedLimit"
