@@ -336,7 +336,7 @@ import "crypto/tls"
 
     ```go
     provider := common.DefaultEnvProvider()
-    credential, err := p.GetCredential()
+    credential, err := provider.GetCredential()
     ```
 
 2. 配置文件
@@ -358,7 +358,7 @@ import "crypto/tls"
 
     ```go
     provider := common.DefaultProfileProvider()
-    credentail, err := provider.GetCredential()
+    credential, err := provider.GetCredential()
     ```
 
 3. 角色扮演
@@ -371,7 +371,7 @@ import "crypto/tls"
 
     ```go
     provider := common.DefaultRoleArnProvider(secretId, secretKey, roleArn)
-    credentail, err := provider.GetCredential()
+    credential, err := provider.GetCredential()
     ```
 
 4. 实例角色
@@ -382,7 +382,7 @@ import "crypto/tls"
 
     ```go
     provider := common.DefaultCvmRoleProvider()
-    credentail, err := provider.GetCredential()
+    credential, err := provider.GetCredential()
     ```
    
 5. TKE OIDC凭证
@@ -401,7 +401,7 @@ import "crypto/tls"
 
     ```go
     provider := common.DefaultProviderChain()
-    credentail, err := provider.GetCredential()
+    credential, err := provider.GetCredential()
     ```
 
     您也可以自定义自己的凭证提供链，从而改变其调用顺序：
@@ -411,7 +411,7 @@ import "crypto/tls"
     provider2 := common.DefaultEnvProvider()
     customProviderChain := []common.Provider{provider1, provider2}
     provider := common.NewProviderChain(customProviderChain)
-    credentail, err := provider.GetCredential()
+    credential, err := provider.GetCredential()
     ```
 
     更详细的使用方式请参考示例：[使用ProviderChain](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/testing/integration/provider_chain_test.go)
