@@ -1035,6 +1035,84 @@ func (r *CreateInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateParameterTemplateRequestParams struct {
+	// 模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 数据库大版本号，例如：11，12，13
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// 数据库引擎，例如：postgresql，mssql_compatible
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+
+	// 参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
+	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+}
+
+type CreateParameterTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 数据库大版本号，例如：11，12，13
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// 数据库引擎，例如：postgresql，mssql_compatible
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+
+	// 参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
+	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+}
+
+func (r *CreateParameterTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateParameterTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateName")
+	delete(f, "DBMajorVersion")
+	delete(f, "DBEngine")
+	delete(f, "TemplateDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateParameterTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateParameterTemplateResponseParams struct {
+	// 参数模板ID，用于唯一确认参数模板
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateParameterTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateParameterTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateParameterTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateParameterTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateReadOnlyDBInstanceRequestParams struct {
 	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
@@ -1844,6 +1922,60 @@ func (r *DeleteDBInstanceNetworkAccessResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteParameterTemplateRequestParams struct {
+	// 参数模板ID，用于唯一确认待操作的参数模板
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DeleteParameterTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 参数模板ID，用于唯一确认待操作的参数模板
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteParameterTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteParameterTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteParameterTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteParameterTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteParameterTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteParameterTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteParameterTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteParameterTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteReadOnlyGroupNetworkAccessRequestParams struct {
 	// RO组ID，形如：pgro-4t9c6g7k。
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
@@ -2642,6 +2774,70 @@ func (r *DescribeDBInstanceParametersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBInstanceSecurityGroupsRequestParams struct {
+	// 实例ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 只读组ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果要查询只读组关联的安全组，只传ReadOnlyGroupId
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+}
+
+type DescribeDBInstanceSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 只读组ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果要查询只读组关联的安全组，只传ReadOnlyGroupId
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+}
+
+func (r *DescribeDBInstanceSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ReadOnlyGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceSecurityGroupsResponseParams struct {
+	// 安全组信息数组
+	SecurityGroupSet []*SecurityGroup `json:"SecurityGroupSet,omitempty" name:"SecurityGroupSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
 	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 	// db-instance-id：按照实例ID过滤，类型为string
@@ -2994,6 +3190,74 @@ func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDefaultParametersRequestParams struct {
+	// 数据库版本，大版本号，例如11，12，13
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// 数据库引擎，例如：postgresql,mssql_compatible
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+}
+
+type DescribeDefaultParametersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库版本，大版本号，例如11，12，13
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// 数据库引擎，例如：postgresql,mssql_compatible
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+}
+
+func (r *DescribeDefaultParametersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDefaultParametersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBMajorVersion")
+	delete(f, "DBEngine")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDefaultParametersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDefaultParametersResponseParams struct {
+	// 参数个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 参数信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamInfoSet []*ParamInfo `json:"ParamInfoSet,omitempty" name:"ParamInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDefaultParametersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDefaultParametersResponseParams `json:"Response"`
+}
+
+func (r *DescribeDefaultParametersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDefaultParametersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEncryptionKeysRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
@@ -3108,6 +3372,176 @@ func (r *DescribeOrdersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeOrdersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeParameterTemplateAttributesRequestParams struct {
+	// 参数模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DescribeParameterTemplateAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 参数模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeParameterTemplateAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParameterTemplateAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParameterTemplateAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeParameterTemplateAttributesResponseParams struct {
+	// 参数模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 参数模板包含的参数个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 参数模板包含的参数信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamInfoSet []*ParamInfo `json:"ParamInfoSet,omitempty" name:"ParamInfoSet"`
+
+	// 参数模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 参数模板适用的数据库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// 参数模板适用的数据库引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+
+	// 参数模板描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeParameterTemplateAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeParameterTemplateAttributesResponseParams `json:"Response"`
+}
+
+func (r *DescribeParameterTemplateAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParameterTemplateAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeParameterTemplatesRequestParams struct {
+	// 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 每页显示数量，[0，100]，默认 20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 数据偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，枚举值，支持：asc（升序） ，desc（降序）
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+type DescribeParameterTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 每页显示数量，[0，100]，默认 20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 数据偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，枚举值，支持：asc（升序） ，desc（降序）
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeParameterTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParameterTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParameterTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeParameterTemplatesResponseParams struct {
+	// 符合查询条件的参数模板总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 参数模板列表
+	ParameterTemplateSet []*ParameterTemplate `json:"ParameterTemplateSet,omitempty" name:"ParameterTemplateSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeParameterTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeParameterTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeParameterTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParameterTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4836,6 +5270,74 @@ func (r *ModifyDBInstanceReadOnlyGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBInstanceSecurityGroupsRequestParams struct {
+	// 实例或只读组要绑定的安全组列表
+	SecurityGroupIdSet []*string `json:"SecurityGroupIdSet,omitempty" name:"SecurityGroupIdSet"`
+
+	// 实例ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 只读组ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+}
+
+type ModifyDBInstanceSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例或只读组要绑定的安全组列表
+	SecurityGroupIdSet []*string `json:"SecurityGroupIdSet,omitempty" name:"SecurityGroupIdSet"`
+
+	// 实例ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果都传，忽略ReadOnlyGroupId
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 只读组ID，DBInstanceId和ReadOnlyGroupId至少传一个；如果要修改只读组关联的安全组，只传ReadOnlyGroupId
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
+}
+
+func (r *ModifyDBInstanceSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SecurityGroupIdSet")
+	delete(f, "DBInstanceId")
+	delete(f, "ReadOnlyGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceSecurityGroupsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceSpecRequestParams struct {
 	// 实例ID，形如：postgres-6bwgamo3。
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
@@ -5012,6 +5514,88 @@ func (r *ModifyDBInstancesProjectResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDBInstancesProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyParameterTemplateRequestParams struct {
+	// 参数模板ID，用于唯一确认参数模板，不可修改
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 参数模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若该字段为空    ，则保持原参数模板名称
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若不传入该参数，则保持原参数模板描述
+	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+
+	// 需要修改或添加的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
+	ModifyParamEntrySet []*ParamEntry `json:"ModifyParamEntrySet,omitempty" name:"ModifyParamEntrySet"`
+
+	// 需要从模板中删除的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
+	DeleteParamSet []*string `json:"DeleteParamSet,omitempty" name:"DeleteParamSet"`
+}
+
+type ModifyParameterTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 参数模板ID，用于唯一确认参数模板，不可修改
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 参数模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若该字段为空    ，则保持原参数模板名称
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 参数模板描述，长度为0～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若不传入该参数，则保持原参数模板描述
+	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+
+	// 需要修改或添加的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
+	ModifyParamEntrySet []*ParamEntry `json:"ModifyParamEntrySet,omitempty" name:"ModifyParamEntrySet"`
+
+	// 需要从模板中删除的参数集合，注：同一参数不能同时出现在修改添加集合和删除集合中
+	DeleteParamSet []*string `json:"DeleteParamSet,omitempty" name:"DeleteParamSet"`
+}
+
+func (r *ModifyParameterTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyParameterTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "TemplateName")
+	delete(f, "TemplateDescription")
+	delete(f, "ModifyParamEntrySet")
+	delete(f, "DeleteParamSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyParameterTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyParameterTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyParameterTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyParameterTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyParameterTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyParameterTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5538,6 +6122,23 @@ type ParamVersionRelation struct {
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 }
 
+type ParameterTemplate struct {
+	// 参数模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 参数模板名称
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 参数模板适用的数据库版本
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// 参数模板适用的数据库引擎
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+
+	// 参数模板描述
+	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+}
+
 type PgDeal struct {
 	// 订单名
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
@@ -5556,6 +6157,23 @@ type PgDeal struct {
 
 	// 实例ID数组
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitempty" name:"DBInstanceIdSet"`
+}
+
+type PolicyRule struct {
+	// 策略，ACCEPT 或者 DROP
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 来源或目的 IP 或 IP 段，例如172.16.0.0/12
+	CidrIp *string `json:"CidrIp,omitempty" name:"CidrIp"`
+
+	// 端口
+	PortRange *string `json:"PortRange,omitempty" name:"PortRange"`
+
+	// 网络协议，支持 UDP、TCP 等
+	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
+
+	// 规则描述
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type RawSlowQuery struct {
@@ -5978,6 +6596,29 @@ func (r *RestartDBInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RestartDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SecurityGroup struct {
+	// 项目Id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 入站规则
+	Inbound []*PolicyRule `json:"Inbound,omitempty" name:"Inbound"`
+
+	// 出站规则
+	Outbound []*PolicyRule `json:"Outbound,omitempty" name:"Outbound"`
+
+	// 安全组ID
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组名称
+	SecurityGroupName *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
+
+	// 安全组备注
+	SecurityGroupDescription *string `json:"SecurityGroupDescription,omitempty" name:"SecurityGroupDescription"`
 }
 
 type ServerlessDBAccount struct {

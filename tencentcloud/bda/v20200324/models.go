@@ -1507,8 +1507,14 @@ type SegmentPortraitPicRequestParams struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 返回图像方式（base64 或 url ) ，二选一。url有效期为30分钟。
+	// 返回图像方式（base64 或 Url ) ，二选一。url有效期为30分钟。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
+	// 适用场景类型。
+	// 
+	// 取值：GEN/GS。GEN为通用场景模式；GS为绿幕场景模式，针对绿幕场景下的人像分割效果更好。
+	// 两种模式选择一种传入，默认为GEN。
+	Scene *string `json:"Scene,omitempty" name:"Scene"`
 }
 
 type SegmentPortraitPicRequest struct {
@@ -1527,8 +1533,14 @@ type SegmentPortraitPicRequest struct {
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 返回图像方式（base64 或 url ) ，二选一。url有效期为30分钟。
+	// 返回图像方式（base64 或 Url ) ，二选一。url有效期为30分钟。
 	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
+	// 适用场景类型。
+	// 
+	// 取值：GEN/GS。GEN为通用场景模式；GS为绿幕场景模式，针对绿幕场景下的人像分割效果更好。
+	// 两种模式选择一种传入，默认为GEN。
+	Scene *string `json:"Scene,omitempty" name:"Scene"`
 }
 
 func (r *SegmentPortraitPicRequest) ToJsonString() string {
@@ -1546,6 +1558,7 @@ func (r *SegmentPortraitPicRequest) FromJsonString(s string) error {
 	delete(f, "Image")
 	delete(f, "Url")
 	delete(f, "RspImgType")
+	delete(f, "Scene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SegmentPortraitPicRequest has unknown keys!", "")
 	}
@@ -1554,11 +1567,11 @@ func (r *SegmentPortraitPicRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SegmentPortraitPicResponseParams struct {
-	// 处理后的图片 base64 数据，透明背景图
+	// 处理后的图片 base64 数据，透明背景图。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
 
-	// 一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）
+	// 一个通过 base64 编码的文件，解码后文件由 Float 型浮点数组成。这些浮点数代表原图从左上角开始的每一行的每一个像素点，每一个浮点数的值是原图相应像素点位于人体轮廓内的置信度（0-1）转化的灰度值（0-255）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultMask *string `json:"ResultMask,omitempty" name:"ResultMask"`
 
@@ -1566,11 +1579,11 @@ type SegmentPortraitPicResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasForeground *bool `json:"HasForeground,omitempty" name:"HasForeground"`
 
-	// 支持将处理过的图片 base64 数据，透明背景图以URL的形式返回值，URL有效期为30分钟。
+	// 支持将处理过的图片 base64 数据，透明背景图以Url的形式返回值，Url有效期为30分钟。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultImageUrl *string `json:"ResultImageUrl,omitempty" name:"ResultImageUrl"`
 
-	// 一个通过 Base64 编码的文件，解码后文件由 Float 型浮点数组成。支持以URL形式的返回值；URL有效期为30分钟。
+	// 一个通过 base64 编码的文件，解码后文件由 Float 型浮点数组成。支持以Url形式的返回值；Url有效期为30分钟。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultMaskUrl *string `json:"ResultMaskUrl,omitempty" name:"ResultMaskUrl"`
 

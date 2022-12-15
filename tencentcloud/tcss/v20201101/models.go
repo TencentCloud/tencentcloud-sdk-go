@@ -26491,7 +26491,7 @@ type ModifyK8sApiAbnormalRuleStatusRequestParams struct {
 	// 规则ID
 	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
 
-	// 状态(ture:开 false:关)
+	// 状态(true:开 false:关)
 	Status *bool `json:"Status,omitempty" name:"Status"`
 }
 
@@ -26501,7 +26501,7 @@ type ModifyK8sApiAbnormalRuleStatusRequest struct {
 	// 规则ID
 	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
 
-	// 状态(ture:开 false:关)
+	// 状态(true:开 false:关)
 	Status *bool `json:"Status,omitempty" name:"Status"`
 }
 

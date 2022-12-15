@@ -350,6 +350,9 @@ const (
 	// 自定义镜像不存在。
 	RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
 
+	// 服务角色不存在, 请为账号添加这个角色。
+	RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+
 	// 快照 ID 不存在。
 	RESOURCENOTFOUND_SNAPSHOTIDNOTFOUND = "ResourceNotFound.SnapshotIdNotFound"
 

@@ -1015,7 +1015,7 @@ type CreateClustersRequestParams struct {
 	// 告警策略Id数组
 	AlarmPolicyIds []*string `json:"AlarmPolicyIds,omitempty" name:"AlarmPolicyIds"`
 
-	// 参数数组
+	// 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
 	ClusterParams []*ParamItem `json:"ClusterParams,omitempty" name:"ClusterParams"`
 
 	// 交易模式，0-下单且支付，1-下单
@@ -1160,7 +1160,7 @@ type CreateClustersRequest struct {
 	// 告警策略Id数组
 	AlarmPolicyIds []*string `json:"AlarmPolicyIds,omitempty" name:"AlarmPolicyIds"`
 
-	// 参数数组
+	// 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
 	ClusterParams []*ParamItem `json:"ClusterParams,omitempty" name:"ClusterParams"`
 
 	// 交易模式，0-下单且支付，1-下单
@@ -2004,7 +2004,17 @@ type DescribeAccountsRequestParams struct {
 
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
+	// 该参数已废用
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 需要过滤的账户列表
+	Hosts []*string `json:"Hosts,omitempty" name:"Hosts"`
+
+	// 限制量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeAccountsRequest struct {
@@ -2018,7 +2028,17 @@ type DescribeAccountsRequest struct {
 
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
+	// 该参数已废用
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 需要过滤的账户列表
+	Hosts []*string `json:"Hosts,omitempty" name:"Hosts"`
+
+	// 限制量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -2036,6 +2056,9 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "AccountNames")
 	delete(f, "DbType")
+	delete(f, "Hosts")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountsRequest has unknown keys!", "")
 	}
@@ -2045,7 +2068,11 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountsResponseParams struct {
 	// 数据库账号列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountSet []*Account `json:"AccountSet,omitempty" name:"AccountSet"`
+
+	// 账号总数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2437,6 +2464,9 @@ type DescribeBackupListRequestParams struct {
 
 	// 备份备注名，模糊查询
 	BackupNames []*string `json:"BackupNames,omitempty" name:"BackupNames"`
+
+	// 快照备份Id列表
+	SnapshotIdList []*int64 `json:"SnapshotIdList,omitempty" name:"SnapshotIdList"`
 }
 
 type DescribeBackupListRequest struct {
@@ -2478,6 +2508,9 @@ type DescribeBackupListRequest struct {
 
 	// 备份备注名，模糊查询
 	BackupNames []*string `json:"BackupNames,omitempty" name:"BackupNames"`
+
+	// 快照备份Id列表
+	SnapshotIdList []*int64 `json:"SnapshotIdList,omitempty" name:"SnapshotIdList"`
 }
 
 func (r *DescribeBackupListRequest) ToJsonString() string {
@@ -2504,6 +2537,7 @@ func (r *DescribeBackupListRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "FileNames")
 	delete(f, "BackupNames")
+	delete(f, "SnapshotIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupListRequest has unknown keys!", "")
 	}
@@ -2965,6 +2999,9 @@ func (r *DescribeClusterParamLogsResponse) FromJsonString(s string) error {
 type DescribeClusterParamsRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 参数名字
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 }
 
 type DescribeClusterParamsRequest struct {
@@ -2972,6 +3009,9 @@ type DescribeClusterParamsRequest struct {
 	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 参数名字
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 }
 
 func (r *DescribeClusterParamsRequest) ToJsonString() string {
@@ -2987,6 +3027,7 @@ func (r *DescribeClusterParamsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "ParamName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterParamsRequest has unknown keys!", "")
 	}
@@ -2999,6 +3040,7 @@ type DescribeClusterParamsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 实例参数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ParamInfo `json:"Items,omitempty" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3755,6 +3797,15 @@ func (r *DescribeParamTemplatesResponse) FromJsonString(s string) error {
 type DescribeProjectSecurityGroupsRequestParams struct {
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 限制量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 搜索关键字
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 type DescribeProjectSecurityGroupsRequest struct {
@@ -3762,6 +3813,15 @@ type DescribeProjectSecurityGroupsRequest struct {
 	
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 限制量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 搜索关键字
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 func (r *DescribeProjectSecurityGroupsRequest) ToJsonString() string {
@@ -3777,6 +3837,9 @@ func (r *DescribeProjectSecurityGroupsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProjectId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SearchKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectSecurityGroupsRequest has unknown keys!", "")
 	}
@@ -3787,6 +3850,9 @@ func (r *DescribeProjectSecurityGroupsRequest) FromJsonString(s string) error {
 type DescribeProjectSecurityGroupsResponseParams struct {
 	// 安全组详情
 	Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
+
+	// 总数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3907,9 +3973,11 @@ func (r *DescribeRollbackTimeRangeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRollbackTimeRangeResponseParams struct {
 	// 有效回归时间范围开始时间点（已废弃）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeRangeStart *string `json:"TimeRangeStart,omitempty" name:"TimeRangeStart"`
 
 	// 有效回归时间范围结束时间点（已废弃）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
 
 	// 可回档时间范围

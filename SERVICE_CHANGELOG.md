@@ -1,10 +1,104 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 人体分析(bda) 版本：2020-03-24
 
-### 第 96 次发布
+### 第 10 次发布
 
-发布时间：2022-12-14 11:33:48
+发布时间：2022-12-15 01:09:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SegmentPortraitPic](https://cloud.tencent.com/document/api/1208/42970)
+
+	* 新增入参：Scene
+
+
+
+
+## 商业流程服务(bpaas) 版本：2018-12-17
+
+### 第 3 次发布
+
+发布时间：2022-12-15 01:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)
+
+	* 新增成员：DataHubId, TaskName, CKafkaRegion, ExternalUrl
+
+
+
+
+## 本地专用集群(cdc) 版本：2020-12-14
+
+### 第 4 次发布
+
+发布时间：2022-12-15 01:12:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DedicatedClusterOrder](https://cloud.tencent.com/document/api/1346/73770#DedicatedClusterOrder)
+
+	* 新增成员：OrderType
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 36 次发布
+
+发布时间：2022-12-15 01:20:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccounts](https://cloud.tencent.com/document/api/1003/48075)
+
+	* 新增入参：Hosts, Limit, Offset
+
+	* 新增出参：TotalCount
+
+* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+
+	* 新增入参：SnapshotIdList
+
+* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
+
+	* 新增入参：ParamName
+
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1003/48304)
+
+	* 新增入参：Limit, Offset, SearchKey
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId
+
+	* 新增出参：Total
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 32 次发布
+
+发布时间：2022-12-15 01:38:47
 
 本次发布包含了以下内容：
 
@@ -12,11 +106,43 @@
 
 新增接口：
 
-* [QueryFlexPlatformAccountBalance](https://cloud.tencent.com/document/api/1122/84021)
+* [CreateParameterTemplate](https://cloud.tencent.com/document/api/409/84071)
+* [DeleteParameterTemplate](https://cloud.tencent.com/document/api/409/84070)
+* [DescribeDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84064)
+* [DescribeDefaultParameters](https://cloud.tencent.com/document/api/409/84069)
+* [DescribeParameterTemplateAttributes](https://cloud.tencent.com/document/api/409/84068)
+* [DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)
+* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84063)
+* [ModifyParameterTemplate](https://cloud.tencent.com/document/api/409/84066)
 
 新增数据结构：
 
-* [PlatformAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PlatformAccountBalanceResult)
+* [ParameterTemplate](https://cloud.tencent.com/document/api/409/16778#ParameterTemplate)
+* [PolicyRule](https://cloud.tencent.com/document/api/409/16778#PolicyRule)
+* [SecurityGroup](https://cloud.tencent.com/document/api/409/16778#SecurityGroup)
+
+
+
+## 弹性微服务 TEM(tem) 版本：2021-07-01
+
+### 第 37 次发布
+
+发布时间：2022-12-15 01:49:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEnvironments](https://cloud.tencent.com/document/api/1371/60149)
+
+	* 新增入参：EnvironmentId
+
+
+
+
+## 弹性微服务 TEM(tem) 版本：2020-12-21
 
 
 
@@ -6590,6 +6716,21 @@
 
 ## 人体分析(bda) 版本：2020-03-24
 
+### 第 10 次发布
+
+发布时间：2022-12-15 01:09:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SegmentPortraitPic](https://cloud.tencent.com/document/api/1208/42970)
+
+	* 新增入参：Scene
+
+
 ### 第 9 次发布
 
 发布时间：2022-09-06 06:10:38
@@ -8842,6 +8983,21 @@
 
 
 ## 商业流程服务(bpaas) 版本：2018-12-17
+
+### 第 3 次发布
+
+发布时间：2022-12-15 01:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)
+
+	* 新增成员：DataHubId, TaskName, CKafkaRegion, ExternalUrl
+
 
 ### 第 2 次发布
 
@@ -14407,6 +14563,21 @@
 
 
 ## 本地专用集群(cdc) 版本：2020-12-14
+
+### 第 4 次发布
+
+发布时间：2022-12-15 01:12:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DedicatedClusterOrder](https://cloud.tencent.com/document/api/1346/73770#DedicatedClusterOrder)
+
+	* 新增成员：OrderType
+
 
 ### 第 3 次发布
 
@@ -24572,11 +24743,11 @@
 
 新增接口：
 
-* [[QueryFlexPlatformAccountBalance](https://cloud.tencent.com/document/api/1122/84021)](https://cloud.tencent.com/document/api/#/#)
+* [QueryFlexPlatformAccountBalance](https://cloud.tencent.com/document/api/1122/84021)
 
 新增数据结构：
 
-* [[PlatformAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PlatformAccountBalanceResult)](https://cloud.tencent.com/document/api/1122/40683#[PlatformAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PlatformAccountBalanceResult))
+* [PlatformAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PlatformAccountBalanceResult)
 
 ### 第 95 次发布
 
@@ -31181,6 +31352,39 @@
 
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 36 次发布
+
+发布时间：2022-12-15 01:20:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccounts](https://cloud.tencent.com/document/api/1003/48075)
+
+	* 新增入参：Hosts, Limit, Offset
+
+	* 新增出参：TotalCount
+
+* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+
+	* 新增入参：SnapshotIdList
+
+* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
+
+	* 新增入参：ParamName
+
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1003/48304)
+
+	* 新增入参：Limit, Offset, SearchKey
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId
+
+	* 新增出参：Total
+
 
 ### 第 35 次发布
 
@@ -65099,6 +65303,31 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 32 次发布
+
+发布时间：2022-12-15 01:38:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateParameterTemplate](https://cloud.tencent.com/document/api/409/84071)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteParameterTemplate](https://cloud.tencent.com/document/api/409/84070)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84064)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDefaultParameters](https://cloud.tencent.com/document/api/409/84069)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeParameterTemplateAttributes](https://cloud.tencent.com/document/api/409/84068)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84063)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyParameterTemplate](https://cloud.tencent.com/document/api/409/84066)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ParameterTemplate](https://cloud.tencent.com/document/api/409/16778#ParameterTemplate)](https://cloud.tencent.com/document/api/409/16778#[ParameterTemplate](https://cloud.tencent.com/document/api/409/16778#ParameterTemplate))
+* [[PolicyRule](https://cloud.tencent.com/document/api/409/16778#PolicyRule)](https://cloud.tencent.com/document/api/409/16778#[PolicyRule](https://cloud.tencent.com/document/api/409/16778#PolicyRule))
+* [[SecurityGroup](https://cloud.tencent.com/document/api/409/16778#SecurityGroup)](https://cloud.tencent.com/document/api/409/16778#[SecurityGroup](https://cloud.tencent.com/document/api/409/16778#SecurityGroup))
+
 ### 第 31 次发布
 
 发布时间：2022-11-29 07:09:18
@@ -80353,6 +80582,21 @@
 
 
 ## 弹性微服务 TEM(tem) 版本：2021-07-01
+
+### 第 37 次发布
+
+发布时间：2022-12-15 01:49:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEnvironments](https://cloud.tencent.com/document/api/1371/60149)
+
+	* 新增入参：EnvironmentId
+
 
 ### 第 36 次发布
 

@@ -3082,10 +3082,10 @@ func (r *DescribeInstanceZoneInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 实例数量，参数默认值20，最大值为1000。
+	// 每页输出实例的数量，参数默认值20，最大值为1000。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍。
+	// 分页偏移量，取Limit整数倍。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 实例 ID，如：crs-6ubhgouj。
@@ -3167,10 +3167,10 @@ type DescribeInstancesRequestParams struct {
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例数量，参数默认值20，最大值为1000。
+	// 每页输出实例的数量，参数默认值20，最大值为1000。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍。
+	// 分页偏移量，取Limit整数倍。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 实例 ID，如：crs-6ubhgouj。
@@ -3559,7 +3559,7 @@ func (r *DescribeProductInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProductInfoResponseParams struct {
-	// 地域售卖信息
+	// 地域售卖信息。
 	RegionSet []*RegionConf `json:"RegionSet,omitempty" name:"RegionSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5179,31 +5179,31 @@ type InstanceSet struct {
 	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 实例Id。
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 用户的Appid。
+	// 用户的 AppID。
 	Appid *int64 `json:"Appid,omitempty" name:"Appid"`
 
-	// 项目Id。
+	// 项目 ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 地域id 。1--广州 4--上海 5-- 中国香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）16--成都 17--德国 18--韩国 19--重庆 21--印度 22--美东（弗吉尼亚）23--泰国 24--俄罗斯 25--日本
+	// 地域 ID。<ul><li>1：广州。</li><li>4：上海。</li><li>5：中国香港。</li><li>6：多伦多。</li> <li>7：上海金融。</li> <li>8：北京。</li> <li>9：新加坡。</li> <li>11：深圳金融。</li> <li>15：美西（硅谷）。</li><li>16：成都。</li><li>17：法兰克福。</li><li>18：首尔。</li><li>19：重庆。</li><li>21：孟买。</li><li>22：美东（弗吉尼亚）。</li><li>23：曼谷。</li><li>24：莫斯科。</li><li>25：东京。</li></ul>
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
-	// 区域id。
+	// 区域 ID。
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// vpc网络id，例如75101。
+	// vpc网络 ID，例如75101。
 	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
 
-	// vpc网络下子网id 如：46315。
+	// vpc网络下子网ID，如：46315。
 	SubnetId *int64 `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 实例当前状态。<ul><li>0：待初始化。</li><li>1：实例在流程中。</li><li>2：实例运行中。</li><li>-2：实例已隔离。</li><li>-3：实例待删除。</li></ul>
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 实例vip。
+	// 实例 VIP。
 	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
 
 	// 实例端口号。
@@ -5266,7 +5266,7 @@ type InstanceSet struct {
 	// 副本数量。
 	RedisReplicasNum *int64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
-	// 计费Id。
+	// 计费 ID。
 	PriceId *int64 `json:"PriceId,omitempty" name:"PriceId"`
 
 	// 隔离时间。
@@ -5419,66 +5419,66 @@ type InstanceTextParam struct {
 }
 
 type Instances struct {
-	// 用户AppID
+	// 用户AppID。
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 地域ID 1--广州 4--上海 5-- 香港 6--多伦多 7--上海金融 8--北京 9-- 新加坡 11--深圳金融 15--美西（硅谷）
+	// 地域ID。<ul><li>1：广州。</li><li>4：上海。</li><li> 5：香港。</li> <li> 6：多伦多。</li> <li> 7：上海金融。</li> <li> 8：北京。</li> <li> 9：新加坡。</li> <li> 11：深圳金融。</li> <li> 15：美西（硅谷）。</li> </ul>
 	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
 
-	// 区域ID
+	// 区域 ID。
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 副本数量
+	// 副本数量。
 	RedisReplicasNum *uint64 `json:"RedisReplicasNum,omitempty" name:"RedisReplicasNum"`
 
-	// 分片数量
+	// 分片数量。
 	RedisShardNum *int64 `json:"RedisShardNum,omitempty" name:"RedisShardNum"`
 
-	// 分片大小
+	// 分片内存大小。
 	RedisShardSize *int64 `json:"RedisShardSize,omitempty" name:"RedisShardSize"`
 
 	// 实例的磁盘大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-	// 引擎：社区版Redis、腾讯云CKV
+	// 引擎：社区版Redis、腾讯云CKV。
 	Engine *string `json:"Engine,omitempty" name:"Engine"`
 
-	// 实例角色，rw可读写，r只读
+	// 实例读写权限。<ul><li>rw：可读写。</li><li>r：只读。</li></ul>
 	Role *string `json:"Role,omitempty" name:"Role"`
 
-	// 实例VIP
+	// 实例 VIP 地址。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
-	// 内部参数，用户可忽略
+	// 内部参数，用户可忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
 
-	// vpc网络ID 如：75101
+	// VPC 网络ID，如：75101。
 	VpcID *int64 `json:"VpcID,omitempty" name:"VpcID"`
 
-	// 实例端口
+	// 实例端口。
 	VPort *int64 `json:"VPort,omitempty" name:"VPort"`
 
-	// 实例状态：0-待初始化，1-流程中，2-运行中，-2-已隔离，-3-待删除
+	// 实例状态。<ul><li>0：待初始化。</li><li>1：流程中。</li><li>2：运行中。</li><li>-2：已隔离。</li><li>-3：待删除。</li></ul>
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 仓库ID
+	// 仓库ID。
 	GrocerySysId *int64 `json:"GrocerySysId,omitempty" name:"GrocerySysId"`
 
-	// 实例类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+	// 实例类型。<ul><li>1：Redis 2.8 内存版（集群架构）。</li><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>5：Redis 2.8 单机版。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li></ul>
 	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
 
-	// 创建时间
+	// 实例加入复制组的时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 更新实例
+	// 复制组中实例更新的时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 

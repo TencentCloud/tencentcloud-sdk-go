@@ -905,6 +905,60 @@ func (c *Client) CreateInstancesWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateParameterTemplateRequest() (request *CreateParameterTemplateRequest) {
+    request = &CreateParameterTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateParameterTemplate")
+    
+    
+    return
+}
+
+func NewCreateParameterTemplateResponse() (response *CreateParameterTemplateResponse) {
+    response = &CreateParameterTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateParameterTemplate
+// 本接口 (CreateParameterTemplate) 用于创建参数模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) CreateParameterTemplate(request *CreateParameterTemplateRequest) (response *CreateParameterTemplateResponse, err error) {
+    return c.CreateParameterTemplateWithContext(context.Background(), request)
+}
+
+// CreateParameterTemplate
+// 本接口 (CreateParameterTemplate) 用于创建参数模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) CreateParameterTemplateWithContext(ctx context.Context, request *CreateParameterTemplateRequest) (response *CreateParameterTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateParameterTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateParameterTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateParameterTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateReadOnlyDBInstanceRequest() (request *CreateReadOnlyDBInstanceRequest) {
     request = &CreateReadOnlyDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1477,6 +1531,54 @@ func (c *Client) DeleteDBInstanceNetworkAccessWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDeleteDBInstanceNetworkAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteParameterTemplateRequest() (request *DeleteParameterTemplateRequest) {
+    request = &DeleteParameterTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DeleteParameterTemplate")
+    
+    
+    return
+}
+
+func NewDeleteParameterTemplateResponse() (response *DeleteParameterTemplateResponse) {
+    response = &DeleteParameterTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteParameterTemplate
+// 本接口（DeleteParameterTemplate）主要用于删除某个参数模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+func (c *Client) DeleteParameterTemplate(request *DeleteParameterTemplateRequest) (response *DeleteParameterTemplateResponse, err error) {
+    return c.DeleteParameterTemplateWithContext(context.Background(), request)
+}
+
+// DeleteParameterTemplate
+// 本接口（DeleteParameterTemplate）主要用于删除某个参数模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+func (c *Client) DeleteParameterTemplateWithContext(ctx context.Context, request *DeleteParameterTemplateRequest) (response *DeleteParameterTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteParameterTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteParameterTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteParameterTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -2307,6 +2409,68 @@ func (c *Client) DescribeDBInstanceParametersWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeDBInstanceSecurityGroupsRequest() (request *DescribeDBInstanceSecurityGroupsRequest) {
+    request = &DescribeDBInstanceSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstanceSecurityGroups")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceSecurityGroupsResponse() (response *DescribeDBInstanceSecurityGroupsResponse) {
+    response = &DescribeDBInstanceSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBInstanceSecurityGroups
+// 本接口（DescribeDBInstanceSecurityGroups）用于查询实例安全组信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBInstanceSecurityGroups(request *DescribeDBInstanceSecurityGroupsRequest) (response *DescribeDBInstanceSecurityGroupsResponse, err error) {
+    return c.DescribeDBInstanceSecurityGroupsWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceSecurityGroups
+// 本接口（DescribeDBInstanceSecurityGroups）用于查询实例安全组信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBInstanceSecurityGroupsWithContext(ctx context.Context, request *DescribeDBInstanceSecurityGroupsRequest) (response *DescribeDBInstanceSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceSecurityGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceSecurityGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2661,6 +2825,60 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeDefaultParametersRequest() (request *DescribeDefaultParametersRequest) {
+    request = &DescribeDefaultParametersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDefaultParameters")
+    
+    
+    return
+}
+
+func NewDescribeDefaultParametersResponse() (response *DescribeDefaultParametersResponse) {
+    response = &DescribeDefaultParametersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDefaultParameters
+// 本接口（DescribeDefaultParameters）主要用于查询某个数据库版本和引擎支持的所有参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeDefaultParameters(request *DescribeDefaultParametersRequest) (response *DescribeDefaultParametersResponse, err error) {
+    return c.DescribeDefaultParametersWithContext(context.Background(), request)
+}
+
+// DescribeDefaultParameters
+// 本接口（DescribeDefaultParameters）主要用于查询某个数据库版本和引擎支持的所有参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeDefaultParametersWithContext(ctx context.Context, request *DescribeDefaultParametersRequest) (response *DescribeDefaultParametersResponse, err error) {
+    if request == nil {
+        request = NewDescribeDefaultParametersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDefaultParameters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDefaultParametersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEncryptionKeysRequest() (request *DescribeEncryptionKeysRequest) {
     request = &DescribeEncryptionKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2785,6 +3003,104 @@ func (c *Client) DescribeOrdersWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeOrdersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeParameterTemplateAttributesRequest() (request *DescribeParameterTemplateAttributesRequest) {
+    request = &DescribeParameterTemplateAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeParameterTemplateAttributes")
+    
+    
+    return
+}
+
+func NewDescribeParameterTemplateAttributesResponse() (response *DescribeParameterTemplateAttributesResponse) {
+    response = &DescribeParameterTemplateAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeParameterTemplateAttributes
+// 本接口（DescribeParameterTemplateAttributes）用于查询某个参数模板的具体内容，包括基本信息和参数信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+func (c *Client) DescribeParameterTemplateAttributes(request *DescribeParameterTemplateAttributesRequest) (response *DescribeParameterTemplateAttributesResponse, err error) {
+    return c.DescribeParameterTemplateAttributesWithContext(context.Background(), request)
+}
+
+// DescribeParameterTemplateAttributes
+// 本接口（DescribeParameterTemplateAttributes）用于查询某个参数模板的具体内容，包括基本信息和参数信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+func (c *Client) DescribeParameterTemplateAttributesWithContext(ctx context.Context, request *DescribeParameterTemplateAttributesRequest) (response *DescribeParameterTemplateAttributesResponse, err error) {
+    if request == nil {
+        request = NewDescribeParameterTemplateAttributesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeParameterTemplateAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeParameterTemplateAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeParameterTemplatesRequest() (request *DescribeParameterTemplatesRequest) {
+    request = &DescribeParameterTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeParameterTemplates")
+    
+    
+    return
+}
+
+func NewDescribeParameterTemplatesResponse() (response *DescribeParameterTemplatesResponse) {
+    response = &DescribeParameterTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeParameterTemplates
+// 本接口 (DescribeParameterTemplates) 用于查询参数模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeParameterTemplates(request *DescribeParameterTemplatesRequest) (response *DescribeParameterTemplatesResponse, err error) {
+    return c.DescribeParameterTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeParameterTemplates
+// 本接口 (DescribeParameterTemplates) 用于查询参数模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) DescribeParameterTemplatesWithContext(ctx context.Context, request *DescribeParameterTemplatesRequest) (response *DescribeParameterTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeParameterTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeParameterTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeParameterTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4527,6 +4843,68 @@ func (c *Client) ModifyDBInstanceReadOnlyGroupWithContext(ctx context.Context, r
     return
 }
 
+func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
+    request = &ModifyDBInstanceSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceSecurityGroups")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecurityGroupsResponse) {
+    response = &ModifyDBInstanceSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDBInstanceSecurityGroups
+// 本接口（ModifyDBInstanceSecurityGroups）用于修改实例安全组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
+    return c.ModifyDBInstanceSecurityGroupsWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceSecurityGroups
+// 本接口（ModifyDBInstanceSecurityGroups）用于修改实例安全组。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceSecurityGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceSecurityGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSpecRequest() (request *ModifyDBInstanceSpecRequest) {
     request = &ModifyDBInstanceSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4679,6 +5057,56 @@ func (c *Client) ModifyDBInstancesProjectWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyDBInstancesProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyParameterTemplateRequest() (request *ModifyParameterTemplateRequest) {
+    request = &ModifyParameterTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyParameterTemplate")
+    
+    
+    return
+}
+
+func NewModifyParameterTemplateResponse() (response *ModifyParameterTemplateResponse) {
+    response = &ModifyParameterTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyParameterTemplate
+// 本接口（ModifyParameterTemplate）主要用于修改参数模板名称，描述，修改，添加和删除参数模板参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) ModifyParameterTemplate(request *ModifyParameterTemplateRequest) (response *ModifyParameterTemplateResponse, err error) {
+    return c.ModifyParameterTemplateWithContext(context.Background(), request)
+}
+
+// ModifyParameterTemplate
+// 本接口（ModifyParameterTemplate）主要用于修改参数模板名称，描述，修改，添加和删除参数模板参数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) ModifyParameterTemplateWithContext(ctx context.Context, request *ModifyParameterTemplateRequest) (response *ModifyParameterTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyParameterTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyParameterTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyParameterTemplateResponse()
     err = c.Send(request, response)
     return
 }

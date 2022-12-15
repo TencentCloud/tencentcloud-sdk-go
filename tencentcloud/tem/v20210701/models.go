@@ -2622,6 +2622,9 @@ type DescribeEnvironmentsRequestParams struct {
 
 	// 排序字段
 	SortInfo *SortType `json:"SortInfo,omitempty" name:"SortInfo"`
+
+	// 环境id
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
 type DescribeEnvironmentsRequest struct {
@@ -2641,6 +2644,9 @@ type DescribeEnvironmentsRequest struct {
 
 	// 排序字段
 	SortInfo *SortType `json:"SortInfo,omitempty" name:"SortInfo"`
+
+	// 环境id
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
 func (r *DescribeEnvironmentsRequest) ToJsonString() string {
@@ -2660,6 +2666,7 @@ func (r *DescribeEnvironmentsRequest) FromJsonString(s string) error {
 	delete(f, "SourceChannel")
 	delete(f, "Filters")
 	delete(f, "SortInfo")
+	delete(f, "EnvironmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentsRequest has unknown keys!", "")
 	}
