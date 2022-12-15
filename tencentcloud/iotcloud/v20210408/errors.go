@@ -74,6 +74,9 @@ const (
 	// RRPC接口未收到设备端响应。
 	FAILEDOPERATION_RRPCTIMEOUT = "FailedOperation.RRPCTimeout"
 
+	// 资源文件MD5或者大小不一致。
+	FAILEDOPERATION_RESOURCEFILENOTMATCH = "FailedOperation.ResourceFileNotMatch"
+
 	// 该规则引擎已经是禁用状态，不需要再被禁用。
 	FAILEDOPERATION_RULEALREADYDISABLED = "FailedOperation.RuleAlreadyDisabled"
 

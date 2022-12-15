@@ -277,7 +277,7 @@ type StatusNode struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfName *string `json:"ScfName,omitempty" name:"ScfName"`
 
-	// 状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）
+	// 状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubStatus *uint64 `json:"SubStatus,omitempty" name:"SubStatus"`
 
@@ -316,4 +316,20 @@ type StatusNode struct {
 	// 外部审批类型 scf:0或null ; CKafka:1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallMethod *uint64 `json:"CallMethod,omitempty" name:"CallMethod"`
+
+	// CKafka - 接入资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataHubId *string `json:"DataHubId,omitempty" name:"DataHubId"`
+
+	// CKafka - 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// CKafka - 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CKafkaRegion *string `json:"CKafkaRegion,omitempty" name:"CKafkaRegion"`
+
+	// 外部审批Url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalUrl *string `json:"ExternalUrl,omitempty" name:"ExternalUrl"`
 }

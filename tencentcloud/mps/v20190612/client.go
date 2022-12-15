@@ -1670,6 +1670,7 @@ func NewDeleteStreamLinkOutputResponse() (response *DeleteStreamLinkOutputRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ID = "InvalidParameter.Id"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_OUTPUTID = "InvalidParameter.OutputId"
 //  INVALIDPARAMETER_STATE = "InvalidParameter.State"
 func (c *Client) DeleteStreamLinkOutput(request *DeleteStreamLinkOutputRequest) (response *DeleteStreamLinkOutputResponse, err error) {
     return c.DeleteStreamLinkOutputWithContext(context.Background(), request)
@@ -1682,6 +1683,7 @@ func (c *Client) DeleteStreamLinkOutput(request *DeleteStreamLinkOutputRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ID = "InvalidParameter.Id"
 //  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_OUTPUTID = "InvalidParameter.OutputId"
 //  INVALIDPARAMETER_STATE = "InvalidParameter.State"
 func (c *Client) DeleteStreamLinkOutputWithContext(ctx context.Context, request *DeleteStreamLinkOutputRequest) (response *DeleteStreamLinkOutputResponse, err error) {
     if request == nil {

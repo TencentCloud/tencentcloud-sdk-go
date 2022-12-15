@@ -77,6 +77,7 @@ func NewCreateBatchModelAccTasksResponse() (response *CreateBatchModelAccTasksRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBatchModelAccTasks(request *CreateBatchModelAccTasksRequest) (response *CreateBatchModelAccTasksResponse, err error) {
@@ -97,6 +98,7 @@ func (c *Client) CreateBatchModelAccTasks(request *CreateBatchModelAccTasksReque
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBatchModelAccTasksWithContext(ctx context.Context, request *CreateBatchModelAccTasksRequest) (response *CreateBatchModelAccTasksResponse, err error) {

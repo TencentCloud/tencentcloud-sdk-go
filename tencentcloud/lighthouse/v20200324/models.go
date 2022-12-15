@@ -4451,6 +4451,10 @@ type InstancePrice struct {
 
 	// 折后价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 价格货币单位。取值范围CNY:人民币。USD:美元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
 }
 
 type InstancePriceDetail struct {
@@ -4461,6 +4465,10 @@ type InstancePriceDetail struct {
 	// 询价信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePrice *InstancePrice `json:"InstancePrice,omitempty" name:"InstancePrice"`
+
+	// 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountDetail []*DiscountDetail `json:"DiscountDetail,omitempty" name:"DiscountDetail"`
 }
 
 type InstanceReturnable struct {

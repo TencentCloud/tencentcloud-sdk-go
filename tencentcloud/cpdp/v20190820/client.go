@@ -353,9 +353,7 @@ func NewApplyFlexPaymentResponse() (response *ApplyFlexPaymentResponse) {
 // 灵云V2-付款
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) ApplyFlexPayment(request *ApplyFlexPaymentRequest) (response *ApplyFlexPaymentResponse, err error) {
     return c.ApplyFlexPaymentWithContext(context.Background(), request)
 }
@@ -364,9 +362,7 @@ func (c *Client) ApplyFlexPayment(request *ApplyFlexPaymentRequest) (response *A
 // 灵云V2-付款
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) ApplyFlexPaymentWithContext(ctx context.Context, request *ApplyFlexPaymentRequest) (response *ApplyFlexPaymentResponse, err error) {
     if request == nil {
         request = NewApplyFlexPaymentRequest()
@@ -405,9 +401,7 @@ func NewApplyFlexSettlementResponse() (response *ApplyFlexSettlementResponse) {
 // 灵云V2-结算
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) ApplyFlexSettlement(request *ApplyFlexSettlementRequest) (response *ApplyFlexSettlementResponse, err error) {
     return c.ApplyFlexSettlementWithContext(context.Background(), request)
 }
@@ -416,9 +410,7 @@ func (c *Client) ApplyFlexSettlement(request *ApplyFlexSettlementRequest) (respo
 // 灵云V2-结算
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) ApplyFlexSettlementWithContext(ctx context.Context, request *ApplyFlexSettlementRequest) (response *ApplyFlexSettlementResponse, err error) {
     if request == nil {
         request = NewApplyFlexSettlementRequest()
@@ -8009,6 +8001,54 @@ func (c *Client) QueryFlexPaymentOrderStatusWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewQueryFlexPaymentOrderStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexPlatformAccountBalanceRequest() (request *QueryFlexPlatformAccountBalanceRequest) {
+    request = &QueryFlexPlatformAccountBalanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPlatformAccountBalance")
+    
+    
+    return
+}
+
+func NewQueryFlexPlatformAccountBalanceResponse() (response *QueryFlexPlatformAccountBalanceResponse) {
+    response = &QueryFlexPlatformAccountBalanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexPlatformAccountBalance
+// 灵云V2-平台账户余额查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryFlexPlatformAccountBalance(request *QueryFlexPlatformAccountBalanceRequest) (response *QueryFlexPlatformAccountBalanceResponse, err error) {
+    return c.QueryFlexPlatformAccountBalanceWithContext(context.Background(), request)
+}
+
+// QueryFlexPlatformAccountBalance
+// 灵云V2-平台账户余额查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryFlexPlatformAccountBalanceWithContext(ctx context.Context, request *QueryFlexPlatformAccountBalanceRequest) (response *QueryFlexPlatformAccountBalanceResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexPlatformAccountBalanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexPlatformAccountBalance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexPlatformAccountBalanceResponse()
     err = c.Send(request, response)
     return
 }

@@ -1656,11 +1656,11 @@ type DescribeSnapshotOperationLogsRequestParams struct {
 	// <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
-
 	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 }
 
 type DescribeSnapshotOperationLogsRequest struct {
@@ -1670,11 +1670,11 @@ type DescribeSnapshotOperationLogsRequest struct {
 	// <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
-
 	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 }
 
 func (r *DescribeSnapshotOperationLogsRequest) ToJsonString() string {
@@ -1690,8 +1690,8 @@ func (r *DescribeSnapshotOperationLogsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Filters")
-	delete(f, "BeginTime")
 	delete(f, "EndTime")
+	delete(f, "BeginTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotOperationLogsRequest has unknown keys!", "")
 	}
@@ -3001,10 +3001,10 @@ type ModifyDisksChargeTypeRequestParams struct {
 	// 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	// 设置为预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
 
-	// 后付费模式
+	// 设置为后付费模式
 	DiskChargePostpaid *bool `json:"DiskChargePostpaid,omitempty" name:"DiskChargePostpaid"`
 }
 
@@ -3014,10 +3014,10 @@ type ModifyDisksChargeTypeRequest struct {
 	// 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	// 设置为预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
 
-	// 后付费模式
+	// 设置为后付费模式
 	DiskChargePostpaid *bool `json:"DiskChargePostpaid,omitempty" name:"DiskChargePostpaid"`
 }
 
@@ -3582,9 +3582,21 @@ type SnapshotCopyResult struct {
 }
 
 type SnapshotOperationLog struct {
+	// 操作的状态。取值范围：
+	// SUCCESS :表示操作成功 
+	// FAILED :表示操作失败 
+	// PROCESSING :表示操作中。
+	OperationState *string `json:"OperationState,omitempty" name:"OperationState"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
 	// 操作者的UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 操作的快照ID。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
 	// 操作类型。取值范围：
 	// SNAP_OPERATION_DELETE：删除快照
@@ -3595,18 +3607,6 @@ type SnapshotOperationLog struct {
 	// ASP_OPERATION_CREATE_SNAP：由定期快照策略创建快照
 	// ASP_OPERATION_DELETE_SNAP：由定期快照策略删除快照
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
-
-	// 操作的快照ID。
-	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
-
-	// 操作的状态。取值范围：
-	// SUCCESS :表示操作成功 
-	// FAILED :表示操作失败 
-	// PROCESSING :表示操作中。
-	OperationState *string `json:"OperationState,omitempty" name:"OperationState"`
-
-	// 开始时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`

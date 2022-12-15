@@ -970,6 +970,7 @@ func NewCreateServiceLinkedRoleResponse() (response *CreateServiceLinkedRoleResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
 //  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
 //  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
@@ -993,6 +994,7 @@ func (c *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TAGRESOURCEFAILED = "FailedOperation.TagResourceFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_CONDITIONCONTENTERROR = "InvalidParameter.ConditionContentError"
 //  INVALIDPARAMETER_CONDITIONERROR = "InvalidParameter.ConditionError"
 //  INVALIDPARAMETER_CONDITIONTYPEERROR = "InvalidParameter.ConditionTypeError"
@@ -4440,6 +4442,7 @@ func NewUpdateAccessKeyResponse() (response *UpdateAccessKeyResponse) {
 //  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
 //  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
 //  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+//  RESOURCENOTFOUND_SECRETNOTEXIST = "ResourceNotFound.SecretNotExist"
 func (c *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (response *UpdateAccessKeyResponse, err error) {
     return c.UpdateAccessKeyWithContext(context.Background(), request)
 }
@@ -4455,6 +4458,7 @@ func (c *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (response *Upd
 //  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
 //  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
 //  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+//  RESOURCENOTFOUND_SECRETNOTEXIST = "ResourceNotFound.SecretNotExist"
 func (c *Client) UpdateAccessKeyWithContext(ctx context.Context, request *UpdateAccessKeyRequest) (response *UpdateAccessKeyResponse, err error) {
     if request == nil {
         request = NewUpdateAccessKeyRequest()

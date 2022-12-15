@@ -4981,6 +4981,7 @@ func NewListTopClsLogDataResponse() (response *ListTopClsLogDataResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNQUERYSYSTEMERROR = "InternalError.CdnQuerySystemError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
 //  INTERNALERROR_ERROR = "InternalError.Error"
@@ -5022,6 +5023,7 @@ func (c *Client) ListTopClsLogData(request *ListTopClsLogDataRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNQUERYSYSTEMERROR = "InternalError.CdnQuerySystemError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
 //  INTERNALERROR_ERROR = "InternalError.Error"

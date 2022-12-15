@@ -47,7 +47,7 @@ const (
 	// 资源请求错误
 	INTERNALERROR_RESOURCEREQUESTERROR = "InternalError.ResourceRequestError"
 
-	// 服务调用错误。
+	// 内部服务调用错误。
 	INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
 
 	// 参数错误。

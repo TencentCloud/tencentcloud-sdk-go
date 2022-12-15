@@ -10608,7 +10608,7 @@ func NewDescribeK8sApiAbnormalRuleScopeListResponse() (response *DescribeK8sApiA
 }
 
 // DescribeK8sApiAbnormalRuleScopeList
-// 查询k8s api 异常规则中范围列表
+// 查询k8sapi 异常规则中范围列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -10618,7 +10618,7 @@ func (c *Client) DescribeK8sApiAbnormalRuleScopeList(request *DescribeK8sApiAbno
 }
 
 // DescribeK8sApiAbnormalRuleScopeList
-// 查询k8s api 异常规则中范围列表
+// 查询k8sapi 异常规则中范围列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12794,6 +12794,7 @@ func NewDescribeSecEventsTendencyResponse() (response *DescribeSecEventsTendency
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
@@ -12809,6 +12810,7 @@ func (c *Client) DescribeSecEventsTendency(request *DescribeSecEventsTendencyReq
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"

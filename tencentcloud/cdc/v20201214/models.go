@@ -581,6 +581,10 @@ type DedicatedClusterOrder struct {
 	// 购买时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 订单类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
 }
 
 type DedicatedClusterOrderItem struct {

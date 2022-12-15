@@ -2609,8 +2609,11 @@ type CreateLicenseOrderRequestParams struct {
 	// 该参数仅包年包月生效
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 自动防护授权配置值, 不空则表示开启
+	// 该字段作废
 	AutoProtectOpenConfig *string `json:"AutoProtectOpenConfig,omitempty" name:"AutoProtectOpenConfig"`
+
+	// 变配参数
+	ModifyConfig *OrderModifyObject `json:"ModifyConfig,omitempty" name:"ModifyConfig"`
 }
 
 type CreateLicenseOrderRequest struct {
@@ -2643,8 +2646,11 @@ type CreateLicenseOrderRequest struct {
 	// 该参数仅包年包月生效
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 自动防护授权配置值, 不空则表示开启
+	// 该字段作废
 	AutoProtectOpenConfig *string `json:"AutoProtectOpenConfig,omitempty" name:"AutoProtectOpenConfig"`
+
+	// 变配参数
+	ModifyConfig *OrderModifyObject `json:"ModifyConfig,omitempty" name:"ModifyConfig"`
 }
 
 func (r *CreateLicenseOrderRequest) ToJsonString() string {
@@ -2667,6 +2673,7 @@ func (r *CreateLicenseOrderRequest) FromJsonString(s string) error {
 	delete(f, "TimeSpan")
 	delete(f, "AutoRenewFlag")
 	delete(f, "AutoProtectOpenConfig")
+	delete(f, "ModifyConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLicenseOrderRequest has unknown keys!", "")
 	}
@@ -11192,6 +11199,12 @@ type DescribeLicenseGeneralResponseParams struct {
 	// 可用惠普版授权数
 	AvailableLHLicenseCnt *uint64 `json:"AvailableLHLicenseCnt,omitempty" name:"AvailableLHLicenseCnt"`
 
+	// 自动加购开关, true 开启, false 关闭
+	AutoRepurchaseSwitch *bool `json:"AutoRepurchaseSwitch,omitempty" name:"AutoRepurchaseSwitch"`
+
+	// 自动加购订单是否自动续费 ,true 开启, false 关闭
+	AutoRepurchaseRenewSwitch *bool `json:"AutoRepurchaseRenewSwitch,omitempty" name:"AutoRepurchaseRenewSwitch"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -19177,6 +19190,12 @@ type ModifyAutoOpenProVersionConfigRequestParams struct {
 	// <li>CLOSE：关闭</li>
 	// <li>OPEN：打开</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 自动加购/扩容授权开关,默认 1, 0关闭, 1开启
+	AutoRepurchaseSwitch *uint64 `json:"AutoRepurchaseSwitch,omitempty" name:"AutoRepurchaseSwitch"`
+
+	// 自动加购的订单是否自动续费,默认0 ,0关闭, 1开启
+	AutoRepurchaseRenewSwitch *uint64 `json:"AutoRepurchaseRenewSwitch,omitempty" name:"AutoRepurchaseRenewSwitch"`
 }
 
 type ModifyAutoOpenProVersionConfigRequest struct {
@@ -19186,6 +19205,12 @@ type ModifyAutoOpenProVersionConfigRequest struct {
 	// <li>CLOSE：关闭</li>
 	// <li>OPEN：打开</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 自动加购/扩容授权开关,默认 1, 0关闭, 1开启
+	AutoRepurchaseSwitch *uint64 `json:"AutoRepurchaseSwitch,omitempty" name:"AutoRepurchaseSwitch"`
+
+	// 自动加购的订单是否自动续费,默认0 ,0关闭, 1开启
+	AutoRepurchaseRenewSwitch *uint64 `json:"AutoRepurchaseRenewSwitch,omitempty" name:"AutoRepurchaseRenewSwitch"`
 }
 
 func (r *ModifyAutoOpenProVersionConfigRequest) ToJsonString() string {
@@ -19201,6 +19226,8 @@ func (r *ModifyAutoOpenProVersionConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Status")
+	delete(f, "AutoRepurchaseSwitch")
+	delete(f, "AutoRepurchaseRenewSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoOpenProVersionConfigRequest has unknown keys!", "")
 	}
@@ -20131,6 +20158,17 @@ type OpenPortStatistics struct {
 
 	// 主机数量
 	MachineNum *uint64 `json:"MachineNum,omitempty" name:"MachineNum"`
+}
+
+type OrderModifyObject struct {
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 新产品标识,这里支持PRO_VERSION 专业版,FLAGSHIP 旗舰版
+	NewSubProductCode *string `json:"NewSubProductCode,omitempty" name:"NewSubProductCode"`
+
+	// 扩容/缩容数,变配子产品忽略该参数
+	InquireNum *int64 `json:"InquireNum,omitempty" name:"InquireNum"`
 }
 
 type OsName struct {

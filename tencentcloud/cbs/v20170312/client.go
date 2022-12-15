@@ -79,6 +79,8 @@ func NewApplyDiskBackupResponse() (response *ApplyDiskBackupResponse) {
 //  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINUSE_DISKROLLBACKING = "ResourceInUse.DiskRollbacking"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -103,6 +105,8 @@ func (c *Client) ApplyDiskBackup(request *ApplyDiskBackupRequest) (response *App
 //  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  RESOURCEBUSY = "ResourceBusy"
+//  RESOURCEINUSE_DISKROLLBACKING = "ResourceInUse.DiskRollbacking"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -1432,11 +1436,7 @@ func NewDescribeSnapshotOperationLogsResponse() (response *DescribeSnapshotOpera
 }
 
 // DescribeSnapshotOperationLogs
-// 本接口（DescribeSnapshotOperationLogs）用于查询快照操作日志列表。
-//
-// 
-//
-// 可根据快照ID过滤。快照ID形如：snap-a1kmcp13。
+// 查询快照操作日志功能已迁移至LookUpEvents接口（https://cloud.tencent.com/document/product/629/12359），本接口（DescribeSnapshotOperationLogs）即将下线，后续不再提供调用，请知悉。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
@@ -1450,11 +1450,7 @@ func (c *Client) DescribeSnapshotOperationLogs(request *DescribeSnapshotOperatio
 }
 
 // DescribeSnapshotOperationLogs
-// 本接口（DescribeSnapshotOperationLogs）用于查询快照操作日志列表。
-//
-// 
-//
-// 可根据快照ID过滤。快照ID形如：snap-a1kmcp13。
+// 查询快照操作日志功能已迁移至LookUpEvents接口（https://cloud.tencent.com/document/product/629/12359），本接口（DescribeSnapshotOperationLogs）即将下线，后续不再提供调用，请知悉。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
@@ -2420,8 +2416,6 @@ func NewModifyDisksChargeTypeResponse() (response *ModifyDisksChargeTypeResponse
 //
 // 
 //
-// 只支持从 POSTPAID_BY_HOUR 计费模式切换为PREPAID计费模式。
-//
 // 非弹性云盘不支持此接口，请通过修改实例计费模式接口将实例连同非弹性云盘一起转换。
 //
 // 默认接口请求频率限制：10次/秒。
@@ -2452,8 +2446,6 @@ func (c *Client) ModifyDisksChargeType(request *ModifyDisksChargeTypeRequest) (r
 // 本接口 (ModifyDisksChargeType) 用于切换云盘的计费模式。
 //
 // 
-//
-// 只支持从 POSTPAID_BY_HOUR 计费模式切换为PREPAID计费模式。
 //
 // 非弹性云盘不支持此接口，请通过修改实例计费模式接口将实例连同非弹性云盘一起转换。
 //

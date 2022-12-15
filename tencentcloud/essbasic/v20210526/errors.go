@@ -368,6 +368,12 @@ const (
 	// 超出查询上限。
 	OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 
+	// 当前企业员工没有开通境外签署能力。
+	OPERATIONDENIED_OVERSEAABILITYNOTOPEN = "OperationDenied.OverseaAbilityNotOpen"
+
+	// 出证计费额度不足。
+	OPERATIONDENIED_PROVENOQUOTA = "OperationDenied.ProveNoQuota"
+
 	// 用户不归属于当前企业，无法操作，请检查后重试。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 

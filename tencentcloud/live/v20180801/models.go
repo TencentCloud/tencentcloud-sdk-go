@@ -508,6 +508,10 @@ type CallBackTemplateInfo struct {
 
 	// 回调的鉴权 key。
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+	// 推流异常回调 URL。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
 }
 
 type CallbackEventInfo struct {
@@ -1003,6 +1007,9 @@ type CreateLiveCallbackTemplateRequestParams struct {
 
 	// 参数已弃用。
 	StreamMixNotifyUrl *string `json:"StreamMixNotifyUrl,omitempty" name:"StreamMixNotifyUrl"`
+
+	// 推流异常回调 URL。
+	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
 }
 
 type CreateLiveCallbackTemplateRequest struct {
@@ -1044,6 +1051,9 @@ type CreateLiveCallbackTemplateRequest struct {
 
 	// 参数已弃用。
 	StreamMixNotifyUrl *string `json:"StreamMixNotifyUrl,omitempty" name:"StreamMixNotifyUrl"`
+
+	// 推流异常回调 URL。
+	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
 }
 
 func (r *CreateLiveCallbackTemplateRequest) ToJsonString() string {
@@ -1067,6 +1077,7 @@ func (r *CreateLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "PornCensorshipNotifyUrl")
 	delete(f, "CallbackKey")
 	delete(f, "StreamMixNotifyUrl")
+	delete(f, "PushExceptionNotifyUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveCallbackTemplateRequest has unknown keys!", "")
 	}
@@ -9712,6 +9723,9 @@ type ModifyLiveCallbackTemplateRequestParams struct {
 	// 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
 	// [事件消息通知](/document/product/267/32744)。
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+	// 推流异常回调 URL。
+	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
 }
 
 type ModifyLiveCallbackTemplateRequest struct {
@@ -9744,6 +9758,9 @@ type ModifyLiveCallbackTemplateRequest struct {
 	// 回调 Key，回调 URL 公用，回调签名详见事件消息通知文档。
 	// [事件消息通知](/document/product/267/32744)。
 	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+	// 推流异常回调 URL。
+	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
 }
 
 func (r *ModifyLiveCallbackTemplateRequest) ToJsonString() string {
@@ -9767,6 +9784,7 @@ func (r *ModifyLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "SnapshotNotifyUrl")
 	delete(f, "PornCensorshipNotifyUrl")
 	delete(f, "CallbackKey")
+	delete(f, "PushExceptionNotifyUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveCallbackTemplateRequest has unknown keys!", "")
 	}

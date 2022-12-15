@@ -4166,6 +4166,7 @@ func NewRecognizeIndonesiaIDCardOCRResponse() (response *RecognizeIndonesiaIDCar
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeIndonesiaIDCardOCR(request *RecognizeIndonesiaIDCardOCRRequest) (response *RecognizeIndonesiaIDCardOCRResponse, err error) {
     return c.RecognizeIndonesiaIDCardOCRWithContext(context.Background(), request)
@@ -4182,6 +4183,7 @@ func (c *Client) RecognizeIndonesiaIDCardOCR(request *RecognizeIndonesiaIDCardOC
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeIndonesiaIDCardOCRWithContext(ctx context.Context, request *RecognizeIndonesiaIDCardOCRRequest) (response *RecognizeIndonesiaIDCardOCRResponse, err error) {
     if request == nil {

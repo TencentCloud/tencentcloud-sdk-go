@@ -442,7 +442,7 @@ func NewDescribeCaptchaMiniRiskResultResponse() (response *DescribeCaptchaMiniRi
 }
 
 // DescribeCaptchaMiniRiskResult
-// 核查验证码小程序插件票据接入风控结果(Beta)
+// 核查验证码小程序插件票据接入风控结果(已停用)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -454,7 +454,7 @@ func (c *Client) DescribeCaptchaMiniRiskResult(request *DescribeCaptchaMiniRiskR
 }
 
 // DescribeCaptchaMiniRiskResult
-// 核查验证码小程序插件票据接入风控结果(Beta)
+// 核查验证码小程序插件票据接入风控结果(已停用)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

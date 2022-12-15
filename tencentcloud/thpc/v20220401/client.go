@@ -467,6 +467,7 @@ func NewSetAutoScalingConfigurationResponse() (response *SetAutoScalingConfigura
 // 可能返回的错误码:
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
@@ -482,6 +483,7 @@ func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfiguratio
 // 可能返回的错误码:
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"

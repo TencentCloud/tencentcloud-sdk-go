@@ -3235,6 +3235,14 @@ type TemplateInfo struct {
 	// 模板预览链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
+
+	// 模板版本。默认为空时，全数字字符，初始版本为yyyyMMdd001。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateVersion *string `json:"TemplateVersion,omitempty" name:"TemplateVersion"`
+
+	// 模板是否已发布。true-已发布；false-未发布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Published *bool `json:"Published,omitempty" name:"Published"`
 }
 
 type UploadFile struct {

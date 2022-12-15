@@ -15772,6 +15772,34 @@ type PaymentOrders struct {
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
+type PlatformAccountBalanceResult struct {
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 总余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Balance *string `json:"Balance,omitempty" name:"Balance"`
+
+	// 系统冻结余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemFreezeBalance *string `json:"SystemFreezeBalance,omitempty" name:"SystemFreezeBalance"`
+
+	// 人工冻结余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManualFreezeBalance *string `json:"ManualFreezeBalance,omitempty" name:"ManualFreezeBalance"`
+
+	// 可提现余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayableBalance *string `json:"PayableBalance,omitempty" name:"PayableBalance"`
+
+	// 提现中余额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InPayBalance *string `json:"InPayBalance,omitempty" name:"InPayBalance"`
+}
+
 // Predefined struct for user
 type QueryAcctBindingRequestParams struct {
 	// 聚鑫分配的支付主MidasAppId
@@ -19918,6 +19946,96 @@ func (r *QueryFlexPaymentOrderStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryFlexPaymentOrderStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFlexPlatformAccountBalanceRequestParams struct {
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 快照日期。格式yyyy-MM-dd
+	SnapshotDate *string `json:"SnapshotDate,omitempty" name:"SnapshotDate"`
+}
+
+type QueryFlexPlatformAccountBalanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 收入类型
+	// LABOR:劳务所得
+	// OCCASION:偶然所得
+	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 快照日期。格式yyyy-MM-dd
+	SnapshotDate *string `json:"SnapshotDate,omitempty" name:"SnapshotDate"`
+}
+
+func (r *QueryFlexPlatformAccountBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPlatformAccountBalanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IncomeType")
+	delete(f, "Environment")
+	delete(f, "SnapshotDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPlatformAccountBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFlexPlatformAccountBalanceResponseParams struct {
+	// 错误码。SUCCESS为成功，其他为失败
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *PlatformAccountBalanceResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryFlexPlatformAccountBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryFlexPlatformAccountBalanceResponseParams `json:"Response"`
+}
+
+func (r *QueryFlexPlatformAccountBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexPlatformAccountBalanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

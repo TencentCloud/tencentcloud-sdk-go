@@ -2178,6 +2178,7 @@ func NewUpdateCustomCategoryResponse() (response *UpdateCustomCategoryResponse) 
 //  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
 //  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) UpdateCustomCategory(request *UpdateCustomCategoryRequest) (response *UpdateCustomCategoryResponse, err error) {
     return c.UpdateCustomCategoryWithContext(context.Background(), request)
@@ -2206,6 +2207,7 @@ func (c *Client) UpdateCustomCategory(request *UpdateCustomCategoryRequest) (res
 //  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
 //  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) UpdateCustomCategoryWithContext(ctx context.Context, request *UpdateCustomCategoryRequest) (response *UpdateCustomCategoryResponse, err error) {
     if request == nil {

@@ -15968,6 +15968,9 @@ type EndPointService struct {
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 挂载的PAAS服务类型，CLB,CDB,CRS
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 }
 
 type Filter struct {

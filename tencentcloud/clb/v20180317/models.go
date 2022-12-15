@@ -940,6 +940,10 @@ type Cluster struct {
 	// 集群版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClustersVersion *string `json:"ClustersVersion,omitempty" name:"ClustersVersion"`
+
+	// 集群容灾类型，如SINGLE-ZONE，DISASTER-RECOVERY，MUTUAL-DISASTER-RECOVERY
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisasterRecoveryType *string `json:"DisasterRecoveryType,omitempty" name:"DisasterRecoveryType"`
 }
 
 type ClusterItem struct {
@@ -976,6 +980,10 @@ type ClusterResource struct {
 	// 集群的Isp属性，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+	// 集群所在的可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClustersZone *ClustersZone `json:"ClustersZone,omitempty" name:"ClustersZone"`
 }
 
 type ClustersZone struct {
@@ -7100,6 +7108,18 @@ type Resource struct {
 
 	// 运营商信息，如"CMCC", "CUCC", "CTCC", "BGP", "INTERNAL"。
 	Isp *string `json:"Isp,omitempty" name:"Isp"`
+
+	// 可用资源。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailabilitySet []*ResourceAvailability `json:"AvailabilitySet,omitempty" name:"AvailabilitySet"`
+}
+
+type ResourceAvailability struct {
+	// 运营商内具体资源信息，如"CMCC", "CUCC", "CTCC", "BGP"。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 资源可用性，"Available"：可用，"Unavailable"：不可用
+	Availability *string `json:"Availability,omitempty" name:"Availability"`
 }
 
 type RewriteLocationMap struct {
@@ -7858,4 +7878,10 @@ type ZoneResource struct {
 
 	// 可用区是否是LocalZone可用区，如：false
 	LocalZone *bool `json:"LocalZone,omitempty" name:"LocalZone"`
+
+	// 可用区资源的类型，SHARED表示共享资源，EXCLUSIVE表示独占资源。
+	ZoneResourceType *string `json:"ZoneResourceType,omitempty" name:"ZoneResourceType"`
+
+	// 可用区是否是EdgeZone可用区，如：false
+	EdgeZone *bool `json:"EdgeZone,omitempty" name:"EdgeZone"`
 }

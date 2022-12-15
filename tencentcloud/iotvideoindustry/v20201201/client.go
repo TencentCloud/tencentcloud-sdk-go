@@ -1126,6 +1126,8 @@ func NewCreateRecordingPlanResponse() (response *CreateRecordingPlanResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
+//  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
     return c.CreateRecordingPlanWithContext(context.Background(), request)
 }
@@ -1135,6 +1137,8 @@ func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (respo
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
+//  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateRecordingPlanWithContext(ctx context.Context, request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
     if request == nil {
         request = NewCreateRecordingPlanRequest()
@@ -8625,6 +8629,7 @@ func NewModifyBindPlanLiveChannelResponse() (response *ModifyBindPlanLiveChannel
 // 直播录制计划绑定解绑直播频道
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  UNSUPPORTEDOPERATION_LIVECHANNELBINDEXIST = "UnsupportedOperation.LiveChannelBindExist"
 func (c *Client) ModifyBindPlanLiveChannel(request *ModifyBindPlanLiveChannelRequest) (response *ModifyBindPlanLiveChannelResponse, err error) {
     return c.ModifyBindPlanLiveChannelWithContext(context.Background(), request)
@@ -8634,6 +8639,7 @@ func (c *Client) ModifyBindPlanLiveChannel(request *ModifyBindPlanLiveChannelReq
 // 直播录制计划绑定解绑直播频道
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  UNSUPPORTEDOPERATION_LIVECHANNELBINDEXIST = "UnsupportedOperation.LiveChannelBindExist"
 func (c *Client) ModifyBindPlanLiveChannelWithContext(ctx context.Context, request *ModifyBindPlanLiveChannelRequest) (response *ModifyBindPlanLiveChannelResponse, err error) {
     if request == nil {
