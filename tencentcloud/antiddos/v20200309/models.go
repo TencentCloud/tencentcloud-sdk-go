@@ -430,6 +430,13 @@ type BGPInstance struct {
 
 	// 攻击封堵套餐标记
 	VitalityVersion *uint64 `json:"VitalityVersion,omitempty" name:"VitalityVersion"`
+
+	// 网络线路
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Line *uint64 `json:"Line,omitempty" name:"Line"`
+
+	// 弹性业务带宽开关
+	ElasticServiceBandwidth *uint64 `json:"ElasticServiceBandwidth,omitempty" name:"ElasticServiceBandwidth"`
 }
 
 type BGPInstanceSpecification struct {
@@ -3371,7 +3378,7 @@ type DescribeBizTrendRequestParams struct {
 	// 大禹子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
-	// 统计周期，可取值300，1800，3600，21600，86400，单位秒
+	// 统计周期，可取值60，300，1800，3600，21600，86400，单位秒
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 统计开始时间。 例：“2020-09-22 00:00:00”
@@ -3402,7 +3409,7 @@ type DescribeBizTrendRequest struct {
 	// 大禹子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
-	// 统计周期，可取值300，1800，3600，21600，86400，单位秒
+	// 统计周期，可取值60，300，1800，3600，21600，86400，单位秒
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
 	// 统计开始时间。 例：“2020-09-22 00:00:00”
@@ -8746,6 +8753,9 @@ type SwitchWaterPrintConfigRequestParams struct {
 
 	// 水印开启/关闭状态，1表示开启；0表示关闭
 	OpenStatus *int64 `json:"OpenStatus,omitempty" name:"OpenStatus"`
+
+	// 是否开启代理，1开启则忽略IP+端口校验；0关闭则需要IP+端口校验
+	CloudSdkProxy *int64 `json:"CloudSdkProxy,omitempty" name:"CloudSdkProxy"`
 }
 
 type SwitchWaterPrintConfigRequest struct {
@@ -8756,6 +8766,9 @@ type SwitchWaterPrintConfigRequest struct {
 
 	// 水印开启/关闭状态，1表示开启；0表示关闭
 	OpenStatus *int64 `json:"OpenStatus,omitempty" name:"OpenStatus"`
+
+	// 是否开启代理，1开启则忽略IP+端口校验；0关闭则需要IP+端口校验
+	CloudSdkProxy *int64 `json:"CloudSdkProxy,omitempty" name:"CloudSdkProxy"`
 }
 
 func (r *SwitchWaterPrintConfigRequest) ToJsonString() string {
@@ -8772,6 +8785,7 @@ func (r *SwitchWaterPrintConfigRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "OpenStatus")
+	delete(f, "CloudSdkProxy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchWaterPrintConfigRequest has unknown keys!", "")
 	}
@@ -8837,6 +8851,10 @@ type WaterPrintConfig struct {
 	// shortfpcheckall（精简模式）
 	// ]
 	Verify *string `json:"Verify,omitempty" name:"Verify"`
+
+	// 是否开启代理，1开启则忽略IP+端口校验；0关闭则需要IP+端口校验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudSdkProxy *int64 `json:"CloudSdkProxy,omitempty" name:"CloudSdkProxy"`
 }
 
 type WaterPrintKey struct {

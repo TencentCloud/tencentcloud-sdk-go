@@ -2658,6 +2658,67 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+// Predefined struct for user
+type HangUpCallRequestParams struct {
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+type HangUpCallRequest struct {
+	*tchttp.BaseRequest
+	
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *HangUpCallRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *HangUpCallRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HangUpCallRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type HangUpCallResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type HangUpCallResponse struct {
+	*tchttp.BaseResponse
+	Response *HangUpCallResponseParams `json:"Response"`
+}
+
+func (r *HangUpCallResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *HangUpCallResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type IMCdrInfo struct {
 	// 服务记录ID
 	Id *string `json:"Id,omitempty" name:"Id"`

@@ -8145,6 +8145,8 @@ type LiveStreamTaskNotifyConfig struct {
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// 通知类型，默认CMQ，指定URL时HTTP回调推送到 NotifyUrl 指定的地址。
+	// 
+	// <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
 	// HTTP回调地址，NotifyType为URL时必填。
@@ -8507,7 +8509,7 @@ type MediaImageSpriteItem struct {
 }
 
 type MediaInputInfo struct {
-	// 输入来源对象的类型，支持 COS 和 URL 两种。
+	// 输入来源对象的类型，支持 COS、URL 两种。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 对象信息。
@@ -11255,6 +11257,11 @@ type ProcessMediaRequestParams struct {
 	// 
 	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+
+	// 任务类型，默认Online
+	// <li> Online：实时任务</li>
+	// <li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 }
 
 type ProcessMediaRequest struct {
@@ -11301,6 +11308,11 @@ type ProcessMediaRequest struct {
 	// 
 	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+
+	// 任务类型，默认Online
+	// <li> Online：实时任务</li>
+	// <li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 }
 
 func (r *ProcessMediaRequest) ToJsonString() string {
@@ -11327,6 +11339,7 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	delete(f, "ScheduleId")
+	delete(f, "TaskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaRequest has unknown keys!", "")
 	}
@@ -12305,7 +12318,7 @@ type TaskNotifyConfig struct {
 	// <li>TDMQ-CMQ：消息队列</li>
 	// <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
 	// <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
-	// 目前 默认CMQ。
+	// <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
 	// HTTP回调地址，NotifyType为URL时必填。

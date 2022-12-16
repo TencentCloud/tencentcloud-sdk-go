@@ -509,7 +509,7 @@ type CustomizationConfigs struct {
 
 // Predefined struct for user
 type DeleteCustomizationRequestParams struct {
-	// 要删除的模型ID
+	// 删除的模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
 	// 应用 ID，登录控制台创建应用得到的AppID
@@ -519,7 +519,7 @@ type DeleteCustomizationRequestParams struct {
 type DeleteCustomizationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要删除的模型ID
+	// 删除的模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
 	// 应用 ID，登录控制台创建应用得到的AppID
@@ -1440,7 +1440,7 @@ func (r *GetCustomizationListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetCustomizationListResponseParams struct {
-	// 语音消息转文本自学习模型配置
+	// 语音消息转文本热句模型配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomizationConfigs []*CustomizationConfigs `json:"CustomizationConfigs,omitempty" name:"CustomizationConfigs"`
 
@@ -1552,7 +1552,7 @@ type ModifyCustomizationRequestParams struct {
 	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
 
-	// 要修改的模型ID
+	// 修改的模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 }
 
@@ -1565,7 +1565,7 @@ type ModifyCustomizationRequest struct {
 	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
 
-	// 要修改的模型ID
+	// 修改的模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 }
 
@@ -1595,7 +1595,7 @@ type ModifyCustomizationResponseParams struct {
 	// 返回值。0为成功，非0为失败。
 	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
 
-	// 自学习模型ID
+	// 模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1620,7 +1620,7 @@ func (r *ModifyCustomizationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCustomizationStateRequestParams struct {
-	// 自学习模型ID
+	// 模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
 	// 想要变换的模型状态，-1代表下线，1代表上线
@@ -1633,7 +1633,7 @@ type ModifyCustomizationStateRequestParams struct {
 type ModifyCustomizationStateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 自学习模型ID
+	// 模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
 	// 想要变换的模型状态，-1代表下线，1代表上线
@@ -1666,7 +1666,7 @@ func (r *ModifyCustomizationStateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCustomizationStateResponseParams struct {
-	// 自学习模型ID
+	// 模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
 
 	// 返回值。0为成功，非0为失败。

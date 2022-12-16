@@ -1715,6 +1715,54 @@ func (c *Client) DisableCCCPhoneNumberWithContext(ctx context.Context, request *
     return
 }
 
+func NewHangUpCallRequest() (request *HangUpCallRequest) {
+    request = &HangUpCallRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "HangUpCall")
+    
+    
+    return
+}
+
+func NewHangUpCallResponse() (response *HangUpCallResponse) {
+    response = &HangUpCallResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// HangUpCall
+// 挂断电话
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+func (c *Client) HangUpCall(request *HangUpCallRequest) (response *HangUpCallResponse, err error) {
+    return c.HangUpCallWithContext(context.Background(), request)
+}
+
+// HangUpCall
+// 挂断电话
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+func (c *Client) HangUpCallWithContext(ctx context.Context, request *HangUpCallRequest) (response *HangUpCallResponse, err error) {
+    if request == nil {
+        request = NewHangUpCallRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("HangUpCall require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewHangUpCallResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyExtensionRequest() (request *ModifyExtensionRequest) {
     request = &ModifyExtensionRequest{
         BaseRequest: &tchttp.BaseRequest{},

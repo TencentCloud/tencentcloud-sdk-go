@@ -669,6 +669,176 @@ func (c *Client) DescribeWordItemsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewGenerateCoupletRequest() (request *GenerateCoupletRequest) {
+    request = &GenerateCoupletRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "GenerateCouplet")
+    
+    
+    return
+}
+
+func NewGenerateCoupletResponse() (response *GenerateCoupletResponse) {
+    response = &GenerateCoupletResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GenerateCouplet
+// 根据用户输入的命题关键词自动生成一副春联，包括上联、下联和横批。（如需开通请联系商务）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_NOCOUPLETS = "FailedOperation.NoCouplets"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TARGETTYPE = "InvalidParameterValue.TargetType"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) GenerateCouplet(request *GenerateCoupletRequest) (response *GenerateCoupletResponse, err error) {
+    return c.GenerateCoupletWithContext(context.Background(), request)
+}
+
+// GenerateCouplet
+// 根据用户输入的命题关键词自动生成一副春联，包括上联、下联和横批。（如需开通请联系商务）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_NOCOUPLETS = "FailedOperation.NoCouplets"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TARGETTYPE = "InvalidParameterValue.TargetType"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) GenerateCoupletWithContext(ctx context.Context, request *GenerateCoupletRequest) (response *GenerateCoupletResponse, err error) {
+    if request == nil {
+        request = NewGenerateCoupletRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateCouplet require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateCoupletResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGeneratePoetryRequest() (request *GeneratePoetryRequest) {
+    request = &GeneratePoetryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "GeneratePoetry")
+    
+    
+    return
+}
+
+func NewGeneratePoetryResponse() (response *GeneratePoetryResponse) {
+    response = &GeneratePoetryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GeneratePoetry
+// 根据用户输入的命题关键词自动生成一首七言律诗或五言律诗。（如需开通请联系商务）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_NOPOETRY = "FailedOperation.NoPoetry"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_GENRE = "InvalidParameterValue.Genre"
+//  INVALIDPARAMETERVALUE_POETRYTYPE = "InvalidParameterValue.PoetryType"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) GeneratePoetry(request *GeneratePoetryRequest) (response *GeneratePoetryResponse, err error) {
+    return c.GeneratePoetryWithContext(context.Background(), request)
+}
+
+// GeneratePoetry
+// 根据用户输入的命题关键词自动生成一首七言律诗或五言律诗。（如需开通请联系商务）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_NOPOETRY = "FailedOperation.NoPoetry"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_GENRE = "InvalidParameterValue.Genre"
+//  INVALIDPARAMETERVALUE_POETRYTYPE = "InvalidParameterValue.PoetryType"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) GeneratePoetryWithContext(ctx context.Context, request *GeneratePoetryRequest) (response *GeneratePoetryResponse, err error) {
+    if request == nil {
+        request = NewGeneratePoetryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GeneratePoetry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGeneratePoetryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewKeywordsExtractionRequest() (request *KeywordsExtractionRequest) {
     request = &KeywordsExtractionRequest{
         BaseRequest: &tchttp.BaseRequest{},

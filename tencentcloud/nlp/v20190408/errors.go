@@ -23,8 +23,20 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 余额不足，开通失败，请充值后再开通。
+	FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+
 	// 非法文本输入导致返回异常
 	FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
+
+	// 暂无春联生成，请更换关键词重试。
+	FAILEDOPERATION_NOCOUPLETS = "FailedOperation.NoCouplets"
+
+	// 暂无诗词生成，请更换关键词重试。
+	FAILEDOPERATION_NOPOETRY = "FailedOperation.NoPoetry"
+
+	// 未查询到结果。
+	FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
 
 	// 后端服务超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
@@ -34,6 +46,9 @@ const (
 
 	// 文本向量化失败
 	FAILEDOPERATION_TEXTEMBEDDINGFAILED = "FailedOperation.TextEmbeddingFailed"
+
+	// 内部错误。
+	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 
 	// 未知错误。
 	FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -50,11 +65,29 @@ const (
 	// 内部服务调用错误。
 	INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
 
+	// 内部服务调用失败。
+	INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
 	// 参数空值错误
 	INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
+
+	// Genre非法，请参考Genre参数说明。
+	INVALIDPARAMETERVALUE_GENRE = "InvalidParameterValue.Genre"
+
+	// PoetryType非法，请参考PoetryType参数说明。
+	INVALIDPARAMETERVALUE_POETRYTYPE = "InvalidParameterValue.PoetryType"
+
+	// Text输入含有敏感信息。
+	INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+
+	// TargetType非法，请参考TargetType参数说明。
+	INVALIDPARAMETERVALUE_TARGETTYPE = "InvalidParameterValue.TargetType"
+
+	// Text非法，请参考Text参数说明。
+	INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
 
 	// 文本编码错误，不符合utf-8
 	INVALIDPARAMETERVALUE_TEXTENCODEERROR = "InvalidParameterValue.TextEncodeError"
@@ -86,6 +119,9 @@ const (
 	// 额度用尽，请充值后重试
 	RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
 	// 数据资源不存在
 	RESOURCENOTFOUND_DATANOTFOUND = "ResourceNotFound.DataNotFound"
 
@@ -98,8 +134,26 @@ const (
 	// 文件资源不可用
 	RESOURCEUNAVAILABLE_FILEUNAVAILABLE = "ResourceUnavailable.FileUnavailable"
 
+	// 帐号已被冻结。
+	RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+
+	// 账号已欠费。
+	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+
+	// 服务正在开通中，请稍等。
+	RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+
+	// 计费状态未知，请确认是否已在控制台开通服务。
+	RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+
+	// 资源已被回收。
+	RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+
 	// 您的账号尚未开通NLP服务，请登录腾讯云NLP控制台进行服务开通后再使用
 	RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+
+	// 帐号已停服。
+	RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 
 	// 实名认证失败
 	UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"

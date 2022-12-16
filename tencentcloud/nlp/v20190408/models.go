@@ -777,6 +777,150 @@ type DpToken struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
+// Predefined struct for user
+type GenerateCoupletRequestParams struct {
+	// 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+	TargetType *int64 `json:"TargetType,omitempty" name:"TargetType"`
+}
+
+type GenerateCoupletRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+	TargetType *int64 `json:"TargetType,omitempty" name:"TargetType"`
+}
+
+func (r *GenerateCoupletRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateCoupletRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "TargetType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateCoupletRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateCoupletResponseParams struct {
+	// 横批。
+	TopScroll *string `json:"TopScroll,omitempty" name:"TopScroll"`
+
+	// 上联与下联。
+	Content []*string `json:"Content,omitempty" name:"Content"`
+
+	// 当对联随机生成时，展示随机生成原因。
+	RandomCause *string `json:"RandomCause,omitempty" name:"RandomCause"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GenerateCoupletResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateCoupletResponseParams `json:"Response"`
+}
+
+func (r *GenerateCoupletResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateCoupletResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GeneratePoetryRequestParams struct {
+	// 生成诗词的关键词。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+	PoetryType *int64 `json:"PoetryType,omitempty" name:"PoetryType"`
+
+	// 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+	Genre *int64 `json:"Genre,omitempty" name:"Genre"`
+}
+
+type GeneratePoetryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生成诗词的关键词。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+	PoetryType *int64 `json:"PoetryType,omitempty" name:"PoetryType"`
+
+	// 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+	Genre *int64 `json:"Genre,omitempty" name:"Genre"`
+}
+
+func (r *GeneratePoetryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GeneratePoetryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "PoetryType")
+	delete(f, "Genre")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneratePoetryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GeneratePoetryResponseParams struct {
+	// 诗题，即输入的生成诗词的关键词。
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 诗的内容。
+	Content []*string `json:"Content,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GeneratePoetryResponse struct {
+	*tchttp.BaseResponse
+	Response *GeneratePoetryResponseParams `json:"Response"`
+}
+
+func (r *GeneratePoetryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GeneratePoetryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Keyword struct {
 	// 权重
 	Score *float64 `json:"Score,omitempty" name:"Score"`

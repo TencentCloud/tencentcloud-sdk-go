@@ -1995,6 +1995,67 @@ func (r *UpdateEmailIdentityResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateEmailSmtpPassWordRequestParams struct {
+	// smtp密码，长度限制64
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 发信邮箱,长度限制128
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+}
+
+type UpdateEmailSmtpPassWordRequest struct {
+	*tchttp.BaseRequest
+	
+	// smtp密码，长度限制64
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 发信邮箱,长度限制128
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+}
+
+func (r *UpdateEmailSmtpPassWordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateEmailSmtpPassWordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Password")
+	delete(f, "EmailAddress")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEmailSmtpPassWordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateEmailSmtpPassWordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateEmailSmtpPassWordResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateEmailSmtpPassWordResponseParams `json:"Response"`
+}
+
+func (r *UpdateEmailSmtpPassWordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateEmailSmtpPassWordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateEmailTemplateRequestParams struct {
 	// 模板内容
 	TemplateContent *TemplateContent `json:"TemplateContent,omitempty" name:"TemplateContent"`

@@ -855,6 +855,9 @@ type CreateModelServiceRequestParams struct {
 
 	// 服务限速限流相关配置
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+
+	// 回调地址，用于回调创建服务状态信息
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 type CreateModelServiceRequest struct {
@@ -960,6 +963,9 @@ type CreateModelServiceRequest struct {
 
 	// 服务限速限流相关配置
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+
+	// 回调地址，用于回调创建服务状态信息
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1000,6 +1006,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "ScheduledAction")
 	delete(f, "VolumeMount")
 	delete(f, "ServiceLimit")
+	delete(f, "CallbackUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}

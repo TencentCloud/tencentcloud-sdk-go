@@ -1,67 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 人体分析(bda) 版本：2020-03-24
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
 
-### 第 10 次发布
+### 第 48 次发布
 
-发布时间：2022-12-15 01:09:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SegmentPortraitPic](https://cloud.tencent.com/document/api/1208/42970)
-
-	* 新增入参：Scene
-
-
-
-
-## 商业流程服务(bpaas) 版本：2018-12-17
-
-### 第 3 次发布
-
-发布时间：2022-12-15 01:10:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)
-
-	* 新增成员：DataHubId, TaskName, CKafkaRegion, ExternalUrl
-
-
-
-
-## 本地专用集群(cdc) 版本：2020-12-14
-
-### 第 4 次发布
-
-发布时间：2022-12-15 01:12:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DedicatedClusterOrder](https://cloud.tencent.com/document/api/1346/73770#DedicatedClusterOrder)
-
-	* 新增成员：OrderType
-
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 36 次发布
-
-发布时间：2022-12-15 01:20:30
+发布时间：2022-12-16 01:05:43
 
 本次发布包含了以下内容：
 
@@ -69,36 +12,29 @@
 
 修改接口：
 
-* [DescribeAccounts](https://cloud.tencent.com/document/api/1003/48075)
+* [SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/1021/59001)
 
-	* 新增入参：Hosts, Limit, Offset
+	* 新增入参：CloudSdkProxy
 
-	* 新增出参：TotalCount
 
-* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+修改数据结构：
 
-	* 新增入参：SnapshotIdList
+* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
 
-* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
+	* 新增成员：Line, ElasticServiceBandwidth
 
-	* 新增入参：ParamName
+* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
 
-* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1003/48304)
-
-	* 新增入参：Limit, Offset, SearchKey
-
-	* <font color="#dd0000">**修改入参**：</font>ProjectId
-
-	* 新增出参：Total
+	* 新增成员：CloudSdkProxy
 
 
 
 
-## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 32 次发布
+### 第 39 次发布
 
-发布时间：2022-12-15 01:38:47
+发布时间：2022-12-16 01:10:35
 
 本次发布包含了以下内容：
 
@@ -106,28 +42,34 @@
 
 新增接口：
 
-* [CreateParameterTemplate](https://cloud.tencent.com/document/api/409/84071)
-* [DeleteParameterTemplate](https://cloud.tencent.com/document/api/409/84070)
-* [DescribeDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84064)
-* [DescribeDefaultParameters](https://cloud.tencent.com/document/api/409/84069)
-* [DescribeParameterTemplateAttributes](https://cloud.tencent.com/document/api/409/84068)
-* [DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)
-* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84063)
-* [ModifyParameterTemplate](https://cloud.tencent.com/document/api/409/84066)
-
-新增数据结构：
-
-* [ParameterTemplate](https://cloud.tencent.com/document/api/409/16778#ParameterTemplate)
-* [PolicyRule](https://cloud.tencent.com/document/api/409/16778#PolicyRule)
-* [SecurityGroup](https://cloud.tencent.com/document/api/409/16778#SecurityGroup)
+* [HangUpCall](https://cloud.tencent.com/document/api/679/84273)
 
 
 
-## 弹性微服务 TEM(tem) 版本：2021-07-01
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 37 次发布
+### 第 101 次发布
 
-发布时间：2022-12-15 01:49:45
+发布时间：2022-12-16 01:16:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+
+	* 新增成员：DefaultLoginUser, DefaultLoginPort, LatestOperationErrorMsg
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 49 次发布
+
+发布时间：2022-12-16 01:33:15
 
 本次发布包含了以下内容：
 
@@ -135,14 +77,73 @@
 
 修改接口：
 
-* [DescribeEnvironments](https://cloud.tencent.com/document/api/1371/60149)
+* [ProcessMedia](https://cloud.tencent.com/document/api/862/37578)
 
-	* 新增入参：EnvironmentId
-
-
+	* 新增入参：TaskType
 
 
-## 弹性微服务 TEM(tem) 版本：2020-12-21
+修改数据结构：
+
+* [TaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#TaskNotifyConfig)
+
+	* <font color="#dd0000">**修改成员**：</font>CmqModel, CmqRegion
+
+
+
+
+## 自然语言处理(nlp) 版本：2019-04-08
+
+### 第 16 次发布
+
+发布时间：2022-12-15 10:27:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GenerateCouplet](https://cloud.tencent.com/document/api/271/84075)
+* [GeneratePoetry](https://cloud.tencent.com/document/api/271/84074)
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 17 次发布
+
+发布时间：2022-12-16 01:37:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateEmailSmtpPassWord](https://cloud.tencent.com/document/api/1288/84274)
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 13 次发布
+
+发布时间：2022-12-16 01:46:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* 新增入参：CallbackUrl
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
 
 
 
@@ -1675,6 +1676,32 @@
 
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 48 次发布
+
+发布时间：2022-12-16 01:05:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/1021/59001)
+
+	* 新增入参：CloudSdkProxy
+
+
+修改数据结构：
+
+* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+
+	* 新增成员：Line, ElasticServiceBandwidth
+
+* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
+
+	* 新增成员：CloudSdkProxy
+
 
 ### 第 47 次发布
 
@@ -11645,6 +11672,18 @@
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 39 次发布
+
+发布时间：2022-12-16 01:10:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[HangUpCall](https://cloud.tencent.com/document/api/679/84273)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 38 次发布
 
@@ -27398,6 +27437,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 101 次发布
+
+发布时间：2022-12-16 01:16:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+
+	* 新增成员：DefaultLoginUser, DefaultLoginPort, LatestOperationErrorMsg
+
 
 ### 第 100 次发布
 
@@ -59663,6 +59717,28 @@
 
 ## 媒体处理(mps) 版本：2019-06-12
 
+### 第 49 次发布
+
+发布时间：2022-12-16 01:33:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ProcessMedia](https://cloud.tencent.com/document/api/862/37578)
+
+	* 新增入参：TaskType
+
+
+修改数据结构：
+
+* [TaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#TaskNotifyConfig)
+
+	* <font color="#dd0000">**修改成员**：</font>CmqModel, CmqRegion
+
+
 ### 第 48 次发布
 
 发布时间：2022-11-23 06:41:18
@@ -61984,6 +62060,19 @@
 
 
 ## 自然语言处理(nlp) 版本：2019-04-08
+
+### 第 16 次发布
+
+发布时间：2022-12-15 10:27:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GenerateCouplet](https://cloud.tencent.com/document/api/271/84075)](https://cloud.tencent.com/document/api/#/#)
+* [[GeneratePoetry](https://cloud.tencent.com/document/api/271/84074)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 15 次发布
 
@@ -65313,20 +65402,20 @@
 
 新增接口：
 
-* [[CreateParameterTemplate](https://cloud.tencent.com/document/api/409/84071)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteParameterTemplate](https://cloud.tencent.com/document/api/409/84070)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84064)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDefaultParameters](https://cloud.tencent.com/document/api/409/84069)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeParameterTemplateAttributes](https://cloud.tencent.com/document/api/409/84068)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84063)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyParameterTemplate](https://cloud.tencent.com/document/api/409/84066)](https://cloud.tencent.com/document/api/#/#)
+* [CreateParameterTemplate](https://cloud.tencent.com/document/api/409/84071)
+* [DeleteParameterTemplate](https://cloud.tencent.com/document/api/409/84070)
+* [DescribeDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84064)
+* [DescribeDefaultParameters](https://cloud.tencent.com/document/api/409/84069)
+* [DescribeParameterTemplateAttributes](https://cloud.tencent.com/document/api/409/84068)
+* [DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)
+* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/409/84063)
+* [ModifyParameterTemplate](https://cloud.tencent.com/document/api/409/84066)
 
 新增数据结构：
 
-* [[ParameterTemplate](https://cloud.tencent.com/document/api/409/16778#ParameterTemplate)](https://cloud.tencent.com/document/api/409/16778#[ParameterTemplate](https://cloud.tencent.com/document/api/409/16778#ParameterTemplate))
-* [[PolicyRule](https://cloud.tencent.com/document/api/409/16778#PolicyRule)](https://cloud.tencent.com/document/api/409/16778#[PolicyRule](https://cloud.tencent.com/document/api/409/16778#PolicyRule))
-* [[SecurityGroup](https://cloud.tencent.com/document/api/409/16778#SecurityGroup)](https://cloud.tencent.com/document/api/409/16778#[SecurityGroup](https://cloud.tencent.com/document/api/409/16778#SecurityGroup))
+* [ParameterTemplate](https://cloud.tencent.com/document/api/409/16778#ParameterTemplate)
+* [PolicyRule](https://cloud.tencent.com/document/api/409/16778#PolicyRule)
+* [SecurityGroup](https://cloud.tencent.com/document/api/409/16778#SecurityGroup)
 
 ### 第 31 次发布
 
@@ -69317,6 +69406,18 @@
 
 
 ## 邮件推送(ses) 版本：2020-10-02
+
+### 第 17 次发布
+
+发布时间：2022-12-16 01:37:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpdateEmailSmtpPassWord](https://cloud.tencent.com/document/api/1288/84274)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 16 次发布
 
@@ -84726,6 +84827,21 @@
 
 
 ## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 13 次发布
+
+发布时间：2022-12-16 01:46:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* 新增入参：CallbackUrl
+
 
 ### 第 12 次发布
 

@@ -1143,7 +1143,7 @@ func (r *DeleteAllAccessControlRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAllAccessControlRuleResponseParams struct {
-	// 状态值 0: 修改成功, !0: 修改失败
+	// 状态值 0: 修改成功, 非0: 修改失败
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 删除了几条访问控制规则

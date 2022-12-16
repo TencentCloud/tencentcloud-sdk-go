@@ -224,7 +224,7 @@ func NewCreateCustomizationResponse() (response *CreateCustomizationResponse) {
 }
 
 // CreateCustomization
-// 用户使用该接口可以创建语音消息转文本自学习模型，以供识别调用
+// 用户使用该接口可以创建语音消息转文本热句模型，以供识别调用
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -234,7 +234,7 @@ func (c *Client) CreateCustomization(request *CreateCustomizationRequest) (respo
 }
 
 // CreateCustomization
-// 用户使用该接口可以创建语音消息转文本自学习模型，以供识别调用
+// 用户使用该接口可以创建语音消息转文本热句模型，以供识别调用
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -324,7 +324,7 @@ func NewDeleteCustomizationResponse() (response *DeleteCustomizationResponse) {
 }
 
 // DeleteCustomization
-// 用户通过该接口可以删除语音消息转文本自学习模型
+// 用户通过该接口可以删除语音消息转文本热句模型
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
@@ -333,7 +333,7 @@ func (c *Client) DeleteCustomization(request *DeleteCustomizationRequest) (respo
 }
 
 // DeleteCustomization
-// 用户通过该接口可以删除语音消息转文本自学习模型
+// 用户通过该接口可以删除语音消息转文本热句模型
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
@@ -978,7 +978,7 @@ func NewGetCustomizationListResponse() (response *GetCustomizationListResponse) 
 }
 
 // GetCustomizationList
-// 查询语音消息转文本自学习模型列表
+// 查询语音消息转文本热句模型列表
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -988,7 +988,7 @@ func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (res
 }
 
 // GetCustomizationList
-// 查询语音消息转文本自学习模型列表
+// 查询语音消息转文本热句模型列表
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -1094,7 +1094,7 @@ func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
 }
 
 // ModifyCustomization
-// 用户通过该接口可以更新语音消息转文本自学习模型。
+// 用户通过该接口可以更新语音消息转文本热句模型。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -1105,7 +1105,7 @@ func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (respo
 }
 
 // ModifyCustomization
-// 用户通过该接口可以更新语音消息转文本自学习模型。
+// 用户通过该接口可以更新语音消息转文本热句模型。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -1146,7 +1146,7 @@ func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateRe
 }
 
 // ModifyCustomizationState
-// 通过该接口，用户可以修改语音消息转文本自学习模型状态，上下线自学习模型
+// 通过该接口，用户可以修改语音消息转文本热句模型状态，上下线热句模型
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
@@ -1155,7 +1155,7 @@ func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateReque
 }
 
 // ModifyCustomizationState
-// 通过该接口，用户可以修改语音消息转文本自学习模型状态，上下线自学习模型
+// 通过该接口，用户可以修改语音消息转文本热句模型状态，上下线热句模型
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
@@ -1358,7 +1358,7 @@ func NewScanVoiceResponse() (response *ScanVoiceResponse) {
 //
 // <li>在推送回调数据后，接收到的 HTTP 状态码为 200 时，表示推送成功。</li>
 //
-// <li>HTTP 头参数说明：</li>
+// <li>HTTP 请求参数（query）说明：</li>
 //
 // <table>
 //
@@ -1647,7 +1647,7 @@ func (c *Client) ScanVoice(request *ScanVoiceRequest) (response *ScanVoiceRespon
 //
 // <li>在推送回调数据后，接收到的 HTTP 状态码为 200 时，表示推送成功。</li>
 //
-// <li>HTTP 头参数说明：</li>
+// <li>HTTP 请求参数（query）说明：</li>
 //
 // <table>
 //

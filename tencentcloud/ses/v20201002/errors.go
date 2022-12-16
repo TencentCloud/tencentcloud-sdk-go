@@ -146,6 +146,9 @@ const (
 	// 域名取值错误。
 	INVALIDPARAMETERVALUE_INVALIDEMAILIDENTITY = "InvalidParameterValue.InvalidEmailIdentity"
 
+	// 密码长度为10~20位，且必须至少包含2位不重复的数字、小写字母、大写字母。
+	INVALIDPARAMETERVALUE_INVALIDSMTPPASSWORD = "InvalidParameterValue.InvalidSmtpPassWord"
+
 	// 您没有这个发件地址，请检查是否存在。
 	INVALIDPARAMETERVALUE_NOSUCHSENDER = "InvalidParameterValue.NoSuchSender"
 
@@ -253,6 +256,9 @@ const (
 
 	// 收件人列表空或状态不是上传完成。
 	OPERATIONDENIED_RECEIVERSTATUSERROR = "OperationDenied.ReceiverStatusError"
+
+	// 不能与上一次设置密码相同。
+	OPERATIONDENIED_REPEATPASSWORD = "OperationDenied.RepeatPassWord"
 
 	// 发信地址不存在或者状态不是通过状态。
 	OPERATIONDENIED_SENDADDRESSSTATUSERROR = "OperationDenied.SendAddressStatusError"
