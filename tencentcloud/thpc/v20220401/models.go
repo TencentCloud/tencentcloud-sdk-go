@@ -324,10 +324,10 @@ func (r *BindAutoScalingGroupResponse) FromJsonString(s string) error {
 }
 
 type CFSOption struct {
-	// 文件系统本地挂载路径
+	// 文件系统本地挂载路径。
 	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
 
-	// 文件系统远程挂载ip及路径
+	// 文件系统远程挂载ip及路径。
 	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
 
 	// 文件系统协议类型，默认值NFS 3.0。
@@ -936,13 +936,13 @@ type ExpansionNodeConfig struct {
 }
 
 type GooseFSOption struct {
-	// 文件系统本地挂载路径
+	// 文件系统本地挂载路径。
 	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
 
-	// 文件系统远程挂载路径
+	// 文件系统远程挂载路径。
 	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
 
-	// 文件系统master的ip和端口
+	// 文件系统master的ip和端口。
 	Masters []*string `json:"Masters,omitempty" name:"Masters"`
 }
 

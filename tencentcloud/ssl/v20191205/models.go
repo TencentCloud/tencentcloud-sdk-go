@@ -389,6 +389,22 @@ type Certificates struct {
 	// 证书算法
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" name:"EncryptAlgorithm"`
+
+	// 上传CA证书的加密算法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitempty" name:"CAEncryptAlgorithms"`
+
+	// 上传CA证书的过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CAEndTimes []*string `json:"CAEndTimes,omitempty" name:"CAEndTimes"`
+
+	// 上传CA证书的通用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CACommonNames []*string `json:"CACommonNames,omitempty" name:"CACommonNames"`
+
+	// 证书预审核信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreAuditInfo *PreAuditInfo `json:"PreAuditInfo,omitempty" name:"PreAuditInfo"`
 }
 
 // Predefined struct for user
@@ -2346,6 +2362,20 @@ type PackageTransferOutInfo struct {
 	// 接收时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveTime *string `json:"ReceiveTime,omitempty" name:"ReceiveTime"`
+}
+
+type PreAuditInfo struct {
+	// 证书总年限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPeriod *int64 `json:"TotalPeriod,omitempty" name:"TotalPeriod"`
+
+	// 证书当前年限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NowPeriod *int64 `json:"NowPeriod,omitempty" name:"NowPeriod"`
+
+	// 证书预审核管理人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagerId *string `json:"ManagerId,omitempty" name:"ManagerId"`
 }
 
 type ProjectInfo struct {

@@ -584,6 +584,9 @@ type AllocateAddressesRequestParams struct {
 
 	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
 	AddressName *string `json:"AddressName,omitempty" name:"AddressName"`
+
+	// 网络出口，默认是：center_egress1
+	Egress *string `json:"Egress,omitempty" name:"Egress"`
 }
 
 type AllocateAddressesRequest struct {
@@ -640,6 +643,9 @@ type AllocateAddressesRequest struct {
 
 	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
 	AddressName *string `json:"AddressName,omitempty" name:"AddressName"`
+
+	// 网络出口，默认是：center_egress1
+	Egress *string `json:"Egress,omitempty" name:"Egress"`
 }
 
 func (r *AllocateAddressesRequest) ToJsonString() string {
@@ -665,6 +671,7 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "BandwidthPackageId")
 	delete(f, "AddressName")
+	delete(f, "Egress")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AllocateAddressesRequest has unknown keys!", "")
 	}
@@ -5081,8 +5088,11 @@ type CreateVpcEndPointServiceRequestParams struct {
 	// 后端服务ID，比如lb-xxx。
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" name:"ServiceInstanceId"`
 
-	// 是否是PassService类型。
+	// ~~是否是PassService类型。该字段已废弃，请不要使用该字段。~~
 	IsPassService *bool `json:"IsPassService,omitempty" name:"IsPassService"`
+
+	// 挂载的PAAS服务类型，CLB,CDB,CRS，不填默认挂载为CLB。
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 }
 
 type CreateVpcEndPointServiceRequest struct {
@@ -5100,8 +5110,11 @@ type CreateVpcEndPointServiceRequest struct {
 	// 后端服务ID，比如lb-xxx。
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" name:"ServiceInstanceId"`
 
-	// 是否是PassService类型。
+	// ~~是否是PassService类型。该字段已废弃，请不要使用该字段。~~
 	IsPassService *bool `json:"IsPassService,omitempty" name:"IsPassService"`
+
+	// 挂载的PAAS服务类型，CLB,CDB,CRS，不填默认挂载为CLB。
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 }
 
 func (r *CreateVpcEndPointServiceRequest) ToJsonString() string {
@@ -5121,6 +5134,7 @@ func (r *CreateVpcEndPointServiceRequest) FromJsonString(s string) error {
 	delete(f, "AutoAcceptFlag")
 	delete(f, "ServiceInstanceId")
 	delete(f, "IsPassService")
+	delete(f, "ServiceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcEndPointServiceRequest has unknown keys!", "")
 	}
@@ -17571,11 +17585,9 @@ type ModifyBandwidthPackageAttributeRequestParams struct {
 	// 带宽包名称
 	BandwidthPackageName *string `json:"BandwidthPackageName,omitempty" name:"BandwidthPackageName"`
 
-	// 带宽包计费模式
+	// 带宽包计费模式，示例 ：
+	// 'TOP5_POSTPAID_BY_MONTH'（后付费-TOP5计费）
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
-
-	// 退款时迁移为后付费带宽包。默认值：否
-	MigrateOnRefund *bool `json:"MigrateOnRefund,omitempty" name:"MigrateOnRefund"`
 }
 
 type ModifyBandwidthPackageAttributeRequest struct {
@@ -17587,11 +17599,9 @@ type ModifyBandwidthPackageAttributeRequest struct {
 	// 带宽包名称
 	BandwidthPackageName *string `json:"BandwidthPackageName,omitempty" name:"BandwidthPackageName"`
 
-	// 带宽包计费模式
+	// 带宽包计费模式，示例 ：
+	// 'TOP5_POSTPAID_BY_MONTH'（后付费-TOP5计费）
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
-
-	// 退款时迁移为后付费带宽包。默认值：否
-	MigrateOnRefund *bool `json:"MigrateOnRefund,omitempty" name:"MigrateOnRefund"`
 }
 
 func (r *ModifyBandwidthPackageAttributeRequest) ToJsonString() string {
@@ -17609,7 +17619,6 @@ func (r *ModifyBandwidthPackageAttributeRequest) FromJsonString(s string) error 
 	delete(f, "BandwidthPackageId")
 	delete(f, "BandwidthPackageName")
 	delete(f, "ChargeType")
-	delete(f, "MigrateOnRefund")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBandwidthPackageAttributeRequest has unknown keys!", "")
 	}

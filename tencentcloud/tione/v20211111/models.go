@@ -476,6 +476,9 @@ type CreateBatchTaskRequestParams struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 任务执行结果回调URL，仅支持http和https。回调格式&内容详见: [TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 type CreateBatchTaskRequest struct {
@@ -534,6 +537,9 @@ type CreateBatchTaskRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 任务执行结果回调URL，仅支持http和https。回调格式&内容详见: [TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 func (r *CreateBatchTaskRequest) ToJsonString() string {
@@ -566,6 +572,7 @@ func (r *CreateBatchTaskRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "Remark")
+	delete(f, "CallbackUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchTaskRequest has unknown keys!", "")
 	}
@@ -856,7 +863,7 @@ type CreateModelServiceRequestParams struct {
 	// 服务限速限流相关配置
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
 
-	// 回调地址，用于回调创建服务状态信息
+	// 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
@@ -964,7 +971,7 @@ type CreateModelServiceRequest struct {
 	// 服务限速限流相关配置
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
 
-	// 回调地址，用于回调创建服务状态信息
+	// 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
@@ -1410,6 +1417,9 @@ type CreateTrainingTaskRequestParams struct {
 
 	// 数据来源，eg：DATASET、COS、CFS、HDFS
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 type CreateTrainingTaskRequest struct {
@@ -1477,6 +1487,9 @@ type CreateTrainingTaskRequest struct {
 
 	// 数据来源，eg：DATASET、COS、CFS、HDFS
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -1512,6 +1525,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "TuningParameters")
 	delete(f, "Remark")
 	delete(f, "DataSource")
+	delete(f, "CallbackUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -7134,6 +7148,10 @@ type TrainingTaskDetail struct {
 
 	// 任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 回调地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 type TrainingTaskSetItem struct {
@@ -7217,6 +7235,10 @@ type TrainingTaskSetItem struct {
 	// 标签配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 回调地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
 type VolumeMount struct {

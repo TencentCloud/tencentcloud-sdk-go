@@ -1,75 +1,29 @@
 # 本版本更新包含以下内容：
 
-## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+## 文件存储(cfs) 版本：2019-07-19
 
-### 第 48 次发布
+### 第 14 次发布
 
-发布时间：2022-12-16 01:05:43
+发布时间：2022-12-19 01:23:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [SwitchWaterPrintConfig](https://cloud.tencent.com/document/api/1021/59001)
-
-	* 新增入参：CloudSdkProxy
-
 
 修改数据结构：
 
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+* [UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota)
 
-	* 新增成员：Line, ElasticServiceBandwidth
+	* 新增成员：CapacityUsed, FileUsed
 
-* [WaterPrintConfig](https://cloud.tencent.com/document/api/1021/57582#WaterPrintConfig)
-
-	* 新增成员：CloudSdkProxy
-
-
-
-
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 39 次发布
-
-发布时间：2022-12-16 01:10:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [HangUpCall](https://cloud.tencent.com/document/api/679/84273)
 
 
 
 ## 云服务器(cvm) 版本：2017-03-12
 
-### 第 101 次发布
+### 第 102 次发布
 
-发布时间：2022-12-16 01:16:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
-
-	* 新增成员：DefaultLoginUser, DefaultLoginPort, LatestOperationErrorMsg
-
-
-
-
-## 媒体处理(mps) 版本：2019-06-12
-
-### 第 49 次发布
-
-发布时间：2022-12-16 01:33:15
+发布时间：2022-12-19 01:29:05
 
 本次发布包含了以下内容：
 
@@ -77,58 +31,41 @@
 
 修改接口：
 
-* [ProcessMedia](https://cloud.tencent.com/document/api/862/37578)
+* [ExportImages](https://cloud.tencent.com/document/api/213/73474)
 
-	* 新增入参：TaskType
+	* 新增出参：CosPaths
 
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 24 次发布
+
+发布时间：2022-12-19 01:58:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [PreAuditInfo](https://cloud.tencent.com/document/api/400/41679#PreAuditInfo)
 
 修改数据结构：
 
-* [TaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#TaskNotifyConfig)
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
 
-	* <font color="#dd0000">**修改成员**：</font>CmqModel, CmqRegion
+	* 新增成员：CAEncryptAlgorithms, CAEndTimes, CACommonNames, PreAuditInfo
 
-
-
-
-## 自然语言处理(nlp) 版本：2019-04-08
-
-### 第 16 次发布
-
-发布时间：2022-12-15 10:27:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GenerateCouplet](https://cloud.tencent.com/document/api/271/84075)
-* [GeneratePoetry](https://cloud.tencent.com/document/api/271/84074)
-
-
-
-## 邮件推送(ses) 版本：2020-10-02
-
-### 第 17 次发布
-
-发布时间：2022-12-16 01:37:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [UpdateEmailSmtpPassWord](https://cloud.tencent.com/document/api/1288/84274)
 
 
 
 ## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
 
-### 第 13 次发布
+### 第 14 次发布
 
-发布时间：2022-12-16 01:46:34
+发布时间：2022-12-19 02:08:29
 
 本次发布包含了以下内容：
 
@@ -136,14 +73,56 @@
 
 修改接口：
 
-* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+* [CreateBatchTask](https://cloud.tencent.com/document/api/851/80182)
 
 	* 新增入参：CallbackUrl
+
+* [CreateTrainingTask](https://cloud.tencent.com/document/api/851/75094)
+
+	* 新增入参：CallbackUrl
+
+
+修改数据结构：
+
+* [TrainingTaskDetail](https://cloud.tencent.com/document/api/851/75051#TrainingTaskDetail)
+
+	* 新增成员：CallbackUrl
+
+* [TrainingTaskSetItem](https://cloud.tencent.com/document/api/851/75051#TrainingTaskSetItem)
+
+	* 新增成员：CallbackUrl
 
 
 
 
 ## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 132 次发布
+
+发布时间：2022-12-16 18:54:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+
+	* 新增入参：Egress
+
+* [CreateVpcEndPointService](https://cloud.tencent.com/document/api/215/54684)
+
+	* 新增入参：ServiceType
+
+* [ModifyBandwidthPackageAttribute](https://cloud.tencent.com/document/api/215/19208)
+
+	* <font color="#dd0000">**删除入参**：</font>MigrateOnRefund
+
 
 
 
@@ -11683,7 +11662,7 @@
 
 新增接口：
 
-* [[HangUpCall](https://cloud.tencent.com/document/api/679/84273)](https://cloud.tencent.com/document/api/#/#)
+* [HangUpCall](https://cloud.tencent.com/document/api/679/84273)
 
 ### 第 38 次发布
 
@@ -17432,6 +17411,21 @@
 
 
 ## 文件存储(cfs) 版本：2019-07-19
+
+### 第 14 次发布
+
+发布时间：2022-12-19 01:23:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota)
+
+	* 新增成员：CapacityUsed, FileUsed
+
 
 ### 第 13 次发布
 
@@ -27437,6 +27431,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 102 次发布
+
+发布时间：2022-12-19 01:29:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ExportImages](https://cloud.tencent.com/document/api/213/73474)
+
+	* 新增出参：CosPaths
+
 
 ### 第 101 次发布
 
@@ -62071,8 +62080,8 @@
 
 新增接口：
 
-* [[GenerateCouplet](https://cloud.tencent.com/document/api/271/84075)](https://cloud.tencent.com/document/api/#/#)
-* [[GeneratePoetry](https://cloud.tencent.com/document/api/271/84074)](https://cloud.tencent.com/document/api/#/#)
+* [GenerateCouplet](https://cloud.tencent.com/document/api/271/84075)
+* [GeneratePoetry](https://cloud.tencent.com/document/api/271/84074)
 
 ### 第 15 次发布
 
@@ -69417,7 +69426,7 @@
 
 新增接口：
 
-* [[UpdateEmailSmtpPassWord](https://cloud.tencent.com/document/api/1288/84274)](https://cloud.tencent.com/document/api/#/#)
+* [UpdateEmailSmtpPassWord](https://cloud.tencent.com/document/api/1288/84274)
 
 ### 第 16 次发布
 
@@ -71698,6 +71707,25 @@
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 24 次发布
+
+发布时间：2022-12-19 01:58:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[PreAuditInfo](https://cloud.tencent.com/document/api/400/41679#PreAuditInfo)](https://cloud.tencent.com/document/api/400/41679#[PreAuditInfo](https://cloud.tencent.com/document/api/400/41679#PreAuditInfo))
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：CAEncryptAlgorithms, CAEndTimes, CACommonNames, PreAuditInfo
+
 
 ### 第 23 次发布
 
@@ -84828,6 +84856,36 @@
 
 ## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
 
+### 第 14 次发布
+
+发布时间：2022-12-19 02:08:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBatchTask](https://cloud.tencent.com/document/api/851/80182)
+
+	* 新增入参：CallbackUrl
+
+* [CreateTrainingTask](https://cloud.tencent.com/document/api/851/75094)
+
+	* 新增入参：CallbackUrl
+
+
+修改数据结构：
+
+* [TrainingTaskDetail](https://cloud.tencent.com/document/api/851/75051#TrainingTaskDetail)
+
+	* 新增成员：CallbackUrl
+
+* [TrainingTaskSetItem](https://cloud.tencent.com/document/api/851/75051#TrainingTaskSetItem)
+
+	* 新增成员：CallbackUrl
+
+
 ### 第 13 次发布
 
 发布时间：2022-12-16 01:46:34
@@ -96981,6 +97039,29 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 132 次发布
+
+发布时间：2022-12-16 18:54:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+
+	* 新增入参：Egress
+
+* [CreateVpcEndPointService](https://cloud.tencent.com/document/api/215/54684)
+
+	* 新增入参：ServiceType
+
+* [ModifyBandwidthPackageAttribute](https://cloud.tencent.com/document/api/215/19208)
+
+	* <font color="#dd0000">**删除入参**：</font>MigrateOnRefund
+
 
 ### 第 131 次发布
 

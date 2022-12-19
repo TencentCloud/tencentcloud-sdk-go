@@ -902,6 +902,9 @@ const (
 	// 当前镜像不支持对该实例的重装操作。
 	UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = "UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2"
 
+	// RedHat镜像不支持导出。
+	UNSUPPORTEDOPERATION_REDHATIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.RedHatImageExportUnsupported"
+
 	// 实例使用商业操作系统，不支持退还。
 	UNSUPPORTEDOPERATION_REDHATINSTANCETERMINATEUNSUPPORTED = "UnsupportedOperation.RedHatInstanceTerminateUnsupported"
 

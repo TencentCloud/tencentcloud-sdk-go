@@ -2956,4 +2956,12 @@ type UserQuota struct {
 
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 容量使用，单位GiB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CapacityUsed *uint64 `json:"CapacityUsed,omitempty" name:"CapacityUsed"`
+
+	// 文件使用个数，单位个
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileUsed *uint64 `json:"FileUsed,omitempty" name:"FileUsed"`
 }
