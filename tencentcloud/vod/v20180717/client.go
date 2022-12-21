@@ -1189,6 +1189,74 @@ func (c *Client) CreateProcedureTemplateWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateReviewTemplateRequest() (request *CreateReviewTemplateRequest) {
+    request = &CreateReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateReviewTemplate")
+    
+    
+    return
+}
+
+func NewCreateReviewTemplateResponse() (response *CreateReviewTemplateResponse) {
+    response = &CreateReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateReviewTemplate
+// 创建用户自定义审核模板，数量上限：50。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETER_LABELS = "InvalidParameter.Labels"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_LABELS = "InvalidParameterValue.Labels"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateReviewTemplate(request *CreateReviewTemplateRequest) (response *CreateReviewTemplateResponse, err error) {
+    return c.CreateReviewTemplateWithContext(context.Background(), request)
+}
+
+// CreateReviewTemplate
+// 创建用户自定义审核模板，数量上限：50。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETER_LABELS = "InvalidParameter.Labels"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_LABELS = "InvalidParameterValue.Labels"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateReviewTemplateWithContext(ctx context.Context, request *CreateReviewTemplateRequest) (response *CreateReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateReviewTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReviewTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSampleSnapshotTemplateRequest() (request *CreateSampleSnapshotTemplateRequest) {
     request = &CreateSampleSnapshotTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2519,6 +2587,62 @@ func (c *Client) DeleteProcedureTemplateWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteReviewTemplateRequest() (request *DeleteReviewTemplateRequest) {
+    request = &DeleteReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteReviewTemplate")
+    
+    
+    return
+}
+
+func NewDeleteReviewTemplateResponse() (response *DeleteReviewTemplateResponse) {
+    response = &DeleteReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteReviewTemplate
+// 删除用户自定义审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteReviewTemplate(request *DeleteReviewTemplateRequest) (response *DeleteReviewTemplateResponse, err error) {
+    return c.DeleteReviewTemplateWithContext(context.Background(), request)
+}
+
+// DeleteReviewTemplate
+// 删除用户自定义审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteReviewTemplateWithContext(ctx context.Context, request *DeleteReviewTemplateRequest) (response *DeleteReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteReviewTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReviewTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSampleSnapshotTemplateRequest() (request *DeleteSampleSnapshotTemplateRequest) {
     request = &DeleteSampleSnapshotTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3810,9 +3934,11 @@ func NewDescribeDrmDataKeyResponse() (response *DescribeDrmDataKeyResponse) {
 }
 
 // DescribeDrmDataKey
-// 本 API 是 [旧版本加密](https://cloud.tencent.com/document/product/266/9638) 中[DescribeDrmDataKey 的 API 2017 接口](https://cloud.tencent.com/document/product/266/9643)的升级版本。
+// 本 API 是 [旧版本加密](https://cloud.tencent.com/document/product/266/9638) 中 [DescribeDrmDataKey 的 API 2017 接口](https://cloud.tencent.com/document/product/266/9643) 的升级版本。
 //
-// 如果您是新接入点播加密的用户，不要使用该 API。请参考[视频加密综述](https://cloud.tencent.com/document/product/266/45552)使用。
+// 
+//
+// 如果您是新接入点播加密的用户，不要使用该 API，请参考 [视频加密综述](https://cloud.tencent.com/document/product/266/45552) 使用推荐的加密方式。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3823,9 +3949,11 @@ func (c *Client) DescribeDrmDataKey(request *DescribeDrmDataKeyRequest) (respons
 }
 
 // DescribeDrmDataKey
-// 本 API 是 [旧版本加密](https://cloud.tencent.com/document/product/266/9638) 中[DescribeDrmDataKey 的 API 2017 接口](https://cloud.tencent.com/document/product/266/9643)的升级版本。
+// 本 API 是 [旧版本加密](https://cloud.tencent.com/document/product/266/9638) 中 [DescribeDrmDataKey 的 API 2017 接口](https://cloud.tencent.com/document/product/266/9643) 的升级版本。
 //
-// 如果您是新接入点播加密的用户，不要使用该 API。请参考[视频加密综述](https://cloud.tencent.com/document/product/266/45552)使用。
+// 
+//
+// 如果您是新接入点播加密的用户，不要使用该 API，请参考 [视频加密综述](https://cloud.tencent.com/document/product/266/45552) 使用推荐的加密方式。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4460,6 +4588,8 @@ func NewDescribeMediaInfosResponse() (response *DescribeMediaInfosResponse) {
 //
 //     9. 转自适应码流信息（adaptiveDynamicStreamingInfo）：包括规格、加密类型、打包格式等相关信息。
 //
+//     10. 审核信息（reviewInfo）：包括媒体审核及媒体封面审核信息。
+//
 // 2. 可以指定回包只返回部分信息。
 //
 // 可能返回的错误码:
@@ -4495,6 +4625,8 @@ func (c *Client) DescribeMediaInfos(request *DescribeMediaInfosRequest) (respons
 //     8. 视频打点信息（keyFrameDescInfo）：对视频设置的打点信息。
 //
 //     9. 转自适应码流信息（adaptiveDynamicStreamingInfo）：包括规格、加密类型、打包格式等相关信息。
+//
+//     10. 审核信息（reviewInfo）：包括媒体审核及媒体封面审核信息。
 //
 // 2. 可以指定回包只返回部分信息。
 //
@@ -4899,6 +5031,66 @@ func (c *Client) DescribeReviewDetailsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeReviewDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReviewTemplatesRequest() (request *DescribeReviewTemplatesRequest) {
+    request = &DescribeReviewTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeReviewTemplates")
+    
+    
+    return
+}
+
+func NewDescribeReviewTemplatesResponse() (response *DescribeReviewTemplatesResponse) {
+    response = &DescribeReviewTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeReviewTemplates
+// 获取审核模板列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeReviewTemplates(request *DescribeReviewTemplatesRequest) (response *DescribeReviewTemplatesResponse, err error) {
+    return c.DescribeReviewTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeReviewTemplates
+// 获取审核模板列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
+//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeReviewTemplatesWithContext(ctx context.Context, request *DescribeReviewTemplatesRequest) (response *DescribeReviewTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReviewTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReviewTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReviewTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -7215,6 +7407,68 @@ func (c *Client) ModifyPersonSampleWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyPersonSampleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReviewTemplateRequest() (request *ModifyReviewTemplateRequest) {
+    request = &ModifyReviewTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyReviewTemplate")
+    
+    
+    return
+}
+
+func NewModifyReviewTemplateResponse() (response *ModifyReviewTemplateResponse) {
+    response = &ModifyReviewTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyReviewTemplate
+// 修改用户自定义审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_LABELS = "InvalidParameterValue.Labels"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyReviewTemplate(request *ModifyReviewTemplateRequest) (response *ModifyReviewTemplateResponse, err error) {
+    return c.ModifyReviewTemplateWithContext(context.Background(), request)
+}
+
+// ModifyReviewTemplate
+// 修改用户自定义审核模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_LABELS = "InvalidParameterValue.Labels"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyReviewTemplateWithContext(ctx context.Context, request *ModifyReviewTemplateRequest) (response *ModifyReviewTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyReviewTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReviewTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReviewTemplateResponse()
     err = c.Send(request, response)
     return
 }

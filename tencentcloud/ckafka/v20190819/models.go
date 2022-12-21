@@ -226,6 +226,12 @@ func (r *AuthorizeTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BatchAnalyseParam struct {
+	// ONE_BY_ONE单条输出，MERGE合并输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Format *string `json:"Format,omitempty" name:"Format"`
+}
+
 type BatchContent struct {
 	// 发送的消息体
 	Body *string `json:"Body,omitempty" name:"Body"`
@@ -2522,6 +2528,10 @@ type DatahubResource struct {
 	// Ctsdb配置，Type为CTSDB时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CtsdbParam *CtsdbParam `json:"CtsdbParam,omitempty" name:"CtsdbParam"`
+
+	// Scf配置，Type为SCF时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScfParam *ScfParam `json:"ScfParam,omitempty" name:"ScfParam"`
 }
 
 type DatahubTaskIdRes struct {
@@ -5743,6 +5753,9 @@ type EsParam struct {
 
 	// 转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
 	DatabasePrimaryKey *string `json:"DatabasePrimaryKey,omitempty" name:"DatabasePrimaryKey"`
+
+	// 死信队列
+	DropDlq *FailureParam `json:"DropDlq,omitempty" name:"DropDlq"`
 }
 
 type EventBusParam struct {
@@ -6925,6 +6938,10 @@ type KafkaParam struct {
 	// 写入Topic时是否进行压缩，不开启填"none"，开启的话，填写"open"。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompressionType *string `json:"CompressionType,omitempty" name:"CompressionType"`
+
+	// 源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgMultiple *int64 `json:"MsgMultiple,omitempty" name:"MsgMultiple"`
 }
 
 type MapParam struct {
@@ -8470,6 +8487,26 @@ type SaleInfo struct {
 	SoldOut *bool `json:"SoldOut,omitempty" name:"SoldOut"`
 }
 
+type ScfParam struct {
+	// SCF云函数函数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// SCF云函数命名空间, 默认为default
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// SCF云函数版本及别名, 默认为$DEFAULT
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 每批最大发送消息数, 默认为1000
+	BatchSize *int64 `json:"BatchSize,omitempty" name:"BatchSize"`
+
+	// SCF调用失败后重试次数, 默认为5
+	MaxRetries *int64 `json:"MaxRetries,omitempty" name:"MaxRetries"`
+}
+
 type SecondaryAnalyseParam struct {
 	// 分隔符
 	Regex *string `json:"Regex,omitempty" name:"Regex"`
@@ -8778,6 +8815,10 @@ type TopicParam struct {
 	// 使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UseAutoCreateTopic *bool `json:"UseAutoCreateTopic,omitempty" name:"UseAutoCreateTopic"`
+
+	// 源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgMultiple *int64 `json:"MsgMultiple,omitempty" name:"MsgMultiple"`
 }
 
 type TopicPartitionDO struct {
@@ -8906,6 +8947,10 @@ type TransformsParam struct {
 	// 是否保留数据源Topic元数据信息（源Topic、Partition、Offset），默认为false
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepMetadata *bool `json:"KeepMetadata,omitempty" name:"KeepMetadata"`
+
+	// 数组解析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchAnalyse *BatchAnalyseParam `json:"BatchAnalyse,omitempty" name:"BatchAnalyse"`
 }
 
 type UrlDecodeParam struct {

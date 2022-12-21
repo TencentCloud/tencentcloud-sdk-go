@@ -122,6 +122,7 @@ func NewBindDevicesResponse() (response *BindDevicesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDDEVICEOVERLIMIT = "FailedOperation.BindDeviceOverLimit"
+//  FAILEDOPERATION_BINDDEVICEPERONCEOVERLIMIT = "FailedOperation.BindDevicePerOnceOverLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -139,6 +140,7 @@ func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevices
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDDEVICEOVERLIMIT = "FailedOperation.BindDeviceOverLimit"
+//  FAILEDOPERATION_BINDDEVICEPERONCEOVERLIMIT = "FailedOperation.BindDevicePerOnceOverLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

@@ -1,48 +1,95 @@
 # 本版本更新包含以下内容：
 
-## 文件存储(cfs) 版本：2019-07-19
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
 
-### 第 14 次发布
+### 第 49 次发布
 
-发布时间：2022-12-19 01:23:20
+发布时间：2022-12-20 11:47:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBizHttpStatus](https://cloud.tencent.com/document/api/1021/84352)
+
+新增数据结构：
+
+* [HttpStatusMap](https://cloud.tencent.com/document/api/1021/57582#HttpStatusMap)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 108 次发布
+
+发布时间：2022-12-21 01:20:25
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota)
-
-	* 新增成员：CapacityUsed, FileUsed
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 102 次发布
-
-发布时间：2022-12-19 01:29:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [DescribeRemoteBackupConfig](https://cloud.tencent.com/document/api/236/84375)
+* [ModifyRemoteBackupConfig](https://cloud.tencent.com/document/api/236/84374)
 
 修改接口：
 
-* [ExportImages](https://cloud.tencent.com/document/api/213/73474)
+* [DescribeBackupConfig](https://cloud.tencent.com/document/api/236/15837)
 
-	* 新增出参：CosPaths
+	* 新增出参：EnableBackupStandby, BackupStandbyDays, EnableBinlogStandby, BinlogStandbyDays
+
+* [DescribeBackupOverview](https://cloud.tencent.com/document/api/236/41229)
+
+	* 新增出参：BackupStandbyVolume
+
+* [DescribeBinlogBackupOverview](https://cloud.tencent.com/document/api/236/41227)
+
+	* 新增出参：BinlogStandbyVolume, BinlogStandbyCount
+
+* [DescribeDataBackupOverview](https://cloud.tencent.com/document/api/236/41226)
+
+	* 新增出参：DataBackupStandbyVolume, DataBackupStandbyCount
+
+* [ModifyBackupConfig](https://cloud.tencent.com/document/api/236/15839)
+
+	* 新增入参：EnableBackupStandby, BackupStandbyDays, EnableBinlogStandby, BinlogStandbyDays
 
 
 
 
-## SSL 证书(ssl) 版本：2019-12-05
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
 
-### 第 24 次发布
+### 第 3 次发布
 
-发布时间：2022-12-19 01:58:27
+发布时间：2022-12-20 14:06:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateInstanceNew](https://cloud.tencent.com/document/api/1299/84353)
+* [DescribeInstance](https://cloud.tencent.com/document/api/1299/84354)
+
+新增数据结构：
+
+* [Charge](https://cloud.tencent.com/document/api/1299/83429#Charge)
+* [InstanceInfo](https://cloud.tencent.com/document/api/1299/83429#InstanceInfo)
+* [NodeSpec](https://cloud.tencent.com/document/api/1299/83429#NodeSpec)
+* [NodesSummary](https://cloud.tencent.com/document/api/1299/83429#NodesSummary)
+* [Tag](https://cloud.tencent.com/document/api/1299/83429#Tag)
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 65 次发布
+
+发布时间：2022-12-21 01:24:34
 
 本次发布包含了以下内容：
 
@@ -50,22 +97,85 @@
 
 新增数据结构：
 
-* [PreAuditInfo](https://cloud.tencent.com/document/api/400/41679#PreAuditInfo)
+* [BatchAnalyseParam](https://cloud.tencent.com/document/api/597/40861#BatchAnalyseParam)
+* [ScfParam](https://cloud.tencent.com/document/api/597/40861#ScfParam)
 
 修改数据结构：
 
-* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+* [DatahubResource](https://cloud.tencent.com/document/api/597/40861#DatahubResource)
 
-	* 新增成员：CAEncryptAlgorithms, CAEndTimes, CACommonNames, PreAuditInfo
+	* 新增成员：ScfParam
+
+* [EsParam](https://cloud.tencent.com/document/api/597/40861#EsParam)
+
+	* 新增成员：DropDlq
+
+* [KafkaParam](https://cloud.tencent.com/document/api/597/40861#KafkaParam)
+
+	* 新增成员：MsgMultiple
+
+* [TopicParam](https://cloud.tencent.com/document/api/597/40861#TopicParam)
+
+	* 新增成员：MsgMultiple
+
+* [TransformsParam](https://cloud.tencent.com/document/api/597/40861#TransformsParam)
+
+	* 新增成员：BatchAnalyse
 
 
 
 
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 14 次发布
+### 第 40 次发布
 
-发布时间：2022-12-19 02:08:29
+发布时间：2022-12-21 01:48:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyDiskBackup](https://cloud.tencent.com/document/api/1207/84382)
+* [CreateDiskBackup](https://cloud.tencent.com/document/api/1207/84381)
+* [DeleteDiskBackups](https://cloud.tencent.com/document/api/1207/84380)
+* [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)
+* [DescribeDiskBackupsDeniedActions](https://cloud.tencent.com/document/api/1207/84378)
+* [ModifyDiskBackupsAttribute](https://cloud.tencent.com/document/api/1207/84377)
+
+新增数据结构：
+
+* [DiskBackup](https://cloud.tencent.com/document/api/1207/47576#DiskBackup)
+* [DiskBackupDeniedActions](https://cloud.tencent.com/document/api/1207/47576#DiskBackupDeniedActions)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 70 次发布
+
+发布时间：2022-12-21 01:51:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePrometheusInstanceUsage](https://cloud.tencent.com/document/api/248/84383)
+
+新增数据结构：
+
+* [PrometheusInstanceTenantUsage](https://cloud.tencent.com/document/api/248/30354#PrometheusInstanceTenantUsage)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 25 次发布
+
+发布时间：2022-12-21 02:00:03
 
 本次发布包含了以下内容：
 
@@ -73,37 +183,90 @@
 
 修改接口：
 
-* [CreateBatchTask](https://cloud.tencent.com/document/api/851/80182)
+* [ApplyCertificate](https://cloud.tencent.com/document/api/400/41678)
 
-	* 新增入参：CallbackUrl
+	* 新增入参：DeleteDnsAutoRecord
 
-* [CreateTrainingTask](https://cloud.tencent.com/document/api/851/75094)
 
-	* 新增入参：CallbackUrl
 
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 18 次发布
+
+发布时间：2022-12-20 01:58:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyLoadBalancingStatus
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 7 次发布
+
+发布时间：2022-12-21 02:09:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddClusterStorageOption](https://cloud.tencent.com/document/api/1527/84387)
+* [DeleteClusterStorageOption](https://cloud.tencent.com/document/api/1527/84386)
+* [DescribeClusterStorageOption](https://cloud.tencent.com/document/api/1527/84385)
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 133 次发布
+
+发布时间：2022-12-21 02:16:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateReviewTemplate](https://cloud.tencent.com/document/api/266/84391)
+* [DeleteReviewTemplate](https://cloud.tencent.com/document/api/266/84390)
+* [DescribeReviewTemplates](https://cloud.tencent.com/document/api/266/84389)
+* [ModifyReviewTemplate](https://cloud.tencent.com/document/api/266/84388)
+
+新增数据结构：
+
+* [FileReviewInfo](https://cloud.tencent.com/document/api/266/31773#FileReviewInfo)
+* [ReviewInfo](https://cloud.tencent.com/document/api/266/31773#ReviewInfo)
+* [ReviewTemplate](https://cloud.tencent.com/document/api/266/31773#ReviewTemplate)
 
 修改数据结构：
 
-* [TrainingTaskDetail](https://cloud.tencent.com/document/api/851/75051#TrainingTaskDetail)
+* [MediaInfo](https://cloud.tencent.com/document/api/266/31773#MediaInfo)
 
-	* 新增成员：CallbackUrl
+	* 新增成员：ReviewInfo
 
-* [TrainingTaskSetItem](https://cloud.tencent.com/document/api/851/75051#TrainingTaskSetItem)
+	* <font color="#dd0000">**修改成员**：</font>BasicInfo, MetaData, TranscodeInfo, AnimatedGraphicsInfo, SampleSnapshotInfo, ImageSpriteInfo, SnapshotByTimeOffsetInfo, KeyFrameDescInfo, AdaptiveDynamicStreamingInfo, MiniProgramReviewInfo, SubtitleInfo, FileId
 
-	* 新增成员：CallbackUrl
-
-
-
-
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
 
 ### 第 132 次发布
 
-发布时间：2022-12-16 18:54:14
+发布时间：2022-12-20 02:07:06
 
 本次发布包含了以下内容：
 
@@ -111,17 +274,28 @@
 
 修改接口：
 
-* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
+* [DescribeDrmDataKey](https://cloud.tencent.com/document/api/266/54177)
 
-	* 新增入参：Egress
+	* 新增入参：SubAppId
 
-* [CreateVpcEndPointService](https://cloud.tencent.com/document/api/215/54684)
 
-	* 新增入参：ServiceType
 
-* [ModifyBandwidthPackageAttribute](https://cloud.tencent.com/document/api/215/19208)
 
-	* <font color="#dd0000">**删除入参**：</font>MigrateOnRefund
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 20 次发布
+
+发布时间：2022-12-21 02:20:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancerPackageNew](https://cloud.tencent.com/document/api/627/53609#LoadBalancerPackageNew)
+
+	* 新增成员：ListenerId, ListenerName, LoadBalancerId, LoadBalancerName, Protocol, Region, Vip, Vport, Zone, NumericalVpcId, LoadBalancerType
 
 
 
@@ -1655,6 +1829,22 @@
 
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 49 次发布
+
+发布时间：2022-12-20 11:47:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBizHttpStatus](https://cloud.tencent.com/document/api/1021/84352)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[HttpStatusMap](https://cloud.tencent.com/document/api/1021/57582#HttpStatusMap)](https://cloud.tencent.com/document/api/1021/57582#[HttpStatusMap](https://cloud.tencent.com/document/api/1021/57582#HttpStatusMap))
 
 ### 第 48 次发布
 
@@ -12360,6 +12550,42 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 108 次发布
+
+发布时间：2022-12-21 01:20:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRemoteBackupConfig](https://cloud.tencent.com/document/api/236/84375)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRemoteBackupConfig](https://cloud.tencent.com/document/api/236/84374)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeBackupConfig](https://cloud.tencent.com/document/api/236/15837)
+
+	* 新增出参：EnableBackupStandby, BackupStandbyDays, EnableBinlogStandby, BinlogStandbyDays
+
+* [DescribeBackupOverview](https://cloud.tencent.com/document/api/236/41229)
+
+	* 新增出参：BackupStandbyVolume
+
+* [DescribeBinlogBackupOverview](https://cloud.tencent.com/document/api/236/41227)
+
+	* 新增出参：BinlogStandbyVolume, BinlogStandbyCount
+
+* [DescribeDataBackupOverview](https://cloud.tencent.com/document/api/236/41226)
+
+	* 新增出参：DataBackupStandbyVolume, DataBackupStandbyCount
+
+* [ModifyBackupConfig](https://cloud.tencent.com/document/api/236/15839)
+
+	* 新增入参：EnableBackupStandby, BackupStandbyDays, EnableBinlogStandby, BinlogStandbyDays
+
+
 ### 第 107 次发布
 
 发布时间：2022-12-07 06:21:29
@@ -17266,6 +17492,27 @@
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
 
+### 第 3 次发布
+
+发布时间：2022-12-20 14:06:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateInstanceNew](https://cloud.tencent.com/document/api/1299/84353)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeInstance](https://cloud.tencent.com/document/api/1299/84354)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Charge](https://cloud.tencent.com/document/api/1299/83429#Charge)](https://cloud.tencent.com/document/api/1299/83429#[Charge](https://cloud.tencent.com/document/api/1299/83429#Charge))
+* [[InstanceInfo](https://cloud.tencent.com/document/api/1299/83429#InstanceInfo)](https://cloud.tencent.com/document/api/1299/83429#[InstanceInfo](https://cloud.tencent.com/document/api/1299/83429#InstanceInfo))
+* [[NodeSpec](https://cloud.tencent.com/document/api/1299/83429#NodeSpec)](https://cloud.tencent.com/document/api/1299/83429#[NodeSpec](https://cloud.tencent.com/document/api/1299/83429#NodeSpec))
+* [[NodesSummary](https://cloud.tencent.com/document/api/1299/83429#NodesSummary)](https://cloud.tencent.com/document/api/1299/83429#[NodesSummary](https://cloud.tencent.com/document/api/1299/83429#NodesSummary))
+* [[Tag](https://cloud.tencent.com/document/api/1299/83429#Tag)](https://cloud.tencent.com/document/api/1299/83429#[Tag](https://cloud.tencent.com/document/api/1299/83429#Tag))
+
 ### 第 2 次发布
 
 发布时间：2022-11-30 06:17:14
@@ -18986,6 +19233,42 @@
 
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 65 次发布
+
+发布时间：2022-12-21 01:24:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[BatchAnalyseParam](https://cloud.tencent.com/document/api/597/40861#BatchAnalyseParam)](https://cloud.tencent.com/document/api/597/40861#[BatchAnalyseParam](https://cloud.tencent.com/document/api/597/40861#BatchAnalyseParam))
+* [[ScfParam](https://cloud.tencent.com/document/api/597/40861#ScfParam)](https://cloud.tencent.com/document/api/597/40861#[ScfParam](https://cloud.tencent.com/document/api/597/40861#ScfParam))
+
+修改数据结构：
+
+* [DatahubResource](https://cloud.tencent.com/document/api/597/40861#DatahubResource)
+
+	* 新增成员：ScfParam
+
+* [EsParam](https://cloud.tencent.com/document/api/597/40861#EsParam)
+
+	* 新增成员：DropDlq
+
+* [KafkaParam](https://cloud.tencent.com/document/api/597/40861#KafkaParam)
+
+	* 新增成员：MsgMultiple
+
+* [TopicParam](https://cloud.tencent.com/document/api/597/40861#TopicParam)
+
+	* 新增成员：MsgMultiple
+
+* [TransformsParam](https://cloud.tencent.com/document/api/597/40861#TransformsParam)
+
+	* 新增成员：BatchAnalyse
+
 
 ### 第 64 次发布
 
@@ -53412,6 +53695,28 @@
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 40 次发布
+
+发布时间：2022-12-21 01:48:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ApplyDiskBackup](https://cloud.tencent.com/document/api/1207/84382)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateDiskBackup](https://cloud.tencent.com/document/api/1207/84381)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDiskBackups](https://cloud.tencent.com/document/api/1207/84380)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDiskBackupsDeniedActions](https://cloud.tencent.com/document/api/1207/84378)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDiskBackupsAttribute](https://cloud.tencent.com/document/api/1207/84377)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DiskBackup](https://cloud.tencent.com/document/api/1207/47576#DiskBackup)](https://cloud.tencent.com/document/api/1207/47576#[DiskBackup](https://cloud.tencent.com/document/api/1207/47576#DiskBackup))
+* [[DiskBackupDeniedActions](https://cloud.tencent.com/document/api/1207/47576#DiskBackupDeniedActions)](https://cloud.tencent.com/document/api/1207/47576#[DiskBackupDeniedActions](https://cloud.tencent.com/document/api/1207/47576#DiskBackupDeniedActions))
+
 ### 第 39 次发布
 
 发布时间：2022-12-14 01:33:53
@@ -58231,6 +58536,22 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 70 次发布
+
+发布时间：2022-12-21 01:51:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePrometheusInstanceUsage](https://cloud.tencent.com/document/api/248/84383)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PrometheusInstanceTenantUsage](https://cloud.tencent.com/document/api/248/30354#PrometheusInstanceTenantUsage)](https://cloud.tencent.com/document/api/248/30354#[PrometheusInstanceTenantUsage](https://cloud.tencent.com/document/api/248/30354#PrometheusInstanceTenantUsage))
 
 ### 第 69 次发布
 
@@ -71708,6 +72029,21 @@
 
 ## SSL 证书(ssl) 版本：2019-12-05
 
+### 第 25 次发布
+
+发布时间：2022-12-21 02:00:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ApplyCertificate](https://cloud.tencent.com/document/api/400/41678)
+
+	* 新增入参：DeleteDnsAutoRecord
+
+
 ### 第 24 次发布
 
 发布时间：2022-12-19 01:58:27
@@ -71718,7 +72054,7 @@
 
 新增数据结构：
 
-* [[PreAuditInfo](https://cloud.tencent.com/document/api/400/41679#PreAuditInfo)](https://cloud.tencent.com/document/api/400/41679#[PreAuditInfo](https://cloud.tencent.com/document/api/400/41679#PreAuditInfo))
+* [PreAuditInfo](https://cloud.tencent.com/document/api/400/41679#PreAuditInfo)
 
 修改数据结构：
 
@@ -82401,6 +82737,18 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 18 次发布
+
+发布时间：2022-12-20 01:58:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyLoadBalancingStatus
+
 ### 第 17 次发布
 
 发布时间：2022-12-09 02:05:01
@@ -83376,6 +83724,20 @@
 
 
 ## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 7 次发布
+
+发布时间：2022-12-21 02:09:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddClusterStorageOption](https://cloud.tencent.com/document/api/1527/84387)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteClusterStorageOption](https://cloud.tencent.com/document/api/1527/84386)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusterStorageOption](https://cloud.tencent.com/document/api/1527/84385)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 6 次发布
 
@@ -93430,6 +93792,51 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 133 次发布
+
+发布时间：2022-12-21 02:16:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateReviewTemplate](https://cloud.tencent.com/document/api/266/84391)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteReviewTemplate](https://cloud.tencent.com/document/api/266/84390)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeReviewTemplates](https://cloud.tencent.com/document/api/266/84389)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyReviewTemplate](https://cloud.tencent.com/document/api/266/84388)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FileReviewInfo](https://cloud.tencent.com/document/api/266/31773#FileReviewInfo)](https://cloud.tencent.com/document/api/266/31773#[FileReviewInfo](https://cloud.tencent.com/document/api/266/31773#FileReviewInfo))
+* [[ReviewInfo](https://cloud.tencent.com/document/api/266/31773#ReviewInfo)](https://cloud.tencent.com/document/api/266/31773#[ReviewInfo](https://cloud.tencent.com/document/api/266/31773#ReviewInfo))
+* [[ReviewTemplate](https://cloud.tencent.com/document/api/266/31773#ReviewTemplate)](https://cloud.tencent.com/document/api/266/31773#[ReviewTemplate](https://cloud.tencent.com/document/api/266/31773#ReviewTemplate))
+
+修改数据结构：
+
+* [MediaInfo](https://cloud.tencent.com/document/api/266/31773#MediaInfo)
+
+	* 新增成员：ReviewInfo
+
+	* <font color="#dd0000">**修改成员**：</font>BasicInfo, MetaData, TranscodeInfo, AnimatedGraphicsInfo, SampleSnapshotInfo, ImageSpriteInfo, SnapshotByTimeOffsetInfo, KeyFrameDescInfo, AdaptiveDynamicStreamingInfo, MiniProgramReviewInfo, SubtitleInfo, FileId
+
+
+### 第 132 次发布
+
+发布时间：2022-12-20 02:07:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDrmDataKey](https://cloud.tencent.com/document/api/266/54177)
+
+	* 新增入参：SubAppId
+
+
 ### 第 131 次发布
 
 发布时间：2022-12-09 10:06:16
@@ -100095,6 +100502,21 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 20 次发布
+
+发布时间：2022-12-21 02:20:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancerPackageNew](https://cloud.tencent.com/document/api/627/53609#LoadBalancerPackageNew)
+
+	* 新增成员：ListenerId, ListenerName, LoadBalancerId, LoadBalancerName, Protocol, Region, Vip, Vport, Zone, NumericalVpcId, LoadBalancerType
+
 
 ### 第 19 次发布
 

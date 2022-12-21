@@ -17,6 +17,9 @@ package v20220817
 const (
 	// 此产品的特有错误码
 
+	// 课堂状态错误，课堂已开始。
+	FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+
 	// 课堂时长不能超过5小时。
 	FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
 

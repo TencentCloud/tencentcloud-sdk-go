@@ -161,6 +161,9 @@ const (
 	// 云联网实例ID格式非法。
 	INVALIDPARAMETERVALUE_CCNIDMALFORMED = "InvalidParameterValue.CcnIdMalformed"
 
+	// 参数值非法，云硬盘备份点 ID 格式非法。
+	INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+
 	// 磁盘名称长度超出限制。
 	INVALIDPARAMETERVALUE_DISKNAMETOOLONG = "InvalidParameterValue.DiskNameTooLong"
 
@@ -272,6 +275,9 @@ const (
 	// 实例挂载数据盘配额不足，无法挂载磁盘。
 	LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = "LimitExceeded.AttachDataDiskQuotaLimitExceeded"
 
+	// 超过磁盘备份点配额限制。
+	LIMITEXCEEDED_DISKBACKUPQUOTALIMITEXCEEDED = "LimitExceeded.DiskBackupQuotaLimitExceeded"
+
 	// 超过防火墙规则配额。
 	LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = "LimitExceeded.FirewallRulesLimitExceeded"
 
@@ -293,6 +299,15 @@ const (
 	// 该实例不支持升级套餐操作。
 	OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = "OperationDenied.BundleNotSupportModify"
 
+	// 磁盘备份点忙，请稍后重新操作。
+	OPERATIONDENIED_DISKBACKUPBUSY = "OperationDenied.DiskBackupBusy"
+
+	// 磁盘备份点正在操作过程中，请稍后重试。
+	OPERATIONDENIED_DISKBACKUPOPERATIONINPROGRESS = "OperationDenied.DiskBackupOperationInProgress"
+
+	// 磁盘正在操作备份点过程中，请稍后重新操作。
+	OPERATIONDENIED_DISKBUSYFORBACKUPOPERATION = "OperationDenied.DiskBusyForBackupOperation"
+
 	// 磁盘处于创建过程中。
 	OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
 
@@ -311,6 +326,9 @@ const (
 	// 使用存储型套餐的实例不支持创建快照。
 	OPERATIONDENIED_OPERATIONDENIEDCREATESNAPSHOTFORSTORAGEBUNDLE = "OperationDenied.OperationDeniedCreateSnapshotForStorageBundle"
 
+	// 磁盘备份点正在使用中，不支持此操作。
+	RESOURCEINUSE_DISKBACKUPINUSE = "ResourceInUse.DiskBackupInUse"
+
 	// 密钥对正在使用中。
 	RESOURCEINUSE_KEYPAIRINUSE = "ResourceInUse.KeyPairInUse"
 
@@ -323,8 +341,23 @@ const (
 	// 指定的镜像不存在。请检查镜像的BlueprintId是否正确。
 	RESOURCENOTFOUND_BLUEPRINTNOTFOUND = "ResourceNotFound.BlueprintNotFound"
 
+	// 处于已挂载状态的磁盘关联实例不存在。
+	RESOURCENOTFOUND_DISKATTACHEDHASNOINSTANCEID = "ResourceNotFound.DiskAttachedHasNoInstanceId"
+
+	// 磁盘备份点ID不存在。
+	RESOURCENOTFOUND_DISKBACKUPIDNOTFOUND = "ResourceNotFound.DiskBackupIdNotFound"
+
+	// 磁盘备份点不存在。
+	RESOURCENOTFOUND_DISKBACKUPNOTEXISTS = "ResourceNotFound.DiskBackupNotExists"
+
+	// 用户指定磁盘备份点不存在。
+	RESOURCENOTFOUND_DISKBACKUPNOTFOUND = "ResourceNotFound.DiskBackupNotFound"
+
 	// 磁盘 ID 不存在。
 	RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+
+	// 磁盘不存在。
+	RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
 
 	// 磁盘不存在。
 	RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
@@ -389,6 +422,9 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
+	// 将磁盘备份点回滚到其他盘，不支持该操作。
+	UNSUPPORTEDOPERATION_APPLYDISKBACKUPTOANOTHERDISK = "UnsupportedOperation.ApplyDiskBackupToAnotherDisk"
+
 	// 没有实例不支持关联到云联网。
 	UNSUPPORTEDOPERATION_ATTACHCCNCONDITIONUNSATISFIED = "UnsupportedOperation.AttachCcnConditionUnsatisfied"
 
@@ -413,6 +449,9 @@ const (
 	// 解关联云联网失败。请检查云联网状态并稍后再试。
 	UNSUPPORTEDOPERATION_DETACHCCNFAILED = "UnsupportedOperation.DetachCcnFailed"
 
+	// 磁盘备份点上一次操作未结束，不支持当前操作。
+	UNSUPPORTEDOPERATION_DISKBACKUPLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskBackupLatestOperationUnfinished"
+
 	// 磁盘忙。
 	UNSUPPORTEDOPERATION_DISKBUSY = "UnsupportedOperation.DiskBusy"
 
@@ -430,6 +469,9 @@ const (
 
 	// LinuxUnix实例在创建时不支持设置密码。
 	UNSUPPORTEDOPERATION_INSTANCELINUXUNIXCREATINGNOTSUPPORTPASSWORD = "UnsupportedOperation.InstanceLinuxUnixCreatingNotSupportPassword"
+
+	// 磁盘备份点状态不支持该操作。
+	UNSUPPORTEDOPERATION_INVALIDDISKBACKUPSTATE = "UnsupportedOperation.InvalidDiskBackupState"
 
 	// 磁盘状态不支持该操作。
 	UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"

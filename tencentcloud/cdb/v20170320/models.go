@@ -3788,6 +3788,18 @@ type DescribeBackupConfigResponseParams struct {
 	// 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
 	BinlogArchiveDays *int64 `json:"BinlogArchiveDays,omitempty" name:"BinlogArchiveDays"`
 
+	// 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+	EnableBackupStandby *string `json:"EnableBackupStandby,omitempty" name:"EnableBackupStandby"`
+
+	// 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+	BackupStandbyDays *int64 `json:"BackupStandbyDays,omitempty" name:"BackupStandbyDays"`
+
+	// 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+	EnableBinlogStandby *string `json:"EnableBinlogStandby,omitempty" name:"EnableBinlogStandby"`
+
+	// 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+	BinlogStandbyDays *int64 `json:"BinlogStandbyDays,omitempty" name:"BinlogStandbyDays"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4015,6 +4027,10 @@ type DescribeBackupOverviewResponseParams struct {
 	// 归档备份容量，包含数据备份以及日志备份。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupArchiveVolume *int64 `json:"BackupArchiveVolume,omitempty" name:"BackupArchiveVolume"`
+
+	// 标准存储备份容量，包含数据备份以及日志备份。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupStandbyVolume *int64 `json:"BackupStandbyVolume,omitempty" name:"BackupStandbyVolume"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4344,6 +4360,12 @@ type DescribeBinlogBackupOverviewResponseParams struct {
 
 	// 归档日志备份个数。
 	BinlogArchiveCount *int64 `json:"BinlogArchiveCount,omitempty" name:"BinlogArchiveCount"`
+
+	// 标准存储日志备份容量（单位为字节）。
+	BinlogStandbyVolume *int64 `json:"BinlogStandbyVolume,omitempty" name:"BinlogStandbyVolume"`
+
+	// 标准存储日志备份个数。
+	BinlogStandbyCount *int64 `json:"BinlogStandbyCount,omitempty" name:"BinlogStandbyCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5693,6 +5715,12 @@ type DescribeDataBackupOverviewResponseParams struct {
 	// 当前地域归档备份总个数。
 	DataBackupArchiveCount *int64 `json:"DataBackupArchiveCount,omitempty" name:"DataBackupArchiveCount"`
 
+	// 当前地域标准存储备份总容量。
+	DataBackupStandbyVolume *int64 `json:"DataBackupStandbyVolume,omitempty" name:"DataBackupStandbyVolume"`
+
+	// 当前地域标准存储备份总个数。
+	DataBackupStandbyCount *int64 `json:"DataBackupStandbyCount,omitempty" name:"DataBackupStandbyCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -6685,6 +6713,75 @@ func (r *DescribeProxyCustomConfResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProxyCustomConfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteBackupConfigRequestParams struct {
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeRemoteBackupConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeRemoteBackupConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteBackupConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRemoteBackupConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRemoteBackupConfigResponseParams struct {
+	// 异地备份保留天时间，单位为天
+	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
+
+	// 异地数据备份开关，off - 关闭异地备份，on-开启异地备份
+	RemoteBackupSave *string `json:"RemoteBackupSave,omitempty" name:"RemoteBackupSave"`
+
+	// 异地日志备份开关，off - 关闭异地备份，on-开启异地备份，只有在参数RemoteBackupSave为on时，RemoteBinlogSave参数才可设置为on
+	RemoteBinlogSave *string `json:"RemoteBinlogSave,omitempty" name:"RemoteBinlogSave"`
+
+	// 用户已设置异地备份地域列表
+	RemoteRegion []*string `json:"RemoteRegion,omitempty" name:"RemoteRegion"`
+
+	// 用户可设置异地备份地域列表
+	RegionList []*string `json:"RegionList,omitempty" name:"RegionList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRemoteBackupConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRemoteBackupConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeRemoteBackupConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRemoteBackupConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9089,6 +9186,18 @@ type ModifyBackupConfigRequestParams struct {
 
 	// 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
 	EnableBinlogArchive *string `json:"EnableBinlogArchive,omitempty" name:"EnableBinlogArchive"`
+
+	// 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+	EnableBackupStandby *string `json:"EnableBackupStandby,omitempty" name:"EnableBackupStandby"`
+
+	// 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+	BackupStandbyDays *int64 `json:"BackupStandbyDays,omitempty" name:"BackupStandbyDays"`
+
+	// 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+	EnableBinlogStandby *string `json:"EnableBinlogStandby,omitempty" name:"EnableBinlogStandby"`
+
+	// 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+	BinlogStandbyDays *int64 `json:"BinlogStandbyDays,omitempty" name:"BinlogStandbyDays"`
 }
 
 type ModifyBackupConfigRequest struct {
@@ -9141,6 +9250,18 @@ type ModifyBackupConfigRequest struct {
 
 	// 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
 	EnableBinlogArchive *string `json:"EnableBinlogArchive,omitempty" name:"EnableBinlogArchive"`
+
+	// 是否开启数据备份标准存储策略，off-关闭，on-打开，默认为off
+	EnableBackupStandby *string `json:"EnableBackupStandby,omitempty" name:"EnableBackupStandby"`
+
+	// 数据备份标准存储起始天数，数据备份达到标准存储起始天数时进行转换，最小为30天，不得大于数据备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+	BackupStandbyDays *int64 `json:"BackupStandbyDays,omitempty" name:"BackupStandbyDays"`
+
+	// 是否开启日志备份标准存储策略，off-关闭，on-打开，默认为off
+	EnableBinlogStandby *string `json:"EnableBinlogStandby,omitempty" name:"EnableBinlogStandby"`
+
+	// 日志备份标准存储起始天数，日志备份达到标准存储起始天数时进行转换，最小为30天，不得大于日志备份保留天数。如果开启备份归档，不得大于等于备份归档天数
+	BinlogStandbyDays *int64 `json:"BinlogStandbyDays,omitempty" name:"BinlogStandbyDays"`
 }
 
 func (r *ModifyBackupConfigRequest) ToJsonString() string {
@@ -9171,6 +9292,10 @@ func (r *ModifyBackupConfigRequest) FromJsonString(s string) error {
 	delete(f, "BackupArchiveDays")
 	delete(f, "BinlogArchiveDays")
 	delete(f, "EnableBinlogArchive")
+	delete(f, "EnableBackupStandby")
+	delete(f, "BackupStandbyDays")
+	delete(f, "EnableBinlogStandby")
+	delete(f, "BinlogStandbyDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupConfigRequest has unknown keys!", "")
 	}
@@ -10236,6 +10361,88 @@ func (r *ModifyParamTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRemoteBackupConfigRequestParams struct {
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 异地数据备份开关，off - 关闭异地备份，on-开启异地备份
+	RemoteBackupSave *string `json:"RemoteBackupSave,omitempty" name:"RemoteBackupSave"`
+
+	// 异地日志备份开关，off - 关闭异地备份，on-开启异地备份，只有在参数RemoteBackupSave为on时，RemoteBinlogSave参数才可设置为on
+	RemoteBinlogSave *string `json:"RemoteBinlogSave,omitempty" name:"RemoteBinlogSave"`
+
+	// 用户设置异地备份地域列表
+	RemoteRegion []*string `json:"RemoteRegion,omitempty" name:"RemoteRegion"`
+
+	// 异地备份保留天时间，单位为天
+	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
+}
+
+type ModifyRemoteBackupConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 异地数据备份开关，off - 关闭异地备份，on-开启异地备份
+	RemoteBackupSave *string `json:"RemoteBackupSave,omitempty" name:"RemoteBackupSave"`
+
+	// 异地日志备份开关，off - 关闭异地备份，on-开启异地备份，只有在参数RemoteBackupSave为on时，RemoteBinlogSave参数才可设置为on
+	RemoteBinlogSave *string `json:"RemoteBinlogSave,omitempty" name:"RemoteBinlogSave"`
+
+	// 用户设置异地备份地域列表
+	RemoteRegion []*string `json:"RemoteRegion,omitempty" name:"RemoteRegion"`
+
+	// 异地备份保留天时间，单位为天
+	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
+}
+
+func (r *ModifyRemoteBackupConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRemoteBackupConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RemoteBackupSave")
+	delete(f, "RemoteBinlogSave")
+	delete(f, "RemoteRegion")
+	delete(f, "ExpireDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRemoteBackupConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRemoteBackupConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRemoteBackupConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRemoteBackupConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyRemoteBackupConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRemoteBackupConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

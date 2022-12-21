@@ -7015,6 +7015,78 @@ func (r *DescribePrometheusAgentsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusInstanceUsageRequestParams struct {
+	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 开始时间
+	StartCalcDate *string `json:"StartCalcDate,omitempty" name:"StartCalcDate"`
+
+	// 结束时间
+	EndCalcDate *string `json:"EndCalcDate,omitempty" name:"EndCalcDate"`
+}
+
+type DescribePrometheusInstanceUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 开始时间
+	StartCalcDate *string `json:"StartCalcDate,omitempty" name:"StartCalcDate"`
+
+	// 结束时间
+	EndCalcDate *string `json:"EndCalcDate,omitempty" name:"EndCalcDate"`
+}
+
+func (r *DescribePrometheusInstanceUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstanceUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "StartCalcDate")
+	delete(f, "EndCalcDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusInstanceUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusInstanceUsageResponseParams struct {
+	// 用量列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageSet []*PrometheusInstanceTenantUsage `json:"UsageSet,omitempty" name:"UsageSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusInstanceUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusInstanceUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusInstanceUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstanceUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusInstancesRequestParams struct {
 	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -9654,6 +9726,28 @@ type PrometheusInstanceGrantInfo struct {
 
 	// 是否显示API等信息(1=有, 2=无)
 	HasApiOperation *int64 `json:"HasApiOperation,omitempty" name:"HasApiOperation"`
+}
+
+type PrometheusInstanceTenantUsage struct {
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 计费周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CalcDate *string `json:"CalcDate,omitempty" name:"CalcDate"`
+
+	// 总用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *float64 `json:"Total,omitempty" name:"Total"`
+
+	// 基础指标用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Basic *float64 `json:"Basic,omitempty" name:"Basic"`
+
+	// 付费指标用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fee *float64 `json:"Fee,omitempty" name:"Fee"`
 }
 
 type PrometheusInstancesItem struct {

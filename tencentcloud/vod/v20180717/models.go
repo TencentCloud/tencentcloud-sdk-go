@@ -4109,6 +4109,100 @@ func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateReviewTemplateRequestParams struct {
+	// 需要返回的违规标签列表，可选值为：
+	// <li>Porn：色情；</li>
+	// <li>Terror：暴恐；</li>
+	// <li>Polity：不适宜的信息；</li>
+	// <li>Illegal：违法；</li>
+	// <li>Religion：宗教；</li>
+	// <li>Abuse：谩骂；</li>
+	// <li>Ad：广告；</li>
+	// <li>Moan：娇喘。</li>
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 审核模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 审核模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+type CreateReviewTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要返回的违规标签列表，可选值为：
+	// <li>Porn：色情；</li>
+	// <li>Terror：暴恐；</li>
+	// <li>Polity：不适宜的信息；</li>
+	// <li>Illegal：违法；</li>
+	// <li>Religion：宗教；</li>
+	// <li>Abuse：谩骂；</li>
+	// <li>Ad：广告；</li>
+	// <li>Moan：娇喘。</li>
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 审核模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 审核模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *CreateReviewTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReviewTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Labels")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReviewTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateReviewTemplateResponseParams struct {
+	// 审核模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateReviewTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateReviewTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateReviewTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReviewTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSampleSnapshotTemplateRequestParams struct {
 	// 采样截图类型，取值：
 	// <li>Percent：按百分比。</li>
@@ -5919,6 +6013,67 @@ func (r *DeleteProcedureTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteReviewTemplateRequestParams struct {
+	// 审核模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+type DeleteReviewTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 审核模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteReviewTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReviewTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteReviewTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteReviewTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteReviewTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteReviewTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteReviewTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReviewTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteSampleSnapshotTemplateRequestParams struct {
 	// 采样截图模板唯一标识。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
@@ -7591,6 +7746,9 @@ func (r *DescribeDailyPlayStatFileListResponse) FromJsonString(s string) error {
 type DescribeDrmDataKeyRequestParams struct {
 	// 加密后的数据密钥列表，最大支持10个。
 	EdkList []*string `json:"EdkList,omitempty" name:"EdkList"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 type DescribeDrmDataKeyRequest struct {
@@ -7598,6 +7756,9 @@ type DescribeDrmDataKeyRequest struct {
 	
 	// 加密后的数据密钥列表，最大支持10个。
 	EdkList []*string `json:"EdkList,omitempty" name:"EdkList"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeDrmDataKeyRequest) ToJsonString() string {
@@ -7613,6 +7774,7 @@ func (r *DescribeDrmDataKeyRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EdkList")
+	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDrmDataKeyRequest has unknown keys!", "")
 	}
@@ -8379,6 +8541,9 @@ type DescribeMediaInfosRequestParams struct {
 	// 媒体文件 ID 列表，N 从 0 开始取值，最大 19。
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
 	// <li>basicInfo（视频基础信息）。</li>
 	// <li>metaData（视频元信息）。</li>
@@ -8390,10 +8555,9 @@ type DescribeMediaInfosRequestParams struct {
 	// <li>keyFrameDescInfo（打点信息）。</li>
 	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
 	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
+	// <li>subtitleInfo（字幕信息）。</li>
+	// <li>reviewInfo（审核信息）。</li>
 	Filters []*string `json:"Filters,omitempty" name:"Filters"`
-
-	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 type DescribeMediaInfosRequest struct {
@@ -8402,6 +8566,9 @@ type DescribeMediaInfosRequest struct {
 	// 媒体文件 ID 列表，N 从 0 开始取值，最大 19。
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
 	// <li>basicInfo（视频基础信息）。</li>
 	// <li>metaData（视频元信息）。</li>
@@ -8413,10 +8580,9 @@ type DescribeMediaInfosRequest struct {
 	// <li>keyFrameDescInfo（打点信息）。</li>
 	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
 	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
+	// <li>subtitleInfo（字幕信息）。</li>
+	// <li>reviewInfo（审核信息）。</li>
 	Filters []*string `json:"Filters,omitempty" name:"Filters"`
-
-	// 点播[子应用](/document/product/266/14574) ID 。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeMediaInfosRequest) ToJsonString() string {
@@ -8432,8 +8598,8 @@ func (r *DescribeMediaInfosRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileIds")
-	delete(f, "Filters")
 	delete(f, "SubAppId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMediaInfosRequest has unknown keys!", "")
 	}
@@ -8991,6 +9157,98 @@ func (r *DescribeReviewDetailsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeReviewDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReviewTemplatesRequestParams struct {
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 审核模版唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeReviewTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 审核模版唯一标识过滤条件，数组长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeReviewTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReviewTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Definitions")
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReviewTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReviewTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 审核模板详情列表。
+	ReviewTemplateSet []*ReviewTemplate `json:"ReviewTemplateSet,omitempty" name:"ReviewTemplateSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeReviewTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReviewTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeReviewTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReviewTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11048,6 +11306,20 @@ type FileDeleteTask struct {
 	FileDeleteResultInfo []*FileDeleteResultItem `json:"FileDeleteResultInfo,omitempty" name:"FileDeleteResultInfo"`
 }
 
+type FileReviewInfo struct {
+	// 媒体审核信息\*。
+	// 
+	// \* 只展示通过 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217) 发起的审核结果信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaReviewInfo *ReviewInfo `json:"MediaReviewInfo,omitempty" name:"MediaReviewInfo"`
+
+	// 媒体封面审核信息\*。
+	// 
+	// \* 只展示通过 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217) 发起的审核结果信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverReviewInfo *ReviewInfo `json:"CoverReviewInfo,omitempty" name:"CoverReviewInfo"`
+}
+
 type FileUploadTask struct {
 	// 文件唯一 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
@@ -12172,6 +12444,10 @@ type MediaInfo struct {
 
 	// 媒体文件唯一标识 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 审核信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReviewInfo *FileReviewInfo `json:"ReviewInfo,omitempty" name:"ReviewInfo"`
 }
 
 type MediaInputInfo struct {
@@ -14275,6 +14551,108 @@ func (r *ModifyPersonSampleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyReviewTemplateRequestParams struct {
+	// 审核模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 审核模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 审核模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 需要返回的违规标签列表，可选值为：
+	// <li>Porn：色情；</li>
+	// <li>Terror：暴恐；</li>
+	// <li>Polity：不适宜的信息；</li>
+	// <li>Illegal：违法；</li>
+	// <li>Religion：宗教；</li>
+	// <li>Abuse：谩骂；</li>
+	// <li>Ad：广告；</li>
+	// <li>Moan：娇喘。</li>
+	// 
+	// 注意：不填表示不更新。
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
+}
+
+type ModifyReviewTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 审核模板唯一标识。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 审核模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 审核模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 需要返回的违规标签列表，可选值为：
+	// <li>Porn：色情；</li>
+	// <li>Terror：暴恐；</li>
+	// <li>Polity：不适宜的信息；</li>
+	// <li>Illegal：违法；</li>
+	// <li>Religion：宗教；</li>
+	// <li>Abuse：谩骂；</li>
+	// <li>Ad：广告；</li>
+	// <li>Moan：娇喘。</li>
+	// 
+	// 注意：不填表示不更新。
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
+}
+
+func (r *ModifyReviewTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReviewTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "Labels")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyReviewTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyReviewTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyReviewTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyReviewTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyReviewTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReviewTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17810,6 +18188,62 @@ func (r *ReviewImageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ReviewImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReviewInfo struct {
+	// 审核模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 审核的结果建议，取值范围：
+	// <li>pass：建议通过；</li>
+	// <li>review：建议复审；</li>
+	// <li>block：建议封禁。</li>
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 审核类型，当 Suggestion 为 review 或 block 时有效，格式为：Form.Label。
+	// Form 表示违禁的形式，取值范围：
+	// <li>Image：画面上的人物或图标；</li>
+	// <li>OCR：画面上的文字；</li>
+	// <li>ASR：语音中的文字；</li>
+	// <li>Voice：声音。</li>
+	// Label 表示违禁的标签，取值范围：
+	// <li>Porn：色情；</li>
+	// <li>Terror：暴恐；</li>
+	// <li>Polity：不适宜的信息；</li>
+	// <li>Ad：广告；</li>
+	// <li>Illegal：违法；</li>
+	// <li>Religion：宗教；</li>
+	// <li>Abuse：谩骂；</li>
+	// <li>Moan：娇喘。</li>
+	TypeSet []*string `json:"TypeSet,omitempty" name:"TypeSet"`
+
+	// 审核时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	ReviewTime *string `json:"ReviewTime,omitempty" name:"ReviewTime"`
+}
+
+type ReviewTemplate struct {
+	// 审核模版唯一标签。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 模板类型，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 需要返回的违规标签列表。
+	Labels []*string `json:"Labels,omitempty" name:"Labels"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type SDMCDrmKeyProviderInfo struct {

@@ -3371,6 +3371,112 @@ func (r *DescribeBgpBizTrendResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBizHttpStatusRequestParams struct {
+	// 统计方式，仅支持sum
+	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计周期，可取值60，300，1800，3600， 21600，86400，单位秒
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间。 如2020-02-01 12:04:12
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间。如2020-02-03 18:03:23
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 特定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo"`
+}
+
+type DescribeBizHttpStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 统计方式，仅支持sum
+	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计周期，可取值60，300，1800，3600， 21600，86400，单位秒
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计开始时间。 如2020-02-01 12:04:12
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间。如2020-02-03 18:03:23
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 特定域名查询
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
+	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo"`
+}
+
+func (r *DescribeBizHttpStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBizHttpStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Statistics")
+	delete(f, "Business")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Id")
+	delete(f, "Domain")
+	delete(f, "ProtoInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBizHttpStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBizHttpStatusResponseParams struct {
+	// 业务流量http状态码统计数据
+	HttpStatusMap *HttpStatusMap `json:"HttpStatusMap,omitempty" name:"HttpStatusMap"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBizHttpStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBizHttpStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeBizHttpStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBizHttpStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBizTrendRequestParams struct {
 	// 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
 	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
@@ -6919,6 +7025,38 @@ type ForwardListener struct {
 
 	// 转发监听端口上限，取值1~65535
 	FrontendPortEnd *int64 `json:"FrontendPortEnd,omitempty" name:"FrontendPortEnd"`
+}
+
+type HttpStatusMap struct {
+	// http2xx回源状态码
+	SourceHttp2xx []*float64 `json:"SourceHttp2xx,omitempty" name:"SourceHttp2xx"`
+
+	// http5xx状态码
+	Http5xx []*float64 `json:"Http5xx,omitempty" name:"Http5xx"`
+
+	// http5xx回源状态码
+	SourceHttp5xx []*float64 `json:"SourceHttp5xx,omitempty" name:"SourceHttp5xx"`
+
+	// http404回源状态码
+	SourceHttp404 []*float64 `json:"SourceHttp404,omitempty" name:"SourceHttp404"`
+
+	// http4xx状态码
+	Http4xx []*float64 `json:"Http4xx,omitempty" name:"Http4xx"`
+
+	// http4xx回源状态码
+	SourceHttp4xx []*float64 `json:"SourceHttp4xx,omitempty" name:"SourceHttp4xx"`
+
+	// http2xx状态码
+	Http2xx []*float64 `json:"Http2xx,omitempty" name:"Http2xx"`
+
+	// http404状态码
+	Http404 []*float64 `json:"Http404,omitempty" name:"Http404"`
+
+	// http3xx回源状态码
+	SourceHttp3xx []*float64 `json:"SourceHttp3xx,omitempty" name:"SourceHttp3xx"`
+
+	// http3xx状态码
+	Http3xx []*float64 `json:"Http3xx,omitempty" name:"Http3xx"`
 }
 
 type IPAlarmThresholdRelation struct {

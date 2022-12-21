@@ -2978,7 +2978,49 @@ type IpHitItemsData struct {
 }
 
 type LoadBalancerPackageNew struct {
+	// 监听id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
+	// 监听名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+
+	// 负载均衡id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 地区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 接入IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 接入端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *uint64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// VPCID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumericalVpcId *int64 `json:"NumericalVpcId,omitempty" name:"NumericalVpcId"`
+
+	// CLB类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
 }
 
 // Predefined struct for user

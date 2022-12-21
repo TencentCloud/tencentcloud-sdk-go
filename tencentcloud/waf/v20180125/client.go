@@ -2091,7 +2091,9 @@ func NewPostAttackDownloadTaskResponse() (response *PostAttackDownloadTaskRespon
 // 创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PostAttackDownloadTask(request *PostAttackDownloadTaskRequest) (response *PostAttackDownloadTaskResponse, err error) {
     return c.PostAttackDownloadTaskWithContext(context.Background(), request)
 }
@@ -2100,7 +2102,9 @@ func (c *Client) PostAttackDownloadTask(request *PostAttackDownloadTaskRequest) 
 // 创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) PostAttackDownloadTaskWithContext(ctx context.Context, request *PostAttackDownloadTaskRequest) (response *PostAttackDownloadTaskResponse, err error) {
     if request == nil {
         request = NewPostAttackDownloadTaskRequest()

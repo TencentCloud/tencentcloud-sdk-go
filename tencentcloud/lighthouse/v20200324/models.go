@@ -21,6 +21,67 @@ import (
 )
 
 // Predefined struct for user
+type ApplyDiskBackupRequestParams struct {
+	// 云硬盘ID，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘备份点ID，可通过 DescribeDiskBackups 接口查询。
+	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
+}
+
+type ApplyDiskBackupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云硬盘ID，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘备份点ID，可通过 DescribeDiskBackups 接口查询。
+	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
+}
+
+func (r *ApplyDiskBackupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyDiskBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskId")
+	delete(f, "DiskBackupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyDiskBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyDiskBackupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ApplyDiskBackupResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplyDiskBackupResponseParams `json:"Response"`
+}
+
+func (r *ApplyDiskBackupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyDiskBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ApplyInstanceSnapshotRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -523,6 +584,70 @@ func (r *CreateBlueprintResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDiskBackupRequestParams struct {
+	// 云硬盘 ID。当前只支持数据盘创建备份点。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘备份点名称，最大长度90。
+	DiskBackupName *string `json:"DiskBackupName,omitempty" name:"DiskBackupName"`
+}
+
+type CreateDiskBackupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云硬盘 ID。当前只支持数据盘创建备份点。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘备份点名称，最大长度90。
+	DiskBackupName *string `json:"DiskBackupName,omitempty" name:"DiskBackupName"`
+}
+
+func (r *CreateDiskBackupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDiskBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskId")
+	delete(f, "DiskBackupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDiskBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDiskBackupResponseParams struct {
+	// 备份点ID。
+	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDiskBackupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDiskBackupResponseParams `json:"Response"`
+}
+
+func (r *CreateDiskBackupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDiskBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFirewallRulesRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -920,6 +1045,60 @@ func (r *DeleteBlueprintsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteBlueprintsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDiskBackupsRequestParams struct {
+	// 云硬盘备份点ID列表，可通过 DescribeDiskBackups接口查询。
+	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
+}
+
+type DeleteDiskBackupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云硬盘备份点ID列表，可通过 DescribeDiskBackups接口查询。
+	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
+}
+
+func (r *DeleteDiskBackupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDiskBackupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskBackupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDiskBackupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDiskBackupsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteDiskBackupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDiskBackupsResponseParams `json:"Response"`
+}
+
+func (r *DeleteDiskBackupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDiskBackupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1601,6 +1780,174 @@ func (r *DescribeCcnAttachedInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCcnAttachedInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDiskBackupsDeniedActionsRequestParams struct {
+	// 云硬盘备份点 ID 列表, 可通过 DescribeDiskBackups 接口查询。
+	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
+}
+
+type DescribeDiskBackupsDeniedActionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云硬盘备份点 ID 列表, 可通过 DescribeDiskBackups 接口查询。
+	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
+}
+
+func (r *DescribeDiskBackupsDeniedActionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDiskBackupsDeniedActionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskBackupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskBackupsDeniedActionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDiskBackupsDeniedActionsResponseParams struct {
+	// 云硬盘备份点操作限制列表详细信息。
+	DiskBackupDeniedActionSet []*DiskBackupDeniedActions `json:"DiskBackupDeniedActionSet,omitempty" name:"DiskBackupDeniedActionSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDiskBackupsDeniedActionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDiskBackupsDeniedActionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDiskBackupsDeniedActionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDiskBackupsDeniedActionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDiskBackupsRequestParams struct {
+	// 要查询云硬盘备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
+	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
+
+	// 过滤器列表。
+	// <li>disk-backup-id</li>按照【云硬盘备份点 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>disk-id</li>按照【云硬盘 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 取值：参考数据结构DiskBackup下的DiskBackupState取值。
+	// <li>disk-usage</li>按照【云硬盘类型】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 取值：SYSTEM_DISK或DATA_DISK
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeDiskBackupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询云硬盘备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
+	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
+
+	// 过滤器列表。
+	// <li>disk-backup-id</li>按照【云硬盘备份点 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>disk-id</li>按照【云硬盘 ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 取值：参考数据结构DiskBackup下的DiskBackupState取值。
+	// <li>disk-usage</li>按照【云硬盘类型】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 取值：SYSTEM_DISK或DATA_DISK
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDiskBackupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDiskBackupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskBackupIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskBackupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDiskBackupsResponseParams struct {
+	// 云硬盘备份点的数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 云硬盘备份点信息列表。
+	DiskBackupSet []*DiskBackup `json:"DiskBackupSet,omitempty" name:"DiskBackupSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDiskBackupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDiskBackupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDiskBackupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDiskBackupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3714,6 +4061,57 @@ type Disk struct {
 	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
 }
 
+type DiskBackup struct {
+	// 云硬盘备份点ID。
+	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
+
+	// 创建此云硬盘备份点的云硬盘类型。取值：<li>DATA_DISK：数据盘</li>
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 创建此云硬盘备份点的云硬盘 ID。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 创建此云硬盘备份点的云硬盘大小，单位 GB。
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 云硬盘备份点名称，用户自定义的云硬盘备份点别名。
+	DiskBackupName *string `json:"DiskBackupName,omitempty" name:"DiskBackupName"`
+
+	// 云硬盘备份点的状态。取值范围：
+	// <li>NORMAL：正常。 </li>
+	// <li>CREATING：创建中。</li>
+	// <li>ROLLBACKING：回滚中。</li>
+	// <li>DELETING：删除中。</li>
+	DiskBackupState *string `json:"DiskBackupState,omitempty" name:"DiskBackupState"`
+
+	// 创建或回滚云硬盘备份点进度百分比，成功后此字段取值为 100。
+	Percent *int64 `json:"Percent,omitempty" name:"Percent"`
+
+	// 上一次操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperation *string `json:"LatestOperation,omitempty" name:"LatestOperation"`
+
+	// 上一次操作状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperationState *string `json:"LatestOperationState,omitempty" name:"LatestOperationState"`
+
+	// 上一次请求ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestOperationRequestId *string `json:"LatestOperationRequestId,omitempty" name:"LatestOperationRequestId"`
+
+	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
+type DiskBackupDeniedActions struct {
+	// 云硬盘备份点ID。
+	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
+
+	// 操作限制列表。
+	DeniedActions []*DeniedAction `json:"DeniedActions,omitempty" name:"DeniedActions"`
+}
+
 type DiskChargePrepaid struct {
 	// 新购周期。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
@@ -4699,6 +5097,67 @@ type ModifyBundle struct {
 	// 不支持套餐变更原因信息。变更套餐状态为"AVAILABLE"时, 该信息为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotSupportModifyMessage *string `json:"NotSupportModifyMessage,omitempty" name:"NotSupportModifyMessage"`
+}
+
+// Predefined struct for user
+type ModifyDiskBackupsAttributeRequestParams struct {
+	// 云硬盘备份点ID列表。
+	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
+
+	// 云硬盘备份点名称，最大长度90。
+	DiskBackupName *string `json:"DiskBackupName,omitempty" name:"DiskBackupName"`
+}
+
+type ModifyDiskBackupsAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云硬盘备份点ID列表。
+	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
+
+	// 云硬盘备份点名称，最大长度90。
+	DiskBackupName *string `json:"DiskBackupName,omitempty" name:"DiskBackupName"`
+}
+
+func (r *ModifyDiskBackupsAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDiskBackupsAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskBackupIds")
+	delete(f, "DiskBackupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDiskBackupsAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDiskBackupsAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDiskBackupsAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDiskBackupsAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyDiskBackupsAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDiskBackupsAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

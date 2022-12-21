@@ -3037,10 +3037,7 @@ func NewDescribeCdbZoneConfigResponse() (response *DescribeCdbZoneConfigResponse
 // 本接口(DescribeCdbZoneConfig)用于查询云数据库各地域可售卖的规格配置。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
-//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 func (c *Client) DescribeCdbZoneConfig(request *DescribeCdbZoneConfigRequest) (response *DescribeCdbZoneConfigResponse, err error) {
     return c.DescribeCdbZoneConfigWithContext(context.Background(), request)
 }
@@ -3049,10 +3046,7 @@ func (c *Client) DescribeCdbZoneConfig(request *DescribeCdbZoneConfigRequest) (r
 // 本接口(DescribeCdbZoneConfig)用于查询云数据库各地域可售卖的规格配置。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
-//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 func (c *Client) DescribeCdbZoneConfigWithContext(ctx context.Context, request *DescribeCdbZoneConfigRequest) (response *DescribeCdbZoneConfigResponse, err error) {
     if request == nil {
         request = NewDescribeCdbZoneConfigRequest()
@@ -3893,6 +3887,7 @@ func NewDescribeDefaultParamsResponse() (response *DescribeDefaultParamsResponse
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeDefaultParams(request *DescribeDefaultParamsRequest) (response *DescribeDefaultParamsResponse, err error) {
@@ -3907,6 +3902,7 @@ func (c *Client) DescribeDefaultParams(request *DescribeDefaultParamsRequest) (r
 //  CDBERROR = "CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeDefaultParamsWithContext(ctx context.Context, request *DescribeDefaultParamsRequest) (response *DescribeDefaultParamsResponse, err error) {
@@ -4567,6 +4563,54 @@ func (c *Client) DescribeProxyCustomConfWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeProxyCustomConfResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRemoteBackupConfigRequest() (request *DescribeRemoteBackupConfigRequest) {
+    request = &DescribeRemoteBackupConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeRemoteBackupConfig")
+    
+    
+    return
+}
+
+func NewDescribeRemoteBackupConfigResponse() (response *DescribeRemoteBackupConfigResponse) {
+    response = &DescribeRemoteBackupConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRemoteBackupConfig
+// 本接口(DescribeRemoteBackupConfig)用于查询数据库异地备份配置信息。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+func (c *Client) DescribeRemoteBackupConfig(request *DescribeRemoteBackupConfigRequest) (response *DescribeRemoteBackupConfigResponse, err error) {
+    return c.DescribeRemoteBackupConfigWithContext(context.Background(), request)
+}
+
+// DescribeRemoteBackupConfig
+// 本接口(DescribeRemoteBackupConfig)用于查询数据库异地备份配置信息。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+func (c *Client) DescribeRemoteBackupConfigWithContext(ctx context.Context, request *DescribeRemoteBackupConfigRequest) (response *DescribeRemoteBackupConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeRemoteBackupConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRemoteBackupConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRemoteBackupConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -7181,6 +7225,66 @@ func (c *Client) ModifyParamTemplateWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyRemoteBackupConfigRequest() (request *ModifyRemoteBackupConfigRequest) {
+    request = &ModifyRemoteBackupConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyRemoteBackupConfig")
+    
+    
+    return
+}
+
+func NewModifyRemoteBackupConfigResponse() (response *ModifyRemoteBackupConfigResponse) {
+    response = &ModifyRemoteBackupConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRemoteBackupConfig
+// 本接口(ModifyRemoteBackupConfig)用于查询数据库异地备份配置信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigRequest) (response *ModifyRemoteBackupConfigResponse, err error) {
+    return c.ModifyRemoteBackupConfigWithContext(context.Background(), request)
+}
+
+// ModifyRemoteBackupConfig
+// 本接口(ModifyRemoteBackupConfig)用于查询数据库异地备份配置信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+func (c *Client) ModifyRemoteBackupConfigWithContext(ctx context.Context, request *ModifyRemoteBackupConfigRequest) (response *ModifyRemoteBackupConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyRemoteBackupConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRemoteBackupConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRemoteBackupConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRoGroupInfoRequest() (request *ModifyRoGroupInfoRequest) {
     request = &ModifyRoGroupInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7888,6 +7992,7 @@ func NewRestartDBInstancesResponse() (response *RestartDBInstancesResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -7912,6 +8017,7 @@ func (c *Client) RestartDBInstances(request *RestartDBInstancesRequest) (respons
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"

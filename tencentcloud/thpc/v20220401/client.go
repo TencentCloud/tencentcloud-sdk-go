@@ -45,6 +45,48 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddClusterStorageOptionRequest() (request *AddClusterStorageOptionRequest) {
+    request = &AddClusterStorageOptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "AddClusterStorageOption")
+    
+    
+    return
+}
+
+func NewAddClusterStorageOptionResponse() (response *AddClusterStorageOptionResponse) {
+    response = &AddClusterStorageOptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddClusterStorageOption
+// 本接口（AddClusterStorageOption）用于添加集群存储选项信息。
+func (c *Client) AddClusterStorageOption(request *AddClusterStorageOptionRequest) (response *AddClusterStorageOptionResponse, err error) {
+    return c.AddClusterStorageOptionWithContext(context.Background(), request)
+}
+
+// AddClusterStorageOption
+// 本接口（AddClusterStorageOption）用于添加集群存储选项信息。
+func (c *Client) AddClusterStorageOptionWithContext(ctx context.Context, request *AddClusterStorageOptionRequest) (response *AddClusterStorageOptionResponse, err error) {
+    if request == nil {
+        request = NewAddClusterStorageOptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddClusterStorageOption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddClusterStorageOptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddNodesRequest() (request *AddNodesRequest) {
     request = &AddNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,6 +331,58 @@ func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteCl
     return
 }
 
+func NewDeleteClusterStorageOptionRequest() (request *DeleteClusterStorageOptionRequest) {
+    request = &DeleteClusterStorageOptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DeleteClusterStorageOption")
+    
+    
+    return
+}
+
+func NewDeleteClusterStorageOptionResponse() (response *DeleteClusterStorageOptionResponse) {
+    response = &DeleteClusterStorageOptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteClusterStorageOption
+// 本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DeleteClusterStorageOption(request *DeleteClusterStorageOptionRequest) (response *DeleteClusterStorageOptionResponse, err error) {
+    return c.DeleteClusterStorageOptionWithContext(context.Background(), request)
+}
+
+// DeleteClusterStorageOption
+// 本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DeleteClusterStorageOptionWithContext(ctx context.Context, request *DeleteClusterStorageOptionRequest) (response *DeleteClusterStorageOptionResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterStorageOptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClusterStorageOption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterStorageOptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteNodesRequest() (request *DeleteNodesRequest) {
     request = &DeleteNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -391,6 +485,54 @@ func (c *Client) DescribeClusterActivitiesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeClusterActivitiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterStorageOptionRequest() (request *DescribeClusterStorageOptionRequest) {
+    request = &DescribeClusterStorageOptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeClusterStorageOption")
+    
+    
+    return
+}
+
+func NewDescribeClusterStorageOptionResponse() (response *DescribeClusterStorageOptionResponse) {
+    response = &DescribeClusterStorageOptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterStorageOption
+// 本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) DescribeClusterStorageOption(request *DescribeClusterStorageOptionRequest) (response *DescribeClusterStorageOptionResponse, err error) {
+    return c.DescribeClusterStorageOptionWithContext(context.Background(), request)
+}
+
+// DescribeClusterStorageOption
+// 本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) DescribeClusterStorageOptionWithContext(ctx context.Context, request *DescribeClusterStorageOptionRequest) (response *DescribeClusterStorageOptionResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterStorageOptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterStorageOption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterStorageOptionResponse()
     err = c.Send(request, response)
     return
 }

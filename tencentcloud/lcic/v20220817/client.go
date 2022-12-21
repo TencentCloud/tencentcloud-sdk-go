@@ -293,6 +293,7 @@ func NewDeleteRoomResponse() (response *DeleteRoomResponse) {
 // 删除房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 func (c *Client) DeleteRoom(request *DeleteRoomRequest) (response *DeleteRoomResponse, err error) {
@@ -303,6 +304,7 @@ func (c *Client) DeleteRoom(request *DeleteRoomRequest) (response *DeleteRoomRes
 // 删除房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 func (c *Client) DeleteRoomWithContext(ctx context.Context, request *DeleteRoomRequest) (response *DeleteRoomResponse, err error) {

@@ -45,6 +45,108 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewApplyDiskBackupRequest() (request *ApplyDiskBackupRequest) {
+    request = &ApplyDiskBackupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ApplyDiskBackup")
+    
+    
+    return
+}
+
+func NewApplyDiskBackupResponse() (response *ApplyDiskBackupResponse) {
+    response = &ApplyDiskBackupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyDiskBackup
+// 本接口（ApplyDiskBackup）用于回滚指定云硬盘的备份点。
+//
+// * 仅支持回滚到原云硬盘。
+//
+// * 用于回滚的云硬盘备份点必须处于 NORMAL 状态。
+//
+//   云硬盘备份点状态可以通过 DescribeDiskBackups 接口查询。
+//
+// * 回滚云硬盘备份点时，云硬盘的状态必须为 UNATTACHED或ATTACHED。
+//
+//   云硬盘状态可通过 [DescribeDisks](https://cloud.tencent.com/document/api/1207/66093) 接口查询。
+//
+// * 如果云硬盘处于 ATTACHED状态，相关RUNNING 状态的实例会强制关机，然后回滚云硬盘备份点。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  OPERATIONDENIED_DISKBACKUPBUSY = "OperationDenied.DiskBackupBusy"
+//  OPERATIONDENIED_DISKBACKUPOPERATIONINPROGRESS = "OperationDenied.DiskBackupOperationInProgress"
+//  OPERATIONDENIED_DISKBUSYFORBACKUPOPERATION = "OperationDenied.DiskBusyForBackupOperation"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKATTACHEDHASNOINSTANCEID = "ResourceNotFound.DiskAttachedHasNoInstanceId"
+//  RESOURCENOTFOUND_DISKBACKUPNOTEXISTS = "ResourceNotFound.DiskBackupNotExists"
+//  RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_APPLYDISKBACKUPTOANOTHERDISK = "UnsupportedOperation.ApplyDiskBackupToAnotherDisk"
+//  UNSUPPORTEDOPERATION_INVALIDDISKBACKUPSTATE = "UnsupportedOperation.InvalidDiskBackupState"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) ApplyDiskBackup(request *ApplyDiskBackupRequest) (response *ApplyDiskBackupResponse, err error) {
+    return c.ApplyDiskBackupWithContext(context.Background(), request)
+}
+
+// ApplyDiskBackup
+// 本接口（ApplyDiskBackup）用于回滚指定云硬盘的备份点。
+//
+// * 仅支持回滚到原云硬盘。
+//
+// * 用于回滚的云硬盘备份点必须处于 NORMAL 状态。
+//
+//   云硬盘备份点状态可以通过 DescribeDiskBackups 接口查询。
+//
+// * 回滚云硬盘备份点时，云硬盘的状态必须为 UNATTACHED或ATTACHED。
+//
+//   云硬盘状态可通过 [DescribeDisks](https://cloud.tencent.com/document/api/1207/66093) 接口查询。
+//
+// * 如果云硬盘处于 ATTACHED状态，相关RUNNING 状态的实例会强制关机，然后回滚云硬盘备份点。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  OPERATIONDENIED_DISKBACKUPBUSY = "OperationDenied.DiskBackupBusy"
+//  OPERATIONDENIED_DISKBACKUPOPERATIONINPROGRESS = "OperationDenied.DiskBackupOperationInProgress"
+//  OPERATIONDENIED_DISKBUSYFORBACKUPOPERATION = "OperationDenied.DiskBusyForBackupOperation"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKATTACHEDHASNOINSTANCEID = "ResourceNotFound.DiskAttachedHasNoInstanceId"
+//  RESOURCENOTFOUND_DISKBACKUPNOTEXISTS = "ResourceNotFound.DiskBackupNotExists"
+//  RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_APPLYDISKBACKUPTOANOTHERDISK = "UnsupportedOperation.ApplyDiskBackupToAnotherDisk"
+//  UNSUPPORTEDOPERATION_INVALIDDISKBACKUPSTATE = "UnsupportedOperation.InvalidDiskBackupState"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) ApplyDiskBackupWithContext(ctx context.Context, request *ApplyDiskBackupRequest) (response *ApplyDiskBackupResponse, err error) {
+    if request == nil {
+        request = NewApplyDiskBackupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyDiskBackup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyDiskBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyInstanceSnapshotRequest() (request *ApplyInstanceSnapshotRequest) {
     request = &ApplyInstanceSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -455,6 +557,74 @@ func (c *Client) CreateBlueprintWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreateBlueprintResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDiskBackupRequest() (request *CreateDiskBackupRequest) {
+    request = &CreateDiskBackupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CreateDiskBackup")
+    
+    
+    return
+}
+
+func NewCreateDiskBackupResponse() (response *CreateDiskBackupResponse) {
+    response = &CreateDiskBackupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDiskBackup
+// 本接口 ( CreateDiskBackup  ) 用于创建指定云硬盘（当前只支持数据盘）的备份点。
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_DISKBACKUPQUOTALIMITEXCEEDED = "LimitExceeded.DiskBackupQuotaLimitExceeded"
+//  OPERATIONDENIED_DISKBUSYFORBACKUPOPERATION = "OperationDenied.DiskBusyForBackupOperation"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKATTACHEDHASNOINSTANCEID = "ResourceNotFound.DiskAttachedHasNoInstanceId"
+//  RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) CreateDiskBackup(request *CreateDiskBackupRequest) (response *CreateDiskBackupResponse, err error) {
+    return c.CreateDiskBackupWithContext(context.Background(), request)
+}
+
+// CreateDiskBackup
+// 本接口 ( CreateDiskBackup  ) 用于创建指定云硬盘（当前只支持数据盘）的备份点。
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED_DISKBACKUPQUOTALIMITEXCEEDED = "LimitExceeded.DiskBackupQuotaLimitExceeded"
+//  OPERATIONDENIED_DISKBUSYFORBACKUPOPERATION = "OperationDenied.DiskBusyForBackupOperation"
+//  OPERATIONDENIED_DISKOPERATIONINPROGRESS = "OperationDenied.DiskOperationInProgress"
+//  OPERATIONDENIED_DISKUSAGENOTSUPPORTOPERATION = "OperationDenied.DiskUsageNotSupportOperation"
+//  RESOURCENOTFOUND_DISKATTACHEDHASNOINSTANCEID = "ResourceNotFound.DiskAttachedHasNoInstanceId"
+//  RESOURCENOTFOUND_DISKNOTEXISTS = "ResourceNotFound.DiskNotExists"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) CreateDiskBackupWithContext(ctx context.Context, request *CreateDiskBackupRequest) (response *CreateDiskBackupResponse, err error) {
+    if request == nil {
+        request = NewCreateDiskBackupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDiskBackup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDiskBackupResponse()
     err = c.Send(request, response)
     return
 }
@@ -873,6 +1043,70 @@ func (c *Client) DeleteBlueprintsWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteBlueprintsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDiskBackupsRequest() (request *DeleteDiskBackupsRequest) {
+    request = &DeleteDiskBackupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DeleteDiskBackups")
+    
+    
+    return
+}
+
+func NewDeleteDiskBackupsResponse() (response *DeleteDiskBackupsResponse) {
+    response = &DeleteDiskBackupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDiskBackups
+// 本接口（DeleteDiskBackups）用于删除云硬盘备份点。
+//
+// 云硬盘备份点必须处于 NORMAL 状态，云硬盘备份点状态可以通过 DescribeDiskBackups接口查询，见输出参数中 DiskBackupState 字段解释。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  OPERATIONDENIED_DISKBACKUPOPERATIONINPROGRESS = "OperationDenied.DiskBackupOperationInProgress"
+//  RESOURCEINUSE_DISKBACKUPINUSE = "ResourceInUse.DiskBackupInUse"
+//  RESOURCENOTFOUND_DISKBACKUPIDNOTFOUND = "ResourceNotFound.DiskBackupIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_DISKBACKUPLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskBackupLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INVALIDDISKBACKUPSTATE = "UnsupportedOperation.InvalidDiskBackupState"
+func (c *Client) DeleteDiskBackups(request *DeleteDiskBackupsRequest) (response *DeleteDiskBackupsResponse, err error) {
+    return c.DeleteDiskBackupsWithContext(context.Background(), request)
+}
+
+// DeleteDiskBackups
+// 本接口（DeleteDiskBackups）用于删除云硬盘备份点。
+//
+// 云硬盘备份点必须处于 NORMAL 状态，云硬盘备份点状态可以通过 DescribeDiskBackups接口查询，见输出参数中 DiskBackupState 字段解释。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  OPERATIONDENIED_DISKBACKUPOPERATIONINPROGRESS = "OperationDenied.DiskBackupOperationInProgress"
+//  RESOURCEINUSE_DISKBACKUPINUSE = "ResourceInUse.DiskBackupInUse"
+//  RESOURCENOTFOUND_DISKBACKUPIDNOTFOUND = "ResourceNotFound.DiskBackupIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_DISKBACKUPLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskBackupLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INVALIDDISKBACKUPSTATE = "UnsupportedOperation.InvalidDiskBackupState"
+func (c *Client) DeleteDiskBackupsWithContext(ctx context.Context, request *DeleteDiskBackupsRequest) (response *DeleteDiskBackupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteDiskBackupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDiskBackups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDiskBackupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1499,6 +1733,112 @@ func (c *Client) DescribeCcnAttachedInstancesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeCcnAttachedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDiskBackupsRequest() (request *DescribeDiskBackupsRequest) {
+    request = &DescribeDiskBackupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDiskBackups")
+    
+    
+    return
+}
+
+func NewDescribeDiskBackupsResponse() (response *DescribeDiskBackupsResponse) {
+    response = &DescribeDiskBackupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDiskBackups
+// 本接口（DescribeDiskBackups）用于查询云硬盘备份点的详细信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeDiskBackups(request *DescribeDiskBackupsRequest) (response *DescribeDiskBackupsResponse, err error) {
+    return c.DescribeDiskBackupsWithContext(context.Background(), request)
+}
+
+// DescribeDiskBackups
+// 本接口（DescribeDiskBackups）用于查询云硬盘备份点的详细信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeDiskBackupsWithContext(ctx context.Context, request *DescribeDiskBackupsRequest) (response *DescribeDiskBackupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiskBackupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDiskBackups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDiskBackupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDiskBackupsDeniedActionsRequest() (request *DescribeDiskBackupsDeniedActionsRequest) {
+    request = &DescribeDiskBackupsDeniedActionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDiskBackupsDeniedActions")
+    
+    
+    return
+}
+
+func NewDescribeDiskBackupsDeniedActionsResponse() (response *DescribeDiskBackupsDeniedActionsResponse) {
+    response = &DescribeDiskBackupsDeniedActionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDiskBackupsDeniedActions
+// 本接口（DescribeDiskBackupsDeniedActions）用于查询一个或多个云硬盘备份点的操作限制列表信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeDiskBackupsDeniedActions(request *DescribeDiskBackupsDeniedActionsRequest) (response *DescribeDiskBackupsDeniedActionsResponse, err error) {
+    return c.DescribeDiskBackupsDeniedActionsWithContext(context.Background(), request)
+}
+
+// DescribeDiskBackupsDeniedActions
+// 本接口（DescribeDiskBackupsDeniedActions）用于查询一个或多个云硬盘备份点的操作限制列表信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeDiskBackupsDeniedActionsWithContext(ctx context.Context, request *DescribeDiskBackupsDeniedActionsRequest) (response *DescribeDiskBackupsDeniedActionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiskBackupsDeniedActionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDiskBackupsDeniedActions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDiskBackupsDeniedActionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2153,6 +2493,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 // * 支持查询实例的最新操作（LatestOperation）以及最新操作状态（LatestOperationState）。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INVALIDPARAMETER_FILTERVALUELIMITEXCEEDED = "InvalidParameter.FilterValueLimitExceeded"
@@ -2191,6 +2532,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 // * 支持查询实例的最新操作（LatestOperation）以及最新操作状态（LatestOperationState）。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INVALIDPARAMETER_FILTERVALUELIMITEXCEEDED = "InvalidParameter.FilterValueLimitExceeded"
@@ -3777,6 +4119,60 @@ func (c *Client) ModifyBlueprintAttributeWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyBlueprintAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDiskBackupsAttributeRequest() (request *ModifyDiskBackupsAttributeRequest) {
+    request = &ModifyDiskBackupsAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyDiskBackupsAttribute")
+    
+    
+    return
+}
+
+func NewModifyDiskBackupsAttributeResponse() (response *ModifyDiskBackupsAttributeResponse) {
+    response = &ModifyDiskBackupsAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDiskBackupsAttribute
+// 本接口 (ModifyDiskBackupsAttribute) 用于修改云硬盘备份点属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  RESOURCENOTFOUND_DISKBACKUPIDNOTFOUND = "ResourceNotFound.DiskBackupIdNotFound"
+//  RESOURCENOTFOUND_DISKBACKUPNOTFOUND = "ResourceNotFound.DiskBackupNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyDiskBackupsAttribute(request *ModifyDiskBackupsAttributeRequest) (response *ModifyDiskBackupsAttributeResponse, err error) {
+    return c.ModifyDiskBackupsAttributeWithContext(context.Background(), request)
+}
+
+// ModifyDiskBackupsAttribute
+// 本接口 (ModifyDiskBackupsAttribute) 用于修改云硬盘备份点属性。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
+//  RESOURCENOTFOUND_DISKBACKUPIDNOTFOUND = "ResourceNotFound.DiskBackupIdNotFound"
+//  RESOURCENOTFOUND_DISKBACKUPNOTFOUND = "ResourceNotFound.DiskBackupNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyDiskBackupsAttributeWithContext(ctx context.Context, request *ModifyDiskBackupsAttributeRequest) (response *ModifyDiskBackupsAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyDiskBackupsAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDiskBackupsAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDiskBackupsAttributeResponse()
     err = c.Send(request, response)
     return
 }

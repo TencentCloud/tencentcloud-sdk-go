@@ -248,10 +248,10 @@ const (
 	// 计费类型不合法。
 	INVALIDPARAMETERVALUE_INVALIDINTERNETCHARGETYPE = "InvalidParameterValue.InvalidInternetChargeType"
 
-	// 秘钥ID无效。
+	// 密钥ID无效。
 	INVALIDPARAMETERVALUE_INVALIDKEYPAIRID = "InvalidParameterValue.InvalidKeyPairId"
 
-	// 秘钥名称异常。
+	// 密钥名称异常。
 	INVALIDPARAMETERVALUE_INVALIDKEYPAIRNAME = "InvalidParameterValue.InvalidKeyPairName"
 
 	// 负载均衡数量不合法。

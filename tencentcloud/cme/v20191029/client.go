@@ -1025,6 +1025,7 @@ func NewDescribeClassResponse() (response *DescribeClassResponse) {
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClass(request *DescribeClassRequest) (response *DescribeClassResponse, err error) {
     return c.DescribeClassWithContext(context.Background(), request)
@@ -1038,6 +1039,7 @@ func (c *Client) DescribeClass(request *DescribeClassRequest) (response *Describ
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeClassWithContext(ctx context.Context, request *DescribeClassRequest) (response *DescribeClassResponse, err error) {
     if request == nil {
@@ -1455,6 +1457,7 @@ func NewDescribeSharedSpaceResponse() (response *DescribeSharedSpaceResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSharedSpace(request *DescribeSharedSpaceRequest) (response *DescribeSharedSpaceResponse, err error) {
     return c.DescribeSharedSpaceWithContext(context.Background(), request)
@@ -1466,6 +1469,7 @@ func (c *Client) DescribeSharedSpace(request *DescribeSharedSpaceRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeSharedSpaceWithContext(ctx context.Context, request *DescribeSharedSpaceRequest) (response *DescribeSharedSpaceResponse, err error) {
     if request == nil {

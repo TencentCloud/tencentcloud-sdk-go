@@ -3689,9 +3689,7 @@ func NewDescribeFolderListResponse() (response *DescribeFolderListResponse) {
 // 拉取文件夹目录
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeFolderList(request *DescribeFolderListRequest) (response *DescribeFolderListResponse, err error) {
     return c.DescribeFolderListWithContext(context.Background(), request)
 }
@@ -3702,9 +3700,7 @@ func (c *Client) DescribeFolderList(request *DescribeFolderListRequest) (respons
 // 拉取文件夹目录
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeFolderListWithContext(ctx context.Context, request *DescribeFolderListRequest) (response *DescribeFolderListResponse, err error) {
     if request == nil {
         request = NewDescribeFolderListRequest()

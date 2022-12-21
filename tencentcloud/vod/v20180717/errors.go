@@ -110,6 +110,9 @@ const (
 	// 参数值错误：过期时间。
 	INVALIDPARAMETER_EXPIRETIME = "InvalidParameter.ExpireTime"
 
+	// 参数错误：标签错误。
+	INVALIDPARAMETER_LABELS = "InvalidParameter.Labels"
+
 	// 任务流模板名字不存在。
 	INVALIDPARAMETER_PROCEDURENAMENOTEXIST = "InvalidParameter.ProcedureNameNotExist"
 
@@ -350,6 +353,9 @@ const (
 	// 参数值错误：LabelSet 参数取值非法。
 	INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
 
+	// 参数错误：标签错误。
+	INVALIDPARAMETERVALUE_LABELS = "InvalidParameterValue.Labels"
+
 	// 参数错误：Limit。
 	INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 
@@ -365,7 +371,7 @@ const (
 	// 参数值错误：媒体文件 URL。
 	INVALIDPARAMETERVALUE_MEDIAURL = "InvalidParameterValue.MediaUrl"
 
-	// Metric 参数错误。
+	// 参数错误：Metric 无效。
 	INVALIDPARAMETERVALUE_METRIC = "InvalidParameterValue.Metric"
 
 	// 参数值错误：不允许修改默认模板。

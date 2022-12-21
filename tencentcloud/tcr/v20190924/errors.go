@@ -26,6 +26,9 @@ const (
 	// 依赖服务异常。
 	FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 
+	// Core 返回内容为空
+	FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
+
 	// 获取数据库数据错误。
 	FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 

@@ -141,6 +141,54 @@ func (c *Client) CreateBackUpScheduleWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateInstanceNewRequest() (request *CreateInstanceNewRequest) {
+    request = &CreateInstanceNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "CreateInstanceNew")
+    
+    
+    return
+}
+
+func NewCreateInstanceNewResponse() (response *CreateInstanceNewResponse) {
+    response = &CreateInstanceNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateInstanceNew
+// 创建集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateInstanceNew(request *CreateInstanceNewRequest) (response *CreateInstanceNewResponse, err error) {
+    return c.CreateInstanceNewWithContext(context.Background(), request)
+}
+
+// CreateInstanceNew
+// 创建集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateInstanceNewWithContext(ctx context.Context, request *CreateInstanceNewRequest) (response *CreateInstanceNewResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstanceNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInstanceNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCkSqlApisRequest() (request *DescribeCkSqlApisRequest) {
     request = &DescribeCkSqlApisRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -185,6 +233,54 @@ func (c *Client) DescribeCkSqlApisWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeCkSqlApisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
+    request = &DescribeInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeInstance")
+    
+    
+    return
+}
+
+func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
+    response = &DescribeInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstance
+// 根据实例ID查询某个实例的具体信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
+    return c.DescribeInstanceWithContext(context.Background(), request)
+}
+
+// DescribeInstance
+// 根据实例ID查询某个实例的具体信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceResponse()
     err = c.Send(request, response)
     return
 }
