@@ -5323,6 +5323,9 @@ type RecognizeHealthCodeOCRResponseParams struct {
 	// 场所名称（允许返回空值）
 	SpotName *string `json:"SpotName,omitempty" name:"SpotName"`
 
+	// 疫苗接种时间
+	VaccinationTime *string `json:"VaccinationTime,omitempty" name:"VaccinationTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

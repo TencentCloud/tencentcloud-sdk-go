@@ -6305,6 +6305,60 @@ func (r *StopInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopProjectRequestParams struct {
+	// 项目 id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type StopProjectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目 id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *StopProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopProjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopProjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopProjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *StopProjectResponseParams `json:"Response"`
+}
+
+func (r *StopProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Tag struct {
 	// 标签key
 	Key *string `json:"Key,omitempty" name:"Key"`

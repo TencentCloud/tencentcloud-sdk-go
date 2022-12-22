@@ -10121,7 +10121,7 @@ type QueryStringKey struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reorder *string `json:"Reorder,omitempty" name:"Reorder"`
 
-	// includeAll | excludeAll | includeCustom | excludeAll 使用/排除部分url参数
+	// includeAll | excludeAll | includeCustom | excludeCustom 使用/排除部分url参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitempty" name:"Action"`
 

@@ -1,3 +1,159 @@
+# Release v1.0.564
+
+## 动效素材服务(anicloud) 版本：2022-09-23
+
+### 第 1 次发布
+
+发布时间：2022-12-21 17:12:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckAppidExist](https://cloud.tencent.com/document/api/1641/84445)
+* [QueryResource](https://cloud.tencent.com/document/api/1641/84444)
+* [QueryResourceInfo](https://cloud.tencent.com/document/api/1641/84443)
+
+新增数据结构：
+
+* [GoodsDetail](https://cloud.tencent.com/document/api/1641/84446#GoodsDetail)
+* [Resource](https://cloud.tencent.com/document/api/1641/84446#Resource)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 57 次发布
+
+发布时间：2022-12-22 01:39:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1420/80390)
+
+	* 新增入参：ApproverVerifyType
+
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：KeywordOrder
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云游戏(gs) 版本：2019-11-18
+
+### 第 19 次发布
+
+发布时间：2022-12-21 15:17:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstancesCount](https://cloud.tencent.com/document/api/1162/52717)
+
+	* 新增入参：GameType
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 86 次发布
+
+发布时间：2022-12-22 01:53:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
+
+	* 新增出参：VaccinationTime
+
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 19 次发布
+
+发布时间：2022-12-22 01:56:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StopProject](https://cloud.tencent.com/document/api/1464/84458)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 19 次发布
+
+发布时间：2022-12-22 02:07:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FollowOrigin](https://cloud.tencent.com/document/api/1552/80721#FollowOrigin)
+
+	* 新增成员：DefaultCacheStrategy
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 134 次发布
+
+发布时间：2022-12-22 02:14:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReviewImage](https://cloud.tencent.com/document/api/266/73217)
+
+	* 新增出参：MediaReviewResult
+
+
+新增数据结构：
+
+* [ReviewImageResult](https://cloud.tencent.com/document/api/266/31773#ReviewImageResult)
+* [ReviewImageSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewImageSegmentItem)
+
+
+
 # Release v1.0.563
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

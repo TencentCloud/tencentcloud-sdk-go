@@ -744,6 +744,12 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
+	// 签署人校验方式
+	// VerifyCheck: 人脸识别（默认）
+	// MobileCheck：手机号验证
+	// 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
+
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -759,6 +765,12 @@ type ChannelCreateFlowGroupByFilesRequest struct {
 
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署人校验方式
+	// VerifyCheck: 人脸识别（默认）
+	// MobileCheck：手机号验证
+	// 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -779,6 +791,7 @@ func (r *ChannelCreateFlowGroupByFilesRequest) FromJsonString(s string) error {
 	delete(f, "FlowFileInfos")
 	delete(f, "FlowGroupName")
 	delete(f, "Agent")
+	delete(f, "ApproverVerifyType")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowGroupByFilesRequest has unknown keys!", "")
@@ -1628,6 +1641,10 @@ type Component struct {
 	// 渠道控件ID。
 	// 如果不为空，属于渠道预设控件；
 	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
+
+	// 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
+	// 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
+	KeywordOrder *string `json:"KeywordOrder,omitempty" name:"KeywordOrder"`
 
 	// 指定关键字页码，可选参数，指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
 	KeywordPage *int64 `json:"KeywordPage,omitempty" name:"KeywordPage"`

@@ -4274,3 +4274,53 @@ func (c *Client) StopInstanceWithContext(ctx context.Context, request *StopInsta
     err = c.Send(request, response)
     return
 }
+
+func NewStopProjectRequest() (request *StopProjectRequest) {
+    request = &StopProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "StopProject")
+    
+    
+    return
+}
+
+func NewStopProjectResponse() (response *StopProjectResponse) {
+    response = &StopProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopProject
+// 停止项目使用与上报数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopProject(request *StopProjectRequest) (response *StopProjectResponse, err error) {
+    return c.StopProjectWithContext(context.Background(), request)
+}
+
+// StopProject
+// 停止项目使用与上报数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopProjectWithContext(ctx context.Context, request *StopProjectRequest) (response *StopProjectResponse, err error) {
+    if request == nil {
+        request = NewStopProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopProjectResponse()
+    err = c.Send(request, response)
+    return
+}

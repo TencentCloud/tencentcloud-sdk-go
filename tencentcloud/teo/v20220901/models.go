@@ -10553,6 +10553,10 @@ type FollowOrigin struct {
 	// 源站未返回 Cache-Control 头时, 设置缓存/不缓存
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultCache *string `json:"DefaultCache,omitempty" name:"DefaultCache"`
+
+	// 源站未返回 Cache-Control 头时, 使用/不使用默认缓存策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultCacheStrategy *string `json:"DefaultCacheStrategy,omitempty" name:"DefaultCacheStrategy"`
 }
 
 type ForceRedirect struct {
