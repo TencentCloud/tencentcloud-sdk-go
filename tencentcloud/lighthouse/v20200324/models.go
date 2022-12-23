@@ -5745,6 +5745,15 @@ type PolicyDetail struct {
 
 	// 最终折扣。
 	FinalDiscount *int64 `json:"FinalDiscount,omitempty" name:"FinalDiscount"`
+
+	// 活动折扣。取值为null，表示无有效值，即没有折扣。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityDiscount *float64 `json:"ActivityDiscount,omitempty" name:"ActivityDiscount"`
+
+	// 折扣类型。
+	// user：用户折扣; common：官网折扣; activity：活动折扣。 取值为null，表示无有效值，即没有折扣。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountType *string `json:"DiscountType,omitempty" name:"DiscountType"`
 }
 
 type Price struct {

@@ -5315,6 +5315,10 @@ type SecretIdLastUsed struct {
 	// 最后访问日期(有1天延迟)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUsedDate *string `json:"LastUsedDate,omitempty" name:"LastUsedDate"`
+
+	// 最后密钥访问日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastSecretUsedDate *uint64 `json:"LastSecretUsedDate,omitempty" name:"LastSecretUsedDate"`
 }
 
 // Predefined struct for user

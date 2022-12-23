@@ -281,14 +281,8 @@ type ConfigureSyncJobRequestParams struct {
 	// 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
-	// 源端信息
-	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
-
 	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
-
-	// 目标端信息
-	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
 
 	// 同步任务选项
 	Options *Options `json:"Options,omitempty" name:"Options"`
@@ -299,11 +293,23 @@ type ConfigureSyncJobRequestParams struct {
 	// 同步任务名称
 	JobName *string `json:"JobName,omitempty" name:"JobName"`
 
+	// 枚举值是 liteMode 和 fullMode ，分别对应精简模式或正常模式
+	JobMode *string `json:"JobMode,omitempty" name:"JobMode"`
+
 	// 运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
 	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
 
 	// 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
 	ExpectRunTime *string `json:"ExpectRunTime,omitempty" name:"ExpectRunTime"`
+
+	// 源端信息，单节点数据库使用
+	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
+
+	// 目标端信息，单节点数据库使用
+	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
+
+	// 自动重试的时间段、可设置5至720分钟、0表示不重试
+	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
 type ConfigureSyncJobRequest struct {
@@ -315,14 +321,8 @@ type ConfigureSyncJobRequest struct {
 	// 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
-	// 源端信息
-	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
-
 	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
-
-	// 目标端信息
-	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
 
 	// 同步任务选项
 	Options *Options `json:"Options,omitempty" name:"Options"`
@@ -333,11 +333,23 @@ type ConfigureSyncJobRequest struct {
 	// 同步任务名称
 	JobName *string `json:"JobName,omitempty" name:"JobName"`
 
+	// 枚举值是 liteMode 和 fullMode ，分别对应精简模式或正常模式
+	JobMode *string `json:"JobMode,omitempty" name:"JobMode"`
+
 	// 运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
 	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
 
 	// 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
 	ExpectRunTime *string `json:"ExpectRunTime,omitempty" name:"ExpectRunTime"`
+
+	// 源端信息，单节点数据库使用
+	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
+
+	// 目标端信息，单节点数据库使用
+	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
+
+	// 自动重试的时间段、可设置5至720分钟、0表示不重试
+	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
 func (r *ConfigureSyncJobRequest) ToJsonString() string {
@@ -354,14 +366,16 @@ func (r *ConfigureSyncJobRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	delete(f, "SrcAccessType")
-	delete(f, "SrcInfo")
 	delete(f, "DstAccessType")
-	delete(f, "DstInfo")
 	delete(f, "Options")
 	delete(f, "Objects")
 	delete(f, "JobName")
+	delete(f, "JobMode")
 	delete(f, "RunMode")
 	delete(f, "ExpectRunTime")
+	delete(f, "SrcInfo")
+	delete(f, "DstInfo")
+	delete(f, "AutoRetryTimeRangeMinutes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureSyncJobRequest has unknown keys!", "")
 	}
@@ -1085,6 +1099,22 @@ type Database struct {
 	// ProcedureMode取值为Partial时需要填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Procedures []*string `json:"Procedures,omitempty" name:"Procedures"`
+
+	// 触发器迁移模式，all(为当前对象下的所有对象)，partial(部分对象)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerMode *string `json:"TriggerMode,omitempty" name:"TriggerMode"`
+
+	// 当TriggerMode为partial，指定要迁移的触发器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Triggers []*string `json:"Triggers,omitempty" name:"Triggers"`
+
+	// 事件迁移模式，all(为当前对象下的所有对象)，partial(部分对象)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventMode *string `json:"EventMode,omitempty" name:"EventMode"`
+
+	// 当EventMode为partial，指定要迁移的事件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Events []*string `json:"Events,omitempty" name:"Events"`
 }
 
 type DatabaseTableObject struct {
@@ -2273,6 +2303,10 @@ type Endpoint struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
+	// tdsql mysql版的节点类型，枚举值为proxy、set
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *string `json:"Role,omitempty" name:"Role"`
+
 	// 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbKernel *string `json:"DbKernel,omitempty" name:"DbKernel"`
@@ -2333,17 +2367,21 @@ type Endpoint struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccountMode *string `json:"AccountMode,omitempty" name:"AccountMode"`
-
 	// 实例所属账号，如果为跨账号实例此项必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Account *string `json:"Account,omitempty" name:"Account"`
 
+	// 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountMode *string `json:"AccountMode,omitempty" name:"AccountMode"`
+
 	// 跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountRole *string `json:"AccountRole,omitempty" name:"AccountRole"`
+
+	// 外部角色id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleExternalId *string `json:"RoleExternalId,omitempty" name:"RoleExternalId"`
 
 	// 临时密钥Id，如果为跨账号实例此项必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2357,9 +2395,9 @@ type Endpoint struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpToken *string `json:"TmpToken,omitempty" name:"TmpToken"`
 
-	// 外部角色id
+	// 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoleExternalId *string `json:"RoleExternalId,omitempty" name:"RoleExternalId"`
+	EncryptConn *string `json:"EncryptConn,omitempty" name:"EncryptConn"`
 }
 
 type ErrorInfoItem struct {
@@ -2556,6 +2594,10 @@ type JobItem struct {
 	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
+
+	// 自动重试时间段信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
 type KeyValuePairOption struct {
@@ -2948,6 +2990,9 @@ type ModifyMigrationJobRequestParams struct {
 
 	// 标签信息
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
+
+	// 自动重试的时间段、可设置5至720分钟、0表示不重试
+	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
 type ModifyMigrationJobRequest struct {
@@ -2976,6 +3021,9 @@ type ModifyMigrationJobRequest struct {
 
 	// 标签信息
 	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
+
+	// 自动重试的时间段、可设置5至720分钟、0表示不重试
+	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
 func (r *ModifyMigrationJobRequest) ToJsonString() string {
@@ -2998,6 +3046,7 @@ func (r *ModifyMigrationJobRequest) FromJsonString(s string) error {
 	delete(f, "JobName")
 	delete(f, "ExpectRunTime")
 	delete(f, "Tags")
+	delete(f, "AutoRetryTimeRangeMinutes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMigrationJobRequest has unknown keys!", "")
 	}
@@ -3038,6 +3087,14 @@ type Objects struct {
 	// 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即Options.InitType字段值为Structure或Full
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedObjects []*string `json:"AdvancedObjects,omitempty" name:"AdvancedObjects"`
+
+	// OnlineDDL类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnlineDDL *OnlineDDL `json:"OnlineDDL,omitempty" name:"OnlineDDL"`
+}
+
+type OnlineDDL struct {
+
 }
 
 type Options struct {
@@ -4073,7 +4130,7 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
-	// 源端信息
+	// 源端信息，单节点数据库使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
@@ -4089,7 +4146,7 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
 
-	// 目标端信息
+	// 目标端信息，单节点数据库使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
 
@@ -4132,6 +4189,10 @@ type SyncJobInfo struct {
 	// 下线时间，格式为 yyyy-mm-dd hh:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTime *string `json:"OfflineTime,omitempty" name:"OfflineTime"`
+
+	// 自动重试时间段设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
 type Table struct {

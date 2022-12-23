@@ -1,3 +1,206 @@
+# Release v1.0.565
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 50 次发布
+
+发布时间：2022-12-23 01:11:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecretIdLastUsed](https://cloud.tencent.com/document/api/598/33167#SecretIdLastUsed)
+
+	* 新增成员：LastSecretUsedDate
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 37 次发布
+
+发布时间：2022-12-23 01:24:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+
+	* 新增入参：InstanceInitInfos
+
+
+新增数据结构：
+
+* [InstanceInitInfo](https://cloud.tencent.com/document/api/1003/48097#InstanceInitInfo)
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 4 次发布
+
+发布时间：2022-12-23 01:28:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ConfigureSyncJob](https://cloud.tencent.com/document/api/571/82107)
+
+	* 新增入参：JobMode, AutoRetryTimeRangeMinutes
+
+	* <font color="#dd0000">**修改入参**：</font>SrcInfo, DstInfo
+
+* [ModifyMigrationJob](https://cloud.tencent.com/document/api/571/82077)
+
+	* 新增入参：AutoRetryTimeRangeMinutes
+
+
+新增数据结构：
+
+* [OnlineDDL](https://cloud.tencent.com/document/api/571/82108#OnlineDDL)
+
+修改数据结构：
+
+* [Database](https://cloud.tencent.com/document/api/571/82108#Database)
+
+	* 新增成员：TriggerMode, Triggers, EventMode, Events
+
+* [Endpoint](https://cloud.tencent.com/document/api/571/82108#Endpoint)
+
+	* 新增成员：Role, EncryptConn
+
+* [JobItem](https://cloud.tencent.com/document/api/571/82108#JobItem)
+
+	* 新增成员：AutoRetryTimeRangeMinutes
+
+* [Objects](https://cloud.tencent.com/document/api/571/82108#Objects)
+
+	* 新增成员：OnlineDDL
+
+* [SyncJobInfo](https://cloud.tencent.com/document/api/571/82108#SyncJobInfo)
+
+	* 新增成员：AutoRetryTimeRangeMinutes
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 41 次发布
+
+发布时间：2022-12-23 01:40:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PolicyDetail](https://cloud.tencent.com/document/api/1207/47576#PolicyDetail)
+
+	* 新增成员：ActivityDiscount, DiscountType
+
+	* <font color="#dd0000">**修改成员**：</font>UserDiscount, CommonDiscount, FinalDiscount
+
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 20 次发布
+
+发布时间：2022-12-23 01:49:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRumLogList](https://cloud.tencent.com/document/api/1464/84474)
+* [DescribeRumStatsLogList](https://cloud.tencent.com/document/api/1464/84473)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 89 次发布
+
+发布时间：2022-12-23 01:54:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
+
+	* 新增出参：TkeClusterInfo, TkeWorkloadType
+
+
+新增数据结构：
+
+* [CloudBaseRunServiceVolumeHostPath](https://cloud.tencent.com/document/api/876/34822#CloudBaseRunServiceVolumeHostPath)
+* [TkeClusterInfo](https://cloud.tencent.com/document/api/876/34822#TkeClusterInfo)
+
+修改数据结构：
+
+* [CloudRunServiceVolume](https://cloud.tencent.com/document/api/876/34822#CloudRunServiceVolume)
+
+	* 新增成员：HostPath
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 20 次发布
+
+发布时间：2022-12-23 02:00:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
+
+	* 新增入参：Grpc
+
+
+新增数据结构：
+
+* [Grpc](https://cloud.tencent.com/document/api/1552/80721#Grpc)
+
+修改数据结构：
+
+* [ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting)
+
+	* 新增成员：Grpc
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.564
 
 ## 动效素材服务(anicloud) 版本：2022-09-23

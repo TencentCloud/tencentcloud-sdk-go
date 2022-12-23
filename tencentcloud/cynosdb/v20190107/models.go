@@ -1026,6 +1026,9 @@ type CreateClustersRequestParams struct {
 
 	// 多可用区地址
 	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
+
+	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
+	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitempty" name:"InstanceInitInfos"`
 }
 
 type CreateClustersRequest struct {
@@ -1171,6 +1174,9 @@ type CreateClustersRequest struct {
 
 	// 多可用区地址
 	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
+
+	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
+	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitempty" name:"InstanceInitInfos"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -1225,6 +1231,7 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "DealMode")
 	delete(f, "ParamTemplateId")
 	delete(f, "SlaveZone")
+	delete(f, "InstanceInitInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -4551,6 +4558,20 @@ func (r *InquirePriceRenewResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *InquirePriceRenewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceInitInfo struct {
+	// 实例cpu
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 实例内存
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例类型 rw/ro
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例个数,范围[1,15]
+	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 }
 
 type InstanceSpec struct {

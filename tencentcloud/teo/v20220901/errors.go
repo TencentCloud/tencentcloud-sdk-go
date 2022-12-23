@@ -161,6 +161,9 @@ const (
 	// 非法条件-非法参数值-参数值数量为0。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEZEROLENGTH = "InvalidParameter.ErrInvalidConditionValueZeroLength"
 
+	// 开启 Grpc 协议支持需要同时开启 HTTP/2 协议支持。
+	INVALIDPARAMETER_GRPCREQUIREHTTP2 = "InvalidParameter.GrpcRequireHttp2"
+
 	// 域名不存在。
 	INVALIDPARAMETER_HOSTNOTFOUND = "InvalidParameter.HostNotFound"
 

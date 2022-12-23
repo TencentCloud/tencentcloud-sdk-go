@@ -590,6 +590,10 @@ type CloudBaseRunServerVersionItem struct {
 	Architecture *string `json:"Architecture,omitempty" name:"Architecture"`
 }
 
+type CloudBaseRunServiceVolumeHostPath struct {
+
+}
+
 type CloudBaseRunServiceVolumeMount struct {
 	// Volume 名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -869,6 +873,10 @@ type CloudRunServiceVolume struct {
 	// emptydir数据卷详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmptyDir *CloudBaseRunEmptyDirVolumeSource `json:"EmptyDir,omitempty" name:"EmptyDir"`
+
+	// 主机路径挂载信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostPath *CloudBaseRunServiceVolumeHostPath `json:"HostPath,omitempty" name:"HostPath"`
 }
 
 type ClsInfo struct {
@@ -4045,6 +4053,14 @@ type DescribeCloudBaseRunServerVersionResponseParams struct {
 	// 自动扩缩容策略组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitempty" name:"PolicyDetail"`
+
+	// Tke集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TkeClusterInfo *TkeClusterInfo `json:"TkeClusterInfo,omitempty" name:"TkeClusterInfo"`
+
+	// 版本工作负载类型；deployment/deamonset
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TkeWorkloadType *string `json:"TkeWorkloadType,omitempty" name:"TkeWorkloadType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8404,6 +8420,20 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TkeClusterInfo struct {
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群的vpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 版本内网CLB所在子网Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionClbSubnetId *string `json:"VersionClbSubnetId,omitempty" name:"VersionClbSubnetId"`
 }
 
 // Predefined struct for user

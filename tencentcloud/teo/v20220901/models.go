@@ -10586,6 +10586,13 @@ type GeoIp struct {
 	Province *string `json:"Province,omitempty" name:"Province"`
 }
 
+type Grpc struct {
+	// 是否开启Grpc配置，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type Header struct {
 	// HTTP头部名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -13150,6 +13157,10 @@ type ModifyZoneSettingRequestParams struct {
 	// 回源时是否携带客户端IP所属地域信息的配置。
 	// 不填写表示保持原有配置。
 	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
+
+	// Grpc协议支持配置。
+	// 不填写表示保持原有配置。
+	Grpc *Grpc `json:"Grpc,omitempty" name:"Grpc"`
 }
 
 type ModifyZoneSettingRequest struct {
@@ -13225,6 +13236,10 @@ type ModifyZoneSettingRequest struct {
 	// 回源时是否携带客户端IP所属地域信息的配置。
 	// 不填写表示保持原有配置。
 	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
+
+	// Grpc协议支持配置。
+	// 不填写表示保持原有配置。
+	Grpc *Grpc `json:"Grpc,omitempty" name:"Grpc"`
 }
 
 func (r *ModifyZoneSettingRequest) ToJsonString() string {
@@ -13257,6 +13272,7 @@ func (r *ModifyZoneSettingRequest) FromJsonString(s string) error {
 	delete(f, "CachePrefresh")
 	delete(f, "Ipv6")
 	delete(f, "ClientIpCountry")
+	delete(f, "Grpc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyZoneSettingRequest has unknown keys!", "")
 	}
@@ -15323,4 +15339,8 @@ type ZoneSetting struct {
 	// 回源时是否携带客户端IP所属地域信息的配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
+
+	// Grpc协议支持配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Grpc *Grpc `json:"Grpc,omitempty" name:"Grpc"`
 }

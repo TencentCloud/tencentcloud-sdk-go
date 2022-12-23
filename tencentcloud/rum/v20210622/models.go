@@ -5250,6 +5250,190 @@ func (r *DescribeReleaseFilesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRumLogListRequestParams struct {
+	// 排序方式  desc  asc（必填）
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 开始时间（必填）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 单次查询返回的原始日志条数，最大值为100（必填）
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页数，第几页
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 结束时间（必填）
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目ID（必填）
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+}
+
+type DescribeRumLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 排序方式  desc  asc（必填）
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 开始时间（必填）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 单次查询返回的原始日志条数，最大值为100（必填）
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页数，第几页
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 结束时间（必填）
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目ID（必填）
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+}
+
+func (r *DescribeRumLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRumLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrderBy")
+	delete(f, "StartTime")
+	delete(f, "Limit")
+	delete(f, "Page")
+	delete(f, "Query")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRumLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRumLogListResponseParams struct {
+	// 返回字符串
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRumLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRumLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRumLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRumLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRumStatsLogListRequestParams struct {
+	// 开始时间（必填）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 单次查询返回的原始日志条数，最大值为100（必填）
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 结束时间（必填）
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目ID（必填）
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+}
+
+type DescribeRumStatsLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间（必填）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 单次查询返回的原始日志条数，最大值为100（必填）
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 结束时间（必填）
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目ID（必填）
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+}
+
+func (r *DescribeRumStatsLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRumStatsLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "Limit")
+	delete(f, "Query")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRumStatsLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRumStatsLogListResponseParams struct {
+	// 返回字符串
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRumStatsLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRumStatsLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRumStatsLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRumStatsLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeScoresRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`

@@ -3553,6 +3553,178 @@ func (c *Client) DescribeReleaseFilesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeRumLogListRequest() (request *DescribeRumLogListRequest) {
+    request = &DescribeRumLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeRumLogList")
+    
+    
+    return
+}
+
+func NewDescribeRumLogListResponse() (response *DescribeRumLogListResponse) {
+    response = &DescribeRumLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRumLogList
+// 获取项目下的日志列表（实例创建的项目下的日志列表）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRumLogList(request *DescribeRumLogListRequest) (response *DescribeRumLogListResponse, err error) {
+    return c.DescribeRumLogListWithContext(context.Background(), request)
+}
+
+// DescribeRumLogList
+// 获取项目下的日志列表（实例创建的项目下的日志列表）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRumLogListWithContext(ctx context.Context, request *DescribeRumLogListRequest) (response *DescribeRumLogListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRumLogListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRumLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRumLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRumStatsLogListRequest() (request *DescribeRumStatsLogListRequest) {
+    request = &DescribeRumStatsLogListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeRumStatsLogList")
+    
+    
+    return
+}
+
+func NewDescribeRumStatsLogListResponse() (response *DescribeRumStatsLogListResponse) {
+    response = &DescribeRumStatsLogListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRumStatsLogList
+// 获取项目下的日志列表，分钟级
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRumStatsLogList(request *DescribeRumStatsLogListRequest) (response *DescribeRumStatsLogListResponse, err error) {
+    return c.DescribeRumStatsLogListWithContext(context.Background(), request)
+}
+
+// DescribeRumStatsLogList
+// 获取项目下的日志列表，分钟级
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
+//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRumStatsLogListWithContext(ctx context.Context, request *DescribeRumStatsLogListRequest) (response *DescribeRumStatsLogListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRumStatsLogListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRumStatsLogList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRumStatsLogListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScoresRequest() (request *DescribeScoresRequest) {
     request = &DescribeScoresRequest{
         BaseRequest: &tchttp.BaseRequest{},
