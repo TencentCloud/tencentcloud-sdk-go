@@ -370,6 +370,10 @@ type DescribeTaskResponseParams struct {
 	// 任务信息
 	Task *Task `json:"Task,omitempty" name:"Task"`
 
+	// 任务对应的演练报告信息，null表示未导出报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportInfo *TaskReportInfo `json:"ReportInfo,omitempty" name:"ReportInfo"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1098,6 +1102,28 @@ type TaskMonitor struct {
 	// 单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
+}
+
+type TaskReportInfo struct {
+	// 0--未开始，1--正在导出，2--导出成功，3--导出失败
+	Stage *int64 `json:"Stage,omitempty" name:"Stage"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 有效期截止时间
+	ExpirationTime *string `json:"ExpirationTime,omitempty" name:"ExpirationTime"`
+
+	// 是否有效
+	Expired *bool `json:"Expired,omitempty" name:"Expired"`
+
+	// 演练报告cos文件地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+
+	// 演练报告导出日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Log *string `json:"Log,omitempty" name:"Log"`
 }
 
 type Template struct {

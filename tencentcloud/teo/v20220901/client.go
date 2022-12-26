@@ -2987,6 +2987,58 @@ func (c *Client) DescribeDefaultCertificatesWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeDistributionL4AccessDataRequest() (request *DescribeDistributionL4AccessDataRequest) {
+    request = &DescribeDistributionL4AccessDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDistributionL4AccessData")
+    
+    
+    return
+}
+
+func NewDescribeDistributionL4AccessDataResponse() (response *DescribeDistributionL4AccessDataResponse) {
+    response = &DescribeDistributionL4AccessDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDistributionL4AccessData
+// 本接口（DescribeDistributionL4AccessData）用于查询四层连接时长的时序数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeDistributionL4AccessData(request *DescribeDistributionL4AccessDataRequest) (response *DescribeDistributionL4AccessDataResponse, err error) {
+    return c.DescribeDistributionL4AccessDataWithContext(context.Background(), request)
+}
+
+// DescribeDistributionL4AccessData
+// 本接口（DescribeDistributionL4AccessData）用于查询四层连接时长的时序数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeDistributionL4AccessDataWithContext(ctx context.Context, request *DescribeDistributionL4AccessDataRequest) (response *DescribeDistributionL4AccessDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeDistributionL4AccessDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDistributionL4AccessData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDistributionL4AccessDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDnsDataRequest() (request *DescribeDnsDataRequest) {
     request = &DescribeDnsDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4317,6 +4369,58 @@ func (c *Client) DescribeSpeedTestingQuotaWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeSpeedTestingQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTimingL4AccessDataRequest() (request *DescribeTimingL4AccessDataRequest) {
+    request = &DescribeTimingL4AccessDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL4AccessData")
+    
+    
+    return
+}
+
+func NewDescribeTimingL4AccessDataResponse() (response *DescribeTimingL4AccessDataResponse) {
+    response = &DescribeTimingL4AccessDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTimingL4AccessData
+// 本接口（DescribeTimingL4AccessData）用于查询四层连接数的时序数据列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeTimingL4AccessData(request *DescribeTimingL4AccessDataRequest) (response *DescribeTimingL4AccessDataResponse, err error) {
+    return c.DescribeTimingL4AccessDataWithContext(context.Background(), request)
+}
+
+// DescribeTimingL4AccessData
+// 本接口（DescribeTimingL4AccessData）用于查询四层连接数的时序数据列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeTimingL4AccessDataWithContext(ctx context.Context, request *DescribeTimingL4AccessDataRequest) (response *DescribeTimingL4AccessDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimingL4AccessDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimingL4AccessData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimingL4AccessDataResponse()
     err = c.Send(request, response)
     return
 }

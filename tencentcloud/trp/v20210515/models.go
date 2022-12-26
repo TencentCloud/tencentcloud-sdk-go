@@ -3881,11 +3881,11 @@ type Quota struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Services []*string `json:"Services,omitempty" name:"Services"`
 
-	// 工厂配额
+	// 商户配额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FactoryQuota *int64 `json:"FactoryQuota,omitempty" name:"FactoryQuota"`
 
-	// 产品配额
+	// 商品配额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemQuota *int64 `json:"ItemQuota,omitempty" name:"ItemQuota"`
 
@@ -3909,7 +3909,7 @@ type Quota struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrackType *int64 `json:"TrackType,omitempty" name:"TrackType"`
 
-	// 开通版本 basic standard enterprise
+	// 开通版本 lite:轻量版, basic:基础版, standard:标准版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitempty" name:"Version"`
 }

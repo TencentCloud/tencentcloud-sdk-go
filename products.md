@@ -15,8 +15,8 @@
 | api | [云 API](https://cloud.tencent.com/document/product/1278) | 2022-06-07 06:00:45 |
 | apigateway | [API 网关](https://cloud.tencent.com/document/product/628) | 2022-11-09 06:09:16 |
 | apm | [应用性能观测](https://cloud.tencent.com/document/product/1463) | 2022-12-06 06:16:29 |
-| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2022-11-18 06:08:39 |
-| asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2022-11-29 06:12:14 |
+| as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2022-12-26 01:08:11 |
+| asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2022-12-26 01:08:40 |
 | asw | [应用与服务编排工作流](https://cloud.tencent.com/document/product/1272) | 2022-04-04 06:08:40 |
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2022-04-04 06:08:45 |
 | batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2022-12-09 01:11:02 |
@@ -45,7 +45,7 @@
 | cdn | [内容分发网络 CDN](https://cloud.tencent.com/document/product/228) | 2022-12-22 01:22:01 |
 | cds | [T-Sec-数据安全审计（DSA）](https://cloud.tencent.com/document/product/856) | 2022-10-31 06:15:53 |
 | cdwch | [云数据仓库 ClickHouse](https://cloud.tencent.com/document/product/1299) | 2022-12-20 14:06:27 |
-| cfg | [混沌演练平台](https://cloud.tencent.com/document/product/1500) | 2022-12-23 01:15:40 |
+| cfg | [混沌演练平台](https://cloud.tencent.com/document/product/1500) | 2022-12-26 01:15:15 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2022-12-19 01:23:20 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2022-12-16 01:12:46 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2022-07-04 06:04:36 |
@@ -81,7 +81,7 @@
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2022-04-04 06:38:48 |
 | ds | [文档服务](https://cloud.tencent.com/document/product/869) | 2022-10-31 06:27:09 |
 | dtf | [分布式事务](https://cloud.tencent.com/document/product/1224) | 2022-04-04 06:38:57 |
-| dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2022-12-23 01:28:44 |
+| dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2022-12-26 01:27:57 |
 | eb | [事件总线](https://cloud.tencent.com/document/product/1359) | 2022-08-23 06:27:55 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2022-04-04 06:39:27 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2022-04-08 06:06:57 |
@@ -187,7 +187,7 @@
 | tdmq | [消息队列 TDMQ](https://cloud.tencent.com/document/product/1179) | 2022-11-25 07:03:54 |
 | tds | [设备安全](https://cloud.tencent.com/document/product/1628) | 2022-12-06 07:10:10 |
 | tem | [弹性微服务 TEM](https://cloud.tencent.com/document/product/1371) | 2022-12-15 01:49:45 |
-| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2022-12-23 02:00:21 |
+| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2022-12-26 01:58:03 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2022-12-21 02:09:45 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |
 | tic | [资源编排 TIC](https://cloud.tencent.com/document/product/1213) | 2022-10-31 06:55:14 |
@@ -202,7 +202,7 @@
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2022-11-18 06:55:59 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2022-12-09 02:09:44 |
 | trdp | [流量风险决策平台](https://cloud.tencent.com/document/product/1604) | 2022-12-07 07:14:03 |
-| trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2022-12-07 07:14:07 |
+| trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2022-12-26 02:03:33 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2022-12-19 02:11:18 |
 | tse | [微服务引擎 TSE](https://cloud.tencent.com/document/product/1364) | 2022-10-31 06:58:14 |
 | tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2022-12-16 01:48:54 |

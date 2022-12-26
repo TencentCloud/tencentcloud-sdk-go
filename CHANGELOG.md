@@ -1,3 +1,49 @@
+# Release v1.0.566
+
+## 混沌演练平台(cfg) 版本：2021-08-20
+
+### 第 5 次发布
+
+发布时间：2022-12-26 01:15:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTask](https://cloud.tencent.com/document/api/1500/71781)
+
+	* 新增出参：ReportInfo
+
+
+新增数据结构：
+
+* [TaskReportInfo](https://cloud.tencent.com/document/api/1500/71784#TaskReportInfo)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 21 次发布
+
+发布时间：2022-12-26 01:58:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDistributionL4AccessData](https://cloud.tencent.com/document/api/1552/84489)
+* [DescribeTimingL4AccessData](https://cloud.tencent.com/document/api/1552/84488)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.565
 
 ## 访问管理(cam) 版本：2019-01-16
