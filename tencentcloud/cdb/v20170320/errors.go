@@ -185,6 +185,9 @@ const (
 	// Http请求异常。
 	INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 
+	// 导入失败。
+	INTERNALERROR_IMPORTERROR = "InternalError.ImportError"
+
 	// 内部服务错误。
 	INTERNALERROR_INNERCOMMONERROR = "InternalError.InnerCommonError"
 

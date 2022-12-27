@@ -135,6 +135,7 @@ func NewClearCmqQueueResponse() (response *ClearCmqQueueResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
     return c.ClearCmqQueueWithContext(context.Background(), request)
 }
@@ -145,6 +146,7 @@ func (c *Client) ClearCmqQueue(request *ClearCmqQueueRequest) (response *ClearCm
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ClearCmqQueueWithContext(ctx context.Context, request *ClearCmqQueueRequest) (response *ClearCmqQueueResponse, err error) {
     if request == nil {
         request = NewClearCmqQueueRequest()
@@ -667,8 +669,10 @@ func NewCreateCmqSubscribeResponse() (response *CreateCmqSubscribeResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATESUBSCRIPTION = "FailedOperation.CreateSubscription"
+//  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCmqSubscribe(request *CreateCmqSubscribeRequest) (response *CreateCmqSubscribeResponse, err error) {
     return c.CreateCmqSubscribeWithContext(context.Background(), request)
@@ -680,8 +684,10 @@ func (c *Client) CreateCmqSubscribe(request *CreateCmqSubscribeRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATESUBSCRIPTION = "FailedOperation.CreateSubscription"
+//  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCmqSubscribeWithContext(ctx context.Context, request *CreateCmqSubscribeRequest) (response *CreateCmqSubscribeResponse, err error) {
     if request == nil {
@@ -1810,6 +1816,7 @@ func NewDeleteCmqSubscribeResponse() (response *DeleteCmqSubscribeResponse) {
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
     return c.DeleteCmqSubscribeWithContext(context.Background(), request)
 }
@@ -1823,6 +1830,7 @@ func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (respons
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteCmqSubscribeWithContext(ctx context.Context, request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
     if request == nil {
         request = NewDeleteCmqSubscribeRequest()
@@ -1864,6 +1872,7 @@ func NewDeleteCmqTopicResponse() (response *DeleteCmqTopicResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *DeleteCmqTopicResponse, err error) {
     return c.DeleteCmqTopicWithContext(context.Background(), request)
 }
@@ -1875,6 +1884,7 @@ func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *Delet
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteCmqTopicWithContext(ctx context.Context, request *DeleteCmqTopicRequest) (response *DeleteCmqTopicResponse, err error) {
     if request == nil {
         request = NewDeleteCmqTopicRequest()
@@ -3325,6 +3335,7 @@ func NewDescribeCmqTopicDetailResponse() (response *DescribeCmqTopicDetailRespon
 //  FAILEDOPERATION_CMQBACKENDERROR = "FailedOperation.CmqBackendError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCmqTopicDetail(request *DescribeCmqTopicDetailRequest) (response *DescribeCmqTopicDetailResponse, err error) {
     return c.DescribeCmqTopicDetailWithContext(context.Background(), request)
 }
@@ -3337,6 +3348,7 @@ func (c *Client) DescribeCmqTopicDetail(request *DescribeCmqTopicDetailRequest) 
 //  FAILEDOPERATION_CMQBACKENDERROR = "FailedOperation.CmqBackendError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCmqTopicDetailWithContext(ctx context.Context, request *DescribeCmqTopicDetailRequest) (response *DescribeCmqTopicDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCmqTopicDetailRequest()
@@ -4942,6 +4954,7 @@ func NewModifyEnvironmentRoleResponse() (response *ModifyEnvironmentRoleResponse
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -4955,6 +4968,7 @@ func (c *Client) ModifyEnvironmentRole(request *ModifyEnvironmentRoleRequest) (r
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -5676,6 +5690,7 @@ func NewRewindCmqQueueResponse() (response *RewindCmqQueueResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RewindCmqQueue(request *RewindCmqQueueRequest) (response *RewindCmqQueueResponse, err error) {
     return c.RewindCmqQueueWithContext(context.Background(), request)
 }
@@ -5685,6 +5700,7 @@ func (c *Client) RewindCmqQueue(request *RewindCmqQueueRequest) (response *Rewin
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RewindCmqQueueWithContext(ctx context.Context, request *RewindCmqQueueRequest) (response *RewindCmqQueueResponse, err error) {
     if request == nil {
         request = NewRewindCmqQueueRequest()
@@ -5800,6 +5816,7 @@ func NewSendCmqMsgResponse() (response *SendCmqMsgResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
     return c.SendCmqMsgWithContext(context.Background(), request)
 }
@@ -5809,6 +5826,7 @@ func (c *Client) SendCmqMsg(request *SendCmqMsgRequest) (response *SendCmqMsgRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SendCmqMsgWithContext(ctx context.Context, request *SendCmqMsgRequest) (response *SendCmqMsgResponse, err error) {
     if request == nil {
         request = NewSendCmqMsgRequest()

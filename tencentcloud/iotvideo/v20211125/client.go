@@ -3655,7 +3655,7 @@ func NewGenSingleDeviceSignatureOfPublicResponse() (response *GenSingleDeviceSig
 // 获取设备的绑定签名
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GenSingleDeviceSignatureOfPublic(request *GenSingleDeviceSignatureOfPublicRequest) (response *GenSingleDeviceSignatureOfPublicResponse, err error) {
     return c.GenSingleDeviceSignatureOfPublicWithContext(context.Background(), request)
 }
@@ -3664,7 +3664,7 @@ func (c *Client) GenSingleDeviceSignatureOfPublic(request *GenSingleDeviceSignat
 // 获取设备的绑定签名
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GenSingleDeviceSignatureOfPublicWithContext(ctx context.Context, request *GenSingleDeviceSignatureOfPublicRequest) (response *GenSingleDeviceSignatureOfPublicResponse, err error) {
     if request == nil {
         request = NewGenSingleDeviceSignatureOfPublicRequest()

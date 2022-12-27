@@ -883,6 +883,7 @@ func NewCreateDBImportJobResponse() (response *CreateDBImportJobResponse) {
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_EXECUTESQLERROR = "InternalError.ExecuteSQLError"
+//  INTERNALERROR_IMPORTERROR = "InternalError.ImportError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -909,6 +910,7 @@ func (c *Client) CreateDBImportJob(request *CreateDBImportJobRequest) (response 
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_EXECUTESQLERROR = "InternalError.ExecuteSQLError"
+//  INTERNALERROR_IMPORTERROR = "InternalError.ImportError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -7247,13 +7249,8 @@ func NewModifyRemoteBackupConfigResponse() (response *ModifyRemoteBackupConfigRe
 // 本接口(ModifyRemoteBackupConfig)用于查询数据库异地备份配置信息。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigRequest) (response *ModifyRemoteBackupConfigResponse, err error) {
     return c.ModifyRemoteBackupConfigWithContext(context.Background(), request)
 }
@@ -7262,13 +7259,8 @@ func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigReque
 // 本接口(ModifyRemoteBackupConfig)用于查询数据库异地备份配置信息。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
-//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyRemoteBackupConfigWithContext(ctx context.Context, request *ModifyRemoteBackupConfigRequest) (response *ModifyRemoteBackupConfigResponse, err error) {
     if request == nil {
         request = NewModifyRemoteBackupConfigRequest()

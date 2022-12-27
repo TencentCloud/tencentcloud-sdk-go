@@ -32,6 +32,15 @@ const (
 	// 对密钥对的删除操作失败。
 	FAILEDOPERATION_DELETEKEYPAIRFAILED = "FailedOperation.DeleteKeyPairFailed"
 
+	// 查询实例状态错误。
+	FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
+
+	// 查询实例退还错误。
+	FAILEDOPERATION_DESCRIBEINSTANCESRETURNABLEERROR = "FailedOperation.DescribeInstancesReturnableError"
+
+	// 查询流量包失败。
+	FAILEDOPERATION_DESCRIBEINSTANCESTRAFFICPACKAGESFAILED = "FailedOperation.DescribeInstancesTrafficPackagesFailed"
+
 	// 对防火墙规则的操作失败。
 	FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = "FailedOperation.FirewallRulesOperationFailed"
 
@@ -47,8 +56,17 @@ const (
 	// 变更实例套餐失败。
 	FAILEDOPERATION_MODIFYINSTANCESBUNDLEFAILED = "FailedOperation.ModifyInstancesBundleFailed"
 
+	// 续费实例失败。
+	FAILEDOPERATION_RENEWINSTANCESFAILED = "FailedOperation.RenewInstancesFailed"
+
+	// 请求错误。
+	FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+
 	// 快照操作失败。
 	FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = "FailedOperation.SnapshotOperationFailed"
+
+	// 计费询价失败。
+	FAILEDOPERATION_TRADEGETPRICEFAILED = "FailedOperation.TradeGetPriceFailed"
 
 	// 操作失败，不能创建自定义镜像。
 	FAILEDOPERATION_UNABLETOCREATEBLUEPRINT = "FailedOperation.UnableToCreateBlueprint"

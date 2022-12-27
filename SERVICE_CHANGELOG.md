@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 混沌演练平台(cfg) 版本：2021-08-20
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
 
-### 第 5 次发布
+### 第 11 次发布
 
-发布时间：2022-12-26 01:15:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeTask](https://cloud.tencent.com/document/api/1500/71781)
-
-	* 新增出参：ReportInfo
-
-
-新增数据结构：
-
-* [TaskReportInfo](https://cloud.tencent.com/document/api/1500/71784#TaskReportInfo)
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 21 次发布
-
-发布时间：2022-12-26 01:58:03
+发布时间：2022-12-27 01:33:02
 
 本次发布包含了以下内容：
 
@@ -35,12 +12,153 @@
 
 新增接口：
 
-* [DescribeDistributionL4AccessData](https://cloud.tencent.com/document/api/1552/84489)
-* [DescribeTimingL4AccessData](https://cloud.tencent.com/document/api/1552/84488)
+* [DescribeProxyProcessStatistics](https://cloud.tencent.com/document/api/1130/84544)
+
+新增数据结构：
+
+* [ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 42 次发布
+
+发布时间：2022-12-27 02:09:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRocketMQGroup](https://cloud.tencent.com/document/api/1179/63428)
+
+	* 新增入参：GroupType, RetryMaxTimes
+
+* [DescribeRocketMQGroups](https://cloud.tencent.com/document/api/1179/63420)
+
+	* 新增入参：Types
+
+* [ModifyRocketMQGroup](https://cloud.tencent.com/document/api/1179/63416)
+
+	* 新增入参：RetryMaxTimes
+
+
+修改数据结构：
+
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+
+	* 新增成员：Status, IsolateTime, HttpPublicEndpoint, HttpVpcEndpoint
+
+	* <font color="#dd0000">**修改成员**：</font>ClusterId, ClusterName, Region, CreateTime, Remark, PublicEndPoint, VpcEndPoint, SupportNamespaceEndpoint, Vpcs, IsVip, RocketMQFlag
+
+* [RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)
+
+	* 新增成员：GroupType, RetryMaxTimes
+
+	* <font color="#dd0000">**修改成员**：</font>Name, ConsumerNum, TPS, TotalAccumulative, ConsumptionMode, ReadEnabled, RetryPartitionNum, CreateTime, UpdateTime, ClientProtocol, Remark, ConsumerType, BroadcastEnabled
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 22 次发布
+
+发布时间：2022-12-27 02:10:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateDnsRecord
+* CreateLoadBalancing
+* DeleteDnsRecords
+* DeleteLoadBalancing
+* DescribeDnsRecords
+* DescribeLoadBalancing
+* ModifyDnsRecord
+* ModifyLoadBalancing
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AdvancedOriginGroup
+* DnsRecord
+* LoadBalancing
+* OriginGroupCondition
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 12 次发布
+
+发布时间：2022-12-27 02:17:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+
+	* 新增入参：BatchCode
+
+* [CreateCodePack](https://cloud.tencent.com/document/api/1458/75028)
+
+	* 新增入参：SerialType
+
+* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
+
+	* 新增入参：SerialType
+
+* [DescribeCodePacks](https://cloud.tencent.com/document/api/1458/75016)
+
+	* 新增入参：SerialType
+
+* [ModifyCodeBatch](https://cloud.tencent.com/document/api/1458/75007)
+
+	* 新增入参：BatchCode
+
+
+
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 9 次发布
+
+发布时间：2022-12-27 02:26:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AMEMusicBaseInfo](https://cloud.tencent.com/document/api/1592/76191#AMEMusicBaseInfo)
+
+修改数据结构：
+
+* [KTVMatchMusic](https://cloud.tencent.com/document/api/1592/76191#KTVMatchMusic)
+
+	* 新增成员：AMEMusicBaseInfo
+
+* [KTVMatchRule](https://cloud.tencent.com/document/api/1592/76191#KTVMatchRule)
+
+	* 新增成员：MusicIdToMatchAME
+
 
 
 
@@ -17359,7 +17477,7 @@
 
 新增数据结构：
 
-* [[TaskReportInfo](https://cloud.tencent.com/document/api/1500/71784#TaskReportInfo)](https://cloud.tencent.com/document/api/1500/71784#[TaskReportInfo](https://cloud.tencent.com/document/api/1500/71784#TaskReportInfo))
+* [TaskReportInfo](https://cloud.tencent.com/document/api/1500/71784#TaskReportInfo)
 
 ### 第 4 次发布
 
@@ -33275,6 +33393,22 @@
 
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 11 次发布
+
+发布时间：2022-12-27 01:33:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeProxyProcessStatistics](https://cloud.tencent.com/document/api/1130/84544)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic)](https://cloud.tencent.com/document/api/1130/57812#[ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic))
 
 ### 第 10 次发布
 
@@ -79802,6 +79936,44 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 42 次发布
+
+发布时间：2022-12-27 02:09:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRocketMQGroup](https://cloud.tencent.com/document/api/1179/63428)
+
+	* 新增入参：GroupType, RetryMaxTimes
+
+* [DescribeRocketMQGroups](https://cloud.tencent.com/document/api/1179/63420)
+
+	* 新增入参：Types
+
+* [ModifyRocketMQGroup](https://cloud.tencent.com/document/api/1179/63416)
+
+	* 新增入参：RetryMaxTimes
+
+
+修改数据结构：
+
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+
+	* 新增成员：Status, IsolateTime, HttpPublicEndpoint, HttpVpcEndpoint
+
+	* <font color="#dd0000">**修改成员**：</font>ClusterId, ClusterName, Region, CreateTime, Remark, PublicEndPoint, VpcEndPoint, SupportNamespaceEndpoint, Vpcs, IsVip, RocketMQFlag
+
+* [RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)
+
+	* 新增成员：GroupType, RetryMaxTimes
+
+	* <font color="#dd0000">**修改成员**：</font>Name, ConsumerNum, TPS, TotalAccumulative, ConsumptionMode, ReadEnabled, RetryPartitionNum, CreateTime, UpdateTime, ClientProtocol, Remark, ConsumerType, BroadcastEnabled
+
+
 ### 第 41 次发布
 
 发布时间：2022-11-25 07:03:54
@@ -82727,6 +82899,32 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 22 次发布
+
+发布时间：2022-12-27 02:10:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateDnsRecord
+* CreateLoadBalancing
+* DeleteDnsRecords
+* DeleteLoadBalancing
+* DescribeDnsRecords
+* DescribeLoadBalancing
+* ModifyDnsRecord
+* ModifyLoadBalancing
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AdvancedOriginGroup
+* DnsRecord
+* LoadBalancing
+* OriginGroupCondition
+
 ### 第 21 次发布
 
 发布时间：2022-12-26 01:58:03
@@ -82737,8 +82935,8 @@
 
 新增接口：
 
-* [[DescribeDistributionL4AccessData](https://cloud.tencent.com/document/api/1552/84489)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTimingL4AccessData](https://cloud.tencent.com/document/api/1552/84488)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDistributionL4AccessData](https://cloud.tencent.com/document/api/1552/84489)
+* [DescribeTimingL4AccessData](https://cloud.tencent.com/document/api/1552/84488)
 
 ### 第 20 次发布
 
@@ -89315,6 +89513,37 @@
 
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 12 次发布
+
+发布时间：2022-12-27 02:17:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+
+	* 新增入参：BatchCode
+
+* [CreateCodePack](https://cloud.tencent.com/document/api/1458/75028)
+
+	* 新增入参：SerialType
+
+* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
+
+	* 新增入参：SerialType
+
+* [DescribeCodePacks](https://cloud.tencent.com/document/api/1458/75016)
+
+	* 新增入参：SerialType
+
+* [ModifyCodeBatch](https://cloud.tencent.com/document/api/1458/75007)
+
+	* 新增入参：BatchCode
+
 
 ### 第 11 次发布
 
@@ -101797,6 +102026,29 @@
 
 
 ## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 9 次发布
+
+发布时间：2022-12-27 02:26:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AMEMusicBaseInfo](https://cloud.tencent.com/document/api/1592/76191#AMEMusicBaseInfo)](https://cloud.tencent.com/document/api/1592/76191#[AMEMusicBaseInfo](https://cloud.tencent.com/document/api/1592/76191#AMEMusicBaseInfo))
+
+修改数据结构：
+
+* [KTVMatchMusic](https://cloud.tencent.com/document/api/1592/76191#KTVMatchMusic)
+
+	* 新增成员：AMEMusicBaseInfo
+
+* [KTVMatchRule](https://cloud.tencent.com/document/api/1592/76191#KTVMatchRule)
+
+	* 新增成员：MusicIdToMatchAME
+
 
 ### 第 8 次发布
 

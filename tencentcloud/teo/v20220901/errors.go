@@ -119,9 +119,6 @@ const (
 	// 域名不存在或不属于该账号。
 	INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
 
-	// 当前域名已开启流量调度功能。
-	INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = "InvalidParameter.DomainOnTrafficScheduling"
-
 	// 操作不支持条件。
 	INVALIDPARAMETER_ERRACTIONUNSUPPORTTARGET = "InvalidParameter.ErrActionUnsupportTarget"
 
@@ -175,6 +172,9 @@ const (
 
 	// 无效的token鉴权参数。
 	INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = "InvalidParameter.InvalidAuthenticationTypeSignParam"
+
+	// 无效的节点缓存，遵循源站行为。
+	INVALIDPARAMETER_INVALIDCACHECONFIGFOLLOWORIGIN = "InvalidParameter.InvalidCacheConfigFollowOrigin"
 
 	// 无效的缓存键。
 	INVALIDPARAMETER_INVALIDCACHEKEY = "InvalidParameter.InvalidCacheKey"
@@ -299,41 +299,8 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
-	// 与已经添加的记录冲突。
-	INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
-
-	// DNS 记录与 DNSSEC 功能冲突。
-	INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
-
-	// DNS 记录与 LB 记录冲突。
-	INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = "InvalidParameterValue.ConflictWithLBRecord"
-
-	// DNS 记录与 NS 记录冲突。
-	INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
-
-	// DNS 记录内容错误。
-	INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
-
-	// MX 记录优先级取值错误。
-	INVALIDPARAMETERVALUE_INVALIDDNSMXPRIORITY = "InvalidParameterValue.InvalidDNSMXPriority"
-
-	// DNS 记录名称错误。
-	INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
-
 	// 加速域名状态不符合要求。
 	INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
-
-	// DNS 代理域名错误。
-	INVALIDPARAMETERVALUE_INVALIDPROXYNAME = "InvalidParameterValue.InvalidProxyName"
-
-	// DNS 代理域名源站错误。
-	INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = "InvalidParameterValue.InvalidProxyOrigin"
-
-	// 记录已存在。
-	INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
-
-	// 记录不允许添加。
-	INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"

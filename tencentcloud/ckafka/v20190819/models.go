@@ -7397,7 +7397,7 @@ type ModifyInstanceAttributesRequestParams struct {
 	// 修改升配置rebalance时间
 	RebalanceTime *int64 `json:"RebalanceTime,omitempty" name:"RebalanceTime"`
 
-	// 时间戳
+	// 公网带宽
 	PublicNetwork *int64 `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
 
 	// 动态硬盘扩容策略配置
@@ -7428,7 +7428,7 @@ type ModifyInstanceAttributesRequest struct {
 	// 修改升配置rebalance时间
 	RebalanceTime *int64 `json:"RebalanceTime,omitempty" name:"RebalanceTime"`
 
-	// 时间戳
+	// 公网带宽
 	PublicNetwork *int64 `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
 
 	// 动态硬盘扩容策略配置

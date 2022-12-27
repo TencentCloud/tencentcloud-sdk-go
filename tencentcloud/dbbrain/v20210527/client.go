@@ -1757,6 +1757,80 @@ func (c *Client) DescribeNoPrimaryKeyTablesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeProxyProcessStatisticsRequest() (request *DescribeProxyProcessStatisticsRequest) {
+    request = &DescribeProxyProcessStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeProxyProcessStatistics")
+    
+    
+    return
+}
+
+func NewDescribeProxyProcessStatisticsResponse() (response *DescribeProxyProcessStatisticsResponse) {
+    response = &DescribeProxyProcessStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProxyProcessStatistics
+// 获取当前实例会话统计详情信息。【注意】该接口仅限部分环境调用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeProxyProcessStatistics(request *DescribeProxyProcessStatisticsRequest) (response *DescribeProxyProcessStatisticsResponse, err error) {
+    return c.DescribeProxyProcessStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeProxyProcessStatistics
+// 获取当前实例会话统计详情信息。【注意】该接口仅限部分环境调用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeProxyProcessStatisticsWithContext(ctx context.Context, request *DescribeProxyProcessStatisticsRequest) (response *DescribeProxyProcessStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyProcessStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyProcessStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxyProcessStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProxySessionKillTasksRequest() (request *DescribeProxySessionKillTasksRequest) {
     request = &DescribeProxySessionKillTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

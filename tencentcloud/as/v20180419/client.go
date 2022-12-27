@@ -1097,6 +1097,7 @@ func NewCreateScalingPolicyResponse() (response *CreateScalingPolicyResponse) {
 // 本接口（CreateScalingPolicy）用于创建告警触发策略。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CALLMONITORERROR = "InternalError.CallMonitorError"
 //  INTERNALERROR_CALLNOTIFICATIONERROR = "InternalError.CallNotificationError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
@@ -1118,6 +1119,7 @@ func (c *Client) CreateScalingPolicy(request *CreateScalingPolicyRequest) (respo
 // 本接口（CreateScalingPolicy）用于创建告警触发策略。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CALLMONITORERROR = "InternalError.CallMonitorError"
 //  INTERNALERROR_CALLNOTIFICATIONERROR = "InternalError.CallNotificationError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"

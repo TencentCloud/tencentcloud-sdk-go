@@ -3151,6 +3151,7 @@ func NewDescribeDataObjectsResponse() (response *DescribeDataObjectsResponse) {
 // 查询规则组数据对象列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeDataObjects(request *DescribeDataObjectsRequest) (response *DescribeDataObjectsResponse, err error) {
     return c.DescribeDataObjectsWithContext(context.Background(), request)
@@ -3160,6 +3161,7 @@ func (c *Client) DescribeDataObjects(request *DescribeDataObjectsRequest) (respo
 // 查询规则组数据对象列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeDataObjectsWithContext(ctx context.Context, request *DescribeDataObjectsRequest) (response *DescribeDataObjectsResponse, err error) {
     if request == nil {
@@ -3635,6 +3637,7 @@ func NewDescribeExecStrategyResponse() (response *DescribeExecStrategyResponse) 
 // 查询规则组执行策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
@@ -3646,6 +3649,7 @@ func (c *Client) DescribeExecStrategy(request *DescribeExecStrategyRequest) (res
 // 查询规则组执行策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
@@ -6425,6 +6429,7 @@ func NewDescribeRuleGroupsByPageResponse() (response *DescribeRuleGroupsByPageRe
 // {数据来源DatasourceId}
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
@@ -6442,6 +6447,7 @@ func (c *Client) DescribeRuleGroupsByPage(request *DescribeRuleGroupsByPageReque
 // {数据来源DatasourceId}
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
@@ -6777,6 +6783,7 @@ func NewDescribeRulesByPageResponse() (response *DescribeRulesByPageResponse) {
 // 分页查询质量规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRulesByPage(request *DescribeRulesByPageRequest) (response *DescribeRulesByPageResponse, err error) {
@@ -6787,6 +6794,7 @@ func (c *Client) DescribeRulesByPage(request *DescribeRulesByPageRequest) (respo
 // 分页查询质量规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRulesByPageWithContext(ctx context.Context, request *DescribeRulesByPageRequest) (response *DescribeRulesByPageResponse, err error) {
@@ -6827,6 +6835,7 @@ func NewDescribeStandardRuleDetailInfoListResponse() (response *DescribeStandard
 // 获取数据标准规则详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeStandardRuleDetailInfoList(request *DescribeStandardRuleDetailInfoListRequest) (response *DescribeStandardRuleDetailInfoListResponse, err error) {
@@ -6837,6 +6846,7 @@ func (c *Client) DescribeStandardRuleDetailInfoList(request *DescribeStandardRul
 // 获取数据标准规则详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeStandardRuleDetailInfoListWithContext(ctx context.Context, request *DescribeStandardRuleDetailInfoListRequest) (response *DescribeStandardRuleDetailInfoListResponse, err error) {

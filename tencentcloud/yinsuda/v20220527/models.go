@@ -20,6 +20,17 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AMEMusicBaseInfo struct {
+	// 歌曲 Id。
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 歌曲名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 歌手列表。
+	SingerSet []*string `json:"SingerSet,omitempty" name:"SingerSet"`
+}
+
 // Predefined struct for user
 type BatchDescribeKTVMusicDetailsRequestParams struct {
 	// 应用名称。
@@ -891,6 +902,10 @@ type KTVMatchMusic struct {
 
 	// 命中规则。
 	MatchRule *KTVMatchRule `json:"MatchRule,omitempty" name:"MatchRule"`
+
+	// AME 歌曲基础信息，仅在使用音速达歌曲 Id 匹配 AME 曲库时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AMEMusicBaseInfo *AMEMusicBaseInfo `json:"AMEMusicBaseInfo,omitempty" name:"AMEMusicBaseInfo"`
 }
 
 type KTVMatchRule struct {
@@ -900,6 +915,9 @@ type KTVMatchRule struct {
 	// 歌曲匹配信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MusicInfo *KTVMatchRuleMusicInfo `json:"MusicInfo,omitempty" name:"MusicInfo"`
+
+	// 音速达歌曲 Id，用于匹配 AME 曲库歌曲。
+	MusicIdToMatchAME *string `json:"MusicIdToMatchAME,omitempty" name:"MusicIdToMatchAME"`
 }
 
 type KTVMatchRuleMusicInfo struct {

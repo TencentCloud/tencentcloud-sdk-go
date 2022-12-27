@@ -2008,6 +2008,12 @@ type CreateRocketMQGroupRequestParams struct {
 
 	// 说明信息，最长128个字符
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Group类型（TCP/HTTP）
+	GroupType *string `json:"GroupType,omitempty" name:"GroupType"`
+
+	// Group最大重试次数
+	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitempty" name:"RetryMaxTimes"`
 }
 
 type CreateRocketMQGroupRequest struct {
@@ -2030,6 +2036,12 @@ type CreateRocketMQGroupRequest struct {
 
 	// 说明信息，最长128个字符
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Group类型（TCP/HTTP）
+	GroupType *string `json:"GroupType,omitempty" name:"GroupType"`
+
+	// Group最大重试次数
+	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitempty" name:"RetryMaxTimes"`
 }
 
 func (r *CreateRocketMQGroupRequest) ToJsonString() string {
@@ -2050,6 +2062,8 @@ func (r *CreateRocketMQGroupRequest) FromJsonString(s string) error {
 	delete(f, "BroadcastEnable")
 	delete(f, "ClusterId")
 	delete(f, "Remark")
+	delete(f, "GroupType")
+	delete(f, "RetryMaxTimes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQGroupRequest has unknown keys!", "")
 	}
@@ -6170,6 +6184,9 @@ type DescribeRocketMQGroupsRequestParams struct {
 
 	// 订阅组名称，指定此参数后将只返回该订阅组信息
 	FilterOneGroup *string `json:"FilterOneGroup,omitempty" name:"FilterOneGroup"`
+
+	// group类型
+	Types []*string `json:"Types,omitempty" name:"Types"`
 }
 
 type DescribeRocketMQGroupsRequest struct {
@@ -6201,6 +6218,9 @@ type DescribeRocketMQGroupsRequest struct {
 
 	// 订阅组名称，指定此参数后将只返回该订阅组信息
 	FilterOneGroup *string `json:"FilterOneGroup,omitempty" name:"FilterOneGroup"`
+
+	// group类型
+	Types []*string `json:"Types,omitempty" name:"Types"`
 }
 
 func (r *DescribeRocketMQGroupsRequest) ToJsonString() string {
@@ -6224,6 +6244,7 @@ func (r *DescribeRocketMQGroupsRequest) FromJsonString(s string) error {
 	delete(f, "SortedBy")
 	delete(f, "SortOrder")
 	delete(f, "FilterOneGroup")
+	delete(f, "Types")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQGroupsRequest has unknown keys!", "")
 	}
@@ -7949,6 +7970,9 @@ type ModifyRocketMQGroupRequestParams struct {
 
 	// 是否开启广播消费
 	BroadcastEnable *bool `json:"BroadcastEnable,omitempty" name:"BroadcastEnable"`
+
+	// 最大重试次数
+	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitempty" name:"RetryMaxTimes"`
 }
 
 type ModifyRocketMQGroupRequest struct {
@@ -7971,6 +7995,9 @@ type ModifyRocketMQGroupRequest struct {
 
 	// 是否开启广播消费
 	BroadcastEnable *bool `json:"BroadcastEnable,omitempty" name:"BroadcastEnable"`
+
+	// 最大重试次数
+	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitempty" name:"RetryMaxTimes"`
 }
 
 func (r *ModifyRocketMQGroupRequest) ToJsonString() string {
@@ -7991,6 +8018,7 @@ func (r *ModifyRocketMQGroupRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "ReadEnable")
 	delete(f, "BroadcastEnable")
+	delete(f, "RetryMaxTimes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQGroupRequest has unknown keys!", "")
 	}
@@ -9007,6 +9035,22 @@ type RocketMQClusterInfo struct {
 	// Rocketmq集群标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RocketMQFlag *bool `json:"RocketMQFlag,omitempty" name:"RocketMQFlag"`
+
+	// 计费状态，1表示正常，2表示已停服，3表示已销毁
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 欠费停服时间，毫秒为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateTime *int64 `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
+	// HTTP协议公网接入地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpPublicEndpoint *string `json:"HttpPublicEndpoint,omitempty" name:"HttpPublicEndpoint"`
+
+	// HTTP协议VPC接入地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpVpcEndpoint *string `json:"HttpVpcEndpoint,omitempty" name:"HttpVpcEndpoint"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -9065,6 +9109,14 @@ type RocketMQGroup struct {
 
 	// 是否开启广播消费
 	BroadcastEnabled *bool `json:"BroadcastEnabled,omitempty" name:"BroadcastEnabled"`
+
+	// Group类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupType *string `json:"GroupType,omitempty" name:"GroupType"`
+
+	// 重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitempty" name:"RetryMaxTimes"`
 }
 
 type RocketMQNamespace struct {

@@ -469,84 +469,6 @@ func (c *Client) CreateCustomErrorPageWithContext(ctx context.Context, request *
     return
 }
 
-func NewCreateDnsRecordRequest() (request *CreateDnsRecordRequest) {
-    request = &CreateDnsRecordRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "CreateDnsRecord")
-    
-    
-    return
-}
-
-func NewCreateDnsRecordResponse() (response *CreateDnsRecordResponse) {
-    response = &CreateDnsRecordResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateDnsRecord
-// 创建 DNS 记录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
-//  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
-//  INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = "InvalidParameterValue.ConflictWithLBRecord"
-//  INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
-//  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
-//  INVALIDPARAMETERVALUE_INVALIDDNSMXPRIORITY = "InvalidParameterValue.InvalidDNSMXPriority"
-//  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
-//  INVALIDPARAMETERVALUE_INVALIDPROXYNAME = "InvalidParameterValue.InvalidProxyName"
-//  INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = "InvalidParameterValue.InvalidProxyOrigin"
-//  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
-//  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-func (c *Client) CreateDnsRecord(request *CreateDnsRecordRequest) (response *CreateDnsRecordResponse, err error) {
-    return c.CreateDnsRecordWithContext(context.Background(), request)
-}
-
-// CreateDnsRecord
-// 创建 DNS 记录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
-//  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
-//  INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = "InvalidParameterValue.ConflictWithLBRecord"
-//  INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
-//  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
-//  INVALIDPARAMETERVALUE_INVALIDDNSMXPRIORITY = "InvalidParameterValue.InvalidDNSMXPriority"
-//  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
-//  INVALIDPARAMETERVALUE_INVALIDPROXYNAME = "InvalidParameterValue.InvalidProxyName"
-//  INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = "InvalidParameterValue.InvalidProxyOrigin"
-//  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
-//  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-func (c *Client) CreateDnsRecordWithContext(ctx context.Context, request *CreateDnsRecordRequest) (response *CreateDnsRecordResponse, err error) {
-    if request == nil {
-        request = NewCreateDnsRecordRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateDnsRecord require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateDnsRecordResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateIpTableListRequest() (request *CreateIpTableListRequest) {
     request = &CreateIpTableListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -601,56 +523,6 @@ func (c *Client) CreateIpTableListWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreateIpTableListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateLoadBalancingRequest() (request *CreateLoadBalancingRequest) {
-    request = &CreateLoadBalancingRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "CreateLoadBalancing")
-    
-    
-    return
-}
-
-func NewCreateLoadBalancingResponse() (response *CreateLoadBalancingResponse) {
-    response = &CreateLoadBalancingResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateLoadBalancing
-// 创建负载均衡
-//
-// 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
-//  OPERATIONDENIED = "OperationDenied"
-func (c *Client) CreateLoadBalancing(request *CreateLoadBalancingRequest) (response *CreateLoadBalancingResponse, err error) {
-    return c.CreateLoadBalancingWithContext(context.Background(), request)
-}
-
-// CreateLoadBalancing
-// 创建负载均衡
-//
-// 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
-//  OPERATIONDENIED = "OperationDenied"
-func (c *Client) CreateLoadBalancingWithContext(ctx context.Context, request *CreateLoadBalancingRequest) (response *CreateLoadBalancingResponse, err error) {
-    if request == nil {
-        request = NewCreateLoadBalancingRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateLoadBalancing require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateLoadBalancingResponse()
     err = c.Send(request, response)
     return
 }
@@ -1443,6 +1315,7 @@ func NewDeleteAliasDomainResponse() (response *DeleteAliasDomainResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAliasDomain(request *DeleteAliasDomainRequest) (response *DeleteAliasDomainResponse, err error) {
     return c.DeleteAliasDomainWithContext(context.Background(), request)
@@ -1454,6 +1327,7 @@ func (c *Client) DeleteAliasDomain(request *DeleteAliasDomainRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAliasDomainWithContext(ctx context.Context, request *DeleteAliasDomainRequest) (response *DeleteAliasDomainResponse, err error) {
     if request == nil {
@@ -1567,106 +1441,6 @@ func (c *Client) DeleteApplicationProxyRuleWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteApplicationProxyRuleResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteDnsRecordsRequest() (request *DeleteDnsRecordsRequest) {
-    request = &DeleteDnsRecordsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "DeleteDnsRecords")
-    
-    
-    return
-}
-
-func NewDeleteDnsRecordsResponse() (response *DeleteDnsRecordsResponse) {
-    response = &DeleteDnsRecordsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DeleteDnsRecords
-// 批量删除 DNS 记录
-//
-// 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DeleteDnsRecords(request *DeleteDnsRecordsRequest) (response *DeleteDnsRecordsResponse, err error) {
-    return c.DeleteDnsRecordsWithContext(context.Background(), request)
-}
-
-// DeleteDnsRecords
-// 批量删除 DNS 记录
-//
-// 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DeleteDnsRecordsWithContext(ctx context.Context, request *DeleteDnsRecordsRequest) (response *DeleteDnsRecordsResponse, err error) {
-    if request == nil {
-        request = NewDeleteDnsRecordsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteDnsRecords require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteDnsRecordsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteLoadBalancingRequest() (request *DeleteLoadBalancingRequest) {
-    request = &DeleteLoadBalancingRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "DeleteLoadBalancing")
-    
-    
-    return
-}
-
-func NewDeleteLoadBalancingResponse() (response *DeleteLoadBalancingResponse) {
-    response = &DeleteLoadBalancingResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DeleteLoadBalancing
-// 删除负载均衡
-//
-// 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
-func (c *Client) DeleteLoadBalancing(request *DeleteLoadBalancingRequest) (response *DeleteLoadBalancingResponse, err error) {
-    return c.DeleteLoadBalancingWithContext(context.Background(), request)
-}
-
-// DeleteLoadBalancing
-// 删除负载均衡
-//
-// 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
-func (c *Client) DeleteLoadBalancingWithContext(ctx context.Context, request *DeleteLoadBalancingRequest) (response *DeleteLoadBalancingResponse, err error) {
-    if request == nil {
-        request = NewDeleteLoadBalancingRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteLoadBalancing require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteLoadBalancingResponse()
     err = c.Send(request, response)
     return
 }
@@ -3089,62 +2863,6 @@ func (c *Client) DescribeDnsDataWithContext(ctx context.Context, request *Descri
     return
 }
 
-func NewDescribeDnsRecordsRequest() (request *DescribeDnsRecordsRequest) {
-    request = &DescribeDnsRecordsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "DescribeDnsRecords")
-    
-    
-    return
-}
-
-func NewDescribeDnsRecordsResponse() (response *DescribeDnsRecordsResponse) {
-    response = &DescribeDnsRecordsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeDnsRecords
-// 查询 DNS 记录列表，支持搜索、分页、排序、过滤。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
-//  INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = "InvalidParameter.DomainOnTrafficScheduling"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-func (c *Client) DescribeDnsRecords(request *DescribeDnsRecordsRequest) (response *DescribeDnsRecordsResponse, err error) {
-    return c.DescribeDnsRecordsWithContext(context.Background(), request)
-}
-
-// DescribeDnsRecords
-// 查询 DNS 记录列表，支持搜索、分页、排序、过滤。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
-//  INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = "InvalidParameter.DomainOnTrafficScheduling"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-func (c *Client) DescribeDnsRecordsWithContext(ctx context.Context, request *DescribeDnsRecordsRequest) (response *DescribeDnsRecordsResponse, err error) {
-    if request == nil {
-        request = NewDescribeDnsRecordsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDnsRecords require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDnsRecordsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDnssecRequest() (request *DescribeDnssecRequest) {
     request = &DescribeDnssecRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3299,56 +3017,6 @@ func (c *Client) DescribeIdentificationsWithContext(ctx context.Context, request
     return
 }
 
-func NewDescribeLoadBalancingRequest() (request *DescribeLoadBalancingRequest) {
-    request = &DescribeLoadBalancingRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "DescribeLoadBalancing")
-    
-    
-    return
-}
-
-func NewDescribeLoadBalancingResponse() (response *DescribeLoadBalancingResponse) {
-    response = &DescribeLoadBalancingResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeLoadBalancing
-// 获取负载均衡列表
-//
-// 可能返回的错误码:
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-func (c *Client) DescribeLoadBalancing(request *DescribeLoadBalancingRequest) (response *DescribeLoadBalancingResponse, err error) {
-    return c.DescribeLoadBalancingWithContext(context.Background(), request)
-}
-
-// DescribeLoadBalancing
-// 获取负载均衡列表
-//
-// 可能返回的错误码:
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
-func (c *Client) DescribeLoadBalancingWithContext(ctx context.Context, request *DescribeLoadBalancingRequest) (response *DescribeLoadBalancingResponse, err error) {
-    if request == nil {
-        request = NewDescribeLoadBalancingRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeLoadBalancing require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeLoadBalancingResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeLogSetsRequest() (request *DescribeLogSetsRequest) {
     request = &DescribeLogSetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3371,8 +3039,7 @@ func NewDescribeLogSetsResponse() (response *DescribeLogSetsResponse) {
 // 本接口（DescribeLogSets）用于获取日志集列表。
 //
 // 可能返回的错误码:
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLogSets(request *DescribeLogSetsRequest) (response *DescribeLogSetsResponse, err error) {
     return c.DescribeLogSetsWithContext(context.Background(), request)
 }
@@ -3381,8 +3048,7 @@ func (c *Client) DescribeLogSets(request *DescribeLogSetsRequest) (response *Des
 // 本接口（DescribeLogSets）用于获取日志集列表。
 //
 // 可能返回的错误码:
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLogSetsWithContext(ctx context.Context, request *DescribeLogSetsRequest) (response *DescribeLogSetsResponse, err error) {
     if request == nil {
         request = NewDescribeLogSetsRequest()
@@ -5995,80 +5661,6 @@ func (c *Client) ModifyDefaultCertificateWithContext(ctx context.Context, reques
     return
 }
 
-func NewModifyDnsRecordRequest() (request *ModifyDnsRecordRequest) {
-    request = &ModifyDnsRecordRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "ModifyDnsRecord")
-    
-    
-    return
-}
-
-func NewModifyDnsRecordResponse() (response *ModifyDnsRecordResponse) {
-    response = &ModifyDnsRecordResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyDnsRecord
-// 修改 DNS 记录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
-//  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
-//  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
-//  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
-//  INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
-//  INVALIDPARAMETERVALUE_INVALIDPROXYNAME = "InvalidParameterValue.InvalidProxyName"
-//  INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = "InvalidParameterValue.InvalidProxyOrigin"
-//  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
-//  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-func (c *Client) ModifyDnsRecord(request *ModifyDnsRecordRequest) (response *ModifyDnsRecordResponse, err error) {
-    return c.ModifyDnsRecordWithContext(context.Background(), request)
-}
-
-// ModifyDnsRecord
-// 修改 DNS 记录
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
-//  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
-//  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
-//  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
-//  INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
-//  INVALIDPARAMETERVALUE_INVALIDPROXYNAME = "InvalidParameterValue.InvalidProxyName"
-//  INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = "InvalidParameterValue.InvalidProxyOrigin"
-//  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
-//  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
-func (c *Client) ModifyDnsRecordWithContext(ctx context.Context, request *ModifyDnsRecordRequest) (response *ModifyDnsRecordResponse, err error) {
-    if request == nil {
-        request = NewModifyDnsRecordRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyDnsRecord require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyDnsRecordResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyDnssecRequest() (request *ModifyDnssecRequest) {
     request = &ModifyDnssecRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6185,56 +5777,6 @@ func (c *Client) ModifyHostsCertificateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyHostsCertificateResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyLoadBalancingRequest() (request *ModifyLoadBalancingRequest) {
-    request = &ModifyLoadBalancingRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("teo", APIVersion, "ModifyLoadBalancing")
-    
-    
-    return
-}
-
-func NewModifyLoadBalancingResponse() (response *ModifyLoadBalancingResponse) {
-    response = &ModifyLoadBalancingResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyLoadBalancing
-// 修改负载均衡
-//
-// 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) ModifyLoadBalancing(request *ModifyLoadBalancingRequest) (response *ModifyLoadBalancingResponse, err error) {
-    return c.ModifyLoadBalancingWithContext(context.Background(), request)
-}
-
-// ModifyLoadBalancing
-// 修改负载均衡
-//
-// 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) ModifyLoadBalancingWithContext(ctx context.Context, request *ModifyLoadBalancingRequest) (response *ModifyLoadBalancingResponse, err error) {
-    if request == nil {
-        request = NewModifyLoadBalancingRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyLoadBalancing require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyLoadBalancingResponse()
     err = c.Send(request, response)
     return
 }
@@ -6740,6 +6282,7 @@ func NewModifyZoneSettingResponse() (response *ModifyZoneSettingResponse) {
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 //  INVALIDPARAMETER_CERTSYSTEMERROR = "InvalidParameter.CertSystemError"
 //  INVALIDPARAMETER_GRPCREQUIREHTTP2 = "InvalidParameter.GrpcRequireHttp2"
+//  INVALIDPARAMETER_INVALIDCACHECONFIGFOLLOWORIGIN = "InvalidParameter.InvalidCacheConfigFollowOrigin"
 //  INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGVALUE = "InvalidParameter.InvalidCacheKeyQueryStringValue"
 //  INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = "InvalidParameter.InvalidCacheOnlyOnSwitch"
 //  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
@@ -6773,6 +6316,7 @@ func (c *Client) ModifyZoneSetting(request *ModifyZoneSettingRequest) (response 
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 //  INVALIDPARAMETER_CERTSYSTEMERROR = "InvalidParameter.CertSystemError"
 //  INVALIDPARAMETER_GRPCREQUIREHTTP2 = "InvalidParameter.GrpcRequireHttp2"
+//  INVALIDPARAMETER_INVALIDCACHECONFIGFOLLOWORIGIN = "InvalidParameter.InvalidCacheConfigFollowOrigin"
 //  INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGVALUE = "InvalidParameter.InvalidCacheKeyQueryStringValue"
 //  INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = "InvalidParameter.InvalidCacheOnlyOnSwitch"
 //  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"

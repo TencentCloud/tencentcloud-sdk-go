@@ -2106,6 +2106,105 @@ func (r *DescribeNoPrimaryKeyTablesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProxyProcessStatisticsRequestParams struct {
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 当前实例下的 ProxyID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitempty" name:"InstanceProxyId"`
+
+	// 返回数量。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 偏移量，默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 排序方向。支持值包括："DESC"，"ASC"。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+type DescribeProxyProcessStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 当前实例下的 ProxyID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitempty" name:"InstanceProxyId"`
+
+	// 返回数量。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 偏移量，默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 排序方向。支持值包括："DESC"，"ASC"。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeProxyProcessStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProxyProcessStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InstanceProxyId")
+	delete(f, "Limit")
+	delete(f, "Product")
+	delete(f, "Offset")
+	delete(f, "SortBy")
+	delete(f, "OrderDirection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProxyProcessStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProxyProcessStatisticsResponseParams struct {
+	// 实时会话统计详情。
+	ProcessStatistics *ProcessStatistic `json:"ProcessStatistics,omitempty" name:"ProcessStatistics"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeProxyProcessStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProxyProcessStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeProxyProcessStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProxyProcessStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProxySessionKillTasksRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -4002,6 +4101,10 @@ type MySqlProcess struct {
 
 	// 线程的操作语句。
 	Info *string `json:"Info,omitempty" name:"Info"`
+}
+
+type ProcessStatistic struct {
+
 }
 
 type ProfileInfo struct {

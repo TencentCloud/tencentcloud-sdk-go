@@ -969,6 +969,7 @@ func NewChannelCreateReleaseFlowResponse() (response *ChannelCreateReleaseFlowRe
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelCreateReleaseFlow(request *ChannelCreateReleaseFlowRequest) (response *ChannelCreateReleaseFlowResponse, err error) {
     return c.ChannelCreateReleaseFlowWithContext(context.Background(), request)
@@ -990,6 +991,7 @@ func (c *Client) ChannelCreateReleaseFlow(request *ChannelCreateReleaseFlowReque
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelCreateReleaseFlowWithContext(ctx context.Context, request *ChannelCreateReleaseFlowRequest) (response *ChannelCreateReleaseFlowResponse, err error) {
     if request == nil {

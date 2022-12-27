@@ -146,7 +146,7 @@ type CodePack struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
 
-	// 码长度
+	// 防伪码长度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeLength *int64 `json:"CodeLength,omitempty" name:"CodeLength"`
 
@@ -240,7 +240,7 @@ type CreateCodeBatchRequestParams struct {
 	// 批次类型 0:溯源 1:营销
 	BatchType *uint64 `json:"BatchType,omitempty" name:"BatchType"`
 
-	// 批次ID，系统自动生成
+	// 批次ID，留空时系统自动生成
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 
 	// 备注
@@ -251,6 +251,9 @@ type CreateCodeBatchRequestParams struct {
 
 	// 克隆批次ID，同时会复制溯源信息
 	CloneId *string `json:"CloneId,omitempty" name:"CloneId"`
+
+	// 批次编号，业务字段不判断唯一性
+	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
 }
 
 type CreateCodeBatchRequest struct {
@@ -268,7 +271,7 @@ type CreateCodeBatchRequest struct {
 	// 批次类型 0:溯源 1:营销
 	BatchType *uint64 `json:"BatchType,omitempty" name:"BatchType"`
 
-	// 批次ID，系统自动生成
+	// 批次ID，留空时系统自动生成
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 
 	// 备注
@@ -279,6 +282,9 @@ type CreateCodeBatchRequest struct {
 
 	// 克隆批次ID，同时会复制溯源信息
 	CloneId *string `json:"CloneId,omitempty" name:"CloneId"`
+
+	// 批次编号，业务字段不判断唯一性
+	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
 }
 
 func (r *CreateCodeBatchRequest) ToJsonString() string {
@@ -301,6 +307,7 @@ func (r *CreateCodeBatchRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "MpTpl")
 	delete(f, "CloneId")
+	delete(f, "BatchCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodeBatchRequest has unknown keys!", "")
 	}
@@ -360,6 +367,9 @@ type CreateCodePackRequestParams struct {
 
 	// 批次ID，如果传了生码后会同时绑定批次，并激活码
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 是否有流水码 0:无 1:有
+	SerialType *uint64 `json:"SerialType,omitempty" name:"SerialType"`
 }
 
 type CreateCodePackRequest struct {
@@ -391,6 +401,9 @@ type CreateCodePackRequest struct {
 
 	// 批次ID，如果传了生码后会同时绑定批次，并激活码
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 是否有流水码 0:无 1:有
+	SerialType *uint64 `json:"SerialType,omitempty" name:"SerialType"`
 }
 
 func (r *CreateCodePackRequest) ToJsonString() string {
@@ -414,6 +427,7 @@ func (r *CreateCodePackRequest) FromJsonString(s string) error {
 	delete(f, "PackLevel")
 	delete(f, "PackSpec")
 	delete(f, "BatchId")
+	delete(f, "SerialType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodePackRequest has unknown keys!", "")
 	}
@@ -587,6 +601,9 @@ type CreateCustomPackRequestParams struct {
 
 	// 批次ID，如果传了生码后会同时绑定批次，并激活码
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 是否有流水码 0:无 1:有
+	SerialType *uint64 `json:"SerialType,omitempty" name:"SerialType"`
 }
 
 type CreateCustomPackRequest struct {
@@ -618,6 +635,9 @@ type CreateCustomPackRequest struct {
 
 	// 批次ID，如果传了生码后会同时绑定批次，并激活码
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 是否有流水码 0:无 1:有
+	SerialType *uint64 `json:"SerialType,omitempty" name:"SerialType"`
 }
 
 func (r *CreateCustomPackRequest) ToJsonString() string {
@@ -641,6 +661,7 @@ func (r *CreateCustomPackRequest) FromJsonString(s string) error {
 	delete(f, "CustomId")
 	delete(f, "CodeParts")
 	delete(f, "BatchId")
+	delete(f, "SerialType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomPackRequest has unknown keys!", "")
 	}
@@ -1901,6 +1922,9 @@ type DescribeCodePacksRequestParams struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 是否有流水码 0:无 1:有
+	SerialType *uint64 `json:"SerialType,omitempty" name:"SerialType"`
 }
 
 type DescribeCodePacksRequest struct {
@@ -1917,6 +1941,9 @@ type DescribeCodePacksRequest struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 是否有流水码 0:无 1:有
+	SerialType *uint64 `json:"SerialType,omitempty" name:"SerialType"`
 }
 
 func (r *DescribeCodePacksRequest) ToJsonString() string {
@@ -1935,6 +1962,7 @@ func (r *DescribeCodePacksRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "Keyword")
 	delete(f, "CorpId")
+	delete(f, "SerialType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodePacksRequest has unknown keys!", "")
 	}
@@ -3035,6 +3063,9 @@ type ModifyCodeBatchRequestParams struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 批次编码，业务字段不判断唯一性
+	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
 }
 
 type ModifyCodeBatchRequest struct {
@@ -3060,6 +3091,9 @@ type ModifyCodeBatchRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 批次编码，业务字段不判断唯一性
+	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
 }
 
 func (r *ModifyCodeBatchRequest) ToJsonString() string {
@@ -3081,6 +3115,7 @@ func (r *ModifyCodeBatchRequest) FromJsonString(s string) error {
 	delete(f, "MerchantId")
 	delete(f, "ProductId")
 	delete(f, "Remark")
+	delete(f, "BatchCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCodeBatchRequest has unknown keys!", "")
 	}

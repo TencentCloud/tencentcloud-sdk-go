@@ -473,11 +473,13 @@ func NewCreateLogConfigResponse() (response *CreateLogConfigResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_CREATECONFIGDATAERROR = "InternalError.CreateConfigDataError"
 //  INTERNALERROR_CREATELOGCONFIGERROR = "InternalError.CreateLogConfigError"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = "InvalidParameterValue.ConfigDataAlreadyExist"
 //  INVALIDPARAMETERVALUE_LOGCONFIGALREADYEXIST = "InvalidParameterValue.LogConfigAlreadyExist"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateLogConfig(request *CreateLogConfigRequest) (response *CreateLogConfigResponse, err error) {
     return c.CreateLogConfigWithContext(context.Background(), request)
@@ -489,11 +491,13 @@ func (c *Client) CreateLogConfig(request *CreateLogConfigRequest) (response *Cre
 // 可能返回的错误码:
 //  INTERNALERROR_CREATECONFIGDATAERROR = "InternalError.CreateConfigDataError"
 //  INTERNALERROR_CREATELOGCONFIGERROR = "InternalError.CreateLogConfigError"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = "InvalidParameterValue.ConfigDataAlreadyExist"
 //  INVALIDPARAMETERVALUE_LOGCONFIGALREADYEXIST = "InvalidParameterValue.LogConfigAlreadyExist"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateLogConfigWithContext(ctx context.Context, request *CreateLogConfigRequest) (response *CreateLogConfigResponse, err error) {
     if request == nil {
@@ -1286,6 +1290,7 @@ func NewDescribeApplicationsStatusResponse() (response *DescribeApplicationsStat
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationsStatus(request *DescribeApplicationsStatusRequest) (response *DescribeApplicationsStatusResponse, err error) {
@@ -1297,6 +1302,7 @@ func (c *Client) DescribeApplicationsStatus(request *DescribeApplicationsStatusR
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationsStatusWithContext(ctx context.Context, request *DescribeApplicationsStatusRequest) (response *DescribeApplicationsStatusResponse, err error) {
@@ -2685,6 +2691,7 @@ func NewModifyLogConfigResponse() (response *ModifyLogConfigResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_MODIFYLOGCONFIGERROR = "InternalError.ModifyLogConfigError"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyLogConfig(request *ModifyLogConfigRequest) (response *ModifyLogConfigResponse, err error) {
     return c.ModifyLogConfigWithContext(context.Background(), request)
@@ -2696,6 +2703,7 @@ func (c *Client) ModifyLogConfig(request *ModifyLogConfigRequest) (response *Mod
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_MODIFYLOGCONFIGERROR = "InternalError.ModifyLogConfigError"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyLogConfigWithContext(ctx context.Context, request *ModifyLogConfigRequest) (response *ModifyLogConfigResponse, err error) {
     if request == nil {

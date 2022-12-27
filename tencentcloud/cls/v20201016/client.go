@@ -68,6 +68,7 @@ func NewAddMachineGroupInfoResponse() (response *AddMachineGroupInfoResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
 func (c *Client) AddMachineGroupInfo(request *AddMachineGroupInfoRequest) (response *AddMachineGroupInfoResponse, err error) {
     return c.AddMachineGroupInfoWithContext(context.Background(), request)
 }
@@ -77,6 +78,7 @@ func (c *Client) AddMachineGroupInfo(request *AddMachineGroupInfoRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
 func (c *Client) AddMachineGroupInfoWithContext(ctx context.Context, request *AddMachineGroupInfoRequest) (response *AddMachineGroupInfoResponse, err error) {
     if request == nil {
         request = NewAddMachineGroupInfoRequest()

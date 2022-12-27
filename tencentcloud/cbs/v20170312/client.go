@@ -581,6 +581,7 @@ func NewCreateDisksResponse() (response *CreateDisksResponse) {
 //  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEBUSY = "ResourceBusy"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -611,6 +612,7 @@ func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisks
 //  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEBUSY = "ResourceBusy"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -2569,6 +2571,7 @@ func NewModifySnapshotAttributeResponse() (response *ModifySnapshotAttributeResp
 //  INVALIDSNAPSHOT_NOTSUPPORTED = "InvalidSnapshot.NotSupported"
 //  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
 func (c *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest) (response *ModifySnapshotAttributeResponse, err error) {
     return c.ModifySnapshotAttributeWithContext(context.Background(), request)
 }
@@ -2587,6 +2590,7 @@ func (c *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest
 //  INVALIDSNAPSHOT_NOTSUPPORTED = "InvalidSnapshot.NotSupported"
 //  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
 func (c *Client) ModifySnapshotAttributeWithContext(ctx context.Context, request *ModifySnapshotAttributeRequest) (response *ModifySnapshotAttributeResponse, err error) {
     if request == nil {
         request = NewModifySnapshotAttributeRequest()
@@ -2808,6 +2812,7 @@ func NewResizeDiskResponse() (response *ResizeDiskResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  TRADEDEALCONFLICT = "TradeDealConflict"
 //  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
@@ -2837,6 +2842,7 @@ func (c *Client) ResizeDisk(request *ResizeDiskRequest) (response *ResizeDiskRes
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 //  TRADEDEALCONFLICT = "TradeDealConflict"
 //  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"

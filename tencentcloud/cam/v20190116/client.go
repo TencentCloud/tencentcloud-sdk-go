@@ -489,6 +489,7 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_GROUPFULL = "InvalidParameter.GroupFull"
 //  INVALIDPARAMETER_GROUPNAMEINUSE = "InvalidParameter.GroupNameInUse"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
     return c.CreateGroupWithContext(context.Background(), request)
 }
@@ -499,6 +500,7 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
 // 可能返回的错误码:
 //  INVALIDPARAMETER_GROUPFULL = "InvalidParameter.GroupFull"
 //  INVALIDPARAMETER_GROUPNAMEINUSE = "InvalidParameter.GroupNameInUse"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGroupRequest) (response *CreateGroupResponse, err error) {
     if request == nil {
         request = NewCreateGroupRequest()
