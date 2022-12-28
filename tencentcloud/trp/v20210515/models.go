@@ -3052,7 +3052,7 @@ type ModifyCodeBatchRequestParams struct {
 	// 状态 0: 未激活 1: 已激活 -1: 已冻结
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 模版ID，或者活动ID
+	// 模板ID，或者活动ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 
 	// 商户ID
@@ -3080,7 +3080,7 @@ type ModifyCodeBatchRequest struct {
 	// 状态 0: 未激活 1: 已激活 -1: 已冻结
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 模版ID，或者活动ID
+	// 模板ID，或者活动ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 
 	// 商户ID
@@ -3563,6 +3563,83 @@ func (r *ModifyTraceCodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyTraceCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTraceCodeUnlinkRequestParams struct {
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 溯源码列表
+	Codes []*string `json:"Codes,omitempty" name:"Codes"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+type ModifyTraceCodeUnlinkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 溯源码列表
+	Codes []*string `json:"Codes,omitempty" name:"Codes"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+func (r *ModifyTraceCodeUnlinkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTraceCodeUnlinkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchId")
+	delete(f, "Codes")
+	delete(f, "CorpId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTraceCodeUnlinkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTraceCodeUnlinkResponseParams struct {
+	// 成功解绑溯源码的数量
+	UnlinkCnt *uint64 `json:"UnlinkCnt,omitempty" name:"UnlinkCnt"`
+
+	// 当前批次的码数量
+	CodeCnt *uint64 `json:"CodeCnt,omitempty" name:"CodeCnt"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyTraceCodeUnlinkResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTraceCodeUnlinkResponseParams `json:"Response"`
+}
+
+func (r *ModifyTraceCodeUnlinkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTraceCodeUnlinkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

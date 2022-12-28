@@ -1268,7 +1268,9 @@ func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEv
 }
 
 // CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 ID
+// 创建出证报告，返回报告 ID。需要配合出证套餐才能调用。
+//
+// 出证需要一定时间，建议调用创建出证24小时之后再通过DescribeChannelFlowEvidenceReport进行查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1287,7 +1289,9 @@ func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvide
 }
 
 // CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 ID
+// 创建出证报告，返回报告 ID。需要配合出证套餐才能调用。
+//
+// 出证需要一定时间，建议调用创建出证24小时之后再通过DescribeChannelFlowEvidenceReport进行查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1688,6 +1692,7 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *CreateSignUrlsResponse, err error) {
@@ -1747,6 +1752,7 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) CreateSignUrlsWithContext(ctx context.Context, request *CreateSignUrlsRequest) (response *CreateSignUrlsResponse, err error) {

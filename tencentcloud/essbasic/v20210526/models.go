@@ -1770,11 +1770,7 @@ func (r *CreateChannelFlowEvidenceReportRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateChannelFlowEvidenceReportResponseParams struct {
-	// 废除，字段无效
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
-
-	// 出证报告 ID
+	// 出证报告 ID，用于查询出证报告接口DescribeChannelFlowEvidenceReport时用到
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
 
@@ -1782,6 +1778,10 @@ type CreateChannelFlowEvidenceReportResponseParams struct {
 	// 成功：EvidenceStatusSuccess
 	// 失败：EvidenceStatusFailed
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 废除，字段无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2292,11 +2292,11 @@ type Department struct {
 
 // Predefined struct for user
 type DescribeChannelFlowEvidenceReportRequestParams struct {
-	// 出证报告编号
-	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
-
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 出证报告编号
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2305,11 +2305,11 @@ type DescribeChannelFlowEvidenceReportRequestParams struct {
 type DescribeChannelFlowEvidenceReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 出证报告编号
-	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
-
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 出证报告编号
+	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2327,8 +2327,8 @@ func (r *DescribeChannelFlowEvidenceReportRequest) FromJsonString(s string) erro
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ReportId")
 	delete(f, "Agent")
+	delete(f, "ReportId")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelFlowEvidenceReportRequest has unknown keys!", "")

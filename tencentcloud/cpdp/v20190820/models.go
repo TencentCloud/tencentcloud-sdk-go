@@ -332,6 +332,122 @@ type AddContractResult struct {
 }
 
 // Predefined struct for user
+type AddFlexFundingAccountRequestParams struct {
+	// 资金账户类型
+	// PINGAN_BANK:平安银行
+	FundingAccountType *string `json:"FundingAccountType,omitempty" name:"FundingAccountType"`
+
+	// 收款资金账户姓名
+	FundingAccountName *string `json:"FundingAccountName,omitempty" name:"FundingAccountName"`
+
+	// 收款资金账户号
+	FundingAccountNo *string `json:"FundingAccountNo,omitempty" name:"FundingAccountNo"`
+
+	// 收款资金账户手机号
+	PhoneNo *string `json:"PhoneNo,omitempty" name:"PhoneNo"`
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 开户支行名
+	BankBranchName *string `json:"BankBranchName,omitempty" name:"BankBranchName"`
+}
+
+type AddFlexFundingAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资金账户类型
+	// PINGAN_BANK:平安银行
+	FundingAccountType *string `json:"FundingAccountType,omitempty" name:"FundingAccountType"`
+
+	// 收款资金账户姓名
+	FundingAccountName *string `json:"FundingAccountName,omitempty" name:"FundingAccountName"`
+
+	// 收款资金账户号
+	FundingAccountNo *string `json:"FundingAccountNo,omitempty" name:"FundingAccountNo"`
+
+	// 收款资金账户手机号
+	PhoneNo *string `json:"PhoneNo,omitempty" name:"PhoneNo"`
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 开户支行名
+	BankBranchName *string `json:"BankBranchName,omitempty" name:"BankBranchName"`
+}
+
+func (r *AddFlexFundingAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddFlexFundingAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FundingAccountType")
+	delete(f, "FundingAccountName")
+	delete(f, "FundingAccountNo")
+	delete(f, "PhoneNo")
+	delete(f, "PayeeId")
+	delete(f, "Environment")
+	delete(f, "BankBranchName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddFlexFundingAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddFlexFundingAccountResponseParams struct {
+	// 错误码。SUCCESS为成功，其他为失败
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *PayeeFundingAccountResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddFlexFundingAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *AddFlexFundingAccountResponseParams `json:"Response"`
+}
+
+func (r *AddFlexFundingAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddFlexFundingAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddFlexIdInfoRequestParams struct {
 	// 证件类型
 	// 0:身份证
@@ -14218,6 +14334,129 @@ func (r *ModifyBindedAccountResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyFlexFundingAccountRequestParams struct {
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 收款用户资金账户ID
+	FundingAccountBindSerialNo *string `json:"FundingAccountBindSerialNo,omitempty" name:"FundingAccountBindSerialNo"`
+
+	// 资金账户类型
+	// PINGAN_BANK:平安银行
+	FundingAccountType *string `json:"FundingAccountType,omitempty" name:"FundingAccountType"`
+
+	// 收款资金账户手机号
+	PhoneNo *string `json:"PhoneNo,omitempty" name:"PhoneNo"`
+
+	// 收款资金账户姓名
+	FundingAccountName *string `json:"FundingAccountName,omitempty" name:"FundingAccountName"`
+
+	// 收款资金账户号
+	FundingAccountNo *string `json:"FundingAccountNo,omitempty" name:"FundingAccountNo"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 开户支行名
+	BankBranchName *string `json:"BankBranchName,omitempty" name:"BankBranchName"`
+}
+
+type ModifyFlexFundingAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 收款用户资金账户ID
+	FundingAccountBindSerialNo *string `json:"FundingAccountBindSerialNo,omitempty" name:"FundingAccountBindSerialNo"`
+
+	// 资金账户类型
+	// PINGAN_BANK:平安银行
+	FundingAccountType *string `json:"FundingAccountType,omitempty" name:"FundingAccountType"`
+
+	// 收款资金账户手机号
+	PhoneNo *string `json:"PhoneNo,omitempty" name:"PhoneNo"`
+
+	// 收款资金账户姓名
+	FundingAccountName *string `json:"FundingAccountName,omitempty" name:"FundingAccountName"`
+
+	// 收款资金账户号
+	FundingAccountNo *string `json:"FundingAccountNo,omitempty" name:"FundingAccountNo"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 开户支行名
+	BankBranchName *string `json:"BankBranchName,omitempty" name:"BankBranchName"`
+}
+
+func (r *ModifyFlexFundingAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFlexFundingAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayeeId")
+	delete(f, "FundingAccountBindSerialNo")
+	delete(f, "FundingAccountType")
+	delete(f, "PhoneNo")
+	delete(f, "FundingAccountName")
+	delete(f, "FundingAccountNo")
+	delete(f, "Environment")
+	delete(f, "BankBranchName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFlexFundingAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyFlexFundingAccountResponseParams struct {
+	// 错误码。SUCCESS为成功，其他为失败
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyFlexFundingAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyFlexFundingAccountResponseParams `json:"Response"`
+}
+
+func (r *ModifyFlexFundingAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFlexFundingAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyFlexPayeeAccountRightStatusRequestParams struct {
 	// 收款用户ID
 	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
@@ -15616,6 +15855,11 @@ type PayeeAccountUserInfo struct {
 	// 姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type PayeeFundingAccountResult struct {
+	// 资金账户ID
+	FundingAccountBindSerialNo *string `json:"FundingAccountBindSerialNo,omitempty" name:"FundingAccountBindSerialNo"`
 }
 
 type PayeeInfoResult struct {
@@ -20036,6 +20280,85 @@ func (r *QueryFlexPlatformAccountBalanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryFlexPlatformAccountBalanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFlexServiceProviderAccountBalanceRequestParams struct {
+	// 服务商ID
+	ServiceProviderId *string `json:"ServiceProviderId,omitempty" name:"ServiceProviderId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type QueryFlexServiceProviderAccountBalanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务商ID
+	ServiceProviderId *string `json:"ServiceProviderId,omitempty" name:"ServiceProviderId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *QueryFlexServiceProviderAccountBalanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexServiceProviderAccountBalanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceProviderId")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexServiceProviderAccountBalanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFlexServiceProviderAccountBalanceResponseParams struct {
+	// 错误码。SUCCESS为成功，其他为失败
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *ServiceProviderAccountBalanceResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryFlexServiceProviderAccountBalanceResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryFlexServiceProviderAccountBalanceResponseParams `json:"Response"`
+}
+
+func (r *QueryFlexServiceProviderAccountBalanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexServiceProviderAccountBalanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -29115,6 +29438,11 @@ type SceneInfo struct {
 	// 用户IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserClientIp *string `json:"UserClientIp,omitempty" name:"UserClientIp"`
+}
+
+type ServiceProviderAccountBalanceResult struct {
+	// 服务商账户余额
+	Balance *string `json:"Balance,omitempty" name:"Balance"`
 }
 
 type SettleInfo struct {

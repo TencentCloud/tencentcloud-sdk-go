@@ -4396,6 +4396,11 @@ type HostItem struct {
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
 }
 
+type HostPriceInfo struct {
+	// 描述了cdh实例相关的价格信息
+	HostPrice *ItemPrice `json:"HostPrice,omitempty" name:"HostPrice"`
+}
+
 type HostResource struct {
 	// 专用宿主机实例总CPU核数
 	CpuTotal *uint64 `json:"CpuTotal,omitempty" name:"CpuTotal"`
@@ -4902,6 +4907,77 @@ func (r *InquiryPriceModifyInstancesChargeTypeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *InquiryPriceModifyInstancesChargeTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceRenewHostsRequestParams struct {
+	// 一个或多个待操作的`CDH`实例`ID`。可通过[`DescribeHosts`](https://cloud.tencent.com/document/api/213/16474)接口返回值中的`HostId`获取。每次请求批量实例的上限为100。
+	HostIds []*string `json:"HostIds,omitempty" name:"HostIds"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+	HostChargePrepaid *ChargePrepaid `json:"HostChargePrepaid,omitempty" name:"HostChargePrepaid"`
+
+	// 试运行，测试使用，不执行具体逻辑。取值范围：<br><li>TRUE：跳过执行逻辑<br><li>FALSE：执行逻辑<br><br>默认取值：FALSE。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
+type InquiryPriceRenewHostsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 一个或多个待操作的`CDH`实例`ID`。可通过[`DescribeHosts`](https://cloud.tencent.com/document/api/213/16474)接口返回值中的`HostId`获取。每次请求批量实例的上限为100。
+	HostIds []*string `json:"HostIds,omitempty" name:"HostIds"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+	HostChargePrepaid *ChargePrepaid `json:"HostChargePrepaid,omitempty" name:"HostChargePrepaid"`
+
+	// 试运行，测试使用，不执行具体逻辑。取值范围：<br><li>TRUE：跳过执行逻辑<br><li>FALSE：执行逻辑<br><br>默认取值：FALSE。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
+func (r *InquiryPriceRenewHostsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceRenewHostsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HostIds")
+	delete(f, "HostChargePrepaid")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRenewHostsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceRenewHostsResponseParams struct {
+	// CDH实例续费价格信息
+	Price *HostPriceInfo `json:"Price,omitempty" name:"Price"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type InquiryPriceRenewHostsResponse struct {
+	*tchttp.BaseResponse
+	Response *InquiryPriceRenewHostsResponseParams `json:"Response"`
+}
+
+func (r *InquiryPriceRenewHostsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceRenewHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

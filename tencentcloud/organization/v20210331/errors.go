@@ -26,6 +26,9 @@ const (
 	// 创建成员异常。
 	FAILEDOPERATION_CREATEACCOUNT = "FailedOperation.CreateAccount"
 
+	// 添加计费权限失败。
+	FAILEDOPERATION_CREATEBILLINGPERMISSIONERR = "FailedOperation.CreateBillingPermissionErr"
+
 	// 账号实名认证超过上限。
 	FAILEDOPERATION_CREATEMEMBERAUTHOVERLIMIT = "FailedOperation.CreateMemberAuthOverLimit"
 
@@ -164,6 +167,12 @@ const (
 	// 创建的成员不允许删除。
 	UNSUPPORTEDOPERATION_CREATEMEMBERNOTALLOWDELETE = "UnsupportedOperation.CreateMemberNotAllowDelete"
 
+	// 成员或者代付者存在经销商。
+	UNSUPPORTEDOPERATION_EXISTEDAGENT = "UnsupportedOperation.ExistedAgent"
+
+	// 成员或者代付者存在经销商子客。
+	UNSUPPORTEDOPERATION_EXISTEDCLIENT = "UnsupportedOperation.ExistedClient"
+
 	// 用户类型不一致。
 	UNSUPPORTEDOPERATION_INCONSISTENTUSERTYPES = "UnsupportedOperation.InconsistentUserTypes"
 
@@ -187,6 +196,9 @@ const (
 
 	// 成员是代理商或代客。
 	UNSUPPORTEDOPERATION_MEMBERISAGENT = "UnsupportedOperation.MemberIsAgent"
+
+	// 成员没有绑卡。
+	UNSUPPORTEDOPERATION_MEMBERNOPAYMENT = "UnsupportedOperation.MemberNoPayment"
 
 	// 存在在途订单。
 	UNSUPPORTEDOPERATION_ORDERINPROGRESSEXISTED = "UnsupportedOperation.OrderInProgressExisted"

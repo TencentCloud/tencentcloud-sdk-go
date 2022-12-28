@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 11 次发布
+### 第 22 次发布
 
-发布时间：2022-12-27 01:33:02
+发布时间：2022-12-28 01:04:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：SentenceMaxLength
+
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 45 次发布
+
+发布时间：2022-12-28 01:04:48
 
 本次发布包含了以下内容：
 
@@ -12,23 +31,77 @@
 
 新增接口：
 
-* [DescribeProxyProcessStatistics](https://cloud.tencent.com/document/api/1130/84544)
+* [CreateDiskBackup](https://cloud.tencent.com/document/api/362/84591)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 97 次发布
+
+发布时间：2022-12-28 11:40:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddFlexFundingAccount](https://cloud.tencent.com/document/api/1122/84594)
+* [ModifyFlexFundingAccount](https://cloud.tencent.com/document/api/1122/84593)
+* [QueryFlexServiceProviderAccountBalance](https://cloud.tencent.com/document/api/1122/84592)
 
 新增数据结构：
 
-* [ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic)
+* [PayeeFundingAccountResult](https://cloud.tencent.com/document/api/1122/40683#PayeeFundingAccountResult)
+* [ServiceProviderAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#ServiceProviderAccountBalanceResult)
 
 
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 103 次发布
+
+发布时间：2022-12-28 01:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [InquiryPriceRenewHosts](https://cloud.tencent.com/document/api/213/84595)
+
+新增数据结构：
+
+* [HostPriceInfo](https://cloud.tencent.com/document/api/213/15753#HostPriceInfo)
 
 
 
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 42 次发布
+### 第 71 次发布
 
-发布时间：2022-12-27 02:09:12
+发布时间：2022-12-28 14:12:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaNotificationChannel)
+
+	* <font color="#dd0000">**修改成员**：</font>UpdatedAt, OrgIds, OrganizationIds
+
+
+
+
+## 云压测(pts) 版本：2021-07-28
+
+### 第 9 次发布
+
+发布时间：2022-12-28 14:35:16
 
 本次发布包含了以下内容：
 
@@ -36,75 +109,77 @@
 
 修改接口：
 
-* [CreateRocketMQGroup](https://cloud.tencent.com/document/api/1179/63428)
+* [CreateScenario](https://cloud.tencent.com/document/api/1484/78091)
 
-	* 新增入参：GroupType, RetryMaxTimes
+	* 新增入参：Owner
 
-* [DescribeRocketMQGroups](https://cloud.tencent.com/document/api/1179/63420)
+* [DescribeScenarioWithJobs](https://cloud.tencent.com/document/api/1484/78066)
 
-	* 新增入参：Types
+	* 新增入参：ScenarioType, Owner
 
-* [ModifyRocketMQGroup](https://cloud.tencent.com/document/api/1179/63416)
+* [UpdateScenario](https://cloud.tencent.com/document/api/1484/78057)
 
-	* 新增入参：RetryMaxTimes
+	* 新增入参：Owner
 
 
 修改数据结构：
 
-* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+* [Scenario](https://cloud.tencent.com/document/api/1484/78100#Scenario)
 
-	* 新增成员：Status, IsolateTime, HttpPublicEndpoint, HttpVpcEndpoint
+	* 新增成员：Owner
 
-	* <font color="#dd0000">**修改成员**：</font>ClusterId, ClusterName, Region, CreateTime, Remark, PublicEndPoint, VpcEndPoint, SupportNamespaceEndpoint, Vpcs, IsVip, RocketMQFlag
-
-* [RocketMQGroup](https://cloud.tencent.com/document/api/1179/46089#RocketMQGroup)
-
-	* 新增成员：GroupType, RetryMaxTimes
-
-	* <font color="#dd0000">**修改成员**：</font>Name, ConsumerNum, TPS, TotalAccumulative, ConsumptionMode, ReadEnabled, RetryPartitionNum, CreateTime, UpdateTime, ClientProtocol, Remark, ConsumerType, BroadcastEnabled
+	* <font color="#dd0000">**修改成员**：</font>Name, AppId, Uin, SubAccountUin, TestScripts, Protocols, RequestFiles, SLAPolicy, Plugins, DomainNameConfig, NotificationHooks
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## 地域管理系统(region) 版本：2022-06-27
 
-### 第 22 次发布
+### 第 2 次发布
 
-发布时间：2022-12-27 02:10:56
+发布时间：2022-12-28 01:09:18
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+修改数据结构：
 
-* CreateDnsRecord
-* CreateLoadBalancing
-* DeleteDnsRecords
-* DeleteLoadBalancing
-* DescribeDnsRecords
-* DescribeLoadBalancing
-* ModifyDnsRecord
-* ModifyLoadBalancing
+* [RegionInfo](https://cloud.tencent.com/document/api/1596/77932#RegionInfo)
 
-<font color="#dd0000">**删除数据结构**：</font>
+	* 新增成员：RegionTypeMC, LocationMC, RegionNameMC, RegionIdMC
 
-* AdvancedOriginGroup
-* DnsRecord
-* LoadBalancing
-* OriginGroupCondition
+* [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo)
+
+	* 新增成员：ParentZone, ParentZoneId, ParentZoneName, ZoneType, MachineRoomTypeMC, ZoneIdMC
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 26 次发布
+
+发布时间：2022-12-28 14:53:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：AutoRenewFlag
+
 
 
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
-### 第 12 次发布
+### 第 14 次发布
 
-发布时间：2022-12-27 02:17:04
+发布时间：2022-12-28 16:01:40
 
 本次发布包含了以下内容：
 
@@ -112,53 +187,22 @@
 
 修改接口：
 
-* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+* [ModifyTraceCodeUnlink](https://cloud.tencent.com/document/api/1458/84602)
 
-	* 新增入参：BatchCode
-
-* [CreateCodePack](https://cloud.tencent.com/document/api/1458/75028)
-
-	* 新增入参：SerialType
-
-* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
-
-	* 新增入参：SerialType
-
-* [DescribeCodePacks](https://cloud.tencent.com/document/api/1458/75016)
-
-	* 新增入参：SerialType
-
-* [ModifyCodeBatch](https://cloud.tencent.com/document/api/1458/75007)
-
-	* 新增入参：BatchCode
+	* 新增出参：CodeCnt, BatchId
 
 
+### 第 13 次发布
 
-
-## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
-
-### 第 9 次发布
-
-发布时间：2022-12-27 02:26:58
+发布时间：2022-12-27 22:11:23
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+新增接口：
 
-* [AMEMusicBaseInfo](https://cloud.tencent.com/document/api/1592/76191#AMEMusicBaseInfo)
-
-修改数据结构：
-
-* [KTVMatchMusic](https://cloud.tencent.com/document/api/1592/76191#KTVMatchMusic)
-
-	* 新增成员：AMEMusicBaseInfo
-
-* [KTVMatchRule](https://cloud.tencent.com/document/api/1592/76191#KTVMatchRule)
-
-	* 新增成员：MusicIdToMatchAME
-
+* [ModifyTraceCodeUnlink](https://cloud.tencent.com/document/api/1458/84602)
 
 
 
@@ -5275,6 +5319,21 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 22 次发布
+
+发布时间：2022-12-28 01:04:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：SentenceMaxLength
+
 
 ### 第 21 次发布
 
@@ -10865,6 +10924,18 @@
 
 
 ## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 45 次发布
+
+发布时间：2022-12-28 01:04:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDiskBackup](https://cloud.tencent.com/document/api/362/84591)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 44 次发布
 
@@ -24969,6 +25040,25 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 97 次发布
+
+发布时间：2022-12-28 11:40:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddFlexFundingAccount](https://cloud.tencent.com/document/api/1122/84594)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyFlexFundingAccount](https://cloud.tencent.com/document/api/1122/84593)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryFlexServiceProviderAccountBalance](https://cloud.tencent.com/document/api/1122/84592)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PayeeFundingAccountResult](https://cloud.tencent.com/document/api/1122/40683#PayeeFundingAccountResult)](https://cloud.tencent.com/document/api/1122/40683#[PayeeFundingAccountResult](https://cloud.tencent.com/document/api/1122/40683#PayeeFundingAccountResult))
+* [[ServiceProviderAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#ServiceProviderAccountBalanceResult)](https://cloud.tencent.com/document/api/1122/40683#[ServiceProviderAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#ServiceProviderAccountBalanceResult))
+
 ### 第 96 次发布
 
 发布时间：2022-12-14 11:33:48
@@ -27634,6 +27724,22 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 103 次发布
+
+发布时间：2022-12-28 01:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[InquiryPriceRenewHosts](https://cloud.tencent.com/document/api/213/84595)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[HostPriceInfo](https://cloud.tencent.com/document/api/213/15753#HostPriceInfo)](https://cloud.tencent.com/document/api/213/15753#[HostPriceInfo](https://cloud.tencent.com/document/api/213/15753#HostPriceInfo))
 
 ### 第 102 次发布
 
@@ -33404,11 +33510,11 @@
 
 新增接口：
 
-* [[DescribeProxyProcessStatistics](https://cloud.tencent.com/document/api/1130/84544)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProxyProcessStatistics](https://cloud.tencent.com/document/api/1130/84544)
 
 新增数据结构：
 
-* [[ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic)](https://cloud.tencent.com/document/api/1130/57812#[ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic))
+* [ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic)
 
 ### 第 10 次发布
 
@@ -58594,6 +58700,21 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 71 次发布
+
+发布时间：2022-12-28 14:12:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaNotificationChannel)
+
+	* <font color="#dd0000">**修改成员**：</font>UpdatedAt, OrgIds, OrganizationIds
+
+
 ### 第 70 次发布
 
 发布时间：2022-12-21 01:51:22
@@ -66800,6 +66921,38 @@
 
 ## 云压测(pts) 版本：2021-07-28
 
+### 第 9 次发布
+
+发布时间：2022-12-28 14:35:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateScenario](https://cloud.tencent.com/document/api/1484/78091)
+
+	* 新增入参：Owner
+
+* [DescribeScenarioWithJobs](https://cloud.tencent.com/document/api/1484/78066)
+
+	* 新增入参：ScenarioType, Owner
+
+* [UpdateScenario](https://cloud.tencent.com/document/api/1484/78057)
+
+	* 新增入参：Owner
+
+
+修改数据结构：
+
+* [Scenario](https://cloud.tencent.com/document/api/1484/78100#Scenario)
+
+	* 新增成员：Owner
+
+	* <font color="#dd0000">**修改成员**：</font>Name, AppId, Uin, SubAccountUin, TestScripts, Protocols, RequestFiles, SLAPolicy, Plugins, DomainNameConfig, NotificationHooks
+
+
 ### 第 8 次发布
 
 发布时间：2022-12-08 01:40:36
@@ -68360,6 +68513,25 @@
 
 
 ## 地域管理系统(region) 版本：2022-06-27
+
+### 第 2 次发布
+
+发布时间：2022-12-28 01:09:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RegionInfo](https://cloud.tencent.com/document/api/1596/77932#RegionInfo)
+
+	* 新增成员：RegionTypeMC, LocationMC, RegionNameMC, RegionIdMC
+
+* [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo)
+
+	* 新增成员：ParentZone, ParentZoneId, ParentZoneName, ZoneType, MachineRoomTypeMC, ZoneIdMC
+
 
 ### 第 1 次发布
 
@@ -72125,6 +72297,21 @@
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 26 次发布
+
+发布时间：2022-12-28 14:53:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：AutoRenewFlag
+
 
 ### 第 25 次发布
 
@@ -89514,6 +89701,33 @@
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
+### 第 14 次发布
+
+发布时间：2022-12-28 16:01:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyTraceCodeUnlink](https://cloud.tencent.com/document/api/1458/84602)
+
+	* 新增出参：CodeCnt, BatchId
+
+
+### 第 13 次发布
+
+发布时间：2022-12-27 22:11:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyTraceCodeUnlink](https://cloud.tencent.com/document/api/1458/84602)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 12 次发布
 
 发布时间：2022-12-27 02:17:04
@@ -102037,7 +102251,7 @@
 
 新增数据结构：
 
-* [[AMEMusicBaseInfo](https://cloud.tencent.com/document/api/1592/76191#AMEMusicBaseInfo)](https://cloud.tencent.com/document/api/1592/76191#[AMEMusicBaseInfo](https://cloud.tencent.com/document/api/1592/76191#AMEMusicBaseInfo))
+* [AMEMusicBaseInfo](https://cloud.tencent.com/document/api/1592/76191#AMEMusicBaseInfo)
 
 修改数据结构：
 

@@ -243,7 +243,7 @@ type CreateRoomRequestParams struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 17)
+	// 最大连麦人数（不包括老师）。取值范围[0, 16]
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
@@ -252,7 +252,7 @@ type CreateRoomRequestParams struct {
 	// coteaching 双师
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
-	// 老师ID。
+	// 老师ID。通过[注册用户]接口获取的UserId。
 	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：
@@ -270,7 +270,7 @@ type CreateRoomRequestParams struct {
 	// 1 禁止录制
 	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
 
-	// 助教Id列表。
+	// 助教Id列表。通过[注册用户]接口获取的UserId。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
 	// 录制布局。
@@ -298,7 +298,7 @@ type CreateRoomRequest struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 17)
+	// 最大连麦人数（不包括老师）。取值范围[0, 16]
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
@@ -307,7 +307,7 @@ type CreateRoomRequest struct {
 	// coteaching 双师
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
-	// 老师ID。
+	// 老师ID。通过[注册用户]接口获取的UserId。
 	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：
@@ -325,7 +325,7 @@ type CreateRoomRequest struct {
 	// 1 禁止录制
 	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
 
-	// 助教Id列表。
+	// 助教Id列表。通过[注册用户]接口获取的UserId。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
 	// 录制布局。

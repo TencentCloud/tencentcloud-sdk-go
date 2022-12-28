@@ -4103,6 +4103,62 @@ func (c *Client) InquiryPriceModifyInstancesChargeTypeWithContext(ctx context.Co
     return
 }
 
+func NewInquiryPriceRenewHostsRequest() (request *InquiryPriceRenewHostsRequest) {
+    request = &InquiryPriceRenewHostsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "InquiryPriceRenewHosts")
+    
+    
+    return
+}
+
+func NewInquiryPriceRenewHostsResponse() (response *InquiryPriceRenewHostsResponse) {
+    response = &InquiryPriceRenewHostsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquiryPriceRenewHosts
+// 本接口 (InquiryPriceRenewHosts) 用于续费包年包月`CDH`实例询价。
+//
+// * 只支持查询包年包月`CDH`实例的续费价格。
+//
+// 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+func (c *Client) InquiryPriceRenewHosts(request *InquiryPriceRenewHostsRequest) (response *InquiryPriceRenewHostsResponse, err error) {
+    return c.InquiryPriceRenewHostsWithContext(context.Background(), request)
+}
+
+// InquiryPriceRenewHosts
+// 本接口 (InquiryPriceRenewHosts) 用于续费包年包月`CDH`实例询价。
+//
+// * 只支持查询包年包月`CDH`实例的续费价格。
+//
+// 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
+//  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+func (c *Client) InquiryPriceRenewHostsWithContext(ctx context.Context, request *InquiryPriceRenewHostsRequest) (response *InquiryPriceRenewHostsResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceRenewHostsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceRenewHosts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquiryPriceRenewHostsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceRenewInstancesRequest() (request *InquiryPriceRenewInstancesRequest) {
     request = &InquiryPriceRenewInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

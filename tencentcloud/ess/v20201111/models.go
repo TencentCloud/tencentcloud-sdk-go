@@ -1054,18 +1054,18 @@ func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowEvidenceReportResponseParams struct {
-	// 出证报告 ID
+	// 出证报告 ID，用于查询出证报告DescribeFlowEvidenceReport接口时用到
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
-
-	// 废除，字段无效
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
 
 	// 执行中：EvidenceStatusExecuting
 	// 成功：EvidenceStatusSuccess
 	// 失败：EvidenceStatusFailed
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 废除，字段无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

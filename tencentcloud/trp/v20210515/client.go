@@ -2077,6 +2077,62 @@ func (c *Client) ModifyTraceCodeWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewModifyTraceCodeUnlinkRequest() (request *ModifyTraceCodeUnlinkRequest) {
+    request = &ModifyTraceCodeUnlinkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "ModifyTraceCodeUnlink")
+    
+    
+    return
+}
+
+func NewModifyTraceCodeUnlinkResponse() (response *ModifyTraceCodeUnlinkResponse) {
+    response = &ModifyTraceCodeUnlinkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyTraceCodeUnlink
+// 解绑溯源码和批次的关系，让溯源码重置为未关联的状态，以便关联其他批次
+//
+// 注意：溯源码必须属于指定的批次才会解绑
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyTraceCodeUnlink(request *ModifyTraceCodeUnlinkRequest) (response *ModifyTraceCodeUnlinkResponse, err error) {
+    return c.ModifyTraceCodeUnlinkWithContext(context.Background(), request)
+}
+
+// ModifyTraceCodeUnlink
+// 解绑溯源码和批次的关系，让溯源码重置为未关联的状态，以便关联其他批次
+//
+// 注意：溯源码必须属于指定的批次才会解绑
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyTraceCodeUnlinkWithContext(ctx context.Context, request *ModifyTraceCodeUnlinkRequest) (response *ModifyTraceCodeUnlinkResponse, err error) {
+    if request == nil {
+        request = NewModifyTraceCodeUnlinkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTraceCodeUnlink require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTraceCodeUnlinkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTraceDataRequest() (request *ModifyTraceDataRequest) {
     request = &ModifyTraceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

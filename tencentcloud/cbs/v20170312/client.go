@@ -545,6 +545,68 @@ func (c *Client) CreateAutoSnapshotPolicyWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateDiskBackupRequest() (request *CreateDiskBackupRequest) {
+    request = &CreateDiskBackupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "CreateDiskBackup")
+    
+    
+    return
+}
+
+func NewCreateDiskBackupResponse() (response *CreateDiskBackupResponse) {
+    response = &CreateDiskBackupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDiskBackup
+// 为云硬盘创建一个备份点。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_OVERQUOTA = "ResourceInsufficient.OverQuota"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+func (c *Client) CreateDiskBackup(request *CreateDiskBackupRequest) (response *CreateDiskBackupResponse, err error) {
+    return c.CreateDiskBackupWithContext(context.Background(), request)
+}
+
+// CreateDiskBackup
+// 为云硬盘创建一个备份点。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_OVERQUOTA = "ResourceInsufficient.OverQuota"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+func (c *Client) CreateDiskBackupWithContext(ctx context.Context, request *CreateDiskBackupRequest) (response *CreateDiskBackupResponse, err error) {
+    if request == nil {
+        request = NewCreateDiskBackupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDiskBackup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDiskBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDisksRequest() (request *CreateDisksRequest) {
     request = &CreateDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1,3 +1,211 @@
+# Release v1.0.568
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 22 次发布
+
+发布时间：2022-12-28 01:04:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：SentenceMaxLength
+
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 45 次发布
+
+发布时间：2022-12-28 01:04:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDiskBackup](https://cloud.tencent.com/document/api/362/84591)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 97 次发布
+
+发布时间：2022-12-28 11:40:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddFlexFundingAccount](https://cloud.tencent.com/document/api/1122/84594)
+* [ModifyFlexFundingAccount](https://cloud.tencent.com/document/api/1122/84593)
+* [QueryFlexServiceProviderAccountBalance](https://cloud.tencent.com/document/api/1122/84592)
+
+新增数据结构：
+
+* [PayeeFundingAccountResult](https://cloud.tencent.com/document/api/1122/40683#PayeeFundingAccountResult)
+* [ServiceProviderAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#ServiceProviderAccountBalanceResult)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 103 次发布
+
+发布时间：2022-12-28 01:05:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [InquiryPriceRenewHosts](https://cloud.tencent.com/document/api/213/84595)
+
+新增数据结构：
+
+* [HostPriceInfo](https://cloud.tencent.com/document/api/213/15753#HostPriceInfo)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 71 次发布
+
+发布时间：2022-12-28 14:12:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaNotificationChannel)
+
+	* <font color="#dd0000">**修改成员**：</font>UpdatedAt, OrgIds, OrganizationIds
+
+
+
+
+## 云压测(pts) 版本：2021-07-28
+
+### 第 9 次发布
+
+发布时间：2022-12-28 14:35:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateScenario](https://cloud.tencent.com/document/api/1484/78091)
+
+	* 新增入参：Owner
+
+* [DescribeScenarioWithJobs](https://cloud.tencent.com/document/api/1484/78066)
+
+	* 新增入参：ScenarioType, Owner
+
+* [UpdateScenario](https://cloud.tencent.com/document/api/1484/78057)
+
+	* 新增入参：Owner
+
+
+修改数据结构：
+
+* [Scenario](https://cloud.tencent.com/document/api/1484/78100#Scenario)
+
+	* 新增成员：Owner
+
+	* <font color="#dd0000">**修改成员**：</font>Name, AppId, Uin, SubAccountUin, TestScripts, Protocols, RequestFiles, SLAPolicy, Plugins, DomainNameConfig, NotificationHooks
+
+
+
+
+## 地域管理系统(region) 版本：2022-06-27
+
+### 第 2 次发布
+
+发布时间：2022-12-28 01:09:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RegionInfo](https://cloud.tencent.com/document/api/1596/77932#RegionInfo)
+
+	* 新增成员：RegionTypeMC, LocationMC, RegionNameMC, RegionIdMC
+
+* [ZoneInfo](https://cloud.tencent.com/document/api/1596/77932#ZoneInfo)
+
+	* 新增成员：ParentZone, ParentZoneId, ParentZoneName, ZoneType, MachineRoomTypeMC, ZoneIdMC
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 26 次发布
+
+发布时间：2022-12-28 14:53:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：AutoRenewFlag
+
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 14 次发布
+
+发布时间：2022-12-28 16:01:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyTraceCodeUnlink](https://cloud.tencent.com/document/api/1458/84602)
+
+	* 新增出参：CodeCnt, BatchId
+
+
+### 第 13 次发布
+
+发布时间：2022-12-27 22:11:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyTraceCodeUnlink](https://cloud.tencent.com/document/api/1458/84602)
+
+
+
 # Release v1.0.567
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27

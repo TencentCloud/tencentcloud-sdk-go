@@ -562,6 +562,70 @@ func (r *CreateAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDiskBackupRequestParams struct {
+	// 要创建备份点的云硬盘名称。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘备份点名称。长度不能超过100个字符。
+	DiskBackupName *string `json:"DiskBackupName,omitempty" name:"DiskBackupName"`
+}
+
+type CreateDiskBackupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要创建备份点的云硬盘名称。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘备份点名称。长度不能超过100个字符。
+	DiskBackupName *string `json:"DiskBackupName,omitempty" name:"DiskBackupName"`
+}
+
+func (r *CreateDiskBackupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDiskBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskId")
+	delete(f, "DiskBackupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDiskBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDiskBackupResponseParams struct {
+	// 云硬盘备份点的ID。
+	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDiskBackupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDiskBackupResponseParams `json:"Response"`
+}
+
+func (r *CreateDiskBackupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDiskBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDisksRequestParams struct {
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
