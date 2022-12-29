@@ -2570,6 +2570,9 @@ type DescribeTemplatesRequestParams struct {
 
 	// 是否获取模板的PDF文件链接-渠道版需要开启白名单时才能使用。
 	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
+
+	// 渠道模板ID
+	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
 }
 
 type DescribeTemplatesRequest struct {
@@ -2604,6 +2607,9 @@ type DescribeTemplatesRequest struct {
 
 	// 是否获取模板的PDF文件链接-渠道版需要开启白名单时才能使用。
 	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
+
+	// 渠道模板ID
+	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -2628,6 +2634,7 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "WithPreviewUrl")
 	delete(f, "WithPdfUrl")
+	delete(f, "ChannelTemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}

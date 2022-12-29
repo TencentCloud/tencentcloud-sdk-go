@@ -79,11 +79,11 @@ type AudioResultDetailLanguageResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
-	// 该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为毫秒。
+	// 该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为毫秒。
+	// 该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -100,10 +100,10 @@ type AudioResultDetailMoanResult struct {
 	// 该字段用于返回呻吟检测的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于呻吟内容。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
-	// 该字段用于返回对应呻吟标签的片段在音频文件内的开始时间，单位为毫秒。
+	// 该字段用于返回对应呻吟标签的片段在音频文件内的开始时间，单位为秒。
 	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 该字段用于返回对应呻吟标签的片段在音频文件内的结束时间，单位为毫秒。
+	// 该字段用于返回对应呻吟标签的片段在音频文件内的结束时间，单位为秒。
 	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// *内测中，敬请期待*
@@ -126,11 +126,11 @@ type AudioResultDetailSpeakerResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
-	// 该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为毫秒。
+	// 该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为毫秒。
+	// 该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
 }
@@ -369,6 +369,10 @@ type CreateAudioModerationSyncTaskResponseParams struct {
 	// 识别类标签结果信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitempty" name:"RecognitionResults"`
+
+	// 识别音频时长，单位为毫秒；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -742,10 +746,10 @@ type MoanResult struct {
 	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 违规事件开始时间，单位为毫秒（ms）；
+	// 违规事件开始时间，单位为秒（s）；
 	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 违规事件结束时间，单位为毫秒（ms）；
+	// 违规事件结束时间，单位为秒（s）；
 	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。

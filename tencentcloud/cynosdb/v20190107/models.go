@@ -20,6 +20,22 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Ability struct {
+	// 是否支持从可用区
+	IsSupportSlaveZone *string `json:"IsSupportSlaveZone,omitempty" name:"IsSupportSlaveZone"`
+
+	// 不支持从可用区的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NonsupportSlaveZoneReason *string `json:"NonsupportSlaveZoneReason,omitempty" name:"NonsupportSlaveZoneReason"`
+
+	// 是否支持RO实例
+	IsSupportRo *string `json:"IsSupportRo,omitempty" name:"IsSupportRo"`
+
+	// 不支持RO实例的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NonsupportRoReason *string `json:"NonsupportRoReason,omitempty" name:"NonsupportRoReason"`
+}
+
 type Account struct {
 	// 数据库账号名
 	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
@@ -612,6 +628,9 @@ type ClusterInstanceDetail struct {
 
 	// 硬盘
 	InstanceStorage *int64 `json:"InstanceStorage,omitempty" name:"InstanceStorage"`
+
+	// 实例角色
+	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 }
 
 type ClusterParamModifyLog struct {
@@ -1315,84 +1334,142 @@ type CynosdbCluster struct {
 	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
 
 	// 用户uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
 	// 引擎类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
 
 	// 用户appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 集群状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
 
 	// 集群创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 付费模式。0-按量计费，1-包年包月
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 截止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
 
 	// 集群读写vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
 	// 集群读写vport
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
 
 	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
 
 	// 私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// cynos内核版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CynosVersion *string `json:"CynosVersion,omitempty" name:"CynosVersion"`
 
 	// 存储容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
 
 	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 正在处理的任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessingTask *string `json:"ProcessingTask,omitempty" name:"ProcessingTask"`
 
 	// 集群的任务数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tasks []*ObjectTask `json:"Tasks,omitempty" name:"Tasks"`
 
 	// 集群绑定的tag数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags"`
 
 	// Db类型(NORMAL, SERVERLESS)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
 
 	// 当Db类型为SERVERLESS时，serverless集群状态，可选值:
 	// resume
 	// pause
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
 
 	// 集群预付费存储值大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 集群存储为预付费时的存储ID，用于预付费存储变配
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
 
 	// 集群存储付费模式。0-按量计费，1-包年包月
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
 
 	// 集群计算规格对应的最小存储值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinStorageSize *int64 `json:"MinStorageSize,omitempty" name:"MinStorageSize"`
 
 	// 集群计算规格对应的最大存储值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxStorageSize *int64 `json:"MaxStorageSize,omitempty" name:"MaxStorageSize"`
 
 	// 集群网络信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetAddrs []*NetAddr `json:"NetAddrs,omitempty" name:"NetAddrs"`
+
+	// 物理可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalZone *string `json:"PhysicalZone,omitempty" name:"PhysicalZone"`
+
+	// 主可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterZone *string `json:"MasterZone,omitempty" name:"MasterZone"`
+
+	// 是否有从可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasSlaveZone *string `json:"HasSlaveZone,omitempty" name:"HasSlaveZone"`
+
+	// 从可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZones []*string `json:"SlaveZones,omitempty" name:"SlaveZones"`
+
+	// 商业类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 是否冻结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFreeze *string `json:"IsFreeze,omitempty" name:"IsFreeze"`
+
+	// 订单来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderSource *string `json:"OrderSource,omitempty" name:"OrderSource"`
+
+	// 能力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ability *Ability `json:"Ability,omitempty" name:"Ability"`
 }
 
 type CynosdbClusterDetail struct {
@@ -1471,6 +1548,94 @@ type CynosdbClusterDetail struct {
 	// pause
 	// pausing
 	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
+
+	// binlog开关，可选值：ON, OFF
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogBin *string `json:"LogBin,omitempty" name:"LogBin"`
+
+	// pitr类型，可选值：normal, redo_pitr
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PitrType *string `json:"PitrType,omitempty" name:"PitrType"`
+
+	// 物理可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalZone *string `json:"PhysicalZone,omitempty" name:"PhysicalZone"`
+
+	// 存储Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
+
+	// 存储大小，单位为G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 最大存储规格，单位为G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxStorageSize *int64 `json:"MaxStorageSize,omitempty" name:"MaxStorageSize"`
+
+	// 最小存储规格，单位为G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinStorageSize *int64 `json:"MinStorageSize,omitempty" name:"MinStorageSize"`
+
+	// 存储付费类型，1为包年包月，0为按量计费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// 数据库类型，normal，serverless
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
+
+	// 存储空间上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
+
+	// 集群支持的功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ability *Ability `json:"Ability,omitempty" name:"Ability"`
+
+	// cynos版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CynosVersion *string `json:"CynosVersion,omitempty" name:"CynosVersion"`
+
+	// 商业类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 是否有从可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasSlaveZone *string `json:"HasSlaveZone,omitempty" name:"HasSlaveZone"`
+
+	// 是否冻结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFreeze *string `json:"IsFreeze,omitempty" name:"IsFreeze"`
+
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*ObjectTask `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 主可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterZone *string `json:"MasterZone,omitempty" name:"MasterZone"`
+
+	// 从可用区列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZones []*string `json:"SlaveZones,omitempty" name:"SlaveZones"`
+
+	// Proxy状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyStatus *string `json:"ProxyStatus,omitempty" name:"ProxyStatus"`
+
+	// 是否跳过交易
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSkipTrade *string `json:"IsSkipTrade,omitempty" name:"IsSkipTrade"`
+
+	// 是否打开密码复杂度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOpenPasswordComplexity *string `json:"IsOpenPasswordComplexity,omitempty" name:"IsOpenPasswordComplexity"`
+
+	// 网络类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkStatus *string `json:"NetworkStatus,omitempty" name:"NetworkStatus"`
 }
 
 type CynosdbInstance struct {
@@ -5503,13 +5668,21 @@ type NetAddr struct {
 	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 外网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanIP *string `json:"WanIP,omitempty" name:"WanIP"`
+
+	// 外网状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanStatus *string `json:"WanStatus,omitempty" name:"WanStatus"`
 }
 
 type NewAccount struct {
-	// 账户名
+	// 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-16
 	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
 
-	// 密码
+	// 密码，密码长度范围为8到64个字符
 	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
 
 	// 主机
@@ -5517,6 +5690,9 @@ type NewAccount struct {
 
 	// 描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用户最大连接数，不能大于10240
+	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
 type ObjectTask struct {

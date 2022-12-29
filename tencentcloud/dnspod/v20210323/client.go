@@ -3540,7 +3540,7 @@ func NewModifyPackageAutoRenewResponse() (response *ModifyPackageAutoRenewRespon
 }
 
 // ModifyPackageAutoRenew
-//  DNS 解析套餐自动续费设置
+// DNS 解析套餐自动续费设置
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3645,7 +3645,7 @@ func (c *Client) ModifyPackageAutoRenew(request *ModifyPackageAutoRenewRequest) 
 }
 
 // ModifyPackageAutoRenew
-//  DNS 解析套餐自动续费设置
+// DNS 解析套餐自动续费设置
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

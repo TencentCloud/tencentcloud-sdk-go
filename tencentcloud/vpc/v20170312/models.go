@@ -1836,6 +1836,10 @@ type CCN struct {
 	// 是否开启云联网多路由表特性。False：未开启，True：开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableFlag *bool `json:"RouteTableFlag,omitempty" name:"RouteTableFlag"`
+
+	// 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteBroadcastPolicyFlag *bool `json:"RouteBroadcastPolicyFlag,omitempty" name:"RouteBroadcastPolicyFlag"`
 }
 
 type CcnAttachedInstance struct {

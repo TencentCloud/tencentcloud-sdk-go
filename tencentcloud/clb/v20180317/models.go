@@ -2273,6 +2273,95 @@ func (r *DeleteTargetGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeregisterFunctionTargetsRequestParams struct {
+	// 负载均衡实例 ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡监听器 ID。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 待解绑的云函数列表。
+	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitempty" name:"FunctionTargets"`
+
+	// 目标转发规则的 ID，当将云函数从七层转发规则上解绑时，必须输入此参数或 Domain+Url 参数。
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 目标转发规则的域名，若已经输入 LocationId 参数，则本参数不生效。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 目标转发规则的 URL，若已经输入 LocationId 参数，则本参数不生效。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type DeregisterFunctionTargetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 负载均衡实例 ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡监听器 ID。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 待解绑的云函数列表。
+	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitempty" name:"FunctionTargets"`
+
+	// 目标转发规则的 ID，当将云函数从七层转发规则上解绑时，必须输入此参数或 Domain+Url 参数。
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 目标转发规则的域名，若已经输入 LocationId 参数，则本参数不生效。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 目标转发规则的 URL，若已经输入 LocationId 参数，则本参数不生效。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+func (r *DeregisterFunctionTargetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeregisterFunctionTargetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "FunctionTargets")
+	delete(f, "LocationId")
+	delete(f, "Domain")
+	delete(f, "Url")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeregisterFunctionTargetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeregisterFunctionTargetsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeregisterFunctionTargetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeregisterFunctionTargetsResponseParams `json:"Response"`
+}
+
+func (r *DeregisterFunctionTargetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeregisterFunctionTargetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeregisterTargetGroupInstancesRequestParams struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
@@ -4820,6 +4909,30 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+type FunctionInfo struct {
+	// 函数命名空间
+	FunctionNamespace *string `json:"FunctionNamespace,omitempty" name:"FunctionNamespace"`
+
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 函数的版本名称或别名
+	FunctionQualifier *string `json:"FunctionQualifier,omitempty" name:"FunctionQualifier"`
+
+	// 标识 FunctionQualifier 参数的类型，可取值： VERSION（版本）、ALIAS（别名）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionQualifierType *string `json:"FunctionQualifierType,omitempty" name:"FunctionQualifierType"`
+}
+
+type FunctionTarget struct {
+	// 云函数相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Function *FunctionInfo `json:"Function,omitempty" name:"Function"`
+
+	// 权重
+	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+}
+
 type HealthCheck struct {
 	// 是否开启健康检查：1（开启）、0（关闭）。
 	HealthSwitch *int64 `json:"HealthSwitch,omitempty" name:"HealthSwitch"`
@@ -6828,6 +6941,57 @@ type Quota struct {
 
 	// 配额数量。
 	QuotaLimit *int64 `json:"QuotaLimit,omitempty" name:"QuotaLimit"`
+}
+
+// Predefined struct for user
+type RegisterFunctionTargetsRequestParams struct {
+
+}
+
+type RegisterFunctionTargetsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RegisterFunctionTargetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterFunctionTargetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterFunctionTargetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegisterFunctionTargetsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RegisterFunctionTargetsResponse struct {
+	*tchttp.BaseResponse
+	Response *RegisterFunctionTargetsResponseParams `json:"Response"`
+}
+
+func (r *RegisterFunctionTargetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterFunctionTargetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

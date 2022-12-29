@@ -1,3 +1,133 @@
+# Release v1.0.569
+
+## 音频内容安全(ams) 版本：2020-12-29
+
+### 第 9 次发布
+
+发布时间：2022-12-29 10:01:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAudioModerationSyncTask](https://cloud.tencent.com/document/api/1219/56755)
+
+	* 新增出参：Duration
+
+
+
+
+## 音频内容安全(ams) 版本：2020-06-08
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 76 次发布
+
+发布时间：2022-12-29 10:11:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeregisterFunctionTargets](https://cloud.tencent.com/document/api/214/84626)
+* [RegisterFunctionTargets](https://cloud.tencent.com/document/api/214/84625)
+
+新增数据结构：
+
+* [FunctionInfo](https://cloud.tencent.com/document/api/214/30694#FunctionInfo)
+* [FunctionTarget](https://cloud.tencent.com/document/api/214/30694#FunctionTarget)
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 38 次发布
+
+发布时间：2022-12-29 10:16:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Ability](https://cloud.tencent.com/document/api/1003/48097#Ability)
+
+修改数据结构：
+
+* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
+
+	* 新增成员：InstanceRole
+
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+
+	* 新增成员：PhysicalZone, MasterZone, HasSlaveZone, SlaveZones, BusinessType, IsFreeze, OrderSource, Ability
+
+* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
+
+	* 新增成员：LogBin, PitrType, PhysicalZone, StorageId, Storage, MaxStorageSize, MinStorageSize, StoragePayMode, DbMode, StorageLimit, Ability, CynosVersion, BusinessType, HasSlaveZone, IsFreeze, Tasks, MasterZone, SlaveZones, ProxyStatus, IsSkipTrade, IsOpenPasswordComplexity, NetworkStatus
+
+* [NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr)
+
+	* 新增成员：WanIP, WanStatus
+
+* [NewAccount](https://cloud.tencent.com/document/api/1003/48097#NewAccount)
+
+	* 新增成员：MaxUserConnections
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 58 次发布
+
+发布时间：2022-12-29 10:24:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTemplates](https://cloud.tencent.com/document/api/1420/61521)
+
+	* 新增入参：ChannelTemplateId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 133 次发布
+
+发布时间：2022-12-29 11:09:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CCN](https://cloud.tencent.com/document/api/215/15824#CCN)
+
+	* 新增成员：RouteBroadcastPolicyFlag
+
+	* <font color="#dd0000">**修改成员**：</font>CcnId, CcnName, CcnDescription, InstanceCount, CreateTime, State, QosLevel, InstanceChargeType, BandwidthLimitType, TagSet, RoutePriorityFlag, RouteTableCount, RouteTableFlag
+
+
+
+
 # Release v1.0.568
 
 ## 语音识别(asr) 版本：2019-06-14
