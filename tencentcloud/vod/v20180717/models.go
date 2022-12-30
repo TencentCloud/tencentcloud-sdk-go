@@ -4026,7 +4026,8 @@ type CreateProcedureTemplateRequestParams struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 内容审核类型任务参数。
+	// AI 内容审核类型任务参数 \*。
+	// <font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// AI 内容分析类型任务参数。
@@ -4034,6 +4035,9 @@ type CreateProcedureTemplateRequestParams struct {
 
 	// AI 内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
+
+	// 音视频审核类型任务参数。
+	ReviewAudioVideoTask *ProcedureReviewAudioVideoTaskInput `json:"ReviewAudioVideoTask,omitempty" name:"ReviewAudioVideoTask"`
 }
 
 type CreateProcedureTemplateRequest struct {
@@ -4051,7 +4055,8 @@ type CreateProcedureTemplateRequest struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 内容审核类型任务参数。
+	// AI 内容审核类型任务参数 \*。
+	// <font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// AI 内容分析类型任务参数。
@@ -4059,6 +4064,9 @@ type CreateProcedureTemplateRequest struct {
 
 	// AI 内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
+
+	// 音视频审核类型任务参数。
+	ReviewAudioVideoTask *ProcedureReviewAudioVideoTaskInput `json:"ReviewAudioVideoTask,omitempty" name:"ReviewAudioVideoTask"`
 }
 
 func (r *CreateProcedureTemplateRequest) ToJsonString() string {
@@ -4080,6 +4088,7 @@ func (r *CreateProcedureTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiAnalysisTask")
 	delete(f, "AiRecognitionTask")
+	delete(f, "ReviewAudioVideoTask")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProcedureTemplateRequest has unknown keys!", "")
 	}
@@ -8993,6 +9002,9 @@ func (r *DescribePrepaidProductsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProcedureTemplatesRequestParams struct {
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 任务流模板名字过滤条件，数组长度限制：100。
 	Names []*string `json:"Names,omitempty" name:"Names"`
 
@@ -9006,14 +9018,14 @@ type DescribeProcedureTemplatesRequestParams struct {
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 type DescribeProcedureTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 任务流模板名字过滤条件，数组长度限制：100。
 	Names []*string `json:"Names,omitempty" name:"Names"`
 
@@ -9027,9 +9039,6 @@ type DescribeProcedureTemplatesRequest struct {
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeProcedureTemplatesRequest) ToJsonString() string {
@@ -9044,11 +9053,11 @@ func (r *DescribeProcedureTemplatesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Names")
 	delete(f, "Type")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProcedureTemplatesRequest has unknown keys!", "")
 	}
@@ -16352,6 +16361,16 @@ type PornOcrReviewTemplateInfoForUpdate struct {
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
+type ProcedureReviewAudioVideoTaskInput struct {
+	// 审核模板。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 审核的内容，可选值：
+	// <li>Media：原始音视频。</li>
+	// 不填或填空数组时，默认为审核 Media。
+	ReviewContents []*string `json:"ReviewContents,omitempty" name:"ReviewContents"`
+}
+
 type ProcedureTask struct {
 	// 音视频处理任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -16438,7 +16457,8 @@ type ProcedureTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 智能审核类型任务参数。
+	// AI 智能审核类型任务参数 \*。
+	// <font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
@@ -16453,6 +16473,10 @@ type ProcedureTemplate struct {
 	// 微信小程序发布任务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniProgramPublishTask *WechatMiniProgramPublishTaskInput `json:"MiniProgramPublishTask,omitempty" name:"MiniProgramPublishTask"`
+
+	// 音视频审核类型任务参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReviewAudioVideoTask *ProcedureReviewAudioVideoTaskInput `json:"ReviewAudioVideoTask,omitempty" name:"ReviewAudioVideoTask"`
 
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -17671,13 +17695,17 @@ type ResetProcedureTemplateRequestParams struct {
 	// 任务流名字
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 智能内容审核类型任务参数。
+	// AI 智能内容审核类型任务参数 \*。
+	// <font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// AI 智能内容分析类型任务参数。
@@ -17686,8 +17714,8 @@ type ResetProcedureTemplateRequestParams struct {
 	// AI 内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+	// 音视频审核类型任务参数。
+	ReviewAudioVideoTask *ProcedureReviewAudioVideoTaskInput `json:"ReviewAudioVideoTask,omitempty" name:"ReviewAudioVideoTask"`
 }
 
 type ResetProcedureTemplateRequest struct {
@@ -17696,13 +17724,17 @@ type ResetProcedureTemplateRequest struct {
 	// 任务流名字
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 智能内容审核类型任务参数。
+	// AI 智能内容审核类型任务参数 \*。
+	// <font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// AI 智能内容分析类型任务参数。
@@ -17711,8 +17743,8 @@ type ResetProcedureTemplateRequest struct {
 	// AI 内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+	// 音视频审核类型任务参数。
+	ReviewAudioVideoTask *ProcedureReviewAudioVideoTaskInput `json:"ReviewAudioVideoTask,omitempty" name:"ReviewAudioVideoTask"`
 }
 
 func (r *ResetProcedureTemplateRequest) ToJsonString() string {
@@ -17728,12 +17760,13 @@ func (r *ResetProcedureTemplateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "SubAppId")
 	delete(f, "Comment")
 	delete(f, "MediaProcessTask")
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiAnalysisTask")
 	delete(f, "AiRecognitionTask")
-	delete(f, "SubAppId")
+	delete(f, "ReviewAudioVideoTask")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetProcedureTemplateRequest has unknown keys!", "")
 	}

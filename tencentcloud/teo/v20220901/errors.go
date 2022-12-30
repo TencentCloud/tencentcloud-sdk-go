@@ -329,6 +329,9 @@ const (
 	// 绑定4层实例有处于非运行中的状态，禁止操作。
 	OPERATIONDENIED_L4STATUSNOTINONLINE = "OperationDenied.L4StatusNotInOnline"
 
+	// 回源白名单已经是最新版本，无需更新。
+	OPERATIONDENIED_LATESTVERSIONNOW = "OperationDenied.LatestVersionNow"
+
 	// 已存在多个Cname接入站点，不允许切换至NS。
 	OPERATIONDENIED_MULTIPLECNAMEZONE = "OperationDenied.MultipleCnameZone"
 

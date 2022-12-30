@@ -1,3 +1,221 @@
+# Release v1.0.570
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 39 次发布
+
+发布时间：2022-12-30 01:18:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddInstances](https://cloud.tencent.com/document/api/1003/48088)
+
+	* 新增入参：ParamTemplateId, InstanceParams
+
+* [DeleteBackup](https://cloud.tencent.com/document/api/1003/82201)
+
+	* 新增入参：BackupIds
+
+	* <font color="#dd0000">**修改入参**：</font>SnapshotIdList
+
+* [RollBackCluster](https://cloud.tencent.com/document/api/1003/70115)
+
+	* 新增入参：RollbackMode
+
+
+新增数据结构：
+
+* [ModifyParamItem](https://cloud.tencent.com/document/api/1003/48097#ModifyParamItem)
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 94 次发布
+
+发布时间：2022-12-30 01:32:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CallBackRuleInfo](https://cloud.tencent.com/document/api/267/20474#CallBackRuleInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTime, UpdateTime, TemplateId, DomainName, AppName
+
+* [CertInfo](https://cloud.tencent.com/document/api/267/20474#CertInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CertId, CertName, Description, CreateTime, HttpsCrt, CertType, CertExpireTime, DomainList
+
+* [DomainCertInfo](https://cloud.tencent.com/document/api/267/20474#DomainCertInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CertId, CertName, Description, CreateTime, HttpsCrt, CertType, CertExpireTime, DomainName, Status, CertDomains, CloudCertId
+
+* [DomainInfo](https://cloud.tencent.com/document/api/267/20474#DomainInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Type, Status, CreateTime, BCName, TargetDomain, PlayType, IsDelayLive, CurrentCName, RentTag, RentExpireTime, IsMiniProgramLive
+
+* [ForbidStreamInfo](https://cloud.tencent.com/document/api/267/20474#ForbidStreamInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>StreamName, CreateTime, ExpireTime, AppName, DomainName
+
+* [LiveDomainCertBindings](https://cloud.tencent.com/document/api/267/20474#LiveDomainCertBindings)
+
+	* <font color="#dd0000">**修改成员**：</font>DomainName, CertificateAlias, CertType, Status, CertExpireTime, CertId, CloudCertId, UpdateTime
+
+* [LivePackageInfo](https://cloud.tencent.com/document/api/267/20474#LivePackageInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Total, Used, Left, BuyTime, ExpireTime, Type, Status
+
+* [LogInfo](https://cloud.tencent.com/document/api/267/20474#LogInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>LogName, LogUrl, LogTime, FileSize
+
+* [RuleInfo](https://cloud.tencent.com/document/api/267/20474#RuleInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTime, UpdateTime, TemplateId, DomainName, AppName, StreamName
+
+* [WatermarkInfo](https://cloud.tencent.com/document/api/267/20474#WatermarkInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>WatermarkId, PictureUrl, XPosition, YPosition, WatermarkName, Status, CreateTime, Width, Height
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 48 次发布
+
+发布时间：2022-12-30 01:44:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateSecurityPolicies
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 43 次发布
+
+发布时间：2022-12-30 01:47:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic)
+
+	* 新增成员：Type, GroupNum
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 23 次发布
+
+发布时间：2022-12-30 01:48:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeOriginProtection](https://cloud.tencent.com/document/api/1552/84664)
+* [UpdateOriginProtectionIPWhitelist](https://cloud.tencent.com/document/api/1552/84663)
+
+新增数据结构：
+
+* [DiffIPWhitelist](https://cloud.tencent.com/document/api/1552/80721#DiffIPWhitelist)
+* [IPWhitelist](https://cloud.tencent.com/document/api/1552/80721#IPWhitelist)
+* [OriginProtectionInfo](https://cloud.tencent.com/document/api/1552/80721#OriginProtectionInfo)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 135 次发布
+
+发布时间：2022-12-30 01:55:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProcedureTemplate](https://cloud.tencent.com/document/api/266/33897)
+
+	* 新增入参：ReviewAudioVideoTask
+
+* [ResetProcedureTemplate](https://cloud.tencent.com/document/api/266/33894)
+
+	* 新增入参：ReviewAudioVideoTask
+
+
+新增数据结构：
+
+* [ProcedureReviewAudioVideoTaskInput](https://cloud.tencent.com/document/api/266/31773#ProcedureReviewAudioVideoTaskInput)
+
+修改数据结构：
+
+* [ProcedureTemplate](https://cloud.tencent.com/document/api/266/31773#ProcedureTemplate)
+
+	* 新增成员：ReviewAudioVideoTask
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Type, Comment, MediaProcessTask, AiContentReviewTask, AiAnalysisTask, AiRecognitionTask, MiniProgramPublishTask, CreateTime, UpdateTime
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 16 次发布
+
+发布时间：2022-12-30 01:58:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInLongAgentList](https://cloud.tencent.com/document/api/1267/82510)
+
+	* 新增入参：AgentTypes
+
+
+新增数据结构：
+
+* [CvmAgentStatus](https://cloud.tencent.com/document/api/1267/76336#CvmAgentStatus)
+
+修改数据结构：
+
+* [InLongAgentDetail](https://cloud.tencent.com/document/api/1267/76336#InLongAgentDetail)
+
+	* 新增成员：AgentGroupId, CvmAgentStatusList, AgentTotal
+
+
+
+
 # Release v1.0.569
 
 ## 音频内容安全(ams) 版本：2020-12-29

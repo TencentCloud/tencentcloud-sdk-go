@@ -3209,6 +3209,58 @@ func (c *Client) DescribeOriginGroupWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeOriginProtectionRequest() (request *DescribeOriginProtectionRequest) {
+    request = &DescribeOriginProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeOriginProtection")
+    
+    
+    return
+}
+
+func NewDescribeOriginProtectionResponse() (response *DescribeOriginProtectionResponse) {
+    response = &DescribeOriginProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOriginProtection
+// 查询源站防护信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeOriginProtection(request *DescribeOriginProtectionRequest) (response *DescribeOriginProtectionResponse, err error) {
+    return c.DescribeOriginProtectionWithContext(context.Background(), request)
+}
+
+// DescribeOriginProtection
+// 查询源站防护信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeOriginProtectionWithContext(ctx context.Context, request *DescribeOriginProtectionRequest) (response *DescribeOriginProtectionResponse, err error) {
+    if request == nil {
+        request = NewDescribeOriginProtectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOriginProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOriginProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOverviewL7DataRequest() (request *DescribeOverviewL7DataRequest) {
     request = &DescribeOverviewL7DataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6551,6 +6603,60 @@ func (c *Client) SwitchLogTopicTaskWithContext(ctx context.Context, request *Swi
     request.SetContext(ctx)
     
     response = NewSwitchLogTopicTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateOriginProtectionIPWhitelistRequest() (request *UpdateOriginProtectionIPWhitelistRequest) {
+    request = &UpdateOriginProtectionIPWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "UpdateOriginProtectionIPWhitelist")
+    
+    
+    return
+}
+
+func NewUpdateOriginProtectionIPWhitelistResponse() (response *UpdateOriginProtectionIPWhitelistResponse) {
+    response = &UpdateOriginProtectionIPWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateOriginProtectionIPWhitelist
+// 更新源站防护IP白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LATESTVERSIONNOW = "OperationDenied.LatestVersionNow"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) UpdateOriginProtectionIPWhitelist(request *UpdateOriginProtectionIPWhitelistRequest) (response *UpdateOriginProtectionIPWhitelistResponse, err error) {
+    return c.UpdateOriginProtectionIPWhitelistWithContext(context.Background(), request)
+}
+
+// UpdateOriginProtectionIPWhitelist
+// 更新源站防护IP白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LATESTVERSIONNOW = "OperationDenied.LatestVersionNow"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) UpdateOriginProtectionIPWhitelistWithContext(ctx context.Context, request *UpdateOriginProtectionIPWhitelistRequest) (response *UpdateOriginProtectionIPWhitelistResponse, err error) {
+    if request == nil {
+        request = NewUpdateOriginProtectionIPWhitelistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOriginProtectionIPWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateOriginProtectionIPWhitelistResponse()
     err = c.Send(request, response)
     return
 }

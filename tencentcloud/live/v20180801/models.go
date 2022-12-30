@@ -463,9 +463,11 @@ type BillDataInfo struct {
 
 type CallBackRuleInfo struct {
 	// 规则创建时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 规则更新时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 模板 ID。
@@ -621,6 +623,7 @@ type CertInfo struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 创建时间，UTC 格式。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 证书内容。
@@ -632,6 +635,7 @@ type CertInfo struct {
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
 
 	// 证书过期时间，UTC 格式。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CertExpireTime *string `json:"CertExpireTime,omitempty" name:"CertExpireTime"`
 
 	// 使用此证书的域名列表。
@@ -9141,6 +9145,7 @@ type DomainCertInfo struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 创建时间，UTC格式。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 证书内容。
@@ -9152,6 +9157,7 @@ type DomainCertInfo struct {
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
 
 	// 证书过期时间，UTC格式。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CertExpireTime *string `json:"CertExpireTime,omitempty" name:"CertExpireTime"`
 
 	// 使用此证书的域名名称。
@@ -9204,6 +9210,7 @@ type DomainInfo struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 添加时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 是否有 CName 到固定规则域名:
@@ -9232,6 +9239,7 @@ type DomainInfo struct {
 	RentTag *int64 `json:"RentTag,omitempty" name:"RentTag"`
 
 	// 失效参数，可忽略。
+	// 注：此字段为北京时间（UTC+8时区）。
 	RentExpireTime *string `json:"RentExpireTime,omitempty" name:"RentExpireTime"`
 
 	// 0: 标准直播。
@@ -9526,9 +9534,11 @@ type ForbidStreamInfo struct {
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
 	// 创建时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 禁推过期时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 推流路径。
@@ -9623,6 +9633,7 @@ type LiveDomainCertBindings struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 证书过期时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CertExpireTime *string `json:"CertExpireTime,omitempty" name:"CertExpireTime"`
 
 	// 证书Id。
@@ -9632,6 +9643,7 @@ type LiveDomainCertBindings struct {
 	CloudCertId *string `json:"CloudCertId,omitempty" name:"CloudCertId"`
 
 	// 规则最后更新时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
@@ -9658,9 +9670,11 @@ type LivePackageInfo struct {
 	Left *int64 `json:"Left,omitempty" name:"Left"`
 
 	// 购买时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	BuyTime *string `json:"BuyTime,omitempty" name:"BuyTime"`
 
 	// 过期时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 包类型，可选值:
@@ -9688,6 +9702,7 @@ type LogInfo struct {
 	LogUrl *string `json:"LogUrl,omitempty" name:"LogUrl"`
 
 	// 日志生成时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	LogTime *string `json:"LogTime,omitempty" name:"LogTime"`
 
 	// 文件大小。
@@ -11994,9 +12009,11 @@ func (r *ResumeLiveStreamResponse) FromJsonString(s string) error {
 
 type RuleInfo struct {
 	// 规则创建时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 规则更新时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 模板 ID。
@@ -12713,6 +12730,7 @@ type WatermarkInfo struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 添加时间。
+	// 注：此字段为北京时间（UTC+8时区）。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 水印宽。

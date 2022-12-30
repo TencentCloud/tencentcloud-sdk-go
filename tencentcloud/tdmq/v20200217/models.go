@@ -9146,6 +9146,12 @@ type RocketMQTopic struct {
 	// 主题名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 主题的类别，为枚举类型，Normal，GlobalOrder，PartitionedOrder，Transaction，Retry及DeadLetter
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 订阅组数量
+	GroupNum *uint64 `json:"GroupNum,omitempty" name:"GroupNum"`
+
 	// 说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`

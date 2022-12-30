@@ -3745,6 +3745,16 @@ func (r *CreateWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CvmAgentStatus struct {
+	// agent状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 对应状态的agent总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
 type DailyScoreInfo struct {
 	// 统计日期 时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6309,7 +6319,7 @@ type DescribeInLongAgentListRequestParams struct {
 	// Agent Name
 	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
 
-	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1
+	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1，3：CVM，4：自建服务器 【传多个用逗号分割】
 	AgentType *uint64 `json:"AgentType,omitempty" name:"AgentType"`
 
 	// Agent状态(running运行中，initializing 操作中，failed心跳异常)
@@ -6326,6 +6336,9 @@ type DescribeInLongAgentListRequestParams struct {
 
 	// 名称搜索是否开启模糊匹配，1：开启，0：不开启（精确匹配）
 	Like *uint64 `json:"Like,omitempty" name:"Like"`
+
+	// agent类型【多个用逗号分隔】
+	AgentTypes *string `json:"AgentTypes,omitempty" name:"AgentTypes"`
 }
 
 type DescribeInLongAgentListRequest struct {
@@ -6340,7 +6353,7 @@ type DescribeInLongAgentListRequest struct {
 	// Agent Name
 	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
 
-	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1
+	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1，3：CVM，4：自建服务器 【传多个用逗号分割】
 	AgentType *uint64 `json:"AgentType,omitempty" name:"AgentType"`
 
 	// Agent状态(running运行中，initializing 操作中，failed心跳异常)
@@ -6357,6 +6370,9 @@ type DescribeInLongAgentListRequest struct {
 
 	// 名称搜索是否开启模糊匹配，1：开启，0：不开启（精确匹配）
 	Like *uint64 `json:"Like,omitempty" name:"Like"`
+
+	// agent类型【多个用逗号分隔】
+	AgentTypes *string `json:"AgentTypes,omitempty" name:"AgentTypes"`
 }
 
 func (r *DescribeInLongAgentListRequest) ToJsonString() string {
@@ -6380,6 +6396,7 @@ func (r *DescribeInLongAgentListRequest) FromJsonString(s string) error {
 	delete(f, "PageIndex")
 	delete(f, "PageSize")
 	delete(f, "Like")
+	delete(f, "AgentTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongAgentListRequest has unknown keys!", "")
 	}
@@ -13311,6 +13328,18 @@ type InLongAgentDetail struct {
 
 	// 关联任务数
 	TaskCount *uint64 `json:"TaskCount,omitempty" name:"TaskCount"`
+
+	// 采集器组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentGroupId *string `json:"AgentGroupId,omitempty" name:"AgentGroupId"`
+
+	// agent状态统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmAgentStatusList []*CvmAgentStatus `json:"CvmAgentStatusList,omitempty" name:"CvmAgentStatusList"`
+
+	// agent数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentTotal *uint64 `json:"AgentTotal,omitempty" name:"AgentTotal"`
 }
 
 type InLongAgentTask struct {

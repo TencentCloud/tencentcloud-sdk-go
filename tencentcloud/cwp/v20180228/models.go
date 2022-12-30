@@ -13787,7 +13787,7 @@ type DescribeScanStateRequestParams struct {
 	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
 
 	// 过滤参数;
-	// <li>StrategyId 基线策略ID ,仅ModuleType 为 Baseline 时需要<li/>
+	// <li>StrategyId 基线策略ID ,仅ModuleType 为 Baseline 时需要</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -13798,7 +13798,7 @@ type DescribeScanStateRequest struct {
 	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
 
 	// 过滤参数;
-	// <li>StrategyId 基线策略ID ,仅ModuleType 为 Baseline 时需要<li/>
+	// <li>StrategyId 基线策略ID ,仅ModuleType 为 Baseline 时需要</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -14973,7 +14973,7 @@ type DescribeTagsRequestParams struct {
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
 	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
-	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
+	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -14997,7 +14997,7 @@ type DescribeTagsRequest struct {
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版）</li>
 	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
-	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
+	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 

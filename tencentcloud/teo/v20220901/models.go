@@ -6273,6 +6273,89 @@ func (r *DescribeOriginGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeOriginProtectionRequestParams struct {
+	// 查询的站点集合，不填默认查询所有站点。
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>need-update<br>   按照【<strong>站点是否需要更新源站防护IP白名单</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：需要更新<br>   false：无需更新<br></li>
+	// <li>plan-support<br>   按照【<strong>站点套餐是否支持源站防护</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：支持<br>   false：不支持<br></li>
+	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页查询偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeOriginProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询的站点集合，不填默认查询所有站点。
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>need-update<br>   按照【<strong>站点是否需要更新源站防护IP白名单</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：需要更新<br>   false：无需更新<br></li>
+	// <li>plan-support<br>   按照【<strong>站点套餐是否支持源站防护</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：支持<br>   false：不支持<br></li>
+	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页查询偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeOriginProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOriginProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOriginProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOriginProtectionResponseParams struct {
+	// 源站防护信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginProtectionInfo []*OriginProtectionInfo `json:"OriginProtectionInfo,omitempty" name:"OriginProtectionInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOriginProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOriginProtectionResponseParams `json:"Response"`
+}
+
+func (r *DescribeOriginProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOriginProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOverviewL7DataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -9771,6 +9854,20 @@ type DetailHost struct {
 	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
 }
 
+type DiffIPWhitelist struct {
+	// 最新IP白名单列表。
+	LatestIPWhitelist *IPWhitelist `json:"LatestIPWhitelist,omitempty" name:"LatestIPWhitelist"`
+
+	// 最新IP白名单列表相比于当前IP白名单列表，新增部分。
+	AddedIPWhitelist *IPWhitelist `json:"AddedIPWhitelist,omitempty" name:"AddedIPWhitelist"`
+
+	// 最新IP白名单列表相比于当前IP白名单列表，删减部分。
+	RemovedIPWhitelist *IPWhitelist `json:"RemovedIPWhitelist,omitempty" name:"RemovedIPWhitelist"`
+
+	// 最新IP白名单列表相比于当前IP白名单列表，不变部分。
+	NoChangeIPWhitelist *IPWhitelist `json:"NoChangeIPWhitelist,omitempty" name:"NoChangeIPWhitelist"`
+}
+
 type DistrictStatistics struct {
 	// ISO 3166-2 国家/地区简写，详情请参考[ISO 3166-2](https://zh.m.wikipedia.org/zh-hans/ISO_3166-2)。
 	Alpha2 *string `json:"Alpha2,omitempty" name:"Alpha2"`
@@ -10287,6 +10384,14 @@ type Https struct {
 	// <li>none：不托管EdgeOne。</li>不填，默认取值为none。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyType *string `json:"ApplyType,omitempty" name:"ApplyType"`
+}
+
+type IPWhitelist struct {
+	// IPv4列表。
+	IPv4 []*string `json:"IPv4,omitempty" name:"IPv4"`
+
+	// IPv6列表。
+	IPv6 []*string `json:"IPv6,omitempty" name:"IPv6"`
 }
 
 type Identification struct {
@@ -12810,6 +12915,41 @@ type OriginGroup struct {
 	HostHeader *string `json:"HostHeader,omitempty" name:"HostHeader"`
 }
 
+type OriginProtectionInfo struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 域名列表。
+	Hosts []*string `json:"Hosts,omitempty" name:"Hosts"`
+
+	// 代理ID列表。
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
+
+	// 当前版本的IP白名单。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentIPWhitelist *IPWhitelist `json:"CurrentIPWhitelist,omitempty" name:"CurrentIPWhitelist"`
+
+	// 该站点是否需要更新源站白名单，取值有：
+	// <li>true ：需要更新IP白名单 ；</li>
+	// <li>false ：无需更新IP白名单。</li>
+	NeedUpdate *bool `json:"NeedUpdate,omitempty" name:"NeedUpdate"`
+
+	// 源站防护状态，取值有：
+	// <li>online ：源站防护启用中 ；</li>
+	// <li>offline ：源站防护已停用 ；</li>
+	// <li>nonactivate ：源站防护未激活，仅在从未使用过源站防护功能的站点调用中返回。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 站点套餐是否支持源站防护，取值有：
+	// <li>true ：支持 ；</li>
+	// <li>false ：不支持。</li>
+	PlanSupport *bool `json:"PlanSupport,omitempty" name:"PlanSupport"`
+
+	// 最新IP白名单与当前IP白名单的对比。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiffIPWhitelist *DiffIPWhitelist `json:"DiffIPWhitelist,omitempty" name:"DiffIPWhitelist"`
+}
+
 type OriginRecord struct {
 	// 源站记录值，不包含端口信息，可以为：IPv4，IPv6，域名格式。
 	Record *string `json:"Record,omitempty" name:"Record"`
@@ -14296,6 +14436,60 @@ type TopEntryValue struct {
 
 	// 排序实体数量。
 	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
+// Predefined struct for user
+type UpdateOriginProtectionIPWhitelistRequestParams struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+}
+
+type UpdateOriginProtectionIPWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+}
+
+func (r *UpdateOriginProtectionIPWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOriginProtectionIPWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOriginProtectionIPWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOriginProtectionIPWhitelistResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateOriginProtectionIPWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateOriginProtectionIPWhitelistResponseParams `json:"Response"`
+}
+
+func (r *UpdateOriginProtectionIPWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOriginProtectionIPWhitelistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpstreamHttp2 struct {

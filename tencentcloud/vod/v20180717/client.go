@@ -8944,7 +8944,7 @@ func NewResetProcedureTemplateResponse() (response *ResetProcedureTemplateRespon
 }
 
 // ResetProcedureTemplate
-// 重新设置用户自定义任务流模板的内容。  
+// 重新设置用户自定义任务流模板的内容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8959,7 +8959,7 @@ func (c *Client) ResetProcedureTemplate(request *ResetProcedureTemplateRequest) 
 }
 
 // ResetProcedureTemplate
-// 重新设置用户自定义任务流模板的内容。  
+// 重新设置用户自定义任务流模板的内容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

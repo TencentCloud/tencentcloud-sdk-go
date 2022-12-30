@@ -1536,7 +1536,7 @@ func NewDescribeClusterDetailResponse() (response *DescribeClusterDetailResponse
 }
 
 // DescribeClusterDetail
-// 显示集群详情
+// 该接口（DescribeClusterDetail）显示集群详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
@@ -1559,7 +1559,7 @@ func (c *Client) DescribeClusterDetail(request *DescribeClusterDetailRequest) (r
 }
 
 // DescribeClusterDetail
-// 显示集群详情
+// 该接口（DescribeClusterDetail）显示集群详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"

@@ -233,6 +233,12 @@ type AddInstancesRequestParams struct {
 
 	// 交易模式 0-下单并支付 1-下单
 	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
+
+	// 参数模版ID
+	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
+
+	// 参数列表，ParamTemplateId 传入时InstanceParams才有效
+	InstanceParams []*ModifyParamItem `json:"InstanceParams,omitempty" name:"InstanceParams"`
 }
 
 type AddInstancesRequest struct {
@@ -277,6 +283,12 @@ type AddInstancesRequest struct {
 
 	// 交易模式 0-下单并支付 1-下单
 	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
+
+	// 参数模版ID
+	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
+
+	// 参数列表，ParamTemplateId 传入时InstanceParams才有效
+	InstanceParams []*ModifyParamItem `json:"InstanceParams,omitempty" name:"InstanceParams"`
 }
 
 func (r *AddInstancesRequest) ToJsonString() string {
@@ -304,6 +316,8 @@ func (r *AddInstancesRequest) FromJsonString(s string) error {
 	delete(f, "DbType")
 	delete(f, "OrderSource")
 	delete(f, "DealMode")
+	delete(f, "ParamTemplateId")
+	delete(f, "InstanceParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddInstancesRequest has unknown keys!", "")
 	}
@@ -2033,8 +2047,11 @@ type DeleteBackupRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 备份文件ID
+	// 备份文件ID，旧版本使用的字段，不推荐使用
 	SnapshotIdList []*int64 `json:"SnapshotIdList,omitempty" name:"SnapshotIdList"`
+
+	// 备份文件ID，推荐使用
+	BackupIds []*int64 `json:"BackupIds,omitempty" name:"BackupIds"`
 }
 
 type DeleteBackupRequest struct {
@@ -2043,8 +2060,11 @@ type DeleteBackupRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 备份文件ID
+	// 备份文件ID，旧版本使用的字段，不推荐使用
 	SnapshotIdList []*int64 `json:"SnapshotIdList,omitempty" name:"SnapshotIdList"`
+
+	// 备份文件ID，推荐使用
+	BackupIds []*int64 `json:"BackupIds,omitempty" name:"BackupIds"`
 }
 
 func (r *DeleteBackupRequest) ToJsonString() string {
@@ -2061,6 +2081,7 @@ func (r *DeleteBackupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "SnapshotIdList")
+	delete(f, "BackupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBackupRequest has unknown keys!", "")
 	}
@@ -5636,6 +5657,18 @@ func (r *ModifyMaintainPeriodConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyParamItem struct {
+	// 参数名
+	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
+
+	// 参数当前值
+	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
+
+	// 参数旧值（只在出参时有用）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
+}
+
 type NetAddr struct {
 	// 内网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6322,6 +6355,9 @@ type RollBackClusterRequestParams struct {
 
 	// 回档数据库表列表
 	RollbackTables []*RollbackTable `json:"RollbackTables,omitempty" name:"RollbackTables"`
+
+	// 按时间点回档模式，full: 普通; db: 快速; table: 极速  （默认是普通）
+	RollbackMode *string `json:"RollbackMode,omitempty" name:"RollbackMode"`
 }
 
 type RollBackClusterRequest struct {
@@ -6347,6 +6383,9 @@ type RollBackClusterRequest struct {
 
 	// 回档数据库表列表
 	RollbackTables []*RollbackTable `json:"RollbackTables,omitempty" name:"RollbackTables"`
+
+	// 按时间点回档模式，full: 普通; db: 快速; table: 极速  （默认是普通）
+	RollbackMode *string `json:"RollbackMode,omitempty" name:"RollbackMode"`
 }
 
 func (r *RollBackClusterRequest) ToJsonString() string {
@@ -6368,6 +6407,7 @@ func (r *RollBackClusterRequest) FromJsonString(s string) error {
 	delete(f, "ExpectTimeThresh")
 	delete(f, "RollbackDatabases")
 	delete(f, "RollbackTables")
+	delete(f, "RollbackMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollBackClusterRequest has unknown keys!", "")
 	}
