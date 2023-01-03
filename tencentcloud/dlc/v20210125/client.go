@@ -1401,6 +1401,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 // 创建用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
@@ -1422,6 +1423,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
 // 创建用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"

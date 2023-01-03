@@ -378,6 +378,7 @@ func NewCreatePrivateCAResponse() (response *CreatePrivateCAResponse) {
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CACERTLIMIT = "LimitExceeded.CACertLimit"
 //  LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
 //  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {
@@ -391,6 +392,7 @@ func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *Cre
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
+//  LIMITEXCEEDED_CACERTLIMIT = "LimitExceeded.CACertLimit"
 //  LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
 //  LIMITEXCEEDED_CAREPEAT = "LimitExceeded.CARepeat"
 func (c *Client) CreatePrivateCAWithContext(ctx context.Context, request *CreatePrivateCARequest) (response *CreatePrivateCAResponse, err error) {

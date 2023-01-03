@@ -850,6 +850,7 @@ func NewDescribeRecordingUsageResponse() (response *DescribeRecordingUsageRespon
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeRecordingUsage(request *DescribeRecordingUsageRequest) (response *DescribeRecordingUsageResponse, err error) {
     return c.DescribeRecordingUsageWithContext(context.Background(), request)
 }
@@ -869,6 +870,7 @@ func (c *Client) DescribeRecordingUsage(request *DescribeRecordingUsageRequest) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeRecordingUsageWithContext(ctx context.Context, request *DescribeRecordingUsageRequest) (response *DescribeRecordingUsageResponse, err error) {
     if request == nil {
         request = NewDescribeRecordingUsageRequest()

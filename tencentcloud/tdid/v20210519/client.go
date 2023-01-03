@@ -1058,6 +1058,10 @@ func NewGetAgencyTDidResponse() (response *GetAgencyTDidResponse) {
 }
 
 // GetAgencyTDid
+// 该接口已废弃
+//
+// 
+//
 // 本机构DID详情
 //
 // 可能返回的错误码:
@@ -1079,6 +1083,10 @@ func (c *Client) GetAgencyTDid(request *GetAgencyTDidRequest) (response *GetAgen
 }
 
 // GetAgencyTDid
+// 该接口已废弃
+//
+// 
+//
 // 本机构DID详情
 //
 // 可能返回的错误码:
@@ -3490,6 +3498,10 @@ func NewVerifyPurchaseResponse() (response *VerifyPurchaseResponse) {
 }
 
 // VerifyPurchase
+// 该接口已废弃
+//
+// 
+//
 // 验证购买
 //
 // 可能返回的错误码:
@@ -3503,6 +3515,10 @@ func (c *Client) VerifyPurchase(request *VerifyPurchaseRequest) (response *Verif
 }
 
 // VerifyPurchase
+// 该接口已废弃
+//
+// 
+//
 // 验证购买
 //
 // 可能返回的错误码:

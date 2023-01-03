@@ -128,6 +128,9 @@ const (
 	// 非法操作-非法参数。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 
+	// 非法操作-非法参数-无效参数值类型。
+	INVALIDPARAMETER_ERRINVALIDACTIONPARAMBADVALUETYPE = "InvalidParameter.ErrInvalidActionParamBadValueType"
+
 	// 非法操作-非法参数-参数名重复。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAMDUPLICATENAME = "InvalidParameter.ErrInvalidActionParamDuplicateName"
 
@@ -142,6 +145,9 @@ const (
 
 	// 非法条件-非法参数名称-匹配类型不支持参数名称。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONNAMETARGETNOTSUPPORTNAME = "InvalidParameter.ErrInvalidConditionNameTargetNotSupportName"
+
+	// 非法条件-非法参数值-无效的正则表达式。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADREGULAR = "InvalidParameter.ErrInvalidConditionValueBadRegular"
 
 	// 非法条件-非法参数值-无效的参数值。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUE = "InvalidParameter.ErrInvalidConditionValueBadValue"
@@ -184,6 +190,9 @@ const (
 
 	// 无效的节点缓存。
 	INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = "InvalidParameter.InvalidCacheOnlyOnSwitch"
+
+	// 无效的节点缓存时间。
+	INVALIDPARAMETER_INVALIDCACHETIME = "InvalidParameter.InvalidCacheTime"
 
 	// 证书信息错误。
 	INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"

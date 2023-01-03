@@ -179,6 +179,98 @@ type ClientConnection struct {
 }
 
 // Predefined struct for user
+type CreateAccountUserRequestParams struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 新账号名称。其格式要求如下：<ul><li>字符范围[1,32]。</li><li>可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“_”与短划线“-”。</li></ul>
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 新账号密码。密码复杂度要求如下：<ul><li>字符长度范围[8,32]。</li><li>至少包含字母、数字和特殊字符（叹号“!”、at"@"、井号“#”、百分号“%”、插入符“^”、星号“*”、小括号“()”、下划线“_”）中的两种。</li></ul>
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// mongouser 账号对应的密码。mongouser 为系统默认账号，即为创建实例时，设置的密码。
+	MongoUserPassword *string `json:"MongoUserPassword,omitempty" name:"MongoUserPassword"`
+
+	// 账号备注信息。
+	UserDesc *string `json:"UserDesc,omitempty" name:"UserDesc"`
+
+	// 账号的读写权限信息。
+	AuthRole []*Auth `json:"AuthRole,omitempty" name:"AuthRole"`
+}
+
+type CreateAccountUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 新账号名称。其格式要求如下：<ul><li>字符范围[1,32]。</li><li>可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“_”与短划线“-”。</li></ul>
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 新账号密码。密码复杂度要求如下：<ul><li>字符长度范围[8,32]。</li><li>至少包含字母、数字和特殊字符（叹号“!”、at"@"、井号“#”、百分号“%”、插入符“^”、星号“*”、小括号“()”、下划线“_”）中的两种。</li></ul>
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// mongouser 账号对应的密码。mongouser 为系统默认账号，即为创建实例时，设置的密码。
+	MongoUserPassword *string `json:"MongoUserPassword,omitempty" name:"MongoUserPassword"`
+
+	// 账号备注信息。
+	UserDesc *string `json:"UserDesc,omitempty" name:"UserDesc"`
+
+	// 账号的读写权限信息。
+	AuthRole []*Auth `json:"AuthRole,omitempty" name:"AuthRole"`
+}
+
+func (r *CreateAccountUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccountUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "Password")
+	delete(f, "MongoUserPassword")
+	delete(f, "UserDesc")
+	delete(f, "AuthRole")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccountUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAccountUserResponseParams struct {
+	// 创建任务ID。
+	FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAccountUserResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAccountUserResponseParams `json:"Response"`
+}
+
+func (r *CreateAccountUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccountUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBackupDBInstanceRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

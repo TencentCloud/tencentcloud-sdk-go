@@ -35,6 +35,9 @@ const (
 	// 实例查询失败。
 	INTERNALERROR_FINDINSTANCEFAILED = "InternalError.FindInstanceFailed"
 
+	// password与原先记录的password不同。
+	INTERNALERROR_PASSWORDERROR = "InternalError.PasswordError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

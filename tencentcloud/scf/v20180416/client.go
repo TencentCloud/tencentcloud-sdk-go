@@ -538,6 +538,7 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_ROLE = "UnauthorizedOperation.Role"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
     return c.CreateNamespaceWithContext(context.Background(), request)
@@ -560,6 +561,7 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_ROLE = "UnauthorizedOperation.Role"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNamespaceWithContext(ctx context.Context, request *CreateNamespaceRequest) (response *CreateNamespaceResponse, err error) {
     if request == nil {

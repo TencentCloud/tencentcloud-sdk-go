@@ -99,6 +99,62 @@ func (c *Client) AssignProjectWithContext(ctx context.Context, request *AssignPr
     return
 }
 
+func NewCreateAccountUserRequest() (request *CreateAccountUserRequest) {
+    request = &CreateAccountUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "CreateAccountUser")
+    
+    
+    return
+}
+
+func NewCreateAccountUserResponse() (response *CreateAccountUserResponse) {
+    response = &CreateAccountUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAccountUser
+// 创建实例账号。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INTERNALERROR_PASSWORDERROR = "InternalError.PasswordError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+func (c *Client) CreateAccountUser(request *CreateAccountUserRequest) (response *CreateAccountUserResponse, err error) {
+    return c.CreateAccountUserWithContext(context.Background(), request)
+}
+
+// CreateAccountUser
+// 创建实例账号。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INTERNALERROR_PASSWORDERROR = "InternalError.PasswordError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHECKAPPIDFAILED = "InvalidParameterValue.CheckAppIdFailed"
+func (c *Client) CreateAccountUserWithContext(ctx context.Context, request *CreateAccountUserRequest) (response *CreateAccountUserResponse, err error) {
+    if request == nil {
+        request = NewCreateAccountUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccountUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAccountUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBackupDBInstanceRequest() (request *CreateBackupDBInstanceRequest) {
     request = &CreateBackupDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

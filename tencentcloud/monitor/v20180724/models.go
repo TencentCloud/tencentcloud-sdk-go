@@ -564,6 +564,12 @@ type BindingPolicyObjectRequestParams struct {
 
 	// 需要绑定的对象维度信息
 	Dimensions []*BindingPolicyObjectDimension `json:"Dimensions,omitempty" name:"Dimensions"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
+
+	// 是否配置了事件告警
+	EbEventFlag *int64 `json:"EbEventFlag,omitempty" name:"EbEventFlag"`
 }
 
 type BindingPolicyObjectRequest struct {
@@ -583,6 +589,12 @@ type BindingPolicyObjectRequest struct {
 
 	// 需要绑定的对象维度信息
 	Dimensions []*BindingPolicyObjectDimension `json:"Dimensions,omitempty" name:"Dimensions"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
+
+	// 是否配置了事件告警
+	EbEventFlag *int64 `json:"EbEventFlag,omitempty" name:"EbEventFlag"`
 }
 
 func (r *BindingPolicyObjectRequest) ToJsonString() string {
@@ -602,6 +614,8 @@ func (r *BindingPolicyObjectRequest) FromJsonString(s string) error {
 	delete(f, "PolicyId")
 	delete(f, "InstanceGroupId")
 	delete(f, "Dimensions")
+	delete(f, "EbSubject")
+	delete(f, "EbEventFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindingPolicyObjectRequest has unknown keys!", "")
 	}
@@ -1054,6 +1068,9 @@ type CreateAlarmPolicyRequestParams struct {
 
 	// 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
 	MigrateFlag *int64 `json:"MigrateFlag,omitempty" name:"MigrateFlag"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
 }
 
 type CreateAlarmPolicyRequest struct {
@@ -1112,6 +1129,9 @@ type CreateAlarmPolicyRequest struct {
 
 	// 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
 	MigrateFlag *int64 `json:"MigrateFlag,omitempty" name:"MigrateFlag"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
 }
 
 func (r *CreateAlarmPolicyRequest) ToJsonString() string {
@@ -1144,6 +1164,7 @@ func (r *CreateAlarmPolicyRequest) FromJsonString(s string) error {
 	delete(f, "LogAlarmReqInfo")
 	delete(f, "HierarchicalNotices")
 	delete(f, "MigrateFlag")
+	delete(f, "EbSubject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmPolicyRequest has unknown keys!", "")
 	}
@@ -2332,6 +2353,9 @@ type DeleteAlarmNoticesRequestParams struct {
 
 	// 告警通知模板id列表
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
+
+	// 通知模版与策略绑定关系
+	NoticeBindPolicys []*NoticeBindPolicys `json:"NoticeBindPolicys,omitempty" name:"NoticeBindPolicys"`
 }
 
 type DeleteAlarmNoticesRequest struct {
@@ -2342,6 +2366,9 @@ type DeleteAlarmNoticesRequest struct {
 
 	// 告警通知模板id列表
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
+
+	// 通知模版与策略绑定关系
+	NoticeBindPolicys []*NoticeBindPolicys `json:"NoticeBindPolicys,omitempty" name:"NoticeBindPolicys"`
 }
 
 func (r *DeleteAlarmNoticesRequest) ToJsonString() string {
@@ -2358,6 +2385,7 @@ func (r *DeleteAlarmNoticesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Module")
 	delete(f, "NoticeIds")
+	delete(f, "NoticeBindPolicys")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAlarmNoticesRequest has unknown keys!", "")
 	}
@@ -8705,6 +8733,9 @@ type ModifyAlarmNoticeRequestParams struct {
 
 	// 告警通知推送到CLS服务 最多1个
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`
+
+	// 告警通知模板绑定的告警策略ID列表
+	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
 }
 
 type ModifyAlarmNoticeRequest struct {
@@ -8733,6 +8764,9 @@ type ModifyAlarmNoticeRequest struct {
 
 	// 告警通知推送到CLS服务 最多1个
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`
+
+	// 告警通知模板绑定的告警策略ID列表
+	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -8755,6 +8789,7 @@ func (r *ModifyAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "UserNotices")
 	delete(f, "URLNotices")
 	delete(f, "CLSNotices")
+	delete(f, "PolicyIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -8808,6 +8843,18 @@ type ModifyAlarmPolicyConditionRequestParams struct {
 
 	// 日志告警创建请求参数信息
 	LogAlarmReqInfo *LogAlarmReq `json:"LogAlarmReqInfo,omitempty" name:"LogAlarmReqInfo"`
+
+	// 模版id，专供prom使用
+	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
+
+	// 启停状态，0=停用，1=启用
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 专供prom策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
 }
 
 type ModifyAlarmPolicyConditionRequest struct {
@@ -8836,6 +8883,18 @@ type ModifyAlarmPolicyConditionRequest struct {
 
 	// 日志告警创建请求参数信息
 	LogAlarmReqInfo *LogAlarmReq `json:"LogAlarmReqInfo,omitempty" name:"LogAlarmReqInfo"`
+
+	// 模版id，专供prom使用
+	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
+
+	// 启停状态，0=停用，1=启用
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 专供prom策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
 }
 
 func (r *ModifyAlarmPolicyConditionRequest) ToJsonString() string {
@@ -8858,6 +8917,10 @@ func (r *ModifyAlarmPolicyConditionRequest) FromJsonString(s string) error {
 	delete(f, "Filter")
 	delete(f, "GroupBy")
 	delete(f, "LogAlarmReqInfo")
+	delete(f, "NoticeIds")
+	delete(f, "Enable")
+	delete(f, "PolicyName")
+	delete(f, "EbSubject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmPolicyConditionRequest has unknown keys!", "")
 	}
@@ -9532,6 +9595,14 @@ type MonitorTypeNamespace struct {
 
 	// 策略类型值
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+type NoticeBindPolicys struct {
+	// 告警通知模板 ID
+	NoticeId *string `json:"NoticeId,omitempty" name:"NoticeId"`
+
+	// 告警通知模板绑定的告警策略ID列表
+	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
 }
 
 type Operator struct {
@@ -10528,6 +10599,12 @@ type UnBindingAllPolicyObjectRequestParams struct {
 
 	// 告警策略ID，使用此字段时 GroupId 会被忽略
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
+
+	// 是否配置了事件告警
+	EbEventFlag *int64 `json:"EbEventFlag,omitempty" name:"EbEventFlag"`
 }
 
 type UnBindingAllPolicyObjectRequest struct {
@@ -10541,6 +10618,12 @@ type UnBindingAllPolicyObjectRequest struct {
 
 	// 告警策略ID，使用此字段时 GroupId 会被忽略
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
+
+	// 是否配置了事件告警
+	EbEventFlag *int64 `json:"EbEventFlag,omitempty" name:"EbEventFlag"`
 }
 
 func (r *UnBindingAllPolicyObjectRequest) ToJsonString() string {
@@ -10558,6 +10641,8 @@ func (r *UnBindingAllPolicyObjectRequest) FromJsonString(s string) error {
 	delete(f, "Module")
 	delete(f, "GroupId")
 	delete(f, "PolicyId")
+	delete(f, "EbSubject")
+	delete(f, "EbEventFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnBindingAllPolicyObjectRequest has unknown keys!", "")
 	}
@@ -10602,6 +10687,12 @@ type UnBindingPolicyObjectRequestParams struct {
 
 	// 告警策略ID，使用此字段时 GroupId 会被忽略
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
+
+	// 是否配置了事件告警
+	EbEventFlag *int64 `json:"EbEventFlag,omitempty" name:"EbEventFlag"`
 }
 
 type UnBindingPolicyObjectRequest struct {
@@ -10621,6 +10712,12 @@ type UnBindingPolicyObjectRequest struct {
 
 	// 告警策略ID，使用此字段时 GroupId 会被忽略
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
+
+	// 是否配置了事件告警
+	EbEventFlag *int64 `json:"EbEventFlag,omitempty" name:"EbEventFlag"`
 }
 
 func (r *UnBindingPolicyObjectRequest) ToJsonString() string {
@@ -10640,6 +10737,8 @@ func (r *UnBindingPolicyObjectRequest) FromJsonString(s string) error {
 	delete(f, "UniqueId")
 	delete(f, "InstanceGroupId")
 	delete(f, "PolicyId")
+	delete(f, "EbSubject")
+	delete(f, "EbEventFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnBindingPolicyObjectRequest has unknown keys!", "")
 	}

@@ -182,6 +182,9 @@ const (
 	// 获取HDFS存储信息失败。
 	INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
 
+	// 查询预付费资源组详情失败。
+	INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+
 	// 停止任务失败。
 	INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
 

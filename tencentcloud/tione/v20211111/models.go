@@ -335,10 +335,10 @@ type CreateBatchModelAccTasksRequestParams struct {
 	// 标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 优化级别(NO_LOSS/FP16)，默认FP16
+	// 优化级别(NO_LOSS/FP16/INT8)，默认FP16
 	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
 
-	// GPU卡类型(T4/V100)，默认T4
+	// GPU卡类型(T4/V100/A10)，默认T4
 	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
 
 	// 专业参数设置
@@ -360,10 +360,10 @@ type CreateBatchModelAccTasksRequest struct {
 	// 标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 优化级别(NO_LOSS/FP16)，默认FP16
+	// 优化级别(NO_LOSS/FP16/INT8)，默认FP16
 	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
 
-	// GPU卡类型(T4/V100)，默认T4
+	// GPU卡类型(T4/V100/A10)，默认T4
 	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
 
 	// 专业参数设置
@@ -1196,6 +1196,9 @@ type CreateTrainingModelRequestParams struct {
 
 	// 模型清理周期(默认值为1分钟，上限为1440，下限为1分钟，步长为1)
 	ModelCleanPeriod *uint64 `json:"ModelCleanPeriod,omitempty" name:"ModelCleanPeriod"`
+
+	// 是否QAT模型
+	IsQAT *bool `json:"IsQAT,omitempty" name:"IsQAT"`
 }
 
 type CreateTrainingModelRequest struct {
@@ -1280,6 +1283,9 @@ type CreateTrainingModelRequest struct {
 
 	// 模型清理周期(默认值为1分钟，上限为1440，下限为1分钟，步长为1)
 	ModelCleanPeriod *uint64 `json:"ModelCleanPeriod,omitempty" name:"ModelCleanPeriod"`
+
+	// 是否QAT模型
+	IsQAT *bool `json:"IsQAT,omitempty" name:"IsQAT"`
 }
 
 func (r *CreateTrainingModelRequest) ToJsonString() string {
@@ -1319,6 +1325,7 @@ func (r *CreateTrainingModelRequest) FromJsonString(s string) error {
 	delete(f, "AutoClean")
 	delete(f, "MaxReservedModels")
 	delete(f, "ModelCleanPeriod")
+	delete(f, "IsQAT")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingModelRequest has unknown keys!", "")
 	}
@@ -5262,6 +5269,10 @@ type ModelAccelerateTask struct {
 	// SAVED_MODEL保存时配置的签名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelSignature *string `json:"ModelSignature,omitempty" name:"ModelSignature"`
+
+	// 是否是QAT模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QATModel *bool `json:"QATModel,omitempty" name:"QATModel"`
 }
 
 type ModelInfo struct {
@@ -5932,7 +5943,7 @@ type RestartModelAccelerateTaskRequestParams struct {
 	// 模型输入cos路径
 	ModelInputPath *CosPathInfo `json:"ModelInputPath,omitempty" name:"ModelInputPath"`
 
-	// 优化级别（NO_LOSS/FP16），默认FP16
+	// 优化级别（NO_LOSS/FP16/INT8），默认FP16
 	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
 
 	// input节点个数（废弃）
@@ -5950,7 +5961,7 @@ type RestartModelAccelerateTaskRequestParams struct {
 	// 模型Tensor信息
 	TensorInfos []*string `json:"TensorInfos,omitempty" name:"TensorInfos"`
 
-	// GPU类型（T4/V100），默认T4
+	// GPU类型（T4/V100/A10），默认T4
 	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
 
 	// 模型专业参数
@@ -5993,7 +6004,7 @@ type RestartModelAccelerateTaskRequest struct {
 	// 模型输入cos路径
 	ModelInputPath *CosPathInfo `json:"ModelInputPath,omitempty" name:"ModelInputPath"`
 
-	// 优化级别（NO_LOSS/FP16），默认FP16
+	// 优化级别（NO_LOSS/FP16/INT8），默认FP16
 	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
 
 	// input节点个数（废弃）
@@ -6011,7 +6022,7 @@ type RestartModelAccelerateTaskRequest struct {
 	// 模型Tensor信息
 	TensorInfos []*string `json:"TensorInfos,omitempty" name:"TensorInfos"`
 
-	// GPU类型（T4/V100），默认T4
+	// GPU类型（T4/V100/A10），默认T4
 	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
 
 	// 模型专业参数

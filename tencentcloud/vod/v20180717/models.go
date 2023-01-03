@@ -10836,8 +10836,11 @@ type EditMediaTask struct {
 	// 输出视频的元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
-	// 若发起视频编辑任务时指定了视频处理流程，则该字段为流程任务 ID。
+	// 任务类型为 Procedure 的任务 ID。若发起[编辑视频](https://cloud.tencent.com/document/api/266/34783)任务时指定了任务流模板(ProcedureName)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
+
+	// 任务类型为 ReviewAudioVideo 的任务 ID。若发起[编辑视频](https://cloud.tencent.com/document/api/266/34783)任务时指定了任务流模板(ProcedureName)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+	ReviewAudioVideoTaskId *string `json:"ReviewAudioVideoTaskId,omitempty" name:"ReviewAudioVideoTaskId"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -11336,8 +11339,11 @@ type FileUploadTask struct {
 	// 上传完成后生成的媒体文件基础信息。
 	MediaBasicInfo *MediaBasicInfo `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
 
-	// 若视频上传时指定了视频处理流程，则该字段为流程任务 ID。
+	// 任务类型为 Procedure 的任务 ID。若视频[上传时指定要执行的任务(procedure)](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E5.8F.91.E8.B5.B7)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
+
+	// 任务类型为 ReviewAudioVideo 的任务 ID。若视频[上传时指定要执行的任务(procedure)](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E5.8F.91.E8.B5.B7)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+	ReviewAudioVideoTaskId *string `json:"ReviewAudioVideoTaskId,omitempty" name:"ReviewAudioVideoTaskId"`
 
 	// 元信息。包括大小、时长、视频流信息、音频流信息等。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16646,8 +16652,11 @@ func (r *ProcessMediaByProcedureRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ProcessMediaByProcedureResponseParams struct {
-	// 任务 ID。
+	// 任务类型为 Procedure 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务类型为 ReviewAudioVideo 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+	ReviewAudioVideoTaskId *string `json:"ReviewAudioVideoTaskId,omitempty" name:"ReviewAudioVideoTaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -16800,7 +16809,8 @@ type ProcessMediaRequestParams struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// 音视频内容审核类型任务参数。
+	// 音视频内容审核类型任务参数 \*。
+	// <font color=red>\* 不建议使用</font>，推荐使用 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217)。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// 音视频内容分析类型任务参数。
@@ -16837,7 +16847,8 @@ type ProcessMediaRequest struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// 音视频内容审核类型任务参数。
+	// 音视频内容审核类型任务参数 \*。
+	// <font color=red>\* 不建议使用</font>，推荐使用 [音视频审核(ReviewAudioVideo)](https://cloud.tencent.com/document/api/266/80283) 或 [图片审核(ReviewImage)](https://cloud.tencent.com/document/api/266/73217)。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// 音视频内容分析类型任务参数。
@@ -17263,7 +17274,7 @@ func (r *PullUploadResponse) FromJsonString(s string) error {
 }
 
 type PullUploadTask struct {
-	// 转拉上传任务 ID。
+	// 拉取上传任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 任务流状态，取值：
@@ -17280,29 +17291,32 @@ type PullUploadTask struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 转拉上传完成后生成的视频 ID。
+	// 拉取上传完成后生成的视频 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 转拉完成后生成的媒体文件基础信息。
+	// 拉取上传完成后生成的媒体文件基础信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaBasicInfo *MediaBasicInfo `json:"MediaBasicInfo,omitempty" name:"MediaBasicInfo"`
 
 	// 输出视频的元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
-	// 转拉上传完成后生成的播放地址。
+	// 拉取上传完成后生成的播放地址。
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
-	// 若转拉上传时指定了视频处理流程，则该参数为流程任务 ID。
+	// 任务类型为 Procedure 的任务 ID。若[拉取上传](https://cloud.tencent.com/document/api/266/35575)时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
 
-	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	// 任务类型为 ReviewAudioVideo 的任务 ID。若[拉取上传](https://cloud.tencent.com/document/api/266/35575)时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+	ReviewAudioVideoTaskId *string `json:"ReviewAudioVideoTaskId,omitempty" name:"ReviewAudioVideoTaskId"`
+
+	// 来源上下文，用于透传用户请求信息，[URL 拉取视频上传完成](https://cloud.tencent.com/document/product/266/7831)将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
-	// 转拉任务进度，取值范围 [0-100] 。
+	// 拉取上传进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
@@ -18114,6 +18128,11 @@ type ReviewAudioVideoTaskInput struct {
 
 	// 音视频审核模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 审核的内容，可选值：
+	// <li>Media：原始音视频；</li>
+	// <li>Cover：封面。</li>
+	ReviewContents []*string `json:"ReviewContents,omitempty" name:"ReviewContents"`
 }
 
 type ReviewAudioVideoTaskOutput struct {
@@ -19305,8 +19324,11 @@ type SplitMediaTaskSegmentInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *TaskOutputMediaInfo `json:"Output,omitempty" name:"Output"`
 
-	// 若发起视频拆条任务时指定了视频处理流程，则该字段为流程任务 ID。
+	// 任务类型为 Procedure 的任务 ID。若发起[视频拆条](https://cloud.tencent.com/document/api/266/51098)任务时，视频拆条任务信息列表指定了任务流模板(ProcedureName)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
 	ProcedureTaskId *string `json:"ProcedureTaskId,omitempty" name:"ProcedureTaskId"`
+
+	// 任务类型为 ReviewAudioVideo 的任务 ID。若发起[视频拆条](https://cloud.tencent.com/document/api/266/51098)任务时，视频拆条任务信息列表指定了任务流模板(ProcedureName)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+	ReviewAudioVideoTaskId *string `json:"ReviewAudioVideoTaskId,omitempty" name:"ReviewAudioVideoTaskId"`
 }
 
 type StatDataItem struct {

@@ -188,6 +188,9 @@ const (
 	// 物模型事件/属性 Name 错误。
 	INVALIDPARAMETERVALUE_MODELDEFINEEVENTPROPNAMEERROR = "InvalidParameterValue.ModelDefineEventPropNameError"
 
+	// 物模型事件 Type 错误:lac 。
+	INVALIDPARAMETERVALUE_MODELDEFINEEVENTTYPEERROR = "InvalidParameterValue.ModelDefineEventTypeError"
+
 	// 数据模板未定义。
 	INVALIDPARAMETERVALUE_MODELDEFINEINVALID = "InvalidParameterValue.ModelDefineInvalid"
 
@@ -313,6 +316,9 @@ const (
 
 	// 物模型事件 Type 错误。
 	MISSINGPARAMETER_MODELDEFINEEVENTTYPEERROR = "MissingParameter.ModelDefineEventTypeError"
+
+	// 资源不足。
+	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
 	// 已有量产进行，请等待量产完成。
 	RESOURCEINSUFFICIENT_BATCHPRODUCTIONISRUNNING = "ResourceInsufficient.BatchProductionIsRunning"

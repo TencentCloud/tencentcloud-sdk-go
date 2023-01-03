@@ -752,6 +752,9 @@ const (
 	// 当前实例已被封禁，无法进行此操作。
 	UNSUPPORTEDOPERATION_NOTLOCKEDINSTANCEOPERATION = "UnsupportedOperation.NotLockedInstanceOperation"
 
+	// 目的端的服务在IP申请中使用的实例ID和这里传入的不匹配。
+	UNSUPPORTEDOPERATION_NOTMATCHTARGETSERVICE = "UnsupportedOperation.NotMatchTargetService"
+
 	// 当前云联网实例未处于申请中状态，无法进行操作。
 	UNSUPPORTEDOPERATION_NOTPENDINGCCNINSTANCE = "UnsupportedOperation.NotPendingCcnInstance"
 

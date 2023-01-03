@@ -17,6 +17,12 @@ package v20210701
 const (
 	// 此产品的特有错误码
 
+	// 服务器繁忙,请稍后再试。
+	FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
+
+	// 删除应用失败。
+	FAILEDOPERATION_DELETESERVICEERROR = "FailedOperation.DeleteServiceError"
+
 	// 请求响应超时。
 	INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 
@@ -277,6 +283,9 @@ const (
 
 	// 版本的路由流量不为0。
 	INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
+
+	// vpc错误, 与环境vpc不一致。
+	INVALIDPARAMETERVALUE_VPCINVALID = "InvalidParameterValue.VpcInvalid"
 
 	// 弹性规则名称不能为空。
 	MISSINGPARAMETER_AUTOSCALERNAMENULL = "MissingParameter.AutoScalerNameNull"
