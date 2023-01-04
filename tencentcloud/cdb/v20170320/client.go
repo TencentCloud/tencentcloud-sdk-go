@@ -7246,7 +7246,7 @@ func NewModifyRemoteBackupConfigResponse() (response *ModifyRemoteBackupConfigRe
 }
 
 // ModifyRemoteBackupConfig
-// 本接口(ModifyRemoteBackupConfig)用于查询数据库异地备份配置信息。
+// 本接口(ModifyRemoteBackupConfig)用于修改数据库异地备份配置信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -7256,7 +7256,7 @@ func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigReque
 }
 
 // ModifyRemoteBackupConfig
-// 本接口(ModifyRemoteBackupConfig)用于查询数据库异地备份配置信息。
+// 本接口(ModifyRemoteBackupConfig)用于修改数据库异地备份配置信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"

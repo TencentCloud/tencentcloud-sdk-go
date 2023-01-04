@@ -3831,32 +3831,32 @@ func (r *DescribeProxySlowLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReplicationGroupRequestParams struct {
-	// 实例列表的大小，参数默认值20
+	// 每页输出实例列表的大小，参数默认值20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 复制组ID
+	// 复制组ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 实例ID和实例名称，支持模糊查询
+	// 设置模糊查询的关键字，可以设置为实例ID或实例名称进行模糊查询。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 type DescribeReplicationGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例列表的大小，参数默认值20
+	// 每页输出实例列表的大小，参数默认值20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 复制组ID
+	// 复制组ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 实例ID和实例名称，支持模糊查询
+	// 设置模糊查询的关键字，可以设置为实例ID或实例名称进行模糊查询。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
@@ -3884,10 +3884,10 @@ func (r *DescribeReplicationGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReplicationGroupResponseParams struct {
-	// 复制组数
+	// 复制组数量。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 复制组信息
+	// 复制组信息。
 	Groups []*Groups `json:"Groups,omitempty" name:"Groups"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5709,32 +5709,32 @@ func (r *ModfiyInstancePasswordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAutoBackupConfigRequestParams struct {
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 日期 Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday，该参数暂不支持修改。
+	// 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
 	WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays"`
 
-	// 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
+	// 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
 	TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
-	// 自动备份类型： 1 “定时回档”
+	// 自动备份类型： 1 “定时回档”。
 	AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 }
 
 type ModifyAutoBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 日期 Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday，该参数暂不支持修改。
+	// 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
 	WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays"`
 
-	// 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
+	// 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
 	TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
-	// 自动备份类型： 1 “定时回档”
+	// 自动备份类型： 1 “定时回档”。
 	AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 }
 
@@ -5765,13 +5765,13 @@ type ModifyAutoBackupConfigResponseParams struct {
 	// 自动备份类型： 1 “定时回档”
 	AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 
-	// 日期Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+	// 自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
 	WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays"`
 
-	// 时间段 00:00-01:00, 01:00-02:00...... 23:00-00:00
+	// 自动备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
 	TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
-	// 全量备份文件保存天数,单位：天
+	// 全量备份文件保存天数,单位：天。
 	BackupStorageDays *int64 `json:"BackupStorageDays,omitempty" name:"BackupStorageDays"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

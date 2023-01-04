@@ -17946,7 +17946,13 @@ type ReviewAudioVideoRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 音视频审核模板 ID，默认值为 10。取值范围：
+	// 审核的内容，可选值有：
+	// <li>Media：原始音视频；</li>
+	// <li>Cover：封面。</li>
+	// 不填或填空数组时，默认为审核 Media。
+	ReviewContents []*string `json:"ReviewContents,omitempty" name:"ReviewContents"`
+
+	// 审核模板 ID，默认值为 10。取值范围：
 	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
@@ -17972,7 +17978,13 @@ type ReviewAudioVideoRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 音视频审核模板 ID，默认值为 10。取值范围：
+	// 审核的内容，可选值有：
+	// <li>Media：原始音视频；</li>
+	// <li>Cover：封面。</li>
+	// 不填或填空数组时，默认为审核 Media。
+	ReviewContents []*string `json:"ReviewContents,omitempty" name:"ReviewContents"`
+
+	// 审核模板 ID，默认值为 10。取值范围：
 	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
@@ -18003,6 +18015,7 @@ func (r *ReviewAudioVideoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileId")
 	delete(f, "SubAppId")
+	delete(f, "ReviewContents")
 	delete(f, "Definition")
 	delete(f, "TasksPriority")
 	delete(f, "SessionContext")
@@ -18169,6 +18182,10 @@ type ReviewAudioVideoTaskOutput struct {
 
 	// 涉及违规信息的嫌疑的视频片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
+
+	// 封面审核结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CoverReviewResult *ReviewImageResult `json:"CoverReviewResult,omitempty" name:"CoverReviewResult"`
 }
 
 // Predefined struct for user
@@ -18222,7 +18239,7 @@ func (r *ReviewImageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ReviewImageResponseParams struct {
 	// 图片审核任务结果。
-	// <font color=red>注意：该字段已废弃，建议使用 ReviewResult。</font> 
+	// <font color=red>注意：该字段已废弃，建议使用 MediaReviewResult。</font> 
 	ReviewResultSet []*ContentReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
 
 	// 图片审核任务结果。

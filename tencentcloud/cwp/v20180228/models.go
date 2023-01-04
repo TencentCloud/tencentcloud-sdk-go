@@ -93,6 +93,10 @@ type AssetAppBaseInfo struct {
 	// 是否新增[0:否|1:是]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetAppProcessInfo struct {
@@ -167,6 +171,10 @@ type AssetCoreModuleBaseInfo struct {
 
 	// 服务器外网IP
 	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetCoreModuleDetail struct {
@@ -288,6 +296,10 @@ type AssetDatabaseBaseInfo struct {
 
 	// 主机名称
 	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetDatabaseDetail struct {
@@ -415,6 +427,11 @@ type AssetEnvBaseInfo struct {
 
 	// 服务器外网IP
 	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	//  附加信息
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetFilters struct {
@@ -484,6 +501,11 @@ type AssetInitServiceBaseInfo struct {
 
 	// 服务器外网IP
 	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	//  附加信息
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetJarBaseInfo struct {
@@ -535,6 +557,11 @@ type AssetJarBaseInfo struct {
 
 	// 服务器外网IP
 	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	//  附加信息
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetJarDetail struct {
@@ -650,6 +677,10 @@ type AssetMachineBaseInfo struct {
 
 	// 首次采集时间
 	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetMachineDetail struct {
@@ -695,7 +726,7 @@ type AssetMachineDetail struct {
 	// Cpu使用率百分比
 	CpuLoad *string `json:"CpuLoad,omitempty" name:"CpuLoad"`
 
-	// 防护级别：0基础版，1专业版
+	// 防护级别：0基础版，1专业版，2旗舰版，3普惠版
 	ProtectLevel *uint64 `json:"ProtectLevel,omitempty" name:"ProtectLevel"`
 
 	// 风险状态：UNKNOW-未知，RISK-风险，SAFT-安全
@@ -760,6 +791,10 @@ type AssetMachineDetail struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 主机二外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetNetworkCardInfo struct {
@@ -825,6 +860,10 @@ type AssetPlanTask struct {
 
 	// 服务器外网IP
 	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetPortBaseInfo struct {
@@ -907,6 +946,10 @@ type AssetPortBaseInfo struct {
 
 	// 是否新增[0:否|1:是]
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetProcessBaseInfo struct {
@@ -995,6 +1038,12 @@ type AssetProcessBaseInfo struct {
 
 	// 是否新增[0:否|1:是]
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 
+	//  附加信息
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetSystemPackageInfo struct {
@@ -1118,6 +1167,11 @@ type AssetUserBaseInfo struct {
 
 	// 是否新增[0:否|1:是]
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetUserDetail struct {
@@ -1284,6 +1338,10 @@ type AssetWebAppBaseInfo struct {
 
 	// 是否新增[0:否|1:是]
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetWebAppPluginInfo struct {
@@ -1347,6 +1405,10 @@ type AssetWebFrameBaseInfo struct {
 
 	// 是否新增[0:否|1:是]
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetWebLocationBaseInfo struct {
@@ -1414,6 +1476,10 @@ type AssetWebLocationBaseInfo struct {
 	// 是否新增[0:否|1:是]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type AssetWebLocationInfo struct {
@@ -1511,6 +1577,10 @@ type AssetWebServiceBaseInfo struct {
 
 	// 是否新增[0:否|1:是]
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	//  附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type BanWhiteListDetail struct {
@@ -1681,6 +1751,10 @@ type BaselineHostDetect struct {
 	// 主机安全UUID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type BaselineHostTopList struct {
@@ -1801,6 +1875,10 @@ type BaselineItem struct {
 	// 主机安全uuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type BaselineItemDetect struct {
@@ -2150,6 +2228,10 @@ type BruteAttackInfo struct {
 	// 0：待处理，1：忽略，5：已处理，6：加入白名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataStatus *uint64 `json:"DataStatus,omitempty" name:"DataStatus"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type BruteAttackRule struct {
@@ -3017,6 +3099,10 @@ type DefendAttackLog struct {
 
 	// 攻击内容
 	HttpContent *string `json:"HttpContent,omitempty" name:"HttpContent"`
+
+	// 主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 // Predefined struct for user
@@ -16558,6 +16644,14 @@ type EffectiveMachineInfo struct {
 	// 漏洞数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulNum *uint64 `json:"VulNum,omitempty" name:"VulNum"`
+
+	// 云标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudTags []*Tags `json:"CloudTags,omitempty" name:"CloudTags"`
+
+	// 机器instance ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 }
 
 type EmergencyResponseInfo struct {
@@ -18549,6 +18643,10 @@ type HostLoginList struct {
 	// XTI - 威胁情报
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type IgnoreBaselineRule struct {
@@ -18686,6 +18784,10 @@ type JavaMemShellInfo struct {
 
 	// 服务器quuid
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type LicenseBindDetail struct {
@@ -18715,6 +18817,10 @@ type LicenseBindDetail struct {
 
 	// 是否允许换绑,false 不允许换绑
 	IsSwitchBind *bool `json:"IsSwitchBind,omitempty" name:"IsSwitchBind"`
+
+	// 主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type LicenseBindTaskDetail struct {
@@ -18980,6 +19086,43 @@ type Machine struct {
 	// 主机ip列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpList *string `json:"IpList,omitempty" name:"IpList"`
+
+	// 所属网络
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type MachineExtraInfo struct {
+	// 公网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanIP *string `json:"WanIP,omitempty" name:"WanIP"`
+
+	// 内网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateIP *string `json:"PrivateIP,omitempty" name:"PrivateIP"`
+
+	// 网络类型，1:vpc网络 2:基础网络 3:非腾讯云网络
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkType *int64 `json:"NetworkType,omitempty" name:"NetworkType"`
+
+	// 网络名，vpc网络情况下会返回vpc_id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkName *string `json:"NetworkName,omitempty" name:"NetworkName"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 主机名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
 }
 
 type MachineTag struct {
@@ -19051,6 +19194,10 @@ type MalWareList struct {
 
 	// 木马样本md5
 	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type MaliciousRequestWhiteListInfo struct {
@@ -19168,6 +19315,10 @@ type MalwareInfo struct {
 	// 最近访问时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrFileAccessTime *string `json:"StrFileAccessTime,omitempty" name:"StrFileAccessTime"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type MalwareRisk struct {
@@ -20247,6 +20398,10 @@ type PrivilegeEscalationProcess struct {
 
 	// 机器名
 	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type PrivilegeRule struct {
@@ -20357,6 +20512,10 @@ type ProtectDirRelatedServer struct {
 
 	// 异常信息
 	ExceptionMessage *string `json:"ExceptionMessage,omitempty" name:"ExceptionMessage"`
+
+	// 主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type ProtectEventLists struct {
@@ -20386,6 +20545,10 @@ type ProtectEventLists struct {
 
 	// 文件类型 0-常规文件；1-目录；2-软链
 	FileType *uint64 `json:"FileType,omitempty" name:"FileType"`
+
+	// 主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type ProtectHostConfig struct {
@@ -20617,6 +20780,10 @@ type ReverseShell struct {
 
 	// 检测方法
 	DetectBy *uint64 `json:"DetectBy,omitempty" name:"DetectBy"`
+
+	//  主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type ReverseShellRule struct {
@@ -20828,6 +20995,10 @@ type ScanTaskDetails struct {
 
 	// 外网ip
 	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 // Predefined struct for user
@@ -22210,6 +22381,14 @@ type VulEffectHostList struct {
 	// 外网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses *string `json:"PublicIpAddresses,omitempty" name:"PublicIpAddresses"`
+
+	// 云标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudTags []*Tags `json:"CloudTags,omitempty" name:"CloudTags"`
+
+	// 主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type VulHostTopInfo struct {

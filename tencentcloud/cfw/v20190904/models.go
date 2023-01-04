@@ -692,6 +692,9 @@ type CreateNatFwInstanceRequestParams struct {
 
 	// 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
 	CrossAZone *int64 `json:"CrossAZone,omitempty" name:"CrossAZone"`
+
+	// 指定防火墙使用网段信息
+	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitempty" name:"FwCidrInfo"`
 }
 
 type CreateNatFwInstanceRequest struct {
@@ -720,6 +723,9 @@ type CreateNatFwInstanceRequest struct {
 
 	// 异地灾备 1：使用异地灾备；0：不使用异地灾备；为空则默认不使用异地灾备
 	CrossAZone *int64 `json:"CrossAZone,omitempty" name:"CrossAZone"`
+
+	// 指定防火墙使用网段信息
+	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitempty" name:"FwCidrInfo"`
 }
 
 func (r *CreateNatFwInstanceRequest) ToJsonString() string {
@@ -742,6 +748,7 @@ func (r *CreateNatFwInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "ZoneBak")
 	delete(f, "CrossAZone")
+	delete(f, "FwCidrInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatFwInstanceRequest has unknown keys!", "")
 	}
@@ -804,6 +811,9 @@ type CreateNatFwInstanceWithDomainRequestParams struct {
 
 	// 如果要创建域名则必填
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定防火墙使用网段信息
+	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitempty" name:"FwCidrInfo"`
 }
 
 type CreateNatFwInstanceWithDomainRequest struct {
@@ -838,6 +848,9 @@ type CreateNatFwInstanceWithDomainRequest struct {
 
 	// 如果要创建域名则必填
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定防火墙使用网段信息
+	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitempty" name:"FwCidrInfo"`
 }
 
 func (r *CreateNatFwInstanceWithDomainRequest) ToJsonString() string {
@@ -862,6 +875,7 @@ func (r *CreateNatFwInstanceWithDomainRequest) FromJsonString(s string) error {
 	delete(f, "CrossAZone")
 	delete(f, "IsCreateDomain")
 	delete(f, "Domain")
+	delete(f, "FwCidrInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatFwInstanceWithDomainRequest has unknown keys!", "")
 	}
@@ -3558,6 +3572,25 @@ func (r *ExpandCfwVerticalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FwCidrInfo struct {
+	// 防火墙使用的网段类型，值VpcSelf/Assis/Custom分别代表自有网段优先/扩展网段优先/自定义
+	FwCidrType *string `json:"FwCidrType,omitempty" name:"FwCidrType"`
+
+	// 为每个vpc指定防火墙的网段
+	FwCidrLst []*FwVpcCidr `json:"FwCidrLst,omitempty" name:"FwCidrLst"`
+
+	// 其他防火墙占用网段，一般是防火墙需要独占vpc时指定的网段
+	ComFwCidr *string `json:"ComFwCidr,omitempty" name:"ComFwCidr"`
+}
+
+type FwVpcCidr struct {
+	// vpc的id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 防火墙网段，最少/24的网段
+	FwCidr *string `json:"FwCidr,omitempty" name:"FwCidr"`
+}
+
 type IPDefendStatus struct {
 	// ip地址
 	IP *string `json:"IP,omitempty" name:"IP"`
@@ -4184,6 +4217,9 @@ type ModifyNatFwReSelectRequestParams struct {
 
 	// 新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。
 	VpcList []*string `json:"VpcList,omitempty" name:"VpcList"`
+
+	// 指定防火墙使用网段信息
+	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitempty" name:"FwCidrInfo"`
 }
 
 type ModifyNatFwReSelectRequest struct {
@@ -4200,6 +4236,9 @@ type ModifyNatFwReSelectRequest struct {
 
 	// 新增模式重新接入的vpc列表，其中NatGwList和NatgwList只能传递一个。
 	VpcList []*string `json:"VpcList,omitempty" name:"VpcList"`
+
+	// 指定防火墙使用网段信息
+	FwCidrInfo *FwCidrInfo `json:"FwCidrInfo,omitempty" name:"FwCidrInfo"`
 }
 
 func (r *ModifyNatFwReSelectRequest) ToJsonString() string {
@@ -4218,6 +4257,7 @@ func (r *ModifyNatFwReSelectRequest) FromJsonString(s string) error {
 	delete(f, "CfwInstance")
 	delete(f, "NatGwList")
 	delete(f, "VpcList")
+	delete(f, "FwCidrInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNatFwReSelectRequest has unknown keys!", "")
 	}

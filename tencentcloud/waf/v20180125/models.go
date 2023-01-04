@@ -2560,6 +2560,10 @@ type DomainInfo struct {
 
 	// 是否开启投递CKafka功能
 	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitempty" name:"PostCKafkaStatus"`
+
+	// 应用型负载均衡类型: clb或者apisix，默认clb
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
 }
 
 type DomainPackageNew struct {

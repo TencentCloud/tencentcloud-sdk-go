@@ -1872,10 +1872,10 @@ type GetInvokeTxRequestParams struct {
 	// 业务所属通道名称，可在通道详情或列表中获取
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
+	// 执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
 	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
 
-	// 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
+	// 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
 	PeerGroup *string `json:"PeerGroup,omitempty" name:"PeerGroup"`
 
 	// 交易ID
@@ -1900,10 +1900,10 @@ type GetInvokeTxRequest struct {
 	// 业务所属通道名称，可在通道详情或列表中获取
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
+	// 执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
 	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
 
-	// 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称极其所属组织名称
+	// 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
 	PeerGroup *string `json:"PeerGroup,omitempty" name:"PeerGroup"`
 
 	// 交易ID

@@ -6715,6 +6715,10 @@ type DetailDomain struct {
 	// 七牛云对象存储回源鉴权
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
+
+	// https 请求计费开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
 type DiagnoseData struct {
@@ -7595,6 +7599,11 @@ type Https struct {
 	TlsVersion []*string `json:"TlsVersion,omitempty" name:"TlsVersion"`
 }
 
+type HttpsBilling struct {
+	// https请求计费开关
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type HwPrivateAccess struct {
 	// 开关 on/off
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -7652,8 +7661,7 @@ type IpFilter struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterRules []*IpFilterPathRule `json:"FilterRules,omitempty" name:"FilterRules"`
 
-	// IP 黑白名单验证失败时返回的 HTTP Code
-	// 合法值: 400~499
+	// IP 黑白名单验证失败时返回的 code（即将下线）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
 }

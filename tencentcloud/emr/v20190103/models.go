@@ -2213,6 +2213,32 @@ type EmrListInstance struct {
 	// 是否手戳集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsHandsCluster *bool `json:"IsHandsCluster,omitempty" name:"IsHandsCluster"`
+
+	// 体外客户端组件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutSideSoftInfo []*SoftDependInfo `json:"OutSideSoftInfo,omitempty" name:"OutSideSoftInfo"`
+}
+
+type EmrPrice struct {
+	// 刊例价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalCost *string `json:"OriginalCost,omitempty" name:"OriginalCost"`
+
+	// 折扣价格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountCost *string `json:"DiscountCost,omitempty" name:"DiscountCost"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 询价配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceSpec *PriceResource `json:"PriceSpec,omitempty" name:"PriceSpec"`
+
+	// 是否支持竞价实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportSpotPaid *bool `json:"SupportSpotPaid,omitempty" name:"SupportSpotPaid"`
 }
 
 type EmrProductConfigOutter struct {
@@ -2654,6 +2680,10 @@ type InquiryPriceCreateInstanceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
+	// 价格清单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceList []*ZoneDetailPriceResult `json:"PriceList,omitempty" name:"PriceList"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2919,6 +2949,10 @@ type InquiryPriceScaleOutInstanceResponseParams struct {
 	// 询价的节点规格。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PriceSpec *PriceResource `json:"PriceSpec,omitempty" name:"PriceSpec"`
+
+	// 对应入参MultipleResources中多个规格的询价结果，其它出参返回的是第一个规格的询价结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultipleEmrPrice []*EmrPrice `json:"MultipleEmrPrice,omitempty" name:"MultipleEmrPrice"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3455,6 +3489,15 @@ type NewResourceSpec struct {
 	CommonCount *int64 `json:"CommonCount,omitempty" name:"CommonCount"`
 }
 
+type NodeDetailPriceResult struct {
+	// 节点类型 master core task common router mysql
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点组成部分价格详情
+	PartDetailPrice []*PartDetailPriceItem `json:"PartDetailPrice,omitempty" name:"PartDetailPrice"`
+}
+
 type NodeHardwareInfo struct {
 	// 用户APPID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3716,6 +3759,32 @@ type OutterResource struct {
 	// 规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+}
+
+type PartDetailPriceItem struct {
+	// 类型包括：节点->node、系统盘->rootDisk、云数据盘->dataDisk、metaDB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 单价（原价）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Price *float64 `json:"Price,omitempty" name:"Price"`
+
+	// 单价（折扣价）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealCost *float64 `json:"RealCost,omitempty" name:"RealCost"`
+
+	// 总价（折扣价）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealTotalCost *float64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 折扣
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Policy *float64 `json:"Policy,omitempty" name:"Policy"`
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 }
 
 type PersistentVolumeContext struct {
@@ -5031,6 +5100,14 @@ type ShortNodeInfo struct {
 	NodeSize *uint64 `json:"NodeSize,omitempty" name:"NodeSize"`
 }
 
+type SoftDependInfo struct {
+	// 组件名称
+	SoftName *string `json:"SoftName,omitempty" name:"SoftName"`
+
+	// 是否必选
+	Required *bool `json:"Required,omitempty" name:"Required"`
+}
+
 type Step struct {
 	// 执行步骤名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -5329,6 +5406,15 @@ type VirtualPrivateCloud struct {
 
 	// Subnet ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type ZoneDetailPriceResult struct {
+	// 可用区Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 不同节点的价格详情
+	NodeDetailPrice []*NodeDetailPriceResult `json:"NodeDetailPrice,omitempty" name:"NodeDetailPrice"`
 }
 
 type ZoneResourceConfiguration struct {

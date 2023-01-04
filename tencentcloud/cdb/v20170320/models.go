@@ -10378,7 +10378,7 @@ type ModifyRemoteBackupConfigRequestParams struct {
 	// 用户设置异地备份地域列表
 	RemoteRegion []*string `json:"RemoteRegion,omitempty" name:"RemoteRegion"`
 
-	// 异地备份保留天时间，单位为天
+	// 异地备份保留时间，单位为天
 	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
 }
 
@@ -10397,7 +10397,7 @@ type ModifyRemoteBackupConfigRequest struct {
 	// 用户设置异地备份地域列表
 	RemoteRegion []*string `json:"RemoteRegion,omitempty" name:"RemoteRegion"`
 
-	// 异地备份保留天时间，单位为天
+	// 异地备份保留时间，单位为天
 	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
 }
 

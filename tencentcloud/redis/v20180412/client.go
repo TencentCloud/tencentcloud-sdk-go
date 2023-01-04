@@ -2890,7 +2890,7 @@ func NewDescribeReplicationGroupResponse() (response *DescribeReplicationGroupRe
 }
 
 // DescribeReplicationGroup
-// 查询复制组
+// 本接口（DescribeReplicationGroup）查询复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2900,7 +2900,7 @@ func (c *Client) DescribeReplicationGroup(request *DescribeReplicationGroupReque
 }
 
 // DescribeReplicationGroup
-// 查询复制组
+// 本接口（DescribeReplicationGroup）查询复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

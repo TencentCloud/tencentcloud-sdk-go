@@ -2037,6 +2037,68 @@ func (c *Client) ModifyMigrationJobWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewPauseSyncJobRequest() (request *PauseSyncJobRequest) {
+    request = &PauseSyncJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "PauseSyncJob")
+    
+    
+    return
+}
+
+func NewPauseSyncJobResponse() (response *PauseSyncJobResponse) {
+    response = &PauseSyncJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PauseSyncJob
+// 暂停处于同步中的数据同步任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_BIZOPERATIONDENIEDERROR = "OperationDenied.BizOperationDeniedError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) PauseSyncJob(request *PauseSyncJobRequest) (response *PauseSyncJobResponse, err error) {
+    return c.PauseSyncJobWithContext(context.Background(), request)
+}
+
+// PauseSyncJob
+// 暂停处于同步中的数据同步任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  OPERATIONDENIED_BIZOPERATIONDENIEDERROR = "OperationDenied.BizOperationDeniedError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = "ResourceNotFound.BizResourceNotFoundError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) PauseSyncJobWithContext(ctx context.Context, request *PauseSyncJobRequest) (response *PauseSyncJobResponse, err error) {
+    if request == nil {
+        request = NewPauseSyncJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PauseSyncJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPauseSyncJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecoverMigrateJobRequest() (request *RecoverMigrateJobRequest) {
     request = &RecoverMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

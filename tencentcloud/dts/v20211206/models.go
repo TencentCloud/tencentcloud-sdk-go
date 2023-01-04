@@ -3127,6 +3127,60 @@ type Options struct {
 	DdlOptions []*DdlOption `json:"DdlOptions,omitempty" name:"DdlOptions"`
 }
 
+// Predefined struct for user
+type PauseSyncJobRequestParams struct {
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+type PauseSyncJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *PauseSyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseSyncJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseSyncJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseSyncJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PauseSyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *PauseSyncJobResponseParams `json:"Response"`
+}
+
+func (r *PauseSyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseSyncJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ProcessProgress struct {
 	// 步骤的状态， 包括：notStarted(未开始)、running(运行中)、success(成功)、failed(失败)等
 	// 注意：此字段可能返回 null，表示取不到有效值。

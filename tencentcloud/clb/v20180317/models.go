@@ -505,10 +505,10 @@ type CertInfo struct {
 	// 上传证书的名称，如果没有 CertId，则此项必传。
 	CertName *string `json:"CertName,omitempty" name:"CertName"`
 
-	// 上传证书的公钥，如果没有 CertId，则此项必传。
+	// 上传证书的公钥；如果没有 CertId，则此项必传。
 	CertContent *string `json:"CertContent,omitempty" name:"CertContent"`
 
-	// 上传服务端证书的私钥，如果没有 CertId，则此项必传。
+	// 上传服务端证书的私钥；如果没有 CertId，则此项必传。
 	CertKey *string `json:"CertKey,omitempty" name:"CertKey"`
 }
 
@@ -1135,6 +1135,12 @@ type CreateListenerRequestParams struct {
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
 	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
+
+	// 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+	MaxConn *int64 `json:"MaxConn,omitempty" name:"MaxConn"`
+
+	// 监听器最大新增连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+	MaxCps *int64 `json:"MaxCps,omitempty" name:"MaxCps"`
 }
 
 type CreateListenerRequest struct {
@@ -1185,6 +1191,12 @@ type CreateListenerRequest struct {
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
 	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
+
+	// 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+	MaxConn *int64 `json:"MaxConn,omitempty" name:"MaxConn"`
+
+	// 监听器最大新增连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+	MaxCps *int64 `json:"MaxCps,omitempty" name:"MaxCps"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -1214,6 +1226,8 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "EndPort")
 	delete(f, "DeregisterTargetRst")
 	delete(f, "MultiCertInfo")
+	delete(f, "MaxConn")
+	delete(f, "MaxCps")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateListenerRequest has unknown keys!", "")
 	}
@@ -5170,6 +5184,14 @@ type Listener struct {
 	// 绑定的目标组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetGroupList []*BasicTargetGroupInfo `json:"TargetGroupList,omitempty" name:"TargetGroupList"`
+
+	// 监听器最大连接数，-1表示监听器维度不限速。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConn *int64 `json:"MaxConn,omitempty" name:"MaxConn"`
+
+	// 监听器最大新增连接数，-1表示监听器维度不限速。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxCps *int64 `json:"MaxCps,omitempty" name:"MaxCps"`
 }
 
 type ListenerBackend struct {
@@ -6101,6 +6123,12 @@ type ModifyListenerRequestParams struct {
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
 	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
+
+	// 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+	MaxConn *int64 `json:"MaxConn,omitempty" name:"MaxConn"`
+
+	// 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+	MaxCps *int64 `json:"MaxCps,omitempty" name:"MaxCps"`
 }
 
 type ModifyListenerRequest struct {
@@ -6145,6 +6173,12 @@ type ModifyListenerRequest struct {
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
 	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
+
+	// 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+	MaxConn *int64 `json:"MaxConn,omitempty" name:"MaxConn"`
+
+	// 监听器最大连接数，只有TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。
+	MaxCps *int64 `json:"MaxCps,omitempty" name:"MaxCps"`
 }
 
 func (r *ModifyListenerRequest) ToJsonString() string {
@@ -6172,6 +6206,8 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "DeregisterTargetRst")
 	delete(f, "SessionType")
 	delete(f, "MultiCertInfo")
+	delete(f, "MaxConn")
+	delete(f, "MaxCps")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyListenerRequest has unknown keys!", "")
 	}

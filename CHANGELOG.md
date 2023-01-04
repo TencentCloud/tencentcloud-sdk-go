@@ -1,3 +1,414 @@
+# Release v1.0.572
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 114 次发布
+
+发布时间：2023-01-04 01:08:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [HttpsBilling](https://cloud.tencent.com/document/api/228/30987#HttpsBilling)
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* 新增成员：HttpsBilling
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 27 次发布
+
+发布时间：2023-01-04 01:09:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNatFwInstance](https://cloud.tencent.com/document/api/1132/60250)
+
+	* 新增入参：FwCidrInfo
+
+* [CreateNatFwInstanceWithDomain](https://cloud.tencent.com/document/api/1132/61923)
+
+	* 新增入参：FwCidrInfo
+
+* [ModifyNatFwReSelect](https://cloud.tencent.com/document/api/1132/60243)
+
+	* 新增入参：FwCidrInfo
+
+
+新增数据结构：
+
+* [FwCidrInfo](https://cloud.tencent.com/document/api/1132/49071#FwCidrInfo)
+* [FwVpcCidr](https://cloud.tencent.com/document/api/1132/49071#FwVpcCidr)
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 77 次发布
+
+发布时间：2023-01-04 01:11:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+
+	* 新增入参：MaxConn, MaxCps
+
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：MaxConn, MaxCps
+
+
+修改数据结构：
+
+* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
+
+	* 新增成员：MaxConn, MaxCps
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 65 次发布
+
+发布时间：2023-01-04 01:15:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MachineExtraInfo](https://cloud.tencent.com/document/api/296/19867#MachineExtraInfo)
+
+修改数据结构：
+
+* [AssetAppBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetAppBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineIp, MachineName, MachineWanIp, Uuid, Quuid, ProjectId, Tag, Name, Type, BinPath, OsInfo, ProcessCount, Desc, Version, ConfigPath, FirstTime, UpdateTime, IsNew
+
+* [AssetCoreModuleBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetCoreModuleBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Desc, Path, Version, MachineIp, MachineName, OsInfo, Size, ProcessCount, ModuleCount, Id, Quuid, Uuid, UpdateTime, FirstTime, IsNew, MachineWanIp
+
+* [AssetDatabaseBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetDatabaseBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineIp, MachineWanIp, Quuid, Uuid, OsInfo, ProjectId, Tag, Name, Version, Port, Proto, User, Ip, ConfigPath, LogPath, DataPath, Permission, ErrorLogPath, PlugInPath, BinPath, Param, Id, UpdateTime, FirstTime, IsNew, MachineName
+
+* [AssetEnvBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetEnvBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Type, User, Value, MachineIp, MachineName, OsInfo, Quuid, Uuid, UpdateTime, FirstTime, IsNew, MachineWanIp
+
+* [AssetInitServiceBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetInitServiceBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Type, Status, User, Path, MachineIp, MachineName, OsInfo, Quuid, Uuid, UpdateTime, FirstTime, IsNew, MachineWanIp
+
+* [AssetJarBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetJarBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Type, Status, Version, Path, MachineIp, MachineName, OsInfo, Id, Md5, Quuid, Uuid, UpdateTime, FirstTime, IsNew, MachineWanIp
+
+* [AssetMachineBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetMachineBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Quuid, Uuid, MachineIp, MachineName, OsInfo, Cpu, MemSize, MemLoad, DiskSize, DiskLoad, PartitionCount, MachineWanIp, ProjectId, CpuSize, CpuLoad, Tag, UpdateTime, IsNew, FirstTime
+
+* [AssetMachineDetail](https://cloud.tencent.com/document/api/296/19867#AssetMachineDetail)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Quuid, Uuid, MachineIp, MachineName, OsInfo, Cpu, MemSize, MemLoad, DiskSize, DiskLoad, PartitionCount, MachineWanIp, CpuSize, CpuLoad, ProtectLevel, RiskStatus, ProtectDays, BuyTime, EndTime, CoreVersion, OsType, AgentVersion, InstallTime, BootTime, LastLiveTime, Producer, SerialNumber, NetCards, Disks, Status, ProjectId, DeviceVersion, OfflineTime, InstanceId, UpdateTime
+
+* [AssetPlanTask](https://cloud.tencent.com/document/api/296/19867#AssetPlanTask)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Status, Cycle, Command, User, ConfigPath, MachineIp, MachineName, OsInfo, Quuid, Uuid, UpdateTime, FirstTime, IsNew, MachineWanIp
+
+* [AssetPortBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetPortBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineIp, MachineWanIp, Quuid, Uuid, OsInfo, ProjectId, Tag, ProcessName, ProcessVersion, ProcessPath, Pid, User, StartTime, Param, Teletype, Port, GroupName, Md5, Ppid, ParentProcessName, Proto, BindIp, MachineName, UpdateTime, FirstTime, IsNew
+
+* [AssetProcessBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetProcessBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineIp, MachineWanIp, Quuid, Uuid, OsInfo, ProjectId, Tag, Name, Desc, Path, Pid, User, StartTime, Param, Tty, Version, GroupName, Md5, Ppid, ParentProcessName, Status, HasSign, InstallByPackage, PackageName, MachineName, UpdateTime, FirstTime, IsNew
+
+* [AssetUserBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetUserBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineIp, MachineWanIp, MachineName, OsInfo, Uuid, Quuid, Uid, Gid, Status, IsRoot, LoginType, LastLoginTime, Name, ProjectId, UserType, IsDomain, IsSudo, IsSshLogin, HomePath, Shell, ShellLoginStatus, PasswordChangeTime, PasswordDueTime, PasswordLockDays, PasswordStatus, UpdateTime, FirstTime, IsNew
+
+* [AssetWebAppBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebAppBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineIp, MachineWanIp, Quuid, Uuid, OsInfo, ProjectId, Tag, Name, Version, RootPath, ServiceType, Domain, VirtualPath, PluginCount, Id, Desc, MachineName, UpdateTime, FirstTime, IsNew
+
+* [AssetWebFrameBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebFrameBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineIp, MachineWanIp, Quuid, Uuid, OsInfo, ProjectId, Tag, Name, Version, Lang, ServiceType, MachineName, UpdateTime, FirstTime, IsNew
+
+* [AssetWebLocationBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebLocationBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Uuid, Quuid, MachineIp, MachineWanIp, MachineName, OsInfo, Name, Port, Proto, ServiceType, PathCount, User, MainPath, MainPathOwner, Permission, ProjectId, Tag, Id, UpdateTime, FirstTime, IsNew
+
+* [AssetWebServiceBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebServiceBaseInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineIp, MachineWanIp, Quuid, Uuid, OsInfo, ProjectId, Tag, Name, Version, BinPath, User, InstallPath, ConfigPath, ProcessCount, Id, MachineName, Desc, UpdateTime, FirstTime, IsNew
+
+* [BaselineHostDetect](https://cloud.tencent.com/document/api/296/19867#BaselineHostDetect)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>HostId, HostIp, HostName, WanIp, DetectStatus, PassedItemCount, ItemCount, NotPassedItemCount, FirstTime, LastTime, Uuid
+
+* [BaselineItem](https://cloud.tencent.com/document/api/296/19867#BaselineItem)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>ItemId, ItemName, CategoryId, ItemDesc, FixMethod, RuleName, DetectResultDesc, Level, DetectStatus, HostId, HostName, HostIp, WanIp, FirstTime, LastTime, CanBeFixed, Uuid
+
+* [BruteAttackInfo](https://cloud.tencent.com/document/api/296/19867#BruteAttackInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Uuid, MachineIp, MachineName, UserName, SrcIp, Status, Country, City, Province, CreateTime, BanStatus, EventType, Count, Quuid, IsProVersion, Protocol, Port, ModifyTime, InstanceId, DataStatus
+
+* [DefendAttackLog](https://cloud.tencent.com/document/api/296/19867#DefendAttackLog)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Uuid, SrcIp, SrcPort, HttpMethod, HttpCgi, HttpParam, VulType, CreatedAt, MachineIp, MachineName, DstIp, DstPort, HttpContent
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* 新增成员：CloudTags, InstanceID
+
+	* <font color="#dd0000">**修改成员**：</font>MachineName, MachinePublicIp, MachinePrivateIp, MachineTag, Quuid, Uuid, KernelVersion, MachineStatus, LicenseOrder, VulNum
+
+* [HostLoginList](https://cloud.tencent.com/document/api/296/19867#HostLoginList)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Uuid, MachineIp, MachineName, UserName, SrcIp, Status, Country, City, Province, LoginTime, ModifyTime, IsRiskArea, IsRiskUser, IsRiskTime, IsRiskSrcIp, RiskLevel, Location, Quuid, Desc
+
+* [JavaMemShellInfo](https://cloud.tencent.com/document/api/296/19867#JavaMemShellInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Alias, HostIp, Type, Description, CreateTime, RecentFoundTime, Status, Quuid
+
+* [LicenseBindDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindDetail)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>MachineName, MachineWanIp, MachineIp, Quuid, Uuid, Tags, AgentStatus, IsUnBind, IsSwitchBind
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：VpcId, MachineExtraInfo, InstanceId
+
+	* <font color="#dd0000">**修改成员**：</font>MachineName, MachineOs, MachineStatus, Uuid, Quuid, VulNum, MachineIp, IsProVersion, MachineWanIp, PayMode, MalwareNum, Tag, BaselineNum, CyberAttackNum, SecurityStatus, InvasionNum, RegionInfo, InstanceState, LicenseStatus, ProjectId, HasAssetScan, MachineType, KernelVersion, ProtectType, CloudTags, IsAddedOnTheFifteen, IpList
+
+* [MalWareList](https://cloud.tencent.com/document/api/296/19867#MalWareList)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>HostIp, Uuid, FilePath, VirusName, Status, Id, Alias, Tags, FileCreateTime, FileModifierTime, CreateTime, LatestScanTime, Level, CheckPlatform, ProcessExists, FileExists, Quuid, MD5
+
+* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>VirusName, FileSize, MD5, FilePath, FileCreateTime, FileModifierTime, HarmDescribe, SuggestScheme, ServersName, HostIp, ProcessName, ProcessID, Tags, Breadth, Heat, Id, FileName, CreateTime, LatestScanTime, Reference, MachineWanIp, PsTree, MachineStatus, Status, Level, CheckPlatform, Uuid, ModifyTime, StrFileAccessTime
+
+* [PrivilegeEscalationProcess](https://cloud.tencent.com/document/api/296/19867#PrivilegeEscalationProcess)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Uuid, Quuid, Hostip, ProcessName, FullPath, CmdLine, UserName, UserGroup, ProcFilePrivilege, ParentProcName, ParentProcUser, ParentProcGroup, ParentProcPath, ProcTree, Status, CreateTime, MachineName
+
+* [ProtectDirRelatedServer](https://cloud.tencent.com/document/api/296/19867#ProtectDirRelatedServer)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Id, HostName, HostIp, MachineOs, RelateDirNum, ProtectStatus, ProtectSwitch, AutoRestoreSwitchStatus, Quuid, Authorization, Exception, Progress, ExceptionMessage
+
+* [ProtectEventLists](https://cloud.tencent.com/document/api/296/19867#ProtectEventLists)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>HostName, HostIp, EventDir, EventType, EventStatus, CreateTime, RestoreTime, Id, FileType
+
+* [ReverseShell](https://cloud.tencent.com/document/api/296/19867#ReverseShell)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Uuid, Quuid, Hostip, DstIp, DstPort, ProcessName, FullPath, CmdLine, UserName, UserGroup, ParentProcName, ParentProcUser, ParentProcGroup, ParentProcPath, Status, CreateTime, MachineName, ProcTree, DetectBy
+
+* [ScanTaskDetails](https://cloud.tencent.com/document/api/296/19867#ScanTaskDetails)
+
+	* 新增成员：MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>HostIp, HostName, OsName, RiskNum, ScanBeginTime, ScanEndTime, Uuid, Quuid, Status, Description, Id, FailType, MachineWanIp
+
+* [VulEffectHostList](https://cloud.tencent.com/document/api/296/19867#VulEffectHostList)
+
+	* 新增成员：CloudTags, MachineExtraInfo
+
+	* <font color="#dd0000">**修改成员**：</font>EventId, Status, LastTime, Level, Quuid, Uuid, HostIp, AliasName, Tags, Description, HostVersion, IsSupportAutoFix, FixStatusMsg, FirstDiscoveryTime, InstanceState, PublicIpAddresses
+
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 5 次发布
+
+发布时间：2023-01-04 01:20:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [PauseSyncJob](https://cloud.tencent.com/document/api/571/84960)
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 42 次发布
+
+发布时间：2023-01-04 01:22:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquiryPriceCreateInstance](https://cloud.tencent.com/document/api/589/33980)
+
+	* 新增出参：PriceList
+
+* [InquiryPriceScaleOutInstance](https://cloud.tencent.com/document/api/589/34265)
+
+	* 新增出参：MultipleEmrPrice
+
+
+新增数据结构：
+
+* [EmrPrice](https://cloud.tencent.com/document/api/589/33981#EmrPrice)
+* [NodeDetailPriceResult](https://cloud.tencent.com/document/api/589/33981#NodeDetailPriceResult)
+* [PartDetailPriceItem](https://cloud.tencent.com/document/api/589/33981#PartDetailPriceItem)
+* [SoftDependInfo](https://cloud.tencent.com/document/api/589/33981#SoftDependInfo)
+* [ZoneDetailPriceResult](https://cloud.tencent.com/document/api/589/33981#ZoneDetailPriceResult)
+
+修改数据结构：
+
+* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
+
+	* 新增成员：OutSideSoftInfo
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>AppId, SerialNo, OrderNo, WanIp, Flag, Spec, CpuNum, MemSize, MemDesc, RegionId, ZoneId, ApplyTime, FreeTime, DiskSize, NameTag, Services, StorageType, RootSize, ChargeType, CdbIp, CdbPort, HwDiskSize, HwDiskSizeDesc, HwMemSize, HwMemSizeDesc, ExpireTime, EmrResourceId, IsAutoRenew, DeviceClass, Mutable, MCMultiDisk, CdbNodeInfo, Ip, Destroyable, Tags, AutoFlag, HardwareResourceType, IsDynamicSpec, DynamicPodSpec, SupportModifyPayMode, RootStorageType, Zone, SubnetInfo, Clients, CurrentTime, IsFederation, DeviceName, ServiceClient, DisableApiTermination, TradeVersion
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 137 次发布
+
+发布时间：2023-01-04 01:50:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReviewAudioVideo](https://cloud.tencent.com/document/api/266/80283)
+
+	* 新增入参：ReviewContents
+
+
+修改数据结构：
+
+* [ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput)
+
+	* 新增成员：CoverReviewResult
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 21 次发布
+
+发布时间：2023-01-04 01:53:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo)
+
+	* 新增成员：AlbType
+
+
+
+
 # Release v1.0.571
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
