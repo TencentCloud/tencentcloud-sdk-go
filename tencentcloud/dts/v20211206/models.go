@@ -65,6 +65,14 @@ type CheckStepInfo struct {
 }
 
 type CompareAbstractInfo struct {
+	// 校验配置参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Options *CompareOptions `json:"Options,omitempty" name:"Options"`
+
+	// 一致性校验对比对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Objects *CompareObject `json:"Objects,omitempty" name:"Objects"`
+
 	// 对比结论: same,different
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conclusion *string `json:"Conclusion,omitempty" name:"Conclusion"`
@@ -89,9 +97,29 @@ type CompareAbstractInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkippedTables *uint64 `json:"SkippedTables,omitempty" name:"SkippedTables"`
 
+	// 预估表总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NearlyTableCount *uint64 `json:"NearlyTableCount,omitempty" name:"NearlyTableCount"`
+
 	// 不一致的数据行数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DifferentRows *uint64 `json:"DifferentRows,omitempty" name:"DifferentRows"`
+
+	// 源库行数，当对比类型为**行数对比**时此项有意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcSampleRows *uint64 `json:"SrcSampleRows,omitempty" name:"SrcSampleRows"`
+
+	// 目标库行数，当对比类型为**行数对比**时此项有意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstSampleRows *uint64 `json:"DstSampleRows,omitempty" name:"DstSampleRows"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartedAt *string `json:"StartedAt,omitempty" name:"StartedAt"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishedAt *string `json:"FinishedAt,omitempty" name:"FinishedAt"`
 }
 
 type CompareDetailInfo struct {
@@ -105,17 +133,21 @@ type CompareDetailInfo struct {
 }
 
 type CompareObject struct {
-	// 迁移对象模式 all(所有迁移对象)，partial(部分对象迁移)
+	// 对象模式 整实例-all,部分对象-partial
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectMode *string `json:"ObjectMode,omitempty" name:"ObjectMode"`
 
-	// 迁移对象库表配置
+	// 对象列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectItems []*CompareObjectItem `json:"ObjectItems,omitempty" name:"ObjectItems"`
+
+	// 高级对象类型，如account(账号),index(索引),shardkey(片建，后面可能会调整),schema(库表结构)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedObjects []*string `json:"AdvancedObjects,omitempty" name:"AdvancedObjects"`
 }
 
 type CompareObjectItem struct {
-	// 迁移的库
+	// 数据库名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitempty" name:"DbName"`
 
@@ -123,7 +155,7 @@ type CompareObjectItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
 
-	// 迁移的 schema
+	// schema名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
 
@@ -144,6 +176,20 @@ type CompareObjectItem struct {
 	Views []*CompareViewItem `json:"Views,omitempty" name:"Views"`
 }
 
+type CompareOptions struct {
+	// 对比类型：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 抽样比例;范围0,100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 线程数，取值1-5，默认为1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThreadCount *int64 `json:"ThreadCount,omitempty" name:"ThreadCount"`
+}
+
 type CompareTableItem struct {
 	// 表名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -161,7 +207,7 @@ type CompareTaskInfo struct {
 }
 
 type CompareTaskItem struct {
-	// 迁移任务id
+	// 任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
@@ -204,6 +250,18 @@ type CompareTaskItem struct {
 	// 对比结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedAt *string `json:"FinishedAt,omitempty" name:"FinishedAt"`
+
+	// 对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 对比配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Options *CompareOptions `json:"Options,omitempty" name:"Options"`
+
+	// 一致性校验提示信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
 type CompareViewItem struct {
@@ -425,6 +483,114 @@ type ConsistencyOption struct {
 }
 
 // Predefined struct for user
+type ContinueMigrateJobRequestParams struct {
+	// 数据迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+type ContinueMigrateJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *ContinueMigrateJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ContinueMigrateJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ContinueMigrateJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ContinueMigrateJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ContinueMigrateJobResponse struct {
+	*tchttp.BaseResponse
+	Response *ContinueMigrateJobResponseParams `json:"Response"`
+}
+
+func (r *ContinueMigrateJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ContinueMigrateJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ContinueSyncJobRequestParams struct {
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+type ContinueSyncJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *ContinueSyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ContinueSyncJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ContinueSyncJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ContinueSyncJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ContinueSyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *ContinueSyncJobResponseParams `json:"Response"`
+}
+
+func (r *ContinueSyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ContinueSyncJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCheckSyncJobRequestParams struct {
 	// 同步任务id
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
@@ -480,7 +646,7 @@ func (r *CreateCheckSyncJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCompareTaskRequestParams struct {
-	// 迁移任务 Id
+	// 任务 Id
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// 数据对比任务名称，若为空则默认给CompareTaskId相同值
@@ -491,12 +657,15 @@ type CreateCompareTaskRequestParams struct {
 
 	// 一致性对比对象配置
 	Objects *CompareObject `json:"Objects,omitempty" name:"Objects"`
+
+	// 一致性校验选项
+	Options *CompareOptions `json:"Options,omitempty" name:"Options"`
 }
 
 type CreateCompareTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务 Id
+	// 任务 Id
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// 数据对比任务名称，若为空则默认给CompareTaskId相同值
@@ -507,6 +676,9 @@ type CreateCompareTaskRequest struct {
 
 	// 一致性对比对象配置
 	Objects *CompareObject `json:"Objects,omitempty" name:"Objects"`
+
+	// 一致性校验选项
+	Options *CompareOptions `json:"Options,omitempty" name:"Options"`
 }
 
 func (r *CreateCompareTaskRequest) ToJsonString() string {
@@ -525,6 +697,7 @@ func (r *CreateCompareTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskName")
 	delete(f, "ObjectMode")
 	delete(f, "Objects")
+	delete(f, "Options")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCompareTaskRequest has unknown keys!", "")
 	}
@@ -1411,6 +1584,12 @@ type DescribeCompareTasksRequestParams struct {
 
 	// 分页偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 校验任务 ID
+	CompareTaskId *string `json:"CompareTaskId,omitempty" name:"CompareTaskId"`
+
+	// 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	Status []*string `json:"Status,omitempty" name:"Status"`
 }
 
 type DescribeCompareTasksRequest struct {
@@ -1424,6 +1603,12 @@ type DescribeCompareTasksRequest struct {
 
 	// 分页偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 校验任务 ID
+	CompareTaskId *string `json:"CompareTaskId,omitempty" name:"CompareTaskId"`
+
+	// 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+	Status []*string `json:"Status,omitempty" name:"Status"`
 }
 
 func (r *DescribeCompareTasksRequest) ToJsonString() string {
@@ -1441,6 +1626,8 @@ func (r *DescribeCompareTasksRequest) FromJsonString(s string) error {
 	delete(f, "JobId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "CompareTaskId")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCompareTasksRequest has unknown keys!", "")
 	}
@@ -2763,7 +2950,7 @@ func (r *ModifyCompareTaskNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyCompareTaskRequestParams struct {
-	// 迁移任务 Id
+	// 任务 Id
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
@@ -2772,17 +2959,20 @@ type ModifyCompareTaskRequestParams struct {
 	// 任务名称
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
-	// 数据对比对象模式，sameAsMigrate(全部迁移对象， **默认为此项配置**)，custom(自定义模式)
+	// 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
 	ObjectMode *string `json:"ObjectMode,omitempty" name:"ObjectMode"`
 
 	// 对比对象，若CompareObjectMode取值为custom，则此项必填
 	Objects *CompareObject `json:"Objects,omitempty" name:"Objects"`
+
+	// 一致性校验选项
+	Options *CompareOptions `json:"Options,omitempty" name:"Options"`
 }
 
 type ModifyCompareTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务 Id
+	// 任务 Id
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// 对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
@@ -2791,11 +2981,14 @@ type ModifyCompareTaskRequest struct {
 	// 任务名称
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
-	// 数据对比对象模式，sameAsMigrate(全部迁移对象， **默认为此项配置**)，custom(自定义模式)
+	// 数据对比对象模式，sameAsMigrate(全部迁移对象， 默认为此项配置)、custom(自定义)，注意自定义对比对象必须是迁移对象的子集
 	ObjectMode *string `json:"ObjectMode,omitempty" name:"ObjectMode"`
 
 	// 对比对象，若CompareObjectMode取值为custom，则此项必填
 	Objects *CompareObject `json:"Objects,omitempty" name:"Objects"`
+
+	// 一致性校验选项
+	Options *CompareOptions `json:"Options,omitempty" name:"Options"`
 }
 
 func (r *ModifyCompareTaskRequest) ToJsonString() string {
@@ -2815,6 +3008,7 @@ func (r *ModifyCompareTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskName")
 	delete(f, "ObjectMode")
 	delete(f, "Objects")
+	delete(f, "Options")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCompareTaskRequest has unknown keys!", "")
 	}
@@ -3125,6 +3319,60 @@ type Options struct {
 	// DDL同步选项，具体描述要同步那些DDL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdlOptions []*DdlOption `json:"DdlOptions,omitempty" name:"DdlOptions"`
+}
+
+// Predefined struct for user
+type PauseMigrateJobRequestParams struct {
+	// 数据迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+type PauseMigrateJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *PauseMigrateJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseMigrateJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PauseMigrateJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PauseMigrateJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PauseMigrateJobResponse struct {
+	*tchttp.BaseResponse
+	Response *PauseMigrateJobResponseParams `json:"Response"`
+}
+
+func (r *PauseMigrateJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PauseMigrateJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

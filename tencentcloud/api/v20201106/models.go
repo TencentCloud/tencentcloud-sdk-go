@@ -216,6 +216,22 @@ type RegionInfo struct {
 
 	// 地域是否可用状态
 	RegionState *string `json:"RegionState,omitempty" name:"RegionState"`
+
+	// 控制台类型，api调用时默认null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionTypeMC *int64 `json:"RegionTypeMC,omitempty" name:"RegionTypeMC"`
+
+	// 不同语言的地区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocationMC *string `json:"LocationMC,omitempty" name:"LocationMC"`
+
+	// 控制台展示的地域描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionNameMC *string `json:"RegionNameMC,omitempty" name:"RegionNameMC"`
+
+	// 控制台展示的RegionId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionIdMC *string `json:"RegionIdMC,omitempty" name:"RegionIdMC"`
 }
 
 type RegionProduct struct {
@@ -279,4 +295,28 @@ type ZoneInfo struct {
 
 	// 可用区状态，包含AVAILABLE和UNAVAILABLE。AVAILABLE代表可用，UNAVAILABLE代表不可用。
 	ZoneState *string `json:"ZoneState,omitempty" name:"ZoneState"`
+
+	// 父级zone
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentZone *string `json:"ParentZone,omitempty" name:"ParentZone"`
+
+	// 父级可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentZoneId *string `json:"ParentZoneId,omitempty" name:"ParentZoneId"`
+
+	// 父级可用区描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentZoneName *string `json:"ParentZoneName,omitempty" name:"ParentZoneName"`
+
+	// zone类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneType *string `json:"ZoneType,omitempty" name:"ZoneType"`
+
+	// 控制台类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineRoomTypeMC *string `json:"MachineRoomTypeMC,omitempty" name:"MachineRoomTypeMC"`
+
+	// 和ZoneId一样，适用于控制台调用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneIdMC *string `json:"ZoneIdMC,omitempty" name:"ZoneIdMC"`
 }

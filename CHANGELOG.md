@@ -1,3 +1,246 @@
+# Release v1.0.573
+
+## 云 API(api) 版本：2020-11-06
+
+### 第 3 次发布
+
+发布时间：2023-01-05 01:02:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RegionInfo](https://cloud.tencent.com/document/api/1278/55256#RegionInfo)
+
+	* 新增成员：RegionTypeMC, LocationMC, RegionNameMC, RegionIdMC
+
+	* <font color="#dd0000">**修改成员**：</font>Region, RegionName, RegionState
+
+* [ZoneInfo](https://cloud.tencent.com/document/api/1278/55256#ZoneInfo)
+
+	* 新增成员：ParentZone, ParentZoneId, ParentZoneName, ZoneType, MachineRoomTypeMC, ZoneIdMC
+
+
+
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 115 次发布
+
+发布时间：2023-01-05 01:08:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
+
+	* 新增入参：HttpsBilling
+
+* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
+
+	* 新增入参：HttpsBilling
+
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 6 次发布
+
+发布时间：2023-01-05 01:19:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ContinueMigrateJob](https://cloud.tencent.com/document/api/571/85142)
+* [ContinueSyncJob](https://cloud.tencent.com/document/api/571/85140)
+* [PauseMigrateJob](https://cloud.tencent.com/document/api/571/85139)
+
+修改接口：
+
+* [CreateCompareTask](https://cloud.tencent.com/document/api/571/82093)
+
+	* 新增入参：Options
+
+* [DescribeCompareTasks](https://cloud.tencent.com/document/api/571/82088)
+
+	* 新增入参：CompareTaskId, Status
+
+* [ModifyCompareTask](https://cloud.tencent.com/document/api/571/82081)
+
+	* 新增入参：Options
+
+
+新增数据结构：
+
+* [CompareOptions](https://cloud.tencent.com/document/api/571/82108#CompareOptions)
+
+修改数据结构：
+
+* [CompareAbstractInfo](https://cloud.tencent.com/document/api/571/82108#CompareAbstractInfo)
+
+	* 新增成员：Options, Objects, NearlyTableCount, SrcSampleRows, DstSampleRows, StartedAt, FinishedAt
+
+* [CompareObject](https://cloud.tencent.com/document/api/571/82108#CompareObject)
+
+	* 新增成员：AdvancedObjects
+
+* [CompareTaskItem](https://cloud.tencent.com/document/api/571/82108#CompareTaskItem)
+
+	* 新增成员：Method, Options, Message
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 52 次发布
+
+发布时间：2023-01-05 01:23:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* GetRealNameAuthToken
+
+
+
+## 高可用物联网卡(hasim) 版本：2021-07-16
+
+### 第 1 次发布
+
+发布时间：2023-01-04 16:41:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRule](https://cloud.tencent.com/document/api/1482/85109)
+* [CreateTactic](https://cloud.tencent.com/document/api/1482/85115)
+* [CreateTag](https://cloud.tencent.com/document/api/1482/85120)
+* [DeleteRule](https://cloud.tencent.com/document/api/1482/85108)
+* [DeleteTactic](https://cloud.tencent.com/document/api/1482/85114)
+* [DeleteTag](https://cloud.tencent.com/document/api/1482/85119)
+* [DescribeLink](https://cloud.tencent.com/document/api/1482/85100)
+* [DescribeLinks](https://cloud.tencent.com/document/api/1482/85099)
+* [DescribeOrders](https://cloud.tencent.com/document/api/1482/85102)
+* [DescribeRule](https://cloud.tencent.com/document/api/1482/85107)
+* [DescribeRules](https://cloud.tencent.com/document/api/1482/85106)
+* [DescribeTactic](https://cloud.tencent.com/document/api/1482/85113)
+* [DescribeTactics](https://cloud.tencent.com/document/api/1482/85112)
+* [DescribeTags](https://cloud.tencent.com/document/api/1482/85118)
+* [ModifyLinkAdvancedLog](https://cloud.tencent.com/document/api/1482/85098)
+* [ModifyLinkTactic](https://cloud.tencent.com/document/api/1482/85097)
+* [ModifyLinkTele](https://cloud.tencent.com/document/api/1482/85096)
+* [ModifyRule](https://cloud.tencent.com/document/api/1482/85105)
+* [ModifyRuleStatus](https://cloud.tencent.com/document/api/1482/85104)
+* [ModifyTactic](https://cloud.tencent.com/document/api/1482/85111)
+* [ModifyTag](https://cloud.tencent.com/document/api/1482/85117)
+* [RenewLinkInfo](https://cloud.tencent.com/document/api/1482/85095)
+
+新增数据结构：
+
+* [DeviceReport](https://cloud.tencent.com/document/api/1482/85121#DeviceReport)
+* [LinkDetailInfo](https://cloud.tencent.com/document/api/1482/85121#LinkDetailInfo)
+* [LinkInfo](https://cloud.tencent.com/document/api/1482/85121#LinkInfo)
+* [LinkInfos](https://cloud.tencent.com/document/api/1482/85121#LinkInfos)
+* [OrderInfo](https://cloud.tencent.com/document/api/1482/85121#OrderInfo)
+* [Orders](https://cloud.tencent.com/document/api/1482/85121#Orders)
+* [Rule](https://cloud.tencent.com/document/api/1482/85121#Rule)
+* [RuleDetail](https://cloud.tencent.com/document/api/1482/85121#RuleDetail)
+* [RuleInfos](https://cloud.tencent.com/document/api/1482/85121#RuleInfos)
+* [Tactic](https://cloud.tencent.com/document/api/1482/85121#Tactic)
+* [TacticInfos](https://cloud.tencent.com/document/api/1482/85121#TacticInfos)
+* [Tag](https://cloud.tencent.com/document/api/1482/85121#Tag)
+* [TagInfos](https://cloud.tencent.com/document/api/1482/85121#TagInfos)
+* [TeleOperatorCard](https://cloud.tencent.com/document/api/1482/85121#TeleOperatorCard)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 21 次发布
+
+发布时间：2023-01-05 01:37:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRumGroupLog](https://cloud.tencent.com/document/api/1464/85145)
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 13 次发布
+
+发布时间：2023-01-05 01:39:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAssetDetailList](https://cloud.tencent.com/document/api/664/85146)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 134 次发布
+
+发布时间：2023-01-05 01:53:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AttachSnapshotInstances](https://cloud.tencent.com/document/api/215/85159)
+* [CreateSnapshotPolicies](https://cloud.tencent.com/document/api/215/85158)
+* [DeleteSnapshotPolicies](https://cloud.tencent.com/document/api/215/85157)
+* [DescribeSgSnapshotFileContent](https://cloud.tencent.com/document/api/215/85156)
+* [DescribeSnapshotAttachedInstances](https://cloud.tencent.com/document/api/215/85155)
+* [DescribeSnapshotFiles](https://cloud.tencent.com/document/api/215/85154)
+* [DescribeSnapshotPolicies](https://cloud.tencent.com/document/api/215/85153)
+* [DetachSnapshotInstances](https://cloud.tencent.com/document/api/215/85152)
+* [DisableSnapshotPolicies](https://cloud.tencent.com/document/api/215/85151)
+* [EnableSnapshotPolicies](https://cloud.tencent.com/document/api/215/85150)
+* [ModifySnapshotPolicies](https://cloud.tencent.com/document/api/215/85149)
+* [ResumeSnapshotInstance](https://cloud.tencent.com/document/api/215/85148)
+
+新增数据结构：
+
+* [BackupPolicy](https://cloud.tencent.com/document/api/215/15824#BackupPolicy)
+* [BatchModifySnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#BatchModifySnapshotPolicy)
+* [SnapshotFileInfo](https://cloud.tencent.com/document/api/215/15824#SnapshotFileInfo)
+* [SnapshotInstance](https://cloud.tencent.com/document/api/215/15824#SnapshotInstance)
+* [SnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#SnapshotPolicy)
+
+
+
 # Release v1.0.572
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06

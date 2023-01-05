@@ -253,6 +253,9 @@ type AddCdnDomainRequestParams struct {
 
 	// 七牛云对象存储回源鉴权
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
+
+	// HTTPS服务
+	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
 type AddCdnDomainRequest struct {
@@ -381,6 +384,9 @@ type AddCdnDomainRequest struct {
 
 	// 七牛云对象存储回源鉴权
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
+
+	// HTTPS服务
+	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
 func (r *AddCdnDomainRequest) ToJsonString() string {
@@ -433,6 +439,7 @@ func (r *AddCdnDomainRequest) FromJsonString(s string) error {
 	delete(f, "OssPrivateAccess")
 	delete(f, "HwPrivateAccess")
 	delete(f, "QnPrivateAccess")
+	delete(f, "HttpsBilling")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCdnDomainRequest has unknown keys!", "")
 	}
@@ -6716,7 +6723,7 @@ type DetailDomain struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 
-	// https 请求计费开关
+	// HTTPS服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
@@ -7600,7 +7607,7 @@ type Https struct {
 }
 
 type HttpsBilling struct {
-	// https请求计费开关
+	// HTTPS服务
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -11747,6 +11754,9 @@ type UpdateDomainConfigRequestParams struct {
 
 	// 七牛云对象存储回源鉴权
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
+
+	// HTTPS服务
+	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
 type UpdateDomainConfigRequest struct {
@@ -11900,6 +11910,9 @@ type UpdateDomainConfigRequest struct {
 
 	// 七牛云对象存储回源鉴权
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
+
+	// HTTPS服务
+	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
 func (r *UpdateDomainConfigRequest) ToJsonString() string {
@@ -11961,6 +11974,7 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "ShareCname")
 	delete(f, "HwPrivateAccess")
 	delete(f, "QnPrivateAccess")
+	delete(f, "HttpsBilling")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")
 	}

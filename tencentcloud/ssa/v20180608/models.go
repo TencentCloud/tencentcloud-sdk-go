@@ -981,6 +981,105 @@ type DataEvent struct {
 }
 
 // Predefined struct for user
+type DescribeAssetDetailListRequestParams struct {
+	// 查询条件，可支持的查询字段：AssetUniqid,AssetName,AssetIpAll,AssetVpcid,Tag
+	Filter []*AssetQueryFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 排序条件，可支持的排序字段：
+	// AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
+	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
+
+	// 风险标签
+	RiskTags []*string `json:"RiskTags,omitempty" name:"RiskTags"`
+
+	// 标签
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 页
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+type DescribeAssetDetailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询条件，可支持的查询字段：AssetUniqid,AssetName,AssetIpAll,AssetVpcid,Tag
+	Filter []*AssetQueryFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 排序条件，可支持的排序字段：
+	// AssetCspmRiskNum,AssetVulNum,AssetEventNum,SsaAssetDiscoverTime
+	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
+
+	// 风险标签
+	RiskTags []*string `json:"RiskTags,omitempty" name:"RiskTags"`
+
+	// 标签
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 页
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeAssetDetailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetDetailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	delete(f, "Sorter")
+	delete(f, "RiskTags")
+	delete(f, "Tags")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetDetailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetDetailListResponseParams struct {
+	// 业务数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*AssetDetail `json:"Data,omitempty" name:"Data"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAssetDetailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAssetDetailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAssetDetailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetDetailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAssetDetailRequestParams struct {
 	// 查询过滤参数
 	Params *string `json:"Params,omitempty" name:"Params"`

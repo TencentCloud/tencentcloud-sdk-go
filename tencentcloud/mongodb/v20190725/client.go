@@ -118,7 +118,7 @@ func NewCreateAccountUserResponse() (response *CreateAccountUserResponse) {
 }
 
 // CreateAccountUser
-// 创建实例账号。
+// 本接口(CreateAccountUser)用于创建mongodb实例账号。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -131,7 +131,7 @@ func (c *Client) CreateAccountUser(request *CreateAccountUserRequest) (response 
 }
 
 // CreateAccountUser
-// 创建实例账号。
+// 本接口(CreateAccountUser)用于创建mongodb实例账号。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -450,7 +450,7 @@ func NewDescribeAccountUsersResponse() (response *DescribeAccountUsersResponse) 
 }
 
 // DescribeAccountUsers
-// 本接口(DescribeAccountUsers)用于获取当前实例的全部账号列表。
+// 本接口(DescribeAccountUsers)用于获取当前实例的全部账号。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -460,7 +460,7 @@ func (c *Client) DescribeAccountUsers(request *DescribeAccountUsersRequest) (res
 }
 
 // DescribeAccountUsers
-// 本接口(DescribeAccountUsers)用于获取当前实例的全部账号列表。
+// 本接口(DescribeAccountUsers)用于获取当前实例的全部账号。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1968,7 +1968,7 @@ func NewSetAccountUserPrivilegeResponse() (response *SetAccountUserPrivilegeResp
 }
 
 // SetAccountUserPrivilege
-// 账户权限设置。
+// 本接口(SetAccountUserPrivilege)用于设置mongodb实例的账号权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1979,7 +1979,7 @@ func (c *Client) SetAccountUserPrivilege(request *SetAccountUserPrivilegeRequest
 }
 
 // SetAccountUserPrivilege
-// 账户权限设置。
+// 本接口(SetAccountUserPrivilege)用于设置mongodb实例的账号权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

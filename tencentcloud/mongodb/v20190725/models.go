@@ -3524,26 +3524,26 @@ type SecurityGroupBound struct {
 
 // Predefined struct for user
 type SetAccountUserPrivilegeRequestParams struct {
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 账号名称
+	// 账号名称。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 权限信息
+	// 权限信息。
 	AuthRole []*Auth `json:"AuthRole,omitempty" name:"AuthRole"`
 }
 
 type SetAccountUserPrivilegeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 账号名称
+	// 账号名称。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 权限信息
+	// 权限信息。
 	AuthRole []*Auth `json:"AuthRole,omitempty" name:"AuthRole"`
 }
 
