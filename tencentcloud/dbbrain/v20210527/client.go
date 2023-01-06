@@ -1776,7 +1776,7 @@ func NewDescribeProxyProcessStatisticsResponse() (response *DescribeProxyProcess
 }
 
 // DescribeProxyProcessStatistics
-// 获取当前实例会话统计详情信息。【注意】该接口仅限部分环境调用。
+// 获取当前实例下的单个proxy的会话统计详情信息， 返回数据为单个 proxy 的会话统计信息。【注意】该接口仅限部分环境调用。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1798,7 +1798,7 @@ func (c *Client) DescribeProxyProcessStatistics(request *DescribeProxyProcessSta
 }
 
 // DescribeProxyProcessStatistics
-// 获取当前实例会话统计详情信息。【注意】该接口仅限部分环境调用。
+// 获取当前实例下的单个proxy的会话统计详情信息， 返回数据为单个 proxy 的会话统计信息。【注意】该接口仅限部分环境调用。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -1,3 +1,248 @@
+# Release v1.0.574
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 50 次发布
+
+发布时间：2023-01-06 01:02:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：ElasticBandwidth, EOFlag
+
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
+
+	* 新增成员：Version
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 66 次发布
+
+发布时间：2023-01-06 01:10:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTopicProduceConnection](https://cloud.tencent.com/document/api/597/85306)
+
+新增数据结构：
+
+* [DescribeConnectInfoResultDTO](https://cloud.tencent.com/document/api/597/40861#DescribeConnectInfoResultDTO)
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 53 次发布
+
+发布时间：2023-01-06 01:23:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* GetRealNameAuthResult
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 24 次发布
+
+发布时间：2023-01-06 01:46:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateCustomErrorPage
+* CreateIpTableList
+* CreateLogSet
+* CreateLogTopicTask
+* CreateSecurityDropPage
+* DeleteLogTopicTask
+* DescribeBotClientIpList
+* DescribeBotData
+* DescribeBotHitRuleDetail
+* DescribeBotLog
+* DescribeBotManagedRules
+* DescribeBotTopData
+* DescribeDDoSAttackData
+* DescribeDDoSAttackEvent
+* DescribeDDoSAttackEventDetail
+* DescribeDDoSAttackSourceEvent
+* DescribeDDoSBlockList
+* DescribeDDoSMajorAttackEvent
+* DescribeDDoSPolicy
+* DescribeDistributionL4AccessData
+* DescribeDnssec
+* DescribeLogTopicTaskDetail
+* DescribeRateLimitIntelligenceRule
+* DescribeSecurityGroupManagedRules
+* DescribeSecurityPolicy
+* DescribeSecurityPolicyList
+* DescribeSecurityPolicyRegions
+* DescribeSecurityPortraitRules
+* DescribeSecurityRuleId
+* DescribeTimingL4AccessData
+* DescribeWebProtectionAttackEvents
+* DescribeZoneDDoSPolicy
+* ModifyAlarmConfig
+* ModifyAlarmDefaultThreshold
+* ModifyDDoSPolicy
+* ModifyDDoSPolicyHost
+* ModifyDnssec
+* ModifyLogTopicTask
+* ModifyZoneCnameSpeedUp
+* SwitchLogTopicTask
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BotLog
+* BotManagedRuleDetail
+* CCInterceptEvent
+* DDoSAcl
+* DDoSAclRule
+* DDoSAllowBlock
+* DDoSAllowBlockRule
+* DDoSAntiPly
+* DDoSAttackEvent
+* DDoSAttackEventDetailData
+* DDoSAttackSourceEvent
+* DDoSBlockData
+* DDoSFeaturesFilter
+* DDoSGeoIp
+* DDoSHost
+* DDoSMajorAttackEvent
+* DDoSPacketFilter
+* DDoSRule
+* DDoSSpeedLimit
+* DDoSStatusInfo
+* DnssecInfo
+* GeoIp
+* LogTopicDetailInfo
+* PortraitManagedRuleDetail
+* RateLimitIntelligenceRuleDetail
+* SecurityEntity
+* SecurityRule
+* ShieldArea
+* WafGroupDetail
+* WafGroupInfo
+* WafGroupRule
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 16 次发布
+
+发布时间：2023-01-06 01:48:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Spec](https://cloud.tencent.com/document/api/851/75051#Spec)
+
+	* 新增成员：Available, AvailableRegion
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 45 次发布
+
+发布时间：2023-01-06 01:51:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+
+	* 新增成员：RenderMode
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 138 次发布
+
+发布时间：2023-01-06 01:53:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ExtractTraceWatermark](https://cloud.tencent.com/document/api/266/80525)
+
+	* 新增入参：FileId
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 135 次发布
+
+发布时间：2023-01-06 01:54:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTrafficPackages](https://cloud.tencent.com/document/api/215/85309)
+
+修改接口：
+
+* [TransformAddress](https://cloud.tencent.com/document/api/215/16706)
+
+	* 新增出参：TaskId, AddressId
+
+
+修改数据结构：
+
+* [BandwidthPackageBillBandwidth](https://cloud.tencent.com/document/api/215/15824#BandwidthPackageBillBandwidth)
+
+	* <font color="#dd0000">**修改成员**：</font>BandwidthUsage
+
+
+
+
 # Release v1.0.573
 
 ## 云 API(api) 版本：2020-11-06

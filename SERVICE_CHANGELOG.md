@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云 API(api) 版本：2020-11-06
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
 
-### 第 3 次发布
+### 第 50 次发布
 
-发布时间：2023-01-05 01:02:52
+发布时间：2023-01-06 01:02:00
 
 本次发布包含了以下内容：
 
@@ -12,47 +12,22 @@
 
 修改数据结构：
 
-* [RegionInfo](https://cloud.tencent.com/document/api/1278/55256#RegionInfo)
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
 
-	* 新增成员：RegionTypeMC, LocationMC, RegionNameMC, RegionIdMC
+	* 新增成员：ElasticBandwidth, EOFlag
 
-	* <font color="#dd0000">**修改成员**：</font>Region, RegionName, RegionState
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
 
-* [ZoneInfo](https://cloud.tencent.com/document/api/1278/55256#ZoneInfo)
-
-	* 新增成员：ParentZone, ParentZoneId, ParentZoneName, ZoneType, MachineRoomTypeMC, ZoneIdMC
+	* 新增成员：Version
 
 
 
 
-## 内容分发网络 CDN(cdn) 版本：2018-06-06
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
-### 第 115 次发布
+### 第 66 次发布
 
-发布时间：2023-01-05 01:08:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AddCdnDomain](https://cloud.tencent.com/document/api/228/41123)
-
-	* 新增入参：HttpsBilling
-
-* [UpdateDomainConfig](https://cloud.tencent.com/document/api/228/41116)
-
-	* 新增入参：HttpsBilling
-
-
-
-
-## 数据传输服务(dts) 版本：2021-12-06
-
-### 第 6 次发布
-
-发布时间：2023-01-05 01:19:52
+发布时间：2023-01-06 01:10:21
 
 本次发布包含了以下内容：
 
@@ -60,55 +35,19 @@
 
 新增接口：
 
-* [ContinueMigrateJob](https://cloud.tencent.com/document/api/571/85142)
-* [ContinueSyncJob](https://cloud.tencent.com/document/api/571/85140)
-* [PauseMigrateJob](https://cloud.tencent.com/document/api/571/85139)
-
-修改接口：
-
-* [CreateCompareTask](https://cloud.tencent.com/document/api/571/82093)
-
-	* 新增入参：Options
-
-* [DescribeCompareTasks](https://cloud.tencent.com/document/api/571/82088)
-
-	* 新增入参：CompareTaskId, Status
-
-* [ModifyCompareTask](https://cloud.tencent.com/document/api/571/82081)
-
-	* 新增入参：Options
-
+* [DescribeTopicProduceConnection](https://cloud.tencent.com/document/api/597/85306)
 
 新增数据结构：
 
-* [CompareOptions](https://cloud.tencent.com/document/api/571/82108#CompareOptions)
-
-修改数据结构：
-
-* [CompareAbstractInfo](https://cloud.tencent.com/document/api/571/82108#CompareAbstractInfo)
-
-	* 新增成员：Options, Objects, NearlyTableCount, SrcSampleRows, DstSampleRows, StartedAt, FinishedAt
-
-* [CompareObject](https://cloud.tencent.com/document/api/571/82108#CompareObject)
-
-	* 新增成员：AdvancedObjects
-
-* [CompareTaskItem](https://cloud.tencent.com/document/api/571/82108#CompareTaskItem)
-
-	* 新增成员：Method, Options, Message
-
-
-
-
-## 数据传输服务(dts) 版本：2018-03-30
+* [DescribeConnectInfoResultDTO](https://cloud.tencent.com/document/api/597/40861#DescribeConnectInfoResultDTO)
 
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
-### 第 52 次发布
+### 第 53 次发布
 
-发布时间：2023-01-05 01:23:16
+发布时间：2023-01-06 01:23:24
 
 本次发布包含了以下内容：
 
@@ -116,101 +55,169 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* GetRealNameAuthToken
+* GetRealNameAuthResult
 
 
 
-## 高可用物联网卡(hasim) 版本：2021-07-16
+## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 1 次发布
+### 第 24 次发布
 
-发布时间：2023-01-04 16:41:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateRule](https://cloud.tencent.com/document/api/1482/85109)
-* [CreateTactic](https://cloud.tencent.com/document/api/1482/85115)
-* [CreateTag](https://cloud.tencent.com/document/api/1482/85120)
-* [DeleteRule](https://cloud.tencent.com/document/api/1482/85108)
-* [DeleteTactic](https://cloud.tencent.com/document/api/1482/85114)
-* [DeleteTag](https://cloud.tencent.com/document/api/1482/85119)
-* [DescribeLink](https://cloud.tencent.com/document/api/1482/85100)
-* [DescribeLinks](https://cloud.tencent.com/document/api/1482/85099)
-* [DescribeOrders](https://cloud.tencent.com/document/api/1482/85102)
-* [DescribeRule](https://cloud.tencent.com/document/api/1482/85107)
-* [DescribeRules](https://cloud.tencent.com/document/api/1482/85106)
-* [DescribeTactic](https://cloud.tencent.com/document/api/1482/85113)
-* [DescribeTactics](https://cloud.tencent.com/document/api/1482/85112)
-* [DescribeTags](https://cloud.tencent.com/document/api/1482/85118)
-* [ModifyLinkAdvancedLog](https://cloud.tencent.com/document/api/1482/85098)
-* [ModifyLinkTactic](https://cloud.tencent.com/document/api/1482/85097)
-* [ModifyLinkTele](https://cloud.tencent.com/document/api/1482/85096)
-* [ModifyRule](https://cloud.tencent.com/document/api/1482/85105)
-* [ModifyRuleStatus](https://cloud.tencent.com/document/api/1482/85104)
-* [ModifyTactic](https://cloud.tencent.com/document/api/1482/85111)
-* [ModifyTag](https://cloud.tencent.com/document/api/1482/85117)
-* [RenewLinkInfo](https://cloud.tencent.com/document/api/1482/85095)
-
-新增数据结构：
-
-* [DeviceReport](https://cloud.tencent.com/document/api/1482/85121#DeviceReport)
-* [LinkDetailInfo](https://cloud.tencent.com/document/api/1482/85121#LinkDetailInfo)
-* [LinkInfo](https://cloud.tencent.com/document/api/1482/85121#LinkInfo)
-* [LinkInfos](https://cloud.tencent.com/document/api/1482/85121#LinkInfos)
-* [OrderInfo](https://cloud.tencent.com/document/api/1482/85121#OrderInfo)
-* [Orders](https://cloud.tencent.com/document/api/1482/85121#Orders)
-* [Rule](https://cloud.tencent.com/document/api/1482/85121#Rule)
-* [RuleDetail](https://cloud.tencent.com/document/api/1482/85121#RuleDetail)
-* [RuleInfos](https://cloud.tencent.com/document/api/1482/85121#RuleInfos)
-* [Tactic](https://cloud.tencent.com/document/api/1482/85121#Tactic)
-* [TacticInfos](https://cloud.tencent.com/document/api/1482/85121#TacticInfos)
-* [Tag](https://cloud.tencent.com/document/api/1482/85121#Tag)
-* [TagInfos](https://cloud.tencent.com/document/api/1482/85121#TagInfos)
-* [TeleOperatorCard](https://cloud.tencent.com/document/api/1482/85121#TeleOperatorCard)
-
-
-
-## 前端性能监控(rum) 版本：2021-06-22
-
-### 第 21 次发布
-
-发布时间：2023-01-05 01:37:14
+发布时间：2023-01-06 01:46:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [DescribeRumGroupLog](https://cloud.tencent.com/document/api/1464/85145)
+* CreateCustomErrorPage
+* CreateIpTableList
+* CreateLogSet
+* CreateLogTopicTask
+* CreateSecurityDropPage
+* DeleteLogTopicTask
+* DescribeBotClientIpList
+* DescribeBotData
+* DescribeBotHitRuleDetail
+* DescribeBotLog
+* DescribeBotManagedRules
+* DescribeBotTopData
+* DescribeDDoSAttackData
+* DescribeDDoSAttackEvent
+* DescribeDDoSAttackEventDetail
+* DescribeDDoSAttackSourceEvent
+* DescribeDDoSBlockList
+* DescribeDDoSMajorAttackEvent
+* DescribeDDoSPolicy
+* DescribeDistributionL4AccessData
+* DescribeDnssec
+* DescribeLogTopicTaskDetail
+* DescribeRateLimitIntelligenceRule
+* DescribeSecurityGroupManagedRules
+* DescribeSecurityPolicy
+* DescribeSecurityPolicyList
+* DescribeSecurityPolicyRegions
+* DescribeSecurityPortraitRules
+* DescribeSecurityRuleId
+* DescribeTimingL4AccessData
+* DescribeWebProtectionAttackEvents
+* DescribeZoneDDoSPolicy
+* ModifyAlarmConfig
+* ModifyAlarmDefaultThreshold
+* ModifyDDoSPolicy
+* ModifyDDoSPolicyHost
+* ModifyDnssec
+* ModifyLogTopicTask
+* ModifyZoneCnameSpeedUp
+* SwitchLogTopicTask
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BotLog
+* BotManagedRuleDetail
+* CCInterceptEvent
+* DDoSAcl
+* DDoSAclRule
+* DDoSAllowBlock
+* DDoSAllowBlockRule
+* DDoSAntiPly
+* DDoSAttackEvent
+* DDoSAttackEventDetailData
+* DDoSAttackSourceEvent
+* DDoSBlockData
+* DDoSFeaturesFilter
+* DDoSGeoIp
+* DDoSHost
+* DDoSMajorAttackEvent
+* DDoSPacketFilter
+* DDoSRule
+* DDoSSpeedLimit
+* DDoSStatusInfo
+* DnssecInfo
+* GeoIp
+* LogTopicDetailInfo
+* PortraitManagedRuleDetail
+* RateLimitIntelligenceRuleDetail
+* SecurityEntity
+* SecurityRule
+* ShieldArea
+* WafGroupDetail
+* WafGroupInfo
+* WafGroupRule
 
 
 
-## 安全运营中心(ssa) 版本：2018-06-08
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
-### 第 13 次发布
 
-发布时间：2023-01-05 01:39:20
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 16 次发布
+
+发布时间：2023-01-06 01:48:47
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeAssetDetailList](https://cloud.tencent.com/document/api/664/85146)
+* [Spec](https://cloud.tencent.com/document/api/851/75051#Spec)
+
+	* 新增成员：Available, AvailableRegion
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 45 次发布
+
+发布时间：2023-01-06 01:51:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+
+	* 新增成员：RenderMode
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 138 次发布
+
+发布时间：2023-01-06 01:53:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ExtractTraceWatermark](https://cloud.tencent.com/document/api/266/80525)
+
+	* 新增入参：FileId
+
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 134 次发布
+### 第 135 次发布
 
-发布时间：2023-01-05 01:53:32
+发布时间：2023-01-06 01:54:52
 
 本次发布包含了以下内容：
 
@@ -218,26 +225,21 @@
 
 新增接口：
 
-* [AttachSnapshotInstances](https://cloud.tencent.com/document/api/215/85159)
-* [CreateSnapshotPolicies](https://cloud.tencent.com/document/api/215/85158)
-* [DeleteSnapshotPolicies](https://cloud.tencent.com/document/api/215/85157)
-* [DescribeSgSnapshotFileContent](https://cloud.tencent.com/document/api/215/85156)
-* [DescribeSnapshotAttachedInstances](https://cloud.tencent.com/document/api/215/85155)
-* [DescribeSnapshotFiles](https://cloud.tencent.com/document/api/215/85154)
-* [DescribeSnapshotPolicies](https://cloud.tencent.com/document/api/215/85153)
-* [DetachSnapshotInstances](https://cloud.tencent.com/document/api/215/85152)
-* [DisableSnapshotPolicies](https://cloud.tencent.com/document/api/215/85151)
-* [EnableSnapshotPolicies](https://cloud.tencent.com/document/api/215/85150)
-* [ModifySnapshotPolicies](https://cloud.tencent.com/document/api/215/85149)
-* [ResumeSnapshotInstance](https://cloud.tencent.com/document/api/215/85148)
+* [CreateTrafficPackages](https://cloud.tencent.com/document/api/215/85309)
 
-新增数据结构：
+修改接口：
 
-* [BackupPolicy](https://cloud.tencent.com/document/api/215/15824#BackupPolicy)
-* [BatchModifySnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#BatchModifySnapshotPolicy)
-* [SnapshotFileInfo](https://cloud.tencent.com/document/api/215/15824#SnapshotFileInfo)
-* [SnapshotInstance](https://cloud.tencent.com/document/api/215/15824#SnapshotInstance)
-* [SnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#SnapshotPolicy)
+* [TransformAddress](https://cloud.tencent.com/document/api/215/16706)
+
+	* 新增出参：TaskId, AddressId
+
+
+修改数据结构：
+
+* [BandwidthPackageBillBandwidth](https://cloud.tencent.com/document/api/215/15824#BandwidthPackageBillBandwidth)
+
+	* <font color="#dd0000">**修改成员**：</font>BandwidthUsage
+
 
 
 
@@ -1809,6 +1811,25 @@
 
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 50 次发布
+
+发布时间：2023-01-06 01:02:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：ElasticBandwidth, EOFlag
+
+* [NewL7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#NewL7RuleEntry)
+
+	* 新增成员：Version
+
 
 ### 第 49 次发布
 
@@ -19361,6 +19382,22 @@
 
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 66 次发布
+
+发布时间：2023-01-06 01:10:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTopicProduceConnection](https://cloud.tencent.com/document/api/597/85306)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DescribeConnectInfoResultDTO](https://cloud.tencent.com/document/api/597/40861#DescribeConnectInfoResultDTO)](https://cloud.tencent.com/document/api/597/40861#[DescribeConnectInfoResultDTO](https://cloud.tencent.com/document/api/597/40861#DescribeConnectInfoResultDTO))
 
 ### 第 65 次发布
 
@@ -37814,9 +37851,9 @@
 
 新增接口：
 
-* [[ContinueMigrateJob](https://cloud.tencent.com/document/api/571/85142)](https://cloud.tencent.com/document/api/#/#)
-* [[ContinueSyncJob](https://cloud.tencent.com/document/api/571/85140)](https://cloud.tencent.com/document/api/#/#)
-* [[PauseMigrateJob](https://cloud.tencent.com/document/api/571/85139)](https://cloud.tencent.com/document/api/#/#)
+* [ContinueMigrateJob](https://cloud.tencent.com/document/api/571/85142)
+* [ContinueSyncJob](https://cloud.tencent.com/document/api/571/85140)
+* [PauseMigrateJob](https://cloud.tencent.com/document/api/571/85139)
 
 修改接口：
 
@@ -37835,7 +37872,7 @@
 
 新增数据结构：
 
-* [[CompareOptions](https://cloud.tencent.com/document/api/571/82108#CompareOptions)](https://cloud.tencent.com/document/api/571/82108#[CompareOptions](https://cloud.tencent.com/document/api/571/82108#CompareOptions))
+* [CompareOptions](https://cloud.tencent.com/document/api/571/82108#CompareOptions)
 
 修改数据结构：
 
@@ -44335,6 +44372,18 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 53 次发布
+
+发布时间：2023-01-06 01:23:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* GetRealNameAuthResult
+
 ### 第 52 次发布
 
 发布时间：2023-01-05 01:23:16
@@ -48130,45 +48179,45 @@
 
 新增接口：
 
-* [[CreateRule](https://cloud.tencent.com/document/api/1482/85109)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTactic](https://cloud.tencent.com/document/api/1482/85115)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateTag](https://cloud.tencent.com/document/api/1482/85120)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRule](https://cloud.tencent.com/document/api/1482/85108)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteTactic](https://cloud.tencent.com/document/api/1482/85114)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteTag](https://cloud.tencent.com/document/api/1482/85119)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLink](https://cloud.tencent.com/document/api/1482/85100)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLinks](https://cloud.tencent.com/document/api/1482/85099)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeOrders](https://cloud.tencent.com/document/api/1482/85102)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRule](https://cloud.tencent.com/document/api/1482/85107)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRules](https://cloud.tencent.com/document/api/1482/85106)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTactic](https://cloud.tencent.com/document/api/1482/85113)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTactics](https://cloud.tencent.com/document/api/1482/85112)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTags](https://cloud.tencent.com/document/api/1482/85118)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLinkAdvancedLog](https://cloud.tencent.com/document/api/1482/85098)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLinkTactic](https://cloud.tencent.com/document/api/1482/85097)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLinkTele](https://cloud.tencent.com/document/api/1482/85096)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRule](https://cloud.tencent.com/document/api/1482/85105)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRuleStatus](https://cloud.tencent.com/document/api/1482/85104)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyTactic](https://cloud.tencent.com/document/api/1482/85111)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyTag](https://cloud.tencent.com/document/api/1482/85117)](https://cloud.tencent.com/document/api/#/#)
-* [[RenewLinkInfo](https://cloud.tencent.com/document/api/1482/85095)](https://cloud.tencent.com/document/api/#/#)
+* [CreateRule](https://cloud.tencent.com/document/api/1482/85109)
+* [CreateTactic](https://cloud.tencent.com/document/api/1482/85115)
+* [CreateTag](https://cloud.tencent.com/document/api/1482/85120)
+* [DeleteRule](https://cloud.tencent.com/document/api/1482/85108)
+* [DeleteTactic](https://cloud.tencent.com/document/api/1482/85114)
+* [DeleteTag](https://cloud.tencent.com/document/api/1482/85119)
+* [DescribeLink](https://cloud.tencent.com/document/api/1482/85100)
+* [DescribeLinks](https://cloud.tencent.com/document/api/1482/85099)
+* [DescribeOrders](https://cloud.tencent.com/document/api/1482/85102)
+* [DescribeRule](https://cloud.tencent.com/document/api/1482/85107)
+* [DescribeRules](https://cloud.tencent.com/document/api/1482/85106)
+* [DescribeTactic](https://cloud.tencent.com/document/api/1482/85113)
+* [DescribeTactics](https://cloud.tencent.com/document/api/1482/85112)
+* [DescribeTags](https://cloud.tencent.com/document/api/1482/85118)
+* [ModifyLinkAdvancedLog](https://cloud.tencent.com/document/api/1482/85098)
+* [ModifyLinkTactic](https://cloud.tencent.com/document/api/1482/85097)
+* [ModifyLinkTele](https://cloud.tencent.com/document/api/1482/85096)
+* [ModifyRule](https://cloud.tencent.com/document/api/1482/85105)
+* [ModifyRuleStatus](https://cloud.tencent.com/document/api/1482/85104)
+* [ModifyTactic](https://cloud.tencent.com/document/api/1482/85111)
+* [ModifyTag](https://cloud.tencent.com/document/api/1482/85117)
+* [RenewLinkInfo](https://cloud.tencent.com/document/api/1482/85095)
 
 新增数据结构：
 
-* [[DeviceReport](https://cloud.tencent.com/document/api/1482/85121#DeviceReport)](https://cloud.tencent.com/document/api/1482/85121#[DeviceReport](https://cloud.tencent.com/document/api/1482/85121#DeviceReport))
-* [[LinkDetailInfo](https://cloud.tencent.com/document/api/1482/85121#LinkDetailInfo)](https://cloud.tencent.com/document/api/1482/85121#[LinkDetailInfo](https://cloud.tencent.com/document/api/1482/85121#LinkDetailInfo))
-* [[LinkInfo](https://cloud.tencent.com/document/api/1482/85121#LinkInfo)](https://cloud.tencent.com/document/api/1482/85121#[LinkInfo](https://cloud.tencent.com/document/api/1482/85121#LinkInfo))
-* [[LinkInfos](https://cloud.tencent.com/document/api/1482/85121#LinkInfos)](https://cloud.tencent.com/document/api/1482/85121#[LinkInfos](https://cloud.tencent.com/document/api/1482/85121#LinkInfos))
-* [[OrderInfo](https://cloud.tencent.com/document/api/1482/85121#OrderInfo)](https://cloud.tencent.com/document/api/1482/85121#[OrderInfo](https://cloud.tencent.com/document/api/1482/85121#OrderInfo))
-* [[Orders](https://cloud.tencent.com/document/api/1482/85121#Orders)](https://cloud.tencent.com/document/api/1482/85121#[Orders](https://cloud.tencent.com/document/api/1482/85121#Orders))
-* [[Rule](https://cloud.tencent.com/document/api/1482/85121#Rule)](https://cloud.tencent.com/document/api/1482/85121#[Rule](https://cloud.tencent.com/document/api/1482/85121#Rule))
-* [[RuleDetail](https://cloud.tencent.com/document/api/1482/85121#RuleDetail)](https://cloud.tencent.com/document/api/1482/85121#[RuleDetail](https://cloud.tencent.com/document/api/1482/85121#RuleDetail))
-* [[RuleInfos](https://cloud.tencent.com/document/api/1482/85121#RuleInfos)](https://cloud.tencent.com/document/api/1482/85121#[RuleInfos](https://cloud.tencent.com/document/api/1482/85121#RuleInfos))
-* [[Tactic](https://cloud.tencent.com/document/api/1482/85121#Tactic)](https://cloud.tencent.com/document/api/1482/85121#[Tactic](https://cloud.tencent.com/document/api/1482/85121#Tactic))
-* [[TacticInfos](https://cloud.tencent.com/document/api/1482/85121#TacticInfos)](https://cloud.tencent.com/document/api/1482/85121#[TacticInfos](https://cloud.tencent.com/document/api/1482/85121#TacticInfos))
-* [[Tag](https://cloud.tencent.com/document/api/1482/85121#Tag)](https://cloud.tencent.com/document/api/1482/85121#[Tag](https://cloud.tencent.com/document/api/1482/85121#Tag))
-* [[TagInfos](https://cloud.tencent.com/document/api/1482/85121#TagInfos)](https://cloud.tencent.com/document/api/1482/85121#[TagInfos](https://cloud.tencent.com/document/api/1482/85121#TagInfos))
-* [[TeleOperatorCard](https://cloud.tencent.com/document/api/1482/85121#TeleOperatorCard)](https://cloud.tencent.com/document/api/1482/85121#[TeleOperatorCard](https://cloud.tencent.com/document/api/1482/85121#TeleOperatorCard))
+* [DeviceReport](https://cloud.tencent.com/document/api/1482/85121#DeviceReport)
+* [LinkDetailInfo](https://cloud.tencent.com/document/api/1482/85121#LinkDetailInfo)
+* [LinkInfo](https://cloud.tencent.com/document/api/1482/85121#LinkInfo)
+* [LinkInfos](https://cloud.tencent.com/document/api/1482/85121#LinkInfos)
+* [OrderInfo](https://cloud.tencent.com/document/api/1482/85121#OrderInfo)
+* [Orders](https://cloud.tencent.com/document/api/1482/85121#Orders)
+* [Rule](https://cloud.tencent.com/document/api/1482/85121#Rule)
+* [RuleDetail](https://cloud.tencent.com/document/api/1482/85121#RuleDetail)
+* [RuleInfos](https://cloud.tencent.com/document/api/1482/85121#RuleInfos)
+* [Tactic](https://cloud.tencent.com/document/api/1482/85121#Tactic)
+* [TacticInfos](https://cloud.tencent.com/document/api/1482/85121#TacticInfos)
+* [Tag](https://cloud.tencent.com/document/api/1482/85121#Tag)
+* [TagInfos](https://cloud.tencent.com/document/api/1482/85121#TagInfos)
+* [TeleOperatorCard](https://cloud.tencent.com/document/api/1482/85121#TeleOperatorCard)
 
 
 
@@ -69398,7 +69447,7 @@
 
 新增接口：
 
-* [[DescribeRumGroupLog](https://cloud.tencent.com/document/api/1464/85145)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRumGroupLog](https://cloud.tencent.com/document/api/1464/85145)
 
 ### 第 20 次发布
 
@@ -72845,7 +72894,7 @@
 
 新增接口：
 
-* [[DescribeAssetDetailList](https://cloud.tencent.com/document/api/664/85146)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAssetDetailList](https://cloud.tencent.com/document/api/664/85146)
 
 ### 第 12 次发布
 
@@ -83925,6 +83974,91 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 24 次发布
+
+发布时间：2023-01-06 01:46:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateCustomErrorPage
+* CreateIpTableList
+* CreateLogSet
+* CreateLogTopicTask
+* CreateSecurityDropPage
+* DeleteLogTopicTask
+* DescribeBotClientIpList
+* DescribeBotData
+* DescribeBotHitRuleDetail
+* DescribeBotLog
+* DescribeBotManagedRules
+* DescribeBotTopData
+* DescribeDDoSAttackData
+* DescribeDDoSAttackEvent
+* DescribeDDoSAttackEventDetail
+* DescribeDDoSAttackSourceEvent
+* DescribeDDoSBlockList
+* DescribeDDoSMajorAttackEvent
+* DescribeDDoSPolicy
+* DescribeDistributionL4AccessData
+* DescribeDnssec
+* DescribeLogTopicTaskDetail
+* DescribeRateLimitIntelligenceRule
+* DescribeSecurityGroupManagedRules
+* DescribeSecurityPolicy
+* DescribeSecurityPolicyList
+* DescribeSecurityPolicyRegions
+* DescribeSecurityPortraitRules
+* DescribeSecurityRuleId
+* DescribeTimingL4AccessData
+* DescribeWebProtectionAttackEvents
+* DescribeZoneDDoSPolicy
+* ModifyAlarmConfig
+* ModifyAlarmDefaultThreshold
+* ModifyDDoSPolicy
+* ModifyDDoSPolicyHost
+* ModifyDnssec
+* ModifyLogTopicTask
+* ModifyZoneCnameSpeedUp
+* SwitchLogTopicTask
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BotLog
+* BotManagedRuleDetail
+* CCInterceptEvent
+* DDoSAcl
+* DDoSAclRule
+* DDoSAllowBlock
+* DDoSAllowBlockRule
+* DDoSAntiPly
+* DDoSAttackEvent
+* DDoSAttackEventDetailData
+* DDoSAttackSourceEvent
+* DDoSBlockData
+* DDoSFeaturesFilter
+* DDoSGeoIp
+* DDoSHost
+* DDoSMajorAttackEvent
+* DDoSPacketFilter
+* DDoSRule
+* DDoSSpeedLimit
+* DDoSStatusInfo
+* DnssecInfo
+* GeoIp
+* LogTopicDetailInfo
+* PortraitManagedRuleDetail
+* RateLimitIntelligenceRuleDetail
+* SecurityEntity
+* SecurityRule
+* ShieldArea
+* WafGroupDetail
+* WafGroupInfo
+* WafGroupRule
+
 ### 第 23 次发布
 
 发布时间：2022-12-30 01:48:06
@@ -86504,6 +86638,21 @@
 
 
 ## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 16 次发布
+
+发布时间：2023-01-06 01:48:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Spec](https://cloud.tencent.com/document/api/851/75051#Spec)
+
+	* 新增成员：Available, AvailableRegion
+
 
 ### 第 15 次发布
 
@@ -90946,6 +91095,21 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 45 次发布
+
+发布时间：2023-01-06 01:51:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LayoutParams](https://cloud.tencent.com/document/api/647/44055#LayoutParams)
+
+	* 新增成员：RenderMode
+
+
 ### 第 44 次发布
 
 发布时间：2022-12-08 01:52:42
@@ -95159,6 +95323,21 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 138 次发布
+
+发布时间：2023-01-06 01:53:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ExtractTraceWatermark](https://cloud.tencent.com/document/api/266/80525)
+
+	* 新增入参：FileId
+
+
 ### 第 137 次发布
 
 发布时间：2023-01-04 01:50:30
@@ -98940,6 +99119,32 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 135 次发布
+
+发布时间：2023-01-06 01:54:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateTrafficPackages](https://cloud.tencent.com/document/api/215/85309)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [TransformAddress](https://cloud.tencent.com/document/api/215/16706)
+
+	* 新增出参：TaskId, AddressId
+
+
+修改数据结构：
+
+* [BandwidthPackageBillBandwidth](https://cloud.tencent.com/document/api/215/15824#BandwidthPackageBillBandwidth)
+
+	* <font color="#dd0000">**修改成员**：</font>BandwidthUsage
+
+
 ### 第 134 次发布
 
 发布时间：2023-01-05 01:53:32
@@ -98950,26 +99155,26 @@
 
 新增接口：
 
-* [[AttachSnapshotInstances](https://cloud.tencent.com/document/api/215/85159)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSnapshotPolicies](https://cloud.tencent.com/document/api/215/85158)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSnapshotPolicies](https://cloud.tencent.com/document/api/215/85157)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSgSnapshotFileContent](https://cloud.tencent.com/document/api/215/85156)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSnapshotAttachedInstances](https://cloud.tencent.com/document/api/215/85155)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSnapshotFiles](https://cloud.tencent.com/document/api/215/85154)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSnapshotPolicies](https://cloud.tencent.com/document/api/215/85153)](https://cloud.tencent.com/document/api/#/#)
-* [[DetachSnapshotInstances](https://cloud.tencent.com/document/api/215/85152)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableSnapshotPolicies](https://cloud.tencent.com/document/api/215/85151)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableSnapshotPolicies](https://cloud.tencent.com/document/api/215/85150)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySnapshotPolicies](https://cloud.tencent.com/document/api/215/85149)](https://cloud.tencent.com/document/api/#/#)
-* [[ResumeSnapshotInstance](https://cloud.tencent.com/document/api/215/85148)](https://cloud.tencent.com/document/api/#/#)
+* [AttachSnapshotInstances](https://cloud.tencent.com/document/api/215/85159)
+* [CreateSnapshotPolicies](https://cloud.tencent.com/document/api/215/85158)
+* [DeleteSnapshotPolicies](https://cloud.tencent.com/document/api/215/85157)
+* [DescribeSgSnapshotFileContent](https://cloud.tencent.com/document/api/215/85156)
+* [DescribeSnapshotAttachedInstances](https://cloud.tencent.com/document/api/215/85155)
+* [DescribeSnapshotFiles](https://cloud.tencent.com/document/api/215/85154)
+* [DescribeSnapshotPolicies](https://cloud.tencent.com/document/api/215/85153)
+* [DetachSnapshotInstances](https://cloud.tencent.com/document/api/215/85152)
+* [DisableSnapshotPolicies](https://cloud.tencent.com/document/api/215/85151)
+* [EnableSnapshotPolicies](https://cloud.tencent.com/document/api/215/85150)
+* [ModifySnapshotPolicies](https://cloud.tencent.com/document/api/215/85149)
+* [ResumeSnapshotInstance](https://cloud.tencent.com/document/api/215/85148)
 
 新增数据结构：
 
-* [[BackupPolicy](https://cloud.tencent.com/document/api/215/15824#BackupPolicy)](https://cloud.tencent.com/document/api/215/15824#[BackupPolicy](https://cloud.tencent.com/document/api/215/15824#BackupPolicy))
-* [[BatchModifySnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#BatchModifySnapshotPolicy)](https://cloud.tencent.com/document/api/215/15824#[BatchModifySnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#BatchModifySnapshotPolicy))
-* [[SnapshotFileInfo](https://cloud.tencent.com/document/api/215/15824#SnapshotFileInfo)](https://cloud.tencent.com/document/api/215/15824#[SnapshotFileInfo](https://cloud.tencent.com/document/api/215/15824#SnapshotFileInfo))
-* [[SnapshotInstance](https://cloud.tencent.com/document/api/215/15824#SnapshotInstance)](https://cloud.tencent.com/document/api/215/15824#[SnapshotInstance](https://cloud.tencent.com/document/api/215/15824#SnapshotInstance))
-* [[SnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#SnapshotPolicy)](https://cloud.tencent.com/document/api/215/15824#[SnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#SnapshotPolicy))
+* [BackupPolicy](https://cloud.tencent.com/document/api/215/15824#BackupPolicy)
+* [BatchModifySnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#BatchModifySnapshotPolicy)
+* [SnapshotFileInfo](https://cloud.tencent.com/document/api/215/15824#SnapshotFileInfo)
+* [SnapshotInstance](https://cloud.tencent.com/document/api/215/15824#SnapshotInstance)
+* [SnapshotPolicy](https://cloud.tencent.com/document/api/215/15824#SnapshotPolicy)
 
 ### 第 133 次发布
 

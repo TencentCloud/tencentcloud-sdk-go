@@ -1835,7 +1835,7 @@ type BandwidthPackage struct {
 	// 带宽包唯一标识Id
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
 
-	// 带宽包类型，包括'BGP','SINGLEISP','ANYCAST'
+	// 带宽包类型，包括'BGP','SINGLEISP','ANYCAST','SINGLEISP_CMCC','SINGLEISP_CTCC','SINGLEISP_CUCC'
 	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
 
 	// 带宽包计费类型，包括'TOP5_POSTPAID_BY_MONTH'和'PERCENT95_POSTPAID_BY_MONTH'
@@ -1859,7 +1859,7 @@ type BandwidthPackage struct {
 
 type BandwidthPackageBillBandwidth struct {
 	// 当前计费用量，单位为 Mbps
-	BandwidthUsage *uint64 `json:"BandwidthUsage,omitempty" name:"BandwidthUsage"`
+	BandwidthUsage *float64 `json:"BandwidthUsage,omitempty" name:"BandwidthUsage"`
 }
 
 type BatchModifySnapshotPolicy struct {
@@ -5123,6 +5123,98 @@ func (r *CreateSubnetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSubnetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTrafficPackagesRequestParams struct {
+	// 流量包规格。可选值:
+	// <li>10: 10GB流量，有效期一个月</li>
+	// <li>50: 50GB流量，有效期一个月</li>
+	// <li>512: 512GB流量，有效期一个月</li>
+	// <li>1024: 1TB流量，有效期一个月</li>
+	// <li>5120: 5TB流量，有效期一个月</li>
+	// <li>51200: 50TB流量，有效期一个月</li>
+	// <li>60: 60GB流量，有效期半年</li>
+	// <li>300: 300GB流量，有效期半年</li>
+	// <li>600: 600GB流量，有效期半年</li>
+	// <li>3072: 3TB流量，有效期半年</li>
+	// <li>6144: 6TB流量，有效期半年</li>
+	// <li>30720: 30TB流量，有效期半年</li>
+	// <li>61440: 60TB流量，有效期半年</li>
+	// <li>307200: 300TB流量，有效期半年</li>
+	TrafficAmount *uint64 `json:"TrafficAmount,omitempty" name:"TrafficAmount"`
+
+	// 流量包数量，可选范围 1~20。
+	TrafficPackageCount *uint64 `json:"TrafficPackageCount,omitempty" name:"TrafficPackageCount"`
+}
+
+type CreateTrafficPackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量包规格。可选值:
+	// <li>10: 10GB流量，有效期一个月</li>
+	// <li>50: 50GB流量，有效期一个月</li>
+	// <li>512: 512GB流量，有效期一个月</li>
+	// <li>1024: 1TB流量，有效期一个月</li>
+	// <li>5120: 5TB流量，有效期一个月</li>
+	// <li>51200: 50TB流量，有效期一个月</li>
+	// <li>60: 60GB流量，有效期半年</li>
+	// <li>300: 300GB流量，有效期半年</li>
+	// <li>600: 600GB流量，有效期半年</li>
+	// <li>3072: 3TB流量，有效期半年</li>
+	// <li>6144: 6TB流量，有效期半年</li>
+	// <li>30720: 30TB流量，有效期半年</li>
+	// <li>61440: 60TB流量，有效期半年</li>
+	// <li>307200: 300TB流量，有效期半年</li>
+	TrafficAmount *uint64 `json:"TrafficAmount,omitempty" name:"TrafficAmount"`
+
+	// 流量包数量，可选范围 1~20。
+	TrafficPackageCount *uint64 `json:"TrafficPackageCount,omitempty" name:"TrafficPackageCount"`
+}
+
+func (r *CreateTrafficPackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrafficPackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficAmount")
+	delete(f, "TrafficPackageCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrafficPackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTrafficPackagesResponseParams struct {
+	// 创建的流量包ID列表。
+	TrafficPackageSet []*string `json:"TrafficPackageSet,omitempty" name:"TrafficPackageSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateTrafficPackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTrafficPackagesResponseParams `json:"Response"`
+}
+
+func (r *CreateTrafficPackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrafficPackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9014,10 +9106,10 @@ type DescribeBandwidthPackagesRequestParams struct {
 	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询带宽包偏移量
+	// 查询带宽包偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小结。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询带宽包数量限制
+	// 查询带宽包返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小结。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -9040,10 +9132,10 @@ type DescribeBandwidthPackagesRequest struct {
 	// <li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询带宽包偏移量
+	// 查询带宽包偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小结。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询带宽包数量限制
+	// 查询带宽包返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小结。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -23886,6 +23978,12 @@ func (r *TransformAddressRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TransformAddressResponseParams struct {
+	// 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 转为弹性公网IP后的唯一ID
+	AddressId *string `json:"AddressId,omitempty" name:"AddressId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

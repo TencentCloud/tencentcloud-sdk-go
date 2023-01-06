@@ -3561,6 +3561,64 @@ func (c *Client) DescribeTopicDetailWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeTopicProduceConnectionRequest() (request *DescribeTopicProduceConnectionRequest) {
+    request = &DescribeTopicProduceConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicProduceConnection")
+    
+    
+    return
+}
+
+func NewDescribeTopicProduceConnectionResponse() (response *DescribeTopicProduceConnectionResponse) {
+    response = &DescribeTopicProduceConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopicProduceConnection
+// 查询topic 生产端连接信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+func (c *Client) DescribeTopicProduceConnection(request *DescribeTopicProduceConnectionRequest) (response *DescribeTopicProduceConnectionResponse, err error) {
+    return c.DescribeTopicProduceConnectionWithContext(context.Background(), request)
+}
+
+// DescribeTopicProduceConnection
+// 查询topic 生产端连接信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+func (c *Client) DescribeTopicProduceConnectionWithContext(ctx context.Context, request *DescribeTopicProduceConnectionRequest) (response *DescribeTopicProduceConnectionResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicProduceConnectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicProduceConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicProduceConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicSubscribeGroupRequest() (request *DescribeTopicSubscribeGroupRequest) {
     request = &DescribeTopicSubscribeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -4907,6 +4907,60 @@ func (c *Client) CreateSubnetsWithContext(ctx context.Context, request *CreateSu
     return
 }
 
+func NewCreateTrafficPackagesRequest() (request *CreateTrafficPackagesRequest) {
+    request = &CreateTrafficPackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateTrafficPackages")
+    
+    
+    return
+}
+
+func NewCreateTrafficPackagesResponse() (response *CreateTrafficPackagesResponse) {
+    response = &CreateTrafficPackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTrafficPackages
+// 本接口 (CreateTrafficPackages) 用于创建共享流量包。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
+//  LIMITEXCEEDED_TRAFFICPACKAGEQUOTA = "LimitExceeded.TrafficPackageQuota"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = "UnsupportedOperation.UnsupportedRegion"
+func (c *Client) CreateTrafficPackages(request *CreateTrafficPackagesRequest) (response *CreateTrafficPackagesResponse, err error) {
+    return c.CreateTrafficPackagesWithContext(context.Background(), request)
+}
+
+// CreateTrafficPackages
+// 本接口 (CreateTrafficPackages) 用于创建共享流量包。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
+//  LIMITEXCEEDED_TRAFFICPACKAGEQUOTA = "LimitExceeded.TrafficPackageQuota"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = "UnsupportedOperation.UnsupportedRegion"
+func (c *Client) CreateTrafficPackagesWithContext(ctx context.Context, request *CreateTrafficPackagesRequest) (response *CreateTrafficPackagesResponse, err error) {
+    if request == nil {
+        request = NewCreateTrafficPackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrafficPackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTrafficPackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVpcRequest() (request *CreateVpcRequest) {
     request = &CreateVpcRequest{
         BaseRequest: &tchttp.BaseRequest{},

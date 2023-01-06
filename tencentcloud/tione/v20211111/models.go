@@ -6498,6 +6498,12 @@ type Spec struct {
 
 	// 计费项显示名称
 	SpecAlias *string `json:"SpecAlias,omitempty" name:"SpecAlias"`
+
+	// 是否售罄
+	Available *bool `json:"Available,omitempty" name:"Available"`
+
+	// 当前资源售罄时，可用的区域有哪些
+	AvailableRegion []*string `json:"AvailableRegion,omitempty" name:"AvailableRegion"`
 }
 
 type SpecPrice struct {

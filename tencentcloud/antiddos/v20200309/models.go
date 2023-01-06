@@ -325,6 +325,14 @@ type BGPIPInstance struct {
 	// 重保实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConvoyId *string `json:"ConvoyId,omitempty" name:"ConvoyId"`
+
+	// 带宽后付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticBandwidth *uint64 `json:"ElasticBandwidth,omitempty" name:"ElasticBandwidth"`
+
+	// 是否为EO代播的ip: 1是，0不是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EOFlag *uint64 `json:"EOFlag,omitempty" name:"EOFlag"`
 }
 
 type BGPIPInstanceSpecification struct {
@@ -8485,6 +8493,10 @@ type NewL7RuleEntry struct {
 
 	// 规则配置失败时的详细错误原因(仅当Status=2时有效)，1001证书不存在，1002证书获取失败，1003证书上传失败，1004证书已过期
 	ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *uint64 `json:"Version,omitempty" name:"Version"`
 }
 
 type OverviewDDoSEvent struct {

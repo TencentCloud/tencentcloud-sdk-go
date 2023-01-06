@@ -11114,6 +11114,10 @@ type ExtractTraceWatermarkRequestParams struct {
 	// 需要提取水印的媒体 URL。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
+	// 媒体文件 ID。Url 对应的原始媒体文件 ID。
+	// <li><font color=red>注意</font>：此字段必填。</li>
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
@@ -11135,6 +11139,10 @@ type ExtractTraceWatermarkRequest struct {
 	
 	// 需要提取水印的媒体 URL。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 媒体文件 ID。Url 对应的原始媒体文件 ID。
+	// <li><font color=red>注意</font>：此字段必填。</li>
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -11165,6 +11173,7 @@ func (r *ExtractTraceWatermarkRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Url")
+	delete(f, "FileId")
 	delete(f, "SubAppId")
 	delete(f, "SessionContext")
 	delete(f, "SessionId")

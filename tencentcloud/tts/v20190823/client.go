@@ -400,6 +400,8 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //
 // 基础合成支持 SSML，语法详见 [SSML 标记语言](https://cloud.tencent.com/document/product/1073/49575)。
 //
+// 默认接口请求频率限制：20次/秒。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
@@ -449,6 +451,8 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
 // 内测期间免费使用。
 //
 // 基础合成支持 SSML，语法详见 [SSML 标记语言](https://cloud.tencent.com/document/product/1073/49575)。
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"

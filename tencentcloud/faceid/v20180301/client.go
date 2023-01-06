@@ -1255,64 +1255,6 @@ func (c *Client) GetLiveCodeWithContext(ctx context.Context, request *GetLiveCod
     return
 }
 
-func NewGetRealNameAuthResultRequest() (request *GetRealNameAuthResultRequest) {
-    request = &GetRealNameAuthResultRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("faceid", APIVersion, "GetRealNameAuthResult")
-    
-    
-    return
-}
-
-func NewGetRealNameAuthResultResponse() (response *GetRealNameAuthResultResponse) {
-    response = &GetRealNameAuthResultResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// GetRealNameAuthResult
-// 获取微信实名认证结果
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
-//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
-//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
-func (c *Client) GetRealNameAuthResult(request *GetRealNameAuthResultRequest) (response *GetRealNameAuthResultResponse, err error) {
-    return c.GetRealNameAuthResultWithContext(context.Background(), request)
-}
-
-// GetRealNameAuthResult
-// 获取微信实名认证结果
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
-//  UNAUTHORIZEDOPERATION_NONAUTHORIZE = "UnauthorizedOperation.NonAuthorize"
-//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
-func (c *Client) GetRealNameAuthResultWithContext(ctx context.Context, request *GetRealNameAuthResultRequest) (response *GetRealNameAuthResultResponse, err error) {
-    if request == nil {
-        request = NewGetRealNameAuthResultRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetRealNameAuthResult require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetRealNameAuthResultResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewGetWeChatBillDetailsRequest() (request *GetWeChatBillDetailsRequest) {
     request = &GetWeChatBillDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},

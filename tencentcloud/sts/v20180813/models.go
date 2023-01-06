@@ -309,13 +309,13 @@ func (r *AssumeRoleWithWebIdentityRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssumeRoleWithWebIdentityResponseParams struct {
-	// 临时秘钥过期时间(时间戳)
+	// 临时密钥过期时间(时间戳)
 	ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
-	// 临时秘钥过期时间
+	// 临时密钥过期时间
 	Expiration *string `json:"Expiration,omitempty" name:"Expiration"`
 
-	// 临时秘钥
+	// 临时密钥
 	Credentials *Credentials `json:"Credentials,omitempty" name:"Credentials"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

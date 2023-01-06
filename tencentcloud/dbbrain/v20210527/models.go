@@ -2110,7 +2110,7 @@ type DescribeProxyProcessStatisticsRequestParams struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 当前实例下的 ProxyID。
+	// 该实例下需要查询的某一个 ProxyID 。
 	InstanceProxyId *string `json:"InstanceProxyId,omitempty" name:"InstanceProxyId"`
 
 	// 返回数量。
@@ -2135,7 +2135,7 @@ type DescribeProxyProcessStatisticsRequest struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 当前实例下的 ProxyID。
+	// 该实例下需要查询的某一个 ProxyID 。
 	InstanceProxyId *string `json:"InstanceProxyId,omitempty" name:"InstanceProxyId"`
 
 	// 返回数量。

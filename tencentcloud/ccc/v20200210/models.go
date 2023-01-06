@@ -1486,19 +1486,19 @@ type DescribeChatMessagesRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 服务记录ID
+	// 服务记录ID（废弃）
 	CdrId *string `json:"CdrId,omitempty" name:"CdrId"`
 
-	// 返回记录条数 最大为100默认20
+	// 返回记录条数，最大为100 默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 返回记录偏移 默认为0
+	// 返回记录偏移，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 1为从早到晚，2为从晚到早，默认为2
 	Order *int64 `json:"Order,omitempty" name:"Order"`
 
-	// 服务记录SessionID
+	// 服务记录 SessionID（必填）
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
@@ -1511,19 +1511,19 @@ type DescribeChatMessagesRequest struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 服务记录ID
+	// 服务记录ID（废弃）
 	CdrId *string `json:"CdrId,omitempty" name:"CdrId"`
 
-	// 返回记录条数 最大为100默认20
+	// 返回记录条数，最大为100 默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 返回记录偏移 默认为0
+	// 返回记录偏移，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 1为从早到晚，2为从晚到早，默认为2
 	Order *int64 `json:"Order,omitempty" name:"Order"`
 
-	// 服务记录SessionID
+	// 服务记录 SessionID（必填）
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
@@ -1754,10 +1754,10 @@ func (r *DescribeExtensionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIMCdrsRequestParams struct {
-	// 起始时间
+	// 起始时间（必填），Unix 秒级时间戳
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
 
-	// 结束时间
+	// 结束时间（必填），Unix 秒级时间戳
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
 
 	// 实例 ID（废弃）
@@ -1766,10 +1766,10 @@ type DescribeIMCdrsRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 返回记录条数 最大为100默认20
+	// 返回记录条数，最大为100默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 返回记录偏移 默认为0
+	// 返回记录偏移，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 1为全媒体，2为文本客服，不填则查询全部
@@ -1779,10 +1779,10 @@ type DescribeIMCdrsRequestParams struct {
 type DescribeIMCdrsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间
+	// 起始时间（必填），Unix 秒级时间戳
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
 
-	// 结束时间
+	// 结束时间（必填），Unix 秒级时间戳
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
 
 	// 实例 ID（废弃）
@@ -1791,10 +1791,10 @@ type DescribeIMCdrsRequest struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 返回记录条数 最大为100默认20
+	// 返回记录条数，最大为100默认20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 返回记录偏移 默认为0
+	// 返回记录偏移，默认为 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 1为全媒体，2为文本客服，不填则查询全部

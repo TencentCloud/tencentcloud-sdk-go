@@ -225,7 +225,7 @@ func NewAssumeRoleWithWebIdentityRequest() (request *AssumeRoleWithWebIdentityRe
     request = &AssumeRoleWithWebIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    request.SetSkipSign(true)
+    
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleWithWebIdentity")
     
     
@@ -246,8 +246,10 @@ func NewAssumeRoleWithWebIdentityResponse() (response *AssumeRoleWithWebIdentity
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_OVERLIMIT = "InvalidParameter.OverLimit"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_WEBIDENTITYTOKENERROR = "InvalidParameter.WebIdentityTokenError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssumeRoleWithWebIdentity(request *AssumeRoleWithWebIdentityRequest) (response *AssumeRoleWithWebIdentityResponse, err error) {
     return c.AssumeRoleWithWebIdentityWithContext(context.Background(), request)
@@ -260,14 +262,20 @@ func (c *Client) AssumeRoleWithWebIdentity(request *AssumeRoleWithWebIdentityReq
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_OVERLIMIT = "InvalidParameter.OverLimit"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_WEBIDENTITYTOKENERROR = "InvalidParameter.WebIdentityTokenError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssumeRoleWithWebIdentityWithContext(ctx context.Context, request *AssumeRoleWithWebIdentityRequest) (response *AssumeRoleWithWebIdentityResponse, err error) {
     if request == nil {
         request = NewAssumeRoleWithWebIdentityRequest()
     }
     
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssumeRoleWithWebIdentity require credential")
+    }
+
     request.SetContext(ctx)
     
     response = NewAssumeRoleWithWebIdentityResponse()
