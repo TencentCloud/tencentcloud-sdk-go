@@ -33,6 +33,9 @@ type ApplyConcurrentRequestParams struct {
 
 	// 应用版本ID
 	ApplicationVersionId *string `json:"ApplicationVersionId,omitempty" name:"ApplicationVersionId"`
+
+	// 应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 }
 
 type ApplyConcurrentRequest struct {
@@ -49,6 +52,9 @@ type ApplyConcurrentRequest struct {
 
 	// 应用版本ID
 	ApplicationVersionId *string `json:"ApplicationVersionId,omitempty" name:"ApplicationVersionId"`
+
+	// 应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 }
 
 func (r *ApplyConcurrentRequest) ToJsonString() string {
@@ -67,6 +73,7 @@ func (r *ApplyConcurrentRequest) FromJsonString(s string) error {
 	delete(f, "UserIp")
 	delete(f, "ProjectId")
 	delete(f, "ApplicationVersionId")
+	delete(f, "ApplicationId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyConcurrentRequest has unknown keys!", "")
 	}

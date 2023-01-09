@@ -3653,6 +3653,10 @@ type TelCdrInfo struct {
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 排队技能组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueuedSkillGroupName *string `json:"QueuedSkillGroupName,omitempty" name:"QueuedSkillGroupName"`
 }
 
 // Predefined struct for user

@@ -45,6 +45,48 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewApplyChorusRequest() (request *ApplyChorusRequest) {
+    request = &ApplyChorusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "ApplyChorus")
+    
+    
+    return
+}
+
+func NewApplyChorusResponse() (response *ApplyChorusResponse) {
+    response = &ApplyChorusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyChorus
+// 申请合唱相关信息，用于标记用户的演唱是在合唱场景下。
+func (c *Client) ApplyChorus(request *ApplyChorusRequest) (response *ApplyChorusResponse, err error) {
+    return c.ApplyChorusWithContext(context.Background(), request)
+}
+
+// ApplyChorus
+// 申请合唱相关信息，用于标记用户的演唱是在合唱场景下。
+func (c *Client) ApplyChorusWithContext(ctx context.Context, request *ApplyChorusRequest) (response *ApplyChorusResponse, err error) {
+    if request == nil {
+        request = NewApplyChorusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyChorus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyChorusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchDescribeKTVMusicDetailsRequest() (request *BatchDescribeKTVMusicDetailsRequest) {
     request = &BatchDescribeKTVMusicDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},

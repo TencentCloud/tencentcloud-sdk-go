@@ -6723,7 +6723,7 @@ type DetailDomain struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 
-	// HTTPS服务
+	// HTTPS服务，缺省时默认开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
@@ -7607,7 +7607,7 @@ type Https struct {
 }
 
 type HttpsBilling struct {
-	// HTTPS服务
+	// HTTPS服务，缺省时默认开启【会产生计费】
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 

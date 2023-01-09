@@ -225,7 +225,7 @@ func NewAssumeRoleWithWebIdentityRequest() (request *AssumeRoleWithWebIdentityRe
     request = &AssumeRoleWithWebIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
-    
+    request.SetSkipSign(true)
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleWithWebIdentity")
     
     
@@ -272,10 +272,6 @@ func (c *Client) AssumeRoleWithWebIdentityWithContext(ctx context.Context, reque
         request = NewAssumeRoleWithWebIdentityRequest()
     }
     
-    if c.GetCredential() == nil {
-        return nil, errors.New("AssumeRoleWithWebIdentity require credential")
-    }
-
     request.SetContext(ctx)
     
     response = NewAssumeRoleWithWebIdentityResponse()

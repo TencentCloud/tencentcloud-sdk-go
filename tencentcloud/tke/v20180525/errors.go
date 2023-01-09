@@ -134,6 +134,9 @@ const (
 	// Kubernetes未知错误。
 	FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
 
+	// 获取Kubernetes资源列表失败。
+	FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+
 	// Kubernetes patch 操作失败。
 	FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
 
@@ -323,6 +326,9 @@ const (
 	// Kubernetes未知错误。
 	INTERNALERROR_KUBERNETESINTERNAL = "InternalError.KubernetesInternal"
 
+	// 获取Kubernetes资源列表失败。
+	INTERNALERROR_KUBERNETESLISTOPERATIONERROR = "InternalError.KubernetesListOperationError"
+
 	// Kubernetes Patch操作失败。
 	INTERNALERROR_KUBERNETESPATCHOPERATIONERROR = "InternalError.KubernetesPatchOperationError"
 
@@ -470,6 +476,12 @@ const (
 	// 路由表非空。
 	INVALIDPARAMETER_ROUTETABLENOTEMPTY = "InvalidParameter.RouteTableNotEmpty"
 
+	// 子网不合法。
+	INVALIDPARAMETER_SUBNETINVALIDERROR = "InvalidParameter.SubnetInvalidError"
+
+	// 子网不存在。
+	INVALIDPARAMETER_SUBNETNOTEXIST = "InvalidParameter.SubnetNotExist"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
@@ -485,8 +497,14 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 存在运行中的Pod。
+	RESOURCEINUSE_EXISTRUNNINGPOD = "ResourceInUse.ExistRunningPod"
+
 	// 资源已存在。
 	RESOURCEINUSE_RESOURCEEXISTALREADY = "ResourceInUse.ResourceExistAlready"
+
+	// 所选子网已存在。
+	RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -524,6 +542,9 @@ const (
 	// Eks Container Instance状态不支持改操作。
 	RESOURCEUNAVAILABLE_EKSCONTAINERSTATUS = "ResourceUnavailable.EksContainerStatus"
 
+	// 节点池状态不正常。
+	RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+
 	// 资源售罄。
 	RESOURCESSOLDOUT = "ResourcesSoldOut"
 
@@ -550,4 +571,7 @@ const (
 
 	// 非白名单用户。
 	UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+
+	// 不支持安装虚拟节点。
+	UNSUPPORTEDOPERATION_NOTSUPPORTINSTALLVIRTUALKUBELET = "UnsupportedOperation.NotSupportInstallVirtualKubelet"
 )

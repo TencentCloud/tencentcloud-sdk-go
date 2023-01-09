@@ -1463,6 +1463,12 @@ type CreateLoadBalancerRequestParams struct {
 
 	// 安全组。
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
+
+	// 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPv6FullChain，默认值 IPV4。说明：取值为IPv6FullChain，表示为IPv6版本。
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" name:"AddressIPVersion"`
+
+	// 在购买IPV6负载均衡实例的情况下，必须指定子网 ID, 此参数必填。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type CreateLoadBalancerRequest struct {
@@ -1495,6 +1501,12 @@ type CreateLoadBalancerRequest struct {
 
 	// 安全组。
 	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
+
+	// 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPv6FullChain，默认值 IPV4。说明：取值为IPv6FullChain，表示为IPv6版本。
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" name:"AddressIPVersion"`
+
+	// 在购买IPV6负载均衡实例的情况下，必须指定子网 ID, 此参数必填。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 func (r *CreateLoadBalancerRequest) ToJsonString() string {
@@ -1518,6 +1530,8 @@ func (r *CreateLoadBalancerRequest) FromJsonString(s string) error {
 	delete(f, "InternetAccessible")
 	delete(f, "Tags")
 	delete(f, "SecurityGroups")
+	delete(f, "AddressIPVersion")
+	delete(f, "SubnetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancerRequest has unknown keys!", "")
 	}
@@ -7677,6 +7691,10 @@ type LoadBalancer struct {
 	// 后端机器是否放通来自ELB的流量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
+
+	// 负载均衡实例的IPv6地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIPv6 *string `json:"AddressIPv6,omitempty" name:"AddressIPv6"`
 }
 
 type LoadBalancerHealth struct {

@@ -2139,6 +2139,201 @@ func (r *CreateClusterRouteTableResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateClusterVirtualNodePoolRequestParams struct {
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子网ID列表
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 虚拟节点label
+	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
+
+	// 虚拟节点taint
+	Taints []*Taint `json:"Taints,omitempty" name:"Taints"`
+
+	// 节点列表
+	VirtualNodes []*VirtualNodeSpec `json:"VirtualNodes,omitempty" name:"VirtualNodes"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
+
+	// 节点池操作系统：
+	// - linux（默认）
+	// - windows
+	OS *string `json:"OS,omitempty" name:"OS"`
+}
+
+type CreateClusterVirtualNodePoolRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子网ID列表
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 虚拟节点label
+	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
+
+	// 虚拟节点taint
+	Taints []*Taint `json:"Taints,omitempty" name:"Taints"`
+
+	// 节点列表
+	VirtualNodes []*VirtualNodeSpec `json:"VirtualNodes,omitempty" name:"VirtualNodes"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
+
+	// 节点池操作系统：
+	// - linux（默认）
+	// - windows
+	OS *string `json:"OS,omitempty" name:"OS"`
+}
+
+func (r *CreateClusterVirtualNodePoolRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterVirtualNodePoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Name")
+	delete(f, "SubnetIds")
+	delete(f, "Labels")
+	delete(f, "Taints")
+	delete(f, "VirtualNodes")
+	delete(f, "DeletionProtection")
+	delete(f, "OS")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterVirtualNodePoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateClusterVirtualNodePoolResponseParams struct {
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateClusterVirtualNodePoolResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateClusterVirtualNodePoolResponseParams `json:"Response"`
+}
+
+func (r *CreateClusterVirtualNodePoolResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterVirtualNodePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateClusterVirtualNodeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 虚拟节点所属节点池
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 虚拟节点所属子网
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 虚拟节点子网ID列表，和参数SubnetId互斥
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 虚拟节点列表
+	VirtualNodes []*VirtualNodeSpec `json:"VirtualNodes,omitempty" name:"VirtualNodes"`
+}
+
+type CreateClusterVirtualNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 虚拟节点所属节点池
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 虚拟节点所属子网
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 虚拟节点子网ID列表，和参数SubnetId互斥
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 虚拟节点列表
+	VirtualNodes []*VirtualNodeSpec `json:"VirtualNodes,omitempty" name:"VirtualNodes"`
+}
+
+func (r *CreateClusterVirtualNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterVirtualNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolId")
+	delete(f, "SubnetId")
+	delete(f, "SubnetIds")
+	delete(f, "VirtualNodes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterVirtualNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateClusterVirtualNodeResponseParams struct {
+	// 虚拟节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateClusterVirtualNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateClusterVirtualNodeResponseParams `json:"Response"`
+}
+
+func (r *CreateClusterVirtualNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateClusterVirtualNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateECMInstancesRequestParams struct {
 	// 集群id
 	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
@@ -4247,6 +4442,142 @@ func (r *DeleteClusterRouteTableResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteClusterRouteTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClusterVirtualNodePoolRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 虚拟节点池ID列表
+	NodePoolIds []*string `json:"NodePoolIds,omitempty" name:"NodePoolIds"`
+
+	// 是否强制删除，在虚拟节点上有pod的情况下，如果选择非强制删除，则删除会失败
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+type DeleteClusterVirtualNodePoolRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 虚拟节点池ID列表
+	NodePoolIds []*string `json:"NodePoolIds,omitempty" name:"NodePoolIds"`
+
+	// 是否强制删除，在虚拟节点上有pod的情况下，如果选择非强制删除，则删除会失败
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+func (r *DeleteClusterVirtualNodePoolRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterVirtualNodePoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolIds")
+	delete(f, "Force")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteClusterVirtualNodePoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClusterVirtualNodePoolResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteClusterVirtualNodePoolResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteClusterVirtualNodePoolResponseParams `json:"Response"`
+}
+
+func (r *DeleteClusterVirtualNodePoolResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterVirtualNodePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClusterVirtualNodeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 虚拟节点列表
+	NodeNames []*string `json:"NodeNames,omitempty" name:"NodeNames"`
+
+	// 是否强制删除：如果虚拟节点上有运行中Pod，则非强制删除状态下不会进行删除
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+type DeleteClusterVirtualNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 虚拟节点列表
+	NodeNames []*string `json:"NodeNames,omitempty" name:"NodeNames"`
+
+	// 是否强制删除：如果虚拟节点上有运行中Pod，则非强制删除状态下不会进行删除
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+func (r *DeleteClusterVirtualNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterVirtualNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodeNames")
+	delete(f, "Force")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteClusterVirtualNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClusterVirtualNodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteClusterVirtualNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteClusterVirtualNodeResponseParams `json:"Response"`
+}
+
+func (r *DeleteClusterVirtualNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterVirtualNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7004,6 +7335,144 @@ func (r *DescribeClusterStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterVirtualNodePoolsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribeClusterVirtualNodePoolsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterVirtualNodePoolsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterVirtualNodePoolsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterVirtualNodePoolsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterVirtualNodePoolsResponseParams struct {
+	// 节点池总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 虚拟节点池列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodePoolSet []*VirtualNodePool `json:"NodePoolSet,omitempty" name:"NodePoolSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterVirtualNodePoolsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterVirtualNodePoolsResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterVirtualNodePoolsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterVirtualNodePoolsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterVirtualNodeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 节点名称
+	NodeNames []*string `json:"NodeNames,omitempty" name:"NodeNames"`
+}
+
+type DescribeClusterVirtualNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 节点名称
+	NodeNames []*string `json:"NodeNames,omitempty" name:"NodeNames"`
+}
+
+func (r *DescribeClusterVirtualNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterVirtualNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolId")
+	delete(f, "NodeNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterVirtualNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterVirtualNodeResponseParams struct {
+	// 节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nodes []*VirtualNode `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 节点总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterVirtualNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterVirtualNodeResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterVirtualNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterVirtualNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10932,6 +11401,67 @@ type DnsServerConf struct {
 	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers"`
 }
 
+// Predefined struct for user
+type DrainClusterVirtualNodeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点名
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+}
+
+type DrainClusterVirtualNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点名
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+}
+
+func (r *DrainClusterVirtualNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DrainClusterVirtualNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodeName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DrainClusterVirtualNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DrainClusterVirtualNodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DrainClusterVirtualNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DrainClusterVirtualNodeResponseParams `json:"Response"`
+}
+
+func (r *DrainClusterVirtualNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DrainClusterVirtualNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DriverVersion struct {
 	// GPU驱动或者CUDA的版本
 	Version *string `json:"Version,omitempty" name:"Version"`
@@ -13213,6 +13743,95 @@ func (r *ModifyClusterNodePoolResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyClusterNodePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterVirtualNodePoolRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 虚拟节点label
+	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
+
+	// 虚拟节点taint
+	Taints []*Taint `json:"Taints,omitempty" name:"Taints"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
+}
+
+type ModifyClusterVirtualNodePoolRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 虚拟节点label
+	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
+
+	// 虚拟节点taint
+	Taints []*Taint `json:"Taints,omitempty" name:"Taints"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
+}
+
+func (r *ModifyClusterVirtualNodePoolRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterVirtualNodePoolRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodePoolId")
+	delete(f, "Name")
+	delete(f, "Labels")
+	delete(f, "Taints")
+	delete(f, "DeletionProtection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterVirtualNodePoolRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterVirtualNodePoolResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterVirtualNodePoolResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterVirtualNodePoolResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterVirtualNodePoolResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterVirtualNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16887,6 +17506,52 @@ type VersionInstance struct {
 	// Remark
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type VirtualNode struct {
+	// 虚拟节点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 虚拟节点所属子网
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 虚拟节点状态
+	Phase *string `json:"Phase,omitempty" name:"Phase"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
+type VirtualNodePool struct {
+	// 节点池ID
+	NodePoolId *string `json:"NodePoolId,omitempty" name:"NodePoolId"`
+
+	// 子网列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 节点池名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 节点池生命周期
+	LifeState *string `json:"LifeState,omitempty" name:"LifeState"`
+
+	// 虚拟节点label
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
+
+	// 虚拟节点taint
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Taints []*Taint `json:"Taints,omitempty" name:"Taints"`
+}
+
+type VirtualNodeSpec struct {
+	// 节点展示名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type VolumeMount struct {

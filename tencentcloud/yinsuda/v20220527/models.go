@@ -32,6 +32,98 @@ type AMEMusicBaseInfo struct {
 }
 
 // Predefined struct for user
+type ApplyChorusRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 房间号。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 歌曲 Id。
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 最大合唱人数，默认值为 8，最大值为 20。
+	MaxChorusNum *uint64 `json:"MaxChorusNum,omitempty" name:"MaxChorusNum"`
+
+	// 合唱用户标识列表。
+	ChorusUserIds []*string `json:"ChorusUserIds,omitempty" name:"ChorusUserIds"`
+}
+
+type ApplyChorusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 房间号。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 歌曲 Id。
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 最大合唱人数，默认值为 8，最大值为 20。
+	MaxChorusNum *uint64 `json:"MaxChorusNum,omitempty" name:"MaxChorusNum"`
+
+	// 合唱用户标识列表。
+	ChorusUserIds []*string `json:"ChorusUserIds,omitempty" name:"ChorusUserIds"`
+}
+
+func (r *ApplyChorusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyChorusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "RoomId")
+	delete(f, "MusicId")
+	delete(f, "MaxChorusNum")
+	delete(f, "ChorusUserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyChorusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyChorusResponseParams struct {
+	// 合唱 Token。
+	ChorusToken *string `json:"ChorusToken,omitempty" name:"ChorusToken"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ApplyChorusResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplyChorusResponseParams `json:"Response"`
+}
+
+func (r *ApplyChorusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyChorusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchDescribeKTVMusicDetailsRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`

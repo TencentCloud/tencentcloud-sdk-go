@@ -1405,6 +1405,126 @@ func (c *Client) CreateClusterRouteTableWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateClusterVirtualNodeRequest() (request *CreateClusterVirtualNodeRequest) {
+    request = &CreateClusterVirtualNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterVirtualNode")
+    
+    
+    return
+}
+
+func NewCreateClusterVirtualNodeResponse() (response *CreateClusterVirtualNodeResponse) {
+    response = &CreateClusterVirtualNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateClusterVirtualNode
+// 创建虚拟节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTINSTALLVIRTUALKUBELET = "UnsupportedOperation.NotSupportInstallVirtualKubelet"
+func (c *Client) CreateClusterVirtualNode(request *CreateClusterVirtualNodeRequest) (response *CreateClusterVirtualNodeResponse, err error) {
+    return c.CreateClusterVirtualNodeWithContext(context.Background(), request)
+}
+
+// CreateClusterVirtualNode
+// 创建虚拟节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTINSTALLVIRTUALKUBELET = "UnsupportedOperation.NotSupportInstallVirtualKubelet"
+func (c *Client) CreateClusterVirtualNodeWithContext(ctx context.Context, request *CreateClusterVirtualNodeRequest) (response *CreateClusterVirtualNodeResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterVirtualNodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusterVirtualNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateClusterVirtualNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateClusterVirtualNodePoolRequest() (request *CreateClusterVirtualNodePoolRequest) {
+    request = &CreateClusterVirtualNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateClusterVirtualNodePool")
+    
+    
+    return
+}
+
+func NewCreateClusterVirtualNodePoolResponse() (response *CreateClusterVirtualNodePoolResponse) {
+    response = &CreateClusterVirtualNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateClusterVirtualNodePool
+// 创建虚拟节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_SUBNETINVALIDERROR = "InvalidParameter.SubnetInvalidError"
+//  INVALIDPARAMETER_SUBNETNOTEXIST = "InvalidParameter.SubnetNotExist"
+//  RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTINSTALLVIRTUALKUBELET = "UnsupportedOperation.NotSupportInstallVirtualKubelet"
+func (c *Client) CreateClusterVirtualNodePool(request *CreateClusterVirtualNodePoolRequest) (response *CreateClusterVirtualNodePoolResponse, err error) {
+    return c.CreateClusterVirtualNodePoolWithContext(context.Background(), request)
+}
+
+// CreateClusterVirtualNodePool
+// 创建虚拟节点池
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_SUBNETINVALIDERROR = "InvalidParameter.SubnetInvalidError"
+//  INVALIDPARAMETER_SUBNETNOTEXIST = "InvalidParameter.SubnetNotExist"
+//  RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTINSTALLVIRTUALKUBELET = "UnsupportedOperation.NotSupportInstallVirtualKubelet"
+func (c *Client) CreateClusterVirtualNodePoolWithContext(ctx context.Context, request *CreateClusterVirtualNodePoolRequest) (response *CreateClusterVirtualNodePoolResponse, err error) {
+    if request == nil {
+        request = NewCreateClusterVirtualNodePoolRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateClusterVirtualNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateClusterVirtualNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateECMInstancesRequest() (request *CreateECMInstancesRequest) {
     request = &CreateECMInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2975,6 +3095,116 @@ func (c *Client) DeleteClusterRouteTableWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteClusterRouteTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteClusterVirtualNodeRequest() (request *DeleteClusterVirtualNodeRequest) {
+    request = &DeleteClusterVirtualNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterVirtualNode")
+    
+    
+    return
+}
+
+func NewDeleteClusterVirtualNodeResponse() (response *DeleteClusterVirtualNodeResponse) {
+    response = &DeleteClusterVirtualNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteClusterVirtualNode
+// 删除虚拟节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_EXISTRUNNINGPOD = "ResourceInUse.ExistRunningPod"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DeleteClusterVirtualNode(request *DeleteClusterVirtualNodeRequest) (response *DeleteClusterVirtualNodeResponse, err error) {
+    return c.DeleteClusterVirtualNodeWithContext(context.Background(), request)
+}
+
+// DeleteClusterVirtualNode
+// 删除虚拟节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_EXISTRUNNINGPOD = "ResourceInUse.ExistRunningPod"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DeleteClusterVirtualNodeWithContext(ctx context.Context, request *DeleteClusterVirtualNodeRequest) (response *DeleteClusterVirtualNodeResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterVirtualNodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClusterVirtualNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterVirtualNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteClusterVirtualNodePoolRequest() (request *DeleteClusterVirtualNodePoolRequest) {
+    request = &DeleteClusterVirtualNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterVirtualNodePool")
+    
+    
+    return
+}
+
+func NewDeleteClusterVirtualNodePoolResponse() (response *DeleteClusterVirtualNodePoolResponse) {
+    response = &DeleteClusterVirtualNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteClusterVirtualNodePool
+// 删除虚拟节点池
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCEINUSE_EXISTRUNNINGPOD = "ResourceInUse.ExistRunningPod"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DeleteClusterVirtualNodePool(request *DeleteClusterVirtualNodePoolRequest) (response *DeleteClusterVirtualNodePoolResponse, err error) {
+    return c.DeleteClusterVirtualNodePoolWithContext(context.Background(), request)
+}
+
+// DeleteClusterVirtualNodePool
+// 删除虚拟节点池
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCEINUSE_EXISTRUNNINGPOD = "ResourceInUse.ExistRunningPod"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DeleteClusterVirtualNodePoolWithContext(ctx context.Context, request *DeleteClusterVirtualNodePoolRequest) (response *DeleteClusterVirtualNodePoolResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterVirtualNodePoolRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClusterVirtualNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterVirtualNodePoolResponse()
     err = c.Send(request, response)
     return
 }
@@ -5643,6 +5873,116 @@ func (c *Client) DescribeClusterStatusWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeClusterStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterVirtualNodeRequest() (request *DescribeClusterVirtualNodeRequest) {
+    request = &DescribeClusterVirtualNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterVirtualNode")
+    
+    
+    return
+}
+
+func NewDescribeClusterVirtualNodeResponse() (response *DescribeClusterVirtualNodeResponse) {
+    response = &DescribeClusterVirtualNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterVirtualNode
+// 查看虚拟节点列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INTERNALERROR_KUBERNETESLISTOPERATIONERROR = "InternalError.KubernetesListOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeClusterVirtualNode(request *DescribeClusterVirtualNodeRequest) (response *DescribeClusterVirtualNodeResponse, err error) {
+    return c.DescribeClusterVirtualNodeWithContext(context.Background(), request)
+}
+
+// DescribeClusterVirtualNode
+// 查看虚拟节点列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INTERNALERROR_KUBERNETESLISTOPERATIONERROR = "InternalError.KubernetesListOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeClusterVirtualNodeWithContext(ctx context.Context, request *DescribeClusterVirtualNodeRequest) (response *DescribeClusterVirtualNodeResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterVirtualNodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterVirtualNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterVirtualNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterVirtualNodePoolsRequest() (request *DescribeClusterVirtualNodePoolsRequest) {
+    request = &DescribeClusterVirtualNodePoolsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterVirtualNodePools")
+    
+    
+    return
+}
+
+func NewDescribeClusterVirtualNodePoolsResponse() (response *DescribeClusterVirtualNodePoolsResponse) {
+    response = &DescribeClusterVirtualNodePoolsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterVirtualNodePools
+// 查看虚拟节点池列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeClusterVirtualNodePools(request *DescribeClusterVirtualNodePoolsRequest) (response *DescribeClusterVirtualNodePoolsResponse, err error) {
+    return c.DescribeClusterVirtualNodePoolsWithContext(context.Background(), request)
+}
+
+// DescribeClusterVirtualNodePools
+// 查看虚拟节点池列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) DescribeClusterVirtualNodePoolsWithContext(ctx context.Context, request *DescribeClusterVirtualNodePoolsRequest) (response *DescribeClusterVirtualNodePoolsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterVirtualNodePoolsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterVirtualNodePools require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterVirtualNodePoolsResponse()
     err = c.Send(request, response)
     return
 }
@@ -9023,6 +9363,56 @@ func (c *Client) DisableVpcCniNetworkTypeWithContext(ctx context.Context, reques
     return
 }
 
+func NewDrainClusterVirtualNodeRequest() (request *DrainClusterVirtualNodeRequest) {
+    request = &DrainClusterVirtualNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DrainClusterVirtualNode")
+    
+    
+    return
+}
+
+func NewDrainClusterVirtualNodeResponse() (response *DrainClusterVirtualNodeResponse) {
+    response = &DrainClusterVirtualNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DrainClusterVirtualNode
+// 驱逐虚拟节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DrainClusterVirtualNode(request *DrainClusterVirtualNodeRequest) (response *DrainClusterVirtualNodeResponse, err error) {
+    return c.DrainClusterVirtualNodeWithContext(context.Background(), request)
+}
+
+// DrainClusterVirtualNode
+// 驱逐虚拟节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DrainClusterVirtualNodeWithContext(ctx context.Context, request *DrainClusterVirtualNodeRequest) (response *DrainClusterVirtualNodeResponse, err error) {
+    if request == nil {
+        request = NewDrainClusterVirtualNodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DrainClusterVirtualNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDrainClusterVirtualNodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableClusterAuditRequest() (request *EnableClusterAuditRequest) {
     request = &EnableClusterAuditRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10217,6 +10607,60 @@ func (c *Client) ModifyClusterNodePoolWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyClusterNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterVirtualNodePoolRequest() (request *ModifyClusterVirtualNodePoolRequest) {
+    request = &ModifyClusterVirtualNodePoolRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyClusterVirtualNodePool")
+    
+    
+    return
+}
+
+func NewModifyClusterVirtualNodePoolResponse() (response *ModifyClusterVirtualNodePoolResponse) {
+    response = &ModifyClusterVirtualNodePoolResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyClusterVirtualNodePool
+// 修改虚拟节点池
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+func (c *Client) ModifyClusterVirtualNodePool(request *ModifyClusterVirtualNodePoolRequest) (response *ModifyClusterVirtualNodePoolResponse, err error) {
+    return c.ModifyClusterVirtualNodePoolWithContext(context.Background(), request)
+}
+
+// ModifyClusterVirtualNodePool
+// 修改虚拟节点池
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+func (c *Client) ModifyClusterVirtualNodePoolWithContext(ctx context.Context, request *ModifyClusterVirtualNodePoolRequest) (response *ModifyClusterVirtualNodePoolResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterVirtualNodePoolRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterVirtualNodePool require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterVirtualNodePoolResponse()
     err = c.Send(request, response)
     return
 }

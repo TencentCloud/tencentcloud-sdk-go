@@ -1,3 +1,187 @@
+# Release v1.0.575
+
+## 应用云渲染(car) 版本：2022-01-10
+
+### 第 4 次发布
+
+发布时间：2023-01-09 01:07:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ApplyConcurrent](https://cloud.tencent.com/document/api/1547/72827)
+
+	* 新增入参：ApplicationId
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 40 次发布
+
+发布时间：2023-01-09 01:07:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：QueuedSkillGroupName
+
+
+
+
+## 云 HDFS(chdfs) 版本：2020-11-12
+
+### 第 5 次发布
+
+发布时间：2023-01-06 18:21:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAccessRules](https://cloud.tencent.com/document/api/1105/52339)
+
+	* 新增出参：AccessRules
+
+* [DescribeFileSystem](https://cloud.tencent.com/document/api/1105/51147)
+
+	* 新增出参：DeepArchiveCapacityUsed, IntelligentCapacityUsed
+
+
+
+
+## 云 HDFS(chdfs) 版本：2019-07-18
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 12 次发布
+
+发布时间：2023-01-09 01:18:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [SessionItem](https://cloud.tencent.com/document/api/1130/57812#SessionItem)
+
+修改数据结构：
+
+* [ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic)
+
+	* 新增成员：Items, AllConnSum, ActiveConnSum
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 63 次发布
+
+发布时间：2023-01-09 01:21:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/1108/48465)
+
+	* 新增入参：AddressIPVersion, SubnetId
+
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/1108/42574#LoadBalancer)
+
+	* 新增成员：AddressIPv6
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 37 次发布
+
+发布时间：2023-01-09 01:23:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)
+
+	* 新增出参：VerifySerialNo
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 136 次发布
+
+发布时间：2023-01-09 01:50:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateClusterVirtualNode](https://cloud.tencent.com/document/api/457/85355)
+* [CreateClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85354)
+* [DeleteClusterVirtualNode](https://cloud.tencent.com/document/api/457/85353)
+* [DeleteClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85352)
+* [DescribeClusterVirtualNode](https://cloud.tencent.com/document/api/457/85351)
+* [DescribeClusterVirtualNodePools](https://cloud.tencent.com/document/api/457/85350)
+* [DrainClusterVirtualNode](https://cloud.tencent.com/document/api/457/85349)
+* [ModifyClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85348)
+
+新增数据结构：
+
+* [VirtualNode](https://cloud.tencent.com/document/api/457/31866#VirtualNode)
+* [VirtualNodePool](https://cloud.tencent.com/document/api/457/31866#VirtualNodePool)
+* [VirtualNodeSpec](https://cloud.tencent.com/document/api/457/31866#VirtualNodeSpec)
+
+
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 10 次发布
+
+发布时间：2023-01-09 01:59:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyChorus](https://cloud.tencent.com/document/api/1592/85356)
+
+
+
 # Release v1.0.574
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

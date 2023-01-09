@@ -7437,7 +7437,7 @@ type DescribeContainerGroupsRequestParams struct {
 	// 搜索字段，模糊搜索groupName字段
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 
-	// 分组所属应用ID
+	// 分组所属应用ID。必填
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 排序字段，默认为 createTime字段，支持id， name， createTime
@@ -7465,7 +7465,7 @@ type DescribeContainerGroupsRequest struct {
 	// 搜索字段，模糊搜索groupName字段
 	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
 
-	// 分组所属应用ID
+	// 分组所属应用ID。必填
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 排序字段，默认为 createTime字段，支持id， name， createTime

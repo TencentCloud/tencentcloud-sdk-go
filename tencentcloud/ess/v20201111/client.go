@@ -85,6 +85,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
     return c.CancelFlowWithContext(context.Background(), request)
 }
@@ -111,6 +112,7 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
     if request == nil {
         request = NewCancelFlowRequest()
@@ -159,6 +161,7 @@ func NewCancelMultiFlowSignQRCodeResponse() (response *CancelMultiFlowSignQRCode
 //  OPERATIONDENIED_QRHASEXPIRE = "OperationDenied.QrHasExpire"
 //  OPERATIONDENIED_QRINVALID = "OperationDenied.QrInvalid"
 //  RESOURCENOTFOUND_QRINFO = "ResourceNotFound.QrInfo"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CancelMultiFlowSignQRCode(request *CancelMultiFlowSignQRCodeRequest) (response *CancelMultiFlowSignQRCodeResponse, err error) {
     return c.CancelMultiFlowSignQRCodeWithContext(context.Background(), request)
 }
@@ -177,6 +180,7 @@ func (c *Client) CancelMultiFlowSignQRCode(request *CancelMultiFlowSignQRCodeReq
 //  OPERATIONDENIED_QRHASEXPIRE = "OperationDenied.QrHasExpire"
 //  OPERATIONDENIED_QRINVALID = "OperationDenied.QrInvalid"
 //  RESOURCENOTFOUND_QRINFO = "ResourceNotFound.QrInfo"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CancelMultiFlowSignQRCodeWithContext(ctx context.Context, request *CancelMultiFlowSignQRCodeRequest) (response *CancelMultiFlowSignQRCodeResponse, err error) {
     if request == nil {
         request = NewCancelMultiFlowSignQRCodeRequest()
@@ -223,6 +227,7 @@ func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlRe
 //  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
 //  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlRequest) (response *CreateBatchCancelFlowUrlResponse, err error) {
     return c.CreateBatchCancelFlowUrlWithContext(context.Background(), request)
 }
@@ -239,6 +244,7 @@ func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlReque
 //  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
 //  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, request *CreateBatchCancelFlowUrlRequest) (response *CreateBatchCancelFlowUrlResponse, err error) {
     if request == nil {
         request = NewCreateBatchCancelFlowUrlRequest()
@@ -284,6 +290,7 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 //  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (response *CreateConvertTaskApiResponse, err error) {
     return c.CreateConvertTaskApiWithContext(context.Background(), request)
 }
@@ -299,6 +306,7 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 //  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateConvertTaskApiWithContext(ctx context.Context, request *CreateConvertTaskApiRequest) (response *CreateConvertTaskApiResponse, err error) {
     if request == nil {
         request = NewCreateConvertTaskApiRequest()
@@ -385,6 +393,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *CreateDocumentResponse, err error) {
     return c.CreateDocumentWithContext(context.Background(), request)
 }
@@ -441,6 +450,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateDocumentRequest) (response *CreateDocumentResponse, err error) {
     if request == nil {
         request = NewCreateDocumentRequest()
@@ -554,6 +564,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowResponse, err error) {
     return c.CreateFlowWithContext(context.Background(), request)
 }
@@ -637,6 +648,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 //  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowWithContext(ctx context.Context, request *CreateFlowRequest) (response *CreateFlowResponse, err error) {
     if request == nil {
         request = NewCreateFlowRequest()
@@ -751,6 +763,7 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 //  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (response *CreateFlowApproversResponse, err error) {
     return c.CreateFlowApproversWithContext(context.Background(), request)
 }
@@ -835,6 +848,7 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 //  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowApproversWithContext(ctx context.Context, request *CreateFlowApproversRequest) (response *CreateFlowApproversResponse, err error) {
     if request == nil {
         request = NewCreateFlowApproversRequest()
@@ -1008,6 +1022,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response *CreateFlowByFilesResponse, err error) {
@@ -1153,6 +1168,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlowByFilesWithContext(ctx context.Context, request *CreateFlowByFilesRequest) (response *CreateFlowByFilesResponse, err error) {
@@ -1205,6 +1221,7 @@ func NewCreateFlowEvidenceReportResponse() (response *CreateFlowEvidenceReportRe
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
 //  RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowEvidenceReport(request *CreateFlowEvidenceReportRequest) (response *CreateFlowEvidenceReportResponse, err error) {
     return c.CreateFlowEvidenceReportWithContext(context.Background(), request)
 }
@@ -1225,6 +1242,7 @@ func (c *Client) CreateFlowEvidenceReport(request *CreateFlowEvidenceReportReque
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
 //  RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowEvidenceReportWithContext(ctx context.Context, request *CreateFlowEvidenceReportRequest) (response *CreateFlowEvidenceReportResponse, err error) {
     if request == nil {
         request = NewCreateFlowEvidenceReportRequest()
@@ -1290,6 +1308,7 @@ func NewCreateFlowSignReviewResponse() (response *CreateFlowSignReviewResponse) 
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowSignReview(request *CreateFlowSignReviewRequest) (response *CreateFlowSignReviewResponse, err error) {
     return c.CreateFlowSignReviewWithContext(context.Background(), request)
 }
@@ -1325,6 +1344,7 @@ func (c *Client) CreateFlowSignReview(request *CreateFlowSignReviewRequest) (res
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowSignReviewWithContext(ctx context.Context, request *CreateFlowSignReviewRequest) (response *CreateFlowSignReviewResponse, err error) {
     if request == nil {
         request = NewCreateFlowSignReviewRequest()
@@ -1371,6 +1391,7 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesRequest) (response *CreateIntegrationEmployeesResponse, err error) {
     return c.CreateIntegrationEmployeesWithContext(context.Background(), request)
 }
@@ -1387,6 +1408,7 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateIntegrationEmployeesWithContext(ctx context.Context, request *CreateIntegrationEmployeesRequest) (response *CreateIntegrationEmployeesResponse, err error) {
     if request == nil {
         request = NewCreateIntegrationEmployeesRequest()
@@ -1452,6 +1474,7 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 //  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeRequest) (response *CreateMultiFlowSignQRCodeResponse, err error) {
     return c.CreateMultiFlowSignQRCodeWithContext(context.Background(), request)
 }
@@ -1487,6 +1510,7 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 //  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateMultiFlowSignQRCodeWithContext(ctx context.Context, request *CreateMultiFlowSignQRCodeRequest) (response *CreateMultiFlowSignQRCodeResponse, err error) {
     if request == nil {
         request = NewCreateMultiFlowSignQRCodeRequest()
@@ -1600,6 +1624,7 @@ func NewCreatePrepareFlowResponse() (response *CreatePrepareFlowResponse) {
 //  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreatePrepareFlow(request *CreatePrepareFlowRequest) (response *CreatePrepareFlowResponse, err error) {
     return c.CreatePrepareFlowWithContext(context.Background(), request)
 }
@@ -1683,6 +1708,7 @@ func (c *Client) CreatePrepareFlow(request *CreatePrepareFlowRequest) (response 
 //  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreatePrepareFlowWithContext(ctx context.Context, request *CreatePrepareFlowRequest) (response *CreatePrepareFlowResponse, err error) {
     if request == nil {
         request = NewCreatePrepareFlowRequest()
@@ -1758,6 +1784,7 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //  OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *CreateSchemeUrlResponse, err error) {
     return c.CreateSchemeUrlWithContext(context.Background(), request)
 }
@@ -1803,6 +1830,7 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 //  OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateSchemeUrlWithContext(ctx context.Context, request *CreateSchemeUrlRequest) (response *CreateSchemeUrlResponse, err error) {
     if request == nil {
         request = NewCreateSchemeUrlRequest()
@@ -1848,6 +1876,7 @@ func NewDeleteIntegrationEmployeesResponse() (response *DeleteIntegrationEmploye
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DeleteIntegrationEmployees(request *DeleteIntegrationEmployeesRequest) (response *DeleteIntegrationEmployeesResponse, err error) {
     return c.DeleteIntegrationEmployeesWithContext(context.Background(), request)
 }
@@ -1863,6 +1892,7 @@ func (c *Client) DeleteIntegrationEmployees(request *DeleteIntegrationEmployeesR
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DeleteIntegrationEmployeesWithContext(ctx context.Context, request *DeleteIntegrationEmployeesRequest) (response *DeleteIntegrationEmployeesResponse, err error) {
     if request == nil {
         request = NewDeleteIntegrationEmployeesRequest()
@@ -1922,6 +1952,7 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 //  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *DescribeFileUrlsResponse, err error) {
     return c.DescribeFileUrlsWithContext(context.Background(), request)
@@ -1952,6 +1983,7 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
 //  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFileUrlsWithContext(ctx context.Context, request *DescribeFileUrlsRequest) (response *DescribeFileUrlsResponse, err error) {
     if request == nil {
@@ -2033,6 +2065,7 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (response *DescribeFlowBriefsResponse, err error) {
@@ -2085,6 +2118,7 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlowBriefsWithContext(ctx context.Context, request *DescribeFlowBriefsRequest) (response *DescribeFlowBriefsResponse, err error) {
@@ -2135,6 +2169,7 @@ func NewDescribeFlowEvidenceReportResponse() (response *DescribeFlowEvidenceRepo
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
 //  RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeFlowEvidenceReport(request *DescribeFlowEvidenceReportRequest) (response *DescribeFlowEvidenceReportResponse, err error) {
     return c.DescribeFlowEvidenceReportWithContext(context.Background(), request)
 }
@@ -2153,6 +2188,7 @@ func (c *Client) DescribeFlowEvidenceReport(request *DescribeFlowEvidenceReportR
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
 //  RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeFlowEvidenceReportWithContext(ctx context.Context, request *DescribeFlowEvidenceReportRequest) (response *DescribeFlowEvidenceReportResponse, err error) {
     if request == nil {
         request = NewDescribeFlowEvidenceReportRequest()
@@ -2265,6 +2301,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (response *DescribeFlowTemplatesResponse, err error) {
     return c.DescribeFlowTemplatesWithContext(context.Background(), request)
@@ -2290,6 +2327,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFlowTemplatesWithContext(ctx context.Context, request *DescribeFlowTemplatesRequest) (response *DescribeFlowTemplatesResponse, err error) {
     if request == nil {
@@ -2342,6 +2380,7 @@ func NewDescribeIntegrationEmployeesResponse() (response *DescribeIntegrationEmp
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
     return c.DescribeIntegrationEmployeesWithContext(context.Background(), request)
 }
@@ -2363,6 +2402,7 @@ func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmploy
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationEmployeesWithContext(ctx context.Context, request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
     if request == nil {
         request = NewDescribeIntegrationEmployeesRequest()
@@ -2406,6 +2446,7 @@ func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSeals
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsRequest) (response *DescribeOrganizationSealsResponse, err error) {
     return c.DescribeOrganizationSealsWithContext(context.Background(), request)
 }
@@ -2419,6 +2460,7 @@ func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsReq
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeOrganizationSealsWithContext(ctx context.Context, request *DescribeOrganizationSealsRequest) (response *DescribeOrganizationSealsResponse, err error) {
     if request == nil {
         request = NewDescribeOrganizationSealsRequest()
@@ -2524,6 +2566,7 @@ func NewGetTaskResultApiResponse() (response *GetTaskResultApiResponse) {
 //  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
 //  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *GetTaskResultApiResponse, err error) {
     return c.GetTaskResultApiWithContext(context.Background(), request)
 }
@@ -2537,6 +2580,7 @@ func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *G
 //  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
 //  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) GetTaskResultApiWithContext(ctx context.Context, request *GetTaskResultApiRequest) (response *GetTaskResultApiResponse, err error) {
     if request == nil {
         request = NewGetTaskResultApiRequest()
@@ -2617,6 +2661,7 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowResponse, err error) {
@@ -2669,6 +2714,7 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartFlowWithContext(ctx context.Context, request *StartFlowRequest) (response *StartFlowResponse, err error) {
@@ -2720,6 +2766,7 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFilesResponse, err error) {
     return c.UploadFilesWithContext(context.Background(), request)
 }
@@ -2739,6 +2786,7 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) UploadFilesWithContext(ctx context.Context, request *UploadFilesRequest) (response *UploadFilesResponse, err error) {
     if request == nil {
         request = NewUploadFilesRequest()
@@ -2782,6 +2830,7 @@ func NewVerifyPdfResponse() (response *VerifyPdfResponse) {
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfResponse, err error) {
     return c.VerifyPdfWithContext(context.Background(), request)
 }
@@ -2795,6 +2844,7 @@ func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfRespon
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) VerifyPdfWithContext(ctx context.Context, request *VerifyPdfRequest) (response *VerifyPdfResponse, err error) {
     if request == nil {
         request = NewVerifyPdfRequest()

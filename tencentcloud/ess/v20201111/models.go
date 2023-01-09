@@ -533,7 +533,7 @@ type CreateConvertTaskApiRequestParams struct {
 	// 资源Id，通过UploadFiles获取
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 操作者信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用号信息
@@ -555,7 +555,7 @@ type CreateConvertTaskApiRequest struct {
 	// 资源Id，通过UploadFiles获取
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 操作者信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用号信息
@@ -3497,6 +3497,9 @@ type VerifyPdfResponseParams struct {
 	// 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域
 	// ；5-文件签名格式错误
 	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitempty" name:"PdfVerifyResults"`
+
+	// 验签序列号
+	VerifySerialNo *string `json:"VerifySerialNo,omitempty" name:"VerifySerialNo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

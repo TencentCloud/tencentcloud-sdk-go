@@ -22,7 +22,7 @@ import (
 
 // Predefined struct for user
 type CreateTaskFromTemplateRequestParams struct {
-	// 从经验库中查询到的经验模版ID
+	// 从经验库中查询到的经验模板ID
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 演练的配置参数
@@ -32,7 +32,7 @@ type CreateTaskFromTemplateRequestParams struct {
 type CreateTaskFromTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 从经验库中查询到的经验模版ID
+	// 从经验库中查询到的经验模板ID
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 演练的配置参数

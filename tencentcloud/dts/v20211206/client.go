@@ -280,7 +280,7 @@ func NewContinueSyncJobResponse() (response *ContinueSyncJobResponse) {
 }
 
 // ContinueSyncJob
-// 恢复处于暂停中中的数据同步任务。
+// 恢复处于暂停中的数据同步任务。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
@@ -296,7 +296,7 @@ func (c *Client) ContinueSyncJob(request *ContinueSyncJobRequest) (response *Con
 }
 
 // ContinueSyncJob
-// 恢复处于暂停中中的数据同步任务。
+// 恢复处于暂停中的数据同步任务。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"

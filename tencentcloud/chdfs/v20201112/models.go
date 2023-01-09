@@ -237,6 +237,10 @@ func (r *CreateAccessRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAccessRulesResponseParams struct {
+	// 权限规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessRules []*AccessRule `json:"AccessRules,omitempty" name:"AccessRules"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1072,6 +1076,14 @@ type DescribeFileSystemResponseParams struct {
 	// 已使用COS低频存储容量（byte）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DegradeCapacityUsed *uint64 `json:"DegradeCapacityUsed,omitempty" name:"DegradeCapacityUsed"`
+
+	// 已使用COS深度归档存储容量（byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeepArchiveCapacityUsed *uint64 `json:"DeepArchiveCapacityUsed,omitempty" name:"DeepArchiveCapacityUsed"`
+
+	// 已使用COS智能分层存储容量（byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntelligentCapacityUsed *uint64 `json:"IntelligentCapacityUsed,omitempty" name:"IntelligentCapacityUsed"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2034,6 +2046,6 @@ type Transition struct {
 	// 触发时间（单位天）
 	Days *uint64 `json:"Days,omitempty" name:"Days"`
 
-	// 转换类型（1：归档；2：删除；3：低频）
+	// 转换类型（1：归档；2：删除；3：低频；4：深度归档；5：智能分层）
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }

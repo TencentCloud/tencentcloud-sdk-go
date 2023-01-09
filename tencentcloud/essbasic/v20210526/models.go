@@ -486,7 +486,7 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	// 资源Id，通过UploadFiles获取
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 操作者信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 暂未开放
@@ -508,7 +508,7 @@ type ChannelCreateConvertTaskApiRequest struct {
 	// 资源Id，通过UploadFiles获取
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 操作者信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 暂未开放
