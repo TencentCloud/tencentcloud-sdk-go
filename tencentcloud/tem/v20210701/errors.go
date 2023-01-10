@@ -17,6 +17,9 @@ package v20210701
 const (
 	// 此产品的特有错误码
 
+	// 创建服务失败。
+	FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
+
 	// 服务器繁忙,请稍后再试。
 	FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 

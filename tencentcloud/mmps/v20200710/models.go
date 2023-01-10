@@ -54,6 +54,18 @@ type AppInfoItem struct {
 	// 诊断风险项数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighRiskCount *int64 `json:"HighRiskCount,omitempty" name:"HighRiskCount"`
+
+	// 隐私申明文件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivacyTextName *string `json:"PrivacyTextName,omitempty" name:"PrivacyTextName"`
+
+	// 软件MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoftwareMD5 *string `json:"SoftwareMD5,omitempty" name:"SoftwareMD5"`
+
+	// 隐私文本MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitempty" name:"PrivacyTextMD5"`
 }
 
 type AppTaskData struct {
@@ -81,6 +93,10 @@ type AppTaskData struct {
 
 	// 任务完成时间(更新时间)
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 联系人信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContactName *string `json:"ContactName,omitempty" name:"ContactName"`
 }
 
 // Predefined struct for user

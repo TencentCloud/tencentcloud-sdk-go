@@ -383,6 +383,7 @@ func NewDescribeComplianceAssetListResponse() (response *DescribeComplianceAsset
 // 合规管理-资产列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -394,6 +395,7 @@ func (c *Client) DescribeComplianceAssetList(request *DescribeComplianceAssetLis
 // 合规管理-资产列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INVALIDPARAMETER = "InvalidParameter"

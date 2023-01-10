@@ -53,6 +53,9 @@ const (
 	// 规则不存在。
 	INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
 
+	// 规则模版不存在。
+	INVALIDPARAMETER_RULETEMPLATENOTEXIST = "InvalidParameter.RuleTemplateNotExist"
+
 	// 服务繁忙，请稍后重试。
 	INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
 

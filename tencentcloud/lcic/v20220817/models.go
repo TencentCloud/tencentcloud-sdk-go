@@ -255,8 +255,8 @@ type CreateRoomRequestParams struct {
 	// 老师ID。通过[注册用户]接口获取的UserId。
 	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
 
-	// 进入房间时是否自动连麦。可以有以下取值：
-	// 0 不自动连麦（默认值）
+	// 进入课堂时是否自动连麦。可以有以下取值：
+	// 0 不自动连麦（需要手动申请上麦，默认值）
 	// 1 自动连麦
 	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
 
@@ -265,9 +265,10 @@ type CreateRoomRequestParams struct {
 	// 1 开启高音质
 	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
 
-	// 禁止录制。可以有以下取值：
-	// 0 不禁止录制（默认值）
+	// 上课后是否禁止自动录制。可以有以下取值：
+	// 0 不禁止录制（自动开启录制，默认值）
 	// 1 禁止录制
+	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
 	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。
@@ -310,8 +311,8 @@ type CreateRoomRequest struct {
 	// 老师ID。通过[注册用户]接口获取的UserId。
 	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
 
-	// 进入房间时是否自动连麦。可以有以下取值：
-	// 0 不自动连麦（默认值）
+	// 进入课堂时是否自动连麦。可以有以下取值：
+	// 0 不自动连麦（需要手动申请上麦，默认值）
 	// 1 自动连麦
 	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
 
@@ -320,9 +321,10 @@ type CreateRoomRequest struct {
 	// 1 开启高音质
 	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
 
-	// 禁止录制。可以有以下取值：
-	// 0 不禁止录制（默认值）
+	// 上课后是否禁止自动录制。可以有以下取值：
+	// 0 不禁止录制（自动开启录制，默认值）
 	// 1 禁止录制
+	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
 	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。
@@ -551,8 +553,8 @@ type DescribeRoomResponseParams struct {
 	// 最大连麦人数（不包括老师）。取值范围[0, 16]
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
 
-	// 进入房间时是否自动连麦。可以有以下取值：
-	// 0 不自动连麦（默认值）
+	// 进入课堂时是否自动连麦。可以有以下取值：
+	// 0 不自动连麦（需要手动申请上麦，默认值）
 	// 1 自动连麦
 	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
 
@@ -567,9 +569,10 @@ type DescribeRoomResponseParams struct {
 	// coteaching 双师
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
-	// 禁止录制。可以有以下取值：
-	// 0 不禁止录制（默认值）
+	// 上课后是否禁止自动录制。可以有以下取值：
+	// 0 不禁止录制（自动开启录制，默认值）
 	// 1 禁止录制
+	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
 	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
 
 	// 助教Id列表。

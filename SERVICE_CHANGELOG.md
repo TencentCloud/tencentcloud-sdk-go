@@ -1,48 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 应用云渲染(car) 版本：2022-01-10
+## 主机安全(cwp) 版本：2018-02-28
 
-### 第 4 次发布
+### 第 66 次发布
 
-发布时间：2023-01-09 01:07:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ApplyConcurrent](https://cloud.tencent.com/document/api/1547/72827)
-
-	* 新增入参：ApplicationId
-
-
-
-
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 40 次发布
-
-发布时间：2023-01-09 01:07:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
-
-	* 新增成员：QueuedSkillGroupName
-
-
-
-
-## 云 HDFS(chdfs) 版本：2020-11-12
-
-### 第 5 次发布
-
-发布时间：2023-01-06 18:21:15
+发布时间：2023-01-10 01:16:24
 
 本次发布包含了以下内容：
 
@@ -50,98 +12,18 @@
 
 修改接口：
 
-* [CreateAccessRules](https://cloud.tencent.com/document/api/1105/52339)
+* [DescribeVersionStatistics](https://cloud.tencent.com/document/api/296/60922)
 
-	* 新增出参：AccessRules
-
-* [DescribeFileSystem](https://cloud.tencent.com/document/api/1105/51147)
-
-	* 新增出参：DeepArchiveCapacityUsed, IntelligentCapacityUsed
+	* 新增出参：GeneralVersionNum
 
 
 
 
-## 云 HDFS(chdfs) 版本：2019-07-18
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
+### 第 35 次发布
 
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
-
-### 第 12 次发布
-
-发布时间：2023-01-09 01:18:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [SessionItem](https://cloud.tencent.com/document/api/1130/57812#SessionItem)
-
-修改数据结构：
-
-* [ProcessStatistic](https://cloud.tencent.com/document/api/1130/57812#ProcessStatistic)
-
-	* 新增成员：Items, AllConnSum, ActiveConnSum
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 63 次发布
-
-发布时间：2023-01-09 01:21:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/1108/48465)
-
-	* 新增入参：AddressIPVersion, SubnetId
-
-
-修改数据结构：
-
-* [LoadBalancer](https://cloud.tencent.com/document/api/1108/42574#LoadBalancer)
-
-	* 新增成员：AddressIPv6
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 37 次发布
-
-发布时间：2023-01-09 01:23:34
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)
-
-	* 新增出参：VerifySerialNo
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 136 次发布
-
-发布时间：2023-01-09 01:50:43
+发布时间：2023-01-10 01:20:24
 
 本次发布包含了以下内容：
 
@@ -149,28 +31,38 @@
 
 新增接口：
 
-* [CreateClusterVirtualNode](https://cloud.tencent.com/document/api/457/85355)
-* [CreateClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85354)
-* [DeleteClusterVirtualNode](https://cloud.tencent.com/document/api/457/85353)
-* [DeleteClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85352)
-* [DescribeClusterVirtualNode](https://cloud.tencent.com/document/api/457/85351)
-* [DescribeClusterVirtualNodePools](https://cloud.tencent.com/document/api/457/85350)
-* [DrainClusterVirtualNode](https://cloud.tencent.com/document/api/457/85349)
-* [ModifyClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85348)
-
-新增数据结构：
-
-* [VirtualNode](https://cloud.tencent.com/document/api/457/31866#VirtualNode)
-* [VirtualNodePool](https://cloud.tencent.com/document/api/457/31866#VirtualNodePool)
-* [VirtualNodeSpec](https://cloud.tencent.com/document/api/457/31866#VirtualNodeSpec)
+* [SuspendResumeDataEngine](https://cloud.tencent.com/document/api/1342/85563)
 
 
 
-## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+## 小程序安全(mmps) 版本：2020-07-10
 
-### 第 10 次发布
+### 第 8 次发布
 
-发布时间：2023-01-09 01:59:51
+发布时间：2023-01-10 01:33:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
+
+	* 新增成员：PrivacyTextName, SoftwareMD5, PrivacyTextMD5
+
+* [AppTaskData](https://cloud.tencent.com/document/api/1223/75143#AppTaskData)
+
+	* 新增成员：ContactName
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 25 次发布
+
+发布时间：2023-01-10 01:48:46
 
 本次发布包含了以下内容：
 
@@ -178,7 +70,90 @@
 
 新增接口：
 
-* [ApplyChorus](https://cloud.tencent.com/document/api/1592/85356)
+* [DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 8 次发布
+
+发布时间：2023-01-10 01:50:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterStorageOption](https://cloud.tencent.com/document/api/1527/84385)
+
+	* 新增出参：StorageOption
+
+
+新增数据结构：
+
+* [CFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#CFSOptionOverview)
+* [GooseFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#GooseFSOptionOverview)
+* [StorageOptionOverview](https://cloud.tencent.com/document/api/1527/72108#StorageOptionOverview)
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 81 次发布
+
+发布时间：2023-01-10 01:53:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DeliveryKafkaInfo](https://cloud.tencent.com/document/api/649/36099#DeliveryKafkaInfo)
+
+修改数据结构：
+
+* [ApiDetailInfo](https://cloud.tencent.com/document/api/649/36099#ApiDetailInfo)
+
+	* 新增成员：ApiMatchType
+
+* [KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)
+
+	* 新增成员：EnableAuth, Username, Password, KafkaInfos, EnableGlobalLineRule, CustomRule
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 139 次发布
+
+发布时间：2023-01-10 01:56:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DynamicRangeInfo](https://cloud.tencent.com/document/api/266/31773#DynamicRangeInfo)
+
+修改数据结构：
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/266/31773#MediaVideoStreamItem)
+
+	* 新增成员：DynamicRangeInfo
+
 
 
 
@@ -29878,6 +29853,21 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 66 次发布
+
+发布时间：2023-01-10 01:16:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVersionStatistics](https://cloud.tencent.com/document/api/296/60922)
+
+	* 新增出参：GeneralVersionNum
+
+
 ### 第 65 次发布
 
 发布时间：2023-01-04 01:15:09
@@ -34037,7 +34027,7 @@
 
 新增数据结构：
 
-* [[SessionItem](https://cloud.tencent.com/document/api/1130/57812#SessionItem)](https://cloud.tencent.com/document/api/1130/57812#[SessionItem](https://cloud.tencent.com/document/api/1130/57812#SessionItem))
+* [SessionItem](https://cloud.tencent.com/document/api/1130/57812#SessionItem)
 
 修改数据结构：
 
@@ -35781,6 +35771,18 @@
 
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 35 次发布
+
+发布时间：2023-01-10 01:20:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SuspendResumeDataEngine](https://cloud.tencent.com/document/api/1342/85563)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 34 次发布
 
@@ -58659,6 +58661,25 @@
 
 
 ## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 8 次发布
+
+发布时间：2023-01-10 01:33:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
+
+	* 新增成员：PrivacyTextName, SoftwareMD5, PrivacyTextMD5
+
+* [AppTaskData](https://cloud.tencent.com/document/api/1223/75143#AppTaskData)
+
+	* 新增成员：ContactName
+
 
 ### 第 7 次发布
 
@@ -84018,6 +84039,18 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 25 次发布
+
+发布时间：2023-01-10 01:48:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 24 次发布
 
 发布时间：2023-01-06 01:46:38
@@ -85189,6 +85222,27 @@
 
 
 ## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 8 次发布
+
+发布时间：2023-01-10 01:50:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterStorageOption](https://cloud.tencent.com/document/api/1527/84385)
+
+	* 新增出参：StorageOption
+
+
+新增数据结构：
+
+* [[CFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#CFSOptionOverview)](https://cloud.tencent.com/document/api/1527/72108#[CFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#CFSOptionOverview))
+* [[GooseFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#GooseFSOptionOverview)](https://cloud.tencent.com/document/api/1527/72108#[GooseFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#GooseFSOptionOverview))
+* [[StorageOptionOverview](https://cloud.tencent.com/document/api/1527/72108#StorageOptionOverview)](https://cloud.tencent.com/document/api/1527/72108#[StorageOptionOverview](https://cloud.tencent.com/document/api/1527/72108#StorageOptionOverview))
 
 ### 第 7 次发布
 
@@ -87664,20 +87718,20 @@
 
 新增接口：
 
-* [[CreateClusterVirtualNode](https://cloud.tencent.com/document/api/457/85355)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85354)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteClusterVirtualNode](https://cloud.tencent.com/document/api/457/85353)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85352)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusterVirtualNode](https://cloud.tencent.com/document/api/457/85351)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusterVirtualNodePools](https://cloud.tencent.com/document/api/457/85350)](https://cloud.tencent.com/document/api/#/#)
-* [[DrainClusterVirtualNode](https://cloud.tencent.com/document/api/457/85349)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85348)](https://cloud.tencent.com/document/api/#/#)
+* [CreateClusterVirtualNode](https://cloud.tencent.com/document/api/457/85355)
+* [CreateClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85354)
+* [DeleteClusterVirtualNode](https://cloud.tencent.com/document/api/457/85353)
+* [DeleteClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85352)
+* [DescribeClusterVirtualNode](https://cloud.tencent.com/document/api/457/85351)
+* [DescribeClusterVirtualNodePools](https://cloud.tencent.com/document/api/457/85350)
+* [DrainClusterVirtualNode](https://cloud.tencent.com/document/api/457/85349)
+* [ModifyClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85348)
 
 新增数据结构：
 
-* [[VirtualNode](https://cloud.tencent.com/document/api/457/31866#VirtualNode)](https://cloud.tencent.com/document/api/457/31866#[VirtualNode](https://cloud.tencent.com/document/api/457/31866#VirtualNode))
-* [[VirtualNodePool](https://cloud.tencent.com/document/api/457/31866#VirtualNodePool)](https://cloud.tencent.com/document/api/457/31866#[VirtualNodePool](https://cloud.tencent.com/document/api/457/31866#VirtualNodePool))
-* [[VirtualNodeSpec](https://cloud.tencent.com/document/api/457/31866#VirtualNodeSpec)](https://cloud.tencent.com/document/api/457/31866#[VirtualNodeSpec](https://cloud.tencent.com/document/api/457/31866#VirtualNodeSpec))
+* [VirtualNode](https://cloud.tencent.com/document/api/457/31866#VirtualNode)
+* [VirtualNodePool](https://cloud.tencent.com/document/api/457/31866#VirtualNodePool)
+* [VirtualNodeSpec](https://cloud.tencent.com/document/api/457/31866#VirtualNodeSpec)
 
 ### 第 135 次发布
 
@@ -92606,6 +92660,29 @@
 
 ## 微服务平台 TSF(tsf) 版本：2018-03-26
 
+### 第 81 次发布
+
+发布时间：2023-01-10 01:53:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[DeliveryKafkaInfo](https://cloud.tencent.com/document/api/649/36099#DeliveryKafkaInfo)](https://cloud.tencent.com/document/api/649/36099#[DeliveryKafkaInfo](https://cloud.tencent.com/document/api/649/36099#DeliveryKafkaInfo))
+
+修改数据结构：
+
+* [ApiDetailInfo](https://cloud.tencent.com/document/api/649/36099#ApiDetailInfo)
+
+	* 新增成员：ApiMatchType
+
+* [KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)
+
+	* 新增成员：EnableAuth, Username, Password, KafkaInfos, EnableGlobalLineRule, CustomRule
+
+
 ### 第 80 次发布
 
 发布时间：2022-12-07 07:15:23
@@ -95391,6 +95468,25 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 139 次发布
+
+发布时间：2023-01-10 01:56:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[DynamicRangeInfo](https://cloud.tencent.com/document/api/266/31773#DynamicRangeInfo)](https://cloud.tencent.com/document/api/266/31773#[DynamicRangeInfo](https://cloud.tencent.com/document/api/266/31773#DynamicRangeInfo))
+
+修改数据结构：
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/266/31773#MediaVideoStreamItem)
+
+	* 新增成员：DynamicRangeInfo
+
 
 ### 第 138 次发布
 
@@ -103600,7 +103696,7 @@
 
 新增接口：
 
-* [[ApplyChorus](https://cloud.tencent.com/document/api/1592/85356)](https://cloud.tencent.com/document/api/#/#)
+* [ApplyChorus](https://cloud.tencent.com/document/api/1592/85356)
 
 ### 第 9 次发布
 

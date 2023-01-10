@@ -15303,6 +15303,9 @@ type DescribeVersionStatisticsResponseParams struct {
 	// 旗舰版数量
 	UltimateVersionNum *uint64 `json:"UltimateVersionNum,omitempty" name:"UltimateVersionNum"`
 
+	// 普惠版数量
+	GeneralVersionNum *uint64 `json:"GeneralVersionNum,omitempty" name:"GeneralVersionNum"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

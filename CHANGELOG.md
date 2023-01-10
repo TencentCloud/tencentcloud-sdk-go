@@ -1,3 +1,162 @@
+# Release v1.0.576
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 66 次发布
+
+发布时间：2023-01-10 01:16:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVersionStatistics](https://cloud.tencent.com/document/api/296/60922)
+
+	* 新增出参：GeneralVersionNum
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 35 次发布
+
+发布时间：2023-01-10 01:20:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SuspendResumeDataEngine](https://cloud.tencent.com/document/api/1342/85563)
+
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 8 次发布
+
+发布时间：2023-01-10 01:33:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
+
+	* 新增成员：PrivacyTextName, SoftwareMD5, PrivacyTextMD5
+
+* [AppTaskData](https://cloud.tencent.com/document/api/1223/75143#AppTaskData)
+
+	* 新增成员：ContactName
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 25 次发布
+
+发布时间：2023-01-10 01:48:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 8 次发布
+
+发布时间：2023-01-10 01:50:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterStorageOption](https://cloud.tencent.com/document/api/1527/84385)
+
+	* 新增出参：StorageOption
+
+
+新增数据结构：
+
+* [CFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#CFSOptionOverview)
+* [GooseFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#GooseFSOptionOverview)
+* [StorageOptionOverview](https://cloud.tencent.com/document/api/1527/72108#StorageOptionOverview)
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 81 次发布
+
+发布时间：2023-01-10 01:53:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DeliveryKafkaInfo](https://cloud.tencent.com/document/api/649/36099#DeliveryKafkaInfo)
+
+修改数据结构：
+
+* [ApiDetailInfo](https://cloud.tencent.com/document/api/649/36099#ApiDetailInfo)
+
+	* 新增成员：ApiMatchType
+
+* [KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)
+
+	* 新增成员：EnableAuth, Username, Password, KafkaInfos, EnableGlobalLineRule, CustomRule
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 139 次发布
+
+发布时间：2023-01-10 01:56:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DynamicRangeInfo](https://cloud.tencent.com/document/api/266/31773#DynamicRangeInfo)
+
+修改数据结构：
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/266/31773#MediaVideoStreamItem)
+
+	* 新增成员：DynamicRangeInfo
+
+
+
+
 # Release v1.0.575
 
 ## 应用云渲染(car) 版本：2022-01-10

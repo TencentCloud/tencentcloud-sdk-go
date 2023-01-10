@@ -3367,6 +3367,60 @@ func (c *Client) ReportHeartbeatMetaDataWithContext(ctx context.Context, request
     return
 }
 
+func NewSuspendResumeDataEngineRequest() (request *SuspendResumeDataEngineRequest) {
+    request = &SuspendResumeDataEngineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "SuspendResumeDataEngine")
+    
+    
+    return
+}
+
+func NewSuspendResumeDataEngineResponse() (response *SuspendResumeDataEngineResponse) {
+    response = &SuspendResumeDataEngineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SuspendResumeDataEngine
+// 本接口用于控制暂停或恢复数据引擎
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
+func (c *Client) SuspendResumeDataEngine(request *SuspendResumeDataEngineRequest) (response *SuspendResumeDataEngineResponse, err error) {
+    return c.SuspendResumeDataEngineWithContext(context.Background(), request)
+}
+
+// SuspendResumeDataEngine
+// 本接口用于控制暂停或恢复数据引擎
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
+func (c *Client) SuspendResumeDataEngineWithContext(ctx context.Context, request *SuspendResumeDataEngineRequest) (response *SuspendResumeDataEngineResponse, err error) {
+    if request == nil {
+        request = NewSuspendResumeDataEngineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SuspendResumeDataEngine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSuspendResumeDataEngineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindWorkGroupsFromUserRequest() (request *UnbindWorkGroupsFromUserRequest) {
     request = &UnbindWorkGroupsFromUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

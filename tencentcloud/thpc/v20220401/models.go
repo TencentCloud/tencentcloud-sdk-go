@@ -401,6 +401,23 @@ type CFSOption struct {
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 }
 
+type CFSOptionOverview struct {
+	// 文件系统本地挂载路径。
+	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
+
+	// 文件系统远程挂载ip及路径。
+	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
+
+	// 文件系统协议类型。
+	// <li>NFS 3.0。
+	// <li>NFS 4.0。
+	// <li>TURBO。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 文件系统存储类型，默认值SD；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+}
+
 type ClusterActivity struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -999,6 +1016,9 @@ func (r *DescribeClusterStorageOptionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterStorageOptionResponseParams struct {
+	// 集群存储选项信息概览。
+	StorageOption *StorageOptionOverview `json:"StorageOption,omitempty" name:"StorageOption"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1112,6 +1132,17 @@ type ExpansionNodeConfig struct {
 }
 
 type GooseFSOption struct {
+	// 文件系统本地挂载路径。
+	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
+
+	// 文件系统远程挂载路径。
+	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
+
+	// 文件系统master的ip和端口。
+	Masters []*string `json:"Masters,omitempty" name:"Masters"`
+}
+
+type GooseFSOptionOverview struct {
 	// 文件系统本地挂载路径。
 	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
 
@@ -1368,6 +1399,14 @@ type StorageOption struct {
 
 	// 集群挂在GooseFS文件系统选项
 	GooseFSOptions []*GooseFSOption `json:"GooseFSOptions,omitempty" name:"GooseFSOptions"`
+}
+
+type StorageOptionOverview struct {
+	// CFS存储选项概览信息列表。
+	CFSOptions []*CFSOptionOverview `json:"CFSOptions,omitempty" name:"CFSOptions"`
+
+	// GooseFS存储选项概览信息列表。
+	GooseFSOptions []*GooseFSOptionOverview `json:"GooseFSOptions,omitempty" name:"GooseFSOptions"`
 }
 
 type SystemDisk struct {

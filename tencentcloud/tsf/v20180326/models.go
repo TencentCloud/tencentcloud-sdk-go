@@ -385,6 +385,10 @@ type ApiDetailInfo struct {
 	// Api描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// API路径匹配类型。normal：普通API；wildcard：通配API。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiMatchType *string `json:"ApiMatchType,omitempty" name:"ApiMatchType"`
 }
 
 type ApiDetailResponse struct {
@@ -5214,6 +5218,26 @@ type DeliveryConfigBindGroups struct {
 	// 内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*DeliveryConfigBindGroup `json:"Content,omitempty" name:"Content"`
+}
+
+type DeliveryKafkaInfo struct {
+	// 投递kafka的topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 采集日志的path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path []*string `json:"Path,omitempty" name:"Path"`
+
+	// default，默认换行符分行
+	// time，按时间分行
+	// custom, 选了custom那么CustomRule就要填入具体的自定义值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LineRule *string `json:"LineRule,omitempty" name:"LineRule"`
+
+	// 自定义的分行值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomRule *string `json:"CustomRule,omitempty" name:"CustomRule"`
 }
 
 // Predefined struct for user
@@ -14828,6 +14852,30 @@ type KafkaDeliveryConfig struct {
 	// 换行规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LineRule *string `json:"LineRule,omitempty" name:"LineRule"`
+
+	// 是否需要认证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableAuth *bool `json:"EnableAuth,omitempty" name:"EnableAuth"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 投递的topic和path
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaInfos []*DeliveryKafkaInfo `json:"KafkaInfos,omitempty" name:"KafkaInfos"`
+
+	// 是否应用单行规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableGlobalLineRule *bool `json:"EnableGlobalLineRule,omitempty" name:"EnableGlobalLineRule"`
+
+	// 自定义分行规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomRule *string `json:"CustomRule,omitempty" name:"CustomRule"`
 }
 
 type LaneGroup struct {

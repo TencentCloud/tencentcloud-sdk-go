@@ -67,6 +67,7 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
 // 创建应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
@@ -89,6 +90,7 @@ func (c *Client) CreateApplication(request *CreateApplicationRequest) (response 
 // 创建应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
@@ -234,6 +236,7 @@ func NewCreateApplicationServiceResponse() (response *CreateApplicationServiceRe
 //  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) CreateApplicationService(request *CreateApplicationServiceRequest) (response *CreateApplicationServiceResponse, err error) {
     return c.CreateApplicationServiceWithContext(context.Background(), request)
@@ -260,6 +263,7 @@ func (c *Client) CreateApplicationService(request *CreateApplicationServiceReque
 //  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) CreateApplicationServiceWithContext(ctx context.Context, request *CreateApplicationServiceRequest) (response *CreateApplicationServiceResponse, err error) {
     if request == nil {

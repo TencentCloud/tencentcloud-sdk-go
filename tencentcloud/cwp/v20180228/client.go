@@ -4475,6 +4475,7 @@ func NewDescribeBaselineHostDetectListResponse() (response *DescribeBaselineHost
 // 获取基线检测主机列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineHostDetectList(request *DescribeBaselineHostDetectListRequest) (response *DescribeBaselineHostDetectListResponse, err error) {
@@ -4485,6 +4486,7 @@ func (c *Client) DescribeBaselineHostDetectList(request *DescribeBaselineHostDet
 // 获取基线检测主机列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineHostDetectListWithContext(ctx context.Context, request *DescribeBaselineHostDetectListRequest) (response *DescribeBaselineHostDetectListResponse, err error) {

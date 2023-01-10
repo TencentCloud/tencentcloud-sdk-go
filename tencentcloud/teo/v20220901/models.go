@@ -2775,6 +2775,131 @@ func (r *DescribeContentQuotaResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDDoSAttackDataRequestParams struct {
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计指标列表，取值有：
+	// <li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
+	// <li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
+	// <li>ddos_attackBandwidth：攻击带宽曲线；</li>
+	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 站点集合，不填默认选择全部站点。
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// DDoS策略组ID列表，不填默认选择全部策略ID。
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 查询时间粒度，取值有：
+	// <li>min：1分钟；</li>
+	// <li>5min：5分钟；</li>
+	// <li>hour：1小时；</li>
+	// <li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas：全球（除中国大陆地区）数据；</li>
+	// <li>mainland：中国大陆地区数据；</li>
+	// <li>global：全球数据。</li>不填默认取值为global。
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+type DescribeDDoSAttackDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计指标列表，取值有：
+	// <li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
+	// <li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
+	// <li>ddos_attackBandwidth：攻击带宽曲线；</li>
+	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 站点集合，不填默认选择全部站点。
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// DDoS策略组ID列表，不填默认选择全部策略ID。
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 查询时间粒度，取值有：
+	// <li>min：1分钟；</li>
+	// <li>5min：5分钟；</li>
+	// <li>hour：1小时；</li>
+	// <li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas：全球（除中国大陆地区）数据；</li>
+	// <li>mainland：中国大陆地区数据；</li>
+	// <li>global：全球数据。</li>不填默认取值为global。
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *DescribeDDoSAttackDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSAttackDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "ZoneIds")
+	delete(f, "PolicyIds")
+	delete(f, "Interval")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSAttackDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDDoSAttackDataResponseParams struct {
+	// 查询结果的总条数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// DDoS攻击数据内容列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*SecEntry `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDDoSAttackDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDDoSAttackDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeDDoSAttackDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSAttackDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDDoSAttackTopDataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`

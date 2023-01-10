@@ -10622,6 +10622,18 @@ type DrmStreamingsInfoForUpdate struct {
 	FairPlayDefinition *uint64 `json:"FairPlayDefinition,omitempty" name:"FairPlayDefinition"`
 }
 
+type DynamicRangeInfo struct {
+	// 画面动态范围信息。可取值：
+	// <li>SDR：Standard Dynamic Range 标准动态范围；</li>
+	// <li>HDR：High Dynamic Range 高动态范围。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 高动态范围类型，当 Type 为 HDR 时有效。目前支持的可取值：
+	// <li>hdr10：表示 hdr10 标准；</li>
+	// <li>hlg：表示 hlg 标准。</li>
+	HDRType *string `json:"HDRType,omitempty" name:"HDRType"`
+}
+
 type EditMediaFileInfo struct {
 	// 视频的 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
@@ -13060,6 +13072,10 @@ type MediaVideoStreamItem struct {
 
 	// 编码标签，仅当 Codec 为 hevc 时有效。
 	CodecTag *string `json:"CodecTag,omitempty" name:"CodecTag"`
+
+	// 画面动态范围信息。
+	// <li><font color=red>注意</font>：在 2023-01-10T00:00:00Z 后处理的转码文件，此字段有效。</li>
+	DynamicRangeInfo *DynamicRangeInfo `json:"DynamicRangeInfo,omitempty" name:"DynamicRangeInfo"`
 }
 
 // Predefined struct for user
@@ -16381,7 +16397,8 @@ type ProcedureReviewAudioVideoTaskInput struct {
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 审核的内容，可选值：
-	// <li>Media：原始音视频。</li>
+	// <li>Media：原始音视频；</li>
+	// <li>Cover：封面。</li>
 	// 不填或填空数组时，默认为审核 Media。
 	ReviewContents []*string `json:"ReviewContents,omitempty" name:"ReviewContents"`
 }

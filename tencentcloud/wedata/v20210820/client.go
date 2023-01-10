@@ -6585,7 +6585,7 @@ func NewDescribeRuleTemplateResponse() (response *DescribeRuleTemplateResponse) 
 // 查询模板详情
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RULETEMPLATENOTEXIST = "InvalidParameter.RuleTemplateNotExist"
 func (c *Client) DescribeRuleTemplate(request *DescribeRuleTemplateRequest) (response *DescribeRuleTemplateResponse, err error) {
     return c.DescribeRuleTemplateWithContext(context.Background(), request)
 }
@@ -6594,7 +6594,7 @@ func (c *Client) DescribeRuleTemplate(request *DescribeRuleTemplateRequest) (res
 // 查询模板详情
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RULETEMPLATENOTEXIST = "InvalidParameter.RuleTemplateNotExist"
 func (c *Client) DescribeRuleTemplateWithContext(ctx context.Context, request *DescribeRuleTemplateRequest) (response *DescribeRuleTemplateResponse, err error) {
     if request == nil {
         request = NewDescribeRuleTemplateRequest()
@@ -6684,6 +6684,7 @@ func NewDescribeRuleTemplatesByPageResponse() (response *DescribeRuleTemplatesBy
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleTemplatesByPage(request *DescribeRuleTemplatesByPageRequest) (response *DescribeRuleTemplatesByPageResponse, err error) {
     return c.DescribeRuleTemplatesByPageWithContext(context.Background(), request)
@@ -6694,6 +6695,7 @@ func (c *Client) DescribeRuleTemplatesByPage(request *DescribeRuleTemplatesByPag
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleTemplatesByPageWithContext(ctx context.Context, request *DescribeRuleTemplatesByPageRequest) (response *DescribeRuleTemplatesByPageResponse, err error) {
     if request == nil {
@@ -6734,6 +6736,7 @@ func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
     return c.DescribeRulesWithContext(context.Background(), request)
@@ -6744,6 +6747,7 @@ func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRulesWithContext(ctx context.Context, request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
     if request == nil {
