@@ -70,6 +70,7 @@ package main
 
 import (
 	"fmt"
+    "os"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
@@ -78,7 +79,13 @@ import (
 )
 
 func main() {
-	credential := common.NewCredential("secretId", "secretKey")
+    // 硬编码密钥到代码中有可能随代码泄露而暴露，有安全隐患，并不推荐。
+    // 为了保护密钥安全，建议将密钥设置在环境变量中或者配置文件中，请参考本文凭证管理章节。
+    // credential := common.NewCredential("SecretId", "SecretKey")
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+    )
 	client, _ := cvm.NewClient(credential, regions.Guangzhou, profile.NewClientProfile())
 
 	request := cvm.NewDescribeInstancesRequest()
@@ -104,6 +111,7 @@ package main
 
 import (
 	"fmt"
+    "os"
 
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
@@ -114,10 +122,14 @@ import (
 
 func main() {
         // 必要步骤：
-        // 实例化一个认证对象，入参需要传入腾讯云账户密钥对secretId，secretKey。
-        // 你也可以直接在代码中写死密钥对，但是小心不要将代码复制、上传或者分享给他人，
-        // 以免泄露密钥对危及你的财产安全。
-        credential := common.NewCredential("secretId", "secretKey")
+        // 实例化一个认证对象，入参需要传入腾讯云账户密钥对 SecretId，SecretKey。
+        // 硬编码密钥到代码中有可能随代码泄露而暴露，有安全隐患，并不推荐。
+        // 为了保护密钥安全，建议将密钥设置在环境变量中或者配置文件中，请参考本文凭证管理章节。
+        // credential := common.NewCredential("SecretId", "SecretKey")
+        credential := common.NewCredential(
+            os.Getenv("TENCENTCLOUD_SECRET_ID"),
+            os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+        )
 
         // 非必要步骤
         // 实例化一个客户端配置对象，可以指定超时时间等配置
