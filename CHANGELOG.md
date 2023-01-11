@@ -1,3 +1,147 @@
+# Release v1.0.577
+
+## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 6 次发布
+
+发布时间：2023-01-10 15:15:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeChannelTaskReportUrl](https://cloud.tencent.com/document/api/1553/85576)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 38 次发布
+
+发布时间：2023-01-11 01:21:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+
+	* 新增入参：CcInfos
+
+
+
+
+## 人脸融合(facefusion) 版本：2022-09-27
+
+### 第 2 次发布
+
+发布时间：2023-01-10 20:30:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeMaterialList](https://cloud.tencent.com/document/api/670/85633)
+
+新增数据结构：
+
+* [FaceInfo](https://cloud.tencent.com/document/api/670/85619#FaceInfo)
+* [MaterialFaces](https://cloud.tencent.com/document/api/670/85619#MaterialFaces)
+* [PublicMaterialInfos](https://cloud.tencent.com/document/api/670/85619#PublicMaterialInfos)
+
+### 第 1 次发布
+
+发布时间：2023-01-10 20:21:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [FuseFace](https://cloud.tencent.com/document/api/670/85618)
+
+新增数据结构：
+
+* [FaceRect](https://cloud.tencent.com/document/api/670/85619#FaceRect)
+* [LogoParam](https://cloud.tencent.com/document/api/670/85619#LogoParam)
+* [MergeInfo](https://cloud.tencent.com/document/api/670/85619#MergeInfo)
+
+
+
+## 人脸融合(facefusion) 版本：2018-12-01
+
+
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 17 次发布
+
+发布时间：2023-01-11 01:39:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSnapshots](https://cloud.tencent.com/document/api/596/54348)
+
+	* 新增入参：SelectedTables
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 49 次发布
+
+发布时间：2023-01-11 01:40:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：RegistryChargePrepaid
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 9 次发布
+
+发布时间：2023-01-11 01:46:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAutoScalingConfiguration](https://cloud.tencent.com/document/api/1527/85635)
+
+新增数据结构：
+
+* [ExpansionNodeConfigOverview](https://cloud.tencent.com/document/api/1527/72108#ExpansionNodeConfigOverview)
+* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/72108#QueueConfigOverview)
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
 # Release v1.0.576
 
 ## 主机安全(cwp) 版本：2018-02-28

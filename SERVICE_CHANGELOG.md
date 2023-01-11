@@ -1,10 +1,26 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
+## 应用合规平台(acp) 版本：2022-01-05
 
-### 第 66 次发布
+### 第 6 次发布
 
-发布时间：2023-01-10 01:16:24
+发布时间：2023-01-10 15:15:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeChannelTaskReportUrl](https://cloud.tencent.com/document/api/1553/85576)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 38 次发布
+
+发布时间：2023-01-11 01:21:38
 
 本次发布包含了以下内容：
 
@@ -12,57 +28,18 @@
 
 修改接口：
 
-* [DescribeVersionStatistics](https://cloud.tencent.com/document/api/296/60922)
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
 
-	* 新增出参：GeneralVersionNum
-
-
-
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
-
-### 第 35 次发布
-
-发布时间：2023-01-10 01:20:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SuspendResumeDataEngine](https://cloud.tencent.com/document/api/1342/85563)
-
-
-
-## 小程序安全(mmps) 版本：2020-07-10
-
-### 第 8 次发布
-
-发布时间：2023-01-10 01:33:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
-
-	* 新增成员：PrivacyTextName, SoftwareMD5, PrivacyTextMD5
-
-* [AppTaskData](https://cloud.tencent.com/document/api/1223/75143#AppTaskData)
-
-	* 新增成员：ContactName
+	* 新增入参：CcInfos
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## 人脸融合(facefusion) 版本：2022-09-27
 
-### 第 25 次发布
+### 第 2 次发布
 
-发布时间：2023-01-10 01:48:46
+发布时间：2023-01-10 20:30:44
 
 本次发布包含了以下内容：
 
@@ -70,90 +47,98 @@
 
 新增接口：
 
-* [DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)
+* [DescribeMaterialList](https://cloud.tencent.com/document/api/670/85633)
+
+新增数据结构：
+
+* [FaceInfo](https://cloud.tencent.com/document/api/670/85619#FaceInfo)
+* [MaterialFaces](https://cloud.tencent.com/document/api/670/85619#MaterialFaces)
+* [PublicMaterialInfos](https://cloud.tencent.com/document/api/670/85619#PublicMaterialInfos)
+
+### 第 1 次发布
+
+发布时间：2023-01-10 20:21:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [FuseFace](https://cloud.tencent.com/document/api/670/85618)
+
+新增数据结构：
+
+* [FaceRect](https://cloud.tencent.com/document/api/670/85619#FaceRect)
+* [LogoParam](https://cloud.tencent.com/document/api/670/85619#LogoParam)
+* [MergeInfo](https://cloud.tencent.com/document/api/670/85619#MergeInfo)
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+## 人脸融合(facefusion) 版本：2018-12-01
+
+
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 17 次发布
+
+发布时间：2023-01-11 01:39:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSnapshots](https://cloud.tencent.com/document/api/596/54348)
+
+	* 新增入参：SelectedTables
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 49 次发布
+
+发布时间：2023-01-11 01:40:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：RegistryChargePrepaid
+
 
 
 
 ## 高性能计算平台(thpc) 版本：2022-04-01
 
-### 第 8 次发布
+### 第 9 次发布
 
-发布时间：2023-01-10 01:50:30
+发布时间：2023-01-11 01:46:25
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeClusterStorageOption](https://cloud.tencent.com/document/api/1527/84385)
-
-	* 新增出参：StorageOption
-
+* [DescribeAutoScalingConfiguration](https://cloud.tencent.com/document/api/1527/85635)
 
 新增数据结构：
 
-* [CFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#CFSOptionOverview)
-* [GooseFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#GooseFSOptionOverview)
-* [StorageOptionOverview](https://cloud.tencent.com/document/api/1527/72108#StorageOptionOverview)
+* [ExpansionNodeConfigOverview](https://cloud.tencent.com/document/api/1527/72108#ExpansionNodeConfigOverview)
+* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/72108#QueueConfigOverview)
 
 
 
 ## 高性能计算平台(thpc) 版本：2021-11-09
-
-
-
-## 微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 81 次发布
-
-发布时间：2023-01-10 01:53:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [DeliveryKafkaInfo](https://cloud.tencent.com/document/api/649/36099#DeliveryKafkaInfo)
-
-修改数据结构：
-
-* [ApiDetailInfo](https://cloud.tencent.com/document/api/649/36099#ApiDetailInfo)
-
-	* 新增成员：ApiMatchType
-
-* [KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)
-
-	* 新增成员：EnableAuth, Username, Password, KafkaInfos, EnableGlobalLineRule, CustomRule
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 139 次发布
-
-发布时间：2023-01-10 01:56:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [DynamicRangeInfo](https://cloud.tencent.com/document/api/266/31773#DynamicRangeInfo)
-
-修改数据结构：
-
-* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/266/31773#MediaVideoStreamItem)
-
-	* 新增成员：DynamicRangeInfo
-
 
 
 
@@ -407,6 +392,18 @@
 
 
 ## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 6 次发布
+
+发布时间：2023-01-10 15:15:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeChannelTaskReportUrl](https://cloud.tencent.com/document/api/1553/85576)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 5 次发布
 
@@ -35782,7 +35779,7 @@
 
 新增接口：
 
-* [[SuspendResumeDataEngine](https://cloud.tencent.com/document/api/1342/85563)](https://cloud.tencent.com/document/api/#/#)
+* [SuspendResumeDataEngine](https://cloud.tencent.com/document/api/1342/85563)
 
 ### 第 34 次发布
 
@@ -42502,6 +42499,21 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 38 次发布
+
+发布时间：2023-01-11 01:21:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+
+	* 新增入参：CcInfos
+
+
 ### 第 37 次发布
 
 发布时间：2023-01-09 01:23:34
@@ -44412,6 +44424,46 @@
 
 * [FuseFaceReviewDetail](https://cloud.tencent.com/document/api/670/31062#FuseFaceReviewDetail)
 * [FuseFaceReviewResult](https://cloud.tencent.com/document/api/670/31062#FuseFaceReviewResult)
+
+
+
+## 人脸融合(facefusion) 版本：2022-09-27
+
+### 第 2 次发布
+
+发布时间：2023-01-10 20:30:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeMaterialList](https://cloud.tencent.com/document/api/670/85633)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FaceInfo](https://cloud.tencent.com/document/api/670/85619#FaceInfo)](https://cloud.tencent.com/document/api/670/85619#[FaceInfo](https://cloud.tencent.com/document/api/670/85619#FaceInfo))
+* [[MaterialFaces](https://cloud.tencent.com/document/api/670/85619#MaterialFaces)](https://cloud.tencent.com/document/api/670/85619#[MaterialFaces](https://cloud.tencent.com/document/api/670/85619#MaterialFaces))
+* [[PublicMaterialInfos](https://cloud.tencent.com/document/api/670/85619#PublicMaterialInfos)](https://cloud.tencent.com/document/api/670/85619#[PublicMaterialInfos](https://cloud.tencent.com/document/api/670/85619#PublicMaterialInfos))
+
+### 第 1 次发布
+
+发布时间：2023-01-10 20:21:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FuseFace](https://cloud.tencent.com/document/api/670/85618)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FaceRect](https://cloud.tencent.com/document/api/670/85619#FaceRect)](https://cloud.tencent.com/document/api/670/85619#[FaceRect](https://cloud.tencent.com/document/api/670/85619#FaceRect))
+* [[LogoParam](https://cloud.tencent.com/document/api/670/85619#LogoParam)](https://cloud.tencent.com/document/api/670/85619#[LogoParam](https://cloud.tencent.com/document/api/670/85619#LogoParam))
+* [[MergeInfo](https://cloud.tencent.com/document/api/670/85619#MergeInfo)](https://cloud.tencent.com/document/api/670/85619#[MergeInfo](https://cloud.tencent.com/document/api/670/85619#MergeInfo))
 
 
 
@@ -75490,6 +75542,21 @@
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
 
+### 第 17 次发布
+
+发布时间：2023-01-11 01:39:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSnapshots](https://cloud.tencent.com/document/api/596/54348)
+
+	* 新增入参：SelectedTables
+
+
 ### 第 16 次发布
 
 发布时间：2022-08-23 06:49:36
@@ -78560,6 +78627,21 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 49 次发布
+
+发布时间：2023-01-11 01:40:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：RegistryChargePrepaid
+
 
 ### 第 48 次发布
 
@@ -84049,7 +84131,7 @@
 
 新增接口：
 
-* [[DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)
 
 ### 第 24 次发布
 
@@ -85223,6 +85305,23 @@
 
 ## 高性能计算平台(thpc) 版本：2022-04-01
 
+### 第 9 次发布
+
+发布时间：2023-01-11 01:46:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAutoScalingConfiguration](https://cloud.tencent.com/document/api/1527/85635)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ExpansionNodeConfigOverview](https://cloud.tencent.com/document/api/1527/72108#ExpansionNodeConfigOverview)](https://cloud.tencent.com/document/api/1527/72108#[ExpansionNodeConfigOverview](https://cloud.tencent.com/document/api/1527/72108#ExpansionNodeConfigOverview))
+* [[QueueConfigOverview](https://cloud.tencent.com/document/api/1527/72108#QueueConfigOverview)](https://cloud.tencent.com/document/api/1527/72108#[QueueConfigOverview](https://cloud.tencent.com/document/api/1527/72108#QueueConfigOverview))
+
 ### 第 8 次发布
 
 发布时间：2023-01-10 01:50:30
@@ -85240,9 +85339,9 @@
 
 新增数据结构：
 
-* [[CFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#CFSOptionOverview)](https://cloud.tencent.com/document/api/1527/72108#[CFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#CFSOptionOverview))
-* [[GooseFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#GooseFSOptionOverview)](https://cloud.tencent.com/document/api/1527/72108#[GooseFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#GooseFSOptionOverview))
-* [[StorageOptionOverview](https://cloud.tencent.com/document/api/1527/72108#StorageOptionOverview)](https://cloud.tencent.com/document/api/1527/72108#[StorageOptionOverview](https://cloud.tencent.com/document/api/1527/72108#StorageOptionOverview))
+* [CFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#CFSOptionOverview)
+* [GooseFSOptionOverview](https://cloud.tencent.com/document/api/1527/72108#GooseFSOptionOverview)
+* [StorageOptionOverview](https://cloud.tencent.com/document/api/1527/72108#StorageOptionOverview)
 
 ### 第 7 次发布
 
@@ -92670,7 +92769,7 @@
 
 新增数据结构：
 
-* [[DeliveryKafkaInfo](https://cloud.tencent.com/document/api/649/36099#DeliveryKafkaInfo)](https://cloud.tencent.com/document/api/649/36099#[DeliveryKafkaInfo](https://cloud.tencent.com/document/api/649/36099#DeliveryKafkaInfo))
+* [DeliveryKafkaInfo](https://cloud.tencent.com/document/api/649/36099#DeliveryKafkaInfo)
 
 修改数据结构：
 
@@ -95479,7 +95578,7 @@
 
 新增数据结构：
 
-* [[DynamicRangeInfo](https://cloud.tencent.com/document/api/266/31773#DynamicRangeInfo)](https://cloud.tencent.com/document/api/266/31773#[DynamicRangeInfo](https://cloud.tencent.com/document/api/266/31773#DynamicRangeInfo))
+* [DynamicRangeInfo](https://cloud.tencent.com/document/api/266/31773#DynamicRangeInfo)
 
 修改数据结构：
 

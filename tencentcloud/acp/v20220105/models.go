@@ -424,6 +424,104 @@ func (r *CreateAppScanTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeChannelTaskReportUrlRequestParams struct {
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
+
+	// 应用平台, 0:android, 1: iOS，2:小程序
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 任务类型, 0:基础版, 1:专家版, 2:本地化
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
+	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
+
+	// 子渠道APP MD5值
+	AppMD5 *string `json:"AppMD5,omitempty" name:"AppMD5"`
+}
+
+type DescribeChannelTaskReportUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
+
+	// 应用平台, 0:android, 1: iOS，2:小程序
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 任务类型, 0:基础版, 1:专家版, 2:本地化
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
+	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
+
+	// 子渠道APP MD5值
+	AppMD5 *string `json:"AppMD5,omitempty" name:"AppMD5"`
+}
+
+func (r *DescribeChannelTaskReportUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelTaskReportUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Source")
+	delete(f, "Platform")
+	delete(f, "TaskID")
+	delete(f, "TaskType")
+	delete(f, "ReportType")
+	delete(f, "AppMD5")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChannelTaskReportUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChannelTaskReportUrlResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 诊断报告/堆栈信息/报告json结果下载链接
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+
+	// 诊断报告/堆栈/报告json结果的名称
+	ReportTitle *string `json:"ReportTitle,omitempty" name:"ReportTitle"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeChannelTaskReportUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChannelTaskReportUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeChannelTaskReportUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChannelTaskReportUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFileTicketRequestParams struct {
 	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`

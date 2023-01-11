@@ -729,6 +729,9 @@ type CreateInstanceRequestParams struct {
 	// 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
 	RegistryChargeType *int64 `json:"RegistryChargeType,omitempty" name:"RegistryChargeType"`
 
+	// 预付费自动续费标识和购买时长
+	RegistryChargePrepaid *RegistryChargePrepaid `json:"RegistryChargePrepaid,omitempty" name:"RegistryChargePrepaid"`
+
 	// 是否同步TCR云标签至生成的COS Bucket
 	SyncTag *bool `json:"SyncTag,omitempty" name:"SyncTag"`
 }
@@ -747,6 +750,9 @@ type CreateInstanceRequest struct {
 
 	// 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
 	RegistryChargeType *int64 `json:"RegistryChargeType,omitempty" name:"RegistryChargeType"`
+
+	// 预付费自动续费标识和购买时长
+	RegistryChargePrepaid *RegistryChargePrepaid `json:"RegistryChargePrepaid,omitempty" name:"RegistryChargePrepaid"`
 
 	// 是否同步TCR云标签至生成的COS Bucket
 	SyncTag *bool `json:"SyncTag,omitempty" name:"SyncTag"`
@@ -768,6 +774,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RegistryType")
 	delete(f, "TagSpecification")
 	delete(f, "RegistryChargeType")
+	delete(f, "RegistryChargePrepaid")
 	delete(f, "SyncTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")

@@ -1725,7 +1725,16 @@ func NewEnableRestProxyResponse() (response *EnableRestProxyResponse) {
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDAPPNAME = "InvalidParameterValue.InvalidAppName"
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERNAME = "InvalidParameterValue.InvalidClusterName"
+//  INVALIDPARAMETERVALUE_INVALIDTABLEGROUPNAME = "InvalidParameterValue.InvalidTableGroupName"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEVALUE = "InvalidParameterValue.InvalidTimeValue"
+//  INVALIDPARAMETERVALUE_INVALIDZONENAME = "InvalidParameterValue.InvalidZoneName"
+//  INVALIDPARAMETERVALUE_UNSUPPORTIDLTYPE = "InvalidParameterValue.UnsupportIdlType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EnableRestProxy(request *EnableRestProxyRequest) (response *EnableRestProxyResponse, err error) {
     return c.EnableRestProxyWithContext(context.Background(), request)
 }
@@ -1738,7 +1747,16 @@ func (c *Client) EnableRestProxy(request *EnableRestProxyRequest) (response *Ena
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDAPPNAME = "InvalidParameterValue.InvalidAppName"
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERNAME = "InvalidParameterValue.InvalidClusterName"
+//  INVALIDPARAMETERVALUE_INVALIDTABLEGROUPNAME = "InvalidParameterValue.InvalidTableGroupName"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEVALUE = "InvalidParameterValue.InvalidTimeValue"
+//  INVALIDPARAMETERVALUE_INVALIDZONENAME = "InvalidParameterValue.InvalidZoneName"
+//  INVALIDPARAMETERVALUE_UNSUPPORTIDLTYPE = "InvalidParameterValue.UnsupportIdlType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) EnableRestProxyWithContext(ctx context.Context, request *EnableRestProxyRequest) (response *EnableRestProxyResponse, err error) {
     if request == nil {
         request = NewEnableRestProxyRequest()

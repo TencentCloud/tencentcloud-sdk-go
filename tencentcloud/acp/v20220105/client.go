@@ -141,6 +141,56 @@ func (c *Client) CreateAppScanTaskRepeatWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeChannelTaskReportUrlRequest() (request *DescribeChannelTaskReportUrlRequest) {
+    request = &DescribeChannelTaskReportUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("acp", APIVersion, "DescribeChannelTaskReportUrl")
+    
+    
+    return
+}
+
+func NewDescribeChannelTaskReportUrlResponse() (response *DescribeChannelTaskReportUrlResponse) {
+    response = &DescribeChannelTaskReportUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeChannelTaskReportUrl
+// 获取子渠道的App合规诊断任务报告url
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeChannelTaskReportUrl(request *DescribeChannelTaskReportUrlRequest) (response *DescribeChannelTaskReportUrlResponse, err error) {
+    return c.DescribeChannelTaskReportUrlWithContext(context.Background(), request)
+}
+
+// DescribeChannelTaskReportUrl
+// 获取子渠道的App合规诊断任务报告url
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeChannelTaskReportUrlWithContext(ctx context.Context, request *DescribeChannelTaskReportUrlRequest) (response *DescribeChannelTaskReportUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeChannelTaskReportUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChannelTaskReportUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChannelTaskReportUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileTicketRequest() (request *DescribeFileTicketRequest) {
     request = &DescribeFileTicketRequest{
         BaseRequest: &tchttp.BaseRequest{},

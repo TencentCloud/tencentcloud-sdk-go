@@ -443,6 +443,64 @@ func (c *Client) DeleteNodesWithContext(ctx context.Context, request *DeleteNode
     return
 }
 
+func NewDescribeAutoScalingConfigurationRequest() (request *DescribeAutoScalingConfigurationRequest) {
+    request = &DescribeAutoScalingConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeAutoScalingConfiguration")
+    
+    
+    return
+}
+
+func NewDescribeAutoScalingConfigurationResponse() (response *DescribeAutoScalingConfigurationResponse) {
+    response = &DescribeAutoScalingConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAutoScalingConfiguration
+// 本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
+//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
+func (c *Client) DescribeAutoScalingConfiguration(request *DescribeAutoScalingConfigurationRequest) (response *DescribeAutoScalingConfigurationResponse, err error) {
+    return c.DescribeAutoScalingConfigurationWithContext(context.Background(), request)
+}
+
+// DescribeAutoScalingConfiguration
+// 本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
+//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
+func (c *Client) DescribeAutoScalingConfigurationWithContext(ctx context.Context, request *DescribeAutoScalingConfigurationRequest) (response *DescribeAutoScalingConfigurationResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoScalingConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScalingConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoScalingConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterActivitiesRequest() (request *DescribeClusterActivitiesRequest) {
     request = &DescribeClusterActivitiesRequest{
         BaseRequest: &tchttp.BaseRequest{},

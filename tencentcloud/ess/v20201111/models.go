@@ -1137,6 +1137,10 @@ type CreateFlowRequestParams struct {
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 被抄送人的信息列表。
+	// 注: 此功能为白名单功能，若有需要，请联系电子签客服开白使用。
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 }
 
 type CreateFlowRequest struct {
@@ -1190,6 +1194,10 @@ type CreateFlowRequest struct {
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 被抄送人的信息列表。
+	// 注: 此功能为白名单功能，若有需要，请联系电子签客服开白使用。
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 }
 
 func (r *CreateFlowRequest) ToJsonString() string {
@@ -1218,6 +1226,7 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 	delete(f, "NeedSignReview")
 	delete(f, "CallbackUrl")
 	delete(f, "Agent")
+	delete(f, "CcInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRequest has unknown keys!", "")
 	}

@@ -909,6 +909,72 @@ func (r *DeleteNodesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAutoScalingConfigurationRequestParams struct {
+	// 集群ID。	
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribeAutoScalingConfigurationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。	
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeAutoScalingConfigurationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScalingConfigurationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalingConfigurationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoScalingConfigurationResponseParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。
+	ExpansionBusyTime *int64 `json:"ExpansionBusyTime,omitempty" name:"ExpansionBusyTime"`
+
+	// 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。
+	ShrinkIdleTime *int64 `json:"ShrinkIdleTime,omitempty" name:"ShrinkIdleTime"`
+
+	// 扩容队列配置概览列表。
+	QueueConfigs []*QueueConfigOverview `json:"QueueConfigs,omitempty" name:"QueueConfigs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAutoScalingConfigurationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAutoScalingConfigurationResponseParams `json:"Response"`
+}
+
+func (r *DescribeAutoScalingConfigurationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScalingConfigurationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterActivitiesRequestParams struct {
 	// 集群ID。通过该参数指定需要查询活动历史记录的集群。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1131,6 +1197,44 @@ type ExpansionNodeConfig struct {
 	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
 }
 
+type ExpansionNodeConfigOverview struct {
+	// 节点机型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 扩容实例所在的位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月节点的购买时长、是否设置自动续费等属性。若指定节点的付费模式为预付费则该参数必传。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
+	// 私有网络相关信息配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
+
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 公网带宽相关信息设置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitempty" name:"InternetAccessible"`
+
+	// 节点系统盘配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemDisk *SystemDisk `json:"SystemDisk,omitempty" name:"SystemDisk"`
+
+	// 节点数据盘配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
+}
+
 type GooseFSOption struct {
 	// 文件系统本地挂载路径。
 	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
@@ -1301,6 +1405,26 @@ type QueueConfig struct {
 
 	// 扩容节点配置信息。
 	ExpansionNodeConfigs []*ExpansionNodeConfig `json:"ExpansionNodeConfigs,omitempty" name:"ExpansionNodeConfigs"`
+}
+
+type QueueConfigOverview struct {
+	// 队列名称。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// 队列中弹性节点数量最小值。取值范围0～200。
+	MinSize *int64 `json:"MinSize,omitempty" name:"MinSize"`
+
+	// 队列中弹性节点数量最大值。取值范围0～200。
+	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
+
+	// 是否开启自动扩容。
+	EnableAutoExpansion *bool `json:"EnableAutoExpansion,omitempty" name:"EnableAutoExpansion"`
+
+	// 是否开启自动缩容。
+	EnableAutoShrink *bool `json:"EnableAutoShrink,omitempty" name:"EnableAutoShrink"`
+
+	// 扩容节点配置信息。
+	ExpansionNodeConfigs []*ExpansionNodeConfigOverview `json:"ExpansionNodeConfigs,omitempty" name:"ExpansionNodeConfigs"`
 }
 
 // Predefined struct for user
