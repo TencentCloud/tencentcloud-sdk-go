@@ -570,7 +570,8 @@ import (
 )
 
 func main() {
-	credential := common.NewCredential("secretId", "secretKey")
+	// ...
+
 	prof := profile.NewClientProfile()
 	prof.RateLimitExceededMaxRetries = 3                               // 定义最大重试次数
 	prof.RateLimitExceededRetryDuration = profile.ExponentialBackoff   // 定义重试间隔时间
