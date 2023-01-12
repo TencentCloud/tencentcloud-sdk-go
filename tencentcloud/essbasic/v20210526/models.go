@@ -2368,6 +2368,64 @@ func (r *DescribeChannelFlowEvidenceReportResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeExtendedServiceAuthInfoRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+type DescribeExtendedServiceAuthInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+func (r *DescribeExtendedServiceAuthInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtendedServiceAuthInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtendedServiceAuthInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtendedServiceAuthInfoResponseParams struct {
+	// 企业扩展服务授权信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthInfo []*ExtentServiceAuthInfo `json:"AuthInfo,omitempty" name:"AuthInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeExtendedServiceAuthInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExtendedServiceAuthInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeExtendedServiceAuthInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtendedServiceAuthInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFlowDetailInfoRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -2792,6 +2850,32 @@ type DownloadFlowInfo struct {
 	FlowIdList []*string `json:"FlowIdList,omitempty" name:"FlowIdList"`
 }
 
+type ExtentServiceAuthInfo struct {
+	// 扩展服务类型
+	//   AUTO_SIGN             企业静默签（自动签署）
+	//   OVERSEA_SIGN          企业与港澳台居民*签署合同
+	//   MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
+	//   PAGING_SEAL           骑缝章
+	//   DOWNLOAD_FLOW         授权渠道下载合同 
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 扩展服务名称 
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 服务状态 
+	// ENABLE 开启 
+	// DISABLE 关闭
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 最近操作人openid（经办人openid）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorOpenId *string `json:"OperatorOpenId,omitempty" name:"OperatorOpenId"`
+
+	// 最近操作时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateOn *int64 `json:"OperateOn,omitempty" name:"OperateOn"`
+}
+
 type Filter struct {
 	// 查询过滤条件的Key
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -3108,6 +3192,94 @@ func (r *GetDownloadFlowUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetDownloadFlowUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyExtendedServiceRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	//   扩展服务类型
+	//   AUTO_SIGN             企业静默签（自动签署）
+	//   OVERSEA_SIGN          企业与港澳台居民*签署合同
+	//   MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
+	//   PAGING_SEAL           骑缝章
+	//   DOWNLOAD_FLOW         授权渠道下载合同 
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 操作类型 
+	// OPEN:开通 
+	// CLOSE:关闭
+	Operate *string `json:"Operate,omitempty" name:"Operate"`
+}
+
+type ModifyExtendedServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	//   扩展服务类型
+	//   AUTO_SIGN             企业静默签（自动签署）
+	//   OVERSEA_SIGN          企业与港澳台居民*签署合同
+	//   MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
+	//   PAGING_SEAL           骑缝章
+	//   DOWNLOAD_FLOW         授权渠道下载合同 
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 操作类型 
+	// OPEN:开通 
+	// CLOSE:关闭
+	Operate *string `json:"Operate,omitempty" name:"Operate"`
+}
+
+func (r *ModifyExtendedServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExtendedServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "ServiceType")
+	delete(f, "Operate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyExtendedServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyExtendedServiceResponseParams struct {
+	// 操作跳转链接，有效期24小时
+	// 仅当操作类型是 OPEN 且 扩展服务类型是  AUTO_SIGN 或 DOWNLOAD_FLOW 或者 OVERSEA_SIGN 时返回 ，此时需要经办人(操作人)点击链接完成服务开通操作。若开通操作时没有返回跳转链接，表示无需跳转操作，此时会直接开通服务
+	// 
+	// 操作类型是CLOSE时，不会返回此链接，会直接关闭企业该扩展服务
+	OperateUrl *string `json:"OperateUrl,omitempty" name:"OperateUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyExtendedServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyExtendedServiceResponseParams `json:"Response"`
+}
+
+func (r *ModifyExtendedServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExtendedServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -20,152 +20,6 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-// Predefined struct for user
-type DescribeImageStatRequestParams struct {
-	// 审核类型 1: 机器审核; 2: 人工审核
-	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
-
-	// 查询条件
-	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
-}
-
-type DescribeImageStatRequest struct {
-	*tchttp.BaseRequest
-	
-	// 审核类型 1: 机器审核; 2: 人工审核
-	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
-
-	// 查询条件
-	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
-}
-
-func (r *DescribeImageStatRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeImageStatRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AuditType")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageStatRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeImageStatResponseParams struct {
-	// 识别结果统计
-	Overview *Overview `json:"Overview,omitempty" name:"Overview"`
-
-	// 识别量统计
-	TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
-
-	// 违规数据分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeImageStatResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeImageStatResponseParams `json:"Response"`
-}
-
-func (r *DescribeImageStatResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeImageStatResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeImsListRequestParams struct {
-	// 分页 页索引
-	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
-
-	// 分页条数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
-
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-}
-
-type DescribeImsListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 分页 页索引
-	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
-
-	// 分页条数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
-
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-}
-
-func (r *DescribeImsListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeImsListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "PageIndex")
-	delete(f, "PageSize")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImsListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeImsListResponseParams struct {
-	// 返回列表数据----非必选，该参数暂未对外开放
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImsDetailSet []*ImsDetail `json:"ImsDetailSet,omitempty" name:"ImsDetailSet"`
-
-	// 总条数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeImsListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeImsListResponseParams `json:"Response"`
-}
-
-func (r *DescribeImsListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeImsListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type Device struct {
 	// 发表消息设备IP
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
@@ -190,33 +44,6 @@ type Device struct {
 
 	// IP地址类型 0 代表ipv4 1 代表ipv6
 	IpType *uint64 `json:"IpType,omitempty" name:"IpType"`
-}
-
-type EvilCount struct {
-	// ----非必选，该参数功能暂未对外开放
-	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
-
-	// 分布类型总量
-	Count *int64 `json:"Count,omitempty" name:"Count"`
-}
-
-type Filter struct {
-	// 过滤键的名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
-}
-
-type Filters struct {
-	// 查询字段：
-	// 策略BizType
-	// 子账号SubUin
-	// 日期区间DateRange
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 查询值
-	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 // Predefined struct for user
@@ -369,32 +196,6 @@ func (r *ImageModerationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ImsDetail struct {
-	// 文本内容
-	Content *string `json:"Content,omitempty" name:"Content"`
-
-	// 数据方式， 0：我审，1：人审
-	DataSource *int64 `json:"DataSource,omitempty" name:"DataSource"`
-
-	// 最后更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
-
-	// ----非必选，该参数暂未对外开放
-	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
-
-	// 机器审核时间
-	ModerationTime *string `json:"ModerationTime,omitempty" name:"ModerationTime"`
-
-	// 最后更新人
-	UpdateUser *string `json:"UpdateUser,omitempty" name:"UpdateUser"`
-
-	// 内容RequestId
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
-
-	// 自主审核结果
-	OperEvilType *int64 `json:"OperEvilType,omitempty" name:"OperEvilType"`
-}
-
 type LabelDetailItem struct {
 	// 序号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -516,6 +317,9 @@ type ObjectDetail struct {
 
 	// 检测框坐标
 	Location *Location `json:"Location,omitempty" name:"Location"`
+
+	// 二级标签名称
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type ObjectResult struct {
@@ -569,6 +373,9 @@ type OcrResult struct {
 
 	// ocr识别出的文本结果
 	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 是否命中结果，0 未命中 1命中
+	HitFlag *uint64 `json:"HitFlag,omitempty" name:"HitFlag"`
 }
 
 type OcrTextDetail struct {
@@ -596,70 +403,9 @@ type OcrTextDetail struct {
 
 	// OCR文本识别置信度
 	Rate *uint64 `json:"Rate,omitempty" name:"Rate"`
-}
 
-type Overview struct {
-	// 总调用量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 总调用时长
-	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
-
-	// 通过量
-	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
-
-	// 通过时长
-	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
-
-	// 违规量
-	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
-
-	// 违规时长
-	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
-
-	// 疑似违规量
-	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
-
-	// 疑似违规时长
-	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
-}
-
-type TrendCount struct {
-	// 总调用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 总调用时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalHour *int64 `json:"TotalHour,omitempty" name:"TotalHour"`
-
-	// 通过量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PassCount *int64 `json:"PassCount,omitempty" name:"PassCount"`
-
-	// 通过时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PassHour *int64 `json:"PassHour,omitempty" name:"PassHour"`
-
-	// 违规量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilCount *int64 `json:"EvilCount,omitempty" name:"EvilCount"`
-
-	// 违规时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilHour *int64 `json:"EvilHour,omitempty" name:"EvilHour"`
-
-	// 疑似违规量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuspectCount *int64 `json:"SuspectCount,omitempty" name:"SuspectCount"`
-
-	// 疑似违规时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuspectHour *int64 `json:"SuspectHour,omitempty" name:"SuspectHour"`
-
-	// 日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Date *string `json:"Date,omitempty" name:"Date"`
+	// OCR文本命中的二级标签
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type User struct {

@@ -1817,6 +1817,10 @@ type RoomUser struct {
 	// 字符串房间id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrRoomId *string `json:"StrRoomId,omitempty" name:"StrRoomId"`
+
+	// 房间里用户字符串uin列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrUins []*string `json:"StrUins,omitempty" name:"StrUins"`
 }
 
 type ScanDetail struct {

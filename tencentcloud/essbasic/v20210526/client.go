@@ -1879,6 +1879,62 @@ func (c *Client) DescribeChannelFlowEvidenceReportWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeExtendedServiceAuthInfoRequest() (request *DescribeExtendedServiceAuthInfoRequest) {
+    request = &DescribeExtendedServiceAuthInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeExtendedServiceAuthInfo")
+    
+    
+    return
+}
+
+func NewDescribeExtendedServiceAuthInfoResponse() (response *DescribeExtendedServiceAuthInfoResponse) {
+    response = &DescribeExtendedServiceAuthInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExtendedServiceAuthInfo
+// 查询企业扩展服务授权信息，企业经办人需要时企业超管或者法人
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeExtendedServiceAuthInfo(request *DescribeExtendedServiceAuthInfoRequest) (response *DescribeExtendedServiceAuthInfoResponse, err error) {
+    return c.DescribeExtendedServiceAuthInfoWithContext(context.Background(), request)
+}
+
+// DescribeExtendedServiceAuthInfo
+// 查询企业扩展服务授权信息，企业经办人需要时企业超管或者法人
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeExtendedServiceAuthInfoWithContext(ctx context.Context, request *DescribeExtendedServiceAuthInfoRequest) (response *DescribeExtendedServiceAuthInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtendedServiceAuthInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtendedServiceAuthInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExtendedServiceAuthInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowDetailInfoRequest() (request *DescribeFlowDetailInfoRequest) {
     request = &DescribeFlowDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2339,6 +2395,62 @@ func (c *Client) GetDownloadFlowUrlWithContext(ctx context.Context, request *Get
     request.SetContext(ctx)
     
     response = NewGetDownloadFlowUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyExtendedServiceRequest() (request *ModifyExtendedServiceRequest) {
+    request = &ModifyExtendedServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ModifyExtendedService")
+    
+    
+    return
+}
+
+func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse) {
+    response = &ModifyExtendedServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyExtendedService
+// 修改（操作）企业扩展服务 ，企业经办人需要时企业超管或者法人
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (response *ModifyExtendedServiceResponse, err error) {
+    return c.ModifyExtendedServiceWithContext(context.Background(), request)
+}
+
+// ModifyExtendedService
+// 修改（操作）企业扩展服务 ，企业经办人需要时企业超管或者法人
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyExtendedServiceWithContext(ctx context.Context, request *ModifyExtendedServiceRequest) (response *ModifyExtendedServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyExtendedServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyExtendedService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyExtendedServiceResponse()
     err = c.Send(request, response)
     return
 }

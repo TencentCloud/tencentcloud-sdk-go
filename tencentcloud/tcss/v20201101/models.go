@@ -2306,6 +2306,10 @@ type ComplianceAffectedAsset struct {
 	// 检查项验证信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
+
+	// 主机实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type ComplianceAssetDetailInfo struct {
@@ -2409,6 +2413,10 @@ type ComplianceAssetInfo struct {
 	// RESULT_PASSED: 通过。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
+
+	// 主机节点的实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type ComplianceAssetPolicyItem struct {

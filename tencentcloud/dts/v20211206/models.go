@@ -3770,6 +3770,9 @@ type SkipCheckItemRequestParams struct {
 
 	// 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
 	StepIds []*string `json:"StepIds,omitempty" name:"StepIds"`
+
+	// 当出现外键依赖检查导致校验不通过时、可以通过该字段选择是否迁移外键依赖，当StepIds包含ConstraintCheck且该字段值为shield时表示不迁移外键依赖、当StepIds包含ConstraintCheck且值为migrate时表示迁移外键依赖
+	ForeignKeyFlag *string `json:"ForeignKeyFlag,omitempty" name:"ForeignKeyFlag"`
 }
 
 type SkipCheckItemRequest struct {
@@ -3780,6 +3783,9 @@ type SkipCheckItemRequest struct {
 
 	// 需要跳过校验项的步骤id，需要通过DescribeMigrationCheckJob接口返回StepInfo[i].StepId字段获取，例如：["OptimizeCheck"]
 	StepIds []*string `json:"StepIds,omitempty" name:"StepIds"`
+
+	// 当出现外键依赖检查导致校验不通过时、可以通过该字段选择是否迁移外键依赖，当StepIds包含ConstraintCheck且该字段值为shield时表示不迁移外键依赖、当StepIds包含ConstraintCheck且值为migrate时表示迁移外键依赖
+	ForeignKeyFlag *string `json:"ForeignKeyFlag,omitempty" name:"ForeignKeyFlag"`
 }
 
 func (r *SkipCheckItemRequest) ToJsonString() string {
@@ -3796,6 +3802,7 @@ func (r *SkipCheckItemRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	delete(f, "StepIds")
+	delete(f, "ForeignKeyFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SkipCheckItemRequest has unknown keys!", "")
 	}
@@ -3804,6 +3811,10 @@ func (r *SkipCheckItemRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SkipCheckItemResponseParams struct {
+	// 跳过的提示信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

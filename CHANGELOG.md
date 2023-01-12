@@ -1,3 +1,200 @@
+# Release v1.0.578
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 67 次发布
+
+发布时间：2023-01-12 01:12:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBashEventsNew](https://cloud.tencent.com/document/api/296/85682)
+
+新增数据结构：
+
+* [BashEventNew](https://cloud.tencent.com/document/api/296/19867#BashEventNew)
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 7 次发布
+
+发布时间：2023-01-12 01:17:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SkipCheckItem](https://cloud.tencent.com/document/api/571/83864)
+
+	* 新增入参：ForeignKeyFlag
+
+	* 新增出参：Message
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 59 次发布
+
+发布时间：2023-01-11 15:01:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeExtendedServiceAuthInfo](https://cloud.tencent.com/document/api/1420/85667)
+* [ModifyExtendedService](https://cloud.tencent.com/document/api/1420/85666)
+
+新增数据结构：
+
+* [ExtentServiceAuthInfo](https://cloud.tencent.com/document/api/1420/61525#ExtentServiceAuthInfo)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 29 次发布
+
+发布时间：2023-01-12 01:21:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser)
+
+	* 新增成员：StrUins
+
+
+
+
+## 图片内容安全(ims) 版本：2020-12-29
+
+
+
+## 图片内容安全(ims) 版本：2020-07-13
+
+### 第 5 次发布
+
+发布时间：2023-01-11 11:56:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeImageStat
+* DescribeImsList
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* EvilCount
+* Filter
+* Filters
+* ImsDetail
+* Overview
+* TrendCount
+
+修改数据结构：
+
+* [ObjectDetail](https://cloud.tencent.com/document/api/1125/49657#ObjectDetail)
+
+	* 新增成员：SubLabel
+
+* [OcrResult](https://cloud.tencent.com/document/api/1125/49657#OcrResult)
+
+	* 新增成员：HitFlag
+
+* [OcrTextDetail](https://cloud.tencent.com/document/api/1125/49657#OcrTextDetail)
+
+	* 新增成员：SubLabel
+
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 22 次发布
+
+发布时间：2023-01-12 01:32:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ScoreInfo](https://cloud.tencent.com/document/api/1464/61476#ScoreInfo)
+
+	* 新增成员：CreateTime
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 35 次发布
+
+发布时间：2023-01-12 01:37:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ComplianceAffectedAsset](https://cloud.tencent.com/document/api/1285/65614#ComplianceAffectedAsset)
+
+	* 新增成员：InstanceId
+
+* [ComplianceAssetInfo](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetInfo)
+
+	* 新增成员：InstanceId
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 17 次发布
+
+发布时间：2023-01-12 01:49:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CompareRule](https://cloud.tencent.com/document/api/1267/76336#CompareRule)
+
+	* 新增成员：CycleStep
+
+
+
+
 # Release v1.0.577
 
 ## 应用合规平台(acp) 版本：2022-01-05

@@ -1119,6 +1119,7 @@ func NewDescribeSlowLogTimeSeriesStatsResponse() (response *DescribeSlowLogTimeS
 // 获取慢日志统计柱状图。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeSlowLogTimeSeriesStats(request *DescribeSlowLogTimeSeriesStatsRequest) (response *DescribeSlowLogTimeSeriesStatsResponse, err error) {
     return c.DescribeSlowLogTimeSeriesStatsWithContext(context.Background(), request)
@@ -1128,6 +1129,7 @@ func (c *Client) DescribeSlowLogTimeSeriesStats(request *DescribeSlowLogTimeSeri
 // 获取慢日志统计柱状图。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) DescribeSlowLogTimeSeriesStatsWithContext(ctx context.Context, request *DescribeSlowLogTimeSeriesStatsRequest) (response *DescribeSlowLogTimeSeriesStatsResponse, err error) {
     if request == nil {

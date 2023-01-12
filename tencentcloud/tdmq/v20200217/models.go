@@ -2182,7 +2182,7 @@ type CreateRocketMQTopicRequestParams struct {
 	// 主题所在的命名空间，目前支持在单个命名空间下创建主题
 	Namespaces []*string `json:"Namespaces,omitempty" name:"Namespaces"`
 
-	// 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder
+	// 主题类型，可选值为Normal, PartitionedOrder, Transaction, DelayScheduled。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 集群ID
@@ -2204,7 +2204,7 @@ type CreateRocketMQTopicRequest struct {
 	// 主题所在的命名空间，目前支持在单个命名空间下创建主题
 	Namespaces []*string `json:"Namespaces,omitempty" name:"Namespaces"`
 
-	// 主题类型，可选值为Normal, GlobalOrder, PartitionedOrder
+	// 主题类型，可选值为Normal, PartitionedOrder, Transaction, DelayScheduled。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 集群ID

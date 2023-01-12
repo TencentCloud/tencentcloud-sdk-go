@@ -2117,6 +2117,10 @@ type CompareRule struct {
 	// 比较条件列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*CompareRuleItem `json:"Items,omitempty" name:"Items"`
+
+	// 周期性模板默认周期，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleStep *uint64 `json:"CycleStep,omitempty" name:"CycleStep"`
 }
 
 type CompareRuleItem struct {

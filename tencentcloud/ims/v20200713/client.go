@@ -45,128 +45,6 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
-func NewDescribeImageStatRequest() (request *DescribeImageStatRequest) {
-    request = &DescribeImageStatRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ims", APIVersion, "DescribeImageStat")
-    
-    
-    return
-}
-
-func NewDescribeImageStatResponse() (response *DescribeImageStatResponse) {
-    response = &DescribeImageStatResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeImageStat
-// 控制台识别统计
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeImageStat(request *DescribeImageStatRequest) (response *DescribeImageStatResponse, err error) {
-    return c.DescribeImageStatWithContext(context.Background(), request)
-}
-
-// DescribeImageStat
-// 控制台识别统计
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeImageStatWithContext(ctx context.Context, request *DescribeImageStatRequest) (response *DescribeImageStatResponse, err error) {
-    if request == nil {
-        request = NewDescribeImageStatRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeImageStat require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeImageStatResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeImsListRequest() (request *DescribeImsListRequest) {
-    request = &DescribeImsListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ims", APIVersion, "DescribeImsList")
-    
-    
-    return
-}
-
-func NewDescribeImsListResponse() (response *DescribeImsListResponse) {
-    response = &DescribeImsListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeImsList
-// 图片机器审核明细
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeImsList(request *DescribeImsListRequest) (response *DescribeImsListResponse, err error) {
-    return c.DescribeImsListWithContext(context.Background(), request)
-}
-
-// DescribeImsList
-// 图片机器审核明细
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeImsListWithContext(ctx context.Context, request *DescribeImsListRequest) (response *DescribeImsListResponse, err error) {
-    if request == nil {
-        request = NewDescribeImsListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeImsList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeImsListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewImageModerationRequest() (request *ImageModerationRequest) {
     request = &ImageModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -228,6 +106,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_IMAGESIZETOOSMALL = "InvalidParameter.ImageSizeTooSmall"
 //  INVALIDPARAMETER_INVALIDIMAGECONTENT = "InvalidParameter.InvalidImageContent"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_EMPTYIMAGECONTENT = "InvalidParameterValue.EmptyImageContent"
 //  INVALIDPARAMETERVALUE_IMAGESIZETOOSMALL = "InvalidParameterValue.ImageSizeTooSmall"
@@ -248,6 +127,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //  RESOURCEUNAVAILABLE_INVALIDIMAGECONTENT = "ResourceUnavailable.InvalidImageContent"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
@@ -297,6 +177,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_IMAGESIZETOOSMALL = "InvalidParameter.ImageSizeTooSmall"
 //  INVALIDPARAMETER_INVALIDIMAGECONTENT = "InvalidParameter.InvalidImageContent"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_EMPTYIMAGECONTENT = "InvalidParameterValue.EmptyImageContent"
 //  INVALIDPARAMETERVALUE_IMAGESIZETOOSMALL = "InvalidParameterValue.ImageSizeTooSmall"
@@ -317,6 +198,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 //  RESOURCEUNAVAILABLE_INVALIDIMAGECONTENT = "ResourceUnavailable.InvalidImageContent"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageModerationRequest) (response *ImageModerationResponse, err error) {

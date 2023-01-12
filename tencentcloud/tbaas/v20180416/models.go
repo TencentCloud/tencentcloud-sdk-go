@@ -2555,7 +2555,7 @@ type InvokeChainMakerContractRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
@@ -2577,7 +2577,7 @@ type InvokeChainMakerContractRequest struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
@@ -2648,7 +2648,7 @@ type InvokeChainMakerDemoContractRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
@@ -2670,7 +2670,7 @@ type InvokeChainMakerDemoContractRequest struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
@@ -2885,7 +2885,7 @@ type QueryChainMakerBlockTransactionRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 区块高度
@@ -2898,7 +2898,7 @@ type QueryChainMakerBlockTransactionRequest struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 区块高度
@@ -2967,7 +2967,7 @@ type QueryChainMakerContractRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
@@ -2986,7 +2986,7 @@ type QueryChainMakerContractRequest struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
@@ -3053,7 +3053,7 @@ type QueryChainMakerDemoBlockTransactionRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 区块高度
@@ -3066,7 +3066,7 @@ type QueryChainMakerDemoBlockTransactionRequest struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 区块高度
@@ -3135,7 +3135,7 @@ type QueryChainMakerDemoContractRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
@@ -3154,7 +3154,7 @@ type QueryChainMakerDemoContractRequest struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
@@ -3221,7 +3221,7 @@ type QueryChainMakerDemoTransactionRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 交易ID，通过调用合约的返回值获取
@@ -3234,7 +3234,7 @@ type QueryChainMakerDemoTransactionRequest struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 交易ID，通过调用合约的返回值获取
@@ -3293,7 +3293,7 @@ type QueryChainMakerTransactionRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 交易ID，通过调用合约的返回值获取
@@ -3306,7 +3306,7 @@ type QueryChainMakerTransactionRequest struct {
 	// 网络ID，可在区块链网络详情或列表中获取
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 业务链编号，可在业务链列表中获取
+	// 业务链ID，可在网络概览页获取
 	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
 
 	// 交易ID，通过调用合约的返回值获取

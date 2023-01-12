@@ -2095,6 +2095,79 @@ type BashEvent struct {
 	RegexBashCmd *string `json:"RegexBashCmd,omitempty" name:"RegexBashCmd"`
 }
 
+type BashEventNew struct {
+	// 数据ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机内网IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 执行用户名
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 平台类型
+	Platform *uint64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 执行命令
+	BashCmd *string `json:"BashCmd,omitempty" name:"BashCmd"`
+
+	// 规则ID
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则等级：1-高 2-中 3-低
+	RuleLevel *uint64 `json:"RuleLevel,omitempty" name:"RuleLevel"`
+
+	// 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 发生时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 主机名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 0: bash日志 1: 实时监控(雷霆版)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectBy *uint64 `json:"DetectBy,omitempty" name:"DetectBy"`
+
+	// 进程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pid *string `json:"Pid,omitempty" name:"Pid"`
+
+	// 进程名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Exe *string `json:"Exe,omitempty" name:"Exe"`
+
+	// 处理时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 规则类别  0=系统规则，1=用户规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleCategory *uint64 `json:"RuleCategory,omitempty" name:"RuleCategory"`
+
+	// 自动生成的正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegexBashCmd *string `json:"RegexBashCmd,omitempty" name:"RegexBashCmd"`
+
+	// 0:普通 1:专业版 2:旗舰版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineType *int64 `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 机器额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+}
+
 type BashRule struct {
 	// 规则ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -9240,6 +9313,114 @@ func (r *DescribeBaselineTopResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBaselineTopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBashEventsNewRequestParams struct {
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// <li>HostName - String - 是否必填：否 - 主机名</li>
+	// <li>Hostip - String - 是否必填：否 - 主机内网IP</li>
+	// <li>HostIp - String - 是否必填：否 - 主机内网IP</li>
+	// <li>RuleCategory - Int - 是否必填：否 - 策略类型,全部或者单选(0:系统 1:用户)</li>
+	// <li>RuleName - String - 是否必填：否 - 策略名称</li>
+	// <li>RuleLevel - Int - 是否必填：否 - 威胁等级,可以多选</li>
+	// <li>Status - Int - 是否必填：否 - 处理状态,可多选(0:待处理 1:已处理 2:已加白  3:已忽略 4:已删除 5:已拦截)</li>
+	// <li>DetectBy - Int - 是否必填：否 - 数据来源,可多选(0:bash日志 1:实时监控)</li>
+	// <li>StartTime - String - 是否必填：否 - 开始时间</li>
+	// <li>EndTime - String - 是否必填：否 - 结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式：根据请求次数排序：asc-升序/desc-降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段：CreateTime-发生时间。ModifyTime-处理时间
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeBashEventsNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// <li>HostName - String - 是否必填：否 - 主机名</li>
+	// <li>Hostip - String - 是否必填：否 - 主机内网IP</li>
+	// <li>HostIp - String - 是否必填：否 - 主机内网IP</li>
+	// <li>RuleCategory - Int - 是否必填：否 - 策略类型,全部或者单选(0:系统 1:用户)</li>
+	// <li>RuleName - String - 是否必填：否 - 策略名称</li>
+	// <li>RuleLevel - Int - 是否必填：否 - 威胁等级,可以多选</li>
+	// <li>Status - Int - 是否必填：否 - 处理状态,可多选(0:待处理 1:已处理 2:已加白  3:已忽略 4:已删除 5:已拦截)</li>
+	// <li>DetectBy - Int - 是否必填：否 - 数据来源,可多选(0:bash日志 1:实时监控)</li>
+	// <li>StartTime - String - 是否必填：否 - 开始时间</li>
+	// <li>EndTime - String - 是否必填：否 - 结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式：根据请求次数排序：asc-升序/desc-降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段：CreateTime-发生时间。ModifyTime-处理时间
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeBashEventsNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBashEventsNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBashEventsNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBashEventsNewResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 高危命令事件列表
+	List []*BashEventNew `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBashEventsNewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBashEventsNewResponseParams `json:"Response"`
+}
+
+func (r *DescribeBashEventsNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBashEventsNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

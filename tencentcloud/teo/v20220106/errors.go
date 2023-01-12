@@ -53,7 +53,7 @@ const (
 	// 后端服务路由地址错误。
 	INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 
-	// 系统错误。
+	// 内部错误-系统错误。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 
 	// 参数错误。
@@ -128,7 +128,7 @@ const (
 	// 参数错误
 	INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
 
-	// 域名配置错误。
+	// 配置项参数错误。
 	INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
 
 	// 资源存在错误。
