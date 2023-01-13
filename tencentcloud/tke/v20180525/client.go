@@ -12394,7 +12394,7 @@ func NewUpgradeClusterInstancesResponse() (response *UpgradeClusterInstancesResp
 }
 
 // UpgradeClusterInstances
-// 给集群的一批work节点进行升级 
+// 给集群的一批work节点进行升级
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKALREADYRUNNING = "FailedOperation.TaskAlreadyRunning"
@@ -12412,7 +12412,7 @@ func (c *Client) UpgradeClusterInstances(request *UpgradeClusterInstancesRequest
 }
 
 // UpgradeClusterInstances
-// 给集群的一批work节点进行升级 
+// 给集群的一批work节点进行升级
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKALREADYRUNNING = "FailedOperation.TaskAlreadyRunning"

@@ -1,30 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
 
-### 第 67 次发布
+### 第 51 次发布
 
-发布时间：2023-01-12 01:12:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeBashEventsNew](https://cloud.tencent.com/document/api/296/85682)
-
-新增数据结构：
-
-* [BashEventNew](https://cloud.tencent.com/document/api/296/19867#BashEventNew)
-
-
-
-## 数据传输服务(dts) 版本：2021-12-06
-
-### 第 7 次发布
-
-发布时间：2023-01-12 01:17:34
+发布时间：2023-01-13 01:02:31
 
 本次发布包含了以下内容：
 
@@ -32,24 +12,86 @@
 
 修改接口：
 
-* [SkipCheckItem](https://cloud.tencent.com/document/api/571/83864)
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
 
-	* 新增入参：ForeignKeyFlag
-
-	* 新增出参：Message
+	* 新增入参：ExcludeAdvancedInfo
 
 
+修改数据结构：
+
+* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+
+	* 新增成员：PassiveStatus
 
 
-## 数据传输服务(dts) 版本：2018-03-30
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 109 次发布
+
+发布时间：2023-01-13 01:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872)
+
+	* 新增入参：ProxyVips, ProxyIds
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 59 次发布
+## 日志服务(cls) 版本：2020-10-16
 
-发布时间：2023-01-11 15:01:01
+### 第 35 次发布
+
+发布时间：2023-01-13 01:13:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogHistogram](https://cloud.tencent.com/document/api/614/71726)
+
+	* <font color="#dd0000">**修改入参**：</font>TopicId
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* <font color="#dd0000">**修改入参**：</font>TopicId
+
+
+
+
+## DDoS 高防包(dayu) 版本：2018-07-09
+
+### 第 22 次发布
+
+发布时间：2023-01-13 01:19:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IpBlockData](https://cloud.tencent.com/document/api/1021/39225#IpBlockData)
+
+	* 新增成员：ProtectFlag
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 6 次发布
+
+发布时间：2023-01-13 01:33:56
 
 本次发布包含了以下内容：
 
@@ -57,88 +99,73 @@
 
 新增接口：
 
-* [DescribeExtendedServiceAuthInfo](https://cloud.tencent.com/document/api/1420/85667)
-* [ModifyExtendedService](https://cloud.tencent.com/document/api/1420/85666)
+* [DescribeAppDetail](https://cloud.tencent.com/document/api/1639/85701)
+
+修改接口：
+
+* [ModifyApp](https://cloud.tencent.com/document/api/1639/81546)
+
+	* 新增入参：CallbackKey
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 73 次发布
+
+发布时间：2023-01-13 01:36:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckIsPrometheusNewUser](https://cloud.tencent.com/document/api/248/85723)
+* [CreatePrometheusRecordRuleYaml](https://cloud.tencent.com/document/api/248/85707)
+* [CreatePrometheusTemp](https://cloud.tencent.com/document/api/248/85722)
+* [DeletePrometheusRecordRuleYaml](https://cloud.tencent.com/document/api/248/85706)
+* [DeletePrometheusTemp](https://cloud.tencent.com/document/api/248/85721)
+* [DeletePrometheusTempSync](https://cloud.tencent.com/document/api/248/85720)
+* [DescribePrometheusAgentInstances](https://cloud.tencent.com/document/api/248/85719)
+* [DescribePrometheusAlertPolicy](https://cloud.tencent.com/document/api/248/85718)
+* [DescribePrometheusConfig](https://cloud.tencent.com/document/api/248/85705)
+* [DescribePrometheusInstanceDetail](https://cloud.tencent.com/document/api/248/85717)
+* [DescribePrometheusInstanceInitStatus](https://cloud.tencent.com/document/api/248/85716)
+* [DescribePrometheusInstancesOverview](https://cloud.tencent.com/document/api/248/85715)
+* [DescribePrometheusRecordRuleYaml](https://cloud.tencent.com/document/api/248/85704)
+* [DescribePrometheusRecordRules](https://cloud.tencent.com/document/api/248/85714)
+* [DescribePrometheusTemp](https://cloud.tencent.com/document/api/248/85713)
+* [DescribePrometheusTempSync](https://cloud.tencent.com/document/api/248/85712)
+* [ModifyPrometheusRecordRuleYaml](https://cloud.tencent.com/document/api/248/85703)
+* [ModifyPrometheusTemp](https://cloud.tencent.com/document/api/248/85711)
+* [RunPrometheusInstance](https://cloud.tencent.com/document/api/248/85710)
+* [SyncPrometheusTemp](https://cloud.tencent.com/document/api/248/85709)
 
 新增数据结构：
 
-* [ExtentServiceAuthInfo](https://cloud.tencent.com/document/api/1420/61525#ExtentServiceAuthInfo)
+* [Filter](https://cloud.tencent.com/document/api/248/30354#Filter)
+* [Label](https://cloud.tencent.com/document/api/248/30354#Label)
+* [PrometheusAlertManagerConfig](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertManagerConfig)
+* [PrometheusAlertPolicyItem](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertPolicyItem)
+* [PrometheusAlertRule](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertRule)
+* [PrometheusConfigItem](https://cloud.tencent.com/document/api/248/30354#PrometheusConfigItem)
+* [PrometheusInstancesOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesOverview)
+* [PrometheusNotificationItem](https://cloud.tencent.com/document/api/248/30354#PrometheusNotificationItem)
+* [PrometheusRecordRuleYamlItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRecordRuleYamlItem)
+* [PrometheusTemp](https://cloud.tencent.com/document/api/248/30354#PrometheusTemp)
+* [PrometheusTempModify](https://cloud.tencent.com/document/api/248/30354#PrometheusTempModify)
+* [PrometheusTemplateSyncTarget](https://cloud.tencent.com/document/api/248/30354#PrometheusTemplateSyncTarget)
+* [TaskStepInfo](https://cloud.tencent.com/document/api/248/30354#TaskStepInfo)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 媒体处理(mps) 版本：2019-06-12
 
+### 第 50 次发布
 
-
-## 游戏多媒体引擎(gme) 版本：2018-07-11
-
-### 第 29 次发布
-
-发布时间：2023-01-12 01:21:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RoomUser](https://cloud.tencent.com/document/api/607/35375#RoomUser)
-
-	* 新增成员：StrUins
-
-
-
-
-## 图片内容安全(ims) 版本：2020-12-29
-
-
-
-## 图片内容安全(ims) 版本：2020-07-13
-
-### 第 5 次发布
-
-发布时间：2023-01-11 11:56:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeImageStat
-* DescribeImsList
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* EvilCount
-* Filter
-* Filters
-* ImsDetail
-* Overview
-* TrendCount
-
-修改数据结构：
-
-* [ObjectDetail](https://cloud.tencent.com/document/api/1125/49657#ObjectDetail)
-
-	* 新增成员：SubLabel
-
-* [OcrResult](https://cloud.tencent.com/document/api/1125/49657#OcrResult)
-
-	* 新增成员：HitFlag
-
-* [OcrTextDetail](https://cloud.tencent.com/document/api/1125/49657#OcrTextDetail)
-
-	* 新增成员：SubLabel
-
-
-
-
-## 前端性能监控(rum) 版本：2021-06-22
-
-### 第 22 次发布
-
-发布时间：2023-01-12 01:32:36
+发布时间：2023-01-13 01:39:05
 
 本次发布包含了以下内容：
 
@@ -146,41 +173,18 @@
 
 修改数据结构：
 
-* [ScoreInfo](https://cloud.tencent.com/document/api/1464/61476#ScoreInfo)
+* [AiAnalysisTaskInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskInput)
 
-	* 新增成员：CreateTime
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 35 次发布
-
-发布时间：2023-01-12 01:37:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ComplianceAffectedAsset](https://cloud.tencent.com/document/api/1285/65614#ComplianceAffectedAsset)
-
-	* 新增成员：InstanceId
-
-* [ComplianceAssetInfo](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetInfo)
-
-	* 新增成员：InstanceId
+	* 新增成员：ExtendedParameter
 
 
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 17 次发布
+### 第 28 次发布
 
-发布时间：2023-01-12 01:49:24
+发布时间：2023-01-13 01:40:40
 
 本次发布包含了以下内容：
 
@@ -188,9 +192,50 @@
 
 修改数据结构：
 
-* [CompareRule](https://cloud.tencent.com/document/api/1267/76336#CompareRule)
+* [Savepoint](https://cloud.tencent.com/document/api/849/52010#Savepoint)
 
-	* 新增成员：CycleStep
+	* 新增成员：TimeConsuming, PathStatus
+
+	* <font color="#dd0000">**修改成员**：</font>Id, VersionId, Status, CreateTime, UpdateTime, Path, Size, RecordType, JobRuntimeId, Description, Timeout, SerialId
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 31 次发布
+
+发布时间：2023-01-13 01:55:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateImage](https://cloud.tencent.com/document/api/865/85724)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 137 次发布
+
+发布时间：2023-01-13 01:57:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85354)
+
+	* 新增入参：SecurityGroupIds
+
+* [UpgradeClusterInstances](https://cloud.tencent.com/document/api/457/50365)
+
+	* 新增入参：UpgradeRunTime
 
 
 
@@ -1775,6 +1820,28 @@
 
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 51 次发布
+
+发布时间：2023-01-13 01:02:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+
+	* 新增入参：ExcludeAdvancedInfo
+
+
+修改数据结构：
+
+* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+
+	* 新增成员：PassiveStatus
+
 
 ### 第 50 次发布
 
@@ -12608,6 +12675,21 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 109 次发布
+
+发布时间：2023-01-13 01:08:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872)
+
+	* 新增入参：ProxyVips, ProxyIds
+
+
 ### 第 108 次发布
 
 发布时间：2022-12-21 01:20:25
@@ -22949,6 +23031,25 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 35 次发布
+
+发布时间：2023-01-13 01:13:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogHistogram](https://cloud.tencent.com/document/api/614/71726)
+
+	* <font color="#dd0000">**修改入参**：</font>TopicId
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* <font color="#dd0000">**修改入参**：</font>TopicId
+
+
 ### 第 34 次发布
 
 发布时间：2022-11-07 06:12:05
@@ -29913,11 +30014,11 @@
 
 新增接口：
 
-* [[DescribeBashEventsNew](https://cloud.tencent.com/document/api/296/85682)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBashEventsNew](https://cloud.tencent.com/document/api/296/85682)
 
 新增数据结构：
 
-* [[BashEventNew](https://cloud.tencent.com/document/api/296/19867#BashEventNew)](https://cloud.tencent.com/document/api/296/19867#[BashEventNew](https://cloud.tencent.com/document/api/296/19867#BashEventNew))
+* [BashEventNew](https://cloud.tencent.com/document/api/296/19867#BashEventNew)
 
 ### 第 66 次发布
 
@@ -33280,6 +33381,21 @@
 
 
 ## DDoS 高防包(dayu) 版本：2018-07-09
+
+### 第 22 次发布
+
+发布时间：2023-01-13 01:19:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IpBlockData](https://cloud.tencent.com/document/api/1021/39225#IpBlockData)
+
+	* 新增成员：ProtectFlag
+
 
 ### 第 21 次发布
 
@@ -43365,12 +43481,12 @@
 
 新增接口：
 
-* [[DescribeExtendedServiceAuthInfo](https://cloud.tencent.com/document/api/1420/85667)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyExtendedService](https://cloud.tencent.com/document/api/1420/85666)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeExtendedServiceAuthInfo](https://cloud.tencent.com/document/api/1420/85667)
+* [ModifyExtendedService](https://cloud.tencent.com/document/api/1420/85666)
 
 新增数据结构：
 
-* [[ExtentServiceAuthInfo](https://cloud.tencent.com/document/api/1420/61525#ExtentServiceAuthInfo)](https://cloud.tencent.com/document/api/1420/61525#[ExtentServiceAuthInfo](https://cloud.tencent.com/document/api/1420/61525#ExtentServiceAuthInfo))
+* [ExtentServiceAuthInfo](https://cloud.tencent.com/document/api/1420/61525#ExtentServiceAuthInfo)
 
 ### 第 58 次发布
 
@@ -54736,6 +54852,25 @@
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
+### 第 6 次发布
+
+发布时间：2023-01-13 01:33:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAppDetail](https://cloud.tencent.com/document/api/1639/85701)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ModifyApp](https://cloud.tencent.com/document/api/1639/81546)
+
+	* 新增入参：CallbackKey
+
+
 ### 第 5 次发布
 
 发布时间：2022-10-19 06:31:50
@@ -59766,6 +59901,53 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 73 次发布
+
+发布时间：2023-01-13 01:36:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckIsPrometheusNewUser](https://cloud.tencent.com/document/api/248/85723)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePrometheusRecordRuleYaml](https://cloud.tencent.com/document/api/248/85707)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePrometheusTemp](https://cloud.tencent.com/document/api/248/85722)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrometheusRecordRuleYaml](https://cloud.tencent.com/document/api/248/85706)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrometheusTemp](https://cloud.tencent.com/document/api/248/85721)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrometheusTempSync](https://cloud.tencent.com/document/api/248/85720)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusAgentInstances](https://cloud.tencent.com/document/api/248/85719)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusAlertPolicy](https://cloud.tencent.com/document/api/248/85718)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusConfig](https://cloud.tencent.com/document/api/248/85705)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusInstanceDetail](https://cloud.tencent.com/document/api/248/85717)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusInstanceInitStatus](https://cloud.tencent.com/document/api/248/85716)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusInstancesOverview](https://cloud.tencent.com/document/api/248/85715)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusRecordRuleYaml](https://cloud.tencent.com/document/api/248/85704)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusRecordRules](https://cloud.tencent.com/document/api/248/85714)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusTemp](https://cloud.tencent.com/document/api/248/85713)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusTempSync](https://cloud.tencent.com/document/api/248/85712)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPrometheusRecordRuleYaml](https://cloud.tencent.com/document/api/248/85703)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPrometheusTemp](https://cloud.tencent.com/document/api/248/85711)](https://cloud.tencent.com/document/api/#/#)
+* [[RunPrometheusInstance](https://cloud.tencent.com/document/api/248/85710)](https://cloud.tencent.com/document/api/#/#)
+* [[SyncPrometheusTemp](https://cloud.tencent.com/document/api/248/85709)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Filter](https://cloud.tencent.com/document/api/248/30354#Filter)](https://cloud.tencent.com/document/api/248/30354#[Filter](https://cloud.tencent.com/document/api/248/30354#Filter))
+* [[Label](https://cloud.tencent.com/document/api/248/30354#Label)](https://cloud.tencent.com/document/api/248/30354#[Label](https://cloud.tencent.com/document/api/248/30354#Label))
+* [[PrometheusAlertManagerConfig](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertManagerConfig)](https://cloud.tencent.com/document/api/248/30354#[PrometheusAlertManagerConfig](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertManagerConfig))
+* [[PrometheusAlertPolicyItem](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertPolicyItem)](https://cloud.tencent.com/document/api/248/30354#[PrometheusAlertPolicyItem](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertPolicyItem))
+* [[PrometheusAlertRule](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertRule)](https://cloud.tencent.com/document/api/248/30354#[PrometheusAlertRule](https://cloud.tencent.com/document/api/248/30354#PrometheusAlertRule))
+* [[PrometheusConfigItem](https://cloud.tencent.com/document/api/248/30354#PrometheusConfigItem)](https://cloud.tencent.com/document/api/248/30354#[PrometheusConfigItem](https://cloud.tencent.com/document/api/248/30354#PrometheusConfigItem))
+* [[PrometheusInstancesOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesOverview)](https://cloud.tencent.com/document/api/248/30354#[PrometheusInstancesOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesOverview))
+* [[PrometheusNotificationItem](https://cloud.tencent.com/document/api/248/30354#PrometheusNotificationItem)](https://cloud.tencent.com/document/api/248/30354#[PrometheusNotificationItem](https://cloud.tencent.com/document/api/248/30354#PrometheusNotificationItem))
+* [[PrometheusRecordRuleYamlItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRecordRuleYamlItem)](https://cloud.tencent.com/document/api/248/30354#[PrometheusRecordRuleYamlItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRecordRuleYamlItem))
+* [[PrometheusTemp](https://cloud.tencent.com/document/api/248/30354#PrometheusTemp)](https://cloud.tencent.com/document/api/248/30354#[PrometheusTemp](https://cloud.tencent.com/document/api/248/30354#PrometheusTemp))
+* [[PrometheusTempModify](https://cloud.tencent.com/document/api/248/30354#PrometheusTempModify)](https://cloud.tencent.com/document/api/248/30354#[PrometheusTempModify](https://cloud.tencent.com/document/api/248/30354#PrometheusTempModify))
+* [[PrometheusTemplateSyncTarget](https://cloud.tencent.com/document/api/248/30354#PrometheusTemplateSyncTarget)](https://cloud.tencent.com/document/api/248/30354#[PrometheusTemplateSyncTarget](https://cloud.tencent.com/document/api/248/30354#PrometheusTemplateSyncTarget))
+* [[TaskStepInfo](https://cloud.tencent.com/document/api/248/30354#TaskStepInfo)](https://cloud.tencent.com/document/api/248/30354#[TaskStepInfo](https://cloud.tencent.com/document/api/248/30354#TaskStepInfo))
+
 ### 第 72 次发布
 
 发布时间：2023-01-02 01:32:07
@@ -61333,6 +61515,21 @@
 
 
 ## 媒体处理(mps) 版本：2019-06-12
+
+### 第 50 次发布
+
+发布时间：2023-01-13 01:39:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiAnalysisTaskInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskInput)
+
+	* 新增成员：ExtendedParameter
+
 
 ### 第 49 次发布
 
@@ -64004,6 +64201,23 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 28 次发布
+
+发布时间：2023-01-13 01:40:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Savepoint](https://cloud.tencent.com/document/api/849/52010#Savepoint)
+
+	* 新增成员：TimeConsuming, PathStatus
+
+	* <font color="#dd0000">**修改成员**：</font>Id, VersionId, Status, CreateTime, UpdateTime, Path, Size, RecordType, JobRuntimeId, Description, Timeout, SerialId
+
 
 ### 第 27 次发布
 
@@ -86168,6 +86382,18 @@
 
 ## 图像分析(tiia) 版本：2019-05-29
 
+### 第 31 次发布
+
+发布时间：2023-01-13 01:55:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpdateImage](https://cloud.tencent.com/document/api/865/85724)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 30 次发布
 
 发布时间：2022-11-22 07:01:36
@@ -87995,6 +88221,25 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 137 次发布
+
+发布时间：2023-01-13 01:57:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85354)
+
+	* 新增入参：SecurityGroupIds
+
+* [UpgradeClusterInstances](https://cloud.tencent.com/document/api/457/50365)
+
+	* 新增入参：UpgradeRunTime
+
 
 ### 第 136 次发布
 

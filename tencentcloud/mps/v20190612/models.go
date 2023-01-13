@@ -377,6 +377,11 @@ type AiAnalysisTaskFrameTagResult struct {
 type AiAnalysisTaskInput struct {
 	// 视频内容分析模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 扩展参数，其值为序列化的 json字符串。
+	// 注意：此参数为定制需求参数，需要线下对接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtendedParameter *string `json:"ExtendedParameter,omitempty" name:"ExtendedParameter"`
 }
 
 type AiAnalysisTaskTagInput struct {

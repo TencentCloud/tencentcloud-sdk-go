@@ -2149,6 +2149,9 @@ type CreateClusterVirtualNodePoolRequestParams struct {
 	// 子网ID列表
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
 	// 虚拟节点label
 	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
 
@@ -2178,6 +2181,9 @@ type CreateClusterVirtualNodePoolRequest struct {
 
 	// 子网ID列表
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 虚拟节点label
 	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
@@ -2212,6 +2218,7 @@ func (r *CreateClusterVirtualNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "Name")
 	delete(f, "SubnetIds")
+	delete(f, "SecurityGroupIds")
 	delete(f, "Labels")
 	delete(f, "Taints")
 	delete(f, "VirtualNodes")
@@ -17265,6 +17272,9 @@ type UpgradeClusterInstancesRequestParams struct {
 
 	// 最大可容忍的不可用Pod比例
 	MaxNotReadyPercent *float64 `json:"MaxNotReadyPercent,omitempty" name:"MaxNotReadyPercent"`
+
+	// 是否升级节点运行时，默认false不升级
+	UpgradeRunTime *bool `json:"UpgradeRunTime,omitempty" name:"UpgradeRunTime"`
 }
 
 type UpgradeClusterInstancesRequest struct {
@@ -17296,6 +17306,9 @@ type UpgradeClusterInstancesRequest struct {
 
 	// 最大可容忍的不可用Pod比例
 	MaxNotReadyPercent *float64 `json:"MaxNotReadyPercent,omitempty" name:"MaxNotReadyPercent"`
+
+	// 是否升级节点运行时，默认false不升级
+	UpgradeRunTime *bool `json:"UpgradeRunTime,omitempty" name:"UpgradeRunTime"`
 }
 
 func (r *UpgradeClusterInstancesRequest) ToJsonString() string {
@@ -17317,6 +17330,7 @@ func (r *UpgradeClusterInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ResetParam")
 	delete(f, "SkipPreCheck")
 	delete(f, "MaxNotReadyPercent")
+	delete(f, "UpgradeRunTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeClusterInstancesRequest has unknown keys!", "")
 	}

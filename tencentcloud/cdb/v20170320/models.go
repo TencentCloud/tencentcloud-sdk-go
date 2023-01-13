@@ -5186,6 +5186,12 @@ type DescribeDBInstancesRequestParams struct {
 
 	// 标签键值
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 数据库代理 IP 。
+	ProxyVips []*string `json:"ProxyVips,omitempty" name:"ProxyVips"`
+
+	// 数据库代理 ID 。
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 type DescribeDBInstancesRequest struct {
@@ -5286,6 +5292,12 @@ type DescribeDBInstancesRequest struct {
 
 	// 标签键值
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 数据库代理 IP 。
+	ProxyVips []*string `json:"ProxyVips,omitempty" name:"ProxyVips"`
+
+	// 数据库代理 ID 。
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -5332,6 +5344,8 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "UniqueVpcIds")
 	delete(f, "UniqSubnetIds")
 	delete(f, "Tags")
+	delete(f, "ProxyVips")
+	delete(f, "ProxyIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}

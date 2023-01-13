@@ -7755,6 +7755,9 @@ type IpBlockData struct {
 
 	// 解封类型（user：自助解封；auto：自动解封； update：升级解封；bind：绑定高防包解封）
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 高防标记，0：非高防，1：高防
+	ProtectFlag *uint64 `json:"ProtectFlag,omitempty" name:"ProtectFlag"`
 }
 
 type IpUnBlockData struct {

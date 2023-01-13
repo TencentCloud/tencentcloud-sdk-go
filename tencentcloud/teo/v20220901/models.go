@@ -9292,6 +9292,7 @@ type Resource struct {
 	// 地域，取值有：
 	// <li>mainland：国内；</li>
 	// <li>overseas：海外。</li>
+	// <li>global：全球。</li>
 	Area *string `json:"Area,omitempty" name:"Area"`
 }
 

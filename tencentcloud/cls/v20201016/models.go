@@ -1281,10 +1281,15 @@ type CreateIndexRequestParams struct {
 	// 是否生效，默认为true
 	Status *bool `json:"Status,omitempty" name:"Status"`
 
-	// 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
+	// * false:不包含
+	// * true:包含
 	IncludeInternalFields *bool `json:"IncludeInternalFields,omitempty" name:"IncludeInternalFields"`
 
-	// 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
+	// * 0:仅包含开启键值索引的元数据字段
+	// * 1:包含所有元数据字段
+	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitempty" name:"MetadataFlag"`
 }
 
@@ -1300,10 +1305,15 @@ type CreateIndexRequest struct {
 	// 是否生效，默认为true
 	Status *bool `json:"Status,omitempty" name:"Status"`
 
-	// 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
+	// * false:不包含
+	// * true:包含
 	IncludeInternalFields *bool `json:"IncludeInternalFields,omitempty" name:"IncludeInternalFields"`
 
-	// 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
+	// * 0:仅包含开启键值索引的元数据字段
+	// * 1:包含所有元数据字段
+	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitempty" name:"MetadataFlag"`
 }
 
@@ -3175,11 +3185,16 @@ type DescribeIndexResponseParams struct {
 	// 索引修改时间，初始值为索引创建时间。
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 
-	// 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
+	// * false:不包含
+	// * true:包含
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeInternalFields *bool `json:"IncludeInternalFields,omitempty" name:"IncludeInternalFields"`
 
-	// 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引
+	// * 0:仅包含开启键值索引的元数据字段
+	// * 1:包含所有元数据字段
+	// * 2:不包含任何元数据字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetadataFlag *uint64 `json:"MetadataFlag,omitempty" name:"MetadataFlag"`
 
@@ -3303,9 +3318,6 @@ func (r *DescribeLogContextResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogHistogramRequestParams struct {
-	// 要查询的日志主题ID
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
-
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
 	From *int64 `json:"From,omitempty" name:"From"`
 
@@ -3314,6 +3326,9 @@ type DescribeLogHistogramRequestParams struct {
 
 	// 查询语句
 	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 要查询的日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
@@ -3322,9 +3337,6 @@ type DescribeLogHistogramRequestParams struct {
 type DescribeLogHistogramRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询的日志主题ID
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
-
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
 	From *int64 `json:"From,omitempty" name:"From"`
 
@@ -3333,6 +3345,9 @@ type DescribeLogHistogramRequest struct {
 
 	// 查询语句
 	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 要查询的日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 时间间隔: 单位ms  限制性条件：(To-From) / interval <= 200
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
@@ -3350,10 +3365,10 @@ func (r *DescribeLogHistogramRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TopicId")
 	delete(f, "From")
 	delete(f, "To")
 	delete(f, "Query")
+	delete(f, "TopicId")
 	delete(f, "Interval")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogHistogramRequest has unknown keys!", "")
@@ -5251,10 +5266,15 @@ type ModifyIndexRequestParams struct {
 	// 索引规则
 	Rule *RuleInfo `json:"Rule,omitempty" name:"Rule"`
 
-	// 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
+	// * false:不包含
+	// * true:包含
 	IncludeInternalFields *bool `json:"IncludeInternalFields,omitempty" name:"IncludeInternalFields"`
 
-	// 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
+	// * 0:仅包含开启键值索引的元数据字段
+	// * 1:包含所有元数据字段
+	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitempty" name:"MetadataFlag"`
 }
 
@@ -5270,10 +5290,15 @@ type ModifyIndexRequest struct {
 	// 索引规则
 	Rule *RuleInfo `json:"Rule,omitempty" name:"Rule"`
 
-	// 全文索引系统预置字段标记，默认false。  false:不包含系统预置字段， true:包含系统预置字段
+	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引，默认为false，推荐设置为true
+	// * false:不包含
+	// * true:包含
 	IncludeInternalFields *bool `json:"IncludeInternalFields,omitempty" name:"IncludeInternalFields"`
 
-	// 元数据相关标志位，默认为0。 0：全文索引包括开启键值索引的元数据字段， 1：全文索引包括所有元数据字段，2：全文索引不包括元数据字段。
+	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引，默认为0，推荐设置为1
+	// * 0:仅包含开启键值索引的元数据字段
+	// * 1:包含所有元数据字段
+	// * 2:不包含任何元数据字段
 	MetadataFlag *uint64 `json:"MetadataFlag,omitempty" name:"MetadataFlag"`
 }
 
@@ -5952,9 +5977,6 @@ type RuleTagInfo struct {
 
 // Predefined struct for user
 type SearchLogRequestParams struct {
-	// 要检索分析的日志主题ID
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
-
 	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
 	From *int64 `json:"From,omitempty" name:"From"`
 
@@ -5963,7 +5985,11 @@ type SearchLogRequestParams struct {
 
 	// 检索分析语句，最大长度为12KB
 	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
+	// 使用*或空字符串可查询所有日志
 	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 要检索分析的日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
 	// 注意：
@@ -6000,9 +6026,6 @@ type SearchLogRequestParams struct {
 type SearchLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要检索分析的日志主题ID
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
-
 	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
 	From *int64 `json:"From,omitempty" name:"From"`
 
@@ -6011,7 +6034,11 @@ type SearchLogRequest struct {
 
 	// 检索分析语句，最大长度为12KB
 	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
+	// 使用*或空字符串可查询所有日志
 	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 要检索分析的日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
 	// 注意：
@@ -6057,10 +6084,10 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TopicId")
 	delete(f, "From")
 	delete(f, "To")
 	delete(f, "Query")
+	delete(f, "TopicId")
 	delete(f, "Limit")
 	delete(f, "Context")
 	delete(f, "Sort")

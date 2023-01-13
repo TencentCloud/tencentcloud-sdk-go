@@ -496,6 +496,57 @@ func (r *DeleteRoomResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAppDetailRequestParams struct {
+
+}
+
+type DescribeAppDetailRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAppDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppDetailResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAppDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoomRequestParams struct {
 	// 房间Id。
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
@@ -916,8 +967,11 @@ type ModifyAppRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 回调地址。端口目前仅支持80、443
+	// 回调地址。
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+	// 回调key。
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
 type ModifyAppRequest struct {
@@ -926,8 +980,11 @@ type ModifyAppRequest struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 回调地址。端口目前仅支持80、443
+	// 回调地址。
 	Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+	// 回调key。
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
 }
 
 func (r *ModifyAppRequest) ToJsonString() string {
@@ -944,6 +1001,7 @@ func (r *ModifyAppRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	delete(f, "Callback")
+	delete(f, "CallbackKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAppRequest has unknown keys!", "")
 	}

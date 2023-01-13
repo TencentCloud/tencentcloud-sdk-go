@@ -2600,3 +2600,78 @@ func (r *SearchImageResponse) ToJsonString() string {
 func (r *SearchImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
+
+// Predefined struct for user
+type UpdateImageRequestParams struct {
+	// 图库ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID，最多支持64个字符。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称，最多支持64个字符。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+
+	// 新的自定义标签，最多不超过10个，格式为JSON。
+	Tags *string `json:"Tags,omitempty" name:"Tags"`
+}
+
+type UpdateImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图库ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID，最多支持64个字符。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称，最多支持64个字符。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+
+	// 新的自定义标签，最多不超过10个，格式为JSON。
+	Tags *string `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *UpdateImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "EntityId")
+	delete(f, "PicName")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateImageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateImageResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateImageResponseParams `json:"Response"`
+}
+
+func (r *UpdateImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

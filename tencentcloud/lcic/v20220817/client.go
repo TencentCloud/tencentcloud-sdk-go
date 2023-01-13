@@ -323,6 +323,58 @@ func (c *Client) DeleteRoomWithContext(ctx context.Context, request *DeleteRoomR
     return
 }
 
+func NewDescribeAppDetailRequest() (request *DescribeAppDetailRequest) {
+    request = &DescribeAppDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeAppDetail")
+    
+    
+    return
+}
+
+func NewDescribeAppDetailResponse() (response *DescribeAppDetailResponse) {
+    response = &DescribeAppDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAppDetail
+// 获取应用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DescribeAppDetail(request *DescribeAppDetailRequest) (response *DescribeAppDetailResponse, err error) {
+    return c.DescribeAppDetailWithContext(context.Background(), request)
+}
+
+// DescribeAppDetail
+// 获取应用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DescribeAppDetailWithContext(ctx context.Context, request *DescribeAppDetailRequest) (response *DescribeAppDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAppDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
     request = &DescribeRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},

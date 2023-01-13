@@ -2609,6 +2609,14 @@ type Savepoint struct {
 	// 快照 serialId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialId *string `json:"SerialId,omitempty" name:"SerialId"`
+
+	// 耗时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeConsuming *int64 `json:"TimeConsuming,omitempty" name:"TimeConsuming"`
+
+	// 快照路径状态 1：可用；2：不可用；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathStatus *int64 `json:"PathStatus,omitempty" name:"PathStatus"`
 }
 
 type StopJobDescription struct {

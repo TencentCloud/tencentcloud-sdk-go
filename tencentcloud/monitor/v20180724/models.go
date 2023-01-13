@@ -755,6 +755,57 @@ type CLSNotice struct {
 }
 
 // Predefined struct for user
+type CheckIsPrometheusNewUserRequestParams struct {
+
+}
+
+type CheckIsPrometheusNewUserRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CheckIsPrometheusNewUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckIsPrometheusNewUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckIsPrometheusNewUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckIsPrometheusNewUserResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckIsPrometheusNewUserResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckIsPrometheusNewUserResponseParams `json:"Response"`
+}
+
+func (r *CheckIsPrometheusNewUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckIsPrometheusNewUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CleanGrafanaInstanceRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -2007,6 +2058,67 @@ func (r *CreatePrometheusMultiTenantInstancePostPayModeResponse) FromJsonString(
 }
 
 // Predefined struct for user
+type CreatePrometheusRecordRuleYamlRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// yaml的内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+type CreatePrometheusRecordRuleYamlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// yaml的内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+func (r *CreatePrometheusRecordRuleYamlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusRecordRuleYamlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusRecordRuleYamlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrometheusRecordRuleYamlResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreatePrometheusRecordRuleYamlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrometheusRecordRuleYamlResponseParams `json:"Response"`
+}
+
+func (r *CreatePrometheusRecordRuleYamlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusRecordRuleYamlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePrometheusScrapeJobRequestParams struct {
 	// Prometheus 实例 ID，例如：prom-abcd1234
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -2074,6 +2186,63 @@ func (r *CreatePrometheusScrapeJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePrometheusScrapeJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrometheusTempRequestParams struct {
+	// 模板设置
+	Template *PrometheusTemp `json:"Template,omitempty" name:"Template"`
+}
+
+type CreatePrometheusTempRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板设置
+	Template *PrometheusTemp `json:"Template,omitempty" name:"Template"`
+}
+
+func (r *CreatePrometheusTempRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusTempRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Template")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusTempRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrometheusTempResponseParams struct {
+	// 模板Id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreatePrometheusTempResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrometheusTempResponseParams `json:"Response"`
+}
+
+func (r *CreatePrometheusTempResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusTempResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2862,6 +3031,67 @@ func (r *DeletePolicyGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeletePrometheusRecordRuleYamlRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 聚合规则列表
+	Names []*string `json:"Names,omitempty" name:"Names"`
+}
+
+type DeletePrometheusRecordRuleYamlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 聚合规则列表
+	Names []*string `json:"Names,omitempty" name:"Names"`
+}
+
+func (r *DeletePrometheusRecordRuleYamlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusRecordRuleYamlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Names")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrometheusRecordRuleYamlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrometheusRecordRuleYamlResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeletePrometheusRecordRuleYamlResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrometheusRecordRuleYamlResponseParams `json:"Response"`
+}
+
+func (r *DeletePrometheusRecordRuleYamlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusRecordRuleYamlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeletePrometheusScrapeJobsRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -2926,6 +3156,121 @@ func (r *DeletePrometheusScrapeJobsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePrometheusScrapeJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrometheusTempRequestParams struct {
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DeletePrometheusTempRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeletePrometheusTempRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusTempRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrometheusTempRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrometheusTempResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeletePrometheusTempResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrometheusTempResponseParams `json:"Response"`
+}
+
+func (r *DeletePrometheusTempResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusTempResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrometheusTempSyncRequestParams struct {
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 取消同步的对象列表
+	Targets []*PrometheusTemplateSyncTarget `json:"Targets,omitempty" name:"Targets"`
+}
+
+type DeletePrometheusTempSyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 取消同步的对象列表
+	Targets []*PrometheusTemplateSyncTarget `json:"Targets,omitempty" name:"Targets"`
+}
+
+func (r *DeletePrometheusTempSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusTempSyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "Targets")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrometheusTempSyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeletePrometheusTempSyncResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeletePrometheusTempSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *DeletePrometheusTempSyncResponseParams `json:"Response"`
+}
+
+func (r *DeletePrometheusTempSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeletePrometheusTempSyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6954,6 +7299,66 @@ func (r *DescribeProductListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusAgentInstancesRequestParams struct {
+	// 集群id
+	// 可以是tke, eks, edge的集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribePrometheusAgentInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	// 可以是tke, eks, edge的集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribePrometheusAgentInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusAgentInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusAgentInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusAgentInstancesResponseParams struct {
+	// 关联该集群的实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instances []*string `json:"Instances,omitempty" name:"Instances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusAgentInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusAgentInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusAgentInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusAgentInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusAgentsRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -7043,6 +7448,351 @@ func (r *DescribePrometheusAgentsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusAlertPolicyRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤
+	// 支持ID，Name
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribePrometheusAlertPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤
+	// 支持ID，Name
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribePrometheusAlertPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusAlertPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusAlertPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusAlertPolicyResponseParams struct {
+	// 告警详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertRules []*PrometheusAlertPolicyItem `json:"AlertRules,omitempty" name:"AlertRules"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusAlertPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusAlertPolicyResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusAlertPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusAlertPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusConfigRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+}
+
+type DescribePrometheusConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+}
+
+func (r *DescribePrometheusConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClusterId")
+	delete(f, "ClusterType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusInstanceDetailRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribePrometheusInstanceDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribePrometheusInstanceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstanceDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusInstanceDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusInstanceDetailResponseParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例业务状态。取值范围：
+	// 
+	// 1：正在创建
+	// 2：运行中
+	// 3：异常
+	// 4：重建中
+	// 5：销毁中
+	// 6：已停服
+	// 8：欠费停服中
+	// 9：欠费已停服
+	InstanceStatus *int64 `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+	// 计费状态
+	// 
+	// 1：正常
+	// 2：过期
+	// 3：销毁
+	// 4：分配中
+	// 5：分配失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeStatus *int64 `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
+
+	// 是否开启 Grafana
+	// 0：不开启
+	// 1：开启
+	EnableGrafana *int64 `json:"EnableGrafana,omitempty" name:"EnableGrafana"`
+
+	// Grafana 面板 URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrafanaURL *string `json:"GrafanaURL,omitempty" name:"GrafanaURL"`
+
+	// 实例计费模式。取值范围：
+	// 
+	// 2：包年包月
+	// 3：按量
+	InstanceChargeType *int64 `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 规格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 存储周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataRetentionTime *int64 `json:"DataRetentionTime,omitempty" name:"DataRetentionTime"`
+
+	// 购买的实例过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 自动续费标记
+	// 
+	// 0：不自动续费
+	// 1：开启自动续费
+	// 2：禁止自动续费
+	// -1：无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusInstanceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusInstanceDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusInstanceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstanceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusInstanceInitStatusRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribePrometheusInstanceInitStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribePrometheusInstanceInitStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstanceInitStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusInstanceInitStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusInstanceInitStatusResponseParams struct {
+	// 实例初始化状态，取值：
+	// uninitialized 未初始化 
+	// initializing 初始化中
+	// running 初始化完成，运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 初始化任务步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Steps []*TaskStepInfo `json:"Steps,omitempty" name:"Steps"`
+
+	// 实例eks集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EksClusterId *string `json:"EksClusterId,omitempty" name:"EksClusterId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusInstanceInitStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusInstanceInitStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusInstanceInitStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstanceInitStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusInstanceUsageRequestParams struct {
 	// 按照一个或者多个实例ID查询。实例ID形如：prom-xxxxxxxx。请求的实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -7111,6 +7861,85 @@ func (r *DescribePrometheusInstanceUsageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePrometheusInstanceUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusInstancesOverviewRequestParams struct {
+	// 用于分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 用于分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤实例，目前支持：
+	// ID: 通过实例ID来过滤 
+	// Name: 通过实例名称来过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribePrometheusInstancesOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用于分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 用于分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤实例，目前支持：
+	// ID: 通过实例ID来过滤 
+	// Name: 通过实例名称来过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribePrometheusInstancesOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstancesOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusInstancesOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusInstancesOverviewResponseParams struct {
+	// 实例列表
+	Instances []*PrometheusInstancesOverview `json:"Instances,omitempty" name:"Instances"`
+
+	// 实例总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusInstancesOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusInstancesOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusInstancesOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusInstancesOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7256,6 +8085,166 @@ func (r *DescribePrometheusInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusRecordRuleYamlRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤，当前支持
+	// Name = Name
+	// Values = 目标名称列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribePrometheusRecordRuleYamlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤，当前支持
+	// Name = Name
+	// Values = 目标名称列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribePrometheusRecordRuleYamlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusRecordRuleYamlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusRecordRuleYamlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusRecordRuleYamlResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusRecordRuleYamlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusRecordRuleYamlResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusRecordRuleYamlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusRecordRuleYamlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusRecordRulesRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribePrometheusRecordRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribePrometheusRecordRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusRecordRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusRecordRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusRecordRulesResponseParams struct {
+	// 聚合规则
+	Records []*PrometheusRecordRuleYamlItem `json:"Records,omitempty" name:"Records"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusRecordRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusRecordRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusRecordRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusRecordRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusScrapeJobsRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -7348,6 +8337,146 @@ func (r *DescribePrometheusScrapeJobsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePrometheusScrapeJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusTempRequestParams struct {
+	// 模糊过滤条件，支持
+	// Level 按模板级别过滤
+	// Name 按名称过滤
+	// Describe 按描述过滤
+	// ID 按templateId过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 总数限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribePrometheusTempRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模糊过滤条件，支持
+	// Level 按模板级别过滤
+	// Name 按名称过滤
+	// Describe 按描述过滤
+	// ID 按templateId过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 总数限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribePrometheusTempRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusTempRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusTempRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusTempResponseParams struct {
+	// 模板列表
+	Templates []*PrometheusTemp `json:"Templates,omitempty" name:"Templates"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusTempResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusTempResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusTempResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusTempResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusTempSyncRequestParams struct {
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DescribePrometheusTempSyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribePrometheusTempSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusTempSyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusTempSyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusTempSyncResponseParams struct {
+	// 同步目标详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Targets []*PrometheusTemplateSyncTarget `json:"Targets,omitempty" name:"Targets"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusTempSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusTempSyncResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusTempSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusTempSyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8083,6 +9212,17 @@ type EventCondition struct {
 	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
 }
 
+type Filter struct {
+	// 过滤方式（=, !=, in）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 过滤维度名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 过滤值，in过滤方式用逗号分割多个值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 // Predefined struct for user
 type GetMonitorDataRequestParams struct {
 	// 命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品[监控指标](https://cloud.tencent.com/document/product/248/6140)文档
@@ -8532,6 +9672,10 @@ type IntegrationConfiguration struct {
 
 	// dashboard 的 URL
 	GrafanaDashboardURL *string `json:"GrafanaDashboardURL,omitempty" name:"GrafanaDashboardURL"`
+}
+
+type Label struct {
+
 }
 
 type LogAlarmReq struct {
@@ -9578,6 +10722,135 @@ func (r *ModifyPrometheusInstanceAttributesResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyPrometheusRecordRuleYamlRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 聚合实例名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 新的内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+type ModifyPrometheusRecordRuleYamlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 聚合实例名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 新的内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+func (r *ModifyPrometheusRecordRuleYamlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrometheusRecordRuleYamlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrometheusRecordRuleYamlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrometheusRecordRuleYamlResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyPrometheusRecordRuleYamlResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPrometheusRecordRuleYamlResponseParams `json:"Response"`
+}
+
+func (r *ModifyPrometheusRecordRuleYamlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrometheusRecordRuleYamlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrometheusTempRequestParams struct {
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 修改内容
+	Template *PrometheusTempModify `json:"Template,omitempty" name:"Template"`
+}
+
+type ModifyPrometheusTempRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 修改内容
+	Template *PrometheusTempModify `json:"Template,omitempty" name:"Template"`
+}
+
+func (r *ModifyPrometheusTempRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrometheusTempRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "Template")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrometheusTempRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPrometheusTempResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyPrometheusTempResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPrometheusTempResponseParams `json:"Response"`
+}
+
+func (r *ModifyPrometheusTempResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPrometheusTempResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MonitorTypeInfo struct {
 	// 监控类型ID
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -9779,6 +11052,88 @@ type PrometheusAgent struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
+type PrometheusAlertManagerConfig struct {
+	// alertmanager url
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// alertmanager部署所在集群类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// alertmanager部署所在集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type PrometheusAlertPolicyItem struct {
+	// 策略名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规则列表
+	Rules []*PrometheusAlertRule `json:"Rules,omitempty" name:"Rules"`
+
+	// 告警策略 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 如果该告警来自模板下发，则TemplateId为模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 告警渠道，模板中使用可能返回null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Notification *PrometheusNotificationItem `json:"Notification,omitempty" name:"Notification"`
+
+	// 最后修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 如果告警策略来源于用户集群CRD资源定义，则ClusterId为所属集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type PrometheusAlertRule struct {
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// prometheus语句
+	Rule *string `json:"Rule,omitempty" name:"Rule"`
+
+	// 额外标签
+	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
+
+	// 告警发送模板
+	Template *string `json:"Template,omitempty" name:"Template"`
+
+	// 持续时间
+	For *string `json:"For,omitempty" name:"For"`
+
+	// 该条规则的描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 参考prometheus rule中的annotations
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Annotations []*Label `json:"Annotations,omitempty" name:"Annotations"`
+
+	// 告警规则状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+}
+
+type PrometheusConfigItem struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 配置内容
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 用于出参，如果该配置来至模板，则为模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
 type PrometheusInstanceGrantInfo struct {
 	// 是否有计费操作权限(1=有，2=无)
 	HasChargeOperation *int64 `json:"HasChargeOperation,omitempty" name:"HasChargeOperation"`
@@ -9975,6 +11330,139 @@ type PrometheusInstancesItem struct {
 	MigrationType *int64 `json:"MigrationType,omitempty" name:"MigrationType"`
 }
 
+type PrometheusInstancesOverview struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 运行状态（1:正在创建；2:运行中；3:异常；4:重启中；5:销毁中； 6:已停机； 7: 已删除）
+	InstanceStatus *int64 `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+	// 计费状态（1:正常；2:过期; 3:销毁; 4:分配中; 5:分配失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeStatus *int64 `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
+
+	// 是否开启 Grafana（0:不开启，1:开启）
+	EnableGrafana *int64 `json:"EnableGrafana,omitempty" name:"EnableGrafana"`
+
+	// Grafana 面板 URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrafanaURL *string `json:"GrafanaURL,omitempty" name:"GrafanaURL"`
+
+	// 实例付费类型（1:试用版；2:预付费）
+	InstanceChargeType *int64 `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 规格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 存储周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataRetentionTime *int64 `json:"DataRetentionTime,omitempty" name:"DataRetentionTime"`
+
+	// 购买的实例过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 自动续费标记(0:不自动续费；1:开启自动续费；2:禁止自动续费；-1:无效)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 绑定集群总数
+	BoundTotal *int64 `json:"BoundTotal,omitempty" name:"BoundTotal"`
+
+	// 绑定集群正常状态总数
+	BoundNormal *int64 `json:"BoundNormal,omitempty" name:"BoundNormal"`
+}
+
+type PrometheusNotificationItem struct {
+	// 是否启用
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 通道类型，默认为amp，支持以下
+	// amp
+	// webhook
+	// alertmanager
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 如果Type为webhook, 则该字段为必填项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebHook *string `json:"WebHook,omitempty" name:"WebHook"`
+
+	// 如果Type为alertmanager, 则该字段为必填项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertManager *PrometheusAlertManagerConfig `json:"AlertManager,omitempty" name:"AlertManager"`
+
+	// 收敛时间
+	RepeatInterval *string `json:"RepeatInterval,omitempty" name:"RepeatInterval"`
+
+	// 生效起始时间
+	TimeRangeStart *string `json:"TimeRangeStart,omitempty" name:"TimeRangeStart"`
+
+	// 生效结束时间
+	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
+
+	// 告警通知方式。目前有SMS、EMAIL、CALL、WECHAT方式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyWay []*string `json:"NotifyWay,omitempty" name:"NotifyWay"`
+
+	// 告警接收组（用户组）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverGroups []*string `json:"ReceiverGroups,omitempty" name:"ReceiverGroups"`
+
+	// 电话告警顺序。
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneNotifyOrder []*uint64 `json:"PhoneNotifyOrder,omitempty" name:"PhoneNotifyOrder"`
+
+	// 电话告警次数。
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneCircleTimes *int64 `json:"PhoneCircleTimes,omitempty" name:"PhoneCircleTimes"`
+
+	// 电话告警轮内间隔。单位：秒
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneInnerInterval *int64 `json:"PhoneInnerInterval,omitempty" name:"PhoneInnerInterval"`
+
+	// 电话告警轮外间隔。单位：秒
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneCircleInterval *int64 `json:"PhoneCircleInterval,omitempty" name:"PhoneCircleInterval"`
+
+	// 电话告警触达通知
+	// 注：NotifyWay选择CALL，采用该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneArriveNotice *bool `json:"PhoneArriveNotice,omitempty" name:"PhoneArriveNotice"`
+}
+
+type PrometheusRecordRuleYamlItem struct {
+	// 实例名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 最近更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// Yaml内容
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 如果该聚合规则来至模板，则TemplateId为模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 该聚合规则如果来源于用户集群crd资源定义，则ClusterId为所属集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
 type PrometheusRuleKV struct {
 	// 键
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -10056,6 +11544,130 @@ type PrometheusTag struct {
 	// 标签对应的值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type PrometheusTemp struct {
+	// 模板名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板维度，支持以下类型
+	// instance 实例级别
+	// cluster 集群级别
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 模板描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 当Level为instance时有效，
+	// 模板中的聚合规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordRules []*PrometheusConfigItem `json:"RecordRules,omitempty" name:"RecordRules"`
+
+	// 当Level为cluster时有效，
+	// 模板中的ServiceMonitor规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceMonitors []*PrometheusConfigItem `json:"ServiceMonitors,omitempty" name:"ServiceMonitors"`
+
+	// 当Level为cluster时有效，
+	// 模板中的PodMonitors规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodMonitors []*PrometheusConfigItem `json:"PodMonitors,omitempty" name:"PodMonitors"`
+
+	// 当Level为cluster时有效，
+	// 模板中的RawJobs规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitempty" name:"RawJobs"`
+
+	// 模板的ID, 用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 最近更新时间，用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 当前版本，用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 是否系统提供的默认模板，用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 当Level为instance时有效，
+	// 模板中的告警配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertDetailRules []*PrometheusAlertPolicyItem `json:"AlertDetailRules,omitempty" name:"AlertDetailRules"`
+
+	// 关联实例数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetsTotal *int64 `json:"TargetsTotal,omitempty" name:"TargetsTotal"`
+}
+
+type PrometheusTempModify struct {
+	// 修改名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 修改描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 当Level为cluster时有效，
+	// 模板中的ServiceMonitor规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceMonitors []*PrometheusConfigItem `json:"ServiceMonitors,omitempty" name:"ServiceMonitors"`
+
+	// 当Level为cluster时有效，
+	// 模板中的PodMonitors规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodMonitors []*PrometheusConfigItem `json:"PodMonitors,omitempty" name:"PodMonitors"`
+
+	// 当Level为cluster时有效，
+	// 模板中的RawJobs规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitempty" name:"RawJobs"`
+
+	// 当Level为instance时有效，
+	// 模板中的聚合规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordRules []*PrometheusConfigItem `json:"RecordRules,omitempty" name:"RecordRules"`
+
+	// 修改内容，只有当模板类型是Alert时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertDetailRules []*PrometheusAlertPolicyItem `json:"AlertDetailRules,omitempty" name:"AlertDetailRules"`
+}
+
+type PrometheusTemplateSyncTarget struct {
+	// 目标所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 目标实例
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 集群id，只有当采集模板的Level为cluster的时候需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 最后一次同步时间， 用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncTime *string `json:"SyncTime,omitempty" name:"SyncTime"`
+
+	// 当前使用的模板版本，用于出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 集群类型，只有当采集模板的Level为cluster的时候需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 用于出参，实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 用于出参，集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type PrometheusZoneItem struct {
@@ -10279,6 +11891,67 @@ func (r *ResumeGrafanaInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RunPrometheusInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 子网ID，默认使用实例所用子网初始化，也可通过该参数传递新的子网ID初始化
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type RunPrometheusInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 子网ID，默认使用实例所用子网初始化，也可通过该参数传递新的子网ID初始化
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+func (r *RunPrometheusInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunPrometheusInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunPrometheusInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunPrometheusInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RunPrometheusInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *RunPrometheusInstanceResponseParams `json:"Response"`
+}
+
+func (r *RunPrometheusInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunPrometheusInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SendCustomAlarmMsgRequestParams struct {
 	// 接口模块名，当前取值monitor
 	Module *string `json:"Module,omitempty" name:"Module"`
@@ -10433,6 +12106,67 @@ func (r *SetDefaultAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SyncPrometheusTempRequestParams struct {
+	// 实例id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 同步目标
+	Targets []*PrometheusTemplateSyncTarget `json:"Targets,omitempty" name:"Targets"`
+}
+
+type SyncPrometheusTempRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 同步目标
+	Targets []*PrometheusTemplateSyncTarget `json:"Targets,omitempty" name:"Targets"`
+}
+
+func (r *SyncPrometheusTempRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncPrometheusTempRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "Targets")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncPrometheusTempRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncPrometheusTempResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SyncPrometheusTempResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncPrometheusTempResponseParams `json:"Response"`
+}
+
+func (r *SyncPrometheusTempResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncPrometheusTempResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Tag struct {
 	// 标签key
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -10469,6 +12203,30 @@ type TagInstance struct {
 	// 标签状态，2：标签存在，1：标签不存在
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagStatus *int64 `json:"TagStatus,omitempty" name:"TagStatus"`
+}
+
+type TaskStepInfo struct {
+	// 步骤名称
+	Step *string `json:"Step,omitempty" name:"Step"`
+
+	// 生命周期
+	// pending : 步骤未开始
+	// running: 步骤执行中
+	// success: 步骤成功完成
+	// failed: 步骤失败
+	LifeState *string `json:"LifeState,omitempty" name:"LifeState"`
+
+	// 步骤开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartAt *string `json:"StartAt,omitempty" name:"StartAt"`
+
+	// 步骤结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndAt *string `json:"EndAt,omitempty" name:"EndAt"`
+
+	// 若步骤生命周期为failed,则此字段显示错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedMsg *string `json:"FailedMsg,omitempty" name:"FailedMsg"`
 }
 
 type TemplateGroup struct {
