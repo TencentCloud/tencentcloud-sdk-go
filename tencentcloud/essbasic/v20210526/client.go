@@ -881,6 +881,62 @@ func (c *Client) ChannelCreateFlowSignReviewWithContext(ctx context.Context, req
     return
 }
 
+func NewChannelCreateFlowSignUrlRequest() (request *ChannelCreateFlowSignUrlRequest) {
+    request = &ChannelCreateFlowSignUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateFlowSignUrl")
+    
+    
+    return
+}
+
+func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlResponse) {
+    response = &ChannelCreateFlowSignUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateFlowSignUrl
+// 渠道版创建签署链接，需要联系运营人员开白后才可使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlRequest) (response *ChannelCreateFlowSignUrlResponse, err error) {
+    return c.ChannelCreateFlowSignUrlWithContext(context.Background(), request)
+}
+
+// ChannelCreateFlowSignUrl
+// 渠道版创建签署链接，需要联系运营人员开白后才可使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateFlowSignUrlWithContext(ctx context.Context, request *ChannelCreateFlowSignUrlRequest) (response *ChannelCreateFlowSignUrlResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateFlowSignUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateFlowSignUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateFlowSignUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateMultiFlowSignQRCodeRequest() (request *ChannelCreateMultiFlowSignQRCodeRequest) {
     request = &ChannelCreateMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

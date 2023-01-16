@@ -971,6 +971,15 @@ type CommonTimeWindow struct {
 
 	// 周日的时间窗，格式如： 02:00-06:00
 	Sunday *string `json:"Sunday,omitempty" name:"Sunday"`
+
+	// 常规备份保留策略，weekly-按周备份，monthly-按月备份，默认为weekly
+	BackupPeriodStrategy *string `json:"BackupPeriodStrategy,omitempty" name:"BackupPeriodStrategy"`
+
+	// 如果设置为按月备份，需填入每月具体备份日期，相邻备份天数不得超过两天。例[1,4,7,9,11,14,17,19,22,25,28,30,31]
+	Days []*int64 `json:"Days,omitempty" name:"Days"`
+
+	// 月度备份时间窗，BackupPeriodStrategy为monthly时必填。格式如： 02:00-06:00
+	BackupPeriodTime *string `json:"BackupPeriodTime,omitempty" name:"BackupPeriodTime"`
 }
 
 type ConnectionPoolInfo struct {

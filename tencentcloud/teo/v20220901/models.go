@@ -3616,7 +3616,7 @@ type DescribeOriginProtectionRequestParams struct {
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 	// <li>need-update<br>   按照【<strong>站点是否需要更新源站防护IP白名单</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：需要更新<br>   false：无需更新<br></li>
 	// <li>plan-support<br>   按照【<strong>站点套餐是否支持源站防护</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：支持<br>   false：不支持<br></li>
-	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页查询偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -3634,7 +3634,7 @@ type DescribeOriginProtectionRequest struct {
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
 	// <li>need-update<br>   按照【<strong>站点是否需要更新源站防护IP白名单</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：需要更新<br>   false：无需更新<br></li>
 	// <li>plan-support<br>   按照【<strong>站点套餐是否支持源站防护</strong>】进行过滤。<br>   类型：String<br>   必选：否<br>   可选项：<br>   true：支持<br>   false：不支持<br></li>
-	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页查询偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`

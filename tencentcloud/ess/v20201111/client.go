@@ -1361,6 +1361,64 @@ func (c *Client) CreateFlowSignReviewWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateFlowSignUrlRequest() (request *CreateFlowSignUrlRequest) {
+    request = &CreateFlowSignUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFlowSignUrl")
+    
+    
+    return
+}
+
+func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
+    response = &CreateFlowSignUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFlowSignUrl
+// 创建签署链接，需要联系运营人员开白后才可使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response *CreateFlowSignUrlResponse, err error) {
+    return c.CreateFlowSignUrlWithContext(context.Background(), request)
+}
+
+// CreateFlowSignUrl
+// 创建签署链接，需要联系运营人员开白后才可使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowSignUrlWithContext(ctx context.Context, request *CreateFlowSignUrlRequest) (response *CreateFlowSignUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowSignUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowSignUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowSignUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateIntegrationEmployeesRequest() (request *CreateIntegrationEmployeesRequest) {
     request = &CreateIntegrationEmployeesRequest{
         BaseRequest: &tchttp.BaseRequest{},

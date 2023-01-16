@@ -1347,6 +1347,84 @@ func (r *CreateFlowSignReviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlowSignUrlRequestParams struct {
+	// 流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
+
+	// 机构信息，暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 用户信息，此结构体UserId必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type CreateFlowSignUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
+
+	// 机构信息，暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 用户信息，此结构体UserId必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *CreateFlowSignUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowSignUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "FlowApproverInfos")
+	delete(f, "Organization")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowSignUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowSignUrlResponseParams struct {
+	// 签署人签署链接信息
+	FlowApproverUrlInfos []*FlowApproverUrlInfo `json:"FlowApproverUrlInfos,omitempty" name:"FlowApproverUrlInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFlowSignUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowSignUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowSignUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowSignUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateIntegrationEmployeesRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2694,6 +2772,24 @@ type FlowApproverDetail struct {
 	// 签署人企业名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+}
+
+type FlowApproverUrlInfo struct {
+	// 签署链接，注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
+
+	// 签署人手机号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
+
+	// 签署人姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverName *string `json:"ApproverName,omitempty" name:"ApproverName"`
+
+	// 签署人类型 1-个人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 }
 
 type FlowBrief struct {

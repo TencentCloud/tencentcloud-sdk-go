@@ -4059,6 +4059,12 @@ type TraceCode struct {
 
 	// 产品名称
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 渠道商ID
+	AgentId *uint64 `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 码层级 0: 最小级, 1: 一级, 2: 二级
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
 }
 
 type TraceData struct {

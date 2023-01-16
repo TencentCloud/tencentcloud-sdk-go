@@ -920,6 +920,91 @@ func (r *ChannelCreateFlowSignReviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateFlowSignUrlRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 流程签署人，其中Name和Mobile必传，其他可不传，ApproverType目前只支持PERSON类型的签署人，如果不传默认为该值。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
+
+	// 用户信息，暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 机构信息，暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+}
+
+type ChannelCreateFlowSignUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 流程签署人，其中Name和Mobile必传，其他可不传，ApproverType目前只支持PERSON类型的签署人，如果不传默认为该值。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
+
+	// 用户信息，暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 机构信息，暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+}
+
+func (r *ChannelCreateFlowSignUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowSignUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowId")
+	delete(f, "FlowApproverInfos")
+	delete(f, "Operator")
+	delete(f, "Organization")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowSignUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateFlowSignUrlResponseParams struct {
+	// 签署人签署链接信息
+	FlowApproverUrlInfos []*FlowApproverUrlInfo `json:"FlowApproverUrlInfos,omitempty" name:"FlowApproverUrlInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateFlowSignUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateFlowSignUrlResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateFlowSignUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowSignUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	// 渠道应用相关信息。
 	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
@@ -2987,6 +3072,20 @@ type FlowApproverInfo struct {
 
 	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要
 	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitempty" name:"ApproverNeedSignReview"`
+}
+
+type FlowApproverUrlInfo struct {
+	// 签署链接，注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
+
+	// 签署人手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 签署人姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 签署人类型 PERSON-个人
+	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
 }
 
 type FlowDetailInfo struct {

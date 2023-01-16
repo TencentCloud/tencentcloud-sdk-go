@@ -20,6 +20,10 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AppConfig struct {
+
+}
+
 type AppCustomContent struct {
 	// 场景参数，一个应用下可以设置多个不同场景。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
@@ -497,12 +501,21 @@ func (r *DeleteRoomResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAppDetailRequestParams struct {
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
+	// 开发商ID
+	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
 }
 
 type DescribeAppDetailRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 开发商ID
+	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
 }
 
 func (r *DescribeAppDetailRequest) ToJsonString() string {
@@ -517,7 +530,8 @@ func (r *DescribeAppDetailRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ApplicationId")
+	delete(f, "DeveloperId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppDetailRequest has unknown keys!", "")
 	}
@@ -526,6 +540,15 @@ func (r *DescribeAppDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAppDetailResponseParams struct {
+	// SdkAppId 
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 应用配置
+	AppConfig *AppConfig `json:"AppConfig,omitempty" name:"AppConfig"`
+
+	// 场景配置
+	SceneConfig []*SceneItem `json:"SceneConfig,omitempty" name:"SceneConfig"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1109,6 +1132,10 @@ func (r *RegisterUserResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RegisterUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SceneItem struct {
+
 }
 
 // Predefined struct for user

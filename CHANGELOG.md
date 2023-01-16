@@ -1,3 +1,159 @@
+# Release v1.0.580
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 110 次发布
+
+发布时间：2023-01-16 01:12:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CommonTimeWindow](https://cloud.tencent.com/document/api/236/15878#CommonTimeWindow)
+
+	* 新增成员：BackupPeriodStrategy, Days, BackupPeriodTime
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 39 次发布
+
+发布时间：2023-01-13 16:40:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateFlowSignUrl](https://cloud.tencent.com/document/api/1323/85818)
+
+新增数据结构：
+
+* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1323/70369#FlowApproverUrlInfo)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 60 次发布
+
+发布时间：2023-01-13 16:41:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateFlowSignUrl](https://cloud.tencent.com/document/api/1420/85819)
+
+新增数据结构：
+
+* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverUrlInfo)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 7 次发布
+
+发布时间：2023-01-16 01:41:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAppDetail](https://cloud.tencent.com/document/api/1639/85701)
+
+	* 新增入参：ApplicationId, DeveloperId
+
+	* 新增出参：SdkAppId, AppConfig, SceneConfig
+
+
+新增数据结构：
+
+* [AppConfig](https://cloud.tencent.com/document/api/1639/81423#AppConfig)
+* [SceneItem](https://cloud.tencent.com/document/api/1639/81423#SceneItem)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 26 次发布
+
+发布时间：2023-01-16 02:10:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOriginProtection](https://cloud.tencent.com/document/api/1552/84664)
+
+	* <font color="#dd0000">**修改入参**：</font>Filters
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 28 次发布
+
+发布时间：2023-01-16 02:13:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTranscode](https://cloud.tencent.com/document/api/1137/40059)
+
+	* 新增出参：ResourceListUrl, Ext
+
+* [StartWhiteboardPush](https://cloud.tencent.com/document/api/1137/52081)
+
+	* 新增入参：TRTCEnterRoomMode
+
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 15 次发布
+
+发布时间：2023-01-16 02:15:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TraceCode](https://cloud.tencent.com/document/api/1458/75030#TraceCode)
+
+	* 新增成员：AgentId, Level
+
+
+
+
 # Release v1.0.579
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

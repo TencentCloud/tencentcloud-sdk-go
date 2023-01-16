@@ -726,7 +726,7 @@ type DescribeAgeDetectTaskRequestParams struct {
 	// 应用id
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 创建年龄语音识别任务时返回的taskid
+	// [创建年龄语音识别任务](https://cloud.tencent.com/document/product/607/60620)时返回的taskid
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
@@ -736,7 +736,7 @@ type DescribeAgeDetectTaskRequest struct {
 	// 应用id
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
-	// 创建年龄语音识别任务时返回的taskid
+	// [创建年龄语音识别任务](https://cloud.tencent.com/document/product/607/60620)时返回的taskid
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
