@@ -1,73 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 品牌经营管家(bma) 版本：2021-06-24
 
-### 第 110 次发布
+### 第 15 次发布
 
-发布时间：2023-01-16 01:12:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CommonTimeWindow](https://cloud.tencent.com/document/api/236/15878#CommonTimeWindow)
-
-	* 新增成员：BackupPeriodStrategy, Days, BackupPeriodTime
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 39 次发布
-
-发布时间：2023-01-13 16:40:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateFlowSignUrl](https://cloud.tencent.com/document/api/1323/85818)
-
-新增数据结构：
-
-* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1323/70369#FlowApproverUrlInfo)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 60 次发布
-
-发布时间：2023-01-13 16:41:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ChannelCreateFlowSignUrl](https://cloud.tencent.com/document/api/1420/85819)
-
-新增数据结构：
-
-* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverUrlInfo)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 低代码互动课堂(lcic) 版本：2022-08-17
-
-### 第 7 次发布
-
-发布时间：2023-01-16 01:41:05
+发布时间：2023-01-17 01:09:15
 
 本次发布包含了以下内容：
 
@@ -75,35 +12,70 @@
 
 修改接口：
 
-* [DescribeAppDetail](https://cloud.tencent.com/document/api/1639/85701)
+* [CreateCRWork](https://cloud.tencent.com/document/api/1296/78029)
 
-	* 新增入参：ApplicationId, DeveloperId
+	* 新增入参：IsAutoRenew
 
-	* 新增出参：SdkAppId, AppConfig, SceneConfig
 
+修改数据结构：
+
+* [Monitor](https://cloud.tencent.com/document/api/1296/78030#Monitor)
+
+	* 新增成员：MonitorEndTime, AutoRenew
+
+
+
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 116 次发布
+
+发布时间：2023-01-17 01:12:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEdgePackTaskStatus](https://cloud.tencent.com/document/api/228/85848)
 
 新增数据结构：
 
-* [AppConfig](https://cloud.tencent.com/document/api/1639/81423#AppConfig)
-* [SceneItem](https://cloud.tencent.com/document/api/1639/81423#SceneItem)
+* [EdgePackTaskFilter](https://cloud.tencent.com/document/api/228/30987#EdgePackTaskFilter)
+* [EdgePackTaskStatus](https://cloud.tencent.com/document/api/228/30987#EdgePackTaskStatus)
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 26 次发布
+### 第 27 次发布
 
-发布时间：2023-01-16 02:10:35
+发布时间：2023-01-17 01:53:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增数据结构：
 
-* [DescribeOriginProtection](https://cloud.tencent.com/document/api/1552/84664)
+* [FirstPartConfig](https://cloud.tencent.com/document/api/1552/80721#FirstPartConfig)
+* [SlowPostConfig](https://cloud.tencent.com/document/api/1552/80721#SlowPostConfig)
+* [SlowRateConfig](https://cloud.tencent.com/document/api/1552/80721#SlowRateConfig)
 
-	* <font color="#dd0000">**修改入参**：</font>Filters
+修改数据结构：
+
+* [AclConfig](https://cloud.tencent.com/document/api/1552/80721#AclConfig)
+
+	* 新增成员：Customizes
+
+* [RateLimitConfig](https://cloud.tencent.com/document/api/1552/80721#RateLimitConfig)
+
+	* 新增成员：RateLimitCustomizes
+
+* [SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig)
+
+	* 新增成员：SlowPostConfig
 
 
 
@@ -112,45 +84,38 @@
 
 
 
-## 互动白板(tiw) 版本：2019-09-19
+## 微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 28 次发布
+### 第 82 次发布
 
-发布时间：2023-01-16 02:13:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeTranscode](https://cloud.tencent.com/document/api/1137/40059)
-
-	* 新增出参：ResourceListUrl, Ext
-
-* [StartWhiteboardPush](https://cloud.tencent.com/document/api/1137/52081)
-
-	* 新增入参：TRTCEnterRoomMode
-
-
-
-
-## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
-
-### 第 15 次发布
-
-发布时间：2023-01-16 02:15:33
+发布时间：2023-01-17 01:58:04
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [TraceCode](https://cloud.tencent.com/document/api/1458/75030#TraceCode)
+* [CreateConfigTemplate](https://cloud.tencent.com/document/api/649/85861)
+* [CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/api/649/85860)
+* [DeleteCluster](https://cloud.tencent.com/document/api/649/85859)
+* [DeleteConfigTemplate](https://cloud.tencent.com/document/api/649/85858)
+* [DescribeClusters](https://cloud.tencent.com/document/api/649/85857)
+* [DescribeConfigTemplate](https://cloud.tencent.com/document/api/649/85856)
+* [DescribeFileConfigReleases](https://cloud.tencent.com/document/api/649/85855)
+* [ModifyApplication](https://cloud.tencent.com/document/api/649/85854)
+* [ModifyCluster](https://cloud.tencent.com/document/api/649/85853)
+* [ModifyGroup](https://cloud.tencent.com/document/api/649/85852)
+* [ModifyNamespace](https://cloud.tencent.com/document/api/649/85851)
+* [RevokeFileConfig](https://cloud.tencent.com/document/api/649/85850)
+* [UpdateConfigTemplate](https://cloud.tencent.com/document/api/649/85849)
 
-	* 新增成员：AgentId, Level
+新增数据结构：
 
+* [ClusterV2](https://cloud.tencent.com/document/api/649/36099#ClusterV2)
+* [ConfigTemplate](https://cloud.tencent.com/document/api/649/36099#ConfigTemplate)
+* [TsfPageClusterV2](https://cloud.tencent.com/document/api/649/36099#TsfPageClusterV2)
+* [TsfPageFileConfigRelease](https://cloud.tencent.com/document/api/649/36099#TsfPageFileConfigRelease)
 
 
 
@@ -8382,6 +8347,28 @@
 
 ## 品牌经营管家(bma) 版本：2021-06-24
 
+### 第 15 次发布
+
+发布时间：2023-01-17 01:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCRWork](https://cloud.tencent.com/document/api/1296/78029)
+
+	* 新增入参：IsAutoRenew
+
+
+修改数据结构：
+
+* [Monitor](https://cloud.tencent.com/document/api/1296/78030#Monitor)
+
+	* 新增成员：MonitorEndTime, AutoRenew
+
+
 ### 第 14 次发布
 
 发布时间：2022-11-04 06:09:26
@@ -14975,6 +14962,23 @@
 
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 116 次发布
+
+发布时间：2023-01-17 01:12:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEdgePackTaskStatus](https://cloud.tencent.com/document/api/228/85848)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EdgePackTaskFilter](https://cloud.tencent.com/document/api/228/30987#EdgePackTaskFilter)](https://cloud.tencent.com/document/api/228/30987#[EdgePackTaskFilter](https://cloud.tencent.com/document/api/228/30987#EdgePackTaskFilter))
+* [[EdgePackTaskStatus](https://cloud.tencent.com/document/api/228/30987#EdgePackTaskStatus)](https://cloud.tencent.com/document/api/228/30987#[EdgePackTaskStatus](https://cloud.tencent.com/document/api/228/30987#EdgePackTaskStatus))
 
 ### 第 115 次发布
 
@@ -42640,11 +42644,11 @@
 
 新增接口：
 
-* [[CreateFlowSignUrl](https://cloud.tencent.com/document/api/1323/85818)](https://cloud.tencent.com/document/api/#/#)
+* [CreateFlowSignUrl](https://cloud.tencent.com/document/api/1323/85818)
 
 新增数据结构：
 
-* [[FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1323/70369#FlowApproverUrlInfo)](https://cloud.tencent.com/document/api/1323/70369#[FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1323/70369#FlowApproverUrlInfo))
+* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1323/70369#FlowApproverUrlInfo)
 
 ### 第 38 次发布
 
@@ -43426,11 +43430,11 @@
 
 新增接口：
 
-* [[ChannelCreateFlowSignUrl](https://cloud.tencent.com/document/api/1420/85819)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCreateFlowSignUrl](https://cloud.tencent.com/document/api/1420/85819)
 
 新增数据结构：
 
-* [[FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverUrlInfo)](https://cloud.tencent.com/document/api/1420/61525#[FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverUrlInfo))
+* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverUrlInfo)
 
 ### 第 59 次发布
 
@@ -54832,8 +54836,8 @@
 
 新增数据结构：
 
-* [[AppConfig](https://cloud.tencent.com/document/api/1639/81423#AppConfig)](https://cloud.tencent.com/document/api/1639/81423#[AppConfig](https://cloud.tencent.com/document/api/1639/81423#AppConfig))
-* [[SceneItem](https://cloud.tencent.com/document/api/1639/81423#SceneItem)](https://cloud.tencent.com/document/api/1639/81423#[SceneItem](https://cloud.tencent.com/document/api/1639/81423#SceneItem))
+* [AppConfig](https://cloud.tencent.com/document/api/1639/81423#AppConfig)
+* [SceneItem](https://cloud.tencent.com/document/api/1639/81423#SceneItem)
 
 ### 第 6 次发布
 
@@ -84507,6 +84511,35 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 27 次发布
+
+发布时间：2023-01-17 01:53:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[FirstPartConfig](https://cloud.tencent.com/document/api/1552/80721#FirstPartConfig)](https://cloud.tencent.com/document/api/1552/80721#[FirstPartConfig](https://cloud.tencent.com/document/api/1552/80721#FirstPartConfig))
+* [[SlowPostConfig](https://cloud.tencent.com/document/api/1552/80721#SlowPostConfig)](https://cloud.tencent.com/document/api/1552/80721#[SlowPostConfig](https://cloud.tencent.com/document/api/1552/80721#SlowPostConfig))
+* [[SlowRateConfig](https://cloud.tencent.com/document/api/1552/80721#SlowRateConfig)](https://cloud.tencent.com/document/api/1552/80721#[SlowRateConfig](https://cloud.tencent.com/document/api/1552/80721#SlowRateConfig))
+
+修改数据结构：
+
+* [AclConfig](https://cloud.tencent.com/document/api/1552/80721#AclConfig)
+
+	* 新增成员：Customizes
+
+* [RateLimitConfig](https://cloud.tencent.com/document/api/1552/80721#RateLimitConfig)
+
+	* 新增成员：RateLimitCustomizes
+
+* [SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig)
+
+	* 新增成员：SlowPostConfig
+
+
 ### 第 26 次发布
 
 发布时间：2023-01-16 02:10:35
@@ -93224,6 +93257,37 @@
 
 
 ## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 82 次发布
+
+发布时间：2023-01-17 01:58:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateConfigTemplate](https://cloud.tencent.com/document/api/649/85861)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/api/649/85860)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteCluster](https://cloud.tencent.com/document/api/649/85859)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteConfigTemplate](https://cloud.tencent.com/document/api/649/85858)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeClusters](https://cloud.tencent.com/document/api/649/85857)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeConfigTemplate](https://cloud.tencent.com/document/api/649/85856)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFileConfigReleases](https://cloud.tencent.com/document/api/649/85855)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyApplication](https://cloud.tencent.com/document/api/649/85854)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyCluster](https://cloud.tencent.com/document/api/649/85853)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyGroup](https://cloud.tencent.com/document/api/649/85852)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyNamespace](https://cloud.tencent.com/document/api/649/85851)](https://cloud.tencent.com/document/api/#/#)
+* [[RevokeFileConfig](https://cloud.tencent.com/document/api/649/85850)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateConfigTemplate](https://cloud.tencent.com/document/api/649/85849)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ClusterV2](https://cloud.tencent.com/document/api/649/36099#ClusterV2)](https://cloud.tencent.com/document/api/649/36099#[ClusterV2](https://cloud.tencent.com/document/api/649/36099#ClusterV2))
+* [[ConfigTemplate](https://cloud.tencent.com/document/api/649/36099#ConfigTemplate)](https://cloud.tencent.com/document/api/649/36099#[ConfigTemplate](https://cloud.tencent.com/document/api/649/36099#ConfigTemplate))
+* [[TsfPageClusterV2](https://cloud.tencent.com/document/api/649/36099#TsfPageClusterV2)](https://cloud.tencent.com/document/api/649/36099#[TsfPageClusterV2](https://cloud.tencent.com/document/api/649/36099#TsfPageClusterV2))
+* [[TsfPageFileConfigRelease](https://cloud.tencent.com/document/api/649/36099#TsfPageFileConfigRelease)](https://cloud.tencent.com/document/api/649/36099#[TsfPageFileConfigRelease](https://cloud.tencent.com/document/api/649/36099#TsfPageFileConfigRelease))
 
 ### 第 81 次发布
 

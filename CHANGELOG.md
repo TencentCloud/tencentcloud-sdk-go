@@ -1,3 +1,124 @@
+# Release v1.0.581
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 15 次发布
+
+发布时间：2023-01-17 01:09:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCRWork](https://cloud.tencent.com/document/api/1296/78029)
+
+	* 新增入参：IsAutoRenew
+
+
+修改数据结构：
+
+* [Monitor](https://cloud.tencent.com/document/api/1296/78030#Monitor)
+
+	* 新增成员：MonitorEndTime, AutoRenew
+
+
+
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 116 次发布
+
+发布时间：2023-01-17 01:12:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEdgePackTaskStatus](https://cloud.tencent.com/document/api/228/85848)
+
+新增数据结构：
+
+* [EdgePackTaskFilter](https://cloud.tencent.com/document/api/228/30987#EdgePackTaskFilter)
+* [EdgePackTaskStatus](https://cloud.tencent.com/document/api/228/30987#EdgePackTaskStatus)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 27 次发布
+
+发布时间：2023-01-17 01:53:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [FirstPartConfig](https://cloud.tencent.com/document/api/1552/80721#FirstPartConfig)
+* [SlowPostConfig](https://cloud.tencent.com/document/api/1552/80721#SlowPostConfig)
+* [SlowRateConfig](https://cloud.tencent.com/document/api/1552/80721#SlowRateConfig)
+
+修改数据结构：
+
+* [AclConfig](https://cloud.tencent.com/document/api/1552/80721#AclConfig)
+
+	* 新增成员：Customizes
+
+* [RateLimitConfig](https://cloud.tencent.com/document/api/1552/80721#RateLimitConfig)
+
+	* 新增成员：RateLimitCustomizes
+
+* [SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig)
+
+	* 新增成员：SlowPostConfig
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 82 次发布
+
+发布时间：2023-01-17 01:58:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateConfigTemplate](https://cloud.tencent.com/document/api/649/85861)
+* [CreateMicroserviceWithDetailResp](https://cloud.tencent.com/document/api/649/85860)
+* [DeleteCluster](https://cloud.tencent.com/document/api/649/85859)
+* [DeleteConfigTemplate](https://cloud.tencent.com/document/api/649/85858)
+* [DescribeClusters](https://cloud.tencent.com/document/api/649/85857)
+* [DescribeConfigTemplate](https://cloud.tencent.com/document/api/649/85856)
+* [DescribeFileConfigReleases](https://cloud.tencent.com/document/api/649/85855)
+* [ModifyApplication](https://cloud.tencent.com/document/api/649/85854)
+* [ModifyCluster](https://cloud.tencent.com/document/api/649/85853)
+* [ModifyGroup](https://cloud.tencent.com/document/api/649/85852)
+* [ModifyNamespace](https://cloud.tencent.com/document/api/649/85851)
+* [RevokeFileConfig](https://cloud.tencent.com/document/api/649/85850)
+* [UpdateConfigTemplate](https://cloud.tencent.com/document/api/649/85849)
+
+新增数据结构：
+
+* [ClusterV2](https://cloud.tencent.com/document/api/649/36099#ClusterV2)
+* [ConfigTemplate](https://cloud.tencent.com/document/api/649/36099#ConfigTemplate)
+* [TsfPageClusterV2](https://cloud.tencent.com/document/api/649/36099#TsfPageClusterV2)
+* [TsfPageFileConfigRelease](https://cloud.tencent.com/document/api/649/36099#TsfPageFileConfigRelease)
+
+
+
 # Release v1.0.580
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

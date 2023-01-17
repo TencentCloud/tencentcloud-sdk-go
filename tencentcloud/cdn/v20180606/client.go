@@ -2183,6 +2183,62 @@ func (c *Client) DescribeDomainsConfigWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeEdgePackTaskStatusRequest() (request *DescribeEdgePackTaskStatusRequest) {
+    request = &DescribeEdgePackTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeEdgePackTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeEdgePackTaskStatusResponse() (response *DescribeEdgePackTaskStatusResponse) {
+    response = &DescribeEdgePackTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEdgePackTaskStatus
+// DescribeEdgePackTaskStatus 用于查询动态打包任务状态列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+func (c *Client) DescribeEdgePackTaskStatus(request *DescribeEdgePackTaskStatusRequest) (response *DescribeEdgePackTaskStatusResponse, err error) {
+    return c.DescribeEdgePackTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeEdgePackTaskStatus
+// DescribeEdgePackTaskStatus 用于查询动态打包任务状态列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+func (c *Client) DescribeEdgePackTaskStatusWithContext(ctx context.Context, request *DescribeEdgePackTaskStatusRequest) (response *DescribeEdgePackTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgePackTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgePackTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgePackTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventLogDataRequest() (request *DescribeEventLogDataRequest) {
     request = &DescribeEventLogDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2270,6 +2326,7 @@ func NewDescribeImageConfigResponse() (response *DescribeImageConfigResponse) {
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) DescribeImageConfig(request *DescribeImageConfigRequest) (response *DescribeImageConfigResponse, err error) {
     return c.DescribeImageConfigWithContext(context.Background(), request)
 }
@@ -2287,6 +2344,7 @@ func (c *Client) DescribeImageConfig(request *DescribeImageConfigRequest) (respo
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
 func (c *Client) DescribeImageConfigWithContext(ctx context.Context, request *DescribeImageConfigRequest) (response *DescribeImageConfigResponse, err error) {
     if request == nil {
         request = NewDescribeImageConfigRequest()
@@ -6289,6 +6347,7 @@ func NewStopScdnDomainResponse() (response *StopScdnDomainResponse) {
 //  RESOURCENOTFOUND_CDNUSERTOOMANYHOSTS = "ResourceNotFound.CdnUserTooManyHosts"
 //  RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = "ResourceUnavailable.ScdnUserNoPackage"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNUSERAUTHFAIL = "UnauthorizedOperation.CdnUserAuthFail"
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
 func (c *Client) StopScdnDomain(request *StopScdnDomainRequest) (response *StopScdnDomainResponse, err error) {
@@ -6315,6 +6374,7 @@ func (c *Client) StopScdnDomain(request *StopScdnDomainRequest) (response *StopS
 //  RESOURCENOTFOUND_CDNUSERTOOMANYHOSTS = "ResourceNotFound.CdnUserTooManyHosts"
 //  RESOURCEUNAVAILABLE_SCDNUSERNOPACKAGE = "ResourceUnavailable.ScdnUserNoPackage"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNUSERAUTHFAIL = "UnauthorizedOperation.CdnUserAuthFail"
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
 func (c *Client) StopScdnDomainWithContext(ctx context.Context, request *StopScdnDomainRequest) (response *StopScdnDomainResponse, err error) {

@@ -17,6 +17,9 @@ package v20210701
 const (
 	// 此产品的特有错误码
 
+	// 请求响应超时。
+	FAILEDOPERATION_ACTIONREADTIMEOUT = "FailedOperation.ActionReadTimeout"
+
 	// 创建服务失败。
 	FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
 
@@ -25,6 +28,18 @@ const (
 
 	// 删除应用失败。
 	FAILEDOPERATION_DELETESERVICEERROR = "FailedOperation.DeleteServiceError"
+
+	// 查询 ingress 列表失败。
+	FAILEDOPERATION_DESCRIBEINGRESSLISTERROR = "FailedOperation.DescribeIngressListError"
+
+	// 查询实例信息失败。
+	FAILEDOPERATION_DESCRIBERUNPODLISTERROR = "FailedOperation.DescribeRunPodListError"
+
+	// 查询service失败。
+	FAILEDOPERATION_DESCRIBESERVICEERROR = "FailedOperation.DescribeServiceError"
+
+	// 查询service列表失败。
+	FAILEDOPERATION_DESCRIBESERVICELISTERROR = "FailedOperation.DescribeServiceListError"
 
 	// 请求响应超时。
 	INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
@@ -238,6 +253,9 @@ const (
 
 	// 服务端口是保留端口。
 	INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+
+	// post start 不合法。
+	INVALIDPARAMETERVALUE_POSTSTARTNOTVALID = "InvalidParameterValue.PostStartNotValid"
 
 	// 公有镜像参数错误。
 	INVALIDPARAMETERVALUE_PUBLICREPOTYPEPARAMETERERROR = "InvalidParameterValue.PublicRepoTypeParameterError"

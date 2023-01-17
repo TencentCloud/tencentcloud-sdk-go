@@ -699,6 +699,7 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONCREATEESATUHERROR = "FailedOperation.ApplicationCreateEsAtuhError"
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  INTERNALERROR_APPLICATIONMASTERFEIGNERROR = "InternalError.ApplicationMasterFeignError"
 //  INTERNALERROR_APPLICATIONMASTERNUKNOWNERROR = "InternalError.ApplicationMasterNuknownError"
 //  INTERNALERROR_APPLICATIONSCALABLEINITERROR = "InternalError.ApplicationScalableInitError"
@@ -726,6 +727,7 @@ func (c *Client) CreateApplication(request *CreateApplicationRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLICATIONCREATEESATUHERROR = "FailedOperation.ApplicationCreateEsAtuhError"
 //  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  INTERNALERROR_APPLICATIONMASTERFEIGNERROR = "InternalError.ApplicationMasterFeignError"
 //  INTERNALERROR_APPLICATIONMASTERNUKNOWNERROR = "InternalError.ApplicationMasterNuknownError"
 //  INTERNALERROR_APPLICATIONSCALABLEINITERROR = "InternalError.ApplicationScalableInitError"
@@ -923,6 +925,80 @@ func (c *Client) CreateConfigWithContext(ctx context.Context, request *CreateCon
     return
 }
 
+func NewCreateConfigTemplateRequest() (request *CreateConfigTemplateRequest) {
+    request = &CreateConfigTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateConfigTemplate")
+    
+    
+    return
+}
+
+func NewCreateConfigTemplateResponse() (response *CreateConfigTemplateResponse) {
+    response = &CreateConfigTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConfigTemplate
+// 创建参数模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMEINVALID = "InvalidParameterValue.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+func (c *Client) CreateConfigTemplate(request *CreateConfigTemplateRequest) (response *CreateConfigTemplateResponse, err error) {
+    return c.CreateConfigTemplateWithContext(context.Background(), request)
+}
+
+// CreateConfigTemplate
+// 创建参数模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMEINVALID = "InvalidParameterValue.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+func (c *Client) CreateConfigTemplateWithContext(ctx context.Context, request *CreateConfigTemplateRequest) (response *CreateConfigTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConfigTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConfigTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateContainGroupRequest() (request *CreateContainGroupRequest) {
     request = &CreateContainGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1041,6 +1117,7 @@ func NewCreateFileConfigResponse() (response *CreateFileConfigResponse) {
 //  INVALIDPARAMETERVALUE_FILECONFIGEXISTS = "InvalidParameterValue.FileConfigExists"
 //  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATH = "InvalidParameterValue.FileConfigExistsPath"
 //  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATHOTHER = "InvalidParameterValue.FileConfigExistsPathOther"
+//  INVALIDPARAMETERVALUE_FILECONFIGFILENAMEINVALID = "InvalidParameterValue.FileConfigFileNameInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = "InvalidParameterValue.FileConfigFilePathInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"
@@ -1060,6 +1137,7 @@ func (c *Client) CreateFileConfig(request *CreateFileConfigRequest) (response *C
 //  INVALIDPARAMETERVALUE_FILECONFIGEXISTS = "InvalidParameterValue.FileConfigExists"
 //  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATH = "InvalidParameterValue.FileConfigExistsPath"
 //  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATHOTHER = "InvalidParameterValue.FileConfigExistsPathOther"
+//  INVALIDPARAMETERVALUE_FILECONFIGFILENAMEINVALID = "InvalidParameterValue.FileConfigFileNameInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = "InvalidParameterValue.FileConfigFilePathInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"
@@ -1543,6 +1621,56 @@ func (c *Client) CreateMicroserviceWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateMicroserviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMicroserviceWithDetailRespRequest() (request *CreateMicroserviceWithDetailRespRequest) {
+    request = &CreateMicroserviceWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateMicroserviceWithDetailResp")
+    
+    
+    return
+}
+
+func NewCreateMicroserviceWithDetailRespResponse() (response *CreateMicroserviceWithDetailRespResponse) {
+    response = &CreateMicroserviceWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateMicroserviceWithDetailResp
+// 新增微服务返回id
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SERVICENAMEREPEATED = "InvalidParameterValue.ServiceNameRepeated"
+//  RESOURCENOTFOUND_NAMESPACENOTEXIST = "ResourceNotFound.NamespaceNotExist"
+func (c *Client) CreateMicroserviceWithDetailResp(request *CreateMicroserviceWithDetailRespRequest) (response *CreateMicroserviceWithDetailRespResponse, err error) {
+    return c.CreateMicroserviceWithDetailRespWithContext(context.Background(), request)
+}
+
+// CreateMicroserviceWithDetailResp
+// 新增微服务返回id
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SERVICENAMEREPEATED = "InvalidParameterValue.ServiceNameRepeated"
+//  RESOURCENOTFOUND_NAMESPACENOTEXIST = "ResourceNotFound.NamespaceNotExist"
+func (c *Client) CreateMicroserviceWithDetailRespWithContext(ctx context.Context, request *CreateMicroserviceWithDetailRespRequest) (response *CreateMicroserviceWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewCreateMicroserviceWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMicroserviceWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMicroserviceWithDetailRespResponse()
     err = c.Send(request, response)
     return
 }
@@ -2081,6 +2209,80 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
+    request = &DeleteClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteCluster")
+    
+    
+    return
+}
+
+func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
+    response = &DeleteClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCluster
+// 删除集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCEINUSE_CVMCAEMASTERCANNOTDELETE = "ResourceInUse.CvmcaeMasterCannotDelete"
+//  RESOURCEINUSE_GROUPEXISTS = "ResourceInUse.GroupExists"
+//  RESOURCEINUSE_INSTANCEEXISTS = "ResourceInUse.InstanceExists"
+//  RESOURCEINUSE_NONDEFAULTNAMESPACEEXISTS = "ResourceInUse.NonDefaultNamespaceExists"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_TKECLUSTERNOTEXISTS = "ResourceNotFound.TkeClusterNotExists"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
+    return c.DeleteClusterWithContext(context.Background(), request)
+}
+
+// DeleteCluster
+// 删除集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
+//  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCEINUSE_CVMCAEMASTERCANNOTDELETE = "ResourceInUse.CvmcaeMasterCannotDelete"
+//  RESOURCEINUSE_GROUPEXISTS = "ResourceInUse.GroupExists"
+//  RESOURCEINUSE_INSTANCEEXISTS = "ResourceInUse.InstanceExists"
+//  RESOURCEINUSE_NONDEFAULTNAMESPACEEXISTS = "ResourceInUse.NonDefaultNamespaceExists"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_TKECLUSTERNOTEXISTS = "ResourceNotFound.TkeClusterNotExists"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DeleteClusterWithContext(ctx context.Context, request *DeleteClusterRequest) (response *DeleteClusterResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteConfigRequest() (request *DeleteConfigRequest) {
     request = &DeleteConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2133,6 +2335,76 @@ func (c *Client) DeleteConfigWithContext(ctx context.Context, request *DeleteCon
     return
 }
 
+func NewDeleteConfigTemplateRequest() (request *DeleteConfigTemplateRequest) {
+    request = &DeleteConfigTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteConfigTemplate")
+    
+    
+    return
+}
+
+func NewDeleteConfigTemplateResponse() (response *DeleteConfigTemplateResponse) {
+    response = &DeleteConfigTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteConfigTemplate
+// 删除模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+func (c *Client) DeleteConfigTemplate(request *DeleteConfigTemplateRequest) (response *DeleteConfigTemplateResponse, err error) {
+    return c.DeleteConfigTemplateWithContext(context.Background(), request)
+}
+
+// DeleteConfigTemplate
+// 删除模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+func (c *Client) DeleteConfigTemplateWithContext(ctx context.Context, request *DeleteConfigTemplateRequest) (response *DeleteConfigTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteConfigTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConfigTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConfigTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteContainerGroupRequest() (request *DeleteContainerGroupRequest) {
     request = &DeleteContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2155,6 +2427,7 @@ func NewDeleteContainerGroupResponse() (response *DeleteContainerGroupResponse) 
 // 删除容器部署组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
@@ -2171,6 +2444,7 @@ func (c *Client) DeleteContainerGroup(request *DeleteContainerGroupRequest) (res
 // 删除容器部署组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
@@ -4095,6 +4369,7 @@ func NewDescribeClusterInstancesResponse() (response *DescribeClusterInstancesRe
 // 查询集群实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
@@ -4120,6 +4395,7 @@ func (c *Client) DescribeClusterInstances(request *DescribeClusterInstancesReque
 // 查询集群实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_INSTANCEQUERYFAILED = "FailedOperation.InstanceQueryFailed"
@@ -4153,6 +4429,70 @@ func (c *Client) DescribeClusterInstancesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
+    request = &DescribeClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeClusters")
+    
+    
+    return
+}
+
+func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
+    response = &DescribeClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusters
+// 获取集群列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    return c.DescribeClustersWithContext(context.Background(), request)
+}
+
+// DescribeClusters
+// 获取集群列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeClustersWithContext(ctx context.Context, request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
     request = &DescribeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4176,6 +4516,7 @@ func NewDescribeConfigResponse() (response *DescribeConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+//  MISSINGPARAMETER_CONFIGIDREQUIRED = "MissingParameter.ConfigIdRequired"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
     return c.DescribeConfigWithContext(context.Background(), request)
@@ -4186,6 +4527,7 @@ func (c *Client) DescribeConfig(request *DescribeConfigRequest) (response *Descr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONFIGAPPLICATIONQUERYFAILED = "FailedOperation.ConfigApplicationQueryFailed"
+//  MISSINGPARAMETER_CONFIGIDREQUIRED = "MissingParameter.ConfigIdRequired"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeConfigWithContext(ctx context.Context, request *DescribeConfigRequest) (response *DescribeConfigResponse, err error) {
     if request == nil {
@@ -4363,6 +4705,78 @@ func (c *Client) DescribeConfigSummaryWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeConfigSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigTemplateRequest() (request *DescribeConfigTemplateRequest) {
+    request = &DescribeConfigTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigTemplate")
+    
+    
+    return
+}
+
+func NewDescribeConfigTemplateResponse() (response *DescribeConfigTemplateResponse) {
+    response = &DescribeConfigTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeConfigTemplate
+// 导入配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeConfigTemplate(request *DescribeConfigTemplateRequest) (response *DescribeConfigTemplateResponse, err error) {
+    return c.DescribeConfigTemplateWithContext(context.Background(), request)
+}
+
+// DescribeConfigTemplate
+// 导入配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeConfigTemplateWithContext(ctx context.Context, request *DescribeConfigTemplateRequest) (response *DescribeConfigTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -4999,6 +5413,56 @@ func (c *Client) DescribeEnabledUnitRuleWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeEnabledUnitRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFileConfigReleasesRequest() (request *DescribeFileConfigReleasesRequest) {
+    request = &DescribeFileConfigReleasesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeFileConfigReleases")
+    
+    
+    return
+}
+
+func NewDescribeFileConfigReleasesResponse() (response *DescribeFileConfigReleasesResponse) {
+    response = &DescribeFileConfigReleasesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFileConfigReleases
+// 查询文件配置项发布信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeFileConfigReleases(request *DescribeFileConfigReleasesRequest) (response *DescribeFileConfigReleasesResponse, err error) {
+    return c.DescribeFileConfigReleasesWithContext(context.Background(), request)
+}
+
+// DescribeFileConfigReleases
+// 查询文件配置项发布信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeFileConfigReleasesWithContext(ctx context.Context, request *DescribeFileConfigReleasesRequest) (response *DescribeFileConfigReleasesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileConfigReleasesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileConfigReleases require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileConfigReleasesResponse()
     err = c.Send(request, response)
     return
 }
@@ -9315,6 +9779,112 @@ func (c *Client) ExpandGroupWithContext(ctx context.Context, request *ExpandGrou
     return
 }
 
+func NewModifyApplicationRequest() (request *ModifyApplicationRequest) {
+    request = &ModifyApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyApplication")
+    
+    
+    return
+}
+
+func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
+    response = &ModifyApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApplication
+// 修改应用
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_APPLICATIONDELETEFAILED = "InvalidParameter.ApplicationDeleteFailed"
+//  INVALIDPARAMETERVALUE_APPLICATIONDESCLENGTH = "InvalidParameterValue.ApplicationDescLength"
+//  RESOURCENOTFOUND_APPLICATIONNOTEXIST = "ResourceNotFound.ApplicationNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
+    return c.ModifyApplicationWithContext(context.Background(), request)
+}
+
+// ModifyApplication
+// 修改应用
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_APPLICATIONDELETEFAILED = "InvalidParameter.ApplicationDeleteFailed"
+//  INVALIDPARAMETERVALUE_APPLICATIONDESCLENGTH = "InvalidParameterValue.ApplicationDescLength"
+//  RESOURCENOTFOUND_APPLICATIONNOTEXIST = "ResourceNotFound.ApplicationNotExist"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyClusterRequest() (request *ModifyClusterRequest) {
+    request = &ModifyClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyCluster")
+    
+    
+    return
+}
+
+func NewModifyClusterResponse() (response *ModifyClusterResponse) {
+    response = &ModifyClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCluster
+// 修改集群信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
+//  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
+    return c.ModifyClusterWithContext(context.Background(), request)
+}
+
+// ModifyCluster
+// 修改集群信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
+//  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+func (c *Client) ModifyClusterWithContext(ctx context.Context, request *ModifyClusterRequest) (response *ModifyClusterResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyContainerGroupRequest() (request *ModifyContainerGroupRequest) {
     request = &ModifyContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9425,6 +9995,54 @@ func (c *Client) ModifyContainerReplicasWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyContainerReplicasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGroupRequest() (request *ModifyGroupRequest) {
+    request = &ModifyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyGroup")
+    
+    
+    return
+}
+
+func NewModifyGroupResponse() (response *ModifyGroupResponse) {
+    response = &ModifyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyGroup
+// 更新部署组信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+func (c *Client) ModifyGroup(request *ModifyGroupRequest) (response *ModifyGroupResponse, err error) {
+    return c.ModifyGroupWithContext(context.Background(), request)
+}
+
+// ModifyGroup
+// 更新部署组信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+func (c *Client) ModifyGroupWithContext(ctx context.Context, request *ModifyGroupRequest) (response *ModifyGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -9747,6 +10365,54 @@ func (c *Client) ModifyMicroserviceWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyMicroserviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNamespaceRequest() (request *ModifyNamespaceRequest) {
+    request = &ModifyNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "ModifyNamespace")
+    
+    
+    return
+}
+
+func NewModifyNamespaceResponse() (response *ModifyNamespaceResponse) {
+    response = &ModifyNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyNamespace
+// 修改命名空间
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
+    return c.ModifyNamespaceWithContext(context.Background(), request)
+}
+
+// ModifyNamespace
+// 修改命名空间
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) ModifyNamespaceWithContext(ctx context.Context, request *ModifyNamespaceRequest) (response *ModifyNamespaceResponse, err error) {
+    if request == nil {
+        request = NewModifyNamespaceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNamespace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNamespaceResponse()
     err = c.Send(request, response)
     return
 }
@@ -10729,6 +11395,56 @@ func (c *Client) RevocationPublicConfigWithContext(ctx context.Context, request 
     return
 }
 
+func NewRevokeFileConfigRequest() (request *RevokeFileConfigRequest) {
+    request = &RevokeFileConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "RevokeFileConfig")
+    
+    
+    return
+}
+
+func NewRevokeFileConfigResponse() (response *RevokeFileConfigResponse) {
+    response = &RevokeFileConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RevokeFileConfig
+// 撤回已发布的文件配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_FILECONFIGRELEASENOTEXISTS = "InvalidParameterValue.FileConfigReleaseNotExists"
+func (c *Client) RevokeFileConfig(request *RevokeFileConfigRequest) (response *RevokeFileConfigResponse, err error) {
+    return c.RevokeFileConfigWithContext(context.Background(), request)
+}
+
+// RevokeFileConfig
+// 撤回已发布的文件配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_FILECONFIGRELEASENOTEXISTS = "InvalidParameterValue.FileConfigReleaseNotExists"
+func (c *Client) RevokeFileConfigWithContext(ctx context.Context, request *RevokeFileConfigRequest) (response *RevokeFileConfigResponse, err error) {
+    if request == nil {
+        request = NewRevokeFileConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RevokeFileConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRevokeFileConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRollbackConfigRequest() (request *RollbackConfigRequest) {
     request = &RollbackConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11701,6 +12417,74 @@ func (c *Client) UpdateApiTimeoutsWithContext(ctx context.Context, request *Upda
     request.SetContext(ctx)
     
     response = NewUpdateApiTimeoutsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateConfigTemplateRequest() (request *UpdateConfigTemplateRequest) {
+    request = &UpdateConfigTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "UpdateConfigTemplate")
+    
+    
+    return
+}
+
+func NewUpdateConfigTemplateResponse() (response *UpdateConfigTemplateResponse) {
+    response = &UpdateConfigTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateConfigTemplate
+// 更新参数模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+func (c *Client) UpdateConfigTemplate(request *UpdateConfigTemplateRequest) (response *UpdateConfigTemplateResponse, err error) {
+    return c.UpdateConfigTemplateWithContext(context.Background(), request)
+}
+
+// UpdateConfigTemplate
+// 更新参数模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+func (c *Client) UpdateConfigTemplateWithContext(ctx context.Context, request *UpdateConfigTemplateRequest) (response *UpdateConfigTemplateResponse, err error) {
+    if request == nil {
+        request = NewUpdateConfigTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateConfigTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateConfigTemplateResponse()
     err = c.Send(request, response)
     return
 }

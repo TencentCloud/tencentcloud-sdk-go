@@ -1004,6 +1004,7 @@ func NewCreateUnblockIpResponse() (response *CreateUnblockIpResponse) {
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUnblockIp(request *CreateUnblockIpRequest) (response *CreateUnblockIpResponse, err error) {
     return c.CreateUnblockIpWithContext(context.Background(), request)
 }
@@ -1013,6 +1014,7 @@ func (c *Client) CreateUnblockIp(request *CreateUnblockIpRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateUnblockIpWithContext(ctx context.Context, request *CreateUnblockIpRequest) (response *CreateUnblockIpResponse, err error) {
     if request == nil {
         request = NewCreateUnblockIpRequest()
@@ -1052,6 +1054,7 @@ func NewDeleteCCFrequencyRulesResponse() (response *DeleteCCFrequencyRulesRespon
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteCCFrequencyRules(request *DeleteCCFrequencyRulesRequest) (response *DeleteCCFrequencyRulesResponse, err error) {
     return c.DeleteCCFrequencyRulesWithContext(context.Background(), request)
 }
@@ -1061,6 +1064,7 @@ func (c *Client) DeleteCCFrequencyRules(request *DeleteCCFrequencyRulesRequest) 
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteCCFrequencyRulesWithContext(ctx context.Context, request *DeleteCCFrequencyRulesRequest) (response *DeleteCCFrequencyRulesResponse, err error) {
     if request == nil {
         request = NewDeleteCCFrequencyRulesRequest()

@@ -77,6 +77,10 @@ type AclConfig struct {
 
 	// 用户自定义规则。
 	AclUserRules []*AclUserRule `json:"AclUserRules,omitempty" name:"AclUserRules"`
+
+	// 托管定制规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Customizes []*AclUserRule `json:"Customizes,omitempty" name:"Customizes"`
 }
 
 type AclUserRule struct {
@@ -6786,6 +6790,18 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+type FirstPartConfig struct {
+	// 开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 首段包的统计时长，单位是秒，即期望首段包的统计时长是多少，默认5秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatTime *uint64 `json:"StatTime,omitempty" name:"StatTime"`
+}
+
 type FollowOrigin struct {
 	// 遵循源站配置开关，取值有：
 	// <li>on：开启；</li>
@@ -9016,6 +9032,10 @@ type RateLimitConfig struct {
 	// 智能客户端过滤。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitIntelligence *RateLimitIntelligence `json:"RateLimitIntelligence,omitempty" name:"RateLimitIntelligence"`
+
+	// 速率限制-托管定制规则。如果为null，默认使用历史配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RateLimitCustomizes []*RateLimitUserRule `json:"RateLimitCustomizes,omitempty" name:"RateLimitCustomizes"`
 }
 
 type RateLimitIntelligence struct {
@@ -9720,6 +9740,10 @@ type SecurityConfig struct {
 	// 模板配置。此处仅出参数使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateConfig *TemplateConfig `json:"TemplateConfig,omitempty" name:"TemplateConfig"`
+
+	// 慢速攻击配置。如果为null，默认使用历史配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlowPostConfig *SlowPostConfig `json:"SlowPostConfig,omitempty" name:"SlowPostConfig"`
 }
 
 type SecurityType struct {
@@ -9815,6 +9839,46 @@ type SkipCondition struct {
 	// 匹配Value的值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchContent []*string `json:"MatchContent,omitempty" name:"MatchContent"`
+}
+
+type SlowPostConfig struct {
+	// 开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 首包配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstPartConfig *FirstPartConfig `json:"FirstPartConfig,omitempty" name:"FirstPartConfig"`
+
+	// 基础配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlowRateConfig *SlowRateConfig `json:"SlowRateConfig,omitempty" name:"SlowRateConfig"`
+
+	// 慢速攻击的处置动作，取值有：
+	// <li>monitor：观察；</li>
+	// <li>drop：拦截。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 本规则的Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+}
+
+type SlowRateConfig struct {
+	// 开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 统计的间隔，单位是秒，即在首段包传输结束后，将数据传输轴按照本参数切分，每个分片独立计算慢速攻击。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 统计时应用的速率阈值，单位是bps，即如果本分片中的传输速率没达到本参数的值，则判定为慢速攻击，应用慢速攻击的处置方式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Threshold *uint64 `json:"Threshold,omitempty" name:"Threshold"`
 }
 
 type SmartRouting struct {

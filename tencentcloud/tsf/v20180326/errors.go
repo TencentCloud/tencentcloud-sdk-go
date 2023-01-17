@@ -53,6 +53,21 @@ const (
 	// 配置项发布信息查询失败。
 	FAILEDOPERATION_CONFIGRELEASEQUERYFAILED = "FailedOperation.ConfigReleaseQueryFailed"
 
+	// 配置模板创建失败。
+	FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+
+	// 配置模板删除失败。
+	FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+
+	// 配置模板导入失败。
+	FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+
+	// 配置模板分页查询失败。
+	FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+
+	// 配置模板更新失败。
+	FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+
 	// 部署组处于运行状态，无法启动。
 	FAILEDOPERATION_CONTAINERGROUPGROUPHASRUN = "FailedOperation.ContainergroupGroupHasrun"
 
@@ -154,6 +169,9 @@ const (
 
 	// TKE 集群创建失败，%s。
 	FAILEDOPERATION_TKECLUSTERCREATEFAILED = "FailedOperation.TkeClusterCreateFailed"
+
+	// TKE 集群删除失败。
+	FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
 
 	// TKE 集群查询失败。
 	FAILEDOPERATION_TKECLUSTERQUERYFAILED = "FailedOperation.TkeClusterQueryFailed"
@@ -317,8 +335,14 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 删除应用失败。
+	INVALIDPARAMETER_APPLICATIONDELETEFAILED = "InvalidParameter.ApplicationDeleteFailed"
+
 	// [%s]模块接口[%s]请求不正确（400 BAD REQUEST）。。
 	INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
+
+	// 配置模板名称不符合规范。
+	INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
 
 	// TSF MASTER 实例状态异常。
 	INVALIDPARAMETER_CVMCAEMASTERUNKNOWNINSTANCESTATUS = "InvalidParameter.CvmCaeMasterUnknownInstanceStatus"
@@ -437,6 +461,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 应用描述不能大于200组字符。
+	INVALIDPARAMETERVALUE_APPLICATIONDESCLENGTH = "InvalidParameterValue.ApplicationDescLength"
+
 	// 无效的微服务类型。
 	INVALIDPARAMETERVALUE_APPLICATIONMICROTYPEINVALID = "InvalidParameterValue.ApplicationMicroTypeInvalid"
 
@@ -496,6 +523,18 @@ const (
 
 	// 无法获取配置项发布信息。
 	INVALIDPARAMETERVALUE_CONFIGRELEASENOTEXISTS = "InvalidParameterValue.ConfigReleaseNotExists"
+
+	// 配置模板描述过长。
+	INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+
+	// 配置模板名称不合规。
+	INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMEINVALID = "InvalidParameterValue.ConfigTemplateNameInvalid"
+
+	// 配置模板内容过长。
+	INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+
+	// 配置模板类型不合规。
+	INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
 
 	// 配置格式不符合YAML要求。
 	INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
@@ -614,6 +653,9 @@ const (
 	// 其他用户已发布此配置文件路径。
 	INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATHOTHER = "InvalidParameterValue.FileConfigExistsPathOther"
 
+	// 文件配置项文件名称不合规。
+	INVALIDPARAMETERVALUE_FILECONFIGFILENAMEINVALID = "InvalidParameterValue.FileConfigFileNameInvalid"
+
 	// 文件配置项文件路径不合规。
 	INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = "InvalidParameterValue.FileConfigFilePathInvalid"
 
@@ -625,6 +667,9 @@ const (
 
 	// 同一部署组禁止配置文件重复(文件路径+文件名)。
 	INVALIDPARAMETERVALUE_FILECONFIGPATHEXISTS = "InvalidParameterValue.FileConfigPathExists"
+
+	// 无法获取文件配置项发布信息。
+	INVALIDPARAMETERVALUE_FILECONFIGRELEASENOTEXISTS = "InvalidParameterValue.FileConfigReleaseNotExists"
 
 	// 文件配置项版本描述不合规。
 	INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"
@@ -824,6 +869,15 @@ const (
 	// 配置项发布信息ID未填写。
 	MISSINGPARAMETER_CONFIGRELEASEIDREQUIRED = "MissingParameter.ConfigReleaseIdRequired"
 
+	// 缺少配置模板id。
+	MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+
+	// 配置模板名称未填写。
+	MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+
+	// 配置模板类型未填写。
+	MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+
 	// 配置项类型未填写。
 	MISSINGPARAMETER_CONFIGTYPEREQUIRED = "MissingParameter.ConfigTypeRequired"
 
@@ -881,14 +935,23 @@ const (
 	// 此分组下存在资源，无法执行删除操作。
 	RESOURCEINUSE_GROUPCANNOTDELETE = "ResourceInUse.GroupCannotDelete"
 
+	// 集群下存在分组。
+	RESOURCEINUSE_GROUPEXISTS = "ResourceInUse.GroupExists"
+
 	// 部署组在更新中 请稍后再执行该操作。
 	RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
+
+	// 实例已经存在。
+	RESOURCEINUSE_INSTANCEEXISTS = "ResourceInUse.InstanceExists"
 
 	// 机器实例已经被使用。
 	RESOURCEINUSE_INSTANCEHASBEENUSED = "ResourceInUse.InstanceHasBeenUsed"
 
 	// 此命名空间下存在资源，无法执行删除操作。
 	RESOURCEINUSE_NAMESPACECANNOTDELETE = "ResourceInUse.NamespaceCannotDelete"
+
+	// 集群下存在非默认命名空间。
+	RESOURCEINUSE_NONDEFAULTNAMESPACEEXISTS = "ResourceInUse.NonDefaultNamespaceExists"
 
 	// 资源对象已存在。
 	RESOURCEINUSE_OBJECTEXIST = "ResourceInUse.ObjectExist"

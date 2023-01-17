@@ -465,12 +465,8 @@ func NewDescribeAutoScalingConfigurationResponse() (response *DescribeAutoScalin
 // 本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
-//  RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
+//  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
-//  UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
-//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
 func (c *Client) DescribeAutoScalingConfiguration(request *DescribeAutoScalingConfigurationRequest) (response *DescribeAutoScalingConfigurationResponse, err error) {
     return c.DescribeAutoScalingConfigurationWithContext(context.Background(), request)
 }
@@ -479,12 +475,8 @@ func (c *Client) DescribeAutoScalingConfiguration(request *DescribeAutoScalingCo
 // 本接口(DescribeAutoScalingConfiguration)用于查询集群弹性伸缩配置信息。本接口仅适用于弹性伸缩类型为THPC_AS的集群。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
-//  RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
+//  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
-//  UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
-//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
 func (c *Client) DescribeAutoScalingConfigurationWithContext(ctx context.Context, request *DescribeAutoScalingConfigurationRequest) (response *DescribeAutoScalingConfigurationResponse, err error) {
     if request == nil {
         request = NewDescribeAutoScalingConfigurationRequest()
@@ -571,7 +563,8 @@ func NewDescribeClusterStorageOptionResponse() (response *DescribeClusterStorage
 // 本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) DescribeClusterStorageOption(request *DescribeClusterStorageOptionRequest) (response *DescribeClusterStorageOptionResponse, err error) {
     return c.DescribeClusterStorageOptionWithContext(context.Background(), request)
 }
@@ -580,7 +573,8 @@ func (c *Client) DescribeClusterStorageOption(request *DescribeClusterStorageOpt
 // 本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) DescribeClusterStorageOptionWithContext(ctx context.Context, request *DescribeClusterStorageOptionRequest) (response *DescribeClusterStorageOptionResponse, err error) {
     if request == nil {
         request = NewDescribeClusterStorageOptionRequest()

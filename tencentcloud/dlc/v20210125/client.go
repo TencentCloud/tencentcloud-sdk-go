@@ -790,6 +790,7 @@ func NewCreateExportTaskResponse() (response *CreateExportTaskResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -803,6 +804,7 @@ func (c *Client) CreateExportTask(request *CreateExportTaskRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

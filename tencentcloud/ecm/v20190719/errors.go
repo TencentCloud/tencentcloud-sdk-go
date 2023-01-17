@@ -290,6 +290,9 @@ const (
 	// InvalidParameterValue.InvalidSnapshotId
 	INVALIDPARAMETERVALUE_INVALIDSNAPSHOTID = "InvalidParameterValue.InvalidSnapshotId"
 
+	// 该子网不存在该节点。
+	INVALIDPARAMETERVALUE_INVALIDSUBNETINZONE = "InvalidParameterValue.InvalidSubnetInZone"
+
 	// 系统盘大小不合法。
 	INVALIDPARAMETERVALUE_INVALIDSYSTEMDISKSIZE = "InvalidParameterValue.InvalidSystemDiskSize"
 

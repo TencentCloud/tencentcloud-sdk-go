@@ -4067,6 +4067,94 @@ func (r *DescribeDomainsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEdgePackTaskStatusRequestParams struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页查询限制数目，默认为 100，最大可设置为 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页查询偏移量，默认为 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询条件过滤器
+	Filters []*EdgePackTaskFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeEdgePackTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页查询限制数目，默认为 100，最大可设置为 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页查询偏移量，默认为 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询条件过滤器
+	Filters []*EdgePackTaskFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeEdgePackTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgePackTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdgePackTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdgePackTaskStatusResponseParams struct {
+	// 动态打包任务状态列表
+	EdgePackTaskStatusSet []*EdgePackTaskStatus `json:"EdgePackTaskStatusSet,omitempty" name:"EdgePackTaskStatusSet"`
+
+	// 总数，用于分页查询
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEdgePackTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEdgePackTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeEdgePackTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgePackTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEventLogDataRequestParams struct {
 	// 防护类型，映射如下：
 	//   waf = "Web攻击"
@@ -7130,6 +7218,44 @@ func (r *DuplicateDomainConfigResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DuplicateDomainConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type EdgePackTaskFilter struct {
+	// 过滤字段名
+	// apk: apk名称
+	// status: 母包处理进度 done, failed, processing
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤字段值
+	Value []*string `json:"Value,omitempty" name:"Value"`
+
+	// 是否启用模糊查询，仅支持过滤字段名为 apk。
+	// 模糊查询时，Value长度最大为1。
+	Fuzzy *bool `json:"Fuzzy,omitempty" name:"Fuzzy"`
+}
+
+type EdgePackTaskStatus struct {
+	// APK 名称
+	Apk *string `json:"Apk,omitempty" name:"Apk"`
+
+	// 输出目录
+	DstDir *string `json:"DstDir,omitempty" name:"DstDir"`
+
+	// 上传时间
+	UploadTime *string `json:"UploadTime,omitempty" name:"UploadTime"`
+
+	// 任务状态
+	// created: 创建成功
+	// processing: 处理中
+	// done: 处理完成
+	// failed: 处理失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 上传目录
+	SrcDir []*string `json:"SrcDir,omitempty" name:"SrcDir"`
+
+	// 失败任务状态详情
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
 }
 
 // Predefined struct for user

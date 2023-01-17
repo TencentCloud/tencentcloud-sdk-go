@@ -1101,6 +1101,7 @@ func NewDescribeAvailableZoneInfoResponse() (response *DescribeAvailableZoneInfo
 // 本接口（DescribeAvailableZoneInfo）用于查询区域的可用情况。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1114,6 +1115,7 @@ func (c *Client) DescribeAvailableZoneInfo(request *DescribeAvailableZoneInfoReq
 // 本接口（DescribeAvailableZoneInfo）用于查询区域的可用情况。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

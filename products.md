@@ -25,7 +25,7 @@
 | billing | [费用中心](https://cloud.tencent.com/document/product/555) | 2023-01-06 01:04:34 |
 | bizlive | [商业直播](https://cloud.tencent.com/document/product) | 2020-03-10 01:08:07 |
 | bm | [黑石物理服务器CPM](https://cloud.tencent.com/document/product/386) | 2023-01-11 11:01:36 |
-| bma | [品牌经营管家](https://cloud.tencent.com/document/product/1296) | 2022-11-04 06:09:26 |
+| bma | [品牌经营管家](https://cloud.tencent.com/document/product/1296) | 2023-01-17 01:09:15 |
 | bmeip | [黑石弹性公网IP](https://cloud.tencent.com/document/product/1028) | 2022-04-19 06:04:56 |
 | bmlb | [黑石负载均衡](https://cloud.tencent.com/document/product/1027) | 2022-04-04 06:09:37 |
 | bmvpc | [黑石私有网络](https://cloud.tencent.com/document/product/1024) | 2022-04-15 06:02:36 |
@@ -42,7 +42,7 @@
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2023-01-09 01:07:34 |
 | cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2023-01-16 01:12:59 |
 | cdc | [本地专用集群](https://cloud.tencent.com/document/product/1346) | 2022-12-15 01:12:58 |
-| cdn | [内容分发网络 CDN](https://cloud.tencent.com/document/product/228) | 2023-01-09 01:08:51 |
+| cdn | [内容分发网络 CDN](https://cloud.tencent.com/document/product/228) | 2023-01-17 01:12:53 |
 | cds | [T-Sec-数据安全审计（DSA）](https://cloud.tencent.com/document/product/856) | 2022-10-31 06:15:53 |
 | cdwch | [云数据仓库 ClickHouse](https://cloud.tencent.com/document/product/1299) | 2022-12-20 14:06:27 |
 | cfg | [混沌演练平台](https://cloud.tencent.com/document/product/1500) | 2023-01-09 01:09:44 |
@@ -54,7 +54,7 @@
 | cim | [](https://cloud.tencent.com/document/product) | 2019-05-16 17:21:18 |
 | cis | [](https://cloud.tencent.com/document/product) | 2018-06-07 15:01:42 |
 | ckafka | [消息队列 CKafka](https://cloud.tencent.com/document/product/597) | 2023-01-16 01:16:30 |
-| clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2023-01-04 01:11:19 |
+| clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2023-01-17 01:15:42 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2022-11-24 06:19:10 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2022-12-14 01:17:29 |
 | cloudstudio | [Cloud Studio（云端 IDE）](https://cloud.tencent.com/document/product/1039) | 2022-10-31 06:18:55 |
@@ -188,7 +188,7 @@
 | tdmq | [消息队列 TDMQ](https://cloud.tencent.com/document/product/1179) | 2023-01-12 01:39:37 |
 | tds | [设备安全](https://cloud.tencent.com/document/product/1628) | 2022-12-06 07:10:10 |
 | tem | [弹性微服务 TEM](https://cloud.tencent.com/document/product/1371) | 2022-12-27 02:10:16 |
-| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2023-01-16 02:10:35 |
+| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2023-01-17 01:53:08 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2023-01-11 01:46:25 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |
 | tic | [资源编排 TIC](https://cloud.tencent.com/document/product/1213) | 2022-10-31 06:55:14 |
@@ -206,7 +206,7 @@
 | trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2023-01-16 02:15:33 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2023-01-12 01:44:46 |
 | tse | [微服务引擎 TSE](https://cloud.tencent.com/document/product/1364) | 2022-10-31 06:58:14 |
-| tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2023-01-10 01:53:48 |
+| tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2023-01-17 01:58:04 |
 | tsw | [微服务观测平台 TSW](https://cloud.tencent.com/document/product/1311) | 2022-10-31 06:59:44 |
 | tts | [语音合成](https://cloud.tencent.com/document/product/1073) | 2023-01-06 01:53:06 |
 | ump | [客流数字化平台](https://cloud.tencent.com/document/product/1320) | 2022-04-04 07:22:44 |
