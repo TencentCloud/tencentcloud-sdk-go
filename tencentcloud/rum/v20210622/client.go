@@ -2924,7 +2924,7 @@ func NewDescribeLogListResponse() (response *DescribeLogListResponse) {
 }
 
 // DescribeLogList
-// 获取项目下的日志列表（实例创建的项目下的日志列表）
+// (已下线，请用DescribeRumLogList)
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2952,7 +2952,7 @@ func (c *Client) DescribeLogList(request *DescribeLogListRequest) (response *Des
 }
 
 // DescribeLogList
-// 获取项目下的日志列表（实例创建的项目下的日志列表）
+// (已下线，请用DescribeRumLogList)
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

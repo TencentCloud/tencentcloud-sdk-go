@@ -4897,6 +4897,141 @@ func (r *DescribeTimingL7CacheDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTimingL7SourceDataRequestParams struct {
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标列表，取值有:
+	// <li>l7Flow_outFlux_hy: Edgeone请求流量；</li>
+	// <li>l7Flow_outBandwidth_hy: Edgeone请求带宽；</li>
+	// <li>l7Flow_inFlux_hy: 源站响应流量；</li>
+	// <li>l7Flow_inBandwidth_hy: 源站响应带宽；</li>
+	// <li>l7Flow_request_hy: 回源请求数；</li>
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 站点集合，不填默认选择全部站点。
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 查询时间粒度，取值有：
+	// <li>min: 1分钟；</li>
+	// <li>5min: 5分钟；</li>
+	// <li>hour: 1小时；</li>
+	// <li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：一小时范围内以min粒度查询，两天范围内以5min粒度查询，七天范围内以hour粒度查询，超过七天以day粒度查询。
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 过滤条件，详细的过滤条件如下：
+	// <li>domain<br>   按照【<strong>回源Host</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	// <li>origin<br>   按照【<strong>源站</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	// <li>originGroup<br>   按照【<strong>源站组</strong>】进行过滤，源站组形如：origin-xxxxx。<br>   类型：String<br>   必选：否</li>
+	// <li>flowType<br>   按照【<strong>源站响应类型</strong>】进行过滤，优先级高于 MetricNames.N 参数。<br>   类型：String<br>   必选：否<br>   可选项：<br>   inFlow：源站响应流量，对应MetricNames中l7Flow_inFlux_hy、l7Flow_inBandwidth_hy、l7Flow_request_hy三个指标；<br>   outFlow：EdgeOne请求流量，对应MetricNames中l7Flow_outFlux_hy、l7Flow_outBandwidth_hy、l7Flow_request_hy三个指标。</li>
+	Filters []*QueryCondition `json:"Filters,omitempty" name:"Filters"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas：全球（除中国大陆地区）数据；</li>
+	// <li>mainland：中国大陆地区数据；</li>
+	// <li>global：全球数据。</li>不填默认取值为global。
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+type DescribeTimingL7SourceDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标列表，取值有:
+	// <li>l7Flow_outFlux_hy: Edgeone请求流量；</li>
+	// <li>l7Flow_outBandwidth_hy: Edgeone请求带宽；</li>
+	// <li>l7Flow_inFlux_hy: 源站响应流量；</li>
+	// <li>l7Flow_inBandwidth_hy: 源站响应带宽；</li>
+	// <li>l7Flow_request_hy: 回源请求数；</li>
+	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
+
+	// 站点集合，不填默认选择全部站点。
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 查询时间粒度，取值有：
+	// <li>min: 1分钟；</li>
+	// <li>5min: 5分钟；</li>
+	// <li>hour: 1小时；</li>
+	// <li>day: 1天。</li>不填将根据开始时间跟结束时间的间距自动推算粒度，具体为：一小时范围内以min粒度查询，两天范围内以5min粒度查询，七天范围内以hour粒度查询，超过七天以day粒度查询。
+	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 过滤条件，详细的过滤条件如下：
+	// <li>domain<br>   按照【<strong>回源Host</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	// <li>origin<br>   按照【<strong>源站</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+	// <li>originGroup<br>   按照【<strong>源站组</strong>】进行过滤，源站组形如：origin-xxxxx。<br>   类型：String<br>   必选：否</li>
+	// <li>flowType<br>   按照【<strong>源站响应类型</strong>】进行过滤，优先级高于 MetricNames.N 参数。<br>   类型：String<br>   必选：否<br>   可选项：<br>   inFlow：源站响应流量，对应MetricNames中l7Flow_inFlux_hy、l7Flow_inBandwidth_hy、l7Flow_request_hy三个指标；<br>   outFlow：EdgeOne请求流量，对应MetricNames中l7Flow_outFlux_hy、l7Flow_outBandwidth_hy、l7Flow_request_hy三个指标。</li>
+	Filters []*QueryCondition `json:"Filters,omitempty" name:"Filters"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas：全球（除中国大陆地区）数据；</li>
+	// <li>mainland：中国大陆地区数据；</li>
+	// <li>global：全球数据。</li>不填默认取值为global。
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *DescribeTimingL7SourceDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingL7SourceDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricNames")
+	delete(f, "ZoneIds")
+	delete(f, "Interval")
+	delete(f, "Filters")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingL7SourceDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimingL7SourceDataResponseParams struct {
+	// 查询结果的总条数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 时序流量数据列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimingDataRecords []*TimingDataRecord `json:"TimingDataRecords,omitempty" name:"TimingDataRecords"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTimingL7SourceDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTimingL7SourceDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeTimingL7SourceDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimingL7SourceDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopL7AnalysisDataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`

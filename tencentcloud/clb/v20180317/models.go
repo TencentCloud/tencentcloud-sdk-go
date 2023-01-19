@@ -722,7 +722,7 @@ type CloneLoadBalancerRequestParams struct {
 	// 公网独占集群ID或者CDCId。
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
-	// 性能保障规格。
+	// 性能容量型规格。
 	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
 
 	// Stgw独占集群的标签。
@@ -786,7 +786,7 @@ type CloneLoadBalancerRequest struct {
 	// 公网独占集群ID或者CDCId。
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
-	// 性能保障规格。
+	// 性能容量型规格。
 	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
 
 	// Stgw独占集群的标签。
@@ -1303,21 +1303,20 @@ type CreateLoadBalancerRequestParams struct {
 	// 购买负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
-	// 指定VIP申请负载均衡。指定此参数后：
-	// <ul><li>若创建共享型集群的公网负载均衡实例，则上述的VpcId选填，若实例是IPv6类型的，则SubnetId必填；若是IPv4、IPv6 NAT64类型，则SubnetId不填。</li>
-	// <li>若创建独占型集群的公网负载均衡实例，则上述的VpcId选填，若实例是IPv6类型的，则SubnetId必填；若是IPv4、IPv6 NAT64类型，则SubnetId不填。
-	// </li></ul>
+	// 指定VIP申请负载均衡。此参数选填，不填写此参数时自动分配VIP。IPv4和IPv6类型支持此参数，IPv6 NAT64类型不支持。
+	// 注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
 	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
 
-	// 独占集群信息。若创建独占集群负载均衡实例，则此参数必填。
+	// 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitempty" name:"ExclusiveCluster"`
 
-	// 创建性能容量型 CLB 实例。
-	// <ul><li>若需要创建性能容量型 CLB 实例，则此参数必填，且取值为：SLA，表示创建按量计费模式下的默认性能保障规格的性能容量型实例。</li>
-	// <li>若需要创建共享型 CLB 实例，则无需填写此参数。</li></ul>
+	// 创建性能容量型实例。
+	// <ul><li>若需要创建性能容量型实例，则此参数必填，且取值为：SLA，表示创建按量计费模式下的默认规格的性能容量型实例。
+	// <ul><li>当您开通了普通规格的性能容量型时，SLA对应超强型1规格。普通规格的性能容量型正在内测中，请提交 [内测申请](https://cloud.tencent.com/apply/p/hf45esx99lf)。</li>
+	// <li>当您开通了超大型规格的性能容量型时，SLA对应超强型4规格。超大型规格的性能容量型正在内测中，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category)。</li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>
 	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -1388,21 +1387,20 @@ type CreateLoadBalancerRequest struct {
 	// 购买负载均衡的同时，给负载均衡打上标签，最大支持20个标签键值对。
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
-	// 指定VIP申请负载均衡。指定此参数后：
-	// <ul><li>若创建共享型集群的公网负载均衡实例，则上述的VpcId选填，若实例是IPv6类型的，则SubnetId必填；若是IPv4、IPv6 NAT64类型，则SubnetId不填。</li>
-	// <li>若创建独占型集群的公网负载均衡实例，则上述的VpcId选填，若实例是IPv6类型的，则SubnetId必填；若是IPv4、IPv6 NAT64类型，则SubnetId不填。
-	// </li></ul>
+	// 指定VIP申请负载均衡。此参数选填，不填写此参数时自动分配VIP。IPv4和IPv6类型支持此参数，IPv6 NAT64类型不支持。
+	// 注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
 	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
 
-	// 独占集群信息。若创建独占集群负载均衡实例，则此参数必填。
+	// 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitempty" name:"ExclusiveCluster"`
 
-	// 创建性能容量型 CLB 实例。
-	// <ul><li>若需要创建性能容量型 CLB 实例，则此参数必填，且取值为：SLA，表示创建按量计费模式下的默认性能保障规格的性能容量型实例。</li>
-	// <li>若需要创建共享型 CLB 实例，则无需填写此参数。</li></ul>
+	// 创建性能容量型实例。
+	// <ul><li>若需要创建性能容量型实例，则此参数必填，且取值为：SLA，表示创建按量计费模式下的默认规格的性能容量型实例。
+	// <ul><li>当您开通了普通规格的性能容量型时，SLA对应超强型1规格。普通规格的性能容量型正在内测中，请提交 [内测申请](https://cloud.tencent.com/apply/p/hf45esx99lf)。</li>
+	// <li>当您开通了超大型规格的性能容量型时，SLA对应超强型4规格。超大型规格的性能容量型正在内测中，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category)。</li></ul></li><li>若需要创建共享型实例，则无需填写此参数。</li></ul>
 	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -5421,7 +5419,7 @@ type LoadBalancer struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnatIps []*SnatIp `json:"SnatIps,omitempty" name:"SnatIps"`
 
-	// 性能保障规格
+	// 性能容量型规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
 
@@ -5461,7 +5459,7 @@ type LoadBalancer struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthLogTopicId *string `json:"HealthLogTopicId,omitempty" name:"HealthLogTopicId"`
 
-	// 集群ID.
+	// 集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
@@ -6399,14 +6397,14 @@ func (r *ModifyLoadBalancerMixIpTargetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLoadBalancerSlaRequestParams struct {
-	// 负载均衡实例信息
+	// 负载均衡实例信息。
 	LoadBalancerSla []*SlaUpdateParam `json:"LoadBalancerSla,omitempty" name:"LoadBalancerSla"`
 }
 
 type ModifyLoadBalancerSlaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例信息
+	// 负载均衡实例信息。
 	LoadBalancerSla []*SlaUpdateParam `json:"LoadBalancerSla,omitempty" name:"LoadBalancerSla"`
 }
 
@@ -7869,7 +7867,9 @@ type SlaUpdateParam struct {
 	// lb的字符串ID
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 变更为性能容量型，固定为SLA
+	// 升级为性能容量型，固定取值为SLA。SLA表示升级为默认规格的性能容量型实例。
+	// <ul><li>当您开通了普通规格的性能容量型时，SLA对应超强型1规格。普通规格的性能容量型正在内测中，请提交 [内测申请](https://cloud.tencent.com/apply/p/hf45esx99lf)。</li>
+	// <li>当您开通了超大型规格的性能容量型时，SLA对应超强型4规格。超大型规格的性能容量型正在内测中，请提交 [工单申请](https://console.cloud.tencent.com/workorder/category)。</li></ul>
 	SlaType *string `json:"SlaType,omitempty" name:"SlaType"`
 }
 
@@ -8021,6 +8021,9 @@ type TargetHealth struct {
 	TargetId *string `json:"TargetId,omitempty" name:"TargetId"`
 
 	// 当前健康状态的详细信息。如：Alive、Dead、Unknown。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知。
+	HealthStatusDetail *string `json:"HealthStatusDetail,omitempty" name:"HealthStatusDetail"`
+
+	// 当前健康状态的详细信息。如：Alive、Dead、Unknown。Alive状态为健康，Dead状态为异常，Unknown状态包括尚未开始探测、探测中、状态未知。(该参数对象即将下线，不推荐使用，请使用HealthStatusDetail获取健康详情)
 	HealthStatusDetial *string `json:"HealthStatusDetial,omitempty" name:"HealthStatusDetial"`
 }
 

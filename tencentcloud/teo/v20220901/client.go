@@ -2769,6 +2769,64 @@ func (c *Client) DescribeTimingL7CacheDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeTimingL7SourceDataRequest() (request *DescribeTimingL7SourceDataRequest) {
+    request = &DescribeTimingL7SourceDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL7SourceData")
+    
+    
+    return
+}
+
+func NewDescribeTimingL7SourceDataResponse() (response *DescribeTimingL7SourceDataResponse) {
+    response = &DescribeTimingL7SourceDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTimingL7SourceData
+// 本接口（DescribeTimingL7SourceData）查询七层回源分析时序数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTimingL7SourceData(request *DescribeTimingL7SourceDataRequest) (response *DescribeTimingL7SourceDataResponse, err error) {
+    return c.DescribeTimingL7SourceDataWithContext(context.Background(), request)
+}
+
+// DescribeTimingL7SourceData
+// 本接口（DescribeTimingL7SourceData）查询七层回源分析时序数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeTimingL7SourceDataWithContext(ctx context.Context, request *DescribeTimingL7SourceDataRequest) (response *DescribeTimingL7SourceDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimingL7SourceDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimingL7SourceData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimingL7SourceDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopL7AnalysisDataRequest() (request *DescribeTopL7AnalysisDataRequest) {
     request = &DescribeTopL7AnalysisDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1,3 +1,44 @@
+# Release v1.0.582
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 78 次发布
+
+发布时间：2023-01-18 17:55:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TargetHealth](https://cloud.tencent.com/document/api/214/30694#TargetHealth)
+
+	* 新增成员：HealthStatusDetail
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 28 次发布
+
+发布时间：2023-01-19 01:54:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTimingL7SourceData](https://cloud.tencent.com/document/api/1552/85910)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.581
 
 ## 品牌经营管家(bma) 版本：2021-06-24
