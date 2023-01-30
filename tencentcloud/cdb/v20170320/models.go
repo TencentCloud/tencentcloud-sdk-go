@@ -4688,6 +4688,87 @@ func (r *DescribeCloneListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBFeaturesRequestParams struct {
+	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeDBFeaturesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBFeaturesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBFeaturesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBFeaturesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBFeaturesResponseParams struct {
+	// 是否支持数据库审计功能。
+	IsSupportAudit *bool `json:"IsSupportAudit,omitempty" name:"IsSupportAudit"`
+
+	// 开启审计是否需要升级内核版本。
+	AuditNeedUpgrade *bool `json:"AuditNeedUpgrade,omitempty" name:"AuditNeedUpgrade"`
+
+	// 是否支持数据库加密功能。
+	IsSupportEncryption *bool `json:"IsSupportEncryption,omitempty" name:"IsSupportEncryption"`
+
+	// 开启加密是否需要升级内核版本。
+	EncryptionNeedUpgrade *bool `json:"EncryptionNeedUpgrade,omitempty" name:"EncryptionNeedUpgrade"`
+
+	// 是否为异地只读实例。
+	IsRemoteRo *bool `json:"IsRemoteRo,omitempty" name:"IsRemoteRo"`
+
+	// 主实例所在地域。
+	MasterRegion *string `json:"MasterRegion,omitempty" name:"MasterRegion"`
+
+	// 是否支持小版本升级。
+	IsSupportUpdateSubVersion *bool `json:"IsSupportUpdateSubVersion,omitempty" name:"IsSupportUpdateSubVersion"`
+
+	// 当前内核版本。
+	CurrentSubVersion *string `json:"CurrentSubVersion,omitempty" name:"CurrentSubVersion"`
+
+	// 可供升级的内核版本。
+	TargetSubVersion *string `json:"TargetSubVersion,omitempty" name:"TargetSubVersion"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDBFeaturesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBFeaturesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBFeaturesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBFeaturesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBImportRecordsRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

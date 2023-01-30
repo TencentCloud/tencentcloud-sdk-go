@@ -2633,6 +2633,7 @@ func NewModifySnapshotAttributeResponse() (response *ModifySnapshotAttributeResp
 //  INVALIDSNAPSHOT_NOTSUPPORTED = "InvalidSnapshot.NotSupported"
 //  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_SNAPHASSHARED = "UnsupportedOperation.SnapHasShared"
 //  UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
 func (c *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest) (response *ModifySnapshotAttributeResponse, err error) {
     return c.ModifySnapshotAttributeWithContext(context.Background(), request)
@@ -2652,6 +2653,7 @@ func (c *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest
 //  INVALIDSNAPSHOT_NOTSUPPORTED = "InvalidSnapshot.NotSupported"
 //  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
 //  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_SNAPHASSHARED = "UnsupportedOperation.SnapHasShared"
 //  UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
 func (c *Client) ModifySnapshotAttributeWithContext(ctx context.Context, request *ModifySnapshotAttributeRequest) (response *ModifySnapshotAttributeResponse, err error) {
     if request == nil {

@@ -235,6 +235,7 @@ func NewCreateApplicationServiceResponse() (response *CreateApplicationServiceRe
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_PORTDUPLICATEERROR = "InvalidParameterValue.PortDuplicateError"
 //  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
@@ -263,6 +264,7 @@ func (c *Client) CreateApplicationService(request *CreateApplicationServiceReque
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_PORTDUPLICATEERROR = "InvalidParameterValue.PortDuplicateError"
 //  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
@@ -880,6 +882,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACTIONREADTIMEOUT = "FailedOperation.ActionReadTimeout"
+//  FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
 //  FAILEDOPERATION_DESCRIBESERVICELISTERROR = "FailedOperation.DescribeServiceListError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
@@ -931,6 +934,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACTIONREADTIMEOUT = "FailedOperation.ActionReadTimeout"
+//  FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
 //  FAILEDOPERATION_DESCRIBESERVICELISTERROR = "FailedOperation.DescribeServiceListError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
@@ -1067,6 +1071,7 @@ func NewDescribeApplicationInfoResponse() (response *DescribeApplicationInfoResp
 // 服务基本信息查看
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONREADTIMEOUT = "FailedOperation.ActionReadTimeout"
 //  FAILEDOPERATION_DESCRIBERUNPODLISTERROR = "FailedOperation.DescribeRunPodListError"
 //  FAILEDOPERATION_DESCRIBESERVICEERROR = "FailedOperation.DescribeServiceError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
@@ -1090,6 +1095,7 @@ func (c *Client) DescribeApplicationInfo(request *DescribeApplicationInfoRequest
 // 服务基本信息查看
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACTIONREADTIMEOUT = "FailedOperation.ActionReadTimeout"
 //  FAILEDOPERATION_DESCRIBERUNPODLISTERROR = "FailedOperation.DescribeRunPodListError"
 //  FAILEDOPERATION_DESCRIBESERVICEERROR = "FailedOperation.DescribeServiceError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
@@ -1143,6 +1149,7 @@ func NewDescribeApplicationPodsResponse() (response *DescribeApplicationPodsResp
 // 获取应用实例列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
@@ -1159,6 +1166,7 @@ func (c *Client) DescribeApplicationPods(request *DescribeApplicationPodsRequest
 // 获取应用实例列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"

@@ -11862,6 +11862,7 @@ func NewStopContainerGroupResponse() (response *StopContainerGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPGROUPHASSTOP = "FailedOperation.ContainergroupGroupHasstop"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
 //  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
@@ -11875,6 +11876,7 @@ func (c *Client) StopContainerGroup(request *StopContainerGroupRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CONTAINERGROUPGROUPHASSTOP = "FailedOperation.ContainergroupGroupHasstop"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "FailedOperation.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
 //  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"

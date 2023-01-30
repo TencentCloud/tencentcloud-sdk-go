@@ -40,7 +40,7 @@
 | cat | [云拨测](https://cloud.tencent.com/document/product/280) | 2022-12-12 01:11:14 |
 | cbs | [云硬盘](https://cloud.tencent.com/document/product/362) | 2022-12-28 01:04:48 |
 | ccc | [云呼叫中心](https://cloud.tencent.com/document/product/679) | 2023-01-09 01:07:34 |
-| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2023-01-16 01:12:59 |
+| cdb | [云数据库 MySQL](https://cloud.tencent.com/document/product/236) | 2023-01-30 01:08:01 |
 | cdc | [本地专用集群](https://cloud.tencent.com/document/product/1346) | 2022-12-15 01:12:58 |
 | cdn | [内容分发网络 CDN](https://cloud.tencent.com/document/product/228) | 2023-01-17 01:12:53 |
 | cds | [T-Sec-数据安全审计（DSA）](https://cloud.tencent.com/document/product/856) | 2022-10-31 06:15:53 |
@@ -74,8 +74,8 @@
 | dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2023-01-09 01:18:23 |
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2022-11-23 06:23:05 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2022-10-26 06:29:47 |
-| dcdb | [TDSQL MySQL 版](https://cloud.tencent.com/document/product/557) | 2022-11-29 06:37:37 |
-| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | 2023-01-10 01:20:24 |
+| dcdb | [TDSQL MySQL 版](https://cloud.tencent.com/document/product/557) | 2023-01-30 01:20:38 |
+| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | 2023-01-20 01:28:13 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | 2023-01-18 01:19:30 |
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2023-01-10 01:21:29 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2022-04-04 06:38:48 |
@@ -132,7 +132,7 @@
 | mmps | [小程序安全](https://cloud.tencent.com/document/product/1223) | 2023-01-10 01:33:47 |
 | mna | [移动网络加速](https://cloud.tencent.com/document/product/1385) | 2022-11-17 11:16:37 |
 | mongodb | [云数据库 MongoDB](https://cloud.tencent.com/document/product/240) | 2023-01-05 01:31:47 |
-| monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2023-01-16 01:44:00 |
+| monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2023-01-30 01:36:53 |
 | mps | [媒体处理](https://cloud.tencent.com/document/product/862) | 2023-01-13 01:39:05 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2022-12-08 01:38:36 |
 | ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2023-01-11 01:32:47 |

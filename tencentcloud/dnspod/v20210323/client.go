@@ -583,6 +583,7 @@ func NewCreateDomainBatchResponse() (response *CreateDomainBatchResponse) {
 // 批量添加域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  INVALIDPARAMETER_BATCHDOMAINCREATEACTIONERROR = "InvalidParameter.BatchDomainCreateActionError"
@@ -608,6 +609,7 @@ func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response 
 // 批量添加域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  INVALIDPARAMETER_BATCHDOMAINCREATEACTIONERROR = "InvalidParameter.BatchDomainCreateActionError"

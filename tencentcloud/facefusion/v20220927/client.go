@@ -74,6 +74,7 @@ func NewDescribeMaterialListResponse() (response *DescribeMaterialListResponse) 
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
 //  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (response *DescribeMaterialListResponse, err error) {
     return c.DescribeMaterialListWithContext(context.Background(), request)
@@ -90,6 +91,7 @@ func (c *Client) DescribeMaterialList(request *DescribeMaterialListRequest) (res
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
 //  INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
 //  INVALIDPARAMETERVALUE_MATERIALIDNOTFOUND = "InvalidParameterValue.MaterialIdNotFound"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) DescribeMaterialListWithContext(ctx context.Context, request *DescribeMaterialListRequest) (response *DescribeMaterialListResponse, err error) {
     if request == nil {
@@ -174,6 +176,7 @@ func NewFuseFaceResponse() (response *FuseFaceResponse) {
 //  RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
@@ -232,6 +235,7 @@ func (c *Client) FuseFace(request *FuseFaceRequest) (response *FuseFaceResponse,
 //  RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 //  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 //  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 //  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"

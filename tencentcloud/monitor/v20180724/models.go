@@ -5607,14 +5607,14 @@ func (r *DescribeGrafanaConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaEnvironmentsRequestParams struct {
-	// Grafana 实例 ID，例如：Grafana 实例 ID，例如：grafana-abcdefghGrafana 实例 ID，例如：grafana-abcdefgh
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeGrafanaEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 	
-	// Grafana 实例 ID，例如：Grafana 实例 ID，例如：grafana-abcdefghGrafana 实例 ID，例如：grafana-abcdefgh
+	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 

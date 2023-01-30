@@ -4056,3 +4056,67 @@ func (c *Client) UpgradeDCDBInstanceWithContext(ctx context.Context, request *Up
     err = c.Send(request, response)
     return
 }
+
+func NewUpgradeHourDCDBInstanceRequest() (request *UpgradeHourDCDBInstanceRequest) {
+    request = &UpgradeHourDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "UpgradeHourDCDBInstance")
+    
+    
+    return
+}
+
+func NewUpgradeHourDCDBInstanceResponse() (response *UpgradeHourDCDBInstanceResponse) {
+    response = &UpgradeHourDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeHourDCDBInstance
+// 本接口（UpgradeHourDCDBInstance）用于升级后付费分布式数据库实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  INTERNALERROR_CREATEFLOWERROR = "InternalError.CreateFlowError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_NOTSUPPORTEDPAYMODE = "InvalidParameter.NotSupportedPayMode"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) UpgradeHourDCDBInstance(request *UpgradeHourDCDBInstanceRequest) (response *UpgradeHourDCDBInstanceResponse, err error) {
+    return c.UpgradeHourDCDBInstanceWithContext(context.Background(), request)
+}
+
+// UpgradeHourDCDBInstance
+// 本接口（UpgradeHourDCDBInstance）用于升级后付费分布式数据库实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  INTERNALERROR_CREATEFLOWERROR = "InternalError.CreateFlowError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_NOTSUPPORTEDPAYMODE = "InvalidParameter.NotSupportedPayMode"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) UpgradeHourDCDBInstanceWithContext(ctx context.Context, request *UpgradeHourDCDBInstanceRequest) (response *UpgradeHourDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpgradeHourDCDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeHourDCDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeHourDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}

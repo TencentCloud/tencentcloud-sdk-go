@@ -3123,6 +3123,58 @@ func (c *Client) DescribeCloneListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeDBFeaturesRequest() (request *DescribeDBFeaturesRequest) {
+    request = &DescribeDBFeaturesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBFeatures")
+    
+    
+    return
+}
+
+func NewDescribeDBFeaturesResponse() (response *DescribeDBFeaturesResponse) {
+    response = &DescribeDBFeaturesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBFeatures
+// 本接口(DescribeDBFeatures)用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeDBFeatures(request *DescribeDBFeaturesRequest) (response *DescribeDBFeaturesResponse, err error) {
+    return c.DescribeDBFeaturesWithContext(context.Background(), request)
+}
+
+// DescribeDBFeatures
+// 本接口(DescribeDBFeatures)用于查询云数据库版本属性，包括是否支持数据库加密、数据库审计等功能。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeDBFeaturesWithContext(ctx context.Context, request *DescribeDBFeaturesRequest) (response *DescribeDBFeaturesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBFeaturesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBFeatures require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBFeaturesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBImportRecordsRequest() (request *DescribeDBImportRecordsRequest) {
     request = &DescribeDBImportRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

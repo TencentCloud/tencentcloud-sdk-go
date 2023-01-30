@@ -1,3 +1,37 @@
+# Release v1.0.583
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 111 次发布
+
+发布时间：2023-01-30 01:08:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBFeatures](https://cloud.tencent.com/document/api/236/85925)
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 51 次发布
+
+发布时间：2023-01-30 01:20:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpgradeHourDCDBInstance](https://cloud.tencent.com/document/api/557/85926)
+
+
+
 # Release v1.0.582
 
 ## 负载均衡(clb) 版本：2018-03-17

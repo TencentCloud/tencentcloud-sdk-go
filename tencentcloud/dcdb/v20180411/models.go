@@ -5922,6 +5922,122 @@ func (r *UpgradeDCDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpgradeHourDCDBInstanceRequestParams struct {
+	// 待升级的实例ID。形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 升级类型，取值范围: 
+	// <li> ADD: 新增分片 </li> 
+	//  <li> EXPAND: 升级实例中的已有分片 </li> 
+	//  <li> SPLIT: 将已有分片中的数据切分到新增分片上</li>
+	UpgradeType *string `json:"UpgradeType,omitempty" name:"UpgradeType"`
+
+	// 新增分片配置，当UpgradeType为ADD时生效。
+	AddShardConfig *AddShardConfig `json:"AddShardConfig,omitempty" name:"AddShardConfig"`
+
+	// 扩容分片配置，当UpgradeType为EXPAND时生效。
+	ExpandShardConfig *ExpandShardConfig `json:"ExpandShardConfig,omitempty" name:"ExpandShardConfig"`
+
+	// 切分分片配置，当UpgradeType为SPLIT时生效。
+	SplitShardConfig *SplitShardConfig `json:"SplitShardConfig,omitempty" name:"SplitShardConfig"`
+
+	// 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
+
+	// 切换结束时间,  格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
+
+	// 是否自动重试。 0：不自动重试  1：自动重试
+	SwitchAutoRetry *int64 `json:"SwitchAutoRetry,omitempty" name:"SwitchAutoRetry"`
+
+	// 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+}
+
+type UpgradeHourDCDBInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待升级的实例ID。形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 升级类型，取值范围: 
+	// <li> ADD: 新增分片 </li> 
+	//  <li> EXPAND: 升级实例中的已有分片 </li> 
+	//  <li> SPLIT: 将已有分片中的数据切分到新增分片上</li>
+	UpgradeType *string `json:"UpgradeType,omitempty" name:"UpgradeType"`
+
+	// 新增分片配置，当UpgradeType为ADD时生效。
+	AddShardConfig *AddShardConfig `json:"AddShardConfig,omitempty" name:"AddShardConfig"`
+
+	// 扩容分片配置，当UpgradeType为EXPAND时生效。
+	ExpandShardConfig *ExpandShardConfig `json:"ExpandShardConfig,omitempty" name:"ExpandShardConfig"`
+
+	// 切分分片配置，当UpgradeType为SPLIT时生效。
+	SplitShardConfig *SplitShardConfig `json:"SplitShardConfig,omitempty" name:"SplitShardConfig"`
+
+	// 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
+
+	// 切换结束时间,  格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
+
+	// 是否自动重试。 0：不自动重试  1：自动重试
+	SwitchAutoRetry *int64 `json:"SwitchAutoRetry,omitempty" name:"SwitchAutoRetry"`
+
+	// 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+}
+
+func (r *UpgradeHourDCDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeHourDCDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UpgradeType")
+	delete(f, "AddShardConfig")
+	delete(f, "ExpandShardConfig")
+	delete(f, "SplitShardConfig")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
+	delete(f, "SwitchAutoRetry")
+	delete(f, "Zones")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeHourDCDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeHourDCDBInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpgradeHourDCDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeHourDCDBInstanceResponseParams `json:"Response"`
+}
+
+func (r *UpgradeHourDCDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeHourDCDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UserTaskInfo struct {
 	// 任务ID
 	Id *int64 `json:"Id,omitempty" name:"Id"`

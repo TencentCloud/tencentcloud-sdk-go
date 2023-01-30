@@ -119,6 +119,9 @@ const (
 	// 备份文件签名失败。
 	INTERNALERROR_COSSIGNURL = "InternalError.CosSignUrl"
 
+	// 创建流程失败。
+	INTERNALERROR_CREATEFLOWERROR = "InternalError.CreateFlowError"
+
 	// 创建任务流程失败。
 	INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
 

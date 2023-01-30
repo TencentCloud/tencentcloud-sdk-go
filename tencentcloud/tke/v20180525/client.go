@@ -589,6 +589,7 @@ func NewCheckInstancesUpgradeAbleResponse() (response *CheckInstancesUpgradeAble
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBECLIENTCONNECTION = "FailedOperation.KubeClientConnection"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  FAILEDOPERATION_POLICYSERVERCOMMONERROR = "FailedOperation.PolicyServerCommonError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_KUBECLIENTCONNECTION = "InternalError.KubeClientConnection"
@@ -609,6 +610,7 @@ func (c *Client) CheckInstancesUpgradeAble(request *CheckInstancesUpgradeAbleReq
 // 可能返回的错误码:
 //  FAILEDOPERATION_KUBECLIENTCONNECTION = "FailedOperation.KubeClientConnection"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
+//  FAILEDOPERATION_POLICYSERVERCOMMONERROR = "FailedOperation.PolicyServerCommonError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_KUBECLIENTCONNECTION = "InternalError.KubeClientConnection"
@@ -1492,6 +1494,7 @@ func NewCreateClusterVirtualNodePoolResponse() (response *CreateClusterVirtualNo
 //  RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTINSTALLVIRTUALKUBELET = "UnsupportedOperation.NotSupportInstallVirtualKubelet"
 func (c *Client) CreateClusterVirtualNodePool(request *CreateClusterVirtualNodePoolRequest) (response *CreateClusterVirtualNodePoolResponse, err error) {
     return c.CreateClusterVirtualNodePoolWithContext(context.Background(), request)
@@ -1508,6 +1511,7 @@ func (c *Client) CreateClusterVirtualNodePool(request *CreateClusterVirtualNodeP
 //  RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTINSTALLVIRTUALKUBELET = "UnsupportedOperation.NotSupportInstallVirtualKubelet"
 func (c *Client) CreateClusterVirtualNodePoolWithContext(ctx context.Context, request *CreateClusterVirtualNodePoolRequest) (response *CreateClusterVirtualNodePoolResponse, err error) {
     if request == nil {

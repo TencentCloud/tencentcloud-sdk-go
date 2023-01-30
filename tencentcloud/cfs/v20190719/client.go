@@ -1755,6 +1755,7 @@ func NewSetUserQuotaResponse() (response *SetUserQuotaResponse) {
 //  INVALIDPARAMETERVALUE_QUOTAUSERIDERROR = "InvalidParameterValue.QuotaUserIdError"
 //  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetUserQuota(request *SetUserQuotaRequest) (response *SetUserQuotaResponse, err error) {
     return c.SetUserQuotaWithContext(context.Background(), request)
@@ -1770,6 +1771,7 @@ func (c *Client) SetUserQuota(request *SetUserQuotaRequest) (response *SetUserQu
 //  INVALIDPARAMETERVALUE_QUOTAUSERIDERROR = "InvalidParameterValue.QuotaUserIdError"
 //  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SetUserQuotaWithContext(ctx context.Context, request *SetUserQuotaRequest) (response *SetUserQuotaResponse, err error) {
     if request == nil {

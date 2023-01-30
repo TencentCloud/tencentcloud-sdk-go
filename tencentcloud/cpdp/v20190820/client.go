@@ -3517,21 +3517,7 @@ func NewCreateRedInvoiceV2Response() (response *CreateRedInvoiceV2Response) {
 // 智慧零售-发票红冲V2
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
-//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
 //  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateRedInvoiceV2(request *CreateRedInvoiceV2Request) (response *CreateRedInvoiceV2Response, err error) {
     return c.CreateRedInvoiceV2WithContext(context.Background(), request)
 }
@@ -3540,21 +3526,7 @@ func (c *Client) CreateRedInvoiceV2(request *CreateRedInvoiceV2Request) (respons
 // 智慧零售-发票红冲V2
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
-//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
 //  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateRedInvoiceV2WithContext(ctx context.Context, request *CreateRedInvoiceV2Request) (response *CreateRedInvoiceV2Response, err error) {
     if request == nil {
         request = NewCreateRedInvoiceV2Request()
@@ -3593,21 +3565,7 @@ func NewCreateSinglePaymentResponse() (response *CreateSinglePaymentResponse) {
 // 灵云-单笔主播转账接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
-//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
 //  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateSinglePayment(request *CreateSinglePaymentRequest) (response *CreateSinglePaymentResponse, err error) {
     return c.CreateSinglePaymentWithContext(context.Background(), request)
 }
@@ -3616,21 +3574,7 @@ func (c *Client) CreateSinglePayment(request *CreateSinglePaymentRequest) (respo
 // 灵云-单笔主播转账接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
-//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
 //  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateSinglePaymentWithContext(ctx context.Context, request *CreateSinglePaymentRequest) (response *CreateSinglePaymentResponse, err error) {
     if request == nil {
         request = NewCreateSinglePaymentRequest()

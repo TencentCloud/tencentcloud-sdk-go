@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 78 次发布
+### 第 111 次发布
 
-发布时间：2023-01-18 17:55:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TargetHealth](https://cloud.tencent.com/document/api/214/30694#TargetHealth)
-
-	* 新增成员：HealthStatusDetail
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 28 次发布
-
-发布时间：2023-01-19 01:54:45
+发布时间：2023-01-30 01:08:01
 
 本次发布包含了以下内容：
 
@@ -31,11 +12,23 @@
 
 新增接口：
 
-* [DescribeTimingL7SourceData](https://cloud.tencent.com/document/api/1552/85910)
+* [DescribeDBFeatures](https://cloud.tencent.com/document/api/236/85925)
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 51 次发布
+
+发布时间：2023-01-30 01:20:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpgradeHourDCDBInstance](https://cloud.tencent.com/document/api/557/85926)
 
 
 
@@ -12495,6 +12488,18 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 111 次发布
+
+发布时间：2023-01-30 01:08:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBFeatures](https://cloud.tencent.com/document/api/236/85925)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 110 次发布
 
@@ -34858,6 +34863,18 @@
 
 
 ## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 51 次发布
+
+发布时间：2023-01-30 01:20:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpgradeHourDCDBInstance](https://cloud.tencent.com/document/api/557/85926)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 50 次发布
 
@@ -84456,7 +84473,7 @@
 
 新增接口：
 
-* [[DescribeTimingL7SourceData](https://cloud.tencent.com/document/api/1552/85910)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTimingL7SourceData](https://cloud.tencent.com/document/api/1552/85910)
 
 ### 第 27 次发布
 

@@ -864,6 +864,7 @@ func NewCreateSpeedTestingResponse() (response *CreateSpeedTestingResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreateSpeedTesting(request *CreateSpeedTestingRequest) (response *CreateSpeedTestingResponse, err error) {
     return c.CreateSpeedTestingWithContext(context.Background(), request)
 }
@@ -877,6 +878,7 @@ func (c *Client) CreateSpeedTesting(request *CreateSpeedTestingRequest) (respons
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreateSpeedTestingWithContext(ctx context.Context, request *CreateSpeedTestingRequest) (response *CreateSpeedTestingResponse, err error) {
     if request == nil {
         request = NewCreateSpeedTestingRequest()
@@ -4243,6 +4245,7 @@ func NewModifySecurityPolicyResponse() (response *ModifySecurityPolicyResponse) 
 // 修改Web&Bot安全配置。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4255,6 +4258,7 @@ func (c *Client) ModifySecurityPolicy(request *ModifySecurityPolicyRequest) (res
 // 修改Web&Bot安全配置。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
 //  OPERATIONDENIED = "OperationDenied"
