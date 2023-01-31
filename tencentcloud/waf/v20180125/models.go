@@ -175,11 +175,14 @@ type AddCustomRuleRequestParams struct {
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
 	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
 
-	// "clb-waf"或者"sparta-waf"
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
 	// 放行的详情
 	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+
+	// 添加规则的来源，默认为空
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
 }
 
 type AddCustomRuleRequest struct {
@@ -206,11 +209,14 @@ type AddCustomRuleRequest struct {
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
 	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
 
-	// "clb-waf"或者"sparta-waf"
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
 	// 放行的详情
 	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+
+	// 添加规则的来源，默认为空
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
 }
 
 func (r *AddCustomRuleRequest) ToJsonString() string {
@@ -234,6 +240,7 @@ func (r *AddCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "Redirect")
 	delete(f, "Edition")
 	delete(f, "Bypass")
+	delete(f, "EventId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomRuleRequest has unknown keys!", "")
 	}
@@ -1383,7 +1390,7 @@ func (r *DescribeAccessIndexRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccessIndexResponseParams struct {
-	// 是否生效
+	// 是否生效，true表示生效，false表示未生效
 	Status *bool `json:"Status,omitempty" name:"Status"`
 
 	// 索引配置信息
@@ -3754,7 +3761,7 @@ type UpsertIpAccessControlRequestParams struct {
 	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳
 	Items []*string `json:"Items,omitempty" name:"Items"`
 
-	// clb-waf或者sparta-waf
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
 	// 是否为多域名黑白名单
@@ -3770,7 +3777,7 @@ type UpsertIpAccessControlRequest struct {
 	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳
 	Items []*string `json:"Items,omitempty" name:"Items"`
 
-	// clb-waf或者sparta-waf
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
 	// 是否为多域名黑白名单

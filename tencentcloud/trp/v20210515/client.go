@@ -1553,6 +1553,110 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeScanLogsRequest() (request *DescribeScanLogsRequest) {
+    request = &DescribeScanLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeScanLogs")
+    
+    
+    return
+}
+
+func NewDescribeScanLogsResponse() (response *DescribeScanLogsResponse) {
+    response = &DescribeScanLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScanLogs
+// 查询扫码日志明细
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeScanLogs(request *DescribeScanLogsRequest) (response *DescribeScanLogsResponse, err error) {
+    return c.DescribeScanLogsWithContext(context.Background(), request)
+}
+
+// DescribeScanLogs
+// 查询扫码日志明细
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeScanLogsWithContext(ctx context.Context, request *DescribeScanLogsRequest) (response *DescribeScanLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScanLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScanLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeScanStatsRequest() (request *DescribeScanStatsRequest) {
+    request = &DescribeScanStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeScanStats")
+    
+    
+    return
+}
+
+func NewDescribeScanStatsResponse() (response *DescribeScanStatsResponse) {
+    response = &DescribeScanStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScanStats
+// 查询某个批次被扫码的统计列表，没有被扫过的不会返回
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeScanStats(request *DescribeScanStatsRequest) (response *DescribeScanStatsResponse, err error) {
+    return c.DescribeScanStatsWithContext(context.Background(), request)
+}
+
+// DescribeScanStats
+// 查询某个批次被扫码的统计列表，没有被扫过的不会返回
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeScanStatsWithContext(ctx context.Context, request *DescribeScanStatsRequest) (response *DescribeScanStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeScanStatsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScanStats require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScanStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTmpTokenRequest() (request *DescribeTmpTokenRequest) {
     request = &DescribeTmpTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},

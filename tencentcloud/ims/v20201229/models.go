@@ -171,6 +171,10 @@ type ImageModerationResponseParams struct {
 	// 该字段用于返回检测对象对应的MD5校验值，以方便校验文件完整性。
 	FileMD5 *string `json:"FileMD5,omitempty" name:"FileMD5"`
 
+	// 该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitempty" name:"RecognitionResults"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -387,6 +391,30 @@ type OcrTextDetail struct {
 
 	// 该字段用于返回检测结果所对应的恶意二级标签。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+}
+
+type RecognitionResult struct {
+	// 当前可能的取值：Scene（图片场景模型）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// Label对应模型下的识别标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*RecognitionTag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type RecognitionTag struct {
+	// 标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 置信分：0～100，数值越大表示置信度越高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 标签位置信息，若模型无位置信息，则可能为零值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *Location `json:"Location,omitempty" name:"Location"`
 }
 
 type User struct {

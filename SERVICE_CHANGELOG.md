@@ -1,10 +1,38 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 图片内容安全(ims) 版本：2020-12-29
 
-### 第 111 次发布
+### 第 4 次发布
 
-发布时间：2023-01-30 01:08:01
+发布时间：2023-01-31 01:31:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImageModeration](https://cloud.tencent.com/document/api/1125/53273)
+
+	* 新增出参：RecognitionResults
+
+
+新增数据结构：
+
+* [RecognitionResult](https://cloud.tencent.com/document/api/1125/53274#RecognitionResult)
+* [RecognitionTag](https://cloud.tencent.com/document/api/1125/53274#RecognitionTag)
+
+
+
+## 图片内容安全(ims) 版本：2020-07-13
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 49 次发布
+
+发布时间：2023-01-31 01:40:45
 
 本次发布包含了以下内容：
 
@@ -12,15 +40,31 @@
 
 新增接口：
 
-* [DescribeDBFeatures](https://cloud.tencent.com/document/api/236/85925)
+* [DescribeDBEncryptAttributes](https://cloud.tencent.com/document/api/237/85940)
 
 
 
-## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+## 分布式身份(tdid) 版本：2021-05-19
 
-### 第 51 次发布
+### 第 5 次发布
 
-发布时间：2023-01-30 01:20:38
+发布时间：2023-01-31 01:58:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* VerifyPurchase
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 16 次发布
+
+发布时间：2023-01-31 02:06:12
 
 本次发布包含了以下内容：
 
@@ -28,7 +72,32 @@
 
 新增接口：
 
-* [UpgradeHourDCDBInstance](https://cloud.tencent.com/document/api/557/85926)
+* [DescribeScanLogs](https://cloud.tencent.com/document/api/1458/85943)
+* [DescribeScanStats](https://cloud.tencent.com/document/api/1458/85942)
+
+新增数据结构：
+
+* [ScanLog](https://cloud.tencent.com/document/api/1458/75030#ScanLog)
+* [ScanStat](https://cloud.tencent.com/document/api/1458/75030#ScanStat)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 22 次发布
+
+发布时间：2023-01-31 02:14:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddCustomRule](https://cloud.tencent.com/document/api/627/53608)
+
+	* 新增入参：EventId
+
 
 
 
@@ -12499,7 +12568,7 @@
 
 新增接口：
 
-* [[DescribeDBFeatures](https://cloud.tencent.com/document/api/236/85925)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDBFeatures](https://cloud.tencent.com/document/api/236/85925)
 
 ### 第 110 次发布
 
@@ -34874,7 +34943,7 @@
 
 新增接口：
 
-* [[UpgradeHourDCDBInstance](https://cloud.tencent.com/document/api/557/85926)](https://cloud.tencent.com/document/api/#/#)
+* [UpgradeHourDCDBInstance](https://cloud.tencent.com/document/api/557/85926)
 
 ### 第 50 次发布
 
@@ -50240,6 +50309,26 @@
 
 ## 图片内容安全(ims) 版本：2020-12-29
 
+### 第 4 次发布
+
+发布时间：2023-01-31 01:31:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImageModeration](https://cloud.tencent.com/document/api/1125/53273)
+
+	* 新增出参：RecognitionResults
+
+
+新增数据结构：
+
+* [[RecognitionResult](https://cloud.tencent.com/document/api/1125/53274#RecognitionResult)](https://cloud.tencent.com/document/api/1125/53274#[RecognitionResult](https://cloud.tencent.com/document/api/1125/53274#RecognitionResult))
+* [[RecognitionTag](https://cloud.tencent.com/document/api/1125/53274#RecognitionTag)](https://cloud.tencent.com/document/api/1125/53274#[RecognitionTag](https://cloud.tencent.com/document/api/1125/53274#RecognitionTag))
+
 ### 第 3 次发布
 
 发布时间：2021-10-29 08:06:21
@@ -57723,6 +57812,18 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 49 次发布
+
+发布时间：2023-01-31 01:40:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBEncryptAttributes](https://cloud.tencent.com/document/api/237/85940)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 48 次发布
 
@@ -81351,6 +81452,18 @@
 
 ## 分布式身份(tdid) 版本：2021-05-19
 
+### 第 5 次发布
+
+发布时间：2023-01-31 01:58:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* VerifyPurchase
+
 ### 第 4 次发布
 
 发布时间：2022-11-17 06:47:13
@@ -91399,6 +91512,24 @@
 
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 16 次发布
+
+发布时间：2023-01-31 02:06:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeScanLogs](https://cloud.tencent.com/document/api/1458/85943)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeScanStats](https://cloud.tencent.com/document/api/1458/85942)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ScanLog](https://cloud.tencent.com/document/api/1458/75030#ScanLog)](https://cloud.tencent.com/document/api/1458/75030#[ScanLog](https://cloud.tencent.com/document/api/1458/75030#ScanLog))
+* [[ScanStat](https://cloud.tencent.com/document/api/1458/75030#ScanStat)](https://cloud.tencent.com/document/api/1458/75030#[ScanStat](https://cloud.tencent.com/document/api/1458/75030#ScanStat))
 
 ### 第 15 次发布
 
@@ -103006,6 +103137,21 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 22 次发布
+
+发布时间：2023-01-31 02:14:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddCustomRule](https://cloud.tencent.com/document/api/627/53608)
+
+	* 新增入参：EventId
+
 
 ### 第 21 次发布
 

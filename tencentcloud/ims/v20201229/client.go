@@ -96,6 +96,8 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //
 // - 图片文件大小支持：**文件 < 5M**
 //
+// - 图片尺寸支持：**长或者宽 >50分辨率**和**长或者宽<10000分辨率**
+//
 // - 图片文件分辨率支持：建议**分辨率大于256x256**，否则可能会影响识别效果；
 //
 // - 图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式；
@@ -105,6 +107,8 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 // - 若传入图片文件的访问链接，则需要注意**图片下载时间限制为3秒**，为保障被检测图片的稳定性和可靠性，建议您使用腾讯云COS存储或者CDN缓存等；
 //
 // - 默认接口请求频率限制：**100次/秒**，超过此调用频率则会报错。
+//
+// -审核列表中，排序是按照用户通过API接口上传调用的时间进行排序；
 //
 // 
 //
@@ -207,6 +211,8 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 //
 // - 图片文件大小支持：**文件 < 5M**
 //
+// - 图片尺寸支持：**长或者宽 >50分辨率**和**长或者宽<10000分辨率**
+//
 // - 图片文件分辨率支持：建议**分辨率大于256x256**，否则可能会影响识别效果；
 //
 // - 图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式；
@@ -216,6 +222,8 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 // - 若传入图片文件的访问链接，则需要注意**图片下载时间限制为3秒**，为保障被检测图片的稳定性和可靠性，建议您使用腾讯云COS存储或者CDN缓存等；
 //
 // - 默认接口请求频率限制：**100次/秒**，超过此调用频率则会报错。
+//
+// -审核列表中，排序是按照用户通过API接口上传调用的时间进行排序；
 //
 // 
 //

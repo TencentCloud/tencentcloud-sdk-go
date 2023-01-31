@@ -140,6 +140,9 @@ const (
 	// 查询独享集群信息失败。
 	INTERNALERROR_FENCEERROR = "InternalError.FenceError"
 
+	// 获取数据库加密秘钥失败。
+	INTERNALERROR_GETCIPHERTEXTFAILED = "InternalError.GetCipherTextFailed"
+
 	// 获取数据库实例参数失败。
 	INTERNALERROR_GETDBCONFIGFAILED = "InternalError.GetDbConfigFailed"
 

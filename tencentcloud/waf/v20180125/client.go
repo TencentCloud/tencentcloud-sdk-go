@@ -64,7 +64,7 @@ func NewAddCustomRuleResponse() (response *AddCustomRuleResponse) {
 }
 
 // AddCustomRule
-// 增加自定义策略
+// 增加访问控制（自定义策略）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -75,7 +75,7 @@ func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCust
 }
 
 // AddCustomRule
-// 增加自定义策略
+// 增加访问控制（自定义策略）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1842,7 +1842,7 @@ func NewModifyCustomRuleStatusResponse() (response *ModifyCustomRuleStatusRespon
 }
 
 // ModifyCustomRuleStatus
-// 开启或禁用自定义策略
+// 开启或禁用访问控制（自定义策略）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1852,7 +1852,7 @@ func (c *Client) ModifyCustomRuleStatus(request *ModifyCustomRuleStatusRequest) 
 }
 
 // ModifyCustomRuleStatus
-// 开启或禁用自定义策略
+// 开启或禁用访问控制（自定义策略）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

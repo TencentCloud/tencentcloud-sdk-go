@@ -2685,6 +2685,155 @@ func (r *DescribeProductsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeScanLogsRequestParams struct {
+	// 码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+type DescribeScanLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+func (r *DescribeScanLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Code")
+	delete(f, "CorpId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScanLogsResponseParams struct {
+	// 【弃用】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Products []*ScanLog `json:"Products,omitempty" name:"Products"`
+
+	// 条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 扫描记录
+	ScanLogs []*ScanLog `json:"ScanLogs,omitempty" name:"ScanLogs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeScanLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScanLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeScanLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScanStatsRequestParams struct {
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 分页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前分页
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+type DescribeScanStatsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 分页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前分页
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeScanStatsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanStatsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchId")
+	delete(f, "CorpId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanStatsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScanStatsResponseParams struct {
+	// 统计记录
+	ScanStats []*ScanStat `json:"ScanStats,omitempty" name:"ScanStats"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeScanStatsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScanStatsResponseParams `json:"Response"`
+}
+
+func (r *DescribeScanStatsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanStatsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTmpTokenRequestParams struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
@@ -4024,6 +4173,101 @@ type Quota struct {
 	// 开通版本 lite:轻量版, basic:基础版, standard:标准版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitempty" name:"Version"`
+}
+
+type ScanLog struct {
+	// 行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogId *int64 `json:"LogId,omitempty" name:"LogId"`
+
+	// 微信openid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Openid *string `json:"Openid,omitempty" name:"Openid"`
+
+	// 微信昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 企业ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpId *int64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 商户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 商品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// ip地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 县/区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	District *string `json:"District,omitempty" name:"District"`
+
+	// 微信 unionid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unionid *string `json:"Unionid,omitempty" name:"Unionid"`
+
+	// 首次扫码 0:否, 1:是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	First *int64 `json:"First,omitempty" name:"First"`
+
+	// 批次ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+type ScanStat struct {
+	// 安心码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 扫码次数
+	Pv *uint64 `json:"Pv,omitempty" name:"Pv"`
+
+	// 扫码人数
+	Uv *uint64 `json:"Uv,omitempty" name:"Uv"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type TraceCode struct {

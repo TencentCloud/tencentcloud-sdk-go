@@ -180,7 +180,7 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 }
 
 // CreateProject
-// 创建项目（归属于某个团队）
+// 创建 RUM 应用（归属于某个团队）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -197,7 +197,7 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
 }
 
 // CreateProject
-// 创建项目（归属于某个团队）
+// 创建 RUM 应用（归属于某个团队）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -418,7 +418,7 @@ func NewCreateTawInstanceResponse() (response *CreateTawInstanceResponse) {
 }
 
 // CreateTawInstance
-// 创建Rum实例
+// 创建 RUM 业务系统
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -435,7 +435,7 @@ func (c *Client) CreateTawInstance(request *CreateTawInstanceRequest) (response 
 }
 
 // CreateTawInstance
-// 创建Rum实例
+// 创建 RUM 业务系统
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3154,7 +3154,7 @@ func NewDescribeProjectLimitsResponse() (response *DescribeProjectLimitsResponse
 }
 
 // DescribeProjectLimits
-// 获取项目上报率列表
+// 获取应用上报抽样信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3184,7 +3184,7 @@ func (c *Client) DescribeProjectLimits(request *DescribeProjectLimitsRequest) (r
 }
 
 // DescribeProjectLimits
-// 获取项目上报率列表
+// 获取应用上报抽样信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3484,7 +3484,7 @@ func NewDescribeReleaseFilesResponse() (response *DescribeReleaseFilesResponse) 
 }
 
 // DescribeReleaseFiles
-// 获取项目对应sourcemap文件列表
+// 获取应用对应sourcemap文件列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3513,7 +3513,7 @@ func (c *Client) DescribeReleaseFiles(request *DescribeReleaseFilesRequest) (res
 }
 
 // DescribeReleaseFiles
-// 获取项目对应sourcemap文件列表
+// 获取应用对应sourcemap文件列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4196,7 +4196,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 }
 
 // ModifyInstance
-// 修改实例信息
+// 修改 RUM 业务系统
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4216,7 +4216,7 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
 }
 
 // ModifyInstance
-// 修改实例信息
+// 修改 RUM 业务系统
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4266,7 +4266,7 @@ func NewModifyProjectResponse() (response *ModifyProjectResponse) {
 }
 
 // ModifyProject
-// 修改 rum 项目信息
+// 修改 RUM 应用信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4276,7 +4276,7 @@ func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyP
 }
 
 // ModifyProject
-// 修改 rum 项目信息
+// 修改 RUM 应用信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4406,7 +4406,7 @@ func NewResumeInstanceResponse() (response *ResumeInstanceResponse) {
 }
 
 // ResumeInstance
-// 恢复实例
+// 恢复 RUM 业务系统，恢复后，用户可以正常使用和上报数据
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4427,7 +4427,7 @@ func (c *Client) ResumeInstance(request *ResumeInstanceRequest) (response *Resum
 }
 
 // ResumeInstance
-// 恢复实例
+// 恢复 RUM 业务系统，恢复后，用户可以正常使用和上报数据
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
