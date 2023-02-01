@@ -345,9 +345,14 @@ func NewDescribeAppDetailResponse() (response *DescribeAppDetailResponse) {
 // 获取应用详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
 //  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAppDetail(request *DescribeAppDetailRequest) (response *DescribeAppDetailResponse, err error) {
     return c.DescribeAppDetailWithContext(context.Background(), request)
 }
@@ -356,9 +361,14 @@ func (c *Client) DescribeAppDetail(request *DescribeAppDetailRequest) (response 
 // 获取应用详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
 //  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeAppDetailWithContext(ctx context.Context, request *DescribeAppDetailRequest) (response *DescribeAppDetailResponse, err error) {
     if request == nil {
         request = NewDescribeAppDetailRequest()

@@ -134,7 +134,7 @@ const (
 	// 采集规则配置超过最大值限制。
 	LIMITEXCEEDED_CONFIG = "LimitExceeded.Config"
 
-	// 日志导出数量超出限制。
+	// 创建日志导出任务数量超出限制。
 	LIMITEXCEEDED_EXPORT = "LimitExceeded.Export"
 
 	// 并发查询超过限制，单topic并发最大值15。

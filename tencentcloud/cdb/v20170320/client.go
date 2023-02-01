@@ -1086,7 +1086,7 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 //
 // 4. 支持创建主实例、灾备实例和只读实例；
 //
-// 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作（暂不支持基础版实例）；
+// 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作；
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -1124,7 +1124,7 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
 //
 // 4. 支持创建主实例、灾备实例和只读实例；
 //
-// 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作（暂不支持基础版实例）；
+// 5. 当入参指定 Port，ParamList 或 Password 时，该实例会进行初始化操作；
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"

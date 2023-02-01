@@ -1259,6 +1259,82 @@ func (c *Client) CreateFlowEvidenceReportWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateFlowRemindsRequest() (request *CreateFlowRemindsRequest) {
+    request = &CreateFlowRemindsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFlowReminds")
+    
+    
+    return
+}
+
+func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
+    response = &CreateFlowRemindsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFlowReminds
+// 指定需要批量撤销的签署流程Id，批量催办合同
+//
+// 客户指定需要撤销的签署流程Id，最多100个；接口失败后返回错误信息
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者签署人
+//
+// 该接口需要开白后使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
+//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response *CreateFlowRemindsResponse, err error) {
+    return c.CreateFlowRemindsWithContext(context.Background(), request)
+}
+
+// CreateFlowReminds
+// 指定需要批量撤销的签署流程Id，批量催办合同
+//
+// 客户指定需要撤销的签署流程Id，最多100个；接口失败后返回错误信息
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者签署人
+//
+// 该接口需要开白后使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
+//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateFlowRemindsWithContext(ctx context.Context, request *CreateFlowRemindsRequest) (response *CreateFlowRemindsResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowRemindsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowReminds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowRemindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowSignReviewRequest() (request *CreateFlowSignReviewRequest) {
     request = &CreateFlowSignReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},

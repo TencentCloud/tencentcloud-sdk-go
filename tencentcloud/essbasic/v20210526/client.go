@@ -795,6 +795,78 @@ func (c *Client) ChannelCreateFlowGroupByFilesWithContext(ctx context.Context, r
     return
 }
 
+func NewChannelCreateFlowRemindsRequest() (request *ChannelCreateFlowRemindsRequest) {
+    request = &ChannelCreateFlowRemindsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateFlowReminds")
+    
+    
+    return
+}
+
+func NewChannelCreateFlowRemindsResponse() (response *ChannelCreateFlowRemindsResponse) {
+    response = &ChannelCreateFlowRemindsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateFlowReminds
+// 指定需要批量撤销的签署流程Id，批量催办合同
+//
+// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者签署人
+//
+// 该接口需要开白后使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateFlowReminds(request *ChannelCreateFlowRemindsRequest) (response *ChannelCreateFlowRemindsResponse, err error) {
+    return c.ChannelCreateFlowRemindsWithContext(context.Background(), request)
+}
+
+// ChannelCreateFlowReminds
+// 指定需要批量撤销的签署流程Id，批量催办合同
+//
+// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者签署人
+//
+// 该接口需要开白后使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateFlowRemindsWithContext(ctx context.Context, request *ChannelCreateFlowRemindsRequest) (response *ChannelCreateFlowRemindsResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateFlowRemindsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateFlowReminds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateFlowRemindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateFlowSignReviewRequest() (request *ChannelCreateFlowSignReviewRequest) {
     request = &ChannelCreateFlowSignReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1960,7 +2032,7 @@ func NewDescribeExtendedServiceAuthInfoResponse() (response *DescribeExtendedSer
 }
 
 // DescribeExtendedServiceAuthInfo
-// 查询企业扩展服务授权信息，企业经办人需要时企业超管或者法人
+// 查询企业扩展服务授权信息，企业经办人需要是企业超管或者法人
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1974,7 +2046,7 @@ func (c *Client) DescribeExtendedServiceAuthInfo(request *DescribeExtendedServic
 }
 
 // DescribeExtendedServiceAuthInfo
-// 查询企业扩展服务授权信息，企业经办人需要时企业超管或者法人
+// 查询企业扩展服务授权信息，企业经办人需要是企业超管或者法人
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2482,7 +2554,7 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 }
 
 // ModifyExtendedService
-// 修改（操作）企业扩展服务 ，企业经办人需要时企业超管或者法人
+// 修改（操作）企业扩展服务 ，企业经办人需要是企业超管或者法人
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2495,7 +2567,7 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 }
 
 // ModifyExtendedService
-// 修改（操作）企业扩展服务 ，企业经办人需要时企业超管或者法人
+// 修改（操作）企业扩展服务 ，企业经办人需要是企业超管或者法人
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

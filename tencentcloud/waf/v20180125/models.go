@@ -1062,7 +1062,7 @@ type DeleteIpAccessControlRequestParams struct {
 	// 删除的ip数组
 	Items []*string `json:"Items,omitempty" name:"Items"`
 
-	// 删除对应的域名下的所有黑/白IP名额单
+	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
 	DeleteAll *bool `json:"DeleteAll,omitempty" name:"DeleteAll"`
 
 	// 是否为多域名黑白名单
@@ -1078,7 +1078,7 @@ type DeleteIpAccessControlRequest struct {
 	// 删除的ip数组
 	Items []*string `json:"Items,omitempty" name:"Items"`
 
-	// 删除对应的域名下的所有黑/白IP名额单
+	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
 	DeleteAll *bool `json:"DeleteAll,omitempty" name:"DeleteAll"`
 
 	// 是否为多域名黑白名单
@@ -1949,25 +1949,25 @@ type DescribeIpAccessControlRequestParams struct {
 	// 计数标识
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 动作
+	// 动作，40表示查询白名单，42表示查询黑名单
 	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
 
-	// 有效时间最小时间戳
+	// 最小有效时间的时间戳
 	VtsMin *uint64 `json:"VtsMin,omitempty" name:"VtsMin"`
 
-	// 有效时间最大时间戳
+	// 最大有效时间的时间戳
 	VtsMax *uint64 `json:"VtsMax,omitempty" name:"VtsMax"`
 
-	// 创建时间最小时间戳
+	// 最小创建时间的时间戳
 	CtsMin *uint64 `json:"CtsMin,omitempty" name:"CtsMin"`
 
-	// 创建时间最大时间戳
+	// 最大创建时间的时间戳
 	CtsMax *uint64 `json:"CtsMax,omitempty" name:"CtsMax"`
 
-	// 偏移
+	// 分页开始条数
 	OffSet *uint64 `json:"OffSet,omitempty" name:"OffSet"`
 
-	// 限制
+	// 每页的条数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 来源
@@ -1989,25 +1989,25 @@ type DescribeIpAccessControlRequest struct {
 	// 计数标识
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 动作
+	// 动作，40表示查询白名单，42表示查询黑名单
 	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
 
-	// 有效时间最小时间戳
+	// 最小有效时间的时间戳
 	VtsMin *uint64 `json:"VtsMin,omitempty" name:"VtsMin"`
 
-	// 有效时间最大时间戳
+	// 最大有效时间的时间戳
 	VtsMax *uint64 `json:"VtsMax,omitempty" name:"VtsMax"`
 
-	// 创建时间最小时间戳
+	// 最小创建时间的时间戳
 	CtsMin *uint64 `json:"CtsMin,omitempty" name:"CtsMin"`
 
-	// 创建时间最大时间戳
+	// 最大创建时间的时间戳
 	CtsMax *uint64 `json:"CtsMax,omitempty" name:"CtsMax"`
 
-	// 偏移
+	// 分页开始条数
 	OffSet *uint64 `json:"OffSet,omitempty" name:"OffSet"`
 
-	// 限制
+	// 每页的条数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 来源

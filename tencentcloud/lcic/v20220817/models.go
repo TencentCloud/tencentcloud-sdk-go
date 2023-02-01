@@ -501,7 +501,7 @@ func (r *DeleteRoomResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAppDetailRequestParams struct {
-	// 应用ID
+	// 应用ID。低代码互动课堂的SdkAppId。
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 开发商ID
@@ -511,7 +511,7 @@ type DescribeAppDetailRequestParams struct {
 type DescribeAppDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID。低代码互动课堂的SdkAppId。
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 开发商ID
@@ -540,7 +540,7 @@ func (r *DescribeAppDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAppDetailResponseParams struct {
-	// SdkAppId 
+	// SDK 对应的AppId 
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
 	// 应用配置

@@ -1,3 +1,111 @@
+# Release v1.0.585
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 42 次发布
+
+发布时间：2023-02-01 01:24:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增入参：EnableDiagnose
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 40 次发布
+
+发布时间：2023-02-01 01:24:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateFlowReminds](https://cloud.tencent.com/document/api/1323/86002)
+
+新增数据结构：
+
+* [RemindFlowRecords](https://cloud.tencent.com/document/api/1323/70369#RemindFlowRecords)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 61 次发布
+
+发布时间：2023-02-01 01:24:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateFlowReminds](https://cloud.tencent.com/document/api/1420/86003)
+
+新增数据结构：
+
+* [RemindFlowRecords](https://cloud.tencent.com/document/api/1420/61525#RemindFlowRecords)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
+
+### 第 1 次发布
+
+发布时间：2023-01-31 17:01:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDataRepositoryTask](https://cloud.tencent.com/document/api/1424/85978)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 136 次发布
+
+发布时间：2023-02-01 02:09:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [LockCcnBandwidths](https://cloud.tencent.com/document/api/215/71323)
+
+	* 新增入参：Instances
+
+* [UnlockCcnBandwidths](https://cloud.tencent.com/document/api/215/71321)
+
+	* 新增入参：Instances
+
+
+新增数据结构：
+
+* [CcnFlowLock](https://cloud.tencent.com/document/api/215/15824#CcnFlowLock)
+
+
+
 # Release v1.0.584
 
 ## 图片内容安全(ims) 版本：2020-12-29

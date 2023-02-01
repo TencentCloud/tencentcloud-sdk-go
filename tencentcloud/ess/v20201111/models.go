@@ -1088,6 +1088,70 @@ func (r *CreateFlowEvidenceReportResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlowRemindsRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 需要执行撤回的签署流程id数组，最多100个
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+type CreateFlowRemindsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 需要执行撤回的签署流程id数组，最多100个
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+func (r *CreateFlowRemindsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowRemindsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRemindsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowRemindsResponseParams struct {
+	// 签署连接过期时间字符串：年月日-时分秒
+	RemindFlowRecords []*RemindFlowRecords `json:"RemindFlowRecords,omitempty" name:"RemindFlowRecords"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFlowRemindsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowRemindsResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowRemindsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowRemindsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -3182,6 +3246,17 @@ type RegisterInfo struct {
 
 	// 社会统一信用代码
 	Uscc *string `json:"Uscc,omitempty" name:"Uscc"`
+}
+
+type RemindFlowRecords struct {
+	// 是否能够催办
+	CanRemind *bool `json:"CanRemind,omitempty" name:"CanRemind"`
+
+	// 合同id
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 催办详情
+	RemindMessage *string `json:"RemindMessage,omitempty" name:"RemindMessage"`
 }
 
 type SignQrCode struct {

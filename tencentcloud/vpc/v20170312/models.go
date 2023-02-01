@@ -2013,6 +2013,20 @@ type CcnBandwidthInfo struct {
 	MarketId *string `json:"MarketId,omitempty" name:"MarketId"`
 }
 
+type CcnFlowLock struct {
+	// 带宽所属的云联网ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 实例所属用户主账号ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAccountID *string `json:"UserAccountID,omitempty" name:"UserAccountID"`
+
+	// 带宽实例的唯一ID。作为`UnlockCcnBandwidths`接口和`LockCcnBandwidths`接口的入参时，该字段必传。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionFlowControlId *string `json:"RegionFlowControlId,omitempty" name:"RegionFlowControlId"`
+}
+
 type CcnInstance struct {
 	// 关联实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -17705,12 +17719,15 @@ type LocalGateway struct {
 
 // Predefined struct for user
 type LockCcnBandwidthsRequestParams struct {
-
+	// 带宽实例的唯一ID数组。
+	Instances []*CcnFlowLock `json:"Instances,omitempty" name:"Instances"`
 }
 
 type LockCcnBandwidthsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 带宽实例的唯一ID数组。
+	Instances []*CcnFlowLock `json:"Instances,omitempty" name:"Instances"`
 }
 
 func (r *LockCcnBandwidthsRequest) ToJsonString() string {
@@ -17725,7 +17742,7 @@ func (r *LockCcnBandwidthsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Instances")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LockCcnBandwidthsRequest has unknown keys!", "")
 	}
@@ -24257,12 +24274,15 @@ func (r *UnassignPrivateIpAddressesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UnlockCcnBandwidthsRequestParams struct {
-
+	// 带宽实例对象数组。
+	Instances []*CcnFlowLock `json:"Instances,omitempty" name:"Instances"`
 }
 
 type UnlockCcnBandwidthsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 带宽实例对象数组。
+	Instances []*CcnFlowLock `json:"Instances,omitempty" name:"Instances"`
 }
 
 func (r *UnlockCcnBandwidthsRequest) ToJsonString() string {
@@ -24277,7 +24297,7 @@ func (r *UnlockCcnBandwidthsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Instances")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnlockCcnBandwidthsRequest has unknown keys!", "")
 	}
