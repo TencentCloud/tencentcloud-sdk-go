@@ -6979,12 +6979,45 @@ type Quota struct {
 
 // Predefined struct for user
 type RegisterFunctionTargetsRequestParams struct {
+	// 负载均衡实例 ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
+	// 负载均衡监听器 ID。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 待绑定的云函数列表。
+	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitempty" name:"FunctionTargets"`
+
+	// 目标转发规则的 ID，当将云函数绑定到七层转发规则时，必须输入此参数或 Domain+Url 参数。
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 目标转发规则的域名，若已经输入 LocationId 参数，则本参数不生效。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 目标转发规则的 URL，若已经输入 LocationId 参数，则本参数不生效。
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 type RegisterFunctionTargetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 负载均衡实例 ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡监听器 ID。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 待绑定的云函数列表。
+	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitempty" name:"FunctionTargets"`
+
+	// 目标转发规则的 ID，当将云函数绑定到七层转发规则时，必须输入此参数或 Domain+Url 参数。
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 目标转发规则的域名，若已经输入 LocationId 参数，则本参数不生效。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 目标转发规则的 URL，若已经输入 LocationId 参数，则本参数不生效。
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 func (r *RegisterFunctionTargetsRequest) ToJsonString() string {
@@ -6999,7 +7032,12 @@ func (r *RegisterFunctionTargetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "FunctionTargets")
+	delete(f, "LocationId")
+	delete(f, "Domain")
+	delete(f, "Url")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterFunctionTargetsRequest has unknown keys!", "")
 	}

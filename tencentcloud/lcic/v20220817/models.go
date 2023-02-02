@@ -42,6 +42,99 @@ type AppCustomContent struct {
 }
 
 // Predefined struct for user
+type BatchRegisterRequestParams struct {
+	// 批量注册用户信息列表
+	Users []*BatchUserRequest `json:"Users,omitempty" name:"Users"`
+}
+
+type BatchRegisterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批量注册用户信息列表
+	Users []*BatchUserRequest `json:"Users,omitempty" name:"Users"`
+}
+
+func (r *BatchRegisterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchRegisterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Users")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchRegisterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchRegisterResponseParams struct {
+	// 注册成功的用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Users []*BatchUserInfo `json:"Users,omitempty" name:"Users"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchRegisterResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchRegisterResponseParams `json:"Response"`
+}
+
+func (r *BatchRegisterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchRegisterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchUserInfo struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户在客户系统的Id。 若用户注册时该字段为空，则默认为 UserId 值一致。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+}
+
+type BatchUserRequest struct {
+	// 低代码互动课堂的SdkAppId。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户名称。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 用户在客户系统的Id，需要在同一应用下唯一。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+
+	// 用户头像。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+}
+
+// Predefined struct for user
 type BindDocumentToRoomRequestParams struct {
 	// 房间ID。
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
@@ -256,7 +349,7 @@ type CreateRoomRequestParams struct {
 	// coteaching 双师
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
-	// 老师ID。通过[注册用户]接口获取的UserId。
+	// 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
 	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
 
 	// 进入课堂时是否自动连麦。可以有以下取值：
@@ -275,7 +368,7 @@ type CreateRoomRequestParams struct {
 	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
 	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
 
-	// 助教Id列表。通过[注册用户]接口获取的UserId。
+	// 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
 	// 录制布局。
@@ -312,7 +405,7 @@ type CreateRoomRequest struct {
 	// coteaching 双师
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
-	// 老师ID。通过[注册用户]接口获取的UserId。
+	// 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
 	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
 
 	// 进入课堂时是否自动连麦。可以有以下取值：
@@ -331,7 +424,7 @@ type CreateRoomRequest struct {
 	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
 	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
 
-	// 助教Id列表。通过[注册用户]接口获取的UserId。
+	// 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
 	// 录制布局。
@@ -612,7 +705,7 @@ type DescribeRoomResponseParams struct {
 	// 预定的房间结束时间，unix时间戳。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 老师ID。
+	// 老师的UserId。
 	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
 
 	// 低代码互动课堂的SdkAppId。
@@ -649,7 +742,7 @@ type DescribeRoomResponseParams struct {
 	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
 	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
 
-	// 助教Id列表。
+	// 助教UserId列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
@@ -1050,6 +1143,180 @@ func (r *ModifyAppResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoomRequestParams struct {
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 低代码互动课堂的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 预定的房间开始时间，unix时间戳。直播开始后不允许修改。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 预定的房间结束时间，unix时间戳。直播开始后不允许修改。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 老师ID。直播开始后不允许修改。
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 房间名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分辨率。可以有如下取值：
+	// 1 标清
+	// 2 高清
+	// 3 全高清
+	// 直播开始后不允许修改。
+	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 最大连麦人数（不包括老师）。取值范围[0, 17)
+	// 直播开始后不允许修改。
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+
+	// 进入房间时是否自动连麦。可以有以下取值：
+	// 0 不自动连麦（默认值）
+	// 1 自动连麦
+	// 直播开始后不允许修改。
+	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
+
+	// 高音质模式。可以有以下取值：
+	// 0 不开启高音质（默认值）
+	// 1 开启高音质
+	// 直播开始后不允许修改。
+	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
+
+	// 房间子类型，可以有以下取值：
+	// videodoc 文档+视频
+	// video 纯视频
+	// coteaching 双师
+	// 直播开始后不允许修改。
+	SubType *string `json:"SubType,omitempty" name:"SubType"`
+
+	// 禁止录制。可以有以下取值：
+	// 0 不禁止录制（默认值）
+	// 1 禁止录制
+	// 直播开始后不允许修改。
+	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
+
+	// 助教Id列表。直播开始后不允许修改。
+	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+}
+
+type ModifyRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 低代码互动课堂的SdkAppId
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 预定的房间开始时间，unix时间戳。直播开始后不允许修改。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 预定的房间结束时间，unix时间戳。直播开始后不允许修改。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 老师ID。直播开始后不允许修改。
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 房间名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分辨率。可以有如下取值：
+	// 1 标清
+	// 2 高清
+	// 3 全高清
+	// 直播开始后不允许修改。
+	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 最大连麦人数（不包括老师）。取值范围[0, 17)
+	// 直播开始后不允许修改。
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+
+	// 进入房间时是否自动连麦。可以有以下取值：
+	// 0 不自动连麦（默认值）
+	// 1 自动连麦
+	// 直播开始后不允许修改。
+	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
+
+	// 高音质模式。可以有以下取值：
+	// 0 不开启高音质（默认值）
+	// 1 开启高音质
+	// 直播开始后不允许修改。
+	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
+
+	// 房间子类型，可以有以下取值：
+	// videodoc 文档+视频
+	// video 纯视频
+	// coteaching 双师
+	// 直播开始后不允许修改。
+	SubType *string `json:"SubType,omitempty" name:"SubType"`
+
+	// 禁止录制。可以有以下取值：
+	// 0 不禁止录制（默认值）
+	// 1 禁止录制
+	// 直播开始后不允许修改。
+	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
+
+	// 助教Id列表。直播开始后不允许修改。
+	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+}
+
+func (r *ModifyRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "SdkAppId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TeacherId")
+	delete(f, "Name")
+	delete(f, "Resolution")
+	delete(f, "MaxMicNumber")
+	delete(f, "AutoMic")
+	delete(f, "AudioQuality")
+	delete(f, "SubType")
+	delete(f, "DisableRecord")
+	delete(f, "Assistants")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRoomResponseParams `json:"Response"`
+}
+
+func (r *ModifyRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -4243,6 +4243,18 @@ type DescribeCloudBaseRunVersionResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemSize *float64 `json:"MemSize,omitempty" name:"MemSize"`
 
+	// 扩缩容策略详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitempty" name:"PolicyDetail"`
+
+	// Cpu的Request值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *float64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// Mem的Request值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mem *float64 `json:"Mem,omitempty" name:"Mem"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -6754,6 +6766,10 @@ func (r *EstablishCloudBaseRunServerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EstablishCloudBaseRunServerResponseParams struct {
+	// 创建服务是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

@@ -281,6 +281,18 @@ const (
 	// 参数值非法，不在合法范围内。
 	INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
 
+	// 地域不存在。
+	INVALIDPARAMETERVALUE_REGIONNOTFOUND = "InvalidParameterValue.RegionNotFound"
+
+	// 地域不匹配。
+	INVALIDPARAMETERVALUE_REGIONNOTMATCH = "InvalidParameterValue.RegionNotMatch"
+
+	// 不支持的地域。
+	INVALIDPARAMETERVALUE_REGIONNOTSUPPORTED = "InvalidParameterValue.RegionNotSupported"
+
+	// 该地域不可用。
+	INVALIDPARAMETERVALUE_REGIONUNAVAILABLE = "InvalidParameterValue.RegionUnavailable"
+
 	// 参数值非法，快照 ID 格式非法。
 	INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = "InvalidParameterValue.SnapshotIdMalformed"
 

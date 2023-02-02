@@ -6345,6 +6345,10 @@ type GroupResponse struct {
 	// GroupList
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupList []*DescribeGroup `json:"GroupList,omitempty" name:"GroupList"`
+
+	// 消费分组配额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupCountQuota *uint64 `json:"GroupCountQuota,omitempty" name:"GroupCountQuota"`
 }
 
 // Predefined struct for user

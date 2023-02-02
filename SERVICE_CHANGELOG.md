@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## Elasticsearch Service(es) 版本：2018-04-16
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
-### 第 42 次发布
+### 第 67 次发布
 
-发布时间：2023-02-01 01:24:04
+发布时间：2023-02-02 01:10:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GroupResponse](https://cloud.tencent.com/document/api/597/40861#GroupResponse)
+
+	* 新增成员：GroupCountQuota
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 79 次发布
+
+发布时间：2023-02-02 01:11:16
 
 本次发布包含了以下内容：
 
@@ -12,38 +31,18 @@
 
 修改接口：
 
-* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+* [RegisterFunctionTargets](https://cloud.tencent.com/document/api/214/84625)
 
-	* 新增入参：EnableDiagnose
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 40 次发布
-
-发布时间：2023-02-01 01:24:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateFlowReminds](https://cloud.tencent.com/document/api/1323/86002)
-
-新增数据结构：
-
-* [RemindFlowRecords](https://cloud.tencent.com/document/api/1323/70369#RemindFlowRecords)
+	* 新增入参：LoadBalancerId, ListenerId, FunctionTargets, LocationId, Domain, Url
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 61 次发布
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-发布时间：2023-02-01 01:24:43
+### 第 41 次发布
+
+发布时间：2023-02-02 01:16:40
 
 本次发布包含了以下内容：
 
@@ -51,39 +50,15 @@
 
 新增接口：
 
-* [ChannelCreateFlowReminds](https://cloud.tencent.com/document/api/1420/86003)
-
-新增数据结构：
-
-* [RemindFlowRecords](https://cloud.tencent.com/document/api/1420/61525#RemindFlowRecords)
+* [RestartInstance](https://cloud.tencent.com/document/api/1003/86028)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 游戏多媒体引擎(gme) 版本：2018-07-11
 
+### 第 30 次发布
 
-
-## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
-
-### 第 1 次发布
-
-发布时间：2023-01-31 17:01:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateDataRepositoryTask](https://cloud.tencent.com/document/api/1424/85978)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 136 次发布
-
-发布时间：2023-02-01 02:09:35
+发布时间：2023-02-02 01:29:27
 
 本次发布包含了以下内容：
 
@@ -91,18 +66,131 @@
 
 修改接口：
 
-* [LockCcnBandwidths](https://cloud.tencent.com/document/api/215/71323)
+* [DeleteRoomMember](https://cloud.tencent.com/document/api/607/80403)
 
-	* 新增入参：Instances
+	* <font color="#dd0000">**修改入参**：</font>Uids
 
-* [UnlockCcnBandwidths](https://cloud.tencent.com/document/api/215/71321)
 
-	* 新增入参：Instances
+修改数据结构：
 
+* [UserMicStatus](https://cloud.tencent.com/document/api/607/35375#UserMicStatus)
+
+	* 新增成员：StrUid
+
+	* <font color="#dd0000">**修改成员**：</font>Uid
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 8 次发布
+
+发布时间：2023-02-02 01:35:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchRegister](https://cloud.tencent.com/document/api/1639/86029)
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
 
 新增数据结构：
 
-* [CcnFlowLock](https://cloud.tencent.com/document/api/215/15824#CcnFlowLock)
+* [BatchUserInfo](https://cloud.tencent.com/document/api/1639/81423#BatchUserInfo)
+* [BatchUserRequest](https://cloud.tencent.com/document/api/1639/81423#BatchUserRequest)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 74 次发布
+
+发布时间：2023-02-02 01:38:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePrometheusAlertPolicy](https://cloud.tencent.com/document/api/248/86045)
+* [CreatePrometheusClusterAgent](https://cloud.tencent.com/document/api/248/86044)
+* [CreatePrometheusConfig](https://cloud.tencent.com/document/api/248/86033)
+* [CreatePrometheusGlobalNotification](https://cloud.tencent.com/document/api/248/86043)
+* [DeletePrometheusAlertPolicy](https://cloud.tencent.com/document/api/248/86042)
+* [DeletePrometheusClusterAgent](https://cloud.tencent.com/document/api/248/86041)
+* [DeletePrometheusConfig](https://cloud.tencent.com/document/api/248/86032)
+* [DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/248/86040)
+* [DescribePrometheusGlobalConfig](https://cloud.tencent.com/document/api/248/86039)
+* [DescribePrometheusGlobalNotification](https://cloud.tencent.com/document/api/248/86038)
+* [DescribePrometheusTargetsTMP](https://cloud.tencent.com/document/api/248/86037)
+* [ModifyPrometheusAgentExternalLabels](https://cloud.tencent.com/document/api/248/86036)
+* [ModifyPrometheusAlertPolicy](https://cloud.tencent.com/document/api/248/86035)
+* [ModifyPrometheusConfig](https://cloud.tencent.com/document/api/248/86031)
+* [ModifyPrometheusGlobalNotification](https://cloud.tencent.com/document/api/248/86034)
+
+新增数据结构：
+
+* [PrometheusAgentInfo](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentInfo)
+* [PrometheusAgentOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentOverview)
+* [PrometheusClusterAgentBasic](https://cloud.tencent.com/document/api/248/30354#PrometheusClusterAgentBasic)
+* [PrometheusClusterAgentPodConfig](https://cloud.tencent.com/document/api/248/30354#PrometheusClusterAgentPodConfig)
+* [PrometheusJobTargets](https://cloud.tencent.com/document/api/248/30354#PrometheusJobTargets)
+* [Toleration](https://cloud.tencent.com/document/api/248/30354#Toleration)
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 51 次发布
+
+发布时间：2023-02-02 01:40:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateStreamLinkFlow](https://cloud.tencent.com/document/api/862/82445)
+
+	* 新增入参：EventId
+
+	* <font color="#dd0000">**修改入参**：</font>InputGroup
+
+
+修改数据结构：
+
+* [DescribeFlow](https://cloud.tencent.com/document/api/862/37615#DescribeFlow)
+
+	* 新增成员：EventId, Region
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 90 次发布
+
+发布时间：2023-02-02 01:48:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseRunVersion](https://cloud.tencent.com/document/api/876/53438)
+
+	* 新增出参：PolicyDetail, Cpu, Mem
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增出参：Result
+
 
 
 
@@ -19410,6 +19498,21 @@
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
+### 第 67 次发布
+
+发布时间：2023-02-02 01:10:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GroupResponse](https://cloud.tencent.com/document/api/597/40861#GroupResponse)
+
+	* 新增成员：GroupCountQuota
+
+
 ### 第 66 次发布
 
 发布时间：2023-01-06 01:10:21
@@ -20879,6 +20982,21 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 79 次发布
+
+发布时间：2023-02-02 01:11:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RegisterFunctionTargets](https://cloud.tencent.com/document/api/214/84625)
+
+	* 新增入参：LoadBalancerId, ListenerId, FunctionTargets, LocationId, Domain, Url
+
 
 ### 第 78 次发布
 
@@ -32248,6 +32366,18 @@
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 41 次发布
+
+发布时间：2023-02-02 01:16:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RestartInstance](https://cloud.tencent.com/document/api/1003/86028)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 40 次发布
 
 发布时间：2023-01-02 01:17:01
@@ -42685,11 +42815,11 @@
 
 新增接口：
 
-* [[CreateFlowReminds](https://cloud.tencent.com/document/api/1323/86002)](https://cloud.tencent.com/document/api/#/#)
+* [CreateFlowReminds](https://cloud.tencent.com/document/api/1323/86002)
 
 新增数据结构：
 
-* [[RemindFlowRecords](https://cloud.tencent.com/document/api/1323/70369#RemindFlowRecords)](https://cloud.tencent.com/document/api/1323/70369#[RemindFlowRecords](https://cloud.tencent.com/document/api/1323/70369#RemindFlowRecords))
+* [RemindFlowRecords](https://cloud.tencent.com/document/api/1323/70369#RemindFlowRecords)
 
 ### 第 39 次发布
 
@@ -43487,11 +43617,11 @@
 
 新增接口：
 
-* [[ChannelCreateFlowReminds](https://cloud.tencent.com/document/api/1420/86003)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCreateFlowReminds](https://cloud.tencent.com/document/api/1420/86003)
 
 新增数据结构：
 
-* [[RemindFlowRecords](https://cloud.tencent.com/document/api/1420/61525#RemindFlowRecords)](https://cloud.tencent.com/document/api/1420/61525#[RemindFlowRecords](https://cloud.tencent.com/document/api/1420/61525#RemindFlowRecords))
+* [RemindFlowRecords](https://cloud.tencent.com/document/api/1420/61525#RemindFlowRecords)
 
 ### 第 60 次发布
 
@@ -46999,6 +47129,30 @@
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
 
+### 第 30 次发布
+
+发布时间：2023-02-02 01:29:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteRoomMember](https://cloud.tencent.com/document/api/607/80403)
+
+	* <font color="#dd0000">**修改入参**：</font>Uids
+
+
+修改数据结构：
+
+* [UserMicStatus](https://cloud.tencent.com/document/api/607/35375#UserMicStatus)
+
+	* 新增成员：StrUid
+
+	* <font color="#dd0000">**修改成员**：</font>Uid
+
+
 ### 第 29 次发布
 
 发布时间：2023-01-12 01:21:12
@@ -47544,7 +47698,7 @@
 
 新增接口：
 
-* [[CreateDataRepositoryTask](https://cloud.tencent.com/document/api/1424/85978)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDataRepositoryTask](https://cloud.tencent.com/document/api/1424/85978)
 
 
 
@@ -54927,6 +55081,24 @@
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
+### 第 8 次发布
+
+发布时间：2023-02-02 01:35:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BatchRegister](https://cloud.tencent.com/document/api/1639/86029)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BatchUserInfo](https://cloud.tencent.com/document/api/1639/81423#BatchUserInfo)](https://cloud.tencent.com/document/api/1639/81423#[BatchUserInfo](https://cloud.tencent.com/document/api/1639/81423#BatchUserInfo))
+* [[BatchUserRequest](https://cloud.tencent.com/document/api/1639/81423#BatchUserRequest)](https://cloud.tencent.com/document/api/1639/81423#[BatchUserRequest](https://cloud.tencent.com/document/api/1639/81423#BatchUserRequest))
+
 ### 第 7 次发布
 
 发布时间：2023-01-16 01:41:05
@@ -60010,6 +60182,41 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 74 次发布
+
+发布时间：2023-02-02 01:38:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePrometheusAlertPolicy](https://cloud.tencent.com/document/api/248/86045)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePrometheusClusterAgent](https://cloud.tencent.com/document/api/248/86044)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePrometheusConfig](https://cloud.tencent.com/document/api/248/86033)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePrometheusGlobalNotification](https://cloud.tencent.com/document/api/248/86043)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrometheusAlertPolicy](https://cloud.tencent.com/document/api/248/86042)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrometheusClusterAgent](https://cloud.tencent.com/document/api/248/86041)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrometheusConfig](https://cloud.tencent.com/document/api/248/86032)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/248/86040)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusGlobalConfig](https://cloud.tencent.com/document/api/248/86039)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusGlobalNotification](https://cloud.tencent.com/document/api/248/86038)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusTargetsTMP](https://cloud.tencent.com/document/api/248/86037)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPrometheusAgentExternalLabels](https://cloud.tencent.com/document/api/248/86036)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPrometheusAlertPolicy](https://cloud.tencent.com/document/api/248/86035)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPrometheusConfig](https://cloud.tencent.com/document/api/248/86031)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPrometheusGlobalNotification](https://cloud.tencent.com/document/api/248/86034)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PrometheusAgentInfo](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentInfo)](https://cloud.tencent.com/document/api/248/30354#[PrometheusAgentInfo](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentInfo))
+* [[PrometheusAgentOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentOverview)](https://cloud.tencent.com/document/api/248/30354#[PrometheusAgentOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentOverview))
+* [[PrometheusClusterAgentBasic](https://cloud.tencent.com/document/api/248/30354#PrometheusClusterAgentBasic)](https://cloud.tencent.com/document/api/248/30354#[PrometheusClusterAgentBasic](https://cloud.tencent.com/document/api/248/30354#PrometheusClusterAgentBasic))
+* [[PrometheusClusterAgentPodConfig](https://cloud.tencent.com/document/api/248/30354#PrometheusClusterAgentPodConfig)](https://cloud.tencent.com/document/api/248/30354#[PrometheusClusterAgentPodConfig](https://cloud.tencent.com/document/api/248/30354#PrometheusClusterAgentPodConfig))
+* [[PrometheusJobTargets](https://cloud.tencent.com/document/api/248/30354#PrometheusJobTargets)](https://cloud.tencent.com/document/api/248/30354#[PrometheusJobTargets](https://cloud.tencent.com/document/api/248/30354#PrometheusJobTargets))
+* [[Toleration](https://cloud.tencent.com/document/api/248/30354#Toleration)](https://cloud.tencent.com/document/api/248/30354#[Toleration](https://cloud.tencent.com/document/api/248/30354#Toleration))
+
 ### 第 73 次发布
 
 发布时间：2023-01-13 01:36:35
@@ -61624,6 +61831,30 @@
 
 
 ## 媒体处理(mps) 版本：2019-06-12
+
+### 第 51 次发布
+
+发布时间：2023-02-02 01:40:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateStreamLinkFlow](https://cloud.tencent.com/document/api/862/82445)
+
+	* 新增入参：EventId
+
+	* <font color="#dd0000">**修改入参**：</font>InputGroup
+
+
+修改数据结构：
+
+* [DescribeFlow](https://cloud.tencent.com/document/api/862/37615#DescribeFlow)
+
+	* 新增成员：EventId, Region
+
 
 ### 第 50 次发布
 
@@ -76631,6 +76862,25 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 90 次发布
+
+发布时间：2023-02-02 01:48:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseRunVersion](https://cloud.tencent.com/document/api/876/53438)
+
+	* 新增出参：PolicyDetail, Cpu, Mem
+
+* [EstablishCloudBaseRunServer](https://cloud.tencent.com/document/api/876/49626)
+
+	* 新增出参：Result
+
 
 ### 第 89 次发布
 
@@ -100098,7 +100348,7 @@
 
 新增数据结构：
 
-* [[CcnFlowLock](https://cloud.tencent.com/document/api/215/15824#CcnFlowLock)](https://cloud.tencent.com/document/api/215/15824#[CcnFlowLock](https://cloud.tencent.com/document/api/215/15824#CcnFlowLock))
+* [CcnFlowLock](https://cloud.tencent.com/document/api/215/15824#CcnFlowLock)
 
 ### 第 135 次发布
 

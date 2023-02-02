@@ -4539,6 +4539,122 @@ func (c *Client) ResetAccountPasswordWithContext(ctx context.Context, request *R
     return
 }
 
+func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
+    request = &RestartInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "RestartInstance")
+    
+    
+    return
+}
+
+func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
+    response = &RestartInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RestartInstance
+// 重启实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_LISTINSTANCEFAILED = "InternalError.ListInstanceFailed"
+//  INTERNALERROR_OPERATEWANFAIL = "InternalError.OperateWanFail"
+//  INTERNALERROR_OPERATIONNOTSUPPORT = "InternalError.OperationNotSupport"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ISOLATENOTALLOWED = "InvalidParameter.IsolateNotAllowed"
+//  INVALIDPARAMETERVALUE_ACCOUNTEXIST = "InvalidParameterValue.AccountExist"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_FLOWNOTFOUND = "InvalidParameterValue.FlowNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = "InvalidParameterValue.IllegalInstanceName"
+//  INVALIDPARAMETERVALUE_ILLEGALORDERBY = "InvalidParameterValue.IllegalOrderBy"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INTERNALACCOUNT = "InvalidParameterValue.InternalAccount"
+//  INVALIDPARAMETERVALUE_INVALIDDBVERSION = "InvalidParameterValue.InvalidDBVersion"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_CLUSTERINSTANCELIMIT = "LimitExceeded.ClusterInstanceLimit"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = "UnauthorizedOperation.NotRealNameAccount"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *RestartInstanceResponse, err error) {
+    return c.RestartInstanceWithContext(context.Background(), request)
+}
+
+// RestartInstance
+// 重启实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSECURITYGROUPDETAILFAILED = "InternalError.GetSecurityGroupDetailFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_LISTINSTANCEFAILED = "InternalError.ListInstanceFailed"
+//  INTERNALERROR_OPERATEWANFAIL = "InternalError.OperateWanFail"
+//  INTERNALERROR_OPERATIONNOTSUPPORT = "InternalError.OperationNotSupport"
+//  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ISOLATENOTALLOWED = "InvalidParameter.IsolateNotAllowed"
+//  INVALIDPARAMETERVALUE_ACCOUNTEXIST = "InvalidParameterValue.AccountExist"
+//  INVALIDPARAMETERVALUE_DBTYPENOTFOUND = "InvalidParameterValue.DBTypeNotFound"
+//  INVALIDPARAMETERVALUE_FLOWNOTFOUND = "InvalidParameterValue.FlowNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALINSTANCENAME = "InvalidParameterValue.IllegalInstanceName"
+//  INVALIDPARAMETERVALUE_ILLEGALORDERBY = "InvalidParameterValue.IllegalOrderBy"
+//  INVALIDPARAMETERVALUE_ILLEGALPASSWORD = "InvalidParameterValue.IllegalPassword"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INTERNALACCOUNT = "InvalidParameterValue.InternalAccount"
+//  INVALIDPARAMETERVALUE_INVALIDDBVERSION = "InvalidParameterValue.InvalidDBVersion"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDSPEC = "InvalidParameterValue.InvalidSpec"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
+//  INVALIDPARAMETERVALUE_STORAGEPOOLNOTFOUND = "InvalidParameterValue.StoragePoolNotFound"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+//  LIMITEXCEEDED_CLUSTERINSTANCELIMIT = "LimitExceeded.ClusterInstanceLimit"
+//  LIMITEXCEEDED_USERINSTANCELIMIT = "LimitExceeded.UserInstanceLimit"
+//  OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = "OperationDenied.ServerlessInstanceStatusDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCEUNAVAILABLE_INSTANCELOCKFAIL = "ResourceUnavailable.InstanceLockFail"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_NOTREALNAMEACCOUNT = "UnauthorizedOperation.NotRealNameAccount"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest) (response *RestartInstanceResponse, err error) {
+    if request == nil {
+        request = NewRestartInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeServerlessRequest() (request *ResumeServerlessRequest) {
     request = &ResumeServerlessRequest{
         BaseRequest: &tchttp.BaseRequest{},

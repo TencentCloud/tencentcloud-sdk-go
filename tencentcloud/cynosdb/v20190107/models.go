@@ -6846,6 +6846,63 @@ func (r *ResetAccountPasswordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RestartInstanceRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type RestartInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *RestartInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartInstanceResponseParams struct {
+	// 异步任务id
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RestartInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartInstanceResponseParams `json:"Response"`
+}
+
+func (r *RestartInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResumeServerlessRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
