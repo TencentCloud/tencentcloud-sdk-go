@@ -8729,6 +8729,211 @@ func (r *DescribeStreamPushInfoListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTimeShiftRecordDetailRequestParams struct {
+	// 推流域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 推流路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 查询范围起始时间，Unix 时间戳。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询范围终止时间，Unix 时间戳。 
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 推流域名所属组，没有域名组或者域名组为空字符串可不填。
+	DomainGroup *string `json:"DomainGroup,omitempty" name:"DomainGroup"`
+
+	// 转码模板ID，转码模板ID为0可不填。
+	TransCodeId *uint64 `json:"TransCodeId,omitempty" name:"TransCodeId"`
+}
+
+type DescribeTimeShiftRecordDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 推流路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 查询范围起始时间，Unix 时间戳。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询范围终止时间，Unix 时间戳。 
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 推流域名所属组，没有域名组或者域名组为空字符串可不填。
+	DomainGroup *string `json:"DomainGroup,omitempty" name:"DomainGroup"`
+
+	// 转码模板ID，转码模板ID为0可不填。
+	TransCodeId *uint64 `json:"TransCodeId,omitempty" name:"TransCodeId"`
+}
+
+func (r *DescribeTimeShiftRecordDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimeShiftRecordDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DomainGroup")
+	delete(f, "TransCodeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimeShiftRecordDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimeShiftRecordDetailResponseParams struct {
+	// 时移录制会话数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordList []*TimeShiftRecord `json:"RecordList,omitempty" name:"RecordList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTimeShiftRecordDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTimeShiftRecordDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeTimeShiftRecordDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimeShiftRecordDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimeShiftStreamListRequestParams struct {
+	// 查询范围起始时间，Unix 时间戳。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询范围结束时间，Unix 时间戳。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 推流域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 推流域名所属域名组。
+	DomainGroup *string `json:"DomainGroup,omitempty" name:"DomainGroup"`
+
+	// 用户指定要返回的最大结果数，取值范围[0,100]，不指定或者指定为0时，API 
+	// 默认值为100。指定超过100时，API 强制使用100。指定值为负数时，接口返回错误。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 指定拉取的页码，不传时默认为1。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+}
+
+type DescribeTimeShiftStreamListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询范围起始时间，Unix 时间戳。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询范围结束时间，Unix 时间戳。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 推流域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 推流域名所属域名组。
+	DomainGroup *string `json:"DomainGroup,omitempty" name:"DomainGroup"`
+
+	// 用户指定要返回的最大结果数，取值范围[0,100]，不指定或者指定为0时，API 
+	// 默认值为100。指定超过100时，API 强制使用100。指定值为负数时，接口返回错误。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 指定拉取的页码，不传时默认为1。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+}
+
+func (r *DescribeTimeShiftStreamListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimeShiftStreamListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "StreamName")
+	delete(f, "Domain")
+	delete(f, "DomainGroup")
+	delete(f, "PageSize")
+	delete(f, "PageNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimeShiftStreamListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTimeShiftStreamListResponseParams struct {
+	// 时间段内所有的数据量。
+	TotalSize *int64 `json:"TotalSize,omitempty" name:"TotalSize"`
+
+	// 流列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamList []*TimeShiftStreamInfo `json:"StreamList,omitempty" name:"StreamList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTimeShiftStreamListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTimeShiftStreamListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTimeShiftStreamListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTimeShiftStreamListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopClientIpSumInfoListRequestParams struct {
 	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -12455,6 +12660,49 @@ type TimeShiftBillData struct {
 
 	// 时移总时长，单位分钟。
 	TotalDuration *float64 `json:"TotalDuration,omitempty" name:"TotalDuration"`
+}
+
+type TimeShiftRecord struct {
+	// 时移录制会话标识。
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 录制会话开始时间，Unix 时间戳。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 录制会话结束时间，Unix 时间戳。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type TimeShiftStreamInfo struct {
+	// 推流域名所属组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainGroup *string `json:"DomainGroup,omitempty" name:"DomainGroup"`
+
+	// 推流域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 推流路径。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 流起始时间，Unix 时间戳。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 截止查询时流结束时间，Unix 时间戳。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 转码模板ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransCodeId *uint64 `json:"TransCodeId,omitempty" name:"TransCodeId"`
+
+	// 流类型，取值0为原始流，1为水印流，2为转码流。
+	StreamType *int64 `json:"StreamType,omitempty" name:"StreamType"`
+
+	// 时移数据存储时长，单位秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type TimeValue struct {

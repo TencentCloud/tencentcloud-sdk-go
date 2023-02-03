@@ -169,7 +169,7 @@ type AddCustomRuleRequestParams struct {
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 动作类型
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
@@ -203,7 +203,7 @@ type AddCustomRuleRequest struct {
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 动作类型
+	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
@@ -1640,7 +1640,7 @@ type DescribeDomainWhiteRulesRequestParams struct {
 	// 每页展示的条数
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 排序方式
+	// 排序方式,desc表示降序，asc表示升序
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
 	// 规则ID
@@ -1662,7 +1662,7 @@ type DescribeDomainWhiteRulesRequest struct {
 	// 每页展示的条数
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 排序方式
+	// 排序方式,desc表示降序，asc表示升序
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
 	// 规则ID
@@ -3267,13 +3267,13 @@ type ModifyWafAutoDenyRulesRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 攻击次数阈值
+	// 触发IP封禁的攻击次数阈值，范围为2~100次
 	AttackThreshold *int64 `json:"AttackThreshold,omitempty" name:"AttackThreshold"`
 
-	// 攻击时间阈值
+	// IP封禁统计时间，范围为1-60分钟
 	TimeThreshold *int64 `json:"TimeThreshold,omitempty" name:"TimeThreshold"`
 
-	// 自动封禁时间
+	// 触发IP封禁后的封禁时间，范围为5~360分钟
 	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitempty" name:"DenyTimeThreshold"`
 
 	// 自动封禁状态
@@ -3286,13 +3286,13 @@ type ModifyWafAutoDenyRulesRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 攻击次数阈值
+	// 触发IP封禁的攻击次数阈值，范围为2~100次
 	AttackThreshold *int64 `json:"AttackThreshold,omitempty" name:"AttackThreshold"`
 
-	// 攻击时间阈值
+	// IP封禁统计时间，范围为1-60分钟
 	TimeThreshold *int64 `json:"TimeThreshold,omitempty" name:"TimeThreshold"`
 
-	// 自动封禁时间
+	// 触发IP封禁后的封禁时间，范围为5~360分钟
 	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitempty" name:"DenyTimeThreshold"`
 
 	// 自动封禁状态
@@ -3698,10 +3698,10 @@ type SearchAccessLogResponseParams struct {
 	// 加载后续内容的Context
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 日志查询结果是否全部返回
+	// 日志查询结果是否全部返回，其中，“true”表示结果返回，“false”表示结果为返回
 	ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
 
-	// 返回的是否为分析结果
+	// 返回的是否为分析结果，其中，“true”表示返回分析结果，“false”表示未返回分析结果
 	Analysis *bool `json:"Analysis,omitempty" name:"Analysis"`
 
 	// 如果Analysis为True，则返回分析结果的列名，否则为空

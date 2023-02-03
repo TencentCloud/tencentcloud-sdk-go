@@ -5305,6 +5305,9 @@ type DescribeEnvsResponseParams struct {
 	// 环境信息列表
 	EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList"`
 
+	// 环境个数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

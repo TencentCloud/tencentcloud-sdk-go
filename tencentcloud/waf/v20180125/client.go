@@ -1056,8 +1056,6 @@ func NewDescribeDomainWhiteRulesResponse() (response *DescribeDomainWhiteRulesRe
 // DescribeDomainWhiteRules
 // 获取域名的规则白名单
 //
-// 
-//
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDomainWhiteRules(request *DescribeDomainWhiteRulesRequest) (response *DescribeDomainWhiteRulesResponse, err error) {
@@ -1066,8 +1064,6 @@ func (c *Client) DescribeDomainWhiteRules(request *DescribeDomainWhiteRulesReque
 
 // DescribeDomainWhiteRules
 // 获取域名的规则白名单
-//
-// 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"

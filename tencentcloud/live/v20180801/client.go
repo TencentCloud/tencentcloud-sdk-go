@@ -7245,6 +7245,134 @@ func (c *Client) DescribeStreamPushInfoListWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeTimeShiftRecordDetailRequest() (request *DescribeTimeShiftRecordDetailRequest) {
+    request = &DescribeTimeShiftRecordDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeTimeShiftRecordDetail")
+    
+    
+    return
+}
+
+func NewDescribeTimeShiftRecordDetailResponse() (response *DescribeTimeShiftRecordDetailResponse) {
+    response = &DescribeTimeShiftRecordDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTimeShiftRecordDetail
+// 前提调用 DescribeTimeShiftStreamList 获得请求必要参数。查询指定范围内的时移流录制详情，最大支持24小时范围查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTimeShiftRecordDetail(request *DescribeTimeShiftRecordDetailRequest) (response *DescribeTimeShiftRecordDetailResponse, err error) {
+    return c.DescribeTimeShiftRecordDetailWithContext(context.Background(), request)
+}
+
+// DescribeTimeShiftRecordDetail
+// 前提调用 DescribeTimeShiftStreamList 获得请求必要参数。查询指定范围内的时移流录制详情，最大支持24小时范围查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTimeShiftRecordDetailWithContext(ctx context.Context, request *DescribeTimeShiftRecordDetailRequest) (response *DescribeTimeShiftRecordDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimeShiftRecordDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimeShiftRecordDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimeShiftRecordDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTimeShiftStreamListRequest() (request *DescribeTimeShiftStreamListRequest) {
+    request = &DescribeTimeShiftStreamListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeTimeShiftStreamList")
+    
+    
+    return
+}
+
+func NewDescribeTimeShiftStreamListResponse() (response *DescribeTimeShiftStreamListResponse) {
+    response = &DescribeTimeShiftStreamListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTimeShiftStreamList
+// 查询某个时间范围内所有时移流列表。最大支持查询24小时内的数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTimeShiftStreamList(request *DescribeTimeShiftStreamListRequest) (response *DescribeTimeShiftStreamListResponse, err error) {
+    return c.DescribeTimeShiftStreamListWithContext(context.Background(), request)
+}
+
+// DescribeTimeShiftStreamList
+// 查询某个时间范围内所有时移流列表。最大支持查询24小时内的数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETCONFIGERROR = "InternalError.GetConfigError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTimeShiftStreamListWithContext(ctx context.Context, request *DescribeTimeShiftStreamListRequest) (response *DescribeTimeShiftStreamListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTimeShiftStreamListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTimeShiftStreamList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTimeShiftStreamListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopClientIpSumInfoListRequest() (request *DescribeTopClientIpSumInfoListRequest) {
     request = &DescribeTopClientIpSumInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

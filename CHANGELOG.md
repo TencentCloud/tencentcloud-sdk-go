@@ -1,3 +1,46 @@
+# Release v1.0.587
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 95 次发布
+
+发布时间：2023-02-03 01:31:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTimeShiftRecordDetail](https://cloud.tencent.com/document/api/267/86091)
+* [DescribeTimeShiftStreamList](https://cloud.tencent.com/document/api/267/86090)
+
+新增数据结构：
+
+* [TimeShiftRecord](https://cloud.tencent.com/document/api/267/20474#TimeShiftRecord)
+* [TimeShiftStreamInfo](https://cloud.tencent.com/document/api/267/20474#TimeShiftStreamInfo)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 91 次发布
+
+发布时间：2023-02-03 01:42:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820)
+
+	* 新增出参：Total
+
+
+
+
 # Release v1.0.586
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19

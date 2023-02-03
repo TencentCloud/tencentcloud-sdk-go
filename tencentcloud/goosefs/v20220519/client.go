@@ -86,3 +86,45 @@ func (c *Client) CreateDataRepositoryTaskWithContext(ctx context.Context, reques
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeDataRepositoryTaskStatusRequest() (request *DescribeDataRepositoryTaskStatusRequest) {
+    request = &DescribeDataRepositoryTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeDataRepositoryTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeDataRepositoryTaskStatusResponse() (response *DescribeDataRepositoryTaskStatusResponse) {
+    response = &DescribeDataRepositoryTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataRepositoryTaskStatus
+// 获取数据流通任务实时状态，用作客户端控制
+func (c *Client) DescribeDataRepositoryTaskStatus(request *DescribeDataRepositoryTaskStatusRequest) (response *DescribeDataRepositoryTaskStatusResponse, err error) {
+    return c.DescribeDataRepositoryTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeDataRepositoryTaskStatus
+// 获取数据流通任务实时状态，用作客户端控制
+func (c *Client) DescribeDataRepositoryTaskStatusWithContext(ctx context.Context, request *DescribeDataRepositoryTaskStatusRequest) (response *DescribeDataRepositoryTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataRepositoryTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataRepositoryTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataRepositoryTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
