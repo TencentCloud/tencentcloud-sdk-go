@@ -20,6 +20,16 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Admin struct {
+	// 超管名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 超管手机号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+}
+
 type Agent struct {
 
 }
@@ -1092,7 +1102,7 @@ type CreateFlowRemindsRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 需要执行撤回的签署流程id数组，最多100个
+	// 需要执行催办的签署流程id数组，最多100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 }
 
@@ -1102,7 +1112,7 @@ type CreateFlowRemindsRequest struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 需要执行撤回的签署流程id数组，最多100个
+	// 需要执行催办的签署流程id数组，最多100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 }
 
@@ -2288,6 +2298,9 @@ type DescribeFlowInfoRequestParams struct {
 
 	// 调用方用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DescribeFlowInfoRequest struct {
@@ -2298,6 +2311,9 @@ type DescribeFlowInfoRequest struct {
 
 	// 调用方用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DescribeFlowInfoRequest) ToJsonString() string {
@@ -2314,6 +2330,7 @@ func (r *DescribeFlowInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FlowIds")
 	delete(f, "Operator")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowInfoRequest has unknown keys!", "")
 	}
@@ -2564,6 +2581,180 @@ func (r *DescribeIntegrationEmployeesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIntegrationEmployeesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationMainOrganizationUserRequestParams struct {
+	// 操作人信息，userId必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type DescribeIntegrationMainOrganizationUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息，userId必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *DescribeIntegrationMainOrganizationUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationMainOrganizationUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationMainOrganizationUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationMainOrganizationUserResponseParams struct {
+	// 主企业员工账号信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntegrationMainOrganizationUser *IntegrationMainOrganizationUser `json:"IntegrationMainOrganizationUser,omitempty" name:"IntegrationMainOrganizationUser"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationMainOrganizationUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationMainOrganizationUserResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationMainOrganizationUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationMainOrganizationUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationGroupOrganizationsRequestParams struct {
+	// 操作人信息，userId必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 单次查询成员企业最大返回数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页面偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询成员企业的企业名，模糊匹配
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否到处当前成员企业数据
+	Export *bool `json:"Export,omitempty" name:"Export"`
+
+	// 成员企业id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type DescribeOrganizationGroupOrganizationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息，userId必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 单次查询成员企业最大返回数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页面偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询成员企业的企业名，模糊匹配
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否到处当前成员企业数据
+	Export *bool `json:"Export,omitempty" name:"Export"`
+
+	// 成员企业id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeOrganizationGroupOrganizationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationGroupOrganizationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Name")
+	delete(f, "Status")
+	delete(f, "Export")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationGroupOrganizationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationGroupOrganizationsResponseParams struct {
+	// 查询到的符合条件的成员企业总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 已授权待激活的企业数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinedTotal *uint64 `json:"JoinedTotal,omitempty" name:"JoinedTotal"`
+
+	// 已加入的企业数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivedTotal *uint64 `json:"ActivedTotal,omitempty" name:"ActivedTotal"`
+
+	// 导出文件的url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExportUrl *string `json:"ExportUrl,omitempty" name:"ExportUrl"`
+
+	// 成员企业信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*GroupOrganization `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationGroupOrganizationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationGroupOrganizationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationGroupOrganizationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationGroupOrganizationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3102,6 +3293,70 @@ func (r *GetTaskResultApiResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetTaskResultApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type GroupOrganization struct {
+	// 成员企业名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 成员企业别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 成员企业id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 成员企业状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否为集团主企业
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsMainOrganization *bool `json:"IsMainOrganization,omitempty" name:"IsMainOrganization"`
+
+	// 企业社会信用代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+
+	// 企业超管信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminInfo *Admin `json:"AdminInfo,omitempty" name:"AdminInfo"`
+
+	// 企业许可证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	License *string `json:"License,omitempty" name:"License"`
+
+	// 企业许可证过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseExpireTime *uint64 `json:"LicenseExpireTime,omitempty" name:"LicenseExpireTime"`
+
+	// 成员企业加入集团时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinTime *uint64 `json:"JoinTime,omitempty" name:"JoinTime"`
+
+	// 是否可以使用审批流引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowEngineEnable *bool `json:"FlowEngineEnable,omitempty" name:"FlowEngineEnable"`
+}
+
+type IntegrationMainOrganizationUser struct {
+	// 主企业id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainOrganizationId *string `json:"MainOrganizationId,omitempty" name:"MainOrganizationId"`
+
+	// 主企业员工UserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainUserId *string `json:"MainUserId,omitempty" name:"MainUserId"`
+
+	// 主企业员工名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
 }
 
 type OccupiedSeal struct {

@@ -1339,6 +1339,161 @@ func (r *CreateImportTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateNotebookSessionRequestParams struct {
+	// Session名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 类型，当前支持：spark、pyspark、sparkr、sql
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// DLC Spark作业引擎名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// session文件地址，当前支持：cosn://和lakefs://两种路径
+	ProgramDependentFiles []*string `json:"ProgramDependentFiles,omitempty" name:"ProgramDependentFiles"`
+
+	// 依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
+	ProgramDependentJars []*string `json:"ProgramDependentJars,omitempty" name:"ProgramDependentJars"`
+
+	// 依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
+	ProgramDependentPython []*string `json:"ProgramDependentPython,omitempty" name:"ProgramDependentPython"`
+
+	// 依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
+	ProgramArchives []*string `json:"ProgramArchives,omitempty" name:"ProgramArchives"`
+
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	DriverSize *string `json:"DriverSize,omitempty" name:"DriverSize"`
+
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	ExecutorSize *string `json:"ExecutorSize,omitempty" name:"ExecutorSize"`
+
+	// 指定的Executor数量，默认为1
+	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitempty" name:"ExecutorNumbers"`
+
+	// Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
+
+	// 代理用户，默认为root
+	ProxyUser *string `json:"ProxyUser,omitempty" name:"ProxyUser"`
+
+	// 指定的Session超时时间，单位秒，默认3600秒
+	TimeoutInSecond *int64 `json:"TimeoutInSecond,omitempty" name:"TimeoutInSecond"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+}
+
+type CreateNotebookSessionRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 类型，当前支持：spark、pyspark、sparkr、sql
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// DLC Spark作业引擎名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// session文件地址，当前支持：cosn://和lakefs://两种路径
+	ProgramDependentFiles []*string `json:"ProgramDependentFiles,omitempty" name:"ProgramDependentFiles"`
+
+	// 依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
+	ProgramDependentJars []*string `json:"ProgramDependentJars,omitempty" name:"ProgramDependentJars"`
+
+	// 依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
+	ProgramDependentPython []*string `json:"ProgramDependentPython,omitempty" name:"ProgramDependentPython"`
+
+	// 依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
+	ProgramArchives []*string `json:"ProgramArchives,omitempty" name:"ProgramArchives"`
+
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	DriverSize *string `json:"DriverSize,omitempty" name:"DriverSize"`
+
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	ExecutorSize *string `json:"ExecutorSize,omitempty" name:"ExecutorSize"`
+
+	// 指定的Executor数量，默认为1
+	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitempty" name:"ExecutorNumbers"`
+
+	// Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
+
+	// 代理用户，默认为root
+	ProxyUser *string `json:"ProxyUser,omitempty" name:"ProxyUser"`
+
+	// 指定的Session超时时间，单位秒，默认3600秒
+	TimeoutInSecond *int64 `json:"TimeoutInSecond,omitempty" name:"TimeoutInSecond"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+}
+
+func (r *CreateNotebookSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Kind")
+	delete(f, "DataEngineName")
+	delete(f, "ProgramDependentFiles")
+	delete(f, "ProgramDependentJars")
+	delete(f, "ProgramDependentPython")
+	delete(f, "ProgramArchives")
+	delete(f, "DriverSize")
+	delete(f, "ExecutorSize")
+	delete(f, "ExecutorNumbers")
+	delete(f, "Arguments")
+	delete(f, "ProxyUser")
+	delete(f, "TimeoutInSecond")
+	delete(f, "ExecutorMaxNumbers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNotebookSessionResponseParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// Spark任务返回的AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkAppId *string `json:"SparkAppId,omitempty" name:"SparkAppId"`
+
+	// Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateNotebookSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNotebookSessionResponseParams `json:"Response"`
+}
+
+func (r *CreateNotebookSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateResultDownloadRequestParams struct {
 	// 查询结果任务Id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -3478,6 +3633,63 @@ func (r *DescribeDatabasesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+type DescribeNotebookSessionRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *DescribeNotebookSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionResponseParams struct {
+	// Session详情信息
+	Session *NotebookSessionInfo `json:"Session,omitempty" name:"Session"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookSessionResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5648,6 +5860,82 @@ func (r *ModifyWorkGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NotebookSessionInfo struct {
+	// Session名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 类型，当前支持：spark、pyspark、sparkr、sql
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// DLC Spark作业引擎名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// Session相关配置，当前支持：eni、roleArn以及用户指定的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
+
+	// 运行程序地址，当前支持：cosn://和lakefs://两种路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramDependentFiles []*string `json:"ProgramDependentFiles,omitempty" name:"ProgramDependentFiles"`
+
+	// 依赖的jar程序地址，当前支持：cosn://和lakefs://两种路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramDependentJars []*string `json:"ProgramDependentJars,omitempty" name:"ProgramDependentJars"`
+
+	// 依赖的python程序地址，当前支持：cosn://和lakefs://两种路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramDependentPython []*string `json:"ProgramDependentPython,omitempty" name:"ProgramDependentPython"`
+
+	// 依赖的pyspark虚拟环境地址，当前支持：cosn://和lakefs://两种路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgramArchives []*string `json:"ProgramArchives,omitempty" name:"ProgramArchives"`
+
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DriverSize *string `json:"DriverSize,omitempty" name:"DriverSize"`
+
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorSize *string `json:"ExecutorSize,omitempty" name:"ExecutorSize"`
+
+	// 指定的Executor数量，默认为1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitempty" name:"ExecutorNumbers"`
+
+	// 代理用户，默认为root
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyUser *string `json:"ProxyUser,omitempty" name:"ProxyUser"`
+
+	// 指定的Session超时时间，单位秒，默认3600秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeoutInSecond *int64 `json:"TimeoutInSecond,omitempty" name:"TimeoutInSecond"`
+
+	// Spark任务返回的AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkAppId *string `json:"SparkAppId,omitempty" name:"SparkAppId"`
+
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+	State *string `json:"State,omitempty" name:"State"`
+
+	// Session创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 其它信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppInfo []*KVPair `json:"AppInfo,omitempty" name:"AppInfo"`
+
+	// Spark ui地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkUiUrl *string `json:"SparkUiUrl,omitempty" name:"SparkUiUrl"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
 }
 
 type Other struct {

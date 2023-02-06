@@ -2357,6 +2357,7 @@ func NewDescribeFlowInfoResponse() (response *DescribeFlowInfoResponse) {
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *DescribeFlowInfoResponse, err error) {
     return c.DescribeFlowInfoWithContext(context.Background(), request)
 }
@@ -2371,6 +2372,7 @@ func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *D
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeFlowInfoWithContext(ctx context.Context, request *DescribeFlowInfoRequest) (response *DescribeFlowInfoResponse, err error) {
     if request == nil {
         request = NewDescribeFlowInfoRequest()
@@ -2539,6 +2541,110 @@ func (c *Client) DescribeIntegrationEmployeesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeIntegrationEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIntegrationMainOrganizationUserRequest() (request *DescribeIntegrationMainOrganizationUserRequest) {
+    request = &DescribeIntegrationMainOrganizationUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeIntegrationMainOrganizationUser")
+    
+    
+    return
+}
+
+func NewDescribeIntegrationMainOrganizationUserResponse() (response *DescribeIntegrationMainOrganizationUserResponse) {
+    response = &DescribeIntegrationMainOrganizationUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIntegrationMainOrganizationUser
+// 通过子企业影子账号查询主企业员工账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIntegrationMainOrganizationUser(request *DescribeIntegrationMainOrganizationUserRequest) (response *DescribeIntegrationMainOrganizationUserResponse, err error) {
+    return c.DescribeIntegrationMainOrganizationUserWithContext(context.Background(), request)
+}
+
+// DescribeIntegrationMainOrganizationUser
+// 通过子企业影子账号查询主企业员工账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeIntegrationMainOrganizationUserWithContext(ctx context.Context, request *DescribeIntegrationMainOrganizationUserRequest) (response *DescribeIntegrationMainOrganizationUserResponse, err error) {
+    if request == nil {
+        request = NewDescribeIntegrationMainOrganizationUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIntegrationMainOrganizationUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIntegrationMainOrganizationUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOrganizationGroupOrganizationsRequest() (request *DescribeOrganizationGroupOrganizationsRequest) {
+    request = &DescribeOrganizationGroupOrganizationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeOrganizationGroupOrganizations")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationGroupOrganizationsResponse() (response *DescribeOrganizationGroupOrganizationsResponse) {
+    response = &DescribeOrganizationGroupOrganizationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrganizationGroupOrganizations
+// 此API接口用户查询加入集团的成员企业
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeOrganizationGroupOrganizations(request *DescribeOrganizationGroupOrganizationsRequest) (response *DescribeOrganizationGroupOrganizationsResponse, err error) {
+    return c.DescribeOrganizationGroupOrganizationsWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationGroupOrganizations
+// 此API接口用户查询加入集团的成员企业
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeOrganizationGroupOrganizationsWithContext(ctx context.Context, request *DescribeOrganizationGroupOrganizationsRequest) (response *DescribeOrganizationGroupOrganizationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationGroupOrganizationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationGroupOrganizations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationGroupOrganizationsResponse()
     err = c.Send(request, response)
     return
 }

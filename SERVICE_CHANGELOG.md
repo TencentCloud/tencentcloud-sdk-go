@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云直播CSS(live) 版本：2018-08-01
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-### 第 95 次发布
+### 第 36 次发布
 
-发布时间：2023-02-03 01:31:09
+发布时间：2023-02-06 01:36:57
 
 本次发布包含了以下内容：
 
@@ -12,32 +12,83 @@
 
 新增接口：
 
-* [DescribeTimeShiftRecordDetail](https://cloud.tencent.com/document/api/267/86091)
-* [DescribeTimeShiftStreamList](https://cloud.tencent.com/document/api/267/86090)
+* [CreateNotebookSession](https://cloud.tencent.com/document/api/1342/86113)
+* [DescribeNotebookSession](https://cloud.tencent.com/document/api/1342/86112)
 
 新增数据结构：
 
-* [TimeShiftRecord](https://cloud.tencent.com/document/api/267/20474#TimeShiftRecord)
-* [TimeShiftStreamInfo](https://cloud.tencent.com/document/api/267/20474#TimeShiftStreamInfo)
+* [NotebookSessionInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionInfo)
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 91 次发布
+### 第 41 次发布
 
-发布时间：2023-02-03 01:42:20
+发布时间：2023-02-06 01:41:26
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [DescribeIntegrationMainOrganizationUser](https://cloud.tencent.com/document/api/1323/86115)
+* [DescribeOrganizationGroupOrganizations](https://cloud.tencent.com/document/api/1323/86114)
+
 修改接口：
 
-* [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820)
+* [DescribeFlowInfo](https://cloud.tencent.com/document/api/1323/80032)
 
-	* 新增出参：Total
+	* 新增入参：Agent
 
+
+新增数据结构：
+
+* [Admin](https://cloud.tencent.com/document/api/1323/70369#Admin)
+* [GroupOrganization](https://cloud.tencent.com/document/api/1323/70369#GroupOrganization)
+* [IntegrationMainOrganizationUser](https://cloud.tencent.com/document/api/1323/70369#IntegrationMainOrganizationUser)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 137 次发布
+
+发布时间：2023-02-06 02:53:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VpngwCcnRoutes](https://cloud.tencent.com/document/api/215/15824#VpngwCcnRoutes)
+
+	* 新增成员：DestinationCidrBlock
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 23 次发布
+
+发布时间：2023-02-06 02:56:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyAreaBanStatus](https://cloud.tencent.com/document/api/627/86121)
+* [SearchAttackLog](https://cloud.tencent.com/document/api/627/86118)
+* [SwitchDomainRules](https://cloud.tencent.com/document/api/627/86120)
+
+新增数据结构：
+
+* [AttackLogInfo](https://cloud.tencent.com/document/api/627/53609#AttackLogInfo)
 
 
 
@@ -35890,6 +35941,23 @@
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
+### 第 36 次发布
+
+发布时间：2023-02-06 01:36:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateNotebookSession](https://cloud.tencent.com/document/api/1342/86113)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNotebookSession](https://cloud.tencent.com/document/api/1342/86112)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[NotebookSessionInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionInfo)](https://cloud.tencent.com/document/api/1342/53778#[NotebookSessionInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionInfo))
+
 ### 第 35 次发布
 
 发布时间：2023-01-10 01:20:24
@@ -42651,6 +42719,32 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 41 次发布
+
+发布时间：2023-02-06 01:41:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeIntegrationMainOrganizationUser](https://cloud.tencent.com/document/api/1323/86115)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOrganizationGroupOrganizations](https://cloud.tencent.com/document/api/1323/86114)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeFlowInfo](https://cloud.tencent.com/document/api/1323/80032)
+
+	* 新增入参：Agent
+
+
+新增数据结构：
+
+* [[Admin](https://cloud.tencent.com/document/api/1323/70369#Admin)](https://cloud.tencent.com/document/api/1323/70369#[Admin](https://cloud.tencent.com/document/api/1323/70369#Admin))
+* [[GroupOrganization](https://cloud.tencent.com/document/api/1323/70369#GroupOrganization)](https://cloud.tencent.com/document/api/1323/70369#[GroupOrganization](https://cloud.tencent.com/document/api/1323/70369#GroupOrganization))
+* [[IntegrationMainOrganizationUser](https://cloud.tencent.com/document/api/1323/70369#IntegrationMainOrganizationUser)](https://cloud.tencent.com/document/api/1323/70369#[IntegrationMainOrganizationUser](https://cloud.tencent.com/document/api/1323/70369#IntegrationMainOrganizationUser))
 
 ### 第 40 次发布
 
@@ -55918,13 +56012,13 @@
 
 新增接口：
 
-* [[DescribeTimeShiftRecordDetail](https://cloud.tencent.com/document/api/267/86091)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTimeShiftStreamList](https://cloud.tencent.com/document/api/267/86090)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTimeShiftRecordDetail](https://cloud.tencent.com/document/api/267/86091)
+* [DescribeTimeShiftStreamList](https://cloud.tencent.com/document/api/267/86090)
 
 新增数据结构：
 
-* [[TimeShiftRecord](https://cloud.tencent.com/document/api/267/20474#TimeShiftRecord)](https://cloud.tencent.com/document/api/267/20474#[TimeShiftRecord](https://cloud.tencent.com/document/api/267/20474#TimeShiftRecord))
-* [[TimeShiftStreamInfo](https://cloud.tencent.com/document/api/267/20474#TimeShiftStreamInfo)](https://cloud.tencent.com/document/api/267/20474#[TimeShiftStreamInfo](https://cloud.tencent.com/document/api/267/20474#TimeShiftStreamInfo))
+* [TimeShiftRecord](https://cloud.tencent.com/document/api/267/20474#TimeShiftRecord)
+* [TimeShiftStreamInfo](https://cloud.tencent.com/document/api/267/20474#TimeShiftStreamInfo)
 
 ### 第 94 次发布
 
@@ -100226,6 +100320,21 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 137 次发布
+
+发布时间：2023-02-06 02:53:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VpngwCcnRoutes](https://cloud.tencent.com/document/api/215/15824#VpngwCcnRoutes)
+
+	* 新增成员：DestinationCidrBlock
+
+
 ### 第 136 次发布
 
 发布时间：2023-02-01 02:09:35
@@ -103378,6 +103487,24 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 23 次发布
+
+发布时间：2023-02-06 02:56:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyAreaBanStatus](https://cloud.tencent.com/document/api/627/86121)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchAttackLog](https://cloud.tencent.com/document/api/627/86118)](https://cloud.tencent.com/document/api/#/#)
+* [[SwitchDomainRules](https://cloud.tencent.com/document/api/627/86120)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AttackLogInfo](https://cloud.tencent.com/document/api/627/53609#AttackLogInfo)](https://cloud.tencent.com/document/api/627/53609#[AttackLogInfo](https://cloud.tencent.com/document/api/627/53609#AttackLogInfo))
 
 ### 第 22 次发布
 

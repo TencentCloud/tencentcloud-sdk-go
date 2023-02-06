@@ -24668,6 +24668,9 @@ type VpngwCcnRoutes struct {
 	// ENABLE：启用该路由
 	// DISABLE：不启用该路由
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 路由CIDR
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" name:"DestinationCidrBlock"`
 }
 
 // Predefined struct for user

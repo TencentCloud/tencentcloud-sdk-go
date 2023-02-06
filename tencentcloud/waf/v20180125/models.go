@@ -618,6 +618,20 @@ func (r *AddSpartaProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AttackLogInfo struct {
+	// 攻击日志的详情内容
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// CLS返回内容
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// CLS返回内容
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// CLS返回内容
+	TimeStamp *string `json:"TimeStamp,omitempty" name:"TimeStamp"`
+}
+
 type AutoDenyDetail struct {
 	// 攻击封禁类型标签
 	AttackTags []*string `json:"AttackTags,omitempty" name:"AttackTags"`
@@ -3096,6 +3110,67 @@ func (r *ModifyAccessPeriodResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyAreaBanStatusRequestParams struct {
+	// 修要修改的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 状态值，0表示关闭，1表示开启
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+type ModifyAreaBanStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 修要修改的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 状态值，0表示关闭，1表示开启
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyAreaBanStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAreaBanStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAreaBanStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAreaBanStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAreaBanStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAreaBanStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyAreaBanStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAreaBanStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyCustomRuleStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -3739,6 +3814,117 @@ func (r *SearchAccessLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchAttackLogRequestParams struct {
+	// 查询的域名，所有域名使用all
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询的游标。第一次请求使用空字符串即可，后续请求使用上一次请求返回的最后一条记录的context的值即可。
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// Lucene语法
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+
+	// 查询的数量，默认10条，最多100条
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 默认为desc，可以取值desc和asc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+}
+
+type SearchAttackLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询的域名，所有域名使用all
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询的游标。第一次请求使用空字符串即可，后续请求使用上一次请求返回的最后一条记录的context的值即可。
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// Lucene语法
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+
+	// 查询的数量，默认10条，最多100条
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 默认为desc，可以取值desc和asc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *SearchAttackLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchAttackLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Context")
+	delete(f, "QueryString")
+	delete(f, "Count")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchAttackLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchAttackLogResponseParams struct {
+	// 当前返回的攻击日志条数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 翻页游标，如果没有下一页了，这个参数为空""
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 攻击日志数组条目内容
+	Data []*AttackLogInfo `json:"Data,omitempty" name:"Data"`
+
+	// CLS接口返回内容
+	ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+
+	// CLS接口返回内容，标志是否启动新版本索引
+	SqlFlag *bool `json:"SqlFlag,omitempty" name:"SqlFlag"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchAttackLogResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchAttackLogResponseParams `json:"Response"`
+}
+
+func (r *SearchAttackLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchAttackLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Strategy struct {
 	// 匹配字段
 	Field *string `json:"Field,omitempty" name:"Field"`
@@ -3751,6 +3937,81 @@ type Strategy struct {
 
 	// 匹配参数
 	Arg *string `json:"Arg,omitempty" name:"Arg"`
+}
+
+// Predefined struct for user
+type SwitchDomainRulesRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 规则列表
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+
+	// 开关状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 设置为观察模式原因
+	Reason *uint64 `json:"Reason,omitempty" name:"Reason"`
+}
+
+type SwitchDomainRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 规则列表
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+
+	// 开关状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 设置为观察模式原因
+	Reason *uint64 `json:"Reason,omitempty" name:"Reason"`
+}
+
+func (r *SwitchDomainRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchDomainRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Ids")
+	delete(f, "Status")
+	delete(f, "Reason")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDomainRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchDomainRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SwitchDomainRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchDomainRulesResponseParams `json:"Response"`
+}
+
+func (r *SwitchDomainRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchDomainRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -1819,6 +1819,92 @@ func (c *Client) ModifyAccessPeriodWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyAreaBanStatusRequest() (request *ModifyAreaBanStatusRequest) {
+    request = &ModifyAreaBanStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyAreaBanStatus")
+    
+    
+    return
+}
+
+func NewModifyAreaBanStatusResponse() (response *ModifyAreaBanStatusResponse) {
+    response = &ModifyAreaBanStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAreaBanStatus
+// 修改防护域名的地域封禁状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAreaBanStatus(request *ModifyAreaBanStatusRequest) (response *ModifyAreaBanStatusResponse, err error) {
+    return c.ModifyAreaBanStatusWithContext(context.Background(), request)
+}
+
+// ModifyAreaBanStatus
+// 修改防护域名的地域封禁状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAreaBanStatusWithContext(ctx context.Context, request *ModifyAreaBanStatusRequest) (response *ModifyAreaBanStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAreaBanStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAreaBanStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAreaBanStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomRuleStatusRequest() (request *ModifyCustomRuleStatusRequest) {
     request = &ModifyCustomRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2199,6 +2285,106 @@ func (c *Client) SearchAccessLogWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchAccessLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchAttackLogRequest() (request *SearchAttackLogRequest) {
+    request = &SearchAttackLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "SearchAttackLog")
+    
+    
+    return
+}
+
+func NewSearchAttackLogResponse() (response *SearchAttackLogResponse) {
+    response = &SearchAttackLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchAttackLog
+// 新版本CLS接口存在参数变化，query改成了query_string支持lucence语法接口搜索查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+func (c *Client) SearchAttackLog(request *SearchAttackLogRequest) (response *SearchAttackLogResponse, err error) {
+    return c.SearchAttackLogWithContext(context.Background(), request)
+}
+
+// SearchAttackLog
+// 新版本CLS接口存在参数变化，query改成了query_string支持lucence语法接口搜索查询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+func (c *Client) SearchAttackLogWithContext(ctx context.Context, request *SearchAttackLogRequest) (response *SearchAttackLogResponse, err error) {
+    if request == nil {
+        request = NewSearchAttackLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchAttackLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchAttackLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchDomainRulesRequest() (request *SwitchDomainRulesRequest) {
+    request = &SwitchDomainRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "SwitchDomainRules")
+    
+    
+    return
+}
+
+func NewSwitchDomainRulesResponse() (response *SwitchDomainRulesResponse) {
+    response = &SwitchDomainRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchDomainRules
+// 切换域名的规则开关
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SwitchDomainRules(request *SwitchDomainRulesRequest) (response *SwitchDomainRulesResponse, err error) {
+    return c.SwitchDomainRulesWithContext(context.Background(), request)
+}
+
+// SwitchDomainRules
+// 切换域名的规则开关
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SwitchDomainRulesWithContext(ctx context.Context, request *SwitchDomainRulesRequest) (response *SwitchDomainRulesResponse, err error) {
+    if request == nil {
+        request = NewSwitchDomainRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchDomainRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchDomainRulesResponse()
     err = c.Send(request, response)
     return
 }

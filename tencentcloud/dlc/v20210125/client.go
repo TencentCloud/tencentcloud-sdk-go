@@ -879,6 +879,62 @@ func (c *Client) CreateImportTaskWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateNotebookSessionRequest() (request *CreateNotebookSessionRequest) {
+    request = &CreateNotebookSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateNotebookSession")
+    
+    
+    return
+}
+
+func NewCreateNotebookSessionResponse() (response *CreateNotebookSessionResponse) {
+    response = &CreateNotebookSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNotebookSession
+// 本接口（CreateNotebookSession）用于创建notebook livy session
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateNotebookSession(request *CreateNotebookSessionRequest) (response *CreateNotebookSessionResponse, err error) {
+    return c.CreateNotebookSessionWithContext(context.Background(), request)
+}
+
+// CreateNotebookSession
+// 本接口（CreateNotebookSession）用于创建notebook livy session
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateNotebookSessionWithContext(ctx context.Context, request *CreateNotebookSessionRequest) (response *CreateNotebookSessionResponse, err error) {
+    if request == nil {
+        request = NewCreateNotebookSessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotebookSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNotebookSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateResultDownloadRequest() (request *CreateResultDownloadRequest) {
     request = &CreateResultDownloadRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2065,6 +2121,66 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeNotebookSessionRequest() (request *DescribeNotebookSessionRequest) {
+    request = &DescribeNotebookSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeNotebookSession")
+    
+    
+    return
+}
+
+func NewDescribeNotebookSessionResponse() (response *DescribeNotebookSessionResponse) {
+    response = &DescribeNotebookSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebookSession
+// 本接口（DescribeNotebookSession）用于获取notebook livy session详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DescribeNotebookSession(request *DescribeNotebookSessionRequest) (response *DescribeNotebookSessionResponse, err error) {
+    return c.DescribeNotebookSessionWithContext(context.Background(), request)
+}
+
+// DescribeNotebookSession
+// 本接口（DescribeNotebookSession）用于获取notebook livy session详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DescribeNotebookSessionWithContext(ctx context.Context, request *DescribeNotebookSessionRequest) (response *DescribeNotebookSessionResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookSessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResultDownloadRequest() (request *DescribeResultDownloadRequest) {
     request = &DescribeResultDownloadRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2090,8 +2206,10 @@ func NewDescribeResultDownloadResponse() (response *DescribeResultDownloadRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
 func (c *Client) DescribeResultDownload(request *DescribeResultDownloadRequest) (response *DescribeResultDownloadResponse, err error) {
     return c.DescribeResultDownloadWithContext(context.Background(), request)
 }
@@ -2103,8 +2221,10 @@ func (c *Client) DescribeResultDownload(request *DescribeResultDownloadRequest) 
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
 func (c *Client) DescribeResultDownloadWithContext(ctx context.Context, request *DescribeResultDownloadRequest) (response *DescribeResultDownloadResponse, err error) {
     if request == nil {
         request = NewDescribeResultDownloadRequest()

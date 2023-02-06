@@ -1,3 +1,97 @@
+# Release v1.0.588
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 36 次发布
+
+发布时间：2023-02-06 01:36:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateNotebookSession](https://cloud.tencent.com/document/api/1342/86113)
+* [DescribeNotebookSession](https://cloud.tencent.com/document/api/1342/86112)
+
+新增数据结构：
+
+* [NotebookSessionInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionInfo)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 41 次发布
+
+发布时间：2023-02-06 01:41:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeIntegrationMainOrganizationUser](https://cloud.tencent.com/document/api/1323/86115)
+* [DescribeOrganizationGroupOrganizations](https://cloud.tencent.com/document/api/1323/86114)
+
+修改接口：
+
+* [DescribeFlowInfo](https://cloud.tencent.com/document/api/1323/80032)
+
+	* 新增入参：Agent
+
+
+新增数据结构：
+
+* [Admin](https://cloud.tencent.com/document/api/1323/70369#Admin)
+* [GroupOrganization](https://cloud.tencent.com/document/api/1323/70369#GroupOrganization)
+* [IntegrationMainOrganizationUser](https://cloud.tencent.com/document/api/1323/70369#IntegrationMainOrganizationUser)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 137 次发布
+
+发布时间：2023-02-06 02:53:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VpngwCcnRoutes](https://cloud.tencent.com/document/api/215/15824#VpngwCcnRoutes)
+
+	* 新增成员：DestinationCidrBlock
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 23 次发布
+
+发布时间：2023-02-06 02:56:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyAreaBanStatus](https://cloud.tencent.com/document/api/627/86121)
+* [SearchAttackLog](https://cloud.tencent.com/document/api/627/86118)
+* [SwitchDomainRules](https://cloud.tencent.com/document/api/627/86120)
+
+新增数据结构：
+
+* [AttackLogInfo](https://cloud.tencent.com/document/api/627/53609#AttackLogInfo)
+
+
+
 # Release v1.0.587
 
 ## 云直播CSS(live) 版本：2018-08-01
