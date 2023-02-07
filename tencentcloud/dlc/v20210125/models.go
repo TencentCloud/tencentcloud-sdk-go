@@ -1709,6 +1709,15 @@ type CreateSparkAppRequestParams struct {
 
 	// archives：依赖资源
 	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
+
+	// Spark Image 版本
+	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
+
+	// Spark Image 版本名称
+	SparkImageVersion *string `json:"SparkImageVersion,omitempty" name:"SparkImageVersion"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
+	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
 }
 
 type CreateSparkAppRequest struct {
@@ -1782,6 +1791,15 @@ type CreateSparkAppRequest struct {
 
 	// archives：依赖资源
 	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
+
+	// Spark Image 版本
+	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
+
+	// Spark Image 版本名称
+	SparkImageVersion *string `json:"SparkImageVersion,omitempty" name:"SparkImageVersion"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
+	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
 }
 
 func (r *CreateSparkAppRequest) ToJsonString() string {
@@ -1819,6 +1837,9 @@ func (r *CreateSparkAppRequest) FromJsonString(s string) error {
 	delete(f, "AppPythonFiles")
 	delete(f, "IsLocalArchives")
 	delete(f, "AppArchives")
+	delete(f, "SparkImage")
+	delete(f, "SparkImageVersion")
+	delete(f, "AppExecutorMaxNumbers")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppRequest has unknown keys!", "")
 	}
@@ -1827,6 +1848,10 @@ func (r *CreateSparkAppRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSparkAppResponseParams struct {
+	// App唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkAppId *string `json:"SparkAppId,omitempty" name:"SparkAppId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -5526,6 +5551,57 @@ func (r *LockMetaDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyGovernEventRuleRequestParams struct {
+
+}
+
+type ModifyGovernEventRuleRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyGovernEventRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGovernEventRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGovernEventRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGovernEventRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyGovernEventRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGovernEventRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyGovernEventRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGovernEventRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySparkAppRequestParams struct {
 	// spark应用名
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -5598,6 +5674,15 @@ type ModifySparkAppRequestParams struct {
 
 	// archives：依赖资源
 	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
+
+	// Spark Image 版本
+	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
+
+	// Spark Image 版本名称
+	SparkImageVersion *string `json:"SparkImageVersion,omitempty" name:"SparkImageVersion"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
+	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
 }
 
 type ModifySparkAppRequest struct {
@@ -5674,6 +5759,15 @@ type ModifySparkAppRequest struct {
 
 	// archives：依赖资源
 	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
+
+	// Spark Image 版本
+	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
+
+	// Spark Image 版本名称
+	SparkImageVersion *string `json:"SparkImageVersion,omitempty" name:"SparkImageVersion"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
+	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
 }
 
 func (r *ModifySparkAppRequest) ToJsonString() string {
@@ -5712,6 +5806,9 @@ func (r *ModifySparkAppRequest) FromJsonString(s string) error {
 	delete(f, "DataSource")
 	delete(f, "IsLocalArchives")
 	delete(f, "AppArchives")
+	delete(f, "SparkImage")
+	delete(f, "SparkImageVersion")
+	delete(f, "AppExecutorMaxNumbers")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySparkAppRequest has unknown keys!", "")
 	}
@@ -6234,6 +6331,10 @@ type SparkJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobArchives *string `json:"JobArchives,omitempty" name:"JobArchives"`
 
+	// Spark Image 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
+
 	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobPythonFiles *string `json:"JobPythonFiles,omitempty" name:"JobPythonFiles"`
@@ -6245,6 +6346,10 @@ type SparkJobInfo struct {
 	// 引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineStatus *int64 `json:"DataEngineStatus,omitempty" name:"DataEngineStatus"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobExecutorMaxNumbers *int64 `json:"JobExecutorMaxNumbers,omitempty" name:"JobExecutorMaxNumbers"`
 }
 
 type StreamingStatistics struct {

@@ -65,12 +65,18 @@ func NewDescribeFraudBaseResponse() (response *DescribeFraudBaseResponse) {
 
 // DescribeFraudBase
 // 查询设备风险
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudBase(request *DescribeFraudBaseRequest) (response *DescribeFraudBaseResponse, err error) {
     return c.DescribeFraudBaseWithContext(context.Background(), request)
 }
 
 // DescribeFraudBase
 // 查询设备风险
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudBaseWithContext(ctx context.Context, request *DescribeFraudBaseRequest) (response *DescribeFraudBaseResponse, err error) {
     if request == nil {
         request = NewDescribeFraudBaseRequest()
@@ -107,12 +113,18 @@ func NewDescribeFraudPremiumResponse() (response *DescribeFraudPremiumResponse) 
 
 // DescribeFraudPremium
 // 查询设备标识及风险
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudPremium(request *DescribeFraudPremiumRequest) (response *DescribeFraudPremiumResponse, err error) {
     return c.DescribeFraudPremiumWithContext(context.Background(), request)
 }
 
 // DescribeFraudPremium
 // 查询设备标识及风险
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudPremiumWithContext(ctx context.Context, request *DescribeFraudPremiumRequest) (response *DescribeFraudPremiumResponse, err error) {
     if request == nil {
         request = NewDescribeFraudPremiumRequest()
@@ -149,12 +161,18 @@ func NewDescribeFraudUltimateResponse() (response *DescribeFraudUltimateResponse
 
 // DescribeFraudUltimate
 // 查询设备标识及风险（旗舰版）
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudUltimate(request *DescribeFraudUltimateRequest) (response *DescribeFraudUltimateResponse, err error) {
     return c.DescribeFraudUltimateWithContext(context.Background(), request)
 }
 
 // DescribeFraudUltimate
 // 查询设备标识及风险（旗舰版）
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudUltimateWithContext(ctx context.Context, request *DescribeFraudUltimateRequest) (response *DescribeFraudUltimateResponse, err error) {
     if request == nil {
         request = NewDescribeFraudUltimateRequest()

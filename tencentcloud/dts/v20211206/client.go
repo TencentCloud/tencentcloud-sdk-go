@@ -181,6 +181,7 @@ func NewConfigureSyncJobResponse() (response *ConfigureSyncJobResponse) {
 // 配置一个同步任务
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ConfigureSyncJob(request *ConfigureSyncJobRequest) (response *ConfigureSyncJobResponse, err error) {
     return c.ConfigureSyncJobWithContext(context.Background(), request)
@@ -190,6 +191,7 @@ func (c *Client) ConfigureSyncJob(request *ConfigureSyncJobRequest) (response *C
 // 配置一个同步任务
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ConfigureSyncJobWithContext(ctx context.Context, request *ConfigureSyncJobRequest) (response *ConfigureSyncJobResponse, err error) {
     if request == nil {

@@ -1081,11 +1081,7 @@ func NewBindOpenBankExternalSubMerchantBankAccountResponse() (response *BindOpen
 // 云企付-子商户银行卡绑定
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
-//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER_ = "MissingParameter."
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) BindOpenBankExternalSubMerchantBankAccount(request *BindOpenBankExternalSubMerchantBankAccountRequest) (response *BindOpenBankExternalSubMerchantBankAccountResponse, err error) {
     return c.BindOpenBankExternalSubMerchantBankAccountWithContext(context.Background(), request)
 }
@@ -1094,11 +1090,7 @@ func (c *Client) BindOpenBankExternalSubMerchantBankAccount(request *BindOpenBan
 // 云企付-子商户银行卡绑定
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
-//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER_ = "MissingParameter."
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) BindOpenBankExternalSubMerchantBankAccountWithContext(ctx context.Context, request *BindOpenBankExternalSubMerchantBankAccountRequest) (response *BindOpenBankExternalSubMerchantBankAccountResponse, err error) {
     if request == nil {
         request = NewBindOpenBankExternalSubMerchantBankAccountRequest()

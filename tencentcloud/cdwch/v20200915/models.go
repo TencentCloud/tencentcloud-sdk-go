@@ -129,6 +129,27 @@ type CkUserAlterInfo struct {
 	Describe *string `json:"Describe,omitempty" name:"Describe"`
 }
 
+type ClusterConfigsInfoFromEMR struct {
+	// 配置文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 配置文件对应的相关属性信息
+	FileConf *string `json:"FileConf,omitempty" name:"FileConf"`
+
+	// 配置文件对应的其他属性信息
+	KeyConf *string `json:"KeyConf,omitempty" name:"KeyConf"`
+
+	// 配置文件的内容，base64编码
+	OriParam *string `json:"OriParam,omitempty" name:"OriParam"`
+
+	// 用于表示当前配置文件是不是有过修改后没有重启，提醒用户需要重启
+	NeedRestart *int64 `json:"NeedRestart,omitempty" name:"NeedRestart"`
+
+	// 保存配置文件的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+}
+
 type ConfigSubmitContext struct {
 	// 配置文件名称
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
@@ -376,6 +397,78 @@ func (r *CreateInstanceNewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackUpScheduleRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeBackUpScheduleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeBackUpScheduleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackUpScheduleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackUpScheduleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackUpScheduleResponseParams struct {
+	// 备份是否开启
+	BackUpOpened *bool `json:"BackUpOpened,omitempty" name:"BackUpOpened"`
+
+	// 元数据备份策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaStrategy *ScheduleStrategy `json:"MetaStrategy,omitempty" name:"MetaStrategy"`
+
+	// 表数据备份策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataStrategy *ScheduleStrategy `json:"DataStrategy,omitempty" name:"DataStrategy"`
+
+	// 备份表列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackUpContents []*BackupTableContent `json:"BackUpContents,omitempty" name:"BackUpContents"`
+
+	// 备份的状态
+	BackUpStatus *int64 `json:"BackUpStatus,omitempty" name:"BackUpStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackUpScheduleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackUpScheduleResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackUpScheduleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackUpScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCkSqlApisRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -473,6 +566,139 @@ func (r *DescribeCkSqlApisResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCkSqlApisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterConfigsRequestParams struct {
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeClusterConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeClusterConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterConfigsResponseParams struct {
+	// 返回实例的配置文件相关的信息
+	ClusterConfList []*ClusterConfigsInfoFromEMR `json:"ClusterConfList,omitempty" name:"ClusterConfList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceKeyValConfigsRequestParams struct {
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 搜索的配置项名称
+	SearchConfigName *string `json:"SearchConfigName,omitempty" name:"SearchConfigName"`
+}
+
+type DescribeInstanceKeyValConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 搜索的配置项名称
+	SearchConfigName *string `json:"SearchConfigName,omitempty" name:"SearchConfigName"`
+}
+
+func (r *DescribeInstanceKeyValConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceKeyValConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SearchConfigName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceKeyValConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceKeyValConfigsResponseParams struct {
+	// 参数列表
+	ConfigItems []*InstanceConfigInfo `json:"ConfigItems,omitempty" name:"ConfigItems"`
+
+	// 未配置的参数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnConfigItems []*InstanceConfigInfo `json:"UnConfigItems,omitempty" name:"UnConfigItems"`
+
+	// 配置的多层级参数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MapConfigItems []*MapConfigItem `json:"MapConfigItems,omitempty" name:"MapConfigItems"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceKeyValConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceKeyValConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceKeyValConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceKeyValConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -686,6 +912,49 @@ type DiskSpec struct {
 	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
 }
 
+type InstanceConfigInfo struct {
+	// 配置项名称
+	ConfKey *string `json:"ConfKey,omitempty" name:"ConfKey"`
+
+	// 配置项内容
+	ConfValue *string `json:"ConfValue,omitempty" name:"ConfValue"`
+
+	// 默认值
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 是否需要重启
+	NeedRestart *bool `json:"NeedRestart,omitempty" name:"NeedRestart"`
+
+	// 是否可编辑
+	Editable *bool `json:"Editable,omitempty" name:"Editable"`
+
+	// 配置项解释
+	ConfDesc *string `json:"ConfDesc,omitempty" name:"ConfDesc"`
+
+	// 文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 规则名称类型
+	ModifyRuleType *string `json:"ModifyRuleType,omitempty" name:"ModifyRuleType"`
+
+	// 规则名称内容
+	ModifyRuleValue *string `json:"ModifyRuleValue,omitempty" name:"ModifyRuleValue"`
+
+	// 修改人的uin
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type InstanceConfigItem struct {
+	// key
+	ConfKey *string `json:"ConfKey,omitempty" name:"ConfKey"`
+
+	// value
+	ConfValue *string `json:"ConfValue,omitempty" name:"ConfValue"`
+}
+
 type InstanceInfo struct {
 	// 集群实例ID, "cdw-xxxx" 字符串类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -811,6 +1080,14 @@ type InstanceInfo struct {
 	CosMoveFactor *int64 `json:"CosMoveFactor,omitempty" name:"CosMoveFactor"`
 }
 
+type MapConfigItem struct {
+	// key
+	ConfKey *string `json:"ConfKey,omitempty" name:"ConfKey"`
+
+	// 列表
+	Items []*InstanceConfigInfo `json:"Items,omitempty" name:"Items"`
+}
+
 // Predefined struct for user
 type ModifyClusterConfigsRequestParams struct {
 	// 集群ID，例如cdwch-xxxx
@@ -882,6 +1159,102 @@ func (r *ModifyClusterConfigsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyClusterConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceKeyValConfigsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 新增配置列表
+	AddItems []*InstanceConfigItem `json:"AddItems,omitempty" name:"AddItems"`
+
+	// 更新配置列表
+	UpdateItems []*InstanceConfigItem `json:"UpdateItems,omitempty" name:"UpdateItems"`
+
+	// 删除配置列表
+	DeleteItems *InstanceConfigItem `json:"DeleteItems,omitempty" name:"DeleteItems"`
+
+	// 删除配置列表
+	DelItems []*InstanceConfigItem `json:"DelItems,omitempty" name:"DelItems"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type ModifyInstanceKeyValConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 新增配置列表
+	AddItems []*InstanceConfigItem `json:"AddItems,omitempty" name:"AddItems"`
+
+	// 更新配置列表
+	UpdateItems []*InstanceConfigItem `json:"UpdateItems,omitempty" name:"UpdateItems"`
+
+	// 删除配置列表
+	DeleteItems *InstanceConfigItem `json:"DeleteItems,omitempty" name:"DeleteItems"`
+
+	// 删除配置列表
+	DelItems []*InstanceConfigItem `json:"DelItems,omitempty" name:"DelItems"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyInstanceKeyValConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceKeyValConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AddItems")
+	delete(f, "UpdateItems")
+	delete(f, "DeleteItems")
+	delete(f, "DelItems")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceKeyValConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceKeyValConfigsResponseParams struct {
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// ID
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceKeyValConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceKeyValConfigsResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceKeyValConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceKeyValConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1038,6 +1411,86 @@ func (r *OpenBackUpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResizeDiskRequestParams struct {
+	// 实例唯一ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 磁盘扩容后容量，不能小于原有用量。clickhouse最小200，且为100的整数倍。 zk最小100，且为10的整数倍；
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
+type ResizeDiskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例唯一ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 磁盘扩容后容量，不能小于原有用量。clickhouse最小200，且为100的整数倍。 zk最小100，且为10的整数倍；
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
+func (r *ResizeDiskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDiskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "DiskSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeDiskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeDiskResponseParams struct {
+	// 流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ResizeDiskResponse struct {
+	*tchttp.BaseResponse
+	Response *ResizeDiskResponseParams `json:"Response"`
+}
+
+func (r *ResizeDiskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeDiskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResourceSpec struct {
 	// 规格名称，例如“SCH1"
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -1075,6 +1528,214 @@ type ResourceSpec struct {
 	// 库存数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceQuota *int64 `json:"InstanceQuota,omitempty" name:"InstanceQuota"`
+}
+
+// Predefined struct for user
+type ScaleOutInstanceRequestParams struct {
+	// 实例唯一ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 调整clickhouse节点数量
+	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// v_cluster分组，	
+	// 新增扩容节点将加入到已选择的v_cluster分组中，提交同步VIP生效.
+	ScaleOutCluster *string `json:"ScaleOutCluster,omitempty" name:"ScaleOutCluster"`
+
+	// 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
+	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitempty" name:"UserSubnetIPNum"`
+
+	// 节点同步ip
+	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitempty" name:"ScaleOutNodeIp"`
+}
+
+type ScaleOutInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例唯一ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 调整clickhouse节点数量
+	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// v_cluster分组，	
+	// 新增扩容节点将加入到已选择的v_cluster分组中，提交同步VIP生效.
+	ScaleOutCluster *string `json:"ScaleOutCluster,omitempty" name:"ScaleOutCluster"`
+
+	// 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
+	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitempty" name:"UserSubnetIPNum"`
+
+	// 节点同步ip
+	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitempty" name:"ScaleOutNodeIp"`
+}
+
+func (r *ScaleOutInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "NodeCount")
+	delete(f, "ScaleOutCluster")
+	delete(f, "UserSubnetIPNum")
+	delete(f, "ScaleOutNodeIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleOutInstanceResponseParams struct {
+	// 流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ScaleOutInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ScaleOutInstanceResponseParams `json:"Response"`
+}
+
+func (r *ScaleOutInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleOutInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleUpInstanceRequestParams struct {
+	// 实例唯一ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// clickhouse节点规格。
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 是否滚动重启，false为不滚动重启，true为滚动重启
+	ScaleUpEnableRolling *bool `json:"ScaleUpEnableRolling,omitempty" name:"ScaleUpEnableRolling"`
+}
+
+type ScaleUpInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例唯一ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// clickhouse节点规格。
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 是否滚动重启，false为不滚动重启，true为滚动重启
+	ScaleUpEnableRolling *bool `json:"ScaleUpEnableRolling,omitempty" name:"ScaleUpEnableRolling"`
+}
+
+func (r *ScaleUpInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleUpInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "SpecName")
+	delete(f, "ScaleUpEnableRolling")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleUpInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleUpInstanceResponseParams struct {
+	// 流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ScaleUpInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ScaleUpInstanceResponseParams `json:"Response"`
+}
+
+func (r *ScaleUpInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleUpInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ScheduleStrategy struct {
+	// 备份桶列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+
+	// 备份保留天数
+	RetainDays *int64 `json:"RetainDays,omitempty" name:"RetainDays"`
+
+	// 备份的天
+	WeekDays *string `json:"WeekDays,omitempty" name:"WeekDays"`
+
+	// 备份小时
+	ExecuteHour *int64 `json:"ExecuteHour,omitempty" name:"ExecuteHour"`
+
+	// 策略id
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 }
 
 type Tag struct {

@@ -802,6 +802,10 @@ type TaskData struct {
 	// 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputInfo *InputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
 }
 
 type TaskFilter struct {

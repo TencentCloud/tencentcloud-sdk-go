@@ -143,6 +143,12 @@ const (
 	// PortMapping规则数量超过限制。
 	INVALIDPARAMETER_TOOMANYPORTMAPPINGRULES = "InvalidParameter.TooManyPortMappingRules"
 
+	// 权限不足或缺少相关角色
+	INVALIDPARAMETER_UNAUTHORIZEDORMISSINGROLE = "InvalidParameter.UnauthorizedOrMissingRole"
+
+	// 自动创建将超过 vpc 限额。
+	INVALIDPARAMETER_VPCOVERQUOTA = "InvalidParameter.VpcOverQuota"
+
 	// APM 没有与当前环境绑定。
 	INVALIDPARAMETERVALUE_APMNOTBIND = "InvalidParameterValue.ApmNotBind"
 

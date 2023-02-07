@@ -2989,12 +2989,7 @@ func NewDescribeClusterNamespaceListResponse() (response *DescribeClusterNamespa
 // 获取集群命名空间列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterNamespaceList(request *DescribeClusterNamespaceListRequest) (response *DescribeClusterNamespaceListResponse, err error) {
     return c.DescribeClusterNamespaceListWithContext(context.Background(), request)
 }
@@ -3003,12 +2998,7 @@ func (c *Client) DescribeClusterNamespaceList(request *DescribeClusterNamespaceL
 // 获取集群命名空间列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterNamespaceListWithContext(ctx context.Context, request *DescribeClusterNamespaceListRequest) (response *DescribeClusterNamespaceListResponse, err error) {
     if request == nil {
         request = NewDescribeClusterNamespaceListRequest()
@@ -3306,6 +3296,7 @@ func NewDescribeDataSourceWithoutInfoResponse() (response *DescribeDataSourceWit
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
 func (c *Client) DescribeDataSourceWithoutInfo(request *DescribeDataSourceWithoutInfoRequest) (response *DescribeDataSourceWithoutInfoResponse, err error) {
     return c.DescribeDataSourceWithoutInfoWithContext(context.Background(), request)
 }
@@ -3317,6 +3308,7 @@ func (c *Client) DescribeDataSourceWithoutInfo(request *DescribeDataSourceWithou
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
 func (c *Client) DescribeDataSourceWithoutInfoWithContext(ctx context.Context, request *DescribeDataSourceWithoutInfoRequest) (response *DescribeDataSourceWithoutInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDataSourceWithoutInfoRequest()
@@ -7250,6 +7242,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     return c.DescribeTaskDetailWithContext(context.Background(), request)
 }
@@ -7261,6 +7254,7 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
 func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeTaskDetailRequest()
@@ -7300,6 +7294,7 @@ func NewDescribeTaskInstanceResponse() (response *DescribeTaskInstanceResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
 func (c *Client) DescribeTaskInstance(request *DescribeTaskInstanceRequest) (response *DescribeTaskInstanceResponse, err error) {
     return c.DescribeTaskInstanceWithContext(context.Background(), request)
 }
@@ -7309,6 +7304,7 @@ func (c *Client) DescribeTaskInstance(request *DescribeTaskInstanceRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
 func (c *Client) DescribeTaskInstanceWithContext(ctx context.Context, request *DescribeTaskInstanceRequest) (response *DescribeTaskInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeTaskInstanceRequest()

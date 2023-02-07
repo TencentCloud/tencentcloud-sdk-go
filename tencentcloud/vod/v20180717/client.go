@@ -1265,6 +1265,64 @@ func (c *Client) CreateReviewTemplateWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateRoundPlayRequest() (request *CreateRoundPlayRequest) {
+    request = &CreateRoundPlayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateRoundPlay")
+    
+    
+    return
+}
+
+func NewCreateRoundPlayResponse() (response *CreateRoundPlayResponse) {
+    response = &CreateRoundPlayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRoundPlay
+// 该接口用于创建轮播播单，数量上限：100。
+//
+// 轮播播单的每个文件可以指定源文件，也可以指定某个转码文件。
+//
+// 指定的文件必须是hls格式，所有的播单文件最好保持相同的码率和分辨率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateRoundPlay(request *CreateRoundPlayRequest) (response *CreateRoundPlayResponse, err error) {
+    return c.CreateRoundPlayWithContext(context.Background(), request)
+}
+
+// CreateRoundPlay
+// 该接口用于创建轮播播单，数量上限：100。
+//
+// 轮播播单的每个文件可以指定源文件，也可以指定某个转码文件。
+//
+// 指定的文件必须是hls格式，所有的播单文件最好保持相同的码率和分辨率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateRoundPlayWithContext(ctx context.Context, request *CreateRoundPlayRequest) (response *CreateRoundPlayResponse, err error) {
+    if request == nil {
+        request = NewCreateRoundPlayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRoundPlay require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRoundPlayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSampleSnapshotTemplateRequest() (request *CreateSampleSnapshotTemplateRequest) {
     request = &CreateSampleSnapshotTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2655,6 +2713,60 @@ func (c *Client) DeleteReviewTemplateWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRoundPlayRequest() (request *DeleteRoundPlayRequest) {
+    request = &DeleteRoundPlayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteRoundPlay")
+    
+    
+    return
+}
+
+func NewDeleteRoundPlayResponse() (response *DeleteRoundPlayResponse) {
+    response = &DeleteRoundPlayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRoundPlay
+// 该接口用于删除轮播播单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRoundPlay(request *DeleteRoundPlayRequest) (response *DeleteRoundPlayResponse, err error) {
+    return c.DeleteRoundPlayWithContext(context.Background(), request)
+}
+
+// DeleteRoundPlay
+// 该接口用于删除轮播播单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRoundPlayWithContext(ctx context.Context, request *DeleteRoundPlayRequest) (response *DeleteRoundPlayResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoundPlayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoundPlay require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoundPlayResponse()
     err = c.Send(request, response)
     return
 }
@@ -5080,12 +5192,6 @@ func NewDescribeReviewTemplatesResponse() (response *DescribeReviewTemplatesResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
-//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeReviewTemplates(request *DescribeReviewTemplatesRequest) (response *DescribeReviewTemplatesResponse, err error) {
     return c.DescribeReviewTemplatesWithContext(context.Background(), request)
 }
@@ -5097,12 +5203,6 @@ func (c *Client) DescribeReviewTemplates(request *DescribeReviewTemplatesRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_ENDTIME = "InvalidParameterValue.EndTime"
-//  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeReviewTemplatesWithContext(ctx context.Context, request *DescribeReviewTemplatesRequest) (response *DescribeReviewTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeReviewTemplatesRequest()
@@ -5115,6 +5215,60 @@ func (c *Client) DescribeReviewTemplatesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeReviewTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRoundPlaysRequest() (request *DescribeRoundPlaysRequest) {
+    request = &DescribeRoundPlaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeRoundPlays")
+    
+    
+    return
+}
+
+func NewDescribeRoundPlaysResponse() (response *DescribeRoundPlaysResponse) {
+    response = &DescribeRoundPlaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRoundPlays
+// 该接口用于获取轮播播单列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRoundPlays(request *DescribeRoundPlaysRequest) (response *DescribeRoundPlaysResponse, err error) {
+    return c.DescribeRoundPlaysWithContext(context.Background(), request)
+}
+
+// DescribeRoundPlays
+// 该接口用于获取轮播播单列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRoundPlaysWithContext(ctx context.Context, request *DescribeRoundPlaysRequest) (response *DescribeRoundPlaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoundPlaysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoundPlays require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoundPlaysResponse()
     err = c.Send(request, response)
     return
 }
@@ -7501,6 +7655,64 @@ func (c *Client) ModifyReviewTemplateWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRoundPlayRequest() (request *ModifyRoundPlayRequest) {
+    request = &ModifyRoundPlayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyRoundPlay")
+    
+    
+    return
+}
+
+func NewModifyRoundPlayResponse() (response *ModifyRoundPlayResponse) {
+    response = &ModifyRoundPlayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRoundPlay
+// 该接口用于修改轮播播单。
+//
+// 修改后只有新的播放请求会生效，已经在播放中的用户在七天之内还可以播放修改前的播单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRoundPlay(request *ModifyRoundPlayRequest) (response *ModifyRoundPlayResponse, err error) {
+    return c.ModifyRoundPlayWithContext(context.Background(), request)
+}
+
+// ModifyRoundPlay
+// 该接口用于修改轮播播单。
+//
+// 修改后只有新的播放请求会生效，已经在播放中的用户在七天之内还可以播放修改前的播单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRoundPlayWithContext(ctx context.Context, request *ModifyRoundPlayRequest) (response *ModifyRoundPlayResponse, err error) {
+    if request == nil {
+        request = NewModifyRoundPlayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRoundPlay require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRoundPlayResponse()
     err = c.Send(request, response)
     return
 }

@@ -1538,6 +1538,10 @@ type DescribeDevicesRequestParams struct {
 
 	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 过滤数组。支持的Name：
+	// BindingStatus 绑定状态
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeDevicesRequest struct {
@@ -1578,6 +1582,10 @@ type DescribeDevicesRequest struct {
 
 	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 过滤数组。支持的Name：
+	// BindingStatus 绑定状态
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {
@@ -1604,6 +1612,7 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "KindSet")
 	delete(f, "DepartmentId")
 	delete(f, "TagFilters")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicesRequest has unknown keys!", "")
 	}
@@ -2059,6 +2068,16 @@ type Device struct {
 	Department *Department `json:"Department,omitempty" name:"Department"`
 }
 
+type Filter struct {
+	// 需要过滤的字段。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段的过滤值。
+	// 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+	// 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
 type Group struct {
 	// 组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -2069,6 +2088,10 @@ type Group struct {
 	// 所属部门信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitempty" name:"Department"`
+
+	// 个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
 // Predefined struct for user

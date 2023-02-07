@@ -4212,6 +4212,96 @@ func (r *CreateReviewTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRoundPlayRequestParams struct {
+	// 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 轮播列表。
+	// <li>数组长度限制：100。</li>
+	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitempty" name:"RoundPlaylist"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 轮播播单名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 轮播播单描述信息，长度限制：256 个字符。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+type CreateRoundPlayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 轮播列表。
+	// <li>数组长度限制：100。</li>
+	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitempty" name:"RoundPlaylist"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 轮播播单名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 轮播播单描述信息，长度限制：256 个字符。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+func (r *CreateRoundPlayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRoundPlayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "RoundPlaylist")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Desc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoundPlayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRoundPlayResponseParams struct {
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitempty" name:"RoundPlayId"`
+
+	// 轮播播放地址。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRoundPlayResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRoundPlayResponseParams `json:"Response"`
+}
+
+func (r *CreateRoundPlayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRoundPlayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSampleSnapshotTemplateRequestParams struct {
 	// 采样截图类型，取值：
 	// <li>Percent：按百分比。</li>
@@ -6079,6 +6169,67 @@ func (r *DeleteReviewTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteReviewTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoundPlayRequestParams struct {
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitempty" name:"RoundPlayId"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+type DeleteRoundPlayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitempty" name:"RoundPlayId"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteRoundPlayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoundPlayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoundPlayId")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRoundPlayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoundPlayResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRoundPlayResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRoundPlayResponseParams `json:"Response"`
+}
+
+func (r *DeleteRoundPlayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoundPlayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9258,6 +9409,87 @@ func (r *DescribeReviewTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeReviewTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoundPlaysRequestParams struct {
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 轮播播单标识过滤条件，数组长度限制：100。
+	RoundPlayIds []*string `json:"RoundPlayIds,omitempty" name:"RoundPlayIds"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRoundPlaysRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 轮播播单标识过滤条件，数组长度限制：100。
+	RoundPlayIds []*string `json:"RoundPlayIds,omitempty" name:"RoundPlayIds"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRoundPlaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoundPlaysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "RoundPlayIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoundPlaysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoundPlaysResponseParams struct {
+	// 符合过滤条件的轮播播单总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 轮播播单详情列表。
+	RoundPlaySet []*RoundPlayInfo `json:"RoundPlaySet,omitempty" name:"RoundPlaySet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRoundPlaysResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRoundPlaysResponseParams `json:"Response"`
+}
+
+func (r *DescribeRoundPlaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoundPlaysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14697,6 +14929,97 @@ func (r *ModifyReviewTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRoundPlayRequestParams struct {
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitempty" name:"RoundPlayId"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 轮播列表。
+	// <li>数组长度限制：100。</li>
+	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitempty" name:"RoundPlaylist"`
+
+	// 轮播播单名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 轮播播单描述信息，长度限制：256 个字符。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+type ModifyRoundPlayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 轮播播单唯一标识。
+	RoundPlayId *string `json:"RoundPlayId,omitempty" name:"RoundPlayId"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 轮播列表。
+	// <li>数组长度限制：100。</li>
+	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitempty" name:"RoundPlaylist"`
+
+	// 轮播播单名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 轮播播单描述信息，长度限制：256 个字符。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+func (r *ModifyRoundPlayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoundPlayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoundPlayId")
+	delete(f, "SubAppId")
+	delete(f, "StartTime")
+	delete(f, "RoundPlaylist")
+	delete(f, "Name")
+	delete(f, "Desc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoundPlayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoundPlayResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRoundPlayResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRoundPlayResponseParams `json:"Response"`
+}
+
+func (r *ModifyRoundPlayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoundPlayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySampleSnapshotTemplateRequestParams struct {
 	// 采样截图模板唯一标识。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
@@ -18416,6 +18739,37 @@ type ReviewTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type RoundPlayInfo struct {
+	// 轮播播单标识。
+	RoundPlayId *string `json:"RoundPlayId,omitempty" name:"RoundPlayId"`
+
+	// 启播时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 轮播列表。
+	RoundPlaylist []*RoundPlayListItemInfo `json:"RoundPlaylist,omitempty" name:"RoundPlaylist"`
+
+	// 轮播播单名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 轮播播单描述信息，长度限制：256 个字符。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
+type RoundPlayListItemInfo struct {
+	// 媒体文件标识。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 播放的音视频类型，可选值：
+	// <li>Transcode：转码输出；转码输出会有多个模版，必须指定 Definition 字段</li>
+	// <li>Original：原始音视频。</li>
+	// Type 对应的格式必须为 HLS 格式。
+	AudioVideoType *string `json:"AudioVideoType,omitempty" name:"AudioVideoType"`
+
+	// 指定播放的转码模版，当 AudioVideoType 为 Transcode 时必须指定。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 }
 
 type SDMCDrmKeyProviderInfo struct {

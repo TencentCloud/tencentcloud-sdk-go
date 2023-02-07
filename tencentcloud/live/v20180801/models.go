@@ -2036,6 +2036,208 @@ func (r *CreateLiveSnapshotTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLiveTimeShiftRuleRequestParams struct {
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 模板 ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type CreateLiveTimeShiftRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 模板 ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *CreateLiveTimeShiftRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveTimeShiftRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveTimeShiftRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveTimeShiftRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateLiveTimeShiftRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveTimeShiftRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveTimeShiftRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveTimeShiftRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveTimeShiftTemplateRequestParams struct {
+	// 模板名称。
+	// 长度上限：255字节。
+	// 仅支持中文、英文、数字、_、-。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 时移时长。
+	// 单位：s。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 描述信息。
+	// 仅支持中文、英文、数字、_、-。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 地域。
+	// Mainland：中国大陆。
+	// Overseas：海外及港澳台地区。
+	// 默认值：Mainland。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 分片时长。
+	// 可取3-10。
+	// 单位：s。
+	// 默认值：5。
+	ItemDuration *uint64 `json:"ItemDuration,omitempty" name:"ItemDuration"`
+
+	// 是否去除水印。
+	// 传true则将录制原始流。
+	// 默认值：false。
+	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
+
+	// 转码流id列表。
+	// 此参数仅在 RemoveWatermark为false时生效。
+	TranscodeTemplateIds []*int64 `json:"TranscodeTemplateIds,omitempty" name:"TranscodeTemplateIds"`
+}
+
+type CreateLiveTimeShiftTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名称。
+	// 长度上限：255字节。
+	// 仅支持中文、英文、数字、_、-。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 时移时长。
+	// 单位：s。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 描述信息。
+	// 仅支持中文、英文、数字、_、-。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 地域。
+	// Mainland：中国大陆。
+	// Overseas：海外及港澳台地区。
+	// 默认值：Mainland。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 分片时长。
+	// 可取3-10。
+	// 单位：s。
+	// 默认值：5。
+	ItemDuration *uint64 `json:"ItemDuration,omitempty" name:"ItemDuration"`
+
+	// 是否去除水印。
+	// 传true则将录制原始流。
+	// 默认值：false。
+	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
+
+	// 转码流id列表。
+	// 此参数仅在 RemoveWatermark为false时生效。
+	TranscodeTemplateIds []*int64 `json:"TranscodeTemplateIds,omitempty" name:"TranscodeTemplateIds"`
+}
+
+func (r *CreateLiveTimeShiftTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveTimeShiftTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateName")
+	delete(f, "Duration")
+	delete(f, "Description")
+	delete(f, "Area")
+	delete(f, "ItemDuration")
+	delete(f, "RemoveWatermark")
+	delete(f, "TranscodeTemplateIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveTimeShiftTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveTimeShiftTemplateResponseParams struct {
+	// 模板Id。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateLiveTimeShiftTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveTimeShiftTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveTimeShiftTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveTimeShiftTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLiveTranscodeRuleRequestParams struct {
 	// 播放域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
@@ -3409,6 +3611,134 @@ func (r *DeleteLiveSnapshotTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLiveSnapshotTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveTimeShiftRuleRequestParams struct {
+	// 推流域名。
+	// 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+}
+
+type DeleteLiveTimeShiftRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流域名。
+	// 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 域名+AppName+StreamName唯一标识单个时移规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+}
+
+func (r *DeleteLiveTimeShiftRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveTimeShiftRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveTimeShiftRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveTimeShiftRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveTimeShiftRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveTimeShiftRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveTimeShiftRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveTimeShiftRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveTimeShiftTemplateRequestParams struct {
+	// 模板 ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DeleteLiveTimeShiftTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板 ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteLiveTimeShiftTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveTimeShiftTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveTimeShiftTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveTimeShiftTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveTimeShiftTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveTimeShiftTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveTimeShiftTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveTimeShiftTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6782,6 +7112,114 @@ func (r *DescribeLiveTimeShiftBillInfoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLiveTimeShiftBillInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveTimeShiftRulesRequestParams struct {
+
+}
+
+type DescribeLiveTimeShiftRulesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLiveTimeShiftRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTimeShiftRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTimeShiftRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveTimeShiftRulesResponseParams struct {
+	// 规则信息列表。
+	Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveTimeShiftRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveTimeShiftRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveTimeShiftRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTimeShiftRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveTimeShiftTemplatesRequestParams struct {
+
+}
+
+type DescribeLiveTimeShiftTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLiveTimeShiftTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTimeShiftTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveTimeShiftTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveTimeShiftTemplatesResponseParams struct {
+	// 直播时移模板信息。
+	Templates []*TimeShiftTemplate `json:"Templates,omitempty" name:"Templates"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveTimeShiftTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveTimeShiftTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveTimeShiftTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveTimeShiftTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10987,6 +11425,135 @@ func (r *ModifyLiveSnapshotTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLiveTimeShiftTemplateRequestParams struct {
+	// 时移模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名称。
+	// 仅支持中文、英文、数字、_、-。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 描述信息。
+	// 长度上限：1024字节。
+	// 仅支持中文、英文、数字、_、-。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 时移时长。
+	// 单位：s。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 分片时长。
+	// 可取3-10。
+	// 单位：s。
+	// 默认值：5。
+	ItemDuration *uint64 `json:"ItemDuration,omitempty" name:"ItemDuration"`
+
+	// 是否去除水印。
+	// 传true则将录制原始流。
+	// 默认值：false。
+	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
+
+	// 转码流id列表。
+	// 此参数仅在 RemoveWatermark为false时生效。
+	TranscodeTemplateIds []*int64 `json:"TranscodeTemplateIds,omitempty" name:"TranscodeTemplateIds"`
+
+	// 地域。
+	// Mainland：中国大陆。
+	// Overseas：海外及港澳台地区。
+	// 默认值：Mainland。
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+type ModifyLiveTimeShiftTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 时移模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名称。
+	// 仅支持中文、英文、数字、_、-。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 描述信息。
+	// 长度上限：1024字节。
+	// 仅支持中文、英文、数字、_、-。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 时移时长。
+	// 单位：s。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 分片时长。
+	// 可取3-10。
+	// 单位：s。
+	// 默认值：5。
+	ItemDuration *uint64 `json:"ItemDuration,omitempty" name:"ItemDuration"`
+
+	// 是否去除水印。
+	// 传true则将录制原始流。
+	// 默认值：false。
+	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
+
+	// 转码流id列表。
+	// 此参数仅在 RemoveWatermark为false时生效。
+	TranscodeTemplateIds []*int64 `json:"TranscodeTemplateIds,omitempty" name:"TranscodeTemplateIds"`
+
+	// 地域。
+	// Mainland：中国大陆。
+	// Overseas：海外及港澳台地区。
+	// 默认值：Mainland。
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+func (r *ModifyLiveTimeShiftTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveTimeShiftTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "TemplateName")
+	delete(f, "Description")
+	delete(f, "Duration")
+	delete(f, "ItemDuration")
+	delete(f, "RemoveWatermark")
+	delete(f, "TranscodeTemplateIds")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveTimeShiftTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveTimeShiftTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyLiveTimeShiftTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLiveTimeShiftTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyLiveTimeShiftTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveTimeShiftTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyLiveTranscodeTemplateRequestParams struct {
 	// 模板 Id。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
@@ -12703,6 +13270,42 @@ type TimeShiftStreamInfo struct {
 	// 时移数据存储时长，单位秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+}
+
+type TimeShiftTemplate struct {
+	// 模板名称。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 时移时长。
+	// 单位：秒。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 分片时长。
+	// 可取3-10。
+	// 单位：s。
+	// 默认值：5。
+	ItemDuration *uint64 `json:"ItemDuration,omitempty" name:"ItemDuration"`
+
+	// 模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 地域：
+	// Mainland：中国大陆；
+	// Overseas：海外及港澳台地区；
+	// 默认值：Mainland。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 是否去除水印。
+	// 为true则将录制原始流。
+	// 默认值：false。
+	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
+
+	// 转码流id列表。
+	// 此参数仅在 RemoveWatermark为false时生效。
+	TranscodeTemplateIds []*uint64 `json:"TranscodeTemplateIds,omitempty" name:"TranscodeTemplateIds"`
 }
 
 type TimeValue struct {

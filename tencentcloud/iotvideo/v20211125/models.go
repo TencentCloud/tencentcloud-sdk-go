@@ -7611,6 +7611,9 @@ type TransferCloudStorageRequestParams struct {
 
 	// 未开通云存的设备名称
 	ToDeviceName *string `json:"ToDeviceName,omitempty" name:"ToDeviceName"`
+
+	// 未开通云存的设备产品ID
+	ToProductId *string `json:"ToProductId,omitempty" name:"ToProductId"`
 }
 
 type TransferCloudStorageRequest struct {
@@ -7624,6 +7627,9 @@ type TransferCloudStorageRequest struct {
 
 	// 未开通云存的设备名称
 	ToDeviceName *string `json:"ToDeviceName,omitempty" name:"ToDeviceName"`
+
+	// 未开通云存的设备产品ID
+	ToProductId *string `json:"ToProductId,omitempty" name:"ToProductId"`
 }
 
 func (r *TransferCloudStorageRequest) ToJsonString() string {
@@ -7641,6 +7647,7 @@ func (r *TransferCloudStorageRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "ToDeviceName")
+	delete(f, "ToProductId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferCloudStorageRequest has unknown keys!", "")
 	}

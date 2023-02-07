@@ -592,14 +592,14 @@ type CreateEnvironmentRequestParams struct {
 	// 环境名称
 	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
 
+	// 环境描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
 	// 私有网络名称
 	Vpc *string `json:"Vpc,omitempty" name:"Vpc"`
 
 	// 子网列表
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
-
-	// 环境描述
-	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// K8s version
 	K8sVersion *string `json:"K8sVersion,omitempty" name:"K8sVersion"`
@@ -618,6 +618,18 @@ type CreateEnvironmentRequestParams struct {
 
 	// 创建环境的region
 	CreateRegion *string `json:"CreateRegion,omitempty" name:"CreateRegion"`
+
+	// 是否创建私有网络
+	SetupVpc *bool `json:"SetupVpc,omitempty" name:"SetupVpc"`
+
+	// 是否创建 Prometheus 实例
+	SetupPrometheus *bool `json:"SetupPrometheus,omitempty" name:"SetupPrometheus"`
+
+	// prometheus 实例 id
+	PrometheusId *string `json:"PrometheusId,omitempty" name:"PrometheusId"`
+
+	// apm id
+	ApmId *string `json:"ApmId,omitempty" name:"ApmId"`
 }
 
 type CreateEnvironmentRequest struct {
@@ -626,14 +638,14 @@ type CreateEnvironmentRequest struct {
 	// 环境名称
 	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
 
+	// 环境描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
 	// 私有网络名称
 	Vpc *string `json:"Vpc,omitempty" name:"Vpc"`
 
 	// 子网列表
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
-
-	// 环境描述
-	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// K8s version
 	K8sVersion *string `json:"K8sVersion,omitempty" name:"K8sVersion"`
@@ -652,6 +664,18 @@ type CreateEnvironmentRequest struct {
 
 	// 创建环境的region
 	CreateRegion *string `json:"CreateRegion,omitempty" name:"CreateRegion"`
+
+	// 是否创建私有网络
+	SetupVpc *bool `json:"SetupVpc,omitempty" name:"SetupVpc"`
+
+	// 是否创建 Prometheus 实例
+	SetupPrometheus *bool `json:"SetupPrometheus,omitempty" name:"SetupPrometheus"`
+
+	// prometheus 实例 id
+	PrometheusId *string `json:"PrometheusId,omitempty" name:"PrometheusId"`
+
+	// apm id
+	ApmId *string `json:"ApmId,omitempty" name:"ApmId"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -667,15 +691,19 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EnvironmentName")
+	delete(f, "Description")
 	delete(f, "Vpc")
 	delete(f, "SubnetIds")
-	delete(f, "Description")
 	delete(f, "K8sVersion")
 	delete(f, "SourceChannel")
 	delete(f, "EnableTswTraceService")
 	delete(f, "Tags")
 	delete(f, "EnvType")
 	delete(f, "CreateRegion")
+	delete(f, "SetupVpc")
+	delete(f, "SetupPrometheus")
+	delete(f, "PrometheusId")
+	delete(f, "ApmId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
 	}

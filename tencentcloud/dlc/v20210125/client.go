@@ -3287,6 +3287,70 @@ func (c *Client) LockMetaDataWithContext(ctx context.Context, request *LockMetaD
     return
 }
 
+func NewModifyGovernEventRuleRequest() (request *ModifyGovernEventRuleRequest) {
+    request = &ModifyGovernEventRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifyGovernEventRule")
+    
+    
+    return
+}
+
+func NewModifyGovernEventRuleResponse() (response *ModifyGovernEventRuleResponse) {
+    response = &ModifyGovernEventRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyGovernEventRule
+// 修改数据治理事件阈值
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyGovernEventRule(request *ModifyGovernEventRuleRequest) (response *ModifyGovernEventRuleResponse, err error) {
+    return c.ModifyGovernEventRuleWithContext(context.Background(), request)
+}
+
+// ModifyGovernEventRule
+// 修改数据治理事件阈值
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyGovernEventRuleWithContext(ctx context.Context, request *ModifyGovernEventRuleRequest) (response *ModifyGovernEventRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyGovernEventRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGovernEventRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGovernEventRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySparkAppRequest() (request *ModifySparkAppRequest) {
     request = &ModifySparkAppRequest{
         BaseRequest: &tchttp.BaseRequest{},

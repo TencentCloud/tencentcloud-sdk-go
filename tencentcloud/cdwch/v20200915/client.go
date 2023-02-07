@@ -189,6 +189,54 @@ func (c *Client) CreateInstanceNewWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewDescribeBackUpScheduleRequest() (request *DescribeBackUpScheduleRequest) {
+    request = &DescribeBackUpScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeBackUpSchedule")
+    
+    
+    return
+}
+
+func NewDescribeBackUpScheduleResponse() (response *DescribeBackUpScheduleResponse) {
+    response = &DescribeBackUpScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackUpSchedule
+// 查询备份策略信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBackUpSchedule(request *DescribeBackUpScheduleRequest) (response *DescribeBackUpScheduleResponse, err error) {
+    return c.DescribeBackUpScheduleWithContext(context.Background(), request)
+}
+
+// DescribeBackUpSchedule
+// 查询备份策略信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBackUpScheduleWithContext(ctx context.Context, request *DescribeBackUpScheduleRequest) (response *DescribeBackUpScheduleResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackUpScheduleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackUpSchedule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackUpScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCkSqlApisRequest() (request *DescribeCkSqlApisRequest) {
     request = &DescribeCkSqlApisRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -237,6 +285,54 @@ func (c *Client) DescribeCkSqlApisWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeClusterConfigsRequest() (request *DescribeClusterConfigsRequest) {
+    request = &DescribeClusterConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeClusterConfigs")
+    
+    
+    return
+}
+
+func NewDescribeClusterConfigsResponse() (response *DescribeClusterConfigsResponse) {
+    response = &DescribeClusterConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterConfigs
+// 获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeClusterConfigs(request *DescribeClusterConfigsRequest) (response *DescribeClusterConfigsResponse, err error) {
+    return c.DescribeClusterConfigsWithContext(context.Background(), request)
+}
+
+// DescribeClusterConfigs
+// 获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeClusterConfigsWithContext(ctx context.Context, request *DescribeClusterConfigsRequest) (response *DescribeClusterConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
     request = &DescribeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -281,6 +377,54 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceKeyValConfigsRequest() (request *DescribeInstanceKeyValConfigsRequest) {
+    request = &DescribeInstanceKeyValConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeInstanceKeyValConfigs")
+    
+    
+    return
+}
+
+func NewDescribeInstanceKeyValConfigsResponse() (response *DescribeInstanceKeyValConfigsResponse) {
+    response = &DescribeInstanceKeyValConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceKeyValConfigs
+// 在集群详情页面获取所有参数列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceKeyValConfigs(request *DescribeInstanceKeyValConfigsRequest) (response *DescribeInstanceKeyValConfigsResponse, err error) {
+    return c.DescribeInstanceKeyValConfigsWithContext(context.Background(), request)
+}
+
+// DescribeInstanceKeyValConfigs
+// 在集群详情页面获取所有参数列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceKeyValConfigsWithContext(ctx context.Context, request *DescribeInstanceKeyValConfigsRequest) (response *DescribeInstanceKeyValConfigsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceKeyValConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceKeyValConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceKeyValConfigsResponse()
     err = c.Send(request, response)
     return
 }
@@ -429,6 +573,54 @@ func (c *Client) ModifyClusterConfigsWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyInstanceKeyValConfigsRequest() (request *ModifyInstanceKeyValConfigsRequest) {
+    request = &ModifyInstanceKeyValConfigsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "ModifyInstanceKeyValConfigs")
+    
+    
+    return
+}
+
+func NewModifyInstanceKeyValConfigsResponse() (response *ModifyInstanceKeyValConfigsResponse) {
+    response = &ModifyInstanceKeyValConfigsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceKeyValConfigs
+// KV模式修改配置接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyInstanceKeyValConfigs(request *ModifyInstanceKeyValConfigsRequest) (response *ModifyInstanceKeyValConfigsResponse, err error) {
+    return c.ModifyInstanceKeyValConfigsWithContext(context.Background(), request)
+}
+
+// ModifyInstanceKeyValConfigs
+// KV模式修改配置接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyInstanceKeyValConfigsWithContext(ctx context.Context, request *ModifyInstanceKeyValConfigsRequest) (response *ModifyInstanceKeyValConfigsResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceKeyValConfigsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceKeyValConfigs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceKeyValConfigsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserNewPrivilegeRequest() (request *ModifyUserNewPrivilegeRequest) {
     request = &ModifyUserNewPrivilegeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -521,6 +713,150 @@ func (c *Client) OpenBackUpWithContext(ctx context.Context, request *OpenBackUpR
     request.SetContext(ctx)
     
     response = NewOpenBackUpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResizeDiskRequest() (request *ResizeDiskRequest) {
+    request = &ResizeDiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "ResizeDisk")
+    
+    
+    return
+}
+
+func NewResizeDiskResponse() (response *ResizeDiskResponse) {
+    response = &ResizeDiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResizeDisk
+// 扩容磁盘，包含扩容数据节点，zk节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ResizeDisk(request *ResizeDiskRequest) (response *ResizeDiskResponse, err error) {
+    return c.ResizeDiskWithContext(context.Background(), request)
+}
+
+// ResizeDisk
+// 扩容磁盘，包含扩容数据节点，zk节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ResizeDiskWithContext(ctx context.Context, request *ResizeDiskRequest) (response *ResizeDiskResponse, err error) {
+    if request == nil {
+        request = NewResizeDiskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResizeDisk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResizeDiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScaleOutInstanceRequest() (request *ScaleOutInstanceRequest) {
+    request = &ScaleOutInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "ScaleOutInstance")
+    
+    
+    return
+}
+
+func NewScaleOutInstanceResponse() (response *ScaleOutInstanceResponse) {
+    response = &ScaleOutInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ScaleOutInstance
+// 调整clickhouse节点数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *ScaleOutInstanceResponse, err error) {
+    return c.ScaleOutInstanceWithContext(context.Background(), request)
+}
+
+// ScaleOutInstance
+// 调整clickhouse节点数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *ScaleOutInstanceRequest) (response *ScaleOutInstanceResponse, err error) {
+    if request == nil {
+        request = NewScaleOutInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleOutInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScaleOutInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScaleUpInstanceRequest() (request *ScaleUpInstanceRequest) {
+    request = &ScaleUpInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "ScaleUpInstance")
+    
+    
+    return
+}
+
+func NewScaleUpInstanceResponse() (response *ScaleUpInstanceResponse) {
+    response = &ScaleUpInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ScaleUpInstance
+// 垂直扩缩容节点规格，修改节点cvm的规格cpu，内存。 规格变化阶段，服务不可用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ScaleUpInstance(request *ScaleUpInstanceRequest) (response *ScaleUpInstanceResponse, err error) {
+    return c.ScaleUpInstanceWithContext(context.Background(), request)
+}
+
+// ScaleUpInstance
+// 垂直扩缩容节点规格，修改节点cvm的规格cpu，内存。 规格变化阶段，服务不可用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ScaleUpInstanceWithContext(ctx context.Context, request *ScaleUpInstanceRequest) (response *ScaleUpInstanceResponse, err error) {
+    if request == nil {
+        request = NewScaleUpInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleUpInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScaleUpInstanceResponse()
     err = c.Send(request, response)
     return
 }

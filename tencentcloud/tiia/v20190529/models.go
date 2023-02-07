@@ -272,9 +272,9 @@ type CreateGroupRequestParams struct {
 	// 图库名称描述。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 图库可容纳的最大图片特征数量，一张图片对应一条图片特征数据。
-	// 达到最大容量后无法在图库中继续创建图片，否则将会报错。
-	// MaxCapacity不支持修改，请合理评估容量上限，按需创建。
+	// 图片库可容纳的最大图片特征条数，一张图片对应一条图片特征数据，不支持修改。
+	// 单个图片库容量最大可达亿级，达到容量限制后继续创建图片将会报错。
+	// 注意，包月计费下支持绑定的最小库容量为500万。
 	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
 
 	// 图库简介。
@@ -303,9 +303,9 @@ type CreateGroupRequest struct {
 	// 图库名称描述。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 图库可容纳的最大图片特征数量，一张图片对应一条图片特征数据。
-	// 达到最大容量后无法在图库中继续创建图片，否则将会报错。
-	// MaxCapacity不支持修改，请合理评估容量上限，按需创建。
+	// 图片库可容纳的最大图片特征条数，一张图片对应一条图片特征数据，不支持修改。
+	// 单个图片库容量最大可达亿级，达到容量限制后继续创建图片将会报错。
+	// 注意，包月计费下支持绑定的最小库容量为500万。
 	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
 
 	// 图库简介。
