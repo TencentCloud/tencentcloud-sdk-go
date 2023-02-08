@@ -89,14 +89,14 @@ type AddNodesRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜。
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
-
 	// 私有网络相关信息配置。
 	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
 
 	// 添加节点数量。
 	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
@@ -130,7 +130,8 @@ type AddNodesRequestParams struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 队列名称。
+	// 队列名称。不指定则为默认队列。<br><li>SLURM默认队列为：compute。<br>
+	// <li>SGE默认队列为：all.q。<br>
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
 	// 添加节点类型。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
@@ -153,14 +154,14 @@ type AddNodesRequest struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜。
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
-
 	// 私有网络相关信息配置。
 	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
 
 	// 添加节点数量。
 	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像和特定自定义镜像。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
@@ -194,7 +195,8 @@ type AddNodesRequest struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 队列名称。
+	// 队列名称。不指定则为默认队列。<br><li>SLURM默认队列为：compute。<br>
+	// <li>SGE默认队列为：all.q。<br>
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
 	// 添加节点类型。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
@@ -222,9 +224,9 @@ func (r *AddNodesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Placement")
 	delete(f, "ClusterId")
-	delete(f, "ImageId")
 	delete(f, "VirtualPrivateCloud")
 	delete(f, "Count")
+	delete(f, "ImageId")
 	delete(f, "InstanceChargeType")
 	delete(f, "InstanceChargePrepaid")
 	delete(f, "InstanceType")

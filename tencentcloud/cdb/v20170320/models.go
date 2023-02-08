@@ -5181,7 +5181,7 @@ func (r *DescribeDBInstanceRebootTimeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
-	// 项目 ID，可使用 [查询项目列表](https://cloud.tencent.com/document/product/378/4400) 接口查询项目 ID。
+	// 项目 ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。
@@ -5190,7 +5190,7 @@ type DescribeDBInstancesRequestParams struct {
 	// 实例的内网 IP 地址。
 	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 
-	// 实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 隔离中（可在回收站恢复开机）
+	// 实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）
 	Status []*uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 偏移量，默认值为 0。
@@ -5287,7 +5287,7 @@ type DescribeDBInstancesRequestParams struct {
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目 ID，可使用 [查询项目列表](https://cloud.tencent.com/document/product/378/4400) 接口查询项目 ID。
+	// 项目 ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。
@@ -5296,7 +5296,7 @@ type DescribeDBInstancesRequest struct {
 	// 实例的内网 IP 地址。
 	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 
-	// 实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 隔离中（可在回收站恢复开机）
+	// 实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）
 	Status []*uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 偏移量，默认值为 0。
@@ -8314,7 +8314,7 @@ type InstanceInfo struct {
 	// 内存容量，单位为 MB
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 实例状态，可能的返回值：0-创建中；1-运行中；4-隔离中；5-已隔离
+	// 实例状态，可能的返回值：0-创建中；1-运行中；4-正在进行隔离操作；5-已隔离
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 私有网络 ID，例如：51102
@@ -12994,7 +12994,7 @@ type UpgradeDBInstanceRequestParams struct {
 	// 升级后的实例cpu核数， 如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 是否极速变配。0-普通升级，1-极速变配。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
+	// 是否极速变配。0-普通升级，1-极速变配,，2 极速优先。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
 	FastUpgrade *int64 `json:"FastUpgrade,omitempty" name:"FastUpgrade"`
 
 	// 延迟阈值。取值范围1~10，默认值为10。
@@ -13046,7 +13046,7 @@ type UpgradeDBInstanceRequest struct {
 	// 升级后的实例cpu核数， 如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 是否极速变配。0-普通升级，1-极速变配。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
+	// 是否极速变配。0-普通升级，1-极速变配,，2 极速优先。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
 	FastUpgrade *int64 `json:"FastUpgrade,omitempty" name:"FastUpgrade"`
 
 	// 延迟阈值。取值范围1~10，默认值为10。

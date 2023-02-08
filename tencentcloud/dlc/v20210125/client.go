@@ -879,6 +879,64 @@ func (c *Client) CreateImportTaskWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateInternalTableRequest() (request *CreateInternalTableRequest) {
+    request = &CreateInternalTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateInternalTable")
+    
+    
+    return
+}
+
+func NewCreateInternalTableResponse() (response *CreateInternalTableResponse) {
+    response = &CreateInternalTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateInternalTable
+// 创建托管存储内表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateInternalTable(request *CreateInternalTableRequest) (response *CreateInternalTableResponse, err error) {
+    return c.CreateInternalTableWithContext(context.Background(), request)
+}
+
+// CreateInternalTable
+// 创建托管存储内表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateInternalTableWithContext(ctx context.Context, request *CreateInternalTableRequest) (response *CreateInternalTableResponse, err error) {
+    if request == nil {
+        request = NewCreateInternalTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInternalTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInternalTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNotebookSessionRequest() (request *CreateNotebookSessionRequest) {
     request = &CreateNotebookSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},

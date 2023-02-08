@@ -7580,6 +7580,10 @@ type RuleTargets struct {
 	// 后端服务的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*Backend `json:"Targets,omitempty" name:"Targets"`
+
+	// 后端云函数的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitempty" name:"FunctionTargets"`
 }
 
 type RulesItems struct {

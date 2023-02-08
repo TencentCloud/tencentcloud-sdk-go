@@ -14308,6 +14308,10 @@ type DescribeVpcTaskResultResponseParams struct {
 	// 异步任务执行输出。
 	Output *string `json:"Output,omitempty" name:"Output"`
 
+	// 异步任务详细结果。只用于特殊场景，如批量删除弹性网卡时查询成功的网卡列表和失败的列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result []*VpcTaskResultDetailInfo `json:"Result,omitempty" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -24470,6 +24474,16 @@ type VpcPrivateIpAddress struct {
 
 	// `IP`申请时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+}
+
+type VpcTaskResultDetailInfo struct {
+	// 资源ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type VpnConnection struct {

@@ -895,6 +895,70 @@ func (r *DescribeSpecResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroyInstanceRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DestroyInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DestroyInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyInstanceResponseParams struct {
+	// 作业id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowID *string `json:"FlowID,omitempty" name:"FlowID"`
+
+	// 集群id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DestroyInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyInstanceResponseParams `json:"Response"`
+}
+
+func (r *DestroyInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DiskSpec struct {
 	// 磁盘类型，例如“CLOUD_SSD", "LOCAL_SSD"等
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
@@ -1548,8 +1612,11 @@ type ScaleOutInstanceRequestParams struct {
 	// 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
 	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitempty" name:"UserSubnetIPNum"`
 
-	// 节点同步ip
+	// 同步元数据节点IP （uip）
 	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitempty" name:"ScaleOutNodeIp"`
+
+	// 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔
+	ReduceShardInfo []*string `json:"ReduceShardInfo,omitempty" name:"ReduceShardInfo"`
 }
 
 type ScaleOutInstanceRequest struct {
@@ -1571,8 +1638,11 @@ type ScaleOutInstanceRequest struct {
 	// 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
 	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitempty" name:"UserSubnetIPNum"`
 
-	// 节点同步ip
+	// 同步元数据节点IP （uip）
 	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitempty" name:"ScaleOutNodeIp"`
+
+	// 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔
+	ReduceShardInfo []*string `json:"ReduceShardInfo,omitempty" name:"ReduceShardInfo"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -1593,6 +1663,7 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ScaleOutCluster")
 	delete(f, "UserSubnetIPNum")
 	delete(f, "ScaleOutNodeIp")
+	delete(f, "ReduceShardInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
 	}

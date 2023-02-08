@@ -4444,6 +4444,11 @@ type DescribeCurveDataRequestParams struct {
 	// <li> TkeCpuUsed: 容器CPU使用量 </li>
 	// <li> TkeMemUsed: 容器内存使用量 </li>
 	// <li> TkeInvokeNum: 调用量 </li>
+	// <li> FunctionConcurrentExecutions: 云函数并发执行个数</li>
+	// <li> FunctionIdleProvisioned: 云函数预置并发闲置量 </li>
+	// <li> FunctionConcurrencyMemoryMB: 云函数并发执行内存量 </li>
+	// <li> FunctionThrottle: 云函数受限次数 </li>
+	// <li> FunctionProvisionedConcurrency: 云函数预置并发 </li>
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟).
@@ -4482,6 +4487,11 @@ type DescribeCurveDataRequest struct {
 	// <li> TkeCpuUsed: 容器CPU使用量 </li>
 	// <li> TkeMemUsed: 容器内存使用量 </li>
 	// <li> TkeInvokeNum: 调用量 </li>
+	// <li> FunctionConcurrentExecutions: 云函数并发执行个数</li>
+	// <li> FunctionIdleProvisioned: 云函数预置并发闲置量 </li>
+	// <li> FunctionConcurrencyMemoryMB: 云函数并发执行内存量 </li>
+	// <li> FunctionThrottle: 云函数受限次数 </li>
+	// <li> FunctionProvisionedConcurrency: 云函数预置并发 </li>
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟).
@@ -4536,6 +4546,9 @@ type DescribeCurveDataResponseParams struct {
 
 	// 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
 	Time []*int64 `json:"Time,omitempty" name:"Time"`
+
+	// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+	NewValues *float64 `json:"NewValues,omitempty" name:"NewValues"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

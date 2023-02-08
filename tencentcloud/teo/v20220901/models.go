@@ -5638,6 +5638,7 @@ type DescribeWebManagedRulesLogRequestParams struct {
 	// <li>ruleId：规则id；</li>
 	// <li>sipCountryCode：ip所在国家；</li>
 	// <li>attackIp：攻击ip；</li>
+	// <li>realClientIp：真实客户端ip；</li>
 	// <li>oriDomain：被攻击的子域名；</li>
 	// <li>eventId：事件id；</li>
 	// <li>ua：用户代理；</li>
@@ -5679,6 +5680,7 @@ type DescribeWebManagedRulesLogRequest struct {
 	// <li>ruleId：规则id；</li>
 	// <li>sipCountryCode：ip所在国家；</li>
 	// <li>attackIp：攻击ip；</li>
+	// <li>realClientIp：真实客户端ip；</li>
 	// <li>oriDomain：被攻击的子域名；</li>
 	// <li>eventId：事件id；</li>
 	// <li>ua：用户代理；</li>
@@ -10474,17 +10476,23 @@ type WebLogs struct {
 	// 请求（事件）ID。
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 
-	// 攻击源（客户端）Ip。
-	AttackIp *string `json:"AttackIp,omitempty" name:"AttackIp"`
+	// http 日志内容。
+	HttpLog *string `json:"HttpLog,omitempty" name:"HttpLog"`
 
 	// 受攻击子域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// http 日志内容。
-	HttpLog *string `json:"HttpLog,omitempty" name:"HttpLog"`
+	// 攻击源（客户端）Ip。
+	AttackIp *string `json:"AttackIp,omitempty" name:"AttackIp"`
 
 	// IP所在国家iso-3166中alpha-2编码，编码信息请参考[ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json)
 	SipCountryCode *string `json:"SipCountryCode,omitempty" name:"SipCountryCode"`
+
+	// 真实客户端Ip。
+	RealClientIp *string `json:"RealClientIp,omitempty" name:"RealClientIp"`
+
+	// 真实客户端Ip所在国家iso-3166中alpha-2编码。
+	RealClientIpCountryCode *string `json:"RealClientIpCountryCode,omitempty" name:"RealClientIpCountryCode"`
 
 	// 攻击时间，采用unix秒级时间戳。
 	AttackTime *uint64 `json:"AttackTime,omitempty" name:"AttackTime"`
@@ -10492,17 +10500,17 @@ type WebLogs struct {
 	// 请求地址。
 	RequestUri *string `json:"RequestUri,omitempty" name:"RequestUri"`
 
-	// 攻击内容。
+	// 请求类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttackContent *string `json:"AttackContent,omitempty" name:"AttackContent"`
+	ReqMethod *string `json:"ReqMethod,omitempty" name:"ReqMethod"`
 
 	// 规则相关信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleDetailList []*SecRuleRelatedInfo `json:"RuleDetailList,omitempty" name:"RuleDetailList"`
 
-	// 请求类型。
+	// 攻击内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReqMethod *string `json:"ReqMethod,omitempty" name:"ReqMethod"`
+	AttackContent *string `json:"AttackContent,omitempty" name:"AttackContent"`
 
 	// 日志所属区域。
 	// 注意：此字段可能返回 null，表示取不到有效值。

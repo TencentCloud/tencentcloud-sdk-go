@@ -1971,6 +1971,68 @@ func (c *Client) CreateSchemeUrlWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateSealPolicyRequest() (request *CreateSealPolicyRequest) {
+    request = &CreateSealPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateSealPolicy")
+    
+    
+    return
+}
+
+func NewCreateSealPolicyResponse() (response *CreateSealPolicyResponse) {
+    response = &CreateSealPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSealPolicy
+// 对企业员工进行印章授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateSealPolicy(request *CreateSealPolicyRequest) (response *CreateSealPolicyResponse, err error) {
+    return c.CreateSealPolicyWithContext(context.Background(), request)
+}
+
+// CreateSealPolicy
+// 对企业员工进行印章授权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateSealPolicyWithContext(ctx context.Context, request *CreateSealPolicyRequest) (response *CreateSealPolicyResponse, err error) {
+    if request == nil {
+        request = NewCreateSealPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSealPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSealPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIntegrationEmployeesRequest() (request *DeleteIntegrationEmployeesRequest) {
     request = &DeleteIntegrationEmployeesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2029,6 +2091,60 @@ func (c *Client) DeleteIntegrationEmployeesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteIntegrationEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSealPoliciesRequest() (request *DeleteSealPoliciesRequest) {
+    request = &DeleteSealPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DeleteSealPolicies")
+    
+    
+    return
+}
+
+func NewDeleteSealPoliciesResponse() (response *DeleteSealPoliciesResponse) {
+    response = &DeleteSealPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSealPolicies
+// 撤销员工持有的印章权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteSealPolicies(request *DeleteSealPoliciesRequest) (response *DeleteSealPoliciesResponse, err error) {
+    return c.DeleteSealPoliciesWithContext(context.Background(), request)
+}
+
+// DeleteSealPolicies
+// 撤销员工持有的印章权限
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteSealPoliciesWithContext(ctx context.Context, request *DeleteSealPoliciesRequest) (response *DeleteSealPoliciesResponse, err error) {
+    if request == nil {
+        request = NewDeleteSealPoliciesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSealPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSealPoliciesResponse()
     err = c.Send(request, response)
     return
 }

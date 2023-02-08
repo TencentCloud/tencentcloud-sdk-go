@@ -1339,6 +1339,84 @@ func (r *CreateImportTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateInternalTableRequestParams struct {
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitempty" name:"TableBaseInfo"`
+
+	// 表字段信息
+	Columns []*TColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 表分区信息
+	Partitions []*TPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 表属性信息
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
+}
+
+type CreateInternalTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitempty" name:"TableBaseInfo"`
+
+	// 表字段信息
+	Columns []*TColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 表分区信息
+	Partitions []*TPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 表属性信息
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
+}
+
+func (r *CreateInternalTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInternalTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableBaseInfo")
+	delete(f, "Columns")
+	delete(f, "Partitions")
+	delete(f, "Properties")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInternalTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInternalTableResponseParams struct {
+	// 创建托管存储内表sql语句描述
+	Execution *string `json:"Execution,omitempty" name:"Execution"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateInternalTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInternalTableResponseParams `json:"Response"`
+}
+
+func (r *CreateInternalTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInternalTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNotebookSessionRequestParams struct {
 	// Session名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -6449,6 +6527,49 @@ func (r *SuspendResumeDataEngineResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SuspendResumeDataEngineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TColumn struct {
+	// 字段名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 字段描述
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 字段默认值
+	Default *string `json:"Default,omitempty" name:"Default"`
+
+	// 字段是否是非空
+	NotNull *bool `json:"NotNull,omitempty" name:"NotNull"`
+}
+
+type TPartition struct {
+	// 字段名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 字段描述
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 分区类型
+	PartitionType *string `json:"PartitionType,omitempty" name:"PartitionType"`
+
+	// 分区格式
+	PartitionFormat *string `json:"PartitionFormat,omitempty" name:"PartitionFormat"`
+
+	// 分区分隔数
+	PartitionDot *int64 `json:"PartitionDot,omitempty" name:"PartitionDot"`
+
+	// 分区转换策略
+	Transform *string `json:"Transform,omitempty" name:"Transform"`
+
+	// 策略参数
+	TransformArgs []*string `json:"TransformArgs,omitempty" name:"TransformArgs"`
 }
 
 type TableBaseInfo struct {

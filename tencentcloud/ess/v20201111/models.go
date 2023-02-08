@@ -1918,6 +1918,105 @@ func (r *CreateSchemeUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSealPolicyRequestParams struct {
+	// 授权发起人在平台信息，具体参考UserInfo结构体
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
+	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
+
+	// 印章ID
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 授权有效期。时间戳秒级
+	Expired *int64 `json:"Expired,omitempty" name:"Expired"`
+
+	// 印章授权内容
+	Policy *string `json:"Policy,omitempty" name:"Policy"`
+
+	// 应用相关
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
+type CreateSealPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 授权发起人在平台信息，具体参考UserInfo结构体
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
+	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
+
+	// 印章ID
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 授权有效期。时间戳秒级
+	Expired *int64 `json:"Expired,omitempty" name:"Expired"`
+
+	// 印章授权内容
+	Policy *string `json:"Policy,omitempty" name:"Policy"`
+
+	// 应用相关
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
+func (r *CreateSealPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSealPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Users")
+	delete(f, "SealId")
+	delete(f, "Expired")
+	delete(f, "Policy")
+	delete(f, "Agent")
+	delete(f, "UserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSealPolicyResponseParams struct {
+	// 最终授权成功的。其他的跳过的是已经授权了的
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateSealPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSealPolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateSealPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSealPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateStaffResult struct {
 	// 创建员工的成功列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1989,6 +2088,88 @@ func (r *DeleteIntegrationEmployeesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteIntegrationEmployeesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSealPoliciesRequestParams struct {
+	// 操作撤销的用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 印章授权编码数组。这个参数跟下面的SealId其中一个必填，另外一个可选填
+	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 应用相关
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 印章ID。这个参数跟上面的PolicyIds其中一个必填，另外一个可选填
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 待授权的员工ID
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
+type DeleteSealPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作撤销的用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 印章授权编码数组。这个参数跟下面的SealId其中一个必填，另外一个可选填
+	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 应用相关
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 印章ID。这个参数跟上面的PolicyIds其中一个必填，另外一个可选填
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 待授权的员工ID
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
+func (r *DeleteSealPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSealPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "PolicyIds")
+	delete(f, "Agent")
+	delete(f, "SealId")
+	delete(f, "UserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSealPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSealPoliciesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteSealPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSealPoliciesResponseParams `json:"Response"`
+}
+
+func (r *DeleteSealPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSealPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

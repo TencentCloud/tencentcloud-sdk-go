@@ -1297,6 +1297,173 @@ func (r *ChannelCreateReleaseFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateSealPolicyRequestParams struct {
+	// 用户渠道信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 指定印章
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 指定待授权的用户ID数组
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 企业机构信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 操作人（用户）信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelCreateSealPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户渠道信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 指定印章
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 指定待授权的用户ID数组
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 企业机构信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 操作人（用户）信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelCreateSealPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateSealPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SealId")
+	delete(f, "UserIds")
+	delete(f, "Organization")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateSealPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateSealPolicyResponseParams struct {
+	// 最终授权成功的用户ID数组。其他的跳过的是已经授权了的
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateSealPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateSealPolicyResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateSealPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateSealPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDeleteSealPoliciesRequestParams struct {
+	// 渠道信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 指定印章ID
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 指定用户ID数组
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 操作人（用户）信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 组织机构信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+}
+
+type ChannelDeleteSealPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 指定印章ID
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 指定用户ID数组
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 操作人（用户）信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 组织机构信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+}
+
+func (r *ChannelDeleteSealPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDeleteSealPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SealId")
+	delete(f, "UserIds")
+	delete(f, "Operator")
+	delete(f, "Organization")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDeleteSealPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDeleteSealPoliciesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelDeleteSealPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDeleteSealPoliciesResponseParams `json:"Response"`
+}
+
+func (r *ChannelDeleteSealPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDeleteSealPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelDescribeEmployeesRequestParams struct {
 	// 返回最大数量，最大为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`

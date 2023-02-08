@@ -1,3 +1,304 @@
+# Release v1.0.590
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 6 次发布
+
+发布时间：2023-02-08 01:18:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DestroyInstance](https://cloud.tencent.com/document/api/1299/86254)
+
+修改接口：
+
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/1299/86157)
+
+	* 新增入参：ReduceShardInfo
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 80 次发布
+
+发布时间：2023-02-08 01:22:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RuleTargets](https://cloud.tencent.com/document/api/214/30694#RuleTargets)
+
+	* 新增成员：FunctionTargets
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 38 次发布
+
+发布时间：2023-02-08 01:31:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateInternalTable](https://cloud.tencent.com/document/api/1342/86255)
+
+新增数据结构：
+
+* [TColumn](https://cloud.tencent.com/document/api/1342/53778#TColumn)
+* [TPartition](https://cloud.tencent.com/document/api/1342/53778#TPartition)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 42 次发布
+
+发布时间：2023-02-07 11:30:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSealPolicy](https://cloud.tencent.com/document/api/1323/86183)
+* [DeleteSealPolicies](https://cloud.tencent.com/document/api/1323/86182)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 62 次发布
+
+发布时间：2023-02-08 01:37:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateSealPolicy](https://cloud.tencent.com/document/api/1420/86257)
+* [ChannelDeleteSealPolicies](https://cloud.tencent.com/document/api/1420/86256)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云数据库 KeeWiDB(keewidb) 版本：2022-03-08
+
+### 第 1 次发布
+
+发布时间：2023-02-07 16:41:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AssociateSecurityGroups](https://cloud.tencent.com/document/api/1520/86215)
+* [ChangeInstanceMaster](https://cloud.tencent.com/document/api/1520/86229)
+* [CleanUpInstance](https://cloud.tencent.com/document/api/1520/86209)
+* [ClearInstance](https://cloud.tencent.com/document/api/1520/86208)
+* [CreateBackupManually](https://cloud.tencent.com/document/api/1520/86221)
+* [CreateInstances](https://cloud.tencent.com/document/api/1520/86207)
+* [DescribeAutoBackupConfig](https://cloud.tencent.com/document/api/1520/86220)
+* [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/1520/86214)
+* [DescribeInstanceBackups](https://cloud.tencent.com/document/api/1520/86219)
+* [DescribeInstanceBinlogs](https://cloud.tencent.com/document/api/1520/86218)
+* [DescribeInstanceNodeInfo](https://cloud.tencent.com/document/api/1520/86206)
+* [DescribeInstanceParamRecords](https://cloud.tencent.com/document/api/1520/86228)
+* [DescribeInstanceParams](https://cloud.tencent.com/document/api/1520/86227)
+* [DescribeInstanceReplicas](https://cloud.tencent.com/document/api/1520/86226)
+* [DescribeInstances](https://cloud.tencent.com/document/api/1520/86205)
+* [DescribeMaintenanceWindow](https://cloud.tencent.com/document/api/1520/86204)
+* [DescribeProductInfo](https://cloud.tencent.com/document/api/1520/86223)
+* [DescribeProjectSecurityGroups](https://cloud.tencent.com/document/api/1520/86213)
+* [DescribeProxySlowLog](https://cloud.tencent.com/document/api/1520/86203)
+* [DescribeTaskInfo](https://cloud.tencent.com/document/api/1520/86202)
+* [DescribeTaskList](https://cloud.tencent.com/document/api/1520/86201)
+* [DescribeTendisSlowLog](https://cloud.tencent.com/document/api/1520/86200)
+* [DestroyPostpaidInstance](https://cloud.tencent.com/document/api/1520/86199)
+* [DestroyPrepaidInstance](https://cloud.tencent.com/document/api/1520/86198)
+* [DisassociateSecurityGroups](https://cloud.tencent.com/document/api/1520/86212)
+* [ModifyAutoBackupConfig](https://cloud.tencent.com/document/api/1520/86217)
+* [ModifyConnectionConfig](https://cloud.tencent.com/document/api/1520/86197)
+* [ModifyDBInstanceSecurityGroups](https://cloud.tencent.com/document/api/1520/86211)
+* [ModifyInstance](https://cloud.tencent.com/document/api/1520/86196)
+* [ModifyInstanceParams](https://cloud.tencent.com/document/api/1520/86225)
+* [ModifyMaintenanceWindow](https://cloud.tencent.com/document/api/1520/86195)
+* [ModifyNetworkConfig](https://cloud.tencent.com/document/api/1520/86194)
+* [RenewInstance](https://cloud.tencent.com/document/api/1520/86193)
+* [ResetPassword](https://cloud.tencent.com/document/api/1520/86192)
+* [StartUpInstance](https://cloud.tencent.com/document/api/1520/86191)
+* [UpgradeInstance](https://cloud.tencent.com/document/api/1520/86190)
+
+新增数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/1520/86230#BackupInfo)
+* [BinlogInfo](https://cloud.tencent.com/document/api/1520/86230#BinlogInfo)
+* [Inbound](https://cloud.tencent.com/document/api/1520/86230#Inbound)
+* [InstanceEnumParam](https://cloud.tencent.com/document/api/1520/86230#InstanceEnumParam)
+* [InstanceInfo](https://cloud.tencent.com/document/api/1520/86230#InstanceInfo)
+* [InstanceIntegerParam](https://cloud.tencent.com/document/api/1520/86230#InstanceIntegerParam)
+* [InstanceMultiParam](https://cloud.tencent.com/document/api/1520/86230#InstanceMultiParam)
+* [InstanceNodeInfo](https://cloud.tencent.com/document/api/1520/86230#InstanceNodeInfo)
+* [InstanceParam](https://cloud.tencent.com/document/api/1520/86230#InstanceParam)
+* [InstanceParamHistory](https://cloud.tencent.com/document/api/1520/86230#InstanceParamHistory)
+* [InstanceProxySlowlogDetail](https://cloud.tencent.com/document/api/1520/86230#InstanceProxySlowlogDetail)
+* [InstanceTagInfo](https://cloud.tencent.com/document/api/1520/86230#InstanceTagInfo)
+* [InstanceTextParam](https://cloud.tencent.com/document/api/1520/86230#InstanceTextParam)
+* [KeeWiDBNode](https://cloud.tencent.com/document/api/1520/86230#KeeWiDBNode)
+* [NodeInfo](https://cloud.tencent.com/document/api/1520/86230#NodeInfo)
+* [Outbound](https://cloud.tencent.com/document/api/1520/86230#Outbound)
+* [ProductConf](https://cloud.tencent.com/document/api/1520/86230#ProductConf)
+* [ProxyNodeInfo](https://cloud.tencent.com/document/api/1520/86230#ProxyNodeInfo)
+* [RedisNodeInfo](https://cloud.tencent.com/document/api/1520/86230#RedisNodeInfo)
+* [RegionConf](https://cloud.tencent.com/document/api/1520/86230#RegionConf)
+* [ReplicaGroup](https://cloud.tencent.com/document/api/1520/86230#ReplicaGroup)
+* [ResourceTag](https://cloud.tencent.com/document/api/1520/86230#ResourceTag)
+* [SecurityGroup](https://cloud.tencent.com/document/api/1520/86230#SecurityGroup)
+* [TaskInfoDetail](https://cloud.tencent.com/document/api/1520/86230#TaskInfoDetail)
+* [TendisSlowLogDetail](https://cloud.tencent.com/document/api/1520/86230#TendisSlowLogDetail)
+* [ZoneCapacityConf](https://cloud.tencent.com/document/api/1520/86230#ZoneCapacityConf)
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 92 次发布
+
+发布时间：2023-02-08 02:00:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCurveData](https://cloud.tencent.com/document/api/876/59512)
+
+	* 新增出参：NewValues
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 44 次发布
+
+发布时间：2023-02-08 02:05:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRabbitMQNodeList](https://cloud.tencent.com/document/api/1179/82204)
+
+	* 新增入参：NodeName, Filters, SortElement, SortOrder
+
+
+修改数据结构：
+
+* [RabbitMQPrivateNode](https://cloud.tencent.com/document/api/1179/46089#RabbitMQPrivateNode)
+
+	* 新增成员：NodeStatus, CPUUsage, Memory, DiskUsage, ProcessNumber
+
+* [RabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVipInstance)
+
+	* 新增成员：ExceptionInformation
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 30 次发布
+
+发布时间：2023-02-08 02:07:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WebLogs](https://cloud.tencent.com/document/api/1552/80721#WebLogs)
+
+	* 新增成员：RealClientIp, RealClientIpCountryCode
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 10 次发布
+
+发布时间：2023-02-08 02:08:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddNodes](https://cloud.tencent.com/document/api/1527/72105)
+
+	* <font color="#dd0000">**修改入参**：</font>ImageId
+
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 138 次发布
+
+发布时间：2023-02-08 02:24:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)
+
+	* 新增出参：Result
+
+
+新增数据结构：
+
+* [VpcTaskResultDetailInfo](https://cloud.tencent.com/document/api/215/15824#VpcTaskResultDetailInfo)
+
+
+
 # Release v1.0.589
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15

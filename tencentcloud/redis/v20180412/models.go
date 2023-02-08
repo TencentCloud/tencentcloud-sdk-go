@@ -5151,19 +5151,19 @@ type InstanceParamHistory struct {
 }
 
 type InstanceProxySlowlogDetail struct {
-	// 慢查询耗时
+	// 慢查询耗时（单位：毫秒）。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
-	// 客户端地址
+	// 客户端地址。
 	Client *string `json:"Client,omitempty" name:"Client"`
 
-	// 命令
+	// 命令。
 	Command *string `json:"Command,omitempty" name:"Command"`
 
-	// 详细命令行信息
+	// 详细命令行信息。
 	CommandLine *string `json:"CommandLine,omitempty" name:"CommandLine"`
 
-	// 执行时间
+	// 执行时间。
 	ExecuteTime *string `json:"ExecuteTime,omitempty" name:"ExecuteTime"`
 }
 

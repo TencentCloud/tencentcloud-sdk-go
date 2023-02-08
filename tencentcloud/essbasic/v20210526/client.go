@@ -1153,6 +1153,154 @@ func (c *Client) ChannelCreateReleaseFlowWithContext(ctx context.Context, reques
     return
 }
 
+func NewChannelCreateSealPolicyRequest() (request *ChannelCreateSealPolicyRequest) {
+    request = &ChannelCreateSealPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateSealPolicy")
+    
+    
+    return
+}
+
+func NewChannelCreateSealPolicyResponse() (response *ChannelCreateSealPolicyResponse) {
+    response = &ChannelCreateSealPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateSealPolicy
+// 将指定印章授权给企业下的某些员工
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateSealPolicy(request *ChannelCreateSealPolicyRequest) (response *ChannelCreateSealPolicyResponse, err error) {
+    return c.ChannelCreateSealPolicyWithContext(context.Background(), request)
+}
+
+// ChannelCreateSealPolicy
+// 将指定印章授权给企业下的某些员工
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateSealPolicyWithContext(ctx context.Context, request *ChannelCreateSealPolicyRequest) (response *ChannelCreateSealPolicyResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateSealPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateSealPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateSealPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelDeleteSealPoliciesRequest() (request *ChannelDeleteSealPoliciesRequest) {
+    request = &ChannelDeleteSealPoliciesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDeleteSealPolicies")
+    
+    
+    return
+}
+
+func NewChannelDeleteSealPoliciesResponse() (response *ChannelDeleteSealPoliciesResponse) {
+    response = &ChannelDeleteSealPoliciesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDeleteSealPolicies
+// 删除指定印章下多个授权信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelDeleteSealPolicies(request *ChannelDeleteSealPoliciesRequest) (response *ChannelDeleteSealPoliciesResponse, err error) {
+    return c.ChannelDeleteSealPoliciesWithContext(context.Background(), request)
+}
+
+// ChannelDeleteSealPolicies
+// 删除指定印章下多个授权信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelDeleteSealPoliciesWithContext(ctx context.Context, request *ChannelDeleteSealPoliciesRequest) (response *ChannelDeleteSealPoliciesResponse, err error) {
+    if request == nil {
+        request = NewChannelDeleteSealPoliciesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDeleteSealPolicies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDeleteSealPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelDescribeEmployeesRequest() (request *ChannelDescribeEmployeesRequest) {
     request = &ChannelDescribeEmployeesRequest{
         BaseRequest: &tchttp.BaseRequest{},

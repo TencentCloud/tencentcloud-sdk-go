@@ -5850,6 +5850,23 @@ type DescribeRabbitMQNodeListRequestParams struct {
 
 	// 一页限制
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模糊搜索节点名字
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 过滤参数的名字和数值
+	// 现在只有一个nodeStatus
+	// running/down
+	// 数组类型，兼容后续添加过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 按指定元素排序，现在只有2个
+	// cpuUsage/diskUsage
+	SortElement *string `json:"SortElement,omitempty" name:"SortElement"`
+
+	// 升序/降序
+	// ascend/descend
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
 }
 
 type DescribeRabbitMQNodeListRequest struct {
@@ -5863,6 +5880,23 @@ type DescribeRabbitMQNodeListRequest struct {
 
 	// 一页限制
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模糊搜索节点名字
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 过滤参数的名字和数值
+	// 现在只有一个nodeStatus
+	// running/down
+	// 数组类型，兼容后续添加过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 按指定元素排序，现在只有2个
+	// cpuUsage/diskUsage
+	SortElement *string `json:"SortElement,omitempty" name:"SortElement"`
+
+	// 升序/降序
+	// ascend/descend
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
 }
 
 func (r *DescribeRabbitMQNodeListRequest) ToJsonString() string {
@@ -5880,6 +5914,10 @@ func (r *DescribeRabbitMQNodeListRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "NodeName")
+	delete(f, "Filters")
+	delete(f, "SortElement")
+	delete(f, "SortOrder")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQNodeListRequest has unknown keys!", "")
 	}
@@ -8543,6 +8581,26 @@ type RabbitMQPrivateNode struct {
 	// 节点名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 节点状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeStatus *string `json:"NodeStatus,omitempty" name:"NodeStatus"`
+
+	// CPU使用率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CPUUsage *string `json:"CPUUsage,omitempty" name:"CPUUsage"`
+
+	// 内存使用情况，单位MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 磁盘使用率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// Rabbitmq的Erlang进程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessNumber *uint64 `json:"ProcessNumber,omitempty" name:"ProcessNumber"`
 }
 
 type RabbitMQVipInstance struct {
@@ -8589,6 +8647,10 @@ type RabbitMQVipInstance struct {
 
 	// 实例配置ID
 	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 集群异常。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExceptionInformation *string `json:"ExceptionInformation,omitempty" name:"ExceptionInformation"`
 }
 
 // Predefined struct for user

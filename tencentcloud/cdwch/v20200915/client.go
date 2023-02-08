@@ -525,6 +525,54 @@ func (c *Client) DescribeSpecWithContext(ctx context.Context, request *DescribeS
     return
 }
 
+func NewDestroyInstanceRequest() (request *DestroyInstanceRequest) {
+    request = &DestroyInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DestroyInstance")
+    
+    
+    return
+}
+
+func NewDestroyInstanceResponse() (response *DestroyInstanceResponse) {
+    response = &DestroyInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DestroyInstance
+// 销毁集群 open api
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DestroyInstance(request *DestroyInstanceRequest) (response *DestroyInstanceResponse, err error) {
+    return c.DestroyInstanceWithContext(context.Background(), request)
+}
+
+// DestroyInstance
+// 销毁集群 open api
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DestroyInstanceWithContext(ctx context.Context, request *DestroyInstanceRequest) (response *DestroyInstanceResponse, err error) {
+    if request == nil {
+        request = NewDestroyInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyClusterConfigsRequest() (request *ModifyClusterConfigsRequest) {
     request = &ModifyClusterConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
