@@ -457,8 +457,12 @@ type CreateRecTaskRequestParams struct {
 	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
 	ReinforceHotword *int64 `json:"ReinforceHotword,omitempty" name:"ReinforceHotword"`
 
-	// 单标点最多字数，取值范围：[6，40]。默认为0，不开启该功能。该参数可用于字幕生成场景，控制单行字幕最大字数。
+	// 单标点最多字数，取值范围：[6，40]。默认为0，不开启该功能。该参数可用于字幕生成场景，控制单行字幕最大字数（设置ResTextFormat为3，解析返回的ResultDetail列表，通过结构中FinalSentence获取单个标点断句结果）。
 	SentenceMaxLength *int64 `json:"SentenceMaxLength,omitempty" name:"SentenceMaxLength"`
+
+	// 情绪识别能力(目前支持16k_zh) 默认为0，不开启。 1：开启情绪识别但是不会在文本展示“情绪标签”， 2：开启情绪识别并且在文本展示“情绪标签”。（该功能需要设置ResTextFormat 大于0）
+	// 注意：本功能为增值服务，购买对应套餐包后，将参数设置为1或2时方可按对应方式生效，并消耗套餐包对应资源。参数设置为0时无需购买套餐包，也不会消耗对应资源。
+	EmotionRecognition *int64 `json:"EmotionRecognition,omitempty" name:"EmotionRecognition"`
 }
 
 type CreateRecTaskRequest struct {
@@ -538,8 +542,12 @@ type CreateRecTaskRequest struct {
 	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
 	ReinforceHotword *int64 `json:"ReinforceHotword,omitempty" name:"ReinforceHotword"`
 
-	// 单标点最多字数，取值范围：[6，40]。默认为0，不开启该功能。该参数可用于字幕生成场景，控制单行字幕最大字数。
+	// 单标点最多字数，取值范围：[6，40]。默认为0，不开启该功能。该参数可用于字幕生成场景，控制单行字幕最大字数（设置ResTextFormat为3，解析返回的ResultDetail列表，通过结构中FinalSentence获取单个标点断句结果）。
 	SentenceMaxLength *int64 `json:"SentenceMaxLength,omitempty" name:"SentenceMaxLength"`
+
+	// 情绪识别能力(目前支持16k_zh) 默认为0，不开启。 1：开启情绪识别但是不会在文本展示“情绪标签”， 2：开启情绪识别并且在文本展示“情绪标签”。（该功能需要设置ResTextFormat 大于0）
+	// 注意：本功能为增值服务，购买对应套餐包后，将参数设置为1或2时方可按对应方式生效，并消耗套餐包对应资源。参数设置为0时无需购买套餐包，也不会消耗对应资源。
+	EmotionRecognition *int64 `json:"EmotionRecognition,omitempty" name:"EmotionRecognition"`
 }
 
 func (r *CreateRecTaskRequest) ToJsonString() string {
@@ -574,6 +582,7 @@ func (r *CreateRecTaskRequest) FromJsonString(s string) error {
 	delete(f, "EmotionalEnergy")
 	delete(f, "ReinforceHotword")
 	delete(f, "SentenceMaxLength")
+	delete(f, "EmotionRecognition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecTaskRequest has unknown keys!", "")
 	}
@@ -1381,6 +1390,10 @@ type SentenceDetail struct {
 	// 本句与上一句之间的静音时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SilenceTime *int64 `json:"SilenceTime,omitempty" name:"SilenceTime"`
+
+	// 情绪类型（可能为空）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmotionType []*string `json:"EmotionType,omitempty" name:"EmotionType"`
 }
 
 // Predefined struct for user

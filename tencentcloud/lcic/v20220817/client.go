@@ -45,6 +45,180 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBatchCreateRoomRequest() (request *BatchCreateRoomRequest) {
+    request = &BatchCreateRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "BatchCreateRoom")
+    
+    
+    return
+}
+
+func NewBatchCreateRoomResponse() (response *BatchCreateRoomResponse) {
+    response = &BatchCreateRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchCreateRoom
+// 批量创建房间接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchCreateRoom(request *BatchCreateRoomRequest) (response *BatchCreateRoomResponse, err error) {
+    return c.BatchCreateRoomWithContext(context.Background(), request)
+}
+
+// BatchCreateRoom
+// 批量创建房间接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchCreateRoomWithContext(ctx context.Context, request *BatchCreateRoomRequest) (response *BatchCreateRoomResponse, err error) {
+    if request == nil {
+        request = NewBatchCreateRoomRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchCreateRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchCreateRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchDeleteRecordRequest() (request *BatchDeleteRecordRequest) {
+    request = &BatchDeleteRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "BatchDeleteRecord")
+    
+    
+    return
+}
+
+func NewBatchDeleteRecordResponse() (response *BatchDeleteRecordResponse) {
+    response = &BatchDeleteRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchDeleteRecord
+// 批量删除多个房间的录制文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchDeleteRecord(request *BatchDeleteRecordRequest) (response *BatchDeleteRecordResponse, err error) {
+    return c.BatchDeleteRecordWithContext(context.Background(), request)
+}
+
+// BatchDeleteRecord
+// 批量删除多个房间的录制文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchDeleteRecordWithContext(ctx context.Context, request *BatchDeleteRecordRequest) (response *BatchDeleteRecordResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDeleteRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchRegisterRequest() (request *BatchRegisterRequest) {
     request = &BatchRegisterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -329,6 +503,116 @@ func (c *Client) CreateSupervisorWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewDeleteDocumentRequest() (request *DeleteDocumentRequest) {
+    request = &DeleteDocumentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeleteDocument")
+    
+    
+    return
+}
+
+func NewDeleteDocumentResponse() (response *DeleteDocumentResponse) {
+    response = &DeleteDocumentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDocument
+// 删除文档
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+func (c *Client) DeleteDocument(request *DeleteDocumentRequest) (response *DeleteDocumentResponse, err error) {
+    return c.DeleteDocumentWithContext(context.Background(), request)
+}
+
+// DeleteDocument
+// 删除文档
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+func (c *Client) DeleteDocumentWithContext(ctx context.Context, request *DeleteDocumentRequest) (response *DeleteDocumentResponse, err error) {
+    if request == nil {
+        request = NewDeleteDocumentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDocument require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRecordRequest() (request *DeleteRecordRequest) {
+    request = &DeleteRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeleteRecord")
+    
+    
+    return
+}
+
+func NewDeleteRecordResponse() (response *DeleteRecordResponse) {
+    response = &DeleteRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRecord
+// 删除指定房间的录制文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRecord(request *DeleteRecordRequest) (response *DeleteRecordResponse, err error) {
+    return c.DeleteRecordWithContext(context.Background(), request)
+}
+
+// DeleteRecord
+// 删除指定房间的录制文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRecordWithContext(ctx context.Context, request *DeleteRecordRequest) (response *DeleteRecordResponse, err error) {
+    if request == nil {
+        request = NewDeleteRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRoomRequest() (request *DeleteRoomRequest) {
     request = &DeleteRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -443,6 +727,168 @@ func (c *Client) DescribeAppDetailWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeDocumentRequest() (request *DescribeDocumentRequest) {
+    request = &DescribeDocumentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeDocument")
+    
+    
+    return
+}
+
+func NewDescribeDocumentResponse() (response *DescribeDocumentResponse) {
+    response = &DescribeDocumentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDocument
+// 获取文档信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+func (c *Client) DescribeDocument(request *DescribeDocumentRequest) (response *DescribeDocumentResponse, err error) {
+    return c.DescribeDocumentWithContext(context.Background(), request)
+}
+
+// DescribeDocument
+// 获取文档信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+func (c *Client) DescribeDocumentWithContext(ctx context.Context, request *DescribeDocumentRequest) (response *DescribeDocumentResponse, err error) {
+    if request == nil {
+        request = NewDescribeDocumentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDocument require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDocumentsByRoomRequest() (request *DescribeDocumentsByRoomRequest) {
+    request = &DescribeDocumentsByRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeDocumentsByRoom")
+    
+    
+    return
+}
+
+func NewDescribeDocumentsByRoomResponse() (response *DescribeDocumentsByRoomResponse) {
+    response = &DescribeDocumentsByRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDocumentsByRoom
+// 此接口获取指定房间下课件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDocumentsByRoom(request *DescribeDocumentsByRoomRequest) (response *DescribeDocumentsByRoomResponse, err error) {
+    return c.DescribeDocumentsByRoomWithContext(context.Background(), request)
+}
+
+// DescribeDocumentsByRoom
+// 此接口获取指定房间下课件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDocumentsByRoomWithContext(ctx context.Context, request *DescribeDocumentsByRoomRequest) (response *DescribeDocumentsByRoomResponse, err error) {
+    if request == nil {
+        request = NewDescribeDocumentsByRoomRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDocumentsByRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDocumentsByRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
     request = &DescribeRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -547,6 +993,118 @@ func (c *Client) DescribeRoomStatisticsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeSdkAppIdUsersRequest() (request *DescribeSdkAppIdUsersRequest) {
+    request = &DescribeSdkAppIdUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeSdkAppIdUsers")
+    
+    
+    return
+}
+
+func NewDescribeSdkAppIdUsersResponse() (response *DescribeSdkAppIdUsersResponse) {
+    response = &DescribeSdkAppIdUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSdkAppIdUsers
+// 此接口用于获取指定应用ID下用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSdkAppIdUsers(request *DescribeSdkAppIdUsersRequest) (response *DescribeSdkAppIdUsersResponse, err error) {
+    return c.DescribeSdkAppIdUsersWithContext(context.Background(), request)
+}
+
+// DescribeSdkAppIdUsers
+// 此接口用于获取指定应用ID下用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSdkAppIdUsersWithContext(ctx context.Context, request *DescribeSdkAppIdUsersRequest) (response *DescribeSdkAppIdUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeSdkAppIdUsersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSdkAppIdUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSdkAppIdUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserRequest() (request *DescribeUserRequest) {
     request = &DescribeUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -593,6 +1151,64 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     request.SetContext(ctx)
     
     response = NewDescribeUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetWatermarkRequest() (request *GetWatermarkRequest) {
+    request = &GetWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "GetWatermark")
+    
+    
+    return
+}
+
+func NewGetWatermarkResponse() (response *GetWatermarkResponse) {
+    response = &GetWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetWatermark
+// 获取水印设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GetWatermark(request *GetWatermarkRequest) (response *GetWatermarkResponse, err error) {
+    return c.GetWatermarkWithContext(context.Background(), request)
+}
+
+// GetWatermark
+// 获取水印设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GetWatermarkWithContext(ctx context.Context, request *GetWatermarkRequest) (response *GetWatermarkResponse, err error) {
+    if request == nil {
+        request = NewGetWatermarkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetWatermark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetWatermarkResponse()
     err = c.Send(request, response)
     return
 }
@@ -809,6 +1425,118 @@ func (c *Client) ModifyRoomWithContext(ctx context.Context, request *ModifyRoomR
     return
 }
 
+func NewModifyUserProfileRequest() (request *ModifyUserProfileRequest) {
+    request = &ModifyUserProfileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "ModifyUserProfile")
+    
+    
+    return
+}
+
+func NewModifyUserProfileResponse() (response *ModifyUserProfileResponse) {
+    response = &ModifyUserProfileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUserProfile
+// 此接口用于修改用户配置，如头像，昵称/用户名等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserProfile(request *ModifyUserProfileRequest) (response *ModifyUserProfileResponse, err error) {
+    return c.ModifyUserProfileWithContext(context.Background(), request)
+}
+
+// ModifyUserProfile
+// 此接口用于修改用户配置，如头像，昵称/用户名等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
+//  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
+//  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserProfileWithContext(ctx context.Context, request *ModifyUserProfileRequest) (response *ModifyUserProfileResponse, err error) {
+    if request == nil {
+        request = NewModifyUserProfileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserProfile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterUserRequest() (request *RegisterUserRequest) {
     request = &RegisterUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -909,6 +1637,64 @@ func (c *Client) SetAppCustomContentWithContext(ctx context.Context, request *Se
     request.SetContext(ctx)
     
     response = NewSetAppCustomContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetWatermarkRequest() (request *SetWatermarkRequest) {
+    request = &SetWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "SetWatermark")
+    
+    
+    return
+}
+
+func NewSetWatermarkResponse() (response *SetWatermarkResponse) {
+    response = &SetWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetWatermark
+// 设置水印
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SetWatermark(request *SetWatermarkRequest) (response *SetWatermarkResponse, err error) {
+    return c.SetWatermarkWithContext(context.Background(), request)
+}
+
+// SetWatermark
+// 设置水印
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) SetWatermarkWithContext(ctx context.Context, request *SetWatermarkRequest) (response *SetWatermarkResponse, err error) {
+    if request == nil {
+        request = NewSetWatermarkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetWatermark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetWatermarkResponse()
     err = c.Send(request, response)
     return
 }

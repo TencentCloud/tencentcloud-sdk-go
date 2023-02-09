@@ -187,6 +187,54 @@ func (c *Client) CheckCertificateWithContext(ctx context.Context, request *Check
     return
 }
 
+func NewCreateAccelerationDomainRequest() (request *CreateAccelerationDomainRequest) {
+    request = &CreateAccelerationDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateAccelerationDomain")
+    
+    
+    return
+}
+
+func NewCreateAccelerationDomainResponse() (response *CreateAccelerationDomainResponse) {
+    response = &CreateAccelerationDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAccelerationDomain
+// 创建加速域名
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
+func (c *Client) CreateAccelerationDomain(request *CreateAccelerationDomainRequest) (response *CreateAccelerationDomainResponse, err error) {
+    return c.CreateAccelerationDomainWithContext(context.Background(), request)
+}
+
+// CreateAccelerationDomain
+// 创建加速域名
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
+func (c *Client) CreateAccelerationDomainWithContext(ctx context.Context, request *CreateAccelerationDomainRequest) (response *CreateAccelerationDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateAccelerationDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccelerationDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAccelerationDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAliasDomainRequest() (request *CreateAliasDomainRequest) {
     request = &CreateAliasDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -985,6 +1033,92 @@ func (c *Client) CreateZoneWithContext(ctx context.Context, request *CreateZoneR
     return
 }
 
+func NewDeleteAccelerationDomainsRequest() (request *DeleteAccelerationDomainsRequest) {
+    request = &DeleteAccelerationDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteAccelerationDomains")
+    
+    
+    return
+}
+
+func NewDeleteAccelerationDomainsResponse() (response *DeleteAccelerationDomainsResponse) {
+    response = &DeleteAccelerationDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAccelerationDomains
+// 批量删除加速域名
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = "InvalidParameter.LengthExceedsLimit"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ALIASDOMAIN = "ResourceInUse.AliasDomain"
+//  RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
+//  RESOURCEINUSE_DNS = "ResourceInUse.Dns"
+//  RESOURCEINUSE_GENERICHOST = "ResourceInUse.GenericHost"
+//  RESOURCEINUSE_HOST = "ResourceInUse.Host"
+//  RESOURCEINUSE_NS = "ResourceInUse.NS"
+//  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  RESOURCEINUSE_OTHERSALIASDOMAIN = "ResourceInUse.OthersAliasDomain"
+//  RESOURCEINUSE_OTHERSCNAME = "ResourceInUse.OthersCname"
+//  RESOURCEINUSE_OTHERSHOST = "ResourceInUse.OthersHost"
+//  RESOURCEINUSE_OTHERSNS = "ResourceInUse.OthersNS"
+//  RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DeleteAccelerationDomains(request *DeleteAccelerationDomainsRequest) (response *DeleteAccelerationDomainsResponse, err error) {
+    return c.DeleteAccelerationDomainsWithContext(context.Background(), request)
+}
+
+// DeleteAccelerationDomains
+// 批量删除加速域名
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = "InvalidParameter.LengthExceedsLimit"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ALIASDOMAIN = "ResourceInUse.AliasDomain"
+//  RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
+//  RESOURCEINUSE_DNS = "ResourceInUse.Dns"
+//  RESOURCEINUSE_GENERICHOST = "ResourceInUse.GenericHost"
+//  RESOURCEINUSE_HOST = "ResourceInUse.Host"
+//  RESOURCEINUSE_NS = "ResourceInUse.NS"
+//  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  RESOURCEINUSE_OTHERSALIASDOMAIN = "ResourceInUse.OthersAliasDomain"
+//  RESOURCEINUSE_OTHERSCNAME = "ResourceInUse.OthersCname"
+//  RESOURCEINUSE_OTHERSHOST = "ResourceInUse.OthersHost"
+//  RESOURCEINUSE_OTHERSNS = "ResourceInUse.OthersNS"
+//  RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DeleteAccelerationDomainsWithContext(ctx context.Context, request *DeleteAccelerationDomainsRequest) (response *DeleteAccelerationDomainsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccelerationDomainsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccelerationDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccelerationDomainsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAliasDomainRequest() (request *DeleteAliasDomainRequest) {
     request = &DeleteAliasDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1293,6 +1427,60 @@ func (c *Client) DeleteZoneWithContext(ctx context.Context, request *DeleteZoneR
     request.SetContext(ctx)
     
     response = NewDeleteZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccelerationDomainsRequest() (request *DescribeAccelerationDomainsRequest) {
+    request = &DescribeAccelerationDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeAccelerationDomains")
+    
+    
+    return
+}
+
+func NewDescribeAccelerationDomainsResponse() (response *DescribeAccelerationDomainsResponse) {
+    response = &DescribeAccelerationDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAccelerationDomains
+// 查询加速域名列表，支持搜索、分页、排序、过滤。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = "InvalidParameter.DomainOnTrafficScheduling"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeAccelerationDomains(request *DescribeAccelerationDomainsRequest) (response *DescribeAccelerationDomainsResponse, err error) {
+    return c.DescribeAccelerationDomainsWithContext(context.Background(), request)
+}
+
+// DescribeAccelerationDomains
+// 查询加速域名列表，支持搜索、分页、排序、过滤。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = "InvalidParameter.DomainOnTrafficScheduling"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeAccelerationDomainsWithContext(ctx context.Context, request *DescribeAccelerationDomainsRequest) (response *DescribeAccelerationDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccelerationDomainsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccelerationDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccelerationDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3563,6 +3751,102 @@ func (c *Client) IdentifyZoneWithContext(ctx context.Context, request *IdentifyZ
     request.SetContext(ctx)
     
     response = NewIdentifyZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccelerationDomainRequest() (request *ModifyAccelerationDomainRequest) {
+    request = &ModifyAccelerationDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyAccelerationDomain")
+    
+    
+    return
+}
+
+func NewModifyAccelerationDomainResponse() (response *ModifyAccelerationDomainResponse) {
+    response = &ModifyAccelerationDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAccelerationDomain
+// 修改加速域名信息
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
+func (c *Client) ModifyAccelerationDomain(request *ModifyAccelerationDomainRequest) (response *ModifyAccelerationDomainResponse, err error) {
+    return c.ModifyAccelerationDomainWithContext(context.Background(), request)
+}
+
+// ModifyAccelerationDomain
+// 修改加速域名信息
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
+func (c *Client) ModifyAccelerationDomainWithContext(ctx context.Context, request *ModifyAccelerationDomainRequest) (response *ModifyAccelerationDomainResponse, err error) {
+    if request == nil {
+        request = NewModifyAccelerationDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccelerationDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccelerationDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAccelerationDomainStatusesRequest() (request *ModifyAccelerationDomainStatusesRequest) {
+    request = &ModifyAccelerationDomainStatusesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyAccelerationDomainStatuses")
+    
+    
+    return
+}
+
+func NewModifyAccelerationDomainStatusesResponse() (response *ModifyAccelerationDomainStatusesResponse) {
+    response = &ModifyAccelerationDomainStatusesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAccelerationDomainStatuses
+// 批量修改加速域名状态
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
+func (c *Client) ModifyAccelerationDomainStatuses(request *ModifyAccelerationDomainStatusesRequest) (response *ModifyAccelerationDomainStatusesResponse, err error) {
+    return c.ModifyAccelerationDomainStatusesWithContext(context.Background(), request)
+}
+
+// ModifyAccelerationDomainStatuses
+// 批量修改加速域名状态
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
+func (c *Client) ModifyAccelerationDomainStatusesWithContext(ctx context.Context, request *ModifyAccelerationDomainStatusesRequest) (response *ModifyAccelerationDomainStatusesResponse, err error) {
+    if request == nil {
+        request = NewModifyAccelerationDomainStatusesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccelerationDomainStatuses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccelerationDomainStatusesResponse()
     err = c.Send(request, response)
     return
 }

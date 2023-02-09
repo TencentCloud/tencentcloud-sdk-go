@@ -1,3 +1,231 @@
+# Release v1.0.591
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 23 次发布
+
+发布时间：2023-02-09 01:04:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecTask](https://cloud.tencent.com/document/api/1093/37823)
+
+	* 新增入参：EmotionRecognition
+
+
+修改数据结构：
+
+* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
+
+	* 新增成员：EmotionType
+
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 46 次发布
+
+发布时间：2023-02-09 01:08:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+
+	* 新增成员：DiskBackupQuota
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 41 次发布
+
+发布时间：2023-02-09 01:09:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindNumberCallOutSkillGroup](https://cloud.tencent.com/document/api/679/86305)
+* [DescribeNumbers](https://cloud.tencent.com/document/api/679/86304)
+* [UnbindNumberCallOutSkillGroup](https://cloud.tencent.com/document/api/679/86303)
+
+新增数据结构：
+
+* [NumberInfo](https://cloud.tencent.com/document/api/679/47715#NumberInfo)
+
+修改数据结构：
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：VoicemailRecordURL
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 39 次发布
+
+发布时间：2023-02-09 01:30:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelNotebookSessionStatement](https://cloud.tencent.com/document/api/1342/86317)
+* [CancelNotebookSessionStatementBatch](https://cloud.tencent.com/document/api/1342/86316)
+* [CreateNotebookSessionStatement](https://cloud.tencent.com/document/api/1342/86315)
+* [CreateNotebookSessionStatementSupportBatchSQL](https://cloud.tencent.com/document/api/1342/86314)
+* [DeleteNotebookSession](https://cloud.tencent.com/document/api/1342/86313)
+* [DescribeDataEngines](https://cloud.tencent.com/document/api/1342/86308)
+* [DescribeNotebookSessionLog](https://cloud.tencent.com/document/api/1342/86312)
+* [DescribeNotebookSessionStatement](https://cloud.tencent.com/document/api/1342/86311)
+* [DescribeNotebookSessionStatementSqlResult](https://cloud.tencent.com/document/api/1342/86307)
+* [DescribeNotebookSessionStatements](https://cloud.tencent.com/document/api/1342/86310)
+* [DescribeNotebookSessions](https://cloud.tencent.com/document/api/1342/86309)
+* [GenerateCreateMangedTableSql](https://cloud.tencent.com/document/api/1342/86306)
+
+新增数据结构：
+
+* [CrontabResumeSuspendStrategy](https://cloud.tencent.com/document/api/1342/53778#CrontabResumeSuspendStrategy)
+* [DataEngineInfo](https://cloud.tencent.com/document/api/1342/53778#DataEngineInfo)
+* [NetworkConnection](https://cloud.tencent.com/document/api/1342/53778#NetworkConnection)
+* [NotebookSessionStatementBatchInformation](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionStatementBatchInformation)
+* [NotebookSessionStatementInfo](https://cloud.tencent.com/document/api/1342/53778#NotebookSessionStatementInfo)
+* [NotebookSessions](https://cloud.tencent.com/document/api/1342/53778#NotebookSessions)
+* [StatementOutput](https://cloud.tencent.com/document/api/1342/53778#StatementOutput)
+* [TagInfo](https://cloud.tencent.com/document/api/1342/53778#TagInfo)
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 9 次发布
+
+发布时间：2023-02-09 01:47:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchCreateRoom](https://cloud.tencent.com/document/api/1639/86325)
+* [BatchDeleteRecord](https://cloud.tencent.com/document/api/1639/86328)
+* [DeleteDocument](https://cloud.tencent.com/document/api/1639/86322)
+* [DeleteRecord](https://cloud.tencent.com/document/api/1639/86327)
+* [DescribeDocument](https://cloud.tencent.com/document/api/1639/86321)
+* [DescribeDocumentsByRoom](https://cloud.tencent.com/document/api/1639/86320)
+* [DescribeSdkAppIdUsers](https://cloud.tencent.com/document/api/1639/86324)
+* [GetWatermark](https://cloud.tencent.com/document/api/1639/86330)
+* [ModifyUserProfile](https://cloud.tencent.com/document/api/1639/86323)
+* [SetWatermark](https://cloud.tencent.com/document/api/1639/86329)
+
+新增数据结构：
+
+* [BackgroundPictureConfig](https://cloud.tencent.com/document/api/1639/81423#BackgroundPictureConfig)
+* [DocumentInfo](https://cloud.tencent.com/document/api/1639/81423#DocumentInfo)
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+* [TextMarkConfig](https://cloud.tencent.com/document/api/1639/81423#TextMarkConfig)
+* [UserInfo](https://cloud.tencent.com/document/api/1639/81423#UserInfo)
+* [WatermarkConfig](https://cloud.tencent.com/document/api/1639/81423#WatermarkConfig)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 40 次发布
+
+发布时间：2023-02-09 01:58:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyBackupMigration](https://cloud.tencent.com/document/api/238/53183)
+
+	* 新增入参：DBRename
+
+
+新增数据结构：
+
+* [DBRenameRes](https://cloud.tencent.com/document/api/238/19976#DBRenameRes)
+
+修改数据结构：
+
+* [AccountCreateInfo](https://cloud.tencent.com/document/api/238/19976#AccountCreateInfo)
+
+	* 新增成员：AccountType
+
+* [AccountDetail](https://cloud.tencent.com/document/api/238/19976#AccountDetail)
+
+	* 新增成员：AccountType
+
+* [AccountPrivilege](https://cloud.tencent.com/document/api/238/19976#AccountPrivilege)
+
+	* 新增成员：AccountType
+
+* [AccountPrivilegeModifyInfo](https://cloud.tencent.com/document/api/238/19976#AccountPrivilegeModifyInfo)
+
+	* 新增成员：AccountType
+
+* [DbNormalDetail](https://cloud.tencent.com/document/api/238/19976#DbNormalDetail)
+
+	* 新增成员：CreateTime
+
+* [Migration](https://cloud.tencent.com/document/api/238/19976#Migration)
+
+	* 新增成员：DBRename
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 31 次发布
+
+发布时间：2023-02-09 02:15:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAccelerationDomain](https://cloud.tencent.com/document/api/1552/86338)
+* [DeleteAccelerationDomains](https://cloud.tencent.com/document/api/1552/86337)
+* [DescribeAccelerationDomains](https://cloud.tencent.com/document/api/1552/86336)
+* [ModifyAccelerationDomain](https://cloud.tencent.com/document/api/1552/86335)
+* [ModifyAccelerationDomainStatuses](https://cloud.tencent.com/document/api/1552/86334)
+
+新增数据结构：
+
+* [AccelerationDomain](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomain)
+* [OriginDetail](https://cloud.tencent.com/document/api/1552/80721#OriginDetail)
+* [OriginInfo](https://cloud.tencent.com/document/api/1552/80721#OriginInfo)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.590
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15

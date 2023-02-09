@@ -45,6 +45,48 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindNumberCallOutSkillGroupRequest() (request *BindNumberCallOutSkillGroupRequest) {
+    request = &BindNumberCallOutSkillGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "BindNumberCallOutSkillGroup")
+    
+    
+    return
+}
+
+func NewBindNumberCallOutSkillGroupResponse() (response *BindNumberCallOutSkillGroupResponse) {
+    response = &BindNumberCallOutSkillGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindNumberCallOutSkillGroup
+// 绑定号码外呼技能组
+func (c *Client) BindNumberCallOutSkillGroup(request *BindNumberCallOutSkillGroupRequest) (response *BindNumberCallOutSkillGroupResponse, err error) {
+    return c.BindNumberCallOutSkillGroupWithContext(context.Background(), request)
+}
+
+// BindNumberCallOutSkillGroup
+// 绑定号码外呼技能组
+func (c *Client) BindNumberCallOutSkillGroupWithContext(ctx context.Context, request *BindNumberCallOutSkillGroupRequest) (response *BindNumberCallOutSkillGroupResponse, err error) {
+    if request == nil {
+        request = NewBindNumberCallOutSkillGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindNumberCallOutSkillGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindNumberCallOutSkillGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindStaffSkillGroupListRequest() (request *BindStaffSkillGroupListRequest) {
     request = &BindStaffSkillGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1233,6 +1275,58 @@ func (c *Client) DescribeIMCdrsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeNumbersRequest() (request *DescribeNumbersRequest) {
+    request = &DescribeNumbersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeNumbers")
+    
+    
+    return
+}
+
+func NewDescribeNumbersResponse() (response *DescribeNumbersResponse) {
+    response = &DescribeNumbersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNumbers
+// 查询号码列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeNumbers(request *DescribeNumbersRequest) (response *DescribeNumbersResponse, err error) {
+    return c.DescribeNumbersWithContext(context.Background(), request)
+}
+
+// DescribeNumbers
+// 查询号码列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeNumbersWithContext(ctx context.Context, request *DescribeNumbersRequest) (response *DescribeNumbersResponse, err error) {
+    if request == nil {
+        request = NewDescribeNumbersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNumbers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNumbersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePSTNActiveSessionListRequest() (request *DescribePSTNActiveSessionListRequest) {
     request = &DescribePSTNActiveSessionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1989,6 +2083,60 @@ func (c *Client) StopAutoCalloutTaskWithContext(ctx context.Context, request *St
     request.SetContext(ctx)
     
     response = NewStopAutoCalloutTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindNumberCallOutSkillGroupRequest() (request *UnbindNumberCallOutSkillGroupRequest) {
+    request = &UnbindNumberCallOutSkillGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "UnbindNumberCallOutSkillGroup")
+    
+    
+    return
+}
+
+func NewUnbindNumberCallOutSkillGroupResponse() (response *UnbindNumberCallOutSkillGroupResponse) {
+    response = &UnbindNumberCallOutSkillGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindNumberCallOutSkillGroup
+// 解绑号码外呼技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UnbindNumberCallOutSkillGroup(request *UnbindNumberCallOutSkillGroupRequest) (response *UnbindNumberCallOutSkillGroupResponse, err error) {
+    return c.UnbindNumberCallOutSkillGroupWithContext(context.Background(), request)
+}
+
+// UnbindNumberCallOutSkillGroup
+// 解绑号码外呼技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UnbindNumberCallOutSkillGroupWithContext(ctx context.Context, request *UnbindNumberCallOutSkillGroupRequest) (response *UnbindNumberCallOutSkillGroupResponse, err error) {
+    if request == nil {
+        request = NewUnbindNumberCallOutSkillGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindNumberCallOutSkillGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindNumberCallOutSkillGroupResponse()
     err = c.Send(request, response)
     return
 }

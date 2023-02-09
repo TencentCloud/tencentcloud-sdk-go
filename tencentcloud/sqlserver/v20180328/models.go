@@ -33,11 +33,14 @@ type AccountCreateInfo struct {
 	// 账号备注信息
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 是否为管理员账户，默认为否
+	// 是否为管理员账户，当值为true 等价于基础版AccountType=L0，高可用AccountType=L1，当值为false，等价于AccountType=L3
 	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
 
 	// win-windows鉴权,sql-sqlserver鉴权，不填默认值为sql-sqlserver鉴权
 	Authentication *string `json:"Authentication,omitempty" name:"Authentication"`
+
+	// 账号类型，IsAdmin的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 }
 
 type AccountDetail struct {
@@ -73,6 +76,9 @@ type AccountDetail struct {
 
 	// win-windows鉴权账户需要host
 	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 账号类型。L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 }
 
 type AccountPassword struct {
@@ -87,8 +93,11 @@ type AccountPrivilege struct {
 	// 数据库用户名
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 数据库权限。ReadWrite表示可读写，ReadOnly表示只读
+	// 数据库权限。ReadWrite表示可读写，ReadOnly表示只读,Delete表示删除DB对该账户的权限，DBOwner所有者
 	Privilege *string `json:"Privilege,omitempty" name:"Privilege"`
+
+	// 账户名称，L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 }
 
 type AccountPrivilegeModifyInfo struct {
@@ -98,8 +107,11 @@ type AccountPrivilegeModifyInfo struct {
 	// 账号权限变更信息
 	DBPrivileges []*DBPrivilegeModifyInfo `json:"DBPrivileges,omitempty" name:"DBPrivileges"`
 
-	// 是否为管理员账户
+	// 是否为管理员账户,当值为true 等价于基础版AccountType=L0，高可用AccountType=L1，当值为false时，表示删除管理员权限，默认false
 	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
+
+	// 账号类型，IsAdmin字段的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 }
 
 type AccountRemark struct {
@@ -2154,7 +2166,7 @@ type DBPrivilege struct {
 	// 数据库名
 	DBName *string `json:"DBName,omitempty" name:"DBName"`
 
-	// 数据库权限，ReadWrite表示可读写，ReadOnly表示只读
+	// 数据库权限，ReadWrite表示可读写，ReadOnly表示只读，DBOwner所有者
 	Privilege *string `json:"Privilege,omitempty" name:"Privilege"`
 }
 
@@ -2162,7 +2174,7 @@ type DBPrivilegeModifyInfo struct {
 	// 数据库名
 	DBName *string `json:"DBName,omitempty" name:"DBName"`
 
-	// 权限变更信息。ReadWrite表示可读写，ReadOnly表示只读，Delete表示删除账号对该DB的权限
+	// 权限变更信息。ReadWrite表示可读写，ReadOnly表示只读，Delete表示删除账号对该DB的权限，DBOwner所有者
 	Privilege *string `json:"Privilege,omitempty" name:"Privilege"`
 }
 
@@ -2172,6 +2184,14 @@ type DBRemark struct {
 
 	// 备注信息
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type DBRenameRes struct {
+	// 新数据库名称
+	NewName *string `json:"NewName,omitempty" name:"NewName"`
+
+	// 老数据库名称
+	OldName *string `json:"OldName,omitempty" name:"OldName"`
 }
 
 type DatabaseTuple struct {
@@ -2250,6 +2270,9 @@ type DbNormalDetail struct {
 
 	// 用户类型
 	UserAccessDesc *string `json:"UserAccessDesc,omitempty" name:"UserAccessDesc"`
+
+	// 数据库创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type DbRollbackTimeInfo struct {
@@ -6386,6 +6409,10 @@ type Migration struct {
 	// 是否是最终恢复，全量导入任务该字段为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRecovery *string `json:"IsRecovery,omitempty" name:"IsRecovery"`
+
+	// 重命名的数据库名称集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBRename []*DBRenameRes `json:"DBRename,omitempty" name:"DBRename"`
 }
 
 type MigrationAction struct {
@@ -6569,6 +6596,9 @@ type ModifyBackupMigrationRequestParams struct {
 
 	// UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
 	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles"`
+
+	// 需要重命名的数据库名称集合
+	DBRename []*RenameRestoreDatabase `json:"DBRename,omitempty" name:"DBRename"`
 }
 
 type ModifyBackupMigrationRequest struct {
@@ -6591,6 +6621,9 @@ type ModifyBackupMigrationRequest struct {
 
 	// UploadType是COS_URL时这里时URL，COS_UPLOAD这里填备份文件的名字；只支持1个备份文件，但1个备份文件内可包含多个库
 	BackupFiles []*string `json:"BackupFiles,omitempty" name:"BackupFiles"`
+
+	// 需要重命名的数据库名称集合
+	DBRename []*RenameRestoreDatabase `json:"DBRename,omitempty" name:"DBRename"`
 }
 
 func (r *ModifyBackupMigrationRequest) ToJsonString() string {
@@ -6611,6 +6644,7 @@ func (r *ModifyBackupMigrationRequest) FromJsonString(s string) error {
 	delete(f, "RecoveryType")
 	delete(f, "UploadType")
 	delete(f, "BackupFiles")
+	delete(f, "DBRename")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupMigrationRequest has unknown keys!", "")
 	}

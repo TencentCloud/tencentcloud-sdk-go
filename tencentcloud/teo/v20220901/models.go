@@ -27,6 +27,35 @@ type AccelerateType struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type AccelerationDomain struct {
+	// 源站信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginDetail *OriginDetail `json:"OriginDetail,omitempty" name:"OriginDetail"`
+
+	// 创建时间。
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 加速域名名称。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 修改时间。
+	ModifiedOn *string `json:"ModifiedOn,omitempty" name:"ModifiedOn"`
+
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 加速域名状态，取值有：
+	// <li>online：已生效；</li>
+	// <li>process：部署中；</li>
+	// <li>offline：已停用；</li>
+	// <li>forbidden：已封禁；</li>
+	// <li>init：未生效，待激活站点；</li>
+	DomainStatus *string `json:"DomainStatus,omitempty" name:"DomainStatus"`
+
+	// CNAME 地址。
+	Cname *string `json:"Cname,omitempty" name:"Cname"`
+}
+
 type AclCondition struct {
 	// 匹配字段，取值有：
 	// <li>host：请求域名；</li>
@@ -762,6 +791,74 @@ type Compression struct {
 	// <li>gzip：gzip算法。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms"`
+}
+
+// Predefined struct for user
+type CreateAccelerationDomainRequestParams struct {
+	// 加速域名所属站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 加速域名名称。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 源站信息。
+	OriginInfo *OriginInfo `json:"OriginInfo,omitempty" name:"OriginInfo"`
+}
+
+type CreateAccelerationDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 加速域名所属站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 加速域名名称。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 源站信息。
+	OriginInfo *OriginInfo `json:"OriginInfo,omitempty" name:"OriginInfo"`
+}
+
+func (r *CreateAccelerationDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccelerationDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "DomainName")
+	delete(f, "OriginInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccelerationDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAccelerationDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAccelerationDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAccelerationDomainResponseParams `json:"Response"`
+}
+
+func (r *CreateAccelerationDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccelerationDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1942,6 +2039,78 @@ type DefaultServerCertInfo struct {
 }
 
 // Predefined struct for user
+type DeleteAccelerationDomainsRequestParams struct {
+	// 加速域名所属站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 需要删除的加速域名ID列表。
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
+
+	// 是否强制删除。当域名存在关联资源（如马甲域名、流量调度功能）时，是否强制删除该域名，取值有：
+	// <li> true：删除该域名及所有关联资源；</li>
+	// <li> false：当该加速域名存在关联资源时，不允许删除。</li>不填写，默认值为：false。
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+type DeleteAccelerationDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 加速域名所属站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 需要删除的加速域名ID列表。
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
+
+	// 是否强制删除。当域名存在关联资源（如马甲域名、流量调度功能）时，是否强制删除该域名，取值有：
+	// <li> true：删除该域名及所有关联资源；</li>
+	// <li> false：当该加速域名存在关联资源时，不允许删除。</li>不填写，默认值为：false。
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+func (r *DeleteAccelerationDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccelerationDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "DomainNames")
+	delete(f, "Force")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccelerationDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAccelerationDomainsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAccelerationDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAccelerationDomainsResponseParams `json:"Response"`
+}
+
+func (r *DeleteAccelerationDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccelerationDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAliasDomainRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -2304,6 +2473,130 @@ func (r *DeleteZoneResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccelerationDomainsRequestParams struct {
+	// 加速域名所属站点ID。不填写该参数默认返回所有站点下的加速域名。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>domain-name<br>   按照【<strong>加速域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 列表排序方式，取值有：
+	// <li>asc：升序排列；</li>
+	// <li>desc：降序排列。</li>默认值为asc。
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 匹配方式，取值有：
+	// <li>all：返回匹配所有查询条件的加速域名；</li>
+	// <li>any：返回匹配任意一个查询条件的加速域名。</li>默认值为all。
+	Match *string `json:"Match,omitempty" name:"Match"`
+
+	// 分页查询限制数目，默认值：20，上限：200。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页查询偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序依据，取值有：
+	// <li>created_on：加速域名创建时间；</li>
+	// <li>domain-name：加速域名名称；</li>
+	// </li>默认根据domain-name属性排序。
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+type DescribeAccelerationDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 加速域名所属站点ID。不填写该参数默认返回所有站点下的加速域名。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>domain-name<br>   按照【<strong>加速域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 列表排序方式，取值有：
+	// <li>asc：升序排列；</li>
+	// <li>desc：降序排列。</li>默认值为asc。
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 匹配方式，取值有：
+	// <li>all：返回匹配所有查询条件的加速域名；</li>
+	// <li>any：返回匹配任意一个查询条件的加速域名。</li>默认值为all。
+	Match *string `json:"Match,omitempty" name:"Match"`
+
+	// 分页查询限制数目，默认值：20，上限：200。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页查询偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序依据，取值有：
+	// <li>created_on：加速域名创建时间；</li>
+	// <li>domain-name：加速域名名称；</li>
+	// </li>默认根据domain-name属性排序。
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+func (r *DescribeAccelerationDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccelerationDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
+	delete(f, "Direction")
+	delete(f, "Match")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccelerationDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccelerationDomainsResponseParams struct {
+	// 加速域名总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 加速域名列表。
+	AccelerationDomains []*AccelerationDomain `json:"AccelerationDomains,omitempty" name:"AccelerationDomains"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAccelerationDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccelerationDomainsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccelerationDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccelerationDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7298,6 +7591,157 @@ type MaxAge struct {
 }
 
 // Predefined struct for user
+type ModifyAccelerationDomainRequestParams struct {
+	// 加速域名所属站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 加速域名名称。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 源站信息。
+	OriginInfo *OriginInfo `json:"OriginInfo,omitempty" name:"OriginInfo"`
+}
+
+type ModifyAccelerationDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 加速域名所属站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 加速域名名称。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 源站信息。
+	OriginInfo *OriginInfo `json:"OriginInfo,omitempty" name:"OriginInfo"`
+}
+
+func (r *ModifyAccelerationDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccelerationDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "DomainName")
+	delete(f, "OriginInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccelerationDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccelerationDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAccelerationDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccelerationDomainResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccelerationDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccelerationDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccelerationDomainStatusesRequestParams struct {
+	// 加速域名所属站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 要执行状态变更的加速域名列表。
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
+
+	// 加速域名状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 是否强制停用。当域名存在关联资源（如马甲域名、流量调度功能）时，是否强制停用该域名，取值有：
+	// <li> true：停用该域名及所有关联资源；</li>
+	// <li> false：当该加速域名存在关联资源时，不允许停用。</li>不填写，默认值为：false。
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+type ModifyAccelerationDomainStatusesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 加速域名所属站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 要执行状态变更的加速域名列表。
+	DomainNames []*string `json:"DomainNames,omitempty" name:"DomainNames"`
+
+	// 加速域名状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 是否强制停用。当域名存在关联资源（如马甲域名、流量调度功能）时，是否强制停用该域名，取值有：
+	// <li> true：停用该域名及所有关联资源；</li>
+	// <li> false：当该加速域名存在关联资源时，不允许停用。</li>不填写，默认值为：false。
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+func (r *ModifyAccelerationDomainStatusesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccelerationDomainStatusesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "DomainNames")
+	delete(f, "Status")
+	delete(f, "Force")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccelerationDomainStatusesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccelerationDomainStatusesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAccelerationDomainStatusesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccelerationDomainStatusesResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccelerationDomainStatusesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccelerationDomainStatusesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAliasDomainRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -8901,6 +9345,37 @@ type Origin struct {
 	CosPrivateAccess *string `json:"CosPrivateAccess,omitempty" name:"CosPrivateAccess"`
 }
 
+type OriginDetail struct {
+	// 源站类型，取值有：
+	// <li>IP_DOMAIN：IPV4、IPV6或域名类型源站；</li>
+	// <li>COS：COS源。</li>
+	// <li>ORIGIN_GROUP：源站组类型源站。</li>
+	// <li>AWS_S3：AWS S3对象存储源站。</li>
+	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
+
+	// 源站地址，当OriginType参数指定为ORIGIN_GROUP时，该参数填写源站组ID，其他情况下填写源站地址。
+	Origin *string `json:"Origin,omitempty" name:"Origin"`
+
+	// 备用源站组ID，该参数在OriginType参数指定为ORIGIN_GROUP时生效，为空表示不使用备用源站。
+	BackupOrigin *string `json:"BackupOrigin,omitempty" name:"BackupOrigin"`
+
+	// 主源源站组名称，当OriginType参数指定为ORIGIN_GROUP时该参数生效。
+	OriginGroupName *string `json:"OriginGroupName,omitempty" name:"OriginGroupName"`
+
+	// 备用源站源站组名称，当OriginType参数指定为ORIGIN_GROUP，且用户指定了被用源站时该参数生效。
+	BackOriginGroupName *string `json:"BackOriginGroupName,omitempty" name:"BackOriginGroupName"`
+
+	// 指定是否允许访问私有对象存储源站。当源站类型OriginType=COS或AWS_S3时有效 取值有：
+	// <li>on：使用私有鉴权；</li>
+	// <li>off：不使用私有鉴权。</li>
+	// 不填写，默认值为off。
+	PrivateAccess *string `json:"PrivateAccess,omitempty" name:"PrivateAccess"`
+
+	// 私有鉴权使用参数，当源站类型PrivateAccess=on时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitempty" name:"PrivateParameters"`
+}
+
 type OriginGroup struct {
 	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -8935,6 +9410,34 @@ type OriginGroup struct {
 	// 当OriginType=self时，表示回源Host。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostHeader *string `json:"HostHeader,omitempty" name:"HostHeader"`
+}
+
+type OriginInfo struct {
+	// 源站类型，取值有：
+	// <li>IP_DOMAIN：IPV4、IPV6或域名类型源站；</li>
+	// <li>COS：COS源。</li>
+	// <li>ORIGIN_GROUP：源站组类型源站。</li>
+	// <li>AWS_S3：AWS S3对象存储源站。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
+
+	// 源站地址，当OriginType参数指定为ORIGIN_GROUP时，该参数填写源站组ID，其他情况下填写源站地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Origin *string `json:"Origin,omitempty" name:"Origin"`
+
+	// 备用源站组ID，该参数在OriginType参数指定为ORIGIN_GROUP时生效，为空表示不使用备用源站。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupOrigin *string `json:"BackupOrigin,omitempty" name:"BackupOrigin"`
+
+	// 指定是否允许访问私有对象存储源站，当源站类型OriginType=COS或AWS_S3时有效，取值有：
+	// <li>on：使用私有鉴权；</li>
+	// <li>off：不使用私有鉴权。</li>不填写，默认值为：off。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateAccess *string `json:"PrivateAccess,omitempty" name:"PrivateAccess"`
+
+	// 私有鉴权使用参数，当源站类型PrivateAccess=on时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitempty" name:"PrivateParameters"`
 }
 
 type OriginProtectionInfo struct {

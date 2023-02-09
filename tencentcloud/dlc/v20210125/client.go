@@ -503,6 +503,122 @@ func (c *Client) BindWorkGroupsToUserWithContext(ctx context.Context, request *B
     return
 }
 
+func NewCancelNotebookSessionStatementRequest() (request *CancelNotebookSessionStatementRequest) {
+    request = &CancelNotebookSessionStatementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CancelNotebookSessionStatement")
+    
+    
+    return
+}
+
+func NewCancelNotebookSessionStatementResponse() (response *CancelNotebookSessionStatementResponse) {
+    response = &CancelNotebookSessionStatementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelNotebookSessionStatement
+// 本接口（CancelNotebookSessionStatement）用于取消session statement
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CancelNotebookSessionStatement(request *CancelNotebookSessionStatementRequest) (response *CancelNotebookSessionStatementResponse, err error) {
+    return c.CancelNotebookSessionStatementWithContext(context.Background(), request)
+}
+
+// CancelNotebookSessionStatement
+// 本接口（CancelNotebookSessionStatement）用于取消session statement
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CancelNotebookSessionStatementWithContext(ctx context.Context, request *CancelNotebookSessionStatementRequest) (response *CancelNotebookSessionStatementResponse, err error) {
+    if request == nil {
+        request = NewCancelNotebookSessionStatementRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelNotebookSessionStatement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelNotebookSessionStatementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelNotebookSessionStatementBatchRequest() (request *CancelNotebookSessionStatementBatchRequest) {
+    request = &CancelNotebookSessionStatementBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CancelNotebookSessionStatementBatch")
+    
+    
+    return
+}
+
+func NewCancelNotebookSessionStatementBatchResponse() (response *CancelNotebookSessionStatementBatchResponse) {
+    response = &CancelNotebookSessionStatementBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelNotebookSessionStatementBatch
+// 本接口（CancelNotebookSessionStatementBatch）用于按批取消Session statement。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CancelNotebookSessionStatementBatch(request *CancelNotebookSessionStatementBatchRequest) (response *CancelNotebookSessionStatementBatchResponse, err error) {
+    return c.CancelNotebookSessionStatementBatchWithContext(context.Background(), request)
+}
+
+// CancelNotebookSessionStatementBatch
+// 本接口（CancelNotebookSessionStatementBatch）用于按批取消Session statement。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CancelNotebookSessionStatementBatchWithContext(ctx context.Context, request *CancelNotebookSessionStatementBatchRequest) (response *CancelNotebookSessionStatementBatchResponse, err error) {
+    if request == nil {
+        request = NewCancelNotebookSessionStatementBatchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelNotebookSessionStatementBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelNotebookSessionStatementBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -898,7 +1014,7 @@ func NewCreateInternalTableResponse() (response *CreateInternalTableResponse) {
 }
 
 // CreateInternalTable
-// 创建托管存储内表
+// 创建托管存储内表（该接口已废弃）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -912,7 +1028,7 @@ func (c *Client) CreateInternalTable(request *CreateInternalTableRequest) (respo
 }
 
 // CreateInternalTable
-// 创建托管存储内表
+// 创建托管存储内表（该接口已废弃）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -989,6 +1105,126 @@ func (c *Client) CreateNotebookSessionWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewCreateNotebookSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateNotebookSessionStatementRequest() (request *CreateNotebookSessionStatementRequest) {
+    request = &CreateNotebookSessionStatementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateNotebookSessionStatement")
+    
+    
+    return
+}
+
+func NewCreateNotebookSessionStatementResponse() (response *CreateNotebookSessionStatementResponse) {
+    response = &CreateNotebookSessionStatementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNotebookSessionStatement
+// 本接口（CreateNotebookSessionStatement）用于创建session statement
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CreateNotebookSessionStatement(request *CreateNotebookSessionStatementRequest) (response *CreateNotebookSessionStatementResponse, err error) {
+    return c.CreateNotebookSessionStatementWithContext(context.Background(), request)
+}
+
+// CreateNotebookSessionStatement
+// 本接口（CreateNotebookSessionStatement）用于创建session statement
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CreateNotebookSessionStatementWithContext(ctx context.Context, request *CreateNotebookSessionStatementRequest) (response *CreateNotebookSessionStatementResponse, err error) {
+    if request == nil {
+        request = NewCreateNotebookSessionStatementRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotebookSessionStatement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNotebookSessionStatementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateNotebookSessionStatementSupportBatchSQLRequest() (request *CreateNotebookSessionStatementSupportBatchSQLRequest) {
+    request = &CreateNotebookSessionStatementSupportBatchSQLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateNotebookSessionStatementSupportBatchSQL")
+    
+    
+    return
+}
+
+func NewCreateNotebookSessionStatementSupportBatchSQLResponse() (response *CreateNotebookSessionStatementSupportBatchSQLResponse) {
+    response = &CreateNotebookSessionStatementSupportBatchSQLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNotebookSessionStatementSupportBatchSQL
+// 本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建Statement批量运行SQL任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CreateNotebookSessionStatementSupportBatchSQL(request *CreateNotebookSessionStatementSupportBatchSQLRequest) (response *CreateNotebookSessionStatementSupportBatchSQLResponse, err error) {
+    return c.CreateNotebookSessionStatementSupportBatchSQLWithContext(context.Background(), request)
+}
+
+// CreateNotebookSessionStatementSupportBatchSQL
+// 本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建Statement批量运行SQL任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CreateNotebookSessionStatementSupportBatchSQLWithContext(ctx context.Context, request *CreateNotebookSessionStatementSupportBatchSQLRequest) (response *CreateNotebookSessionStatementSupportBatchSQLResponse, err error) {
+    if request == nil {
+        request = NewCreateNotebookSessionStatementSupportBatchSQLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotebookSessionStatementSupportBatchSQL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNotebookSessionStatementSupportBatchSQLResponse()
     err = c.Send(request, response)
     return
 }
@@ -1639,6 +1875,66 @@ func (c *Client) CreateWorkGroupWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewDeleteNotebookSessionRequest() (request *DeleteNotebookSessionRequest) {
+    request = &DeleteNotebookSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DeleteNotebookSession")
+    
+    
+    return
+}
+
+func NewDeleteNotebookSessionResponse() (response *DeleteNotebookSessionResponse) {
+    response = &DeleteNotebookSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteNotebookSession
+// 本接口（DeleteNotebookSession）用于删除notebook livy session
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DeleteNotebookSession(request *DeleteNotebookSessionRequest) (response *DeleteNotebookSessionResponse, err error) {
+    return c.DeleteNotebookSessionWithContext(context.Background(), request)
+}
+
+// DeleteNotebookSession
+// 本接口（DeleteNotebookSession）用于删除notebook livy session
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DeleteNotebookSessionWithContext(ctx context.Context, request *DeleteNotebookSessionRequest) (response *DeleteNotebookSessionResponse, err error) {
+    if request == nil {
+        request = NewDeleteNotebookSessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNotebookSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNotebookSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteScriptRequest() (request *DeleteScriptRequest) {
     request = &DeleteScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2123,6 +2419,64 @@ func (c *Client) DescribeDMSTablesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeDataEnginesRequest() (request *DescribeDataEnginesRequest) {
+    request = &DescribeDataEnginesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDataEngines")
+    
+    
+    return
+}
+
+func NewDescribeDataEnginesResponse() (response *DescribeDataEnginesResponse) {
+    response = &DescribeDataEnginesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataEngines
+// 本接口（DescribeDataEngines）用于获取DataEngines信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDataEngines(request *DescribeDataEnginesRequest) (response *DescribeDataEnginesResponse, err error) {
+    return c.DescribeDataEnginesWithContext(context.Background(), request)
+}
+
+// DescribeDataEngines
+// 本接口（DescribeDataEngines）用于获取DataEngines信息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDataEnginesWithContext(ctx context.Context, request *DescribeDataEnginesRequest) (response *DescribeDataEnginesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataEnginesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataEngines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataEnginesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
     request = &DescribeDatabasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2239,6 +2593,292 @@ func (c *Client) DescribeNotebookSessionWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeNotebookSessionLogRequest() (request *DescribeNotebookSessionLogRequest) {
+    request = &DescribeNotebookSessionLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeNotebookSessionLog")
+    
+    
+    return
+}
+
+func NewDescribeNotebookSessionLogResponse() (response *DescribeNotebookSessionLogResponse) {
+    response = &DescribeNotebookSessionLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebookSessionLog
+// 本接口（DescribeNotebookSessionLog）用于获取notebook livy session日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DescribeNotebookSessionLog(request *DescribeNotebookSessionLogRequest) (response *DescribeNotebookSessionLogResponse, err error) {
+    return c.DescribeNotebookSessionLogWithContext(context.Background(), request)
+}
+
+// DescribeNotebookSessionLog
+// 本接口（DescribeNotebookSessionLog）用于获取notebook livy session日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DescribeNotebookSessionLogWithContext(ctx context.Context, request *DescribeNotebookSessionLogRequest) (response *DescribeNotebookSessionLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookSessionLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookSessionLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookSessionLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebookSessionStatementRequest() (request *DescribeNotebookSessionStatementRequest) {
+    request = &DescribeNotebookSessionStatementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeNotebookSessionStatement")
+    
+    
+    return
+}
+
+func NewDescribeNotebookSessionStatementResponse() (response *DescribeNotebookSessionStatementResponse) {
+    response = &DescribeNotebookSessionStatementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebookSessionStatement
+// 本接口（DescribeNotebookSessionStatement）用于获取session statement信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DescribeNotebookSessionStatement(request *DescribeNotebookSessionStatementRequest) (response *DescribeNotebookSessionStatementResponse, err error) {
+    return c.DescribeNotebookSessionStatementWithContext(context.Background(), request)
+}
+
+// DescribeNotebookSessionStatement
+// 本接口（DescribeNotebookSessionStatement）用于获取session statement信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DescribeNotebookSessionStatementWithContext(ctx context.Context, request *DescribeNotebookSessionStatementRequest) (response *DescribeNotebookSessionStatementResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookSessionStatementRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookSessionStatement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookSessionStatementResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebookSessionStatementSqlResultRequest() (request *DescribeNotebookSessionStatementSqlResultRequest) {
+    request = &DescribeNotebookSessionStatementSqlResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeNotebookSessionStatementSqlResult")
+    
+    
+    return
+}
+
+func NewDescribeNotebookSessionStatementSqlResultResponse() (response *DescribeNotebookSessionStatementSqlResultResponse) {
+    response = &DescribeNotebookSessionStatementSqlResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebookSessionStatementSqlResult
+// 本接口（DescribeNotebookSessionStatementSqlResult）用于获取statement运行结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNotebookSessionStatementSqlResult(request *DescribeNotebookSessionStatementSqlResultRequest) (response *DescribeNotebookSessionStatementSqlResultResponse, err error) {
+    return c.DescribeNotebookSessionStatementSqlResultWithContext(context.Background(), request)
+}
+
+// DescribeNotebookSessionStatementSqlResult
+// 本接口（DescribeNotebookSessionStatementSqlResult）用于获取statement运行结果。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNotebookSessionStatementSqlResultWithContext(ctx context.Context, request *DescribeNotebookSessionStatementSqlResultRequest) (response *DescribeNotebookSessionStatementSqlResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookSessionStatementSqlResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookSessionStatementSqlResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookSessionStatementSqlResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebookSessionStatementsRequest() (request *DescribeNotebookSessionStatementsRequest) {
+    request = &DescribeNotebookSessionStatementsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeNotebookSessionStatements")
+    
+    
+    return
+}
+
+func NewDescribeNotebookSessionStatementsResponse() (response *DescribeNotebookSessionStatementsResponse) {
+    response = &DescribeNotebookSessionStatementsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebookSessionStatements
+// 本接口（DescribeNotebookSessionStatements）用于获取Session Statement列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DescribeNotebookSessionStatements(request *DescribeNotebookSessionStatementsRequest) (response *DescribeNotebookSessionStatementsResponse, err error) {
+    return c.DescribeNotebookSessionStatementsWithContext(context.Background(), request)
+}
+
+// DescribeNotebookSessionStatements
+// 本接口（DescribeNotebookSessionStatements）用于获取Session Statement列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) DescribeNotebookSessionStatementsWithContext(ctx context.Context, request *DescribeNotebookSessionStatementsRequest) (response *DescribeNotebookSessionStatementsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookSessionStatementsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookSessionStatements require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookSessionStatementsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebookSessionsRequest() (request *DescribeNotebookSessionsRequest) {
+    request = &DescribeNotebookSessionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeNotebookSessions")
+    
+    
+    return
+}
+
+func NewDescribeNotebookSessionsResponse() (response *DescribeNotebookSessionsResponse) {
+    response = &DescribeNotebookSessionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebookSessions
+// 本接口（DescribeNotebookSessions）用于获取notebook livy session列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNotebookSessions(request *DescribeNotebookSessionsRequest) (response *DescribeNotebookSessionsResponse, err error) {
+    return c.DescribeNotebookSessionsWithContext(context.Background(), request)
+}
+
+// DescribeNotebookSessions
+// 本接口（DescribeNotebookSessions）用于获取notebook livy session列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNotebookSessionsWithContext(ctx context.Context, request *DescribeNotebookSessionsRequest) (response *DescribeNotebookSessionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookSessionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookSessions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookSessionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResultDownloadRequest() (request *DescribeResultDownloadRequest) {
     request = &DescribeResultDownloadRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2266,8 +2906,6 @@ func NewDescribeResultDownloadResponse() (response *DescribeResultDownloadRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
-//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
 func (c *Client) DescribeResultDownload(request *DescribeResultDownloadRequest) (response *DescribeResultDownloadResponse, err error) {
     return c.DescribeResultDownloadWithContext(context.Background(), request)
 }
@@ -2281,8 +2919,6 @@ func (c *Client) DescribeResultDownload(request *DescribeResultDownloadRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
-//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
 func (c *Client) DescribeResultDownloadWithContext(ctx context.Context, request *DescribeResultDownloadRequest) (response *DescribeResultDownloadResponse, err error) {
     if request == nil {
         request = NewDescribeResultDownloadRequest()
@@ -3239,6 +3875,64 @@ func (c *Client) DropDMSTableWithContext(ctx context.Context, request *DropDMSTa
     request.SetContext(ctx)
     
     response = NewDropDMSTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGenerateCreateMangedTableSqlRequest() (request *GenerateCreateMangedTableSqlRequest) {
+    request = &GenerateCreateMangedTableSqlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "GenerateCreateMangedTableSql")
+    
+    
+    return
+}
+
+func NewGenerateCreateMangedTableSqlResponse() (response *GenerateCreateMangedTableSqlResponse) {
+    response = &GenerateCreateMangedTableSqlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GenerateCreateMangedTableSql
+// 生成创建托管表语句
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateCreateMangedTableSql(request *GenerateCreateMangedTableSqlRequest) (response *GenerateCreateMangedTableSqlResponse, err error) {
+    return c.GenerateCreateMangedTableSqlWithContext(context.Background(), request)
+}
+
+// GenerateCreateMangedTableSql
+// 生成创建托管表语句
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenerateCreateMangedTableSqlWithContext(ctx context.Context, request *GenerateCreateMangedTableSqlRequest) (response *GenerateCreateMangedTableSqlResponse, err error) {
+    if request == nil {
+        request = NewGenerateCreateMangedTableSqlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateCreateMangedTableSql require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateCreateMangedTableSqlResponse()
     err = c.Send(request, response)
     return
 }

@@ -17,11 +17,23 @@ package v20220817
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
+	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
+	DRYRUNOPERATION = "DryRunOperation"
+
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 课堂状态错误，课堂已开始。
 	FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
 
 	// 课堂时长不能超过5小时。
 	FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+
+	// 图片参数错误。
+	FAILEDOPERATION_IMAGEARGINVALID = "FailedOperation.ImageArgInvalid"
 
 	// 源账号已存在。
 	FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
@@ -50,8 +62,20 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// 操作被拒绝。
+	OPERATIONDENIED = "OperationDenied"
+
+	// 请求的次数超过了频率限制。
+	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+
+	// 资源被占用。
+	RESOURCEINUSE = "ResourceInUse"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -74,12 +98,21 @@ const (
 	// 用户不存在。
 	RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
 	// 房间统计结果计算中，请稍候。
 	RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+
+	// 资源售罄。
+	RESOURCESSOLDOUT = "ResourcesSoldOut"
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )

@@ -73,6 +73,74 @@ type AutoCalloutTaskInfo struct {
 }
 
 // Predefined struct for user
+type BindNumberCallOutSkillGroupRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待绑定的号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 待绑定的技能组Id列表
+	SkillGroupIds []*uint64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+}
+
+type BindNumberCallOutSkillGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待绑定的号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 待绑定的技能组Id列表
+	SkillGroupIds []*uint64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+}
+
+func (r *BindNumberCallOutSkillGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindNumberCallOutSkillGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Number")
+	delete(f, "SkillGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindNumberCallOutSkillGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindNumberCallOutSkillGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BindNumberCallOutSkillGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *BindNumberCallOutSkillGroupResponseParams `json:"Response"`
+}
+
+func (r *BindNumberCallOutSkillGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindNumberCallOutSkillGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BindStaffSkillGroupListRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1855,6 +1923,80 @@ func (r *DescribeIMCdrsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNumbersRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 页数，从0开始
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认20
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+type DescribeNumbersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 页数，从0开始
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认20
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeNumbersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNumbersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNumbersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNumbersResponseParams struct {
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 号码列表
+	Numbers []*NumberInfo `json:"Numbers,omitempty" name:"Numbers"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNumbersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNumbersResponseParams `json:"Response"`
+}
+
+func (r *DescribeNumbersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNumbersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePSTNActiveSessionListRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -2990,6 +3132,14 @@ func (r *ModifyStaffResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NumberInfo struct {
+	// 号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 绑定的外呼技能组
+	CallOutSkillGroupIds []*uint64 `json:"CallOutSkillGroupIds,omitempty" name:"CallOutSkillGroupIds"`
+}
+
 type PSTNSession struct {
 	// 会话 ID
 	SessionID *string `json:"SessionID,omitempty" name:"SessionID"`
@@ -3657,6 +3807,78 @@ type TelCdrInfo struct {
 	// 排队技能组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueuedSkillGroupName *string `json:"QueuedSkillGroupName,omitempty" name:"QueuedSkillGroupName"`
+
+	// 通话中语音留言录音URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoicemailRecordURL []*string `json:"VoicemailRecordURL,omitempty" name:"VoicemailRecordURL"`
+}
+
+// Predefined struct for user
+type UnbindNumberCallOutSkillGroupRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待解绑的号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 待解绑的技能组Id列表
+	SkillGroupIds []*uint64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+}
+
+type UnbindNumberCallOutSkillGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待解绑的号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 待解绑的技能组Id列表
+	SkillGroupIds []*uint64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+}
+
+func (r *UnbindNumberCallOutSkillGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindNumberCallOutSkillGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Number")
+	delete(f, "SkillGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindNumberCallOutSkillGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindNumberCallOutSkillGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnbindNumberCallOutSkillGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindNumberCallOutSkillGroupResponseParams `json:"Response"`
+}
+
+func (r *UnbindNumberCallOutSkillGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindNumberCallOutSkillGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

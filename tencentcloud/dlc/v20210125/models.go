@@ -709,6 +709,128 @@ type CSVSerde struct {
 }
 
 // Predefined struct for user
+type CancelNotebookSessionStatementBatchRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 批任务唯一标识
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+type CancelNotebookSessionStatementBatchRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 批任务唯一标识
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *CancelNotebookSessionStatementBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelNotebookSessionStatementBatchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelNotebookSessionStatementBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelNotebookSessionStatementBatchResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CancelNotebookSessionStatementBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelNotebookSessionStatementBatchResponseParams `json:"Response"`
+}
+
+func (r *CancelNotebookSessionStatementBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelNotebookSessionStatementBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelNotebookSessionStatementRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// Session Statement唯一标识
+	StatementId *string `json:"StatementId,omitempty" name:"StatementId"`
+}
+
+type CancelNotebookSessionStatementRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// Session Statement唯一标识
+	StatementId *string `json:"StatementId,omitempty" name:"StatementId"`
+}
+
+func (r *CancelNotebookSessionStatementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelNotebookSessionStatementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "StatementId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelNotebookSessionStatementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelNotebookSessionStatementResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CancelNotebookSessionStatementResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelNotebookSessionStatementResponseParams `json:"Response"`
+}
+
+func (r *CancelNotebookSessionStatementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelNotebookSessionStatementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CancelTaskRequestParams struct {
 	// 任务Id，全局唯一
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -1568,6 +1690,155 @@ func (r *CreateNotebookSessionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateNotebookSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNotebookSessionStatementRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 执行的代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 类型，当前支持：spark、pyspark、sparkr、sql
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+}
+
+type CreateNotebookSessionStatementRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 执行的代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 类型，当前支持：spark、pyspark、sparkr、sql
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+}
+
+func (r *CreateNotebookSessionStatementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookSessionStatementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "Code")
+	delete(f, "Kind")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookSessionStatementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNotebookSessionStatementResponseParams struct {
+	// Session Statement详情
+	NotebookSessionStatement *NotebookSessionStatementInfo `json:"NotebookSessionStatement,omitempty" name:"NotebookSessionStatement"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateNotebookSessionStatementResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNotebookSessionStatementResponseParams `json:"Response"`
+}
+
+func (r *CreateNotebookSessionStatementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookSessionStatementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNotebookSessionStatementSupportBatchSQLRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 执行的代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 类型，当前支持：spark、pyspark、sparkr、sql
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 是否保存运行结果
+	SaveResult *bool `json:"SaveResult,omitempty" name:"SaveResult"`
+}
+
+type CreateNotebookSessionStatementSupportBatchSQLRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 执行的代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 类型，当前支持：spark、pyspark、sparkr、sql
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 是否保存运行结果
+	SaveResult *bool `json:"SaveResult,omitempty" name:"SaveResult"`
+}
+
+func (r *CreateNotebookSessionStatementSupportBatchSQLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookSessionStatementSupportBatchSQLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "Code")
+	delete(f, "Kind")
+	delete(f, "SaveResult")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookSessionStatementSupportBatchSQLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNotebookSessionStatementSupportBatchSQLResponseParams struct {
+	// Session Statement详情
+	NotebookSessionStatementBatches *NotebookSessionStatementBatchInformation `json:"NotebookSessionStatementBatches,omitempty" name:"NotebookSessionStatementBatches"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateNotebookSessionStatementSupportBatchSQLResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNotebookSessionStatementSupportBatchSQLResponseParams `json:"Response"`
+}
+
+func (r *CreateNotebookSessionStatementSupportBatchSQLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookSessionStatementSupportBatchSQLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2529,6 +2800,20 @@ func (r *CreateWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CrontabResumeSuspendStrategy struct {
+	// 定时拉起时间：如：周一8点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResumeTime *string `json:"ResumeTime,omitempty" name:"ResumeTime"`
+
+	// 定时挂起时间：如：周一20点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuspendTime *string `json:"SuspendTime,omitempty" name:"SuspendTime"`
+
+	// 挂起配置：0（默认）：等待任务结束后挂起、1：强制挂起
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuspendStrategy *int64 `json:"SuspendStrategy,omitempty" name:"SuspendStrategy"`
+}
+
 type DMSColumn struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2748,6 +3033,123 @@ type DMSTableInfo struct {
 	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
 }
 
+type DataEngineInfo struct {
+	// DataEngine名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// 引擎类型 spark/presto
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 集群资源类型 spark_private/presto_private/presto_cu/spark_cu
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 引用ID
+	QuotaId *string `json:"QuotaId,omitempty" name:"QuotaId"`
+
+	// 数据引擎状态  -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中
+	State *int64 `json:"State,omitempty" name:"State"`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 集群规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 计费模式 0共享模式 1按量计费 2包年包月
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 最小集群数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinClusters *int64 `json:"MinClusters,omitempty" name:"MinClusters"`
+
+	// 最大集群数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxClusters *int64 `json:"MaxClusters,omitempty" name:"MaxClusters"`
+
+	// 是否自动恢复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoResume *bool `json:"AutoResume,omitempty" name:"AutoResume"`
+
+	// 自动恢复时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpendAfter *int64 `json:"SpendAfter,omitempty" name:"SpendAfter"`
+
+	// 集群网段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 是否为默认引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultDataEngine *bool `json:"DefaultDataEngine,omitempty" name:"DefaultDataEngine"`
+
+	// 返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 引擎id
+	DataEngineId *string `json:"DataEngineId,omitempty" name:"DataEngineId"`
+
+	// 操作者
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+
+	// 到期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 隔离时间
+	IsolatedTime *string `json:"IsolatedTime,omitempty" name:"IsolatedTime"`
+
+	// 冲正时间
+	ReversalTime *string `json:"ReversalTime,omitempty" name:"ReversalTime"`
+
+	// 用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
+
+	// 标签对集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
+
+	// 引擎拥有的权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions"`
+
+	// 是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoSuspend *bool `json:"AutoSuspend,omitempty" name:"AutoSuspend"`
+
+	// 定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrontabResumeSuspend *int64 `json:"CrontabResumeSuspend,omitempty" name:"CrontabResumeSuspend"`
+
+	// 定时启停策略，复杂类型：包含启停时间、挂起集群策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrontabResumeSuspendStrategy *CrontabResumeSuspendStrategy `json:"CrontabResumeSuspendStrategy,omitempty" name:"CrontabResumeSuspendStrategy"`
+
+	// 引擎执行任务类型，有效值：SQL/BATCH
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExecType *string `json:"EngineExecType,omitempty" name:"EngineExecType"`
+
+	// 自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 集群自动挂起时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoSuspendTime *int64 `json:"AutoSuspendTime,omitempty" name:"AutoSuspendTime"`
+
+	// 网络连接配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkConnectionSet []*NetworkConnection `json:"NetworkConnectionSet,omitempty" name:"NetworkConnectionSet"`
+
+	// ui的跳转地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UiURL *string `json:"UiURL,omitempty" name:"UiURL"`
+}
+
 type DataFormat struct {
 	// 文本格式，TextFile。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2834,6 +3236,60 @@ type DatabaseResponseInfo struct {
 	// 数据库ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseId *string `json:"DatabaseId,omitempty" name:"DatabaseId"`
+}
+
+// Predefined struct for user
+type DeleteNotebookSessionRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+type DeleteNotebookSessionRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+func (r *DeleteNotebookSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNotebookSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotebookSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNotebookSessionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteNotebookSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNotebookSessionResponseParams `json:"Response"`
+}
+
+func (r *DeleteNotebookSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNotebookSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3645,6 +4101,150 @@ func (r *DescribeDMSTablesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDataEnginesRequestParams struct {
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 滤类型，传参Name应为以下其中一个,
+	// data-engine-name - String 
+	// engine-type - String
+	// state - String 
+	// mode - String 
+	// create-time - String 
+	// message - String
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段，支持如下字段类型，create-time
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
+	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 已废弃，请使用DatasourceConnectionNameSet
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 是否不返回共享引擎，true不返回共享引擎，false可以返回共享引擎
+	ExcludePublicEngine *bool `json:"ExcludePublicEngine,omitempty" name:"ExcludePublicEngine"`
+
+	// 参数应该为引擎权限类型，有效类型："USE", "MODIFY", "OPERATE", "MONITOR", "DELETE"
+	AccessTypes []*string `json:"AccessTypes,omitempty" name:"AccessTypes"`
+
+	// 引擎执行任务类型，有效值：SQL/BATCH
+	EngineExecType *string `json:"EngineExecType,omitempty" name:"EngineExecType"`
+
+	// 引擎类型，有效值：spark/presto
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 网络配置列表，若传入该参数，则返回网络配置关联的计算引擎
+	DatasourceConnectionNameSet []*string `json:"DatasourceConnectionNameSet,omitempty" name:"DatasourceConnectionNameSet"`
+}
+
+type DescribeDataEnginesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 滤类型，传参Name应为以下其中一个,
+	// data-engine-name - String 
+	// engine-type - String
+	// state - String 
+	// mode - String 
+	// create-time - String 
+	// message - String
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段，支持如下字段类型，create-time
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc。
+	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 已废弃，请使用DatasourceConnectionNameSet
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 是否不返回共享引擎，true不返回共享引擎，false可以返回共享引擎
+	ExcludePublicEngine *bool `json:"ExcludePublicEngine,omitempty" name:"ExcludePublicEngine"`
+
+	// 参数应该为引擎权限类型，有效类型："USE", "MODIFY", "OPERATE", "MONITOR", "DELETE"
+	AccessTypes []*string `json:"AccessTypes,omitempty" name:"AccessTypes"`
+
+	// 引擎执行任务类型，有效值：SQL/BATCH
+	EngineExecType *string `json:"EngineExecType,omitempty" name:"EngineExecType"`
+
+	// 引擎类型，有效值：spark/presto
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 网络配置列表，若传入该参数，则返回网络配置关联的计算引擎
+	DatasourceConnectionNameSet []*string `json:"DatasourceConnectionNameSet,omitempty" name:"DatasourceConnectionNameSet"`
+}
+
+func (r *DescribeDataEnginesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEnginesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "Limit")
+	delete(f, "DatasourceConnectionName")
+	delete(f, "ExcludePublicEngine")
+	delete(f, "AccessTypes")
+	delete(f, "EngineExecType")
+	delete(f, "EngineType")
+	delete(f, "DatasourceConnectionNameSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEnginesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEnginesResponseParams struct {
+	// 数据引擎列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngines []*DataEngineInfo `json:"DataEngines,omitempty" name:"DataEngines"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDataEnginesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataEnginesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataEnginesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEnginesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDatabasesRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -3740,6 +4340,83 @@ func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNotebookSessionLogRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 分页参数，默认200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeNotebookSessionLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 分页参数，默认200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeNotebookSessionLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionLogResponseParams struct {
+	// 日志信息，默认获取最新的200条
+	Logs []*string `json:"Logs,omitempty" name:"Logs"`
+
+	// 分页参数，默认200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookSessionLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookSessionLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookSessionLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNotebookSessionRequestParams struct {
 	// Session唯一标识
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -3793,6 +4470,323 @@ func (r *DescribeNotebookSessionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNotebookSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionStatementRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// Session Statement唯一标识
+	StatementId *string `json:"StatementId,omitempty" name:"StatementId"`
+}
+
+type DescribeNotebookSessionStatementRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// Session Statement唯一标识
+	StatementId *string `json:"StatementId,omitempty" name:"StatementId"`
+}
+
+func (r *DescribeNotebookSessionStatementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionStatementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "StatementId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionStatementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionStatementResponseParams struct {
+	// Session Statement详情
+	NotebookSessionStatement *NotebookSessionStatementInfo `json:"NotebookSessionStatement,omitempty" name:"NotebookSessionStatement"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookSessionStatementResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookSessionStatementResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookSessionStatementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionStatementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionStatementSqlResultRequestParams struct {
+	// 任务唯一ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 返回结果的最大行数，范围0~1000，默认为1000.
+	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
+
+	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
+	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+type DescribeNotebookSessionStatementSqlResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务唯一ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 返回结果的最大行数，范围0~1000，默认为1000.
+	MaxResults *uint64 `json:"MaxResults,omitempty" name:"MaxResults"`
+
+	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
+	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+}
+
+func (r *DescribeNotebookSessionStatementSqlResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionStatementSqlResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "MaxResults")
+	delete(f, "NextToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionStatementSqlResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionStatementSqlResultResponseParams struct {
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 结果数据
+	ResultSet *string `json:"ResultSet,omitempty" name:"ResultSet"`
+
+	// schema
+	ResultSchema []*Column `json:"ResultSchema,omitempty" name:"ResultSchema"`
+
+	// 分页信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
+
+	// 存储结果地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputPath *string `json:"OutputPath,omitempty" name:"OutputPath"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookSessionStatementSqlResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookSessionStatementSqlResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookSessionStatementSqlResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionStatementSqlResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionStatementsRequestParams struct {
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 批任务id
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+type DescribeNotebookSessionStatementsRequest struct {
+	*tchttp.BaseRequest
+	
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 批任务id
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *DescribeNotebookSessionStatementsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionStatementsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionStatementsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionStatementsResponseParams struct {
+	// Session Statement详情
+	NotebookSessionStatements *NotebookSessionStatementBatchInformation `json:"NotebookSessionStatements,omitempty" name:"NotebookSessionStatements"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookSessionStatementsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookSessionStatementsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookSessionStatementsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionStatementsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionsRequestParams struct {
+	// DLC Spark作业引擎名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+	State []*string `json:"State,omitempty" name:"State"`
+
+	// 排序字段（默认按创建时间）
+	SortFields []*string `json:"SortFields,omitempty" name:"SortFields"`
+
+	// 排序字段：true：升序、false：降序（默认）
+	Asc *bool `json:"Asc,omitempty" name:"Asc"`
+
+	// 分页字段
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页字段
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeNotebookSessionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// DLC Spark作业引擎名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+	State []*string `json:"State,omitempty" name:"State"`
+
+	// 排序字段（默认按创建时间）
+	SortFields []*string `json:"SortFields,omitempty" name:"SortFields"`
+
+	// 排序字段：true：升序、false：降序（默认）
+	Asc *bool `json:"Asc,omitempty" name:"Asc"`
+
+	// 分页字段
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页字段
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeNotebookSessionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineName")
+	delete(f, "State")
+	delete(f, "SortFields")
+	delete(f, "Asc")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookSessionsResponseParams struct {
+	// session总数量
+	TotalElements *int64 `json:"TotalElements,omitempty" name:"TotalElements"`
+
+	// 总页数
+	TotalPages *int64 `json:"TotalPages,omitempty" name:"TotalPages"`
+
+	// 当前页码
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 当前页数量
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// session列表信息
+	Sessions []*NotebookSessions `json:"Sessions,omitempty" name:"Sessions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookSessionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookSessionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookSessionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookSessionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5378,6 +6372,57 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+// Predefined struct for user
+type GenerateCreateMangedTableSqlRequestParams struct {
+
+}
+
+type GenerateCreateMangedTableSqlRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GenerateCreateMangedTableSqlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateCreateMangedTableSqlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateCreateMangedTableSqlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateCreateMangedTableSqlResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GenerateCreateMangedTableSqlResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateCreateMangedTableSqlResponseParams `json:"Response"`
+}
+
+func (r *GenerateCreateMangedTableSqlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateCreateMangedTableSqlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type JobLogResult struct {
 	// 日志时间戳，毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6037,6 +7082,80 @@ func (r *ModifyWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NetworkConnection struct {
+	// 网络配置id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 网络配置唯一标志符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociateId *string `json:"AssociateId,omitempty" name:"AssociateId"`
+
+	// 计算引擎id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HouseId *string `json:"HouseId,omitempty" name:"HouseId"`
+
+	// 数据源id(已废弃)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionId *string `json:"DatasourceConnectionId,omitempty" name:"DatasourceConnectionId"`
+
+	// 网络配置状态（0-初始化，1-正常）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitempty" name:"State"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 创建用户Appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Appid *int64 `json:"Appid,omitempty" name:"Appid"`
+
+	// 计算引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HouseName *string `json:"HouseName,omitempty" name:"HouseName"`
+
+	// 网络配置名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 网络配置类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkConnectionType *int64 `json:"NetworkConnectionType,omitempty" name:"NetworkConnectionType"`
+
+	// 创建用户uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 创建用户SubAccountUin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+
+	// 网络配置描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkConnectionDesc *string `json:"NetworkConnectionDesc,omitempty" name:"NetworkConnectionDesc"`
+
+	// 数据源vpcid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionVpcId *string `json:"DatasourceConnectionVpcId,omitempty" name:"DatasourceConnectionVpcId"`
+
+	// 数据源SubnetId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionSubnetId *string `json:"DatasourceConnectionSubnetId,omitempty" name:"DatasourceConnectionSubnetId"`
+
+	// 数据源SubnetId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionCidrBlock *string `json:"DatasourceConnectionCidrBlock,omitempty" name:"DatasourceConnectionCidrBlock"`
+
+	// 数据源SubnetCidrBlock
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionSubnetCidrBlock *string `json:"DatasourceConnectionSubnetCidrBlock,omitempty" name:"DatasourceConnectionSubnetCidrBlock"`
+}
+
 type NotebookSessionInfo struct {
 	// Session名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -6111,6 +7230,99 @@ type NotebookSessionInfo struct {
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+}
+
+type NotebookSessionStatementBatchInformation struct {
+	// 任务详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotebookSessionStatementBatch []*NotebookSessionStatementInfo `json:"NotebookSessionStatementBatch,omitempty" name:"NotebookSessionStatementBatch"`
+
+	// 当前批任务是否运行完成
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAvailable *bool `json:"IsAvailable,omitempty" name:"IsAvailable"`
+
+	// Session唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// Batch唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+type NotebookSessionStatementInfo struct {
+	// 完成时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Completed *int64 `json:"Completed,omitempty" name:"Completed"`
+
+	// 开始时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Started *int64 `json:"Started,omitempty" name:"Started"`
+
+	// 完成进度，百分制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+	// Session Statement唯一标识
+	StatementId *string `json:"StatementId,omitempty" name:"StatementId"`
+
+	// Session Statement状态，包含：waiting（排队中）、running（运行中）、available（正常）、error（异常）、cancelling（取消中）、cancelled（已取消）
+	State *string `json:"State,omitempty" name:"State"`
+
+	// Statement输出信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutPut *StatementOutput `json:"OutPut,omitempty" name:"OutPut"`
+
+	// 批任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 运行语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type NotebookSessions struct {
+	// 类型，当前支持：spark、pyspark、sparkr、sql
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// Session唯一标识
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 代理用户，默认为root
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyUser *string `json:"ProxyUser,omitempty" name:"ProxyUser"`
+
+	// Session状态，包含：not_started（未启动）、starting（已启动）、idle（等待输入）、busy(正在运行statement)、shutting_down（停止）、error（异常）、dead（已退出）、killed（被杀死）、success（正常停止）
+	State *string `json:"State,omitempty" name:"State"`
+
+	// Spark任务返回的AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkAppId *string `json:"SparkAppId,omitempty" name:"SparkAppId"`
+
+	// Session名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Session创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 引擎名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// 最新的运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastRunningTime *string `json:"LastRunningTime,omitempty" name:"LastRunningTime"`
+
+	// 创建者
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// spark ui地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkUiUrl *string `json:"SparkUiUrl,omitempty" name:"SparkUiUrl"`
 }
 
 type Other struct {
@@ -6430,6 +7642,36 @@ type SparkJobInfo struct {
 	JobExecutorMaxNumbers *int64 `json:"JobExecutorMaxNumbers,omitempty" name:"JobExecutorMaxNumbers"`
 }
 
+type StatementOutput struct {
+	// 执行总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionCount *int64 `json:"ExecutionCount,omitempty" name:"ExecutionCount"`
+
+	// Statement数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*KVPair `json:"Data,omitempty" name:"Data"`
+
+	// Statement状态:ok,error
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorName *string `json:"ErrorName,omitempty" name:"ErrorName"`
+
+	// 错误类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorValue *string `json:"ErrorValue,omitempty" name:"ErrorValue"`
+
+	// 错误堆栈信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage []*string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// SQL类型任务结果返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SQLResult *string `json:"SQLResult,omitempty" name:"SQLResult"`
+}
+
 type StreamingStatistics struct {
 	// 任务开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -6664,6 +7906,16 @@ type TableResponseInfo struct {
 	// 数据表行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+}
+
+type TagInfo struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type Task struct {
