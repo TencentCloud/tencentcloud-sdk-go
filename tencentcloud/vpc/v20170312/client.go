@@ -8518,7 +8518,7 @@ func NewDescribeCcnRoutesResponse() (response *DescribeCcnRoutesResponse) {
 }
 
 // DescribeCcnRoutes
-// 本接口（DescribeCcnRoutes）用于查询已加入云联网（CCN）的路由
+// 本接口（DescribeCcnRoutes）用于查询已加入云联网（CCN）的路由。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
@@ -8531,7 +8531,7 @@ func (c *Client) DescribeCcnRoutes(request *DescribeCcnRoutesRequest) (response 
 }
 
 // DescribeCcnRoutes
-// 本接口（DescribeCcnRoutes）用于查询已加入云联网（CCN）的路由
+// 本接口（DescribeCcnRoutes）用于查询已加入云联网（CCN）的路由。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
@@ -12746,7 +12746,7 @@ func NewDisableCcnRoutesResponse() (response *DisableCcnRoutesResponse) {
 }
 
 // DisableCcnRoutes
-// 本接口（DisableCcnRoutes）用于禁用已经启用的云联网（CCN）路由
+// 本接口（DisableCcnRoutes）用于禁用已经启用的云联网（CCN）路由。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -12757,7 +12757,7 @@ func (c *Client) DisableCcnRoutes(request *DisableCcnRoutesRequest) (response *D
 }
 
 // DisableCcnRoutes
-// 本接口（DisableCcnRoutes）用于禁用已经启用的云联网（CCN）路由
+// 本接口（DisableCcnRoutes）用于禁用已经启用的云联网（CCN）路由。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"

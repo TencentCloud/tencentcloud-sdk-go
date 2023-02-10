@@ -7330,6 +7330,12 @@ type Layer7Rule struct {
 
 	// 规则所属的资源实例
 	InstanceDetailRule []*RuleInstanceRelation `json:"InstanceDetailRule,omitempty" name:"InstanceDetailRule"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口号
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
 }
 
 type ListenerCcThreholdConfig struct {
@@ -8863,6 +8869,9 @@ type SourceServer struct {
 
 	// 源站的回源权重，取值1~100
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 端口号：0~65535
+	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
 type SpeedValue struct {

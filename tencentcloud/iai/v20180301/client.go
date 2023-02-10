@@ -3736,6 +3736,10 @@ func NewGetUpgradeGroupFaceModelVersionJobListResponse() (response *GetUpgradeGr
 }
 
 // GetUpgradeGroupFaceModelVersionJobList
+// 避免官网歧义
+//
+// 
+//
 // 获取人员库升级任务列表
 //
 // 可能返回的错误码:
@@ -3752,6 +3756,10 @@ func (c *Client) GetUpgradeGroupFaceModelVersionJobList(request *GetUpgradeGroup
 }
 
 // GetUpgradeGroupFaceModelVersionJobList
+// 避免官网歧义
+//
+// 
+//
 // 获取人员库升级任务列表
 //
 // 可能返回的错误码:
@@ -3798,6 +3806,10 @@ func NewGetUpgradeGroupFaceModelVersionResultResponse() (response *GetUpgradeGro
 }
 
 // GetUpgradeGroupFaceModelVersionResult
+// 避免官网歧义
+//
+// 
+//
 // 人员库升级结果查询
 //
 // 可能返回的错误码:
@@ -3813,6 +3825,10 @@ func (c *Client) GetUpgradeGroupFaceModelVersionResult(request *GetUpgradeGroupF
 }
 
 // GetUpgradeGroupFaceModelVersionResult
+// 避免官网歧义
+//
+// 
+//
 // 人员库升级结果查询
 //
 // 可能返回的错误码:
@@ -4386,6 +4402,10 @@ func NewRevertGroupFaceModelVersionResponse() (response *RevertGroupFaceModelVer
 }
 
 // RevertGroupFaceModelVersion
+// 此接口文档早已废弃，为了避免官网18版本存留歧义，需要下线
+//
+// 
+//
 // 本接口用于回滚人员库的人脸识别算法模型版本。单个人员库有且仅有一次回滚机会。
 //
 // 
@@ -4406,6 +4426,10 @@ func (c *Client) RevertGroupFaceModelVersion(request *RevertGroupFaceModelVersio
 }
 
 // RevertGroupFaceModelVersion
+// 此接口文档早已废弃，为了避免官网18版本存留歧义，需要下线
+//
+// 
+//
 // 本接口用于回滚人员库的人脸识别算法模型版本。单个人员库有且仅有一次回滚机会。
 //
 // 
@@ -5254,6 +5278,10 @@ func NewUpgradeGroupFaceModelVersionResponse() (response *UpgradeGroupFaceModelV
 }
 
 // UpgradeGroupFaceModelVersion
+// 接口已经不使用了，需要下线掉，以免留在官网产生歧义
+//
+// 
+//
 // 升级人员库。升级过程中，人员库仍然为原算法版本，人员库相关操作仍然支持。升级完成后，人员库为新算法版本。
 //
 // 单个人员库有且仅支持一次回滚操作。
@@ -5275,6 +5303,10 @@ func (c *Client) UpgradeGroupFaceModelVersion(request *UpgradeGroupFaceModelVers
 }
 
 // UpgradeGroupFaceModelVersion
+// 接口已经不使用了，需要下线掉，以免留在官网产生歧义
+//
+// 
+//
 // 升级人员库。升级过程中，人员库仍然为原算法版本，人员库相关操作仍然支持。升级完成后，人员库为新算法版本。
 //
 // 单个人员库有且仅支持一次回滚操作。

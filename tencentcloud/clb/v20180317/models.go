@@ -1096,7 +1096,7 @@ type CreateListenerRequestParams struct {
 	// 要将监听器创建到哪些端口，每个端口对应一个新的监听器。
 	Ports []*int64 `json:"Ports,omitempty" name:"Ports"`
 
-	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL（TCP_SSL 正在内测中，如需使用请通过工单申请）。
+	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。
@@ -1152,7 +1152,7 @@ type CreateListenerRequest struct {
 	// 要将监听器创建到哪些端口，每个端口对应一个新的监听器。
 	Ports []*int64 `json:"Ports,omitempty" name:"Ports"`
 
-	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL（TCP_SSL 正在内测中，如需使用请通过工单申请）。
+	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 要创建的监听器名称列表，名称与Ports数组按序一一对应，如不需立即命名，则无需提供此参数。

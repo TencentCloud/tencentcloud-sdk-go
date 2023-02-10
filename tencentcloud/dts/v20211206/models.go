@@ -3282,13 +3282,15 @@ type Objects struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedObjects []*string `json:"AdvancedObjects,omitempty" name:"AdvancedObjects"`
 
-	// OnlineDDL类型
+	// OnlineDDL类型，冗余字段不做配置用途
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineDDL *OnlineDDL `json:"OnlineDDL,omitempty" name:"OnlineDDL"`
 }
 
 type OnlineDDL struct {
-
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type Options struct {
@@ -3643,7 +3645,7 @@ type ResumeMigrateJobRequestParams struct {
 	// 数据迁移任务ID
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
-	// 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作
+	// 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作；注意，clearData、overwrite仅对redis生效，normal仅针对非redis链路生效
 	ResumeOption *string `json:"ResumeOption,omitempty" name:"ResumeOption"`
 }
 
@@ -3653,7 +3655,7 @@ type ResumeMigrateJobRequest struct {
 	// 数据迁移任务ID
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
-	// 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作
+	// 恢复任务的模式，目前的取值有：clearData 清空目标实例数据，overwrite 以覆盖写的方式执行任务，normal 跟正常流程一样，不做额外动作；注意，clearData、overwrite仅对redis生效，normal仅针对非redis链路生效
 	ResumeOption *string `json:"ResumeOption,omitempty" name:"ResumeOption"`
 }
 
@@ -4520,6 +4522,14 @@ type Table struct {
 	// 过滤条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterCondition *string `json:"FilterCondition,omitempty" name:"FilterCondition"`
+
+	// 同步临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在同步过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["_t1_new","_t1_old"]；如要对t1进行gh-ost操作，此项配置应该为["_t1_ghc","_t1_gho","_t1_del"]，pt-osc与gh-ost产生的临时表可同时配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TmpTables []*string `json:"TmpTables,omitempty" name:"TmpTables"`
+
+	// 编辑表类型，rename(表映射)，pt(同步附加表)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableEditMode *string `json:"TableEditMode,omitempty" name:"TableEditMode"`
 }
 
 type TableItem struct {
@@ -4527,11 +4537,11 @@ type TableItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
 
-	// 迁移后的表名，当TableEditMode为rename时此项必填
+	// 迁移后的表名，当TableEditMode为rename时此项必填，注意此配置与TmpTables互斥，只能使用其中一种
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewTableName *string `json:"NewTableName,omitempty" name:"NewTableName"`
 
-	// 迁移临时表，针对pt-osc等工具在迁移过程中产生的临时表同步，需要提前将可能的临时表配置在这里，当TableEditMode为pt时此项必填
+	// 迁移临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在迁移过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["_t1_new","_t1_old"]；如要对t1进行gh-ost操作，此项配置应该为["_t1_ghc","_t1_gho","_t1_del"]，pt-osc与gh-ost产生的临时表可同时配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpTables []*string `json:"TmpTables,omitempty" name:"TmpTables"`
 

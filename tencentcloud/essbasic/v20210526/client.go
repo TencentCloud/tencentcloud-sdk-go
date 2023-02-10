@@ -818,7 +818,7 @@ func NewChannelCreateFlowRemindsResponse() (response *ChannelCreateFlowRemindsRe
 //
 // 注意:
 //
-// 该接口需要开白后使用
+// 该接口不可直接调用，请联系电子签运营开通后方可调用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -834,7 +834,7 @@ func (c *Client) ChannelCreateFlowReminds(request *ChannelCreateFlowRemindsReque
 //
 // 注意:
 //
-// 该接口需要开白后使用
+// 该接口不可直接调用，请联系电子签运营开通后方可调用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

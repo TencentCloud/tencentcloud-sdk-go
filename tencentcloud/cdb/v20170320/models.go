@@ -1354,7 +1354,7 @@ type CreateBackupRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备。
+	// 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备，snapshot - 快照备份。基础版实例仅支持快照备份。
 	BackupMethod *string `json:"BackupMethod,omitempty" name:"BackupMethod"`
 
 	// 需要备份的库表信息，如果不设置该参数，则默认整实例备份。在 BackupMethod=logical 逻辑备份中才可设置该参数。指定的库表必须存在，否则可能导致备份失败。
@@ -1371,7 +1371,7 @@ type CreateBackupRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备。
+	// 目标备份方法，可选的值：logical - 逻辑冷备，physical - 物理冷备，snapshot - 快照备份。基础版实例仅支持快照备份。
 	BackupMethod *string `json:"BackupMethod,omitempty" name:"BackupMethod"`
 
 	// 需要备份的库表信息，如果不设置该参数，则默认整实例备份。在 BackupMethod=logical 逻辑备份中才可设置该参数。指定的库表必须存在，否则可能导致备份失败。

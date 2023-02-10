@@ -7029,6 +7029,10 @@ type InternalTenant struct {
 	// 消息最大保留空间，MB为单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRetentionSizeInMB *uint64 `json:"MaxRetentionSizeInMB,omitempty" name:"MaxRetentionSizeInMB"`
+
+	// public Access Enabled
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" name:"PublicAccessEnabled"`
 }
 
 // Predefined struct for user
@@ -9045,6 +9049,10 @@ type RocketMQClusterConfig struct {
 
 	// 消息最长延时，以毫秒为单位
 	MaxLatencyTime *uint64 `json:"MaxLatencyTime,omitempty" name:"MaxLatencyTime"`
+
+	// 单个主题最大队列数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxQueuesPerTopic *uint64 `json:"MaxQueuesPerTopic,omitempty" name:"MaxQueuesPerTopic"`
 }
 
 type RocketMQClusterDetail struct {
@@ -9239,7 +9247,7 @@ type RocketMQVipInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceVersion *string `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 
-	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常
+	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 节点数量

@@ -1282,7 +1282,7 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 //
 // 注意:
 //
-// 该接口需要开白后使用
+// 该接口不可直接调用，需要联系运营开通后方可调用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1300,7 +1300,7 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 //
 // 注意:
 //
-// 该接口需要开白后使用
+// 该接口不可直接调用，需要联系运营开通后方可调用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

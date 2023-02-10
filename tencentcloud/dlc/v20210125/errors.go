@@ -143,6 +143,9 @@ const (
 	// 指定数据源连接没有找到。
 	RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
 
+	// 当前无资源创建session，请稍后重试或使用包年包月集群。
+	RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.ResourceNotFoundCode_SessionInsufficientResources"
+
 	// 未找到结果路径。
 	RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 

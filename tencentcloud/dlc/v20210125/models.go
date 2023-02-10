@@ -6374,12 +6374,33 @@ type Filter struct {
 
 // Predefined struct for user
 type GenerateCreateMangedTableSqlRequestParams struct {
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitempty" name:"TableBaseInfo"`
 
+	// 表字段信息
+	Columns []*TColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 表分区信息
+	Partitions []*TPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 表属性信息
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 }
 
 type GenerateCreateMangedTableSqlRequest struct {
 	*tchttp.BaseRequest
 	
+	// 表基本信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitempty" name:"TableBaseInfo"`
+
+	// 表字段信息
+	Columns []*TColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 表分区信息
+	Partitions []*TPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 表属性信息
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
 }
 
 func (r *GenerateCreateMangedTableSqlRequest) ToJsonString() string {
@@ -6394,7 +6415,10 @@ func (r *GenerateCreateMangedTableSqlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TableBaseInfo")
+	delete(f, "Columns")
+	delete(f, "Partitions")
+	delete(f, "Properties")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateCreateMangedTableSqlRequest has unknown keys!", "")
 	}
@@ -6403,6 +6427,9 @@ func (r *GenerateCreateMangedTableSqlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GenerateCreateMangedTableSqlResponseParams struct {
+	// 创建托管存储内表sql语句描述
+	Execution *Execution `json:"Execution,omitempty" name:"Execution"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

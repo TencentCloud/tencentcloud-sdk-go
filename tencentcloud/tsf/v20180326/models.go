@@ -2031,6 +2031,22 @@ type ContainerGroupDetail struct {
 	// 部署组健康检查设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
+
+	// 允许PlainYamlDeploy
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowPlainYamlDeploy *bool `json:"AllowPlainYamlDeploy,omitempty" name:"AllowPlainYamlDeploy"`
+
+	// 是否不等于ServiceConfig
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNotEqualServiceConfig *bool `json:"IsNotEqualServiceConfig,omitempty" name:"IsNotEqualServiceConfig"`
+
+	// 仓库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
 // Predefined struct for user
@@ -4783,6 +4799,64 @@ func (r *DeleteContainerGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteContainerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFileConfigRequestParams struct {
+	// 文件配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+type DeleteFileConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件配置项ID
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
+}
+
+func (r *DeleteFileConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFileConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFileConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFileConfigResponseParams struct {
+	// 删除结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteFileConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteFileConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteFileConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFileConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

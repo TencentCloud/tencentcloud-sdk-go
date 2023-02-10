@@ -1902,23 +1902,27 @@ type CCN struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
-	// 限速类型，INTER_REGION_LIMIT为地域间限速；OUTER_REGION_LIMIT为地域出口限速。
+	// 限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
 
 	// 标签键值对。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 
-	// 是否支持云联网路由优先级的功能。False：不支持，True：支持。
+	// 是否支持云联网路由优先级的功能。`False`：不支持，`True`：支持。
 	RoutePriorityFlag *bool `json:"RoutePriorityFlag,omitempty" name:"RoutePriorityFlag"`
 
 	// 实例关联的路由表个数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableCount *uint64 `json:"RouteTableCount,omitempty" name:"RouteTableCount"`
 
-	// 是否开启云联网多路由表特性。False：未开启，True：开启。
+	// 是否开启云联网多路由表特性。`False`：未开启，`True`：开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableFlag *bool `json:"RouteTableFlag,omitempty" name:"RouteTableFlag"`
+
+	// `true`：实例已被封禁，流量不通，`false`:解封禁。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSecurityLock *bool `json:"IsSecurityLock,omitempty" name:"IsSecurityLock"`
 
 	// 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2918,13 +2922,13 @@ type CreateCcnRequestParams struct {
 	// CCN描述信息，最大长度不能超过100个字节。
 	CcnDescription *string `json:"CcnDescription,omitempty" name:"CcnDescription"`
 
-	// CCN服务质量，'PT'：白金，'AU'：金，'AG'：银，默认为‘AU’。
+	// CCN服务质量，`PT`：白金，`AU`：金，`AG`：银，默认为`AU`。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 
-	// 计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。
+	// 计费模式，`PREPAID`：表示预付费，即包年包月，`POSTPAID`：表示后付费，即按量计费。默认：`POSTPAID`。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
-	// 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
+	// 限速类型，`OUTER_REGION_LIMIT`表示地域出口限速，`INTER_REGION_LIMIT`为地域间限速，默认为`OUTER_REGION_LIMIT`。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
@@ -2940,13 +2944,13 @@ type CreateCcnRequest struct {
 	// CCN描述信息，最大长度不能超过100个字节。
 	CcnDescription *string `json:"CcnDescription,omitempty" name:"CcnDescription"`
 
-	// CCN服务质量，'PT'：白金，'AU'：金，'AG'：银，默认为‘AU’。
+	// CCN服务质量，`PT`：白金，`AU`：金，`AG`：银，默认为`AU`。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 
-	// 计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。
+	// 计费模式，`PREPAID`：表示预付费，即包年包月，`POSTPAID`：表示后付费，即按量计费。默认：`POSTPAID`。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
-	// 限速类型，OUTER_REGION_LIMIT表示地域出口限速，INTER_REGION_LIMIT为地域间限速，默认为OUTER_REGION_LIMIT。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
+	// 限速类型，`OUTER_REGION_LIMIT`表示地域出口限速，`INTER_REGION_LIMIT`为地域间限速，默认为`OUTER_REGION_LIMIT`。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
 	BandwidthLimitType *string `json:"BandwidthLimitType,omitempty" name:"BandwidthLimitType"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
@@ -6204,16 +6208,16 @@ type CrossBorderCompliance struct {
 }
 
 type CrossBorderFlowMonitorData struct {
-	// 入带宽
+	// 入带宽，单位：`bps`。
 	InBandwidth []*int64 `json:"InBandwidth,omitempty" name:"InBandwidth"`
 
-	// 出带宽
+	// 出带宽，单位：`bps`。
 	OutBandwidth []*int64 `json:"OutBandwidth,omitempty" name:"OutBandwidth"`
 
-	// 入包
+	// 入包，单位：`pps`。
 	InPkg []*int64 `json:"InPkg,omitempty" name:"InPkg"`
 
-	// 出包
+	// 出包，单位：`pps`。
 	OutPkg []*int64 `json:"OutPkg,omitempty" name:"OutPkg"`
 }
 
@@ -9365,10 +9369,10 @@ func (r *DescribeCcnRegionBandwidthLimitsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeCcnRoutesRequestParams struct {
-	// CCN实例ID，形如：ccn-gree226l。
+	// CCN实例ID，形如：`ccn-gree226l`。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
-	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	// CCN路由策略唯一ID，形如：`ccnr-f49l6u0z`。
 	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds"`
 
 	// 过滤条件，参数不支持同时指定RouteIds和Filters。
@@ -9390,10 +9394,10 @@ type DescribeCcnRoutesRequestParams struct {
 type DescribeCcnRoutesRequest struct {
 	*tchttp.BaseRequest
 	
-	// CCN实例ID，形如：ccn-gree226l。
+	// CCN实例ID，形如：`ccn-gree226l`。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
-	// CCN路由策略唯一ID。形如：ccnr-f49l6u0z。
+	// CCN路由策略唯一ID，形如：`ccnr-f49l6u0z`。
 	RouteIds []*string `json:"RouteIds,omitempty" name:"RouteIds"`
 
 	// 过滤条件，参数不支持同时指定RouteIds和Filters。
@@ -9469,7 +9473,7 @@ type DescribeCcnsRequestParams struct {
 	CcnIds []*string `json:"CcnIds,omitempty" name:"CcnIds"`
 
 	// 过滤条件，参数不支持同时指定CcnIds和Filters。
-	// <li>ccn-id - String - （过滤条件）CCN唯一ID，形如：vpc-f49l6u0z。</li>
+	// <li>ccn-id - String - （过滤条件）CCN唯一ID，形如：`ccn-f49l6u0z`。</li>
 	// <li>ccn-name - String - （过滤条件）CCN名称。</li>
 	// <li>ccn-description - String - （过滤条件）CCN描述。</li>
 	// <li>state - String - （过滤条件）实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。</li>
@@ -9497,7 +9501,7 @@ type DescribeCcnsRequest struct {
 	CcnIds []*string `json:"CcnIds,omitempty" name:"CcnIds"`
 
 	// 过滤条件，参数不支持同时指定CcnIds和Filters。
-	// <li>ccn-id - String - （过滤条件）CCN唯一ID，形如：vpc-f49l6u0z。</li>
+	// <li>ccn-id - String - （过滤条件）CCN唯一ID，形如：`ccn-f49l6u0z`。</li>
 	// <li>ccn-name - String - （过滤条件）CCN名称。</li>
 	// <li>ccn-description - String - （过滤条件）CCN描述。</li>
 	// <li>state - String - （过滤条件）实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。</li>

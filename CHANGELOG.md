@@ -1,3 +1,184 @@
+# Release v1.0.592
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 52 次发布
+
+发布时间：2023-02-10 01:02:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Layer7Rule](https://cloud.tencent.com/document/api/1021/57582#Layer7Rule)
+
+	* 新增成员：Protocol, Vport
+
+* [SourceServer](https://cloud.tencent.com/document/api/1021/57582#SourceServer)
+
+	* 新增成员：Port
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 40 次发布
+
+发布时间：2023-02-10 01:28:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GenerateCreateMangedTableSql](https://cloud.tencent.com/document/api/1342/86306)
+
+	* 新增入参：TableBaseInfo, Columns, Partitions, Properties
+
+	* 新增出参：Execution
+
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 8 次发布
+
+发布时间：2023-02-10 01:32:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OnlineDDL](https://cloud.tencent.com/document/api/571/82108#OnlineDDL)
+
+	* 新增成员：Status
+
+* [Table](https://cloud.tencent.com/document/api/571/82108#Table)
+
+	* 新增成员：TmpTables, TableEditMode
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 23 次发布
+
+发布时间：2023-02-10 01:54:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRumLogExport](https://cloud.tencent.com/document/api/1464/86366)
+* [DescribeRumLogExports](https://cloud.tencent.com/document/api/1464/86365)
+* [ResumeProject](https://cloud.tencent.com/document/api/1464/86367)
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 45 次发布
+
+发布时间：2023-02-10 02:03:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InternalTenant](https://cloud.tencent.com/document/api/1179/46089#InternalTenant)
+
+	* 新增成员：PublicAccessEnabled
+
+* [RocketMQClusterConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterConfig)
+
+	* 新增成员：MaxQueuesPerTopic
+
+	* <font color="#dd0000">**修改成员**：</font>MaxTpsPerNamespace, MaxNamespaceNum, UsedNamespaceNum, MaxTopicNum, UsedTopicNum, MaxGroupNum, UsedGroupNum, MaxRetentionTime, MaxLatencyTime
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 30 次发布
+
+发布时间：2023-02-10 02:12:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApolloEnvParam](https://cloud.tencent.com/document/api/1364/54942#ApolloEnvParam)
+
+	* 新增成员：EnvDesc
+
+* [EnvAddressInfo](https://cloud.tencent.com/document/api/1364/54942#EnvAddressInfo)
+
+	* 新增成员：EnableConfigIntranet
+
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 83 次发布
+
+发布时间：2023-02-10 02:13:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteFileConfig](https://cloud.tencent.com/document/api/649/86369)
+
+修改数据结构：
+
+* [ContainerGroupDetail](https://cloud.tencent.com/document/api/649/36099#ContainerGroupDetail)
+
+	* 新增成员：AllowPlainYamlDeploy, IsNotEqualServiceConfig, RepoName, Alias
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 139 次发布
+
+发布时间：2023-02-10 02:17:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CCN](https://cloud.tencent.com/document/api/215/15824#CCN)
+
+	* 新增成员：IsSecurityLock
+
+
+
+
 # Release v1.0.591
 
 ## 语音识别(asr) 版本：2019-06-14

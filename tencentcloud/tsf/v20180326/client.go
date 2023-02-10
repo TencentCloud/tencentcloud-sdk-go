@@ -2469,6 +2469,56 @@ func (c *Client) DeleteContainerGroupWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteFileConfigRequest() (request *DeleteFileConfigRequest) {
+    request = &DeleteFileConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteFileConfig")
+    
+    
+    return
+}
+
+func NewDeleteFileConfigResponse() (response *DeleteFileConfigResponse) {
+    response = &DeleteFileConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteFileConfig
+// 删除文件配置项
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILECONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.FileConfigNotExistsOrPermissionDenied"
+//  INVALIDPARAMETERVALUE_RELEASEDFILECONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedFileConfigCanNotBeDeleted"
+func (c *Client) DeleteFileConfig(request *DeleteFileConfigRequest) (response *DeleteFileConfigResponse, err error) {
+    return c.DeleteFileConfigWithContext(context.Background(), request)
+}
+
+// DeleteFileConfig
+// 删除文件配置项
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_FILECONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.FileConfigNotExistsOrPermissionDenied"
+//  INVALIDPARAMETERVALUE_RELEASEDFILECONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedFileConfigCanNotBeDeleted"
+func (c *Client) DeleteFileConfigWithContext(ctx context.Context, request *DeleteFileConfigRequest) (response *DeleteFileConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteFileConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFileConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFileConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
     request = &DeleteGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

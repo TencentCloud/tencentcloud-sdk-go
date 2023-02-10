@@ -1080,6 +1080,7 @@ func NewCreateNotebookSessionResponse() (response *CreateNotebookSessionResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.ResourceNotFoundCode_SessionInsufficientResources"
 func (c *Client) CreateNotebookSession(request *CreateNotebookSessionRequest) (response *CreateNotebookSessionResponse, err error) {
     return c.CreateNotebookSessionWithContext(context.Background(), request)
 }
@@ -1093,6 +1094,7 @@ func (c *Client) CreateNotebookSession(request *CreateNotebookSessionRequest) (r
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.ResourceNotFoundCode_SessionInsufficientResources"
 func (c *Client) CreateNotebookSessionWithContext(ctx context.Context, request *CreateNotebookSessionRequest) (response *CreateNotebookSessionResponse, err error) {
     if request == nil {
         request = NewCreateNotebookSessionRequest()

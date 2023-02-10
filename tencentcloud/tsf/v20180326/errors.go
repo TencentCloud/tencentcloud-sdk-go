@@ -815,6 +815,9 @@ const (
 	// 配置项已经发布，不允许删除。
 	INVALIDPARAMETERVALUE_RELEASEDCONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedConfigCanNotBeDeleted"
 
+	// 文件配置项已经发布，不允许删除。
+	INVALIDPARAMETERVALUE_RELEASEDFILECONFIGCANNOTBEDELETED = "InvalidParameterValue.ReleasedFileConfigCanNotBeDeleted"
+
 	// 无权限操作资源%s。
 	INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 

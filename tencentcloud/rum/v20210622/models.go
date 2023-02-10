@@ -5356,6 +5356,169 @@ func (r *DescribeRumGroupLogResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRumLogExportRequestParams struct {
+	// 导出标识name
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 开始时间（必填）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 结束时间（必填）
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目ID（必填）
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+
+	// field条件
+	Fields []*string `json:"Fields,omitempty" name:"Fields"`
+}
+
+type DescribeRumLogExportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导出标识name
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 开始时间（必填）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
+	Query *string `json:"Query,omitempty" name:"Query"`
+
+	// 结束时间（必填）
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目ID（必填）
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+
+	// field条件
+	Fields []*string `json:"Fields,omitempty" name:"Fields"`
+}
+
+func (r *DescribeRumLogExportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRumLogExportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "StartTime")
+	delete(f, "Query")
+	delete(f, "EndTime")
+	delete(f, "ID")
+	delete(f, "Fields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRumLogExportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRumLogExportResponseParams struct {
+	// 返回字符串
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRumLogExportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRumLogExportResponseParams `json:"Response"`
+}
+
+func (r *DescribeRumLogExportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRumLogExportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRumLogExportsRequestParams struct {
+	// 页面大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数，第几页
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 项目ID（必填）
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+}
+
+type DescribeRumLogExportsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页面大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数，第几页
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 项目ID（必填）
+	ID *int64 `json:"ID,omitempty" name:"ID"`
+}
+
+func (r *DescribeRumLogExportsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRumLogExportsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "PageNum")
+	delete(f, "ID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRumLogExportsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRumLogExportsResponseParams struct {
+	// 返回字符串
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRumLogExportsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRumLogExportsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRumLogExportsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRumLogExportsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRumLogListRequestParams struct {
 	// 排序方式  desc  asc（必填）
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
@@ -6358,6 +6521,60 @@ func (r *ResumeInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResumeInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeProjectRequestParams struct {
+	// 项目 id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type ResumeProjectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目 id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *ResumeProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeProjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeProjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeProjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ResumeProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeProjectResponseParams `json:"Response"`
+}
+
+func (r *ResumeProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

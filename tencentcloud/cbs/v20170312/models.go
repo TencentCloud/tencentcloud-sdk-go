@@ -3197,11 +3197,11 @@ type ModifySnapshotAttributeRequestParams struct {
 	// 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
-	// 新的快照名称。最长为60个字符。
-	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
-
 	// 快照的保留方式，FALSE表示非永久保留，TRUE表示永久保留。
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 新的快照名称。最长为60个字符。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 
 	// 快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。
 	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
@@ -3213,11 +3213,11 @@ type ModifySnapshotAttributeRequest struct {
 	// 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
-	// 新的快照名称。最长为60个字符。
-	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
-
 	// 快照的保留方式，FALSE表示非永久保留，TRUE表示永久保留。
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 新的快照名称。最长为60个字符。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 
 	// 快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。
 	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
@@ -3236,8 +3236,8 @@ func (r *ModifySnapshotAttributeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SnapshotId")
-	delete(f, "SnapshotName")
 	delete(f, "IsPermanent")
+	delete(f, "SnapshotName")
 	delete(f, "Deadline")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySnapshotAttributeRequest has unknown keys!", "")
