@@ -8470,19 +8470,21 @@ func NewDescribeCcnRegionBandwidthLimitsResponse() (response *DescribeCcnRegionB
 }
 
 // DescribeCcnRegionBandwidthLimits
-// 本接口（DescribeCcnRegionBandwidthLimits）用于查询云联网各地域出带宽上限，该接口只返回已关联网络实例包含的地域
+// 本接口（DescribeCcnRegionBandwidthLimits）用于查询云联网各地域出带宽上限，该接口只返回已关联网络实例包含的地域。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCcnRegionBandwidthLimits(request *DescribeCcnRegionBandwidthLimitsRequest) (response *DescribeCcnRegionBandwidthLimitsResponse, err error) {
     return c.DescribeCcnRegionBandwidthLimitsWithContext(context.Background(), request)
 }
 
 // DescribeCcnRegionBandwidthLimits
-// 本接口（DescribeCcnRegionBandwidthLimits）用于查询云联网各地域出带宽上限，该接口只返回已关联网络实例包含的地域
+// 本接口（DescribeCcnRegionBandwidthLimits）用于查询云联网各地域出带宽上限，该接口只返回已关联网络实例包含的地域。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCcnRegionBandwidthLimitsWithContext(ctx context.Context, request *DescribeCcnRegionBandwidthLimitsRequest) (response *DescribeCcnRegionBandwidthLimitsResponse, err error) {
     if request == nil {
         request = NewDescribeCcnRegionBandwidthLimitsRequest()
@@ -8822,9 +8824,10 @@ func NewDescribeCrossBorderFlowMonitorResponse() (response *DescribeCrossBorderF
 }
 
 // DescribeCrossBorderFlowMonitor
-// 查询跨境带宽监控数据，该接口特提供给联通使用
+// 本接口（DescribeCrossBorderFlowMonitor）用于查询跨境带宽监控数据，该接口目前只提供给服务商联通使用。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -8843,9 +8846,10 @@ func (c *Client) DescribeCrossBorderFlowMonitor(request *DescribeCrossBorderFlow
 }
 
 // DescribeCrossBorderFlowMonitor
-// 查询跨境带宽监控数据，该接口特提供给联通使用
+// 本接口（DescribeCrossBorderFlowMonitor）用于查询跨境带宽监控数据，该接口目前只提供给服务商联通使用。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -8897,6 +8901,7 @@ func NewDescribeCustomerGatewayVendorsResponse() (response *DescribeCustomerGate
 // 本接口（DescribeCustomerGatewayVendors）用于查询可支持的对端网关厂商信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -8918,6 +8923,7 @@ func (c *Client) DescribeCustomerGatewayVendors(request *DescribeCustomerGateway
 // 本接口（DescribeCustomerGatewayVendors）用于查询可支持的对端网关厂商信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"

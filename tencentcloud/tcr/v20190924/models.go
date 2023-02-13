@@ -178,6 +178,12 @@ func (r *BatchDeleteRepositoryPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CVEWhitelistItem struct {
+	// 漏洞白名单 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+}
+
 // Predefined struct for user
 type CheckInstanceNameRequestParams struct {
 	// 待创建的实例名称
@@ -1113,6 +1119,18 @@ type CreateNamespaceRequestParams struct {
 
 	// 云标签描述
 	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 自动扫描级别，true为自动，false为手动
+	IsAutoScan *bool `json:"IsAutoScan,omitempty" name:"IsAutoScan"`
+
+	// 安全阻断级别，true为自动，false为手动
+	IsPreventVUL *bool `json:"IsPreventVUL,omitempty" name:"IsPreventVUL"`
+
+	// 阻断漏洞等级，目前仅支持low、medium、high
+	Severity *string `json:"Severity,omitempty" name:"Severity"`
+
+	// 漏洞白名单列表
+	CVEWhitelistItems []*CVEWhitelistItem `json:"CVEWhitelistItems,omitempty" name:"CVEWhitelistItems"`
 }
 
 type CreateNamespaceRequest struct {
@@ -1129,6 +1147,18 @@ type CreateNamespaceRequest struct {
 
 	// 云标签描述
 	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 自动扫描级别，true为自动，false为手动
+	IsAutoScan *bool `json:"IsAutoScan,omitempty" name:"IsAutoScan"`
+
+	// 安全阻断级别，true为自动，false为手动
+	IsPreventVUL *bool `json:"IsPreventVUL,omitempty" name:"IsPreventVUL"`
+
+	// 阻断漏洞等级，目前仅支持low、medium、high
+	Severity *string `json:"Severity,omitempty" name:"Severity"`
+
+	// 漏洞白名单列表
+	CVEWhitelistItems []*CVEWhitelistItem `json:"CVEWhitelistItems,omitempty" name:"CVEWhitelistItems"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -1147,6 +1177,10 @@ func (r *CreateNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceName")
 	delete(f, "IsPublic")
 	delete(f, "TagSpecification")
+	delete(f, "IsAutoScan")
+	delete(f, "IsPreventVUL")
+	delete(f, "Severity")
+	delete(f, "CVEWhitelistItems")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNamespaceRequest has unknown keys!", "")
 	}
@@ -7182,6 +7216,18 @@ type ModifyNamespaceRequestParams struct {
 
 	// 访问级别，True为公开，False为私有
 	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 扫描级别，True为自动，False为手动
+	IsAutoScan *bool `json:"IsAutoScan,omitempty" name:"IsAutoScan"`
+
+	// 阻断开关，True为开放，False为关闭
+	IsPreventVUL *bool `json:"IsPreventVUL,omitempty" name:"IsPreventVUL"`
+
+	// 阻断漏洞等级，目前仅支持 low、medium、high
+	Severity *string `json:"Severity,omitempty" name:"Severity"`
+
+	// 漏洞白名单列表
+	CVEWhitelistItems []*CVEWhitelistItem `json:"CVEWhitelistItems,omitempty" name:"CVEWhitelistItems"`
 }
 
 type ModifyNamespaceRequest struct {
@@ -7195,6 +7241,18 @@ type ModifyNamespaceRequest struct {
 
 	// 访问级别，True为公开，False为私有
 	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 扫描级别，True为自动，False为手动
+	IsAutoScan *bool `json:"IsAutoScan,omitempty" name:"IsAutoScan"`
+
+	// 阻断开关，True为开放，False为关闭
+	IsPreventVUL *bool `json:"IsPreventVUL,omitempty" name:"IsPreventVUL"`
+
+	// 阻断漏洞等级，目前仅支持 low、medium、high
+	Severity *string `json:"Severity,omitempty" name:"Severity"`
+
+	// 漏洞白名单列表
+	CVEWhitelistItems []*CVEWhitelistItem `json:"CVEWhitelistItems,omitempty" name:"CVEWhitelistItems"`
 }
 
 func (r *ModifyNamespaceRequest) ToJsonString() string {
@@ -7212,6 +7270,10 @@ func (r *ModifyNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "RegistryId")
 	delete(f, "NamespaceName")
 	delete(f, "IsPublic")
+	delete(f, "IsAutoScan")
+	delete(f, "IsPreventVUL")
+	delete(f, "Severity")
+	delete(f, "CVEWhitelistItems")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNamespaceRequest has unknown keys!", "")
 	}
@@ -8382,6 +8444,18 @@ type TcrNamespaceInfo struct {
 	// 命名空间元数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadata []*KeyValueString `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 漏洞白名单列表
+	CVEWhitelistItems []*CVEWhitelistItem `json:"CVEWhitelistItems,omitempty" name:"CVEWhitelistItems"`
+
+	// 扫描级别，true为自动，false为手动
+	AutoScan *bool `json:"AutoScan,omitempty" name:"AutoScan"`
+
+	// 安全阻断级别，true为开启，false为关闭
+	PreventVUL *bool `json:"PreventVUL,omitempty" name:"PreventVUL"`
+
+	// 阻断漏洞等级，目前仅支持low、medium、high, 为""时表示没有设置
+	Severity *string `json:"Severity,omitempty" name:"Severity"`
 }
 
 type TcrRepositoryInfo struct {

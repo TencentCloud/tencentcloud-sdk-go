@@ -2035,6 +2035,9 @@ type TemplateInfo struct {
 
 	// 不符合规范原因
 	InvalidReason *string `json:"InvalidReason,omitempty" name:"InvalidReason"`
+
+	// 是包含黑名单手机或邮箱
+	IsBlack *bool `json:"IsBlack,omitempty" name:"IsBlack"`
 }
 
 // Predefined struct for user

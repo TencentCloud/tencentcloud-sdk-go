@@ -9269,15 +9269,21 @@ func (r *DescribePrometheusTempSyncResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrometheusZonesRequestParams struct {
-	// 地域 ID
+	// 地域 ID（RegionId 和 RegionName 只需要填一个）
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域名（RegionId 和 RegionName 只需要填一个）
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
 type DescribePrometheusZonesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 地域 ID
+	// 地域 ID（RegionId 和 RegionName 只需要填一个）
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域名（RegionId 和 RegionName 只需要填一个）
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
 func (r *DescribePrometheusZonesRequest) ToJsonString() string {
@@ -9293,6 +9299,7 @@ func (r *DescribePrometheusZonesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RegionId")
+	delete(f, "RegionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusZonesRequest has unknown keys!", "")
 	}

@@ -1579,6 +1579,15 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 
 	// 印章id（没有输入返回所有）
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 印章类型列表（都是组织机构印章）。
+	// 为空时查询所有类型的印章。
+	// 目前支持以下类型：
+	// OFFICIAL：企业公章；
+	// CONTRACT：合同专用章；
+	// ORGANIZATION_SEAL：企业印章(图片上传创建)；
+	// LEGAL_PERSON_SEAL：法定代表人章
+	SealTypes []*string `json:"SealTypes,omitempty" name:"SealTypes"`
 }
 
 type ChannelDescribeOrganizationSealsRequest struct {
@@ -1598,6 +1607,15 @@ type ChannelDescribeOrganizationSealsRequest struct {
 
 	// 印章id（没有输入返回所有）
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 印章类型列表（都是组织机构印章）。
+	// 为空时查询所有类型的印章。
+	// 目前支持以下类型：
+	// OFFICIAL：企业公章；
+	// CONTRACT：合同专用章；
+	// ORGANIZATION_SEAL：企业印章(图片上传创建)；
+	// LEGAL_PERSON_SEAL：法定代表人章
+	SealTypes []*string `json:"SealTypes,omitempty" name:"SealTypes"`
 }
 
 func (r *ChannelDescribeOrganizationSealsRequest) ToJsonString() string {
@@ -1617,6 +1635,7 @@ func (r *ChannelDescribeOrganizationSealsRequest) FromJsonString(s string) error
 	delete(f, "Offset")
 	delete(f, "InfoType")
 	delete(f, "SealId")
+	delete(f, "SealTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeOrganizationSealsRequest has unknown keys!", "")
 	}
@@ -1861,7 +1880,8 @@ type Component struct {
 	// SIGN_SIGNATURE - 用户签名控件；
 	// SIGN_PERSONAL_SEAL - 个人签署印章控件（使用文件发起暂不支持此类型）；
 	// SIGN_PAGING_SEAL - 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight
-	// SIGN_OPINION - 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认
+	// SIGN_OPINION - 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认;
+	// SIGN_LEGAL_PERSON_SEAL - 企业法定代表人控件。
 	// 
 	// 表单域的控件不能作为印章和签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`

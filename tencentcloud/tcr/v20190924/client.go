@@ -6092,7 +6092,7 @@ func NewModifyNamespaceResponse() (response *ModifyNamespaceResponse) {
 }
 
 // ModifyNamespace
-// 更新命名空间信息，当前仅支持修改命名空间访问级别
+// 更新命名空间信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6112,7 +6112,7 @@ func (c *Client) ModifyNamespace(request *ModifyNamespaceRequest) (response *Mod
 }
 
 // ModifyNamespace
-// 更新命名空间信息，当前仅支持修改命名空间访问级别
+// 更新命名空间信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

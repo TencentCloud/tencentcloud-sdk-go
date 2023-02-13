@@ -3182,6 +3182,9 @@ type DefendAttackLog struct {
 type DeleteAttackLogsRequestParams struct {
 	// 日志ID数组，最大100条。
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+
+	// 是否全部删除
+	IsAll *bool `json:"IsAll,omitempty" name:"IsAll"`
 }
 
 type DeleteAttackLogsRequest struct {
@@ -3189,6 +3192,9 @@ type DeleteAttackLogsRequest struct {
 	
 	// 日志ID数组，最大100条。
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+
+	// 是否全部删除
+	IsAll *bool `json:"IsAll,omitempty" name:"IsAll"`
 }
 
 func (r *DeleteAttackLogsRequest) ToJsonString() string {
@@ -3204,6 +3210,7 @@ func (r *DeleteAttackLogsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Ids")
+	delete(f, "IsAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAttackLogsRequest has unknown keys!", "")
 	}

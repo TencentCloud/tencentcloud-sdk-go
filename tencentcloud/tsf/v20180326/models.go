@@ -389,6 +389,22 @@ type ApiDetailInfo struct {
 	// API路径匹配类型。normal：普通API；wildcard：通配API。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiMatchType *string `json:"ApiMatchType,omitempty" name:"ApiMatchType"`
+
+	// RPC 额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RpcExt *string `json:"RpcExt,omitempty" name:"RpcExt"`
+
+	// 部署组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitempty" name:"GatewayDeployGroupId"`
+
+	// md5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// RPC 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RpcType *string `json:"RpcType,omitempty" name:"RpcType"`
 }
 
 type ApiDetailResponse struct {

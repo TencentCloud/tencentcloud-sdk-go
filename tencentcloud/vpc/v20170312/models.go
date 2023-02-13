@@ -2053,6 +2053,10 @@ type CcnInstance struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
 }
 
+type CcnInstanceInfo struct {
+
+}
+
 type CcnRegionBandwidthLimit struct {
 	// 地域，例如：ap-guangzhou
 	Region *string `json:"Region,omitempty" name:"Region"`
@@ -9312,14 +9316,14 @@ func (r *DescribeCcnAttachedInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcnRegionBandwidthLimitsRequestParams struct {
-	// CCN实例ID。形如：ccn-f49l6u0z。
+	// CCN实例ID，形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 }
 
 type DescribeCcnRegionBandwidthLimitsRequest struct {
 	*tchttp.BaseRequest
 	
-	// CCN实例ID。形如：ccn-f49l6u0z。
+	// CCN实例ID，形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 }
 
@@ -9884,50 +9888,50 @@ func (r *DescribeCrossBorderComplianceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCrossBorderFlowMonitorRequestParams struct {
-	// 源地域
+	// 源地域。
 	SourceRegion *string `json:"SourceRegion,omitempty" name:"SourceRegion"`
 
-	// 目的地域
+	// 目的地域。
 	DestinationRegion *string `json:"DestinationRegion,omitempty" name:"DestinationRegion"`
 
-	// 云联网Id
+	// 云联网ID。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
-	// 云联网所属账号
+	// 云联网所属账号。
 	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
 
-	// 时间粒度
+	// 时间粒度。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
-	// 开始时间
+	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type DescribeCrossBorderFlowMonitorRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源地域
+	// 源地域。
 	SourceRegion *string `json:"SourceRegion,omitempty" name:"SourceRegion"`
 
-	// 目的地域
+	// 目的地域。
 	DestinationRegion *string `json:"DestinationRegion,omitempty" name:"DestinationRegion"`
 
-	// 云联网Id
+	// 云联网ID。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
-	// 云联网所属账号
+	// 云联网所属账号。
 	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
 
-	// 时间粒度
+	// 时间粒度。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
-	// 开始时间
+	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -13543,12 +13547,31 @@ func (r *DescribeTemplateLimitsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTenantCcnsRequestParams struct {
+	// 过滤条件，目前`value`值个数只支持一个，允许可支持的字段有：
+	// <li>`ccn-ids` 云联网ID数组，值形如：`["ccn-12345678"]`</li> 
+	// <li>`user-account-id` 用户账号ID，值形如：`["12345678"]`</li><li>`is-security-lock` 是否锁定，值形如：`["true"]`</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页返回数据量，可选值0到100之间的整数，默认20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 type DescribeTenantCcnsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 过滤条件，目前`value`值个数只支持一个，允许可支持的字段有：
+	// <li>`ccn-ids` 云联网ID数组，值形如：`["ccn-12345678"]`</li> 
+	// <li>`user-account-id` 用户账号ID，值形如：`["12345678"]`</li><li>`is-security-lock` 是否锁定，值形如：`["true"]`</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 单页返回数据量，可选值0到100之间的整数，默认20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeTenantCcnsRequest) ToJsonString() string {
@@ -13563,7 +13586,9 @@ func (r *DescribeTenantCcnsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTenantCcnsRequest has unknown keys!", "")
 	}
@@ -13572,6 +13597,13 @@ func (r *DescribeTenantCcnsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTenantCcnsResponseParams struct {
+	// 云联网（CCN）对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnSet []*CcnInstanceInfo `json:"CcnSet,omitempty" name:"CcnSet"`
+
+	// 符合条件的对象总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -23483,7 +23515,7 @@ type ServicesInfo struct {
 
 // Predefined struct for user
 type SetCcnRegionBandwidthLimitsRequestParams struct {
-	// CCN实例ID。形如：ccn-f49l6u0z。
+	// CCN实例ID，形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// 云联网（CCN）各地域出带宽上限。
@@ -23496,7 +23528,7 @@ type SetCcnRegionBandwidthLimitsRequestParams struct {
 type SetCcnRegionBandwidthLimitsRequest struct {
 	*tchttp.BaseRequest
 	
-	// CCN实例ID。形如：ccn-f49l6u0z。
+	// CCN实例ID，形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
 
 	// 云联网（CCN）各地域出带宽上限。
