@@ -1050,6 +1050,7 @@ func NewDescribeCodePacksResponse() (response *DescribeCodePacksResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCodePacks(request *DescribeCodePacksRequest) (response *DescribeCodePacksResponse, err error) {
@@ -1061,6 +1062,7 @@ func (c *Client) DescribeCodePacks(request *DescribeCodePacksRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCodePacksWithContext(ctx context.Context, request *DescribeCodePacksRequest) (response *DescribeCodePacksResponse, err error) {

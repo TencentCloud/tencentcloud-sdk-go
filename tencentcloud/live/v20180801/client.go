@@ -8336,6 +8336,14 @@ func NewForbidLiveStreamResponse() (response *ForbidLiveStreamResponse) {
 // ForbidLiveStream
 // 禁止某条流的推送，可以预设某个时刻将流恢复。
 //
+// 注意：
+//
+// 1. 默认只要流名称正确，禁推就会生效。
+//
+// 2. 如需要推流域名+推流路径+流名称 强匹配生效禁推，需提单联系售后开启配置。
+//
+// 3. 如果配置了域名分组，需填写准确推流域名，才可断掉当前推流。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
@@ -8362,6 +8370,14 @@ func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *F
 
 // ForbidLiveStream
 // 禁止某条流的推送，可以预设某个时刻将流恢复。
+//
+// 注意：
+//
+// 1. 默认只要流名称正确，禁推就会生效。
+//
+// 2. 如需要推流域名+推流路径+流名称 强匹配生效禁推，需提单联系售后开启配置。
+//
+// 3. 如果配置了域名分组，需填写准确推流域名，才可断掉当前推流。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

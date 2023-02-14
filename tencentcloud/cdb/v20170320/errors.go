@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 授权无效。
+	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+
 	// 子账号无权限。
 	AUTHFAILURE_SUBACCOUNTDENIED = "AuthFailure.SubAccountDenied"
 
@@ -361,6 +364,9 @@ const (
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
+
+	// 云账号权限不足，不支持该操作。
+	OPERATIONDENIED_ACCOUNTOPERATIONDENIED = "OperationDenied.AccountOperationDenied"
 
 	// 实例正在执行其他任务。
 	OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"

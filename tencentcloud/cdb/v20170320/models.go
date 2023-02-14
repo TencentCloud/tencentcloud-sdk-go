@@ -3984,6 +3984,63 @@ func (r *DescribeBackupDownloadRestrictionResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeBackupEncryptionStatusRequestParams struct {
+	// 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeBackupEncryptionStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeBackupEncryptionStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupEncryptionStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupEncryptionStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupEncryptionStatusResponseParams struct {
+	// 实例是否开启了物理备份加密。可能的值有 on, off 。
+	EncryptionStatus *string `json:"EncryptionStatus,omitempty" name:"EncryptionStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupEncryptionStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupEncryptionStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupEncryptionStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupEncryptionStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupOverviewRequestParams struct {
 	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
@@ -9507,6 +9564,67 @@ func (r *ModifyBackupDownloadRestrictionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBackupDownloadRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupEncryptionStatusRequestParams struct {
+	// 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 设置实例新增的自动物理备份文件默认加密状态。可选值为 on或者off。
+	EncryptionStatus *string `json:"EncryptionStatus,omitempty" name:"EncryptionStatus"`
+}
+
+type ModifyBackupEncryptionStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 设置实例新增的自动物理备份文件默认加密状态。可选值为 on或者off。
+	EncryptionStatus *string `json:"EncryptionStatus,omitempty" name:"EncryptionStatus"`
+}
+
+func (r *ModifyBackupEncryptionStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupEncryptionStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "EncryptionStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupEncryptionStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupEncryptionStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyBackupEncryptionStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBackupEncryptionStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyBackupEncryptionStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupEncryptionStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

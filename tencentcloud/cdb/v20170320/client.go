@@ -2591,6 +2591,56 @@ func (c *Client) DescribeBackupDownloadRestrictionWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeBackupEncryptionStatusRequest() (request *DescribeBackupEncryptionStatusRequest) {
+    request = &DescribeBackupEncryptionStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupEncryptionStatus")
+    
+    
+    return
+}
+
+func NewDescribeBackupEncryptionStatusResponse() (response *DescribeBackupEncryptionStatusResponse) {
+    response = &DescribeBackupEncryptionStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackupEncryptionStatus
+// 本接口(DescribeBackupEncryptionStatus)用于查询实例默认备份加密状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeBackupEncryptionStatus(request *DescribeBackupEncryptionStatusRequest) (response *DescribeBackupEncryptionStatusResponse, err error) {
+    return c.DescribeBackupEncryptionStatusWithContext(context.Background(), request)
+}
+
+// DescribeBackupEncryptionStatus
+// 本接口(DescribeBackupEncryptionStatus)用于查询实例默认备份加密状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeBackupEncryptionStatusWithContext(ctx context.Context, request *DescribeBackupEncryptionStatusRequest) (response *DescribeBackupEncryptionStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupEncryptionStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupEncryptionStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupEncryptionStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupOverviewRequest() (request *DescribeBackupOverviewRequest) {
     request = &DescribeBackupOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3498,6 +3548,7 @@ func NewDescribeDBInstanceRebootTimeResponse() (response *DescribeDBInstanceRebo
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_OSSERROR = "InternalError.OssError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBInstanceRebootTime(request *DescribeDBInstanceRebootTimeRequest) (response *DescribeDBInstanceRebootTimeResponse, err error) {
     return c.DescribeDBInstanceRebootTimeWithContext(context.Background(), request)
@@ -3508,6 +3559,7 @@ func (c *Client) DescribeDBInstanceRebootTime(request *DescribeDBInstanceRebootT
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_OSSERROR = "InternalError.OssError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDBInstanceRebootTimeWithContext(ctx context.Context, request *DescribeDBInstanceRebootTimeRequest) (response *DescribeDBInstanceRebootTimeResponse, err error) {
     if request == nil {
@@ -4558,6 +4610,7 @@ func NewDescribeProxyConnectionPoolConfResponse() (response *DescribeProxyConnec
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) DescribeProxyConnectionPoolConf(request *DescribeProxyConnectionPoolConfRequest) (response *DescribeProxyConnectionPoolConfResponse, err error) {
     return c.DescribeProxyConnectionPoolConfWithContext(context.Background(), request)
 }
@@ -4567,6 +4620,7 @@ func (c *Client) DescribeProxyConnectionPoolConf(request *DescribeProxyConnectio
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) DescribeProxyConnectionPoolConfWithContext(ctx context.Context, request *DescribeProxyConnectionPoolConfRequest) (response *DescribeProxyConnectionPoolConfResponse, err error) {
     if request == nil {
         request = NewDescribeProxyConnectionPoolConfRequest()
@@ -6501,6 +6555,74 @@ func (c *Client) ModifyBackupDownloadRestrictionWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewModifyBackupDownloadRestrictionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBackupEncryptionStatusRequest() (request *ModifyBackupEncryptionStatusRequest) {
+    request = &ModifyBackupEncryptionStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyBackupEncryptionStatus")
+    
+    
+    return
+}
+
+func NewModifyBackupEncryptionStatusResponse() (response *ModifyBackupEncryptionStatusResponse) {
+    response = &ModifyBackupEncryptionStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBackupEncryptionStatus
+// 本接口(ModifyBackupEncryptionStatus)用于设置实例备份文件是否加密。 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  AUTHFAILURE_SUBACCOUNTDENIED = "AuthFailure.SubAccountDenied"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTOPERATIONDENIED = "OperationDenied.AccountOperationDenied"
+//  OPERATIONDENIED_NOTSUPPORTBASIC = "OperationDenied.NotSupportBasic"
+func (c *Client) ModifyBackupEncryptionStatus(request *ModifyBackupEncryptionStatusRequest) (response *ModifyBackupEncryptionStatusResponse, err error) {
+    return c.ModifyBackupEncryptionStatusWithContext(context.Background(), request)
+}
+
+// ModifyBackupEncryptionStatus
+// 本接口(ModifyBackupEncryptionStatus)用于设置实例备份文件是否加密。 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  AUTHFAILURE_SUBACCOUNTDENIED = "AuthFailure.SubAccountDenied"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTOPERATIONDENIED = "OperationDenied.AccountOperationDenied"
+//  OPERATIONDENIED_NOTSUPPORTBASIC = "OperationDenied.NotSupportBasic"
+func (c *Client) ModifyBackupEncryptionStatusWithContext(ctx context.Context, request *ModifyBackupEncryptionStatusRequest) (response *ModifyBackupEncryptionStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupEncryptionStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBackupEncryptionStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBackupEncryptionStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -8644,6 +8766,10 @@ func NewUpgradeCDBProxyResponse() (response *UpgradeCDBProxyResponse) {
 }
 
 // UpgradeCDBProxy
+// 接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置
+//
+// 
+//
 // 调整数据库代理配置
 //
 // 可能返回的错误码:
@@ -8655,6 +8781,10 @@ func (c *Client) UpgradeCDBProxy(request *UpgradeCDBProxyRequest) (response *Upg
 }
 
 // UpgradeCDBProxy
+// 接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置
+//
+// 
+//
 // 调整数据库代理配置
 //
 // 可能返回的错误码:

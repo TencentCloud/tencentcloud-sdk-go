@@ -1,3 +1,219 @@
+# Release v1.0.594
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 112 次发布
+
+发布时间：2023-02-14 01:08:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBackupEncryptionStatus](https://cloud.tencent.com/document/api/236/86508)
+* [ModifyBackupEncryptionStatus](https://cloud.tencent.com/document/api/236/86507)
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* UpgradeCDBProxy
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 12 次发布
+
+发布时间：2023-02-14 01:21:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RecordListItem](https://cloud.tencent.com/document/api/1427/56185#RecordListItem)
+
+	* 新增成员：DefaultNS
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 43 次发布
+
+发布时间：2023-02-14 01:26:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterInstancesInfo](https://cloud.tencent.com/document/api/589/33981#ClusterInstancesInfo)
+
+	* 新增成员：IsCvmReplace
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 44 次发布
+
+发布时间：2023-02-14 01:26:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganizationSeals](https://cloud.tencent.com/document/api/1323/82453)
+
+	* 新增入参：Agent
+
+
+修改数据结构：
+
+* [Agent](https://cloud.tencent.com/document/api/1323/70369#Agent)
+
+	* 新增成员：AppId, ProxyAppId, ProxyOrganizationId, ProxyOperator
+
+
+
+
+## 人脸融合(facefusion) 版本：2022-09-27
+
+### 第 3 次发布
+
+发布时间：2023-02-14 01:27:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MaterialFaces](https://cloud.tencent.com/document/api/670/85619#MaterialFaces)
+
+	* <font color="#dd0000">**修改成员**：</font>FaceId, FaceInfo
+
+
+
+
+## 人脸融合(facefusion) 版本：2018-12-01
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 10 次发布
+
+发布时间：2023-02-14 01:35:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：Status
+
+* [DescribeRoomStatistics](https://cloud.tencent.com/document/api/1639/81545)
+
+	* 新增出参：RealStartTime, RealEndTime
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 17 次发布
+
+发布时间：2023-02-14 01:56:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion)
+
+	* 新增成员：IsSupportIntEightQuantization
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 85 次发布
+
+发布时间：2023-02-14 01:59:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository)
+
+	* 新增成员：Public
+
+* [KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)
+
+	* 新增成员：KafkaAddress
+
+* [ScalableRule](https://cloud.tencent.com/document/api/649/36099#ScalableRule)
+
+	* 新增成员：DisableMetricAS, EnableCronAS
+
+	* <font color="#dd0000">**修改成员**：</font>RuleId, Name, ExpandVmCountLimit, ShrinkVmCountLimit, GroupCount, Desc, Description
+
+* [UnitNamespace](https://cloud.tencent.com/document/api/649/36099#UnitNamespace)
+
+	* 新增成员：GatewayInstanceId, CreatedTime, UpdatedTime
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 141 次发布
+
+发布时间：2023-02-14 02:03:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeNetworkAccountType](https://cloud.tencent.com/document/api/215/86509)
+
+修改接口：
+
+* [CheckNetDetectState](https://cloud.tencent.com/document/api/215/38700)
+
+	* <font color="#dd0000">**修改入参**：</font>NextHopType, NextHopDestination
+
+* [DescribeVpcIpv6Addresses](https://cloud.tencent.com/document/api/215/34465)
+
+	* 新增入参：SubnetId
+
+
+
+
 # Release v1.0.593
 
 ## 主机安全(cwp) 版本：2018-02-28

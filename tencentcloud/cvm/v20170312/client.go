@@ -3549,6 +3549,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 // 本接口(DescribeZones)用于查询可用区信息。
 //
 // 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
     return c.DescribeZonesWithContext(context.Background(), request)
@@ -3558,6 +3559,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
 // 本接口(DescribeZones)用于查询可用区信息。
 //
 // 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
     if request == nil {
@@ -5116,6 +5118,7 @@ func NewModifyHostsAttributeResponse() (response *ModifyHostsAttributeResponse) 
 //  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
 //  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
 //  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 func (c *Client) ModifyHostsAttribute(request *ModifyHostsAttributeRequest) (response *ModifyHostsAttributeResponse, err error) {
     return c.ModifyHostsAttributeWithContext(context.Background(), request)
 }
@@ -5127,6 +5130,7 @@ func (c *Client) ModifyHostsAttribute(request *ModifyHostsAttributeRequest) (res
 //  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
 //  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
 //  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 func (c *Client) ModifyHostsAttributeWithContext(ctx context.Context, request *ModifyHostsAttributeRequest) (response *ModifyHostsAttributeResponse, err error) {
     if request == nil {
         request = NewModifyHostsAttributeRequest()

@@ -1254,6 +1254,7 @@ func NewCreateResultDownloadResponse() (response *CreateResultDownloadResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
 func (c *Client) CreateResultDownload(request *CreateResultDownloadRequest) (response *CreateResultDownloadResponse, err error) {
     return c.CreateResultDownloadWithContext(context.Background(), request)
 }
@@ -1263,6 +1264,7 @@ func (c *Client) CreateResultDownload(request *CreateResultDownloadRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
 func (c *Client) CreateResultDownloadWithContext(ctx context.Context, request *CreateResultDownloadRequest) (response *CreateResultDownloadResponse, err error) {
     if request == nil {
         request = NewCreateResultDownloadRequest()
@@ -4071,6 +4073,7 @@ func NewModifyGovernEventRuleResponse() (response *ModifyGovernEventRuleResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyGovernEventRule(request *ModifyGovernEventRuleRequest) (response *ModifyGovernEventRuleResponse, err error) {
     return c.ModifyGovernEventRuleWithContext(context.Background(), request)
@@ -4088,6 +4091,7 @@ func (c *Client) ModifyGovernEventRule(request *ModifyGovernEventRuleRequest) (r
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyGovernEventRuleWithContext(ctx context.Context, request *ModifyGovernEventRuleRequest) (response *ModifyGovernEventRuleResponse, err error) {
     if request == nil {

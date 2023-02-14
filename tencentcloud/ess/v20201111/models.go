@@ -31,7 +31,20 @@ type Admin struct {
 }
 
 type Agent struct {
+	// 应用编号,32位字符串
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
+	// 主组织的应用号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
+
+	// 主组织在平台的机构编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitempty" name:"ProxyOrganizationId"`
+
+	// 主组织的操作人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyOperator *string `json:"ProxyOperator,omitempty" name:"ProxyOperator"`
 }
 
 type ApproverInfo struct {
@@ -2965,6 +2978,9 @@ type DescribeOrganizationSealsRequestParams struct {
 	// ORGANIZATION_SEAL：企业印章(图片上传创建)；
 	// LEGAL_PERSON_SEAL：法定代表人章
 	SealTypes []*string `json:"SealTypes,omitempty" name:"SealTypes"`
+
+	// 主企业代子企业操作 或 渠道子客应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DescribeOrganizationSealsRequest struct {
@@ -2993,6 +3009,9 @@ type DescribeOrganizationSealsRequest struct {
 	// ORGANIZATION_SEAL：企业印章(图片上传创建)；
 	// LEGAL_PERSON_SEAL：法定代表人章
 	SealTypes []*string `json:"SealTypes,omitempty" name:"SealTypes"`
+
+	// 主企业代子企业操作 或 渠道子客应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DescribeOrganizationSealsRequest) ToJsonString() string {
@@ -3013,6 +3032,7 @@ func (r *DescribeOrganizationSealsRequest) FromJsonString(s string) error {
 	delete(f, "InfoType")
 	delete(f, "SealId")
 	delete(f, "SealTypes")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationSealsRequest has unknown keys!", "")
 	}

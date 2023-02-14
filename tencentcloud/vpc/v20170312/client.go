@@ -716,7 +716,7 @@ func NewAssignIpv6CidrBlockResponse() (response *AssignIpv6CidrBlockResponse) {
 //
 // * 使用本接口前，您需要已有VPC实例，如果没有可通过接口<a href="https://cloud.tencent.com/document/api/215/15774" title="CreateVpc" target="_blank">CreateVpc</a>创建。
 //
-// * 每个VPC只能申请一个IPv6网段
+// * 每个VPC只能申请一个IPv6网段。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -733,7 +733,7 @@ func (c *Client) AssignIpv6CidrBlock(request *AssignIpv6CidrBlockRequest) (respo
 //
 // * 使用本接口前，您需要已有VPC实例，如果没有可通过接口<a href="https://cloud.tencent.com/document/api/215/15774" title="CreateVpc" target="_blank">CreateVpc</a>创建。
 //
-// * 每个VPC只能申请一个IPv6网段
+// * 每个VPC只能申请一个IPv6网段。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -1288,7 +1288,7 @@ func NewAssociateNetworkAclSubnetsResponse() (response *AssociateNetworkAclSubne
 }
 
 // AssociateNetworkAclSubnets
-// 本接口（AssociateNetworkAclSubnets）用于网络ACL关联vpc下的子网。
+// 本接口（AssociateNetworkAclSubnets）用于网络ACL关联VPC下的子网。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -1301,7 +1301,7 @@ func (c *Client) AssociateNetworkAclSubnets(request *AssociateNetworkAclSubnetsR
 }
 
 // AssociateNetworkAclSubnets
-// 本接口（AssociateNetworkAclSubnets）用于网络ACL关联vpc下的子网。
+// 本接口（AssociateNetworkAclSubnets）用于网络ACL关联VPC下的子网。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -1776,7 +1776,7 @@ func NewCheckAssistantCidrResponse() (response *CheckAssistantCidrResponse) {
 }
 
 // CheckAssistantCidr
-// 本接口(CheckAssistantCidr)用于检查辅助CIDR是否与存量路由、对等连接（对端VPC的CIDR）等资源存在冲突。如果存在重叠，则返回重叠的资源。
+// 本接口（CheckAssistantCidr）用于检查辅助CIDR是否与存量路由、对等连接（对端VPC的CIDR）等资源存在冲突。如果存在重叠，则返回重叠的资源。
 //
 // * 检测辅助CIDR是否与当前VPC的主CIDR和辅助CIDR存在重叠。
 //
@@ -1797,7 +1797,7 @@ func (c *Client) CheckAssistantCidr(request *CheckAssistantCidrRequest) (respons
 }
 
 // CheckAssistantCidr
-// 本接口(CheckAssistantCidr)用于检查辅助CIDR是否与存量路由、对等连接（对端VPC的CIDR）等资源存在冲突。如果存在重叠，则返回重叠的资源。
+// 本接口（CheckAssistantCidr）用于检查辅助CIDR是否与存量路由、对等连接（对端VPC的CIDR）等资源存在冲突。如果存在重叠，则返回重叠的资源。
 //
 // * 检测辅助CIDR是否与当前VPC的主CIDR和辅助CIDR存在重叠。
 //
@@ -1898,7 +1898,7 @@ func NewCheckNetDetectStateResponse() (response *CheckNetDetectStateResponse) {
 }
 
 // CheckNetDetectState
-// 本接口(CheckNetDetectState)用于验证网络探测。
+// 本接口（CheckNetDetectState）用于验证网络探测。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NETDETECTTIMEOUT = "FailedOperation.NetDetectTimeOut"
@@ -1922,7 +1922,7 @@ func (c *Client) CheckNetDetectState(request *CheckNetDetectStateRequest) (respo
 }
 
 // CheckNetDetectState
-// 本接口(CheckNetDetectState)用于验证网络探测。
+// 本接口（CheckNetDetectState）用于验证网络探测。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NETDETECTTIMEOUT = "FailedOperation.NetDetectTimeOut"
@@ -2092,7 +2092,7 @@ func NewCreateAddressTemplateGroupResponse() (response *CreateAddressTemplateGro
 }
 
 // CreateAddressTemplateGroup
-// 本接口（CreateAddressTemplateGroup）用于创建IP地址模板集合
+// 本接口（CreateAddressTemplateGroup）用于创建IP地址模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -2104,7 +2104,7 @@ func (c *Client) CreateAddressTemplateGroup(request *CreateAddressTemplateGroupR
 }
 
 // CreateAddressTemplateGroup
-// 本接口（CreateAddressTemplateGroup）用于创建IP地址模板集合
+// 本接口（CreateAddressTemplateGroup）用于创建IP地址模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -2290,7 +2290,7 @@ func NewCreateAssistantCidrResponse() (response *CreateAssistantCidrResponse) {
 }
 
 // CreateAssistantCidr
-// 本接口(CreateAssistantCidr)用于批量创建辅助CIDR。
+// 本接口（CreateAssistantCidr）用于批量创建辅助CIDR。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2308,7 +2308,7 @@ func (c *Client) CreateAssistantCidr(request *CreateAssistantCidrRequest) (respo
 }
 
 // CreateAssistantCidr
-// 本接口(CreateAssistantCidr)用于批量创建辅助CIDR。
+// 本接口（CreateAssistantCidr）用于批量创建辅助CIDR。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2732,6 +2732,7 @@ func NewCreateDefaultVpcResponse() (response *CreateDefaultVpcResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_SUBNETOVERLAP = "InvalidParameterValue.SubnetOverlap"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINSUFFICIENT_CIDRBLOCK = "ResourceInsufficient.CidrBlock"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2761,6 +2762,7 @@ func (c *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (response *C
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_SUBNETOVERLAP = "InvalidParameterValue.SubnetOverlap"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCEINSUFFICIENT_CIDRBLOCK = "ResourceInsufficient.CidrBlock"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2800,7 +2802,7 @@ func NewCreateDhcpIpResponse() (response *CreateDhcpIpResponse) {
 }
 
 // CreateDhcpIp
-// 本接口（CreateDhcpIp）用于创建DhcpIp
+// 本接口（CreateDhcpIp）用于创建DhcpIp。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2817,7 +2819,7 @@ func (c *Client) CreateDhcpIp(request *CreateDhcpIpRequest) (response *CreateDhc
 }
 
 // CreateDhcpIp
-// 本接口（CreateDhcpIp）用于创建DhcpIp
+// 本接口（CreateDhcpIp）用于创建DhcpIp。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3214,7 +3216,7 @@ func NewCreateLocalGatewayResponse() (response *CreateLocalGatewayResponse) {
 }
 
 // CreateLocalGateway
-// 该接口用于创建用于CDC的本地网关。
+// 本接口（CreateLocalGateway）用于创建用于CDC的本地网关。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3229,7 +3231,7 @@ func (c *Client) CreateLocalGateway(request *CreateLocalGatewayRequest) (respons
 }
 
 // CreateLocalGateway
-// 该接口用于创建用于CDC的本地网关。
+// 本接口（CreateLocalGateway）用于创建用于CDC的本地网关。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4472,7 +4474,7 @@ func NewCreateServiceTemplateResponse() (response *CreateServiceTemplateResponse
 }
 
 // CreateServiceTemplate
-// 本接口（CreateServiceTemplate）用于创建协议端口模板
+// 本接口（CreateServiceTemplate）用于创建协议端口模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4485,7 +4487,7 @@ func (c *Client) CreateServiceTemplate(request *CreateServiceTemplateRequest) (r
 }
 
 // CreateServiceTemplate
-// 本接口（CreateServiceTemplate）用于创建协议端口模板
+// 本接口（CreateServiceTemplate）用于创建协议端口模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4528,26 +4530,24 @@ func NewCreateServiceTemplateGroupResponse() (response *CreateServiceTemplateGro
 }
 
 // CreateServiceTemplateGroup
-// 本接口（CreateServiceTemplateGroup）用于创建协议端口模板集合
+// 本接口（CreateServiceTemplateGroup）用于创建协议端口模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) CreateServiceTemplateGroup(request *CreateServiceTemplateGroupRequest) (response *CreateServiceTemplateGroupResponse, err error) {
     return c.CreateServiceTemplateGroupWithContext(context.Background(), request)
 }
 
 // CreateServiceTemplateGroup
-// 本接口（CreateServiceTemplateGroup）用于创建协议端口模板集合
+// 本接口（CreateServiceTemplateGroup）用于创建协议端口模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) CreateServiceTemplateGroupWithContext(ctx context.Context, request *CreateServiceTemplateGroupRequest) (response *CreateServiceTemplateGroupResponse, err error) {
     if request == nil {
@@ -4646,7 +4646,7 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
 }
 
 // CreateSubnet
-// 本接口(CreateSubnet)用于创建子网。
+// 本接口（CreateSubnet）用于创建子网。
 //
 // * 创建子网前必须创建好 VPC。
 //
@@ -4706,7 +4706,7 @@ func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSub
 }
 
 // CreateSubnet
-// 本接口(CreateSubnet)用于创建子网。
+// 本接口（CreateSubnet）用于创建子网。
 //
 // * 创建子网前必须创建好 VPC。
 //
@@ -4796,7 +4796,7 @@ func NewCreateSubnetsResponse() (response *CreateSubnetsResponse) {
 }
 
 // CreateSubnets
-// 本接口(CreateSubnets)用于批量创建子网。
+// 本接口（CreateSubnets）用于批量创建子网。
 //
 // * 创建子网前必须创建好 VPC。
 //
@@ -4850,7 +4850,7 @@ func (c *Client) CreateSubnets(request *CreateSubnetsRequest) (response *CreateS
 }
 
 // CreateSubnets
-// 本接口(CreateSubnets)用于批量创建子网。
+// 本接口（CreateSubnets）用于批量创建子网。
 //
 // * 创建子网前必须创建好 VPC。
 //
@@ -4988,7 +4988,7 @@ func NewCreateVpcResponse() (response *CreateVpcResponse) {
 }
 
 // CreateVpc
-// 本接口(CreateVpc)用于创建私有网络(VPC)。
+// 本接口（CreateVpc）用于创建私有网络（VPC）。
 //
 // * 用户可以创建的最小网段子网掩码为28（有16个IP地址），10.0.0.0/12，172.16.0.0/12最大网段子网掩码为12（1,048,576个IP地址），192.168.0.0/16最大网段子网掩码为16（65,536个IP地址）如果需要规划VPC网段请参见[网络规划](https://cloud.tencent.com/document/product/215/30313)。
 //
@@ -5036,7 +5036,7 @@ func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcRespon
 }
 
 // CreateVpc
-// 本接口(CreateVpc)用于创建私有网络(VPC)。
+// 本接口（CreateVpc）用于创建私有网络（VPC）。
 //
 // * 用户可以创建的最小网段子网掩码为28（有16个IP地址），10.0.0.0/12，172.16.0.0/12最大网段子网掩码为12（1,048,576个IP地址），192.168.0.0/16最大网段子网掩码为16（65,536个IP地址）如果需要规划VPC网段请参见[网络规划](https://cloud.tencent.com/document/product/215/30313)。
 //
@@ -5114,7 +5114,7 @@ func NewCreateVpcEndPointResponse() (response *CreateVpcEndPointResponse) {
 }
 
 // CreateVpcEndPoint
-// 创建终端节点。
+// 本接口（CreateVpcEndPoint）用于创建终端节点。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -5141,7 +5141,7 @@ func (c *Client) CreateVpcEndPoint(request *CreateVpcEndPointRequest) (response 
 }
 
 // CreateVpcEndPoint
-// 创建终端节点。
+// 本接口（CreateVpcEndPoint）用于创建终端节点。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -5198,7 +5198,7 @@ func NewCreateVpcEndPointServiceResponse() (response *CreateVpcEndPointServiceRe
 }
 
 // CreateVpcEndPointService
-// 本接口(CreateVpcEndPointService)用于创建终端节点服务。
+// 本接口（CreateVpcEndPointService）用于创建终端节点服务。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
@@ -5216,7 +5216,7 @@ func (c *Client) CreateVpcEndPointService(request *CreateVpcEndPointServiceReque
 }
 
 // CreateVpcEndPointService
-// 本接口(CreateVpcEndPointService)用于创建终端节点服务。
+// 本接口（CreateVpcEndPointService）用于创建终端节点服务。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
@@ -5264,7 +5264,7 @@ func NewCreateVpcEndPointServiceWhiteListResponse() (response *CreateVpcEndPoint
 }
 
 // CreateVpcEndPointServiceWhiteList
-// 创建终端服务白名单。
+// 本接口（CreateVpcEndPointServiceWhiteList）创建终端服务白名单。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -5277,7 +5277,7 @@ func (c *Client) CreateVpcEndPointServiceWhiteList(request *CreateVpcEndPointSer
 }
 
 // CreateVpcEndPointServiceWhiteList
-// 创建终端服务白名单。
+// 本接口（CreateVpcEndPointServiceWhiteList）创建终端服务白名单。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -5458,6 +5458,7 @@ func NewCreateVpnGatewayResponse() (response *CreateVpnGatewayResponse) {
 //  UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = "UnauthorizedOperation.NoRealNameAuthentication"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
 func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *CreateVpnGatewayResponse, err error) {
     return c.CreateVpnGatewayWithContext(context.Background(), request)
 }
@@ -5479,6 +5480,7 @@ func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *C
 //  UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = "UnauthorizedOperation.NoRealNameAuthentication"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
 func (c *Client) CreateVpnGatewayWithContext(ctx context.Context, request *CreateVpnGatewayRequest) (response *CreateVpnGatewayResponse, err error) {
     if request == nil {
         request = NewCreateVpnGatewayRequest()
@@ -5690,7 +5692,7 @@ func NewDeleteAddressTemplateResponse() (response *DeleteAddressTemplateResponse
 }
 
 // DeleteAddressTemplate
-// 本接口（DeleteAddressTemplate）用于删除IP地址模板
+// 本接口（DeleteAddressTemplate）用于删除IP地址模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -5701,7 +5703,7 @@ func (c *Client) DeleteAddressTemplate(request *DeleteAddressTemplateRequest) (r
 }
 
 // DeleteAddressTemplate
-// 本接口（DeleteAddressTemplate）用于删除IP地址模板
+// 本接口（DeleteAddressTemplate）用于删除IP地址模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -5742,7 +5744,7 @@ func NewDeleteAddressTemplateGroupResponse() (response *DeleteAddressTemplateGro
 }
 
 // DeleteAddressTemplateGroup
-// 本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合
+// 本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -5753,7 +5755,7 @@ func (c *Client) DeleteAddressTemplateGroup(request *DeleteAddressTemplateGroupR
 }
 
 // DeleteAddressTemplateGroup
-// 本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合
+// 本接口（DeleteAddressTemplateGroup）用于删除IP地址模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -5794,7 +5796,7 @@ func NewDeleteAssistantCidrResponse() (response *DeleteAssistantCidrResponse) {
 }
 
 // DeleteAssistantCidr
-// 本接口(DeleteAssistantCidr)用于删除辅助CIDR。
+// 本接口（DeleteAssistantCidr）用于删除辅助CIDR。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5808,7 +5810,7 @@ func (c *Client) DeleteAssistantCidr(request *DeleteAssistantCidrRequest) (respo
 }
 
 // DeleteAssistantCidr
-// 本接口(DeleteAssistantCidr)用于删除辅助CIDR。
+// 本接口（DeleteAssistantCidr）用于删除辅助CIDR。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6384,7 +6386,7 @@ func NewDeleteLocalGatewayResponse() (response *DeleteLocalGatewayResponse) {
 }
 
 // DeleteLocalGateway
-// 该接口用于删除CDC的本地网关。
+// 本接口（DeleteLocalGateway）用于删除CDC的本地网关。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6398,7 +6400,7 @@ func (c *Client) DeleteLocalGateway(request *DeleteLocalGatewayRequest) (respons
 }
 
 // DeleteLocalGateway
-// 该接口用于删除CDC的本地网关。
+// 本接口（DeleteLocalGateway）用于删除CDC的本地网关。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7096,23 +7098,21 @@ func NewDeleteServiceTemplateResponse() (response *DeleteServiceTemplateResponse
 }
 
 // DeleteServiceTemplate
-// 本接口（DeleteServiceTemplate）用于删除协议端口模板
+// 本接口（DeleteServiceTemplate）用于删除协议端口模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) DeleteServiceTemplate(request *DeleteServiceTemplateRequest) (response *DeleteServiceTemplateResponse, err error) {
     return c.DeleteServiceTemplateWithContext(context.Background(), request)
 }
 
 // DeleteServiceTemplate
-// 本接口（DeleteServiceTemplate）用于删除协议端口模板
+// 本接口（DeleteServiceTemplate）用于删除协议端口模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) DeleteServiceTemplateWithContext(ctx context.Context, request *DeleteServiceTemplateRequest) (response *DeleteServiceTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteServiceTemplateRequest()
@@ -7148,7 +7148,7 @@ func NewDeleteServiceTemplateGroupResponse() (response *DeleteServiceTemplateGro
 }
 
 // DeleteServiceTemplateGroup
-// 本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合
+// 本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7159,7 +7159,7 @@ func (c *Client) DeleteServiceTemplateGroup(request *DeleteServiceTemplateGroupR
 }
 
 // DeleteServiceTemplateGroup
-// 本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合
+// 本接口（DeleteServiceTemplateGroup）用于删除协议端口模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7250,9 +7250,9 @@ func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
 }
 
 // DeleteSubnet
-// 本接口（DeleteSubnet）用于用于删除子网(Subnet)。
+// 本接口（DeleteSubnet）用于用于删除子网（Subnet）。
 //
-// * 删除子网前，请清理该子网下所有资源，包括云服务器、负载均衡、云数据、noSql、弹性网卡等资源。
+// * 删除子网前，请清理该子网下所有资源，包括云服务器、负载均衡、云数据、NoSQL、弹性网卡等资源。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7264,9 +7264,9 @@ func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSub
 }
 
 // DeleteSubnet
-// 本接口（DeleteSubnet）用于用于删除子网(Subnet)。
+// 本接口（DeleteSubnet）用于用于删除子网（Subnet）。
 //
-// * 删除子网前，请清理该子网下所有资源，包括云服务器、负载均衡、云数据、noSql、弹性网卡等资源。
+// * 删除子网前，请清理该子网下所有资源，包括云服务器、负载均衡、云数据、NoSQL、弹性网卡等资源。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7434,7 +7434,7 @@ func NewDeleteVpcEndPointResponse() (response *DeleteVpcEndPointResponse) {
 }
 
 // DeleteVpcEndPoint
-// 删除终端节点。
+// 本接口（DeleteVpcEndPoint）用于删除终端节点。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7446,7 +7446,7 @@ func (c *Client) DeleteVpcEndPoint(request *DeleteVpcEndPointRequest) (response 
 }
 
 // DeleteVpcEndPoint
-// 删除终端节点。
+// 本接口（DeleteVpcEndPoint）用于删除终端节点。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7488,9 +7488,7 @@ func NewDeleteVpcEndPointServiceResponse() (response *DeleteVpcEndPointServiceRe
 }
 
 // DeleteVpcEndPointService
-// 删除终端节点服务。
-//
-// 
+// 本接口（DeleteVpcEndPointService）用于删除终端节点服务。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7502,9 +7500,7 @@ func (c *Client) DeleteVpcEndPointService(request *DeleteVpcEndPointServiceReque
 }
 
 // DeleteVpcEndPointService
-// 删除终端节点服务。
-//
-// 
+// 本接口（DeleteVpcEndPointService）用于删除终端节点服务。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7546,7 +7542,7 @@ func NewDeleteVpcEndPointServiceWhiteListResponse() (response *DeleteVpcEndPoint
 }
 
 // DeleteVpcEndPointServiceWhiteList
-// 删除终端节点服务白名单。
+// 本接口（DeleteVpcEndPointServiceWhiteList）用于删除终端节点服务白名单。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7558,7 +7554,7 @@ func (c *Client) DeleteVpcEndPointServiceWhiteList(request *DeleteVpcEndPointSer
 }
 
 // DeleteVpcEndPointServiceWhiteList
-// 删除终端节点服务白名单。
+// 本接口（DeleteVpcEndPointServiceWhiteList）用于删除终端节点服务白名单。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7605,6 +7601,7 @@ func NewDeleteVpnConnectionResponse() (response *DeleteVpnConnectionResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = "UnsupportedOperation.DeleteVpnConnInvalidState"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (response *DeleteVpnConnectionResponse, err error) {
@@ -7617,6 +7614,7 @@ func (c *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (respo
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = "UnsupportedOperation.DeleteVpnConnInvalidState"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) DeleteVpnConnectionWithContext(ctx context.Context, request *DeleteVpnConnectionRequest) (response *DeleteVpnConnectionResponse, err error) {
@@ -7970,7 +7968,7 @@ func NewDescribeAddressTemplateGroupsResponse() (response *DescribeAddressTempla
 }
 
 // DescribeAddressTemplateGroups
-// 本接口（DescribeAddressTemplateGroups）用于查询IP地址模板集合
+// 本接口（DescribeAddressTemplateGroups）用于查询IP地址模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -7981,7 +7979,7 @@ func (c *Client) DescribeAddressTemplateGroups(request *DescribeAddressTemplateG
 }
 
 // DescribeAddressTemplateGroups
-// 本接口（DescribeAddressTemplateGroups）用于查询IP地址模板集合
+// 本接口（DescribeAddressTemplateGroups）用于查询IP地址模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -8022,7 +8020,7 @@ func NewDescribeAddressTemplatesResponse() (response *DescribeAddressTemplatesRe
 }
 
 // DescribeAddressTemplates
-// 本接口（DescribeAddressTemplates）用于查询IP地址模板
+// 本接口（DescribeAddressTemplates）用于查询IP地址模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -8035,7 +8033,7 @@ func (c *Client) DescribeAddressTemplates(request *DescribeAddressTemplatesReque
 }
 
 // DescribeAddressTemplates
-// 本接口（DescribeAddressTemplates）用于查询IP地址模板
+// 本接口（DescribeAddressTemplates）用于查询IP地址模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -8644,7 +8642,7 @@ func NewDescribeClassicLinkInstancesResponse() (response *DescribeClassicLinkIns
 }
 
 // DescribeClassicLinkInstances
-// 本接口(DescribeClassicLinkInstances)用于查询私有网络和基础网络设备互通列表。
+// 本接口（DescribeClassicLinkInstances）用于查询私有网络和基础网络设备互通列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
@@ -8655,7 +8653,7 @@ func (c *Client) DescribeClassicLinkInstances(request *DescribeClassicLinkInstan
 }
 
 // DescribeClassicLinkInstances
-// 本接口(DescribeClassicLinkInstances)用于查询私有网络和基础网络设备互通列表。
+// 本接口（DescribeClassicLinkInstances）用于查询私有网络和基础网络设备互通列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
@@ -9760,7 +9758,7 @@ func NewDescribeLocalGatewayResponse() (response *DescribeLocalGatewayResponse) 
 }
 
 // DescribeLocalGateway
-// 该接口用于查询CDC的本地网关。
+// 本接口（DescribeLocalGateway）用于查询CDC的本地网关。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -9774,7 +9772,7 @@ func (c *Client) DescribeLocalGateway(request *DescribeLocalGatewayRequest) (res
 }
 
 // DescribeLocalGateway
-// 该接口用于查询CDC的本地网关。
+// 本接口（DescribeLocalGateway）用于查询CDC的本地网关。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -10013,6 +10011,7 @@ func NewDescribeNatGatewaysResponse() (response *DescribeNatGatewaysResponse) {
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
 func (c *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (response *DescribeNatGatewaysResponse, err error) {
     return c.DescribeNatGatewaysWithContext(context.Background(), request)
 }
@@ -10029,6 +10028,7 @@ func (c *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (respo
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
 func (c *Client) DescribeNatGatewaysWithContext(ctx context.Context, request *DescribeNatGatewaysRequest) (response *DescribeNatGatewaysResponse, err error) {
     if request == nil {
         request = NewDescribeNatGatewaysRequest()
@@ -10165,6 +10165,66 @@ func (c *Client) DescribeNetDetectsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeNetDetectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNetworkAccountTypeRequest() (request *DescribeNetworkAccountTypeRequest) {
+    request = &DescribeNetworkAccountTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkAccountType")
+    
+    
+    return
+}
+
+func NewDescribeNetworkAccountTypeResponse() (response *DescribeNetworkAccountTypeResponse) {
+    response = &DescribeNetworkAccountTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNetworkAccountType
+// 判断用户在网络侧的用户类型，如标准（带宽上移），传统（非上移）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNetworkAccountType(request *DescribeNetworkAccountTypeRequest) (response *DescribeNetworkAccountTypeResponse, err error) {
+    return c.DescribeNetworkAccountTypeWithContext(context.Background(), request)
+}
+
+// DescribeNetworkAccountType
+// 判断用户在网络侧的用户类型，如标准（带宽上移），传统（非上移）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNetworkAccountTypeWithContext(ctx context.Context, request *DescribeNetworkAccountTypeRequest) (response *DescribeNetworkAccountTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkAccountTypeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNetworkAccountType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNetworkAccountTypeResponse()
     err = c.Send(request, response)
     return
 }
@@ -10312,7 +10372,7 @@ func NewDescribeNetworkInterfaceLimitResponse() (response *DescribeNetworkInterf
 }
 
 // DescribeNetworkInterfaceLimit
-// 本接口（DescribeNetworkInterfaceLimit）根据CVM实例ID或弹性网卡ID查询弹性网卡配额，返回该CVM实例或弹性网卡能绑定的弹性网卡配额，以及弹性网卡可以分配的IP配额
+// 本接口（DescribeNetworkInterfaceLimit）根据CVM实例ID或弹性网卡ID查询弹性网卡配额，返回该CVM实例或弹性网卡能绑定的弹性网卡配额，以及弹性网卡可以分配的IP配额。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -10324,7 +10384,7 @@ func (c *Client) DescribeNetworkInterfaceLimit(request *DescribeNetworkInterface
 }
 
 // DescribeNetworkInterfaceLimit
-// 本接口（DescribeNetworkInterfaceLimit）根据CVM实例ID或弹性网卡ID查询弹性网卡配额，返回该CVM实例或弹性网卡能绑定的弹性网卡配额，以及弹性网卡可以分配的IP配额
+// 本接口（DescribeNetworkInterfaceLimit）根据CVM实例ID或弹性网卡ID查询弹性网卡配额，返回该CVM实例或弹性网卡能绑定的弹性网卡配额，以及弹性网卡可以分配的IP配额。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -10432,7 +10492,7 @@ func NewDescribeProductQuotaResponse() (response *DescribeProductQuotaResponse) 
 }
 
 // DescribeProductQuota
-// 本接口用于查询网络产品的配额信息
+// 本接口（DescribeProductQuota）用于查询网络产品的配额信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -10442,7 +10502,7 @@ func (c *Client) DescribeProductQuota(request *DescribeProductQuotaRequest) (res
 }
 
 // DescribeProductQuota
-// 本接口用于查询网络产品的配额信息
+// 本接口（DescribeProductQuota）用于查询网络产品的配额信息。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -10482,7 +10542,7 @@ func NewDescribeRouteConflictsResponse() (response *DescribeRouteConflictsRespon
 }
 
 // DescribeRouteConflicts
-// 本接口（DescribeRouteConflicts）用于查询自定义路由策略与云联网路由策略冲突列表
+// 本接口（DescribeRouteConflicts）用于查询自定义路由策略与云联网路由策略冲突列表。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -10491,7 +10551,7 @@ func (c *Client) DescribeRouteConflicts(request *DescribeRouteConflictsRequest) 
 }
 
 // DescribeRouteConflicts
-// 本接口（DescribeRouteConflicts）用于查询自定义路由策略与云联网路由策略冲突列表
+// 本接口（DescribeRouteConflicts）用于查询自定义路由策略与云联网路由策略冲突列表。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -10872,7 +10932,7 @@ func NewDescribeServiceTemplateGroupsResponse() (response *DescribeServiceTempla
 }
 
 // DescribeServiceTemplateGroups
-// 本接口（DescribeServiceTemplateGroups）用于查询协议端口模板集合
+// 本接口（DescribeServiceTemplateGroups）用于查询协议端口模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -10883,7 +10943,7 @@ func (c *Client) DescribeServiceTemplateGroups(request *DescribeServiceTemplateG
 }
 
 // DescribeServiceTemplateGroups
-// 本接口（DescribeServiceTemplateGroups）用于查询协议端口模板集合
+// 本接口（DescribeServiceTemplateGroups）用于查询协议端口模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -10924,7 +10984,7 @@ func NewDescribeServiceTemplatesResponse() (response *DescribeServiceTemplatesRe
 }
 
 // DescribeServiceTemplates
-// 本接口（DescribeServiceTemplates）用于查询协议端口模板
+// 本接口（DescribeServiceTemplates）用于查询协议端口模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -10934,7 +10994,7 @@ func (c *Client) DescribeServiceTemplates(request *DescribeServiceTemplatesReque
 }
 
 // DescribeServiceTemplates
-// 本接口（DescribeServiceTemplates）用于查询协议端口模板
+// 本接口（DescribeServiceTemplates）用于查询协议端口模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -11610,7 +11670,7 @@ func NewDescribeVpcEndPointServiceWhiteListResponse() (response *DescribeVpcEndP
 }
 
 // DescribeVpcEndPointServiceWhiteList
-// 查询终端节点服务的服务白名单列表。
+// 本接口（DescribeVpcEndPointServiceWhiteList）用于查询终端节点服务的服务白名单列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -11621,7 +11681,7 @@ func (c *Client) DescribeVpcEndPointServiceWhiteList(request *DescribeVpcEndPoin
 }
 
 // DescribeVpcEndPointServiceWhiteList
-// 查询终端节点服务的服务白名单列表。
+// 本接口（DescribeVpcEndPointServiceWhiteList）用于查询终端节点服务的服务白名单列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -11662,7 +11722,7 @@ func NewDescribeVpcInstancesResponse() (response *DescribeVpcInstancesResponse) 
 }
 
 // DescribeVpcInstances
-//  本接口（DescribeVpcInstances）用于查询VPC下的云主机实例列表。
+// 本接口（DescribeVpcInstances）用于查询VPC下的云主机实例列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -11675,7 +11735,7 @@ func (c *Client) DescribeVpcInstances(request *DescribeVpcInstancesRequest) (res
 }
 
 // DescribeVpcInstances
-//  本接口（DescribeVpcInstances）用于查询VPC下的云主机实例列表。
+// 本接口（DescribeVpcInstances）用于查询VPC下的云主机实例列表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
@@ -11772,65 +11832,69 @@ func NewDescribeVpcLimitsResponse() (response *DescribeVpcLimitsResponse) {
 }
 
 // DescribeVpcLimits
-// 获取私有网络配额，部分私有网络的配额有地域属性。
+// 本接口（DescribeVpcLimits）用于获取私有网络配额，部分私有网络的配额有地域属性。
 //
 // LimitTypes取值范围：
 //
-// * appid-max-vpcs （每个开发商每个地域可创建的VPC数）
+// * appid-max-vpcs （每个开发商每个地域可创建的VPC数）。
 //
-// * vpc-max-subnets（每个VPC可创建的子网数）
+// * vpc-max-subnets（每个VPC可创建的子网数）。
 //
-// * vpc-max-route-tables（每个VPC可创建的路由表数）
+// * vpc-max-route-tables（每个VPC可创建的路由表数）。
 //
-// * route-table-max-policies（每个路由表可添加的策略数）
+// * route-table-max-policies（每个路由表可添加的策略数）。
 //
-// * vpc-max-vpn-gateways（每个VPC可创建的VPN网关数）
+// * vpc-max-vpn-gateways（每个VPC可创建的VPN网关数）。
 //
-// * appid-max-custom-gateways（每个开发商可创建的对端网关数）
+// * appid-max-custom-gateways（每个开发商可创建的对端网关数）。
 //
-// * appid-max-vpn-connections（每个开发商可创建的VPN通道数）
+// * appid-max-vpn-connections（每个开发商可创建的VPN通道数）。
 //
-// * custom-gateway-max-vpn-connections（每个对端网关可创建的VPN通道数）
+// * custom-gateway-max-vpn-connections（每个对端网关可创建的VPN通道数）。
 //
-// * vpn-gateway-max-custom-gateways（每个VPNGW可以创建的通道数）
+// * vpn-gateway-max-custom-gateways（每个VPNGW可以创建的通道数）。
 //
-// * vpc-max-network-acls（每个VPC可创建的网络ACL数）
+// * vpc-max-network-acls（每个VPC可创建的网络ACL数）。
 //
-// * network-acl-max-inbound-policies（每个网络ACL可添加的入站规则数）
+// * network-acl-max-inbound-policies（每个网络ACL可添加的入站规则数）。
 //
-// * network-acl-max-outbound-policies（每个网络ACL可添加的出站规则数）
+// * network-acl-max-outbound-policies（每个网络ACL可添加的出站规则数）。
 //
-// * vpc-max-vpcpeers（每个VPC可创建的对等连接数）
+// * vpc-max-vpcpeers（每个VPC可创建的对等连接数）。
 //
-// * vpc-max-available-vpcpeers（每个VPC可创建的有效对等连接数）
+// * vpc-max-available-vpcpeers（每个VPC可创建的有效对等连接数）。
 //
-// * vpc-max-basic-network-interconnections（每个VPC可创建的基础网络云主机与VPC互通数）
+// * vpc-max-basic-network-interconnections（每个VPC可创建的基础网络云主机与VPC互通数）。
 //
-// * direct-connection-max-snats（每个专线网关可创建的SNAT数）
+// * direct-connection-max-snats（每个专线网关可创建的SNAT数）。
 //
-// * direct-connection-max-dnats（每个专线网关可创建的DNAT数）
+// * direct-connection-max-dnats（每个专线网关可创建的DNAT数）。
 //
-// * direct-connection-max-snapts（每个专线网关可创建的SNAPT数）
+// * direct-connection-max-snapts（每个专线网关可创建的SNAPT数）。
 //
-// * direct-connection-max-dnapts（每个专线网关可创建的DNAPT数）
+// * direct-connection-max-dnapts（每个专线网关可创建的DNAPT数）。
 //
-// * vpc-max-nat-gateways（每个VPC可创建的NAT网关数）
+// * vpc-max-nat-gateways（每个VPC可创建的NAT网关数）。
 //
-// * nat-gateway-max-eips（每个NAT可以购买的外网IP数量）
+// * nat-gateway-max-eips（每个NAT可以购买的外网IP数量）。
 //
-// * vpc-max-enis（每个VPC可创建弹性网卡数）
+// * vpc-max-enis（每个VPC可创建弹性网卡数）。
 //
-// * vpc-max-havips（每个VPC可创建HAVIP数）
+// * vpc-max-havips（每个VPC可创建HAVIP数）。
 //
-// * eni-max-private-ips（每个ENI可以绑定的内网IP数（ENI未绑定子机））
+// * eni-max-private-ips（每个ENI可以绑定的内网IP数（ENI未绑定子机））。
 //
-// * nat-gateway-max-dnapts（每个NAT网关可创建的DNAPT数）
+// * nat-gateway-max-dnapts（每个NAT网关可创建的DNAPT数）。
 //
-// * vpc-max-ipv6s（每个VPC可分配的IPv6地址数）
+// * vpc-max-ipv6s（每个VPC可分配的IPv6地址数）。
 //
-// * eni-max-ipv6s（每个ENI可分配的IPv6地址数）
+// * eni-max-ipv6s（每个ENI可分配的IPv6地址数）。
 //
-// * vpc-max-assistant_cidrs（每个VPC可分配的辅助CIDR数）
+// * vpc-max-assistant_cidrs（每个VPC可分配的辅助CIDR数）。
+//
+// * appid-max-end-point-services （每个开发商每个地域可创建的终端节点服务个数）。
+//
+// * appid-max-end-point-service-white-lists （每个开发商每个地域可创建的终端节点服务白名单个数）。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -11839,65 +11903,69 @@ func (c *Client) DescribeVpcLimits(request *DescribeVpcLimitsRequest) (response 
 }
 
 // DescribeVpcLimits
-// 获取私有网络配额，部分私有网络的配额有地域属性。
+// 本接口（DescribeVpcLimits）用于获取私有网络配额，部分私有网络的配额有地域属性。
 //
 // LimitTypes取值范围：
 //
-// * appid-max-vpcs （每个开发商每个地域可创建的VPC数）
+// * appid-max-vpcs （每个开发商每个地域可创建的VPC数）。
 //
-// * vpc-max-subnets（每个VPC可创建的子网数）
+// * vpc-max-subnets（每个VPC可创建的子网数）。
 //
-// * vpc-max-route-tables（每个VPC可创建的路由表数）
+// * vpc-max-route-tables（每个VPC可创建的路由表数）。
 //
-// * route-table-max-policies（每个路由表可添加的策略数）
+// * route-table-max-policies（每个路由表可添加的策略数）。
 //
-// * vpc-max-vpn-gateways（每个VPC可创建的VPN网关数）
+// * vpc-max-vpn-gateways（每个VPC可创建的VPN网关数）。
 //
-// * appid-max-custom-gateways（每个开发商可创建的对端网关数）
+// * appid-max-custom-gateways（每个开发商可创建的对端网关数）。
 //
-// * appid-max-vpn-connections（每个开发商可创建的VPN通道数）
+// * appid-max-vpn-connections（每个开发商可创建的VPN通道数）。
 //
-// * custom-gateway-max-vpn-connections（每个对端网关可创建的VPN通道数）
+// * custom-gateway-max-vpn-connections（每个对端网关可创建的VPN通道数）。
 //
-// * vpn-gateway-max-custom-gateways（每个VPNGW可以创建的通道数）
+// * vpn-gateway-max-custom-gateways（每个VPNGW可以创建的通道数）。
 //
-// * vpc-max-network-acls（每个VPC可创建的网络ACL数）
+// * vpc-max-network-acls（每个VPC可创建的网络ACL数）。
 //
-// * network-acl-max-inbound-policies（每个网络ACL可添加的入站规则数）
+// * network-acl-max-inbound-policies（每个网络ACL可添加的入站规则数）。
 //
-// * network-acl-max-outbound-policies（每个网络ACL可添加的出站规则数）
+// * network-acl-max-outbound-policies（每个网络ACL可添加的出站规则数）。
 //
-// * vpc-max-vpcpeers（每个VPC可创建的对等连接数）
+// * vpc-max-vpcpeers（每个VPC可创建的对等连接数）。
 //
-// * vpc-max-available-vpcpeers（每个VPC可创建的有效对等连接数）
+// * vpc-max-available-vpcpeers（每个VPC可创建的有效对等连接数）。
 //
-// * vpc-max-basic-network-interconnections（每个VPC可创建的基础网络云主机与VPC互通数）
+// * vpc-max-basic-network-interconnections（每个VPC可创建的基础网络云主机与VPC互通数）。
 //
-// * direct-connection-max-snats（每个专线网关可创建的SNAT数）
+// * direct-connection-max-snats（每个专线网关可创建的SNAT数）。
 //
-// * direct-connection-max-dnats（每个专线网关可创建的DNAT数）
+// * direct-connection-max-dnats（每个专线网关可创建的DNAT数）。
 //
-// * direct-connection-max-snapts（每个专线网关可创建的SNAPT数）
+// * direct-connection-max-snapts（每个专线网关可创建的SNAPT数）。
 //
-// * direct-connection-max-dnapts（每个专线网关可创建的DNAPT数）
+// * direct-connection-max-dnapts（每个专线网关可创建的DNAPT数）。
 //
-// * vpc-max-nat-gateways（每个VPC可创建的NAT网关数）
+// * vpc-max-nat-gateways（每个VPC可创建的NAT网关数）。
 //
-// * nat-gateway-max-eips（每个NAT可以购买的外网IP数量）
+// * nat-gateway-max-eips（每个NAT可以购买的外网IP数量）。
 //
-// * vpc-max-enis（每个VPC可创建弹性网卡数）
+// * vpc-max-enis（每个VPC可创建弹性网卡数）。
 //
-// * vpc-max-havips（每个VPC可创建HAVIP数）
+// * vpc-max-havips（每个VPC可创建HAVIP数）。
 //
-// * eni-max-private-ips（每个ENI可以绑定的内网IP数（ENI未绑定子机））
+// * eni-max-private-ips（每个ENI可以绑定的内网IP数（ENI未绑定子机））。
 //
-// * nat-gateway-max-dnapts（每个NAT网关可创建的DNAPT数）
+// * nat-gateway-max-dnapts（每个NAT网关可创建的DNAPT数）。
 //
-// * vpc-max-ipv6s（每个VPC可分配的IPv6地址数）
+// * vpc-max-ipv6s（每个VPC可分配的IPv6地址数）。
 //
-// * eni-max-ipv6s（每个ENI可分配的IPv6地址数）
+// * eni-max-ipv6s（每个ENI可分配的IPv6地址数）。
 //
-// * vpc-max-assistant_cidrs（每个VPC可分配的辅助CIDR数）
+// * vpc-max-assistant_cidrs（每个VPC可分配的辅助CIDR数）。
+//
+// * appid-max-end-point-services （每个开发商每个地域可创建的终端节点服务个数）。
+//
+// * appid-max-end-point-service-white-lists （每个开发商每个地域可创建的终端节点服务白名单个数）。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -12703,6 +12771,7 @@ func NewDetachSnapshotInstancesResponse() (response *DetachSnapshotInstancesResp
 //  INVALIDPARAMETERVALUE_DUPLICATEPARA = "InvalidParameterValue.DuplicatePara"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_SNAPSHOTINSTANCEREGIONDIFF = "UnsupportedOperation.SnapshotInstanceRegionDiff"
 //  UNSUPPORTEDOPERATION_SNAPSHOTNOTATTACHED = "UnsupportedOperation.SnapshotNotAttached"
 func (c *Client) DetachSnapshotInstances(request *DetachSnapshotInstancesRequest) (response *DetachSnapshotInstancesResponse, err error) {
     return c.DetachSnapshotInstancesWithContext(context.Background(), request)
@@ -12716,6 +12785,7 @@ func (c *Client) DetachSnapshotInstances(request *DetachSnapshotInstancesRequest
 //  INVALIDPARAMETERVALUE_DUPLICATEPARA = "InvalidParameterValue.DuplicatePara"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_SNAPSHOTINSTANCEREGIONDIFF = "UnsupportedOperation.SnapshotInstanceRegionDiff"
 //  UNSUPPORTEDOPERATION_SNAPSHOTNOTATTACHED = "UnsupportedOperation.SnapshotNotAttached"
 func (c *Client) DetachSnapshotInstancesWithContext(ctx context.Context, request *DetachSnapshotInstancesRequest) (response *DetachSnapshotInstancesResponse, err error) {
     if request == nil {
@@ -13344,7 +13414,7 @@ func NewDisassociateNetworkAclSubnetsResponse() (response *DisassociateNetworkAc
 }
 
 // DisassociateNetworkAclSubnets
-// 本接口（DisassociateNetworkAclSubnets）用于网络ACL解关联vpc下的子网。
+// 本接口（DisassociateNetworkAclSubnets）用于网络ACL解关联VPC下的子网。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -13356,7 +13426,7 @@ func (c *Client) DisassociateNetworkAclSubnets(request *DisassociateNetworkAclSu
 }
 
 // DisassociateNetworkAclSubnets
-// 本接口（DisassociateNetworkAclSubnets）用于网络ACL解关联vpc下的子网。
+// 本接口（DisassociateNetworkAclSubnets）用于网络ACL解关联VPC下的子网。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -13452,7 +13522,7 @@ func NewDisassociateVpcEndPointSecurityGroupsResponse() (response *DisassociateV
 }
 
 // DisassociateVpcEndPointSecurityGroups
-// 终端节点解绑安全组。
+// 本接口（DisassociateVpcEndPointSecurityGroups）用于终端节点解绑安全组。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -13464,7 +13534,7 @@ func (c *Client) DisassociateVpcEndPointSecurityGroups(request *DisassociateVpcE
 }
 
 // DisassociateVpcEndPointSecurityGroups
-// 终端节点解绑安全组。
+// 本接口（DisassociateVpcEndPointSecurityGroups）用于终端节点解绑安全组。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -13892,7 +13962,7 @@ func NewEnableVpcEndPointConnectResponse() (response *EnableVpcEndPointConnectRe
 }
 
 // EnableVpcEndPointConnect
-// 是否接受终端节点连接请求。
+// 本接口（EnableVpcEndPointConnect）用于是否接受终端节点连接请求。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -13904,7 +13974,7 @@ func (c *Client) EnableVpcEndPointConnect(request *EnableVpcEndPointConnectReque
 }
 
 // EnableVpcEndPointConnect
-// 是否接受终端节点连接请求。
+// 本接口（EnableVpcEndPointConnect）用于是否接受终端节点连接请求。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -14824,7 +14894,7 @@ func NewModifyAddressTemplateAttributeResponse() (response *ModifyAddressTemplat
 }
 
 // ModifyAddressTemplateAttribute
-// 本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板
+// 本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
@@ -14839,7 +14909,7 @@ func (c *Client) ModifyAddressTemplateAttribute(request *ModifyAddressTemplateAt
 }
 
 // ModifyAddressTemplateAttribute
-// 本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板
+// 本接口（ModifyAddressTemplateAttribute）用于修改IP地址模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
@@ -14884,7 +14954,7 @@ func NewModifyAddressTemplateGroupAttributeResponse() (response *ModifyAddressTe
 }
 
 // ModifyAddressTemplateGroupAttribute
-// 本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合
+// 本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -14899,7 +14969,7 @@ func (c *Client) ModifyAddressTemplateGroupAttribute(request *ModifyAddressTempl
 }
 
 // ModifyAddressTemplateGroupAttribute
-// 本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合
+// 本接口（ModifyAddressTemplateGroupAttribute）用于修改IP地址模板集合。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -15028,7 +15098,7 @@ func NewModifyAssistantCidrResponse() (response *ModifyAssistantCidrResponse) {
 }
 
 // ModifyAssistantCidr
-// 本接口(ModifyAssistantCidr)用于批量修改辅助CIDR，支持新增和删除。
+// 本接口（ModifyAssistantCidr）用于批量修改辅助CIDR，支持新增和删除。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -15047,7 +15117,7 @@ func (c *Client) ModifyAssistantCidr(request *ModifyAssistantCidrRequest) (respo
 }
 
 // ModifyAssistantCidr
-// 本接口(ModifyAssistantCidr)用于批量修改辅助CIDR，支持新增和删除。
+// 本接口（ModifyAssistantCidr）用于批量修改辅助CIDR，支持新增和删除。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -15588,7 +15658,7 @@ func NewModifyHaVipAttributeResponse() (response *ModifyHaVipAttributeResponse) 
 }
 
 // ModifyHaVipAttribute
-// 本接口（ModifyHaVipAttribute）用于修改高可用虚拟IP（HAVIP）属性
+// 本接口（ModifyHaVipAttribute）用于修改高可用虚拟IP（HAVIP）属性。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -15602,7 +15672,7 @@ func (c *Client) ModifyHaVipAttribute(request *ModifyHaVipAttributeRequest) (res
 }
 
 // ModifyHaVipAttribute
-// 本接口（ModifyHaVipAttribute）用于修改高可用虚拟IP（HAVIP）属性
+// 本接口（ModifyHaVipAttribute）用于修改高可用虚拟IP（HAVIP）属性。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -15884,7 +15954,7 @@ func NewModifyLocalGatewayResponse() (response *ModifyLocalGatewayResponse) {
 }
 
 // ModifyLocalGateway
-// 该接口用于修改CDC的本地网关。
+// 本接口（ModifyLocalGateway）用于修改CDC的本地网关。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -15898,7 +15968,7 @@ func (c *Client) ModifyLocalGateway(request *ModifyLocalGatewayRequest) (respons
 }
 
 // ModifyLocalGateway
-// 该接口用于修改CDC的本地网关。
+// 本接口（ModifyLocalGateway）用于修改CDC的本地网关。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -16424,7 +16494,7 @@ func NewModifyNetworkInterfaceQosResponse() (response *ModifyNetworkInterfaceQos
 }
 
 // ModifyNetworkInterfaceQos
-// 修改弹性网卡服务质量。
+// 本接口（ModifyNetworkInterfaceQos）用于修改弹性网卡服务质量。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -16437,7 +16507,7 @@ func (c *Client) ModifyNetworkInterfaceQos(request *ModifyNetworkInterfaceQosReq
 }
 
 // ModifyNetworkInterfaceQos
-// 修改弹性网卡服务质量。
+// 本接口（ModifyNetworkInterfaceQos）用于修改弹性网卡服务质量。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -16758,7 +16828,7 @@ func NewModifyServiceTemplateAttributeResponse() (response *ModifyServiceTemplat
 }
 
 // ModifyServiceTemplateAttribute
-// 本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板
+// 本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
@@ -16772,7 +16842,7 @@ func (c *Client) ModifyServiceTemplateAttribute(request *ModifyServiceTemplateAt
 }
 
 // ModifyServiceTemplateAttribute
-// 本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板
+// 本接口（ModifyServiceTemplateAttribute）用于修改协议端口模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
@@ -17088,7 +17158,7 @@ func NewModifyVpcEndPointAttributeResponse() (response *ModifyVpcEndPointAttribu
 }
 
 // ModifyVpcEndPointAttribute
-// 修改终端节点属性。
+// 本接口（ModifyVpcEndPointAttribute）用于修改终端节点属性。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -17105,7 +17175,7 @@ func (c *Client) ModifyVpcEndPointAttribute(request *ModifyVpcEndPointAttributeR
 }
 
 // ModifyVpcEndPointAttribute
-// 修改终端节点属性。
+// 本接口（ModifyVpcEndPointAttribute）用于修改终端节点属性。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -17216,7 +17286,7 @@ func NewModifyVpcEndPointServiceWhiteListResponse() (response *ModifyVpcEndPoint
 }
 
 // ModifyVpcEndPointServiceWhiteList
-// 修改终端节点服务白名单属性。
+// 本接口（ModifyVpcEndPointServiceWhiteList）用于修改终端节点服务白名单属性。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -17228,7 +17298,7 @@ func (c *Client) ModifyVpcEndPointServiceWhiteList(request *ModifyVpcEndPointSer
 }
 
 // ModifyVpcEndPointServiceWhiteList
-// 修改终端节点服务白名单属性。
+// 本接口（ModifyVpcEndPointServiceWhiteList）用于修改终端节点服务白名单属性。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -17929,6 +17999,7 @@ func NewRenewAddressesResponse() (response *RenewAddressesResponse) {
 // 可能返回的错误码:
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
+//  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = "UnsupportedOperation.InvalidAddressInternetChargeType"
 func (c *Client) RenewAddresses(request *RenewAddressesRequest) (response *RenewAddressesResponse, err error) {
     return c.RenewAddressesWithContext(context.Background(), request)
@@ -17940,6 +18011,7 @@ func (c *Client) RenewAddresses(request *RenewAddressesRequest) (response *Renew
 // 可能返回的错误码:
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
 //  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
+//  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = "UnsupportedOperation.InvalidAddressInternetChargeType"
 func (c *Client) RenewAddressesWithContext(ctx context.Context, request *RenewAddressesRequest) (response *RenewAddressesResponse, err error) {
     if request == nil {
@@ -18076,7 +18148,7 @@ func NewReplaceRouteTableAssociationResponse() (response *ReplaceRouteTableAssoc
 }
 
 // ReplaceRouteTableAssociation
-// 本接口（ReplaceRouteTableAssociation)用于修改子网（Subnet）关联的路由表（RouteTable）。
+// 本接口（ReplaceRouteTableAssociation）用于修改子网（Subnet）关联的路由表（RouteTable）。
 //
 // * 一个子网只能关联一个路由表。
 //
@@ -18089,7 +18161,7 @@ func (c *Client) ReplaceRouteTableAssociation(request *ReplaceRouteTableAssociat
 }
 
 // ReplaceRouteTableAssociation
-// 本接口（ReplaceRouteTableAssociation)用于修改子网（Subnet）关联的路由表（RouteTable）。
+// 本接口（ReplaceRouteTableAssociation）用于修改子网（Subnet）关联的路由表（RouteTable）。
 //
 // * 一个子网只能关联一个路由表。
 //
@@ -19240,7 +19312,7 @@ func NewWithdrawNotifyRoutesResponse() (response *WithdrawNotifyRoutesResponse) 
 }
 
 // WithdrawNotifyRoutes
-// 路由表列表页操作增加“从云联网撤销”，用于撤销已发布到云联网的路由。
+// 本接口（WithdrawNotifyRoutes）用于撤销已发布到云联网的路由。路由表列表页操作增加“从云联网撤销”。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -19257,7 +19329,7 @@ func (c *Client) WithdrawNotifyRoutes(request *WithdrawNotifyRoutesRequest) (res
 }
 
 // WithdrawNotifyRoutes
-// 路由表列表页操作增加“从云联网撤销”，用于撤销已发布到云联网的路由。
+// 本接口（WithdrawNotifyRoutes）用于撤销已发布到云联网的路由。路由表列表页操作增加“从云联网撤销”。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -5160,6 +5160,9 @@ type RecordListItem struct {
 	// MX值，只有MX记录有
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MX *uint64 `json:"MX,omitempty" name:"MX"`
+
+	// 是否是默认的ns记录
+	DefaultNS *bool `json:"DefaultNS,omitempty" name:"DefaultNS"`
 }
 
 // Predefined struct for user

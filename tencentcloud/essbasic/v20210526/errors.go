@@ -308,6 +308,9 @@ const (
 	// 缺少模板参数。
 	MISSINGPARAMETER_TEMPLATES = "MissingParameter.Templates"
 
+	// 缺少用户ID参数
+	MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+
 	// OpenId不存在。
 	MISSINGPARAMETER_USEROPENID = "MissingParameter.UserOpenId"
 

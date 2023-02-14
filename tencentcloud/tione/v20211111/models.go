@@ -4785,6 +4785,10 @@ type EngineVersion struct {
 	// 运行镜像
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 是否支持int8量化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportIntEightQuantization *bool `json:"IsSupportIntEightQuantization,omitempty" name:"IsSupportIntEightQuantization"`
 }
 
 type EnvVar struct {

@@ -1665,16 +1665,7 @@ func NewDescribeBasicDeviceThresholdResponse() (response *DescribeBasicDeviceThr
 // 获取基础防护黑洞阈值
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeBasicDeviceThreshold(request *DescribeBasicDeviceThresholdRequest) (response *DescribeBasicDeviceThresholdResponse, err error) {
     return c.DescribeBasicDeviceThresholdWithContext(context.Background(), request)
 }
@@ -1683,16 +1674,7 @@ func (c *Client) DescribeBasicDeviceThreshold(request *DescribeBasicDeviceThresh
 // 获取基础防护黑洞阈值
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeBasicDeviceThresholdWithContext(ctx context.Context, request *DescribeBasicDeviceThresholdRequest) (response *DescribeBasicDeviceThresholdResponse, err error) {
     if request == nil {
         request = NewDescribeBasicDeviceThresholdRequest()

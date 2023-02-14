@@ -371,8 +371,14 @@ const (
 	// 服务部署中。
 	RESOURCEINUSE_SERVICEDEPLOYING = "ResourceInUse.ServiceDeploying"
 
+	// 配置不存在。
+	RESOURCENOTFOUND_CONFIGDATANOTFOUND = "ResourceNotFound.ConfigDataNotFound"
+
 	// 未提供该接口。
 	RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+
+	// 日志配置不存在。
+	RESOURCENOTFOUND_LOGCONFIGNOTFOUND = "ResourceNotFound.LogConfigNotFound"
 
 	// 目标微服务已离线。
 	RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"

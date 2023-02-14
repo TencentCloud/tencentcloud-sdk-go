@@ -445,6 +445,10 @@ type ClusterInstancesInfo struct {
 	// 是否是跨AZ集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMultiZoneCluster *bool `json:"IsMultiZoneCluster,omitempty" name:"IsMultiZoneCluster"`
+
+	// 是否开通异常节点自动补偿
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCvmReplace *bool `json:"IsCvmReplace,omitempty" name:"IsCvmReplace"`
 }
 
 type ClusterSetting struct {

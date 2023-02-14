@@ -1202,6 +1202,10 @@ type DescribeRoomResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
 
+	// 课堂状态。0为未开始，1为正在上课，2为已结束，3为已过期。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1281,6 +1285,14 @@ type DescribeRoomStatisticsResponseParams struct {
 
 	// 成员记录列表。
 	MemberRecords []*MemberRecord `json:"MemberRecords,omitempty" name:"MemberRecords"`
+
+	// 秒级unix时间戳，实际房间开始时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealStartTime *uint64 `json:"RealStartTime,omitempty" name:"RealStartTime"`
+
+	// 秒级unix时间戳，实际房间结束时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealEndTime *uint64 `json:"RealEndTime,omitempty" name:"RealEndTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -68,6 +68,9 @@ const (
 	// 操作频繁，请稍后重试。
 	INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 
+	// 查询字符串规则超过了限制。
+	INVALIDPARAMETER_CACHEKEYQUERYSTRINGTOOMANYVALUE = "InvalidParameter.CacheKeyQueryStringTooManyValue"
+
 	// HTTPS证书链错误。
 	INVALIDPARAMETER_CERTCHAINERROR = "InvalidParameter.CertChainError"
 
@@ -128,6 +131,9 @@ const (
 	// 非法操作-非法参数。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
 
+	// 非法操作-非法参数-无效action。
+	INVALIDPARAMETER_ERRINVALIDACTIONPARAMACTION = "InvalidParameter.ErrInvalidActionParamAction"
+
 	// 非法操作-非法参数-无效参数值类型。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAMBADVALUETYPE = "InvalidParameter.ErrInvalidActionParamBadValueType"
 
@@ -149,6 +155,9 @@ const (
 	// 非法条件-非法参数值-无效的正则表达式。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADREGULAR = "InvalidParameter.ErrInvalidConditionValueBadRegular"
 
+	// 非法条件-非法参数值-无效的url。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADURL = "InvalidParameter.ErrInvalidConditionValueBadUrl"
+
 	// 非法条件-非法参数值-无效的参数值。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUE = "InvalidParameter.ErrInvalidConditionValueBadValue"
 
@@ -157,6 +166,9 @@ const (
 
 	// 非法条件-非法参数值-参数值长度超出限制。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOLONGVALUE = "InvalidParameter.ErrInvalidConditionValueTooLongValue"
+
+	// 非法条件-非法参数值-正则表达式数量超出限制。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYREGULAR = "InvalidParameter.ErrInvalidConditionValueTooManyRegular"
 
 	// 非法条件-非法参数值-通配符数量超出限制。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYWILDCARD = "InvalidParameter.ErrInvalidConditionValueTooManyWildcard"
@@ -173,11 +185,20 @@ const (
 	// CNAME 未切换或者源站未路由到EO服务器。
 	INVALIDPARAMETER_HOSTSTATUSNOTALLOWAPPLYCERTIFICATE = "InvalidParameter.HostStatusNotAllowApplyCertificate"
 
+	// 参数错误。
+	INVALIDPARAMETER_INVALIDACCELERATETYPE = "InvalidParameter.InvalidAccelerateType"
+
 	// 无效的token鉴权。
 	INVALIDPARAMETER_INVALIDAUTHENTICATION = "InvalidParameter.InvalidAuthentication"
 
 	// 无效的token鉴权参数。
 	INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = "InvalidParameter.InvalidAuthenticationTypeSignParam"
+
+	// 无效的备源回源Host。
+	INVALIDPARAMETER_INVALIDBACKUPSERVERNAME = "InvalidParameter.InvalidBackupServerName"
+
+	// 无效的节点缓存。
+	INVALIDPARAMETER_INVALIDCACHECONFIGCACHE = "InvalidParameter.InvalidCacheConfigCache"
 
 	// 无效的节点缓存，遵循源站行为。
 	INVALIDPARAMETER_INVALIDCACHECONFIGFOLLOWORIGIN = "InvalidParameter.InvalidCacheConfigFollowOrigin"
@@ -281,6 +302,12 @@ const (
 	// 参数长度超过限制。
 	INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = "InvalidParameter.LengthExceedsLimit"
 
+	// 源站是内网IP。
+	INVALIDPARAMETER_ORIGINISINNERIP = "InvalidParameter.OriginIsInnerIp"
+
+	// 修改源站操作中源站组Id必填。
+	INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = "InvalidParameter.OriginOriginGroupIdIsRequired"
+
 	// 参数错误。
 	INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 
@@ -313,6 +340,15 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// DNS 记录与 DNSSEC 功能冲突。
+	INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
+
+	// 入参中的域名与站点参数不匹配，请更正后重试。
+	INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = "InvalidParameterValue.DomainNotMatchZone"
+
+	// DNS 记录名称错误。
+	INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
 
 	// 加速域名状态不符合要求。
 	INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
@@ -412,6 +448,12 @@ const (
 
 	// 证书不存在或未授权。
 	RESOURCEUNAVAILABLE_CERTNOTFOUND = "ResourceUnavailable.CertNotFound"
+
+	// 当前域名已接入EdgeOne，如确认需要接入到当前账号，请进行域名找回。
+	RESOURCEUNAVAILABLE_DOMAINALREADYEXISTS = "ResourceUnavailable.DomainAlreadyExists"
+
+	// 请求的加速域名不存在，请更正后重试。
+	RESOURCEUNAVAILABLE_DOMAINNOTFOUND = "ResourceUnavailable.DomainNotFound"
 
 	// 域名不存在或未开启代理。
 	RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"

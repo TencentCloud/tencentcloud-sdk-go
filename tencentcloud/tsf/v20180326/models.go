@@ -15200,6 +15200,10 @@ type ImageRepository struct {
 	// ApplicationName值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationNameReal *string `json:"ApplicationNameReal,omitempty" name:"ApplicationNameReal"`
+
+	// 是否公共,1:公有,0:私有
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Public *int64 `json:"Public,omitempty" name:"Public"`
 }
 
 type ImageRepositoryResult struct {
@@ -15686,6 +15690,10 @@ type KafkaDeliveryConfig struct {
 	// 自定义分行规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRule *string `json:"CustomRule,omitempty" name:"CustomRule"`
+
+	// KafkaAddress
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaAddress *string `json:"KafkaAddress,omitempty" name:"KafkaAddress"`
 }
 
 type LaneGroup struct {
@@ -18691,6 +18699,14 @@ type ScalableRule struct {
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否关闭指标伸缩, 默认0, 0:打开指标伸缩 1:关闭指标伸缩
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisableMetricAS *uint64 `json:"DisableMetricAS,omitempty" name:"DisableMetricAS"`
+
+	// 开启定时伸缩规则, 默认0, 0:关闭定时伸缩 1:开启定时伸缩
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableCronAS *uint64 `json:"EnableCronAS,omitempty" name:"EnableCronAS"`
 }
 
 type SchedulingStrategy struct {
@@ -20387,6 +20403,18 @@ type UnitNamespace struct {
 	// 单元化命名空间ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 网关实体ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
 type UnitRule struct {

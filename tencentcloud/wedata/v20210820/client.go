@@ -6425,6 +6425,7 @@ func NewDescribeRuleGroupsByPageResponse() (response *DescribeRuleGroupsByPageRe
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleGroupsByPage(request *DescribeRuleGroupsByPageRequest) (response *DescribeRuleGroupsByPageResponse, err error) {
     return c.DescribeRuleGroupsByPageWithContext(context.Background(), request)
 }
@@ -6443,6 +6444,7 @@ func (c *Client) DescribeRuleGroupsByPage(request *DescribeRuleGroupsByPageReque
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleGroupsByPageWithContext(ctx context.Context, request *DescribeRuleGroupsByPageRequest) (response *DescribeRuleGroupsByPageResponse, err error) {
     if request == nil {
         request = NewDescribeRuleGroupsByPageRequest()
@@ -7742,7 +7744,6 @@ func NewDescribeTemplateHistoryResponse() (response *DescribeTemplateHistoryResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeTemplateHistory(request *DescribeTemplateHistoryRequest) (response *DescribeTemplateHistoryResponse, err error) {
     return c.DescribeTemplateHistoryWithContext(context.Background(), request)
 }
@@ -7752,7 +7753,6 @@ func (c *Client) DescribeTemplateHistory(request *DescribeTemplateHistoryRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeTemplateHistoryWithContext(ctx context.Context, request *DescribeTemplateHistoryRequest) (response *DescribeTemplateHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeTemplateHistoryRequest()
