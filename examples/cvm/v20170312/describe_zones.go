@@ -40,5 +40,5 @@ func main() {
 		panic(err)
 	}
 	// 打印返回的json字符串
-	fmt.Printf("%s", response.ToJsonString())
+	fmt.Println(response.ToJsonString())
 }

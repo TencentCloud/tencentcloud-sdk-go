@@ -429,13 +429,23 @@ func (c *Client) sendHttp(request *http.Request) (response *http.Response, err e
 	if c.debug {
 		outBytes, err := httputil.DumpRequest(request, true)
 		if err != nil {
-			c.logger.Printf("[ERROR] dump request failed because %s", err)
-			return nil, err
+			c.logger.Printf("[ERROR] dump request failed: %s", err)
+		} else {
+			c.logger.Printf("[DEBUG] http request: %s", outBytes)
 		}
-		c.logger.Printf("[DEBUG] http request = %s", outBytes)
 	}
 
 	response, err = c.httpClient.Do(request)
+
+	if c.debug {
+		out, err := httputil.DumpResponse(response, true)
+		if err != nil {
+			c.logger.Printf("[ERROR] dump response failed: %s", err)
+		} else {
+			c.logger.Printf("[DEBUG] http response: %s", out)
+		}
+	}
+
 	return response, err
 }
 
