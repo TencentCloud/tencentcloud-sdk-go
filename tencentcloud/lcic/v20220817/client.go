@@ -727,6 +727,60 @@ func (c *Client) DescribeAppDetailWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeCurrentMemberListRequest() (request *DescribeCurrentMemberListRequest) {
+    request = &DescribeCurrentMemberListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeCurrentMemberList")
+    
+    
+    return
+}
+
+func NewDescribeCurrentMemberListResponse() (response *DescribeCurrentMemberListResponse) {
+    response = &DescribeCurrentMemberListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCurrentMemberList
+// 获取当前房间的成员列表，房间结束或过期后无法使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DescribeCurrentMemberList(request *DescribeCurrentMemberListRequest) (response *DescribeCurrentMemberListResponse, err error) {
+    return c.DescribeCurrentMemberListWithContext(context.Background(), request)
+}
+
+// DescribeCurrentMemberList
+// 获取当前房间的成员列表，房间结束或过期后无法使用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DescribeCurrentMemberListWithContext(ctx context.Context, request *DescribeCurrentMemberListRequest) (response *DescribeCurrentMemberListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCurrentMemberListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCurrentMemberList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCurrentMemberListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDocumentRequest() (request *DescribeDocumentRequest) {
     request = &DescribeDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},

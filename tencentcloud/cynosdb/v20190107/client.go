@@ -2765,6 +2765,58 @@ func (c *Client) DescribeRollbackTimeValidityWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
+    request = &DescribeZonesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeZones")
+    
+    
+    return
+}
+
+func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
+    response = &DescribeZonesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeZones
+// 本接口(DescribeZones)用于查询可售卖地域可用区信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
+    return c.DescribeZonesWithContext(context.Background(), request)
+}
+
+// DescribeZones
+// 本接口(DescribeZones)用于查询可售卖地域可用区信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
+    if request == nil {
+        request = NewDescribeZonesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZones require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeZonesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroupsRequest) {
     request = &DisassociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

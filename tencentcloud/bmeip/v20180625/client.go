@@ -212,7 +212,7 @@ func NewBindVpcIpResponse() (response *BindVpcIpResponse) {
 }
 
 // BindVpcIp
-// 黑石EIP绑定VPCIP
+// 黑石EIP绑定VPC IP
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -221,7 +221,7 @@ func (c *Client) BindVpcIp(request *BindVpcIpRequest) (response *BindVpcIpRespon
 }
 
 // BindVpcIp
-// 黑石EIP绑定VPCIP
+// 黑石EIP绑定VPC IP
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -310,7 +310,7 @@ func NewCreateEipAclResponse() (response *CreateEipAclResponse) {
 }
 
 // CreateEipAcl
-// 创建黑石弹性公网 EIPACL
+// 创建黑石弹性公网 EIP ACL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -320,7 +320,7 @@ func (c *Client) CreateEipAcl(request *CreateEipAclRequest) (response *CreateEip
 }
 
 // CreateEipAcl
-// 创建黑石弹性公网 EIPACL
+// 创建黑石弹性公网 EIP ACL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

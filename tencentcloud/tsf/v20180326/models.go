@@ -16705,6 +16705,10 @@ func (r *ModifyNamespaceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNamespaceResponseParams struct {
+	// Result
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -21420,6 +21424,10 @@ type VmGroupOther struct {
 	// 服务配置信息是否匹配
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNotEqualServiceConfig *bool `json:"IsNotEqualServiceConfig,omitempty" name:"IsNotEqualServiceConfig"`
+
+	// HealthCheckSettings
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
 }
 
 type VmGroupSimple struct {

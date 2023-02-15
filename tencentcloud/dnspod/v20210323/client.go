@@ -1207,6 +1207,68 @@ func (c *Client) DeleteDomainAliasWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteDomainBatchRequest() (request *DeleteDomainBatchRequest) {
+    request = &DeleteDomainBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DeleteDomainBatch")
+    
+    
+    return
+}
+
+func NewDeleteDomainBatchResponse() (response *DeleteDomainBatchResponse) {
+    response = &DeleteDomainBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDomainBatch
+// 批量删除域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DeleteDomainBatch(request *DeleteDomainBatchRequest) (response *DeleteDomainBatchResponse, err error) {
+    return c.DeleteDomainBatchWithContext(context.Background(), request)
+}
+
+// DeleteDomainBatch
+// 批量删除域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DeleteDomainBatchWithContext(ctx context.Context, request *DeleteDomainBatchRequest) (response *DeleteDomainBatchResponse, err error) {
+    if request == nil {
+        request = NewDeleteDomainBatchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDomainBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDomainBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRecordRequest() (request *DeleteRecordRequest) {
     request = &DeleteRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1933,6 +1995,66 @@ func (c *Client) DescribeDomainLogListWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeDomainPreviewRequest() (request *DescribeDomainPreviewRequest) {
+    request = &DescribeDomainPreviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainPreview")
+    
+    
+    return
+}
+
+func NewDescribeDomainPreviewResponse() (response *DescribeDomainPreviewResponse) {
+    response = &DescribeDomainPreviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainPreview
+// 获取域名概览信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeDomainPreview(request *DescribeDomainPreviewRequest) (response *DescribeDomainPreviewResponse, err error) {
+    return c.DescribeDomainPreviewWithContext(context.Background(), request)
+}
+
+// DescribeDomainPreview
+// 获取域名概览信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeDomainPreviewWithContext(ctx context.Context, request *DescribeDomainPreviewRequest) (response *DescribeDomainPreviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainPreviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainPreview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainPreviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainPurviewRequest() (request *DescribeDomainPurviewRequest) {
     request = &DescribeDomainPurviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2077,6 +2199,162 @@ func (c *Client) DescribeDomainShareInfoWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDomainWhoisRequest() (request *DescribeDomainWhoisRequest) {
+    request = &DescribeDomainWhoisRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainWhois")
+    
+    
+    return
+}
+
+func NewDescribeDomainWhoisResponse() (response *DescribeDomainWhoisResponse) {
+    response = &DescribeDomainWhoisResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainWhois
+// 获取域名Whois信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeDomainWhois(request *DescribeDomainWhoisRequest) (response *DescribeDomainWhoisResponse, err error) {
+    return c.DescribeDomainWhoisWithContext(context.Background(), request)
+}
+
+// DescribeDomainWhois
+// 获取域名Whois信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+func (c *Client) DescribeDomainWhoisWithContext(ctx context.Context, request *DescribeDomainWhoisRequest) (response *DescribeDomainWhoisResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainWhoisRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainWhois require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainWhoisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePackageDetailRequest() (request *DescribePackageDetailRequest) {
+    request = &DescribePackageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribePackageDetail")
+    
+    
+    return
+}
+
+func NewDescribePackageDetailResponse() (response *DescribePackageDetailResponse) {
+    response = &DescribePackageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePackageDetail
+// 获取各套餐配置详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTDOMAINOWNER = "FailedOperation.NotDomainOwner"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_NOTRESOURCEOWNER = "FailedOperation.NotResourceOwner"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_PARAMINVALID = "InvalidParameter.ParamInvalid"
+//  INVALIDPARAMETER_PARAMSMISSING = "InvalidParameter.ParamsMissing"
+//  INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+//  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  OPERATIONDENIED_NOTADMIN = "OperationDenied.NotAdmin"
+//  OPERATIONDENIED_NOTRESOURCEOWNER = "OperationDenied.NotResourceOwner"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribePackageDetail(request *DescribePackageDetailRequest) (response *DescribePackageDetailResponse, err error) {
+    return c.DescribePackageDetailWithContext(context.Background(), request)
+}
+
+// DescribePackageDetail
+// 获取各套餐配置详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTDOMAINOWNER = "FailedOperation.NotDomainOwner"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_NOTRESOURCEOWNER = "FailedOperation.NotResourceOwner"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_PARAMINVALID = "InvalidParameter.ParamInvalid"
+//  INVALIDPARAMETER_PARAMSMISSING = "InvalidParameter.ParamsMissing"
+//  INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+//  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  OPERATIONDENIED_NOTADMIN = "OperationDenied.NotAdmin"
+//  OPERATIONDENIED_NOTRESOURCEOWNER = "OperationDenied.NotResourceOwner"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribePackageDetailWithContext(ctx context.Context, request *DescribePackageDetailRequest) (response *DescribePackageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribePackageDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePackageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePackageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecordRequest() (request *DescribeRecordRequest) {
     request = &DescribeRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2163,6 +2441,104 @@ func (c *Client) DescribeRecordWithContext(ctx context.Context, request *Describ
     request.SetContext(ctx)
     
     response = NewDescribeRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRecordExistExceptDefaultNSRequest() (request *DescribeRecordExistExceptDefaultNSRequest) {
+    request = &DescribeRecordExistExceptDefaultNSRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordExistExceptDefaultNS")
+    
+    
+    return
+}
+
+func NewDescribeRecordExistExceptDefaultNSResponse() (response *DescribeRecordExistExceptDefaultNSResponse) {
+    response = &DescribeRecordExistExceptDefaultNSResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRecordExistExceptDefaultNS
+// 判断是否有除系统默认的@-NS记录之外的记录存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
+//  FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINNOTALLOWEDMODIFYRECORDS = "InvalidParameter.DomainNotAllowedModifyRecords"
+//  INVALIDPARAMETER_LOGINTOKENIDERROR = "InvalidParameter.LoginTokenIdError"
+//  INVALIDPARAMETER_LOGINTOKENNOTEXISTS = "InvalidParameter.LoginTokenNotExists"
+//  INVALIDPARAMETER_LOGINTOKENVALIDATEFAILED = "InvalidParameter.LoginTokenValidateFailed"
+//  INVALIDPARAMETER_RECORDIDINVALID = "InvalidParameter.RecordIdInvalid"
+//  INVALIDPARAMETER_REMARKLENGTHEXCEEDED = "InvalidParameter.RemarkLengthExceeded"
+//  INVALIDPARAMETER_REQUESTIPLIMITED = "InvalidParameter.RequestIpLimited"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+//  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  INVALIDPARAMETERVALUE_USERIDINVALID = "InvalidParameterValue.UserIdInvalid"
+//  LIMITEXCEEDED_FAILEDLOGINLIMITEXCEEDED = "LimitExceeded.FailedLoginLimitExceeded"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  OPERATIONDENIED_NOTADMIN = "OperationDenied.NotAdmin"
+//  OPERATIONDENIED_NOTAGENT = "OperationDenied.NotAgent"
+//  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+func (c *Client) DescribeRecordExistExceptDefaultNS(request *DescribeRecordExistExceptDefaultNSRequest) (response *DescribeRecordExistExceptDefaultNSResponse, err error) {
+    return c.DescribeRecordExistExceptDefaultNSWithContext(context.Background(), request)
+}
+
+// DescribeRecordExistExceptDefaultNS
+// 判断是否有除系统默认的@-NS记录之外的记录存在
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
+//  FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINNOTALLOWEDMODIFYRECORDS = "InvalidParameter.DomainNotAllowedModifyRecords"
+//  INVALIDPARAMETER_LOGINTOKENIDERROR = "InvalidParameter.LoginTokenIdError"
+//  INVALIDPARAMETER_LOGINTOKENNOTEXISTS = "InvalidParameter.LoginTokenNotExists"
+//  INVALIDPARAMETER_LOGINTOKENVALIDATEFAILED = "InvalidParameter.LoginTokenValidateFailed"
+//  INVALIDPARAMETER_RECORDIDINVALID = "InvalidParameter.RecordIdInvalid"
+//  INVALIDPARAMETER_REMARKLENGTHEXCEEDED = "InvalidParameter.RemarkLengthExceeded"
+//  INVALIDPARAMETER_REQUESTIPLIMITED = "InvalidParameter.RequestIpLimited"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+//  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  INVALIDPARAMETERVALUE_USERIDINVALID = "InvalidParameterValue.UserIdInvalid"
+//  LIMITEXCEEDED_FAILEDLOGINLIMITEXCEEDED = "LimitExceeded.FailedLoginLimitExceeded"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  OPERATIONDENIED_NOTADMIN = "OperationDenied.NotAdmin"
+//  OPERATIONDENIED_NOTAGENT = "OperationDenied.NotAgent"
+//  OPERATIONDENIED_NOTMANAGEDUSER = "OperationDenied.NotManagedUser"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+func (c *Client) DescribeRecordExistExceptDefaultNSWithContext(ctx context.Context, request *DescribeRecordExistExceptDefaultNSRequest) (response *DescribeRecordExistExceptDefaultNSResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordExistExceptDefaultNSRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordExistExceptDefaultNS require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordExistExceptDefaultNSResponse()
     err = c.Send(request, response)
     return
 }
@@ -2907,6 +3283,102 @@ func (c *Client) DescribeUserDetailWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeUserDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVASStatisticRequest() (request *DescribeVASStatisticRequest) {
+    request = &DescribeVASStatisticRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeVASStatistic")
+    
+    
+    return
+}
+
+func NewDescribeVASStatisticResponse() (response *DescribeVASStatisticResponse) {
+    response = &DescribeVASStatisticResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVASStatistic
+// 获取域名增值服务用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTDOMAINOWNER = "FailedOperation.NotDomainOwner"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_NOTRESOURCEOWNER = "FailedOperation.NotResourceOwner"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_PARAMINVALID = "InvalidParameter.ParamInvalid"
+//  INVALIDPARAMETER_PARAMSMISSING = "InvalidParameter.ParamsMissing"
+//  INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+//  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  OPERATIONDENIED_NOTADMIN = "OperationDenied.NotAdmin"
+//  OPERATIONDENIED_NOTRESOURCEOWNER = "OperationDenied.NotResourceOwner"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeVASStatistic(request *DescribeVASStatisticRequest) (response *DescribeVASStatisticResponse, err error) {
+    return c.DescribeVASStatisticWithContext(context.Background(), request)
+}
+
+// DescribeVASStatistic
+// 获取域名增值服务用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTDOMAINOWNER = "FailedOperation.NotDomainOwner"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_NOTRESOURCEOWNER = "FailedOperation.NotResourceOwner"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_PARAMINVALID = "InvalidParameter.ParamInvalid"
+//  INVALIDPARAMETER_PARAMSMISSING = "InvalidParameter.ParamsMissing"
+//  INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
+//  INVALIDPARAMETER_UNREALNAMEUSER = "InvalidParameter.UnrealNameUser"
+//  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  OPERATIONDENIED_NOTADMIN = "OperationDenied.NotAdmin"
+//  OPERATIONDENIED_NOTRESOURCEOWNER = "OperationDenied.NotResourceOwner"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeVASStatisticWithContext(ctx context.Context, request *DescribeVASStatisticRequest) (response *DescribeVASStatisticResponse, err error) {
+    if request == nil {
+        request = NewDescribeVASStatisticRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVASStatistic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVASStatisticResponse()
     err = c.Send(request, response)
     return
 }

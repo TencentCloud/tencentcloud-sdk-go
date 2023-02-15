@@ -12976,6 +12976,36 @@ type GenHiveTableDDLSqlRequestParams struct {
 
 	// 上游节点的字段信息
 	SourceFieldInfoList []*SourceFieldInfo `json:"SourceFieldInfoList,omitempty" name:"SourceFieldInfoList"`
+
+	// 分区字段
+	Partitions []*Partition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 建表属性
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
+
+	// 建表模式，0:向导模式，1:ddl
+	TableMode *int64 `json:"TableMode,omitempty" name:"TableMode"`
+
+	// DLC表版本，v1/v2
+	TableVersion *string `json:"TableVersion,omitempty" name:"TableVersion"`
+
+	// 是否upsert写入
+	UpsertFlag *bool `json:"UpsertFlag,omitempty" name:"UpsertFlag"`
+
+	// 表描述信息
+	TableComment *string `json:"TableComment,omitempty" name:"TableComment"`
+
+	// 增加的文件数量阈值, 超过值将触发小文件合并
+	AddDataFiles *int64 `json:"AddDataFiles,omitempty" name:"AddDataFiles"`
+
+	// 增加的Equality delete数量阈值, 超过值将触发小文件合并
+	AddEqualityDeletes *int64 `json:"AddEqualityDeletes,omitempty" name:"AddEqualityDeletes"`
+
+	// 增加的Position delete数量阈值, 超过值将触发小文件合并
+	AddPositionDeletes *int64 `json:"AddPositionDeletes,omitempty" name:"AddPositionDeletes"`
+
+	// 增加的delete file数量阈值
+	AddDeleteFiles *int64 `json:"AddDeleteFiles,omitempty" name:"AddDeleteFiles"`
 }
 
 type GenHiveTableDDLSqlRequest struct {
@@ -13010,6 +13040,36 @@ type GenHiveTableDDLSqlRequest struct {
 
 	// 上游节点的字段信息
 	SourceFieldInfoList []*SourceFieldInfo `json:"SourceFieldInfoList,omitempty" name:"SourceFieldInfoList"`
+
+	// 分区字段
+	Partitions []*Partition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 建表属性
+	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
+
+	// 建表模式，0:向导模式，1:ddl
+	TableMode *int64 `json:"TableMode,omitempty" name:"TableMode"`
+
+	// DLC表版本，v1/v2
+	TableVersion *string `json:"TableVersion,omitempty" name:"TableVersion"`
+
+	// 是否upsert写入
+	UpsertFlag *bool `json:"UpsertFlag,omitempty" name:"UpsertFlag"`
+
+	// 表描述信息
+	TableComment *string `json:"TableComment,omitempty" name:"TableComment"`
+
+	// 增加的文件数量阈值, 超过值将触发小文件合并
+	AddDataFiles *int64 `json:"AddDataFiles,omitempty" name:"AddDataFiles"`
+
+	// 增加的Equality delete数量阈值, 超过值将触发小文件合并
+	AddEqualityDeletes *int64 `json:"AddEqualityDeletes,omitempty" name:"AddEqualityDeletes"`
+
+	// 增加的Position delete数量阈值, 超过值将触发小文件合并
+	AddPositionDeletes *int64 `json:"AddPositionDeletes,omitempty" name:"AddPositionDeletes"`
+
+	// 增加的delete file数量阈值
+	AddDeleteFiles *int64 `json:"AddDeleteFiles,omitempty" name:"AddDeleteFiles"`
 }
 
 func (r *GenHiveTableDDLSqlRequest) ToJsonString() string {
@@ -13034,6 +13094,16 @@ func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
 	delete(f, "SinkType")
 	delete(f, "SchemaName")
 	delete(f, "SourceFieldInfoList")
+	delete(f, "Partitions")
+	delete(f, "Properties")
+	delete(f, "TableMode")
+	delete(f, "TableVersion")
+	delete(f, "UpsertFlag")
+	delete(f, "TableComment")
+	delete(f, "AddDataFiles")
+	delete(f, "AddEqualityDeletes")
+	delete(f, "AddPositionDeletes")
+	delete(f, "AddDeleteFiles")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenHiveTableDDLSqlRequest has unknown keys!", "")
 	}
@@ -16396,6 +16466,17 @@ type ParamInfo struct {
 	ParamValue *string `json:"ParamValue,omitempty" name:"ParamValue"`
 }
 
+type Partition struct {
+	// 分区转换策略
+	Transform *string `json:"Transform,omitempty" name:"Transform"`
+
+	// 分区字段名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 策略参数
+	TransformArgs []*string `json:"TransformArgs,omitempty" name:"TransformArgs"`
+}
+
 type ProdSchedulerTask struct {
 	// 生产调度任务工作流ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16408,6 +16489,14 @@ type ProdSchedulerTask struct {
 	// 生产调度任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+type Property struct {
+	// key值
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// value值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type QualityScore struct {

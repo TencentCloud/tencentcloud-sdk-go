@@ -155,6 +155,9 @@ const (
 	// 记录值无效。
 	INVALIDPARAMETER_BATCHRECORDMODIFYACTIONINVALIDVALUE = "InvalidParameter.BatchRecordModifyActionInvalidValue"
 
+	// 批量删除记录任务失败，原因：内部错误。
+	INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+
 	// 批量替换记录任务失败，原因：内部错误。
 	INVALIDPARAMETER_BATCHRECORDREPLACEACTIONERROR = "InvalidParameter.BatchRecordReplaceActionError"
 

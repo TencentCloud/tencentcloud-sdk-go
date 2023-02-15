@@ -10966,7 +10966,7 @@ func NewModifyPrometheusAlertRuleResponse() (response *ModifyPrometheusAlertRule
 }
 
 // ModifyPrometheusAlertRule
-// 修改告警规则 
+// 修改告警规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -10982,7 +10982,7 @@ func (c *Client) ModifyPrometheusAlertRule(request *ModifyPrometheusAlertRuleReq
 }
 
 // ModifyPrometheusAlertRule
-// 修改告警规则 
+// 修改告警规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"

@@ -1759,6 +1759,18 @@ type DatasetGroup struct {
 	// 数据集范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasetScope *string `json:"DatasetScope,omitempty" name:"DatasetScope"`
+
+	// 数据集OCR子场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrScene *string `json:"OcrScene,omitempty" name:"OcrScene"`
+
+	// 数据集字典修改状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnnotationKeyStatus *string `json:"AnnotationKeyStatus,omitempty" name:"AnnotationKeyStatus"`
+
+	// 文本数据集导入方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 }
 
 type DatasetInfo struct {
@@ -1849,6 +1861,14 @@ type DatasetInfo struct {
 	// 数据集范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasetScope *string `json:"DatasetScope,omitempty" name:"DatasetScope"`
+
+	// 数据集OCR子场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrScene *string `json:"OcrScene,omitempty" name:"OcrScene"`
+
+	// 数据集字典修改状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnnotationKeyStatus *string `json:"AnnotationKeyStatus,omitempty" name:"AnnotationKeyStatus"`
 }
 
 // Predefined struct for user
@@ -6519,6 +6539,9 @@ type SpecPrice struct {
 
 	// 优惠后的价格，单位：分
 	RealTotalCost *uint64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 计费项数量
+	SpecCount *uint64 `json:"SpecCount,omitempty" name:"SpecCount"`
 }
 
 type SpecUnit struct {

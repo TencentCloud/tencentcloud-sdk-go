@@ -4701,6 +4701,70 @@ func (r *DescribeRollbackTimeValidityResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeZonesRequestParams struct {
+	// 是否包含虚拟区
+	IncludeVirtualZones *bool `json:"IncludeVirtualZones,omitempty" name:"IncludeVirtualZones"`
+
+	// 是否展示地域下所有可用区，并显示用户每个可用区权限
+	ShowPermission *bool `json:"ShowPermission,omitempty" name:"ShowPermission"`
+}
+
+type DescribeZonesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否包含虚拟区
+	IncludeVirtualZones *bool `json:"IncludeVirtualZones,omitempty" name:"IncludeVirtualZones"`
+
+	// 是否展示地域下所有可用区，并显示用户每个可用区权限
+	ShowPermission *bool `json:"ShowPermission,omitempty" name:"ShowPermission"`
+}
+
+func (r *DescribeZonesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZonesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IncludeVirtualZones")
+	delete(f, "ShowPermission")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZonesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeZonesResponseParams struct {
+	// 地域信息
+	RegionSet []*SaleRegion `json:"RegionSet,omitempty" name:"RegionSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeZonesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeZonesResponseParams `json:"Response"`
+}
+
+func (r *DescribeZonesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZonesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisassociateSecurityGroupsRequestParams struct {
 	// 实例组ID数组
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -6274,6 +6338,14 @@ type ModifyParamItem struct {
 	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
 }
 
+type Module struct {
+	// 是否支持，可选值:yes,no
+	IsDisable *string `json:"IsDisable,omitempty" name:"IsDisable"`
+
+	// 模块名
+	ModuleName *string `json:"ModuleName,omitempty" name:"ModuleName"`
+}
+
 type NetAddr struct {
 	// 内网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7238,6 +7310,57 @@ type RuleFilters struct {
 
 	// 审计规则过滤条件的匹配值。
 	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
+type SaleRegion struct {
+	// 地域英文名
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 地域数字ID
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域中文名
+	RegionZh *string `json:"RegionZh,omitempty" name:"RegionZh"`
+
+	// 可售卖可用区列表
+	ZoneSet []*SaleZone `json:"ZoneSet,omitempty" name:"ZoneSet"`
+
+	// 引擎类型
+	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 地域模块支持情况
+	Modules []*Module `json:"Modules,omitempty" name:"Modules"`
+}
+
+type SaleZone struct {
+	// 可用区英文名
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 可用区数字ID
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 可用区中文名
+	ZoneZh *string `json:"ZoneZh,omitempty" name:"ZoneZh"`
+
+	// 是否支持serverless集群<br>
+	// 0:不支持<br>
+	// 1:支持
+	IsSupportServerless *int64 `json:"IsSupportServerless,omitempty" name:"IsSupportServerless"`
+
+	// 是否支持普通集群<br>
+	// 0:不支持<br>
+	// 1:支持
+	IsSupportNormal *int64 `json:"IsSupportNormal,omitempty" name:"IsSupportNormal"`
+
+	// 物理区
+	PhysicalZone *string `json:"PhysicalZone,omitempty" name:"PhysicalZone"`
+
+	// 用户是否有可用区权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasPermission *bool `json:"HasPermission,omitempty" name:"HasPermission"`
+
+	// 是否为全链路RDMA可用区
+	IsWholeRdmaZone *string `json:"IsWholeRdmaZone,omitempty" name:"IsWholeRdmaZone"`
 }
 
 // Predefined struct for user

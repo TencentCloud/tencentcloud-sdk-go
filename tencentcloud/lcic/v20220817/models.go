@@ -913,6 +913,80 @@ func (r *DescribeAppDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCurrentMemberListRequestParams struct {
+	// 房间Id。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 分页查询当前页数，从1开始递增。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，最大1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeCurrentMemberListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间Id。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 分页查询当前页数，从1开始递增。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，最大1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCurrentMemberListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCurrentMemberListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCurrentMemberListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCurrentMemberListResponseParams struct {
+	// 记录总数。当前房间的总人数。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 成员记录列表。
+	MemberRecords []*MemberRecord `json:"MemberRecords,omitempty" name:"MemberRecords"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCurrentMemberListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCurrentMemberListResponseParams `json:"Response"`
+}
+
+func (r *DescribeCurrentMemberListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCurrentMemberListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDocumentRequestParams struct {
 	// 文档Id（唯一id）
 	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`

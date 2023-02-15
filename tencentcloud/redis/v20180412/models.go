@@ -3921,7 +3921,7 @@ type DescribeSlowLogRequestParams struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 慢查询平均执行时间阈值（单位：微秒）。
+	// 慢查询平均执行时间阈值（单位：毫秒）。
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
 	// 每个页面展示的慢查询条数，默认值为20。
@@ -3946,7 +3946,7 @@ type DescribeSlowLogRequest struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 慢查询平均执行时间阈值（单位：微秒）。
+	// 慢查询平均执行时间阈值（单位：毫秒）。
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
 	// 每个页面展示的慢查询条数，默认值为20。

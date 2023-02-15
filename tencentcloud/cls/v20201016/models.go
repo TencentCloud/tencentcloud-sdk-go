@@ -1629,7 +1629,7 @@ func (r *CreateShipperRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateShipperResponseParams struct {
-	// 投递规则ID
+	// 投递任务ID
 	ShipperId *string `json:"ShipperId,omitempty" name:"ShipperId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

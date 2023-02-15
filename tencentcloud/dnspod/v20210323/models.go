@@ -1218,6 +1218,84 @@ func (r *DeleteDomainAliasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteDomainBatchDetail struct {
+	// 域名 ID
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitempty" name:"Error"`
+
+	// 删除状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 操作
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
+// Predefined struct for user
+type DeleteDomainBatchRequestParams struct {
+	// 域名数组
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList"`
+}
+
+type DeleteDomainBatchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名数组
+	DomainList []*string `json:"DomainList,omitempty" name:"DomainList"`
+}
+
+func (r *DeleteDomainBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDomainBatchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDomainBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDomainBatchResponseParams struct {
+	// 任务 ID
+	JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 任务详情数组
+	DetailList []*DeleteDomainBatchDetail `json:"DetailList,omitempty" name:"DetailList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteDomainBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDomainBatchResponseParams `json:"Response"`
+}
+
+func (r *DeleteDomainBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDomainBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DeleteDomainRequestParams struct {
 	// 域名
@@ -2039,6 +2117,70 @@ func (r *DescribeDomainLogListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDomainPreviewRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeDomainPreviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeDomainPreviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainPreviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainPreviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainPreviewResponseParams struct {
+	// 域名概览信息
+	Domain *PreviewDetail `json:"Domain,omitempty" name:"Domain"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainPreviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainPreviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainPreviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainPreviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDomainPurviewRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -2230,6 +2372,184 @@ func (r *DescribeDomainShareInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDomainShareInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainWhoisRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+type DescribeDomainWhoisRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeDomainWhoisRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainWhoisRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainWhoisRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainWhoisResponseParams struct {
+	// 域名Whois信息
+	Info *WhoisInfo `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainWhoisResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainWhoisResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainWhoisResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainWhoisResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePackageDetailRequestParams struct {
+
+}
+
+type DescribePackageDetailRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribePackageDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePackageDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePackageDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePackageDetailResponseParams struct {
+	// 套餐配置详情
+	Info []*PackageDetailItem `json:"Info,omitempty" name:"Info"`
+
+	// 套餐代码列表
+	LevelMap []*string `json:"LevelMap,omitempty" name:"LevelMap"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePackageDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePackageDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribePackageDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePackageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordExistExceptDefaultNSRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeRecordExistExceptDefaultNSRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeRecordExistExceptDefaultNSRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordExistExceptDefaultNSRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordExistExceptDefaultNSRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordExistExceptDefaultNSResponseParams struct {
+	// true 是 false 否
+	Exist *bool `json:"Exist,omitempty" name:"Exist"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordExistExceptDefaultNSResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordExistExceptDefaultNSResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordExistExceptDefaultNSResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordExistExceptDefaultNSResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3229,6 +3549,63 @@ func (r *DescribeUserDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVASStatisticRequestParams struct {
+	// 域名ID
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeVASStatisticRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeVASStatisticRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVASStatisticRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVASStatisticRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVASStatisticResponseParams struct {
+	// 增值服务用量列表
+	VASList []*VASStatisticItem `json:"VASList,omitempty" name:"VASList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeVASStatisticResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVASStatisticResponseParams `json:"Response"`
+}
+
+func (r *DescribeVASStatisticResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVASStatisticResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4969,6 +5346,41 @@ func (r *ModifyVasAutoRenewStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type PackageDetailItem struct {
+	// 套餐原价
+	RealPrice *uint64 `json:"RealPrice,omitempty" name:"RealPrice"`
+
+	// 可更换域名次数
+	ChangedTimes *uint64 `json:"ChangedTimes,omitempty" name:"ChangedTimes"`
+
+	// 允许设置的最小 TTL 值
+	MinTtl *uint64 `json:"MinTtl,omitempty" name:"MinTtl"`
+
+	// 负载均衡数量
+	RecordRoll *uint64 `json:"RecordRoll,omitempty" name:"RecordRoll"`
+
+	// 子域名级数
+	SubDomainLevel *uint64 `json:"SubDomainLevel,omitempty" name:"SubDomainLevel"`
+
+	// 泛解析级数
+	MaxWildcard *uint64 `json:"MaxWildcard,omitempty" name:"MaxWildcard"`
+
+	// DNS 服务集群个数
+	DnsServerRegion *string `json:"DnsServerRegion,omitempty" name:"DnsServerRegion"`
+
+	// 套餐名称
+	DomainGradeCn *string `json:"DomainGradeCn,omitempty" name:"DomainGradeCn"`
+
+	// 套餐代号
+	GradeLevel *uint64 `json:"GradeLevel,omitempty" name:"GradeLevel"`
+
+	// 套餐对应的 NS
+	Ns []*string `json:"Ns,omitempty" name:"Ns"`
+
+	// 套餐代码
+	DomainGrade *string `json:"DomainGrade,omitempty" name:"DomainGrade"`
+}
+
 // Predefined struct for user
 type PayOrderWithBalanceRequestParams struct {
 	// 需要支付的大订单号数组
@@ -5037,6 +5449,41 @@ func (r *PayOrderWithBalanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PayOrderWithBalanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PreviewDetail struct {
+	// 域名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 域名套餐代码
+	Grade *string `json:"Grade,omitempty" name:"Grade"`
+
+	// 域名套餐名称
+	GradeTitle *string `json:"GradeTitle,omitempty" name:"GradeTitle"`
+
+	// 域名记录数
+	Records *uint64 `json:"Records,omitempty" name:"Records"`
+
+	// 域名停靠状态。0 未开启 1 已开启 2 已暂停
+	DomainParkingStatus *uint64 `json:"DomainParkingStatus,omitempty" name:"DomainParkingStatus"`
+
+	// 自定义线路数量
+	LineCount *uint64 `json:"LineCount,omitempty" name:"LineCount"`
+
+	// 自定义线路分组数量
+	LineGroupCount *uint64 `json:"LineGroupCount,omitempty" name:"LineGroupCount"`
+
+	// 域名别名数量
+	AliasCount *uint64 `json:"AliasCount,omitempty" name:"AliasCount"`
+
+	// 允许添加的最大域名别名数量
+	MaxAliasCount *uint64 `json:"MaxAliasCount,omitempty" name:"MaxAliasCount"`
+
+	// 昨天的解析量
+	ResolveCount *uint64 `json:"ResolveCount,omitempty" name:"ResolveCount"`
+
+	// 增值服务数量
+	VASCount *uint64 `json:"VASCount,omitempty" name:"VASCount"`
 }
 
 type PurviewInfo struct {
@@ -5457,4 +5904,128 @@ type UserInfo struct {
 
 	// 所属 DNS 服务器
 	FreeNs []*string `json:"FreeNs,omitempty" name:"FreeNs"`
+}
+
+type VASStatisticItem struct {
+	// 增值服务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 增值服务标识
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 增值服务最大用量
+	LimitCount *uint64 `json:"LimitCount,omitempty" name:"LimitCount"`
+
+	// 增值服务已使用的用量
+	UseCount *uint64 `json:"UseCount,omitempty" name:"UseCount"`
+}
+
+type WhoisContact struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Admin *WhoisContactAddress `json:"Admin,omitempty" name:"Admin"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Billing *WhoisContactAddress `json:"Billing,omitempty" name:"Billing"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Registrant *WhoisContactAddress `json:"Registrant,omitempty" name:"Registrant"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tech *WhoisContactAddress `json:"Tech,omitempty" name:"Tech"`
+}
+
+type WhoisContactAddress struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fax *string `json:"Fax,omitempty" name:"Fax"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaxExt *string `json:"FaxExt,omitempty" name:"FaxExt"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Handle *string `json:"Handle,omitempty" name:"Handle"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Organization *string `json:"Organization,omitempty" name:"Organization"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostalCode *string `json:"PostalCode,omitempty" name:"PostalCode"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Street *string `json:"Street,omitempty" name:"Street"`
+}
+
+type WhoisInfo struct {
+	// 联系信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Contacts *WhoisContact `json:"Contacts,omitempty" name:"Contacts"`
+
+	// 域名注册时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationDate *string `json:"CreationDate,omitempty" name:"CreationDate"`
+
+	// 域名到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpirationDate *string `json:"ExpirationDate,omitempty" name:"ExpirationDate"`
+
+	// 是否是在腾讯云注册的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsQcloud *bool `json:"IsQcloud,omitempty" name:"IsQcloud"`
+
+	// 是否当前操作帐号注册的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsQcloudOwner *bool `json:"IsQcloudOwner,omitempty" name:"IsQcloudOwner"`
+
+	// 域名配置的NS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameServers []*string `json:"NameServers,omitempty" name:"NameServers"`
+
+	// Whois原始信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Raw []*string `json:"Raw,omitempty" name:"Raw"`
+
+	// 域名注册商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Registrar []*string `json:"Registrar,omitempty" name:"Registrar"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status []*string `json:"Status,omitempty" name:"Status"`
+
+	// 更新日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedDate *string `json:"UpdatedDate,omitempty" name:"UpdatedDate"`
 }

@@ -4121,10 +4121,9 @@ func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
 type CreateReviewTemplateRequestParams struct {
 	// 需要返回的违规标签列表，可选值为：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂；</li>
 	// <li>Ad：广告；</li>
 	// <li>Moan：娇喘。</li>
@@ -4145,10 +4144,9 @@ type CreateReviewTemplateRequest struct {
 	
 	// 需要返回的违规标签列表，可选值为：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂；</li>
 	// <li>Ad：广告；</li>
 	// <li>Moan：娇喘。</li>
@@ -14844,10 +14842,9 @@ type ModifyReviewTemplateRequestParams struct {
 
 	// 需要返回的违规标签列表，可选值为：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂；</li>
 	// <li>Ad：广告；</li>
 	// <li>Moan：娇喘。</li>
@@ -14873,10 +14870,9 @@ type ModifyReviewTemplateRequest struct {
 
 	// 需要返回的违规标签列表，可选值为：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂；</li>
 	// <li>Ad：广告；</li>
 	// <li>Moan：娇喘。</li>
@@ -18304,7 +18300,7 @@ type ReviewAudioVideoRequestParams struct {
 	ReviewContents []*string `json:"ReviewContents,omitempty" name:"ReviewContents"`
 
 	// 审核模板 ID，默认值为 10。取值范围：
-	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
+	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
@@ -18336,7 +18332,7 @@ type ReviewAudioVideoRequest struct {
 	ReviewContents []*string `json:"ReviewContents,omitempty" name:"ReviewContents"`
 
 	// 审核模板 ID，默认值为 10。取值范围：
-	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
+	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
@@ -18420,11 +18416,10 @@ type ReviewAudioVideoSegmentItem struct {
 
 	// 嫌疑片段最可能的违规的标签，取值范围：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Ad：广告；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂；</li>
 	// <li>Moan：娇喘。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -18508,11 +18503,10 @@ type ReviewAudioVideoTaskOutput struct {
 
 	// 当 Suggestion 为 review 或 block 时有效，表示音视频最可能的违规的标签，取值范围：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Ad：广告；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂；</li>
 	// <li>Moan：娇喘。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -18545,7 +18539,7 @@ type ReviewImageRequestParams struct {
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 图片审核模板 ID，取值范围：
-	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
+	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -18559,7 +18553,7 @@ type ReviewImageRequest struct {
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 图片审核模板 ID，取值范围：
-	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴恐（Terror）和不适宜的信息（Polity）。</li>
+	// <li>10：预置模板，支持检测的违规标签包括色情（Porn）、暴力（Terror）和不适宜的信息（Polity）。</li>
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -18626,11 +18620,10 @@ type ReviewImageResult struct {
 
 	// 当 Suggestion 为 review 或 block 时有效，表示最可能的违规的标签，取值范围：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Ad：广告；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -18661,11 +18654,10 @@ type ReviewImageSegmentItem struct {
 
 	// 嫌疑片段最可能的违规的标签，取值范围：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Ad：广告；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂。</li>
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -18705,11 +18697,10 @@ type ReviewInfo struct {
 	// <li>Voice：声音。</li>
 	// Label 表示违禁的标签，取值范围：
 	// <li>Porn：色情；</li>
-	// <li>Terror：暴恐；</li>
+	// <li>Terror：暴力；</li>
 	// <li>Polity：不适宜的信息；</li>
 	// <li>Ad：广告；</li>
 	// <li>Illegal：违法；</li>
-	// <li>Religion：宗教；</li>
 	// <li>Abuse：谩骂；</li>
 	// <li>Moan：娇喘。</li>
 	TypeSet []*string `json:"TypeSet,omitempty" name:"TypeSet"`

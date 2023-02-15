@@ -1486,6 +1486,7 @@ type DomainList struct {
 	// 是否已设置自动续费 。
 	// 0：未设置 
 	// 1：已设置
+	// 2：设置后，关闭
 	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 
 	// 注册时间。

@@ -382,6 +382,10 @@ type BonusInfo struct {
 
 	// 资源包创建时间
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 资源包状态 0.未使用 1.使用中 2.已退款 3.已过期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
