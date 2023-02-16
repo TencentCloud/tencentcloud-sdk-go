@@ -3991,6 +3991,70 @@ func (c *Client) ModifyDomainAttributesWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyFunctionTargetsRequest() (request *ModifyFunctionTargetsRequest) {
+    request = &ModifyFunctionTargetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyFunctionTargets")
+    
+    
+    return
+}
+
+func NewModifyFunctionTargetsResponse() (response *ModifyFunctionTargetsResponse) {
+    response = &ModifyFunctionTargetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyFunctionTargets
+// 修改负载均衡转发规则上所绑定的云函数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyFunctionTargets(request *ModifyFunctionTargetsRequest) (response *ModifyFunctionTargetsResponse, err error) {
+    return c.ModifyFunctionTargetsWithContext(context.Background(), request)
+}
+
+// ModifyFunctionTargets
+// 修改负载均衡转发规则上所绑定的云函数。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyFunctionTargetsWithContext(ctx context.Context, request *ModifyFunctionTargetsRequest) (response *ModifyFunctionTargetsResponse, err error) {
+    if request == nil {
+        request = NewModifyFunctionTargetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFunctionTargets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyFunctionTargetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyListenerRequest() (request *ModifyListenerRequest) {
     request = &ModifyListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},

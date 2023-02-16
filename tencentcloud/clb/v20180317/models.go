@@ -6081,6 +6081,95 @@ func (r *ModifyDomainResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyFunctionTargetsRequestParams struct {
+	// 负载均衡实例ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡监听器ID。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 要修改的后端云函数服务列表。
+	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitempty" name:"FunctionTargets"`
+
+	// 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一。
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 目标规则的域名，提供LocationId参数时本参数不生效。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 目标规则的URL，提供LocationId参数时本参数不生效。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type ModifyFunctionTargetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 负载均衡实例ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡监听器ID。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 要修改的后端云函数服务列表。
+	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitempty" name:"FunctionTargets"`
+
+	// 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一。
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 目标规则的域名，提供LocationId参数时本参数不生效。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 目标规则的URL，提供LocationId参数时本参数不生效。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+func (r *ModifyFunctionTargetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFunctionTargetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "ListenerId")
+	delete(f, "FunctionTargets")
+	delete(f, "LocationId")
+	delete(f, "Domain")
+	delete(f, "Url")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFunctionTargetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyFunctionTargetsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyFunctionTargetsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyFunctionTargetsResponseParams `json:"Response"`
+}
+
+func (r *ModifyFunctionTargetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFunctionTargetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyListenerRequestParams struct {
 	// 负载均衡实例ID。
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`

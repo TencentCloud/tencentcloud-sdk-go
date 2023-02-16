@@ -3148,6 +3148,22 @@ type DataEngineInfo struct {
 	// ui的跳转地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UiURL *string `json:"UiURL,omitempty" name:"UiURL"`
+
+	// 引擎的资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 集群镜像版本ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageVersionId *string `json:"ImageVersionId,omitempty" name:"ImageVersionId"`
+
+	// 集群镜像小版本ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildImageVersionId *string `json:"ChildImageVersionId,omitempty" name:"ChildImageVersionId"`
+
+	// 集群镜像版本名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageVersionName *string `json:"ImageVersionName,omitempty" name:"ImageVersionName"`
 }
 
 type DataFormat struct {

@@ -19288,6 +19288,10 @@ type Machine struct {
 
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type MachineExtraInfo struct {
@@ -19995,6 +19999,67 @@ func (r *ModifyLicenseUnBindsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLicenseUnBindsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMachineRemarkRequestParams struct {
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type ModifyMachineRemarkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *ModifyMachineRemarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMachineRemarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Quuid")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMachineRemarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMachineRemarkResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyMachineRemarkResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMachineRemarkResponseParams `json:"Response"`
+}
+
+func (r *ModifyMachineRemarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMachineRemarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

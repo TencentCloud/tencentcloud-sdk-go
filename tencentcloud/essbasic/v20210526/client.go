@@ -1503,6 +1503,56 @@ func (c *Client) ChannelGetTaskResultApiWithContext(ctx context.Context, request
     return
 }
 
+func NewChannelUpdateSealStatusRequest() (request *ChannelUpdateSealStatusRequest) {
+    request = &ChannelUpdateSealStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelUpdateSealStatus")
+    
+    
+    return
+}
+
+func NewChannelUpdateSealStatusResponse() (response *ChannelUpdateSealStatusResponse) {
+    response = &ChannelUpdateSealStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelUpdateSealStatus
+// 本接口（ChannelUpdateSealStatus）由于渠道版更新印章状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelUpdateSealStatus(request *ChannelUpdateSealStatusRequest) (response *ChannelUpdateSealStatusResponse, err error) {
+    return c.ChannelUpdateSealStatusWithContext(context.Background(), request)
+}
+
+// ChannelUpdateSealStatus
+// 本接口（ChannelUpdateSealStatus）由于渠道版更新印章状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelUpdateSealStatusWithContext(ctx context.Context, request *ChannelUpdateSealStatusRequest) (response *ChannelUpdateSealStatusResponse, err error) {
+    if request == nil {
+        request = NewChannelUpdateSealStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelUpdateSealStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelUpdateSealStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelVerifyPdfRequest() (request *ChannelVerifyPdfRequest) {
     request = &ChannelVerifyPdfRequest{
         BaseRequest: &tchttp.BaseRequest{},

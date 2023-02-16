@@ -1774,6 +1774,88 @@ func (r *ChannelGetTaskResultApiResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelUpdateSealStatusRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作的印章状态，DISABLE-停用印章
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 印章ID
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 更新印章状态原因说明
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+}
+
+type ChannelUpdateSealStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作的印章状态，DISABLE-停用印章
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 印章ID
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 更新印章状态原因说明
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+}
+
+func (r *ChannelUpdateSealStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelUpdateSealStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Status")
+	delete(f, "SealId")
+	delete(f, "Operator")
+	delete(f, "Reason")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelUpdateSealStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelUpdateSealStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelUpdateSealStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelUpdateSealStatusResponseParams `json:"Response"`
+}
+
+func (r *ChannelUpdateSealStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelUpdateSealStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelVerifyPdfRequestParams struct {
 	// 合同Id，流程Id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`

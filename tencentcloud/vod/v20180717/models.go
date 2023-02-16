@@ -1927,6 +1927,19 @@ func (r *ApplyUploadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ArtifactRepairInfo struct {
+	// 去伪影（毛刺）控制开关，可选值：
+	// <li>ON：开启去伪影（毛刺）；</li>
+	// <li>OFF：关闭去伪影（毛刺）。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 去伪影（毛刺）类型，仅当去伪影（毛刺）控制开关为 ON 时有效，可选值：
+	// <li>weak：轻去伪影（毛刺）；</li>
+	// <li>strong：强去伪影（毛刺）。</li>
+	// 默认值：weak。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
 type AsrFullTextConfigureInfo struct {
 	// 语音全文识别任务开关，可选值：
 	// <li>ON：开启智能语音全文识别任务；</li>
@@ -2067,6 +2080,20 @@ func (r *AttachMediaSubtitlesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AttachMediaSubtitlesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AudioDenoiseInfo struct {
+	// 音频降噪控制开关，可选值：
+	// <li>ON：开启音频降噪；</li>
+	// <li>OFF：关闭音频降噪。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 音频降噪类型，仅当音频降噪控制开关为 ON 时有效，可选值：
+	// <li>weak：轻音频降噪；</li>
+	// <li>normal：正常音频降噪；</li>
+	// <li>strong：强音频降噪。</li>
+	// 默认值：weak。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type AudioTemplateInfo struct {
@@ -2270,6 +2297,20 @@ type ClipTask2017 struct {
 
 	// 视频剪辑输出的文件信息。
 	FileInfo *ClipFileInfo2017 `json:"FileInfo,omitempty" name:"FileInfo"`
+}
+
+type ColorEnhanceInfo struct {
+	// 色彩增强控制开关，可选值：
+	// <li>ON：开启综合增强；</li>
+	// <li>OFF：关闭综合增强。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 色彩增强类型，仅当色彩增强控制开关为 ON 时有效，可选值：
+	// <li>weak：轻色彩增强；</li>
+	// <li>normal：正常色彩增强；</li>
+	// <li>strong：强色彩增强。</li>
+	// 默认值：weak。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 // Predefined struct for user
@@ -11162,13 +11203,14 @@ type EventContent struct {
 	// <li>NewFileUpload：视频上传完成；</li>
 	// <li>ProcedureStateChanged：任务流状态变更；</li>
 	// <li>FileDeleted：视频删除完成；</li>
+	// <li>RestoreMediaComplete：视频取回完成；</li>
 	// <li>PullComplete：视频转拉完成；</li>
 	// <li>EditMediaComplete：视频编辑完成；</li>
 	// <li>SplitMediaComplete：视频拆分完成；</li>
-	// <li>WechatPublishComplete：微信发布完成；</li>
 	// <li>ComposeMediaComplete：制作媒体文件完成；</li>
 	// <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
-	// <li>FastClipMediaComplete：快速剪辑完成；</li>
+	// <li>RemoveWatermark：智能去除水印完成。</li>
+	// <li>RebuildMediaComplete：音画质重生完成事件。</li>
 	// <li>ReviewAudioVideoComplete：音视频审核完成；</li>
 	// <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
 	// <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
@@ -11200,7 +11242,7 @@ type EventContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EditMediaCompleteEvent *EditMediaTask `json:"EditMediaCompleteEvent,omitempty" name:"EditMediaCompleteEvent"`
 
-	// 视频拆条完成事件，当事件类型为 SplitMediaComplete 时有效。
+	// 视频拆分完成事件，当事件类型为 SplitMediaComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SplitMediaCompleteEvent *SplitMediaTask `json:"SplitMediaCompleteEvent,omitempty" name:"SplitMediaCompleteEvent"`
 
@@ -11236,15 +11278,19 @@ type EventContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatMiniProgramPublishCompleteEvent *WechatMiniProgramPublishTask `json:"WechatMiniProgramPublishCompleteEvent,omitempty" name:"WechatMiniProgramPublishCompleteEvent"`
 
-	// 智能去除水印任务完成事件，当事件类型为 RemoveWatermark 有效。
+	// 智能去除水印完成事件，当事件类型为 RemoveWatermark 有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoveWatermarkCompleteEvent *RemoveWatermarkTask `json:"RemoveWatermarkCompleteEvent,omitempty" name:"RemoveWatermarkCompleteEvent"`
 
-	// 视频取回完成事件，当事件类型为RestoreMediaComplete 时有效。
+	// 视频取回完成事件，当事件类型为 RestoreMediaComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestoreMediaCompleteEvent *RestoreMediaTask `json:"RestoreMediaCompleteEvent,omitempty" name:"RestoreMediaCompleteEvent"`
 
-	// 溯源水印提取完成事件，当事件类型为ExtractTraceWatermarkComplete 时有效。
+	// 音画质重生完成事件，当事件类型为 RebuildMediaComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RebuildMediaCompleteEvent *RebuildMediaTask `json:"RebuildMediaCompleteEvent,omitempty" name:"RebuildMediaCompleteEvent"`
+
+	// 溯源水印提取完成事件，当事件类型为 ExtractTraceWatermarkComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtractTraceWatermarkCompleteEvent *ExtractTraceWatermarkTask `json:"ExtractTraceWatermarkCompleteEvent,omitempty" name:"ExtractTraceWatermarkCompleteEvent"`
 
@@ -11554,6 +11600,17 @@ type FaceConfigureInfoForUpdate struct {
 	FaceLibrary *string `json:"FaceLibrary,omitempty" name:"FaceLibrary"`
 }
 
+type FaceEnhanceInfo struct {
+	// 人脸增强控制开关，可选值：
+	// <li>ON：开启人脸增强；</li>
+	// <li>OFF：关闭人脸增强。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 人脸增强强度，仅当人脸增强控制开关为 ON 时有效，取值范围：0.0~1.0。
+	// 默认：0.0。
+	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
+}
+
 type FileDeleteResultItem struct {
 	// 删除的文件 ID 。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
@@ -11692,6 +11749,22 @@ type FrameTagConfigureInfoForUpdate struct {
 
 	// 截帧间隔，单位为秒，最小值为 0.5 秒。
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
+}
+
+type HDRInfo struct {
+	// 高动态范围类型控制开关，可选值：
+	// <li>ON：开启高动态范围类型转换；</li>
+	// <li>OFF：关闭高动态范围类型转换。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 高动态范围类型，可选值：
+	// <li>hdr10：表示 hdr10 标准；</li>
+	// <li>hlg：表示 hlg 标准。</li>
+	// 
+	// 注意：
+	// <li> 仅当高动态范围类型控制开关为 ON 时有效；</li>
+	// <li>当画质重生目标参数中指定视频输出参数的视频流编码格式 Codec 为 libx265 时有效。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type HeadTailConfigureInfo struct {
@@ -12213,6 +12286,18 @@ type LiveRealTimeClipStreamInfo struct {
 	// 直播转码模板ID。
 	// <b>当Type值为"Transcoding"时，必须填写。</b>
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type LowLightEnhanceInfo struct {
+	// 低光照增强控制开关，可选值：
+	// <li>ON：开启低光照增强；</li>
+	// <li>OFF：关闭低光照增强。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 低光照增强类型，仅当低光照增强控制开关为 ON 时有效，可选值：
+	// <li>normal：正常低光照增强；</li>
+	// 默认值：normal。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 // Predefined struct for user
@@ -17728,6 +17813,250 @@ func (r *PushUrlCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RebuildMediaTargetAudioStream struct {
+	// 音频流的编码格式。
+	// 当外层参数 Container 为 mp3 时，可选值为：
+	// <li>libmp3lame。</li>
+	// 当外层参数 Container 为 ogg 或 flac 时，可选值为：
+	// <li>flac。</li>
+	// 当外层参数 Container 为 m4a 时，可选值为：
+	// <li>libfdk_aac；</li>
+	// <li>libmp3lame；</li>
+	// <li>ac3。</li>
+	// 当外层参数 Container 为 mp4 或 flv 时，可选值为：
+	// <li>libfdk_aac：更适合 mp4；</li>
+	// <li>libmp3lame：更适合 flv；</li>
+	// <li>mp2。</li>
+	// 当外层参数 Container 为 hls 时，可选值为：
+	// <li>libfdk_aac。</li>
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
+	// 当取值为 0，表示音频码率和原始音频保持一致。
+	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 音频流的采样率，可选值：
+	// <li>32000</li>
+	// <li>44100</li>
+	// <li>48000</li>
+	// 
+	// 单位：Hz。
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 音频通道方式，可选值：
+	// <li>1：单通道</li>
+	// <li>2：双通道</li>
+	// <li>6：立体声</li>
+	// 
+	// 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
+	// 默认值：2。
+	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
+}
+
+type RebuildMediaTargetInfo struct {
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
+
+	// 描述信息，最长 128 个字符。缺省描述信息为空。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 输出文件封装格式，可选值：mp4、flv、hls。默认mp4。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 输出的视频信息。
+	VideoStream *RebuildMediaTargetVideoStream `json:"VideoStream,omitempty" name:"VideoStream"`
+
+	// 输出的音频信息。
+	AudioStream *RebuildMediaTargetAudioStream `json:"AudioStream,omitempty" name:"AudioStream"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 
+	// 默认值：0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 
+	// 默认值：0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+}
+
+type RebuildMediaTargetVideoStream struct {
+	// 视频流的编码格式，可选值：
+	// <li>libx264：H.264 编码；</li>
+	// <li>libx265：H.265 编码；</li>
+	// <li>av1：AOMedia Video 1 编码。</li>
+	// 默认视频流的编码格式为 H.264 编码。
+	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 当取值为 0，表示视频码率和原始视频保持一致。
+	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 视频帧率，取值范围：[0, 100]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 分辨率自适应，可选值：
+	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
+	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 
+	// 默认值：open。
+	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
+
+	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 
+	// 默认值：0。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
+	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
+	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
+	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 
+	// 默认值：0。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
+	// <li>stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
+	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
+	// 
+	// 默认值：stretch 。
+	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
+	// 当填 0 或不填时，系统将自动设置 gop 长度。
+	Gop *int64 `json:"Gop,omitempty" name:"Gop"`
+}
+
+type RebuildMediaTask struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 音画质重生任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 音画质重生任务的输入。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *RebuildMediaTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 音画质重生任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *RebuildMediaTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音画质重生输出视频的元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+type RebuildMediaTaskInput struct {
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 起始偏移时间，单位：秒，不填表示从视频开始截取。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 画质修复控制参数。
+	RepairInfo *RepairInfo `json:"RepairInfo,omitempty" name:"RepairInfo"`
+
+	// 智能插帧控制参数。
+	VideoFrameInterpolationInfo *VideoFrameInterpolationInfo `json:"VideoFrameInterpolationInfo,omitempty" name:"VideoFrameInterpolationInfo"`
+
+	// 画面超分控制参数。
+	SuperResolutionInfo *SuperResolutionInfo `json:"SuperResolutionInfo,omitempty" name:"SuperResolutionInfo"`
+
+	// 高动态范围类型控制参数。
+	HDRInfo *HDRInfo `json:"HDRInfo,omitempty" name:"HDRInfo"`
+
+	// 视频降噪控制参数。
+	VideoDenoiseInfo *VideoDenoiseInfo `json:"VideoDenoiseInfo,omitempty" name:"VideoDenoiseInfo"`
+
+	// 音频降噪控制参数。
+	AudioDenoiseInfo *AudioDenoiseInfo `json:"AudioDenoiseInfo,omitempty" name:"AudioDenoiseInfo"`
+
+	// 色彩增强控制参数。
+	ColorInfo *ColorEnhanceInfo `json:"ColorInfo,omitempty" name:"ColorInfo"`
+
+	// 细节增强控制参数。
+	SharpInfo *SharpEnhanceInfo `json:"SharpInfo,omitempty" name:"SharpInfo"`
+
+	// 人脸增强控制参数。
+	FaceInfo *FaceEnhanceInfo `json:"FaceInfo,omitempty" name:"FaceInfo"`
+
+	// 低光照控制参数。
+	LowLightInfo *LowLightEnhanceInfo `json:"LowLightInfo,omitempty" name:"LowLightInfo"`
+
+	// 去划痕控制参数。
+	ScratchRepairInfo *ScratchRepairInfo `json:"ScratchRepairInfo,omitempty" name:"ScratchRepairInfo"`
+
+	// 去伪影（毛刺）控制参数。
+	ArtifactRepairInfo *ArtifactRepairInfo `json:"ArtifactRepairInfo,omitempty" name:"ArtifactRepairInfo"`
+
+	// 音画质重生输出目标参数。
+	TargetInfo *RebuildMediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
+}
+
+type RebuildMediaTaskOutput struct {
+	// 文件类型，例如 mp4、flv 等。
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 媒体文件播放地址。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
 type ReduceMediaBitrateAdaptiveDynamicStreamingResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -18049,6 +18378,20 @@ type RemoveWatermarkTask struct {
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+type RepairInfo struct {
+	// 画质修复控制开关，可选值：
+	// <li>ON：开启画质修复；</li>
+	// <li>OFF：关闭画质修复。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 画质修复类型，仅当画质修复控制开关为 ON 时有效，可选值：
+	// <li>weak：轻画质修复；</li>
+	// <li>normal：正常画质修复；</li>
+	// <li>strong：强画质修复。</li>
+	// 默认值：weak。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 // Predefined struct for user
@@ -18848,6 +19191,22 @@ type SampleSnapshotTemplate struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
+type ScratchRepairInfo struct {
+	// 去划痕控制开关，可选值：
+	// <li>ON：开启去划痕；</li>
+	// <li>OFF：关闭去划痕。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 去划痕强度，仅当去划痕控制开关为 ON 时有效，取值范围：0.0~1.0。
+	// 默认：0.0。
+	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
+
+	// 去划痕类型，仅当去划痕控制开关为 ON 时有效，可选值：
+	// <li>normal：正常去划痕；</li>
+	// 默认值：normal。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
 // Predefined struct for user
 type SearchMediaRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -19268,6 +19627,17 @@ func (r *SetDrmKeyProviderInfoResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetDrmKeyProviderInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SharpEnhanceInfo struct {
+	// 细节增强控制开关，可选值：
+	// <li>ON：开启细节增强；</li>
+	// <li>OFF：关闭细节增强。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 细节增强强度，仅当细节增强控制开关为 ON 时有效，取值范围：0.0~1.0。
+	// 默认：0.0。
+	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
 }
 
 type SimpleAesEdkPair struct {
@@ -19863,6 +20233,24 @@ type SubtitleFormatsOperation struct {
 	// <li>vtt：生成 WebVTT 字幕文件；</li>
 	// <li>srt：生成 SRT 字幕文件。</li>
 	Formats []*string `json:"Formats,omitempty" name:"Formats"`
+}
+
+type SuperResolutionInfo struct {
+	// 画面超分控制开关，可选值：
+	// <li>ON：开启画面超分；</li>
+	// <li>OFF：关闭画面超分。</li>
+	// 当开启画面超分时，默认2倍超分。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 画面超分类型，仅当画面超分控制开关为 ON 时有效，可选值：
+	// <li>lq：针对低清晰度有较多噪声视频的超分；</li>
+	// <li>hq：针对高清晰度视频超分。</li>
+	// 默认值：lq。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 超分倍数，可选值：2。
+	// 默认值：2。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }
 
 type SvgWatermarkInput struct {
@@ -20600,6 +20988,29 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 
 	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type VideoDenoiseInfo struct {
+	// 视频降噪控制开关，可选值：
+	// <li>ON：开启视频降噪；</li>
+	// <li>OFF：关闭视频降噪。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 视频降噪类型，仅当视频降噪控制开关为 ON 时有效，可选值：
+	// <li>weak：轻视频降噪；</li>
+	// <li>strong：强视频降噪。</li>
+	// 默认值：weak。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type VideoFrameInterpolationInfo struct {
+	// 智能插帧控制开关，可选值：
+	// <li>ON：开启智能插帧；</li>
+	// <li>OFF：关闭智能插帧。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 智能插帧帧率，帧率范围为 (0, 60]，仅当智能插帧控制开关为 ON 时有效。默认跟源文件帧率一致。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 
 type VideoTemplateInfo struct {

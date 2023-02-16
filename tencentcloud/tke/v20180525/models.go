@@ -11826,6 +11826,9 @@ type EnableClusterAuditRequestParams struct {
 
 	// CLS日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// topic所在region，默认为集群当前region
+	TopicRegion *string `json:"TopicRegion,omitempty" name:"TopicRegion"`
 }
 
 type EnableClusterAuditRequest struct {
@@ -11839,6 +11842,9 @@ type EnableClusterAuditRequest struct {
 
 	// CLS日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// topic所在region，默认为集群当前region
+	TopicRegion *string `json:"TopicRegion,omitempty" name:"TopicRegion"`
 }
 
 func (r *EnableClusterAuditRequest) ToJsonString() string {
@@ -11856,6 +11862,7 @@ func (r *EnableClusterAuditRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "LogsetId")
 	delete(f, "TopicId")
+	delete(f, "TopicRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableClusterAuditRequest has unknown keys!", "")
 	}
@@ -11948,6 +11955,9 @@ type EnableEventPersistenceRequestParams struct {
 
 	// cls服务的topicID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// topic所在地域，默认为集群所在地域
+	TopicRegion *string `json:"TopicRegion,omitempty" name:"TopicRegion"`
 }
 
 type EnableEventPersistenceRequest struct {
@@ -11961,6 +11971,9 @@ type EnableEventPersistenceRequest struct {
 
 	// cls服务的topicID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// topic所在地域，默认为集群所在地域
+	TopicRegion *string `json:"TopicRegion,omitempty" name:"TopicRegion"`
 }
 
 func (r *EnableEventPersistenceRequest) ToJsonString() string {
@@ -11978,6 +11991,7 @@ func (r *EnableEventPersistenceRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "LogsetId")
 	delete(f, "TopicId")
+	delete(f, "TopicRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableEventPersistenceRequest has unknown keys!", "")
 	}

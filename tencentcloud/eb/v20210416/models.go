@@ -311,6 +311,9 @@ type CreateEventBusRequestParams struct {
 
 	// 事件集描述，不限字符类型，200字符描述以内
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// EB存储时长
+	SaveDays *int64 `json:"SaveDays,omitempty" name:"SaveDays"`
 }
 
 type CreateEventBusRequest struct {
@@ -321,6 +324,9 @@ type CreateEventBusRequest struct {
 
 	// 事件集描述，不限字符类型，200字符描述以内
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// EB存储时长
+	SaveDays *int64 `json:"SaveDays,omitempty" name:"SaveDays"`
 }
 
 func (r *CreateEventBusRequest) ToJsonString() string {
@@ -337,6 +343,7 @@ func (r *CreateEventBusRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EventBusName")
 	delete(f, "Description")
+	delete(f, "SaveDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEventBusRequest has unknown keys!", "")
 	}
@@ -1960,6 +1967,12 @@ type UpdateEventBusRequestParams struct {
 
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
 	EventBusName *string `json:"EventBusName,omitempty" name:"EventBusName"`
+
+	// EB日志存储时长
+	SaveDays *int64 `json:"SaveDays,omitempty" name:"SaveDays"`
+
+	// EB日志主题ID
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
 }
 
 type UpdateEventBusRequest struct {
@@ -1973,6 +1986,12 @@ type UpdateEventBusRequest struct {
 
 	// 事件集名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
 	EventBusName *string `json:"EventBusName,omitempty" name:"EventBusName"`
+
+	// EB日志存储时长
+	SaveDays *int64 `json:"SaveDays,omitempty" name:"SaveDays"`
+
+	// EB日志主题ID
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
 }
 
 func (r *UpdateEventBusRequest) ToJsonString() string {
@@ -1990,6 +2009,8 @@ func (r *UpdateEventBusRequest) FromJsonString(s string) error {
 	delete(f, "EventBusId")
 	delete(f, "Description")
 	delete(f, "EventBusName")
+	delete(f, "SaveDays")
+	delete(f, "LogTopicId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEventBusRequest has unknown keys!", "")
 	}

@@ -12127,6 +12127,64 @@ func (c *Client) ModifyLicenseUnBindsWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyMachineRemarkRequest() (request *ModifyMachineRemarkRequest) {
+    request = &ModifyMachineRemarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyMachineRemark")
+    
+    
+    return
+}
+
+func NewModifyMachineRemarkResponse() (response *ModifyMachineRemarkResponse) {
+    response = &ModifyMachineRemarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyMachineRemark
+// 修改主机备注信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyMachineRemark(request *ModifyMachineRemarkRequest) (response *ModifyMachineRemarkResponse, err error) {
+    return c.ModifyMachineRemarkWithContext(context.Background(), request)
+}
+
+// ModifyMachineRemark
+// 修改主机备注信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyMachineRemarkWithContext(ctx context.Context, request *ModifyMachineRemarkRequest) (response *ModifyMachineRemarkResponse, err error) {
+    if request == nil {
+        request = NewModifyMachineRemarkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMachineRemark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMachineRemarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMalwareTimingScanSettingsRequest() (request *ModifyMalwareTimingScanSettingsRequest) {
     request = &ModifyMalwareTimingScanSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},

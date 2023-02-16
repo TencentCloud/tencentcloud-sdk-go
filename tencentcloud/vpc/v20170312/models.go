@@ -2841,6 +2841,9 @@ type CreateBandwidthPackageRequestParams struct {
 
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议带宽包，默认值是'ipv4'。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 }
 
 type CreateBandwidthPackageRequest struct {
@@ -2871,6 +2874,9 @@ type CreateBandwidthPackageRequest struct {
 
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议带宽包，默认值是'ipv4'。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 }
 
 func (r *CreateBandwidthPackageRequest) ToJsonString() string {
@@ -2892,6 +2898,7 @@ func (r *CreateBandwidthPackageRequest) FromJsonString(s string) error {
 	delete(f, "InternetMaxBandwidth")
 	delete(f, "Tags")
 	delete(f, "Protocol")
+	delete(f, "TimeSpan")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBandwidthPackageRequest has unknown keys!", "")
 	}

@@ -198,6 +198,9 @@ type AddInstancesRequestParams struct {
 
 	// 云主机导入方式，虚拟机集群必填，容器集群不填写此字段，R：重装TSF系统镜像，M：手动安装agent
 	InstanceImportMode *string `json:"InstanceImportMode,omitempty" name:"InstanceImportMode"`
+
+	// 安全组id
+	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 type AddInstancesRequest struct {
@@ -226,6 +229,9 @@ type AddInstancesRequest struct {
 
 	// 云主机导入方式，虚拟机集群必填，容器集群不填写此字段，R：重装TSF系统镜像，M：手动安装agent
 	InstanceImportMode *string `json:"InstanceImportMode,omitempty" name:"InstanceImportMode"`
+
+	// 安全组id
+	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *AddInstancesRequest) ToJsonString() string {
@@ -248,6 +254,7 @@ func (r *AddInstancesRequest) FromJsonString(s string) error {
 	delete(f, "KeyId")
 	delete(f, "SgId")
 	delete(f, "InstanceImportMode")
+	delete(f, "SecurityGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddInstancesRequest has unknown keys!", "")
 	}

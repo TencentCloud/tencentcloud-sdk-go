@@ -2034,6 +2034,12 @@ type CreateWxCloudBaseRunEnvRequestParams struct {
 
 	// 是否打开云调用
 	IsOpenCloudInvoke *bool `json:"IsOpenCloudInvoke,omitempty" name:"IsOpenCloudInvoke"`
+
+	// 创建来源：wechat | cloud
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 渠道：wechat | cloud
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
 type CreateWxCloudBaseRunEnvRequest struct {
@@ -2061,6 +2067,12 @@ type CreateWxCloudBaseRunEnvRequest struct {
 
 	// 是否打开云调用
 	IsOpenCloudInvoke *bool `json:"IsOpenCloudInvoke,omitempty" name:"IsOpenCloudInvoke"`
+
+	// 创建来源：wechat | cloud
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 渠道：wechat | cloud
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
 func (r *CreateWxCloudBaseRunEnvRequest) ToJsonString() string {
@@ -2082,6 +2094,8 @@ func (r *CreateWxCloudBaseRunEnvRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SubNetIds")
 	delete(f, "IsOpenCloudInvoke")
+	delete(f, "Source")
+	delete(f, "Channel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWxCloudBaseRunEnvRequest has unknown keys!", "")
 	}

@@ -336,10 +336,10 @@ type ConfigureSyncJobRequestParams struct {
 	// 同步实例id（即标识一个同步作业），形如sync-werwfs23
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
-	// 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
+	// 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
-	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
+	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
 
 	// 同步任务选项
@@ -360,7 +360,7 @@ type ConfigureSyncJobRequestParams struct {
 	// 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
 	ExpectRunTime *string `json:"ExpectRunTime,omitempty" name:"ExpectRunTime"`
 
-	// 源端信息，单节点数据库使用
+	// 源端信息，单节点数据库使用，且SrcNodeType传single
 	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
 	// 目标端信息，单节点数据库使用
@@ -376,10 +376,10 @@ type ConfigureSyncJobRequest struct {
 	// 同步实例id（即标识一个同步作业），形如sync-werwfs23
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
-	// 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
+	// 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
 	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
 
-	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、noProxy,注意具体可选值依赖当前链路
+	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
 
 	// 同步任务选项
@@ -400,7 +400,7 @@ type ConfigureSyncJobRequest struct {
 	// 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
 	ExpectRunTime *string `json:"ExpectRunTime,omitempty" name:"ExpectRunTime"`
 
-	// 源端信息，单节点数据库使用
+	// 源端信息，单节点数据库使用，且SrcNodeType传single
 	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
 	// 目标端信息，单节点数据库使用
@@ -2585,6 +2585,10 @@ type Endpoint struct {
 	// 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptConn *string `json:"EncryptConn,omitempty" name:"EncryptConn"`
+
+	// 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitempty" name:"DatabaseNetEnv"`
 }
 
 type ErrorInfoItem struct {
@@ -4386,6 +4390,10 @@ type SyncDetailInfo struct {
 	// 详细步骤信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepInfos []*StepInfo `json:"StepInfos,omitempty" name:"StepInfos"`
+
+	// 不能发起一致性校验的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CauseOfCompareDisable *string `json:"CauseOfCompareDisable,omitempty" name:"CauseOfCompareDisable"`
 }
 
 type SyncJobInfo struct {

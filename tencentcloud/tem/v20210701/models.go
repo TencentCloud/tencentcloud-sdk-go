@@ -3915,6 +3915,14 @@ type LogConfigExtractRule struct {
 	// 解析失败日志的键名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnMatchedKey *string `json:"UnMatchedKey,omitempty" name:"UnMatchedKey"`
+
+	// tracking
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Backtracking *string `json:"Backtracking,omitempty" name:"Backtracking"`
+
+	// 分隔符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Delimiter *string `json:"Delimiter,omitempty" name:"Delimiter"`
 }
 
 type LogConfigListPage struct {
@@ -5384,6 +5392,10 @@ type ServiceVersionBrief struct {
 	// 创建日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 地域id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type SortType struct {
@@ -5561,6 +5573,10 @@ type TemEnvironmentStartingStatus struct {
 	// 已经启动的应用数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartedApplicationNum *int64 `json:"StartedApplicationNum,omitempty" name:"StartedApplicationNum"`
+
+	// 启动失败的应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartFailedApplicationNum *int64 `json:"StartFailedApplicationNum,omitempty" name:"StartFailedApplicationNum"`
 }
 
 type TemEnvironmentStoppingStatus struct {
@@ -5571,6 +5587,10 @@ type TemEnvironmentStoppingStatus struct {
 	// 已经停止的应用数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StoppedApplicationNum *int64 `json:"StoppedApplicationNum,omitempty" name:"StoppedApplicationNum"`
+
+	// 停止失败的应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StopFailedApplicationNum *int64 `json:"StopFailedApplicationNum,omitempty" name:"StopFailedApplicationNum"`
 }
 
 type TemNamespaceInfo struct {
@@ -6059,6 +6079,14 @@ type TemServiceVersionInfo struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 是否编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreStopEncoded *string `json:"PreStopEncoded,omitempty" name:"PreStopEncoded"`
+
+	// 是否编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostStartEncoded *string `json:"PostStartEncoded,omitempty" name:"PostStartEncoded"`
 }
 
 type UseDefaultRepoParameters struct {

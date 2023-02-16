@@ -1817,6 +1817,15 @@ type MemberRecord struct {
 
 	// 奖励次数。
 	Rewords *uint64 `json:"Rewords,omitempty" name:"Rewords"`
+
+	// 用户IP。
+	IPAddress *string `json:"IPAddress,omitempty" name:"IPAddress"`
+
+	// 用户位置信息。
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 用户设备平台信息。0:unknown  1:windows  2:mac  3:android  4:ios  5:web   6:h5   7:miniprogram （小程序）
+	Device *int64 `json:"Device,omitempty" name:"Device"`
 }
 
 // Predefined struct for user

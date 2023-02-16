@@ -10976,6 +10976,74 @@ func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type OpenDBInstanceEncryptionRequestParams struct {
+	// 云数据库实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用户自定义密钥ID，CMK唯一标识符。该值为空时，将使用腾讯云自动生成的密钥KMS-CDB。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId不为空时，该参数必填。
+	KeyRegion *string `json:"KeyRegion,omitempty" name:"KeyRegion"`
+}
+
+type OpenDBInstanceEncryptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云数据库实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用户自定义密钥ID，CMK唯一标识符。该值为空时，将使用腾讯云自动生成的密钥KMS-CDB。
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId不为空时，该参数必填。
+	KeyRegion *string `json:"KeyRegion,omitempty" name:"KeyRegion"`
+}
+
+func (r *OpenDBInstanceEncryptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenDBInstanceEncryptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "KeyId")
+	delete(f, "KeyRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenDBInstanceEncryptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenDBInstanceEncryptionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type OpenDBInstanceEncryptionResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenDBInstanceEncryptionResponseParams `json:"Response"`
+}
+
+func (r *OpenDBInstanceEncryptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenDBInstanceEncryptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type OpenDBInstanceGTIDRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

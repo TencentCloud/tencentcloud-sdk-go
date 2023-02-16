@@ -7735,6 +7735,104 @@ func (c *Client) OpenAuditServiceWithContext(ctx context.Context, request *OpenA
     return
 }
 
+func NewOpenDBInstanceEncryptionRequest() (request *OpenDBInstanceEncryptionRequest) {
+    request = &OpenDBInstanceEncryptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "OpenDBInstanceEncryption")
+    
+    
+    return
+}
+
+func NewOpenDBInstanceEncryptionResponse() (response *OpenDBInstanceEncryptionResponse) {
+    response = &OpenDBInstanceEncryptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// OpenDBInstanceEncryption
+// 本接口(OpenDBInstanceEncryption)用于启用实例数据存储加密功能，支持用户指定自定义密钥。
+//
+// 
+//
+// 注意，启用实例数据存储加密之前，需要进行以下操作：
+//
+// 
+//
+// 1、进行 [实例初始化](https://cloud.tencent.com/document/api/236/15873) 操作；
+//
+// 
+//
+// 2、开启 [KMS服务](https://console.cloud.tencent.com/kms2)；
+//
+// 
+//
+// 3、对云数据库(MySQL)[授予访问KMS密钥的权限](https://console.cloud.tencent.com/cam/role)，角色名为MySQL_QCSRole，预设策略名为QcloudAccessForMySQLRole；
+//
+// 
+//
+// 该 API 耗时可能到10s，客户端可能超时，如果调用 API 返回 InternalError ，请您调用DescribeDBInstanceInfo 确认后端加密是否开通成功。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_KMSERROR = "InternalError.KmsError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) OpenDBInstanceEncryption(request *OpenDBInstanceEncryptionRequest) (response *OpenDBInstanceEncryptionResponse, err error) {
+    return c.OpenDBInstanceEncryptionWithContext(context.Background(), request)
+}
+
+// OpenDBInstanceEncryption
+// 本接口(OpenDBInstanceEncryption)用于启用实例数据存储加密功能，支持用户指定自定义密钥。
+//
+// 
+//
+// 注意，启用实例数据存储加密之前，需要进行以下操作：
+//
+// 
+//
+// 1、进行 [实例初始化](https://cloud.tencent.com/document/api/236/15873) 操作；
+//
+// 
+//
+// 2、开启 [KMS服务](https://console.cloud.tencent.com/kms2)；
+//
+// 
+//
+// 3、对云数据库(MySQL)[授予访问KMS密钥的权限](https://console.cloud.tencent.com/cam/role)，角色名为MySQL_QCSRole，预设策略名为QcloudAccessForMySQLRole；
+//
+// 
+//
+// 该 API 耗时可能到10s，客户端可能超时，如果调用 API 返回 InternalError ，请您调用DescribeDBInstanceInfo 确认后端加密是否开通成功。
+//
+// 可能返回的错误码:
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_KMSERROR = "InternalError.KmsError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) OpenDBInstanceEncryptionWithContext(ctx context.Context, request *OpenDBInstanceEncryptionRequest) (response *OpenDBInstanceEncryptionResponse, err error) {
+    if request == nil {
+        request = NewOpenDBInstanceEncryptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenDBInstanceEncryption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenDBInstanceEncryptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenDBInstanceGTIDRequest() (request *OpenDBInstanceGTIDRequest) {
     request = &OpenDBInstanceGTIDRequest{
         BaseRequest: &tchttp.BaseRequest{},

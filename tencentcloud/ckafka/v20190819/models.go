@@ -952,6 +952,10 @@ type ConsumerRecord struct {
 	// 消息时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 消息headers
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Headers *string `json:"Headers,omitempty" name:"Headers"`
 }
 
 type CosParam struct {
