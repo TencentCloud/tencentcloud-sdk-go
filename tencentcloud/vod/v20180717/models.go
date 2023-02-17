@@ -2114,6 +2114,8 @@ type AudioTemplateInfo struct {
 	// <li>libfdk_aac。</li>
 	// 当外层参数 Format 为 HLS 或 MPEG-DASH 时，可选值为：
 	// <li>libfdk_aac。</li>
+	// 当外层参数 Container 为 wav 时，可选值为：
+	// <li>pcm16。</li>
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
@@ -2121,6 +2123,7 @@ type AudioTemplateInfo struct {
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 音频流的采样率，可选值：
+	// <li>16000，仅当 Codec 为 pcm16 时可选。</li>
 	// <li>32000</li>
 	// <li>44100</li>
 	// <li>48000</li>
@@ -2154,12 +2157,15 @@ type AudioTemplateInfoForUpdate struct {
 	// <li>libfdk_aac。</li>
 	// 当外层参数 Format 为 HLS 或 MPEG-DASH 时，可选值为：
 	// <li>libfdk_aac。</li>
+	// 当外层参数 Container 为 wav 时，可选值为：
+	// <li>pcm16。</li>
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
 	// 音频流的采样率，可选值：
+	// <li>16000，仅当 Codec 为 pcm16 时可选。</li>
 	// <li>32000</li>
 	// <li>44100</li>
 	// <li>48000</li>
@@ -4950,7 +4956,7 @@ func (r *CreateSuperPlayerConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTranscodeTemplateRequestParams struct {
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -4993,7 +4999,7 @@ type CreateTranscodeTemplateRequestParams struct {
 type CreateTranscodeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -10209,7 +10215,8 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>FastClipMedia：快速剪辑任务；</li>
 	// <li>RemoveWatermarkTask：智能去除水印任务；</li>
 	// <li>DescribeFileAttributesTask：获取文件属性任务；</li>
-	// <li> ReviewAudioVideo：音视频审核任务。</li>
+	// <li>RebuildMedia：音画质重生任务；</li>
+	// <li>ReviewAudioVideo：音视频审核任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -10278,6 +10285,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 智能去除水印任务信息，仅当 TaskType 为 RemoveWatermark，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoveWatermarkTask *RemoveWatermarkTask `json:"RemoveWatermarkTask,omitempty" name:"RemoveWatermarkTask"`
+
+	// 音画质重生任务信息，仅当 TaskType 为 RebuildMedia，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RebuildMediaTask *RebuildMediaTask `json:"RebuildMediaTask,omitempty" name:"RebuildMediaTask"`
 
 	// 提取溯源水印任务信息，仅当 TaskType 为 ExtractTraceWatermark，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -15708,7 +15719,7 @@ type ModifyTranscodeTemplateRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 转码模板名称，长度限制：64 个字符。
@@ -15751,7 +15762,7 @@ type ModifyTranscodeTemplateRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+	// 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
 	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 转码模板名称，长度限制：64 个字符。
@@ -17810,6 +17821,203 @@ func (r *PushUrlCacheResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *PushUrlCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RebuildMediaRequestParams struct {
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 起始偏移时间，单位：秒，不填表示从视频开始截取。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 画质修复控制参数。
+	RepairInfo *RepairInfo `json:"RepairInfo,omitempty" name:"RepairInfo"`
+
+	// 智能插帧控制参数。
+	VideoFrameInterpolationInfo *VideoFrameInterpolationInfo `json:"VideoFrameInterpolationInfo,omitempty" name:"VideoFrameInterpolationInfo"`
+
+	// 画面超分控制参数。
+	SuperResolutionInfo *SuperResolutionInfo `json:"SuperResolutionInfo,omitempty" name:"SuperResolutionInfo"`
+
+	// 高动态范围类型控制参数。
+	HDRInfo *HDRInfo `json:"HDRInfo,omitempty" name:"HDRInfo"`
+
+	// 视频降噪控制参数。
+	VideoDenoiseInfo *VideoDenoiseInfo `json:"VideoDenoiseInfo,omitempty" name:"VideoDenoiseInfo"`
+
+	// 音频降噪控制参数。
+	AudioDenoiseInfo *AudioDenoiseInfo `json:"AudioDenoiseInfo,omitempty" name:"AudioDenoiseInfo"`
+
+	// 色彩增强控制参数。
+	ColorInfo *ColorEnhanceInfo `json:"ColorInfo,omitempty" name:"ColorInfo"`
+
+	// 细节增强控制参数。
+	SharpInfo *SharpEnhanceInfo `json:"SharpInfo,omitempty" name:"SharpInfo"`
+
+	// 人脸增强控制参数。
+	FaceInfo *FaceEnhanceInfo `json:"FaceInfo,omitempty" name:"FaceInfo"`
+
+	// 低光照控制参数。
+	LowLightInfo *LowLightEnhanceInfo `json:"LowLightInfo,omitempty" name:"LowLightInfo"`
+
+	// 去划痕控制参数。
+	ScratchRepairInfo *ScratchRepairInfo `json:"ScratchRepairInfo,omitempty" name:"ScratchRepairInfo"`
+
+	// 去伪影（毛刺）控制参数。
+	ArtifactRepairInfo *ArtifactRepairInfo `json:"ArtifactRepairInfo,omitempty" name:"ArtifactRepairInfo"`
+
+	// 音画质重生输出目标参数。
+	TargetInfo *RebuildMediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+}
+
+type RebuildMediaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 起始偏移时间，单位：秒，不填表示从视频开始截取。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 画质修复控制参数。
+	RepairInfo *RepairInfo `json:"RepairInfo,omitempty" name:"RepairInfo"`
+
+	// 智能插帧控制参数。
+	VideoFrameInterpolationInfo *VideoFrameInterpolationInfo `json:"VideoFrameInterpolationInfo,omitempty" name:"VideoFrameInterpolationInfo"`
+
+	// 画面超分控制参数。
+	SuperResolutionInfo *SuperResolutionInfo `json:"SuperResolutionInfo,omitempty" name:"SuperResolutionInfo"`
+
+	// 高动态范围类型控制参数。
+	HDRInfo *HDRInfo `json:"HDRInfo,omitempty" name:"HDRInfo"`
+
+	// 视频降噪控制参数。
+	VideoDenoiseInfo *VideoDenoiseInfo `json:"VideoDenoiseInfo,omitempty" name:"VideoDenoiseInfo"`
+
+	// 音频降噪控制参数。
+	AudioDenoiseInfo *AudioDenoiseInfo `json:"AudioDenoiseInfo,omitempty" name:"AudioDenoiseInfo"`
+
+	// 色彩增强控制参数。
+	ColorInfo *ColorEnhanceInfo `json:"ColorInfo,omitempty" name:"ColorInfo"`
+
+	// 细节增强控制参数。
+	SharpInfo *SharpEnhanceInfo `json:"SharpInfo,omitempty" name:"SharpInfo"`
+
+	// 人脸增强控制参数。
+	FaceInfo *FaceEnhanceInfo `json:"FaceInfo,omitempty" name:"FaceInfo"`
+
+	// 低光照控制参数。
+	LowLightInfo *LowLightEnhanceInfo `json:"LowLightInfo,omitempty" name:"LowLightInfo"`
+
+	// 去划痕控制参数。
+	ScratchRepairInfo *ScratchRepairInfo `json:"ScratchRepairInfo,omitempty" name:"ScratchRepairInfo"`
+
+	// 去伪影（毛刺）控制参数。
+	ArtifactRepairInfo *ArtifactRepairInfo `json:"ArtifactRepairInfo,omitempty" name:"ArtifactRepairInfo"`
+
+	// 音画质重生输出目标参数。
+	TargetInfo *RebuildMediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+}
+
+func (r *RebuildMediaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebuildMediaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "SubAppId")
+	delete(f, "StartTimeOffset")
+	delete(f, "EndTimeOffset")
+	delete(f, "RepairInfo")
+	delete(f, "VideoFrameInterpolationInfo")
+	delete(f, "SuperResolutionInfo")
+	delete(f, "HDRInfo")
+	delete(f, "VideoDenoiseInfo")
+	delete(f, "AudioDenoiseInfo")
+	delete(f, "ColorInfo")
+	delete(f, "SharpInfo")
+	delete(f, "FaceInfo")
+	delete(f, "LowLightInfo")
+	delete(f, "ScratchRepairInfo")
+	delete(f, "ArtifactRepairInfo")
+	delete(f, "TargetInfo")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	delete(f, "TasksPriority")
+	delete(f, "ExtInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RebuildMediaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RebuildMediaResponseParams struct {
+	// 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RebuildMediaResponse struct {
+	*tchttp.BaseResponse
+	Response *RebuildMediaResponseParams `json:"Response"`
+}
+
+func (r *RebuildMediaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebuildMediaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

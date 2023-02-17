@@ -618,7 +618,7 @@ func NewDescribeOrganizationAuthNodeResponse() (response *DescribeOrganizationAu
 }
 
 // DescribeOrganizationAuthNode
-// 获取可创建组织成员的认证主体关系列表
+// 获取已设置管理员的互信主体关系列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -629,7 +629,7 @@ func (c *Client) DescribeOrganizationAuthNode(request *DescribeOrganizationAuthN
 }
 
 // DescribeOrganizationAuthNode
-// 获取可创建组织成员的认证主体关系列表
+// 获取已设置管理员的互信主体关系列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

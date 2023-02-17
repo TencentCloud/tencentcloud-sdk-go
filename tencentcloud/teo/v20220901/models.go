@@ -11103,6 +11103,12 @@ type Zone struct {
 	// 站点别名。数字、英文、-和_组合，限制20个字符。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasZoneName *string `json:"AliasZoneName,omitempty" name:"AliasZoneName"`
+
+	// 是否伪站点，取值有：
+	// <li> 0：非伪站点；</li>
+	// <li> 1：伪站点。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFake *int64 `json:"IsFake,omitempty" name:"IsFake"`
 }
 
 type ZoneSetting struct {

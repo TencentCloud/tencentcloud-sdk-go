@@ -59,6 +59,21 @@ const (
 	// 结束时间不能早于开始时间。
 	INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
 
+	// 操作的群组成员超过限制
+	INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+
+	// 参数错误，主讲人与成员都为空
+	INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+
+	// 主讲人不能同时是群组成员
+	INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+
+	// 群组主讲老师不存在
+	INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+
+	// 群组类型错误
+	INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+
 	// SdkAppId参数错误。
 	INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 
@@ -97,6 +112,12 @@ const (
 
 	// 文档不存在。
 	RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+
+	// 群组不存在
+	RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+
+	// 用户ID不存在
+	RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
 
 	// 房间不存在。
 	RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"

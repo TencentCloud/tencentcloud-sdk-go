@@ -92,13 +92,17 @@ func (r *AddOrganizationNodeResponse) FromJsonString(s string) error {
 }
 
 type AuthNode struct {
-	// 主体关系ID
+	// 互信主体关系ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelationId *int64 `json:"RelationId,omitempty" name:"RelationId"`
 
-	// 主体名称
+	// 互信主体名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthName *string `json:"AuthName,omitempty" name:"AuthName"`
+
+	// 主体管理员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Manager *MemberMainInfo `json:"Manager,omitempty" name:"Manager"`
 }
 
 // Predefined struct for user
@@ -552,6 +556,9 @@ type DescribeOrganizationAuthNodeRequestParams struct {
 
 	// 限制数目。最大50
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 互信主体名称。
+	AuthName *string `json:"AuthName,omitempty" name:"AuthName"`
 }
 
 type DescribeOrganizationAuthNodeRequest struct {
@@ -562,6 +569,9 @@ type DescribeOrganizationAuthNodeRequest struct {
 
 	// 限制数目。最大50
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 互信主体名称。
+	AuthName *string `json:"AuthName,omitempty" name:"AuthName"`
 }
 
 func (r *DescribeOrganizationAuthNodeRequest) ToJsonString() string {
@@ -578,6 +588,7 @@ func (r *DescribeOrganizationAuthNodeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "AuthName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationAuthNodeRequest has unknown keys!", "")
 	}
@@ -1244,6 +1255,16 @@ type MemberIdentity struct {
 	// 身份名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityAliasName *string `json:"IdentityAliasName,omitempty" name:"IdentityAliasName"`
+}
+
+type MemberMainInfo struct {
+	// 成员uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 成员名称j
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberName *string `json:"MemberName,omitempty" name:"MemberName"`
 }
 
 // Predefined struct for user

@@ -2744,7 +2744,7 @@ type ExportVideoByEditorTrackDataRequestParams struct {
 	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
-	// 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
+	// 轨道数据，用于描述待导出视频的内容。关于轨道数据的格式请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。文档中也描述了如何在页面上查看一个剪辑项目的轨道数据，该能力可以帮助开发者更方便地构造自己的轨道数据。
 	TrackData *string `json:"TrackData,omitempty" name:"TrackData"`
 
 	// 轨道数据对应的画布宽高比，配合预设配置中的视频短边尺寸，可决定导出画面的尺寸。例：
@@ -2782,7 +2782,7 @@ type ExportVideoByEditorTrackDataRequest struct {
 	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
 	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
 
-	// 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
+	// 轨道数据，用于描述待导出视频的内容。关于轨道数据的格式请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。文档中也描述了如何在页面上查看一个剪辑项目的轨道数据，该能力可以帮助开发者更方便地构造自己的轨道数据。
 	TrackData *string `json:"TrackData,omitempty" name:"TrackData"`
 
 	// 轨道数据对应的画布宽高比，配合预设配置中的视频短边尺寸，可决定导出画面的尺寸。例：

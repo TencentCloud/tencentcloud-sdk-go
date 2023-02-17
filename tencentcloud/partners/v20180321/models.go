@@ -519,6 +519,89 @@ func (r *AgentTransferMoneyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AssignClientsToSalesRequestParams struct {
+	// 代客/申请中代客uin列表，最大50条
+	ClientUins []*string `json:"ClientUins,omitempty" name:"ClientUins"`
+
+	// 业务员uin
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 代客类型:normal-代客 apply-申请中代客
+	AssignClientStatus *string `json:"AssignClientStatus,omitempty" name:"AssignClientStatus"`
+
+	// 操作类型:assign-执行分派 cancel-取消分派
+	AssignActionType *string `json:"AssignActionType,omitempty" name:"AssignActionType"`
+}
+
+type AssignClientsToSalesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 代客/申请中代客uin列表，最大50条
+	ClientUins []*string `json:"ClientUins,omitempty" name:"ClientUins"`
+
+	// 业务员uin
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 代客类型:normal-代客 apply-申请中代客
+	AssignClientStatus *string `json:"AssignClientStatus,omitempty" name:"AssignClientStatus"`
+
+	// 操作类型:assign-执行分派 cancel-取消分派
+	AssignActionType *string `json:"AssignActionType,omitempty" name:"AssignActionType"`
+}
+
+func (r *AssignClientsToSalesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignClientsToSalesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUins")
+	delete(f, "SalesUin")
+	delete(f, "AssignClientStatus")
+	delete(f, "AssignActionType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignClientsToSalesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignClientsToSalesResponseParams struct {
+	// 处理成功的代客uin列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SucceedUins []*string `json:"SucceedUins,omitempty" name:"SucceedUins"`
+
+	// 处理失败的代客uin列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedUins []*string `json:"FailedUins,omitempty" name:"FailedUins"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AssignClientsToSalesResponse struct {
+	*tchttp.BaseResponse
+	Response *AssignClientsToSalesResponseParams `json:"Response"`
+}
+
+func (r *AssignClientsToSalesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignClientsToSalesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AuditApplyClientRequestParams struct {
 	// 待审核客户账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`

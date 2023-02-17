@@ -153,6 +153,72 @@ func (c *Client) AgentTransferMoneyWithContext(ctx context.Context, request *Age
     return
 }
 
+func NewAssignClientsToSalesRequest() (request *AssignClientsToSalesRequest) {
+    request = &AssignClientsToSalesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("partners", APIVersion, "AssignClientsToSales")
+    
+    
+    return
+}
+
+func NewAssignClientsToSalesResponse() (response *AssignClientsToSalesResponse) {
+    response = &AssignClientsToSalesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AssignClientsToSales
+// 为代客or申请中代客分派跟进人（业务员）
+//
+// - 代客列表获取API： [DescribeAgentAuditedClients](https://cloud.tencent.com/document/product/563/19184)
+//
+// - 申请中代客列表获取API：[DescribeAgentClients](https://cloud.tencent.com/document/product/563/16046)
+//
+// - 业务员列表获取API：[DescribeSalesmans](https://cloud.tencent.com/document/product/563/35196)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssignClientsToSales(request *AssignClientsToSalesRequest) (response *AssignClientsToSalesResponse, err error) {
+    return c.AssignClientsToSalesWithContext(context.Background(), request)
+}
+
+// AssignClientsToSales
+// 为代客or申请中代客分派跟进人（业务员）
+//
+// - 代客列表获取API： [DescribeAgentAuditedClients](https://cloud.tencent.com/document/product/563/19184)
+//
+// - 申请中代客列表获取API：[DescribeAgentClients](https://cloud.tencent.com/document/product/563/16046)
+//
+// - 业务员列表获取API：[DescribeSalesmans](https://cloud.tencent.com/document/product/563/35196)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssignClientsToSalesWithContext(ctx context.Context, request *AssignClientsToSalesRequest) (response *AssignClientsToSalesResponse, err error) {
+    if request == nil {
+        request = NewAssignClientsToSalesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssignClientsToSales require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssignClientsToSalesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAuditApplyClientRequest() (request *AuditApplyClientRequest) {
     request = &AuditApplyClientRequest{
         BaseRequest: &tchttp.BaseRequest{},

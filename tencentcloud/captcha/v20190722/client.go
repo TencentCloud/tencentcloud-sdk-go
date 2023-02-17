@@ -693,6 +693,60 @@ func (c *Client) DescribeCaptchaUserAllAppIdWithContext(ctx context.Context, req
     return
 }
 
+func NewGetRequestStatisticsRequest() (request *GetRequestStatisticsRequest) {
+    request = &GetRequestStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("captcha", APIVersion, "GetRequestStatistics")
+    
+    
+    return
+}
+
+func NewGetRequestStatisticsResponse() (response *GetRequestStatisticsResponse) {
+    response = &GetRequestStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetRequestStatistics
+// 查询单个CaptchaAppID验证的统计数据，包括：请求量、验证量、验证通过量、验证拦截量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetRequestStatistics(request *GetRequestStatisticsRequest) (response *GetRequestStatisticsResponse, err error) {
+    return c.GetRequestStatisticsWithContext(context.Background(), request)
+}
+
+// GetRequestStatistics
+// 查询单个CaptchaAppID验证的统计数据，包括：请求量、验证量、验证通过量、验证拦截量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetRequestStatisticsWithContext(ctx context.Context, request *GetRequestStatisticsRequest) (response *GetRequestStatisticsResponse, err error) {
+    if request == nil {
+        request = NewGetRequestStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRequestStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRequestStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTicketStatisticsRequest() (request *GetTicketStatisticsRequest) {
     request = &GetTicketStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -743,6 +797,60 @@ func (c *Client) GetTicketStatisticsWithContext(ctx context.Context, request *Ge
     request.SetContext(ctx)
     
     response = NewGetTicketStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTotalRequestStatisticsRequest() (request *GetTotalRequestStatisticsRequest) {
+    request = &GetTotalRequestStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("captcha", APIVersion, "GetTotalRequestStatistics")
+    
+    
+    return
+}
+
+func NewGetTotalRequestStatisticsResponse() (response *GetTotalRequestStatisticsResponse) {
+    response = &GetTotalRequestStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTotalRequestStatistics
+// 查询全部验证的统计数据，包括：总请求量、总验证量、总验证通过量、总验证拦截量等数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetTotalRequestStatistics(request *GetTotalRequestStatisticsRequest) (response *GetTotalRequestStatisticsResponse, err error) {
+    return c.GetTotalRequestStatisticsWithContext(context.Background(), request)
+}
+
+// GetTotalRequestStatistics
+// 查询全部验证的统计数据，包括：总请求量、总验证量、总验证通过量、总验证拦截量等数据。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetTotalRequestStatisticsWithContext(ctx context.Context, request *GetTotalRequestStatisticsRequest) (response *GetTotalRequestStatisticsResponse, err error) {
+    if request == nil {
+        request = NewGetTotalRequestStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTotalRequestStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTotalRequestStatisticsResponse()
     err = c.Send(request, response)
     return
 }

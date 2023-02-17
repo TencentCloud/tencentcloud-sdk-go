@@ -5123,6 +5123,66 @@ func (c *Client) SetRenewFlagWithContext(ctx context.Context, request *SetRenewF
     return
 }
 
+func NewSwitchClusterVpcRequest() (request *SwitchClusterVpcRequest) {
+    request = &SwitchClusterVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "SwitchClusterVpc")
+    
+    
+    return
+}
+
+func NewSwitchClusterVpcResponse() (response *SwitchClusterVpcResponse) {
+    response = &SwitchClusterVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchClusterVpc
+// 更换集群vpc
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) SwitchClusterVpc(request *SwitchClusterVpcRequest) (response *SwitchClusterVpcResponse, err error) {
+    return c.SwitchClusterVpcWithContext(context.Background(), request)
+}
+
+// SwitchClusterVpc
+// 更换集群vpc
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) SwitchClusterVpcWithContext(ctx context.Context, request *SwitchClusterVpcRequest) (response *SwitchClusterVpcResponse, err error) {
+    if request == nil {
+        request = NewSwitchClusterVpcRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchClusterVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchClusterVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSwitchClusterZoneRequest() (request *SwitchClusterZoneRequest) {
     request = &SwitchClusterZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},

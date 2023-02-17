@@ -2668,6 +2668,41 @@ type Filter struct {
 	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
 }
 
+type ListDataSaEventPub struct {
+	// 受影响资产
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 安全事件名称
+	EventType1 *int64 `json:"EventType1,omitempty" name:"EventType1"`
+
+	// 安全事件1级分类
+	EventType2 *int64 `json:"EventType2,omitempty" name:"EventType2"`
+
+	// 安全事件2级分类
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// 风险等级
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+
+	// 安全事件状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 攻击源ip
+	SrcIp *string `json:"SrcIp,omitempty" name:"SrcIp"`
+
+	// 攻击目标ip
+	DstIp *string `json:"DstIp,omitempty" name:"DstIp"`
+
+	// 攻击目标端口
+	DstPort *int64 `json:"DstPort,omitempty" name:"DstPort"`
+
+	// 受影响资产
+	Asset *string `json:"Asset,omitempty" name:"Asset"`
+
+	// 私有字段和公有字段映射的原始采集数据唯一标识的MD5值
+	OldIdMd5 *string `json:"OldIdMd5,omitempty" name:"OldIdMd5"`
+}
+
 type MappingResult struct {
 	// 资产名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2740,6 +2775,14 @@ type MappingResult struct {
 	// 安全防护状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityStatus []*SecurityStatus `json:"SecurityStatus,omitempty" name:"SecurityStatus"`
+}
+
+type ObjDataSaEventPub struct {
+	// Count
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// List
+	List []*ListDataSaEventPub `json:"List,omitempty" name:"List"`
 }
 
 type QueryFilter struct {
@@ -2968,6 +3011,133 @@ func (r *SaDivulgeDataQueryPubResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SaDivulgeDataQueryPubResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SaEventPubRequestParams struct {
+	// 受影响资产
+	Asset *string `json:"Asset,omitempty" name:"Asset"`
+
+	// 安全事件名称
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// 安全事件1级分类，-1:未知 0:全部 1:攻击事件 2:侦查事件 3:僵木蠕毒 4:违规策略
+	EventType1 *int64 `json:"EventType1,omitempty" name:"EventType1"`
+
+	// 安全事件2级分类，-1:未知 0:全部 1:DDOS事件 2:Web攻击 3:木马 4:异地登录 5:密码破解
+	EventType2 *int64 `json:"EventType2,omitempty" name:"EventType2"`
+
+	// 风险等级，-1:未知 0:全部 1:低危 2:中危 3:高危 4:严重，可多选，如：1,2
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 安全事件状态，-1:未知 0:全部 1:待处理 2:已处理 3:误报 4:已忽略 5:已知晓 6:已信任
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询起始地址
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 私有字段和公有字段映射的原始采集数据唯一标识的MD5值
+	OldIdMd5 *string `json:"OldIdMd5,omitempty" name:"OldIdMd5"`
+}
+
+type SaEventPubRequest struct {
+	*tchttp.BaseRequest
+	
+	// 受影响资产
+	Asset *string `json:"Asset,omitempty" name:"Asset"`
+
+	// 安全事件名称
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// 安全事件1级分类，-1:未知 0:全部 1:攻击事件 2:侦查事件 3:僵木蠕毒 4:违规策略
+	EventType1 *int64 `json:"EventType1,omitempty" name:"EventType1"`
+
+	// 安全事件2级分类，-1:未知 0:全部 1:DDOS事件 2:Web攻击 3:木马 4:异地登录 5:密码破解
+	EventType2 *int64 `json:"EventType2,omitempty" name:"EventType2"`
+
+	// 风险等级，-1:未知 0:全部 1:低危 2:中危 3:高危 4:严重，可多选，如：1,2
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 安全事件状态，-1:未知 0:全部 1:待处理 2:已处理 3:误报 4:已忽略 5:已知晓 6:已信任
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询起始地址
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 私有字段和公有字段映射的原始采集数据唯一标识的MD5值
+	OldIdMd5 *string `json:"OldIdMd5,omitempty" name:"OldIdMd5"`
+}
+
+func (r *SaEventPubRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaEventPubRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Asset")
+	delete(f, "EventName")
+	delete(f, "EventType1")
+	delete(f, "EventType2")
+	delete(f, "Level")
+	delete(f, "Status")
+	delete(f, "StartTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "EndTime")
+	delete(f, "OldIdMd5")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaEventPubRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SaEventPubResponseParams struct {
+	// DataSaEventPub
+	DataSaEventPub *ObjDataSaEventPub `json:"DataSaEventPub,omitempty" name:"DataSaEventPub"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SaEventPubResponse struct {
+	*tchttp.BaseResponse
+	Response *SaEventPubResponseParams `json:"Response"`
+}
+
+func (r *SaEventPubResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaEventPubResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

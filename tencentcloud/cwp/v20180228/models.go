@@ -21142,7 +21142,7 @@ type RiskDnsList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
 
-	// 主机在线状态 OFFLINE  ONLINE
+	// 主机在线状态[OFFLINE:离线|ONLINE:在线|UNKNOWN:未知]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
 }

@@ -1358,6 +1358,57 @@ func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetRequestStatisticsRequestParams struct {
+
+}
+
+type GetRequestStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetRequestStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRequestStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRequestStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRequestStatisticsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetRequestStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *GetRequestStatisticsResponseParams `json:"Response"`
+}
+
+func (r *GetRequestStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRequestStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetTicketStatisticsRequestParams struct {
 	// 验证码AppId
 	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
@@ -1439,6 +1490,57 @@ func (r *GetTicketStatisticsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetTicketStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTotalRequestStatisticsRequestParams struct {
+
+}
+
+type GetTotalRequestStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetTotalRequestStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTotalRequestStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTotalRequestStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTotalRequestStatisticsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetTotalRequestStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTotalRequestStatisticsResponseParams `json:"Response"`
+}
+
+func (r *GetTotalRequestStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTotalRequestStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

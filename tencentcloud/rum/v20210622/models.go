@@ -5523,7 +5523,7 @@ type DescribeRumLogListRequestParams struct {
 	// 排序方式  desc  asc（必填）
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）
+	// 开始时间（必填）格式为时间戳 毫秒
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 单次查询返回的原始日志条数，最大值为100（必填）
@@ -5535,7 +5535,7 @@ type DescribeRumLogListRequestParams struct {
 	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 结束时间（必填）
+	// 结束时间（必填）格式为时间戳 毫秒
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 项目ID（必填）
@@ -5548,7 +5548,7 @@ type DescribeRumLogListRequest struct {
 	// 排序方式  desc  asc（必填）
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 开始时间（必填）
+	// 开始时间（必填）格式为时间戳 毫秒
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 单次查询返回的原始日志条数，最大值为100（必填）
@@ -5560,7 +5560,7 @@ type DescribeRumLogListRequest struct {
 	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 结束时间（必填）
+	// 结束时间（必填）格式为时间戳 毫秒
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 项目ID（必填）

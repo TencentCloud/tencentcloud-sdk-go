@@ -8845,66 +8845,6 @@ func (c *Client) SwitchForUpgradeWithContext(ctx context.Context, request *Switc
     return
 }
 
-func NewUpgradeCDBProxyRequest() (request *UpgradeCDBProxyRequest) {
-    request = &UpgradeCDBProxyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "UpgradeCDBProxy")
-    
-    
-    return
-}
-
-func NewUpgradeCDBProxyResponse() (response *UpgradeCDBProxyResponse) {
-    response = &UpgradeCDBProxyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// UpgradeCDBProxy
-// 接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置
-//
-// 
-//
-// 调整数据库代理配置
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
-func (c *Client) UpgradeCDBProxy(request *UpgradeCDBProxyRequest) (response *UpgradeCDBProxyResponse, err error) {
-    return c.UpgradeCDBProxyWithContext(context.Background(), request)
-}
-
-// UpgradeCDBProxy
-// 接口已经废弃，请使用AdjustCdbProxy进行数据库代理的配置
-//
-// 
-//
-// 调整数据库代理配置
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_SUBMITASYNCTASKERROR = "FailedOperation.SubmitAsyncTaskError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
-func (c *Client) UpgradeCDBProxyWithContext(ctx context.Context, request *UpgradeCDBProxyRequest) (response *UpgradeCDBProxyResponse, err error) {
-    if request == nil {
-        request = NewUpgradeCDBProxyRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("UpgradeCDBProxy require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewUpgradeCDBProxyResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewUpgradeCDBProxyVersionRequest() (request *UpgradeCDBProxyVersionRequest) {
     request = &UpgradeCDBProxyVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

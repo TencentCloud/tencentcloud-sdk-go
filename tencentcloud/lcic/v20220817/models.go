@@ -20,6 +20,74 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type AddGroupMemberRequestParams struct {
+	// 群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 成员列表，最大值200
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+type AddGroupMemberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 成员列表，最大值200
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+func (r *AddGroupMemberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddGroupMemberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "SdkAppId")
+	delete(f, "MemberIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddGroupMemberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddGroupMemberResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddGroupMemberResponse struct {
+	*tchttp.BaseResponse
+	Response *AddGroupMemberResponseParams `json:"Response"`
+}
+
+func (r *AddGroupMemberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddGroupMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AppConfig struct {
 
 }
@@ -45,6 +113,145 @@ type BackgroundPictureConfig struct {
 	// 背景图片的url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+// Predefined struct for user
+type BatchAddGroupMemberRequestParams struct {
+	// 待添加群组ID列表，最大值100
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待添加成员列表，最大值200
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+type BatchAddGroupMemberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待添加群组ID列表，最大值100
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待添加成员列表，最大值200
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+func (r *BatchAddGroupMemberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchAddGroupMemberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "SdkAppId")
+	delete(f, "MemberIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchAddGroupMemberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchAddGroupMemberResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchAddGroupMemberResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchAddGroupMemberResponseParams `json:"Response"`
+}
+
+func (r *BatchAddGroupMemberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchAddGroupMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchCreateGroupWithMembersRequestParams struct {
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 批量创建群组基础信息，最大长度限制256
+	GroupBaseInfos []*GroupBaseInfo `json:"GroupBaseInfos,omitempty" name:"GroupBaseInfos"`
+
+	// 群组绑定的成员列表，一次性最多200个
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+type BatchCreateGroupWithMembersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 批量创建群组基础信息，最大长度限制256
+	GroupBaseInfos []*GroupBaseInfo `json:"GroupBaseInfos,omitempty" name:"GroupBaseInfos"`
+
+	// 群组绑定的成员列表，一次性最多200个
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+func (r *BatchCreateGroupWithMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchCreateGroupWithMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "GroupBaseInfos")
+	delete(f, "MemberIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchCreateGroupWithMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchCreateGroupWithMembersResponseParams struct {
+	// 新创建群组ID列表，与输入创建参数顺序一致
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchCreateGroupWithMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchCreateGroupWithMembersResponseParams `json:"Response"`
+}
+
+func (r *BatchCreateGroupWithMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchCreateGroupWithMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -108,6 +315,74 @@ func (r *BatchCreateRoomResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *BatchCreateRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteGroupMemberRequestParams struct {
+	// 待添加群组ID列表，最大值100
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待添加成员列表，最大值256
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+type BatchDeleteGroupMemberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待添加群组ID列表，最大值100
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待添加成员列表，最大值256
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+func (r *BatchDeleteGroupMemberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteGroupMemberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "SdkAppId")
+	delete(f, "MemberIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteGroupMemberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteGroupMemberResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchDeleteGroupMemberResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDeleteGroupMemberResponseParams `json:"Response"`
+}
+
+func (r *BatchDeleteGroupMemberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteGroupMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -456,6 +731,162 @@ func (r *CreateDocumentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateGroupWithMembersRequestParams struct {
+	// 待创建群组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 默认绑定主讲老师ID
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 群组成员列表,一次性最多200个
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+type CreateGroupWithMembersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待创建群组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 默认绑定主讲老师ID
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 群组成员列表,一次性最多200个
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+func (r *CreateGroupWithMembersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupWithMembersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupName")
+	delete(f, "SdkAppId")
+	delete(f, "TeacherId")
+	delete(f, "MemberIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGroupWithMembersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGroupWithMembersResponseParams struct {
+	// 创建成功群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateGroupWithMembersResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGroupWithMembersResponseParams `json:"Response"`
+}
+
+func (r *CreateGroupWithMembersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupWithMembersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGroupWithSubGroupRequestParams struct {
+	// 待创建的新群组名
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 子群组ID列表，子群组ID不能重复，最多40个
+	SubGroupIds []*string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+
+	// 群组默认主讲老师ID
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+}
+
+type CreateGroupWithSubGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待创建的新群组名
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 子群组ID列表，子群组ID不能重复，最多40个
+	SubGroupIds []*string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+
+	// 群组默认主讲老师ID
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+}
+
+func (r *CreateGroupWithSubGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupWithSubGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupName")
+	delete(f, "SdkAppId")
+	delete(f, "SubGroupIds")
+	delete(f, "TeacherId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGroupWithSubGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGroupWithSubGroupResponseParams struct {
+	// 新创建群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateGroupWithSubGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGroupWithSubGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateGroupWithSubGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupWithSubGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRoomRequestParams struct {
 	// 房间名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -508,6 +939,9 @@ type CreateRoomRequestParams struct {
 
 	// 录制布局。
 	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
+
+	// 房间绑定的群组ID,非空时限制组成员进入
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 type CreateRoomRequest struct {
@@ -564,6 +998,9 @@ type CreateRoomRequest struct {
 
 	// 录制布局。
 	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
+
+	// 房间绑定的群组ID,非空时限制组成员进入
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -591,6 +1028,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "DisableRecord")
 	delete(f, "Assistants")
 	delete(f, "RecordLayout")
+	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -724,6 +1162,135 @@ func (r *DeleteDocumentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDocumentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGroupMemberRequestParams struct {
+	// 群组ID，联合群组无法删除群组成员
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 成员列表，最大值200
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+type DeleteGroupMemberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 群组ID，联合群组无法删除群组成员
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 成员列表，最大值200
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+}
+
+func (r *DeleteGroupMemberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupMemberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "SdkAppId")
+	delete(f, "MemberIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGroupMemberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGroupMemberResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteGroupMemberResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGroupMemberResponseParams `json:"Response"`
+}
+
+func (r *DeleteGroupMemberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGroupRequestParams struct {
+	// 待删除群组ID列表
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type DeleteGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除群组ID列表
+	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DeleteGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1189,6 +1756,257 @@ func (r *DescribeDocumentsByRoomResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGroupListRequestParams struct {
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页查询当前页数，默认从1开始递增。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，默认20，最大1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 主讲人ID筛选群组，与MemberId有且只有一个,都传时以此字段获取
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 成员ID刷选群组，与TeacherId有且只有一个
+	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
+}
+
+type DescribeGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页查询当前页数，默认从1开始递增。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，默认20，最大1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 主讲人ID筛选群组，与MemberId有且只有一个,都传时以此字段获取
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 成员ID刷选群组，与TeacherId有且只有一个
+	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
+}
+
+func (r *DescribeGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	delete(f, "TeacherId")
+	delete(f, "MemberId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGroupListResponseParams struct {
+	// 记录总数。当前匹配群组总数。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 群组信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGroupMemberListRequestParams struct {
+	// 群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页值，默认1
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，默认20，最大1000
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeGroupMemberListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页值，默认1
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，默认20，最大1000
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeGroupMemberListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupMemberListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "SdkAppId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupMemberListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGroupMemberListResponseParams struct {
+	// 符合查询条件总条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 查询成员列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGroupMemberListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGroupMemberListResponseParams `json:"Response"`
+}
+
+func (r *DescribeGroupMemberListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupMemberListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGroupRequestParams struct {
+	// 群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type DescribeGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGroupResponseParams struct {
+	// 群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 群组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 群主主讲人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 群组类型
+	// 0-基础群组
+	// 1-组合群组，若为1时会返回子群组ID
+	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+
+	// 子群组ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubGroupIds []*string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGroupResponseParams `json:"Response"`
+}
+
+func (r *DescribeGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoomRequestParams struct {
 	// 房间Id。
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
@@ -1276,9 +2094,13 @@ type DescribeRoomResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
 
-	// 课堂状态。0为未开始，1为正在上课，2为已结束，3为已过期。
+	// 课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 房间绑定的群组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1657,6 +2479,40 @@ func (r *GetWatermarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GroupBaseInfo struct {
+	// 待创建群组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 群组主讲人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+}
+
+type GroupInfo struct {
+	// 群组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 群组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 群组主讲人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 群组类型 
+	// 0-基础群组 
+	// 1-组合群组，若为1时会返回子群组ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+
+	// 子群组ID列表，如有。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubGroupIds *string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+}
+
 // Predefined struct for user
 type LoginOriginIdRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
@@ -1897,6 +2753,81 @@ func (r *ModifyAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyGroupRequestParams struct {
+	// 需要修改的群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 默认绑定主讲老师ID
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 待修改的群组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+}
+
+type ModifyGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要修改的群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 低代码平台应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 默认绑定主讲老师ID
+	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+
+	// 待修改的群组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+}
+
+func (r *ModifyGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "SdkAppId")
+	delete(f, "TeacherId")
+	delete(f, "GroupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRoomRequestParams struct {
 	// 房间ID。
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
@@ -1954,6 +2885,9 @@ type ModifyRoomRequestParams struct {
 
 	// 助教Id列表。直播开始后不允许修改。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+
+	// 房间绑定的群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 type ModifyRoomRequest struct {
@@ -2015,6 +2949,9 @@ type ModifyRoomRequest struct {
 
 	// 助教Id列表。直播开始后不允许修改。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+
+	// 房间绑定的群组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -2042,6 +2979,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "SubType")
 	delete(f, "DisableRecord")
 	delete(f, "Assistants")
+	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -2279,6 +3217,10 @@ type RoomInfo struct {
 	// 录制布局。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
+
+	// 房间绑定的群组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 type SceneItem struct {

@@ -1222,3 +1222,55 @@ func (c *Client) SaDivulgeDataQueryPubWithContext(ctx context.Context, request *
     err = c.Send(request, response)
     return
 }
+
+func NewSaEventPubRequest() (request *SaEventPubRequest) {
+    request = &SaEventPubRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssa", APIVersion, "SaEventPub")
+    
+    
+    return
+}
+
+func NewSaEventPubResponse() (response *SaEventPubResponse) {
+    response = &SaEventPubResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SaEventPub
+// 安全事件通用字段
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) SaEventPub(request *SaEventPubRequest) (response *SaEventPubResponse, err error) {
+    return c.SaEventPubWithContext(context.Background(), request)
+}
+
+// SaEventPub
+// 安全事件通用字段
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) SaEventPubWithContext(ctx context.Context, request *SaEventPubRequest) (response *SaEventPubResponse, err error) {
+    if request == nil {
+        request = NewSaEventPubRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SaEventPub require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSaEventPubResponse()
+    err = c.Send(request, response)
+    return
+}

@@ -704,6 +704,10 @@ type ApplicationForPage struct {
 	// 服务配置信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitempty" name:"ServiceConfigList"`
+
+	// IgnoreCreateImageRepository
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitempty" name:"IgnoreCreateImageRepository"`
 }
 
 // Predefined struct for user
@@ -1707,6 +1711,10 @@ type ContainGroup struct {
 	// KubeInjectEnable值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KubeInjectEnable *bool `json:"KubeInjectEnable,omitempty" name:"KubeInjectEnable"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
 type ContainGroupResult struct {
@@ -5760,6 +5768,50 @@ type DeliveryConfigBindGroup struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// KafkaVIp
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaVIp *string `json:"KafkaVIp,omitempty" name:"KafkaVIp"`
+
+	// KafkaAddress
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaAddress *string `json:"KafkaAddress,omitempty" name:"KafkaAddress"`
+
+	// KafkaVPort
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaVPort *string `json:"KafkaVPort,omitempty" name:"KafkaVPort"`
+
+	// Topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// LineRule
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LineRule *string `json:"LineRule,omitempty" name:"LineRule"`
+
+	// CustomRule
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomRule *string `json:"CustomRule,omitempty" name:"CustomRule"`
+
+	// EnableGlobalLineRule
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableGlobalLineRule *bool `json:"EnableGlobalLineRule,omitempty" name:"EnableGlobalLineRule"`
+
+	// EnableAuth
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableAuth *bool `json:"EnableAuth,omitempty" name:"EnableAuth"`
+
+	// Username
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// Password
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// KafkaInfos
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaInfos []*DeliveryKafkaInfo `json:"KafkaInfos,omitempty" name:"KafkaInfos"`
 }
 
 type DeliveryConfigBindGroups struct {
@@ -20451,6 +20503,14 @@ type UnitRule struct {
 	// 规则项列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitRuleItemList []*UnitRuleItem `json:"UnitRuleItemList,omitempty" name:"UnitRuleItemList"`
+
+	// CreatedTime
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// UpdatedTime
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
 type UnitRuleItem struct {

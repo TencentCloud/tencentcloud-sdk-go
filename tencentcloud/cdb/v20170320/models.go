@@ -6213,10 +6213,10 @@ type DescribeErrorLogDataRequestParams struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间戳。
+	// 开始时间戳。例如 1585142640 。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间戳。
+	// 结束时间戳。例如 1585142640 。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 要匹配的关键字列表，最多支持15个关键字。
@@ -6238,10 +6238,10 @@ type DescribeErrorLogDataRequest struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间戳。
+	// 开始时间戳。例如 1585142640 。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间戳。
+	// 结束时间戳。例如 1585142640 。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 要匹配的关键字列表，最多支持15个关键字。
@@ -7217,10 +7217,10 @@ type DescribeSlowLogDataRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间戳。
+	// 开始时间戳。例如 1585142640 。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间戳。
+	// 结束时间戳。例如 1585142640 。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 客户端 Host 列表。
@@ -7254,10 +7254,10 @@ type DescribeSlowLogDataRequest struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间戳。
+	// 开始时间戳。例如 1585142640 。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间戳。
+	// 结束时间戳。例如 1585142640 。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 客户端 Host 列表。
@@ -12869,106 +12869,6 @@ type TaskDetail struct {
 
 	// 异步任务的请求 ID。
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
-}
-
-// Predefined struct for user
-type UpgradeCDBProxyRequestParams struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 数据库代理ID
-	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
-
-	// 代理节点个数
-	ProxyCount *int64 `json:"ProxyCount,omitempty" name:"ProxyCount"`
-
-	// 代理节点核数
-	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
-
-	// 代理节点内存大小
-	Mem *int64 `json:"Mem,omitempty" name:"Mem"`
-
-	// 重新负载均衡：auto（自动），manual（手动）
-	ReloadBalance *string `json:"ReloadBalance,omitempty" name:"ReloadBalance"`
-
-	// 升级时间 nowTime（升级完成时）timeWindow（实例维护时间）
-	UpgradeTime *string `json:"UpgradeTime,omitempty" name:"UpgradeTime"`
-}
-
-type UpgradeCDBProxyRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 数据库代理ID
-	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
-
-	// 代理节点个数
-	ProxyCount *int64 `json:"ProxyCount,omitempty" name:"ProxyCount"`
-
-	// 代理节点核数
-	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
-
-	// 代理节点内存大小
-	Mem *int64 `json:"Mem,omitempty" name:"Mem"`
-
-	// 重新负载均衡：auto（自动），manual（手动）
-	ReloadBalance *string `json:"ReloadBalance,omitempty" name:"ReloadBalance"`
-
-	// 升级时间 nowTime（升级完成时）timeWindow（实例维护时间）
-	UpgradeTime *string `json:"UpgradeTime,omitempty" name:"UpgradeTime"`
-}
-
-func (r *UpgradeCDBProxyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpgradeCDBProxyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "ProxyGroupId")
-	delete(f, "ProxyCount")
-	delete(f, "Cpu")
-	delete(f, "Mem")
-	delete(f, "ReloadBalance")
-	delete(f, "UpgradeTime")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeCDBProxyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpgradeCDBProxyResponseParams struct {
-	// 异步处理ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type UpgradeCDBProxyResponse struct {
-	*tchttp.BaseResponse
-	Response *UpgradeCDBProxyResponseParams `json:"Response"`
-}
-
-func (r *UpgradeCDBProxyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpgradeCDBProxyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

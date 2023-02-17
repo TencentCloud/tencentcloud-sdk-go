@@ -9031,6 +9031,54 @@ func (c *Client) PushUrlCacheWithContext(ctx context.Context, request *PushUrlCa
     return
 }
 
+func NewRebuildMediaRequest() (request *RebuildMediaRequest) {
+    request = &RebuildMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "RebuildMedia")
+    
+    
+    return
+}
+
+func NewRebuildMediaResponse() (response *RebuildMediaResponse) {
+    response = &RebuildMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RebuildMedia
+// 发起音画质重生
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+func (c *Client) RebuildMedia(request *RebuildMediaRequest) (response *RebuildMediaResponse, err error) {
+    return c.RebuildMediaWithContext(context.Background(), request)
+}
+
+// RebuildMedia
+// 发起音画质重生
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+func (c *Client) RebuildMediaWithContext(ctx context.Context, request *RebuildMediaRequest) (response *RebuildMediaResponse, err error) {
+    if request == nil {
+        request = NewRebuildMediaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RebuildMedia require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRebuildMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRefreshUrlCacheRequest() (request *RefreshUrlCacheRequest) {
     request = &RefreshUrlCacheRequest{
         BaseRequest: &tchttp.BaseRequest{},

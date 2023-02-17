@@ -397,6 +397,10 @@ type Blueprint struct {
 	// 镜像关联使用场景Id列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneIdSet []*string `json:"SceneIdSet,omitempty" name:"SceneIdSet"`
+
+	// Docker版本号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DockerVersion *string `json:"DockerVersion,omitempty" name:"DockerVersion"`
 }
 
 type BlueprintInstance struct {

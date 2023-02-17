@@ -353,6 +353,9 @@ const (
 	// 加速域名状态不符合要求。
 	INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
 
+	// 该同名站点标识已被占用，请重新输入。
+	INVALIDPARAMETERVALUE_ZONESAMEASNAME = "InvalidParameterValue.ZoneSameAsName"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 

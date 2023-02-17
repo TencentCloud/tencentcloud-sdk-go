@@ -45,6 +45,248 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddGroupMemberRequest() (request *AddGroupMemberRequest) {
+    request = &AddGroupMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "AddGroupMember")
+    
+    
+    return
+}
+
+func NewAddGroupMemberResponse() (response *AddGroupMemberResponse) {
+    response = &AddGroupMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddGroupMember
+// 此接口用于添加成员列表到指定群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddGroupMember(request *AddGroupMemberRequest) (response *AddGroupMemberResponse, err error) {
+    return c.AddGroupMemberWithContext(context.Background(), request)
+}
+
+// AddGroupMember
+// 此接口用于添加成员列表到指定群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddGroupMemberWithContext(ctx context.Context, request *AddGroupMemberRequest) (response *AddGroupMemberResponse, err error) {
+    if request == nil {
+        request = NewAddGroupMemberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddGroupMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddGroupMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchAddGroupMemberRequest() (request *BatchAddGroupMemberRequest) {
+    request = &BatchAddGroupMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "BatchAddGroupMember")
+    
+    
+    return
+}
+
+func NewBatchAddGroupMemberResponse() (response *BatchAddGroupMemberResponse) {
+    response = &BatchAddGroupMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchAddGroupMember
+// 此接口用于批量添加成员列表到指定群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchAddGroupMember(request *BatchAddGroupMemberRequest) (response *BatchAddGroupMemberResponse, err error) {
+    return c.BatchAddGroupMemberWithContext(context.Background(), request)
+}
+
+// BatchAddGroupMember
+// 此接口用于批量添加成员列表到指定群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchAddGroupMemberWithContext(ctx context.Context, request *BatchAddGroupMemberRequest) (response *BatchAddGroupMemberResponse, err error) {
+    if request == nil {
+        request = NewBatchAddGroupMemberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchAddGroupMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchAddGroupMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchCreateGroupWithMembersRequest() (request *BatchCreateGroupWithMembersRequest) {
+    request = &BatchCreateGroupWithMembersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "BatchCreateGroupWithMembers")
+    
+    
+    return
+}
+
+func NewBatchCreateGroupWithMembersResponse() (response *BatchCreateGroupWithMembersResponse) {
+    response = &BatchCreateGroupWithMembersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchCreateGroupWithMembers
+// 此接口用于批量创建群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchCreateGroupWithMembers(request *BatchCreateGroupWithMembersRequest) (response *BatchCreateGroupWithMembersResponse, err error) {
+    return c.BatchCreateGroupWithMembersWithContext(context.Background(), request)
+}
+
+// BatchCreateGroupWithMembers
+// 此接口用于批量创建群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BatchCreateGroupWithMembersWithContext(ctx context.Context, request *BatchCreateGroupWithMembersRequest) (response *BatchCreateGroupWithMembersResponse, err error) {
+    if request == nil {
+        request = NewBatchCreateGroupWithMembersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchCreateGroupWithMembers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchCreateGroupWithMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchCreateRoomRequest() (request *BatchCreateRoomRequest) {
     request = &BatchCreateRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -153,6 +395,84 @@ func (c *Client) BatchCreateRoomWithContext(ctx context.Context, request *BatchC
     request.SetContext(ctx)
     
     response = NewBatchCreateRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchDeleteGroupMemberRequest() (request *BatchDeleteGroupMemberRequest) {
+    request = &BatchDeleteGroupMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "BatchDeleteGroupMember")
+    
+    
+    return
+}
+
+func NewBatchDeleteGroupMemberResponse() (response *BatchDeleteGroupMemberResponse) {
+    response = &BatchDeleteGroupMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchDeleteGroupMember
+// 此接口用于批量删除成员列表到指定群组列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchDeleteGroupMember(request *BatchDeleteGroupMemberRequest) (response *BatchDeleteGroupMemberResponse, err error) {
+    return c.BatchDeleteGroupMemberWithContext(context.Background(), request)
+}
+
+// BatchDeleteGroupMember
+// 此接口用于批量删除成员列表到指定群组列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchDeleteGroupMemberWithContext(ctx context.Context, request *BatchDeleteGroupMemberRequest) (response *BatchDeleteGroupMemberResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteGroupMemberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteGroupMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDeleteGroupMemberResponse()
     err = c.Send(request, response)
     return
 }
@@ -385,6 +705,168 @@ func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateD
     return
 }
 
+func NewCreateGroupWithMembersRequest() (request *CreateGroupWithMembersRequest) {
+    request = &CreateGroupWithMembersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "CreateGroupWithMembers")
+    
+    
+    return
+}
+
+func NewCreateGroupWithMembersResponse() (response *CreateGroupWithMembersResponse) {
+    response = &CreateGroupWithMembersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateGroupWithMembers
+// 此接口根据成员列表创建群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGroupWithMembers(request *CreateGroupWithMembersRequest) (response *CreateGroupWithMembersResponse, err error) {
+    return c.CreateGroupWithMembersWithContext(context.Background(), request)
+}
+
+// CreateGroupWithMembers
+// 此接口根据成员列表创建群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGroupWithMembersWithContext(ctx context.Context, request *CreateGroupWithMembersRequest) (response *CreateGroupWithMembersResponse, err error) {
+    if request == nil {
+        request = NewCreateGroupWithMembersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGroupWithMembers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGroupWithMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGroupWithSubGroupRequest() (request *CreateGroupWithSubGroupRequest) {
+    request = &CreateGroupWithSubGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "CreateGroupWithSubGroup")
+    
+    
+    return
+}
+
+func NewCreateGroupWithSubGroupResponse() (response *CreateGroupWithSubGroupResponse) {
+    response = &CreateGroupWithSubGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateGroupWithSubGroup
+// 此接口会聚合子群组创建联合群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGroupWithSubGroup(request *CreateGroupWithSubGroupRequest) (response *CreateGroupWithSubGroupResponse, err error) {
+    return c.CreateGroupWithSubGroupWithContext(context.Background(), request)
+}
+
+// CreateGroupWithSubGroup
+// 此接口会聚合子群组创建联合群组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGroupWithSubGroupWithContext(ctx context.Context, request *CreateGroupWithSubGroupRequest) (response *CreateGroupWithSubGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateGroupWithSubGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGroupWithSubGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGroupWithSubGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRoomRequest() (request *CreateRoomRequest) {
     request = &CreateRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -549,6 +1031,152 @@ func (c *Client) DeleteDocumentWithContext(ctx context.Context, request *DeleteD
     request.SetContext(ctx)
     
     response = NewDeleteDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
+    request = &DeleteGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeleteGroup")
+    
+    
+    return
+}
+
+func NewDeleteGroupResponse() (response *DeleteGroupResponse) {
+    response = &DeleteGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteGroup
+// 此接口用于删除指定群组，支持批量操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteGroup(request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
+    return c.DeleteGroupWithContext(context.Background(), request)
+}
+
+// DeleteGroup
+// 此接口用于删除指定群组，支持批量操作。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteGroupWithContext(ctx context.Context, request *DeleteGroupRequest) (response *DeleteGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGroupMemberRequest() (request *DeleteGroupMemberRequest) {
+    request = &DeleteGroupMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeleteGroupMember")
+    
+    
+    return
+}
+
+func NewDeleteGroupMemberResponse() (response *DeleteGroupMemberResponse) {
+    response = &DeleteGroupMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteGroupMember
+// 此接口用于删除群组中指定成员
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteGroupMember(request *DeleteGroupMemberRequest) (response *DeleteGroupMemberResponse, err error) {
+    return c.DeleteGroupMemberWithContext(context.Background(), request)
+}
+
+// DeleteGroupMember
+// 此接口用于删除群组中指定成员
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = "InvalidParameter.GroupTeachersNotExist"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteGroupMemberWithContext(ctx context.Context, request *DeleteGroupMemberRequest) (response *DeleteGroupMemberResponse, err error) {
+    if request == nil {
+        request = NewDeleteGroupMemberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGroupMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGroupMemberResponse()
     err = c.Send(request, response)
     return
 }
@@ -939,6 +1567,228 @@ func (c *Client) DescribeDocumentsByRoomWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeDocumentsByRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
+    request = &DescribeGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeGroup")
+    
+    
+    return
+}
+
+func NewDescribeGroupResponse() (response *DescribeGroupResponse) {
+    response = &DescribeGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGroup
+// 此接口用于获取群组详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGroup(request *DescribeGroupRequest) (response *DescribeGroupResponse, err error) {
+    return c.DescribeGroupWithContext(context.Background(), request)
+}
+
+// DescribeGroup
+// 此接口用于获取群组详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGroupWithContext(ctx context.Context, request *DescribeGroupRequest) (response *DescribeGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupListRequest() (request *DescribeGroupListRequest) {
+    request = &DescribeGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeGroupList")
+    
+    
+    return
+}
+
+func NewDescribeGroupListResponse() (response *DescribeGroupListResponse) {
+    response = &DescribeGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGroupList
+// 获取群组列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGroupList(request *DescribeGroupListRequest) (response *DescribeGroupListResponse, err error) {
+    return c.DescribeGroupListWithContext(context.Background(), request)
+}
+
+// DescribeGroupList
+// 获取群组列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGroupListWithContext(ctx context.Context, request *DescribeGroupListRequest) (response *DescribeGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupMemberListRequest() (request *DescribeGroupMemberListRequest) {
+    request = &DescribeGroupMemberListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeGroupMemberList")
+    
+    
+    return
+}
+
+func NewDescribeGroupMemberListResponse() (response *DescribeGroupMemberListResponse) {
+    response = &DescribeGroupMemberListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGroupMemberList
+// 此接口用于获取群组成员列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGroupMemberList(request *DescribeGroupMemberListRequest) (response *DescribeGroupMemberListResponse, err error) {
+    return c.DescribeGroupMemberListWithContext(context.Background(), request)
+}
+
+// DescribeGroupMemberList
+// 此接口用于获取群组成员列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeGroupMemberListWithContext(ctx context.Context, request *DescribeGroupMemberListRequest) (response *DescribeGroupMemberListResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupMemberListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupMemberList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGroupMemberListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1419,6 +2269,100 @@ func (c *Client) ModifyAppWithContext(ctx context.Context, request *ModifyAppReq
     return
 }
 
+func NewModifyGroupRequest() (request *ModifyGroupRequest) {
+    request = &ModifyGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "ModifyGroup")
+    
+    
+    return
+}
+
+func NewModifyGroupResponse() (response *ModifyGroupResponse) {
+    response = &ModifyGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyGroup
+// 此接口修改群组信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyGroup(request *ModifyGroupRequest) (response *ModifyGroupResponse, err error) {
+    return c.ModifyGroupWithContext(context.Background(), request)
+}
+
+// ModifyGroup
+// 此接口修改群组信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPPARAMINVALID = "InvalidParameter.GroupParamInvalid"
+//  INVALIDPARAMETER_GROUPTEACHERNOTMEMBER = "InvalidParameter.GroupTeacherNotMember"
+//  INVALIDPARAMETER_GROUPTYPEINVALID = "InvalidParameter.GroupTypeInvalid"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_GROUPPARTUSERSNOTEXIST = "ResourceNotFound.GroupPartUsersNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyGroupWithContext(ctx context.Context, request *ModifyGroupRequest) (response *ModifyGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRoomRequest() (request *ModifyRoomRequest) {
     request = &ModifyRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1443,11 +2387,15 @@ func NewModifyRoomResponse() (response *ModifyRoomResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
 //  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
 //  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyRoom(request *ModifyRoomRequest) (response *ModifyRoomResponse, err error) {
     return c.ModifyRoomWithContext(context.Background(), request)
 }
@@ -1458,11 +2406,15 @@ func (c *Client) ModifyRoom(request *ModifyRoomRequest) (response *ModifyRoomRes
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
 //  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
 //  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyRoomWithContext(ctx context.Context, request *ModifyRoomRequest) (response *ModifyRoomResponse, err error) {
     if request == nil {
         request = NewModifyRoomRequest()

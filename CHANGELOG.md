@@ -1,3 +1,275 @@
+# Release v1.0.597
+
+## 验证码(captcha) 版本：2019-07-22
+
+### 第 14 次发布
+
+发布时间：2023-02-17 01:29:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetRequestStatistics](https://cloud.tencent.com/document/api/1110/86633)
+* [GetTotalRequestStatistics](https://cloud.tencent.com/document/api/1110/86632)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 114 次发布
+
+发布时间：2023-02-17 01:33:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* UpgradeCDBProxy
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 44 次发布
+
+发布时间：2023-02-17 02:45:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SwitchClusterVpc](https://cloud.tencent.com/document/api/1003/86634)
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 13 次发布
+
+发布时间：2023-02-17 04:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddGroupMember](https://cloud.tencent.com/document/api/1639/86647)
+* [BatchAddGroupMember](https://cloud.tencent.com/document/api/1639/86646)
+* [BatchCreateGroupWithMembers](https://cloud.tencent.com/document/api/1639/86645)
+* [BatchDeleteGroupMember](https://cloud.tencent.com/document/api/1639/86644)
+* [CreateGroupWithMembers](https://cloud.tencent.com/document/api/1639/86643)
+* [CreateGroupWithSubGroup](https://cloud.tencent.com/document/api/1639/86642)
+* [DeleteGroup](https://cloud.tencent.com/document/api/1639/86641)
+* [DeleteGroupMember](https://cloud.tencent.com/document/api/1639/86640)
+* [DescribeGroup](https://cloud.tencent.com/document/api/1639/86639)
+* [DescribeGroupList](https://cloud.tencent.com/document/api/1639/86638)
+* [DescribeGroupMemberList](https://cloud.tencent.com/document/api/1639/86637)
+* [ModifyGroup](https://cloud.tencent.com/document/api/1639/86636)
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：GroupId
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：GroupId
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：GroupId
+
+
+新增数据结构：
+
+* [GroupBaseInfo](https://cloud.tencent.com/document/api/1639/81423#GroupBaseInfo)
+* [GroupInfo](https://cloud.tencent.com/document/api/1639/81423#GroupInfo)
+
+修改数据结构：
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：GroupId
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 42 次发布
+
+发布时间：2023-02-17 04:14:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
+
+	* 新增成员：DockerVersion
+
+
+
+
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 15 次发布
+
+发布时间：2023-02-17 04:46:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganizationAuthNode](https://cloud.tencent.com/document/api/850/82927)
+
+	* 新增入参：AuthName
+
+
+新增数据结构：
+
+* [MemberMainInfo](https://cloud.tencent.com/document/api/850/67060#MemberMainInfo)
+
+修改数据结构：
+
+* [AuthNode](https://cloud.tencent.com/document/api/850/67060#AuthNode)
+
+	* 新增成员：Manager
+
+
+
+
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 26 次发布
+
+发布时间：2023-02-17 04:47:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AssignClientsToSales](https://cloud.tencent.com/document/api/#/#)
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 14 次发布
+
+发布时间：2023-02-17 05:08:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SaEventPub](https://cloud.tencent.com/document/api/664/86648)
+
+新增数据结构：
+
+* [ListDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ListDataSaEventPub)
+* [ObjDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ObjDataSaEventPub)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 32 次发布
+
+发布时间：2023-02-17 06:04:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
+
+	* 新增成员：IsFake
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 88 次发布
+
+发布时间：2023-02-17 06:34:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApplicationForPage](https://cloud.tencent.com/document/api/649/36099#ApplicationForPage)
+
+	* 新增成员：IgnoreCreateImageRepository
+
+* [ContainGroup](https://cloud.tencent.com/document/api/649/36099#ContainGroup)
+
+	* 新增成员：UpdatedTime
+
+* [DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup)
+
+	* 新增成员：KafkaVIp, KafkaAddress, KafkaVPort, Topic, LineRule, CustomRule, EnableGlobalLineRule, EnableAuth, Username, Password, KafkaInfos
+
+* [UnitRule](https://cloud.tencent.com/document/api/649/36099#UnitRule)
+
+	* 新增成员：CreatedTime, UpdatedTime
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 142 次发布
+
+发布时间：2023-02-17 06:48:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RebuildMedia](https://cloud.tencent.com/document/api/266/86649)
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+
+	* 新增出参：RebuildMediaTask
+
+
+
+
 # Release v1.0.596
 
 ## 品牌经营管家(bma) 版本：2022-11-15

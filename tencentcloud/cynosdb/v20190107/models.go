@@ -7647,6 +7647,84 @@ type SlowQueriesItem struct {
 }
 
 // Predefined struct for user
+type SwitchClusterVpcRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 字符串vpc id
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 字符串子网id
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 旧地址回收时间
+	OldIpReserveHours *int64 `json:"OldIpReserveHours,omitempty" name:"OldIpReserveHours"`
+}
+
+type SwitchClusterVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 字符串vpc id
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 字符串子网id
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 旧地址回收时间
+	OldIpReserveHours *int64 `json:"OldIpReserveHours,omitempty" name:"OldIpReserveHours"`
+}
+
+func (r *SwitchClusterVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchClusterVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "UniqVpcId")
+	delete(f, "UniqSubnetId")
+	delete(f, "OldIpReserveHours")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchClusterVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchClusterVpcResponseParams struct {
+	// 异步任务id。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SwitchClusterVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchClusterVpcResponseParams `json:"Response"`
+}
+
+func (r *SwitchClusterVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchClusterVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SwitchClusterZoneRequestParams struct {
 	// 集群Id
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`

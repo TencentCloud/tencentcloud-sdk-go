@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sslpod
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.596
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.597
