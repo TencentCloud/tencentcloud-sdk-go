@@ -39,6 +39,9 @@ type AutomationAgentInfo struct {
 	// <li> Linux：Linux实例
 	// <li> Windows：Windows实例
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// Agent 支持的功能列表。
+	SupportFeatures []*string `json:"SupportFeatures,omitempty" name:"SupportFeatures"`
 }
 
 // Predefined struct for user
@@ -174,6 +177,12 @@ type CommandDocument struct {
 
 	// 执行用户。
 	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 保存输出的 COS Bucket 链接。
+	OutputCOSBucketUrl *string `json:"OutputCOSBucketUrl,omitempty" name:"OutputCOSBucketUrl"`
+
+	// 保存输出的文件名称前缀。
+	OutputCOSKeyPrefix *string `json:"OutputCOSKeyPrefix,omitempty" name:"OutputCOSKeyPrefix"`
 }
 
 // Predefined struct for user

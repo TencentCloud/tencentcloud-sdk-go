@@ -1440,7 +1440,7 @@ func NewCreateLiveTimeShiftTemplateResponse() (response *CreateLiveTimeShiftTemp
 }
 
 // CreateLiveTimeShiftTemplate
-// 创建直播垫片模板。
+// 创建直播时移模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
@@ -1464,7 +1464,7 @@ func (c *Client) CreateLiveTimeShiftTemplate(request *CreateLiveTimeShiftTemplat
 }
 
 // CreateLiveTimeShiftTemplate
-// 创建直播垫片模板。
+// 创建直播时移模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
@@ -9204,7 +9204,7 @@ func NewModifyLiveTimeShiftTemplateResponse() (response *ModifyLiveTimeShiftTemp
 }
 
 // ModifyLiveTimeShiftTemplate
-// 修改直播垫片模板。
+// 修改直播时移模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
@@ -9228,7 +9228,7 @@ func (c *Client) ModifyLiveTimeShiftTemplate(request *ModifyLiveTimeShiftTemplat
 }
 
 // ModifyLiveTimeShiftTemplate
-// 修改直播垫片模板。
+// 修改直播时移模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"

@@ -10020,7 +10020,7 @@ func NewGetUpgradeInstanceProgressResponse() (response *GetUpgradeInstanceProgre
 }
 
 // GetUpgradeInstanceProgress
-// 获得节点升级当前的进度 
+// 获得节点升级当前的进度
 //
 // 可能返回的错误码:
 //  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
@@ -10031,7 +10031,7 @@ func (c *Client) GetUpgradeInstanceProgress(request *GetUpgradeInstanceProgressR
 }
 
 // GetUpgradeInstanceProgress
-// 获得节点升级当前的进度 
+// 获得节点升级当前的进度
 //
 // 可能返回的错误码:
 //  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"

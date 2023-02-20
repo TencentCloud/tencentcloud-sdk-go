@@ -1359,12 +1359,33 @@ func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRequestStatisticsRequestParams struct {
+	// 验证码AppId
+	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
 
+	// 开始时间字符串
+	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+
+	// 结束时间字符串
+	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+
+	// 查询粒度
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
 }
 
 type GetRequestStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 验证码AppId
+	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+
+	// 开始时间字符串
+	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+
+	// 结束时间字符串
+	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+
+	// 查询粒度
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
 }
 
 func (r *GetRequestStatisticsRequest) ToJsonString() string {
@@ -1379,7 +1400,10 @@ func (r *GetRequestStatisticsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "CaptchaAppId")
+	delete(f, "StartTimeStr")
+	delete(f, "EndTimeStr")
+	delete(f, "Dimension")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRequestStatisticsRequest has unknown keys!", "")
 	}
@@ -1388,6 +1412,16 @@ func (r *GetRequestStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRequestStatisticsResponseParams struct {
+	// 查询后数据块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CaptchaStatisticObj `json:"Data,omitempty" name:"Data"`
+
+	// 验证码返回码
+	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+
+	// 验证码返回信息
+	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1495,12 +1529,27 @@ func (r *GetTicketStatisticsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTotalRequestStatisticsRequestParams struct {
+	// 开始时间字符串
+	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
 
+	// 结束时间字符串
+	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+
+	// 查询粒度
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
 }
 
 type GetTotalRequestStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 开始时间字符串
+	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+
+	// 结束时间字符串
+	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+
+	// 查询粒度
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
 }
 
 func (r *GetTotalRequestStatisticsRequest) ToJsonString() string {
@@ -1515,7 +1564,9 @@ func (r *GetTotalRequestStatisticsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "StartTimeStr")
+	delete(f, "EndTimeStr")
+	delete(f, "Dimension")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTotalRequestStatisticsRequest has unknown keys!", "")
 	}
@@ -1524,6 +1575,16 @@ func (r *GetTotalRequestStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTotalRequestStatisticsResponseParams struct {
+	// 查询后数据块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CaptchaStatisticObj `json:"Data,omitempty" name:"Data"`
+
+	// 验证码返回码
+	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+
+	// 验证码返回信息
+	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

@@ -1,132 +1,33 @@
 # 本版本更新包含以下内容：
 
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 34 次发布
+
+发布时间：2023-02-20 01:06:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)
+
+	* 新增成员：MusicURLs
+
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)
+
+	* 新增成员：PrivateMapKey, Role
+
+
+
+
 ## 验证码(captcha) 版本：2019-07-22
-
-### 第 14 次发布
-
-发布时间：2023-02-17 01:29:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetRequestStatistics](https://cloud.tencent.com/document/api/1110/86633)
-* [GetTotalRequestStatistics](https://cloud.tencent.com/document/api/1110/86632)
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 114 次发布
-
-发布时间：2023-02-17 01:33:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* UpgradeCDBProxy
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 44 次发布
-
-发布时间：2023-02-17 02:45:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SwitchClusterVpc](https://cloud.tencent.com/document/api/1003/86634)
-
-
-
-## 低代码互动课堂(lcic) 版本：2022-08-17
-
-### 第 13 次发布
-
-发布时间：2023-02-17 04:12:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AddGroupMember](https://cloud.tencent.com/document/api/1639/86647)
-* [BatchAddGroupMember](https://cloud.tencent.com/document/api/1639/86646)
-* [BatchCreateGroupWithMembers](https://cloud.tencent.com/document/api/1639/86645)
-* [BatchDeleteGroupMember](https://cloud.tencent.com/document/api/1639/86644)
-* [CreateGroupWithMembers](https://cloud.tencent.com/document/api/1639/86643)
-* [CreateGroupWithSubGroup](https://cloud.tencent.com/document/api/1639/86642)
-* [DeleteGroup](https://cloud.tencent.com/document/api/1639/86641)
-* [DeleteGroupMember](https://cloud.tencent.com/document/api/1639/86640)
-* [DescribeGroup](https://cloud.tencent.com/document/api/1639/86639)
-* [DescribeGroupList](https://cloud.tencent.com/document/api/1639/86638)
-* [DescribeGroupMemberList](https://cloud.tencent.com/document/api/1639/86637)
-* [ModifyGroup](https://cloud.tencent.com/document/api/1639/86636)
-
-修改接口：
-
-* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
-
-	* 新增入参：GroupId
-
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
-
-	* 新增出参：GroupId
-
-* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
-
-	* 新增入参：GroupId
-
-
-新增数据结构：
-
-* [GroupBaseInfo](https://cloud.tencent.com/document/api/1639/81423#GroupBaseInfo)
-* [GroupInfo](https://cloud.tencent.com/document/api/1639/81423#GroupInfo)
-
-修改数据结构：
-
-* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
-
-	* 新增成员：GroupId
-
-
-
-
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
-
-### 第 42 次发布
-
-发布时间：2023-02-17 04:14:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
-
-	* 新增成员：DockerVersion
-
-
-
-
-## 集团账号管理(organization) 版本：2021-03-31
 
 ### 第 15 次发布
 
-发布时间：2023-02-17 04:46:25
+发布时间：2023-02-17 11:41:16
 
 本次发布包含了以下内容：
 
@@ -134,33 +35,46 @@
 
 修改接口：
 
-* [DescribeOrganizationAuthNode](https://cloud.tencent.com/document/api/850/82927)
+* [GetRequestStatistics](https://cloud.tencent.com/document/api/1110/86633)
 
-	* 新增入参：AuthName
+	* 新增入参：CaptchaAppId, StartTimeStr, EndTimeStr, Dimension
 
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+* [GetTotalRequestStatistics](https://cloud.tencent.com/document/api/1110/86632)
+
+	* 新增入参：StartTimeStr, EndTimeStr, Dimension
+
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 28 次发布
+
+发布时间：2023-02-20 01:16:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBlockIgnoreList](https://cloud.tencent.com/document/api/1132/86691)
 
 新增数据结构：
 
-* [MemberMainInfo](https://cloud.tencent.com/document/api/850/67060#MemberMainInfo)
-
-修改数据结构：
-
-* [AuthNode](https://cloud.tencent.com/document/api/850/67060#AuthNode)
-
-	* 新增成员：Manager
+* [BlockIgnoreRule](https://cloud.tencent.com/document/api/1132/49071#BlockIgnoreRule)
 
 
 
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
-## 集团账号管理(organization) 版本：2018-12-25
+### 第 50 次发布
 
-
-
-## 渠道合作伙伴(partners) 版本：2018-03-21
-
-### 第 26 次发布
-
-发布时间：2023-02-17 04:47:03
+发布时间：2023-02-20 01:41:08
 
 本次发布包含了以下内容：
 
@@ -168,36 +82,15 @@
 
 新增接口：
 
-* [AssignClientsToSales](https://cloud.tencent.com/document/api/#/#)
+* [ModifyDBEncryptAttributes](https://cloud.tencent.com/document/api/237/86692)
 
 
 
-## 安全运营中心(ssa) 版本：2018-06-08
+## 自动化助手(tat) 版本：2020-10-28
 
-### 第 14 次发布
+### 第 18 次发布
 
-发布时间：2023-02-17 05:08:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SaEventPub](https://cloud.tencent.com/document/api/664/86648)
-
-新增数据结构：
-
-* [ListDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ListDataSaEventPub)
-* [ObjDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ObjDataSaEventPub)
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 32 次发布
-
-发布时间：2023-02-17 06:04:54
+发布时间：2023-02-20 01:49:40
 
 本次发布包含了以下内容：
 
@@ -205,67 +98,13 @@
 
 修改数据结构：
 
-* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
+* [AutomationAgentInfo](https://cloud.tencent.com/document/api/1340/52687#AutomationAgentInfo)
 
-	* 新增成员：IsFake
+	* 新增成员：SupportFeatures
 
+* [CommandDocument](https://cloud.tencent.com/document/api/1340/52687#CommandDocument)
 
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 微服务平台 TSF(tsf) 版本：2018-03-26
-
-### 第 88 次发布
-
-发布时间：2023-02-17 06:34:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ApplicationForPage](https://cloud.tencent.com/document/api/649/36099#ApplicationForPage)
-
-	* 新增成员：IgnoreCreateImageRepository
-
-* [ContainGroup](https://cloud.tencent.com/document/api/649/36099#ContainGroup)
-
-	* 新增成员：UpdatedTime
-
-* [DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup)
-
-	* 新增成员：KafkaVIp, KafkaAddress, KafkaVPort, Topic, LineRule, CustomRule, EnableGlobalLineRule, EnableAuth, Username, Password, KafkaInfos
-
-* [UnitRule](https://cloud.tencent.com/document/api/649/36099#UnitRule)
-
-	* 新增成员：CreatedTime, UpdatedTime
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 142 次发布
-
-发布时间：2023-02-17 06:48:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [RebuildMedia](https://cloud.tencent.com/document/api/266/86649)
-
-修改接口：
-
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
-
-	* 新增出参：RebuildMediaTask
+	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
 
 
 
@@ -858,6 +697,25 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 34 次发布
+
+发布时间：2023-02-20 01:06:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)
+
+	* 新增成员：MusicURLs
+
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)
+
+	* 新增成员：PrivateMapKey, Role
+
 
 ### 第 33 次发布
 
@@ -10577,6 +10435,29 @@
 
 ## 验证码(captcha) 版本：2019-07-22
 
+### 第 15 次发布
+
+发布时间：2023-02-17 11:41:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetRequestStatistics](https://cloud.tencent.com/document/api/1110/86633)
+
+	* 新增入参：CaptchaAppId, StartTimeStr, EndTimeStr, Dimension
+
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+* [GetTotalRequestStatistics](https://cloud.tencent.com/document/api/1110/86632)
+
+	* 新增入参：StartTimeStr, EndTimeStr, Dimension
+
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+
 ### 第 14 次发布
 
 发布时间：2023-02-17 01:29:11
@@ -10587,8 +10468,8 @@
 
 新增接口：
 
-* [[GetRequestStatistics](https://cloud.tencent.com/document/api/1110/86633)](https://cloud.tencent.com/document/api/#/#)
-* [[GetTotalRequestStatistics](https://cloud.tencent.com/document/api/1110/86632)](https://cloud.tencent.com/document/api/#/#)
+* [GetRequestStatistics](https://cloud.tencent.com/document/api/1110/86633)
+* [GetTotalRequestStatistics](https://cloud.tencent.com/document/api/1110/86632)
 
 ### 第 13 次发布
 
@@ -18499,6 +18380,22 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 28 次发布
+
+发布时间：2023-02-20 01:16:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBlockIgnoreList](https://cloud.tencent.com/document/api/1132/86691)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BlockIgnoreRule](https://cloud.tencent.com/document/api/1132/49071#BlockIgnoreRule)](https://cloud.tencent.com/document/api/1132/49071#[BlockIgnoreRule](https://cloud.tencent.com/document/api/1132/49071#BlockIgnoreRule))
 
 ### 第 27 次发布
 
@@ -32804,7 +32701,7 @@
 
 新增接口：
 
-* [[SwitchClusterVpc](https://cloud.tencent.com/document/api/1003/86634)](https://cloud.tencent.com/document/api/#/#)
+* [SwitchClusterVpc](https://cloud.tencent.com/document/api/1003/86634)
 
 ### 第 43 次发布
 
@@ -56109,18 +56006,18 @@
 
 新增接口：
 
-* [[AddGroupMember](https://cloud.tencent.com/document/api/1639/86647)](https://cloud.tencent.com/document/api/#/#)
-* [[BatchAddGroupMember](https://cloud.tencent.com/document/api/1639/86646)](https://cloud.tencent.com/document/api/#/#)
-* [[BatchCreateGroupWithMembers](https://cloud.tencent.com/document/api/1639/86645)](https://cloud.tencent.com/document/api/#/#)
-* [[BatchDeleteGroupMember](https://cloud.tencent.com/document/api/1639/86644)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateGroupWithMembers](https://cloud.tencent.com/document/api/1639/86643)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateGroupWithSubGroup](https://cloud.tencent.com/document/api/1639/86642)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteGroup](https://cloud.tencent.com/document/api/1639/86641)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteGroupMember](https://cloud.tencent.com/document/api/1639/86640)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGroup](https://cloud.tencent.com/document/api/1639/86639)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGroupList](https://cloud.tencent.com/document/api/1639/86638)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGroupMemberList](https://cloud.tencent.com/document/api/1639/86637)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyGroup](https://cloud.tencent.com/document/api/1639/86636)](https://cloud.tencent.com/document/api/#/#)
+* [AddGroupMember](https://cloud.tencent.com/document/api/1639/86647)
+* [BatchAddGroupMember](https://cloud.tencent.com/document/api/1639/86646)
+* [BatchCreateGroupWithMembers](https://cloud.tencent.com/document/api/1639/86645)
+* [BatchDeleteGroupMember](https://cloud.tencent.com/document/api/1639/86644)
+* [CreateGroupWithMembers](https://cloud.tencent.com/document/api/1639/86643)
+* [CreateGroupWithSubGroup](https://cloud.tencent.com/document/api/1639/86642)
+* [DeleteGroup](https://cloud.tencent.com/document/api/1639/86641)
+* [DeleteGroupMember](https://cloud.tencent.com/document/api/1639/86640)
+* [DescribeGroup](https://cloud.tencent.com/document/api/1639/86639)
+* [DescribeGroupList](https://cloud.tencent.com/document/api/1639/86638)
+* [DescribeGroupMemberList](https://cloud.tencent.com/document/api/1639/86637)
+* [ModifyGroup](https://cloud.tencent.com/document/api/1639/86636)
 
 修改接口：
 
@@ -56139,8 +56036,8 @@
 
 新增数据结构：
 
-* [[GroupBaseInfo](https://cloud.tencent.com/document/api/1639/81423#GroupBaseInfo)](https://cloud.tencent.com/document/api/1639/81423#[GroupBaseInfo](https://cloud.tencent.com/document/api/1639/81423#GroupBaseInfo))
-* [[GroupInfo](https://cloud.tencent.com/document/api/1639/81423#GroupInfo)](https://cloud.tencent.com/document/api/1639/81423#[GroupInfo](https://cloud.tencent.com/document/api/1639/81423#GroupInfo))
+* [GroupBaseInfo](https://cloud.tencent.com/document/api/1639/81423#GroupBaseInfo)
+* [GroupInfo](https://cloud.tencent.com/document/api/1639/81423#GroupInfo)
 
 修改数据结构：
 
@@ -59252,6 +59149,18 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 50 次发布
+
+发布时间：2023-02-20 01:41:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyDBEncryptAttributes](https://cloud.tencent.com/document/api/237/86692)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 49 次发布
 
@@ -68067,7 +67976,7 @@
 
 新增数据结构：
 
-* [[MemberMainInfo](https://cloud.tencent.com/document/api/850/67060#MemberMainInfo)](https://cloud.tencent.com/document/api/850/67060#[MemberMainInfo](https://cloud.tencent.com/document/api/850/67060#MemberMainInfo))
+* [MemberMainInfo](https://cloud.tencent.com/document/api/850/67060#MemberMainInfo)
 
 修改数据结构：
 
@@ -68330,7 +68239,7 @@
 
 新增接口：
 
-* [[AssignClientsToSales](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [AssignClientsToSales](https://cloud.tencent.com/document/api/563/86667)
 
 ### 第 25 次发布
 
@@ -75049,12 +74958,12 @@
 
 新增接口：
 
-* [[SaEventPub](https://cloud.tencent.com/document/api/664/86648)](https://cloud.tencent.com/document/api/#/#)
+* [SaEventPub](https://cloud.tencent.com/document/api/664/86648)
 
 新增数据结构：
 
-* [[ListDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ListDataSaEventPub)](https://cloud.tencent.com/document/api/664/51406#[ListDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ListDataSaEventPub))
-* [[ObjDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ObjDataSaEventPub)](https://cloud.tencent.com/document/api/664/51406#[ObjDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ObjDataSaEventPub))
+* [ListDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ListDataSaEventPub)
+* [ObjDataSaEventPub](https://cloud.tencent.com/document/api/664/51406#ObjDataSaEventPub)
 
 ### 第 13 次发布
 
@@ -76780,6 +76689,25 @@
 
 
 ## 自动化助手(tat) 版本：2020-10-28
+
+### 第 18 次发布
+
+发布时间：2023-02-20 01:49:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutomationAgentInfo](https://cloud.tencent.com/document/api/1340/52687#AutomationAgentInfo)
+
+	* 新增成员：SupportFeatures
+
+* [CommandDocument](https://cloud.tencent.com/document/api/1340/52687#CommandDocument)
+
+	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
 
 ### 第 17 次发布
 
@@ -98329,7 +98257,7 @@
 
 新增接口：
 
-* [[RebuildMedia](https://cloud.tencent.com/document/api/266/86649)](https://cloud.tencent.com/document/api/#/#)
+* [RebuildMedia](https://cloud.tencent.com/document/api/266/86649)
 
 修改接口：
 

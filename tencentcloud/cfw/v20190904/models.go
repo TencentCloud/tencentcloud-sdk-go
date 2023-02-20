@@ -419,6 +419,68 @@ type AssociatedInstanceInfo struct {
 	SecurityGroupCount *uint64 `json:"SecurityGroupCount,omitempty" name:"SecurityGroupCount"`
 }
 
+type BlockIgnoreRule struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 规则ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ioc *string `json:"Ioc,omitempty" name:"Ioc"`
+
+	// 危险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 来源事件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// 方向：1入站，0出站
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Direction *int64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 地理位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 规则类型：1封禁，2放通
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *int64 `json:"Action,omitempty" name:"Action"`
+
+	// 规则生效开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 规则生效结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 忽略原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IgnoreReason *string `json:"IgnoreReason,omitempty" name:"IgnoreReason"`
+
+	// 安全事件来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqueId *string `json:"UniqueId,omitempty" name:"UniqueId"`
+
+	// 规则命中次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchTimes *int64 `json:"MatchTimes,omitempty" name:"MatchTimes"`
+
+	// 国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Country *string `json:"Country,omitempty" name:"Country"`
+}
+
 type CfwNatDnatRule struct {
 	// 网络协议，可选值：TCP、UDP。
 	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
@@ -1769,6 +1831,114 @@ func (r *DescribeBlockByIpTimesListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBlockByIpTimesListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlockIgnoreListRequestParams struct {
+	// 单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 方向：1互联网入站，0互联网出站，3内网，空 全部方向
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 规则类型：1封禁，2放通
+	RuleType *uint64 `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序类型：desc降序，asc正序
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
+	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
+}
+
+type DescribeBlockIgnoreListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 方向：1互联网入站，0互联网出站，3内网，空 全部方向
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 规则类型：1封禁，2放通
+	RuleType *uint64 `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序类型：desc降序，asc正序
+	By *string `json:"By,omitempty" name:"By"`
+
+	// 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
+	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
+}
+
+func (r *DescribeBlockIgnoreListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlockIgnoreListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Direction")
+	delete(f, "RuleType")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "SearchValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlockIgnoreListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBlockIgnoreListResponseParams struct {
+	// 列表数据
+	Data []*BlockIgnoreRule `json:"Data,omitempty" name:"Data"`
+
+	// 查询结果总数，用于分页
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 状态值，0：查询成功，非0：查询失败
+	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+	// 状态信息，success：查询成功，fail：查询失败
+	ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBlockIgnoreListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBlockIgnoreListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBlockIgnoreListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBlockIgnoreListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

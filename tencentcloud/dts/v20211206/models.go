@@ -1229,7 +1229,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewDbName *string `json:"NewDbName,omitempty" name:"NewDbName"`
 
-	// DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值。
+	// DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
 
@@ -1241,7 +1241,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewSchemaName *string `json:"NewSchemaName,omitempty" name:"NewSchemaName"`
 
-	// 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填
+	// 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableMode *string `json:"TableMode,omitempty" name:"TableMode"`
 
@@ -1249,7 +1249,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tables []*Table `json:"Tables,omitempty" name:"Tables"`
 
-	// 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象
+	// 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewMode *string `json:"ViewMode,omitempty" name:"ViewMode"`
 
@@ -1257,7 +1257,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Views []*View `json:"Views,omitempty" name:"Views"`
 
-	// 选择要同步的模式，Partial为部分，all为整选
+	// 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FunctionMode *string `json:"FunctionMode,omitempty" name:"FunctionMode"`
 
@@ -1265,7 +1265,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Functions []*string `json:"Functions,omitempty" name:"Functions"`
 
-	// 选择要同步的模式，Partial为部分，All为整选
+	// 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureMode *string `json:"ProcedureMode,omitempty" name:"ProcedureMode"`
 
@@ -1273,7 +1273,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Procedures []*string `json:"Procedures,omitempty" name:"Procedures"`
 
-	// 触发器迁移模式，all(为当前对象下的所有对象)，partial(部分对象)
+	// 触发器迁移模式，All(为当前对象下的所有对象)，partial(部分对象)，如果整库同步此处应该为All。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerMode *string `json:"TriggerMode,omitempty" name:"TriggerMode"`
 
@@ -1281,7 +1281,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Triggers []*string `json:"Triggers,omitempty" name:"Triggers"`
 
-	// 事件迁移模式，all(为当前对象下的所有对象)，partial(部分对象)
+	// 事件迁移模式，All(为当前对象下的所有对象)，partial(部分对象)，如果整库同步此处应该为All。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventMode *string `json:"EventMode,omitempty" name:"EventMode"`
 

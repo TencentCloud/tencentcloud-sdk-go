@@ -89,6 +89,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// ACL ID与ACL类型不匹配。
+	INVALIDPARAMETER_ACLTYPEMISMATCH = "InvalidParameter.AclTypeMismatch"
+
 	// 参数不支持同时指定。
 	INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 
@@ -256,6 +259,18 @@ const (
 
 	// 入参格式不合法。
 	INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+
+	// 指定审批单号和资源不匹配。
+	INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONIDMISMATCH = "InvalidParameterValue.MemberApprovalApplicationIdMismatch"
+
+	// 流程服务审批单未审批。
+	INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONNOTAPPROVED = "InvalidParameterValue.MemberApprovalApplicationNotApproved"
+
+	// 流程服务审批单被拒绝。
+	INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONREJECTED = "InvalidParameterValue.MemberApprovalApplicationRejected"
+
+	// 该请求需要走BPAAS流程服务审批，当前发起审批中。
+	INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONSTARTED = "InvalidParameterValue.MemberApprovalApplicationStarted"
 
 	// 缺少绑定的实例。
 	INVALIDPARAMETERVALUE_MISSINGASSOCIATEENTITY = "InvalidParameterValue.MissingAssociateEntity"
@@ -733,6 +748,9 @@ const (
 
 	// 指定的CDC已存在本地网关。
 	UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = "UnsupportedOperation.LocalGatewayAlreadyExists"
+
+	// 资源被锁定。
+	UNSUPPORTEDOPERATION_LOCKEDRESOURCES = "UnsupportedOperation.LockedResources"
 
 	// 账户不支持修改公网IP的该属性。
 	UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = "UnsupportedOperation.ModifyAddressAttribute"

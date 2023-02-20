@@ -1,3 +1,114 @@
+# Release v1.0.598
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 34 次发布
+
+发布时间：2023-02-20 01:06:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetPlaylistCommandInput)
+
+	* 新增成员：MusicURLs
+
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)
+
+	* 新增成员：PrivateMapKey, Role
+
+
+
+
+## 验证码(captcha) 版本：2019-07-22
+
+### 第 15 次发布
+
+发布时间：2023-02-17 11:41:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetRequestStatistics](https://cloud.tencent.com/document/api/1110/86633)
+
+	* 新增入参：CaptchaAppId, StartTimeStr, EndTimeStr, Dimension
+
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+* [GetTotalRequestStatistics](https://cloud.tencent.com/document/api/1110/86632)
+
+	* 新增入参：StartTimeStr, EndTimeStr, Dimension
+
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 28 次发布
+
+发布时间：2023-02-20 01:16:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBlockIgnoreList](https://cloud.tencent.com/document/api/1132/86691)
+
+新增数据结构：
+
+* [BlockIgnoreRule](https://cloud.tencent.com/document/api/1132/49071#BlockIgnoreRule)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 50 次发布
+
+发布时间：2023-02-20 01:41:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyDBEncryptAttributes](https://cloud.tencent.com/document/api/237/86692)
+
+
+
+## 自动化助手(tat) 版本：2020-10-28
+
+### 第 18 次发布
+
+发布时间：2023-02-20 01:49:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutomationAgentInfo](https://cloud.tencent.com/document/api/1340/52687#AutomationAgentInfo)
+
+	* 新增成员：SupportFeatures
+
+* [CommandDocument](https://cloud.tencent.com/document/api/1340/52687#CommandDocument)
+
+	* 新增成员：OutputCOSBucketUrl, OutputCOSKeyPrefix
+
+
+
+
 # Release v1.0.597
 
 ## 验证码(captcha) 版本：2019-07-22

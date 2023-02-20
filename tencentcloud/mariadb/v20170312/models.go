@@ -4582,6 +4582,67 @@ func (r *ModifyBackupTimeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBEncryptAttributesRequestParams struct {
+	// 实例Id，形如：tdsql-ow728lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否启用数据加密，开启后暂不支持关闭。本接口的可选值为：1-开启数据加密。
+	EncryptEnabled *int64 `json:"EncryptEnabled,omitempty" name:"EncryptEnabled"`
+}
+
+type ModifyDBEncryptAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id，形如：tdsql-ow728lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否启用数据加密，开启后暂不支持关闭。本接口的可选值为：1-开启数据加密。
+	EncryptEnabled *int64 `json:"EncryptEnabled,omitempty" name:"EncryptEnabled"`
+}
+
+func (r *ModifyDBEncryptAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBEncryptAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "EncryptEnabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBEncryptAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBEncryptAttributesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDBEncryptAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBEncryptAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBEncryptAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBEncryptAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceNameRequestParams struct {
 	// 待修改的实例 ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

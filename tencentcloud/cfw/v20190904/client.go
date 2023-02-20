@@ -1133,6 +1133,58 @@ func (c *Client) DescribeBlockByIpTimesListWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeBlockIgnoreListRequest() (request *DescribeBlockIgnoreListRequest) {
+    request = &DescribeBlockIgnoreListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeBlockIgnoreList")
+    
+    
+    return
+}
+
+func NewDescribeBlockIgnoreListResponse() (response *DescribeBlockIgnoreListResponse) {
+    response = &DescribeBlockIgnoreListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBlockIgnoreList
+// 查询入侵防御放通封禁列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBlockIgnoreList(request *DescribeBlockIgnoreListRequest) (response *DescribeBlockIgnoreListResponse, err error) {
+    return c.DescribeBlockIgnoreListWithContext(context.Background(), request)
+}
+
+// DescribeBlockIgnoreList
+// 查询入侵防御放通封禁列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBlockIgnoreListWithContext(ctx context.Context, request *DescribeBlockIgnoreListRequest) (response *DescribeBlockIgnoreListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBlockIgnoreListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBlockIgnoreList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBlockIgnoreListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBlockStaticListRequest() (request *DescribeBlockStaticListRequest) {
     request = &DescribeBlockStaticListRequest{
         BaseRequest: &tchttp.BaseRequest{},
