@@ -2385,6 +2385,9 @@ func NewModifyRoomResponse() (response *ModifyRoomResponse) {
 // 修改房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
 //  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2404,6 +2407,9 @@ func (c *Client) ModifyRoom(request *ModifyRoomRequest) (response *ModifyRoomRes
 // 修改房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
 //  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

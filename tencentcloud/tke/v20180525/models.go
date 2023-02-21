@@ -727,6 +727,10 @@ type CheckInstancesUpgradeAbleResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
+	// 不可升级原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnavailableVersionReason []*UnavailableReason `json:"UnavailableVersionReason,omitempty" name:"UnavailableVersionReason"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -13032,6 +13036,22 @@ type Instance struct {
 }
 
 type InstanceAdvancedSettings struct {
+	// 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DesiredPodNumber *int64 `json:"DesiredPodNumber,omitempty" name:"DesiredPodNumber"`
+
+	// GPU驱动相关参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPUArgs *GPUArgs `json:"GPUArgs,omitempty" name:"GPUArgs"`
+
+	// base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreStartUserScript *string `json:"PreStartUserScript,omitempty" name:"PreStartUserScript"`
+
+	// 节点污点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Taints []*Taint `json:"Taints,omitempty" name:"Taints"`
+
 	// 数据盘挂载点, 默认不挂载数据盘. 已格式化的 ext3，ext4，xfs 文件系统的数据盘将直接挂载，其他文件系统或未格式化的数据盘将自动格式化为ext4 (tlinux系统格式化成xfs)并挂载，请注意备份数据! 无数据盘或有多块数据盘的云主机此设置不生效。
 	// 注意，注意，多盘场景请使用下方的DataDisks数据结构，设置对应的云盘类型、云盘大小、挂载路径、是否格式化等信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13059,22 +13079,6 @@ type InstanceAdvancedSettings struct {
 	// 节点相关的自定义参数信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
-
-	// 该节点属于podCIDR大小自定义模式时，可指定节点上运行的pod数量上限
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DesiredPodNumber *int64 `json:"DesiredPodNumber,omitempty" name:"DesiredPodNumber"`
-
-	// GPU驱动相关参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GPUArgs *GPUArgs `json:"GPUArgs,omitempty" name:"GPUArgs"`
-
-	// base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PreStartUserScript *string `json:"PreStartUserScript,omitempty" name:"PreStartUserScript"`
-
-	// 节点污点
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Taints []*Taint `json:"Taints,omitempty" name:"Taints"`
 }
 
 type InstanceDataDiskMountSetting struct {
@@ -16437,6 +16441,16 @@ type Toleration struct {
 	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
 
+type UnavailableReason struct {
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+}
+
 // Predefined struct for user
 type UninstallClusterReleaseRequestParams struct {
 	// 集群ID
@@ -17256,6 +17270,12 @@ type UpgradeAbleInstancesItem struct {
 	// 当前版本的最新小版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestVersion *string `json:"LatestVersion,omitempty" name:"LatestVersion"`
+
+	// RuntimeVersion
+	RuntimeVersion *string `json:"RuntimeVersion,omitempty" name:"RuntimeVersion"`
+
+	// RuntimeLatestVersion
+	RuntimeLatestVersion *string `json:"RuntimeLatestVersion,omitempty" name:"RuntimeLatestVersion"`
 }
 
 // Predefined struct for user

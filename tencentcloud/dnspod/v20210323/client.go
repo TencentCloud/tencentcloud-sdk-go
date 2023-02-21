@@ -3007,6 +3007,7 @@ func NewDescribeSnapshotListResponse() (response *DescribeSnapshotListResponse) 
 // 查询快照列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
@@ -3022,6 +3023,7 @@ func (c *Client) DescribeSnapshotList(request *DescribeSnapshotListRequest) (res
 // 查询快照列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"

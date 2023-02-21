@@ -68,6 +68,7 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
+//  FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
@@ -91,6 +92,7 @@ func (c *Client) CreateApplication(request *CreateApplicationRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
+//  FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
@@ -887,6 +889,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACTIONREADTIMEOUT = "FailedOperation.ActionReadTimeout"
 //  FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
+//  FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 //  FAILEDOPERATION_DESCRIBESERVICELISTERROR = "FailedOperation.DescribeServiceListError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
@@ -917,6 +920,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //  INVALIDPARAMETERVALUE_VERSIONLOWERCASE = "InvalidParameterValue.VersionLowerCase"
 //  MISSINGPARAMETER_DEPLOYMODENULL = "MissingParameter.DeployModeNull"
 //  MISSINGPARAMETER_DEPLOYVERSIONNULL = "MissingParameter.DeployVersionNull"
+//  MISSINGPARAMETER_IMGREPONULL = "MissingParameter.ImgRepoNull"
 //  MISSINGPARAMETER_LOGSETORTOPICNULL = "MissingParameter.LogsetOrTopicNull"
 //  MISSINGPARAMETER_PKGNAMENULL = "MissingParameter.PkgNameNull"
 //  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
@@ -939,6 +943,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACTIONREADTIMEOUT = "FailedOperation.ActionReadTimeout"
 //  FAILEDOPERATION_CREATESERVICEERROR = "FailedOperation.CreateServiceError"
+//  FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 //  FAILEDOPERATION_DESCRIBESERVICELISTERROR = "FailedOperation.DescribeServiceListError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
@@ -969,6 +974,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //  INVALIDPARAMETERVALUE_VERSIONLOWERCASE = "InvalidParameterValue.VersionLowerCase"
 //  MISSINGPARAMETER_DEPLOYMODENULL = "MissingParameter.DeployModeNull"
 //  MISSINGPARAMETER_DEPLOYVERSIONNULL = "MissingParameter.DeployVersionNull"
+//  MISSINGPARAMETER_IMGREPONULL = "MissingParameter.ImgRepoNull"
 //  MISSINGPARAMETER_LOGSETORTOPICNULL = "MissingParameter.LogsetOrTopicNull"
 //  MISSINGPARAMETER_PKGNAMENULL = "MissingParameter.PkgNameNull"
 //  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"

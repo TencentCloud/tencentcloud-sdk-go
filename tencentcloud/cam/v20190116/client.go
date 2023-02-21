@@ -1974,7 +1974,7 @@ func NewDescribeSafeAuthFlagCollResponse() (response *DescribeSafeAuthFlagCollRe
 }
 
 // DescribeSafeAuthFlagColl
-// 查询安全设置
+// 获取子账号安全设置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1985,7 +1985,7 @@ func (c *Client) DescribeSafeAuthFlagColl(request *DescribeSafeAuthFlagCollReque
 }
 
 // DescribeSafeAuthFlagColl
-// 查询安全设置
+// 获取子账号安全设置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

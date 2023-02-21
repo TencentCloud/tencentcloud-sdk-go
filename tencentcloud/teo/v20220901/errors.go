@@ -344,6 +344,9 @@ const (
 	// DNS 记录与 DNSSEC 功能冲突。
 	INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 
+	// 主机记录与记录值不能取值相同。
+	INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = "InvalidParameterValue.ContentSameAsName"
+
 	// 入参中的域名与站点参数不匹配，请更正后重试。
 	INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = "InvalidParameterValue.DomainNotMatchZone"
 

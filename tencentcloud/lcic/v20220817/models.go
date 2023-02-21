@@ -912,7 +912,6 @@ type CreateRoomRequestParams struct {
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
-	// coteaching 双师
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
 	// 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
@@ -971,7 +970,6 @@ type CreateRoomRequest struct {
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
-	// coteaching 双师
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
 	// 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
@@ -2077,7 +2075,6 @@ type DescribeRoomResponseParams struct {
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
-	// coteaching 双师
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
 	// 上课后是否禁止自动录制。可以有以下取值：
@@ -3178,7 +3175,7 @@ type RoomInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
 
-	// 房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频 coteaching 双师
+	// 房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 

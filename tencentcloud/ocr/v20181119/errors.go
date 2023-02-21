@@ -26,6 +26,9 @@ const (
 	// 数据源查询失败。
 	FAILEDOPERATION_DATASOURCEQUERYFAILED = "FailedOperation.DataSourceQueryFailed"
 
+	// 数据库异常。
+	FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+
 	// 检测失败。
 	FAILEDOPERATION_DETECTFAILED = "FailedOperation.DetectFailed"
 
@@ -55,6 +58,9 @@ const (
 
 	// 图片中未检测到身份证。
 	FAILEDOPERATION_IMAGENOIDCARD = "FailedOperation.ImageNoIdCard"
+
+	// 非指定卡类别图片
+	FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 
 	// 图片中未检测到文本。
 	FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
@@ -98,6 +104,9 @@ const (
 	// 服务未开通。
 	FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 
+	// 剩余识别次数不足，请检查资源包状态。
+	FAILEDOPERATION_USERQUOTAERROR = "FailedOperation.UserQuotaError"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -109,6 +118,9 @@ const (
 
 	// 无效的GTIN。
 	INVALIDPARAMETER_INVALIDGTINERROR = "InvalidParameter.InvalidGTINError"
+
+	// 任务创建失败，文件URL非法。
+	INVALIDPARAMETERVALUE_FILEURLILLEGALERROR = "InvalidParameterValue.FileUrlIllegalError"
 
 	// 参数值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"

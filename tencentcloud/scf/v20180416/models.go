@@ -4305,6 +4305,10 @@ type TriggerCount struct {
 
 	// Vod触发器数量
 	Vod *int64 `json:"Vod,omitempty" name:"Vod"`
+
+	// Eb触发器数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Eb *int64 `json:"Eb,omitempty" name:"Eb"`
 }
 
 type TriggerInfo struct {

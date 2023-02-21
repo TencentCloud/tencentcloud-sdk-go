@@ -1245,8 +1245,6 @@ func NewSaEventPubResponse() (response *SaEventPubResponse) {
 // 安全事件通用字段
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) SaEventPub(request *SaEventPubRequest) (response *SaEventPubResponse, err error) {
     return c.SaEventPubWithContext(context.Background(), request)
@@ -1256,8 +1254,6 @@ func (c *Client) SaEventPub(request *SaEventPubRequest) (response *SaEventPubRes
 // 安全事件通用字段
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 func (c *Client) SaEventPubWithContext(ctx context.Context, request *SaEventPubRequest) (response *SaEventPubResponse, err error) {
     if request == nil {

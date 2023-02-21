@@ -189,6 +189,7 @@ func NewCheckDomainResponse() (response *CheckDomainResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
+//  FAILEDOPERATION_GETDOMAINPRICEFAILED = "FailedOperation.GetDomainPriceFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
@@ -202,6 +203,7 @@ func (c *Client) CheckDomain(request *CheckDomainRequest) (response *CheckDomain
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
+//  FAILEDOPERATION_GETDOMAINPRICEFAILED = "FailedOperation.GetDomainPriceFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINNAMEISINVALID = "InvalidParameter.DomainNameIsInvalid"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"

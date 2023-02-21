@@ -6494,6 +6494,66 @@ func (r *DescribeRocketMQTopicsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQVipInstanceDetailRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribeRocketMQVipInstanceDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeRocketMQVipInstanceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQVipInstanceDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQVipInstanceDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQVipInstanceDetailResponseParams struct {
+	// 集群信息
+	ClusterInfo *RocketMQClusterInfo `json:"ClusterInfo,omitempty" name:"ClusterInfo"`
+
+	// 集群配置
+	InstanceConfig *RocketMQInstanceConfig `json:"InstanceConfig,omitempty" name:"InstanceConfig"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQVipInstanceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQVipInstanceDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQVipInstanceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQVipInstanceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQVipInstancesRequestParams struct {
 	// 查询条件过滤器
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -6961,6 +7021,17 @@ type FilterSubscription struct {
 
 	// 按照订阅名过滤，精确查询。
 	SubscriptionNames []*string `json:"SubscriptionNames,omitempty" name:"SubscriptionNames"`
+}
+
+type InstanceNodeDistribution struct {
+	// 可用区
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 可用区id
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 节点数
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
 }
 
 type InternalTenant struct {
@@ -9189,6 +9260,41 @@ type RocketMQGroup struct {
 	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitempty" name:"RetryMaxTimes"`
 }
 
+type RocketMQInstanceConfig struct {
+	// 单命名空间TPS上线
+	MaxTpsPerNamespace *uint64 `json:"MaxTpsPerNamespace,omitempty" name:"MaxTpsPerNamespace"`
+
+	// 最大命名空间数量
+	MaxNamespaceNum *uint64 `json:"MaxNamespaceNum,omitempty" name:"MaxNamespaceNum"`
+
+	// 已使用命名空间数量
+	UsedNamespaceNum *uint64 `json:"UsedNamespaceNum,omitempty" name:"UsedNamespaceNum"`
+
+	// 最大Topic数量
+	MaxTopicNum *uint64 `json:"MaxTopicNum,omitempty" name:"MaxTopicNum"`
+
+	// 已使用Topic数量
+	UsedTopicNum *uint64 `json:"UsedTopicNum,omitempty" name:"UsedTopicNum"`
+
+	// 最大Group数量
+	MaxGroupNum *uint64 `json:"MaxGroupNum,omitempty" name:"MaxGroupNum"`
+
+	// 已使用Group数量
+	UsedGroupNum *uint64 `json:"UsedGroupNum,omitempty" name:"UsedGroupNum"`
+
+	// 集群类型
+	ConfigDisplay *string `json:"ConfigDisplay,omitempty" name:"ConfigDisplay"`
+
+	// 集群节点数
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 节点分布情况
+	NodeDistribution []*InstanceNodeDistribution `json:"NodeDistribution,omitempty" name:"NodeDistribution"`
+
+	// topic分布情况
+	TopicDistribution []*RocketMQTopicDistribution `json:"TopicDistribution,omitempty" name:"TopicDistribution"`
+}
+
 type RocketMQNamespace struct {
 	// 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
 	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
@@ -9234,6 +9340,14 @@ type RocketMQTopic struct {
 
 	// 创建时间，以毫秒为单位
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type RocketMQTopicDistribution struct {
+	// topic类型
+	TopicType *string `json:"TopicType,omitempty" name:"TopicType"`
+
+	// topic数量
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
 type RocketMQVipInstance struct {

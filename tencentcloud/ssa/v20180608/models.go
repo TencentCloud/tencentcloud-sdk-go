@@ -2669,16 +2669,16 @@ type Filter struct {
 }
 
 type ListDataSaEventPub struct {
-	// 受影响资产
+	// 时间
 	Time *string `json:"Time,omitempty" name:"Time"`
 
-	// 安全事件名称
+	// 安全事件1级分类
 	EventType1 *int64 `json:"EventType1,omitempty" name:"EventType1"`
 
-	// 安全事件1级分类
+	// 安全事件2级分类
 	EventType2 *int64 `json:"EventType2,omitempty" name:"EventType2"`
 
-	// 安全事件2级分类
+	// 安全事件名称
 	EventName *string `json:"EventName,omitempty" name:"EventName"`
 
 	// 风险等级

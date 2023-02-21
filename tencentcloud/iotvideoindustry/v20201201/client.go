@@ -3409,6 +3409,7 @@ func NewDescribeChannelStreamURLResponse() (response *DescribeChannelStreamURLRe
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCEUNAVAILABLE_STREAMINFOEXCEPTION = "ResourceUnavailable.StreamInfoException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeChannelStreamURL(request *DescribeChannelStreamURLRequest) (response *DescribeChannelStreamURLResponse, err error) {
     return c.DescribeChannelStreamURLWithContext(context.Background(), request)
 }
@@ -3423,6 +3424,7 @@ func (c *Client) DescribeChannelStreamURL(request *DescribeChannelStreamURLReque
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCEUNAVAILABLE_STREAMINFOEXCEPTION = "ResourceUnavailable.StreamInfoException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeChannelStreamURLWithContext(ctx context.Context, request *DescribeChannelStreamURLRequest) (response *DescribeChannelStreamURLResponse, err error) {
     if request == nil {
         request = NewDescribeChannelStreamURLRequest()

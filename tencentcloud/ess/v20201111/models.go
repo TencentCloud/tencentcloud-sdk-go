@@ -640,7 +640,7 @@ func (r *CreateConvertTaskApiResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDocumentRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 签署流程编号,由CreateFlow接口返回
@@ -672,7 +672,7 @@ type CreateDocumentRequestParams struct {
 type CreateDocumentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 签署流程编号,由CreateFlow接口返回
@@ -827,7 +827,7 @@ func (r *CreateFlowApproversResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowByFilesRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 签署流程名称,最大长度200个字符
@@ -899,7 +899,7 @@ type CreateFlowByFilesRequestParams struct {
 type CreateFlowByFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 签署流程名称,最大长度200个字符
@@ -1177,7 +1177,7 @@ func (r *CreateFlowRemindsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 签署流程名称,最大长度200个字符
@@ -1234,7 +1234,7 @@ type CreateFlowRequestParams struct {
 type CreateFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 签署流程名称,最大长度200个字符
@@ -3810,7 +3810,7 @@ type StaffRole struct {
 
 // Predefined struct for user
 type StartFlowRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 签署流程编号，由CreateFlow接口返回
@@ -3826,7 +3826,7 @@ type StartFlowRequestParams struct {
 type StartFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 签署流程编号，由CreateFlow接口返回

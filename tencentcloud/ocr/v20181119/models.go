@@ -1095,6 +1095,82 @@ type Coord struct {
 	Y *int64 `json:"Y,omitempty" name:"Y"`
 }
 
+// Predefined struct for user
+type CreateAIFormTaskRequestParams struct {
+	// 多个文件的URL列表
+	FileList []*SmartFormFileUrl `json:"FileList,omitempty" name:"FileList"`
+
+	// 备注信息1
+	FirstNotes *string `json:"FirstNotes,omitempty" name:"FirstNotes"`
+
+	// 备注信息2
+	SecondNotes *string `json:"SecondNotes,omitempty" name:"SecondNotes"`
+}
+
+type CreateAIFormTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 多个文件的URL列表
+	FileList []*SmartFormFileUrl `json:"FileList,omitempty" name:"FileList"`
+
+	// 备注信息1
+	FirstNotes *string `json:"FirstNotes,omitempty" name:"FirstNotes"`
+
+	// 备注信息2
+	SecondNotes *string `json:"SecondNotes,omitempty" name:"SecondNotes"`
+}
+
+func (r *CreateAIFormTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIFormTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileList")
+	delete(f, "FirstNotes")
+	delete(f, "SecondNotes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIFormTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAIFormTaskResponseParams struct {
+	// 本次识别任务的唯一身份ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 本次识别任务的操作URL，有效期自生成之时起共24小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateUrl *string `json:"OperateUrl,omitempty" name:"OperateUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAIFormTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAIFormTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateAIFormTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIFormTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Detail struct {
 	// 企业四要素核验结果状态码
 	Result *int64 `json:"Result,omitempty" name:"Result"`
@@ -2681,6 +2757,68 @@ func (r *GeneralHandwritingOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GeneralHandwritingOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTaskStateRequestParams struct {
+	// 智慧表单任务唯一身份ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type GetTaskStateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 智慧表单任务唯一身份ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *GetTaskStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTaskStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTaskStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTaskStateResponseParams struct {
+	// 1:任务识别完成，还未提交
+	// 2:任务已手动关闭
+	// 3:任务已提交
+	// 4:任务识别中
+	// 5:超时：任务超过了可操作的24H时限
+	// 6:任务识别失败
+	TaskState *uint64 `json:"TaskState,omitempty" name:"TaskState"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetTaskStateResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTaskStateResponseParams `json:"Response"`
+}
+
+func (r *GetTaskStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTaskStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5918,6 +6056,97 @@ func (r *RecognizePhilippinesVoteIDOCRResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RecognizeTableAccurateOCRRequestParams struct {
+	// 图片/PDF的 Base64 值。
+	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。
+	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+}
+
+type RecognizeTableAccurateOCRRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片/PDF的 Base64 值。
+	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。
+	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+}
+
+func (r *RecognizeTableAccurateOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeTableAccurateOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTableAccurateOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeTableAccurateOCRResponseParams struct {
+	// 检测到的文本信息，具体内容请点击左侧链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableDetections []*TableInfo `json:"TableDetections,omitempty" name:"TableDetections"`
+
+	// Base64 编码后的 Excel 数据。
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 图片为PDF时，返回PDF的总页数，默认为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
+
+	// 图片旋转角度（角度制），文本的水平方向为0°，统一以逆时针方向旋转，逆时针为负，角度范围为-360°至0°。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Angle *float64 `json:"Angle,omitempty" name:"Angle"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RecognizeTableAccurateOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeTableAccurateOCRResponseParams `json:"Response"`
+}
+
+func (r *RecognizeTableAccurateOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeTableAccurateOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RecognizeTableOCRRequestParams struct {
 	// 图片/PDF的 Base64 值。
 	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
@@ -6028,6 +6257,10 @@ type RecognizeThaiIDCardOCRRequestParams struct {
 	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
+	// 设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
+	CropPortrait *bool `json:"CropPortrait,omitempty" name:"CropPortrait"`
 }
 
 type RecognizeThaiIDCardOCRRequest struct {
@@ -6040,6 +6273,10 @@ type RecognizeThaiIDCardOCRRequest struct {
 	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
+	// 设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
+	CropPortrait *bool `json:"CropPortrait,omitempty" name:"CropPortrait"`
 }
 
 func (r *RecognizeThaiIDCardOCRRequest) ToJsonString() string {
@@ -6056,6 +6293,7 @@ func (r *RecognizeThaiIDCardOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "CropPortrait")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeThaiIDCardOCRRequest has unknown keys!", "")
 	}
@@ -6087,6 +6325,9 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 
 	// 英文姓名
 	EnLastName *string `json:"EnLastName,omitempty" name:"EnLastName"`
+
+	// 证件人像照片抠取
+	PortraitImage *string `json:"PortraitImage,omitempty" name:"PortraitImage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6756,6 +6997,10 @@ type SingleInvoiceInfo struct {
 	Row *int64 `json:"Row,omitempty" name:"Row"`
 }
 
+type SmartFormFileUrl struct {
+
+}
+
 // Predefined struct for user
 type SmartStructuralOCRRequestParams struct {
 	// 图片的 Url 地址。
@@ -6921,6 +7166,32 @@ type TableCell struct {
 	Contents []*CellContent `json:"Contents,omitempty" name:"Contents"`
 }
 
+type TableCellInfo struct {
+	// 单元格左上角的列索引
+	ColTl *int64 `json:"ColTl,omitempty" name:"ColTl"`
+
+	// 单元格左上角的行索引
+	RowTl *int64 `json:"RowTl,omitempty" name:"RowTl"`
+
+	// 单元格右下角的列索引
+	ColBr *int64 `json:"ColBr,omitempty" name:"ColBr"`
+
+	// 单元格右下角的行索引
+	RowBr *int64 `json:"RowBr,omitempty" name:"RowBr"`
+
+	// 单元格内识别出的字符串文本，若文本存在多行，以换行符"\n"隔开
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 单元格类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 单元格置信度
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 单元格在图像中的四点坐标
+	Polygon []*Coord `json:"Polygon,omitempty" name:"Polygon"`
+}
+
 type TableDetectInfo struct {
 	// 单元格内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6933,6 +7204,22 @@ type TableDetectInfo struct {
 	// 图像中的文本块类型，0 为非表格文本，
 	// 1 为有线表格，2 为无线表格
 	// （接口暂不支持日文无线表格识别，若传入日文无线表格，返回0）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 表格主体四个顶点坐标（依次为左上角，
+	// 右上角，右下角，左下角）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableCoordPoint []*Coord `json:"TableCoordPoint,omitempty" name:"TableCoordPoint"`
+}
+
+type TableInfo struct {
+	// 单元格内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cells []*TableCellInfo `json:"Cells,omitempty" name:"Cells"`
+
+	// 图像中的文本块类型，0 为非表格文本，
+	// 1 为有线表格，2 为无线表格
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 

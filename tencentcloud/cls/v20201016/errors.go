@@ -137,6 +137,9 @@ const (
 	// 创建日志导出任务数量超出限制。
 	LIMITEXCEEDED_EXPORT = "LimitExceeded.Export"
 
+	// 索引操作超过频率限制。
+	LIMITEXCEEDED_INDEXOPERATING = "LimitExceeded.IndexOperating"
+
 	// 并发查询超过限制，单topic并发最大值15。
 	LIMITEXCEEDED_LOGSEARCH = "LimitExceeded.LogSearch"
 

@@ -2613,6 +2613,11 @@ type DescribeAddableEntityListRequestParams struct {
 	// <li>web-rule：自定义规则日志；</li>
 	// <li>web-bot：Bot管理日志。</li>
 	EntityType *string `json:"EntityType,omitempty" name:"EntityType"`
+
+	// 服务区域，取值有：
+	// <li>mainland：中国大陆境内；</li>
+	// <li>overseas：全球（不含中国大陆）。</li>若为国内站账号，则默认取值为mainland；若为国际站账号，则默认取值为overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeAddableEntityListRequest struct {
@@ -2629,6 +2634,11 @@ type DescribeAddableEntityListRequest struct {
 	// <li>web-rule：自定义规则日志；</li>
 	// <li>web-bot：Bot管理日志。</li>
 	EntityType *string `json:"EntityType,omitempty" name:"EntityType"`
+
+	// 服务区域，取值有：
+	// <li>mainland：中国大陆境内；</li>
+	// <li>overseas：全球（不含中国大陆）。</li>若为国内站账号，则默认取值为mainland；若为国际站账号，则默认取值为overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeAddableEntityListRequest) ToJsonString() string {
@@ -2645,6 +2655,7 @@ func (r *DescribeAddableEntityListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "EntityType")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddableEntityListRequest has unknown keys!", "")
 	}

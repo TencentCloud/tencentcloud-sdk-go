@@ -661,6 +661,68 @@ func (c *Client) ClassifyDetectOCRWithContext(ctx context.Context, request *Clas
     return
 }
 
+func NewCreateAIFormTaskRequest() (request *CreateAIFormTaskRequest) {
+    request = &CreateAIFormTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "CreateAIFormTask")
+    
+    
+    return
+}
+
+func NewCreateAIFormTaskResponse() (response *CreateAIFormTaskResponse) {
+    response = &CreateAIFormTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAIFormTask
+// 本接口可创建智能表单录入任务，支持多个识别图片和PDF的URL上传，返回含有识别内容的操作页面URL。
+//
+// 
+//
+// 智能表单录入产品提供高准确率的表单识别技术和人工核对工具，支持自定义字段，将识别结果自动填入到自定义条目中，并提供人工操作工具，完成整个表单识别过程。适用性强，可对票据、合同、货单等文件的识别，适用于金融、货代、保险、档案等领域。本产品免费公测中，您可以点击demo（超连接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  FAILEDOPERATION_USERQUOTAERROR = "FailedOperation.UserQuotaError"
+//  INVALIDPARAMETERVALUE_FILEURLILLEGALERROR = "InvalidParameterValue.FileUrlIllegalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) CreateAIFormTask(request *CreateAIFormTaskRequest) (response *CreateAIFormTaskResponse, err error) {
+    return c.CreateAIFormTaskWithContext(context.Background(), request)
+}
+
+// CreateAIFormTask
+// 本接口可创建智能表单录入任务，支持多个识别图片和PDF的URL上传，返回含有识别内容的操作页面URL。
+//
+// 
+//
+// 智能表单录入产品提供高准确率的表单识别技术和人工核对工具，支持自定义字段，将识别结果自动填入到自定义条目中，并提供人工操作工具，完成整个表单识别过程。适用性强，可对票据、合同、货单等文件的识别，适用于金融、货代、保险、档案等领域。本产品免费公测中，您可以点击demo（超连接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  FAILEDOPERATION_USERQUOTAERROR = "FailedOperation.UserQuotaError"
+//  INVALIDPARAMETERVALUE_FILEURLILLEGALERROR = "InvalidParameterValue.FileUrlIllegalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) CreateAIFormTaskWithContext(ctx context.Context, request *CreateAIFormTaskRequest) (response *CreateAIFormTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateAIFormTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAIFormTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAIFormTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDriverLicenseOCRRequest() (request *DriverLicenseOCRRequest) {
     request = &DriverLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2471,6 +2533,56 @@ func (c *Client) GeneralHandwritingOCRWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewGeneralHandwritingOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTaskStateRequest() (request *GetTaskStateRequest) {
+    request = &GetTaskStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "GetTaskState")
+    
+    
+    return
+}
+
+func NewGetTaskStateResponse() (response *GetTaskStateResponse) {
+    response = &GetTaskStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTaskState
+// 支持查询智能表单录入任务的状态。本产品免费公测中，您可以点击demo（超连接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) GetTaskState(request *GetTaskStateRequest) (response *GetTaskStateResponse, err error) {
+    return c.GetTaskStateWithContext(context.Background(), request)
+}
+
+// GetTaskState
+// 支持查询智能表单录入任务的状态。本产品免费公测中，您可以点击demo（超连接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+func (c *Client) GetTaskStateWithContext(ctx context.Context, request *GetTaskStateRequest) (response *GetTaskStateResponse, err error) {
+    if request == nil {
+        request = NewGetTaskStateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTaskState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTaskStateResponse()
     err = c.Send(request, response)
     return
 }
@@ -4457,6 +4569,80 @@ func (c *Client) RecognizePhilippinesVoteIDOCRWithContext(ctx context.Context, r
     return
 }
 
+func NewRecognizeTableAccurateOCRRequest() (request *RecognizeTableAccurateOCRRequest) {
+    request = &RecognizeTableAccurateOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTableAccurateOCR")
+    
+    
+    return
+}
+
+func NewRecognizeTableAccurateOCRResponse() (response *RecognizeTableAccurateOCRResponse) {
+    response = &RecognizeTableAccurateOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizeTableAccurateOCR
+// 本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeTableAccurateOCR(request *RecognizeTableAccurateOCRRequest) (response *RecognizeTableAccurateOCRResponse, err error) {
+    return c.RecognizeTableAccurateOCRWithContext(context.Background(), request)
+}
+
+// RecognizeTableAccurateOCR
+// 本接口支持中英文图片/PDF内常规表格、无线表格、多表格的检测和识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。识别效果比表格识别V2更好，覆盖场景更加广泛，对表格难例场景，如无线表格、嵌套表格（有线表格中包含无线表格）的识别效果均优于表格识别V2。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeTableAccurateOCRWithContext(ctx context.Context, request *RecognizeTableAccurateOCRRequest) (response *RecognizeTableAccurateOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeTableAccurateOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeTableAccurateOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeTableAccurateOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeTableOCRRequest() (request *RecognizeTableOCRRequest) {
     request = &RecognizeTableOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4551,6 +4737,7 @@ func NewRecognizeThaiIDCardOCRResponse() (response *RecognizeThaiIDCardOCRRespon
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
@@ -4571,6 +4758,7 @@ func (c *Client) RecognizeThaiIDCardOCR(request *RecognizeThaiIDCardOCRRequest) 
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"

@@ -47,6 +47,9 @@ const (
 	// 当前账号下已有相同的手机/邮箱，无需重复添加。
 	FAILEDOPERATION_DUPLICATEPHONEEMAIL = "FailedOperation.DuplicatePhoneEmail"
 
+	// 获取域名价格失败。
+	FAILEDOPERATION_GETDOMAINPRICEFAILED = "FailedOperation.GetDomainPriceFailed"
+
 	// 域名过户失败。
 	FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
 

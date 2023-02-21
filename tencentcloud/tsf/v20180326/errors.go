@@ -83,6 +83,9 @@ const (
 	// 连接 kube-api-sever 失败。
 	FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
 
+	// 调用 kube-api-server 失败。
+	FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
+
 	// 健康检查配置失败。
 	FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = "FailedOperation.CvmCaeMasterHealthCheckConfigError"
 
@@ -971,6 +974,9 @@ const (
 	// 分组所属应用不能为空。
 	MISSINGPARAMETER_GROUPAPPLICATIONNULL = "MissingParameter.GroupApplicationNull"
 
+	// 分组扩容操作，机器列表为空。
+	MISSINGPARAMETER_GROUPEXPANDSERVERIDNULL = "MissingParameter.GroupExpandServeridNull"
+
 	// 分组ID不能为空。
 	MISSINGPARAMETER_GROUPIDNULL = "MissingParameter.GroupIdNull"
 
@@ -979,6 +985,9 @@ const (
 
 	// 分组所属命名空间不能为空。
 	MISSINGPARAMETER_GROUPNAMESPACENULL = "MissingParameter.GroupNamespaceNull"
+
+	// 分组缩容操作，机器列表为空。
+	MISSINGPARAMETER_GROUPSHIRKSERVERIDNULL = "MissingParameter.GroupShirkServeridNull"
 
 	// 虚拟机集群导入云主机导入方式为空。
 	MISSINGPARAMETER_INSTANCEIMPORTMODENULL = "MissingParameter.InstanceImportModeNull"

@@ -6338,6 +6338,100 @@ type ModifyParamItem struct {
 	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
 }
 
+// Predefined struct for user
+type ModifyVipVportRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例组id
+	InstanceGrpId *string `json:"InstanceGrpId,omitempty" name:"InstanceGrpId"`
+
+	// 需要修改的目的ip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 需要修改的目的端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 数据库类型，取值范围: 
+	// <li> MYSQL </li>
+	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 旧ip回收前的保留时间，单位小时，0表示立即回收
+	OldIpReserveHours *int64 `json:"OldIpReserveHours,omitempty" name:"OldIpReserveHours"`
+}
+
+type ModifyVipVportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例组id
+	InstanceGrpId *string `json:"InstanceGrpId,omitempty" name:"InstanceGrpId"`
+
+	// 需要修改的目的ip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 需要修改的目的端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 数据库类型，取值范围: 
+	// <li> MYSQL </li>
+	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 旧ip回收前的保留时间，单位小时，0表示立即回收
+	OldIpReserveHours *int64 `json:"OldIpReserveHours,omitempty" name:"OldIpReserveHours"`
+}
+
+func (r *ModifyVipVportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVipVportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "InstanceGrpId")
+	delete(f, "Vip")
+	delete(f, "Vport")
+	delete(f, "DbType")
+	delete(f, "OldIpReserveHours")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVipVportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVipVportResponseParams struct {
+	// 异步任务id
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyVipVportResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVipVportResponseParams `json:"Response"`
+}
+
+func (r *ModifyVipVportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVipVportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Module struct {
 	// 是否支持，可选值:yes,no
 	IsDisable *string `json:"IsDisable,omitempty" name:"IsDisable"`

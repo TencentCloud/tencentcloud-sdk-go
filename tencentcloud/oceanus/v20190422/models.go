@@ -2007,6 +2007,30 @@ func (r *DescribeTreeResourcesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTreeResourcesResponseParams struct {
+	// 父节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *string `json:"ParentId,omitempty" name:"ParentId"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 文件夹名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TreeResourceItem `json:"Items,omitempty" name:"Items"`
+
+	// 子目录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Children []*DescribeTreeResourcesRsp `json:"Children,omitempty" name:"Children"`
+
+	// 资源总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2025,6 +2049,29 @@ func (r *DescribeTreeResourcesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTreeResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeTreeResourcesRsp struct {
+	// 父节点ID
+	ParentId *string `json:"ParentId,omitempty" name:"ParentId"`
+
+	// 文件夹ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 文件夹名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件夹下资源数字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*TreeResourceItem `json:"Items,omitempty" name:"Items"`
+
+	// 子节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Children []*DescribeTreeResourcesRsp `json:"Children,omitempty" name:"Children"`
+
+	// 资源总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
 type Filter struct {
@@ -2716,6 +2763,30 @@ type Tag struct {
 	// 标签值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TreeResourceItem struct {
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源类型
+	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 目录ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
 }
 
 // Predefined struct for user
