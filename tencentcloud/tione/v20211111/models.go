@@ -210,6 +210,10 @@ type BatchTaskDetail struct {
 	// 计费金额信息，eg：2.00元/小时 (for后付费)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
+
+	// 运行中的Pod的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodList []*string `json:"PodList,omitempty" name:"PodList"`
 }
 
 type BatchTaskInstance struct {
@@ -305,6 +309,46 @@ type CFSConfig struct {
 
 	// 存储的路径
 	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
+type Container struct {
+	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+
+	// 镜像地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 容器状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *ContainerStatus `json:"Status,omitempty" name:"Status"`
+}
+
+type ContainerStatus struct {
+	// 重启次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestartCount *int64 `json:"RestartCount,omitempty" name:"RestartCount"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 是否就绪
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ready *bool `json:"Ready,omitempty" name:"Ready"`
+
+	// 状态原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 容器的错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
 type CosPathInfo struct {
@@ -1869,6 +1913,12 @@ type DatasetInfo struct {
 	// 数据集字典修改状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnnotationKeyStatus *string `json:"AnnotationKeyStatus,omitempty" name:"AnnotationKeyStatus"`
+}
+
+type DefaultNginxGatewayCallInfo struct {
+	// host
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host *string `json:"Host,omitempty" name:"Host"`
 }
 
 // Predefined struct for user
@@ -3725,6 +3775,10 @@ type DescribeModelServiceCallInfoResponseParams struct {
 	// 升级网关调用信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InferGatewayCallInfo *InferGatewayCallInfo `json:"InferGatewayCallInfo,omitempty" name:"InferGatewayCallInfo"`
+
+	// 默认nginx网关的调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultNginxGatewayCallInfo *DefaultNginxGatewayCallInfo `json:"DefaultNginxGatewayCallInfo,omitempty" name:"DefaultNginxGatewayCallInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5756,6 +5810,36 @@ type Option struct {
 	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
+type Pod struct {
+	// pod名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// pod的唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 服务付费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// pod的状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phase *string `json:"Phase,omitempty" name:"Phase"`
+
+	// pod的IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// pod的创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 容器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Containers *Container `json:"Containers,omitempty" name:"Containers"`
+}
+
 type PointInfo struct {
 	// X坐标值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6503,6 +6587,10 @@ type ServiceInfo struct {
 	// 是否开启模型的热更新。默认不开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitempty" name:"ModelHotUpdateEnable"`
+
+	// Pod列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pods *Pod `json:"Pods,omitempty" name:"Pods"`
 }
 
 type ServiceLimit struct {
@@ -7053,6 +7141,26 @@ type TrainingModelVersionDTO struct {
 	// 模型热更新目录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelHotUpdatePath *CosPathInfo `json:"ModelHotUpdatePath,omitempty" name:"ModelHotUpdatePath"`
+
+	// 推理环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReasoningEnvironmentId *string `json:"ReasoningEnvironmentId,omitempty" name:"ReasoningEnvironmentId"`
+
+	// 训练任务版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainingJobVersion *string `json:"TrainingJobVersion,omitempty" name:"TrainingJobVersion"`
+
+	// 训练偏好
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainingPreference *string `json:"TrainingPreference,omitempty" name:"TrainingPreference"`
+
+	// 自动学习任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoMLTaskId *string `json:"AutoMLTaskId,omitempty" name:"AutoMLTaskId"`
+
+	// 是否QAT模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsQAT *bool `json:"IsQAT,omitempty" name:"IsQAT"`
 }
 
 type TrainingTaskDetail struct {

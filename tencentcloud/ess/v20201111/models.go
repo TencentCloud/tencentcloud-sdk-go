@@ -3580,6 +3580,57 @@ type IntegrationMainOrganizationUser struct {
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 }
 
+// Predefined struct for user
+type ModifyApplicationCallbackInfoRequestParams struct {
+
+}
+
+type ModifyApplicationCallbackInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyApplicationCallbackInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApplicationCallbackInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationCallbackInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApplicationCallbackInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyApplicationCallbackInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApplicationCallbackInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyApplicationCallbackInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApplicationCallbackInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OccupiedSeal struct {
 	// 电子印章编号
 	SealId *string `json:"SealId,omitempty" name:"SealId"`

@@ -2552,109 +2552,109 @@ type InstanceChargePrepaid struct {
 }
 
 type InstanceDetail struct {
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例名称
+	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 付费类型，可能的返回值：1-包年包月；0-按量计费
 	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 项目ID
+	// 项目ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 集群类型，可能的返回值：0-副本集实例，1-分片实例，
+	// 集群类型，可能的返回值：0-副本集实例，1-分片实例。
 	ClusterType *uint64 `json:"ClusterType,omitempty" name:"ClusterType"`
 
-	// 地域信息
+	// 地域信息。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 可用区信息
+	// 可用区信息。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
 	// 网络类型，可能的返回值：0-基础网络，1-私有网络
 	NetType *uint64 `json:"NetType,omitempty" name:"NetType"`
 
-	// 私有网络的ID
+	// 私有网络的ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 私有网络的子网ID
+	// 私有网络的子网ID。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期
+	// 实例状态，可能的返回值：0-待初始化，1-流程处理中，2-运行中，-2-实例已过期。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 实例IP
+	// 实例IP。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
-	// 端口号
+	// 端口号。
 	Vport *uint64 `json:"Vport,omitempty" name:"Vport"`
 
-	// 实例创建时间
+	// 实例创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 实例到期时间
+	// 实例到期时间。
 	DeadLine *string `json:"DeadLine,omitempty" name:"DeadLine"`
 
-	// 实例版本信息
+	// 实例版本信息。
 	MongoVersion *string `json:"MongoVersion,omitempty" name:"MongoVersion"`
 
-	// 实例内存规格，单位为MB
+	// 实例内存规格，单位为MB。
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
 
-	// 实例磁盘规格，单位为MB
+	// 实例磁盘规格，单位为MB。
 	Volume *uint64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 实例CPU核心数
+	// 实例CPU核心数。
 	CpuNum *uint64 `json:"CpuNum,omitempty" name:"CpuNum"`
 
-	// 实例机器类型
+	// 实例机器类型。
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
 
-	// 实例从节点数
+	// 实例从节点数。
 	SecondaryNum *uint64 `json:"SecondaryNum,omitempty" name:"SecondaryNum"`
 
-	// 实例分片数
+	// 实例分片数。
 	ReplicationSetNum *uint64 `json:"ReplicationSetNum,omitempty" name:"ReplicationSetNum"`
 
-	// 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费
+	// 实例自动续费标志，可能的返回值：0-手动续费，1-自动续费，2-确认不续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 已用容量，单位MB
+	// 已用容量，单位MB。
 	UsedVolume *uint64 `json:"UsedVolume,omitempty" name:"UsedVolume"`
 
-	// 维护窗口起始时间
+	// 维护窗口起始时间。
 	MaintenanceStart *string `json:"MaintenanceStart,omitempty" name:"MaintenanceStart"`
 
-	// 维护窗口结束时间
+	// 维护窗口结束时间。
 	MaintenanceEnd *string `json:"MaintenanceEnd,omitempty" name:"MaintenanceEnd"`
 
-	// 分片信息
+	// 分片信息。
 	ReplicaSets []*ShardInfo `json:"ReplicaSets,omitempty" name:"ReplicaSets"`
 
-	// 只读实例信息
+	// 只读实例信息。
 	ReadonlyInstances []*DBInstanceInfo `json:"ReadonlyInstances,omitempty" name:"ReadonlyInstances"`
 
-	// 灾备实例信息
+	// 灾备实例信息。
 	StandbyInstances []*DBInstanceInfo `json:"StandbyInstances,omitempty" name:"StandbyInstances"`
 
-	// 临时实例信息
+	// 临时实例信息。
 	CloneInstances []*DBInstanceInfo `json:"CloneInstances,omitempty" name:"CloneInstances"`
 
-	// 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息
+	// 关联实例信息，对于正式实例，该字段表示它的临时实例信息；对于临时实例，则表示它的正式实例信息;如果为只读/灾备实例,则表示他的主实例信息。
 	RelatedInstance *DBInstanceInfo `json:"RelatedInstance,omitempty" name:"RelatedInstance"`
 
-	// 实例标签信息集合
+	// 实例标签信息集合。
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
-	// 实例版本标记
+	// 实例版本标记。
 	InstanceVer *uint64 `json:"InstanceVer,omitempty" name:"InstanceVer"`
 
-	// 实例版本标记
+	// 实例版本标记。
 	ClusterVer *uint64 `json:"ClusterVer,omitempty" name:"ClusterVer"`
 
-	// 协议信息，可能的返回值：1-mongodb，2-dynamodb
+	// 协议信息，可能的返回值：1-mongodb，2-dynamodb。
 	Protocol *uint64 `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 实例类型，可能的返回值，1-正式实例，2-临时实例，3-只读实例，4-灾备实例
@@ -2665,6 +2665,38 @@ type InstanceDetail struct {
 
 	// 实例对应的物理实例id，回档并替换过的实例有不同的InstanceId和RealInstanceId，从barad获取监控数据等场景下需要用物理id获取
 	RealInstanceId *string `json:"RealInstanceId,omitempty" name:"RealInstanceId"`
+
+	// mongos节点个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongosNodeNum *uint64 `json:"MongosNodeNum,omitempty" name:"MongosNodeNum"`
+
+	// mongos节点内存。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongosMemory *uint64 `json:"MongosMemory,omitempty" name:"MongosMemory"`
+
+	// mongos节点CPU核数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongosCpuNum *uint64 `json:"MongosCpuNum,omitempty" name:"MongosCpuNum"`
+
+	// Config Server节点个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigServerNodeNum *uint64 `json:"ConfigServerNodeNum,omitempty" name:"ConfigServerNodeNum"`
+
+	// Config Server节点内存。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigServerMemory *uint64 `json:"ConfigServerMemory,omitempty" name:"ConfigServerMemory"`
+
+	// Config Server节点磁盘大小。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigServerVolume *uint64 `json:"ConfigServerVolume,omitempty" name:"ConfigServerVolume"`
+
+	// Config Server节点CPU核数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigServerCpuNum *uint64 `json:"ConfigServerCpuNum,omitempty" name:"ConfigServerCpuNum"`
+
+	// readonly节点个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadonlyNodeNum *uint64 `json:"ReadonlyNodeNum,omitempty" name:"ReadonlyNodeNum"`
 }
 
 type InstanceEnumParam struct {

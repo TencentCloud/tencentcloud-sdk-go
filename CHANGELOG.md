@@ -1,3 +1,324 @@
+# Release v1.0.600
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 53 次发布
+
+发布时间：2023-02-22 01:02:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+
+	* 新增成员：GiftServiceBandWidth
+
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 47 次发布
+
+发布时间：2023-02-22 01:08:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AdvancedRetentionPolicy](https://cloud.tencent.com/document/api/362/15669#AdvancedRetentionPolicy)
+
+修改数据结构：
+
+* [AutoSnapshotPolicy](https://cloud.tencent.com/document/api/362/15669#AutoSnapshotPolicy)
+
+	* 新增成员：RetentionMonths, RetentionAmount, AdvancedRetentionPolicy
+
+* [Policy](https://cloud.tencent.com/document/api/362/15669#Policy)
+
+	* 新增成员：DayOfMonth, IntervalDays
+
+
+
+
+## 本地专用集群(cdc) 版本：2020-12-14
+
+### 第 5 次发布
+
+发布时间：2023-02-22 01:10:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HostInfo](https://cloud.tencent.com/document/api/1346/73770#HostInfo)
+
+	* 新增成员：HostId
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 29 次发布
+
+发布时间：2023-02-22 01:11:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyStorageSetting](https://cloud.tencent.com/document/api/1132/86751)
+
+修改数据结构：
+
+* [NatInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#NatInstanceInfo)
+
+	* 新增成员：RuleUsed, RuleMax
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 46 次发布
+
+发布时间：2023-02-22 01:19:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyBackupConfig](https://cloud.tencent.com/document/api/1003/48090)
+
+	* <font color="#dd0000">**修改入参**：</font>BackupTimeBeg, BackupTimeEnd
+
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 22 次发布
+
+发布时间：2023-02-22 01:23:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDomainBatch](https://cloud.tencent.com/document/api/242/48942)
+
+	* 新增入参：ChannelFrom, OrderFrom, ActivityId
+
+* [RenewDomainBatch](https://cloud.tencent.com/document/api/242/49210)
+
+	* 新增入参：PackageResourceId, ChannelFrom, OrderFrom, ActivityId
+
+* [TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
+
+	* 新增入参：ChannelFrom, OrderFrom, ActivityId
+
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 10 次发布
+
+发布时间：2023-02-22 01:24:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBEndpointInfo](https://cloud.tencent.com/document/api/571/82108#DBEndpointInfo)
+
+	* 新增成员：DatabaseNetEnv
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 45 次发布
+
+发布时间：2023-02-22 01:26:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyApplicationCallbackInfo](https://cloud.tencent.com/document/api/1323/86752)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 29 次发布
+
+发布时间：2023-02-22 01:37:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/240/38576#InstanceDetail)
+
+	* 新增成员：MongosNodeNum, MongosMemory, MongosCpuNum, ConfigServerNodeNum, ConfigServerMemory, ConfigServerVolume, ConfigServerCpuNum, ReadonlyNodeNum
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 51 次发布
+
+发布时间：2023-02-22 01:48:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeInstanceAll
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 11 次发布
+
+发布时间：2023-02-22 01:58:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddNodes](https://cloud.tencent.com/document/api/1527/72105)
+
+	* 新增入参：NodeType
+
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 19 次发布
+
+发布时间：2023-02-22 01:59:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeModelServiceCallInfo](https://cloud.tencent.com/document/api/851/82286)
+
+	* 新增出参：DefaultNginxGatewayCallInfo
+
+
+新增数据结构：
+
+* [Container](https://cloud.tencent.com/document/api/851/75051#Container)
+* [ContainerStatus](https://cloud.tencent.com/document/api/851/75051#ContainerStatus)
+* [DefaultNginxGatewayCallInfo](https://cloud.tencent.com/document/api/851/75051#DefaultNginxGatewayCallInfo)
+* [Pod](https://cloud.tencent.com/document/api/851/75051#Pod)
+
+修改数据结构：
+
+* [BatchTaskDetail](https://cloud.tencent.com/document/api/851/75051#BatchTaskDetail)
+
+	* 新增成员：PodList
+
+* [DataConfig](https://cloud.tencent.com/document/api/851/75051#DataConfig)
+
+	* <font color="#dd0000">**修改成员**：</font>MappingPath, DataSourceType, DataSetSource, COSSource, CFSSource, HDFSSource
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+
+	* 新增成员：Pods
+
+* [TrainingModelVersionDTO](https://cloud.tencent.com/document/api/851/75051#TrainingModelVersionDTO)
+
+	* 新增成员：ReasoningEnvironmentId, TrainingJobVersion, TrainingPreference, AutoMLTaskId, IsQAT
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 19 次发布
+
+发布时间：2023-02-22 02:17:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOfflineTaskToken](https://cloud.tencent.com/document/api/1267/82492)
+
+	* 新增出参：Data
+
+* [DescribeRealTimeTaskSpeed](https://cloud.tencent.com/document/api/1267/82489)
+
+	* 新增出参：Data
+
+* [DescribeTaskInstance](https://cloud.tencent.com/document/api/1267/82548)
+
+	* 新增出参：Data
+
+* [GenHiveTableDDLSql](https://cloud.tencent.com/document/api/1267/82483)
+
+	* 新增出参：Data
+
+
+新增数据结构：
+
+* [RealTimeTaskSpeed](https://cloud.tencent.com/document/api/1267/76336#RealTimeTaskSpeed)
+
+
+
 # Release v1.0.599
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07

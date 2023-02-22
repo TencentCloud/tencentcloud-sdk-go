@@ -130,11 +130,10 @@ type AddNodesRequestParams struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 队列名称。不指定则为默认队列。<br><li>SLURM默认队列为：compute。<br>
-	// <li>SGE默认队列为：all.q。<br>
+	// 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。<li>SGE默认队列为：all.q。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
-	// 添加节点类型。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
+	// 添加节点角色。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
 	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
 
 	// 是否只预检此次请求。
@@ -143,6 +142,9 @@ type AddNodesRequestParams struct {
 	// 如果检查通过，则返回RequestId.
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 }
 
 type AddNodesRequest struct {
@@ -195,11 +197,10 @@ type AddNodesRequest struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 队列名称。不指定则为默认队列。<br><li>SLURM默认队列为：compute。<br>
-	// <li>SGE默认队列为：all.q。<br>
+	// 队列名称。不指定则为默认队列。<li>SLURM默认队列为：compute。<li>SGE默认队列为：all.q。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
-	// 添加节点类型。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
+	// 添加节点角色。默认值：Compute<br><li>Compute：计算节点。<br><li>Login：登录节点。
 	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
 
 	// 是否只预检此次请求。
@@ -208,6 +209,9 @@ type AddNodesRequest struct {
 	// 如果检查通过，则返回RequestId.
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 }
 
 func (r *AddNodesRequest) ToJsonString() string {
@@ -240,6 +244,7 @@ func (r *AddNodesRequest) FromJsonString(s string) error {
 	delete(f, "QueueName")
 	delete(f, "NodeRole")
 	delete(f, "DryRun")
+	delete(f, "NodeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddNodesRequest has unknown keys!", "")
 	}

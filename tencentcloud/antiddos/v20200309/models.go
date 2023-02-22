@@ -445,6 +445,9 @@ type BGPInstance struct {
 
 	// 弹性业务带宽开关
 	ElasticServiceBandwidth *uint64 `json:"ElasticServiceBandwidth,omitempty" name:"ElasticServiceBandwidth"`
+
+	// 赠送的业务带宽
+	GiftServiceBandWidth *int64 `json:"GiftServiceBandWidth,omitempty" name:"GiftServiceBandWidth"`
 }
 
 type BGPInstanceSpecification struct {

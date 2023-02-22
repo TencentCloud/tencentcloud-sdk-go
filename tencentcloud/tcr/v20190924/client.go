@@ -3904,6 +3904,10 @@ func NewDescribeInstanceAllResponse() (response *DescribeInstanceAllResponse) {
 }
 
 // DescribeInstanceAll
+// 内部替换接口+DescribeInstanceAllForCoding
+//
+// 
+//
 // 查询全部实例信息
 //
 // 可能返回的错误码:
@@ -3921,6 +3925,10 @@ func (c *Client) DescribeInstanceAll(request *DescribeInstanceAllRequest) (respo
 }
 
 // DescribeInstanceAll
+// 内部替换接口+DescribeInstanceAllForCoding
+//
+// 
+//
 // 查询全部实例信息
 //
 // 可能返回的错误码:

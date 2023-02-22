@@ -383,6 +383,15 @@ type CreateDomainBatchRequestParams struct {
 
 	// 是否开启转移锁：0=默认不开启，1=开启
 	TransferProhibition *int64 `json:"TransferProhibition,omitempty" name:"TransferProhibition"`
+
+	// 渠道来源，pc/miniprogram/h5等
+	ChannelFrom *string `json:"ChannelFrom,omitempty" name:"ChannelFrom"`
+
+	// 订单来源，common正常/dianshi_active点石活动等
+	OrderFrom *string `json:"OrderFrom,omitempty" name:"OrderFrom"`
+
+	// 活动id
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 }
 
 type CreateDomainBatchRequest struct {
@@ -413,6 +422,15 @@ type CreateDomainBatchRequest struct {
 
 	// 是否开启转移锁：0=默认不开启，1=开启
 	TransferProhibition *int64 `json:"TransferProhibition,omitempty" name:"TransferProhibition"`
+
+	// 渠道来源，pc/miniprogram/h5等
+	ChannelFrom *string `json:"ChannelFrom,omitempty" name:"ChannelFrom"`
+
+	// 订单来源，common正常/dianshi_active点石活动等
+	OrderFrom *string `json:"OrderFrom,omitempty" name:"OrderFrom"`
+
+	// 活动id
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 }
 
 func (r *CreateDomainBatchRequest) ToJsonString() string {
@@ -435,6 +453,9 @@ func (r *CreateDomainBatchRequest) FromJsonString(s string) error {
 	delete(f, "PackageResourceId")
 	delete(f, "UpdateProhibition")
 	delete(f, "TransferProhibition")
+	delete(f, "ChannelFrom")
+	delete(f, "OrderFrom")
+	delete(f, "ActivityId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainBatchRequest has unknown keys!", "")
 	}
@@ -1799,7 +1820,7 @@ type RenewDomainBatchRequestParams struct {
 	// 批量续费的域名。
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
-	// 付费模式 0手动在线付费，1使用余额付费。
+	// 付费模式 0手动在线付费，1使用余额付费，2使用特惠包。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 自动续费开关。有三个可选值：
@@ -1807,6 +1828,18 @@ type RenewDomainBatchRequestParams struct {
 	// 1 表示开启，将自动续费
 	// 2 表示不处理，保留域名原有状态（默认值）
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 特惠包ID
+	PackageResourceId *string `json:"PackageResourceId,omitempty" name:"PackageResourceId"`
+
+	// 渠道来源，pc/miniprogram/h5等
+	ChannelFrom *string `json:"ChannelFrom,omitempty" name:"ChannelFrom"`
+
+	// 订单来源，common正常/dianshi_active点石活动等
+	OrderFrom *string `json:"OrderFrom,omitempty" name:"OrderFrom"`
+
+	// 活动id
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 }
 
 type RenewDomainBatchRequest struct {
@@ -1818,7 +1851,7 @@ type RenewDomainBatchRequest struct {
 	// 批量续费的域名。
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
-	// 付费模式 0手动在线付费，1使用余额付费。
+	// 付费模式 0手动在线付费，1使用余额付费，2使用特惠包。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
 	// 自动续费开关。有三个可选值：
@@ -1826,6 +1859,18 @@ type RenewDomainBatchRequest struct {
 	// 1 表示开启，将自动续费
 	// 2 表示不处理，保留域名原有状态（默认值）
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 特惠包ID
+	PackageResourceId *string `json:"PackageResourceId,omitempty" name:"PackageResourceId"`
+
+	// 渠道来源，pc/miniprogram/h5等
+	ChannelFrom *string `json:"ChannelFrom,omitempty" name:"ChannelFrom"`
+
+	// 订单来源，common正常/dianshi_active点石活动等
+	OrderFrom *string `json:"OrderFrom,omitempty" name:"OrderFrom"`
+
+	// 活动id
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 }
 
 func (r *RenewDomainBatchRequest) ToJsonString() string {
@@ -1844,6 +1889,10 @@ func (r *RenewDomainBatchRequest) FromJsonString(s string) error {
 	delete(f, "Domains")
 	delete(f, "PayMode")
 	delete(f, "AutoRenewFlag")
+	delete(f, "PackageResourceId")
+	delete(f, "ChannelFrom")
+	delete(f, "OrderFrom")
+	delete(f, "ActivityId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewDomainBatchRequest has unknown keys!", "")
 	}
@@ -2070,6 +2119,15 @@ type TransferInDomainBatchRequestParams struct {
 
 	// 是否开启转移锁：0=默认不开启，1=开启
 	TransferProhibition *int64 `json:"TransferProhibition,omitempty" name:"TransferProhibition"`
+
+	// 渠道来源，pc/miniprogram/h5等
+	ChannelFrom *string `json:"ChannelFrom,omitempty" name:"ChannelFrom"`
+
+	// 订单来源，common正常/dianshi_active点石活动等
+	OrderFrom *string `json:"OrderFrom,omitempty" name:"OrderFrom"`
+
+	// 活动id
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 }
 
 type TransferInDomainBatchRequest struct {
@@ -2102,6 +2160,15 @@ type TransferInDomainBatchRequest struct {
 
 	// 是否开启转移锁：0=默认不开启，1=开启
 	TransferProhibition *int64 `json:"TransferProhibition,omitempty" name:"TransferProhibition"`
+
+	// 渠道来源，pc/miniprogram/h5等
+	ChannelFrom *string `json:"ChannelFrom,omitempty" name:"ChannelFrom"`
+
+	// 订单来源，common正常/dianshi_active点石活动等
+	OrderFrom *string `json:"OrderFrom,omitempty" name:"OrderFrom"`
+
+	// 活动id
+	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 }
 
 func (r *TransferInDomainBatchRequest) ToJsonString() string {
@@ -2124,6 +2191,9 @@ func (r *TransferInDomainBatchRequest) FromJsonString(s string) error {
 	delete(f, "LockTransfer")
 	delete(f, "UpdateProhibition")
 	delete(f, "TransferProhibition")
+	delete(f, "ChannelFrom")
+	delete(f, "OrderFrom")
+	delete(f, "ActivityId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferInDomainBatchRequest has unknown keys!", "")
 	}

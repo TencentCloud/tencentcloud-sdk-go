@@ -261,6 +261,7 @@ func NewCreateDomainBatchResponse() (response *CreateDomainBatchResponse) {
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
     return c.CreateDomainBatchWithContext(context.Background(), request)
 }
@@ -285,6 +286,7 @@ func (c *Client) CreateDomainBatch(request *CreateDomainBatchRequest) (response 
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) CreateDomainBatchWithContext(ctx context.Context, request *CreateDomainBatchRequest) (response *CreateDomainBatchResponse, err error) {
     if request == nil {
         request = NewCreateDomainBatchRequest()
@@ -1245,6 +1247,7 @@ func NewRenewDomainBatchResponse() (response *RenewDomainBatchResponse) {
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) RenewDomainBatch(request *RenewDomainBatchRequest) (response *RenewDomainBatchResponse, err error) {
     return c.RenewDomainBatchWithContext(context.Background(), request)
 }
@@ -1263,6 +1266,7 @@ func (c *Client) RenewDomainBatch(request *RenewDomainBatchRequest) (response *R
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
 //  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) RenewDomainBatchWithContext(ctx context.Context, request *RenewDomainBatchRequest) (response *RenewDomainBatchResponse, err error) {
     if request == nil {
         request = NewRenewDomainBatchRequest()
@@ -1446,6 +1450,7 @@ func NewTransferInDomainBatchResponse() (response *TransferInDomainBatchResponse
 //  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 //  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) TransferInDomainBatch(request *TransferInDomainBatchRequest) (response *TransferInDomainBatchResponse, err error) {
     return c.TransferInDomainBatchWithContext(context.Background(), request)
 }
@@ -1467,6 +1472,7 @@ func (c *Client) TransferInDomainBatch(request *TransferInDomainBatchRequest) (r
 //  RESOURCENOTFOUND_APPROVEDTEMPLATENOTFOUND = "ResourceNotFound.ApprovedTemplateNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
 //  RESOURCEUNAVAILABLE_DOMAINISMODIFYINGDNS = "ResourceUnavailable.DomainIsModifyingDNS"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) TransferInDomainBatchWithContext(ctx context.Context, request *TransferInDomainBatchRequest) (response *TransferInDomainBatchResponse, err error) {
     if request == nil {
         request = NewTransferInDomainBatchRequest()

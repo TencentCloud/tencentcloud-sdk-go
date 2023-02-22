@@ -1054,6 +1054,10 @@ type DBEndpointInfo struct {
 	// 'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitempty" name:"ExtraAttr"`
+
+	// 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitempty" name:"DatabaseNetEnv"`
 }
 
 type DBInfo struct {
@@ -3274,7 +3278,7 @@ func (r *ModifyMigrationJobResponse) FromJsonString(s string) error {
 }
 
 type Objects struct {
-	// 迁移对象类型 Partial(部分对象)
+	// 迁移对象类型 Partial(部分对象)，默认为Partial
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 

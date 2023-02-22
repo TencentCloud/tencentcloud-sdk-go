@@ -2955,6 +2955,68 @@ func (c *Client) GetTaskResultApiWithContext(ctx context.Context, request *GetTa
     return
 }
 
+func NewModifyApplicationCallbackInfoRequest() (request *ModifyApplicationCallbackInfoRequest) {
+    request = &ModifyApplicationCallbackInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ModifyApplicationCallbackInfo")
+    
+    
+    return
+}
+
+func NewModifyApplicationCallbackInfoResponse() (response *ModifyApplicationCallbackInfoResponse) {
+    response = &ModifyApplicationCallbackInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApplicationCallbackInfo
+// 新增/删除应用callbackinfo
+//
+// callbackinfo包含： 回调地址和签名key
+//
+// 操作：新增/删除
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyApplicationCallbackInfo(request *ModifyApplicationCallbackInfoRequest) (response *ModifyApplicationCallbackInfoResponse, err error) {
+    return c.ModifyApplicationCallbackInfoWithContext(context.Background(), request)
+}
+
+// ModifyApplicationCallbackInfo
+// 新增/删除应用callbackinfo
+//
+// callbackinfo包含： 回调地址和签名key
+//
+// 操作：新增/删除
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyApplicationCallbackInfoWithContext(ctx context.Context, request *ModifyApplicationCallbackInfoRequest) (response *ModifyApplicationCallbackInfoResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationCallbackInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplicationCallbackInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApplicationCallbackInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartFlowRequest() (request *StartFlowRequest) {
     request = &StartFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

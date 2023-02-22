@@ -5085,6 +5085,57 @@ func (r *ModifySequenceRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyStorageSettingRequestParams struct {
+
+}
+
+type ModifyStorageSettingRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyStorageSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStorageSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStorageSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStorageSettingResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyStorageSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStorageSettingResponseParams `json:"Response"`
+}
+
+func (r *ModifyStorageSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStorageSettingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTableStatusRequestParams struct {
 	// EdgeId值两个vpc间的边id
 	EdgeId *string `json:"EdgeId,omitempty" name:"EdgeId"`
@@ -5260,6 +5311,14 @@ type NatInstanceInfo struct {
 	// 实例所在可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneZhBak *string `json:"ZoneZhBak,omitempty" name:"ZoneZhBak"`
+
+	// 已使用规则数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleUsed *uint64 `json:"RuleUsed,omitempty" name:"RuleUsed"`
+
+	// 实例的规则限制最大规格数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleMax *uint64 `json:"RuleMax,omitempty" name:"RuleMax"`
 }
 
 type NewModeItems struct {

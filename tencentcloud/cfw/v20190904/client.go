@@ -3839,6 +3839,88 @@ func (c *Client) ModifySequenceRulesWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyStorageSettingRequest() (request *ModifyStorageSettingRequest) {
+    request = &ModifyStorageSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyStorageSetting")
+    
+    
+    return
+}
+
+func NewModifyStorageSettingResponse() (response *ModifyStorageSettingResponse) {
+    response = &ModifyStorageSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyStorageSetting
+// 日志存储设置，可以修改存储时间和清空日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyStorageSetting(request *ModifyStorageSettingRequest) (response *ModifyStorageSettingResponse, err error) {
+    return c.ModifyStorageSettingWithContext(context.Background(), request)
+}
+
+// ModifyStorageSetting
+// 日志存储设置，可以修改存储时间和清空日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyStorageSettingWithContext(ctx context.Context, request *ModifyStorageSettingRequest) (response *ModifyStorageSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyStorageSettingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStorageSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStorageSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTableStatusRequest() (request *ModifyTableStatusRequest) {
     request = &ModifyTableStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

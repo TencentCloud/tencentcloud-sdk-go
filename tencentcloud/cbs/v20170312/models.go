@@ -20,6 +20,24 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AdvancedRetentionPolicy struct {
+	// 保留最新快照Days天内的每天最新的一个快照，取值范围：[0, 100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Days *uint64 `json:"Days,omitempty" name:"Days"`
+
+	// 保留最新快照Weeks周内的每周最新的一个快照，取值范围：[0, 100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weeks *uint64 `json:"Weeks,omitempty" name:"Weeks"`
+
+	// 保留最新快照Months月内的每月最新的一个快照， 取值范围：[0, 100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Months *uint64 `json:"Months,omitempty" name:"Months"`
+
+	// 保留最新快照Years年内的每年最新的一个快照，取值范围：[0, 100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Years *uint64 `json:"Years,omitempty" name:"Years"`
+}
+
 // Predefined struct for user
 type ApplyDiskBackupRequestParams struct {
 	// 云硬盘备份点ID，可通过 DescribeDiskBackups 查询。
@@ -295,6 +313,18 @@ type AutoSnapshotPolicy struct {
 	// 已绑定当前定期快照策略的实例ID列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+
+	// 该定期快照创建的快照可以保留的月数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionMonths *uint64 `json:"RetentionMonths,omitempty" name:"RetentionMonths"`
+
+	// 该定期快照创建的快照最大保留数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetentionAmount *uint64 `json:"RetentionAmount,omitempty" name:"RetentionAmount"`
+
+	// 定期快照高级保留策略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedRetentionPolicy *AdvancedRetentionPolicy `json:"AdvancedRetentionPolicy,omitempty" name:"AdvancedRetentionPolicy"`
 }
 
 // Predefined struct for user
@@ -3364,6 +3394,12 @@ type Policy struct {
 
 	// 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
 	DayOfWeek []*uint64 `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
+
+	// 指定每月从月初到月底需要触发定期快照的日期,取值范围：[1, 31]，1-31分别表示每月的具体日期，比如5表示每月的5号。注：若设置29、30、31等部分月份不存在的日期，则对应不存在日期的月份会跳过不打定期快照。
+	DayOfMonth []*uint64 `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
+
+	// 指定创建定期快照的间隔天数，取值范围：[1, 365]，例如设置为5，则间隔5天即触发定期快照创建。注：当选择按天备份时，理论上第一次备份的时间为备份策略创建当天。如果当天备份策略创建的时间已经晚于设置的备份时间，那么将会等到第二个备份周期再进行第一次备份。
+	IntervalDays *uint64 `json:"IntervalDays,omitempty" name:"IntervalDays"`
 }
 
 type PrepayPrice struct {

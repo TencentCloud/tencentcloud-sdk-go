@@ -5680,14 +5680,14 @@ type ModifyBackupConfigRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
+	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+	ReserveDuration *uint64 `json:"ReserveDuration,omitempty" name:"ReserveDuration"`
+
 	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitempty" name:"BackupTimeBeg"`
 
 	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitempty" name:"BackupTimeEnd"`
-
-	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
-	ReserveDuration *uint64 `json:"ReserveDuration,omitempty" name:"ReserveDuration"`
 
 	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
 	BackupFreq []*string `json:"BackupFreq,omitempty" name:"BackupFreq"`
@@ -5702,14 +5702,14 @@ type ModifyBackupConfigRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
+	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+	ReserveDuration *uint64 `json:"ReserveDuration,omitempty" name:"ReserveDuration"`
+
 	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitempty" name:"BackupTimeBeg"`
 
 	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitempty" name:"BackupTimeEnd"`
-
-	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
-	ReserveDuration *uint64 `json:"ReserveDuration,omitempty" name:"ReserveDuration"`
 
 	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
 	BackupFreq []*string `json:"BackupFreq,omitempty" name:"BackupFreq"`
@@ -5731,9 +5731,9 @@ func (r *ModifyBackupConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "ReserveDuration")
 	delete(f, "BackupTimeBeg")
 	delete(f, "BackupTimeEnd")
-	delete(f, "ReserveDuration")
 	delete(f, "BackupFreq")
 	delete(f, "BackupType")
 	if len(f) > 0 {

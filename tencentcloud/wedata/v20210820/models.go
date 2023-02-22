@@ -8199,6 +8199,10 @@ type DescribeOfflineTaskTokenResponseParams struct {
 	// 长连接临时token
 	Token *string `json:"Token,omitempty" name:"Token"`
 
+	// 长连接临时token。与Token相同含义，优先取Data，Data为空时，取Token。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitempty" name:"Data"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -8848,6 +8852,9 @@ type DescribeRealTimeTaskSpeedResponseParams struct {
 
 	// 同步速度字节/s列表
 	BytesSpeedList []*BytesSpeed `json:"BytesSpeedList,omitempty" name:"BytesSpeedList"`
+
+	// 同步速度，包括了RecordsSpeedList和BytesSpeedList
+	Data *RealTimeTaskSpeed `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -11587,6 +11594,10 @@ type DescribeTaskInstanceResponseParams struct {
 	// 任务实例详情
 	TaskInstanceDetail *TaskInstanceDetail `json:"TaskInstanceDetail,omitempty" name:"TaskInstanceDetail"`
 
+	// 任务实例详情。与TaskInstanceDetail相同含义，优先取Data，Data为空时，取TaskInstanceDetail
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TaskInstanceDetail `json:"Data,omitempty" name:"Data"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -13114,6 +13125,10 @@ func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
 type GenHiveTableDDLSqlResponseParams struct {
 	// 生成的ddl语句
 	DDLSql *string `json:"DDLSql,omitempty" name:"DDLSql"`
+
+	// 生成的ddl语句。与DDLSql相同含义，优先取Data，如果Data为空，则取DDLSql。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -16535,6 +16550,14 @@ type RealTimeTaskInstanceNodeInfo struct {
 	// 实时任务实例节点信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNodeInfoList []*InstanceNodeInfo `json:"InstanceNodeInfoList,omitempty" name:"InstanceNodeInfoList"`
+}
+
+type RealTimeTaskSpeed struct {
+	// 同步速度条/s列表
+	RecordsSpeedList []*RecordsSpeed `json:"RecordsSpeedList,omitempty" name:"RecordsSpeedList"`
+
+	// 同步速度字节/s列表
+	BytesSpeedList []*BytesSpeed `json:"BytesSpeedList,omitempty" name:"BytesSpeedList"`
 }
 
 type RecordField struct {
