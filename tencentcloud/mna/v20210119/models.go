@@ -542,6 +542,18 @@ type DeviceDetails struct {
 	// 设备网络信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceNetInfo []*DeviceNetInfo `json:"DeviceNetInfo,omitempty" name:"DeviceNetInfo"`
+
+	// 聚合服务器地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewaySite *string `json:"GatewaySite,omitempty" name:"GatewaySite"`
+
+	// 业务下行速率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessDownRate *float64 `json:"BusinessDownRate,omitempty" name:"BusinessDownRate"`
+
+	// 业务上行速率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessUpRate *float64 `json:"BusinessUpRate,omitempty" name:"BusinessUpRate"`
 }
 
 type DeviceInfo struct {
@@ -637,6 +649,14 @@ type DeviceNetInfo struct {
 	// 网卡名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetInfoName *string `json:"NetInfoName,omitempty" name:"NetInfoName"`
+
+	// 下行实时速率（浮点数类型代替上一版本DataRx的整型）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownRate *float64 `json:"DownRate,omitempty" name:"DownRate"`
+
+	// 上行实时速率（浮点数类型代替上一版本TxRate的整型）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpRate *float64 `json:"UpRate,omitempty" name:"UpRate"`
 }
 
 type ExpectedThreshold struct {
@@ -786,7 +806,7 @@ func (r *GetDevicesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFlowStatisticRequestParams struct {
-	// 设备ID，ID="-1"时默认查找所有设备
+	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
 	// 开始查找时间
@@ -805,7 +825,7 @@ type GetFlowStatisticRequestParams struct {
 type GetFlowStatisticRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备ID，ID="-1"时默认查找所有设备
+	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
 	// 开始查找时间
@@ -934,7 +954,7 @@ func (r *GetPublicKeyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetStatisticDataRequestParams struct {
-	// 设备ID，设备ID="-1"获取所有设备流量统计
+	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
 	// 统计开始时间，单位：s
@@ -952,7 +972,7 @@ type GetStatisticDataRequestParams struct {
 type GetStatisticDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备ID，设备ID="-1"获取所有设备流量统计
+	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
 	// 统计开始时间，单位：s
@@ -1015,11 +1035,11 @@ func (r *GetStatisticDataResponse) FromJsonString(s string) error {
 }
 
 type NetDetails struct {
-	// 时间点，单位：s
-	Time *string `json:"Time,omitempty" name:"Time"`
-
 	// 流量值（bit）
 	Current *float64 `json:"Current,omitempty" name:"Current"`
+
+	// 时间点，单位：s
+	Time *string `json:"Time,omitempty" name:"Time"`
 }
 
 type NetworkData struct {

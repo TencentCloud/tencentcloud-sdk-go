@@ -323,6 +323,14 @@ type BackupDownloadInfo struct {
 	InnerDownloadUrl *string `json:"InnerDownloadUrl,omitempty" name:"InnerDownloadUrl"`
 }
 
+type BackupLimitVpcItem struct {
+	// 自定义下载备份文件的VPC 所属地域。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 自定义下载备份文件的 VPC 列表。
+	VpcList []*string `json:"VpcList,omitempty" name:"VpcList"`
+}
+
 type BigKeyInfo struct {
 	// 所属的database
 	DB *int64 `json:"DB,omitempty" name:"DB"`
@@ -1513,8 +1521,30 @@ type DescribeBackupUrlRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份 ID，可通过DescribeInstanceBackups接口返回的参数 BackupSet 获取。
+	// 备份 ID，可通过 [DescribeInstanceBackups ](https://cloud.tencent.com/document/product/239/20011)接口返回的参数 RedisBackupSet 获取。
 	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
+
+	// 下载备份文件的网络限制类型，如果不配置该参数，则使用用户自定义的配置。
+	// 
+	// - NoLimit：不限制，腾讯云内外网均可以下载备份文件。
+	// -  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
+	// - Customize：指用户自定义的私有网络可下载备份文件。
+	LimitType *string `json:"LimitType,omitempty" name:"LimitType"`
+
+	// 该参数仅支持输入 In，表示自定义的**LimitVpc**可以下载备份文件。
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitempty" name:"VpcComparisonSymbol"`
+
+	// 标识自定义的 LimitIp 地址是否可下载备份文件。
+	// 
+	// - In: 自定义的 IP 地址可以下载。默认为 In。
+	// - NotIn: 自定义的 IP 不可以下载。
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitempty" name:"IpComparisonSymbol"`
+
+	// 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，需配置该参数。
+	LimitVpc []*BackupLimitVpcItem `json:"LimitVpc,omitempty" name:"LimitVpc"`
+
+	// 自定义的可下载备份文件的 VPC IP 地址。当参数**LimitType**为**Customize **时，需配置该参数。
+	LimitIp []*string `json:"LimitIp,omitempty" name:"LimitIp"`
 }
 
 type DescribeBackupUrlRequest struct {
@@ -1523,8 +1553,30 @@ type DescribeBackupUrlRequest struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份 ID，可通过DescribeInstanceBackups接口返回的参数 BackupSet 获取。
+	// 备份 ID，可通过 [DescribeInstanceBackups ](https://cloud.tencent.com/document/product/239/20011)接口返回的参数 RedisBackupSet 获取。
 	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
+
+	// 下载备份文件的网络限制类型，如果不配置该参数，则使用用户自定义的配置。
+	// 
+	// - NoLimit：不限制，腾讯云内外网均可以下载备份文件。
+	// -  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
+	// - Customize：指用户自定义的私有网络可下载备份文件。
+	LimitType *string `json:"LimitType,omitempty" name:"LimitType"`
+
+	// 该参数仅支持输入 In，表示自定义的**LimitVpc**可以下载备份文件。
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitempty" name:"VpcComparisonSymbol"`
+
+	// 标识自定义的 LimitIp 地址是否可下载备份文件。
+	// 
+	// - In: 自定义的 IP 地址可以下载。默认为 In。
+	// - NotIn: 自定义的 IP 不可以下载。
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitempty" name:"IpComparisonSymbol"`
+
+	// 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，需配置该参数。
+	LimitVpc []*BackupLimitVpcItem `json:"LimitVpc,omitempty" name:"LimitVpc"`
+
+	// 自定义的可下载备份文件的 VPC IP 地址。当参数**LimitType**为**Customize **时，需配置该参数。
+	LimitIp []*string `json:"LimitIp,omitempty" name:"LimitIp"`
 }
 
 func (r *DescribeBackupUrlRequest) ToJsonString() string {
@@ -1541,6 +1593,11 @@ func (r *DescribeBackupUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "BackupId")
+	delete(f, "LimitType")
+	delete(f, "VpcComparisonSymbol")
+	delete(f, "IpComparisonSymbol")
+	delete(f, "LimitVpc")
+	delete(f, "LimitIp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupUrlRequest has unknown keys!", "")
 	}
@@ -1875,14 +1932,14 @@ func (r *DescribeInstanceAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceBackupsRequestParams struct {
-	// 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 实例列表大小，默认大小20
+	// 每页输出的备份列表大小。默认大小为20，最大值为 100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
@@ -1890,21 +1947,30 @@ type DescribeInstanceBackupsRequestParams struct {
 	// 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 1：备份在流程中，2：备份正常，3：备份转RDB文件处理中，4：已完成RDB转换，-1：备份已过期，-2：备份已删除。
+	// 备份任务的状态：
+	// 1：备份在流程中。
+	// 2：备份正常。
+	// 3：备份转RDB文件处理中。
+	// 4：已完成RDB转换。
+	// -1：备份已过期。
+	// -2：备份已删除。
 	Status []*int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例名称，支持根据实例名称模糊搜索。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 type DescribeInstanceBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 实例列表大小，默认大小20
+	// 每页输出的备份列表大小。默认大小为20，最大值为 100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 待操作的实例ID，可通过 DescribeInstance 接口返回值中的 InstanceId 获取。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 开始时间，格式如：2017-02-08 16:46:34。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
@@ -1912,8 +1978,17 @@ type DescribeInstanceBackupsRequest struct {
 	// 结束时间，格式如：2017-02-08 19:09:26。查询实例在 [beginTime, endTime] 时间段内开始备份的备份列表。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 1：备份在流程中，2：备份正常，3：备份转RDB文件处理中，4：已完成RDB转换，-1：备份已过期，-2：备份已删除。
+	// 备份任务的状态：
+	// 1：备份在流程中。
+	// 2：备份正常。
+	// 3：备份转RDB文件处理中。
+	// 4：已完成RDB转换。
+	// -1：备份已过期。
+	// -2：备份已删除。
 	Status []*int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例名称，支持根据实例名称模糊搜索。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
 
 func (r *DescribeInstanceBackupsRequest) ToJsonString() string {
@@ -1928,12 +2003,13 @@ func (r *DescribeInstanceBackupsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "InstanceId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "InstanceId")
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	delete(f, "Status")
+	delete(f, "InstanceName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceBackupsRequest has unknown keys!", "")
 	}
@@ -1942,10 +2018,10 @@ func (r *DescribeInstanceBackupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceBackupsResponseParams struct {
-	// 备份总数
+	// 备份总数。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 实例的备份数组
+	// 实例的备份数组。
 	BackupSet []*RedisBackupSet `json:"BackupSet,omitempty" name:"BackupSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6343,45 +6419,67 @@ func (r *ModifyMaintenanceWindowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNetworkConfigRequestParams struct {
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 操作类型：changeVip——修改实例VIP；changeVpc——修改实例子网；changeBaseToVpc——基础网络转VPC网络
+	// 指预修改网络的类别，包括：
+	// - changeVip：指切换私有网络，包含其内网IPv4地址及端口。
+	// - changeVpc：指切换私有网络所属子网。
+	// - changeBaseToVpc：指基础网络切换为私有网络。
+	// - changeVPort：指仅修改实例网络端口。
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
-	// VIP地址，changeVip的时候填写，不填则默认分配
+	// 指实例私有网络内网 IPv4 地址。当**Operation**为**changeVip**时，需配置该参数。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
-	// 私有网络ID，changeVpc、changeBaseToVpc的时候需要提供
+	// 指修改后的私有网络 ID，当**Operation**为**changeVpc**或**changeBaseToVpc**时，需配置该参数。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网ID，changeVpc、changeBaseToVpc的时候需要提供
+	// 指修改后的私有网络所属子网 ID，当**Operation**为**changeVpc**或**changeBaseToVpc**时，需配置该参数。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 原VIP保留时间，单位：天，注：需要最新版SDK，否则原VIP立即释放，查看SDK版本，详见 [SDK中心](https://cloud.tencent.com/document/sdk)
+	// 原内网 IPv4 地址保留时长。
+	// - 单位：天。
+	// - 取值范围：0、1、2、3、7、15。
+	// 
+	// **说明**：设置原地址保留时长需最新版SDK，否则原地址将立即释放，查看SDK版本，请参见 [SDK中心](https://cloud.tencent.com/document/sdk)。
 	Recycle *int64 `json:"Recycle,omitempty" name:"Recycle"`
+
+	// 指修改后的网络端口。当**Operation**为**changeVPort**或**changeVip**时，需配置该参数。取值范围为[1024,65535]。
+	VPort *int64 `json:"VPort,omitempty" name:"VPort"`
 }
 
 type ModifyNetworkConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 操作类型：changeVip——修改实例VIP；changeVpc——修改实例子网；changeBaseToVpc——基础网络转VPC网络
+	// 指预修改网络的类别，包括：
+	// - changeVip：指切换私有网络，包含其内网IPv4地址及端口。
+	// - changeVpc：指切换私有网络所属子网。
+	// - changeBaseToVpc：指基础网络切换为私有网络。
+	// - changeVPort：指仅修改实例网络端口。
 	Operation *string `json:"Operation,omitempty" name:"Operation"`
 
-	// VIP地址，changeVip的时候填写，不填则默认分配
+	// 指实例私有网络内网 IPv4 地址。当**Operation**为**changeVip**时，需配置该参数。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
 
-	// 私有网络ID，changeVpc、changeBaseToVpc的时候需要提供
+	// 指修改后的私有网络 ID，当**Operation**为**changeVpc**或**changeBaseToVpc**时，需配置该参数。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网ID，changeVpc、changeBaseToVpc的时候需要提供
+	// 指修改后的私有网络所属子网 ID，当**Operation**为**changeVpc**或**changeBaseToVpc**时，需配置该参数。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 原VIP保留时间，单位：天，注：需要最新版SDK，否则原VIP立即释放，查看SDK版本，详见 [SDK中心](https://cloud.tencent.com/document/sdk)
+	// 原内网 IPv4 地址保留时长。
+	// - 单位：天。
+	// - 取值范围：0、1、2、3、7、15。
+	// 
+	// **说明**：设置原地址保留时长需最新版SDK，否则原地址将立即释放，查看SDK版本，请参见 [SDK中心](https://cloud.tencent.com/document/sdk)。
 	Recycle *int64 `json:"Recycle,omitempty" name:"Recycle"`
+
+	// 指修改后的网络端口。当**Operation**为**changeVPort**或**changeVip**时，需配置该参数。取值范围为[1024,65535]。
+	VPort *int64 `json:"VPort,omitempty" name:"VPort"`
 }
 
 func (r *ModifyNetworkConfigRequest) ToJsonString() string {
@@ -6402,6 +6500,7 @@ func (r *ModifyNetworkConfigRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "Recycle")
+	delete(f, "VPort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkConfigRequest has unknown keys!", "")
 	}
@@ -6410,17 +6509,20 @@ func (r *ModifyNetworkConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNetworkConfigResponseParams struct {
-	// 执行状态：true|false
+	// 执行状态，请忽略该参数。
 	Status *bool `json:"Status,omitempty" name:"Status"`
 
-	// 子网ID
+	// 指实例新私有网络所属子网 ID。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 私有网络ID
+	// 指实例新的私有网络ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// VIP地址
+	// 指实例新的内网 IPv4 地址。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 任务 ID。可获取**taskId**，通过接口 **DescribeTaskInfo **查询任务执行状态。
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6698,35 +6800,65 @@ type ProxyNodes struct {
 }
 
 type RedisBackupSet struct {
-	// 开始备份的时间
+	// 备份开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 备份ID
+	// 备份ID。
 	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
 
-	// 备份类型。1：用户发起的手动备份； 0：凌晨系统发起的备份
+	// 备份类型。
+	// 
+	// - 1：用户发起的手动备份。
+	// - 0：凌晨系统发起的备份。
 	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
 
-	// 备份状态。  1:"备份被其它流程锁定";  2:"备份正常，没有被任何流程锁定";  -1:"备份已过期"； 3:"备份正在被导出";  4:"备份导出成功"
+	// 备份状态。 
+	// 
+	// - 1：备份被其它流程锁定。
+	// - 2：备份正常，没有被任何流程锁定。
+	// - -1：备份已过期。
+	// - 3：备份正在被导出。
+	// - 4：备份导出成功。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 备份的备注信息
+	// 备份的备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 备份是否被锁定，0：未被锁定；1：已被锁定
+	// 备份是否被锁定。
+	// 
+	// - 0：未被锁定。
+	// - 1：已被锁定。
 	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
 
-	// 内部字段，用户可忽略
+	// 内部字段，用户可忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupSize *int64 `json:"BackupSize,omitempty" name:"BackupSize"`
 
-	// 内部字段，用户可忽略
+	// 内部字段，用户可忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullBackup *int64 `json:"FullBackup,omitempty" name:"FullBackup"`
 
-	// 内部字段，用户可忽略
+	// 内部字段，用户可忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 本地备份所在地域。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 备份结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 备份文件类型。
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 备份文件过期时间。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
 type RedisCommonInstanceList struct {

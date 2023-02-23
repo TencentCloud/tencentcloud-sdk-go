@@ -2022,7 +2022,7 @@ type DescribeNoPrimaryKeyTablesRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
@@ -2041,7 +2041,7 @@ type DescribeNoPrimaryKeyTablesRequest struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 

@@ -1492,7 +1492,7 @@ func NewDescribeInstanceBackupsResponse() (response *DescribeInstanceBackupsResp
 }
 
 // DescribeInstanceBackups
-// 查询 CRS 实例备份列表
+// 本接口（DescribeInstanceBackups）用于查询实例备份列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1508,7 +1508,7 @@ func (c *Client) DescribeInstanceBackups(request *DescribeInstanceBackupsRequest
 }
 
 // DescribeInstanceBackups
-// 查询 CRS 实例备份列表
+// 本接口（DescribeInstanceBackups）用于查询实例备份列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4362,7 +4362,7 @@ func NewModifyNetworkConfigResponse() (response *ModifyNetworkConfigResponse) {
 }
 
 // ModifyNetworkConfig
-// 修改实例网络配置
+// 本接口（ModifyNetworkConfig）用于修改实例网络配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4383,7 +4383,7 @@ func (c *Client) ModifyNetworkConfig(request *ModifyNetworkConfigRequest) (respo
 }
 
 // ModifyNetworkConfig
-// 修改实例网络配置
+// 本接口（ModifyNetworkConfig）用于修改实例网络配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

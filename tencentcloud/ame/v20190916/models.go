@@ -2116,8 +2116,11 @@ type KTVRobotInfo struct {
 	// <li>Shuffle：随机播放</li>
 	SetPlayModeInput *SetPlayModeCommandInput `json:"SetPlayModeInput,omitempty" name:"SetPlayModeInput"`
 
-	// 音量，范围 0~100，默认为 50。
+	// <del>音量，范围 0~100，默认为 50。</del>（已废弃，请采用 SetRealVolumeInput ）
 	SetVolumeInput *SetVolumeCommandInput `json:"SetVolumeInput,omitempty" name:"SetVolumeInput"`
+
+	// 真实音量，范围 0~100，默认为 50。
+	SetRealVolumeInput *SetRealVolumeCommandInput `json:"SetRealVolumeInput,omitempty" name:"SetRealVolumeInput"`
 }
 
 type KTVSingerBaseInfo struct {
@@ -2735,6 +2738,11 @@ type SetPlaylistCommandInput struct {
 	MusicURLs []*string `json:"MusicURLs,omitempty" name:"MusicURLs"`
 }
 
+type SetRealVolumeCommandInput struct {
+	// 真实音量大小，取值范围为 0~100，默认值为 50。
+	RealVolume *int64 `json:"RealVolume,omitempty" name:"RealVolume"`
+}
+
 type SetVolumeCommandInput struct {
 	// 音量大小，取值范围为 0~100，默认值为 50。
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
@@ -2785,7 +2793,8 @@ type SyncKTVRobotCommandRequestParams struct {
 	// <li>SetAudioParam：音频参数变更</li>
 	// <li>SendMessage：发送自定义消息</li>
 	// <li>SetDestroyMode：设置销毁模式</li>
-	// <li>SetVolume：设置音量</li>
+	// <li><del>SetVolume：设置音量</del>（已废弃，请采用 SetRealVolume）</li>
+	// <li>SetRealVolume：设置真实音量</li>
 	Command *string `json:"Command,omitempty" name:"Command"`
 
 	// 播放参数。
@@ -2809,8 +2818,12 @@ type SyncKTVRobotCommandRequestParams struct {
 	// 销毁模式，当Command取SetDestroyMode时，必填。
 	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitempty" name:"SetDestroyModeCommandInput"`
 
-	// 音量，当Command取SetVolume时，必填。
+	// <del>音量，当Command取SetVolume时，必填。</del>
+	// （已废弃，请采用 SetRealVolumeCommandInput ）
 	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitempty" name:"SetVolumeCommandInput"`
+
+	// 真实音量，当Command取SetRealVolume时，必填。
+	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitempty" name:"SetRealVolumeCommandInput"`
 }
 
 type SyncKTVRobotCommandRequest struct {
@@ -2830,7 +2843,8 @@ type SyncKTVRobotCommandRequest struct {
 	// <li>SetAudioParam：音频参数变更</li>
 	// <li>SendMessage：发送自定义消息</li>
 	// <li>SetDestroyMode：设置销毁模式</li>
-	// <li>SetVolume：设置音量</li>
+	// <li><del>SetVolume：设置音量</del>（已废弃，请采用 SetRealVolume）</li>
+	// <li>SetRealVolume：设置真实音量</li>
 	Command *string `json:"Command,omitempty" name:"Command"`
 
 	// 播放参数。
@@ -2854,8 +2868,12 @@ type SyncKTVRobotCommandRequest struct {
 	// 销毁模式，当Command取SetDestroyMode时，必填。
 	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitempty" name:"SetDestroyModeCommandInput"`
 
-	// 音量，当Command取SetVolume时，必填。
+	// <del>音量，当Command取SetVolume时，必填。</del>
+	// （已废弃，请采用 SetRealVolumeCommandInput ）
 	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitempty" name:"SetVolumeCommandInput"`
+
+	// 真实音量，当Command取SetRealVolume时，必填。
+	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitempty" name:"SetRealVolumeCommandInput"`
 }
 
 func (r *SyncKTVRobotCommandRequest) ToJsonString() string {
@@ -2880,6 +2898,7 @@ func (r *SyncKTVRobotCommandRequest) FromJsonString(s string) error {
 	delete(f, "SetPlayModeCommandInput")
 	delete(f, "SetDestroyModeCommandInput")
 	delete(f, "SetVolumeCommandInput")
+	delete(f, "SetRealVolumeCommandInput")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncKTVRobotCommandRequest has unknown keys!", "")
 	}
@@ -2920,7 +2939,8 @@ type SyncRobotCommand struct {
 	// <li>SetAudioParam：音频参数变更</li>
 	// <li>SendMessage：发送自定义消息</li>
 	// <li>SetDestroyMode：设置销毁模式</li>
-	// <li>SetVolume：设置音量</li>
+	// <li><del>SetVolume：设置音量</del>（已废弃，请采用 SetRealVolume）</li>
+	// <li>SetRealVolume：设置真实音量</li>
 	Command *string `json:"Command,omitempty" name:"Command"`
 
 	// 播放参数。
@@ -2944,8 +2964,12 @@ type SyncRobotCommand struct {
 	// 销毁模式，当Command取SetDestroyMode时，必填。
 	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitempty" name:"SetDestroyModeCommandInput"`
 
-	// 音量，当Command取SetVolume时，必填。
+	// <del>音量，当Command取SetVolume时，必填。</del>
+	// （已废弃，请采用 SetRealVolumeCommandInput）
 	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitempty" name:"SetVolumeCommandInput"`
+
+	// 真实音量，当Command取SetRealVolume时，必填。
+	SetRealVolumeCommandInput *SetRealVolumeCommandInput `json:"SetRealVolumeCommandInput,omitempty" name:"SetRealVolumeCommandInput"`
 }
 
 type TRTCJoinRoomInput struct {

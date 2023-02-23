@@ -7030,6 +7030,10 @@ type KafkaParam struct {
 	MsgMultiple *int64 `json:"MsgMultiple,omitempty" name:"MsgMultiple"`
 }
 
+type LowercaseParam struct {
+
+}
+
 type MapParam struct {
 	// key值
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -9107,6 +9111,10 @@ type ValueParam struct {
 	// Url解析
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UrlDecode *UrlDecodeParam `json:"UrlDecode,omitempty" name:"UrlDecode"`
+
+	// 小写字符解析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lowercase *LowercaseParam `json:"Lowercase,omitempty" name:"Lowercase"`
 }
 
 type VipEntity struct {

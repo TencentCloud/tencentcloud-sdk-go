@@ -1600,6 +1600,9 @@ type CreateMultiFlowSignQRCodeRequestParams struct {
 	// 限制二维码用户条件
 	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
 
+	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
 	// 回调地址,最大长度1000字符串
 	// 回调时机：
 	// 用户通过签署二维码发起签署流程时，企业额度不足导致失败
@@ -1637,6 +1640,9 @@ type CreateMultiFlowSignQRCodeRequest struct {
 	// 限制二维码用户条件
 	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
 
+	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
 	// 回调地址,最大长度1000字符串
 	// 回调时机：
 	// 用户通过签署二维码发起签署流程时，企业额度不足导致失败
@@ -1668,6 +1674,7 @@ func (r *CreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
 	delete(f, "FlowEffectiveDay")
 	delete(f, "QrEffectiveDay")
 	delete(f, "Restrictions")
+	delete(f, "UserData")
 	delete(f, "CallbackUrl")
 	delete(f, "Agent")
 	delete(f, "ApproverRestrictions")

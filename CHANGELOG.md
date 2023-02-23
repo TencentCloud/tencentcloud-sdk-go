@@ -1,3 +1,165 @@
+# Release v1.0.601
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 35 次发布
+
+发布时间：2023-02-23 01:01:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
+
+	* 新增入参：SetRealVolumeCommandInput
+
+
+新增数据结构：
+
+* [SetRealVolumeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetRealVolumeCommandInput)
+
+修改数据结构：
+
+* [KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo)
+
+	* 新增成员：SetRealVolumeInput
+
+* [SyncRobotCommand](https://cloud.tencent.com/document/api/1155/40113#SyncRobotCommand)
+
+	* 新增成员：SetRealVolumeCommandInput
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 69 次发布
+
+发布时间：2023-02-23 01:11:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [LowercaseParam](https://cloud.tencent.com/document/api/597/40861#LowercaseParam)
+
+修改数据结构：
+
+* [ValueParam](https://cloud.tencent.com/document/api/597/40861#ValueParam)
+
+	* 新增成员：Lowercase
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 46 次发布
+
+发布时间：2023-02-23 01:24:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
+
+	* 新增入参：UserData
+
+
+
+
+## 移动网络加速(mna) 版本：2021-01-19
+
+### 第 10 次发布
+
+发布时间：2023-02-23 01:43:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceDetails](https://cloud.tencent.com/document/api/1385/55846#DeviceDetails)
+
+	* 新增成员：GatewaySite, BusinessDownRate, BusinessUpRate
+
+* [DeviceNetInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceNetInfo)
+
+	* 新增成员：DownRate, UpRate
+
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 60 次发布
+
+发布时间：2023-02-23 01:48:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupUrl](https://cloud.tencent.com/document/api/239/34443)
+
+	* 新增入参：LimitType, VpcComparisonSymbol, IpComparisonSymbol, LimitVpc, LimitIp
+
+* [DescribeInstanceBackups](https://cloud.tencent.com/document/api/239/20011)
+
+	* 新增入参：InstanceName
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceId
+
+* [ModifyNetworkConfig](https://cloud.tencent.com/document/api/239/34436)
+
+	* 新增入参：VPort
+
+	* 新增出参：TaskId
+
+
+新增数据结构：
+
+* [BackupLimitVpcItem](https://cloud.tencent.com/document/api/239/20022#BackupLimitVpcItem)
+
+修改数据结构：
+
+* [RedisBackupSet](https://cloud.tencent.com/document/api/239/20022#RedisBackupSet)
+
+	* 新增成员：InstanceId, InstanceName, Region, EndTime, FileType, ExpireTime
+
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 20 次发布
+
+发布时间：2023-02-23 01:54:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancerStatus](https://cloud.tencent.com/document/api/1261/63843#LoadBalancerStatus)
+
+	* 新增成员：LoadBalancerHostname
+
+
+
+
 # Release v1.0.600
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

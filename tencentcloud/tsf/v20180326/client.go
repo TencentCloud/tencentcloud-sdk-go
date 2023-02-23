@@ -1020,7 +1020,7 @@ func NewCreateContainGroupResponse() (response *CreateContainGroupResponse) {
 }
 
 // CreateContainGroup
-// 创建容器部署组
+// （已废弃，请使用 CreateGroup 和 DeployContainerGroup 创建和部署容器部署组）创建容器部署组
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
@@ -1050,7 +1050,7 @@ func (c *Client) CreateContainGroup(request *CreateContainGroupRequest) (respons
 }
 
 // CreateContainGroup
-// 创建容器部署组
+// （已废弃，请使用 CreateGroup 和 DeployContainerGroup 创建和部署容器部署组）创建容器部署组
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
