@@ -149,6 +149,9 @@ const (
 	// 从节点数错误。
 	INVALIDPARAMETERVALUE_SECONDARYNUMERROR = "InvalidParameterValue.SecondaryNumError"
 
+	// 安全组ID无效。
+	INVALIDPARAMETERVALUE_SECURITYGROUPID = "InvalidParameterValue.SecurityGroupId"
+
 	// 设置的磁盘大小不得低于已用磁盘的1.2倍。
 	INVALIDPARAMETERVALUE_SETDISKLESSTHANUSED = "InvalidParameterValue.SetDiskLessThanUsed"
 

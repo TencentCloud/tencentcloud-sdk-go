@@ -7015,7 +7015,11 @@ type ZoneInfo struct {
 	// 该可用区对应的数字编号
 	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 可用状态，UNAVAILABLE表示不可用，AVAILABLE表示可用，SELLOUT表示售罄
+	// 可用状态包含，
+	// UNAVAILABLE：不可用。
+	// AVAILABLE：可用。
+	// SELLOUT：售罄。
+	// SUPPORTMODIFYONLY：支持变配。
 	ZoneState *string `json:"ZoneState,omitempty" name:"ZoneState"`
 
 	// 该可用区是否支持Ipv6

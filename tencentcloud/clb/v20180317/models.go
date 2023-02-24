@@ -4699,6 +4699,11 @@ type DescribeTargetsRequestParams struct {
 
 	// 监听器端口。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 查询负载均衡绑定的后端服务列表，过滤条件如下：
+	// <li> location-id - String - 是否必填：否 - （过滤条件）按照 规则ID 过滤，如："loc-12345678"。</li>
+	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 后端服务内网IP 过滤，如："172.16.1.1"。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeTargetsRequest struct {
@@ -4715,6 +4720,11 @@ type DescribeTargetsRequest struct {
 
 	// 监听器端口。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 查询负载均衡绑定的后端服务列表，过滤条件如下：
+	// <li> location-id - String - 是否必填：否 - （过滤条件）按照 规则ID 过滤，如："loc-12345678"。</li>
+	// <li> private-ip-address - String - 是否必填：否 - （过滤条件）按照 后端服务内网IP 过滤，如："172.16.1.1"。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTargetsRequest) ToJsonString() string {
@@ -4733,6 +4743,7 @@ func (r *DescribeTargetsRequest) FromJsonString(s string) error {
 	delete(f, "ListenerIds")
 	delete(f, "Protocol")
 	delete(f, "Port")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTargetsRequest has unknown keys!", "")
 	}
@@ -6331,7 +6342,7 @@ type ModifyLoadBalancerAttributesRequestParams struct {
 	// 负载均衡实例名称
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
 
-	// 负载均衡绑定的后端服务的地域信息
+	// 设置负载均衡跨地域绑定1.0的后端服务信息
 	TargetRegionInfo *TargetRegionInfo `json:"TargetRegionInfo,omitempty" name:"TargetRegionInfo"`
 
 	// 网络计费相关参数
@@ -6340,7 +6351,7 @@ type ModifyLoadBalancerAttributesRequestParams struct {
 	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
 
-	// 是否开启SnatPro
+	// 是否开启跨地域绑定2.0功能
 	SnatPro *bool `json:"SnatPro,omitempty" name:"SnatPro"`
 
 	// 是否开启删除保护
@@ -6356,7 +6367,7 @@ type ModifyLoadBalancerAttributesRequest struct {
 	// 负载均衡实例名称
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
 
-	// 负载均衡绑定的后端服务的地域信息
+	// 设置负载均衡跨地域绑定1.0的后端服务信息
 	TargetRegionInfo *TargetRegionInfo `json:"TargetRegionInfo,omitempty" name:"TargetRegionInfo"`
 
 	// 网络计费相关参数
@@ -6365,7 +6376,7 @@ type ModifyLoadBalancerAttributesRequest struct {
 	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitempty" name:"LoadBalancerPassToTarget"`
 
-	// 是否开启SnatPro
+	// 是否开启跨地域绑定2.0功能
 	SnatPro *bool `json:"SnatPro,omitempty" name:"SnatPro"`
 
 	// 是否开启删除保护

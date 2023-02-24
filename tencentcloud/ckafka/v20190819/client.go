@@ -2747,6 +2747,158 @@ func (c *Client) DescribeDatahubTasksWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeDatahubTopicRequest() (request *DescribeDatahubTopicRequest) {
+    request = &DescribeDatahubTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeDatahubTopic")
+    
+    
+    return
+}
+
+func NewDescribeDatahubTopicResponse() (response *DescribeDatahubTopicResponse) {
+    response = &DescribeDatahubTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDatahubTopic
+// 获取Datahub主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeDatahubTopic(request *DescribeDatahubTopicRequest) (response *DescribeDatahubTopicResponse, err error) {
+    return c.DescribeDatahubTopicWithContext(context.Background(), request)
+}
+
+// DescribeDatahubTopic
+// 获取Datahub主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeDatahubTopicWithContext(ctx context.Context, request *DescribeDatahubTopicRequest) (response *DescribeDatahubTopicResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatahubTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatahubTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatahubTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatahubTopicsRequest() (request *DescribeDatahubTopicsRequest) {
+    request = &DescribeDatahubTopicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeDatahubTopics")
+    
+    
+    return
+}
+
+func NewDescribeDatahubTopicsResponse() (response *DescribeDatahubTopicsResponse) {
+    response = &DescribeDatahubTopicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDatahubTopics
+// 查询DIP主题列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeDatahubTopics(request *DescribeDatahubTopicsRequest) (response *DescribeDatahubTopicsResponse, err error) {
+    return c.DescribeDatahubTopicsWithContext(context.Background(), request)
+}
+
+// DescribeDatahubTopics
+// 查询DIP主题列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeDatahubTopicsWithContext(ctx context.Context, request *DescribeDatahubTopicsRequest) (response *DescribeDatahubTopicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatahubTopicsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatahubTopics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatahubTopicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
     request = &DescribeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

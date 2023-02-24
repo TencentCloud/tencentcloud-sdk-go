@@ -972,6 +972,10 @@ type FakeURLData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
 
+	// 仿冒域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FakeDomain *string `json:"FakeDomain,omitempty" name:"FakeDomain"`
+
 	// 热度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Heat *int64 `json:"Heat,omitempty" name:"Heat"`

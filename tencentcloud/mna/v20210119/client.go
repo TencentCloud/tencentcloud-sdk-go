@@ -555,6 +555,58 @@ func (c *Client) GetFlowStatisticWithContext(ctx context.Context, request *GetFl
     return
 }
 
+func NewGetMultiFlowStatisticRequest() (request *GetMultiFlowStatisticRequest) {
+    request = &GetMultiFlowStatisticRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetMultiFlowStatistic")
+    
+    
+    return
+}
+
+func NewGetMultiFlowStatisticResponse() (response *GetMultiFlowStatisticResponse) {
+    response = &GetMultiFlowStatisticResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetMultiFlowStatistic
+// 批量获取设备流量统计曲线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetMultiFlowStatistic(request *GetMultiFlowStatisticRequest) (response *GetMultiFlowStatisticResponse, err error) {
+    return c.GetMultiFlowStatisticWithContext(context.Background(), request)
+}
+
+// GetMultiFlowStatistic
+// 批量获取设备流量统计曲线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetMultiFlowStatisticWithContext(ctx context.Context, request *GetMultiFlowStatisticRequest) (response *GetMultiFlowStatisticResponse, err error) {
+    if request == nil {
+        request = NewGetMultiFlowStatisticRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetMultiFlowStatistic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetMultiFlowStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetPublicKeyRequest() (request *GetPublicKeyRequest) {
     request = &GetPublicKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},

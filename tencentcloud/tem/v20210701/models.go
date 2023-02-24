@@ -3491,6 +3491,10 @@ type EksService struct {
 	// 所有服务IP是否已经ready
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllIpDone *bool `json:"AllIpDone,omitempty" name:"AllIpDone"`
+
+	// clb 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalDomain *string `json:"ExternalDomain,omitempty" name:"ExternalDomain"`
 }
 
 // Predefined struct for user
@@ -3782,6 +3786,10 @@ type IngressInfo struct {
 	// - NONE（不使用重定向）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RewriteType *string `json:"RewriteType,omitempty" name:"RewriteType"`
+
+	// clb 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 type IngressRule struct {
@@ -5301,6 +5309,10 @@ type ServicePortMapping struct {
 	// 端口映射数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PortMappingItemList []*ServicePortMappingItem `json:"PortMappingItemList,omitempty" name:"PortMappingItemList"`
+
+	// clb domain
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalDomain *string `json:"ExternalDomain,omitempty" name:"ExternalDomain"`
 }
 
 type ServicePortMappingItem struct {

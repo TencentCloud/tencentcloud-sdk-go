@@ -347,6 +347,7 @@ type Blueprint struct {
 	DisplayVersion *string `json:"DisplayVersion,omitempty" name:"DisplayVersion"`
 
 	// 镜像描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 操作系统名称。
@@ -422,7 +423,7 @@ type BlueprintPrice struct {
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
 	// 折扣。
-	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
 
 	// 镜像折扣后总价。单位元。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
@@ -3982,7 +3983,7 @@ type DiscountDetail struct {
 	RealTotalCost *float64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 折扣。
-	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
 
 	// 具体折扣详情。
 	PolicyDetail *PolicyDetail `json:"PolicyDetail,omitempty" name:"PolicyDetail"`
@@ -4046,6 +4047,7 @@ type Disk struct {
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
@@ -4849,7 +4851,7 @@ type InstancePrice struct {
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
 	// 折扣。
-	Discount *int64 `json:"Discount,omitempty" name:"Discount"`
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
 
 	// 折后价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
@@ -6197,6 +6199,7 @@ type Snapshot struct {
 	LatestOperationRequestId *string `json:"LatestOperationRequestId,omitempty" name:"LatestOperationRequestId"`
 
 	// 快照的创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 

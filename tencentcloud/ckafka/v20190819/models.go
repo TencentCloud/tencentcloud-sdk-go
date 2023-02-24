@@ -2590,6 +2590,29 @@ type DatahubTaskInfo struct {
 	StepList []*string `json:"StepList,omitempty" name:"StepList"`
 }
 
+type DatahubTopicDTO struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// Topic Id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 分区数
+	PartitionNum *uint64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
+
+	// 过期时间
+	RetentionMs *uint64 `json:"RetentionMs,omitempty" name:"RetentionMs"`
+
+	// 备注
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 状态，1使用中，2删除中
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
 type DateParam struct {
 	// 时间格式
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -4311,6 +4334,178 @@ func (r *DescribeDatahubTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDatahubTopicRequestParams struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type DescribeDatahubTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DescribeDatahubTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatahubTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatahubTopicResp struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// Topic Id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 分区数
+	PartitionNum *uint64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
+
+	// 过期时间
+	RetentionMs *uint64 `json:"RetentionMs,omitempty" name:"RetentionMs"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 状态，1使用中，2删除中
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 服务路由地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+}
+
+// Predefined struct for user
+type DescribeDatahubTopicResponseParams struct {
+	// 返回的结果对象
+	Result *DescribeDatahubTopicResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDatahubTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatahubTopicResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatahubTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatahubTopicsRequestParams struct {
+	// 查询值
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 本次查询的偏移位置，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 本次返回结果的最大个数，默认为50，最大值为50
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeDatahubTopicsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询值
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 本次查询的偏移位置，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 本次返回结果的最大个数，默认为50，最大值为50
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDatahubTopicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubTopicsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchWord")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatahubTopicsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatahubTopicsResp struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// Topic列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicList []*DatahubTopicDTO `json:"TopicList,omitempty" name:"TopicList"`
+}
+
+// Predefined struct for user
+type DescribeDatahubTopicsResponseParams struct {
+	// 主题列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DescribeDatahubTopicsResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDatahubTopicsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatahubTopicsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatahubTopicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubTopicsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeGroup struct {
 	// groupId
 	Group *string `json:"Group,omitempty" name:"Group"`
@@ -4639,6 +4834,9 @@ type DescribeInstancesDetailRequestParams struct {
 
 	// 按照实例ID过滤
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
+
+	// 根据标签列表过滤实例（取交集）
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
 }
 
 type DescribeInstancesDetailRequest struct {
@@ -4670,6 +4868,9 @@ type DescribeInstancesDetailRequest struct {
 
 	// 按照实例ID过滤
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
+
+	// 根据标签列表过滤实例（取交集）
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
 }
 
 func (r *DescribeInstancesDetailRequest) ToJsonString() string {
@@ -4693,6 +4894,7 @@ func (r *DescribeInstancesDetailRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "InstanceIds")
 	delete(f, "InstanceIdList")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesDetailRequest has unknown keys!", "")
 	}

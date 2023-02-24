@@ -187,6 +187,88 @@ func (c *Client) AddEnterpriseSecurityGroupRulesWithContext(ctx context.Context,
     return
 }
 
+func NewAddNatAcRuleRequest() (request *AddNatAcRuleRequest) {
+    request = &AddNatAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "AddNatAcRule")
+    
+    
+    return
+}
+
+func NewAddNatAcRuleResponse() (response *AddNatAcRuleResponse) {
+    response = &AddNatAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddNatAcRule
+// 添加nat访问控制规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddNatAcRule(request *AddNatAcRuleRequest) (response *AddNatAcRuleResponse, err error) {
+    return c.AddNatAcRuleWithContext(context.Background(), request)
+}
+
+// AddNatAcRule
+// 添加nat访问控制规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddNatAcRuleWithContext(ctx context.Context, request *AddNatAcRuleRequest) (response *AddNatAcRuleResponse, err error) {
+    if request == nil {
+        request = NewAddNatAcRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddNatAcRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddNatAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAcRulesRequest() (request *CreateAcRulesRequest) {
     request = &CreateAcRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1615,6 +1697,60 @@ func (c *Client) DescribeIPStatusListWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeIPStatusListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNatAcRuleRequest() (request *DescribeNatAcRuleRequest) {
+    request = &DescribeNatAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatAcRule")
+    
+    
+    return
+}
+
+func NewDescribeNatAcRuleResponse() (response *DescribeNatAcRuleResponse) {
+    response = &DescribeNatAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNatAcRule
+// 查询NAT访问控制列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeNatAcRule(request *DescribeNatAcRuleRequest) (response *DescribeNatAcRuleResponse, err error) {
+    return c.DescribeNatAcRuleWithContext(context.Background(), request)
+}
+
+// DescribeNatAcRule
+// 查询NAT访问控制列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeNatAcRuleWithContext(ctx context.Context, request *DescribeNatAcRuleRequest) (response *DescribeNatAcRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatAcRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatAcRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNatAcRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -3195,6 +3331,62 @@ func (c *Client) ModifyBlockTopWithContext(ctx context.Context, request *ModifyB
     return
 }
 
+func NewModifyNatAcRuleRequest() (request *ModifyNatAcRuleRequest) {
+    request = &ModifyNatAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyNatAcRule")
+    
+    
+    return
+}
+
+func NewModifyNatAcRuleResponse() (response *ModifyNatAcRuleResponse) {
+    response = &ModifyNatAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyNatAcRule
+// 修改NAT访问控制规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNatAcRule(request *ModifyNatAcRuleRequest) (response *ModifyNatAcRuleResponse, err error) {
+    return c.ModifyNatAcRuleWithContext(context.Background(), request)
+}
+
+// ModifyNatAcRule
+// 修改NAT访问控制规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNatAcRuleWithContext(ctx context.Context, request *ModifyNatAcRuleRequest) (response *ModifyNatAcRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyNatAcRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNatAcRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNatAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNatFwReSelectRequest() (request *ModifyNatFwReSelectRequest) {
     request = &ModifyNatFwReSelectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4135,6 +4327,88 @@ func (c *Client) RemoveEnterpriseSecurityGroupRuleWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewRemoveEnterpriseSecurityGroupRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveNatAcRuleRequest() (request *RemoveNatAcRuleRequest) {
+    request = &RemoveNatAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "RemoveNatAcRule")
+    
+    
+    return
+}
+
+func NewRemoveNatAcRuleResponse() (response *RemoveNatAcRuleResponse) {
+    response = &RemoveNatAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveNatAcRule
+// 删除NAT访问控制规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveNatAcRule(request *RemoveNatAcRuleRequest) (response *RemoveNatAcRuleResponse, err error) {
+    return c.RemoveNatAcRuleWithContext(context.Background(), request)
+}
+
+// RemoveNatAcRule
+// 删除NAT访问控制规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveNatAcRuleWithContext(ctx context.Context, request *RemoveNatAcRuleRequest) (response *RemoveNatAcRuleResponse, err error) {
+    if request == nil {
+        request = NewRemoveNatAcRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveNatAcRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveNatAcRuleResponse()
     err = c.Send(request, response)
     return
 }

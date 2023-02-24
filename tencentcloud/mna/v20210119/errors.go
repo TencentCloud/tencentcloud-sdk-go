@@ -35,6 +35,9 @@ const (
 	// 文件读写异常。
 	INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
 
+	// 监控数据请求错误。
+	INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
+
 	// 智研流量数据请求错误。
 	INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 

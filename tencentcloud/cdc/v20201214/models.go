@@ -1179,6 +1179,22 @@ type DescribeDedicatedClusterOverviewResponseParams struct {
 	// 宿主机数量
 	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
 
+	// vpn通道状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpnConnectionState *string `json:"VpnConnectionState,omitempty" name:"VpnConnectionState"`
+
+	// vpn网关监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpngwBandwidthData *VpngwBandwidthData `json:"VpngwBandwidthData,omitempty" name:"VpngwBandwidthData"`
+
+	// 本地网关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalNetInfo *LocalNetInfo `json:"LocalNetInfo,omitempty" name:"LocalNetInfo"`
+
+	// vpn网关通道监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpnConnectionBandwidthData []*VpngwBandwidthData `json:"VpnConnectionBandwidthData,omitempty" name:"VpnConnectionBandwidthData"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1661,6 +1677,34 @@ type HostStatistic struct {
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
+type InBandwidth struct {
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamps []*float64 `json:"Timestamps,omitempty" name:"Timestamps"`
+
+	// 时间对应的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*float64 `json:"Values,omitempty" name:"Values"`
+}
+
+type LocalNetInfo struct {
+	// 协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 网络id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 路由信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BGPRoute *string `json:"BGPRoute,omitempty" name:"BGPRoute"`
+
+	// 本地IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalIp *string `json:"LocalIp,omitempty" name:"LocalIp"`
+}
+
 // Predefined struct for user
 type ModifyDedicatedClusterInfoRequestParams struct {
 	// 本地专用集群ID
@@ -2089,6 +2133,16 @@ func (r *ModifySiteInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OutBandwidth struct {
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamps []*float64 `json:"Timestamps,omitempty" name:"Timestamps"`
+
+	// 对应时间的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*float64 `json:"Values,omitempty" name:"Values"`
+}
+
 type RegionZoneInfo struct {
 	// Region id
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
@@ -2192,6 +2246,15 @@ type SiteDetail struct {
 
 	// 站点所在地区的邮编
 	PostalCode *int64 `json:"PostalCode,omitempty" name:"PostalCode"`
+}
+
+type VpngwBandwidthData struct {
+	// 出带宽流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutBandwidth *OutBandwidth `json:"OutBandwidth,omitempty" name:"OutBandwidth"`
+
+	// 入带宽流量
+	InBandwidth *InBandwidth `json:"InBandwidth,omitempty" name:"InBandwidth"`
 }
 
 type ZoneInfo struct {

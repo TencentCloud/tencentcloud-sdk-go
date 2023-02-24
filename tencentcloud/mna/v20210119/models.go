@@ -670,6 +670,28 @@ type ExpectedThreshold struct {
 	Jitter *float64 `json:"Jitter,omitempty" name:"Jitter"`
 }
 
+type FlowDetails struct {
+	// 流量数据点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetDetails []*NetDetails `json:"NetDetails,omitempty" name:"NetDetails"`
+
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 流量最大值（单位：bytes）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxValue *float64 `json:"MaxValue,omitempty" name:"MaxValue"`
+
+	// 流量平均值（单位：bytes）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgValue *float64 `json:"AvgValue,omitempty" name:"AvgValue"`
+
+	// 流量总值（单位：bytes）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalValue *float64 `json:"TotalValue,omitempty" name:"TotalValue"`
+}
+
 // Predefined struct for user
 type GetDeviceRequestParams struct {
 	// 搜索指定设备的id
@@ -895,6 +917,91 @@ func (r *GetFlowStatisticResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetFlowStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMultiFlowStatisticRequestParams struct {
+	// 设备id列表，单次最多请求10个设备
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+
+	// 1659514436
+	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 1659515000
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计流量类型（1：上行流量，2：下行流量）
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 统计时间粒度（1：按小时统计，2：按天统计）
+	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+}
+
+type GetMultiFlowStatisticRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备id列表，单次最多请求10个设备
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+
+	// 1659514436
+	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 1659515000
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计流量类型（1：上行流量，2：下行流量）
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 统计时间粒度（1：按小时统计，2：按天统计）
+	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+}
+
+func (r *GetMultiFlowStatisticRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMultiFlowStatisticRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIds")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "TimeGranularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMultiFlowStatisticRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetMultiFlowStatisticResponseParams struct {
+	// 批量设备流量信息
+	FlowDetails []*FlowDetails `json:"FlowDetails,omitempty" name:"FlowDetails"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetMultiFlowStatisticResponse struct {
+	*tchttp.BaseResponse
+	Response *GetMultiFlowStatisticResponseParams `json:"Response"`
+}
+
+func (r *GetMultiFlowStatisticResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetMultiFlowStatisticResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

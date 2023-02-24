@@ -1,10 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 正版曲库直通车(ame) 版本：2019-09-16
+## 品牌经营管家(bma) 版本：2022-11-15
 
-### 第 35 次发布
+### 第 4 次发布
 
-发布时间：2023-02-23 01:01:50
+发布时间：2023-02-23 14:35:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
+
+	* 新增成员：FakeDomain
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+
+
+## 本地专用集群(cdc) 版本：2020-12-14
+
+### 第 6 次发布
+
+发布时间：2023-02-24 01:07:16
 
 本次发布包含了以下内容：
 
@@ -12,56 +35,80 @@
 
 修改接口：
 
-* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1155/68348)
+* [DescribeDedicatedClusterOverview](https://cloud.tencent.com/document/api/1346/73760)
 
-	* 新增入参：SetRealVolumeCommandInput
+	* 新增出参：VpnConnectionState, VpngwBandwidthData, LocalNetInfo, VpnConnectionBandwidthData
 
 
 新增数据结构：
 
-* [SetRealVolumeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetRealVolumeCommandInput)
+* [InBandwidth](https://cloud.tencent.com/document/api/1346/73770#InBandwidth)
+* [LocalNetInfo](https://cloud.tencent.com/document/api/1346/73770#LocalNetInfo)
+* [OutBandwidth](https://cloud.tencent.com/document/api/1346/73770#OutBandwidth)
+* [VpngwBandwidthData](https://cloud.tencent.com/document/api/1346/73770#VpngwBandwidthData)
 
-修改数据结构：
 
-* [KTVRobotInfo](https://cloud.tencent.com/document/api/1155/40113#KTVRobotInfo)
 
-	* 新增成员：SetRealVolumeInput
+## 云防火墙(cfw) 版本：2019-09-04
 
-* [SyncRobotCommand](https://cloud.tencent.com/document/api/1155/40113#SyncRobotCommand)
+### 第 30 次发布
 
-	* 新增成员：SetRealVolumeCommandInput
+发布时间：2023-02-24 01:07:43
 
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddNatAcRule](https://cloud.tencent.com/document/api/1132/86861)
+* [DescribeNatAcRule](https://cloud.tencent.com/document/api/1132/86860)
+* [ModifyNatAcRule](https://cloud.tencent.com/document/api/1132/86859)
+* [RemoveNatAcRule](https://cloud.tencent.com/document/api/1132/86858)
+
+新增数据结构：
+
+* [CommonFilter](https://cloud.tencent.com/document/api/1132/49071#CommonFilter)
+* [CreateNatRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateNatRuleItem)
+* [DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem)
 
 
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
-### 第 69 次发布
+### 第 70 次发布
 
-发布时间：2023-02-23 01:11:36
+发布时间：2023-02-24 01:08:10
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [DescribeDatahubTopic](https://cloud.tencent.com/document/api/597/86862)
+* [DescribeDatahubTopics](https://cloud.tencent.com/document/api/597/86863)
+
+修改接口：
+
+* [DescribeInstancesDetail](https://cloud.tencent.com/document/api/597/40834)
+
+	* 新增入参：TagList
+
+
 新增数据结构：
 
-* [LowercaseParam](https://cloud.tencent.com/document/api/597/40861#LowercaseParam)
-
-修改数据结构：
-
-* [ValueParam](https://cloud.tencent.com/document/api/597/40861#ValueParam)
-
-	* 新增成员：Lowercase
+* [DatahubTopicDTO](https://cloud.tencent.com/document/api/597/40861#DatahubTopicDTO)
+* [DescribeDatahubTopicResp](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTopicResp)
+* [DescribeDatahubTopicsResp](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTopicsResp)
 
 
 
+## 负载均衡(clb) 版本：2018-03-17
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+### 第 82 次发布
 
-### 第 46 次发布
-
-发布时间：2023-02-23 01:24:24
+发布时间：2023-02-24 01:08:31
 
 本次发布包含了以下内容：
 
@@ -69,83 +116,65 @@
 
 修改接口：
 
-* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
+* [DescribeTargets](https://cloud.tencent.com/document/api/214/30684)
 
-	* 新增入参：UserData
+	* 新增入参：Filters
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 43 次发布
+
+发布时间：2023-02-24 01:14:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BlueprintPrice](https://cloud.tencent.com/document/api/1207/47576#BlueprintPrice)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount
+
+* [DiscountDetail](https://cloud.tencent.com/document/api/1207/47576#DiscountDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount
+
+* [InstancePrice](https://cloud.tencent.com/document/api/1207/47576#InstancePrice)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount
 
 
 
 
 ## 移动网络加速(mna) 版本：2021-01-19
 
-### 第 10 次发布
+### 第 11 次发布
 
-发布时间：2023-02-23 01:43:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DeviceDetails](https://cloud.tencent.com/document/api/1385/55846#DeviceDetails)
-
-	* 新增成员：GatewaySite, BusinessDownRate, BusinessUpRate
-
-* [DeviceNetInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceNetInfo)
-
-	* 新增成员：DownRate, UpRate
-
-
-
-
-## 云数据库Redis(redis) 版本：2018-04-12
-
-### 第 60 次发布
-
-发布时间：2023-02-23 01:48:21
+发布时间：2023-02-24 01:20:12
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeBackupUrl](https://cloud.tencent.com/document/api/239/34443)
-
-	* 新增入参：LimitType, VpcComparisonSymbol, IpComparisonSymbol, LimitVpc, LimitIp
-
-* [DescribeInstanceBackups](https://cloud.tencent.com/document/api/239/20011)
-
-	* 新增入参：InstanceName
-
-	* <font color="#dd0000">**修改入参**：</font>InstanceId
-
-* [ModifyNetworkConfig](https://cloud.tencent.com/document/api/239/34436)
-
-	* 新增入参：VPort
-
-	* 新增出参：TaskId
-
+* [GetMultiFlowStatistic](https://cloud.tencent.com/document/api/1385/86864)
 
 新增数据结构：
 
-* [BackupLimitVpcItem](https://cloud.tencent.com/document/api/239/20022#BackupLimitVpcItem)
-
-修改数据结构：
-
-* [RedisBackupSet](https://cloud.tencent.com/document/api/239/20022#RedisBackupSet)
-
-	* 新增成员：InstanceId, InstanceName, Region, EndTime, FileType, ExpireTime
+* [FlowDetails](https://cloud.tencent.com/document/api/1385/55846#FlowDetails)
 
 
 
+## 弹性微服务 TEM(tem) 版本：2021-07-01
 
-## 服务网格(tcm) 版本：2021-04-13
+### 第 40 次发布
 
-### 第 20 次发布
-
-发布时间：2023-02-23 01:54:00
+发布时间：2023-02-24 01:23:28
 
 本次发布包含了以下内容：
 
@@ -153,9 +182,52 @@
 
 修改数据结构：
 
-* [LoadBalancerStatus](https://cloud.tencent.com/document/api/1261/63843#LoadBalancerStatus)
+* [EksService](https://cloud.tencent.com/document/api/1371/60171#EksService)
 
-	* 新增成员：LoadBalancerHostname
+	* 新增成员：ExternalDomain
+
+* [IngressInfo](https://cloud.tencent.com/document/api/1371/60171#IngressInfo)
+
+	* 新增成员：Domain
+
+* [ServicePortMapping](https://cloud.tencent.com/document/api/1371/60171#ServicePortMapping)
+
+	* 新增成员：ExternalDomain
+
+
+
+
+## 弹性微服务 TEM(tem) 版本：2020-12-21
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 31 次发布
+
+发布时间：2023-02-24 01:39:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnvAddressInfo](https://cloud.tencent.com/document/api/1364/54942#EnvAddressInfo)
+
+	* 新增成员：InternetBandWidth
+
+* [NacosReplica](https://cloud.tencent.com/document/api/1364/54942#NacosReplica)
+
+	* 新增成员：VpcId
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：EKSType, FeatureVersion, EnableClientIntranet
+
+* [ZookeeperReplica](https://cloud.tencent.com/document/api/1364/54942#ZookeeperReplica)
+
+	* 新增成员：VpcId
 
 
 
@@ -766,7 +838,7 @@
 
 新增数据结构：
 
-* [[SetRealVolumeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetRealVolumeCommandInput)](https://cloud.tencent.com/document/api/1155/40113#[SetRealVolumeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetRealVolumeCommandInput))
+* [SetRealVolumeCommandInput](https://cloud.tencent.com/document/api/1155/40113#SetRealVolumeCommandInput)
 
 修改数据结构：
 
@@ -8784,6 +8856,21 @@
 
 ## 品牌经营管家(bma) 版本：2022-11-15
 
+### 第 4 次发布
+
+发布时间：2023-02-23 14:35:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
+
+	* 新增成员：FakeDomain
+
+
 ### 第 3 次发布
 
 发布时间：2023-02-16 01:09:07
@@ -15223,6 +15310,28 @@
 
 ## 本地专用集群(cdc) 版本：2020-12-14
 
+### 第 6 次发布
+
+发布时间：2023-02-24 01:07:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDedicatedClusterOverview](https://cloud.tencent.com/document/api/1346/73760)
+
+	* 新增出参：VpnConnectionState, VpngwBandwidthData, LocalNetInfo, VpnConnectionBandwidthData
+
+
+新增数据结构：
+
+* [[InBandwidth](https://cloud.tencent.com/document/api/1346/73770#InBandwidth)](https://cloud.tencent.com/document/api/1346/73770#[InBandwidth](https://cloud.tencent.com/document/api/1346/73770#InBandwidth))
+* [[LocalNetInfo](https://cloud.tencent.com/document/api/1346/73770#LocalNetInfo)](https://cloud.tencent.com/document/api/1346/73770#[LocalNetInfo](https://cloud.tencent.com/document/api/1346/73770#LocalNetInfo))
+* [[OutBandwidth](https://cloud.tencent.com/document/api/1346/73770#OutBandwidth)](https://cloud.tencent.com/document/api/1346/73770#[OutBandwidth](https://cloud.tencent.com/document/api/1346/73770#OutBandwidth))
+* [[VpngwBandwidthData](https://cloud.tencent.com/document/api/1346/73770#VpngwBandwidthData)](https://cloud.tencent.com/document/api/1346/73770#[VpngwBandwidthData](https://cloud.tencent.com/document/api/1346/73770#VpngwBandwidthData))
+
 ### 第 5 次发布
 
 发布时间：2023-02-22 01:10:12
@@ -18515,6 +18624,27 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 30 次发布
+
+发布时间：2023-02-24 01:07:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddNatAcRule](https://cloud.tencent.com/document/api/1132/86861)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNatAcRule](https://cloud.tencent.com/document/api/1132/86860)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyNatAcRule](https://cloud.tencent.com/document/api/1132/86859)](https://cloud.tencent.com/document/api/#/#)
+* [[RemoveNatAcRule](https://cloud.tencent.com/document/api/1132/86858)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CommonFilter](https://cloud.tencent.com/document/api/1132/49071#CommonFilter)](https://cloud.tencent.com/document/api/1132/49071#[CommonFilter](https://cloud.tencent.com/document/api/1132/49071#CommonFilter))
+* [[CreateNatRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateNatRuleItem)](https://cloud.tencent.com/document/api/1132/49071#[CreateNatRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateNatRuleItem))
+* [[DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem)](https://cloud.tencent.com/document/api/1132/49071#[DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem))
+
 ### 第 29 次发布
 
 发布时间：2023-02-22 01:11:48
@@ -19879,6 +20009,32 @@
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
+### 第 70 次发布
+
+发布时间：2023-02-24 01:08:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDatahubTopic](https://cloud.tencent.com/document/api/597/86862)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDatahubTopics](https://cloud.tencent.com/document/api/597/86863)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeInstancesDetail](https://cloud.tencent.com/document/api/597/40834)
+
+	* 新增入参：TagList
+
+
+新增数据结构：
+
+* [[DatahubTopicDTO](https://cloud.tencent.com/document/api/597/40861#DatahubTopicDTO)](https://cloud.tencent.com/document/api/597/40861#[DatahubTopicDTO](https://cloud.tencent.com/document/api/597/40861#DatahubTopicDTO))
+* [[DescribeDatahubTopicResp](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTopicResp)](https://cloud.tencent.com/document/api/597/40861#[DescribeDatahubTopicResp](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTopicResp))
+* [[DescribeDatahubTopicsResp](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTopicsResp)](https://cloud.tencent.com/document/api/597/40861#[DescribeDatahubTopicsResp](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTopicsResp))
+
 ### 第 69 次发布
 
 发布时间：2023-02-23 01:11:36
@@ -19889,7 +20045,7 @@
 
 新增数据结构：
 
-* [[LowercaseParam](https://cloud.tencent.com/document/api/597/40861#LowercaseParam)](https://cloud.tencent.com/document/api/597/40861#[LowercaseParam](https://cloud.tencent.com/document/api/597/40861#LowercaseParam))
+* [LowercaseParam](https://cloud.tencent.com/document/api/597/40861#LowercaseParam)
 
 修改数据结构：
 
@@ -21397,6 +21553,21 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 82 次发布
+
+发布时间：2023-02-24 01:08:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTargets](https://cloud.tencent.com/document/api/214/30684)
+
+	* 新增入参：Filters
+
 
 ### 第 81 次发布
 
@@ -56534,6 +56705,29 @@
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 43 次发布
+
+发布时间：2023-02-24 01:14:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BlueprintPrice](https://cloud.tencent.com/document/api/1207/47576#BlueprintPrice)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount
+
+* [DiscountDetail](https://cloud.tencent.com/document/api/1207/47576#DiscountDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount
+
+* [InstancePrice](https://cloud.tencent.com/document/api/1207/47576#InstancePrice)
+
+	* <font color="#dd0000">**修改成员**：</font>Discount
+
+
 ### 第 42 次发布
 
 发布时间：2023-02-17 04:14:14
@@ -60799,6 +60993,22 @@
 
 
 ## 移动网络加速(mna) 版本：2021-01-19
+
+### 第 11 次发布
+
+发布时间：2023-02-24 01:20:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetMultiFlowStatistic](https://cloud.tencent.com/document/api/1385/86864)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FlowDetails](https://cloud.tencent.com/document/api/1385/55846#FlowDetails)](https://cloud.tencent.com/document/api/1385/55846#[FlowDetails](https://cloud.tencent.com/document/api/1385/55846#FlowDetails))
 
 ### 第 10 次发布
 
@@ -70561,7 +70771,7 @@
 
 新增数据结构：
 
-* [[BackupLimitVpcItem](https://cloud.tencent.com/document/api/239/20022#BackupLimitVpcItem)](https://cloud.tencent.com/document/api/239/20022#[BackupLimitVpcItem](https://cloud.tencent.com/document/api/239/20022#BackupLimitVpcItem))
+* [BackupLimitVpcItem](https://cloud.tencent.com/document/api/239/20022#BackupLimitVpcItem)
 
 修改数据结构：
 
@@ -85034,6 +85244,29 @@
 
 ## 弹性微服务 TEM(tem) 版本：2021-07-01
 
+### 第 40 次发布
+
+发布时间：2023-02-24 01:23:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EksService](https://cloud.tencent.com/document/api/1371/60171#EksService)
+
+	* 新增成员：ExternalDomain
+
+* [IngressInfo](https://cloud.tencent.com/document/api/1371/60171#IngressInfo)
+
+	* 新增成员：Domain
+
+* [ServicePortMapping](https://cloud.tencent.com/document/api/1371/60171#ServicePortMapping)
+
+	* 新增成员：ExternalDomain
+
+
 ### 第 39 次发布
 
 发布时间：2023-02-16 01:58:58
@@ -95248,6 +95481,33 @@
 
 
 ## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 31 次发布
+
+发布时间：2023-02-24 01:39:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnvAddressInfo](https://cloud.tencent.com/document/api/1364/54942#EnvAddressInfo)
+
+	* 新增成员：InternetBandWidth
+
+* [NacosReplica](https://cloud.tencent.com/document/api/1364/54942#NacosReplica)
+
+	* 新增成员：VpcId
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：EKSType, FeatureVersion, EnableClientIntranet
+
+* [ZookeeperReplica](https://cloud.tencent.com/document/api/1364/54942#ZookeeperReplica)
+
+	* 新增成员：VpcId
+
 
 ### 第 30 次发布
 

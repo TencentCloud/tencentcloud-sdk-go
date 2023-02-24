@@ -1628,8 +1628,10 @@ func NewModifyDBInstanceSecurityGroupResponse() (response *ModifyDBInstanceSecur
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_SECURITYGROUPID = "InvalidParameterValue.SecurityGroupId"
 //  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
 func (c *Client) ModifyDBInstanceSecurityGroup(request *ModifyDBInstanceSecurityGroupRequest) (response *ModifyDBInstanceSecurityGroupResponse, err error) {
     return c.ModifyDBInstanceSecurityGroupWithContext(context.Background(), request)
@@ -1640,8 +1642,10 @@ func (c *Client) ModifyDBInstanceSecurityGroup(request *ModifyDBInstanceSecurity
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_SECURITYGROUPID = "InvalidParameterValue.SecurityGroupId"
 //  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
 func (c *Client) ModifyDBInstanceSecurityGroupWithContext(ctx context.Context, request *ModifyDBInstanceSecurityGroupRequest) (response *ModifyDBInstanceSecurityGroupResponse, err error) {
     if request == nil {

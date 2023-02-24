@@ -377,6 +377,70 @@ func (r *AddEnterpriseSecurityGroupRulesResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddNatAcRuleRequestParams struct {
+	// 需要添加的nat访问控制规则列表
+	Rules []*CreateNatRuleItem `json:"Rules,omitempty" name:"Rules"`
+
+	// 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+	From *string `json:"From,omitempty" name:"From"`
+}
+
+type AddNatAcRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要添加的nat访问控制规则列表
+	Rules []*CreateNatRuleItem `json:"Rules,omitempty" name:"Rules"`
+
+	// 添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则
+	From *string `json:"From,omitempty" name:"From"`
+}
+
+func (r *AddNatAcRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddNatAcRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Rules")
+	delete(f, "From")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddNatAcRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddNatAcRuleResponseParams struct {
+	// 创建成功后返回新策略ID列表
+	RuleUuid []*int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddNatAcRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *AddNatAcRuleResponseParams `json:"Response"`
+}
+
+func (r *AddNatAcRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddNatAcRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AssetZone struct {
 	// 地域
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
@@ -499,6 +563,45 @@ type CfwNatDnatRule struct {
 
 	// NAT防火墙转发规则描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type CommonFilter struct {
+	// 检索的键值
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 检索的值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 枚举类型，代表name与values之间的匹配关系
+	// enum FilterOperatorType {
+	//     //INVALID
+	//     FILTER_OPERATOR_TYPE_INVALID = 0;
+	//     //等于
+	//     FILTER_OPERATOR_TYPE_EQUAL = 1;
+	//     //大于
+	//     FILTER_OPERATOR_TYPE_GREATER = 2;
+	//     //小于
+	//     FILTER_OPERATOR_TYPE_LESS = 3;
+	//     //大于等于
+	//     FILTER_OPERATOR_TYPE_GREATER_EQ = 4;
+	//     //小于等于
+	//     FILTER_OPERATOR_TYPE_LESS_EQ = 5;
+	//     //不等于
+	//     FILTER_OPERATOR_TYPE_NO_EQ = 6;
+	//     //in，数组中包含
+	//     FILTER_OPERATOR_TYPE_IN = 7;
+	//     //not in
+	//     FILTER_OPERATOR_TYPE_NOT_IN = 8;
+	//     //模糊匹配
+	//     FILTER_OPERATOR_TYPE_FUZZINESS = 9;
+	//     //存在
+	//     FILTER_OPERATOR_TYPE_EXIST = 10;
+	//     //不存在
+	//     FILTER_OPERATOR_TYPE_NOT_EXIST = 11;
+	//     //正则
+	//     FILTER_OPERATOR_TYPE_REGULAR = 12;
+	// }
+	OperatorType *int64 `json:"OperatorType,omitempty" name:"OperatorType"`
 }
 
 // Predefined struct for user
@@ -968,6 +1071,56 @@ func (r *CreateNatFwInstanceWithDomainResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateNatFwInstanceWithDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateNatRuleItem struct {
+	// 访问源示例： net：IP/CIDR(192.168.0.2)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceContent *string `json:"SourceContent,omitempty" name:"SourceContent"`
+
+	// 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 访问目的示例： net：IP/CIDR(192.168.0.2) domain：域名规则，例如*.qq.com
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetContent *string `json:"TargetContent,omitempty" name:"TargetContent"`
+
+	// 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为  ip,net,domain,template,location
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 协议，可选的值： TCP UDP ICMP ANY HTTP HTTPS HTTP/HTTPS SMTP SMTPS SMTP/SMTPS FTP DNS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+
+	// 访问控制策略的端口。取值： -1/-1：全部端口 80：80端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 规则方向：1，入站；0，出站
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 规则序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderIndex *int64 `json:"OrderIndex,omitempty" name:"OrderIndex"`
+
+	// 规则状态，true表示启用，false表示禁用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *string `json:"Enable,omitempty" name:"Enable"`
+
+	// 规则对应的唯一id，创建规则时无需填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *int64 `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
@@ -1485,6 +1638,102 @@ func (r *DeleteVpcInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteVpcInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescAcItem struct {
+	// 访问源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceContent *string `json:"SourceContent,omitempty" name:"SourceContent"`
+
+	// 访问目的
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetContent *string `json:"TargetContent,omitempty" name:"TargetContent"`
+
+	// 协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 访问控制策略中设置的流量通过云防火墙的方式。取值： accept：放行 drop：拒绝 log：观察
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 命中次数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 执行顺序
+	OrderIndex *uint64 `json:"OrderIndex,omitempty" name:"OrderIndex"`
+
+	// 访问源类型：入向规则时类型可以为 ip,net,template,location；出向规则时可以为 ip,net,template,instance,group,tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 访问目的类型：入向规则时类型可以为ip,net,template,instance,group,tag；出向规则时可以为 ip,net,domain,template,location
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 规则对应的唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *uint64 `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 规则有效性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Invalid *uint64 `json:"Invalid,omitempty" name:"Invalid"`
+
+	// 0为正常规则,1为地域规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsRegion *uint64 `json:"IsRegion,omitempty" name:"IsRegion"`
+
+	// 国家id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CountryCode *uint64 `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 城市id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityCode *uint64 `json:"CityCode,omitempty" name:"CityCode"`
+
+	// 国家名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CountryName *string `json:"CountryName,omitempty" name:"CountryName"`
+
+	// 省名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityName *string `json:"CityName,omitempty" name:"CityName"`
+
+	// 云厂商code
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudCode *string `json:"CloudCode,omitempty" name:"CloudCode"`
+
+	// 0为正常规则,1为云厂商规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCloud *uint64 `json:"IsCloud,omitempty" name:"IsCloud"`
+
+	// 规则状态，true表示启用，false表示禁用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *string `json:"Enable,omitempty" name:"Enable"`
+
+	// 规则方向：1，入向；0，出向
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 内部使用的uuid，一般情况下不会使用到该字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalUuid *int64 `json:"InternalUuid,omitempty" name:"InternalUuid"`
+
+	// 规则状态，查询规则命中详情时该字段有效，0：新增，1: 已删除, 2: 编辑删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 // Predefined struct for user
@@ -2459,6 +2708,119 @@ func (r *DescribeIPStatusListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIPStatusListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNatAcRuleRequestParams struct {
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要查询的索引，特定场景使用，可不填
+	Index *string `json:"Index,omitempty" name:"Index"`
+
+	// 过滤条件组合
+	Filters []*CommonFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 检索的起始时间，可不传
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 检索的截止时间，可不传
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序所用到的字段
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeNatAcRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要查询的索引，特定场景使用，可不填
+	Index *string `json:"Index,omitempty" name:"Index"`
+
+	// 过滤条件组合
+	Filters []*CommonFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 检索的起始时间，可不传
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 检索的截止时间，可不传
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序所用到的字段
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeNatAcRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatAcRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Index")
+	delete(f, "Filters")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNatAcRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNatAcRuleResponseParams struct {
+	// 总条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// nat访问控制列表数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*DescAcItem `json:"Data,omitempty" name:"Data"`
+
+	// 未过滤的总条数
+	AllTotal *uint64 `json:"AllTotal,omitempty" name:"AllTotal"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNatAcRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNatAcRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeNatAcRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatAcRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4375,6 +4737,63 @@ func (r *ModifyBlockTopResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyNatAcRuleRequestParams struct {
+	// 需要编辑的规则数组
+	Rules []*CreateNatRuleItem `json:"Rules,omitempty" name:"Rules"`
+}
+
+type ModifyNatAcRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要编辑的规则数组
+	Rules []*CreateNatRuleItem `json:"Rules,omitempty" name:"Rules"`
+}
+
+func (r *ModifyNatAcRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNatAcRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNatAcRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNatAcRuleResponseParams struct {
+	// 编辑成功后返回新策略ID列表
+	RuleUuid []*int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyNatAcRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNatAcRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyNatAcRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNatAcRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyNatFwReSelectRequestParams struct {
 	// 模式 1：接入模式；0：新增模式
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
@@ -5462,6 +5881,70 @@ func (r *RemoveEnterpriseSecurityGroupRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RemoveEnterpriseSecurityGroupRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveNatAcRuleRequestParams struct {
+	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+	RuleUuid []*int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 规则方向：1，入站；0，出站
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+}
+
+type RemoveNatAcRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则
+	RuleUuid []*int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 规则方向：1，入站；0，出站
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+}
+
+func (r *RemoveNatAcRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveNatAcRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleUuid")
+	delete(f, "Direction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveNatAcRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveNatAcRuleResponseParams struct {
+	// 删除成功后返回被删除策略的uuid列表
+	RuleUuid []*int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RemoveNatAcRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveNatAcRuleResponseParams `json:"Response"`
+}
+
+func (r *RemoveNatAcRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveNatAcRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

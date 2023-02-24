@@ -23,6 +23,12 @@ const (
 	// 权限组被绑定。
 	FAILEDOPERATION_ACCESSGROUPBOUND = "FailedOperation.AccessGroupBound"
 
+	// 账户余额不足。
+	FAILEDOPERATION_ACCOUNTINSUFFICIENTBALANCE = "FailedOperation.AccountInsufficientBalance"
+
+	// 账户未实名认证。
+	FAILEDOPERATION_ACCOUNTUNAUTHENTICATED = "FailedOperation.AccountUnauthenticated"
+
 	// 文件系统非空。
 	FAILEDOPERATION_FILESYSTEMNOTEMPTY = "FailedOperation.FileSystemNotEmpty"
 

@@ -1021,6 +1021,10 @@ type EnvAddressInfo struct {
 	// 是否开启config内网clb
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableConfigIntranet *bool `json:"EnableConfigIntranet,omitempty" name:"EnableConfigIntranet"`
+
+	// 客户端公网带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetBandWidth *int64 `json:"InternetBandWidth,omitempty" name:"InternetBandWidth"`
 }
 
 type EnvInfo struct {
@@ -1112,6 +1116,10 @@ type NacosReplica struct {
 	// 可用区ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// VPC ID	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 type NacosServerInterface struct {
@@ -1238,6 +1246,18 @@ type SREInstance struct {
 	// 实例地域相关的描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionInfos []*DescribeInstanceRegionInfo `json:"RegionInfos,omitempty" name:"RegionInfos"`
+
+	// 所在EKS环境，分为common和yunti
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EKSType *string `json:"EKSType,omitempty" name:"EKSType"`
+
+	// 引擎的产品版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureVersion *string `json:"FeatureVersion,omitempty" name:"FeatureVersion"`
+
+	// 引擎实例是否开启客户端内网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableClientIntranet *bool `json:"EnableClientIntranet,omitempty" name:"EnableClientIntranet"`
 }
 
 type ServiceGovernanceInfo struct {
@@ -1371,6 +1391,10 @@ type ZookeeperReplica struct {
 	// 别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// VPC ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 type ZookeeperServerInterface struct {

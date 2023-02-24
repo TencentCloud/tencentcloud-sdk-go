@@ -31,18 +31,18 @@ type Admin struct {
 }
 
 type Agent struct {
-	// 应用编号,32位字符串
+	// 代理机构的应用编号,32位字符串，一般不用传
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
-	// 主组织的应用号
+	// 被代理机构的应用号，一般不用传
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
 
-	// 主组织在平台的机构编号
+	// 被代理机构在电子签平台的机构编号，集团代理下场景必传
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitempty" name:"ProxyOrganizationId"`
 
-	// 主组织的操作人
+	// 被代理机构的经办人，一般不用传
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOperator *string `json:"ProxyOperator,omitempty" name:"ProxyOperator"`
 }
@@ -662,7 +662,7 @@ type CreateDocumentRequestParams struct {
 	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
 	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 客户端Token，保持接口幂等性,最大长度64个字符
@@ -694,7 +694,7 @@ type CreateDocumentRequest struct {
 	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
 	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 客户端Token，保持接口幂等性,最大长度64个字符
@@ -880,9 +880,6 @@ type CreateFlowByFilesRequestParams struct {
 	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 
-	// 应用号信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
 	// 签署人校验方式
 	// VerifyCheck: 人脸识别（默认）
 	// MobileCheck：手机号验证
@@ -894,6 +891,9 @@ type CreateFlowByFilesRequestParams struct {
 
 	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
 	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -952,9 +952,6 @@ type CreateFlowByFilesRequest struct {
 	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 
-	// 应用号信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
 	// 签署人校验方式
 	// VerifyCheck: 人脸识别（默认）
 	// MobileCheck：手机号验证
@@ -966,6 +963,9 @@ type CreateFlowByFilesRequest struct {
 
 	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
 	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -994,10 +994,10 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "CustomShowMap")
 	delete(f, "NeedSignReview")
 	delete(f, "UserData")
-	delete(f, "Agent")
 	delete(f, "ApproverVerifyType")
 	delete(f, "FlowDescription")
 	delete(f, "SignBeanTag")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -1223,7 +1223,7 @@ type CreateFlowRequestParams struct {
 	// 暂未开放
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 被抄送人的信息列表。
@@ -1280,7 +1280,7 @@ type CreateFlowRequest struct {
 	// 暂未开放
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 被抄送人的信息列表。
@@ -1849,7 +1849,7 @@ type CreateSchemeUrlRequestParams struct {
 	// 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
 	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -1883,7 +1883,7 @@ type CreateSchemeUrlRequest struct {
 	// 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
 	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -2501,7 +2501,7 @@ type DescribeFlowInfoRequestParams struct {
 	// 调用方用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 应用信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -2514,7 +2514,7 @@ type DescribeFlowInfoRequest struct {
 	// 调用方用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 应用信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -2569,10 +2569,10 @@ type DescribeFlowTemplatesRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 企业组织相关信息
+	// 企业组织相关信息，一般不用填
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询偏移位置，默认0
@@ -2607,10 +2607,10 @@ type DescribeFlowTemplatesRequest struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 企业组织相关信息
+	// 企业组织相关信息，一般不用填
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询偏移位置，默认0
@@ -2986,7 +2986,7 @@ type DescribeOrganizationSealsRequestParams struct {
 	// LEGAL_PERSON_SEAL：法定代表人章
 	SealTypes []*string `json:"SealTypes,omitempty" name:"SealTypes"`
 
-	// 主企业代子企业操作 或 渠道子客应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -3017,7 +3017,7 @@ type DescribeOrganizationSealsRequest struct {
 	// LEGAL_PERSON_SEAL：法定代表人章
 	SealTypes []*string `json:"SealTypes,omitempty" name:"SealTypes"`
 
-	// 主企业代子企业操作 或 渠道子客应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -3877,7 +3877,7 @@ type StartFlowRequestParams struct {
 	// 客户端Token，保持接口幂等性,最大长度64个字符
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -3893,7 +3893,7 @@ type StartFlowRequest struct {
 	// 客户端Token，保持接口幂等性,最大长度64个字符
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 

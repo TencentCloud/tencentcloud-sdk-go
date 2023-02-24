@@ -136,6 +136,8 @@ func NewCreateAccessGroupResponse() (response *CreateAccessGroupResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTINSUFFICIENTBALANCE = "FailedOperation.AccountInsufficientBalance"
+//  FAILEDOPERATION_ACCOUNTUNAUTHENTICATED = "FailedOperation.AccountUnauthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -157,6 +159,8 @@ func (c *Client) CreateAccessGroup(request *CreateAccessGroupRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTINSUFFICIENTBALANCE = "FailedOperation.AccountInsufficientBalance"
+//  FAILEDOPERATION_ACCOUNTUNAUTHENTICATED = "FailedOperation.AccountUnauthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -278,6 +282,8 @@ func NewCreateFileSystemResponse() (response *CreateFileSystemResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTINSUFFICIENTBALANCE = "FailedOperation.AccountInsufficientBalance"
+//  FAILEDOPERATION_ACCOUNTUNAUTHENTICATED = "FailedOperation.AccountUnauthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -298,6 +304,8 @@ func (c *Client) CreateFileSystem(request *CreateFileSystemRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCOUNTINSUFFICIENTBALANCE = "FailedOperation.AccountInsufficientBalance"
+//  FAILEDOPERATION_ACCOUNTUNAUTHENTICATED = "FailedOperation.AccountUnauthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
