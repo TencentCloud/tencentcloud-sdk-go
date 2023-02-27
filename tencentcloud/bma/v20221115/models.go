@@ -204,14 +204,14 @@ func (r *CreateBPBrandResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBPFakeAPPListRequestParams struct {
-	// 批量模版
+	// 批量模板
 	FakeAPPs *string `json:"FakeAPPs,omitempty" name:"FakeAPPs"`
 }
 
 type CreateBPFakeAPPListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 批量模版
+	// 批量模板
 	FakeAPPs *string `json:"FakeAPPs,omitempty" name:"FakeAPPs"`
 }
 
@@ -436,14 +436,14 @@ func (r *CreateBPFakeURLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBPFakeURLsRequestParams struct {
-	// 批量模版
+	// 批量模板
 	FakeURLs *string `json:"FakeURLs,omitempty" name:"FakeURLs"`
 }
 
 type CreateBPFakeURLsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 批量模版
+	// 批量模板
 	FakeURLs *string `json:"FakeURLs,omitempty" name:"FakeURLs"`
 }
 

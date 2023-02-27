@@ -1973,6 +1973,9 @@ type UpdateEventBusRequestParams struct {
 
 	// EB日志主题ID
 	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
+
+	// 是否开启存储
+	EnableStore *bool `json:"EnableStore,omitempty" name:"EnableStore"`
 }
 
 type UpdateEventBusRequest struct {
@@ -1992,6 +1995,9 @@ type UpdateEventBusRequest struct {
 
 	// EB日志主题ID
 	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
+
+	// 是否开启存储
+	EnableStore *bool `json:"EnableStore,omitempty" name:"EnableStore"`
 }
 
 func (r *UpdateEventBusRequest) ToJsonString() string {
@@ -2011,6 +2017,7 @@ func (r *UpdateEventBusRequest) FromJsonString(s string) error {
 	delete(f, "EventBusName")
 	delete(f, "SaveDays")
 	delete(f, "LogTopicId")
+	delete(f, "EnableStore")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEventBusRequest has unknown keys!", "")
 	}

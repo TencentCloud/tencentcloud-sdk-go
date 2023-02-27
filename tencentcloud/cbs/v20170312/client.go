@@ -2152,10 +2152,6 @@ func NewInquiryPriceResizeDiskResponse() (response *InquiryPriceResizeDiskRespon
 // InquiryPriceResizeDisk
 // 本接口（InquiryPriceResizeDisk）用于扩容云硬盘询价。
 //
-// 
-//
-// * 只支持预付费模式的云硬盘扩容询价。
-//
 // 可能返回的错误码:
 //  INVALIDDISK_EXPIRE = "InvalidDisk.Expire"
 //  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
@@ -2169,10 +2165,6 @@ func (c *Client) InquiryPriceResizeDisk(request *InquiryPriceResizeDiskRequest) 
 
 // InquiryPriceResizeDisk
 // 本接口（InquiryPriceResizeDisk）用于扩容云硬盘询价。
-//
-// 
-//
-// * 只支持预付费模式的云硬盘扩容询价。
 //
 // 可能返回的错误码:
 //  INVALIDDISK_EXPIRE = "InvalidDisk.Expire"

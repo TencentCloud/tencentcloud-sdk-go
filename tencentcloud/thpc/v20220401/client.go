@@ -155,6 +155,80 @@ func (c *Client) AddNodesWithContext(ctx context.Context, request *AddNodesReque
     return
 }
 
+func NewAddQueueRequest() (request *AddQueueRequest) {
+    request = &AddQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "AddQueue")
+    
+    
+    return
+}
+
+func NewAddQueueResponse() (response *AddQueueResponse) {
+    response = &AddQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddQueue
+// 本接口(AddQueue)用于添加队列到指定集群。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) AddQueue(request *AddQueueRequest) (response *AddQueueResponse, err error) {
+    return c.AddQueueWithContext(context.Background(), request)
+}
+
+// AddQueue
+// 本接口(AddQueue)用于添加队列到指定集群。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) AddQueueWithContext(ctx context.Context, request *AddQueueRequest) (response *AddQueueResponse, err error) {
+    if request == nil {
+        request = NewAddQueueRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddQueue require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindAutoScalingGroupRequest() (request *BindAutoScalingGroupRequest) {
     request = &BindAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -443,6 +517,98 @@ func (c *Client) DeleteNodesWithContext(ctx context.Context, request *DeleteNode
     return
 }
 
+func NewDeleteQueueRequest() (request *DeleteQueueRequest) {
+    request = &DeleteQueueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DeleteQueue")
+    
+    
+    return
+}
+
+func NewDeleteQueueResponse() (response *DeleteQueueResponse) {
+    response = &DeleteQueueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteQueue
+// 本接口(DeleteQueue)用于从指定集群删除队列。
+//
+// 
+//
+// * 删除队列时，需要保证队列内不存在节点。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DeleteQueue(request *DeleteQueueRequest) (response *DeleteQueueResponse, err error) {
+    return c.DeleteQueueWithContext(context.Background(), request)
+}
+
+// DeleteQueue
+// 本接口(DeleteQueue)用于从指定集群删除队列。
+//
+// 
+//
+// * 删除队列时，需要保证队列内不存在节点。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+func (c *Client) DeleteQueueWithContext(ctx context.Context, request *DeleteQueueRequest) (response *DeleteQueueResponse, err error) {
+    if request == nil {
+        request = NewDeleteQueueRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteQueue require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteQueueResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoScalingConfigurationRequest() (request *DescribeAutoScalingConfigurationRequest) {
     request = &DescribeAutoScalingConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -635,6 +801,148 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNodesRequest() (request *DescribeNodesRequest) {
+    request = &DescribeNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeNodes")
+    
+    
+    return
+}
+
+func NewDescribeNodesResponse() (response *DescribeNodesResponse) {
+    response = &DescribeNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNodes
+// 本接口 (DescribeNodes) 用于查询指定集群节点概览信息列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeNodes(request *DescribeNodesRequest) (response *DescribeNodesResponse, err error) {
+    return c.DescribeNodesWithContext(context.Background(), request)
+}
+
+// DescribeNodes
+// 本接口 (DescribeNodes) 用于查询指定集群节点概览信息列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeNodesWithContext(ctx context.Context, request *DescribeNodesRequest) (response *DescribeNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQueuesRequest() (request *DescribeQueuesRequest) {
+    request = &DescribeQueuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeQueues")
+    
+    
+    return
+}
+
+func NewDescribeQueuesResponse() (response *DescribeQueuesResponse) {
+    response = &DescribeQueuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQueues
+// 本接口(DescribeQueues)用于查询指定集群队列概览信息列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeQueues(request *DescribeQueuesRequest) (response *DescribeQueuesResponse, err error) {
+    return c.DescribeQueuesWithContext(context.Background(), request)
+}
+
+// DescribeQueues
+// 本接口(DescribeQueues)用于查询指定集群队列概览信息列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) DescribeQueuesWithContext(ctx context.Context, request *DescribeQueuesRequest) (response *DescribeQueuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeQueuesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQueues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQueuesResponse()
     err = c.Send(request, response)
     return
 }

@@ -325,6 +325,14 @@ type AutoSnapshotPolicy struct {
 	// 定期快照高级保留策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedRetentionPolicy *AdvancedRetentionPolicy `json:"AdvancedRetentionPolicy,omitempty" name:"AdvancedRetentionPolicy"`
+
+	// 该复制快照策略的源端账户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CopyFromAccountUin *string `json:"CopyFromAccountUin,omitempty" name:"CopyFromAccountUin"`
+
+	// 标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user
@@ -415,6 +423,12 @@ type Cdc struct {
 
 	// 独享集群到期时间。
 	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 存储池创建时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 当前集群中已创建的云盘数量。
+	DiskNumber *uint64 `json:"DiskNumber,omitempty" name:"DiskNumber"`
 }
 
 type CdcSize struct {
@@ -1563,6 +1577,9 @@ type DescribeDiskStoragePoolResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 独享集群的详细信息列表
+	CdcSet []*Cdc `json:"CdcSet,omitempty" name:"CdcSet"`
+
+	// 独享集群的详细信息列表
 	DiskStoragePoolSet []*Cdc `json:"DiskStoragePoolSet,omitempty" name:"DiskStoragePoolSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2034,6 +2051,51 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetailPrice struct {
+	// 描述计费项目名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceTitle *string `json:"PriceTitle,omitempty" name:"PriceTitle"`
+
+	// 描述计费项目显示名称，用户控制台展示。
+	PriceName *string `json:"PriceName,omitempty" name:"PriceName"`
+
+	// 预付费云盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+	// 预付费云盘预支费用的折扣价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 后付费云盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
+
+	// 后付费云盘折扣单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
+
+	// 后付费云盘的计价单元，取值范围：HOUR：表示后付费云盘的计价单元是按小时计算。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
+
+	// 高精度预付费云盘预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPriceHigh *string `json:"OriginalPriceHigh,omitempty" name:"OriginalPriceHigh"`
+
+	// 高精度预付费云盘预支费用的折扣价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountPriceHigh *string `json:"DiscountPriceHigh,omitempty" name:"DiscountPriceHigh"`
+
+	// 高精度后付费云盘原单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceHigh *string `json:"UnitPriceHigh,omitempty" name:"UnitPriceHigh"`
+
+	// 高精度后付费云盘折扣单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscountHigh *string `json:"UnitPriceDiscountHigh,omitempty" name:"UnitPriceDiscountHigh"`
+}
+
 type Disk struct {
 	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2164,6 +2226,14 @@ type Disk struct {
 
 	// 云硬盘挂载实例的类型。取值范围：<br><li>CVM<br><li>EKS
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 云硬盘最后一次挂载的实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastAttachInsId *string `json:"LastAttachInsId,omitempty" name:"LastAttachInsId"`
+
+	// 云硬盘最后一次操作错误提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorPrompt *string `json:"ErrorPrompt,omitempty" name:"ErrorPrompt"`
 }
 
 type DiskBackup struct {
@@ -2243,6 +2313,10 @@ type DiskConfig struct {
 
 	// 最大可配置云盘大小，单位GB。
 	MaxDiskSize *uint64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
+
+	// 描述预付费或后付费云盘的价格。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Price *Price `json:"Price,omitempty" name:"Price"`
 }
 
 type DiskOperationLog struct {
@@ -2476,21 +2550,21 @@ func (r *InquirePriceModifyDiskBackupQuotaResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type InquirePriceModifyDiskExtraPerformanceRequestParams struct {
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
 	// 额外购买的云硬盘性能值，单位MB/s。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
 type InquirePriceModifyDiskExtraPerformanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
 	// 额外购买的云硬盘性能值，单位MB/s。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
 func (r *InquirePriceModifyDiskExtraPerformanceRequest) ToJsonString() string {
@@ -2505,8 +2579,8 @@ func (r *InquirePriceModifyDiskExtraPerformanceRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DiskId")
 	delete(f, "ThroughputPerformance")
+	delete(f, "DiskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceModifyDiskExtraPerformanceRequest has unknown keys!", "")
 	}
@@ -2724,11 +2798,11 @@ func (r *InquiryPriceRenewDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceResizeDiskRequestParams struct {
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
 	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
 	// 云盘所属项目ID。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -2737,11 +2811,11 @@ type InquiryPriceResizeDiskRequestParams struct {
 type InquiryPriceResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
 	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
 	// 云盘所属项目ID。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -2759,8 +2833,8 @@ func (r *InquiryPriceResizeDiskRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DiskId")
 	delete(f, "DiskSize")
+	delete(f, "DiskId")
 	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceResizeDiskRequest has unknown keys!", "")
@@ -3376,6 +3450,10 @@ type Placement struct {
 	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](/document/api/378/4400) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
+	// 实例所属项目名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
 	// 独享集群名字。作为入参时，忽略。作为出参时，表示云硬盘所属的独享集群名，可为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcName *string `json:"CdcName,omitempty" name:"CdcName"`
@@ -3438,6 +3516,10 @@ type PrepayPrice struct {
 	// 后付费云盘原单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
+
+	// 计费项目明细列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetailPrices []*DetailPrice `json:"DetailPrices,omitempty" name:"DetailPrices"`
 }
 
 type Price struct {

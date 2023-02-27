@@ -274,6 +274,67 @@ func (r *AddNodesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddQueueRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 队列名称。<br><li>最多支持32个字符。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+}
+
+type AddQueueRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 队列名称。<br><li>最多支持32个字符。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+}
+
+func (r *AddQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddQueueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "QueueName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddQueueResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *AddQueueResponseParams `json:"Response"`
+}
+
+func (r *AddQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BindAutoScalingGroupRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -916,6 +977,67 @@ func (r *DeleteNodesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteQueueRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 队列名称。<br><li>最多支持32个字符。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+}
+
+type DeleteQueueRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 队列名称。<br><li>最多支持32个字符。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+}
+
+func (r *DeleteQueueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQueueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "QueueName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQueueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteQueueResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteQueueResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteQueueResponseParams `json:"Response"`
+}
+
+func (r *DeleteQueueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQueueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAutoScalingConfigurationRequestParams struct {
 	// 集群ID。	
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -1186,6 +1308,161 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeNodesRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// <li><strong>queue-name</strong></li> <p style="padding-left: 30px;">按照【<strong>队列名称</strong>】进行过滤。队列名称形如：compute。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"><li><strong>node-role</strong></li> <p style="padding-left: 30px;">按照【<strong>节点角色</strong>】进行过滤。节点角色形如：Manager。（Manager：管控节点。Compute：计算节点。Login：登录节点。ManagerBackup：备用管控节点。）</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"><li><strong>node-type</strong></li> <p style="padding-left: 30px;">按照【<strong>节点类型</strong>】进行过滤。节点类型形如：STATIC。(STATIC：静态节点。DYNAMIC：弹性节点。)</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// <li><strong>queue-name</strong></li> <p style="padding-left: 30px;">按照【<strong>队列名称</strong>】进行过滤。队列名称形如：compute。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"><li><strong>node-role</strong></li> <p style="padding-left: 30px;">按照【<strong>节点角色</strong>】进行过滤。节点角色形如：Manager。（Manager：管控节点。Compute：计算节点。Login：登录节点。ManagerBackup：备用管控节点。）</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;"><li><strong>node-type</strong></li> <p style="padding-left: 30px;">按照【<strong>节点类型</strong>】进行过滤。节点类型形如：STATIC。(STATIC：静态节点。DYNAMIC：弹性节点。)</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodesResponseParams struct {
+	// 节点概览信息列表。
+	NodeSet []*NodeOverview `json:"NodeSet,omitempty" name:"NodeSet"`
+
+	// 符合条件的节点数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQueuesRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeQueuesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeQueuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQueuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQueuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQueuesResponseParams struct {
+	// 队列概览信息列表。
+	QueueSet []*QueueOverview `json:"QueueSet,omitempty" name:"QueueSet"`
+
+	// 符合条件的节点数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeQueuesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQueuesResponseParams `json:"Response"`
+}
+
+func (r *DescribeQueuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQueuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExpansionNodeConfig struct {
 	// 扩容实例所在的位置。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
@@ -1240,6 +1517,16 @@ type ExpansionNodeConfigOverview struct {
 	// 节点数据盘配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
+}
+
+type Filter struct {
+	// 需要过滤的字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段的过滤值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type GooseFSOption struct {
@@ -1377,6 +1664,36 @@ type NodeActivity struct {
 	NodeActivityStatusReason *string `json:"NodeActivityStatusReason,omitempty" name:"NodeActivityStatusReason"`
 }
 
+type NodeOverview struct {
+	// 节点实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点所在可用区信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 节点状态。<br><li>SUBMITTED：已完成提交。<br><li>CREATING：创建中。<br><li>CREATED：完成创建。<br><li>INITING：初始化中。<br><li>INIT_FAILED：初始化失败。<br><li>RUNNING：运行中。<br><li>DELETING：销毁中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeState *string `json:"NodeState,omitempty" name:"NodeState"`
+
+	// 镜像ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 节点所属队列名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// 节点角色。<br><li>Manager：管控节点。<br><li>Compute：计算节点。<br><li>Login：登录节点。<br><li>ManagerBackup：备用管控节点。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
+
+	// 节点类型。<br><li>STATIC：静态节点。<br><li>DYNAMIC：弹性节点。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+}
+
 type Placement struct {
 	// 实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
@@ -1432,6 +1749,12 @@ type QueueConfigOverview struct {
 
 	// 扩容节点配置信息。
 	ExpansionNodeConfigs []*ExpansionNodeConfigOverview `json:"ExpansionNodeConfigs,omitempty" name:"ExpansionNodeConfigs"`
+}
+
+type QueueOverview struct {
+	// 队列名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 }
 
 // Predefined struct for user

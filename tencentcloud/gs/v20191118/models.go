@@ -22,9 +22,6 @@ import (
 
 // Predefined struct for user
 type CreateSessionRequestParams struct {
-	// 客户端session信息，从JSSDK请求中获得
-	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
-
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -36,6 +33,9 @@ type CreateSessionRequestParams struct {
 
 	// 游戏参数
 	GameParas *string `json:"GameParas,omitempty" name:"GameParas"`
+
+	// 客户端session信息，从JSSDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
+	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
 
 	// 分辨率,，可设置为1080p或720p或1920x1080格式
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
@@ -82,9 +82,6 @@ type CreateSessionRequestParams struct {
 type CreateSessionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 客户端session信息，从JSSDK请求中获得
-	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
-
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -96,6 +93,9 @@ type CreateSessionRequest struct {
 
 	// 游戏参数
 	GameParas *string `json:"GameParas,omitempty" name:"GameParas"`
+
+	// 客户端session信息，从JSSDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
+	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
 
 	// 分辨率,，可设置为1080p或720p或1920x1080格式
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
@@ -151,11 +151,11 @@ func (r *CreateSessionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ClientSession")
 	delete(f, "UserId")
 	delete(f, "GameId")
 	delete(f, "GameRegion")
 	delete(f, "GameParas")
+	delete(f, "ClientSession")
 	delete(f, "Resolution")
 	delete(f, "ImageUrl")
 	delete(f, "SetNo")

@@ -342,9 +342,6 @@ type ConfigureSyncJobRequestParams struct {
 	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
 
-	// 同步任务选项
-	Options *Options `json:"Options,omitempty" name:"Options"`
-
 	// 同步库表对象信息
 	Objects *Objects `json:"Objects,omitempty" name:"Objects"`
 
@@ -365,6 +362,9 @@ type ConfigureSyncJobRequestParams struct {
 
 	// 目标端信息，单节点数据库使用
 	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
+
+	// 同步任务选项
+	Options *Options `json:"Options,omitempty" name:"Options"`
 
 	// 自动重试的时间段、可设置5至720分钟、0表示不重试
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
@@ -382,9 +382,6 @@ type ConfigureSyncJobRequest struct {
 	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
 	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
 
-	// 同步任务选项
-	Options *Options `json:"Options,omitempty" name:"Options"`
-
 	// 同步库表对象信息
 	Objects *Objects `json:"Objects,omitempty" name:"Objects"`
 
@@ -405,6 +402,9 @@ type ConfigureSyncJobRequest struct {
 
 	// 目标端信息，单节点数据库使用
 	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
+
+	// 同步任务选项
+	Options *Options `json:"Options,omitempty" name:"Options"`
 
 	// 自动重试的时间段、可设置5至720分钟、0表示不重试
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
@@ -425,7 +425,6 @@ func (r *ConfigureSyncJobRequest) FromJsonString(s string) error {
 	delete(f, "JobId")
 	delete(f, "SrcAccessType")
 	delete(f, "DstAccessType")
-	delete(f, "Options")
 	delete(f, "Objects")
 	delete(f, "JobName")
 	delete(f, "JobMode")
@@ -433,6 +432,7 @@ func (r *ConfigureSyncJobRequest) FromJsonString(s string) error {
 	delete(f, "ExpectRunTime")
 	delete(f, "SrcInfo")
 	delete(f, "DstInfo")
+	delete(f, "Options")
 	delete(f, "AutoRetryTimeRangeMinutes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureSyncJobRequest has unknown keys!", "")
@@ -1277,7 +1277,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Procedures []*string `json:"Procedures,omitempty" name:"Procedures"`
 
-	// 触发器迁移模式，All(为当前对象下的所有对象)，partial(部分对象)，如果整库同步此处应该为All。
+	// 触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerMode *string `json:"TriggerMode,omitempty" name:"TriggerMode"`
 
@@ -1285,7 +1285,7 @@ type Database struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Triggers []*string `json:"Triggers,omitempty" name:"Triggers"`
 
-	// 事件迁移模式，All(为当前对象下的所有对象)，partial(部分对象)，如果整库同步此处应该为All。
+	// 事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventMode *string `json:"EventMode,omitempty" name:"EventMode"`
 

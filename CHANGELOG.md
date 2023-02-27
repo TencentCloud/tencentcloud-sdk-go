@@ -1,3 +1,188 @@
+# Release v1.0.603
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 48 次发布
+
+发布时间：2023-02-27 01:09:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143)
+
+	* 新增出参：CdcSet
+
+
+新增数据结构：
+
+* [DetailPrice](https://cloud.tencent.com/document/api/362/15669#DetailPrice)
+
+修改数据结构：
+
+* [AutoSnapshotPolicy](https://cloud.tencent.com/document/api/362/15669#AutoSnapshotPolicy)
+
+	* 新增成员：CopyFromAccountUin, Tags
+
+* [Cdc](https://cloud.tencent.com/document/api/362/15669#Cdc)
+
+	* 新增成员：CreatedTime, DiskNumber
+
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+
+	* 新增成员：LastAttachInsId, ErrorPrompt
+
+* [DiskConfig](https://cloud.tencent.com/document/api/362/15669#DiskConfig)
+
+	* 新增成员：Price
+
+* [Placement](https://cloud.tencent.com/document/api/362/15669#Placement)
+
+	* 新增成员：ProjectName
+
+* [PrepayPrice](https://cloud.tencent.com/document/api/362/15669#PrepayPrice)
+
+	* 新增成员：DetailPrices
+
+* [Snapshot](https://cloud.tencent.com/document/api/362/15669#Snapshot)
+
+	* <font color="#dd0000">**修改成员**：</font>Tags
+
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 52 次发布
+
+发布时间：2023-02-27 01:19:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyDBEncryptAttributes](https://cloud.tencent.com/document/api/557/86907)
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 11 次发布
+
+发布时间：2023-02-27 01:22:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ConfigureSyncJob](https://cloud.tencent.com/document/api/571/82107)
+
+	* <font color="#dd0000">**修改入参**：</font>Options
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 事件总线(eb) 版本：2021-04-16
+
+### 第 8 次发布
+
+发布时间：2023-02-27 01:23:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateEventBus](https://cloud.tencent.com/document/api/1359/67681)
+
+	* 新增入参：EnableStore
+
+
+
+
+## 云游戏(gs) 版本：2019-11-18
+
+### 第 20 次发布
+
+发布时间：2023-02-27 01:27:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSession](https://cloud.tencent.com/document/api/1162/40740)
+
+	* <font color="#dd0000">**修改入参**：</font>ClientSession
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 44 次发布
+
+发布时间：2023-02-27 01:32:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquirePriceCreateInstances](https://cloud.tencent.com/document/api/1207/55558)
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceChargePrepaid
+
+* [InquirePriceRenewInstances](https://cloud.tencent.com/document/api/1207/55557)
+
+	* <font color="#dd0000">**修改入参**：</font>InstanceChargePrepaid
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 12 次发布
+
+发布时间：2023-02-27 01:46:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddQueue](https://cloud.tencent.com/document/api/1527/86911)
+* [DeleteQueue](https://cloud.tencent.com/document/api/1527/86910)
+* [DescribeNodes](https://cloud.tencent.com/document/api/1527/86912)
+* [DescribeQueues](https://cloud.tencent.com/document/api/1527/86909)
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/1527/72108#Filter)
+* [NodeOverview](https://cloud.tencent.com/document/api/1527/72108#NodeOverview)
+* [QueueOverview](https://cloud.tencent.com/document/api/1527/72108#QueueOverview)
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
 # Release v1.0.602
 
 ## 品牌经营管家(bma) 版本：2022-11-15

@@ -4499,11 +4499,11 @@ type InquirePriceCreateInstancesRequestParams struct {
 	// 实例的套餐 ID。
 	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
 
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
 	// 创建数量，默认为 1。
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
-
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
-	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
 
 	// 应用镜像 ID，使用收费应用镜像时必填。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
@@ -4515,11 +4515,11 @@ type InquirePriceCreateInstancesRequest struct {
 	// 实例的套餐 ID。
 	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
 
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+
 	// 创建数量，默认为 1。
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
-
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
-	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
 
 	// 应用镜像 ID，使用收费应用镜像时必填。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
@@ -4538,8 +4538,8 @@ func (r *InquirePriceCreateInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "BundleId")
-	delete(f, "InstanceCount")
 	delete(f, "InstanceChargePrepaid")
+	delete(f, "InstanceCount")
 	delete(f, "BlueprintId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceCreateInstancesRequest has unknown keys!", "")
@@ -4641,7 +4641,7 @@ type InquirePriceRenewInstancesRequestParams struct {
 	// 待续费的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573 )接口返回值中的InstanceId获取。每次请求批量实例的上限为50。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
 
 	// 是否续费数据盘。默认值: false, 即不续费。
@@ -4657,7 +4657,7 @@ type InquirePriceRenewInstancesRequest struct {
 	// 待续费的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573 )接口返回值中的InstanceId获取。每次请求批量实例的上限为50。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
 
 	// 是否续费数据盘。默认值: false, 即不续费。
