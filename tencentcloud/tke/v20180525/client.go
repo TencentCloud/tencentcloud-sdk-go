@@ -12430,6 +12430,7 @@ func NewUpgradeClusterInstancesResponse() (response *UpgradeClusterInstancesResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKALREADYRUNNING = "FailedOperation.TaskAlreadyRunning"
+//  FAILEDOPERATION_TASKLIFESTATEERROR = "FailedOperation.TaskLifeStateError"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_TASKALREADYRUNNING = "InternalError.TaskAlreadyRunning"
@@ -12448,6 +12449,7 @@ func (c *Client) UpgradeClusterInstances(request *UpgradeClusterInstancesRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKALREADYRUNNING = "FailedOperation.TaskAlreadyRunning"
+//  FAILEDOPERATION_TASKLIFESTATEERROR = "FailedOperation.TaskLifeStateError"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_TASKALREADYRUNNING = "InternalError.TaskAlreadyRunning"

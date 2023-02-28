@@ -3331,6 +3331,118 @@ func (c *Client) ModifyBlockTopWithContext(ctx context.Context, request *ModifyB
     return
 }
 
+func NewModifyEnterpriseSecurityDispatchStatusRequest() (request *ModifyEnterpriseSecurityDispatchStatusRequest) {
+    request = &ModifyEnterpriseSecurityDispatchStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyEnterpriseSecurityDispatchStatus")
+    
+    
+    return
+}
+
+func NewModifyEnterpriseSecurityDispatchStatusResponse() (response *ModifyEnterpriseSecurityDispatchStatusResponse) {
+    response = &ModifyEnterpriseSecurityDispatchStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEnterpriseSecurityDispatchStatus
+// 修改企业安全组下发状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyEnterpriseSecurityDispatchStatus(request *ModifyEnterpriseSecurityDispatchStatusRequest) (response *ModifyEnterpriseSecurityDispatchStatusResponse, err error) {
+    return c.ModifyEnterpriseSecurityDispatchStatusWithContext(context.Background(), request)
+}
+
+// ModifyEnterpriseSecurityDispatchStatus
+// 修改企业安全组下发状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyEnterpriseSecurityDispatchStatusWithContext(ctx context.Context, request *ModifyEnterpriseSecurityDispatchStatusRequest) (response *ModifyEnterpriseSecurityDispatchStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyEnterpriseSecurityDispatchStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEnterpriseSecurityDispatchStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEnterpriseSecurityDispatchStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEnterpriseSecurityGroupRuleRequest() (request *ModifyEnterpriseSecurityGroupRuleRequest) {
+    request = &ModifyEnterpriseSecurityGroupRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyEnterpriseSecurityGroupRule")
+    
+    
+    return
+}
+
+func NewModifyEnterpriseSecurityGroupRuleResponse() (response *ModifyEnterpriseSecurityGroupRuleResponse) {
+    response = &ModifyEnterpriseSecurityGroupRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEnterpriseSecurityGroupRule
+// 编辑新企业安全组规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyEnterpriseSecurityGroupRule(request *ModifyEnterpriseSecurityGroupRuleRequest) (response *ModifyEnterpriseSecurityGroupRuleResponse, err error) {
+    return c.ModifyEnterpriseSecurityGroupRuleWithContext(context.Background(), request)
+}
+
+// ModifyEnterpriseSecurityGroupRule
+// 编辑新企业安全组规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyEnterpriseSecurityGroupRuleWithContext(ctx context.Context, request *ModifyEnterpriseSecurityGroupRuleRequest) (response *ModifyEnterpriseSecurityGroupRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyEnterpriseSecurityGroupRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEnterpriseSecurityGroupRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEnterpriseSecurityGroupRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyNatAcRuleRequest() (request *ModifyNatAcRuleRequest) {
     request = &ModifyNatAcRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3619,6 +3731,88 @@ func (c *Client) ModifyNatFwVpcDnsSwitchWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyNatFwVpcDnsSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNatSequenceRulesRequest() (request *ModifyNatSequenceRulesRequest) {
+    request = &ModifyNatSequenceRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyNatSequenceRules")
+    
+    
+    return
+}
+
+func NewModifyNatSequenceRulesResponse() (response *ModifyNatSequenceRulesResponse) {
+    response = &ModifyNatSequenceRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyNatSequenceRules
+// NAT防火墙规则快速排序
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNatSequenceRules(request *ModifyNatSequenceRulesRequest) (response *ModifyNatSequenceRulesResponse, err error) {
+    return c.ModifyNatSequenceRulesWithContext(context.Background(), request)
+}
+
+// ModifyNatSequenceRules
+// NAT防火墙规则快速排序
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNatSequenceRulesWithContext(ctx context.Context, request *ModifyNatSequenceRulesRequest) (response *ModifyNatSequenceRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyNatSequenceRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNatSequenceRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNatSequenceRulesResponse()
     err = c.Send(request, response)
     return
 }

@@ -1327,25 +1327,7 @@ func NewDescribeBPFakeURLsResponse() (response *DescribeBPFakeURLsResponse) {
 // 查询仿冒链接
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDACTION = "InvalidAction"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  NOSUCHVERSION = "NoSuchVersion"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBPFakeURLs(request *DescribeBPFakeURLsRequest) (response *DescribeBPFakeURLsResponse, err error) {
     return c.DescribeBPFakeURLsWithContext(context.Background(), request)
 }
@@ -1354,25 +1336,7 @@ func (c *Client) DescribeBPFakeURLs(request *DescribeBPFakeURLsRequest) (respons
 // 查询仿冒链接
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDACTION = "InvalidAction"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  NOSUCHVERSION = "NoSuchVersion"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBPFakeURLsWithContext(ctx context.Context, request *DescribeBPFakeURLsRequest) (response *DescribeBPFakeURLsResponse, err error) {
     if request == nil {
         request = NewDescribeBPFakeURLsRequest()

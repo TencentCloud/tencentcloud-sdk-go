@@ -73,6 +73,7 @@ func NewAddDeviceGroupMembersResponse() (response *AddDeviceGroupMembersResponse
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddDeviceGroupMembers(request *AddDeviceGroupMembersRequest) (response *AddDeviceGroupMembersResponse, err error) {
     return c.AddDeviceGroupMembersWithContext(context.Background(), request)
 }
@@ -87,6 +88,7 @@ func (c *Client) AddDeviceGroupMembers(request *AddDeviceGroupMembersRequest) (r
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddDeviceGroupMembersWithContext(ctx context.Context, request *AddDeviceGroupMembersRequest) (response *AddDeviceGroupMembersResponse, err error) {
     if request == nil {
         request = NewAddDeviceGroupMembersRequest()
@@ -155,6 +157,114 @@ func (c *Client) AddUserGroupMembersWithContext(ctx context.Context, request *Ad
     request.SetContext(ctx)
     
     response = NewAddUserGroupMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBindDeviceAccountPasswordRequest() (request *BindDeviceAccountPasswordRequest) {
+    request = &BindDeviceAccountPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "BindDeviceAccountPassword")
+    
+    
+    return
+}
+
+func NewBindDeviceAccountPasswordResponse() (response *BindDeviceAccountPasswordResponse) {
+    response = &BindDeviceAccountPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindDeviceAccountPassword
+// 绑定主机账号密码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BindDeviceAccountPassword(request *BindDeviceAccountPasswordRequest) (response *BindDeviceAccountPasswordResponse, err error) {
+    return c.BindDeviceAccountPasswordWithContext(context.Background(), request)
+}
+
+// BindDeviceAccountPassword
+// 绑定主机账号密码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BindDeviceAccountPasswordWithContext(ctx context.Context, request *BindDeviceAccountPasswordRequest) (response *BindDeviceAccountPasswordResponse, err error) {
+    if request == nil {
+        request = NewBindDeviceAccountPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindDeviceAccountPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindDeviceAccountPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBindDeviceAccountPrivateKeyRequest() (request *BindDeviceAccountPrivateKeyRequest) {
+    request = &BindDeviceAccountPrivateKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "BindDeviceAccountPrivateKey")
+    
+    
+    return
+}
+
+func NewBindDeviceAccountPrivateKeyResponse() (response *BindDeviceAccountPrivateKeyResponse) {
+    response = &BindDeviceAccountPrivateKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindDeviceAccountPrivateKey
+// 绑定主机账号私钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BindDeviceAccountPrivateKey(request *BindDeviceAccountPrivateKeyRequest) (response *BindDeviceAccountPrivateKeyResponse, err error) {
+    return c.BindDeviceAccountPrivateKeyWithContext(context.Background(), request)
+}
+
+// BindDeviceAccountPrivateKey
+// 绑定主机账号私钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BindDeviceAccountPrivateKeyWithContext(ctx context.Context, request *BindDeviceAccountPrivateKeyRequest) (response *BindDeviceAccountPrivateKeyResponse, err error) {
+    if request == nil {
+        request = NewBindDeviceAccountPrivateKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindDeviceAccountPrivateKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindDeviceAccountPrivateKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -311,6 +421,254 @@ func (c *Client) CreateAclWithContext(ctx context.Context, request *CreateAclReq
     request.SetContext(ctx)
     
     response = NewCreateAclResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAssetSyncJobRequest() (request *CreateAssetSyncJobRequest) {
+    request = &CreateAssetSyncJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "CreateAssetSyncJob")
+    
+    
+    return
+}
+
+func NewCreateAssetSyncJobResponse() (response *CreateAssetSyncJobResponse) {
+    response = &CreateAssetSyncJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAssetSyncJob
+// 创建手工资产同步任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+//  FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+//  FAILEDOPERATION_TOOFREQUENT = "FailedOperation.TooFrequent"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAssetSyncJob(request *CreateAssetSyncJobRequest) (response *CreateAssetSyncJobResponse, err error) {
+    return c.CreateAssetSyncJobWithContext(context.Background(), request)
+}
+
+// CreateAssetSyncJob
+// 创建手工资产同步任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+//  FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+//  FAILEDOPERATION_TOOFREQUENT = "FailedOperation.TooFrequent"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAssetSyncJobWithContext(ctx context.Context, request *CreateAssetSyncJobRequest) (response *CreateAssetSyncJobResponse, err error) {
+    if request == nil {
+        request = NewCreateAssetSyncJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAssetSyncJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAssetSyncJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCmdTemplateRequest() (request *CreateCmdTemplateRequest) {
+    request = &CreateCmdTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "CreateCmdTemplate")
+    
+    
+    return
+}
+
+func NewCreateCmdTemplateResponse() (response *CreateCmdTemplateResponse) {
+    response = &CreateCmdTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCmdTemplate
+// 新建高危命令模板
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCmdTemplate(request *CreateCmdTemplateRequest) (response *CreateCmdTemplateResponse, err error) {
+    return c.CreateCmdTemplateWithContext(context.Background(), request)
+}
+
+// CreateCmdTemplate
+// 新建高危命令模板
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCmdTemplateWithContext(ctx context.Context, request *CreateCmdTemplateRequest) (response *CreateCmdTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateCmdTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCmdTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCmdTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDeviceAccountRequest() (request *CreateDeviceAccountRequest) {
+    request = &CreateDeviceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "CreateDeviceAccount")
+    
+    
+    return
+}
+
+func NewCreateDeviceAccountResponse() (response *CreateDeviceAccountResponse) {
+    response = &CreateDeviceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDeviceAccount
+// 新建主机账号
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDeviceAccount(request *CreateDeviceAccountRequest) (response *CreateDeviceAccountResponse, err error) {
+    return c.CreateDeviceAccountWithContext(context.Background(), request)
+}
+
+// CreateDeviceAccount
+// 新建主机账号
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateDeviceAccountWithContext(ctx context.Context, request *CreateDeviceAccountRequest) (response *CreateDeviceAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateDeviceAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeviceAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDeviceAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -597,6 +955,112 @@ func (c *Client) DeleteAclsWithContext(ctx context.Context, request *DeleteAclsR
     return
 }
 
+func NewDeleteCmdTemplatesRequest() (request *DeleteCmdTemplatesRequest) {
+    request = &DeleteCmdTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DeleteCmdTemplates")
+    
+    
+    return
+}
+
+func NewDeleteCmdTemplatesResponse() (response *DeleteCmdTemplatesResponse) {
+    response = &DeleteCmdTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCmdTemplates
+// 删除高危命令模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteCmdTemplates(request *DeleteCmdTemplatesRequest) (response *DeleteCmdTemplatesResponse, err error) {
+    return c.DeleteCmdTemplatesWithContext(context.Background(), request)
+}
+
+// DeleteCmdTemplates
+// 删除高危命令模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteCmdTemplatesWithContext(ctx context.Context, request *DeleteCmdTemplatesRequest) (response *DeleteCmdTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDeleteCmdTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCmdTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCmdTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeviceAccountsRequest() (request *DeleteDeviceAccountsRequest) {
+    request = &DeleteDeviceAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DeleteDeviceAccounts")
+    
+    
+    return
+}
+
+func NewDeleteDeviceAccountsResponse() (response *DeleteDeviceAccountsResponse) {
+    response = &DeleteDeviceAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDeviceAccounts
+// 删除主机账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteDeviceAccounts(request *DeleteDeviceAccountsRequest) (response *DeleteDeviceAccountsResponse, err error) {
+    return c.DeleteDeviceAccountsWithContext(context.Background(), request)
+}
+
+// DeleteDeviceAccounts
+// 删除主机账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteDeviceAccountsWithContext(ctx context.Context, request *DeleteDeviceAccountsRequest) (response *DeleteDeviceAccountsResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceAccountsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceGroupMembersRequest() (request *DeleteDeviceGroupMembersRequest) {
     request = &DeleteDeviceGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -703,6 +1167,60 @@ func (c *Client) DeleteDeviceGroupsWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteDeviceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDevicesRequest() (request *DeleteDevicesRequest) {
+    request = &DeleteDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DeleteDevices")
+    
+    
+    return
+}
+
+func NewDeleteDevicesResponse() (response *DeleteDevicesResponse) {
+    response = &DeleteDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDevices
+// 删除主机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteDevices(request *DeleteDevicesRequest) (response *DeleteDevicesResponse, err error) {
+    return c.DeleteDevicesWithContext(context.Background(), request)
+}
+
+// DeleteDevices
+// 删除主机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteDevicesWithContext(ctx context.Context, request *DeleteDevicesRequest) (response *DeleteDevicesResponse, err error) {
+    if request == nil {
+        request = NewDeleteDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDevicesResponse()
     err = c.Send(request, response)
     return
 }
@@ -867,6 +1385,66 @@ func (c *Client) DeleteUsersWithContext(ctx context.Context, request *DeleteUser
     return
 }
 
+func NewDeployResourceRequest() (request *DeployResourceRequest) {
+    request = &DeployResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DeployResource")
+    
+    
+    return
+}
+
+func NewDeployResourceResponse() (response *DeployResourceResponse) {
+    response = &DeployResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeployResource
+// 开通服务，初始化资源，只针对新购资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VPCDEPLOYED = "FailedOperation.VPCDeployed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeployResource(request *DeployResourceRequest) (response *DeployResourceResponse, err error) {
+    return c.DeployResourceWithContext(context.Background(), request)
+}
+
+// DeployResource
+// 开通服务，初始化资源，只针对新购资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VPCDEPLOYED = "FailedOperation.VPCDeployed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeployResourceWithContext(ctx context.Context, request *DeployResourceRequest) (response *DeployResourceResponse, err error) {
+    if request == nil {
+        request = NewDeployResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeployResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAclsRequest() (request *DescribeAclsRequest) {
     request = &DescribeAclsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -923,6 +1501,112 @@ func (c *Client) DescribeAclsWithContext(ctx context.Context, request *DescribeA
     return
 }
 
+func NewDescribeAssetSyncStatusRequest() (request *DescribeAssetSyncStatusRequest) {
+    request = &DescribeAssetSyncStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DescribeAssetSyncStatus")
+    
+    
+    return
+}
+
+func NewDescribeAssetSyncStatusResponse() (response *DescribeAssetSyncStatusResponse) {
+    response = &DescribeAssetSyncStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetSyncStatus
+// 查询资产同步状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAssetSyncStatus(request *DescribeAssetSyncStatusRequest) (response *DescribeAssetSyncStatusResponse, err error) {
+    return c.DescribeAssetSyncStatusWithContext(context.Background(), request)
+}
+
+// DescribeAssetSyncStatus
+// 查询资产同步状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAssetSyncStatusWithContext(ctx context.Context, request *DescribeAssetSyncStatusRequest) (response *DescribeAssetSyncStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetSyncStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetSyncStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetSyncStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCmdTemplatesRequest() (request *DescribeCmdTemplatesRequest) {
+    request = &DescribeCmdTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DescribeCmdTemplates")
+    
+    
+    return
+}
+
+func NewDescribeCmdTemplatesResponse() (response *DescribeCmdTemplatesResponse) {
+    response = &DescribeCmdTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCmdTemplates
+// 查询命令模板列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCmdTemplates(request *DescribeCmdTemplatesRequest) (response *DescribeCmdTemplatesResponse, err error) {
+    return c.DescribeCmdTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeCmdTemplates
+// 查询命令模板列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCmdTemplatesWithContext(ctx context.Context, request *DescribeCmdTemplatesRequest) (response *DescribeCmdTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCmdTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCmdTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCmdTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
     request = &DescribeDasbImageIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -949,7 +1633,6 @@ func NewDescribeDasbImageIdsResponse() (response *DescribeDasbImageIdsResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
     return c.DescribeDasbImageIdsWithContext(context.Background(), request)
 }
@@ -962,7 +1645,6 @@ func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (res
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDasbImageIdsWithContext(ctx context.Context, request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
     if request == nil {
         request = NewDescribeDasbImageIdsRequest()
@@ -975,6 +1657,58 @@ func (c *Client) DescribeDasbImageIdsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeDasbImageIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceAccountsRequest() (request *DescribeDeviceAccountsRequest) {
+    request = &DescribeDeviceAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DescribeDeviceAccounts")
+    
+    
+    return
+}
+
+func NewDescribeDeviceAccountsResponse() (response *DescribeDeviceAccountsResponse) {
+    response = &DescribeDeviceAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeviceAccounts
+// 查询主机账号列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDeviceAccounts(request *DescribeDeviceAccountsRequest) (response *DescribeDeviceAccountsResponse, err error) {
+    return c.DescribeDeviceAccountsWithContext(context.Background(), request)
+}
+
+// DescribeDeviceAccounts
+// 查询主机账号列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeDeviceAccountsWithContext(ctx context.Context, request *DescribeDeviceAccountsRequest) (response *DescribeDeviceAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceAccountsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceAccountsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1369,6 +2103,90 @@ func (c *Client) DescribeUsersWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewImportExternalDeviceRequest() (request *ImportExternalDeviceRequest) {
+    request = &ImportExternalDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ImportExternalDevice")
+    
+    
+    return
+}
+
+func NewImportExternalDeviceResponse() (response *ImportExternalDeviceResponse) {
+    response = &ImportExternalDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ImportExternalDevice
+// 导入外部资产信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ImportExternalDevice(request *ImportExternalDeviceRequest) (response *ImportExternalDeviceResponse, err error) {
+    return c.ImportExternalDeviceWithContext(context.Background(), request)
+}
+
+// ImportExternalDevice
+// 导入外部资产信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ImportExternalDeviceWithContext(ctx context.Context, request *ImportExternalDeviceRequest) (response *ImportExternalDeviceResponse, err error) {
+    if request == nil {
+        request = NewImportExternalDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportExternalDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportExternalDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAclRequest() (request *ModifyAclRequest) {
     request = &ModifyAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1441,6 +2259,180 @@ func (c *Client) ModifyAclWithContext(ctx context.Context, request *ModifyAclReq
     request.SetContext(ctx)
     
     response = NewModifyAclResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
+    request = &ModifyDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ModifyDevice")
+    
+    
+    return
+}
+
+func NewModifyDeviceResponse() (response *ModifyDeviceResponse) {
+    response = &ModifyDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDevice
+// 修改资产信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDevice(request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
+    return c.ModifyDeviceWithContext(context.Background(), request)
+}
+
+// ModifyDevice
+// 修改资产信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDeviceWithContext(ctx context.Context, request *ModifyDeviceRequest) (response *ModifyDeviceResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDeviceGroupRequest() (request *ModifyDeviceGroupRequest) {
+    request = &ModifyDeviceGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ModifyDeviceGroup")
+    
+    
+    return
+}
+
+func NewModifyDeviceGroupResponse() (response *ModifyDeviceGroupResponse) {
+    response = &ModifyDeviceGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDeviceGroup
+// 修改资产组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDeviceGroup(request *ModifyDeviceGroupRequest) (response *ModifyDeviceGroupResponse, err error) {
+    return c.ModifyDeviceGroupWithContext(context.Background(), request)
+}
+
+// ModifyDeviceGroup
+// 修改资产组
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyDeviceGroupWithContext(ctx context.Context, request *ModifyDeviceGroupRequest) (response *ModifyDeviceGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyDeviceGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDeviceGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDeviceGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -1527,6 +2519,186 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     request.SetContext(ctx)
     
     response = NewModifyUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetDeviceAccountPasswordRequest() (request *ResetDeviceAccountPasswordRequest) {
+    request = &ResetDeviceAccountPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ResetDeviceAccountPassword")
+    
+    
+    return
+}
+
+func NewResetDeviceAccountPasswordResponse() (response *ResetDeviceAccountPasswordResponse) {
+    response = &ResetDeviceAccountPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetDeviceAccountPassword
+// 清除设备账号绑定密码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ResetDeviceAccountPassword(request *ResetDeviceAccountPasswordRequest) (response *ResetDeviceAccountPasswordResponse, err error) {
+    return c.ResetDeviceAccountPasswordWithContext(context.Background(), request)
+}
+
+// ResetDeviceAccountPassword
+// 清除设备账号绑定密码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ResetDeviceAccountPasswordWithContext(ctx context.Context, request *ResetDeviceAccountPasswordRequest) (response *ResetDeviceAccountPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetDeviceAccountPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetDeviceAccountPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetDeviceAccountPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetDeviceAccountPrivateKeyRequest() (request *ResetDeviceAccountPrivateKeyRequest) {
+    request = &ResetDeviceAccountPrivateKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ResetDeviceAccountPrivateKey")
+    
+    
+    return
+}
+
+func NewResetDeviceAccountPrivateKeyResponse() (response *ResetDeviceAccountPrivateKeyResponse) {
+    response = &ResetDeviceAccountPrivateKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetDeviceAccountPrivateKey
+// 清除设备账号绑定的密钥
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ResetDeviceAccountPrivateKey(request *ResetDeviceAccountPrivateKeyRequest) (response *ResetDeviceAccountPrivateKeyResponse, err error) {
+    return c.ResetDeviceAccountPrivateKeyWithContext(context.Background(), request)
+}
+
+// ResetDeviceAccountPrivateKey
+// 清除设备账号绑定的密钥
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ResetDeviceAccountPrivateKeyWithContext(ctx context.Context, request *ResetDeviceAccountPrivateKeyRequest) (response *ResetDeviceAccountPrivateKeyResponse, err error) {
+    if request == nil {
+        request = NewResetDeviceAccountPrivateKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetDeviceAccountPrivateKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetDeviceAccountPrivateKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetUserRequest() (request *ResetUserRequest) {
+    request = &ResetUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ResetUser")
+    
+    
+    return
+}
+
+func NewResetUserResponse() (response *ResetUserResponse) {
+    response = &ResetUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetUser
+// 重置用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ResetUser(request *ResetUserRequest) (response *ResetUserResponse, err error) {
+    return c.ResetUserWithContext(context.Background(), request)
+}
+
+// ResetUser
+// 重置用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ResetUserWithContext(ctx context.Context, request *ResetUserRequest) (response *ResetUserResponse, err error) {
+    if request == nil {
+        request = NewResetUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetUserResponse()
     err = c.Send(request, response)
     return
 }

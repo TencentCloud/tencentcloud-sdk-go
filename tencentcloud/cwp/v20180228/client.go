@@ -12473,6 +12473,7 @@ func NewModifyWebPageProtectSettingResponse() (response *ModifyWebPageProtectSet
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyWebPageProtectSetting(request *ModifyWebPageProtectSettingRequest) (response *ModifyWebPageProtectSettingResponse, err error) {
@@ -12487,6 +12488,7 @@ func (c *Client) ModifyWebPageProtectSetting(request *ModifyWebPageProtectSettin
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyWebPageProtectSettingWithContext(ctx context.Context, request *ModifyWebPageProtectSettingRequest) (response *ModifyWebPageProtectSettingResponse, err error) {

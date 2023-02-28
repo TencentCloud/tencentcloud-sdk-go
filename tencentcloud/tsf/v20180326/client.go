@@ -67,6 +67,7 @@ func NewAddClusterInstancesResponse() (response *AddClusterInstancesResponse) {
 // 添加云主机节点至TSF集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_INSTANCERESETERROR = "FailedOperation.InstanceResetError"
 //  FAILEDOPERATION_INSTANCERESETTIMEOUT = "FailedOperation.InstanceResetTimeout"
 //  FAILEDOPERATION_INSTANCEUPDATEFAILED = "FailedOperation.InstanceUpdateFailed"
@@ -89,6 +90,7 @@ func (c *Client) AddClusterInstances(request *AddClusterInstancesRequest) (respo
 // 添加云主机节点至TSF集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_INSTANCERESETERROR = "FailedOperation.InstanceResetError"
 //  FAILEDOPERATION_INSTANCERESETTIMEOUT = "FailedOperation.InstanceResetTimeout"
 //  FAILEDOPERATION_INSTANCEUPDATEFAILED = "FailedOperation.InstanceUpdateFailed"
@@ -4611,6 +4613,7 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CLUSTERPAGELIMITINVALID = "InvalidParameterValue.ClusterPageLimitInvalid"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 //  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -4628,6 +4631,7 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CLUSTERPAGELIMITINVALID = "InvalidParameterValue.ClusterPageLimitInvalid"
 //  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
 //  RESOURCENOTFOUND_LICENSESERVERNOTFOUND = "ResourceNotFound.LicenseServerNotFound"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"

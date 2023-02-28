@@ -23,11 +23,23 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 账号或密码错误。
+	FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+
+	// 连接服务器失败。
+	FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+
 	// 目标数据不存在。
 	FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 
 	// 重复数据。
 	FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+
+	// 操作过于频繁，请稍后再试。
+	FAILEDOPERATION_TOOFREQUENT = "FailedOperation.TooFrequent"
+
+	// 该VPC已开通服务，请选择其他VPC。
+	FAILEDOPERATION_VPCDEPLOYED = "FailedOperation.VPCDeployed"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

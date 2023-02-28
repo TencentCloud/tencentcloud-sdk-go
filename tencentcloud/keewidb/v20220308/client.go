@@ -882,6 +882,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -897,6 +898,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1218,6 +1220,7 @@ func NewDescribeTaskListResponse() (response *DescribeTaskListResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -1230,6 +1233,7 @@ func (c *Client) DescribeTaskList(request *DescribeTaskListRequest) (response *D
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"

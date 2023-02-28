@@ -1220,6 +1220,7 @@ func NewCreateRoleResponse() (response *CreateRoleResponse) {
 //  RESOURCEINUSE_ROLE = "ResourceInUse.Role"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
     return c.CreateRoleWithContext(context.Background(), request)
 }
@@ -1239,6 +1240,7 @@ func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleRes
 //  RESOURCEINUSE_ROLE = "ResourceInUse.Role"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
     if request == nil {
         request = NewCreateRoleRequest()
@@ -3811,6 +3813,7 @@ func NewDescribeRabbitMQNodeListResponse() (response *DescribeRabbitMQNodeListRe
 // RabbitMQ专享版查询节点列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeRabbitMQNodeList(request *DescribeRabbitMQNodeListRequest) (response *DescribeRabbitMQNodeListResponse, err error) {
     return c.DescribeRabbitMQNodeListWithContext(context.Background(), request)
@@ -3820,6 +3823,7 @@ func (c *Client) DescribeRabbitMQNodeList(request *DescribeRabbitMQNodeListReque
 // RabbitMQ专享版查询节点列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeRabbitMQNodeListWithContext(ctx context.Context, request *DescribeRabbitMQNodeListRequest) (response *DescribeRabbitMQNodeListResponse, err error) {
     if request == nil {
@@ -3859,6 +3863,7 @@ func NewDescribeRabbitMQVipInstancesResponse() (response *DescribeRabbitMQVipIns
 // 查询用户已购的RabbitMQ专享实例列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
     return c.DescribeRabbitMQVipInstancesWithContext(context.Background(), request)
@@ -3868,6 +3873,7 @@ func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstan
 // 查询用户已购的RabbitMQ专享实例列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeRabbitMQVipInstancesWithContext(ctx context.Context, request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
     if request == nil {
@@ -5702,6 +5708,7 @@ func NewResetRocketMQConsumerOffSetResponse() (response *ResetRocketMQConsumerOf
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ResetRocketMQConsumerOffSet(request *ResetRocketMQConsumerOffSetRequest) (response *ResetRocketMQConsumerOffSetResponse, err error) {
     return c.ResetRocketMQConsumerOffSetWithContext(context.Background(), request)
@@ -5714,6 +5721,7 @@ func (c *Client) ResetRocketMQConsumerOffSet(request *ResetRocketMQConsumerOffSe
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ResetRocketMQConsumerOffSetWithContext(ctx context.Context, request *ResetRocketMQConsumerOffSetRequest) (response *ResetRocketMQConsumerOffSetResponse, err error) {
     if request == nil {

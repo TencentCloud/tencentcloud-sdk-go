@@ -199,6 +199,16 @@ type Connection struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+type ConnectionBrief struct {
+	// 连接器类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 连接器状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type ConnectionDescription struct {
 	// 资源qcs六段式，更多参考 [资源六段式](https://cloud.tencent.com/document/product/598/10606)
 	ResourceDescription *string `json:"ResourceDescription,omitempty" name:"ResourceDescription"`
@@ -210,6 +220,10 @@ type ConnectionDescription struct {
 	// ckafka参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CkafkaParams *CkafkaParams `json:"CkafkaParams,omitempty" name:"CkafkaParams"`
+
+	// data transfer service (DTS)参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DTSParams *DTSParams `json:"DTSParams,omitempty" name:"DTSParams"`
 }
 
 // Predefined struct for user
@@ -314,6 +328,9 @@ type CreateEventBusRequestParams struct {
 
 	// EB存储时长
 	SaveDays *int64 `json:"SaveDays,omitempty" name:"SaveDays"`
+
+	// EB是否开启存储
+	EnableStore *bool `json:"EnableStore,omitempty" name:"EnableStore"`
 }
 
 type CreateEventBusRequest struct {
@@ -327,6 +344,9 @@ type CreateEventBusRequest struct {
 
 	// EB存储时长
 	SaveDays *int64 `json:"SaveDays,omitempty" name:"SaveDays"`
+
+	// EB是否开启存储
+	EnableStore *bool `json:"EnableStore,omitempty" name:"EnableStore"`
 }
 
 func (r *CreateEventBusRequest) ToJsonString() string {
@@ -344,6 +364,7 @@ func (r *CreateEventBusRequest) FromJsonString(s string) error {
 	delete(f, "EventBusName")
 	delete(f, "Description")
 	delete(f, "SaveDays")
+	delete(f, "EnableStore")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEventBusRequest has unknown keys!", "")
 	}
@@ -607,6 +628,10 @@ func (r *CreateTransformationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateTransformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DTSParams struct {
+
 }
 
 type DeadLetterConfig struct {
@@ -991,6 +1016,18 @@ type EventBus struct {
 
 	// 事件集类型
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 计费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 连接器基础信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionBriefs []*ConnectionBrief `json:"ConnectionBriefs,omitempty" name:"ConnectionBriefs"`
+
+	// 目标简要信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetBriefs []*TargetBrief `json:"TargetBriefs,omitempty" name:"TargetBriefs"`
 }
 
 type Extraction struct {
@@ -1070,6 +1107,25 @@ type GetEventBusResponseParams struct {
 
 	// （已废弃）事件集类型
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 计费模式
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// EB日志存储时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SaveDays *int64 `json:"SaveDays,omitempty" name:"SaveDays"`
+
+	// EB日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
+
+	// 是否开启存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableStore *bool `json:"EnableStore,omitempty" name:"EnableStore"`
+
+	// 消息序列，是否有序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LinkMode *string `json:"LinkMode,omitempty" name:"LinkMode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

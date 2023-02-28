@@ -493,7 +493,7 @@ type ClusterActivity struct {
 	// 集群活动ID。
 	ActivityId *string `json:"ActivityId,omitempty" name:"ActivityId"`
 
-	// 集群活动类型。
+	// 集群活动类型。取值范围：<br><li>CreateAndAddNodes：创建实例并添加进集群<br><li>RemoveNodesFromCluster：从集群移除实例<br><li>TerminateNodes：销毁实例<br><li>MountStorageOption：增加挂载选项并进行挂载<br><li>UmountStorageOption：删除集群挂载存储选项并解挂载
 	ActivityType *string `json:"ActivityType,omitempty" name:"ActivityType"`
 
 	// 集群活动状态。取值范围：<br><li>PENDING：等待运行<br><li>RUNNING：运行中<br><li>SUCCESSFUL：活动成功<br><li>PARTIALLY_SUCCESSFUL：活动部分成功<br><li>FAILED：活动失败

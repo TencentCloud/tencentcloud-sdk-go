@@ -70,7 +70,7 @@ func NewApplyDiskBackupResponse() (response *ApplyDiskBackupResponse) {
 //
 // * 用于回滚的云硬盘备份点必须处于 NORMAL 状态。
 //
-//   云硬盘备份点状态可以通过 DescribeDiskBackups 接口查询。
+//   云硬盘备份点状态可以通过  [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口查询。
 //
 // * 回滚云硬盘备份点时，云硬盘的状态必须为 UNATTACHED或ATTACHED。
 //
@@ -106,7 +106,7 @@ func (c *Client) ApplyDiskBackup(request *ApplyDiskBackupRequest) (response *App
 //
 // * 用于回滚的云硬盘备份点必须处于 NORMAL 状态。
 //
-//   云硬盘备份点状态可以通过 DescribeDiskBackups 接口查询。
+//   云硬盘备份点状态可以通过  [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口查询。
 //
 // * 回滚云硬盘备份点时，云硬盘的状态必须为 UNATTACHED或ATTACHED。
 //
@@ -1076,7 +1076,7 @@ func NewDeleteDiskBackupsResponse() (response *DeleteDiskBackupsResponse) {
 // DeleteDiskBackups
 // 本接口（DeleteDiskBackups）用于删除云硬盘备份点。
 //
-// 云硬盘备份点必须处于 NORMAL 状态，云硬盘备份点状态可以通过 DescribeDiskBackups接口查询，见输出参数中 DiskBackupState 字段解释。
+// 云硬盘备份点必须处于 NORMAL 状态，云硬盘备份点状态可以通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询，见输出参数中 DiskBackupState 字段解释。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"
@@ -1093,7 +1093,7 @@ func (c *Client) DeleteDiskBackups(request *DeleteDiskBackupsRequest) (response 
 // DeleteDiskBackups
 // 本接口（DeleteDiskBackups）用于删除云硬盘备份点。
 //
-// 云硬盘备份点必须处于 NORMAL 状态，云硬盘备份点状态可以通过 DescribeDiskBackups接口查询，见输出参数中 DiskBackupState 字段解释。
+// 云硬盘备份点必须处于 NORMAL 状态，云硬盘备份点状态可以通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询，见输出参数中 DiskBackupState 字段解释。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DISKBACKUPIDMALFORMED = "InvalidParameterValue.DiskBackupIdMalformed"

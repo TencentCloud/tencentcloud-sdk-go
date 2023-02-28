@@ -214,8 +214,10 @@ func NewCreateAccelerationDomainResponse() (response *CreateAccelerationDomainRe
 //  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 //  INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = "InvalidParameterValue.ContentSameAsName"
 //  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
+//  OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
 //  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
 //  RESOURCEUNAVAILABLE_DOMAINALREADYEXISTS = "ResourceUnavailable.DomainAlreadyExists"
+//  RESOURCESSOLDOUT_L7LACKOFRESOURCES = "ResourcesSoldOut.L7LackOfResources"
 func (c *Client) CreateAccelerationDomain(request *CreateAccelerationDomainRequest) (response *CreateAccelerationDomainResponse, err error) {
     return c.CreateAccelerationDomainWithContext(context.Background(), request)
 }
@@ -229,8 +231,10 @@ func (c *Client) CreateAccelerationDomain(request *CreateAccelerationDomainReque
 //  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 //  INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = "InvalidParameterValue.ContentSameAsName"
 //  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
+//  OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
 //  RESOURCEINUSE_DNSRECORD = "ResourceInUse.DnsRecord"
 //  RESOURCEUNAVAILABLE_DOMAINALREADYEXISTS = "ResourceUnavailable.DomainAlreadyExists"
+//  RESOURCESSOLDOUT_L7LACKOFRESOURCES = "ResourcesSoldOut.L7LackOfResources"
 func (c *Client) CreateAccelerationDomainWithContext(ctx context.Context, request *CreateAccelerationDomainRequest) (response *CreateAccelerationDomainResponse, err error) {
     if request == nil {
         request = NewCreateAccelerationDomainRequest()
@@ -1005,6 +1009,7 @@ func NewCreateZoneResponse() (response *CreateZoneResponse) {
 //  INVALIDPARAMETERVALUE_ZONESAMEASNAME = "InvalidParameterValue.ZoneSameAsName"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
+//  OPERATIONDENIED_RECORDISFORBIDDEN = "OperationDenied.RecordIsForbidden"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_ALIASDOMAIN = "ResourceInUse.AliasDomain"
 //  RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
@@ -1034,6 +1039,7 @@ func (c *Client) CreateZone(request *CreateZoneRequest) (response *CreateZoneRes
 //  INVALIDPARAMETERVALUE_ZONESAMEASNAME = "InvalidParameterValue.ZoneSameAsName"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
+//  OPERATIONDENIED_RECORDISFORBIDDEN = "OperationDenied.RecordIsForbidden"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_ALIASDOMAIN = "ResourceInUse.AliasDomain"
 //  RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
@@ -1090,6 +1096,7 @@ func NewDeleteAccelerationDomainsResponse() (response *DeleteAccelerationDomains
 //  INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_DOMAINNOTFOUND = "ResourceUnavailable.DomainNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteAccelerationDomains(request *DeleteAccelerationDomainsRequest) (response *DeleteAccelerationDomainsResponse, err error) {
     return c.DeleteAccelerationDomainsWithContext(context.Background(), request)
 }
@@ -1101,6 +1108,7 @@ func (c *Client) DeleteAccelerationDomains(request *DeleteAccelerationDomainsReq
 //  INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_DOMAINNOTFOUND = "ResourceUnavailable.DomainNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteAccelerationDomainsWithContext(ctx context.Context, request *DeleteAccelerationDomainsRequest) (response *DeleteAccelerationDomainsResponse, err error) {
     if request == nil {
         request = NewDeleteAccelerationDomainsRequest()
@@ -1990,6 +1998,7 @@ func NewDescribeDnsDataResponse() (response *DescribeDnsDataResponse) {
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeDnsData(request *DescribeDnsDataRequest) (response *DescribeDnsDataResponse, err error) {
@@ -2001,6 +2010,7 @@ func (c *Client) DescribeDnsData(request *DescribeDnsDataRequest) (response *Des
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeDnsDataWithContext(ctx context.Context, request *DescribeDnsDataRequest) (response *DescribeDnsDataResponse, err error) {
@@ -2349,7 +2359,11 @@ func NewDescribeOverviewL7DataResponse() (response *DescribeOverviewL7DataRespon
 // 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2361,7 +2375,11 @@ func (c *Client) DescribeOverviewL7Data(request *DescribeOverviewL7DataRequest) 
 // 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2607,7 +2625,10 @@ func NewDescribeSingleL7AnalysisDataResponse() (response *DescribeSingleL7Analys
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2621,7 +2642,10 @@ func (c *Client) DescribeSingleL7AnalysisData(request *DescribeSingleL7AnalysisD
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2665,7 +2689,10 @@ func NewDescribeSpeedTestingDetailsResponse() (response *DescribeSpeedTestingDet
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2679,7 +2706,10 @@ func (c *Client) DescribeSpeedTestingDetails(request *DescribeSpeedTestingDetail
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -4691,6 +4721,7 @@ func NewModifyZoneResponse() (response *ModifyZoneResponse) {
 //  OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = "OperationDenied.NSNotAllowTrafficStrategy"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyZone(request *ModifyZoneRequest) (response *ModifyZoneResponse, err error) {
     return c.ModifyZoneWithContext(context.Background(), request)
@@ -4708,6 +4739,7 @@ func (c *Client) ModifyZone(request *ModifyZoneRequest) (response *ModifyZoneRes
 //  OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = "OperationDenied.NSNotAllowTrafficStrategy"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyZoneWithContext(ctx context.Context, request *ModifyZoneRequest) (response *ModifyZoneResponse, err error) {
     if request == nil {

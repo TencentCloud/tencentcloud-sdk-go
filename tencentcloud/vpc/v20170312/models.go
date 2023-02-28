@@ -444,10 +444,16 @@ type AddressTemplateGroup struct {
 }
 
 type AddressTemplateItem struct {
-	// 起始地址。
+	// ipm-xxxxxxxx
+	AddressTemplateId *string `json:"AddressTemplateId,omitempty" name:"AddressTemplateId"`
+
+	// IP模板名称
+	AddressTemplateName *string `json:"AddressTemplateName,omitempty" name:"AddressTemplateName"`
+
+	// 废弃字段
 	From *string `json:"From,omitempty" name:"From"`
 
-	// 结束地址。
+	// 废弃字段
 	To *string `json:"To,omitempty" name:"To"`
 }
 

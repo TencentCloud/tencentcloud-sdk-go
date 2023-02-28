@@ -4276,6 +4276,82 @@ func (r *DescribeEventLogDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHttpsPackagesRequestParams struct {
+	// 分页查询起始地址，默认 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询记录个数，默认100，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeHttpsPackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页查询起始地址，默认 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询记录个数，默认100，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeHttpsPackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHttpsPackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHttpsPackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHttpsPackagesResponseParams struct {
+	// HTTPS请求包总个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// HTTPS请求包详情
+	HttpsPackages []*HttpsPackage `json:"HttpsPackages,omitempty" name:"HttpsPackages"`
+
+	// 即将过期的HTTPS请求包个数（7天内）
+	ExpiringCount *int64 `json:"ExpiringCount,omitempty" name:"ExpiringCount"`
+
+	// 有效HTTPS请求包个数
+	EnabledCount *int64 `json:"EnabledCount,omitempty" name:"EnabledCount"`
+
+	// 付费HTTPS请求包个数
+	PaidCount *int64 `json:"PaidCount,omitempty" name:"PaidCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHttpsPackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHttpsPackagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeHttpsPackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHttpsPackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeImageConfigRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -7737,6 +7813,70 @@ type Https struct {
 type HttpsBilling struct {
 	// HTTPS服务，缺省时默认开启【会产生计费】
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type HttpsPackage struct {
+	// HTTPS请求包 Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// HTTPS请求包类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// HTTPS请求包大小（单位为：次）
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 已消耗HTTPS请求包（单位为：次）
+	SizeUsed *int64 `json:"SizeUsed,omitempty" name:"SizeUsed"`
+
+	// HTTPS请求包状态
+	// enabled：已启用
+	// expired：已过期
+	// disabled：未启用
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// HTTPS请求包发放时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// HTTPS请求包生效时间
+	EnableTime *string `json:"EnableTime,omitempty" name:"EnableTime"`
+
+	// HTTPS请求包过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// HTTPS请求包来源
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// HTTPS请求包生命周期月数
+	LifeTimeMonth *int64 `json:"LifeTimeMonth,omitempty" name:"LifeTimeMonth"`
+
+	// HTTPS请求包是否支持退费
+	RefundAvailable *bool `json:"RefundAvailable,omitempty" name:"RefundAvailable"`
+
+	// HTTPS请求包类型id
+	ConfigId *int64 `json:"ConfigId,omitempty" name:"ConfigId"`
+
+	// HTTPS请求包实际生效时间
+	TrueEnableTime *string `json:"TrueEnableTime,omitempty" name:"TrueEnableTime"`
+
+	// HTTPS请求包实际过期时间
+	TrueExpireTime *string `json:"TrueExpireTime,omitempty" name:"TrueExpireTime"`
+
+	// HTTPS请求包生效区域 
+	// global：全球
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// HTTPS请求包是否续订
+	ContractExtension *bool `json:"ContractExtension,omitempty" name:"ContractExtension"`
+
+	// HTTPS请求包是否支持续订
+	ExtensionAvailable *bool `json:"ExtensionAvailable,omitempty" name:"ExtensionAvailable"`
+
+	// HTTPS请求包当前续订模式
+	// 0：未续订
+	// 1：到期续订
+	// 2：用完续订
+	// 3：到期或用完续订
+	ExtensionMode *uint64 `json:"ExtensionMode,omitempty" name:"ExtensionMode"`
 }
 
 type HwPrivateAccess struct {

@@ -2059,6 +2059,80 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     return
 }
 
+func NewGetRoomMessageRequest() (request *GetRoomMessageRequest) {
+    request = &GetRoomMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "GetRoomMessage")
+    
+    
+    return
+}
+
+func NewGetRoomMessageResponse() (response *GetRoomMessageResponse) {
+    response = &GetRoomMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetRoomMessage
+// 获取房间历史消息(房间历史消息保存7天)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetRoomMessage(request *GetRoomMessageRequest) (response *GetRoomMessageResponse, err error) {
+    return c.GetRoomMessageWithContext(context.Background(), request)
+}
+
+// GetRoomMessage
+// 获取房间历史消息(房间历史消息保存7天)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetRoomMessageWithContext(ctx context.Context, request *GetRoomMessageRequest) (response *GetRoomMessageResponse, err error) {
+    if request == nil {
+        request = NewGetRoomMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRoomMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRoomMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetWatermarkRequest() (request *GetWatermarkRequest) {
     request = &GetWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},

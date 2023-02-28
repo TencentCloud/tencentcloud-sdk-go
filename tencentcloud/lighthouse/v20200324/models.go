@@ -25,7 +25,7 @@ type ApplyDiskBackupRequestParams struct {
 	// 云硬盘ID，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
-	// 云硬盘备份点ID，可通过 DescribeDiskBackups 接口查询。
+	// 云硬盘备份点ID，可通过[DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
 	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
 }
 
@@ -35,7 +35,7 @@ type ApplyDiskBackupRequest struct {
 	// 云硬盘ID，可通过[DescribeDisks](https://cloud.tencent.com/document/api/1207/66093)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
-	// 云硬盘备份点ID，可通过 DescribeDiskBackups 接口查询。
+	// 云硬盘备份点ID，可通过[DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
 	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
 }
 
@@ -1055,14 +1055,14 @@ func (r *DeleteBlueprintsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDiskBackupsRequestParams struct {
-	// 云硬盘备份点ID列表，可通过 DescribeDiskBackups接口查询。
+	// 云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
 }
 
 type DeleteDiskBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘备份点ID列表，可通过 DescribeDiskBackups接口查询。
+	// 云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitempty" name:"DiskBackupIds"`
 }
 
@@ -1860,7 +1860,7 @@ type DescribeDiskBackupsRequestParams struct {
 	// <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值：参考数据结构DiskBackup下的DiskBackupState取值。
+	// 取值：参考数据结构[DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup)下的DiskBackupState取值。
 	// <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否
@@ -1891,7 +1891,7 @@ type DescribeDiskBackupsRequest struct {
 	// <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值：参考数据结构DiskBackup下的DiskBackupState取值。
+	// 取值：参考数据结构[DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup)下的DiskBackupState取值。
 	// <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否

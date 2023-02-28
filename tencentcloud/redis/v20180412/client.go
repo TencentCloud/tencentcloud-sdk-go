@@ -3999,6 +3999,7 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
 //  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
 //  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
 //  INVALIDPARAMETER_INSTANCESGOVERLIMITERROR = "InvalidParameter.InstanceSGOverLimitError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     return c.ModifyDBInstanceSecurityGroupsWithContext(context.Background(), request)
 }
@@ -4017,6 +4018,7 @@ func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurit
 //  INTERNALERROR_INSTANCEOPERATEPERMISSIONERROR = "InternalError.InstanceOperatePermissionError"
 //  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
 //  INVALIDPARAMETER_INSTANCESGOVERLIMITERROR = "InvalidParameter.InstanceSGOverLimitError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewModifyDBInstanceSecurityGroupsRequest()
@@ -4993,6 +4995,7 @@ func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
 // 变更实例配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -5015,6 +5018,7 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
 // 变更实例配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"

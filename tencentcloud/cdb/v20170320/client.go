@@ -6416,6 +6416,7 @@ func NewModifyAutoRenewFlagResponse() (response *ModifyAutoRenewFlagResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
@@ -6430,6 +6431,7 @@ func (c *Client) ModifyAutoRenewFlag(request *ModifyAutoRenewFlagRequest) (respo
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"

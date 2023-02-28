@@ -2355,6 +2355,7 @@ func NewDescribeInstanceInternetBandwidthConfigsResponse() (response *DescribeIn
 //  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
 //  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeInstanceInternetBandwidthConfigs(request *DescribeInstanceInternetBandwidthConfigsRequest) (response *DescribeInstanceInternetBandwidthConfigsResponse, err error) {
     return c.DescribeInstanceInternetBandwidthConfigsWithContext(context.Background(), request)
@@ -2376,6 +2377,7 @@ func (c *Client) DescribeInstanceInternetBandwidthConfigs(request *DescribeInsta
 //  INVALIDINSTANCEID_MALFORMED = "InvalidInstanceId.Malformed"
 //  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeInstanceInternetBandwidthConfigsWithContext(ctx context.Context, request *DescribeInstanceInternetBandwidthConfigsRequest) (response *DescribeInstanceInternetBandwidthConfigsResponse, err error) {
     if request == nil {
@@ -6594,6 +6596,7 @@ func NewRenewHostsResponse() (response *RenewHostsResponse) {
 //  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
 //  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
 //  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPERIOD = "InvalidPeriod"
 func (c *Client) RenewHosts(request *RenewHostsRequest) (response *RenewHostsResponse, err error) {
     return c.RenewHostsWithContext(context.Background(), request)
@@ -6614,6 +6617,7 @@ func (c *Client) RenewHosts(request *RenewHostsRequest) (response *RenewHostsRes
 //  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
 //  INVALIDHOSTID_MALFORMED = "InvalidHostId.Malformed"
 //  INVALIDHOSTID_NOTFOUND = "InvalidHostId.NotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPERIOD = "InvalidPeriod"
 func (c *Client) RenewHostsWithContext(ctx context.Context, request *RenewHostsRequest) (response *RenewHostsResponse, err error) {
     if request == nil {

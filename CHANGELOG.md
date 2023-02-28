@@ -1,3 +1,195 @@
+# Release v1.0.604
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 117 次发布
+
+发布时间：2023-02-28 01:07:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeHttpsPackages](https://cloud.tencent.com/document/api/228/86968)
+
+新增数据结构：
+
+* [HttpsPackage](https://cloud.tencent.com/document/api/228/30987#HttpsPackage)
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 31 次发布
+
+发布时间：2023-02-28 01:12:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyEnterpriseSecurityDispatchStatus](https://cloud.tencent.com/document/api/1132/86969)
+* [ModifyEnterpriseSecurityGroupRule](https://cloud.tencent.com/document/api/1132/86971)
+* [ModifyNatSequenceRules](https://cloud.tencent.com/document/api/1132/86970)
+
+新增数据结构：
+
+* [RuleChangeItem](https://cloud.tencent.com/document/api/1132/49071#RuleChangeItem)
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 7 次发布
+
+发布时间：2023-02-27 17:21:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImportExternalDevice](https://cloud.tencent.com/document/api/1025/86967)
+
+新增数据结构：
+
+* [ExternalDevice](https://cloud.tencent.com/document/api/1025/74416#ExternalDevice)
+
+### 第 6 次发布
+
+发布时间：2023-02-27 16:50:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindDeviceAccountPassword](https://cloud.tencent.com/document/api/1025/86959)
+* [BindDeviceAccountPrivateKey](https://cloud.tencent.com/document/api/1025/86958)
+* [CreateAssetSyncJob](https://cloud.tencent.com/document/api/1025/86957)
+* [CreateCmdTemplate](https://cloud.tencent.com/document/api/1025/86964)
+* [CreateDeviceAccount](https://cloud.tencent.com/document/api/1025/86956)
+* [DeleteCmdTemplates](https://cloud.tencent.com/document/api/1025/86963)
+* [DeleteDeviceAccounts](https://cloud.tencent.com/document/api/1025/86955)
+* [DeleteDevices](https://cloud.tencent.com/document/api/1025/86954)
+* [DeployResource](https://cloud.tencent.com/document/api/1025/86961)
+* [DescribeAssetSyncStatus](https://cloud.tencent.com/document/api/1025/86953)
+* [DescribeCmdTemplates](https://cloud.tencent.com/document/api/1025/86962)
+* [DescribeDeviceAccounts](https://cloud.tencent.com/document/api/1025/86952)
+* [ModifyDevice](https://cloud.tencent.com/document/api/1025/86951)
+* [ModifyDeviceGroup](https://cloud.tencent.com/document/api/1025/86966)
+* [ResetDeviceAccountPassword](https://cloud.tencent.com/document/api/1025/86950)
+* [ResetDeviceAccountPrivateKey](https://cloud.tencent.com/document/api/1025/86949)
+* [ResetUser](https://cloud.tencent.com/document/api/1025/86960)
+
+新增数据结构：
+
+* [AssetSyncStatus](https://cloud.tencent.com/document/api/1025/74416#AssetSyncStatus)
+* [DeviceAccount](https://cloud.tencent.com/document/api/1025/74416#DeviceAccount)
+
+
+
+## 事件总线(eb) 版本：2021-04-16
+
+### 第 9 次发布
+
+发布时间：2023-02-28 01:29:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEventBus](https://cloud.tencent.com/document/api/1359/67686)
+
+	* 新增入参：EnableStore
+
+* [GetEventBus](https://cloud.tencent.com/document/api/1359/67684)
+
+	* 新增出参：PayMode, SaveDays, LogTopicId, EnableStore, LinkMode
+
+
+新增数据结构：
+
+* [ConnectionBrief](https://cloud.tencent.com/document/api/1359/67704#ConnectionBrief)
+* [DTSParams](https://cloud.tencent.com/document/api/1359/67704#DTSParams)
+
+修改数据结构：
+
+* [ConnectionDescription](https://cloud.tencent.com/document/api/1359/67704#ConnectionDescription)
+
+	* 新增成员：DTSParams
+
+* [EventBus](https://cloud.tencent.com/document/api/1359/67704#EventBus)
+
+	* 新增成员：PayMode, ConnectionBriefs, TargetBriefs
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 14 次发布
+
+发布时间：2023-02-28 01:44:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetRoomMessage](https://cloud.tencent.com/document/api/1639/86972)
+
+修改接口：
+
+* [DescribeRoomStatistics](https://cloud.tencent.com/document/api/1639/81545)
+
+	* 新增出参：MessageCount, MicCount
+
+
+新增数据结构：
+
+* [MessageItem](https://cloud.tencent.com/document/api/1639/81423#MessageItem)
+* [MessageList](https://cloud.tencent.com/document/api/1639/81423#MessageList)
+
+修改数据结构：
+
+* [MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord)
+
+	* 新增成员：PerMemberMicCount, PerMemberMessageCount
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 143 次发布
+
+发布时间：2023-02-28 02:25:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AddressTemplateItem](https://cloud.tencent.com/document/api/215/15824#AddressTemplateItem)
+
+	* 新增成员：AddressTemplateId, AddressTemplateName
+
+	* <font color="#dd0000">**修改成员**：</font>From, To
+
+
+
+
 # Release v1.0.603
 
 ## 云硬盘(cbs) 版本：2017-03-12

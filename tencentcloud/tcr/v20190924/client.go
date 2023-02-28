@@ -1021,6 +1021,7 @@ func NewCreateNamespacePersonalResponse() (response *CreateNamespacePersonalResp
 // 创建个人版镜像仓库命名空间，此命名空间全局唯一
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ERRNAMESPACEEXIST = "InvalidParameter.ErrNamespaceExist"
 //  INVALIDPARAMETER_ERRNAMESPACERESERVED = "InvalidParameter.ErrNamespaceReserved"
@@ -1036,6 +1037,7 @@ func (c *Client) CreateNamespacePersonal(request *CreateNamespacePersonalRequest
 // 创建个人版镜像仓库命名空间，此命名空间全局唯一
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ERRNAMESPACEEXIST = "InvalidParameter.ErrNamespaceExist"
 //  INVALIDPARAMETER_ERRNAMESPACERESERVED = "InvalidParameter.ErrNamespaceReserved"

@@ -620,6 +620,7 @@ func NewCreateScdnDomainResponse() (response *CreateScdnDomainResponse) {
 //  RESOURCEUNAVAILABLE_SCDNUSERSUSPEND = "ResourceUnavailable.ScdnUserSuspend"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNUSERAUTHFAIL = "UnauthorizedOperation.CdnUserAuthFail"
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
 func (c *Client) CreateScdnDomain(request *CreateScdnDomainRequest) (response *CreateScdnDomainResponse, err error) {
@@ -651,6 +652,7 @@ func (c *Client) CreateScdnDomain(request *CreateScdnDomainRequest) (response *C
 //  RESOURCEUNAVAILABLE_SCDNUSERSUSPEND = "ResourceUnavailable.ScdnUserSuspend"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
 //  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNUSERAUTHFAIL = "UnauthorizedOperation.CdnUserAuthFail"
 //  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
 //  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
 func (c *Client) CreateScdnDomainWithContext(ctx context.Context, request *CreateScdnDomainRequest) (response *CreateScdnDomainResponse, err error) {
@@ -2293,6 +2295,66 @@ func (c *Client) DescribeEventLogDataWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeEventLogDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHttpsPackagesRequest() (request *DescribeHttpsPackagesRequest) {
+    request = &DescribeHttpsPackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdn", APIVersion, "DescribeHttpsPackages")
+    
+    
+    return
+}
+
+func NewDescribeHttpsPackagesResponse() (response *DescribeHttpsPackagesResponse) {
+    response = &DescribeHttpsPackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHttpsPackages
+// DescribeHttpsPackages 用于查询 CDN HTTPS请求包详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
+func (c *Client) DescribeHttpsPackages(request *DescribeHttpsPackagesRequest) (response *DescribeHttpsPackagesResponse, err error) {
+    return c.DescribeHttpsPackagesWithContext(context.Background(), request)
+}
+
+// DescribeHttpsPackages
+// DescribeHttpsPackages 用于查询 CDN HTTPS请求包详情。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
+func (c *Client) DescribeHttpsPackagesWithContext(ctx context.Context, request *DescribeHttpsPackagesRequest) (response *DescribeHttpsPackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeHttpsPackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHttpsPackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHttpsPackagesResponse()
     err = c.Send(request, response)
     return
 }

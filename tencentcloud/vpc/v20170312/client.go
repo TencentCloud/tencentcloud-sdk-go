@@ -443,6 +443,7 @@ func NewAllocateAddressesResponse() (response *AllocateAddressesResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDDEDICATEDCLUSTERID = "InvalidParameterValue.InvalidDedicatedClusterId"
 //  INVALIDPARAMETERVALUE_INVALIDTAG = "InvalidParameterValue.InvalidTag"
 //  INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = "InvalidParameterValue.MixedAddressIpSetType"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
 //  INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
 //  INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
@@ -490,6 +491,7 @@ func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response 
 //  INVALIDPARAMETERVALUE_INVALIDDEDICATEDCLUSTERID = "InvalidParameterValue.InvalidDedicatedClusterId"
 //  INVALIDPARAMETERVALUE_INVALIDTAG = "InvalidParameterValue.InvalidTag"
 //  INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = "InvalidParameterValue.MixedAddressIpSetType"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
 //  INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
 //  INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
@@ -2370,6 +2372,7 @@ func NewCreateBandwidthPackageResponse() (response *CreateBandwidthPackageRespon
 //  INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
 //  LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = "LimitExceeded.BandwidthPackageQuota"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACCOUNTNOTSUPPORTED = "UnsupportedOperation.AccountNotSupported"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = "UnsupportedOperation.InstanceStateNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDRESOURCEINTERNETCHARGETYPE = "UnsupportedOperation.InvalidResourceInternetChargeType"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDPURCHASECENTEREGRESSRESOURCE = "UnsupportedOperation.NotSupportedPurchaseCenterEgressResource"
@@ -2391,6 +2394,7 @@ func (c *Client) CreateBandwidthPackage(request *CreateBandwidthPackageRequest) 
 //  INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
 //  LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = "LimitExceeded.BandwidthPackageQuota"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACCOUNTNOTSUPPORTED = "UnsupportedOperation.AccountNotSupported"
 //  UNSUPPORTEDOPERATION_INSTANCESTATENOTSUPPORTED = "UnsupportedOperation.InstanceStateNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDRESOURCEINTERNETCHARGETYPE = "UnsupportedOperation.InvalidResourceInternetChargeType"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDPURCHASECENTEREGRESSRESOURCE = "UnsupportedOperation.NotSupportedPurchaseCenterEgressResource"
@@ -2990,6 +2994,7 @@ func NewCreateFlowLogResponse() (response *CreateFlowLogResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATECKAFKAROUTEERROR = "InternalError.CreateCkafkaRouteError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -3032,6 +3037,7 @@ func (c *Client) CreateFlowLog(request *CreateFlowLogRequest) (response *CreateF
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATECKAFKAROUTEERROR = "InternalError.CreateCkafkaRouteError"
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -9724,6 +9730,8 @@ func NewDescribeIpGeolocationDatabaseUrlResponse() (response *DescribeIpGeolocat
 // DescribeIpGeolocationDatabaseUrl
 // 本接口（DescribeIpGeolocationDatabaseUrl）用于获取IP地理位置库下载链接。
 //
+// <font color="#FF0000">本接口即将下线，仅供存量用户使用，暂停新增用户。</font>
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
@@ -9736,6 +9744,8 @@ func (c *Client) DescribeIpGeolocationDatabaseUrl(request *DescribeIpGeolocation
 
 // DescribeIpGeolocationDatabaseUrl
 // 本接口（DescribeIpGeolocationDatabaseUrl）用于获取IP地理位置库下载链接。
+//
+// <font color="#FF0000">本接口即将下线，仅供存量用户使用，暂停新增用户。</font>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -9780,7 +9790,7 @@ func NewDescribeIpGeolocationInfosResponse() (response *DescribeIpGeolocationInf
 // DescribeIpGeolocationInfos
 // 本接口（DescribeIpGeolocationInfos）用于查询IP地址信息，包括地理位置信息和网络信息。
 //
-// 本接口仅供存量客户使用，如有疑问，请提交[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2)。
+// <font color="#FF0000">本接口即将下线，仅供存量客户使用，暂停新增用户。</font>
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -9796,7 +9806,7 @@ func (c *Client) DescribeIpGeolocationInfos(request *DescribeIpGeolocationInfosR
 // DescribeIpGeolocationInfos
 // 本接口（DescribeIpGeolocationInfos）用于查询IP地址信息，包括地理位置信息和网络信息。
 //
-// 本接口仅供存量客户使用，如有疑问，请提交[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=660&source=0&data_title=%E5%BC%B9%E6%80%A7%E5%85%AC%E7%BD%91%20EIP&level3_id=662&queue=96&scene_code=16400&step=2)。
+// <font color="#FF0000">本接口即将下线，仅供存量客户使用，暂停新增用户。</font>
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -14686,6 +14696,7 @@ func NewMigrateNetworkInterfaceResponse() (response *MigrateNetworkInterfaceResp
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 //  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
 func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest) (response *MigrateNetworkInterfaceResponse, err error) {
     return c.MigrateNetworkInterfaceWithContext(context.Background(), request)
@@ -14700,6 +14711,7 @@ func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ATTACHMENTNOTFOUND = "UnsupportedOperation.AttachmentNotFound"
 //  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
 func (c *Client) MigrateNetworkInterfaceWithContext(ctx context.Context, request *MigrateNetworkInterfaceRequest) (response *MigrateNetworkInterfaceResponse, err error) {
     if request == nil {
@@ -17667,6 +17679,7 @@ func NewNotifyRoutesResponse() (response *NotifyRoutesResponse) {
 //  INVALIDROUTEID_NOTFOUND = "InvalidRouteId.NotFound"
 //  INVALIDROUTETABLEID_MALFORMED = "InvalidRouteTableId.Malformed"
 //  INVALIDROUTETABLEID_NOTFOUND = "InvalidRouteTableId.NotFound"
+//  UNSUPPORTEDOPERATION_ASSOCIATEDVPCOFCCNHADNATROUTE = "UnsupportedOperation.AssociatedVpcOfCcnHadNatRoute"
 //  UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 //  UNSUPPORTEDOPERATION_INVALIDSTATUSNOTIFYCCN = "UnsupportedOperation.InvalidStatusNotifyCcn"
 //  UNSUPPORTEDOPERATION_NOTIFYCCN = "UnsupportedOperation.NotifyCcn"
@@ -17685,6 +17698,7 @@ func (c *Client) NotifyRoutes(request *NotifyRoutesRequest) (response *NotifyRou
 //  INVALIDROUTEID_NOTFOUND = "InvalidRouteId.NotFound"
 //  INVALIDROUTETABLEID_MALFORMED = "InvalidRouteTableId.Malformed"
 //  INVALIDROUTETABLEID_NOTFOUND = "InvalidRouteTableId.NotFound"
+//  UNSUPPORTEDOPERATION_ASSOCIATEDVPCOFCCNHADNATROUTE = "UnsupportedOperation.AssociatedVpcOfCcnHadNatRoute"
 //  UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 //  UNSUPPORTEDOPERATION_INVALIDSTATUSNOTIFYCCN = "UnsupportedOperation.InvalidStatusNotifyCcn"
 //  UNSUPPORTEDOPERATION_NOTIFYCCN = "UnsupportedOperation.NotifyCcn"

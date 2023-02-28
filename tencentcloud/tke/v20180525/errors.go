@@ -182,6 +182,9 @@ const (
 	// 已有相同任务执行中。
 	FAILEDOPERATION_TASKALREADYRUNNING = "FailedOperation.TaskAlreadyRunning"
 
+	// 任务当前所处状态不支持此操作。
+	FAILEDOPERATION_TASKLIFESTATEERROR = "FailedOperation.TaskLifeStateError"
+
 	// 询价错误。
 	FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
 

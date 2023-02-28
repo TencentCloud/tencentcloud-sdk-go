@@ -572,6 +572,9 @@ const (
 	// 集群命名不能为空。
 	INVALIDPARAMETERVALUE_CLUSTERNAMEREQUIRED = "InvalidParameterValue.ClusterNameRequired"
 
+	// 集群无效的分页参数。
+	INVALIDPARAMETERVALUE_CLUSTERPAGELIMITINVALID = "InvalidParameterValue.ClusterPageLimitInvalid"
+
 	// 创建集群，无效的地域字段。
 	INVALIDPARAMETERVALUE_CLUSTERREGIONINVALID = "InvalidParameterValue.ClusterRegionInvalid"
 

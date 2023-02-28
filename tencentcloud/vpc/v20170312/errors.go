@@ -581,6 +581,9 @@ const (
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
+	// 不支持的账户。
+	UNSUPPORTEDOPERATION_ACCOUNTNOTSUPPORTED = "UnsupportedOperation.AccountNotSupported"
+
 	// 接口不存在。
 	UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
 
@@ -604,6 +607,9 @@ const (
 
 	// APPId不存在。
 	UNSUPPORTEDOPERATION_APPIDNOTFOUND = "UnsupportedOperation.AppIdNotFound"
+
+	// CCN关联的其他vpc已经存在nat的路由
+	UNSUPPORTEDOPERATION_ASSOCIATEDVPCOFCCNHADNATROUTE = "UnsupportedOperation.AssociatedVpcOfCcnHadNatRoute"
 
 	// 绑定关系已存在。
 	UNSUPPORTEDOPERATION_ATTACHMENTALREADYEXISTS = "UnsupportedOperation.AttachmentAlreadyExists"

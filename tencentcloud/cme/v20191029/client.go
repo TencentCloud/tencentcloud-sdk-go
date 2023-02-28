@@ -72,6 +72,7 @@ func NewAddTeamMemberResponse() (response *AddTeamMemberResponse) {
 //  INVALIDPARAMETERVALUE_TEAMID = "InvalidParameterValue.TeamId"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AddTeamMember(request *AddTeamMemberRequest) (response *AddTeamMemberResponse, err error) {
     return c.AddTeamMemberWithContext(context.Background(), request)
@@ -86,6 +87,7 @@ func (c *Client) AddTeamMember(request *AddTeamMemberRequest) (response *AddTeam
 //  INVALIDPARAMETERVALUE_TEAMID = "InvalidParameterValue.TeamId"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AddTeamMemberWithContext(ctx context.Context, request *AddTeamMemberRequest) (response *AddTeamMemberResponse, err error) {
     if request == nil {
@@ -550,6 +552,7 @@ func NewDeleteClassResponse() (response *DeleteClassResponse) {
 //  INVALIDPARAMETERVALUE_CLASSNOTEMPTY = "InvalidParameterValue.ClassNotEmpty"
 //  INVALIDPARAMETERVALUE_CLASSNOTEXIST = "InvalidParameterValue.ClassNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteClass(request *DeleteClassRequest) (response *DeleteClassResponse, err error) {
     return c.DeleteClassWithContext(context.Background(), request)
@@ -568,6 +571,7 @@ func (c *Client) DeleteClass(request *DeleteClassRequest) (response *DeleteClass
 //  INVALIDPARAMETERVALUE_CLASSNOTEMPTY = "InvalidParameterValue.ClassNotEmpty"
 //  INVALIDPARAMETERVALUE_CLASSNOTEXIST = "InvalidParameterValue.ClassNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteClassWithContext(ctx context.Context, request *DeleteClassRequest) (response *DeleteClassResponse, err error) {
     if request == nil {
@@ -847,6 +851,7 @@ func NewDeleteTeamMembersResponse() (response *DeleteTeamMembersResponse) {
 //  INVALIDPARAMETERVALUE_MEMBERIDS = "InvalidParameterValue.MemberIds"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) DeleteTeamMembers(request *DeleteTeamMembersRequest) (response *DeleteTeamMembersResponse, err error) {
     return c.DeleteTeamMembersWithContext(context.Background(), request)
 }
@@ -859,6 +864,7 @@ func (c *Client) DeleteTeamMembers(request *DeleteTeamMembersRequest) (response 
 //  INVALIDPARAMETERVALUE_MEMBERIDS = "InvalidParameterValue.MemberIds"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) DeleteTeamMembersWithContext(ctx context.Context, request *DeleteTeamMembersRequest) (response *DeleteTeamMembersResponse, err error) {
     if request == nil {
         request = NewDeleteTeamMembersRequest()
@@ -899,6 +905,7 @@ func NewDeleteVideoEncodingPresetResponse() (response *DeleteVideoEncodingPreset
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) DeleteVideoEncodingPreset(request *DeleteVideoEncodingPresetRequest) (response *DeleteVideoEncodingPresetResponse, err error) {
     return c.DeleteVideoEncodingPresetWithContext(context.Background(), request)
 }
@@ -909,6 +916,7 @@ func (c *Client) DeleteVideoEncodingPreset(request *DeleteVideoEncodingPresetReq
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) DeleteVideoEncodingPresetWithContext(ctx context.Context, request *DeleteVideoEncodingPresetRequest) (response *DeleteVideoEncodingPresetResponse, err error) {
     if request == nil {
         request = NewDeleteVideoEncodingPresetRequest()
@@ -1993,6 +2001,7 @@ func NewExportVideoByVideoSegmentationDataResponse() (response *ExportVideoByVid
 //  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
 //  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) ExportVideoByVideoSegmentationData(request *ExportVideoByVideoSegmentationDataRequest) (response *ExportVideoByVideoSegmentationDataResponse, err error) {
     return c.ExportVideoByVideoSegmentationDataWithContext(context.Background(), request)
 }
@@ -2009,6 +2018,7 @@ func (c *Client) ExportVideoByVideoSegmentationData(request *ExportVideoByVideoS
 //  LIMITEXCEEDED_BILLITEMSTORAGE = "LimitExceeded.BillItemStorage"
 //  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) ExportVideoByVideoSegmentationDataWithContext(ctx context.Context, request *ExportVideoByVideoSegmentationDataRequest) (response *ExportVideoByVideoSegmentationDataResponse, err error) {
     if request == nil {
         request = NewExportVideoByVideoSegmentationDataRequest()
@@ -2268,6 +2278,7 @@ func NewGrantResourceAuthorizationResponse() (response *GrantResourceAuthorizati
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GrantResourceAuthorization(request *GrantResourceAuthorizationRequest) (response *GrantResourceAuthorizationResponse, err error) {
     return c.GrantResourceAuthorizationWithContext(context.Background(), request)
@@ -2282,6 +2293,7 @@ func (c *Client) GrantResourceAuthorization(request *GrantResourceAuthorizationR
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) GrantResourceAuthorizationWithContext(ctx context.Context, request *GrantResourceAuthorizationRequest) (response *GrantResourceAuthorizationResponse, err error) {
     if request == nil {
@@ -2953,15 +2965,7 @@ func NewModifyVideoEncodingPresetResponse() (response *ModifyVideoEncodingPreset
 // 修改视频编码配置信息。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_MEMBERNOTEXIST = "InvalidParameterValue.MemberNotExist"
-//  INVALIDPARAMETERVALUE_NOTTEAMMEMBERERROR = "InvalidParameterValue.NotTeamMemberError"
-//  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
-//  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
-//  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
-//  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVideoEncodingPreset(request *ModifyVideoEncodingPresetRequest) (response *ModifyVideoEncodingPresetResponse, err error) {
     return c.ModifyVideoEncodingPresetWithContext(context.Background(), request)
 }
@@ -2970,15 +2974,7 @@ func (c *Client) ModifyVideoEncodingPreset(request *ModifyVideoEncodingPresetReq
 // 修改视频编码配置信息。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_MEMBERNOTEXIST = "InvalidParameterValue.MemberNotExist"
-//  INVALIDPARAMETERVALUE_NOTTEAMMEMBERERROR = "InvalidParameterValue.NotTeamMemberError"
-//  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
-//  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
-//  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
-//  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVideoEncodingPresetWithContext(ctx context.Context, request *ModifyVideoEncodingPresetRequest) (response *ModifyVideoEncodingPresetResponse, err error) {
     if request == nil {
         request = NewModifyVideoEncodingPresetRequest()
@@ -3226,6 +3222,7 @@ func NewRevokeResourceAuthorizationResponse() (response *RevokeResourceAuthoriza
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RevokeResourceAuthorization(request *RevokeResourceAuthorizationRequest) (response *RevokeResourceAuthorizationResponse, err error) {
     return c.RevokeResourceAuthorizationWithContext(context.Background(), request)
@@ -3238,6 +3235,7 @@ func (c *Client) RevokeResourceAuthorization(request *RevokeResourceAuthorizatio
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) RevokeResourceAuthorizationWithContext(ctx context.Context, request *RevokeResourceAuthorizationRequest) (response *RevokeResourceAuthorizationResponse, err error) {
     if request == nil {

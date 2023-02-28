@@ -1342,6 +1342,7 @@ func NewDescribeApplicationsStatusResponse() (response *DescribeApplicationsStat
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
@@ -1355,6 +1356,7 @@ func (c *Client) DescribeApplicationsStatus(request *DescribeApplicationsStatusR
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"

@@ -119,6 +119,7 @@ func NewAddNodesResponse() (response *AddNodesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) AddNodes(request *AddNodesRequest) (response *AddNodesResponse, err error) {
     return c.AddNodesWithContext(context.Background(), request)
@@ -138,6 +139,7 @@ func (c *Client) AddNodes(request *AddNodesRequest) (response *AddNodesResponse,
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) AddNodesWithContext(ctx context.Context, request *AddNodesRequest) (response *AddNodesResponse, err error) {
     if request == nil {
@@ -975,6 +977,7 @@ func NewSetAutoScalingConfigurationResponse() (response *SetAutoScalingConfigura
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 //  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
@@ -992,6 +995,7 @@ func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfiguratio
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 //  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"

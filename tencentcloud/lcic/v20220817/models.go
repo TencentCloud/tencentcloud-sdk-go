@@ -2187,6 +2187,12 @@ type DescribeRoomStatisticsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealEndTime *uint64 `json:"RealEndTime,omitempty" name:"RealEndTime"`
 
+	// 房间消息总数。
+	MessageCount *uint64 `json:"MessageCount,omitempty" name:"MessageCount"`
+
+	// 房间连麦总数。
+	MicCount *uint64 `json:"MicCount,omitempty" name:"MicCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2404,6 +2410,84 @@ type DocumentInfo struct {
 	// 更新的UNIX时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+// Predefined struct for user
+type GetRoomMessageRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间Id。	
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 消息序列。获取该序列以前前的消息(不包含该seq消息)
+	Seq *int64 `json:"Seq,omitempty" name:"Seq"`
+
+	// 消息拉取的条数。最大数量不能超过套餐包限制。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type GetRoomMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间Id。	
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 消息序列。获取该序列以前前的消息(不包含该seq消息)
+	Seq *int64 `json:"Seq,omitempty" name:"Seq"`
+
+	// 消息拉取的条数。最大数量不能超过套餐包限制。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetRoomMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRoomMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "Seq")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRoomMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRoomMessageResponseParams struct {
+	// 消息列表
+	Messages []*MessageList `json:"Messages,omitempty" name:"Messages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetRoomMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *GetRoomMessageResponseParams `json:"Response"`
+}
+
+func (r *GetRoomMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRoomMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2679,6 +2763,44 @@ type MemberRecord struct {
 
 	// 用户设备平台信息。0:unknown  1:windows  2:mac  3:android  4:ios  5:web   6:h5   7:miniprogram （小程序）
 	Device *int64 `json:"Device,omitempty" name:"Device"`
+
+	// 每个成员上麦次数。
+	PerMemberMicCount *int64 `json:"PerMemberMicCount,omitempty" name:"PerMemberMicCount"`
+
+	// 每个成员发送消息数量。
+	PerMemberMessageCount *int64 `json:"PerMemberMessageCount,omitempty" name:"PerMemberMessageCount"`
+}
+
+type MessageItem struct {
+	// 消息类型。0表示文本消息，1表示图片消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageType *int64 `json:"MessageType,omitempty" name:"MessageType"`
+
+	// 文本消息内容。message type为0时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextMessage *string `json:"TextMessage,omitempty" name:"TextMessage"`
+
+	// 图片消息URL。 message type为1时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageMessage *string `json:"ImageMessage,omitempty" name:"ImageMessage"`
+}
+
+type MessageList struct {
+	// 消息时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 消息发送者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FromAccount *string `json:"FromAccount,omitempty" name:"FromAccount"`
+
+	// 消息序列号，当前课堂内唯一且单调递增
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Seq *int64 `json:"Seq,omitempty" name:"Seq"`
+
+	// 历史消息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageBody []*MessageItem `json:"MessageBody,omitempty" name:"MessageBody"`
 }
 
 // Predefined struct for user

@@ -4737,6 +4737,145 @@ func (r *ModifyBlockTopResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyEnterpriseSecurityDispatchStatusRequestParams struct {
+	// 状态，0：立即下发，1：停止下发
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type ModifyEnterpriseSecurityDispatchStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 状态，0：立即下发，1：停止下发
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyEnterpriseSecurityDispatchStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnterpriseSecurityDispatchStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnterpriseSecurityDispatchStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEnterpriseSecurityDispatchStatusResponseParams struct {
+	// 0: 修改成功, 其他: 修改失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyEnterpriseSecurityDispatchStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEnterpriseSecurityDispatchStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyEnterpriseSecurityDispatchStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnterpriseSecurityDispatchStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEnterpriseSecurityGroupRuleRequestParams struct {
+	// 规则的uuid，可通过查询规则列表获取
+	RuleUuid *uint64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态
+	ModifyType *uint64 `json:"ModifyType,omitempty" name:"ModifyType"`
+
+	// 编辑后的企业安全组规则数据；修改规则状态不用填该字段
+	Data *SecurityGroupRule `json:"Data,omitempty" name:"Data"`
+
+	// 0是关闭,1是开启
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+}
+
+type ModifyEnterpriseSecurityGroupRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则的uuid，可通过查询规则列表获取
+	RuleUuid *uint64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态
+	ModifyType *uint64 `json:"ModifyType,omitempty" name:"ModifyType"`
+
+	// 编辑后的企业安全组规则数据；修改规则状态不用填该字段
+	Data *SecurityGroupRule `json:"Data,omitempty" name:"Data"`
+
+	// 0是关闭,1是开启
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+}
+
+func (r *ModifyEnterpriseSecurityGroupRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnterpriseSecurityGroupRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleUuid")
+	delete(f, "ModifyType")
+	delete(f, "Data")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnterpriseSecurityGroupRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEnterpriseSecurityGroupRuleResponseParams struct {
+	// 状态值，0：编辑成功，非0：编辑失败
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 编辑后新生成规则的Id
+	NewRuleUuid *uint64 `json:"NewRuleUuid,omitempty" name:"NewRuleUuid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyEnterpriseSecurityGroupRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEnterpriseSecurityGroupRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyEnterpriseSecurityGroupRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEnterpriseSecurityGroupRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyNatAcRuleRequestParams struct {
 	// 需要编辑的规则数组
 	Rules []*CreateNatRuleItem `json:"Rules,omitempty" name:"Rules"`
@@ -5012,6 +5151,67 @@ func (r *ModifyNatFwVpcDnsSwitchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyNatFwVpcDnsSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNatSequenceRulesRequestParams struct {
+	// 规则快速排序：OrderIndex，原始序号；NewOrderIndex：新序号
+	RuleChangeItems []*RuleChangeItem `json:"RuleChangeItems,omitempty" name:"RuleChangeItems"`
+
+	// 规则方向：1，入站；0，出站
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+}
+
+type ModifyNatSequenceRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则快速排序：OrderIndex，原始序号；NewOrderIndex：新序号
+	RuleChangeItems []*RuleChangeItem `json:"RuleChangeItems,omitempty" name:"RuleChangeItems"`
+
+	// 规则方向：1，入站；0，出站
+	Direction *uint64 `json:"Direction,omitempty" name:"Direction"`
+}
+
+func (r *ModifyNatSequenceRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNatSequenceRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleChangeItems")
+	delete(f, "Direction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNatSequenceRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNatSequenceRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyNatSequenceRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNatSequenceRulesResponseParams `json:"Response"`
+}
+
+func (r *ModifyNatSequenceRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNatSequenceRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5946,6 +6146,14 @@ func (r *RemoveNatAcRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RemoveNatAcRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RuleChangeItem struct {
+	// 原始sequence 值
+	OrderIndex *int64 `json:"OrderIndex,omitempty" name:"OrderIndex"`
+
+	// 新的sequence 值
+	NewOrderIndex *int64 `json:"NewOrderIndex,omitempty" name:"NewOrderIndex"`
 }
 
 type RuleInfoData struct {

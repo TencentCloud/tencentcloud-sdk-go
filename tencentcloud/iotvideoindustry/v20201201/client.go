@@ -334,6 +334,7 @@ func NewControlPresetResponse() (response *ControlPresetResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlPreset(request *ControlPresetRequest) (response *ControlPresetResponse, err error) {
     return c.ControlPresetWithContext(context.Background(), request)
@@ -344,6 +345,7 @@ func (c *Client) ControlPreset(request *ControlPresetRequest) (response *Control
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlPresetWithContext(ctx context.Context, request *ControlPresetRequest) (response *ControlPresetResponse, err error) {
     if request == nil {
@@ -386,6 +388,7 @@ func NewControlRecordStreamResponse() (response *ControlRecordStreamResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlRecordStream(request *ControlRecordStreamRequest) (response *ControlRecordStreamResponse, err error) {
     return c.ControlRecordStreamWithContext(context.Background(), request)
@@ -398,6 +401,7 @@ func (c *Client) ControlRecordStream(request *ControlRecordStreamRequest) (respo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_DEVICESIPPTZERROR = "ResourceNotFound.DeviceSipPTZError"
 func (c *Client) ControlRecordStreamWithContext(ctx context.Context, request *ControlRecordStreamRequest) (response *ControlRecordStreamResponse, err error) {
     if request == nil {
@@ -1127,6 +1131,7 @@ func NewCreateRecordingPlanResponse() (response *CreateRecordingPlanResponse) {
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
+//  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
     return c.CreateRecordingPlanWithContext(context.Background(), request)
@@ -1138,6 +1143,7 @@ func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (respo
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
+//  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateRecordingPlanWithContext(ctx context.Context, request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
     if request == nil {
@@ -1378,6 +1384,7 @@ func NewDeleteDeviceGroupResponse() (response *DeleteDeviceGroupResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_SUBGRPEXIST = "UnsupportedOperation.SubgrpExist"
 func (c *Client) DeleteDeviceGroup(request *DeleteDeviceGroupRequest) (response *DeleteDeviceGroupResponse, err error) {
     return c.DeleteDeviceGroupWithContext(context.Background(), request)
@@ -1388,6 +1395,7 @@ func (c *Client) DeleteDeviceGroup(request *DeleteDeviceGroupRequest) (response 
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_SUBGRPEXIST = "UnsupportedOperation.SubgrpExist"
 func (c *Client) DeleteDeviceGroupWithContext(ctx context.Context, request *DeleteDeviceGroupRequest) (response *DeleteDeviceGroupResponse, err error) {
     if request == nil {

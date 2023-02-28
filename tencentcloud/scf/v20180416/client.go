@@ -1426,6 +1426,7 @@ func NewGetFunctionResponse() (response *GetFunctionResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIGW = "FailedOperation.Apigw"
+//  FAILEDOPERATION_CALLNETDEPLOYFAILED = "FailedOperation.CallNetDeployFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_EXCEPTION = "InternalError.Exception"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -1451,6 +1452,7 @@ func (c *Client) GetFunction(request *GetFunctionRequest) (response *GetFunction
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_APIGW = "FailedOperation.Apigw"
+//  FAILEDOPERATION_CALLNETDEPLOYFAILED = "FailedOperation.CallNetDeployFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_EXCEPTION = "InternalError.Exception"
 //  INTERNALERROR_SYSTEM = "InternalError.System"

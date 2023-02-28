@@ -803,7 +803,7 @@ func NewCheckDuplicateRuleNameResponse() (response *CheckDuplicateRuleNameRespon
 // 检查规则名称是否重复
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CheckDuplicateRuleName(request *CheckDuplicateRuleNameRequest) (response *CheckDuplicateRuleNameResponse, err error) {
     return c.CheckDuplicateRuleNameWithContext(context.Background(), request)
 }
@@ -812,7 +812,7 @@ func (c *Client) CheckDuplicateRuleName(request *CheckDuplicateRuleNameRequest) 
 // 检查规则名称是否重复
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CheckDuplicateRuleNameWithContext(ctx context.Context, request *CheckDuplicateRuleNameRequest) (response *CheckDuplicateRuleNameResponse, err error) {
     if request == nil {
         request = NewCheckDuplicateRuleNameRequest()
@@ -851,7 +851,7 @@ func NewCheckDuplicateTemplateNameResponse() (response *CheckDuplicateTemplateNa
 // 检查规则模板名称是否重复
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CheckDuplicateTemplateName(request *CheckDuplicateTemplateNameRequest) (response *CheckDuplicateTemplateNameResponse, err error) {
     return c.CheckDuplicateTemplateNameWithContext(context.Background(), request)
 }
@@ -860,7 +860,7 @@ func (c *Client) CheckDuplicateTemplateName(request *CheckDuplicateTemplateNameR
 // 检查规则模板名称是否重复
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CheckDuplicateTemplateNameWithContext(ctx context.Context, request *CheckDuplicateTemplateNameRequest) (response *CheckDuplicateTemplateNameResponse, err error) {
     if request == nil {
         request = NewCheckDuplicateTemplateNameRequest()
@@ -1251,23 +1251,7 @@ func NewCommitRuleGroupTaskResponse() (response *CommitRuleGroupTaskResponse) {
 // 提交规则组运行任务接口
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CommitRuleGroupTask(request *CommitRuleGroupTaskRequest) (response *CommitRuleGroupTaskResponse, err error) {
     return c.CommitRuleGroupTaskWithContext(context.Background(), request)
 }
@@ -1276,23 +1260,7 @@ func (c *Client) CommitRuleGroupTask(request *CommitRuleGroupTaskRequest) (respo
 // 提交规则组运行任务接口
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CommitRuleGroupTaskWithContext(ctx context.Context, request *CommitRuleGroupTaskRequest) (response *CommitRuleGroupTaskResponse, err error) {
     if request == nil {
         request = NewCommitRuleGroupTaskRequest()
@@ -1919,6 +1887,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 // 创建质量规则接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
 //  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
 func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
@@ -1929,6 +1898,7 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 // 创建质量规则接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
 //  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
 func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
@@ -2641,6 +2611,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
     return c.DeleteRuleWithContext(context.Background(), request)
@@ -2652,6 +2623,7 @@ func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleRes
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleRequest) (response *DeleteRuleResponse, err error) {
     if request == nil {
@@ -2693,6 +2665,7 @@ func NewDeleteRuleTemplateResponse() (response *DeleteRuleTemplateResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteRuleTemplate(request *DeleteRuleTemplateRequest) (response *DeleteRuleTemplateResponse, err error) {
     return c.DeleteRuleTemplateWithContext(context.Background(), request)
@@ -2704,6 +2677,7 @@ func (c *Client) DeleteRuleTemplate(request *DeleteRuleTemplateRequest) (respons
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteRuleTemplateWithContext(ctx context.Context, request *DeleteRuleTemplateRequest) (response *DeleteRuleTemplateResponse, err error) {
     if request == nil {
@@ -5067,6 +5041,7 @@ func NewDescribeMonitorsByPageResponse() (response *DescribeMonitorsByPageRespon
 // 分页查询质量监控组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5078,6 +5053,7 @@ func (c *Client) DescribeMonitorsByPage(request *DescribeMonitorsByPageRequest) 
 // 分页查询质量监控组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5119,6 +5095,7 @@ func NewDescribeOfflineTaskTokenResponse() (response *DescribeOfflineTaskTokenRe
 // 获取离线任务长连接Token
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5130,6 +5107,7 @@ func (c *Client) DescribeOfflineTaskToken(request *DescribeOfflineTaskTokenReque
 // 获取离线任务长连接Token
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5675,6 +5653,7 @@ func NewDescribeRuleResponse() (response *DescribeRuleResponse) {
 // 查询规则详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
@@ -5686,6 +5665,7 @@ func (c *Client) DescribeRule(request *DescribeRuleRequest) (response *DescribeR
 // 查询规则详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
@@ -5828,7 +5808,6 @@ func NewDescribeRuleExecDetailResponse() (response *DescribeRuleExecDetailRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleExecDetail(request *DescribeRuleExecDetailRequest) (response *DescribeRuleExecDetailResponse, err error) {
     return c.DescribeRuleExecDetailWithContext(context.Background(), request)
 }
@@ -5838,7 +5817,6 @@ func (c *Client) DescribeRuleExecDetail(request *DescribeRuleExecDetailRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleExecDetailWithContext(ctx context.Context, request *DescribeRuleExecDetailRequest) (response *DescribeRuleExecDetailResponse, err error) {
     if request == nil {
         request = NewDescribeRuleExecDetailRequest()
@@ -5878,7 +5856,6 @@ func NewDescribeRuleExecExportResultResponse() (response *DescribeRuleExecExport
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleExecExportResult(request *DescribeRuleExecExportResultRequest) (response *DescribeRuleExecExportResultResponse, err error) {
     return c.DescribeRuleExecExportResultWithContext(context.Background(), request)
 }
@@ -5888,7 +5865,6 @@ func (c *Client) DescribeRuleExecExportResult(request *DescribeRuleExecExportRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleExecExportResultWithContext(ctx context.Context, request *DescribeRuleExecExportResultRequest) (response *DescribeRuleExecExportResultResponse, err error) {
     if request == nil {
         request = NewDescribeRuleExecExportResultRequest()
@@ -5927,6 +5903,7 @@ func NewDescribeRuleExecHistoryResponse() (response *DescribeRuleExecHistoryResp
 // 查询规则执行历史， 最近30条
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRuleExecHistory(request *DescribeRuleExecHistoryRequest) (response *DescribeRuleExecHistoryResponse, err error) {
@@ -5937,6 +5914,7 @@ func (c *Client) DescribeRuleExecHistory(request *DescribeRuleExecHistoryRequest
 // 查询规则执行历史， 最近30条
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRuleExecHistoryWithContext(ctx context.Context, request *DescribeRuleExecHistoryRequest) (response *DescribeRuleExecHistoryResponse, err error) {
@@ -5977,6 +5955,7 @@ func NewDescribeRuleExecLogResponse() (response *DescribeRuleExecLogResponse) {
 // 规则执行日志查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 func (c *Client) DescribeRuleExecLog(request *DescribeRuleExecLogRequest) (response *DescribeRuleExecLogResponse, err error) {
     return c.DescribeRuleExecLogWithContext(context.Background(), request)
@@ -5986,6 +5965,7 @@ func (c *Client) DescribeRuleExecLog(request *DescribeRuleExecLogRequest) (respo
 // 规则执行日志查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 func (c *Client) DescribeRuleExecLogWithContext(ctx context.Context, request *DescribeRuleExecLogRequest) (response *DescribeRuleExecLogResponse, err error) {
     if request == nil {
@@ -6025,6 +6005,7 @@ func NewDescribeRuleExecResultsResponse() (response *DescribeRuleExecResultsResp
 // 规则执行结果列表查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleExecResults(request *DescribeRuleExecResultsRequest) (response *DescribeRuleExecResultsResponse, err error) {
     return c.DescribeRuleExecResultsWithContext(context.Background(), request)
@@ -6034,6 +6015,7 @@ func (c *Client) DescribeRuleExecResults(request *DescribeRuleExecResultsRequest
 // 规则执行结果列表查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleExecResultsWithContext(ctx context.Context, request *DescribeRuleExecResultsRequest) (response *DescribeRuleExecResultsResponse, err error) {
     if request == nil {
@@ -6073,6 +6055,7 @@ func NewDescribeRuleExecResultsByPageResponse() (response *DescribeRuleExecResul
 // 分页查询规则执行结果列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleExecResultsByPage(request *DescribeRuleExecResultsByPageRequest) (response *DescribeRuleExecResultsByPageResponse, err error) {
     return c.DescribeRuleExecResultsByPageWithContext(context.Background(), request)
@@ -6082,6 +6065,7 @@ func (c *Client) DescribeRuleExecResultsByPage(request *DescribeRuleExecResultsB
 // 分页查询规则执行结果列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleExecResultsByPageWithContext(ctx context.Context, request *DescribeRuleExecResultsByPageRequest) (response *DescribeRuleExecResultsByPageResponse, err error) {
     if request == nil {
@@ -6223,6 +6207,7 @@ func NewDescribeRuleGroupExecResultsByPageResponse() (response *DescribeRuleGrou
 // 规则组执行结果分页查询接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 func (c *Client) DescribeRuleGroupExecResultsByPage(request *DescribeRuleGroupExecResultsByPageRequest) (response *DescribeRuleGroupExecResultsByPageResponse, err error) {
     return c.DescribeRuleGroupExecResultsByPageWithContext(context.Background(), request)
@@ -6232,6 +6217,7 @@ func (c *Client) DescribeRuleGroupExecResultsByPage(request *DescribeRuleGroupEx
 // 规则组执行结果分页查询接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 func (c *Client) DescribeRuleGroupExecResultsByPageWithContext(ctx context.Context, request *DescribeRuleGroupExecResultsByPageRequest) (response *DescribeRuleGroupExecResultsByPageResponse, err error) {
     if request == nil {
@@ -6271,6 +6257,7 @@ func NewDescribeRuleGroupExecResultsByPageWithoutAuthResponse() (response *Descr
 // 规则组执行结果分页查询接口不带鉴权
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 func (c *Client) DescribeRuleGroupExecResultsByPageWithoutAuth(request *DescribeRuleGroupExecResultsByPageWithoutAuthRequest) (response *DescribeRuleGroupExecResultsByPageWithoutAuthResponse, err error) {
     return c.DescribeRuleGroupExecResultsByPageWithoutAuthWithContext(context.Background(), request)
@@ -6280,6 +6267,7 @@ func (c *Client) DescribeRuleGroupExecResultsByPageWithoutAuth(request *Describe
 // 规则组执行结果分页查询接口不带鉴权
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 func (c *Client) DescribeRuleGroupExecResultsByPageWithoutAuthWithContext(ctx context.Context, request *DescribeRuleGroupExecResultsByPageWithoutAuthRequest) (response *DescribeRuleGroupExecResultsByPageWithoutAuthResponse, err error) {
     if request == nil {
@@ -6319,7 +6307,7 @@ func NewDescribeRuleGroupSubscriptionResponse() (response *DescribeRuleGroupSubs
 // 查询规则组订阅信息
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRuleGroupSubscription(request *DescribeRuleGroupSubscriptionRequest) (response *DescribeRuleGroupSubscriptionResponse, err error) {
     return c.DescribeRuleGroupSubscriptionWithContext(context.Background(), request)
 }
@@ -6328,7 +6316,7 @@ func (c *Client) DescribeRuleGroupSubscription(request *DescribeRuleGroupSubscri
 // 查询规则组订阅信息
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRuleGroupSubscriptionWithContext(ctx context.Context, request *DescribeRuleGroupSubscriptionRequest) (response *DescribeRuleGroupSubscriptionResponse, err error) {
     if request == nil {
         request = NewDescribeRuleGroupSubscriptionRequest()
@@ -6367,7 +6355,7 @@ func NewDescribeRuleGroupTableResponse() (response *DescribeRuleGroupTableRespon
 // 查询表绑定执行规则组信息
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRuleGroupTable(request *DescribeRuleGroupTableRequest) (response *DescribeRuleGroupTableResponse, err error) {
     return c.DescribeRuleGroupTableWithContext(context.Background(), request)
 }
@@ -6376,7 +6364,7 @@ func (c *Client) DescribeRuleGroupTable(request *DescribeRuleGroupTableRequest) 
 // 查询表绑定执行规则组信息
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRuleGroupTableWithContext(ctx context.Context, request *DescribeRuleGroupTableRequest) (response *DescribeRuleGroupTableResponse, err error) {
     if request == nil {
         request = NewDescribeRuleGroupTableRequest()
@@ -6483,6 +6471,7 @@ func NewDescribeRuleHistoryByPageResponse() (response *DescribeRuleHistoryByPage
 // 过滤条件【必要字段】{ruleId}
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 func (c *Client) DescribeRuleHistoryByPage(request *DescribeRuleHistoryByPageRequest) (response *DescribeRuleHistoryByPageResponse, err error) {
     return c.DescribeRuleHistoryByPageWithContext(context.Background(), request)
@@ -6492,6 +6481,7 @@ func (c *Client) DescribeRuleHistoryByPage(request *DescribeRuleHistoryByPageReq
 // 过滤条件【必要字段】{ruleId}
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 func (c *Client) DescribeRuleHistoryByPageWithContext(ctx context.Context, request *DescribeRuleHistoryByPageRequest) (response *DescribeRuleHistoryByPageResponse, err error) {
     if request == nil {
@@ -6579,6 +6569,7 @@ func NewDescribeRuleTemplateResponse() (response *DescribeRuleTemplateResponse) 
 // 查询模板详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_RULETEMPLATENOTEXIST = "InvalidParameter.RuleTemplateNotExist"
 func (c *Client) DescribeRuleTemplate(request *DescribeRuleTemplateRequest) (response *DescribeRuleTemplateResponse, err error) {
     return c.DescribeRuleTemplateWithContext(context.Background(), request)
@@ -6588,6 +6579,7 @@ func (c *Client) DescribeRuleTemplate(request *DescribeRuleTemplateRequest) (res
 // 查询模板详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_RULETEMPLATENOTEXIST = "InvalidParameter.RuleTemplateNotExist"
 func (c *Client) DescribeRuleTemplateWithContext(ctx context.Context, request *DescribeRuleTemplateRequest) (response *DescribeRuleTemplateResponse, err error) {
     if request == nil {
@@ -6627,6 +6619,7 @@ func NewDescribeRuleTemplatesResponse() (response *DescribeRuleTemplatesResponse
 // 查询规则模版列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRuleTemplates(request *DescribeRuleTemplatesRequest) (response *DescribeRuleTemplatesResponse, err error) {
@@ -6637,6 +6630,7 @@ func (c *Client) DescribeRuleTemplates(request *DescribeRuleTemplatesRequest) (r
 // 查询规则模版列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRuleTemplatesWithContext(ctx context.Context, request *DescribeRuleTemplatesRequest) (response *DescribeRuleTemplatesResponse, err error) {
@@ -6730,8 +6724,6 @@ func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
     return c.DescribeRulesWithContext(context.Background(), request)
 }
@@ -6741,8 +6733,6 @@ func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRulesWithContext(ctx context.Context, request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
     if request == nil {
         request = NewDescribeRulesRequest()
@@ -8897,7 +8887,9 @@ func NewModifyExecStrategyResponse() (response *ModifyExecStrategyResponse) {
 // 更新规则组执行策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  UNSUPPORTEDOPERATION_NORULEINRULEGROUP = "UnsupportedOperation.NoRuleInRuleGroup"
 func (c *Client) ModifyExecStrategy(request *ModifyExecStrategyRequest) (response *ModifyExecStrategyResponse, err error) {
     return c.ModifyExecStrategyWithContext(context.Background(), request)
 }
@@ -8906,7 +8898,9 @@ func (c *Client) ModifyExecStrategy(request *ModifyExecStrategyRequest) (respons
 // 更新规则组执行策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  UNSUPPORTEDOPERATION_NORULEINRULEGROUP = "UnsupportedOperation.NoRuleInRuleGroup"
 func (c *Client) ModifyExecStrategyWithContext(ctx context.Context, request *ModifyExecStrategyRequest) (response *ModifyExecStrategyResponse, err error) {
     if request == nil {
         request = NewModifyExecStrategyRequest()
@@ -8947,7 +8941,9 @@ func NewModifyFolderResponse() (response *ModifyFolderResponse) {
 // 文件夹更新
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  UNSUPPORTEDOPERATION_NORULEINRULEGROUP = "UnsupportedOperation.NoRuleInRuleGroup"
 func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {
     return c.ModifyFolderWithContext(context.Background(), request)
 }
@@ -8958,7 +8954,9 @@ func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFol
 // 文件夹更新
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  UNSUPPORTEDOPERATION_NORULEINRULEGROUP = "UnsupportedOperation.NoRuleInRuleGroup"
 func (c *Client) ModifyFolderWithContext(ctx context.Context, request *ModifyFolderRequest) (response *ModifyFolderResponse, err error) {
     if request == nil {
         request = NewModifyFolderRequest()
@@ -9159,6 +9157,7 @@ func NewModifyMonitorStatusResponse() (response *ModifyMonitorStatusResponse) {
 // 更新监控状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMonitorStatus(request *ModifyMonitorStatusRequest) (response *ModifyMonitorStatusResponse, err error) {
@@ -9169,6 +9168,7 @@ func (c *Client) ModifyMonitorStatus(request *ModifyMonitorStatusRequest) (respo
 // 更新监控状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMonitorStatusWithContext(ctx context.Context, request *ModifyMonitorStatusRequest) (response *ModifyMonitorStatusResponse, err error) {
@@ -9209,6 +9209,7 @@ func NewModifyRuleResponse() (response *ModifyRuleResponse) {
 // 更新质量规则接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
 func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
     return c.ModifyRuleWithContext(context.Background(), request)
@@ -9218,6 +9219,7 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
 // 更新质量规则接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_RULENOTEXIST = "InvalidParameter.RuleNotExist"
 func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
     if request == nil {
@@ -9257,6 +9259,7 @@ func NewModifyRuleGroupSubscriptionResponse() (response *ModifyRuleGroupSubscrip
 // 更新规则组订阅信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
 func (c *Client) ModifyRuleGroupSubscription(request *ModifyRuleGroupSubscriptionRequest) (response *ModifyRuleGroupSubscriptionResponse, err error) {
     return c.ModifyRuleGroupSubscriptionWithContext(context.Background(), request)
@@ -9266,6 +9269,7 @@ func (c *Client) ModifyRuleGroupSubscription(request *ModifyRuleGroupSubscriptio
 // 更新规则组订阅信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
 func (c *Client) ModifyRuleGroupSubscriptionWithContext(ctx context.Context, request *ModifyRuleGroupSubscriptionRequest) (response *ModifyRuleGroupSubscriptionResponse, err error) {
     if request == nil {
@@ -9305,7 +9309,8 @@ func NewModifyRuleTemplateResponse() (response *ModifyRuleTemplateResponse) {
 // 编辑规则模版
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RULETEMPLATENOTEXIST = "InvalidParameter.RuleTemplateNotExist"
 func (c *Client) ModifyRuleTemplate(request *ModifyRuleTemplateRequest) (response *ModifyRuleTemplateResponse, err error) {
     return c.ModifyRuleTemplateWithContext(context.Background(), request)
 }
@@ -9314,7 +9319,8 @@ func (c *Client) ModifyRuleTemplate(request *ModifyRuleTemplateRequest) (respons
 // 编辑规则模版
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SERVICEISBUSY = "InvalidParameter.ServiceIsBusy"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_RULETEMPLATENOTEXIST = "InvalidParameter.RuleTemplateNotExist"
 func (c *Client) ModifyRuleTemplateWithContext(ctx context.Context, request *ModifyRuleTemplateRequest) (response *ModifyRuleTemplateResponse, err error) {
     if request == nil {
         request = NewModifyRuleTemplateRequest()

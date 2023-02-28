@@ -228,6 +228,146 @@ func (r *AddUserGroupMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AssetSyncStatus struct {
+	// 上一次同步完成的时间
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+
+	// 上一次同步的结果。 0 - 从未进行, 1 - 成功， 2 - 失败
+	LastStatus *uint64 `json:"LastStatus,omitempty" name:"LastStatus"`
+
+	// 同步任务是否正在进行中
+	InProcess *bool `json:"InProcess,omitempty" name:"InProcess"`
+}
+
+// Predefined struct for user
+type BindDeviceAccountPasswordRequestParams struct {
+	// 主机账号ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 主机账号密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+type BindDeviceAccountPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主机账号ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 主机账号密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+func (r *BindDeviceAccountPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDeviceAccountPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Password")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindDeviceAccountPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindDeviceAccountPasswordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BindDeviceAccountPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *BindDeviceAccountPasswordResponseParams `json:"Response"`
+}
+
+func (r *BindDeviceAccountPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDeviceAccountPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindDeviceAccountPrivateKeyRequestParams struct {
+	// 主机账号ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 主机账号私钥，最新长度128字节，最大长度8192字节
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+	// 主机账号私钥口令，最大长度256字节
+	PrivateKeyPassword *string `json:"PrivateKeyPassword,omitempty" name:"PrivateKeyPassword"`
+}
+
+type BindDeviceAccountPrivateKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主机账号ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 主机账号私钥，最新长度128字节，最大长度8192字节
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+	// 主机账号私钥口令，最大长度256字节
+	PrivateKeyPassword *string `json:"PrivateKeyPassword,omitempty" name:"PrivateKeyPassword"`
+}
+
+func (r *BindDeviceAccountPrivateKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDeviceAccountPrivateKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "PrivateKey")
+	delete(f, "PrivateKeyPassword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindDeviceAccountPrivateKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindDeviceAccountPrivateKeyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BindDeviceAccountPrivateKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *BindDeviceAccountPrivateKeyResponseParams `json:"Response"`
+}
+
+func (r *BindDeviceAccountPrivateKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDeviceAccountPrivateKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type BindDeviceResourceRequestParams struct {
 	// 资产ID集合
@@ -526,6 +666,188 @@ func (r *CreateAclResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAclResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAssetSyncJobRequestParams struct {
+	// 同步资产类别，1 - 主机资产, 2 - 数据库资产
+	Category *uint64 `json:"Category,omitempty" name:"Category"`
+}
+
+type CreateAssetSyncJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步资产类别，1 - 主机资产, 2 - 数据库资产
+	Category *uint64 `json:"Category,omitempty" name:"Category"`
+}
+
+func (r *CreateAssetSyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAssetSyncJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Category")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetSyncJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAssetSyncJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAssetSyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAssetSyncJobResponseParams `json:"Response"`
+}
+
+func (r *CreateAssetSyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAssetSyncJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCmdTemplateRequestParams struct {
+	// 模板名，最大长度32字符，不能包含空白字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 命令列表，\n分隔，最大长度32768字节
+	CmdList *string `json:"CmdList,omitempty" name:"CmdList"`
+}
+
+type CreateCmdTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名，最大长度32字符，不能包含空白字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 命令列表，\n分隔，最大长度32768字节
+	CmdList *string `json:"CmdList,omitempty" name:"CmdList"`
+}
+
+func (r *CreateCmdTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCmdTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "CmdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCmdTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCmdTemplateResponseParams struct {
+	// 新建成功后返回的记录ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCmdTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCmdTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateCmdTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCmdTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeviceAccountRequestParams struct {
+	// 主机记录ID
+	DeviceId *uint64 `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 账号名
+	Account *string `json:"Account,omitempty" name:"Account"`
+}
+
+type CreateDeviceAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主机记录ID
+	DeviceId *uint64 `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 账号名
+	Account *string `json:"Account,omitempty" name:"Account"`
+}
+
+func (r *CreateDeviceAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	delete(f, "Account")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeviceAccountResponseParams struct {
+	// 新建成功后返回的记录ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDeviceAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDeviceAccountResponseParams `json:"Response"`
+}
+
+func (r *CreateDeviceAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -836,6 +1158,114 @@ func (r *DeleteAclsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCmdTemplatesRequestParams struct {
+	// 待删除的ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+type DeleteCmdTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteCmdTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCmdTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCmdTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCmdTemplatesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCmdTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCmdTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DeleteCmdTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCmdTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeviceAccountsRequestParams struct {
+	// 待删除的ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+type DeleteDeviceAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteDeviceAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeviceAccountsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteDeviceAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeviceAccountsResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeviceAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceAccountsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDeviceGroupMembersRequestParams struct {
 	// 资产组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -947,6 +1377,60 @@ func (r *DeleteDeviceGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDeviceGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDevicesRequestParams struct {
+	// 待删除的ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+type DeleteDevicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDevicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDevicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDevicesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDevicesResponseParams `json:"Response"`
+}
+
+func (r *DeleteDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1132,6 +1616,116 @@ type Department struct {
 }
 
 // Predefined struct for user
+type DeployResourceRequestParams struct {
+	// 需要开通服务的资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 需要开通服务的地域
+	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
+
+	// 子网所在可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 需要开通服务的VPC
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 需要开通服务的子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 需要开通服务的子网网段
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 需要开通服务的VPC名称
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 需要开通服务的VPC对应的网段
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
+
+	// 需要开通服务的子网名称
+	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+}
+
+type DeployResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要开通服务的资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 需要开通服务的地域
+	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
+
+	// 子网所在可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 需要开通服务的VPC
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 需要开通服务的子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 需要开通服务的子网网段
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 需要开通服务的VPC名称
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 需要开通服务的VPC对应的网段
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
+
+	// 需要开通服务的子网名称
+	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+}
+
+func (r *DeployResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "ApCode")
+	delete(f, "Zone")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "CidrBlock")
+	delete(f, "VpcName")
+	delete(f, "VpcCidrBlock")
+	delete(f, "SubnetName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployResourceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeployResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployResourceResponseParams `json:"Response"`
+}
+
+func (r *DeployResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAclsRequestParams struct {
 	// 访问权限ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
@@ -1248,6 +1842,144 @@ func (r *DescribeAclsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAssetSyncStatusRequestParams struct {
+	// 查询的资产同步类型。1 -主机资产， 2 - 数据库资产
+	Category *uint64 `json:"Category,omitempty" name:"Category"`
+}
+
+type DescribeAssetSyncStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询的资产同步类型。1 -主机资产， 2 - 数据库资产
+	Category *uint64 `json:"Category,omitempty" name:"Category"`
+}
+
+func (r *DescribeAssetSyncStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSyncStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Category")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetSyncStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetSyncStatusResponseParams struct {
+	// 资产同步结果
+	Status *AssetSyncStatus `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAssetSyncStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAssetSyncStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeAssetSyncStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSyncStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCmdTemplatesRequestParams struct {
+	// 命令模板ID集合，非必需
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 命令模板名，模糊查询，最大长度64字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeCmdTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 命令模板ID集合，非必需
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 命令模板名，模糊查询，最大长度64字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCmdTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCmdTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCmdTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCmdTemplatesResponseParams struct {
+	// 命令模板列表
+	CmdTemplateSet []*CmdTemplate `json:"CmdTemplateSet,omitempty" name:"CmdTemplateSet"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCmdTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCmdTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCmdTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCmdTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDasbImageIdsRequestParams struct {
 
 }
@@ -1301,6 +2033,94 @@ func (r *DescribeDasbImageIdsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDasbImageIdsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceAccountsRequestParams struct {
+	// 主机账号ID集合，非必需，如果使用IdSet则忽略其他过滤参数
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 主机账号名，模糊查询，不能单独出现，必须于DeviceId一起提交
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// 主机ID，未使用IdSet时必须携带
+	DeviceId *uint64 `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeDeviceAccountsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主机账号ID集合，非必需，如果使用IdSet则忽略其他过滤参数
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 主机账号名，模糊查询，不能单独出现，必须于DeviceId一起提交
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// 主机ID，未使用IdSet时必须携带
+	DeviceId *uint64 `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDeviceAccountsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceAccountsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	delete(f, "Account")
+	delete(f, "DeviceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceAccountsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceAccountsResponseParams struct {
+	// 记录总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 账号信息列表
+	DeviceAccountSet []*DeviceAccount `json:"DeviceAccountSet,omitempty" name:"DeviceAccountSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceAccountsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceAccountsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceAccountsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2068,6 +2888,40 @@ type Device struct {
 	Department *Department `json:"Department,omitempty" name:"Department"`
 }
 
+type DeviceAccount struct {
+	// 账号ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 主机ID
+	DeviceId *uint64 `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 账号名
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// true-已托管密码，false-未托管密码
+	BoundPassword *bool `json:"BoundPassword,omitempty" name:"BoundPassword"`
+
+	// true-已托管私钥，false-未托管私钥
+	BoundPrivateKey *bool `json:"BoundPrivateKey,omitempty" name:"BoundPrivateKey"`
+}
+
+type ExternalDevice struct {
+	// 操作系统名称，只能是Linux、Windows或MySQL
+	OsName *string `json:"OsName,omitempty" name:"OsName"`
+
+	// IP地址
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 管理端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 主机名，可为空
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资产所属的部门ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+}
+
 type Filter struct {
 	// 需要过滤的字段。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2092,6 +2946,60 @@ type Group struct {
 	// 个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
+// Predefined struct for user
+type ImportExternalDeviceRequestParams struct {
+	// 资产参数列表
+	DeviceSet []*ExternalDevice `json:"DeviceSet,omitempty" name:"DeviceSet"`
+}
+
+type ImportExternalDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资产参数列表
+	DeviceSet []*ExternalDevice `json:"DeviceSet,omitempty" name:"DeviceSet"`
+}
+
+func (r *ImportExternalDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportExternalDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportExternalDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportExternalDeviceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ImportExternalDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportExternalDeviceResponseParams `json:"Response"`
+}
+
+func (r *ImportExternalDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportExternalDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2328,6 +3236,149 @@ func (r *ModifyAclResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDeviceGroupRequestParams struct {
+	// 资产组名，最大长度32字符，不能为空
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 资产组所属部门ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+}
+
+type ModifyDeviceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资产组名，最大长度32字符，不能为空
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 资产组所属部门ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+}
+
+func (r *ModifyDeviceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Id")
+	delete(f, "DepartmentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceRequestParams struct {
+	// 资产记录ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 管理端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 资产所属组ID集合
+	GroupIdSet []*uint64 `json:"GroupIdSet,omitempty" name:"GroupIdSet"`
+
+	// 资产所属部门ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+}
+
+type ModifyDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资产记录ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 管理端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 资产所属组ID集合
+	GroupIdSet []*uint64 `json:"GroupIdSet,omitempty" name:"GroupIdSet"`
+
+	// 资产所属部门ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+}
+
+func (r *ModifyDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Port")
+	delete(f, "GroupIdSet")
+	delete(f, "DepartmentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDeviceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDeviceResponseParams `json:"Response"`
+}
+
+func (r *ModifyDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserRequestParams struct {
 	// 用户ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -2445,6 +3496,168 @@ func (r *ModifyUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetDeviceAccountPasswordRequestParams struct {
+	// ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+type ResetDeviceAccountPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+func (r *ResetDeviceAccountPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetDeviceAccountPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetDeviceAccountPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetDeviceAccountPasswordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ResetDeviceAccountPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetDeviceAccountPasswordResponseParams `json:"Response"`
+}
+
+func (r *ResetDeviceAccountPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetDeviceAccountPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetDeviceAccountPrivateKeyRequestParams struct {
+	// ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+type ResetDeviceAccountPrivateKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+func (r *ResetDeviceAccountPrivateKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetDeviceAccountPrivateKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetDeviceAccountPrivateKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetDeviceAccountPrivateKeyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ResetDeviceAccountPrivateKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetDeviceAccountPrivateKeyResponseParams `json:"Response"`
+}
+
+func (r *ResetDeviceAccountPrivateKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetDeviceAccountPrivateKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetUserRequestParams struct {
+	// 用户ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+type ResetUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
+func (r *ResetUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetUserResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ResetUserResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetUserResponseParams `json:"Response"`
+}
+
+func (r *ResetUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

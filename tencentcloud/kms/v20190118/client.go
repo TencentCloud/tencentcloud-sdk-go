@@ -2201,6 +2201,7 @@ func NewGetServiceStatusResponse() (response *GetServiceStatusResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetServiceStatus(request *GetServiceStatusRequest) (response *GetServiceStatusResponse, err error) {
     return c.GetServiceStatusWithContext(context.Background(), request)
 }
@@ -2211,6 +2212,7 @@ func (c *Client) GetServiceStatus(request *GetServiceStatusRequest) (response *G
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) GetServiceStatusWithContext(ctx context.Context, request *GetServiceStatusRequest) (response *GetServiceStatusResponse, err error) {
     if request == nil {
         request = NewGetServiceStatusRequest()

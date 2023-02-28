@@ -3224,6 +3224,7 @@ func NewDescribeHaVipsResponse() (response *DescribeHaVipsResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeHaVips(request *DescribeHaVipsRequest) (response *DescribeHaVipsResponse, err error) {
     return c.DescribeHaVipsWithContext(context.Background(), request)
 }
@@ -3239,6 +3240,7 @@ func (c *Client) DescribeHaVips(request *DescribeHaVipsRequest) (response *Descr
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
 func (c *Client) DescribeHaVipsWithContext(ctx context.Context, request *DescribeHaVipsRequest) (response *DescribeHaVipsResponse, err error) {
     if request == nil {
         request = NewDescribeHaVipsRequest()
