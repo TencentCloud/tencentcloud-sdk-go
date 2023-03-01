@@ -1128,37 +1128,42 @@ type DetectInfoText struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// Ocr识别结果。民族。
+	// 身份校验环节识别结果：民族。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrNation *string `json:"OcrNation,omitempty" name:"OcrNation"`
 
-	// Ocr识别结果。家庭住址。
+	// 身份校验环节识别结果：家庭住址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrAddress *string `json:"OcrAddress,omitempty" name:"OcrAddress"`
 
-	// Ocr识别结果。生日。
+	// 身份校验环节识别结果：生日。格式为：YYYY/M/D
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrBirth *string `json:"OcrBirth,omitempty" name:"OcrBirth"`
 
-	// Ocr识别结果。签发机关。
+	// 身份校验环节识别结果：签发机关。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrAuthority *string `json:"OcrAuthority,omitempty" name:"OcrAuthority"`
 
-	// Ocr识别结果。有效日期。
+	// 身份校验环节识别结果：有效日期。格式为：YYYY.MM.DD-YYYY.MM.DD
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrValidDate *string `json:"OcrValidDate,omitempty" name:"OcrValidDate"`
 
-	// Ocr识别结果。姓名。
+	// 身份校验环节识别结果：姓名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrName *string `json:"OcrName,omitempty" name:"OcrName"`
 
-	// Ocr识别结果。身份证号。
+	// 身份校验环节识别结果：身份证号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrIdCard *string `json:"OcrIdCard,omitempty" name:"OcrIdCard"`
 
-	// Ocr识别结果。性别。
+	// 身份校验环节识别结果：性别。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrGender *string `json:"OcrGender,omitempty" name:"OcrGender"`
+
+	// 身份校验环节采用的信息上传方式。
+	// 取值有"NFC"、"OCR"、"手动输入"、"其他"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdInfoFrom *string `json:"IdInfoFrom,omitempty" name:"IdInfoFrom"`
 
 	// 本次流程最终活体结果。0为成功
 	// 注意：此字段可能返回 null，表示取不到有效值。

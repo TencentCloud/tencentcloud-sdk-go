@@ -3656,6 +3656,14 @@ type GetUserResponseParams struct {
 	// 邮箱
 	Email *string `json:"Email,omitempty" name:"Email"`
 
+	// 最近一次登录ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecentlyLoginIP *string `json:"RecentlyLoginIP,omitempty" name:"RecentlyLoginIP"`
+
+	// 最近一次登录时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecentlyLoginTime *string `json:"RecentlyLoginTime,omitempty" name:"RecentlyLoginTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

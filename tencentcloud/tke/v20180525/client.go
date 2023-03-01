@@ -6792,7 +6792,7 @@ func NewDescribeEdgeLogSwitchesResponse() (response *DescribeEdgeLogSwitchesResp
 }
 
 // DescribeEdgeLogSwitches
-// 获取事件、审计和日志的状态接口
+// 获取事件、审计和日志的状态
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6807,7 +6807,7 @@ func (c *Client) DescribeEdgeLogSwitches(request *DescribeEdgeLogSwitchesRequest
 }
 
 // DescribeEdgeLogSwitches
-// 获取事件、审计和日志的状态接口
+// 获取事件、审计和日志的状态
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

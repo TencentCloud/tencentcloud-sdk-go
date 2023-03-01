@@ -370,7 +370,7 @@ func NewCreateDBInstanceHourResponse() (response *CreateDBInstanceHourResponse) 
 }
 
 // CreateDBInstanceHour
-// 本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例。
+// 本接口（CreateDBInstanceHour）用于创建按量计费的MongoDB云数据库实例。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -396,7 +396,7 @@ func (c *Client) CreateDBInstanceHour(request *CreateDBInstanceHourRequest) (res
 }
 
 // CreateDBInstanceHour
-// 本接口(CreateDBInstanceHour)用于创建按量计费的MongoDB云数据库实例。
+// 本接口（CreateDBInstanceHour）用于创建按量计费的MongoDB云数据库实例。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"

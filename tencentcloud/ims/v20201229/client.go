@@ -45,6 +45,190 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateImageModerationAsyncTaskRequest() (request *CreateImageModerationAsyncTaskRequest) {
+    request = &CreateImageModerationAsyncTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ims", APIVersion, "CreateImageModerationAsyncTask")
+    
+    
+    return
+}
+
+func NewCreateImageModerationAsyncTaskResponse() (response *CreateImageModerationAsyncTaskResponse) {
+    response = &CreateImageModerationAsyncTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateImageModerationAsyncTask
+// 本接口用于提交图片文件进行异步智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通图片内容安全服务](https://console.cloud.tencent.com/cms/image/package) 并调整好对应的业务配置。
+//
+// ### 接口使用说明：
+//
+// - 前往“[内容安全控制台-图片内容安全](https://console.cloud.tencent.com/cms/image/package)”开启使用图片内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**1万张图片**识别额度，有效期为1个月。
+//
+// - 该接口为收费接口，计费方式敬请参见 [腾讯云图片内容安全定价](https://cloud.tencent.com/product/ims/pricing)。
+//
+// 
+//
+// ### 接口功能说明：
+//
+// - 支持对图片文件或链接进行检测，通过深度学习技术，识别可能令人反感、不安全或不适宜的违规图片内容；
+//
+// - 支持对GIF图/长图进行截帧或拆分检测；
+//
+// - 支持识别多种违规场景，包括：低俗、违法违规、色情、广告等场景；
+//
+// - 支持多种物体检测（实体、广告台标、二维码等）及图片中文本的OCR文本识别；
+//
+// - 支持根据不同的业务场景配置自定义的审核策略；
+//
+// - 支持用户自定义选择图片风险库，打击自定义识别类型的违规图片（目前仅支持黑名单配置）；
+//
+// - 支持在审核图片内容时同时关联账号或设备信息，可识别违规风险账号或设备。
+//
+// ### 接口调用说明：
+//
+// - 图片尺寸支持：**长或者宽 >50分辨率**和**长或者宽<40000分辨率**,并且**图片长宽比<90:1；**
+//
+// - 图片文件分辨率支持：建议**分辨率大于256x256**，否则可能会影响识别效果；
+//
+// - 图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式；
+//
+// - 图片文件链接支持的传输协议：HTTP、HTTPS；
+//
+// - 若传入图片文件的访问链接，则需要注意**图片下载时间限制为3秒**，为保障被检测图片的稳定性和可靠性，建议您使用腾讯云COS存储或者CDN缓存等；
+//
+// - 默认接口请求频率限制：**20次/秒**，超过此调用频率则会报错。
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IMAGESIZETOOSMALL = "InvalidParameter.ImageSizeTooSmall"
+//  INVALIDPARAMETER_INVALIDIMAGECONTENT = "InvalidParameter.InvalidImageContent"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTYIMAGECONTENT = "InvalidParameterValue.EmptyImageContent"
+//  INVALIDPARAMETERVALUE_IMAGESIZETOOSMALL = "InvalidParameterValue.ImageSizeTooSmall"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDDATAID = "InvalidParameterValue.InvalidDataId"
+//  INVALIDPARAMETERVALUE_INVALIDFILECONTENTSIZE = "InvalidParameterValue.InvalidFileContentSize"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONTENT = "InvalidParameterValue.InvalidImageContent"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = "ResourceUnavailable.ImageDownloadError"
+//  RESOURCEUNAVAILABLE_INVALIDIMAGECONTENT = "ResourceUnavailable.InvalidImageContent"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateImageModerationAsyncTask(request *CreateImageModerationAsyncTaskRequest) (response *CreateImageModerationAsyncTaskResponse, err error) {
+    return c.CreateImageModerationAsyncTaskWithContext(context.Background(), request)
+}
+
+// CreateImageModerationAsyncTask
+// 本接口用于提交图片文件进行异步智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通图片内容安全服务](https://console.cloud.tencent.com/cms/image/package) 并调整好对应的业务配置。
+//
+// ### 接口使用说明：
+//
+// - 前往“[内容安全控制台-图片内容安全](https://console.cloud.tencent.com/cms/image/package)”开启使用图片内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**1万张图片**识别额度，有效期为1个月。
+//
+// - 该接口为收费接口，计费方式敬请参见 [腾讯云图片内容安全定价](https://cloud.tencent.com/product/ims/pricing)。
+//
+// 
+//
+// ### 接口功能说明：
+//
+// - 支持对图片文件或链接进行检测，通过深度学习技术，识别可能令人反感、不安全或不适宜的违规图片内容；
+//
+// - 支持对GIF图/长图进行截帧或拆分检测；
+//
+// - 支持识别多种违规场景，包括：低俗、违法违规、色情、广告等场景；
+//
+// - 支持多种物体检测（实体、广告台标、二维码等）及图片中文本的OCR文本识别；
+//
+// - 支持根据不同的业务场景配置自定义的审核策略；
+//
+// - 支持用户自定义选择图片风险库，打击自定义识别类型的违规图片（目前仅支持黑名单配置）；
+//
+// - 支持在审核图片内容时同时关联账号或设备信息，可识别违规风险账号或设备。
+//
+// ### 接口调用说明：
+//
+// - 图片尺寸支持：**长或者宽 >50分辨率**和**长或者宽<40000分辨率**,并且**图片长宽比<90:1；**
+//
+// - 图片文件分辨率支持：建议**分辨率大于256x256**，否则可能会影响识别效果；
+//
+// - 图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式；
+//
+// - 图片文件链接支持的传输协议：HTTP、HTTPS；
+//
+// - 若传入图片文件的访问链接，则需要注意**图片下载时间限制为3秒**，为保障被检测图片的稳定性和可靠性，建议您使用腾讯云COS存储或者CDN缓存等；
+//
+// - 默认接口请求频率限制：**20次/秒**，超过此调用频率则会报错。
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_IMAGESIZETOOSMALL = "InvalidParameter.ImageSizeTooSmall"
+//  INVALIDPARAMETER_INVALIDIMAGECONTENT = "InvalidParameter.InvalidImageContent"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_EMPTYIMAGECONTENT = "InvalidParameterValue.EmptyImageContent"
+//  INVALIDPARAMETERVALUE_IMAGESIZETOOSMALL = "InvalidParameterValue.ImageSizeTooSmall"
+//  INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDDATAID = "InvalidParameterValue.InvalidDataId"
+//  INVALIDPARAMETERVALUE_INVALIDFILECONTENTSIZE = "InvalidParameterValue.InvalidFileContentSize"
+//  INVALIDPARAMETERVALUE_INVALIDIMAGECONTENT = "InvalidParameterValue.InvalidImageContent"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = "ResourceUnavailable.ImageDownloadError"
+//  RESOURCEUNAVAILABLE_INVALIDIMAGECONTENT = "ResourceUnavailable.InvalidImageContent"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateImageModerationAsyncTaskWithContext(ctx context.Context, request *CreateImageModerationAsyncTaskRequest) (response *CreateImageModerationAsyncTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateImageModerationAsyncTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateImageModerationAsyncTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateImageModerationAsyncTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImageModerationRequest() (request *ImageModerationRequest) {
     request = &ImageModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,7 +248,7 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 }
 
 // ImageModeration
-// 本接口（Image Moderation, IM）用于提交图片文件进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通图片内容安全服务](https://console.cloud.tencent.com/cms/image/package) 并调整好对应的业务配置。
+// 本接口（Image Moderation, IM）用于提交图片文件进行同步智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通图片内容安全服务](https://console.cloud.tencent.com/cms/image/package) 并调整好对应的业务配置。
 //
 // ### 接口使用说明：
 //
@@ -179,7 +363,7 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 }
 
 // ImageModeration
-// 本接口（Image Moderation, IM）用于提交图片文件进行智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通图片内容安全服务](https://console.cloud.tencent.com/cms/image/package) 并调整好对应的业务配置。
+// 本接口（Image Moderation, IM）用于提交图片文件进行同步智能审核任务。使用前请您使用腾讯云主账号登录控制台 [开通图片内容安全服务](https://console.cloud.tencent.com/cms/image/package) 并调整好对应的业务配置。
 //
 // ### 接口使用说明：
 //

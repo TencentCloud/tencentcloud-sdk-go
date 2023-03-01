@@ -20,6 +20,119 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CreateImageModerationAsyncTaskRequestParams struct {
+	// 接收审核信息回调地址，审核过程中产生的所有结果发送至此地址。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 该字段表示待检测图片文件内容的Base64编码，图片**大小不超过5MB**，建议**分辨率不低于256x256**，否则可能会影响识别效果。<br>备注： **该字段与FileUrl必须选择输入其中一个**。
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 该字段表示待检测图片文件的访问链接，图片支持PNG、JPG、JPEG、BMP、GIF、WEBP格式，**大小不超过5MB**，建议**分辨率不低于256x256**；图片下载时间限制为3秒，超过则会返回下载超时；由于网络安全策略，**送审带重定向的链接，可能引起下载失败**，请尽量避免，比如Http返回302状态码的链接，可能导致接口返回ResourceUnavailable.ImageDownloadError。<br>备注：**该字段与FileContent必须选择输入其中一个**。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// **GIF/长图检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测），长图则按照长边：短边取整计算要切割的总图数；默认值为0，此时只会检测GIF的第一帧或对长图不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// **GIF/长图检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧或对长图不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
+	MaxFrames *int64 `json:"MaxFrames,omitempty" name:"MaxFrames"`
+
+	// 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
+	Device *Device `json:"Device,omitempty" name:"Device"`
+}
+
+type CreateImageModerationAsyncTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 接收审核信息回调地址，审核过程中产生的所有结果发送至此地址。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 该字段表示待检测图片文件内容的Base64编码，图片**大小不超过5MB**，建议**分辨率不低于256x256**，否则可能会影响识别效果。<br>备注： **该字段与FileUrl必须选择输入其中一个**。
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 该字段表示待检测图片文件的访问链接，图片支持PNG、JPG、JPEG、BMP、GIF、WEBP格式，**大小不超过5MB**，建议**分辨率不低于256x256**；图片下载时间限制为3秒，超过则会返回下载超时；由于网络安全策略，**送审带重定向的链接，可能引起下载失败**，请尽量避免，比如Http返回302状态码的链接，可能导致接口返回ResourceUnavailable.ImageDownloadError。<br>备注：**该字段与FileContent必须选择输入其中一个**。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// **GIF/长图检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测），长图则按照长边：短边取整计算要切割的总图数；默认值为0，此时只会检测GIF的第一帧或对长图不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// **GIF/长图检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧或对长图不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
+	MaxFrames *int64 `json:"MaxFrames,omitempty" name:"MaxFrames"`
+
+	// 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
+	Device *Device `json:"Device,omitempty" name:"Device"`
+}
+
+func (r *CreateImageModerationAsyncTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImageModerationAsyncTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CallbackUrl")
+	delete(f, "BizType")
+	delete(f, "DataId")
+	delete(f, "FileContent")
+	delete(f, "FileUrl")
+	delete(f, "Interval")
+	delete(f, "MaxFrames")
+	delete(f, "User")
+	delete(f, "Device")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageModerationAsyncTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateImageModerationAsyncTaskResponseParams struct {
+	// 该字段用于返回检测对象对应请求参数中的DataId。
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateImageModerationAsyncTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateImageModerationAsyncTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateImageModerationAsyncTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateImageModerationAsyncTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Device struct {
 	// 该字段表示业务用户对应设备的IP地址，同时**支持IPv4和IPv6**地址的记录；需要与IpType参数配合使用。
 	Ip *string `json:"Ip,omitempty" name:"Ip"`

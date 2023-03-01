@@ -11595,6 +11595,14 @@ type EdgeCluster struct {
 	// 边缘容器集群级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 是否支持自动提升集群配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
+
+	// 集群付费模式，支持POSTPAID_BY_HOUR或者PREPAID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 }
 
 type EdgeClusterAdvancedSettings struct {
