@@ -426,7 +426,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 
 // send http request
 func (c *Client) sendHttp(request *http.Request) (response *http.Response, err error) {
-	if c.debug {
+	if c.debug && request != nil {
 		outBytes, err := httputil.DumpRequest(request, true)
 		if err != nil {
 			c.logger.Printf("[ERROR] dump request failed: %s", err)
@@ -437,7 +437,7 @@ func (c *Client) sendHttp(request *http.Request) (response *http.Response, err e
 
 	response, err = c.httpClient.Do(request)
 
-	if c.debug {
+	if c.debug && response != nil {
 		out, err := httputil.DumpResponse(response, true)
 		if err != nil {
 			c.logger.Printf("[ERROR] dump response failed: %s", err)
