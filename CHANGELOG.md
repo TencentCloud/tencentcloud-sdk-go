@@ -1,3 +1,124 @@
+# Release v1.0.606
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 51 次发布
+
+发布时间：2023-03-01 01:04:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetUser](https://cloud.tencent.com/document/api/598/34590)
+
+	* 新增出参：RecentlyLoginIP, RecentlyLoginTime
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 54 次发布
+
+发布时间：2023-03-01 01:27:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
+
+	* 新增成员：IdInfoFrom
+
+
+
+
+## 图片内容安全(ims) 版本：2020-12-29
+
+### 第 5 次发布
+
+发布时间：2023-03-01 01:30:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateImageModerationAsyncTask](https://cloud.tencent.com/document/api/1125/87021)
+
+
+
+## 图片内容安全(ims) 版本：2020-07-13
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 30 次发布
+
+发布时间：2023-03-01 01:35:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDBInstanceHour](https://cloud.tencent.com/document/api/240/38570)
+
+	* 新增入参：ReadonlyNodeNum, ReadonlyNodeAvailabilityZoneList, HiddenZone
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 41 次发布
+
+发布时间：2023-03-01 01:40:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ResourceTag](https://cloud.tencent.com/document/api/238/19976#ResourceTag)
+
+	* <font color="#dd0000">**修改成员**：</font>TagKey, TagValue
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 140 次发布
+
+发布时间：2023-03-01 01:55:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EdgeCluster](https://cloud.tencent.com/document/api/457/31866#EdgeCluster)
+
+	* 新增成员：AutoUpgradeClusterLevel, ChargeType
+
+
+
+
 # Release v1.0.605
 
 ## 访问管理(cam) 版本：2019-01-16
