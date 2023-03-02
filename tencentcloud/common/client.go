@@ -1,6 +1,7 @@
 package common
 
 import (
+	"context"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -23,6 +24,8 @@ const (
 	octetStream = "application/octet-stream"
 )
 
+type MetaContextKey string
+
 type Client struct {
 	region          string
 	httpClient      *http.Client
@@ -35,6 +38,7 @@ type Client struct {
 	rb              *circuitBreaker
 	logger          *log.Logger
 	requestClient   string
+	requestHooks    []func(tchttp.Request, tchttp.Response, error)
 }
 
 func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err error) {
@@ -65,14 +69,29 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 		safeInjectClientToken(request)
 	}
 
+	start := time.Now()
 	if request.GetSkipSign() {
 		// Some APIs can skip signature.
-		return c.sendWithoutSignature(request, response)
+		err = c.sendWithoutSignature(request, response)
 	} else if c.profile.DisableRegionBreaker == true || c.rb == nil {
-		return c.sendWithSignature(request, response)
+		err = c.sendWithSignature(request, response)
 	} else {
-		return c.sendWithRegionBreaker(request, response)
+		err = c.sendWithRegionBreaker(request, response)
 	}
+
+	ctx := context.TODO()
+	if request.GetContext() != nil {
+		ctx = request.GetContext()
+	}
+	ctx = context.WithValue(ctx, MetaContextKey("duration"), time.Since(start))
+	request.SetContext(ctx)
+
+	for _, h := range c.requestHooks {
+		// ignore failed
+		h(request, response, err)
+	}
+
+	return err
 }
 
 func (c *Client) sendWithRegionBreaker(request tchttp.Request, response tchttp.Response) (err error) {
@@ -447,6 +466,10 @@ func (c *Client) sendHttp(request *http.Request) (response *http.Response, err e
 	}
 
 	return response, err
+}
+
+func (c *Client) AddRequestHook(h func(tchttp.Request, tchttp.Response, error)) {
+	c.requestHooks = append(c.requestHooks, h)
 }
 
 func (c *Client) GetRegion() string {
