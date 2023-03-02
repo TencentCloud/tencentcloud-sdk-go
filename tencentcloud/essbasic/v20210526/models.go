@@ -76,7 +76,7 @@ type CcInfo struct {
 
 // Predefined struct for user
 type ChannelBatchCancelFlowsRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程Id数组，最多100个，超过100不处理
@@ -92,14 +92,14 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
 
-	// 操作人信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelBatchCancelFlowsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程Id数组，最多100个，超过100不处理
@@ -115,7 +115,7 @@ type ChannelBatchCancelFlowsRequest struct {
 	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
 
-	// 操作人信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -172,14 +172,11 @@ type ChannelCancelFlowRequestParams struct {
 	// 签署流程编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 撤回原因，最大不超过200字符
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
-
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 撤销理由自定义格式；选项：
 	// 0 默认格式
@@ -187,6 +184,9 @@ type ChannelCancelFlowRequestParams struct {
 	// 2 保留身份信息+企业名称：展示为【发起方xxx公司】
 	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
+
+	// 暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCancelFlowRequest struct {
@@ -195,14 +195,11 @@ type ChannelCancelFlowRequest struct {
 	// 签署流程编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 撤回原因，最大不超过200字符
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
-
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 撤销理由自定义格式；选项：
 	// 0 默认格式
@@ -210,6 +207,9 @@ type ChannelCancelFlowRequest struct {
 	// 2 保留身份信息+企业名称：展示为【发起方xxx公司】
 	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
+
+	// 暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCancelFlowRequest) ToJsonString() string {
@@ -227,8 +227,8 @@ func (r *ChannelCancelFlowRequest) FromJsonString(s string) error {
 	delete(f, "FlowId")
 	delete(f, "Agent")
 	delete(f, "CancelMessage")
-	delete(f, "Operator")
 	delete(f, "CancelMessageFormat")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCancelFlowRequest has unknown keys!", "")
 	}
@@ -259,26 +259,26 @@ func (r *ChannelCancelFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 二维码id
 	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
 
-	// 用户信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCancelMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 二维码id
 	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
 
-	// 用户信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -327,26 +327,26 @@ func (r *ChannelCancelMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelCreateBatchCancelFlowUrlRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程Id数组
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 操作人信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCreateBatchCancelFlowUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程Id数组
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 操作人信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -474,7 +474,7 @@ func (r *ChannelCreateBoundFlowsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateConvertTaskApiRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
@@ -486,7 +486,7 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	// 资源Id，通过UploadFiles获取
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 暂未开放
@@ -496,7 +496,7 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 type ChannelCreateConvertTaskApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
@@ -508,7 +508,7 @@ type ChannelCreateConvertTaskApiRequest struct {
 	// 资源Id，通过UploadFiles获取
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 调用方用户信息，userId 必填
+	// 调用方用户信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 暂未开放
@@ -566,7 +566,7 @@ func (r *ChannelCreateConvertTaskApiResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowByFilesRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程名称，长度不超过200个字符
@@ -605,9 +605,6 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 签署人校验方式
 	// VerifyCheck: 人脸识别（默认）
 	// MobileCheck：手机号验证
@@ -616,12 +613,15 @@ type ChannelCreateFlowByFilesRequestParams struct {
 
 	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
 	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
+
+	// 操作者的信息，不用传
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCreateFlowByFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程名称，长度不超过200个字符
@@ -660,9 +660,6 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 签署人校验方式
 	// VerifyCheck: 人脸识别（默认）
 	// MobileCheck：手机号验证
@@ -671,6 +668,9 @@ type ChannelCreateFlowByFilesRequest struct {
 
 	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
 	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
+
+	// 操作者的信息，不用传
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
@@ -698,9 +698,9 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "CustomShowMap")
 	delete(f, "CustomerData")
 	delete(f, "NeedSignReview")
-	delete(f, "Operator")
 	delete(f, "ApproverVerifyType")
 	delete(f, "SignBeanTag")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -741,7 +741,7 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 	// 合同组名称，长度不超过200个字符
 	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署人校验方式
@@ -750,7 +750,7 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 	// 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 
-	// 操作者的信息
+	// 操作者的信息，此参数不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -763,7 +763,7 @@ type ChannelCreateFlowGroupByFilesRequest struct {
 	// 合同组名称，长度不超过200个字符
 	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署人校验方式
@@ -772,7 +772,7 @@ type ChannelCreateFlowGroupByFilesRequest struct {
 	// 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 
-	// 操作者的信息
+	// 操作者的信息，此参数不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -831,7 +831,7 @@ func (r *ChannelCreateFlowGroupByFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowRemindsRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程Id数组，最多100个，超过100不处理
@@ -841,7 +841,7 @@ type ChannelCreateFlowRemindsRequestParams struct {
 type ChannelCreateFlowRemindsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程Id数组，最多100个，超过100不处理
@@ -895,7 +895,7 @@ func (r *ChannelCreateFlowRemindsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowSignReviewRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程编号
@@ -918,7 +918,7 @@ type ChannelCreateFlowSignReviewRequestParams struct {
 type ChannelCreateFlowSignReviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程编号
@@ -985,7 +985,7 @@ func (r *ChannelCreateFlowSignReviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowSignUrlRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 流程编号
@@ -1004,7 +1004,7 @@ type ChannelCreateFlowSignUrlRequestParams struct {
 type ChannelCreateFlowSignUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 流程编号
@@ -1070,7 +1070,7 @@ func (r *ChannelCreateFlowSignUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
-	// 渠道应用相关信息。
+	// 应用相关信息。
 	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -1097,17 +1097,17 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 用户信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 限制二维码用户条件（已弃用）
 	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
+
+	// 暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。
+	// 应用相关信息。
 	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -1134,11 +1134,11 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 用户信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 限制二维码用户条件（已弃用）
 	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
+
+	// 暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -1161,8 +1161,8 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 	delete(f, "QrEffectiveDay")
 	delete(f, "Restrictions")
 	delete(f, "CallbackUrl")
-	delete(f, "Operator")
 	delete(f, "ApproverRestrictions")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateMultiFlowSignQRCodeRequest has unknown keys!", "")
 	}
@@ -1199,7 +1199,7 @@ func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelCreateReleaseFlowRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 待解除的流程编号（即原流程的编号）
@@ -1214,17 +1214,17 @@ type ChannelCreateReleaseFlowRequestParams struct {
 	// 签署完回调url，最大长度1000个字符
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 机构信息
+	// 暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
-	// 用户信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCreateReleaseFlowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 待解除的流程编号（即原流程的编号）
@@ -1239,10 +1239,10 @@ type ChannelCreateReleaseFlowRequest struct {
 	// 签署完回调url，最大长度1000个字符
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 机构信息
+	// 暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
-	// 用户信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1298,38 +1298,38 @@ func (r *ChannelCreateReleaseFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateSealPolicyRequestParams struct {
-	// 用户渠道信息
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 指定印章
+	// 指定印章ID
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
 	// 指定待授权的用户ID数组
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 企业机构信息
+	// 企业机构信息，不用传
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
-	// 操作人（用户）信息
+	// 操作人（用户）信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCreateSealPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户渠道信息
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 指定印章
+	// 指定印章ID
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
 	// 指定待授权的用户ID数组
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 企业机构信息
+	// 企业机构信息，不用传
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
-	// 操作人（用户）信息
+	// 操作人（用户）信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1383,7 +1383,7 @@ func (r *ChannelCreateSealPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDeleteSealPoliciesRequestParams struct {
-	// 渠道信息
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 指定印章ID
@@ -1392,17 +1392,17 @@ type ChannelDeleteSealPoliciesRequestParams struct {
 	// 指定用户ID数组
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 操作人（用户）信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 组织机构信息
+	// 组织机构信息，不用传
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 操作人（用户）信息，不用传
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelDeleteSealPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道信息
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 指定印章ID
@@ -1411,11 +1411,11 @@ type ChannelDeleteSealPoliciesRequest struct {
 	// 指定用户ID数组
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 操作人（用户）信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 组织机构信息
+	// 组织机构信息，不用传
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 操作人（用户）信息，不用传
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDeleteSealPoliciesRequest) ToJsonString() string {
@@ -1433,8 +1433,8 @@ func (r *ChannelDeleteSealPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "SealId")
 	delete(f, "UserIds")
-	delete(f, "Operator")
 	delete(f, "Organization")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDeleteSealPoliciesRequest has unknown keys!", "")
 	}
@@ -1468,7 +1468,7 @@ type ChannelDescribeEmployeesRequestParams struct {
 	// 返回最大数量，最大为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
@@ -1479,7 +1479,7 @@ type ChannelDescribeEmployeesRequestParams struct {
 	// 偏移量，默认为0，最大为20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1489,7 +1489,7 @@ type ChannelDescribeEmployeesRequest struct {
 	// 返回最大数量，最大为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
@@ -1500,7 +1500,7 @@ type ChannelDescribeEmployeesRequest struct {
 	// 偏移量，默认为0，最大为20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1565,7 +1565,7 @@ func (r *ChannelDescribeEmployeesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDescribeOrganizationSealsRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 返回最大数量，最大为100
@@ -1593,7 +1593,7 @@ type ChannelDescribeOrganizationSealsRequestParams struct {
 type ChannelDescribeOrganizationSealsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 返回最大数量，最大为100
@@ -1672,13 +1672,13 @@ func (r *ChannelDescribeOrganizationSealsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelGetTaskResultApiRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 任务Id，通过ChannelCreateConvertTaskApi接口获得
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 操作者的信息
+	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 暂未开放
@@ -1688,13 +1688,13 @@ type ChannelGetTaskResultApiRequestParams struct {
 type ChannelGetTaskResultApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 任务Id，通过ChannelCreateConvertTaskApi接口获得
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 操作者的信息
+	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 暂未开放
@@ -1775,7 +1775,7 @@ func (r *ChannelGetTaskResultApiResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelUpdateSealStatusRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 操作的印章状态，DISABLE-停用印章
@@ -1794,7 +1794,7 @@ type ChannelUpdateSealStatusRequestParams struct {
 type ChannelUpdateSealStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 操作的印章状态，DISABLE-停用印章
@@ -1860,10 +1860,10 @@ type ChannelVerifyPdfRequestParams struct {
 	// 合同Id，流程Id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1873,10 +1873,10 @@ type ChannelVerifyPdfRequest struct {
 	// 合同Id，流程Id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2142,26 +2142,26 @@ type Component struct {
 
 // Predefined struct for user
 type CreateChannelFlowEvidenceReportRequestParams struct {
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
 	// 签署流程编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type CreateChannelFlowEvidenceReportRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
 	// 签署流程编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2177,8 +2177,8 @@ func (r *CreateChannelFlowEvidenceReportRequest) FromJsonString(s string) error 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FlowId")
 	delete(f, "Agent")
+	delete(f, "FlowId")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelFlowEvidenceReportRequest has unknown keys!", "")
@@ -2251,11 +2251,11 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// 触发自动跳转事件，仅对App类型有效，"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
 	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitempty" name:"AutoJumpBackEvent"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 支持的授权方式,授权方式: "1" - 上传授权书认证  "2" - 法定代表人认证
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitempty" name:"AuthorizationTypes"`
+
+	// 暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type CreateConsoleLoginUrlRequest struct {
@@ -2289,11 +2289,11 @@ type CreateConsoleLoginUrlRequest struct {
 	// 触发自动跳转事件，仅对App类型有效，"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
 	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitempty" name:"AutoJumpBackEvent"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 支持的授权方式,授权方式: "1" - 上传授权书认证  "2" - 法定代表人认证
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitempty" name:"AuthorizationTypes"`
+
+	// 暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *CreateConsoleLoginUrlRequest) ToJsonString() string {
@@ -2317,8 +2317,8 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	delete(f, "MenuStatus")
 	delete(f, "Endpoint")
 	delete(f, "AutoJumpBackEvent")
-	delete(f, "Operator")
 	delete(f, "AuthorizationTypes")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleLoginUrlRequest has unknown keys!", "")
 	}
@@ -2363,7 +2363,7 @@ func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowsByTemplatesRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 多个合同（签署流程）信息，最多支持20个
@@ -2377,14 +2377,14 @@ type CreateFlowsByTemplatesRequestParams struct {
 	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
 	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
-	// 操作者的信息
+	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type CreateFlowsByTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 多个合同（签署流程）信息，最多支持20个
@@ -2398,7 +2398,7 @@ type CreateFlowsByTemplatesRequest struct {
 	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
 	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
-	// 操作者的信息
+	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2466,7 +2466,7 @@ func (r *CreateFlowsByTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSealByImageRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 印章名称，最大长度不超过50字符
@@ -2482,7 +2482,7 @@ type CreateSealByImageRequestParams struct {
 type CreateSealByImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 印章名称，最大长度不超过50字符
@@ -2544,7 +2544,7 @@ func (r *CreateSealByImageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSignUrlsRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程编号数组，最多支持100个。(备注：该参数和合同组编号必须二选一)
@@ -2577,7 +2577,7 @@ type CreateSignUrlsRequestParams struct {
 	// 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
-	// 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人
+	// 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
@@ -2586,14 +2586,14 @@ type CreateSignUrlsRequestParams struct {
 	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type CreateSignUrlsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程编号数组，最多支持100个。(备注：该参数和合同组编号必须二选一)
@@ -2626,7 +2626,7 @@ type CreateSignUrlsRequest struct {
 	// 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
-	// 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人
+	// 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
@@ -2635,7 +2635,7 @@ type CreateSignUrlsRequest struct {
 	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2710,26 +2710,26 @@ type Department struct {
 
 // Predefined struct for user
 type DescribeChannelFlowEvidenceReportRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 出证报告编号
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type DescribeChannelFlowEvidenceReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 出证报告编号
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2787,7 +2787,7 @@ func (r *DescribeChannelFlowEvidenceReportResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeExtendedServiceAuthInfoRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
 	// 
 	// 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -2796,7 +2796,7 @@ type DescribeExtendedServiceAuthInfoRequestParams struct {
 type DescribeExtendedServiceAuthInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
 	// 
 	// 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -2849,35 +2849,35 @@ func (r *DescribeExtendedServiceAuthInfoResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeFlowDetailInfoRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 合同(流程)编号数组，最多支持100个。
 	// （备注：该参数和合同组编号必须二选一）
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）
 	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type DescribeFlowDetailInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 合同(流程)编号数组，最多支持100个。
 	// （备注：该参数和合同组编号必须二选一）
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）
 	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 暂未开放
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *DescribeFlowDetailInfoRequest) ToJsonString() string {
@@ -2894,8 +2894,8 @@ func (r *DescribeFlowDetailInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Agent")
 	delete(f, "FlowIds")
-	delete(f, "Operator")
 	delete(f, "FlowGroupId")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowDetailInfoRequest has unknown keys!", "")
 	}
@@ -2944,28 +2944,28 @@ func (r *DescribeFlowDetailInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceUrlsByFlowsRequestParams struct {
-	// 渠道应用相关信息。
+	// 应用相关信息。
 	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询资源所对应的签署流程Id，最多支持50个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 操作者的信息
+	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type DescribeResourceUrlsByFlowsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。
+	// 应用相关信息。
 	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询资源所对应的签署流程Id，最多支持50个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 操作者的信息
+	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3021,7 +3021,7 @@ func (r *DescribeResourceUrlsByFlowsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTemplatesRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 模板唯一标识，查询单个模板时使用
@@ -3058,7 +3058,7 @@ type DescribeTemplatesRequestParams struct {
 type DescribeTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 模板唯一标识，查询单个模板时使用
@@ -3178,7 +3178,7 @@ type DescribeUsageRequestParams struct {
 	// 偏移量，默认是0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3206,7 +3206,7 @@ type DescribeUsageRequest struct {
 	// 偏移量，默认是0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3563,26 +3563,26 @@ type FormField struct {
 
 // Predefined struct for user
 type GetDownloadFlowUrlRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 文件夹数组，签署流程总数不能超过50个，一个文件夹下，不能超过20个签署流程
 	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitempty" name:"DownLoadFlows"`
 
-	// 操作者的信息
+	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type GetDownloadFlowUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 文件夹数组，签署流程总数不能超过50个，一个文件夹下，不能超过20个签署流程
 	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitempty" name:"DownLoadFlows"`
 
-	// 操作者的信息
+	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3634,7 +3634,7 @@ func (r *GetDownloadFlowUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyExtendedServiceRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	// 
 	// 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -3656,7 +3656,7 @@ type ModifyExtendedServiceRequestParams struct {
 type ModifyExtendedServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	// 
 	// 注: 此接口 参数Agent. ProxyOperator.OpenId 需要传递超管或者法人的OpenId
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -3763,7 +3763,7 @@ type OccupiedSeal struct {
 
 // Predefined struct for user
 type OperateChannelTemplateRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
@@ -3778,14 +3778,14 @@ type OperateChannelTemplateRequestParams struct {
 	// 模板可见性, 全部可见-"all", 部分可见-"part"
 	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type OperateChannelTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
@@ -3800,7 +3800,7 @@ type OperateChannelTemplateRequest struct {
 	// 模板可见性, 全部可见-"all", 部分可见-"part"
 	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3937,7 +3937,7 @@ type PdfVerifyResult struct {
 
 // Predefined struct for user
 type PrepareFlowsRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 多个合同（签署流程）信息，最大支持20个签署流程。
@@ -3946,14 +3946,14 @@ type PrepareFlowsRequestParams struct {
 	// 操作完成后的跳转地址，最大长度200
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type PrepareFlowsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 多个合同（签署流程）信息，最大支持20个签署流程。
@@ -3962,7 +3962,7 @@ type PrepareFlowsRequest struct {
 	// 操作完成后的跳转地址，最大长度200
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4277,7 +4277,7 @@ type SyncFailReason struct {
 
 // Predefined struct for user
 type SyncProxyOrganizationOperatorsRequestParams struct {
-	// 渠道应用相关信息。 此接口Agent.AppId 和 Agent.ProxyOrganizationOpenId必填。
+	// 应用相关信息。 此接口Agent.AppId 和 Agent.ProxyOrganizationOpenId必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 操作类型，新增:"CREATE"，修改:"UPDATE"，离职:"RESIGN"
@@ -4286,14 +4286,14 @@ type SyncProxyOrganizationOperatorsRequestParams struct {
 	// 经办人信息列表，最大长度200
 	ProxyOrganizationOperators []*ProxyOrganizationOperator `json:"ProxyOrganizationOperators,omitempty" name:"ProxyOrganizationOperators"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type SyncProxyOrganizationOperatorsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息。 此接口Agent.AppId 和 Agent.ProxyOrganizationOpenId必填。
+	// 应用相关信息。 此接口Agent.AppId 和 Agent.ProxyOrganizationOpenId必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 操作类型，新增:"CREATE"，修改:"UPDATE"，离职:"RESIGN"
@@ -4302,7 +4302,7 @@ type SyncProxyOrganizationOperatorsRequest struct {
 	// 经办人信息列表，最大长度200
 	ProxyOrganizationOperators []*ProxyOrganizationOperator `json:"ProxyOrganizationOperators,omitempty" name:"ProxyOrganizationOperators"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4378,7 +4378,7 @@ type SyncProxyOrganizationRequestParams struct {
 	// 渠道侧合作企业法人/负责人姓名
 	ProxyLegalName *string `json:"ProxyLegalName,omitempty" name:"ProxyLegalName"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4401,7 +4401,7 @@ type SyncProxyOrganizationRequest struct {
 	// 渠道侧合作企业法人/负责人姓名
 	ProxyLegalName *string `json:"ProxyLegalName,omitempty" name:"ProxyLegalName"`
 
-	// 操作者的信息
+	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 

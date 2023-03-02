@@ -1,3 +1,345 @@
+# Release v1.0.607
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+
+### 第 2 次发布
+
+发布时间：2023-03-02 01:11:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateWorkspaceTemporaryToken](https://cloud.tencent.com/document/api/1039/87613)
+
+新增数据结构：
+
+* [WorkspaceTokenDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTokenDTO)
+* [WorkspaceTokenInfoV0](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTokenInfoV0)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 47 次发布
+
+发布时间：2023-03-02 01:21:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowApprovers](https://cloud.tencent.com/document/api/1323/80033)
+
+	* 新增入参：Initiator
+
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 15 次发布
+
+发布时间：2023-03-02 01:30:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImageToObject](https://cloud.tencent.com/document/api/1314/56228)
+
+	* 新增入参：ReportTypeVersion
+
+* [TextToObject](https://cloud.tencent.com/document/api/1314/56226)
+
+	* 新增入参：ReportTypeVersion
+
+
+新增数据结构：
+
+* [AdmissionConditionBlock](https://cloud.tencent.com/document/api/1314/56230#AdmissionConditionBlock)
+* [AdmissionDiagnosisBlock](https://cloud.tencent.com/document/api/1314/56230#AdmissionDiagnosisBlock)
+* [BaseInfo](https://cloud.tencent.com/document/api/1314/56230#BaseInfo)
+* [BaseItem](https://cloud.tencent.com/document/api/1314/56230#BaseItem)
+* [BaseItem2](https://cloud.tencent.com/document/api/1314/56230#BaseItem2)
+* [BaseItem3](https://cloud.tencent.com/document/api/1314/56230#BaseItem3)
+* [BirthCert](https://cloud.tencent.com/document/api/1314/56230#BirthCert)
+* [BirthPlaceBlock](https://cloud.tencent.com/document/api/1314/56230#BirthPlaceBlock)
+* [BlockInfoV2](https://cloud.tencent.com/document/api/1314/56230#BlockInfoV2)
+* [BloodPressureBlock](https://cloud.tencent.com/document/api/1314/56230#BloodPressureBlock)
+* [BodyExaminationBlock](https://cloud.tencent.com/document/api/1314/56230#BodyExaminationBlock)
+* [BodyTemperatureBlock](https://cloud.tencent.com/document/api/1314/56230#BodyTemperatureBlock)
+* [ChiefComplaintBlock](https://cloud.tencent.com/document/api/1314/56230#ChiefComplaintBlock)
+* [ChiefComplaintDetailBlock](https://cloud.tencent.com/document/api/1314/56230#ChiefComplaintDetailBlock)
+* [ClinicalStaging](https://cloud.tencent.com/document/api/1314/56230#ClinicalStaging)
+* [Coord](https://cloud.tencent.com/document/api/1314/56230#Coord)
+* [CovidItem](https://cloud.tencent.com/document/api/1314/56230#CovidItem)
+* [CovidItemsInfo](https://cloud.tencent.com/document/api/1314/56230#CovidItemsInfo)
+* [DeathDateBlock](https://cloud.tencent.com/document/api/1314/56230#DeathDateBlock)
+* [DescInfo](https://cloud.tencent.com/document/api/1314/56230#DescInfo)
+* [DetailInformation](https://cloud.tencent.com/document/api/1314/56230#DetailInformation)
+* [DischargeConditionBlock](https://cloud.tencent.com/document/api/1314/56230#DischargeConditionBlock)
+* [DischargeDiagnosisBlock](https://cloud.tencent.com/document/api/1314/56230#DischargeDiagnosisBlock)
+* [DischargeInfoBlock](https://cloud.tencent.com/document/api/1314/56230#DischargeInfoBlock)
+* [DiseaseHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#DiseaseHistoryBlock)
+* [DiseasePresentBlock](https://cloud.tencent.com/document/api/1314/56230#DiseasePresentBlock)
+* [DosageBlock](https://cloud.tencent.com/document/api/1314/56230#DosageBlock)
+* [DrugHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#DrugHistoryBlock)
+* [DrugListBlock](https://cloud.tencent.com/document/api/1314/56230#DrugListBlock)
+* [Exame](https://cloud.tencent.com/document/api/1314/56230#Exame)
+* [EyeChildItem](https://cloud.tencent.com/document/api/1314/56230#EyeChildItem)
+* [EyeItem](https://cloud.tencent.com/document/api/1314/56230#EyeItem)
+* [EyeItemsInfo](https://cloud.tencent.com/document/api/1314/56230#EyeItemsInfo)
+* [FamilyHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#FamilyHistoryBlock)
+* [FertilityHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#FertilityHistoryBlock)
+* [Fetus](https://cloud.tencent.com/document/api/1314/56230#Fetus)
+* [FieldInfo](https://cloud.tencent.com/document/api/1314/56230#FieldInfo)
+* [Fp2NdItem](https://cloud.tencent.com/document/api/1314/56230#Fp2NdItem)
+* [GeneticHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#GeneticHistoryBlock)
+* [HistologyClass](https://cloud.tencent.com/document/api/1314/56230#HistologyClass)
+* [HistologyTypeV2](https://cloud.tencent.com/document/api/1314/56230#HistologyTypeV2)
+* [IHCBlock](https://cloud.tencent.com/document/api/1314/56230#IHCBlock)
+* [IHCV2](https://cloud.tencent.com/document/api/1314/56230#IHCV2)
+* [ImmunohistochemistryBlock](https://cloud.tencent.com/document/api/1314/56230#ImmunohistochemistryBlock)
+* [IndicatorItemV2](https://cloud.tencent.com/document/api/1314/56230#IndicatorItemV2)
+* [IndicatorV3](https://cloud.tencent.com/document/api/1314/56230#IndicatorV3)
+* [InvasiveV2](https://cloud.tencent.com/document/api/1314/56230#InvasiveV2)
+* [IssueInfo](https://cloud.tencent.com/document/api/1314/56230#IssueInfo)
+* [LastMenstrualPeriodBlock](https://cloud.tencent.com/document/api/1314/56230#LastMenstrualPeriodBlock)
+* [LymphNode](https://cloud.tencent.com/document/api/1314/56230#LymphNode)
+* [LymphTotal](https://cloud.tencent.com/document/api/1314/56230#LymphTotal)
+* [MainDiseaseHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#MainDiseaseHistoryBlock)
+* [Maternity](https://cloud.tencent.com/document/api/1314/56230#Maternity)
+* [MaternityDesc](https://cloud.tencent.com/document/api/1314/56230#MaternityDesc)
+* [MaternitySummary](https://cloud.tencent.com/document/api/1314/56230#MaternitySummary)
+* [MenstrualFlowBlock](https://cloud.tencent.com/document/api/1314/56230#MenstrualFlowBlock)
+* [MenstrualHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistoryBlock)
+* [MenstrualHistoryDetailBlock](https://cloud.tencent.com/document/api/1314/56230#MenstrualHistoryDetailBlock)
+* [MenstrualPeriodBlock](https://cloud.tencent.com/document/api/1314/56230#MenstrualPeriodBlock)
+* [MenstruationOrNotBlock](https://cloud.tencent.com/document/api/1314/56230#MenstruationOrNotBlock)
+* [Molecular](https://cloud.tencent.com/document/api/1314/56230#Molecular)
+* [MolecularValue](https://cloud.tencent.com/document/api/1314/56230#MolecularValue)
+* [NeglistBlock](https://cloud.tencent.com/document/api/1314/56230#NeglistBlock)
+* [NeonatalInfo](https://cloud.tencent.com/document/api/1314/56230#NeonatalInfo)
+* [NumValue](https://cloud.tencent.com/document/api/1314/56230#NumValue)
+* [ObstetricalHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#ObstetricalHistoryBlock)
+* [OtherInfo](https://cloud.tencent.com/document/api/1314/56230#OtherInfo)
+* [PTNM](https://cloud.tencent.com/document/api/1314/56230#PTNM)
+* [PTNMBlock](https://cloud.tencent.com/document/api/1314/56230#PTNMBlock)
+* [ParagraphBlock](https://cloud.tencent.com/document/api/1314/56230#ParagraphBlock)
+* [ParentInfo](https://cloud.tencent.com/document/api/1314/56230#ParentInfo)
+* [PartDesc](https://cloud.tencent.com/document/api/1314/56230#PartDesc)
+* [PathologicalDiagnosisBlock](https://cloud.tencent.com/document/api/1314/56230#PathologicalDiagnosisBlock)
+* [PathologicalDiagnosisDetailBlock](https://cloud.tencent.com/document/api/1314/56230#PathologicalDiagnosisDetailBlock)
+* [PathologyV2](https://cloud.tencent.com/document/api/1314/56230#PathologyV2)
+* [PersonalHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#PersonalHistoryBlock)
+* [Point](https://cloud.tencent.com/document/api/1314/56230#Point)
+* [PoslistBlock](https://cloud.tencent.com/document/api/1314/56230#PoslistBlock)
+* [Rectangle](https://cloud.tencent.com/document/api/1314/56230#Rectangle)
+* [RelapseDateBlock](https://cloud.tencent.com/document/api/1314/56230#RelapseDateBlock)
+* [RelativeCancerHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#RelativeCancerHistoryBlock)
+* [RelativeHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#RelativeHistoryBlock)
+* [RelativeHistoryDetailBlock](https://cloud.tencent.com/document/api/1314/56230#RelativeHistoryDetailBlock)
+* [Report](https://cloud.tencent.com/document/api/1314/56230#Report)
+* [ReportTypeVersion](https://cloud.tencent.com/document/api/1314/56230#ReportTypeVersion)
+* [ResultInfo](https://cloud.tencent.com/document/api/1314/56230#ResultInfo)
+* [SmokeHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#SmokeHistoryBlock)
+* [SummaryInfo](https://cloud.tencent.com/document/api/1314/56230#SummaryInfo)
+* [SurgeryConditionBlock](https://cloud.tencent.com/document/api/1314/56230#SurgeryConditionBlock)
+* [SurgeryHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#SurgeryHistoryBlock)
+* [SurgeryListBlock](https://cloud.tencent.com/document/api/1314/56230#SurgeryListBlock)
+* [TableIndicators](https://cloud.tencent.com/document/api/1314/56230#TableIndicators)
+* [TimelineEvent](https://cloud.tencent.com/document/api/1314/56230#TimelineEvent)
+* [TimelineInformation](https://cloud.tencent.com/document/api/1314/56230#TimelineInformation)
+* [TransfusionHistoryBlock](https://cloud.tencent.com/document/api/1314/56230#TransfusionHistoryBlock)
+* [TreatmentRecordBlock](https://cloud.tencent.com/document/api/1314/56230#TreatmentRecordBlock)
+* [ValueBlock](https://cloud.tencent.com/document/api/1314/56230#ValueBlock)
+
+修改数据结构：
+
+* [BiopsyPart](https://cloud.tencent.com/document/api/1314/56230#BiopsyPart)
+
+	* 新增成员：Coords
+
+	* <font color="#dd0000">**修改成员**：</font>Value, Src
+
+* [BlockInfo](https://cloud.tencent.com/document/api/1314/56230#BlockInfo)
+
+	* 新增成员：Size
+
+	* <font color="#dd0000">**修改成员**：</font>Index, Positive, Src, Value, Type, Name
+
+* [Desc](https://cloud.tencent.com/document/api/1314/56230#Desc)
+
+	* 新增成员：Coords
+
+	* <font color="#dd0000">**修改成员**：</font>Text, Organ, Tuber
+
+* [EndoscopyDesc](https://cloud.tencent.com/document/api/1314/56230#EndoscopyDesc)
+
+	* 新增成员：Coords
+
+	* <font color="#dd0000">**修改成员**：</font>Text, Organ
+
+* [EndoscopyOrgan](https://cloud.tencent.com/document/api/1314/56230#EndoscopyOrgan)
+
+	* 新增成员：Coords
+
+	* <font color="#dd0000">**修改成员**：</font>Part, Index, Src, PartAlias, SymDescList
+
+* [FirstPage](https://cloud.tencent.com/document/api/1314/56230#FirstPage)
+
+	* 新增成员：DamagePoi, Fp2NdItems
+
+	* <font color="#dd0000">**修改成员**：</font>DischargeDiagnosis, PathologicalDiagnosis, ClinicalDiagnosis
+
+* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
+
+	* 新增成员：InferNormal
+
+* [NormPart](https://cloud.tencent.com/document/api/1314/56230#NormPart)
+
+	* 新增成员：PartDetail
+
+	* <font color="#dd0000">**修改成员**：</font>Part, PartDirection, Tissue, TissueDirection, Upper
+
+* [NormSize](https://cloud.tencent.com/document/api/1314/56230#NormSize)
+
+	* 新增成员：Impl
+
+	* <font color="#dd0000">**修改成员**：</font>Number, Type, Unit
+
+* [Organ](https://cloud.tencent.com/document/api/1314/56230#Organ)
+
+	* 新增成员：Transparent, MriAdc, MriDwi, MriT1, MriT2, CtHu, Suvmax, Metabolism, RadioactiveUptake, LymphEnlargement, ImageFeature, Duct, Trend, Operation, Coords
+
+	* <font color="#dd0000">**修改成员**：</font>Part, Size, Envelope, Edge, InnerEcho, Gland, Shape, Thickness, ShapeAttr, CDFI, SymDesc, SizeStatus, Outline, Structure, Density, Vas, Cysticwall, Capsule, IsthmusThicknese, InnerEchoDistribution, Src, Index
+
+* [Part](https://cloud.tencent.com/document/api/1314/56230#Part)
+
+	* 新增成员：ValueBrief
+
+	* <font color="#dd0000">**修改成员**：</font>Index, NormPart, Src, Value, Name
+
+* [Size](https://cloud.tencent.com/document/api/1314/56230#Size)
+
+	* 新增成员：Name
+
+	* <font color="#dd0000">**修改成员**：</font>Index, NormSize, Src, Value
+
+* [Summary](https://cloud.tencent.com/document/api/1314/56230#Summary)
+
+	* 新增成员：Coords
+
+	* <font color="#dd0000">**修改成员**：</font>Symptom, Text
+
+* [Surgery](https://cloud.tencent.com/document/api/1314/56230#Surgery)
+
+	* 新增成员：OtherInfo
+
+	* <font color="#dd0000">**修改成员**：</font>SurgeryHistory
+
+* [SymptomInfo](https://cloud.tencent.com/document/api/1314/56230#SymptomInfo)
+
+	* 新增成员：Coords
+
+	* <font color="#dd0000">**修改成员**：</font>Grade, Part, Index, Symptom, Attrs, Src
+
+* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
+
+	* 新增成员：ReportTypeDesc, PathologyV2, C14, Exame, MedDocV2, IndicatorV3, Covid, Maternity, Eye, BirthCert, Timeline
+
+	* <font color="#dd0000">**修改成员**：</font>PatientInfo, ReportInfo, Check, Pathology, MedDoc, DiagCert, FirstPage, Indicator, ReportType, MedicalRecordInfo, Hospitalization, Surgery, Electrocardiogram, Endoscopy, Prescription, VaccineCertificate, OcrText, OcrResult
+
+* [TuberInfo](https://cloud.tencent.com/document/api/1314/56230#TuberInfo)
+
+	* 新增成员：Transparent, MriAdc, MriDwi, MriT1, MriT2, CtHu, Suvmax, Metabolism, RadioactiveUptake, SymDesc, ImageFeature, Coords
+
+	* <font color="#dd0000">**修改成员**：</font>Type, Part, Size, Multiple, AspectRatio, Edge, InnerEcho, RearEcho, Elastic, Shape, ShapeAttr, SkinMedulla, Trend, Calcification, Envelope, Enhancement, LymphEnlargement, LymphDoor, Activity, Operation, CDFI, Index, SizeStatus, InnerEchoDistribution, InnerEchoType, Outline, Structure, Density, Vas, Cysticwall, Capsule, IsthmusThicknese, Src
+
+* [Vaccination](https://cloud.tencent.com/document/api/1314/56230#Vaccination)
+
+	* 新增成员：Lot
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Vaccine, Dose, Date, LotNumber, Manufacturer, Clinic, Site, Provider
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 88 次发布
+
+发布时间：2023-03-02 01:30:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MixedInvoiceOCR](https://cloud.tencent.com/document/api/866/37835)
+
+	* 新增入参：ReturnMultiplePage
+
+
+修改数据结构：
+
+* [MixedInvoiceItem](https://cloud.tencent.com/document/api/866/33527#MixedInvoiceItem)
+
+	* 新增成员：Page
+
+
+
+
+## 云压测(pts) 版本：2021-07-28
+
+### 第 10 次发布
+
+发布时间：2023-03-02 01:32:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Job](https://cloud.tencent.com/document/api/1484/78100#Job)
+
+	* 新增成员：ProjectName, ScenarioName
+
+* [Scenario](https://cloud.tencent.com/document/api/1484/78100#Scenario)
+
+	* 新增成员：ProjectName
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 144 次发布
+
+发布时间：2023-03-02 01:47:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DefaultVpcSubnet](https://cloud.tencent.com/document/api/215/15824#DefaultVpcSubnet)
+
+	* 新增成员：VpcName, SubnetName, CidrBlock
+
+
+
+
 # Release v1.0.606
 
 ## 访问管理(cam) 版本：2019-01-16

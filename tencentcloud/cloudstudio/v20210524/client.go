@@ -213,6 +213,54 @@ func (c *Client) CreateWorkspaceByVersionControlWithContext(ctx context.Context,
     return
 }
 
+func NewCreateWorkspaceTemporaryTokenRequest() (request *CreateWorkspaceTemporaryTokenRequest) {
+    request = &CreateWorkspaceTemporaryTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cloudstudio", APIVersion, "CreateWorkspaceTemporaryToken")
+    
+    
+    return
+}
+
+func NewCreateWorkspaceTemporaryTokenResponse() (response *CreateWorkspaceTemporaryTokenResponse) {
+    response = &CreateWorkspaceTemporaryTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateWorkspaceTemporaryToken
+// 为工作空间创建临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateWorkspaceTemporaryToken(request *CreateWorkspaceTemporaryTokenRequest) (response *CreateWorkspaceTemporaryTokenResponse, err error) {
+    return c.CreateWorkspaceTemporaryTokenWithContext(context.Background(), request)
+}
+
+// CreateWorkspaceTemporaryToken
+// 为工作空间创建临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) CreateWorkspaceTemporaryTokenWithContext(ctx context.Context, request *CreateWorkspaceTemporaryTokenRequest) (response *CreateWorkspaceTemporaryTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateWorkspaceTemporaryTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWorkspaceTemporaryToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateWorkspaceTemporaryTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomizeTemplatesByIdRequest() (request *DeleteCustomizeTemplatesByIdRequest) {
     request = &DeleteCustomizeTemplatesByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -233,12 +281,18 @@ func NewDeleteCustomizeTemplatesByIdResponse() (response *DeleteCustomizeTemplat
 
 // DeleteCustomizeTemplatesById
 // 删除自定义模板
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteCustomizeTemplatesById(request *DeleteCustomizeTemplatesByIdRequest) (response *DeleteCustomizeTemplatesByIdResponse, err error) {
     return c.DeleteCustomizeTemplatesByIdWithContext(context.Background(), request)
 }
 
 // DeleteCustomizeTemplatesById
 // 删除自定义模板
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteCustomizeTemplatesByIdWithContext(ctx context.Context, request *DeleteCustomizeTemplatesByIdRequest) (response *DeleteCustomizeTemplatesByIdResponse, err error) {
     if request == nil {
         request = NewDeleteCustomizeTemplatesByIdRequest()
@@ -275,12 +329,18 @@ func NewDescribeCustomizeTemplatesResponse() (response *DescribeCustomizeTemplat
 
 // DescribeCustomizeTemplates
 // 获取所有模板列表
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCustomizeTemplates(request *DescribeCustomizeTemplatesRequest) (response *DescribeCustomizeTemplatesResponse, err error) {
     return c.DescribeCustomizeTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeCustomizeTemplates
 // 获取所有模板列表
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCustomizeTemplatesWithContext(ctx context.Context, request *DescribeCustomizeTemplatesRequest) (response *DescribeCustomizeTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeCustomizeTemplatesRequest()
@@ -317,12 +377,18 @@ func NewDescribeCustomizeTemplatesByIdResponse() (response *DescribeCustomizeTem
 
 // DescribeCustomizeTemplatesById
 // 获取特定模板信息
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCustomizeTemplatesById(request *DescribeCustomizeTemplatesByIdRequest) (response *DescribeCustomizeTemplatesByIdResponse, err error) {
     return c.DescribeCustomizeTemplatesByIdWithContext(context.Background(), request)
 }
 
 // DescribeCustomizeTemplatesById
 // 获取特定模板信息
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCustomizeTemplatesByIdWithContext(ctx context.Context, request *DescribeCustomizeTemplatesByIdRequest) (response *DescribeCustomizeTemplatesByIdResponse, err error) {
     if request == nil {
         request = NewDescribeCustomizeTemplatesByIdRequest()
@@ -359,12 +425,18 @@ func NewDescribeCustomizeTemplatesPresetsResponse() (response *DescribeCustomize
 
 // DescribeCustomizeTemplatesPresets
 // 获取创建模板的预置参数
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCustomizeTemplatesPresets(request *DescribeCustomizeTemplatesPresetsRequest) (response *DescribeCustomizeTemplatesPresetsResponse, err error) {
     return c.DescribeCustomizeTemplatesPresetsWithContext(context.Background(), request)
 }
 
 // DescribeCustomizeTemplatesPresets
 // 获取创建模板的预置参数
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeCustomizeTemplatesPresetsWithContext(ctx context.Context, request *DescribeCustomizeTemplatesPresetsRequest) (response *DescribeCustomizeTemplatesPresetsResponse, err error) {
     if request == nil {
         request = NewDescribeCustomizeTemplatesPresetsRequest()
@@ -401,12 +473,18 @@ func NewDescribeWorkspaceEnvListResponse() (response *DescribeWorkspaceEnvListRe
 
 // DescribeWorkspaceEnvList
 // 环境列表接口返回信息
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeWorkspaceEnvList(request *DescribeWorkspaceEnvListRequest) (response *DescribeWorkspaceEnvListResponse, err error) {
     return c.DescribeWorkspaceEnvListWithContext(context.Background(), request)
 }
 
 // DescribeWorkspaceEnvList
 // 环境列表接口返回信息
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeWorkspaceEnvListWithContext(ctx context.Context, request *DescribeWorkspaceEnvListRequest) (response *DescribeWorkspaceEnvListResponse, err error) {
     if request == nil {
         request = NewDescribeWorkspaceEnvListRequest()
@@ -443,12 +521,18 @@ func NewDescribeWorkspaceNameExistResponse() (response *DescribeWorkspaceNameExi
 
 // DescribeWorkspaceNameExist
 // 检查工作空间是否存在
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeWorkspaceNameExist(request *DescribeWorkspaceNameExistRequest) (response *DescribeWorkspaceNameExistResponse, err error) {
     return c.DescribeWorkspaceNameExistWithContext(context.Background(), request)
 }
 
 // DescribeWorkspaceNameExist
 // 检查工作空间是否存在
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeWorkspaceNameExistWithContext(ctx context.Context, request *DescribeWorkspaceNameExistRequest) (response *DescribeWorkspaceNameExistResponse, err error) {
     if request == nil {
         request = NewDescribeWorkspaceNameExistRequest()
@@ -485,12 +569,18 @@ func NewDescribeWorkspaceStatusResponse() (response *DescribeWorkspaceStatusResp
 
 // DescribeWorkspaceStatus
 // 获取工作空间元信息
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeWorkspaceStatus(request *DescribeWorkspaceStatusRequest) (response *DescribeWorkspaceStatusResponse, err error) {
     return c.DescribeWorkspaceStatusWithContext(context.Background(), request)
 }
 
 // DescribeWorkspaceStatus
 // 获取工作空间元信息
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeWorkspaceStatusWithContext(ctx context.Context, request *DescribeWorkspaceStatusRequest) (response *DescribeWorkspaceStatusResponse, err error) {
     if request == nil {
         request = NewDescribeWorkspaceStatusRequest()
@@ -527,12 +617,18 @@ func NewDescribeWorkspaceStatusListResponse() (response *DescribeWorkspaceStatus
 
 // DescribeWorkspaceStatusList
 // 获取用户工作空间列表
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeWorkspaceStatusList(request *DescribeWorkspaceStatusListRequest) (response *DescribeWorkspaceStatusListResponse, err error) {
     return c.DescribeWorkspaceStatusListWithContext(context.Background(), request)
 }
 
 // DescribeWorkspaceStatusList
 // 获取用户工作空间列表
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeWorkspaceStatusListWithContext(ctx context.Context, request *DescribeWorkspaceStatusListRequest) (response *DescribeWorkspaceStatusListResponse, err error) {
     if request == nil {
         request = NewDescribeWorkspaceStatusListRequest()
@@ -569,12 +665,18 @@ func NewModifyCustomizeTemplateVersionControlResponse() (response *ModifyCustomi
 
 // ModifyCustomizeTemplateVersionControl
 // 修改模板默认代码仓库
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCustomizeTemplateVersionControl(request *ModifyCustomizeTemplateVersionControlRequest) (response *ModifyCustomizeTemplateVersionControlResponse, err error) {
     return c.ModifyCustomizeTemplateVersionControlWithContext(context.Background(), request)
 }
 
 // ModifyCustomizeTemplateVersionControl
 // 修改模板默认代码仓库
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCustomizeTemplateVersionControlWithContext(ctx context.Context, request *ModifyCustomizeTemplateVersionControlRequest) (response *ModifyCustomizeTemplateVersionControlResponse, err error) {
     if request == nil {
         request = NewModifyCustomizeTemplateVersionControlRequest()
@@ -611,12 +713,18 @@ func NewModifyCustomizeTemplatesFullByIdResponse() (response *ModifyCustomizeTem
 
 // ModifyCustomizeTemplatesFullById
 // 全量修改自定义模板，不忽略空
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCustomizeTemplatesFullById(request *ModifyCustomizeTemplatesFullByIdRequest) (response *ModifyCustomizeTemplatesFullByIdResponse, err error) {
     return c.ModifyCustomizeTemplatesFullByIdWithContext(context.Background(), request)
 }
 
 // ModifyCustomizeTemplatesFullById
 // 全量修改自定义模板，不忽略空
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCustomizeTemplatesFullByIdWithContext(ctx context.Context, request *ModifyCustomizeTemplatesFullByIdRequest) (response *ModifyCustomizeTemplatesFullByIdResponse, err error) {
     if request == nil {
         request = NewModifyCustomizeTemplatesFullByIdRequest()
@@ -653,12 +761,18 @@ func NewModifyCustomizeTemplatesPartByIdResponse() (response *ModifyCustomizeTem
 
 // ModifyCustomizeTemplatesPartById
 // 全量修改自定义模板，忽略空
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCustomizeTemplatesPartById(request *ModifyCustomizeTemplatesPartByIdRequest) (response *ModifyCustomizeTemplatesPartByIdResponse, err error) {
     return c.ModifyCustomizeTemplatesPartByIdWithContext(context.Background(), request)
 }
 
 // ModifyCustomizeTemplatesPartById
 // 全量修改自定义模板，忽略空
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyCustomizeTemplatesPartByIdWithContext(ctx context.Context, request *ModifyCustomizeTemplatesPartByIdRequest) (response *ModifyCustomizeTemplatesPartByIdResponse, err error) {
     if request == nil {
         request = NewModifyCustomizeTemplatesPartByIdRequest()
@@ -695,12 +809,18 @@ func NewModifyWorkspaceAttributesResponse() (response *ModifyWorkspaceAttributes
 
 // ModifyWorkspaceAttributes
 // 修改工作空间的名称和描述
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyWorkspaceAttributes(request *ModifyWorkspaceAttributesRequest) (response *ModifyWorkspaceAttributesResponse, err error) {
     return c.ModifyWorkspaceAttributesWithContext(context.Background(), request)
 }
 
 // ModifyWorkspaceAttributes
 // 修改工作空间的名称和描述
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyWorkspaceAttributesWithContext(ctx context.Context, request *ModifyWorkspaceAttributesRequest) (response *ModifyWorkspaceAttributesResponse, err error) {
     if request == nil {
         request = NewModifyWorkspaceAttributesRequest()
@@ -737,12 +857,18 @@ func NewRecoverWorkspaceResponse() (response *RecoverWorkspaceResponse) {
 
 // RecoverWorkspace
 // 恢复工作空间
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RecoverWorkspace(request *RecoverWorkspaceRequest) (response *RecoverWorkspaceResponse, err error) {
     return c.RecoverWorkspaceWithContext(context.Background(), request)
 }
 
 // RecoverWorkspace
 // 恢复工作空间
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RecoverWorkspaceWithContext(ctx context.Context, request *RecoverWorkspaceRequest) (response *RecoverWorkspaceResponse, err error) {
     if request == nil {
         request = NewRecoverWorkspaceRequest()
@@ -779,12 +905,18 @@ func NewRemoveWorkspaceResponse() (response *RemoveWorkspaceResponse) {
 
 // RemoveWorkspace
 // 删除工作空间
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RemoveWorkspace(request *RemoveWorkspaceRequest) (response *RemoveWorkspaceResponse, err error) {
     return c.RemoveWorkspaceWithContext(context.Background(), request)
 }
 
 // RemoveWorkspace
 // 删除工作空间
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RemoveWorkspaceWithContext(ctx context.Context, request *RemoveWorkspaceRequest) (response *RemoveWorkspaceResponse, err error) {
     if request == nil {
         request = NewRemoveWorkspaceRequest()
@@ -821,12 +953,18 @@ func NewRunWorkspaceResponse() (response *RunWorkspaceResponse) {
 
 // RunWorkspace
 // 运行空间
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RunWorkspace(request *RunWorkspaceRequest) (response *RunWorkspaceResponse, err error) {
     return c.RunWorkspaceWithContext(context.Background(), request)
 }
 
 // RunWorkspace
 // 运行空间
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) RunWorkspaceWithContext(ctx context.Context, request *RunWorkspaceRequest) (response *RunWorkspaceResponse, err error) {
     if request == nil {
         request = NewRunWorkspaceRequest()
@@ -863,12 +1001,18 @@ func NewStopWorkspaceResponse() (response *StopWorkspaceResponse) {
 
 // StopWorkspace
 // 停止运行空间
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) StopWorkspace(request *StopWorkspaceRequest) (response *StopWorkspaceResponse, err error) {
     return c.StopWorkspaceWithContext(context.Background(), request)
 }
 
 // StopWorkspace
 // 停止运行空间
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) StopWorkspaceWithContext(ctx context.Context, request *StopWorkspaceRequest) (response *StopWorkspaceResponse, err error) {
     if request == nil {
         request = NewStopWorkspaceRequest()

@@ -180,6 +180,7 @@ func NewImageToObjectResponse() (response *ImageToObjectResponse) {
 //  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
 //  INVALIDPARAMETERVALUE_IMAGEISNOTEXT = "InvalidParameterValue.ImageIsNoText"
 //  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
+//  LIMITEXCEEDED_TEXTSIZELIMITEXCEEDED = "LimitExceeded.TextSizeLimitExceeded"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
 func (c *Client) ImageToObject(request *ImageToObjectRequest) (response *ImageToObjectResponse, err error) {
@@ -211,6 +212,7 @@ func (c *Client) ImageToObject(request *ImageToObjectRequest) (response *ImageTo
 //  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
 //  INVALIDPARAMETERVALUE_IMAGEISNOTEXT = "InvalidParameterValue.ImageIsNoText"
 //  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
+//  LIMITEXCEEDED_TEXTSIZELIMITEXCEEDED = "LimitExceeded.TextSizeLimitExceeded"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
 func (c *Client) ImageToObjectWithContext(ctx context.Context, request *ImageToObjectRequest) (response *ImageToObjectResponse, err error) {
@@ -338,7 +340,11 @@ func NewTextToObjectResponse() (response *TextToObjectResponse) {
 }
 
 // TextToObject
-// 文本转结构化对象
+// 文本转结构化对象。
+//
+// 
+//
+// 适用场景：经过腾讯医疗专用 OCR 从图片识别之后的文本，可以调用此接口。通过其它 OCR 识别的文本可能不适配。医院的 XML 格式文本也不适配，XML 文件需要经过特殊转换才能直接调用此接口。单次调用传入的文本不宜超过 2000 字。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -361,6 +367,7 @@ func NewTextToObjectResponse() (response *TextToObjectResponse) {
 //  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
 //  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
 //  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
+//  LIMITEXCEEDED_TEXTSIZELIMITEXCEEDED = "LimitExceeded.TextSizeLimitExceeded"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
 func (c *Client) TextToObject(request *TextToObjectRequest) (response *TextToObjectResponse, err error) {
@@ -368,7 +375,11 @@ func (c *Client) TextToObject(request *TextToObjectRequest) (response *TextToObj
 }
 
 // TextToObject
-// 文本转结构化对象
+// 文本转结构化对象。
+//
+// 
+//
+// 适用场景：经过腾讯医疗专用 OCR 从图片识别之后的文本，可以调用此接口。通过其它 OCR 识别的文本可能不适配。医院的 XML 格式文本也不适配，XML 文件需要经过特殊转换才能直接调用此接口。单次调用传入的文本不宜超过 2000 字。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -391,6 +402,7 @@ func (c *Client) TextToObject(request *TextToObjectRequest) (response *TextToObj
 //  INVALIDPARAMETER_TEXT = "InvalidParameter.Text"
 //  INVALIDPARAMETERVALUE_IMAGECODEINVALID = "InvalidParameterValue.ImageCodeInvalid"
 //  INVALIDPARAMETERVALUE_IMAGEURLINVALID = "InvalidParameterValue.ImageURLInvalid"
+//  LIMITEXCEEDED_TEXTSIZELIMITEXCEEDED = "LimitExceeded.TextSizeLimitExceeded"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIEDERROR = "UnauthorizedOperation.PermissionDeniedError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTTHISTYPE = "UnsupportedOperation.UnSupportThisType"
 func (c *Client) TextToObjectWithContext(ctx context.Context, request *TextToObjectRequest) (response *TextToObjectResponse, err error) {

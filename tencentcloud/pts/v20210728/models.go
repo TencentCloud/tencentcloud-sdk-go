@@ -3920,6 +3920,14 @@ type Job struct {
 	// 任务状态描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// test-project
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// test-scenario
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScenarioName *string `json:"ScenarioName,omitempty" name:"ScenarioName"`
 }
 
 type Label struct {
@@ -4448,6 +4456,10 @@ type Scenario struct {
 	// 创建人员
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 场景所在的项目的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
 type ScenarioRelatedJobsParams struct {

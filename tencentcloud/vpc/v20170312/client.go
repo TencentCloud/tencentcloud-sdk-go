@@ -2738,7 +2738,7 @@ func NewCreateDefaultVpcResponse() (response *CreateDefaultVpcResponse) {
 //
 // 
 //
-// 您也可以通过 Force 参数，强制返回默认VPC
+// 您也可以通过 Force 参数，强制返回默认VPC。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
@@ -2768,7 +2768,7 @@ func (c *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (response *C
 //
 // 
 //
-// 您也可以通过 Force 参数，强制返回默认VPC
+// 您也可以通过 Force 参数，强制返回默认VPC。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
@@ -3572,7 +3572,7 @@ func NewCreateNetDetectResponse() (response *CreateNetDetectResponse) {
 }
 
 // CreateNetDetect
-// 本接口(CreateNetDetect)用于创建网络探测。
+// 本接口（CreateNetDetect）用于创建网络探测。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NETDETECTTIMEOUT = "FailedOperation.NetDetectTimeOut"
@@ -3596,7 +3596,7 @@ func (c *Client) CreateNetDetect(request *CreateNetDetectRequest) (response *Cre
 }
 
 // CreateNetDetect
-// 本接口(CreateNetDetect)用于创建网络探测。
+// 本接口（CreateNetDetect）用于创建网络探测。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NETDETECTTIMEOUT = "FailedOperation.NetDetectTimeOut"
@@ -6666,7 +6666,7 @@ func NewDeleteNetDetectResponse() (response *DeleteNetDetectResponse) {
 }
 
 // DeleteNetDetect
-// 本接口(DeleteNetDetect)用于删除网络探测实例。
+// 本接口（DeleteNetDetect）用于删除网络探测实例。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6678,7 +6678,7 @@ func (c *Client) DeleteNetDetect(request *DeleteNetDetectRequest) (response *Del
 }
 
 // DeleteNetDetect
-// 本接口(DeleteNetDetect)用于删除网络探测实例。
+// 本接口（DeleteNetDetect）用于删除网络探测实例。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6908,7 +6908,7 @@ func NewDeleteRouteTableResponse() (response *DeleteRouteTableResponse) {
 }
 
 // DeleteRouteTable
-// 删除路由表
+// 本接口（DeleteRouteTable）用于删除路由表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -6922,7 +6922,7 @@ func (c *Client) DeleteRouteTable(request *DeleteRouteTableRequest) (response *D
 }
 
 // DeleteRouteTable
-// 删除路由表
+// 本接口（DeleteRouteTable）用于删除路由表。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"

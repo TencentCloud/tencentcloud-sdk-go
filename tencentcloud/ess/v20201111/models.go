@@ -767,6 +767,9 @@ type CreateFlowApproversRequestParams struct {
 
 	// 补充签署人信息
 	Approvers []*FillApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
+
+	// 企微消息中的发起人
+	Initiator *string `json:"Initiator,omitempty" name:"Initiator"`
 }
 
 type CreateFlowApproversRequest struct {
@@ -780,6 +783,9 @@ type CreateFlowApproversRequest struct {
 
 	// 补充签署人信息
 	Approvers []*FillApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
+
+	// 企微消息中的发起人
+	Initiator *string `json:"Initiator,omitempty" name:"Initiator"`
 }
 
 func (r *CreateFlowApproversRequest) ToJsonString() string {
@@ -797,6 +803,7 @@ func (r *CreateFlowApproversRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "FlowId")
 	delete(f, "Approvers")
+	delete(f, "Initiator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowApproversRequest has unknown keys!", "")
 	}

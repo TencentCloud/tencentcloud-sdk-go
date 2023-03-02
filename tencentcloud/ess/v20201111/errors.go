@@ -278,6 +278,9 @@ const (
 	// 不合法的印章id，请检查印章id是够正确，并在修改后重试。
 	INVALIDPARAMETER_SEALID = "InvalidParameter.SealId"
 
+	// 参数包含有敏感词
+	INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
+
 	// 签署控件参数不合法，请检查后重试。
 	INVALIDPARAMETER_SIGNCOMPONENTS = "InvalidParameter.SignComponents"
 

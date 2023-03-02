@@ -311,6 +311,63 @@ func (r *CreateWorkspaceByVersionControlResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateWorkspaceTemporaryTokenRequestParams struct {
+	// 创建工作空间凭证 DTO
+	WorkspaceTokenDTO *WorkspaceTokenDTO `json:"WorkspaceTokenDTO,omitempty" name:"WorkspaceTokenDTO"`
+}
+
+type CreateWorkspaceTemporaryTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 创建工作空间凭证 DTO
+	WorkspaceTokenDTO *WorkspaceTokenDTO `json:"WorkspaceTokenDTO,omitempty" name:"WorkspaceTokenDTO"`
+}
+
+func (r *CreateWorkspaceTemporaryTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkspaceTemporaryTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkspaceTokenDTO")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkspaceTemporaryTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkspaceTemporaryTokenResponseParams struct {
+	// 工作空间临时访问 token 信息
+	Data *WorkspaceTokenInfoV0 `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateWorkspaceTemporaryTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWorkspaceTemporaryTokenResponseParams `json:"Response"`
+}
+
+func (r *CreateWorkspaceTemporaryTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkspaceTemporaryTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CustomizeTemplatesPresetsInfo struct {
 	// 模板tag列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1816,4 +1873,23 @@ type WorkspaceTemplateInfo struct {
 	// xxx
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorAvatar *string `json:"AuthorAvatar,omitempty" name:"AuthorAvatar"`
+}
+
+type WorkspaceTokenDTO struct {
+	// 工作空间 SpaceKey
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpaceKey *string `json:"SpaceKey,omitempty" name:"SpaceKey"`
+
+	// token过期时间，单位是秒，默认 3600
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitempty" name:"TokenExpiredLimitSec"`
+}
+
+type WorkspaceTokenInfoV0 struct {
+	// 访问工作空间临时凭证
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// token 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 }

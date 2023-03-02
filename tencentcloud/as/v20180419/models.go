@@ -3296,13 +3296,19 @@ type Instance struct {
 	// <li>TERMINATING：中止中
 	// <li>TERMINATION_FAILED：中止失败
 	// <li>ATTACHING：绑定中
+	// <li>ATTACH_FAILED：绑定失败
 	// <li>DETACHING：解绑中
-	// <li>ATTACHING_LB：绑定LB中<li>DETACHING_LB：解绑LB中
+	// <li>DETACH_FAILED：解绑失败
+	// <li>ATTACHING_LB：绑定LB中
+	// <li>DETACHING_LB：解绑LB中
+	// <li>MODIFYING_LB：修改LB中
 	// <li>STARTING：开机中
 	// <li>START_FAILED：开机失败
 	// <li>STOPPING：关机中
 	// <li>STOP_FAILED：关机失败
 	// <li>STOPPED：已关机
+	// <li>IN_LAUNCHING_HOOK：扩容生命周期挂钩中
+	// <li>IN_TERMINATING_HOOK：缩容生命周期挂钩中
 	LifeCycleState *string `json:"LifeCycleState,omitempty" name:"LifeCycleState"`
 
 	// 健康状态，取值包括HEALTHY和UNHEALTHY

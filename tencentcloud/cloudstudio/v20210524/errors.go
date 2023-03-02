@@ -16,4 +16,7 @@ package v20210524
 
 const (
 	// 此产品的特有错误码
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 )

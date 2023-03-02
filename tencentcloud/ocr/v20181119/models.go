@@ -4300,6 +4300,9 @@ type MixedInvoiceItem struct {
 
 	// 识别到的内容。
 	SingleInvoiceInfos []*SingleInvoiceInfo `json:"SingleInvoiceInfos,omitempty" name:"SingleInvoiceInfos"`
+
+	// 发票处于识别图片或PDF文件中的页教，默认从1开始。
+	Page *int64 `json:"Page,omitempty" name:"Page"`
 }
 
 // Predefined struct for user
@@ -4332,7 +4335,7 @@ type MixedInvoiceOCRRequestParams struct {
 	// 15：非税发票
 	// 16：全电发票
 	// ----------------------
-	// -1：其他发票,（仅返回，本参数不支持传入-1，请在ReturnOther中控制是否返回）
+	// -1：其他发票,（只传入此类型时，图片均采用其他票类型进行识别）
 	Types []*int64 `json:"Types,omitempty" name:"Types"`
 
 	// 是否识别其他类型发票，默认为Yes
@@ -4345,6 +4348,9 @@ type MixedInvoiceOCRRequestParams struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后IsPDF和PdfPageNumber入参不进行控制。
+	ReturnMultiplePage *bool `json:"ReturnMultiplePage,omitempty" name:"ReturnMultiplePage"`
 }
 
 type MixedInvoiceOCRRequest struct {
@@ -4378,7 +4384,7 @@ type MixedInvoiceOCRRequest struct {
 	// 15：非税发票
 	// 16：全电发票
 	// ----------------------
-	// -1：其他发票,（仅返回，本参数不支持传入-1，请在ReturnOther中控制是否返回）
+	// -1：其他发票,（只传入此类型时，图片均采用其他票类型进行识别）
 	Types []*int64 `json:"Types,omitempty" name:"Types"`
 
 	// 是否识别其他类型发票，默认为Yes
@@ -4391,6 +4397,9 @@ type MixedInvoiceOCRRequest struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后IsPDF和PdfPageNumber入参不进行控制。
+	ReturnMultiplePage *bool `json:"ReturnMultiplePage,omitempty" name:"ReturnMultiplePage"`
 }
 
 func (r *MixedInvoiceOCRRequest) ToJsonString() string {
@@ -4411,6 +4420,7 @@ func (r *MixedInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ReturnOther")
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
+	delete(f, "ReturnMultiplePage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MixedInvoiceOCRRequest has unknown keys!", "")
 	}

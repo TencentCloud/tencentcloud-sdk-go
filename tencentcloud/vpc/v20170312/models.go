@@ -3200,7 +3200,7 @@ func (r *CreateDefaultVpcRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDefaultVpcResponseParams struct {
-	// 默认VPC和子网ID
+	// 默认VPC和子网ID。
 	Vpc *DefaultVpcSubnet `json:"Vpc,omitempty" name:"Vpc"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4079,7 +4079,7 @@ func (r *CreateNatGatewaySourceIpTranslationNatRuleResponse) FromJsonString(s st
 
 // Predefined struct for user
 type CreateNetDetectRequestParams struct {
-	// `VPC`实例`ID`。形如：`vpc-12345678`
+	// `VPC`实例`ID`。形如：`vpc-12345678`。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网实例ID。形如：subnet-12345678。
@@ -4098,6 +4098,7 @@ type CreateNetDetectRequestParams struct {
 	// NAT：NAT网关；
 	// NORMAL_CVM：普通云服务器；
 	// CCN：云联网网关；
+	// NONEXTHOP：无下一跳；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -4106,7 +4107,8 @@ type CreateNetDetectRequestParams struct {
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-	// 下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
+	// 下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+	// 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 网络探测描述。
@@ -4116,7 +4118,7 @@ type CreateNetDetectRequestParams struct {
 type CreateNetDetectRequest struct {
 	*tchttp.BaseRequest
 	
-	// `VPC`实例`ID`。形如：`vpc-12345678`
+	// `VPC`实例`ID`。形如：`vpc-12345678`。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网实例ID。形如：subnet-12345678。
@@ -4135,6 +4137,7 @@ type CreateNetDetectRequest struct {
 	// NAT：NAT网关；
 	// NORMAL_CVM：普通云服务器；
 	// CCN：云联网网关；
+	// NONEXTHOP：无下一跳；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -4143,7 +4146,8 @@ type CreateNetDetectRequest struct {
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-	// 下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
+	// 下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+	// 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 网络探测描述。
@@ -4662,7 +4666,7 @@ type CreateSecurityGroupRequestParams struct {
 	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
@@ -4678,7 +4682,7 @@ type CreateSecurityGroupRequest struct {
 	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
@@ -6310,11 +6314,20 @@ type CvmInstance struct {
 }
 
 type DefaultVpcSubnet struct {
-	// 默认VpcId
+	// 默认VpcId。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 默认SubnetId
+	// 默认SubnetId。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 默认Vpc名字。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 默认Subnet名字。
+	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+
+	// 默认子网网段。
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 }
 
 // Predefined struct for user
@@ -7232,14 +7245,14 @@ func (r *DeleteNatGatewaySourceIpTranslationNatRuleResponse) FromJsonString(s st
 
 // Predefined struct for user
 type DeleteNetDetectRequestParams struct {
-	// 网络探测实例`ID`。形如：`netd-12345678`
+	// 网络探测实例`ID`。形如：`netd-12345678`。
 	NetDetectId *string `json:"NetDetectId,omitempty" name:"NetDetectId"`
 }
 
 type DeleteNetDetectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网络探测实例`ID`。形如：`netd-12345678`
+	// 网络探测实例`ID`。形如：`netd-12345678`。
 	NetDetectId *string `json:"NetDetectId,omitempty" name:"NetDetectId"`
 }
 
@@ -11726,11 +11739,11 @@ func (r *DescribeNatGatewaysResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetDetectStatesRequestParams struct {
-	// 网络探测实例`ID`数组。形如：[`netd-12345678`]
+	// 网络探测实例`ID`数组。形如：[`netd-12345678`]。
 	NetDetectIds []*string `json:"NetDetectIds,omitempty" name:"NetDetectIds"`
 
 	// 过滤条件，参数不支持同时指定NetDetectIds和Filters。
-	// <li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678</li>
+	// <li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -11743,11 +11756,11 @@ type DescribeNetDetectStatesRequestParams struct {
 type DescribeNetDetectStatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网络探测实例`ID`数组。形如：[`netd-12345678`]
+	// 网络探测实例`ID`数组。形如：[`netd-12345678`]。
 	NetDetectIds []*string `json:"NetDetectIds,omitempty" name:"NetDetectIds"`
 
 	// 过滤条件，参数不支持同时指定NetDetectIds和Filters。
-	// <li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678</li>
+	// <li>net-detect-id - String - （过滤条件）网络探测实例ID，形如：netd-12345678。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -11811,7 +11824,7 @@ func (r *DescribeNetDetectStatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetDetectsRequestParams struct {
-	// 网络探测实例`ID`数组。形如：[`netd-12345678`]
+	// 网络探测实例`ID`数组。形如：[`netd-12345678`]。
 	NetDetectIds []*string `json:"NetDetectIds,omitempty" name:"NetDetectIds"`
 
 	// 过滤条件，参数不支持同时指定NetDetectIds和Filters。
@@ -11831,7 +11844,7 @@ type DescribeNetDetectsRequestParams struct {
 type DescribeNetDetectsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 网络探测实例`ID`数组。形如：[`netd-12345678`]
+	// 网络探测实例`ID`数组。形如：[`netd-12345678`]。
 	NetDetectIds []*string `json:"NetDetectIds,omitempty" name:"NetDetectIds"`
 
 	// 过滤条件，参数不支持同时指定NetDetectIds和Filters。
@@ -19815,6 +19828,7 @@ type ModifyNetDetectRequestParams struct {
 	// NAT：NAT网关；
 	// NORMAL_CVM：普通云服务器；
 	// CCN：云联网网关；
+	// NONEXTHOP：无下一跳；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -19823,7 +19837,8 @@ type ModifyNetDetectRequestParams struct {
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-	// 下一跳类型为CCN，取值云联网ID，形如：ccn-44csczop；
+	// 下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+	// 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 网络探测描述。
@@ -19849,6 +19864,7 @@ type ModifyNetDetectRequest struct {
 	// NAT：NAT网关；
 	// NORMAL_CVM：普通云服务器；
 	// CCN：云联网网关；
+	// NONEXTHOP：无下一跳；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -19857,7 +19873,8 @@ type ModifyNetDetectRequest struct {
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-	// 下一跳类型为CCN，取值云联网ID，形如：ccn-44csczop；
+	// 下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+	// 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 网络探测描述。
@@ -21634,6 +21651,7 @@ type NetDetect struct {
 	// NAT：NAT网关；
 	// NORMAL_CVM：普通云服务器；
 	// CCN：云联网网关；
+	// NONEXTHOP：无下一跳；
 	NextHopType *string `json:"NextHopType,omitempty" name:"NextHopType"`
 
 	// 下一跳目的网关，取值与“下一跳类型”相关：
@@ -21642,7 +21660,8 @@ type NetDetect struct {
 	// 下一跳类型为PEERCONNECTION，取值对等连接ID，形如：pcx-12345678；
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
-	// 下一跳类型为CCN，取值云联网网关，形如：ccn-12345678；
+	// 下一跳类型为CCN，取值云云联网ID，形如：ccn-12345678；
+	// 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 下一跳网关名称。
