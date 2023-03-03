@@ -1,3 +1,199 @@
+# Release v1.0.608
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 83 次发布
+
+发布时间：2023-03-03 01:09:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancerTraffic](https://cloud.tencent.com/document/api/214/30694#LoadBalancerTraffic)
+
+	* 新增成员：Domain
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 47 次发布
+
+发布时间：2023-03-03 01:13:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+
+	* 新增成员：MasterZone, SlaveZones
+
+
+
+
+## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 19 次发布
+
+发布时间：2023-03-03 01:26:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetServiceStatus](https://cloud.tencent.com/document/api/573/34417)
+
+	* 新增出参：SubscriptionInfo
+
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 77 次发布
+
+发布时间：2023-03-03 01:29:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePrometheusConfig](https://cloud.tencent.com/document/api/248/85705)
+
+	* 新增出参：Config, ServiceMonitors, PodMonitors, RawJobs
+
+
+### 第 76 次发布
+
+发布时间：2023-03-02 10:45:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DescribePolicyConditionListResponseDeprecatingInfo](https://cloud.tencent.com/document/api/248/30354#DescribePolicyConditionListResponseDeprecatingInfo)
+
+修改数据结构：
+
+* [AlarmPolicyCondition](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyCondition)
+
+	* 新增成员：ComplexExpression
+
+* [DescribePolicyConditionListCondition](https://cloud.tencent.com/document/api/248/30354#DescribePolicyConditionListCondition)
+
+	* 新增成员：DeprecatingInfo
+
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 61 次发布
+
+发布时间：2023-03-03 01:39:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBackupDownloadRestriction](https://cloud.tencent.com/document/api/239/87742)
+* [ModifyBackupDownloadRestriction](https://cloud.tencent.com/document/api/239/87741)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 52 次发布
+
+发布时间：2023-03-03 01:45:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeInstanceAll
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 47 次发布
+
+发布时间：2023-03-03 01:57:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [McuLayoutVolume](https://cloud.tencent.com/document/api/647/44055#McuLayoutVolume)
+
+	* 新增成员：Interval, FollowIdr
+
+* [McuPassThrough](https://cloud.tencent.com/document/api/647/44055#McuPassThrough)
+
+	* 新增成员：Interval, FollowIdr
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 143 次发布
+
+发布时间：2023-03-03 01:59:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MediaSubStreamInfoItem](https://cloud.tencent.com/document/api/266/31773#MediaSubStreamInfoItem)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingInfoItem)
+
+	* 新增成员：SubStreamSet
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 24 次发布
+
+发布时间：2023-03-03 02:02:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAttackOverview](https://cloud.tencent.com/document/api/627/87744)
+
+
+
 # Release v1.0.607
 
 ## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24

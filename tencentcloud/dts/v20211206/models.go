@@ -1381,14 +1381,14 @@ func (r *DeleteCompareTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCheckSyncJobResultRequestParams struct {
-	// 同步任务id
+	// 同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
 type DescribeCheckSyncJobResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// 同步任务id
+	// 同步实例id（即标识一个同步作业），形如sync-werwfs23，此值必填
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 }
 
@@ -1413,7 +1413,7 @@ func (r *DescribeCheckSyncJobResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCheckSyncJobResultResponseParams struct {
-	// 校验结果
+	// 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -1425,7 +1425,7 @@ type DescribeCheckSyncJobResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepCur *uint64 `json:"StepCur,omitempty" name:"StepCur"`
 
-	// 总体进度
+	// 总体进度，范围为[0,100]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
 
@@ -4150,11 +4150,11 @@ type StepInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepId *string `json:"StepId,omitempty" name:"StepId"`
 
-	// 当前状态，是否完成
+	// 当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 步骤开始时间
+	// 步骤开始时间，可能为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -4166,7 +4166,7 @@ type StepInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Warnings []*StepTip `json:"Warnings,omitempty" name:"Warnings"`
 
-	// 当前步骤进度
+	// 当前步骤进度，范围为[0-100]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }

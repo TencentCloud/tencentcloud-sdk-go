@@ -127,7 +127,9 @@ type AdaptiveDynamicStreamingInfoItem struct {
 	// 转自适应码流规格。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 打包格式，只能为 HLS。
+	// 打包格式，取值范围：
+	// <li>HLS；</li>
+	// <li>DASH。</li>
 	Package *string `json:"Package,omitempty" name:"Package"`
 
 	// 加密类型。
@@ -146,6 +148,9 @@ type AdaptiveDynamicStreamingInfoItem struct {
 	// <li>Trace 表示经过溯源水印处理；</li>
 	// <li>None 表示没有经过数字水印处理。</li>
 	DigitalWatermarkType *string `json:"DigitalWatermarkType,omitempty" name:"DigitalWatermarkType"`
+
+	// 子流信息列表。
+	SubStreamSet []*MediaSubStreamInfoItem `json:"SubStreamSet,omitempty" name:"SubStreamSet"`
 }
 
 type AdaptiveDynamicStreamingTaskInput struct {
@@ -10216,7 +10221,8 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>RemoveWatermarkTask：智能去除水印任务；</li>
 	// <li>DescribeFileAttributesTask：获取文件属性任务；</li>
 	// <li>RebuildMedia：音画质重生任务；</li>
-	// <li>ReviewAudioVideo：音视频审核任务。</li>
+	// <li>ReviewAudioVideo：音视频审核任务；</li>
+	// <li>ExtractTraceWatermark：提取溯源水印任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -12553,7 +12559,7 @@ type MediaBasicInfo struct {
 
 	// 文件状态：Normal：正常，Forbidden：封禁。
 	// 
-	// *注意：此字段暂不支持。
+	// *注意：此字段暂不支持。	
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 媒体文件的存储类别：
@@ -13233,6 +13239,23 @@ type MediaSourceData struct {
 	// TRTC 伴生录制信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrtcRecordInfo *TrtcRecordInfo `json:"TrtcRecordInfo,omitempty" name:"TrtcRecordInfo"`
+}
+
+type MediaSubStreamInfoItem struct {
+	// 子流类型，取值范围：
+	// <li>audio：纯音频；</li>
+	// <li>video：视频（可能包含音频流）。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 当子流为视频流时，视频画面宽度，单位：px。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 当子流为视频流时，视频画面高度，单位：px。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 子流媒体文件大小，单位：Byte。
+	// <font color=red>注意：</font>在 2023-02-09T16:00:00Z 前处理生成的自适应码流文件此字段为0。
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
 }
 
 type MediaSubtitleInfo struct {

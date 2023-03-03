@@ -1704,7 +1704,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 }
 
 // CreateConsoleLoginUrl
-// 此接口（CreateConsoleLoginUrl）用于创建渠道子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
+// 此接口（CreateConsoleLoginUrl）用于创建子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
 //
 // 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
 //
@@ -1750,7 +1750,7 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 }
 
 // CreateConsoleLoginUrl
-// 此接口（CreateConsoleLoginUrl）用于创建渠道子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
+// 此接口（CreateConsoleLoginUrl）用于创建子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
 //
 // 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
 //

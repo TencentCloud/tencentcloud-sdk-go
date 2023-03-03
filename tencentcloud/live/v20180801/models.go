@@ -13063,6 +13063,7 @@ type StreamEventInfo struct {
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 主播 IP。
+	// 当客户端为内网推流时，展示为: - 。
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
 	// 分辨率。

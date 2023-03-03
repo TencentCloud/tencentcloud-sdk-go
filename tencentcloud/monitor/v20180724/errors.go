@@ -125,6 +125,9 @@ const (
 	// 被除数为0。
 	FAILEDOPERATION_DIVISIONBYZERO = "FailedOperation.DivisionByZero"
 
+	// 后端服务超时
+	FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+
 	// 查询分析数据失败。
 	FAILEDOPERATION_DRUIDQUERYFAILED = "FailedOperation.DruidQueryFailed"
 

@@ -1517,6 +1517,79 @@ func (r *DescribeAutoBackupConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupDownloadRestrictionRequestParams struct {
+
+}
+
+type DescribeBackupDownloadRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBackupDownloadRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDownloadRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDownloadRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupDownloadRestrictionResponseParams struct {
+	// 下载备份文件的网络限制类型：
+	// 
+	// - NoLimit：不限制，腾讯云内外网均可以下载备份文件。
+	// -  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
+	// - Customize：指用户自定义的私有网络可下载备份文件。
+	LimitType *string `json:"LimitType,omitempty" name:"LimitType"`
+
+	// 该参数仅支持输入 In，表示自定义的**LimitVpc**可以下载备份文件。
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitempty" name:"VpcComparisonSymbol"`
+
+	// 标识自定义的 LimitIp 地址是否可下载备份文件。
+	// 
+	// - In: 自定义的 IP 地址可以下载。
+	// - NotIn: 自定义的 IP 不可以下载。
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitempty" name:"IpComparisonSymbol"`
+
+	// 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，显示该参数。
+	LimitVpc []*BackupLimitVpcItem `json:"LimitVpc,omitempty" name:"LimitVpc"`
+
+	// 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，显示该参数。
+	LimitIp []*string `json:"LimitIp,omitempty" name:"LimitIp"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupDownloadRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupDownloadRestrictionResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupDownloadRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDownloadRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupUrlRequestParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -5867,6 +5940,102 @@ func (r *ModifyAutoBackupConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAutoBackupConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupDownloadRestrictionRequestParams struct {
+	// 下载备份文件的网络限制类型：
+	// 
+	// - NoLimit：不限制，腾讯云内外网均可以下载备份文件。
+	// -  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
+	// - Customize：指用户自定义的私有网络可下载备份文件。
+	LimitType *string `json:"LimitType,omitempty" name:"LimitType"`
+
+	// 该参数仅支持输入 In，表示自定义的**LimitVpc**可以下载备份文件。
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitempty" name:"VpcComparisonSymbol"`
+
+	// 标识自定义的 LimitIp 地址是否可下载备份文件。
+	// 
+	// - In: 自定义的 IP 地址可以下载。
+	// - NotIn: 自定义的 IP 不可以下载。
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitempty" name:"IpComparisonSymbol"`
+
+	// 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，需配置该参数。
+	LimitVpc []*BackupLimitVpcItem `json:"LimitVpc,omitempty" name:"LimitVpc"`
+
+	// 自定义的可下载备份文件的 VPC IP 地址。当参数**LimitType**为**Customize **时，需配置该参数。
+	LimitIp []*string `json:"LimitIp,omitempty" name:"LimitIp"`
+}
+
+type ModifyBackupDownloadRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 下载备份文件的网络限制类型：
+	// 
+	// - NoLimit：不限制，腾讯云内外网均可以下载备份文件。
+	// -  LimitOnlyIntranet：仅腾讯云自动分配的内网地址可下载备份文件。
+	// - Customize：指用户自定义的私有网络可下载备份文件。
+	LimitType *string `json:"LimitType,omitempty" name:"LimitType"`
+
+	// 该参数仅支持输入 In，表示自定义的**LimitVpc**可以下载备份文件。
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitempty" name:"VpcComparisonSymbol"`
+
+	// 标识自定义的 LimitIp 地址是否可下载备份文件。
+	// 
+	// - In: 自定义的 IP 地址可以下载。
+	// - NotIn: 自定义的 IP 不可以下载。
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitempty" name:"IpComparisonSymbol"`
+
+	// 自定义的可下载备份文件的 VPC ID。当参数**LimitType**为**Customize **时，需配置该参数。
+	LimitVpc []*BackupLimitVpcItem `json:"LimitVpc,omitempty" name:"LimitVpc"`
+
+	// 自定义的可下载备份文件的 VPC IP 地址。当参数**LimitType**为**Customize **时，需配置该参数。
+	LimitIp []*string `json:"LimitIp,omitempty" name:"LimitIp"`
+}
+
+func (r *ModifyBackupDownloadRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupDownloadRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LimitType")
+	delete(f, "VpcComparisonSymbol")
+	delete(f, "IpComparisonSymbol")
+	delete(f, "LimitVpc")
+	delete(f, "LimitIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupDownloadRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupDownloadRestrictionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyBackupDownloadRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBackupDownloadRestrictionResponseParams `json:"Response"`
+}
+
+func (r *ModifyBackupDownloadRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupDownloadRestrictionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

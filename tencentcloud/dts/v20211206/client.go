@@ -846,7 +846,7 @@ func NewDescribeCheckSyncJobResultResponse() (response *DescribeCheckSyncJobResu
 }
 
 // DescribeCheckSyncJobResult
-// 查询同步校验任务结果
+// 查询同步校验任务结果，检查必要参数和周边配置
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -857,7 +857,7 @@ func (c *Client) DescribeCheckSyncJobResult(request *DescribeCheckSyncJobResultR
 }
 
 // DescribeCheckSyncJobResult
-// 查询同步校验任务结果
+// 查询同步校验任务结果，检查必要参数和周边配置
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"

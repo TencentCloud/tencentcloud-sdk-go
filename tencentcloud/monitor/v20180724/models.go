@@ -197,7 +197,7 @@ type AlarmNotice struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`
 
-	// 通知模版绑定的标签
+	// 通知模板绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
@@ -348,13 +348,17 @@ type AlarmPolicy struct {
 }
 
 type AlarmPolicyCondition struct {
-	// 指标触发与或条件，0=或，1=与
+	// 告警触发条件的判断方式. 0: 任意; 1: 全部; 2: 复合. 当取值为2的时候为复合告警，与参数 ComplexExpression 配合使用.
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUnionRule *int64 `json:"IsUnionRule,omitempty" name:"IsUnionRule"`
 
 	// 告警触发条件列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*AlarmPolicyRule `json:"Rules,omitempty" name:"Rules"`
+
+	// 复合告警触发条件的判断表达式，当 IsUnionRule 取值为2的时候有效. 其作用是描述多个触发条件需要满足表达式求值为True时才算是满足告警条件.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplexExpression *string `json:"ComplexExpression,omitempty" name:"ComplexExpression"`
 }
 
 type AlarmPolicyEventCondition struct {
@@ -981,7 +985,7 @@ type CreateAlarmNoticeRequestParams struct {
 	// 推送CLS日志服务的操作 最多1个
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`
 
-	// 模版绑定的标签
+	// 模板绑定的标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
@@ -1009,7 +1013,7 @@ type CreateAlarmNoticeRequest struct {
 	// 推送CLS日志服务的操作 最多1个
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`
 
-	// 模版绑定的标签
+	// 模板绑定的标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
@@ -1108,7 +1112,7 @@ type CreateAlarmPolicyRequestParams struct {
 	// 聚合维度列表，指定按哪些维度 key 来做 group by
 	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
 
-	// 模版绑定的标签
+	// 模板绑定的标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 日志告警信息
@@ -1169,7 +1173,7 @@ type CreateAlarmPolicyRequest struct {
 	// 聚合维度列表，指定按哪些维度 key 来做 group by
 	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
 
-	// 模版绑定的标签
+	// 模板绑定的标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 日志告警信息
@@ -1742,7 +1746,7 @@ type CreatePolicyGroupCondition struct {
 	// 持续几个检测周期触发规则会告警
 	ContinuePeriod *int64 `json:"ContinuePeriod,omitempty" name:"ContinuePeriod"`
 
-	// 如果通过模版创建，需要传入模版中该指标的对应RuleId
+	// 如果通过模板创建，需要传入模板中该指标的对应RuleId
 	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
 }
 
@@ -1756,7 +1760,7 @@ type CreatePolicyGroupEventCondition struct {
 	// 告警发送周期单位秒。<0 不触发, 0 只触发一次, >0 每隔triggerTime秒触发一次
 	AlarmNotifyPeriod *int64 `json:"AlarmNotifyPeriod,omitempty" name:"AlarmNotifyPeriod"`
 
-	// 如果通过模版创建，需要传入模版中该指标的对应RuleId
+	// 如果通过模板创建，需要传入模板中该指标的对应RuleId
 	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
 }
 
@@ -1768,13 +1772,13 @@ type CreatePolicyGroupRequestParams struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 策略组所属视图的名称，若通过模版创建，可不传入
+	// 策略组所属视图的名称，若通过模板创建，可不传入
 	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
 
 	// 策略组所属项目Id，会进行鉴权操作
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 模版策略组Id, 通过模版创建时才需要传
+	// 模板策略组Id, 通过模板创建时才需要传
 	ConditionTempGroupId *int64 `json:"ConditionTempGroupId,omitempty" name:"ConditionTempGroupId"`
 
 	// 是否屏蔽策略组，0表示不屏蔽，1表示屏蔽。不填默认为0
@@ -1792,7 +1796,7 @@ type CreatePolicyGroupRequestParams struct {
 	// 策略组中的事件告警规则
 	EventConditions []*CreatePolicyGroupEventCondition `json:"EventConditions,omitempty" name:"EventConditions"`
 
-	// 是否为后端调用。当且仅当值为1时，后台拉取策略模版中的规则填充入Conditions以及EventConditions字段
+	// 是否为后端调用。当且仅当值为1时，后台拉取策略模板中的规则填充入Conditions以及EventConditions字段
 	BackEndCall *int64 `json:"BackEndCall,omitempty" name:"BackEndCall"`
 
 	// 指标告警规则的且或关系，0表示或规则(满足任意规则就告警)，1表示且规则(满足所有规则才告警)
@@ -1808,13 +1812,13 @@ type CreatePolicyGroupRequest struct {
 	// 固定值，为"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 策略组所属视图的名称，若通过模版创建，可不传入
+	// 策略组所属视图的名称，若通过模板创建，可不传入
 	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
 
 	// 策略组所属项目Id，会进行鉴权操作
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 模版策略组Id, 通过模版创建时才需要传
+	// 模板策略组Id, 通过模板创建时才需要传
 	ConditionTempGroupId *int64 `json:"ConditionTempGroupId,omitempty" name:"ConditionTempGroupId"`
 
 	// 是否屏蔽策略组，0表示不屏蔽，1表示屏蔽。不填默认为0
@@ -1832,7 +1836,7 @@ type CreatePolicyGroupRequest struct {
 	// 策略组中的事件告警规则
 	EventConditions []*CreatePolicyGroupEventCondition `json:"EventConditions,omitempty" name:"EventConditions"`
 
-	// 是否为后端调用。当且仅当值为1时，后台拉取策略模版中的规则填充入Conditions以及EventConditions字段
+	// 是否为后端调用。当且仅当值为1时，后台拉取策略模板中的规则填充入Conditions以及EventConditions字段
 	BackEndCall *int64 `json:"BackEndCall,omitempty" name:"BackEndCall"`
 
 	// 指标告警规则的且或关系，0表示或规则(满足任意规则就告警)，1表示且规则(满足所有规则才告警)
@@ -4635,7 +4639,7 @@ type DescribeAlarmNoticesRequestParams struct {
 	// 根据通知模板 id 过滤，空数组/不传则不过滤
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 
-	// 模版根据标签过滤
+	// 模板根据标签过滤
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
@@ -4672,7 +4676,7 @@ type DescribeAlarmNoticesRequest struct {
 	// 根据通知模板 id 过滤，空数组/不传则不过滤
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 
-	// 模版根据标签过滤
+	// 模板根据标签过滤
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
@@ -6682,6 +6686,10 @@ type DescribePolicyConditionListCondition struct {
 	// 支持该策略类型的地域列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportRegions []*string `json:"SupportRegions,omitempty" name:"SupportRegions"`
+
+	// 弃用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeprecatingInfo *DescribePolicyConditionListResponseDeprecatingInfo `json:"DeprecatingInfo,omitempty" name:"DeprecatingInfo"`
 }
 
 type DescribePolicyConditionListConfigManual struct {
@@ -6897,6 +6905,20 @@ func (r *DescribePolicyConditionListResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribePolicyConditionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribePolicyConditionListResponseDeprecatingInfo struct {
+	// 是否隐藏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hidden *bool `json:"Hidden,omitempty" name:"Hidden"`
+
+	// 新视图名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewViewNames []*string `json:"NewViewNames,omitempty" name:"NewViewNames"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type DescribePolicyGroupInfoCallback struct {
@@ -7554,19 +7576,19 @@ type DescribeProductEventListRequestParams struct {
 	// 接口模块名，固定值"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 产品类型过滤，比如"cvm"表示云服务器
+	// 产品类型过滤，例如"cvm"表示云服务器
 	ProductName []*string `json:"ProductName,omitempty" name:"ProductName"`
 
-	// 事件名称过滤，比如"guest_reboot"表示机器重启
+	// 事件名称过滤，例如"guest_reboot"表示机器重启
 	EventName []*string `json:"EventName,omitempty" name:"EventName"`
 
-	// 影响对象，比如"ins-19708ino"
+	// 影响对象，例如"ins-19708ino"
 	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 维度过滤，比如外网IP:10.0.0.1
+	// 维度过滤，例如外网IP:10.0.0.1
 	Dimensions []*DescribeProductEventListDimensions `json:"Dimensions,omitempty" name:"Dimensions"`
 
-	// 产品事件地域过滤参数，比如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
+	// 产品事件地域过滤参数，例如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
 	RegionList []*string `json:"RegionList,omitempty" name:"RegionList"`
 
 	// 事件类型过滤，取值范围["status_change","abnormal"]，分别表示状态变更、异常事件
@@ -7603,19 +7625,19 @@ type DescribeProductEventListRequest struct {
 	// 接口模块名，固定值"monitor"
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 产品类型过滤，比如"cvm"表示云服务器
+	// 产品类型过滤，例如"cvm"表示云服务器
 	ProductName []*string `json:"ProductName,omitempty" name:"ProductName"`
 
-	// 事件名称过滤，比如"guest_reboot"表示机器重启
+	// 事件名称过滤，例如"guest_reboot"表示机器重启
 	EventName []*string `json:"EventName,omitempty" name:"EventName"`
 
-	// 影响对象，比如"ins-19708ino"
+	// 影响对象，例如"ins-19708ino"
 	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 维度过滤，比如外网IP:10.0.0.1
+	// 维度过滤，例如外网IP:10.0.0.1
 	Dimensions []*DescribeProductEventListDimensions `json:"Dimensions,omitempty" name:"Dimensions"`
 
-	// 产品事件地域过滤参数，比如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
+	// 产品事件地域过滤参数，例如gz，各地域缩写可参见[地域列表](https://cloud.tencent.com/document/product/248/50863)
 	RegionList []*string `json:"RegionList,omitempty" name:"RegionList"`
 
 	// 事件类型过滤，取值范围["status_change","abnormal"]，分别表示状态变更、异常事件
@@ -8150,6 +8172,18 @@ func (r *DescribePrometheusConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePrometheusConfigResponseParams struct {
+	// 全局配置
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// ServiceMonitor配置
+	ServiceMonitors []*PrometheusConfigItem `json:"ServiceMonitors,omitempty" name:"ServiceMonitors"`
+
+	// PodMonitor配置
+	PodMonitors []*PrometheusConfigItem `json:"PodMonitors,omitempty" name:"PodMonitors"`
+
+	// 原生Job
+	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitempty" name:"RawJobs"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

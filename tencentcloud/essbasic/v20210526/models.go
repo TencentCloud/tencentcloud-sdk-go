@@ -2227,10 +2227,10 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 渠道子客企业名称，最大长度64个字符
+	// 子客企业名称，最大长度64个字符
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 
-	// 渠道子客企业经办人的姓名，最大长度50个字符
+	// 子客企业经办人的姓名，最大长度50个字符
 	ProxyOperatorName *string `json:"ProxyOperatorName,omitempty" name:"ProxyOperatorName"`
 
 	// PC控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"。 EndPoint为"CHANNEL"/"APP"只支持"SEAL"-印章管理
@@ -2239,7 +2239,7 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// 控制台指定模块Id
 	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
 
-	// 渠道子客企业统一社会信用代码，最大长度200个字符
+	// 子客企业统一社会信用代码，最大长度200个字符
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
 	// 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
@@ -2265,10 +2265,10 @@ type CreateConsoleLoginUrlRequest struct {
 	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 渠道子客企业名称，最大长度64个字符
+	// 子客企业名称，最大长度64个字符
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 
-	// 渠道子客企业经办人的姓名，最大长度50个字符
+	// 子客企业经办人的姓名，最大长度50个字符
 	ProxyOperatorName *string `json:"ProxyOperatorName,omitempty" name:"ProxyOperatorName"`
 
 	// PC控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"。 EndPoint为"CHANNEL"/"APP"只支持"SEAL"-印章管理
@@ -2277,7 +2277,7 @@ type CreateConsoleLoginUrlRequest struct {
 	// 控制台指定模块Id
 	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
 
-	// 渠道子客企业统一社会信用代码，最大长度200个字符
+	// 子客企业统一社会信用代码，最大长度200个字符
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
 	// 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
@@ -2327,7 +2327,7 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConsoleLoginUrlResponseParams struct {
-	// 子客Web控制台url注意事项：
+	// 子客企业Web控制台url注意事项：
 	// 1. 所有类型的链接在企业未认证/员工未认证完成时，只要在有效期内（一年）都可以访问
 	// 2. 若企业认证完成且员工认证完成后，重新获取pc端的链接5分钟之内有效，且只能访问一次
 	// 3. 若企业认证完成且员工认证完成后，重新获取H5/APP的链接只要在有效期内（一年）都可以访问
@@ -2335,7 +2335,7 @@ type CreateConsoleLoginUrlResponseParams struct {
 	// 5. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
 	ConsoleUrl *string `json:"ConsoleUrl,omitempty" name:"ConsoleUrl"`
 
-	// 渠道子客企业是否已开通腾讯电子签
+	// 子客企业是否已开通腾讯电子签
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
 
 	// 当前经办人是否已认证（false:未认证 true:已认证）

@@ -1215,6 +1215,60 @@ func (c *Client) DescribeAutoBackupConfigWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeBackupDownloadRestrictionRequest() (request *DescribeBackupDownloadRestrictionRequest) {
+    request = &DescribeBackupDownloadRestrictionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeBackupDownloadRestriction")
+    
+    
+    return
+}
+
+func NewDescribeBackupDownloadRestrictionResponse() (response *DescribeBackupDownloadRestrictionResponse) {
+    response = &DescribeBackupDownloadRestrictionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackupDownloadRestriction
+// 本接口（DescribeBackupDownloadRestriction）用于查询当前地域数据库备份文件的下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeBackupDownloadRestriction(request *DescribeBackupDownloadRestrictionRequest) (response *DescribeBackupDownloadRestrictionResponse, err error) {
+    return c.DescribeBackupDownloadRestrictionWithContext(context.Background(), request)
+}
+
+// DescribeBackupDownloadRestriction
+// 本接口（DescribeBackupDownloadRestriction）用于查询当前地域数据库备份文件的下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) DescribeBackupDownloadRestrictionWithContext(ctx context.Context, request *DescribeBackupDownloadRestrictionRequest) (response *DescribeBackupDownloadRestrictionResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupDownloadRestrictionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupDownloadRestriction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupDownloadRestrictionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupUrlRequest() (request *DescribeBackupUrlRequest) {
     request = &DescribeBackupUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3913,6 +3967,60 @@ func (c *Client) ModifyAutoBackupConfigWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyAutoBackupConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBackupDownloadRestrictionRequest() (request *ModifyBackupDownloadRestrictionRequest) {
+    request = &ModifyBackupDownloadRestrictionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "ModifyBackupDownloadRestriction")
+    
+    
+    return
+}
+
+func NewModifyBackupDownloadRestrictionResponse() (response *ModifyBackupDownloadRestrictionResponse) {
+    response = &ModifyBackupDownloadRestrictionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBackupDownloadRestriction
+// 本接口（ModifyBackupDownloadRestriction）用于修改备份文件下载的网络信息与地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) ModifyBackupDownloadRestriction(request *ModifyBackupDownloadRestrictionRequest) (response *ModifyBackupDownloadRestrictionResponse, err error) {
+    return c.ModifyBackupDownloadRestrictionWithContext(context.Background(), request)
+}
+
+// ModifyBackupDownloadRestriction
+// 本接口（ModifyBackupDownloadRestriction）用于修改备份文件下载的网络信息与地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) ModifyBackupDownloadRestrictionWithContext(ctx context.Context, request *ModifyBackupDownloadRestrictionRequest) (response *ModifyBackupDownloadRestrictionResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupDownloadRestrictionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBackupDownloadRestriction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBackupDownloadRestrictionResponse()
     err = c.Send(request, response)
     return
 }

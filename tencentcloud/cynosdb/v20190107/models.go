@@ -1949,6 +1949,14 @@ type CynosdbInstance struct {
 	// 资源标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 主可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterZone *string `json:"MasterZone,omitempty" name:"MasterZone"`
+
+	// 备可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZones []*string `json:"SlaveZones,omitempty" name:"SlaveZones"`
 }
 
 type CynosdbInstanceDetail struct {

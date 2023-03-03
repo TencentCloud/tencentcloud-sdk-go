@@ -1436,6 +1436,72 @@ func (r *DescribeAccessIndexResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAttackOverviewRequestParams struct {
+
+}
+
+type DescribeAttackOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAttackOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAttackOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAttackOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAttackOverviewResponseParams struct {
+	// 访问请求总数
+	AccessCount *uint64 `json:"AccessCount,omitempty" name:"AccessCount"`
+
+	// Web攻击总数
+	AttackCount *uint64 `json:"AttackCount,omitempty" name:"AttackCount"`
+
+	// 访问控制总数
+	ACLCount *uint64 `json:"ACLCount,omitempty" name:"ACLCount"`
+
+	// CC攻击总数
+	CCCount *uint64 `json:"CCCount,omitempty" name:"CCCount"`
+
+	// Bot攻击总数
+	BotCount *uint64 `json:"BotCount,omitempty" name:"BotCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAttackOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAttackOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeAttackOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAttackOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAutoDenyIPRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
