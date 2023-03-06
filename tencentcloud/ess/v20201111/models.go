@@ -128,6 +128,32 @@ type AuthorizedUser struct {
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
+type AutoSignConfig struct {
+	// 自动签开通个人用户的三要素
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 回调链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 是否回调证书信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertInfoCallback *bool `json:"CertInfoCallback,omitempty" name:"CertInfoCallback"`
+
+	// 是否支持用户自定义签名印章
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDefineSeal *bool `json:"UserDefineSeal,omitempty" name:"UserDefineSeal"`
+
+	// 是否需要回调的时候返回印章(签名) 图片的 base64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SealImgCallback *bool `json:"SealImgCallback,omitempty" name:"SealImgCallback"`
+
+	// 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyChannels []*string `json:"VerifyChannels,omitempty" name:"VerifyChannels"`
+}
+
 type Caller struct {
 	// 应用号
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -2056,6 +2082,101 @@ type CreateStaffResult struct {
 }
 
 // Predefined struct for user
+type CreateUserAutoSignEnableUrlRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 自动签开通，签署相关配置
+	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitempty" name:"AutoSignConfig"`
+
+	// 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+	UrlType *string `json:"UrlType,omitempty" name:"UrlType"`
+}
+
+type CreateUserAutoSignEnableUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 自动签开通，签署相关配置
+	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitempty" name:"AutoSignConfig"`
+
+	// 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+	UrlType *string `json:"UrlType,omitempty" name:"UrlType"`
+}
+
+func (r *CreateUserAutoSignEnableUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SceneKey")
+	delete(f, "AutoSignConfig")
+	delete(f, "UrlType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserAutoSignEnableUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserAutoSignEnableUrlResponseParams struct {
+	// 跳转短链
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 小程序AppId
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 小程序 原始 Id
+	AppOriginalId *string `json:"AppOriginalId,omitempty" name:"AppOriginalId"`
+
+	// 跳转路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// base64格式跳转二维码
+	QrCode *string `json:"QrCode,omitempty" name:"QrCode"`
+
+	// 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+	UrlType *string `json:"UrlType,omitempty" name:"UrlType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateUserAutoSignEnableUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserAutoSignEnableUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateUserAutoSignEnableUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteIntegrationEmployeesRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -3138,6 +3259,149 @@ func (r *DescribeThirdPartyAuthCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserAutoSignStatusRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 查询开启状态的用户信息
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+}
+
+type DescribeUserAutoSignStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 查询开启状态的用户信息
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+}
+
+func (r *DescribeUserAutoSignStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserAutoSignStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserAutoSignStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserAutoSignStatusResponseParams struct {
+	// 是否开通
+	IsOpen *bool `json:"IsOpen,omitempty" name:"IsOpen"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeUserAutoSignStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserAutoSignStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserAutoSignStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserAutoSignStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableUserAutoSignRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 关闭自动签的个人的三要素
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+}
+
+type DisableUserAutoSignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 关闭自动签的个人的三要素
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+}
+
+func (r *DisableUserAutoSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableUserAutoSignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableUserAutoSignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableUserAutoSignResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DisableUserAutoSignResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableUserAutoSignResponseParams `json:"Response"`
+}
+
+func (r *DisableUserAutoSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableUserAutoSignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FailedCreateStaffData struct {
 	// 员工名
 	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
@@ -4169,6 +4433,23 @@ type UserInfo struct {
 
 	// 用户代理IP
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
+}
+
+type UserThreeFactor struct {
+	// 姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 证件类型: 
+	// ID_CARD 身份证
+	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
+	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 证件号，如果有 X 请大写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 }
 
 // Predefined struct for user

@@ -1035,6 +1035,10 @@ type FakeURLData struct {
 	// 资质证明状态：0-不可用 1-可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificationStatus *int64 `json:"CertificationStatus,omitempty" name:"CertificationStatus"`
+
+	// 网址截图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
 }
 
 type Filter struct {

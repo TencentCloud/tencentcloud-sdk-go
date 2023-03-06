@@ -1117,6 +1117,77 @@ func (r *DescribeRealtimeScanConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecordInfoRequestParams struct {
+	// 进行中的任务taskid（StartRecord接口返回）。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+type DescribeRecordInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 进行中的任务taskid（StartRecord接口返回）。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+func (r *DescribeRecordInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "BizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordInfoResponseParams struct {
+	// 录制信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordInfo []*RecordInfo `json:"RecordInfo,omitempty" name:"RecordInfo"`
+
+	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	RecordMode *uint64 `json:"RecordMode,omitempty" name:"RecordMode"`
+
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoomInfoRequestParams struct {
 	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1307,6 +1378,79 @@ func (r *DescribeScanResultListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeScanResultListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskInfoRequestParams struct {
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+type DescribeTaskInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeTaskInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskInfoResponseParams struct {
+	// 进行中的任务taskid（StartRecord接口返回）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordMode *uint64 `json:"RecordMode,omitempty" name:"RecordMode"`
+
+	// 指定订阅流白名单或者黑名单。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitempty" name:"SubscribeRecordUserIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1693,6 +1837,81 @@ func (r *ModifyCustomizationStateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRecordInfoRequestParams struct {
+	// 进行中的任务taskid（StartRecord接口返回）。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	RecordMode *uint64 `json:"RecordMode,omitempty" name:"RecordMode"`
+
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitempty" name:"SubscribeRecordUserIds"`
+}
+
+type ModifyRecordInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 进行中的任务taskid（StartRecord接口返回）。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	RecordMode *uint64 `json:"RecordMode,omitempty" name:"RecordMode"`
+
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitempty" name:"SubscribeRecordUserIds"`
+}
+
+func (r *ModifyRecordInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "RecordMode")
+	delete(f, "BizId")
+	delete(f, "SubscribeRecordUserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRecordInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRecordInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRecordInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyRecordInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserMicStatusRequestParams struct {
 	// 来自 [腾讯云控制台](https://console.cloud.tencent.com/gamegme) 的 GME 服务提供的 AppID，获取请参考 [语音服务开通指引](https://cloud.tencent.com/document/product/607/10782#.E9.87.8D.E7.82.B9.E5.8F.82.E6.95.B0)。
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
@@ -1804,6 +2023,20 @@ type RealtimeTextStatisticsItem struct {
 	// 统计值，单位：秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *float64 `json:"Data,omitempty" name:"Data"`
+}
+
+type RecordInfo struct {
+	// 用户ID（当混流模式时，取值为0）。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 录制文件名。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 录制开始时间（unix时间戳如：1234567868）。
+	RecordBeginTime *uint64 `json:"RecordBeginTime,omitempty" name:"RecordBeginTime"`
+
+	// 录制状态：2代表正在录制  10代表等待转码  11代表正在转码  12正在上传  13代表上传完成  14代表通知用户完成。
+	RecordStatus *uint64 `json:"RecordStatus,omitempty" name:"RecordStatus"`
 }
 
 type RoomUser struct {
@@ -2007,6 +2240,84 @@ type ServiceStatus struct {
 	RealTimeAsr *StatusInfo `json:"RealTimeAsr,omitempty" name:"RealTimeAsr"`
 }
 
+// Predefined struct for user
+type StartRecordRequestParams struct {
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	RecordMode *uint64 `json:"RecordMode,omitempty" name:"RecordMode"`
+
+	// 指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
+	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitempty" name:"SubscribeRecordUserIds"`
+}
+
+type StartRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
+	RecordMode *uint64 `json:"RecordMode,omitempty" name:"RecordMode"`
+
+	// 指定订阅流白名单或者黑名单（不传默认订阅房间内所有音频流）。
+	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitempty" name:"SubscribeRecordUserIds"`
+}
+
+func (r *StartRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "RoomId")
+	delete(f, "RecordMode")
+	delete(f, "SubscribeRecordUserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartRecordResponseParams struct {
+	// 任务taskid。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *StartRecordResponseParams `json:"Response"`
+}
+
+func (r *StartRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StatisticsItem struct {
 	// 日期，格式为年-月-日，如2018-07-13
 	StatDate *string `json:"StatDate,omitempty" name:"StatDate"`
@@ -2020,10 +2331,81 @@ type StatusInfo struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
+// Predefined struct for user
+type StopRecordRequestParams struct {
+	// 任务ID。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+type StopRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 应用ID。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+func (r *StopRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "BizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopRecordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *StopRecordResponseParams `json:"Response"`
+}
+
+func (r *StopRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StreamTextStatisticsItem struct {
 	// 统计值，单位：秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *float64 `json:"Data,omitempty" name:"Data"`
+}
+
+type SubscribeRecordUserIds struct {
+	// 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过20。
+	// 注意：只能同时设置UnSubscribeAudioUserIds、SubscribeAudioUserIds 其中1个参数
+	UnSubscribeUserIds []*string `json:"UnSubscribeUserIds,omitempty" name:"UnSubscribeUserIds"`
+
+	// 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过20。
+	// 注意：只能同时设置UnSubscribeAudioUserIds、SubscribeAudioUserIds 其中1个参数。
+	SubscribeUserIds []*string `json:"SubscribeUserIds,omitempty" name:"SubscribeUserIds"`
 }
 
 type Tag struct {

@@ -2033,6 +2033,94 @@ func (c *Client) CreateSealPolicyWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateUserAutoSignEnableUrlRequest() (request *CreateUserAutoSignEnableUrlRequest) {
+    request = &CreateUserAutoSignEnableUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateUserAutoSignEnableUrl")
+    
+    
+    return
+}
+
+func NewCreateUserAutoSignEnableUrlResponse() (response *CreateUserAutoSignEnableUrlResponse) {
+    response = &CreateUserAutoSignEnableUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUserAutoSignEnableUrl
+// 企业方可以通过此接口获取个人用户开启自动签的跳转链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateUserAutoSignEnableUrl(request *CreateUserAutoSignEnableUrlRequest) (response *CreateUserAutoSignEnableUrlResponse, err error) {
+    return c.CreateUserAutoSignEnableUrlWithContext(context.Background(), request)
+}
+
+// CreateUserAutoSignEnableUrl
+// 企业方可以通过此接口获取个人用户开启自动签的跳转链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateUserAutoSignEnableUrlWithContext(ctx context.Context, request *CreateUserAutoSignEnableUrlRequest) (response *CreateUserAutoSignEnableUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateUserAutoSignEnableUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserAutoSignEnableUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserAutoSignEnableUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIntegrationEmployeesRequest() (request *DeleteIntegrationEmployeesRequest) {
     request = &DeleteIntegrationEmployeesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2895,6 +2983,198 @@ func (c *Client) DescribeThirdPartyAuthCodeWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeThirdPartyAuthCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserAutoSignStatusRequest() (request *DescribeUserAutoSignStatusRequest) {
+    request = &DescribeUserAutoSignStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeUserAutoSignStatus")
+    
+    
+    return
+}
+
+func NewDescribeUserAutoSignStatusResponse() (response *DescribeUserAutoSignStatusResponse) {
+    response = &DescribeUserAutoSignStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserAutoSignStatus
+// 企业方可以通过此接口查询个人用户自动签开启状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeUserAutoSignStatus(request *DescribeUserAutoSignStatusRequest) (response *DescribeUserAutoSignStatusResponse, err error) {
+    return c.DescribeUserAutoSignStatusWithContext(context.Background(), request)
+}
+
+// DescribeUserAutoSignStatus
+// 企业方可以通过此接口查询个人用户自动签开启状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeUserAutoSignStatusWithContext(ctx context.Context, request *DescribeUserAutoSignStatusRequest) (response *DescribeUserAutoSignStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserAutoSignStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserAutoSignStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserAutoSignStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableUserAutoSignRequest() (request *DisableUserAutoSignRequest) {
+    request = &DisableUserAutoSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DisableUserAutoSign")
+    
+    
+    return
+}
+
+func NewDisableUserAutoSignResponse() (response *DisableUserAutoSignResponse) {
+    response = &DisableUserAutoSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableUserAutoSign
+// 企业方可以通过此接口关闭个人的自动签功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DisableUserAutoSign(request *DisableUserAutoSignRequest) (response *DisableUserAutoSignResponse, err error) {
+    return c.DisableUserAutoSignWithContext(context.Background(), request)
+}
+
+// DisableUserAutoSign
+// 企业方可以通过此接口关闭个人的自动签功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_CACHE = "InternalError.Cache"
+//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
+//  INTERNALERROR_CALLBACK = "InternalError.Callback"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DisableUserAutoSignWithContext(ctx context.Context, request *DisableUserAutoSignRequest) (response *DisableUserAutoSignResponse, err error) {
+    if request == nil {
+        request = NewDisableUserAutoSignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableUserAutoSign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableUserAutoSignResponse()
     err = c.Send(request, response)
     return
 }

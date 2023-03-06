@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 负载均衡(clb) 版本：2018-03-17
+## 品牌经营管家(bma) 版本：2022-11-15
 
-### 第 83 次发布
+### 第 5 次发布
 
-发布时间：2023-03-03 01:09:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [LoadBalancerTraffic](https://cloud.tencent.com/document/api/214/30694#LoadBalancerTraffic)
-
-	* 新增成员：Domain
-
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 47 次发布
-
-发布时间：2023-03-03 01:13:15
+发布时间：2023-03-06 01:04:17
 
 本次发布包含了以下内容：
 
@@ -31,79 +12,22 @@
 
 修改数据结构：
 
-* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
 
-	* 新增成员：MasterZone, SlaveZones
-
-
-
-
-## 密钥管理系统(kms) 版本：2019-01-18
-
-### 第 19 次发布
-
-发布时间：2023-03-03 01:26:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GetServiceStatus](https://cloud.tencent.com/document/api/573/34417)
-
-	* 新增出参：SubscriptionInfo
+	* 新增成员：Snapshot
 
 
 
 
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 77 次发布
-
-发布时间：2023-03-03 01:29:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribePrometheusConfig](https://cloud.tencent.com/document/api/248/85705)
-
-	* 新增出参：Config, ServiceMonitors, PodMonitors, RawJobs
-
-
-### 第 76 次发布
-
-发布时间：2023-03-02 10:45:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [DescribePolicyConditionListResponseDeprecatingInfo](https://cloud.tencent.com/document/api/248/30354#DescribePolicyConditionListResponseDeprecatingInfo)
-
-修改数据结构：
-
-* [AlarmPolicyCondition](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyCondition)
-
-	* 新增成员：ComplexExpression
-
-* [DescribePolicyConditionListCondition](https://cloud.tencent.com/document/api/248/30354#DescribePolicyConditionListCondition)
-
-	* 新增成员：DeprecatingInfo
+## 品牌经营管家(bma) 版本：2021-06-24
 
 
 
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-## 云数据库Redis(redis) 版本：2018-04-12
+### 第 48 次发布
 
-### 第 61 次发布
-
-发布时间：2023-03-03 01:39:15
+发布时间：2023-03-06 01:20:52
 
 本次发布包含了以下内容：
 
@@ -111,86 +35,78 @@
 
 新增接口：
 
-* [DescribeBackupDownloadRestriction](https://cloud.tencent.com/document/api/239/87742)
-* [ModifyBackupDownloadRestriction](https://cloud.tencent.com/document/api/239/87741)
+* [CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)
+* [DescribeUserAutoSignStatus](https://cloud.tencent.com/document/api/1323/87786)
+* [DisableUserAutoSign](https://cloud.tencent.com/document/api/1323/87785)
+
+新增数据结构：
+
+* [AutoSignConfig](https://cloud.tencent.com/document/api/1323/70369#AutoSignConfig)
+* [UserThreeFactor](https://cloud.tencent.com/document/api/1323/70369#UserThreeFactor)
 
 
 
-## 容器镜像服务(tcr) 版本：2019-09-24
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 52 次发布
+### 第 65 次发布
 
-发布时间：2023-03-03 01:45:06
+发布时间：2023-03-03 17:35:43
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+修改数据结构：
 
-* DescribeInstanceAll
+* [ProxyOrganizationOperator](https://cloud.tencent.com/document/api/1420/61525#ProxyOrganizationOperator)
+
+	* 新增成员：DefaultRole
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 31 次发布
+
+发布时间：2023-03-06 01:22:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRecordInfo](https://cloud.tencent.com/document/api/607/87793)
+* [DescribeTaskInfo](https://cloud.tencent.com/document/api/607/87792)
+* [ModifyRecordInfo](https://cloud.tencent.com/document/api/607/87791)
+* [StartRecord](https://cloud.tencent.com/document/api/607/87790)
+* [StopRecord](https://cloud.tencent.com/document/api/607/87789)
+
+新增数据结构：
+
+* [RecordInfo](https://cloud.tencent.com/document/api/607/35375#RecordInfo)
+* [SubscribeRecordUserIds](https://cloud.tencent.com/document/api/607/35375#SubscribeRecordUserIds)
 
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
-### 第 47 次发布
+### 第 48 次发布
 
-发布时间：2023-03-03 01:57:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [McuLayoutVolume](https://cloud.tencent.com/document/api/647/44055#McuLayoutVolume)
-
-	* 新增成员：Interval, FollowIdr
-
-* [McuPassThrough](https://cloud.tencent.com/document/api/647/44055#McuPassThrough)
-
-	* 新增成员：Interval, FollowIdr
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 143 次发布
-
-发布时间：2023-03-03 01:59:32
+发布时间：2023-03-06 02:10:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+<font color="#dd0000">**预下线接口**：</font>
 
-* [MediaSubStreamInfoItem](https://cloud.tencent.com/document/api/266/31773#MediaSubStreamInfoItem)
-
-修改数据结构：
-
-* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingInfoItem)
-
-	* 新增成员：SubStreamSet
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 24 次发布
-
-发布时间：2023-03-03 02:02:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAttackOverview](https://cloud.tencent.com/document/api/627/87744)
+* DescribeExternalTrtcMeasure
 
 
 
@@ -8817,6 +8733,21 @@
 
 
 ## 品牌经营管家(bma) 版本：2022-11-15
+
+### 第 5 次发布
+
+发布时间：2023-03-06 01:04:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
+
+	* 新增成员：Snapshot
+
 
 ### 第 4 次发布
 
@@ -44101,6 +44032,25 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 48 次发布
+
+发布时间：2023-03-06 01:20:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserAutoSignStatus](https://cloud.tencent.com/document/api/1323/87786)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableUserAutoSign](https://cloud.tencent.com/document/api/1323/87785)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AutoSignConfig](https://cloud.tencent.com/document/api/1323/70369#AutoSignConfig)](https://cloud.tencent.com/document/api/1323/70369#[AutoSignConfig](https://cloud.tencent.com/document/api/1323/70369#AutoSignConfig))
+* [[UserThreeFactor](https://cloud.tencent.com/document/api/1323/70369#UserThreeFactor)](https://cloud.tencent.com/document/api/1323/70369#[UserThreeFactor](https://cloud.tencent.com/document/api/1323/70369#UserThreeFactor))
+
 ### 第 47 次发布
 
 发布时间：2023-03-02 01:21:05
@@ -45020,6 +44970,21 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 65 次发布
+
+发布时间：2023-03-03 17:35:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyOrganizationOperator](https://cloud.tencent.com/document/api/1420/61525#ProxyOrganizationOperator)
+
+	* 新增成员：DefaultRole
+
 
 ### 第 64 次发布
 
@@ -48612,6 +48577,27 @@
 
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 31 次发布
+
+发布时间：2023-03-06 01:22:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRecordInfo](https://cloud.tencent.com/document/api/607/87793)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTaskInfo](https://cloud.tencent.com/document/api/607/87792)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRecordInfo](https://cloud.tencent.com/document/api/607/87791)](https://cloud.tencent.com/document/api/#/#)
+* [[StartRecord](https://cloud.tencent.com/document/api/607/87790)](https://cloud.tencent.com/document/api/#/#)
+* [[StopRecord](https://cloud.tencent.com/document/api/607/87789)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RecordInfo](https://cloud.tencent.com/document/api/607/35375#RecordInfo)](https://cloud.tencent.com/document/api/607/35375#[RecordInfo](https://cloud.tencent.com/document/api/607/35375#RecordInfo))
+* [[SubscribeRecordUserIds](https://cloud.tencent.com/document/api/607/35375#SubscribeRecordUserIds)](https://cloud.tencent.com/document/api/607/35375#[SubscribeRecordUserIds](https://cloud.tencent.com/document/api/607/35375#SubscribeRecordUserIds))
 
 ### 第 30 次发布
 
@@ -62194,7 +62180,7 @@
 
 新增数据结构：
 
-* [[DescribePolicyConditionListResponseDeprecatingInfo](https://cloud.tencent.com/document/api/248/30354#DescribePolicyConditionListResponseDeprecatingInfo)](https://cloud.tencent.com/document/api/248/30354#[DescribePolicyConditionListResponseDeprecatingInfo](https://cloud.tencent.com/document/api/248/30354#DescribePolicyConditionListResponseDeprecatingInfo))
+* [DescribePolicyConditionListResponseDeprecatingInfo](https://cloud.tencent.com/document/api/248/30354#DescribePolicyConditionListResponseDeprecatingInfo)
 
 修改数据结构：
 
@@ -71430,8 +71416,8 @@
 
 新增接口：
 
-* [[DescribeBackupDownloadRestriction](https://cloud.tencent.com/document/api/239/87742)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBackupDownloadRestriction](https://cloud.tencent.com/document/api/239/87741)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBackupDownloadRestriction](https://cloud.tencent.com/document/api/239/87742)
+* [ModifyBackupDownloadRestriction](https://cloud.tencent.com/document/api/239/87741)
 
 ### 第 60 次发布
 
@@ -95333,6 +95319,18 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 48 次发布
+
+发布时间：2023-03-06 02:10:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeExternalTrtcMeasure
+
 ### 第 47 次发布
 
 发布时间：2023-03-03 01:57:42
@@ -99847,7 +99845,7 @@
 
 新增数据结构：
 
-* [[MediaSubStreamInfoItem](https://cloud.tencent.com/document/api/266/31773#MediaSubStreamInfoItem)](https://cloud.tencent.com/document/api/266/31773#[MediaSubStreamInfoItem](https://cloud.tencent.com/document/api/266/31773#MediaSubStreamInfoItem))
+* [MediaSubStreamInfoItem](https://cloud.tencent.com/document/api/266/31773#MediaSubStreamInfoItem)
 
 修改数据结构：
 
@@ -107049,7 +107047,7 @@
 
 新增接口：
 
-* [[DescribeAttackOverview](https://cloud.tencent.com/document/api/627/87744)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAttackOverview](https://cloud.tencent.com/document/api/627/87744)
 
 ### 第 23 次发布
 

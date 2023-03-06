@@ -578,6 +578,10 @@ func NewDescribeExternalTrtcMeasureResponse() (response *DescribeExternalTrtcMea
 }
 
 // DescribeExternalTrtcMeasure
+// 接口内部调用计量接口，计量接口迁通用集群后不可用。目前已有新的对外接口可以供用户使用。
+//
+// 
+//
 // 获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据。
 //
 // 当前接口已不再更新维护，请使用新版音视频用量接口：DescribeTrtcUsage （https://cloud.tencent.com/document/product/647/81425）
@@ -589,6 +593,10 @@ func (c *Client) DescribeExternalTrtcMeasure(request *DescribeExternalTrtcMeasur
 }
 
 // DescribeExternalTrtcMeasure
+// 接口内部调用计量接口，计量接口迁通用集群后不可用。目前已有新的对外接口可以供用户使用。
+//
+// 
+//
 // 获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据。
 //
 // 当前接口已不再更新维护，请使用新版音视频用量接口：DescribeTrtcUsage （https://cloud.tencent.com/document/product/647/81425）

@@ -53,6 +53,27 @@ const (
 	// 查询时间范围错误。
 	INVALIDPARAMETER_TIMERANGEERROR = "InvalidParameter.TimeRangeError"
 
+	// BizId 参数错误
+	INVALIDPARAMETERVALUE_INVALIDBIZID = "InvalidParameterValue.InvalidBizId"
+
+	// RecordMode参数错误
+	INVALIDPARAMETERVALUE_INVALIDRECORDMODE = "InvalidParameterValue.InvalidRecordMode"
+
+	// RoomId 参数错误
+	INVALIDPARAMETERVALUE_INVALIDROOMID = "InvalidParameterValue.InvalidRoomId"
+
+	// 黑白名单格式错误
+	INVALIDPARAMETERVALUE_INVALIDSUBSCRIBERECORDUSERIDS = "InvalidParameterValue.InvalidSubscribeRecordUserIds"
+
+	// 白名单个数超过20个
+	INVALIDPARAMETERVALUE_INVALIDSUBSCRIBEUSERIDS = "InvalidParameterValue.InvalidSubscribeUserIds"
+
+	// taskid参数错误
+	INVALIDPARAMETERVALUE_INVALIDTASKID = "InvalidParameterValue.InvalidTaskId"
+
+	// 黑名单个数超过20个
+	INVALIDPARAMETERVALUE_INVALIDUNSUBSCRIBEUSERIDS = "InvalidParameterValue.InvalidUNSubscribeUserIds"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
@@ -65,6 +86,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// task已存在
+	RESOURCEINUSE_TASKINUSE = "ResourceInUse.TaskInUse"
+
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
@@ -73,6 +97,9 @@ const (
 
 	// 应用ID不正确
 	RESOURCENOTFOUND_BIZIDISNOTFOUND = "ResourceNotFound.BizidIsNotFound"
+
+	// 房间不存在
+	RESOURCENOTFOUND_ROOMNOTFOUND = "ResourceNotFound.RoomNotFound"
 
 	// 任务ID不存在
 	RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
@@ -100,4 +127,7 @@ const (
 
 	// 语音转文本开关未开启。
 	UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+
+	// 录制服务未开通
+	UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 )

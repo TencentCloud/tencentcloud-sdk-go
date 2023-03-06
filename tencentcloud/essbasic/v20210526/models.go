@@ -24,13 +24,13 @@ type Agent struct {
 	// 应用的唯一标识。不同的业务系统可以采用不同的AppId，不同AppId下的数据是隔离的。可以由控制台开发者中心-应用集成自主生成。
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
-	// 渠道平台自定义，对于渠道子客企业的唯一标识。一个渠道子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要渠道平台保存），最大64位字符串
+	// 第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
-	// 渠道子客企业中的员工/经办人，通过渠道平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
+	// 第三方平台子客企业中的员工/经办人，通过第三方应用平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
 	ProxyOperator *UserInfo `json:"ProxyOperator,omitempty" name:"ProxyOperator"`
 
-	// 在子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
+	// 在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
 	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
 
 	// 内部参数，暂未开放使用
@@ -599,7 +599,7 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
 
-	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
 
 	// 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
@@ -654,7 +654,7 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
 
-	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
 
 	// 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
@@ -1093,7 +1093,7 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
 
 	// 回调地址，最大长度1000个字符
-	// 不传默认使用渠道应用号配置的回调地址
+	// 不传默认使用第三方应用号配置的回调地址
 	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
@@ -1130,7 +1130,7 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
 
 	// 回调地址，最大长度1000个字符
-	// 不传默认使用渠道应用号配置的回调地址
+	// 不传默认使用第三方应用号配置的回调地址
 	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
@@ -2122,8 +2122,8 @@ type Component struct {
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
 
-	// 渠道控件ID。
-	// 如果不为空，属于渠道预设控件；
+	// 平台企业控件ID。
+	// 如果不为空，属于平台企业预设控件；
 	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
 
 	// 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
@@ -2430,7 +2430,7 @@ type CreateFlowsByTemplatesResponseParams struct {
 	// 多个合同ID
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 渠道的业务信息，限制1024字符
+	// 业务信息，限制1024字符
 	CustomerData []*string `json:"CustomerData,omitempty" name:"CustomerData"`
 
 	// 创建消息，对应多个合同ID，
@@ -2558,13 +2558,13 @@ type CreateSignUrlsRequestParams struct {
 
 	// 签署链接生成类型，默认是 "ALL"；
 	// "ALL"：全部签署方签署链接，此时不会给自动签署的签署方创建签署链接；
-	// "CHANNEL"：渠道合作企业；
-	// "NOT_CHANNEL"：非渠道合作企业；
+	// "CHANNEL"：第三方平台子客企业企业；
+	// "NOT_CHANNEL"：非第三方平台子客企业企业；
 	// "PERSON"：个人；
 	// "FOLLOWER"：关注方，目前是合同抄送方；
 	GenerateType *string `json:"GenerateType,omitempty" name:"GenerateType"`
 
-	// 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
+	// 非第三方平台子客企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 参与人姓名，GenerateType为"PERSON"时必填
@@ -2574,10 +2574,10 @@ type CreateSignUrlsRequestParams struct {
 	// GenerateType为"PERSON"或"FOLLOWER"时必填
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
+	// 第三方平台子客企业的企业OpenId，GenerateType为"CHANNEL"时必填
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
-	// 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
+	// 第三方平台子客企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
@@ -2607,13 +2607,13 @@ type CreateSignUrlsRequest struct {
 
 	// 签署链接生成类型，默认是 "ALL"；
 	// "ALL"：全部签署方签署链接，此时不会给自动签署的签署方创建签署链接；
-	// "CHANNEL"：渠道合作企业；
-	// "NOT_CHANNEL"：非渠道合作企业；
+	// "CHANNEL"：第三方平台子客企业企业；
+	// "NOT_CHANNEL"：非第三方平台子客企业企业；
 	// "PERSON"：个人；
 	// "FOLLOWER"：关注方，目前是合同抄送方；
 	GenerateType *string `json:"GenerateType,omitempty" name:"GenerateType"`
 
-	// 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
+	// 非第三方平台子客企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 参与人姓名，GenerateType为"PERSON"时必填
@@ -2623,10 +2623,10 @@ type CreateSignUrlsRequest struct {
 	// GenerateType为"PERSON"或"FOLLOWER"时必填
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
+	// 第三方平台子客企业的企业OpenId，GenerateType为"CHANNEL"时必填
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
-	// 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
+	// 第三方平台子客企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人, 仅展示已经实名的经办人信息
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
@@ -2904,10 +2904,10 @@ func (r *DescribeFlowDetailInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowDetailInfoResponseParams struct {
-	// 渠道侧应用号Id
+	// 第三方平台应用号Id
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
-	// 渠道侧企业第三方Id
+	// 第三方平台子客企业OpenId
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
 	// 合同(签署流程)的具体详细描述信息
@@ -3048,10 +3048,10 @@ type DescribeTemplatesRequestParams struct {
 	// 是否获取模板预览链接
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
 
-	// 是否获取模板的PDF文件链接-渠道版需要开启白名单时才能使用。
+	// 是否获取模板的PDF文件链接- 第三方应用集成需要开启白名单时才能使用。
 	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
 
-	// 渠道模板ID
+	// 模板ID
 	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
 }
 
@@ -3085,10 +3085,10 @@ type DescribeTemplatesRequest struct {
 	// 是否获取模板预览链接
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
 
-	// 是否获取模板的PDF文件链接-渠道版需要开启白名单时才能使用。
+	// 是否获取模板的PDF文件链接- 第三方应用集成需要开启白名单时才能使用。
 	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
 
-	// 渠道模板ID
+	// 模板ID
 	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
 }
 
@@ -3168,8 +3168,8 @@ type DescribeUsageRequestParams struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 	// 是否汇总数据，默认不汇总。
-	// 不汇总：返回在统计区间内渠道下所有企业的每日明细，即每个企业N条数据，N为统计天数；
-	// 汇总：返回在统计区间内渠道下所有企业的汇总后数据，即每个企业一条数据；
+	// 不汇总：返回在统计区间内第三方平台下所有企业的每日明细，即每个企业N条数据，N为统计天数；
+	// 汇总：返回在统计区间内第三方平台下所有企业的汇总后数据，即每个企业一条数据；
 	NeedAggregate *bool `json:"NeedAggregate,omitempty" name:"NeedAggregate"`
 
 	// 单次返回的最多条目数量。默认为1000，且不能超过1000。
@@ -3196,8 +3196,8 @@ type DescribeUsageRequest struct {
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 	// 是否汇总数据，默认不汇总。
-	// 不汇总：返回在统计区间内渠道下所有企业的每日明细，即每个企业N条数据，N为统计天数；
-	// 汇总：返回在统计区间内渠道下所有企业的汇总后数据，即每个企业一条数据；
+	// 不汇总：返回在统计区间内第三方平台下所有企业的每日明细，即每个企业N条数据，N为统计天数；
+	// 汇总：返回在统计区间内第三方平台下所有企业的汇总后数据，即每个企业一条数据；
 	NeedAggregate *bool `json:"NeedAggregate,omitempty" name:"NeedAggregate"`
 
 	// 单次返回的最多条目数量。默认为1000，且不能超过1000。
@@ -3310,14 +3310,14 @@ type FlowApproverDetail struct {
 	// 模板配置时候的签署人id,与控件绑定
 	ReceiptId *string `json:"ReceiptId,omitempty" name:"ReceiptId"`
 
-	// 渠道侧企业的第三方id
+	// 平台企业的第三方id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
-	// 渠道侧企业操作人的第三方id
+	// 平台企业操作人的第三方id
 	ProxyOperatorOpenId *string `json:"ProxyOperatorOpenId,omitempty" name:"ProxyOperatorOpenId"`
 
-	// 渠道侧企业名称
+	// 平台企业名称
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 
 	// 签署人手机号
@@ -3365,15 +3365,15 @@ type FlowApproverInfo struct {
 	// 企业签署方工商营业执照上的企业名称，签署方为非发起方企业场景下必传，最大长度64个字符；
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
-	// 指定签署人非渠道企业下员工，在ApproverType为ORGANIZATION时指定。
-	// 默认为false，即签署人位于同一个渠道应用号下；
+	// 指定签署人非第三方平台子客企业下员工，在ApproverType为ORGANIZATION时指定。
+	// 默认为false，即签署人位于同一个第三方平台应用号下；默认为false，即签署人位于同一个第三方应用号下；
 	NotChannelOrganization *bool `json:"NotChannelOrganization,omitempty" name:"NotChannelOrganization"`
 
 	// 用户侧第三方id，最大长度64个字符
-	// 当签署方为同一渠道下的员工时，该字段若不指定，则发起【待领取】的流程
+	// 当签署方为同一第三方平台下的员工时，该字段若不指定，则发起【待领取】的流程
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
+	// 企业签署方在同一第三方平台应用下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
 	// 签署人类型
@@ -3477,7 +3477,7 @@ type FlowFileInfo struct {
 	// 签署流程回调地址，长度不超过255个字符
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 第三方应用的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
 
 	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
@@ -3515,7 +3515,7 @@ type FlowInfo struct {
 	// 合同描述，最大长度1000个字符
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
-	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	//  第三方应用平台的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
 
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
@@ -3769,7 +3769,7 @@ type OperateChannelTemplateRequestParams struct {
 	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
 	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 
-	// 渠道方模板库模板唯一标识
+	// 第三方应用平台模板库模板唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
@@ -3791,7 +3791,7 @@ type OperateChannelTemplateRequest struct {
 	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
 	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 
-	// 渠道方模板库模板唯一标识
+	// 第三方应用平台模板库模板唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
@@ -3830,11 +3830,11 @@ func (r *OperateChannelTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OperateChannelTemplateResponseParams struct {
-	// 腾讯电子签颁发给渠道的应用ID
+	// 腾讯电子签颁发给第三方应用平台的应用ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
-	// 渠道方模板库模板唯一标识
+	// 第三方应用平台模板库模板唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
@@ -4014,7 +4014,7 @@ func (r *PrepareFlowsResponse) FromJsonString(s string) error {
 }
 
 type ProxyOrganizationOperator struct {
-	// 对应Agent-ProxyOperator-OpenId。渠道平台自定义，对渠道子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要渠道平台保存），最大64位字符串
+	// 对应Agent-ProxyOperator-OpenId。第三方应用平台自定义，对子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要第三方应用平台保存），最大64位字符串
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 经办人姓名，最大长度50个字符
@@ -4031,6 +4031,13 @@ type ProxyOrganizationOperator struct {
 
 	// 经办人手机号，大陆手机号输入11位，暂不支持海外手机号。
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 默认角色，值为以下三个对应的英文：
+	// 业务管理员：admin
+	// 经办人：channel-normal-operator
+	// 业务员：channel-sales-man
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultRole *string `json:"DefaultRole,omitempty" name:"DefaultRole"`
 }
 
 type Recipient struct {
@@ -4366,16 +4373,16 @@ type SyncProxyOrganizationRequestParams struct {
 	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 渠道侧合作企业名称，最大长度64个字符
+	// 第三方平台子客企业名称，最大长度64个字符
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 
 	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
 	BusinessLicense *string `json:"BusinessLicense,omitempty" name:"BusinessLicense"`
 
-	// 渠道侧合作企业统一社会信用代码，最大长度200个字符
+	// 第三方平台子客企业统一社会信用代码，最大长度200个字符
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
-	// 渠道侧合作企业法人/负责人姓名
+	// 第三方平台子客企业法人/负责人姓名
 	ProxyLegalName *string `json:"ProxyLegalName,omitempty" name:"ProxyLegalName"`
 
 	// 暂未开放
@@ -4389,16 +4396,16 @@ type SyncProxyOrganizationRequest struct {
 	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 渠道侧合作企业名称，最大长度64个字符
+	// 第三方平台子客企业名称，最大长度64个字符
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 
 	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
 	BusinessLicense *string `json:"BusinessLicense,omitempty" name:"BusinessLicense"`
 
-	// 渠道侧合作企业统一社会信用代码，最大长度200个字符
+	// 第三方平台子客企业统一社会信用代码，最大长度200个字符
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
-	// 渠道侧合作企业法人/负责人姓名
+	// 第三方平台子客企业法人/负责人姓名
 	ProxyLegalName *string `json:"ProxyLegalName,omitempty" name:"ProxyLegalName"`
 
 	// 暂未开放
@@ -4496,18 +4503,18 @@ type TemplateInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 
-	// 渠道版-模板PDF文件链接
+	// 第三方应用集成-模板PDF文件链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PdfUrl *string `json:"PdfUrl,omitempty" name:"PdfUrl"`
 
-	// 关联的渠道模板ID
+	// 关联的平台企业模板ID
 	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
 
-	// 关联的渠道模板名称
+	// 关联的平台企业模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelTemplateName *string `json:"ChannelTemplateName,omitempty" name:"ChannelTemplateName"`
 
-	// 0-需要渠道子客手动领取渠道的模板(默认); 1-渠道自动设置子客模板
+	// 0-需要子客企业手动领取平台企业的模板(默认); 1-平台自动设置子客模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelAutoSave *int64 `json:"ChannelAutoSave,omitempty" name:"ChannelAutoSave"`
 
@@ -4526,7 +4533,7 @@ type UploadFile struct {
 
 // Predefined struct for user
 type UploadFilesRequestParams struct {
-	// 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
+	// 应用相关信息，若是第三方应用集成调用 appid 和proxyappid 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 文件对应业务类型
@@ -4544,7 +4551,7 @@ type UploadFilesRequestParams struct {
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
+	// 应用相关信息，若是第三方应用集成调用 appid 和proxyappid 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 文件对应业务类型
@@ -4613,10 +4620,10 @@ func (r *UploadFilesResponse) FromJsonString(s string) error {
 }
 
 type UsageDetail struct {
-	// 渠道侧合作企业唯一标识
+	// 子客企业唯一标识
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
-	// 渠道侧合作企业名
+	// 子客企业名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 
@@ -4637,7 +4644,7 @@ type UsageDetail struct {
 }
 
 type UserInfo struct {
-	// 渠道平台自定义，对渠道子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要渠道平台保存），最大64位字符串
+	// 第三方应用平台自定义，对应第三方平台子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要第三方应用平台保存），最大64位字符串
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// 内部参数，暂未开放使用

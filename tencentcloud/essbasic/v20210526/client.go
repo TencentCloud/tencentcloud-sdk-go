@@ -362,7 +362,7 @@ func NewChannelCreateBoundFlowsResponse() (response *ChannelCreateBoundFlowsResp
 }
 
 // ChannelCreateBoundFlows
-// 此接口（ChannelCreateBoundFlows）用于子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
+// 此接口（ChannelCreateBoundFlows）用于子客领取合同，经办人需要有相应的角色，合同不能重复领取。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -401,7 +401,7 @@ func (c *Client) ChannelCreateBoundFlows(request *ChannelCreateBoundFlowsRequest
 }
 
 // ChannelCreateBoundFlows
-// 此接口（ChannelCreateBoundFlows）用于子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
+// 此接口（ChannelCreateBoundFlows）用于子客领取合同，经办人需要有相应的角色，合同不能重复领取。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1176,7 +1176,7 @@ func NewChannelCreateSealPolicyResponse() (response *ChannelCreateSealPolicyResp
 }
 
 // ChannelCreateSealPolicy
-// 将指定印章授权给子客企业下的某些员工
+// 将指定印章授权给第三方平台子客企业下的某些员工
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1198,7 +1198,7 @@ func (c *Client) ChannelCreateSealPolicy(request *ChannelCreateSealPolicyRequest
 }
 
 // ChannelCreateSealPolicy
-// 将指定印章授权给子客企业下的某些员工
+// 将指定印章授权给第三方平台子客企业下的某些员工
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1522,7 +1522,7 @@ func NewChannelUpdateSealStatusResponse() (response *ChannelUpdateSealStatusResp
 }
 
 // ChannelUpdateSealStatus
-// 本接口（ChannelUpdateSealStatus）用于渠道为子客企业更新印章状态
+// 本接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -1532,7 +1532,7 @@ func (c *Client) ChannelUpdateSealStatus(request *ChannelUpdateSealStatusRequest
 }
 
 // ChannelUpdateSealStatus
-// 本接口（ChannelUpdateSealStatus）用于渠道为子客企业更新印章状态
+// 本接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -1704,7 +1704,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 }
 
 // CreateConsoleLoginUrl
-// 此接口（CreateConsoleLoginUrl）用于创建子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
+// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
 //
 // 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
 //
@@ -1750,7 +1750,7 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 }
 
 // CreateConsoleLoginUrl
-// 此接口（CreateConsoleLoginUrl）用于创建子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
+// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
 //
 // 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
 //
@@ -1934,7 +1934,7 @@ func NewCreateSealByImageResponse() (response *CreateSealByImageResponse) {
 }
 
 // CreateSealByImage
-// 渠道通过图片为子客代创建印章，图片最大5MB
+// 通过图片为子客企业代创建印章，图片最大5MB
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1958,7 +1958,7 @@ func (c *Client) CreateSealByImage(request *CreateSealByImageRequest) (response 
 }
 
 // CreateSealByImage
-// 渠道通过图片为子客代创建印章，图片最大5MB
+// 通过图片为子客企业代创建印章，图片最大5MB
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2472,7 +2472,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 }
 
 // DescribeTemplates
-// 通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的有效模板，不包括渠道模板
+// 通过此接口（DescribeTemplates）查询该第三方平台子客企业在电子签拥有的有效模板，不包括第三方平台模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2504,7 +2504,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 }
 
 // DescribeTemplates
-// 通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的有效模板，不包括渠道模板
+// 通过此接口（DescribeTemplates）查询该第三方平台子客企业在电子签拥有的有效模板，不包括第三方平台模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2566,7 +2566,7 @@ func NewDescribeUsageResponse() (response *DescribeUsageResponse) {
 }
 
 // DescribeUsage
-// 此接口（DescribeUsage）用于获取渠道所有合作企业流量消耗情况。
+// 此接口（DescribeUsage）用于获取第三方平台所有合作企业流量消耗情况。
 //
 //  注: 此接口每日限频2次，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
 //
@@ -2593,7 +2593,7 @@ func (c *Client) DescribeUsage(request *DescribeUsageRequest) (response *Describ
 }
 
 // DescribeUsage
-// 此接口（DescribeUsage）用于获取渠道所有合作企业流量消耗情况。
+// 此接口（DescribeUsage）用于获取第三方平台所有合作企业流量消耗情况。
 //
 //  注: 此接口每日限频2次，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
 //
@@ -2812,11 +2812,11 @@ func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateRespon
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于针对渠道模板库中的模板对子客企业可见性的查询和设置，不会直接分配渠道模板给子客企业。
+// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业可见性的查询和设置，不会直接分配第三方应用平台模板给子客企业。
 //
 // 1、OperateType=select时：
 //
-// 查询渠道模板库
+// 查询第三方应用平台模板库
 //
 // 2、OperateType=update或者delete时：
 //
@@ -2859,11 +2859,11 @@ func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) 
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于针对渠道模板库中的模板对子客企业可见性的查询和设置，不会直接分配渠道模板给子客企业。
+// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业可见性的查询和设置，不会直接分配第三方应用平台模板给子客企业。
 //
 // 1、OperateType=select时：
 //
-// 查询渠道模板库
+// 查询第三方应用平台模板库
 //
 // 2、OperateType=update或者delete时：
 //
@@ -3024,7 +3024,7 @@ func NewSyncProxyOrganizationResponse() (response *SyncProxyOrganizationResponse
 }
 
 // SyncProxyOrganization
-// 此接口（SyncProxyOrganization）用于同步渠道子客企业信息，主要是子客企业的营业执照，便于子客企业开通过程中不用手动上传。若有需要调用此接口，需要在创建控制链接CreateConsoleLoginUrl之后即刻进行调用。
+// 此接口（SyncProxyOrganization）用于同步第三方平台子客企业信息，主要是子客企业的营业执照，便于子客企业开通过程中不用手动上传。若有需要调用此接口，需要在创建控制链接CreateConsoleLoginUrl之后即刻进行调用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3055,7 +3055,7 @@ func (c *Client) SyncProxyOrganization(request *SyncProxyOrganizationRequest) (r
 }
 
 // SyncProxyOrganization
-// 此接口（SyncProxyOrganization）用于同步渠道子客企业信息，主要是子客企业的营业执照，便于子客企业开通过程中不用手动上传。若有需要调用此接口，需要在创建控制链接CreateConsoleLoginUrl之后即刻进行调用。
+// 此接口（SyncProxyOrganization）用于同步第三方平台子客企业信息，主要是子客企业的营业执照，便于子客企业开通过程中不用手动上传。若有需要调用此接口，需要在创建控制链接CreateConsoleLoginUrl之后即刻进行调用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3116,7 +3116,7 @@ func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizatio
 }
 
 // SyncProxyOrganizationOperators
-// 此接口（SyncProxyOrganizationOperators）用于同步渠道子客企业经办人列表，主要是同步经办人的离职状态。子客Web控制台的组织架构管理，是依赖于渠道平台的，无法针对员工做新增/更新/离职等操作。
+// 此接口（SyncProxyOrganizationOperators）用于同步 第三方平台子客企业经办人列表，主要是同步经办人的离职状态。子客Web控制台的组织架构管理，是依赖于第三方应用平台的，无法针对员工做新增/更新/离职等操作。
 //
 // 若经办人信息有误，或者需要修改，也可以先将之前的经办人做离职操作，然后重新使用控制台链接CreateConsoleLoginUrl让经办人重新实名。
 //
@@ -3152,7 +3152,7 @@ func (c *Client) SyncProxyOrganizationOperators(request *SyncProxyOrganizationOp
 }
 
 // SyncProxyOrganizationOperators
-// 此接口（SyncProxyOrganizationOperators）用于同步渠道子客企业经办人列表，主要是同步经办人的离职状态。子客Web控制台的组织架构管理，是依赖于渠道平台的，无法针对员工做新增/更新/离职等操作。
+// 此接口（SyncProxyOrganizationOperators）用于同步 第三方平台子客企业经办人列表，主要是同步经办人的离职状态。子客Web控制台的组织架构管理，是依赖于第三方应用平台的，无法针对员工做新增/更新/离职等操作。
 //
 // 若经办人信息有误，或者需要修改，也可以先将之前的经办人做离职操作，然后重新使用控制台链接CreateConsoleLoginUrl让经办人重新实名。
 //
