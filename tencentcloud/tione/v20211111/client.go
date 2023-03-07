@@ -552,6 +552,7 @@ func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
 //  INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
 //  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
 //  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
@@ -578,6 +579,7 @@ func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (respons
 //  INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
 //  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
 //  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
@@ -3356,6 +3358,7 @@ func NewDescribeTrainingTaskResponse() (response *DescribeTrainingTaskResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrainingTask(request *DescribeTrainingTaskRequest) (response *DescribeTrainingTaskResponse, err error) {
     return c.DescribeTrainingTaskWithContext(context.Background(), request)
@@ -3366,6 +3369,7 @@ func (c *Client) DescribeTrainingTask(request *DescribeTrainingTaskRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrainingTaskWithContext(ctx context.Context, request *DescribeTrainingTaskRequest) (response *DescribeTrainingTaskResponse, err error) {
     if request == nil {

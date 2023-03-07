@@ -56,6 +56,9 @@ const (
 	// 权限错误。
 	UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
 
+	// 用户不存在。
+	UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
+
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
 

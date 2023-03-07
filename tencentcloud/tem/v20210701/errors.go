@@ -41,6 +41,9 @@ const (
 	// 查询service列表失败。
 	FAILEDOPERATION_DESCRIBESERVICELISTERROR = "FailedOperation.DescribeServiceListError"
 
+	// 更新 ingress 失败。
+	FAILEDOPERATION_UPDATEINGRESSERROR = "FailedOperation.UpdateIngressError"
+
 	// 请求响应超时。
 	INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 

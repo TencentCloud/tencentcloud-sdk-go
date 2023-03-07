@@ -179,6 +179,9 @@ const (
 	// 操作不允许。
 	INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 
+	// 查询标签失败。
+	INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+
 	// 获取HDFS存储信息失败。
 	INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
 
@@ -244,6 +247,9 @@ const (
 
 	// 训练框架对应的版本不支持，请阅读文档查看TIONE目前支持的框架和版本。
 	INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+
+	// 训练任务镜像不存在。
+	INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
 
 	// 无效的过滤器。
 	INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"

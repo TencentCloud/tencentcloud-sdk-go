@@ -23,11 +23,44 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 订单状态异常。
+	FAILEDOPERATION_ABNORMALORDERSTATUS = "FailedOperation.AbnormalOrderStatus"
+
+	// 另一个数据源正在创建中。
+	FAILEDOPERATION_ANOTHERCREATEPROCESSRUNNING = "FailedOperation.AnotherCreateProcessRunning"
+
+	// 另一个操作正在处理中，请稍后再试。
+	FAILEDOPERATION_ANOTHERPROCESSRUNNING = "FailedOperation.AnotherProcessRunning"
+
 	// 另一个请求正在处理中，请稍后再试。
 	FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
 
+	// 账户余额不足。
+	FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+
+	// 计费系统异常。
+	FAILEDOPERATION_BILLINGSYSTEMERROR = "FailedOperation.BillingSystemError"
+
+	// 绑定的标签数量超出限制。
+	FAILEDOPERATION_BINDTOOMANYTAGS = "FailedOperation.BindTooManyTags"
+
+	// 创建引擎失败。
+	FAILEDOPERATION_CREATEDATAENGINEFAILED = "FailedOperation.CreateDataEngineFailed"
+
+	// 发货失败。
+	FAILEDOPERATION_DELIVERGOODSFAILED = "FailedOperation.DeliverGoodsFailed"
+
+	// 重复的标签键。
+	FAILEDOPERATION_DUPLICATETAGKEY = "FailedOperation.DuplicateTagKey"
+
+	// 扣费失败。
+	FAILEDOPERATION_FEEDEDUCTIONFAILED = "FailedOperation.FeeDeductionFailed"
+
 	// 获取鉴权策略失败。
 	FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+
+	// 获取商品信息失败。
+	FAILEDOPERATION_GETPRODUCTINFORMATIONFAILED = "FailedOperation.GetProductInformationFailed"
 
 	// 获取用户信息失败。
 	FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
@@ -41,11 +74,56 @@ const (
 	// HTTP客户端请求失败。
 	FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
 
+	// 资源不符合规定。
+	FAILEDOPERATION_ILLEGALRESOURCE = "FailedOperation.IllegalResource"
+
+	// 标签键含有非法字符。
+	FAILEDOPERATION_ILLEGALTAGKEY = "FailedOperation.IllegalTagKey"
+
+	// 标签值含有非法字符。
+	FAILEDOPERATION_ILLEGALTAGVALUE = "FailedOperation.IllegalTagValue"
+
+	// 询价失败。
+	FAILEDOPERATION_INQUIREPRICEFAILED = "FailedOperation.InquirePriceFailed"
+
+	// 实例变配失败。
+	FAILEDOPERATION_MODIFYINSTANCEFAILED = "FailedOperation.ModifyInstanceFailed"
+
 	// 没有操作权限。
 	FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
 
+	// 账号未进行实名认证。
+	FAILEDOPERATION_NOREALNAMEAUTHENTICATION = "FailedOperation.NoRealNameAuthentication"
+
+	// 采购数量超过限制。
+	FAILEDOPERATION_NUMBEREXCEEDLIMIT = "FailedOperation.NumberExceedLimit"
+
+	// 参数校验失败。
+	FAILEDOPERATION_PARAMETERVALIDATIONFAILED = "FailedOperation.ParameterValidationFailed"
+
+	// 退押金失败。
+	FAILEDOPERATION_REFUNDDEPOSITFAILED = "FailedOperation.RefundDepositFailed"
+
 	// 取消授权失败。
 	FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
+
+	// 资源已经绑定了同名标签键。
+	FAILEDOPERATION_TAGALREADYATTACHED = "FailedOperation.TagAlreadyAttached"
+
+	// 标签键长度超过限制。
+	FAILEDOPERATION_TAGKEYTOOLONG = "FailedOperation.TagKeyTooLong"
+
+	// 标签不存在。
+	FAILEDOPERATION_TAGNOTEXIST = "FailedOperation.TagNotExist"
+
+	// 标签值长度超过限制。
+	FAILEDOPERATION_TAGVALUETOOLONG = "FailedOperation.TagValueTooLong"
+
+	// 资源数量超出限制。
+	FAILEDOPERATION_TOOMANYRESOURCES = "FailedOperation.TooManyResources"
+
+	// 标签数量超出限制。
+	FAILEDOPERATION_TOOMANYTAGS = "FailedOperation.TooManyTags"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -56,6 +134,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 重复的引擎名称。
+	INVALIDPARAMETER_DUPLICATEDATAENGINENAME = "InvalidParameter.DuplicateDataEngineName"
+
 	// 重复的工作组名称。
 	INVALIDPARAMETER_DUPLICATEGROUPNAME = "InvalidParameter.DuplicateGroupName"
 
@@ -65,11 +146,20 @@ const (
 	// 无效的访问策略。
 	INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 
+	// 无效的数据引擎模式。
+	INVALIDPARAMETER_INVALIDDATAENGINEMODE = "InvalidParameter.InvalidDataEngineMode"
+
 	// 无效的数据引擎名。
 	INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 
+	// 无效的数据引擎规格。
+	INVALIDPARAMETER_INVALIDDATAENGINESPECS = "InvalidParameter.InvalidDataEngineSpecs"
+
 	// 无效的描述信息。
 	INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
+
+	// 无效的引擎类型。
+	INVALIDPARAMETER_INVALIDENGINETYPE = "InvalidParameter.InvalidEngineType"
 
 	// 无效的容错策略。
 	INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
@@ -85,6 +175,9 @@ const (
 
 	// 无效的Offset值。
 	INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
+
+	// 无效的计费模式。
+	INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPayMode"
 
 	// 无效的CAM role arn。
 	INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
@@ -110,6 +203,12 @@ const (
 	// 无效的任务类型。
 	INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
 
+	// 无效的计费时长。
+	INVALIDPARAMETER_INVALIDTIMESPAN = "InvalidParameter.InvalidTimeSpan"
+
+	// 无效的计费时长单位。
+	INVALIDPARAMETER_INVALIDTIMEUNIT = "InvalidParameter.InvalidTimeUnit"
+
 	// 无效用户名称。
 	INVALIDPARAMETER_INVALIDUSERALIAS = "InvalidParameter.InvalidUserAlias"
 
@@ -124,6 +223,9 @@ const (
 
 	// 任务已经结束，不能取消。
 	INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+
+	// Vpc cidr格式错误。
+	INVALIDPARAMETER_VPCCIDRFORMATERROR = "InvalidParameter.VpcCidrFormatError"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -202,6 +304,9 @@ const (
 
 	// 子用户不是管理员，无权修改工作组信息。
 	UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
+
+	// 没有支付权限。
+	UNAUTHORIZEDOPERATION_NOPAYMENTAUTHORITY = "UnauthorizedOperation.NoPaymentAuthority"
 
 	// 子用户无权操作引擎。
 	UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"

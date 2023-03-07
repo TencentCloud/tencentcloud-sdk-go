@@ -1179,20 +1179,8 @@ func NewChannelCreateSealPolicyResponse() (response *ChannelCreateSealPolicyResp
 // 将指定印章授权给第三方平台子客企业下的某些员工
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_PDF = "InternalError.Pdf"
-//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
-//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
-//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) ChannelCreateSealPolicy(request *ChannelCreateSealPolicyRequest) (response *ChannelCreateSealPolicyResponse, err error) {
     return c.ChannelCreateSealPolicyWithContext(context.Background(), request)
 }
@@ -1201,20 +1189,8 @@ func (c *Client) ChannelCreateSealPolicy(request *ChannelCreateSealPolicyRequest
 // 将指定印章授权给第三方平台子客企业下的某些员工
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_PDF = "InternalError.Pdf"
-//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
-//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
-//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) ChannelCreateSealPolicyWithContext(ctx context.Context, request *ChannelCreateSealPolicyRequest) (response *ChannelCreateSealPolicyResponse, err error) {
     if request == nil {
         request = NewChannelCreateSealPolicyRequest()
@@ -1253,20 +1229,8 @@ func NewChannelDeleteSealPoliciesResponse() (response *ChannelDeleteSealPolicies
 // 删除指定印章下多个授权信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_PDF = "InternalError.Pdf"
-//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
-//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
-//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) ChannelDeleteSealPolicies(request *ChannelDeleteSealPoliciesRequest) (response *ChannelDeleteSealPoliciesResponse, err error) {
     return c.ChannelDeleteSealPoliciesWithContext(context.Background(), request)
 }
@@ -1275,20 +1239,8 @@ func (c *Client) ChannelDeleteSealPolicies(request *ChannelDeleteSealPoliciesReq
 // 删除指定印章下多个授权信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_PDF = "InternalError.Pdf"
-//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
-//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
-//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) ChannelDeleteSealPoliciesWithContext(ctx context.Context, request *ChannelDeleteSealPoliciesRequest) (response *ChannelDeleteSealPoliciesResponse, err error) {
     if request == nil {
         request = NewChannelDeleteSealPoliciesRequest()
@@ -1525,8 +1477,7 @@ func NewChannelUpdateSealStatusResponse() (response *ChannelUpdateSealStatusResp
 // 本接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ChannelUpdateSealStatus(request *ChannelUpdateSealStatusRequest) (response *ChannelUpdateSealStatusResponse, err error) {
     return c.ChannelUpdateSealStatusWithContext(context.Background(), request)
 }
@@ -1535,8 +1486,7 @@ func (c *Client) ChannelUpdateSealStatus(request *ChannelUpdateSealStatusRequest
 // 本接口（ChannelUpdateSealStatus）用于第三方应用平台为子客企业更新印章状态
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ChannelUpdateSealStatusWithContext(ctx context.Context, request *ChannelUpdateSealStatusRequest) (response *ChannelUpdateSealStatusResponse, err error) {
     if request == nil {
         request = NewChannelUpdateSealStatusRequest()

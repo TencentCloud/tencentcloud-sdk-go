@@ -2469,6 +2469,9 @@ type DescribeTelCallInfoResponseParams struct {
 	// 坐席使用统计个数
 	SeatUsedCount *int64 `json:"SeatUsedCount,omitempty" name:"SeatUsedCount"`
 
+	// 音频套餐包消耗分钟数
+	VoipCallInCount *int64 `json:"VoipCallInCount,omitempty" name:"VoipCallInCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

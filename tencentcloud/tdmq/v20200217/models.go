@@ -6555,7 +6555,9 @@ func (r *DescribeRocketMQVipInstanceDetailResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeRocketMQVipInstancesRequestParams struct {
-	// 查询条件过滤器
+	// 查询条件过滤器，支持的查询条件如下：
+	// instanceIds - 实例ID
+	// instanceName - 实例名称
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询数目上限，默认20
@@ -6568,7 +6570,9 @@ type DescribeRocketMQVipInstancesRequestParams struct {
 type DescribeRocketMQVipInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询条件过滤器
+	// 查询条件过滤器，支持的查询条件如下：
+	// instanceIds - 实例ID
+	// instanceName - 实例名称
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询数目上限，默认20
@@ -9293,6 +9297,10 @@ type RocketMQInstanceConfig struct {
 
 	// topic分布情况
 	TopicDistribution []*RocketMQTopicDistribution `json:"TopicDistribution,omitempty" name:"TopicDistribution"`
+
+	// 每个主题最大队列数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxQueuesPerTopic *uint64 `json:"MaxQueuesPerTopic,omitempty" name:"MaxQueuesPerTopic"`
 }
 
 type RocketMQNamespace struct {
@@ -9361,7 +9369,7 @@ type RocketMQVipInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceVersion *string `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 
-	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 节点数量

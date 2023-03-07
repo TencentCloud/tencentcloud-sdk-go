@@ -169,6 +169,9 @@ type CreateEngineRequestParams struct {
 	// - 0：不自动续费
 	// - 1：自动续费
 	PrepaidRenewFlag *int64 `json:"PrepaidRenewFlag,omitempty" name:"PrepaidRenewFlag"`
+
+	// 跨地域部署的引擎地域配置详情
+	EngineRegionInfos []*EngineRegionInfo `json:"EngineRegionInfos,omitempty" name:"EngineRegionInfos"`
 }
 
 type CreateEngineRequest struct {
@@ -274,6 +277,9 @@ type CreateEngineRequest struct {
 	// - 0：不自动续费
 	// - 1：自动续费
 	PrepaidRenewFlag *int64 `json:"PrepaidRenewFlag,omitempty" name:"PrepaidRenewFlag"`
+
+	// 跨地域部署的引擎地域配置详情
+	EngineRegionInfos []*EngineRegionInfo `json:"EngineRegionInfos,omitempty" name:"EngineRegionInfos"`
 }
 
 func (r *CreateEngineRequest) ToJsonString() string {
@@ -303,6 +309,7 @@ func (r *CreateEngineRequest) FromJsonString(s string) error {
 	delete(f, "EngineAdmin")
 	delete(f, "PrepaidPeriod")
 	delete(f, "PrepaidRenewFlag")
+	delete(f, "EngineRegionInfos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEngineRequest has unknown keys!", "")
 	}
@@ -1002,6 +1009,20 @@ type EngineAdmin struct {
 
 	// 引擎接口的管理员 Token
 	Token *string `json:"Token,omitempty" name:"Token"`
+}
+
+type EngineRegionInfo struct {
+	// 引擎节点所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
+
+	// 此地域节点分配数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Replica *int64 `json:"Replica,omitempty" name:"Replica"`
+
+	// 集群网络信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcInfos []*VpcInfo `json:"VpcInfos,omitempty" name:"VpcInfos"`
 }
 
 type EnvAddressInfo struct {

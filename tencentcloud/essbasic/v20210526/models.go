@@ -4095,11 +4095,11 @@ type ReleasedApprover struct {
 	// 签署人手机号，脱敏显示。大陆手机号为11位，暂不支持海外手机号
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符
+	// 企业签署方在同一第三方应用下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
 	// 用户侧第三方id，最大长度64个字符
-	// 当签署方为同一渠道下的员工时，该字必传
+	// 当签署方为同一第三方应用下的员工时，该字必传
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 

@@ -627,6 +627,7 @@ func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
 //   - 删除服务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 //  FAILEDOPERATION_DELETESERVICEERROR = "FailedOperation.DeleteServiceError"
 //  FAILEDOPERATION_DESCRIBEINGRESSLISTERROR = "FailedOperation.DescribeIngressListError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
@@ -659,6 +660,7 @@ func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response 
 //   - 删除服务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEFAULTINTERNALERROR = "FailedOperation.DefaultInternalError"
 //  FAILEDOPERATION_DELETESERVICEERROR = "FailedOperation.DeleteServiceError"
 //  FAILEDOPERATION_DESCRIBEINGRESSLISTERROR = "FailedOperation.DescribeIngressListError"
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
@@ -2703,6 +2705,7 @@ func NewModifyIngressResponse() (response *ModifyIngressResponse) {
 // 创建或者更新 Ingress 规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UPDATEINGRESSERROR = "FailedOperation.UpdateIngressError"
 //  INTERNALERROR_UPDATEINGRESSERROR = "InternalError.UpdateIngressError"
 //  INVALIDPARAMETERVALUE_INGRESSREWRITEREQUIREDHTTPSENABLE = "InvalidParameterValue.IngressRewriteRequiredHttpsEnable"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
@@ -2715,6 +2718,7 @@ func (c *Client) ModifyIngress(request *ModifyIngressRequest) (response *ModifyI
 // 创建或者更新 Ingress 规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UPDATEINGRESSERROR = "FailedOperation.UpdateIngressError"
 //  INTERNALERROR_UPDATEINGRESSERROR = "InternalError.UpdateIngressError"
 //  INVALIDPARAMETERVALUE_INGRESSREWRITEREQUIREDHTTPSENABLE = "InvalidParameterValue.IngressRewriteRequiredHttpsEnable"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"

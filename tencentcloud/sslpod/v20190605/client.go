@@ -189,6 +189,7 @@ func NewDescribeDashboardResponse() (response *DescribeDashboardResponse) {
 // 获取仪表盘数据
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeDashboard(request *DescribeDashboardRequest) (response *DescribeDashboardResponse, err error) {
     return c.DescribeDashboardWithContext(context.Background(), request)
@@ -198,6 +199,7 @@ func (c *Client) DescribeDashboard(request *DescribeDashboardRequest) (response 
 // 获取仪表盘数据
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeDashboardWithContext(ctx context.Context, request *DescribeDashboardRequest) (response *DescribeDashboardResponse, err error) {
     if request == nil {

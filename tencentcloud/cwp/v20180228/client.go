@@ -793,6 +793,106 @@ func (c *Client) DeleteBaselinePolicyWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteBaselineRuleRequest() (request *DeleteBaselineRuleRequest) {
+    request = &DeleteBaselineRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteBaselineRule")
+    
+    
+    return
+}
+
+func NewDeleteBaselineRuleResponse() (response *DeleteBaselineRuleResponse) {
+    response = &DeleteBaselineRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBaselineRule
+// 删除基线规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteBaselineRule(request *DeleteBaselineRuleRequest) (response *DeleteBaselineRuleResponse, err error) {
+    return c.DeleteBaselineRuleWithContext(context.Background(), request)
+}
+
+// DeleteBaselineRule
+// 删除基线规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteBaselineRuleWithContext(ctx context.Context, request *DeleteBaselineRuleRequest) (response *DeleteBaselineRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteBaselineRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBaselineRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBaselineRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBaselineRuleIgnoreRequest() (request *DeleteBaselineRuleIgnoreRequest) {
+    request = &DeleteBaselineRuleIgnoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteBaselineRuleIgnore")
+    
+    
+    return
+}
+
+func NewDeleteBaselineRuleIgnoreResponse() (response *DeleteBaselineRuleIgnoreResponse) {
+    response = &DeleteBaselineRuleIgnoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBaselineRuleIgnore
+// 删除基线忽略规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteBaselineRuleIgnore(request *DeleteBaselineRuleIgnoreRequest) (response *DeleteBaselineRuleIgnoreResponse, err error) {
+    return c.DeleteBaselineRuleIgnoreWithContext(context.Background(), request)
+}
+
+// DeleteBaselineRuleIgnore
+// 删除基线忽略规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteBaselineRuleIgnoreWithContext(ctx context.Context, request *DeleteBaselineRuleIgnoreRequest) (response *DeleteBaselineRuleIgnoreResponse, err error) {
+    if request == nil {
+        request = NewDeleteBaselineRuleIgnoreRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBaselineRuleIgnore require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBaselineRuleIgnoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBaselineStrategyRequest() (request *DeleteBaselineStrategyRequest) {
     request = &DeleteBaselineStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -849,6 +949,56 @@ func (c *Client) DeleteBaselineStrategyWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteBaselineStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBaselineWeakPasswordRequest() (request *DeleteBaselineWeakPasswordRequest) {
+    request = &DeleteBaselineWeakPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteBaselineWeakPassword")
+    
+    
+    return
+}
+
+func NewDeleteBaselineWeakPasswordResponse() (response *DeleteBaselineWeakPasswordResponse) {
+    response = &DeleteBaselineWeakPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBaselineWeakPassword
+// 删除基线弱口令
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteBaselineWeakPassword(request *DeleteBaselineWeakPasswordRequest) (response *DeleteBaselineWeakPasswordResponse, err error) {
+    return c.DeleteBaselineWeakPasswordWithContext(context.Background(), request)
+}
+
+// DeleteBaselineWeakPassword
+// 删除基线弱口令
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteBaselineWeakPasswordWithContext(ctx context.Context, request *DeleteBaselineWeakPasswordRequest) (response *DeleteBaselineWeakPasswordResponse, err error) {
+    if request == nil {
+        request = NewDeleteBaselineWeakPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBaselineWeakPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBaselineWeakPasswordResponse()
     err = c.Send(request, response)
     return
 }
@@ -4395,6 +4545,160 @@ func (c *Client) DescribeBaselineDetailWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeBaselineDetectListRequest() (request *DescribeBaselineDetectListRequest) {
+    request = &DescribeBaselineDetectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineDetectList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineDetectListResponse() (response *DescribeBaselineDetectListResponse) {
+    response = &DescribeBaselineDetectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineDetectList
+// 获取基线检测详情记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineDetectList(request *DescribeBaselineDetectListRequest) (response *DescribeBaselineDetectListResponse, err error) {
+    return c.DescribeBaselineDetectListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineDetectList
+// 获取基线检测详情记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineDetectListWithContext(ctx context.Context, request *DescribeBaselineDetectListRequest) (response *DescribeBaselineDetectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineDetectListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineDetectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineDetectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineDetectOverviewRequest() (request *DescribeBaselineDetectOverviewRequest) {
+    request = &DescribeBaselineDetectOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineDetectOverview")
+    
+    
+    return
+}
+
+func NewDescribeBaselineDetectOverviewResponse() (response *DescribeBaselineDetectOverviewResponse) {
+    response = &DescribeBaselineDetectOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineDetectOverview
+// 获取基线检测概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineDetectOverview(request *DescribeBaselineDetectOverviewRequest) (response *DescribeBaselineDetectOverviewResponse, err error) {
+    return c.DescribeBaselineDetectOverviewWithContext(context.Background(), request)
+}
+
+// DescribeBaselineDetectOverview
+// 获取基线检测概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineDetectOverviewWithContext(ctx context.Context, request *DescribeBaselineDetectOverviewRequest) (response *DescribeBaselineDetectOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineDetectOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineDetectOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineDetectOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineDownloadListRequest() (request *DescribeBaselineDownloadListRequest) {
+    request = &DescribeBaselineDownloadListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineDownloadList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineDownloadListResponse() (response *DescribeBaselineDownloadListResponse) {
+    response = &DescribeBaselineDownloadListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineDownloadList
+// 获取基线下载列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineDownloadList(request *DescribeBaselineDownloadListRequest) (response *DescribeBaselineDownloadListResponse, err error) {
+    return c.DescribeBaselineDownloadListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineDownloadList
+// 获取基线下载列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineDownloadListWithContext(ctx context.Context, request *DescribeBaselineDownloadListRequest) (response *DescribeBaselineDownloadListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineDownloadListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineDownloadList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineDownloadListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaselineEffectHostListRequest() (request *DescribeBaselineEffectHostListRequest) {
     request = &DescribeBaselineEffectHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4453,6 +4757,56 @@ func (c *Client) DescribeBaselineEffectHostListWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeBaselineFixListRequest() (request *DescribeBaselineFixListRequest) {
+    request = &DescribeBaselineFixListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineFixList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineFixListResponse() (response *DescribeBaselineFixListResponse) {
+    response = &DescribeBaselineFixListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineFixList
+// 获取基线修复列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineFixList(request *DescribeBaselineFixListRequest) (response *DescribeBaselineFixListResponse, err error) {
+    return c.DescribeBaselineFixListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineFixList
+// 获取基线修复列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineFixListWithContext(ctx context.Context, request *DescribeBaselineFixListRequest) (response *DescribeBaselineFixListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineFixListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineFixList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineFixListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaselineHostDetectListRequest() (request *DescribeBaselineHostDetectListRequest) {
     request = &DescribeBaselineHostDetectListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4501,6 +4855,108 @@ func (c *Client) DescribeBaselineHostDetectListWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeBaselineHostDetectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineHostIgnoreListRequest() (request *DescribeBaselineHostIgnoreListRequest) {
+    request = &DescribeBaselineHostIgnoreListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineHostIgnoreList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineHostIgnoreListResponse() (response *DescribeBaselineHostIgnoreListResponse) {
+    response = &DescribeBaselineHostIgnoreListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineHostIgnoreList
+// 获取忽略规则主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineHostIgnoreList(request *DescribeBaselineHostIgnoreListRequest) (response *DescribeBaselineHostIgnoreListResponse, err error) {
+    return c.DescribeBaselineHostIgnoreListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineHostIgnoreList
+// 获取忽略规则主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineHostIgnoreListWithContext(ctx context.Context, request *DescribeBaselineHostIgnoreListRequest) (response *DescribeBaselineHostIgnoreListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineHostIgnoreListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineHostIgnoreList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineHostIgnoreListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineHostRiskTopRequest() (request *DescribeBaselineHostRiskTopRequest) {
+    request = &DescribeBaselineHostRiskTopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineHostRiskTop")
+    
+    
+    return
+}
+
+func NewDescribeBaselineHostRiskTopResponse() (response *DescribeBaselineHostRiskTopResponse) {
+    response = &DescribeBaselineHostRiskTopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineHostRiskTop
+// 获取基线服务器风险TOP5
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineHostRiskTop(request *DescribeBaselineHostRiskTopRequest) (response *DescribeBaselineHostRiskTopResponse, err error) {
+    return c.DescribeBaselineHostRiskTopWithContext(context.Background(), request)
+}
+
+// DescribeBaselineHostRiskTop
+// 获取基线服务器风险TOP5
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineHostRiskTopWithContext(ctx context.Context, request *DescribeBaselineHostRiskTopRequest) (response *DescribeBaselineHostRiskTopResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineHostRiskTopRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineHostRiskTop require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineHostRiskTopResponse()
     err = c.Send(request, response)
     return
 }
@@ -4617,6 +5073,106 @@ func (c *Client) DescribeBaselineItemDetectListWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeBaselineItemIgnoreListRequest() (request *DescribeBaselineItemIgnoreListRequest) {
+    request = &DescribeBaselineItemIgnoreListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineItemIgnoreList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineItemIgnoreListResponse() (response *DescribeBaselineItemIgnoreListResponse) {
+    response = &DescribeBaselineItemIgnoreListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineItemIgnoreList
+// 获取忽略规则项列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemIgnoreList(request *DescribeBaselineItemIgnoreListRequest) (response *DescribeBaselineItemIgnoreListResponse, err error) {
+    return c.DescribeBaselineItemIgnoreListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineItemIgnoreList
+// 获取忽略规则项列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemIgnoreListWithContext(ctx context.Context, request *DescribeBaselineItemIgnoreListRequest) (response *DescribeBaselineItemIgnoreListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineItemIgnoreListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineItemIgnoreList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineItemIgnoreListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineItemInfoRequest() (request *DescribeBaselineItemInfoRequest) {
+    request = &DescribeBaselineItemInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineItemInfo")
+    
+    
+    return
+}
+
+func NewDescribeBaselineItemInfoResponse() (response *DescribeBaselineItemInfoResponse) {
+    response = &DescribeBaselineItemInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineItemInfo
+// 获取基线检测项信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemInfo(request *DescribeBaselineItemInfoRequest) (response *DescribeBaselineItemInfoResponse, err error) {
+    return c.DescribeBaselineItemInfoWithContext(context.Background(), request)
+}
+
+// DescribeBaselineItemInfo
+// 获取基线检测项信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemInfoWithContext(ctx context.Context, request *DescribeBaselineItemInfoRequest) (response *DescribeBaselineItemInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineItemInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineItemInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineItemInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaselineItemListRequest() (request *DescribeBaselineItemListRequest) {
     request = &DescribeBaselineItemListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4663,6 +5219,58 @@ func (c *Client) DescribeBaselineItemListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeBaselineItemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineItemRiskTopRequest() (request *DescribeBaselineItemRiskTopRequest) {
+    request = &DescribeBaselineItemRiskTopRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineItemRiskTop")
+    
+    
+    return
+}
+
+func NewDescribeBaselineItemRiskTopResponse() (response *DescribeBaselineItemRiskTopResponse) {
+    response = &DescribeBaselineItemRiskTopResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineItemRiskTop
+// 获取基线检测项TOP5
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemRiskTop(request *DescribeBaselineItemRiskTopRequest) (response *DescribeBaselineItemRiskTopResponse, err error) {
+    return c.DescribeBaselineItemRiskTopWithContext(context.Background(), request)
+}
+
+// DescribeBaselineItemRiskTop
+// 获取基线检测项TOP5
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemRiskTopWithContext(ctx context.Context, request *DescribeBaselineItemRiskTopRequest) (response *DescribeBaselineItemRiskTopResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineItemRiskTopRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineItemRiskTop require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineItemRiskTopResponse()
     err = c.Send(request, response)
     return
 }
@@ -4831,6 +5439,204 @@ func (c *Client) DescribeBaselineRuleWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeBaselineRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineRuleCategoryListRequest() (request *DescribeBaselineRuleCategoryListRequest) {
+    request = &DescribeBaselineRuleCategoryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineRuleCategoryList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineRuleCategoryListResponse() (response *DescribeBaselineRuleCategoryListResponse) {
+    response = &DescribeBaselineRuleCategoryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineRuleCategoryList
+// 获取基线分类列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBaselineRuleCategoryList(request *DescribeBaselineRuleCategoryListRequest) (response *DescribeBaselineRuleCategoryListResponse, err error) {
+    return c.DescribeBaselineRuleCategoryListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineRuleCategoryList
+// 获取基线分类列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBaselineRuleCategoryListWithContext(ctx context.Context, request *DescribeBaselineRuleCategoryListRequest) (response *DescribeBaselineRuleCategoryListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineRuleCategoryListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineRuleCategoryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineRuleCategoryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineRuleDetectListRequest() (request *DescribeBaselineRuleDetectListRequest) {
+    request = &DescribeBaselineRuleDetectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineRuleDetectList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineRuleDetectListResponse() (response *DescribeBaselineRuleDetectListResponse) {
+    response = &DescribeBaselineRuleDetectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineRuleDetectList
+// 获取基线规则检测列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineRuleDetectList(request *DescribeBaselineRuleDetectListRequest) (response *DescribeBaselineRuleDetectListResponse, err error) {
+    return c.DescribeBaselineRuleDetectListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineRuleDetectList
+// 获取基线规则检测列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineRuleDetectListWithContext(ctx context.Context, request *DescribeBaselineRuleDetectListRequest) (response *DescribeBaselineRuleDetectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineRuleDetectListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineRuleDetectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineRuleDetectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineRuleIgnoreListRequest() (request *DescribeBaselineRuleIgnoreListRequest) {
+    request = &DescribeBaselineRuleIgnoreListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineRuleIgnoreList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineRuleIgnoreListResponse() (response *DescribeBaselineRuleIgnoreListResponse) {
+    response = &DescribeBaselineRuleIgnoreListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineRuleIgnoreList
+// 获取基线忽略规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineRuleIgnoreList(request *DescribeBaselineRuleIgnoreListRequest) (response *DescribeBaselineRuleIgnoreListResponse, err error) {
+    return c.DescribeBaselineRuleIgnoreListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineRuleIgnoreList
+// 获取基线忽略规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineRuleIgnoreListWithContext(ctx context.Context, request *DescribeBaselineRuleIgnoreListRequest) (response *DescribeBaselineRuleIgnoreListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineRuleIgnoreListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineRuleIgnoreList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineRuleIgnoreListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineRuleListRequest() (request *DescribeBaselineRuleListRequest) {
+    request = &DescribeBaselineRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineRuleList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineRuleListResponse() (response *DescribeBaselineRuleListResponse) {
+    response = &DescribeBaselineRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineRuleList
+// 获取基线规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineRuleList(request *DescribeBaselineRuleListRequest) (response *DescribeBaselineRuleListResponse, err error) {
+    return c.DescribeBaselineRuleListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineRuleList
+// 获取基线规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineRuleListWithContext(ctx context.Context, request *DescribeBaselineRuleListRequest) (response *DescribeBaselineRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineRuleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineRuleListResponse()
     err = c.Send(request, response)
     return
 }
@@ -5071,6 +5877,56 @@ func (c *Client) DescribeBaselineTopWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeBaselineTopResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineWeakPasswordListRequest() (request *DescribeBaselineWeakPasswordListRequest) {
+    request = &DescribeBaselineWeakPasswordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineWeakPasswordList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineWeakPasswordListResponse() (response *DescribeBaselineWeakPasswordListResponse) {
+    response = &DescribeBaselineWeakPasswordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineWeakPasswordList
+// 获取基线弱口令列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineWeakPasswordList(request *DescribeBaselineWeakPasswordListRequest) (response *DescribeBaselineWeakPasswordListResponse, err error) {
+    return c.DescribeBaselineWeakPasswordListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineWeakPasswordList
+// 获取基线弱口令列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineWeakPasswordListWithContext(ctx context.Context, request *DescribeBaselineWeakPasswordListRequest) (response *DescribeBaselineWeakPasswordListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineWeakPasswordListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineWeakPasswordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineWeakPasswordListResponse()
     err = c.Send(request, response)
     return
 }
@@ -6105,6 +6961,56 @@ func (c *Client) DescribeIgnoreBaselineRuleWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeIgnoreHostAndItemConfigRequest() (request *DescribeIgnoreHostAndItemConfigRequest) {
+    request = &DescribeIgnoreHostAndItemConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeIgnoreHostAndItemConfig")
+    
+    
+    return
+}
+
+func NewDescribeIgnoreHostAndItemConfigResponse() (response *DescribeIgnoreHostAndItemConfigResponse) {
+    response = &DescribeIgnoreHostAndItemConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIgnoreHostAndItemConfig
+// 获取一键忽略受影响的检测项和主机信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIgnoreHostAndItemConfig(request *DescribeIgnoreHostAndItemConfigRequest) (response *DescribeIgnoreHostAndItemConfigResponse, err error) {
+    return c.DescribeIgnoreHostAndItemConfigWithContext(context.Background(), request)
+}
+
+// DescribeIgnoreHostAndItemConfig
+// 获取一键忽略受影响的检测项和主机信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeIgnoreHostAndItemConfigWithContext(ctx context.Context, request *DescribeIgnoreHostAndItemConfigRequest) (response *DescribeIgnoreHostAndItemConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeIgnoreHostAndItemConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIgnoreHostAndItemConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIgnoreHostAndItemConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIgnoreRuleEffectHostListRequest() (request *DescribeIgnoreRuleEffectHostListRequest) {
     request = &DescribeIgnoreRuleEffectHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6617,6 +7523,7 @@ func NewDescribeLoginWhiteCombinedListResponse() (response *DescribeLoginWhiteCo
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLoginWhiteCombinedList(request *DescribeLoginWhiteCombinedListRequest) (response *DescribeLoginWhiteCombinedListResponse, err error) {
     return c.DescribeLoginWhiteCombinedListWithContext(context.Background(), request)
 }
@@ -6631,6 +7538,7 @@ func (c *Client) DescribeLoginWhiteCombinedList(request *DescribeLoginWhiteCombi
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeLoginWhiteCombinedListWithContext(ctx context.Context, request *DescribeLoginWhiteCombinedListRequest) (response *DescribeLoginWhiteCombinedListResponse, err error) {
     if request == nil {
         request = NewDescribeLoginWhiteCombinedListRequest()
@@ -10539,6 +11447,206 @@ func (c *Client) ExportBaselineEffectHostListWithContext(ctx context.Context, re
     return
 }
 
+func NewExportBaselineFixListRequest() (request *ExportBaselineFixListRequest) {
+    request = &ExportBaselineFixListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineFixList")
+    
+    
+    return
+}
+
+func NewExportBaselineFixListResponse() (response *ExportBaselineFixListResponse) {
+    response = &ExportBaselineFixListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportBaselineFixList
+// 导出修复列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineFixList(request *ExportBaselineFixListRequest) (response *ExportBaselineFixListResponse, err error) {
+    return c.ExportBaselineFixListWithContext(context.Background(), request)
+}
+
+// ExportBaselineFixList
+// 导出修复列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineFixListWithContext(ctx context.Context, request *ExportBaselineFixListRequest) (response *ExportBaselineFixListResponse, err error) {
+    if request == nil {
+        request = NewExportBaselineFixListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportBaselineFixList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportBaselineFixListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportBaselineHostDetectListRequest() (request *ExportBaselineHostDetectListRequest) {
+    request = &ExportBaselineHostDetectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineHostDetectList")
+    
+    
+    return
+}
+
+func NewExportBaselineHostDetectListResponse() (response *ExportBaselineHostDetectListResponse) {
+    response = &ExportBaselineHostDetectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportBaselineHostDetectList
+// 导出基线主机检测
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineHostDetectList(request *ExportBaselineHostDetectListRequest) (response *ExportBaselineHostDetectListResponse, err error) {
+    return c.ExportBaselineHostDetectListWithContext(context.Background(), request)
+}
+
+// ExportBaselineHostDetectList
+// 导出基线主机检测
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineHostDetectListWithContext(ctx context.Context, request *ExportBaselineHostDetectListRequest) (response *ExportBaselineHostDetectListResponse, err error) {
+    if request == nil {
+        request = NewExportBaselineHostDetectListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportBaselineHostDetectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportBaselineHostDetectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportBaselineItemDetectListRequest() (request *ExportBaselineItemDetectListRequest) {
+    request = &ExportBaselineItemDetectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineItemDetectList")
+    
+    
+    return
+}
+
+func NewExportBaselineItemDetectListResponse() (response *ExportBaselineItemDetectListResponse) {
+    response = &ExportBaselineItemDetectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportBaselineItemDetectList
+// 导出基线检测项
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineItemDetectList(request *ExportBaselineItemDetectListRequest) (response *ExportBaselineItemDetectListResponse, err error) {
+    return c.ExportBaselineItemDetectListWithContext(context.Background(), request)
+}
+
+// ExportBaselineItemDetectList
+// 导出基线检测项
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineItemDetectListWithContext(ctx context.Context, request *ExportBaselineItemDetectListRequest) (response *ExportBaselineItemDetectListResponse, err error) {
+    if request == nil {
+        request = NewExportBaselineItemDetectListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportBaselineItemDetectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportBaselineItemDetectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportBaselineItemListRequest() (request *ExportBaselineItemListRequest) {
+    request = &ExportBaselineItemListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineItemList")
+    
+    
+    return
+}
+
+func NewExportBaselineItemListResponse() (response *ExportBaselineItemListResponse) {
+    response = &ExportBaselineItemListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportBaselineItemList
+// 导出检测项结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineItemList(request *ExportBaselineItemListRequest) (response *ExportBaselineItemListResponse, err error) {
+    return c.ExportBaselineItemListWithContext(context.Background(), request)
+}
+
+// ExportBaselineItemList
+// 导出检测项结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineItemListWithContext(ctx context.Context, request *ExportBaselineItemListRequest) (response *ExportBaselineItemListResponse, err error) {
+    if request == nil {
+        request = NewExportBaselineItemListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportBaselineItemList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportBaselineItemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportBaselineListRequest() (request *ExportBaselineListRequest) {
     request = &ExportBaselineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10595,6 +11703,106 @@ func (c *Client) ExportBaselineListWithContext(ctx context.Context, request *Exp
     request.SetContext(ctx)
     
     response = NewExportBaselineListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportBaselineRuleDetectListRequest() (request *ExportBaselineRuleDetectListRequest) {
+    request = &ExportBaselineRuleDetectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineRuleDetectList")
+    
+    
+    return
+}
+
+func NewExportBaselineRuleDetectListResponse() (response *ExportBaselineRuleDetectListResponse) {
+    response = &ExportBaselineRuleDetectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportBaselineRuleDetectList
+// 导出基线检测规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineRuleDetectList(request *ExportBaselineRuleDetectListRequest) (response *ExportBaselineRuleDetectListResponse, err error) {
+    return c.ExportBaselineRuleDetectListWithContext(context.Background(), request)
+}
+
+// ExportBaselineRuleDetectList
+// 导出基线检测规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineRuleDetectListWithContext(ctx context.Context, request *ExportBaselineRuleDetectListRequest) (response *ExportBaselineRuleDetectListResponse, err error) {
+    if request == nil {
+        request = NewExportBaselineRuleDetectListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportBaselineRuleDetectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportBaselineRuleDetectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportBaselineWeakPasswordListRequest() (request *ExportBaselineWeakPasswordListRequest) {
+    request = &ExportBaselineWeakPasswordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineWeakPasswordList")
+    
+    
+    return
+}
+
+func NewExportBaselineWeakPasswordListResponse() (response *ExportBaselineWeakPasswordListResponse) {
+    response = &ExportBaselineWeakPasswordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportBaselineWeakPasswordList
+// 导出弱口令配置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineWeakPasswordList(request *ExportBaselineWeakPasswordListRequest) (response *ExportBaselineWeakPasswordListResponse, err error) {
+    return c.ExportBaselineWeakPasswordListWithContext(context.Background(), request)
+}
+
+// ExportBaselineWeakPasswordList
+// 导出弱口令配置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ExportBaselineWeakPasswordListWithContext(ctx context.Context, request *ExportBaselineWeakPasswordListRequest) (response *ExportBaselineWeakPasswordListResponse, err error) {
+    if request == nil {
+        request = NewExportBaselineWeakPasswordListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportBaselineWeakPasswordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportBaselineWeakPasswordListResponse()
     err = c.Send(request, response)
     return
 }
@@ -11657,6 +12865,58 @@ func (c *Client) ExportWebPageEventListWithContext(ctx context.Context, request 
     return
 }
 
+func NewFixBaselineDetectRequest() (request *FixBaselineDetectRequest) {
+    request = &FixBaselineDetectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "FixBaselineDetect")
+    
+    
+    return
+}
+
+func NewFixBaselineDetectResponse() (response *FixBaselineDetectResponse) {
+    response = &FixBaselineDetectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FixBaselineDetect
+// 修复基线检测
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) FixBaselineDetect(request *FixBaselineDetectRequest) (response *FixBaselineDetectResponse, err error) {
+    return c.FixBaselineDetectWithContext(context.Background(), request)
+}
+
+// FixBaselineDetect
+// 修复基线检测
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) FixBaselineDetectWithContext(ctx context.Context, request *FixBaselineDetectRequest) (response *FixBaselineDetectResponse, err error) {
+    if request == nil {
+        request = NewFixBaselineDetectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FixBaselineDetect require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFixBaselineDetectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
     request = &IgnoreImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11945,6 +13205,210 @@ func (c *Client) ModifyBaselinePolicyWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyBaselinePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBaselinePolicyStateRequest() (request *ModifyBaselinePolicyStateRequest) {
+    request = &ModifyBaselinePolicyStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyBaselinePolicyState")
+    
+    
+    return
+}
+
+func NewModifyBaselinePolicyStateResponse() (response *ModifyBaselinePolicyStateResponse) {
+    response = &ModifyBaselinePolicyStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBaselinePolicyState
+// 更改基线策略状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselinePolicyState(request *ModifyBaselinePolicyStateRequest) (response *ModifyBaselinePolicyStateResponse, err error) {
+    return c.ModifyBaselinePolicyStateWithContext(context.Background(), request)
+}
+
+// ModifyBaselinePolicyState
+// 更改基线策略状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselinePolicyStateWithContext(ctx context.Context, request *ModifyBaselinePolicyStateRequest) (response *ModifyBaselinePolicyStateResponse, err error) {
+    if request == nil {
+        request = NewModifyBaselinePolicyStateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBaselinePolicyState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBaselinePolicyStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBaselineRuleRequest() (request *ModifyBaselineRuleRequest) {
+    request = &ModifyBaselineRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyBaselineRule")
+    
+    
+    return
+}
+
+func NewModifyBaselineRuleResponse() (response *ModifyBaselineRuleResponse) {
+    response = &ModifyBaselineRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBaselineRule
+// 更改基线检测规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselineRule(request *ModifyBaselineRuleRequest) (response *ModifyBaselineRuleResponse, err error) {
+    return c.ModifyBaselineRuleWithContext(context.Background(), request)
+}
+
+// ModifyBaselineRule
+// 更改基线检测规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselineRuleWithContext(ctx context.Context, request *ModifyBaselineRuleRequest) (response *ModifyBaselineRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyBaselineRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBaselineRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBaselineRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBaselineRuleIgnoreRequest() (request *ModifyBaselineRuleIgnoreRequest) {
+    request = &ModifyBaselineRuleIgnoreRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyBaselineRuleIgnore")
+    
+    
+    return
+}
+
+func NewModifyBaselineRuleIgnoreResponse() (response *ModifyBaselineRuleIgnoreResponse) {
+    response = &ModifyBaselineRuleIgnoreResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBaselineRuleIgnore
+// 更改基线忽略规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselineRuleIgnore(request *ModifyBaselineRuleIgnoreRequest) (response *ModifyBaselineRuleIgnoreResponse, err error) {
+    return c.ModifyBaselineRuleIgnoreWithContext(context.Background(), request)
+}
+
+// ModifyBaselineRuleIgnore
+// 更改基线忽略规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselineRuleIgnoreWithContext(ctx context.Context, request *ModifyBaselineRuleIgnoreRequest) (response *ModifyBaselineRuleIgnoreResponse, err error) {
+    if request == nil {
+        request = NewModifyBaselineRuleIgnoreRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBaselineRuleIgnore require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBaselineRuleIgnoreResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBaselineWeakPasswordRequest() (request *ModifyBaselineWeakPasswordRequest) {
+    request = &ModifyBaselineWeakPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyBaselineWeakPassword")
+    
+    
+    return
+}
+
+func NewModifyBaselineWeakPasswordResponse() (response *ModifyBaselineWeakPasswordResponse) {
+    response = &ModifyBaselineWeakPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBaselineWeakPassword
+// 更改或新增弱口令
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselineWeakPassword(request *ModifyBaselineWeakPasswordRequest) (response *ModifyBaselineWeakPasswordResponse, err error) {
+    return c.ModifyBaselineWeakPasswordWithContext(context.Background(), request)
+}
+
+// ModifyBaselineWeakPassword
+// 更改或新增弱口令
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselineWeakPasswordWithContext(ctx context.Context, request *ModifyBaselineWeakPasswordRequest) (response *ModifyBaselineWeakPasswordResponse, err error) {
+    if request == nil {
+        request = NewModifyBaselineWeakPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBaselineWeakPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBaselineWeakPasswordResponse()
     err = c.Send(request, response)
     return
 }

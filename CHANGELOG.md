@@ -1,3 +1,211 @@
+# Release v1.0.610
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 42 次发布
+
+发布时间：2023-03-07 01:06:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)
+
+	* 新增出参：VoipCallInCount
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 71 次发布
+
+发布时间：2023-03-07 01:13:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteBaselineRule](https://cloud.tencent.com/document/api/296/87870)
+* [DeleteBaselineRuleIgnore](https://cloud.tencent.com/document/api/296/87869)
+* [DeleteBaselineWeakPassword](https://cloud.tencent.com/document/api/296/87868)
+* [DescribeBaselineDetectList](https://cloud.tencent.com/document/api/296/87867)
+* [DescribeBaselineDetectOverview](https://cloud.tencent.com/document/api/296/87866)
+* [DescribeBaselineDownloadList](https://cloud.tencent.com/document/api/296/87865)
+* [DescribeBaselineFixList](https://cloud.tencent.com/document/api/296/87864)
+* [DescribeBaselineHostIgnoreList](https://cloud.tencent.com/document/api/296/87863)
+* [DescribeBaselineHostRiskTop](https://cloud.tencent.com/document/api/296/87862)
+* [DescribeBaselineItemIgnoreList](https://cloud.tencent.com/document/api/296/87861)
+* [DescribeBaselineItemInfo](https://cloud.tencent.com/document/api/296/87860)
+* [DescribeBaselineItemRiskTop](https://cloud.tencent.com/document/api/296/87859)
+* [DescribeBaselineRuleCategoryList](https://cloud.tencent.com/document/api/296/87858)
+* [DescribeBaselineRuleDetectList](https://cloud.tencent.com/document/api/296/87857)
+* [DescribeBaselineRuleIgnoreList](https://cloud.tencent.com/document/api/296/87856)
+* [DescribeBaselineRuleList](https://cloud.tencent.com/document/api/296/87855)
+* [DescribeBaselineWeakPasswordList](https://cloud.tencent.com/document/api/296/87854)
+* [DescribeIgnoreHostAndItemConfig](https://cloud.tencent.com/document/api/296/87853)
+* [ExportBaselineFixList](https://cloud.tencent.com/document/api/296/87852)
+* [ExportBaselineHostDetectList](https://cloud.tencent.com/document/api/296/87851)
+* [ExportBaselineItemDetectList](https://cloud.tencent.com/document/api/296/87850)
+* [ExportBaselineItemList](https://cloud.tencent.com/document/api/296/87849)
+* [ExportBaselineRuleDetectList](https://cloud.tencent.com/document/api/296/87848)
+* [ExportBaselineWeakPasswordList](https://cloud.tencent.com/document/api/296/87847)
+* [FixBaselineDetect](https://cloud.tencent.com/document/api/296/87846)
+* [ModifyBaselinePolicyState](https://cloud.tencent.com/document/api/296/87845)
+* [ModifyBaselineRule](https://cloud.tencent.com/document/api/296/87844)
+* [ModifyBaselineRuleIgnore](https://cloud.tencent.com/document/api/296/87843)
+* [ModifyBaselineWeakPassword](https://cloud.tencent.com/document/api/296/87842)
+
+修改接口：
+
+* [DescribeScanVulSetting](https://cloud.tencent.com/document/api/296/58237)
+
+	* 新增出参：Uuids
+
+* [ScanVulSetting](https://cloud.tencent.com/document/api/296/58235)
+
+	* 新增入参：Uuids
+
+
+新增数据结构：
+
+* [BaselineCategory](https://cloud.tencent.com/document/api/296/19867#BaselineCategory)
+* [BaselineCustomRuleIdName](https://cloud.tencent.com/document/api/296/19867#BaselineCustomRuleIdName)
+* [BaselineDownload](https://cloud.tencent.com/document/api/296/19867#BaselineDownload)
+* [BaselineFix](https://cloud.tencent.com/document/api/296/19867#BaselineFix)
+* [BaselineHost](https://cloud.tencent.com/document/api/296/19867#BaselineHost)
+* [BaselineItemInfo](https://cloud.tencent.com/document/api/296/19867#BaselineItemInfo)
+* [BaselinePolicyDetect](https://cloud.tencent.com/document/api/296/19867#BaselinePolicyDetect)
+* [BaselineRiskItem](https://cloud.tencent.com/document/api/296/19867#BaselineRiskItem)
+* [BaselineRule](https://cloud.tencent.com/document/api/296/19867#BaselineRule)
+* [BaselineRuleDetect](https://cloud.tencent.com/document/api/296/19867#BaselineRuleDetect)
+* [BaselineWeakPassword](https://cloud.tencent.com/document/api/296/19867#BaselineWeakPassword)
+* [HostRiskLevelCount](https://cloud.tencent.com/document/api/296/19867#HostRiskLevelCount)
+* [Item](https://cloud.tencent.com/document/api/296/19867#Item)
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 42 次发布
+
+发布时间：2023-03-07 01:19:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDataEngine](https://cloud.tencent.com/document/api/1342/87875)
+* [DescribeEngineUsageInfo](https://cloud.tencent.com/document/api/1342/87876)
+* [DescribeLakeFsDirSummary](https://cloud.tencent.com/document/api/1342/87874)
+* [DescribeLakeFsInfo](https://cloud.tencent.com/document/api/1342/87873)
+* [SwitchDataEngine](https://cloud.tencent.com/document/api/1342/87872)
+* [UpdateRowFilter](https://cloud.tencent.com/document/api/1342/87871)
+
+新增数据结构：
+
+* [DataEngineConfigPair](https://cloud.tencent.com/document/api/1342/53778#DataEngineConfigPair)
+
+修改数据结构：
+
+* [DataEngineInfo](https://cloud.tencent.com/document/api/1342/53778#DataEngineInfo)
+
+	* 新增成员：StartStandbyCluster
+
+* [Policy](https://cloud.tencent.com/document/api/1342/53778#Policy)
+
+	* 新增成员：Id
+
+
+
+
+## 国际合作伙伴管理(intlpartnersmgt) 版本：2022-09-28
+
+### 第 1 次发布
+
+发布时间：2023-03-06 19:55:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AllocateCustomerCredit](https://cloud.tencent.com/document/api/#/#)
+* [CreateAccount](https://cloud.tencent.com/document/api/#/#)
+* [GetCountryCodes](https://cloud.tencent.com/document/api/#/#)
+* [QueryCreditAllocationHistory](https://cloud.tencent.com/document/api/#/#)
+* [QueryCreditByUinList](https://cloud.tencent.com/document/api/#/#)
+* [QueryCustomersCredit](https://cloud.tencent.com/document/api/#/#)
+* [QueryDirectCustomersCredit](https://cloud.tencent.com/document/api/#/#)
+* [QueryPartnerCredit](https://cloud.tencent.com/document/api/#/#)
+* [QueryVoucherAmountByUin](https://cloud.tencent.com/document/api/#/#)
+* [QueryVoucherListByUin](https://cloud.tencent.com/document/api/#/#)
+* [QueryVoucherPool](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [CountryCodeItem](https://cloud.tencent.com/document/api/#/##CountryCodeItem)
+* [QueryCreditAllocationHistoryData](https://cloud.tencent.com/document/api/#/##QueryCreditAllocationHistoryData)
+* [QueryCustomersCreditData](https://cloud.tencent.com/document/api/#/##QueryCustomersCreditData)
+* [QueryDirectCustomersCreditData](https://cloud.tencent.com/document/api/#/##QueryDirectCustomersCreditData)
+* [QueryVoucherAmountByUinItem](https://cloud.tencent.com/document/api/#/##QueryVoucherAmountByUinItem)
+* [QueryVoucherListByUinItem](https://cloud.tencent.com/document/api/#/##QueryVoucherListByUinItem)
+* [QueryVoucherListByUinVoucherItem](https://cloud.tencent.com/document/api/#/##QueryVoucherListByUinVoucherItem)
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 47 次发布
+
+发布时间：2023-03-07 01:48:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RocketMQInstanceConfig](https://cloud.tencent.com/document/api/1179/46089#RocketMQInstanceConfig)
+
+	* 新增成员：MaxQueuesPerTopic
+
+	* <font color="#dd0000">**修改成员**：</font>MaxTpsPerNamespace, MaxNamespaceNum, UsedNamespaceNum, MaxTopicNum, UsedTopicNum, MaxGroupNum, UsedGroupNum, ConfigDisplay, NodeCount, NodeDistribution, TopicDistribution
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 32 次发布
+
+发布时间：2023-03-07 01:56:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEngine](https://cloud.tencent.com/document/api/1364/75218)
+
+	* 新增入参：EngineRegionInfos
+
+
+新增数据结构：
+
+* [EngineRegionInfo](https://cloud.tencent.com/document/api/1364/54942#EngineRegionInfo)
+
+
+
 # Release v1.0.609
 
 ## 品牌经营管家(bma) 版本：2022-11-15
