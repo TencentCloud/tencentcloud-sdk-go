@@ -5282,7 +5282,7 @@ type LoadBalancer struct {
 	// 负载均衡类型标识，1：负载均衡，0：传统型负载均衡。
 	Forward *uint64 `json:"Forward,omitempty" name:"Forward"`
 
-	// 负载均衡实例的域名，仅公网传统型负载均衡实例才提供该字段
+	// 负载均衡实例的域名，仅公网传统型负载均衡实例才提供该字段。逐步下线中，建议用LoadBalancerDomain替代。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
@@ -5477,6 +5477,10 @@ type LoadBalancer struct {
 	// 负载均衡的属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttributeFlags []*string `json:"AttributeFlags,omitempty" name:"AttributeFlags"`
+
+	// 负载均衡实例的域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitempty" name:"LoadBalancerDomain"`
 }
 
 type LoadBalancerDetail struct {
@@ -5627,6 +5631,10 @@ type LoadBalancerDetail struct {
 	// 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
+
+	// 负载均衡实例的域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitempty" name:"LoadBalancerDomain"`
 }
 
 type LoadBalancerHealth struct {

@@ -1781,6 +1781,19 @@ func NewDisableCCCPhoneNumberResponse() (response *DisableCCCPhoneNumberResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_DUPLICATEADDRESS = "InvalidParameter.DuplicateAddress"
+//  INVALIDPARAMETER_DUPLICATEPHONENUMBER = "InvalidParameter.DuplicatePhoneNumber"
+//  INVALIDPARAMETER_DUPLICATESIPACCOUNT = "InvalidParameter.DuplicateSipAccount"
+//  INVALIDPARAMETER_ILLEGALADDRESS = "InvalidParameter.IllegalAddress"
+//  INVALIDPARAMETER_ILLEGALPHONENUMBER = "InvalidParameter.IllegalPhoneNumber"
+//  INVALIDPARAMETER_INVALIDADDRESS = "InvalidParameter.InvalidAddress"
+//  INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIP"
+//  INVALIDPARAMETER_INVALIDPHONENUMBER = "InvalidParameter.InvalidPhoneNumber"
+//  INVALIDPARAMETER_INVALIDPORT = "InvalidParameter.InvalidPort"
+//  INVALIDPARAMETER_SIPACCOUNTPASSWORDFORMAT = "InvalidParameter.SipAccountPasswordFormat"
+//  INVALIDPARAMETER_SIPACCOUNTUSERFORMAT = "InvalidParameter.SipAccountUserFormat"
+//  INVALIDPARAMETER_SIPTRUNKINUSED = "InvalidParameter.SipTrunkInUsed"
+//  INVALIDPARAMETER_SIPTRUNKNOTFOUND = "InvalidParameter.SipTrunkNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DisableCCCPhoneNumber(request *DisableCCCPhoneNumberRequest) (response *DisableCCCPhoneNumberResponse, err error) {
     return c.DisableCCCPhoneNumberWithContext(context.Background(), request)
@@ -1792,6 +1805,19 @@ func (c *Client) DisableCCCPhoneNumber(request *DisableCCCPhoneNumberRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_DUPLICATEADDRESS = "InvalidParameter.DuplicateAddress"
+//  INVALIDPARAMETER_DUPLICATEPHONENUMBER = "InvalidParameter.DuplicatePhoneNumber"
+//  INVALIDPARAMETER_DUPLICATESIPACCOUNT = "InvalidParameter.DuplicateSipAccount"
+//  INVALIDPARAMETER_ILLEGALADDRESS = "InvalidParameter.IllegalAddress"
+//  INVALIDPARAMETER_ILLEGALPHONENUMBER = "InvalidParameter.IllegalPhoneNumber"
+//  INVALIDPARAMETER_INVALIDADDRESS = "InvalidParameter.InvalidAddress"
+//  INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIP"
+//  INVALIDPARAMETER_INVALIDPHONENUMBER = "InvalidParameter.InvalidPhoneNumber"
+//  INVALIDPARAMETER_INVALIDPORT = "InvalidParameter.InvalidPort"
+//  INVALIDPARAMETER_SIPACCOUNTPASSWORDFORMAT = "InvalidParameter.SipAccountPasswordFormat"
+//  INVALIDPARAMETER_SIPACCOUNTUSERFORMAT = "InvalidParameter.SipAccountUserFormat"
+//  INVALIDPARAMETER_SIPTRUNKINUSED = "InvalidParameter.SipTrunkInUsed"
+//  INVALIDPARAMETER_SIPTRUNKNOTFOUND = "InvalidParameter.SipTrunkNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DisableCCCPhoneNumberWithContext(ctx context.Context, request *DisableCCCPhoneNumberRequest) (response *DisableCCCPhoneNumberResponse, err error) {
     if request == nil {

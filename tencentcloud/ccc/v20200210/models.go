@@ -2681,27 +2681,27 @@ func (r *DescribeTelSessionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableCCCPhoneNumberRequestParams struct {
-	// TCCC 实例应用 ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
 	// 号码列表，0086开头
 	PhoneNumbers []*string `json:"PhoneNumbers,omitempty" name:"PhoneNumbers"`
 
 	// 停用开关，0启用 1停用
 	Disabled *int64 `json:"Disabled,omitempty" name:"Disabled"`
+
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
 type DisableCCCPhoneNumberRequest struct {
 	*tchttp.BaseRequest
 	
-	// TCCC 实例应用 ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
 	// 号码列表，0086开头
 	PhoneNumbers []*string `json:"PhoneNumbers,omitempty" name:"PhoneNumbers"`
 
 	// 停用开关，0启用 1停用
 	Disabled *int64 `json:"Disabled,omitempty" name:"Disabled"`
+
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 }
 
 func (r *DisableCCCPhoneNumberRequest) ToJsonString() string {
@@ -2716,9 +2716,9 @@ func (r *DisableCCCPhoneNumberRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "SdkAppId")
 	delete(f, "PhoneNumbers")
 	delete(f, "Disabled")
+	delete(f, "SdkAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableCCCPhoneNumberRequest has unknown keys!", "")
 	}

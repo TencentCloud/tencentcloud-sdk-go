@@ -78,6 +78,9 @@ type CreateCloudRunEnvRequestParams struct {
 
 	// 渠道：wechat | cloud
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
 type CreateCloudRunEnvRequest struct {
@@ -111,6 +114,9 @@ type CreateCloudRunEnvRequest struct {
 
 	// 渠道：wechat | cloud
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
 func (r *CreateCloudRunEnvRequest) ToJsonString() string {
@@ -134,6 +140,7 @@ func (r *CreateCloudRunEnvRequest) FromJsonString(s string) error {
 	delete(f, "ReqKey")
 	delete(f, "Source")
 	delete(f, "Channel")
+	delete(f, "EnvId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudRunEnvRequest has unknown keys!", "")
 	}

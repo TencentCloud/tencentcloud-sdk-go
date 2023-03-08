@@ -332,4 +332,8 @@ type StatusNode struct {
 	// 外部审批Url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExternalUrl *string `json:"ExternalUrl,omitempty" name:"ExternalUrl"`
+
+	// 并行节点 3-4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParallelNodes *string `json:"ParallelNodes,omitempty" name:"ParallelNodes"`
 }

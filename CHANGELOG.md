@@ -1,3 +1,199 @@
+# Release v1.0.611
+
+## 商业流程服务(bpaas) 版本：2018-12-17
+
+### 第 4 次发布
+
+发布时间：2023-03-08 01:04:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)
+
+	* 新增成员：ParallelNodes
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 43 次发布
+
+发布时间：2023-03-08 01:06:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DisableCCCPhoneNumber](https://cloud.tencent.com/document/api/679/80901)
+
+	* <font color="#dd0000">**修改入参**：</font>SdkAppId
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 84 次发布
+
+发布时间：2023-03-08 01:13:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+
+	* 新增成员：LoadBalancerDomain
+
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
+
+	* 新增成员：LoadBalancerDomain
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 66 次发布
+
+发布时间：2023-03-08 00:25:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
+
+新增数据结构：
+
+* [BaseFlowInfo](https://cloud.tencent.com/document/api/1420/61525#BaseFlowInfo)
+* [CommonApproverOption](https://cloud.tencent.com/document/api/1420/61525#CommonApproverOption)
+* [CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 78 次发布
+
+发布时间：2023-03-08 01:43:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Label](https://cloud.tencent.com/document/api/248/30354#Label)
+
+	* 新增成员：Name, Value
+
+* [PrometheusAgentInfo](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentInfo)
+
+	* 新增成员：ClusterType, ClusterId, Describe
+
+
+
+
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 9 次发布
+
+发布时间：2023-03-08 01:54:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudRunEnv](https://cloud.tencent.com/document/api/1243/75707)
+
+	* 新增入参：EnvId
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 49 次发布
+
+发布时间：2023-03-08 02:20:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [McuWaterMarkText](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkText)
+
+修改数据结构：
+
+* [McuWaterMarkParams](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkParams)
+
+	* 新增成员：WaterMarkText
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 20 次发布
+
+发布时间：2023-03-08 02:25:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AlarmIndicatorInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmIndicatorInfo)
+
+修改数据结构：
+
+* [AlarmEventInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmEventInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>AlarmIndicator
+
+* [AlarmReceiverInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmReceiverInfo)
+
+	* 新增成员：WecomGroup
+
+* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
+
+	* 新增成员：DataProxyUrl, Submit
+
+* [TableInfo](https://cloud.tencent.com/document/api/1267/76336#TableInfo)
+
+	* 新增成员：OriginDatabaseName, OriginSchemaName
+
+* [TaskAlarmInfo](https://cloud.tencent.com/document/api/1267/76336#TaskAlarmInfo)
+
+	* 新增成员：AlarmIndicatorInfos, AlarmRecipientType, WeComHook
+
+	* <font color="#dd0000">**修改成员**：</font>AlarmIndicator, AlarmRecipientId, AlarmRecipientName
+
+
+
+
 # Release v1.0.610
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

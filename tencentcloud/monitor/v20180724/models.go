@@ -10503,7 +10503,11 @@ type IntegrationConfiguration struct {
 }
 
 type Label struct {
+	// map表中的Name
+	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// map表中的Value
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type LogAlarmReq struct {
@@ -12160,7 +12164,14 @@ type PrometheusAgent struct {
 }
 
 type PrometheusAgentInfo struct {
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备注
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
 }
 
 type PrometheusAgentOverview struct {

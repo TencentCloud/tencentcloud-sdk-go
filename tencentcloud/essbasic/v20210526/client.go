@@ -1079,6 +1079,58 @@ func (c *Client) ChannelCreateMultiFlowSignQRCodeWithContext(ctx context.Context
     return
 }
 
+func NewChannelCreatePrepareFlowRequest() (request *ChannelCreatePrepareFlowRequest) {
+    request = &ChannelCreatePrepareFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreatePrepareFlow")
+    
+    
+    return
+}
+
+func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowResponse) {
+    response = &ChannelCreatePrepareFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreatePrepareFlow
+// 创建预发起合同
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowRequest) (response *ChannelCreatePrepareFlowResponse, err error) {
+    return c.ChannelCreatePrepareFlowWithContext(context.Background(), request)
+}
+
+// ChannelCreatePrepareFlow
+// 创建预发起合同
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreatePrepareFlowWithContext(ctx context.Context, request *ChannelCreatePrepareFlowRequest) (response *ChannelCreatePrepareFlowResponse, err error) {
+    if request == nil {
+        request = NewChannelCreatePrepareFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreatePrepareFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreatePrepareFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateReleaseFlowRequest() (request *ChannelCreateReleaseFlowRequest) {
     request = &ChannelCreateReleaseFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

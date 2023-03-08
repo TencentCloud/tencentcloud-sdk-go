@@ -50,8 +50,47 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 重复的地址
+	INVALIDPARAMETER_DUPLICATEADDRESS = "InvalidParameter.DuplicateAddress"
+
+	// 重复的号码
+	INVALIDPARAMETER_DUPLICATEPHONENUMBER = "InvalidParameter.DuplicatePhoneNumber"
+
+	// 重复的SIP账号
+	INVALIDPARAMETER_DUPLICATESIPACCOUNT = "InvalidParameter.DuplicateSipAccount"
+
+	// 非法的地址
+	INVALIDPARAMETER_ILLEGALADDRESS = "InvalidParameter.IllegalAddress"
+
+	// 非法的号码
+	INVALIDPARAMETER_ILLEGALPHONENUMBER = "InvalidParameter.IllegalPhoneNumber"
+
 	// 实例不存在。
 	INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+
+	// 无效的地址
+	INVALIDPARAMETER_INVALIDADDRESS = "InvalidParameter.InvalidAddress"
+
+	// 无效的IP信息
+	INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIP"
+
+	// 无效的号码
+	INVALIDPARAMETER_INVALIDPHONENUMBER = "InvalidParameter.InvalidPhoneNumber"
+
+	// 无效的端口信息
+	INVALIDPARAMETER_INVALIDPORT = "InvalidParameter.InvalidPort"
+
+	// 密码不合法(长度大于等于八位，必须包含大小写字母以及数字)
+	INVALIDPARAMETER_SIPACCOUNTPASSWORDFORMAT = "InvalidParameter.SipAccountPasswordFormat"
+
+	// 用户名不合法(只能包含A-Z、a-z、以及数字)
+	INVALIDPARAMETER_SIPACCOUNTUSERFORMAT = "InvalidParameter.SipAccountUserFormat"
+
+	// SIP通道仍在使用中
+	INVALIDPARAMETER_SIPTRUNKINUSED = "InvalidParameter.SipTrunkInUsed"
+
+	// 未找到SIP通道信息
+	INVALIDPARAMETER_SIPTRUNKNOTFOUND = "InvalidParameter.SipTrunkNotFound"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

@@ -64,7 +64,7 @@ func NewCreateCloudRunEnvResponse() (response *CreateCloudRunEnvResponse) {
 }
 
 // CreateCloudRunEnv
-// 创建云托管环境，并开通资源。	
+// 创建云托管环境，并开通资源。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -77,7 +77,7 @@ func (c *Client) CreateCloudRunEnv(request *CreateCloudRunEnvRequest) (response 
 }
 
 // CreateCloudRunEnv
-// 创建云托管环境，并开通资源。	
+// 创建云托管环境，并开通资源。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

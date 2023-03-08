@@ -2539,11 +2539,44 @@ type McuWaterMarkImage struct {
 }
 
 type McuWaterMarkParams struct {
-	// 水印类型，0为图片（默认）。
+	// 水印类型，0为图片（默认），1为文字。
 	WaterMarkType *uint64 `json:"WaterMarkType,omitempty" name:"WaterMarkType"`
 
 	// 图片水印参数。WaterMarkType为0指定。
 	WaterMarkImage *McuWaterMarkImage `json:"WaterMarkImage,omitempty" name:"WaterMarkImage"`
+
+	// 文字水印参数。WaterMarkType为1指定。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaterMarkText *McuWaterMarkText `json:"WaterMarkText,omitempty" name:"WaterMarkText"`
+}
+
+type McuWaterMarkText struct {
+	// 文字水印内容。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 水印在输出时的宽。单位为像素值。
+	WaterMarkWidth *uint64 `json:"WaterMarkWidth,omitempty" name:"WaterMarkWidth"`
+
+	// 水印在输出时的高。单位为像素值。
+	WaterMarkHeight *uint64 `json:"WaterMarkHeight,omitempty" name:"WaterMarkHeight"`
+
+	// 水印在输出时的X偏移。单位为像素值。
+	LocationX *uint64 `json:"LocationX,omitempty" name:"LocationX"`
+
+	// 水印在输出时的Y偏移。单位为像素值。
+	LocationY *uint64 `json:"LocationY,omitempty" name:"LocationY"`
+
+	// 字体大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FontSize *uint64 `json:"FontSize,omitempty" name:"FontSize"`
+
+	// 字体颜色，默认为白色。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FontColor *string `json:"FontColor,omitempty" name:"FontColor"`
+
+	// 字体背景色，不配置默认为透明。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackGroundColor *string `json:"BackGroundColor,omitempty" name:"BackGroundColor"`
 }
 
 type MixLayout struct {

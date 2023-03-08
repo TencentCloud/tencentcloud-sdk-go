@@ -36,9 +36,6 @@ type AlarmEventInfo struct {
 	// 告警级别,0表示普通，1表示重要，2表示紧急
 	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
 
-	// 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
-	AlarmIndicator *uint64 `json:"AlarmIndicator,omitempty" name:"AlarmIndicator"`
-
 	// 告警方式,多个用逗号隔开（1:邮件，2:短信，3:微信，4:语音，5:代表企业微信，6:http）
 	AlarmWay *uint64 `json:"AlarmWay,omitempty" name:"AlarmWay"`
 
@@ -47,6 +44,9 @@ type AlarmEventInfo struct {
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+	AlarmIndicator *uint64 `json:"AlarmIndicator,omitempty" name:"AlarmIndicator"`
 
 	// 告警指标描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -79,6 +79,32 @@ type AlarmEventInfo struct {
 	// 阈值计算算子，1 : 大于 2 ：小于
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *int64 `json:"Operator,omitempty" name:"Operator"`
+}
+
+type AlarmIndicatorInfo struct {
+	// 指标id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmIndicator *uint64 `json:"AlarmIndicator,omitempty" name:"AlarmIndicator"`
+
+	// 告警指标描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmIndicatorDesc *string `json:"AlarmIndicatorDesc,omitempty" name:"AlarmIndicatorDesc"`
+
+	// 指标阈值，1表示离线任务第一次运行失败，2表示离线任务所有重试完成后失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *uint64 `json:"TriggerType,omitempty" name:"TriggerType"`
+
+	// 预计的超时时间，分钟级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EstimatedTime *uint64 `json:"EstimatedTime,omitempty" name:"EstimatedTime"`
+
+	// 实时任务告警需要的参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *uint64 `json:"Operator,omitempty" name:"Operator"`
 }
 
 type AlarmInfo struct {
@@ -137,6 +163,10 @@ type AlarmReceiverInfo struct {
 
 	// http，0：未设置，1：成功，2：失败
 	Http *uint64 `json:"Http,omitempty" name:"Http"`
+
+	// 企业微信群，0：未设置，1：成功，2：失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WecomGroup *uint64 `json:"WecomGroup,omitempty" name:"WecomGroup"`
 }
 
 // Predefined struct for user
@@ -13878,6 +13908,14 @@ type IntegrationTaskInfo struct {
 	// version
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InLongManagerVersion *string `json:"InLongManagerVersion,omitempty" name:"InLongManagerVersion"`
+
+	// dataproxy url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataProxyUrl []*string `json:"DataProxyUrl,omitempty" name:"DataProxyUrl"`
+
+	// 任务版本是否已提交运维
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Submit *bool `json:"Submit,omitempty" name:"Submit"`
 }
 
 // Predefined struct for user
@@ -18940,6 +18978,14 @@ type TableInfo struct {
 	// 表名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 表databaseName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginDatabaseName *string `json:"OriginDatabaseName,omitempty" name:"OriginDatabaseName"`
+
+	// 表schemaName
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginSchemaName *string `json:"OriginSchemaName,omitempty" name:"OriginSchemaName"`
 }
 
 type TableQualityDetail struct {
@@ -19017,22 +19063,11 @@ type TaskAlarmInfo struct {
 	// 告警级别(0表示普通，1表示重要，2表示紧急)
 	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
 
-	// 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
-	// ，4写入速度，5读取速度，6读取吞吐，7写入吞吐, 8脏数据字节数，9脏数据条数
-	AlarmIndicator *uint64 `json:"AlarmIndicator,omitempty" name:"AlarmIndicator"`
-
 	// 告警方式,多个用逗号隔开（1:邮件，2:短信，3:微信，4:语音，5:代表企业微信，6:http）
 	AlarmWay *string `json:"AlarmWay,omitempty" name:"AlarmWay"`
 
-	// 告警接收人ID，多个用逗号隔开
-	AlarmRecipientId *string `json:"AlarmRecipientId,omitempty" name:"AlarmRecipientId"`
-
 	// 任务类型(201表示实时，202表示离线)
 	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
-
-	// 告警接收人昵称，多个用逗号隔开
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlarmRecipientName *string `json:"AlarmRecipientName,omitempty" name:"AlarmRecipientName"`
 
 	// 主键ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -19040,6 +19075,10 @@ type TaskAlarmInfo struct {
 
 	// 规则ID
 	RegularId *string `json:"RegularId,omitempty" name:"RegularId"`
+
+	// 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+	// ，4写入速度，5读取速度，6读取吞吐，7写入吞吐, 8脏数据字节数，9脏数据条数
+	AlarmIndicator *uint64 `json:"AlarmIndicator,omitempty" name:"AlarmIndicator"`
 
 	// 指标阈值(1表示离线任务第一次运行失败，2表示离线任务所有重试完成后失败)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -19049,6 +19088,9 @@ type TaskAlarmInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EstimatedTime *uint64 `json:"EstimatedTime,omitempty" name:"EstimatedTime"`
 
+	// 告警接收人ID，多个用逗号隔开
+	AlarmRecipientId *string `json:"AlarmRecipientId,omitempty" name:"AlarmRecipientId"`
+
 	// 项目ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -19056,6 +19098,10 @@ type TaskAlarmInfo struct {
 	// 创建人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creater *string `json:"Creater,omitempty" name:"Creater"`
+
+	// 告警接收人昵称，多个用逗号隔开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmRecipientName *string `json:"AlarmRecipientName,omitempty" name:"AlarmRecipientName"`
 
 	// 告警指标描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -19072,6 +19118,18 @@ type TaskAlarmInfo struct {
 	// 节点名称，多个逗号分隔
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmIndicatorInfos []*AlarmIndicatorInfo `json:"AlarmIndicatorInfos,omitempty" name:"AlarmIndicatorInfos"`
+
+	// 告警接收人类型，0指定人员；1任务责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmRecipientType *uint64 `json:"AlarmRecipientType,omitempty" name:"AlarmRecipientType"`
+
+	// 企业微信群Hook地址，多个hook地址使用,隔开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeComHook *string `json:"WeComHook,omitempty" name:"WeComHook"`
 }
 
 type TaskCanvasInfo struct {
