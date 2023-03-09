@@ -5162,3 +5162,55 @@ func (c *Client) StopStreamLinkFlowWithContext(ctx context.Context, request *Sto
     err = c.Send(request, response)
     return
 }
+
+func NewWithdrawsWatermarkRequest() (request *WithdrawsWatermarkRequest) {
+    request = &WithdrawsWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "WithdrawsWatermark")
+    
+    
+    return
+}
+
+func NewWithdrawsWatermarkResponse() (response *WithdrawsWatermarkResponse) {
+    response = &WithdrawsWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// WithdrawsWatermark
+// 提取视频中的盲水印。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) WithdrawsWatermark(request *WithdrawsWatermarkRequest) (response *WithdrawsWatermarkResponse, err error) {
+    return c.WithdrawsWatermarkWithContext(context.Background(), request)
+}
+
+// WithdrawsWatermark
+// 提取视频中的盲水印。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) WithdrawsWatermarkWithContext(ctx context.Context, request *WithdrawsWatermarkRequest) (response *WithdrawsWatermarkResponse, err error) {
+    if request == nil {
+        request = NewWithdrawsWatermarkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("WithdrawsWatermark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewWithdrawsWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}

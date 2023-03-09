@@ -2930,6 +2930,9 @@ type CreateEmergencyVulScanRequestParams struct {
 
 	// 自选服务器时生效，主机uuid的string数组
 	Uuids []*string `json:"Uuids,omitempty" name:"Uuids"`
+
+	// 扫描超时时长 ，单位秒
+	TimeoutPeriod *uint64 `json:"TimeoutPeriod,omitempty" name:"TimeoutPeriod"`
 }
 
 type CreateEmergencyVulScanRequest struct {
@@ -2940,6 +2943,9 @@ type CreateEmergencyVulScanRequest struct {
 
 	// 自选服务器时生效，主机uuid的string数组
 	Uuids []*string `json:"Uuids,omitempty" name:"Uuids"`
+
+	// 扫描超时时长 ，单位秒
+	TimeoutPeriod *uint64 `json:"TimeoutPeriod,omitempty" name:"TimeoutPeriod"`
 }
 
 func (r *CreateEmergencyVulScanRequest) ToJsonString() string {
@@ -2956,6 +2962,7 @@ func (r *CreateEmergencyVulScanRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VulId")
 	delete(f, "Uuids")
+	delete(f, "TimeoutPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmergencyVulScanRequest has unknown keys!", "")
 	}

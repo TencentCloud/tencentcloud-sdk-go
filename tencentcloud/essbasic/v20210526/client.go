@@ -505,6 +505,60 @@ func (c *Client) ChannelCreateConvertTaskApiWithContext(ctx context.Context, req
     return
 }
 
+func NewChannelCreateEmbedWebUrlRequest() (request *ChannelCreateEmbedWebUrlRequest) {
+    request = &ChannelCreateEmbedWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateEmbedWebUrl")
+    
+    
+    return
+}
+
+func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlResponse) {
+    response = &ChannelCreateEmbedWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateEmbedWebUrl
+// 本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
+    return c.ChannelCreateEmbedWebUrlWithContext(context.Background(), request)
+}
+
+// ChannelCreateEmbedWebUrl
+// 本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateEmbedWebUrlWithContext(ctx context.Context, request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateEmbedWebUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateEmbedWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateEmbedWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateFlowByFilesRequest() (request *ChannelCreateFlowByFilesRequest) {
     request = &ChannelCreateFlowByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},

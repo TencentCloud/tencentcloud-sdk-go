@@ -599,6 +599,91 @@ func (r *ChannelCreateConvertTaskApiResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateEmbedWebUrlRequestParams struct {
+	// WEB嵌入资源类型，取值范围：CREATE_SEAL创建印章，CREATE_TEMPLATE创建模板，MODIFY_TEMPLATE修改模板，PREVIEW_TEMPLATE预览模板，PREVIEW_FLOW预览流程
+	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 渠道操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// WEB嵌入的业务资源ID，EmbedType取值MODIFY_TEMPLATE或PREVIEW_TEMPLATE或 PREVIEW_FLOW时BusinessId必填
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 是否隐藏控件，只有预览模板时生效
+	HiddenComponents *bool `json:"HiddenComponents,omitempty" name:"HiddenComponents"`
+}
+
+type ChannelCreateEmbedWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// WEB嵌入资源类型，取值范围：CREATE_SEAL创建印章，CREATE_TEMPLATE创建模板，MODIFY_TEMPLATE修改模板，PREVIEW_TEMPLATE预览模板，PREVIEW_FLOW预览流程
+	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 渠道操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// WEB嵌入的业务资源ID，EmbedType取值MODIFY_TEMPLATE或PREVIEW_TEMPLATE或 PREVIEW_FLOW时BusinessId必填
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 是否隐藏控件，只有预览模板时生效
+	HiddenComponents *bool `json:"HiddenComponents,omitempty" name:"HiddenComponents"`
+}
+
+func (r *ChannelCreateEmbedWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateEmbedWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EmbedType")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "BusinessId")
+	delete(f, "HiddenComponents")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateEmbedWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateEmbedWebUrlResponseParams struct {
+	// 嵌入的web链接
+	WebUrl *string `json:"WebUrl,omitempty" name:"WebUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateEmbedWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateEmbedWebUrlResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateEmbedWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateEmbedWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateFlowByFilesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`

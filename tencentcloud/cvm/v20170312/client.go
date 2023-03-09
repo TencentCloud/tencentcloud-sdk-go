@@ -3469,6 +3469,76 @@ func (c *Client) DescribeReservedInstancesOfferingsWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
+    request = &DescribeTaskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeTaskInfo")
+    
+    
+    return
+}
+
+func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
+    response = &DescribeTaskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTaskInfo
+// 本接口 (DescribeTaskInfo) 用于查询云服务器维修任务列表及详细信息。
+//
+// 
+//
+// - 可以根据实例ID、实例名称或任务状态等信息来查询维修任务列表。过滤信息详情可参考入参说明。
+//
+// - 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的维修任务列表。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。</br>
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *DescribeTaskInfoResponse, err error) {
+    return c.DescribeTaskInfoWithContext(context.Background(), request)
+}
+
+// DescribeTaskInfo
+// 本接口 (DescribeTaskInfo) 用于查询云服务器维修任务列表及详细信息。
+//
+// 
+//
+// - 可以根据实例ID、实例名称或任务状态等信息来查询维修任务列表。过滤信息详情可参考入参说明。
+//
+// - 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的维修任务列表。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。</br>
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeTaskInfoWithContext(ctx context.Context, request *DescribeTaskInfoRequest) (response *DescribeTaskInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneInstanceConfigInfosRequest() (request *DescribeZoneInstanceConfigInfosRequest) {
     request = &DescribeZoneInstanceConfigInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3887,6 +3957,7 @@ func NewImportImageResponse() (response *ImportImageResponse) {
 //  INVALIDIMAGEOSVERSION_UNSUPPORTED = "InvalidImageOsVersion.Unsupported"
 //  INVALIDPARAMETER_INVALIDPARAMETERURLERROR = "InvalidParameter.InvalidParameterUrlError"
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_INVALIDBOOTMODE = "InvalidParameterValue.InvalidBootMode"
 //  INVALIDPARAMETERVALUE_INVALIDLICENSETYPE = "InvalidParameterValue.InvalidLicenseType"
 //  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
@@ -3906,6 +3977,7 @@ func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImage
 //  INVALIDIMAGEOSVERSION_UNSUPPORTED = "InvalidImageOsVersion.Unsupported"
 //  INVALIDPARAMETER_INVALIDPARAMETERURLERROR = "InvalidParameter.InvalidParameterUrlError"
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_INVALIDBOOTMODE = "InvalidParameterValue.InvalidBootMode"
 //  INVALIDPARAMETERVALUE_INVALIDLICENSETYPE = "InvalidParameterValue.InvalidLicenseType"
 //  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"

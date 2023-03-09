@@ -6371,6 +6371,11 @@ type TopicInfo struct {
 	// 日志主题描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Describes *string `json:"Describes,omitempty" name:"Describes"`
+
+	// 开启日志沉降，热存储的生命周期， hotPeriod < Period。
+	// 热存储为 hotPeriod, 冷存储则为 Period-hotPeriod。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HotPeriod *uint64 `json:"HotPeriod,omitempty" name:"HotPeriod"`
 }
 
 // Predefined struct for user

@@ -230,6 +230,10 @@ func NewCreateAMQPClusterResponse() (response *CreateAMQPClusterResponse) {
 }
 
 // CreateAMQPCluster
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建AMQP集群
 //
 // 可能返回的错误码:
@@ -247,6 +251,10 @@ func (c *Client) CreateAMQPCluster(request *CreateAMQPClusterRequest) (response 
 }
 
 // CreateAMQPCluster
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建AMQP集群
 //
 // 可能返回的错误码:
@@ -294,6 +302,10 @@ func NewCreateAMQPExchangeResponse() (response *CreateAMQPExchangeResponse) {
 }
 
 // CreateAMQPExchange
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建AMQP Exchange
 //
 // 可能返回的错误码:
@@ -308,6 +320,10 @@ func (c *Client) CreateAMQPExchange(request *CreateAMQPExchangeRequest) (respons
 }
 
 // CreateAMQPExchange
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建AMQP Exchange
 //
 // 可能返回的错误码:
@@ -352,6 +368,10 @@ func NewCreateAMQPQueueResponse() (response *CreateAMQPQueueResponse) {
 }
 
 // CreateAMQPQueue
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建AMQP队列
 //
 // 可能返回的错误码:
@@ -366,6 +386,10 @@ func (c *Client) CreateAMQPQueue(request *CreateAMQPQueueRequest) (response *Cre
 }
 
 // CreateAMQPQueue
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建AMQP队列
 //
 // 可能返回的错误码:
@@ -410,6 +434,10 @@ func NewCreateAMQPRouteRelationResponse() (response *CreateAMQPRouteRelationResp
 }
 
 // CreateAMQPRouteRelation
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建AMQP路由关系
 //
 // 可能返回的错误码:
@@ -424,6 +452,10 @@ func (c *Client) CreateAMQPRouteRelation(request *CreateAMQPRouteRelationRequest
 }
 
 // CreateAMQPRouteRelation
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建AMQP路由关系
 //
 // 可能返回的错误码:
@@ -468,6 +500,10 @@ func NewCreateAMQPVHostResponse() (response *CreateAMQPVHostResponse) {
 }
 
 // CreateAMQPVHost
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建Amqp Vhost
 //
 // 可能返回的错误码:
@@ -483,6 +519,10 @@ func (c *Client) CreateAMQPVHost(request *CreateAMQPVHostRequest) (response *Cre
 }
 
 // CreateAMQPVHost
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 创建Amqp Vhost
 //
 // 可能返回的错误码:
@@ -1422,6 +1462,10 @@ func NewDeleteAMQPClusterResponse() (response *DeleteAMQPClusterResponse) {
 }
 
 // DeleteAMQPCluster
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除AMQP集群
 //
 // 可能返回的错误码:
@@ -1434,6 +1478,10 @@ func (c *Client) DeleteAMQPCluster(request *DeleteAMQPClusterRequest) (response 
 }
 
 // DeleteAMQPCluster
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除AMQP集群
 //
 // 可能返回的错误码:
@@ -1476,6 +1524,10 @@ func NewDeleteAMQPExchangeResponse() (response *DeleteAMQPExchangeResponse) {
 }
 
 // DeleteAMQPExchange
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除Amqp交换机
 //
 // 可能返回的错误码:
@@ -1489,6 +1541,10 @@ func (c *Client) DeleteAMQPExchange(request *DeleteAMQPExchangeRequest) (respons
 }
 
 // DeleteAMQPExchange
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除Amqp交换机
 //
 // 可能返回的错误码:
@@ -1532,6 +1588,10 @@ func NewDeleteAMQPQueueResponse() (response *DeleteAMQPQueueResponse) {
 }
 
 // DeleteAMQPQueue
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除Amqp队列
 //
 // 可能返回的错误码:
@@ -1545,6 +1605,10 @@ func (c *Client) DeleteAMQPQueue(request *DeleteAMQPQueueRequest) (response *Del
 }
 
 // DeleteAMQPQueue
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除Amqp队列
 //
 // 可能返回的错误码:
@@ -1588,6 +1652,10 @@ func NewDeleteAMQPRouteRelationResponse() (response *DeleteAMQPRouteRelationResp
 }
 
 // DeleteAMQPRouteRelation
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除Amqp路由关系
 //
 // 可能返回的错误码:
@@ -1600,6 +1668,10 @@ func (c *Client) DeleteAMQPRouteRelation(request *DeleteAMQPRouteRelationRequest
 }
 
 // DeleteAMQPRouteRelation
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除Amqp路由关系
 //
 // 可能返回的错误码:
@@ -1642,6 +1714,10 @@ func NewDeleteAMQPVHostResponse() (response *DeleteAMQPVHostResponse) {
 }
 
 // DeleteAMQPVHost
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除Vhost
 //
 // 可能返回的错误码:
@@ -1655,6 +1731,10 @@ func (c *Client) DeleteAMQPVHost(request *DeleteAMQPVHostRequest) (response *Del
 }
 
 // DeleteAMQPVHost
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 删除Vhost
 //
 // 可能返回的错误码:
@@ -2484,6 +2564,10 @@ func NewDescribeAMQPClusterResponse() (response *DescribeAMQPClusterResponse) {
 }
 
 // DescribeAMQPCluster
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取单个Amqp集群信息
 //
 // 可能返回的错误码:
@@ -2496,6 +2580,10 @@ func (c *Client) DescribeAMQPCluster(request *DescribeAMQPClusterRequest) (respo
 }
 
 // DescribeAMQPCluster
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取单个Amqp集群信息
 //
 // 可能返回的错误码:
@@ -2594,6 +2682,10 @@ func NewDescribeAMQPCreateQuotaResponse() (response *DescribeAMQPCreateQuotaResp
 }
 
 // DescribeAMQPCreateQuota
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取用户的配额，如Queue容量，Exchange容量，Vhost容量，单Vhost Tps数,剩余可创建集群数
 //
 // 可能返回的错误码:
@@ -2608,6 +2700,10 @@ func (c *Client) DescribeAMQPCreateQuota(request *DescribeAMQPCreateQuotaRequest
 }
 
 // DescribeAMQPCreateQuota
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取用户的配额，如Queue容量，Exchange容量，Vhost容量，单Vhost Tps数,剩余可创建集群数
 //
 // 可能返回的错误码:
@@ -2652,6 +2748,10 @@ func NewDescribeAMQPExchangesResponse() (response *DescribeAMQPExchangesResponse
 }
 
 // DescribeAMQPExchanges
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取AMQP Exchange列表
 //
 // 可能返回的错误码:
@@ -2665,6 +2765,10 @@ func (c *Client) DescribeAMQPExchanges(request *DescribeAMQPExchangesRequest) (r
 }
 
 // DescribeAMQPExchanges
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取AMQP Exchange列表
 //
 // 可能返回的错误码:
@@ -2708,6 +2812,10 @@ func NewDescribeAMQPQueuesResponse() (response *DescribeAMQPQueuesResponse) {
 }
 
 // DescribeAMQPQueues
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取Amqp队列列表
 //
 // 可能返回的错误码:
@@ -2720,6 +2828,10 @@ func (c *Client) DescribeAMQPQueues(request *DescribeAMQPQueuesRequest) (respons
 }
 
 // DescribeAMQPQueues
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取Amqp队列列表
 //
 // 可能返回的错误码:
@@ -2762,6 +2874,10 @@ func NewDescribeAMQPRouteRelationsResponse() (response *DescribeAMQPRouteRelatio
 }
 
 // DescribeAMQPRouteRelations
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取Amqp路由关系列表
 //
 // 可能返回的错误码:
@@ -2774,6 +2890,10 @@ func (c *Client) DescribeAMQPRouteRelations(request *DescribeAMQPRouteRelationsR
 }
 
 // DescribeAMQPRouteRelations
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取Amqp路由关系列表
 //
 // 可能返回的错误码:
@@ -2816,6 +2936,10 @@ func NewDescribeAMQPVHostsResponse() (response *DescribeAMQPVHostsResponse) {
 }
 
 // DescribeAMQPVHosts
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取Amqp Vhost 列表
 //
 // 可能返回的错误码:
@@ -2828,6 +2952,10 @@ func (c *Client) DescribeAMQPVHosts(request *DescribeAMQPVHostsRequest) (respons
 }
 
 // DescribeAMQPVHosts
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 获取Amqp Vhost 列表
 //
 // 可能返回的错误码:
@@ -4554,6 +4682,10 @@ func NewModifyAMQPExchangeResponse() (response *ModifyAMQPExchangeResponse) {
 }
 
 // ModifyAMQPExchange
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 更新Amqp交换机
 //
 // 可能返回的错误码:
@@ -4568,6 +4700,10 @@ func (c *Client) ModifyAMQPExchange(request *ModifyAMQPExchangeRequest) (respons
 }
 
 // ModifyAMQPExchange
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 更新Amqp交换机
 //
 // 可能返回的错误码:
@@ -4612,6 +4748,10 @@ func NewModifyAMQPQueueResponse() (response *ModifyAMQPQueueResponse) {
 }
 
 // ModifyAMQPQueue
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 更新Amqp队列
 //
 // 可能返回的错误码:
@@ -4625,6 +4765,10 @@ func (c *Client) ModifyAMQPQueue(request *ModifyAMQPQueueRequest) (response *Mod
 }
 
 // ModifyAMQPQueue
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 更新Amqp队列
 //
 // 可能返回的错误码:
@@ -4668,6 +4812,10 @@ func NewModifyAMQPVHostResponse() (response *ModifyAMQPVHostResponse) {
 }
 
 // ModifyAMQPVHost
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 更新Vhost
 //
 // 可能返回的错误码:
@@ -4683,6 +4831,10 @@ func (c *Client) ModifyAMQPVHost(request *ModifyAMQPVHostRequest) (response *Mod
 }
 
 // ModifyAMQPVHost
+// 产品下线了，对应的接口也要下线。
+//
+// 
+//
 // 更新Vhost
 //
 // 可能返回的错误码:

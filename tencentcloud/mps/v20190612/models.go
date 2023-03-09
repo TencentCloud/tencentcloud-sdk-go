@@ -1621,6 +1621,47 @@ type AudioTemplateInfoForUpdate struct {
 	StreamSelects []*int64 `json:"StreamSelects,omitempty" name:"StreamSelects"`
 }
 
+type AwsS3FileUploadTrigger struct {
+	// 工作流绑定的 AWS S3 存储桶。
+	S3Bucket *string `json:"S3Bucket,omitempty" name:"S3Bucket"`
+
+	// 工作流绑定的桶所在 AWS 区域。
+	S3Region *string `json:"S3Region,omitempty" name:"S3Region"`
+
+	// 工作流绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。	
+	Dir *string `json:"Dir,omitempty" name:"Dir"`
+
+	// 工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。	
+	Formats []*string `json:"Formats,omitempty" name:"Formats"`
+
+	// 工作流绑定的 AWS S3 存储桶的秘钥ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	S3SecretId *string `json:"S3SecretId,omitempty" name:"S3SecretId"`
+
+	// 工作流绑定的 AWS S3 存储桶的秘钥Key。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	S3SecretKey *string `json:"S3SecretKey,omitempty" name:"S3SecretKey"`
+
+	// 工作流绑定的 AWS S3 存储桶对应的 SQS事件队列。
+	// 注意：队列和桶需要在同一区域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AwsSQS *AwsSQS `json:"AwsSQS,omitempty" name:"AwsSQS"`
+}
+
+type AwsSQS struct {
+	// SQS 队列区域。
+	SQSRegion *string `json:"SQSRegion,omitempty" name:"SQSRegion"`
+
+	// SQS 队列名称。
+	SQSQueueName *string `json:"SQSQueueName,omitempty" name:"SQSQueueName"`
+
+	// 读写SQS的秘钥id。
+	S3SecretId *string `json:"S3SecretId,omitempty" name:"S3SecretId"`
+
+	// 读写SQS的秘钥key。
+	S3SecretKey *string `json:"S3SecretKey,omitempty" name:"S3SecretKey"`
+}
+
 type ClassificationConfigureInfo struct {
 	// 智能分类任务开关，可选值：
 	// <li>ON：开启智能分类任务；</li>
@@ -8527,7 +8568,10 @@ type MediaImageSpriteItem struct {
 }
 
 type MediaInputInfo struct {
-	// 输入来源对象的类型，支持 COS、URL 两种。
+	// 输入来源对象的类型，支持：
+	// <li> COS：COS源</li>
+	// <li> URL：URL源</li>
+	// <li> AWS-S3：AWS 源，目前只支持转码任务 </li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 对象信息。
@@ -8536,6 +8580,10 @@ type MediaInputInfo struct {
 	// 当 Type 为 URL 时有效，则该项为必填，表示媒体处理 URL 对象信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UrlInputInfo *UrlInputInfo `json:"UrlInputInfo,omitempty" name:"UrlInputInfo"`
+
+	// 当 Type 为 AWS-S3 时有效，则该项为必填，表示媒体处理 AWS S3 对象信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	S3InputInfo *S3InputInfo `json:"S3InputInfo,omitempty" name:"S3InputInfo"`
 }
 
 type MediaMetaData struct {
@@ -11773,6 +11821,37 @@ type ResilientStreamConf struct {
 	BufferTime *uint64 `json:"BufferTime,omitempty" name:"BufferTime"`
 }
 
+type S3InputInfo struct {
+	// S3 bucket。
+	S3Bucket *string `json:"S3Bucket,omitempty" name:"S3Bucket"`
+
+	// S3 bucket 对应的区域。
+	S3Region *string `json:"S3Region,omitempty" name:"S3Region"`
+
+	// S3 bucket 中的媒体资源路径。
+	S3Object *string `json:"S3Object,omitempty" name:"S3Object"`
+
+	// AWS 内网访问 媒体资源的秘钥id。
+	S3SecretId *string `json:"S3SecretId,omitempty" name:"S3SecretId"`
+
+	// AWS 内网访问 媒体资源的秘钥key。
+	S3SecretKey *string `json:"S3SecretKey,omitempty" name:"S3SecretKey"`
+}
+
+type S3OutputStorage struct {
+	// S3 bucket。
+	S3Bucket *string `json:"S3Bucket,omitempty" name:"S3Bucket"`
+
+	// S3 bucket 对应的区域。
+	S3Region *string `json:"S3Region,omitempty" name:"S3Region"`
+
+	// AWS 内网上传 媒体资源的秘钥id。
+	S3SecretId *string `json:"S3SecretId,omitempty" name:"S3SecretId"`
+
+	// AWS 内网上传 媒体资源的秘钥key。
+	S3SecretKey *string `json:"S3SecretKey,omitempty" name:"S3SecretKey"`
+}
+
 type SRTAddressDestination struct {
 	// 目标地址的IP。
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
@@ -12336,20 +12415,32 @@ type TaskNotifyConfig struct {
 	// <li>TDMQ-CMQ：消息队列</li>
 	// <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
 	// <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
+	// <li>AWS-SQS：AWS 队列，只适用于 AWS 任务，且要求同区域</li>
 	// <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
 	// HTTP回调地址，NotifyType为URL时必填。
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// AWS SQS 回调，NotifyType为 AWS-SQS 时必填。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AwsSQS *AwsSQS `json:"AwsSQS,omitempty" name:"AwsSQS"`
 }
 
 type TaskOutputStorage struct {
-	// 媒体处理输出对象存储位置的类型，现在仅支持 COS。
+	// 媒体处理输出对象存储位置的类型，支持：
+	// <li>COS：COS存储</li>
+	// <li>AWS-S3：AWS 存储，只适用于AWS任务，且要求同区域</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 当 Type 为 COS 时有效，则该项为必填，表示媒体处理 COS 输出位置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosOutputStorage *CosOutputStorage `json:"CosOutputStorage,omitempty" name:"CosOutputStorage"`
+
+	// 当 Type 为 AWS-S3 时有效，则该项为必填，表示媒体处理 AWS S3 输出位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	S3OutputStorage *S3OutputStorage `json:"S3OutputStorage,omitempty" name:"S3OutputStorage"`
 }
 
 type TaskSimpleInfo struct {
@@ -12996,6 +13087,77 @@ type WatermarkTemplate struct {
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitempty" name:"CoordinateOrigin"`
 }
 
+// Predefined struct for user
+type WithdrawsWatermarkRequestParams struct {
+	// 输入媒体文件存储信息。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+
+	// 任务的事件通知信息，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+type WithdrawsWatermarkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 输入媒体文件存储信息。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+
+	// 任务的事件通知信息，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+func (r *WithdrawsWatermarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *WithdrawsWatermarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputInfo")
+	delete(f, "TaskNotifyConfig")
+	delete(f, "SessionContext")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WithdrawsWatermarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type WithdrawsWatermarkResponseParams struct {
+	// 任务 ID，可以通过该 ID 查询任务状态和结果。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type WithdrawsWatermarkResponse struct {
+	*tchttp.BaseResponse
+	Response *WithdrawsWatermarkResponseParams `json:"Response"`
+}
+
+func (r *WithdrawsWatermarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *WithdrawsWatermarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type WorkflowInfo struct {
 	// 工作流 ID。
 	WorkflowId *int64 `json:"WorkflowId,omitempty" name:"WorkflowId"`
@@ -13085,10 +13247,19 @@ type WorkflowTask struct {
 }
 
 type WorkflowTrigger struct {
-	// 触发器的类型，目前仅支持 CosFileUpload。
+	// 触发器的类型，可选值：
+	// <li>CosFileUpload：COS触发</li>
+	// <li>AwsS3FileUpload：AWS触发，目前只支持转码任务。只有编排支持，工作流不支持。  </li>
+	// 
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 当 Type 为 CosFileUpload 时必填且有效，为 COS 触发规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosFileUploadTrigger *CosFileUploadTrigger `json:"CosFileUploadTrigger,omitempty" name:"CosFileUploadTrigger"`
+
+	// 当 Type 为 AwsS3FileUpload 时必填且有效，为 AWS S3 触发规则。
+	// 
+	// 注意：目前AWS的S3、对应触发队列SQS、回调队列SQS的秘钥需要一致。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AwsS3FileUploadTrigger *AwsS3FileUploadTrigger `json:"AwsS3FileUploadTrigger,omitempty" name:"AwsS3FileUploadTrigger"`
 }

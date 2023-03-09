@@ -182,6 +182,9 @@ const (
 	// 未开通协议。
 	FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
 
+	// 该功能为白名单功能，如有需要请联系腾讯云助手。
+	FAILEDOPERATION_USERNOTINWHITELIST = "FailedOperation.UserNotInWhitelist"
+
 	// 该用户不在运营商网络可加速范围内。
 	FAILEDOPERATION_USEROUTOFCOVERAGE = "FailedOperation.UserOutOfCoverage"
 

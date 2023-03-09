@@ -1,3 +1,202 @@
+# Release v1.0.612
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 36 次发布
+
+发布时间：2023-03-09 01:14:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TopicInfo](https://cloud.tencent.com/document/api/614/56471#TopicInfo)
+
+	* 新增成员：HotPeriod
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 104 次发布
+
+发布时间：2023-03-09 01:16:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTaskInfo](https://cloud.tencent.com/document/api/213/87933)
+
+修改接口：
+
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
+
+	* 新增入参：BootMode
+
+
+新增数据结构：
+
+* [RepairTaskInfo](https://cloud.tencent.com/document/api/213/15753#RepairTaskInfo)
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 72 次发布
+
+发布时间：2023-03-09 01:17:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEmergencyVulScan](https://cloud.tencent.com/document/api/296/60904)
+
+	* 新增入参：TimeoutPeriod
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 68 次发布
+
+发布时间：2023-03-09 01:25:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateEmbedWebUrl](https://cloud.tencent.com/document/api/1420/87919)
+
+	* 新增入参：HiddenComponents
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 52 次发布
+
+发布时间：2023-03-09 01:39:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [WithdrawsWatermark](https://cloud.tencent.com/document/api/862/87934)
+
+新增数据结构：
+
+* [AwsS3FileUploadTrigger](https://cloud.tencent.com/document/api/862/37615#AwsS3FileUploadTrigger)
+* [AwsSQS](https://cloud.tencent.com/document/api/862/37615#AwsSQS)
+* [S3InputInfo](https://cloud.tencent.com/document/api/862/37615#S3InputInfo)
+* [S3OutputStorage](https://cloud.tencent.com/document/api/862/37615#S3OutputStorage)
+
+修改数据结构：
+
+* [MediaInputInfo](https://cloud.tencent.com/document/api/862/37615#MediaInputInfo)
+
+	* 新增成员：S3InputInfo
+
+* [TaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#TaskNotifyConfig)
+
+	* 新增成员：AwsSQS
+
+* [TaskOutputStorage](https://cloud.tencent.com/document/api/862/37615#TaskOutputStorage)
+
+	* 新增成员：S3OutputStorage
+
+* [WorkflowTrigger](https://cloud.tencent.com/document/api/862/37615#WorkflowTrigger)
+
+	* 新增成员：AwsS3FileUploadTrigger
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 30 次发布
+
+发布时间：2023-03-09 01:40:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RefJobStatusCountItem](https://cloud.tencent.com/document/api/849/52010#RefJobStatusCountItem)
+
+修改数据结构：
+
+* [ResourceConfigItem](https://cloud.tencent.com/document/api/849/52010#ResourceConfigItem)
+
+	* 新增成员：RefJobStatusCountSet
+
+* [ResourceItem](https://cloud.tencent.com/document/api/849/52010#ResourceItem)
+
+	* 新增成员：IsJobRun, FileName, WorkSpaceId, RefJobStatusCountSet
+
+	* <font color="#dd0000">**修改成员**：</font>ResourceId, Name, ResourceType, ResourceLoc, Region, AppId, OwnerUin, CreatorUin, CreateTime, UpdateTime, LatestResourceConfigVersion, Remark, VersionCount, RefJobCount
+
+* [RunJobDescription](https://cloud.tencent.com/document/api/849/52010#RunJobDescription)
+
+	* 新增成员：UseOldSystemConnector
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 48 次发布
+
+发布时间：2023-03-09 02:20:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateAMQPCluster
+* CreateAMQPExchange
+* CreateAMQPQueue
+* CreateAMQPRouteRelation
+* CreateAMQPVHost
+* DeleteAMQPCluster
+* DeleteAMQPExchange
+* DeleteAMQPQueue
+* DeleteAMQPRouteRelation
+* DeleteAMQPVHost
+* DescribeAMQPCluster
+* DescribeAMQPCreateQuota
+* DescribeAMQPExchanges
+* DescribeAMQPQueues
+* DescribeAMQPRouteRelations
+* DescribeAMQPVHosts
+* ModifyAMQPExchange
+* ModifyAMQPQueue
+* ModifyAMQPVHost
+
+
+
 # Release v1.0.611
 
 ## 商业流程服务(bpaas) 版本：2018-12-17

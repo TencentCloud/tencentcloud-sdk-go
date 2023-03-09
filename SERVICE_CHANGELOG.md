@@ -1,48 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 商业流程服务(bpaas) 版本：2018-12-17
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 4 次发布
+### 第 36 次发布
 
-发布时间：2023-03-08 01:04:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)
-
-	* 新增成员：ParallelNodes
-
-
-
-
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 43 次发布
-
-发布时间：2023-03-08 01:06:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DisableCCCPhoneNumber](https://cloud.tencent.com/document/api/679/80901)
-
-	* <font color="#dd0000">**修改入参**：</font>SdkAppId
-
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 84 次发布
-
-发布时间：2023-03-08 01:13:04
+发布时间：2023-03-09 01:14:48
 
 本次发布包含了以下内容：
 
@@ -50,22 +12,18 @@
 
 修改数据结构：
 
-* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+* [TopicInfo](https://cloud.tencent.com/document/api/614/56471#TopicInfo)
 
-	* 新增成员：LoadBalancerDomain
-
-* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
-
-	* 新增成员：LoadBalancerDomain
+	* 新增成员：HotPeriod
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 66 次发布
+### 第 104 次发布
 
-发布时间：2023-03-08 00:25:37
+发布时间：2023-03-09 01:16:53
 
 本次发布包含了以下内容：
 
@@ -73,49 +31,26 @@
 
 新增接口：
 
-* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
+* [DescribeTaskInfo](https://cloud.tencent.com/document/api/213/87933)
+
+修改接口：
+
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
+
+	* 新增入参：BootMode
+
 
 新增数据结构：
 
-* [BaseFlowInfo](https://cloud.tencent.com/document/api/1420/61525#BaseFlowInfo)
-* [CommonApproverOption](https://cloud.tencent.com/document/api/1420/61525#CommonApproverOption)
-* [CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)
-* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+* [RepairTaskInfo](https://cloud.tencent.com/document/api/213/15753#RepairTaskInfo)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 主机安全(cwp) 版本：2018-02-28
 
+### 第 72 次发布
 
-
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 78 次发布
-
-发布时间：2023-03-08 01:43:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Label](https://cloud.tencent.com/document/api/248/30354#Label)
-
-	* 新增成员：Name, Value
-
-* [PrometheusAgentInfo](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentInfo)
-
-	* 新增成员：ClusterType, ClusterId, Describe
-
-
-
-
-## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
-
-### 第 9 次发布
-
-发布时间：2023-03-08 01:54:20
+发布时间：2023-03-09 01:17:51
 
 本次发布包含了以下内容：
 
@@ -123,18 +58,83 @@
 
 修改接口：
 
-* [CreateCloudRunEnv](https://cloud.tencent.com/document/api/1243/75707)
+* [CreateEmergencyVulScan](https://cloud.tencent.com/document/api/296/60904)
 
-	* 新增入参：EnvId
-
-
+	* 新增入参：TimeoutPeriod
 
 
-## 实时音视频(trtc) 版本：2019-07-22
 
-### 第 49 次发布
 
-发布时间：2023-03-08 02:20:49
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 68 次发布
+
+发布时间：2023-03-09 01:25:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateEmbedWebUrl](https://cloud.tencent.com/document/api/1420/87919)
+
+	* 新增入参：HiddenComponents
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 52 次发布
+
+发布时间：2023-03-09 01:39:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [WithdrawsWatermark](https://cloud.tencent.com/document/api/862/87934)
+
+新增数据结构：
+
+* [AwsS3FileUploadTrigger](https://cloud.tencent.com/document/api/862/37615#AwsS3FileUploadTrigger)
+* [AwsSQS](https://cloud.tencent.com/document/api/862/37615#AwsSQS)
+* [S3InputInfo](https://cloud.tencent.com/document/api/862/37615#S3InputInfo)
+* [S3OutputStorage](https://cloud.tencent.com/document/api/862/37615#S3OutputStorage)
+
+修改数据结构：
+
+* [MediaInputInfo](https://cloud.tencent.com/document/api/862/37615#MediaInputInfo)
+
+	* 新增成员：S3InputInfo
+
+* [TaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#TaskNotifyConfig)
+
+	* 新增成员：AwsSQS
+
+* [TaskOutputStorage](https://cloud.tencent.com/document/api/862/37615#TaskOutputStorage)
+
+	* 新增成员：S3OutputStorage
+
+* [WorkflowTrigger](https://cloud.tencent.com/document/api/862/37615#WorkflowTrigger)
+
+	* 新增成员：AwsS3FileUploadTrigger
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 30 次发布
+
+发布时间：2023-03-09 01:40:49
 
 本次发布包含了以下内容：
 
@@ -142,55 +142,58 @@
 
 新增数据结构：
 
-* [McuWaterMarkText](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkText)
+* [RefJobStatusCountItem](https://cloud.tencent.com/document/api/849/52010#RefJobStatusCountItem)
 
 修改数据结构：
 
-* [McuWaterMarkParams](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkParams)
+* [ResourceConfigItem](https://cloud.tencent.com/document/api/849/52010#ResourceConfigItem)
 
-	* 新增成员：WaterMarkText
+	* 新增成员：RefJobStatusCountSet
+
+* [ResourceItem](https://cloud.tencent.com/document/api/849/52010#ResourceItem)
+
+	* 新增成员：IsJobRun, FileName, WorkSpaceId, RefJobStatusCountSet
+
+	* <font color="#dd0000">**修改成员**：</font>ResourceId, Name, ResourceType, ResourceLoc, Region, AppId, OwnerUin, CreatorUin, CreateTime, UpdateTime, LatestResourceConfigVersion, Remark, VersionCount, RefJobCount
+
+* [RunJobDescription](https://cloud.tencent.com/document/api/849/52010#RunJobDescription)
+
+	* 新增成员：UseOldSystemConnector
 
 
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-### 第 20 次发布
+### 第 48 次发布
 
-发布时间：2023-03-08 02:25:19
+发布时间：2023-03-09 02:20:30
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+<font color="#dd0000">**预下线接口**：</font>
 
-* [AlarmIndicatorInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmIndicatorInfo)
-
-修改数据结构：
-
-* [AlarmEventInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmEventInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>AlarmIndicator
-
-* [AlarmReceiverInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmReceiverInfo)
-
-	* 新增成员：WecomGroup
-
-* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
-
-	* 新增成员：DataProxyUrl, Submit
-
-* [TableInfo](https://cloud.tencent.com/document/api/1267/76336#TableInfo)
-
-	* 新增成员：OriginDatabaseName, OriginSchemaName
-
-* [TaskAlarmInfo](https://cloud.tencent.com/document/api/1267/76336#TaskAlarmInfo)
-
-	* 新增成员：AlarmIndicatorInfos, AlarmRecipientType, WeComHook
-
-	* <font color="#dd0000">**修改成员**：</font>AlarmIndicator, AlarmRecipientId, AlarmRecipientName
-
+* CreateAMQPCluster
+* CreateAMQPExchange
+* CreateAMQPQueue
+* CreateAMQPRouteRelation
+* CreateAMQPVHost
+* DeleteAMQPCluster
+* DeleteAMQPExchange
+* DeleteAMQPQueue
+* DeleteAMQPRouteRelation
+* DeleteAMQPVHost
+* DescribeAMQPCluster
+* DescribeAMQPCreateQuota
+* DescribeAMQPExchanges
+* DescribeAMQPQueues
+* DescribeAMQPRouteRelations
+* DescribeAMQPVHosts
+* ModifyAMQPExchange
+* ModifyAMQPQueue
+* ModifyAMQPVHost
 
 
 
@@ -23881,6 +23884,21 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 36 次发布
+
+发布时间：2023-03-09 01:14:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TopicInfo](https://cloud.tencent.com/document/api/614/56471#TopicInfo)
+
+	* 新增成员：HotPeriod
+
+
 ### 第 35 次发布
 
 发布时间：2023-01-13 01:13:52
@@ -28907,6 +28925,29 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 104 次发布
+
+发布时间：2023-03-09 01:16:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTaskInfo](https://cloud.tencent.com/document/api/213/87933)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
+
+	* 新增入参：BootMode
+
+
+新增数据结构：
+
+* [[RepairTaskInfo](https://cloud.tencent.com/document/api/213/15753#RepairTaskInfo)](https://cloud.tencent.com/document/api/213/15753#[RepairTaskInfo](https://cloud.tencent.com/document/api/213/15753#RepairTaskInfo))
+
 ### 第 103 次发布
 
 发布时间：2022-12-28 01:05:55
@@ -30853,6 +30894,21 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 72 次发布
+
+发布时间：2023-03-09 01:17:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEmergencyVulScan](https://cloud.tencent.com/document/api/296/60904)
+
+	* 新增入参：TimeoutPeriod
+
 
 ### 第 71 次发布
 
@@ -45218,6 +45274,33 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 68 次发布
+
+发布时间：2023-03-09 01:25:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateEmbedWebUrl](https://cloud.tencent.com/document/api/1420/87919)
+
+	* 新增入参：HiddenComponents
+
+
+### 第 67 次发布
+
+发布时间：2023-03-08 14:55:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateEmbedWebUrl](https://cloud.tencent.com/document/api/1420/87919)
+
 ### 第 66 次发布
 
 发布时间：2023-03-08 00:25:37
@@ -45228,14 +45311,14 @@
 
 新增接口：
 
-* [[ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
 
 新增数据结构：
 
-* [[BaseFlowInfo](https://cloud.tencent.com/document/api/1420/61525#BaseFlowInfo)](https://cloud.tencent.com/document/api/1420/61525#[BaseFlowInfo](https://cloud.tencent.com/document/api/1420/61525#BaseFlowInfo))
-* [[CommonApproverOption](https://cloud.tencent.com/document/api/1420/61525#CommonApproverOption)](https://cloud.tencent.com/document/api/1420/61525#[CommonApproverOption](https://cloud.tencent.com/document/api/1420/61525#CommonApproverOption))
-* [[CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)](https://cloud.tencent.com/document/api/1420/61525#[CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover))
-* [[CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)](https://cloud.tencent.com/document/api/1420/61525#[CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption))
+* [BaseFlowInfo](https://cloud.tencent.com/document/api/1420/61525#BaseFlowInfo)
+* [CommonApproverOption](https://cloud.tencent.com/document/api/1420/61525#CommonApproverOption)
+* [CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
 
 ### 第 65 次发布
 
@@ -64145,6 +64228,44 @@
 
 ## 媒体处理(mps) 版本：2019-06-12
 
+### 第 52 次发布
+
+发布时间：2023-03-09 01:39:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[WithdrawsWatermark](https://cloud.tencent.com/document/api/862/87934)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AwsS3FileUploadTrigger](https://cloud.tencent.com/document/api/862/37615#AwsS3FileUploadTrigger)](https://cloud.tencent.com/document/api/862/37615#[AwsS3FileUploadTrigger](https://cloud.tencent.com/document/api/862/37615#AwsS3FileUploadTrigger))
+* [[AwsSQS](https://cloud.tencent.com/document/api/862/37615#AwsSQS)](https://cloud.tencent.com/document/api/862/37615#[AwsSQS](https://cloud.tencent.com/document/api/862/37615#AwsSQS))
+* [[S3InputInfo](https://cloud.tencent.com/document/api/862/37615#S3InputInfo)](https://cloud.tencent.com/document/api/862/37615#[S3InputInfo](https://cloud.tencent.com/document/api/862/37615#S3InputInfo))
+* [[S3OutputStorage](https://cloud.tencent.com/document/api/862/37615#S3OutputStorage)](https://cloud.tencent.com/document/api/862/37615#[S3OutputStorage](https://cloud.tencent.com/document/api/862/37615#S3OutputStorage))
+
+修改数据结构：
+
+* [MediaInputInfo](https://cloud.tencent.com/document/api/862/37615#MediaInputInfo)
+
+	* 新增成员：S3InputInfo
+
+* [TaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#TaskNotifyConfig)
+
+	* 新增成员：AwsSQS
+
+* [TaskOutputStorage](https://cloud.tencent.com/document/api/862/37615#TaskOutputStorage)
+
+	* 新增成员：S3OutputStorage
+
+* [WorkflowTrigger](https://cloud.tencent.com/document/api/862/37615#WorkflowTrigger)
+
+	* 新增成员：AwsS3FileUploadTrigger
+
+
 ### 第 51 次发布
 
 发布时间：2023-02-02 01:40:19
@@ -67082,6 +67203,35 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 30 次发布
+
+发布时间：2023-03-09 01:40:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[RefJobStatusCountItem](https://cloud.tencent.com/document/api/849/52010#RefJobStatusCountItem)](https://cloud.tencent.com/document/api/849/52010#[RefJobStatusCountItem](https://cloud.tencent.com/document/api/849/52010#RefJobStatusCountItem))
+
+修改数据结构：
+
+* [ResourceConfigItem](https://cloud.tencent.com/document/api/849/52010#ResourceConfigItem)
+
+	* 新增成员：RefJobStatusCountSet
+
+* [ResourceItem](https://cloud.tencent.com/document/api/849/52010#ResourceItem)
+
+	* 新增成员：IsJobRun, FileName, WorkSpaceId, RefJobStatusCountSet
+
+	* <font color="#dd0000">**修改成员**：</font>ResourceId, Name, ResourceType, ResourceLoc, Region, AppId, OwnerUin, CreatorUin, CreateTime, UpdateTime, LatestResourceConfigVersion, Remark, VersionCount, RefJobCount
+
+* [RunJobDescription](https://cloud.tencent.com/document/api/849/52010#RunJobDescription)
+
+	* 新增成员：UseOldSystemConnector
+
 
 ### 第 29 次发布
 
@@ -84894,6 +85044,36 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 48 次发布
+
+发布时间：2023-03-09 02:20:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateAMQPCluster
+* CreateAMQPExchange
+* CreateAMQPQueue
+* CreateAMQPRouteRelation
+* CreateAMQPVHost
+* DeleteAMQPCluster
+* DeleteAMQPExchange
+* DeleteAMQPQueue
+* DeleteAMQPRouteRelation
+* DeleteAMQPVHost
+* DescribeAMQPCluster
+* DescribeAMQPCreateQuota
+* DescribeAMQPExchanges
+* DescribeAMQPQueues
+* DescribeAMQPRouteRelations
+* DescribeAMQPVHosts
+* ModifyAMQPExchange
+* ModifyAMQPQueue
+* ModifyAMQPVHost
+
 ### 第 47 次发布
 
 发布时间：2023-03-07 01:48:59
@@ -95646,7 +95826,7 @@
 
 新增数据结构：
 
-* [[McuWaterMarkText](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkText)](https://cloud.tencent.com/document/api/647/44055#[McuWaterMarkText](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkText))
+* [McuWaterMarkText](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkText)
 
 修改数据结构：
 
@@ -108085,7 +108265,7 @@
 
 新增数据结构：
 
-* [[AlarmIndicatorInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmIndicatorInfo)](https://cloud.tencent.com/document/api/1267/76336#[AlarmIndicatorInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmIndicatorInfo))
+* [AlarmIndicatorInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmIndicatorInfo)
 
 修改数据结构：
 

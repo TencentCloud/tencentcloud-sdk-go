@@ -3893,6 +3893,222 @@ func (r *DescribeReservedInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskInfoRequestParams struct {
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照指定的产品类型查询，支持取值：
+	// 
+	// - `CVM`：云服务器
+	// - `CDH`：专用宿主机
+	// - `CPM2.0`：裸金属云服务器
+	// 
+	// 未传入或为空时，默认查询全部产品类型。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 按照一个或多个任务状态ID进行过滤。
+	// `TaskStatus`（任务状态ID）与任务状态中文名的对应关系如下：
+	// 
+	// - `1`：待授权
+	// - `2`：处理中
+	// - `3`：已结束
+	// - `4`：已预约
+	// - `5`：已取消
+	// - `6`：已避免
+	// 
+	// 各任务状态的具体含义，可参考 [任务状态](https://cloud.tencent.com/document/product/213/67789#.E4.BB.BB.E5.8A.A1.E7.8A.B6.E6.80.81)。
+	TaskStatus []*int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 按照一个或多个任务类型ID进行过滤。
+	// 
+	// `TaskTypeId`（任务类型ID）与任务类型中文名的对应关系如下：
+	// 
+	// - `101`：实例运行隐患
+	// - `102`：实例运行异常
+	// - `103`：实例硬盘异常
+	// - `104`：实例网络连接异常
+	// - `105`：实例运行预警
+	// - `106`：实例硬盘预警
+	// - `107`：实例维护升级
+	// 
+	// 各任务类型的具体含义，可参考 [维修任务分类](https://cloud.tencent.com/document/product/213/67789#.E7.BB.B4.E4.BF.AE.E4.BB.BB.E5.8A.A1.E5.88.86.E7.B1.BB)。
+	TaskTypeIds []*int64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds"`
+
+	// 按照一个或者多个任务ID查询。任务ID形如：`rep-xxxxxxxx`。
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 按照一个或者多个实例ID查询。实例ID形如：`ins-xxxxxxxx`。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 按照一个或者多个实例名称查询。
+	Aliases []*string `json:"Aliases,omitempty" name:"Aliases"`
+
+	// 时间查询区间的起始位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当天`00:00:00`。
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 时间查询区间的终止位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当前时刻。
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 指定返回维修任务列表的排序字段，目前支持：
+	// 
+	// - `CreateTime`：任务创建时间
+	// - `AuthTime`：任务授权时间
+	// - `EndTime`：任务结束时间
+	// 
+	// 未传入时或为空时，默认按`CreateTime`字段进行排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式，目前支持：
+	// 
+	// - `0`：升序（默认）
+	// - `1`：降序
+	// 
+	// 未传入或为空时，默认按升序排序。
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+}
+
+type DescribeTaskInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照指定的产品类型查询，支持取值：
+	// 
+	// - `CVM`：云服务器
+	// - `CDH`：专用宿主机
+	// - `CPM2.0`：裸金属云服务器
+	// 
+	// 未传入或为空时，默认查询全部产品类型。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 按照一个或多个任务状态ID进行过滤。
+	// `TaskStatus`（任务状态ID）与任务状态中文名的对应关系如下：
+	// 
+	// - `1`：待授权
+	// - `2`：处理中
+	// - `3`：已结束
+	// - `4`：已预约
+	// - `5`：已取消
+	// - `6`：已避免
+	// 
+	// 各任务状态的具体含义，可参考 [任务状态](https://cloud.tencent.com/document/product/213/67789#.E4.BB.BB.E5.8A.A1.E7.8A.B6.E6.80.81)。
+	TaskStatus []*int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 按照一个或多个任务类型ID进行过滤。
+	// 
+	// `TaskTypeId`（任务类型ID）与任务类型中文名的对应关系如下：
+	// 
+	// - `101`：实例运行隐患
+	// - `102`：实例运行异常
+	// - `103`：实例硬盘异常
+	// - `104`：实例网络连接异常
+	// - `105`：实例运行预警
+	// - `106`：实例硬盘预警
+	// - `107`：实例维护升级
+	// 
+	// 各任务类型的具体含义，可参考 [维修任务分类](https://cloud.tencent.com/document/product/213/67789#.E7.BB.B4.E4.BF.AE.E4.BB.BB.E5.8A.A1.E5.88.86.E7.B1.BB)。
+	TaskTypeIds []*int64 `json:"TaskTypeIds,omitempty" name:"TaskTypeIds"`
+
+	// 按照一个或者多个任务ID查询。任务ID形如：`rep-xxxxxxxx`。
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 按照一个或者多个实例ID查询。实例ID形如：`ins-xxxxxxxx`。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 按照一个或者多个实例名称查询。
+	Aliases []*string `json:"Aliases,omitempty" name:"Aliases"`
+
+	// 时间查询区间的起始位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当天`00:00:00`。
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 时间查询区间的终止位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当前时刻。
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 指定返回维修任务列表的排序字段，目前支持：
+	// 
+	// - `CreateTime`：任务创建时间
+	// - `AuthTime`：任务授权时间
+	// - `EndTime`：任务结束时间
+	// 
+	// 未传入时或为空时，默认按`CreateTime`字段进行排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式，目前支持：
+	// 
+	// - `0`：升序（默认）
+	// - `1`：降序
+	// 
+	// 未传入或为空时，默认按升序排序。
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+}
+
+func (r *DescribeTaskInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Product")
+	delete(f, "TaskStatus")
+	delete(f, "TaskTypeIds")
+	delete(f, "TaskIds")
+	delete(f, "InstanceIds")
+	delete(f, "Aliases")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskInfoResponseParams struct {
+	// 查询返回的维修任务总数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 查询返回的维修任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepairTaskInfoSet []*RepairTaskInfo `json:"RepairTaskInfoSet,omitempty" name:"RepairTaskInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeZoneInstanceConfigInfosRequestParams struct {
 	// <li><strong>zone</strong></li>
 	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
@@ -4568,6 +4784,9 @@ type ImportImageRequestParams struct {
 	// TencentCloud: 腾讯云官方许可
 	// BYOL: 自带许可（Bring Your Own License）
 	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 启动模式
+	BootMode *string `json:"BootMode,omitempty" name:"BootMode"`
 }
 
 type ImportImageRequest struct {
@@ -4605,6 +4824,9 @@ type ImportImageRequest struct {
 	// TencentCloud: 腾讯云官方许可
 	// BYOL: 自带许可（Bring Your Own License）
 	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 启动模式
+	BootMode *string `json:"BootMode,omitempty" name:"BootMode"`
 }
 
 func (r *ImportImageRequest) ToJsonString() string {
@@ -4629,6 +4851,7 @@ func (r *ImportImageRequest) FromJsonString(s string) error {
 	delete(f, "Force")
 	delete(f, "TagSpecification")
 	delete(f, "LicenseType")
+	delete(f, "BootMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportImageRequest has unknown keys!", "")
 	}
@@ -7775,6 +7998,136 @@ func (r *RenewInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RenewInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RepairTaskInfo struct {
+	// 维修任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 任务类型ID，与任务类型中文名的对应关系如下：
+	// 
+	// - `101`：实例运行隐患
+	// - `102`：实例运行异常
+	// - `103`：实例硬盘异常
+	// - `104`：实例网络连接异常
+	// - `105`：实例运行预警
+	// - `106`：实例硬盘预警
+	// - `107`：实例维护升级
+	// 
+	// 各任务类型的具体含义，可参考 [维修任务分类](https://cloud.tencent.com/document/product/213/67789#.E7.BB.B4.E4.BF.AE.E4.BB.BB.E5.8A.A1.E5.88.86.E7.B1.BB)。
+	TaskTypeId *uint64 `json:"TaskTypeId,omitempty" name:"TaskTypeId"`
+
+	// 任务类型中文名
+	TaskTypeName *string `json:"TaskTypeName,omitempty" name:"TaskTypeName"`
+
+	// 任务状态ID，与任务状态中文名的对应关系如下：
+	// 
+	// - `1`：待授权
+	// - `2`：处理中
+	// - `3`：已结束
+	// - `4`：已预约
+	// - `5`：已取消
+	// - `6`：已避免
+	// 
+	// 各任务状态的具体含义，可参考 [任务状态](https://cloud.tencent.com/document/product/213/67789#.E4.BB.BB.E5.8A.A1.E7.8A.B6.E6.80.81)。
+	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 设备状态ID，与设备状态中文名的对应关系如下：
+	// 
+	// - `1`：故障中
+	// - `2`：处理中
+	// - `3`：正常
+	// - `4`：已预约
+	// - `5`：已取消
+	// - `6`：已避免
+	DeviceStatus *uint64 `json:"DeviceStatus,omitempty" name:"DeviceStatus"`
+
+	// 操作状态ID，与操作状态中文名的对应关系如下：
+	// 
+	// - `1`：未授权
+	// - `2`：已授权
+	// - `3`：已处理
+	// - `4`：已预约
+	// - `5`：已取消
+	// - `6`：已避免
+	OperateStatus *uint64 `json:"OperateStatus,omitempty" name:"OperateStatus"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务授权时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthTime *string `json:"AuthTime,omitempty" name:"AuthTime"`
+
+	// 任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskDetail *string `json:"TaskDetail,omitempty" name:"TaskDetail"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 所在私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 所在私有网络名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// 所在子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 所在子网名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+
+	// 实例公网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
+
+	// 实例内网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LanIp *string `json:"LanIp,omitempty" name:"LanIp"`
+
+	// 产品类型，支持取值：
+	// 
+	// - `CVM`：云服务器
+	// - `CDH`：专用宿主机
+	// - `CPM2.0`：裸金属云服务器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 任务子类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskSubType *string `json:"TaskSubType,omitempty" name:"TaskSubType"`
+
+	// 任务授权类型
+	AuthType *uint64 `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 授权渠道，支持取值：
+	// 
+	// - `Waiting_auth`：待授权
+	// - `Customer_auth`：客户操作授权
+	// - `System_mandatory_auth`：系统默认授权
+	// - `Pre_policy_auth`：预置策略授权
+	AuthSource *string `json:"AuthSource,omitempty" name:"AuthSource"`
 }
 
 type ReservedInstanceConfigInfoItem struct {

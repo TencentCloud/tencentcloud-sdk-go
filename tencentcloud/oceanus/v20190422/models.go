@@ -2381,6 +2381,16 @@ type Property struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type RefJobStatusCountItem struct {
+	// 作业状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobStatus *int64 `json:"JobStatus,omitempty" name:"JobStatus"`
+
+	// 作业数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type ResourceConfigItem struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
@@ -2419,6 +2429,10 @@ type ResourceConfigItem struct {
 	// 关联作业个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefJobCount *int64 `json:"RefJobCount,omitempty" name:"RefJobCount"`
+
+	// 分状态统计关联作业数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefJobStatusCountSet []*RefJobStatusCountItem `json:"RefJobStatusCountSet,omitempty" name:"RefJobStatusCountSet"`
 }
 
 type ResourceItem struct {
@@ -2466,6 +2480,22 @@ type ResourceItem struct {
 	// 关联作业数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefJobCount *int64 `json:"RefJobCount,omitempty" name:"RefJobCount"`
+
+	// 作业运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsJobRun *int64 `json:"IsJobRun,omitempty" name:"IsJobRun"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 工作空间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceId *int64 `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 分状态统计关联作业数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefJobStatusCountSet []*RefJobStatusCountItem `json:"RefJobStatusCountSet,omitempty" name:"RefJobStatusCountSet"`
 }
 
 type ResourceLoc struct {
@@ -2534,7 +2564,7 @@ type RunJobDescription struct {
 	// 运行类型，1：启动，2：恢复
 	RunType *int64 `json:"RunType,omitempty" name:"RunType"`
 
-	// 已废弃。旧版 SQL 类型作业启动参数：指定数据源消费起始时间点
+	// 兼容旧版 SQL 类型作业启动参数：指定数据源消费起始时间点（例:T1557394288000）
 	StartMode *string `json:"StartMode,omitempty" name:"StartMode"`
 
 	// 当前作业的某个版本
@@ -2545,6 +2575,10 @@ type RunJobDescription struct {
 
 	// Savepoint的Id
 	SavepointId *string `json:"SavepointId,omitempty" name:"SavepointId"`
+
+	// 使用历史版本系统依赖
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseOldSystemConnector *bool `json:"UseOldSystemConnector,omitempty" name:"UseOldSystemConnector"`
 }
 
 // Predefined struct for user

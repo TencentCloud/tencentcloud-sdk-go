@@ -392,6 +392,9 @@ const (
 	// 无法找到指定生命周期挂钩。
 	RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
 
+	// 指定的生命周期挂钩Token不存在。
+	RESOURCENOTFOUND_LIFECYCLEHOOKTOKENNOTFOUND = "ResourceNotFound.LifecycleHookTokenNotFound"
+
 	// 指定的Listener不存在。
 	RESOURCENOTFOUND_LISTENERNOTFOUND = "ResourceNotFound.ListenerNotFound"
 
@@ -430,6 +433,9 @@ const (
 
 	// 实例和伸缩组Vpc不一致。
 	RESOURCEUNAVAILABLE_CVMVPCINCONSISTENT = "ResourceUnavailable.CvmVpcInconsistent"
+
+	// 绑定负载均衡器的伸缩组禁止修改Vpc。
+	RESOURCEUNAVAILABLE_FORBIDDENMODIFYVPC = "ResourceUnavailable.ForbiddenModifyVpc"
 
 	// 实例无法添加至伸缩组。
 	RESOURCEUNAVAILABLE_INSTANCECANNOTATTACH = "ResourceUnavailable.InstanceCannotAttach"
