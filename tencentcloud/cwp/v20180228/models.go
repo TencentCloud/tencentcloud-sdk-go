@@ -21118,6 +21118,10 @@ type JavaMemShellInfo struct {
 	// 主机额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 服务器uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 type LicenseBindDetail struct {

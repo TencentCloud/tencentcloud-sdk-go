@@ -2806,7 +2806,7 @@ type DeleteAlarmNoticesRequestParams struct {
 	// 告警通知模板id列表
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 
-	// 通知模版与策略绑定关系
+	// 通知模板与策略绑定关系
 	NoticeBindPolicys []*NoticeBindPolicys `json:"NoticeBindPolicys,omitempty" name:"NoticeBindPolicys"`
 }
 
@@ -2819,7 +2819,7 @@ type DeleteAlarmNoticesRequest struct {
 	// 告警通知模板id列表
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 
-	// 通知模版与策略绑定关系
+	// 通知模板与策略绑定关系
 	NoticeBindPolicys []*NoticeBindPolicys `json:"NoticeBindPolicys,omitempty" name:"NoticeBindPolicys"`
 }
 

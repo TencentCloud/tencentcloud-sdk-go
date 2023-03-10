@@ -610,6 +610,69 @@ type ContentInfo struct {
 	Parquet *ParquetInfo `json:"Parquet,omitempty" name:"Parquet"`
 }
 
+type CosRechargeInfo struct {
+	// COS导入配置ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// cos导入任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// cos存储桶
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// cos存储桶地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// cos存储桶前缀地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Prefix *string `json:"Prefix,omitempty" name:"Prefix"`
+
+	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志；
+	// 默认为minimalist_log
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否启用:   0： 未启用  ， 1：启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 进度条百分值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// supported: "", "gzip", "lzop", "snappy”; 默认空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Compress *string `json:"Compress,omitempty" name:"Compress"`
+
+	// 见： ExtractRuleInfo 结构描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitempty" name:"ExtractRuleInfo"`
+}
+
 // Predefined struct for user
 type CreateAlarmNoticeRequestParams struct {
 	// 通知渠道组名称。
@@ -1168,6 +1231,118 @@ func (r *CreateConsumerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCosRechargeRequestParams struct {
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 投递任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// COS存储桶
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// COS存储桶所在地域
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// COS文件所在文件夹的前缀
+	Prefix *string `json:"Prefix,omitempty" name:"Prefix"`
+
+	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
+	// 默认为minimalist_log
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// supported: "", "gzip", "lzop", "snappy”; 默认空
+	Compress *string `json:"Compress,omitempty" name:"Compress"`
+
+	// 提取规则，如果设置了ExtractRule，则必须设置LogType
+	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitempty" name:"ExtractRuleInfo"`
+}
+
+type CreateCosRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 投递任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// COS存储桶
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// COS存储桶所在地域
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// COS文件所在文件夹的前缀
+	Prefix *string `json:"Prefix,omitempty" name:"Prefix"`
+
+	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
+	// 默认为minimalist_log
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// supported: "", "gzip", "lzop", "snappy”; 默认空
+	Compress *string `json:"Compress,omitempty" name:"Compress"`
+
+	// 提取规则，如果设置了ExtractRule，则必须设置LogType
+	ExtractRuleInfo *ExtractRuleInfo `json:"ExtractRuleInfo,omitempty" name:"ExtractRuleInfo"`
+}
+
+func (r *CreateCosRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCosRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "LogsetId")
+	delete(f, "Name")
+	delete(f, "Bucket")
+	delete(f, "BucketRegion")
+	delete(f, "Prefix")
+	delete(f, "LogType")
+	delete(f, "Compress")
+	delete(f, "ExtractRuleInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCosRechargeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCosRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCosRechargeResponseParams `json:"Response"`
+}
+
+func (r *CreateCosRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCosRechargeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3061,6 +3236,78 @@ func (r *DescribeConsumerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCosRechargesRequestParams struct {
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否启用:   0： 未启用  ， 1：启用
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+}
+
+type DescribeCosRechargesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 状态   status 0: 已创建, 1: 运行中, 2: 已停止, 3: 已完成, 4: 运行失败。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否启用:   0： 未启用  ， 1：启用
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+}
+
+func (r *DescribeCosRechargesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCosRechargesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Status")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCosRechargesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCosRechargesResponseParams struct {
+	// 见: CosRechargeInfo 结构描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*CosRechargeInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCosRechargesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCosRechargesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCosRechargesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCosRechargesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5256,6 +5503,81 @@ func (r *ModifyConsumerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyCosRechargeRequestParams struct {
+	// COS导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 日志主题Id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// COS导入任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否启用:   0： 未启用  ， 1：启用
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+}
+
+type ModifyCosRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// COS导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 日志主题Id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// COS导入任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否启用:   0： 未启用  ， 1：启用
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+}
+
+func (r *ModifyCosRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCosRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "Enable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCosRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCosRechargeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyCosRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCosRechargeResponseParams `json:"Response"`
+}
+
+func (r *ModifyCosRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCosRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyIndexRequestParams struct {
 	// 日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
@@ -6312,9 +6634,11 @@ func (r *SplitPartitionResponse) FromJsonString(s string) error {
 
 type Tag struct {
 	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 

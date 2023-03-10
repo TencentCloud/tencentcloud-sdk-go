@@ -229,11 +229,11 @@ type ClusterInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiAccessIpv6 *string `json:"ApiAccessIpv6,omitempty" name:"ApiAccessIpv6"`
 
-	// 集群类型
+	// 集群类型，0,1:共享集群; 2:独立集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
 
-	// 集群状态
+	// 集群状态, 0：表示正常运行中，1：表示冻结隔离一般欠费进入此状态，2：表示待回收，一般用户主动触发删除进入这个状态，3：待释放，进入这个状态，表示可以释放此表占用的资源了，4：变更中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterStatus *int64 `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
 
@@ -283,6 +283,10 @@ type ClusterInfo struct {
 	// 集群Ulog备份文件过期策略是否为只读， 0： UlogBackupExpire是只读，不可修改， 1： UlogBackupExpire可以修改（当前业务存在Svrid第二段等于clusterid的机器）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsReadOnlyUlogBackupExpireDay *uint64 `json:"IsReadOnlyUlogBackupExpireDay,omitempty" name:"IsReadOnlyUlogBackupExpireDay"`
+
+	// restproxy状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestProxyStatus *int64 `json:"RestProxyStatus,omitempty" name:"RestProxyStatus"`
 }
 
 // Predefined struct for user
@@ -3790,6 +3794,10 @@ type ProxyDetailInfo struct {
 
 	// 慢处理包速度
 	SlowProcessSpeed *int64 `json:"SlowProcessSpeed,omitempty" name:"SlowProcessSpeed"`
+
+	// 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 type ProxyMachineInfo struct {
@@ -4053,6 +4061,10 @@ type ServerDetailInfo struct {
 
 	// 写次数
 	WriteNum *int64 `json:"WriteNum,omitempty" name:"WriteNum"`
+
+	// 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 type ServerMachineInfo struct {
@@ -4328,6 +4340,21 @@ type TableGroupInfo struct {
 
 	// 表格组包含的表格存储总量（MB）
 	TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
+
+	// 表格Txh备份文件多少天后过期删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TxhBackupExpireDay *uint64 `json:"TxhBackupExpireDay,omitempty" name:"TxhBackupExpireDay"`
+
+	// 是否开启mysql负载均衡,0未开启 1开启中 2已开启
+	EnableMysql *uint64 `json:"EnableMysql,omitempty" name:"EnableMysql"`
+
+	// mysql负载均衡vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MysqlConnIp *string `json:"MysqlConnIp,omitempty" name:"MysqlConnIp"`
+
+	// mysql负载均衡vport
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MysqlConnPort *uint64 `json:"MysqlConnPort,omitempty" name:"MysqlConnPort"`
 }
 
 type TableInfoNew struct {

@@ -2087,7 +2087,7 @@ type DescribeRoomResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
-	// 录制地址。仅在房间结束后存在。
+	// 录制地址（协议为https)。仅在房间结束后存在。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
 

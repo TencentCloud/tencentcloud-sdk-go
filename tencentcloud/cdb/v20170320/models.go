@@ -809,6 +809,12 @@ type CloneItem struct {
 
 	// 任务状态，包括以下状态：initial,running,wait_complete,success,failed
 	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 克隆实例所在地域Id
+	NewRegionId *int64 `json:"NewRegionId,omitempty" name:"NewRegionId"`
+
+	// 源实例所在地域Id
+	SrcRegionId *int64 `json:"SrcRegionId,omitempty" name:"SrcRegionId"`
 }
 
 // Predefined struct for user

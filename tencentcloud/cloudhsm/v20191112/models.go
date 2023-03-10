@@ -20,6 +20,26 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AlarmPolicy struct {
+	// 用户账号
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 告警事件
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// 告警阈值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 告警策略是否生效，0：停用，1：启用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 在这个时间后才允许发送告警
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 在这个时间前才允许发送告警
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 // Predefined struct for user
 type DescribeHSMBySubnetIdRequestParams struct {
 	// Subnet标识符
@@ -731,12 +751,134 @@ type DeviceInfo struct {
 	HsmTypes []*HsmInfo `json:"HsmTypes,omitempty" name:"HsmTypes"`
 }
 
+// Predefined struct for user
+type GetAlarmEventRequestParams struct {
+
+}
+
+type GetAlarmEventRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetAlarmEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAlarmEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAlarmEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAlarmEventResponseParams struct {
+	// 用户所有的告警策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmConfig []*AlarmPolicy `json:"AlarmConfig,omitempty" name:"AlarmConfig"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetAlarmEventResponse struct {
+	*tchttp.BaseResponse
+	Response *GetAlarmEventResponseParams `json:"Response"`
+}
+
+func (r *GetAlarmEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAlarmEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVsmMonitorInfoRequestParams struct {
+	// 资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+}
+
+type GetVsmMonitorInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+}
+
+func (r *GetVsmMonitorInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVsmMonitorInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "ResourceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVsmMonitorInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVsmMonitorInfoResponseParams struct {
+	// VSM监控信息
+	MonitorInfo []*string `json:"MonitorInfo,omitempty" name:"MonitorInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetVsmMonitorInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *GetVsmMonitorInfoResponseParams `json:"Response"`
+}
+
+func (r *GetVsmMonitorInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVsmMonitorInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type HsmInfo struct {
 	// 加密机型号
 	Model *string `json:"Model,omitempty" name:"Model"`
 
 	// 此类型的加密机所支持的VSM类型列表
 	VsmTypes []*VsmInfo `json:"VsmTypes,omitempty" name:"VsmTypes"`
+
+	// 加密机母机类型：virtualization、GHSM、EHSM、SHSM
+	HsmType *string `json:"HsmType,omitempty" name:"HsmType"`
 }
 
 // Predefined struct for user
@@ -856,6 +998,88 @@ func (r *InquiryPriceBuyVsmResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyAlarmEventRequestParams struct {
+	// 告警事件，支持CPU、MEM、TCP
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// 告警阈值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 告警状态，0表示停用，1表示启动
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 告警开始时间，只有在这个时间后才会发送告警，当跟EndTime同时为空时表示全天告警
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 告警结束时间，只有在这个时间前才会发送告警，当跟BeginTime同时为空时表示全天告警
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type ModifyAlarmEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警事件，支持CPU、MEM、TCP
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// 告警阈值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 告警状态，0表示停用，1表示启动
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 告警开始时间，只有在这个时间后才会发送告警，当跟EndTime同时为空时表示全天告警
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 告警结束时间，只有在这个时间前才会发送告警，当跟BeginTime同时为空时表示全天告警
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *ModifyAlarmEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAlarmEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Event")
+	delete(f, "Limit")
+	delete(f, "Status")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAlarmEventResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAlarmEventResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAlarmEventResponseParams `json:"Response"`
+}
+
+func (r *ModifyAlarmEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAlarmEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyVsmAttributesRequestParams struct {
 	// 资源Id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
@@ -877,6 +1101,9 @@ type ModifyVsmAttributesRequestParams struct {
 
 	// 子网Id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 告警开关，0表示关闭告警，1表示启用告警
+	AlarmStatus *int64 `json:"AlarmStatus,omitempty" name:"AlarmStatus"`
 }
 
 type ModifyVsmAttributesRequest struct {
@@ -902,6 +1129,9 @@ type ModifyVsmAttributesRequest struct {
 
 	// 子网Id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 告警开关，0表示关闭告警，1表示启用告警
+	AlarmStatus *int64 `json:"AlarmStatus,omitempty" name:"AlarmStatus"`
 }
 
 func (r *ModifyVsmAttributesRequest) ToJsonString() string {
@@ -922,6 +1152,7 @@ func (r *ModifyVsmAttributesRequest) FromJsonString(s string) error {
 	delete(f, "SgIds")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
+	delete(f, "AlarmStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVsmAttributesRequest has unknown keys!", "")
 	}
@@ -1038,6 +1269,10 @@ type ResourceInfo struct {
 	// 厂商
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
+
+	// 告警状态，0：停用，1：启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmStatus *int64 `json:"AlarmStatus,omitempty" name:"AlarmStatus"`
 }
 
 type SgUnit struct {

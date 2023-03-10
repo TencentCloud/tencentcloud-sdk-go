@@ -106,6 +106,21 @@ type BaseFlowInfo struct {
 type CcInfo struct {
 	// 被抄送人手机号，大陆11位手机号
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 被抄送人姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 被抄送人类型
+	// 0--个人. 1--员工
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcType *int64 `json:"CcType,omitempty" name:"CcType"`
+
+	// 被抄送人权限
+	// 0--可查看
+	// 1--可查看也可下载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcPermission *int64 `json:"CcPermission,omitempty" name:"CcPermission"`
 }
 
 // Predefined struct for user
@@ -691,7 +706,7 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 签署流程名称，长度不超过200个字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
-	// 签署流程签约方列表，最多不超过5个参与方
+	// 签署流程签约方列表，最多不超过50个参与方
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitempty" name:"FlowApprovers"`
 
 	// 签署文件资源Id列表，目前仅支持单个文件
@@ -735,6 +750,12 @@ type ChannelCreateFlowByFilesRequestParams struct {
 
 	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 被抄送人信息列表
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 }
 
 type ChannelCreateFlowByFilesRequest struct {
@@ -746,7 +767,7 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 签署流程名称，长度不超过200个字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
-	// 签署流程签约方列表，最多不超过5个参与方
+	// 签署流程签约方列表，最多不超过50个参与方
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitempty" name:"FlowApprovers"`
 
 	// 签署文件资源Id列表，目前仅支持单个文件
@@ -790,6 +811,12 @@ type ChannelCreateFlowByFilesRequest struct {
 
 	// 操作者的信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 被抄送人信息列表
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 }
 
 func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
@@ -820,6 +847,8 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "ApproverVerifyType")
 	delete(f, "SignBeanTag")
 	delete(f, "Operator")
+	delete(f, "CcInfos")
+	delete(f, "CcNotifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -3841,6 +3870,9 @@ type FlowInfo struct {
 	// 
 	// 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
+
+	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 }
 
 type FlowResourceUrlInfo struct {

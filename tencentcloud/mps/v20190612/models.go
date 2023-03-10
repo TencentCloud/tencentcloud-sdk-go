@@ -104,6 +104,57 @@ type ActionConfigInfo struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type Activity struct {
+	// 原子任务类型：
+	// <li>input: 起始节点</li>
+	// <li>output：终止节点</li>
+	// <li>action-trans：转码</li>
+	// <li>action-samplesnapshot：采样截图</li>
+	// <li>action-AIAnalysis: 分析</li>
+	// <li>action-AIRecognition：识别</li>
+	// <li>action-aiReview：审核</li>
+	// <li>action-animated-graphics：转动图</li>
+	// <li>action-image-sprite：雪碧图</li>
+	// <li>action-snapshotByTimeOffset: 时间点截图</li>
+	// <li>action-adaptive-substream：自适应码流</li>
+	ActivityType *string `json:"ActivityType,omitempty" name:"ActivityType"`
+
+	// 后驱节点索引数组
+	ReardriveIndex []*int64 `json:"ReardriveIndex,omitempty" name:"ReardriveIndex"`
+
+	// 原子任务参数
+	ActivityPara *ActivityPara `json:"ActivityPara,omitempty" name:"ActivityPara"`
+}
+
+type ActivityPara struct {
+	// 视频转码任务
+	TranscodeTask *TranscodeTaskInput `json:"TranscodeTask,omitempty" name:"TranscodeTask"`
+
+	// 视频转动图任务
+	AnimatedGraphicTask *AnimatedGraphicTaskInput `json:"AnimatedGraphicTask,omitempty" name:"AnimatedGraphicTask"`
+
+	// 视频按时间点截图任务
+	SnapshotByTimeOffsetTask *SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTask,omitempty" name:"SnapshotByTimeOffsetTask"`
+
+	// 视频采样截图任务
+	SampleSnapshotTask *SampleSnapshotTaskInput `json:"SampleSnapshotTask,omitempty" name:"SampleSnapshotTask"`
+
+	// 视频截雪碧图任务
+	ImageSpriteTask *ImageSpriteTaskInput `json:"ImageSpriteTask,omitempty" name:"ImageSpriteTask"`
+
+	// 转自适应码流任务
+	AdaptiveDynamicStreamingTask *AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTask,omitempty" name:"AdaptiveDynamicStreamingTask"`
+
+	// 视频内容审核类型任务
+	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
+
+	// 视频内容分析类型任务
+	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
+
+	// 视频内容识别类型任务
+	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
+}
+
 type ActivityResItem struct {
 	// 转码任务输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2933,6 +2984,98 @@ func (r *CreateSampleSnapshotTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateScheduleRequestParams struct {
+	// 编排名称，最多128字符。同一个用户该名称唯一。
+	ScheduleName *string `json:"ScheduleName,omitempty" name:"ScheduleName"`
+
+	// 编排绑定的触发规则，当上传视频命中该规则到该对象时即触发工作流。
+	Trigger *WorkflowTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 编排任务列表。
+	Activities []*Activity `json:"Activities,omitempty" name:"Activities"`
+
+	// 媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
+	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 任务的事件通知配置，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+}
+
+type CreateScheduleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 编排名称，最多128字符。同一个用户该名称唯一。
+	ScheduleName *string `json:"ScheduleName,omitempty" name:"ScheduleName"`
+
+	// 编排绑定的触发规则，当上传视频命中该规则到该对象时即触发工作流。
+	Trigger *WorkflowTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 编排任务列表。
+	Activities []*Activity `json:"Activities,omitempty" name:"Activities"`
+
+	// 媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
+	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 任务的事件通知配置，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+}
+
+func (r *CreateScheduleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScheduleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScheduleName")
+	delete(f, "Trigger")
+	delete(f, "Activities")
+	delete(f, "OutputStorage")
+	delete(f, "OutputDir")
+	delete(f, "TaskNotifyConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScheduleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateScheduleResponseParams struct {
+	// 编排 ID。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateScheduleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateScheduleResponseParams `json:"Response"`
+}
+
+func (r *CreateScheduleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSnapshotByTimeOffsetTemplateRequestParams struct {
 	// 指定时间点截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -4104,6 +4247,60 @@ func (r *DeleteSampleSnapshotTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSampleSnapshotTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteScheduleRequestParams struct {
+	// 编排唯一标识。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+}
+
+type DeleteScheduleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 编排唯一标识。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+}
+
+func (r *DeleteScheduleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteScheduleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScheduleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScheduleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteScheduleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteScheduleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteScheduleResponseParams `json:"Response"`
+}
+
+func (r *DeleteScheduleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteScheduleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5578,6 +5775,93 @@ func (r *DescribeSampleSnapshotTemplatesResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type DescribeSchedulesRequestParams struct {
+	// 编排 ID 过滤条件，数组长度限制：100。
+	ScheduleIds []*int64 `json:"ScheduleIds,omitempty" name:"ScheduleIds"`
+
+	// 状态，取值范围：
+	// <li>Enabled：已启用，</li>
+	// <li>Disabled：已禁用。</li>
+	// 不填此参数，则不区分工作流状态。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeSchedulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 编排 ID 过滤条件，数组长度限制：100。
+	ScheduleIds []*int64 `json:"ScheduleIds,omitempty" name:"ScheduleIds"`
+
+	// 状态，取值范围：
+	// <li>Enabled：已启用，</li>
+	// <li>Disabled：已禁用。</li>
+	// 不填此参数，则不区分工作流状态。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSchedulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSchedulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScheduleIds")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSchedulesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 编排信息数组。
+	ScheduleInfoSet []*SchedulesInfo `json:"ScheduleInfoSet,omitempty" name:"ScheduleInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSchedulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSchedulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSchedulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSchedulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSnapshotByTimeOffsetTemplatesRequestParams struct {
 	// 指定时间点截图模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*uint64 `json:"Definitions,omitempty" name:"Definitions"`
@@ -6998,6 +7282,60 @@ func (r *DescribeWorkflowsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DisableScheduleRequestParams struct {
+	// 编排唯一表示。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+}
+
+type DisableScheduleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 编排唯一表示。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+}
+
+func (r *DisableScheduleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableScheduleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScheduleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableScheduleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableScheduleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DisableScheduleResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableScheduleResponseParams `json:"Response"`
+}
+
+func (r *DisableScheduleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisableWorkflowRequestParams struct {
 	// 工作流 ID。
 	WorkflowId *int64 `json:"WorkflowId,omitempty" name:"WorkflowId"`
@@ -7212,6 +7550,60 @@ type EditMediaTaskOutput struct {
 
 	// 编辑后的视频文件路径。
 	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
+// Predefined struct for user
+type EnableScheduleRequestParams struct {
+	// 编排唯一标识。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+}
+
+type EnableScheduleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 编排唯一标识。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+}
+
+func (r *EnableScheduleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableScheduleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScheduleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableScheduleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableScheduleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type EnableScheduleResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableScheduleResponseParams `json:"Response"`
+}
+
+func (r *EnableScheduleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -9981,6 +10373,106 @@ func (r *ModifySampleSnapshotTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyScheduleRequestParams struct {
+	// 编排唯一标识。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+
+	// 编排名称。
+	ScheduleName *string `json:"ScheduleName,omitempty" name:"ScheduleName"`
+
+	// 编排绑定的触发规则。
+	Trigger *WorkflowTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 编排任务列表。
+	// 注意：内部不允许部分更新，如果需要更新需全量提交编排任务列表。
+	Activities []*Activity `json:"Activities,omitempty" name:"Activities"`
+
+	// 媒体处理的文件输出存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 媒体处理生成的文件输出的目标目录。
+	// 注意：如果设置为空，则表示取消老配置的OutputDir值。
+	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 任务的事件通知配置。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+}
+
+type ModifyScheduleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 编排唯一标识。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+
+	// 编排名称。
+	ScheduleName *string `json:"ScheduleName,omitempty" name:"ScheduleName"`
+
+	// 编排绑定的触发规则。
+	Trigger *WorkflowTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 编排任务列表。
+	// 注意：内部不允许部分更新，如果需要更新需全量提交编排任务列表。
+	Activities []*Activity `json:"Activities,omitempty" name:"Activities"`
+
+	// 媒体处理的文件输出存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 媒体处理生成的文件输出的目标目录。
+	// 注意：如果设置为空，则表示取消老配置的OutputDir值。
+	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 任务的事件通知配置。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+}
+
+func (r *ModifyScheduleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyScheduleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScheduleId")
+	delete(f, "ScheduleName")
+	delete(f, "Trigger")
+	delete(f, "Activities")
+	delete(f, "OutputStorage")
+	delete(f, "OutputDir")
+	delete(f, "TaskNotifyConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyScheduleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyScheduleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyScheduleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyScheduleResponseParams `json:"Response"`
+}
+
+func (r *ModifyScheduleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySnapshotByTimeOffsetTemplateRequestParams struct {
 	// 指定时间点截图模板唯一标识。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
@@ -12039,6 +12531,49 @@ type ScheduleTask struct {
 	// 编排任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityResultSet []*ActivityResult `json:"ActivityResultSet,omitempty" name:"ActivityResultSet"`
+}
+
+type SchedulesInfo struct {
+	// 编排唯一标识。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+
+	// 编排名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleName *string `json:"ScheduleName,omitempty" name:"ScheduleName"`
+
+	// 编排状态，取值范围：
+	// Enabled：已启用，
+	// Disabled：已禁用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status []*string `json:"Status,omitempty" name:"Status"`
+
+	// 编排绑定的触发规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Trigger *WorkflowTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 编排任务列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Activities []*Activity `json:"Activities,omitempty" name:"Activities"`
+
+	// 媒体处理的文件输出存储位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+
+	// 媒体处理生成的文件输出的目标目录。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 任务的事件通知配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
+
+	// 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后编辑时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type ScratchRepairConfig struct {

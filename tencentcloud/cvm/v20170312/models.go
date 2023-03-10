@@ -3946,10 +3946,10 @@ type DescribeTaskInfoRequestParams struct {
 	// 按照一个或者多个实例名称查询。
 	Aliases []*string `json:"Aliases,omitempty" name:"Aliases"`
 
-	// 时间查询区间的起始位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当天`00:00:00`。
+	// 时间查询区间的起始位置，会根据任务创建时间`CreateTime`进行过滤。未传入时默认为当天`00:00:00`。
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-	// 时间查询区间的终止位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当前时刻。
+	// 时间查询区间的终止位置，会根据任务创建时间`CreateTime`进行过滤。未传入时默认为当前时刻。
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 	// 指定返回维修任务列表的排序字段，目前支持：
@@ -4025,10 +4025,10 @@ type DescribeTaskInfoRequest struct {
 	// 按照一个或者多个实例名称查询。
 	Aliases []*string `json:"Aliases,omitempty" name:"Aliases"`
 
-	// 时间查询区间的起始位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当天`00:00:00`。
+	// 时间查询区间的起始位置，会根据任务创建时间`CreateTime`进行过滤。未传入时默认为当天`00:00:00`。
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
-	// 时间查询区间的终止位置，会根据`OrderField`中指定的字段进行过滤。未传入时默认为当前时刻。
+	// 时间查询区间的终止位置，会根据任务创建时间`CreateTime`进行过滤。未传入时默认为当前时刻。
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
 	// 指定返回维修任务列表的排序字段，目前支持：
@@ -8000,6 +8000,106 @@ func (r *RenewInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RepairTaskControlRequestParams struct {
+	// 待授权任务实例对应的产品类型，支持取值：
+	// 
+	// - `CVM`：云服务器
+	// - `CDH`：专用宿主机
+	// - `CPM2.0`：裸金属云服务器
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 指定待操作的实例ID列表，仅允许对列表中的实例ID相关的维修任务发起授权。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 维修任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作类型，当前只支持传入`AuthorizeRepair`。
+	Operate *string `json:"Operate,omitempty" name:"Operate"`
+
+	// 预约授权时间，形如`2023-01-01 12:00:00`。预约时间需晚于当前时间至少5分钟，且在48小时之内。
+	OrderAuthTime *string `json:"OrderAuthTime,omitempty" name:"OrderAuthTime"`
+
+	// 附加的授权处理策略。
+	TaskSubMethod *string `json:"TaskSubMethod,omitempty" name:"TaskSubMethod"`
+}
+
+type RepairTaskControlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待授权任务实例对应的产品类型，支持取值：
+	// 
+	// - `CVM`：云服务器
+	// - `CDH`：专用宿主机
+	// - `CPM2.0`：裸金属云服务器
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 指定待操作的实例ID列表，仅允许对列表中的实例ID相关的维修任务发起授权。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 维修任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作类型，当前只支持传入`AuthorizeRepair`。
+	Operate *string `json:"Operate,omitempty" name:"Operate"`
+
+	// 预约授权时间，形如`2023-01-01 12:00:00`。预约时间需晚于当前时间至少5分钟，且在48小时之内。
+	OrderAuthTime *string `json:"OrderAuthTime,omitempty" name:"OrderAuthTime"`
+
+	// 附加的授权处理策略。
+	TaskSubMethod *string `json:"TaskSubMethod,omitempty" name:"TaskSubMethod"`
+}
+
+func (r *RepairTaskControlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RepairTaskControlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "InstanceIds")
+	delete(f, "TaskId")
+	delete(f, "Operate")
+	delete(f, "OrderAuthTime")
+	delete(f, "TaskSubMethod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RepairTaskControlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RepairTaskControlResponseParams struct {
+	// 已完成授权的维修任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RepairTaskControlResponse struct {
+	*tchttp.BaseResponse
+	Response *RepairTaskControlResponseParams `json:"Response"`
+}
+
+func (r *RepairTaskControlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RepairTaskControlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RepairTaskInfo struct {
 	// 维修任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -9323,6 +9423,9 @@ type TagSpecification struct {
 type TerminateInstancesRequestParams struct {
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 释放实例挂载的包年包月数据盘。
+	ReleasePrepaidDataDisks *bool `json:"ReleasePrepaidDataDisks,omitempty" name:"ReleasePrepaidDataDisks"`
 }
 
 type TerminateInstancesRequest struct {
@@ -9330,6 +9433,9 @@ type TerminateInstancesRequest struct {
 	
 	// 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 释放实例挂载的包年包月数据盘。
+	ReleasePrepaidDataDisks *bool `json:"ReleasePrepaidDataDisks,omitempty" name:"ReleasePrepaidDataDisks"`
 }
 
 func (r *TerminateInstancesRequest) ToJsonString() string {
@@ -9345,6 +9451,7 @@ func (r *TerminateInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceIds")
+	delete(f, "ReleasePrepaidDataDisks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateInstancesRequest has unknown keys!", "")
 	}

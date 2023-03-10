@@ -489,6 +489,10 @@ type BGPInstanceSpecification struct {
 	// 高防包企业版弹性阈值，0表示未开启；大于0为弹性防护阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticLimit *uint64 `json:"ElasticLimit,omitempty" name:"ElasticLimit"`
+
+	// 降配后的防护能力，单位Gbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownGradeProtect *uint64 `json:"DownGradeProtect,omitempty" name:"DownGradeProtect"`
 }
 
 type BGPInstanceUsages struct {

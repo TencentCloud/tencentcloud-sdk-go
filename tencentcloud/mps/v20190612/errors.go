@@ -26,11 +26,17 @@ const (
 	// 操作失败：COS 已经停服。
 	FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
 
+	// 操作失败：获取源通知错误。
+	FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
+
 	// 操作失败：非法 mps 用户。
 	FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 
 	// 操作失败：无效用户。
 	FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+
+	// 操作失败：设置源通知错误。
+	FAILEDOPERATION_SETSOURCENOTIFY = "FailedOperation.SetSourceNotify"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

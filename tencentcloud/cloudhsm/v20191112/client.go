@@ -529,6 +529,112 @@ func (c *Client) DescribeVsmsWithContext(ctx context.Context, request *DescribeV
     return
 }
 
+func NewGetAlarmEventRequest() (request *GetAlarmEventRequest) {
+    request = &GetAlarmEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cloudhsm", APIVersion, "GetAlarmEvent")
+    
+    
+    return
+}
+
+func NewGetAlarmEventResponse() (response *GetAlarmEventResponse) {
+    response = &GetAlarmEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetAlarmEvent
+// 获取告警事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetAlarmEvent(request *GetAlarmEventRequest) (response *GetAlarmEventResponse, err error) {
+    return c.GetAlarmEventWithContext(context.Background(), request)
+}
+
+// GetAlarmEvent
+// 获取告警事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetAlarmEventWithContext(ctx context.Context, request *GetAlarmEventRequest) (response *GetAlarmEventResponse, err error) {
+    if request == nil {
+        request = NewGetAlarmEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAlarmEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAlarmEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetVsmMonitorInfoRequest() (request *GetVsmMonitorInfoRequest) {
+    request = &GetVsmMonitorInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cloudhsm", APIVersion, "GetVsmMonitorInfo")
+    
+    
+    return
+}
+
+func NewGetVsmMonitorInfoResponse() (response *GetVsmMonitorInfoResponse) {
+    response = &GetVsmMonitorInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetVsmMonitorInfo
+// 获取VSM监控信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetVsmMonitorInfo(request *GetVsmMonitorInfoRequest) (response *GetVsmMonitorInfoResponse, err error) {
+    return c.GetVsmMonitorInfoWithContext(context.Background(), request)
+}
+
+// GetVsmMonitorInfo
+// 获取VSM监控信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetVsmMonitorInfoWithContext(ctx context.Context, request *GetVsmMonitorInfoRequest) (response *GetVsmMonitorInfoResponse, err error) {
+    if request == nil {
+        request = NewGetVsmMonitorInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVsmMonitorInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetVsmMonitorInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceBuyVsmRequest() (request *InquiryPriceBuyVsmRequest) {
     request = &InquiryPriceBuyVsmRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -579,6 +685,58 @@ func (c *Client) InquiryPriceBuyVsmWithContext(ctx context.Context, request *Inq
     request.SetContext(ctx)
     
     response = NewInquiryPriceBuyVsmResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmEventRequest() (request *ModifyAlarmEventRequest) {
+    request = &ModifyAlarmEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cloudhsm", APIVersion, "ModifyAlarmEvent")
+    
+    
+    return
+}
+
+func NewModifyAlarmEventResponse() (response *ModifyAlarmEventResponse) {
+    response = &ModifyAlarmEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAlarmEvent
+// 修改告警事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAlarmEvent(request *ModifyAlarmEventRequest) (response *ModifyAlarmEventResponse, err error) {
+    return c.ModifyAlarmEventWithContext(context.Background(), request)
+}
+
+// ModifyAlarmEvent
+// 修改告警事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAlarmEventWithContext(ctx context.Context, request *ModifyAlarmEventRequest) (response *ModifyAlarmEventResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAlarmEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAlarmEventResponse()
     err = c.Send(request, response)
     return
 }

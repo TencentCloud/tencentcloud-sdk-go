@@ -45,6 +45,62 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeGoodsRecommendRequest() (request *DescribeGoodsRecommendRequest) {
+    request = &DescribeGoodsRecommendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("irp", APIVersion, "DescribeGoodsRecommend")
+    
+    
+    return
+}
+
+func NewDescribeGoodsRecommendResponse() (response *DescribeGoodsRecommendResponse) {
+    response = &DescribeGoodsRecommendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGoodsRecommend
+// 获取电商类推荐结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeGoodsRecommend(request *DescribeGoodsRecommendRequest) (response *DescribeGoodsRecommendResponse, err error) {
+    return c.DescribeGoodsRecommendWithContext(context.Background(), request)
+}
+
+// DescribeGoodsRecommend
+// 获取电商类推荐结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeGoodsRecommendWithContext(ctx context.Context, request *DescribeGoodsRecommendRequest) (response *DescribeGoodsRecommendResponse, err error) {
+    if request == nil {
+        request = NewDescribeGoodsRecommendRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGoodsRecommend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGoodsRecommendResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewFeedRecommendRequest() (request *FeedRecommendRequest) {
     request = &FeedRecommendRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -265,6 +321,118 @@ func (c *Client) ReportFeedUserWithContext(ctx context.Context, request *ReportF
     request.SetContext(ctx)
     
     response = NewReportFeedUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReportGoodsBehaviorRequest() (request *ReportGoodsBehaviorRequest) {
+    request = &ReportGoodsBehaviorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("irp", APIVersion, "ReportGoodsBehavior")
+    
+    
+    return
+}
+
+func NewReportGoodsBehaviorResponse() (response *ReportGoodsBehaviorResponse) {
+    response = &ReportGoodsBehaviorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReportGoodsBehavior
+// 上报电商类行为数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ReportGoodsBehavior(request *ReportGoodsBehaviorRequest) (response *ReportGoodsBehaviorResponse, err error) {
+    return c.ReportGoodsBehaviorWithContext(context.Background(), request)
+}
+
+// ReportGoodsBehavior
+// 上报电商类行为数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ReportGoodsBehaviorWithContext(ctx context.Context, request *ReportGoodsBehaviorRequest) (response *ReportGoodsBehaviorResponse, err error) {
+    if request == nil {
+        request = NewReportGoodsBehaviorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportGoodsBehavior require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportGoodsBehaviorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReportGoodsInfoRequest() (request *ReportGoodsInfoRequest) {
+    request = &ReportGoodsInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("irp", APIVersion, "ReportGoodsInfo")
+    
+    
+    return
+}
+
+func NewReportGoodsInfoResponse() (response *ReportGoodsInfoResponse) {
+    response = &ReportGoodsInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReportGoodsInfo
+// 上报电商类商品信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ReportGoodsInfo(request *ReportGoodsInfoRequest) (response *ReportGoodsInfoResponse, err error) {
+    return c.ReportGoodsInfoWithContext(context.Background(), request)
+}
+
+// ReportGoodsInfo
+// 上报电商类商品信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ReportGoodsInfoWithContext(ctx context.Context, request *ReportGoodsInfoRequest) (response *ReportGoodsInfoResponse, err error) {
+    if request == nil {
+        request = NewReportGoodsInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportGoodsInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportGoodsInfoResponse()
     err = c.Send(request, response)
     return
 }

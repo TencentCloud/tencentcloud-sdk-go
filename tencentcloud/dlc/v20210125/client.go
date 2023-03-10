@@ -2717,6 +2717,62 @@ func (c *Client) DescribeEngineUsageInfoWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeForbiddenTableProRequest() (request *DescribeForbiddenTableProRequest) {
+    request = &DescribeForbiddenTableProRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeForbiddenTablePro")
+    
+    
+    return
+}
+
+func NewDescribeForbiddenTableProResponse() (response *DescribeForbiddenTableProResponse) {
+    response = &DescribeForbiddenTableProResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeForbiddenTablePro
+// 本接口（DescribeForbiddenTablePro）用于获取被禁用的表属性列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeForbiddenTablePro(request *DescribeForbiddenTableProRequest) (response *DescribeForbiddenTableProResponse, err error) {
+    return c.DescribeForbiddenTableProWithContext(context.Background(), request)
+}
+
+// DescribeForbiddenTablePro
+// 本接口（DescribeForbiddenTablePro）用于获取被禁用的表属性列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeForbiddenTableProWithContext(ctx context.Context, request *DescribeForbiddenTableProRequest) (response *DescribeForbiddenTableProResponse, err error) {
+    if request == nil {
+        request = NewDescribeForbiddenTableProRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeForbiddenTablePro require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeForbiddenTableProResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLakeFsDirSummaryRequest() (request *DescribeLakeFsDirSummaryRequest) {
     request = &DescribeLakeFsDirSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},

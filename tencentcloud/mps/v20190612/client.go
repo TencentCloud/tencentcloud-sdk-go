@@ -597,6 +597,114 @@ func (c *Client) CreateSampleSnapshotTemplateWithContext(ctx context.Context, re
     return
 }
 
+func NewCreateScheduleRequest() (request *CreateScheduleRequest) {
+    request = &CreateScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateSchedule")
+    
+    
+    return
+}
+
+func NewCreateScheduleResponse() (response *CreateScheduleResponse) {
+    response = &CreateScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSchedule
+// 对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
+//
+// 1. 视频转码（带水印）；
+//
+// 2. 视频转动图；
+//
+// 3. 对视频按指定时间点截图；
+//
+// 4. 对视频采样截图；
+//
+// 5. 对视频截图雪碧图；
+//
+// 6. 对视频转自适应码流；
+//
+// 7. 智能内容审核（鉴黄、敏感信息检测）；
+//
+// 8. 智能内容分析（标签、分类、封面、按帧标签）；
+//
+// 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+//
+// 
+//
+// 注意：创建编排成功后是禁用状态，需要手动启用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+func (c *Client) CreateSchedule(request *CreateScheduleRequest) (response *CreateScheduleResponse, err error) {
+    return c.CreateScheduleWithContext(context.Background(), request)
+}
+
+// CreateSchedule
+// 对 COS 中指定 Bucket 的目录下上传的媒体文件，设置处理规则，包括：
+//
+// 1. 视频转码（带水印）；
+//
+// 2. 视频转动图；
+//
+// 3. 对视频按指定时间点截图；
+//
+// 4. 对视频采样截图；
+//
+// 5. 对视频截图雪碧图；
+//
+// 6. 对视频转自适应码流；
+//
+// 7. 智能内容审核（鉴黄、敏感信息检测）；
+//
+// 8. 智能内容分析（标签、分类、封面、按帧标签）；
+//
+// 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+//
+// 
+//
+// 注意：创建编排成功后是禁用状态，需要手动启用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+func (c *Client) CreateScheduleWithContext(ctx context.Context, request *CreateScheduleRequest) (response *CreateScheduleResponse, err error) {
+    if request == nil {
+        request = NewCreateScheduleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSchedule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSnapshotByTimeOffsetTemplateRequest() (request *CreateSnapshotByTimeOffsetTemplateRequest) {
     request = &CreateSnapshotByTimeOffsetTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1543,6 +1651,60 @@ func (c *Client) DeleteSampleSnapshotTemplateWithContext(ctx context.Context, re
     return
 }
 
+func NewDeleteScheduleRequest() (request *DeleteScheduleRequest) {
+    request = &DeleteScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteSchedule")
+    
+    
+    return
+}
+
+func NewDeleteScheduleResponse() (response *DeleteScheduleResponse) {
+    response = &DeleteScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSchedule
+// 删除编排
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteSchedule(request *DeleteScheduleRequest) (response *DeleteScheduleResponse, err error) {
+    return c.DeleteScheduleWithContext(context.Background(), request)
+}
+
+// DeleteSchedule
+// 删除编排
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteScheduleWithContext(ctx context.Context, request *DeleteScheduleRequest) (response *DeleteScheduleResponse, err error) {
+    if request == nil {
+        request = NewDeleteScheduleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSchedule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSnapshotByTimeOffsetTemplateRequest() (request *DeleteSnapshotByTimeOffsetTemplateRequest) {
     request = &DeleteSnapshotByTimeOffsetTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2413,6 +2575,62 @@ func (c *Client) DescribeSampleSnapshotTemplatesWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeSampleSnapshotTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSchedulesRequest() (request *DescribeSchedulesRequest) {
+    request = &DescribeSchedulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeSchedules")
+    
+    
+    return
+}
+
+func NewDescribeSchedulesResponse() (response *DescribeSchedulesResponse) {
+    response = &DescribeSchedulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSchedules
+// 查询编排。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSchedules(request *DescribeSchedulesRequest) (response *DescribeSchedulesResponse, err error) {
+    return c.DescribeSchedulesWithContext(context.Background(), request)
+}
+
+// DescribeSchedules
+// 查询编排。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSchedulesWithContext(ctx context.Context, request *DescribeSchedulesRequest) (response *DescribeSchedulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSchedulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSchedules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSchedulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3327,6 +3545,76 @@ func (c *Client) DescribeWorkflowsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDisableScheduleRequest() (request *DisableScheduleRequest) {
+    request = &DisableScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DisableSchedule")
+    
+    
+    return
+}
+
+func NewDisableScheduleResponse() (response *DisableScheduleResponse) {
+    response = &DisableScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableSchedule
+// 禁用自动化触发编排任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
+//  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  FAILEDOPERATION_SETSOURCENOTIFY = "FailedOperation.SetSourceNotify"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DisableSchedule(request *DisableScheduleRequest) (response *DisableScheduleResponse, err error) {
+    return c.DisableScheduleWithContext(context.Background(), request)
+}
+
+// DisableSchedule
+// 禁用自动化触发编排任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
+//  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  FAILEDOPERATION_SETSOURCENOTIFY = "FailedOperation.SetSourceNotify"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DisableScheduleWithContext(ctx context.Context, request *DisableScheduleRequest) (response *DisableScheduleResponse, err error) {
+    if request == nil {
+        request = NewDisableScheduleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableSchedule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableWorkflowRequest() (request *DisableWorkflowRequest) {
     request = &DisableWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3451,6 +3739,76 @@ func (c *Client) EditMediaWithContext(ctx context.Context, request *EditMediaReq
     request.SetContext(ctx)
     
     response = NewEditMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableScheduleRequest() (request *EnableScheduleRequest) {
+    request = &EnableScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "EnableSchedule")
+    
+    
+    return
+}
+
+func NewEnableScheduleResponse() (response *EnableScheduleResponse) {
+    response = &EnableScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableSchedule
+// 启用自动化触发编排任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
+//  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  FAILEDOPERATION_SETSOURCENOTIFY = "FailedOperation.SetSourceNotify"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) EnableSchedule(request *EnableScheduleRequest) (response *EnableScheduleResponse, err error) {
+    return c.EnableScheduleWithContext(context.Background(), request)
+}
+
+// EnableSchedule
+// 启用自动化触发编排任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BUCKETNOTIFYALREADYEXIST = "FailedOperation.BucketNotifyAlreadyExist"
+//  FAILEDOPERATION_COSSTATUSINAVLID = "FailedOperation.CosStatusInavlid"
+//  FAILEDOPERATION_GETSOURCENOTIFY = "FailedOperation.GetSourceNotify"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  FAILEDOPERATION_SETSOURCENOTIFY = "FailedOperation.SetSourceNotify"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_COSBUCKETNAMEINVALID = "ResourceNotFound.CosBucketNameInvalid"
+//  RESOURCENOTFOUND_COSBUCKETNOTEXIST = "ResourceNotFound.CosBucketNotExist"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) EnableScheduleWithContext(ctx context.Context, request *EnableScheduleRequest) (response *EnableScheduleResponse, err error) {
+    if request == nil {
+        request = NewEnableScheduleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableSchedule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableScheduleResponse()
     err = c.Send(request, response)
     return
 }
@@ -4205,6 +4563,64 @@ func (c *Client) ModifySampleSnapshotTemplateWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifySampleSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyScheduleRequest() (request *ModifyScheduleRequest) {
+    request = &ModifyScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifySchedule")
+    
+    
+    return
+}
+
+func NewModifyScheduleResponse() (response *ModifyScheduleResponse) {
+    response = &ModifyScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySchedule
+// 修改编排
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifySchedule(request *ModifyScheduleRequest) (response *ModifyScheduleResponse, err error) {
+    return c.ModifyScheduleWithContext(context.Background(), request)
+}
+
+// ModifySchedule
+// 修改编排
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyScheduleWithContext(ctx context.Context, request *ModifyScheduleRequest) (response *ModifyScheduleResponse, err error) {
+    if request == nil {
+        request = NewModifyScheduleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySchedule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyScheduleResponse()
     err = c.Send(request, response)
     return
 }

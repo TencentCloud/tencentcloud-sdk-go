@@ -314,6 +314,22 @@ func (r *CancelMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 type CcInfo struct {
 	// 被抄送人手机号
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 被抄送人姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 被抄送人类型,
+	// 0--个人
+	// 1--员工
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcType *int64 `json:"CcType,omitempty" name:"CcType"`
+
+	// 被抄送人权限
+	// 0--可查看
+	// 1--可查看也可下载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcPermission *int64 `json:"CcPermission,omitempty" name:"CcPermission"`
 }
 
 type Component struct {
@@ -927,6 +943,9 @@ type CreateFlowByFilesRequestParams struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -999,6 +1018,9 @@ type CreateFlowByFilesRequest struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -1031,6 +1053,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "FlowDescription")
 	delete(f, "SignBeanTag")
 	delete(f, "Agent")
+	delete(f, "CcNotifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -1850,6 +1873,88 @@ func (r *CreatePrepareFlowResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePrepareFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateReleaseFlowRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 待解除的签署流程编号（即原签署流程的编号）
+	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitempty" name:"NeedRelievedFlowId"`
+
+	// 解除协议内容
+	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitempty" name:"ReliveInfo"`
+
+	// 非必须，解除协议的本企业签署人列表，
+	// 默认使用原流程的签署人列表,当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业其他已实名员工来替换原流程中的原签署人，注意需要指明原签署人的编号(ReceiptId,通过DescribeFlowInfo接口获取)来代表需要替换哪一个签署人
+	// 解除协议的签署人数量不能多于原流程的签署人数量
+	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitempty" name:"ReleasedApprovers"`
+}
+
+type CreateReleaseFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 待解除的签署流程编号（即原签署流程的编号）
+	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitempty" name:"NeedRelievedFlowId"`
+
+	// 解除协议内容
+	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitempty" name:"ReliveInfo"`
+
+	// 非必须，解除协议的本企业签署人列表，
+	// 默认使用原流程的签署人列表,当解除协议的签署人与原流程的签署人不能相同时（例如原流程签署人离职了），需要指定本企业其他已实名员工来替换原流程中的原签署人，注意需要指明原签署人的编号(ReceiptId,通过DescribeFlowInfo接口获取)来代表需要替换哪一个签署人
+	// 解除协议的签署人数量不能多于原流程的签署人数量
+	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitempty" name:"ReleasedApprovers"`
+}
+
+func (r *CreateReleaseFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReleaseFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "NeedRelievedFlowId")
+	delete(f, "ReliveInfo")
+	delete(f, "ReleasedApprovers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReleaseFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateReleaseFlowResponseParams struct {
+	// 解除协议流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateReleaseFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateReleaseFlowResponseParams `json:"Response"`
+}
+
+func (r *CreateReleaseFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReleaseFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4053,6 +4158,47 @@ type RegisterInfo struct {
 	Uscc *string `json:"Uscc,omitempty" name:"Uscc"`
 }
 
+type ReleasedApprover struct {
+	// 签署人姓名，最大长度50个字符
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 签署人手机号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 要替换的参与人在原合同参与人列表中的签署人编号,通过DescribeFlowInfo 接口获取（即FlowDetailInfos. FlowApproverInfos 结构中的ReceiptId ）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelievedApproverReceiptId *string `json:"RelievedApproverReceiptId,omitempty" name:"RelievedApproverReceiptId"`
+}
+
+type RelieveInfo struct {
+	// 解除理由，最大支持200个字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 解除后仍然有效的条款，保留条款，最大支持200个字
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainInForceItem *string `json:"RemainInForceItem,omitempty" name:"RemainInForceItem"`
+
+	// 原合同事项处理-费用结算，最大支持200个字
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalExpenseSettlement *string `json:"OriginalExpenseSettlement,omitempty" name:"OriginalExpenseSettlement"`
+
+	// 原合同事项处理-其他事项，最大支持200个字
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalOtherSettlement *string `json:"OriginalOtherSettlement,omitempty" name:"OriginalOtherSettlement"`
+
+	// 其他约定，最大支持200个字
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherDeals *string `json:"OtherDeals,omitempty" name:"OtherDeals"`
+}
+
 type RemindFlowRecords struct {
 	// 是否能够催办
 	CanRemind *bool `json:"CanRemind,omitempty" name:"CanRemind"`
@@ -4150,6 +4296,9 @@ type StartFlowRequestParams struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 }
 
 type StartFlowRequest struct {
@@ -4166,6 +4315,9 @@ type StartFlowRequest struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 }
 
 func (r *StartFlowRequest) ToJsonString() string {
@@ -4184,6 +4336,7 @@ func (r *StartFlowRequest) FromJsonString(s string) error {
 	delete(f, "FlowId")
 	delete(f, "ClientToken")
 	delete(f, "Agent")
+	delete(f, "CcNotifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartFlowRequest has unknown keys!", "")
 	}
