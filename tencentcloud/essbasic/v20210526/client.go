@@ -526,6 +526,10 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 // ChannelCreateEmbedWebUrl
 // 本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
 //
+// 本接口支持创建：创建印章，创建模版，修改模版，预览模版，预览合同流程的web链接
+//
+// 进入web连接后与当前控制台操作保持一致
+//
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -537,6 +541,10 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 
 // ChannelCreateEmbedWebUrl
 // 本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
+//
+// 本接口支持创建：创建印章，创建模版，修改模版，预览模版，预览合同流程的web链接
+//
+// 进入web连接后与当前控制台操作保持一致
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -578,7 +586,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 }
 
 // ChannelCreateFlowByFiles
-// 接口（ChannelCreateFlowByFiles）用于通过文件创建签署流程。此接口静默签能力不可直接使用，需要运营申请
+// 接口（ChannelCreateFlowByFiles）用于通过文件创建签署流程。此接口静默签能力不可直接使用，请联系客户经理申请使用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -641,7 +649,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 }
 
 // ChannelCreateFlowByFiles
-// 接口（ChannelCreateFlowByFiles）用于通过文件创建签署流程。此接口静默签能力不可直接使用，需要运营申请
+// 接口（ChannelCreateFlowByFiles）用于通过文件创建签署流程。此接口静默签能力不可直接使用，请联系客户经理申请使用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -876,7 +884,7 @@ func NewChannelCreateFlowRemindsResponse() (response *ChannelCreateFlowRemindsRe
 //
 // 注意:
 //
-// 该接口不可直接调用，请联系电子签运营开通后方可调用。
+// 该接口不可直接调用，请联系客户经理申请使用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -892,7 +900,7 @@ func (c *Client) ChannelCreateFlowReminds(request *ChannelCreateFlowRemindsReque
 //
 // 注意:
 //
-// 该接口不可直接调用，请联系电子签运营开通后方可调用。
+// 该接口不可直接调用，请联系客户经理申请使用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1020,7 +1028,13 @@ func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlRe
 }
 
 // ChannelCreateFlowSignUrl
-// 创建签署链接，需要联系运营人员开白后才可使用
+// 创建签署链接，请联系客户经理申请使用
+//
+// 该接口用于发起合同后，生成C端签署人的签署链接，点击跳转小程序完成签署
+//
+// 注意：该接口目前签署人类型仅支持个人签署方（PERSON）
+//
+// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1034,7 +1048,13 @@ func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlReque
 }
 
 // ChannelCreateFlowSignUrl
-// 创建签署链接，需要联系运营人员开白后才可使用
+// 创建签署链接，请联系客户经理申请使用
+//
+// 该接口用于发起合同后，生成C端签署人的签署链接，点击跳转小程序完成签署
+//
+// 注意：该接口目前签署人类型仅支持个人签署方（PERSON）
+//
+// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1154,9 +1174,18 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 // ChannelCreatePrepareFlow
 // 创建预发起合同
 //
+// 通过此接口指定：合同，签署人，填写控件信息，生成预创建合同链接，点击后跳转到web页面完成合同创建并发起
+//
+// 可指定合同信息不可更改，签署人信息不可更改
+//
+// 合同发起后，填写及签署流程与现有操作流程一致
+//
+// 注意：目前仅支持模版发起
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowRequest) (response *ChannelCreatePrepareFlowResponse, err error) {
     return c.ChannelCreatePrepareFlowWithContext(context.Background(), request)
@@ -1165,9 +1194,18 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 // ChannelCreatePrepareFlow
 // 创建预发起合同
 //
+// 通过此接口指定：合同，签署人，填写控件信息，生成预创建合同链接，点击后跳转到web页面完成合同创建并发起
+//
+// 可指定合同信息不可更改，签署人信息不可更改
+//
+// 合同发起后，填写及签署流程与现有操作流程一致
+//
+// 注意：目前仅支持模版发起
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreatePrepareFlowWithContext(ctx context.Context, request *ChannelCreatePrepareFlowRequest) (response *ChannelCreatePrepareFlowResponse, err error) {
     if request == nil {
@@ -2080,11 +2118,27 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 //
 // 设置EndPoint为WEIXINAPP，得到链接打开即可。（与短信提醒用户签署形式一样）。
 //
+// 
+//
 // 2. 通过链接Url打开H5引导页-->点击跳转到小程序-->签署完退出小程序-->回到H5引导页-->跳转到指定JumpUrl
 //
 // 设置EndPoint为CHANNEL，指定JumpUrl，得到链接打开即可。
 //
+// 
+//
 // 3. 客户App直接跳转到小程序-->小程序签署完成-->返回App
+//
+// 跳转到小程序的实现，参考官方文档
+//
+// https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html
+//
+// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
+//
+// 使用CreateSignUrls，设置EndPoint为APP，得到path。
+//
+// 
+//
+// 4. 客户小程序直接跳到电子签小程序-->签署完成退出电子签小程序-->回到客户小程序
 //
 // 跳转到小程序的实现，参考官方文档（分为全屏、半屏两种方式）
 //
@@ -2099,10 +2153,6 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 // 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
 //
 // 使用CreateSignUrls，设置EndPoint为APP，得到path。
-//
-// 4. 客户小程序直接跳到电子签小程序-->签署完成退出电子签小程序-->回到客户小程序
-//
-// 实现方式同App跳小程序。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2141,11 +2191,27 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 //
 // 设置EndPoint为WEIXINAPP，得到链接打开即可。（与短信提醒用户签署形式一样）。
 //
+// 
+//
 // 2. 通过链接Url打开H5引导页-->点击跳转到小程序-->签署完退出小程序-->回到H5引导页-->跳转到指定JumpUrl
 //
 // 设置EndPoint为CHANNEL，指定JumpUrl，得到链接打开即可。
 //
+// 
+//
 // 3. 客户App直接跳转到小程序-->小程序签署完成-->返回App
+//
+// 跳转到小程序的实现，参考官方文档
+//
+// https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html
+//
+// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
+//
+// 使用CreateSignUrls，设置EndPoint为APP，得到path。
+//
+// 
+//
+// 4. 客户小程序直接跳到电子签小程序-->签署完成退出电子签小程序-->回到客户小程序
 //
 // 跳转到小程序的实现，参考官方文档（分为全屏、半屏两种方式）
 //
@@ -2160,10 +2226,6 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 // 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
 //
 // 使用CreateSignUrls，设置EndPoint为APP，得到path。
-//
-// 4. 客户小程序直接跳到电子签小程序-->签署完成退出电子签小程序-->回到客户小程序
-//
-// 实现方式同App跳小程序。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3278,6 +3340,8 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 // UploadFiles
 // 此接口（UploadFiles）用于文件上传。
 //
+// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。
+//
 // 调用时需要设置Domain, 正式环境为 file.ess.tencent.cn。
 //
 // 代码示例：
@@ -3300,6 +3364,8 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 
 // UploadFiles
 // 此接口（UploadFiles）用于文件上传。
+//
+// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。
 //
 // 调用时需要设置Domain, 正式环境为 file.ess.tencent.cn。
 //

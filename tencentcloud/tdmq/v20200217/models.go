@@ -1926,6 +1926,131 @@ func (r *CreateEnvironmentRoleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRabbitMQVipInstanceRequestParams struct {
+	// 可用区
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 私有网络VpcId
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 私有网络SubnetId
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 节点规格,基础型rabbit-vip-basic-1,标准型rabbit-vip-basic-2,高阶1型rabbit-vip-basic-3,高阶2型rabbit-vip-basic-4。不传默认为基础型
+	NodeSpec *string `json:"NodeSpec,omitempty" name:"NodeSpec"`
+
+	// 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
+	NodeNum *int64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 单节点存储规格,不传默认为200G
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 镜像队列,不传默认为false
+	EnableCreateDefaultHaMirrorQueue *bool `json:"EnableCreateDefaultHaMirrorQueue,omitempty" name:"EnableCreateDefaultHaMirrorQueue"`
+
+	// 自动续费,不传默认为true
+	AutoRenewFlag *bool `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 购买时长,不传默认为1(月)
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+}
+
+type CreateRabbitMQVipInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 私有网络VpcId
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 私有网络SubnetId
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 节点规格,基础型rabbit-vip-basic-1,标准型rabbit-vip-basic-2,高阶1型rabbit-vip-basic-3,高阶2型rabbit-vip-basic-4。不传默认为基础型
+	NodeSpec *string `json:"NodeSpec,omitempty" name:"NodeSpec"`
+
+	// 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
+	NodeNum *int64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 单节点存储规格,不传默认为200G
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 镜像队列,不传默认为false
+	EnableCreateDefaultHaMirrorQueue *bool `json:"EnableCreateDefaultHaMirrorQueue,omitempty" name:"EnableCreateDefaultHaMirrorQueue"`
+
+	// 自动续费,不传默认为true
+	AutoRenewFlag *bool `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 购买时长,不传默认为1(月)
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+}
+
+func (r *CreateRabbitMQVipInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRabbitMQVipInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneIds")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "ClusterName")
+	delete(f, "NodeSpec")
+	delete(f, "NodeNum")
+	delete(f, "StorageSize")
+	delete(f, "EnableCreateDefaultHaMirrorQueue")
+	delete(f, "AutoRenewFlag")
+	delete(f, "TimeSpan")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQVipInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRabbitMQVipInstanceResponseParams struct {
+	// 订单号Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitempty" name:"TranId"`
+
+	// 实例Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRabbitMQVipInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRabbitMQVipInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateRabbitMQVipInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRabbitMQVipInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRocketMQClusterRequestParams struct {
 	// 集群名称，3-64个字符，只能包含字母、数字、“-”及“_”
 	Name *string `json:"Name,omitempty" name:"Name"`

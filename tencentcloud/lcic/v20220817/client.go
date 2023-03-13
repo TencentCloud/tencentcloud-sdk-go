@@ -985,6 +985,58 @@ func (c *Client) CreateSupervisorWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewDeleteAppCustomContentRequest() (request *DeleteAppCustomContentRequest) {
+    request = &DeleteAppCustomContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeleteAppCustomContent")
+    
+    
+    return
+}
+
+func NewDeleteAppCustomContentResponse() (response *DeleteAppCustomContentResponse) {
+    response = &DeleteAppCustomContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAppCustomContent
+// 删除设置自定义元素。如果参数scenes为空则删除所有自定义元素，否则删除指定的scene自定义元素。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DeleteAppCustomContent(request *DeleteAppCustomContentRequest) (response *DeleteAppCustomContentResponse, err error) {
+    return c.DeleteAppCustomContentWithContext(context.Background(), request)
+}
+
+// DeleteAppCustomContent
+// 删除设置自定义元素。如果参数scenes为空则删除所有自定义元素，否则删除指定的scene自定义元素。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DeleteAppCustomContentWithContext(ctx context.Context, request *DeleteAppCustomContentRequest) (response *DeleteAppCustomContentResponse, err error) {
+    if request == nil {
+        request = NewDeleteAppCustomContentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAppCustomContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAppCustomContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDocumentRequest() (request *DeleteDocumentRequest) {
     request = &DeleteDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},

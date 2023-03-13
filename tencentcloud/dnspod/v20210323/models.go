@@ -100,6 +100,10 @@ type BatchRecordInfo struct {
 	// 记录的MX权重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MX *uint64 `json:"MX,omitempty" name:"MX"`
+
+	// 记录权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
 }
 
 // Predefined struct for user

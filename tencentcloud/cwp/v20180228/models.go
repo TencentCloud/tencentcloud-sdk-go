@@ -9045,7 +9045,7 @@ func (r *DescribeBaselineEffectHostListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeBaselineFixListRequestParams struct {
-	// <li>ItemName- string - 是否必填：否 - 项名称</i>
+	// <li>ItemName- string - 是否必填：否 - 项名称</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 限制条数,默认10,最大100
@@ -9064,7 +9064,7 @@ type DescribeBaselineFixListRequestParams struct {
 type DescribeBaselineFixListRequest struct {
 	*tchttp.BaseRequest
 	
-	// <li>ItemName- string - 是否必填：否 - 项名称</i>
+	// <li>ItemName- string - 是否必填：否 - 项名称</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 限制条数,默认10,最大100
@@ -9544,7 +9544,7 @@ type DescribeBaselineItemIgnoreListRequestParams struct {
 	// 请求偏移默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// <li>CatgoryId - int64 - 是否必填：否 - 规则Id</i>
+	// <li>CatgoryId - int64 - 是否必填：否 - 规则Id</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序方式 [ASC:升序|DESC:降序]
@@ -9566,7 +9566,7 @@ type DescribeBaselineItemIgnoreListRequest struct {
 	// 请求偏移默认0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// <li>CatgoryId - int64 - 是否必填：否 - 规则Id</i>
+	// <li>CatgoryId - int64 - 是否必填：否 - 规则Id</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序方式 [ASC:升序|DESC:降序]

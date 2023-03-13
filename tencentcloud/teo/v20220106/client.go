@@ -1750,6 +1750,10 @@ func NewDescribeDDosMajorAttackEventResponse() (response *DescribeDDosMajorAttac
 }
 
 // DescribeDDosMajorAttackEvent
+// 此接口已经做不兼容变更，所以此版本的接口已经无法调用，故作下线处理
+//
+// 
+//
 // 查询DDos主攻击事件
 //
 // 可能返回的错误码:
@@ -1764,6 +1768,10 @@ func (c *Client) DescribeDDosMajorAttackEvent(request *DescribeDDosMajorAttackEv
 }
 
 // DescribeDDosMajorAttackEvent
+// 此接口已经做不兼容变更，所以此版本的接口已经无法调用，故作下线处理
+//
+// 
+//
 // 查询DDos主攻击事件
 //
 // 可能返回的错误码:
@@ -2372,6 +2380,10 @@ func NewDescribeOverviewL7DataResponse() (response *DescribeOverviewL7DataRespon
 }
 
 // DescribeOverviewL7Data
+// 接口已经不兼容升级，故作下线处理
+//
+// 
+//
 // 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 //
 // 可能返回的错误码:
@@ -2383,6 +2395,10 @@ func (c *Client) DescribeOverviewL7Data(request *DescribeOverviewL7DataRequest) 
 }
 
 // DescribeOverviewL7Data
+// 接口已经不兼容升级，故作下线处理
+//
+// 
+//
 // 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 //
 // 可能返回的错误码:
@@ -2920,6 +2936,10 @@ func NewDescribeTimingL4DataResponse() (response *DescribeTimingL4DataResponse) 
 }
 
 // DescribeTimingL4Data
+// 旧版本的接口已经不兼容，故作下线处理
+//
+// 
+//
 // 四层时序流量数据查询
 //
 // 可能返回的错误码:
@@ -2932,6 +2952,10 @@ func (c *Client) DescribeTimingL4Data(request *DescribeTimingL4DataRequest) (res
 }
 
 // DescribeTimingL4Data
+// 旧版本的接口已经不兼容，故作下线处理
+//
+// 
+//
 // 四层时序流量数据查询
 //
 // 可能返回的错误码:
@@ -3336,6 +3360,10 @@ func NewDescribeWebManagedRulesTopDataResponse() (response *DescribeWebManagedRu
 }
 
 // DescribeWebManagedRulesTopData
+// 此版本的接口已经废弃
+//
+// 
+//
 // 查询waf攻击top数据
 //
 // 可能返回的错误码:
@@ -3348,6 +3376,10 @@ func (c *Client) DescribeWebManagedRulesTopData(request *DescribeWebManagedRules
 }
 
 // DescribeWebManagedRulesTopData
+// 此版本的接口已经废弃
+//
+// 
+//
 // 查询waf攻击top数据
 //
 // 可能返回的错误码:

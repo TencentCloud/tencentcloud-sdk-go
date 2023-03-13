@@ -1110,6 +1110,67 @@ func (r *CreateSupervisorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAppCustomContentRequestParams struct {
+	// 应用ID。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 指定需要删除的已设置的scene场景自定义元素，如果为空则删除应用下已设置的所有自定义元素。
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+}
+
+type DeleteAppCustomContentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 指定需要删除的已设置的scene场景自定义元素，如果为空则删除应用下已设置的所有自定义元素。
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+}
+
+func (r *DeleteAppCustomContentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAppCustomContentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Scenes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAppCustomContentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAppCustomContentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAppCustomContentResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAppCustomContentResponseParams `json:"Response"`
+}
+
+func (r *DeleteAppCustomContentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAppCustomContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDocumentRequestParams struct {
 	// 文档ID。
 	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`

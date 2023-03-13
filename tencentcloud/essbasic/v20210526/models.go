@@ -2245,6 +2245,7 @@ type CommonFlowApprover struct {
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
 	// 签署人Id，使用模版发起是，对应模版配置中的签署人RecipientId
+	// 注意：模版发起时该字段必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 

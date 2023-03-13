@@ -383,7 +383,7 @@ const (
 	// 用户不归属于当前企业，无法操作，请检查后重试。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 
-	// 未开通功能白名单，请联系客服处理。
+	// 接口功能暂未开放，请联系客户经理申请白名单使用
 	OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 
 	// 资源不存在。

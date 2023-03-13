@@ -8986,6 +8986,10 @@ type TopicAttributesResponse struct {
 	// topic 限流策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuotaConfig *InstanceQuotaConfigResp `json:"QuotaConfig,omitempty" name:"QuotaConfig"`
+
+	// 副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaNum *int64 `json:"ReplicaNum,omitempty" name:"ReplicaNum"`
 }
 
 type TopicDetail struct {
@@ -9035,6 +9039,10 @@ type TopicDetail struct {
 	// 0:正常，1：已删除，2：删除中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type TopicDetailResponse struct {
