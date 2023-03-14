@@ -1987,6 +1987,7 @@ func NewDeleteAIAnalysisTemplateResponse() (response *DeleteAIAnalysisTemplateRe
 // 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2004,6 +2005,7 @@ func (c *Client) DeleteAIAnalysisTemplate(request *DeleteAIAnalysisTemplateReque
 // 注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -9053,6 +9055,7 @@ func NewRebuildMediaResponse() (response *RebuildMediaResponse) {
 // 发起音画质重生
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 func (c *Client) RebuildMedia(request *RebuildMediaRequest) (response *RebuildMediaResponse, err error) {
     return c.RebuildMediaWithContext(context.Background(), request)
@@ -9062,6 +9065,7 @@ func (c *Client) RebuildMedia(request *RebuildMediaRequest) (response *RebuildMe
 // 发起音画质重生
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
 func (c *Client) RebuildMediaWithContext(ctx context.Context, request *RebuildMediaRequest) (response *RebuildMediaResponse, err error) {
     if request == nil {

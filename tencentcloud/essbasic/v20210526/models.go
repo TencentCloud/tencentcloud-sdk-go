@@ -1350,7 +1350,7 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 资源id，与ResourceType对应
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 资源类型，1：模版，目前仅支持模版，与ResourceId对应
+	// 资源类型，1：模板，目前仅支持模板，与ResourceId对应
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 合同流程基础信息
@@ -1384,7 +1384,7 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 资源id，与ResourceType对应
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 资源类型，1：模版，目前仅支持模版，与ResourceId对应
+	// 资源类型，1：模板，目前仅支持模板，与ResourceId对应
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 合同流程基础信息
@@ -2244,8 +2244,8 @@ type CommonFlowApprover struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
-	// 签署人Id，使用模版发起是，对应模版配置中的签署人RecipientId
-	// 注意：模版发起时该字段必填
+	// 签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
+	// 注意：模板发起时该字段必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 

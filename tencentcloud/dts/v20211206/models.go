@@ -360,8 +360,20 @@ type ConfigureSyncJobRequestParams struct {
 	// 源端信息，单节点数据库使用，且SrcNodeType传single
 	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
+	// 源端信息，多节点数据库使用，且SrcNodeType传cluster
+	SrcInfos *SyncDBEndpointInfos `json:"SrcInfos,omitempty" name:"SrcInfos"`
+
+	// 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+	SrcNodeType *string `json:"SrcNodeType,omitempty" name:"SrcNodeType"`
+
 	// 目标端信息，单节点数据库使用
 	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
+
+	// 目标端信息，多节点数据库使用，且DstNodeType传cluster
+	DstInfos *SyncDBEndpointInfos `json:"DstInfos,omitempty" name:"DstInfos"`
+
+	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+	DstNodeType *string `json:"DstNodeType,omitempty" name:"DstNodeType"`
 
 	// 同步任务选项
 	Options *Options `json:"Options,omitempty" name:"Options"`
@@ -400,8 +412,20 @@ type ConfigureSyncJobRequest struct {
 	// 源端信息，单节点数据库使用，且SrcNodeType传single
 	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
+	// 源端信息，多节点数据库使用，且SrcNodeType传cluster
+	SrcInfos *SyncDBEndpointInfos `json:"SrcInfos,omitempty" name:"SrcInfos"`
+
+	// 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+	SrcNodeType *string `json:"SrcNodeType,omitempty" name:"SrcNodeType"`
+
 	// 目标端信息，单节点数据库使用
 	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
+
+	// 目标端信息，多节点数据库使用，且DstNodeType传cluster
+	DstInfos *SyncDBEndpointInfos `json:"DstInfos,omitempty" name:"DstInfos"`
+
+	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+	DstNodeType *string `json:"DstNodeType,omitempty" name:"DstNodeType"`
 
 	// 同步任务选项
 	Options *Options `json:"Options,omitempty" name:"Options"`
@@ -431,7 +455,11 @@ func (r *ConfigureSyncJobRequest) FromJsonString(s string) error {
 	delete(f, "RunMode")
 	delete(f, "ExpectRunTime")
 	delete(f, "SrcInfo")
+	delete(f, "SrcInfos")
+	delete(f, "SrcNodeType")
 	delete(f, "DstInfo")
+	delete(f, "DstInfos")
+	delete(f, "DstNodeType")
 	delete(f, "Options")
 	delete(f, "AutoRetryTimeRangeMinutes")
 	if len(f) > 0 {
@@ -902,7 +930,7 @@ type CreateSyncJobRequestParams struct {
 	// 源端数据库所在地域,如ap-guangzhou
 	SrcRegion *string `json:"SrcRegion,omitempty" name:"SrcRegion"`
 
-	// 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+	// 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka等
 	DstDatabaseType *string `json:"DstDatabaseType,omitempty" name:"DstDatabaseType"`
 
 	// 目标端数据库所在地域,如ap-guangzhou
@@ -942,7 +970,7 @@ type CreateSyncJobRequest struct {
 	// 源端数据库所在地域,如ap-guangzhou
 	SrcRegion *string `json:"SrcRegion,omitempty" name:"SrcRegion"`
 
-	// 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
+	// 目标端数据库类型,如mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql,kafka等
 	DstDatabaseType *string `json:"DstDatabaseType,omitempty" name:"DstDatabaseType"`
 
 	// 目标端数据库所在地域,如ap-guangzhou
@@ -2795,6 +2823,20 @@ type JobItem struct {
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
+type KafkaOption struct {
+	// 投递到kafka的数据类型，如Avro,Json
+	DataType *string `json:"DataType,omitempty" name:"DataType"`
+
+	// 同步topic策略，如Single（集中投递到单topic）,Multi (自定义topic名称)
+	TopicType *string `json:"TopicType,omitempty" name:"TopicType"`
+
+	// 用于存储ddl的topic
+	DDLTopicName *string `json:"DDLTopicName,omitempty" name:"DDLTopicName"`
+
+	// 单topic和自定义topic的描述
+	TopicRules []*TopicRule `json:"TopicRules,omitempty" name:"TopicRules"`
+}
+
 type KeyValuePairOption struct {
 	// 选项key
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3329,6 +3371,10 @@ type Options struct {
 	// DDL同步选项，具体描述要同步那些DDL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdlOptions []*DdlOption `json:"DdlOptions,omitempty" name:"DdlOptions"`
+
+	// kafka同步选项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaOption *KafkaOption `json:"KafkaOption,omitempty" name:"KafkaOption"`
 }
 
 // Predefined struct for user
@@ -4362,6 +4408,24 @@ func (r *StopSyncJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SyncDBEndpointInfos struct {
+	// 数据库所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessType *string `json:"AccessType,omitempty" name:"AccessType"`
+
+	// 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseType *string `json:"DatabaseType,omitempty" name:"DatabaseType"`
+
+	// 数据库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Info []*Endpoint `json:"Info,omitempty" name:"Info"`
+}
+
 type SyncDetailInfo struct {
 	// 总步骤数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4578,6 +4642,26 @@ type TagItem struct {
 	// 标签值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TopicRule struct {
+	// topic名
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// topic分区策略，如 自定义topic：Random（随机投递），集中投递到单Topic：AllInPartitionZero（全部投递至partition0）、PartitionByTable(按表名分区)、PartitionByTableAndKey(按表名加主键分区)
+	PartitionType *string `json:"PartitionType,omitempty" name:"PartitionType"`
+
+	// 库名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余库)，数组中必须有一项为‘Default’
+	DbMatchMode *string `json:"DbMatchMode,omitempty" name:"DbMatchMode"`
+
+	// 库名，仅“自定义topic”时，DbMatchMode=Regular生效
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 表名匹配规则，仅“自定义topic”生效，如Regular（正则匹配）, Default(不符合匹配规则的剩余表)，数组中必须有一项为‘Default’
+	TableMatchMode *string `json:"TableMatchMode,omitempty" name:"TableMatchMode"`
+
+	// 表名，仅“自定义topic”时，TableMatchMode=Regular生效
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
 }
 
 type TradeInfo struct {

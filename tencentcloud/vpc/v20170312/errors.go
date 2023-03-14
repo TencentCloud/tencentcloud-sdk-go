@@ -287,6 +287,9 @@ const (
 	// DNAT转换规则的内网IP需为虚拟机上网卡所用的IP。
 	INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEPIPNEEDVM = "InvalidParameterValue.NatGatewayDnatRulePipNeedVm"
 
+	// 新增NAT网关的DNAT转换规则已重复。
+	INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEREPEATED = "InvalidParameterValue.NatGatewayDnatRuleRepeated"
+
 	// NAT网关的SNAT转换规则不存在。
 	INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = "InvalidParameterValue.NatGatewaySnatRuleNotExists"
 

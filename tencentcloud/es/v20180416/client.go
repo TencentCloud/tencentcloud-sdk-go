@@ -1447,6 +1447,7 @@ func NewStartLogstashPipelinesResponse() (response *StartLogstashPipelinesRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) StartLogstashPipelines(request *StartLogstashPipelinesRequest) (response *StartLogstashPipelinesResponse, err error) {
     return c.StartLogstashPipelinesWithContext(context.Background(), request)
 }
@@ -1457,6 +1458,7 @@ func (c *Client) StartLogstashPipelines(request *StartLogstashPipelinesRequest) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) StartLogstashPipelinesWithContext(ctx context.Context, request *StartLogstashPipelinesRequest) (response *StartLogstashPipelinesResponse, err error) {
     if request == nil {
         request = NewStartLogstashPipelinesRequest()

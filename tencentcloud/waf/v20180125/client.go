@@ -1035,6 +1035,58 @@ func (c *Client) DescribeAutoDenyIPWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeCustomWhiteRuleRequest() (request *DescribeCustomWhiteRuleRequest) {
+    request = &DescribeCustomWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeCustomWhiteRule")
+    
+    
+    return
+}
+
+func NewDescribeCustomWhiteRuleResponse() (response *DescribeCustomWhiteRuleResponse) {
+    response = &DescribeCustomWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomWhiteRule
+// 获取防护配置中的精准白名单策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCustomWhiteRule(request *DescribeCustomWhiteRuleRequest) (response *DescribeCustomWhiteRuleResponse, err error) {
+    return c.DescribeCustomWhiteRuleWithContext(context.Background(), request)
+}
+
+// DescribeCustomWhiteRule
+// 获取防护配置中的精准白名单策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCustomWhiteRuleWithContext(ctx context.Context, request *DescribeCustomWhiteRuleRequest) (response *DescribeCustomWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainDetailsSaasRequest() (request *DescribeDomainDetailsSaasRequest) {
     request = &DescribeDomainDetailsSaasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1489,6 +1541,106 @@ func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeIpHitItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePolicyStatusRequest() (request *DescribePolicyStatusRequest) {
+    request = &DescribePolicyStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribePolicyStatus")
+    
+    
+    return
+}
+
+func NewDescribePolicyStatusResponse() (response *DescribePolicyStatusResponse) {
+    response = &DescribePolicyStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePolicyStatus
+// 获取防护状态以及生效的实例id
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePolicyStatus(request *DescribePolicyStatusRequest) (response *DescribePolicyStatusResponse, err error) {
+    return c.DescribePolicyStatusWithContext(context.Background(), request)
+}
+
+// DescribePolicyStatus
+// 获取防护状态以及生效的实例id
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePolicyStatusWithContext(ctx context.Context, request *DescribePolicyStatusRequest) (response *DescribePolicyStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribePolicyStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePolicyStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePolicyStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRuleLimitRequest() (request *DescribeRuleLimitRequest) {
+    request = &DescribeRuleLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeRuleLimit")
+    
+    
+    return
+}
+
+func NewDescribeRuleLimitResponse() (response *DescribeRuleLimitResponse) {
+    response = &DescribeRuleLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRuleLimit
+// 获取各个模块具体的规格限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRuleLimit(request *DescribeRuleLimitRequest) (response *DescribeRuleLimitResponse, err error) {
+    return c.DescribeRuleLimitWithContext(context.Background(), request)
+}
+
+// DescribeRuleLimit
+// 获取各个模块具体的规格限制
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRuleLimitWithContext(ctx context.Context, request *DescribeRuleLimitRequest) (response *DescribeRuleLimitResponse, err error) {
+    if request == nil {
+        request = NewDescribeRuleLimitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRuleLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRuleLimitResponse()
     err = c.Send(request, response)
     return
 }

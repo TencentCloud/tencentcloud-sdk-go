@@ -1060,12 +1060,21 @@ func (r *CreateRoomResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSupervisorRequestParams struct {
+	// 应用ID。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
+	// 用户ID列表。
+	Users []*string `json:"Users,omitempty" name:"Users"`
 }
 
 type CreateSupervisorRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用ID。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户ID列表。
+	Users []*string `json:"Users,omitempty" name:"Users"`
 }
 
 func (r *CreateSupervisorRequest) ToJsonString() string {
@@ -1080,7 +1089,8 @@ func (r *CreateSupervisorRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "SdkAppId")
+	delete(f, "Users")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSupervisorRequest has unknown keys!", "")
 	}

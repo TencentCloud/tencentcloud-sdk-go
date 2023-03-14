@@ -582,6 +582,9 @@ const (
 	LIMITEXCEEDED_CDN = "LimitExceeded.Cdn"
 
 	// 用户开启镜像加速函数版本超限。
+	LIMITEXCEEDED_CONTAINERIMAGEACCELERATE = "LimitExceeded.ContainerImageAccelerate"
+
+	// 用户开启镜像加速函数版本超限。
 	LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = "LimitExceeded.ContainerImageAccelerateQuota"
 
 	// eip资源超限。
@@ -607,6 +610,9 @@ const (
 
 	// InitTimeout达到限制，可提交工单申请提升限制：https://tencentcs.com/7Fixwt63。
 	LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
+
+	// 内网固定IP个数超限。
+	LIMITEXCEEDED_INTRAIP = "LimitExceeded.IntraIp"
 
 	// layer版本数量超出最大限制。
 	LIMITEXCEEDED_LAYERVERSIONS = "LimitExceeded.LayerVersions"
@@ -709,6 +715,9 @@ const (
 
 	// 未找到指定的AsyncEvent，请创建后再试。
 	RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
+
+	// 函数需要关联的标签Key不存在。
+	RESOURCENOTFOUND_ATTACHEDTAGKEYNOTFOUND = "ResourceNotFound.AttachedTagKeyNotFound"
 
 	// Cdn不存在。
 	RESOURCENOTFOUND_CDN = "ResourceNotFound.Cdn"

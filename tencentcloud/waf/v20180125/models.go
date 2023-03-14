@@ -1635,6 +1635,133 @@ func (r *DescribeAutoDenyIPResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeCustomRulesRspRuleListItem struct {
+	// 动作类型
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 跳过的策略
+	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 策略名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 重定向地址
+	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
+
+	// 策略ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 优先级
+	SortId *string `json:"SortId,omitempty" name:"SortId"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 策略详情
+	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+}
+
+// Predefined struct for user
+type DescribeCustomWhiteRuleRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤数组,name可以是如下的值： RuleID,RuleName,Match
+	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+
+	// asc或者desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// exp_ts或者mod_ts
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeCustomWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤数组,name可以是如下的值： RuleID,RuleName,Match
+	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+
+	// asc或者desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// exp_ts或者mod_ts
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeCustomWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomWhiteRuleResponseParams struct {
+	// 规则详情
+	RuleList []*DescribeCustomRulesRspRuleListItem `json:"RuleList,omitempty" name:"RuleList"`
+
+	// 规则条数
+	TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCustomWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCustomWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeCustomWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeDomainDetailsSaasRequestParams struct {
 	// 域名
@@ -2288,6 +2415,130 @@ func (r *DescribeIpHitItemsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePolicyStatusRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// clb-waf或者saas-waf
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+}
+
+type DescribePolicyStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// clb-waf或者saas-waf
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+}
+
+func (r *DescribePolicyStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Edition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePolicyStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePolicyStatusResponseParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 防护状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePolicyStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePolicyStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribePolicyStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePolicyStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRuleLimitRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+type DescribeRuleLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *DescribeRuleLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRuleLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuleLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRuleLimitResponseParams struct {
+	// waf模块的规格
+	Res *WafRuleLimit `json:"Res,omitempty" name:"Res"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRuleLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRuleLimitResponseParams `json:"Response"`
+}
+
+func (r *DescribeRuleLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRuleLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4161,6 +4412,47 @@ func (r *UpsertIpAccessControlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpsertIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WafRuleLimit struct {
+	// 自定义CC的规格
+	CC *uint64 `json:"CC,omitempty" name:"CC"`
+
+	// 自定义策略的规格
+	CustomRule *uint64 `json:"CustomRule,omitempty" name:"CustomRule"`
+
+	// 黑白名单的规格
+	IPControl *uint64 `json:"IPControl,omitempty" name:"IPControl"`
+
+	// 信息防泄漏的规格
+	AntiLeak *uint64 `json:"AntiLeak,omitempty" name:"AntiLeak"`
+
+	// 防篡改的规格
+	AntiTamper *uint64 `json:"AntiTamper,omitempty" name:"AntiTamper"`
+
+	// 紧急CC的规格
+	AutoCC *uint64 `json:"AutoCC,omitempty" name:"AutoCC"`
+
+	// 地域封禁的规格
+	AreaBan *uint64 `json:"AreaBan,omitempty" name:"AreaBan"`
+
+	// 自定义CC中配置session
+	CCSession *uint64 `json:"CCSession,omitempty" name:"CCSession"`
+
+	// AI的规格
+	AI *uint64 `json:"AI,omitempty" name:"AI"`
+
+	// 精准白名单的规格
+	CustomWhite *uint64 `json:"CustomWhite,omitempty" name:"CustomWhite"`
+
+	// api安全的规格
+	ApiSecurity *uint64 `json:"ApiSecurity,omitempty" name:"ApiSecurity"`
+
+	// 客户端流量标记的规格
+	ClientMsg *uint64 `json:"ClientMsg,omitempty" name:"ClientMsg"`
+
+	// 流量标记的规格
+	TrafficMarking *uint64 `json:"TrafficMarking,omitempty" name:"TrafficMarking"`
 }
 
 type WafThreatenIntelligenceDetails struct {

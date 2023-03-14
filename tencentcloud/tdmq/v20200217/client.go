@@ -5261,6 +5261,58 @@ func (c *Client) ModifyEnvironmentRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyRabbitMQVipInstanceRequest() (request *ModifyRabbitMQVipInstanceRequest) {
+    request = &ModifyRabbitMQVipInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRabbitMQVipInstance")
+    
+    
+    return
+}
+
+func NewModifyRabbitMQVipInstanceResponse() (response *ModifyRabbitMQVipInstanceResponse) {
+    response = &ModifyRabbitMQVipInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRabbitMQVipInstance
+// 修改RabbitMQ专享版实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyRabbitMQVipInstance(request *ModifyRabbitMQVipInstanceRequest) (response *ModifyRabbitMQVipInstanceResponse, err error) {
+    return c.ModifyRabbitMQVipInstanceWithContext(context.Background(), request)
+}
+
+// ModifyRabbitMQVipInstance
+// 修改RabbitMQ专享版实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyRabbitMQVipInstanceWithContext(ctx context.Context, request *ModifyRabbitMQVipInstanceRequest) (response *ModifyRabbitMQVipInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyRabbitMQVipInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRabbitMQVipInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRabbitMQVipInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRocketMQClusterRequest() (request *ModifyRocketMQClusterRequest) {
     request = &ModifyRocketMQClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},

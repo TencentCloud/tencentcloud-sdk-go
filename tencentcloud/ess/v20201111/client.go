@@ -2264,8 +2264,11 @@ func NewCreateUserAutoSignEnableUrlResponse() (response *CreateUserAutoSignEnabl
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
 //  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 func (c *Client) CreateUserAutoSignEnableUrl(request *CreateUserAutoSignEnableUrlRequest) (response *CreateUserAutoSignEnableUrlResponse, err error) {
     return c.CreateUserAutoSignEnableUrlWithContext(context.Background(), request)
 }
@@ -2293,8 +2296,11 @@ func (c *Client) CreateUserAutoSignEnableUrl(request *CreateUserAutoSignEnableUr
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
 //  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 func (c *Client) CreateUserAutoSignEnableUrlWithContext(ctx context.Context, request *CreateUserAutoSignEnableUrlRequest) (response *CreateUserAutoSignEnableUrlResponse, err error) {
     if request == nil {
         request = NewCreateUserAutoSignEnableUrlRequest()

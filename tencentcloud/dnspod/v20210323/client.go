@@ -3745,6 +3745,7 @@ func NewModifyDomainStatusResponse() (response *ModifyDomainStatusResponse) {
 // 修改域名状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISKEYDOMAIN = "FailedOperation.DomainIsKeyDomain"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
@@ -3762,6 +3763,7 @@ func (c *Client) ModifyDomainStatus(request *ModifyDomainStatusRequest) (respons
 // 修改域名状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISKEYDOMAIN = "FailedOperation.DomainIsKeyDomain"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"

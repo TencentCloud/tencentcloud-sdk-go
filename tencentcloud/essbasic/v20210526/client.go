@@ -474,7 +474,10 @@ func NewChannelCreateConvertTaskApiResponse() (response *ChannelCreateConvertTas
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+//  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateConvertTaskApi(request *ChannelCreateConvertTaskApiRequest) (response *ChannelCreateConvertTaskApiResponse, err error) {
@@ -486,7 +489,10 @@ func (c *Client) ChannelCreateConvertTaskApi(request *ChannelCreateConvertTaskAp
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+//  MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateConvertTaskApiWithContext(ctx context.Context, request *ChannelCreateConvertTaskApiRequest) (response *ChannelCreateConvertTaskApiResponse, err error) {
@@ -526,15 +532,12 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 // ChannelCreateEmbedWebUrl
 // 本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
 //
-// 本接口支持创建：创建印章，创建模版，修改模版，预览模版，预览合同流程的web链接
+// 本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接
 //
 // 进入web连接后与当前控制台操作保持一致
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     return c.ChannelCreateEmbedWebUrlWithContext(context.Background(), request)
 }
@@ -542,15 +545,12 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 // ChannelCreateEmbedWebUrl
 // 本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
 //
-// 本接口支持创建：创建印章，创建模版，修改模版，预览模版，预览合同流程的web链接
+// 本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接
 //
 // 进入web连接后与当前控制台操作保持一致
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateEmbedWebUrlWithContext(ctx context.Context, request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     if request == nil {
         request = NewChannelCreateEmbedWebUrlRequest()
@@ -1042,6 +1042,7 @@ func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlRequest) (response *ChannelCreateFlowSignUrlResponse, err error) {
     return c.ChannelCreateFlowSignUrlWithContext(context.Background(), request)
@@ -1062,6 +1063,7 @@ func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlReque
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateFlowSignUrlWithContext(ctx context.Context, request *ChannelCreateFlowSignUrlRequest) (response *ChannelCreateFlowSignUrlResponse, err error) {
     if request == nil {
@@ -1180,7 +1182,7 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //
 // 合同发起后，填写及签署流程与现有操作流程一致
 //
-// 注意：目前仅支持模版发起
+// 注意：目前仅支持模板发起
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1200,7 +1202,7 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //
 // 合同发起后，填写及签署流程与现有操作流程一致
 //
-// 注意：目前仅支持模版发起
+// 注意：目前仅支持模板发起
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2290,6 +2292,7 @@ func NewDescribeChannelFlowEvidenceReportResponse() (response *DescribeChannelFl
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
@@ -2309,6 +2312,7 @@ func (c *Client) DescribeChannelFlowEvidenceReport(request *DescribeChannelFlowE
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
@@ -2882,6 +2886,7 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (response *ModifyExtendedServiceResponse, err error) {
@@ -2895,6 +2900,7 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ModifyExtendedServiceWithContext(ctx context.Context, request *ModifyExtendedServiceRequest) (response *ModifyExtendedServiceResponse, err error) {

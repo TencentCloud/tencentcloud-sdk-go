@@ -1,68 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 CKafka(ckafka) 版本：2019-08-19
+## 数据传输服务(dts) 版本：2021-12-06
 
-### 第 71 次发布
+### 第 12 次发布
 
-发布时间：2023-03-13 01:17:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TopicAttributesResponse](https://cloud.tencent.com/document/api/597/40861#TopicAttributesResponse)
-
-	* 新增成员：ReplicaNum
-
-* [TopicDetail](https://cloud.tencent.com/document/api/597/40861#TopicDetail)
-
-	* 新增成员：Tags
-
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 14 次发布
-
-发布时间：2023-03-13 01:32:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [BatchRecordInfo](https://cloud.tencent.com/document/api/1427/56185#BatchRecordInfo)
-
-	* 新增成员：Weight
-
-
-
-
-## 低代码互动课堂(lcic) 版本：2022-08-17
-
-### 第 15 次发布
-
-发布时间：2023-03-13 01:49:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteAppCustomContent](https://cloud.tencent.com/document/api/1639/88133)
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 79 次发布
-
-发布时间：2023-03-13 01:52:39
+发布时间：2023-03-14 01:22:11
 
 本次发布包含了以下内容：
 
@@ -70,25 +12,54 @@
 
 修改接口：
 
-* [DescribePrometheusConfig](https://cloud.tencent.com/document/api/248/85705)
+* [ConfigureSyncJob](https://cloud.tencent.com/document/api/571/82107)
 
-	* 新增出参：Probes
+	* 新增入参：SrcInfos, SrcNodeType, DstInfos, DstNodeType
 
+
+新增数据结构：
+
+* [KafkaOption](https://cloud.tencent.com/document/api/571/82108#KafkaOption)
+* [SyncDBEndpointInfos](https://cloud.tencent.com/document/api/571/82108#SyncDBEndpointInfos)
+* [TopicRule](https://cloud.tencent.com/document/api/571/82108#TopicRule)
 
 修改数据结构：
 
-* [PrometheusAgentOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusAgentOverview)
+* [Options](https://cloud.tencent.com/document/api/571/82108#Options)
 
-	* 新增成员：Name
+	* 新增成员：KafkaOption
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 16 次发布
+
+发布时间：2023-03-14 01:33:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSupervisor](https://cloud.tencent.com/document/api/1639/80944)
+
+	* 新增入参：SdkAppId, Users
 
 
 
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-### 第 49 次发布
+### 第 50 次发布
 
-发布时间：2023-03-13 02:05:39
+发布时间：2023-03-14 01:53:37
 
 本次发布包含了以下内容：
 
@@ -96,30 +67,84 @@
 
 新增接口：
 
-* [CreateRabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/88134)
+* [ModifyRabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/88450)
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 34 次发布
 
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-### 第 27 次发布
-
-发布时间：2023-03-13 02:06:54
+发布时间：2023-03-14 01:55:45
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**预下线接口**：</font>
+修改接口：
 
-* DescribeDDosMajorAttackEvent
-* DescribeOverviewL7Data
-* DescribeTimingL4Data
-* DescribeWebManagedRulesTopData
+* [IdentifyZone](https://cloud.tencent.com/document/api/1552/80712)
+
+	* 新增入参：Domain
+
+
+修改数据结构：
+
+* [AccelerationDomain](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomain)
+
+	* 新增成员：IdentificationStatus
+
+* [Https](https://cloud.tencent.com/document/api/1552/80721#Https)
+
+	* 新增成员：CipherSuite
+
+* [Identification](https://cloud.tencent.com/document/api/1552/80721#Identification)
+
+	* 新增成员：Domain
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 145 次发布
+
+发布时间：2023-03-14 02:17:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ReplaceSecurityGroupPolicies](https://cloud.tencent.com/document/api/215/88451)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 25 次发布
+
+发布时间：2023-03-14 02:20:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCustomWhiteRule](https://cloud.tencent.com/document/api/627/88453)
+* [DescribePolicyStatus](https://cloud.tencent.com/document/api/627/88454)
+* [DescribeRuleLimit](https://cloud.tencent.com/document/api/627/88452)
+
+新增数据结构：
+
+* [DescribeCustomRulesRspRuleListItem](https://cloud.tencent.com/document/api/627/53609#DescribeCustomRulesRspRuleListItem)
+* [WafRuleLimit](https://cloud.tencent.com/document/api/627/53609#WafRuleLimit)
 
 
 
@@ -39617,6 +39642,34 @@
 
 ## 数据传输服务(dts) 版本：2021-12-06
 
+### 第 12 次发布
+
+发布时间：2023-03-14 01:22:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ConfigureSyncJob](https://cloud.tencent.com/document/api/571/82107)
+
+	* 新增入参：SrcInfos, SrcNodeType, DstInfos, DstNodeType
+
+
+新增数据结构：
+
+* [[KafkaOption](https://cloud.tencent.com/document/api/571/82108#KafkaOption)](https://cloud.tencent.com/document/api/571/82108#[KafkaOption](https://cloud.tencent.com/document/api/571/82108#KafkaOption))
+* [[SyncDBEndpointInfos](https://cloud.tencent.com/document/api/571/82108#SyncDBEndpointInfos)](https://cloud.tencent.com/document/api/571/82108#[SyncDBEndpointInfos](https://cloud.tencent.com/document/api/571/82108#SyncDBEndpointInfos))
+* [[TopicRule](https://cloud.tencent.com/document/api/571/82108#TopicRule)](https://cloud.tencent.com/document/api/571/82108#[TopicRule](https://cloud.tencent.com/document/api/571/82108#TopicRule))
+
+修改数据结构：
+
+* [Options](https://cloud.tencent.com/document/api/571/82108#Options)
+
+	* 新增成员：KafkaOption
+
+
 ### 第 11 次发布
 
 发布时间：2023-02-27 01:22:55
@@ -57281,6 +57334,21 @@
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
+### 第 16 次发布
+
+发布时间：2023-03-14 01:33:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSupervisor](https://cloud.tencent.com/document/api/1639/80944)
+
+	* 新增入参：SdkAppId, Users
+
+
 ### 第 15 次发布
 
 发布时间：2023-03-13 01:49:55
@@ -57291,7 +57359,7 @@
 
 新增接口：
 
-* [[DeleteAppCustomContent](https://cloud.tencent.com/document/api/1639/88133)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteAppCustomContent](https://cloud.tencent.com/document/api/1639/88133)
 
 ### 第 14 次发布
 
@@ -85337,6 +85405,18 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 50 次发布
+
+发布时间：2023-03-14 01:53:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyRabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/88450)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 49 次发布
 
 发布时间：2023-03-13 02:05:39
@@ -85347,7 +85427,7 @@
 
 新增接口：
 
-* [[CreateRabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/88134)](https://cloud.tencent.com/document/api/#/#)
+* [CreateRabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/88134)
 
 ### 第 48 次发布
 
@@ -88528,6 +88608,36 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 34 次发布
+
+发布时间：2023-03-14 01:55:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [IdentifyZone](https://cloud.tencent.com/document/api/1552/80712)
+
+	* 新增入参：Domain
+
+
+修改数据结构：
+
+* [AccelerationDomain](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomain)
+
+	* 新增成员：IdentificationStatus
+
+* [Https](https://cloud.tencent.com/document/api/1552/80721#Https)
+
+	* 新增成员：CipherSuite
+
+* [Identification](https://cloud.tencent.com/document/api/1552/80721#Identification)
+
+	* 新增成员：Domain
+
 
 ### 第 33 次发布
 
@@ -104599,6 +104709,18 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 145 次发布
+
+发布时间：2023-03-14 02:17:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ReplaceSecurityGroupPolicies](https://cloud.tencent.com/document/api/215/88451)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 144 次发布
 
 发布时间：2023-03-02 01:47:50
@@ -107891,6 +108013,25 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 25 次发布
+
+发布时间：2023-03-14 02:20:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCustomWhiteRule](https://cloud.tencent.com/document/api/627/88453)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePolicyStatus](https://cloud.tencent.com/document/api/627/88454)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRuleLimit](https://cloud.tencent.com/document/api/627/88452)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DescribeCustomRulesRspRuleListItem](https://cloud.tencent.com/document/api/627/53609#DescribeCustomRulesRspRuleListItem)](https://cloud.tencent.com/document/api/627/53609#[DescribeCustomRulesRspRuleListItem](https://cloud.tencent.com/document/api/627/53609#DescribeCustomRulesRspRuleListItem))
+* [[WafRuleLimit](https://cloud.tencent.com/document/api/627/53609#WafRuleLimit)](https://cloud.tencent.com/document/api/627/53609#[WafRuleLimit](https://cloud.tencent.com/document/api/627/53609#WafRuleLimit))
 
 ### 第 24 次发布
 

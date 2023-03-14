@@ -22727,6 +22727,74 @@ func (r *ReplaceRoutesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ReplaceSecurityGroupPoliciesRequestParams struct {
+	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组规则集合对象。
+	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+
+	// 旧的安全组规则集合对象，可选，日志记录用。
+	OriginalSecurityGroupPolicySet *SecurityGroupPolicySet `json:"OriginalSecurityGroupPolicySet,omitempty" name:"OriginalSecurityGroupPolicySet"`
+}
+
+type ReplaceSecurityGroupPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// 安全组规则集合对象。
+	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+
+	// 旧的安全组规则集合对象，可选，日志记录用。
+	OriginalSecurityGroupPolicySet *SecurityGroupPolicySet `json:"OriginalSecurityGroupPolicySet,omitempty" name:"OriginalSecurityGroupPolicySet"`
+}
+
+func (r *ReplaceSecurityGroupPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceSecurityGroupPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SecurityGroupId")
+	delete(f, "SecurityGroupPolicySet")
+	delete(f, "OriginalSecurityGroupPolicySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceSecurityGroupPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReplaceSecurityGroupPoliciesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ReplaceSecurityGroupPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *ReplaceSecurityGroupPoliciesResponseParams `json:"Response"`
+}
+
+func (r *ReplaceSecurityGroupPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaceSecurityGroupPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ReplaceSecurityGroupPolicyRequestParams struct {
 	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
