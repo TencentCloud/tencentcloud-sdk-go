@@ -933,6 +933,63 @@ func (r *DescribeInstanceBinlogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceDealDetailRequestParams struct {
+	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealId。
+	DealIds []*string `json:"DealIds,omitempty" name:"DealIds"`
+}
+
+type DescribeInstanceDealDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订单交易ID数组，即 [CreateInstances](https://cloud.tencent.com/document/api/1520/86207) 的输出参数DealId。
+	DealIds []*string `json:"DealIds,omitempty" name:"DealIds"`
+}
+
+func (r *DescribeInstanceDealDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceDealDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DealIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceDealDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceDealDetailResponseParams struct {
+	// 订单详细信息
+	DealDetails []*TradeDealDetail `json:"DealDetails,omitempty" name:"DealDetails"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceDealDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceDealDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceDealDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceDealDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceNodeInfoRequestParams struct {
 	// 实例 ID，如：kee-6ubh****。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -3532,6 +3589,44 @@ type TendisSlowLogDetail struct {
 
 	// 节点ID
 	Node *string `json:"Node,omitempty" name:"Node"`
+}
+
+type TradeDealDetail struct {
+	// 订单号ID，调用云API时使用此ID	
+	DealId *string `json:"DealId,omitempty" name:"DealId"`
+
+	// 长订单ID，反馈订单问题给官方客服使用此ID	
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 可用区id
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 订单关联的实例数
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 创建用户uin
+	Creater *string `json:"Creater,omitempty" name:"Creater"`
+
+	// 订单创建时间
+	CreatTime *string `json:"CreatTime,omitempty" name:"CreatTime"`
+
+	// 订单超时时间
+	OverdueTime *string `json:"OverdueTime,omitempty" name:"OverdueTime"`
+
+	// 订单完成时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 订单状态 1：未支付 2:已支付，未发货 3:发货中 4:发货成功 5:发货失败 6:已退款 7:已关闭订单 8:订单过期 9:订单已失效 10:产品已失效 11:代付拒绝 12:支付中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 订单状态描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 订单实际总价，单位：分
+	Price *float64 `json:"Price,omitempty" name:"Price"`
+
+	// 实例ID
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 // Predefined struct for user

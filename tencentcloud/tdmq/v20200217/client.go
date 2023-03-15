@@ -4023,6 +4023,62 @@ func (c *Client) DescribeRabbitMQNodeListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRabbitMQVipInstanceRequest() (request *DescribeRabbitMQVipInstanceRequest) {
+    request = &DescribeRabbitMQVipInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQVipInstance")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQVipInstanceResponse() (response *DescribeRabbitMQVipInstanceResponse) {
+    response = &DescribeRabbitMQVipInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRabbitMQVipInstance
+// 获取单个RabbitMQ专享实例信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRabbitMQVipInstance(request *DescribeRabbitMQVipInstanceRequest) (response *DescribeRabbitMQVipInstanceResponse, err error) {
+    return c.DescribeRabbitMQVipInstanceWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQVipInstance
+// 获取单个RabbitMQ专享实例信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRabbitMQVipInstanceWithContext(ctx context.Context, request *DescribeRabbitMQVipInstanceRequest) (response *DescribeRabbitMQVipInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQVipInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQVipInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQVipInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRabbitMQVipInstancesRequest() (request *DescribeRabbitMQVipInstancesRequest) {
     request = &DescribeRabbitMQVipInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4046,6 +4102,9 @@ func NewDescribeRabbitMQVipInstancesResponse() (response *DescribeRabbitMQVipIns
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
     return c.DescribeRabbitMQVipInstancesWithContext(context.Background(), request)
@@ -4056,6 +4115,9 @@ func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstan
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeRabbitMQVipInstancesWithContext(ctx context.Context, request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
     if request == nil {

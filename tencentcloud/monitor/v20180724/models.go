@@ -9615,7 +9615,7 @@ type DescribeStatisticDataRequestParams struct {
 	// 所属模块，固定值，为monitor
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 命名空间，目前只支持QCE/TKE
+	// 命名空间，目前只支持QCE/TKE2
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 指标名列表
@@ -9648,7 +9648,7 @@ type DescribeStatisticDataRequest struct {
 	// 所属模块，固定值，为monitor
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 命名空间，目前只支持QCE/TKE
+	// 命名空间，目前只支持QCE/TKE2
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 指标名列表

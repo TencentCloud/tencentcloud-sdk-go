@@ -178,6 +178,16 @@ type ChannelCodeInnerDetail struct {
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 }
 
+type ChannelTag struct {
+	// 该客户档案当前已成功关联的渠道标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagName *string `json:"TagName,omitempty" name:"TagName"`
+
+	// 该客户档案当前已成功关联的渠道标签的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagId *string `json:"TagId,omitempty" name:"TagId"`
+}
+
 type ChatArchivingDetail struct {
 	// 消息id
 	MsgId *string `json:"MsgId,omitempty" name:"MsgId"`
@@ -274,6 +284,45 @@ type ClueInfoDetail struct {
 	// 客户姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 线索属性，0：个人，1：企业
+	LeadUserType *int64 `json:"LeadUserType,omitempty" name:"LeadUserType"`
+
+	// 线索来源类型，1：线上，2：线下
+	LeadType *int64 `json:"LeadType,omitempty" name:"LeadType"`
+
+	// 线索渠道对应ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 线索渠道类型，与线索来源对应的渠道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 线索渠道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceChannelName *string `json:"SourceChannelName,omitempty" name:"SourceChannelName"`
+
+	// 0：未知，1：男，2：女
+	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
+
+	// 线索创建时间戳，单位：秒
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 线索所处状态，101-待分配 201-待建档 301-已建档 401-已邀约 501-跟进中 601-已下订单 701-已成交 801-战败申请中 901-已战败 1001-未知状态 1101-转移申请中 1201-已完成
+	LeadStatus *int64 `json:"LeadStatus,omitempty" name:"LeadStatus"`
+
+	// 线索意向等级
+	LevelCode *string `json:"LevelCode,omitempty" name:"LevelCode"`
+
+	// 线索成功导入的时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportAtTime *uint64 `json:"ImportAtTime,omitempty" name:"ImportAtTime"`
+
+	// 完成线索分配的时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeTime *uint64 `json:"DistributeTime,omitempty" name:"DistributeTime"`
+
+	// 获取线索的时间戳，单位：秒
+	CreateAtTime *uint64 `json:"CreateAtTime,omitempty" name:"CreateAtTime"`
 }
 
 type CorpUserInfo struct {
@@ -728,12 +777,170 @@ type CustomerActionEventDetail struct {
 	EventTime *uint64 `json:"EventTime,omitempty" name:"EventTime"`
 }
 
+type CustomerProfile struct {
+	// 客户档案id，客户唯一识别编码
+	CustomerId *uint64 `json:"CustomerId,omitempty" name:"CustomerId"`
+
+	// 所属经销商id
+	DealerCode *string `json:"DealerCode,omitempty" name:"DealerCode"`
+
+	// 客户在微信生态中唯一识别码
+	UnionId *string `json:"UnionId,omitempty" name:"UnionId"`
+
+	// 档案创建时间戳，单位：秒
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 客户姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 0未知，1：男，2：女
+	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
+
+	// 客户联系手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 客户年龄段名称
+	AgeRangeName *string `json:"AgeRangeName,omitempty" name:"AgeRangeName"`
+
+	// 客户行业类型名称信息，如教师、医生
+	JobTypeName *string `json:"JobTypeName,omitempty" name:"JobTypeName"`
+
+	// 客户居住地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 客户所处状态
+	//  0:已分配 1:未分配 1 待建档, 2 已建档， 3 已到店 4 已经试驾 5 战败申请中 6 已战败 7 已成交 
+	LeadsProcessStatus *int64 `json:"LeadsProcessStatus,omitempty" name:"LeadsProcessStatus"`
+
+	// 客户来源类型，1：线上，2：线下
+	LeadType *int64 `json:"LeadType,omitempty" name:"LeadType"`
+
+	// 与客户来源类型对应的渠道名称
+	SourceName *string `json:"SourceName,omitempty" name:"SourceName"`
+
+	// 客户购车的意向等级
+	LeadsLevelCode *string `json:"LeadsLevelCode,omitempty" name:"LeadsLevelCode"`
+
+	// 客户意向品牌编号
+	VehicleBrandCode *string `json:"VehicleBrandCode,omitempty" name:"VehicleBrandCode"`
+
+	// 客户意向车系编号
+	VehicleSeriesCode *string `json:"VehicleSeriesCode,omitempty" name:"VehicleSeriesCode"`
+
+	// 客户意向车型编号
+	VehicleTypeCode *string `json:"VehicleTypeCode,omitempty" name:"VehicleTypeCode"`
+
+	// 购车用途信息
+	VehiclePurpose *VehiclePurpose `json:"VehiclePurpose,omitempty" name:"VehiclePurpose"`
+
+	// 购车关注点信息
+	PurchaseConcern []*PurchaseConcern `json:"PurchaseConcern,omitempty" name:"PurchaseConcern"`
+
+	// 客户所属顾问姓名
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 客户所属顾问手机号
+	SalesPhone *string `json:"SalesPhone,omitempty" name:"SalesPhone"`
+
+	// 客户实际到店时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealArrivalTime *uint64 `json:"RealArrivalTime,omitempty" name:"RealArrivalTime"`
+
+	// 客户到店完成试乘试驾时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompleteTestDriveTime *string `json:"CompleteTestDriveTime,omitempty" name:"CompleteTestDriveTime"`
+
+	// 客户完成下订的时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderTime *uint64 `json:"OrderTime,omitempty" name:"OrderTime"`
+
+	// 客户成交的时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliveryTime *uint64 `json:"DeliveryTime,omitempty" name:"DeliveryTime"`
+
+	// 开票时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvoiceTime *uint64 `json:"InvoiceTime,omitempty" name:"InvoiceTime"`
+
+	// 完成对此客户战败审批的时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoseTime *uint64 `json:"LoseTime,omitempty" name:"LoseTime"`
+
+	// 线索成功获取的时间戳，单位：秒
+	CreatedAtTime *uint64 `json:"CreatedAtTime,omitempty" name:"CreatedAtTime"`
+
+	// 线索成功导入的时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImportAtTime *uint64 `json:"ImportAtTime,omitempty" name:"ImportAtTime"`
+
+	// 完成线索分配的时间戳，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistributeTime *uint64 `json:"DistributeTime,omitempty" name:"DistributeTime"`
+
+	// 线索成功创建的时间戳，单位：秒
+	LeadCreateTime *uint64 `json:"LeadCreateTime,omitempty" name:"LeadCreateTime"`
+
+	// 线索关联微信昵称
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 线索归属部门节点
+	OrgIdList []*string `json:"OrgIdList,omitempty" name:"OrgIdList"`
+
+	// 客户的介绍人姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Introducer *string `json:"Introducer,omitempty" name:"Introducer"`
+
+	// 客户的介绍人手机号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntroducerPhone *string `json:"IntroducerPhone,omitempty" name:"IntroducerPhone"`
+
+	// 最近一次完成跟进的时间戳，单位：秒
+	FollowTime *uint64 `json:"FollowTime,omitempty" name:"FollowTime"`
+
+	// 最近一次计划跟进的时间戳，单位：秒
+	NextFollowTime *uint64 `json:"NextFollowTime,omitempty" name:"NextFollowTime"`
+
+	// 已为该客户添加的企业标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnterpriseTags []*EnterpriseTag `json:"EnterpriseTags,omitempty" name:"EnterpriseTags"`
+
+	// 已为该客户添加的渠道标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelTags []*ChannelTag `json:"ChannelTags,omitempty" name:"ChannelTags"`
+}
+
 type DealerInfo struct {
 	// 企微SaaS平台经销商id
 	DealerId *uint64 `json:"DealerId,omitempty" name:"DealerId"`
 
 	// 经销商名称
 	DealerName *string `json:"DealerName,omitempty" name:"DealerName"`
+
+	// 所属省份编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProvinceCode *string `json:"ProvinceCode,omitempty" name:"ProvinceCode"`
+
+	// 所属城市编号列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CityCodeList []*string `json:"CityCodeList,omitempty" name:"CityCodeList"`
+
+	// 业务覆盖品牌id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrandIdList []*string `json:"BrandIdList,omitempty" name:"BrandIdList"`
+}
+
+type EnterpriseTag struct {
+	// 该客户档案当前已成功关联的企业标签分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 该客户档案当前已成功关联的企业标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagName *string `json:"TagName,omitempty" name:"TagName"`
+
+	// 该客户档案当前已成功关联的企业标签的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagId *string `json:"TagId,omitempty" name:"TagId"`
 }
 
 type ExternalContact struct {
@@ -756,6 +963,16 @@ type ExternalContact struct {
 	// 外部联系人联系电话
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
+}
+
+type ExternalContactDetailPro struct {
+	// 客户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Customer *ExternalContact `json:"Customer,omitempty" name:"Customer"`
+
+	// 添加了此外部联系人的企业成员信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FollowUser []*FollowUserPro `json:"FollowUser,omitempty" name:"FollowUser"`
 }
 
 type ExternalContactSimpleInfo struct {
@@ -838,6 +1055,39 @@ type FollowUser struct {
 	// 该成员添加此外部联系人所打标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*ExternalContactTag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type FollowUserPro struct {
+	// 添加了此外部联系人的企业成员userid
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 该成员对此外部联系人的备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 该成员对此外部联系人的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 该成员添加此外部联系人的时间戳，单位为秒
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 该成员添加此客户的来源，具体含义详见<a href="https://work.weixin.qq.com/api/doc/90000/90135/92114#%E6%9D%A5%E6%BA%90%E5%AE%9A%E4%B9%89">来源定义</a>
+	AddWay *int64 `json:"AddWay,omitempty" name:"AddWay"`
+
+	// 发起添加的userid，如果成员主动添加，为成员的userid；如果是客户主动添加，则为客户的外部联系人userid；如果是内部成员共享/管理员分配，则为对应的成员/管理员userid
+	OperUserId *string `json:"OperUserId,omitempty" name:"OperUserId"`
+
+	// 该成员添加此外部联系人所打标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*ExternalContactTag `json:"Tags,omitempty" name:"Tags"`
+
+	// 添加了此外部联系人的企业成员的姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 企业成员的归属部门id列表
+	DepartmentIdList []*int64 `json:"DepartmentIdList,omitempty" name:"DepartmentIdList"`
 }
 
 type LicenseInfo struct {
@@ -937,6 +1187,14 @@ type MiniAppCodeInfo struct {
 
 	// 更新时间戳，单位为秒
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type PurchaseConcern struct {
+	// 购车关注点code
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 购车关注点描述
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
@@ -1298,6 +1556,12 @@ type QueryClueInfoListRequestParams struct {
 
 	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type QueryClueInfoListRequest struct {
@@ -1308,6 +1572,12 @@ type QueryClueInfoListRequest struct {
 
 	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *QueryClueInfoListRequest) ToJsonString() string {
@@ -1324,6 +1594,8 @@ func (r *QueryClueInfoListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Cursor")
 	delete(f, "Limit")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryClueInfoListRequest has unknown keys!", "")
 	}
@@ -1545,6 +1817,89 @@ func (r *QueryCustomerEventDetailStatisticsResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type QueryCustomerProfileListRequestParams struct {
+	// 分页，预期请求的数据量，取值范围 1 ~ 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+}
+
+type QueryCustomerProfileListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页，预期请求的数据量，取值范围 1 ~ 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+}
+
+func (r *QueryCustomerProfileListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCustomerProfileListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Cursor")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCustomerProfileListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryCustomerProfileListResponseParams struct {
+	// 分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 潜客客户存档信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*CustomerProfile `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryCustomerProfileListResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryCustomerProfileListResponseParams `json:"Response"`
+}
+
+func (r *QueryCustomerProfileListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCustomerProfileListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type QueryDealerInfoListRequestParams struct {
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
@@ -1614,6 +1969,88 @@ func (r *QueryDealerInfoListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryDealerInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryExternalContactDetailByDateRequestParams struct {
+	// 查询结束时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type QueryExternalContactDetailByDateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询结束时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *QueryExternalContactDetailByDateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryExternalContactDetailByDateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Cursor")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryExternalContactDetailByDateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryExternalContactDetailByDateResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 外部联系人详细信息
+	PageData []*ExternalContactDetailPro `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryExternalContactDetailByDateResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryExternalContactDetailByDateResponseParams `json:"Response"`
+}
+
+func (r *QueryExternalContactDetailByDateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryExternalContactDetailByDateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2421,6 +2858,14 @@ type VehicleInfo struct {
 
 	// 车型名称
 	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+}
+
+type VehiclePurpose struct {
+	// 购车用途code
+	VehiclePurposeCode *string `json:"VehiclePurposeCode,omitempty" name:"VehiclePurposeCode"`
+
+	// 购车用途名称
+	VehiclePurposeName *string `json:"VehiclePurposeName,omitempty" name:"VehiclePurposeName"`
 }
 
 type WeComTagDetail struct {

@@ -4012,6 +4012,14 @@ type MLIDPassportOCRResponseParams struct {
 	// 最下方第二行 MRZ Code 序列
 	CodeCrc *string `json:"CodeCrc,omitempty" name:"CodeCrc"`
 
+	// 姓
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Surname *string `json:"Surname,omitempty" name:"Surname"`
+
+	// 名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GivenName *string `json:"GivenName,omitempty" name:"GivenName"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

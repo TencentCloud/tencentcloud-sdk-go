@@ -1957,6 +1957,10 @@ type CynosdbInstance struct {
 	// 备可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZones []*string `json:"SlaveZones,omitempty" name:"SlaveZones"`
+
+	// 实例网络信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNetInfo []*InstanceNetInfo `json:"InstanceNetInfo,omitempty" name:"InstanceNetInfo"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -5267,6 +5271,52 @@ type InstanceInitInfo struct {
 
 	// 实例个数,范围[1,15]
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+}
+
+type InstanceNetInfo struct {
+	// 网络类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceGroupType *string `json:"InstanceGroupType,omitempty" name:"InstanceGroupType"`
+
+	// 接入组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
+
+	// 私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 网络类型, 0-基础网络, 1-vpc网络, 2-黑石网络
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetType *int64 `json:"NetType,omitempty" name:"NetType"`
+
+	// 私有网络IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 私有网络端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 外网域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanDomain *string `json:"WanDomain,omitempty" name:"WanDomain"`
+
+	// 外网Ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanIP *string `json:"WanIP,omitempty" name:"WanIP"`
+
+	// 外网端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanPort *int64 `json:"WanPort,omitempty" name:"WanPort"`
+
+	// 外网开启状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanStatus *string `json:"WanStatus,omitempty" name:"WanStatus"`
 }
 
 type InstanceSpec struct {

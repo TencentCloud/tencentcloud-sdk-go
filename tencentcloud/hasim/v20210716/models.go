@@ -646,6 +646,12 @@ type DescribeLinksRequestParams struct {
 
 	// 标签ID 集合
 	TagIDs []*int64 `json:"TagIDs,omitempty" name:"TagIDs"`
+
+	// 翻页大小, 默认翻页大小为10，最大数量为500
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页起始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeLinksRequest struct {
@@ -677,6 +683,12 @@ type DescribeLinksRequest struct {
 
 	// 标签ID 集合
 	TagIDs []*int64 `json:"TagIDs,omitempty" name:"TagIDs"`
+
+	// 翻页大小, 默认翻页大小为10，最大数量为500
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页起始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeLinksRequest) ToJsonString() string {
@@ -700,6 +712,8 @@ func (r *DescribeLinksRequest) FromJsonString(s string) error {
 	delete(f, "TacticID")
 	delete(f, "LinkedState")
 	delete(f, "TagIDs")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLinksRequest has unknown keys!", "")
 	}

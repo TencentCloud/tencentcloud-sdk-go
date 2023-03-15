@@ -633,6 +633,56 @@ func (c *Client) DescribeInstanceBinlogsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeInstanceDealDetailRequest() (request *DescribeInstanceDealDetailRequest) {
+    request = &DescribeInstanceDealDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("keewidb", APIVersion, "DescribeInstanceDealDetail")
+    
+    
+    return
+}
+
+func NewDescribeInstanceDealDetailResponse() (response *DescribeInstanceDealDetailResponse) {
+    response = &DescribeInstanceDealDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceDealDetail
+// 本接口（DescribeInstanceDealDetail）用于查询预付费订单信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeInstanceDealDetail(request *DescribeInstanceDealDetailRequest) (response *DescribeInstanceDealDetailResponse, err error) {
+    return c.DescribeInstanceDealDetailWithContext(context.Background(), request)
+}
+
+// DescribeInstanceDealDetail
+// 本接口（DescribeInstanceDealDetail）用于查询预付费订单信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeInstanceDealDetailWithContext(ctx context.Context, request *DescribeInstanceDealDetailRequest) (response *DescribeInstanceDealDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceDealDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceDealDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceDealDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceNodeInfoRequest() (request *DescribeInstanceNodeInfoRequest) {
     request = &DescribeInstanceNodeInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

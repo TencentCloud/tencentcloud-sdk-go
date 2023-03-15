@@ -150,6 +150,16 @@ type ClusterConfigsInfoFromEMR struct {
 	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
 }
 
+type ClusterInfo struct {
+	// vcluster名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 当前cluster的IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeIps []*string `json:"NodeIps,omitempty" name:"NodeIps"`
+}
+
 type ConfigSubmitContext struct {
 	// 配置文件名称
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
@@ -623,6 +633,63 @@ func (r *DescribeClusterConfigsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterConfigsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceClustersRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeInstanceClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceClustersResponseParams struct {
+	// cluster列表
+	Clusters []*ClusterInfo `json:"Clusters,omitempty" name:"Clusters"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceClustersResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1612,10 +1679,10 @@ type ScaleOutInstanceRequestParams struct {
 	// 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
 	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitempty" name:"UserSubnetIPNum"`
 
-	// 同步元数据节点IP （uip）
+	// 同步元数据节点IP （uip），扩容的时候必填
 	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitempty" name:"ScaleOutNodeIp"`
 
-	// 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔
+	// 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔，缩容的时候必填
 	ReduceShardInfo []*string `json:"ReduceShardInfo,omitempty" name:"ReduceShardInfo"`
 }
 
@@ -1638,10 +1705,10 @@ type ScaleOutInstanceRequest struct {
 	// 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
 	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitempty" name:"UserSubnetIPNum"`
 
-	// 同步元数据节点IP （uip）
+	// 同步元数据节点IP （uip），扩容的时候必填
 	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitempty" name:"ScaleOutNodeIp"`
 
-	// 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔
+	// 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔，缩容的时候必填
 	ReduceShardInfo []*string `json:"ReduceShardInfo,omitempty" name:"ReduceShardInfo"`
 }
 

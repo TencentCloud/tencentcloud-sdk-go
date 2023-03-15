@@ -73,7 +73,12 @@ type AclCondition struct {
 	// <li>method：请求方式；</li>
 	// <li>header：请求头部；</li>
 	// <li>app_proto：应用层协议；</li>
-	// <li>sip_proto：网络层协议。</li>
+	// <li>sip_proto：网络层协议；</li>
+	// <li>uabot：UA 特征规则，仅bot自定义规则可用；</li>
+	// <li>idcid：IDC 规则，仅bot自定义规则可用；</li>
+	// <li>sipbot：搜索引擎规则，仅bot自定义规则可用；</li>
+	// <li>portrait：画像分析，仅bot自定义规则可用；</li>
+	// <li>header_seq：请求头顺序，仅bot自定义规则可用。</li>
 	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
 
 	// 匹配字符串。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
@@ -482,6 +487,30 @@ type BotConfig struct {
 	// Bot智能分析。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntelligenceRule *IntelligenceRule `json:"IntelligenceRule,omitempty" name:"IntelligenceRule"`
+
+	// Bot自定义规则。如果为null，默认使用历史配置。
+	BotUserRules []*BotUserRule `json:"BotUserRules,omitempty" name:"BotUserRules"`
+
+	// Bot托管定制策略，入参可不填，仅出参使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Customizes []*BotUserRule `json:"Customizes,omitempty" name:"Customizes"`
+}
+
+type BotExtendAction struct {
+	// 处置动作，取值有：
+	// <li>monitor：观察；</li>
+	// <li>trans：放行；</li>
+	// <li>alg：JavaScript挑战；</li>
+	// <li>captcha：托管挑战；</li>
+	// <li>random：随机，按照ExtendActions分配处置动作和比例；</li>
+	// <li>silence：静默；</li>
+	// <li>shortdelay：短时响应；</li>
+	// <li>longdelay：长时响应。</li>
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 处置方式的触发概率，范围0-100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *uint64 `json:"Percent,omitempty" name:"Percent"`
 }
 
 type BotManagedRule struct {
@@ -540,6 +569,55 @@ type BotPortraitRule struct {
 	// 拦截的规则ID。默认所有规则不配置拦截。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropManagedIds []*int64 `json:"DropManagedIds,omitempty" name:"DropManagedIds"`
+}
+
+type BotUserRule struct {
+	// 规则名，只能以英文字符，数字，下划线组合，且不能以下划线开头。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 处置动作，取值有：
+	// <li>drop：拦截；</li>
+	// <li>monitor：观察；</li>
+	// <li>trans：放行；</li>
+	// <li>alg：JavaScript挑战；</li>
+	// <li>captcha：托管挑战；</li>
+	// <li>silence：静默；</li>
+	// <li>shortdelay：短时响应；</li>
+	// <li>longdelay：长时响应。</li>
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 规则状态，取值有：
+	// <li>on：生效；</li>
+	// <li>off：不生效。</li>默认on生效。
+	RuleStatus *string `json:"RuleStatus,omitempty" name:"RuleStatus"`
+
+	// 规则详情。
+	AclConditions []*AclCondition `json:"AclConditions,omitempty" name:"AclConditions"`
+
+	// 规则权重，取值范围0-100。
+	RulePriority *int64 `json:"RulePriority,omitempty" name:"RulePriority"`
+
+	// 规则id。仅出参使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 随机处置的处置方式及占比，非随机处置可不填暂不支持。
+	ExtendActions []*BotExtendAction `json:"ExtendActions,omitempty" name:"ExtendActions"`
+
+	// 过滤词，取值有：
+	// <li>sip：客户端ip。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreqFields []*string `json:"FreqFields,omitempty" name:"FreqFields"`
+
+	// 更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 统计范围，字段为null时，代表source_to_eo。取值有：
+	// <li>source_to_eo：（响应）源站到EdgeOne。</li>
+	// <li>client_to_eo：（请求）客户端到EdgeOne；</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreqScope []*string `json:"FreqScope,omitempty" name:"FreqScope"`
 }
 
 type CC struct {

@@ -107,12 +107,20 @@ func NewBatchDescribeKTVMusicDetailsResponse() (response *BatchDescribeKTVMusicD
 
 // BatchDescribeKTVMusicDetails
 // 批量获取歌曲详细信息，包括：歌词下载链接、播放凭证、音高数据下载链接信息等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+//  FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
 func (c *Client) BatchDescribeKTVMusicDetails(request *BatchDescribeKTVMusicDetailsRequest) (response *BatchDescribeKTVMusicDetailsResponse, err error) {
     return c.BatchDescribeKTVMusicDetailsWithContext(context.Background(), request)
 }
 
 // BatchDescribeKTVMusicDetails
 // 批量获取歌曲详细信息，包括：歌词下载链接、播放凭证、音高数据下载链接信息等。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+//  FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
 func (c *Client) BatchDescribeKTVMusicDetailsWithContext(ctx context.Context, request *BatchDescribeKTVMusicDetailsRequest) (response *BatchDescribeKTVMusicDetailsResponse, err error) {
     if request == nil {
         request = NewBatchDescribeKTVMusicDetailsRequest()

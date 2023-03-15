@@ -381,6 +381,54 @@ func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeInstanceClustersRequest() (request *DescribeInstanceClustersRequest) {
+    request = &DescribeInstanceClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeInstanceClusters")
+    
+    
+    return
+}
+
+func NewDescribeInstanceClustersResponse() (response *DescribeInstanceClustersResponse) {
+    response = &DescribeInstanceClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceClusters
+// 集群vcluster列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceClusters(request *DescribeInstanceClustersRequest) (response *DescribeInstanceClustersResponse, err error) {
+    return c.DescribeInstanceClustersWithContext(context.Background(), request)
+}
+
+// DescribeInstanceClusters
+// 集群vcluster列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceClustersWithContext(ctx context.Context, request *DescribeInstanceClustersRequest) (response *DescribeInstanceClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceKeyValConfigsRequest() (request *DescribeInstanceKeyValConfigsRequest) {
     request = &DescribeInstanceKeyValConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -4578,8 +4578,6 @@ func NewModifyInstancesAttributeResponse() (response *ModifyInstancesAttributeRe
 //
 // * 支持批量操作。每次请求批量实例的上限为 100。
 //
-// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
@@ -4607,8 +4605,6 @@ func (c *Client) ModifyInstancesAttribute(request *ModifyInstancesAttributeReque
 // * “实例名称”仅为方便用户自己管理之用。
 //
 // * 支持批量操作。每次请求批量实例的上限为 100。
-//
-// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
@@ -4820,8 +4816,6 @@ func NewModifyInstancesRenewFlagResponse() (response *ModifyInstancesRenewFlagRe
 //
 // * 支持批量操作。每次请求批量实例的上限为100。
 //
-// * 实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
-//
 // 可能返回的错误码:
 //  INTERNALERROR_TRADECALLBILLINGGATEWAYFAILED = "InternalError.TradeCallBillingGatewayFailed"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
@@ -4844,8 +4838,6 @@ func (c *Client) ModifyInstancesRenewFlag(request *ModifyInstancesRenewFlagReque
 // * 实例被标识为自动续费后，每次在实例到期时，会自动续费一个月。
 //
 // * 支持批量操作。每次请求批量实例的上限为100。
-//
-// * 实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_TRADECALLBILLINGGATEWAYFAILED = "InternalError.TradeCallBillingGatewayFailed"

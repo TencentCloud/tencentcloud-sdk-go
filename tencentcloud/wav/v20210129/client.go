@@ -649,6 +649,70 @@ func (c *Client) QueryCustomerEventDetailStatisticsWithContext(ctx context.Conte
     return
 }
 
+func NewQueryCustomerProfileListRequest() (request *QueryCustomerProfileListRequest) {
+    request = &QueryCustomerProfileListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wav", APIVersion, "QueryCustomerProfileList")
+    
+    
+    return
+}
+
+func NewQueryCustomerProfileListResponse() (response *QueryCustomerProfileListResponse) {
+    response = &QueryCustomerProfileListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCustomerProfileList
+// 通过接口拉取租户已有潜客客户档案列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) QueryCustomerProfileList(request *QueryCustomerProfileListRequest) (response *QueryCustomerProfileListResponse, err error) {
+    return c.QueryCustomerProfileListWithContext(context.Background(), request)
+}
+
+// QueryCustomerProfileList
+// 通过接口拉取租户已有潜客客户档案列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) QueryCustomerProfileListWithContext(ctx context.Context, request *QueryCustomerProfileListRequest) (response *QueryCustomerProfileListResponse, err error) {
+    if request == nil {
+        request = NewQueryCustomerProfileListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCustomerProfileList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryCustomerProfileListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryDealerInfoListRequest() (request *QueryDealerInfoListRequest) {
     request = &QueryDealerInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -767,6 +831,70 @@ func (c *Client) QueryExternalContactDetailWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewQueryExternalContactDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryExternalContactDetailByDateRequest() (request *QueryExternalContactDetailByDateRequest) {
+    request = &QueryExternalContactDetailByDateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wav", APIVersion, "QueryExternalContactDetailByDate")
+    
+    
+    return
+}
+
+func NewQueryExternalContactDetailByDateResponse() (response *QueryExternalContactDetailByDateResponse) {
+    response = &QueryExternalContactDetailByDateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryExternalContactDetailByDate
+// 企业可通过传入起始和结束时间，获取该时间段的外部联系人详情列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) QueryExternalContactDetailByDate(request *QueryExternalContactDetailByDateRequest) (response *QueryExternalContactDetailByDateResponse, err error) {
+    return c.QueryExternalContactDetailByDateWithContext(context.Background(), request)
+}
+
+// QueryExternalContactDetailByDate
+// 企业可通过传入起始和结束时间，获取该时间段的外部联系人详情列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) QueryExternalContactDetailByDateWithContext(ctx context.Context, request *QueryExternalContactDetailByDateRequest) (response *QueryExternalContactDetailByDateResponse, err error) {
+    if request == nil {
+        request = NewQueryExternalContactDetailByDateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryExternalContactDetailByDate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryExternalContactDetailByDateResponse()
     err = c.Send(request, response)
     return
 }

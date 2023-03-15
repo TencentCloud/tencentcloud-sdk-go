@@ -1217,6 +1217,14 @@ type DetectInfoText struct {
 	// 4：一闪活体（动作+光线）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivenessMode *uint64 `json:"LivenessMode,omitempty" name:"LivenessMode"`
+
+	// nfc重复计费requestId列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NFCRequestIds []*string `json:"NFCRequestIds,omitempty" name:"NFCRequestIds"`
+
+	// nfc重复计费计数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NFCBillingCounts *int64 `json:"NFCBillingCounts,omitempty" name:"NFCBillingCounts"`
 }
 
 type DetectInfoVideoData struct {

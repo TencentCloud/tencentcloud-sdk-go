@@ -133,6 +133,10 @@ type BatchDescribeKTVMusicDetailsRequestParams struct {
 
 	// 歌曲 Id 列表。
 	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+
+	// 播放场景。默认为Chat
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
 }
 
 type BatchDescribeKTVMusicDetailsRequest struct {
@@ -146,6 +150,10 @@ type BatchDescribeKTVMusicDetailsRequest struct {
 
 	// 歌曲 Id 列表。
 	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+
+	// 播放场景。默认为Chat
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
 }
 
 func (r *BatchDescribeKTVMusicDetailsRequest) ToJsonString() string {
@@ -163,6 +171,7 @@ func (r *BatchDescribeKTVMusicDetailsRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "UserId")
 	delete(f, "MusicIds")
+	delete(f, "PlayScene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDescribeKTVMusicDetailsRequest has unknown keys!", "")
 	}

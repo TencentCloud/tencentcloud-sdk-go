@@ -18144,7 +18144,7 @@ type RebuildMediaTargetVideoStream struct {
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
-	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
 	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
@@ -18153,7 +18153,7 @@ type RebuildMediaTargetVideoStream struct {
 	// 默认值：0。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
 	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
 	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
@@ -19532,6 +19532,10 @@ type SearchMediaRequestParams struct {
 	// <li> DEEP_ARCHIVE：深度归档存储。</li>
 	StorageClasses []*string `json:"StorageClasses,omitempty" name:"StorageClasses"`
 
+	// 媒体文件封装格式集合，匹配集合中任意元素。
+	// <li>数组长度限制：10。</li>
+	MediaTypes []*string `json:"MediaTypes,omitempty" name:"MediaTypes"`
+
 	// TRTC 应用 ID 集合。匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
 	TrtcSdkAppIds []*uint64 `json:"TrtcSdkAppIds,omitempty" name:"TrtcSdkAppIds"`
@@ -19669,6 +19673,10 @@ type SearchMediaRequest struct {
 	// <li> DEEP_ARCHIVE：深度归档存储。</li>
 	StorageClasses []*string `json:"StorageClasses,omitempty" name:"StorageClasses"`
 
+	// 媒体文件封装格式集合，匹配集合中任意元素。
+	// <li>数组长度限制：10。</li>
+	MediaTypes []*string `json:"MediaTypes,omitempty" name:"MediaTypes"`
+
 	// TRTC 应用 ID 集合。匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
 	TrtcSdkAppIds []*uint64 `json:"TrtcSdkAppIds,omitempty" name:"TrtcSdkAppIds"`
@@ -19741,6 +19749,7 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "StorageRegions")
 	delete(f, "StorageClasses")
+	delete(f, "MediaTypes")
 	delete(f, "TrtcSdkAppIds")
 	delete(f, "TrtcRoomIds")
 	delete(f, "Text")
@@ -21240,7 +21249,7 @@ type VideoFrameInterpolationInfo struct {
 	// <li>OFF：关闭智能插帧。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 智能插帧帧率，帧率范围为 (0, 60]，仅当智能插帧控制开关为 ON 时有效。默认跟源文件帧率一致。
+	// 智能插帧帧率，帧率范围为 (0, 100]，仅当智能插帧控制开关为 ON 时有效。默认跟源文件帧率一致。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 

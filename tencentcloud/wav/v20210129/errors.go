@@ -58,4 +58,7 @@ const (
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 未知参数错误。
+	UNKNOWNPARAMETER = "UnknownParameter"
 )

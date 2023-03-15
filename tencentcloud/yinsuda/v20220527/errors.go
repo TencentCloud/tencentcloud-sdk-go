@@ -23,6 +23,12 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 直播会员已经过期
+	FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+
+	// 非直播会员用户
+	FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

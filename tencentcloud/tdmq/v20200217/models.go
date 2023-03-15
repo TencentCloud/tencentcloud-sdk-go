@@ -6079,6 +6079,83 @@ func (r *DescribeRabbitMQNodeListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRabbitMQVipInstanceRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribeRabbitMQVipInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeRabbitMQVipInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQVipInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQVipInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQVipInstanceResponseParams struct {
+	// 集群信息
+	ClusterInfo *RabbitMQClusterInfo `json:"ClusterInfo,omitempty" name:"ClusterInfo"`
+
+	// 集群规格信息
+	ClusterSpecInfo *RabbitMQClusterSpecInfo `json:"ClusterSpecInfo,omitempty" name:"ClusterSpecInfo"`
+
+	// 集群访问
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterNetInfo *RabbitMQClusterAccessInfo `json:"ClusterNetInfo,omitempty" name:"ClusterNetInfo"`
+
+	// 集群白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterWhiteListInfo *RabbitMQClusterWhiteListInfo `json:"ClusterWhiteListInfo,omitempty" name:"ClusterWhiteListInfo"`
+
+	// vhost配额信息
+	VirtualHostQuota *VirtualHostQuota `json:"VirtualHostQuota,omitempty" name:"VirtualHostQuota"`
+
+	// exchange配额信息
+	ExchangeQuota *ExchangeQuota `json:"ExchangeQuota,omitempty" name:"ExchangeQuota"`
+
+	// queue配额信息
+	QueueQuota *QueueQuota `json:"QueueQuota,omitempty" name:"QueueQuota"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRabbitMQVipInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRabbitMQVipInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeRabbitMQVipInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQVipInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRabbitMQVipInstancesRequestParams struct {
 	// 查询条件过滤器
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -7128,6 +7205,15 @@ type EnvironmentRole struct {
 
 	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type ExchangeQuota struct {
+	// 可创建最大exchange数
+	MaxExchange *int64 `json:"MaxExchange,omitempty" name:"MaxExchange"`
+
+	// 已创建exchange数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedExchange *int64 `json:"UsedExchange,omitempty" name:"UsedExchange"`
 }
 
 type Filter struct {
@@ -8741,6 +8827,24 @@ type PartitionsTopic struct {
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
 }
 
+type PrometheusEndpointInfo struct {
+	// Prometheus开关的状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrometheusEndpointStatus *string `json:"PrometheusEndpointStatus,omitempty" name:"PrometheusEndpointStatus"`
+
+	// prometheus信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcPrometheusEndpoint []*string `json:"VpcPrometheusEndpoint,omitempty" name:"VpcPrometheusEndpoint"`
+
+	// 节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodePrometheusAddress []*string `json:"NodePrometheusAddress,omitempty" name:"NodePrometheusAddress"`
+
+	// vpc信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcEndpointInfo *VpcEndpointInfo `json:"VpcEndpointInfo,omitempty" name:"VpcEndpointInfo"`
+}
+
 // Predefined struct for user
 type PublishCmqMsgRequestParams struct {
 	// 主题名
@@ -8851,6 +8955,157 @@ type Publisher struct {
 	// 生产者连接的主题分区号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+}
+
+type QueueQuota struct {
+	// 可创建最大Queue数
+	MaxQueue *int64 `json:"MaxQueue,omitempty" name:"MaxQueue"`
+
+	// 已创建Queue数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedQueue *int64 `json:"UsedQueue,omitempty" name:"UsedQueue"`
+}
+
+type RabbitMQClusterAccessInfo struct {
+	// 集群公网接入地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAccessEndpoint *string `json:"PublicAccessEndpoint,omitempty" name:"PublicAccessEndpoint"`
+
+	// 集群控制台访问地址
+	WebConsoleEndpoint *string `json:"WebConsoleEndpoint,omitempty" name:"WebConsoleEndpoint"`
+
+	// 集群控制台登录用户名
+	WebConsoleUsername *string `json:"WebConsoleUsername,omitempty" name:"WebConsoleUsername"`
+
+	// 集群控制台登录密码
+	WebConsolePassword *string `json:"WebConsolePassword,omitempty" name:"WebConsolePassword"`
+
+	// 已废弃
+	PublicAccessEndpointStatus *bool `json:"PublicAccessEndpointStatus,omitempty" name:"PublicAccessEndpointStatus"`
+
+	// 已废弃
+	PublicControlConsoleSwitchStatus *bool `json:"PublicControlConsoleSwitchStatus,omitempty" name:"PublicControlConsoleSwitchStatus"`
+
+	// 已废弃
+	VpcControlConsoleSwitchStatus *bool `json:"VpcControlConsoleSwitchStatus,omitempty" name:"VpcControlConsoleSwitchStatus"`
+
+	// Vpc管控台访问地址，示例值，http://1.1.1.1:15672
+	VpcWebConsoleEndpoint *string `json:"VpcWebConsoleEndpoint,omitempty" name:"VpcWebConsoleEndpoint"`
+
+	// 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicWebConsoleSwitchStatus *string `json:"PublicWebConsoleSwitchStatus,omitempty" name:"PublicWebConsoleSwitchStatus"`
+
+	// Vpc管控台开关状态，示例值，
+	// OFF/ON/CREATING/DELETING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcWebConsoleSwitchStatus *string `json:"VpcWebConsoleSwitchStatus,omitempty" name:"VpcWebConsoleSwitchStatus"`
+
+	// 公网管控台开关状态，示例值，OFF/ON/CREATING/DELETING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicDataStreamStatus *string `json:"PublicDataStreamStatus,omitempty" name:"PublicDataStreamStatus"`
+
+	// Prometheus信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrometheusEndpointInfo *PrometheusEndpointInfo `json:"PrometheusEndpointInfo,omitempty" name:"PrometheusEndpointInfo"`
+}
+
+type RabbitMQClusterInfo struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 地域信息
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 创建时间，毫秒为单位
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 集群说明信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// VPC及网络信息
+	Vpcs []*VpcEndpointInfo `json:"Vpcs,omitempty" name:"Vpcs"`
+
+	// 虚拟主机数量
+	VirtualHostNumber *int64 `json:"VirtualHostNumber,omitempty" name:"VirtualHostNumber"`
+
+	// 队列数量
+	QueueNumber *int64 `json:"QueueNumber,omitempty" name:"QueueNumber"`
+
+	// 每秒生产消息数 单位：条/秒
+	MessagePublishRate *float64 `json:"MessagePublishRate,omitempty" name:"MessagePublishRate"`
+
+	// 堆积消息数 单位：条
+	MessageStackNumber *int64 `json:"MessageStackNumber,omitempty" name:"MessageStackNumber"`
+
+	// 过期时间
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// Channel数量
+	ChannelNumber *int64 `json:"ChannelNumber,omitempty" name:"ChannelNumber"`
+
+	// Connection数量
+	ConnectionNumber *int64 `json:"ConnectionNumber,omitempty" name:"ConnectionNumber"`
+
+	// Consumer数量
+	ConsumerNumber *int64 `json:"ConsumerNumber,omitempty" name:"ConsumerNumber"`
+
+	// Exchang数量
+	ExchangeNumber *int64 `json:"ExchangeNumber,omitempty" name:"ExchangeNumber"`
+
+	// 集群异常。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExceptionInformation *string `json:"ExceptionInformation,omitempty" name:"ExceptionInformation"`
+
+	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterStatus *int64 `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+}
+
+type RabbitMQClusterSpecInfo struct {
+	// 集群规格名称
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 峰值tps
+	MaxTps *uint64 `json:"MaxTps,omitempty" name:"MaxTps"`
+
+	// 峰值带宽。单位：mbps
+	MaxBandWidth *uint64 `json:"MaxBandWidth,omitempty" name:"MaxBandWidth"`
+
+	// 存储容量。单位：GB
+	MaxStorage *uint64 `json:"MaxStorage,omitempty" name:"MaxStorage"`
+
+	// 公网带宽tps。单位：Mbps
+	PublicNetworkTps *uint64 `json:"PublicNetworkTps,omitempty" name:"PublicNetworkTps"`
+}
+
+type RabbitMQClusterWhiteListInfo struct {
+	// 废弃
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WhiteList *string `json:"WhiteList,omitempty" name:"WhiteList"`
+
+	// 公网管控台白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicControlConsoleWhiteList *string `json:"PublicControlConsoleWhiteList,omitempty" name:"PublicControlConsoleWhiteList"`
+
+	// 公网数据流白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicDataStreamWhiteList *string `json:"PublicDataStreamWhiteList,omitempty" name:"PublicDataStreamWhiteList"`
+
+	// 公网管控台白名单状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicControlConsoleWhiteListStatus *string `json:"PublicControlConsoleWhiteListStatus,omitempty" name:"PublicControlConsoleWhiteListStatus"`
+
+	// 公网数据流白名单状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicDataStreamWhiteListStatus *string `json:"PublicDataStreamWhiteListStatus,omitempty" name:"PublicDataStreamWhiteListStatus"`
 }
 
 type RabbitMQPrivateNode struct {
@@ -10252,6 +10507,15 @@ func (r *UnbindCmqDeadLetterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VirtualHostQuota struct {
+	// 允许创建最大vhost数
+	MaxVirtualHost *int64 `json:"MaxVirtualHost,omitempty" name:"MaxVirtualHost"`
+
+	// 已创建vhost数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedVirtualHost *int64 `json:"UsedVirtualHost,omitempty" name:"UsedVirtualHost"`
+}
+
 type VpcBindRecord struct {
 	// 租户Vpc Id
 	UniqueVpcId *string `json:"UniqueVpcId,omitempty" name:"UniqueVpcId"`
@@ -10279,4 +10543,20 @@ type VpcConfig struct {
 
 	// 子网id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type VpcEndpointInfo struct {
+	// vpc的id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// vpc接入点信息
+	VpcEndpoint *string `json:"VpcEndpoint,omitempty" name:"VpcEndpoint"`
+
+	// vpc接入点状态
+	// OFF/ON/CREATING/DELETING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcDataStreamEndpointStatus *string `json:"VpcDataStreamEndpointStatus,omitempty" name:"VpcDataStreamEndpointStatus"`
 }
