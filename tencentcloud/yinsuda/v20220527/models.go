@@ -913,6 +913,176 @@ func (r *DescribeKTVTagsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLiveVipTradeInfosRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 直播会员充值下单起始时间，格式为 ISO。默认为当前时间前一天。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 直播会员充值下单截止时间，格式为 ISO。默认为当前时间。 EndTime不能小于StartTime
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 交易流水号集合，匹配集合指定所有流水号 。
+	// <li>数组长度限制：10。</li>
+	TradeSerialNos []*string `json:"TradeSerialNos,omitempty" name:"TradeSerialNos"`
+
+	// 用户标识集合，匹配集合指定所有用户标识 。
+	// <li>数组长度限制：10。</li>
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：20，最大值：50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeLiveVipTradeInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 直播会员充值下单起始时间，格式为 ISO。默认为当前时间前一天。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 直播会员充值下单截止时间，格式为 ISO。默认为当前时间。 EndTime不能小于StartTime
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 交易流水号集合，匹配集合指定所有流水号 。
+	// <li>数组长度限制：10。</li>
+	TradeSerialNos []*string `json:"TradeSerialNos,omitempty" name:"TradeSerialNos"`
+
+	// 用户标识集合，匹配集合指定所有用户标识 。
+	// <li>数组长度限制：10。</li>
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：20，最大值：50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeLiveVipTradeInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveVipTradeInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TradeSerialNos")
+	delete(f, "UserIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveVipTradeInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveVipTradeInfosResponseParams struct {
+	// 直播会员充值流水信息列表
+	LiveVipTradeInfoSet []*LiveVipTradeInfo `json:"LiveVipTradeInfoSet,omitempty" name:"LiveVipTradeInfoSet"`
+
+	// 直播会员充值流水总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveVipTradeInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveVipTradeInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveVipTradeInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveVipTradeInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserInfoRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+type DescribeUserInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *DescribeUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserInfoResponseParams struct {
+	// 用户信息。
+	UserInfo *UserInfo `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroyKTVRobotRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -1156,6 +1326,45 @@ type KTVTagInfo struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+type LiveVipTradeInfo struct {
+	// 交易流水号。
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 房间标识。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 充值会员天数。
+	// 取值有： 
+	// <li>31</li> <li>93</li><li>186</li> <li>372</li>
+	VipDays *int64 `json:"VipDays,omitempty" name:"VipDays"`
+
+	// 订单状态。 
+	// 取值有： 
+	// <li>Success：成功</li><li>Fail：失败</li><li>Processing：订单处理中</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type LiveVipUserInfo struct {
+	// 房间标识。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 直播会员结束时间。
+	LiveVipEndTime *string `json:"LiveVipEndTime,omitempty" name:"LiveVipEndTime"`
+
+	// 会员生效状态
+	// <li>Valid：生效</li><li>Invalid：无效</li>
+	LiveVipStatus *string `json:"LiveVipStatus,omitempty" name:"LiveVipStatus"`
+}
+
 type MusicAlbumCoverInfo struct {
 	// 尺寸规格，取值有：
 	// <li>Mini：150 x 150 尺寸；</li>
@@ -1178,6 +1387,101 @@ type MusicAlbumInfo struct {
 type PlayCommandInput struct {
 	// 歌曲位置索引。
 	Index *int64 `json:"Index,omitempty" name:"Index"`
+}
+
+// Predefined struct for user
+type RechargeLiveVipRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 交易流水号，用于标记此次充值记录，多次充值记录传入相同的 TradeSerialNo 会判断为失败，可用于防止重提提交造成重复计费。
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 房间标识。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 充值会员天数。
+	// 取值有：
+	// <li>31</li>
+	// <li>93</li>
+	// <li>186</li>
+	// <li>372</li>
+	VipDays *int64 `json:"VipDays,omitempty" name:"VipDays"`
+}
+
+type RechargeLiveVipRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 交易流水号，用于标记此次充值记录，多次充值记录传入相同的 TradeSerialNo 会判断为失败，可用于防止重提提交造成重复计费。
+	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 房间标识。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 充值会员天数。
+	// 取值有：
+	// <li>31</li>
+	// <li>93</li>
+	// <li>186</li>
+	// <li>372</li>
+	VipDays *int64 `json:"VipDays,omitempty" name:"VipDays"`
+}
+
+func (r *RechargeLiveVipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RechargeLiveVipRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "TradeSerialNo")
+	delete(f, "RoomId")
+	delete(f, "VipDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RechargeLiveVipRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RechargeLiveVipResponseParams struct {
+	// 直播会员信息。
+	LiveVipUserInfo *LiveVipUserInfo `json:"LiveVipUserInfo,omitempty" name:"LiveVipUserInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RechargeLiveVipResponse struct {
+	*tchttp.BaseResponse
+	Response *RechargeLiveVipResponseParams `json:"Response"`
+}
+
+func (r *RechargeLiveVipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RechargeLiveVipResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1473,4 +1777,21 @@ type TimeRange struct {
 	// <li>小于此时间（结束时间）。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
 	After *string `json:"After,omitempty" name:"After"`
+}
+
+type UserInfo struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 直播会员详细信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveVipUserInfo *LiveVipUserInfo `json:"LiveVipUserInfo,omitempty" name:"LiveVipUserInfo"`
+
+	// 用户类型
+	// <li>Normal：普通用户</li>
+	// <li>LiveVip：直播会员用户</li>
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
 }

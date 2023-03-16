@@ -2652,7 +2652,7 @@ type CreateAndAttachNetworkInterfaceRequestParams struct {
 	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
-	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
@@ -2661,7 +2661,7 @@ type CreateAndAttachNetworkInterfaceRequestParams struct {
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitempty" name:"NetworkInterfaceDescription"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 绑定类型：0 标准型 1 扩展型。
@@ -2686,7 +2686,7 @@ type CreateAndAttachNetworkInterfaceRequest struct {
 	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
-	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
@@ -2695,7 +2695,7 @@ type CreateAndAttachNetworkInterfaceRequest struct {
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitempty" name:"NetworkInterfaceDescription"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 绑定类型：0 标准型 1 扩展型。
@@ -3611,6 +3611,9 @@ type CreateHaVipRequestParams struct {
 
 	// 指定虚拟IP地址，必须在`VPC`网段内且未被占用。不指定则自动分配。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// `HAVIP`所在弹性网卡`ID`。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 }
 
 type CreateHaVipRequest struct {
@@ -3627,6 +3630,9 @@ type CreateHaVipRequest struct {
 
 	// 指定虚拟IP地址，必须在`VPC`网段内且未被占用。不指定则自动分配。
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// `HAVIP`所在弹性网卡`ID`。
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" name:"NetworkInterfaceId"`
 }
 
 func (r *CreateHaVipRequest) ToJsonString() string {
@@ -3645,6 +3651,7 @@ func (r *CreateHaVipRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "HaVipName")
 	delete(f, "Vip")
+	delete(f, "NetworkInterfaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHaVipRequest has unknown keys!", "")
 	}
@@ -4357,7 +4364,7 @@ type CreateNetworkInterfaceRequestParams struct {
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitempty" name:"NetworkInterfaceDescription"`
 
-	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
@@ -4388,7 +4395,7 @@ type CreateNetworkInterfaceRequest struct {
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitempty" name:"NetworkInterfaceDescription"`
 
-	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配数。
+	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
 	// 指定绑定的安全组，例如：['sg-1dd51d']。

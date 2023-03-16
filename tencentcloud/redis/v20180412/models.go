@@ -4060,6 +4060,75 @@ func (r *DescribeReplicationGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSSLStatusRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeSSLStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeSSLStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSSLStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSSLStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSSLStatusResponseParams struct {
+	// 证书下载地址
+	CertDownloadUrl *string `json:"CertDownloadUrl,omitempty" name:"CertDownloadUrl"`
+
+	// 证书下载链接到期时间
+	UrlExpiredTime *string `json:"UrlExpiredTime,omitempty" name:"UrlExpiredTime"`
+
+	// 实例SSL配置状态， true：开启 false：关闭
+	SSLConfig *bool `json:"SSLConfig,omitempty" name:"SSLConfig"`
+
+	// 实例SSL特性支持， true：支持 false：不支持（小版本升级后才能支持SSL特性）
+	FeatureSupport *bool `json:"FeatureSupport,omitempty" name:"FeatureSupport"`
+
+	// SSL配置状态，1: 配置中 2：配置成功
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSSLStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSSLStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeSSLStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSSLStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSlowLogRequestParams struct {
 	// 实例Id。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

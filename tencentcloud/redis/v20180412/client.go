@@ -2977,6 +2977,66 @@ func (c *Client) DescribeReplicationGroupWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSSLStatusRequest() (request *DescribeSSLStatusRequest) {
+    request = &DescribeSSLStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeSSLStatus")
+    
+    
+    return
+}
+
+func NewDescribeSSLStatusResponse() (response *DescribeSSLStatusResponse) {
+    response = &DescribeSSLStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSSLStatus
+// 查询SSL状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) DescribeSSLStatus(request *DescribeSSLStatusRequest) (response *DescribeSSLStatusResponse, err error) {
+    return c.DescribeSSLStatusWithContext(context.Background(), request)
+}
+
+// DescribeSSLStatus
+// 查询SSL状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+func (c *Client) DescribeSSLStatusWithContext(ctx context.Context, request *DescribeSSLStatusRequest) (response *DescribeSSLStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeSSLStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSSLStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSSLStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSlowLogRequest() (request *DescribeSlowLogRequest) {
     request = &DescribeSlowLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

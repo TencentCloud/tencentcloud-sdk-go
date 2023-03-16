@@ -17308,6 +17308,30 @@ type Rule struct {
 	// 是否where参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhereFlag *bool `json:"WhereFlag,omitempty" name:"WhereFlag"`
+
+	// 模版原始SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateSql *string `json:"TemplateSql,omitempty" name:"TemplateSql"`
+
+	// 模版子维度：0.父维度类型,1.一致性: 枚举范围一致性,2.一致性：数值范围一致性,3.一致性：字段数据相关性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubQualityDim *uint64 `json:"SubQualityDim,omitempty" name:"SubQualityDim"`
+
+	// 规则适用的目标数据对象类型（1：常量，2：离线表级，3：离线字段级别）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectType *uint64 `json:"TargetObjectType,omitempty" name:"TargetObjectType"`
+
+	// 规则适用的目标数据对象类型（1：数值，2：字符串）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectDataType *uint64 `json:"TargetObjectDataType,omitempty" name:"TargetObjectDataType"`
+
+	// 目标字段详细类型，INT、STRING
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectDataTypeName *string `json:"TargetObjectDataTypeName,omitempty" name:"TargetObjectDataTypeName"`
+
+	// 目标字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetObjectValue *string `json:"TargetObjectValue,omitempty" name:"TargetObjectValue"`
 }
 
 type RuleConfig struct {

@@ -178,6 +178,10 @@ func NewAddQueueResponse() (response *AddQueueResponse) {
 // AddQueue
 // 本接口(AddQueue)用于添加队列到指定集群。
 //
+// * 本接口为目前只支持SchedulerType为SLURM的集群。
+//
+// * 单个集群中队列数量上限为10个。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
@@ -200,6 +204,10 @@ func (c *Client) AddQueue(request *AddQueueRequest) (response *AddQueueResponse,
 
 // AddQueue
 // 本接口(AddQueue)用于添加队列到指定集群。
+//
+// * 本接口为目前只支持SchedulerType为SLURM的集群。
+//
+// * 单个集群中队列数量上限为10个。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -542,6 +550,8 @@ func NewDeleteQueueResponse() (response *DeleteQueueResponse) {
 // DeleteQueue
 // 本接口(DeleteQueue)用于从指定集群删除队列。
 //
+// * 本接口为目前只支持SchedulerType为SLURM的集群。
+//
 // 
 //
 // * 删除队列时，需要保证队列内不存在节点。
@@ -574,6 +584,8 @@ func (c *Client) DeleteQueue(request *DeleteQueueRequest) (response *DeleteQueue
 
 // DeleteQueue
 // 本接口(DeleteQueue)用于从指定集群删除队列。
+//
+// * 本接口为目前只支持SchedulerType为SLURM的集群。
 //
 // 
 //

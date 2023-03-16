@@ -593,6 +593,116 @@ func (c *Client) DescribeKTVTagsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeLiveVipTradeInfosRequest() (request *DescribeLiveVipTradeInfosRequest) {
+    request = &DescribeLiveVipTradeInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeLiveVipTradeInfos")
+    
+    
+    return
+}
+
+func NewDescribeLiveVipTradeInfosResponse() (response *DescribeLiveVipTradeInfosResponse) {
+    response = &DescribeLiveVipTradeInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLiveVipTradeInfos
+// 批量获取直播会员充值流水详细信息，包括：流水号，订单状态，下订单时间等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveVipTradeInfos(request *DescribeLiveVipTradeInfosRequest) (response *DescribeLiveVipTradeInfosResponse, err error) {
+    return c.DescribeLiveVipTradeInfosWithContext(context.Background(), request)
+}
+
+// DescribeLiveVipTradeInfos
+// 批量获取直播会员充值流水详细信息，包括：流水号，订单状态，下订单时间等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeLiveVipTradeInfosWithContext(ctx context.Context, request *DescribeLiveVipTradeInfosRequest) (response *DescribeLiveVipTradeInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveVipTradeInfosRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveVipTradeInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveVipTradeInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
+    request = &DescribeUserInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeUserInfo")
+    
+    
+    return
+}
+
+func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
+    response = &DescribeUserInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserInfo
+// 获取用户信息，包括是否为直播会员，及直播会员信息等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
+    return c.DescribeUserInfoWithContext(context.Background(), request)
+}
+
+// DescribeUserInfo
+// 获取用户信息，包括是否为直播会员，及直播会员信息等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *DescribeUserInfoRequest) (response *DescribeUserInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyKTVRobotRequest() (request *DestroyKTVRobotRequest) {
     request = &DestroyKTVRobotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -653,6 +763,66 @@ func (c *Client) DestroyKTVRobotWithContext(ctx context.Context, request *Destro
     return
 }
 
+func NewRechargeLiveVipRequest() (request *RechargeLiveVipRequest) {
+    request = &RechargeLiveVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "RechargeLiveVip")
+    
+    
+    return
+}
+
+func NewRechargeLiveVipResponse() (response *RechargeLiveVipResponse) {
+    response = &RechargeLiveVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RechargeLiveVip
+// 充值直播会员，使该用户可以在直播场景使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATETRADESERIALNO = "FailedOperation.DuplicateTradeSerialNo"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RechargeLiveVip(request *RechargeLiveVipRequest) (response *RechargeLiveVipResponse, err error) {
+    return c.RechargeLiveVipWithContext(context.Background(), request)
+}
+
+// RechargeLiveVip
+// 充值直播会员，使该用户可以在直播场景使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATETRADESERIALNO = "FailedOperation.DuplicateTradeSerialNo"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RechargeLiveVipWithContext(ctx context.Context, request *RechargeLiveVipRequest) (response *RechargeLiveVipResponse, err error) {
+    if request == nil {
+        request = NewRechargeLiveVipRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RechargeLiveVip require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRechargeLiveVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchKTVMusicsRequest() (request *SearchKTVMusicsRequest) {
     request = &SearchKTVMusicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -675,13 +845,13 @@ func NewSearchKTVMusicsResponse() (response *SearchKTVMusicsResponse) {
 // 根据关键词搜索歌曲，返回相关歌曲列表。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATETRADESERIALNO = "FailedOperation.DuplicateTradeSerialNo"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *SearchKTVMusicsResponse, err error) {
     return c.SearchKTVMusicsWithContext(context.Background(), request)
 }
@@ -690,13 +860,13 @@ func (c *Client) SearchKTVMusics(request *SearchKTVMusicsRequest) (response *Sea
 // 根据关键词搜索歌曲，返回相关歌曲列表。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATETRADESERIALNO = "FailedOperation.DuplicateTradeSerialNo"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) SearchKTVMusicsWithContext(ctx context.Context, request *SearchKTVMusicsRequest) (response *SearchKTVMusicsResponse, err error) {
     if request == nil {
         request = NewSearchKTVMusicsRequest()

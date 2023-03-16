@@ -87,6 +87,20 @@ func (r *ActionAlterCkUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AttachCBSSpec struct {
+	// 节点磁盘类型，例如“CLOUD_SSD”\"CLOUD_PREMIUM"
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 磁盘容量，单位G
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 磁盘总数
+	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
+
+	// 描述
+	DiskDesc *string `json:"DiskDesc,omitempty" name:"DiskDesc"`
+}
+
 type BackupTableContent struct {
 	// 数据库
 	Database *string `json:"Database,omitempty" name:"Database"`
@@ -1209,6 +1223,88 @@ type InstanceInfo struct {
 	// 冷热分层系数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosMoveFactor *int64 `json:"CosMoveFactor,omitempty" name:"CosMoveFactor"`
+
+	// external/local/yunti
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 是否弹性ck
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsElastic *bool `json:"IsElastic,omitempty" name:"IsElastic"`
+
+	// 集群详细状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitempty" name:"InstanceStateInfo"`
+
+	// ZK高可用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HAZk *bool `json:"HAZk,omitempty" name:"HAZk"`
+
+	// 挂载盘,默认0:没有类型；1:裸盘;2:lvm
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountDiskType *int64 `json:"MountDiskType,omitempty" name:"MountDiskType"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CHProxyVip *string `json:"CHProxyVip,omitempty" name:"CHProxyVip"`
+
+	// cos buket的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+
+	// 是否可以挂载云盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanAttachCbs *bool `json:"CanAttachCbs,omitempty" name:"CanAttachCbs"`
+
+	// 是否可以挂载云盘阵列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanAttachCbsLvm *bool `json:"CanAttachCbsLvm,omitempty" name:"CanAttachCbsLvm"`
+
+	// 是否可以挂载cos
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanAttachCos *bool `json:"CanAttachCos,omitempty" name:"CanAttachCos"`
+
+	// 服务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Components []*ServiceInfo `json:"Components,omitempty" name:"Components"`
+
+	// 可升级的内核版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpgradeVersions *string `json:"UpgradeVersions,omitempty" name:"UpgradeVersions"`
+}
+
+type InstanceStateInfo struct {
+	// 集群状态，例如：Serving
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+
+	// 集群操作创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowCreateTime *string `json:"FlowCreateTime,omitempty" name:"FlowCreateTime"`
+
+	// 集群操作名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 集群操作进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowProgress *int64 `json:"FlowProgress,omitempty" name:"FlowProgress"`
+
+	// 集群状态描述，例如：运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitempty" name:"InstanceStateDesc"`
+
+	// 集群流程错误信息，例如：“创建失败，资源不足”
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowMsg *string `json:"FlowMsg,omitempty" name:"FlowMsg"`
+
+	// 当前步骤的名称，例如：”购买资源中“
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 请求id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type MapConfigItem struct {
@@ -1472,6 +1568,34 @@ type NodesSummary struct {
 
 	// 磁盘描述
 	DiskDesc *string `json:"DiskDesc,omitempty" name:"DiskDesc"`
+
+	// 挂载云盘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachCBSSpec *AttachCBSSpec `json:"AttachCBSSpec,omitempty" name:"AttachCBSSpec"`
+
+	// 子产品类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductType *string `json:"SubProductType,omitempty" name:"SubProductType"`
+
+	// 规格对应的核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecCore *int64 `json:"SpecCore,omitempty" name:"SpecCore"`
+
+	// 规格对应的内存大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecMemory *int64 `json:"SpecMemory,omitempty" name:"SpecMemory"`
+
+	// 磁盘的数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
+
+	// 磁盘的最大大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxDiskSize *int64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
+
+	// 是否为加密云盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Encrypt *int64 `json:"Encrypt,omitempty" name:"Encrypt"`
 }
 
 // Predefined struct for user
@@ -1874,6 +1998,16 @@ type ScheduleStrategy struct {
 
 	// 策略id
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+}
+
+type ServiceInfo struct {
+	// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 服务的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 type Tag struct {

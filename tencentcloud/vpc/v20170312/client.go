@@ -3106,7 +3106,7 @@ func NewCreateHaVipResponse() (response *CreateHaVipResponse) {
 }
 
 // CreateHaVip
-// 本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
+// 本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3126,7 +3126,7 @@ func (c *Client) CreateHaVip(request *CreateHaVipRequest) (response *CreateHaVip
 }
 
 // CreateHaVip
-// 本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）
+// 本接口（CreateHaVip）用于创建高可用虚拟IP（HAVIP）。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"

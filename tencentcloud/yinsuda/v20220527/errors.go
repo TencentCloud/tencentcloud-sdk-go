@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 交易流水号重复
+	FAILEDOPERATION_DUPLICATETRADESERIALNO = "FailedOperation.DuplicateTradeSerialNo"
+
 	// 直播会员已经过期
 	FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
 
@@ -37,6 +40,9 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
