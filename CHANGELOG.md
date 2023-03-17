@@ -1,3 +1,112 @@
+# Release v1.0.619
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 8 次发布
+
+发布时间：2023-03-16 01:15:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AttachCBSSpec](https://cloud.tencent.com/document/api/1299/83429#AttachCBSSpec)
+* [InstanceStateInfo](https://cloud.tencent.com/document/api/1299/83429#InstanceStateInfo)
+* [ServiceInfo](https://cloud.tencent.com/document/api/1299/83429#ServiceInfo)
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1299/83429#InstanceInfo)
+
+	* 新增成员：Kind, IsElastic, InstanceStateInfo, HAZk, MountDiskType, CHProxyVip, CosBucketName, CanAttachCbs, CanAttachCbsLvm, CanAttachCos, Components, UpgradeVersions
+
+* [NodesSummary](https://cloud.tencent.com/document/api/1299/83429#NodesSummary)
+
+	* 新增成员：AttachCBSSpec, SubProductType, SpecCore, SpecMemory, DiskCount, MaxDiskSize, Encrypt
+
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 62 次发布
+
+发布时间：2023-03-16 02:04:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSSLStatus](https://cloud.tencent.com/document/api/239/88703)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 146 次发布
+
+发布时间：2023-03-16 02:29:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateHaVip](https://cloud.tencent.com/document/api/215/30652)
+
+	* 新增入参：NetworkInterfaceId
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 21 次发布
+
+发布时间：2023-03-16 02:33:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Rule](https://cloud.tencent.com/document/api/1267/76336#Rule)
+
+	* 新增成员：TemplateSql, SubQualityDim, TargetObjectType, TargetObjectDataType, TargetObjectDataTypeName, TargetObjectValue
+
+
+
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 12 次发布
+
+发布时间：2023-03-16 02:35:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLiveVipTradeInfos](https://cloud.tencent.com/document/api/1592/88707)
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1592/88706)
+* [RechargeLiveVip](https://cloud.tencent.com/document/api/1592/88705)
+
+新增数据结构：
+
+* [LiveVipTradeInfo](https://cloud.tencent.com/document/api/1592/76191#LiveVipTradeInfo)
+* [LiveVipUserInfo](https://cloud.tencent.com/document/api/1592/76191#LiveVipUserInfo)
+* [UserInfo](https://cloud.tencent.com/document/api/1592/76191#UserInfo)
+
+
+
 # Release v1.0.618
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
