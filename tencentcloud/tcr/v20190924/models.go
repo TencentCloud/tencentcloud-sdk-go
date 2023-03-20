@@ -740,6 +740,9 @@ type CreateInstanceRequestParams struct {
 
 	// 是否同步TCR云标签至生成的COS Bucket
 	SyncTag *bool `json:"SyncTag,omitempty" name:"SyncTag"`
+
+	// 是否开启Cos桶多AZ特性
+	EnableCosMAZ *bool `json:"EnableCosMAZ,omitempty" name:"EnableCosMAZ"`
 }
 
 type CreateInstanceRequest struct {
@@ -762,6 +765,9 @@ type CreateInstanceRequest struct {
 
 	// 是否同步TCR云标签至生成的COS Bucket
 	SyncTag *bool `json:"SyncTag,omitempty" name:"SyncTag"`
+
+	// 是否开启Cos桶多AZ特性
+	EnableCosMAZ *bool `json:"EnableCosMAZ,omitempty" name:"EnableCosMAZ"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -782,6 +788,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RegistryChargeType")
 	delete(f, "RegistryChargePrepaid")
 	delete(f, "SyncTag")
+	delete(f, "EnableCosMAZ")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}

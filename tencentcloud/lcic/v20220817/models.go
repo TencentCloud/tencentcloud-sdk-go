@@ -2483,6 +2483,128 @@ type DocumentInfo struct {
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type EventDataInfo struct {
+	// 事件发生的房间号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 事件发生的用户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+type EventInfo struct {
+	// 事件发生的秒级unix时间戳。
+	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 事件类型,有以下值:
+	// RoomStart:房间开始 RoomEnd:房间结束 MemberJoin:成员加入 MemberQuit:成员退出 RecordFinish:录制结束
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 事件详细内容，包含房间号,成员类型事件包含用户Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventData *EventDataInfo `json:"EventData,omitempty" name:"EventData"`
+}
+
+// Predefined struct for user
+type GetRoomEventRequestParams struct {
+	// 房间Id。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 应用Id。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 起始页，1开始。keyword为空时有效。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页个数。keyword为空时有效。一次性最多200条。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索事件类型。有以下事件类型:
+	// RoomStart:房间开始
+	// RoomEnd:房间结束
+	// MemberJoin:成员加入
+	// MemberQuit:成员退出
+	// RecordFinish:录制结束
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+type GetRoomEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间Id。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 应用Id。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 起始页，1开始。keyword为空时有效。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页个数。keyword为空时有效。一次性最多200条。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索事件类型。有以下事件类型:
+	// RoomStart:房间开始
+	// RoomEnd:房间结束
+	// MemberJoin:成员加入
+	// MemberQuit:成员退出
+	// RecordFinish:录制结束
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+func (r *GetRoomEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRoomEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "SdkAppId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRoomEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRoomEventResponseParams struct {
+	// 该房间的事件总数，keyword搜索不影响该值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 详细事件内容。包含相应的类型、发生的时间戳。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Events []*EventInfo `json:"Events,omitempty" name:"Events"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetRoomEventResponse struct {
+	*tchttp.BaseResponse
+	Response *GetRoomEventResponseParams `json:"Response"`
+}
+
+func (r *GetRoomEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRoomEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type GetRoomMessageRequestParams struct {
 	// 低代码互动课堂的SdkAppId。

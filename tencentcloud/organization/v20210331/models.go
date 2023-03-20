@@ -710,10 +710,10 @@ func (r *DescribeOrganizationMemberAuthAccountsResponse) FromJsonString(s string
 
 // Predefined struct for user
 type DescribeOrganizationMemberAuthIdentitiesRequestParams struct {
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍，默认值 : 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50，默认值：10
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 组织成员Uin。
@@ -723,10 +723,10 @@ type DescribeOrganizationMemberAuthIdentitiesRequestParams struct {
 type DescribeOrganizationMemberAuthIdentitiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍，默认值 : 0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50，默认值：10
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 组织成员Uin。
@@ -756,7 +756,7 @@ func (r *DescribeOrganizationMemberAuthIdentitiesRequest) FromJsonString(s strin
 
 // Predefined struct for user
 type DescribeOrganizationMemberAuthIdentitiesResponseParams struct {
-	// 列表。
+	// 授权身份列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*OrgMemberAuthIdentity `json:"Items,omitempty" name:"Items"`
 
@@ -869,10 +869,10 @@ func (r *DescribeOrganizationMemberPoliciesResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeOrganizationMembersRequestParams struct {
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍，默认值 : 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50，默认值：10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 国际站：en，国内站：zh
@@ -891,10 +891,10 @@ type DescribeOrganizationMembersRequestParams struct {
 type DescribeOrganizationMembersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍，默认值 : 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50，默认值：10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 国际站：en，国内站：zh
@@ -1467,15 +1467,15 @@ type OrgMemberAuthIdentity struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityId *int64 `json:"IdentityId,omitempty" name:"IdentityId"`
 
-	// 身份角色名。
+	// 身份的角色名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleName *string `json:"IdentityRoleName,omitempty" name:"IdentityRoleName"`
 
-	// 身份角色别名。
+	// 身份的角色别名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleAliasName *string `json:"IdentityRoleAliasName,omitempty" name:"IdentityRoleAliasName"`
 
-	// 描述
+	// 描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
@@ -1486,6 +1486,10 @@ type OrgMemberAuthIdentity struct {
 	// 更新时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 身份类型。取值： 1-预设  2-自定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentityType *uint64 `json:"IdentityType,omitempty" name:"IdentityType"`
 }
 
 type OrgMemberPolicy struct {

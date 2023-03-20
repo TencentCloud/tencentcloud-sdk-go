@@ -2029,6 +2029,13 @@ type FileSystemInfo struct {
 
 	// 文件系统标签列表
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+
+	// 文件系统声明周期管理状态
+	TieringState *string `json:"TieringState,omitempty" name:"TieringState"`
+
+	// 分层存储详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TieringDetail *TieringDetailInfo `json:"TieringDetail,omitempty" name:"TieringDetail"`
 }
 
 type Filter struct {
@@ -2330,6 +2337,10 @@ type TagInfo struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TieringDetailInfo struct {
+
 }
 
 // Predefined struct for user

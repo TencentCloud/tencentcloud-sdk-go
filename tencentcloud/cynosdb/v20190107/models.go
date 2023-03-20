@@ -206,13 +206,13 @@ type AddInstancesRequestParams struct {
 	// 新增只读实例数，取值范围为[0,4]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitempty" name:"ReadOnlyCount"`
 
-	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
+	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
 	InstanceGrpId *string `json:"InstanceGrpId,omitempty" name:"InstanceGrpId"`
 
-	// 所属VPC网络ID，该参数已废弃
+	// 所属VPC网络ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 所属子网ID，如果设置了VpcId，则SubnetId必填。该参数已废弃。
+	// 所属子网ID，如果设置了VpcId，则SubnetId必填。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 新增RO组时使用的Port，取值范围为[0,65535)
@@ -239,6 +239,9 @@ type AddInstancesRequestParams struct {
 
 	// 参数列表，ParamTemplateId 传入时InstanceParams才有效
 	InstanceParams []*ModifyParamItem `json:"InstanceParams,omitempty" name:"InstanceParams"`
+
+	// 安全组ID，新建只读实例时可以指定安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 type AddInstancesRequest struct {
@@ -256,13 +259,13 @@ type AddInstancesRequest struct {
 	// 新增只读实例数，取值范围为[0,4]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitempty" name:"ReadOnlyCount"`
 
-	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
+	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
 	InstanceGrpId *string `json:"InstanceGrpId,omitempty" name:"InstanceGrpId"`
 
-	// 所属VPC网络ID，该参数已废弃
+	// 所属VPC网络ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 所属子网ID，如果设置了VpcId，则SubnetId必填。该参数已废弃。
+	// 所属子网ID，如果设置了VpcId，则SubnetId必填。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 新增RO组时使用的Port，取值范围为[0,65535)
@@ -289,6 +292,9 @@ type AddInstancesRequest struct {
 
 	// 参数列表，ParamTemplateId 传入时InstanceParams才有效
 	InstanceParams []*ModifyParamItem `json:"InstanceParams,omitempty" name:"InstanceParams"`
+
+	// 安全组ID，新建只读实例时可以指定安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 func (r *AddInstancesRequest) ToJsonString() string {
@@ -318,6 +324,7 @@ func (r *AddInstancesRequest) FromJsonString(s string) error {
 	delete(f, "DealMode")
 	delete(f, "ParamTemplateId")
 	delete(f, "InstanceParams")
+	delete(f, "SecurityGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddInstancesRequest has unknown keys!", "")
 	}

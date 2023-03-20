@@ -3022,6 +3022,9 @@ type UploadCertificateRequestParams struct {
 
 	// 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
 	CertificateUse *string `json:"CertificateUse,omitempty" name:"CertificateUse"`
+
+	// 相同的证书是否允许重复上传
+	Repeatable *bool `json:"Repeatable,omitempty" name:"Repeatable"`
 }
 
 type UploadCertificateRequest struct {
@@ -3044,6 +3047,9 @@ type UploadCertificateRequest struct {
 
 	// 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
 	CertificateUse *string `json:"CertificateUse,omitempty" name:"CertificateUse"`
+
+	// 相同的证书是否允许重复上传
+	Repeatable *bool `json:"Repeatable,omitempty" name:"Repeatable"`
 }
 
 func (r *UploadCertificateRequest) ToJsonString() string {
@@ -3064,6 +3070,7 @@ func (r *UploadCertificateRequest) FromJsonString(s string) error {
 	delete(f, "Alias")
 	delete(f, "ProjectId")
 	delete(f, "CertificateUse")
+	delete(f, "Repeatable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertificateRequest has unknown keys!", "")
 	}
@@ -3074,6 +3081,10 @@ func (r *UploadCertificateRequest) FromJsonString(s string) error {
 type UploadCertificateResponseParams struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 重复证书的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepeatCertId *string `json:"RepeatCertId,omitempty" name:"RepeatCertId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

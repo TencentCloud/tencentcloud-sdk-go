@@ -5696,6 +5696,12 @@ type CreateVirusScanTaskRequestParams struct {
 
 	// 自选排除或扫描的地址
 	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
 }
 
 type CreateVirusScanTaskRequest struct {
@@ -5721,6 +5727,12 @@ type CreateVirusScanTaskRequest struct {
 
 	// 自选排除或扫描的地址
 	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
 }
 
 func (r *CreateVirusScanTaskRequest) ToJsonString() string {
@@ -5742,6 +5754,7 @@ func (r *CreateVirusScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "ScanPathType")
 	delete(f, "ScanIds")
 	delete(f, "ScanPath")
+	delete(f, "ScanPathMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVirusScanTaskRequest has unknown keys!", "")
 	}
@@ -21293,6 +21306,14 @@ type DescribeVirusDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckPlatform []*string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
 
+	// 文件访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileAccessTime *string `json:"FileAccessTime,omitempty" name:"FileAccessTime"`
+
+	// 文件修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileModifyTime *string `json:"FileModifyTime,omitempty" name:"FileModifyTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -21606,6 +21627,12 @@ type DescribeVirusMonitorSettingResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
 
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -21747,6 +21774,12 @@ type DescribeVirusScanSettingResponseParams struct {
 	// 一键检测的超时设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClickTimeout *uint64 `json:"ClickTimeout,omitempty" name:"ClickTimeout"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -27358,6 +27391,12 @@ type ModifyVirusMonitorSettingRequestParams struct {
 
 	// 自选排除或扫描的地址
 	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
 }
 
 type ModifyVirusMonitorSettingRequest struct {
@@ -27374,6 +27413,12 @@ type ModifyVirusMonitorSettingRequest struct {
 
 	// 自选排除或扫描的地址
 	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
 }
 
 func (r *ModifyVirusMonitorSettingRequest) ToJsonString() string {
@@ -27392,6 +27437,7 @@ func (r *ModifyVirusMonitorSettingRequest) FromJsonString(s string) error {
 	delete(f, "ScanPathAll")
 	delete(f, "ScanPathType")
 	delete(f, "ScanPath")
+	delete(f, "ScanPathMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVirusMonitorSettingRequest has unknown keys!", "")
 	}
@@ -27451,6 +27497,12 @@ type ModifyVirusScanSettingRequestParams struct {
 
 	// 扫描路径
 	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
 }
 
 type ModifyVirusScanSettingRequest struct {
@@ -27485,6 +27537,12 @@ type ModifyVirusScanSettingRequest struct {
 
 	// 扫描路径
 	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+
+	// 扫描路径模式：
+	// SCAN_PATH_ALL：全部路径
+	// SCAN_PATH_DEFAULT：默认路径
+	// SCAN_PATH_USER_DEFINE：用户自定义路径
+	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
 }
 
 func (r *ModifyVirusScanSettingRequest) ToJsonString() string {
@@ -27509,6 +27567,7 @@ func (r *ModifyVirusScanSettingRequest) FromJsonString(s string) error {
 	delete(f, "ScanRangeAll")
 	delete(f, "ScanIds")
 	delete(f, "ScanPath")
+	delete(f, "ScanPathMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVirusScanSettingRequest has unknown keys!", "")
 	}

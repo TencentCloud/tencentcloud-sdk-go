@@ -11269,6 +11269,10 @@ type OverrideTranscodeParameter struct {
 
 	// 字幕流配置参数。
 	SubtitleTemplate *SubtitleTemplate `json:"SubtitleTemplate,omitempty" name:"SubtitleTemplate"`
+
+	// 外挂音轨参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddonAudioStream []*MediaInputInfo `json:"AddonAudioStream,omitempty" name:"AddonAudioStream"`
 }
 
 // Predefined struct for user

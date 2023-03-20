@@ -3745,6 +3745,10 @@ type Resource struct {
 
 	// 授权点数扩展包个数(50点)
 	PackageNode *uint64 `json:"PackageNode,omitempty" name:"PackageNode"`
+
+	// 日志投递规格信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogDeliveryArgs *string `json:"LogDeliveryArgs,omitempty" name:"LogDeliveryArgs"`
 }
 
 type TagFilter struct {

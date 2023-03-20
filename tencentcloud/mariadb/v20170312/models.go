@@ -1896,6 +1896,115 @@ func (r *DescribeAccountsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupFilesRequestParams struct {
+	// 按实例ID查询
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份类型，Data:数据备份，Binlog:Binlog备份，Errlog:错误日志，Slowlog:慢日志
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
+
+	// 按开始时间查询
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 按结束时间查询
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序参数，可选值：Time,Size
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序参数, 可选值：DESC,ASC
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+}
+
+type DescribeBackupFilesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 按实例ID查询
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 备份类型，Data:数据备份，Binlog:Binlog备份，Errlog:错误日志，Slowlog:慢日志
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
+
+	// 按开始时间查询
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 按结束时间查询
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序参数，可选值：Time,Size
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序参数, 可选值：DESC,ASC
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+}
+
+func (r *DescribeBackupFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackupType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupFilesResponseParams struct {
+	// 备份文件列表
+	Files []*InstanceBackupFileItem `json:"Files,omitempty" name:"Files"`
+
+	// 总条目数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupFilesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupTimeRequestParams struct {
 	// 实例ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -4044,6 +4153,42 @@ func (r *InitDBInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *InitDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceBackupFileItem struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例状态
+	InstanceStatus *int64 `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+
+	// 分片ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShardId *string `json:"ShardId,omitempty" name:"ShardId"`
+
+	// 文件路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件大小
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 备份类型，Data:数据备份，Binlog:Binlog备份，Errlog:错误日志，Slowlog:慢日志
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
+
+	// 手动备份，0:否，1:是
+	ManualBackup *int64 `json:"ManualBackup,omitempty" name:"ManualBackup"`
+
+	// 备份开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 备份结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type InstanceSpec struct {

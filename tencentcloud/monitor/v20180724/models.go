@@ -1478,11 +1478,11 @@ type CreateGrafanaInstanceRequestParams struct {
 	// 子网 ID 数组
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
-	// Grafana 初始密码
-	GrafanaInitPassword *string `json:"GrafanaInitPassword,omitempty" name:"GrafanaInitPassword"`
-
 	// 是否启用外网
 	EnableInternet *bool `json:"EnableInternet,omitempty" name:"EnableInternet"`
+
+	// Grafana 初始密码
+	GrafanaInitPassword *string `json:"GrafanaInitPassword,omitempty" name:"GrafanaInitPassword"`
 
 	// 标签
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitempty" name:"TagSpecification"`
@@ -1500,11 +1500,11 @@ type CreateGrafanaInstanceRequest struct {
 	// 子网 ID 数组
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 
-	// Grafana 初始密码
-	GrafanaInitPassword *string `json:"GrafanaInitPassword,omitempty" name:"GrafanaInitPassword"`
-
 	// 是否启用外网
 	EnableInternet *bool `json:"EnableInternet,omitempty" name:"EnableInternet"`
+
+	// Grafana 初始密码
+	GrafanaInitPassword *string `json:"GrafanaInitPassword,omitempty" name:"GrafanaInitPassword"`
 
 	// 标签
 	TagSpecification []*PrometheusTag `json:"TagSpecification,omitempty" name:"TagSpecification"`
@@ -1525,8 +1525,8 @@ func (r *CreateGrafanaInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceName")
 	delete(f, "VpcId")
 	delete(f, "SubnetIds")
-	delete(f, "GrafanaInitPassword")
 	delete(f, "EnableInternet")
+	delete(f, "GrafanaInitPassword")
 	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGrafanaInstanceRequest has unknown keys!", "")
@@ -2347,6 +2347,9 @@ type CreatePrometheusRecordRuleYamlRequestParams struct {
 
 	// yaml的内容
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type CreatePrometheusRecordRuleYamlRequest struct {
@@ -2357,6 +2360,9 @@ type CreatePrometheusRecordRuleYamlRequest struct {
 
 	// yaml的内容
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 func (r *CreatePrometheusRecordRuleYamlRequest) ToJsonString() string {
@@ -2373,6 +2379,7 @@ func (r *CreatePrometheusRecordRuleYamlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Content")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusRecordRuleYamlRequest has unknown keys!", "")
 	}

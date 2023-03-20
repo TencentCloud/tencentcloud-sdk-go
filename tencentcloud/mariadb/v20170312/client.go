@@ -1041,6 +1041,56 @@ func (c *Client) DescribeAccountsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeBackupFilesRequest() (request *DescribeBackupFilesRequest) {
+    request = &DescribeBackupFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mariadb", APIVersion, "DescribeBackupFiles")
+    
+    
+    return
+}
+
+func NewDescribeBackupFilesResponse() (response *DescribeBackupFilesResponse) {
+    response = &DescribeBackupFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackupFiles
+// 本接口(DescribeBackupFiles)用于查看备份文件列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (response *DescribeBackupFilesResponse, err error) {
+    return c.DescribeBackupFilesWithContext(context.Background(), request)
+}
+
+// DescribeBackupFiles
+// 本接口(DescribeBackupFiles)用于查看备份文件列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupFilesWithContext(ctx context.Context, request *DescribeBackupFilesRequest) (response *DescribeBackupFilesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupTimeRequest() (request *DescribeBackupTimeRequest) {
     request = &DescribeBackupTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

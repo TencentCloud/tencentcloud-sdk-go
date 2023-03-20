@@ -7790,15 +7790,20 @@ func (r *DescribeLiveWatermarksResponse) FromJsonString(s string) error {
 type DescribeLogDownloadListRequestParams struct {
 	// 开始时间，北京时间。
 	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 注：此字段为北京时间（UTC+8时区）。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，北京时间。
 	// 格式：yyyy-mm-dd HH:MM:SS。
 	// 注意：结束时间 - 开始时间 <=7天。
+	// 注：此字段为北京时间（UTC+8时区）。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 域名列表。
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
+
+	// 快直播还是标准直播，0：标准直播，1：快直播。默认为0。
+	IsFastLive *int64 `json:"IsFastLive,omitempty" name:"IsFastLive"`
 }
 
 type DescribeLogDownloadListRequest struct {
@@ -7806,15 +7811,20 @@ type DescribeLogDownloadListRequest struct {
 	
 	// 开始时间，北京时间。
 	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 注：此字段为北京时间（UTC+8时区）。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，北京时间。
 	// 格式：yyyy-mm-dd HH:MM:SS。
 	// 注意：结束时间 - 开始时间 <=7天。
+	// 注：此字段为北京时间（UTC+8时区）。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 域名列表。
 	PlayDomains []*string `json:"PlayDomains,omitempty" name:"PlayDomains"`
+
+	// 快直播还是标准直播，0：标准直播，1：快直播。默认为0。
+	IsFastLive *int64 `json:"IsFastLive,omitempty" name:"IsFastLive"`
 }
 
 func (r *DescribeLogDownloadListRequest) ToJsonString() string {
@@ -7832,6 +7842,7 @@ func (r *DescribeLogDownloadListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "PlayDomains")
+	delete(f, "IsFastLive")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogDownloadListRequest has unknown keys!", "")
 	}

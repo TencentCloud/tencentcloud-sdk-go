@@ -2113,6 +2113,56 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     return
 }
 
+func NewGetRoomEventRequest() (request *GetRoomEventRequest) {
+    request = &GetRoomEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "GetRoomEvent")
+    
+    
+    return
+}
+
+func NewGetRoomEventResponse() (response *GetRoomEventResponse) {
+    response = &GetRoomEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetRoomEvent
+// 获取房间事件,仅在课堂结束1小时内有效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) GetRoomEvent(request *GetRoomEventRequest) (response *GetRoomEventResponse, err error) {
+    return c.GetRoomEventWithContext(context.Background(), request)
+}
+
+// GetRoomEvent
+// 获取房间事件,仅在课堂结束1小时内有效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) GetRoomEventWithContext(ctx context.Context, request *GetRoomEventRequest) (response *GetRoomEventResponse, err error) {
+    if request == nil {
+        request = NewGetRoomEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRoomEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRoomEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRoomMessageRequest() (request *GetRoomMessageRequest) {
     request = &GetRoomMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -204,7 +204,7 @@ type Action struct {
 	// <li> 智能压缩（Compression）；</li>
 	// <li> Hsts；</li>
 	// <li> ClientIpHeader；</li>
-	// <li> TlsVersion；</li>
+	// <li> SslTlsSecureConf；</li>
 	// <li> OcspStapling；</li>
 	// <li> HTTP/2 访问（Http2）；</li>
 	// <li> 回源跟随重定向(UpstreamFollowRedirect)；</li>
@@ -2568,6 +2568,8 @@ type DescribeAccelerationDomainsRequestParams struct {
 	// <li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
 	// <li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
 	// <li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>domain-cname<br>   按照【<strong>加速CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>share-cname<br>   按照【<strong>共享CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 
 	// 列表排序方式，取值有：
@@ -2604,6 +2606,8 @@ type DescribeAccelerationDomainsRequest struct {
 	// <li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
 	// <li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
 	// <li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>domain-cname<br>   按照【<strong>加速CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>share-cname<br>   按照【<strong>共享CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 
 	// 列表排序方式，取值有：
@@ -7546,6 +7550,13 @@ func (r *IdentifyZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ImageOptimize struct {
+	// 开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type IntelligenceRule struct {
 	// 开关，取值有：
 	// <li>on：开启；</li>
@@ -11310,4 +11321,8 @@ type ZoneSetting struct {
 	// Grpc协议支持配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grpc *Grpc `json:"Grpc,omitempty" name:"Grpc"`
+
+	// 图片优化相关配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageOptimize *ImageOptimize `json:"ImageOptimize,omitempty" name:"ImageOptimize"`
 }
