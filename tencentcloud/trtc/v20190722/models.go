@@ -2446,11 +2446,9 @@ type McuLayoutVolume struct {
 	PayloadType *uint64 `json:"PayloadType,omitempty" name:"PayloadType"`
 
 	// SEI发送间隔，单位毫秒，默认值为1000。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
 
 	// 取值范围[0,1]，填1：发送关键帧时会确保带SEI；填0：发送关键帧时不确保带SEI。默认值为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FollowIdr *uint64 `json:"FollowIdr,omitempty" name:"FollowIdr"`
 }
 
@@ -2465,11 +2463,9 @@ type McuPassThrough struct {
 	PayloadUuid *string `json:"PayloadUuid,omitempty" name:"PayloadUuid"`
 
 	// SEI发送间隔，单位毫秒，默认值为1000。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
 
 	// 取值范围[0,1]，填1：发送关键帧时会确保带SEI；填0：发送关键帧时不确保带SEI。默认值为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FollowIdr *uint64 `json:"FollowIdr,omitempty" name:"FollowIdr"`
 }
 
@@ -2546,7 +2542,6 @@ type McuWaterMarkParams struct {
 	WaterMarkImage *McuWaterMarkImage `json:"WaterMarkImage,omitempty" name:"WaterMarkImage"`
 
 	// 文字水印参数。WaterMarkType为1指定。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaterMarkText *McuWaterMarkText `json:"WaterMarkText,omitempty" name:"WaterMarkText"`
 }
 
@@ -2567,15 +2562,12 @@ type McuWaterMarkText struct {
 	LocationY *uint64 `json:"LocationY,omitempty" name:"LocationY"`
 
 	// 字体大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FontSize *uint64 `json:"FontSize,omitempty" name:"FontSize"`
 
 	// 字体颜色，默认为白色。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FontColor *string `json:"FontColor,omitempty" name:"FontColor"`
 
 	// 字体背景色，不配置默认为透明。常用的颜色有： 红色：0xcc0033。 黄色：0xcc9900。 绿色：0xcccc33。 蓝色：0x99CCFF。 黑色：0x000000。 白色：0xFFFFFF。 灰色：0x999999。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackGroundColor *string `json:"BackGroundColor,omitempty" name:"BackGroundColor"`
 }
 
@@ -2988,7 +2980,6 @@ type RecordParams struct {
 	MaxMediaFileDuration *uint64 `json:"MaxMediaFileDuration,omitempty" name:"MaxMediaFileDuration"`
 
 	// 指定录制主辅流，0：主流+辅流（默认）；1:主流；2:辅流。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaId *uint64 `json:"MediaId,omitempty" name:"MediaId"`
 }
 
@@ -4076,45 +4067,35 @@ type WaterMark struct {
 	WaterMarkImage *WaterMarkImage `json:"WaterMarkImage,omitempty" name:"WaterMarkImage"`
 
 	// 水印为文字时的参数列表，水印为文字时校验必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaterMarkChar *WaterMarkChar `json:"WaterMarkChar,omitempty" name:"WaterMarkChar"`
 
 	// 水印为时间戳时的参数列表，水印为时间戳时校验必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WaterMarkTimestamp *WaterMarkTimestamp `json:"WaterMarkTimestamp,omitempty" name:"WaterMarkTimestamp"`
 }
 
 type WaterMarkChar struct {
 	// 文字水印的起始坐标Y值，从左上角开始
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Top *uint64 `json:"Top,omitempty" name:"Top"`
 
 	// 文字水印的起始坐标X值，从左上角开始
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Left *uint64 `json:"Left,omitempty" name:"Left"`
 
 	// 文字水印的宽度，单位像素值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
 	// 文字水印的高度，单位像素值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 
 	// 水印文字的内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Chars *string `json:"Chars,omitempty" name:"Chars"`
 
 	// 水印文字的大小，单位像素，默认14
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FontSize *uint64 `json:"FontSize,omitempty" name:"FontSize"`
 
 	// 水印文字的颜色，默认白色
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FontColor *string `json:"FontColor,omitempty" name:"FontColor"`
 
 	// 水印文字的背景色，为空代表背景透明，默认为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackGroundColor *string `json:"BackGroundColor,omitempty" name:"BackGroundColor"`
 }
 
@@ -4157,10 +4138,8 @@ type WaterMarkParams struct {
 
 type WaterMarkTimestamp struct {
 	// 时间戳的位置，取值范围0-6，分别代表上左，上右，下左，下右，上居中，下居中，居中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pos *uint64 `json:"Pos,omitempty" name:"Pos"`
 
 	// 显示时间戳的时区，默认东八区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeZone *uint64 `json:"TimeZone,omitempty" name:"TimeZone"`
 }

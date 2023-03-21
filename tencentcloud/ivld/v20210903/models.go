@@ -1690,23 +1690,18 @@ type L3Tag struct {
 
 type MediaFilter struct {
 	// 媒资名称过滤条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaNameSet []*string `json:"MediaNameSet,omitempty" name:"MediaNameSet"`
 
 	// 媒资状态数组，媒资状态可选值参见MediaInfo
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet"`
 
 	// 媒资ID数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaIdSet []*string `json:"MediaIdSet,omitempty" name:"MediaIdSet"`
 
 	// 媒资自定义标签数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
 	// 媒资文件类型，定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaType *int64 `json:"MediaType,omitempty" name:"MediaType"`
 }
 

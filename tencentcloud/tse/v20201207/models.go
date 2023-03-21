@@ -1013,15 +1013,12 @@ type EngineAdmin struct {
 
 type EngineRegionInfo struct {
 	// 引擎节点所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
 
 	// 此地域节点分配数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Replica *int64 `json:"Replica,omitempty" name:"Replica"`
 
 	// 集群网络信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcInfos []*VpcInfo `json:"VpcInfos,omitempty" name:"VpcInfos"`
 }
 

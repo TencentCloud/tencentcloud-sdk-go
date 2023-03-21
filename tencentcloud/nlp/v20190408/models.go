@@ -179,35 +179,27 @@ type ClassificationResult struct {
 	SecondClassName *string `json:"SecondClassName,omitempty" name:"SecondClassName"`
 
 	// 一级分类概率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstClassProbability *float64 `json:"FirstClassProbability,omitempty" name:"FirstClassProbability"`
 
 	// 二级分类概率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondClassProbability *float64 `json:"SecondClassProbability,omitempty" name:"SecondClassProbability"`
 
 	// 三级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThirdClassName *string `json:"ThirdClassName,omitempty" name:"ThirdClassName"`
 
 	// 三级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThirdClassProbability *float64 `json:"ThirdClassProbability,omitempty" name:"ThirdClassProbability"`
 
 	// 四级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FourthClassName *string `json:"FourthClassName,omitempty" name:"FourthClassName"`
 
 	// 四级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FourthClassProbability *float64 `json:"FourthClassProbability,omitempty" name:"FourthClassProbability"`
 
 	// 五级分类名称，仅有当新闻领域五分类可能出现，详情见文本分类文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FifthClassName *string `json:"FifthClassName,omitempty" name:"FifthClassName"`
 
 	// 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FifthClassProbability *float64 `json:"FifthClassProbability,omitempty" name:"FifthClassProbability"`
 }
 
@@ -747,33 +739,26 @@ type DictInfo struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 自定义词库描述信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 自定义词库修改时间，形式为:yyyy-mm-dd hh:mm:ss。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 自定义词库创建时间，形式为:yyyy-mm-dd hh:mm:ss。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type DpToken struct {
 	// 句法依存关系的类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitempty" name:"Relation"`
 
 	// 当前词父节点的序号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadId *uint64 `json:"HeadId,omitempty" name:"HeadId"`
 
 	// 基础词
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 基础词的序号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
@@ -1113,11 +1098,9 @@ type SearchResult struct {
 	IsExist *uint64 `json:"IsExist,omitempty" name:"IsExist"`
 
 	// 匹配到的词条文本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchText *string `json:"MatchText,omitempty" name:"MatchText"`
 
 	// 词条的词性。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
 }
 
@@ -1868,7 +1851,6 @@ type WordItem struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 词条的词性。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
 }
 

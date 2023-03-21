@@ -35,15 +35,12 @@ type Agent struct {
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
 	// 被代理机构的应用号，一般不用传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
 
 	// 被代理机构在电子签平台的机构编号，集团代理下场景必传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitempty" name:"ProxyOrganizationId"`
 
 	// 被代理机构的经办人，一般不用传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOperator *string `json:"ProxyOperator,omitempty" name:"ProxyOperator"`
 }
 
@@ -130,27 +127,21 @@ type AuthorizedUser struct {
 
 type AutoSignConfig struct {
 	// 自动签开通个人用户的三要素
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
 
 	// 回调链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 是否回调证书信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertInfoCallback *bool `json:"CertInfoCallback,omitempty" name:"CertInfoCallback"`
 
 	// 是否支持用户自定义签名印章
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineSeal *bool `json:"UserDefineSeal,omitempty" name:"UserDefineSeal"`
 
 	// 是否需要回调的时候返回印章(签名) 图片的 base64
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SealImgCallback *bool `json:"SealImgCallback,omitempty" name:"SealImgCallback"`
 
 	// 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyChannels []*string `json:"VerifyChannels,omitempty" name:"VerifyChannels"`
 }
 
@@ -316,19 +307,16 @@ type CcInfo struct {
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 被抄送人姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 被抄送人类型,
 	// 0--个人
 	// 1--员工
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcType *int64 `json:"CcType,omitempty" name:"CcType"`
 
 	// 被抄送人权限
 	// 0--可查看
 	// 1--可查看也可下载
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcPermission *int64 `json:"CcPermission,omitempty" name:"CcPermission"`
 }
 
@@ -4160,42 +4148,29 @@ type RegisterInfo struct {
 
 type ReleasedApprover struct {
 	// 签署人姓名，最大长度50个字符
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 签署人手机号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 要替换的参与人在原合同参与人列表中的签署人编号,通过DescribeFlowInfo 接口获取（即FlowDetailInfos. FlowApproverInfos 结构中的ReceiptId ）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelievedApproverReceiptId *string `json:"RelievedApproverReceiptId,omitempty" name:"RelievedApproverReceiptId"`
 }
 
 type RelieveInfo struct {
 	// 解除理由，最大支持200个字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
 
 	// 解除后仍然有效的条款，保留条款，最大支持200个字
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainInForceItem *string `json:"RemainInForceItem,omitempty" name:"RemainInForceItem"`
 
 	// 原合同事项处理-费用结算，最大支持200个字
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalExpenseSettlement *string `json:"OriginalExpenseSettlement,omitempty" name:"OriginalExpenseSettlement"`
 
 	// 原合同事项处理-其他事项，最大支持200个字
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalOtherSettlement *string `json:"OriginalOtherSettlement,omitempty" name:"OriginalOtherSettlement"`
 
 	// 其他约定，最大支持200个字
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OtherDeals *string `json:"OtherDeals,omitempty" name:"OtherDeals"`
 }
 
@@ -4590,18 +4565,15 @@ type UserInfo struct {
 
 type UserThreeFactor struct {
 	// 姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 证件类型: 
 	// ID_CARD 身份证
 	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
 	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
 	// 证件号，如果有 X 请大写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 }
 

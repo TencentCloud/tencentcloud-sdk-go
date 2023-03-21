@@ -1521,11 +1521,9 @@ type ExpansionNodeConfigOverview struct {
 
 type Filter struct {
 	// 需要过滤的字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段的过滤值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
@@ -1848,10 +1846,10 @@ func (r *SetAutoScalingConfigurationResponse) FromJsonString(s string) error {
 }
 
 type StorageOption struct {
-	// 集群挂载CFS文件系统选项
+	// 集群挂载CFS文件系统选项。
 	CFSOptions []*CFSOption `json:"CFSOptions,omitempty" name:"CFSOptions"`
 
-	// 集群挂在GooseFS文件系统选项
+	// 集群挂载GooseFS文件系统选项。
 	GooseFSOptions []*GooseFSOption `json:"GooseFSOptions,omitempty" name:"GooseFSOptions"`
 }
 

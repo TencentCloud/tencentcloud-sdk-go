@@ -18364,11 +18364,9 @@ type SearchConditionInstance struct {
 	ExecutionSpace *uint64 `json:"ExecutionSpace,omitempty" name:"ExecutionSpace"`
 
 	// 产品名称，可选
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *uint64 `json:"ProductName,omitempty" name:"ProductName"`
 
 	// 资源组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroup *uint64 `json:"ResourceGroup,omitempty" name:"ResourceGroup"`
 }
 

@@ -2757,9 +2757,6 @@ func (r *DescribeScanLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanStatsRequestParams struct {
-	// 批次ID
-	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
-
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -2768,14 +2765,20 @@ type DescribeScanStatsRequestParams struct {
 
 	// 当前分页
 	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 type DescribeScanStatsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 批次ID
-	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
-
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -2784,6 +2787,15 @@ type DescribeScanStatsRequest struct {
 
 	// 当前分页
 	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 func (r *DescribeScanStatsRequest) ToJsonString() string {
@@ -2798,10 +2810,12 @@ func (r *DescribeScanStatsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "BatchId")
 	delete(f, "CorpId")
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
+	delete(f, "MerchantId")
+	delete(f, "ProductId")
+	delete(f, "BatchId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanStatsRequest has unknown keys!", "")
 	}
@@ -4268,6 +4282,12 @@ type ScanStat struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 商户名称
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 }
 
 type TraceCode struct {

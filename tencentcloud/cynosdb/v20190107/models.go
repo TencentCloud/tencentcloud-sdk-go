@@ -5285,7 +5285,7 @@ type InstanceNetInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceGroupType *string `json:"InstanceGroupType,omitempty" name:"InstanceGroupType"`
 
-	// 接入组ID
+	// 实例组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
 

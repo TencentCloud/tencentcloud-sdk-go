@@ -2804,7 +2804,6 @@ type GroupCandidate struct {
 
 type GroupExDescriptionInfo struct {
 	// 人员库自定义描述字段Index，从0开始
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupExDescriptionIndex *uint64 `json:"GroupExDescriptionIndex,omitempty" name:"GroupExDescriptionIndex"`
 
 	// 需要更新的人员库自定义描述字段内容
@@ -3090,7 +3089,6 @@ type Mouth struct {
 
 type PersonExDescriptionInfo struct {
 	// 人员描述字段Index，从0开始
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PersonExDescriptionIndex *uint64 `json:"PersonExDescriptionIndex,omitempty" name:"PersonExDescriptionIndex"`
 
 	// 需要更新的人员描述字段内容

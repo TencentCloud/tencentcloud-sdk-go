@@ -364,6 +364,9 @@ type AddVpcCniSubnetsRequestParams struct {
 
 	// 集群所属的VPC的ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 是否同步添加 vpc 网段到 ip-masq-agent-config 的 NonMasqueradeCIDRs 字段，默认 false 会同步添加
+	SkipAddingNonMasqueradeCIDRs *bool `json:"SkipAddingNonMasqueradeCIDRs,omitempty" name:"SkipAddingNonMasqueradeCIDRs"`
 }
 
 type AddVpcCniSubnetsRequest struct {
@@ -377,6 +380,9 @@ type AddVpcCniSubnetsRequest struct {
 
 	// 集群所属的VPC的ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 是否同步添加 vpc 网段到 ip-masq-agent-config 的 NonMasqueradeCIDRs 字段，默认 false 会同步添加
+	SkipAddingNonMasqueradeCIDRs *bool `json:"SkipAddingNonMasqueradeCIDRs,omitempty" name:"SkipAddingNonMasqueradeCIDRs"`
 }
 
 func (r *AddVpcCniSubnetsRequest) ToJsonString() string {
@@ -394,6 +400,7 @@ func (r *AddVpcCniSubnetsRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "SubnetIds")
 	delete(f, "VpcId")
+	delete(f, "SkipAddingNonMasqueradeCIDRs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddVpcCniSubnetsRequest has unknown keys!", "")
 	}

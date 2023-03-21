@@ -71,35 +71,27 @@ type AuthorizedUser struct {
 
 type BaseFlowInfo struct {
 	// 合同流程名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
 	// 合同流程类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 合同流程描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
 	// 合同流程截止时间，unix时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 是否顺序签署(true:无序签,false:顺序签)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
 
 	// 填写控件内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FormFields []*FormField `json:"FormFields,omitempty" name:"FormFields"`
 
 	// 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 }
 
@@ -108,18 +100,15 @@ type CcInfo struct {
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 被抄送人姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 被抄送人类型
 	// 0--个人. 1--员工
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcType *int64 `json:"CcType,omitempty" name:"CcType"`
 
 	// 被抄送人权限
 	// 0--可查看
 	// 1--可查看也可下载
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcPermission *int64 `json:"CcPermission,omitempty" name:"CcPermission"`
 }
 
@@ -2203,66 +2192,51 @@ func (r *ChannelVerifyPdfResponse) FromJsonString(s string) error {
 
 type CommonApproverOption struct {
 	// 是否允许修改签署人信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanEditApprover *bool `json:"CanEditApprover,omitempty" name:"CanEditApprover"`
 }
 
 type CommonFlowApprover struct {
 	// 指定当前签署人为第三方应用集成子客，默认false：当前签署人为第三方应用集成子客，true：当前签署人为saas企业用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotChannelOrganization *bool `json:"NotChannelOrganization,omitempty" name:"NotChannelOrganization"`
 
 	// 签署人类型,目前支持：0-企业签署人，1-个人签署人，3-企业静默签署人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 企业id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
 
 	// 企业OpenId，第三方应用集成非静默签子客企业签署人发起合同毕传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
 	// 企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 用户id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 用户openId，第三方应用集成非静默签子客企业签署人必传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// 签署人名称，saas企业签署人，个人签署人必传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverName *string `json:"ApproverName,omitempty" name:"ApproverName"`
 
 	// 签署人手机号，saas企业签署人，个人签署人必传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
 	// 签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
 	// 注意：模板发起时该字段必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
 	// 签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreReadTime *int64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
 
 	// 签署前置条件：阅读全文限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFullText *bool `json:"IsFullText,omitempty" name:"IsFullText"`
 
 	// 通知类型：SMS（短信） NONE（不做通知）, 不传 默认SMS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
 	// 签署人配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverOption *CommonApproverOption `json:"ApproverOption,omitempty" name:"ApproverOption"`
 }
 
@@ -2699,7 +2673,6 @@ func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
 
 type CreateFlowOption struct {
 	// 是否允许修改合同信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanEditFlow *bool `json:"CanEditFlow,omitempty" name:"CanEditFlow"`
 }
 
@@ -4381,7 +4354,6 @@ type ProxyOrganizationOperator struct {
 	// 业务管理员：admin
 	// 经办人：channel-normal-operator
 	// 业务员：channel-sales-man
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultRole *string `json:"DefaultRole,omitempty" name:"DefaultRole"`
 }
 

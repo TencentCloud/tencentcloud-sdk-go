@@ -15317,12 +15317,10 @@ type OpenBankSceneInfo struct {
 type OpenBankSettlementRulesInfo struct {
 	// ONCE：仅单次解冻（默认）
 	// MULTI：多次解冻
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnfreezeRule *string `json:"UnfreezeRule,omitempty" name:"UnfreezeRule"`
 
 	// ONCE：仅单次退款（默认）
 	// MULTI：多次退款
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefundRule *string `json:"RefundRule,omitempty" name:"RefundRule"`
 }
 

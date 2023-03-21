@@ -89,6 +89,9 @@ const (
 	// 音频编码参数错误。
 	INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"
 
+	// BackgroundImageUrl参数错误。
+	INVALIDPARAMETER_BACKGROUNDIMAGEURL = "InvalidParameter.BackgroundImageUrl"
+
 	// body 解析参数失败。
 	INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
 

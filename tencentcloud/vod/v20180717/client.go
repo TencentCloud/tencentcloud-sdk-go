@@ -9466,6 +9466,7 @@ func NewReviewImageResponse() (response *ReviewImageResponse) {
 //  FAILEDOPERATION_MEDIATYPE = "FailedOperation.MediaType"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReviewImage(request *ReviewImageRequest) (response *ReviewImageResponse, err error) {
@@ -9489,6 +9490,7 @@ func (c *Client) ReviewImage(request *ReviewImageRequest) (response *ReviewImage
 //  FAILEDOPERATION_MEDIATYPE = "FailedOperation.MediaType"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ReviewImageWithContext(ctx context.Context, request *ReviewImageRequest) (response *ReviewImageResponse, err error) {

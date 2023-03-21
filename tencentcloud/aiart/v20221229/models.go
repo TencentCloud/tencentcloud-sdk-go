@@ -173,33 +173,26 @@ func (r *ImageToImageResponse) FromJsonString(s string) error {
 
 type LogoParam struct {
 	// 水印url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogoUrl *string `json:"LogoUrl,omitempty" name:"LogoUrl"`
 
 	// 水印base64，url和base64二选一传入
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogoImage *string `json:"LogoImage,omitempty" name:"LogoImage"`
 
 	// 水印图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogoRect *LogoRect `json:"LogoRect,omitempty" name:"LogoRect"`
 }
 
 type LogoRect struct {
 	// 左上角X坐标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	X *int64 `json:"X,omitempty" name:"X"`
 
 	// 左上角Y坐标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Y *int64 `json:"Y,omitempty" name:"Y"`
 
 	// 方框宽度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
 	// 方框高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
@@ -210,7 +203,6 @@ type ResultConfig struct {
 	// ● 768:768
 	// ● 768:1024
 	// ● 1024:768
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
 }
 

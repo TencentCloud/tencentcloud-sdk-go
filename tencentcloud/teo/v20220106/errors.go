@@ -122,7 +122,7 @@ const (
 	// 无效的WebSocket。
 	INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
 
-	// 参数错误。
+	// 参数错误: 无效 "结束时间", 不在允许的查询范围内: [开始时间, 开始+ 7天]
 	INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 
 	// 参数错误

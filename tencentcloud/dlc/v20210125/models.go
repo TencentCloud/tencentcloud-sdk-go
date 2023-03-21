@@ -689,11 +689,9 @@ type CSV struct {
 	CSVSerde *CSVSerde `json:"CSVSerde,omitempty" name:"CSVSerde"`
 
 	// 标题行，默认为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadLines *int64 `json:"HeadLines,omitempty" name:"HeadLines"`
 
 	// 格式，默认值为CSV
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitempty" name:"Format"`
 }
 

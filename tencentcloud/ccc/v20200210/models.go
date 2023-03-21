@@ -2795,11 +2795,9 @@ type ExtensionInfo struct {
 
 type Filter struct {
 	// 筛选字段名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 筛选条件值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 

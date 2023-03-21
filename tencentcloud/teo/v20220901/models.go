@@ -9548,25 +9548,20 @@ type OriginInfo struct {
 	// <li>COS：COS源。</li>
 	// <li>ORIGIN_GROUP：源站组类型源站。</li>
 	// <li>AWS_S3：AWS S3对象存储源站。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站地址，当OriginType参数指定为ORIGIN_GROUP时，该参数填写源站组ID，其他情况下填写源站地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Origin *string `json:"Origin,omitempty" name:"Origin"`
 
 	// 备用源站组ID，该参数在OriginType参数指定为ORIGIN_GROUP时生效，为空表示不使用备用源站。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupOrigin *string `json:"BackupOrigin,omitempty" name:"BackupOrigin"`
 
 	// 指定是否允许访问私有对象存储源站，当源站类型OriginType=COS或AWS_S3时有效，取值有：
 	// <li>on：使用私有鉴权；</li>
 	// <li>off：不使用私有鉴权。</li>不填写，默认值为：off。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateAccess *string `json:"PrivateAccess,omitempty" name:"PrivateAccess"`
 
 	// 私有鉴权使用参数，当源站类型PrivateAccess=on时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitempty" name:"PrivateParameters"`
 }
 

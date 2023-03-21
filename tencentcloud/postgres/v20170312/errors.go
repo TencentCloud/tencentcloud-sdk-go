@@ -218,6 +218,9 @@ const (
 	// VPC更新路由失败。
 	FAILEDOPERATION_VPCUPDATEROUTEERROR = "FailedOperation.VPCUpdateRouteError"
 
+	// 查询白名单失败，请稍后重试。如果持续不成功，请联系客服进行处理。
+	FAILEDOPERATION_WHITELISTCONNECTERROR = "FailedOperation.WhitelistConnectError"
+
 	// 流程创建失败。
 	FLOWERROR = "FlowError"
 

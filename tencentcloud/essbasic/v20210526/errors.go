@@ -245,6 +245,9 @@ const (
 	// 参数错误，不支持的控件类型，请检查后重试。
 	INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
 
+	// 流程id不存在。
+	INVALIDPARAMETER_FFOWIDS = "InvalidParameter.fFowIds"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 

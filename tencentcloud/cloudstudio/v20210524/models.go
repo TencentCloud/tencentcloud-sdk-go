@@ -1877,11 +1877,9 @@ type WorkspaceTemplateInfo struct {
 
 type WorkspaceTokenDTO struct {
 	// 工作空间 SpaceKey
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpaceKey *string `json:"SpaceKey,omitempty" name:"SpaceKey"`
 
 	// token过期时间，单位是秒，默认 3600
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitempty" name:"TokenExpiredLimitSec"`
 }
 

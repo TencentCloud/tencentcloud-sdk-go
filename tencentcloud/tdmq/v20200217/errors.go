@@ -170,6 +170,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 无效的管理端接口地址。
+	INVALIDPARAMETER_INVALIDADMINURL = "InvalidParameter.InvalidAdminUrl"
+
 	// 错误的分区数。
 	INVALIDPARAMETER_PARTITION = "InvalidParameter.Partition"
 

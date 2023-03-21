@@ -23,6 +23,9 @@ const (
 	// AuthFailure.UnauthorizedOperation
 	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 
+	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
+	DRYRUNOPERATION = "DryRunOperation"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 

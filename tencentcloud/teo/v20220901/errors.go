@@ -230,6 +230,9 @@ const (
 	// 无效的客户端IP请求头。
 	INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
 
+	// 分区域回源的源站无效。
+	INVALIDPARAMETER_INVALIDCLIENTIPORIGIN = "InvalidParameter.InvalidClientIpOrigin"
+
 	// 无效的智能加速。
 	INVALIDPARAMETER_INVALIDDYNAMICROUTINE = "InvalidParameter.InvalidDynamicRoutine"
 
@@ -241,6 +244,9 @@ const (
 
 	// 无效的HTTPS。
 	INVALIDPARAMETER_INVALIDHTTPS = "InvalidParameter.InvalidHttps"
+
+	// 加密套件与TLS版本不匹配。
+	INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = "InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion"
 
 	// 无效的HTTPS HSTS。
 	INVALIDPARAMETER_INVALIDHTTPSHSTSMAXAGE = "InvalidParameter.InvalidHttpsHstsMaxAge"
@@ -265,6 +271,9 @@ const (
 
 	// 套餐包不支持Quic配置。
 	INVALIDPARAMETER_INVALIDQUICBILLING = "InvalidParameter.InvalidQuicBilling"
+
+	// 无效的分片回源。
+	INVALIDPARAMETER_INVALIDRANGEORIGINPULL = "InvalidParameter.InvalidRangeOriginPull"
 
 	// 无效的请求头header。
 	INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
@@ -326,7 +335,7 @@ const (
 	// 修改源站操作中源站组Id必填。
 	INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = "InvalidParameter.OriginOriginGroupIdIsRequired"
 
-	// 参数错误。
+	// 参数错误: 无效 "结束时间", 不在允许的查询范围内: [开始时间, 开始+ 7天]
 	INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 
 	// 套餐不存在。
@@ -401,6 +410,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 有域名在共享cname组内，不可切换接入类型。
+	OPERATIONDENIED_DOMAININSHARECNAMEGROUP = "OperationDenied.DomainInShareCnameGroup"
+
 	// 域名被封禁，暂时无法操作。
 	OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
 
@@ -425,11 +437,17 @@ const (
 	// DNS 记录不允许添加。
 	OPERATIONDENIED_RECORDISFORBIDDEN = "OperationDenied.RecordIsForbidden"
 
+	// 当前有互相排斥的请求操作并行发起，请稍后重试。
+	OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
+
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
 	// 资源被本账号别称域名占用。
 	RESOURCEINUSE_ALIASDOMAIN = "ResourceInUse.AliasDomain"
+
+	// 当前已存在相同的别称域名，不支持重复添加
+	RESOURCEINUSE_ALIASNAME = "ResourceInUse.AliasName"
 
 	// 资源被本账号Cname接入占用。
 	RESOURCEINUSE_CNAME = "ResourceInUse.Cname"

@@ -1280,11 +1280,9 @@ func (r *LookUpEventsResponse) FromJsonString(s string) error {
 
 type LookupAttribute struct {
 	// AttributeKey的有效取值范围是:RequestId、EventName、ReadOnly、Username、ResourceType、ResourceName和AccessKeyId，EventId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttributeKey *string `json:"AttributeKey,omitempty" name:"AttributeKey"`
 
 	// AttributeValue的值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttributeValue *string `json:"AttributeValue,omitempty" name:"AttributeValue"`
 }
 
@@ -1396,7 +1394,6 @@ type Resource struct {
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 }
 

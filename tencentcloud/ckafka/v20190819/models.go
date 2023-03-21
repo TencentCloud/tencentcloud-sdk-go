@@ -779,18 +779,15 @@ type ClickHouseSchema struct {
 
 type ClsParam struct {
 	// 生产的信息是否为json格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DecodeJson *bool `json:"DecodeJson,omitempty" name:"DecodeJson"`
 
 	// cls日志主题id
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// cls日志集id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogSet *string `json:"LogSet,omitempty" name:"LogSet"`
 
 	// 当DecodeJson为false时必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentKey *string `json:"ContentKey,omitempty" name:"ContentKey"`
 
 	// 指定消息中的某字段内容作为cls日志的时间。
@@ -1233,6 +1230,9 @@ type CreateConnectResourceRequestParams struct {
 
 	// Doris 配置，Type为 DORIS 时必填
 	DorisConnectParam *DorisConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
+
+	// Kafka配置，Type为 KAFKA 时必填
+	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitempty" name:"KafkaConnectParam"`
 }
 
 type CreateConnectResourceRequest struct {
@@ -1273,6 +1273,9 @@ type CreateConnectResourceRequest struct {
 
 	// Doris 配置，Type为 DORIS 时必填
 	DorisConnectParam *DorisConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
+
+	// Kafka配置，Type为 KAFKA 时必填
+	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitempty" name:"KafkaConnectParam"`
 }
 
 func (r *CreateConnectResourceRequest) ToJsonString() string {
@@ -1299,6 +1302,7 @@ func (r *CreateConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "MariaDBConnectParam")
 	delete(f, "SQLServerConnectParam")
 	delete(f, "DorisConnectParam")
+	delete(f, "KafkaConnectParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConnectResourceRequest has unknown keys!", "")
 	}
@@ -1534,6 +1538,91 @@ func (r *CreateDatahubTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDatahubTopicRequestParams struct {
+	// 名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Partition个数，大于0
+	PartitionNum *int64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
+
+	// 消息保留时间，单位ms，当前最小值为60000ms
+	RetentionMs *int64 `json:"RetentionMs,omitempty" name:"RetentionMs"`
+
+	// 主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type CreateDatahubTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Partition个数，大于0
+	PartitionNum *int64 `json:"PartitionNum,omitempty" name:"PartitionNum"`
+
+	// 消息保留时间，单位ms，当前最小值为60000ms
+	RetentionMs *int64 `json:"RetentionMs,omitempty" name:"RetentionMs"`
+
+	// 主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *CreateDatahubTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDatahubTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "PartitionNum")
+	delete(f, "RetentionMs")
+	delete(f, "Note")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatahubTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDatahubTopicResponseParams struct {
+	// 返回创建结果
+	Result *DatahubTopicResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDatahubTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDatahubTopicResponseParams `json:"Response"`
+}
+
+func (r *CreateDatahubTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDatahubTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2611,6 +2700,11 @@ type DatahubTopicDTO struct {
 
 	// 状态，1使用中，2删除中
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type DatahubTopicResp struct {
+	// Topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
 type DateParam struct {
@@ -3716,6 +3810,10 @@ type DescribeConnectResource struct {
 	// Doris 配置，Type 为 DORIS 时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DorisConnectParam *DorisConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
+
+	// Kafka配置，Type 为 KAFKA 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitempty" name:"KafkaConnectParam"`
 }
 
 // Predefined struct for user
@@ -3826,6 +3924,10 @@ type DescribeConnectResourceResp struct {
 	// Doris 配置，Type 为 DORIS 时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DorisConnectParam *DorisConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
+
+	// Kafka配置，Type 为 KAFKA 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitempty" name:"KafkaConnectParam"`
 }
 
 // Predefined struct for user
@@ -5831,31 +5933,24 @@ type DtsConnectParam struct {
 
 type DtsModifyConnectParam struct {
 	// Dts实例Id【不支持修改】
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// Dts的连接port【不支持修改】
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
 	// Dts消费分组的Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// Dts消费分组的账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// Dts消费分组的密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 是否更新到关联的Datahub任务，默认为true
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
 
 	// Dts订阅的topic【不支持修改】
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topic *string `json:"Topic,omitempty" name:"Topic"`
 }
 
@@ -7167,6 +7262,28 @@ type KVParam struct {
 	// 保留源Key，默认为false不保留
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepOriginalKey *string `json:"KeepOriginalKey,omitempty" name:"KeepOriginalKey"`
+}
+
+type KafkaConnectParam struct {
+	// Kafka连接源的实例资源, 非自建时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
+
+	// 是否更新到关联的Dip任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+
+	// Kafka连接的broker地址, 自建时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerAddress *string `json:"BrokerAddress,omitempty" name:"BrokerAddress"`
+
+	// CKafka连接源的实例资源地域, 跨地域时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type KafkaParam struct {
@@ -8781,15 +8898,12 @@ type SaleInfo struct {
 
 type ScfParam struct {
 	// SCF云函数函数名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
 
 	// SCF云函数命名空间, 默认为default
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// SCF云函数版本及别名, 默认为$DEFAULT
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
 
 	// 每批最大发送消息数, 默认为1000

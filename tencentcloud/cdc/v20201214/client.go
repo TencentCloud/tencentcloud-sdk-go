@@ -687,6 +687,7 @@ func NewDescribeDedicatedClustersResponse() (response *DescribeDedicatedClusters
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeDedicatedClusters(request *DescribeDedicatedClustersRequest) (response *DescribeDedicatedClustersResponse, err error) {
     return c.DescribeDedicatedClustersWithContext(context.Background(), request)
 }
@@ -697,6 +698,7 @@ func (c *Client) DescribeDedicatedClusters(request *DescribeDedicatedClustersReq
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeDedicatedClustersWithContext(ctx context.Context, request *DescribeDedicatedClustersRequest) (response *DescribeDedicatedClustersResponse, err error) {
     if request == nil {
         request = NewDescribeDedicatedClustersRequest()

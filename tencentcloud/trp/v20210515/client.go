@@ -1418,6 +1418,7 @@ func NewDescribeMerchantsResponse() (response *DescribeMerchantsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
 //  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1430,6 +1431,7 @@ func (c *Client) DescribeMerchants(request *DescribeMerchantsRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
 //  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1626,7 +1628,9 @@ func NewDescribeScanStatsResponse() (response *DescribeScanStatsResponse) {
 }
 
 // DescribeScanStats
-// 查询某个批次被扫码的统计列表，没有被扫过的不会返回
+// 查询扫码的统计信息列表，支持按照商户ID，产品ID，批次ID，安心码筛选，筛选条件至少有一个
+//
+// 没有被扫过的不会返回
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1637,7 +1641,9 @@ func (c *Client) DescribeScanStats(request *DescribeScanStatsRequest) (response 
 }
 
 // DescribeScanStats
-// 查询某个批次被扫码的统计列表，没有被扫过的不会返回
+// 查询扫码的统计信息列表，支持按照商户ID，产品ID，批次ID，安心码筛选，筛选条件至少有一个
+//
+// 没有被扫过的不会返回
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

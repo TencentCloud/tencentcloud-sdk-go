@@ -902,6 +902,165 @@ type Line struct {
 	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
 }
 
+// Predefined struct for user
+type ModifyApmInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 标签列表
+	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
+
+	// 实例详情
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// Trace数据保存时长
+	TraceDuration *int64 `json:"TraceDuration,omitempty" name:"TraceDuration"`
+
+	// 是否开启计费
+	OpenBilling *bool `json:"OpenBilling,omitempty" name:"OpenBilling"`
+
+	// 实例上报额度
+	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitempty" name:"SpanDailyCounters"`
+
+	// 错误率阈值
+	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitempty" name:"ErrRateThreshold"`
+
+	// 采样率
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 是否开启错误采样 0 关 1 开
+	ErrorSample *int64 `json:"ErrorSample,omitempty" name:"ErrorSample"`
+
+	// 慢请求阈值
+	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitempty" name:"SlowRequestSavedThreshold"`
+
+	// 是否开启日志功能 0 关 1 开
+	IsRelatedLog *int64 `json:"IsRelatedLog,omitempty" name:"IsRelatedLog"`
+
+	// 日志地域
+	LogRegion *string `json:"LogRegion,omitempty" name:"LogRegion"`
+
+	// CLS日志主题ID | ES 索引名
+	LogTopicID *string `json:"LogTopicID,omitempty" name:"LogTopicID"`
+
+	// CLS日志集 | ES集群ID
+	LogSet *string `json:"LogSet,omitempty" name:"LogSet"`
+
+	// CLS | ES
+	LogSource *string `json:"LogSource,omitempty" name:"LogSource"`
+}
+
+type ModifyApmInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 标签列表
+	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
+
+	// 实例详情
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// Trace数据保存时长
+	TraceDuration *int64 `json:"TraceDuration,omitempty" name:"TraceDuration"`
+
+	// 是否开启计费
+	OpenBilling *bool `json:"OpenBilling,omitempty" name:"OpenBilling"`
+
+	// 实例上报额度
+	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitempty" name:"SpanDailyCounters"`
+
+	// 错误率阈值
+	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitempty" name:"ErrRateThreshold"`
+
+	// 采样率
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 是否开启错误采样 0 关 1 开
+	ErrorSample *int64 `json:"ErrorSample,omitempty" name:"ErrorSample"`
+
+	// 慢请求阈值
+	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitempty" name:"SlowRequestSavedThreshold"`
+
+	// 是否开启日志功能 0 关 1 开
+	IsRelatedLog *int64 `json:"IsRelatedLog,omitempty" name:"IsRelatedLog"`
+
+	// 日志地域
+	LogRegion *string `json:"LogRegion,omitempty" name:"LogRegion"`
+
+	// CLS日志主题ID | ES 索引名
+	LogTopicID *string `json:"LogTopicID,omitempty" name:"LogTopicID"`
+
+	// CLS日志集 | ES集群ID
+	LogSet *string `json:"LogSet,omitempty" name:"LogSet"`
+
+	// CLS | ES
+	LogSource *string `json:"LogSource,omitempty" name:"LogSource"`
+}
+
+func (r *ModifyApmInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Name")
+	delete(f, "Tags")
+	delete(f, "Description")
+	delete(f, "TraceDuration")
+	delete(f, "OpenBilling")
+	delete(f, "SpanDailyCounters")
+	delete(f, "ErrRateThreshold")
+	delete(f, "SampleRate")
+	delete(f, "ErrorSample")
+	delete(f, "SlowRequestSavedThreshold")
+	delete(f, "IsRelatedLog")
+	delete(f, "LogRegion")
+	delete(f, "LogTopicID")
+	delete(f, "LogSet")
+	delete(f, "LogSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApmInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyApmInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApmInstanceResponseParams `json:"Response"`
+}
+
+func (r *ModifyApmInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApmInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OrderBy struct {
 	// 需要排序的字段
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -919,4 +1078,58 @@ type QueryMetricItem struct {
 
 	// 同比，支持多种同比方式
 	Compares []*string `json:"Compares,omitempty" name:"Compares"`
+}
+
+// Predefined struct for user
+type TerminateApmInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type TerminateApmInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *TerminateApmInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateApmInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateApmInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateApmInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type TerminateApmInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateApmInstanceResponseParams `json:"Response"`
+}
+
+func (r *TerminateApmInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateApmInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

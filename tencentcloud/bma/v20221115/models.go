@@ -1043,11 +1043,9 @@ type FakeURLData struct {
 
 type Filter struct {
 	// 过滤参数键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤参数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 

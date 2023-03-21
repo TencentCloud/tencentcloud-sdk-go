@@ -37,7 +37,6 @@ type AddRecordBatch struct {
 	RecordLineId *string `json:"RecordLineId,omitempty" name:"RecordLineId"`
 
 	// 记录权重值(暂未支持)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
 
 	// 记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选。

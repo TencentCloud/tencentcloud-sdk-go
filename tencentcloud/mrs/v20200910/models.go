@@ -3467,11 +3467,9 @@ type ReportInfo struct {
 
 type ReportTypeVersion struct {
 	// 检验报告
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
 
 	// 版本2
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *int64 `json:"Version,omitempty" name:"Version"`
 }
 
