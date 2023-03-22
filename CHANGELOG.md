@@ -1,3 +1,186 @@
+# Release v1.0.622
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 116 次发布
+
+发布时间：2023-03-22 01:11:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AnalyzeAuditLogs](https://cloud.tencent.com/document/api/236/89112)
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* InitDBInstances
+
+新增数据结构：
+
+* [AggregationCondition](https://cloud.tencent.com/document/api/236/15878#AggregationCondition)
+* [AuditLogAggregationResult](https://cloud.tencent.com/document/api/236/15878#AuditLogAggregationResult)
+* [Bucket](https://cloud.tencent.com/document/api/236/15878#Bucket)
+
+修改数据结构：
+
+* [AuditLogFilter](https://cloud.tencent.com/document/api/236/15878#AuditLogFilter)
+
+	* 新增成员：AffectRowsSection, SentRowsSection, ExecTimeSection, LockWaitTimeSection, IoWaitTimeSection, TransactionLivingTimeSection
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 73 次发布
+
+发布时间：2023-03-22 01:16:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KafkaParam](https://cloud.tencent.com/document/api/597/40861#KafkaParam)
+
+	* 新增成员：ConnectorSyncType, KeepPartition
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 13 次发布
+
+发布时间：2023-03-22 01:49:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CallTRTCDevice](https://cloud.tencent.com/document/api/1131/89113)
+
+新增数据结构：
+
+* [TRTCParams](https://cloud.tencent.com/document/api/1131/76635#TRTCParams)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 18 次发布
+
+发布时间：2023-03-22 01:59:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDeveloper](https://cloud.tencent.com/document/api/1639/89115)
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 1 次发布
+
+发布时间：2023-03-21 20:10:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRunGroups](https://cloud.tencent.com/document/api/1643/89099)
+* [DescribeRuns](https://cloud.tencent.com/document/api/1643/89098)
+* [GetRunCalls](https://cloud.tencent.com/document/api/1643/89097)
+* [GetRunStatus](https://cloud.tencent.com/document/api/1643/89096)
+* [ImportTableFile](https://cloud.tencent.com/document/api/1643/89095)
+* [RunApplication](https://cloud.tencent.com/document/api/1643/89094)
+
+新增数据结构：
+
+* [ExecutionTime](https://cloud.tencent.com/document/api/1643/89100#ExecutionTime)
+* [Filter](https://cloud.tencent.com/document/api/1643/89100#Filter)
+* [Run](https://cloud.tencent.com/document/api/1643/89100#Run)
+* [RunGroup](https://cloud.tencent.com/document/api/1643/89100#RunGroup)
+* [RunMetadata](https://cloud.tencent.com/document/api/1643/89100#RunMetadata)
+* [RunOption](https://cloud.tencent.com/document/api/1643/89100#RunOption)
+* [RunStatusCount](https://cloud.tencent.com/document/api/1643/89100#RunStatusCount)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 28 次发布
+
+发布时间：2023-03-22 02:22:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CertificateExtra](https://cloud.tencent.com/document/api/400/41679#CertificateExtra)
+
+	* 新增成员：SMCert
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 94 次发布
+
+发布时间：2023-03-22 02:25:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeGatewayCurveData](https://cloud.tencent.com/document/api/876/89118)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 22 次发布
+
+发布时间：2023-03-22 02:53:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateOfflineTask](https://cloud.tencent.com/document/api/1267/82520)
+
+	* 新增出参：TaskId
+
+
+
+
 # Release v1.0.621
 
 ## 应用性能观测(apm) 版本：2021-06-22

@@ -183,6 +183,107 @@ type Address struct {
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
+type AggregationCondition struct {
+	// 聚合字段。目前仅支持host-源IP、user-用户名、dbName-数据库名、sqlType-sql类型。
+	AggregationField *string `json:"AggregationField,omitempty" name:"AggregationField"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 该聚合字段下要返回聚合桶的数量，最大100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+// Predefined struct for user
+type AnalyzeAuditLogsRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 要分析的日志开始时间，格式为："2023-02-16 00:00:20"。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 要分析的日志结束时间，格式为："2023-02-16 00:10:20"。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 聚合维度的排序条件。
+	AggregationConditions []*AggregationCondition `json:"AggregationConditions,omitempty" name:"AggregationConditions"`
+
+	// 该过滤条件下的审计日志结果集作为分析日志。
+	AuditLogFilter *AuditLogFilter `json:"AuditLogFilter,omitempty" name:"AuditLogFilter"`
+}
+
+type AnalyzeAuditLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 要分析的日志开始时间，格式为："2023-02-16 00:00:20"。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 要分析的日志结束时间，格式为："2023-02-16 00:10:20"。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 聚合维度的排序条件。
+	AggregationConditions []*AggregationCondition `json:"AggregationConditions,omitempty" name:"AggregationConditions"`
+
+	// 该过滤条件下的审计日志结果集作为分析日志。
+	AuditLogFilter *AuditLogFilter `json:"AuditLogFilter,omitempty" name:"AuditLogFilter"`
+}
+
+func (r *AnalyzeAuditLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AnalyzeAuditLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "AggregationConditions")
+	delete(f, "AuditLogFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AnalyzeAuditLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AnalyzeAuditLogsResponseParams struct {
+	// 返回的聚合桶信息集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*AuditLogAggregationResult `json:"Items,omitempty" name:"Items"`
+
+	// 扫描的日志条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AnalyzeAuditLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *AnalyzeAuditLogsResponseParams `json:"Response"`
+}
+
+func (r *AnalyzeAuditLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AnalyzeAuditLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type AssociateSecurityGroupsRequestParams struct {
 	// 安全组 ID。
@@ -269,6 +370,16 @@ type AuditFilter struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type AuditLogAggregationResult struct {
+	// 聚合维度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AggregationField *string `json:"AggregationField,omitempty" name:"AggregationField"`
+
+	// 聚合桶的结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Buckets []*Bucket `json:"Buckets,omitempty" name:"Buckets"`
+}
+
 type AuditLogFile struct {
 	// 审计日志文件名称
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
@@ -328,6 +439,24 @@ type AuditLogFilter struct {
 
 	// SQL 语句。支持传递多个sql语句。
 	Sqls []*string `json:"Sqls,omitempty" name:"Sqls"`
+
+	// 影响行数，格式为M-N，例如：10-200
+	AffectRowsSection *string `json:"AffectRowsSection,omitempty" name:"AffectRowsSection"`
+
+	// 返回行数，格式为M-N，例如：10-200
+	SentRowsSection *string `json:"SentRowsSection,omitempty" name:"SentRowsSection"`
+
+	// 执行时间，格式为M-N，例如：10-200
+	ExecTimeSection *string `json:"ExecTimeSection,omitempty" name:"ExecTimeSection"`
+
+	// 锁等待时间，格式为M-N，例如：10-200
+	LockWaitTimeSection *string `json:"LockWaitTimeSection,omitempty" name:"LockWaitTimeSection"`
+
+	// IO等待时间，格式为M-N，例如：10-200
+	IoWaitTimeSection *string `json:"IoWaitTimeSection,omitempty" name:"IoWaitTimeSection"`
+
+	// 事务持续时间，格式为M-N，例如：10-200
+	TransactionLivingTimeSection *string `json:"TransactionLivingTimeSection,omitempty" name:"TransactionLivingTimeSection"`
 }
 
 type AuditPolicy struct {
@@ -643,6 +772,15 @@ type BinlogInfo struct {
 
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type Bucket struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// ip等于10.0.0.8访问了26次实例，即桶内文档数量。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
 type CdbRegionSellConf struct {

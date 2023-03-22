@@ -2845,6 +2845,66 @@ func (c *Client) DescribeExtraPkgBillingInfoWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeGatewayCurveDataRequest() (request *DescribeGatewayCurveDataRequest) {
+    request = &DescribeGatewayCurveDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeGatewayCurveData")
+    
+    
+    return
+}
+
+func NewDescribeGatewayCurveDataResponse() (response *DescribeGatewayCurveDataResponse) {
+    response = &DescribeGatewayCurveDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGatewayCurveData
+// 查询网关监控数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeGatewayCurveData(request *DescribeGatewayCurveDataRequest) (response *DescribeGatewayCurveDataResponse, err error) {
+    return c.DescribeGatewayCurveDataWithContext(context.Background(), request)
+}
+
+// DescribeGatewayCurveData
+// 查询网关监控数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeGatewayCurveDataWithContext(ctx context.Context, request *DescribeGatewayCurveDataRequest) (response *DescribeGatewayCurveDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayCurveDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatewayCurveData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatewayCurveDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHostingDomainTaskRequest() (request *DescribeHostingDomainTaskRequest) {
     request = &DescribeHostingDomainTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

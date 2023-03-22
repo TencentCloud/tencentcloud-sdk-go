@@ -623,23 +623,23 @@ type CosRechargeInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
 
-	// cos导入任务名称
+	// COS导入任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// cos存储桶
+	// COS存储桶
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 
-	// cos存储桶地域
+	// COS存储桶所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
 
-	// cos存储桶前缀地址
+	// COS文件所在文件夹的前缀
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Prefix *string `json:"Prefix,omitempty" name:"Prefix"`
 
-	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志；
+	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表单行全文；
 	// 默认为minimalist_log
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogType *string `json:"LogType,omitempty" name:"LogType"`

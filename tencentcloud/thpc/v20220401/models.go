@@ -618,7 +618,7 @@ type CreateClusterRequestParams struct {
 	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
 	SchedulerType *string `json:"SchedulerType,omitempty" name:"SchedulerType"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 私有网络相关信息配置。
@@ -684,7 +684,7 @@ type CreateClusterRequest struct {
 	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
 	SchedulerType *string `json:"SchedulerType,omitempty" name:"SchedulerType"`
 
-	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前支持部分公有镜像和自定义镜像。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
 	// 私有网络相关信息配置。

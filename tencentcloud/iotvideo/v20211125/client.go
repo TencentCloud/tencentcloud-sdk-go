@@ -299,6 +299,54 @@ func (c *Client) CallDeviceActionSyncWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCallTRTCDeviceRequest() (request *CallTRTCDeviceRequest) {
+    request = &CallTRTCDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CallTRTCDevice")
+    
+    
+    return
+}
+
+func NewCallTRTCDeviceResponse() (response *CallTRTCDeviceResponse) {
+    response = &CallTRTCDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CallTRTCDevice
+// 呼叫TRTC设备
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CallTRTCDevice(request *CallTRTCDeviceRequest) (response *CallTRTCDeviceResponse, err error) {
+    return c.CallTRTCDeviceWithContext(context.Background(), request)
+}
+
+// CallTRTCDevice
+// 呼叫TRTC设备
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CallTRTCDeviceWithContext(ctx context.Context, request *CallTRTCDeviceRequest) (response *CallTRTCDeviceResponse, err error) {
+    if request == nil {
+        request = NewCallTRTCDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CallTRTCDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCallTRTCDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelAIModelApplicationRequest() (request *CancelAIModelApplicationRequest) {
     request = &CancelAIModelApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},

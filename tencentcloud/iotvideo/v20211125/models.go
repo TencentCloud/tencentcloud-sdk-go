@@ -559,6 +559,70 @@ func (r *CallDeviceActionSyncResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CallTRTCDeviceRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+type CallTRTCDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *CallTRTCDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallTRTCDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CallTRTCDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CallTRTCDeviceResponseParams struct {
+	// TRTC SDK房间参数
+	TRTCParams *TRTCParams `json:"TRTCParams,omitempty" name:"TRTCParams"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CallTRTCDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *CallTRTCDeviceResponseParams `json:"Response"`
+}
+
+func (r *CallTRTCDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CallTRTCDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CancelAIModelApplicationRequestParams struct {
 	// AI模型ID
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
@@ -7603,6 +7667,28 @@ type StatusStatistic struct {
 	// 统计总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitempty" name:"Total"`
+}
+
+type TRTCParams struct {
+	// 应用id，供TRTC SDK使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SDKAppId *int64 `json:"SDKAppId,omitempty" name:"SDKAppId"`
+
+	// 用户id，供TRTC SDK使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户id签名，供TRTC SDK使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
+
+	// 房间id，供TRTC SDK使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrRoomId *string `json:"StrRoomId,omitempty" name:"StrRoomId"`
+
+	// 权限票据，供TRTC SDK使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateMapKey *string `json:"PrivateMapKey,omitempty" name:"PrivateMapKey"`
 }
 
 // Predefined struct for user

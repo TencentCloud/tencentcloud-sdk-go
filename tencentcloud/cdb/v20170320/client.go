@@ -99,6 +99,60 @@ func (c *Client) AddTimeWindowWithContext(ctx context.Context, request *AddTimeW
     return
 }
 
+func NewAnalyzeAuditLogsRequest() (request *AnalyzeAuditLogsRequest) {
+    request = &AnalyzeAuditLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "AnalyzeAuditLogs")
+    
+    
+    return
+}
+
+func NewAnalyzeAuditLogsResponse() (response *AnalyzeAuditLogsResponse) {
+    response = &AnalyzeAuditLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AnalyzeAuditLogs
+// 在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+func (c *Client) AnalyzeAuditLogs(request *AnalyzeAuditLogsRequest) (response *AnalyzeAuditLogsResponse, err error) {
+    return c.AnalyzeAuditLogsWithContext(context.Background(), request)
+}
+
+// AnalyzeAuditLogs
+// 在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+func (c *Client) AnalyzeAuditLogsWithContext(ctx context.Context, request *AnalyzeAuditLogsRequest) (response *AnalyzeAuditLogsResponse, err error) {
+    if request == nil {
+        request = NewAnalyzeAuditLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AnalyzeAuditLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAnalyzeAuditLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsRequest) {
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5602,6 +5656,10 @@ func NewInitDBInstancesResponse() (response *InitDBInstancesResponse) {
 }
 
 // InitDBInstances
+// 该接口不再维护，参考CreateDBInstance+API文档，在发货时即可完成初始化。
+//
+// 
+//
 // 本接口(InitDBInstances)用于初始化云数据库实例，包括初始化密码、默认字符集、实例端口号等。该接口已经废弃，在发货接口CreateDBInstance、CreateDBInstanceHour可以直接使用参数Password设置密码，使用参数ParamList设置字符集，使用参数Port设置端口号。
 //
 // 可能返回的错误码:
@@ -5615,6 +5673,10 @@ func (c *Client) InitDBInstances(request *InitDBInstancesRequest) (response *Ini
 }
 
 // InitDBInstances
+// 该接口不再维护，参考CreateDBInstance+API文档，在发货时即可完成初始化。
+//
+// 
+//
 // 本接口(InitDBInstances)用于初始化云数据库实例，包括初始化密码、默认字符集、实例端口号等。该接口已经废弃，在发货接口CreateDBInstance、CreateDBInstanceHour可以直接使用参数Password设置密码，使用参数ParamList设置字符集，使用参数Port设置端口号。
 //
 // 可能返回的错误码:

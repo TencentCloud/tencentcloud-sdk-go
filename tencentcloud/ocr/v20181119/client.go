@@ -144,6 +144,10 @@ func NewArithmeticOCRResponse() (response *ArithmeticOCRResponse) {
 // ArithmeticOCR
 // 本接口支持作业算式题目的自动识别和判分，目前覆盖 K12 学力范围内的 11 种题型，包括加减乘除四则、加减乘除已知结果求运算因子、判断大小、约等于估算、带余数除法、分数四则运算、单位换算、竖式加减法、竖式乘除法、脱式计算和解方程，平均识别精度达到93%以上。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -162,6 +166,10 @@ func (c *Client) ArithmeticOCR(request *ArithmeticOCRRequest) (response *Arithme
 
 // ArithmeticOCR
 // 本接口支持作业算式题目的自动识别和判分，目前覆盖 K12 学力范围内的 11 种题型，包括加减乘除四则、加减乘除已知结果求运算因子、判断大小、约等于估算、带余数除法、分数四则运算、单位换算、竖式加减法、竖式乘除法、脱式计算和解方程，平均识别精度达到93%以上。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -500,6 +508,10 @@ func NewBusinessCardOCRResponse() (response *BusinessCardOCRResponse) {
 // BusinessCardOCR
 // 本接口支持名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -517,6 +529,10 @@ func (c *Client) BusinessCardOCR(request *BusinessCardOCRRequest) (response *Bus
 
 // BusinessCardOCR
 // 本接口支持名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -628,6 +644,10 @@ func NewClassifyDetectOCRResponse() (response *ClassifyDetectOCRResponse) {
 // ClassifyDetectOCR
 // 支持身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照的智能分类。
 //
+// 
+//
+// 默认接口请求频率限制：20次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
@@ -645,6 +665,10 @@ func (c *Client) ClassifyDetectOCR(request *ClassifyDetectOCRRequest) (response 
 
 // ClassifyDetectOCR
 // 支持身份证、护照、名片、银行卡、行驶证、驾驶证、港澳台通行证、户口本、港澳台来往内地通行证、港澳台居住证、不动产证、营业执照的智能分类。
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -938,6 +962,10 @@ func NewEduPaperOCRResponse() (response *EduPaperOCRResponse) {
 // EduPaperOCR
 // 本接口支持数学试题内容的识别和结构化输出，包括通用文本解析和小学/初中/高中数学公式解析能力（包括91种题型，180种符号），公式返回格式为 Latex 格式文本。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -955,6 +983,10 @@ func (c *Client) EduPaperOCR(request *EduPaperOCRRequest) (response *EduPaperOCR
 
 // EduPaperOCR
 // 本接口支持数学试题内容的识别和结构化输出，包括通用文本解析和小学/初中/高中数学公式解析能力（包括91种题型，180种符号），公式返回格式为 Latex 格式文本。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -1080,6 +1112,10 @@ func NewEnterpriseLicenseOCRResponse() (response *EnterpriseLicenseOCRResponse) 
 // EnterpriseLicenseOCR
 // 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围等关键字段。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -1095,6 +1131,10 @@ func (c *Client) EnterpriseLicenseOCR(request *EnterpriseLicenseOCRRequest) (res
 
 // EnterpriseLicenseOCR
 // 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围等关键字段。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -1144,6 +1184,8 @@ func NewEstateCertOCRResponse() (response *EstateCertOCRResponse) {
 //
 // 
 //
+// 默认接口请求频率限制：5次/秒。
+//
 // 
 //
 // 可能返回的错误码:
@@ -1163,6 +1205,8 @@ func (c *Client) EstateCertOCR(request *EstateCertOCRRequest) (response *EstateC
 // 本接口支持不动产权证关键字段的识别，包括使用期限、面积、用途、权利性质、权利类型、坐落、共有情况、权利人、权利其他状况等。
 //
 // 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 
 //
@@ -1212,6 +1256,10 @@ func NewFinanBillOCRResponse() (response *FinanBillOCRResponse) {
 // FinanBillOCR
 // 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -1228,6 +1276,10 @@ func (c *Client) FinanBillOCR(request *FinanBillOCRRequest) (response *FinanBill
 
 // FinanBillOCR
 // 本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -1410,6 +1462,10 @@ func NewFormulaOCRResponse() (response *FormulaOCRResponse) {
 // FormulaOCR
 // 本接口支持识别主流初高中数学符号和公式，返回公式的 Latex 格式文本。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -1427,6 +1483,10 @@ func (c *Client) FormulaOCR(request *FormulaOCRRequest) (response *FormulaOCRRes
 
 // FormulaOCR
 // 本接口支持识别主流初高中数学符号和公式，返回公式的 Latex 格式文本。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -2708,6 +2768,10 @@ func NewHmtResidentPermitOCRResponse() (response *HmtResidentPermitOCRResponse) 
 // HmtResidentPermitOCR
 // 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
 //
+// 
+//
+// 默认接口请求频率限制：20次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -2725,6 +2789,10 @@ func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (res
 
 // HmtResidentPermitOCR
 // 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -3038,6 +3106,10 @@ func NewImageEnhancementResponse() (response *ImageEnhancementResponse) {
 // ImageEnhancement
 // 文本图像增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -3054,6 +3126,10 @@ func (c *Client) ImageEnhancement(request *ImageEnhancementRequest) (response *I
 
 // ImageEnhancement
 // 文本图像增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -3102,6 +3178,10 @@ func NewInstitutionOCRResponse() (response *InstitutionOCRResponse) {
 // InstitutionOCR
 // 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -3117,6 +3197,10 @@ func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *Insti
 
 // InstitutionOCR
 // 本接口支持事业单位法人证书关键字段识别，包括注册号、有效期、住所、名称、法定代表人等。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -3164,6 +3248,10 @@ func NewInsuranceBillOCRResponse() (response *InsuranceBillOCRResponse) {
 // InsuranceBillOCR
 // 本接口支持病案首页、费用清单、结算单、医疗发票四种保险理赔单据的文本识别和结构化输出。
 //
+// 
+//
+// 默认接口请求频率限制：1次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -3181,6 +3269,10 @@ func (c *Client) InsuranceBillOCR(request *InsuranceBillOCRRequest) (response *I
 
 // InsuranceBillOCR
 // 本接口支持病案首页、费用清单、结算单、医疗发票四种保险理赔单据的文本识别和结构化输出。
+//
+// 
+//
+// 默认接口请求频率限制：1次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

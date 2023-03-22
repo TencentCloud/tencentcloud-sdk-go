@@ -5473,6 +5473,120 @@ func (r *DescribeExtraPkgBillingInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGatewayCurveDataRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 监控起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 监控结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 网关版本
+	GatewayVersion *string `json:"GatewayVersion,omitempty" name:"GatewayVersion"`
+
+	// 网关路由名称
+	GatewayRoute *string `json:"GatewayRoute,omitempty" name:"GatewayRoute"`
+}
+
+type DescribeGatewayCurveDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 监控起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 监控结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 网关版本
+	GatewayVersion *string `json:"GatewayVersion,omitempty" name:"GatewayVersion"`
+
+	// 网关路由名称
+	GatewayRoute *string `json:"GatewayRoute,omitempty" name:"GatewayRoute"`
+}
+
+func (r *DescribeGatewayCurveDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatewayCurveDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayId")
+	delete(f, "MetricName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "GatewayVersion")
+	delete(f, "GatewayRoute")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewayCurveDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGatewayCurveDataResponseParams struct {
+	// 监控类型
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 监控起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 监控结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 监控数据间隔
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 监控值
+	Values []*float64 `json:"Values,omitempty" name:"Values"`
+
+	// 监控时间
+	Time []*int64 `json:"Time,omitempty" name:"Time"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGatewayCurveDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGatewayCurveDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeGatewayCurveDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatewayCurveDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHostingDomainTaskRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`

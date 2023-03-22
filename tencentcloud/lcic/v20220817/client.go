@@ -1463,6 +1463,60 @@ func (c *Client) DescribeCurrentMemberListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDeveloperRequest() (request *DescribeDeveloperRequest) {
+    request = &DescribeDeveloperRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeDeveloper")
+    
+    
+    return
+}
+
+func NewDescribeDeveloperResponse() (response *DescribeDeveloperResponse) {
+    response = &DescribeDeveloperResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeveloper
+// 服务商信息获取
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DescribeDeveloper(request *DescribeDeveloperRequest) (response *DescribeDeveloperResponse, err error) {
+    return c.DescribeDeveloperWithContext(context.Background(), request)
+}
+
+// DescribeDeveloper
+// 服务商信息获取
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DescribeDeveloperWithContext(ctx context.Context, request *DescribeDeveloperRequest) (response *DescribeDeveloperResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeveloperRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeveloper require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeveloperResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDocumentRequest() (request *DescribeDocumentRequest) {
     request = &DescribeDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},

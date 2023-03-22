@@ -3029,6 +3029,10 @@ func (r *CreateOfflineTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOfflineTaskResponseParams struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 	// 结果
 	Data *string `json:"Data,omitempty" name:"Data"`
 

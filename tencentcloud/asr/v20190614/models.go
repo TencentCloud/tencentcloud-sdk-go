@@ -175,6 +175,7 @@ type CreateAsyncRecognitionTaskRequestParams struct {
 	// • 16k_zh_video：16k 音视频领域；
 	// • 16k_en：16k 英语；
 	// • 16k_ca：16k 粤语；
+	// • 16k_id：16k 印度尼西亚语；
 	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -216,6 +217,7 @@ type CreateAsyncRecognitionTaskRequest struct {
 	// • 16k_zh_video：16k 音视频领域；
 	// • 16k_en：16k 英语；
 	// • 16k_ca：16k 粤语；
+	// • 16k_id：16k 印度尼西亚语；
 	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -395,6 +397,7 @@ type CreateRecTaskRequestParams struct {
 	// • 16k_ja：16k 日语；
 	// • 16k_vi：16k 越南语；
 	// • 16k_ms：16k 马来语；
+	// • 16k_id：16k 印度尼西亚语；
 	// • 16k_zh_edu 中文教育；
 	// • 16k_en_edu 英文教育；
 	// • 16k_zh_medical  医疗；
@@ -482,6 +485,7 @@ type CreateRecTaskRequest struct {
 	// • 16k_ja：16k 日语；
 	// • 16k_vi：16k 越南语；
 	// • 16k_ms：16k 马来语；
+	// • 16k_id：16k 印度尼西亚语；
 	// • 16k_zh_edu 中文教育；
 	// • 16k_en_edu 英文教育；
 	// • 16k_zh_medical  医疗；
@@ -1419,6 +1423,7 @@ type SentenceRecognitionRequestParams struct {
 	// • 16k_ja：16k 日语；
 	// • 16k_vi：16k 越南语；
 	// • 16k_ms：16k 马来语；
+	// • 16k_id：16k 印度尼西亚语；
 	// • 16k_zh_medical：16k 医疗；
 	// • 16k_zh-PY 中英粤;
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
@@ -1487,6 +1492,7 @@ type SentenceRecognitionRequest struct {
 	// • 16k_ja：16k 日语；
 	// • 16k_vi：16k 越南语；
 	// • 16k_ms：16k 马来语；
+	// • 16k_id：16k 印度尼西亚语；
 	// • 16k_zh_medical：16k 医疗；
 	// • 16k_zh-PY 中英粤;
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
