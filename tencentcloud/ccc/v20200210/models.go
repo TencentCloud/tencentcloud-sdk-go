@@ -3584,6 +3584,14 @@ type StaffStatusMetrics struct {
 
 	// 手机外呼开关
 	UseMobileCallOut *bool `json:"UseMobileCallOut,omitempty" name:"UseMobileCallOut"`
+
+	// 最近一次上线时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastOnlineTimestamp *int64 `json:"LastOnlineTimestamp,omitempty" name:"LastOnlineTimestamp"`
+
+	// 最近一次状态时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastStatusTimestamp *int64 `json:"LastStatusTimestamp,omitempty" name:"LastStatusTimestamp"`
 }
 
 // Predefined struct for user

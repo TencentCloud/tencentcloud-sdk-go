@@ -272,6 +272,9 @@ const (
 	// 负载均衡器四层监听器的后端端口重复。
 	INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = "InvalidParameterValue.TargetPortDuplicated"
 
+	// 不支持执行目标追踪策略。
+	INVALIDPARAMETERVALUE_TARGETTRACKINGSCALINGPOLICY = "InvalidParameterValue.TargetTrackingScalingPolicy"
+
 	// 指定的阈值不在有效范围。
 	INVALIDPARAMETERVALUE_THRESHOLDOUTOFRANGE = "InvalidParameterValue.ThresholdOutOfRange"
 
@@ -328,6 +331,9 @@ const (
 
 	// 定时任务数量超过限制。
 	LIMITEXCEEDED_SCHEDULEDACTIONLIMITEXCEEDED = "LimitExceeded.ScheduledActionLimitExceeded"
+
+	// 每个伸缩组限制创建一个目标追踪策略。
+	LIMITEXCEEDED_TARGETTRACKINGSCALINGPOLICY = "LimitExceeded.TargetTrackingScalingPolicy"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"

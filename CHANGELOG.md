@@ -1,3 +1,248 @@
+# Release v1.0.623
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 61 次发布
+
+发布时间：2023-03-23 01:04:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateScalingPolicy](https://cloud.tencent.com/document/api/377/33180)
+
+	* 新增入参：ScalingPolicyType, PredefinedMetricType, TargetValue, EstimatedInstanceWarmup, DisableScaleIn
+
+	* <font color="#dd0000">**修改入参**：</font>AdjustmentType, AdjustmentValue, MetricAlarm
+
+* [ModifyScalingPolicy](https://cloud.tencent.com/document/api/377/33177)
+
+	* 新增入参：PredefinedMetricType, TargetValue, EstimatedInstanceWarmup, DisableScaleIn
+
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/377/20453#Instance)
+
+	* 新增成员：WarmupStatus
+
+* [MetricAlarm](https://cloud.tencent.com/document/api/377/20453#MetricAlarm)
+
+	* 新增成员：PreciseThreshold
+
+* [ScalingPolicy](https://cloud.tencent.com/document/api/377/20453#ScalingPolicy)
+
+	* 新增成员：ScalingPolicyType, PredefinedMetricType, TargetValue, EstimatedInstanceWarmup, DisableScaleIn, MetricAlarms
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 44 次发布
+
+发布时间：2023-03-23 01:14:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StaffStatusMetrics](https://cloud.tencent.com/document/api/679/47715#StaffStatusMetrics)
+
+	* 新增成员：LastOnlineTimestamp, LastStatusTimestamp
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 16 次发布
+
+发布时间：2023-03-23 01:17:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAutoSnapshotPolicy](https://cloud.tencent.com/document/api/582/80210)
+
+	* 新增入参：DayOfMonth, IntervalDays
+
+	* <font color="#dd0000">**修改入参**：</font>DayOfWeek
+
+* [UpdateAutoSnapshotPolicy](https://cloud.tencent.com/document/api/582/80203)
+
+	* 新增入参：DayOfMonth, IntervalDays
+
+
+修改数据结构：
+
+* [AutoSnapshotPolicyInfo](https://cloud.tencent.com/document/api/582/38175#AutoSnapshotPolicyInfo)
+
+	* 新增成员：DayOfMonth, IntervalDays
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 51 次发布
+
+发布时间：2023-03-23 01:38:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 70 次发布
+
+发布时间：2023-03-23 01:39:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
+
+* [FlowDetailInfo](https://cloud.tencent.com/document/api/1420/61525#FlowDetailInfo)
+
+	* 新增成员：CcInfos
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 81 次发布
+
+发布时间：2023-03-23 01:53:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyAlarmPolicyNotice](https://cloud.tencent.com/document/api/248/51274)
+
+	* 新增入参：HierarchicalNotices
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 55 次发布
+
+发布时间：2023-03-23 01:54:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateOutputInfo](https://cloud.tencent.com/document/api/862/37615#CreateOutputInfo)
+
+	* 新增成员：MaxConcurrent
+
+* [DescribeOutput](https://cloud.tencent.com/document/api/862/37615#DescribeOutput)
+
+	* 新增成员：MaxConcurrent
+
+* [ModifyOutputInfo](https://cloud.tencent.com/document/api/862/37615#ModifyOutputInfo)
+
+	* 新增成员：MaxConcurrent
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 90 次发布
+
+发布时间：2023-03-23 01:57:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* QueryBarCode
+* VerifyBasicBizLicense
+* VerifyBizLicense
+* VerifyEnterpriseFourFactors
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 37 次发布
+
+发布时间：2023-03-23 02:39:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80659)
+
+新增数据结构：
+
+* [DDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEvent)
+* [DDoSBlockData](https://cloud.tencent.com/document/api/1552/80721#DDoSBlockData)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 51 次发布
+
+发布时间：2023-03-23 02:55:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTrtcRoomUsage](https://cloud.tencent.com/document/api/647/89181)
+
+
+
 # Release v1.0.622
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

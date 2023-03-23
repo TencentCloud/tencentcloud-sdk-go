@@ -2652,6 +2652,9 @@ type CreateOutputInfo struct {
 	// IP白名单列表，格式为CIDR，如0.0.0.0/0。
 	// 当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
 	AllowIpList []*string `json:"AllowIpList,omitempty" name:"AllowIpList"`
+
+	// 最大拉流并发数，最大4，默认4。
+	MaxConcurrent *uint64 `json:"MaxConcurrent,omitempty" name:"MaxConcurrent"`
 }
 
 type CreateOutputInfoRTPSettings struct {
@@ -5460,6 +5463,9 @@ type DescribeOutput struct {
 	// 输出的HLS拉流配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HLSPullSettings *DescribeOutputHLSPullSettings `json:"HLSPullSettings,omitempty" name:"HLSPullSettings"`
+
+	// 最大拉流并发数，最大为4，默认4。
+	MaxConcurrent *uint64 `json:"MaxConcurrent,omitempty" name:"MaxConcurrent"`
 }
 
 type DescribeOutputHLSPullServerUrl struct {
@@ -10107,6 +10113,9 @@ type ModifyOutputInfo struct {
 	// IP白名单列表，格式为CIDR，如0.0.0.0/0。
 	// 当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
 	AllowIpList []*string `json:"AllowIpList,omitempty" name:"AllowIpList"`
+
+	// 最大拉流并发数，最大4，默认4。
+	MaxConcurrent *uint64 `json:"MaxConcurrent,omitempty" name:"MaxConcurrent"`
 }
 
 // Predefined struct for user

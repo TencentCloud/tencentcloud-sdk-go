@@ -1909,6 +1909,64 @@ func (c *Client) DescribeDDoSAttackDataWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeDDoSAttackEventRequest() (request *DescribeDDoSAttackEventRequest) {
+    request = &DescribeDDoSAttackEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDoSAttackEvent")
+    
+    
+    return
+}
+
+func NewDescribeDDoSAttackEventResponse() (response *DescribeDDoSAttackEventResponse) {
+    response = &DescribeDDoSAttackEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDDoSAttackEvent
+// 本接口（DescribeDDoSAttackEvent）用于查询DDoS攻击事件列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDoSAttackEvent(request *DescribeDDoSAttackEventRequest) (response *DescribeDDoSAttackEventResponse, err error) {
+    return c.DescribeDDoSAttackEventWithContext(context.Background(), request)
+}
+
+// DescribeDDoSAttackEvent
+// 本接口（DescribeDDoSAttackEvent）用于查询DDoS攻击事件列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeDDoSAttackEventWithContext(ctx context.Context, request *DescribeDDoSAttackEventRequest) (response *DescribeDDoSAttackEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSAttackEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDoSAttackEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDoSAttackEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDDoSAttackTopDataRequest() (request *DescribeDDoSAttackTopDataRequest) {
     request = &DescribeDDoSAttackTopDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

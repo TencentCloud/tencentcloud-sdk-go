@@ -65,7 +65,7 @@ type ImageToImageRequestParams struct {
 	LogoParam *LogoParam `json:"LogoParam,omitempty" name:"LogoParam"`
 
 	// 生成自由度。
-	// Strength 值越小，生成图和原图越接近。取值范围0~1，不传默认为0.6。
+	// Strength 值越小，生成图和原图越接近。取值范围0~1，不传默认为0.65。
 	Strength *float64 `json:"Strength,omitempty" name:"Strength"`
 }
 
@@ -115,7 +115,7 @@ type ImageToImageRequest struct {
 	LogoParam *LogoParam `json:"LogoParam,omitempty" name:"LogoParam"`
 
 	// 生成自由度。
-	// Strength 值越小，生成图和原图越接近。取值范围0~1，不传默认为0.6。
+	// Strength 值越小，生成图和原图越接近。取值范围0~1，不传默认为0.65。
 	Strength *float64 `json:"Strength,omitempty" name:"Strength"`
 }
 

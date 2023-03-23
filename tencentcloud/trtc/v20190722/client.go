@@ -1609,6 +1609,70 @@ func (c *Client) DescribeTrtcMcuTranscodeTimeWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeTrtcRoomUsageRequest() (request *DescribeTrtcRoomUsageRequest) {
+    request = &DescribeTrtcRoomUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcRoomUsage")
+    
+    
+    return
+}
+
+func NewDescribeTrtcRoomUsageResponse() (response *DescribeTrtcRoomUsageResponse) {
+    response = &DescribeTrtcRoomUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTrtcRoomUsage
+// 查询TRTC音视频房间维度用量。
+//
+// - 单次只能查询一天数据，返回查询时间段内的汇总数据；通过多次查询可以查不同天数据。若查询跨天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：1次/15秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTrtcRoomUsage(request *DescribeTrtcRoomUsageRequest) (response *DescribeTrtcRoomUsageResponse, err error) {
+    return c.DescribeTrtcRoomUsageWithContext(context.Background(), request)
+}
+
+// DescribeTrtcRoomUsage
+// 查询TRTC音视频房间维度用量。
+//
+// - 单次只能查询一天数据，返回查询时间段内的汇总数据；通过多次查询可以查不同天数据。若查询跨天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：1次/15秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SDKAPPIDNOTEXIST = "FailedOperation.SdkAppIdNotExist"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTrtcRoomUsageWithContext(ctx context.Context, request *DescribeTrtcRoomUsageRequest) (response *DescribeTrtcRoomUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrtcRoomUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrtcRoomUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrtcRoomUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrtcUsageRequest() (request *DescribeTrtcUsageRequest) {
     request = &DescribeTrtcUsageRequest{
         BaseRequest: &tchttp.BaseRequest{},

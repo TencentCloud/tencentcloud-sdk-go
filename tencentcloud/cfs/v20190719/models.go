@@ -33,7 +33,7 @@ type AutoSnapshotPolicyInfo struct {
 	// 关联的文件系统个数
 	FileSystemNums *uint64 `json:"FileSystemNums,omitempty" name:"FileSystemNums"`
 
-	// 快照定期备份在一星期哪一天
+	// 快照定期备份在一星期哪一天，该参数与DayOfMonth,IntervalDays互斥
 	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
 
 	// 快照定期备份在一天的哪一小时
@@ -59,6 +59,14 @@ type AutoSnapshotPolicyInfo struct {
 
 	// 文件系统信息
 	FileSystems []*FileSystemByPolicy `json:"FileSystems,omitempty" name:"FileSystems"`
+
+	// 快照定期备份在一个月的某个时间；该参数与DayOfWeek,IntervalDays互斥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
+
+	// 快照定期间隔天数，1-365 天；该参数与DayOfMonth,DayOfWeek互斥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalDays *uint64 `json:"IntervalDays,omitempty" name:"IntervalDays"`
 }
 
 type AvailableProtoStatus struct {
@@ -180,33 +188,45 @@ func (r *BindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAutoSnapshotPolicyRequestParams struct {
-	// 快照重复日期，星期一到星期日
-	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
-
 	// 快照重复时间点
 	Hour *string `json:"Hour,omitempty" name:"Hour"`
 
 	// 策略名称
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 
+	// 快照重复日期，星期一到星期日
+	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
+
 	// 快照保留时长
 	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+
+	// 快照按月重复，每月1-31号，选择一天，每月这一天打快照。
+	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
+
+	// 间隔天数
+	IntervalDays *uint64 `json:"IntervalDays,omitempty" name:"IntervalDays"`
 }
 
 type CreateAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 快照重复日期，星期一到星期日
-	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
-
 	// 快照重复时间点
 	Hour *string `json:"Hour,omitempty" name:"Hour"`
 
 	// 策略名称
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 
+	// 快照重复日期，星期一到星期日
+	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
+
 	// 快照保留时长
 	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+
+	// 快照按月重复，每月1-31号，选择一天，每月这一天打快照。
+	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
+
+	// 间隔天数
+	IntervalDays *uint64 `json:"IntervalDays,omitempty" name:"IntervalDays"`
 }
 
 func (r *CreateAutoSnapshotPolicyRequest) ToJsonString() string {
@@ -221,10 +241,12 @@ func (r *CreateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DayOfWeek")
 	delete(f, "Hour")
 	delete(f, "PolicyName")
+	delete(f, "DayOfWeek")
 	delete(f, "AliveDays")
+	delete(f, "DayOfMonth")
+	delete(f, "IntervalDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoSnapshotPolicyRequest has unknown keys!", "")
 	}
@@ -2426,6 +2448,12 @@ type UpdateAutoSnapshotPolicyRequestParams struct {
 
 	// 是否激活定期快照功能
 	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 定期快照在月的某几天天，该参数与DayOfWeek互斥
+	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
+
+	// 间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 互斥
+	IntervalDays *uint64 `json:"IntervalDays,omitempty" name:"IntervalDays"`
 }
 
 type UpdateAutoSnapshotPolicyRequest struct {
@@ -2448,6 +2476,12 @@ type UpdateAutoSnapshotPolicyRequest struct {
 
 	// 是否激活定期快照功能
 	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 定期快照在月的某几天天，该参数与DayOfWeek互斥
+	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
+
+	// 间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 互斥
+	IntervalDays *uint64 `json:"IntervalDays,omitempty" name:"IntervalDays"`
 }
 
 func (r *UpdateAutoSnapshotPolicyRequest) ToJsonString() string {
@@ -2468,6 +2502,8 @@ func (r *UpdateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	delete(f, "Hour")
 	delete(f, "AliveDays")
 	delete(f, "IsActivated")
+	delete(f, "DayOfMonth")
+	delete(f, "IntervalDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAutoSnapshotPolicyRequest has unknown keys!", "")
 	}

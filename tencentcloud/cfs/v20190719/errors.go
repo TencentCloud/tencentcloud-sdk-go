@@ -137,6 +137,12 @@ const (
 	// 无效的网络类型。
 	INVALIDPARAMETERVALUE_INVALIDNETINTERFACE = "InvalidParameterValue.InvalidNetInterface"
 
+	// DayOfMonth 参数错误
+	INVALIDPARAMETERVALUE_INVALIDPARAMDAYOFMONTH = "InvalidParameterValue.InvalidParamDayOfMonth"
+
+	// IntervalDays 参数值错误
+	INVALIDPARAMETERVALUE_INVALIDPARAMINTERVALDAYS = "InvalidParameterValue.InvalidParamIntervalDays"
+
 	// 权限组不属于该用户。
 	INVALIDPARAMETERVALUE_INVALIDPGROUP = "InvalidParameterValue.InvalidPgroup"
 
@@ -218,6 +224,9 @@ const (
 	// 权限组名称不能为空。
 	INVALIDPARAMETERVALUE_MISSINGPGROUPNAME = "InvalidParameterValue.MissingPgroupName"
 
+	// 缺少快照策略参数
+	INVALIDPARAMETERVALUE_MISSINGPOLICYPARAM = "InvalidParameterValue.MissingPolicyParam"
+
 	// 未绑定存储包。
 	INVALIDPARAMETERVALUE_MISSINGSTORAGERESOURCEPKG = "InvalidParameterValue.MissingStorageResourcePkg"
 
@@ -263,6 +272,9 @@ const (
 	// 标签键长度超过限制（不能超过127字节）。
 	INVALIDPARAMETERVALUE_TAGKEYLIMITEXCEEDED = "InvalidParameterValue.TagKeyLimitExceeded"
 
+	// 标签值个数超过上限（10个）。
+	INVALIDPARAMETERVALUE_TAGVALUEFILTERLIMITEXCEEDED = "InvalidParameterValue.TagValueFilterLimitExceeded"
+
 	// 标签值长度超过限制（不能超过255字节）。
 	INVALIDPARAMETERVALUE_TAGVALUELIMITEXCEEDED = "InvalidParameterValue.TagValueLimitExceeded"
 
@@ -286,6 +298,9 @@ const (
 
 	// 规则条数超过上限。
 	RESOURCEINSUFFICIENT_RULELIMITEXCEEDED = "ResourceInsufficient.RuleLimitExceeded"
+
+	// 文件系统过大，不支持快照
+	RESOURCEINSUFFICIENT_SNAPSHOTSIZELIMITEXCEEDED = "ResourceInsufficient.SnapshotSizeLimitExceeded"
 
 	// 该子网下已无可用IP。
 	RESOURCEINSUFFICIENT_SUBNETIPALLOCCUPIED = "ResourceInsufficient.SubnetIpAllOccupied"

@@ -11023,6 +11023,9 @@ type ModifyAlarmPolicyNoticeRequestParams struct {
 
 	// 告警策略ID数组，支持给多个告警策略批量绑定通知模板。最多30个。
 	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 告警分级通知规则配置
+	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitempty" name:"HierarchicalNotices"`
 }
 
 type ModifyAlarmPolicyNoticeRequest struct {
@@ -11039,6 +11042,9 @@ type ModifyAlarmPolicyNoticeRequest struct {
 
 	// 告警策略ID数组，支持给多个告警策略批量绑定通知模板。最多30个。
 	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 告警分级通知规则配置
+	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitempty" name:"HierarchicalNotices"`
 }
 
 func (r *ModifyAlarmPolicyNoticeRequest) ToJsonString() string {
@@ -11057,6 +11063,7 @@ func (r *ModifyAlarmPolicyNoticeRequest) FromJsonString(s string) error {
 	delete(f, "PolicyId")
 	delete(f, "NoticeIds")
 	delete(f, "PolicyIds")
+	delete(f, "HierarchicalNotices")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmPolicyNoticeRequest has unknown keys!", "")
 	}
@@ -13166,7 +13173,7 @@ type SendCustomAlarmMsgRequestParams struct {
 	// 接口模块名，当前取值monitor
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 消息策略ID，在云监控自定义消息页面配置
+	// 消息策略ID，在自定义消息页面配置
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 用户想要发送的自定义消息内容
@@ -13179,7 +13186,7 @@ type SendCustomAlarmMsgRequest struct {
 	// 接口模块名，当前取值monitor
 	Module *string `json:"Module,omitempty" name:"Module"`
 
-	// 消息策略ID，在云监控自定义消息页面配置
+	// 消息策略ID，在自定义消息页面配置
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 用户想要发送的自定义消息内容

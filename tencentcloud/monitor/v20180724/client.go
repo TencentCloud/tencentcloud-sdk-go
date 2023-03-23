@@ -384,7 +384,7 @@ func NewCreateAlarmPolicyResponse() (response *CreateAlarmPolicyResponse) {
 }
 
 // CreateAlarmPolicy
-// 创建云监控告警策略
+// 创建告警策略
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -399,7 +399,7 @@ func (c *Client) CreateAlarmPolicy(request *CreateAlarmPolicyRequest) (response 
 }
 
 // CreateAlarmPolicy
-// 创建云监控告警策略
+// 创建告警策略
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -944,7 +944,7 @@ func NewCreatePrometheusClusterAgentResponse() (response *CreatePrometheusCluste
 }
 
 // CreatePrometheusClusterAgent
-// 与云监控融合的2.0实例关联集群
+// 与腾讯云可观测融合的2.0实例关联集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -961,7 +961,7 @@ func (c *Client) CreatePrometheusClusterAgent(request *CreatePrometheusClusterAg
 }
 
 // CreatePrometheusClusterAgent
-// 与云监控融合的2.0实例关联集群
+// 与腾讯云可观测融合的2.0实例关联集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -1604,7 +1604,7 @@ func NewDeleteAlarmNoticesResponse() (response *DeleteAlarmNoticesResponse) {
 }
 
 // DeleteAlarmNotices
-// 云监控告警删除告警通知模板
+// 删除告警通知模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1618,7 +1618,7 @@ func (c *Client) DeleteAlarmNotices(request *DeleteAlarmNoticesRequest) (respons
 }
 
 // DeleteAlarmNotices
-// 云监控告警删除告警通知模板
+// 删除告警通知模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3070,7 +3070,7 @@ func NewDescribeAlarmNoticeCallbacksResponse() (response *DescribeAlarmNoticeCal
 }
 
 // DescribeAlarmNoticeCallbacks
-// 云监控告警获取告警通知模板所有回调URL
+// 获取告警通知模板所有回调URL
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3085,7 +3085,7 @@ func (c *Client) DescribeAlarmNoticeCallbacks(request *DescribeAlarmNoticeCallba
 }
 
 // DescribeAlarmNoticeCallbacks
-// 云监控告警获取告警通知模板所有回调URL
+// 获取告警通知模板所有回调URL
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4290,7 +4290,7 @@ func NewDescribeMonitorTypesResponse() (response *DescribeMonitorTypesResponse) 
 }
 
 // DescribeMonitorTypes
-// 云监控支持多种类型的监控，此接口列出支持的所有类型
+// 腾讯云可观测平台支持多种类型的监控，此接口列出支持的所有类型
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -4299,7 +4299,7 @@ func (c *Client) DescribeMonitorTypes(request *DescribeMonitorTypesRequest) (res
 }
 
 // DescribeMonitorTypes
-// 云监控支持多种类型的监控，此接口列出支持的所有类型
+// 腾讯云可观测平台支持多种类型的监控，此接口列出支持的所有类型
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -4806,7 +4806,7 @@ func NewDescribeProductListResponse() (response *DescribeProductListResponse) {
 }
 
 // DescribeProductList
-// 查询云监控产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
+// 查询腾讯云可观测平台云产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4825,7 +4825,7 @@ func (c *Client) DescribeProductList(request *DescribeProductListRequest) (respo
 }
 
 // DescribeProductList
-// 查询云监控产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
+// 查询腾讯云可观测平台云产品列表，支持云服务器CVM、云数据库、云消息队列、负载均衡、容器服务、专线等云产品。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6988,7 +6988,7 @@ func NewModifyAlarmPolicyNoticeResponse() (response *ModifyAlarmPolicyNoticeResp
 }
 
 // ModifyAlarmPolicyNotice
-// 云监控告警修改告警策略绑定的告警通知模板
+// 告警修改告警策略绑定的告警通知模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7001,7 +7001,7 @@ func (c *Client) ModifyAlarmPolicyNotice(request *ModifyAlarmPolicyNoticeRequest
 }
 
 // ModifyAlarmPolicyNotice
-// 云监控告警修改告警策略绑定的告警通知模板
+// 告警修改告警策略绑定的告警通知模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7102,7 +7102,7 @@ func NewModifyAlarmPolicyTasksResponse() (response *ModifyAlarmPolicyTasksRespon
 }
 
 // ModifyAlarmPolicyTasks
-// 云监控告警修改告警策略的触发任务，TriggerTasks字段放触发任务列表，TriggerTasks传空数组时，代表解绑该策略的所有触发任务。
+// 修改告警策略的触发任务，TriggerTasks字段放触发任务列表，TriggerTasks传空数组时，代表解绑该策略的所有触发任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7115,7 +7115,7 @@ func (c *Client) ModifyAlarmPolicyTasks(request *ModifyAlarmPolicyTasksRequest) 
 }
 
 // ModifyAlarmPolicyTasks
-// 云监控告警修改告警策略的触发任务，TriggerTasks字段放触发任务列表，TriggerTasks传空数组时，代表解绑该策略的所有触发任务。
+// 修改告警策略的触发任务，TriggerTasks字段放触发任务列表，TriggerTasks传空数组时，代表解绑该策略的所有触发任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

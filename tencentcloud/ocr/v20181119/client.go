@@ -4130,6 +4130,10 @@ func NewQueryBarCodeResponse() (response *QueryBarCodeResponse) {
 }
 
 // QueryBarCode
+// 库源服务调整，该接口在2023年6月1日将正式下线。
+//
+// 
+//
 // 本接口支持条形码备案信息查询，返回条形码查询结果的相关信息，包括产品名称、产品英文名称、品牌名称、规格型号、宽度、高度、深度、关键字、产品描述、厂家名称、厂家地址、企业社会信用代码13个字段信息。
 //
 // 
@@ -4147,6 +4151,10 @@ func (c *Client) QueryBarCode(request *QueryBarCodeRequest) (response *QueryBarC
 }
 
 // QueryBarCode
+// 库源服务调整，该接口在2023年6月1日将正式下线。
+//
+// 
+//
 // 本接口支持条形码备案信息查询，返回条形码查询结果的相关信息，包括产品名称、产品英文名称、品牌名称、规格型号、宽度、高度、深度、关键字、产品描述、厂家名称、厂家地址、企业社会信用代码13个字段信息。
 //
 // 
@@ -6258,6 +6266,10 @@ func NewVerifyBasicBizLicenseResponse() (response *VerifyBasicBizLicenseResponse
 }
 
 // VerifyBasicBizLicense
+// 库源服务调整，该接口在2023年6月1日将正式下线。
+//
+// 
+//
 // 本接口支持营业执照信息的识别与准确性核验。
 //
 // 
@@ -6281,6 +6293,10 @@ func (c *Client) VerifyBasicBizLicense(request *VerifyBasicBizLicenseRequest) (r
 }
 
 // VerifyBasicBizLicense
+// 库源服务调整，该接口在2023年6月1日将正式下线。
+//
+// 
+//
 // 本接口支持营业执照信息的识别与准确性核验。
 //
 // 
@@ -6334,6 +6350,10 @@ func NewVerifyBizLicenseResponse() (response *VerifyBizLicenseResponse) {
 }
 
 // VerifyBizLicense
+// 库源服务调整，该接口在2023年6月1日将正式下线。
+//
+// 
+//
 // 本接口支持营业执照信息的识别与准确性核验，返回的真实工商照面信息比营业执照识别及核验（基础版）接口更详细。
 //
 // 
@@ -6361,6 +6381,10 @@ func (c *Client) VerifyBizLicense(request *VerifyBizLicenseRequest) (response *V
 }
 
 // VerifyBizLicense
+// 库源服务调整，该接口在2023年6月1日将正式下线。
+//
+// 
+//
 // 本接口支持营业执照信息的识别与准确性核验，返回的真实工商照面信息比营业执照识别及核验（基础版）接口更详细。
 //
 // 
@@ -6418,6 +6442,10 @@ func NewVerifyEnterpriseFourFactorsResponse() (response *VerifyEnterpriseFourFac
 }
 
 // VerifyEnterpriseFourFactors
+// 库源服务调整，该接口在2023年6月1日将正式下线。
+//
+// 
+//
 // 此接口基于企业四要素授权“姓名、证件号码、企业标识、企业全称”，验证企业信息是否一致。
 //
 // 可能返回的错误码:
@@ -6430,6 +6458,10 @@ func (c *Client) VerifyEnterpriseFourFactors(request *VerifyEnterpriseFourFactor
 }
 
 // VerifyEnterpriseFourFactors
+// 库源服务调整，该接口在2023年6月1日将正式下线。
+//
+// 
+//
 // 此接口基于企业四要素授权“姓名、证件号码、企业标识、企业全称”，验证企业信息是否一致。
 //
 // 可能返回的错误码:

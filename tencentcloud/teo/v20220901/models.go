@@ -2072,6 +2072,58 @@ type DDoS struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type DDoSAttackEvent struct {
+	// 事件ID。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 攻击类型(对应交互事件名称)。
+	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 攻击状态。
+	AttackStatus *int64 `json:"AttackStatus,omitempty" name:"AttackStatus"`
+
+	// 攻击最大带宽。
+	AttackMaxBandWidth *int64 `json:"AttackMaxBandWidth,omitempty" name:"AttackMaxBandWidth"`
+
+	// 攻击包速率峰值。
+	AttackPacketMaxRate *int64 `json:"AttackPacketMaxRate,omitempty" name:"AttackPacketMaxRate"`
+
+	// 攻击开始时间，单位为s。
+	AttackStartTime *int64 `json:"AttackStartTime,omitempty" name:"AttackStartTime"`
+
+	// 攻击结束时间，单位为s。
+	AttackEndTime *int64 `json:"AttackEndTime,omitempty" name:"AttackEndTime"`
+
+	// DDoS策略组ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 站点ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 攻击事件所属地区，取值有：
+	// <li>overseas：全球（除中国大陆地区）数据；</li>
+	// <li>mainland：中国大陆地区数据。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 封禁解封信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DDoSBlockData []*DDoSBlockData `json:"DDoSBlockData,omitempty" name:"DDoSBlockData"`
+}
+
+type DDoSBlockData struct {
+	// 开始时间，采用unix时间戳。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，采用unix时间戳, 为0表示还处于封禁中。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 封禁受影响区域。
+	BlockArea *string `json:"BlockArea,omitempty" name:"BlockArea"`
+}
+
 type DefaultServerCertInfo struct {
 	// 服务器证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3291,6 +3343,144 @@ func (r *DescribeDDoSAttackDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDDoSAttackDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDDoSAttackEventRequestParams struct {
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// ddos策略组集合，不填默认选择全部策略。
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 站点集合，此参数必填，不填默认查询为空。
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 是否展示详细信息。
+	ShowDetail *bool `json:"ShowDetail,omitempty" name:"ShowDetail"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas：全球（除中国大陆地区）数据；</li>
+	// <li>mainland：中国大陆地区数据；</li>
+	// <li>global：全球数据；</li>不填默认取值为global。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 排序字段，取值有：
+	// <li>MaxBandWidth：带宽峰值；</li>
+	// <li>AttackStartTime：攻击开始时间。</li>不填默认值为：AttackStartTime。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，取值有：
+	// <li>asc：升序方式；</li>
+	// <li>desc：降序方式。</li>不填默认值为：desc。
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+}
+
+type DescribeDDoSAttackEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// ddos策略组集合，不填默认选择全部策略。
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 站点集合，此参数必填，不填默认查询为空。
+	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 是否展示详细信息。
+	ShowDetail *bool `json:"ShowDetail,omitempty" name:"ShowDetail"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas：全球（除中国大陆地区）数据；</li>
+	// <li>mainland：中国大陆地区数据；</li>
+	// <li>global：全球数据；</li>不填默认取值为global。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 排序字段，取值有：
+	// <li>MaxBandWidth：带宽峰值；</li>
+	// <li>AttackStartTime：攻击开始时间。</li>不填默认值为：AttackStartTime。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，取值有：
+	// <li>asc：升序方式；</li>
+	// <li>desc：降序方式。</li>不填默认值为：desc。
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+}
+
+func (r *DescribeDDoSAttackEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSAttackEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PolicyIds")
+	delete(f, "ZoneIds")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ShowDetail")
+	delete(f, "Area")
+	delete(f, "OrderBy")
+	delete(f, "OrderType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSAttackEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDDoSAttackEventResponseParams struct {
+	// DDOS攻击事件数据列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*DDoSAttackEvent `json:"Data,omitempty" name:"Data"`
+
+	// 查询结果的总条数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDDoSAttackEventResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDDoSAttackEventResponseParams `json:"Response"`
+}
+
+func (r *DescribeDDoSAttackEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSAttackEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5437,19 +5627,29 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 查询的指标，取值有：
-	// <li> l7Flow_outFlux_country：请求的国家；</li>
-	// <li> l7Flow_outFlux_statusCode：请求的状态码；</li>
-	// <li> l7Flow_outFlux_domain：请求域名；</li>
-	// <li> l7Flow_outFlux_url：请求的URL; </li>
-	// <li> l7Flow_outFlux_resourceType：请求的资源类型；</li>
-	// <li> l7Flow_outFlux_sip：客户端的源IP；</li>
-	// <li> l7Flow_outFlux_referers：refer信息；</li>
-	// <li> l7Flow_outFlux_ua_device：设备类型; </li>
-	// <li> l7Flow_outFlux_ua_browser：浏览器类型；</li>
-	// <li> l7Flow_outFlux_us_os：操作系统类型。</li>
+	// <li> l7Flow_outFlux_country：按国家维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_statusCode：按状态码维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_domain：按域名维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_url：按URL维度统计流量指标; </li>
+	// <li> l7Flow_outFlux_resourceType：按资源类型维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_sip：按客户端的源IP维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_referers：按refer信息维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_ua_device：按设备类型维度统计流量指标; </li>
+	// <li> l7Flow_outFlux_ua_browser：按浏览器类型维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_us_os：按操作系统类型维度统计流量指标；</li>
+	// <li> l7Flow_request_country：按国家维度统计请求数指标；</li>
+	// <li> l7Flow_request_statusCode：按状态码维度统计请求数指标；</li>
+	// <li> l7Flow_request_domain：按域名维度统计请求数指标；</li>
+	// <li> l7Flow_request_url：按URL维度统计请求数指标; </li>
+	// <li> l7Flow_request_resourceType：按资源类型维度统计请求数指标；</li>
+	// <li> l7Flow_request_sip：按客户端的源IP维度统计请求数指标；</li>
+	// <li> l7Flow_request_refere请求的rs：按refer信息维度统计请求数指标；</li>
+	// <li> l7Flow_request_ua_device：按设备类型维度统计请求数指标; </li>
+	// <li> l7Flow_request_ua_browser：按浏览器类型维度统计请求数指标；</li>
+	// <li> l7Flow_request_us_os：按操作系统类型维度统计请求数指标。</li>
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点集合，此参数必填，不填默认查询为空。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
 	// 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。
@@ -5499,19 +5699,29 @@ type DescribeTopL7AnalysisDataRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 查询的指标，取值有：
-	// <li> l7Flow_outFlux_country：请求的国家；</li>
-	// <li> l7Flow_outFlux_statusCode：请求的状态码；</li>
-	// <li> l7Flow_outFlux_domain：请求域名；</li>
-	// <li> l7Flow_outFlux_url：请求的URL; </li>
-	// <li> l7Flow_outFlux_resourceType：请求的资源类型；</li>
-	// <li> l7Flow_outFlux_sip：客户端的源IP；</li>
-	// <li> l7Flow_outFlux_referers：refer信息；</li>
-	// <li> l7Flow_outFlux_ua_device：设备类型; </li>
-	// <li> l7Flow_outFlux_ua_browser：浏览器类型；</li>
-	// <li> l7Flow_outFlux_us_os：操作系统类型。</li>
+	// <li> l7Flow_outFlux_country：按国家维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_statusCode：按状态码维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_domain：按域名维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_url：按URL维度统计流量指标; </li>
+	// <li> l7Flow_outFlux_resourceType：按资源类型维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_sip：按客户端的源IP维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_referers：按refer信息维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_ua_device：按设备类型维度统计流量指标; </li>
+	// <li> l7Flow_outFlux_ua_browser：按浏览器类型维度统计流量指标；</li>
+	// <li> l7Flow_outFlux_us_os：按操作系统类型维度统计流量指标；</li>
+	// <li> l7Flow_request_country：按国家维度统计请求数指标；</li>
+	// <li> l7Flow_request_statusCode：按状态码维度统计请求数指标；</li>
+	// <li> l7Flow_request_domain：按域名维度统计请求数指标；</li>
+	// <li> l7Flow_request_url：按URL维度统计请求数指标; </li>
+	// <li> l7Flow_request_resourceType：按资源类型维度统计请求数指标；</li>
+	// <li> l7Flow_request_sip：按客户端的源IP维度统计请求数指标；</li>
+	// <li> l7Flow_request_refere请求的rs：按refer信息维度统计请求数指标；</li>
+	// <li> l7Flow_request_ua_device：按设备类型维度统计请求数指标; </li>
+	// <li> l7Flow_request_ua_browser：按浏览器类型维度统计请求数指标；</li>
+	// <li> l7Flow_request_us_os：按操作系统类型维度统计请求数指标。</li>
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点集合，此参数必填，不填默认查询为空。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
 	// 查询前多少个数据，最大值为1000，不填默认默认为: 10， 表示查询前top10的数据。

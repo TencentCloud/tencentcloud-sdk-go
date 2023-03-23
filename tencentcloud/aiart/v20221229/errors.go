@@ -17,6 +17,9 @@ package v20221229
 const (
 	// 此产品的特有错误码
 
+	// 无权执行该操作，请检查您的CAM策略，确保您拥有对应的CAM权限。
+	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
 	// 控制台服务异常。
 	FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
 
