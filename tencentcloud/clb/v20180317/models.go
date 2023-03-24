@@ -5934,6 +5934,9 @@ type ModifyDomainAttributesRequestParams struct {
 	// 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
 	DefaultServer *bool `json:"DefaultServer,omitempty" name:"DefaultServer"`
 
+	// 是否开启Quic，注意，只有HTTPS域名才能开启Quic
+	Quic *bool `json:"Quic,omitempty" name:"Quic"`
+
 	// 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
 	NewDefaultServerDomain *string `json:"NewDefaultServerDomain,omitempty" name:"NewDefaultServerDomain"`
 
@@ -5968,6 +5971,9 @@ type ModifyDomainAttributesRequest struct {
 	// 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
 	DefaultServer *bool `json:"DefaultServer,omitempty" name:"DefaultServer"`
 
+	// 是否开启Quic，注意，只有HTTPS域名才能开启Quic
+	Quic *bool `json:"Quic,omitempty" name:"Quic"`
+
 	// 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
 	NewDefaultServerDomain *string `json:"NewDefaultServerDomain,omitempty" name:"NewDefaultServerDomain"`
 
@@ -5997,6 +6003,7 @@ func (r *ModifyDomainAttributesRequest) FromJsonString(s string) error {
 	delete(f, "Certificate")
 	delete(f, "Http2")
 	delete(f, "DefaultServer")
+	delete(f, "Quic")
 	delete(f, "NewDefaultServerDomain")
 	delete(f, "NewDomains")
 	delete(f, "MultiCertInfo")

@@ -571,6 +571,7 @@ type CreateProjectRequestParams struct {
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
 	// <li>RECORD_REPLAY：录制回放。</li>
+	// <li>MEDIA_CAST：点播转直播。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 项目模式，一个项目可以有多种模式并相互切换。
@@ -605,6 +606,9 @@ type CreateProjectRequestParams struct {
 
 	// 录制回放项目输入信息，仅当项目类型为 RECORD_REPLAY 时必填。
 	RecordReplayProjectInput *RecordReplayProjectInput `json:"RecordReplayProjectInput,omitempty" name:"RecordReplayProjectInput"`
+
+	// 点播转直播项目输入信息，仅当项目类型为 MEDIA_CAST 时必填。
+	MediaCastProjectInput *MediaCastProjectInput `json:"MediaCastProjectInput,omitempty" name:"MediaCastProjectInput"`
 }
 
 type CreateProjectRequest struct {
@@ -627,6 +631,7 @@ type CreateProjectRequest struct {
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
 	// <li>RECORD_REPLAY：录制回放。</li>
+	// <li>MEDIA_CAST：点播转直播。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 项目模式，一个项目可以有多种模式并相互切换。
@@ -661,6 +666,9 @@ type CreateProjectRequest struct {
 
 	// 录制回放项目输入信息，仅当项目类型为 RECORD_REPLAY 时必填。
 	RecordReplayProjectInput *RecordReplayProjectInput `json:"RecordReplayProjectInput,omitempty" name:"RecordReplayProjectInput"`
+
+	// 点播转直播项目输入信息，仅当项目类型为 MEDIA_CAST 时必填。
+	MediaCastProjectInput *MediaCastProjectInput `json:"MediaCastProjectInput,omitempty" name:"MediaCastProjectInput"`
 }
 
 func (r *CreateProjectRequest) ToJsonString() string {
@@ -688,6 +696,7 @@ func (r *CreateProjectRequest) FromJsonString(s string) error {
 	delete(f, "VideoSegmentationProjectInput")
 	delete(f, "StreamConnectProjectInput")
 	delete(f, "RecordReplayProjectInput")
+	delete(f, "MediaCastProjectInput")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProjectRequest has unknown keys!", "")
 	}
@@ -1877,6 +1886,7 @@ type DescribeProjectsRequestParams struct {
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
 	// <li>RECORD_REPLAY：录制回放。</li>
+	// <li>MEDIA_CAST：点播转直播。</li>
 	// 
 	// 注：如果不填则不使用项目类型进行过滤。
 	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet"`
@@ -1927,6 +1937,7 @@ type DescribeProjectsRequest struct {
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
 	// <li>RECORD_REPLAY：录制回放。</li>
+	// <li>MEDIA_CAST：点播转直播。</li>
 	// 
 	// 注：如果不填则不使用项目类型进行过滤。
 	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet"`
@@ -3492,6 +3503,138 @@ func (r *GrantResourceAuthorizationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type HandleMediaCastProjectRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 点播转直播项目 Id 。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 请参考 [操作类型](#Operation)。
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 输入源信息。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 AddSource、DeleteSource、SwitchSource 时必填。
+	SourceInfos []*MediaCastSourceInfo `json:"SourceInfos,omitempty" name:"SourceInfos"`
+
+	// 输出源信息。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 AddDestination、DeleteDestination、EnableDestination、DisableDestination、ModifyDestination 时必填。
+	DestinationInfos []*MediaCastDestinationInfo `json:"DestinationInfos,omitempty" name:"DestinationInfos"`
+
+	// 输出媒体配置。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 ModfiyOutputSetting 时必填。
+	OutputMediaSetting *MediaCastOutputMediaSetting `json:"OutputMediaSetting,omitempty" name:"OutputMediaSetting"`
+
+	// 播放控制参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 ModifyPlaySetting 时必填。
+	PlaySetting *MediaCastPlaySetting `json:"PlaySetting,omitempty" name:"PlaySetting"`
+
+	// 新添加的输入源位于输入源列表的位置，从0开始。默认加在输入源列表的后面。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 AddSource 时必填。
+	Position *int64 `json:"Position,omitempty" name:"Position"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有点播转直播项目。如果指定操作者，则操作者必须为项目所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+type HandleMediaCastProjectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 点播转直播项目 Id 。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 请参考 [操作类型](#Operation)。
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 输入源信息。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 AddSource、DeleteSource、SwitchSource 时必填。
+	SourceInfos []*MediaCastSourceInfo `json:"SourceInfos,omitempty" name:"SourceInfos"`
+
+	// 输出源信息。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 AddDestination、DeleteDestination、EnableDestination、DisableDestination、ModifyDestination 时必填。
+	DestinationInfos []*MediaCastDestinationInfo `json:"DestinationInfos,omitempty" name:"DestinationInfos"`
+
+	// 输出媒体配置。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 ModfiyOutputSetting 时必填。
+	OutputMediaSetting *MediaCastOutputMediaSetting `json:"OutputMediaSetting,omitempty" name:"OutputMediaSetting"`
+
+	// 播放控制参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 ModifyPlaySetting 时必填。
+	PlaySetting *MediaCastPlaySetting `json:"PlaySetting,omitempty" name:"PlaySetting"`
+
+	// 新添加的输入源位于输入源列表的位置，从0开始。默认加在输入源列表的后面。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	// 当 Operation 为 AddSource 时必填。
+	Position *int64 `json:"Position,omitempty" name:"Position"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有点播转直播项目。如果指定操作者，则操作者必须为项目所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *HandleMediaCastProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *HandleMediaCastProjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Platform")
+	delete(f, "ProjectId")
+	delete(f, "Operation")
+	delete(f, "SourceInfos")
+	delete(f, "DestinationInfos")
+	delete(f, "OutputMediaSetting")
+	delete(f, "PlaySetting")
+	delete(f, "Position")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "HandleMediaCastProjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type HandleMediaCastProjectResponseParams struct {
+	// 播放信息，Operation 为 DescribePlayInfo 时返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlayInfo *MediaCastPlayInfo `json:"PlayInfo,omitempty" name:"PlayInfo"`
+
+	// 输入源信息， Operation 为 AddSource 时返回添加成功的输入源信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceInfoSet []*MediaCastSourceInfo `json:"SourceInfoSet,omitempty" name:"SourceInfoSet"`
+
+	// 输出源信息， Operation 为 AddDestination 时返回添加成功的输出源信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestinationInfoSet []*MediaCastDestinationInfo `json:"DestinationInfoSet,omitempty" name:"DestinationInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type HandleMediaCastProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *HandleMediaCastProjectResponseParams `json:"Response"`
+}
+
+func (r *HandleMediaCastProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *HandleMediaCastProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type HandleStreamConnectProjectRequestParams struct {
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
@@ -4220,14 +4363,14 @@ type MaterialTagInfo struct {
 }
 
 type MediaCastDestinationInfo struct {
-	// 输出源序号。由系统进行分配。
-	Index *int64 `json:"Index,omitempty" name:"Index"`
-
-	// 输出源的名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	// 输出源 Id。由系统进行分配。
+	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 输出直播流地址。支持的直播流类型为 RTMP 和 SRT。
 	PushUrl *string `json:"PushUrl,omitempty" name:"PushUrl"`
+
+	// 输出源的名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type MediaCastDestinationInterruptInfo struct {
@@ -4240,9 +4383,45 @@ type MediaCastDestinationInterruptInfo struct {
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }
 
+type MediaCastDestinationStatus struct {
+	// 输出源 Id，由系统分配。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 输出源直播地址。
+	PushUrl *string `json:"PushUrl,omitempty" name:"PushUrl"`
+
+	// 输出源的状态。取值有：
+	// <li> Working ：运行中；</li>
+	// <li> Stopped：停止输出；</li>
+	// <li> Failed：输出失败。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type MediaCastOutputMediaSetting struct {
 	// 视频配置。
 	VideoSetting *MediaCastVideoSetting `json:"VideoSetting,omitempty" name:"VideoSetting"`
+}
+
+type MediaCastPlayInfo struct {
+	// 点播转直播项目运行状态，取值有：
+	// <li> Working : 运行中；</li>
+	// <li> Idle: 空闲状态。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 当前播放的输入源 Id。
+	CurrentSourceId *string `json:"CurrentSourceId,omitempty" name:"CurrentSourceId"`
+
+	// 当前播放的输入源的播放位置，单位：秒。
+	CurrentSourcePosition *float64 `json:"CurrentSourcePosition,omitempty" name:"CurrentSourcePosition"`
+
+	// 当前播放的输入源时长，单位：秒。
+	CurrentSourceDuration *float64 `json:"CurrentSourceDuration,omitempty" name:"CurrentSourceDuration"`
+
+	// 输出源状态信息。
+	DestinationStatusSet []*MediaCastDestinationStatus `json:"DestinationStatusSet,omitempty" name:"DestinationStatusSet"`
+
+	// 已经循环播放的次数。
+	LoopCount *int64 `json:"LoopCount,omitempty" name:"LoopCount"`
 }
 
 type MediaCastPlaySetting struct {
@@ -4278,20 +4457,35 @@ type MediaCastProjectInfo struct {
 	StopTime *string `json:"StopTime,omitempty" name:"StopTime"`
 }
 
+type MediaCastProjectInput struct {
+	// 输入源列表。输入源列表最大个数为100.
+	SourceInfos []*MediaCastSourceInfo `json:"SourceInfos,omitempty" name:"SourceInfos"`
+
+	// 输出源列表。输出源列表最大个数为10.
+	DestinationInfos []*MediaCastDestinationInfo `json:"DestinationInfos,omitempty" name:"DestinationInfos"`
+
+	// 输出媒体配置。
+	OutputMediaSetting *MediaCastOutputMediaSetting `json:"OutputMediaSetting,omitempty" name:"OutputMediaSetting"`
+
+	// 播放控制参数。
+	PlaySetting *MediaCastPlaySetting `json:"PlaySetting,omitempty" name:"PlaySetting"`
+}
+
 type MediaCastSourceInfo struct {
+	// 输入源 Id，由系统分配。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
 	// 输入源的媒体类型，取值有：
 	// <li>CME：多媒体创作引擎的媒体文件；</li>
 	// <li>VOD：云点播的媒资文件。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 多媒体创作引擎的媒体 ID。当 Type = CME  时必填。
-	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
-
 	// 云点播媒体文件 ID。当 Type = VOD 时必填。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 序号，位于输入源列表中的序号，由系统分配。
-	Index *int64 `json:"Index,omitempty" name:"Index"`
+	// 多媒体创作引擎的媒体 ID。当 Type = CME  时必填。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 }
 
 type MediaCastSourceInterruptInfo struct {
@@ -5298,7 +5492,6 @@ type Resource struct {
 
 type ResourceInfo struct {
 	// 媒资和分类资源。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *Resource `json:"Resource,omitempty" name:"Resource"`
 
 	// 资源归属，个人或团队。
@@ -5868,11 +6061,9 @@ type ThirdPartyPublishInfo struct {
 
 type TimeRange struct {
 	// 开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -5916,6 +6107,9 @@ type VideoEditProjectOutput struct {
 	// 元信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
+	// 导出视频的封面图片 URL。
+	CoverURL *string `json:"CoverURL,omitempty" name:"CoverURL"`
 }
 
 type VideoEditTemplateMaterial struct {

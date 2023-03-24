@@ -2471,6 +2471,13 @@ type ImageConfig struct {
 	// 镜像加速开关，默认False
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerImageAccelerate *bool `json:"ContainerImageAccelerate,omitempty" name:"ContainerImageAccelerate"`
+
+	// 镜像函数端口设置
+	// -1: 无端口镜像函数
+	// 0: 默认端口，当前默认端口是9000
+	// 其他: 特殊端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImagePort *int64 `json:"ImagePort,omitempty" name:"ImagePort"`
 }
 
 type InstanceConcurrencyConfig struct {

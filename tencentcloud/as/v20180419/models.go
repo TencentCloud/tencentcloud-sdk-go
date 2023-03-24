@@ -408,6 +408,10 @@ type ClearLaunchConfigurationAttributesRequestParams struct {
 	// 是否清空云服务器实例名相关设置信息，非必填，默认为 false。
 	// 填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。
 	ClearInstanceNameSettings *bool `json:"ClearInstanceNameSettings,omitempty" name:"ClearInstanceNameSettings"`
+
+	// 是否清空置放群组信息，非必填，默认为 false。
+	// 填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。
+	ClearDisasterRecoverGroupIds *bool `json:"ClearDisasterRecoverGroupIds,omitempty" name:"ClearDisasterRecoverGroupIds"`
 }
 
 type ClearLaunchConfigurationAttributesRequest struct {
@@ -427,6 +431,10 @@ type ClearLaunchConfigurationAttributesRequest struct {
 	// 是否清空云服务器实例名相关设置信息，非必填，默认为 false。
 	// 填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。
 	ClearInstanceNameSettings *bool `json:"ClearInstanceNameSettings,omitempty" name:"ClearInstanceNameSettings"`
+
+	// 是否清空置放群组信息，非必填，默认为 false。
+	// 填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。
+	ClearDisasterRecoverGroupIds *bool `json:"ClearDisasterRecoverGroupIds,omitempty" name:"ClearDisasterRecoverGroupIds"`
 }
 
 func (r *ClearLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -445,6 +453,7 @@ func (r *ClearLaunchConfigurationAttributesRequest) FromJsonString(s string) err
 	delete(f, "ClearDataDisks")
 	delete(f, "ClearHostNameSettings")
 	delete(f, "ClearInstanceNameSettings")
+	delete(f, "ClearDisasterRecoverGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}
@@ -994,6 +1003,9 @@ type CreateLaunchConfigurationRequestParams struct {
 
 	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
 	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
+
+	// 置放群组id，仅支持指定一个。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
 }
 
 type CreateLaunchConfigurationRequest struct {
@@ -1085,6 +1097,9 @@ type CreateLaunchConfigurationRequest struct {
 
 	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
 	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
+
+	// 置放群组id，仅支持指定一个。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -1123,6 +1138,7 @@ func (r *CreateLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "DiskTypePolicy")
 	delete(f, "HpcClusterId")
 	delete(f, "IPv6InternetAccessible")
+	delete(f, "DisasterRecoverGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchConfigurationRequest has unknown keys!", "")
 	}
@@ -3378,6 +3394,10 @@ type Instance struct {
 	// <li>IN_WARMUP：预热中
 	// <li>AFTER_WARMUP：完成预热
 	WarmupStatus *string `json:"WarmupStatus,omitempty" name:"WarmupStatus"`
+
+	// 置放群组id，仅支持指定一个。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
 }
 
 type InstanceChargePrepaid struct {
@@ -4100,6 +4120,9 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 
 	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
 	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
+
+	// 置放群组id，仅支持指定一个。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
 }
 
 type ModifyLaunchConfigurationAttributesRequest struct {
@@ -4190,6 +4213,9 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 
 	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
 	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitempty" name:"IPv6InternetAccessible"`
+
+	// 置放群组id，仅支持指定一个。
+	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitempty" name:"DisasterRecoverGroupIds"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -4224,6 +4250,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "CamRoleName")
 	delete(f, "HpcClusterId")
 	delete(f, "IPv6InternetAccessible")
+	delete(f, "DisasterRecoverGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}

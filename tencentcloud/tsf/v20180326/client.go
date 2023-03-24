@@ -679,6 +679,60 @@ func (c *Client) CreateApiRateLimitRuleWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateApiRateLimitRuleWithDetailRespRequest() (request *CreateApiRateLimitRuleWithDetailRespRequest) {
+    request = &CreateApiRateLimitRuleWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateApiRateLimitRuleWithDetailResp")
+    
+    
+    return
+}
+
+func NewCreateApiRateLimitRuleWithDetailRespResponse() (response *CreateApiRateLimitRuleWithDetailRespResponse) {
+    response = &CreateApiRateLimitRuleWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateApiRateLimitRuleWithDetailResp
+// 创建API限流规则,并返回规则信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSISTENCYERROR = "InternalError.GatewayConsistencyError"
+//  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+func (c *Client) CreateApiRateLimitRuleWithDetailResp(request *CreateApiRateLimitRuleWithDetailRespRequest) (response *CreateApiRateLimitRuleWithDetailRespResponse, err error) {
+    return c.CreateApiRateLimitRuleWithDetailRespWithContext(context.Background(), request)
+}
+
+// CreateApiRateLimitRuleWithDetailResp
+// 创建API限流规则,并返回规则信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSISTENCYERROR = "InternalError.GatewayConsistencyError"
+//  INTERNALERROR_GATEWAYDBERROR = "InternalError.GatewayDbError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+func (c *Client) CreateApiRateLimitRuleWithDetailRespWithContext(ctx context.Context, request *CreateApiRateLimitRuleWithDetailRespRequest) (response *CreateApiRateLimitRuleWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewCreateApiRateLimitRuleWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApiRateLimitRuleWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApiRateLimitRuleWithDetailRespResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApplicationRequest() (request *CreateApplicationRequest) {
     request = &CreateApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1001,6 +1055,80 @@ func (c *Client) CreateConfigTemplateWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateConfigTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateConfigTemplateWithDetailRespRequest() (request *CreateConfigTemplateWithDetailRespRequest) {
+    request = &CreateConfigTemplateWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateConfigTemplateWithDetailResp")
+    
+    
+    return
+}
+
+func NewCreateConfigTemplateWithDetailRespResponse() (response *CreateConfigTemplateWithDetailRespResponse) {
+    response = &CreateConfigTemplateWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConfigTemplateWithDetailResp
+// 创建参数模板,并返回模版详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMEINVALID = "InvalidParameterValue.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+func (c *Client) CreateConfigTemplateWithDetailResp(request *CreateConfigTemplateWithDetailRespRequest) (response *CreateConfigTemplateWithDetailRespResponse, err error) {
+    return c.CreateConfigTemplateWithDetailRespWithContext(context.Background(), request)
+}
+
+// CreateConfigTemplateWithDetailResp
+// 创建参数模板,并返回模版详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGTEMPLATECREATEFAILED = "FailedOperation.ConfigTemplateCreateFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEDELETEFAILED = "FailedOperation.ConfigTemplateDeleteFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEIMPORTFAILED = "FailedOperation.ConfigTemplateImportFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATESEARCHLISTFAILED = "FailedOperation.ConfigTemplateSearchListFailed"
+//  FAILEDOPERATION_CONFIGTEMPLATEUPDATEFAILED = "FailedOperation.ConfigTemplateUpdateFailed"
+//  INVALIDPARAMETER_CONFIGTEMPLATENAMEINVALID = "InvalidParameter.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATEDESCTOOLONG = "InvalidParameterValue.ConfigTemplateDescTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMEINVALID = "InvalidParameterValue.ConfigTemplateNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATENAMETOOLONG = "InvalidParameterValue.ConfigTemplateNameTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGTEMPLATETYPEINVALID = "InvalidParameterValue.ConfigTemplateTypeInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  MISSINGPARAMETER_CONFIGTEMPLATEIDREQUIRED = "MissingParameter.ConfigTemplateIdRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATENAMEREQUIRED = "MissingParameter.ConfigTemplateNameRequired"
+//  MISSINGPARAMETER_CONFIGTEMPLATETYPEREQUIRED = "MissingParameter.ConfigTemplateTypeRequired"
+func (c *Client) CreateConfigTemplateWithDetailRespWithContext(ctx context.Context, request *CreateConfigTemplateWithDetailRespRequest) (response *CreateConfigTemplateWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigTemplateWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConfigTemplateWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConfigTemplateWithDetailRespResponse()
     err = c.Send(request, response)
     return
 }
@@ -1803,6 +1931,58 @@ func (c *Client) CreatePathRewritesWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreatePathRewritesWithDetailRespRequest() (request *CreatePathRewritesWithDetailRespRequest) {
+    request = &CreatePathRewritesWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreatePathRewritesWithDetailResp")
+    
+    
+    return
+}
+
+func NewCreatePathRewritesWithDetailRespResponse() (response *CreatePathRewritesWithDetailRespResponse) {
+    response = &CreatePathRewritesWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePathRewritesWithDetailResp
+// 创建路径重写，并返回路径重写规则信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+func (c *Client) CreatePathRewritesWithDetailResp(request *CreatePathRewritesWithDetailRespRequest) (response *CreatePathRewritesWithDetailRespResponse, err error) {
+    return c.CreatePathRewritesWithDetailRespWithContext(context.Background(), request)
+}
+
+// CreatePathRewritesWithDetailResp
+// 创建路径重写，并返回路径重写规则信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+func (c *Client) CreatePathRewritesWithDetailRespWithContext(ctx context.Context, request *CreatePathRewritesWithDetailRespRequest) (response *CreatePathRewritesWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewCreatePathRewritesWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePathRewritesWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePathRewritesWithDetailRespResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePublicConfigRequest() (request *CreatePublicConfigRequest) {
     request = &CreatePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1855,6 +2035,62 @@ func (c *Client) CreatePublicConfigWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreatePublicConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePublicConfigWithDetailRespRequest() (request *CreatePublicConfigWithDetailRespRequest) {
+    request = &CreatePublicConfigWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreatePublicConfigWithDetailResp")
+    
+    
+    return
+}
+
+func NewCreatePublicConfigWithDetailRespResponse() (response *CreatePublicConfigWithDetailRespResponse) {
+    response = &CreatePublicConfigWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePublicConfigWithDetailResp
+// 创建公共配置项，并返回配置项详细信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
+//  MISSINGPARAMETER_CONFIGVALUEREQUIRED = "MissingParameter.ConfigValueRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) CreatePublicConfigWithDetailResp(request *CreatePublicConfigWithDetailRespRequest) (response *CreatePublicConfigWithDetailRespResponse, err error) {
+    return c.CreatePublicConfigWithDetailRespWithContext(context.Background(), request)
+}
+
+// CreatePublicConfigWithDetailResp
+// 创建公共配置项，并返回配置项详细信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
+//  MISSINGPARAMETER_CONFIGVALUEREQUIRED = "MissingParameter.ConfigValueRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) CreatePublicConfigWithDetailRespWithContext(ctx context.Context, request *CreatePublicConfigWithDetailRespRequest) (response *CreatePublicConfigWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewCreatePublicConfigWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePublicConfigWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePublicConfigWithDetailRespResponse()
     err = c.Send(request, response)
     return
 }
@@ -2109,6 +2345,58 @@ func (c *Client) CreateUnitRuleWithContext(ctx context.Context, request *CreateU
     return
 }
 
+func NewCreateUnitRuleWithDetailRespRequest() (request *CreateUnitRuleWithDetailRespRequest) {
+    request = &CreateUnitRuleWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateUnitRuleWithDetailResp")
+    
+    
+    return
+}
+
+func NewCreateUnitRuleWithDetailRespResponse() (response *CreateUnitRuleWithDetailRespResponse) {
+    response = &CreateUnitRuleWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUnitRuleWithDetailResp
+// 创建单元化规则, 并返回详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+func (c *Client) CreateUnitRuleWithDetailResp(request *CreateUnitRuleWithDetailRespRequest) (response *CreateUnitRuleWithDetailRespResponse, err error) {
+    return c.CreateUnitRuleWithDetailRespWithContext(context.Background(), request)
+}
+
+// CreateUnitRuleWithDetailResp
+// 创建单元化规则, 并返回详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+func (c *Client) CreateUnitRuleWithDetailRespWithContext(ctx context.Context, request *CreateUnitRuleWithDetailRespRequest) (response *CreateUnitRuleWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewCreateUnitRuleWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUnitRuleWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUnitRuleWithDetailRespResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApiGroupRequest() (request *DeleteApiGroupRequest) {
     request = &DeleteApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2153,6 +2441,60 @@ func (c *Client) DeleteApiGroupWithContext(ctx context.Context, request *DeleteA
     request.SetContext(ctx)
     
     response = NewDeleteApiGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteApiRateLimitRuleRequest() (request *DeleteApiRateLimitRuleRequest) {
+    request = &DeleteApiRateLimitRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteApiRateLimitRule")
+    
+    
+    return
+}
+
+func NewDeleteApiRateLimitRuleResponse() (response *DeleteApiRateLimitRuleResponse) {
+    response = &DeleteApiRateLimitRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteApiRateLimitRule
+// 删除API限流规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERERROR = "InvalidParameterValue.GatewayParameterError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  RESOURCEINUSE_RATELIMITRULEEXISTERROR = "ResourceInUse.RatelimitRuleExistError"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+func (c *Client) DeleteApiRateLimitRule(request *DeleteApiRateLimitRuleRequest) (response *DeleteApiRateLimitRuleResponse, err error) {
+    return c.DeleteApiRateLimitRuleWithContext(context.Background(), request)
+}
+
+// DeleteApiRateLimitRule
+// 删除API限流规则
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERERROR = "InvalidParameterValue.GatewayParameterError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  RESOURCEINUSE_RATELIMITRULEEXISTERROR = "ResourceInUse.RatelimitRuleExistError"
+//  UNAUTHORIZEDOPERATION_LICENSEUNAUTHORIZED = "UnauthorizedOperation.LicenseUnauthorized"
+func (c *Client) DeleteApiRateLimitRuleWithContext(ctx context.Context, request *DeleteApiRateLimitRuleRequest) (response *DeleteApiRateLimitRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteApiRateLimitRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApiRateLimitRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApiRateLimitRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -8335,6 +8677,64 @@ func (c *Client) DescribeRepositoryWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeResourceTaskStatusRequest() (request *DescribeResourceTaskStatusRequest) {
+    request = &DescribeResourceTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeResourceTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeResourceTaskStatusResponse() (response *DescribeResourceTaskStatusResponse) {
+    response = &DescribeResourceTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourceTaskStatus
+// 资源任务的执行状态描述接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_CVMCAEMASTERQUERYERROR = "InternalError.CvmCaeMasterQueryError"
+//  INVALIDPARAMETER_CVMCAEMASTERJSONDECODEFAIL = "InvalidParameter.CvmCaeMasterJsonDecodeFail"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERTASKNOTEXIST = "InvalidParameterValue.CvmCaeMasterTaskNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeResourceTaskStatus(request *DescribeResourceTaskStatusRequest) (response *DescribeResourceTaskStatusResponse, err error) {
+    return c.DescribeResourceTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeResourceTaskStatus
+// 资源任务的执行状态描述接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_CVMCAEMASTERQUERYERROR = "InternalError.CvmCaeMasterQueryError"
+//  INVALIDPARAMETER_CVMCAEMASTERJSONDECODEFAIL = "InvalidParameter.CvmCaeMasterJsonDecodeFail"
+//  INVALIDPARAMETERVALUE_CVMCAEMASTERTASKNOTEXIST = "InvalidParameterValue.CvmCaeMasterTaskNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeResourceTaskStatusWithContext(ctx context.Context, request *DescribeResourceTaskStatusRequest) (response *DescribeResourceTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSimpleApplicationsRequest() (request *DescribeSimpleApplicationsRequest) {
     request = &DescribeSimpleApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11287,6 +11687,80 @@ func (c *Client) ReleaseConfigWithContext(ctx context.Context, request *ReleaseC
     request.SetContext(ctx)
     
     response = NewReleaseConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseConfigWithDetailRespRequest() (request *ReleaseConfigWithDetailRespRequest) {
+    request = &ReleaseConfigWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "ReleaseConfigWithDetailResp")
+    
+    
+    return
+}
+
+func NewReleaseConfigWithDetailRespResponse() (response *ReleaseConfigWithDetailRespResponse) {
+    response = &ReleaseConfigWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReleaseConfigWithDetailResp
+// 发布配置,并且返回配置 ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
+//  INVALIDPARAMETERVALUE_CONFIGGROUPAPPLICATIONIDNOTMATCH = "InvalidParameterValue.ConfigGroupApplicationIdNotMatch"
+//  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_CONFIGIDREQUIRED = "MissingParameter.ConfigIdRequired"
+//  MISSINGPARAMETER_GROUPIDREQUIRED = "MissingParameter.GroupIdRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) ReleaseConfigWithDetailResp(request *ReleaseConfigWithDetailRespRequest) (response *ReleaseConfigWithDetailRespResponse, err error) {
+    return c.ReleaseConfigWithDetailRespWithContext(context.Background(), request)
+}
+
+// ReleaseConfigWithDetailResp
+// 发布配置,并且返回配置 ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGGROUPQUERYFAILED = "FailedOperation.ConfigGroupQueryFailed"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
+//  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
+//  INVALIDPARAMETERVALUE_CONFIGGROUPAPPLICATIONIDNOTMATCH = "InvalidParameterValue.ConfigGroupApplicationIdNotMatch"
+//  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
+//  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_CONFIGIDREQUIRED = "MissingParameter.ConfigIdRequired"
+//  MISSINGPARAMETER_GROUPIDREQUIRED = "MissingParameter.GroupIdRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) ReleaseConfigWithDetailRespWithContext(ctx context.Context, request *ReleaseConfigWithDetailRespRequest) (response *ReleaseConfigWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewReleaseConfigWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseConfigWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReleaseConfigWithDetailRespResponse()
     err = c.Send(request, response)
     return
 }

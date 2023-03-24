@@ -913,6 +913,56 @@ func (c *Client) DeleteTransformationWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeLogTagValueRequest() (request *DescribeLogTagValueRequest) {
+    request = &DescribeLogTagValueRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("eb", APIVersion, "DescribeLogTagValue")
+    
+    
+    return
+}
+
+func NewDescribeLogTagValueResponse() (response *DescribeLogTagValueResponse) {
+    response = &DescribeLogTagValueResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLogTagValue
+// 查询日志索引维度值
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) DescribeLogTagValue(request *DescribeLogTagValueRequest) (response *DescribeLogTagValueResponse, err error) {
+    return c.DescribeLogTagValueWithContext(context.Background(), request)
+}
+
+// DescribeLogTagValue
+// 查询日志索引维度值
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) DescribeLogTagValueWithContext(ctx context.Context, request *DescribeLogTagValueRequest) (response *DescribeLogTagValueResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogTagValueRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogTagValue require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogTagValueResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetEventBusRequest() (request *GetEventBusRequest) {
     request = &GetEventBusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1439,6 +1489,56 @@ func (c *Client) PutEventsWithContext(ctx context.Context, request *PutEventsReq
     request.SetContext(ctx)
     
     response = NewPutEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchLogRequest() (request *SearchLogRequest) {
+    request = &SearchLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("eb", APIVersion, "SearchLog")
+    
+    
+    return
+}
+
+func NewSearchLogResponse() (response *SearchLogResponse) {
+    response = &SearchLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchLog
+// 日志检索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) SearchLog(request *SearchLogRequest) (response *SearchLogResponse, err error) {
+    return c.SearchLogWithContext(context.Background(), request)
+}
+
+// SearchLog
+// 日志检索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) SearchLogWithContext(ctx context.Context, request *SearchLogRequest) (response *SearchLogResponse, err error) {
+    if request == nil {
+        request = NewSearchLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchLogResponse()
     err = c.Send(request, response)
     return
 }

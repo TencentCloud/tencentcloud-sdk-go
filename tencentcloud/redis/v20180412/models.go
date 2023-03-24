@@ -2271,7 +2271,7 @@ func (r *DescribeInstanceDealDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceDealDetailResponseParams struct {
-	// 订单详细信息
+	// 订单详细信息。
 	DealDetails []*TradeDealDetail `json:"DealDetails,omitempty" name:"DealDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4061,14 +4061,14 @@ func (r *DescribeReplicationGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSLStatusRequestParams struct {
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeSSLStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -4093,19 +4093,25 @@ func (r *DescribeSSLStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSLStatusResponseParams struct {
-	// 证书下载地址
+	// SSL 证书下载地址。
 	CertDownloadUrl *string `json:"CertDownloadUrl,omitempty" name:"CertDownloadUrl"`
 
-	// 证书下载链接到期时间
+	// 证书下载链接到期时间。
 	UrlExpiredTime *string `json:"UrlExpiredTime,omitempty" name:"UrlExpiredTime"`
 
-	// 实例SSL配置状态， true：开启 false：关闭
+	// 标识实例开启 SSL 功能。
+	// - true：开启 。
+	// - false：关闭。
 	SSLConfig *bool `json:"SSLConfig,omitempty" name:"SSLConfig"`
 
-	// 实例SSL特性支持， true：支持 false：不支持（小版本升级后才能支持SSL特性）
+	// 标识实例是否支持 SSL特性。
+	// - true：支持。
+	// - false：不支持。
 	FeatureSupport *bool `json:"FeatureSupport,omitempty" name:"FeatureSupport"`
 
-	// SSL配置状态，1: 配置中 2：配置成功
+	// 说明配置 SSL 的状态。
+	// - 1: 配置中。
+	// - 2：配置成功。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5856,26 +5862,32 @@ func (r *ManualBackupInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModfiyInstancePasswordRequestParams struct {
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例旧密码
+	// 实例旧密码。
 	OldPassword *string `json:"OldPassword,omitempty" name:"OldPassword"`
 
-	// 实例新密码
+	// 实例新密码。密码复杂度要求如下：
+	// - 长度8 - 30位, 推荐使用12位以上的密码。
+	// - 不能以"/"开头。
+	// - 至少包含小写字母a - z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 type ModfiyInstancePasswordRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例旧密码
+	// 实例旧密码。
 	OldPassword *string `json:"OldPassword,omitempty" name:"OldPassword"`
 
-	// 实例新密码
+	// 实例新密码。密码复杂度要求如下：
+	// - 长度8 - 30位, 推荐使用12位以上的密码。
+	// - 不能以"/"开头。
+	// - 至少包含小写字母a - z、大写字母A - Z、数字0 - 9、特殊字符 ()~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
@@ -5902,7 +5914,7 @@ func (r *ModfiyInstancePasswordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModfiyInstancePasswordResponseParams struct {
-	// 任务ID
+	// 任务 ID。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -1662,7 +1662,7 @@ func NewDescribeInstanceDealDetailResponse() (response *DescribeInstanceDealDeta
 }
 
 // DescribeInstanceDealDetail
-// 查询订单信息
+// 本接口（DescribeInstanceDealDetail）用于查询订单信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1673,7 +1673,7 @@ func (c *Client) DescribeInstanceDealDetail(request *DescribeInstanceDealDetailR
 }
 
 // DescribeInstanceDealDetail
-// 查询订单信息
+// 本接口（DescribeInstanceDealDetail）用于查询订单信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2996,7 +2996,7 @@ func NewDescribeSSLStatusResponse() (response *DescribeSSLStatusResponse) {
 }
 
 // DescribeSSLStatus
-// 查询SSL状态
+// 本接口（DescribeSSLStatus）用于查询实例 SSL 认证相关信息，包括开启状态、配置状态、证书地址等。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3011,7 +3011,7 @@ func (c *Client) DescribeSSLStatus(request *DescribeSSLStatusRequest) (response 
 }
 
 // DescribeSSLStatus
-// 查询SSL状态
+// 本接口（DescribeSSLStatus）用于查询实例 SSL 认证相关信息，包括开启状态、配置状态、证书地址等。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3922,7 +3922,7 @@ func NewModfiyInstancePasswordResponse() (response *ModfiyInstancePasswordRespon
 }
 
 // ModfiyInstancePassword
-// 修改redis密码
+// 本接口（ModfiyInstancePassword）用于修改实例访问密码。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3940,7 +3940,7 @@ func (c *Client) ModfiyInstancePassword(request *ModfiyInstancePasswordRequest) 
 }
 
 // ModfiyInstancePassword
-// 修改redis密码
+// 本接口（ModfiyInstancePassword）用于修改实例访问密码。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

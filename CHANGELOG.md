@@ -1,3 +1,263 @@
+# Release v1.0.624
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 62 次发布
+
+发布时间：2023-03-24 01:03:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ClearLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/54255)
+
+	* 新增入参：ClearDisasterRecoverGroupIds
+
+* [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447)
+
+	* 新增入参：DisasterRecoverGroupIds
+
+* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
+
+	* 新增入参：DisasterRecoverGroupIds
+
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/377/20453#Instance)
+
+	* 新增成员：DisasterRecoverGroupIds
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 45 次发布
+
+发布时间：2023-03-24 01:13:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SeatUserInfo](https://cloud.tencent.com/document/api/679/47715#SeatUserInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Mail, StaffNumber
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 74 次发布
+
+发布时间：2023-03-24 01:21:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAclRule](https://cloud.tencent.com/document/api/597/89218)
+* [DescribeAclRule](https://cloud.tencent.com/document/api/597/89217)
+* [ModifyAclRule](https://cloud.tencent.com/document/api/597/89216)
+
+新增数据结构：
+
+* [AclRuleResp](https://cloud.tencent.com/document/api/597/40861#AclRuleResp)
+
+修改数据结构：
+
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
+
+	* 新增成员：TaskProgress, StepList
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 85 次发布
+
+发布时间：2023-03-24 01:22:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDomainAttributes](https://cloud.tencent.com/document/api/214/38092)
+
+	* 新增入参：Quic
+
+
+
+
+## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 53 次发布
+
+发布时间：2023-03-24 01:25:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [HandleMediaCastProject](https://cloud.tencent.com/document/api/1156/87841)
+
+修改接口：
+
+* [CreateProject](https://cloud.tencent.com/document/api/1156/40350)
+
+	* 新增入参：MediaCastProjectInput
+
+
+新增数据结构：
+
+* [MediaCastDestinationStatus](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationStatus)
+* [MediaCastPlayInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastPlayInfo)
+* [MediaCastProjectInput](https://cloud.tencent.com/document/api/1156/40360#MediaCastProjectInput)
+
+修改数据结构：
+
+* [MediaCastDestinationInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInfo)
+
+	* 新增成员：Id
+
+	* <font color="#dd0000">**删除成员**：</font>Index
+
+* [MediaCastSourceInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInfo)
+
+	* 新增成员：Id
+
+	* <font color="#dd0000">**删除成员**：</font>Index
+
+	* <font color="#dd0000">**修改成员**：</font>Type
+
+* [VideoEditProjectOutput](https://cloud.tencent.com/document/api/1156/40360#VideoEditProjectOutput)
+
+	* 新增成员：CoverURL
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 106 次发布
+
+发布时间：2023-03-24 01:28:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LaunchTemplateVersionData](https://cloud.tencent.com/document/api/213/15753#LaunchTemplateVersionData)
+
+	* 新增成员：DisableApiTermination
+
+
+
+
+## 事件总线(eb) 版本：2021-04-16
+
+### 第 10 次发布
+
+发布时间：2023-03-24 01:40:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLogTagValue](https://cloud.tencent.com/document/api/1359/89221)
+* [SearchLog](https://cloud.tencent.com/document/api/1359/89220)
+
+新增数据结构：
+
+* [LogFilter](https://cloud.tencent.com/document/api/1359/67704#LogFilter)
+* [LogFilters](https://cloud.tencent.com/document/api/1359/67704#LogFilters)
+* [SearchLogResult](https://cloud.tencent.com/document/api/1359/67704#SearchLogResult)
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 82 次发布
+
+发布时间：2023-03-24 01:56:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusClusterAgentBasic](https://cloud.tencent.com/document/api/248/30354#PrometheusClusterAgentBasic)
+
+	* 新增成员：OpenDefaultRecord
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 49 次发布
+
+发布时间：2023-03-24 02:04:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageConfig](https://cloud.tencent.com/document/api/583/17244#ImageConfig)
+
+	* 新增成员：ImagePort
+
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 89 次发布
+
+发布时间：2023-03-23 15:53:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateApiRateLimitRuleWithDetailResp](https://cloud.tencent.com/document/api/649/89211)
+* [CreateConfigTemplateWithDetailResp](https://cloud.tencent.com/document/api/649/89213)
+* [CreatePathRewritesWithDetailResp](https://cloud.tencent.com/document/api/649/89210)
+* [CreatePublicConfigWithDetailResp](https://cloud.tencent.com/document/api/649/89207)
+* [CreateUnitRuleWithDetailResp](https://cloud.tencent.com/document/api/649/89209)
+* [DeleteApiRateLimitRule](https://cloud.tencent.com/document/api/649/89208)
+* [DescribeResourceTaskStatus](https://cloud.tencent.com/document/api/649/89212)
+* [ReleaseConfigWithDetailResp](https://cloud.tencent.com/document/api/649/89206)
+
+新增数据结构：
+
+* [ResourceTaskStatusResult](https://cloud.tencent.com/document/api/649/36099#ResourceTaskStatusResult)
+
+
+
 # Release v1.0.623
 
 ## 弹性伸缩(as) 版本：2018-04-19

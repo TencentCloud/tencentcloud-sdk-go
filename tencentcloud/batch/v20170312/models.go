@@ -2287,9 +2287,11 @@ type InstanceCategoryItem struct {
 
 type InstanceMarketOptionsRequest struct {
 	// 竞价相关选项
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpotOptions *SpotMarketOptions `json:"SpotOptions,omitempty" name:"SpotOptions"`
 
 	// 市场选项类型，当前只支持取值：spot
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarketType *string `json:"MarketType,omitempty" name:"MarketType"`
 }
 

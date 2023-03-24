@@ -263,6 +263,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
+//  FAILEDOPERATION_CALLNETDEPLOYFAILED = "FailedOperation.CallNetDeployFailed"
 //  FAILEDOPERATION_CALLROLEFAILED = "FailedOperation.CallRoleFailed"
 //  FAILEDOPERATION_CLSSERVICEUNREGISTERED = "FailedOperation.ClsServiceUnregistered"
 //  FAILEDOPERATION_CREATEFUNCTION = "FailedOperation.CreateFunction"
@@ -383,6 +384,7 @@ func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *Creat
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
+//  FAILEDOPERATION_CALLNETDEPLOYFAILED = "FailedOperation.CallNetDeployFailed"
 //  FAILEDOPERATION_CALLROLEFAILED = "FailedOperation.CallRoleFailed"
 //  FAILEDOPERATION_CLSSERVICEUNREGISTERED = "FailedOperation.ClsServiceUnregistered"
 //  FAILEDOPERATION_CREATEFUNCTION = "FailedOperation.CreateFunction"

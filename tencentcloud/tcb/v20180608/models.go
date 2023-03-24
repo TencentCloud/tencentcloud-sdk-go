@@ -5480,7 +5480,7 @@ type DescribeGatewayCurveDataRequestParams struct {
 	// 网关id
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
-	// 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502
+	// 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502 GwConnect GwCircuit
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 监控起始时间
@@ -5505,7 +5505,7 @@ type DescribeGatewayCurveDataRequest struct {
 	// 网关id
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
-	// 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502
+	// 监控类型 GWQps GWBandwidth GwHttpError GwHttp404 GwHttp502 GwConnect GwCircuit
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
 	// 监控起始时间

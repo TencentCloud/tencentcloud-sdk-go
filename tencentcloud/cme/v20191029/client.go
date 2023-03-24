@@ -194,6 +194,7 @@ func NewCreateClassResponse() (response *CreateClassResponse) {
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateClass(request *CreateClassRequest) (response *CreateClassResponse, err error) {
     return c.CreateClassWithContext(context.Background(), request)
@@ -210,6 +211,7 @@ func (c *Client) CreateClass(request *CreateClassRequest) (response *CreateClass
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateClassWithContext(ctx context.Context, request *CreateClassRequest) (response *CreateClassResponse, err error) {
     if request == nil {
@@ -246,7 +248,7 @@ func NewCreateLinkResponse() (response *CreateLinkResponse) {
 }
 
 // CreateLink
-//  创建媒体链接或分类路径链接，将源资源信息链接到目标。
+// 创建媒体链接或分类路径链接，将源资源信息链接到目标。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -260,13 +262,14 @@ func NewCreateLinkResponse() (response *CreateLinkResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateLink(request *CreateLinkRequest) (response *CreateLinkResponse, err error) {
     return c.CreateLinkWithContext(context.Background(), request)
 }
 
 // CreateLink
-//  创建媒体链接或分类路径链接，将源资源信息链接到目标。
+// 创建媒体链接或分类路径链接，将源资源信息链接到目标。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -280,6 +283,7 @@ func (c *Client) CreateLink(request *CreateLinkRequest) (response *CreateLinkRes
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_VODSUBAPPID = "InvalidParameterValue.VodSubAppid"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateLinkWithContext(ctx context.Context, request *CreateLinkRequest) (response *CreateLinkResponse, err error) {
     if request == nil {
@@ -330,6 +334,8 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //
 // <li>云转推项目：用于直播云转推。</li>
 //
+// <li>点播转直播项目：用于点播文件转直播输出。</li>
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATERECORDTASK = "FailedOperation.CreateRecordTask"
 //  FAILEDOPERATION_RECORDNOTSUPPORT = "FailedOperation.RecordNotSupport"
@@ -369,6 +375,8 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
 // <li>录制回放项目：用于直播录制回放；</li>
 //
 // <li>云转推项目：用于直播云转推。</li>
+//
+// <li>点播转直播项目：用于点播文件转直播输出。</li>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATERECORDTASK = "FailedOperation.CreateRecordTask"
@@ -612,6 +620,7 @@ func NewDeleteLoginStatusResponse() (response *DeleteLoginStatusResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteLoginStatus(request *DeleteLoginStatusRequest) (response *DeleteLoginStatusResponse, err error) {
     return c.DeleteLoginStatusWithContext(context.Background(), request)
@@ -622,6 +631,7 @@ func (c *Client) DeleteLoginStatus(request *DeleteLoginStatusRequest) (response 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteLoginStatusWithContext(ctx context.Context, request *DeleteLoginStatusRequest) (response *DeleteLoginStatusResponse, err error) {
     if request == nil {
@@ -716,7 +726,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 }
 
 // DeleteProject
-// 删除项目。
+// 删除项目。处于推流状态的云转推和点播转直播项目不允许删除，若强行调用删除项目接口会返回失败。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -732,7 +742,7 @@ func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteP
 }
 
 // DeleteProject
-// 删除项目。
+// 删除项目。处于推流状态的云转推和点播转直播项目不允许删除，若强行调用删除项目接口会返回失败。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2311,6 +2321,134 @@ func (c *Client) GrantResourceAuthorizationWithContext(ctx context.Context, requ
     return
 }
 
+func NewHandleMediaCastProjectRequest() (request *HandleMediaCastProjectRequest) {
+    request = &HandleMediaCastProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cme", APIVersion, "HandleMediaCastProject")
+    
+    
+    return
+}
+
+func NewHandleMediaCastProjectResponse() (response *HandleMediaCastProjectResponse) {
+    response = &HandleMediaCastProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// HandleMediaCastProject
+// 对点播转直播项目进行操作。
+//
+// ### 操作类型<a id="Operation"></a>
+//
+// - `AddSource`（添加输入源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B12-.E6.B7.BB.E5.8A.A0.E8.BE.93.E5.85.A5.E6.BA.90)；
+//
+// - `DeleteSource`（删除输入源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B7-.E5.88.A0.E9.99.A4.E8.BE.93.E5.85.A5.E6.BA.90)；
+//
+// - `SwitchSource`（切换当前播放的输入源），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B6-.E5.88.87.E6.8D.A2.E5.BD.93.E5.89.8D.E6.92.AD.E6.94.BE.E7.9A.84.E8.BE.93.E5.85.A5.E6.BA.90)
+//
+// - `AddDestination`（ 添加输出源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B13-.E6.B7.BB.E5.8A.A0.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `DeleteDestination`（删除输出源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B8-.E5.88.A0.E9.99.A4.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `EnableDestination`（启动输出源），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B10-.E5.90.AF.E5.8A.A8.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `DisableDestination`（停止输出源），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B5-.E5.81.9C.E6.AD.A2.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `ModifyDestination`（修改输出源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B2-.E4.BF.AE.E6.94.B9.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `Start`（启动点播转直播），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B9-.E5.90.AF.E5.8A.A8.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
+//
+// - `Stop`（停止点播转直播），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B4-.E5.81.9C.E6.AD.A2.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
+//
+// - `ModifyOutputMediaSetting`（修改媒体输出配置），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B3-.E4.BF.AE.E6.94.B9.E8.BE.93.E5.87.BA.E7.9A.84.E5.AA.92.E4.BD.93.E9.85.8D.E7.BD.AE)；
+//
+// - `ModifyPlaySetting`（修改播放结束时间），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B1-.E4.BF.AE.E6.94.B9.E7.BB.93.E6.9D.9F.E6.97.B6.E9.97.B4);
+//
+// - `DescribePlayInfo`（查询播放信息），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B11-.E6.9F.A5.E8.AF.A2.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD.E9.A1.B9.E7.9B.AE.E7.9A.84.E6.92.AD.E6.94.BE.E4.BF.A1.E6.81.AF)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MEDIACASTSOURCEINFOSINVALID = "InvalidParameterValue.MediaCastSourceInfosInvalid"
+//  INVALIDPARAMETERVALUE_OPERATIONINVALID = "InvalidParameterValue.OperationInvalid"
+//  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
+//  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+func (c *Client) HandleMediaCastProject(request *HandleMediaCastProjectRequest) (response *HandleMediaCastProjectResponse, err error) {
+    return c.HandleMediaCastProjectWithContext(context.Background(), request)
+}
+
+// HandleMediaCastProject
+// 对点播转直播项目进行操作。
+//
+// ### 操作类型<a id="Operation"></a>
+//
+// - `AddSource`（添加输入源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B12-.E6.B7.BB.E5.8A.A0.E8.BE.93.E5.85.A5.E6.BA.90)；
+//
+// - `DeleteSource`（删除输入源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B7-.E5.88.A0.E9.99.A4.E8.BE.93.E5.85.A5.E6.BA.90)；
+//
+// - `SwitchSource`（切换当前播放的输入源），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B6-.E5.88.87.E6.8D.A2.E5.BD.93.E5.89.8D.E6.92.AD.E6.94.BE.E7.9A.84.E8.BE.93.E5.85.A5.E6.BA.90)
+//
+// - `AddDestination`（ 添加输出源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B13-.E6.B7.BB.E5.8A.A0.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `DeleteDestination`（删除输出源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B8-.E5.88.A0.E9.99.A4.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `EnableDestination`（启动输出源），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B10-.E5.90.AF.E5.8A.A8.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `DisableDestination`（停止输出源），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B5-.E5.81.9C.E6.AD.A2.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `ModifyDestination`（修改输出源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B2-.E4.BF.AE.E6.94.B9.E8.BE.93.E5.87.BA.E6.BA.90)；
+//
+// - `Start`（启动点播转直播），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B9-.E5.90.AF.E5.8A.A8.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
+//
+// - `Stop`（停止点播转直播），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B4-.E5.81.9C.E6.AD.A2.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
+//
+// - `ModifyOutputMediaSetting`（修改媒体输出配置），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B3-.E4.BF.AE.E6.94.B9.E8.BE.93.E5.87.BA.E7.9A.84.E5.AA.92.E4.BD.93.E9.85.8D.E7.BD.AE)；
+//
+// - `ModifyPlaySetting`（修改播放结束时间），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B1-.E4.BF.AE.E6.94.B9.E7.BB.93.E6.9D.9F.E6.97.B6.E9.97.B4);
+//
+// - `DescribePlayInfo`（查询播放信息），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B11-.E6.9F.A5.E8.AF.A2.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD.E9.A1.B9.E7.9B.AE.E7.9A.84.E6.92.AD.E6.94.BE.E4.BF.A1.E6.81.AF)。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MEDIACASTSOURCEINFOSINVALID = "InvalidParameterValue.MediaCastSourceInfosInvalid"
+//  INVALIDPARAMETERVALUE_OPERATIONINVALID = "InvalidParameterValue.OperationInvalid"
+//  INVALIDPARAMETERVALUE_OPERATOR = "InvalidParameterValue.Operator"
+//  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
+func (c *Client) HandleMediaCastProjectWithContext(ctx context.Context, request *HandleMediaCastProjectRequest) (response *HandleMediaCastProjectResponse, err error) {
+    if request == nil {
+        request = NewHandleMediaCastProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("HandleMediaCastProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewHandleMediaCastProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewHandleStreamConnectProjectRequest() (request *HandleStreamConnectProjectRequest) {
     request = &HandleStreamConnectProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2638,7 +2776,7 @@ func NewListMediaResponse() (response *ListMediaResponse) {
 }
 
 // ListMedia
-//  浏览当前分类路径下的资源，包括媒体文件和子分类，返回媒资基础信息和分类信息。
+// 浏览当前分类路径下的资源，包括媒体文件和子分类，返回媒资基础信息和分类信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2657,7 +2795,7 @@ func (c *Client) ListMedia(request *ListMediaRequest) (response *ListMediaRespon
 }
 
 // ListMedia
-//  浏览当前分类路径下的资源，包括媒体文件和子分类，返回媒资基础信息和分类信息。
+// 浏览当前分类路径下的资源，包括媒体文件和子分类，返回媒资基础信息和分类信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3025,6 +3163,7 @@ func NewMoveClassResponse() (response *MoveClassResponse) {
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  INVALIDPARAMETERVALUE_DSTCLASSPATHNOTEXIST = "InvalidParameterValue.DstClassPathNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) MoveClass(request *MoveClassRequest) (response *MoveClassResponse, err error) {
     return c.MoveClassWithContext(context.Background(), request)
@@ -3046,6 +3185,7 @@ func (c *Client) MoveClass(request *MoveClassRequest) (response *MoveClassRespon
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  INVALIDPARAMETERVALUE_DSTCLASSPATHNOTEXIST = "InvalidParameterValue.DstClassPathNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) MoveClassWithContext(ctx context.Context, request *MoveClassRequest) (response *MoveClassResponse, err error) {
     if request == nil {
@@ -3160,7 +3300,7 @@ func NewParseEventResponse() (response *ParseEventResponse) {
 }
 
 // ParseEvent
-// 该接口接受制作云回调给客户的事件内容，将其转化为对应的 EventContent 结构，请不要实际调用该接口，只需要将接收到的事件内容直接使用 JSON 解析到 EventContent  即可使用。
+// 该接口接受多媒体创作引擎回调给业务的事件内容，将其转化为对应的 EventContent 结构。请不要实际调用该接口，只需要将接收到的事件内容直接使用 JSON 解析到 EventContent  结构即可使用。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3173,7 +3313,7 @@ func (c *Client) ParseEvent(request *ParseEventRequest) (response *ParseEventRes
 }
 
 // ParseEvent
-// 该接口接受制作云回调给客户的事件内容，将其转化为对应的 EventContent 结构，请不要实际调用该接口，只需要将接收到的事件内容直接使用 JSON 解析到 EventContent  即可使用。
+// 该接口接受多媒体创作引擎回调给业务的事件内容，将其转化为对应的 EventContent 结构。请不要实际调用该接口，只需要将接收到的事件内容直接使用 JSON 解析到 EventContent  结构即可使用。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

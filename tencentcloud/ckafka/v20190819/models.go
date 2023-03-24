@@ -119,6 +119,15 @@ type AclRuleInfo struct {
 	Principal *string `json:"Principal,omitempty" name:"Principal"`
 }
 
+type AclRuleResp struct {
+	// 总数据条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// AclRule列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclRuleList []*AclRule `json:"AclRuleList,omitempty" name:"AclRuleList"`
+}
+
 type AnalyseParam struct {
 	// 解析格式，JSON，DELIMITER分隔符，REGULAR正则提取，SOURCE处理上层所有结果
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -1084,6 +1093,112 @@ func (r *CreateAclResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAclResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAclRuleRequestParams struct {
+	// 实例id信息
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Acl资源类型,目前只支持Topic,枚举值列表：Topic
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
+	PatternType *string `json:"PatternType,omitempty" name:"PatternType"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 设置的ACL规则列表
+	RuleList []*AclRuleInfo `json:"RuleList,omitempty" name:"RuleList"`
+
+	// 表示前缀匹配的前缀的值
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// 预设ACL规则是否应用到新增的topic中
+	IsApplied *int64 `json:"IsApplied,omitempty" name:"IsApplied"`
+
+	// ACL规则的备注
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+type CreateAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id信息
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Acl资源类型,目前只支持Topic,枚举值列表：Topic
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 匹配类型，目前支持前缀匹配与预设策略，枚举值列表：PREFIXED/PRESET
+	PatternType *string `json:"PatternType,omitempty" name:"PatternType"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 设置的ACL规则列表
+	RuleList []*AclRuleInfo `json:"RuleList,omitempty" name:"RuleList"`
+
+	// 表示前缀匹配的前缀的值
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// 预设ACL规则是否应用到新增的topic中
+	IsApplied *int64 `json:"IsApplied,omitempty" name:"IsApplied"`
+
+	// ACL规则的备注
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *CreateAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ResourceType")
+	delete(f, "PatternType")
+	delete(f, "RuleName")
+	delete(f, "RuleList")
+	delete(f, "Pattern")
+	delete(f, "IsApplied")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAclRuleResponseParams struct {
+	// 规则的唯一表示Key
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAclRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAclRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3600,6 +3715,84 @@ func (r *DescribeACLResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAclRuleRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// ACL规则名
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// ACL规则匹配类型
+	PatternType *string `json:"PatternType,omitempty" name:"PatternType"`
+
+	// 是否读取简略的ACL规则
+	IsSimplified *bool `json:"IsSimplified,omitempty" name:"IsSimplified"`
+}
+
+type DescribeAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// ACL规则名
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// ACL规则匹配类型
+	PatternType *string `json:"PatternType,omitempty" name:"PatternType"`
+
+	// 是否读取简略的ACL规则
+	IsSimplified *bool `json:"IsSimplified,omitempty" name:"IsSimplified"`
+}
+
+func (r *DescribeAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RuleName")
+	delete(f, "PatternType")
+	delete(f, "IsSimplified")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAclRuleResponseParams struct {
+	// 返回的AclRule结果集对象
+	Result *AclRuleResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAclRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAclRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAppInfoRequestParams struct {
 	// 偏移位置
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -3763,13 +3956,21 @@ type DescribeConnectResource struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
 
+	// 该连接源关联的Datahub任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatahubTaskCount *int64 `json:"DatahubTaskCount,omitempty" name:"DatahubTaskCount"`
+
 	// 连接源的当前所处步骤
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentStep *string `json:"CurrentStep,omitempty" name:"CurrentStep"`
 
-	// 该连接源关联的Datahub任务数
+	// 创建进度百分比
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DatahubTaskCount *int64 `json:"DatahubTaskCount,omitempty" name:"DatahubTaskCount"`
+	TaskProgress *float64 `json:"TaskProgress,omitempty" name:"TaskProgress"`
+
+	// 步骤列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepList []*string `json:"StepList,omitempty" name:"StepList"`
 
 	// Dts配置，Type为DTS时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7462,6 +7663,77 @@ type MariaDBParam struct {
 
 	// 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
 	RecordWithSchema *bool `json:"RecordWithSchema,omitempty" name:"RecordWithSchema"`
+}
+
+// Predefined struct for user
+type ModifyAclRuleRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// ACL策略名
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 是否应用到新增的Topic
+	IsApplied *int64 `json:"IsApplied,omitempty" name:"IsApplied"`
+}
+
+type ModifyAclRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// ACL策略名
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 是否应用到新增的Topic
+	IsApplied *int64 `json:"IsApplied,omitempty" name:"IsApplied"`
+}
+
+func (r *ModifyAclRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAclRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RuleName")
+	delete(f, "IsApplied")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAclRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAclRuleResponseParams struct {
+	// 规则的唯一表示Key
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAclRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAclRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyAclRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAclRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -12322,6 +12322,9 @@ type PrometheusClusterAgentBasic struct {
 
 	// 是否采集指标，true代表drop所有指标，false代表采集默认指标
 	NotScrape *bool `json:"NotScrape,omitempty" name:"NotScrape"`
+
+	// 是否开启默认预聚合规则
+	OpenDefaultRecord *bool `json:"OpenDefaultRecord,omitempty" name:"OpenDefaultRecord"`
 }
 
 type PrometheusClusterAgentPodConfig struct {

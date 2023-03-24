@@ -3361,6 +3361,10 @@ type SeatUserInfo struct {
 	// 坐席邮箱
 	Mail *string `json:"Mail,omitempty" name:"Mail"`
 
+	// 工号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StaffNumber *string `json:"StaffNumber,omitempty" name:"StaffNumber"`
+
 	// 坐席电话号码（带0086前缀）
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
@@ -3373,10 +3377,6 @@ type SeatUserInfo struct {
 	// 坐席关联的技能组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupNameList []*string `json:"SkillGroupNameList,omitempty" name:"SkillGroupNameList"`
-
-	// 工号
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StaffNumber *string `json:"StaffNumber,omitempty" name:"StaffNumber"`
 }
 
 type ServeParticipant struct {

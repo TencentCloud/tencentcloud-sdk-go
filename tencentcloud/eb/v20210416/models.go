@@ -955,6 +955,106 @@ func (r *DeleteTransformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLogTagValueRequestParams struct {
+	// 起始时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 事件集ID
+	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+
+	// 聚合字段
+	GroupField *string `json:"GroupField,omitempty" name:"GroupField"`
+
+	// 页数
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 筛选条件
+	Filter []*LogFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+type DescribeLogTagValueRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 事件集ID
+	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+
+	// 聚合字段
+	GroupField *string `json:"GroupField,omitempty" name:"GroupField"`
+
+	// 页数
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 筛选条件
+	Filter []*LogFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeLogTagValueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogTagValueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "EventBusId")
+	delete(f, "GroupField")
+	delete(f, "Page")
+	delete(f, "Limit")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogTagValueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogTagValueResponseParams struct {
+	// 索引检索维度值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*string `json:"Results,omitempty" name:"Results"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogTagValueResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogTagValueResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogTagValueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogTagValueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ESTargetParams struct {
 	// 网络连接类型
 	NetMode *string `json:"NetMode,omitempty" name:"NetMode"`
@@ -1665,6 +1765,34 @@ func (r *ListTargetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LogFilter struct {
+	// 过滤字段名称
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 运算符，全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 过滤值,范围运算需要同时输入两个值，以英文逗号分隔
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 该层级filters逻辑关系，取值 "AND" 或 "OR"
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// LogFilters数组
+	Filters []*LogFilters `json:"Filters,omitempty" name:"Filters"`
+}
+
+type LogFilters struct {
+	// 过滤字段名称
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 运算符, 全等 eq，不等 neq，相似 like，排除相似 not like,  小于 lt，小于且等于 lte，大于 gt，大于且等于 gte，在范围内 range，不在范围内 norange
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 过滤值，范围运算需要同时输入两个值，以英文逗号分隔
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type OutputStructParam struct {
 	// 对应输出json中的key
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -1849,6 +1977,159 @@ type SCFParams struct {
 
 	// 开启批量投递使能
 	EnableBatchDelivery *bool `json:"EnableBatchDelivery,omitempty" name:"EnableBatchDelivery"`
+}
+
+// Predefined struct for user
+type SearchLogRequestParams struct {
+	// 起始时间unix 毫秒时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间unix 毫秒时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 事件集ID
+	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+
+	// 页码
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 筛选条件
+	Filter []*LogFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 排序数组
+	OrderFields []*string `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 排序方式，asc 从旧到新，desc 从新到旧
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+}
+
+type SearchLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间unix 毫秒时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间unix 毫秒时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 事件集ID
+	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+
+	// 页码
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 筛选条件
+	Filter []*LogFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 排序数组
+	OrderFields []*string `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 排序方式，asc 从旧到新，desc 从新到旧
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+}
+
+func (r *SearchLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "EventBusId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	delete(f, "Filter")
+	delete(f, "OrderFields")
+	delete(f, "OrderBy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchLogResponseParams struct {
+	// 日志总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 每页日志条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 日志检索结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*SearchLogResult `json:"Results,omitempty" name:"Results"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchLogResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchLogResponseParams `json:"Response"`
+}
+
+func (r *SearchLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchLogResult struct {
+	// 单条日志上报时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 日志内容详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 事件来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 事件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 事件匹配规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleIds *string `json:"RuleIds,omitempty" name:"RuleIds"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subject *string `json:"Subject,omitempty" name:"Subject"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 事件状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type Target struct {
