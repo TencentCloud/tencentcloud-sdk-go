@@ -64,6 +64,10 @@ func NewAddLabelResponse() (response *AddLabelResponse) {
 }
 
 // AddLabel
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // DID添加标签
 //
 // 可能返回的错误码:
@@ -86,6 +90,10 @@ func (c *Client) AddLabel(request *AddLabelRequest) (response *AddLabelResponse,
 }
 
 // AddLabel
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // DID添加标签
 //
 // 可能返回的错误码:
@@ -138,6 +146,10 @@ func NewCancelAuthorityIssuerResponse() (response *CancelAuthorityIssuerResponse
 }
 
 // CancelAuthorityIssuer
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 撤消权威机构认证
 //
 // 可能返回的错误码:
@@ -159,6 +171,10 @@ func (c *Client) CancelAuthorityIssuer(request *CancelAuthorityIssuerRequest) (r
 }
 
 // CancelAuthorityIssuer
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 撤消权威机构认证
 //
 // 可能返回的错误码:
@@ -282,6 +298,10 @@ func NewCheckDidDeployResponse() (response *CheckDidDeployResponse) {
 }
 
 // CheckDidDeploy
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 检查部署情况
 //
 // 可能返回的错误码:
@@ -303,6 +323,10 @@ func (c *Client) CheckDidDeploy(request *CheckDidDeployRequest) (response *Check
 }
 
 // CheckDidDeploy
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 检查部署情况
 //
 // 可能返回的错误码:
@@ -414,6 +438,10 @@ func NewCreateDidServiceResponse() (response *CreateDidServiceResponse) {
 }
 
 // CreateDidService
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 创建DID服务
 //
 // 可能返回的错误码:
@@ -435,6 +463,10 @@ func (c *Client) CreateDidService(request *CreateDidServiceRequest) (response *C
 }
 
 // CreateDidService
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 创建DID服务
 //
 // 可能返回的错误码:
@@ -486,6 +518,10 @@ func NewCreateLabelResponse() (response *CreateLabelResponse) {
 }
 
 // CreateLabel
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 新建标签
 //
 // 可能返回的错误码:
@@ -507,6 +543,10 @@ func (c *Client) CreateLabel(request *CreateLabelRequest) (response *CreateLabel
 }
 
 // CreateLabel
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 新建标签
 //
 // 可能返回的错误码:
@@ -842,6 +882,10 @@ func NewDeployByNameResponse() (response *DeployByNameResponse) {
 }
 
 // DeployByName
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 通过Name部署TDID合约
 //
 // 可能返回的错误码:
@@ -863,6 +907,10 @@ func (c *Client) DeployByName(request *DeployByNameRequest) (response *DeployByN
 }
 
 // DeployByName
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 通过Name部署TDID合约
 //
 // 可能返回的错误码:
@@ -914,6 +962,10 @@ func NewDownCptResponse() (response *DownCptResponse) {
 }
 
 // DownCpt
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证模版下载
 //
 // 可能返回的错误码:
@@ -935,6 +987,10 @@ func (c *Client) DownCpt(request *DownCptRequest) (response *DownCptResponse, er
 }
 
 // DownCpt
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证模版下载
 //
 // 可能返回的错误码:
@@ -986,6 +1042,10 @@ func NewEnableHashResponse() (response *EnableHashResponse) {
 }
 
 // EnableHash
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 启用合约
 //
 // 可能返回的错误码:
@@ -1007,6 +1067,10 @@ func (c *Client) EnableHash(request *EnableHashRequest) (response *EnableHashRes
 }
 
 // EnableHash
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 启用合约
 //
 // 可能返回的错误码:
@@ -1138,6 +1202,10 @@ func NewGetAuthoritiesListResponse() (response *GetAuthoritiesListResponse) {
 }
 
 // GetAuthoritiesList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 权威机构列表
 //
 // 可能返回的错误码:
@@ -1159,6 +1227,10 @@ func (c *Client) GetAuthoritiesList(request *GetAuthoritiesListRequest) (respons
 }
 
 // GetAuthoritiesList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 权威机构列表
 //
 // 可能返回的错误码:
@@ -1282,6 +1354,10 @@ func NewGetConsortiumClusterListResponse() (response *GetConsortiumClusterListRe
 }
 
 // GetConsortiumClusterList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取联盟bcos网络列表
 //
 // 可能返回的错误码:
@@ -1303,6 +1379,10 @@ func (c *Client) GetConsortiumClusterList(request *GetConsortiumClusterListReque
 }
 
 // GetConsortiumClusterList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取联盟bcos网络列表
 //
 // 可能返回的错误码:
@@ -1354,6 +1434,10 @@ func NewGetConsortiumListResponse() (response *GetConsortiumListResponse) {
 }
 
 // GetConsortiumList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取联盟列表
 //
 // 可能返回的错误码:
@@ -1375,6 +1459,10 @@ func (c *Client) GetConsortiumList(request *GetConsortiumListRequest) (response 
 }
 
 // GetConsortiumList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取联盟列表
 //
 // 可能返回的错误码:
@@ -1498,6 +1586,10 @@ func NewGetCptListResponse() (response *GetCptListResponse) {
 }
 
 // GetCptList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证模版列表
 //
 // 可能返回的错误码:
@@ -1519,6 +1611,10 @@ func (c *Client) GetCptList(request *GetCptListRequest) (response *GetCptListRes
 }
 
 // GetCptList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证模版列表
 //
 // 可能返回的错误码:
@@ -1570,6 +1666,10 @@ func NewGetCredentialCptRankResponse() (response *GetCredentialCptRankResponse) 
 }
 
 // GetCredentialCptRank
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证颁发按机构排行
 //
 // 可能返回的错误码:
@@ -1591,6 +1691,10 @@ func (c *Client) GetCredentialCptRank(request *GetCredentialCptRankRequest) (res
 }
 
 // GetCredentialCptRank
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证颁发按机构排行
 //
 // 可能返回的错误码:
@@ -1642,6 +1746,10 @@ func NewGetCredentialIssueRankResponse() (response *GetCredentialIssueRankRespon
 }
 
 // GetCredentialIssueRank
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证颁发按机构排行
 //
 // 可能返回的错误码:
@@ -1663,6 +1771,10 @@ func (c *Client) GetCredentialIssueRank(request *GetCredentialIssueRankRequest) 
 }
 
 // GetCredentialIssueRank
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证颁发按机构排行
 //
 // 可能返回的错误码:
@@ -1714,6 +1826,10 @@ func NewGetCredentialIssueTrendResponse() (response *GetCredentialIssueTrendResp
 }
 
 // GetCredentialIssueTrend
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证颁发趋势
 //
 // 可能返回的错误码:
@@ -1735,6 +1851,10 @@ func (c *Client) GetCredentialIssueTrend(request *GetCredentialIssueTrendRequest
 }
 
 // GetCredentialIssueTrend
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 凭证颁发趋势
 //
 // 可能返回的错误码:
@@ -1858,6 +1978,10 @@ func NewGetDataPanelResponse() (response *GetDataPanelResponse) {
 }
 
 // GetDataPanel
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 概览
 //
 // 可能返回的错误码:
@@ -1879,6 +2003,10 @@ func (c *Client) GetDataPanel(request *GetDataPanelRequest) (response *GetDataPa
 }
 
 // GetDataPanel
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 概览
 //
 // 可能返回的错误码:
@@ -1930,6 +2058,10 @@ func NewGetDeployInfoResponse() (response *GetDeployInfoResponse) {
 }
 
 // GetDeployInfo
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 合约部署详情
 //
 // 可能返回的错误码:
@@ -1951,6 +2083,10 @@ func (c *Client) GetDeployInfo(request *GetDeployInfoRequest) (response *GetDepl
 }
 
 // GetDeployInfo
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 合约部署详情
 //
 // 可能返回的错误码:
@@ -2002,6 +2138,10 @@ func NewGetDeployListResponse() (response *GetDeployListResponse) {
 }
 
 // GetDeployList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 合约部署列表
 //
 // 可能返回的错误码:
@@ -2023,6 +2163,10 @@ func (c *Client) GetDeployList(request *GetDeployListRequest) (response *GetDepl
 }
 
 // GetDeployList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 合约部署列表
 //
 // 可能返回的错误码:
@@ -2074,6 +2218,10 @@ func NewGetDidClusterDetailResponse() (response *GetDidClusterDetailResponse) {
 }
 
 // GetDidClusterDetail
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取DID区块链网络详情
 //
 // 可能返回的错误码:
@@ -2095,6 +2243,10 @@ func (c *Client) GetDidClusterDetail(request *GetDidClusterDetailRequest) (respo
 }
 
 // GetDidClusterDetail
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取DID区块链网络详情
 //
 // 可能返回的错误码:
@@ -2146,6 +2298,10 @@ func NewGetDidClusterListResponse() (response *GetDidClusterListResponse) {
 }
 
 // GetDidClusterList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取用户的DID网络列表
 //
 // 可能返回的错误码:
@@ -2167,6 +2323,10 @@ func (c *Client) GetDidClusterList(request *GetDidClusterListRequest) (response 
 }
 
 // GetDidClusterList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取用户的DID网络列表
 //
 // 可能返回的错误码:
@@ -2218,6 +2378,10 @@ func NewGetDidDetailResponse() (response *GetDidDetailResponse) {
 }
 
 // GetDidDetail
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // DID详情
 //
 // 可能返回的错误码:
@@ -2239,6 +2403,10 @@ func (c *Client) GetDidDetail(request *GetDidDetailRequest) (response *GetDidDet
 }
 
 // GetDidDetail
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // DID详情
 //
 // 可能返回的错误码:
@@ -2362,6 +2530,10 @@ func NewGetDidListResponse() (response *GetDidListResponse) {
 }
 
 // GetDidList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // DID列表
 //
 // 可能返回的错误码:
@@ -2383,6 +2555,10 @@ func (c *Client) GetDidList(request *GetDidListRequest) (response *GetDidListRes
 }
 
 // GetDidList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // DID列表
 //
 // 可能返回的错误码:
@@ -2434,6 +2610,10 @@ func NewGetDidRegisterTrendResponse() (response *GetDidRegisterTrendResponse) {
 }
 
 // GetDidRegisterTrend
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // DID注册趋势
 //
 // 可能返回的错误码:
@@ -2455,6 +2635,10 @@ func (c *Client) GetDidRegisterTrend(request *GetDidRegisterTrendRequest) (respo
 }
 
 // GetDidRegisterTrend
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // DID注册趋势
 //
 // 可能返回的错误码:
@@ -2506,6 +2690,10 @@ func NewGetDidServiceDetailResponse() (response *GetDidServiceDetailResponse) {
 }
 
 // GetDidServiceDetail
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取DID服务详情
 //
 // 可能返回的错误码:
@@ -2527,6 +2715,10 @@ func (c *Client) GetDidServiceDetail(request *GetDidServiceDetailRequest) (respo
 }
 
 // GetDidServiceDetail
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取DID服务详情
 //
 // 可能返回的错误码:
@@ -2578,6 +2770,10 @@ func NewGetDidServiceListResponse() (response *GetDidServiceListResponse) {
 }
 
 // GetDidServiceList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取DID服务列表
 //
 // 可能返回的错误码:
@@ -2599,6 +2795,10 @@ func (c *Client) GetDidServiceList(request *GetDidServiceListRequest) (response 
 }
 
 // GetDidServiceList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 获取DID服务列表
 //
 // 可能返回的错误码:
@@ -2650,6 +2850,10 @@ func NewGetGroupListResponse() (response *GetGroupListResponse) {
 }
 
 // GetGroupList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 主群组配置列表
 //
 // 可能返回的错误码:
@@ -2671,6 +2875,10 @@ func (c *Client) GetGroupList(request *GetGroupListRequest) (response *GetGroupL
 }
 
 // GetGroupList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 主群组配置列表
 //
 // 可能返回的错误码:
@@ -2722,6 +2930,10 @@ func NewGetLabelListResponse() (response *GetLabelListResponse) {
 }
 
 // GetLabelList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 标签列表
 //
 // 可能返回的错误码:
@@ -2735,6 +2947,10 @@ func (c *Client) GetLabelList(request *GetLabelListRequest) (response *GetLabelL
 }
 
 // GetLabelList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 标签列表
 //
 // 可能返回的错误码:
@@ -2778,6 +2994,10 @@ func NewGetPolicyListResponse() (response *GetPolicyListResponse) {
 }
 
 // GetPolicyList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 披露策略Policy管理列表
 //
 // 可能返回的错误码:
@@ -2799,6 +3019,10 @@ func (c *Client) GetPolicyList(request *GetPolicyListRequest) (response *GetPoli
 }
 
 // GetPolicyList
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 披露策略Policy管理列表
 //
 // 可能返回的错误码:
@@ -2850,6 +3074,10 @@ func NewGetPublicKeyResponse() (response *GetPublicKeyResponse) {
 }
 
 // GetPublicKey
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 查看公钥
 //
 // 可能返回的错误码:
@@ -2871,6 +3099,10 @@ func (c *Client) GetPublicKey(request *GetPublicKeyRequest) (response *GetPublic
 }
 
 // GetPublicKey
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 查看公钥
 //
 // 可能返回的错误码:
@@ -2922,6 +3154,10 @@ func NewQueryPolicyResponse() (response *QueryPolicyResponse) {
 }
 
 // QueryPolicy
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 披露策略Policy查看
 //
 // 可能返回的错误码:
@@ -2943,6 +3179,10 @@ func (c *Client) QueryPolicy(request *QueryPolicyRequest) (response *QueryPolicy
 }
 
 // QueryPolicy
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 披露策略Policy查看
 //
 // 可能返回的错误码:
@@ -2994,6 +3234,10 @@ func NewRecognizeAuthorityIssuerResponse() (response *RecognizeAuthorityIssuerRe
 }
 
 // RecognizeAuthorityIssuer
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 认证权威机构
 //
 // 可能返回的错误码:
@@ -3015,6 +3259,10 @@ func (c *Client) RecognizeAuthorityIssuer(request *RecognizeAuthorityIssuerReque
 }
 
 // RecognizeAuthorityIssuer
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 认证权威机构
 //
 // 可能返回的错误码:
@@ -3066,6 +3314,10 @@ func NewRegisterClaimPolicyResponse() (response *RegisterClaimPolicyResponse) {
 }
 
 // RegisterClaimPolicy
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 披露策略Policy注册
 //
 // 可能返回的错误码:
@@ -3087,6 +3339,10 @@ func (c *Client) RegisterClaimPolicy(request *RegisterClaimPolicyRequest) (respo
 }
 
 // RegisterClaimPolicy
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 披露策略Policy注册
 //
 // 可能返回的错误码:
@@ -3210,6 +3466,10 @@ func NewRegisterIssuerResponse() (response *RegisterIssuerResponse) {
 }
 
 // RegisterIssuer
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 注册为权威机构
 //
 // 可能返回的错误码:
@@ -3231,6 +3491,10 @@ func (c *Client) RegisterIssuer(request *RegisterIssuerRequest) (response *Regis
 }
 
 // RegisterIssuer
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 注册为权威机构
 //
 // 可能返回的错误码:
@@ -3282,6 +3546,10 @@ func NewRemoveHashResponse() (response *RemoveHashResponse) {
 }
 
 // RemoveHash
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 删除合约
 //
 // 可能返回的错误码:
@@ -3303,6 +3571,10 @@ func (c *Client) RemoveHash(request *RemoveHashRequest) (response *RemoveHashRes
 }
 
 // RemoveHash
+// 下线已有内测接口，待上线正式版本的接口
+//
+// 
+//
 // 删除合约
 //
 // 可能返回的错误码:

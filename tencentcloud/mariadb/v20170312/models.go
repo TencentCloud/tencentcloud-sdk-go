@@ -2129,6 +2129,240 @@ func (r *DescribeDBEncryptAttributesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBInstanceDetailRequestParams struct {
+	// 实例Id形如：tdsql-ow728lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeDBInstanceDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id形如：tdsql-ow728lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBInstanceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceDetailResponseParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例目前运行状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 内网 IP 地址
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 内网端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 是否临时实例，0为否，非0为是
+	IsTmp *int64 `json:"IsTmp,omitempty" name:"IsTmp"`
+
+	// 节点数，2为一主一从，3为一主二从
+	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 实例所在地域名称，如 ap-shanghai
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例所在可用区名称，如 ap-shanghai-1
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 字符串型的私有网络Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 字符串型的私有网络子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+	WanStatus *int64 `json:"WanStatus,omitempty" name:"WanStatus"`
+
+	// 外网访问的域名，公网可解析
+	WanDomain *string `json:"WanDomain,omitempty" name:"WanDomain"`
+
+	// 外网 IP 地址，公网可访问
+	WanVip *string `json:"WanVip,omitempty" name:"WanVip"`
+
+	// 外网端口
+	WanPort *int64 `json:"WanPort,omitempty" name:"WanPort"`
+
+	// 实例所属项目 Id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// TDSQL 版本信息
+	TdsqlVersion *string `json:"TdsqlVersion,omitempty" name:"TdsqlVersion"`
+
+	// 实例内存大小，单位 GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例存储大小，单位 GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 主可用区，如 ap-shanghai-1
+	MasterZone *string `json:"MasterZone,omitempty" name:"MasterZone"`
+
+	// 从可用区列表，如 [ap-shanghai-2]
+	SlaveZones []*string `json:"SlaveZones,omitempty" name:"SlaveZones"`
+
+	// 自动续费标志：0 否，1 是
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 独享集群Id，普通实例为空
+	ExclusterId *string `json:"ExclusterId,omitempty" name:"ExclusterId"`
+
+	// 付费模式：prepaid 表示预付费
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例创建时间，格式为 2006-01-02 15:04:05
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例是否支持审计
+	IsAuditSupported *bool `json:"IsAuditSupported,omitempty" name:"IsAuditSupported"`
+
+	// 实例到期时间，格式为 2006-01-02 15:04:05
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 机型信息
+	Machine *string `json:"Machine,omitempty" name:"Machine"`
+
+	// 存储空间使用率
+	StorageUsage *string `json:"StorageUsage,omitempty" name:"StorageUsage"`
+
+	// 日志存储空间大小，单位 GB
+	LogStorage *int64 `json:"LogStorage,omitempty" name:"LogStorage"`
+
+	// 是否支持数据加密。1-支持；0-不支持
+	IsEncryptSupported *int64 `json:"IsEncryptSupported,omitempty" name:"IsEncryptSupported"`
+
+	// 内网IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
+
+	// 实例Cpu核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 产品类型ID
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 最大QPS
+	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
+
+	// 是否支持IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
+
+	// 外网IPv6地址，公网可访问
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanVipv6 *string `json:"WanVipv6,omitempty" name:"WanVipv6"`
+
+	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanStatusIpv6 *int64 `json:"WanStatusIpv6,omitempty" name:"WanStatusIpv6"`
+
+	// 外网IPv6端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanPortIpv6 *int64 `json:"WanPortIpv6,omitempty" name:"WanPortIpv6"`
+
+	// 数据库引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbEngine *string `json:"DbEngine,omitempty" name:"DbEngine"`
+
+	// 数据库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
+
+	// 标签信息
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// DCN标志，0-无，1-主实例，2-灾备实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnFlag *int64 `json:"DcnFlag,omitempty" name:"DcnFlag"`
+
+	// DCN状态，0-无，1-创建中，2-同步中，3-已断开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnStatus *int64 `json:"DcnStatus,omitempty" name:"DcnStatus"`
+
+	// DCN灾备实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnDstNum *int64 `json:"DcnDstNum,omitempty" name:"DcnDstNum"`
+
+	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例的各个DB节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodesInfo []*NodeInfo `json:"NodesInfo,omitempty" name:"NodesInfo"`
+
+	// 实例是否支持设置用户连接数限制，内核为10.1暂不支持。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsMaxUserConnectionsSupported *bool `json:"IsMaxUserConnectionsSupported,omitempty" name:"IsMaxUserConnectionsSupported"`
+
+	// 对外显示的数据库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
+
+	// 加密状态, 0-未开启，1-已开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptStatus *int64 `json:"EncryptStatus,omitempty" name:"EncryptStatus"`
+
+	// DCN的配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaConfig *DCNReplicaConfig `json:"ReplicaConfig,omitempty" name:"ReplicaConfig"`
+
+	// DCN的运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaStatus *DCNReplicaStatus `json:"ReplicaStatus,omitempty" name:"ReplicaStatus"`
+
+	// 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExclusterType *int64 `json:"ExclusterType,omitempty" name:"ExclusterType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstanceSpecsRequestParams struct {
 
 }

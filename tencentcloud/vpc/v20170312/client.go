@@ -2990,7 +2990,7 @@ func NewCreateFlowLogResponse() (response *CreateFlowLogResponse) {
 }
 
 // CreateFlowLog
-// 本接口（CreateFlowLog）用于创建流日志
+// 本接口（CreateFlowLog）用于创建网络流日志。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATECKAFKAROUTEERROR = "InternalError.CreateCkafkaRouteError"
@@ -3033,7 +3033,7 @@ func (c *Client) CreateFlowLog(request *CreateFlowLogRequest) (response *CreateF
 }
 
 // CreateFlowLog
-// 本接口（CreateFlowLog）用于创建流日志
+// 本接口（CreateFlowLog）用于创建网络流日志。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CREATECKAFKAROUTEERROR = "InternalError.CreateCkafkaRouteError"

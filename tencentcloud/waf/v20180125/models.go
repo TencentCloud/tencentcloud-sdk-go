@@ -1437,12 +1437,45 @@ func (r *DescribeAccessIndexResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAttackOverviewRequestParams struct {
+	// 查询开始时间
+	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
 
+	// 查询结束时间
+	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+
+	// 客户的Appid
+	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+
+	// 被查询的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 }
 
 type DescribeAttackOverviewRequest struct {
 	*tchttp.BaseRequest
 	
+	// 查询开始时间
+	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+
+	// 查询结束时间
+	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+
+	// 客户的Appid
+	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+
+	// 被查询的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 }
 
 func (r *DescribeAttackOverviewRequest) ToJsonString() string {
@@ -1457,7 +1490,12 @@ func (r *DescribeAttackOverviewRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "FromTime")
+	delete(f, "ToTime")
+	delete(f, "Appid")
+	delete(f, "Domain")
+	delete(f, "Edition")
+	delete(f, "InstanceID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAttackOverviewRequest has unknown keys!", "")
 	}

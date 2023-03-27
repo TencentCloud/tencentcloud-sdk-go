@@ -1642,6 +1642,162 @@ func (r *ChannelCreateSealPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateUserRolesRequestParams struct {
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 绑定角色的员工id列表
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 绑定角色的角色id列表
+	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+}
+
+type ChannelCreateUserRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 绑定角色的员工id列表
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 绑定角色的角色id列表
+	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+}
+
+func (r *ChannelCreateUserRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateUserRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "UserIds")
+	delete(f, "RoleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateUserRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateUserRolesResponseParams struct {
+	// 绑定失败的用户角色列表
+	FailedCreateRoleData []*FailedCreateRoleData `json:"FailedCreateRoleData,omitempty" name:"FailedCreateRoleData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateUserRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateUserRolesResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateUserRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateUserRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDeleteRoleUsersRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 角色Id
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 用户列表
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+type ChannelDeleteRoleUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 角色Id
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 用户列表
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+func (r *ChannelDeleteRoleUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDeleteRoleUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "RoleId")
+	delete(f, "UserIds")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDeleteRoleUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDeleteRoleUsersResponseParams struct {
+	// 角色id
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelDeleteRoleUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDeleteRoleUsersResponseParams `json:"Response"`
+}
+
+func (r *ChannelDeleteRoleUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDeleteRoleUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelDeleteSealPoliciesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -1931,6 +2087,105 @@ func (r *ChannelDescribeOrganizationSealsResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type ChannelDescribeRolesRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 查询起始偏移，最大2000
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数量，最大200
+	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询的关键字段:
+	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type ChannelDescribeRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 查询起始偏移，最大2000
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数量，最大200
+	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询的关键字段:
+	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *ChannelDescribeRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeRolesResponseParams struct {
+	// 页面偏移量，最大2000
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数量，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询角色的总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 角色信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelRoles []*ChannelRole `json:"ChannelRoles,omitempty" name:"ChannelRoles"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelDescribeRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDescribeRolesResponseParams `json:"Response"`
+}
+
+func (r *ChannelDescribeRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelGetTaskResultApiRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -2033,6 +2288,20 @@ func (r *ChannelGetTaskResultApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ChannelRole struct {
+	// 角色id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 角色状态：1-启用；2-禁用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleStatus *uint64 `json:"RoleStatus,omitempty" name:"RoleStatus"`
+}
+
 // Predefined struct for user
 type ChannelUpdateSealStatusRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
@@ -2117,7 +2386,7 @@ func (r *ChannelUpdateSealStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelVerifyPdfRequestParams struct {
-	// 合同Id，流程Id
+	// 流程ID
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
@@ -2130,7 +2399,7 @@ type ChannelVerifyPdfRequestParams struct {
 type ChannelVerifyPdfRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合同Id，流程Id
+	// 流程ID
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
@@ -2166,8 +2435,7 @@ type ChannelVerifyPdfResponseParams struct {
 	// 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
 	VerifyResult *int64 `json:"VerifyResult,omitempty" name:"VerifyResult"`
 
-	// 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域
-	// ；5-文件签名格式错误
+	// 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域；5-文件签名格式错误
 	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitempty" name:"PdfVerifyResults"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3611,6 +3879,16 @@ type ExtentServiceAuthInfo struct {
 	// 最近操作时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateOn *int64 `json:"OperateOn,omitempty" name:"OperateOn"`
+}
+
+type FailedCreateRoleData struct {
+	// 用户userId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 角色RoleId列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
 }
 
 type Filter struct {

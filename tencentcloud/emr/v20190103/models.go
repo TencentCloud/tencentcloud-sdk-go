@@ -2221,6 +2221,10 @@ type EmrListInstance struct {
 	// 体外客户端组件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutSideSoftInfo []*SoftDependInfo `json:"OutSideSoftInfo,omitempty" name:"OutSideSoftInfo"`
+
+	// 当前集群的应用场景是否支持体外客户端
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportOutsideCluster *bool `json:"IsSupportOutsideCluster,omitempty" name:"IsSupportOutsideCluster"`
 }
 
 type EmrPrice struct {

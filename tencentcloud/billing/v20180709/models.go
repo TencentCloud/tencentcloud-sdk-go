@@ -1157,10 +1157,10 @@ func (r *DescribeBillDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillListRequestParams struct {
-	// 查询范围的起始时间（包含）
+	// 查询范围的起始时间（包含）时间格式 yyyy-MM-dd HH:mm:ss 开始时间和结束时间差值小于等于六个月
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询范围的结束时间（包含）
+	// 查询范围的结束时间（包含）时间格式 yyyy-MM-dd HH:mm:ss ，开始时间和结束时间差值小于等于六个月
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 翻页偏移量，初始值为0
@@ -1205,10 +1205,10 @@ type DescribeBillListRequestParams struct {
 type DescribeBillListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询范围的起始时间（包含）
+	// 查询范围的起始时间（包含）时间格式 yyyy-MM-dd HH:mm:ss 开始时间和结束时间差值小于等于六个月
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询范围的结束时间（包含）
+	// 查询范围的结束时间（包含）时间格式 yyyy-MM-dd HH:mm:ss ，开始时间和结束时间差值小于等于六个月
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 翻页偏移量，初始值为0

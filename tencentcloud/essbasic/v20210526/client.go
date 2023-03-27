@@ -1353,6 +1353,122 @@ func (c *Client) ChannelCreateSealPolicyWithContext(ctx context.Context, request
     return
 }
 
+func NewChannelCreateUserRolesRequest() (request *ChannelCreateUserRolesRequest) {
+    request = &ChannelCreateUserRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateUserRoles")
+    
+    
+    return
+}
+
+func NewChannelCreateUserRolesResponse() (response *ChannelCreateUserRolesResponse) {
+    response = &ChannelCreateUserRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateUserRoles
+// 渠道版绑定员工角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateUserRoles(request *ChannelCreateUserRolesRequest) (response *ChannelCreateUserRolesResponse, err error) {
+    return c.ChannelCreateUserRolesWithContext(context.Background(), request)
+}
+
+// ChannelCreateUserRoles
+// 渠道版绑定员工角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateUserRolesWithContext(ctx context.Context, request *ChannelCreateUserRolesRequest) (response *ChannelCreateUserRolesResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateUserRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateUserRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateUserRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelDeleteRoleUsersRequest() (request *ChannelDeleteRoleUsersRequest) {
+    request = &ChannelDeleteRoleUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDeleteRoleUsers")
+    
+    
+    return
+}
+
+func NewChannelDeleteRoleUsersResponse() (response *ChannelDeleteRoleUsersResponse) {
+    response = &ChannelDeleteRoleUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDeleteRoleUsers
+// 渠道版删除员工绑定角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelDeleteRoleUsers(request *ChannelDeleteRoleUsersRequest) (response *ChannelDeleteRoleUsersResponse, err error) {
+    return c.ChannelDeleteRoleUsersWithContext(context.Background(), request)
+}
+
+// ChannelDeleteRoleUsers
+// 渠道版删除员工绑定角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelDeleteRoleUsersWithContext(ctx context.Context, request *ChannelDeleteRoleUsersRequest) (response *ChannelDeleteRoleUsersResponse, err error) {
+    if request == nil {
+        request = NewChannelDeleteRoleUsersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDeleteRoleUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDeleteRoleUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelDeleteSealPoliciesRequest() (request *ChannelDeleteSealPoliciesRequest) {
     request = &ChannelDeleteSealPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1547,6 +1663,66 @@ func (c *Client) ChannelDescribeOrganizationSealsWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewChannelDescribeOrganizationSealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelDescribeRolesRequest() (request *ChannelDescribeRolesRequest) {
+    request = &ChannelDescribeRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDescribeRoles")
+    
+    
+    return
+}
+
+func NewChannelDescribeRolesResponse() (response *ChannelDescribeRolesResponse) {
+    response = &ChannelDescribeRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDescribeRoles
+// 渠道办查询用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelDescribeRoles(request *ChannelDescribeRolesRequest) (response *ChannelDescribeRolesResponse, err error) {
+    return c.ChannelDescribeRolesWithContext(context.Background(), request)
+}
+
+// ChannelDescribeRoles
+// 渠道办查询用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelDescribeRolesWithContext(ctx context.Context, request *ChannelDescribeRolesRequest) (response *ChannelDescribeRolesResponse, err error) {
+    if request == nil {
+        request = NewChannelDescribeRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDescribeRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDescribeRolesResponse()
     err = c.Send(request, response)
     return
 }

@@ -6137,6 +6137,9 @@ type DescribeDefaultParamsRequestParams struct {
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
 	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
+
+	// 参数模板引擎，默认值：InnoDB
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 type DescribeDefaultParamsRequest struct {
@@ -6147,6 +6150,9 @@ type DescribeDefaultParamsRequest struct {
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
 	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
+
+	// 参数模板引擎，默认值：InnoDB
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 func (r *DescribeDefaultParamsRequest) ToJsonString() string {
@@ -6163,6 +6169,7 @@ func (r *DescribeDefaultParamsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EngineVersion")
 	delete(f, "TemplateType")
+	delete(f, "EngineType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDefaultParamsRequest has unknown keys!", "")
 	}

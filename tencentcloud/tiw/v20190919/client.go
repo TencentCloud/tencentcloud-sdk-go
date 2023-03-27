@@ -45,6 +45,184 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewApplyTiwTrialRequest() (request *ApplyTiwTrialRequest) {
+    request = &ApplyTiwTrialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "ApplyTiwTrial")
+    
+    
+    return
+}
+
+func NewApplyTiwTrialResponse() (response *ApplyTiwTrialResponse) {
+    response = &ApplyTiwTrialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyTiwTrial
+// 申请互动白板试用，默认15天
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ALREADYENABLED = "FailedOperation.AlreadyEnabled"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) ApplyTiwTrial(request *ApplyTiwTrialRequest) (response *ApplyTiwTrialResponse, err error) {
+    return c.ApplyTiwTrialWithContext(context.Background(), request)
+}
+
+// ApplyTiwTrial
+// 申请互动白板试用，默认15天
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ALREADYENABLED = "FailedOperation.AlreadyEnabled"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) ApplyTiwTrialWithContext(ctx context.Context, request *ApplyTiwTrialRequest) (response *ApplyTiwTrialResponse, err error) {
+    if request == nil {
+        request = NewApplyTiwTrialRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyTiwTrial require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyTiwTrialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateApplicationRequest() (request *CreateApplicationRequest) {
+    request = &CreateApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "CreateApplication")
+    
+    
+    return
+}
+
+func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
+    response = &CreateApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateApplication
+// 创建白板应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATIONALREADYEXISTS = "InvalidParameter.ApplicationAlreadyExists"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) CreateApplication(request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
+    return c.CreateApplicationWithContext(context.Background(), request)
+}
+
+// CreateApplication
+// 创建白板应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATIONALREADYEXISTS = "InvalidParameter.ApplicationAlreadyExists"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) CreateApplicationWithContext(ctx context.Context, request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
+    if request == nil {
+        request = NewCreateApplicationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOfflineRecordRequest() (request *CreateOfflineRecordRequest) {
+    request = &CreateOfflineRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "CreateOfflineRecord")
+    
+    
+    return
+}
+
+func NewCreateOfflineRecordResponse() (response *CreateOfflineRecordResponse) {
+    response = &CreateOfflineRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOfflineRecord
+// 创建课后录制任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_RECORDPARAMETER = "InvalidParameter.RecordParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) CreateOfflineRecord(request *CreateOfflineRecordRequest) (response *CreateOfflineRecordResponse, err error) {
+    return c.CreateOfflineRecordWithContext(context.Background(), request)
+}
+
+// CreateOfflineRecord
+// 创建课后录制任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_RECORDPARAMETER = "InvalidParameter.RecordParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) CreateOfflineRecordWithContext(ctx context.Context, request *CreateOfflineRecordRequest) (response *CreateOfflineRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateOfflineRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOfflineRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOfflineRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSnapshotTaskRequest() (request *CreateSnapshotTaskRequest) {
     request = &CreateSnapshotTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -239,6 +417,400 @@ func (c *Client) CreateVideoGenerationTaskWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeAPIServiceRequest() (request *DescribeAPIServiceRequest) {
+    request = &DescribeAPIServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeAPIService")
+    
+    
+    return
+}
+
+func NewDescribeAPIServiceResponse() (response *DescribeAPIServiceResponse) {
+    response = &DescribeAPIServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAPIService
+// 通过服务角色调用其他云产品API接口获取信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAPIService(request *DescribeAPIServiceRequest) (response *DescribeAPIServiceResponse, err error) {
+    return c.DescribeAPIServiceWithContext(context.Background(), request)
+}
+
+// DescribeAPIService
+// 通过服务角色调用其他云产品API接口获取信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAPIServiceWithContext(ctx context.Context, request *DescribeAPIServiceRequest) (response *DescribeAPIServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeAPIServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAPIService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAPIServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApplicationInfosRequest() (request *DescribeApplicationInfosRequest) {
+    request = &DescribeApplicationInfosRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeApplicationInfos")
+    
+    
+    return
+}
+
+func NewDescribeApplicationInfosResponse() (response *DescribeApplicationInfosResponse) {
+    response = &DescribeApplicationInfosResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplicationInfos
+// 查询白板应用详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeApplicationInfos(request *DescribeApplicationInfosRequest) (response *DescribeApplicationInfosResponse, err error) {
+    return c.DescribeApplicationInfosWithContext(context.Background(), request)
+}
+
+// DescribeApplicationInfos
+// 查询白板应用详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeApplicationInfosWithContext(ctx context.Context, request *DescribeApplicationInfosRequest) (response *DescribeApplicationInfosResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationInfosRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationInfos require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationInfosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApplicationUsageRequest() (request *DescribeApplicationUsageRequest) {
+    request = &DescribeApplicationUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeApplicationUsage")
+    
+    
+    return
+}
+
+func NewDescribeApplicationUsageResponse() (response *DescribeApplicationUsageResponse) {
+    response = &DescribeApplicationUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplicationUsage
+// 查询互动白板各个子产品用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TIMEFORMAT = "InvalidParameter.TimeFormat"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeApplicationUsage(request *DescribeApplicationUsageRequest) (response *DescribeApplicationUsageResponse, err error) {
+    return c.DescribeApplicationUsageWithContext(context.Background(), request)
+}
+
+// DescribeApplicationUsage
+// 查询互动白板各个子产品用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TIMEFORMAT = "InvalidParameter.TimeFormat"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeApplicationUsageWithContext(ctx context.Context, request *DescribeApplicationUsageRequest) (response *DescribeApplicationUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBoardSDKLogRequest() (request *DescribeBoardSDKLogRequest) {
+    request = &DescribeBoardSDKLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeBoardSDKLog")
+    
+    
+    return
+}
+
+func NewDescribeBoardSDKLogResponse() (response *DescribeBoardSDKLogResponse) {
+    response = &DescribeBoardSDKLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBoardSDKLog
+// 查询客户端白板日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeBoardSDKLog(request *DescribeBoardSDKLogRequest) (response *DescribeBoardSDKLogResponse, err error) {
+    return c.DescribeBoardSDKLogWithContext(context.Background(), request)
+}
+
+// DescribeBoardSDKLog
+// 查询客户端白板日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeBoardSDKLogWithContext(ctx context.Context, request *DescribeBoardSDKLogRequest) (response *DescribeBoardSDKLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeBoardSDKLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBoardSDKLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBoardSDKLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIMApplicationsRequest() (request *DescribeIMApplicationsRequest) {
+    request = &DescribeIMApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeIMApplications")
+    
+    
+    return
+}
+
+func NewDescribeIMApplicationsResponse() (response *DescribeIMApplicationsResponse) {
+    response = &DescribeIMApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIMApplications
+// 查询可用于创建白板应用的IM应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeIMApplications(request *DescribeIMApplicationsRequest) (response *DescribeIMApplicationsResponse, err error) {
+    return c.DescribeIMApplicationsWithContext(context.Background(), request)
+}
+
+// DescribeIMApplications
+// 查询可用于创建白板应用的IM应用列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeIMApplicationsWithContext(ctx context.Context, request *DescribeIMApplicationsRequest) (response *DescribeIMApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIMApplicationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIMApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIMApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOfflineRecordRequest() (request *DescribeOfflineRecordRequest) {
+    request = &DescribeOfflineRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeOfflineRecord")
+    
+    
+    return
+}
+
+func NewDescribeOfflineRecordResponse() (response *DescribeOfflineRecordResponse) {
+    response = &DescribeOfflineRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOfflineRecord
+// 查询课后录制任务的进度与录制结果等相关信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_RECORD = "FailedOperation.Record"
+//  FAILEDOPERATION_TRANSCODE = "FailedOperation.Transcode"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeOfflineRecord(request *DescribeOfflineRecordRequest) (response *DescribeOfflineRecordResponse, err error) {
+    return c.DescribeOfflineRecordWithContext(context.Background(), request)
+}
+
+// DescribeOfflineRecord
+// 查询课后录制任务的进度与录制结果等相关信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_RECORD = "FailedOperation.Record"
+//  FAILEDOPERATION_TRANSCODE = "FailedOperation.Transcode"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeOfflineRecordWithContext(ctx context.Context, request *DescribeOfflineRecordRequest) (response *DescribeOfflineRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeOfflineRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfflineRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOfflineRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOfflineRecordCallbackRequest() (request *DescribeOfflineRecordCallbackRequest) {
+    request = &DescribeOfflineRecordCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeOfflineRecordCallback")
+    
+    
+    return
+}
+
+func NewDescribeOfflineRecordCallbackResponse() (response *DescribeOfflineRecordCallbackResponse) {
+    response = &DescribeOfflineRecordCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOfflineRecordCallback
+// 查询课后录制回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeOfflineRecordCallback(request *DescribeOfflineRecordCallbackRequest) (response *DescribeOfflineRecordCallbackResponse, err error) {
+    return c.DescribeOfflineRecordCallbackWithContext(context.Background(), request)
+}
+
+// DescribeOfflineRecordCallback
+// 查询课后录制回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeOfflineRecordCallbackWithContext(ctx context.Context, request *DescribeOfflineRecordCallbackRequest) (response *DescribeOfflineRecordCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeOfflineRecordCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOfflineRecordCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOfflineRecordCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOnlineRecordRequest() (request *DescribeOnlineRecordRequest) {
     request = &DescribeOnlineRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -357,6 +929,60 @@ func (c *Client) DescribeOnlineRecordCallbackWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribePostpaidUsageRequest() (request *DescribePostpaidUsageRequest) {
+    request = &DescribePostpaidUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribePostpaidUsage")
+    
+    
+    return
+}
+
+func NewDescribePostpaidUsageResponse() (response *DescribePostpaidUsageResponse) {
+    response = &DescribePostpaidUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePostpaidUsage
+// 查询用户后付费用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TIMEFORMAT = "InvalidParameter.TimeFormat"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribePostpaidUsage(request *DescribePostpaidUsageRequest) (response *DescribePostpaidUsageResponse, err error) {
+    return c.DescribePostpaidUsageWithContext(context.Background(), request)
+}
+
+// DescribePostpaidUsage
+// 查询用户后付费用量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TIMEFORMAT = "InvalidParameter.TimeFormat"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribePostpaidUsageWithContext(ctx context.Context, request *DescribePostpaidUsageRequest) (response *DescribePostpaidUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribePostpaidUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostpaidUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePostpaidUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQualityMetricsRequest() (request *DescribeQualityMetricsRequest) {
     request = &DescribeQualityMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -409,6 +1035,60 @@ func (c *Client) DescribeQualityMetricsWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeQualityMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRoomListRequest() (request *DescribeRoomListRequest) {
+    request = &DescribeRoomListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeRoomList")
+    
+    
+    return
+}
+
+func NewDescribeRoomListResponse() (response *DescribeRoomListResponse) {
+    response = &DescribeRoomListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRoomList
+// 查询白板房间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeRoomList(request *DescribeRoomListRequest) (response *DescribeRoomListResponse, err error) {
+    return c.DescribeRoomListWithContext(context.Background(), request)
+}
+
+// DescribeRoomList
+// 查询白板房间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeRoomListWithContext(ctx context.Context, request *DescribeRoomListRequest) (response *DescribeRoomListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoomListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoomList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoomListResponse()
     err = c.Send(request, response)
     return
 }
@@ -757,6 +1437,284 @@ func (c *Client) DescribeTranscodeCallbackWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeTranscodeSearchRequest() (request *DescribeTranscodeSearchRequest) {
+    request = &DescribeTranscodeSearchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeTranscodeSearch")
+    
+    
+    return
+}
+
+func NewDescribeTranscodeSearchResponse() (response *DescribeTranscodeSearchResponse) {
+    response = &DescribeTranscodeSearchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTranscodeSearch
+// 按文档名称搜索转码任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeTranscodeSearch(request *DescribeTranscodeSearchRequest) (response *DescribeTranscodeSearchResponse, err error) {
+    return c.DescribeTranscodeSearchWithContext(context.Background(), request)
+}
+
+// DescribeTranscodeSearch
+// 按文档名称搜索转码任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeTranscodeSearchWithContext(ctx context.Context, request *DescribeTranscodeSearchRequest) (response *DescribeTranscodeSearchResponse, err error) {
+    if request == nil {
+        request = NewDescribeTranscodeSearchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTranscodeSearch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTranscodeSearchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUsageSummaryRequest() (request *DescribeUsageSummaryRequest) {
+    request = &DescribeUsageSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeUsageSummary")
+    
+    
+    return
+}
+
+func NewDescribeUsageSummaryResponse() (response *DescribeUsageSummaryResponse) {
+    response = &DescribeUsageSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUsageSummary
+// 查询指定时间段内子产品的用量汇总
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TIMEFORMAT = "InvalidParameter.TimeFormat"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeUsageSummary(request *DescribeUsageSummaryRequest) (response *DescribeUsageSummaryResponse, err error) {
+    return c.DescribeUsageSummaryWithContext(context.Background(), request)
+}
+
+// DescribeUsageSummary
+// 查询指定时间段内子产品的用量汇总
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_TIMEFORMAT = "InvalidParameter.TimeFormat"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeUsageSummaryWithContext(ctx context.Context, request *DescribeUsageSummaryRequest) (response *DescribeUsageSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeUsageSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUsageSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUsageSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserListRequest() (request *DescribeUserListRequest) {
+    request = &DescribeUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeUserList")
+    
+    
+    return
+}
+
+func NewDescribeUserListResponse() (response *DescribeUserListResponse) {
+    response = &DescribeUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserList
+// 查询白板用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeUserList(request *DescribeUserListRequest) (response *DescribeUserListResponse, err error) {
+    return c.DescribeUserListWithContext(context.Background(), request)
+}
+
+// DescribeUserList
+// 查询白板用户列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeUserListWithContext(ctx context.Context, request *DescribeUserListRequest) (response *DescribeUserListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserResourcesRequest() (request *DescribeUserResourcesRequest) {
+    request = &DescribeUserResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeUserResources")
+    
+    
+    return
+}
+
+func NewDescribeUserResourcesResponse() (response *DescribeUserResourcesResponse) {
+    response = &DescribeUserResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserResources
+// 查询客户资源列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeUserResources(request *DescribeUserResourcesRequest) (response *DescribeUserResourcesResponse, err error) {
+    return c.DescribeUserResourcesWithContext(context.Background(), request)
+}
+
+// DescribeUserResources
+// 查询客户资源列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeUserResourcesWithContext(ctx context.Context, request *DescribeUserResourcesRequest) (response *DescribeUserResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserStatusRequest() (request *DescribeUserStatusRequest) {
+    request = &DescribeUserStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeUserStatus")
+    
+    
+    return
+}
+
+func NewDescribeUserStatusResponse() (response *DescribeUserStatusResponse) {
+    response = &DescribeUserStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserStatus
+// 查询互动白板用户详情，包括是否开通了互动白板，当前互动白板服务有效期等信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ALREADYENABLED = "FailedOperation.AlreadyEnabled"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeUserStatus(request *DescribeUserStatusRequest) (response *DescribeUserStatusResponse, err error) {
+    return c.DescribeUserStatusWithContext(context.Background(), request)
+}
+
+// DescribeUserStatus
+// 查询互动白板用户详情，包括是否开通了互动白板，当前互动白板服务有效期等信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ALREADYENABLED = "FailedOperation.AlreadyEnabled"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) DescribeUserStatusWithContext(ctx context.Context, request *DescribeUserStatusRequest) (response *DescribeUserStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoGenerationTaskRequest() (request *DescribeVideoGenerationTaskRequest) {
     request = &DescribeVideoGenerationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -875,6 +1833,132 @@ func (c *Client) DescribeVideoGenerationTaskCallbackWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeWhiteboardApplicationConfigRequest() (request *DescribeWhiteboardApplicationConfigRequest) {
+    request = &DescribeWhiteboardApplicationConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardApplicationConfig")
+    
+    
+    return
+}
+
+func NewDescribeWhiteboardApplicationConfigResponse() (response *DescribeWhiteboardApplicationConfigResponse) {
+    response = &DescribeWhiteboardApplicationConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWhiteboardApplicationConfig
+// 查询白板应用任务相关的配置，包括存储桶、回调等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWhiteboardApplicationConfig(request *DescribeWhiteboardApplicationConfigRequest) (response *DescribeWhiteboardApplicationConfigResponse, err error) {
+    return c.DescribeWhiteboardApplicationConfigWithContext(context.Background(), request)
+}
+
+// DescribeWhiteboardApplicationConfig
+// 查询白板应用任务相关的配置，包括存储桶、回调等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWhiteboardApplicationConfigWithContext(ctx context.Context, request *DescribeWhiteboardApplicationConfigRequest) (response *DescribeWhiteboardApplicationConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteboardApplicationConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteboardApplicationConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWhiteboardApplicationConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteboardBucketConfigRequest() (request *DescribeWhiteboardBucketConfigRequest) {
+    request = &DescribeWhiteboardBucketConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardBucketConfig")
+    
+    
+    return
+}
+
+func NewDescribeWhiteboardBucketConfigResponse() (response *DescribeWhiteboardBucketConfigResponse) {
+    response = &DescribeWhiteboardBucketConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWhiteboardBucketConfig
+// 查询文档转码，实时录制存储桶的配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWhiteboardBucketConfig(request *DescribeWhiteboardBucketConfigRequest) (response *DescribeWhiteboardBucketConfigResponse, err error) {
+    return c.DescribeWhiteboardBucketConfigWithContext(context.Background(), request)
+}
+
+// DescribeWhiteboardBucketConfig
+// 查询文档转码，实时录制存储桶的配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWhiteboardBucketConfigWithContext(ctx context.Context, request *DescribeWhiteboardBucketConfigRequest) (response *DescribeWhiteboardBucketConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteboardBucketConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteboardBucketConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWhiteboardBucketConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWhiteboardPushRequest() (request *DescribeWhiteboardPushRequest) {
     request = &DescribeWhiteboardPushRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -989,6 +2073,316 @@ func (c *Client) DescribeWhiteboardPushCallbackWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeWhiteboardPushCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteboardPushSearchRequest() (request *DescribeWhiteboardPushSearchRequest) {
+    request = &DescribeWhiteboardPushSearchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeWhiteboardPushSearch")
+    
+    
+    return
+}
+
+func NewDescribeWhiteboardPushSearchResponse() (response *DescribeWhiteboardPushSearchResponse) {
+    response = &DescribeWhiteboardPushSearchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWhiteboardPushSearch
+// 根据房间号搜索白板推流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWhiteboardPushSearch(request *DescribeWhiteboardPushSearchRequest) (response *DescribeWhiteboardPushSearchResponse, err error) {
+    return c.DescribeWhiteboardPushSearchWithContext(context.Background(), request)
+}
+
+// DescribeWhiteboardPushSearch
+// 根据房间号搜索白板推流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWhiteboardPushSearchWithContext(ctx context.Context, request *DescribeWhiteboardPushSearchRequest) (response *DescribeWhiteboardPushSearchResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteboardPushSearchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteboardPushSearch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWhiteboardPushSearchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApplicationRequest() (request *ModifyApplicationRequest) {
+    request = &ModifyApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "ModifyApplication")
+    
+    
+    return
+}
+
+func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
+    response = &ModifyApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApplication
+// 修改白板应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
+    return c.ModifyApplicationWithContext(context.Background(), request)
+}
+
+// ModifyApplication
+// 修改白板应用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAutoRenewFlagRequest() (request *ModifyAutoRenewFlagRequest) {
+    request = &ModifyAutoRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "ModifyAutoRenewFlag")
+    
+    
+    return
+}
+
+func NewModifyAutoRenewFlagResponse() (response *ModifyAutoRenewFlagResponse) {
+    response = &ModifyAutoRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAutoRenewFlag
+// 设置白板月功能费自动续费
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) ModifyAutoRenewFlag(request *ModifyAutoRenewFlagRequest) (response *ModifyAutoRenewFlagResponse, err error) {
+    return c.ModifyAutoRenewFlagWithContext(context.Background(), request)
+}
+
+// ModifyAutoRenewFlag
+// 设置白板月功能费自动续费
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+func (c *Client) ModifyAutoRenewFlagWithContext(ctx context.Context, request *ModifyAutoRenewFlagRequest) (response *ModifyAutoRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyAutoRenewFlagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAutoRenewFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWhiteboardApplicationConfigRequest() (request *ModifyWhiteboardApplicationConfigRequest) {
+    request = &ModifyWhiteboardApplicationConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "ModifyWhiteboardApplicationConfig")
+    
+    
+    return
+}
+
+func NewModifyWhiteboardApplicationConfigResponse() (response *ModifyWhiteboardApplicationConfigResponse) {
+    response = &ModifyWhiteboardApplicationConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWhiteboardApplicationConfig
+// 修改白板应用任务相关的配置，包括存储桶、回调等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COSBUCKETINVALID = "FailedOperation.CosBucketInvalid"
+//  FAILEDOPERATION_GETCREDENTIALFAIL = "FailedOperation.GetCredentialFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  INVALIDPARAMETER_CDNDOMAINNOTFOUND = "InvalidParameter.CdnDomainNotFound"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) ModifyWhiteboardApplicationConfig(request *ModifyWhiteboardApplicationConfigRequest) (response *ModifyWhiteboardApplicationConfigResponse, err error) {
+    return c.ModifyWhiteboardApplicationConfigWithContext(context.Background(), request)
+}
+
+// ModifyWhiteboardApplicationConfig
+// 修改白板应用任务相关的配置，包括存储桶、回调等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COSBUCKETINVALID = "FailedOperation.CosBucketInvalid"
+//  FAILEDOPERATION_GETCREDENTIALFAIL = "FailedOperation.GetCredentialFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  INVALIDPARAMETER_CDNDOMAINNOTFOUND = "InvalidParameter.CdnDomainNotFound"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) ModifyWhiteboardApplicationConfigWithContext(ctx context.Context, request *ModifyWhiteboardApplicationConfigRequest) (response *ModifyWhiteboardApplicationConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyWhiteboardApplicationConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWhiteboardApplicationConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWhiteboardApplicationConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWhiteboardBucketConfigRequest() (request *ModifyWhiteboardBucketConfigRequest) {
+    request = &ModifyWhiteboardBucketConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "ModifyWhiteboardBucketConfig")
+    
+    
+    return
+}
+
+func NewModifyWhiteboardBucketConfigResponse() (response *ModifyWhiteboardBucketConfigResponse) {
+    response = &ModifyWhiteboardBucketConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWhiteboardBucketConfig
+// 设置文档转码，实时录制存储桶的配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_COSBUCKETINVALID = "FailedOperation.CosBucketInvalid"
+//  FAILEDOPERATION_GETCREDENTIALFAIL = "FailedOperation.GetCredentialFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CDNDOMAINNOTFOUND = "InvalidParameter.CdnDomainNotFound"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) ModifyWhiteboardBucketConfig(request *ModifyWhiteboardBucketConfigRequest) (response *ModifyWhiteboardBucketConfigResponse, err error) {
+    return c.ModifyWhiteboardBucketConfigWithContext(context.Background(), request)
+}
+
+// ModifyWhiteboardBucketConfig
+// 设置文档转码，实时录制存储桶的配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_COSBUCKETINVALID = "FailedOperation.CosBucketInvalid"
+//  FAILEDOPERATION_GETCREDENTIALFAIL = "FailedOperation.GetCredentialFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CDNDOMAINNOTFOUND = "InvalidParameter.CdnDomainNotFound"
+//  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) ModifyWhiteboardBucketConfigWithContext(ctx context.Context, request *ModifyWhiteboardBucketConfigRequest) (response *ModifyWhiteboardBucketConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyWhiteboardBucketConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWhiteboardBucketConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWhiteboardBucketConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -1113,6 +2507,64 @@ func (c *Client) ResumeOnlineRecordWithContext(ctx context.Context, request *Res
     request.SetContext(ctx)
     
     response = NewResumeOnlineRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetOfflineRecordCallbackRequest() (request *SetOfflineRecordCallbackRequest) {
+    request = &SetOfflineRecordCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "SetOfflineRecordCallback")
+    
+    
+    return
+}
+
+func NewSetOfflineRecordCallbackResponse() (response *SetOfflineRecordCallbackResponse) {
+    response = &SetOfflineRecordCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetOfflineRecordCallback
+// 设置课后录制回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetOfflineRecordCallback(request *SetOfflineRecordCallbackRequest) (response *SetOfflineRecordCallbackResponse, err error) {
+    return c.SetOfflineRecordCallbackWithContext(context.Background(), request)
+}
+
+// SetOfflineRecordCallback
+// 设置课后录制回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetOfflineRecordCallbackWithContext(ctx context.Context, request *SetOfflineRecordCallbackRequest) (response *SetOfflineRecordCallbackResponse, err error) {
+    if request == nil {
+        request = NewSetOfflineRecordCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetOfflineRecordCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetOfflineRecordCallbackResponse()
     err = c.Send(request, response)
     return
 }

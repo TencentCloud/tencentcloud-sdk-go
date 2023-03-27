@@ -184,10 +184,10 @@ func NewDescribeBillListResponse() (response *DescribeBillListResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeBillList(request *DescribeBillListRequest) (response *DescribeBillListResponse, err error) {
     return c.DescribeBillListWithContext(context.Background(), request)
 }
@@ -197,10 +197,10 @@ func (c *Client) DescribeBillList(request *DescribeBillListRequest) (response *D
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeBillListWithContext(ctx context.Context, request *DescribeBillListRequest) (response *DescribeBillListResponse, err error) {
     if request == nil {
         request = NewDescribeBillListRequest()

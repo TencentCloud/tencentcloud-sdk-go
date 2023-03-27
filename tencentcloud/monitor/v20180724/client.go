@@ -5588,7 +5588,7 @@ func NewDescribePrometheusInstancesOverviewResponse() (response *DescribePrometh
 }
 
 // DescribePrometheusInstancesOverview
-// 获取与云监控融合实例列表
+// 获取与 Prometheus 监控融合实例列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -5602,7 +5602,7 @@ func (c *Client) DescribePrometheusInstancesOverview(request *DescribePrometheus
 }
 
 // DescribePrometheusInstancesOverview
-// 获取与云监控融合实例列表
+// 获取与 Prometheus 监控融合实例列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -6808,7 +6808,7 @@ func NewModifyAlarmNoticeResponse() (response *ModifyAlarmNoticeResponse) {
 }
 
 // ModifyAlarmNotice
-// 云监控告警编辑告警通知模板
+// 编辑告警通知模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6824,7 +6824,7 @@ func (c *Client) ModifyAlarmNotice(request *ModifyAlarmNoticeRequest) (response 
 }
 
 // ModifyAlarmNotice
-// 云监控告警编辑告警通知模板
+// 编辑告警通知模板
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -337,7 +337,7 @@ type Component struct {
 	// CHECK_BOX - 勾选框控件，若选中填写ComponentValue 填写 true或者 false 字符串；
 	// FILL_IMAGE - 图片控件，ComponentValue 填写图片的资源 ID；
 	// DYNAMIC_TABLE - 动态表格控件；
-	// ATTACHMENT - 附件控件,ComponentValue 填写福建图片的资源 ID列表，以逗号分割；
+	// ATTACHMENT - 附件控件,ComponentValue 填写附件图片的资源 ID列表，以逗号分割；
 	// SELECTOR - 选择器控件，ComponentValue填写选择的字符串内容；
 	// DATE - 日期控件；默认是格式化为xxxx年xx月xx日字符串；
 	// DISTRICT - 省市区行政区划控件，ComponentValue填写省市区行政区划字符串内容；
@@ -1573,6 +1573,9 @@ type CreateIntegrationEmployeesRequestParams struct {
 
 	// 待创建员工的信息，Mobile和DisplayName必填
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateIntegrationEmployeesRequest struct {
@@ -1583,6 +1586,9 @@ type CreateIntegrationEmployeesRequest struct {
 
 	// 待创建员工的信息，Mobile和DisplayName必填
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateIntegrationEmployeesRequest) ToJsonString() string {
@@ -1599,6 +1605,7 @@ func (r *CreateIntegrationEmployeesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "Employees")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntegrationEmployeesRequest has unknown keys!", "")
 	}
@@ -1871,6 +1878,122 @@ func (r *CreatePrepareFlowResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePrepareFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePreparedPersonalEsignRequestParams struct {
+	// 个人用户名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 身份证件号码
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+
+	// 印章图片的base64
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
+
+	// 印章名称
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 身份证件类型:
+	// ID_CARD 身份证
+	// PASSPORT 护照
+	// HONGKONG_AND_MACAO 香港身份
+	// FOREIGN_ID_CARD 国外身份
+	// HONGKONG_MACAO_AND_TAIWAN 港台身份
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 手机号码
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 是否需开通自动签
+	EnableAutoSign *bool `json:"EnableAutoSign,omitempty" name:"EnableAutoSign"`
+}
+
+type CreatePreparedPersonalEsignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 个人用户名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 身份证件号码
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+
+	// 印章图片的base64
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
+
+	// 印章名称
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 身份证件类型:
+	// ID_CARD 身份证
+	// PASSPORT 护照
+	// HONGKONG_AND_MACAO 香港身份
+	// FOREIGN_ID_CARD 国外身份
+	// HONGKONG_MACAO_AND_TAIWAN 港台身份
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 手机号码
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 是否需开通自动签
+	EnableAutoSign *bool `json:"EnableAutoSign,omitempty" name:"EnableAutoSign"`
+}
+
+func (r *CreatePreparedPersonalEsignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePreparedPersonalEsignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserName")
+	delete(f, "IdCardNumber")
+	delete(f, "SealImage")
+	delete(f, "SealName")
+	delete(f, "Operator")
+	delete(f, "IdCardType")
+	delete(f, "Mobile")
+	delete(f, "EnableAutoSign")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreparedPersonalEsignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePreparedPersonalEsignResponseParams struct {
+	// 导入生成的印章ID
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreatePreparedPersonalEsignResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePreparedPersonalEsignResponseParams `json:"Response"`
+}
+
+func (r *CreatePreparedPersonalEsignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePreparedPersonalEsignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2286,6 +2409,9 @@ type DeleteIntegrationEmployeesRequestParams struct {
 
 	// 待移除员工的信息，userId和openId二选一，必填一个
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DeleteIntegrationEmployeesRequest struct {
@@ -2296,6 +2422,9 @@ type DeleteIntegrationEmployeesRequest struct {
 
 	// 待移除员工的信息，userId和openId二选一，必填一个
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DeleteIntegrationEmployeesRequest) ToJsonString() string {
@@ -2312,6 +2441,7 @@ func (r *DeleteIntegrationEmployeesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "Employees")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIntegrationEmployeesRequest has unknown keys!", "")
 	}
@@ -4231,7 +4361,7 @@ type Staff struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 用户在第三方平台id
+	// 用户在第三方平台id，如需在此接口提醒员工实名，该参数不传
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
@@ -4256,6 +4386,12 @@ type Staff struct {
 	// 员工是否离职：0-未离职，1-离职
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuiteJob *int64 `json:"QuiteJob,omitempty" name:"QuiteJob"`
+
+	// 员工离职交接人用户id
+	ReceiveUserId *string `json:"ReceiveUserId,omitempty" name:"ReceiveUserId"`
+
+	// 员工离职交接人用户OpenId
+	ReceiveOpenId *string `json:"ReceiveOpenId,omitempty" name:"ReceiveOpenId"`
 }
 
 type StaffRole struct {
@@ -4362,6 +4498,10 @@ type SuccessCreateStaffData struct {
 
 	// 员工在电子签平台的id
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 提示，当创建已存在未实名用户时，改字段有值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Note *string `json:"Note,omitempty" name:"Note"`
 }
 
 type SuccessDeleteStaffData struct {
@@ -4589,7 +4729,7 @@ type UserThreeFactor struct {
 
 // Predefined struct for user
 type VerifyPdfRequestParams struct {
-	// 合同Id，流程Id
+	// 流程ID
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 调用方用户信息，userId 必填
@@ -4599,7 +4739,7 @@ type VerifyPdfRequestParams struct {
 type VerifyPdfRequest struct {
 	*tchttp.BaseRequest
 	
-	// 合同Id，流程Id
+	// 流程ID
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 调用方用户信息，userId 必填
@@ -4631,8 +4771,7 @@ type VerifyPdfResponseParams struct {
 	// 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
 	VerifyResult *int64 `json:"VerifyResult,omitempty" name:"VerifyResult"`
 
-	// 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域
-	// ；5-文件签名格式错误
+	// 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域；5-文件签名格式错误
 	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitempty" name:"PdfVerifyResults"`
 
 	// 验签序列号

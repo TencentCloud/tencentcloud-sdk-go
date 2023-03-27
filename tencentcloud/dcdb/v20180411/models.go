@@ -2108,6 +2108,223 @@ func (r *DescribeDBSyncModeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDCDBInstanceDetailRequestParams struct {
+	// 实例ID，形如dcdbt-7oaxtcb7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeDCDBInstanceDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，形如dcdbt-7oaxtcb7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDCDBInstanceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDCDBInstanceDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDCDBInstanceDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDCDBInstanceDetailResponseParams struct {
+	// 实例ID，形如dcdbt-7oaxtcb7
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例状态。0-实例创建中；1-异步任务处理中；2-运行中；3-实例未初始化；-1-实例已隔离
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例目前运行状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 实例内网IP地址
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 实例内网端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 实例节点数。值为2时表示一主一从，值为3时表示一主二从
+	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 实例所在地域名称，形如ap-guangzhou
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例私有网络ID，形如vpc-r9jr0de3
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 实例私有网络子网ID，形如subnet-6rqs61o2
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+	WanStatus *int64 `json:"WanStatus,omitempty" name:"WanStatus"`
+
+	// 外网访问的域名，公网可解析
+	WanDomain *string `json:"WanDomain,omitempty" name:"WanDomain"`
+
+	// 外网IP地址，公网可访问
+	WanVip *string `json:"WanVip,omitempty" name:"WanVip"`
+
+	// 外网访问端口
+	WanPort *int64 `json:"WanPort,omitempty" name:"WanPort"`
+
+	// 实例所属项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 实例自动续费标志。0-正常续费；1-自动续费；2-到期不续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 独享集群ID
+	ExclusterId *string `json:"ExclusterId,omitempty" name:"ExclusterId"`
+
+	// 付费模式。prepaid-预付费；postpaid-按量计费
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 实例创建时间，格式为 2006-01-02 15:04:05
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例到期时间，格式为 2006-01-02 15:04:05
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 数据库版本信息
+	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
+
+	// 实例是否支持审计。0-不支持；1-支持
+	IsAuditSupported *int64 `json:"IsAuditSupported,omitempty" name:"IsAuditSupported"`
+
+	// 实例是否支持数据加密。0-不支持；1-支持
+	IsEncryptSupported *int64 `json:"IsEncryptSupported,omitempty" name:"IsEncryptSupported"`
+
+	// 实例母机机器型号
+	Machine *string `json:"Machine,omitempty" name:"Machine"`
+
+	// 实例内存大小，单位 GB，各个分片的内存大小的和
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例磁盘存储大小，单位 GB，各个分片的磁盘大小的和
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 实例存储空间使用率，计算方式为：各个分片已经使用的磁盘大小的和/各个分片的磁盘大小的和。
+	StorageUsage *float64 `json:"StorageUsage,omitempty" name:"StorageUsage"`
+
+	// 日志存储空间大小，单位GB
+	LogStorage *int64 `json:"LogStorage,omitempty" name:"LogStorage"`
+
+	// 产品类型ID
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 主DB可用区
+	MasterZone *string `json:"MasterZone,omitempty" name:"MasterZone"`
+
+	// 从DB可用区
+	SlaveZones []*string `json:"SlaveZones,omitempty" name:"SlaveZones"`
+
+	// 分片信息
+	Shards []*ShardBriefInfo `json:"Shards,omitempty" name:"Shards"`
+
+	// 内网IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip6 *string `json:"Vip6,omitempty" name:"Vip6"`
+
+	// 实例Cpu核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 实例QPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
+
+	// DB引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbEngine *string `json:"DbEngine,omitempty" name:"DbEngine"`
+
+	// 是否支持IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
+
+	// 外网IPv6地址，公网可访问
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanVipv6 *string `json:"WanVipv6,omitempty" name:"WanVipv6"`
+
+	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanStatusIpv6 *int64 `json:"WanStatusIpv6,omitempty" name:"WanStatusIpv6"`
+
+	// 外网IPv6端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanPortIpv6 *int64 `json:"WanPortIpv6,omitempty" name:"WanPortIpv6"`
+
+	// 标签信息
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// DCN标志，0-无，1-主实例，2-灾备实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnFlag *int64 `json:"DcnFlag,omitempty" name:"DcnFlag"`
+
+	// DCN状态，0-无，1-创建中，2-同步中，3-已断开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnStatus *int64 `json:"DcnStatus,omitempty" name:"DcnStatus"`
+
+	// DCN灾备实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DcnDstNum *int64 `json:"DcnDstNum,omitempty" name:"DcnDstNum"`
+
+	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例是否支持设置用户连接数限制，内核为10.1暂不支持。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsMaxUserConnectionsSupported *bool `json:"IsMaxUserConnectionsSupported,omitempty" name:"IsMaxUserConnectionsSupported"`
+
+	// 对外显示的数据库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
+
+	// 加密状态, 0-未开启，1-已开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptStatus *int64 `json:"EncryptStatus,omitempty" name:"EncryptStatus"`
+
+	// 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExclusterType *int64 `json:"ExclusterType,omitempty" name:"ExclusterType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDCDBInstanceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDCDBInstanceDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDCDBInstanceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDCDBInstanceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDCDBInstanceNodeInfoRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -5170,6 +5387,14 @@ func (r *ModifyRealServerAccessStrategyResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NodeInfo struct {
+	// DB节点ID
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// DB节点角色，取值为master或者slave
+	Role *string `json:"Role,omitempty" name:"Role"`
+}
+
 // Predefined struct for user
 type OpenDBExtranetAccessRequestParams struct {
 	// 待开放外网访问的实例ID。形如：dcdbt-ow728lmc。
@@ -5531,6 +5756,54 @@ type SecurityGroupBound struct {
 
 	// 网络协议，支持 UDP、TCP 等
 	IpProtocol *string `json:"IpProtocol,omitempty" name:"IpProtocol"`
+}
+
+type ShardBriefInfo struct {
+	// 分片SerialId
+	ShardSerialId *string `json:"ShardSerialId,omitempty" name:"ShardSerialId"`
+
+	// 分片ID，形如shard-7vg1o339
+	ShardInstanceId *string `json:"ShardInstanceId,omitempty" name:"ShardInstanceId"`
+
+	// 分片运行状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 分片运行状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 分片创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 分片内存大小，单位GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 分片磁盘大小，单位GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 分片日志磁盘空间大小，单位GB
+	LogDisk *int64 `json:"LogDisk,omitempty" name:"LogDisk"`
+
+	// 分片节点个数
+	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 分片磁盘空间使用率
+	StorageUsage *float64 `json:"StorageUsage,omitempty" name:"StorageUsage"`
+
+	// 分片Proxy版本信息
+	ProxyVersion *string `json:"ProxyVersion,omitempty" name:"ProxyVersion"`
+
+	// 分片主DB可用区
+	ShardMasterZone *string `json:"ShardMasterZone,omitempty" name:"ShardMasterZone"`
+
+	// 分片从DB可用区
+	ShardSlaveZones []*string `json:"ShardSlaveZones,omitempty" name:"ShardSlaveZones"`
+
+	// 分片Cpu核数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// DB节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodesInfo []*NodeInfo `json:"NodesInfo,omitempty" name:"NodesInfo"`
 }
 
 type ShardInfo struct {

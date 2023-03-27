@@ -3470,31 +3470,31 @@ func (r *CreateDirectConnectGatewayResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowLogRequestParams struct {
-	// 流日志实例名字
+	// 流日志实例名字。
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
-	// 资源唯一ID
+	// 资源唯一ID。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 流日志采集类型，ACCEPT|REJECT|ALL
+	// 流日志采集类型，ACCEPT|REJECT|ALL。
 	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
 
 	// 私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 流日志实例描述
+	// 流日志实例描述。
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
 
-	// 流日志存储ID
+	// 流日志存储ID。
 	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 消费端类型：cls、ckafka
+	// 消费端类型：cls、ckafka。默认值cls。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
 	// 流日志消费端信息，当消费端类型为ckafka时，必填。
@@ -3507,31 +3507,31 @@ type CreateFlowLogRequestParams struct {
 type CreateFlowLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 流日志实例名字
+	// 流日志实例名字。
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG
+	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
-	// 资源唯一ID
+	// 资源唯一ID。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 流日志采集类型，ACCEPT|REJECT|ALL
+	// 流日志采集类型，ACCEPT|REJECT|ALL。
 	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
 
 	// 私用网络ID或者统一ID，建议使用统一ID，当ResourceType为CCN时不填，其他类型必填。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 流日志实例描述
+	// 流日志实例描述。
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
 
-	// 流日志存储ID
+	// 流日志存储ID。
 	CloudLogId *string `json:"CloudLogId,omitempty" name:"CloudLogId"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 消费端类型：cls、ckafka
+	// 消费端类型：cls、ckafka。默认值cls。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
 	// 流日志消费端信息，当消费端类型为ckafka时，必填。
@@ -3572,7 +3572,7 @@ func (r *CreateFlowLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowLogResponseParams struct {
-	// 创建的流日志信息
+	// 创建的流日志信息。
 	FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4271,13 +4271,13 @@ func (r *CreateNetworkAclQuintupleEntriesResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreateNetworkAclRequestParams struct {
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 网络ACL名称，最大长度不能超过60个字节。
 	NetworkAclName *string `json:"NetworkAclName,omitempty" name:"NetworkAclName"`
 
-	// 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)。
+	// 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)。默认值三元组(TRIPLE)。
 	NetworkAclType *string `json:"NetworkAclType,omitempty" name:"NetworkAclType"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
@@ -4287,13 +4287,13 @@ type CreateNetworkAclRequestParams struct {
 type CreateNetworkAclRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 网络ACL名称，最大长度不能超过60个字节。
 	NetworkAclName *string `json:"NetworkAclName,omitempty" name:"NetworkAclName"`
 
-	// 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)。
+	// 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)。默认值三元组(TRIPLE)。
 	NetworkAclType *string `json:"NetworkAclType,omitempty" name:"NetworkAclType"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
@@ -10678,10 +10678,10 @@ type DescribeGatewayFlowMonitorDetailRequestParams struct {
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。
+	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。默认值`OutTraffic`。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	// 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
@@ -10709,10 +10709,10 @@ type DescribeGatewayFlowMonitorDetailRequest struct {
 	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。
+	// 排序字段。支持 `InPkg` `OutPkg` `InTraffic` `OutTraffic`。默认值`OutTraffic`。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	// 排序方法。顺序：`ASC`，倒序：`DESC`。默认值`DESC`。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
@@ -16798,6 +16798,7 @@ type EnableVpcEndPointConnectRequestParams struct {
 	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId"`
 
 	// 是否接受终端节点连接请求。
+	// <li> true：自动接受。</li> <li> false：不自动接受。</li>
 	AcceptFlag *bool `json:"AcceptFlag,omitempty" name:"AcceptFlag"`
 }
 
@@ -16811,6 +16812,7 @@ type EnableVpcEndPointConnectRequest struct {
 	EndPointId []*string `json:"EndPointId,omitempty" name:"EndPointId"`
 
 	// 是否接受终端节点连接请求。
+	// <li> true：自动接受。</li> <li> false：不自动接受。</li>
 	AcceptFlag *bool `json:"AcceptFlag,omitempty" name:"AcceptFlag"`
 }
 

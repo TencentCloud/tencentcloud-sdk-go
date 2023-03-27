@@ -3675,6 +3675,10 @@ type InstanceConfs struct {
 
 	// 实例概览开关，Yes/No。
 	OverviewDisplay *string `json:"OverviewDisplay,omitempty" name:"OverviewDisplay"`
+
+	// redis大key分析的自定义分割符，仅redis使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyDelimiters []*string `json:"KeyDelimiters,omitempty" name:"KeyDelimiters"`
 }
 
 type InstanceInfo struct {
@@ -3761,6 +3765,17 @@ type InstanceInfo struct {
 
 	// 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
 	AuditRunningStatus *string `json:"AuditRunningStatus,omitempty" name:"AuditRunningStatus"`
+
+	// 内网vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalVip *string `json:"InternalVip,omitempty" name:"InternalVip"`
+
+	// 内网port
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalVport *int64 `json:"InternalVport,omitempty" name:"InternalVport"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type IssueTypeInfo struct {

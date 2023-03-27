@@ -8148,6 +8148,10 @@ type SparkJobInfo struct {
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobExecutorMaxNumbers *int64 `json:"JobExecutorMaxNumbers,omitempty" name:"JobExecutorMaxNumbers"`
+
+	// 镜像版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkImageVersion *string `json:"SparkImageVersion,omitempty" name:"SparkImageVersion"`
 }
 
 type StatementOutput struct {

@@ -23,6 +23,12 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 服务已经开通，无需再次重试。
+	FAILEDOPERATION_ALREADYENABLED = "FailedOperation.AlreadyEnabled"
+
+	// COS桶无效，可能不存在或者未授权。
+	FAILEDOPERATION_COSBUCKETINVALID = "FailedOperation.CosBucketInvalid"
+
 	// 文档下载失败，请检查请求参数中URL是否正确，或者如果您使用其他的文件存储服务，请检查文件存储服务的上传带宽，文档转码服务仅提供1分钟的下载时间，如果下载不成功本次的转码请求将以失败终止。
 	FAILEDOPERATION_FILEDOWNLOADFAIL = "FailedOperation.FileDownloadFail"
 
@@ -34,6 +40,9 @@ const (
 
 	// 转码后上传结果失败，请稍候重试。
 	FAILEDOPERATION_FILEUPLOADFAIL = "FailedOperation.FileUploadFail"
+
+	// 获取临时密钥失败。
+	FAILEDOPERATION_GETCREDENTIALFAIL = "FailedOperation.GetCredentialFail"
 
 	// 录制失败，具体请参考错误描述。
 	FAILEDOPERATION_RECORD = "FailedOperation.Record"
@@ -53,17 +62,26 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 创建白板应用时该应用已存在。
+	INVALIDPARAMETER_APPLICATIONALREADYEXISTS = "InvalidParameter.ApplicationAlreadyExists"
+
 	// 参数类型不匹配。
 	INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
 
 	// 回调地址格式错误。
 	INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
 
+	// 未找到当前CDN域名。
+	INVALIDPARAMETER_CDNDOMAINNOTFOUND = "InvalidParameter.CdnDomainNotFound"
+
 	// 文档后缀名对应的格式不支持。
 	INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
 
 	// 额外指定的特殊功能不存在。
 	INVALIDPARAMETER_INVALIDEXTRA = "InvalidParameter.InvalidExtra"
+
+	// 设置应用配置任务类型不支持。
+	INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
 
 	// 实时录制参数格式不正确。
 	INVALIDPARAMETER_RECORDPARAMETER = "InvalidParameter.RecordParameter"
@@ -74,8 +92,14 @@ const (
 	// 需要查询的任务不存在。
 	INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
 
+	// 时间格式不合法解析失败。
+	INVALIDPARAMETER_TIMEFORMAT = "InvalidParameter.TimeFormat"
+
 	// 文档转码参数格式不正确。
 	INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+
+	// 解析JSON失败，可能参数数据类型不匹配。
+	INVALIDPARAMETER_UNMARSHALJSONBODYFAIL = "InvalidParameter.UnmarshalJSONBodyFail"
 
 	// 文档下载Url格式错误，请检查请求参数里的Url。
 	INVALIDPARAMETER_URLFORMATERROR = "InvalidParameter.UrlFormatError"

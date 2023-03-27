@@ -1,3 +1,367 @@
+# Release v1.0.625
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 36 次发布
+
+发布时间：2023-03-27 01:06:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVoucherUsageDetails](https://cloud.tencent.com/document/api/555/70812)
+
+	* <font color="#dd0000">**修改入参**：</font>VoucherId
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 117 次发布
+
+发布时间：2023-03-27 01:12:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDefaultParams](https://cloud.tencent.com/document/api/236/32662)
+
+	* 新增入参：EngineType
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 75 次发布
+
+发布时间：2023-03-27 01:20:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeConnectResources](https://cloud.tencent.com/document/api/597/77797)
+
+	* 新增入参：ResourceRegion
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 13 次发布
+
+发布时间：2023-03-27 01:41:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceConfs](https://cloud.tencent.com/document/api/1130/57812#InstanceConfs)
+
+	* 新增成员：KeyDelimiters
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1130/57812#InstanceInfo)
+
+	* 新增成员：InternalVip, InternalVport, CreateTime
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 53 次发布
+
+发布时间：2023-03-27 01:42:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDCDBInstanceDetail](https://cloud.tencent.com/document/api/557/89385)
+
+新增数据结构：
+
+* [NodeInfo](https://cloud.tencent.com/document/api/557/16142#NodeInfo)
+* [ShardBriefInfo](https://cloud.tencent.com/document/api/557/16142#ShardBriefInfo)
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 44 次发布
+
+发布时间：2023-03-27 01:43:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：SparkImageVersion
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 44 次发布
+
+发布时间：2023-03-27 01:51:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
+
+	* 新增成员：IsSupportOutsideCluster
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 52 次发布
+
+发布时间：2023-03-27 01:52:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1323/89386)
+
+修改接口：
+
+* [CreateIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81117)
+
+	* 新增入参：Agent
+
+* [DeleteIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81116)
+
+	* 新增入参：Agent
+
+
+修改数据结构：
+
+* [Staff](https://cloud.tencent.com/document/api/1323/70369#Staff)
+
+	* 新增成员：ReceiveUserId, ReceiveOpenId
+
+* [SuccessCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessCreateStaffData)
+
+	* 新增成员：Note
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 71 次发布
+
+发布时间：2023-03-27 01:54:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateUserRoles](https://cloud.tencent.com/document/api/1420/89389)
+* [ChannelDeleteRoleUsers](https://cloud.tencent.com/document/api/1420/89388)
+* [ChannelDescribeRoles](https://cloud.tencent.com/document/api/1420/89387)
+
+新增数据结构：
+
+* [ChannelRole](https://cloud.tencent.com/document/api/1420/61525#ChannelRole)
+* [FailedCreateRoleData](https://cloud.tencent.com/document/api/1420/61525#FailedCreateRoleData)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 52 次发布
+
+发布时间：2023-03-27 02:12:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBInstanceDetail](https://cloud.tencent.com/document/api/237/89390)
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 63 次发布
+
+发布时间：2023-03-27 02:24:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloneInstances](https://cloud.tencent.com/document/api/239/89391)
+
+
+
+## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 6 次发布
+
+发布时间：2023-03-27 02:39:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* AddLabel
+* CancelAuthorityIssuer
+* CheckDidDeploy
+* CreateDidService
+* CreateLabel
+* DeployByName
+* DownCpt
+* EnableHash
+* GetAuthoritiesList
+* GetConsortiumClusterList
+* GetConsortiumList
+* GetCptList
+* GetCredentialCptRank
+* GetCredentialIssueRank
+* GetCredentialIssueTrend
+* GetDataPanel
+* GetDeployInfo
+* GetDeployList
+* GetDidClusterDetail
+* GetDidClusterList
+* GetDidDetail
+* GetDidList
+* GetDidRegisterTrend
+* GetDidServiceDetail
+* GetDidServiceList
+* GetGroupList
+* GetLabelList
+* GetPolicyList
+* GetPublicKey
+* QueryPolicy
+* RecognizeAuthorityIssuer
+* RegisterClaimPolicy
+* RegisterIssuer
+* RemoveHash
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 29 次发布
+
+发布时间：2023-03-27 02:48:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyTiwTrial](https://cloud.tencent.com/document/api/1137/89418)
+* [CreateApplication](https://cloud.tencent.com/document/api/1137/89417)
+* [CreateOfflineRecord](https://cloud.tencent.com/document/api/1137/89396)
+* [DescribeAPIService](https://cloud.tencent.com/document/api/1137/89416)
+* [DescribeApplicationInfos](https://cloud.tencent.com/document/api/1137/89415)
+* [DescribeApplicationUsage](https://cloud.tencent.com/document/api/1137/89414)
+* [DescribeBoardSDKLog](https://cloud.tencent.com/document/api/1137/89413)
+* [DescribeIMApplications](https://cloud.tencent.com/document/api/1137/89412)
+* [DescribeOfflineRecord](https://cloud.tencent.com/document/api/1137/89395)
+* [DescribeOfflineRecordCallback](https://cloud.tencent.com/document/api/1137/89394)
+* [DescribePostpaidUsage](https://cloud.tencent.com/document/api/1137/89411)
+* [DescribeRoomList](https://cloud.tencent.com/document/api/1137/89410)
+* [DescribeTranscodeSearch](https://cloud.tencent.com/document/api/1137/89398)
+* [DescribeUsageSummary](https://cloud.tencent.com/document/api/1137/89409)
+* [DescribeUserList](https://cloud.tencent.com/document/api/1137/89408)
+* [DescribeUserResources](https://cloud.tencent.com/document/api/1137/89407)
+* [DescribeUserStatus](https://cloud.tencent.com/document/api/1137/89406)
+* [DescribeWhiteboardApplicationConfig](https://cloud.tencent.com/document/api/1137/89405)
+* [DescribeWhiteboardBucketConfig](https://cloud.tencent.com/document/api/1137/89404)
+* [DescribeWhiteboardPushSearch](https://cloud.tencent.com/document/api/1137/89397)
+* [ModifyApplication](https://cloud.tencent.com/document/api/1137/89403)
+* [ModifyAutoRenewFlag](https://cloud.tencent.com/document/api/1137/89402)
+* [ModifyWhiteboardApplicationConfig](https://cloud.tencent.com/document/api/1137/89401)
+* [ModifyWhiteboardBucketConfig](https://cloud.tencent.com/document/api/1137/89400)
+* [SetOfflineRecordCallback](https://cloud.tencent.com/document/api/1137/89393)
+
+新增数据结构：
+
+* [ApplicationItem](https://cloud.tencent.com/document/api/1137/40068#ApplicationItem)
+* [DataItem](https://cloud.tencent.com/document/api/1137/40068#DataItem)
+* [Detail](https://cloud.tencent.com/document/api/1137/40068#Detail)
+* [RoomListItem](https://cloud.tencent.com/document/api/1137/40068#RoomListItem)
+* [Tag](https://cloud.tencent.com/document/api/1137/40068#Tag)
+* [TranscodeTaskResult](https://cloud.tencent.com/document/api/1137/40068#TranscodeTaskResult)
+* [TranscodeTaskSearchResult](https://cloud.tencent.com/document/api/1137/40068#TranscodeTaskSearchResult)
+* [UserListItem](https://cloud.tencent.com/document/api/1137/40068#UserListItem)
+* [WhiteboardApplicationConfig](https://cloud.tencent.com/document/api/1137/40068#WhiteboardApplicationConfig)
+* [WhiteboardPushResult](https://cloud.tencent.com/document/api/1137/40068#WhiteboardPushResult)
+* [WhiteboardPushTaskSearchResult](https://cloud.tencent.com/document/api/1137/40068#WhiteboardPushTaskSearchResult)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 26 次发布
+
+发布时间：2023-03-27 03:03:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAttackOverview](https://cloud.tencent.com/document/api/627/87744)
+
+	* 新增入参：FromTime, ToTime, Appid, Domain, Edition, InstanceID
+
+
+
+
 # Release v1.0.624
 
 ## 弹性伸缩(as) 版本：2018-04-19

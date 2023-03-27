@@ -1213,6 +1213,64 @@ func (c *Client) DescribeDBEncryptAttributesWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeDBInstanceDetailRequest() (request *DescribeDBInstanceDetailRequest) {
+    request = &DescribeDBInstanceDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mariadb", APIVersion, "DescribeDBInstanceDetail")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceDetailResponse() (response *DescribeDBInstanceDetailResponse) {
+    response = &DescribeDBInstanceDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBInstanceDetail
+// 本接口(DescribeDBInstanceDetail)用于查询指定实例的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDBInstanceDetail(request *DescribeDBInstanceDetailRequest) (response *DescribeDBInstanceDetailResponse, err error) {
+    return c.DescribeDBInstanceDetailWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceDetail
+// 本接口(DescribeDBInstanceDetail)用于查询指定实例的详细信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDBInstanceDetailWithContext(ctx context.Context, request *DescribeDBInstanceDetailRequest) (response *DescribeDBInstanceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceSpecsRequest() (request *DescribeDBInstanceSpecsRequest) {
     request = &DescribeDBInstanceSpecsRequest{
         BaseRequest: &tchttp.BaseRequest{},

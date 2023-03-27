@@ -4170,6 +4170,9 @@ type DescribeConnectResourcesRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 }
 
 type DescribeConnectResourcesRequest struct {
@@ -4186,6 +4189,9 @@ type DescribeConnectResourcesRequest struct {
 
 	// 返回数量，默认为20，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 }
 
 func (r *DescribeConnectResourcesRequest) ToJsonString() string {
@@ -4204,6 +4210,7 @@ func (r *DescribeConnectResourcesRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ResourceRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConnectResourcesRequest has unknown keys!", "")
 	}
