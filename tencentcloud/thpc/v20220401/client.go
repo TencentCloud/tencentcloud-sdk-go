@@ -337,6 +337,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     return c.CreateClusterWithContext(context.Background(), request)
 }
@@ -359,6 +360,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     if request == nil {
         request = NewCreateClusterRequest()

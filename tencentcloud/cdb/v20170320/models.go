@@ -5483,6 +5483,9 @@ type DescribeDBInstancesRequestParams struct {
 
 	// 数据库代理 ID 。
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
+
+	// 数据库引擎类型。
+	EngineTypes []*string `json:"EngineTypes,omitempty" name:"EngineTypes"`
 }
 
 type DescribeDBInstancesRequest struct {
@@ -5589,6 +5592,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 数据库代理 ID 。
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
+
+	// 数据库引擎类型。
+	EngineTypes []*string `json:"EngineTypes,omitempty" name:"EngineTypes"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -5637,6 +5643,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "ProxyVips")
 	delete(f, "ProxyIds")
+	delete(f, "EngineTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}
@@ -8651,6 +8658,9 @@ type InstanceInfo struct {
 	// 最大延迟阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDelayTime *int64 `json:"MaxDelayTime,omitempty" name:"MaxDelayTime"`
+
+	// 实例磁盘类型，仅云盘版实例才返回该值。可能的值为 CLOUD_SSD：SSD云硬盘， CLOUD_HSSD：增强型SSD云硬盘
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 }
 
 type InstanceRebootTime struct {

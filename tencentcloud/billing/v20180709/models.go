@@ -2834,10 +2834,10 @@ type DescribeVoucherInfoRequestParams struct {
 	// 代金券名称
 	VoucherName *string `json:"VoucherName,omitempty" name:"VoucherName"`
 
-	// 发放开始时间
+	// 发放开始时间,例：2021-01-01
 	TimeFrom *string `json:"TimeFrom,omitempty" name:"TimeFrom"`
 
-	// 发放结束时间
+	// 发放结束时间，例：2021-01-01
 	TimeTo *string `json:"TimeTo,omitempty" name:"TimeTo"`
 
 	// 指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间
@@ -2883,10 +2883,10 @@ type DescribeVoucherInfoRequest struct {
 	// 代金券名称
 	VoucherName *string `json:"VoucherName,omitempty" name:"VoucherName"`
 
-	// 发放开始时间
+	// 发放开始时间,例：2021-01-01
 	TimeFrom *string `json:"TimeFrom,omitempty" name:"TimeFrom"`
 
-	// 发放结束时间
+	// 发放结束时间，例：2021-01-01
 	TimeTo *string `json:"TimeTo,omitempty" name:"TimeTo"`
 
 	// 指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间

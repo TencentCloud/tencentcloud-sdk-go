@@ -4722,6 +4722,14 @@ type LogContextInfo struct {
 	// 日志来源主机名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 原始日志(仅在日志创建索引异常时有值)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawLog *string `json:"RawLog,omitempty" name:"RawLog"`
+
+	// 日志创建索引异常原因(仅在日志创建索引异常时有值)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexStatus *string `json:"IndexStatus,omitempty" name:"IndexStatus"`
 }
 
 type LogInfo struct {
@@ -4753,6 +4761,14 @@ type LogInfo struct {
 	// 日志来源主机名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 原始日志(仅在日志创建索引异常时有值)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawLog *string `json:"RawLog,omitempty" name:"RawLog"`
+
+	// 日志创建索引异常原因(仅在日志创建索引异常时有值)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexStatus *string `json:"IndexStatus,omitempty" name:"IndexStatus"`
 }
 
 type LogItem struct {
@@ -6343,6 +6359,11 @@ type SearchLogRequestParams struct {
 	// 1：不采样，即精确分析
 	// 默认值为1
 	SamplingRate *float64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
+
+	// 检索语法规则，默认值为0。
+	// 0：Lucene语法，1：CQL语法。
+	// 详细说明参见https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules
+	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
 type SearchLogRequest struct {
@@ -6392,6 +6413,11 @@ type SearchLogRequest struct {
 	// 1：不采样，即精确分析
 	// 默认值为1
 	SamplingRate *float64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
+
+	// 检索语法规则，默认值为0。
+	// 0：Lucene语法，1：CQL语法。
+	// 详细说明参见https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules
+	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -6415,6 +6441,7 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	delete(f, "Sort")
 	delete(f, "UseNewAnalysis")
 	delete(f, "SamplingRate")
+	delete(f, "SyntaxRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
 	}

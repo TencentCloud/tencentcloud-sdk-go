@@ -2868,7 +2868,7 @@ func NewStartPublishCdnStreamResponse() (response *StartPublishCdnStreamResponse
 //
 // 2、为了确保转推链接的稳定，同一个转推任务不支持纯音频、音视频、纯视频之间的切换。
 //
-// 3、为了确保转推链接的稳定，更新转推任务接口（UpdatePublishCdnStream）不支持时更改视频参数（codec）和音频参数（codec、采样率、码率、声道数），其余参数建议全量带齐。
+// 3、为了确保转推链接的稳定，更新转推任务接口（UpdatePublishCdnStream）不支持时更改视频参数（codec）和音频参数（codec、采样率、码率、声道数），其余参数建议全量带齐，如您有转码/非转码切换，其余参数则必须全量带齐。
 //
 // 4、发起单流旁路任务时，AudioParams和VideoParams都填写表示音视频旁路，如果仅填写AudioParams表示纯音频旁路，任务进行过程中不支持纯音频到音视频的切换。音视频旁路时，VideoParams中的Width、Height、Fps、BitRate、Gop需要按照真实上行参数填写。
 //
@@ -2882,13 +2882,13 @@ func NewStartPublishCdnStreamResponse() (response *StartPublishCdnStreamResponse
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CRUNSUPPORTMETHOD = "FailedOperation.CRUnsupportMethod"
 //  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CRINTERNALERROR = "InternalError.CRInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartPublishCdnStream(request *StartPublishCdnStreamRequest) (response *StartPublishCdnStreamResponse, err error) {
     return c.StartPublishCdnStreamWithContext(context.Background(), request)
 }
@@ -2930,7 +2930,7 @@ func (c *Client) StartPublishCdnStream(request *StartPublishCdnStreamRequest) (r
 //
 // 2、为了确保转推链接的稳定，同一个转推任务不支持纯音频、音视频、纯视频之间的切换。
 //
-// 3、为了确保转推链接的稳定，更新转推任务接口（UpdatePublishCdnStream）不支持时更改视频参数（codec）和音频参数（codec、采样率、码率、声道数），其余参数建议全量带齐。
+// 3、为了确保转推链接的稳定，更新转推任务接口（UpdatePublishCdnStream）不支持时更改视频参数（codec）和音频参数（codec、采样率、码率、声道数），其余参数建议全量带齐，如您有转码/非转码切换，其余参数则必须全量带齐。
 //
 // 4、发起单流旁路任务时，AudioParams和VideoParams都填写表示音视频旁路，如果仅填写AudioParams表示纯音频旁路，任务进行过程中不支持纯音频到音视频的切换。音视频旁路时，VideoParams中的Width、Height、Fps、BitRate、Gop需要按照真实上行参数填写。
 //
@@ -2944,13 +2944,13 @@ func (c *Client) StartPublishCdnStream(request *StartPublishCdnStreamRequest) (r
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CRUNSUPPORTMETHOD = "FailedOperation.CRUnsupportMethod"
 //  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CRINTERNALERROR = "InternalError.CRInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StartPublishCdnStreamWithContext(ctx context.Context, request *StartPublishCdnStreamRequest) (response *StartPublishCdnStreamResponse, err error) {
     if request == nil {
         request = NewStartPublishCdnStreamRequest()
@@ -3202,12 +3202,11 @@ func NewUpdatePublishCdnStreamResponse() (response *UpdatePublishCdnStreamRespon
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CRUNSUPPORTMETHOD = "FailedOperation.CRUnsupportMethod"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CRINTERNALERROR = "InternalError.CRInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdatePublishCdnStream(request *UpdatePublishCdnStreamRequest) (response *UpdatePublishCdnStreamResponse, err error) {
     return c.UpdatePublishCdnStreamWithContext(context.Background(), request)
 }
@@ -3223,12 +3222,11 @@ func (c *Client) UpdatePublishCdnStream(request *UpdatePublishCdnStreamRequest) 
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CRUNSUPPORTMETHOD = "FailedOperation.CRUnsupportMethod"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CRINTERNALERROR = "InternalError.CRInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdatePublishCdnStreamWithContext(ctx context.Context, request *UpdatePublishCdnStreamRequest) (response *UpdatePublishCdnStreamResponse, err error) {
     if request == nil {
         request = NewUpdatePublishCdnStreamRequest()

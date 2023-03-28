@@ -322,6 +322,7 @@ func NewDescribeNacosServerInterfacesResponse() (response *DescribeNacosServerIn
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNacosServerInterfaces(request *DescribeNacosServerInterfacesRequest) (response *DescribeNacosServerInterfacesResponse, err error) {
     return c.DescribeNacosServerInterfacesWithContext(context.Background(), request)
 }
@@ -333,6 +334,7 @@ func (c *Client) DescribeNacosServerInterfaces(request *DescribeNacosServerInter
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeNacosServerInterfacesWithContext(ctx context.Context, request *DescribeNacosServerInterfacesRequest) (response *DescribeNacosServerInterfacesResponse, err error) {
     if request == nil {
         request = NewDescribeNacosServerInterfacesRequest()
@@ -548,6 +550,7 @@ func NewDescribeZookeeperServerInterfacesResponse() (response *DescribeZookeeper
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 func (c *Client) DescribeZookeeperServerInterfaces(request *DescribeZookeeperServerInterfacesRequest) (response *DescribeZookeeperServerInterfacesResponse, err error) {
     return c.DescribeZookeeperServerInterfacesWithContext(context.Background(), request)
@@ -558,6 +561,7 @@ func (c *Client) DescribeZookeeperServerInterfaces(request *DescribeZookeeperSer
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 func (c *Client) DescribeZookeeperServerInterfacesWithContext(ctx context.Context, request *DescribeZookeeperServerInterfacesRequest) (response *DescribeZookeeperServerInterfacesResponse, err error) {
     if request == nil {

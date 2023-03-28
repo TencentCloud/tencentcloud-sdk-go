@@ -876,6 +876,7 @@ func NewDescribeSubscribesResponse() (response *DescribeSubscribesResponse) {
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (response *DescribeSubscribesResponse, err error) {
@@ -889,6 +890,7 @@ func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (respons
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeSubscribesWithContext(ctx context.Context, request *DescribeSubscribesRequest) (response *DescribeSubscribesResponse, err error) {

@@ -3241,6 +3241,7 @@ func NewMoveResourceResponse() (response *MoveResourceResponse) {
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) MoveResource(request *MoveResourceRequest) (response *MoveResourceResponse, err error) {
     return c.MoveResourceWithContext(context.Background(), request)
 }
@@ -3265,6 +3266,7 @@ func (c *Client) MoveResource(request *MoveResourceRequest) (response *MoveResou
 //  INVALIDPARAMETERVALUE_CLASSPATH = "InvalidParameterValue.ClassPath"
 //  INVALIDPARAMETERVALUE_MATERIALID = "InvalidParameterValue.MaterialId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) MoveResourceWithContext(ctx context.Context, request *MoveResourceRequest) (response *MoveResourceResponse, err error) {
     if request == nil {
         request = NewMoveResourceRequest()

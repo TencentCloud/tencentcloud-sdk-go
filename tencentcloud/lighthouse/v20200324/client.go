@@ -1256,6 +1256,7 @@ func NewDeleteKeyPairsResponse() (response *DeleteKeyPairsResponse) {
 //  INVALIDPARAMETERVALUE_KEYPAIRIDMALFORMED = "InvalidParameterValue.KeyPairIdMalformed"
 //  RESOURCEINUSE_KEYPAIRINUSE = "ResourceInUse.KeyPairInUse"
 //  RESOURCENOTFOUND_KEYIDNOTFOUND = "ResourceNotFound.KeyIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNSUPPORTEDOPERATION_KEYPAIRBINDTOBLUEPRINTS = "UnsupportedOperation.KeyPairBindToBlueprints"
 func (c *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (response *DeleteKeyPairsResponse, err error) {
     return c.DeleteKeyPairsWithContext(context.Background(), request)
@@ -1270,6 +1271,7 @@ func (c *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (response *Delet
 //  INVALIDPARAMETERVALUE_KEYPAIRIDMALFORMED = "InvalidParameterValue.KeyPairIdMalformed"
 //  RESOURCEINUSE_KEYPAIRINUSE = "ResourceInUse.KeyPairInUse"
 //  RESOURCENOTFOUND_KEYIDNOTFOUND = "ResourceNotFound.KeyIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNSUPPORTEDOPERATION_KEYPAIRBINDTOBLUEPRINTS = "UnsupportedOperation.KeyPairBindToBlueprints"
 func (c *Client) DeleteKeyPairsWithContext(ctx context.Context, request *DeleteKeyPairsRequest) (response *DeleteKeyPairsResponse, err error) {
     if request == nil {

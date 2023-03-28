@@ -5461,7 +5461,7 @@ func NewDescribeRealTimeTaskMetricOverviewResponse() (response *DescribeRealTime
 // 实时任务运行指标概览
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRealTimeTaskMetricOverview(request *DescribeRealTimeTaskMetricOverviewRequest) (response *DescribeRealTimeTaskMetricOverviewResponse, err error) {
     return c.DescribeRealTimeTaskMetricOverviewWithContext(context.Background(), request)
 }
@@ -5470,7 +5470,7 @@ func (c *Client) DescribeRealTimeTaskMetricOverview(request *DescribeRealTimeTas
 // 实时任务运行指标概览
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRealTimeTaskMetricOverviewWithContext(ctx context.Context, request *DescribeRealTimeTaskMetricOverviewRequest) (response *DescribeRealTimeTaskMetricOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeRealTimeTaskMetricOverviewRequest()
@@ -5509,7 +5509,7 @@ func NewDescribeRealTimeTaskSpeedResponse() (response *DescribeRealTimeTaskSpeed
 // 实时任务同步速度趋势
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRealTimeTaskSpeed(request *DescribeRealTimeTaskSpeedRequest) (response *DescribeRealTimeTaskSpeedResponse, err error) {
     return c.DescribeRealTimeTaskSpeedWithContext(context.Background(), request)
 }
@@ -5518,7 +5518,7 @@ func (c *Client) DescribeRealTimeTaskSpeed(request *DescribeRealTimeTaskSpeedReq
 // 实时任务同步速度趋势
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRealTimeTaskSpeedWithContext(ctx context.Context, request *DescribeRealTimeTaskSpeedRequest) (response *DescribeRealTimeTaskSpeedResponse, err error) {
     if request == nil {
         request = NewDescribeRealTimeTaskSpeedRequest()

@@ -353,6 +353,7 @@ func NewCreateCheckSyncJobResponse() (response *CreateCheckSyncJobResponse) {
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INTRANETUSERNOTTAGGEDERROR = "UnsupportedOperation.IntraNetUserNotTaggedError"
 //  UNSUPPORTEDOPERATION_INTRANETUSERNOTTAGGEDFORSYNCJOBERROR = "UnsupportedOperation.IntraNetUserNotTaggedForSyncJobError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) CreateCheckSyncJob(request *CreateCheckSyncJobRequest) (response *CreateCheckSyncJobResponse, err error) {
     return c.CreateCheckSyncJobWithContext(context.Background(), request)
 }
@@ -365,6 +366,7 @@ func (c *Client) CreateCheckSyncJob(request *CreateCheckSyncJobRequest) (respons
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INTRANETUSERNOTTAGGEDERROR = "UnsupportedOperation.IntraNetUserNotTaggedError"
 //  UNSUPPORTEDOPERATION_INTRANETUSERNOTTAGGEDFORSYNCJOBERROR = "UnsupportedOperation.IntraNetUserNotTaggedForSyncJobError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) CreateCheckSyncJobWithContext(ctx context.Context, request *CreateCheckSyncJobRequest) (response *CreateCheckSyncJobResponse, err error) {
     if request == nil {
         request = NewCreateCheckSyncJobRequest()

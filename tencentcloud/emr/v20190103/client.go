@@ -271,6 +271,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  INVALIDPARAMETER_UNGRANTEDROLE = "InvalidParameter.UngrantedRole"
 //  INVALIDPARAMETER_ZONERESOURCENOTMATCH = "InvalidParameter.ZoneResourceNotMatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SECURITYGROUPNUMLIMITEXCEEDED = "LimitExceeded.SecurityGroupNumLimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT_DISKINSUFFICIENT = "ResourceInsufficient.DiskInsufficient"
 //  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
@@ -353,6 +354,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  INVALIDPARAMETER_UNGRANTEDROLE = "InvalidParameter.UngrantedRole"
 //  INVALIDPARAMETER_ZONERESOURCENOTMATCH = "InvalidParameter.ZoneResourceNotMatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_SECURITYGROUPNUMLIMITEXCEEDED = "LimitExceeded.SecurityGroupNumLimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT_DISKINSUFFICIENT = "ResourceInsufficient.DiskInsufficient"
 //  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
@@ -772,6 +774,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  RESOURCENOTFOUND_HARDWAREINFONOTFOUND = "ResourceNotFound.HardwareInfoNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     return c.DescribeInstancesWithContext(context.Background(), request)
 }
@@ -807,6 +810,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 //  RESOURCENOTFOUND_HARDWAREINFONOTFOUND = "ResourceNotFound.HardwareInfoNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
 func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesRequest()

@@ -23590,6 +23590,21 @@ type DescribeVulSummaryResponseParams struct {
 	// 受严重或高危漏洞影响的最新版本镜像数
 	SeriousVulNewestImageCount *int64 `json:"SeriousVulNewestImageCount,omitempty" name:"SeriousVulNewestImageCount"`
 
+	// 系统漏洞重点关注数
+	SystemVulnerabilityFocusCount *int64 `json:"SystemVulnerabilityFocusCount,omitempty" name:"SystemVulnerabilityFocusCount"`
+
+	// web漏洞重点关注数
+	WebVulnerabilityFocusCount *int64 `json:"WebVulnerabilityFocusCount,omitempty" name:"WebVulnerabilityFocusCount"`
+
+	// 受影响本地镜像数
+	SeriousVulnerabilityLocalImageCount *int64 `json:"SeriousVulnerabilityLocalImageCount,omitempty" name:"SeriousVulnerabilityLocalImageCount"`
+
+	// 受影响仓库镜像数
+	SeriousVulnerabilityRegistryImageCount *int64 `json:"SeriousVulnerabilityRegistryImageCount,omitempty" name:"SeriousVulnerabilityRegistryImageCount"`
+
+	// 应急漏洞数量
+	EmergencyVulnerabilityCount *int64 `json:"EmergencyVulnerabilityCount,omitempty" name:"EmergencyVulnerabilityCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

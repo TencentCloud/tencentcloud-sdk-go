@@ -4392,6 +4392,7 @@ func NewDescribeRocketMQTopicsResponse() (response *DescribeRocketMQTopicsRespon
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRocketMQTopics(request *DescribeRocketMQTopicsRequest) (response *DescribeRocketMQTopicsResponse, err error) {
     return c.DescribeRocketMQTopicsWithContext(context.Background(), request)
@@ -4406,6 +4407,7 @@ func (c *Client) DescribeRocketMQTopics(request *DescribeRocketMQTopicsRequest) 
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRocketMQTopicsWithContext(ctx context.Context, request *DescribeRocketMQTopicsRequest) (response *DescribeRocketMQTopicsResponse, err error) {
     if request == nil {
@@ -4450,6 +4452,7 @@ func NewDescribeRocketMQVipInstanceDetailResponse() (response *DescribeRocketMQV
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeRocketMQVipInstanceDetail(request *DescribeRocketMQVipInstanceDetailRequest) (response *DescribeRocketMQVipInstanceDetailResponse, err error) {
     return c.DescribeRocketMQVipInstanceDetailWithContext(context.Background(), request)
 }
@@ -4463,6 +4466,7 @@ func (c *Client) DescribeRocketMQVipInstanceDetail(request *DescribeRocketMQVipI
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeRocketMQVipInstanceDetailWithContext(ctx context.Context, request *DescribeRocketMQVipInstanceDetailRequest) (response *DescribeRocketMQVipInstanceDetailResponse, err error) {
     if request == nil {
         request = NewDescribeRocketMQVipInstanceDetailRequest()
@@ -4506,6 +4510,7 @@ func NewDescribeRocketMQVipInstancesResponse() (response *DescribeRocketMQVipIns
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeRocketMQVipInstances(request *DescribeRocketMQVipInstancesRequest) (response *DescribeRocketMQVipInstancesResponse, err error) {
     return c.DescribeRocketMQVipInstancesWithContext(context.Background(), request)
 }
@@ -4519,6 +4524,7 @@ func (c *Client) DescribeRocketMQVipInstances(request *DescribeRocketMQVipInstan
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeRocketMQVipInstancesWithContext(ctx context.Context, request *DescribeRocketMQVipInstancesRequest) (response *DescribeRocketMQVipInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeRocketMQVipInstancesRequest()

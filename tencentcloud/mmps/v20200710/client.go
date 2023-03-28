@@ -68,6 +68,7 @@ func NewCreateAppScanTaskResponse() (response *CreateAppScanTaskResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAppScanTask(request *CreateAppScanTaskRequest) (response *CreateAppScanTaskResponse, err error) {
     return c.CreateAppScanTaskWithContext(context.Background(), request)
 }
@@ -77,6 +78,7 @@ func (c *Client) CreateAppScanTask(request *CreateAppScanTaskRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAppScanTaskWithContext(ctx context.Context, request *CreateAppScanTaskRequest) (response *CreateAppScanTaskResponse, err error) {
     if request == nil {
         request = NewCreateAppScanTaskRequest()
@@ -116,6 +118,7 @@ func NewCreateAppScanTaskRepeatResponse() (response *CreateAppScanTaskRepeatResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAppScanTaskRepeat(request *CreateAppScanTaskRepeatRequest) (response *CreateAppScanTaskRepeatResponse, err error) {
     return c.CreateAppScanTaskRepeatWithContext(context.Background(), request)
 }
@@ -125,6 +128,7 @@ func (c *Client) CreateAppScanTaskRepeat(request *CreateAppScanTaskRepeatRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAppScanTaskRepeatWithContext(ctx context.Context, request *CreateAppScanTaskRepeatRequest) (response *CreateAppScanTaskRepeatResponse, err error) {
     if request == nil {
         request = NewCreateAppScanTaskRepeatRequest()
@@ -164,6 +168,7 @@ func NewCreateFlySecMiniAppProfessionalScanTaskResponse() (response *CreateFlySe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlySecMiniAppProfessionalScanTask(request *CreateFlySecMiniAppProfessionalScanTaskRequest) (response *CreateFlySecMiniAppProfessionalScanTaskResponse, err error) {
     return c.CreateFlySecMiniAppProfessionalScanTaskWithContext(context.Background(), request)
 }
@@ -173,6 +178,7 @@ func (c *Client) CreateFlySecMiniAppProfessionalScanTask(request *CreateFlySecMi
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlySecMiniAppProfessionalScanTaskWithContext(ctx context.Context, request *CreateFlySecMiniAppProfessionalScanTaskRequest) (response *CreateFlySecMiniAppProfessionalScanTaskResponse, err error) {
     if request == nil {
         request = NewCreateFlySecMiniAppProfessionalScanTaskRequest()
@@ -212,6 +218,7 @@ func NewCreateFlySecMiniAppScanTaskResponse() (response *CreateFlySecMiniAppScan
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlySecMiniAppScanTask(request *CreateFlySecMiniAppScanTaskRequest) (response *CreateFlySecMiniAppScanTaskResponse, err error) {
     return c.CreateFlySecMiniAppScanTaskWithContext(context.Background(), request)
 }
@@ -221,6 +228,7 @@ func (c *Client) CreateFlySecMiniAppScanTask(request *CreateFlySecMiniAppScanTas
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlySecMiniAppScanTaskWithContext(ctx context.Context, request *CreateFlySecMiniAppScanTaskRequest) (response *CreateFlySecMiniAppScanTaskResponse, err error) {
     if request == nil {
         request = NewCreateFlySecMiniAppScanTaskRequest()
@@ -260,6 +268,7 @@ func NewCreateFlySecMiniAppScanTaskRepeatResponse() (response *CreateFlySecMiniA
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlySecMiniAppScanTaskRepeat(request *CreateFlySecMiniAppScanTaskRepeatRequest) (response *CreateFlySecMiniAppScanTaskRepeatResponse, err error) {
     return c.CreateFlySecMiniAppScanTaskRepeatWithContext(context.Background(), request)
 }
@@ -269,6 +278,7 @@ func (c *Client) CreateFlySecMiniAppScanTaskRepeat(request *CreateFlySecMiniAppS
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateFlySecMiniAppScanTaskRepeatWithContext(ctx context.Context, request *CreateFlySecMiniAppScanTaskRepeatRequest) (response *CreateFlySecMiniAppScanTaskRepeatResponse, err error) {
     if request == nil {
         request = NewCreateFlySecMiniAppScanTaskRepeatRequest()
@@ -308,6 +318,7 @@ func NewDescribeBasicDiagnosisResourceUsageInfoResponse() (response *DescribeBas
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBasicDiagnosisResourceUsageInfo(request *DescribeBasicDiagnosisResourceUsageInfoRequest) (response *DescribeBasicDiagnosisResourceUsageInfoResponse, err error) {
     return c.DescribeBasicDiagnosisResourceUsageInfoWithContext(context.Background(), request)
 }
@@ -317,6 +328,7 @@ func (c *Client) DescribeBasicDiagnosisResourceUsageInfo(request *DescribeBasicD
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBasicDiagnosisResourceUsageInfoWithContext(ctx context.Context, request *DescribeBasicDiagnosisResourceUsageInfoRequest) (response *DescribeBasicDiagnosisResourceUsageInfoResponse, err error) {
     if request == nil {
         request = NewDescribeBasicDiagnosisResourceUsageInfoRequest()
@@ -356,6 +368,7 @@ func NewDescribeFlySecMiniAppReportUrlResponse() (response *DescribeFlySecMiniAp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppReportUrl(request *DescribeFlySecMiniAppReportUrlRequest) (response *DescribeFlySecMiniAppReportUrlResponse, err error) {
     return c.DescribeFlySecMiniAppReportUrlWithContext(context.Background(), request)
 }
@@ -365,6 +378,7 @@ func (c *Client) DescribeFlySecMiniAppReportUrl(request *DescribeFlySecMiniAppRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppReportUrlWithContext(ctx context.Context, request *DescribeFlySecMiniAppReportUrlRequest) (response *DescribeFlySecMiniAppReportUrlResponse, err error) {
     if request == nil {
         request = NewDescribeFlySecMiniAppReportUrlRequest()
@@ -404,6 +418,7 @@ func NewDescribeFlySecMiniAppScanReportListResponse() (response *DescribeFlySecM
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppScanReportList(request *DescribeFlySecMiniAppScanReportListRequest) (response *DescribeFlySecMiniAppScanReportListResponse, err error) {
     return c.DescribeFlySecMiniAppScanReportListWithContext(context.Background(), request)
 }
@@ -413,6 +428,7 @@ func (c *Client) DescribeFlySecMiniAppScanReportList(request *DescribeFlySecMini
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppScanReportListWithContext(ctx context.Context, request *DescribeFlySecMiniAppScanReportListRequest) (response *DescribeFlySecMiniAppScanReportListResponse, err error) {
     if request == nil {
         request = NewDescribeFlySecMiniAppScanReportListRequest()
@@ -452,6 +468,7 @@ func NewDescribeFlySecMiniAppScanTaskListResponse() (response *DescribeFlySecMin
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppScanTaskList(request *DescribeFlySecMiniAppScanTaskListRequest) (response *DescribeFlySecMiniAppScanTaskListResponse, err error) {
     return c.DescribeFlySecMiniAppScanTaskListWithContext(context.Background(), request)
 }
@@ -461,6 +478,7 @@ func (c *Client) DescribeFlySecMiniAppScanTaskList(request *DescribeFlySecMiniAp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppScanTaskListWithContext(ctx context.Context, request *DescribeFlySecMiniAppScanTaskListRequest) (response *DescribeFlySecMiniAppScanTaskListResponse, err error) {
     if request == nil {
         request = NewDescribeFlySecMiniAppScanTaskListRequest()
@@ -500,6 +518,7 @@ func NewDescribeFlySecMiniAppScanTaskParamResponse() (response *DescribeFlySecMi
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppScanTaskParam(request *DescribeFlySecMiniAppScanTaskParamRequest) (response *DescribeFlySecMiniAppScanTaskParamResponse, err error) {
     return c.DescribeFlySecMiniAppScanTaskParamWithContext(context.Background(), request)
 }
@@ -509,6 +528,7 @@ func (c *Client) DescribeFlySecMiniAppScanTaskParam(request *DescribeFlySecMiniA
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppScanTaskParamWithContext(ctx context.Context, request *DescribeFlySecMiniAppScanTaskParamRequest) (response *DescribeFlySecMiniAppScanTaskParamResponse, err error) {
     if request == nil {
         request = NewDescribeFlySecMiniAppScanTaskParamRequest()
@@ -548,6 +568,7 @@ func NewDescribeFlySecMiniAppScanTaskStatusResponse() (response *DescribeFlySecM
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppScanTaskStatus(request *DescribeFlySecMiniAppScanTaskStatusRequest) (response *DescribeFlySecMiniAppScanTaskStatusResponse, err error) {
     return c.DescribeFlySecMiniAppScanTaskStatusWithContext(context.Background(), request)
 }
@@ -557,6 +578,7 @@ func (c *Client) DescribeFlySecMiniAppScanTaskStatus(request *DescribeFlySecMini
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeFlySecMiniAppScanTaskStatusWithContext(ctx context.Context, request *DescribeFlySecMiniAppScanTaskStatusRequest) (response *DescribeFlySecMiniAppScanTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeFlySecMiniAppScanTaskStatusRequest()
@@ -596,6 +618,7 @@ func NewDescribeResourceUsageInfoResponse() (response *DescribeResourceUsageInfo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeResourceUsageInfo(request *DescribeResourceUsageInfoRequest) (response *DescribeResourceUsageInfoResponse, err error) {
     return c.DescribeResourceUsageInfoWithContext(context.Background(), request)
 }
@@ -605,6 +628,7 @@ func (c *Client) DescribeResourceUsageInfo(request *DescribeResourceUsageInfoReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeResourceUsageInfoWithContext(ctx context.Context, request *DescribeResourceUsageInfoRequest) (response *DescribeResourceUsageInfoResponse, err error) {
     if request == nil {
         request = NewDescribeResourceUsageInfoRequest()

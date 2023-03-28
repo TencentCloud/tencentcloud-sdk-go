@@ -1,3 +1,163 @@
+# Release v1.0.626
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 46 次发布
+
+发布时间：2023-03-28 01:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)
+
+	* 新增出参：AsrOfflineCount, AsrRealtimeCount
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 118 次发布
+
+发布时间：2023-03-28 01:09:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872)
+
+	* 新增入参：EngineTypes
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
+
+	* 新增成员：DiskType
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 38 次发布
+
+发布时间：2023-03-28 01:16:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* 新增入参：SyntaxRule
+
+
+修改数据结构：
+
+* [LogContextInfo](https://cloud.tencent.com/document/api/614/56471#LogContextInfo)
+
+	* 新增成员：RawLog, IndexStatus
+
+* [LogInfo](https://cloud.tencent.com/document/api/614/56471#LogInfo)
+
+	* 新增成员：RawLog, IndexStatus
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 49 次发布
+
+发布时间：2023-03-28 01:38:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyStudioProduct](https://cloud.tencent.com/document/api/1081/34983)
+
+	* 新增入参：BindStrategy
+
+
+修改数据结构：
+
+* [ProductEntry](https://cloud.tencent.com/document/api/1081/34988#ProductEntry)
+
+	* 新增成员：BindStrategy
+
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 83 次发布
+
+发布时间：2023-03-28 01:47:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/248/86040)
+
+	* 新增出参：IsFirstBind
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 37 次发布
+
+发布时间：2023-03-28 02:03:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVulSummary](https://cloud.tencent.com/document/api/1285/81610)
+
+	* 新增出参：SystemVulnerabilityFocusCount, WebVulnerabilityFocusCount, SeriousVulnerabilityLocalImageCount, SeriousVulnerabilityRegistryImageCount, EmergencyVulnerabilityCount
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 53 次发布
+
+发布时间：2023-03-28 02:14:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTrtcRoomUsage](https://cloud.tencent.com/document/api/647/89181)
+
+	* 新增入参：SdkAppid, StartTime, EndTime
+
+
+
+
 # Release v1.0.625
 
 ## 费用中心(billing) 版本：2018-07-09

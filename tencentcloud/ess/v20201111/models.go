@@ -490,7 +490,7 @@ type Component struct {
 	// 日期签署控件的字号，默认为 12
 	ComponentDateFontSize *int64 `json:"ComponentDateFontSize,omitempty" name:"ComponentDateFontSize"`
 
-	// 渠道版控件 id 标识
+	// 平台模板控件 id 标识
 	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
 
 	// 指定关键字时横坐标偏移量，单位pt
@@ -499,7 +499,7 @@ type Component struct {
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
 
-	// //渠道子客控件来源。0-渠道指定；1-用户自定义
+	// //子客控件来源。0-平台指定；1-用户自定义
 	ChannelComponentSource *uint64 `json:"ChannelComponentSource,omitempty" name:"ChannelComponentSource"`
 
 	// 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
@@ -1638,6 +1638,84 @@ func (r *CreateIntegrationEmployeesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateIntegrationUserRolesRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 绑定角色的用户id列表
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 绑定角色的角色id列表
+	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+type CreateIntegrationUserRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 绑定角色的用户id列表
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 绑定角色的角色id列表
+	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+func (r *CreateIntegrationUserRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationUserRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "UserIds")
+	delete(f, "RoleIds")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntegrationUserRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntegrationUserRolesResponseParams struct {
+	// 绑定角色失败列表信息
+	FailedCreateRoleData []*FailedCreateRoleData `json:"FailedCreateRoleData,omitempty" name:"FailedCreateRoleData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateIntegrationUserRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIntegrationUserRolesResponseParams `json:"Response"`
+}
+
+func (r *CreateIntegrationUserRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationUserRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateMultiFlowSignQRCodeRequestParams struct {
 	// 用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2474,6 +2552,84 @@ func (r *DeleteIntegrationEmployeesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteIntegrationRoleUsersRequestParams struct {
+	// 操作人
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 角色id
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 用户信息
+	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
+
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+type DeleteIntegrationRoleUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 角色id
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 用户信息
+	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
+
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+func (r *DeleteIntegrationRoleUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntegrationRoleUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "RoleId")
+	delete(f, "Users")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIntegrationRoleUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIntegrationRoleUsersResponseParams struct {
+	// 角色id
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteIntegrationRoleUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteIntegrationRoleUsersResponseParams `json:"Response"`
+}
+
+func (r *DeleteIntegrationRoleUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntegrationRoleUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteSealPoliciesRequestParams struct {
 	// 操作撤销的用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2947,12 +3103,12 @@ type DescribeFlowTemplatesRequestParams struct {
 
 	// 这个参数跟下面的IsChannel参数配合使用。
 	// IsChannel=false时，ApplicationId参数不起任何作用。
-	// IsChannel=true时，ApplicationId为空，查询所有渠道模板列表；ApplicationId不为空，查询指定渠道下的模板列表
-	// ApplicationId为空，查询渠道模板列表
+	// IsChannel=true时，ApplicationId为空，查询所有第三方应用集成平台企业模板列表；ApplicationId不为空，查询指定应用下的模板列表
+	// ApplicationId为空，查询所有应用下的模板列表
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 默认为false，查询SaaS模板库列表；
-	// 为true，查询渠道模板库管理列表
+	// 为true，查询第三方应用集成平台企业模板库管理列表
 	IsChannel *bool `json:"IsChannel,omitempty" name:"IsChannel"`
 
 	// 暂未开放
@@ -2985,12 +3141,12 @@ type DescribeFlowTemplatesRequest struct {
 
 	// 这个参数跟下面的IsChannel参数配合使用。
 	// IsChannel=false时，ApplicationId参数不起任何作用。
-	// IsChannel=true时，ApplicationId为空，查询所有渠道模板列表；ApplicationId不为空，查询指定渠道下的模板列表
-	// ApplicationId为空，查询渠道模板列表
+	// IsChannel=true时，ApplicationId为空，查询所有第三方应用集成平台企业模板列表；ApplicationId不为空，查询指定应用下的模板列表
+	// ApplicationId为空，查询所有应用下的模板列表
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 默认为false，查询SaaS模板库列表；
-	// 为true，查询渠道模板库管理列表
+	// 为true，查询第三方应用集成平台企业模板库管理列表
 	IsChannel *bool `json:"IsChannel,omitempty" name:"IsChannel"`
 
 	// 暂未开放
@@ -3202,6 +3358,106 @@ func (r *DescribeIntegrationMainOrganizationUserResponse) ToJsonString() string 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIntegrationMainOrganizationUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationRolesRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 返回最大数量，最大为200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 查询的关键字段:
+	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+	// Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0，最大为2000
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeIntegrationRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 返回最大数量，最大为200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 查询的关键字段:
+	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+	// Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0，最大为2000
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeIntegrationRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Limit")
+	delete(f, "Agent")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationRolesResponseParams struct {
+	// 偏移量，默认为0，最大为2000
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回最大数量，最大为200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 符合查询条件的总的角色数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 企业角色信息列表
+	IntegrateRoles []*IntegrateRole `json:"IntegrateRoles,omitempty" name:"IntegrateRoles"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationRolesResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationRolesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3635,6 +3891,16 @@ func (r *DisableUserAutoSignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FailedCreateRoleData struct {
+	// 用户userId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 角色id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+}
+
 type FailedCreateStaffData struct {
 	// 员工名
 	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
@@ -3657,6 +3923,23 @@ type FailedDeleteStaffData struct {
 
 	// 失败原因
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
+}
+
+type FailedUpdateStaffData struct {
+	// 用户传入的名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户传入的手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 失败原因
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 用户Id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户OpenId
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
 type FileInfo struct {
@@ -4075,6 +4358,28 @@ type GroupOrganization struct {
 	// 是否可以使用审批流引擎
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowEngineEnable *bool `json:"FlowEngineEnable,omitempty" name:"FlowEngineEnable"`
+}
+
+type IntegrateRole struct {
+	// 角色id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 角色类型：1-系统角色，2-自定义角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleStatus *uint64 `json:"RoleStatus,omitempty" name:"RoleStatus"`
+
+	// 是否是集团角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsGroupRole *bool `json:"IsGroupRole,omitempty" name:"IsGroupRole"`
+
+	// 管辖的子企业列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubOrgIdList []*string `json:"SubOrgIdList,omitempty" name:"SubOrgIdList"`
 }
 
 type IntegrationMainOrganizationUser struct {
@@ -4515,6 +4820,17 @@ type SuccessDeleteStaffData struct {
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
+type SuccessUpdateStaffData struct {
+	// 传入的用户名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 传入的手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 用户Id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
 type TemplateInfo struct {
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
@@ -4572,6 +4888,80 @@ type TemplateInfo struct {
 	// 模板是否已发布。true-已发布；false-未发布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Published *bool `json:"Published,omitempty" name:"Published"`
+}
+
+// Predefined struct for user
+type UpdateIntegrationEmployeesRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 员工信息
+	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+}
+
+type UpdateIntegrationEmployeesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 员工信息
+	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+}
+
+func (r *UpdateIntegrationEmployeesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateIntegrationEmployeesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "Employees")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIntegrationEmployeesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateIntegrationEmployeesResponseParams struct {
+	// 更新成功的用户列表
+	SuccessEmployeeData []*SuccessUpdateStaffData `json:"SuccessEmployeeData,omitempty" name:"SuccessEmployeeData"`
+
+	// 更新失败的用户列表
+	FailedEmployeeData []*FailedUpdateStaffData `json:"FailedEmployeeData,omitempty" name:"FailedEmployeeData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateIntegrationEmployeesResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateIntegrationEmployeesResponseParams `json:"Response"`
+}
+
+func (r *UpdateIntegrationEmployeesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateIntegrationEmployeesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UploadFile struct {

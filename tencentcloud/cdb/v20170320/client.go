@@ -121,10 +121,8 @@ func NewAnalyzeAuditLogsResponse() (response *AnalyzeAuditLogsResponse) {
 // 在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
-//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 func (c *Client) AnalyzeAuditLogs(request *AnalyzeAuditLogsRequest) (response *AnalyzeAuditLogsResponse, err error) {
     return c.AnalyzeAuditLogsWithContext(context.Background(), request)
 }
@@ -133,10 +131,8 @@ func (c *Client) AnalyzeAuditLogs(request *AnalyzeAuditLogsRequest) (response *A
 // 在不同过滤条件下的审计日志结果集中，选定特定的数据列进行聚合统计。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
-//  INVALIDPARAMETER_RESOURCEEXISTS = "InvalidParameter.ResourceExists"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 func (c *Client) AnalyzeAuditLogsWithContext(ctx context.Context, request *AnalyzeAuditLogsRequest) (response *AnalyzeAuditLogsResponse, err error) {
     if request == nil {
         request = NewAnalyzeAuditLogsRequest()
@@ -6549,6 +6545,7 @@ func NewModifyBackupConfigResponse() (response *ModifyBackupConfigResponse) {
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) ModifyBackupConfig(request *ModifyBackupConfigRequest) (response *ModifyBackupConfigResponse, err error) {
     return c.ModifyBackupConfigWithContext(context.Background(), request)
@@ -6564,6 +6561,7 @@ func (c *Client) ModifyBackupConfig(request *ModifyBackupConfigRequest) (respons
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
 func (c *Client) ModifyBackupConfigWithContext(ctx context.Context, request *ModifyBackupConfigRequest) (response *ModifyBackupConfigResponse, err error) {
     if request == nil {
@@ -6607,6 +6605,7 @@ func NewModifyBackupDownloadRestrictionResponse() (response *ModifyBackupDownloa
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyBackupDownloadRestriction(request *ModifyBackupDownloadRestrictionRequest) (response *ModifyBackupDownloadRestrictionResponse, err error) {
     return c.ModifyBackupDownloadRestrictionWithContext(context.Background(), request)
@@ -6620,6 +6619,7 @@ func (c *Client) ModifyBackupDownloadRestriction(request *ModifyBackupDownloadRe
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyBackupDownloadRestrictionWithContext(ctx context.Context, request *ModifyBackupDownloadRestrictionRequest) (response *ModifyBackupDownloadRestrictionResponse, err error) {
     if request == nil {
@@ -7511,6 +7511,7 @@ func NewModifyRemoteBackupConfigResponse() (response *ModifyRemoteBackupConfigRe
 // 本接口(ModifyRemoteBackupConfig)用于修改数据库异地备份配置信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigRequest) (response *ModifyRemoteBackupConfigResponse, err error) {
@@ -7521,6 +7522,7 @@ func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigReque
 // 本接口(ModifyRemoteBackupConfig)用于修改数据库异地备份配置信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyRemoteBackupConfigWithContext(ctx context.Context, request *ModifyRemoteBackupConfigRequest) (response *ModifyRemoteBackupConfigResponse, err error) {

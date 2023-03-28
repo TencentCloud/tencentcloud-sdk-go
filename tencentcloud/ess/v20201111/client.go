@@ -998,6 +998,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
 //  OPERATIONDENIED_SERVERSIGNNOALLOWCOMPONENT = "OperationDenied.ServerSignNoAllowComponent"
 //  OPERATIONDENIED_SERVERSIGNNOSUPPORTSIGNATURE = "OperationDenied.ServerSignNoSupportSignature"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
@@ -1144,6 +1145,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
 //  OPERATIONDENIED_SERVERSIGNNOALLOWCOMPONENT = "OperationDenied.ServerSignNoAllowComponent"
 //  OPERATIONDENIED_SERVERSIGNNOSUPPORTSIGNATURE = "OperationDenied.ServerSignNoSupportSignature"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
@@ -1543,6 +1545,62 @@ func (c *Client) CreateIntegrationEmployeesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewCreateIntegrationEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateIntegrationUserRolesRequest() (request *CreateIntegrationUserRolesRequest) {
+    request = &CreateIntegrationUserRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateIntegrationUserRoles")
+    
+    
+    return
+}
+
+func NewCreateIntegrationUserRolesResponse() (response *CreateIntegrationUserRolesResponse) {
+    response = &CreateIntegrationUserRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateIntegrationUserRoles
+// 集成版绑定员工角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateIntegrationUserRoles(request *CreateIntegrationUserRolesRequest) (response *CreateIntegrationUserRolesResponse, err error) {
+    return c.CreateIntegrationUserRolesWithContext(context.Background(), request)
+}
+
+// CreateIntegrationUserRoles
+// 集成版绑定员工角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateIntegrationUserRolesWithContext(ctx context.Context, request *CreateIntegrationUserRolesRequest) (response *CreateIntegrationUserRolesResponse, err error) {
+    if request == nil {
+        request = NewCreateIntegrationUserRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIntegrationUserRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIntegrationUserRolesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2569,6 +2627,68 @@ func (c *Client) DeleteIntegrationEmployeesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteIntegrationRoleUsersRequest() (request *DeleteIntegrationRoleUsersRequest) {
+    request = &DeleteIntegrationRoleUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DeleteIntegrationRoleUsers")
+    
+    
+    return
+}
+
+func NewDeleteIntegrationRoleUsersResponse() (response *DeleteIntegrationRoleUsersResponse) {
+    response = &DeleteIntegrationRoleUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteIntegrationRoleUsers
+// 解绑用户角色绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
+    return c.DeleteIntegrationRoleUsersWithContext(context.Background(), request)
+}
+
+// DeleteIntegrationRoleUsers
+// 解绑用户角色绑定关系
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DeleteIntegrationRoleUsersWithContext(ctx context.Context, request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
+    if request == nil {
+        request = NewDeleteIntegrationRoleUsersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIntegrationRoleUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIntegrationRoleUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSealPoliciesRequest() (request *DeleteSealPoliciesRequest) {
     request = &DeleteSealPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3195,6 +3315,64 @@ func (c *Client) DescribeIntegrationMainOrganizationUserWithContext(ctx context.
     return
 }
 
+func NewDescribeIntegrationRolesRequest() (request *DescribeIntegrationRolesRequest) {
+    request = &DescribeIntegrationRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeIntegrationRoles")
+    
+    
+    return
+}
+
+func NewDescribeIntegrationRolesResponse() (response *DescribeIntegrationRolesResponse) {
+    response = &DescribeIntegrationRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIntegrationRoles
+// 查询集成版角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesRequest) (response *DescribeIntegrationRolesResponse, err error) {
+    return c.DescribeIntegrationRolesWithContext(context.Background(), request)
+}
+
+// DescribeIntegrationRoles
+// 查询集成版角色
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeIntegrationRolesWithContext(ctx context.Context, request *DescribeIntegrationRolesRequest) (response *DescribeIntegrationRolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIntegrationRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIntegrationRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIntegrationRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationGroupOrganizationsRequest() (request *DescribeOrganizationGroupOrganizationsRequest) {
     request = &DescribeOrganizationGroupOrganizationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3278,6 +3456,7 @@ func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSeals
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsRequest) (response *DescribeOrganizationSealsResponse, err error) {
     return c.DescribeOrganizationSealsWithContext(context.Background(), request)
@@ -3294,6 +3473,7 @@ func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsReq
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeOrganizationSealsWithContext(ctx context.Context, request *DescribeOrganizationSealsRequest) (response *DescribeOrganizationSealsResponse, err error) {
     if request == nil {
@@ -3817,6 +3997,134 @@ func (c *Client) StartFlowWithContext(ctx context.Context, request *StartFlowReq
     request.SetContext(ctx)
     
     response = NewStartFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateIntegrationEmployeesRequest() (request *UpdateIntegrationEmployeesRequest) {
+    request = &UpdateIntegrationEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "UpdateIntegrationEmployees")
+    
+    
+    return
+}
+
+func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmployeesResponse) {
+    response = &UpdateIntegrationEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateIntegrationEmployees
+// 更新集成版员工信息(姓名，手机号，邮件)，用户实名后无法更改姓名与手机号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
+//  FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_APPROVERSIGNCOMPONENT = "MissingParameter.ApproverSignComponent"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DOCUMENTNOAVAILABLE = "OperationDenied.DocumentNoAvailable"
+//  OPERATIONDENIED_FLOWCANCELFORBID = "OperationDenied.FlowCancelForbid"
+//  OPERATIONDENIED_FLOWHASSTARTED = "OperationDenied.FlowHasStarted"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_FLOWNONEEDREVIEW = "OperationDenied.FlowNoNeedReview"
+//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
+//  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
+    return c.UpdateIntegrationEmployeesWithContext(context.Background(), request)
+}
+
+// UpdateIntegrationEmployees
+// 更新集成版员工信息(姓名，手机号，邮件)，用户实名后无法更改姓名与手机号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
+//  FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_APPROVERSIGNCOMPONENT = "MissingParameter.ApproverSignComponent"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DOCUMENTNOAVAILABLE = "OperationDenied.DocumentNoAvailable"
+//  OPERATIONDENIED_FLOWCANCELFORBID = "OperationDenied.FlowCancelForbid"
+//  OPERATIONDENIED_FLOWHASSTARTED = "OperationDenied.FlowHasStarted"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+//  OPERATIONDENIED_FLOWNONEEDREVIEW = "OperationDenied.FlowNoNeedReview"
+//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
+//  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateIntegrationEmployeesWithContext(ctx context.Context, request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
+    if request == nil {
+        request = NewUpdateIntegrationEmployeesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateIntegrationEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateIntegrationEmployeesResponse()
     err = c.Send(request, response)
     return
 }

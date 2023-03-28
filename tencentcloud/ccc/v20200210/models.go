@@ -2472,6 +2472,12 @@ type DescribeTelCallInfoResponseParams struct {
 	// 音频套餐包消耗分钟数
 	VoipCallInCount *int64 `json:"VoipCallInCount,omitempty" name:"VoipCallInCount"`
 
+	// 离线语音转文字套餐包消耗分钟数
+	AsrOfflineCount *int64 `json:"AsrOfflineCount,omitempty" name:"AsrOfflineCount"`
+
+	// 实时语音转文字套餐包消耗分钟数
+	AsrRealtimeCount *int64 `json:"AsrRealtimeCount,omitempty" name:"AsrRealtimeCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

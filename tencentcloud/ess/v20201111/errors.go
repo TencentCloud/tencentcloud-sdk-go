@@ -503,6 +503,9 @@ const (
 	// 静默签署不支持手写签名，请配置印章并使用印章重试。
 	OPERATIONDENIED_SERVERSIGNNOSUPPORTSIGNATURE = "OperationDenied.ServerSignNoSupportSignature"
 
+	// 子企业暂未加入。
+	OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+
 	// 用户不归属于当前企业，无法操作，请检查后重试。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 

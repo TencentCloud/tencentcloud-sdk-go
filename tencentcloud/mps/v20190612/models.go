@@ -8436,7 +8436,7 @@ type LiveStreamAiReviewResultItem struct {
 	// <li>ImagePorn：图片鉴黄</li>
 	// <li>ImageTerrorism：图片涉敏</li>
 	// <li>ImagePolitical：图片涉敏</li>
-	// <li>PornVoice：声音鉴黄</li>
+	// <li>VoicePorn：声音违规</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 图片鉴黄的结果，当 Type 为 ImagePorn 时有效。
@@ -8448,7 +8448,7 @@ type LiveStreamAiReviewResultItem struct {
 	// 图片涉敏的结果，当 Type 为 ImagePolitical 时有效。
 	ImagePoliticalResultSet []*LiveStreamAiReviewImagePoliticalResult `json:"ImagePoliticalResultSet,omitempty" name:"ImagePoliticalResultSet"`
 
-	// 声音鉴黄的结果，当 Type 为 PornVoice 时有效。
+	// 声音违规的结果，当 Type 为 VoicePorn 时有效。
 	VoicePornResultSet []*LiveStreamAiReviewVoicePornResult `json:"VoicePornResultSet,omitempty" name:"VoicePornResultSet"`
 }
 

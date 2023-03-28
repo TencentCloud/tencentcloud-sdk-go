@@ -278,6 +278,9 @@ const (
 	// 环境角色不存在。
 	RESOURCENOTFOUND_ENVIRONMENTROLE = "ResourceNotFound.EnvironmentRole"
 
+	// 实例不存在。
+	RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+
 	// 命名空间不存在。
 	RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 

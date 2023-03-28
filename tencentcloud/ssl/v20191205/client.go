@@ -536,6 +536,8 @@ func NewDeleteManagerResponse() (response *DeleteManagerResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_MANAGERCANNOTDELETECA = "FailedOperation.ManagerCanNotDeleteCa"
+//  FAILEDOPERATION_MANAGERCANNOTDELETECERT = "FailedOperation.ManagerCanNotDeleteCert"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
@@ -548,6 +550,8 @@ func (c *Client) DeleteManager(request *DeleteManagerRequest) (response *DeleteM
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_MANAGERCANNOTDELETECA = "FailedOperation.ManagerCanNotDeleteCa"
+//  FAILEDOPERATION_MANAGERCANNOTDELETECERT = "FailedOperation.ManagerCanNotDeleteCert"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"

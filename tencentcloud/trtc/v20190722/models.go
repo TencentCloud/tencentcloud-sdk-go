@@ -1741,12 +1741,27 @@ func (r *DescribeTrtcMcuTranscodeTimeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTrtcRoomUsageRequestParams struct {
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。
+	SdkAppid *uint64 `json:"SdkAppid,omitempty" name:"SdkAppid"`
 
+	// 查询开始时间，格式为YYYY-MM-DD HH:MM，精确到分钟级。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD HH:MM，单次查询不超过24h。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type DescribeTrtcRoomUsageRequest struct {
 	*tchttp.BaseRequest
 	
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。
+	SdkAppid *uint64 `json:"SdkAppid,omitempty" name:"SdkAppid"`
+
+	// 查询开始时间，格式为YYYY-MM-DD HH:MM，精确到分钟级。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD HH:MM，单次查询不超过24h。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeTrtcRoomUsageRequest) ToJsonString() string {
@@ -1761,7 +1776,9 @@ func (r *DescribeTrtcRoomUsageRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "SdkAppid")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrtcRoomUsageRequest has unknown keys!", "")
 	}
@@ -2487,6 +2504,9 @@ type McuLayoutParams struct {
 
 	// 指定动态布局中悬浮布局和屏幕分享布局的大画面信息，只在悬浮布局和屏幕分享布局有效。
 	MaxVideoUser *MaxVideoUser `json:"MaxVideoUser,omitempty" name:"MaxVideoUser"`
+
+	// 屏幕分享模板、悬浮模板、九宫格模版有效，画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底
+	RenderMode *uint64 `json:"RenderMode,omitempty" name:"RenderMode"`
 }
 
 type McuLayoutVolume struct {
@@ -3490,10 +3510,10 @@ type StartPublishCdnStreamRequestParams struct {
 	// 转推服务加入TRTC房间的机器人参数。
 	AgentParams *AgentParams `json:"AgentParams,omitempty" name:"AgentParams"`
 
-	// 是否转码，0表示无需转码，1表示需要转码。
+	// 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转吗费用。
 	WithTranscoding *uint64 `json:"WithTranscoding,omitempty" name:"WithTranscoding"`
 
-	// 转推流的音频编码参数。
+	// 转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
 	AudioParams *McuAudioParams `json:"AudioParams,omitempty" name:"AudioParams"`
 
 	// 转推流的视频编码参数，不填表示纯音频转推。
@@ -3502,13 +3522,13 @@ type StartPublishCdnStreamRequestParams struct {
 	// 需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
 	SingleSubscribeParams *SingleSubscribeParams `json:"SingleSubscribeParams,omitempty" name:"SingleSubscribeParams"`
 
-	// 转推的CDN参数。
+	// 转推的CDN参数。和回推房间参数必须要有一个。
 	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 
 	// 混流SEI参数
 	SeiParams *McuSeiParams `json:"SeiParams,omitempty" name:"SeiParams"`
 
-	// 回推房间信息
+	// 回推房间信息，和转推CDN参数必须要有一个。
 	FeedBackRoomParams []*McuFeedBackRoomParams `json:"FeedBackRoomParams,omitempty" name:"FeedBackRoomParams"`
 }
 
@@ -3527,10 +3547,10 @@ type StartPublishCdnStreamRequest struct {
 	// 转推服务加入TRTC房间的机器人参数。
 	AgentParams *AgentParams `json:"AgentParams,omitempty" name:"AgentParams"`
 
-	// 是否转码，0表示无需转码，1表示需要转码。
+	// 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转吗费用。
 	WithTranscoding *uint64 `json:"WithTranscoding,omitempty" name:"WithTranscoding"`
 
-	// 转推流的音频编码参数。
+	// 转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
 	AudioParams *McuAudioParams `json:"AudioParams,omitempty" name:"AudioParams"`
 
 	// 转推流的视频编码参数，不填表示纯音频转推。
@@ -3539,13 +3559,13 @@ type StartPublishCdnStreamRequest struct {
 	// 需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
 	SingleSubscribeParams *SingleSubscribeParams `json:"SingleSubscribeParams,omitempty" name:"SingleSubscribeParams"`
 
-	// 转推的CDN参数。
+	// 转推的CDN参数。和回推房间参数必须要有一个。
 	PublishCdnParams []*McuPublishCdnParam `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 
 	// 混流SEI参数
 	SeiParams *McuSeiParams `json:"SeiParams,omitempty" name:"SeiParams"`
 
-	// 回推房间信息
+	// 回推房间信息，和转推CDN参数必须要有一个。
 	FeedBackRoomParams []*McuFeedBackRoomParams `json:"FeedBackRoomParams,omitempty" name:"FeedBackRoomParams"`
 }
 

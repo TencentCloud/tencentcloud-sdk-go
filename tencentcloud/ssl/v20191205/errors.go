@@ -104,6 +104,12 @@ const (
 	// 该主域（%s）下申请的免费证书数量已达到%s个上限，请购买付费证书。
 	FAILEDOPERATION_MAINDOMAINCERTIFICATECOUNTLIMIT = "FailedOperation.MainDomainCertificateCountLimit"
 
+	// 管理人信息已提交CA，不可以删除。
+	FAILEDOPERATION_MANAGERCANNOTDELETECA = "FailedOperation.ManagerCanNotDeleteCa"
+
+	// 管理人信息已关联证书，不可以删除。
+	FAILEDOPERATION_MANAGERCANNOTDELETECERT = "FailedOperation.ManagerCanNotDeleteCert"
+
 	// 当前 CA 机构访问繁忙，请稍后重试。
 	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
 

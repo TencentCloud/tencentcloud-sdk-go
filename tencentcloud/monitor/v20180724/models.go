@@ -8111,6 +8111,9 @@ type DescribePrometheusClusterAgentsResponseParams struct {
 	// 被关联集群总量
 	Total *uint64 `json:"Total,omitempty" name:"Total"`
 
+	// 是否为首次绑定，需要安装预聚合规则
+	IsFirstBind *bool `json:"IsFirstBind,omitempty" name:"IsFirstBind"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

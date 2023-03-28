@@ -4723,6 +4723,7 @@ func NewDescribeBaselineEffectHostListResponse() (response *DescribeBaselineEffe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4737,6 +4738,7 @@ func (c *Client) DescribeBaselineEffectHostList(request *DescribeBaselineEffectH
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

@@ -1244,13 +1244,13 @@ type CreateStudioProductRequestParams struct {
 	// 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
 	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 
-	// 产品类型 填写 ( 0 普通产品 )
+	// 产品类型 填写 ( 0 普通产品 ， 5 网关产品)
 	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
 
-	// 加密类型 加密类型，1表示证书认证，2表示签名认证。
+	// 加密类型 ，1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
 	EncryptionType *string `json:"EncryptionType,omitempty" name:"EncryptionType"`
 
-	// 连接类型 可以填写 wifi cellular else
+	// 连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
 	// 数据协议 (1 使用物模型 2 为自定义)
@@ -1272,13 +1272,13 @@ type CreateStudioProductRequest struct {
 	// 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
 	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 
-	// 产品类型 填写 ( 0 普通产品 )
+	// 产品类型 填写 ( 0 普通产品 ， 5 网关产品)
 	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
 
-	// 加密类型 加密类型，1表示证书认证，2表示签名认证。
+	// 加密类型 ，1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
 	EncryptionType *string `json:"EncryptionType,omitempty" name:"EncryptionType"`
 
-	// 连接类型 可以填写 wifi cellular else
+	// 连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
 	// 数据协议 (1 使用物模型 2 为自定义)
@@ -6270,6 +6270,9 @@ type ModifyStudioProductRequestParams struct {
 
 	// 是否打开二进制转Json功能, 取值为字符串 true/false
 	EnableProductScript *string `json:"EnableProductScript,omitempty" name:"EnableProductScript"`
+
+	// 传1或者2；1代表强踢，2代表非强踢。传其它值不做任何处理
+	BindStrategy *uint64 `json:"BindStrategy,omitempty" name:"BindStrategy"`
 }
 
 type ModifyStudioProductRequest struct {
@@ -6289,6 +6292,9 @@ type ModifyStudioProductRequest struct {
 
 	// 是否打开二进制转Json功能, 取值为字符串 true/false
 	EnableProductScript *string `json:"EnableProductScript,omitempty" name:"EnableProductScript"`
+
+	// 传1或者2；1代表强踢，2代表非强踢。传其它值不做任何处理
+	BindStrategy *uint64 `json:"BindStrategy,omitempty" name:"BindStrategy"`
 }
 
 func (r *ModifyStudioProductRequest) ToJsonString() string {
@@ -6308,6 +6314,7 @@ func (r *ModifyStudioProductRequest) FromJsonString(s string) error {
 	delete(f, "ProductDesc")
 	delete(f, "ModuleId")
 	delete(f, "EnableProductScript")
+	delete(f, "BindStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStudioProductRequest has unknown keys!", "")
 	}
@@ -6576,19 +6583,20 @@ type ProductEntry struct {
 	// 产品分组模板ID
 	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 
-	// 加密类型
+	// 加密类型。1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
 	EncryptionType *string `json:"EncryptionType,omitempty" name:"EncryptionType"`
 
-	// 连接类型
+	// 连接类型。如：
+	// wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
-	// 数据协议
+	// 数据协议 (1 使用物模型 2 为自定义类型)
 	DataProtocol *int64 `json:"DataProtocol,omitempty" name:"DataProtocol"`
 
 	// 产品描述
 	ProductDesc *string `json:"ProductDesc,omitempty" name:"ProductDesc"`
 
-	// 状态
+	// 状态 如：all 全部, dev 开发中, audit 审核中 released 已发布
 	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
 
 	// 创建时间
@@ -6600,7 +6608,7 @@ type ProductEntry struct {
 	// 区域
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 产品类型
+	// 产品类型。如： 0 普通产品 ， 5 网关产品
 	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
 
 	// 项目ID
@@ -6620,6 +6628,10 @@ type ProductEntry struct {
 	// 创建者昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
+
+	// 绑定策略（1：强踢；2：非强踢；0：表示无意义）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindStrategy *uint64 `json:"BindStrategy,omitempty" name:"BindStrategy"`
 }
 
 type ProductModelDefinition struct {

@@ -1255,6 +1255,7 @@ func NewCreateFileConfigResponse() (response *CreateFileConfigResponse) {
 //  INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = "InvalidParameterValue.FileConfigFilePathInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGVERSIONINVALID = "InvalidParameterValue.FileConfigVersionInvalid"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 //  MISSINGPARAMETER_FILECONFIGFILEVALUEREQUIRED = "MissingParameter.FileConfigFileValueRequired"
 func (c *Client) CreateFileConfig(request *CreateFileConfigRequest) (response *CreateFileConfigResponse, err error) {
@@ -1275,6 +1276,7 @@ func (c *Client) CreateFileConfig(request *CreateFileConfigRequest) (response *C
 //  INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = "InvalidParameterValue.FileConfigFilePathInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
 //  INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGVERSIONINVALID = "InvalidParameterValue.FileConfigVersionInvalid"
 //  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 //  MISSINGPARAMETER_FILECONFIGFILEVALUEREQUIRED = "MissingParameter.FileConfigFileValueRequired"
 func (c *Client) CreateFileConfigWithContext(ctx context.Context, request *CreateFileConfigRequest) (response *CreateFileConfigResponse, err error) {
@@ -5315,6 +5317,7 @@ func NewDescribeConfigsResponse() (response *DescribeConfigsResponse) {
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *DescribeConfigsResponse, err error) {
@@ -5331,6 +5334,7 @@ func (c *Client) DescribeConfigs(request *DescribeConfigsRequest) (response *Des
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeConfigsWithContext(ctx context.Context, request *DescribeConfigsRequest) (response *DescribeConfigsResponse, err error) {
@@ -11191,6 +11195,7 @@ func NewOperateApplicationTcrBindingResponse() (response *OperateApplicationTcrB
 // 绑定解绑tcr仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_IMAGEREPOTCRBINDERROR = "FailedOperation.ImagerepoTcrBindError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
@@ -11206,6 +11211,7 @@ func (c *Client) OperateApplicationTcrBinding(request *OperateApplicationTcrBind
 // 绑定解绑tcr仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_IMAGEREPOTCRBINDERROR = "FailedOperation.ImagerepoTcrBindError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
@@ -11251,6 +11257,7 @@ func NewReassociateBusinessLogConfigResponse() (response *ReassociateBusinessLog
 // 重关联业务日志配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_IMAGEREPOTCRBINDERROR = "FailedOperation.ImagerepoTcrBindError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
@@ -11266,6 +11273,7 @@ func (c *Client) ReassociateBusinessLogConfig(request *ReassociateBusinessLogCon
 // 重关联业务日志配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_IMAGEREPOTCRBINDERROR = "FailedOperation.ImagerepoTcrBindError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"

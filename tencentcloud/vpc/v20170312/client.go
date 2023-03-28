@@ -1103,6 +1103,7 @@ func NewAssociateDhcpIpWithAddressIpResponse() (response *AssociateDhcpIpWithAdd
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_BINDEIP = "UnsupportedOperation.BindEIP"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDLOCALZONEEIP = "UnsupportedOperation.UnsupportedBindLocalZoneEIP"
 func (c *Client) AssociateDhcpIpWithAddressIp(request *AssociateDhcpIpWithAddressIpRequest) (response *AssociateDhcpIpWithAddressIpResponse, err error) {
@@ -1121,6 +1122,7 @@ func (c *Client) AssociateDhcpIpWithAddressIp(request *AssociateDhcpIpWithAddres
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_BINDEIP = "UnsupportedOperation.BindEIP"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDLOCALZONEEIP = "UnsupportedOperation.UnsupportedBindLocalZoneEIP"
 func (c *Client) AssociateDhcpIpWithAddressIpWithContext(ctx context.Context, request *AssociateDhcpIpWithAddressIpRequest) (response *AssociateDhcpIpWithAddressIpResponse, err error) {
@@ -2167,6 +2169,7 @@ func NewCreateAndAttachNetworkInterfaceResponse() (response *CreateAndAttachNetw
 // >
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -2224,6 +2227,7 @@ func (c *Client) CreateAndAttachNetworkInterface(request *CreateAndAttachNetwork
 // >
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -2818,6 +2822,7 @@ func NewCreateDhcpIpResponse() (response *CreateDhcpIpResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2835,6 +2840,7 @@ func (c *Client) CreateDhcpIp(request *CreateDhcpIpRequest) (response *CreateDhc
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -11886,6 +11892,7 @@ func NewDescribeVpcIpv6AddressesResponse() (response *DescribeVpcIpv6AddressesRe
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVpcIpv6Addresses(request *DescribeVpcIpv6AddressesRequest) (response *DescribeVpcIpv6AddressesResponse, err error) {
     return c.DescribeVpcIpv6AddressesWithContext(context.Background(), request)
@@ -11898,6 +11905,7 @@ func (c *Client) DescribeVpcIpv6Addresses(request *DescribeVpcIpv6AddressesReque
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeVpcIpv6AddressesWithContext(ctx context.Context, request *DescribeVpcIpv6AddressesRequest) (response *DescribeVpcIpv6AddressesResponse, err error) {
     if request == nil {
@@ -12000,6 +12008,7 @@ func NewDescribeVpcLimitsResponse() (response *DescribeVpcLimitsResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeVpcLimits(request *DescribeVpcLimitsRequest) (response *DescribeVpcLimitsResponse, err error) {
     return c.DescribeVpcLimitsWithContext(context.Background(), request)
 }
@@ -12071,6 +12080,7 @@ func (c *Client) DescribeVpcLimits(request *DescribeVpcLimitsRequest) (response 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeVpcLimitsWithContext(ctx context.Context, request *DescribeVpcLimitsRequest) (response *DescribeVpcLimitsResponse, err error) {
     if request == nil {
         request = NewDescribeVpcLimitsRequest()
@@ -17411,6 +17421,7 @@ func NewModifyVpcEndPointServiceWhiteListResponse() (response *ModifyVpcEndPoint
 // 本接口（ModifyVpcEndPointServiceWhiteList）用于修改终端节点服务白名单属性。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -17423,6 +17434,7 @@ func (c *Client) ModifyVpcEndPointServiceWhiteList(request *ModifyVpcEndPointSer
 // 本接口（ModifyVpcEndPointServiceWhiteList）用于修改终端节点服务白名单属性。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -18512,6 +18524,7 @@ func NewReplaceSecurityGroupPolicyResponse() (response *ReplaceSecurityGroupPoli
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = "UnsupportedOperation.ClbPolicyExceedLimit"
 //  UNSUPPORTEDOPERATION_CLBPOLICYLIMIT = "UnsupportedOperation.ClbPolicyLimit"
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
 //  UNSUPPORTEDOPERATION_LOCKEDRESOURCES = "UnsupportedOperation.LockedResources"
@@ -18541,6 +18554,7 @@ func (c *Client) ReplaceSecurityGroupPolicy(request *ReplaceSecurityGroupPolicyR
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = "UnsupportedOperation.ClbPolicyExceedLimit"
 //  UNSUPPORTEDOPERATION_CLBPOLICYLIMIT = "UnsupportedOperation.ClbPolicyLimit"
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
 //  UNSUPPORTEDOPERATION_LOCKEDRESOURCES = "UnsupportedOperation.LockedResources"

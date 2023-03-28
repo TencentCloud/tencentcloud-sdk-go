@@ -622,6 +622,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
+//  INVALIDPARAMETER_SIGNCOMPONENTS = "InvalidParameter.SignComponents"
 //  INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
 //  INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -685,6 +686,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
+//  INVALIDPARAMETER_SIGNCOMPONENTS = "InvalidParameter.SignComponents"
 //  INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
 //  INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3068,6 +3070,7 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (response *ModifyExtendedServiceResponse, err error) {
     return c.ModifyExtendedServiceWithContext(context.Background(), request)
@@ -3082,6 +3085,7 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ModifyExtendedServiceWithContext(ctx context.Context, request *ModifyExtendedServiceRequest) (response *ModifyExtendedServiceResponse, err error) {
     if request == nil {
