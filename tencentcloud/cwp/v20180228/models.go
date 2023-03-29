@@ -12003,7 +12003,7 @@ func (r *DescribeExportMachinesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeExportMachinesResponseParams struct {
-	// 任务id
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -16084,10 +16084,10 @@ func (r *DescribeSearchExportListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSearchExportListResponseParams struct {
-	// 导出的任务号
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 下载地址
+	// 该参数作废
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -18842,7 +18842,7 @@ type ExportAttackLogsResponseParams struct {
 	// 已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务ID 可通过ExportTasks接口下载
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -18929,11 +18929,11 @@ func (r *ExportBaselineEffectHostListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportBaselineEffectHostListResponseParams struct {
-	// 下载地址
+	// 该参数已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务id 可通过 ExportTasks接口下载
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19289,7 +19289,7 @@ type ExportBaselineListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出文件Id 可通过ExportTasks接口下载
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19475,7 +19475,7 @@ type ExportBashEventsResponseParams struct {
 	// 导出文件下载链接地址。
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务ID
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19532,10 +19532,10 @@ func (r *ExportBruteAttacksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportBruteAttacksResponseParams struct {
-	// 导出文件下载链接地址。
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务ID
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19592,10 +19592,10 @@ func (r *ExportIgnoreBaselineRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportIgnoreBaselineRuleResponseParams struct {
-	// 文件下载地址
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务Id , 可通过ExportTasks 接口下载
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19661,10 +19661,10 @@ func (r *ExportIgnoreRuleEffectHostListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportIgnoreRuleEffectHostListResponseParams struct {
-	// 导出文件下载地址
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务Id , 可通过ExportTasks 接口下载
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19749,7 +19749,7 @@ type ExportLicenseDetailResponseParams struct {
 	// 下载地址,该字段废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 任务ID,可通过任务ID去查下载任务
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19806,10 +19806,10 @@ func (r *ExportMaliciousRequestsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportMaliciousRequestsResponseParams struct {
-	// 导出文件下载链接地址。
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务Id , 可通过ExportTasks 接口下载
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19906,10 +19906,10 @@ func (r *ExportMalwaresRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportMalwaresResponseParams struct {
-	// 导出文件下载链接地址。
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 任务id
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -19966,10 +19966,10 @@ func (r *ExportNonlocalLoginPlacesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportNonlocalLoginPlacesResponseParams struct {
-	// 导出文件下载链接地址。
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务ID
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -20026,10 +20026,10 @@ func (r *ExportPrivilegeEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportPrivilegeEventsResponseParams struct {
-	// 导出文件下载链接地址。
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出任务ID
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -20102,7 +20102,7 @@ func (r *ExportProtectDirListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportProtectDirListResponseParams struct {
-	// 任务ID
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -20159,10 +20159,10 @@ func (r *ExportReverseShellEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportReverseShellEventsResponseParams struct {
-	// 导出文件下载链接地址。
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 任务id
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -20233,7 +20233,7 @@ func (r *ExportScanTaskDetailsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportScanTaskDetailsResponseParams struct {
-	// 导出本次检测Excel的任务Id（不同于入参的本次检测任务id）
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址(不同于入参的本次检测任务id)
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -20414,10 +20414,10 @@ func (r *ExportVulDetectionExcelRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportVulDetectionExcelResponseParams struct {
-	// 导出文件下载链接地址
+	// 该参数已废弃
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 导出本次漏洞检测Excel的任务Id（不同于入参的本次漏洞检测任务id）
+	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址（不同于入参的本次漏洞检测任务id）
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -24888,14 +24888,14 @@ type UpdateMachineTagsRequestParams struct {
 	// 机器 Quuid
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
+	// 标签ID，该操作会覆盖原有的标签列表
+	TagIds []*uint64 `json:"TagIds,omitempty" name:"TagIds"`
+
 	// 服务器地区 如: ap-guangzhou
 	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
 
 	// 服务器类型(CVM|BM|ECM|LH|Other)
 	MachineArea *string `json:"MachineArea,omitempty" name:"MachineArea"`
-
-	// 标签ID，该操作会覆盖原有的标签列表
-	TagIds []*uint64 `json:"TagIds,omitempty" name:"TagIds"`
 }
 
 type UpdateMachineTagsRequest struct {
@@ -24904,14 +24904,14 @@ type UpdateMachineTagsRequest struct {
 	// 机器 Quuid
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
+	// 标签ID，该操作会覆盖原有的标签列表
+	TagIds []*uint64 `json:"TagIds,omitempty" name:"TagIds"`
+
 	// 服务器地区 如: ap-guangzhou
 	MachineRegion *string `json:"MachineRegion,omitempty" name:"MachineRegion"`
 
 	// 服务器类型(CVM|BM|ECM|LH|Other)
 	MachineArea *string `json:"MachineArea,omitempty" name:"MachineArea"`
-
-	// 标签ID，该操作会覆盖原有的标签列表
-	TagIds []*uint64 `json:"TagIds,omitempty" name:"TagIds"`
 }
 
 func (r *UpdateMachineTagsRequest) ToJsonString() string {
@@ -24927,9 +24927,9 @@ func (r *UpdateMachineTagsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Quuid")
+	delete(f, "TagIds")
 	delete(f, "MachineRegion")
 	delete(f, "MachineArea")
-	delete(f, "TagIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateMachineTagsRequest has unknown keys!", "")
 	}

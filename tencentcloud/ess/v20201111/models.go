@@ -155,6 +155,14 @@ type AutoSignConfig struct {
 	VerifyChannels []*string `json:"VerifyChannels,omitempty" name:"VerifyChannels"`
 }
 
+type CallbackInfo struct {
+	// 回调url
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 回调加密token
+	Token *string `json:"Token,omitempty" name:"Token"`
+}
+
 type Caller struct {
 	// 应用号
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -4398,12 +4406,27 @@ type IntegrationMainOrganizationUser struct {
 
 // Predefined struct for user
 type ModifyApplicationCallbackInfoRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
+	// 操作类型：1-新增，2-删除
+	OperateType *int64 `json:"OperateType,omitempty" name:"OperateType"`
+
+	// 回调信息
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
 }
 
 type ModifyApplicationCallbackInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 操作类型：1-新增，2-删除
+	OperateType *int64 `json:"OperateType,omitempty" name:"OperateType"`
+
+	// 回调信息
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
 }
 
 func (r *ModifyApplicationCallbackInfoRequest) ToJsonString() string {
@@ -4418,7 +4441,9 @@ func (r *ModifyApplicationCallbackInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Operator")
+	delete(f, "OperateType")
+	delete(f, "CallbackInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationCallbackInfoRequest has unknown keys!", "")
 	}

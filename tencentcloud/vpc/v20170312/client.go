@@ -13690,7 +13690,7 @@ func NewDownloadCustomerGatewayConfigurationResponse() (response *DownloadCustom
 }
 
 // DownloadCustomerGatewayConfiguration
-// 本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
+// 本接口（DownloadCustomerGatewayConfiguration）用于下载VPN通道配置。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
@@ -13701,7 +13701,7 @@ func (c *Client) DownloadCustomerGatewayConfiguration(request *DownloadCustomerG
 }
 
 // DownloadCustomerGatewayConfiguration
-// 本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
+// 本接口（DownloadCustomerGatewayConfiguration）用于下载VPN通道配置。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"

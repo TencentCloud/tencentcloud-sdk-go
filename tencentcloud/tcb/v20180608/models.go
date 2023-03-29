@@ -1754,6 +1754,12 @@ type CreatePostpayPackageRequestParams struct {
 	// <li>QuickStart：快速启动来源</li>
 	// <li>Activity：活动来源</li>
 	Flag *string `json:"Flag,omitempty" name:"Flag"`
+
+	// 环境别名，无字符类型限制
+	EnvAlias *string `json:"EnvAlias,omitempty" name:"EnvAlias"`
+
+	// 附加字段，用于透传额外的自定义信息
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
 }
 
 type CreatePostpayPackageRequest struct {
@@ -1795,6 +1801,12 @@ type CreatePostpayPackageRequest struct {
 	// <li>QuickStart：快速启动来源</li>
 	// <li>Activity：活动来源</li>
 	Flag *string `json:"Flag,omitempty" name:"Flag"`
+
+	// 环境别名，无字符类型限制
+	EnvAlias *string `json:"EnvAlias,omitempty" name:"EnvAlias"`
+
+	// 附加字段，用于透传额外的自定义信息
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
 }
 
 func (r *CreatePostpayPackageRequest) ToJsonString() string {
@@ -1818,6 +1830,8 @@ func (r *CreatePostpayPackageRequest) FromJsonString(s string) error {
 	delete(f, "Channel")
 	delete(f, "ExtensionId")
 	delete(f, "Flag")
+	delete(f, "EnvAlias")
+	delete(f, "Extra")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePostpayPackageRequest has unknown keys!", "")
 	}

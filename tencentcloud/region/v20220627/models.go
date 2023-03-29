@@ -91,6 +91,9 @@ func (r *DescribeProductsResponse) FromJsonString(s string) error {
 type DescribeRegionsRequestParams struct {
 	// 待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
+	Scene *int64 `json:"Scene,omitempty" name:"Scene"`
 }
 
 type DescribeRegionsRequest struct {
@@ -98,6 +101,9 @@ type DescribeRegionsRequest struct {
 	
 	// 待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
+	Scene *int64 `json:"Scene,omitempty" name:"Scene"`
 }
 
 func (r *DescribeRegionsRequest) ToJsonString() string {
@@ -113,6 +119,7 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Product")
+	delete(f, "Scene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegionsRequest has unknown keys!", "")
 	}
@@ -151,6 +158,9 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 type DescribeZonesRequestParams struct {
 	// 待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
+	Scene *int64 `json:"Scene,omitempty" name:"Scene"`
 }
 
 type DescribeZonesRequest struct {
@@ -158,6 +168,9 @@ type DescribeZonesRequest struct {
 	
 	// 待查询产品的名称，例如cvm，具体取值请查询DescribeProducts接口
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 不传或者0表示不查询【可选业务白名单】，1表示查询【可选业务白名单】，该参数设置了1，只有在业务白名单查不到情况下，才会查该白名单
+	Scene *int64 `json:"Scene,omitempty" name:"Scene"`
 }
 
 func (r *DescribeZonesRequest) ToJsonString() string {
@@ -173,6 +186,7 @@ func (r *DescribeZonesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Product")
+	delete(f, "Scene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZonesRequest has unknown keys!", "")
 	}

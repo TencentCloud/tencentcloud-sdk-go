@@ -7796,6 +7796,10 @@ func NewPutMonitorDataResponse() (response *PutMonitorDataResponse) {
 }
 
 // PutMonitorData
+// 对应的功能控制台及后端服务已于2年前下线，剩余该API接口未下线。
+//
+// 
+//
 // 默认接口请求频率限制：50次/秒。
 //
 // 默认单租户指标上限：100个。
@@ -7833,6 +7837,10 @@ func (c *Client) PutMonitorData(request *PutMonitorDataRequest) (response *PutMo
 }
 
 // PutMonitorData
+// 对应的功能控制台及后端服务已于2年前下线，剩余该API接口未下线。
+//
+// 
+//
 // 默认接口请求频率限制：50次/秒。
 //
 // 默认单租户指标上限：100个。

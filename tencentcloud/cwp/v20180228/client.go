@@ -12446,7 +12446,7 @@ func NewExportScanTaskDetailsResponse() (response *ExportScanTaskDetailsResponse
 }
 
 // ExportScanTaskDetails
-// 根据任务id导出指定扫描任务详情 
+// 根据任务id导出指定扫描任务详情
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12459,7 +12459,7 @@ func (c *Client) ExportScanTaskDetails(request *ExportScanTaskDetailsRequest) (r
 }
 
 // ExportScanTaskDetails
-// 根据任务id导出指定扫描任务详情 
+// 根据任务id导出指定扫描任务详情
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

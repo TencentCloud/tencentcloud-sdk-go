@@ -1835,7 +1835,7 @@ type DescribeBillSummaryByTagRequestParams struct {
 	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 分账标签键
+	// 分账标签键，用户自定义
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 查询账单数据的用户UIN
@@ -1854,7 +1854,7 @@ type DescribeBillSummaryByTagRequest struct {
 	// 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 分账标签键
+	// 分账标签键，用户自定义
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 查询账单数据的用户UIN

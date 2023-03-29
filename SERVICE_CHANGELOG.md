@@ -1,10 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
-### 第 46 次发布
+### 第 76 次发布
 
-发布时间：2023-03-28 01:09:13
+发布时间：2023-03-29 03:12:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyDatahubTopic](https://cloud.tencent.com/document/api/597/89542)
+
+修改接口：
+
+* [ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)
+
+	* 新增入参：KafkaConnectParam
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 74 次发布
+
+发布时间：2023-03-29 11:10:50
 
 本次发布包含了以下内容：
 
@@ -12,44 +35,18 @@
 
 修改接口：
 
-* [DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)
+* [UpdateMachineTags](https://cloud.tencent.com/document/api/296/60890)
 
-	* 新增出参：AsrOfflineCount, AsrRealtimeCount
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 118 次发布
-
-发布时间：2023-03-28 01:09:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872)
-
-	* 新增入参：EngineTypes
-
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
-
-	* 新增成员：DiskType
+	* <font color="#dd0000">**修改入参**：</font>MachineRegion, MachineArea
 
 
 
 
-## 日志服务(cls) 版本：2020-10-16
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
 
-### 第 38 次发布
+### 第 54 次发布
 
-发布时间：2023-03-28 01:16:03
+发布时间：2023-03-29 03:25:14
 
 本次发布包含了以下内容：
 
@@ -57,29 +54,18 @@
 
 修改接口：
 
-* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+* [DescribeDCDBInstanceDetail](https://cloud.tencent.com/document/api/557/89385)
 
-	* 新增入参：SyntaxRule
-
-
-修改数据结构：
-
-* [LogContextInfo](https://cloud.tencent.com/document/api/614/56471#LogContextInfo)
-
-	* 新增成员：RawLog, IndexStatus
-
-* [LogInfo](https://cloud.tencent.com/document/api/614/56471#LogInfo)
-
-	* 新增成员：RawLog, IndexStatus
+	* 新增出参：RsAccessStrategy
 
 
 
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
-### 第 49 次发布
+### 第 53 次发布
 
-发布时间：2023-03-28 01:38:25
+发布时间：2023-03-29 03:50:31
 
 本次发布包含了以下内容：
 
@@ -87,25 +73,34 @@
 
 修改接口：
 
-* [ModifyStudioProduct](https://cloud.tencent.com/document/api/1081/34983)
+* [DescribeDBInstanceDetail](https://cloud.tencent.com/document/api/237/89390)
 
-	* 新增入参：BindStrategy
-
-
-修改数据结构：
-
-* [ProductEntry](https://cloud.tencent.com/document/api/1081/34988#ProductEntry)
-
-	* 新增成员：BindStrategy
+	* 新增出参：RsAccessStrategy
 
 
 
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
-### 第 83 次发布
+### 第 84 次发布
 
-发布时间：2023-03-28 01:47:28
+发布时间：2023-03-29 03:52:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* PutMonitorData
+
+
+
+## 地域管理系统(region) 版本：2022-06-27
+
+### 第 3 次发布
+
+发布时间：2023-03-29 11:14:36
 
 本次发布包含了以下内容：
 
@@ -113,37 +108,22 @@
 
 修改接口：
 
-* [DescribePrometheusClusterAgents](https://cloud.tencent.com/document/api/248/86040)
+* [DescribeRegions](https://cloud.tencent.com/document/api/1596/77930)
 
-	* 新增出参：IsFirstBind
+	* 新增入参：Scene
 
+* [DescribeZones](https://cloud.tencent.com/document/api/1596/77929)
 
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 37 次发布
-
-发布时间：2023-03-28 02:03:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeVulSummary](https://cloud.tencent.com/document/api/1285/81610)
-
-	* 新增出参：SystemVulnerabilityFocusCount, WebVulnerabilityFocusCount, SeriousVulnerabilityLocalImageCount, SeriousVulnerabilityRegistryImageCount, EmergencyVulnerabilityCount
+	* 新增入参：Scene
 
 
 
 
-## 实时音视频(trtc) 版本：2019-07-22
+## SSL 证书(ssl) 版本：2019-12-05
 
-### 第 53 次发布
+### 第 29 次发布
 
-发布时间：2023-03-28 02:14:35
+发布时间：2023-03-29 11:14:40
 
 本次发布包含了以下内容：
 
@@ -151,9 +131,104 @@
 
 修改接口：
 
-* [DescribeTrtcRoomUsage](https://cloud.tencent.com/document/api/647/89181)
+* [DescribeManagerDetail](https://cloud.tencent.com/document/api/400/52673)
 
-	* 新增入参：SdkAppid, StartTime, EndTime
+	* 新增出参：StatusInfo
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 95 次发布
+
+发布时间：2023-03-29 11:14:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePostpayPackage](https://cloud.tencent.com/document/api/876/45287)
+
+	* 新增入参：EnvAlias, Extra
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 54 次发布
+
+发布时间：2023-03-29 11:15:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateImageLifecyclePersonal
+* DeleteImageLifecyclePersonal
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 30 次发布
+
+发布时间：2023-03-29 04:22:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRecordSearch](https://cloud.tencent.com/document/api/1137/89543)
+
+新增数据结构：
+
+* [RecordTaskResult](https://cloud.tencent.com/document/api/1137/40068#RecordTaskResult)
+* [RecordTaskSearchResult](https://cloud.tencent.com/document/api/1137/40068#RecordTaskSearchResult)
+
+
+
+## 语音合成(tts) 版本：2019-08-23
+
+### 第 9 次发布
+
+发布时间：2023-03-29 04:28:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Subtitle](https://cloud.tencent.com/document/api/1073/57374#Subtitle)
+
+	* 新增成员：Phoneme
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 145 次发布
+
+发布时间：2023-03-29 04:28:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
+
+	* 新增入参：Status, ReviewResults
 
 
 
@@ -20441,6 +20516,25 @@
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
+### 第 76 次发布
+
+发布时间：2023-03-29 03:12:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyDatahubTopic](https://cloud.tencent.com/document/api/597/89542)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)
+
+	* 新增入参：KafkaConnectParam
+
+
 ### 第 75 次发布
 
 发布时间：2023-03-27 01:20:43
@@ -31491,6 +31585,21 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 74 次发布
+
+发布时间：2023-03-29 11:10:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateMachineTags](https://cloud.tencent.com/document/api/296/60890)
+
+	* <font color="#dd0000">**修改入参**：</font>MachineRegion, MachineArea
+
+
 ### 第 73 次发布
 
 发布时间：2023-03-10 01:25:38
@@ -36868,6 +36977,21 @@
 
 
 ## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 54 次发布
+
+发布时间：2023-03-29 03:25:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDCDBInstanceDetail](https://cloud.tencent.com/document/api/557/89385)
+
+	* 新增出参：RsAccessStrategy
+
 
 ### 第 53 次发布
 
@@ -45134,6 +45258,25 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 54 次发布
+
+发布时间：2023-03-28 10:31:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyApplicationCallbackInfo](https://cloud.tencent.com/document/api/1323/86752)
+
+	* 新增入参：Operator, OperateType, CallbackInfo
+
+
+新增数据结构：
+
+* [CallbackInfo](https://cloud.tencent.com/document/api/1323/70369#CallbackInfo)
 
 ### 第 53 次发布
 
@@ -61454,6 +61597,21 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 53 次发布
+
+发布时间：2023-03-29 03:50:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstanceDetail](https://cloud.tencent.com/document/api/237/89390)
+
+	* 新增出参：RsAccessStrategy
+
+
 ### 第 52 次发布
 
 发布时间：2023-03-27 02:12:03
@@ -63686,6 +63844,18 @@
 
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 84 次发布
+
+发布时间：2023-03-29 03:52:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* PutMonitorData
 
 ### 第 83 次发布
 
@@ -74523,6 +74693,25 @@
 
 ## 地域管理系统(region) 版本：2022-06-27
 
+### 第 3 次发布
+
+发布时间：2023-03-29 11:14:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRegions](https://cloud.tencent.com/document/api/1596/77930)
+
+	* 新增入参：Scene
+
+* [DescribeZones](https://cloud.tencent.com/document/api/1596/77929)
+
+	* 新增入参：Scene
+
+
 ### 第 2 次发布
 
 发布时间：2022-12-28 01:09:18
@@ -78489,6 +78678,21 @@
 
 ## SSL 证书(ssl) 版本：2019-12-05
 
+### 第 29 次发布
+
+发布时间：2023-03-29 11:14:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeManagerDetail](https://cloud.tencent.com/document/api/400/52673)
+
+	* 新增出参：StatusInfo
+
+
 ### 第 28 次发布
 
 发布时间：2023-03-22 02:22:56
@@ -81430,6 +81634,21 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 95 次发布
+
+发布时间：2023-03-29 11:14:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePostpayPackage](https://cloud.tencent.com/document/api/876/45287)
+
+	* 新增入参：EnvAlias, Extra
+
+
 ### 第 94 次发布
 
 发布时间：2023-03-22 02:25:31
@@ -84024,6 +84243,19 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 54 次发布
+
+发布时间：2023-03-29 11:15:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateImageLifecyclePersonal
+* DeleteImageLifecyclePersonal
 
 ### 第 53 次发布
 
@@ -93510,6 +93742,23 @@
 
 ## 互动白板(tiw) 版本：2019-09-19
 
+### 第 30 次发布
+
+发布时间：2023-03-29 04:22:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRecordSearch](https://cloud.tencent.com/document/api/1137/89543)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RecordTaskResult](https://cloud.tencent.com/document/api/1137/40068#RecordTaskResult)](https://cloud.tencent.com/document/api/1137/40068#[RecordTaskResult](https://cloud.tencent.com/document/api/1137/40068#RecordTaskResult))
+* [[RecordTaskSearchResult](https://cloud.tencent.com/document/api/1137/40068#RecordTaskSearchResult)](https://cloud.tencent.com/document/api/1137/40068#[RecordTaskSearchResult](https://cloud.tencent.com/document/api/1137/40068#RecordTaskSearchResult))
+
 ### 第 29 次发布
 
 发布时间：2023-03-27 02:48:49
@@ -101818,6 +102067,21 @@
 
 ## 语音合成(tts) 版本：2019-08-23
 
+### 第 9 次发布
+
+发布时间：2023-03-29 04:28:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Subtitle](https://cloud.tencent.com/document/api/1073/57374#Subtitle)
+
+	* 新增成员：Phoneme
+
+
 ### 第 8 次发布
 
 发布时间：2022-11-18 06:58:13
@@ -102385,6 +102649,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 145 次发布
+
+发布时间：2023-03-29 04:28:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
+
+	* 新增入参：Status, ReviewResults
+
 
 ### 第 144 次发布
 

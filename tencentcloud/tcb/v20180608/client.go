@@ -523,6 +523,7 @@ func NewCreatePostpayPackageResponse() (response *CreatePostpayPackageResponse) 
 // 开通后付费资源
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -536,6 +537,7 @@ func (c *Client) CreatePostpayPackage(request *CreatePostpayPackageRequest) (res
 // 开通后付费资源
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PLATFORMERROR = "FailedOperation.PlatformError"
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"

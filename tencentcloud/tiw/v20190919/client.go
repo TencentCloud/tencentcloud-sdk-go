@@ -1039,6 +1039,66 @@ func (c *Client) DescribeQualityMetricsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeRecordSearchRequest() (request *DescribeRecordSearchRequest) {
+    request = &DescribeRecordSearchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeRecordSearch")
+    
+    
+    return
+}
+
+func NewDescribeRecordSearchResponse() (response *DescribeRecordSearchResponse) {
+    response = &DescribeRecordSearchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRecordSearch
+// 根据房间号搜索实时录制任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeRecordSearch(request *DescribeRecordSearchRequest) (response *DescribeRecordSearchResponse, err error) {
+    return c.DescribeRecordSearchWithContext(context.Background(), request)
+}
+
+// DescribeRecordSearch
+// 根据房间号搜索实时录制任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeRecordSearchWithContext(ctx context.Context, request *DescribeRecordSearchRequest) (response *DescribeRecordSearchResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordSearchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordSearch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordSearchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomListRequest() (request *DescribeRoomListRequest) {
     request = &DescribeRoomListRequest{
         BaseRequest: &tchttp.BaseRequest{},

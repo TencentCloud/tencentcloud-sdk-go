@@ -884,7 +884,7 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
-	// 证书套餐类型：1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
+	// 证书套餐类型：null = 用户上传证书（没有套餐类型），1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -1629,6 +1629,9 @@ type DescribeManagerDetailResponseParams struct {
 	// 管理人ID
 	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
 
+	// 审核状态详细信息
+	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitempty" name:"StatusInfo"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1660,10 +1663,10 @@ type DescribeManagersRequestParams struct {
 	// 分页每页数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 管理人姓名
+	// 管理人姓名（将废弃），请使用SearchKey
 	ManagerName *string `json:"ManagerName,omitempty" name:"ManagerName"`
 
-	// 模糊查询管理人邮箱
+	// 模糊查询管理人邮箱（将废弃），请使用SearchKey
 	ManagerMail *string `json:"ManagerMail,omitempty" name:"ManagerMail"`
 
 	// 根据管理人状态进行筛选，取值有
@@ -1676,7 +1679,7 @@ type DescribeManagersRequestParams struct {
 	// 'expired' 已过期
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 管理人姓名/邮箱/部门精准匹配
+	// 管理人姓/管理人名/邮箱/部门精准匹配
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
@@ -1692,10 +1695,10 @@ type DescribeManagersRequest struct {
 	// 分页每页数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 管理人姓名
+	// 管理人姓名（将废弃），请使用SearchKey
 	ManagerName *string `json:"ManagerName,omitempty" name:"ManagerName"`
 
-	// 模糊查询管理人邮箱
+	// 模糊查询管理人邮箱（将废弃），请使用SearchKey
 	ManagerMail *string `json:"ManagerMail,omitempty" name:"ManagerMail"`
 
 	// 根据管理人状态进行筛选，取值有
@@ -1708,7 +1711,7 @@ type DescribeManagersRequest struct {
 	// 'expired' 已过期
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 管理人姓名/邮箱/部门精准匹配
+	// 管理人姓/管理人名/邮箱/部门精准匹配
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
@@ -3017,7 +3020,7 @@ type UploadCertificateRequestParams struct {
 	// 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
 
-	// 证书类型，默认 SVR。CA = 客户端证书，SVR = 服务器证书。
+	// 证书类型，默认 SVR。CA = CA证书，SVR = 服务器证书。
 	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
 	// 备注名称。
@@ -3042,7 +3045,7 @@ type UploadCertificateRequest struct {
 	// 私钥内容，证书类型为 SVR 时必填，为 CA 时可不填。
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
 
-	// 证书类型，默认 SVR。CA = 客户端证书，SVR = 服务器证书。
+	// 证书类型，默认 SVR。CA = CA证书，SVR = 服务器证书。
 	CertificateType *string `json:"CertificateType,omitempty" name:"CertificateType"`
 
 	// 备注名称。

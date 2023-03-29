@@ -7786,6 +7786,9 @@ type ModifyConnectResourceRequestParams struct {
 
 	// Doris配置，Type为DORIS
 	DorisConnectParam *DorisModifyConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
+
+	// Kafka配置，Type为 KAFKA 时必填
+	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitempty" name:"KafkaConnectParam"`
 }
 
 type ModifyConnectResourceRequest struct {
@@ -7832,6 +7835,9 @@ type ModifyConnectResourceRequest struct {
 
 	// Doris配置，Type为DORIS
 	DorisConnectParam *DorisModifyConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
+
+	// Kafka配置，Type为 KAFKA 时必填
+	KafkaConnectParam *KafkaConnectParam `json:"KafkaConnectParam,omitempty" name:"KafkaConnectParam"`
 }
 
 func (r *ModifyConnectResourceRequest) ToJsonString() string {
@@ -7860,6 +7866,7 @@ func (r *ModifyConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "SQLServerConnectParam")
 	delete(f, "CtsdbConnectParam")
 	delete(f, "DorisConnectParam")
+	delete(f, "KafkaConnectParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConnectResourceRequest has unknown keys!", "")
 	}
@@ -7953,6 +7960,84 @@ func (r *ModifyDatahubTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDatahubTopicRequestParams struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 消息保留时间，单位：ms，当前最小值为60000ms。
+	RetentionMs *int64 `json:"RetentionMs,omitempty" name:"RetentionMs"`
+
+	// 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type ModifyDatahubTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 消息保留时间，单位：ms，当前最小值为60000ms。
+	RetentionMs *int64 `json:"RetentionMs,omitempty" name:"RetentionMs"`
+
+	// 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *ModifyDatahubTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatahubTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "RetentionMs")
+	delete(f, "Note")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatahubTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDatahubTopicResponseParams struct {
+	// 返回结果集
+	Result *JgwOperateResponse `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDatahubTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDatahubTopicResponseParams `json:"Response"`
+}
+
+func (r *ModifyDatahubTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatahubTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

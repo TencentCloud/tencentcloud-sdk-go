@@ -2001,7 +2001,13 @@ type FileSystemInfo struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
-	// 文件系统状态
+	// 文件系统状态。取值范围：
+	// - creating:创建中
+	// - mounting:挂载中
+	// - create_failed:创建失败
+	// - available:可使用
+	// - unserviced:停服中
+	// - upgrading:升级中
 	LifeCycleState *string `json:"LifeCycleState,omitempty" name:"LifeCycleState"`
 
 	// 文件系统已使用容量
@@ -2052,7 +2058,7 @@ type FileSystemInfo struct {
 	// 文件系统标签列表
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
-	// 文件系统声明周期管理状态
+	// 文件系统生命周期管理状态
 	TieringState *string `json:"TieringState,omitempty" name:"TieringState"`
 
 	// 分层存储详情

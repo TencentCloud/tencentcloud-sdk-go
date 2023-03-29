@@ -1537,6 +1537,63 @@ func (r *DescribeQualityMetricsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecordSearchRequestParams struct {
+
+}
+
+type DescribeRecordSearchRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeRecordSearchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordSearchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordSearchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordSearchResponseParams struct {
+	// 录制任务搜索结果集合
+	RecordTaskSet []*RecordTaskSearchResult `json:"RecordTaskSet,omitempty" name:"RecordTaskSet"`
+
+	// 录制总任务数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordSearchResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordSearchResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordSearchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordSearchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoomListRequestParams struct {
 	// 白板应用的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -3354,6 +3411,69 @@ type RecordControl struct {
 
 	// 针对具体流指定控制参数，如果列表为空，则所有流采用全局配置的控制参数进行录制。列表不为空，则列表中指定的流将优先按此列表指定的控制参数进行录制。
 	StreamControls []*StreamControl `json:"StreamControls,omitempty" name:"StreamControls"`
+}
+
+type RecordTaskResult struct {
+	// AUTO - 自动停止录制， USER_CALL - 用户主动调用停止录制
+	FinishReason *string `json:"FinishReason,omitempty" name:"FinishReason"`
+
+	// 异常数
+	ExceptionCnt *int64 `json:"ExceptionCnt,omitempty" name:"ExceptionCnt"`
+
+	// 房间号
+	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 分组
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 录制真实开始时间
+	RecordStartTime *int64 `json:"RecordStartTime,omitempty" name:"RecordStartTime"`
+
+	// 录制结束时间
+	RecordStopTime *int64 `json:"RecordStopTime,omitempty" name:"RecordStopTime"`
+
+	// 录制总时长
+	TotalTime *int64 `json:"TotalTime,omitempty" name:"TotalTime"`
+
+	// 视频信息列表
+	VideoInfos []*VideoInfo `json:"VideoInfos,omitempty" name:"VideoInfos"`
+
+	// 被忽略的视频时间段
+	OmittedDurations []*OmittedDuration `json:"OmittedDurations,omitempty" name:"OmittedDurations"`
+
+	// 详情
+	Details *string `json:"Details,omitempty" name:"Details"`
+
+	// 任务失败错误码
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+}
+
+type RecordTaskSearchResult struct {
+	// 任务唯一ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 实时录制任务状态
+	// - PAUSED: 录制已暂停
+	// - PREPARED: 录制在准备阶段
+	// - RECORDING: 正在录制
+	// - STOPPED：录制已停止
+	// - FINISHED: 录制已结束
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实时录制房间号
+	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 用户应用SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 实时录制结果
+	Result *RecordTaskResult `json:"Result,omitempty" name:"Result"`
 }
 
 // Predefined struct for user

@@ -446,6 +446,10 @@ func NewCreateImageLifecyclePersonalResponse() (response *CreateImageLifecyclePe
 }
 
 // CreateImageLifecyclePersonal
+// 前端与现有逻辑均不再使用，可下线
+//
+// 
+//
 // 用于在个人版中创建清理策略
 //
 // 可能返回的错误码:
@@ -458,6 +462,10 @@ func (c *Client) CreateImageLifecyclePersonal(request *CreateImageLifecyclePerso
 }
 
 // CreateImageLifecyclePersonal
+// 前端与现有逻辑均不再使用，可下线
+//
+// 
+//
 // 用于在个人版中创建清理策略
 //
 // 可能返回的错误码:
@@ -1946,6 +1954,10 @@ func NewDeleteImageLifecyclePersonalResponse() (response *DeleteImageLifecyclePe
 }
 
 // DeleteImageLifecyclePersonal
+// 前端与后端目前现有逻辑均不再使用，可下线
+//
+// 
+//
 // 用于在个人版镜像仓库中删除仓库Tag自动清理策略
 //
 // 可能返回的错误码:
@@ -1957,6 +1969,10 @@ func (c *Client) DeleteImageLifecyclePersonal(request *DeleteImageLifecyclePerso
 }
 
 // DeleteImageLifecyclePersonal
+// 前端与后端目前现有逻辑均不再使用，可下线
+//
+// 
+//
 // 用于在个人版镜像仓库中删除仓库Tag自动清理策略
 //
 // 可能返回的错误码:
