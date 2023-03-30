@@ -2103,7 +2103,7 @@ type DescribeSlowLogsRequestParams struct {
 	// 分页大小，最小值为1，最大值为100，默认值为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 慢日志返回格式，可设置为json，不传默认返回原生慢日志格式。
+	// 慢日志返回格式。默认返回原生慢日志格式，4.4及以上版本可设置为json。
 	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
@@ -2128,7 +2128,7 @@ type DescribeSlowLogsRequest struct {
 	// 分页大小，最小值为1，最大值为100，默认值为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 慢日志返回格式，可设置为json，不传默认返回原生慢日志格式。
+	// 慢日志返回格式。默认返回原生慢日志格式，4.4及以上版本可设置为json。
 	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
@@ -2468,7 +2468,7 @@ func (r *InquirePriceCreateDBInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquirePriceModifyDBInstanceSpecRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 变更配置后实例内存大小，单位：GB。
@@ -2477,17 +2477,17 @@ type InquirePriceModifyDBInstanceSpecRequestParams struct {
 	// 变更配置后实例磁盘大小，单位：GB。
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+	// 实例节点数。默认为不变更节点数，暂不支持变更。
 	NodeNum *int64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
-	// 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+	// 实例分片数。默认为不变更分片数，暂不支持变更。
 	ReplicateSetNum *int64 `json:"ReplicateSetNum,omitempty" name:"ReplicateSetNum"`
 }
 
 type InquirePriceModifyDBInstanceSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 变更配置后实例内存大小，单位：GB。
@@ -2496,10 +2496,10 @@ type InquirePriceModifyDBInstanceSpecRequest struct {
 	// 变更配置后实例磁盘大小，单位：GB。
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
 
-	// 实例变更后的节点数，取值范围具体参照查询云数据库的售卖规格返回参数。默认为不变更节点数
+	// 实例节点数。默认为不变更节点数，暂不支持变更。
 	NodeNum *int64 `json:"NodeNum,omitempty" name:"NodeNum"`
 
-	// 实例变更后的分片数，取值范围具体参照查询云数据库的售卖规格返回参数。只能增加不能减少，默认为不变更分片数
+	// 实例分片数。默认为不变更分片数，暂不支持变更。
 	ReplicateSetNum *int64 `json:"ReplicateSetNum,omitempty" name:"ReplicateSetNum"`
 }
 

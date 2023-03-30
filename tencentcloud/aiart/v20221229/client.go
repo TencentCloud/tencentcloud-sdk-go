@@ -195,6 +195,7 @@ func NewTextToImageResponse() (response *TextToImageResponse) {
 // 请求频率限制为1次/秒。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
 //  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -235,6 +236,7 @@ func (c *Client) TextToImage(request *TextToImageRequest) (response *TextToImage
 // 请求频率限制为1次/秒。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_CONSOLESERVERERROR = "FailedOperation.ConsoleServerError"
 //  FAILEDOPERATION_GENERATEIMAGEFAILED = "FailedOperation.GenerateImageFailed"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"

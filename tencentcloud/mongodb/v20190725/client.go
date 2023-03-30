@@ -1346,7 +1346,7 @@ func NewInquirePriceModifyDBInstanceSpecResponse() (response *InquirePriceModify
 }
 
 // InquirePriceModifyDBInstanceSpec
-// 本接口 (InquirePriceModifyDBInstanceSpec) 用于调整实例的配置询价。
+// 本接口 (InquirePriceModifyDBInstanceSpec) 用于查询实例配置变更后的价格。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_FINDINSTANCEFAILED = "InternalError.FindInstanceFailed"
@@ -1357,7 +1357,7 @@ func (c *Client) InquirePriceModifyDBInstanceSpec(request *InquirePriceModifyDBI
 }
 
 // InquirePriceModifyDBInstanceSpec
-// 本接口 (InquirePriceModifyDBInstanceSpec) 用于调整实例的配置询价。
+// 本接口 (InquirePriceModifyDBInstanceSpec) 用于查询实例配置变更后的价格。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_FINDINSTANCEFAILED = "InternalError.FindInstanceFailed"

@@ -7017,7 +7017,11 @@ type SingleInvoiceInfo struct {
 }
 
 type SmartFormFileUrl struct {
+	// 文件url地址
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
+	// 文件的顺序，顺序从1开始
+	FileOrderNumber *uint64 `json:"FileOrderNumber,omitempty" name:"FileOrderNumber"`
 }
 
 // Predefined struct for user

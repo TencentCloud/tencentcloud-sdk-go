@@ -9015,6 +9015,58 @@ func (c *Client) DescribeReverseShellRulesWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeRiskDnsEventListRequest() (request *DescribeRiskDnsEventListRequest) {
+    request = &DescribeRiskDnsEventListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeRiskDnsEventList")
+    
+    
+    return
+}
+
+func NewDescribeRiskDnsEventListResponse() (response *DescribeRiskDnsEventListResponse) {
+    response = &DescribeRiskDnsEventListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRiskDnsEventList
+// 获取恶意请求事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRiskDnsEventList(request *DescribeRiskDnsEventListRequest) (response *DescribeRiskDnsEventListResponse, err error) {
+    return c.DescribeRiskDnsEventListWithContext(context.Background(), request)
+}
+
+// DescribeRiskDnsEventList
+// 获取恶意请求事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRiskDnsEventListWithContext(ctx context.Context, request *DescribeRiskDnsEventListRequest) (response *DescribeRiskDnsEventListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskDnsEventListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskDnsEventList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskDnsEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRiskDnsListRequest() (request *DescribeRiskDnsListRequest) {
     request = &DescribeRiskDnsListRequest{
         BaseRequest: &tchttp.BaseRequest{},

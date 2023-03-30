@@ -15417,6 +15417,109 @@ func (r *DescribeReverseShellRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRiskDnsEventListRequestParams struct {
+	// <li>IpOrName - String - 是否必填：否 - 主机Ip或别名筛选</li>
+	// <li>HostId - String - 是否必填：否 - 主机Id</li>
+	// <li>AgentId - String - 是否必填：否 - 客户端Id</li>
+	// <li>PolicyType - String - 是否必填：否 - 策略类型,0:系统策略1:用户自定义策略</li>
+	// <li>Domain - String - 是否必填：否 - 域名(先对域名做urlencode,再base64)</li>
+	// <li>HandleStatus - String - 是否必填：否 - 状态筛选0:待处理；2:信任；3:不信任</li>
+	// <li>BeginTime - String - 是否必填：否 - 最近访问开始时间</li>
+	// <li>EndTime - String - 是否必填：否 - 最近访问结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式：根据请求次数排序：[asc:升序|desc:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段：[AccessCount:请求次数|LastTime:最近请求时间]
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeRiskDnsEventListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <li>IpOrName - String - 是否必填：否 - 主机Ip或别名筛选</li>
+	// <li>HostId - String - 是否必填：否 - 主机Id</li>
+	// <li>AgentId - String - 是否必填：否 - 客户端Id</li>
+	// <li>PolicyType - String - 是否必填：否 - 策略类型,0:系统策略1:用户自定义策略</li>
+	// <li>Domain - String - 是否必填：否 - 域名(先对域名做urlencode,再base64)</li>
+	// <li>HandleStatus - String - 是否必填：否 - 状态筛选0:待处理；2:信任；3:不信任</li>
+	// <li>BeginTime - String - 是否必填：否 - 最近访问开始时间</li>
+	// <li>EndTime - String - 是否必填：否 - 最近访问结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式：根据请求次数排序：[asc:升序|desc:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段：[AccessCount:请求次数|LastTime:最近请求时间]
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeRiskDnsEventListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskDnsEventListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskDnsEventListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskDnsEventListResponseParams struct {
+	// 恶意请求事件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*RiskDnsEvent `json:"List,omitempty" name:"List"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRiskDnsEventListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRiskDnsEventListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRiskDnsEventListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskDnsEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRiskDnsListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -23504,6 +23607,84 @@ type ReverseShellRule struct {
 
 	// 主机IP
 	Hostip *string `json:"Hostip,omitempty" name:"Hostip"`
+}
+
+type RiskDnsEvent struct {
+	// 事件Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 策略ID
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 命中策略类型[-1:未知|0系统|1:用户]
+	PolicyType *int64 `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 命中策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 保护级别[0:基础版|1:专业版|2:旗舰版]
+	ProtectLevel *int64 `json:"ProtectLevel,omitempty" name:"ProtectLevel"`
+
+	// 主机ID
+	HostId *string `json:"HostId,omitempty" name:"HostId"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 主机IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 外网IP
+	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
+
+	// 客户端ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 访问域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 标签特性
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 访问次数
+	AccessCount *int64 `json:"AccessCount,omitempty" name:"AccessCount"`
+
+	// 威胁描述
+	ThreatDesc *string `json:"ThreatDesc,omitempty" name:"ThreatDesc"`
+
+	// 修复方案
+	SuggestSolution *string `json:"SuggestSolution,omitempty" name:"SuggestSolution"`
+
+	// 参考链接
+	ReferenceLink *string `json:"ReferenceLink,omitempty" name:"ReferenceLink"`
+
+	// 处理状态；[0:待处理|2:已加白|3:非信任状态|4:已处理|5:已忽略]
+	HandleStatus *int64 `json:"HandleStatus,omitempty" name:"HandleStatus"`
+
+	// 进程ID
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 进程MD5
+	ProcessMd5 *string `json:"ProcessMd5,omitempty" name:"ProcessMd5"`
+
+	// 命令行
+	CmdLine *string `json:"CmdLine,omitempty" name:"CmdLine"`
+
+	// 首次访问时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 最近访问时间
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+
+	// 主机在线状态[OFFLINE:离线|ONLINE:在线|UNKNOWN:未知]
+	HostStatus *string `json:"HostStatus,omitempty" name:"HostStatus"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type RiskDnsList struct {

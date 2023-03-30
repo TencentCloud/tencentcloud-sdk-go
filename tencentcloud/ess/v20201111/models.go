@@ -1987,9 +1987,9 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	// 身份证件类型:
 	// ID_CARD 身份证
 	// PASSPORT 护照
-	// HONGKONG_AND_MACAO 香港身份
-	// FOREIGN_ID_CARD 国外身份
-	// HONGKONG_MACAO_AND_TAIWAN 港台身份
+	// HONGKONG_AND_MACAO 中国香港
+	// FOREIGN_ID_CARD 境外身份
+	// HONGKONG_MACAO_AND_TAIWAN 中国台湾
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
 	// 手机号码
@@ -2020,9 +2020,9 @@ type CreatePreparedPersonalEsignRequest struct {
 	// 身份证件类型:
 	// ID_CARD 身份证
 	// PASSPORT 护照
-	// HONGKONG_AND_MACAO 香港身份
-	// FOREIGN_ID_CARD 国外身份
-	// HONGKONG_MACAO_AND_TAIWAN 港台身份
+	// HONGKONG_AND_MACAO 中国香港
+	// FOREIGN_ID_CARD 境外身份
+	// HONGKONG_MACAO_AND_TAIWAN 中国台湾
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
 	// 手机号码

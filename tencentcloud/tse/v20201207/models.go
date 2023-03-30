@@ -65,6 +65,26 @@ type CloudNativeAPIGatewayNode struct {
 
 	// 节点 ip
 	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+
+	// Zone id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// Zone
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 分组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 // Predefined struct for user

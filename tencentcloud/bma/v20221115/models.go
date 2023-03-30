@@ -59,6 +59,9 @@ type BrandData struct {
 
 	// 服务信息
 	Services *ServiceData `json:"Services,omitempty" name:"Services"`
+
+	// 账号id
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
 }
 
 // Predefined struct for user
