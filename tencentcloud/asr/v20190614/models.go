@@ -1418,19 +1418,21 @@ type SentenceRecognitionRequestParams struct {
 
 	// 引擎模型类型。
 	// 电话场景：
-	// • 8k_en：电话 8k 英语；
-	// • 8k_zh：电话 8k 中文普通话通用；
+	// • 8k_zh：中文电话通用；
+	// • 8k_en：英文电话通用；
+	// 
 	// 非电话场景：
-	// • 16k_zh：16k 中文普通话通用；
-	// • 16k_en：16k 英语；
-	// • 16k_ca：16k 粤语；
-	// • 16k_ja：16k 日语；
-	// • 16k_vi：16k 越南语；
-	// • 16k_ms：16k 马来语；
-	// • 16k_id：16k 印度尼西亚语；
-	// • 16k_fil：16k 菲律宾语；
-	// • 16k_zh_medical：16k 医疗；
+	// • 16k_zh：中文通用；
 	// • 16k_zh-PY 中英粤;
+	// • 16k_zh_medical：中文医疗；
+	// • 16k_en：英语；
+	// • 16k_ca：粤语；
+	// • 16k_ja：日语；
+	// • 16k_ko：韩语；
+	// • 16k_vi：越南语；
+	// • 16k_ms：马来语；
+	// • 16k_id：印度尼西亚语；
+	// • 16k_fil：菲律宾语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
@@ -1488,19 +1490,21 @@ type SentenceRecognitionRequest struct {
 
 	// 引擎模型类型。
 	// 电话场景：
-	// • 8k_en：电话 8k 英语；
-	// • 8k_zh：电话 8k 中文普通话通用；
+	// • 8k_zh：中文电话通用；
+	// • 8k_en：英文电话通用；
+	// 
 	// 非电话场景：
-	// • 16k_zh：16k 中文普通话通用；
-	// • 16k_en：16k 英语；
-	// • 16k_ca：16k 粤语；
-	// • 16k_ja：16k 日语；
-	// • 16k_vi：16k 越南语；
-	// • 16k_ms：16k 马来语；
-	// • 16k_id：16k 印度尼西亚语；
-	// • 16k_fil：16k 菲律宾语；
-	// • 16k_zh_medical：16k 医疗；
+	// • 16k_zh：中文通用；
 	// • 16k_zh-PY 中英粤;
+	// • 16k_zh_medical：中文医疗；
+	// • 16k_en：英语；
+	// • 16k_ca：粤语；
+	// • 16k_ja：日语；
+	// • 16k_ko：韩语；
+	// • 16k_vi：越南语；
+	// • 16k_ms：马来语；
+	// • 16k_id：印度尼西亚语；
+	// • 16k_fil：菲律宾语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 

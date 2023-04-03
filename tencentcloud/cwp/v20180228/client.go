@@ -5997,6 +5997,74 @@ func (c *Client) DescribeBashEventsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeBashEventsInfoNewRequest() (request *DescribeBashEventsInfoNewRequest) {
+    request = &DescribeBashEventsInfoNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBashEventsInfoNew")
+    
+    
+    return
+}
+
+func NewDescribeBashEventsInfoNewResponse() (response *DescribeBashEventsInfoNewResponse) {
+    response = &DescribeBashEventsInfoNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBashEventsInfoNew
+// 查询高危命令事件详情(新)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_MACHINENOTFOUND = "ResourceNotFound.MachineNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBashEventsInfoNew(request *DescribeBashEventsInfoNewRequest) (response *DescribeBashEventsInfoNewResponse, err error) {
+    return c.DescribeBashEventsInfoNewWithContext(context.Background(), request)
+}
+
+// DescribeBashEventsInfoNew
+// 查询高危命令事件详情(新)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_MACHINENOTFOUND = "ResourceNotFound.MachineNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBashEventsInfoNewWithContext(ctx context.Context, request *DescribeBashEventsInfoNewRequest) (response *DescribeBashEventsInfoNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeBashEventsInfoNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBashEventsInfoNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBashEventsInfoNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBashEventsNewRequest() (request *DescribeBashEventsNewRequest) {
     request = &DescribeBashEventsNewRequest{
         BaseRequest: &tchttp.BaseRequest{},

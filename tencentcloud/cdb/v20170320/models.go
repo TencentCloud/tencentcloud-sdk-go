@@ -6139,7 +6139,7 @@ func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDefaultParamsRequestParams struct {
-	// mysql版本，目前支持 ["5.1", "5.5", "5.6", "5.7"]。
+	// 引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
@@ -6152,7 +6152,7 @@ type DescribeDefaultParamsRequestParams struct {
 type DescribeDefaultParamsRequest struct {
 	*tchttp.BaseRequest
 	
-	// mysql版本，目前支持 ["5.1", "5.5", "5.6", "5.7"]。
+	// 引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。

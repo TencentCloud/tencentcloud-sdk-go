@@ -18229,6 +18229,9 @@ type RebuildMediaTaskInput struct {
 	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
+	// 音画质重生模版号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
 	// 画质修复控制参数。
 	RepairInfo *RepairInfo `json:"RepairInfo,omitempty" name:"RepairInfo"`
 

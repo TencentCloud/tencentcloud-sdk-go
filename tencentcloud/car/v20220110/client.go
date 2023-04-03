@@ -232,3 +232,119 @@ func (c *Client) DestroySessionWithContext(ctx context.Context, request *Destroy
     err = c.Send(request, response)
     return
 }
+
+func NewStartPublishStreamRequest() (request *StartPublishStreamRequest) {
+    request = &StartPublishStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("car", APIVersion, "StartPublishStream")
+    
+    
+    return
+}
+
+func NewStartPublishStreamResponse() (response *StartPublishStreamResponse) {
+    response = &StartPublishStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartPublishStream
+// 开始云端推流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) StartPublishStream(request *StartPublishStreamRequest) (response *StartPublishStreamResponse, err error) {
+    return c.StartPublishStreamWithContext(context.Background(), request)
+}
+
+// StartPublishStream
+// 开始云端推流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) StartPublishStreamWithContext(ctx context.Context, request *StartPublishStreamRequest) (response *StartPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStartPublishStreamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartPublishStream require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartPublishStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopPublishStreamRequest() (request *StopPublishStreamRequest) {
+    request = &StopPublishStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("car", APIVersion, "StopPublishStream")
+    
+    
+    return
+}
+
+func NewStopPublishStreamResponse() (response *StopPublishStreamResponse) {
+    response = &StopPublishStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopPublishStream
+// 停止云端推流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) StopPublishStream(request *StopPublishStreamRequest) (response *StopPublishStreamResponse, err error) {
+    return c.StopPublishStreamWithContext(context.Background(), request)
+}
+
+// StopPublishStream
+// 停止云端推流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) StopPublishStreamWithContext(ctx context.Context, request *StopPublishStreamRequest) (response *StopPublishStreamResponse, err error) {
+    if request == nil {
+        request = NewStopPublishStreamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopPublishStream require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopPublishStreamResponse()
+    err = c.Send(request, response)
+    return
+}

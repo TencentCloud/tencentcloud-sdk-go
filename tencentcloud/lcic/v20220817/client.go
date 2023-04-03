@@ -1347,6 +1347,68 @@ func (c *Client) DeleteRoomWithContext(ctx context.Context, request *DeleteRoomR
     return
 }
 
+func NewDescribeAnswerListRequest() (request *DescribeAnswerListRequest) {
+    request = &DescribeAnswerListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeAnswerList")
+    
+    
+    return
+}
+
+func NewDescribeAnswerListResponse() (response *DescribeAnswerListResponse) {
+    response = &DescribeAnswerListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAnswerList
+// 获取房间答题详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAnswerList(request *DescribeAnswerListRequest) (response *DescribeAnswerListResponse, err error) {
+    return c.DescribeAnswerListWithContext(context.Background(), request)
+}
+
+// DescribeAnswerList
+// 获取房间答题详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAnswerListWithContext(ctx context.Context, request *DescribeAnswerListRequest) (response *DescribeAnswerListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAnswerListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAnswerList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAnswerListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAppDetailRequest() (request *DescribeAppDetailRequest) {
     request = &DescribeAppDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1485,10 +1547,13 @@ func NewDescribeDeveloperResponse() (response *DescribeDeveloperResponse) {
 // 服务商信息获取
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeveloper(request *DescribeDeveloperRequest) (response *DescribeDeveloperResponse, err error) {
     return c.DescribeDeveloperWithContext(context.Background(), request)
 }
@@ -1497,10 +1562,13 @@ func (c *Client) DescribeDeveloper(request *DescribeDeveloperRequest) (response 
 // 服务商信息获取
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeveloperWithContext(ctx context.Context, request *DescribeDeveloperRequest) (response *DescribeDeveloperResponse, err error) {
     if request == nil {
         request = NewDescribeDeveloperRequest()
@@ -1901,6 +1969,68 @@ func (c *Client) DescribeGroupMemberListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeQuestionListRequest() (request *DescribeQuestionListRequest) {
+    request = &DescribeQuestionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeQuestionList")
+    
+    
+    return
+}
+
+func NewDescribeQuestionListResponse() (response *DescribeQuestionListResponse) {
+    response = &DescribeQuestionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQuestionList
+// 获取房间提问列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeQuestionList(request *DescribeQuestionListRequest) (response *DescribeQuestionListResponse, err error) {
+    return c.DescribeQuestionListWithContext(context.Background(), request)
+}
+
+// DescribeQuestionList
+// 获取房间提问列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeQuestionListWithContext(ctx context.Context, request *DescribeQuestionListRequest) (response *DescribeQuestionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeQuestionListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQuestionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQuestionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
     request = &DescribeRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2113,6 +2243,70 @@ func (c *Client) DescribeSdkAppIdUsersWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeSdkAppIdUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSupervisorsRequest() (request *DescribeSupervisorsRequest) {
+    request = &DescribeSupervisorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeSupervisors")
+    
+    
+    return
+}
+
+func NewDescribeSupervisorsResponse() (response *DescribeSupervisorsResponse) {
+    response = &DescribeSupervisorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSupervisors
+// 获取巡课列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSupervisors(request *DescribeSupervisorsRequest) (response *DescribeSupervisorsResponse, err error) {
+    return c.DescribeSupervisorsWithContext(context.Background(), request)
+}
+
+// DescribeSupervisors
+// 获取巡课列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSupervisorsWithContext(ctx context.Context, request *DescribeSupervisorsRequest) (response *DescribeSupervisorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSupervisorsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSupervisors require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSupervisorsResponse()
     err = c.Send(request, response)
     return
 }

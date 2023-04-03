@@ -2417,6 +2417,104 @@ type BashEventNew struct {
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
+type BashEventsInfoNew struct {
+	// 数据ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机内网IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 平台类型
+	Platform *uint64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 执行命令
+	BashCmd *string `json:"BashCmd,omitempty" name:"BashCmd"`
+
+	// 规则ID,等于0表示已规则已被删除或生效范围已修改
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则等级：1-高 2-中 3-低
+	RuleLevel *uint64 `json:"RuleLevel,omitempty" name:"RuleLevel"`
+
+	// 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3= 已忽略
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 发生时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 主机名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 进程名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Exe *string `json:"Exe,omitempty" name:"Exe"`
+
+	// 处理时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 规则类别  0=系统规则，1=用户规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleCategory *uint64 `json:"RuleCategory,omitempty" name:"RuleCategory"`
+
+	// 自动生成的正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegexBashCmd *string `json:"RegexBashCmd,omitempty" name:"RegexBashCmd"`
+
+	// 进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PsTree *string `json:"PsTree,omitempty" name:"PsTree"`
+
+	// 建议方案
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuggestScheme *string `json:"SuggestScheme,omitempty" name:"SuggestScheme"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HarmDescribe *string `json:"HarmDescribe,omitempty" name:"HarmDescribe"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 参考链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	References []*string `json:"References,omitempty" name:"References"`
+
+	// 主机外网ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机在线状态 OFFLINE  ONLINE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
+
+	// 登录用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 进程号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pid *string `json:"Pid,omitempty" name:"Pid"`
+
+	// 0:普通 1:专业版 2:旗舰版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineType *int64 `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 检测来源 0:bash日志 1:实时监控
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectBy *int64 `json:"DetectBy,omitempty" name:"DetectBy"`
+}
+
 type BashRule struct {
 	// 规则ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -10889,6 +10987,64 @@ func (r *DescribeBaselineWeakPasswordListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBaselineWeakPasswordListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBashEventsInfoNewRequestParams struct {
+	// 事件id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+type DescribeBashEventsInfoNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeBashEventsInfoNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBashEventsInfoNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBashEventsInfoNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBashEventsInfoNewResponseParams struct {
+	// 事件详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BashEventsInfo *BashEventsInfoNew `json:"BashEventsInfo,omitempty" name:"BashEventsInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBashEventsInfoNewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBashEventsInfoNewResponseParams `json:"Response"`
+}
+
+func (r *DescribeBashEventsInfoNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBashEventsInfoNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

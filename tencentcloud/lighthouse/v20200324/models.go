@@ -786,10 +786,10 @@ func (r *CreateInstanceSnapshotResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstancesRequestParams struct {
-	// 套餐ID。
+	// 套餐ID。可以通过调用 [查询套餐](https://cloud.tencent.com/document/api/1207/47575) 接口获取。
 	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
 
-	// 镜像ID。
+	// 镜像ID。可以通过调用 [查询镜像信息](https://cloud.tencent.com/document/api/1207/47689) 接口获取。
 	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
 
 	// 当前实例仅支持预付费模式，即包年包月相关参数设置，单位（月）。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。该参数必传。
@@ -827,10 +827,10 @@ type CreateInstancesRequestParams struct {
 type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 套餐ID。
+	// 套餐ID。可以通过调用 [查询套餐](https://cloud.tencent.com/document/api/1207/47575) 接口获取。
 	BundleId *string `json:"BundleId,omitempty" name:"BundleId"`
 
-	// 镜像ID。
+	// 镜像ID。可以通过调用 [查询镜像信息](https://cloud.tencent.com/document/api/1207/47689) 接口获取。
 	BlueprintId *string `json:"BlueprintId,omitempty" name:"BlueprintId"`
 
 	// 当前实例仅支持预付费模式，即包年包月相关参数设置，单位（月）。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。该参数必传。

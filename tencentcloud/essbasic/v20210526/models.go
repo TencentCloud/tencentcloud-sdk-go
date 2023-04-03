@@ -93,6 +93,9 @@ type BaseFlowInfo struct {
 
 	// 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
+
+	// 用户流程自定义数据参数
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
 }
 
 type CcInfo struct {

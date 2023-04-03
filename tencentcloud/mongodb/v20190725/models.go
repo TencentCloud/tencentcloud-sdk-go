@@ -1706,93 +1706,93 @@ func (r *DescribeDBInstanceNodePropertyResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
+	// 实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>2：临时实例。</li><li>3：只读实例。</li><li>-1：正式实例、只读、灾备实例。</li></ul>
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
+	// 集群类型，取值范围如下：<ul><li>0：副本集实例。</li><li>1：分片实例。</li><li>-1：所有实例。</li></ul>
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
 
-	// 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-已隔离（包年包月实例），-3-已隔离（按量计费实例）
+	// 实例状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程执行中。</li><li>2：实例有效。</li><li>-2：已隔离（包年包月实例）。</li><li>-3：已隔离（按量计费实例）。</li></ul>
 	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
-	// 私有网络的ID，基础网络则不传该参数
+	// 私有网络的ID，基础网络则不传该参数。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId
+	// 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月
+	// 付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 单次请求返回的数量，最小值为1，最大值为100，默认值为20
+	// 单次请求返回的数量。默认值为20，取值范围为[1,100]。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为0
+	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序
+	// 返回结果集排序的字段，目前支持："ProjectId"、"InstanceName"、"CreateTime"，默认为升序排序。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式，目前支持："ASC"或者"DESC"
+	// 返回结果集排序方式，目前支持："ASC"或者"DESC"。
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
-	// 项目 ID
+	// 项目 ID。
 	ProjectIds []*uint64 `json:"ProjectIds,omitempty" name:"ProjectIds"`
 
-	// 搜索关键词，支持实例ID、实例名称、完整IP
+	// 搜索关键词，支持实例ID、实例名称、完整IP。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
-	// Tag信息
-	Tags *TagInfo `json:"Tags,omitempty" name:"Tags"`
+	// Tag信息。
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 }
 
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 实例类型，取值范围：0-所有实例,1-正式实例，2-临时实例, 3-只读实例，-1-正式实例+只读+灾备实例
+	// 实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>2：临时实例。</li><li>3：只读实例。</li><li>-1：正式实例、只读、灾备实例。</li></ul>
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// 集群类型，取值范围：0-副本集实例，1-分片实例，-1-所有实例
+	// 集群类型，取值范围如下：<ul><li>0：副本集实例。</li><li>1：分片实例。</li><li>-1：所有实例。</li></ul>
 	ClusterType *int64 `json:"ClusterType,omitempty" name:"ClusterType"`
 
-	// 实例状态，取值范围：0-待初始化，1-流程执行中，2-实例有效，-2-已隔离（包年包月实例），-3-已隔离（按量计费实例）
+	// 实例状态，取值范围如下所示：<ul><li>0：待初始化。</li><li>1：流程执行中。</li><li>2：实例有效。</li><li>-2：已隔离（包年包月实例）。</li><li>-3：已隔离（按量计费实例）。</li></ul>
 	Status []*int64 `json:"Status,omitempty" name:"Status"`
 
-	// 私有网络的ID，基础网络则不传该参数
+	// 私有网络的ID，基础网络则不传该参数。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId
+	// 私有网络的子网ID，基础网络则不传该参数。入参设置该参数的同时，必须设置相应的VpcId。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 付费类型，取值范围：0-按量计费，1-包年包月，-1-按量计费+包年包月
+	// 付费类型，取值范围如下：<ul><li>0：查询按量计费实例。</li><li>1：查询包年包月实例。</li><li>-1：查询按量计费与包年包月实例。</li></ul>
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 单次请求返回的数量，最小值为1，最大值为100，默认值为20
+	// 单次请求返回的数量。默认值为20，取值范围为[1,100]。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为0
+	// 偏移量，默认值为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回结果集排序的字段，目前支持："ProjectId", "InstanceName", "CreateTime"，默认为升序排序
+	// 返回结果集排序的字段，目前支持："ProjectId"、"InstanceName"、"CreateTime"，默认为升序排序。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式，目前支持："ASC"或者"DESC"
+	// 返回结果集排序方式，目前支持："ASC"或者"DESC"。
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 
-	// 项目 ID
+	// 项目 ID。
 	ProjectIds []*uint64 `json:"ProjectIds,omitempty" name:"ProjectIds"`
 
-	// 搜索关键词，支持实例ID、实例名称、完整IP
+	// 搜索关键词，支持实例ID、实例名称、完整IP。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 
-	// Tag信息
-	Tags *TagInfo `json:"Tags,omitempty" name:"Tags"`
+	// Tag信息。
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -1829,10 +1829,10 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstancesResponseParams struct {
-	// 符合查询条件的实例总数
+	// 符合查询条件的实例总数。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 实例详细信息列表
+	// 实例详细信息列表。
 	InstanceDetails []*InstanceDetail `json:"InstanceDetails,omitempty" name:"InstanceDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

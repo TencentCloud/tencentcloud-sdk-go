@@ -787,6 +787,9 @@ func (r *DescribeInstanceKeyValConfigsResponse) FromJsonString(s string) error {
 type DescribeInstanceRequestParams struct {
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否是open api查询
+	IsOpenApi *bool `json:"IsOpenApi,omitempty" name:"IsOpenApi"`
 }
 
 type DescribeInstanceRequest struct {
@@ -794,6 +797,9 @@ type DescribeInstanceRequest struct {
 	
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 是否是open api查询
+	IsOpenApi *bool `json:"IsOpenApi,omitempty" name:"IsOpenApi"`
 }
 
 func (r *DescribeInstanceRequest) ToJsonString() string {
@@ -809,6 +815,7 @@ func (r *DescribeInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "IsOpenApi")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceRequest has unknown keys!", "")
 	}
@@ -895,6 +902,83 @@ func (r *DescribeInstanceShardsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceShardsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceStateRequestParams struct {
+	// 集群实例名称
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeInstanceStateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例名称
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceStateResponseParams struct {
+	// 集群状态，例如：Serving
+	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+
+	// 集群操作创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowCreateTime *string `json:"FlowCreateTime,omitempty" name:"FlowCreateTime"`
+
+	// 集群操作名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 集群操作进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowProgress *float64 `json:"FlowProgress,omitempty" name:"FlowProgress"`
+
+	// 集群状态描述，例如：运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitempty" name:"InstanceStateDesc"`
+
+	// 集群流程错误信息，例如：“创建失败，资源不足”
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowMsg *string `json:"FlowMsg,omitempty" name:"FlowMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceStateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceStateResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

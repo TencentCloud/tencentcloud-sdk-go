@@ -254,7 +254,10 @@ type AddCdnDomainRequestParams struct {
 	// 七牛云对象存储回源鉴权
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 
-	// HTTPS服务
+	// 其他厂商对象存储回源鉴权
+	OthersPrivateAccess *OthersPrivateAccess `json:"OthersPrivateAccess,omitempty" name:"OthersPrivateAccess"`
+
+	// HTTPS服务，默认开启（收费服务，详见计费说明和产品文档）
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
@@ -385,7 +388,10 @@ type AddCdnDomainRequest struct {
 	// 七牛云对象存储回源鉴权
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 
-	// HTTPS服务
+	// 其他厂商对象存储回源鉴权
+	OthersPrivateAccess *OthersPrivateAccess `json:"OthersPrivateAccess,omitempty" name:"OthersPrivateAccess"`
+
+	// HTTPS服务，默认开启（收费服务，详见计费说明和产品文档）
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
@@ -439,6 +445,7 @@ func (r *AddCdnDomainRequest) FromJsonString(s string) error {
 	delete(f, "OssPrivateAccess")
 	delete(f, "HwPrivateAccess")
 	delete(f, "QnPrivateAccess")
+	delete(f, "OthersPrivateAccess")
 	delete(f, "HttpsBilling")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCdnDomainRequest has unknown keys!", "")
@@ -6906,6 +6913,10 @@ type DetailDomain struct {
 	// HTTPS服务，缺省时默认开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
+
+	// 其他厂商对象存储回源鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OthersPrivateAccess *OthersPrivateAccess `json:"OthersPrivateAccess,omitempty" name:"OthersPrivateAccess"`
 }
 
 type DiagnoseData struct {
@@ -9856,6 +9867,27 @@ type OssPrivateAccess struct {
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 }
 
+type OthersPrivateAccess struct {
+	// 开关， on/off。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 访问ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessKey *string `json:"AccessKey,omitempty" name:"AccessKey"`
+
+	// 密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 地域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 存储桶名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+}
+
 type OverseaConfig struct {
 	// 时间戳防盗链配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12037,7 +12069,10 @@ type UpdateDomainConfigRequestParams struct {
 	// 七牛云对象存储回源鉴权
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 
-	// HTTPS服务
+	// 其他厂商对象存储回源鉴权
+	OthersPrivateAccess *OthersPrivateAccess `json:"OthersPrivateAccess,omitempty" name:"OthersPrivateAccess"`
+
+	// HTTPS服务（收费服务，详见计费说明和产品文档）
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
@@ -12193,7 +12228,10 @@ type UpdateDomainConfigRequest struct {
 	// 七牛云对象存储回源鉴权
 	QnPrivateAccess *QnPrivateAccess `json:"QnPrivateAccess,omitempty" name:"QnPrivateAccess"`
 
-	// HTTPS服务
+	// 其他厂商对象存储回源鉴权
+	OthersPrivateAccess *OthersPrivateAccess `json:"OthersPrivateAccess,omitempty" name:"OthersPrivateAccess"`
+
+	// HTTPS服务（收费服务，详见计费说明和产品文档）
 	HttpsBilling *HttpsBilling `json:"HttpsBilling,omitempty" name:"HttpsBilling"`
 }
 
@@ -12256,6 +12294,7 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "ShareCname")
 	delete(f, "HwPrivateAccess")
 	delete(f, "QnPrivateAccess")
+	delete(f, "OthersPrivateAccess")
 	delete(f, "HttpsBilling")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDomainConfigRequest has unknown keys!", "")

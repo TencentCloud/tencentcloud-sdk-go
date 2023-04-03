@@ -34,7 +34,7 @@ type SubmitTaskEventRequestParams struct {
 	// 任务事件Code
 	Code *string `json:"Code,omitempty" name:"Code"`
 
-	// 同步异步方式
+	// 同步异步方式：0为同步、1位异步
 	Async *int64 `json:"Async,omitempty" name:"Async"`
 
 	// 产品ID
@@ -59,7 +59,7 @@ type SubmitTaskEventRequest struct {
 	// 任务事件Code
 	Code *string `json:"Code,omitempty" name:"Code"`
 
-	// 同步异步方式
+	// 同步异步方式：0为同步、1位异步
 	Async *int64 `json:"Async,omitempty" name:"Async"`
 
 	// 产品ID
@@ -161,7 +161,7 @@ type TaskEventData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 当前积分/成长值
+	// 当前积分
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCoin *int64 `json:"TotalCoin,omitempty" name:"TotalCoin"`
 
@@ -180,4 +180,8 @@ type TaskEventData struct {
 	// 任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 当前成长值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrowScore *int64 `json:"GrowScore,omitempty" name:"GrowScore"`
 }

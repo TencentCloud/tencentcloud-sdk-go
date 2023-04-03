@@ -44,6 +44,9 @@ const (
 	// 源账号已存在。
 	FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
 
+	// 请求超时
+	FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+
 	// 房间暂未结束。
 	FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
 

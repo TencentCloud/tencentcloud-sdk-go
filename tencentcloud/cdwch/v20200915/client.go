@@ -525,6 +525,54 @@ func (c *Client) DescribeInstanceShardsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstanceStateRequest() (request *DescribeInstanceStateRequest) {
+    request = &DescribeInstanceStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeInstanceState")
+    
+    
+    return
+}
+
+func NewDescribeInstanceStateResponse() (response *DescribeInstanceStateResponse) {
+    response = &DescribeInstanceStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceState
+// 集群详情页中显示集群状态、流程进度等
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceState(request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
+    return c.DescribeInstanceStateWithContext(context.Background(), request)
+}
+
+// DescribeInstanceState
+// 集群详情页中显示集群状态、流程进度等
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstanceStateWithContext(ctx context.Context, request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceStateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSpecRequest() (request *DescribeSpecRequest) {
     request = &DescribeSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},

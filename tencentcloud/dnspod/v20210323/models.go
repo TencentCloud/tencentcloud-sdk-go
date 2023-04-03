@@ -1948,7 +1948,7 @@ func (r *DescribeDomainGroupListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainListRequestParams struct {
-	// 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
+	// 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT，FREE。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。
@@ -1967,7 +1967,7 @@ type DescribeDomainListRequestParams struct {
 type DescribeDomainListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
+	// 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT，FREE。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为0。

@@ -13149,6 +13149,9 @@ type DescribeClusterDetailResponseParams struct {
 	// Ingress数量
 	IngressCount *uint64 `json:"IngressCount,omitempty" name:"IngressCount"`
 
+	// 主节点的ip列表
+	MasterIps *string `json:"MasterIps,omitempty" name:"MasterIps"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -13229,6 +13232,9 @@ type DescribeClusterSummaryResponseParams struct {
 
 	// 检查失败集群数
 	FailedClusterCount *uint64 `json:"FailedClusterCount,omitempty" name:"FailedClusterCount"`
+
+	// 未导入的集群数量
+	NotImportedClusterCount *uint64 `json:"NotImportedClusterCount,omitempty" name:"NotImportedClusterCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

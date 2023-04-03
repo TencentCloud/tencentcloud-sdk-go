@@ -13463,6 +13463,10 @@ type InLongAgentDetail struct {
 	// agent数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentTotal *uint64 `json:"AgentTotal,omitempty" name:"AgentTotal"`
+
+	// 生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeDays *int64 `json:"LifeDays,omitempty" name:"LifeDays"`
 }
 
 type InLongAgentTask struct {

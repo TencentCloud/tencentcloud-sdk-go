@@ -5626,6 +5626,12 @@ type RecognizeIndonesiaIDCardOCRResponseParams struct {
 	// 人像截图
 	Photo *string `json:"Photo,omitempty" name:"Photo"`
 
+	// 省份，Scene为V2时支持识别
+	Provinsi *string `json:"Provinsi,omitempty" name:"Provinsi"`
+
+	// 城市，Scene为V2时支持识别
+	Kota *string `json:"Kota,omitempty" name:"Kota"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

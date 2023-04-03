@@ -7806,7 +7806,7 @@ func NewDeleteVpnGatewayRoutesResponse() (response *DeleteVpnGatewayRoutesRespon
 }
 
 // DeleteVpnGatewayRoutes
-// 本接口（DeleteVpnGatewayCcnRoutes）用于删除VPN网关路由
+// 本接口（DeleteVpnGatewayRoutes）用于删除VPN网关路由
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -7818,7 +7818,7 @@ func (c *Client) DeleteVpnGatewayRoutes(request *DeleteVpnGatewayRoutesRequest) 
 }
 
 // DeleteVpnGatewayRoutes
-// 本接口（DeleteVpnGatewayCcnRoutes）用于删除VPN网关路由
+// 本接口（DeleteVpnGatewayRoutes）用于删除VPN网关路由
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -12404,7 +12404,7 @@ func NewDescribeVpnGatewayCcnRoutesResponse() (response *DescribeVpnGatewayCcnRo
 }
 
 // DescribeVpnGatewayCcnRoutes
-// 本接口（DescribeVpnGatewayCcnRoutes）用于查询VPN网关云联网路由
+// 本接口（DescribeVpnGatewayCcnRoutes）用于查询VPN网关云联网路由。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -12416,7 +12416,7 @@ func (c *Client) DescribeVpnGatewayCcnRoutes(request *DescribeVpnGatewayCcnRoute
 }
 
 // DescribeVpnGatewayCcnRoutes
-// 本接口（DescribeVpnGatewayCcnRoutes）用于查询VPN网关云联网路由
+// 本接口（DescribeVpnGatewayCcnRoutes）用于查询VPN网关云联网路由。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -12458,7 +12458,7 @@ func NewDescribeVpnGatewayRoutesResponse() (response *DescribeVpnGatewayRoutesRe
 }
 
 // DescribeVpnGatewayRoutes
-// 查询路由型VPN网关的目的路由
+// 本接口（DescribeVpnGatewayRoutes）用于查询VPN网关路由。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12475,7 +12475,7 @@ func (c *Client) DescribeVpnGatewayRoutes(request *DescribeVpnGatewayRoutesReque
 }
 
 // DescribeVpnGatewayRoutes
-// 查询路由型VPN网关的目的路由
+// 本接口（DescribeVpnGatewayRoutes）用于查询VPN网关路由。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -17584,7 +17584,7 @@ func NewModifyVpnGatewayCcnRoutesResponse() (response *ModifyVpnGatewayCcnRoutes
 }
 
 // ModifyVpnGatewayCcnRoutes
-// 本接口（ModifyVpnGatewayCcnRoutes）用于修改VPN网关云联网路由
+// 本接口（ModifyVpnGatewayCcnRoutes）用于修改VPN网关云联网路由。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -17594,7 +17594,7 @@ func (c *Client) ModifyVpnGatewayCcnRoutes(request *ModifyVpnGatewayCcnRoutesReq
 }
 
 // ModifyVpnGatewayCcnRoutes
-// 本接口（ModifyVpnGatewayCcnRoutes）用于修改VPN网关云联网路由
+// 本接口（ModifyVpnGatewayCcnRoutes）用于修改VPN网关云联网路由。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -17634,7 +17634,7 @@ func NewModifyVpnGatewayRoutesResponse() (response *ModifyVpnGatewayRoutesRespon
 }
 
 // ModifyVpnGatewayRoutes
-// 修改VPN路由是否启用
+// 本接口（ModifyVpnGatewayRoutes）用于修改VPN路由是否启用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -17648,7 +17648,7 @@ func (c *Client) ModifyVpnGatewayRoutes(request *ModifyVpnGatewayRoutesRequest) 
 }
 
 // ModifyVpnGatewayRoutes
-// 修改VPN路由是否启用
+// 本接口（ModifyVpnGatewayRoutes）用于修改VPN路由是否启用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -19034,7 +19034,7 @@ func NewSetVpnGatewaysRenewFlagResponse() (response *SetVpnGatewaysRenewFlagResp
 }
 
 // SetVpnGatewaysRenewFlag
-// 设置VPNGW续费标记
+// 本接口（SetVpnGatewaysRenewFlag）用于设置VPNGW续费标记。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -19047,7 +19047,7 @@ func (c *Client) SetVpnGatewaysRenewFlag(request *SetVpnGatewaysRenewFlagRequest
 }
 
 // SetVpnGatewaysRenewFlag
-// 设置VPNGW续费标记
+// 本接口（SetVpnGatewaysRenewFlag）用于设置VPNGW续费标记。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"

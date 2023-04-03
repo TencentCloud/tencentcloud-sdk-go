@@ -88,6 +88,31 @@ func (r *AddGroupMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AnswerInfo struct {
+	// 用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+	Answer *uint64 `json:"Answer,omitempty" name:"Answer"`
+
+	// 答题用时
+	CostTime *uint64 `json:"CostTime,omitempty" name:"CostTime"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 答案是否正确（1正确0错误）
+	IsCorrect *uint64 `json:"IsCorrect,omitempty" name:"IsCorrect"`
+}
+
+type AnswerStat struct {
+	// 选项（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+	Answer *int64 `json:"Answer,omitempty" name:"Answer"`
+
+	// 答题人数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type AppConfig struct {
 
 }
@@ -1471,6 +1496,81 @@ func (r *DeleteRoomResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAnswerListRequestParams struct {
+	// 问题ID
+	QuestionId *string `json:"QuestionId,omitempty" name:"QuestionId"`
+
+	// 1
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeAnswerListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 问题ID
+	QuestionId *string `json:"QuestionId,omitempty" name:"QuestionId"`
+
+	// 1
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAnswerListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnswerListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QuestionId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAnswerListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAnswerListResponseParams struct {
+	// 符合查询条件的房间答案总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 房间提问答案列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnswerInfo []*AnswerInfo `json:"AnswerInfo,omitempty" name:"AnswerInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAnswerListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAnswerListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAnswerListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAnswerListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAppDetailRequestParams struct {
 	// 应用ID。低代码互动课堂的SdkAppId。
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -1645,6 +1745,9 @@ func (r *DescribeDeveloperRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeveloperResponseParams struct {
+	// 服务商ID
+	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2119,6 +2222,81 @@ func (r *DescribeGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeQuestionListRequestParams struct {
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 分页查询当前页数，从1开始递增，默认值为1
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 分页查询当前页数，从1开始递增，默认值为1
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeQuestionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 分页查询当前页数，从1开始递增，默认值为1
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 分页查询当前页数，从1开始递增，默认值为1
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeQuestionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuestionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQuestionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQuestionListResponseParams struct {
+	// 符合查询条件的房间问答问题总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 房间问答问题列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuestionInfo []*QuestionInfo `json:"QuestionInfo,omitempty" name:"QuestionInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeQuestionListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQuestionListResponseParams `json:"Response"`
+}
+
+func (r *DescribeQuestionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuestionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoomRequestParams struct {
 	// 房间Id。
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
@@ -2399,6 +2577,86 @@ func (r *DescribeSdkAppIdUsersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSdkAppIdUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSupervisorsRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 每页数据量，最大100。 不填默认20.
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页查询当前页数，从1开始递增，不填默认为1。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+}
+
+type DescribeSupervisorsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 每页数据量，最大100。 不填默认20.
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页查询当前页数，从1开始递增，不填默认为1。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+}
+
+func (r *DescribeSupervisorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSupervisorsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Limit")
+	delete(f, "Page")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSupervisorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSupervisorsResponseParams struct {
+	// 数据总量
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 分页查询当前页数
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 当前页数据量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 巡课列表
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSupervisorsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSupervisorsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSupervisorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSupervisorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3427,6 +3685,24 @@ func (r *ModifyUserProfileResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyUserProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QuestionInfo struct {
+	// 问题ID
+	QuestionId *string `json:"QuestionId,omitempty" name:"QuestionId"`
+
+	// 问题内容
+	QuestionContent *string `json:"QuestionContent,omitempty" name:"QuestionContent"`
+
+	// 倒计时答题设置的秒数（0 表示不计时）
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 正确答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
+	CorrectAnswer *int64 `json:"CorrectAnswer,omitempty" name:"CorrectAnswer"`
+
+	// 每个选项答题人数统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnswerStats []*AnswerStat `json:"AnswerStats,omitempty" name:"AnswerStats"`
 }
 
 // Predefined struct for user

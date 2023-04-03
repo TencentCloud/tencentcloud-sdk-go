@@ -4200,6 +4200,9 @@ type FlowDetailInfo struct {
 
 	// 合同(流程)的签署人数组
 	FlowApproverInfos []*FlowApproverDetail `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
+
+	// 合同(流程)的关注方信息列表
+	CcInfos []*FlowApproverDetail `json:"CcInfos,omitempty" name:"CcInfos"`
 }
 
 type FormField struct {

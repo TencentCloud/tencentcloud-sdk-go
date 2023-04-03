@@ -4516,7 +4516,7 @@ type FullTextInfo struct {
 
 	// 全文索引的分词符，其中的每个字符代表一个分词符；
 	// 仅支持英文符号、\n\t\r及转义符\；
-	// 注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义
+	// 注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义
 	Tokenizer *string `json:"Tokenizer,omitempty" name:"Tokenizer"`
 
 	// 是否包含中文
@@ -6804,7 +6804,7 @@ type ValueInfo struct {
 	// 字段的分词符，其中的每个字符代表一个分词符；
 	// 仅支持英文符号、\n\t\r及转义符\；
 	// long及double类型字段需为空；
-	// 注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义
+	// 注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义
 	Tokenizer *string `json:"Tokenizer,omitempty" name:"Tokenizer"`
 
 	// 字段是否开启分析功能
