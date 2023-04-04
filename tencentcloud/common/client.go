@@ -23,7 +23,7 @@ const (
 	octetStream = "application/octet-stream"
 )
 
-var DefaultClient *http.Client
+var DefaultHttpClient *http.Client
 
 type Client struct {
 	region          string
@@ -457,7 +457,7 @@ func (c *Client) GetRegion() string {
 
 func (c *Client) Init(region string) *Client {
 
-	if DefaultClient == nil {
+	if DefaultHttpClient == nil {
 		// try not to modify http.DefaultTransport if possible
 		// since we could possibly modify Transport.Proxy
 		transport := http.DefaultTransport
@@ -467,7 +467,7 @@ func (c *Client) Init(region string) *Client {
 
 		c.httpClient = &http.Client{Transport: transport}
 	} else {
-		c.httpClient = DefaultClient
+		c.httpClient = DefaultHttpClient
 	}
 
 	c.region = region
