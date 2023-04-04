@@ -26,9 +26,11 @@ import (
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	afv20200226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af/v20200226"
 	afcv20200226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc/v20200226"
+	aiartv20221229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aiart/v20221229"
 	amev20190916 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame/v20190916"
 	amsv20200608 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams/v20200608"
 	amsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams/v20201229"
+	anicloudv20220923 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/anicloud/v20220923"
 	antiddosv20200309 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos/v20200309"
 	apcasv20201127 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apcas/v20201127"
 	apev20200513 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ape/v20200513"
@@ -46,6 +48,7 @@ import (
 	bizlivev20190313 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bizlive/v20190313"
 	bmv20180423 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bm/v20180423"
 	bmav20210624 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bma/v20210624"
+	bmav20221115 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bma/v20221115"
 	bmeipv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmeip/v20180625"
 	bmlbv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb/v20180625"
 	bmvpcv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc/v20180625"
@@ -120,15 +123,18 @@ import (
 	essbasicv20201222 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic/v20201222"
 	essbasicv20210526 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic/v20210526"
 	facefusionv20181201 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion/v20181201"
+	facefusionv20220927 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/facefusion/v20220927"
 	faceidv20180301 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/faceid/v20180301"
 	fmuv20191213 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/fmu/v20191213"
 	ftv20200304 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ft/v20200304"
 	gaapv20180529 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gaap/v20180529"
 	gmev20180711 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gme/v20180711"
+	goosefsv20220519 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/goosefs/v20220519"
 	gpmv20200820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gpm/v20200820"
 	gsv20191118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gs/v20191118"
 	gsev20191112 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gse/v20191112"
 	habov20181203 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/habo/v20181203"
+	hasimv20210716 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hasim/v20210716"
 	hcmv20181106 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm/v20181106"
 	iaiv20180301 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai/v20180301"
 	iaiv20200303 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai/v20200303"
@@ -151,6 +157,7 @@ import (
 	irpv20220324 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp/v20220324"
 	irpv20220805 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp/v20220805"
 	ivldv20210903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld/v20210903"
+	keewidbv20220308 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/keewidb/v20220308"
 	kmsv20190118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms/v20190118"
 	lcicv20220817 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lcic/v20220817"
 	lighthousev20200324 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse/v20200324"
@@ -176,6 +183,7 @@ import (
 	nppv20190823 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/npp/v20190823"
 	oceanusv20190422 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/oceanus/v20190422"
 	ocrv20181119 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ocr/v20181119"
+	omicsv20221128 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/omics/v20221128"
 	organizationv20181225 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization/v20181225"
 	organizationv20210331 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization/v20210331"
 	partnersv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners/v20180321"
@@ -192,6 +200,7 @@ import (
 	scfv20180416 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf/v20180416"
 	sesv20201002 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses/v20201002"
 	smhv20210712 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smh/v20210712"
+	smopv20201203 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smop/v20201203"
 	smpnv20190822 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn/v20190822"
 	smsv20190711 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms/v20190711"
 	smsv20210111 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms/v20210111"
@@ -230,6 +239,7 @@ import (
 	teov20220901 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo/v20220901"
 	thpcv20211109 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc/v20211109"
 	thpcv20220401 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc/v20220401"
+	thpcv20230321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/thpc/v20230321"
 	tiav20180226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tia/v20180226"
 	ticv20201117 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tic/v20201117"
 	ticmv20181127 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ticm/v20181127"
@@ -246,6 +256,7 @@ import (
 	tmtv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt/v20180321"
 	trdpv20220726 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trdp/v20220726"
 	trpv20210515 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trp/v20210515"
+	trrov20220325 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trro/v20220325"
 	trtcv20190722 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc/v20190722"
 	tsev20201207 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse/v20201207"
 	tsfv20180326 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf/v20180326"
@@ -349,6 +360,19 @@ func TestAfcv20200226Import(t *testing.T) {
     }
 }
 
+func TestAiartv20221229Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := aiartv20221229.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init aiart_v20221229 client: %v", err)
+    }
+}
+
 func TestAmev20190916Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -385,6 +409,19 @@ func TestAmsv20201229Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init ams_v20201229 client: %v", err)
+    }
+}
+
+func TestAnicloudv20220923Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := anicloudv20220923.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init anicloud_v20220923 client: %v", err)
     }
 }
 
@@ -606,6 +643,19 @@ func TestBmav20210624Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init bma_v20210624 client: %v", err)
+    }
+}
+
+func TestBmav20221115Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := bmav20221115.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init bma_v20221115 client: %v", err)
     }
 }
 
@@ -1571,6 +1621,19 @@ func TestFacefusionv20181201Import(t *testing.T) {
     }
 }
 
+func TestFacefusionv20220927Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := facefusionv20220927.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init facefusion_v20220927 client: %v", err)
+    }
+}
+
 func TestFaceidv20180301Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -1636,6 +1699,19 @@ func TestGmev20180711Import(t *testing.T) {
     }
 }
 
+func TestGoosefsv20220519Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := goosefsv20220519.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init goosefs_v20220519 client: %v", err)
+    }
+}
+
 func TestGpmv20200820Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -1685,6 +1761,19 @@ func TestHabov20181203Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init habo_v20181203 client: %v", err)
+    }
+}
+
+func TestHasimv20210716Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := hasimv20210716.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init hasim_v20210716 client: %v", err)
     }
 }
 
@@ -1971,6 +2060,19 @@ func TestIvldv20210903Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init ivld_v20210903 client: %v", err)
+    }
+}
+
+func TestKeewidbv20220308Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := keewidbv20220308.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init keewidb_v20220308 client: %v", err)
     }
 }
 
@@ -2299,6 +2401,19 @@ func TestOcrv20181119Import(t *testing.T) {
     }
 }
 
+func TestOmicsv20221128Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := omicsv20221128.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init omics_v20221128 client: %v", err)
+    }
+}
+
 func TestOrganizationv20181225Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -2504,6 +2619,19 @@ func TestSmhv20210712Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init smh_v20210712 client: %v", err)
+    }
+}
+
+func TestSmopv20201203Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := smopv20201203.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init smop_v20201203 client: %v", err)
     }
 }
 
@@ -3001,6 +3129,19 @@ func TestThpcv20220401Import(t *testing.T) {
     }
 }
 
+func TestThpcv20230321Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := thpcv20230321.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init thpc_v20230321 client: %v", err)
+    }
+}
+
 func TestTiav20180226Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -3206,6 +3347,19 @@ func TestTrpv20210515Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init trp_v20210515 client: %v", err)
+    }
+}
+
+func TestTrrov20220325Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := trrov20220325.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init trro_v20220325 client: %v", err)
     }
 }
 

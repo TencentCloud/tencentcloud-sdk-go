@@ -209,6 +209,7 @@
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2023-03-30 02:45:29 |
 | trdp | [流量风险决策平台](https://cloud.tencent.com/document/product/1604) | 2023-03-30 02:45:33 |
 | trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2023-04-03 01:40:05 |
+| trro | [远程实时操控](https://cloud.tencent.com/document/product/1584) | 2023-04-04 09:21:02 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2023-03-30 02:45:48 |
 | tse | [微服务引擎 TSE](https://cloud.tencent.com/document/product/1364) | 2023-03-30 02:46:07 |
 | tsf | [微服务平台 TSF](https://cloud.tencent.com/document/product/649) | 2023-04-04 01:50:53 |

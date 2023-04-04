@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+## 远程实时操控(trro) 版本：2022-03-25
 
-### 第 55 次发布
+### 第 1 次发布
 
-发布时间：2023-04-04 01:14:38
+发布时间：2023-04-04 09:21:02
 
 本次发布包含了以下内容：
 
@@ -12,125 +12,32 @@
 
 新增接口：
 
-* [DescribeBackupFiles](https://cloud.tencent.com/document/api/557/89799)
+* [BatchDeleteDevices](https://cloud.tencent.com/document/api/1584/89818)
+* [BatchDeletePolicy](https://cloud.tencent.com/document/api/1584/89822)
+* [CreateDevice](https://cloud.tencent.com/document/api/1584/89817)
+* [CreateProject](https://cloud.tencent.com/document/api/1584/89812)
+* [DeleteProject](https://cloud.tencent.com/document/api/1584/89811)
+* [DescribeDeviceInfo](https://cloud.tencent.com/document/api/1584/89816)
+* [DescribeDeviceList](https://cloud.tencent.com/document/api/1584/89815)
+* [DescribeDeviceSessionDetails](https://cloud.tencent.com/document/api/1584/89827)
+* [DescribeDeviceSessionList](https://cloud.tencent.com/document/api/1584/89826)
+* [DescribePolicy](https://cloud.tencent.com/document/api/1584/89821)
+* [DescribeProjectInfo](https://cloud.tencent.com/document/api/1584/89810)
+* [DescribeProjectList](https://cloud.tencent.com/document/api/1584/89809)
+* [DescribeSessionStatistics](https://cloud.tencent.com/document/api/1584/89825)
+* [DescribeSessionStatisticsByInterval](https://cloud.tencent.com/document/api/1584/89824)
+* [ModifyDevice](https://cloud.tencent.com/document/api/1584/89814)
+* [ModifyPolicy](https://cloud.tencent.com/document/api/1584/89820)
+* [ModifyProject](https://cloud.tencent.com/document/api/1584/89808)
 
 新增数据结构：
 
-* [InstanceBackupFileItem](https://cloud.tencent.com/document/api/557/16142#InstanceBackupFileItem)
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
-
-### 第 85 次发布
-
-发布时间：2023-04-04 01:32:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Filter](https://cloud.tencent.com/document/api/248/30354#Filter)
-
-	* 新增成员：Name, Values
-
-	* <font color="#dd0000">**修改成员**：</font>Type, Key, Value
-
-* [PrometheusInstancesOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesOverview)
-
-	* 新增成员：ResourcePackageStatus, ResourcePackageSpecName
-
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 50 次发布
-
-发布时间：2023-04-04 01:39:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [UpdateTriggerStatus](https://cloud.tencent.com/document/api/583/89800)
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 142 次发布
-
-发布时间：2023-04-04 01:48:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ServiceAccountAuthenticationOptions](https://cloud.tencent.com/document/api/457/31866#ServiceAccountAuthenticationOptions)
-
-	* 新增成员：UseTKEDefault
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 147 次发布
-
-发布时间：2023-04-04 01:52:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89805)
-* [DeleteRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89804)
-* [DescribeRebuildMediaTemplates](https://cloud.tencent.com/document/api/266/89803)
-* [ModifyRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89802)
-* [RebuildMediaByTemplate](https://cloud.tencent.com/document/api/266/89801)
-
-修改接口：
-
-* [PullUpload](https://cloud.tencent.com/document/api/266/35575)
-
-	* 新增入参：MediaType
-
-
-新增数据结构：
-
-* [RebuildAudioInfo](https://cloud.tencent.com/document/api/266/31773#RebuildAudioInfo)
-* [RebuildMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#RebuildMediaOutputConfig)
-* [RebuildMediaTemplate](https://cloud.tencent.com/document/api/266/31773#RebuildMediaTemplate)
-* [RebuildVideoInfo](https://cloud.tencent.com/document/api/266/31773#RebuildVideoInfo)
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 27 次发布
-
-发布时间：2023-04-04 02:20:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeVipInfo](https://cloud.tencent.com/document/api/627/89806)
-
-新增数据结构：
-
-* [VipInfo](https://cloud.tencent.com/document/api/627/53609#VipInfo)
+* [DeviceInfo](https://cloud.tencent.com/document/api/1584/89828#DeviceInfo)
+* [PolicyInfo](https://cloud.tencent.com/document/api/1584/89828#PolicyInfo)
+* [ProjectInfo](https://cloud.tencent.com/document/api/1584/89828#ProjectInfo)
+* [SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail)
+* [SessionInfo](https://cloud.tencent.com/document/api/1584/89828#SessionInfo)
+* [SessionIntervalStatistic](https://cloud.tencent.com/document/api/1584/89828#SessionIntervalStatistic)
 
 
 
@@ -37006,11 +36913,11 @@
 
 新增接口：
 
-* [[DescribeBackupFiles](https://cloud.tencent.com/document/api/557/89799)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBackupFiles](https://cloud.tencent.com/document/api/557/89799)
 
 新增数据结构：
 
-* [[InstanceBackupFileItem](https://cloud.tencent.com/document/api/557/16142#InstanceBackupFileItem)](https://cloud.tencent.com/document/api/557/16142#[InstanceBackupFileItem](https://cloud.tencent.com/document/api/557/16142#InstanceBackupFileItem))
+* [InstanceBackupFileItem](https://cloud.tencent.com/document/api/557/16142#InstanceBackupFileItem)
 
 ### 第 54 次发布
 
@@ -75394,7 +75301,7 @@
 
 新增接口：
 
-* [[UpdateTriggerStatus](https://cloud.tencent.com/document/api/583/89800)](https://cloud.tencent.com/document/api/#/#)
+* [UpdateTriggerStatus](https://cloud.tencent.com/document/api/583/89800)
 
 ### 第 49 次发布
 
@@ -98285,6 +98192,48 @@
 
 
 
+## 远程实时操控(trro) 版本：2022-03-25
+
+### 第 1 次发布
+
+发布时间：2023-04-04 09:21:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BatchDeleteDevices](https://cloud.tencent.com/document/api/1584/89818)](https://cloud.tencent.com/document/api/#/#)
+* [[BatchDeletePolicy](https://cloud.tencent.com/document/api/1584/89822)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateDevice](https://cloud.tencent.com/document/api/1584/89817)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateProject](https://cloud.tencent.com/document/api/1584/89812)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteProject](https://cloud.tencent.com/document/api/1584/89811)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeviceInfo](https://cloud.tencent.com/document/api/1584/89816)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeviceList](https://cloud.tencent.com/document/api/1584/89815)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeviceSessionDetails](https://cloud.tencent.com/document/api/1584/89827)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeviceSessionList](https://cloud.tencent.com/document/api/1584/89826)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePolicy](https://cloud.tencent.com/document/api/1584/89821)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProjectInfo](https://cloud.tencent.com/document/api/1584/89810)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProjectList](https://cloud.tencent.com/document/api/1584/89809)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSessionStatistics](https://cloud.tencent.com/document/api/1584/89825)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeSessionStatisticsByInterval](https://cloud.tencent.com/document/api/1584/89824)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDevice](https://cloud.tencent.com/document/api/1584/89814)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPolicy](https://cloud.tencent.com/document/api/1584/89820)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyProject](https://cloud.tencent.com/document/api/1584/89808)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeviceInfo](https://cloud.tencent.com/document/api/1584/89828#DeviceInfo)](https://cloud.tencent.com/document/api/1584/89828#[DeviceInfo](https://cloud.tencent.com/document/api/1584/89828#DeviceInfo))
+* [[PolicyInfo](https://cloud.tencent.com/document/api/1584/89828#PolicyInfo)](https://cloud.tencent.com/document/api/1584/89828#[PolicyInfo](https://cloud.tencent.com/document/api/1584/89828#PolicyInfo))
+* [[ProjectInfo](https://cloud.tencent.com/document/api/1584/89828#ProjectInfo)](https://cloud.tencent.com/document/api/1584/89828#[ProjectInfo](https://cloud.tencent.com/document/api/1584/89828#ProjectInfo))
+* [[SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail)](https://cloud.tencent.com/document/api/1584/89828#[SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail))
+* [[SessionInfo](https://cloud.tencent.com/document/api/1584/89828#SessionInfo)](https://cloud.tencent.com/document/api/1584/89828#[SessionInfo](https://cloud.tencent.com/document/api/1584/89828#SessionInfo))
+* [[SessionIntervalStatistic](https://cloud.tencent.com/document/api/1584/89828#SessionIntervalStatistic)](https://cloud.tencent.com/document/api/1584/89828#[SessionIntervalStatistic](https://cloud.tencent.com/document/api/1584/89828#SessionIntervalStatistic))
+
+
+
+
 ## 实时音视频(trtc) 版本：2019-07-22
 
 ### 第 53 次发布
@@ -102966,11 +102915,11 @@
 
 新增接口：
 
-* [[CreateRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89805)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89804)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRebuildMediaTemplates](https://cloud.tencent.com/document/api/266/89803)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89802)](https://cloud.tencent.com/document/api/#/#)
-* [[RebuildMediaByTemplate](https://cloud.tencent.com/document/api/266/89801)](https://cloud.tencent.com/document/api/#/#)
+* [CreateRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89805)
+* [DeleteRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89804)
+* [DescribeRebuildMediaTemplates](https://cloud.tencent.com/document/api/266/89803)
+* [ModifyRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89802)
+* [RebuildMediaByTemplate](https://cloud.tencent.com/document/api/266/89801)
 
 修改接口：
 
@@ -102981,10 +102930,10 @@
 
 新增数据结构：
 
-* [[RebuildAudioInfo](https://cloud.tencent.com/document/api/266/31773#RebuildAudioInfo)](https://cloud.tencent.com/document/api/266/31773#[RebuildAudioInfo](https://cloud.tencent.com/document/api/266/31773#RebuildAudioInfo))
-* [[RebuildMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#RebuildMediaOutputConfig)](https://cloud.tencent.com/document/api/266/31773#[RebuildMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#RebuildMediaOutputConfig))
-* [[RebuildMediaTemplate](https://cloud.tencent.com/document/api/266/31773#RebuildMediaTemplate)](https://cloud.tencent.com/document/api/266/31773#[RebuildMediaTemplate](https://cloud.tencent.com/document/api/266/31773#RebuildMediaTemplate))
-* [[RebuildVideoInfo](https://cloud.tencent.com/document/api/266/31773#RebuildVideoInfo)](https://cloud.tencent.com/document/api/266/31773#[RebuildVideoInfo](https://cloud.tencent.com/document/api/266/31773#RebuildVideoInfo))
+* [RebuildAudioInfo](https://cloud.tencent.com/document/api/266/31773#RebuildAudioInfo)
+* [RebuildMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#RebuildMediaOutputConfig)
+* [RebuildMediaTemplate](https://cloud.tencent.com/document/api/266/31773#RebuildMediaTemplate)
+* [RebuildVideoInfo](https://cloud.tencent.com/document/api/266/31773#RebuildVideoInfo)
 
 ### 第 146 次发布
 
@@ -110311,11 +110260,11 @@
 
 新增接口：
 
-* [[DescribeVipInfo](https://cloud.tencent.com/document/api/627/89806)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVipInfo](https://cloud.tencent.com/document/api/627/89806)
 
 新增数据结构：
 
-* [[VipInfo](https://cloud.tencent.com/document/api/627/53609#VipInfo)](https://cloud.tencent.com/document/api/627/53609#[VipInfo](https://cloud.tencent.com/document/api/627/53609#VipInfo))
+* [VipInfo](https://cloud.tencent.com/document/api/627/53609#VipInfo)
 
 ### 第 26 次发布
 

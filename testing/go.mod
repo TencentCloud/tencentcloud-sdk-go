@@ -10,8 +10,10 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aiart v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/anicloud v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apcas v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ape v0.0.0
@@ -65,7 +67,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.630
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.631
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -102,10 +104,12 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ft v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gaap v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gme v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/goosefs v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gpm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gs v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gse v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/habo v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hasim v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic v0.0.0
@@ -122,6 +126,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideoindustry v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/keewidb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lcic v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v0.0.0
@@ -145,6 +150,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/npp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/oceanus v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ocr v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/omics v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pds v0.0.0
@@ -160,6 +166,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smh v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smop v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe v0.0.0
@@ -207,6 +214,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trp v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trro v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf v0.0.0
@@ -236,8 +244,10 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor => ../tencentcloud/advisor
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af => ../tencentcloud/af
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc => ../tencentcloud/afc
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aiart => ../tencentcloud/aiart
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame => ../tencentcloud/ame
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams => ../tencentcloud/ams
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/anicloud => ../tencentcloud/anicloud
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/antiddos => ../tencentcloud/antiddos
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/apcas => ../tencentcloud/apcas
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ape => ../tencentcloud/ape
@@ -328,10 +338,12 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ft => ../tencentcloud/ft
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gaap => ../tencentcloud/gaap
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gme => ../tencentcloud/gme
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/goosefs => ../tencentcloud/goosefs
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gpm => ../tencentcloud/gpm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gs => ../tencentcloud/gs
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/gse => ../tencentcloud/gse
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/habo => ../tencentcloud/habo
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hasim => ../tencentcloud/hasim
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm => ../tencentcloud/hcm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iai => ../tencentcloud/iai
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ic => ../tencentcloud/ic
@@ -348,6 +360,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideoindustry => ../tencentcloud/iotvideoindustry
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp => ../tencentcloud/irp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld => ../tencentcloud/ivld
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/keewidb => ../tencentcloud/keewidb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms => ../tencentcloud/kms
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lcic => ../tencentcloud/lcic
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse => ../tencentcloud/lighthouse
@@ -371,6 +384,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/npp => ../tencentcloud/npp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/oceanus => ../tencentcloud/oceanus
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ocr => ../tencentcloud/ocr
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/omics => ../tencentcloud/omics
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/organization => ../tencentcloud/organization
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/partners => ../tencentcloud/partners
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pds => ../tencentcloud/pds
@@ -386,6 +400,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf => ../tencentcloud/scf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses => ../tencentcloud/ses
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smh => ../tencentcloud/smh
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smop => ../tencentcloud/smop
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smpn => ../tencentcloud/smpn
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sms => ../tencentcloud/sms
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe => ../tencentcloud/soe
@@ -433,6 +448,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt => ../tencentcloud/tmt
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trdp => ../tencentcloud/trdp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trp => ../tencentcloud/trp
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trro => ../tencentcloud/trro
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc => ../tencentcloud/trtc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tse => ../tencentcloud/tse
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tsf => ../tencentcloud/tsf
