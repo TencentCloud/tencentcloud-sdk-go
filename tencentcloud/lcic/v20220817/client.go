@@ -1262,6 +1262,7 @@ func NewDeleteRecordResponse() (response *DeleteRecordResponse) {
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRecord(request *DeleteRecordRequest) (response *DeleteRecordResponse, err error) {
@@ -1277,6 +1278,7 @@ func (c *Client) DeleteRecord(request *DeleteRecordRequest) (response *DeleteRec
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRecordWithContext(ctx context.Context, request *DeleteRecordRequest) (response *DeleteRecordResponse, err error) {

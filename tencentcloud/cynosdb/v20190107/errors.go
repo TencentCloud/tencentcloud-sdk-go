@@ -212,6 +212,9 @@ const (
 	// 集群当前状态不允许该操作。
 	OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
 
+	// 您没有权限操作资源。
+	OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+
 	// 实例当前状态不允许该操作。
 	OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
 

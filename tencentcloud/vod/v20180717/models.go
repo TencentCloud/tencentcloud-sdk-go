@@ -4170,6 +4170,138 @@ func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRebuildMediaTemplateRequestParams struct {
+	// 输出文件封装格式，可选值：mp4、flv、hls。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 音画质重生模版名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模版描述。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 音画质重生视频控制控制信息。
+	RebuildVideoInfo *RebuildVideoInfo `json:"RebuildVideoInfo,omitempty" name:"RebuildVideoInfo"`
+
+	// 音画质重生音频控制控制信息。
+	RebuildAudioInfo *RebuildAudioInfo `json:"RebuildAudioInfo,omitempty" name:"RebuildAudioInfo"`
+
+	// 输出目标视频控制信息。
+	TargetVideoInfo *RebuildMediaTargetVideoStream `json:"TargetVideoInfo,omitempty" name:"TargetVideoInfo"`
+
+	// 输出目标音频控制信息。
+	TargetAudioInfo *RebuildMediaTargetAudioStream `json:"TargetAudioInfo,omitempty" name:"TargetAudioInfo"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 默认值 0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 默认值 0。
+	RemoveAudio *string `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+}
+
+type CreateRebuildMediaTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 输出文件封装格式，可选值：mp4、flv、hls。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 音画质重生模版名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模版描述。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 音画质重生视频控制控制信息。
+	RebuildVideoInfo *RebuildVideoInfo `json:"RebuildVideoInfo,omitempty" name:"RebuildVideoInfo"`
+
+	// 音画质重生音频控制控制信息。
+	RebuildAudioInfo *RebuildAudioInfo `json:"RebuildAudioInfo,omitempty" name:"RebuildAudioInfo"`
+
+	// 输出目标视频控制信息。
+	TargetVideoInfo *RebuildMediaTargetVideoStream `json:"TargetVideoInfo,omitempty" name:"TargetVideoInfo"`
+
+	// 输出目标音频控制信息。
+	TargetAudioInfo *RebuildMediaTargetAudioStream `json:"TargetAudioInfo,omitempty" name:"TargetAudioInfo"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 默认值 0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 默认值 0。
+	RemoveAudio *string `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+}
+
+func (r *CreateRebuildMediaTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRebuildMediaTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Container")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "RebuildVideoInfo")
+	delete(f, "RebuildAudioInfo")
+	delete(f, "TargetVideoInfo")
+	delete(f, "TargetAudioInfo")
+	delete(f, "RemoveVideo")
+	delete(f, "RemoveAudio")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRebuildMediaTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRebuildMediaTemplateResponseParams struct {
+	// 音画质重生模版 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRebuildMediaTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRebuildMediaTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateRebuildMediaTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRebuildMediaTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateReviewTemplateRequestParams struct {
 	// 需要返回的违规标签列表，可选值为：
 	// <li>Porn：色情；</li>
@@ -6158,6 +6290,67 @@ func (r *DeleteProcedureTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteProcedureTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRebuildMediaTemplateRequestParams struct {
+	// 音画质重生模版号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+type DeleteRebuildMediaTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音画质重生模版号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteRebuildMediaTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRebuildMediaTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRebuildMediaTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRebuildMediaTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRebuildMediaTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRebuildMediaTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteRebuildMediaTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRebuildMediaTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9294,6 +9487,98 @@ func (r *DescribeProcedureTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProcedureTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRebuildMediaTemplatesRequestParams struct {
+	// 音画质重生模版列表。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRebuildMediaTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音画质重生模版列表。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *int64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRebuildMediaTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRebuildMediaTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definitions")
+	delete(f, "SubAppId")
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRebuildMediaTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRebuildMediaTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 音画质重生模板详情列表。
+	RebuildMediaTemplateSet []*RebuildMediaTemplate `json:"RebuildMediaTemplateSet,omitempty" name:"RebuildMediaTemplateSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRebuildMediaTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRebuildMediaTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRebuildMediaTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRebuildMediaTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14948,6 +15233,138 @@ func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRebuildMediaTemplateRequestParams struct {
+	// 音画质重生模版号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 音画质重生模版名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 音画质重生模版描述。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 音画质重生视频控制信息。
+	RebuildVideoInfo *RebuildVideoInfo `json:"RebuildVideoInfo,omitempty" name:"RebuildVideoInfo"`
+
+	// 音画质重生音频控制信息。
+	RebuildAudioInfo *RebuildAudioInfo `json:"RebuildAudioInfo,omitempty" name:"RebuildAudioInfo"`
+
+	// 输出目标视频控制信息。
+	TargetVideoInfo *RebuildMediaTargetVideoStream `json:"TargetVideoInfo,omitempty" name:"TargetVideoInfo"`
+
+	// 输出目标音频控制信息。
+	TargetAudioInfo *RebuildMediaTargetAudioStream `json:"TargetAudioInfo,omitempty" name:"TargetAudioInfo"`
+
+	// 输出文件封装格式，可选值：mp4、flv、hls。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+}
+
+type ModifyRebuildMediaTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音画质重生模版号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 音画质重生模版名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 音画质重生模版描述。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 音画质重生视频控制信息。
+	RebuildVideoInfo *RebuildVideoInfo `json:"RebuildVideoInfo,omitempty" name:"RebuildVideoInfo"`
+
+	// 音画质重生音频控制信息。
+	RebuildAudioInfo *RebuildAudioInfo `json:"RebuildAudioInfo,omitempty" name:"RebuildAudioInfo"`
+
+	// 输出目标视频控制信息。
+	TargetVideoInfo *RebuildMediaTargetVideoStream `json:"TargetVideoInfo,omitempty" name:"TargetVideoInfo"`
+
+	// 输出目标音频控制信息。
+	TargetAudioInfo *RebuildMediaTargetAudioStream `json:"TargetAudioInfo,omitempty" name:"TargetAudioInfo"`
+
+	// 输出文件封装格式，可选值：mp4、flv、hls。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+}
+
+func (r *ModifyRebuildMediaTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRebuildMediaTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "RebuildVideoInfo")
+	delete(f, "RebuildAudioInfo")
+	delete(f, "TargetVideoInfo")
+	delete(f, "TargetAudioInfo")
+	delete(f, "Container")
+	delete(f, "RemoveVideo")
+	delete(f, "RemoveAudio")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRebuildMediaTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRebuildMediaTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRebuildMediaTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRebuildMediaTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyRebuildMediaTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRebuildMediaTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyReviewTemplateRequestParams struct {
 	// 审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
@@ -17607,6 +18024,10 @@ type PullUploadRequestParams struct {
 	// 支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。请确保媒体 URL 可以访问。
 	MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
 
+	// 媒体文件类型（扩展名），支持的类型详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
+	// 如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。
+	MediaType *string `json:"MediaType,omitempty" name:"MediaType"`
+
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
@@ -17649,6 +18070,10 @@ type PullUploadRequest struct {
 	// 要拉取的媒体 URL，暂不支持拉取 Dash 格式（可以支持 HLS）。
 	// 支持的扩展名详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。请确保媒体 URL 可以访问。
 	MediaUrl *string `json:"MediaUrl,omitempty" name:"MediaUrl"`
+
+	// 媒体文件类型（扩展名），支持的类型详见[媒体类型](https://cloud.tencent.com/document/product/266/9760#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B)。
+	// 如果 MediaType 不填或取值为空字符串，将根据 MediaUrl 自动获取文件类型。
+	MediaType *string `json:"MediaType,omitempty" name:"MediaType"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -17699,6 +18124,7 @@ func (r *PullUploadRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "MediaUrl")
+	delete(f, "MediaType")
 	delete(f, "SubAppId")
 	delete(f, "MediaName")
 	delete(f, "CoverUrl")
@@ -17847,6 +18273,144 @@ func (r *PushUrlCacheResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PushUrlCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RebuildAudioInfo struct {
+	// 音频降噪控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioDenoiseInfo *AudioDenoiseInfo `json:"AudioDenoiseInfo,omitempty" name:"AudioDenoiseInfo"`
+}
+
+// Predefined struct for user
+type RebuildMediaByTemplateRequestParams struct {
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 音画质重生模版 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 起始偏移时间，单位：秒，不填表示从视频开始截取。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 音画质重生后的文件配置。
+	OutputConfig *RebuildMediaOutputConfig `json:"OutputConfig,omitempty" name:"OutputConfig"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+}
+
+type RebuildMediaByTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 音画质重生模版 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 起始偏移时间，单位：秒，不填表示从视频开始截取。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 音画质重生后的文件配置。
+	OutputConfig *RebuildMediaOutputConfig `json:"OutputConfig,omitempty" name:"OutputConfig"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+}
+
+func (r *RebuildMediaByTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebuildMediaByTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	delete(f, "StartTimeOffset")
+	delete(f, "EndTimeOffset")
+	delete(f, "OutputConfig")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	delete(f, "TasksPriority")
+	delete(f, "ExtInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RebuildMediaByTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RebuildMediaByTemplateResponseParams struct {
+	// 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RebuildMediaByTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *RebuildMediaByTemplateResponseParams `json:"Response"`
+}
+
+func (r *RebuildMediaByTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebuildMediaByTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RebuildMediaOutputConfig struct {
+	// 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
 // Predefined struct for user
@@ -18291,6 +18855,105 @@ type RebuildMediaTaskOutput struct {
 
 	// 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+type RebuildMediaTemplate struct {
+	// 音画质重生模版号。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板类型，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 音画质重生模版名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 音画质重生模版描述。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 音画质重生视频控制信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RebuildVideoInfo *RebuildVideoInfo `json:"RebuildVideoInfo,omitempty" name:"RebuildVideoInfo"`
+
+	// 音画质重生音频控制信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RebuildAudioInfo *RebuildAudioInfo `json:"RebuildAudioInfo,omitempty" name:"RebuildAudioInfo"`
+
+	// 输出视频控制信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetVideoInfo *RebuildMediaTargetVideoStream `json:"TargetVideoInfo,omitempty" name:"TargetVideoInfo"`
+
+	// 输出音频控制信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetAudioInfo *RebuildMediaTargetAudioStream `json:"TargetAudioInfo,omitempty" name:"TargetAudioInfo"`
+
+	// 封装格式。可选值：mp4、hls。默认是 mp4。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 默认值 0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留</li>
+	// <li>1：去除</li>
+	// 默认值 0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type RebuildVideoInfo struct {
+	// 画质修复控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepairInfo *RepairInfo `json:"RepairInfo,omitempty" name:"RepairInfo"`
+
+	// 智能插帧控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoFrameInterpolationInfo *VideoFrameInterpolationInfo `json:"VideoFrameInterpolationInfo,omitempty" name:"VideoFrameInterpolationInfo"`
+
+	// 画面超分控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuperResolutionInfo *SuperResolutionInfo `json:"SuperResolutionInfo,omitempty" name:"SuperResolutionInfo"`
+
+	// 高动态范围类型控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HDRInfo *HDRInfo `json:"HDRInfo,omitempty" name:"HDRInfo"`
+
+	// 视频降噪控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoDenoiseInfo *VideoDenoiseInfo `json:"VideoDenoiseInfo,omitempty" name:"VideoDenoiseInfo"`
+
+	// 色彩增强控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorInfo *ColorEnhanceInfo `json:"ColorInfo,omitempty" name:"ColorInfo"`
+
+	// 细节增强控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SharpInfo *SharpEnhanceInfo `json:"SharpInfo,omitempty" name:"SharpInfo"`
+
+	// 人脸增强控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaceInfo *FaceEnhanceInfo `json:"FaceInfo,omitempty" name:"FaceInfo"`
+
+	// 低光照控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowLightInfo *LowLightEnhanceInfo `json:"LowLightInfo,omitempty" name:"LowLightInfo"`
+
+	// 去划痕控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScratchRepairInfo *ScratchRepairInfo `json:"ScratchRepairInfo,omitempty" name:"ScratchRepairInfo"`
+
+	// 去伪影控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArtifactRepairInfo *ArtifactRepairInfo `json:"ArtifactRepairInfo,omitempty" name:"ArtifactRepairInfo"`
 }
 
 type ReduceMediaBitrateAdaptiveDynamicStreamingResult struct {

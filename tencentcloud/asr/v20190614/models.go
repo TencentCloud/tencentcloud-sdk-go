@@ -1717,7 +1717,7 @@ type Task struct {
 }
 
 type TaskStatus struct {
-	// 任务标识。
+	// 任务标识。注意：TaskId数据类型为uint64。
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 任务状态码，0：任务等待，1：任务执行中，2：任务成功，3：任务失败。

@@ -1,3 +1,139 @@
+# Release v1.0.630
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 55 次发布
+
+发布时间：2023-04-04 01:14:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBackupFiles](https://cloud.tencent.com/document/api/557/89799)
+
+新增数据结构：
+
+* [InstanceBackupFileItem](https://cloud.tencent.com/document/api/557/16142#InstanceBackupFileItem)
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 85 次发布
+
+发布时间：2023-04-04 01:32:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/248/30354#Filter)
+
+	* 新增成员：Name, Values
+
+	* <font color="#dd0000">**修改成员**：</font>Type, Key, Value
+
+* [PrometheusInstancesOverview](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesOverview)
+
+	* 新增成员：ResourcePackageStatus, ResourcePackageSpecName
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 50 次发布
+
+发布时间：2023-04-04 01:39:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateTriggerStatus](https://cloud.tencent.com/document/api/583/89800)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 142 次发布
+
+发布时间：2023-04-04 01:48:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServiceAccountAuthenticationOptions](https://cloud.tencent.com/document/api/457/31866#ServiceAccountAuthenticationOptions)
+
+	* 新增成员：UseTKEDefault
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 147 次发布
+
+发布时间：2023-04-04 01:52:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89805)
+* [DeleteRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89804)
+* [DescribeRebuildMediaTemplates](https://cloud.tencent.com/document/api/266/89803)
+* [ModifyRebuildMediaTemplate](https://cloud.tencent.com/document/api/266/89802)
+* [RebuildMediaByTemplate](https://cloud.tencent.com/document/api/266/89801)
+
+修改接口：
+
+* [PullUpload](https://cloud.tencent.com/document/api/266/35575)
+
+	* 新增入参：MediaType
+
+
+新增数据结构：
+
+* [RebuildAudioInfo](https://cloud.tencent.com/document/api/266/31773#RebuildAudioInfo)
+* [RebuildMediaOutputConfig](https://cloud.tencent.com/document/api/266/31773#RebuildMediaOutputConfig)
+* [RebuildMediaTemplate](https://cloud.tencent.com/document/api/266/31773#RebuildMediaTemplate)
+* [RebuildVideoInfo](https://cloud.tencent.com/document/api/266/31773#RebuildVideoInfo)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 27 次发布
+
+发布时间：2023-04-04 02:20:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeVipInfo](https://cloud.tencent.com/document/api/627/89806)
+
+新增数据结构：
+
+* [VipInfo](https://cloud.tencent.com/document/api/627/53609#VipInfo)
+
+
+
 # Release v1.0.629
 
 ## 应用云渲染(car) 版本：2022-01-10

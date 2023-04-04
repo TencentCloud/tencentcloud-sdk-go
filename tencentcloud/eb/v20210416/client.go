@@ -1451,6 +1451,7 @@ func NewPutEventsResponse() (response *PutEventsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_UNKNOWNINTERNALERROR = "InternalError.UnknownInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"
@@ -1469,6 +1470,7 @@ func (c *Client) PutEvents(request *PutEventsRequest) (response *PutEventsRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_UNKNOWNINTERNALERROR = "InternalError.UnknownInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_INVALIDEVENT = "InvalidParameterValue.InvalidEvent"

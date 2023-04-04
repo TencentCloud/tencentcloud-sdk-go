@@ -10062,6 +10062,12 @@ type Filter struct {
 
 	// 过滤值，in过滤方式用逗号分割多个值
 	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 过滤条件名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤条件取值范围
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 // Predefined struct for user
@@ -12600,6 +12606,14 @@ type PrometheusInstancesOverview struct {
 
 	// 绑定集群正常状态总数
 	BoundNormal *int64 `json:"BoundNormal,omitempty" name:"BoundNormal"`
+
+	// 资源包状态，0-无可用资源包，1-有可用资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePackageStatus *int64 `json:"ResourcePackageStatus,omitempty" name:"ResourcePackageStatus"`
+
+	// 资源包规格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePackageSpecName *string `json:"ResourcePackageSpecName,omitempty" name:"ResourcePackageSpecName"`
 }
 
 type PrometheusJobTargets struct {

@@ -238,6 +238,7 @@ func NewReportFeedItemResponse() (response *ReportFeedItemResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReportFeedItem(request *ReportFeedItemRequest) (response *ReportFeedItemResponse, err error) {
@@ -251,6 +252,7 @@ func (c *Client) ReportFeedItem(request *ReportFeedItemRequest) (response *Repor
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReportFeedItemWithContext(ctx context.Context, request *ReportFeedItemRequest) (response *ReportFeedItemResponse, err error) {

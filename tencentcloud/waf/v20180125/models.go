@@ -2691,6 +2691,63 @@ func (r *DescribeUserClbWafRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVipInfoRequestParams struct {
+	// waf实例id列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+}
+
+type DescribeVipInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// waf实例id列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+}
+
+func (r *DescribeVipInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVipInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVipInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVipInfoResponseParams struct {
+	// VIP信息
+	VipInfo []*VipInfo `json:"VipInfo,omitempty" name:"VipInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeVipInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVipInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeVipInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVipInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeWafAutoDenyRulesRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -4450,6 +4507,16 @@ func (r *UpsertIpAccessControlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpsertIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VipInfo struct {
+	// Virtual IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// waf实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type WafRuleLimit struct {

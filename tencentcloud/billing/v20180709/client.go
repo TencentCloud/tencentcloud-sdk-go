@@ -184,6 +184,7 @@ func NewDescribeBillListResponse() (response *DescribeBillListResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -197,6 +198,7 @@ func (c *Client) DescribeBillList(request *DescribeBillListRequest) (response *D
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"

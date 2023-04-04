@@ -7498,7 +7498,9 @@ type ExceptUserRuleScope struct {
 
 	// 生效的模块，该字段取值有：
 	// <li>waf：托管规则；</li>
-	// <li>cc：速率限制规则；</li>
+	// <li>rate：速率限制；</li>
+	// <li>acl：自定义规则；</li>
+	// <li>cc：cc攻击防护；</li>
 	// <li>bot：Bot防护。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Modules []*string `json:"Modules,omitempty" name:"Modules"`

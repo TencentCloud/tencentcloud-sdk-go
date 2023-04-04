@@ -833,6 +833,8 @@ func NewDeleteAutoSnapshotPoliciesResponse() (response *DeleteAutoSnapshotPolici
 // *  支持批量操作。如果多个定期快照策略存在无法删除的，则操作不执行，以特定错误码返回。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
 //  INVALIDAUTOSNAPSHOTPOLICYID_NOTFOUND = "InvalidAutoSnapshotPolicyId.NotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -849,6 +851,8 @@ func (c *Client) DeleteAutoSnapshotPolicies(request *DeleteAutoSnapshotPoliciesR
 // *  支持批量操作。如果多个定期快照策略存在无法删除的，则操作不执行，以特定错误码返回。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
 //  INVALIDAUTOSNAPSHOTPOLICYID_NOTFOUND = "InvalidAutoSnapshotPolicyId.NotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"

@@ -3129,6 +3129,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3157,6 +3158,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"

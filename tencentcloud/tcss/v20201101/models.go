@@ -9581,7 +9581,7 @@ func (r *DescribeAssetHostDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetHostDetailResponseParams struct {
-	// 云镜uuid
+	// 容器安全uuid
 	UUID *string `json:"UUID,omitempty" name:"UUID"`
 
 	// 更新时间

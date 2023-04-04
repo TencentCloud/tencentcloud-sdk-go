@@ -1374,7 +1374,7 @@ func NewChannelCreateUserRolesResponse() (response *ChannelCreateUserRolesRespon
 }
 
 // ChannelCreateUserRoles
-// 渠道版绑定员工角色
+// 绑定员工角色
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1388,7 +1388,7 @@ func (c *Client) ChannelCreateUserRoles(request *ChannelCreateUserRolesRequest) 
 }
 
 // ChannelCreateUserRoles
-// 渠道版绑定员工角色
+// 绑定员工角色
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1432,7 +1432,7 @@ func NewChannelDeleteRoleUsersResponse() (response *ChannelDeleteRoleUsersRespon
 }
 
 // ChannelDeleteRoleUsers
-// 渠道版删除员工绑定角色
+// 删除员工绑定角色
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1446,7 +1446,7 @@ func (c *Client) ChannelDeleteRoleUsers(request *ChannelDeleteRoleUsersRequest) 
 }
 
 // ChannelDeleteRoleUsers
-// 渠道版删除员工绑定角色
+// 删除员工绑定角色
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1688,7 +1688,7 @@ func NewChannelDescribeRolesResponse() (response *ChannelDescribeRolesResponse) 
 }
 
 // ChannelDescribeRoles
-// 渠道办查询用户角色
+// 查询用户角色
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1703,7 +1703,7 @@ func (c *Client) ChannelDescribeRoles(request *ChannelDescribeRolesRequest) (res
 }
 
 // ChannelDescribeRoles
-// 渠道办查询用户角色
+// 查询用户角色
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2015,6 +2015,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_APPLICATIONID = "ResourceNotFound.ApplicationId"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -2061,6 +2062,7 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_APPLICATIONID = "ResourceNotFound.ApplicationId"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"

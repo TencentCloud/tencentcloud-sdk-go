@@ -16151,6 +16151,10 @@ type SecurityContext struct {
 }
 
 type ServiceAccountAuthenticationOptions struct {
+	// 使用TKE默认issuer和jwksuri
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseTKEDefault *bool `json:"UseTKEDefault,omitempty" name:"UseTKEDefault"`
+
 	// service-account-issuer
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Issuer *string `json:"Issuer,omitempty" name:"Issuer"`

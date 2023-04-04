@@ -2213,6 +2213,7 @@ func NewUpdateCronJobResponse() (response *UpdateCronJobResponse) {
 // 更新定时任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
 //  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) UpdateCronJob(request *UpdateCronJobRequest) (response *UpdateCronJobResponse, err error) {
     return c.UpdateCronJobWithContext(context.Background(), request)
@@ -2222,6 +2223,7 @@ func (c *Client) UpdateCronJob(request *UpdateCronJobRequest) (response *UpdateC
 // 更新定时任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
 //  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) UpdateCronJobWithContext(ctx context.Context, request *UpdateCronJobRequest) (response *UpdateCronJobResponse, err error) {
     if request == nil {
@@ -2261,6 +2263,7 @@ func NewUpdateFileScenarioRelationResponse() (response *UpdateFileScenarioRelati
 // 更新关联文件场景
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
 //  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) UpdateFileScenarioRelation(request *UpdateFileScenarioRelationRequest) (response *UpdateFileScenarioRelationResponse, err error) {
     return c.UpdateFileScenarioRelationWithContext(context.Background(), request)
@@ -2270,6 +2273,7 @@ func (c *Client) UpdateFileScenarioRelation(request *UpdateFileScenarioRelationR
 // 更新关联文件场景
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
 //  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) UpdateFileScenarioRelationWithContext(ctx context.Context, request *UpdateFileScenarioRelationRequest) (response *UpdateFileScenarioRelationResponse, err error) {
     if request == nil {

@@ -134,6 +134,9 @@ const (
 	// 请求的短信内容太长，短信长度规则请参考 [国内短信内容长度计算规则](https://cloud.tencent.com/document/product/382/18058)。
 	INVALIDPARAMETERVALUE_CONTENTLENGTHLIMIT = "InvalidParameterValue.ContentLengthLimit"
 
+	// 参数 EndTime 校验失败。
+	INVALIDPARAMETERVALUE_ENDTIMEVERIFYFAIL = "InvalidParameterValue.EndTimeVerifyFail"
+
 	// 上传的转码图片格式错误，请参照 API 接口说明中对改字段的说明，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	INVALIDPARAMETERVALUE_IMAGEINVALID = "InvalidParameterValue.ImageInvalid"
 

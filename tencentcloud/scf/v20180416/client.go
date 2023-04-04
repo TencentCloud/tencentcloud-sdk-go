@@ -339,6 +339,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  INVALIDPARAMETERVALUE_WEBSOCKETSPARAMS = "InvalidParameterValue.WebSocketsParams"
 //  INVALIDPARAMETERVALUE_ZIPFILE = "InvalidParameterValue.ZipFile"
 //  INVALIDPARAMETERVALUE_ZIPFILEBASE64BINASCIIERROR = "InvalidParameterValue.ZipFileBase64BinasciiError"
+//  LIMITEXCEEDED_CONTAINERIMAGEACCELERATE = "LimitExceeded.ContainerImageAccelerate"
 //  LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = "LimitExceeded.ContainerImageAccelerateQuota"
 //  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
 //  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
@@ -460,6 +461,7 @@ func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_WEBSOCKETSPARAMS = "InvalidParameterValue.WebSocketsParams"
 //  INVALIDPARAMETERVALUE_ZIPFILE = "InvalidParameterValue.ZipFile"
 //  INVALIDPARAMETERVALUE_ZIPFILEBASE64BINASCIIERROR = "InvalidParameterValue.ZipFileBase64BinasciiError"
+//  LIMITEXCEEDED_CONTAINERIMAGEACCELERATE = "LimitExceeded.ContainerImageAccelerate"
 //  LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = "LimitExceeded.ContainerImageAccelerateQuota"
 //  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
 //  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
@@ -3659,6 +3661,94 @@ func (c *Client) UpdateNamespaceWithContext(ctx context.Context, request *Update
     request.SetContext(ctx)
     
     response = NewUpdateNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateTriggerStatusRequest() (request *UpdateTriggerStatusRequest) {
+    request = &UpdateTriggerStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("scf", APIVersion, "UpdateTriggerStatus")
+    
+    
+    return
+}
+
+func NewUpdateTriggerStatusResponse() (response *UpdateTriggerStatusResponse) {
+    response = &UpdateTriggerStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateTriggerStatus
+// 更新触发器状态的值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COS = "FailedOperation.Cos"
+//  FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
+//  FAILEDOPERATION_UPDATESTATUS = "FailedOperation.UpdateStatus"
+//  FAILEDOPERATION_UPDATETRIGGERSTATUS = "FailedOperation.UpdateTriggerStatus"
+//  INTERNALERROR_CMQ = "InternalError.Cmq"
+//  INTERNALERROR_COS = "InternalError.Cos"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COSNOTIFYRULECONFLICT = "InvalidParameterValue.CosNotifyRuleConflict"
+//  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
+//  INVALIDPARAMETERVALUE_TRIGGERDESC = "InvalidParameterValue.TriggerDesc"
+//  INVALIDPARAMETERVALUE_TRIGGERNAME = "InvalidParameterValue.TriggerName"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  RESOURCENOTFOUND_TRIGGER = "ResourceNotFound.Trigger"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_UPDATETRIGGERSTATUS = "UnauthorizedOperation.UpdateTriggerStatus"
+func (c *Client) UpdateTriggerStatus(request *UpdateTriggerStatusRequest) (response *UpdateTriggerStatusResponse, err error) {
+    return c.UpdateTriggerStatusWithContext(context.Background(), request)
+}
+
+// UpdateTriggerStatus
+// 更新触发器状态的值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COS = "FailedOperation.Cos"
+//  FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
+//  FAILEDOPERATION_UPDATESTATUS = "FailedOperation.UpdateStatus"
+//  FAILEDOPERATION_UPDATETRIGGERSTATUS = "FailedOperation.UpdateTriggerStatus"
+//  INTERNALERROR_CMQ = "InternalError.Cmq"
+//  INTERNALERROR_COS = "InternalError.Cos"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COSNOTIFYRULECONFLICT = "InvalidParameterValue.CosNotifyRuleConflict"
+//  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
+//  INVALIDPARAMETERVALUE_TRIGGERDESC = "InvalidParameterValue.TriggerDesc"
+//  INVALIDPARAMETERVALUE_TRIGGERNAME = "InvalidParameterValue.TriggerName"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  RESOURCENOTFOUND_TRIGGER = "ResourceNotFound.Trigger"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  UNAUTHORIZEDOPERATION_UPDATETRIGGERSTATUS = "UnauthorizedOperation.UpdateTriggerStatus"
+func (c *Client) UpdateTriggerStatusWithContext(ctx context.Context, request *UpdateTriggerStatusRequest) (response *UpdateTriggerStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdateTriggerStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTriggerStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateTriggerStatusResponse()
     err = c.Send(request, response)
     return
 }

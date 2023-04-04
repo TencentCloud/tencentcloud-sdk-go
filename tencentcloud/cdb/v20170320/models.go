@@ -779,7 +779,7 @@ type Bucket struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
-	// ip等于10.0.0.8访问了26次实例，即桶内文档数量。
+	// key值出现的次数。
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 

@@ -1646,9 +1646,6 @@ func (r *ChannelCreateSealPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateUserRolesRequestParams struct {
-	// 操作者信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -1657,14 +1654,14 @@ type ChannelCreateUserRolesRequestParams struct {
 
 	// 绑定角色的角色id列表
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCreateUserRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作者信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -1673,6 +1670,9 @@ type ChannelCreateUserRolesRequest struct {
 
 	// 绑定角色的角色id列表
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateUserRolesRequest) ToJsonString() string {
@@ -1687,10 +1687,10 @@ func (r *ChannelCreateUserRolesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Operator")
 	delete(f, "Agent")
 	delete(f, "UserIds")
 	delete(f, "RoleIds")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateUserRolesRequest has unknown keys!", "")
 	}
@@ -1724,8 +1724,8 @@ func (r *ChannelCreateUserRolesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDeleteRoleUsersRequestParams struct {
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 角色Id
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
@@ -1733,15 +1733,15 @@ type ChannelDeleteRoleUsersRequestParams struct {
 	// 用户列表
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 代理信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelDeleteRoleUsersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+	// 代理信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 角色Id
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
@@ -1749,8 +1749,8 @@ type ChannelDeleteRoleUsersRequest struct {
 	// 用户列表
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 代理信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDeleteRoleUsersRequest) ToJsonString() string {
@@ -1765,10 +1765,10 @@ func (r *ChannelDeleteRoleUsersRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Operator")
+	delete(f, "Agent")
 	delete(f, "RoleId")
 	delete(f, "UserIds")
-	delete(f, "Agent")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDeleteRoleUsersRequest has unknown keys!", "")
 	}
@@ -2091,9 +2091,6 @@ func (r *ChannelDescribeOrganizationSealsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ChannelDescribeRolesRequestParams struct {
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -2102,6 +2099,9 @@ type ChannelDescribeRolesRequestParams struct {
 
 	// 查询数量，最大200
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 查询的关键字段:
 	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
@@ -2112,9 +2112,6 @@ type ChannelDescribeRolesRequestParams struct {
 type ChannelDescribeRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -2123,6 +2120,9 @@ type ChannelDescribeRolesRequest struct {
 
 	// 查询数量，最大200
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 查询的关键字段:
 	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
@@ -2142,10 +2142,10 @@ func (r *ChannelDescribeRolesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Operator")
 	delete(f, "Agent")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Operator")
 	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeRolesRequest has unknown keys!", "")

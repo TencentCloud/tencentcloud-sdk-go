@@ -388,6 +388,7 @@ func NewCreateAlarmPolicyResponse() (response *CreateAlarmPolicyResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -403,6 +404,7 @@ func (c *Client) CreateAlarmPolicy(request *CreateAlarmPolicyRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2325,6 +2327,7 @@ func NewDeletePrometheusRecordRuleYamlResponse() (response *DeletePrometheusReco
 // 删除聚合实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -2337,6 +2340,7 @@ func (c *Client) DeletePrometheusRecordRuleYaml(request *DeletePrometheusRecordR
 // 删除聚合实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -2896,6 +2900,7 @@ func NewDescribeAlarmHistoriesResponse() (response *DescribeAlarmHistoriesRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2915,6 +2920,7 @@ func (c *Client) DescribeAlarmHistories(request *DescribeAlarmHistoriesRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3558,6 +3564,7 @@ func NewDescribeBindingPolicyObjectListResponse() (response *DescribeBindingPoli
 //  FAILEDOPERATION_DBTRANSACTIONCOMMITFAILED = "FailedOperation.DbTransactionCommitFailed"
 //  FAILEDOPERATION_DIMQUERYREQUESTFAILED = "FailedOperation.DimQueryRequestFailed"
 //  FAILEDOPERATION_DIVISIONBYZERO = "FailedOperation.DivisionByZero"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  FAILEDOPERATION_DRUIDQUERYFAILED = "FailedOperation.DruidQueryFailed"
 //  FAILEDOPERATION_DRUIDTABLENOTFOUND = "FailedOperation.DruidTableNotFound"
 //  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
@@ -3604,6 +3611,7 @@ func (c *Client) DescribeBindingPolicyObjectList(request *DescribeBindingPolicyO
 //  FAILEDOPERATION_DBTRANSACTIONCOMMITFAILED = "FailedOperation.DbTransactionCommitFailed"
 //  FAILEDOPERATION_DIMQUERYREQUESTFAILED = "FailedOperation.DimQueryRequestFailed"
 //  FAILEDOPERATION_DIVISIONBYZERO = "FailedOperation.DivisionByZero"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  FAILEDOPERATION_DRUIDQUERYFAILED = "FailedOperation.DruidQueryFailed"
 //  FAILEDOPERATION_DRUIDTABLENOTFOUND = "FailedOperation.DruidTableNotFound"
 //  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
@@ -3679,6 +3687,7 @@ func NewDescribeConditionsTemplateListResponse() (response *DescribeConditionsTe
 //  FAILEDOPERATION_DBTRANSACTIONBEGINFAILED = "FailedOperation.DbTransactionBeginFailed"
 //  FAILEDOPERATION_DBTRANSACTIONCOMMITFAILED = "FailedOperation.DbTransactionCommitFailed"
 //  FAILEDOPERATION_DIMQUERYREQUESTFAILED = "FailedOperation.DimQueryRequestFailed"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  FAILEDOPERATION_DRUIDQUERYFAILED = "FailedOperation.DruidQueryFailed"
 //  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
 //  FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
@@ -3723,6 +3732,7 @@ func (c *Client) DescribeConditionsTemplateList(request *DescribeConditionsTempl
 //  FAILEDOPERATION_DBTRANSACTIONBEGINFAILED = "FailedOperation.DbTransactionBeginFailed"
 //  FAILEDOPERATION_DBTRANSACTIONCOMMITFAILED = "FailedOperation.DbTransactionCommitFailed"
 //  FAILEDOPERATION_DIMQUERYREQUESTFAILED = "FailedOperation.DimQueryRequestFailed"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  FAILEDOPERATION_DRUIDQUERYFAILED = "FailedOperation.DruidQueryFailed"
 //  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
 //  FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
@@ -4293,6 +4303,7 @@ func NewDescribeMonitorTypesResponse() (response *DescribeMonitorTypesResponse) 
 // 腾讯云可观测平台支持多种类型的监控，此接口列出支持的所有类型
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMonitorTypes(request *DescribeMonitorTypesRequest) (response *DescribeMonitorTypesResponse, err error) {
     return c.DescribeMonitorTypesWithContext(context.Background(), request)
@@ -4302,6 +4313,7 @@ func (c *Client) DescribeMonitorTypes(request *DescribeMonitorTypesRequest) (res
 // 腾讯云可观测平台支持多种类型的监控，此接口列出支持的所有类型
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMonitorTypesWithContext(ctx context.Context, request *DescribeMonitorTypesRequest) (response *DescribeMonitorTypesResponse, err error) {
     if request == nil {
@@ -4341,6 +4353,7 @@ func NewDescribePluginOverviewsResponse() (response *DescribePluginOverviewsResp
 // 列出可安装的所有 Grafana 插件
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePluginOverviews(request *DescribePluginOverviewsRequest) (response *DescribePluginOverviewsResponse, err error) {
     return c.DescribePluginOverviewsWithContext(context.Background(), request)
@@ -4350,6 +4363,7 @@ func (c *Client) DescribePluginOverviews(request *DescribePluginOverviewsRequest
 // 列出可安装的所有 Grafana 插件
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePluginOverviewsWithContext(ctx context.Context, request *DescribePluginOverviewsRequest) (response *DescribePluginOverviewsResponse, err error) {
     if request == nil {
@@ -5747,6 +5761,7 @@ func NewDescribePrometheusRecordRulesResponse() (response *DescribePrometheusRec
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusRecordRules(request *DescribePrometheusRecordRulesRequest) (response *DescribePrometheusRecordRulesResponse, err error) {
     return c.DescribePrometheusRecordRulesWithContext(context.Background(), request)
@@ -5766,6 +5781,7 @@ func (c *Client) DescribePrometheusRecordRules(request *DescribePrometheusRecord
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusRecordRulesWithContext(ctx context.Context, request *DescribePrometheusRecordRulesRequest) (response *DescribePrometheusRecordRulesResponse, err error) {
     if request == nil {
@@ -6892,6 +6908,7 @@ func NewModifyAlarmPolicyConditionResponse() (response *ModifyAlarmPolicyConditi
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6906,6 +6923,7 @@ func (c *Client) ModifyAlarmPolicyCondition(request *ModifyAlarmPolicyConditionR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -7066,6 +7084,7 @@ func NewModifyAlarmPolicyStatusResponse() (response *ModifyAlarmPolicyStatusResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -7080,6 +7099,7 @@ func (c *Client) ModifyAlarmPolicyStatus(request *ModifyAlarmPolicyStatusRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

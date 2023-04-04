@@ -2396,6 +2396,7 @@ func NewDescribeImageConfigResponse() (response *DescribeImageConfigResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
@@ -2414,6 +2415,7 @@ func (c *Client) DescribeImageConfig(request *DescribeImageConfigRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
