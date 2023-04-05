@@ -2418,7 +2418,7 @@ func NewModifyDiskExtraPerformanceResponse() (response *ModifyDiskExtraPerforman
 //
 // 
 //
-// * 目前仅支持极速型SSD云硬盘（CLOUD_TSSD）和高性能SSD云硬盘(CLOUD_HSSD)。
+// * 目前仅支持增强型SSD云硬盘(CLOUD_HSSD)和极速型SSD云硬盘（CLOUD_TSSD）。
 //
 // 可能返回的错误码:
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
@@ -2438,7 +2438,7 @@ func (c *Client) ModifyDiskExtraPerformance(request *ModifyDiskExtraPerformanceR
 //
 // 
 //
-// * 目前仅支持极速型SSD云硬盘（CLOUD_TSSD）和高性能SSD云硬盘(CLOUD_HSSD)。
+// * 目前仅支持增强型SSD云硬盘(CLOUD_HSSD)和极速型SSD云硬盘（CLOUD_TSSD）。
 //
 // 可能返回的错误码:
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"

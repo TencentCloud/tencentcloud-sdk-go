@@ -483,6 +483,20 @@ type AssociatedInstanceInfo struct {
 	SecurityGroupCount *uint64 `json:"SecurityGroupCount,omitempty" name:"SecurityGroupCount"`
 }
 
+type BetaInfoByACL struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 上次执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+}
+
 type BlockIgnoreRule struct {
 	// 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1722,6 +1736,10 @@ type DescAcItem struct {
 	// 规则状态，查询规则命中详情时该字段有效，0：新增，1: 已删除, 2: 编辑删除
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 关联任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BetaList []*BetaInfoByACL `json:"BetaList,omitempty" name:"BetaList"`
 }
 
 // Predefined struct for user
@@ -3751,7 +3769,12 @@ func (r *DescribeTLogInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTLogInfoResponseParams struct {
-	// 无
+	// "NetworkNum":网络扫描探测
+	//  "HandleNum": 待处理事件
+	// "BanNum": 
+	//   "VulNum": 漏洞利用
+	//   "OutNum": 失陷主机
+	// "BruteForceNum": 0
 	Data *TLogInfo `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

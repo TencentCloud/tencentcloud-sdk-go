@@ -1,3 +1,194 @@
+# Release v1.0.632
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 24 次发布
+
+发布时间：2023-04-05 01:07:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId, SubServiceType, UsrAudioKey
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 32 次发布
+
+发布时间：2023-04-05 01:16:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [BetaInfoByACL](https://cloud.tencent.com/document/api/1132/49071#BetaInfoByACL)
+
+修改数据结构：
+
+* [DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem)
+
+	* 新增成员：BetaList
+
+
+
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+
+### 第 3 次发布
+
+发布时间：2023-04-05 01:18:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeWorkspaceIsReady](https://cloud.tencent.com/document/api/1039/89895)
+
+修改接口：
+
+* [DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)
+
+	* 新增出参：Data
+
+
+
+
+## 云压测(pts) 版本：2021-07-28
+
+### 第 11 次发布
+
+发布时间：2023-04-05 01:50:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeErrorSummary](https://cloud.tencent.com/document/api/1484/89896)
+
+新增数据结构：
+
+* [ErrorSummary](https://cloud.tencent.com/document/api/1484/78100#ErrorSummary)
+
+修改数据结构：
+
+* [Concurrency](https://cloud.tencent.com/document/api/1484/78100#Concurrency)
+
+	* 新增成员：Resources
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 38 次发布
+
+发布时间：2023-04-05 01:58:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AlgDetectJS](https://cloud.tencent.com/document/api/1552/80721#AlgDetectJS)
+* [AlgDetectResult](https://cloud.tencent.com/document/api/1552/80721#AlgDetectResult)
+* [AlgDetectRule](https://cloud.tencent.com/document/api/1552/80721#AlgDetectRule)
+* [AlgDetectSession](https://cloud.tencent.com/document/api/1552/80721#AlgDetectSession)
+
+修改数据结构：
+
+* [BotConfig](https://cloud.tencent.com/document/api/1552/80721#BotConfig)
+
+	* 新增成员：AlgDetectRule
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 143 次发布
+
+发布时间：2023-04-05 02:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterReleases](https://cloud.tencent.com/document/api/457/83755)
+
+	* 新增入参：ClusterType
+
+
+
+
+## 远程实时操控(trro) 版本：2022-03-25
+
+### 第 2 次发布
+
+发布时间：2023-04-05 02:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BoundLicenses](https://cloud.tencent.com/document/api/1584/89904)
+* [DescribeRecentSessionList](https://cloud.tencent.com/document/api/1584/89905)
+* [GetDeviceLicense](https://cloud.tencent.com/document/api/1584/89903)
+* [GetDevices](https://cloud.tencent.com/document/api/1584/89902)
+* [GetLicenseStat](https://cloud.tencent.com/document/api/1584/89901)
+* [GetLicenses](https://cloud.tencent.com/document/api/1584/89900)
+
+新增数据结构：
+
+* [Device](https://cloud.tencent.com/document/api/1584/89828#Device)
+* [License](https://cloud.tencent.com/document/api/1584/89828#License)
+* [RecentSessionInfo](https://cloud.tencent.com/document/api/1584/89828#RecentSessionInfo)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 28 次发布
+
+发布时间：2023-04-05 02:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateHost](https://cloud.tencent.com/document/api/627/89906)
+
+新增数据结构：
+
+* [HostRecord](https://cloud.tencent.com/document/api/627/53609#HostRecord)
+* [LoadBalancer](https://cloud.tencent.com/document/api/627/53609#LoadBalancer)
+
+
+
 # Release v1.0.631
 
 ## 远程实时操控(trro) 版本：2022-03-25

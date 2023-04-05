@@ -399,6 +399,10 @@ type Concurrency struct {
 	// 优雅终止任务的等待时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GracefulStopSeconds *int64 `json:"GracefulStopSeconds,omitempty" name:"GracefulStopSeconds"`
+
+	// 资源数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources *int64 `json:"Resources,omitempty" name:"Resources"`
 }
 
 // Predefined struct for user
@@ -1996,6 +2000,85 @@ func (r *DescribeCronJobsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeErrorSummaryRequestParams struct {
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 场景ID
+	ScenarioId *string `json:"ScenarioId,omitempty" name:"ScenarioId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeErrorSummaryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 场景ID
+	ScenarioId *string `json:"ScenarioId,omitempty" name:"ScenarioId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeErrorSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeErrorSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "ScenarioId")
+	delete(f, "ProjectId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeErrorSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeErrorSummaryResponseParams struct {
+	// 错误汇总信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorSummarySet []*ErrorSummary `json:"ErrorSummarySet,omitempty" name:"ErrorSummarySet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeErrorSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeErrorSummaryResponseParams `json:"Response"`
+}
+
+func (r *DescribeErrorSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeErrorSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFilesRequestParams struct {
 	// 项目 ID 数组
 	ProjectIds []*string `json:"ProjectIds,omitempty" name:"ProjectIds"`
@@ -3535,6 +3618,32 @@ type DomainNameConfig struct {
 	// DNS 配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DNSConfig *DNSConfig `json:"DNSConfig,omitempty" name:"DNSConfig"`
+}
+
+type ErrorSummary struct {
+	// 状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 结果码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 错误出现次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 错误率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rate *float64 `json:"Rate,omitempty" name:"Rate"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 请求协议类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Proto *string `json:"Proto,omitempty" name:"Proto"`
 }
 
 type File struct {

@@ -161,6 +161,56 @@ func (c *Client) BatchDeletePolicyWithContext(ctx context.Context, request *Batc
     return
 }
 
+func NewBoundLicensesRequest() (request *BoundLicensesRequest) {
+    request = &BoundLicensesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "BoundLicenses")
+    
+    
+    return
+}
+
+func NewBoundLicensesResponse() (response *BoundLicensesResponse) {
+    response = &BoundLicensesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BoundLicenses
+// 为推流设备绑定license，优先绑定到期时间最近的，到期时间相同优先绑定月包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BoundLicenses(request *BoundLicensesRequest) (response *BoundLicensesResponse, err error) {
+    return c.BoundLicensesWithContext(context.Background(), request)
+}
+
+// BoundLicenses
+// 为推流设备绑定license，优先绑定到期时间最近的，到期时间相同优先绑定月包
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) BoundLicensesWithContext(ctx context.Context, request *BoundLicensesRequest) (response *BoundLicensesResponse, err error) {
+    if request == nil {
+        request = NewBoundLicensesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BoundLicenses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBoundLicensesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
     request = &CreateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -739,6 +789,64 @@ func (c *Client) DescribeProjectListWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeRecentSessionListRequest() (request *DescribeRecentSessionListRequest) {
+    request = &DescribeRecentSessionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "DescribeRecentSessionList")
+    
+    
+    return
+}
+
+func NewDescribeRecentSessionListResponse() (response *DescribeRecentSessionListResponse) {
+    response = &DescribeRecentSessionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRecentSessionList
+// 获取最新设备会话列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRecentSessionList(request *DescribeRecentSessionListRequest) (response *DescribeRecentSessionListResponse, err error) {
+    return c.DescribeRecentSessionListWithContext(context.Background(), request)
+}
+
+// DescribeRecentSessionList
+// 获取最新设备会话列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRecentSessionListWithContext(ctx context.Context, request *DescribeRecentSessionListRequest) (response *DescribeRecentSessionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecentSessionListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecentSessionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecentSessionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSessionStatisticsRequest() (request *DescribeSessionStatisticsRequest) {
     request = &DescribeSessionStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -855,6 +963,210 @@ func (c *Client) DescribeSessionStatisticsByIntervalWithContext(ctx context.Cont
     request.SetContext(ctx)
     
     response = NewDescribeSessionStatisticsByIntervalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDeviceLicenseRequest() (request *GetDeviceLicenseRequest) {
+    request = &GetDeviceLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "GetDeviceLicense")
+    
+    
+    return
+}
+
+func NewGetDeviceLicenseResponse() (response *GetDeviceLicenseResponse) {
+    response = &GetDeviceLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDeviceLicense
+// 获取设备已经绑定的可用授权数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetDeviceLicense(request *GetDeviceLicenseRequest) (response *GetDeviceLicenseResponse, err error) {
+    return c.GetDeviceLicenseWithContext(context.Background(), request)
+}
+
+// GetDeviceLicense
+// 获取设备已经绑定的可用授权数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetDeviceLicenseWithContext(ctx context.Context, request *GetDeviceLicenseRequest) (response *GetDeviceLicenseResponse, err error) {
+    if request == nil {
+        request = NewGetDeviceLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDeviceLicenseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDevicesRequest() (request *GetDevicesRequest) {
+    request = &GetDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "GetDevices")
+    
+    
+    return
+}
+
+func NewGetDevicesResponse() (response *GetDevicesResponse) {
+    response = &GetDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDevices
+// 查询用户设备的授权绑定情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetDevices(request *GetDevicesRequest) (response *GetDevicesResponse, err error) {
+    return c.GetDevicesWithContext(context.Background(), request)
+}
+
+// GetDevices
+// 查询用户设备的授权绑定情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesRequest) (response *GetDevicesResponse, err error) {
+    if request == nil {
+        request = NewGetDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetLicenseStatRequest() (request *GetLicenseStatRequest) {
+    request = &GetLicenseStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "GetLicenseStat")
+    
+    
+    return
+}
+
+func NewGetLicenseStatResponse() (response *GetLicenseStatResponse) {
+    response = &GetLicenseStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetLicenseStat
+// 统计license类型数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetLicenseStat(request *GetLicenseStatRequest) (response *GetLicenseStatResponse, err error) {
+    return c.GetLicenseStatWithContext(context.Background(), request)
+}
+
+// GetLicenseStat
+// 统计license类型数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) GetLicenseStatWithContext(ctx context.Context, request *GetLicenseStatRequest) (response *GetLicenseStatResponse, err error) {
+    if request == nil {
+        request = NewGetLicenseStatRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLicenseStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetLicenseStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetLicensesRequest() (request *GetLicensesRequest) {
+    request = &GetLicensesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "GetLicenses")
+    
+    
+    return
+}
+
+func NewGetLicensesResponse() (response *GetLicensesResponse) {
+    response = &GetLicensesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetLicenses
+// 按授权查看license列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetLicenses(request *GetLicensesRequest) (response *GetLicensesResponse, err error) {
+    return c.GetLicensesWithContext(context.Background(), request)
+}
+
+// GetLicenses
+// 按授权查看license列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetLicensesWithContext(ctx context.Context, request *GetLicensesRequest) (response *GetLicensesResponse, err error) {
+    if request == nil {
+        request = NewGetLicensesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLicenses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetLicensesResponse()
     err = c.Send(request, response)
     return
 }

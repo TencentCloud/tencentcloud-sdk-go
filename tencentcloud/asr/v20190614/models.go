@@ -1410,12 +1410,6 @@ type SentenceDetail struct {
 
 // Predefined struct for user
 type SentenceRecognitionRequestParams struct {
-	// 腾讯云项目 ID，废弃参数，填写0即可。
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
-	// 子服务类型。2： 一句话识别。
-	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
-
 	// 引擎模型类型。
 	// 电话场景：
 	// • 8k_zh：中文电话通用；
@@ -1433,6 +1427,7 @@ type SentenceRecognitionRequestParams struct {
 	// • 16k_ms：马来语；
 	// • 16k_id：印度尼西亚语；
 	// • 16k_fil：菲律宾语；
+	// • 16k_th：泰语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
@@ -1442,11 +1437,17 @@ type SentenceRecognitionRequestParams struct {
 	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
 	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
-	// 废弃参数，填写任意字符串即可。
-	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
+	// 腾讯云项目 ID，废弃参数，填写0即可。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 子服务类型。2： 一句话识别。
+	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
 
 	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 废弃参数，填写任意字符串即可。
+	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
 	// 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。
 	Data *string `json:"Data,omitempty" name:"Data"`
@@ -1482,12 +1483,6 @@ type SentenceRecognitionRequestParams struct {
 type SentenceRecognitionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 腾讯云项目 ID，废弃参数，填写0即可。
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
-	// 子服务类型。2： 一句话识别。
-	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
-
 	// 引擎模型类型。
 	// 电话场景：
 	// • 8k_zh：中文电话通用；
@@ -1505,6 +1500,7 @@ type SentenceRecognitionRequest struct {
 	// • 16k_ms：马来语；
 	// • 16k_id：印度尼西亚语；
 	// • 16k_fil：菲律宾语；
+	// • 16k_th：泰语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
@@ -1514,11 +1510,17 @@ type SentenceRecognitionRequest struct {
 	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
 	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
-	// 废弃参数，填写任意字符串即可。
-	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
+	// 腾讯云项目 ID，废弃参数，填写0即可。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 子服务类型。2： 一句话识别。
+	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
 
 	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 废弃参数，填写任意字符串即可。
+	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
 	// 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。
 	Data *string `json:"Data,omitempty" name:"Data"`
@@ -1563,13 +1565,13 @@ func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ProjectId")
-	delete(f, "SubServiceType")
 	delete(f, "EngSerViceType")
 	delete(f, "SourceType")
 	delete(f, "VoiceFormat")
-	delete(f, "UsrAudioKey")
+	delete(f, "ProjectId")
+	delete(f, "SubServiceType")
 	delete(f, "Url")
+	delete(f, "UsrAudioKey")
 	delete(f, "Data")
 	delete(f, "DataLen")
 	delete(f, "WordInfo")

@@ -3108,21 +3108,21 @@ func (r *ModifyDiskBackupQuotaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDiskExtraPerformanceRequestParams struct {
-	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
 	// 额外购买的云硬盘性能值，单位MB/s。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+
+	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
 type ModifyDiskExtraPerformanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
 	// 额外购买的云硬盘性能值，单位MB/s。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+
+	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
 func (r *ModifyDiskExtraPerformanceRequest) ToJsonString() string {
@@ -3137,8 +3137,8 @@ func (r *ModifyDiskExtraPerformanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DiskId")
 	delete(f, "ThroughputPerformance")
+	delete(f, "DiskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDiskExtraPerformanceRequest has unknown keys!", "")
 	}

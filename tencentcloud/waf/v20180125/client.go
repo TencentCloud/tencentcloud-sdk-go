@@ -303,6 +303,78 @@ func (c *Client) CreateAccessExportWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateHostRequest() (request *CreateHostRequest) {
+    request = &CreateHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreateHost")
+    
+    
+    return
+}
+
+func NewCreateHostResponse() (response *CreateHostResponse) {
+    response = &CreateHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateHost
+// clb-waf中添加防护的域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateHost(request *CreateHostRequest) (response *CreateHostResponse, err error) {
+    return c.CreateHostWithContext(context.Background(), request)
+}
+
+// CreateHost
+// clb-waf中添加防护的域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateHostWithContext(ctx context.Context, request *CreateHostRequest) (response *CreateHostResponse, err error) {
+    if request == nil {
+        request = NewCreateHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccessExportRequest() (request *DeleteAccessExportRequest) {
     request = &DeleteAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},

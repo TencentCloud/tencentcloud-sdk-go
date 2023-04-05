@@ -1,10 +1,52 @@
 # 本版本更新包含以下内容：
 
-## 远程实时操控(trro) 版本：2022-03-25
+## 语音识别(asr) 版本：2019-06-14
 
-### 第 1 次发布
+### 第 24 次发布
 
-发布时间：2023-04-04 09:21:02
+发布时间：2023-04-05 01:07:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId, SubServiceType, UsrAudioKey
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 32 次发布
+
+发布时间：2023-04-05 01:16:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [BetaInfoByACL](https://cloud.tencent.com/document/api/1132/49071#BetaInfoByACL)
+
+修改数据结构：
+
+* [DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem)
+
+	* 新增成员：BetaList
+
+
+
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+
+### 第 3 次发布
+
+发布时间：2023-04-05 01:18:28
 
 本次发布包含了以下内容：
 
@@ -12,32 +54,138 @@
 
 新增接口：
 
-* [BatchDeleteDevices](https://cloud.tencent.com/document/api/1584/89818)
-* [BatchDeletePolicy](https://cloud.tencent.com/document/api/1584/89822)
-* [CreateDevice](https://cloud.tencent.com/document/api/1584/89817)
-* [CreateProject](https://cloud.tencent.com/document/api/1584/89812)
-* [DeleteProject](https://cloud.tencent.com/document/api/1584/89811)
-* [DescribeDeviceInfo](https://cloud.tencent.com/document/api/1584/89816)
-* [DescribeDeviceList](https://cloud.tencent.com/document/api/1584/89815)
-* [DescribeDeviceSessionDetails](https://cloud.tencent.com/document/api/1584/89827)
-* [DescribeDeviceSessionList](https://cloud.tencent.com/document/api/1584/89826)
-* [DescribePolicy](https://cloud.tencent.com/document/api/1584/89821)
-* [DescribeProjectInfo](https://cloud.tencent.com/document/api/1584/89810)
-* [DescribeProjectList](https://cloud.tencent.com/document/api/1584/89809)
-* [DescribeSessionStatistics](https://cloud.tencent.com/document/api/1584/89825)
-* [DescribeSessionStatisticsByInterval](https://cloud.tencent.com/document/api/1584/89824)
-* [ModifyDevice](https://cloud.tencent.com/document/api/1584/89814)
-* [ModifyPolicy](https://cloud.tencent.com/document/api/1584/89820)
-* [ModifyProject](https://cloud.tencent.com/document/api/1584/89808)
+* [DescribeWorkspaceIsReady](https://cloud.tencent.com/document/api/1039/89895)
+
+修改接口：
+
+* [DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)
+
+	* 新增出参：Data
+
+
+
+
+## 云压测(pts) 版本：2021-07-28
+
+### 第 11 次发布
+
+发布时间：2023-04-05 01:50:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeErrorSummary](https://cloud.tencent.com/document/api/1484/89896)
 
 新增数据结构：
 
-* [DeviceInfo](https://cloud.tencent.com/document/api/1584/89828#DeviceInfo)
-* [PolicyInfo](https://cloud.tencent.com/document/api/1584/89828#PolicyInfo)
-* [ProjectInfo](https://cloud.tencent.com/document/api/1584/89828#ProjectInfo)
-* [SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail)
-* [SessionInfo](https://cloud.tencent.com/document/api/1584/89828#SessionInfo)
-* [SessionIntervalStatistic](https://cloud.tencent.com/document/api/1584/89828#SessionIntervalStatistic)
+* [ErrorSummary](https://cloud.tencent.com/document/api/1484/78100#ErrorSummary)
+
+修改数据结构：
+
+* [Concurrency](https://cloud.tencent.com/document/api/1484/78100#Concurrency)
+
+	* 新增成员：Resources
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 38 次发布
+
+发布时间：2023-04-05 01:58:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AlgDetectJS](https://cloud.tencent.com/document/api/1552/80721#AlgDetectJS)
+* [AlgDetectResult](https://cloud.tencent.com/document/api/1552/80721#AlgDetectResult)
+* [AlgDetectRule](https://cloud.tencent.com/document/api/1552/80721#AlgDetectRule)
+* [AlgDetectSession](https://cloud.tencent.com/document/api/1552/80721#AlgDetectSession)
+
+修改数据结构：
+
+* [BotConfig](https://cloud.tencent.com/document/api/1552/80721#BotConfig)
+
+	* 新增成员：AlgDetectRule
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 143 次发布
+
+发布时间：2023-04-05 02:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterReleases](https://cloud.tencent.com/document/api/457/83755)
+
+	* 新增入参：ClusterType
+
+
+
+
+## 远程实时操控(trro) 版本：2022-03-25
+
+### 第 2 次发布
+
+发布时间：2023-04-05 02:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BoundLicenses](https://cloud.tencent.com/document/api/1584/89904)
+* [DescribeRecentSessionList](https://cloud.tencent.com/document/api/1584/89905)
+* [GetDeviceLicense](https://cloud.tencent.com/document/api/1584/89903)
+* [GetDevices](https://cloud.tencent.com/document/api/1584/89902)
+* [GetLicenseStat](https://cloud.tencent.com/document/api/1584/89901)
+* [GetLicenses](https://cloud.tencent.com/document/api/1584/89900)
+
+新增数据结构：
+
+* [Device](https://cloud.tencent.com/document/api/1584/89828#Device)
+* [License](https://cloud.tencent.com/document/api/1584/89828#License)
+* [RecentSessionInfo](https://cloud.tencent.com/document/api/1584/89828#RecentSessionInfo)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 28 次发布
+
+发布时间：2023-04-05 02:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateHost](https://cloud.tencent.com/document/api/627/89906)
+
+新增数据结构：
+
+* [HostRecord](https://cloud.tencent.com/document/api/627/53609#HostRecord)
+* [LoadBalancer](https://cloud.tencent.com/document/api/627/53609#LoadBalancer)
 
 
 
@@ -5444,6 +5592,21 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 24 次发布
+
+发布时间：2023-04-05 01:07:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* <font color="#dd0000">**修改入参**：</font>ProjectId, SubServiceType, UsrAudioKey
+
 
 ### 第 23 次发布
 
@@ -19006,6 +19169,25 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 32 次发布
+
+发布时间：2023-04-05 01:16:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[BetaInfoByACL](https://cloud.tencent.com/document/api/1132/49071#BetaInfoByACL)](https://cloud.tencent.com/document/api/1132/49071#[BetaInfoByACL](https://cloud.tencent.com/document/api/1132/49071#BetaInfoByACL))
+
+修改数据结构：
+
+* [DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem)
+
+	* 新增成员：BetaList
+
+
 ### 第 31 次发布
 
 发布时间：2023-02-28 01:12:39
@@ -24268,6 +24450,25 @@
 
 
 ## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+
+### 第 3 次发布
+
+发布时间：2023-04-05 01:18:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeWorkspaceIsReady](https://cloud.tencent.com/document/api/1039/89895)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)
+
+	* 新增出参：Data
+
 
 ### 第 2 次发布
 
@@ -73078,6 +73279,29 @@
 
 ## 云压测(pts) 版本：2021-07-28
 
+### 第 11 次发布
+
+发布时间：2023-04-05 01:50:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeErrorSummary](https://cloud.tencent.com/document/api/1484/89896)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ErrorSummary](https://cloud.tencent.com/document/api/1484/78100#ErrorSummary)](https://cloud.tencent.com/document/api/1484/78100#[ErrorSummary](https://cloud.tencent.com/document/api/1484/78100#ErrorSummary))
+
+修改数据结构：
+
+* [Concurrency](https://cloud.tencent.com/document/api/1484/78100#Concurrency)
+
+	* 新增成员：Resources
+
+
 ### 第 10 次发布
 
 发布时间：2023-03-02 01:32:50
@@ -90315,6 +90539,28 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 38 次发布
+
+发布时间：2023-04-05 01:58:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AlgDetectJS](https://cloud.tencent.com/document/api/1552/80721#AlgDetectJS)](https://cloud.tencent.com/document/api/1552/80721#[AlgDetectJS](https://cloud.tencent.com/document/api/1552/80721#AlgDetectJS))
+* [[AlgDetectResult](https://cloud.tencent.com/document/api/1552/80721#AlgDetectResult)](https://cloud.tencent.com/document/api/1552/80721#[AlgDetectResult](https://cloud.tencent.com/document/api/1552/80721#AlgDetectResult))
+* [[AlgDetectRule](https://cloud.tencent.com/document/api/1552/80721#AlgDetectRule)](https://cloud.tencent.com/document/api/1552/80721#[AlgDetectRule](https://cloud.tencent.com/document/api/1552/80721#AlgDetectRule))
+* [[AlgDetectSession](https://cloud.tencent.com/document/api/1552/80721#AlgDetectSession)](https://cloud.tencent.com/document/api/1552/80721#[AlgDetectSession](https://cloud.tencent.com/document/api/1552/80721#AlgDetectSession))
+
+修改数据结构：
+
+* [BotConfig](https://cloud.tencent.com/document/api/1552/80721#BotConfig)
+
+	* 新增成员：AlgDetectRule
+
+
 ### 第 37 次发布
 
 发布时间：2023-03-23 02:39:19
@@ -94518,6 +94764,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 143 次发布
+
+发布时间：2023-04-05 02:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterReleases](https://cloud.tencent.com/document/api/457/83755)
+
+	* 新增入参：ClusterType
+
+
 ### 第 142 次发布
 
 发布时间：2023-04-04 01:48:42
@@ -98194,6 +98455,29 @@
 
 ## 远程实时操控(trro) 版本：2022-03-25
 
+### 第 2 次发布
+
+发布时间：2023-04-05 02:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BoundLicenses](https://cloud.tencent.com/document/api/1584/89904)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecentSessionList](https://cloud.tencent.com/document/api/1584/89905)](https://cloud.tencent.com/document/api/#/#)
+* [[GetDeviceLicense](https://cloud.tencent.com/document/api/1584/89903)](https://cloud.tencent.com/document/api/#/#)
+* [[GetDevices](https://cloud.tencent.com/document/api/1584/89902)](https://cloud.tencent.com/document/api/#/#)
+* [[GetLicenseStat](https://cloud.tencent.com/document/api/1584/89901)](https://cloud.tencent.com/document/api/#/#)
+* [[GetLicenses](https://cloud.tencent.com/document/api/1584/89900)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Device](https://cloud.tencent.com/document/api/1584/89828#Device)](https://cloud.tencent.com/document/api/1584/89828#[Device](https://cloud.tencent.com/document/api/1584/89828#Device))
+* [[License](https://cloud.tencent.com/document/api/1584/89828#License)](https://cloud.tencent.com/document/api/1584/89828#[License](https://cloud.tencent.com/document/api/1584/89828#License))
+* [[RecentSessionInfo](https://cloud.tencent.com/document/api/1584/89828#RecentSessionInfo)](https://cloud.tencent.com/document/api/1584/89828#[RecentSessionInfo](https://cloud.tencent.com/document/api/1584/89828#RecentSessionInfo))
+
 ### 第 1 次发布
 
 发布时间：2023-04-04 09:21:02
@@ -98204,32 +98488,32 @@
 
 新增接口：
 
-* [[BatchDeleteDevices](https://cloud.tencent.com/document/api/1584/89818)](https://cloud.tencent.com/document/api/#/#)
-* [[BatchDeletePolicy](https://cloud.tencent.com/document/api/1584/89822)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDevice](https://cloud.tencent.com/document/api/1584/89817)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateProject](https://cloud.tencent.com/document/api/1584/89812)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteProject](https://cloud.tencent.com/document/api/1584/89811)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeviceInfo](https://cloud.tencent.com/document/api/1584/89816)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeviceList](https://cloud.tencent.com/document/api/1584/89815)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeviceSessionDetails](https://cloud.tencent.com/document/api/1584/89827)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeviceSessionList](https://cloud.tencent.com/document/api/1584/89826)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePolicy](https://cloud.tencent.com/document/api/1584/89821)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProjectInfo](https://cloud.tencent.com/document/api/1584/89810)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProjectList](https://cloud.tencent.com/document/api/1584/89809)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSessionStatistics](https://cloud.tencent.com/document/api/1584/89825)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSessionStatisticsByInterval](https://cloud.tencent.com/document/api/1584/89824)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDevice](https://cloud.tencent.com/document/api/1584/89814)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPolicy](https://cloud.tencent.com/document/api/1584/89820)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyProject](https://cloud.tencent.com/document/api/1584/89808)](https://cloud.tencent.com/document/api/#/#)
+* [BatchDeleteDevices](https://cloud.tencent.com/document/api/1584/89818)
+* [BatchDeletePolicy](https://cloud.tencent.com/document/api/1584/89822)
+* [CreateDevice](https://cloud.tencent.com/document/api/1584/89817)
+* [CreateProject](https://cloud.tencent.com/document/api/1584/89812)
+* [DeleteProject](https://cloud.tencent.com/document/api/1584/89811)
+* [DescribeDeviceInfo](https://cloud.tencent.com/document/api/1584/89816)
+* [DescribeDeviceList](https://cloud.tencent.com/document/api/1584/89815)
+* [DescribeDeviceSessionDetails](https://cloud.tencent.com/document/api/1584/89827)
+* [DescribeDeviceSessionList](https://cloud.tencent.com/document/api/1584/89826)
+* [DescribePolicy](https://cloud.tencent.com/document/api/1584/89821)
+* [DescribeProjectInfo](https://cloud.tencent.com/document/api/1584/89810)
+* [DescribeProjectList](https://cloud.tencent.com/document/api/1584/89809)
+* [DescribeSessionStatistics](https://cloud.tencent.com/document/api/1584/89825)
+* [DescribeSessionStatisticsByInterval](https://cloud.tencent.com/document/api/1584/89824)
+* [ModifyDevice](https://cloud.tencent.com/document/api/1584/89814)
+* [ModifyPolicy](https://cloud.tencent.com/document/api/1584/89820)
+* [ModifyProject](https://cloud.tencent.com/document/api/1584/89808)
 
 新增数据结构：
 
-* [[DeviceInfo](https://cloud.tencent.com/document/api/1584/89828#DeviceInfo)](https://cloud.tencent.com/document/api/1584/89828#[DeviceInfo](https://cloud.tencent.com/document/api/1584/89828#DeviceInfo))
-* [[PolicyInfo](https://cloud.tencent.com/document/api/1584/89828#PolicyInfo)](https://cloud.tencent.com/document/api/1584/89828#[PolicyInfo](https://cloud.tencent.com/document/api/1584/89828#PolicyInfo))
-* [[ProjectInfo](https://cloud.tencent.com/document/api/1584/89828#ProjectInfo)](https://cloud.tencent.com/document/api/1584/89828#[ProjectInfo](https://cloud.tencent.com/document/api/1584/89828#ProjectInfo))
-* [[SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail)](https://cloud.tencent.com/document/api/1584/89828#[SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail))
-* [[SessionInfo](https://cloud.tencent.com/document/api/1584/89828#SessionInfo)](https://cloud.tencent.com/document/api/1584/89828#[SessionInfo](https://cloud.tencent.com/document/api/1584/89828#SessionInfo))
-* [[SessionIntervalStatistic](https://cloud.tencent.com/document/api/1584/89828#SessionIntervalStatistic)](https://cloud.tencent.com/document/api/1584/89828#[SessionIntervalStatistic](https://cloud.tencent.com/document/api/1584/89828#SessionIntervalStatistic))
+* [DeviceInfo](https://cloud.tencent.com/document/api/1584/89828#DeviceInfo)
+* [PolicyInfo](https://cloud.tencent.com/document/api/1584/89828#PolicyInfo)
+* [ProjectInfo](https://cloud.tencent.com/document/api/1584/89828#ProjectInfo)
+* [SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail)
+* [SessionInfo](https://cloud.tencent.com/document/api/1584/89828#SessionInfo)
+* [SessionIntervalStatistic](https://cloud.tencent.com/document/api/1584/89828#SessionIntervalStatistic)
 
 
 
@@ -110249,6 +110533,23 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 28 次发布
+
+发布时间：2023-04-05 02:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateHost](https://cloud.tencent.com/document/api/627/89906)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[HostRecord](https://cloud.tencent.com/document/api/627/53609#HostRecord)](https://cloud.tencent.com/document/api/627/53609#[HostRecord](https://cloud.tencent.com/document/api/627/53609#HostRecord))
+* [[LoadBalancer](https://cloud.tencent.com/document/api/627/53609#LoadBalancer)](https://cloud.tencent.com/document/api/627/53609#[LoadBalancer](https://cloud.tencent.com/document/api/627/53609#LoadBalancer))
 
 ### 第 27 次发布
 

@@ -690,6 +690,64 @@ func (r *DescribeWorkspaceEnvListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWorkspaceIsReadyRequestParams struct {
+	// 工作空间 spaceKey
+	SpaceKey *string `json:"SpaceKey,omitempty" name:"SpaceKey"`
+}
+
+type DescribeWorkspaceIsReadyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间 spaceKey
+	SpaceKey *string `json:"SpaceKey,omitempty" name:"SpaceKey"`
+}
+
+func (r *DescribeWorkspaceIsReadyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceIsReadyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SpaceKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkspaceIsReadyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkspaceIsReadyResponseParams struct {
+	// 工作空间是否就绪
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkspaceIsReadyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkspaceIsReadyResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkspaceIsReadyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkspaceIsReadyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeWorkspaceNameExistRequestParams struct {
 	// 用户所属组
 	CloudStudioSessionTeam *string `json:"CloudStudioSessionTeam,omitempty" name:"CloudStudioSessionTeam"`
@@ -737,6 +795,10 @@ func (r *DescribeWorkspaceNameExistRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWorkspaceNameExistResponseParams struct {
+	// 工作空间信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *WorkspaceInfoDTO `json:"Data,omitempty" name:"Data"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

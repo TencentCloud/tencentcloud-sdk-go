@@ -1143,6 +1143,64 @@ func (c *Client) DescribeCronJobsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeErrorSummaryRequest() (request *DescribeErrorSummaryRequest) {
+    request = &DescribeErrorSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("pts", APIVersion, "DescribeErrorSummary")
+    
+    
+    return
+}
+
+func NewDescribeErrorSummaryResponse() (response *DescribeErrorSummaryResponse) {
+    response = &DescribeErrorSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeErrorSummary
+// 查询错误详情汇总信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeErrorSummary(request *DescribeErrorSummaryRequest) (response *DescribeErrorSummaryResponse, err error) {
+    return c.DescribeErrorSummaryWithContext(context.Background(), request)
+}
+
+// DescribeErrorSummary
+// 查询错误详情汇总信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeErrorSummaryWithContext(ctx context.Context, request *DescribeErrorSummaryRequest) (response *DescribeErrorSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeErrorSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeErrorSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeErrorSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFilesRequest() (request *DescribeFilesRequest) {
     request = &DescribeFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1165,7 +1223,12 @@ func NewDescribeFilesResponse() (response *DescribeFilesResponse) {
 // 查询文件列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFiles(request *DescribeFilesRequest) (response *DescribeFilesResponse, err error) {
     return c.DescribeFilesWithContext(context.Background(), request)
 }
@@ -1174,7 +1237,12 @@ func (c *Client) DescribeFiles(request *DescribeFilesRequest) (response *Describ
 // 查询文件列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeFilesWithContext(ctx context.Context, request *DescribeFilesRequest) (response *DescribeFilesResponse, err error) {
     if request == nil {
         request = NewDescribeFilesRequest()

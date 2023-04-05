@@ -835,6 +835,70 @@ func (r *CreateAccessExportResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateHostRequestParams struct {
+	// 防护域名配置信息
+	Host *HostRecord `json:"Host,omitempty" name:"Host"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+}
+
+type CreateHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 防护域名配置信息
+	Host *HostRecord `json:"Host,omitempty" name:"Host"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+}
+
+func (r *CreateHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Host")
+	delete(f, "InstanceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHostResponseParams struct {
+	// 新增防护域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateHostResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHostResponseParams `json:"Response"`
+}
+
+func (r *CreateHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAccessExportRequestParams struct {
 	// 日志导出ID
 	ExportId *string `json:"ExportId,omitempty" name:"ExportId"`
@@ -3273,6 +3337,59 @@ func (r *GetAttackDownloadRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type HostRecord struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 主域名，入参时为空
+	MainDomain *string `json:"MainDomain,omitempty" name:"MainDomain"`
+
+	// waf模式，同saas waf保持一致
+	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+
+	// waf和LD的绑定，0：没有绑定，1：绑定
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 域名状态，0：正常，1：未检测到流量，2：即将过期，3：过期
+	State *uint64 `json:"State,omitempty" name:"State"`
+
+	// 使用的规则，同saas waf保持一致
+	Engine *uint64 `json:"Engine,omitempty" name:"Engine"`
+
+	// 是否开启代理，0：不开启，1：开启
+	IsCdn *uint64 `json:"IsCdn,omitempty" name:"IsCdn"`
+
+	// 绑定的LB列表
+	LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
+
+	// 域名绑定的LB的地域，以,分割多个地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 产品分类，取值为：sparta-waf、clb-waf、cdn-waf
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// WAF的流量模式，1：清洗模式，0：镜像模式
+	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
+
+	// 是否开启访问日志，1：开启，0：关闭
+	ClsStatus *uint64 `json:"ClsStatus,omitempty" name:"ClsStatus"`
+
+	// 防护等级，可选值100,200,300
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 域名需要下发到的cdc集群列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcClusters []*string `json:"CdcClusters,omitempty" name:"CdcClusters"`
+
+	// 应用型负载均衡类型: clb或者apisix，默认clb
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+}
+
 type InstanceInfo struct {
 	// id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -3412,6 +3529,43 @@ type IpHitItemsData struct {
 
 	// 总数目
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+type LoadBalancer struct {
+	// 负载均衡LD的ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡LD的名称
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 负载均衡监听器的ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 负载均衡监听器的名称
+	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+
+	// 负载均衡实例的IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 负载均衡实例的端口
+	Vport *uint64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 负载均衡LD的地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 监听器协议，http、https
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 负载均衡监听器所在的zone
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 负载均衡的VPCID，公网为-1，内网按实际填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumericalVpcId *int64 `json:"NumericalVpcId,omitempty" name:"NumericalVpcId"`
+
+	// 负载均衡的网络类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
 }
 
 type LoadBalancerPackageNew struct {

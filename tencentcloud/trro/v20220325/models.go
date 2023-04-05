@@ -157,6 +157,74 @@ func (r *BatchDeletePolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BoundLicensesRequestParams struct {
+	// license数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BoundLicensesRequest struct {
+	*tchttp.BaseRequest
+	
+	// license数量
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BoundLicensesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BoundLicensesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Count")
+	delete(f, "DeviceId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BoundLicensesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BoundLicensesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BoundLicensesResponse struct {
+	*tchttp.BaseResponse
+	Response *BoundLicensesResponseParams `json:"Response"`
+}
+
+func (r *BoundLicensesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BoundLicensesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDeviceRequestParams struct {
 	// 创建设备所归属的项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -926,6 +994,104 @@ func (r *DescribeProjectListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecentSessionListRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码，从1开始
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页个数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 设备ID，支持过滤远端设备或现场设备
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type DescribeRecentSessionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码，从1开始
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页个数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 设备ID，支持过滤远端设备或现场设备
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeRecentSessionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecentSessionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "DeviceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecentSessionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecentSessionListResponseParams struct {
+	// 总个数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 会话列表
+	RecentSessionList []*RecentSessionInfo `json:"RecentSessionList,omitempty" name:"RecentSessionList"`
+
+	// 本页数量
+	Num *uint64 `json:"Num,omitempty" name:"Num"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRecentSessionListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecentSessionListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecentSessionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecentSessionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSessionStatisticsByIntervalRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1100,6 +1266,36 @@ func (r *DescribeSessionStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Device struct {
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 已经绑定license数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseCount *int64 `json:"LicenseCount,omitempty" name:"LicenseCount"`
+
+	// 剩余天数：天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainDay *int64 `json:"RemainDay,omitempty" name:"RemainDay"`
+
+	// 过期时间：s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 服务时长：s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
+
+	// 已经绑定licenseId列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseIds []*string `json:"LicenseIds,omitempty" name:"LicenseIds"`
+}
+
 type DeviceInfo struct {
 	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
@@ -1121,6 +1317,321 @@ type DeviceInfo struct {
 
 	// 设备所属项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+// Predefined struct for user
+type GetDeviceLicenseRequestParams struct {
+	// 目标设备所属项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 目标设备ID
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+type GetDeviceLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目标设备所属项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 目标设备ID
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+func (r *GetDeviceLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDeviceLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDeviceLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDeviceLicenseResponseParams struct {
+	// 指定设备已经绑定的可用license数量
+	AvailableCount *int64 `json:"AvailableCount,omitempty" name:"AvailableCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetDeviceLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDeviceLicenseResponseParams `json:"Response"`
+}
+
+func (r *GetDeviceLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDeviceLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDevicesRequestParams struct {
+	// 页码
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 页面数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 项目 ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 设备ID
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+type GetDevicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 页面数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 项目 ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 设备ID
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+func (r *GetDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDevicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDevicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDevicesResponseParams struct {
+	// 设备授权列表
+	Devices []*Device `json:"Devices,omitempty" name:"Devices"`
+
+	// 列表数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDevicesResponseParams `json:"Response"`
+}
+
+func (r *GetDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetLicenseStatRequestParams struct {
+
+}
+
+type GetLicenseStatRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetLicenseStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLicenseStatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLicenseStatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetLicenseStatResponseParams struct {
+	// 有效授权
+	Valid *int64 `json:"Valid,omitempty" name:"Valid"`
+
+	// 已绑定授权
+	Bound *int64 `json:"Bound,omitempty" name:"Bound"`
+
+	// 未绑定授权
+	UnBound *int64 `json:"UnBound,omitempty" name:"UnBound"`
+
+	// 过期授权
+	Expire *int64 `json:"Expire,omitempty" name:"Expire"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetLicenseStatResponse struct {
+	*tchttp.BaseResponse
+	Response *GetLicenseStatResponseParams `json:"Response"`
+}
+
+func (r *GetLicenseStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLicenseStatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetLicensesRequestParams struct {
+	// 页码
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 页面数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// projectId
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// DeviceId
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+type GetLicensesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 页面数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// projectId
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// DeviceId
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+func (r *GetLicensesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLicensesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLicensesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetLicensesResponseParams struct {
+	// license列表
+	Licenses []*License `json:"Licenses,omitempty" name:"Licenses"`
+
+	// license列表项数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetLicensesResponse struct {
+	*tchttp.BaseResponse
+	Response *GetLicensesResponseParams `json:"Response"`
+}
+
+func (r *GetLicensesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLicensesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type License struct {
+	// 该类型的license个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// license状态：0:未绑定；1:已绑定；2:已停服；3:已退费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 到期时间戳：s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 服务时长：s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
+
+	// 剩余天数：天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainDay *int64 `json:"RemainDay,omitempty" name:"RemainDay"`
+
+	// 该类型的licenseId列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseIds []*string `json:"LicenseIds,omitempty" name:"LicenseIds"`
 }
 
 // Predefined struct for user
@@ -1389,6 +1900,26 @@ type ProjectInfo struct {
 
 	// 项目信息修改时间
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type RecentSessionInfo struct {
+	// 会话ID
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 远端设备ID
+	RemoteDeviceId *string `json:"RemoteDeviceId,omitempty" name:"RemoteDeviceId"`
+
+	// 现场设备ID
+	FieldDeviceId *string `json:"FieldDeviceId,omitempty" name:"FieldDeviceId"`
+
+	// 分辨率
+	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 会话开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 最后更新时间
+	LatestUpdateTime *uint64 `json:"LatestUpdateTime,omitempty" name:"LatestUpdateTime"`
 }
 
 type SessionDeviceDetail struct {

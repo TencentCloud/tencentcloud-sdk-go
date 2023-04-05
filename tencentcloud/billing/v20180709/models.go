@@ -2470,10 +2470,10 @@ func (r *DescribeCostSummaryByResourceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDealsByCondRequestParams struct {
-	// 开始时间
+	// 开始时间 2016-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间 2016-02-01 00:00:00 建议跨度不超过3个月
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 一页多少条数据，默认是20条，最大不超过1000
@@ -2510,10 +2510,10 @@ type DescribeDealsByCondRequestParams struct {
 type DescribeDealsByCondRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间
+	// 开始时间 2016-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间 2016-02-01 00:00:00 建议跨度不超过3个月
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 一页多少条数据，默认是20条，最大不超过1000

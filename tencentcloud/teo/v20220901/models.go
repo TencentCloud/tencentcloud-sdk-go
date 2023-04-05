@@ -244,6 +244,102 @@ type AiRule struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
+type AlgDetectJS struct {
+	// 操作名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 工作量证明 (proof_Of-Work)校验强度，默认low，取值有：
+	// <li>low：低；</li>
+	// <li>middle：中；</li>
+	// <li>high：高。</li>
+	WorkLevel *string `json:"WorkLevel,omitempty" name:"WorkLevel"`
+
+	// 执行方式，js延迟执行的时间。单位为ms，默认500，取值：0～1000。
+	ExecuteMode *int64 `json:"ExecuteMode,omitempty" name:"ExecuteMode"`
+
+	// 客户端末启用JS（末完成检测）统计周期。单位为秒，默认10，取值：5～3600。
+	InvalidStatTime *int64 `json:"InvalidStatTime,omitempty" name:"InvalidStatTime"`
+
+	// 客户端末启用JS（末完成检测）触发阈值。单位为次，默认300，取值：1～100000000。
+	InvalidThreshold *int64 `json:"InvalidThreshold,omitempty" name:"InvalidThreshold"`
+
+	// Bot主动特征识别客户端行为校验结果。
+	AlgDetectResults []*AlgDetectResult `json:"AlgDetectResults,omitempty" name:"AlgDetectResults"`
+}
+
+type AlgDetectResult struct {
+	// 校验结果，取值有：
+	// <li>invalid：不合法Cookie；</li>
+	// <li>cookie_empty：末携带Cookie或Cookie己过期；</li>
+	// <li>js_empty：客户端末启用JS（末完成检测）；</li>
+	// <li>low：会话速率和周期特征校验低风险；</li>
+	// <li>middle：会话速率和周期特征校验中风险；</li>
+	// <li>high：会话速率和周期特征校验高风险；</li>
+	// <li>timeout：检测超时时长；</li>
+	// <li>not_browser：不合法浏览器；</li>
+	// <li>is_bot：Bot客户端。</li>
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 处罚动作，取值有：
+	// <li>drop：拦截；</li>
+	// <li>monitor：观察；</li>
+	// <li>silence：静默；</li>
+	// <li>shortdelay：（短时间）等待后响应；</li>
+	// <li>longdelay：（长时间）等待后响应。</li>
+	Action *string `json:"Action,omitempty" name:"Action"`
+}
+
+type AlgDetectRule struct {
+	// 规则id。
+	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 规则名。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则开关。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 自定义规则。
+	AlgConditions []*AclCondition `json:"AlgConditions,omitempty" name:"AlgConditions"`
+
+	// Cookie校验和会话行为分析。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlgDetectSession *AlgDetectSession `json:"AlgDetectSession,omitempty" name:"AlgDetectSession"`
+
+	// 客户端行为校验。
+	AlgDetectJS []*AlgDetectJS `json:"AlgDetectJS,omitempty" name:"AlgDetectJS"`
+
+	// 更新时间。仅出参使用。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type AlgDetectSession struct {
+	// 操作名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 校验方式，默认update_detect，取值有：
+	// <li>detect：仅校验；</li>
+	// <li>update_detect：更新Cookie并校验。</li>
+	DetectMode *string `json:"DetectMode,omitempty" name:"DetectMode"`
+
+	// 会话速率和周期特征校验开关，默认off，取值有：
+	// <li>off：关闭；</li>
+	// <li>on：打开。</li>
+	SessionAnalyzeSwitch *string `json:"SessionAnalyzeSwitch,omitempty" name:"SessionAnalyzeSwitch"`
+
+	// 校验结果为未携带Cookie或Cookie已过期的统计周期。单位为秒，默认10，取值：5～3600。
+	InvalidStatTime *int64 `json:"InvalidStatTime,omitempty" name:"InvalidStatTime"`
+
+	// 校验结果为未携带Cookie或Cookie已过期的触发阈值。单位为次，默认300，取值：1～100000000。
+	InvalidThreshold *int64 `json:"InvalidThreshold,omitempty" name:"InvalidThreshold"`
+
+	// Cookie校验校验结果。
+	AlgDetectResults []*AlgDetectResult `json:"AlgDetectResults,omitempty" name:"AlgDetectResults"`
+
+	// 会话速率和周期特征校验结果。
+	SessionBehaviors []*AlgDetectResult `json:"SessionBehaviors,omitempty" name:"SessionBehaviors"`
+}
+
 type AliasDomain struct {
 	// 别称域名名称。
 	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
@@ -490,6 +586,9 @@ type BotConfig struct {
 
 	// Bot自定义规则。如果为null，默认使用历史配置。
 	BotUserRules []*BotUserRule `json:"BotUserRules,omitempty" name:"BotUserRules"`
+
+	// Bot主动特征识别规则。
+	AlgDetectRule []*AlgDetectRule `json:"AlgDetectRule,omitempty" name:"AlgDetectRule"`
 
 	// Bot托管定制策略，入参可不填，仅出参使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。

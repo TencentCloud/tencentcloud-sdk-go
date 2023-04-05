@@ -501,6 +501,54 @@ func (c *Client) DescribeWorkspaceEnvListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeWorkspaceIsReadyRequest() (request *DescribeWorkspaceIsReadyRequest) {
+    request = &DescribeWorkspaceIsReadyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cloudstudio", APIVersion, "DescribeWorkspaceIsReady")
+    
+    
+    return
+}
+
+func NewDescribeWorkspaceIsReadyResponse() (response *DescribeWorkspaceIsReadyResponse) {
+    response = &DescribeWorkspaceIsReadyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWorkspaceIsReady
+// 获取工作空间是否已经启动就绪
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeWorkspaceIsReady(request *DescribeWorkspaceIsReadyRequest) (response *DescribeWorkspaceIsReadyResponse, err error) {
+    return c.DescribeWorkspaceIsReadyWithContext(context.Background(), request)
+}
+
+// DescribeWorkspaceIsReady
+// 获取工作空间是否已经启动就绪
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeWorkspaceIsReadyWithContext(ctx context.Context, request *DescribeWorkspaceIsReadyRequest) (response *DescribeWorkspaceIsReadyResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkspaceIsReadyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkspaceIsReady require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkspaceIsReadyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWorkspaceNameExistRequest() (request *DescribeWorkspaceNameExistRequest) {
     request = &DescribeWorkspaceNameExistRequest{
         BaseRequest: &tchttp.BaseRequest{},

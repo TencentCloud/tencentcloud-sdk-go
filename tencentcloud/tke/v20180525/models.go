@@ -6994,6 +6994,9 @@ type DescribeClusterReleasesRequestParams struct {
 	// 页偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
+	// 集群类型, 目前支持传入 tke, eks, tkeedge, external 
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
 	// helm Release 安装的namespace
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
@@ -7015,6 +7018,9 @@ type DescribeClusterReleasesRequest struct {
 
 	// 页偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 集群类型, 目前支持传入 tke, eks, tkeedge, external 
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 
 	// helm Release 安装的namespace
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
@@ -7041,6 +7047,7 @@ func (r *DescribeClusterReleasesRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "ClusterType")
 	delete(f, "Namespace")
 	delete(f, "ReleaseName")
 	delete(f, "ChartName")
