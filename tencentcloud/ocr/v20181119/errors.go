@@ -20,6 +20,9 @@ const (
 	// 帐号已欠费。
 	FAILEDOPERATION_ARREARSERROR = "FailedOperation.ArrearsError"
 
+	// 身份证CardSide类型错误
+	FAILEDOPERATION_CARDSIDEERROR = "FailedOperation.CardSideError"
+
 	// 今日次数达到限制。
 	FAILEDOPERATION_COUNTLIMITERROR = "FailedOperation.CountLimitError"
 

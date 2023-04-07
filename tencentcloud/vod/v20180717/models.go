@@ -3670,7 +3670,7 @@ func (r *CreateHeadTailTemplateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateImageProcessingTemplateRequestParams struct {
 	// 图片处理操作数组，操作将以其在数组中的顺序执行。
-	// <li>长度限制：3。</li>
+	// <li>长度限制：10。</li>
 	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -3687,7 +3687,7 @@ type CreateImageProcessingTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 图片处理操作数组，操作将以其在数组中的顺序执行。
-	// <li>长度限制：3。</li>
+	// <li>长度限制：10。</li>
 	Operations []*ImageOperation `json:"Operations,omitempty" name:"Operations"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -4177,10 +4177,10 @@ type CreateRebuildMediaTemplateRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 音画质重生模版名称。
+	// 音画质重生模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 模版描述。
+	// 模板描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 音画质重生视频控制控制信息。
@@ -4217,10 +4217,10 @@ type CreateRebuildMediaTemplateRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 音画质重生模版名称。
+	// 音画质重生模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 模版描述。
+	// 模板描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 音画质重生视频控制控制信息。
@@ -4278,7 +4278,7 @@ func (r *CreateRebuildMediaTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRebuildMediaTemplateResponseParams struct {
-	// 音画质重生模版 ID。
+	// 音画质重生模板 ID。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6295,7 +6295,7 @@ func (r *DeleteProcedureTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRebuildMediaTemplateRequestParams struct {
-	// 音画质重生模版号。
+	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -6305,7 +6305,7 @@ type DeleteRebuildMediaTemplateRequestParams struct {
 type DeleteRebuildMediaTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音画质重生模版号。
+	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -9492,7 +9492,7 @@ func (r *DescribeProcedureTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRebuildMediaTemplatesRequestParams struct {
-	// 音画质重生模版列表。
+	// 音画质重生模板列表。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -9513,7 +9513,7 @@ type DescribeRebuildMediaTemplatesRequestParams struct {
 type DescribeRebuildMediaTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音画质重生模版列表。
+	// 音画质重生模板列表。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -12140,6 +12140,18 @@ type HighlightsConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type ImageBlur struct {
+	// 图片模糊的操作类型。可选模式有：
+	// <li>Gaussian : 高斯模糊。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 模糊半径，取值范围为1 - 50。当 Type 取值为 Gaussian 时此字段有效。
+	Radius *int64 `json:"Radius,omitempty" name:"Radius"`
+
+	// 正态分布的标准差，必须大于0。当 Type 取值为 Gaussian 时此字段有效。
+	Sigma *int64 `json:"Sigma,omitempty" name:"Sigma"`
+}
+
 type ImageCenterCut struct {
 	// 图片的裁剪模式，可选 Circle 和 Rectangle。
 	// <li>Circle ： 内切圆裁剪，输出图片半径为 Radius。</li>
@@ -12173,6 +12185,9 @@ type ImageOperation struct {
 
 	// 图片裁剪处理，仅当 Type 为 CenterCut 时有效。
 	CenterCut *ImageCenterCut `json:"CenterCut,omitempty" name:"CenterCut"`
+
+	// 图片模糊处理，仅当 Type 为 Blur 时有效。
+	Blur *ImageBlur `json:"Blur,omitempty" name:"Blur"`
 }
 
 type ImageProcessingTemplate struct {
@@ -15234,16 +15249,16 @@ func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRebuildMediaTemplateRequestParams struct {
-	// 音画质重生模版号。
+	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 音画质重生模版名称。
+	// 音画质重生模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 音画质重生模版描述。
+	// 音画质重生模板描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 音画质重生视频控制信息。
@@ -15275,16 +15290,16 @@ type ModifyRebuildMediaTemplateRequestParams struct {
 type ModifyRebuildMediaTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音画质重生模版号。
+	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 音画质重生模版名称。
+	// 音画质重生模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 音画质重生模版描述。
+	// 音画质重生模板描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 音画质重生视频控制信息。
@@ -18286,7 +18301,7 @@ type RebuildMediaByTemplateRequestParams struct {
 	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 音画质重生模版 ID。
+	// 音画质重生模板 ID。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -18320,7 +18335,7 @@ type RebuildMediaByTemplateRequest struct {
 	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 音画质重生模版 ID。
+	// 音画质重生模板 ID。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -18858,7 +18873,7 @@ type RebuildMediaTaskOutput struct {
 }
 
 type RebuildMediaTemplate struct {
-	// 音画质重生模版号。
+	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 模板类型，可选值：
@@ -18866,10 +18881,10 @@ type RebuildMediaTemplate struct {
 	// <li>Custom：用户自定义模板。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 音画质重生模版名称。
+	// 音画质重生模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 音画质重生模版描述。
+	// 音画质重生模板描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 音画质重生视频控制信息。

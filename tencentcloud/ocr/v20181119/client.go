@@ -2945,6 +2945,7 @@ func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
 // 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CARDSIDEERROR = "FailedOperation.CardSideError"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IDCARDINFOILLEGAL = "FailedOperation.IdCardInfoIllegal"
@@ -3062,6 +3063,7 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
 // 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CARDSIDEERROR = "FailedOperation.CardSideError"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 //  FAILEDOPERATION_IDCARDINFOILLEGAL = "FailedOperation.IdCardInfoIllegal"

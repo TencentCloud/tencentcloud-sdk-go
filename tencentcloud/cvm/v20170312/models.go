@@ -46,7 +46,7 @@ type AccountQuotaOverview struct {
 }
 
 type ActionTimer struct {
-	// 定时器名称，目前仅支持销毁一个值：TerminateInstances。
+	// 定时器动作，目前仅支持销毁一个值：TerminateInstances。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimerAction *string `json:"TimerAction,omitempty" name:"TimerAction"`
 

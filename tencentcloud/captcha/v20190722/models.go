@@ -1088,10 +1088,10 @@ type DescribeCaptchaResultRequestParams struct {
 	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
 	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
 
-	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+	// 预留字段
 	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
 
-	// 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+	// 预留字段
 	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
 
 	// mac 地址或设备唯一标识
@@ -1125,10 +1125,10 @@ type DescribeCaptchaResultRequest struct {
 	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
 	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
 
-	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
+	// 预留字段
 	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
 
-	// 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
+	// 预留字段
 	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
 
 	// mac 地址或设备唯一标识
@@ -1195,6 +1195,13 @@ type DescribeCaptchaResultResponseParams struct {
 	// 前端获取验证码时间，时间戳格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GetCaptchaTime *int64 `json:"GetCaptchaTime,omitempty" name:"GetCaptchaTime"`
+
+	// 拦截类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilBitmap *int64 `json:"EvilBitmap,omitempty" name:"EvilBitmap"`
+
+	// 提交验证码时间
+	SubmitCaptchaTime *int64 `json:"SubmitCaptchaTime,omitempty" name:"SubmitCaptchaTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

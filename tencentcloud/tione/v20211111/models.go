@@ -97,6 +97,9 @@ type BatchModelAccTask struct {
 
 	// SavedModel保存时配置的签名
 	ModelSignature *string `json:"ModelSignature,omitempty" name:"ModelSignature"`
+
+	// 加速引擎对应的框架版本
+	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 }
 
 type BatchTaskDetail struct {
@@ -4500,11 +4503,11 @@ func (r *DescribeTrainingModelVersionsResponse) FromJsonString(s string) error {
 type DescribeTrainingModelsRequestParams struct {
 	// 过滤器
 	// Filter.Name: 枚举值:
-	//     keyword (模型名称)
-	//     TrainingModelId (模型ID)
-	//     ModelVersionType (模型版本类型) 其值Filter.Values支持: NORMAL(通用) ACCELERATE (加速)
-	//     TrainingModelSource (模型来源)  其值Filter.Values支持： JOB/COS
-	//     ModelFormat（模型格式）其值Filter.Values支持：
+	// keyword (模型名称)
+	// TrainingModelId (模型ID)
+	// ModelVersionType (模型版本类型) 其值Filter.Values支持: NORMAL(通用) ACCELERATE (加速)
+	// TrainingModelSource (模型来源) 其值Filter.Values支持： JOB/COS
+	// ModelFormat（模型格式）其值Filter.Values支持：
 	// PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE
 	// Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100
@@ -4525,6 +4528,9 @@ type DescribeTrainingModelsRequestParams struct {
 
 	// 标签过滤
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 是否同时返回模型版本列表
+	WithModelVersions *bool `json:"WithModelVersions,omitempty" name:"WithModelVersions"`
 }
 
 type DescribeTrainingModelsRequest struct {
@@ -4532,11 +4538,11 @@ type DescribeTrainingModelsRequest struct {
 	
 	// 过滤器
 	// Filter.Name: 枚举值:
-	//     keyword (模型名称)
-	//     TrainingModelId (模型ID)
-	//     ModelVersionType (模型版本类型) 其值Filter.Values支持: NORMAL(通用) ACCELERATE (加速)
-	//     TrainingModelSource (模型来源)  其值Filter.Values支持： JOB/COS
-	//     ModelFormat（模型格式）其值Filter.Values支持：
+	// keyword (模型名称)
+	// TrainingModelId (模型ID)
+	// ModelVersionType (模型版本类型) 其值Filter.Values支持: NORMAL(通用) ACCELERATE (加速)
+	// TrainingModelSource (模型来源) 其值Filter.Values支持： JOB/COS
+	// ModelFormat（模型格式）其值Filter.Values支持：
 	// PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML/MMDETECTION/ONNX/HUGGING_FACE
 	// Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
 	// 每次请求的Filters的上限为10，Filter.Values的上限为100
@@ -4557,6 +4563,9 @@ type DescribeTrainingModelsRequest struct {
 
 	// 标签过滤
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 是否同时返回模型版本列表
+	WithModelVersions *bool `json:"WithModelVersions,omitempty" name:"WithModelVersions"`
 }
 
 func (r *DescribeTrainingModelsRequest) ToJsonString() string {
@@ -4577,6 +4586,7 @@ func (r *DescribeTrainingModelsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "TagFilters")
+	delete(f, "WithModelVersions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrainingModelsRequest has unknown keys!", "")
 	}
@@ -4863,6 +4873,10 @@ type EngineVersion struct {
 	// 是否支持int8量化
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportIntEightQuantization *bool `json:"IsSupportIntEightQuantization,omitempty" name:"IsSupportIntEightQuantization"`
+
+	// 框架版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 }
 
 type EnvVar struct {
@@ -5351,6 +5365,10 @@ type ModelAccelerateTask struct {
 	// 是否是QAT模型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QATModel *bool `json:"QATModel,omitempty" name:"QATModel"`
+
+	// 加速引擎对应的框架版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 }
 
 type ModelInfo struct {
@@ -5838,6 +5856,10 @@ type Pod struct {
 	// 容器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Containers *Container `json:"Containers,omitempty" name:"Containers"`
+
+	// 容器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerInfos []*Container `json:"ContainerInfos,omitempty" name:"ContainerInfos"`
 }
 
 type PointInfo struct {
@@ -6083,6 +6105,9 @@ type RestartModelAccelerateTaskRequestParams struct {
 
 	// SavedModel保存时配置的签名
 	ModelSignature *string `json:"ModelSignature,omitempty" name:"ModelSignature"`
+
+	// 加速引擎对应的框架版本
+	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 }
 
 type RestartModelAccelerateTaskRequest struct {
@@ -6144,6 +6169,9 @@ type RestartModelAccelerateTaskRequest struct {
 
 	// SavedModel保存时配置的签名
 	ModelSignature *string `json:"ModelSignature,omitempty" name:"ModelSignature"`
+
+	// 加速引擎对应的框架版本
+	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 }
 
 func (r *RestartModelAccelerateTaskRequest) ToJsonString() string {
@@ -6177,6 +6205,7 @@ func (r *RestartModelAccelerateTaskRequest) FromJsonString(s string) error {
 	delete(f, "AccEngineVersion")
 	delete(f, "Tags")
 	delete(f, "ModelSignature")
+	delete(f, "FrameworkVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartModelAccelerateTaskRequest has unknown keys!", "")
 	}
@@ -6591,6 +6620,10 @@ type ServiceInfo struct {
 	// Pod列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pods *Pod `json:"Pods,omitempty" name:"Pods"`
+
+	// Pod列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodInfos []*Pod `json:"PodInfos,omitempty" name:"PodInfos"`
 }
 
 type ServiceLimit struct {
@@ -7050,6 +7083,10 @@ type TrainingModelDTO struct {
 	// 模型创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模型版本列表。默认不返回，仅在指定请求参数开启时返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainingModelVersions []*TrainingModelVersionDTO `json:"TrainingModelVersions,omitempty" name:"TrainingModelVersions"`
 }
 
 type TrainingModelVersionDTO struct {

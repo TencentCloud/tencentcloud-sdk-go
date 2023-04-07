@@ -117,12 +117,15 @@ type Activity struct {
 	// <li>action-image-sprite：雪碧图</li>
 	// <li>action-snapshotByTimeOffset: 时间点截图</li>
 	// <li>action-adaptive-substream：自适应码流</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityType *string `json:"ActivityType,omitempty" name:"ActivityType"`
 
 	// 后驱节点索引数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReardriveIndex []*int64 `json:"ReardriveIndex,omitempty" name:"ReardriveIndex"`
 
 	// 原子任务参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityPara *ActivityPara `json:"ActivityPara,omitempty" name:"ActivityPara"`
 }
 
@@ -327,6 +330,10 @@ type AiAnalysisResult struct {
 	// 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameTagTask *AiAnalysisTaskFrameTagResult `json:"FrameTagTask,omitempty" name:"FrameTagTask"`
+
+	// 视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighlightTask *AiAnalysisTaskHighlightResult `json:"HighlightTask,omitempty" name:"HighlightTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -423,6 +430,37 @@ type AiAnalysisTaskFrameTagResult struct {
 	// 智能按帧标签任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskFrameTagOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiAnalysisTaskHighlightInput struct {
+	// 视频智能精彩片段模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiAnalysisTaskHighlightOutput struct {
+	// 视频智能精彩片段列表。
+	HighlightSet []*MediaAiAnalysisHighlightItem `json:"HighlightSet,omitempty" name:"HighlightSet"`
+
+	// 精彩片段的存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+}
+
+type AiAnalysisTaskHighlightResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 智能精彩片段任务输入。
+	Input *AiAnalysisTaskHighlightInput `json:"Input,omitempty" name:"Input"`
+
+	// 智能精彩片段任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskHighlightOutput `json:"Output,omitempty" name:"Output"`
 }
 
 type AiAnalysisTaskInput struct {
@@ -530,6 +568,16 @@ type AiContentReviewResult struct {
 type AiContentReviewTaskInput struct {
 	// 视频内容审核模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiQualityControlTaskInput struct {
+	// 视频质检模板 ID 。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 渠道扩展参数json序列化字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelExtPara *string `json:"ChannelExtPara,omitempty" name:"ChannelExtPara"`
 }
 
 type AiRecognitionResult struct {
@@ -1673,27 +1721,27 @@ type AudioTemplateInfoForUpdate struct {
 }
 
 type AwsS3FileUploadTrigger struct {
-	// 工作流绑定的 AWS S3 存储桶。
+	// 绑定的 AWS S3 存储桶。
 	S3Bucket *string `json:"S3Bucket,omitempty" name:"S3Bucket"`
 
-	// 工作流绑定的桶所在 AWS 区域。
+	// 绑定的桶所在 AWS 区域。
 	S3Region *string `json:"S3Region,omitempty" name:"S3Region"`
 
-	// 工作流绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。	
+	// 绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。	
 	Dir *string `json:"Dir,omitempty" name:"Dir"`
 
-	// 工作流允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。	
+	// 允许触发的文件格式列表，如 ["mp4", "flv", "mov"]。不填代表所有格式的文件都可以触发工作流。	
 	Formats []*string `json:"Formats,omitempty" name:"Formats"`
 
-	// 工作流绑定的 AWS S3 存储桶的秘钥ID。
+	// 绑定的 AWS S3 存储桶的秘钥ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3SecretId *string `json:"S3SecretId,omitempty" name:"S3SecretId"`
 
-	// 工作流绑定的 AWS S3 存储桶的秘钥Key。
+	// 绑定的 AWS S3 存储桶的秘钥Key。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3SecretKey *string `json:"S3SecretKey,omitempty" name:"S3SecretKey"`
 
-	// 工作流绑定的 AWS S3 存储桶对应的 SQS事件队列。
+	// 绑定的 AWS S3 存储桶对应的 SQS事件队列。
 	// 注意：队列和桶需要在同一区域。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AwsSQS *AwsSQS `json:"AwsSQS,omitempty" name:"AwsSQS"`
@@ -2991,7 +3039,7 @@ type CreateScheduleRequestParams struct {
 	// 编排名称，最多128字符。同一个用户该名称唯一。
 	ScheduleName *string `json:"ScheduleName,omitempty" name:"ScheduleName"`
 
-	// 编排绑定的触发规则，当上传视频命中该规则到该对象时即触发工作流。
+	// 编排绑定的触发规则，当上传视频命中该规则到该对象时即触发编排。
 	Trigger *WorkflowTrigger `json:"Trigger,omitempty" name:"Trigger"`
 
 	// 编排任务列表。
@@ -3000,7 +3048,8 @@ type CreateScheduleRequestParams struct {
 	// 媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
-	// 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与触发文件所在的目录一致。
 	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
 
 	// 任务的事件通知配置，不填代表不获取事件通知。
@@ -3013,7 +3062,7 @@ type CreateScheduleRequest struct {
 	// 编排名称，最多128字符。同一个用户该名称唯一。
 	ScheduleName *string `json:"ScheduleName,omitempty" name:"ScheduleName"`
 
-	// 编排绑定的触发规则，当上传视频命中该规则到该对象时即触发工作流。
+	// 编排绑定的触发规则，当上传视频命中该规则到该对象时即触发编排。
 	Trigger *WorkflowTrigger `json:"Trigger,omitempty" name:"Trigger"`
 
 	// 编排任务列表。
@@ -3022,7 +3071,8 @@ type CreateScheduleRequest struct {
 	// 媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
-	// 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与触发文件所在的目录一致。
 	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
 
 	// 任务的事件通知配置，不填代表不获取事件通知。
@@ -3712,7 +3762,8 @@ type CreateWorkflowRequestParams struct {
 	// 媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
-	// 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与触发文件所在的目录一致。
 	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
 
 	// 媒体处理类型任务参数。
@@ -3746,7 +3797,8 @@ type CreateWorkflowRequest struct {
 	// 媒体处理的文件输出存储位置。不填则继承 Trigger 中的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
-	// 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与触发文件所在的目录一致。
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与触发文件所在的目录一致。
 	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
 
 	// 媒体处理类型任务参数。
@@ -5785,10 +5837,16 @@ type DescribeSchedulesRequestParams struct {
 	// 编排 ID 过滤条件，数组长度限制：100。
 	ScheduleIds []*int64 `json:"ScheduleIds,omitempty" name:"ScheduleIds"`
 
+	// 编排触发类型，可选值：
+	// <li>CosFileUpload： 腾讯云 COS 文件上传触发</li>
+	// <li>AwsS3FileUpload：Aws S3 文件上传触发。</li>
+	// 不填或者为空表示全部。
+	TriggerType *string `json:"TriggerType,omitempty" name:"TriggerType"`
+
 	// 状态，取值范围：
 	// <li>Enabled：已启用，</li>
 	// <li>Disabled：已禁用。</li>
-	// 不填此参数，则不区分工作流状态。
+	// 不填此参数，则不区编排状态。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 分页偏移量，默认值：0。
@@ -5804,10 +5862,16 @@ type DescribeSchedulesRequest struct {
 	// 编排 ID 过滤条件，数组长度限制：100。
 	ScheduleIds []*int64 `json:"ScheduleIds,omitempty" name:"ScheduleIds"`
 
+	// 编排触发类型，可选值：
+	// <li>CosFileUpload： 腾讯云 COS 文件上传触发</li>
+	// <li>AwsS3FileUpload：Aws S3 文件上传触发。</li>
+	// 不填或者为空表示全部。
+	TriggerType *string `json:"TriggerType,omitempty" name:"TriggerType"`
+
 	// 状态，取值范围：
 	// <li>Enabled：已启用，</li>
 	// <li>Disabled：已禁用。</li>
-	// 不填此参数，则不区分工作流状态。
+	// 不填此参数，则不区编排状态。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 分页偏移量，默认值：0。
@@ -5830,6 +5894,7 @@ func (r *DescribeSchedulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ScheduleIds")
+	delete(f, "TriggerType")
 	delete(f, "Status")
 	delete(f, "Offset")
 	delete(f, "Limit")
@@ -8111,6 +8176,17 @@ type HeadTailParameter struct {
 	TailSet []*MediaInputInfo `json:"TailSet,omitempty" name:"TailSet"`
 }
 
+type HighlightSegmentItem struct {
+	// 置信度。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 片段起始时间偏移。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 片段结束时间偏移。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+}
+
 type ImageQualityEnhanceConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -8749,6 +8825,23 @@ type MediaAiAnalysisFrameTagSegmentItem struct {
 
 	// 时间片段内的标签列表。
 	TagSet []*MediaAiAnalysisFrameTagItem `json:"TagSet,omitempty" name:"TagSet"`
+}
+
+type MediaAiAnalysisHighlightItem struct {
+	// 智能精彩集锦地址。
+	HighlightPath *string `json:"HighlightPath,omitempty" name:"HighlightPath"`
+
+	// 智能精彩集锦封面地址。
+	CovImgPath *string `json:"CovImgPath,omitempty" name:"CovImgPath"`
+
+	// 智能精彩集锦的可信度，取值范围是 0 到 100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 智能精彩集锦持续时间。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 智能精彩集锦子片段列表。
+	SegmentSet []*HighlightSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
 }
 
 type MediaAiAnalysisTagItem struct {
@@ -10399,7 +10492,7 @@ type ModifyScheduleRequestParams struct {
 	// 媒体处理的文件输出存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
-	// 媒体处理生成的文件输出的目标目录。
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾。
 	// 注意：如果设置为空，则表示取消老配置的OutputDir值。
 	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
 
@@ -10426,7 +10519,7 @@ type ModifyScheduleRequest struct {
 	// 媒体处理的文件输出存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
-	// 媒体处理生成的文件输出的目标目录。
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾。
 	// 注意：如果设置为空，则表示取消老配置的OutputDir值。
 	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
 
@@ -11793,8 +11886,18 @@ type ProcessMediaRequestParams struct {
 	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
-	// 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与 InputInfo 中文件所在的目录一致。
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与 InputInfo 中文件所在的目录一致。
 	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 编排ID。
+	// 注意1：对于OutputStorage、OutputDir参数：
+	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
+	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
+	// 
+	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 
 	// 媒体处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
@@ -11808,6 +11911,9 @@ type ProcessMediaRequestParams struct {
 	// 视频内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
+	// 视频质检类型任务参数。
+	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitempty" name:"AiQualityControlTask"`
+
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
 
@@ -11819,15 +11925,6 @@ type ProcessMediaRequestParams struct {
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
-
-	// 编排ID。
-	// 注意1：对于OutputStorage、OutputDir参数：
-	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
-	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
-	// 
-	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
-	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 
 	// 任务类型，默认Online
 	// <li> Online：实时任务</li>
@@ -11844,8 +11941,18 @@ type ProcessMediaRequest struct {
 	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
 
-	// 媒体处理生成的文件输出的目标目录，如`/movie/201907/`。如果不填，表示与 InputInfo 中文件所在的目录一致。
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与 InputInfo 中文件所在的目录一致。
 	OutputDir *string `json:"OutputDir,omitempty" name:"OutputDir"`
+
+	// 编排ID。
+	// 注意1：对于OutputStorage、OutputDir参数：
+	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
+	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
+	// 
+	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 
 	// 媒体处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
@@ -11859,6 +11966,9 @@ type ProcessMediaRequest struct {
 	// 视频内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
+	// 视频质检类型任务参数。
+	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitempty" name:"AiQualityControlTask"`
+
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitempty" name:"TaskNotifyConfig"`
 
@@ -11870,15 +11980,6 @@ type ProcessMediaRequest struct {
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
-
-	// 编排ID。
-	// 注意1：对于OutputStorage、OutputDir参数：
-	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
-	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
-	// 
-	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
-	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 
 	// 任务类型，默认Online
 	// <li> Online：实时任务</li>
@@ -11901,15 +12002,16 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 	delete(f, "InputInfo")
 	delete(f, "OutputStorage")
 	delete(f, "OutputDir")
+	delete(f, "ScheduleId")
 	delete(f, "MediaProcessTask")
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiAnalysisTask")
 	delete(f, "AiRecognitionTask")
+	delete(f, "AiQualityControlTask")
 	delete(f, "TaskNotifyConfig")
 	delete(f, "TasksPriority")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
-	delete(f, "ScheduleId")
 	delete(f, "TaskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaRequest has unknown keys!", "")
@@ -12010,6 +12112,64 @@ type ProhibitedOcrReviewTemplateInfoForUpdate struct {
 
 	// 判定需人工复核是否违规的分数阈值，当智能审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
+}
+
+type QualityControlData struct {
+	// 为true时表示视频无音频轨。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoAudio *bool `json:"NoAudio,omitempty" name:"NoAudio"`
+
+	// 为true时表示视频无视频轨。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoVideo *bool `json:"NoVideo,omitempty" name:"NoVideo"`
+
+	// 视频无参考质量打分，百分制。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityEvaluationScore *int64 `json:"QualityEvaluationScore,omitempty" name:"QualityEvaluationScore"`
+
+	// 质检检出异常项。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityControlResultSet []*QualityControlResult `json:"QualityControlResultSet,omitempty" name:"QualityControlResultSet"`
+}
+
+type QualityControlItem struct {
+	// 置信度，取值范围是 0 到 100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 出现的起始时间戳，秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 出现的结束时间戳，秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 区域坐标(px)，即左上角坐标、右下角坐标。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
+}
+
+type QualityControlResult struct {
+	// 异常类型，取值范围：
+	// Jitter：抖动，
+	// Blur：模糊，
+	// LowLighting：低光照，
+	// HighLighting：过曝，
+	// CrashScreen：花屏，
+	// BlackWhiteEdge：黑白边，
+	// SolidColorScreen：纯色屏，
+	// Noise：噪点，
+	// Mosaic：马赛克，
+	// QRCode：二维码，
+	// AppletCode：小程序码，
+	// BarCode：条形码，
+	// LowVoice：低音，
+	// HighVoice：爆音，
+	// NoVoice：静音，
+	// LowEvaluation：无参考打分低于阈值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 质检结果项。
+	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitempty" name:"QualityControlItems"`
 }
 
 type RTMPAddressDestination struct {
@@ -12482,6 +12642,27 @@ type ScheduleAnalysisTaskResult struct {
 	Output []*AiAnalysisResult `json:"Output,omitempty" name:"Output"`
 }
 
+type ScheduleQualityControlTaskResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 质检任务的输入。
+	Input *AiQualityControlTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 质检任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *QualityControlData `json:"Output,omitempty" name:"Output"`
+}
+
 type ScheduleRecognitionTaskResult struct {
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -12532,6 +12713,12 @@ type ScheduleTask struct {
 	// <li>PROCESSING：处理中；</li>
 	// <li>FINISH：已完成。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 媒体处理的目标文件信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13792,6 +13979,10 @@ type WorkflowTask struct {
 
 	// 视频内容识别任务的执行状态与结果。
 	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet"`
+
+	// 视频质检任务的执行状态与结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiQualityControlTaskResult *ScheduleQualityControlTaskResult `json:"AiQualityControlTaskResult,omitempty" name:"AiQualityControlTaskResult"`
 }
 
 type WorkflowTrigger struct {

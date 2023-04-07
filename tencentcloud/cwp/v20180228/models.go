@@ -28,6 +28,14 @@ type AccountStatistics struct {
 	MachineNum *uint64 `json:"MachineNum,omitempty" name:"MachineNum"`
 }
 
+type AlarmInfo struct {
+	// 该节点关联的告警，告警的table_name+id（t1:id1,t2:id2,...)
+	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
+
+	// 告警事件表状态，当该节点为告警点时生效
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type AssetAppBaseInfo struct {
 	// 主机内网IP
 	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
@@ -2652,6 +2660,10 @@ type BruteAttackInfo struct {
 	// 附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 地理位置中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitempty" name:"Location"`
 }
 
 type BruteAttackRule struct {
@@ -5062,6 +5074,150 @@ func (r *DescribeAccountStatisticsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccountStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmIncidentNodesRequestParams struct {
+	// 机器uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 告警vid
+	AlarmVid *string `json:"AlarmVid,omitempty" name:"AlarmVid"`
+
+	// 告警时间
+	AlarmTime *int64 `json:"AlarmTime,omitempty" name:"AlarmTime"`
+}
+
+type DescribeAlarmIncidentNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 机器uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 告警vid
+	AlarmVid *string `json:"AlarmVid,omitempty" name:"AlarmVid"`
+
+	// 告警时间
+	AlarmTime *int64 `json:"AlarmTime,omitempty" name:"AlarmTime"`
+}
+
+func (r *DescribeAlarmIncidentNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmIncidentNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Uuid")
+	delete(f, "AlarmVid")
+	delete(f, "AlarmTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmIncidentNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmIncidentNodesResponseParams struct {
+	// 告警点所在事件的所有节点信息,可能包含多事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncidentNodes []*IncidentVertexInfo `json:"IncidentNodes,omitempty" name:"IncidentNodes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAlarmIncidentNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmIncidentNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmIncidentNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmIncidentNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmVertexIdRequestParams struct {
+	// 机器uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 开始时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type DescribeAlarmVertexIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// 机器uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 开始时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeAlarmVertexIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmVertexIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Uuid")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmVertexIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmVertexIdResponseParams struct {
+	// 告警点id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmVertexIds []*string `json:"AlarmVertexIds,omitempty" name:"AlarmVertexIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAlarmVertexIdResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmVertexIdResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmVertexIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmVertexIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11913,6 +12069,73 @@ func (r *DescribeEmergencyVulListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEventByTableRequestParams struct {
+	// 事件表名
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 事件表id号
+	Ids []*int64 `json:"Ids,omitempty" name:"Ids"`
+}
+
+type DescribeEventByTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件表名
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 事件表id号
+	Ids []*int64 `json:"Ids,omitempty" name:"Ids"`
+}
+
+func (r *DescribeEventByTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventByTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TableName")
+	delete(f, "Ids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventByTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEventByTableResponseParams struct {
+	// 告警类型，爆破bruteattack，高危命令bash，恶意文件malware，恶意请求risk_dns，本地提权privilege_escalation，反弹shell reverse_shell，内存马java_shell
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 事件内容的json编码字符串，字段结构对齐事件表
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEventByTableResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEventByTableResponseParams `json:"Response"`
+}
+
+func (r *DescribeEventByTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventByTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExpertServiceListRequestParams struct {
 	// 过滤条件。
 	// <li>Keyword- String - 是否必填：否 - 关键词过滤，</li>
@@ -14771,6 +14994,64 @@ func (r *DescribeOverviewStatisticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrivilegeEventInfoRequestParams struct {
+	// 事件id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+type DescribePrivilegeEventInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribePrivilegeEventInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivilegeEventInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrivilegeEventInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrivilegeEventInfoResponseParams struct {
+	// 本地提权详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivilegeEventInfo *PrivilegeEventInfo `json:"PrivilegeEventInfo,omitempty" name:"PrivilegeEventInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePrivilegeEventInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrivilegeEventInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribePrivilegeEventInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrivilegeEventInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrivilegeEventsRequestParams struct {
 	// 返回数量，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -15407,6 +15688,64 @@ func (r *DescribeProtectNetListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeReverseShellEventInfoRequestParams struct {
+	// 事件id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+type DescribeReverseShellEventInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeReverseShellEventInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReverseShellEventInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReverseShellEventInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReverseShellEventInfoResponseParams struct {
+	// 反弹shell详情信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReverseShellEventInfo *ReverseShellEventInfo `json:"ReverseShellEventInfo,omitempty" name:"ReverseShellEventInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeReverseShellEventInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReverseShellEventInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeReverseShellEventInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReverseShellEventInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeReverseShellEventsRequestParams struct {
 	// 返回数量，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -15569,6 +15908,64 @@ func (r *DescribeReverseShellRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeReverseShellRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskDnsEventInfoRequestParams struct {
+	// 恶意请求事件Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+}
+
+type DescribeRiskDnsEventInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 恶意请求事件Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeRiskDnsEventInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskDnsEventInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskDnsEventInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskDnsEventInfoResponseParams struct {
+	// 恶意请求事件详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Info *RiskDnsEvent `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRiskDnsEventInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRiskDnsEventInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeRiskDnsEventInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskDnsEventInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17408,6 +17805,78 @@ func (r *DescribeVersionStatisticsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVersionStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVertexDetailRequestParams struct {
+	// 点id列表
+	VertexIds []*string `json:"VertexIds,omitempty" name:"VertexIds"`
+
+	// 事件id
+	IncidentId *string `json:"IncidentId,omitempty" name:"IncidentId"`
+
+	// 事件所在表名
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+}
+
+type DescribeVertexDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 点id列表
+	VertexIds []*string `json:"VertexIds,omitempty" name:"VertexIds"`
+
+	// 事件id
+	IncidentId *string `json:"IncidentId,omitempty" name:"IncidentId"`
+
+	// 事件所在表名
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+}
+
+func (r *DescribeVertexDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVertexDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VertexIds")
+	delete(f, "IncidentId")
+	delete(f, "TableName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVertexDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVertexDetailResponseParams struct {
+	// 指定点列表的属性信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VertexDetails []*VertexDetail `json:"VertexDetails,omitempty" name:"VertexDetails"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeVertexDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVertexDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeVertexDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVertexDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -21207,6 +21676,10 @@ type HostLoginList struct {
 	// 附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 请求目的端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
 type HostRiskLevelCount struct {
@@ -21334,6 +21807,24 @@ type IgnoreRuleEffectHostInfo struct {
 	// 主机quuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+type IncidentVertexInfo struct {
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncidentId *string `json:"IncidentId,omitempty" name:"IncidentId"`
+
+	// 事件所在表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 节点信息列表，数组项中包含节点详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vertex []*VertexInfo `json:"Vertex,omitempty" name:"Vertex"`
+
+	// 节点总个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VertexCount *int64 `json:"VertexCount,omitempty" name:"VertexCount"`
 }
 
 type Item struct {
@@ -23346,6 +23837,90 @@ type PrivilegeEscalationProcess struct {
 	// 附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 进程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+}
+
+type PrivilegeEventInfo struct {
+	// 数据ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜ID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机内网IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 进程路径
+	FullPath *string `json:"FullPath,omitempty" name:"FullPath"`
+
+	// 执行命令
+	CmdLine *string `json:"CmdLine,omitempty" name:"CmdLine"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户组
+	UserGroup *string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// 进程文件权限
+	ProcFilePrivilege *string `json:"ProcFilePrivilege,omitempty" name:"ProcFilePrivilege"`
+
+	// 父进程名
+	ParentProcName *string `json:"ParentProcName,omitempty" name:"ParentProcName"`
+
+	// 父进程用户名
+	ParentProcUser *string `json:"ParentProcUser,omitempty" name:"ParentProcUser"`
+
+	// 父进程用户组
+	ParentProcGroup *string `json:"ParentProcGroup,omitempty" name:"ParentProcGroup"`
+
+	// 父进程路径
+	ParentProcPath *string `json:"ParentProcPath,omitempty" name:"ParentProcPath"`
+
+	// 进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+	PsTree *string `json:"PsTree,omitempty" name:"PsTree"`
+
+	// 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 发生时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 机器名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 建议方案
+	SuggestScheme *string `json:"SuggestScheme,omitempty" name:"SuggestScheme"`
+
+	// 危害描述信息
+	HarmDescribe *string `json:"HarmDescribe,omitempty" name:"HarmDescribe"`
+
+	// 标签
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 参考链接
+	References []*string `json:"References,omitempty" name:"References"`
+
+	// 主机外网ip
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 权限列表|隔开
+	NewCaps *string `json:"NewCaps,omitempty" name:"NewCaps"`
+
+	// 主机在线状态 OFFLINE  ONLINE
+	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
+
+	// 处理时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type PrivilegeRule struct {
@@ -23728,6 +24303,94 @@ type ReverseShell struct {
 	//  主机额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 进程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+}
+
+type ReverseShellEventInfo struct {
+	// ID 主键
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 云镜UUID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机ID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机内网IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 目标IP
+	DstIp *string `json:"DstIp,omitempty" name:"DstIp"`
+
+	// 目标端口
+	DstPort *uint64 `json:"DstPort,omitempty" name:"DstPort"`
+
+	// 进程名
+	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+
+	// 进程路径
+	FullPath *string `json:"FullPath,omitempty" name:"FullPath"`
+
+	// 命令详情
+	CmdLine *string `json:"CmdLine,omitempty" name:"CmdLine"`
+
+	// 执行用户
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 执行用户组
+	UserGroup *string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// 父进程名
+	ParentProcName *string `json:"ParentProcName,omitempty" name:"ParentProcName"`
+
+	// 父进程用户
+	ParentProcUser *string `json:"ParentProcUser,omitempty" name:"ParentProcUser"`
+
+	// 父进程用户组
+	ParentProcGroup *string `json:"ParentProcGroup,omitempty" name:"ParentProcGroup"`
+
+	// 父进程路径
+	ParentProcPath *string `json:"ParentProcPath,omitempty" name:"ParentProcPath"`
+
+	// 处理状态：0-待处理 2-白名单 3-已处理 4-已忽略
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 产生时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 主机名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 检测方法
+	DetectBy *uint64 `json:"DetectBy,omitempty" name:"DetectBy"`
+
+	// 进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PsTree *string `json:"PsTree,omitempty" name:"PsTree"`
+
+	// 建议方案
+	SuggestScheme *string `json:"SuggestScheme,omitempty" name:"SuggestScheme"`
+
+	// 描述
+	HarmDescribe *string `json:"HarmDescribe,omitempty" name:"HarmDescribe"`
+
+	// 标签
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 参考链接
+	References []*string `json:"References,omitempty" name:"References"`
+
+	// 主机外网ip
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 主机在线状态 OFFLINE  ONLINE
+	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
+
+	// 处理时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type ReverseShellRule struct {
@@ -25310,6 +25973,136 @@ type UsualPlace struct {
 
 	// 城市 ID。
 	CityId *uint64 `json:"CityId,omitempty" name:"CityId"`
+}
+
+type VertexDetail struct {
+	// 该节点类型，进程:1；网络:2；文件:3；ssh:4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 各节点类型用到的时间，2022-11-29 00:00:00 格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 告警信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmInfo []*AlarmInfo `json:"AlarmInfo,omitempty" name:"AlarmInfo"`
+
+	// 进程名，当该节点为进程时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcName *string `json:"ProcName,omitempty" name:"ProcName"`
+
+	// 命令行，当该节点为进程时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmdLine *string `json:"CmdLine,omitempty" name:"CmdLine"`
+
+	// 进程id，当该节点为进程时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pid *string `json:"Pid,omitempty" name:"Pid"`
+
+	// 文件md5，当该节点为文件时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 文件写入内容，当该节点为文件时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 文件路径，当该节点为文件时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 文件创建时间，当该节点为文件时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileCreateTime *string `json:"FileCreateTime,omitempty" name:"FileCreateTime"`
+
+	// 请求目的地址，当该节点为网络时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 目标端口，当该节点为网络时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstPort *uint64 `json:"DstPort,omitempty" name:"DstPort"`
+
+	// 登录源ip，当该节点为ssh时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcIP *string `json:"SrcIP,omitempty" name:"SrcIP"`
+
+	// 登录用户名用户组，当该节点为ssh时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 漏洞名称，当该节点为漏洞时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulName *string `json:"VulName,omitempty" name:"VulName"`
+
+	// 漏洞利用时间，当该节点为漏洞时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulTime *string `json:"VulTime,omitempty" name:"VulTime"`
+
+	// http请求内容，当该节点为漏洞时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpContent *string `json:"HttpContent,omitempty" name:"HttpContent"`
+
+	// 漏洞利用者来源ip，当该节点为漏洞时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulSrcIP *string `json:"VulSrcIP,omitempty" name:"VulSrcIP"`
+
+	// 点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VertexId *string `json:"VertexId,omitempty" name:"VertexId"`
+}
+
+type VertexInfo struct {
+	// 该结点类型，进程:1；网络:2；文件:3；ssh:4；
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 该节点包含的vid
+	Vid *string `json:"Vid,omitempty" name:"Vid"`
+
+	// 该节点的父节点vid
+	ParentVid *string `json:"ParentVid,omitempty" name:"ParentVid"`
+
+	// 是否叶子
+	IsLeaf *bool `json:"IsLeaf,omitempty" name:"IsLeaf"`
+
+	// 进程名，当Type=1时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcNamePrefix *string `json:"ProcNamePrefix,omitempty" name:"ProcNamePrefix"`
+
+	// 进程名md5，当Type=1时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcNameMd5 *string `json:"ProcNameMd5,omitempty" name:"ProcNameMd5"`
+
+	// 命令行，当Type=1时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmdLinePrefix *string `json:"CmdLinePrefix,omitempty" name:"CmdLinePrefix"`
+
+	// 命令行md5，当Type=1时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmdLineMd5 *string `json:"CmdLineMd5,omitempty" name:"CmdLineMd5"`
+
+	// 文件路径，当Type=3时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePathPrefix *string `json:"FilePathPrefix,omitempty" name:"FilePathPrefix"`
+
+	// 请求目的地址，当Type=2时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressPrefix *string `json:"AddressPrefix,omitempty" name:"AddressPrefix"`
+
+	// 是否漏洞节点
+	IsWeDetect *bool `json:"IsWeDetect,omitempty" name:"IsWeDetect"`
+
+	// 是否告警节点
+	IsAlarm *bool `json:"IsAlarm,omitempty" name:"IsAlarm"`
+
+	// 文件路径md5，当Type=3时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePathMd5 *string `json:"FilePathMd5,omitempty" name:"FilePathMd5"`
+
+	// 请求目的地址md5，当Type=2时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressMd5 *string `json:"AddressMd5,omitempty" name:"AddressMd5"`
 }
 
 type VulDetailInfo struct {

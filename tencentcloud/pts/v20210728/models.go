@@ -3748,10 +3748,22 @@ type Filter struct {
 	// 等于：0，不等于：1
 	Operator *int64 `json:"Operator,omitempty" name:"Operator"`
 
-	// 指标名
+	// 标签名，可选值包括：
+	// 1. method，请求方法名；
+	// 2. proto：协议名；
+	// 3. service：服务名；
+	// 4. status：响应状态码；
+	// 5. result：响应详情；
+	// 6. check：检查名。
 	LabelName *string `json:"LabelName,omitempty" name:"LabelName"`
 
-	// 指标值
+	// 标签值：
+	// 1. method：请求方法名，以 http 协议为例，method 为 GET、POST、PUT 等；
+	// 2. proto：协议名，以 http 协议为例，proto 为 HTTP/1.1、HTTP/2 等；
+	// 3. service：服务名，以 http 协议为例，service 为请求 url，如 http://httpbin.org/get 等；
+	// 4. status：响应状态码，以 http 协议为例，状态码包括 200、404、500 等；
+	// 5. result：响应详情，通过 result 判断请求成功或失败；请求正常，result 标签值为 ok；请求失败，result 标签携带错误码和描述；
+	// 6. check：检查名，标签值为用户设置的检查点名称。
 	LabelValue *string `json:"LabelValue,omitempty" name:"LabelValue"`
 }
 

@@ -954,7 +954,7 @@ func NewCreateImageProcessingTemplateResponse() (response *CreateImageProcessing
 }
 
 // CreateImageProcessingTemplate
-// 创建一个用户自定义的图片处理模板，数量上限：16。最多支持三次操作，例如：裁剪-缩略-裁剪。
+// 创建一个用户自定义的图片处理模板，数量上限：16。最多支持十次操作，例如：裁剪-缩略-裁剪-模糊-缩略-裁剪-缩略-裁剪-模糊-缩略。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -973,7 +973,7 @@ func (c *Client) CreateImageProcessingTemplate(request *CreateImageProcessingTem
 }
 
 // CreateImageProcessingTemplate
-// 创建一个用户自定义的图片处理模板，数量上限：16。最多支持三次操作，例如：裁剪-缩略-裁剪。
+// 创建一个用户自定义的图片处理模板，数量上限：16。最多支持十次操作，例如：裁剪-缩略-裁剪-模糊-缩略-裁剪-缩略-裁剪-模糊-缩略。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1212,7 +1212,7 @@ func NewCreateRebuildMediaTemplateResponse() (response *CreateRebuildMediaTempla
 }
 
 // CreateRebuildMediaTemplate
-// 创建音画质重生模版。
+// 创建音画质重生模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1222,7 +1222,7 @@ func (c *Client) CreateRebuildMediaTemplate(request *CreateRebuildMediaTemplateR
 }
 
 // CreateRebuildMediaTemplate
-// 创建音画质重生模版。
+// 创建音画质重生模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2728,7 +2728,7 @@ func NewDeleteRebuildMediaTemplateResponse() (response *DeleteRebuildMediaTempla
 }
 
 // DeleteRebuildMediaTemplate
-// 删除音画质重生模版。
+// 删除音画质重生模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2742,7 +2742,7 @@ func (c *Client) DeleteRebuildMediaTemplate(request *DeleteRebuildMediaTemplateR
 }
 
 // DeleteRebuildMediaTemplate
-// 删除音画质重生模版。
+// 删除音画质重生模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5216,7 +5216,7 @@ func NewDescribeRebuildMediaTemplatesResponse() (response *DescribeRebuildMediaT
 }
 
 // DescribeRebuildMediaTemplates
-// 获取音画质重生模版列表。
+// 获取音画质重生模板列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5231,7 +5231,7 @@ func (c *Client) DescribeRebuildMediaTemplates(request *DescribeRebuildMediaTemp
 }
 
 // DescribeRebuildMediaTemplates
-// 获取音画质重生模版列表。
+// 获取音画质重生模板列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7782,7 +7782,7 @@ func NewModifyRebuildMediaTemplateResponse() (response *ModifyRebuildMediaTempla
 }
 
 // ModifyRebuildMediaTemplate
-// 修改音画质重生模版。
+// 修改音画质重生模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7797,7 +7797,7 @@ func (c *Client) ModifyRebuildMediaTemplate(request *ModifyRebuildMediaTemplateR
 }
 
 // ModifyRebuildMediaTemplate
-// 修改音画质重生模版。
+// 修改音画质重生模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9330,7 +9330,7 @@ func NewRebuildMediaByTemplateResponse() (response *RebuildMediaByTemplateRespon
 }
 
 // RebuildMediaByTemplate
-// 使用模版发起音画质重生。
+// 使用模板发起音画质重生。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9340,7 +9340,7 @@ func (c *Client) RebuildMediaByTemplate(request *RebuildMediaByTemplateRequest) 
 }
 
 // RebuildMediaByTemplate
-// 使用模版发起音画质重生。
+// 使用模板发起音画质重生。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
