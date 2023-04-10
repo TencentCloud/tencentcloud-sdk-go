@@ -2123,6 +2123,64 @@ func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *Scale
     return
 }
 
+func NewStartStopServiceOrMonitorRequest() (request *StartStopServiceOrMonitorRequest) {
+    request = &StartStopServiceOrMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "StartStopServiceOrMonitor")
+    
+    
+    return
+}
+
+func NewStartStopServiceOrMonitorResponse() (response *StartStopServiceOrMonitorResponse) {
+    response = &StartStopServiceOrMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartStopServiceOrMonitor
+// 用于启动或停止监控或服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER_INVALIDJOBFLOW = "InvalidParameter.InvalidJobFlow"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) StartStopServiceOrMonitor(request *StartStopServiceOrMonitorRequest) (response *StartStopServiceOrMonitorResponse, err error) {
+    return c.StartStopServiceOrMonitorWithContext(context.Background(), request)
+}
+
+// StartStopServiceOrMonitor
+// 用于启动或停止监控或服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER_INVALIDJOBFLOW = "InvalidParameter.InvalidJobFlow"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) StartStopServiceOrMonitorWithContext(ctx context.Context, request *StartStopServiceOrMonitorRequest) (response *StartStopServiceOrMonitorResponse, err error) {
+    if request == nil {
+        request = NewStartStopServiceOrMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartStopServiceOrMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartStopServiceOrMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSyncPodStateRequest() (request *SyncPodStateRequest) {
     request = &SyncPodStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2295,6 +2353,58 @@ func (c *Client) SyncPodStateWithContext(ctx context.Context, request *SyncPodSt
     request.SetContext(ctx)
     
     response = NewSyncPodStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminateClusterNodesRequest() (request *TerminateClusterNodesRequest) {
+    request = &TerminateClusterNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "TerminateClusterNodes")
+    
+    
+    return
+}
+
+func NewTerminateClusterNodesResponse() (response *TerminateClusterNodesResponse) {
+    response = &TerminateClusterNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TerminateClusterNodes
+// 销毁集群节点
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) TerminateClusterNodes(request *TerminateClusterNodesRequest) (response *TerminateClusterNodesResponse, err error) {
+    return c.TerminateClusterNodesWithContext(context.Background(), request)
+}
+
+// TerminateClusterNodes
+// 销毁集群节点
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) TerminateClusterNodesWithContext(ctx context.Context, request *TerminateClusterNodesRequest) (response *TerminateClusterNodesResponse, err error) {
+    if request == nil {
+        request = NewTerminateClusterNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminateClusterNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminateClusterNodesResponse()
     err = c.Send(request, response)
     return
 }

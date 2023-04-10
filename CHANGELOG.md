@@ -1,3 +1,276 @@
+# Release v1.0.634
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 77 次发布
+
+发布时间：2023-04-10 01:12:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DatahubTopicResp](https://cloud.tencent.com/document/api/597/40861#DatahubTopicResp)
+
+	* 新增成员：TopicId
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 87 次发布
+
+发布时间：2023-04-10 01:13:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+
+	* 新增入参：IdleConnectTimeout
+
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：IdleConnectTimeout
+
+
+修改数据结构：
+
+* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
+
+	* 新增成员：IdleConnectTimeout
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 39 次发布
+
+发布时间：2023-04-10 01:14:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTopic](https://cloud.tencent.com/document/api/614/56456)
+
+	* 新增入参：Describes, HotPeriod
+
+* [ModifyTopic](https://cloud.tencent.com/document/api/614/56453)
+
+	* 新增入参：Describes, HotPeriod
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 78 次发布
+
+发布时间：2023-04-10 01:18:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFileTamperEvents](https://cloud.tencent.com/document/api/296/90008)
+
+新增数据结构：
+
+* [FileTamperEvent](https://cloud.tencent.com/document/api/296/19867#FileTamperEvent)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 14 次发布
+
+发布时间：2023-04-10 01:23:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteDBDiagReportTasks](https://cloud.tencent.com/document/api/1130/90009)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 45 次发布
+
+发布时间：2023-04-10 01:29:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StartStopServiceOrMonitor](https://cloud.tencent.com/document/api/589/90011)
+* [TerminateClusterNodes](https://cloud.tencent.com/document/api/589/90010)
+
+新增数据结构：
+
+* [ComponentBasicRestartInfo](https://cloud.tencent.com/document/api/589/33981#ComponentBasicRestartInfo)
+* [OpScope](https://cloud.tencent.com/document/api/589/33981#OpScope)
+* [ServiceBasicRestartInfo](https://cloud.tencent.com/document/api/589/33981#ServiceBasicRestartInfo)
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 38 次发布
+
+发布时间：2023-04-10 01:32:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteProxyGroup](https://cloud.tencent.com/document/api/608/36947)
+
+	* <font color="#dd0000">**修改入参**：</font>GroupId
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 21 次发布
+
+发布时间：2023-04-10 01:39:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetRooms](https://cloud.tencent.com/document/api/1639/90012)
+
+新增数据结构：
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 86 次发布
+
+发布时间：2023-04-10 01:43:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePrometheusGlobalConfig](https://cloud.tencent.com/document/api/248/86039)
+
+	* 新增出参：Probes
+
+
+新增数据结构：
+
+* [Targets](https://cloud.tencent.com/document/api/248/30354#Targets)
+
+修改数据结构：
+
+* [PrometheusConfigItem](https://cloud.tencent.com/document/api/248/30354#PrometheusConfigItem)
+
+	* 新增成员：Targets
+
+* [PrometheusRecordRuleYamlItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRecordRuleYamlItem)
+
+	* 新增成员：Status, Id, Count
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 93 次发布
+
+发布时间：2023-04-10 01:46:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SmartStructuralOCRV2](https://cloud.tencent.com/document/api/866/90013)
+
+新增数据结构：
+
+* [GroupInfo](https://cloud.tencent.com/document/api/866/33527#GroupInfo)
+* [ItemInfo](https://cloud.tencent.com/document/api/866/33527#ItemInfo)
+* [Key](https://cloud.tencent.com/document/api/866/33527#Key)
+* [LineInfo](https://cloud.tencent.com/document/api/866/33527#LineInfo)
+* [Value](https://cloud.tencent.com/document/api/866/33527#Value)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 24 次发布
+
+发布时间：2023-04-10 01:49:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeReleaseFileSign](https://cloud.tencent.com/document/api/1464/69216)
+
+	* 新增入参：FileType
+
+
+
+
+## 文旅客情平台(tourism) 版本：2023-02-15
+
+### 第 1 次发布
+
+发布时间：2023-04-07 10:20:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDrawResourceList](https://cloud.tencent.com/document/api/1684/89961)
+
+新增数据结构：
+
+* [ResourceDrawListType](https://cloud.tencent.com/document/api/1684/89962#ResourceDrawListType)
+
+
+
 # Release v1.0.633
 
 ## 验证码(captcha) 版本：2019-07-22

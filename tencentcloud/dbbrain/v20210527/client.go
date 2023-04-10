@@ -745,6 +745,80 @@ func (c *Client) CreateSqlFilterWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewDeleteDBDiagReportTasksRequest() (request *DeleteDBDiagReportTasksRequest) {
+    request = &DeleteDBDiagReportTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DeleteDBDiagReportTasks")
+    
+    
+    return
+}
+
+func NewDeleteDBDiagReportTasksResponse() (response *DeleteDBDiagReportTasksResponse) {
+    response = &DeleteDBDiagReportTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDBDiagReportTasks
+// 根据任务id删除健康报告生成任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDBDiagReportTasks(request *DeleteDBDiagReportTasksRequest) (response *DeleteDBDiagReportTasksResponse, err error) {
+    return c.DeleteDBDiagReportTasksWithContext(context.Background(), request)
+}
+
+// DeleteDBDiagReportTasks
+// 根据任务id删除健康报告生成任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteDBDiagReportTasksWithContext(ctx context.Context, request *DeleteDBDiagReportTasksRequest) (response *DeleteDBDiagReportTasksResponse, err error) {
+    if request == nil {
+        request = NewDeleteDBDiagReportTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDBDiagReportTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDBDiagReportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSecurityAuditLogExportTasksRequest() (request *DeleteSecurityAuditLogExportTasksRequest) {
     request = &DeleteSecurityAuditLogExportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

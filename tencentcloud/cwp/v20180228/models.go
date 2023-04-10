@@ -12406,6 +12406,103 @@ func (r *DescribeExportMachinesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFileTamperEventsRequestParams struct {
+	// 过滤条件。
+	// <li>Status - String - 是否必填：否 - 处理状态  0 -- 待处理 1 -- 已加白 2 -- 已删除 3 - 已忽略</li>
+	// <li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
+	// <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
+	// <li>RuleCategory- string - 是否必填：否 - 规则类别 0 系统规则 1 自定义规则</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式 ASC,DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段 CreateTime、ModifyTime
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeFileTamperEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>Status - String - 是否必填：否 - 处理状态  0 -- 待处理 1 -- 已加白 2 -- 已删除 3 - 已忽略</li>
+	// <li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
+	// <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
+	// <li>RuleCategory- string - 是否必填：否 - 规则类别 0 系统规则 1 自定义规则</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式 ASC,DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段 CreateTime、ModifyTime
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeFileTamperEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileTamperEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileTamperEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFileTamperEventsResponseParams struct {
+	// 核心文件事件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*FileTamperEvent `json:"List,omitempty" name:"List"`
+
+	// 数据总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFileTamperEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFileTamperEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeFileTamperEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileTamperEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGeneralStatRequestParams struct {
 	// 云主机类型。
 	// <li>CVM：表示腾讯云服务器</li>
@@ -21472,6 +21569,123 @@ func (r *ExportWebPageEventListResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExportWebPageEventListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FileTamperEvent struct {
+	// 机器名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 机器IP
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 发生时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最近发生时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 事件id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 主机uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// cvm id
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 事件类型/动作  0 -- 告警
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 进程路径
+	ProcessExe *string `json:"ProcessExe,omitempty" name:"ProcessExe"`
+
+	// 进程参数
+	ProcessArgv *string `json:"ProcessArgv,omitempty" name:"ProcessArgv"`
+
+	// 目标文件路径
+	Target *string `json:"Target,omitempty" name:"Target"`
+
+	// 处理状态  0 -- 待处理 1 -- 已加白 2 -- 已删除 3 - 已忽略 4-已手动处理
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 事件产生次数
+	EventCount *uint64 `json:"EventCount,omitempty" name:"EventCount"`
+
+	// 规则id
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 事件详情: json格式
+	Pstree *string `json:"Pstree,omitempty" name:"Pstree"`
+
+	// 规则类型 0系统规则 1自定义规则
+	RuleCategory *uint64 `json:"RuleCategory,omitempty" name:"RuleCategory"`
+
+	// 主机在线信息 ONLINE、OFFLINE
+	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
+
+	// 危害描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 修护建议
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 内网ip
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 进程权限
+	ExePermission *string `json:"ExePermission,omitempty" name:"ExePermission"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户组
+	UserGroup *string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// 进程名
+	ExeMd5 *string `json:"ExeMd5,omitempty" name:"ExeMd5"`
+
+	// 进程文件大小
+	ExeSize *uint64 `json:"ExeSize,omitempty" name:"ExeSize"`
+
+	// 进程执行时长
+	ExeTime *uint64 `json:"ExeTime,omitempty" name:"ExeTime"`
+
+	// 目标文件大小
+	TargetSize *uint64 `json:"TargetSize,omitempty" name:"TargetSize"`
+
+	// 目标文件权限
+	TargetPermission *string `json:"TargetPermission,omitempty" name:"TargetPermission"`
+
+	// 目标文件更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetModifyTime *string `json:"TargetModifyTime,omitempty" name:"TargetModifyTime"`
+
+	// 目标文件创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetCreatTime *string `json:"TargetCreatTime,omitempty" name:"TargetCreatTime"`
+
+	// 进程pid
+	ExePid *uint64 `json:"ExePid,omitempty" name:"ExePid"`
+
+	// 文件名称
+	TargetName *string `json:"TargetName,omitempty" name:"TargetName"`
+
+	// 参考链接
+	Reference *string `json:"Reference,omitempty" name:"Reference"`
+
+	// 风险等级 0：无， 1: 高危， 2:中危， 3: 低危
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 进程名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExeName *string `json:"ExeName,omitempty" name:"ExeName"`
+
+	//  主机额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type Filter struct {

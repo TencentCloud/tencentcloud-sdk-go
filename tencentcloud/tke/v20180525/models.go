@@ -176,7 +176,7 @@ type AddExistedInstancesRequestParams struct {
 	// 参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instace将使用默认配置。
 	InstanceAdvancedSettingsOverrides []*InstanceAdvancedSettings `json:"InstanceAdvancedSettingsOverrides,omitempty" name:"InstanceAdvancedSettingsOverrides"`
 
-	// 节点镜像（节点选项时，该参数是必传参数）
+	// 节点镜像
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 }
 
@@ -215,7 +215,7 @@ type AddExistedInstancesRequest struct {
 	// 参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instace将使用默认配置。
 	InstanceAdvancedSettingsOverrides []*InstanceAdvancedSettings `json:"InstanceAdvancedSettingsOverrides,omitempty" name:"InstanceAdvancedSettingsOverrides"`
 
-	// 节点镜像（节点选项时，该参数是必传参数）
+	// 节点镜像
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 }
 

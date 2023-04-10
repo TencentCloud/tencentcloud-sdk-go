@@ -3510,7 +3510,7 @@ type StartPublishCdnStreamRequestParams struct {
 	// 转推服务加入TRTC房间的机器人参数。
 	AgentParams *AgentParams `json:"AgentParams,omitempty" name:"AgentParams"`
 
-	// 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转吗费用。
+	// 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。
 	WithTranscoding *uint64 `json:"WithTranscoding,omitempty" name:"WithTranscoding"`
 
 	// 转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
@@ -3528,7 +3528,7 @@ type StartPublishCdnStreamRequestParams struct {
 	// 混流SEI参数
 	SeiParams *McuSeiParams `json:"SeiParams,omitempty" name:"SeiParams"`
 
-	// 回推房间信息，和转推CDN参数必须要有一个。
+	// 回推房间信息，和转推CDN参数必须要有一个。注：回推房间需使用特殊的SDK版本，如您有需求，请联系腾讯云技术支持。
 	FeedBackRoomParams []*McuFeedBackRoomParams `json:"FeedBackRoomParams,omitempty" name:"FeedBackRoomParams"`
 }
 
@@ -3547,7 +3547,7 @@ type StartPublishCdnStreamRequest struct {
 	// 转推服务加入TRTC房间的机器人参数。
 	AgentParams *AgentParams `json:"AgentParams,omitempty" name:"AgentParams"`
 
-	// 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转吗费用。
+	// 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。
 	WithTranscoding *uint64 `json:"WithTranscoding,omitempty" name:"WithTranscoding"`
 
 	// 转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
@@ -3565,7 +3565,7 @@ type StartPublishCdnStreamRequest struct {
 	// 混流SEI参数
 	SeiParams *McuSeiParams `json:"SeiParams,omitempty" name:"SeiParams"`
 
-	// 回推房间信息，和转推CDN参数必须要有一个。
+	// 回推房间信息，和转推CDN参数必须要有一个。注：回推房间需使用特殊的SDK版本，如您有需求，请联系腾讯云技术支持。
 	FeedBackRoomParams []*McuFeedBackRoomParams `json:"FeedBackRoomParams,omitempty" name:"FeedBackRoomParams"`
 }
 

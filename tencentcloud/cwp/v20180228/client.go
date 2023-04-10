@@ -6925,6 +6925,60 @@ func (c *Client) DescribeExportMachinesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeFileTamperEventsRequest() (request *DescribeFileTamperEventsRequest) {
+    request = &DescribeFileTamperEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeFileTamperEvents")
+    
+    
+    return
+}
+
+func NewDescribeFileTamperEventsResponse() (response *DescribeFileTamperEventsResponse) {
+    response = &DescribeFileTamperEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFileTamperEvents
+// 核心文件监控事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFileTamperEvents(request *DescribeFileTamperEventsRequest) (response *DescribeFileTamperEventsResponse, err error) {
+    return c.DescribeFileTamperEventsWithContext(context.Background(), request)
+}
+
+// DescribeFileTamperEvents
+// 核心文件监控事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFileTamperEventsWithContext(ctx context.Context, request *DescribeFileTamperEventsRequest) (response *DescribeFileTamperEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileTamperEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileTamperEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileTamperEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGeneralStatRequest() (request *DescribeGeneralStatRequest) {
     request = &DescribeGeneralStatRequest{
         BaseRequest: &tchttp.BaseRequest{},

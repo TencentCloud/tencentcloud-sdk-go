@@ -2985,6 +2985,94 @@ func (r *GetRoomMessageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetRoomsRequestParams struct {
+	// 低代码平台的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 开始时间。默认以当前时间减去半小时作为开始时间。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。默认以当前时间加上半小时作为结束时间。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页查询当前页数，从1开始递增
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 默认是10条
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type GetRoomsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码平台的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 开始时间。默认以当前时间减去半小时作为开始时间。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。默认以当前时间加上半小时作为结束时间。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页查询当前页数，从1开始递增
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 默认是10条
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetRoomsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRoomsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Page")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRoomsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetRoomsResponseParams struct {
+	// 总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 房间列表
+	Rooms []*RoomItem `json:"Rooms,omitempty" name:"Rooms"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetRoomsResponse struct {
+	*tchttp.BaseResponse
+	Response *GetRoomsResponseParams `json:"Response"`
+}
+
+func (r *GetRoomsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetRoomsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetWatermarkRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -3834,6 +3922,54 @@ type RoomInfo struct {
 
 	// 房间绑定的群组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+type RoomItem struct {
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 房间ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 房间状态。0 未开始 ；1进行中  ；2 已结束
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 实际开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealStartTime *uint64 `json:"RealStartTime,omitempty" name:"RealStartTime"`
+
+	// 实际结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealEndTime *uint64 `json:"RealEndTime,omitempty" name:"RealEndTime"`
+
+	// 分辨率。1 标清
+	// 2 高清
+	// 3 全高清
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 最大允许连麦人数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxRTCMember *uint64 `json:"MaxRTCMember,omitempty" name:"MaxRTCMember"`
+
+	// 房间录制地址。已废弃，使用新字段 RecordUrl
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplayUrl *string `json:"ReplayUrl,omitempty" name:"ReplayUrl"`
+
+	// 录制地址（协议为https)。仅在房间结束后存在。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
 }
 
 type SceneItem struct {

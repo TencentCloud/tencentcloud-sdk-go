@@ -254,6 +254,7 @@ import (
 	tmsv20200713 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20200713"
 	tmsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20201229"
 	tmtv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt/v20180321"
+	tourismv20230215 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tourism/v20230215"
 	trdpv20220726 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trdp/v20220726"
 	trpv20210515 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trp/v20210515"
 	trrov20220325 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trro/v20220325"
@@ -3321,6 +3322,19 @@ func TestTmtv20180321Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tmt_v20180321 client: %v", err)
+    }
+}
+
+func TestTourismv20230215Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tourismv20230215.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tourism_v20230215 client: %v", err)
     }
 }
 

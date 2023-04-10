@@ -180,7 +180,7 @@ type ClientConnection struct {
 
 // Predefined struct for user
 type CreateAccountUserRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 新账号名称。其格式要求如下：<ul><li>字符范围[1,32]。</li><li>可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“_”与短划线“-”。</li></ul>
@@ -202,7 +202,7 @@ type CreateAccountUserRequestParams struct {
 type CreateAccountUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 新账号名称。其格式要求如下：<ul><li>字符范围[1,32]。</li><li>可输入[A,Z]、[a,z]、[1,9]范围的字符以及下划线“_”与短划线“-”。</li></ul>
@@ -1023,14 +1023,14 @@ type DBInstancePrice struct {
 
 // Predefined struct for user
 type DescribeAccountUsersRequestParams struct {
-	// 实例ID。
+	// 指定待获取账号的实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeAccountUsersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 指定待获取账号的实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -1253,26 +1253,26 @@ func (r *DescribeBackupDownloadTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClientConnectionsRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 指定待查询的实例ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 单次请求返回的数量，最小值为1，最大值为1000，默认值为1000。
+	// 单次请求返回的数量。最小值为1，最大值为1000，默认值为1000。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为0。
+	// 偏移量，默认值为0。Offset=Limit*(页码-1)。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeClientConnectionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 指定待查询的实例ID，例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 单次请求返回的数量，最小值为1，最大值为1000，默认值为1000。
+	// 单次请求返回的数量。最小值为1，最大值为1000，默认值为1000。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，默认值为0。
+	// 偏移量，默认值为0。Offset=Limit*(页码-1)。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -1299,7 +1299,7 @@ func (r *DescribeClientConnectionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClientConnectionsResponseParams struct {
-	// 客户端连接信息，包括客户端IP和对应IP的连接数量。
+	// 客户端连接信息，包括客户端 IP 和对应 IP 的连接数量。
 	Clients []*ClientConnection `json:"Clients,omitempty" name:"Clients"`
 
 	// 满足条件的记录总条数，可用于分页查询。
@@ -1706,7 +1706,7 @@ func (r *DescribeDBInstanceNodePropertyResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
-	// 实例ID列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 实例 ID 列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>2：临时实例。</li><li>3：只读实例。</li><li>-1：正式实例、只读、灾备实例。</li></ul>
@@ -1758,7 +1758,7 @@ type DescribeDBInstancesRequestParams struct {
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	// 实例 ID 列表。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
 	// 实例类型。取值范围如下：<ul><li>0：所有实例。</li><li>1：正式实例。</li><li>2：临时实例。</li><li>3：只读实例。</li><li>-1：正式实例、只读、灾备实例。</li></ul>

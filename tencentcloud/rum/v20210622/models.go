@@ -5120,6 +5120,9 @@ func (r *DescribePvListResponse) FromJsonString(s string) error {
 type DescribeReleaseFileSignRequestParams struct {
 	// 超时时间，不填默认是 5 分钟
 	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+
+	// bucket类型，不填默认web，2:app
+	FileType *int64 `json:"FileType,omitempty" name:"FileType"`
 }
 
 type DescribeReleaseFileSignRequest struct {
@@ -5127,6 +5130,9 @@ type DescribeReleaseFileSignRequest struct {
 	
 	// 超时时间，不填默认是 5 分钟
 	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+
+	// bucket类型，不填默认web，2:app
+	FileType *int64 `json:"FileType,omitempty" name:"FileType"`
 }
 
 func (r *DescribeReleaseFileSignRequest) ToJsonString() string {
@@ -5142,6 +5148,7 @@ func (r *DescribeReleaseFileSignRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Timeout")
+	delete(f, "FileType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReleaseFileSignRequest has unknown keys!", "")
 	}

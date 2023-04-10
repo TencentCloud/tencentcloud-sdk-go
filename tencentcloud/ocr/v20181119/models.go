@@ -2823,6 +2823,11 @@ func (r *GetTaskStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GroupInfo struct {
+	// 每一行的元素
+	Groups []*LineInfo `json:"Groups,omitempty" name:"Groups"`
+}
+
 // Predefined struct for user
 type HKIDCardOCRRequestParams struct {
 	// 是否鉴伪。
@@ -3697,6 +3702,21 @@ type ItemCoord struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
+type ItemInfo struct {
+	// key信息组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *Key `json:"Key,omitempty" name:"Key"`
+
+	// Value信息组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *Value `json:"Value,omitempty" name:"Value"`
+}
+
+type Key struct {
+	// 自动识别的字段名称
+	AutoName *string `json:"AutoName,omitempty" name:"AutoName"`
+}
+
 type LicensePlateInfo struct {
 	// 识别出的车牌号码。
 	Number *string `json:"Number,omitempty" name:"Number"`
@@ -3799,6 +3819,11 @@ func (r *LicensePlateOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *LicensePlateOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type LineInfo struct {
+	// 每行的一个元素
+	Lines []*ItemInfo `json:"Lines,omitempty" name:"Lines"`
 }
 
 // Predefined struct for user
@@ -7144,6 +7169,113 @@ func (r *SmartStructuralOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SmartStructuralOCRV2RequestParams struct {
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 自定义结构化功能需返回的字段名称，例：
+	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
+	// ItemNames=["姓名","性别"]
+	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`
+}
+
+type SmartStructuralOCRV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 自定义结构化功能需返回的字段名称，例：
+	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
+	// ItemNames=["姓名","性别"]
+	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`
+}
+
+func (r *SmartStructuralOCRV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SmartStructuralOCRV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	delete(f, "ItemNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralOCRV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SmartStructuralOCRV2ResponseParams struct {
+	// 图片旋转角度(角度制)，文本的水平方向
+	// 为 0；顺时针为正，逆时针为负
+	Angle *float64 `json:"Angle,omitempty" name:"Angle"`
+
+	// 配置结构化文本信息
+	StructuralList []*GroupInfo `json:"StructuralList,omitempty" name:"StructuralList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SmartStructuralOCRV2Response struct {
+	*tchttp.BaseResponse
+	Response *SmartStructuralOCRV2ResponseParams `json:"Response"`
+}
+
+func (r *SmartStructuralOCRV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SmartStructuralOCRV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StructuralItem struct {
 	// 识别出的字段名称(关键字)。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -8163,6 +8295,15 @@ type UsedVehicleInvoiceInfo struct {
 
 	// 二手车市场电话
 	MarketTel *string `json:"MarketTel,omitempty" name:"MarketTel"`
+}
+
+type Value struct {
+	// 自动识别的字段内容
+	AutoContent *string `json:"AutoContent,omitempty" name:"AutoContent"`
+
+	// 四点坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Coord *Polygon `json:"Coord,omitempty" name:"Coord"`
 }
 
 type VatInvoice struct {

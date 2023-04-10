@@ -4384,10 +4384,14 @@ type DescribeOverviewL7DataRequestParams struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 查询的指标，取值有：
-	// <li>l7Flow_outFlux: 访问流量；</li>
+	// <li>l7Flow_outFlux: Edegone响应流量；</li>
+	// <li>l7Flow_inFlux: Edgeone请求流量；</li>
+	// <li>l7Flow_outBandwidth: Edegone响应带宽；</li>
+	// <li>l7Flow_inBandwidth: Edegone请求带宽；</li>
+	// <li>l7Flow_hit_outFlux: 缓存命中流量；</li>
 	// <li>l7Flow_request: 访问请求数；</li>
-	// <li>l7Flow_outBandwidth: 访问带宽；</li>
-	// <li>l7Flow_hit_outFlux: 缓存命中流量。</li>
+	// <li>l7Flow_flux: 访问请求上行+下行流量；</li>
+	// <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 站点集合。
@@ -4434,10 +4438,14 @@ type DescribeOverviewL7DataRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 查询的指标，取值有：
-	// <li>l7Flow_outFlux: 访问流量；</li>
+	// <li>l7Flow_outFlux: Edegone响应流量；</li>
+	// <li>l7Flow_inFlux: Edgeone请求流量；</li>
+	// <li>l7Flow_outBandwidth: Edegone响应带宽；</li>
+	// <li>l7Flow_inBandwidth: Edegone请求带宽；</li>
+	// <li>l7Flow_hit_outFlux: 缓存命中流量；</li>
 	// <li>l7Flow_request: 访问请求数；</li>
-	// <li>l7Flow_outBandwidth: 访问带宽；</li>
-	// <li>l7Flow_hit_outFlux: 缓存命中流量。</li>
+	// <li>l7Flow_flux: 访问请求上行+下行流量；</li>
+	// <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 站点集合。
@@ -5295,9 +5303,13 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 指标列表，取值有:
-	// <li>l7Flow_outFlux: 访问流量；</li>
+	// <li>l7Flow_outFlux: Edgeone响应流量；</li>
+	// <li>l7Flow_inFlux: Edgeone请求流量；</li>
+	// <li>l7Flow_outBandwidth: Edgeone响应带宽；</li>
+	// <li>l7Flow_inBandwidth：Edgeone请求带宽；</li>
 	// <li>l7Flow_request: 访问请求数；</li>
-	// <li>l7Flow_outBandwidth: 访问带宽。</li>
+	// <li>l7Flow_flux: 访问请求上行+下行流量；</li>
+	// <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 站点集合。
@@ -5348,9 +5360,13 @@ type DescribeTimingL7AnalysisDataRequest struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 指标列表，取值有:
-	// <li>l7Flow_outFlux: 访问流量；</li>
+	// <li>l7Flow_outFlux: Edgeone响应流量；</li>
+	// <li>l7Flow_inFlux: Edgeone请求流量；</li>
+	// <li>l7Flow_outBandwidth: Edgeone响应带宽；</li>
+	// <li>l7Flow_inBandwidth：Edgeone请求带宽；</li>
 	// <li>l7Flow_request: 访问请求数；</li>
-	// <li>l7Flow_outBandwidth: 访问带宽。</li>
+	// <li>l7Flow_flux: 访问请求上行+下行流量；</li>
+	// <li>l7Flow_bandwidth：访问请求上行+下行带宽。</li>
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 站点集合。
@@ -5933,7 +5949,7 @@ type DescribeTopL7CacheDataRequestParams struct {
 	// 站点id集合，不填默认选择全部站点。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// 查询前多少个数据，不填默认默认为10， 表示查询前top 10的数据。
+	// 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，详细的过滤条件如下：
@@ -5979,7 +5995,7 @@ type DescribeTopL7CacheDataRequest struct {
 	// 站点id集合，不填默认选择全部站点。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// 查询前多少个数据，不填默认默认为10， 表示查询前top 10的数据。
+	// 查询前多少个数据，最大值为1000，不填默认默认为10， 表示查询前top 10的数据。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，详细的过滤条件如下：

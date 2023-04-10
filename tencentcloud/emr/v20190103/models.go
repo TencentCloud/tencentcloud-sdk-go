@@ -497,6 +497,16 @@ type ClusterSetting struct {
 	RemoteTcpDefaultPort *bool `json:"RemoteTcpDefaultPort,omitempty" name:"RemoteTcpDefaultPort"`
 }
 
+type ComponentBasicRestartInfo struct {
+	// 进程名，必填，如NameNode
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
+
+	// 操作的IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpList []*string `json:"IpList,omitempty" name:"IpList"`
+}
+
 type Configuration struct {
 	// 配置文件名，支持SPARK、HIVE、HDFS、YARN的部分配置文件自定义。
 	Classification *string `json:"Classification,omitempty" name:"Classification"`
@@ -3731,6 +3741,12 @@ type NodeResourceSpec struct {
 	LocalDataDisk []*DiskSpecInfo `json:"LocalDataDisk,omitempty" name:"LocalDataDisk"`
 }
 
+type OpScope struct {
+	// 操作范围，要操作的服务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceInfoList []*ServiceBasicRestartInfo `json:"ServiceInfoList,omitempty" name:"ServiceInfoList"`
+}
+
 type OutterResource struct {
 	// 规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5098,6 +5114,14 @@ type SearchItem struct {
 	SearchValue *string `json:"SearchValue,omitempty" name:"SearchValue"`
 }
 
+type ServiceBasicRestartInfo struct {
+	// 服务名，必填，如HDFS
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 如果没传，则表示所有进程
+	ComponentInfoList []*ComponentBasicRestartInfo `json:"ComponentInfoList,omitempty" name:"ComponentInfoList"`
+}
+
 type ShortNodeInfo struct {
 	// 节点类型，Master/Core/Task/Router/Common
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5114,6 +5138,82 @@ type SoftDependInfo struct {
 
 	// 是否必选
 	Required *bool `json:"Required,omitempty" name:"Required"`
+}
+
+// Predefined struct for user
+type StartStopServiceOrMonitorRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 操作类型，当前支持
+	// <li>StartService：启动服务</li>
+	// <li>StopService：停止服务</li>
+	// <li>StartMonitor：退出维护</li>
+	// <li>StopMonitor：进入维护</li>
+	OpType *string `json:"OpType,omitempty" name:"OpType"`
+
+	// 操作范围
+	OpScope *OpScope `json:"OpScope,omitempty" name:"OpScope"`
+}
+
+type StartStopServiceOrMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 操作类型，当前支持
+	// <li>StartService：启动服务</li>
+	// <li>StopService：停止服务</li>
+	// <li>StartMonitor：退出维护</li>
+	// <li>StopMonitor：进入维护</li>
+	OpType *string `json:"OpType,omitempty" name:"OpType"`
+
+	// 操作范围
+	OpScope *OpScope `json:"OpScope,omitempty" name:"OpScope"`
+}
+
+func (r *StartStopServiceOrMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartStopServiceOrMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "OpType")
+	delete(f, "OpScope")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStopServiceOrMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartStopServiceOrMonitorResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartStopServiceOrMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *StartStopServiceOrMonitorResponseParams `json:"Response"`
+}
+
+func (r *StartStopServiceOrMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartStopServiceOrMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Step struct {
@@ -5202,6 +5302,103 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+// Predefined struct for user
+type TerminateClusterNodesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 销毁资源列表
+	CvmInstanceIds []*string `json:"CvmInstanceIds,omitempty" name:"CvmInstanceIds"`
+
+	// 销毁节点类型取值范围：
+	//   <li>MASTER</li>
+	//   <li>TASK</li>
+	//   <li>CORE</li>
+	//   <li>ROUTER</li>
+	NodeFlag *string `json:"NodeFlag,omitempty" name:"NodeFlag"`
+
+	// 优雅缩容开关
+	//   <li>true:开启</li>
+	//   <li>false:不开启</li>
+	GraceDownFlag *bool `json:"GraceDownFlag,omitempty" name:"GraceDownFlag"`
+
+	// 优雅缩容等待时间,时间范围60到1800  单位秒
+	GraceDownTime *int64 `json:"GraceDownTime,omitempty" name:"GraceDownTime"`
+}
+
+type TerminateClusterNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 销毁资源列表
+	CvmInstanceIds []*string `json:"CvmInstanceIds,omitempty" name:"CvmInstanceIds"`
+
+	// 销毁节点类型取值范围：
+	//   <li>MASTER</li>
+	//   <li>TASK</li>
+	//   <li>CORE</li>
+	//   <li>ROUTER</li>
+	NodeFlag *string `json:"NodeFlag,omitempty" name:"NodeFlag"`
+
+	// 优雅缩容开关
+	//   <li>true:开启</li>
+	//   <li>false:不开启</li>
+	GraceDownFlag *bool `json:"GraceDownFlag,omitempty" name:"GraceDownFlag"`
+
+	// 优雅缩容等待时间,时间范围60到1800  单位秒
+	GraceDownTime *int64 `json:"GraceDownTime,omitempty" name:"GraceDownTime"`
+}
+
+func (r *TerminateClusterNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateClusterNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CvmInstanceIds")
+	delete(f, "NodeFlag")
+	delete(f, "GraceDownFlag")
+	delete(f, "GraceDownTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateClusterNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateClusterNodesResponseParams struct {
+	// 缩容流程ID。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type TerminateClusterNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateClusterNodesResponseParams `json:"Response"`
+}
+
+func (r *TerminateClusterNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateClusterNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

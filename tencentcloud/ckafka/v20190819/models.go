@@ -2820,6 +2820,10 @@ type DatahubTopicDTO struct {
 type DatahubTopicResp struct {
 	// Topic名称
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// TopicId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 }
 
 type DateParam struct {

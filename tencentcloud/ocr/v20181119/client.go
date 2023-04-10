@@ -5523,6 +5523,76 @@ func (c *Client) SmartStructuralOCRWithContext(ctx context.Context, request *Sma
     return
 }
 
+func NewSmartStructuralOCRV2Request() (request *SmartStructuralOCRV2Request) {
+    request = &SmartStructuralOCRV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "SmartStructuralOCRV2")
+    
+    
+    return
+}
+
+func NewSmartStructuralOCRV2Response() (response *SmartStructuralOCRV2Response) {
+    response = &SmartStructuralOCRV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SmartStructuralOCRV2
+// 本接口支持识别并提取各类证照、票据、表单、合同等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SmartStructuralOCRV2(request *SmartStructuralOCRV2Request) (response *SmartStructuralOCRV2Response, err error) {
+    return c.SmartStructuralOCRV2WithContext(context.Background(), request)
+}
+
+// SmartStructuralOCRV2
+// 本接口支持识别并提取各类证照、票据、表单、合同等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SmartStructuralOCRV2WithContext(ctx context.Context, request *SmartStructuralOCRV2Request) (response *SmartStructuralOCRV2Response, err error) {
+    if request == nil {
+        request = NewSmartStructuralOCRV2Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SmartStructuralOCRV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSmartStructuralOCRV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTableOCRRequest() (request *TableOCRRequest) {
     request = &TableOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

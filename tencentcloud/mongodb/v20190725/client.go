@@ -118,7 +118,7 @@ func NewCreateAccountUserResponse() (response *CreateAccountUserResponse) {
 }
 
 // CreateAccountUser
-// 本接口(CreateAccountUser)用于创建mongodb实例账号。
+// 本接口（CreateAccountUser）用于自定义实例访问账号。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -131,7 +131,7 @@ func (c *Client) CreateAccountUser(request *CreateAccountUserRequest) (response 
 }
 
 // CreateAccountUser
-// 本接口(CreateAccountUser)用于创建mongodb实例账号。
+// 本接口（CreateAccountUser）用于自定义实例访问账号。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -452,7 +452,7 @@ func NewDescribeAccountUsersResponse() (response *DescribeAccountUsersResponse) 
 }
 
 // DescribeAccountUsers
-// 本接口(DescribeAccountUsers)用于获取当前实例的全部账号。
+// 本接口（DescribeAccountUsers）用于获取当前实例的全部账号。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -462,7 +462,7 @@ func (c *Client) DescribeAccountUsers(request *DescribeAccountUsersRequest) (res
 }
 
 // DescribeAccountUsers
-// 本接口(DescribeAccountUsers)用于获取当前实例的全部账号。
+// 本接口（DescribeAccountUsers）用于获取当前实例的全部账号。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -610,7 +610,7 @@ func NewDescribeClientConnectionsResponse() (response *DescribeClientConnections
 }
 
 // DescribeClientConnections
-// 本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。
+// 本接口（DescribeClientConnections）用于查询实例客户端连接信息，包括连接 IP 和连接数量。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
@@ -623,7 +623,7 @@ func (c *Client) DescribeClientConnections(request *DescribeClientConnectionsReq
 }
 
 // DescribeClientConnections
-// 本接口(DescribeClientConnections)用于查询实例客户端连接信息，包括连接IP和连接数量。
+// 本接口（DescribeClientConnections）用于查询实例客户端连接信息，包括连接 IP 和连接数量。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"

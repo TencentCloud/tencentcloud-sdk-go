@@ -8273,6 +8273,10 @@ type DescribePrometheusGlobalConfigResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RawJobs []*PrometheusConfigItem `json:"RawJobs,omitempty" name:"RawJobs"`
 
+	// Probes列表以及对应targets信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Probes []*PrometheusConfigItem `json:"Probes,omitempty" name:"Probes"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -12357,6 +12361,10 @@ type PrometheusConfigItem struct {
 	// 用于出参，如果该配置来至模板，则为模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 目标数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Targets *Targets `json:"Targets,omitempty" name:"Targets"`
 }
 
 type PrometheusInstanceGrantInfo struct {
@@ -12698,6 +12706,18 @@ type PrometheusRecordRuleYamlItem struct {
 	// 该聚合规则如果来源于用户集群crd资源定义，则ClusterId为所属集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type PrometheusRuleKV struct {
@@ -13440,6 +13460,24 @@ type TagInstance struct {
 	// 标签状态，2：标签存在，1：标签不存在
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagStatus *int64 `json:"TagStatus,omitempty" name:"TagStatus"`
+}
+
+type Targets struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 在线数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Up *uint64 `json:"Up,omitempty" name:"Up"`
+
+	// 不在线数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Down *uint64 `json:"Down,omitempty" name:"Down"`
+
+	// 未知状态数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unknown *uint64 `json:"Unknown,omitempty" name:"Unknown"`
 }
 
 type TaskStepInfo struct {

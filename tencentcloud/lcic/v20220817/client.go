@@ -2487,6 +2487,74 @@ func (c *Client) GetRoomMessageWithContext(ctx context.Context, request *GetRoom
     return
 }
 
+func NewGetRoomsRequest() (request *GetRoomsRequest) {
+    request = &GetRoomsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "GetRooms")
+    
+    
+    return
+}
+
+func NewGetRoomsResponse() (response *GetRoomsResponse) {
+    response = &GetRoomsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetRooms
+// 获取房间列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetRooms(request *GetRoomsRequest) (response *GetRoomsResponse, err error) {
+    return c.GetRoomsWithContext(context.Background(), request)
+}
+
+// GetRooms
+// 获取房间列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetRoomsWithContext(ctx context.Context, request *GetRoomsRequest) (response *GetRoomsResponse, err error) {
+    if request == nil {
+        request = NewGetRoomsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetRooms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetRoomsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetWatermarkRequest() (request *GetWatermarkRequest) {
     request = &GetWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
