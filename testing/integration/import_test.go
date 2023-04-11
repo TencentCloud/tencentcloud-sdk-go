@@ -271,6 +271,7 @@ import (
 	vmsv20200902 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vms/v20200902"
 	vodv20180717 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod/v20180717"
 	vpcv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc/v20170312"
+	vrsv20200824 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vrs/v20200824"
 	wafv20180125 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf/v20180125"
 	wavv20210129 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wav/v20210129"
 	wedatav20210820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata/v20210820"
@@ -3543,6 +3544,19 @@ func TestVpcv20170312Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init vpc_v20170312 client: %v", err)
+    }
+}
+
+func TestVrsv20200824Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := vrsv20200824.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init vrs_v20200824 client: %v", err)
     }
 }
 

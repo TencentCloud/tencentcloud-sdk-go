@@ -126,6 +126,7 @@ func NewFeedRecommendResponse() (response *FeedRecommendResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) FeedRecommend(request *FeedRecommendRequest) (response *FeedRecommendResponse, err error) {
@@ -139,6 +140,7 @@ func (c *Client) FeedRecommend(request *FeedRecommendRequest) (response *FeedRec
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) FeedRecommendWithContext(ctx context.Context, request *FeedRecommendRequest) (response *FeedRecommendResponse, err error) {
@@ -182,6 +184,7 @@ func NewReportFeedBehaviorResponse() (response *ReportFeedBehaviorResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReportFeedBehavior(request *ReportFeedBehaviorRequest) (response *ReportFeedBehaviorResponse, err error) {
@@ -195,6 +198,7 @@ func (c *Client) ReportFeedBehavior(request *ReportFeedBehaviorRequest) (respons
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReportFeedBehaviorWithContext(ctx context.Context, request *ReportFeedBehaviorRequest) (response *ReportFeedBehaviorResponse, err error) {

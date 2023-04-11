@@ -239,6 +239,41 @@ type AssetSyncStatus struct {
 	InProcess *bool `json:"InProcess,omitempty" name:"InProcess"`
 }
 
+type AuditLogResult struct {
+	// 被审计会话的Sid
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 审计者的编号
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 审计动作发生的时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 审计者的Ip
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 审计动作类型，1--回放、2--中断、3--监控
+	Operation *int64 `json:"Operation,omitempty" name:"Operation"`
+
+	// 被审计主机的Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 被审计主机的主机名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 被审计会话所属的类型，如字符会话
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 被审计主机的内部Ip
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 被审计主机的外部Ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 审计者的子账号
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+}
+
 // Predefined struct for user
 type BindDeviceAccountPasswordRequestParams struct {
 	// 主机账号ID
@@ -438,6 +473,20 @@ type CmdTemplate struct {
 
 	// 命令列表，命令之间用换行符（"\n"）分隔
 	CmdList *string `json:"CmdList,omitempty" name:"CmdList"`
+}
+
+type Command struct {
+	// 命令
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// 命令输入的时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 命令执行时间相对于所属会话开始时间的偏移量，单位ms
+	TimeOffset *uint64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
+
+	// 命令执行情况，1--允许，2--拒绝，3--确认
+	Action *int64 `json:"Action,omitempty" name:"Action"`
 }
 
 // Predefined struct for user
@@ -2468,6 +2517,238 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLoginEventRequestParams struct {
+	// 用户名，如果不包含其他条件时对user_name or real_name两个字段模糊查询
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名，模糊查询
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 查询时间范围，起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询时间范围，结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 来源IP，模糊查询
+	SourceIp *string `json:"SourceIp,omitempty" name:"SourceIp"`
+
+	// 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
+	Entry *uint64 `json:"Entry,omitempty" name:"Entry"`
+
+	// 操作结果，1-成功，2-失败
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页记录数，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeLoginEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户名，如果不包含其他条件时对user_name or real_name两个字段模糊查询
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名，模糊查询
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 查询时间范围，起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询时间范围，结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 来源IP，模糊查询
+	SourceIp *string `json:"SourceIp,omitempty" name:"SourceIp"`
+
+	// 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
+	Entry *uint64 `json:"Entry,omitempty" name:"Entry"`
+
+	// 操作结果，1-成功，2-失败
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页记录数，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeLoginEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoginEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserName")
+	delete(f, "RealName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SourceIp")
+	delete(f, "Entry")
+	delete(f, "Result")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLoginEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLoginEventResponseParams struct {
+	// 登录日志列表
+	LoginEventSet []*LoginEvent `json:"LoginEventSet,omitempty" name:"LoginEventSet"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLoginEventResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLoginEventResponseParams `json:"Response"`
+}
+
+func (r *DescribeLoginEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLoginEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOperationEventRequestParams struct {
+	// 用户名，如果不包含其他条件时对user_name or real_name两个字段模糊查询
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名，模糊查询
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 查询时间范围，起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询时间范围，结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 来源IP，模糊查询
+	SourceIp *string `json:"SourceIp,omitempty" name:"SourceIp"`
+
+	// 操作类型，参考DescribeOperationType返回结果
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+
+	// 操作结果，1-成功，2-失败
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页记录数，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeOperationEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户名，如果不包含其他条件时对user_name or real_name两个字段模糊查询
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名，模糊查询
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 查询时间范围，起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询时间范围，结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 来源IP，模糊查询
+	SourceIp *string `json:"SourceIp,omitempty" name:"SourceIp"`
+
+	// 操作类型，参考DescribeOperationType返回结果
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+
+	// 操作结果，1-成功，2-失败
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页记录数，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeOperationEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOperationEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserName")
+	delete(f, "RealName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SourceIp")
+	delete(f, "Kind")
+	delete(f, "Result")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperationEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOperationEventResponseParams struct {
+	// 操作日志列表
+	OperationEventSet []*OperationEvent `json:"OperationEventSet,omitempty" name:"OperationEventSet"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOperationEventResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOperationEventResponseParams `json:"Response"`
+}
+
+func (r *DescribeOperationEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOperationEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourcesRequestParams struct {
 	// 地域码, 如: ap-guangzhou
 	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
@@ -3002,6 +3283,26 @@ func (r *ImportExternalDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LoginEvent struct {
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 操作时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 来源IP
+	SourceIp *string `json:"SourceIp,omitempty" name:"SourceIp"`
+
+	// 登录入口：1-字符界面,2-图形界面，3-web页面, 4-API
+	Entry *uint64 `json:"Entry,omitempty" name:"Entry"`
+
+	// 操作结果，1-成功，2-失败
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+}
+
 // Predefined struct for user
 type ModifyAclRequestParams struct {
 	// 访问权限名称，最大32字符，不能包含空白字符
@@ -3499,6 +3800,29 @@ func (r *ModifyUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OperationEvent struct {
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 操作时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 来源IP
+	SourceIp *string `json:"SourceIp,omitempty" name:"SourceIp"`
+
+	// 操作类型
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+
+	// 具体操作内容
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 操作结果，1-成功，2-失败
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+}
+
 // Predefined struct for user
 type ResetDeviceAccountPasswordRequestParams struct {
 	// ID集合
@@ -3749,6 +4073,996 @@ type Resource struct {
 	// 日志投递规格信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogDeliveryArgs *string `json:"LogDeliveryArgs,omitempty" name:"LogDeliveryArgs"`
+}
+
+// Predefined struct for user
+type SearchAuditLogRequestParams struct {
+	// 开始时间，不得早于当前时间的180天前
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页容量，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type SearchAuditLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间，不得早于当前时间的180天前
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页容量，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *SearchAuditLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchAuditLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchAuditLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchAuditLogResponseParams struct {
+	// 审计日志
+	AuditLogSet []*AuditLogResult `json:"AuditLogSet,omitempty" name:"AuditLogSet"`
+
+	// 日志总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchAuditLogResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchAuditLogResponseParams `json:"Response"`
+}
+
+func (r *SearchAuditLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchAuditLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchCommandBySidRequestParams struct {
+	// 会话Id
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 命令，可模糊搜索
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页容量，默认20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 根据拦截状态进行过滤
+	AuditAction []*uint64 `json:"AuditAction,omitempty" name:"AuditAction"`
+}
+
+type SearchCommandBySidRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话Id
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 命令，可模糊搜索
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页容量，默认20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 根据拦截状态进行过滤
+	AuditAction []*uint64 `json:"AuditAction,omitempty" name:"AuditAction"`
+}
+
+func (r *SearchCommandBySidRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchCommandBySidRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sid")
+	delete(f, "Cmd")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "AuditAction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchCommandBySidRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchCommandBySidResponseParams struct {
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 命令列表
+	CommandSet []*Command `json:"CommandSet,omitempty" name:"CommandSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchCommandBySidResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchCommandBySidResponseParams `json:"Response"`
+}
+
+func (r *SearchCommandBySidResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchCommandBySidResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchCommandRequestParams struct {
+	// 搜索区间的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 搜索区间的结束时间，不填默认为开始时间到现在为止
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 资产实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资产名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 资产的公网IP
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 资产的内网IP
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 执行的命令
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// 根据拦截状态进行过滤：1 - 已执行，2 - 被阻断
+	AuditAction []*uint64 `json:"AuditAction,omitempty" name:"AuditAction"`
+
+	// 每页容量，默认20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type SearchCommandRequest struct {
+	*tchttp.BaseRequest
+	
+	// 搜索区间的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 搜索区间的结束时间，不填默认为开始时间到现在为止
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 资产实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资产名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 资产的公网IP
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 资产的内网IP
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 执行的命令
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// 根据拦截状态进行过滤：1 - 已执行，2 - 被阻断
+	AuditAction []*uint64 `json:"AuditAction,omitempty" name:"AuditAction"`
+
+	// 每页容量，默认20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *SearchCommandRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchCommandRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "UserName")
+	delete(f, "RealName")
+	delete(f, "InstanceId")
+	delete(f, "DeviceName")
+	delete(f, "PublicIp")
+	delete(f, "PrivateIp")
+	delete(f, "Cmd")
+	delete(f, "AuditAction")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchCommandRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchCommandResponseParams struct {
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 命令列表
+	Commands []*SearchCommandResult `json:"Commands,omitempty" name:"Commands"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchCommandResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchCommandResponseParams `json:"Response"`
+}
+
+func (r *SearchCommandResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchCommandResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchCommandResult struct {
+	// 命令输入的时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 资产ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资产名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 资产公网IP
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 资产内网IP
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 命令
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// 命令执行情况，1--允许，2--拒绝
+	Action *uint64 `json:"Action,omitempty" name:"Action"`
+
+	// 命令所属的会话ID
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 命令执行时间相对于所属会话开始时间的偏移量，单位ms
+	TimeOffset *uint64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
+}
+
+// Predefined struct for user
+type SearchFileBySidRequestParams struct {
+	// 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 是否创建审计日志,通过查看按钮调用时为true,其他为false
+	AuditLog *bool `json:"AuditLog,omitempty" name:"AuditLog"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 可填写路径名或文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 分页用偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 1-已执行，  2-被阻断
+	AuditAction *int64 `json:"AuditAction,omitempty" name:"AuditAction"`
+
+	// 以Protocol和Method为条件查询
+	TypeFilters []*SearchFileTypeFilter `json:"TypeFilters,omitempty" name:"TypeFilters"`
+}
+
+type SearchFileBySidRequest struct {
+	*tchttp.BaseRequest
+	
+	// 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 是否创建审计日志,通过查看按钮调用时为true,其他为false
+	AuditLog *bool `json:"AuditLog,omitempty" name:"AuditLog"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 可填写路径名或文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 分页用偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 1-已执行，  2-被阻断
+	AuditAction *int64 `json:"AuditAction,omitempty" name:"AuditAction"`
+
+	// 以Protocol和Method为条件查询
+	TypeFilters []*SearchFileTypeFilter `json:"TypeFilters,omitempty" name:"TypeFilters"`
+}
+
+func (r *SearchFileBySidRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchFileBySidRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sid")
+	delete(f, "AuditLog")
+	delete(f, "Limit")
+	delete(f, "FileName")
+	delete(f, "Offset")
+	delete(f, "AuditAction")
+	delete(f, "TypeFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchFileBySidRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchFileBySidResponseParams struct {
+	// 记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 某会话的文件操作列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchFileBySidResult []*SearchFileBySidResult `json:"SearchFileBySidResult,omitempty" name:"SearchFileBySidResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchFileBySidResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchFileBySidResponseParams `json:"Response"`
+}
+
+func (r *SearchFileBySidResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchFileBySidResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchFileBySidResult struct {
+	// 文件操作时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 1-上传文件 2-下载文件 3-删除文件 4-移动文件 5-重命名文件 6-新建文件夹 7-移动文件夹 8-重命名文件夹 9-删除文件夹
+	Method *int64 `json:"Method,omitempty" name:"Method"`
+
+	// 文件传输协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// method为上传、下载、删除时文件在服务器上的位置, 或重命名、移动文件前文件的位置
+	FileCurr *string `json:"FileCurr,omitempty" name:"FileCurr"`
+
+	// method为重命名、移动文件时代表移动后的新位置.其他情况为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileNew *string `json:"FileNew,omitempty" name:"FileNew"`
+
+	// method为上传文件、下载文件、删除文件时显示文件大小。其他情况为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 堡垒机拦截情况, 1-已执行，  2-被阻断
+	Action *int64 `json:"Action,omitempty" name:"Action"`
+}
+
+// Predefined struct for user
+type SearchFileRequestParams struct {
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 资产ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资产名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 资产公网IP
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 资产内网IP
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹
+	Method []*uint64 `json:"Method,omitempty" name:"Method"`
+
+	// 可填写路径名或文件（夹）名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 1-已执行，  2-被阻断
+	AuditAction []*uint64 `json:"AuditAction,omitempty" name:"AuditAction"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type SearchFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 资产ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资产名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 资产公网IP
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 资产内网IP
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹
+	Method []*uint64 `json:"Method,omitempty" name:"Method"`
+
+	// 可填写路径名或文件（夹）名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 1-已执行，  2-被阻断
+	AuditAction []*uint64 `json:"AuditAction,omitempty" name:"AuditAction"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *SearchFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "UserName")
+	delete(f, "RealName")
+	delete(f, "InstanceId")
+	delete(f, "DeviceName")
+	delete(f, "PublicIp")
+	delete(f, "PrivateIp")
+	delete(f, "Method")
+	delete(f, "FileName")
+	delete(f, "AuditAction")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchFileResponseParams struct {
+	// 记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 文件操作列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Files []*SearchFileResult `json:"Files,omitempty" name:"Files"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchFileResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchFileResponseParams `json:"Response"`
+}
+
+func (r *SearchFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchFileResult struct {
+	// 文件传输的时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 资产ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 资产名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 资产公网IP
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 资产内网IP
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 操作结果：1 - 已执行，2 - 已阻断
+	Action *uint64 `json:"Action,omitempty" name:"Action"`
+
+	// 操作类型：1 - 文件上传，2 - 文件下载，3 - 文件删除，4 - 文件(夹)移动，5 - 文件(夹)重命名，6 - 新建文件夹，9 - 删除文件夹
+	Method *uint64 `json:"Method,omitempty" name:"Method"`
+
+	// 下载的文件（夹）路径及名称
+	FileCurr *string `json:"FileCurr,omitempty" name:"FileCurr"`
+
+	// 上传或新建文件（夹）路径及名称
+	FileNew *string `json:"FileNew,omitempty" name:"FileNew"`
+}
+
+type SearchFileTypeFilter struct {
+	// 需要查询的文件传输类型，如SFTP/CLIP/RDP/RZSZ
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 在当前指定的protocol下进一步过滤具体操作类型,如剪贴板文件上传，剪贴板文件下载等
+	Method []*int64 `json:"Method,omitempty" name:"Method"`
+}
+
+// Predefined struct for user
+type SearchSessionCommandRequestParams struct {
+	// 检索的目标命令，为模糊搜索
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// 开始时间，不得早于当前时间的180天前
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 默认值为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type SearchSessionCommandRequest struct {
+	*tchttp.BaseRequest
+	
+	// 检索的目标命令，为模糊搜索
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// 开始时间，不得早于当前时间的180天前
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 默认值为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *SearchSessionCommandRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchSessionCommandRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Cmd")
+	delete(f, "StartTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchSessionCommandRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchSessionCommandResponseParams struct {
+	// 记录总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 命令和所属会话
+	CommandSessionSet []*SessionCommand `json:"CommandSessionSet,omitempty" name:"CommandSessionSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchSessionCommandResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchSessionCommandResponseParams `json:"Response"`
+}
+
+func (r *SearchSessionCommandResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchSessionCommandResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchSessionRequestParams struct {
+	// 内部Ip
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 外部Ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 用户名，长度不超过20
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 账号，长度不超过64
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// 来源Ip
+	FromIp *string `json:"FromIp,omitempty" name:"FromIp"`
+
+	// 搜索区间的开始时间。若入参是Id，则非必传，否则为必传。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 搜索区间的结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 会话协议类型，只能是1、2、3或4 对应关系为1-tui 2-gui 3-file 4-数据库。若入参是Id，则非必传，否则为必传。
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 姓名，长度不超过20
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 主机名，长度不超过64
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 状态，1为活跃，2为结束，3为强制离线，4为其他错误
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type SearchSessionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 内部Ip
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 外部Ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 用户名，长度不超过20
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 账号，长度不超过64
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// 来源Ip
+	FromIp *string `json:"FromIp,omitempty" name:"FromIp"`
+
+	// 搜索区间的开始时间。若入参是Id，则非必传，否则为必传。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 搜索区间的结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 会话协议类型，只能是1、2、3或4 对应关系为1-tui 2-gui 3-file 4-数据库。若入参是Id，则非必传，否则为必传。
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 姓名，长度不超过20
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 主机名，长度不超过64
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 状态，1为活跃，2为结束，3为强制离线，4为其他错误
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *SearchSessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchSessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PrivateIp")
+	delete(f, "PublicIp")
+	delete(f, "UserName")
+	delete(f, "Account")
+	delete(f, "FromIp")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Kind")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "RealName")
+	delete(f, "DeviceName")
+	delete(f, "Status")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchSessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchSessionResponseParams struct {
+	// 记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 会话信息列表
+	SessionSet []*SessionResult `json:"SessionSet,omitempty" name:"SessionSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchSessionResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchSessionResponseParams `json:"Response"`
+}
+
+func (r *SearchSessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SessionCommand struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 账号
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 内部Ip
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 外部Ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 命令列表
+	Commands []*Command `json:"Commands,omitempty" name:"Commands"`
+
+	// 记录数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 会话Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 设备id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 设备所属的地域
+	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
+}
+
+type SessionResult struct {
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 主机账号
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 会话大小
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 设备ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 内部Ip
+	PrivateIp *string `json:"PrivateIp,omitempty" name:"PrivateIp"`
+
+	// 外部Ip
+	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 来源Ip
+	FromIp *string `json:"FromIp,omitempty" name:"FromIp"`
+
+	// 会话持续时长
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 该会话内命令数量 ，搜索图形会话时该字段无意义
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 该会话内高危命令数，搜索图形时该字段无意义
+	DangerCount *uint64 `json:"DangerCount,omitempty" name:"DangerCount"`
+
+	// 会话状态，如1会话活跃  2会话结束  3强制离线  4其他错误
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 会话Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 设备所属的地域
+	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
+
+	// 会话协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
 type TagFilter struct {

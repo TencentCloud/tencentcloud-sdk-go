@@ -2229,6 +2229,7 @@ func NewDescribeDomainWhoisResponse() (response *DescribeDomainWhoisResponse) {
 // 获取域名Whois信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
@@ -2244,6 +2245,7 @@ func (c *Client) DescribeDomainWhois(request *DescribeDomainWhoisRequest) (respo
 // 获取域名Whois信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
@@ -2635,6 +2637,7 @@ func NewDescribeRecordLineListResponse() (response *DescribeRecordLineListRespon
 // 获取等级允许的线路
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
 //  FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
@@ -2663,6 +2666,7 @@ func (c *Client) DescribeRecordLineList(request *DescribeRecordLineListRequest) 
 // 获取等级允许的线路
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
 //  FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
@@ -4431,6 +4435,7 @@ func NewModifyRecordBatchResponse() (response *ModifyRecordBatchResponse) {
 // 批量修改记录
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
@@ -4463,6 +4468,7 @@ func (c *Client) ModifyRecordBatch(request *ModifyRecordBatchRequest) (response 
 // 批量修改记录
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINISLOCKED = "FailedOperation.DomainIsLocked"
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"

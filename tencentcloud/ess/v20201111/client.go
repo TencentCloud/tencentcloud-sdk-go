@@ -344,7 +344,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 // CreateDocument
 // 创建签署流程电子文档
 //
-// 适用场景：见创建签署流程接口。x0b
+// 适用场景：见创建签署流程接口。
 //
 // 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。是“发起流程”接口的前置接口。
 //
@@ -399,7 +399,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 // CreateDocument
 // 创建签署流程电子文档
 //
-// 适用场景：见创建签署流程接口。x0b
+// 适用场景：见创建签署流程接口。
 //
 // 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。是“发起流程”接口的前置接口。
 //
@@ -1284,11 +1284,16 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 //
 // 该接口不可直接调用，请联系客户经理申请使用
 //
+// 仅能催办当前状态为“待签署”的签署人，且只能催办一次
+//
+// 发起合同时，签署人的NotifyType需设置为sms，否则无法催办
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response *CreateFlowRemindsResponse, err error) {
@@ -1302,11 +1307,16 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 //
 // 该接口不可直接调用，请联系客户经理申请使用
 //
+// 仅能催办当前状态为“待签署”的签署人，且只能催办一次
+//
+// 发起合同时，签署人的NotifyType需设置为sms，否则无法催办
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowRemindsWithContext(ctx context.Context, request *CreateFlowRemindsRequest) (response *CreateFlowRemindsResponse, err error) {
@@ -1454,6 +1464,8 @@ func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response *CreateFlowSignUrlResponse, err error) {
     return c.CreateFlowSignUrlWithContext(context.Background(), request)
@@ -1468,6 +1480,8 @@ func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response 
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowSignUrlWithContext(ctx context.Context, request *CreateFlowSignUrlRequest) (response *CreateFlowSignUrlResponse, err error) {
     if request == nil {
@@ -1924,7 +1938,7 @@ func NewCreatePreparedPersonalEsignResponse() (response *CreatePreparedPersonalE
 }
 
 // CreatePreparedPersonalEsign
-// 本接口（CreatePreparedPersonalEsign）由于创建导入个人印章。
+// 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2004,7 +2018,7 @@ func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsig
 }
 
 // CreatePreparedPersonalEsign
-// 本接口（CreatePreparedPersonalEsign）由于创建导入个人印章。
+// 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2715,6 +2729,7 @@ func NewDeleteSealPoliciesResponse() (response *DeleteSealPoliciesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 func (c *Client) DeleteSealPolicies(request *DeleteSealPoliciesRequest) (response *DeleteSealPoliciesResponse, err error) {
     return c.DeleteSealPoliciesWithContext(context.Background(), request)
 }
@@ -2727,6 +2742,7 @@ func (c *Client) DeleteSealPolicies(request *DeleteSealPoliciesRequest) (respons
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 func (c *Client) DeleteSealPoliciesWithContext(ctx context.Context, request *DeleteSealPoliciesRequest) (response *DeleteSealPoliciesResponse, err error) {
     if request == nil {
         request = NewDeleteSealPoliciesRequest()
@@ -3401,6 +3417,9 @@ func NewDescribeOrganizationGroupOrganizationsResponse() (response *DescribeOrga
 //  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 func (c *Client) DescribeOrganizationGroupOrganizations(request *DescribeOrganizationGroupOrganizationsRequest) (response *DescribeOrganizationGroupOrganizationsResponse, err error) {
     return c.DescribeOrganizationGroupOrganizationsWithContext(context.Background(), request)
 }
@@ -3413,6 +3432,9 @@ func (c *Client) DescribeOrganizationGroupOrganizations(request *DescribeOrganiz
 //  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 func (c *Client) DescribeOrganizationGroupOrganizationsWithContext(ctx context.Context, request *DescribeOrganizationGroupOrganizationsRequest) (response *DescribeOrganizationGroupOrganizationsResponse, err error) {
     if request == nil {
         request = NewDescribeOrganizationGroupOrganizationsRequest()
@@ -3456,6 +3478,7 @@ func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSeals
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3473,6 +3496,7 @@ func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsReq
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3523,6 +3547,7 @@ func NewDescribeThirdPartyAuthCodeResponse() (response *DescribeThirdPartyAuthCo
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_AUTHCODE = "MissingParameter.AuthCode"
 //  OPERATIONDENIED_AUTHCODEINVALID = "OperationDenied.AuthCodeInvalid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeThirdPartyAuthCode(request *DescribeThirdPartyAuthCodeRequest) (response *DescribeThirdPartyAuthCodeResponse, err error) {
     return c.DescribeThirdPartyAuthCodeWithContext(context.Background(), request)
 }
@@ -3539,6 +3564,7 @@ func (c *Client) DescribeThirdPartyAuthCode(request *DescribeThirdPartyAuthCodeR
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_AUTHCODE = "MissingParameter.AuthCode"
 //  OPERATIONDENIED_AUTHCODEINVALID = "OperationDenied.AuthCodeInvalid"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeThirdPartyAuthCodeWithContext(ctx context.Context, request *DescribeThirdPartyAuthCodeRequest) (response *DescribeThirdPartyAuthCodeResponse, err error) {
     if request == nil {
         request = NewDescribeThirdPartyAuthCodeRequest()
@@ -3766,7 +3792,7 @@ func NewGetTaskResultApiResponse() (response *GetTaskResultApiResponse) {
 }
 
 // GetTaskResultApi
-// 查询转换任务状态
+// 通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3780,7 +3806,7 @@ func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *G
 }
 
 // GetTaskResultApi
-// 查询转换任务状态
+// 通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -4224,7 +4250,7 @@ func NewVerifyPdfResponse() (response *VerifyPdfResponse) {
 }
 
 // VerifyPdf
-// 验证合同文件
+// 对流程的合同文件进行验证，判断文件是否合法。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4238,7 +4264,7 @@ func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfRespon
 }
 
 // VerifyPdf
-// 验证合同文件
+// 对流程的合同文件进行验证，判断文件是否合法。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

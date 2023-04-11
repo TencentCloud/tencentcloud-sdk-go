@@ -1332,7 +1332,7 @@ func NewDeleteMachineResponse() (response *DeleteMachineResponse) {
 }
 
 // DeleteMachine
-// 本接口（DeleteMachine）用于卸载云镜客户端。
+// 本接口（DeleteMachine）用于卸载主机安全客户端。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1352,7 +1352,7 @@ func (c *Client) DeleteMachine(request *DeleteMachineRequest) (response *DeleteM
 }
 
 // DeleteMachine
-// 本接口（DeleteMachine）用于卸载云镜客户端。
+// 本接口（DeleteMachine）用于卸载主机安全客户端。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

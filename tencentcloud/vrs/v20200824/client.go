@@ -1,0 +1,322 @@
+// Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package v20200824
+
+import (
+    "context"
+    "errors"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
+    tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
+)
+
+const APIVersion = "2020-08-24"
+
+type Client struct {
+    common.Client
+}
+
+// Deprecated
+func NewClientWithSecretId(secretId, secretKey, region string) (client *Client, err error) {
+    cpf := profile.NewClientProfile()
+    client = &Client{}
+    client.Init(region).WithSecretId(secretId, secretKey).WithProfile(cpf)
+    return
+}
+
+func NewClient(credential common.CredentialIface, region string, clientProfile *profile.ClientProfile) (client *Client, err error) {
+    client = &Client{}
+    client.Init(region).
+        WithCredential(credential).
+        WithProfile(clientProfile)
+    return
+}
+
+
+func NewCreateVRSTaskRequest() (request *CreateVRSTaskRequest) {
+    request = &CreateVRSTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vrs", APIVersion, "CreateVRSTask")
+    
+    
+    return
+}
+
+func NewCreateVRSTaskResponse() (response *CreateVRSTaskResponse) {
+    response = &CreateVRSTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateVRSTask
+// 本接口服务对提交音频进行声音复刻任务创建接口，异步返回复刻结果。
+//
+// • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+//
+// • 签名方法参考 公共参数 中签名方法v3。
+//
+// • 默认接口请求频率限制：30次/秒，
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_VOICEGENDER = "InvalidParameterValue.VoiceGender"
+//  INVALIDPARAMETERVALUE_VOICELANGUAGE = "InvalidParameterValue.VoiceLanguage"
+//  INVALIDPARAMETERVALUE_VOICENAME = "InvalidParameterValue.VoiceName"
+//  UNSUPPORTEDOPERATION_VRSQUOTAEXHAUSTED = "UnsupportedOperation.VRSQuotaExhausted"
+func (c *Client) CreateVRSTask(request *CreateVRSTaskRequest) (response *CreateVRSTaskResponse, err error) {
+    return c.CreateVRSTaskWithContext(context.Background(), request)
+}
+
+// CreateVRSTask
+// 本接口服务对提交音频进行声音复刻任务创建接口，异步返回复刻结果。
+//
+// • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+//
+// • 签名方法参考 公共参数 中签名方法v3。
+//
+// • 默认接口请求频率限制：30次/秒，
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  INVALIDPARAMETERVALUE_VOICEGENDER = "InvalidParameterValue.VoiceGender"
+//  INVALIDPARAMETERVALUE_VOICELANGUAGE = "InvalidParameterValue.VoiceLanguage"
+//  INVALIDPARAMETERVALUE_VOICENAME = "InvalidParameterValue.VoiceName"
+//  UNSUPPORTEDOPERATION_VRSQUOTAEXHAUSTED = "UnsupportedOperation.VRSQuotaExhausted"
+func (c *Client) CreateVRSTaskWithContext(ctx context.Context, request *CreateVRSTaskRequest) (response *CreateVRSTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVRSTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVRSTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVRSTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVRSTaskStatusRequest() (request *DescribeVRSTaskStatusRequest) {
+    request = &DescribeVRSTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vrs", APIVersion, "DescribeVRSTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeVRSTaskStatusResponse() (response *DescribeVRSTaskStatusResponse) {
+    response = &DescribeVRSTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVRSTaskStatus
+// 在调用声音复刻创建任务请求接口后，有回调和轮询两种方式获取识别结果。
+//
+// • 当采用回调方式时，识别完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见 声音复刻结果回调 。
+//
+// • 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见下文说明。
+//
+// • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+//
+// • 签名方法参考 公共参数 中签名方法v3。
+//
+// • 默认接口请求频率限制：20次/秒，如您有提高请求频率限制的需求，请提工单进行咨询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+func (c *Client) DescribeVRSTaskStatus(request *DescribeVRSTaskStatusRequest) (response *DescribeVRSTaskStatusResponse, err error) {
+    return c.DescribeVRSTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeVRSTaskStatus
+// 在调用声音复刻创建任务请求接口后，有回调和轮询两种方式获取识别结果。
+//
+// • 当采用回调方式时，识别完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见 声音复刻结果回调 。
+//
+// • 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见下文说明。
+//
+// • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+//
+// • 签名方法参考 公共参数 中签名方法v3。
+//
+// • 默认接口请求频率限制：20次/秒，如您有提高请求频率限制的需求，请提工单进行咨询。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+func (c *Client) DescribeVRSTaskStatusWithContext(ctx context.Context, request *DescribeVRSTaskStatusRequest) (response *DescribeVRSTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeVRSTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVRSTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVRSTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDetectEnvAndSoundQualityRequest() (request *DetectEnvAndSoundQualityRequest) {
+    request = &DetectEnvAndSoundQualityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vrs", APIVersion, "DetectEnvAndSoundQuality")
+    
+    
+    return
+}
+
+func NewDetectEnvAndSoundQualityResponse() (response *DetectEnvAndSoundQualityResponse) {
+    response = &DetectEnvAndSoundQualityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DetectEnvAndSoundQuality
+// 本接口用于检测音频的环境和音频质量。
+//
+// • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+//
+// • 签名方法参考 公共参数 中签名方法v3。
+//
+// • 默认接口请求频率限制：20次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
+//  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
+//  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+func (c *Client) DetectEnvAndSoundQuality(request *DetectEnvAndSoundQualityRequest) (response *DetectEnvAndSoundQualityResponse, err error) {
+    return c.DetectEnvAndSoundQualityWithContext(context.Background(), request)
+}
+
+// DetectEnvAndSoundQuality
+// 本接口用于检测音频的环境和音频质量。
+//
+// • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+//
+// • 签名方法参考 公共参数 中签名方法v3。
+//
+// • 默认接口请求频率限制：20次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
+//  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
+//  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+func (c *Client) DetectEnvAndSoundQualityWithContext(ctx context.Context, request *DetectEnvAndSoundQualityRequest) (response *DetectEnvAndSoundQualityResponse, err error) {
+    if request == nil {
+        request = NewDetectEnvAndSoundQualityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DetectEnvAndSoundQuality require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDetectEnvAndSoundQualityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTrainingTextRequest() (request *GetTrainingTextRequest) {
+    request = &GetTrainingTextRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vrs", APIVersion, "GetTrainingText")
+    
+    
+    return
+}
+
+func NewGetTrainingTextResponse() (response *GetTrainingTextResponse) {
+    response = &GetTrainingTextResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTrainingText
+// 本接口用于获取声音复刻训练文本信息。
+//
+//  请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+//
+// • 签名方法参考 公共参数 中签名方法v3。
+//
+// • 默认接口请求频率限制：20次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
+//  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
+//  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+func (c *Client) GetTrainingText(request *GetTrainingTextRequest) (response *GetTrainingTextResponse, err error) {
+    return c.GetTrainingTextWithContext(context.Background(), request)
+}
+
+// GetTrainingText
+// 本接口用于获取声音复刻训练文本信息。
+//
+//  请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
+//
+// • 签名方法参考 公共参数 中签名方法v3。
+//
+// • 默认接口请求频率限制：20次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
+//  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
+//  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
+//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+func (c *Client) GetTrainingTextWithContext(ctx context.Context, request *GetTrainingTextRequest) (response *GetTrainingTextResponse, err error) {
+    if request == nil {
+        request = NewGetTrainingTextRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTrainingText require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTrainingTextResponse()
+    err = c.Send(request, response)
+    return
+}

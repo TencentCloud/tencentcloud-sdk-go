@@ -134,6 +134,10 @@ type BillDetail struct {
 
 	// 项目ID:资源所属项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 价格属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceInfo []*string `json:"PriceInfo,omitempty" name:"PriceInfo"`
 }
 
 type BillDetailComponent struct {

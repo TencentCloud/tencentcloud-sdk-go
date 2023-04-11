@@ -1,3 +1,307 @@
+# Release v1.0.635
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 37 次发布
+
+发布时间：2023-04-11 01:03:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BillDetail](https://cloud.tencent.com/document/api/555/19183#BillDetail)
+
+	* 新增成员：PriceInfo
+
+
+
+
+## 品牌经营管家(bma) 版本：2022-11-15
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 16 次发布
+
+发布时间：2023-04-11 01:04:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateCRObtain
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 119 次发布
+
+发布时间：2023-04-11 01:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpgradeDBInstance](https://cloud.tencent.com/document/api/236/15876)
+
+	* 新增入参：RoTransType
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 40 次发布
+
+发布时间：2023-04-11 01:09:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* 新增出参：SamplingRate
+
+
+新增数据结构：
+
+* [DynamicIndex](https://cloud.tencent.com/document/api/614/56471#DynamicIndex)
+
+修改数据结构：
+
+* [RuleInfo](https://cloud.tencent.com/document/api/614/56471#RuleInfo)
+
+	* 新增成员：DynamicIndex
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 79 次发布
+
+发布时间：2023-04-11 01:12:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BashEventsInfoNew](https://cloud.tencent.com/document/api/296/19867#BashEventsInfoNew)
+
+	* <font color="#dd0000">**修改成员**：</font>Id, Uuid, Quuid, HostIp, Platform, BashCmd, RuleId, RuleName, RuleLevel, Status, CreateTime, MachineName, Exe, ModifyTime, RuleCategory, RegexBashCmd, PsTree, SuggestScheme, HarmDescribe, Tags, References, MachineWanIp, MachineStatus, User, Pid, MachineType, DetectBy
+
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 9 次发布
+
+发布时间：2023-04-11 01:14:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLoginEvent](https://cloud.tencent.com/document/api/1025/90039)
+* [DescribeOperationEvent](https://cloud.tencent.com/document/api/1025/90038)
+* [SearchAuditLog](https://cloud.tencent.com/document/api/1025/90046)
+* [SearchCommand](https://cloud.tencent.com/document/api/1025/90045)
+* [SearchCommandBySid](https://cloud.tencent.com/document/api/1025/90044)
+* [SearchFile](https://cloud.tencent.com/document/api/1025/90043)
+* [SearchFileBySid](https://cloud.tencent.com/document/api/1025/90042)
+* [SearchSession](https://cloud.tencent.com/document/api/1025/90041)
+* [SearchSessionCommand](https://cloud.tencent.com/document/api/1025/90040)
+
+新增数据结构：
+
+* [AuditLogResult](https://cloud.tencent.com/document/api/1025/74416#AuditLogResult)
+* [Command](https://cloud.tencent.com/document/api/1025/74416#Command)
+* [LoginEvent](https://cloud.tencent.com/document/api/1025/74416#LoginEvent)
+* [OperationEvent](https://cloud.tencent.com/document/api/1025/74416#OperationEvent)
+* [SearchCommandResult](https://cloud.tencent.com/document/api/1025/74416#SearchCommandResult)
+* [SearchFileBySidResult](https://cloud.tencent.com/document/api/1025/74416#SearchFileBySidResult)
+* [SearchFileResult](https://cloud.tencent.com/document/api/1025/74416#SearchFileResult)
+* [SearchFileTypeFilter](https://cloud.tencent.com/document/api/1025/74416#SearchFileTypeFilter)
+* [SessionCommand](https://cloud.tencent.com/document/api/1025/74416#SessionCommand)
+* [SessionResult](https://cloud.tencent.com/document/api/1025/74416#SessionResult)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 15 次发布
+
+发布时间：2023-04-11 01:16:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSlowLogs](https://cloud.tencent.com/document/api/1130/90047)
+
+新增数据结构：
+
+* [SlowLogInfoItem](https://cloud.tencent.com/document/api/1130/57812#SlowLogInfoItem)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 45 次发布
+
+发布时间：2023-04-11 01:16:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDataEngine](https://cloud.tencent.com/document/api/1342/87875)
+
+	* 新增入参：ElasticSwitch, ElasticLimit
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 15 次发布
+
+发布时间：2023-04-11 01:17:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateRecordBatchRecord](https://cloud.tencent.com/document/api/1427/56185#CreateRecordBatchRecord)
+
+	* 新增成员：Weight
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 22 次发布
+
+发布时间：2023-04-11 01:26:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：TurnOffMic, RTCAudienceNumber, AudienceType
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 32 次发布
+
+发布时间：2023-04-11 01:28:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteAccountUser](https://cloud.tencent.com/document/api/240/90048)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 31 次发布
+
+发布时间：2023-04-11 01:42:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePPTCheckTask](https://cloud.tencent.com/document/api/1137/90054)
+* [DescribePPTCheck](https://cloud.tencent.com/document/api/1137/90053)
+* [DescribePPTCheckCallback](https://cloud.tencent.com/document/api/1137/90052)
+* [DescribeRunningTasks](https://cloud.tencent.com/document/api/1137/90049)
+* [DescribeWarningCallback](https://cloud.tencent.com/document/api/1137/90057)
+* [SetPPTCheckCallback](https://cloud.tencent.com/document/api/1137/90051)
+* [SetPPTCheckCallbackKey](https://cloud.tencent.com/document/api/1137/90050)
+* [SetWarningCallback](https://cloud.tencent.com/document/api/1137/90056)
+
+新增数据结构：
+
+* [PPTErr](https://cloud.tencent.com/document/api/1137/40068#PPTErr)
+* [PPTErrSlide](https://cloud.tencent.com/document/api/1137/40068#PPTErrSlide)
+* [RunningTaskItem](https://cloud.tencent.com/document/api/1137/40068#RunningTaskItem)
+
+
+
+## 声音复刻(vrs) 版本：2020-08-24
+
+### 第 1 次发布
+
+发布时间：2023-04-11 09:31:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateVRSTask](https://cloud.tencent.com/document/api/1283/90064)
+* [DescribeVRSTaskStatus](https://cloud.tencent.com/document/api/1283/90063)
+* [DetectEnvAndSoundQuality](https://cloud.tencent.com/document/api/1283/90062)
+* [GetTrainingText](https://cloud.tencent.com/document/api/1283/90061)
+
+新增数据结构：
+
+* [CreateVRSTaskRespData](https://cloud.tencent.com/document/api/1283/90065#CreateVRSTaskRespData)
+* [DescribeVRSTaskStatusRespData](https://cloud.tencent.com/document/api/1283/90065#DescribeVRSTaskStatusRespData)
+* [DetectionEnvAndSoundQualityRespData](https://cloud.tencent.com/document/api/1283/90065#DetectionEnvAndSoundQualityRespData)
+* [TrainingText](https://cloud.tencent.com/document/api/1283/90065#TrainingText)
+* [TrainingTexts](https://cloud.tencent.com/document/api/1283/90065#TrainingTexts)
+* [Words](https://cloud.tencent.com/document/api/1283/90065#Words)
+
+
+
 # Release v1.0.634
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19

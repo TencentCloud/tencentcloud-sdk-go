@@ -44,6 +44,12 @@ const (
 	// 获取临时密钥失败。
 	FAILEDOPERATION_GETCREDENTIALFAIL = "FailedOperation.GetCredentialFail"
 
+	// 转码预处理失败，具体请参考错误描述或联系客服人员。
+	FAILEDOPERATION_PREPROCESS = "FailedOperation.Preprocess"
+
+	// 预处理服务出现内部错误，请稍候重试或联系客户人员。
+	FAILEDOPERATION_PREPROCESSSERVERERROR = "FailedOperation.PreprocessServerError"
+
 	// 录制失败，具体请参考错误描述。
 	FAILEDOPERATION_RECORD = "FailedOperation.Record"
 
@@ -82,6 +88,9 @@ const (
 
 	// 设置应用配置任务类型不支持。
 	INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
+
+	// 转码预处理参数格式不正确。
+	INVALIDPARAMETER_PREPROCESSPARAMETER = "InvalidParameter.PreprocessParameter"
 
 	// 实时录制参数格式不正确。
 	INVALIDPARAMETER_RECORDPARAMETER = "InvalidParameter.RecordParameter"

@@ -1320,6 +1320,12 @@ type CreateDataEngineRequestParams struct {
 
 	// 主集群名称
 	MainClusterName *string `json:"MainClusterName,omitempty" name:"MainClusterName"`
+
+	// spark jar 包年包月集群是否开启弹性
+	ElasticSwitch *bool `json:"ElasticSwitch,omitempty" name:"ElasticSwitch"`
+
+	// spark jar 包年包月集群弹性上限
+	ElasticLimit *int64 `json:"ElasticLimit,omitempty" name:"ElasticLimit"`
 }
 
 type CreateDataEngineRequest struct {
@@ -1405,6 +1411,12 @@ type CreateDataEngineRequest struct {
 
 	// 主集群名称
 	MainClusterName *string `json:"MainClusterName,omitempty" name:"MainClusterName"`
+
+	// spark jar 包年包月集群是否开启弹性
+	ElasticSwitch *bool `json:"ElasticSwitch,omitempty" name:"ElasticSwitch"`
+
+	// spark jar 包年包月集群弹性上限
+	ElasticLimit *int64 `json:"ElasticLimit,omitempty" name:"ElasticLimit"`
 }
 
 func (r *CreateDataEngineRequest) ToJsonString() string {
@@ -1446,6 +1458,8 @@ func (r *CreateDataEngineRequest) FromJsonString(s string) error {
 	delete(f, "DataEngineConfigPairs")
 	delete(f, "ImageVersionName")
 	delete(f, "MainClusterName")
+	delete(f, "ElasticSwitch")
+	delete(f, "ElasticLimit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataEngineRequest has unknown keys!", "")
 	}

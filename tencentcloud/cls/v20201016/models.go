@@ -4395,6 +4395,12 @@ func (r *DescribeTopicsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DynamicIndex struct {
+	// 动态索引配置开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *bool `json:"Status,omitempty" name:"Status"`
+}
+
 type ExcludePathInfo struct {
 	// 类型，选填File或Path
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -6331,6 +6337,10 @@ type RuleInfo struct {
 	// 元字段索引配置，如果为空时代表未开启元字段索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *RuleTagInfo `json:"Tag,omitempty" name:"Tag"`
+
+	// 动态索引配置，如果为空时代表未开启动态段索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DynamicIndex *DynamicIndex `json:"DynamicIndex,omitempty" name:"DynamicIndex"`
 }
 
 type RuleKeyValueInfo struct {
@@ -6398,7 +6408,7 @@ type SearchLogRequestParams struct {
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
-	// 详细说明参见https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules
+	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
@@ -6452,7 +6462,7 @@ type SearchLogRequest struct {
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
-	// 详细说明参见https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules
+	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
@@ -6519,6 +6529,10 @@ type SearchLogResponseParams struct {
 	// 当UseNewAnalysis为true时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*Column `json:"Columns,omitempty" name:"Columns"`
+
+	// 本次统计分析使用的采样率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SamplingRate *float64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

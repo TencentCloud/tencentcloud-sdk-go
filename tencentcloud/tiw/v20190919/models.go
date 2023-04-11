@@ -289,6 +289,87 @@ func (r *CreateOfflineRecordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePPTCheckTaskRequestParams struct {
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 经过URL编码后的PPT文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pptx，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pptx。为了提高URL解析的成功率，请对URL进行编码。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 是否对不支持元素开启自动处理的功能。默认不开启。
+	// 
+	// 在开启自动处理的情况下，会自动进行如下处理：
+	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
+	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
+	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
+	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitempty" name:"AutoHandleUnsupportedElement"`
+}
+
+type CreatePPTCheckTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 经过URL编码后的PPT文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pptx，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pptx。为了提高URL解析的成功率，请对URL进行编码。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 是否对不支持元素开启自动处理的功能。默认不开启。
+	// 
+	// 在开启自动处理的情况下，会自动进行如下处理：
+	// 1. 墨迹：移除不支持的墨迹（比如使用WPS画的）
+	// 2. 自动翻页：移除PPT上所有的自动翻页设置，并设置为单击鼠标翻页
+	// 3. 已损坏音视频：移除PPT上对损坏音视频的引用
+	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitempty" name:"AutoHandleUnsupportedElement"`
+}
+
+func (r *CreatePPTCheckTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePPTCheckTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Url")
+	delete(f, "AutoHandleUnsupportedElement")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePPTCheckTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePPTCheckTaskResponseParams struct {
+	// 检测任务的唯一标识Id，用于查询该任务的进度以及检测结果
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreatePPTCheckTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePPTCheckTaskResponseParams `json:"Response"`
+}
+
+func (r *CreatePPTCheckTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePPTCheckTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSnapshotTaskRequestParams struct {
 	// 白板相关参数
 	Whiteboard *SnapshotWhiteboard `json:"Whiteboard,omitempty" name:"Whiteboard"`
@@ -1366,6 +1447,147 @@ func (r *DescribeOnlineRecordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePPTCheckCallbackRequestParams struct {
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type DescribePPTCheckCallbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribePPTCheckCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePPTCheckCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePPTCheckCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePPTCheckCallbackResponseParams struct {
+	// 回调地址
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+	// 回调鉴权密钥
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePPTCheckCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePPTCheckCallbackResponseParams `json:"Response"`
+}
+
+func (r *DescribePPTCheckCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePPTCheckCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePPTCheckRequestParams struct {
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 任务的唯一标识Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DescribePPTCheckRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 任务的唯一标识Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribePPTCheckRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePPTCheckRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePPTCheckRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePPTCheckResponseParams struct {
+	// 任务的唯一标识Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// PPT文件是否正常
+	IsOK *bool `json:"IsOK,omitempty" name:"IsOK"`
+
+	// 修复后的PPT URL，只有创建任务时参数AutoHandleUnsupportedElement=true，才返回此参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultUrl *string `json:"ResultUrl,omitempty" name:"ResultUrl"`
+
+	// 错误PPT页面列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Slides []*PPTErrSlide `json:"Slides,omitempty" name:"Slides"`
+
+	// 任务的当前状态 - QUEUED: 正在排队等待 - PROCESSING: 执行中 - FINISHED: 执行完成	
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 当前进度,取值范围为0~100
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePPTCheckResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePPTCheckResponseParams `json:"Response"`
+}
+
+func (r *DescribePPTCheckResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePPTCheckResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePostpaidUsageRequestParams struct {
 	// 开始时间
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
@@ -1668,6 +1890,99 @@ func (r *DescribeRoomListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRoomListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRunningTasksRequestParams struct {
+	// 应用的SdkAppID
+	SdkAppID *int64 `json:"SdkAppID,omitempty" name:"SdkAppID"`
+
+	// 指定需要获取的任务类型。
+	// 有效取值如下：
+	// - TranscodeH5: 动态转码任务，文档转HTML5页面
+	// - TranscodeJPG: 静态转码任务，文档转图片
+	// - WhiteboardPush: 白板推流任务
+	// - OnlineRecord: 实时录制任务
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 分页获取时的任务偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每次获取任务列表时最大获取任务数，默认值为100。
+	// 有效取值范围：[1, 500]
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRunningTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用的SdkAppID
+	SdkAppID *int64 `json:"SdkAppID,omitempty" name:"SdkAppID"`
+
+	// 指定需要获取的任务类型。
+	// 有效取值如下：
+	// - TranscodeH5: 动态转码任务，文档转HTML5页面
+	// - TranscodeJPG: 静态转码任务，文档转图片
+	// - WhiteboardPush: 白板推流任务
+	// - OnlineRecord: 实时录制任务
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 分页获取时的任务偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每次获取任务列表时最大获取任务数，默认值为100。
+	// 有效取值范围：[1, 500]
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRunningTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRunningTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppID")
+	delete(f, "TaskType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRunningTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRunningTasksResponseParams struct {
+	// 当前正在执行中的任务总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 任务信息列表
+	Tasks []*RunningTaskItem `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRunningTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRunningTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeRunningTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRunningTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2606,6 +2921,66 @@ func (r *DescribeVideoGenerationTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWarningCallbackRequestParams struct {
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type DescribeWarningCallbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeWarningCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWarningCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWarningCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWarningCallbackResponseParams struct {
+	// 告警事件回调地址，如果未设置回调地址，该字段为空字符串
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+	// 告警回调鉴权密钥
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeWarningCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWarningCallbackResponseParams `json:"Response"`
+}
+
+func (r *DescribeWarningCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWarningCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeWhiteboardApplicationConfigRequestParams struct {
 	// 客户的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -3320,6 +3695,30 @@ type OmittedDuration struct {
 	ResumeTime *int64 `json:"ResumeTime,omitempty" name:"ResumeTime"`
 }
 
+type PPTErr struct {
+	// 元素名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 0: 不支持的墨迹类型，1: 不支持自动翻页，2: 存在已损坏音视频，3: 存在不可访问资源，4: 只读文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 错误详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+}
+
+type PPTErrSlide struct {
+	// 异常元素存在的页面，由页面类型+页码组成，页码类型包括：幻灯片、幻灯片母版、幻灯片布局等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *string `json:"Page,omitempty" name:"Page"`
+
+	// 错误元素列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errs []*PPTErr `json:"Errs,omitempty" name:"Errs"`
+}
+
 // Predefined struct for user
 type PauseOnlineRecordRequestParams struct {
 	// 客户的SdkAppId
@@ -3571,6 +3970,48 @@ type RoomUsageDataItem struct {
 	RoomID *uint64 `json:"RoomID,omitempty" name:"RoomID"`
 }
 
+type RunningTaskItem struct {
+	// 应用SdkAppID
+	SdkAppID *int64 `json:"SdkAppID,omitempty" name:"SdkAppID"`
+
+	// 任务ID
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 任务类型
+	// - TranscodeH5: 动态转码任务，文档转HTML5页面
+	// - TranscodeJPG: 静态转码任务，文档转图片
+	// - WhiteboardPush: 白板推流任务
+	// - OnlineRecord: 实时录制任务
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务取消时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CancelTime *string `json:"CancelTime,omitempty" name:"CancelTime"`
+
+	// 任务状态
+	// - QUEUED: 任务正在排队等待执行中
+	// - PROCESSING: 任务正在执行中 
+	// - FINISHED: 任务已完成
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务当前进度
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 转码任务中转码文件的原始URL
+	// 此参数只有任务类型为TranscodeH5、TranscodeJPG类型时才会有有效值。其他任务类型为空字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileURL *string `json:"FileURL,omitempty" name:"FileURL"`
+
+	// 房间号
+	// 
+	// 当任务类型为TranscodeH5、TranscodeJPG时，房间号为0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoomID *int64 `json:"RoomID,omitempty" name:"RoomID"`
+}
+
 // Predefined struct for user
 type SetOfflineRecordCallbackRequestParams struct {
 	// 客户的SdkAppId
@@ -3751,6 +4192,128 @@ func (r *SetOnlineRecordCallbackResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetOnlineRecordCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetPPTCheckCallbackKeyRequestParams struct {
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 设置回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257	
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+}
+
+type SetPPTCheckCallbackKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 设置回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257	
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+}
+
+func (r *SetPPTCheckCallbackKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetPPTCheckCallbackKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CallbackKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetPPTCheckCallbackKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetPPTCheckCallbackKeyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SetPPTCheckCallbackKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *SetPPTCheckCallbackKeyResponseParams `json:"Response"`
+}
+
+func (r *SetPPTCheckCallbackKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetPPTCheckCallbackKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetPPTCheckCallbackRequestParams struct {
+	// 客户的SdkAppId	
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 进度回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。 回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260	
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
+type SetPPTCheckCallbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户的SdkAppId	
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 进度回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。 回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260	
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
+func (r *SetPPTCheckCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetPPTCheckCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Callback")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetPPTCheckCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetPPTCheckCallbackResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SetPPTCheckCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *SetPPTCheckCallbackResponseParams `json:"Response"`
+}
+
+func (r *SetPPTCheckCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetPPTCheckCallbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3997,6 +4560,76 @@ func (r *SetVideoGenerationTaskCallbackResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetVideoGenerationTaskCallbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetWarningCallbackRequestParams struct {
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 告警回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
+	// 回调数据格式请参考文档：
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+	// 设置告警回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+}
+
+type SetWarningCallbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 告警回调地址，如果传空字符串会删除原来的回调地址配置，回调地址仅支持http或https协议，即回调地址以http://或https://开头。
+	// 回调数据格式请参考文档：
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+	// 设置告警回调鉴权密钥，最长64字符，如果传入空字符串，那么删除现有的鉴权回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+}
+
+func (r *SetWarningCallbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetWarningCallbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Callback")
+	delete(f, "CallbackKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetWarningCallbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetWarningCallbackResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SetWarningCallbackResponse struct {
+	*tchttp.BaseResponse
+	Response *SetWarningCallbackResponseParams `json:"Response"`
+}
+
+func (r *SetWarningCallbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetWarningCallbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

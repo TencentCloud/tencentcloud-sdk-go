@@ -2291,7 +2291,7 @@ type BashEvent struct {
 	// 数据ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 云镜ID
+	// 主机安全ID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 主机ID
@@ -2356,7 +2356,7 @@ type BashEventNew struct {
 	// 数据ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 云镜ID
+	// 主机安全ID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 主机ID
@@ -2429,7 +2429,7 @@ type BashEventsInfoNew struct {
 	// 数据ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 云镜ID
+	// 主机安全ID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 主机ID
@@ -2577,7 +2577,7 @@ type BruteAttackInfo struct {
 	// 唯一Id
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 云镜客户端唯一标识UUID
+	// 主机安全客户端唯一标识UUID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
@@ -4161,14 +4161,14 @@ func (r *DeleteLoginWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteMachineRequestParams struct {
-	// 云镜客户端Uuid。
+	// 主机安全客户端Uuid。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 type DeleteMachineRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云镜客户端Uuid。
+	// 主机安全客户端Uuid。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
@@ -13931,7 +13931,7 @@ func (r *DescribeLoginWhiteListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMachineInfoRequestParams struct {
-	// 云镜客户端唯一Uuid。
+	// 主机安全客户端唯一Uuid。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// Quuid , Uuid 必填一项
@@ -13941,7 +13941,7 @@ type DescribeMachineInfoRequestParams struct {
 type DescribeMachineInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云镜客户端唯一Uuid。
+	// 主机安全客户端唯一Uuid。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// Quuid , Uuid 必填一项
@@ -13973,7 +13973,7 @@ type DescribeMachineInfoResponseParams struct {
 	// 机器ip。
 	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
 
-	// 受云镜保护天数。
+	// 受主机安全保护天数。
 	ProtectDays *uint64 `json:"ProtectDays,omitempty" name:"ProtectDays"`
 
 	// 操作系统。
@@ -13996,7 +13996,7 @@ type DescribeMachineInfoResponseParams struct {
 	// CVM或BM主机唯一Uuid。
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
-	// 云镜客户端唯一Uuid。
+	// 主机安全客户端唯一Uuid。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 是否开通专业版。
@@ -14038,7 +14038,7 @@ type DescribeMachineInfoResponseParams struct {
 	// 是否有资产扫描记录，0无，1有
 	HasAssetScan *uint64 `json:"HasAssetScan,omitempty" name:"HasAssetScan"`
 
-	// 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版.
+	// 防护版本：BASIC_VERSION 基础版，PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
 	ProtectType *string `json:"ProtectType,omitempty" name:"ProtectType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -17787,14 +17787,14 @@ func (r *DescribeUndoVulCountsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUsualLoginPlacesRequestParams struct {
-	// 云镜客户端UUID
+	// 主机安全客户端UUID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 type DescribeUsualLoginPlacesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云镜客户端UUID
+	// 主机安全客户端UUID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
@@ -21782,7 +21782,7 @@ type HistoryAccount struct {
 	// 唯一ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 云镜客户端唯一Uuid。
+	// 主机安全客户端唯一Uuid。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 主机内网IP。

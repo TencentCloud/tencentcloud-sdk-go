@@ -200,7 +200,7 @@ type CreateAutoSnapshotPolicyRequestParams struct {
 	// 快照保留时长
 	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
 
-	// 快照按月重复，每月1-31号，选择一天，每月这一天打快照。
+	// 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。
 	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
 
 	// 间隔天数
@@ -222,7 +222,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	// 快照保留时长
 	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
 
-	// 快照按月重复，每月1-31号，选择一天，每月这一天打快照。
+	// 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。
 	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
 
 	// 间隔天数
@@ -2455,7 +2455,7 @@ type UpdateAutoSnapshotPolicyRequestParams struct {
 	// 是否激活定期快照功能
 	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
 
-	// 定期快照在月的某几天天，该参数与DayOfWeek互斥
+	// 定期快照在每月的第几天创建快照，该参数与DayOfWeek互斥
 	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
 
 	// 间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 互斥
@@ -2483,7 +2483,7 @@ type UpdateAutoSnapshotPolicyRequest struct {
 	// 是否激活定期快照功能
 	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
 
-	// 定期快照在月的某几天天，该参数与DayOfWeek互斥
+	// 定期快照在每月的第几天创建快照，该参数与DayOfWeek互斥
 	DayOfMonth *string `json:"DayOfMonth,omitempty" name:"DayOfMonth"`
 
 	// 间隔天数定期执行快照，该参数与DayOfWeek,DayOfMonth 互斥

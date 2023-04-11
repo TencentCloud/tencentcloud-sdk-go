@@ -223,6 +223,72 @@ func (c *Client) CreateOfflineRecordWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreatePPTCheckTaskRequest() (request *CreatePPTCheckTaskRequest) {
+    request = &CreatePPTCheckTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "CreatePPTCheckTask")
+    
+    
+    return
+}
+
+func NewCreatePPTCheckTaskResponse() (response *CreatePPTCheckTaskResponse) {
+    response = &CreatePPTCheckTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePPTCheckTask
+// 检测PPT文件，识别PPT中包含的动态转码任务（Transcode）不支持的元素
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_PREPROCESS = "FailedOperation.Preprocess"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
+//  INVALIDPARAMETER_PREPROCESSPARAMETER = "InvalidParameter.PreprocessParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) CreatePPTCheckTask(request *CreatePPTCheckTaskRequest) (response *CreatePPTCheckTaskResponse, err error) {
+    return c.CreatePPTCheckTaskWithContext(context.Background(), request)
+}
+
+// CreatePPTCheckTask
+// 检测PPT文件，识别PPT中包含的动态转码任务（Transcode）不支持的元素
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_PREPROCESS = "FailedOperation.Preprocess"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
+//  INVALIDPARAMETER_PREPROCESSPARAMETER = "InvalidParameter.PreprocessParameter"
+//  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
+//  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) CreatePPTCheckTaskWithContext(ctx context.Context, request *CreatePPTCheckTaskRequest) (response *CreatePPTCheckTaskResponse, err error) {
+    if request == nil {
+        request = NewCreatePPTCheckTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePPTCheckTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePPTCheckTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSnapshotTaskRequest() (request *CreateSnapshotTaskRequest) {
     request = &CreateSnapshotTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -929,6 +995,140 @@ func (c *Client) DescribeOnlineRecordCallbackWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribePPTCheckRequest() (request *DescribePPTCheckRequest) {
+    request = &DescribePPTCheckRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribePPTCheck")
+    
+    
+    return
+}
+
+func NewDescribePPTCheckResponse() (response *DescribePPTCheckResponse) {
+    response = &DescribePPTCheckResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePPTCheck
+// 查询PPT检测任务的执行进度或结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_FILEDOWNLOADFAIL = "FailedOperation.FileDownloadFail"
+//  FAILEDOPERATION_FILEFORMATERROR = "FailedOperation.FileFormatError"
+//  FAILEDOPERATION_FILEOPENFAIL = "FailedOperation.FileOpenFail"
+//  FAILEDOPERATION_FILEUPLOADFAIL = "FailedOperation.FileUploadFail"
+//  FAILEDOPERATION_PREPROCESS = "FailedOperation.Preprocess"
+//  FAILEDOPERATION_PREPROCESSSERVERERROR = "FailedOperation.PreprocessServerError"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
+//  INVALIDPARAMETER_PREPROCESSPARAMETER = "InvalidParameter.PreprocessParameter"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  INVALIDPARAMETER_URLFORMATERROR = "InvalidParameter.UrlFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribePPTCheck(request *DescribePPTCheckRequest) (response *DescribePPTCheckResponse, err error) {
+    return c.DescribePPTCheckWithContext(context.Background(), request)
+}
+
+// DescribePPTCheck
+// 查询PPT检测任务的执行进度或结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_FILEDOWNLOADFAIL = "FailedOperation.FileDownloadFail"
+//  FAILEDOPERATION_FILEFORMATERROR = "FailedOperation.FileFormatError"
+//  FAILEDOPERATION_FILEOPENFAIL = "FailedOperation.FileOpenFail"
+//  FAILEDOPERATION_FILEUPLOADFAIL = "FailedOperation.FileUploadFail"
+//  FAILEDOPERATION_PREPROCESS = "FailedOperation.Preprocess"
+//  FAILEDOPERATION_PREPROCESSSERVERERROR = "FailedOperation.PreprocessServerError"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
+//  INVALIDPARAMETER_PREPROCESSPARAMETER = "InvalidParameter.PreprocessParameter"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  INVALIDPARAMETER_URLFORMATERROR = "InvalidParameter.UrlFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribePPTCheckWithContext(ctx context.Context, request *DescribePPTCheckRequest) (response *DescribePPTCheckResponse, err error) {
+    if request == nil {
+        request = NewDescribePPTCheckRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePPTCheck require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePPTCheckResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePPTCheckCallbackRequest() (request *DescribePPTCheckCallbackRequest) {
+    request = &DescribePPTCheckCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribePPTCheckCallback")
+    
+    
+    return
+}
+
+func NewDescribePPTCheckCallbackResponse() (response *DescribePPTCheckCallbackResponse) {
+    response = &DescribePPTCheckCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePPTCheckCallback
+// 查询PPT检测任务回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribePPTCheckCallback(request *DescribePPTCheckCallbackRequest) (response *DescribePPTCheckCallbackResponse, err error) {
+    return c.DescribePPTCheckCallbackWithContext(context.Background(), request)
+}
+
+// DescribePPTCheckCallback
+// 查询PPT检测任务回调地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribePPTCheckCallbackWithContext(ctx context.Context, request *DescribePPTCheckCallbackRequest) (response *DescribePPTCheckCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribePPTCheckCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePPTCheckCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePPTCheckCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePostpaidUsageRequest() (request *DescribePostpaidUsageRequest) {
     request = &DescribePostpaidUsageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1149,6 +1349,84 @@ func (c *Client) DescribeRoomListWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeRoomListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRunningTasksRequest() (request *DescribeRunningTasksRequest) {
+    request = &DescribeRunningTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeRunningTasks")
+    
+    
+    return
+}
+
+func NewDescribeRunningTasksResponse() (response *DescribeRunningTasksResponse) {
+    response = &DescribeRunningTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRunningTasks
+// 根据指定的任务类型，获取当前正在执行中的任务列表。只能查询最近3天内创建的任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_FILEDOWNLOADFAIL = "FailedOperation.FileDownloadFail"
+//  FAILEDOPERATION_FILEFORMATERROR = "FailedOperation.FileFormatError"
+//  FAILEDOPERATION_FILEOPENFAIL = "FailedOperation.FileOpenFail"
+//  FAILEDOPERATION_FILEUPLOADFAIL = "FailedOperation.FileUploadFail"
+//  FAILEDOPERATION_TRANSCODE = "FailedOperation.Transcode"
+//  FAILEDOPERATION_TRANSCODESERVERERROR = "FailedOperation.TranscodeServerError"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+//  INVALIDPARAMETER_URLFORMATERROR = "InvalidParameter.UrlFormatError"
+//  LIMITEXCEEDED_TRANSCODEPAGESLIMITATION = "LimitExceeded.TranscodePagesLimitation"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeRunningTasks(request *DescribeRunningTasksRequest) (response *DescribeRunningTasksResponse, err error) {
+    return c.DescribeRunningTasksWithContext(context.Background(), request)
+}
+
+// DescribeRunningTasks
+// 根据指定的任务类型，获取当前正在执行中的任务列表。只能查询最近3天内创建的任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_FILEDOWNLOADFAIL = "FailedOperation.FileDownloadFail"
+//  FAILEDOPERATION_FILEFORMATERROR = "FailedOperation.FileFormatError"
+//  FAILEDOPERATION_FILEOPENFAIL = "FailedOperation.FileOpenFail"
+//  FAILEDOPERATION_FILEUPLOADFAIL = "FailedOperation.FileUploadFail"
+//  FAILEDOPERATION_TRANSCODE = "FailedOperation.Transcode"
+//  FAILEDOPERATION_TRANSCODESERVERERROR = "FailedOperation.TranscodeServerError"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_FILEFORMATUNSUPPORTED = "InvalidParameter.FileFormatUnsupported"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  INVALIDPARAMETER_TRANSCODEPARAMETER = "InvalidParameter.TranscodeParameter"
+//  INVALIDPARAMETER_URLFORMATERROR = "InvalidParameter.UrlFormatError"
+//  LIMITEXCEEDED_TRANSCODEPAGESLIMITATION = "LimitExceeded.TranscodePagesLimitation"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeRunningTasksWithContext(ctx context.Context, request *DescribeRunningTasksRequest) (response *DescribeRunningTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeRunningTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRunningTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRunningTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -1889,6 +2167,64 @@ func (c *Client) DescribeVideoGenerationTaskCallbackWithContext(ctx context.Cont
     request.SetContext(ctx)
     
     response = NewDescribeVideoGenerationTaskCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWarningCallbackRequest() (request *DescribeWarningCallbackRequest) {
+    request = &DescribeWarningCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeWarningCallback")
+    
+    
+    return
+}
+
+func NewDescribeWarningCallbackResponse() (response *DescribeWarningCallbackResponse) {
+    response = &DescribeWarningCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWarningCallback
+// 查询告警回调地址。此功能需要申请白名单使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWarningCallback(request *DescribeWarningCallbackRequest) (response *DescribeWarningCallbackResponse, err error) {
+    return c.DescribeWarningCallbackWithContext(context.Background(), request)
+}
+
+// DescribeWarningCallback
+// 查询告警回调地址。此功能需要申请白名单使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeWarningCallbackWithContext(ctx context.Context, request *DescribeWarningCallbackRequest) (response *DescribeWarningCallbackResponse, err error) {
+    if request == nil {
+        request = NewDescribeWarningCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWarningCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWarningCallbackResponse()
     err = c.Send(request, response)
     return
 }
@@ -2745,6 +3081,122 @@ func (c *Client) SetOnlineRecordCallbackKeyWithContext(ctx context.Context, requ
     return
 }
 
+func NewSetPPTCheckCallbackRequest() (request *SetPPTCheckCallbackRequest) {
+    request = &SetPPTCheckCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "SetPPTCheckCallback")
+    
+    
+    return
+}
+
+func NewSetPPTCheckCallbackResponse() (response *SetPPTCheckCallbackResponse) {
+    response = &SetPPTCheckCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetPPTCheckCallback
+// 设置PPT检测任务回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetPPTCheckCallback(request *SetPPTCheckCallbackRequest) (response *SetPPTCheckCallbackResponse, err error) {
+    return c.SetPPTCheckCallbackWithContext(context.Background(), request)
+}
+
+// SetPPTCheckCallback
+// 设置PPT检测任务回调地址，回调数据格式请参考文档：https://cloud.tencent.com/document/product/1137/40260
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetPPTCheckCallbackWithContext(ctx context.Context, request *SetPPTCheckCallbackRequest) (response *SetPPTCheckCallbackResponse, err error) {
+    if request == nil {
+        request = NewSetPPTCheckCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetPPTCheckCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetPPTCheckCallbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetPPTCheckCallbackKeyRequest() (request *SetPPTCheckCallbackKeyRequest) {
+    request = &SetPPTCheckCallbackKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "SetPPTCheckCallbackKey")
+    
+    
+    return
+}
+
+func NewSetPPTCheckCallbackKeyResponse() (response *SetPPTCheckCallbackKeyResponse) {
+    response = &SetPPTCheckCallbackKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetPPTCheckCallbackKey
+// 设置PPT检测任务回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetPPTCheckCallbackKey(request *SetPPTCheckCallbackKeyRequest) (response *SetPPTCheckCallbackKeyResponse, err error) {
+    return c.SetPPTCheckCallbackKeyWithContext(context.Background(), request)
+}
+
+// SetPPTCheckCallbackKey
+// 设置PPT检测任务回调密钥，回调鉴权方式请参考文档：https://cloud.tencent.com/document/product/1137/40257
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetPPTCheckCallbackKeyWithContext(ctx context.Context, request *SetPPTCheckCallbackKeyRequest) (response *SetPPTCheckCallbackKeyResponse, err error) {
+    if request == nil {
+        request = NewSetPPTCheckCallbackKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetPPTCheckCallbackKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetPPTCheckCallbackKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetTranscodeCallbackRequest() (request *SetTranscodeCallbackRequest) {
     request = &SetTranscodeCallbackRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2973,6 +3425,64 @@ func (c *Client) SetVideoGenerationTaskCallbackKeyWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewSetVideoGenerationTaskCallbackKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetWarningCallbackRequest() (request *SetWarningCallbackRequest) {
+    request = &SetWarningCallbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "SetWarningCallback")
+    
+    
+    return
+}
+
+func NewSetWarningCallbackResponse() (response *SetWarningCallbackResponse) {
+    response = &SetWarningCallbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetWarningCallback
+// 设置告警回调地址。此功能需要申请白名单使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetWarningCallback(request *SetWarningCallbackRequest) (response *SetWarningCallbackResponse, err error) {
+    return c.SetWarningCallbackWithContext(context.Background(), request)
+}
+
+// SetWarningCallback
+// 设置告警回调地址。此功能需要申请白名单使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_CALLBACKADDRESSFORMATERROR = "InvalidParameter.CallbackAddressFormatError"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) SetWarningCallbackWithContext(ctx context.Context, request *SetWarningCallbackRequest) (response *SetWarningCallbackResponse, err error) {
+    if request == nil {
+        request = NewSetWarningCallbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetWarningCallback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetWarningCallbackResponse()
     err = c.Send(request, response)
     return
 }

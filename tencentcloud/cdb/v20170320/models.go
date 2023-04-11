@@ -13252,6 +13252,9 @@ type UpgradeDBInstanceRequestParams struct {
 
 	// 主节点可用区，该值仅在跨区迁移时生效。仅支持同地域下的可用区进行迁移。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
+	RoTransType *string `json:"RoTransType,omitempty" name:"RoTransType"`
 }
 
 type UpgradeDBInstanceRequest struct {
@@ -13304,6 +13307,9 @@ type UpgradeDBInstanceRequest struct {
 
 	// 主节点可用区，该值仅在跨区迁移时生效。仅支持同地域下的可用区进行迁移。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 针对跨集群搬迁场景，选择同可用区RO的处理逻辑。together-同可用区RO跟随主实例迁移至目标可用区（默认选项），severally-同可用区RO保持原部署模式、不迁移至目标可用区。
+	RoTransType *string `json:"RoTransType,omitempty" name:"RoTransType"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -13334,6 +13340,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MaxDelayTime")
 	delete(f, "CrossCluster")
 	delete(f, "ZoneId")
+	delete(f, "RoTransType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

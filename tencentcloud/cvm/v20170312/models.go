@@ -4706,7 +4706,7 @@ type Image struct {
 	// IMPORTFAILED-导入失败
 	ImageState *string `json:"ImageState,omitempty" name:"ImageState"`
 
-	// 镜像来源平台
+	// 镜像来源平台，包括如TencentOS、 CentOS、 Windows、 Ubuntu、 Debian、Fedora等。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// 镜像创建者

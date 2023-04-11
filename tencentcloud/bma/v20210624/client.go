@@ -736,6 +736,10 @@ func NewCreateCRObtainResponse() (response *CreateCRObtainResponse) {
 }
 
 // CreateCRObtain
+// 不对外提供接口能力了
+//
+// 
+//
 // 版权保护-新建取证接口
 //
 // 可能返回的错误码:
@@ -763,6 +767,10 @@ func (c *Client) CreateCRObtain(request *CreateCRObtainRequest) (response *Creat
 }
 
 // CreateCRObtain
+// 不对外提供接口能力了
+//
+// 
+//
 // 版权保护-新建取证接口
 //
 // 可能返回的错误码:

@@ -272,26 +272,30 @@ func (r *CreateAccountUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBackupDBInstanceRequestParams struct {
-	// 实例id
+	// 实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 0-逻辑备份，1-物理备份
+	// 设置备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
 	BackupMethod *int64 `json:"BackupMethod,omitempty" name:"BackupMethod"`
 
-	// 备份备注
+	// 备份备注信息。
 	BackupRemark *string `json:"BackupRemark,omitempty" name:"BackupRemark"`
 }
 
 type CreateBackupDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// 实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 0-逻辑备份，1-物理备份
+	// 设置备份方式。
+	// - 0：逻辑备份。
+	// - 1：物理备份。
 	BackupMethod *int64 `json:"BackupMethod,omitempty" name:"BackupMethod"`
 
-	// 备份备注
+	// 备份备注信息。
 	BackupRemark *string `json:"BackupRemark,omitempty" name:"BackupRemark"`
 }
 
@@ -318,7 +322,7 @@ func (r *CreateBackupDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBackupDBInstanceResponseParams struct {
-	// 查询备份流程的状态
+	// 查询备份流程的状态。
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1019,6 +1023,77 @@ type DBInstancePrice struct {
 
 	// 折扣加
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+}
+
+// Predefined struct for user
+type DeleteAccountUserRequestParams struct {
+	// 指定待删除账号的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 配置待删除的账号名。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 配置 mongouser 对应的密码。mongouser为系统默认账号，输入其对应的密码。
+	MongoUserPassword *string `json:"MongoUserPassword,omitempty" name:"MongoUserPassword"`
+}
+
+type DeleteAccountUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定待删除账号的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 配置待删除的账号名。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 配置 mongouser 对应的密码。mongouser为系统默认账号，输入其对应的密码。
+	MongoUserPassword *string `json:"MongoUserPassword,omitempty" name:"MongoUserPassword"`
+}
+
+func (r *DeleteAccountUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccountUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "MongoUserPassword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccountUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAccountUserResponseParams struct {
+	// 账户删除任务ID。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAccountUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAccountUserResponseParams `json:"Response"`
+}
+
+func (r *DeleteAccountUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccountUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1869,14 +1944,14 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceParamsRequestParams struct {
-	// 实例ID
+	// 指定待查询参数列表的实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceParamsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 指定待查询参数列表的实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -1901,16 +1976,16 @@ func (r *DescribeInstanceParamsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceParamsResponseParams struct {
-	// 值为枚举类型参数集合
+	// 参数值为枚举类型参数集合。
 	InstanceEnumParam []*InstanceEnumParam `json:"InstanceEnumParam,omitempty" name:"InstanceEnumParam"`
 
-	// 值为integer类型参数集合
+	// 参数值为 Integer 类型参数集合。
 	InstanceIntegerParam []*InstanceIntegerParam `json:"InstanceIntegerParam,omitempty" name:"InstanceIntegerParam"`
 
-	// 值为text类型的参数集合
+	// 参数值为 Text 类型的参数集合。
 	InstanceTextParam []*InstanceTextParam `json:"InstanceTextParam,omitempty" name:"InstanceTextParam"`
 
-	// 值为混合类型的参数集合
+	// 参数值为混合类型的参数集合。
 	InstanceMultiParam []*InstanceMultiParam `json:"InstanceMultiParam,omitempty" name:"InstanceMultiParam"`
 
 	// 当前实例支持修改的参数个数统计 如0
@@ -2791,112 +2866,126 @@ type InstanceDetail struct {
 }
 
 type InstanceEnumParam struct {
-	// 参数当前值
+	// 参数当前值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 默认值
+	// 参数默认值。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 
-	// 枚举值，所有支持的值
+	// 枚举值，所有支持的值。
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 
-	// 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
+	// 参数修改之后是否需要重启生效。
+	// - 1：需要重启后生效。
+	// - 0：无需重启，设置成功即可生效。
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
-	// 参数名称
+	// 参数名称。
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// 中英文说明
+	// 参数说明。
 	Tips []*string `json:"Tips,omitempty" name:"Tips"`
 
-	// 参数值类型说明
+	// 参数值类型说明。
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
+	// 是否为运行中参数值。
+	// - 1：运行中参数值。
+	// - 0：非运行中参数值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type InstanceIntegerParam struct {
-	// 当前值
+	// 参数当前值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 默认值
+	// 参数默认值。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 
-	// 最大值
+	// 参数最大值。
 	Max *string `json:"Max,omitempty" name:"Max"`
 
-	// 最小值
+	// 最小值。
 	Min *string `json:"Min,omitempty" name:"Min"`
 
-	// 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
+	// 参数修改之后是否需要重启生效。
+	// - 1:需要重启后生效。
+	// - 0：无需重启，设置成功即可生效。
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
-	// 参数名称
+	// 参数名称。
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// 参数说明
+	// 参数说明。
 	Tips []*string `json:"Tips,omitempty" name:"Tips"`
 
-	// 参数类型
+	// 参数类型。
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
+	// 是否为运行中参数值。
+	// - 1：运行中参数值。
+	// - 0：非运行中参数值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 冗余字段，可忽略
+	// 冗余字段，可忽略。
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
 }
 
 type InstanceMultiParam struct {
-	// 当前值
+	// 参数当前值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 默认值
+	// 参数默认值。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 
-	// 指导值范围
+	// 参考值范围。
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 
-	// 是否需要重启生效 1:需要重启后生效；0：无需重启，设置成功即可生效；
+	// 参数修改后是否需要重启才会生效。
+	// - 1：需要重启后生效。
+	// - 0：无需重启，设置成功即可生效。
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
-	// 参数名称
+	// 参数名称。
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
+	// 是否为运行中参数值。
+	// - 1：运行中参数值。
+	// - 0：非运行中参数值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 参数说明
+	// 参数说明。
 	Tips []*string `json:"Tips,omitempty" name:"Tips"`
 
-	// 当前值的类型描述，默认为multi
+	// 当前值的类型描述，默认为multi。
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 }
 
 type InstanceTextParam struct {
-	// 当前值
+	// 参数当前值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 默认值
+	// 参数默认值。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 
-	// 是否需要重启
+	// 修改参数值之后是否需要重启。
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
-	// 参数名称
+	// 参数名称。
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// text类型值
+	// Text 类型参数对应的值。
 	TextValue *string `json:"TextValue,omitempty" name:"TextValue"`
 
-	// 参数说明
+	// 参数说明。
 	Tips []*string `json:"Tips,omitempty" name:"Tips"`
 
-	// 值类型说明
+	// 参数值类型说明。
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 是否为运行中参数值 1:运行中参数值；0：非运行中参数值；
+	// 是否为运行中的参数值。
+	// - 1：运行中参数值。
+	// - 0：非运行中参数值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
@@ -3647,26 +3736,26 @@ type SecurityGroupBound struct {
 
 // Predefined struct for user
 type SetAccountUserPrivilegeRequestParams struct {
-	// 实例ID。
+	// 指定待设置账号的实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 账号名称。
+	// 设置账号名称。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 权限信息。
+	// 设置权限信息。
 	AuthRole []*Auth `json:"AuthRole,omitempty" name:"AuthRole"`
 }
 
 type SetAccountUserPrivilegeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 指定待设置账号的实例ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 账号名称。
+	// 设置账号名称。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
-	// 权限信息。
+	// 设置权限信息。
 	AuthRole []*Auth `json:"AuthRole,omitempty" name:"AuthRole"`
 }
 
@@ -3693,7 +3782,7 @@ func (r *SetAccountUserPrivilegeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetAccountUserPrivilegeResponseParams struct {
-	// 设置任务ID,用于查询是否设置完成
+	// 任务ID。
 	FlowId *uint64 `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

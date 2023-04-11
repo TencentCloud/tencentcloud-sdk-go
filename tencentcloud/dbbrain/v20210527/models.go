@@ -2975,6 +2975,143 @@ func (r *DescribeSlowLogUserHostStatsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSlowLogsRequestParams struct {
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 实例id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// sql模版的md5值
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 开始时间，如“2019-09-10 12:13:14”。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 数据库列表
+	DB []*string `json:"DB,omitempty" name:"DB"`
+
+	// 关键字
+	Key []*string `json:"Key,omitempty" name:"Key"`
+
+	// 用户
+	User []*string `json:"User,omitempty" name:"User"`
+
+	// ip
+	Ip []*string `json:"Ip,omitempty" name:"Ip"`
+
+	// 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
+	Time []*int64 `json:"Time,omitempty" name:"Time"`
+}
+
+type DescribeSlowLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 实例id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// sql模版的md5值
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 开始时间，如“2019-09-10 12:13:14”。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 数据库列表
+	DB []*string `json:"DB,omitempty" name:"DB"`
+
+	// 关键字
+	Key []*string `json:"Key,omitempty" name:"Key"`
+
+	// 用户
+	User []*string `json:"User,omitempty" name:"User"`
+
+	// ip
+	Ip []*string `json:"Ip,omitempty" name:"Ip"`
+
+	// 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
+	Time []*int64 `json:"Time,omitempty" name:"Time"`
+}
+
+func (r *DescribeSlowLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "InstanceId")
+	delete(f, "Md5")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "DB")
+	delete(f, "Key")
+	delete(f, "User")
+	delete(f, "Ip")
+	delete(f, "Time")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSlowLogsResponseParams struct {
+	// 符合条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 慢日志明细
+	Rows []*SlowLogInfoItem `json:"Rows,omitempty" name:"Rows"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSlowLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSlowLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSlowLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSqlFiltersRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -4418,6 +4555,40 @@ type SlowLogHost struct {
 
 	// 该来源地址的慢日志数目。
 	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
+type SlowLogInfoItem struct {
+	// 慢日志开始时间
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// sql语句
+	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+
+	// 数据库
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// User来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// IP来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserHost *string `json:"UserHost,omitempty" name:"UserHost"`
+
+	// 执行时间,单位秒
+	QueryTime *int64 `json:"QueryTime,omitempty" name:"QueryTime"`
+
+	// 锁时间,单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockTime *int64 `json:"LockTime,omitempty" name:"LockTime"`
+
+	// 扫描行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowsExamined *int64 `json:"RowsExamined,omitempty" name:"RowsExamined"`
+
+	// 返回行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowsSent *int64 `json:"RowsSent,omitempty" name:"RowsSent"`
 }
 
 type SlowLogTopSqlItem struct {

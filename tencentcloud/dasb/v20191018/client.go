@@ -1883,6 +1883,114 @@ func (c *Client) DescribeDevicesWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeLoginEventRequest() (request *DescribeLoginEventRequest) {
+    request = &DescribeLoginEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DescribeLoginEvent")
+    
+    
+    return
+}
+
+func NewDescribeLoginEventResponse() (response *DescribeLoginEventResponse) {
+    response = &DescribeLoginEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLoginEvent
+// 查询登录日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLoginEvent(request *DescribeLoginEventRequest) (response *DescribeLoginEventResponse, err error) {
+    return c.DescribeLoginEventWithContext(context.Background(), request)
+}
+
+// DescribeLoginEvent
+// 查询登录日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLoginEventWithContext(ctx context.Context, request *DescribeLoginEventRequest) (response *DescribeLoginEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeLoginEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLoginEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLoginEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOperationEventRequest() (request *DescribeOperationEventRequest) {
+    request = &DescribeOperationEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "DescribeOperationEvent")
+    
+    
+    return
+}
+
+func NewDescribeOperationEventResponse() (response *DescribeOperationEventResponse) {
+    response = &DescribeOperationEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOperationEvent
+// 查询操作日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeOperationEvent(request *DescribeOperationEventRequest) (response *DescribeOperationEventResponse, err error) {
+    return c.DescribeOperationEventWithContext(context.Background(), request)
+}
+
+// DescribeOperationEvent
+// 查询操作日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeOperationEventWithContext(ctx context.Context, request *DescribeOperationEventRequest) (response *DescribeOperationEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeOperationEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOperationEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOperationEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
     request = &DescribeResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2699,6 +2807,370 @@ func (c *Client) ResetUserWithContext(ctx context.Context, request *ResetUserReq
     request.SetContext(ctx)
     
     response = NewResetUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchAuditLogRequest() (request *SearchAuditLogRequest) {
+    request = &SearchAuditLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "SearchAuditLog")
+    
+    
+    return
+}
+
+func NewSearchAuditLogResponse() (response *SearchAuditLogResponse) {
+    response = &SearchAuditLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchAuditLog
+// 搜索审计日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchAuditLog(request *SearchAuditLogRequest) (response *SearchAuditLogResponse, err error) {
+    return c.SearchAuditLogWithContext(context.Background(), request)
+}
+
+// SearchAuditLog
+// 搜索审计日志
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchAuditLogWithContext(ctx context.Context, request *SearchAuditLogRequest) (response *SearchAuditLogResponse, err error) {
+    if request == nil {
+        request = NewSearchAuditLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchAuditLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchAuditLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchCommandRequest() (request *SearchCommandRequest) {
+    request = &SearchCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "SearchCommand")
+    
+    
+    return
+}
+
+func NewSearchCommandResponse() (response *SearchCommandResponse) {
+    response = &SearchCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchCommand
+// 命令执行检索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchCommand(request *SearchCommandRequest) (response *SearchCommandResponse, err error) {
+    return c.SearchCommandWithContext(context.Background(), request)
+}
+
+// SearchCommand
+// 命令执行检索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchCommandWithContext(ctx context.Context, request *SearchCommandRequest) (response *SearchCommandResponse, err error) {
+    if request == nil {
+        request = NewSearchCommandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchCommandBySidRequest() (request *SearchCommandBySidRequest) {
+    request = &SearchCommandBySidRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "SearchCommandBySid")
+    
+    
+    return
+}
+
+func NewSearchCommandBySidResponse() (response *SearchCommandBySidResponse) {
+    response = &SearchCommandBySidResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchCommandBySid
+// 根据会话Id搜索Command
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchCommandBySid(request *SearchCommandBySidRequest) (response *SearchCommandBySidResponse, err error) {
+    return c.SearchCommandBySidWithContext(context.Background(), request)
+}
+
+// SearchCommandBySid
+// 根据会话Id搜索Command
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchCommandBySidWithContext(ctx context.Context, request *SearchCommandBySidRequest) (response *SearchCommandBySidResponse, err error) {
+    if request == nil {
+        request = NewSearchCommandBySidRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchCommandBySid require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchCommandBySidResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchFileRequest() (request *SearchFileRequest) {
+    request = &SearchFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "SearchFile")
+    
+    
+    return
+}
+
+func NewSearchFileResponse() (response *SearchFileResponse) {
+    response = &SearchFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchFile
+// 文件传输检索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchFile(request *SearchFileRequest) (response *SearchFileResponse, err error) {
+    return c.SearchFileWithContext(context.Background(), request)
+}
+
+// SearchFile
+// 文件传输检索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchFileWithContext(ctx context.Context, request *SearchFileRequest) (response *SearchFileResponse, err error) {
+    if request == nil {
+        request = NewSearchFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchFileBySidRequest() (request *SearchFileBySidRequest) {
+    request = &SearchFileBySidRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "SearchFileBySid")
+    
+    
+    return
+}
+
+func NewSearchFileBySidResponse() (response *SearchFileBySidResponse) {
+    response = &SearchFileBySidResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchFileBySid
+// 搜索文件传输会话下文件操作列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchFileBySid(request *SearchFileBySidRequest) (response *SearchFileBySidResponse, err error) {
+    return c.SearchFileBySidWithContext(context.Background(), request)
+}
+
+// SearchFileBySid
+// 搜索文件传输会话下文件操作列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchFileBySidWithContext(ctx context.Context, request *SearchFileBySidRequest) (response *SearchFileBySidResponse, err error) {
+    if request == nil {
+        request = NewSearchFileBySidRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchFileBySid require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchFileBySidResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchSessionRequest() (request *SearchSessionRequest) {
+    request = &SearchSessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "SearchSession")
+    
+    
+    return
+}
+
+func NewSearchSessionResponse() (response *SearchSessionResponse) {
+    response = &SearchSessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchSession
+// 搜索会话
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchSession(request *SearchSessionRequest) (response *SearchSessionResponse, err error) {
+    return c.SearchSessionWithContext(context.Background(), request)
+}
+
+// SearchSession
+// 搜索会话
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchSessionWithContext(ctx context.Context, request *SearchSessionRequest) (response *SearchSessionResponse, err error) {
+    if request == nil {
+        request = NewSearchSessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchSession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchSessionCommandRequest() (request *SearchSessionCommandRequest) {
+    request = &SearchSessionCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "SearchSessionCommand")
+    
+    
+    return
+}
+
+func NewSearchSessionCommandResponse() (response *SearchSessionCommandResponse) {
+    response = &SearchSessionCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchSessionCommand
+// 命令检索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchSessionCommand(request *SearchSessionCommandRequest) (response *SearchSessionCommandResponse, err error) {
+    return c.SearchSessionCommandWithContext(context.Background(), request)
+}
+
+// SearchSessionCommand
+// 命令检索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchSessionCommandWithContext(ctx context.Context, request *SearchSessionCommandRequest) (response *SearchSessionCommandResponse, err error) {
+    if request == nil {
+        request = NewSearchSessionCommandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchSessionCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchSessionCommandResponse()
     err = c.Send(request, response)
     return
 }

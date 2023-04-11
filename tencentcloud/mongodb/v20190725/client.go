@@ -174,7 +174,7 @@ func NewCreateBackupDBInstanceResponse() (response *CreateBackupDBInstanceRespon
 }
 
 // CreateBackupDBInstance
-// 备份实例接口
+// 本接口（CreateBackupDBInstance）用于备份实例。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -189,7 +189,7 @@ func (c *Client) CreateBackupDBInstance(request *CreateBackupDBInstanceRequest) 
 }
 
 // CreateBackupDBInstance
-// 备份实例接口
+// 本接口（CreateBackupDBInstance）用于备份实例。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -429,6 +429,88 @@ func (c *Client) CreateDBInstanceHourWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateDBInstanceHourResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAccountUserRequest() (request *DeleteAccountUserRequest) {
+    request = &DeleteAccountUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DeleteAccountUser")
+    
+    
+    return
+}
+
+func NewDeleteAccountUserResponse() (response *DeleteAccountUserResponse) {
+    response = &DeleteAccountUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAccountUser
+// 本接口（DeleteAccountUser）用于删除实例的自定义账号。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = "InvalidParameterValue.ClusterTypeError"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
+//  INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
+//  INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
+//  INVALIDPARAMETERVALUE_POSTPAIDINSTANCEBEYONDLIMIT = "InvalidParameterValue.PostPaidInstanceBeyondLimit"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
+//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+//  INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) DeleteAccountUser(request *DeleteAccountUserRequest) (response *DeleteAccountUserResponse, err error) {
+    return c.DeleteAccountUserWithContext(context.Background(), request)
+}
+
+// DeleteAccountUser
+// 本接口（DeleteAccountUser）用于删除实例的自定义账号。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_CLUSTERTYPEERROR = "InvalidParameterValue.ClusterTypeError"
+//  INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
+//  INVALIDPARAMETERVALUE_MACHINETYPEERROR = "InvalidParameterValue.MachineTypeError"
+//  INVALIDPARAMETERVALUE_MONGOVERSIONERROR = "InvalidParameterValue.MongoVersionError"
+//  INVALIDPARAMETERVALUE_PASSWORDRULEFAILED = "InvalidParameterValue.PasswordRuleFailed"
+//  INVALIDPARAMETERVALUE_POSTPAIDINSTANCEBEYONDLIMIT = "InvalidParameterValue.PostPaidInstanceBeyondLimit"
+//  INVALIDPARAMETERVALUE_PROJECTNOTFOUND = "InvalidParameterValue.ProjectNotFound"
+//  INVALIDPARAMETERVALUE_REGIONERROR = "InvalidParameterValue.RegionError"
+//  INVALIDPARAMETERVALUE_REPLICASETNUMERROR = "InvalidParameterValue.ReplicaSetNumError"
+//  INVALIDPARAMETERVALUE_SPECNOTONSALE = "InvalidParameterValue.SpecNotOnSale"
+//  INVALIDPARAMETERVALUE_STATUSABNORMAL = "InvalidParameterValue.StatusAbnormal"
+//  INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
+//  INVALIDPARAMETERVALUE_VPCIDORSUBNETIDNOTFOUND = "InvalidParameterValue.VpcIdOrSubnetIdNotFound"
+//  INVALIDPARAMETERVALUE_ZONECLOSED = "InvalidParameterValue.ZoneClosed"
+//  INVALIDPARAMETERVALUE_ZONEERROR = "InvalidParameterValue.ZoneError"
+//  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
+func (c *Client) DeleteAccountUserWithContext(ctx context.Context, request *DeleteAccountUserRequest) (response *DeleteAccountUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccountUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccountUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccountUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -940,7 +1022,7 @@ func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsRespon
 }
 
 // DescribeInstanceParams
-// 本接口(DescribeInstanceParams)用于查询当前实例可修改的参数列表。
+// 本接口（DescribeInstanceParams）用于查询当前实例可修改的参数列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -954,7 +1036,7 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
 }
 
 // DescribeInstanceParams
-// 本接口(DescribeInstanceParams)用于查询当前实例可修改的参数列表。
+// 本接口（DescribeInstanceParams）用于查询当前实例可修改的参数列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1976,7 +2058,7 @@ func NewSetAccountUserPrivilegeResponse() (response *SetAccountUserPrivilegeResp
 }
 
 // SetAccountUserPrivilege
-// 本接口(SetAccountUserPrivilege)用于设置mongodb实例的账号权限。
+// 本接口（SetAccountUserPrivilege）用于设置实例的账号权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1987,7 +2069,7 @@ func (c *Client) SetAccountUserPrivilege(request *SetAccountUserPrivilegeRequest
 }
 
 // SetAccountUserPrivilege
-// 本接口(SetAccountUserPrivilege)用于设置mongodb实例的账号权限。
+// 本接口（SetAccountUserPrivilege）用于设置实例的账号权限。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

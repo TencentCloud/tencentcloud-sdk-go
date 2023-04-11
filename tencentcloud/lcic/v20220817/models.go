@@ -939,6 +939,11 @@ type CreateRoomRequestParams struct {
 	// 1 自动连麦
 	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
 
+	// 释放音视频权限后是否自动取消连麦。可以有以下取值：
+	// 0 自动取消连麦（默认值）
+	// 1 保持连麦状态
+	TurnOffMic *uint64 `json:"TurnOffMic,omitempty" name:"TurnOffMic"`
+
 	// 高音质模式。可以有以下取值：
 	// 0 不开启高音质（默认值）
 	// 1 开启高音质
@@ -952,6 +957,12 @@ type CreateRoomRequestParams struct {
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+
+	// rtc人数。
+	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
+
+	// 观看类型。0未知，1互动，2cdn或直播。 目前仅支持互动类型
+	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
 
 	// 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
@@ -997,6 +1008,11 @@ type CreateRoomRequest struct {
 	// 1 自动连麦
 	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
 
+	// 释放音视频权限后是否自动取消连麦。可以有以下取值：
+	// 0 自动取消连麦（默认值）
+	// 1 保持连麦状态
+	TurnOffMic *uint64 `json:"TurnOffMic,omitempty" name:"TurnOffMic"`
+
 	// 高音质模式。可以有以下取值：
 	// 0 不开启高音质（默认值）
 	// 1 开启高音质
@@ -1010,6 +1026,12 @@ type CreateRoomRequest struct {
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+
+	// rtc人数。
+	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
+
+	// 观看类型。0未知，1互动，2cdn或直播。 目前仅支持互动类型
+	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
 
 	// 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
@@ -1039,9 +1061,12 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "SubType")
 	delete(f, "TeacherId")
 	delete(f, "AutoMic")
+	delete(f, "TurnOffMic")
 	delete(f, "AudioQuality")
 	delete(f, "DisableRecord")
 	delete(f, "Assistants")
+	delete(f, "RTCAudienceNumber")
+	delete(f, "AudienceType")
 	delete(f, "RecordLayout")
 	delete(f, "GroupId")
 	if len(f) > 0 {

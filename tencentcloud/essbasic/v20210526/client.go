@@ -773,6 +773,7 @@ func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGrou
 //  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 //  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
 //  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
@@ -827,6 +828,7 @@ func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupBy
 //  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 //  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
 //  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
@@ -888,6 +890,8 @@ func NewChannelCreateFlowRemindsResponse() (response *ChannelCreateFlowRemindsRe
 //
 // 该接口不可直接调用，请联系客户经理申请使用
 //
+// 仅能催办当前状态为“待签署”的签署人，且只能催办一次
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -903,6 +907,8 @@ func (c *Client) ChannelCreateFlowReminds(request *ChannelCreateFlowRemindsReque
 // 注意:
 //
 // 该接口不可直接调用，请联系客户经理申请使用
+//
+// 仅能催办当前状态为“待签署”的签署人，且只能催办一次
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1748,7 +1754,7 @@ func NewChannelGetTaskResultApiResponse() (response *ChannelGetTaskResultApiResp
 }
 
 // ChannelGetTaskResultApi
-// 查询转换任务状态
+// 通过发起转换任务接口（ChannelCreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -1758,7 +1764,7 @@ func (c *Client) ChannelGetTaskResultApi(request *ChannelGetTaskResultApiRequest
 }
 
 // ChannelGetTaskResultApi
-// 查询转换任务状态
+// 通过发起转换任务接口（ChannelCreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -1846,7 +1852,7 @@ func NewChannelVerifyPdfResponse() (response *ChannelVerifyPdfResponse) {
 }
 
 // ChannelVerifyPdf
-// 合同文件验签
+// 对流程的合同文件进行验证，判断文件是否合法。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1860,7 +1866,7 @@ func (c *Client) ChannelVerifyPdf(request *ChannelVerifyPdfRequest) (response *C
 }
 
 // ChannelVerifyPdf
-// 合同文件验签
+// 对流程的合同文件进行验证，判断文件是否合法。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

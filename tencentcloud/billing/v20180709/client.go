@@ -238,7 +238,7 @@ func NewDescribeBillResourceSummaryResponse() (response *DescribeBillResourceSum
 }
 
 // DescribeBillResourceSummary
-// 查询账单资源汇总数据 
+// 查询账单资源汇总数据
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"
@@ -248,7 +248,7 @@ func (c *Client) DescribeBillResourceSummary(request *DescribeBillResourceSummar
 }
 
 // DescribeBillResourceSummary
-// 查询账单资源汇总数据 
+// 查询账单资源汇总数据
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"

@@ -368,6 +368,7 @@ func NewControlDeviceDataResponse() (response *ControlDeviceDataResponse) {
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNAUTHORIZEDOPERATION_NOVERIFIED = "UnauthorizedOperation.NoVerified"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_LORANOUPLINK = "UnsupportedOperation.LoRaNoUpLink"
@@ -397,6 +398,7 @@ func (c *Client) ControlDeviceData(request *ControlDeviceDataRequest) (response 
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNAUTHORIZEDOPERATION_NOVERIFIED = "UnauthorizedOperation.NoVerified"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_LORANOUPLINK = "UnsupportedOperation.LoRaNoUpLink"
@@ -4966,6 +4968,7 @@ func NewModifyStudioProductResponse() (response *ModifyStudioProductResponse) {
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_VIDEOPRODUCTNOTEXIST = "UnsupportedOperation.VideoProductNotExist"
 func (c *Client) ModifyStudioProduct(request *ModifyStudioProductRequest) (response *ModifyStudioProductResponse, err error) {
     return c.ModifyStudioProductWithContext(context.Background(), request)
 }
@@ -4993,6 +4996,7 @@ func (c *Client) ModifyStudioProduct(request *ModifyStudioProductRequest) (respo
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_VIDEOPRODUCTNOTEXIST = "UnsupportedOperation.VideoProductNotExist"
 func (c *Client) ModifyStudioProductWithContext(ctx context.Context, request *ModifyStudioProductRequest) (response *ModifyStudioProductResponse, err error) {
     if request == nil {
         request = NewModifyStudioProductRequest()
