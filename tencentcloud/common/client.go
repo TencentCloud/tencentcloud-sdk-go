@@ -35,7 +35,7 @@ type Client struct {
 	unsignedPayload bool
 	debug           bool
 	rb              *circuitBreaker
-	logger          *log.Logger
+	logger          Logger
 	requestClient   string
 }
 
@@ -491,13 +491,13 @@ func (c *Client) WithRequestClient(rc string) *Client {
 	const reRequestClient = "^[0-9a-zA-Z-_ ,;.]+$"
 
 	if len(rc) > 128 {
-		c.logger.Println("the length of RequestClient should be within 128 characters, it will be truncated")
+		c.logger.Printf("the length of RequestClient should be within 128 characters, it will be truncated")
 		rc = rc[:128]
 	}
 
 	match, err := regexp.MatchString(reRequestClient, rc)
 	if err != nil {
-		c.logger.Println("regexp is wrong", reRequestClient)
+		c.logger.Printf("regexp is wrong: %s", reRequestClient)
 		return c
 	}
 	if !match {
@@ -530,13 +530,13 @@ func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
 		}
 
 		if c.httpClient.Transport == nil {
-			c.logger.Println("trying to set proxy when httpClient.Transport is nil")
+			c.logger.Printf("trying to set proxy when httpClient.Transport is nil")
 		}
 
 		if _, ok := c.httpClient.Transport.(*http.Transport); ok {
 			c.httpClient.Transport.(*http.Transport).Proxy = http.ProxyURL(u)
 		} else {
-			c.logger.Println("setting proxy while httpClient.Transport is not a http.Transport is not supported")
+			c.logger.Printf("setting proxy while httpClient.Transport is not a http.Transport is not supported")
 		}
 	}
 	return c
