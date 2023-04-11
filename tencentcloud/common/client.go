@@ -35,7 +35,7 @@ type Client struct {
 	unsignedPayload bool
 	debug           bool
 	rb              *circuitBreaker
-	logger          *log.Logger
+	logger          Logger
 	requestClient   string
 }
 

@@ -6,6 +6,7 @@ import (
 	tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	"log"
 	"os"
 )
 
@@ -18,7 +19,7 @@ func main() {
 	cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
 	cpf.HttpProfile.ReqMethod = "POST"
 	//创建common client
-	client := common.NewCommonClient(credential, regions.Guangzhou, cpf)
+	client := common.NewCommonClient(credential, regions.Guangzhou, cpf).WithLogger(log.Default())
 
 	// 创建common request，依次传入产品名、产品版本、接口名称
 	request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
