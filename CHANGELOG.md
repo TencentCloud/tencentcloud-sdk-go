@@ -1,3 +1,103 @@
+# Release v1.0.636
+
+## 品牌经营管家(bma) 版本：2022-11-15
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 17 次发布
+
+发布时间：2023-04-12 01:06:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateCRObtain
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 56 次发布
+
+发布时间：2023-04-12 01:27:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1323/70369#TemplateInfo)
+
+	* 新增成员：Available
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 73 次发布
+
+发布时间：2023-04-12 01:27:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* 新增成员：Available
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 64 次发布
+
+发布时间：2023-04-12 01:49:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBandwidthRange](https://cloud.tencent.com/document/api/239/90100)
+* [RemoveReplicationInstance](https://cloud.tencent.com/document/api/239/90099)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 18 次发布
+
+发布时间：2023-04-12 02:05:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScanStats](https://cloud.tencent.com/document/api/1458/85942)
+
+	* 新增入参：Code
+
+
+
+
 # Release v1.0.635
 
 ## 费用中心(billing) 版本：2018-07-09

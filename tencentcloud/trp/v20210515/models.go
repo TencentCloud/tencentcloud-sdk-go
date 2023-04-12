@@ -2774,6 +2774,9 @@ type DescribeScanStatsRequestParams struct {
 
 	// 批次ID
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 安心码
+	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
 type DescribeScanStatsRequest struct {
@@ -2796,6 +2799,9 @@ type DescribeScanStatsRequest struct {
 
 	// 批次ID
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 安心码
+	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
 func (r *DescribeScanStatsRequest) ToJsonString() string {
@@ -2816,6 +2822,7 @@ func (r *DescribeScanStatsRequest) FromJsonString(s string) error {
 	delete(f, "MerchantId")
 	delete(f, "ProductId")
 	delete(f, "BatchId")
+	delete(f, "Code")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanStatsRequest has unknown keys!", "")
 	}

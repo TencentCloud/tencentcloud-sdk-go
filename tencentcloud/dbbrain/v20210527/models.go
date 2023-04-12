@@ -2991,10 +2991,10 @@ type DescribeSlowLogsRequestParams struct {
 	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 分页参数
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页参数
+	// 查询数目，默认为20，最大为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 数据库列表
@@ -3031,10 +3031,10 @@ type DescribeSlowLogsRequest struct {
 	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 分页参数
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页参数
+	// 查询数目，默认为20，最大为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 数据库列表

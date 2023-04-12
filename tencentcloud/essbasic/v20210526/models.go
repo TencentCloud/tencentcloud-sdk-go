@@ -5153,6 +5153,10 @@ type TemplateInfo struct {
 	// 模板版本，全数字字符。默认为空，初始版本为yyyyMMdd001。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateVersion *string `json:"TemplateVersion,omitempty" name:"TemplateVersion"`
+
+	// 模板可用状态，取值：1启用（默认），2停用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Available *int64 `json:"Available,omitempty" name:"Available"`
 }
 
 type UploadFile struct {

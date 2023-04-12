@@ -70,8 +70,6 @@ func NewCreateVRSTaskResponse() (response *CreateVRSTaskResponse) {
 //
 // • 签名方法参考 公共参数 中签名方法v3。
 //
-// • 默认接口请求频率限制：30次/秒，
-//
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
@@ -90,8 +88,6 @@ func (c *Client) CreateVRSTask(request *CreateVRSTaskRequest) (response *CreateV
 // • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 //
 // • 签名方法参考 公共参数 中签名方法v3。
-//
-// • 默认接口请求频率限制：30次/秒，
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -146,8 +142,6 @@ func NewDescribeVRSTaskStatusResponse() (response *DescribeVRSTaskStatusResponse
 //
 // • 签名方法参考 公共参数 中签名方法v3。
 //
-// • 默认接口请求频率限制：20次/秒，如您有提高请求频率限制的需求，请提工单进行咨询。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
 func (c *Client) DescribeVRSTaskStatus(request *DescribeVRSTaskStatusRequest) (response *DescribeVRSTaskStatusResponse, err error) {
@@ -164,8 +158,6 @@ func (c *Client) DescribeVRSTaskStatus(request *DescribeVRSTaskStatusRequest) (r
 // • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 //
 // • 签名方法参考 公共参数 中签名方法v3。
-//
-// • 默认接口请求频率限制：20次/秒，如您有提高请求频率限制的需求，请提工单进行咨询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
@@ -210,8 +202,6 @@ func NewDetectEnvAndSoundQualityResponse() (response *DetectEnvAndSoundQualityRe
 //
 // • 签名方法参考 公共参数 中签名方法v3。
 //
-// • 默认接口请求频率限制：20次/秒。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
 //  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
@@ -228,8 +218,6 @@ func (c *Client) DetectEnvAndSoundQuality(request *DetectEnvAndSoundQualityReque
 // • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 //
 // • 签名方法参考 公共参数 中签名方法v3。
-//
-// • 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
@@ -278,8 +266,6 @@ func NewGetTrainingTextResponse() (response *GetTrainingTextResponse) {
 //
 // • 签名方法参考 公共参数 中签名方法v3。
 //
-// • 默认接口请求频率限制：20次/秒。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
 //  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
@@ -296,8 +282,6 @@ func (c *Client) GetTrainingText(request *GetTrainingTextRequest) (response *Get
 //  请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 //
 // • 签名方法参考 公共参数 中签名方法v3。
-//
-// • 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"

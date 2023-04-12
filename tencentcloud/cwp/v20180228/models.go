@@ -11317,12 +11317,20 @@ type DescribeBashEventsRequestParams struct {
 	// 返回数量，默认为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 过滤条件。
+	// <li>HostName - String - 是否必填：否 - 主机名</li>
+	// <li>Hostip - String - 是否必填：否 - 主机内网IP</li>
+	// <li>RuleCategory - Int - 是否必填：否 - 策略类型,全部或者单选(0:系统 1:用户)</li>
+	// <li>RuleName - String - 是否必填：否 - 策略名称</li>
+	// <li>RuleLevel - Int - 是否必填：否 - 威胁等级,可以多选</li>
+	// <li>Status - Int - 是否必填：否 - 处理状态,可多选(0:待处理 1:已处理 2:已加白  3:已忽略 4:已删除 5:已拦截)</li>
+	// <li>DetectBy - Int - 是否必填：否 - 数据来源,可多选(0:bash日志 1:实时监控)</li>
+	// <li>StartTime - String - 是否必填：否 - 开始时间</li>
+	// <li>EndTime - String - 是否必填：否 - 结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// <li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序方式：根据请求次数排序：asc-升序/desc-降序
 	Order *string `json:"Order,omitempty" name:"Order"`
@@ -11337,12 +11345,20 @@ type DescribeBashEventsRequest struct {
 	// 返回数量，默认为10，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 过滤条件。
+	// <li>HostName - String - 是否必填：否 - 主机名</li>
+	// <li>Hostip - String - 是否必填：否 - 主机内网IP</li>
+	// <li>RuleCategory - Int - 是否必填：否 - 策略类型,全部或者单选(0:系统 1:用户)</li>
+	// <li>RuleName - String - 是否必填：否 - 策略名称</li>
+	// <li>RuleLevel - Int - 是否必填：否 - 威胁等级,可以多选</li>
+	// <li>Status - Int - 是否必填：否 - 处理状态,可多选(0:待处理 1:已处理 2:已加白  3:已忽略 4:已删除 5:已拦截)</li>
+	// <li>DetectBy - Int - 是否必填：否 - 数据来源,可多选(0:bash日志 1:实时监控)</li>
+	// <li>StartTime - String - 是否必填：否 - 开始时间</li>
+	// <li>EndTime - String - 是否必填：否 - 结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// <li>Keywords - String - 是否必填：否 - 关键词(主机内网IP)</li>
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序方式：根据请求次数排序：asc-升序/desc-降序
 	Order *string `json:"Order,omitempty" name:"Order"`
@@ -11364,8 +11380,8 @@ func (r *DescribeBashEventsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Limit")
-	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "Offset")
 	delete(f, "Order")
 	delete(f, "By")
 	if len(f) > 0 {
@@ -11495,7 +11511,7 @@ type DescribeBruteAttackListRequestParams struct {
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-	// <li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+	// <li>Uuid - String - 是否必填：否 - 主机安全唯一Uuid</li>
 	// <li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 	// <li>Status - String - 是否必填：否 - 状态筛选：失败：FAILED 成功：SUCCESS</li>
 	// <li>UserName - String - 是否必填：否 - UserName筛选</li>
@@ -11525,7 +11541,7 @@ type DescribeBruteAttackListRequest struct {
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-	// <li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+	// <li>Uuid - String - 是否必填：否 - 主机安全唯一Uuid</li>
 	// <li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 	// <li>Status - String - 是否必填：否 - 状态筛选：失败：FAILED 成功：SUCCESS</li>
 	// <li>UserName - String - 是否必填：否 - UserName筛选</li>
@@ -12783,7 +12799,7 @@ type DescribeHostLoginListRequestParams struct {
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-	// <li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+	// <li>Uuid - String - 是否必填：否 - 主机安全唯一Uuid</li>
 	// <li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 	// <li>UserName - String - 是否必填：否 - 用户名筛选</li>
 	// <li>LoginTimeBegin - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li>
@@ -12811,7 +12827,7 @@ type DescribeHostLoginListRequest struct {
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-	// <li>Uuid - String - 是否必填：否 - 云镜唯一Uuid</li>
+	// <li>Uuid - String - 是否必填：否 - 主机安全唯一Uuid</li>
 	// <li>Quuid - String - 是否必填：否 - 云服务器uuid</li>
 	// <li>UserName - String - 是否必填：否 - 用户名筛选</li>
 	// <li>LoginTimeBegin - String - 是否必填：否 - 按照修改时间段筛选，开始时间</li>
@@ -15376,14 +15392,14 @@ func (r *DescribeProVersionInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProVersionStatusRequestParams struct {
-	// 云镜客户端UUID、填写"all"表示所有主机。
+	// 主机安全客户端UUID、填写"all"表示所有主机。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 type DescribeProVersionStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云镜客户端UUID、填写"all"表示所有主机。
+	// 主机安全客户端UUID、填写"all"表示所有主机。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
@@ -22101,13 +22117,13 @@ type LicenseBindDetail struct {
 	// 云服务器UUID
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
-	// 云镜客户端UUID
+	// 主机安全客户端UUID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 标签信息
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
-	// 云镜客户端状态,OFFLINE 离线,ONLINE 在线,UNINSTALL 未安装
+	// 主机安全客户端状态,OFFLINE 离线,ONLINE 在线,UNINSTALL 未安装
 	AgentStatus *string `json:"AgentStatus,omitempty" name:"AgentStatus"`
 
 	// 是否允许解绑,false 不允许解绑
@@ -23997,7 +24013,7 @@ type PrivilegeEscalationProcess struct {
 	// 数据ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 云镜ID
+	// 主机安全ID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 主机ID
@@ -24457,7 +24473,7 @@ type ReverseShell struct {
 	// ID 主键
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 云镜UUID
+	// 主机安全UUID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 主机ID
@@ -25230,7 +25246,7 @@ type SecurityButlerInfo struct {
 }
 
 type SecurityDynamic struct {
-	// 云镜客户端UUID。
+	// 主机安全客户端UUID。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 安全事件发生时间。
@@ -26176,7 +26192,7 @@ type UsualPlace struct {
 	// ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
-	// 云镜客户端唯一标识UUID。
+	// 主机安全客户端唯一标识UUID。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 国家 ID。

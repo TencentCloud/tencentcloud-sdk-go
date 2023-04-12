@@ -642,7 +642,7 @@ func NewCloneInstancesResponse() (response *CloneInstancesResponse) {
 }
 
 // CloneInstances
-// 本接口（CloneInstances）可基于当前实例的备份文件克隆一个完整的新实例。
+// 本接口（CloneInstances）用于基于当前实例的备份文件克隆一个完整的新实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
@@ -682,7 +682,7 @@ func (c *Client) CloneInstances(request *CloneInstancesRequest) (response *Clone
 }
 
 // CloneInstances
-// 本接口（CloneInstances）可基于当前实例的备份文件克隆一个完整的新实例。
+// 本接口（CloneInstances）用于基于当前实例的备份文件克隆一个完整的新实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
@@ -1449,6 +1449,70 @@ func (c *Client) DescribeBackupUrlWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeBackupUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBandwidthRangeRequest() (request *DescribeBandwidthRangeRequest) {
+    request = &DescribeBandwidthRangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "DescribeBandwidthRange")
+    
+    
+    return
+}
+
+func NewDescribeBandwidthRangeResponse() (response *DescribeBandwidthRangeResponse) {
+    response = &DescribeBandwidthRangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBandwidthRange
+// 本接口（DescribeBandwidthRange）用于查询实例带宽信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeBandwidthRange(request *DescribeBandwidthRangeRequest) (response *DescribeBandwidthRangeResponse, err error) {
+    return c.DescribeBandwidthRangeWithContext(context.Background(), request)
+}
+
+// DescribeBandwidthRange
+// 本接口（DescribeBandwidthRange）用于查询实例带宽信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeBandwidthRangeWithContext(ctx context.Context, request *DescribeBandwidthRangeRequest) (response *DescribeBandwidthRangeResponse, err error) {
+    if request == nil {
+        request = NewDescribeBandwidthRangeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBandwidthRange require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBandwidthRangeResponse()
     err = c.Send(request, response)
     return
 }
@@ -4877,6 +4941,70 @@ func (c *Client) ReleaseWanAddressWithContext(ctx context.Context, request *Rele
     request.SetContext(ctx)
     
     response = NewReleaseWanAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveReplicationInstanceRequest() (request *RemoveReplicationInstanceRequest) {
+    request = &RemoveReplicationInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "RemoveReplicationInstance")
+    
+    
+    return
+}
+
+func NewRemoveReplicationInstanceResponse() (response *RemoveReplicationInstanceResponse) {
+    response = &RemoveReplicationInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveReplicationInstance
+// 移除复制组成员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_CHECKNOTPASS = "InvalidParameterValue.CheckNotPass"
+//  INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = "InvalidParameterValue.ReplicationGroupNotExists"
+//  LIMITEXCEEDED_REPLICATIONGROUPLOCKED = "LimitExceeded.ReplicationGroupLocked"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNSUPPORTEDOPERATION_INSPECTION = "UnsupportedOperation.Inspection"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) RemoveReplicationInstance(request *RemoveReplicationInstanceRequest) (response *RemoveReplicationInstanceResponse, err error) {
+    return c.RemoveReplicationInstanceWithContext(context.Background(), request)
+}
+
+// RemoveReplicationInstance
+// 移除复制组成员
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETERVALUE_CHECKNOTPASS = "InvalidParameterValue.CheckNotPass"
+//  INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = "InvalidParameterValue.ReplicationGroupNotExists"
+//  LIMITEXCEEDED_REPLICATIONGROUPLOCKED = "LimitExceeded.ReplicationGroupLocked"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNSUPPORTEDOPERATION_INSPECTION = "UnsupportedOperation.Inspection"
+//  UNSUPPORTEDOPERATION_INSTANCENOTOPERATION = "UnsupportedOperation.InstanceNotOperation"
+func (c *Client) RemoveReplicationInstanceWithContext(ctx context.Context, request *RemoveReplicationInstanceRequest) (response *RemoveReplicationInstanceResponse, err error) {
+    if request == nil {
+        request = NewRemoveReplicationInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveReplicationInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveReplicationInstanceResponse()
     err = c.Send(request, response)
     return
 }
