@@ -324,10 +324,10 @@ type BackupDownloadInfo struct {
 }
 
 type BackupLimitVpcItem struct {
-	// 自定义下载备份文件的VPC 所属地域。
+	// 备份文件的下载地址对应VPC 所属的地域。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 自定义下载备份文件的 VPC 列表。
+	// 备份文件下载地址的 VPC 列表。
 	VpcList []*string `json:"VpcList,omitempty" name:"VpcList"`
 }
 
@@ -3793,14 +3793,14 @@ func (r *DescribeMaintenanceWindowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeParamTemplateInfoRequestParams struct {
-	// 参数模板 ID。
+	// 指定查询的参数模板 ID。请通过接口[DescribeParamTemplates](https://cloud.tencent.com/document/product/239/58750)获取参数模板列表信息。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type DescribeParamTemplateInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板 ID。
+	// 指定查询的参数模板 ID。请通过接口[DescribeParamTemplates](https://cloud.tencent.com/document/product/239/58750)获取参数模板列表信息。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -3825,7 +3825,7 @@ func (r *DescribeParamTemplateInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeParamTemplateInfoResponseParams struct {
-	// 实例参数个数
+	// 参数模板的参数数量。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 参数模板 ID。
@@ -3834,13 +3834,23 @@ type DescribeParamTemplateInfoResponseParams struct {
 	// 参数模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+	// 产品类型。
+	// - 2：Redis 2.8内存版（标准架构）。
+	// - 3：CKV 3.2内存版（标准架构）。
+	// - 4：CKV 3.2内存版（集群架构）。
+	// - 5：Redis 2.8内存版（单机）。
+	// - 6：Redis 4.0内存版（标准架构）。
+	// - 7：Redis 4.0内存版（集群架构）。
+	// - 8：Redis 5.0内存版（标准架构）。
+	// - 9：Redis 5.0内存版（集群架构）。
+	// - 15：Redis 6.2内存版（标准架构）。
+	// - 16：Redis 6.2内存版（集群架构）。
 	ProductType *uint64 `json:"ProductType,omitempty" name:"ProductType"`
 
-	// 参数模板描述
+	// 参数模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 参数详情
+	// 参数详情。包含：参数的名称，当前运行值，默认值，最大值、最小值、枚举值等信息。
 	Items []*ParameterDetail `json:"Items,omitempty" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5107,7 +5117,7 @@ func (r *EnableReplicaReadonlyResponse) FromJsonString(s string) error {
 }
 
 type Groups struct {
-	// 用户AppID
+	// 用户 APPID。APPID是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 APPID。
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 地域ID 。
@@ -5131,7 +5141,7 @@ type Groups struct {
 	// - 25：日本
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
-	// 复制组 ID。
+	// 复制组 ID。格式如：crs-rpl-deind****。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 复制组名称。
@@ -5641,33 +5651,36 @@ type InstanceParam struct {
 }
 
 type InstanceParamHistory struct {
-	// 参数名称
+	// 参数名称。
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// 修改前值
+	// 参数修改之前的值。
 	PreValue *string `json:"PreValue,omitempty" name:"PreValue"`
 
-	// 修改后值
+	// 参数修改之后的值。
 	NewValue *string `json:"NewValue,omitempty" name:"NewValue"`
 
-	// 状态：1-参数配置修改中；2-参数配置修改成功；3-参数配置修改失败
+	// 参数配置状态。
+	// - 1：参数配置修改中。
+	// - 2：参数配置修改成功。
+	// - 3：参数配置修改失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 修改时间
+	// 修改时间。
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type InstanceProxySlowlogDetail struct {
-	// 慢查询耗时（单位：毫秒）。
+	// 慢查询耗时时长。单位：毫秒。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 
 	// 客户端地址。
 	Client *string `json:"Client,omitempty" name:"Client"`
 
-	// 命令。
+	// 慢查询的命令。
 	Command *string `json:"Command,omitempty" name:"Command"`
 
-	// 详细命令行信息。
+	// 慢查询详细命令行信息。
 	CommandLine *string `json:"CommandLine,omitempty" name:"CommandLine"`
 
 	// 执行时间。
@@ -5725,7 +5738,17 @@ type InstanceSet struct {
 	// 该字段已废弃。请使用腾讯云可观测平台API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内存容量。
 	SizeUsed *float64 `json:"SizeUsed,omitempty" name:"SizeUsed"`
 
-	// 实例类型：<ul><li>1：Redis2.8内存版（集群架构）。</li><li>2：Redis2.8内存版（标准架构）。</li><li>3：CKV 3.2内存版(标准架构)。</li><li>4：CKV 3.2内存版(集群架构)。</li><li>5：Redis2.8内存版（单机）。</li></li><li>6：Redis4.0内存版（标准架构）。</li></li><li>7：Redis4.0内存版（集群架构）。</li></li><li>8：Redis5.0内存版（标准架构）。</li></li><li>9：Redis5.0内存版（集群架构）。</li></ul>
+	// 实例类型。
+	// - 2：Redis 2.8内存版（标准架构）。
+	// - 3：CKV 3.2内存版（标准架构）。
+	// - 4：CKV 3.2内存版（集群架构）。
+	// - 5：Redis 2.8内存版（单机）。
+	// - 6：Redis 4.0内存版（标准架构）。
+	// - 7：Redis 4.0内存版（集群架构）。
+	// - 8：Redis 5.0内存版（标准架构）。
+	// - 9：Redis 5.0内存版（集群架构）。
+	// - 15：Redis 6.2内存版（标准架构）。
+	// - 16：Redis 6.2内存版（集群架构）。
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 实例是否设置自动续费标识。<ul><li>1：设置自动续费。</li><li>0：未设置自动续费。</li></ul>
@@ -5926,7 +5949,7 @@ type InstanceTextParam struct {
 }
 
 type Instances struct {
-	// 用户AppID。
+	// 用户APPID。APPID是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 APPID。
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 实例 ID。
@@ -5979,7 +6002,17 @@ type Instances struct {
 	// 仓库ID。
 	GrocerySysId *int64 `json:"GrocerySysId,omitempty" name:"GrocerySysId"`
 
-	// 实例类型。<ul><li>1：Redis 2.8 内存版（集群架构）。</li><li>2：Redis 2.8 内存版（标准架构）。</li><li>3：CKV 3.2 内存版（标准架构）。</li><li>4：CKV 3.2 内存版（集群架构）。</li><li>5：Redis 2.8 单机版。</li><li>6：Redis 4.0 内存版（标准架构）。</li><li>7：Redis 4.0 内存版（集群架构）。</li><li>8：Redis 5.0 内存版（标准架构）。</li><li>9：Redis 5.0 内存版（集群架构）。</li></ul>
+	// 实例类型。
+	// - 2：Redis 2.8内存版（标准架构）。
+	// - 3：CKV 3.2内存版（标准架构）。
+	// - 4：CKV 3.2内存版（集群架构）。
+	// - 5：Redis 2.8内存版（单机）。
+	// - 6：Redis 4.0内存版（标准架构）。
+	// - 7：Redis 4.0内存版（集群架构）。
+	// - 8：Redis 5.0内存版（标准架构）。
+	// - 9：Redis 5.0内存版（集群架构）。
+	// - 15：Redis 6.2内存版（标准架构）。
+	// - 16：Redis 6.2内存版（集群架构）。
 	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
 
 	// 实例加入复制组的时间。
@@ -7236,47 +7269,57 @@ type Outbound struct {
 }
 
 type ParamTemplateInfo struct {
-	// 参数模板ID
+	// 参数模板 ID。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 参数模板名称
+	// 参数模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 参数模板描述
+	// 参数模板描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 产品类型：1 – Redis2.8内存版（集群架构），2 – Redis2.8内存版（标准架构），3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版（单机），6 – Redis4.0内存版（标准架构），7 – Redis4.0内存版（集群架构），8 – Redis5.0内存版（标准架构），9 – Redis5.0内存版（集群架构）
+	// 实例类型。
+	// - 2：Redis 2.8内存版（标准架构）。
+	// - 3：CKV 3.2内存版（标准架构）。
+	// - 4：CKV 3.2内存版（集群架构）。
+	// - 5：Redis 2.8内存版（单机）。
+	// - 6：Redis 4.0内存版（标准架构）。
+	// - 7：Redis 4.0内存版（集群架构）。
+	// - 8：Redis 5.0内存版（标准架构）。
+	// - 9：Redis 5.0内存版（集群架构）。
 	ProductType *uint64 `json:"ProductType,omitempty" name:"ProductType"`
 }
 
 type ParameterDetail struct {
-	// 参数名称
+	// 参数名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 参数类型
+	// 参数类型。
 	ParamType *string `json:"ParamType,omitempty" name:"ParamType"`
 
-	// 参数默认值
+	// 参数默认值。
 	Default *string `json:"Default,omitempty" name:"Default"`
 
-	// 参数描述
+	// 参数描述。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 参数当前值
+	// 参数当前值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 修改参数后，是否需要重启数据库以使参数生效。可能的值包括：0-不需要重启；1-需要重启
+	// 修改参数后，是否需要重启数据库以使参数生效。
+	// - 0：不需要重启。
+	// - 1：需要重启。
 	NeedReboot *int64 `json:"NeedReboot,omitempty" name:"NeedReboot"`
 
-	// 参数允许的最大值
+	// 参数允许的最大值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *string `json:"Max,omitempty" name:"Max"`
 
-	// 参数允许的最小值
+	// 参数允许的最小值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Min *string `json:"Min,omitempty" name:"Min"`
 
-	// 参数的可选枚举值。如果为非枚举参数，则为空
+	// 参数可选枚举值。如果为非枚举参数，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 }
@@ -7395,46 +7438,55 @@ type RedisBackupSet struct {
 }
 
 type RedisCommonInstanceList struct {
-	// 实例名称
+	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 实例id
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 用户id
+	// 用户APPID。APPID是与账号ID有唯一对应关系的应用 ID，部分腾讯云产品会使用此 APPID。
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
-	// 实例所属项目id
+	// 实例所属项目 ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 实例接入区域
+	// 实例接入区域。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 实例接入zone
+	// 实例接入可用区。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 实例网络id
+	// 实例私有网络 ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网id
+	// 私有网络所属子网 ID。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例状态信息，1-流程中 ,2-运行中, -2-实例已隔离 ,-3-实例待回收, -4-实例已删除
+	// 实例状态信息。
+	// - 1-流程中。
+	// - 2-运行中。
+	// - -2-实例已隔离。
+	// - -3-实例待回收。
+	// - -4-实例已删除。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 实例网络ip
+	// 实例私有网络 IP 地址。
 	Vips []*string `json:"Vips,omitempty" name:"Vips"`
 
-	// 实例网络端口
+	// 实例网络端口。
 	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
 
-	// 实例创建时间
+	// 实例创建时间。
 	Createtime *string `json:"Createtime,omitempty" name:"Createtime"`
 
-	// 计费类型，0-按量计费，1-包年包月
+	// 计费类型。
+	// - 0：按量计费。
+	// - 1：包年包月。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 网络类型，0-基础网络，1-VPC网络
+	// 网络类型。
+	// - 0：基础网络。
+	// - 1：VPC 网络。
 	NetType *int64 `json:"NetType,omitempty" name:"NetType"`
 }
 
@@ -7791,10 +7843,10 @@ func (r *ResetPasswordResponse) FromJsonString(s string) error {
 }
 
 type ResourceTag struct {
-	// 标签key
+	// 标签Key。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 标签value
+	// 标签 Key 对应的 Value。
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 

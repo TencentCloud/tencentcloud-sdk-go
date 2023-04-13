@@ -2758,7 +2758,7 @@ func NewDescribeParamTemplateInfoResponse() (response *DescribeParamTemplateInfo
 }
 
 // DescribeParamTemplateInfo
-// 查询参数模板详情。
+// 本接口（DescribeParamTemplateInfo）用于查询参数模板详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2773,7 +2773,7 @@ func (c *Client) DescribeParamTemplateInfo(request *DescribeParamTemplateInfoReq
 }
 
 // DescribeParamTemplateInfo
-// 查询参数模板详情。
+// 本接口（DescribeParamTemplateInfo）用于查询参数模板详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

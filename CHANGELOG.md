@@ -1,3 +1,47 @@
+# Release v1.0.637
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 56 次发布
+
+发布时间：2023-04-13 01:17:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
+
+	* 新增成员：PassNo, VisaNum
+
+
+
+
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 19 次发布
+
+发布时间：2023-04-13 01:37:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteBackupRecords](https://cloud.tencent.com/document/api/596/90121)
+* [DescribeBackupRecords](https://cloud.tencent.com/document/api/596/90119)
+* [SetBackupExpireRule](https://cloud.tencent.com/document/api/596/90120)
+
+新增数据结构：
+
+* [BackupExpireRuleInfo](https://cloud.tencent.com/document/api/596/39686#BackupExpireRuleInfo)
+* [BackupRecords](https://cloud.tencent.com/document/api/596/39686#BackupRecords)
+
+
+
 # Release v1.0.636
 
 ## 品牌经营管家(bma) 版本：2022-11-15

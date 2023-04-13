@@ -71,10 +71,10 @@ const (
 	// URL格式不合法。
 	INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
 
-	// 图片包含非法信息，审核不通过。
+	// 图片包含违法违规信息，审核不通过。
 	OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
 
-	// 文本包含非法信息，审核不通过。
+	// 文本包含违法违规信息，审核不通过。
 	OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
 
 	// 请求的次数超过了频率限制。

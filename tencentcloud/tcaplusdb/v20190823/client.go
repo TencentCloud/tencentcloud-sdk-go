@@ -467,6 +467,64 @@ func (c *Client) CreateTablesWithContext(ctx context.Context, request *CreateTab
     return
 }
 
+func NewDeleteBackupRecordsRequest() (request *DeleteBackupRecordsRequest) {
+    request = &DeleteBackupRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DeleteBackupRecords")
+    
+    
+    return
+}
+
+func NewDeleteBackupRecordsResponse() (response *DeleteBackupRecordsResponse) {
+    response = &DeleteBackupRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBackupRecords
+// 删除手工备份
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBackupRecords(request *DeleteBackupRecordsRequest) (response *DeleteBackupRecordsResponse, err error) {
+    return c.DeleteBackupRecordsWithContext(context.Background(), request)
+}
+
+// DeleteBackupRecords
+// 删除手工备份
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteBackupRecordsWithContext(ctx context.Context, request *DeleteBackupRecordsRequest) (response *DeleteBackupRecordsResponse, err error) {
+    if request == nil {
+        request = NewDeleteBackupRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBackupRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBackupRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
     request = &DeleteClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -927,6 +985,80 @@ func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackupRecordsRequest() (request *DescribeBackupRecordsRequest) {
+    request = &DescribeBackupRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "DescribeBackupRecords")
+    
+    
+    return
+}
+
+func NewDescribeBackupRecordsResponse() (response *DescribeBackupRecordsResponse) {
+    response = &DescribeBackupRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackupRecords
+// 查询备份记录
+//
+// 
+//
+// 查询集群级别时， 将TableGroupId设置为"-1", 将TableName设置为"-1"
+//
+// 查询集群+表格组级别时， 将TableName设置为"-1"
+//
+// 查询集群+表格组+表格级别时， 都不能设置为“-1”
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_REGIONMISMATCH = "FailedOperation.RegionMismatch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBackupRecords(request *DescribeBackupRecordsRequest) (response *DescribeBackupRecordsResponse, err error) {
+    return c.DescribeBackupRecordsWithContext(context.Background(), request)
+}
+
+// DescribeBackupRecords
+// 查询备份记录
+//
+// 
+//
+// 查询集群级别时， 将TableGroupId设置为"-1", 将TableName设置为"-1"
+//
+// 查询集群+表格组级别时， 将TableName设置为"-1"
+//
+// 查询集群+表格组+表格级别时， 都不能设置为“-1”
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_REGIONMISMATCH = "FailedOperation.RegionMismatch"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeBackupRecordsWithContext(ctx context.Context, request *DescribeBackupRecordsRequest) (response *DescribeBackupRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupRecordsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2739,6 +2871,68 @@ func (c *Client) RollbackTablesWithContext(ctx context.Context, request *Rollbac
     request.SetContext(ctx)
     
     response = NewRollbackTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetBackupExpireRuleRequest() (request *SetBackupExpireRuleRequest) {
+    request = &SetBackupExpireRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcaplusdb", APIVersion, "SetBackupExpireRule")
+    
+    
+    return
+}
+
+func NewSetBackupExpireRuleResponse() (response *SetBackupExpireRuleResponse) {
+    response = &SetBackupExpireRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetBackupExpireRule
+// 新增、删除、修改备份过期策略， ClusterId必须为具体的集群Id（appid）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SetBackupExpireRule(request *SetBackupExpireRuleRequest) (response *SetBackupExpireRuleResponse, err error) {
+    return c.SetBackupExpireRuleWithContext(context.Background(), request)
+}
+
+// SetBackupExpireRule
+// 新增、删除、修改备份过期策略， ClusterId必须为具体的集群Id（appid）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SetBackupExpireRuleWithContext(ctx context.Context, request *SetBackupExpireRuleRequest) (response *SetBackupExpireRuleResponse, err error) {
+    if request == nil {
+        request = NewSetBackupExpireRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetBackupExpireRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetBackupExpireRuleResponse()
     err = c.Send(request, response)
     return
 }

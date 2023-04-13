@@ -1,30 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 品牌经营管家(bma) 版本：2022-11-15
-
-
-
-## 品牌经营管家(bma) 版本：2021-06-24
-
-### 第 17 次发布
-
-发布时间：2023-04-12 01:06:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CreateCRObtain
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## 人脸核身(faceid) 版本：2018-03-01
 
 ### 第 56 次发布
 
-发布时间：2023-04-12 01:27:24
+发布时间：2023-04-13 01:17:40
 
 本次发布包含了以下内容：
 
@@ -32,41 +12,18 @@
 
 修改数据结构：
 
-* [TemplateInfo](https://cloud.tencent.com/document/api/1323/70369#TemplateInfo)
+* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
 
-	* 新增成员：Available
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 73 次发布
-
-发布时间：2023-04-12 01:27:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
-
-	* 新增成员：Available
+	* 新增成员：PassNo, VisaNum
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
 
+### 第 19 次发布
 
-
-## 云数据库Redis(redis) 版本：2018-04-12
-
-### 第 64 次发布
-
-发布时间：2023-04-12 01:49:54
+发布时间：2023-04-13 01:37:44
 
 本次发布包含了以下内容：
 
@@ -74,27 +31,14 @@
 
 新增接口：
 
-* [DescribeBandwidthRange](https://cloud.tencent.com/document/api/239/90100)
-* [RemoveReplicationInstance](https://cloud.tencent.com/document/api/239/90099)
+* [DeleteBackupRecords](https://cloud.tencent.com/document/api/596/90121)
+* [DescribeBackupRecords](https://cloud.tencent.com/document/api/596/90119)
+* [SetBackupExpireRule](https://cloud.tencent.com/document/api/596/90120)
 
+新增数据结构：
 
-
-## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
-
-### 第 18 次发布
-
-发布时间：2023-04-12 02:05:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeScanStats](https://cloud.tencent.com/document/api/1458/85942)
-
-	* 新增入参：Code
-
+* [BackupExpireRuleInfo](https://cloud.tencent.com/document/api/596/39686#BackupExpireRuleInfo)
+* [BackupRecords](https://cloud.tencent.com/document/api/596/39686#BackupRecords)
 
 
 
@@ -48229,6 +48173,21 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 56 次发布
+
+发布时间：2023-04-13 01:17:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
+
+	* 新增成员：PassNo, VisaNum
+
+
 ### 第 55 次发布
 
 发布时间：2023-03-15 01:37:54
@@ -74220,8 +74179,8 @@
 
 新增接口：
 
-* [[DescribeBandwidthRange](https://cloud.tencent.com/document/api/239/90100)](https://cloud.tencent.com/document/api/#/#)
-* [[RemoveReplicationInstance](https://cloud.tencent.com/document/api/239/90099)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBandwidthRange](https://cloud.tencent.com/document/api/239/90100)
+* [RemoveReplicationInstance](https://cloud.tencent.com/document/api/239/90099)
 
 ### 第 63 次发布
 
@@ -81811,6 +81770,25 @@
 
 
 ## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
+
+### 第 19 次发布
+
+发布时间：2023-04-13 01:37:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteBackupRecords](https://cloud.tencent.com/document/api/596/90121)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBackupRecords](https://cloud.tencent.com/document/api/596/90119)](https://cloud.tencent.com/document/api/#/#)
+* [[SetBackupExpireRule](https://cloud.tencent.com/document/api/596/90120)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BackupExpireRuleInfo](https://cloud.tencent.com/document/api/596/39686#BackupExpireRuleInfo)](https://cloud.tencent.com/document/api/596/39686#[BackupExpireRuleInfo](https://cloud.tencent.com/document/api/596/39686#BackupExpireRuleInfo))
+* [[BackupRecords](https://cloud.tencent.com/document/api/596/39686#BackupRecords)](https://cloud.tencent.com/document/api/596/39686#[BackupRecords](https://cloud.tencent.com/document/api/596/39686#BackupRecords))
 
 ### 第 18 次发布
 

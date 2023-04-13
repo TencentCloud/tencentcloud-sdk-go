@@ -1225,6 +1225,14 @@ type DetectInfoText struct {
 	// nfc重复计费计数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NFCBillingCounts *int64 `json:"NFCBillingCounts,omitempty" name:"NFCBillingCounts"`
+
+	// 港澳台居住证通行证号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassNo *string `json:"PassNo,omitempty" name:"PassNo"`
+
+	// 港澳台居住证签发次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VisaNum *string `json:"VisaNum,omitempty" name:"VisaNum"`
 }
 
 type DetectInfoVideoData struct {
