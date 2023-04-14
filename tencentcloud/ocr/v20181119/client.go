@@ -366,7 +366,7 @@ func NewBizLicenseOCRResponse() (response *BizLicenseOCRResponse) {
 }
 
 // BizLicenseOCR
-// 本接口支持快速精准识别营业执照上的字段，包括统一社会信用代码、公司名称、经营场所、主体类型、法定代表人、注册资金、组成形式、成立日期、营业期限和经营范围等字段。
+// 本接口支持快速精准识别营业执照上的字段，包括统一社会信用代码、公司名称、主体类型、法定代表人、注册资本、组成形式、成立日期、营业期限和经营范围等字段。
 //
 // 
 //
@@ -386,7 +386,7 @@ func (c *Client) BizLicenseOCR(request *BizLicenseOCRRequest) (response *BizLice
 }
 
 // BizLicenseOCR
-// 本接口支持快速精准识别营业执照上的字段，包括统一社会信用代码、公司名称、经营场所、主体类型、法定代表人、注册资金、组成形式、成立日期、营业期限和经营范围等字段。
+// 本接口支持快速精准识别营业执照上的字段，包括统一社会信用代码、公司名称、主体类型、法定代表人、注册资本、组成形式、成立日期、营业期限和经营范围等字段。
 //
 // 
 //
@@ -436,7 +436,7 @@ func NewBusInvoiceOCRResponse() (response *BusInvoiceOCRResponse) {
 }
 
 // BusInvoiceOCR
-// 本接口支持识别公路汽车客票的发票代码、发票号码、日期、姓名、票价等字段。
+// 本接口支持识别公路汽车客票关键字段的识别，包括发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次等。
 //
 // 
 //
@@ -456,7 +456,7 @@ func (c *Client) BusInvoiceOCR(request *BusInvoiceOCRRequest) (response *BusInvo
 }
 
 // BusInvoiceOCR
-// 本接口支持识别公路汽车客票的发票代码、发票号码、日期、姓名、票价等字段。
+// 本接口支持识别公路汽车客票关键字段的识别，包括发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次等。
 //
 // 
 //
@@ -1110,7 +1110,7 @@ func NewEnterpriseLicenseOCRResponse() (response *EnterpriseLicenseOCRResponse) 
 }
 
 // EnterpriseLicenseOCR
-// 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围等关键字段。
+// 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围、成立日期、有效期、开办资金、经费来源、举办单位等关键字段。
 //
 // 
 //
@@ -1130,7 +1130,7 @@ func (c *Client) EnterpriseLicenseOCR(request *EnterpriseLicenseOCRRequest) (res
 }
 
 // EnterpriseLicenseOCR
-// 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围等关键字段。
+// 本接口支持智能化识别各类企业登记证书、许可证书、企业执照、三证合一类证书，结构化输出统一社会信用代码、公司名称、法定代表人、公司地址、注册资金、企业类型、经营范围、成立日期、有效期、开办资金、经费来源、举办单位等关键字段。
 //
 // 
 //
@@ -2774,7 +2774,7 @@ func NewHmtResidentPermitOCRResponse() (response *HmtResidentPermitOCRResponse) 
 }
 
 // HmtResidentPermitOCR
-// 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
+// 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证号、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息识别场景，例如银行开户、用户注册等。
 //
 // 
 //
@@ -2796,7 +2796,7 @@ func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (res
 }
 
 // HmtResidentPermitOCR
-// 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证ID、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息有效性校验场景，例如银行开户、用户注册等场景。
+// 港澳台居住证OCR支持港澳台居住证正反面全字段内容检测识别功能，包括姓名、性别、出生日期、地址、身份证号、签发机关、有效期限、签发次数、通行证号码关键字段识别。可以应用于港澳台居住证信息识别场景，例如银行开户、用户注册等。
 //
 // 
 //
@@ -3330,7 +3330,7 @@ func NewInvoiceGeneralOCRResponse() (response *InvoiceGeneralOCRResponse) {
 }
 
 // InvoiceGeneralOCR
-// 本接口支持对通用机打发票的发票代码、发票号码、日期、购买方识别号、销售方识别号、校验码、小写金额等关键字段的识别。
+// 本接口支持对通用机打发票的发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、购买方地址、电话、销售方地址、电话、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、货物或应税劳务、服务名称、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类等字段的识别。
 //
 // 
 //
@@ -3350,7 +3350,7 @@ func (c *Client) InvoiceGeneralOCR(request *InvoiceGeneralOCRRequest) (response 
 }
 
 // InvoiceGeneralOCR
-// 本接口支持对通用机打发票的发票代码、发票号码、日期、购买方识别号、销售方识别号、校验码、小写金额等关键字段的识别。
+// 本接口支持对通用机打发票的发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、购买方地址、电话、销售方地址、电话、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、货物或应税劳务、服务名称、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类等字段的识别。
 //
 // 
 //
@@ -3540,7 +3540,7 @@ func NewMLIDPassportOCRResponse() (response *MLIDPassportOCRResponse) {
 }
 
 // MLIDPassportOCR
-// 本接口支持中国港澳台地区以及其他国家、地区的护照识别。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍，具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
+// 本接口支持中国港澳台地区以及其他国家、地区的护照识别。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍、国家地区代码，具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
 //
 // 
 //
@@ -3561,7 +3561,7 @@ func (c *Client) MLIDPassportOCR(request *MLIDPassportOCRRequest) (response *MLI
 }
 
 // MLIDPassportOCR
-// 本接口支持中国港澳台地区以及其他国家、地区的护照识别。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍，具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
+// 本接口支持中国港澳台地区以及其他国家、地区的护照识别。识别字段包括护照ID、姓名、出生日期、性别、有效期、发行国、国籍、国家地区代码，具备护照人像照片的裁剪功能和翻拍、复印件告警功能。
 //
 // 
 //
@@ -4758,7 +4758,11 @@ func NewRecognizePhilippinesVoteIDOCRResponse() (response *RecognizePhilippinesV
 }
 
 // RecognizePhilippinesVoteIDOCR
-// 菲律宾VoteID识别
+// 本接口支持菲律宾VoteID识别，识别字段包括姓名、姓氏、出生日期、婚姻状况、国籍、地址、地区、菲律宾VoteID的VIN等。
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -4775,7 +4779,11 @@ func (c *Client) RecognizePhilippinesVoteIDOCR(request *RecognizePhilippinesVote
 }
 
 // RecognizePhilippinesVoteIDOCR
-// 菲律宾VoteID识别
+// 本接口支持菲律宾VoteID识别，识别字段包括姓名、姓氏、出生日期、婚姻状况、国籍、地址、地区、菲律宾VoteID的VIN等。
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -4962,7 +4970,7 @@ func NewRecognizeThaiIDCardOCRResponse() (response *RecognizeThaiIDCardOCRRespon
 }
 
 // RecognizeThaiIDCardOCR
-// 本接口支持泰国身份证识别，识别字段包括泰文姓名、英文姓名、地址、出生日期、身份证号码。
+// 本接口支持泰国身份证识别，识别字段包括泰文姓名、英文姓名、地址、出生日期、身份证号码、首次领用日期、签发日期等字段。
 //
 // 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
 //
@@ -4983,7 +4991,7 @@ func (c *Client) RecognizeThaiIDCardOCR(request *RecognizeThaiIDCardOCRRequest) 
 }
 
 // RecognizeThaiIDCardOCR
-// 本接口支持泰国身份证识别，识别字段包括泰文姓名、英文姓名、地址、出生日期、身份证号码。
+// 本接口支持泰国身份证识别，识别字段包括泰文姓名、英文姓名、地址、出生日期、身份证号码、首次领用日期、签发日期等字段。
 //
 // 本接口暂未完全对外开放，如需咨询，请[联系商务](https://cloud.tencent.com/about/connect)
 //
@@ -5830,7 +5838,7 @@ func NewTollInvoiceOCRResponse() (response *TollInvoiceOCRResponse) {
 }
 
 // TollInvoiceOCR
-// 本接口支持对过路过桥费发票的发票代码、发票号码、日期、小写金额等关键字段的识别。
+// 本接口支持过路过桥费发票关键字段的识别，包括发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志等。
 //
 // 
 //
@@ -5850,7 +5858,7 @@ func (c *Client) TollInvoiceOCR(request *TollInvoiceOCRRequest) (response *TollI
 }
 
 // TollInvoiceOCR
-// 本接口支持对过路过桥费发票的发票代码、发票号码、日期、小写金额等关键字段的识别。
+// 本接口支持过路过桥费发票关键字段的识别，包括发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志等。
 //
 // 
 //
@@ -5900,7 +5908,7 @@ func NewTrainTicketOCRResponse() (response *TrainTicketOCRResponse) {
 }
 
 // TrainTicketOCR
-// 本接口支持火车票全字段的识别，包括编号、票价、姓名、座位号、出发时间、出发站、到达站、车次、席别、发票类型及序列号等。
+// 本接口支持火车票全字段的识别，包括编号、出发站、到达站、出发时间、车次、座位号、姓名、票价、席别、身份证号、发票消费类型、序列号、加收票价、手续费、大写金额、售票站、原票价、发票类型、收据号码、是否仅供报销使用等字段的识别。
 //
 // 
 //
@@ -5921,7 +5929,7 @@ func (c *Client) TrainTicketOCR(request *TrainTicketOCRRequest) (response *Train
 }
 
 // TrainTicketOCR
-// 本接口支持火车票全字段的识别，包括编号、票价、姓名、座位号、出发时间、出发站、到达站、车次、席别、发票类型及序列号等。
+// 本接口支持火车票全字段的识别，包括编号、出发站、到达站、出发时间、车次、座位号、姓名、票价、席别、身份证号、发票消费类型、序列号、加收票价、手续费、大写金额、售票站、原票价、发票类型、收据号码、是否仅供报销使用等字段的识别。
 //
 // 
 //
@@ -6214,7 +6222,7 @@ func NewVatRollInvoiceOCRResponse() (response *VatRollInvoiceOCRResponse) {
 }
 
 // VatRollInvoiceOCR
-// 本接口支持对增值税发票（卷票）的发票代码、发票号码、日期、校验码、合计金额（小写）等关键字段的识别。
+// 本接口支持对增值税发票（卷票）关键字段的识别，包括的发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类等。
 //
 // 
 //
@@ -6234,7 +6242,7 @@ func (c *Client) VatRollInvoiceOCR(request *VatRollInvoiceOCRRequest) (response 
 }
 
 // VatRollInvoiceOCR
-// 本接口支持对增值税发票（卷票）的发票代码、发票号码、日期、校验码、合计金额（小写）等关键字段的识别。
+// 本接口支持对增值税发票（卷票）关键字段的识别，包括的发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类等。
 //
 // 
 //
@@ -6820,7 +6828,7 @@ func NewWaybillOCRResponse() (response *WaybillOCRResponse) {
 }
 
 // WaybillOCR
-// 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段，精度均处于业界领先水平，识别准确率达到99%以上。
+// 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段。
 //
 // 
 //
@@ -6844,7 +6852,7 @@ func (c *Client) WaybillOCR(request *WaybillOCRRequest) (response *WaybillOCRRes
 }
 
 // WaybillOCR
-// 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段，精度均处于业界领先水平，识别准确率达到99%以上。
+// 本接口支持市面上主流版式电子运单的识别，包括收件人和寄件人的姓名、电话、地址以及运单号等字段。
 //
 // 
 //

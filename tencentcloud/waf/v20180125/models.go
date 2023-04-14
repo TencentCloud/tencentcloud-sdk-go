@@ -4585,13 +4585,13 @@ type UpsertIpAccessControlRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳
+	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
 	Items []*string `json:"Items,omitempty" name:"Items"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
-	// 是否为多域名黑白名单
+	// 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，佛祖饿为空
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 }
 
@@ -4601,13 +4601,13 @@ type UpsertIpAccessControlRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳
+	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
 	Items []*string `json:"Items,omitempty" name:"Items"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
-	// 是否为多域名黑白名单
+	// 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，佛祖饿为空
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 }
 

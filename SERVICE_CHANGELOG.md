@@ -1,44 +1,292 @@
 # 本版本更新包含以下内容：
 
-## 人脸核身(faceid) 版本：2018-03-01
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 56 次发布
+### 第 41 次发布
 
-发布时间：2023-04-13 01:17:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
-
-	* 新增成员：PassNo, VisaNum
-
-
-
-
-## 游戏数据库 TcaplusDB(tcaplusdb) 版本：2019-08-23
-
-### 第 19 次发布
-
-发布时间：2023-04-13 01:37:44
+发布时间：2023-04-14 01:13:53
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DeleteBackupRecords](https://cloud.tencent.com/document/api/596/90121)
-* [DescribeBackupRecords](https://cloud.tencent.com/document/api/596/90119)
-* [SetBackupExpireRule](https://cloud.tencent.com/document/api/596/90120)
+* [CreateTopic](https://cloud.tencent.com/document/api/614/56456)
 
-新增数据结构：
+	* 新增入参：IsWebTracking
 
-* [BackupExpireRuleInfo](https://cloud.tencent.com/document/api/596/39686#BackupExpireRuleInfo)
-* [BackupRecords](https://cloud.tencent.com/document/api/596/39686#BackupRecords)
+* [ModifyTopic](https://cloud.tencent.com/document/api/614/56453)
+
+	* 新增入参：IsWebTracking
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 28 次发布
+
+发布时间：2023-04-14 01:56:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckCertificate
+* CreateApplicationProxy
+* CreateApplicationProxyRule
+* CreateApplicationProxyRules
+* CreateCustomErrorPage
+* CreateDnsRecord
+* CreateLoadBalancing
+* CreateOriginGroup
+* CreatePlanForZone
+* CreateRule
+* CreateZone
+* DeleteApplicationProxy
+* DeleteApplicationProxyRule
+* DeleteDnsRecords
+* DeleteLoadBalancing
+* DeleteOriginGroup
+* DeleteRules
+* DeleteZone
+* DescribeApplicationProxy
+* DescribeApplicationProxyDetail
+* DescribeAvailablePlans
+* DescribeBotLog
+* DescribeBotManagedRules
+* DescribeCnameStatus
+* DescribeDDoSPolicy
+* DescribeDDosAttackData
+* DescribeDDosAttackEvent
+* DescribeDDosAttackEventDetail
+* DescribeDDosAttackSourceEvent
+* DescribeDDosAttackTopData
+* DescribeDDosMajorAttackEvent
+* DescribeDefaultCertificates
+* DescribeDnsData
+* DescribeDnsRecords
+* DescribeDnssec
+* DescribeHostsCertificate
+* DescribeHostsSetting
+* DescribeIdentification
+* DescribeLoadBalancing
+* DescribeLoadBalancingDetail
+* DescribeOriginGroup
+* DescribeOriginGroupDetail
+* DescribeOverviewL7Data
+* DescribeRules
+* DescribeRulesSetting
+* DescribeSecurityPolicy
+* DescribeSecurityPolicyList
+* DescribeSecurityPolicyManagedRules
+* DescribeSecurityPolicyManagedRulesId
+* DescribeSecurityPolicyRegions
+* DescribeSecurityPortraitRules
+* DescribeTimingL4Data
+* DescribeTimingL7AnalysisData
+* DescribeTimingL7CacheData
+* DescribeTopL7AnalysisData
+* DescribeTopL7CacheData
+* DescribeWebManagedRulesAttackEvents
+* DescribeWebManagedRulesData
+* DescribeWebManagedRulesLog
+* DescribeWebManagedRulesTopData
+* DescribeWebProtectionAttackEvents
+* DescribeWebProtectionData
+* DescribeWebProtectionLog
+* DescribeZoneDDoSPolicy
+* DescribeZoneDetails
+* DescribeZoneSetting
+* DownloadL7Logs
+* IdentifyZone
+* ImportDnsRecords
+* ModifyApplicationProxy
+* ModifyApplicationProxyRule
+* ModifyApplicationProxyRuleStatus
+* ModifyApplicationProxyStatus
+* ModifyDDoSPolicy
+* ModifyDDoSPolicyHost
+* ModifyDefaultCertificate
+* ModifyDnsRecord
+* ModifyDnssec
+* ModifyHostsCertificate
+* ModifyLoadBalancing
+* ModifyLoadBalancingStatus
+* ModifyOriginGroup
+* ModifyRule
+* ModifyRulePriority
+* ModifySecurityPolicy
+* ModifyZone
+* ModifyZoneCnameSpeedUp
+* ModifyZoneSetting
+* ModifyZoneStatus
+* ReclaimZone
+* ScanDnsRecords
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ACLCondition
+* ACLUserRule
+* AclConfig
+* AiRule
+* ApplicationProxy
+* ApplicationProxyRule
+* BotConfig
+* BotLog
+* BotLogData
+* BotManagedRule
+* BotManagedRuleDetail
+* BotPortraitRule
+* CCInterceptEvent
+* CCInterceptEventData
+* CCLog
+* CCLogData
+* CacheConfig
+* CacheConfigCache
+* CacheConfigFollowOrigin
+* CacheConfigNoCache
+* CacheKey
+* CachePrefresh
+* CertFilter
+* CertSort
+* ClientIp
+* CnameStatus
+* Compression
+* DDoSAcl
+* DDoSAntiPly
+* DDoSApplication
+* DDoSConfig
+* DDoSFeaturesFilter
+* DDoSGeoIp
+* DDoSStatusInfo
+* DDoSUserAllowBlockIP
+* DDosAttackEvent
+* DDosAttackEventData
+* DDosAttackEventDetailData
+* DDosAttackSourceEvent
+* DDosAttackSourceEventData
+* DDosMajorAttackEvent
+* DDosMajorAttackEventData
+* DataItem
+* DdosAcls
+* DdosAllowBlock
+* DdosPacketFilter
+* DdosRule
+* DdosSpeedLimit
+* DefaultServerCertInfo
+* DetailHost
+* DnsDataFilter
+* DnsRecord
+* DnsRecordFilter
+* DnssecInfo
+* DropPageConfig
+* DropPageDetail
+* ExceptConfig
+* ExceptUserRule
+* ExceptUserRuleCondition
+* ExceptUserRuleScope
+* Filter
+* ForceRedirect
+* GeoIp
+* HostCertSetting
+* Hsts
+* Https
+* IntelligenceRule
+* IntelligenceRuleItem
+* IpTableConfig
+* IpTableRule
+* Ipv6Access
+* L7OfflineLog
+* LoadBalancing
+* ManagedRule
+* MaxAge
+* OfflineCache
+* Origin
+* OriginCheckOriginStatus
+* OriginFilter
+* OriginGroup
+* OriginRecord
+* OriginRecordPrivateParameter
+* PlanInfo
+* PortraitManagedRuleDetail
+* PostMaxSize
+* QueryCondition
+* QueryString
+* Quic
+* RateLimitConfig
+* RateLimitIntelligence
+* RateLimitTemplate
+* RateLimitTemplateDetail
+* RateLimitUserRule
+* RuleAction
+* RuleAndConditions
+* RuleChoicePropertiesItem
+* RuleCodeAction
+* RuleCodeActionParams
+* RuleCondition
+* RuleExtraParameter
+* RuleFilter
+* RuleItem
+* RuleNormalAction
+* RuleNormalActionParams
+* RuleRewriteAction
+* RuleRewriteActionParams
+* RuleSettingDetail
+* RulesProperties
+* RulesSettingAction
+* SecEntry
+* SecEntryValue
+* SecRuleRelatedInfo
+* SecurityConfig
+* SecurityEntity
+* ServerCertInfo
+* ShieldArea
+* SmartRouting
+* SwitchConfig
+* TimingDataItem
+* TimingDataRecord
+* TimingTypeValue
+* TopDataRecord
+* TopDetailData
+* TopNEntry
+* TopNEntryValue
+* UpstreamHttp2
+* VanityNameServers
+* VanityNameServersIps
+* WafConfig
+* WafRule
+* WebAttackEvent
+* WebEventData
+* WebLogData
+* WebLogs
+* WebSocket
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 54 次发布
+
+发布时间：2023-04-14 02:00:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTrtcRoomUsage](https://cloud.tencent.com/document/api/647/89181)
+
+	* 新增出参：Data
+
 
 
 
@@ -24517,6 +24765,25 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 41 次发布
+
+发布时间：2023-04-14 01:13:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTopic](https://cloud.tencent.com/document/api/614/56456)
+
+	* 新增入参：IsWebTracking
+
+* [ModifyTopic](https://cloud.tencent.com/document/api/614/56453)
+
+	* 新增入参：IsWebTracking
+
 
 ### 第 40 次发布
 
@@ -81781,14 +82048,14 @@
 
 新增接口：
 
-* [[DeleteBackupRecords](https://cloud.tencent.com/document/api/596/90121)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBackupRecords](https://cloud.tencent.com/document/api/596/90119)](https://cloud.tencent.com/document/api/#/#)
-* [[SetBackupExpireRule](https://cloud.tencent.com/document/api/596/90120)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteBackupRecords](https://cloud.tencent.com/document/api/596/90121)
+* [DescribeBackupRecords](https://cloud.tencent.com/document/api/596/90119)
+* [SetBackupExpireRule](https://cloud.tencent.com/document/api/596/90120)
 
 新增数据结构：
 
-* [[BackupExpireRuleInfo](https://cloud.tencent.com/document/api/596/39686#BackupExpireRuleInfo)](https://cloud.tencent.com/document/api/596/39686#[BackupExpireRuleInfo](https://cloud.tencent.com/document/api/596/39686#BackupExpireRuleInfo))
-* [[BackupRecords](https://cloud.tencent.com/document/api/596/39686#BackupRecords)](https://cloud.tencent.com/document/api/596/39686#[BackupRecords](https://cloud.tencent.com/document/api/596/39686#BackupRecords))
+* [BackupExpireRuleInfo](https://cloud.tencent.com/document/api/596/39686#BackupExpireRuleInfo)
+* [BackupRecords](https://cloud.tencent.com/document/api/596/39686#BackupRecords)
 
 ### 第 18 次发布
 
@@ -90093,6 +90360,246 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 28 次发布
+
+发布时间：2023-04-14 01:56:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckCertificate
+* CreateApplicationProxy
+* CreateApplicationProxyRule
+* CreateApplicationProxyRules
+* CreateCustomErrorPage
+* CreateDnsRecord
+* CreateLoadBalancing
+* CreateOriginGroup
+* CreatePlanForZone
+* CreateRule
+* CreateZone
+* DeleteApplicationProxy
+* DeleteApplicationProxyRule
+* DeleteDnsRecords
+* DeleteLoadBalancing
+* DeleteOriginGroup
+* DeleteRules
+* DeleteZone
+* DescribeApplicationProxy
+* DescribeApplicationProxyDetail
+* DescribeAvailablePlans
+* DescribeBotLog
+* DescribeBotManagedRules
+* DescribeCnameStatus
+* DescribeDDoSPolicy
+* DescribeDDosAttackData
+* DescribeDDosAttackEvent
+* DescribeDDosAttackEventDetail
+* DescribeDDosAttackSourceEvent
+* DescribeDDosAttackTopData
+* DescribeDDosMajorAttackEvent
+* DescribeDefaultCertificates
+* DescribeDnsData
+* DescribeDnsRecords
+* DescribeDnssec
+* DescribeHostsCertificate
+* DescribeHostsSetting
+* DescribeIdentification
+* DescribeLoadBalancing
+* DescribeLoadBalancingDetail
+* DescribeOriginGroup
+* DescribeOriginGroupDetail
+* DescribeOverviewL7Data
+* DescribeRules
+* DescribeRulesSetting
+* DescribeSecurityPolicy
+* DescribeSecurityPolicyList
+* DescribeSecurityPolicyManagedRules
+* DescribeSecurityPolicyManagedRulesId
+* DescribeSecurityPolicyRegions
+* DescribeSecurityPortraitRules
+* DescribeTimingL4Data
+* DescribeTimingL7AnalysisData
+* DescribeTimingL7CacheData
+* DescribeTopL7AnalysisData
+* DescribeTopL7CacheData
+* DescribeWebManagedRulesAttackEvents
+* DescribeWebManagedRulesData
+* DescribeWebManagedRulesLog
+* DescribeWebManagedRulesTopData
+* DescribeWebProtectionAttackEvents
+* DescribeWebProtectionData
+* DescribeWebProtectionLog
+* DescribeZoneDDoSPolicy
+* DescribeZoneDetails
+* DescribeZoneSetting
+* DownloadL7Logs
+* IdentifyZone
+* ImportDnsRecords
+* ModifyApplicationProxy
+* ModifyApplicationProxyRule
+* ModifyApplicationProxyRuleStatus
+* ModifyApplicationProxyStatus
+* ModifyDDoSPolicy
+* ModifyDDoSPolicyHost
+* ModifyDefaultCertificate
+* ModifyDnsRecord
+* ModifyDnssec
+* ModifyHostsCertificate
+* ModifyLoadBalancing
+* ModifyLoadBalancingStatus
+* ModifyOriginGroup
+* ModifyRule
+* ModifyRulePriority
+* ModifySecurityPolicy
+* ModifyZone
+* ModifyZoneCnameSpeedUp
+* ModifyZoneSetting
+* ModifyZoneStatus
+* ReclaimZone
+* ScanDnsRecords
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ACLCondition
+* ACLUserRule
+* AclConfig
+* AiRule
+* ApplicationProxy
+* ApplicationProxyRule
+* BotConfig
+* BotLog
+* BotLogData
+* BotManagedRule
+* BotManagedRuleDetail
+* BotPortraitRule
+* CCInterceptEvent
+* CCInterceptEventData
+* CCLog
+* CCLogData
+* CacheConfig
+* CacheConfigCache
+* CacheConfigFollowOrigin
+* CacheConfigNoCache
+* CacheKey
+* CachePrefresh
+* CertFilter
+* CertSort
+* ClientIp
+* CnameStatus
+* Compression
+* DDoSAcl
+* DDoSAntiPly
+* DDoSApplication
+* DDoSConfig
+* DDoSFeaturesFilter
+* DDoSGeoIp
+* DDoSStatusInfo
+* DDoSUserAllowBlockIP
+* DDosAttackEvent
+* DDosAttackEventData
+* DDosAttackEventDetailData
+* DDosAttackSourceEvent
+* DDosAttackSourceEventData
+* DDosMajorAttackEvent
+* DDosMajorAttackEventData
+* DataItem
+* DdosAcls
+* DdosAllowBlock
+* DdosPacketFilter
+* DdosRule
+* DdosSpeedLimit
+* DefaultServerCertInfo
+* DetailHost
+* DnsDataFilter
+* DnsRecord
+* DnsRecordFilter
+* DnssecInfo
+* DropPageConfig
+* DropPageDetail
+* ExceptConfig
+* ExceptUserRule
+* ExceptUserRuleCondition
+* ExceptUserRuleScope
+* Filter
+* ForceRedirect
+* GeoIp
+* HostCertSetting
+* Hsts
+* Https
+* IntelligenceRule
+* IntelligenceRuleItem
+* IpTableConfig
+* IpTableRule
+* Ipv6Access
+* L7OfflineLog
+* LoadBalancing
+* ManagedRule
+* MaxAge
+* OfflineCache
+* Origin
+* OriginCheckOriginStatus
+* OriginFilter
+* OriginGroup
+* OriginRecord
+* OriginRecordPrivateParameter
+* PlanInfo
+* PortraitManagedRuleDetail
+* PostMaxSize
+* QueryCondition
+* QueryString
+* Quic
+* RateLimitConfig
+* RateLimitIntelligence
+* RateLimitTemplate
+* RateLimitTemplateDetail
+* RateLimitUserRule
+* RuleAction
+* RuleAndConditions
+* RuleChoicePropertiesItem
+* RuleCodeAction
+* RuleCodeActionParams
+* RuleCondition
+* RuleExtraParameter
+* RuleFilter
+* RuleItem
+* RuleNormalAction
+* RuleNormalActionParams
+* RuleRewriteAction
+* RuleRewriteActionParams
+* RuleSettingDetail
+* RulesProperties
+* RulesSettingAction
+* SecEntry
+* SecEntryValue
+* SecRuleRelatedInfo
+* SecurityConfig
+* SecurityEntity
+* ServerCertInfo
+* ShieldArea
+* SmartRouting
+* SwitchConfig
+* TimingDataItem
+* TimingDataRecord
+* TimingTypeValue
+* TopDataRecord
+* TopDetailData
+* TopNEntry
+* TopNEntryValue
+* UpstreamHttp2
+* VanityNameServers
+* VanityNameServersIps
+* WafConfig
+* WafRule
+* WebAttackEvent
+* WebEventData
+* WebLogData
+* WebLogs
+* WebSocket
 
 ### 第 27 次发布
 
@@ -99102,6 +99609,21 @@
 
 
 ## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 54 次发布
+
+发布时间：2023-04-14 02:00:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTrtcRoomUsage](https://cloud.tencent.com/document/api/647/89181)
+
+	* 新增出参：Data
+
 
 ### 第 53 次发布
 

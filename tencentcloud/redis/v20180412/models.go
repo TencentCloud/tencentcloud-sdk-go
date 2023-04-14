@@ -7287,6 +7287,8 @@ type ParamTemplateInfo struct {
 	// - 7：Redis 4.0内存版（集群架构）。
 	// - 8：Redis 5.0内存版（标准架构）。
 	// - 9：Redis 5.0内存版（集群架构）。
+	// - 15：Redis 6.2内存版（标准架构）。
+	// - 16：Redis 6.2内存版（集群架构）。
 	ProductType *uint64 `json:"ProductType,omitempty" name:"ProductType"`
 }
 
@@ -7325,43 +7327,59 @@ type ParameterDetail struct {
 }
 
 type ProductConf struct {
-	// 产品类型，2 – Redis2.8内存版(标准架构)，3 – CKV 3.2内存版(标准架构)，4 – CKV 3.2内存版(集群架构)，5 – Redis2.8内存版(单机版)，6 – Redis4.0内存版(标准架构)，7 – Redis4.0内存版(集群架构)，8 – Redis5.0内存版(标准架构)，9 – Redis5.0内存版(集群架构)，10 – Redis4.0混合存储版Tendis
+	// 产品类型。
+	// - 2：Redis 2.8内存版（标准架构）。
+	// - 3：CKV 3.2内存版（标准架构）。
+	// - 4：CKV 3.2内存版（集群架构）。
+	// - 5：Redis 2.8内存版（单机）。
+	// - 6：Redis 4.0内存版（标准架构）。
+	// - 7：Redis 4.0内存版（集群架构）。
+	// - 8：Redis 5.0内存版（标准架构）。
+	// - 9：Redis 5.0内存版（集群架构）。
+	// - 15：Redis 6.2内存版（标准架构）。
+	// - 16：Redis 6.2内存版（集群架构）。
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 产品名称，Redis主从版，CKV主从版，CKV集群版，Redis单机版，Redis集群版，混合存储版Tendis
+	// 产品名称。包括：Redis 主从版、CKV 主从版、CKV 集群版、Redis 单机版、Redis 集群版。
 	TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
 
-	// 购买时的最小数量
+	// 购买时的最小数量。
 	MinBuyNum *int64 `json:"MinBuyNum,omitempty" name:"MinBuyNum"`
 
-	// 购买时的最大数量
+	// 购买时的最大数量。
 	MaxBuyNum *int64 `json:"MaxBuyNum,omitempty" name:"MaxBuyNum"`
 
-	// 产品是否售罄
+	// 产品是否售罄。
+	// - true：售罄。
+	// - false：未售罄。
 	Saleout *bool `json:"Saleout,omitempty" name:"Saleout"`
 
-	// 产品引擎，腾讯云CKV或者社区版Redis
+	// 产品引擎。包括：腾讯云 CKV与社区版 Redis。
 	Engine *string `json:"Engine,omitempty" name:"Engine"`
 
-	// 兼容版本，Redis-2.8，Redis-3.2，Redis-4.0
+	// 兼容版本。包括：Redis-2.8、Redis-3.2、Redis-4.0、Redis-5.0、Redis-6.2。
 	Version *string `json:"Version,omitempty" name:"Version"`
 
-	// 规格总大小，单位G
+	// 规格总大小，单位GB。
 	TotalSize []*string `json:"TotalSize,omitempty" name:"TotalSize"`
 
-	// 每个分片大小，单位G
+	// 每个分片大小，单位GB。
 	ShardSize []*string `json:"ShardSize,omitempty" name:"ShardSize"`
 
-	// 副本数量
+	// 副本数量。
 	ReplicaNum []*string `json:"ReplicaNum,omitempty" name:"ReplicaNum"`
 
-	// 分片数量
+	// 分片数量。
 	ShardNum []*string `json:"ShardNum,omitempty" name:"ShardNum"`
 
-	// 支持的计费模式，1-包年包月，0-按量计费
+	// 支持的计费模式。
+	// - 1：包年包月。
+	// - 0：按量计费。
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 是否支持副本只读
+	// 是否支持副本只读。
+	// - true：支持副本只读。
+	// - false：不支持。
 	EnableRepicaReadOnly *bool `json:"EnableRepicaReadOnly,omitempty" name:"EnableRepicaReadOnly"`
 }
 

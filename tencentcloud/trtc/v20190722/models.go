@@ -1787,6 +1787,9 @@ func (r *DescribeTrtcRoomUsageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTrtcRoomUsageResponseParams struct {
+	// 房间维度用量数据，csv文件格式。
+	Data *string `json:"Data,omitempty" name:"Data"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

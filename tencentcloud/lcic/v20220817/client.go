@@ -3119,6 +3119,7 @@ func NewSetAppCustomContentResponse() (response *SetAppCustomContentResponse) {
 // 设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
@@ -3130,6 +3131,7 @@ func (c *Client) SetAppCustomContent(request *SetAppCustomContentRequest) (respo
 // 设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"

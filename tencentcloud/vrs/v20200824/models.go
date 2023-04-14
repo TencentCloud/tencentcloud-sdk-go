@@ -412,15 +412,21 @@ type TrainingTexts struct {
 }
 
 type Words struct {
-	// 准确度
+	// 准确度 (<75则认为不合格)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PronAccuracy *float64 `json:"PronAccuracy,omitempty" name:"PronAccuracy"`
 
-	// 流畅度
+	// 流畅度 (<0.95则认为不合格)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PronFluency *float64 `json:"PronFluency,omitempty" name:"PronFluency"`
 
-	// tag: 0: match, 1: insert, 2: delete, 3: replace, 4: oov, 5: unknown
+	// tag: 
+	// 0: match  匹配
+	// 1: insert   多读
+	// 2: delete  少读
+	// 3: replace 错读
+	// 4: oov  待评估字不在发音评估的词库
+	// 5: unknown 未知错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *int64 `json:"Tag,omitempty" name:"Tag"`
 
