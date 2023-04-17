@@ -2589,10 +2589,32 @@ type IntentionQuestion struct {
 }
 
 type IntentionQuestionResult struct {
-	// 意愿核身最终结果：
-	// 0：认证通过，-1：认证未通过，-2：浏览器内核不兼容，无法进行意愿校验
+	// 意愿核身错误码：
+	// 0: "成功"       
+	// -1: "参数错误"    
+	// -2: "系统异常"    
+	// -101: "请保持人脸在框内"    
+	// -102: "检测到多张人脸"   
+	// -103: "人脸检测失败"   
+	// -104: "人脸检测不完整"   
+	// -105: "请勿遮挡眼睛"    
+	// -106: "请勿遮挡嘴巴"     
+	// -107: "请勿遮挡鼻子"     
+	// -201: "人脸比对相似度低"    
+	// -202: "人脸比对失败"    
+	// -301: "意愿核验不通过"   
+	// -800: "前端不兼容错误"    
+	// -801: "用户未授权摄像头和麦克风权限"   
+	// -802: "获取视频流失败"   
+	// -803: "用户主动关闭链接/异常断开链接"   
+	// -998: "系统数据异常"   
+	// -999: "系统未知错误，请联系人工核实"   
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FinalResultCode *string `json:"FinalResultCode,omitempty" name:"FinalResultCode"`
+	FinalResultDetailCode *int64 `json:"FinalResultDetailCode,omitempty" name:"FinalResultDetailCode"`
+
+	// 意愿核身错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalResultMessage *string `json:"FinalResultMessage,omitempty" name:"FinalResultMessage"`
 
 	// 视频base64（其中包含全程问题和回答音频，mp4格式）
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2614,6 +2636,11 @@ type IntentionQuestionResult struct {
 	// 答案录音音频
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Audios []*string `json:"Audios,omitempty" name:"Audios"`
+
+	// 意愿核身最终结果：
+	// 0：认证通过，-1：认证未通过，-2：浏览器内核不兼容，无法进行意愿校验。建议使用“FinalResultDetailCode”参数获取详细的错误码信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalResultCode *string `json:"FinalResultCode,omitempty" name:"FinalResultCode"`
 }
 
 type IntentionVerifyData struct {

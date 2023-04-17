@@ -3067,6 +3067,70 @@ func (r *DescribeTraceCodesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTraceDataByIdRequestParams struct {
+	// 溯源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+type DescribeTraceDataByIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// 溯源ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+func (r *DescribeTraceDataByIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTraceDataByIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "CorpId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTraceDataByIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTraceDataByIdResponseParams struct {
+	// 无
+	TraceData *TraceData `json:"TraceData,omitempty" name:"TraceData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTraceDataByIdResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTraceDataByIdResponseParams `json:"Response"`
+}
+
+func (r *DescribeTraceDataByIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTraceDataByIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTraceDataListRequestParams struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`

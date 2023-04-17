@@ -1,3 +1,81 @@
+# Release v1.0.639
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 17 次发布
+
+发布时间：2023-04-17 01:08:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateMigrationTask](https://cloud.tencent.com/document/api/582/90217)
+* [DeleteMigrationTask](https://cloud.tencent.com/document/api/582/90216)
+* [DescribeBucketList](https://cloud.tencent.com/document/api/582/90215)
+* [DescribeMigrationTasks](https://cloud.tencent.com/document/api/582/90214)
+* [StopMigrationTask](https://cloud.tencent.com/document/api/582/90213)
+
+新增数据结构：
+
+* [BucketInfo](https://cloud.tencent.com/document/api/582/38175#BucketInfo)
+* [MigrationTaskInfo](https://cloud.tencent.com/document/api/582/38175#MigrationTaskInfo)
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 57 次发布
+
+发布时间：2023-04-17 01:20:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IntentionQuestionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionQuestionResult)
+
+	* 新增成员：FinalResultDetailCode, FinalResultMessage
+
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 12 次发布
+
+发布时间：2023-04-17 01:29:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DeleteScanInstances
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 19 次发布
+
+发布时间：2023-04-17 01:41:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTraceDataById](https://cloud.tencent.com/document/api/1458/90218)
+
+
+
 # Release v1.0.638
 
 ## 日志服务(cls) 版本：2020-10-16

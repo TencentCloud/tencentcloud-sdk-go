@@ -1,292 +1,78 @@
 # 本版本更新包含以下内容：
 
-## 日志服务(cls) 版本：2020-10-16
+## 文件存储(cfs) 版本：2019-07-19
 
-### 第 41 次发布
+### 第 17 次发布
 
-发布时间：2023-04-14 01:13:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTopic](https://cloud.tencent.com/document/api/614/56456)
-
-	* 新增入参：IsWebTracking
-
-* [ModifyTopic](https://cloud.tencent.com/document/api/614/56453)
-
-	* 新增入参：IsWebTracking
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-### 第 28 次发布
-
-发布时间：2023-04-14 01:56:30
+发布时间：2023-04-17 01:08:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+新增接口：
 
-* CheckCertificate
-* CreateApplicationProxy
-* CreateApplicationProxyRule
-* CreateApplicationProxyRules
-* CreateCustomErrorPage
-* CreateDnsRecord
-* CreateLoadBalancing
-* CreateOriginGroup
-* CreatePlanForZone
-* CreateRule
-* CreateZone
-* DeleteApplicationProxy
-* DeleteApplicationProxyRule
-* DeleteDnsRecords
-* DeleteLoadBalancing
-* DeleteOriginGroup
-* DeleteRules
-* DeleteZone
-* DescribeApplicationProxy
-* DescribeApplicationProxyDetail
-* DescribeAvailablePlans
-* DescribeBotLog
-* DescribeBotManagedRules
-* DescribeCnameStatus
-* DescribeDDoSPolicy
-* DescribeDDosAttackData
-* DescribeDDosAttackEvent
-* DescribeDDosAttackEventDetail
-* DescribeDDosAttackSourceEvent
-* DescribeDDosAttackTopData
-* DescribeDDosMajorAttackEvent
-* DescribeDefaultCertificates
-* DescribeDnsData
-* DescribeDnsRecords
-* DescribeDnssec
-* DescribeHostsCertificate
-* DescribeHostsSetting
-* DescribeIdentification
-* DescribeLoadBalancing
-* DescribeLoadBalancingDetail
-* DescribeOriginGroup
-* DescribeOriginGroupDetail
-* DescribeOverviewL7Data
-* DescribeRules
-* DescribeRulesSetting
-* DescribeSecurityPolicy
-* DescribeSecurityPolicyList
-* DescribeSecurityPolicyManagedRules
-* DescribeSecurityPolicyManagedRulesId
-* DescribeSecurityPolicyRegions
-* DescribeSecurityPortraitRules
-* DescribeTimingL4Data
-* DescribeTimingL7AnalysisData
-* DescribeTimingL7CacheData
-* DescribeTopL7AnalysisData
-* DescribeTopL7CacheData
-* DescribeWebManagedRulesAttackEvents
-* DescribeWebManagedRulesData
-* DescribeWebManagedRulesLog
-* DescribeWebManagedRulesTopData
-* DescribeWebProtectionAttackEvents
-* DescribeWebProtectionData
-* DescribeWebProtectionLog
-* DescribeZoneDDoSPolicy
-* DescribeZoneDetails
-* DescribeZoneSetting
-* DownloadL7Logs
-* IdentifyZone
-* ImportDnsRecords
-* ModifyApplicationProxy
-* ModifyApplicationProxyRule
-* ModifyApplicationProxyRuleStatus
-* ModifyApplicationProxyStatus
-* ModifyDDoSPolicy
-* ModifyDDoSPolicyHost
-* ModifyDefaultCertificate
-* ModifyDnsRecord
-* ModifyDnssec
-* ModifyHostsCertificate
-* ModifyLoadBalancing
-* ModifyLoadBalancingStatus
-* ModifyOriginGroup
-* ModifyRule
-* ModifyRulePriority
-* ModifySecurityPolicy
-* ModifyZone
-* ModifyZoneCnameSpeedUp
-* ModifyZoneSetting
-* ModifyZoneStatus
-* ReclaimZone
-* ScanDnsRecords
+* [CreateMigrationTask](https://cloud.tencent.com/document/api/582/90217)
+* [DeleteMigrationTask](https://cloud.tencent.com/document/api/582/90216)
+* [DescribeBucketList](https://cloud.tencent.com/document/api/582/90215)
+* [DescribeMigrationTasks](https://cloud.tencent.com/document/api/582/90214)
+* [StopMigrationTask](https://cloud.tencent.com/document/api/582/90213)
 
-<font color="#dd0000">**删除数据结构**：</font>
+新增数据结构：
 
-* ACLCondition
-* ACLUserRule
-* AclConfig
-* AiRule
-* ApplicationProxy
-* ApplicationProxyRule
-* BotConfig
-* BotLog
-* BotLogData
-* BotManagedRule
-* BotManagedRuleDetail
-* BotPortraitRule
-* CCInterceptEvent
-* CCInterceptEventData
-* CCLog
-* CCLogData
-* CacheConfig
-* CacheConfigCache
-* CacheConfigFollowOrigin
-* CacheConfigNoCache
-* CacheKey
-* CachePrefresh
-* CertFilter
-* CertSort
-* ClientIp
-* CnameStatus
-* Compression
-* DDoSAcl
-* DDoSAntiPly
-* DDoSApplication
-* DDoSConfig
-* DDoSFeaturesFilter
-* DDoSGeoIp
-* DDoSStatusInfo
-* DDoSUserAllowBlockIP
-* DDosAttackEvent
-* DDosAttackEventData
-* DDosAttackEventDetailData
-* DDosAttackSourceEvent
-* DDosAttackSourceEventData
-* DDosMajorAttackEvent
-* DDosMajorAttackEventData
-* DataItem
-* DdosAcls
-* DdosAllowBlock
-* DdosPacketFilter
-* DdosRule
-* DdosSpeedLimit
-* DefaultServerCertInfo
-* DetailHost
-* DnsDataFilter
-* DnsRecord
-* DnsRecordFilter
-* DnssecInfo
-* DropPageConfig
-* DropPageDetail
-* ExceptConfig
-* ExceptUserRule
-* ExceptUserRuleCondition
-* ExceptUserRuleScope
-* Filter
-* ForceRedirect
-* GeoIp
-* HostCertSetting
-* Hsts
-* Https
-* IntelligenceRule
-* IntelligenceRuleItem
-* IpTableConfig
-* IpTableRule
-* Ipv6Access
-* L7OfflineLog
-* LoadBalancing
-* ManagedRule
-* MaxAge
-* OfflineCache
-* Origin
-* OriginCheckOriginStatus
-* OriginFilter
-* OriginGroup
-* OriginRecord
-* OriginRecordPrivateParameter
-* PlanInfo
-* PortraitManagedRuleDetail
-* PostMaxSize
-* QueryCondition
-* QueryString
-* Quic
-* RateLimitConfig
-* RateLimitIntelligence
-* RateLimitTemplate
-* RateLimitTemplateDetail
-* RateLimitUserRule
-* RuleAction
-* RuleAndConditions
-* RuleChoicePropertiesItem
-* RuleCodeAction
-* RuleCodeActionParams
-* RuleCondition
-* RuleExtraParameter
-* RuleFilter
-* RuleItem
-* RuleNormalAction
-* RuleNormalActionParams
-* RuleRewriteAction
-* RuleRewriteActionParams
-* RuleSettingDetail
-* RulesProperties
-* RulesSettingAction
-* SecEntry
-* SecEntryValue
-* SecRuleRelatedInfo
-* SecurityConfig
-* SecurityEntity
-* ServerCertInfo
-* ShieldArea
-* SmartRouting
-* SwitchConfig
-* TimingDataItem
-* TimingDataRecord
-* TimingTypeValue
-* TopDataRecord
-* TopDetailData
-* TopNEntry
-* TopNEntryValue
-* UpstreamHttp2
-* VanityNameServers
-* VanityNameServersIps
-* WafConfig
-* WafRule
-* WebAttackEvent
-* WebEventData
-* WebLogData
-* WebLogs
-* WebSocket
+* [BucketInfo](https://cloud.tencent.com/document/api/582/38175#BucketInfo)
+* [MigrationTaskInfo](https://cloud.tencent.com/document/api/582/38175#MigrationTaskInfo)
 
 
 
-## 实时音视频(trtc) 版本：2019-07-22
+## 人脸核身(faceid) 版本：2018-03-01
 
-### 第 54 次发布
+### 第 57 次发布
 
-发布时间：2023-04-14 02:00:19
+发布时间：2023-04-17 01:20:00
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [DescribeTrtcRoomUsage](https://cloud.tencent.com/document/api/647/89181)
+* [IntentionQuestionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionQuestionResult)
 
-	* 新增出参：Data
+	* 新增成员：FinalResultDetailCode, FinalResultMessage
 
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 12 次发布
+
+发布时间：2023-04-17 01:29:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DeleteScanInstances
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 19 次发布
+
+发布时间：2023-04-17 01:41:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTraceDataById](https://cloud.tencent.com/document/api/1458/90218)
 
 
 
@@ -18998,6 +18784,27 @@
 
 
 ## 文件存储(cfs) 版本：2019-07-19
+
+### 第 17 次发布
+
+发布时间：2023-04-17 01:08:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateMigrationTask](https://cloud.tencent.com/document/api/582/90217)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteMigrationTask](https://cloud.tencent.com/document/api/582/90216)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBucketList](https://cloud.tencent.com/document/api/582/90215)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMigrationTasks](https://cloud.tencent.com/document/api/582/90214)](https://cloud.tencent.com/document/api/#/#)
+* [[StopMigrationTask](https://cloud.tencent.com/document/api/582/90213)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BucketInfo](https://cloud.tencent.com/document/api/582/38175#BucketInfo)](https://cloud.tencent.com/document/api/582/38175#[BucketInfo](https://cloud.tencent.com/document/api/582/38175#BucketInfo))
+* [[MigrationTaskInfo](https://cloud.tencent.com/document/api/582/38175#MigrationTaskInfo)](https://cloud.tencent.com/document/api/582/38175#[MigrationTaskInfo](https://cloud.tencent.com/document/api/582/38175#MigrationTaskInfo))
 
 ### 第 16 次发布
 
@@ -48440,6 +48247,21 @@
 
 ## 人脸核身(faceid) 版本：2018-03-01
 
+### 第 57 次发布
+
+发布时间：2023-04-17 01:20:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IntentionQuestionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionQuestionResult)
+
+	* 新增成员：FinalResultDetailCode, FinalResultMessage
+
+
 ### 第 56 次发布
 
 发布时间：2023-04-13 01:17:40
@@ -68983,6 +68805,18 @@
 
 
 ## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 12 次发布
+
+发布时间：2023-04-17 01:29:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DeleteScanInstances
 
 ### 第 11 次发布
 
@@ -99107,6 +98941,18 @@
 
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 19 次发布
+
+发布时间：2023-04-17 01:41:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTraceDataById](https://cloud.tencent.com/document/api/1458/90218)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 18 次发布
 

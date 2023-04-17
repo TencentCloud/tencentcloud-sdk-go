@@ -186,6 +186,15 @@ func (r *BindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BucketInfo struct {
+	// 桶名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 桶所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 // Predefined struct for user
 type CreateAutoSnapshotPolicyRequestParams struct {
 	// 快照重复时间点
@@ -695,6 +704,161 @@ func (r *CreateCfsSnapshotResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMigrationTaskRequestParams struct {
+	// 迁移任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+	MigrationType *uint64 `json:"MigrationType,omitempty" name:"MigrationType"`
+
+	// 迁移模式，默认为0。0: 全量迁移
+	MigrationMode *uint64 `json:"MigrationMode,omitempty" name:"MigrationMode"`
+
+	// 数据源账号的SecretId
+	SrcSecretId *string `json:"SrcSecretId,omitempty" name:"SrcSecretId"`
+
+	// 数据源账号的SecretKey
+	SrcSecretKey *string `json:"SrcSecretKey,omitempty" name:"SrcSecretKey"`
+
+	// 文件系统实例Id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 文件系统路径
+	FsPath *string `json:"FsPath,omitempty" name:"FsPath"`
+
+	// 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+	CoverType *uint64 `json:"CoverType,omitempty" name:"CoverType"`
+
+	// 数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+	SrcService *string `json:"SrcService,omitempty" name:"SrcService"`
+
+	// 数据源桶名称，名称和地址至少有一个
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 数据源桶地域
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// 数据源桶地址，名称和地址至少有一个
+	BucketAddress *string `json:"BucketAddress,omitempty" name:"BucketAddress"`
+
+	// 清单地址，迁移方式为清单迁移时必填
+	ListAddress *string `json:"ListAddress,omitempty" name:"ListAddress"`
+
+	// 目标文件系统名称
+	FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+	// 源桶路径，默认为/
+	BucketPath *string `json:"BucketPath,omitempty" name:"BucketPath"`
+}
+
+type CreateMigrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 迁移任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+	MigrationType *uint64 `json:"MigrationType,omitempty" name:"MigrationType"`
+
+	// 迁移模式，默认为0。0: 全量迁移
+	MigrationMode *uint64 `json:"MigrationMode,omitempty" name:"MigrationMode"`
+
+	// 数据源账号的SecretId
+	SrcSecretId *string `json:"SrcSecretId,omitempty" name:"SrcSecretId"`
+
+	// 数据源账号的SecretKey
+	SrcSecretKey *string `json:"SrcSecretKey,omitempty" name:"SrcSecretKey"`
+
+	// 文件系统实例Id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 文件系统路径
+	FsPath *string `json:"FsPath,omitempty" name:"FsPath"`
+
+	// 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+	CoverType *uint64 `json:"CoverType,omitempty" name:"CoverType"`
+
+	// 数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+	SrcService *string `json:"SrcService,omitempty" name:"SrcService"`
+
+	// 数据源桶名称，名称和地址至少有一个
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 数据源桶地域
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// 数据源桶地址，名称和地址至少有一个
+	BucketAddress *string `json:"BucketAddress,omitempty" name:"BucketAddress"`
+
+	// 清单地址，迁移方式为清单迁移时必填
+	ListAddress *string `json:"ListAddress,omitempty" name:"ListAddress"`
+
+	// 目标文件系统名称
+	FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+	// 源桶路径，默认为/
+	BucketPath *string `json:"BucketPath,omitempty" name:"BucketPath"`
+}
+
+func (r *CreateMigrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMigrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "MigrationType")
+	delete(f, "MigrationMode")
+	delete(f, "SrcSecretId")
+	delete(f, "SrcSecretKey")
+	delete(f, "FileSystemId")
+	delete(f, "FsPath")
+	delete(f, "CoverType")
+	delete(f, "SrcService")
+	delete(f, "BucketName")
+	delete(f, "BucketRegion")
+	delete(f, "BucketAddress")
+	delete(f, "ListAddress")
+	delete(f, "FsName")
+	delete(f, "BucketPath")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMigrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMigrationTaskResponseParams struct {
+	// 迁移任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateMigrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMigrationTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateMigrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMigrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAutoSnapshotPolicyRequestParams struct {
 	// 快照策略ID
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
@@ -997,6 +1161,60 @@ func (r *DeleteCfsSnapshotResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteMigrationTaskRequestParams struct {
+	// 迁移任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DeleteMigrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 迁移任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteMigrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMigrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMigrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMigrationTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteMigrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMigrationTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteMigrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMigrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteMountTargetRequestParams struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -1271,6 +1489,80 @@ func (r *DescribeAvailableZoneInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAvailableZoneInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBucketListRequestParams struct {
+	// 数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+	SrcService *string `json:"SrcService,omitempty" name:"SrcService"`
+
+	// 数据源账号的SecretId
+	SrcSecretId *string `json:"SrcSecretId,omitempty" name:"SrcSecretId"`
+
+	// 数据源账号的SecretKey
+	SrcSecretKey *string `json:"SrcSecretKey,omitempty" name:"SrcSecretKey"`
+}
+
+type DescribeBucketListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+	SrcService *string `json:"SrcService,omitempty" name:"SrcService"`
+
+	// 数据源账号的SecretId
+	SrcSecretId *string `json:"SrcSecretId,omitempty" name:"SrcSecretId"`
+
+	// 数据源账号的SecretKey
+	SrcSecretKey *string `json:"SrcSecretKey,omitempty" name:"SrcSecretKey"`
+}
+
+func (r *DescribeBucketListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBucketListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SrcService")
+	delete(f, "SrcSecretId")
+	delete(f, "SrcSecretKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBucketListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBucketListResponseParams struct {
+	// 桶的数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 桶列表
+	BucketList []*BucketInfo `json:"BucketList,omitempty" name:"BucketList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBucketListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBucketListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBucketListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBucketListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1730,6 +2022,108 @@ func (r *DescribeCfsSnapshotsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMigrationTasksRequestParams struct {
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// <br><li> taskId
+	// 
+	// 按照【迁移任务id】进行过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> taskName
+	// 
+	// 按照【迁移任务名字】进行模糊搜索过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeMigrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// <br><li> taskId
+	// 
+	// 按照【迁移任务id】进行过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> taskName
+	// 
+	// 按照【迁移任务名字】进行模糊搜索过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeMigrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMigrationTasksResponseParams struct {
+	// 迁移任务的数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 迁移任务详情
+	MigrationTasks []*MigrationTaskInfo `json:"MigrationTasks,omitempty" name:"MigrationTasks"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeMigrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMigrationTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeMigrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMountTargetsRequestParams struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -2074,6 +2468,99 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+type MigrationTaskInfo struct {
+	// 迁移任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 迁移任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+	MigrationType *uint64 `json:"MigrationType,omitempty" name:"MigrationType"`
+
+	// 迁移模式，默认为0。0: 全量迁移
+	MigrationMode *uint64 `json:"MigrationMode,omitempty" name:"MigrationMode"`
+
+	// 数据源桶名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 数据源桶地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// 数据源桶地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketAddress *string `json:"BucketAddress,omitempty" name:"BucketAddress"`
+
+	// 清单地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListAddress *string `json:"ListAddress,omitempty" name:"ListAddress"`
+
+	// 文件系统实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+	// 文件系统实例Id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 文件系统路径
+	FsPath *string `json:"FsPath,omitempty" name:"FsPath"`
+
+	// 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+	CoverType *uint64 `json:"CoverType,omitempty" name:"CoverType"`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 完成/终止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 迁移状态。0: 已完成；1: 进行中；2: 已终止
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 文件数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileTotalCount *uint64 `json:"FileTotalCount,omitempty" name:"FileTotalCount"`
+
+	// 已迁移文件数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMigratedCount *uint64 `json:"FileMigratedCount,omitempty" name:"FileMigratedCount"`
+
+	// 迁移失败文件数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileFailedCount *uint64 `json:"FileFailedCount,omitempty" name:"FileFailedCount"`
+
+	// 文件容量，单位Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileTotalSize *int64 `json:"FileTotalSize,omitempty" name:"FileTotalSize"`
+
+	// 已迁移文件容量，单位Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMigratedSize *int64 `json:"FileMigratedSize,omitempty" name:"FileMigratedSize"`
+
+	// 迁移失败文件容量，单位Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileFailedSize *int64 `json:"FileFailedSize,omitempty" name:"FileFailedSize"`
+
+	// 全部清单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileTotalList *string `json:"FileTotalList,omitempty" name:"FileTotalList"`
+
+	// 已完成文件清单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileCompletedList *string `json:"FileCompletedList,omitempty" name:"FileCompletedList"`
+
+	// 失败文件清单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileFailedList *string `json:"FileFailedList,omitempty" name:"FileFailedList"`
+
+	// 源桶路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketPath *string `json:"BucketPath,omitempty" name:"BucketPath"`
+}
+
 type MountInfo struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -2357,6 +2844,66 @@ type SnapshotStatistics struct {
 
 	// 快照总容量
 	SnapshotSize *uint64 `json:"SnapshotSize,omitempty" name:"SnapshotSize"`
+}
+
+// Predefined struct for user
+type StopMigrationTaskRequestParams struct {
+	// 迁移任务名称
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type StopMigrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 迁移任务名称
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *StopMigrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopMigrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopMigrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopMigrationTaskResponseParams struct {
+	// 迁移任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 迁移状态。0: 已完成；1: 进行中；2: 已终止
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopMigrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StopMigrationTaskResponseParams `json:"Response"`
+}
+
+func (r *StopMigrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopMigrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type TagInfo struct {

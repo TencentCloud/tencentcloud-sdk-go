@@ -1825,6 +1825,58 @@ func (c *Client) DescribeTraceCodesWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeTraceDataByIdRequest() (request *DescribeTraceDataByIdRequest) {
+    request = &DescribeTraceDataByIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeTraceDataById")
+    
+    
+    return
+}
+
+func NewDescribeTraceDataByIdResponse() (response *DescribeTraceDataByIdResponse) {
+    response = &DescribeTraceDataByIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTraceDataById
+// 查询溯源ID查溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTraceDataById(request *DescribeTraceDataByIdRequest) (response *DescribeTraceDataByIdResponse, err error) {
+    return c.DescribeTraceDataByIdWithContext(context.Background(), request)
+}
+
+// DescribeTraceDataById
+// 查询溯源ID查溯源信息，通常溯源信息跟生产批次绑定，即一个批次的所有溯源信息都是一样的
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTraceDataByIdWithContext(ctx context.Context, request *DescribeTraceDataByIdRequest) (response *DescribeTraceDataByIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeTraceDataByIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTraceDataById require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTraceDataByIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTraceDataListRequest() (request *DescribeTraceDataListRequest) {
     request = &DescribeTraceDataListRequest{
         BaseRequest: &tchttp.BaseRequest{},

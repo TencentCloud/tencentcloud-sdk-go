@@ -575,6 +575,102 @@ func (c *Client) CreateCfsSnapshotWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateMigrationTaskRequest() (request *CreateMigrationTaskRequest) {
+    request = &CreateMigrationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "CreateMigrationTask")
+    
+    
+    return
+}
+
+func NewCreateMigrationTaskResponse() (response *CreateMigrationTaskResponse) {
+    response = &CreateMigrationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateMigrationTask
+// 用于创建迁移任务。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSNAPSHOTNAME = "InvalidParameter.InvalidSnapshotName"
+//  INVALIDPARAMETER_SNAPSHOTNAMELIMITEXCEEDED = "InvalidParameter.SnapshotNameLimitExceeded"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FSSIZELIMITEXCEEDED = "InvalidParameterValue.FsSizeLimitExceeded"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCETAGS = "InvalidParameterValue.InvalidResourceTags"
+//  INVALIDPARAMETERVALUE_INVALIDTAGKEY = "InvalidParameterValue.InvalidTagKey"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUE = "InvalidParameterValue.InvalidTagValue"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
+//  INVALIDPARAMETERVALUE_TAGKEYFILTERLIMITEXCEEDED = "InvalidParameterValue.TagKeyFilterLimitExceeded"
+//  INVALIDPARAMETERVALUE_TAGKEYLIMITEXCEEDED = "InvalidParameterValue.TagKeyLimitExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUEFILTERLIMITEXCEEDED = "InvalidParameterValue.TagValueFilterLimitExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUELIMITEXCEEDED = "InvalidParameterValue.TagValueLimitExceeded"
+//  RESOURCEINSUFFICIENT_TAGLIMITEXCEEDED = "ResourceInsufficient.TagLimitExceeded"
+//  RESOURCEINSUFFICIENT_TAGQUOTASEXCEEDED = "ResourceInsufficient.TagQuotasExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) CreateMigrationTask(request *CreateMigrationTaskRequest) (response *CreateMigrationTaskResponse, err error) {
+    return c.CreateMigrationTaskWithContext(context.Background(), request)
+}
+
+// CreateMigrationTask
+// 用于创建迁移任务。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSNAPSHOTNAME = "InvalidParameter.InvalidSnapshotName"
+//  INVALIDPARAMETER_SNAPSHOTNAMELIMITEXCEEDED = "InvalidParameter.SnapshotNameLimitExceeded"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FSSIZELIMITEXCEEDED = "InvalidParameterValue.FsSizeLimitExceeded"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_INVALIDRESOURCETAGS = "InvalidParameterValue.InvalidResourceTags"
+//  INVALIDPARAMETERVALUE_INVALIDTAGKEY = "InvalidParameterValue.InvalidTagKey"
+//  INVALIDPARAMETERVALUE_INVALIDTAGVALUE = "InvalidParameterValue.InvalidTagValue"
+//  INVALIDPARAMETERVALUE_MISSINGFILESYSTEMID = "InvalidParameterValue.MissingFileSystemId"
+//  INVALIDPARAMETERVALUE_TAGKEYFILTERLIMITEXCEEDED = "InvalidParameterValue.TagKeyFilterLimitExceeded"
+//  INVALIDPARAMETERVALUE_TAGKEYLIMITEXCEEDED = "InvalidParameterValue.TagKeyLimitExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUEFILTERLIMITEXCEEDED = "InvalidParameterValue.TagValueFilterLimitExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALUELIMITEXCEEDED = "InvalidParameterValue.TagValueLimitExceeded"
+//  RESOURCEINSUFFICIENT_TAGLIMITEXCEEDED = "ResourceInsufficient.TagLimitExceeded"
+//  RESOURCEINSUFFICIENT_TAGQUOTASEXCEEDED = "ResourceInsufficient.TagQuotasExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) CreateMigrationTaskWithContext(ctx context.Context, request *CreateMigrationTaskRequest) (response *CreateMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateMigrationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMigrationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAutoSnapshotPolicyRequest() (request *DeleteAutoSnapshotPolicyRequest) {
     request = &DeleteAutoSnapshotPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -921,6 +1017,72 @@ func (c *Client) DeleteCfsSnapshotWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteMigrationTaskRequest() (request *DeleteMigrationTaskRequest) {
+    request = &DeleteMigrationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DeleteMigrationTask")
+    
+    
+    return
+}
+
+func NewDeleteMigrationTaskResponse() (response *DeleteMigrationTaskResponse) {
+    response = &DeleteMigrationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteMigrationTask
+// 用于删除迁移任务。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteMigrationTask(request *DeleteMigrationTaskRequest) (response *DeleteMigrationTaskResponse, err error) {
+    return c.DeleteMigrationTaskWithContext(context.Background(), request)
+}
+
+// DeleteMigrationTask
+// 用于删除迁移任务。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteMigrationTaskWithContext(ctx context.Context, request *DeleteMigrationTaskRequest) (response *DeleteMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteMigrationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMigrationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMigrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteMountTargetRequest() (request *DeleteMountTargetRequest) {
     request = &DeleteMountTargetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1153,6 +1315,68 @@ func (c *Client) DescribeAvailableZoneInfoWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeAvailableZoneInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBucketListRequest() (request *DescribeBucketListRequest) {
+    request = &DescribeBucketListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeBucketList")
+    
+    
+    return
+}
+
+func NewDescribeBucketListResponse() (response *DescribeBucketListResponse) {
+    response = &DescribeBucketListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBucketList
+// 用于获取数据源桶列表。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) DescribeBucketList(request *DescribeBucketListRequest) (response *DescribeBucketListResponse, err error) {
+    return c.DescribeBucketListWithContext(context.Background(), request)
+}
+
+// DescribeBucketList
+// 用于获取数据源桶列表。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GETACCOUNTSTATUSFAILED = "InternalError.GetAccountStatusFailed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) DescribeBucketListWithContext(ctx context.Context, request *DescribeBucketListRequest) (response *DescribeBucketListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBucketListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBucketList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBucketListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1569,6 +1793,70 @@ func (c *Client) DescribeCfsSnapshotsWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeMigrationTasksRequest() (request *DescribeMigrationTasksRequest) {
+    request = &DescribeMigrationTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeMigrationTasks")
+    
+    
+    return
+}
+
+func NewDescribeMigrationTasksResponse() (response *DescribeMigrationTasksResponse) {
+    response = &DescribeMigrationTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMigrationTasks
+// 用于获取迁移任务列表。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  RESOURCENOTFOUND_SNAPSHOTNOTFOUND = "ResourceNotFound.SnapshotNotFound"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) DescribeMigrationTasks(request *DescribeMigrationTasksRequest) (response *DescribeMigrationTasksResponse, err error) {
+    return c.DescribeMigrationTasksWithContext(context.Background(), request)
+}
+
+// DescribeMigrationTasks
+// 用于获取迁移任务列表。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  RESOURCENOTFOUND_SNAPSHOTNOTFOUND = "ResourceNotFound.SnapshotNotFound"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) DescribeMigrationTasksWithContext(ctx context.Context, request *DescribeMigrationTasksRequest) (response *DescribeMigrationTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigrationTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMigrationTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMigrationTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMountTargetsRequest() (request *DescribeMountTargetsRequest) {
     request = &DescribeMountTargetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1861,6 +2149,66 @@ func (c *Client) SignUpCfsServiceWithContext(ctx context.Context, request *SignU
     request.SetContext(ctx)
     
     response = NewSignUpCfsServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopMigrationTaskRequest() (request *StopMigrationTaskRequest) {
+    request = &StopMigrationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "StopMigrationTask")
+    
+    
+    return
+}
+
+func NewStopMigrationTaskResponse() (response *StopMigrationTaskResponse) {
+    response = &StopMigrationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopMigrationTask
+// 用于终止迁移任务。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) StopMigrationTask(request *StopMigrationTaskRequest) (response *StopMigrationTaskResponse, err error) {
+    return c.StopMigrationTaskWithContext(context.Background(), request)
+}
+
+// StopMigrationTask
+// 用于终止迁移任务。
+//
+// 此接口需提交工单，开启白名单之后才能使用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) StopMigrationTaskWithContext(ctx context.Context, request *StopMigrationTaskRequest) (response *StopMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewStopMigrationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopMigrationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopMigrationTaskResponse()
     err = c.Send(request, response)
     return
 }
