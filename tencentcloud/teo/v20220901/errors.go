@@ -179,6 +179,9 @@ const (
 	// 非法条件-非法参数值-正则表达式数量超出限制。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYREGULAR = "InvalidParameter.ErrInvalidConditionValueTooManyRegular"
 
+	// 非法条件-非法参数值-参数值数量超出限制。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYVALUES = "InvalidParameter.ErrInvalidConditionValueTooManyValues"
+
 	// 非法条件-非法参数值-通配符数量超出限制。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOMANYWILDCARD = "InvalidParameter.ErrInvalidConditionValueTooManyWildcard"
 
@@ -253,6 +256,9 @@ const (
 
 	// 无效的HTTPS。
 	INVALIDPARAMETER_INVALIDHTTPS = "InvalidParameter.InvalidHttps"
+
+	// 无效的HTTPS证书。
+	INVALIDPARAMETER_INVALIDHTTPSCERTINFO = "InvalidParameter.InvalidHttpsCertInfo"
 
 	// 加密套件与TLS版本不匹配。
 	INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = "InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion"
@@ -550,4 +556,7 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
+	// 别称域名不支持目标域名源站类型为对象存储。
+	UNSUPPORTEDOPERATION_TARGETNAMEORIGINTYPECOS = "UnsupportedOperation.TargetNameOriginTypeCos"
 )

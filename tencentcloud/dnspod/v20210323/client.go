@@ -1774,6 +1774,7 @@ func NewDescribeDomainAnalyticsResponse() (response *DescribeDomainAnalyticsResp
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeDomainAnalytics(request *DescribeDomainAnalyticsRequest) (response *DescribeDomainAnalyticsResponse, err error) {
@@ -1789,6 +1790,7 @@ func (c *Client) DescribeDomainAnalytics(request *DescribeDomainAnalyticsRequest
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeDomainAnalyticsWithContext(ctx context.Context, request *DescribeDomainAnalyticsRequest) (response *DescribeDomainAnalyticsResponse, err error) {
@@ -3208,6 +3210,7 @@ func NewDescribeSubdomainAnalyticsResponse() (response *DescribeSubdomainAnalyti
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
@@ -3224,6 +3227,7 @@ func (c *Client) DescribeSubdomainAnalytics(request *DescribeSubdomainAnalyticsR
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"

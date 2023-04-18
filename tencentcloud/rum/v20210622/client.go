@@ -1133,6 +1133,204 @@ func (c *Client) DeleteWhitelistWithContext(ctx context.Context, request *Delete
     return
 }
 
+func NewDescribeAppDimensionMetricsRequest() (request *DescribeAppDimensionMetricsRequest) {
+    request = &DescribeAppDimensionMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeAppDimensionMetrics")
+    
+    
+    return
+}
+
+func NewDescribeAppDimensionMetricsResponse() (response *DescribeAppDimensionMetricsResponse) {
+    response = &DescribeAppDimensionMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAppDimensionMetrics
+// 用于查询 app 监控多维分析数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAppDimensionMetrics(request *DescribeAppDimensionMetricsRequest) (response *DescribeAppDimensionMetricsResponse, err error) {
+    return c.DescribeAppDimensionMetricsWithContext(context.Background(), request)
+}
+
+// DescribeAppDimensionMetrics
+// 用于查询 app 监控多维分析数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAppDimensionMetricsWithContext(ctx context.Context, request *DescribeAppDimensionMetricsRequest) (response *DescribeAppDimensionMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppDimensionMetricsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppDimensionMetrics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAppDimensionMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAppMetricsDataRequest() (request *DescribeAppMetricsDataRequest) {
+    request = &DescribeAppMetricsDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeAppMetricsData")
+    
+    
+    return
+}
+
+func NewDescribeAppMetricsDataResponse() (response *DescribeAppMetricsDataResponse) {
+    response = &DescribeAppMetricsDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAppMetricsData
+// 获取 app 监控指标数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAppMetricsData(request *DescribeAppMetricsDataRequest) (response *DescribeAppMetricsDataResponse, err error) {
+    return c.DescribeAppMetricsDataWithContext(context.Background(), request)
+}
+
+// DescribeAppMetricsData
+// 获取 app 监控指标数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAppMetricsDataWithContext(ctx context.Context, request *DescribeAppMetricsDataRequest) (response *DescribeAppMetricsDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppMetricsDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppMetricsData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAppMetricsDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAppSingleCaseDetailListRequest() (request *DescribeAppSingleCaseDetailListRequest) {
+    request = &DescribeAppSingleCaseDetailListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeAppSingleCaseDetailList")
+    
+    
+    return
+}
+
+func NewDescribeAppSingleCaseDetailListResponse() (response *DescribeAppSingleCaseDetailListResponse) {
+    response = &DescribeAppSingleCaseDetailListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAppSingleCaseDetailList
+// 查询 app 监控个例样本详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAppSingleCaseDetailList(request *DescribeAppSingleCaseDetailListRequest) (response *DescribeAppSingleCaseDetailListResponse, err error) {
+    return c.DescribeAppSingleCaseDetailListWithContext(context.Background(), request)
+}
+
+// DescribeAppSingleCaseDetailList
+// 查询 app 监控个例样本详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAppSingleCaseDetailListWithContext(ctx context.Context, request *DescribeAppSingleCaseDetailListRequest) (response *DescribeAppSingleCaseDetailListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppSingleCaseDetailListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppSingleCaseDetailList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAppSingleCaseDetailListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAppSingleCaseListRequest() (request *DescribeAppSingleCaseListRequest) {
+    request = &DescribeAppSingleCaseListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("rum", APIVersion, "DescribeAppSingleCaseList")
+    
+    
+    return
+}
+
+func NewDescribeAppSingleCaseListResponse() (response *DescribeAppSingleCaseListResponse) {
+    response = &DescribeAppSingleCaseListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAppSingleCaseList
+// 查询 app 监控个例聚合列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAppSingleCaseList(request *DescribeAppSingleCaseListRequest) (response *DescribeAppSingleCaseListResponse, err error) {
+    return c.DescribeAppSingleCaseListWithContext(context.Background(), request)
+}
+
+// DescribeAppSingleCaseList
+// 查询 app 监控个例聚合列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAppSingleCaseListWithContext(ctx context.Context, request *DescribeAppSingleCaseListRequest) (response *DescribeAppSingleCaseListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppSingleCaseListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppSingleCaseList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAppSingleCaseListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataRequest() (request *DescribeDataRequest) {
     request = &DescribeDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

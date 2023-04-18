@@ -546,6 +546,7 @@ func NewCreateEdgePackTaskResponse() (response *CreateEdgePackTaskResponse) {
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 func (c *Client) CreateEdgePackTask(request *CreateEdgePackTaskRequest) (response *CreateEdgePackTaskResponse, err error) {
     return c.CreateEdgePackTaskWithContext(context.Background(), request)
 }
@@ -563,6 +564,7 @@ func (c *Client) CreateEdgePackTask(request *CreateEdgePackTaskRequest) (respons
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 func (c *Client) CreateEdgePackTaskWithContext(ctx context.Context, request *CreateEdgePackTaskRequest) (response *CreateEdgePackTaskResponse, err error) {
     if request == nil {
         request = NewCreateEdgePackTaskRequest()

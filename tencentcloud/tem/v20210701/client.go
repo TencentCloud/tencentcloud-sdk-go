@@ -1750,6 +1750,7 @@ func NewDescribeIngressResponse() (response *DescribeIngressResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBEINGRESSERROR = "InternalError.DescribeIngressError"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
@@ -1762,6 +1763,7 @@ func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *Des
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBEINGRESSERROR = "InternalError.DescribeIngressError"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"

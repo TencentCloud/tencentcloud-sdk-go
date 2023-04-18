@@ -1123,6 +1123,472 @@ func (r *DeleteWhitelistResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAppDimensionMetricsRequestParams struct {
+	// app 项目ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 查询的表名
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询指标 fields
+	Fields *string `json:"Fields,omitempty" name:"Fields"`
+
+	// 查询的过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询简单过滤条件
+	FilterSimple *string `json:"FilterSimple,omitempty" name:"FilterSimple"`
+
+	// group by 条件
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// order by 条件
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// limit 参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset 参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 业务上下文参数
+	BusinessContext *string `json:"BusinessContext,omitempty" name:"BusinessContext"`
+}
+
+type DescribeAppDimensionMetricsRequest struct {
+	*tchttp.BaseRequest
+	
+	// app 项目ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 查询的表名
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询指标 fields
+	Fields *string `json:"Fields,omitempty" name:"Fields"`
+
+	// 查询的过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询简单过滤条件
+	FilterSimple *string `json:"FilterSimple,omitempty" name:"FilterSimple"`
+
+	// group by 条件
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// order by 条件
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// limit 参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset 参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 业务上下文参数
+	BusinessContext *string `json:"BusinessContext,omitempty" name:"BusinessContext"`
+}
+
+func (r *DescribeAppDimensionMetricsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppDimensionMetricsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectID")
+	delete(f, "From")
+	delete(f, "Fields")
+	delete(f, "Filter")
+	delete(f, "FilterSimple")
+	delete(f, "GroupBy")
+	delete(f, "OrderBy")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "BusinessContext")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppDimensionMetricsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppDimensionMetricsResponseParams struct {
+	// 查询数据返回
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAppDimensionMetricsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppDimensionMetricsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppDimensionMetricsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppDimensionMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppMetricsDataRequestParams struct {
+	// app 项目ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 查询的表名
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询指标 field
+	Fields *string `json:"Fields,omitempty" name:"Fields"`
+
+	// 查询的过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询简单过滤条件
+	FilterSimple *string `json:"FilterSimple,omitempty" name:"FilterSimple"`
+
+	// group by 条件
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// order by 条件
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// limit 参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset 参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// group by 参数
+	GroupByModifier *string `json:"GroupByModifier,omitempty" name:"GroupByModifier"`
+}
+
+type DescribeAppMetricsDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// app 项目ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 查询的表名
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询指标 field
+	Fields *string `json:"Fields,omitempty" name:"Fields"`
+
+	// 查询的过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询简单过滤条件
+	FilterSimple *string `json:"FilterSimple,omitempty" name:"FilterSimple"`
+
+	// group by 条件
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// order by 条件
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// limit 参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset 参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// group by 参数
+	GroupByModifier *string `json:"GroupByModifier,omitempty" name:"GroupByModifier"`
+}
+
+func (r *DescribeAppMetricsDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppMetricsDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectID")
+	delete(f, "From")
+	delete(f, "Fields")
+	delete(f, "Filter")
+	delete(f, "FilterSimple")
+	delete(f, "GroupBy")
+	delete(f, "OrderBy")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "GroupByModifier")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppMetricsDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppMetricsDataResponseParams struct {
+	// 查询数据返回
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAppMetricsDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppMetricsDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppMetricsDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppMetricsDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppSingleCaseDetailListRequestParams struct {
+	// app 项目ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 查询的表名
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询指标 field
+	Fields *string `json:"Fields,omitempty" name:"Fields"`
+
+	// 查询的过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询简单过滤条件
+	FilterSimple *string `json:"FilterSimple,omitempty" name:"FilterSimple"`
+
+	// group by 条件
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// order by 条件
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// limit 参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset 参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeAppSingleCaseDetailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// app 项目ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 查询的表名
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询指标 field
+	Fields *string `json:"Fields,omitempty" name:"Fields"`
+
+	// 查询的过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询简单过滤条件
+	FilterSimple *string `json:"FilterSimple,omitempty" name:"FilterSimple"`
+
+	// group by 条件
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// order by 条件
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// limit 参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset 参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeAppSingleCaseDetailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppSingleCaseDetailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectID")
+	delete(f, "From")
+	delete(f, "Fields")
+	delete(f, "Filter")
+	delete(f, "FilterSimple")
+	delete(f, "GroupBy")
+	delete(f, "OrderBy")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppSingleCaseDetailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppSingleCaseDetailListResponseParams struct {
+	// 查询数据返回
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAppSingleCaseDetailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppSingleCaseDetailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppSingleCaseDetailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppSingleCaseDetailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppSingleCaseListRequestParams struct {
+	// app 项目 ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 查询的表名
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询指标 field
+	Fields *string `json:"Fields,omitempty" name:"Fields"`
+
+	// 查询的过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询简单过滤条件
+	FilterSimple *string `json:"FilterSimple,omitempty" name:"FilterSimple"`
+
+	// group by 条件
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// order by 条件
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// limit 参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset 参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeAppSingleCaseListRequest struct {
+	*tchttp.BaseRequest
+	
+	// app 项目 ID
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 查询的表名
+	From *string `json:"From,omitempty" name:"From"`
+
+	// 查询指标 field
+	Fields *string `json:"Fields,omitempty" name:"Fields"`
+
+	// 查询的过滤条件
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 查询简单过滤条件
+	FilterSimple *string `json:"FilterSimple,omitempty" name:"FilterSimple"`
+
+	// group by 条件
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// order by 条件
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// limit 参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset 参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeAppSingleCaseListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppSingleCaseListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectID")
+	delete(f, "From")
+	delete(f, "Fields")
+	delete(f, "Filter")
+	delete(f, "FilterSimple")
+	delete(f, "GroupBy")
+	delete(f, "OrderBy")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppSingleCaseListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppSingleCaseListResponseParams struct {
+	// 查询数据返回
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAppSingleCaseListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppSingleCaseListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppSingleCaseListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppSingleCaseListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataCustomUrlRequestParams struct {
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`

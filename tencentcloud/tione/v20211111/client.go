@@ -547,6 +547,7 @@ func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
@@ -574,6 +575,7 @@ func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (respons
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
 //  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
@@ -2335,6 +2337,7 @@ func NewDescribeModelAccelerateTasksResponse() (response *DescribeModelAccelerat
 // 查询模型加速任务列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeModelAccelerateTasks(request *DescribeModelAccelerateTasksRequest) (response *DescribeModelAccelerateTasksResponse, err error) {
@@ -2345,6 +2348,7 @@ func (c *Client) DescribeModelAccelerateTasks(request *DescribeModelAccelerateTa
 // 查询模型加速任务列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeModelAccelerateTasksWithContext(ctx context.Context, request *DescribeModelAccelerateTasksRequest) (response *DescribeModelAccelerateTasksResponse, err error) {
@@ -3525,6 +3529,7 @@ func NewModifyModelServiceResponse() (response *ModifyModelServiceResponse) {
 //  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
 //  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
 //  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
 //  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
 //  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
 //  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
@@ -3559,6 +3564,7 @@ func (c *Client) ModifyModelService(request *ModifyModelServiceRequest) (respons
 //  FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
 //  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
 //  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
 //  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
 //  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
 //  FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
@@ -3896,6 +3902,7 @@ func NewStartTrainingTaskResponse() (response *StartTrainingTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 //  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
@@ -3914,6 +3921,7 @@ func (c *Client) StartTrainingTask(request *StartTrainingTaskRequest) (response 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 //  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"

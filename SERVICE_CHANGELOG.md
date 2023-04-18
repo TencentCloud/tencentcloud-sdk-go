@@ -1,54 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 文件存储(cfs) 版本：2019-07-19
+## 主机安全(cwp) 版本：2018-02-28
 
-### 第 17 次发布
+### 第 80 次发布
 
-发布时间：2023-04-17 01:08:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateMigrationTask](https://cloud.tencent.com/document/api/582/90217)
-* [DeleteMigrationTask](https://cloud.tencent.com/document/api/582/90216)
-* [DescribeBucketList](https://cloud.tencent.com/document/api/582/90215)
-* [DescribeMigrationTasks](https://cloud.tencent.com/document/api/582/90214)
-* [StopMigrationTask](https://cloud.tencent.com/document/api/582/90213)
-
-新增数据结构：
-
-* [BucketInfo](https://cloud.tencent.com/document/api/582/38175#BucketInfo)
-* [MigrationTaskInfo](https://cloud.tencent.com/document/api/582/38175#MigrationTaskInfo)
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 57 次发布
-
-发布时间：2023-04-17 01:20:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [IntentionQuestionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionQuestionResult)
-
-	* 新增成员：FinalResultDetailCode, FinalResultMessage
-
-
-
-
-## 移动应用安全(ms) 版本：2018-04-08
-
-### 第 12 次发布
-
-发布时间：2023-04-17 01:29:42
+发布时间：2023-04-18 01:18:35
 
 本次发布包含了以下内容：
 
@@ -56,15 +12,15 @@
 
 <font color="#dd0000">**预下线接口**：</font>
 
-* DeleteScanInstances
+* DescribeSearchExportList
 
 
 
-## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 19 次发布
+### 第 58 次发布
 
-发布时间：2023-04-17 01:41:34
+发布时间：2023-04-17 20:50:42
 
 本次发布包含了以下内容：
 
@@ -72,7 +28,82 @@
 
 新增接口：
 
-* [DescribeTraceDataById](https://cloud.tencent.com/document/api/1458/90218)
+* [UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)
+
+### 第 57 次发布
+
+发布时间：2023-04-17 20:40:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 25 次发布
+
+发布时间：2023-04-18 01:36:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAppDimensionMetrics](https://cloud.tencent.com/document/api/1464/90244)
+* [DescribeAppMetricsData](https://cloud.tencent.com/document/api/1464/90243)
+* [DescribeAppSingleCaseDetailList](https://cloud.tencent.com/document/api/1464/90242)
+* [DescribeAppSingleCaseList](https://cloud.tencent.com/document/api/1464/90241)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 20 次发布
+
+发布时间：2023-04-18 01:48:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AuthorizedTransfer](https://cloud.tencent.com/document/api/1458/90248)
+* [EffectFeedback](https://cloud.tencent.com/document/api/1458/90247)
+* [ReportBatchCallbackStatus](https://cloud.tencent.com/document/api/1458/90246)
+
+新增数据结构：
+
+* [InputEncryptData](https://cloud.tencent.com/document/api/1458/75030#InputEncryptData)
+* [OutputAuthorizedTransfer](https://cloud.tencent.com/document/api/1458/75030#OutputAuthorizedTransfer)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 29 次发布
+
+发布时间：2023-04-18 01:52:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePeakPoints](https://cloud.tencent.com/document/api/627/90250)
+* [DescribePeakValue](https://cloud.tencent.com/document/api/627/90249)
+
+新增数据结构：
+
+* [PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)
 
 
 
@@ -18795,16 +18826,16 @@
 
 新增接口：
 
-* [[CreateMigrationTask](https://cloud.tencent.com/document/api/582/90217)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteMigrationTask](https://cloud.tencent.com/document/api/582/90216)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBucketList](https://cloud.tencent.com/document/api/582/90215)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeMigrationTasks](https://cloud.tencent.com/document/api/582/90214)](https://cloud.tencent.com/document/api/#/#)
-* [[StopMigrationTask](https://cloud.tencent.com/document/api/582/90213)](https://cloud.tencent.com/document/api/#/#)
+* [CreateMigrationTask](https://cloud.tencent.com/document/api/582/90217)
+* [DeleteMigrationTask](https://cloud.tencent.com/document/api/582/90216)
+* [DescribeBucketList](https://cloud.tencent.com/document/api/582/90215)
+* [DescribeMigrationTasks](https://cloud.tencent.com/document/api/582/90214)
+* [StopMigrationTask](https://cloud.tencent.com/document/api/582/90213)
 
 新增数据结构：
 
-* [[BucketInfo](https://cloud.tencent.com/document/api/582/38175#BucketInfo)](https://cloud.tencent.com/document/api/582/38175#[BucketInfo](https://cloud.tencent.com/document/api/582/38175#BucketInfo))
-* [[MigrationTaskInfo](https://cloud.tencent.com/document/api/582/38175#MigrationTaskInfo)](https://cloud.tencent.com/document/api/582/38175#[MigrationTaskInfo](https://cloud.tencent.com/document/api/582/38175#MigrationTaskInfo))
+* [BucketInfo](https://cloud.tencent.com/document/api/582/38175#BucketInfo)
+* [MigrationTaskInfo](https://cloud.tencent.com/document/api/582/38175#MigrationTaskInfo)
 
 ### 第 16 次发布
 
@@ -31775,6 +31806,18 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 80 次发布
+
+发布时间：2023-04-18 01:18:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeSearchExportList
 
 ### 第 79 次发布
 
@@ -45684,6 +45727,30 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 58 次发布
+
+发布时间：2023-04-17 20:50:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)](https://cloud.tencent.com/document/api/#/#)
+
+### 第 57 次发布
+
+发布时间：2023-04-17 20:40:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 56 次发布
 
@@ -75618,6 +75685,21 @@
 
 ## 前端性能监控(rum) 版本：2021-06-22
 
+### 第 25 次发布
+
+发布时间：2023-04-18 01:36:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAppDimensionMetrics](https://cloud.tencent.com/document/api/1464/90244)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAppMetricsData](https://cloud.tencent.com/document/api/1464/90243)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAppSingleCaseDetailList](https://cloud.tencent.com/document/api/1464/90242)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAppSingleCaseList](https://cloud.tencent.com/document/api/1464/90241)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 24 次发布
 
 发布时间：2023-04-10 01:49:56
@@ -98942,6 +99024,25 @@
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
+### 第 20 次发布
+
+发布时间：2023-04-18 01:48:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AuthorizedTransfer](https://cloud.tencent.com/document/api/1458/90248)](https://cloud.tencent.com/document/api/#/#)
+* [[EffectFeedback](https://cloud.tencent.com/document/api/1458/90247)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportBatchCallbackStatus](https://cloud.tencent.com/document/api/1458/90246)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[InputEncryptData](https://cloud.tencent.com/document/api/1458/75030#InputEncryptData)](https://cloud.tencent.com/document/api/1458/75030#[InputEncryptData](https://cloud.tencent.com/document/api/1458/75030#InputEncryptData))
+* [[OutputAuthorizedTransfer](https://cloud.tencent.com/document/api/1458/75030#OutputAuthorizedTransfer)](https://cloud.tencent.com/document/api/1458/75030#[OutputAuthorizedTransfer](https://cloud.tencent.com/document/api/1458/75030#OutputAuthorizedTransfer))
+
 ### 第 19 次发布
 
 发布时间：2023-04-17 01:41:34
@@ -98952,7 +99053,7 @@
 
 新增接口：
 
-* [[DescribeTraceDataById](https://cloud.tencent.com/document/api/1458/90218)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTraceDataById](https://cloud.tencent.com/document/api/1458/90218)
 
 ### 第 18 次发布
 
@@ -111532,6 +111633,23 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 29 次发布
+
+发布时间：2023-04-18 01:52:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePeakPoints](https://cloud.tencent.com/document/api/627/90250)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePeakValue](https://cloud.tencent.com/document/api/627/90249)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)](https://cloud.tencent.com/document/api/627/53609#[PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem))
 
 ### 第 28 次发布
 

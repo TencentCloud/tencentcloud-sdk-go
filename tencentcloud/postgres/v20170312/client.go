@@ -4008,6 +4008,7 @@ func NewDescribeServerlessDBInstancesResponse() (response *DescribeServerlessDBI
 //  STRUCTPARSEFAILED = "StructParseFailed"
 //  SYSTEMERROR = "SystemError"
 //  UNKNOWNERROR = "UnknownError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeServerlessDBInstances(request *DescribeServerlessDBInstancesRequest) (response *DescribeServerlessDBInstancesResponse, err error) {
     return c.DescribeServerlessDBInstancesWithContext(context.Background(), request)
 }
@@ -4043,6 +4044,7 @@ func (c *Client) DescribeServerlessDBInstances(request *DescribeServerlessDBInst
 //  STRUCTPARSEFAILED = "StructParseFailed"
 //  SYSTEMERROR = "SystemError"
 //  UNKNOWNERROR = "UnknownError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeServerlessDBInstancesWithContext(ctx context.Context, request *DescribeServerlessDBInstancesRequest) (response *DescribeServerlessDBInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeServerlessDBInstancesRequest()

@@ -74,6 +74,9 @@ const (
 	// 日志主题已关闭。
 	FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
 
+	// topic创建中
+	FAILEDOPERATION_TOPICCREATING = "FailedOperation.TopicCreating"
+
 	// 日志主题已隔离。
 	FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 

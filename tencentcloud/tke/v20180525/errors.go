@@ -104,6 +104,9 @@ const (
 	// 获取CLS采集配置失败。
 	FAILEDOPERATION_GETCLSCONFIG = "FailedOperation.GetClsConfig"
 
+	// 获取CLS索引配置失败。
+	FAILEDOPERATION_GETCLSINDEX = "FailedOperation.GetClsIndex"
+
 	// 查询主题集失败。
 	FAILEDOPERATION_GETCLSLOGSET = "FailedOperation.GetClsLogSet"
 

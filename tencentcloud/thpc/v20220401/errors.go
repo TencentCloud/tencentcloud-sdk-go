@@ -29,6 +29,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// CAM服务调用失败。
+	INTERNALERROR_CALLCAM = "InternalError.CallCAM"
+
 	// cvm调用失败。
 	INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 

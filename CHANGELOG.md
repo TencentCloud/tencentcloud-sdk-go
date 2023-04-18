@@ -1,3 +1,112 @@
+# Release v1.0.640
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 80 次发布
+
+发布时间：2023-04-18 01:18:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeSearchExportList
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 58 次发布
+
+发布时间：2023-04-17 20:50:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)
+
+### 第 57 次发布
+
+发布时间：2023-04-17 20:40:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 25 次发布
+
+发布时间：2023-04-18 01:36:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAppDimensionMetrics](https://cloud.tencent.com/document/api/1464/90244)
+* [DescribeAppMetricsData](https://cloud.tencent.com/document/api/1464/90243)
+* [DescribeAppSingleCaseDetailList](https://cloud.tencent.com/document/api/1464/90242)
+* [DescribeAppSingleCaseList](https://cloud.tencent.com/document/api/1464/90241)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 20 次发布
+
+发布时间：2023-04-18 01:48:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AuthorizedTransfer](https://cloud.tencent.com/document/api/1458/90248)
+* [EffectFeedback](https://cloud.tencent.com/document/api/1458/90247)
+* [ReportBatchCallbackStatus](https://cloud.tencent.com/document/api/1458/90246)
+
+新增数据结构：
+
+* [InputEncryptData](https://cloud.tencent.com/document/api/1458/75030#InputEncryptData)
+* [OutputAuthorizedTransfer](https://cloud.tencent.com/document/api/1458/75030#OutputAuthorizedTransfer)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 29 次发布
+
+发布时间：2023-04-18 01:52:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePeakPoints](https://cloud.tencent.com/document/api/627/90250)
+* [DescribePeakValue](https://cloud.tencent.com/document/api/627/90249)
+
+新增数据结构：
+
+* [PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)
+
+
+
 # Release v1.0.639
 
 ## 文件存储(cfs) 版本：2019-07-19

@@ -155,6 +155,77 @@ type AutoSignConfig struct {
 	VerifyChannels []*string `json:"VerifyChannels,omitempty" name:"VerifyChannels"`
 }
 
+// Predefined struct for user
+type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
+	// OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签系统员工UserId
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 客户系统OpenId
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
+type BindEmployeeUserIdWithClientOpenIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签系统员工UserId
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 客户系统OpenId
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
+func (r *BindEmployeeUserIdWithClientOpenIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindEmployeeUserIdWithClientOpenIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "UserId")
+	delete(f, "OpenId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindEmployeeUserIdWithClientOpenIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindEmployeeUserIdWithClientOpenIdResponseParams struct {
+	// 绑定是否成功，1表示成功，0表示失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BindEmployeeUserIdWithClientOpenIdResponse struct {
+	*tchttp.BaseResponse
+	Response *BindEmployeeUserIdWithClientOpenIdResponseParams `json:"Response"`
+}
+
+func (r *BindEmployeeUserIdWithClientOpenIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindEmployeeUserIdWithClientOpenIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CallbackInfo struct {
 	// 回调url
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
@@ -4924,6 +4995,77 @@ type TemplateInfo struct {
 	// 模板是否已发布。true-已发布；false-未发布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Published *bool `json:"Published,omitempty" name:"Published"`
+}
+
+// Predefined struct for user
+type UnbindEmployeeUserIdWithClientOpenIdRequestParams struct {
+	// OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签系统员工UserId
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 客户系统OpenId
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
+type UnbindEmployeeUserIdWithClientOpenIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签系统员工UserId
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 客户系统OpenId
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
+func (r *UnbindEmployeeUserIdWithClientOpenIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindEmployeeUserIdWithClientOpenIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "UserId")
+	delete(f, "OpenId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindEmployeeUserIdWithClientOpenIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindEmployeeUserIdWithClientOpenIdResponseParams struct {
+	// 解绑是否成功，1表示成功，0表示失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnbindEmployeeUserIdWithClientOpenIdResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindEmployeeUserIdWithClientOpenIdResponseParams `json:"Response"`
+}
+
+func (r *UnbindEmployeeUserIdWithClientOpenIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindEmployeeUserIdWithClientOpenIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

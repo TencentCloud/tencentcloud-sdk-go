@@ -20,6 +20,63 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type AuthorizedTransferRequestParams struct {
+	// 业务加密入参。
+	BusinessSecurityData *InputEncryptData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+type AuthorizedTransferRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务加密入参。
+	BusinessSecurityData *InputEncryptData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *AuthorizedTransferRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuthorizedTransferRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AuthorizedTransferRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AuthorizedTransferResponseParams struct {
+	// 业务出参。
+	Data *OutputAuthorizedTransfer `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AuthorizedTransferResponse struct {
+	*tchttp.BaseResponse
+	Response *AuthorizedTransferResponseParams `json:"Response"`
+}
+
+func (r *AuthorizedTransferResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuthorizedTransferResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ChainData struct {
 	// 区块hash
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3232,8 +3289,83 @@ func (r *DescribeTraceDataListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EffectFeedbackRequestParams struct {
+	// 业务加密入参。
+	BusinessSecurityData *InputEncryptData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+type EffectFeedbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务加密入参。
+	BusinessSecurityData *InputEncryptData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *EffectFeedbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EffectFeedbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EffectFeedbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EffectFeedbackResponseParams struct {
+	// 业务出参。
+	Data *OutputAuthorizedTransfer `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type EffectFeedbackResponse struct {
+	*tchttp.BaseResponse
+	Response *EffectFeedbackResponseParams `json:"Response"`
+}
+
+func (r *EffectFeedbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EffectFeedbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Ext struct {
 
+}
+
+type InputEncryptData struct {
+	// 加密方式，0：AES加密；
+	EncryptMethod *int64 `json:"EncryptMethod,omitempty" name:"EncryptMethod"`
+
+	// 加密算法中的块处理模式，1：CBC模式； 目前只支持CBC模式
+	EncryptMode *int64 `json:"EncryptMode,omitempty" name:"EncryptMode"`
+
+	// 填充模式，0：ZeroPadding；1：PKCS5Padding；2：
+	// PKCS7Padding。
+	PaddingType *int64 `json:"PaddingType,omitempty" name:"PaddingType"`
+
+	// 加密数据，将AuthorizedData结构体数组（数组最大长度不超过20）序列化成JSON字符串，对得到的字符串加密并填充到该字段。
+	EncryptData *string `json:"EncryptData,omitempty" name:"EncryptData"`
+
+	// 用户是否授权，本接口取值：1，已授权。
+	IsAuthorized *int64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 }
 
 type Job struct {
@@ -4125,6 +4257,20 @@ func (r *ModifyTraceDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OutputAuthorizedTransfer struct {
+	// 推送状态，0表示成功。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *int64 `json:"Code,omitempty" name:"Code"`
+
+	// 错误码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 错误信息描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type PackSpec struct {
 	// 层级
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
@@ -4258,6 +4404,63 @@ type Quota struct {
 	// 开通版本 lite:轻量版, basic:基础版, standard:标准版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitempty" name:"Version"`
+}
+
+// Predefined struct for user
+type ReportBatchCallbackStatusRequestParams struct {
+	// 业务加密入参。
+	BusinessSecurityData *InputEncryptData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+type ReportBatchCallbackStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务加密入参。
+	BusinessSecurityData *InputEncryptData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *ReportBatchCallbackStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportBatchCallbackStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReportBatchCallbackStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReportBatchCallbackStatusResponseParams struct {
+	// 业务出参。
+	Data *OutputAuthorizedTransfer `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ReportBatchCallbackStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ReportBatchCallbackStatusResponseParams `json:"Response"`
+}
+
+func (r *ReportBatchCallbackStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportBatchCallbackStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ScanLog struct {

@@ -188,6 +188,9 @@ const (
 	// 查询预付费资源组详情失败。
 	INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 
+	// 查询子网信息失败。
+	INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+
 	// 停止任务失败。
 	INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
 

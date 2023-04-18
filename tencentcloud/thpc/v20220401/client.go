@@ -867,6 +867,7 @@ func NewDescribeNodesResponse() (response *DescribeNodesResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
@@ -889,6 +890,7 @@ func (c *Client) DescribeNodes(request *DescribeNodesRequest) (response *Describ
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
@@ -1005,6 +1007,7 @@ func NewSetAutoScalingConfigurationResponse() (response *SetAutoScalingConfigura
 // 本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CALLCAM = "InternalError.CallCAM"
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -1023,6 +1026,7 @@ func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfiguratio
 // 本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CALLCAM = "InternalError.CallCAM"
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"

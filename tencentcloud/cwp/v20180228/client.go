@@ -10056,6 +10056,10 @@ func NewDescribeSearchExportListResponse() (response *DescribeSearchExportListRe
 }
 
 // DescribeSearchExportList
+// 旧版日志下载接口下线
+//
+// 
+//
 // 导出ES查询文档列表
 //
 // 可能返回的错误码:
@@ -10068,6 +10072,10 @@ func (c *Client) DescribeSearchExportList(request *DescribeSearchExportListReque
 }
 
 // DescribeSearchExportList
+// 旧版日志下载接口下线
+//
+// 
+//
 // 导出ES查询文档列表
 //
 // 可能返回的错误码:

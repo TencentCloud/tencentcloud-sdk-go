@@ -2521,6 +2521,224 @@ func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePeakPointsRequestParams struct {
+	// 查询起始时间
+	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+
+	// 查询终止时间
+	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+
+	// 查询的域名，如果查询所有域名数据，该参数不填写
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 六个值可选：
+	// access-峰值qps趋势图
+	// botAccess- bot峰值qps趋势图
+	// down-下行峰值带宽趋势图
+	// up-上行峰值带宽趋势图
+	// attack-Web攻击总数趋势图
+	// cc-CC攻击总数趋势图
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+}
+
+type DescribePeakPointsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询起始时间
+	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+
+	// 查询终止时间
+	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+
+	// 查询的域名，如果查询所有域名数据，该参数不填写
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 六个值可选：
+	// access-峰值qps趋势图
+	// botAccess- bot峰值qps趋势图
+	// down-下行峰值带宽趋势图
+	// up-上行峰值带宽趋势图
+	// attack-Web攻击总数趋势图
+	// cc-CC攻击总数趋势图
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+}
+
+func (r *DescribePeakPointsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePeakPointsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTime")
+	delete(f, "ToTime")
+	delete(f, "Domain")
+	delete(f, "Edition")
+	delete(f, "InstanceID")
+	delete(f, "MetricName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePeakPointsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePeakPointsResponseParams struct {
+	// 数据点
+	Points []*PeakPointsItem `json:"Points,omitempty" name:"Points"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePeakPointsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePeakPointsResponseParams `json:"Response"`
+}
+
+func (r *DescribePeakPointsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePeakPointsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePeakValueRequestParams struct {
+	// 查询起始时间
+	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+
+	// 查询结束时间
+	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+
+	// 需要查询的域名，当前用户所有域名可以不传
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 五个值可选：
+	// access-峰值qps
+	// down-下行峰值带宽
+	// up-上行峰值带宽
+	// attack-Web攻击总数
+	// cc-CC攻击总数趋势图
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+}
+
+type DescribePeakValueRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询起始时间
+	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+
+	// 查询结束时间
+	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+
+	// 需要查询的域名，当前用户所有域名可以不传
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 五个值可选：
+	// access-峰值qps
+	// down-下行峰值带宽
+	// up-上行峰值带宽
+	// attack-Web攻击总数
+	// cc-CC攻击总数趋势图
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+}
+
+func (r *DescribePeakValueRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePeakValueRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTime")
+	delete(f, "ToTime")
+	delete(f, "Domain")
+	delete(f, "Edition")
+	delete(f, "InstanceID")
+	delete(f, "MetricName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePeakValueRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePeakValueResponseParams struct {
+	// QPS峰值
+	Access *uint64 `json:"Access,omitempty" name:"Access"`
+
+	// 上行带宽峰值，单位B
+	Up *uint64 `json:"Up,omitempty" name:"Up"`
+
+	// 下行带宽峰值，单位B
+	Down *uint64 `json:"Down,omitempty" name:"Down"`
+
+	// Web攻击总数
+	Attack *uint64 `json:"Attack,omitempty" name:"Attack"`
+
+	// CC攻击总数
+	Cc *uint64 `json:"Cc,omitempty" name:"Cc"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePeakValueResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePeakValueResponseParams `json:"Response"`
+}
+
+func (r *DescribePeakValueResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePeakValueResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePolicyStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -4100,6 +4318,30 @@ func (r *ModifyWafThreatenIntelligenceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyWafThreatenIntelligenceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PeakPointsItem struct {
+	// 秒级别时间戳
+	Time *uint64 `json:"Time,omitempty" name:"Time"`
+
+	// QPS
+	Access *uint64 `json:"Access,omitempty" name:"Access"`
+
+	// 上行带宽峰值，单位B
+	Up *uint64 `json:"Up,omitempty" name:"Up"`
+
+	// 下行带宽峰值，单位B
+	Down *uint64 `json:"Down,omitempty" name:"Down"`
+
+	// Web攻击次数
+	Attack *uint64 `json:"Attack,omitempty" name:"Attack"`
+
+	// CC攻击次数
+	Cc *uint64 `json:"Cc,omitempty" name:"Cc"`
+
+	// Bot qps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotAccess *uint64 `json:"BotAccess,omitempty" name:"BotAccess"`
 }
 
 type PortInfo struct {

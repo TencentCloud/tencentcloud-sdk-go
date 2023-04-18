@@ -5489,6 +5489,7 @@ func NewSearchStudioProductResponse() (response *SearchStudioProductResponse) {
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
 //  INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = "InvalidParameterValue.ProductParmsError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) SearchStudioProduct(request *SearchStudioProductRequest) (response *SearchStudioProductResponse, err error) {
     return c.SearchStudioProductWithContext(context.Background(), request)
 }
@@ -5501,6 +5502,7 @@ func (c *Client) SearchStudioProduct(request *SearchStudioProductRequest) (respo
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
 //  INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = "InvalidParameterValue.ProductParmsError"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) SearchStudioProductWithContext(ctx context.Context, request *SearchStudioProductRequest) (response *SearchStudioProductResponse, err error) {
     if request == nil {
         request = NewSearchStudioProductRequest()

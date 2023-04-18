@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindEmployeeUserIdWithClientOpenIdRequest() (request *BindEmployeeUserIdWithClientOpenIdRequest) {
+    request = &BindEmployeeUserIdWithClientOpenIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "BindEmployeeUserIdWithClientOpenId")
+    
+    
+    return
+}
+
+func NewBindEmployeeUserIdWithClientOpenIdResponse() (response *BindEmployeeUserIdWithClientOpenIdResponse) {
+    response = &BindEmployeeUserIdWithClientOpenIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindEmployeeUserIdWithClientOpenId
+// 将电子签系统员工userId与客户系统员工openId进行绑定
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) BindEmployeeUserIdWithClientOpenId(request *BindEmployeeUserIdWithClientOpenIdRequest) (response *BindEmployeeUserIdWithClientOpenIdResponse, err error) {
+    return c.BindEmployeeUserIdWithClientOpenIdWithContext(context.Background(), request)
+}
+
+// BindEmployeeUserIdWithClientOpenId
+// 将电子签系统员工userId与客户系统员工openId进行绑定
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) BindEmployeeUserIdWithClientOpenIdWithContext(ctx context.Context, request *BindEmployeeUserIdWithClientOpenIdRequest) (response *BindEmployeeUserIdWithClientOpenIdResponse, err error) {
+    if request == nil {
+        request = NewBindEmployeeUserIdWithClientOpenIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindEmployeeUserIdWithClientOpenId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindEmployeeUserIdWithClientOpenIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelFlowRequest() (request *CancelFlowRequest) {
     request = &CancelFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4029,6 +4081,62 @@ func (c *Client) StartFlowWithContext(ctx context.Context, request *StartFlowReq
     return
 }
 
+func NewUnbindEmployeeUserIdWithClientOpenIdRequest() (request *UnbindEmployeeUserIdWithClientOpenIdRequest) {
+    request = &UnbindEmployeeUserIdWithClientOpenIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "UnbindEmployeeUserIdWithClientOpenId")
+    
+    
+    return
+}
+
+func NewUnbindEmployeeUserIdWithClientOpenIdResponse() (response *UnbindEmployeeUserIdWithClientOpenIdResponse) {
+    response = &UnbindEmployeeUserIdWithClientOpenIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindEmployeeUserIdWithClientOpenId
+// 将存在绑定关系的电子签系统员工userId与客户系统员工openId进行解绑
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) UnbindEmployeeUserIdWithClientOpenId(request *UnbindEmployeeUserIdWithClientOpenIdRequest) (response *UnbindEmployeeUserIdWithClientOpenIdResponse, err error) {
+    return c.UnbindEmployeeUserIdWithClientOpenIdWithContext(context.Background(), request)
+}
+
+// UnbindEmployeeUserIdWithClientOpenId
+// 将存在绑定关系的电子签系统员工userId与客户系统员工openId进行解绑
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) UnbindEmployeeUserIdWithClientOpenIdWithContext(ctx context.Context, request *UnbindEmployeeUserIdWithClientOpenIdRequest) (response *UnbindEmployeeUserIdWithClientOpenIdResponse, err error) {
+    if request == nil {
+        request = NewUnbindEmployeeUserIdWithClientOpenIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindEmployeeUserIdWithClientOpenId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindEmployeeUserIdWithClientOpenIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateIntegrationEmployeesRequest() (request *UpdateIntegrationEmployeesRequest) {
     request = &UpdateIntegrationEmployeesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4051,47 +4159,11 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 // 更新员工信息(姓名，手机号，邮件)，用户实名后无法更改姓名与手机号
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
-//  FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
-//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_APPROVERSIGNCOMPONENT = "MissingParameter.ApproverSignComponent"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_DOCUMENTNOAVAILABLE = "OperationDenied.DocumentNoAvailable"
-//  OPERATIONDENIED_FLOWCANCELFORBID = "OperationDenied.FlowCancelForbid"
-//  OPERATIONDENIED_FLOWHASSTARTED = "OperationDenied.FlowHasStarted"
-//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
-//  OPERATIONDENIED_FLOWNONEEDREVIEW = "OperationDenied.FlowNoNeedReview"
-//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
-//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
-//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
-//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
-//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
-//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
-//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-//  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
-//  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
-//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
-//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
     return c.UpdateIntegrationEmployeesWithContext(context.Background(), request)
 }
@@ -4100,47 +4172,11 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 // 更新员工信息(姓名，手机号，邮件)，用户实名后无法更改姓名与手机号
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
-//  FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
-//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_APPROVERSIGNCOMPONENT = "MissingParameter.ApproverSignComponent"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_DOCUMENTNOAVAILABLE = "OperationDenied.DocumentNoAvailable"
-//  OPERATIONDENIED_FLOWCANCELFORBID = "OperationDenied.FlowCancelForbid"
-//  OPERATIONDENIED_FLOWHASSTARTED = "OperationDenied.FlowHasStarted"
-//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
-//  OPERATIONDENIED_FLOWNONEEDREVIEW = "OperationDenied.FlowNoNeedReview"
-//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
-//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
-//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
-//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
-//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
-//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
-//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-//  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
-//  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
-//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
-//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateIntegrationEmployeesWithContext(ctx context.Context, request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
     if request == nil {
         request = NewUpdateIntegrationEmployeesRequest()

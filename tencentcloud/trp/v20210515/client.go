@@ -45,6 +45,48 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAuthorizedTransferRequest() (request *AuthorizedTransferRequest) {
+    request = &AuthorizedTransferRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "AuthorizedTransfer")
+    
+    
+    return
+}
+
+func NewAuthorizedTransferResponse() (response *AuthorizedTransferResponse) {
+    response = &AuthorizedTransferResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AuthorizedTransfer
+// 接收客户侧的用户已授权的号码。
+func (c *Client) AuthorizedTransfer(request *AuthorizedTransferRequest) (response *AuthorizedTransferResponse, err error) {
+    return c.AuthorizedTransferWithContext(context.Background(), request)
+}
+
+// AuthorizedTransfer
+// 接收客户侧的用户已授权的号码。
+func (c *Client) AuthorizedTransferWithContext(ctx context.Context, request *AuthorizedTransferRequest) (response *AuthorizedTransferResponse, err error) {
+    if request == nil {
+        request = NewAuthorizedTransferRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AuthorizedTransfer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAuthorizedTransferResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCodeBatchRequest() (request *CreateCodeBatchRequest) {
     request = &CreateCodeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1929,6 +1971,58 @@ func (c *Client) DescribeTraceDataListWithContext(ctx context.Context, request *
     return
 }
 
+func NewEffectFeedbackRequest() (request *EffectFeedbackRequest) {
+    request = &EffectFeedbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "EffectFeedback")
+    
+    
+    return
+}
+
+func NewEffectFeedbackResponse() (response *EffectFeedbackResponse) {
+    response = &EffectFeedbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EffectFeedback
+// 接收客户反馈的各环节数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) EffectFeedback(request *EffectFeedbackRequest) (response *EffectFeedbackResponse, err error) {
+    return c.EffectFeedbackWithContext(context.Background(), request)
+}
+
+// EffectFeedback
+// 接收客户反馈的各环节数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) EffectFeedbackWithContext(ctx context.Context, request *EffectFeedbackRequest) (response *EffectFeedbackResponse, err error) {
+    if request == nil {
+        request = NewEffectFeedbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EffectFeedback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEffectFeedbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCodeBatchRequest() (request *ModifyCodeBatchRequest) {
     request = &ModifyCodeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2397,6 +2491,58 @@ func (c *Client) ModifyTraceDataRanksWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyTraceDataRanksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReportBatchCallbackStatusRequest() (request *ReportBatchCallbackStatusRequest) {
+    request = &ReportBatchCallbackStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "ReportBatchCallbackStatus")
+    
+    
+    return
+}
+
+func NewReportBatchCallbackStatusResponse() (response *ReportBatchCallbackStatusResponse) {
+    response = &ReportBatchCallbackStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReportBatchCallbackStatus
+// 接收离线筛选包回执，用于效果统计和分析。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReportBatchCallbackStatus(request *ReportBatchCallbackStatusRequest) (response *ReportBatchCallbackStatusResponse, err error) {
+    return c.ReportBatchCallbackStatusWithContext(context.Background(), request)
+}
+
+// ReportBatchCallbackStatus
+// 接收离线筛选包回执，用于效果统计和分析。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReportBatchCallbackStatusWithContext(ctx context.Context, request *ReportBatchCallbackStatusRequest) (response *ReportBatchCallbackStatusResponse, err error) {
+    if request == nil {
+        request = NewReportBatchCallbackStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportBatchCallbackStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportBatchCallbackStatusResponse()
     err = c.Send(request, response)
     return
 }
