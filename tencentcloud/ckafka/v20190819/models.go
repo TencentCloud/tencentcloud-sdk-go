@@ -9096,6 +9096,72 @@ type Region struct {
 	MultiZone *int64 `json:"MultiZone,omitempty" name:"MultiZone"`
 }
 
+// Predefined struct for user
+type RenewCkafkaInstanceRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 续费时长, 默认为1, 单位是月
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+}
+
+type RenewCkafkaInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 续费时长, 默认为1, 单位是月
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+}
+
+func (r *RenewCkafkaInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewCkafkaInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "TimeSpan")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewCkafkaInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewCkafkaInstanceResponseParams struct {
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
+
+	// 子订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+}
+
+type RenewCkafkaInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewCkafkaInstanceResponseParams `json:"Response"`
+}
+
+func (r *RenewCkafkaInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewCkafkaInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ReplaceParam struct {
 	// 被替换值
 	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`

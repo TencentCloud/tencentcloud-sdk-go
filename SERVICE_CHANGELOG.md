@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 主机安全(cwp) 版本：2018-02-28
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 80 次发布
+### 第 120 次发布
 
-发布时间：2023-04-18 01:18:35
+发布时间：2023-04-19 01:10:00
 
 本次发布包含了以下内容：
 
@@ -12,15 +12,197 @@
 
 <font color="#dd0000">**预下线接口**：</font>
 
-* DescribeSearchExportList
+* DescribeCDBProxy
+* DescribeProxyConnectionPoolConf
+* ModifyCDBProxyConnectionPool
+* ModifyCDBProxyDesc
+* ModifyCDBProxyVipVPort
+* QueryCDBProxy
+
+
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 119 次发布
+
+发布时间：2023-04-19 01:11:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainLog](https://cloud.tencent.com/document/api/228/30987#DomainLog)
+
+	* 新增成员：FileSize
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 78 次发布
+
+发布时间：2023-04-19 01:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RenewCkafkaInstance](https://cloud.tencent.com/document/api/597/90290)
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 42 次发布
+
+发布时间：2023-04-19 01:14:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAlertRecordHistory](https://cloud.tencent.com/document/api/614/90291)
+
+新增数据结构：
+
+* [AlertHistoryNotice](https://cloud.tencent.com/document/api/614/56471#AlertHistoryNotice)
+* [AlertHistoryRecord](https://cloud.tencent.com/document/api/614/56471#AlertHistoryRecord)
+* [GroupTriggerConditionInfo](https://cloud.tencent.com/document/api/614/56471#GroupTriggerConditionInfo)
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 81 次发布
+
+发布时间：2023-04-19 01:23:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FileTamperEvent](https://cloud.tencent.com/document/api/296/19867#FileTamperEvent)
+
+	* 新增成员：FileAction
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 46 次发布
+
+发布时间：2023-04-19 01:26:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+
+	* 新增入参：SessionId
+
+* [DescribeNotebookSessionStatement](https://cloud.tencent.com/document/api/1342/86311)
+
+	* 新增入参：TaskId
+
+* [ListTaskJobLogDetail](https://cloud.tencent.com/document/api/1342/75645)
+
+	* 新增入参：BatchId
+
+	* 新增出参：LogUrl
+
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+
+	* 新增入参：SessionId
+
+
+修改数据结构：
+
+* [DataEngineInfo](https://cloud.tencent.com/document/api/1342/53778#DataEngineInfo)
+
+	* 新增成员：ElasticSwitch, ElasticLimit
+
+* [JobLogResult](https://cloud.tencent.com/document/api/1342/53778#JobLogResult)
+
+	* 新增成员：PkgLogId
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：SessionId
+
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 23 次发布
+
+发布时间：2023-04-19 01:27:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CertificateInfo](https://cloud.tencent.com/document/api/242/38895#CertificateInfo)
+
+	* 新增成员：RegistrantCertificateCode, RegistrantCertificateType, RegistrantImgUrl
+
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 58 次发布
+### 第 60 次发布
 
-发布时间：2023-04-17 20:50:42
+发布时间：2023-04-18 17:30:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)
+
+	* 新增入参：NotifyType, NotifyAddress
+
+
+### 第 59 次发布
+
+发布时间：2023-04-18 11:25:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateIntegrationEmployees](https://cloud.tencent.com/document/api/1323/89457)
+
+	* <font color="#dd0000">**修改入参**：</font>Agent
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 23 次发布
+
+发布时间：2023-04-19 01:35:50
 
 本次发布包含了以下内容：
 
@@ -28,82 +210,180 @@
 
 新增接口：
 
-* [UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)
+* [DeleteSupervisor](https://cloud.tencent.com/document/api/1639/90295)
+* [DescribeDocuments](https://cloud.tencent.com/document/api/1639/90292)
+* [EndRoom](https://cloud.tencent.com/document/api/1639/90294)
+* [StartRoom](https://cloud.tencent.com/document/api/1639/90293)
 
-### 第 57 次发布
+修改数据结构：
 
-发布时间：2023-04-17 20:40:51
+* [DocumentInfo](https://cloud.tencent.com/document/api/1639/81423#DocumentInfo)
 
-本次发布包含了以下内容：
+	* 新增成员：Pages, Width, Height, Cover
 
-改善已有的文档。
+* [MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord)
 
-新增接口：
-
-* [BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)
-
-
-
-## 前端性能监控(rum) 版本：2021-06-22
-
-### 第 25 次发布
-
-发布时间：2023-04-18 01:36:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAppDimensionMetrics](https://cloud.tencent.com/document/api/1464/90244)
-* [DescribeAppMetricsData](https://cloud.tencent.com/document/api/1464/90243)
-* [DescribeAppSingleCaseDetailList](https://cloud.tencent.com/document/api/1464/90242)
-* [DescribeAppSingleCaseList](https://cloud.tencent.com/document/api/1464/90241)
+	* 新增成员：Role, GroupId, SubGroupId, Stage
 
 
 
-## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
-### 第 20 次发布
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-发布时间：2023-04-18 01:48:00
+### 第 45 次发布
+
+发布时间：2023-04-19 01:37:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [AuthorizedTransfer](https://cloud.tencent.com/document/api/1458/90248)
-* [EffectFeedback](https://cloud.tencent.com/document/api/1458/90247)
-* [ReportBatchCallbackStatus](https://cloud.tencent.com/document/api/1458/90246)
+* [Bundle](https://cloud.tencent.com/document/api/1207/47576#Bundle)
+
+	* 新增成员：BundleTypeDescription
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 98 次发布
+
+发布时间：2023-04-19 01:38:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CallBackTemplateInfo](https://cloud.tencent.com/document/api/267/20474#CallBackTemplateInfo)
+
+	* 新增成员：AudioAuditNotifyUrl
+
+* [LivePackageInfo](https://cloud.tencent.com/document/api/267/20474#LivePackageInfo)
+
+	* 新增成员：WillRenew, RenewalResult
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 34 次发布
+
+发布时间：2023-04-19 01:42:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupDownloadURL](https://cloud.tencent.com/document/api/409/89025)
+
+	* 新增入参：BackupDownloadRestriction
+
 
 新增数据结构：
 
-* [InputEncryptData](https://cloud.tencent.com/document/api/1458/75030#InputEncryptData)
-* [OutputAuthorizedTransfer](https://cloud.tencent.com/document/api/1458/75030#OutputAuthorizedTransfer)
+* [BackupDownloadRestriction](https://cloud.tencent.com/document/api/409/16778#BackupDownloadRestriction)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 42 次发布
+
+发布时间：2023-04-19 01:48:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBInstancesAttribute](https://cloud.tencent.com/document/api/238/90299)
+* [DescribeXEvents](https://cloud.tencent.com/document/api/238/90298)
+* [StartInstanceXEvent](https://cloud.tencent.com/document/api/238/90297)
+
+新增数据结构：
+
+* [EventConfig](https://cloud.tencent.com/document/api/238/19976#EventConfig)
+* [Events](https://cloud.tencent.com/document/api/238/19976#Events)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 145 次发布
+
+发布时间：2023-04-19 01:55:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateClusterKubeconfig](https://cloud.tencent.com/document/api/457/90300)
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 90 次发布
+
+发布时间：2023-04-19 01:58:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateConfigWithDetailResp](https://cloud.tencent.com/document/api/649/90302)
+* [CreateFileConfigWithDetailResp](https://cloud.tencent.com/document/api/649/90301)
 
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 29 次发布
+### 第 30 次发布
 
-发布时间：2023-04-18 01:52:40
+发布时间：2023-04-19 02:01:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribePeakPoints](https://cloud.tencent.com/document/api/627/90250)
-* [DescribePeakValue](https://cloud.tencent.com/document/api/627/90249)
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
 
-新增数据结构：
+	* 新增入参：SniType, SniHost, IpHeaders
+
+
+修改数据结构：
+
+* [DomainsPartInfo](https://cloud.tencent.com/document/api/627/53609#DomainsPartInfo)
+
+	* 新增成员：SniType, SniHost, Weights, IpHeaders
+
+* [HostRecord](https://cloud.tencent.com/document/api/627/53609#HostRecord)
+
+	* 新增成员：IpHeaders, EngineType
 
 * [PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)
+
+	* 新增成员：StatusServerError, StatusClientError, StatusRedirect, StatusOk, UpstreamServerError, UpstreamClientError, UpstreamRedirect
+
+* [PortInfo](https://cloud.tencent.com/document/api/627/53609#PortInfo)
+
+	* 新增成员：NginxServerId, Port, Protocol, UpstreamPort, UpstreamProtocol
+
 
 
 
@@ -13244,6 +13524,23 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 120 次发布
+
+发布时间：2023-04-19 01:10:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeCDBProxy
+* DescribeProxyConnectionPoolConf
+* ModifyCDBProxyConnectionPool
+* ModifyCDBProxyDesc
+* ModifyCDBProxyVipVPort
+* QueryCDBProxy
+
 ### 第 119 次发布
 
 发布时间：2023-04-11 01:06:22
@@ -15816,6 +16113,21 @@
 
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 119 次发布
+
+发布时间：2023-04-19 01:11:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainLog](https://cloud.tencent.com/document/api/228/30987#DomainLog)
+
+	* 新增成员：FileSize
+
 
 ### 第 118 次发布
 
@@ -20599,6 +20911,18 @@
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
+### 第 78 次发布
+
+发布时间：2023-04-19 01:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RenewCkafkaInstance](https://cloud.tencent.com/document/api/597/90290)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 77 次发布
 
 发布时间：2023-04-10 01:12:49
@@ -24603,6 +24927,24 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 42 次发布
+
+发布时间：2023-04-19 01:14:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAlertRecordHistory](https://cloud.tencent.com/document/api/614/90291)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AlertHistoryNotice](https://cloud.tencent.com/document/api/614/56471#AlertHistoryNotice)](https://cloud.tencent.com/document/api/614/56471#[AlertHistoryNotice](https://cloud.tencent.com/document/api/614/56471#AlertHistoryNotice))
+* [[AlertHistoryRecord](https://cloud.tencent.com/document/api/614/56471#AlertHistoryRecord)](https://cloud.tencent.com/document/api/614/56471#[AlertHistoryRecord](https://cloud.tencent.com/document/api/614/56471#AlertHistoryRecord))
+* [[GroupTriggerConditionInfo](https://cloud.tencent.com/document/api/614/56471#GroupTriggerConditionInfo)](https://cloud.tencent.com/document/api/614/56471#[GroupTriggerConditionInfo](https://cloud.tencent.com/document/api/614/56471#GroupTriggerConditionInfo))
 
 ### 第 41 次发布
 
@@ -31807,6 +32149,21 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 81 次发布
+
+发布时间：2023-04-19 01:23:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FileTamperEvent](https://cloud.tencent.com/document/api/296/19867#FileTamperEvent)
+
+	* 新增成员：FileAction
+
+
 ### 第 80 次发布
 
 发布时间：2023-04-18 01:18:35
@@ -38417,6 +38774,50 @@
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
+### 第 46 次发布
+
+发布时间：2023-04-19 01:26:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+
+	* 新增入参：SessionId
+
+* [DescribeNotebookSessionStatement](https://cloud.tencent.com/document/api/1342/86311)
+
+	* 新增入参：TaskId
+
+* [ListTaskJobLogDetail](https://cloud.tencent.com/document/api/1342/75645)
+
+	* 新增入参：BatchId
+
+	* 新增出参：LogUrl
+
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+
+	* 新增入参：SessionId
+
+
+修改数据结构：
+
+* [DataEngineInfo](https://cloud.tencent.com/document/api/1342/53778#DataEngineInfo)
+
+	* 新增成员：ElasticSwitch, ElasticLimit
+
+* [JobLogResult](https://cloud.tencent.com/document/api/1342/53778#JobLogResult)
+
+	* 新增成员：PkgLogId
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：SessionId
+
+
 ### 第 45 次发布
 
 发布时间：2023-04-11 01:16:50
@@ -39780,6 +40181,21 @@
 
 
 ## 域名注册(domain) 版本：2018-08-08
+
+### 第 23 次发布
+
+发布时间：2023-04-19 01:27:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CertificateInfo](https://cloud.tencent.com/document/api/242/38895#CertificateInfo)
+
+	* 新增成员：RegistrantCertificateCode, RegistrantCertificateType, RegistrantImgUrl
+
 
 ### 第 22 次发布
 
@@ -45728,6 +46144,36 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 60 次发布
+
+发布时间：2023-04-18 17:30:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)
+
+	* 新增入参：NotifyType, NotifyAddress
+
+
+### 第 59 次发布
+
+发布时间：2023-04-18 11:25:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateIntegrationEmployees](https://cloud.tencent.com/document/api/1323/89457)
+
+	* <font color="#dd0000">**修改入参**：</font>Agent
+
+
 ### 第 58 次发布
 
 发布时间：2023-04-17 20:50:42
@@ -45738,7 +46184,7 @@
 
 新增接口：
 
-* [[UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)](https://cloud.tencent.com/document/api/#/#)
+* [UnbindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90239)
 
 ### 第 57 次发布
 
@@ -45750,7 +46196,7 @@
 
 新增接口：
 
-* [[BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)](https://cloud.tencent.com/document/api/#/#)
+* [BindEmployeeUserIdWithClientOpenId](https://cloud.tencent.com/document/api/1323/90238)
 
 ### 第 56 次发布
 
@@ -58897,6 +59343,32 @@
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
+### 第 23 次发布
+
+发布时间：2023-04-19 01:35:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteSupervisor](https://cloud.tencent.com/document/api/1639/90295)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDocuments](https://cloud.tencent.com/document/api/1639/90292)](https://cloud.tencent.com/document/api/#/#)
+* [[EndRoom](https://cloud.tencent.com/document/api/1639/90294)](https://cloud.tencent.com/document/api/#/#)
+* [[StartRoom](https://cloud.tencent.com/document/api/1639/90293)](https://cloud.tencent.com/document/api/#/#)
+
+修改数据结构：
+
+* [DocumentInfo](https://cloud.tencent.com/document/api/1639/81423#DocumentInfo)
+
+	* 新增成员：Pages, Width, Height, Cover
+
+* [MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord)
+
+	* 新增成员：Role, GroupId, SubGroupId, Stage
+
+
 ### 第 22 次发布
 
 发布时间：2023-04-11 01:26:50
@@ -59323,6 +59795,21 @@
 
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 45 次发布
+
+发布时间：2023-04-19 01:37:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Bundle](https://cloud.tencent.com/document/api/1207/47576#Bundle)
+
+	* 新增成员：BundleTypeDescription
+
 
 ### 第 44 次发布
 
@@ -60193,6 +60680,25 @@
 
 
 ## 云直播CSS(live) 版本：2018-08-01
+
+### 第 98 次发布
+
+发布时间：2023-04-19 01:38:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CallBackTemplateInfo](https://cloud.tencent.com/document/api/267/20474#CallBackTemplateInfo)
+
+	* 新增成员：AudioAuditNotifyUrl
+
+* [LivePackageInfo](https://cloud.tencent.com/document/api/267/20474#LivePackageInfo)
+
+	* 新增成员：WillRenew, RenewalResult
+
 
 ### 第 97 次发布
 
@@ -72820,6 +73326,25 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 34 次发布
+
+发布时间：2023-04-19 01:42:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupDownloadURL](https://cloud.tencent.com/document/api/409/89025)
+
+	* 新增入参：BackupDownloadRestriction
+
+
+新增数据结构：
+
+* [[BackupDownloadRestriction](https://cloud.tencent.com/document/api/409/16778#BackupDownloadRestriction)](https://cloud.tencent.com/document/api/409/16778#[BackupDownloadRestriction](https://cloud.tencent.com/document/api/409/16778#BackupDownloadRestriction))
+
 ### 第 33 次发布
 
 发布时间：2023-03-21 01:56:25
@@ -75695,10 +76220,10 @@
 
 新增接口：
 
-* [[DescribeAppDimensionMetrics](https://cloud.tencent.com/document/api/1464/90244)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAppMetricsData](https://cloud.tencent.com/document/api/1464/90243)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAppSingleCaseDetailList](https://cloud.tencent.com/document/api/1464/90242)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAppSingleCaseList](https://cloud.tencent.com/document/api/1464/90241)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAppDimensionMetrics](https://cloud.tencent.com/document/api/1464/90244)
+* [DescribeAppMetricsData](https://cloud.tencent.com/document/api/1464/90243)
+* [DescribeAppSingleCaseDetailList](https://cloud.tencent.com/document/api/1464/90242)
+* [DescribeAppSingleCaseList](https://cloud.tencent.com/document/api/1464/90241)
 
 ### 第 24 次发布
 
@@ -78296,6 +78821,25 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 42 次发布
+
+发布时间：2023-04-19 01:48:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBInstancesAttribute](https://cloud.tencent.com/document/api/238/90299)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeXEvents](https://cloud.tencent.com/document/api/238/90298)](https://cloud.tencent.com/document/api/#/#)
+* [[StartInstanceXEvent](https://cloud.tencent.com/document/api/238/90297)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[EventConfig](https://cloud.tencent.com/document/api/238/19976#EventConfig)](https://cloud.tencent.com/document/api/238/19976#[EventConfig](https://cloud.tencent.com/document/api/238/19976#EventConfig))
+* [[Events](https://cloud.tencent.com/document/api/238/19976#Events)](https://cloud.tencent.com/document/api/238/19976#[Events](https://cloud.tencent.com/document/api/238/19976#Events))
 
 ### 第 41 次发布
 
@@ -95715,6 +96259,18 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 145 次发布
+
+发布时间：2023-04-19 01:55:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpdateClusterKubeconfig](https://cloud.tencent.com/document/api/457/90300)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 144 次发布
 
 发布时间：2023-04-07 02:49:45
@@ -99034,14 +99590,14 @@
 
 新增接口：
 
-* [[AuthorizedTransfer](https://cloud.tencent.com/document/api/1458/90248)](https://cloud.tencent.com/document/api/#/#)
-* [[EffectFeedback](https://cloud.tencent.com/document/api/1458/90247)](https://cloud.tencent.com/document/api/#/#)
-* [[ReportBatchCallbackStatus](https://cloud.tencent.com/document/api/1458/90246)](https://cloud.tencent.com/document/api/#/#)
+* [AuthorizedTransfer](https://cloud.tencent.com/document/api/1458/90248)
+* [EffectFeedback](https://cloud.tencent.com/document/api/1458/90247)
+* [ReportBatchCallbackStatus](https://cloud.tencent.com/document/api/1458/90246)
 
 新增数据结构：
 
-* [[InputEncryptData](https://cloud.tencent.com/document/api/1458/75030#InputEncryptData)](https://cloud.tencent.com/document/api/1458/75030#[InputEncryptData](https://cloud.tencent.com/document/api/1458/75030#InputEncryptData))
-* [[OutputAuthorizedTransfer](https://cloud.tencent.com/document/api/1458/75030#OutputAuthorizedTransfer)](https://cloud.tencent.com/document/api/1458/75030#[OutputAuthorizedTransfer](https://cloud.tencent.com/document/api/1458/75030#OutputAuthorizedTransfer))
+* [InputEncryptData](https://cloud.tencent.com/document/api/1458/75030#InputEncryptData)
+* [OutputAuthorizedTransfer](https://cloud.tencent.com/document/api/1458/75030#OutputAuthorizedTransfer)
 
 ### 第 19 次发布
 
@@ -101220,6 +101776,19 @@
 
 
 ## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 90 次发布
+
+发布时间：2023-04-19 01:58:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateConfigWithDetailResp](https://cloud.tencent.com/document/api/649/90302)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateFileConfigWithDetailResp](https://cloud.tencent.com/document/api/649/90301)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 89 次发布
 
@@ -111634,6 +112203,40 @@
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
+### 第 30 次发布
+
+发布时间：2023-04-19 02:01:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+
+	* 新增入参：SniType, SniHost, IpHeaders
+
+
+修改数据结构：
+
+* [DomainsPartInfo](https://cloud.tencent.com/document/api/627/53609#DomainsPartInfo)
+
+	* 新增成员：SniType, SniHost, Weights, IpHeaders
+
+* [HostRecord](https://cloud.tencent.com/document/api/627/53609#HostRecord)
+
+	* 新增成员：IpHeaders, EngineType
+
+* [PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)
+
+	* 新增成员：StatusServerError, StatusClientError, StatusRedirect, StatusOk, UpstreamServerError, UpstreamClientError, UpstreamRedirect
+
+* [PortInfo](https://cloud.tencent.com/document/api/627/53609#PortInfo)
+
+	* 新增成员：NginxServerId, Port, Protocol, UpstreamPort, UpstreamProtocol
+
+
 ### 第 29 次发布
 
 发布时间：2023-04-18 01:52:40
@@ -111644,12 +112247,12 @@
 
 新增接口：
 
-* [[DescribePeakPoints](https://cloud.tencent.com/document/api/627/90250)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePeakValue](https://cloud.tencent.com/document/api/627/90249)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePeakPoints](https://cloud.tencent.com/document/api/627/90250)
+* [DescribePeakValue](https://cloud.tencent.com/document/api/627/90249)
 
 新增数据结构：
 
-* [[PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)](https://cloud.tencent.com/document/api/627/53609#[PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem))
+* [PeakPointsItem](https://cloud.tencent.com/document/api/627/53609#PeakPointsItem)
 
 ### 第 28 次发布
 

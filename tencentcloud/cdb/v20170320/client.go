@@ -3106,6 +3106,10 @@ func NewDescribeCDBProxyResponse() (response *DescribeCDBProxyResponse) {
 }
 
 // DescribeCDBProxy
+// 接口已经废弃，请使用+DescribeCdbProxyInfo+进行替换。
+//
+// 
+//
 // 查询数据库代理（待下线，替换接口QueryCDBProxy）
 //
 // 可能返回的错误码:
@@ -3118,6 +3122,10 @@ func (c *Client) DescribeCDBProxy(request *DescribeCDBProxyRequest) (response *D
 }
 
 // DescribeCDBProxy
+// 接口已经废弃，请使用+DescribeCdbProxyInfo+进行替换。
+//
+// 
+//
 // 查询数据库代理（待下线，替换接口QueryCDBProxy）
 //
 // 可能返回的错误码:
@@ -4682,6 +4690,10 @@ func NewDescribeProxyConnectionPoolConfResponse() (response *DescribeProxyConnec
 }
 
 // DescribeProxyConnectionPoolConf
+// 当前接口已经废弃，请使用+DescribeCdbProxyInfo+替代。
+//
+// 
+//
 // 获取数据库代理连接池相关规格配置
 //
 // 可能返回的错误码:
@@ -4692,6 +4704,10 @@ func (c *Client) DescribeProxyConnectionPoolConf(request *DescribeProxyConnectio
 }
 
 // DescribeProxyConnectionPoolConf
+// 当前接口已经废弃，请使用+DescribeCdbProxyInfo+替代。
+//
+// 
+//
 // 获取数据库代理连接池相关规格配置
 //
 // 可能返回的错误码:
@@ -6746,6 +6762,10 @@ func NewModifyCDBProxyConnectionPoolResponse() (response *ModifyCDBProxyConnecti
 }
 
 // ModifyCDBProxyConnectionPool
+// 当前接口已经废弃，请使用+AdjustCdbProxyAddress+进行替代。
+//
+// 
+//
 // 请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
 //
 // 可能返回的错误码:
@@ -6756,6 +6776,10 @@ func (c *Client) ModifyCDBProxyConnectionPool(request *ModifyCDBProxyConnectionP
 }
 
 // ModifyCDBProxyConnectionPool
+// 当前接口已经废弃，请使用+AdjustCdbProxyAddress+进行替代。
+//
+// 
+//
 // 请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
 //
 // 可能返回的错误码:
@@ -6796,6 +6820,10 @@ func NewModifyCDBProxyDescResponse() (response *ModifyCDBProxyDescResponse) {
 }
 
 // ModifyCDBProxyDesc
+// 当前接口已经废弃，请使用+ModifyCdbProxyAddressDesc+进行替代。
+//
+// 
+//
 // 修改数据库代理描述
 //
 // 可能返回的错误码:
@@ -6805,6 +6833,10 @@ func (c *Client) ModifyCDBProxyDesc(request *ModifyCDBProxyDescRequest) (respons
 }
 
 // ModifyCDBProxyDesc
+// 当前接口已经废弃，请使用+ModifyCdbProxyAddressDesc+进行替代。
+//
+// 
+//
 // 修改数据库代理描述
 //
 // 可能返回的错误码:
@@ -6844,6 +6876,10 @@ func NewModifyCDBProxyVipVPortResponse() (response *ModifyCDBProxyVipVPortRespon
 }
 
 // ModifyCDBProxyVipVPort
+// 当前接口已经废弃，请使用+ModifyCdbProxyAddressVipAndVPort+进行替代。
+//
+// 
+//
 // 修改数据库代理VIP或端口
 //
 // 可能返回的错误码:
@@ -6855,6 +6891,10 @@ func (c *Client) ModifyCDBProxyVipVPort(request *ModifyCDBProxyVipVPortRequest) 
 }
 
 // ModifyCDBProxyVipVPort
+// 当前接口已经废弃，请使用+ModifyCdbProxyAddressVipAndVPort+进行替代。
+//
+// 
+//
 // 修改数据库代理VIP或端口
 //
 // 可能返回的错误码:
@@ -8076,6 +8116,10 @@ func NewQueryCDBProxyResponse() (response *QueryCDBProxyResponse) {
 }
 
 // QueryCDBProxy
+// 当前接口已经废弃，请使用+DescribeCdbProxyInfo+进行替代。
+//
+// 
+//
 // 查询代理详情
 //
 // 可能返回的错误码:
@@ -8088,6 +8132,10 @@ func (c *Client) QueryCDBProxy(request *QueryCDBProxyRequest) (response *QueryCD
 }
 
 // QueryCDBProxy
+// 当前接口已经废弃，请使用+DescribeCdbProxyInfo+进行替代。
+//
+// 
+//
 // 查询代理详情
 //
 // 可能返回的错误码:

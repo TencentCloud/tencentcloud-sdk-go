@@ -4676,7 +4676,7 @@ type Recipient struct {
 	// 签署人唯一标识
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
-	// 签署方类型：ENTERPRISE-企业INDIVIDUAL-自然人
+	// 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
 	RecipientType *string `json:"RecipientType,omitempty" name:"RecipientType"`
 
 	// 描述

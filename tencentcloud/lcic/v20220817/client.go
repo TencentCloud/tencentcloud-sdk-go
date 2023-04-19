@@ -1349,6 +1349,58 @@ func (c *Client) DeleteRoomWithContext(ctx context.Context, request *DeleteRoomR
     return
 }
 
+func NewDeleteSupervisorRequest() (request *DeleteSupervisorRequest) {
+    request = &DeleteSupervisorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeleteSupervisor")
+    
+    
+    return
+}
+
+func NewDeleteSupervisorResponse() (response *DeleteSupervisorResponse) {
+    response = &DeleteSupervisorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSupervisor
+// 删除巡课
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) DeleteSupervisor(request *DeleteSupervisorRequest) (response *DeleteSupervisorResponse, err error) {
+    return c.DeleteSupervisorWithContext(context.Background(), request)
+}
+
+// DeleteSupervisor
+// 删除巡课
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) DeleteSupervisorWithContext(ctx context.Context, request *DeleteSupervisorRequest) (response *DeleteSupervisorResponse, err error) {
+    if request == nil {
+        request = NewDeleteSupervisorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSupervisor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSupervisorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAnswerListRequest() (request *DescribeAnswerListRequest) {
     request = &DescribeAnswerListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1633,6 +1685,56 @@ func (c *Client) DescribeDocumentWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDocumentsRequest() (request *DescribeDocumentsRequest) {
+    request = &DescribeDocumentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeDocuments")
+    
+    
+    return
+}
+
+func NewDescribeDocumentsResponse() (response *DescribeDocumentsResponse) {
+    response = &DescribeDocumentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDocuments
+// 批量获取文档信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+func (c *Client) DescribeDocuments(request *DescribeDocumentsRequest) (response *DescribeDocumentsResponse, err error) {
+    return c.DescribeDocumentsWithContext(context.Background(), request)
+}
+
+// DescribeDocuments
+// 批量获取文档信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+func (c *Client) DescribeDocumentsWithContext(ctx context.Context, request *DescribeDocumentsRequest) (response *DescribeDocumentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDocumentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDocuments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDocumentsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2359,6 +2461,80 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     request.SetContext(ctx)
     
     response = NewDescribeUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEndRoomRequest() (request *EndRoomRequest) {
+    request = &EndRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "EndRoom")
+    
+    
+    return
+}
+
+func NewEndRoomResponse() (response *EndRoomResponse) {
+    response = &EndRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EndRoom
+// 结束房间的直播
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EndRoom(request *EndRoomRequest) (response *EndRoomResponse, err error) {
+    return c.EndRoomWithContext(context.Background(), request)
+}
+
+// EndRoom
+// 结束房间的直播
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EndRoomWithContext(ctx context.Context, request *EndRoomRequest) (response *EndRoomResponse, err error) {
+    if request == nil {
+        request = NewEndRoomRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EndRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEndRoomResponse()
     err = c.Send(request, response)
     return
 }
@@ -3205,6 +3381,80 @@ func (c *Client) SetWatermarkWithContext(ctx context.Context, request *SetWaterm
     request.SetContext(ctx)
     
     response = NewSetWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartRoomRequest() (request *StartRoomRequest) {
+    request = &StartRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "StartRoom")
+    
+    
+    return
+}
+
+func NewStartRoomResponse() (response *StartRoomResponse) {
+    response = &StartRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartRoom
+// 开始房间的直播
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StartRoom(request *StartRoomRequest) (response *StartRoomResponse, err error) {
+    return c.StartRoomWithContext(context.Background(), request)
+}
+
+// StartRoom
+// 开始房间的直播
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
+//  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
+//  FAILEDOPERATION_CLASSSTARTED = "FailedOperation.ClassStarted"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) StartRoomWithContext(ctx context.Context, request *StartRoomRequest) (response *StartRoomResponse, err error) {
+    if request == nil {
+        request = NewStartRoomRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartRoomResponse()
     err = c.Send(request, response)
     return
 }

@@ -420,7 +420,7 @@ type AddSpartaProtectionRequestParams struct {
 	// 服务有多端口需要设置此字段
 	Ports []*PortItem `json:"Ports,omitempty" name:"Ports"`
 
-	// 版本：sparta-waf、clb-waf、cdn-waf
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF，cdn-waf表示CDN上的Web防护能力
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
 	// 是否开启长连接，仅IP回源时可以用填次参数，域名回源时这个参数无效
@@ -452,6 +452,15 @@ type AddSpartaProtectionRequestParams struct {
 
 	// 300s
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+
+	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+
+	// SniType=3时，需要填此参数，表示自定义的host；
+	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+
+	// is_cdn=3时，需要填此参数，表示自定义header
+	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -514,7 +523,7 @@ type AddSpartaProtectionRequest struct {
 	// 服务有多端口需要设置此字段
 	Ports []*PortItem `json:"Ports,omitempty" name:"Ports"`
 
-	// 版本：sparta-waf、clb-waf、cdn-waf
+	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF，cdn-waf表示CDN上的Web防护能力
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
 	// 是否开启长连接，仅IP回源时可以用填次参数，域名回源时这个参数无效
@@ -546,6 +555,15 @@ type AddSpartaProtectionRequest struct {
 
 	// 300s
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+
+	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+
+	// SniType=3时，需要填此参数，表示自定义的host；
+	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+
+	// is_cdn=3时，需要填此参数，表示自定义header
+	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -590,6 +608,9 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "CipherTemplate")
 	delete(f, "ProxyReadTimeout")
 	delete(f, "ProxySendTimeout")
+	delete(f, "SniType")
+	delete(f, "SniHost")
+	delete(f, "IpHeaders")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -2537,13 +2558,20 @@ type DescribePeakPointsRequestParams struct {
 	// WAF实例ID，不传则不过滤
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 
-	// 六个值可选：
+	// 十三个值可选：
 	// access-峰值qps趋势图
 	// botAccess- bot峰值qps趋势图
 	// down-下行峰值带宽趋势图
 	// up-上行峰值带宽趋势图
 	// attack-Web攻击总数趋势图
 	// cc-CC攻击总数趋势图
+	// StatusServerError-WAF返回给客户端状态码次数趋势图
+	// StatusClientError-WAF返回给客户端状态码次数趋势图
+	// StatusRedirect-WAF返回给客户端状态码次数趋势图
+	// StatusOk-WAF返回给客户端状态码次数趋势图
+	// UpstreamServerError-源站返回给WAF状态码次数趋势图
+	// UpstreamClientError-源站返回给WAF状态码次数趋势图
+	// UpstreamRedirect-源站返回给WAF状态码次数趋势图
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
@@ -2565,13 +2593,20 @@ type DescribePeakPointsRequest struct {
 	// WAF实例ID，不传则不过滤
 	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 
-	// 六个值可选：
+	// 十三个值可选：
 	// access-峰值qps趋势图
 	// botAccess- bot峰值qps趋势图
 	// down-下行峰值带宽趋势图
 	// up-上行峰值带宽趋势图
 	// attack-Web攻击总数趋势图
 	// cc-CC攻击总数趋势图
+	// StatusServerError-WAF返回给客户端状态码次数趋势图
+	// StatusClientError-WAF返回给客户端状态码次数趋势图
+	// StatusRedirect-WAF返回给客户端状态码次数趋势图
+	// StatusOk-WAF返回给客户端状态码次数趋势图
+	// UpstreamServerError-源站返回给WAF状态码次数趋势图
+	// UpstreamClientError-源站返回给WAF状态码次数趋势图
+	// UpstreamRedirect-源站返回给WAF状态码次数趋势图
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
@@ -3379,6 +3414,22 @@ type DomainsPartInfo struct {
 	// 300s
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+
+	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+
+	// SniType=3时，需要填此参数，表示自定义的host；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weights []*string `json:"Weights,omitempty" name:"Weights"`
+
+	// IsCdn=3时，表示自定义header
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -3606,6 +3657,14 @@ type HostRecord struct {
 	// 应用型负载均衡类型: clb或者apisix，默认clb
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+
+	// IsCdn=3时，需要填此参数，表示自定义header
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+
+	// 规则引擎类型， 1: menshen,   2:tiga
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *int64 `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 type InstanceInfo struct {
@@ -4340,12 +4399,52 @@ type PeakPointsItem struct {
 	Cc *uint64 `json:"Cc,omitempty" name:"Cc"`
 
 	// Bot qps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotAccess *uint64 `json:"BotAccess,omitempty" name:"BotAccess"`
+
+	// WAF返回给客户端状态码次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusServerError *uint64 `json:"StatusServerError,omitempty" name:"StatusServerError"`
+
+	// WAF返回给客户端状态码次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusClientError *uint64 `json:"StatusClientError,omitempty" name:"StatusClientError"`
+
+	// WAF返回给客户端状态码次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusRedirect *uint64 `json:"StatusRedirect,omitempty" name:"StatusRedirect"`
+
+	// WAF返回给客户端状态码次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusOk *uint64 `json:"StatusOk,omitempty" name:"StatusOk"`
+
+	// 源站返回给WAF状态码次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpstreamServerError *uint64 `json:"UpstreamServerError,omitempty" name:"UpstreamServerError"`
+
+	// 源站返回给WAF状态码次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpstreamClientError *uint64 `json:"UpstreamClientError,omitempty" name:"UpstreamClientError"`
+
+	// 源站返回给WAF状态码次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpstreamRedirect *uint64 `json:"UpstreamRedirect,omitempty" name:"UpstreamRedirect"`
 }
 
 type PortInfo struct {
+	// Nginx的服务器id
+	NginxServerId *uint64 `json:"NginxServerId,omitempty" name:"NginxServerId"`
 
+	// 监听端口配置
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 与端口对应的协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 回源端口
+	UpstreamPort *string `json:"UpstreamPort,omitempty" name:"UpstreamPort"`
+
+	// 回源协议
+	UpstreamProtocol *string `json:"UpstreamProtocol,omitempty" name:"UpstreamProtocol"`
 }
 
 type PortItem struct {

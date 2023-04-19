@@ -18334,7 +18334,8 @@ type DescribeReverseShellEventsRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// 过滤参数
+	// InnerNetAlarmShow- int - 是否必填：1 - 内网告警展示 0 - 不展示
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 升序降序,asc desc
@@ -18353,7 +18354,8 @@ type DescribeReverseShellEventsRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
+	// 过滤参数
+	// InnerNetAlarmShow- int - 是否必填：1 - 内网告警展示 0 - 不展示
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 升序降序,asc desc

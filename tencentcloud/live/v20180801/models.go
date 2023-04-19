@@ -514,6 +514,10 @@ type CallBackTemplateInfo struct {
 	// 推流异常回调 URL。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
+
+	// 音频审核回调 URL。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitempty" name:"AudioAuditNotifyUrl"`
 }
 
 type CallbackEventInfo struct {
@@ -10346,6 +10350,17 @@ type LivePackageInfo struct {
 	// 4: 已耗尽。
 	// 5: 已退款
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否自动续购。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WillRenew *int64 `json:"WillRenew,omitempty" name:"WillRenew"`
+
+	// 续购状态。
+	// 1 ：续购成功。
+	// 0 ：尚未续购。
+	// <0  : 续购失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewalResult *int64 `json:"RenewalResult,omitempty" name:"RenewalResult"`
 }
 
 type LogInfo struct {

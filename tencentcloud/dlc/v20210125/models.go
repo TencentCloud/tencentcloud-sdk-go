@@ -2318,6 +2318,9 @@ type CreateSparkAppRequestParams struct {
 
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
 	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
+
+	// 关联dlc查询脚本id
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 type CreateSparkAppRequest struct {
@@ -2400,6 +2403,9 @@ type CreateSparkAppRequest struct {
 
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
 	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
+
+	// 关联dlc查询脚本id
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 func (r *CreateSparkAppRequest) ToJsonString() string {
@@ -2440,6 +2446,7 @@ func (r *CreateSparkAppRequest) FromJsonString(s string) error {
 	delete(f, "SparkImage")
 	delete(f, "SparkImageVersion")
 	delete(f, "AppExecutorMaxNumbers")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppRequest has unknown keys!", "")
 	}
@@ -3423,6 +3430,14 @@ type DataEngineInfo struct {
 	// 是否开启备集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartStandbyCluster *bool `json:"StartStandbyCluster,omitempty" name:"StartStandbyCluster"`
+
+	// spark jar 包年包月集群是否开启弹性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticSwitch *bool `json:"ElasticSwitch,omitempty" name:"ElasticSwitch"`
+
+	// spark jar 包年包月集群弹性上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticLimit *int64 `json:"ElasticLimit,omitempty" name:"ElasticLimit"`
 }
 
 type DataFormat struct {
@@ -4971,6 +4986,9 @@ type DescribeNotebookSessionStatementRequestParams struct {
 
 	// Session Statement唯一标识
 	StatementId *string `json:"StatementId,omitempty" name:"StatementId"`
+
+	// 任务唯一标识
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 type DescribeNotebookSessionStatementRequest struct {
@@ -4981,6 +4999,9 @@ type DescribeNotebookSessionStatementRequest struct {
 
 	// Session Statement唯一标识
 	StatementId *string `json:"StatementId,omitempty" name:"StatementId"`
+
+	// 任务唯一标识
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 func (r *DescribeNotebookSessionStatementRequest) ToJsonString() string {
@@ -4997,6 +5018,7 @@ func (r *DescribeNotebookSessionStatementRequest) FromJsonString(s string) error
 	}
 	delete(f, "SessionId")
 	delete(f, "StatementId")
+	delete(f, "TaskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionStatementRequest has unknown keys!", "")
 	}
@@ -5530,16 +5552,16 @@ type DescribeSparkAppJobsRequestParams struct {
 	// 按照该参数过滤,支持spark-job-name
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 更新时间起始点
+	// 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 更新时间截止点
+	// 更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 查询列表偏移量
+	// 查询列表偏移量, 默认值0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询列表限制数量
+	// 查询列表限制数量, 默认值100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -5555,16 +5577,16 @@ type DescribeSparkAppJobsRequest struct {
 	// 按照该参数过滤,支持spark-job-name
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 更新时间起始点
+	// 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 更新时间截止点
+	// 更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 查询列表偏移量
+	// 查询列表偏移量, 默认值0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询列表限制数量
+	// 查询列表限制数量, 默认值100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -6957,6 +6979,10 @@ type JobLogResult struct {
 	// 日志内容，json字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogJson *string `json:"LogJson,omitempty" name:"LogJson"`
+
+	// 日志ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgLogId *string `json:"PkgLogId,omitempty" name:"PkgLogId"`
 }
 
 type KVPair struct {
@@ -6991,6 +7017,9 @@ type ListTaskJobLogDetailRequestParams struct {
 
 	// 预览日志的通用过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// SparkSQL任务唯一ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 type ListTaskJobLogDetailRequest struct {
@@ -7016,6 +7045,9 @@ type ListTaskJobLogDetailRequest struct {
 
 	// 预览日志的通用过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// SparkSQL任务唯一ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 }
 
 func (r *ListTaskJobLogDetailRequest) ToJsonString() string {
@@ -7037,6 +7069,7 @@ func (r *ListTaskJobLogDetailRequest) FromJsonString(s string) error {
 	delete(f, "Context")
 	delete(f, "Asc")
 	delete(f, "Filters")
+	delete(f, "BatchId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTaskJobLogDetailRequest has unknown keys!", "")
 	}
@@ -7056,6 +7089,10 @@ type ListTaskJobLogDetailResponseParams struct {
 	// 日志详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*JobLogResult `json:"Results,omitempty" name:"Results"`
+
+	// 日志url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogUrl *string `json:"LogUrl,omitempty" name:"LogUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7324,6 +7361,9 @@ type ModifySparkAppRequestParams struct {
 
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
 	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
+
+	// 关联dlc查询脚本
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 type ModifySparkAppRequest struct {
@@ -7409,6 +7449,9 @@ type ModifySparkAppRequest struct {
 
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums
 	AppExecutorMaxNumbers *int64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
+
+	// 关联dlc查询脚本
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 func (r *ModifySparkAppRequest) ToJsonString() string {
@@ -7450,6 +7493,7 @@ func (r *ModifySparkAppRequest) FromJsonString(s string) error {
 	delete(f, "SparkImage")
 	delete(f, "SparkImageVersion")
 	delete(f, "AppExecutorMaxNumbers")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySparkAppRequest has unknown keys!", "")
 	}
@@ -8166,6 +8210,10 @@ type SparkJobInfo struct {
 	// 镜像版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SparkImageVersion *string `json:"SparkImageVersion,omitempty" name:"SparkImageVersion"`
+
+	// 查询脚本关联id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 }
 
 type StatementOutput struct {

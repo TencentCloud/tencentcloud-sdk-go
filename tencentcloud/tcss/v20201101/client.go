@@ -11916,9 +11916,6 @@ func NewDescribeReverseShellEventsResponse() (response *DescribeReverseShellEven
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeReverseShellEvents(request *DescribeReverseShellEventsRequest) (response *DescribeReverseShellEventsResponse, err error) {
     return c.DescribeReverseShellEventsWithContext(context.Background(), request)
@@ -11931,9 +11928,6 @@ func (c *Client) DescribeReverseShellEvents(request *DescribeReverseShellEventsR
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeReverseShellEventsWithContext(ctx context.Context, request *DescribeReverseShellEventsRequest) (response *DescribeReverseShellEventsResponse, err error) {
     if request == nil {

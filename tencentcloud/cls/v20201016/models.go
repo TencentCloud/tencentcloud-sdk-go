@@ -215,6 +215,68 @@ type AlarmTargetInfo struct {
 	EndTimeOffset *int64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
+type AlertHistoryNotice struct {
+	// 通知渠道组名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 通知渠道组ID
+	AlarmNoticeId *string `json:"AlarmNoticeId,omitempty" name:"AlarmNoticeId"`
+}
+
+type AlertHistoryRecord struct {
+	// 告警历史ID
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 告警策略ID
+	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
+
+	// 告警策略名称
+	AlarmName *string `json:"AlarmName,omitempty" name:"AlarmName"`
+
+	// 监控对象ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 监控对象名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 监控对象所属地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 触发条件
+	Trigger *string `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 持续周期，持续满足触发条件TriggerCount个周期后，再进行告警
+	TriggerCount *int64 `json:"TriggerCount,omitempty" name:"TriggerCount"`
+
+	// 告警通知发送频率，单位为分钟
+	AlarmPeriod *int64 `json:"AlarmPeriod,omitempty" name:"AlarmPeriod"`
+
+	// 通知渠道组
+	Notices []*AlertHistoryNotice `json:"Notices,omitempty" name:"Notices"`
+
+	// 告警持续时间，单位为分钟
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 告警状态，0代表未恢复，1代表已恢复，2代表已失效
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 告警发生时间，毫秒级Unix时间戳
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 告警分组触发时对应的分组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupTriggerCondition []*GroupTriggerConditionInfo `json:"GroupTriggerCondition,omitempty" name:"GroupTriggerCondition"`
+
+	// 告警级别，0代表警告(Warn)，1代表提醒(Info)，2代表紧急 (Critical)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
+
+	// 监控对象类型。
+	// 0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorObjectType *uint64 `json:"MonitorObjectType,omitempty" name:"MonitorObjectType"`
+}
+
 type AnalysisDimensional struct {
 	// 分析名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2944,6 +3006,104 @@ func (r *DescribeAlarmsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAlertRecordHistoryRequestParams struct {
+	// 查询时间范围启始时间，毫秒级unix时间戳
+	From *uint64 `json:"From,omitempty" name:"From"`
+
+	// 查询时间范围结束时间，毫秒级unix时间戳
+	To *uint64 `json:"To,omitempty" name:"To"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，最大值100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// - alertId：按照告警策略ID进行过滤。类型：String 必选：否
+	// - topicId：按照监控对象ID进行过滤。类型：String 必选：否
+	// - status：按照告警状态进行过滤。类型：String 必选：否，0代表未恢复，1代表已恢复，2代表已失效
+	// - alarmLevel：按照告警等级进行过滤。类型：String 必选：否，0代表警告，1代表提醒，2代表紧急
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeAlertRecordHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询时间范围启始时间，毫秒级unix时间戳
+	From *uint64 `json:"From,omitempty" name:"From"`
+
+	// 查询时间范围结束时间，毫秒级unix时间戳
+	To *uint64 `json:"To,omitempty" name:"To"`
+
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，最大值100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// - alertId：按照告警策略ID进行过滤。类型：String 必选：否
+	// - topicId：按照监控对象ID进行过滤。类型：String 必选：否
+	// - status：按照告警状态进行过滤。类型：String 必选：否，0代表未恢复，1代表已恢复，2代表已失效
+	// - alarmLevel：按照告警等级进行过滤。类型：String 必选：否，0代表警告，1代表提醒，2代表紧急
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAlertRecordHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlertRecordHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlertRecordHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlertRecordHistoryResponseParams struct {
+	// 告警历史总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 告警历史详情
+	Records []*AlertHistoryRecord `json:"Records,omitempty" name:"Records"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAlertRecordHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlertRecordHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlertRecordHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlertRecordHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeConfigExtrasRequestParams struct {
 	// 支持的key： topicId,name, configExtraId, machineGroupId
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -4680,6 +4840,14 @@ func (r *GetAlarmLogResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetAlarmLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type GroupTriggerConditionInfo struct {
+	// 分组触发字段名称
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 分组触发字段值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type HistogramInfo struct {

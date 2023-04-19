@@ -1135,6 +1135,84 @@ func (c *Client) CreateConfigTemplateWithDetailRespWithContext(ctx context.Conte
     return
 }
 
+func NewCreateConfigWithDetailRespRequest() (request *CreateConfigWithDetailRespRequest) {
+    request = &CreateConfigWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateConfigWithDetailResp")
+    
+    
+    return
+}
+
+func NewCreateConfigWithDetailRespResponse() (response *CreateConfigWithDetailRespResponse) {
+    response = &CreateConfigWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConfigWithDetailResp
+// 创建配置项，返回详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
+//  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
+//  INVALIDPARAMETERVALUE_CONFIGNAMEINVALID = "InvalidParameterValue.ConfigNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUETOOLONG = "InvalidParameterValue.ConfigValueTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONDESCINVALID = "InvalidParameterValue.ConfigVersionDescInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_APPLICATIONIDREQUIRED = "MissingParameter.ApplicationIdRequired"
+//  MISSINGPARAMETER_CONFIGNAMEREQUIRED = "MissingParameter.ConfigNameRequired"
+//  MISSINGPARAMETER_CONFIGTYPEREQUIRED = "MissingParameter.ConfigTypeRequired"
+//  MISSINGPARAMETER_CONFIGVALUEREQUIRED = "MissingParameter.ConfigValueRequired"
+//  MISSINGPARAMETER_CONFIGVERSIONREQUIRED = "MissingParameter.ConfigVersionRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) CreateConfigWithDetailResp(request *CreateConfigWithDetailRespRequest) (response *CreateConfigWithDetailRespResponse, err error) {
+    return c.CreateConfigWithDetailRespWithContext(context.Background(), request)
+}
+
+// CreateConfigWithDetailResp
+// 创建配置项，返回详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
+//  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
+//  INVALIDPARAMETERVALUE_CONFIGNAMEINVALID = "InvalidParameterValue.ConfigNameInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUEFORMATINVALID = "InvalidParameterValue.ConfigValueFormatInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVALUETOOLONG = "InvalidParameterValue.ConfigValueTooLong"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONDESCINVALID = "InvalidParameterValue.ConfigVersionDescInvalid"
+//  INVALIDPARAMETERVALUE_CONFIGVERSIONINVALID = "InvalidParameterValue.ConfigVersionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_APPLICATIONIDREQUIRED = "MissingParameter.ApplicationIdRequired"
+//  MISSINGPARAMETER_CONFIGNAMEREQUIRED = "MissingParameter.ConfigNameRequired"
+//  MISSINGPARAMETER_CONFIGTYPEREQUIRED = "MissingParameter.ConfigTypeRequired"
+//  MISSINGPARAMETER_CONFIGVALUEREQUIRED = "MissingParameter.ConfigValueRequired"
+//  MISSINGPARAMETER_CONFIGVERSIONREQUIRED = "MissingParameter.ConfigVersionRequired"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) CreateConfigWithDetailRespWithContext(ctx context.Context, request *CreateConfigWithDetailRespRequest) (response *CreateConfigWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConfigWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConfigWithDetailRespResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateContainGroupRequest() (request *CreateContainGroupRequest) {
     request = &CreateContainGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1293,6 +1371,78 @@ func (c *Client) CreateFileConfigWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateFileConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFileConfigWithDetailRespRequest() (request *CreateFileConfigWithDetailRespRequest) {
+    request = &CreateFileConfigWithDetailRespRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateFileConfigWithDetailResp")
+    
+    
+    return
+}
+
+func NewCreateFileConfigWithDetailRespResponse() (response *CreateFileConfigWithDetailRespResponse) {
+    response = &CreateFileConfigWithDetailRespResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFileConfigWithDetailResp
+// 创建文件配置项，返回详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
+//  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTS = "InvalidParameterValue.FileConfigExists"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATH = "InvalidParameterValue.FileConfigExistsPath"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATHOTHER = "InvalidParameterValue.FileConfigExistsPathOther"
+//  INVALIDPARAMETERVALUE_FILECONFIGFILENAMEINVALID = "InvalidParameterValue.FileConfigFileNameInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = "InvalidParameterValue.FileConfigFilePathInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGVERSIONINVALID = "InvalidParameterValue.FileConfigVersionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_FILECONFIGFILEVALUEREQUIRED = "MissingParameter.FileConfigFileValueRequired"
+func (c *Client) CreateFileConfigWithDetailResp(request *CreateFileConfigWithDetailRespRequest) (response *CreateFileConfigWithDetailRespResponse, err error) {
+    return c.CreateFileConfigWithDetailRespWithContext(context.Background(), request)
+}
+
+// CreateFileConfigWithDetailResp
+// 创建文件配置项，返回详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFIGCREATEFAILED = "FailedOperation.ConfigCreateFailed"
+//  INVALIDPARAMETERVALUE_APPLICATIONNOTEXISTS = "InvalidParameterValue.ApplicationNotExists"
+//  INVALIDPARAMETERVALUE_CONFIGEXISTS = "InvalidParameterValue.ConfigExists"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTS = "InvalidParameterValue.FileConfigExists"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATH = "InvalidParameterValue.FileConfigExistsPath"
+//  INVALIDPARAMETERVALUE_FILECONFIGEXISTSPATHOTHER = "InvalidParameterValue.FileConfigExistsPathOther"
+//  INVALIDPARAMETERVALUE_FILECONFIGFILENAMEINVALID = "InvalidParameterValue.FileConfigFileNameInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGFILEPATHINVALID = "InvalidParameterValue.FileConfigFilePathInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGNAMEINVALID = "InvalidParameterValue.FileConfigNameInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGVERSIONDESCINVALID = "InvalidParameterValue.FileConfigVersionDescInvalid"
+//  INVALIDPARAMETERVALUE_FILECONFIGVERSIONINVALID = "InvalidParameterValue.FileConfigVersionInvalid"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
+//  MISSINGPARAMETER_FILECONFIGFILEVALUEREQUIRED = "MissingParameter.FileConfigFileValueRequired"
+func (c *Client) CreateFileConfigWithDetailRespWithContext(ctx context.Context, request *CreateFileConfigWithDetailRespRequest) (response *CreateFileConfigWithDetailRespResponse, err error) {
+    if request == nil {
+        request = NewCreateFileConfigWithDetailRespRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFileConfigWithDetailResp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFileConfigWithDetailRespResponse()
     err = c.Send(request, response)
     return
 }

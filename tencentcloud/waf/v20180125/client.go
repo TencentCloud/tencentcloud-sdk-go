@@ -2310,7 +2310,7 @@ func NewModifyAccessPeriodResponse() (response *ModifyAccessPeriodResponse) {
 }
 
 // ModifyAccessPeriod
-// 本接口用于修改访问日志保存期限
+// 本接口用于修改访问日志保存期限及大字段是否存储
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2338,7 +2338,7 @@ func (c *Client) ModifyAccessPeriod(request *ModifyAccessPeriodRequest) (respons
 }
 
 // ModifyAccessPeriod
-// 本接口用于修改访问日志保存期限
+// 本接口用于修改访问日志保存期限及大字段是否存储
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

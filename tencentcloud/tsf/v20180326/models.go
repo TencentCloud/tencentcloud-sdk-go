@@ -3100,6 +3100,113 @@ func (r *CreateConfigTemplateWithDetailRespResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type CreateConfigWithDetailRespRequestParams struct {
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项值
+	ConfigValue *string `json:"ConfigValue,omitempty" name:"ConfigValue"`
+
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 配置项版本描述
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项值类型
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+
+	// Base64编码的配置项
+	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
+}
+
+type CreateConfigWithDetailRespRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项值
+	ConfigValue *string `json:"ConfigValue,omitempty" name:"ConfigValue"`
+
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 配置项版本描述
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项值类型
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+
+	// Base64编码的配置项
+	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
+}
+
+func (r *CreateConfigWithDetailRespRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConfigWithDetailRespRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigName")
+	delete(f, "ConfigVersion")
+	delete(f, "ConfigValue")
+	delete(f, "ApplicationId")
+	delete(f, "ConfigVersionDesc")
+	delete(f, "ConfigType")
+	delete(f, "EncodeWithBase64")
+	delete(f, "ProgramIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigWithDetailRespRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConfigWithDetailRespResponseParams struct {
+	// 配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *Config `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateConfigWithDetailRespResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConfigWithDetailRespResponseParams `json:"Response"`
+}
+
+func (r *CreateConfigWithDetailRespResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConfigWithDetailRespResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateContainGroupRequestParams struct {
 	// 分组所属应用ID
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -3442,6 +3549,134 @@ func (r *CreateFileConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateFileConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFileConfigWithDetailRespRequestParams struct {
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项文件名
+	ConfigFileName *string `json:"ConfigFileName,omitempty" name:"ConfigFileName"`
+
+	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
+	ConfigFileValue *string `json:"ConfigFileValue,omitempty" name:"ConfigFileValue"`
+
+	// 配置项关联应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 发布路径
+	ConfigFilePath *string `json:"ConfigFilePath,omitempty" name:"ConfigFilePath"`
+
+	// 配置项版本描述
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+	ConfigFileCode *string `json:"ConfigFileCode,omitempty" name:"ConfigFileCode"`
+
+	// 后置命令
+	ConfigPostCmd *string `json:"ConfigPostCmd,omitempty" name:"ConfigPostCmd"`
+
+	// Base64编码的配置项
+	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
+}
+
+type CreateFileConfigWithDetailRespRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置项名称
+	ConfigName *string `json:"ConfigName,omitempty" name:"ConfigName"`
+
+	// 配置项版本
+	ConfigVersion *string `json:"ConfigVersion,omitempty" name:"ConfigVersion"`
+
+	// 配置项文件名
+	ConfigFileName *string `json:"ConfigFileName,omitempty" name:"ConfigFileName"`
+
+	// 配置项文件内容（原始内容编码需要 utf-8 格式，如果 ConfigFileCode 为 gbk，后台会进行转换）
+	ConfigFileValue *string `json:"ConfigFileValue,omitempty" name:"ConfigFileValue"`
+
+	// 配置项关联应用ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 发布路径
+	ConfigFilePath *string `json:"ConfigFilePath,omitempty" name:"ConfigFilePath"`
+
+	// 配置项版本描述
+	ConfigVersionDesc *string `json:"ConfigVersionDesc,omitempty" name:"ConfigVersionDesc"`
+
+	// 配置项文件编码，utf-8 或 gbk。注：如果选择 gbk，需要新版本 tsf-consul-template （公有云虚拟机需要使用 1.32 tsf-agent，容器需要从文档中获取最新的 tsf-consul-template-docker.tar.gz）的支持
+	ConfigFileCode *string `json:"ConfigFileCode,omitempty" name:"ConfigFileCode"`
+
+	// 后置命令
+	ConfigPostCmd *string `json:"ConfigPostCmd,omitempty" name:"ConfigPostCmd"`
+
+	// Base64编码的配置项
+	EncodeWithBase64 *bool `json:"EncodeWithBase64,omitempty" name:"EncodeWithBase64"`
+
+	// 无
+	ProgramIdList []*string `json:"ProgramIdList,omitempty" name:"ProgramIdList"`
+}
+
+func (r *CreateFileConfigWithDetailRespRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileConfigWithDetailRespRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigName")
+	delete(f, "ConfigVersion")
+	delete(f, "ConfigFileName")
+	delete(f, "ConfigFileValue")
+	delete(f, "ApplicationId")
+	delete(f, "ConfigFilePath")
+	delete(f, "ConfigVersionDesc")
+	delete(f, "ConfigFileCode")
+	delete(f, "ConfigPostCmd")
+	delete(f, "EncodeWithBase64")
+	delete(f, "ProgramIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileConfigWithDetailRespRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFileConfigWithDetailRespResponseParams struct {
+	// 文件配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *FileConfig `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFileConfigWithDetailRespResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFileConfigWithDetailRespResponseParams `json:"Response"`
+}
+
+func (r *CreateFileConfigWithDetailRespResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileConfigWithDetailRespResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

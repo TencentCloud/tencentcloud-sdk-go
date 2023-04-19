@@ -874,7 +874,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 }
 
 // CreateInstances
-// 本接口(CreateInstances)用于创建redis实例。
+// 本接口（CreateInstances）用于创建 Redis 实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"
@@ -913,7 +913,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 }
 
 // CreateInstances
-// 本接口(CreateInstances)用于创建redis实例。
+// 本接口（CreateInstances）用于创建 Redis 实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PAYFAILED = "FailedOperation.PayFailed"

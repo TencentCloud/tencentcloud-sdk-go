@@ -143,6 +143,18 @@ type CertificateInfo struct {
 
 	// 证件照片地址。
 	ImgUrl *string `json:"ImgUrl,omitempty" name:"ImgUrl"`
+
+	// 联系人证件号码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistrantCertificateCode *string `json:"RegistrantCertificateCode,omitempty" name:"RegistrantCertificateCode"`
+
+	// 联系人证件类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistrantCertificateType *string `json:"RegistrantCertificateType,omitempty" name:"RegistrantCertificateType"`
+
+	// 联系人证件照片地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistrantImgUrl *string `json:"RegistrantImgUrl,omitempty" name:"RegistrantImgUrl"`
 }
 
 // Predefined struct for user

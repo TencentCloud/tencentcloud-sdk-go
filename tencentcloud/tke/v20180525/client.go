@@ -12071,6 +12071,64 @@ func (c *Client) UninstallLogAgentWithContext(ctx context.Context, request *Unin
     return
 }
 
+func NewUpdateClusterKubeconfigRequest() (request *UpdateClusterKubeconfigRequest) {
+    request = &UpdateClusterKubeconfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "UpdateClusterKubeconfig")
+    
+    
+    return
+}
+
+func NewUpdateClusterKubeconfigResponse() (response *UpdateClusterKubeconfigResponse) {
+    response = &UpdateClusterKubeconfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateClusterKubeconfig
+// 对集群的Kubeconfig信息进行更新
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_KUBERNETESPATCHOPERATIONERROR = "InternalError.KubernetesPatchOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateClusterKubeconfig(request *UpdateClusterKubeconfigRequest) (response *UpdateClusterKubeconfigResponse, err error) {
+    return c.UpdateClusterKubeconfigWithContext(context.Background(), request)
+}
+
+// UpdateClusterKubeconfig
+// 对集群的Kubeconfig信息进行更新
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_KUBERNETESPATCHOPERATIONERROR = "InternalError.KubernetesPatchOperationError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateClusterKubeconfigWithContext(ctx context.Context, request *UpdateClusterKubeconfigRequest) (response *UpdateClusterKubeconfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateClusterKubeconfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateClusterKubeconfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateClusterKubeconfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateClusterVersionRequest() (request *UpdateClusterVersionRequest) {
     request = &UpdateClusterVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -2451,6 +2451,60 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeDBInstancesAttributeRequest() (request *DescribeDBInstancesAttributeRequest) {
+    request = &DescribeDBInstancesAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBInstancesAttribute")
+    
+    
+    return
+}
+
+func NewDescribeDBInstancesAttributeResponse() (response *DescribeDBInstancesAttributeResponse) {
+    response = &DescribeDBInstancesAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBInstancesAttribute
+// 本接口（DescribeDBInstancesAttribute）用于查询实例附属属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeDBInstancesAttribute(request *DescribeDBInstancesAttributeRequest) (response *DescribeDBInstancesAttributeResponse, err error) {
+    return c.DescribeDBInstancesAttributeWithContext(context.Background(), request)
+}
+
+// DescribeDBInstancesAttribute
+// 本接口（DescribeDBInstancesAttribute）用于查询实例附属属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeDBInstancesAttributeWithContext(ctx context.Context, request *DescribeDBInstancesAttributeRequest) (response *DescribeDBInstancesAttributeResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstancesAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstancesAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstancesAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequest) {
     request = &DescribeDBSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3847,6 +3901,66 @@ func (c *Client) DescribeUploadIncrementalInfoWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeUploadIncrementalInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeXEventsRequest() (request *DescribeXEventsRequest) {
+    request = &DescribeXEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeXEvents")
+    
+    
+    return
+}
+
+func NewDescribeXEventsResponse() (response *DescribeXEventsResponse) {
+    response = &DescribeXEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeXEvents
+// 本接口（DescribeXEvents）用于查询扩展事件列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSERROR = "FailedOperation.CosError"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+func (c *Client) DescribeXEvents(request *DescribeXEventsRequest) (response *DescribeXEventsResponse, err error) {
+    return c.DescribeXEventsWithContext(context.Background(), request)
+}
+
+// DescribeXEvents
+// 本接口（DescribeXEvents）用于查询扩展事件列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSERROR = "FailedOperation.CosError"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+func (c *Client) DescribeXEventsWithContext(ctx context.Context, request *DescribeXEventsRequest) (response *DescribeXEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeXEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeXEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeXEventsResponse()
     err = c.Send(request, response)
     return
 }
@@ -6423,6 +6537,62 @@ func (c *Client) StartIncrementalMigrationWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewStartIncrementalMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartInstanceXEventRequest() (request *StartInstanceXEventRequest) {
+    request = &StartInstanceXEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "StartInstanceXEvent")
+    
+    
+    return
+}
+
+func NewStartInstanceXEventResponse() (response *StartInstanceXEventResponse) {
+    response = &StartInstanceXEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartInstanceXEvent
+// 本接口（StartInstanceXEvent）用于开启、关闭扩展事件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+func (c *Client) StartInstanceXEvent(request *StartInstanceXEventRequest) (response *StartInstanceXEventResponse, err error) {
+    return c.StartInstanceXEventWithContext(context.Background(), request)
+}
+
+// StartInstanceXEvent
+// 本接口（StartInstanceXEvent）用于开启、关闭扩展事件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+func (c *Client) StartInstanceXEventWithContext(ctx context.Context, request *StartInstanceXEventRequest) (response *StartInstanceXEventResponse, err error) {
+    if request == nil {
+        request = NewStartInstanceXEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartInstanceXEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartInstanceXEventResponse()
     err = c.Send(request, response)
     return
 }

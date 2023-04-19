@@ -5099,6 +5099,62 @@ func (c *Client) ModifyTopicAttributesWithContext(ctx context.Context, request *
     return
 }
 
+func NewRenewCkafkaInstanceRequest() (request *RenewCkafkaInstanceRequest) {
+    request = &RenewCkafkaInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "RenewCkafkaInstance")
+    
+    
+    return
+}
+
+func NewRenewCkafkaInstanceResponse() (response *RenewCkafkaInstanceResponse) {
+    response = &RenewCkafkaInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RenewCkafkaInstance
+// 续费Ckafka实例, 目前只支持国内站包年包月实例续费
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewCkafkaInstance(request *RenewCkafkaInstanceRequest) (response *RenewCkafkaInstanceResponse, err error) {
+    return c.RenewCkafkaInstanceWithContext(context.Background(), request)
+}
+
+// RenewCkafkaInstance
+// 续费Ckafka实例, 目前只支持国内站包年包月实例续费
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewCkafkaInstanceWithContext(ctx context.Context, request *RenewCkafkaInstanceRequest) (response *RenewCkafkaInstanceResponse, err error) {
+    if request == nil {
+        request = NewRenewCkafkaInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewCkafkaInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewCkafkaInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendMessageRequest() (request *SendMessageRequest) {
     request = &SendMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},

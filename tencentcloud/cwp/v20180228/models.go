@@ -12428,6 +12428,7 @@ type DescribeFileTamperEventsRequestParams struct {
 	// <li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
 	// <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
 	// <li>RuleCategory- string - 是否必填：否 - 规则类别 0 系统规则 1 自定义规则</li>
+	// <li>FileAction- string - 是否必填：否 - 威胁行为 read 读取文件 write 写文件</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -12451,6 +12452,7 @@ type DescribeFileTamperEventsRequest struct {
 	// <li>ModifyTime - String - 是否必填：否 - 最近发生时间</li>
 	// <li>Uuid- String - 是否必填：否 - 主机uuid查询</li>
 	// <li>RuleCategory- string - 是否必填：否 - 规则类别 0 系统规则 1 自定义规则</li>
+	// <li>FileAction- string - 是否必填：否 - 威胁行为 read 读取文件 write 写文件</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -21702,6 +21704,12 @@ type FileTamperEvent struct {
 	//  主机额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 文件威胁行为
+	// <li>read 读取文件</li>
+	// <li>write 修改文件</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileAction *string `json:"FileAction,omitempty" name:"FileAction"`
 }
 
 type Filter struct {

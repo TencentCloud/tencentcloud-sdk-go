@@ -145,6 +145,23 @@ type AnalysisItems struct {
 	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
 }
 
+type BackupDownloadRestriction struct {
+	// 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+	RestrictionType *string `json:"RestrictionType,omitempty" name:"RestrictionType"`
+
+	// vpc限制效力，ALLOW 允许；DENY 拒绝。
+	VpcRestrictionEffect *string `json:"VpcRestrictionEffect,omitempty" name:"VpcRestrictionEffect"`
+
+	// 允许或拒绝下载备份文件的vpcId列表。
+	VpcIdSet []*string `json:"VpcIdSet,omitempty" name:"VpcIdSet"`
+
+	// ip限制效力，ALLOW 允许；DENY 拒绝。
+	IpRestrictionEffect *string `json:"IpRestrictionEffect,omitempty" name:"IpRestrictionEffect"`
+
+	// 允许或拒绝下载备份文件的ip列表。
+	IpSet []*string `json:"IpSet,omitempty" name:"IpSet"`
+}
+
 type BackupPlan struct {
 	// 备份周期
 	BackupPeriod *string `json:"BackupPeriod,omitempty" name:"BackupPeriod"`
@@ -2591,6 +2608,9 @@ type DescribeBackupDownloadURLRequestParams struct {
 
 	// 链接的有效时间，默认为12小时。
 	URLExpireTime *uint64 `json:"URLExpireTime,omitempty" name:"URLExpireTime"`
+
+	// 备份下载限制
+	BackupDownloadRestriction *BackupDownloadRestriction `json:"BackupDownloadRestriction,omitempty" name:"BackupDownloadRestriction"`
 }
 
 type DescribeBackupDownloadURLRequest struct {
@@ -2607,6 +2627,9 @@ type DescribeBackupDownloadURLRequest struct {
 
 	// 链接的有效时间，默认为12小时。
 	URLExpireTime *uint64 `json:"URLExpireTime,omitempty" name:"URLExpireTime"`
+
+	// 备份下载限制
+	BackupDownloadRestriction *BackupDownloadRestriction `json:"BackupDownloadRestriction,omitempty" name:"BackupDownloadRestriction"`
 }
 
 func (r *DescribeBackupDownloadURLRequest) ToJsonString() string {
@@ -2625,6 +2648,7 @@ func (r *DescribeBackupDownloadURLRequest) FromJsonString(s string) error {
 	delete(f, "BackupType")
 	delete(f, "BackupId")
 	delete(f, "URLExpireTime")
+	delete(f, "BackupDownloadRestriction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDownloadURLRequest has unknown keys!", "")
 	}

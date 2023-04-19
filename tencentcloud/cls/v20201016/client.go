@@ -2055,6 +2055,68 @@ func (c *Client) DescribeAlarmsWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribeAlertRecordHistoryRequest() (request *DescribeAlertRecordHistoryRequest) {
+    request = &DescribeAlertRecordHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeAlertRecordHistory")
+    
+    
+    return
+}
+
+func NewDescribeAlertRecordHistoryResponse() (response *DescribeAlertRecordHistoryResponse) {
+    response = &DescribeAlertRecordHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAlertRecordHistory
+// 获取告警历史，例如今天未恢复的告警
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeAlertRecordHistory(request *DescribeAlertRecordHistoryRequest) (response *DescribeAlertRecordHistoryResponse, err error) {
+    return c.DescribeAlertRecordHistoryWithContext(context.Background(), request)
+}
+
+// DescribeAlertRecordHistory
+// 获取告警历史，例如今天未恢复的告警
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeAlertRecordHistoryWithContext(ctx context.Context, request *DescribeAlertRecordHistoryRequest) (response *DescribeAlertRecordHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlertRecordHistoryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlertRecordHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlertRecordHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConfigExtrasRequest() (request *DescribeConfigExtrasRequest) {
     request = &DescribeConfigExtrasRequest{
         BaseRequest: &tchttp.BaseRequest{},

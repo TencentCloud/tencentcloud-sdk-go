@@ -157,7 +157,7 @@ type AutoSignConfig struct {
 
 // Predefined struct for user
 type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
-	// OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 电子签系统员工UserId
@@ -170,7 +170,7 @@ type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
 type BindEmployeeUserIdWithClientOpenIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 电子签系统员工UserId
@@ -768,7 +768,7 @@ type CreateDocumentRequestParams struct {
 	// 用户上传的模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起
+	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
 	FileNames []*string `json:"FileNames,omitempty" name:"FileNames"`
 
 	// 内容控件信息数组
@@ -800,7 +800,7 @@ type CreateDocumentRequest struct {
 	// 用户上传的模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起
+	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起。设置后流程对应的文件名称当前设置的值。
 	FileNames []*string `json:"FileNames,omitempty" name:"FileNames"`
 
 	// 内容控件信息数组
@@ -2478,6 +2478,12 @@ type CreateUserAutoSignEnableUrlRequestParams struct {
 
 	// 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
 	UrlType *string `json:"UrlType,omitempty" name:"UrlType"`
+
+	// 通知类型，默认不填为不通知开通方，填写 SMS 为短息通知。
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// 若上方填写为 SMS，则此处为手机号
+	NotifyAddress *string `json:"NotifyAddress,omitempty" name:"NotifyAddress"`
 }
 
 type CreateUserAutoSignEnableUrlRequest struct {
@@ -2495,6 +2501,12 @@ type CreateUserAutoSignEnableUrlRequest struct {
 
 	// 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
 	UrlType *string `json:"UrlType,omitempty" name:"UrlType"`
+
+	// 通知类型，默认不填为不通知开通方，填写 SMS 为短息通知。
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// 若上方填写为 SMS，则此处为手机号
+	NotifyAddress *string `json:"NotifyAddress,omitempty" name:"NotifyAddress"`
 }
 
 func (r *CreateUserAutoSignEnableUrlRequest) ToJsonString() string {
@@ -2513,6 +2525,8 @@ func (r *CreateUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
 	delete(f, "SceneKey")
 	delete(f, "AutoSignConfig")
 	delete(f, "UrlType")
+	delete(f, "NotifyType")
+	delete(f, "NotifyAddress")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserAutoSignEnableUrlRequest has unknown keys!", "")
 	}
@@ -2567,7 +2581,7 @@ type DeleteIntegrationEmployeesRequestParams struct {
 	// 待移除员工的信息，userId和openId二选一，必填一个
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
-	// 代理信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -2580,7 +2594,7 @@ type DeleteIntegrationEmployeesRequest struct {
 	// 待移除员工的信息，userId和openId二选一，必填一个
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
-	// 代理信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -3165,9 +3179,6 @@ type DescribeFlowTemplatesRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 企业组织相关信息，一般不用填
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
-
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -3190,11 +3201,14 @@ type DescribeFlowTemplatesRequestParams struct {
 	// 为true，查询第三方应用集成平台企业模板库管理列表
 	IsChannel *bool `json:"IsChannel,omitempty" name:"IsChannel"`
 
-	// 暂未开放
-	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
-
 	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 暂未开放
+	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
 }
 
 type DescribeFlowTemplatesRequest struct {
@@ -3203,9 +3217,6 @@ type DescribeFlowTemplatesRequest struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 企业组织相关信息，一般不用填
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
-
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -3228,11 +3239,14 @@ type DescribeFlowTemplatesRequest struct {
 	// 为true，查询第三方应用集成平台企业模板库管理列表
 	IsChannel *bool `json:"IsChannel,omitempty" name:"IsChannel"`
 
-	// 暂未开放
-	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
-
 	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 暂未开放
+	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
 }
 
 func (r *DescribeFlowTemplatesRequest) ToJsonString() string {
@@ -3248,15 +3262,15 @@ func (r *DescribeFlowTemplatesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Operator")
-	delete(f, "Organization")
 	delete(f, "Agent")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "ApplicationId")
 	delete(f, "IsChannel")
-	delete(f, "GenerateSource")
 	delete(f, "ContentType")
+	delete(f, "Organization")
+	delete(f, "GenerateSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowTemplatesRequest has unknown keys!", "")
 	}
@@ -3557,7 +3571,7 @@ type DescribeOrganizationGroupOrganizationsRequestParams struct {
 	// 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 是否到处当前成员企业数据
+	// 是否导出当前成员企业数据
 	Export *bool `json:"Export,omitempty" name:"Export"`
 
 	// 成员企业id
@@ -3582,7 +3596,7 @@ type DescribeOrganizationGroupOrganizationsRequest struct {
 	// 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 是否到处当前成员企业数据
+	// 是否导出当前成员企业数据
 	Export *bool `json:"Export,omitempty" name:"Export"`
 
 	// 成员企业id
@@ -4414,7 +4428,7 @@ type GroupOrganization struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 成员企业状态
+	// 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
@@ -4589,27 +4603,27 @@ type OccupiedSeal struct {
 }
 
 type OrganizationInfo struct {
-	// 机构在平台的编号
+	// 机构在平台的编号，内部字段，暂未开放
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
 
-	// 用户渠道
+	// 用户渠道，内部字段，暂未开放
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
-	// 用户在渠道的机构编号
+	// 用户在渠道的机构编号，内部字段，暂未开放
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
-	// 用户真实的IP
+	// 用户真实的IP，内部字段，暂未开放
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
-	// 机构的代理IP
+	// 机构的代理IP，内部字段，暂未开放
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
 }
 
 type PdfVerifyResult struct {
-	// 验签结果
+	// 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
 	VerifyResult *int64 `json:"VerifyResult,omitempty" name:"VerifyResult"`
 
-	// 签署平台
+	// 签署平台，如果文件是在腾讯电子签平台签署，则返回腾讯电子签，如果文件不在腾讯电子签平台签署，则返回其他平台。
 	SignPlatform *string `json:"SignPlatform,omitempty" name:"SignPlatform"`
 
 	// 签署人名称
@@ -4650,7 +4664,7 @@ type Recipient struct {
 	// 签署参与者ID
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
-	// 参与者类型（ENTERPRISE/INDIVIDUAL）
+	// 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
 	RecipientType *string `json:"RecipientType,omitempty" name:"RecipientType"`
 
 	// 描述信息
@@ -4680,7 +4694,7 @@ type Recipient struct {
 	// 关联的用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 发送方式（EMAIL/MOBILE）
+	// 发送方式。默认为EMAIL。EMAIL-邮件；MOBILE-手机短信；WECHAT-微信通知
 	DeliveryMethod *string `json:"DeliveryMethod,omitempty" name:"DeliveryMethod"`
 
 	// 附属信息
@@ -4978,7 +4992,7 @@ type TemplateInfo struct {
 	// 发起人角色信息
 	Promoter *Recipient `json:"Promoter,omitempty" name:"Promoter"`
 
-	// 模板可用状态，取值：0未知，但默认会被转成启用；1启用（默认），2停用
+	// 模板可用状态，取值：1启用（默认），2停用
 	Available *int64 `json:"Available,omitempty" name:"Available"`
 
 	// 模板创建组织id
@@ -4999,7 +5013,7 @@ type TemplateInfo struct {
 
 // Predefined struct for user
 type UnbindEmployeeUserIdWithClientOpenIdRequestParams struct {
-	// OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 电子签系统员工UserId
@@ -5012,7 +5026,7 @@ type UnbindEmployeeUserIdWithClientOpenIdRequestParams struct {
 type UnbindEmployeeUserIdWithClientOpenIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// OpenId与UserId二选一必填一个，当传入客户系统openId，传入的openId需与电子签员工userId绑定，且渠道channel必填，channel值为INTEGRATE，否则传入userId
+	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 电子签系统员工UserId
@@ -5073,11 +5087,11 @@ type UpdateIntegrationEmployeesRequestParams struct {
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 代理信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
 	// 员工信息
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type UpdateIntegrationEmployeesRequest struct {
@@ -5086,11 +5100,11 @@ type UpdateIntegrationEmployeesRequest struct {
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 代理信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
 	// 员工信息
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *UpdateIntegrationEmployeesRequest) ToJsonString() string {
@@ -5106,8 +5120,8 @@ func (r *UpdateIntegrationEmployeesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Operator")
-	delete(f, "Agent")
 	delete(f, "Employees")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIntegrationEmployeesRequest has unknown keys!", "")
 	}
@@ -5268,16 +5282,16 @@ type UserInfo struct {
 	// 用户在平台的编号
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 用户的来源渠道
+	// 用户的来源渠道，一般不用传，特定场景根据接口说明传值
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
-	// 用户在渠道的编号
+	// 用户在渠道的编号，一般不用传，特定场景根据接口说明传值
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
-	// 用户真实IP
+	// 用户真实IP，内部字段，暂未开放
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
-	// 用户代理IP
+	// 用户代理IP，内部字段，暂未开放
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
 }
 

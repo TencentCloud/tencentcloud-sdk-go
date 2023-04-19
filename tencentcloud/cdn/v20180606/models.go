@@ -7249,6 +7249,10 @@ type DomainLog struct {
 
 	// 日志包文件名
 	LogName *string `json:"LogName,omitempty" name:"LogName"`
+
+	// 文件大小，单位: Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 }
 
 type DownstreamCapping struct {

@@ -3831,6 +3831,84 @@ func (r *DescribeDBInstanceInterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBInstancesAttributeRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeDBInstancesAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBInstancesAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstancesAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstancesAttributeResponseParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 定期备份状态 enable-开启，disable-关闭
+	RegularBackupEnable *string `json:"RegularBackupEnable,omitempty" name:"RegularBackupEnable"`
+
+	// 定期备份保留天数 [90 - 3650]天
+	RegularBackupSaveDays *uint64 `json:"RegularBackupSaveDays,omitempty" name:"RegularBackupSaveDays"`
+
+	// 定期备份策略 years-每年，quarters-每季度，months-每月
+	RegularBackupStrategy *string `json:"RegularBackupStrategy,omitempty" name:"RegularBackupStrategy"`
+
+	// 定期备份保留个数
+	RegularBackupCounts *uint64 `json:"RegularBackupCounts,omitempty" name:"RegularBackupCounts"`
+
+	// 定期备份开始日期，格式-YYYY-MM-DD 默认当前日期
+	RegularBackupStartTime *string `json:"RegularBackupStartTime,omitempty" name:"RegularBackupStartTime"`
+
+	// 阻塞进程阈值，单位毫秒
+	BlockedThreshold *int64 `json:"BlockedThreshold,omitempty" name:"BlockedThreshold"`
+
+	// 慢SQL、阻塞、死锁扩展事件文件保留时长
+	EventSaveDays *int64 `json:"EventSaveDays,omitempty" name:"EventSaveDays"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstancesAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstancesAttributeResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstancesAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstancesAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
 	// 项目ID
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -5800,6 +5878,101 @@ func (r *DescribeUploadIncrementalInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeXEventsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 扩展文件生成开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 扩展文件生成结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页返回，页编号，默认值为第0页
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回，每页返回的数目，取值为1~100，默认值为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeXEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 扩展文件生成开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 扩展文件生成结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页返回，页编号，默认值为第0页
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回，每页返回的数目，取值为1~100，默认值为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeXEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeXEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "EventType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeXEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeXEventsResponseParams struct {
+	// 扩展事件列表
+	Events []*Events `json:"Events,omitempty" name:"Events"`
+
+	// 扩展事件总数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeXEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeXEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeXEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeXEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeZonesRequestParams struct {
 
 }
@@ -5915,6 +6088,43 @@ func (r *DisassociateSecurityGroupsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type EventConfig struct {
+	// 事件类型，slow-设置慢SQL阈值，blocked-设置阻塞、死锁阈值
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 阈值，单位毫秒。0表示关闭，大于0表示开启
+	Threshold *int64 `json:"Threshold,omitempty" name:"Threshold"`
+}
+
+type Events struct {
+	// ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 扩展事件文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 扩展事件文件大小
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 事件类型，slow-慢SQL事件，blocked-阻塞事件，deadlock-死锁事件
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 事件记录状态，1-成功，2-失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 扩展文件生成开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 扩展文件生成开始时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 内网下载地址
+	InternalAddr *string `json:"InternalAddr,omitempty" name:"InternalAddr"`
+
+	// 外网下载地址
+	ExternalAddr *string `json:"ExternalAddr,omitempty" name:"ExternalAddr"`
 }
 
 type FileAction struct {
@@ -9389,6 +9599,67 @@ func (r *StartIncrementalMigrationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartIncrementalMigrationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartInstanceXEventRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开启、关闭扩展事件
+	EventConfig []*EventConfig `json:"EventConfig,omitempty" name:"EventConfig"`
+}
+
+type StartInstanceXEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开启、关闭扩展事件
+	EventConfig []*EventConfig `json:"EventConfig,omitempty" name:"EventConfig"`
+}
+
+func (r *StartInstanceXEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartInstanceXEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "EventConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartInstanceXEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartInstanceXEventResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartInstanceXEventResponse struct {
+	*tchttp.BaseResponse
+	Response *StartInstanceXEventResponseParams `json:"Response"`
+}
+
+func (r *StartInstanceXEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartInstanceXEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1521,6 +1521,67 @@ func (r *DeleteRoomResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteSupervisorRequestParams struct {
+	// 应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户ID列表
+	Users []*string `json:"Users,omitempty" name:"Users"`
+}
+
+type DeleteSupervisorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户ID列表
+	Users []*string `json:"Users,omitempty" name:"Users"`
+}
+
+func (r *DeleteSupervisorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSupervisorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Users")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSupervisorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSupervisorResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteSupervisorResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSupervisorResponseParams `json:"Response"`
+}
+
+func (r *DeleteSupervisorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSupervisorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAnswerListRequestParams struct {
 	// 问题ID
 	QuestionId *string `json:"QuestionId,omitempty" name:"QuestionId"`
@@ -1992,6 +2053,109 @@ func (r *DescribeDocumentsByRoomResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDocumentsByRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDocumentsRequestParams struct {
+	// 学校id
+	SchoolId *uint64 `json:"SchoolId,omitempty" name:"SchoolId"`
+
+	// 分页查询当前页数，从1开始递增
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
+	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+
+	// 课件所有者的user_id，不填默认获取school_id下所有课件
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 课件名称搜索词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 课件id列表，从列表中查询，忽略错误的id
+	DocumentId []*string `json:"DocumentId,omitempty" name:"DocumentId"`
+}
+
+type DescribeDocumentsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 学校id
+	SchoolId *uint64 `json:"SchoolId,omitempty" name:"SchoolId"`
+
+	// 分页查询当前页数，从1开始递增
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
+	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+
+	// 课件所有者的user_id，不填默认获取school_id下所有课件
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 课件名称搜索词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 课件id列表，从列表中查询，忽略错误的id
+	DocumentId []*string `json:"DocumentId,omitempty" name:"DocumentId"`
+}
+
+func (r *DescribeDocumentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDocumentsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SchoolId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	delete(f, "Permission")
+	delete(f, "Owner")
+	delete(f, "Keyword")
+	delete(f, "DocumentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDocumentsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDocumentsResponseParams struct {
+	// 符合查询条件文档总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 文档信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Documents []*DocumentInfo `json:"Documents,omitempty" name:"Documents"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDocumentsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDocumentsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDocumentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDocumentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2807,6 +2971,76 @@ type DocumentInfo struct {
 	// 更新的UNIX时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 课件页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pages *uint64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 宽，仅在静态转码的课件有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 高，仅在静态转码的课件有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 封面，仅转码的课件会生成封面
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cover *string `json:"Cover,omitempty" name:"Cover"`
+}
+
+// Predefined struct for user
+type EndRoomRequestParams struct {
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+type EndRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *EndRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EndRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EndRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EndRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type EndRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *EndRoomResponseParams `json:"Response"`
+}
+
+func (r *EndRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EndRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type EventDataInfo struct {
@@ -3374,6 +3608,20 @@ type MemberRecord struct {
 
 	// 每个成员发送消息数量。
 	PerMemberMessageCount *int64 `json:"PerMemberMessageCount,omitempty" name:"PerMemberMessageCount"`
+
+	// 用户角色。0代表学生；1代表老师； 2助教；3巡课。
+	Role *uint64 `json:"Role,omitempty" name:"Role"`
+
+	// 上课班号
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 子上课班号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubGroupId []*string `json:"SubGroupId,omitempty" name:"SubGroupId"`
+
+	// 用户的上台状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Stage *int64 `json:"Stage,omitempty" name:"Stage"`
 }
 
 type MessageItem struct {
@@ -4204,6 +4452,60 @@ func (r *SetWatermarkResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetWatermarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartRoomRequestParams struct {
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+type StartRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *StartRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *StartRoomResponseParams `json:"Response"`
+}
+
+func (r *StartRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
