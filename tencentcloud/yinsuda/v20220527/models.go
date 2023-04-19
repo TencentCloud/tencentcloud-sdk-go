@@ -495,6 +495,10 @@ type DescribeKTVPlaylistDetailRequestParams struct {
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
 	RightFilters []*string `json:"RightFilters,omitempty" name:"RightFilters"`
+
+	// 播放场景。默认为Chat
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
 }
 
 type DescribeKTVPlaylistDetailRequest struct {
@@ -519,6 +523,10 @@ type DescribeKTVPlaylistDetailRequest struct {
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
 	RightFilters []*string `json:"RightFilters,omitempty" name:"RightFilters"`
+
+	// 播放场景。默认为Chat
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
 }
 
 func (r *DescribeKTVPlaylistDetailRequest) ToJsonString() string {
@@ -539,6 +547,7 @@ func (r *DescribeKTVPlaylistDetailRequest) FromJsonString(s string) error {
 	delete(f, "ScrollToken")
 	delete(f, "Limit")
 	delete(f, "RightFilters")
+	delete(f, "PlayScene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVPlaylistDetailRequest has unknown keys!", "")
 	}
@@ -1505,6 +1514,10 @@ type SearchKTVMusicsRequestParams struct {
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
 	RightFilters []*string `json:"RightFilters,omitempty" name:"RightFilters"`
+
+	// 播放场景。默认为Chat
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
 }
 
 type SearchKTVMusicsRequest struct {
@@ -1529,6 +1542,10 @@ type SearchKTVMusicsRequest struct {
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
 	RightFilters []*string `json:"RightFilters,omitempty" name:"RightFilters"`
+
+	// 播放场景。默认为Chat
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
 }
 
 func (r *SearchKTVMusicsRequest) ToJsonString() string {
@@ -1549,6 +1566,7 @@ func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
 	delete(f, "ScrollToken")
 	delete(f, "Limit")
 	delete(f, "RightFilters")
+	delete(f, "PlayScene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchKTVMusicsRequest has unknown keys!", "")
 	}

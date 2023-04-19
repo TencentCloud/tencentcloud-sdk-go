@@ -1,3 +1,28 @@
+# Release v1.0.642
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 13 次发布
+
+发布时间：2023-04-19 16:26:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVPlaylistDetail](https://cloud.tencent.com/document/api/1592/76189)
+
+	* 新增入参：PlayScene
+
+* [SearchKTVMusics](https://cloud.tencent.com/document/api/1592/76186)
+
+	* 新增入参：PlayScene
+
+
+
+
 # Release v1.0.641
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
