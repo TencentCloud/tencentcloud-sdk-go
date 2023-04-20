@@ -4739,6 +4739,134 @@ func (c *Client) RecognizePhilippinesDrivingLicenseOCRWithContext(ctx context.Co
     return
 }
 
+func NewRecognizePhilippinesSssIDOCRRequest() (request *RecognizePhilippinesSssIDOCRRequest) {
+    request = &RecognizePhilippinesSssIDOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizePhilippinesSssIDOCR")
+    
+    
+    return
+}
+
+func NewRecognizePhilippinesSssIDOCRResponse() (response *RecognizePhilippinesSssIDOCRResponse) {
+    response = &RecognizePhilippinesSssIDOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizePhilippinesSssIDOCR
+// 菲律宾SSSID识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizePhilippinesSssIDOCR(request *RecognizePhilippinesSssIDOCRRequest) (response *RecognizePhilippinesSssIDOCRResponse, err error) {
+    return c.RecognizePhilippinesSssIDOCRWithContext(context.Background(), request)
+}
+
+// RecognizePhilippinesSssIDOCR
+// 菲律宾SSSID识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizePhilippinesSssIDOCRWithContext(ctx context.Context, request *RecognizePhilippinesSssIDOCRRequest) (response *RecognizePhilippinesSssIDOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizePhilippinesSssIDOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizePhilippinesSssIDOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizePhilippinesSssIDOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecognizePhilippinesTinIDOCRRequest() (request *RecognizePhilippinesTinIDOCRRequest) {
+    request = &RecognizePhilippinesTinIDOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizePhilippinesTinIDOCR")
+    
+    
+    return
+}
+
+func NewRecognizePhilippinesTinIDOCRResponse() (response *RecognizePhilippinesTinIDOCRResponse) {
+    response = &RecognizePhilippinesTinIDOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizePhilippinesTinIDOCR
+// 菲律宾TinID识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizePhilippinesTinIDOCR(request *RecognizePhilippinesTinIDOCRRequest) (response *RecognizePhilippinesTinIDOCRResponse, err error) {
+    return c.RecognizePhilippinesTinIDOCRWithContext(context.Background(), request)
+}
+
+// RecognizePhilippinesTinIDOCR
+// 菲律宾TinID识别
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizePhilippinesTinIDOCRWithContext(ctx context.Context, request *RecognizePhilippinesTinIDOCRRequest) (response *RecognizePhilippinesTinIDOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizePhilippinesTinIDOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizePhilippinesTinIDOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizePhilippinesTinIDOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizePhilippinesVoteIDOCRRequest() (request *RecognizePhilippinesVoteIDOCRRequest) {
     request = &RecognizePhilippinesVoteIDOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

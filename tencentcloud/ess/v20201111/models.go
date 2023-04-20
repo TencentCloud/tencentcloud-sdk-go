@@ -2066,7 +2066,7 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	// 手机号码
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 是否需开通自动签
+	// 是否开通自动签，该功能需联系运营工作人员开通后使用
 	EnableAutoSign *bool `json:"EnableAutoSign,omitempty" name:"EnableAutoSign"`
 }
 
@@ -2099,7 +2099,7 @@ type CreatePreparedPersonalEsignRequest struct {
 	// 手机号码
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 是否需开通自动签
+	// 是否开通自动签，该功能需联系运营工作人员开通后使用
 	EnableAutoSign *bool `json:"EnableAutoSign,omitempty" name:"EnableAutoSign"`
 }
 

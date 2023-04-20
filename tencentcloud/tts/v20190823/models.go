@@ -297,6 +297,12 @@ type TextToVoiceRequestParams struct {
 
 	// 断句敏感阈值，默认值为：0，取值范围：[0,1,2]。该值越大越不容易断句，模型会更倾向于仅按照标点符号断句。此参数建议不要随意调整，可能会影响合成效果。
 	SegmentRate *uint64 `json:"SegmentRate,omitempty" name:"SegmentRate"`
+
+	// 控制合成音频的情感，仅支持情绪音色使用。取值: peaceful、exciting、thrill、neutral、sad、angry、cute、fear、poetry、happy、regretful、exciting_strong、aojiao、sajiao、story、raido、call、jieshuo等等；
+	EmotionCategory *string `json:"EmotionCategory,omitempty" name:"EmotionCategory"`
+
+	// 控制合成音频情感程度，取值范围为[50,200],默认为100，不填写为默认值；只有EmotionCategory不为空时生效；
+	EmotionIntensity *int64 `json:"EmotionIntensity,omitempty" name:"EmotionIntensity"`
 }
 
 type TextToVoiceRequest struct {
@@ -342,6 +348,12 @@ type TextToVoiceRequest struct {
 
 	// 断句敏感阈值，默认值为：0，取值范围：[0,1,2]。该值越大越不容易断句，模型会更倾向于仅按照标点符号断句。此参数建议不要随意调整，可能会影响合成效果。
 	SegmentRate *uint64 `json:"SegmentRate,omitempty" name:"SegmentRate"`
+
+	// 控制合成音频的情感，仅支持情绪音色使用。取值: peaceful、exciting、thrill、neutral、sad、angry、cute、fear、poetry、happy、regretful、exciting_strong、aojiao、sajiao、story、raido、call、jieshuo等等；
+	EmotionCategory *string `json:"EmotionCategory,omitempty" name:"EmotionCategory"`
+
+	// 控制合成音频情感程度，取值范围为[50,200],默认为100，不填写为默认值；只有EmotionCategory不为空时生效；
+	EmotionIntensity *int64 `json:"EmotionIntensity,omitempty" name:"EmotionIntensity"`
 }
 
 func (r *TextToVoiceRequest) ToJsonString() string {
@@ -368,6 +380,8 @@ func (r *TextToVoiceRequest) FromJsonString(s string) error {
 	delete(f, "Codec")
 	delete(f, "EnableSubtitle")
 	delete(f, "SegmentRate")
+	delete(f, "EmotionCategory")
+	delete(f, "EmotionIntensity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToVoiceRequest has unknown keys!", "")
 	}

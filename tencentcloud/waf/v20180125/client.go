@@ -97,6 +97,60 @@ func (c *Client) AddCustomRuleWithContext(ctx context.Context, request *AddCusto
     return
 }
 
+func NewAddCustomWhiteRuleRequest() (request *AddCustomWhiteRuleRequest) {
+    request = &AddCustomWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "AddCustomWhiteRule")
+    
+    
+    return
+}
+
+func NewAddCustomWhiteRuleResponse() (response *AddCustomWhiteRuleResponse) {
+    response = &AddCustomWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddCustomWhiteRule
+// 增加精准白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddCustomWhiteRule(request *AddCustomWhiteRuleRequest) (response *AddCustomWhiteRuleResponse, err error) {
+    return c.AddCustomWhiteRuleWithContext(context.Background(), request)
+}
+
+// AddCustomWhiteRule
+// 增加精准白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddCustomWhiteRuleWithContext(ctx context.Context, request *AddCustomWhiteRuleRequest) (response *AddCustomWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewAddCustomWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCustomWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddCustomWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddDomainWhiteRuleRequest() (request *AddDomainWhiteRuleRequest) {
     request = &AddDomainWhiteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -509,6 +563,58 @@ func (c *Client) DeleteAttackDownloadRecordWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteAttackDownloadRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomWhiteRuleRequest() (request *DeleteCustomWhiteRuleRequest) {
+    request = &DeleteCustomWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteCustomWhiteRule")
+    
+    
+    return
+}
+
+func NewDeleteCustomWhiteRuleResponse() (response *DeleteCustomWhiteRuleResponse) {
+    response = &DeleteCustomWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCustomWhiteRule
+// 删除精准白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCustomWhiteRule(request *DeleteCustomWhiteRuleRequest) (response *DeleteCustomWhiteRuleResponse, err error) {
+    return c.DeleteCustomWhiteRuleWithContext(context.Background(), request)
+}
+
+// DeleteCustomWhiteRule
+// 删除精准白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCustomWhiteRuleWithContext(ctx context.Context, request *DeleteCustomWhiteRuleRequest) (response *DeleteCustomWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomWhiteRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2509,6 +2615,58 @@ func (c *Client) ModifyCustomRuleStatusWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewModifyCustomRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomWhiteRuleRequest() (request *ModifyCustomWhiteRuleRequest) {
+    request = &ModifyCustomWhiteRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyCustomWhiteRule")
+    
+    
+    return
+}
+
+func NewModifyCustomWhiteRuleResponse() (response *ModifyCustomWhiteRuleResponse) {
+    response = &ModifyCustomWhiteRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCustomWhiteRule
+// 编辑精准白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCustomWhiteRule(request *ModifyCustomWhiteRuleRequest) (response *ModifyCustomWhiteRuleResponse, err error) {
+    return c.ModifyCustomWhiteRuleWithContext(context.Background(), request)
+}
+
+// ModifyCustomWhiteRule
+// 编辑精准白名单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCustomWhiteRuleWithContext(ctx context.Context, request *ModifyCustomWhiteRuleRequest) (response *ModifyCustomWhiteRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomWhiteRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomWhiteRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomWhiteRuleResponse()
     err = c.Send(request, response)
     return
 }

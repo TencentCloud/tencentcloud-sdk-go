@@ -139,6 +139,11 @@ type ApplicationList struct {
 	AppType *uint64 `json:"AppType,omitempty" name:"AppType"`
 }
 
+type AsrConf struct {
+	// 语音转文本服务开关，取值：open/close
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type AudioTextStatisticsItem struct {
 	// 统计值，单位：秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -320,11 +325,14 @@ type CreateAppResp struct {
 	// 实时语音服务配置数据
 	RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
 
-	// 语音消息及转文本服务配置数据
+	// 语音消息服务配置数据
 	VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
 
 	// 语音分析服务配置数据
 	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
+
+	// 语音转文本服务配置数据
+	AsrConf *AsrConf `json:"AsrConf,omitempty" name:"AsrConf"`
 }
 
 // Predefined struct for user
@@ -2015,7 +2023,7 @@ type RealtimeSpeechConf struct {
 	// 实时语音服务开关，取值：open/close
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 实时语音音质类型，取值：high-高音质
+	// 实时语音音质类型，取值：high-高音质 ordinary-普通音质
 	Quality *string `json:"Quality,omitempty" name:"Quality"`
 }
 
@@ -2216,6 +2224,10 @@ type ScanVoiceResult struct {
 
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type SceneInfo struct {
+
 }
 
 type ServiceStatus struct {
@@ -2589,6 +2601,10 @@ type UserMicStatus struct {
 type VoiceFilterConf struct {
 	// 语音过滤服务开关，取值：open/close
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 场景配置信息，如开关状态，回调地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneInfos []*SceneInfo `json:"SceneInfos,omitempty" name:"SceneInfos"`
 }
 
 type VoiceFilterStatisticsItem struct {

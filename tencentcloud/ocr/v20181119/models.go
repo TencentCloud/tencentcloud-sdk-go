@@ -5997,6 +5997,200 @@ func (r *RecognizePhilippinesDrivingLicenseOCRResponse) FromJsonString(s string)
 }
 
 // Predefined struct for user
+type RecognizePhilippinesSssIDOCRRequestParams struct {
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+type RecognizePhilippinesSssIDOCRRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizePhilippinesSssIDOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizePhilippinesSssIDOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReturnHeadImage")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizePhilippinesSssIDOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizePhilippinesSssIDOCRResponseParams struct {
+	// 人像照片Base64后的结果
+	HeadPortrait *TextDetectionResult `json:"HeadPortrait,omitempty" name:"HeadPortrait"`
+
+	// 编号
+	LicenseNumber *TextDetectionResult `json:"LicenseNumber,omitempty" name:"LicenseNumber"`
+
+	// 姓名
+	FullName *TextDetectionResult `json:"FullName,omitempty" name:"FullName"`
+
+	// 生日
+	Birthday *TextDetectionResult `json:"Birthday,omitempty" name:"Birthday"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RecognizePhilippinesSssIDOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizePhilippinesSssIDOCRResponseParams `json:"Response"`
+}
+
+func (r *RecognizePhilippinesSssIDOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizePhilippinesSssIDOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizePhilippinesTinIDOCRRequestParams struct {
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+type RecognizePhilippinesTinIDOCRRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
+
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
+func (r *RecognizePhilippinesTinIDOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizePhilippinesTinIDOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReturnHeadImage")
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizePhilippinesTinIDOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizePhilippinesTinIDOCRResponseParams struct {
+	// 人像照片Base64后的结果
+	HeadPortrait *TextDetectionResult `json:"HeadPortrait,omitempty" name:"HeadPortrait"`
+
+	// 编码
+	LicenseNumber *TextDetectionResult `json:"LicenseNumber,omitempty" name:"LicenseNumber"`
+
+	// 姓名
+	FullName *TextDetectionResult `json:"FullName,omitempty" name:"FullName"`
+
+	// 地址
+	Address *TextDetectionResult `json:"Address,omitempty" name:"Address"`
+
+	// 生日
+	Birthday *TextDetectionResult `json:"Birthday,omitempty" name:"Birthday"`
+
+	// 发证日期
+	IssueDate *TextDetectionResult `json:"IssueDate,omitempty" name:"IssueDate"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RecognizePhilippinesTinIDOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizePhilippinesTinIDOCRResponseParams `json:"Response"`
+}
+
+func (r *RecognizePhilippinesTinIDOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizePhilippinesTinIDOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RecognizePhilippinesVoteIDOCRRequestParams struct {
 	// 是否返回人像照片。
 	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`

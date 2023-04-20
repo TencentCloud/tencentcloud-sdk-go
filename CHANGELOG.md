@@ -1,3 +1,186 @@
+# Release v1.0.643
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 32 次发布
+
+发布时间：2023-04-20 01:22:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AsrConf](https://cloud.tencent.com/document/api/607/35375#AsrConf)
+* [SceneInfo](https://cloud.tencent.com/document/api/607/35375#SceneInfo)
+
+修改数据结构：
+
+* [CreateAppResp](https://cloud.tencent.com/document/api/607/35375#CreateAppResp)
+
+	* 新增成员：AsrConf
+
+* [VoiceFilterConf](https://cloud.tencent.com/document/api/607/35375#VoiceFilterConf)
+
+	* 新增成员：SceneInfos
+
+
+
+
+## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
+
+### 第 3 次发布
+
+发布时间：2023-04-20 01:23:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDataRepositoryTaskStatus](https://cloud.tencent.com/document/api/1424/86083)
+
+	* 新增出参：FinishedFileNumber, FinishedCapacity
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 46 次发布
+
+发布时间：2023-04-20 01:27:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBlueprint](https://cloud.tencent.com/document/api/1207/54385)
+
+	* 新增入参：ForcePowerOff
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 94 次发布
+
+发布时间：2023-04-20 01:31:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RecognizePhilippinesSssIDOCR](https://cloud.tencent.com/document/api/866/90322)
+* [RecognizePhilippinesTinIDOCR](https://cloud.tencent.com/document/api/866/90321)
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 51 次发布
+
+发布时间：2023-04-20 01:34:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LayerVersionInfo](https://cloud.tencent.com/document/api/583/17244#LayerVersionInfo)
+
+	* 新增成员：Stamp
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 41 次发布
+
+发布时间：2023-04-20 01:41:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RollingUpdateApplicationByVersion](https://cloud.tencent.com/document/api/1371/66371)
+
+	* 新增入参：Force
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 146 次发布
+
+发布时间：2023-04-20 01:46:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VirtualNodeSpec](https://cloud.tencent.com/document/api/457/31866#VirtualNodeSpec)
+
+	* 新增成员：Tags
+
+
+
+
+## 语音合成(tts) 版本：2019-08-23
+
+### 第 10 次发布
+
+发布时间：2023-04-20 01:49:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+
+	* 新增入参：EmotionCategory, EmotionIntensity
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 31 次发布
+
+发布时间：2023-04-20 01:59:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddCustomWhiteRule](https://cloud.tencent.com/document/api/627/90325)
+* [DeleteCustomWhiteRule](https://cloud.tencent.com/document/api/627/90324)
+* [ModifyCustomWhiteRule](https://cloud.tencent.com/document/api/627/90323)
+
+
+
 # Release v1.0.642
 
 ## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27

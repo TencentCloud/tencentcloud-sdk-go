@@ -166,6 +166,12 @@ type DescribeDataRepositoryTaskStatusResponseParams struct {
 	// 任务状态 0(初始化中), 1(运行中), 2(已完成), 3(任务失败)
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
+	// 已完成的文件数量
+	FinishedFileNumber *uint64 `json:"FinishedFileNumber,omitempty" name:"FinishedFileNumber"`
+
+	// 已完成的数据量
+	FinishedCapacity *uint64 `json:"FinishedCapacity,omitempty" name:"FinishedCapacity"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
