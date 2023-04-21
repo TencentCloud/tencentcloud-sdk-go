@@ -91,6 +91,61 @@ func (r *AddUserContactResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AuditLogFile struct {
+	// 审计日志文件生成异步任务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+	// 审计日志文件名称。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 文件状态值。可能返回的值为：
+	// "creating" - 生成中;
+	// "failed" - 创建失败;
+	// "success" - 已生成;
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 文件大小，单位为 KB。
+	FileSize *float64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 审计日志下载地址。
+	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+	// 错误信息。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 文件生成进度。
+	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 文件生成成功时间。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+}
+
+type AuditLogFilter struct {
+	// 客户端地址。
+	Host []*string `json:"Host,omitempty" name:"Host"`
+
+	// 数据库名称。
+	DBName []*string `json:"DBName,omitempty" name:"DBName"`
+
+	// 用户名。
+	User []*string `json:"User,omitempty" name:"User"`
+
+	// 返回行数。表示筛选返回行数大于该值的审计日志。
+	SentRows *int64 `json:"SentRows,omitempty" name:"SentRows"`
+
+	// 影响行数。表示筛选影响行数大于该值的审计日志。
+	AffectRows *int64 `json:"AffectRows,omitempty" name:"AffectRows"`
+
+	// 执行时间。单位为：µs。表示筛选执行时间大于该值的审计日志。
+	ExecTime *int64 `json:"ExecTime,omitempty" name:"ExecTime"`
+}
+
 // Predefined struct for user
 type CancelKillTaskRequestParams struct {
 	// 实例ID。
@@ -164,6 +219,98 @@ type ContactItem struct {
 
 	// 联系人绑定的邮箱。
 	Mail *string `json:"Mail,omitempty" name:"Mail"`
+}
+
+// Predefined struct for user
+type CreateAuditLogFileRequestParams struct {
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2019-09-10 12:13:14”。	
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 截止时间，如“2019-09-11 10:13:14”。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 过滤条件。可按设置的过滤条件过滤日志。
+	Filter *AuditLogFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+type CreateAuditLogFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2019-09-10 12:13:14”。	
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 截止时间，如“2019-09-11 10:13:14”。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 过滤条件。可按设置的过滤条件过滤日志。
+	Filter *AuditLogFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *CreateAuditLogFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditLogFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "NodeRequestType")
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditLogFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditLogFileResponseParams struct {
+	// 审计日志文件下载的任务ID
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAuditLogFileResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAuditLogFileResponseParams `json:"Response"`
+}
+
+func (r *CreateAuditLogFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditLogFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -873,6 +1020,81 @@ func (r *CreateSqlFilterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAuditLogFileRequestParams struct {
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"	
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 审计日志文件生成异步任务ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+}
+
+type DeleteAuditLogFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"	
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 审计日志文件生成异步任务ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+}
+
+func (r *DeleteAuditLogFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditLogFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "NodeRequestType")
+	delete(f, "InstanceId")
+	delete(f, "AsyncRequestId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditLogFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditLogFileResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAuditLogFileResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuditLogFileResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuditLogFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditLogFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDBDiagReportTasksRequestParams struct {
 	// 需要删除的任务id列表
 	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
@@ -1214,6 +1436,96 @@ func (r *DescribeAllUserGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAllUserGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditLogFilesRequestParams struct {
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数目，默认为20，最大为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeAuditLogFilesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数目，默认为20，最大为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAuditLogFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditLogFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "NodeRequestType")
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditLogFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditLogFilesResponseParams struct {
+	// 符合条件的审计日志文件个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 审计日志文件详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*AuditLogFile `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditLogFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditLogFilesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditLogFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

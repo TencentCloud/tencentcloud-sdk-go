@@ -6226,7 +6226,7 @@ func NewRestoreInstanceResponse() (response *RestoreInstanceResponse) {
 }
 
 // RestoreInstance
-// 本接口（RestoreInstance）用于根据备份文件恢复实例。
+// 本接口（RestoreInstance）用于按照备份集回档数据库。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
@@ -6245,7 +6245,7 @@ func (c *Client) RestoreInstance(request *RestoreInstanceRequest) (response *Res
 }
 
 // RestoreInstance
-// 本接口（RestoreInstance）用于根据备份文件恢复实例。
+// 本接口（RestoreInstance）用于按照备份集回档数据库。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
@@ -6294,7 +6294,7 @@ func NewRollbackInstanceResponse() (response *RollbackInstanceResponse) {
 }
 
 // RollbackInstance
-// 本接口（RollbackInstance）用于回档实例
+// 本接口（RollbackInstance）用于按照时间点回档实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -6311,7 +6311,7 @@ func (c *Client) RollbackInstance(request *RollbackInstanceRequest) (response *R
 }
 
 // RollbackInstance
-// 本接口（RollbackInstance）用于回档实例
+// 本接口（RollbackInstance）用于按照时间点回档实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"

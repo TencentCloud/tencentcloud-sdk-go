@@ -468,6 +468,38 @@ type AutoscalingAdded struct {
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 }
 
+type BackupStorageLocation struct {
+	// 备份仓库名称	
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 存储仓库所属地域，比如COS广州(ap-guangzhou)	
+	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+	// 存储服务提供方，默认腾讯云	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Provider *string `json:"Provider,omitempty" name:"Provider"`
+
+	// 对象存储桶名称，如果是COS必须是tke-backup-前缀开头	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 对象存储桶路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 存储仓库状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 详细状态信息	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 最后一次检查时间	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastValidationTime *string `json:"LastValidationTime,omitempty" name:"LastValidationTime"`
+}
+
 type CUDNN struct {
 	// cuDNN的版本
 	Version *string `json:"Version,omitempty" name:"Version"`
@@ -1386,6 +1418,88 @@ type ControllerStatus struct {
 
 	// 控制器是否开启
 	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+}
+
+// Predefined struct for user
+type CreateBackupStorageLocationRequestParams struct {
+	// 存储仓库所属地域，比如COS广州(ap-guangzhou)
+	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+	// 对象存储桶名称，如果是COS必须是tke-backup前缀开头
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 备份仓库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 存储服务提供方，默认腾讯云
+	Provider *string `json:"Provider,omitempty" name:"Provider"`
+
+	// 对象存储桶路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
+type CreateBackupStorageLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 存储仓库所属地域，比如COS广州(ap-guangzhou)
+	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+	// 对象存储桶名称，如果是COS必须是tke-backup前缀开头
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 备份仓库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 存储服务提供方，默认腾讯云
+	Provider *string `json:"Provider,omitempty" name:"Provider"`
+
+	// 对象存储桶路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+}
+
+func (r *CreateBackupStorageLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBackupStorageLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StorageRegion")
+	delete(f, "Bucket")
+	delete(f, "Name")
+	delete(f, "Provider")
+	delete(f, "Path")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupStorageLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBackupStorageLocationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBackupStorageLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBackupStorageLocationResponseParams `json:"Response"`
+}
+
+func (r *CreateBackupStorageLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBackupStorageLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3955,6 +4069,60 @@ type DataDisk struct {
 }
 
 // Predefined struct for user
+type DeleteBackupStorageLocationRequestParams struct {
+	// 备份仓库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type DeleteBackupStorageLocationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 备份仓库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DeleteBackupStorageLocationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackupStorageLocationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBackupStorageLocationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBackupStorageLocationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteBackupStorageLocationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBackupStorageLocationResponseParams `json:"Response"`
+}
+
+func (r *DeleteBackupStorageLocationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackupStorageLocationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteClusterAsGroupsRequestParams struct {
 	// 集群ID，通过[DescribeClusters](https://cloud.tencent.com/document/api/457/31862)接口获取。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -5725,6 +5893,64 @@ func (r *DescribeAvailableTKEEdgeVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAvailableTKEEdgeVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupStorageLocationsRequestParams struct {
+	// 多个备份仓库名称，如果不填写，默认返回当前地域所有存储仓库名称
+	Names []*string `json:"Names,omitempty" name:"Names"`
+}
+
+type DescribeBackupStorageLocationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 多个备份仓库名称，如果不填写，默认返回当前地域所有存储仓库名称
+	Names []*string `json:"Names,omitempty" name:"Names"`
+}
+
+func (r *DescribeBackupStorageLocationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupStorageLocationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Names")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupStorageLocationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupStorageLocationsResponseParams struct {
+	// 详细备份仓库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupStorageLocationSet []*BackupStorageLocation `json:"BackupStorageLocationSet,omitempty" name:"BackupStorageLocationSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupStorageLocationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupStorageLocationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupStorageLocationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupStorageLocationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11636,6 +11862,10 @@ type EdgeCluster struct {
 	// 集群付费模式，支持POSTPAID_BY_HOUR或者PREPAID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 边缘集群组件的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EdgeVersion *string `json:"EdgeVersion,omitempty" name:"EdgeVersion"`
 }
 
 type EdgeClusterAdvancedSettings struct {
@@ -12081,6 +12311,9 @@ type EnableVpcCniNetworkTypeRequestParams struct {
 
 	// 在固定IP模式下，Pod销毁后退还IP的时间，传参必须大于300；不传默认IP永不销毁。
 	ExpiredSeconds *uint64 `json:"ExpiredSeconds,omitempty" name:"ExpiredSeconds"`
+
+	// 是否同步添加 vpc 网段到 ip-masq-agent-config 的 NonMasqueradeCIDRs 字段，默认 false 会同步添加
+	SkipAddingNonMasqueradeCIDRs *bool `json:"SkipAddingNonMasqueradeCIDRs,omitempty" name:"SkipAddingNonMasqueradeCIDRs"`
 }
 
 type EnableVpcCniNetworkTypeRequest struct {
@@ -12100,6 +12333,9 @@ type EnableVpcCniNetworkTypeRequest struct {
 
 	// 在固定IP模式下，Pod销毁后退还IP的时间，传参必须大于300；不传默认IP永不销毁。
 	ExpiredSeconds *uint64 `json:"ExpiredSeconds,omitempty" name:"ExpiredSeconds"`
+
+	// 是否同步添加 vpc 网段到 ip-masq-agent-config 的 NonMasqueradeCIDRs 字段，默认 false 会同步添加
+	SkipAddingNonMasqueradeCIDRs *bool `json:"SkipAddingNonMasqueradeCIDRs,omitempty" name:"SkipAddingNonMasqueradeCIDRs"`
 }
 
 func (r *EnableVpcCniNetworkTypeRequest) ToJsonString() string {
@@ -12119,6 +12355,7 @@ func (r *EnableVpcCniNetworkTypeRequest) FromJsonString(s string) error {
 	delete(f, "EnableStaticIp")
 	delete(f, "Subnets")
 	delete(f, "ExpiredSeconds")
+	delete(f, "SkipAddingNonMasqueradeCIDRs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableVpcCniNetworkTypeRequest has unknown keys!", "")
 	}

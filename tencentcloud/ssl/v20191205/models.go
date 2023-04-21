@@ -1462,6 +1462,80 @@ func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCompaniesRequestParams struct {
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页限制数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 公司ID
+	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+}
+
+type DescribeCompaniesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页每页限制数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 公司ID
+	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+}
+
+func (r *DescribeCompaniesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCompaniesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CompanyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCompaniesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCompaniesResponseParams struct {
+	// 公司列表
+	Companies []*CompanyInfo `json:"Companies,omitempty" name:"Companies"`
+
+	// 公司总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCompaniesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCompaniesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCompaniesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCompaniesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeployedResourcesRequestParams struct {
 	// 证书ID
 	CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`

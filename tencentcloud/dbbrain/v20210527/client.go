@@ -191,6 +191,80 @@ func (c *Client) CancelKillTaskWithContext(ctx context.Context, request *CancelK
     return
 }
 
+func NewCreateAuditLogFileRequest() (request *CreateAuditLogFileRequest) {
+    request = &CreateAuditLogFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateAuditLogFile")
+    
+    
+    return
+}
+
+func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
+    response = &CreateAuditLogFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAuditLogFile
+// 用于创建云数据库实例的审计日志文件，最多下载600w审计日志。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (response *CreateAuditLogFileResponse, err error) {
+    return c.CreateAuditLogFileWithContext(context.Background(), request)
+}
+
+// CreateAuditLogFile
+// 用于创建云数据库实例的审计日志文件，最多下载600w审计日志。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
+func (c *Client) CreateAuditLogFileWithContext(ctx context.Context, request *CreateAuditLogFileRequest) (response *CreateAuditLogFileResponse, err error) {
+    if request == nil {
+        request = NewCreateAuditLogFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuditLogFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAuditLogFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDBDiagReportTaskRequest() (request *CreateDBDiagReportTaskRequest) {
     request = &CreateDBDiagReportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -745,6 +819,78 @@ func (c *Client) CreateSqlFilterWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewDeleteAuditLogFileRequest() (request *DeleteAuditLogFileRequest) {
+    request = &DeleteAuditLogFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DeleteAuditLogFile")
+    
+    
+    return
+}
+
+func NewDeleteAuditLogFileResponse() (response *DeleteAuditLogFileResponse) {
+    response = &DeleteAuditLogFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAuditLogFile
+// 用于删除云数据库实例的审计日志文件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAuditLogFile(request *DeleteAuditLogFileRequest) (response *DeleteAuditLogFileResponse, err error) {
+    return c.DeleteAuditLogFileWithContext(context.Background(), request)
+}
+
+// DeleteAuditLogFile
+// 用于删除云数据库实例的审计日志文件。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAuditLogFileWithContext(ctx context.Context, request *DeleteAuditLogFileRequest) (response *DeleteAuditLogFileResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuditLogFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAuditLogFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAuditLogFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDBDiagReportTasksRequest() (request *DeleteDBDiagReportTasksRequest) {
     request = &DeleteDBDiagReportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1103,6 +1249,78 @@ func (c *Client) DescribeAllUserGroupWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeAllUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditLogFilesRequest() (request *DescribeAuditLogFilesRequest) {
+    request = &DescribeAuditLogFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeAuditLogFiles")
+    
+    
+    return
+}
+
+func NewDescribeAuditLogFilesResponse() (response *DescribeAuditLogFilesResponse) {
+    response = &DescribeAuditLogFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAuditLogFiles
+// 用于创建云数据库实例的审计日志文件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAuditLogFiles(request *DescribeAuditLogFilesRequest) (response *DescribeAuditLogFilesResponse, err error) {
+    return c.DescribeAuditLogFilesWithContext(context.Background(), request)
+}
+
+// DescribeAuditLogFiles
+// 用于创建云数据库实例的审计日志文件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAuditLogFilesWithContext(ctx context.Context, request *DescribeAuditLogFilesRequest) (response *DescribeAuditLogFilesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditLogFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditLogFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditLogFilesResponse()
     err = c.Send(request, response)
     return
 }

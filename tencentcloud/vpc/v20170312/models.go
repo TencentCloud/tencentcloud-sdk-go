@@ -390,6 +390,14 @@ type Address struct {
 	// 弹性公网IP关联的标签列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 到期时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadlineDate *string `json:"DeadlineDate,omitempty" name:"DeadlineDate"`
+
+	// EIP绑定的实例类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type AddressChargePrepaid struct {

@@ -5966,6 +5966,145 @@ func (r *DescribePublishersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePulsarProInstanceDetailRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribePulsarProInstanceDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribePulsarProInstanceDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePulsarProInstanceDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePulsarProInstanceDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePulsarProInstanceDetailResponseParams struct {
+	// 集群信息
+	ClusterInfo *PulsarProClusterInfo `json:"ClusterInfo,omitempty" name:"ClusterInfo"`
+
+	// 集群网络接入点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkAccessPointInfos []*PulsarNetworkAccessPointInfo `json:"NetworkAccessPointInfos,omitempty" name:"NetworkAccessPointInfos"`
+
+	// 集群规格信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterSpecInfo *PulsarProClusterSpecInfo `json:"ClusterSpecInfo,omitempty" name:"ClusterSpecInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePulsarProInstanceDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePulsarProInstanceDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribePulsarProInstanceDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePulsarProInstanceDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePulsarProInstancesRequestParams struct {
+	// 查询条件过滤器
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询数目上限，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribePulsarProInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询条件过滤器
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询数目上限，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribePulsarProInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePulsarProInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePulsarProInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePulsarProInstancesResponseParams struct {
+	// 未分页的总数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 实例信息列表
+	Instances []*PulsarProInstance `json:"Instances,omitempty" name:"Instances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePulsarProInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePulsarProInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribePulsarProInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePulsarProInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRabbitMQNodeListRequestParams struct {
 	// rabbitmq集群ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -8955,6 +9094,130 @@ type Publisher struct {
 	// 生产者连接的主题分区号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+}
+
+type PulsarNetworkAccessPointInfo struct {
+	// vpc的id，支撑网和公网接入点，该字段为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id，支撑网和公网接入点，该字段为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 接入地址
+	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 接入点类型：
+	// 0：支撑网接入点 
+	// 1：VPC接入点 
+	// 2：公网接入点
+	RouteType *uint64 `json:"RouteType,omitempty" name:"RouteType"`
+}
+
+type PulsarProClusterInfo struct {
+	// 集群Id。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 说明信息。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 集群状态，0:创建中，1:正常，2:隔离
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 集群版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 节点分布情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeDistribution []*InstanceNodeDistribution `json:"NodeDistribution,omitempty" name:"NodeDistribution"`
+
+	// 最大储存容量，单位：MB
+	MaxStorage *uint64 `json:"MaxStorage,omitempty" name:"MaxStorage"`
+}
+
+type PulsarProClusterSpecInfo struct {
+	// 集群规格名称
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 峰值tps
+	MaxTps *uint64 `json:"MaxTps,omitempty" name:"MaxTps"`
+
+	// 峰值带宽。单位：mbps
+	MaxBandWidth *uint64 `json:"MaxBandWidth,omitempty" name:"MaxBandWidth"`
+
+	// 最大命名空间个数
+	MaxNamespaces *uint64 `json:"MaxNamespaces,omitempty" name:"MaxNamespaces"`
+
+	// 最大主题分区数
+	MaxTopics *uint64 `json:"MaxTopics,omitempty" name:"MaxTopics"`
+
+	// 规格外弹性TPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalableTps *uint64 `json:"ScalableTps,omitempty" name:"ScalableTps"`
+}
+
+type PulsarProInstance struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例版本
+	InstanceVersion *string `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
+
+	// 实例状态，0-创建中，1-正常，2-隔离中，3-已销毁，4 - 异常, 5 - 发货失败，6-变配中，7-变配失败
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例配置规格名称
+	ConfigDisplay *string `json:"ConfigDisplay,omitempty" name:"ConfigDisplay"`
+
+	// 峰值TPS
+	MaxTps *uint64 `json:"MaxTps,omitempty" name:"MaxTps"`
+
+	// 存储容量，GB为单位
+	MaxStorage *uint64 `json:"MaxStorage,omitempty" name:"MaxStorage"`
+
+	// 实例到期时间，毫秒为单位
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 0-后付费，1-预付费
+	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 实例配置ID
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 规格外弹性TPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScalableTps *uint64 `json:"ScalableTps,omitempty" name:"ScalableTps"`
+
+	// VPC的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 峰值带宽。单位：mbps
+	MaxBandWidth *uint64 `json:"MaxBandWidth,omitempty" name:"MaxBandWidth"`
 }
 
 type QueueQuota struct {

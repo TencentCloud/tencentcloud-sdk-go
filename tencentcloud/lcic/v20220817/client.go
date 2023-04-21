@@ -539,6 +539,68 @@ func (c *Client) BatchDeleteRecordWithContext(ctx context.Context, request *Batc
     return
 }
 
+func NewBatchDescribeDocumentRequest() (request *BatchDescribeDocumentRequest) {
+    request = &BatchDescribeDocumentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "BatchDescribeDocument")
+    
+    
+    return
+}
+
+func NewBatchDescribeDocumentResponse() (response *BatchDescribeDocumentResponse) {
+    response = &BatchDescribeDocumentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchDescribeDocument
+// 批量获取文档详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchDescribeDocument(request *BatchDescribeDocumentRequest) (response *BatchDescribeDocumentResponse, err error) {
+    return c.BatchDescribeDocumentWithContext(context.Background(), request)
+}
+
+// BatchDescribeDocument
+// 批量获取文档详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) BatchDescribeDocumentWithContext(ctx context.Context, request *BatchDescribeDocumentRequest) (response *BatchDescribeDocumentResponse, err error) {
+    if request == nil {
+        request = NewBatchDescribeDocumentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDescribeDocument require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDescribeDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchRegisterRequest() (request *BatchRegisterRequest) {
     request = &BatchRegisterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1708,7 +1770,11 @@ func NewDescribeDocumentsResponse() (response *DescribeDocumentsResponse) {
 }
 
 // DescribeDocuments
-// 批量获取文档信息
+// 有新接口替换
+//
+// 
+//
+// 批量获取文档信息（已废弃，替代接口BatchDescribeDocument）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1718,7 +1784,11 @@ func (c *Client) DescribeDocuments(request *DescribeDocumentsRequest) (response 
 }
 
 // DescribeDocuments
-// 批量获取文档信息
+// 有新接口替换
+//
+// 
+//
+// 批量获取文档信息（已废弃，替代接口BatchDescribeDocument）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3404,7 +3474,7 @@ func NewStartRoomResponse() (response *StartRoomResponse) {
 }
 
 // StartRoom
-// 开始房间的直播
+// 开始房间的直播。 说明：开始房间接口调用之前需要有用户进入课堂初始化课堂信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3426,7 +3496,7 @@ func (c *Client) StartRoom(request *StartRoomRequest) (response *StartRoomRespon
 }
 
 // StartRoom
-// 开始房间的直播
+// 开始房间的直播。 说明：开始房间接口调用之前需要有用户进入课堂初始化课堂信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

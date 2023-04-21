@@ -249,10 +249,10 @@ type BGPIPInstance struct {
 	// "isolate"：回收隔离中
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 购买时间
+	// 到期时间
 	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
-	// 到期时间
+	// 购买时间
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
 	// 资产实例的名称
@@ -448,6 +448,10 @@ type BGPInstance struct {
 
 	// 赠送的业务带宽
 	GiftServiceBandWidth *int64 `json:"GiftServiceBandWidth,omitempty" name:"GiftServiceBandWidth"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 }
 
 type BGPInstanceSpecification struct {
@@ -3519,6 +3523,11 @@ type DescribeBizTrendRequestParams struct {
 
 	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
 	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo"`
+
+	// 业务类型可取值domain, port
+	// port：端口业务
+	// domain：域名业务
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 }
 
 type DescribeBizTrendRequest struct {
@@ -3550,6 +3559,11 @@ type DescribeBizTrendRequest struct {
 
 	// 协议及端口列表，协议可取值TCP, UDP, HTTP, HTTPS，仅统计纬度为连接数时有效
 	ProtoInfo []*ProtocolPort `json:"ProtoInfo,omitempty" name:"ProtoInfo"`
+
+	// 业务类型可取值domain, port
+	// port：端口业务
+	// domain：域名业务
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 }
 
 func (r *DescribeBizTrendRequest) ToJsonString() string {
@@ -3573,6 +3587,7 @@ func (r *DescribeBizTrendRequest) FromJsonString(s string) error {
 	delete(f, "MetricName")
 	delete(f, "Domain")
 	delete(f, "ProtoInfo")
+	delete(f, "BusinessType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBizTrendRequest has unknown keys!", "")
 	}
@@ -3586,6 +3601,10 @@ type DescribeBizTrendResponseParams struct {
 
 	// 统计纬度
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 返回DataList中的最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxData *uint64 `json:"MaxData,omitempty" name:"MaxData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5094,6 +5113,9 @@ type DescribeListBGPInstancesRequestParams struct {
 
 	// 默认false；接口传true，返回数据中不包含高级信息，高级信息包含：InstanceList[0].Usage。
 	ExcludeAdvancedInfo *bool `json:"ExcludeAdvancedInfo,omitempty" name:"ExcludeAdvancedInfo"`
+
+	// 资产IP数组
+	FilterAssetIpList []*string `json:"FilterAssetIpList,omitempty" name:"FilterAssetIpList"`
 }
 
 type DescribeListBGPInstancesRequest struct {
@@ -5149,6 +5171,9 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 默认false；接口传true，返回数据中不包含高级信息，高级信息包含：InstanceList[0].Usage。
 	ExcludeAdvancedInfo *bool `json:"ExcludeAdvancedInfo,omitempty" name:"ExcludeAdvancedInfo"`
+
+	// 资产IP数组
+	FilterAssetIpList []*string `json:"FilterAssetIpList,omitempty" name:"FilterAssetIpList"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -5180,6 +5205,7 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterTrialFlag")
 	delete(f, "FilterConvoy")
 	delete(f, "ExcludeAdvancedInfo")
+	delete(f, "FilterAssetIpList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}
@@ -6044,6 +6070,9 @@ type DescribeListSchedulingDomainRequestParams struct {
 
 	// 调度域名搜索
 	FilterDomain *string `json:"FilterDomain,omitempty" name:"FilterDomain"`
+
+	// 运行状态 0 代表未运行  1 正在运行  2 运行异常 
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type DescribeListSchedulingDomainRequest struct {
@@ -6057,6 +6086,9 @@ type DescribeListSchedulingDomainRequest struct {
 
 	// 调度域名搜索
 	FilterDomain *string `json:"FilterDomain,omitempty" name:"FilterDomain"`
+
+	// 运行状态 0 代表未运行  1 正在运行  2 运行异常 
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 func (r *DescribeListSchedulingDomainRequest) ToJsonString() string {
@@ -6074,6 +6106,7 @@ func (r *DescribeListSchedulingDomainRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "FilterDomain")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListSchedulingDomainRequest has unknown keys!", "")
 	}
@@ -6470,9 +6503,6 @@ func (r *DescribeOverviewAttackTrendResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOverviewCCTrendRequestParams struct {
-	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
-	Business *string `json:"Business,omitempty" name:"Business"`
-
 	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
@@ -6484,6 +6514,9 @@ type DescribeOverviewCCTrendRequestParams struct {
 
 	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源的IP
 	IpList []*string `json:"IpList,omitempty" name:"IpList"`
@@ -6495,9 +6528,6 @@ type DescribeOverviewCCTrendRequestParams struct {
 type DescribeOverviewCCTrendRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
-	Business *string `json:"Business,omitempty" name:"Business"`
-
 	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
@@ -6509,6 +6539,9 @@ type DescribeOverviewCCTrendRequest struct {
 
 	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源的IP
 	IpList []*string `json:"IpList,omitempty" name:"IpList"`
@@ -6529,11 +6562,11 @@ func (r *DescribeOverviewCCTrendRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Business")
 	delete(f, "Period")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "MetricName")
+	delete(f, "Business")
 	delete(f, "IpList")
 	delete(f, "Id")
 	if len(f) > 0 {
@@ -6660,9 +6693,6 @@ func (r *DescribeOverviewDDoSEventListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOverviewDDoSTrendRequestParams struct {
-	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
-	Business *string `json:"Business,omitempty" name:"Business"`
-
 	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
@@ -6674,6 +6704,9 @@ type DescribeOverviewDDoSTrendRequestParams struct {
 
 	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源实例的IP列表
 	IpList []*string `json:"IpList,omitempty" name:"IpList"`
@@ -6685,9 +6718,6 @@ type DescribeOverviewDDoSTrendRequestParams struct {
 type DescribeOverviewDDoSTrendRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
-	Business *string `json:"Business,omitempty" name:"Business"`
-
 	// 统计粒度，取值[300(5分钟)，3600(小时)，86400(天)]
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
@@ -6699,6 +6729,9 @@ type DescribeOverviewDDoSTrendRequest struct {
 
 	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
+	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源实例的IP列表
 	IpList []*string `json:"IpList,omitempty" name:"IpList"`
@@ -6719,11 +6752,11 @@ func (r *DescribeOverviewDDoSTrendRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Business")
 	delete(f, "Period")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "MetricName")
+	delete(f, "Business")
 	delete(f, "IpList")
 	delete(f, "Id")
 	if len(f) > 0 {
@@ -7033,6 +7066,10 @@ type EipProductInfo struct {
 
 	// IP所属的云产品实例ID，例如是弹性网卡的IP，InstanceId为弹性网卡的ID(eni-*); 如果是托管IP没有对应的资源实例ID,InstanceId为""
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 域名化资产对应的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 type ForwardListener struct {
@@ -7113,6 +7150,10 @@ type IPLineInfo struct {
 
 	// 资源flag，0：高防包资源，1：高防IP资源，2：非高防资源IP
 	ResourceFlag *int64 `json:"ResourceFlag,omitempty" name:"ResourceFlag"`
+
+	// 域名化资产对应的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 type InsL7Rules struct {

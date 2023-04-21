@@ -249,7 +249,7 @@ type CreatePictureRequestParams struct {
 	// 应用id
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 图片内容经base64编码后的string格式
+	// 图片内容经base64编码后的string格式,最大长度为2M
 	Content *string `json:"Content,omitempty" name:"Content"`
 
 	// 图片后缀名
@@ -274,7 +274,7 @@ type CreatePictureRequest struct {
 	// 应用id
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 图片内容经base64编码后的string格式
+	// 图片内容经base64编码后的string格式,最大长度为2M
 	Content *string `json:"Content,omitempty" name:"Content"`
 
 	// 图片后缀名

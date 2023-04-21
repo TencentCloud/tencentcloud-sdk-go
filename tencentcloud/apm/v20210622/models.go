@@ -185,6 +185,14 @@ type ApmInstanceDetail struct {
 	// 该实例已上报的总应用数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// CLS日志集 | ES集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSet *string `json:"LogSet,omitempty" name:"LogSet"`
+
+	// Metric数据保存时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricDuration *int64 `json:"MetricDuration,omitempty" name:"MetricDuration"`
 }
 
 type ApmMetricRecord struct {

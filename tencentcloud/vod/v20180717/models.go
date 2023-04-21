@@ -11169,12 +11169,23 @@ type DomainDetailInfo struct {
 	// 域名添加到腾讯云点播系统中的时间。
 	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 域名 QUIC 配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QUICConfig *DomainQUICConfig `json:"QUICConfig,omitempty" name:"QUICConfig"`
 }
 
 type DomainHTTPSConfig struct {
 	// 证书过期时间。
 	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F)。</li>
 	CertExpireTime *string `json:"CertExpireTime,omitempty" name:"CertExpireTime"`
+}
+
+type DomainQUICConfig struct {
+	// QUIC 配置状态，可选值：
+	// <li>Enabled: 启用；</li>
+	// <li>Disabled: 禁用。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type DrmStreamingsInfo struct {
@@ -16404,6 +16415,9 @@ type ModifyVodDomainConfigRequestParams struct {
 
 	// [Key 防盗链](/document/product/266/14047)规则。
 	UrlSignatureAuthPolicy *UrlSignatureAuthPolicy `json:"UrlSignatureAuthPolicy,omitempty" name:"UrlSignatureAuthPolicy"`
+
+	// QUIC 配置。
+	QUICConfig *DomainQUICConfig `json:"QUICConfig,omitempty" name:"QUICConfig"`
 }
 
 type ModifyVodDomainConfigRequest struct {
@@ -16420,6 +16434,9 @@ type ModifyVodDomainConfigRequest struct {
 
 	// [Key 防盗链](/document/product/266/14047)规则。
 	UrlSignatureAuthPolicy *UrlSignatureAuthPolicy `json:"UrlSignatureAuthPolicy,omitempty" name:"UrlSignatureAuthPolicy"`
+
+	// QUIC 配置。
+	QUICConfig *DomainQUICConfig `json:"QUICConfig,omitempty" name:"QUICConfig"`
 }
 
 func (r *ModifyVodDomainConfigRequest) ToJsonString() string {
@@ -16438,6 +16455,7 @@ func (r *ModifyVodDomainConfigRequest) FromJsonString(s string) error {
 	delete(f, "SubAppId")
 	delete(f, "RefererAuthPolicy")
 	delete(f, "UrlSignatureAuthPolicy")
+	delete(f, "QUICConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVodDomainConfigRequest has unknown keys!", "")
 	}
@@ -19159,8 +19177,17 @@ type RemoveWaterMarkTaskInput struct {
 }
 
 type RemoveWaterMarkTaskOutput struct {
-	// 视频 ID。
+	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 文件类型，例如 mp4、mp3 等。
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 媒体文件播放地址。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 文件名称，最长 64 个字符。
+	MediaName *string `json:"MediaName,omitempty" name:"MediaName"`
 
 	// 元信息。包括大小、时长、视频流信息、音频流信息等。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`

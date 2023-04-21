@@ -234,19 +234,24 @@ type CreateAppRequestParams struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 需要支持的引擎列表，默认全选。
+	// 取值：android/ios/unity/cocos/unreal/windows
 	EngineList []*string `json:"EngineList,omitempty" name:"EngineList"`
 
 	// 服务区域列表，默认全选。
+	// 取值：mainland-大陆地区，hmt-港澳台，sea-东南亚，na-北美，eu-欧洲，jpkr-日韩亚太，sa-南美，oc-澳洲，me-中东
 	RegionList []*string `json:"RegionList,omitempty" name:"RegionList"`
 
 	// 实时语音服务配置数据
 	RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
 
-	// 语音消息及转文本服务配置数据
+	// 语音消息服务配置数据
 	VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
 
 	// 语音分析服务配置数据
 	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
+
+	// 语音转文本配置数据
+	AsrConf *AsrConf `json:"AsrConf,omitempty" name:"AsrConf"`
 
 	// 需要添加的标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
@@ -262,19 +267,24 @@ type CreateAppRequest struct {
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 需要支持的引擎列表，默认全选。
+	// 取值：android/ios/unity/cocos/unreal/windows
 	EngineList []*string `json:"EngineList,omitempty" name:"EngineList"`
 
 	// 服务区域列表，默认全选。
+	// 取值：mainland-大陆地区，hmt-港澳台，sea-东南亚，na-北美，eu-欧洲，jpkr-日韩亚太，sa-南美，oc-澳洲，me-中东
 	RegionList []*string `json:"RegionList,omitempty" name:"RegionList"`
 
 	// 实时语音服务配置数据
 	RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
 
-	// 语音消息及转文本服务配置数据
+	// 语音消息服务配置数据
 	VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
 
 	// 语音分析服务配置数据
 	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
+
+	// 语音转文本配置数据
+	AsrConf *AsrConf `json:"AsrConf,omitempty" name:"AsrConf"`
 
 	// 需要添加的标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
@@ -299,6 +309,7 @@ func (r *CreateAppRequest) FromJsonString(s string) error {
 	delete(f, "RealtimeSpeechConf")
 	delete(f, "VoiceMessageConf")
 	delete(f, "VoiceFilterConf")
+	delete(f, "AsrConf")
 	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAppRequest has unknown keys!", "")

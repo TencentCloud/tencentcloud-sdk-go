@@ -73,4 +73,7 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
+	// 该时间范围内的审计日志已下载
+	UNSUPPORTEDOPERATION_HASDUPLICATEDTASK = "UnsupportedOperation.HasDuplicatedTask"
 )

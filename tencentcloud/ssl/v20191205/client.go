@@ -861,6 +861,58 @@ func (c *Client) DescribeCertificatesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeCompaniesRequest() (request *DescribeCompaniesRequest) {
+    request = &DescribeCompaniesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeCompanies")
+    
+    
+    return
+}
+
+func NewDescribeCompaniesResponse() (response *DescribeCompaniesResponse) {
+    response = &DescribeCompaniesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCompanies
+// 查询公司列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeCompanies(request *DescribeCompaniesRequest) (response *DescribeCompaniesResponse, err error) {
+    return c.DescribeCompaniesWithContext(context.Background(), request)
+}
+
+// DescribeCompanies
+// 查询公司列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeCompaniesWithContext(ctx context.Context, request *DescribeCompaniesRequest) (response *DescribeCompaniesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCompaniesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCompanies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCompaniesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeployedResourcesRequest() (request *DescribeDeployedResourcesRequest) {
     request = &DescribeDeployedResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},

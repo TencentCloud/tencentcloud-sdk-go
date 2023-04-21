@@ -477,6 +477,109 @@ func (r *BatchDeleteRecordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BatchDescribeDocumentRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页查询当前页数，从1开始递增
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
+	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+
+	// 课件所有者的user_id，不填默认获取SdkAppId下所有课件
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 课件名称搜索词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 课件id列表，从列表中查询，忽略错误的id
+	DocumentId []*string `json:"DocumentId,omitempty" name:"DocumentId"`
+}
+
+type BatchDescribeDocumentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页查询当前页数，从1开始递增
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，最大1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
+	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+
+	// 课件所有者的user_id，不填默认获取SdkAppId下所有课件
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 课件名称搜索词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 课件id列表，从列表中查询，忽略错误的id
+	DocumentId []*string `json:"DocumentId,omitempty" name:"DocumentId"`
+}
+
+func (r *BatchDescribeDocumentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDescribeDocumentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	delete(f, "Permission")
+	delete(f, "Owner")
+	delete(f, "Keyword")
+	delete(f, "DocumentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDescribeDocumentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDescribeDocumentResponseParams struct {
+	// 符合查询条件文档总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 文档信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Documents []*DocumentInfo `json:"Documents,omitempty" name:"Documents"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchDescribeDocumentResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDescribeDocumentResponseParams `json:"Response"`
+}
+
+func (r *BatchDescribeDocumentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDescribeDocumentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchRegisterRequestParams struct {
 	// 批量注册用户信息列表
 	Users []*BatchUserRequest `json:"Users,omitempty" name:"Users"`

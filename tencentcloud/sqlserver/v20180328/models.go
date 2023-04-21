@@ -2160,6 +2160,14 @@ type DBInstance struct {
 	// 备可用区信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZones *SlaveZones `json:"SlaveZones,omitempty" name:"SlaveZones"`
+
+	// 架构标识，SINGLE-单节点 DOUBLE-双节点 TRIPLE-三节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Architecture *string `json:"Architecture,omitempty" name:"Architecture"`
+
+	// 类型标识，EXCLUSIVE-独享型，SHARED-共享型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Style *string `json:"Style,omitempty" name:"Style"`
 }
 
 type DBPrivilege struct {
@@ -9121,7 +9129,13 @@ type RestoreInstanceRequestParams struct {
 	// 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。
 	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore"`
 
-	// 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
+	// 回档类型，0-覆盖方式；1-重命名方式，默认1
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 需要覆盖回档的数据库，只有覆盖回档时必填
+	DBList []*string `json:"DBList,omitempty" name:"DBList"`
+
+	// 备份任务组ID，在单库备份文件模式下
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
@@ -9140,7 +9154,13 @@ type RestoreInstanceRequest struct {
 	// 按照ReNameRestoreDatabase中的库进行恢复，并重命名，不填则按照默认方式命名恢复的库，且恢复所有的库。
 	RenameRestore []*RenameRestoreDatabase `json:"RenameRestore,omitempty" name:"RenameRestore"`
 
-	// 备份任务组ID，在单库备份文件模式下，可通过[DescribeBackups](https://cloud.tencent.com/document/product/238/19943) 接口获得。
+	// 回档类型，0-覆盖方式；1-重命名方式，默认1
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 需要覆盖回档的数据库，只有覆盖回档时必填
+	DBList []*string `json:"DBList,omitempty" name:"DBList"`
+
+	// 备份任务组ID，在单库备份文件模式下
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
@@ -9160,6 +9180,8 @@ func (r *RestoreInstanceRequest) FromJsonString(s string) error {
 	delete(f, "BackupId")
 	delete(f, "TargetInstanceId")
 	delete(f, "RenameRestore")
+	delete(f, "Type")
+	delete(f, "DBList")
 	delete(f, "GroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreInstanceRequest has unknown keys!", "")
@@ -9200,11 +9222,11 @@ type RollbackInstanceRequestParams struct {
 	// 回档类型，0-回档的数据库覆盖原库；1-回档的数据库以重命名的形式生成，不覆盖原库
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
-	// 需要回档的数据库
-	DBs []*string `json:"DBs,omitempty" name:"DBs"`
-
 	// 回档目标时间点
 	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 需要回档的数据库
+	DBs []*string `json:"DBs,omitempty" name:"DBs"`
 
 	// 备份恢复到的同一个APPID下的实例ID，不填则恢复到原实例ID
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" name:"TargetInstanceId"`
@@ -9222,11 +9244,11 @@ type RollbackInstanceRequest struct {
 	// 回档类型，0-回档的数据库覆盖原库；1-回档的数据库以重命名的形式生成，不覆盖原库
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
-	// 需要回档的数据库
-	DBs []*string `json:"DBs,omitempty" name:"DBs"`
-
 	// 回档目标时间点
 	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 需要回档的数据库
+	DBs []*string `json:"DBs,omitempty" name:"DBs"`
 
 	// 备份恢复到的同一个APPID下的实例ID，不填则恢复到原实例ID
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" name:"TargetInstanceId"`
@@ -9249,8 +9271,8 @@ func (r *RollbackInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Type")
-	delete(f, "DBs")
 	delete(f, "Time")
+	delete(f, "DBs")
 	delete(f, "TargetInstanceId")
 	delete(f, "RenameRestore")
 	if len(f) > 0 {

@@ -3981,6 +3981,118 @@ func (c *Client) DescribePublishersWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribePulsarProInstanceDetailRequest() (request *DescribePulsarProInstanceDetailRequest) {
+    request = &DescribePulsarProInstanceDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribePulsarProInstanceDetail")
+    
+    
+    return
+}
+
+func NewDescribePulsarProInstanceDetailResponse() (response *DescribePulsarProInstanceDetailResponse) {
+    response = &DescribePulsarProInstanceDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePulsarProInstanceDetail
+// 获取Pulsar专业版集群实例信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribePulsarProInstanceDetail(request *DescribePulsarProInstanceDetailRequest) (response *DescribePulsarProInstanceDetailResponse, err error) {
+    return c.DescribePulsarProInstanceDetailWithContext(context.Background(), request)
+}
+
+// DescribePulsarProInstanceDetail
+// 获取Pulsar专业版集群实例信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribePulsarProInstanceDetailWithContext(ctx context.Context, request *DescribePulsarProInstanceDetailRequest) (response *DescribePulsarProInstanceDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribePulsarProInstanceDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePulsarProInstanceDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePulsarProInstanceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePulsarProInstancesRequest() (request *DescribePulsarProInstancesRequest) {
+    request = &DescribePulsarProInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribePulsarProInstances")
+    
+    
+    return
+}
+
+func NewDescribePulsarProInstancesResponse() (response *DescribePulsarProInstancesResponse) {
+    response = &DescribePulsarProInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePulsarProInstances
+// 查询用户已购的Pulsar专业版实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribePulsarProInstances(request *DescribePulsarProInstancesRequest) (response *DescribePulsarProInstancesResponse, err error) {
+    return c.DescribePulsarProInstancesWithContext(context.Background(), request)
+}
+
+// DescribePulsarProInstances
+// 查询用户已购的Pulsar专业版实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribePulsarProInstancesWithContext(ctx context.Context, request *DescribePulsarProInstancesRequest) (response *DescribePulsarProInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribePulsarProInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePulsarProInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePulsarProInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRabbitMQNodeListRequest() (request *DescribeRabbitMQNodeListRequest) {
     request = &DescribeRabbitMQNodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
