@@ -2131,6 +2131,54 @@ func (c *Client) DescribeAvailableRecoveryTimeWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeBackupDownloadRestrictionRequest() (request *DescribeBackupDownloadRestrictionRequest) {
+    request = &DescribeBackupDownloadRestrictionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeBackupDownloadRestriction")
+    
+    
+    return
+}
+
+func NewDescribeBackupDownloadRestrictionResponse() (response *DescribeBackupDownloadRestrictionResponse) {
+    response = &DescribeBackupDownloadRestrictionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackupDownloadRestriction
+// 本接口（DescribeBackupDownloadRestriction）用于查询备份文件下载限制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+func (c *Client) DescribeBackupDownloadRestriction(request *DescribeBackupDownloadRestrictionRequest) (response *DescribeBackupDownloadRestrictionResponse, err error) {
+    return c.DescribeBackupDownloadRestrictionWithContext(context.Background(), request)
+}
+
+// DescribeBackupDownloadRestriction
+// 本接口（DescribeBackupDownloadRestriction）用于查询备份文件下载限制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+func (c *Client) DescribeBackupDownloadRestrictionWithContext(ctx context.Context, request *DescribeBackupDownloadRestrictionRequest) (response *DescribeBackupDownloadRestrictionResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupDownloadRestrictionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupDownloadRestriction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupDownloadRestrictionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupDownloadURLRequest() (request *DescribeBackupDownloadURLRequest) {
     request = &DescribeBackupDownloadURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5053,6 +5101,62 @@ func (c *Client) ModifyAccountRemarkWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyBackupDownloadRestrictionRequest() (request *ModifyBackupDownloadRestrictionRequest) {
+    request = &ModifyBackupDownloadRestrictionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyBackupDownloadRestriction")
+    
+    
+    return
+}
+
+func NewModifyBackupDownloadRestrictionResponse() (response *ModifyBackupDownloadRestrictionResponse) {
+    response = &ModifyBackupDownloadRestrictionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBackupDownloadRestriction
+// 本接口（ModifyBackupDownloadRestriction）用于修改备份文件下载限制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETER_VPCNOTFOUNDERROR = "InvalidParameter.VpcNotFoundError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) ModifyBackupDownloadRestriction(request *ModifyBackupDownloadRestrictionRequest) (response *ModifyBackupDownloadRestrictionResponse, err error) {
+    return c.ModifyBackupDownloadRestrictionWithContext(context.Background(), request)
+}
+
+// ModifyBackupDownloadRestriction
+// 本接口（ModifyBackupDownloadRestriction）用于修改备份文件下载限制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETER_VPCNOTFOUNDERROR = "InvalidParameter.VpcNotFoundError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) ModifyBackupDownloadRestrictionWithContext(ctx context.Context, request *ModifyBackupDownloadRestrictionRequest) (response *ModifyBackupDownloadRestrictionResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupDownloadRestrictionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBackupDownloadRestriction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBackupDownloadRestrictionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyBackupPlanRequest() (request *ModifyBackupPlanRequest) {
     request = &ModifyBackupPlanRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5165,6 +5269,64 @@ func (c *Client) ModifyBaseBackupExpireTimeWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyBaseBackupExpireTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDBInstanceChargeTypeRequest() (request *ModifyDBInstanceChargeTypeRequest) {
+    request = &ModifyDBInstanceChargeTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceChargeType")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceChargeTypeResponse() (response *ModifyDBInstanceChargeTypeResponse) {
+    response = &ModifyDBInstanceChargeTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDBInstanceChargeType
+// 支持实例的计费类型转换（目前仅支持按量计费转包年包月）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+func (c *Client) ModifyDBInstanceChargeType(request *ModifyDBInstanceChargeTypeRequest) (response *ModifyDBInstanceChargeTypeResponse, err error) {
+    return c.ModifyDBInstanceChargeTypeWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceChargeType
+// 支持实例的计费类型转换（目前仅支持按量计费转包年包月）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+func (c *Client) ModifyDBInstanceChargeTypeWithContext(ctx context.Context, request *ModifyDBInstanceChargeTypeRequest) (response *ModifyDBInstanceChargeTypeResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceChargeTypeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceChargeType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceChargeTypeResponse()
     err = c.Send(request, response)
     return
 }

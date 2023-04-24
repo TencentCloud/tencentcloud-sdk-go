@@ -457,6 +457,15 @@ type AuditLogFilter struct {
 
 	// 事务持续时间，格式为M-N，例如：10-200
 	TransactionLivingTimeSection *string `json:"TransactionLivingTimeSection,omitempty" name:"TransactionLivingTimeSection"`
+
+	// 线程ID
+	ThreadId []*string `json:"ThreadId,omitempty" name:"ThreadId"`
+
+	// 返回行数。表示筛选返回行数大于该值的审计日志。
+	SentRows *int64 `json:"SentRows,omitempty" name:"SentRows"`
+
+	// mysql错误码
+	ErrCode []*int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 }
 
 type AuditPolicy struct {
@@ -518,6 +527,12 @@ type AuditRule struct {
 
 	// 是否开启全审计。
 	AuditAll *bool `json:"AuditAll,omitempty" name:"AuditAll"`
+}
+
+type AuditRuleFilters struct {
+	// 单条审计规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleFilters []*RuleFilters `json:"RuleFilters,omitempty" name:"RuleFilters"`
 }
 
 type BackupConfig struct {
@@ -1894,7 +1909,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
 	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 
-	// 主实例的可用区信息，购买灾备、RO实例时必填。
+	// 主实例地域信息，购买灾备、RO实例时，该字段必填。
 	MasterRegion *string `json:"MasterRegion,omitempty" name:"MasterRegion"`
 
 	// 自定义端口，端口支持范围：[ 1024-65535 ] 。
@@ -2009,7 +2024,7 @@ type CreateDBInstanceHourRequest struct {
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
 	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 
-	// 主实例的可用区信息，购买灾备、RO实例时必填。
+	// 主实例地域信息，购买灾备、RO实例时，该字段必填。
 	MasterRegion *string `json:"MasterRegion,omitempty" name:"MasterRegion"`
 
 	// 自定义端口，端口支持范围：[ 1024-65535 ] 。
@@ -11052,6 +11067,7 @@ type OpenAuditServiceRequestParams struct {
 	// 审计日志保存时长。支持值包括：
 	// 7 - 一周
 	// 30 - 一个月；
+	// 90 - 三个月；
 	// 180 - 六个月；
 	// 365 - 一年；
 	// 1095 - 三年；
@@ -11061,11 +11077,13 @@ type OpenAuditServiceRequestParams struct {
 	// 高频审计日志保存时长。支持值包括：
 	// 7 - 一周
 	// 30 - 一个月；
-	// 180 - 六个月；
-	// 365 - 一年；
-	// 1095 - 三年；
-	// 1825 - 五年；
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitempty" name:"HighLogExpireDay"`
+
+	// 审计规则。同RuleTemplateIds都不填是全审计。
+	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitempty" name:"AuditRuleFilters"`
+
+	// 规则模版ID。同AuditRuleFilters都不填是全审计。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitempty" name:"RuleTemplateIds"`
 }
 
 type OpenAuditServiceRequest struct {
@@ -11077,6 +11095,7 @@ type OpenAuditServiceRequest struct {
 	// 审计日志保存时长。支持值包括：
 	// 7 - 一周
 	// 30 - 一个月；
+	// 90 - 三个月；
 	// 180 - 六个月；
 	// 365 - 一年；
 	// 1095 - 三年；
@@ -11086,11 +11105,13 @@ type OpenAuditServiceRequest struct {
 	// 高频审计日志保存时长。支持值包括：
 	// 7 - 一周
 	// 30 - 一个月；
-	// 180 - 六个月；
-	// 365 - 一年；
-	// 1095 - 三年；
-	// 1825 - 五年；
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitempty" name:"HighLogExpireDay"`
+
+	// 审计规则。同RuleTemplateIds都不填是全审计。
+	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitempty" name:"AuditRuleFilters"`
+
+	// 规则模版ID。同AuditRuleFilters都不填是全审计。
+	RuleTemplateIds []*string `json:"RuleTemplateIds,omitempty" name:"RuleTemplateIds"`
 }
 
 func (r *OpenAuditServiceRequest) ToJsonString() string {
@@ -11108,6 +11129,8 @@ func (r *OpenAuditServiceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "LogExpireDay")
 	delete(f, "HighLogExpireDay")
+	delete(f, "AuditRuleFilters")
+	delete(f, "RuleTemplateIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenAuditServiceRequest has unknown keys!", "")
 	}
@@ -12244,6 +12267,17 @@ type Rule struct {
 	// 权重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type RuleFilters struct {
+	// 审计规则过滤条件的参数名称。可选值：host – 客户端 IP；user – 数据库账户；dbName – 数据库名称；sqlType-SQL类型；sql-sql语句；affectRows -影响行数；sentRows-返回行数；checkRows-扫描行数；execTime-执行时间。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 审计规则过滤条件的匹配类型。可选值：INC – 包含；EXC – 不包含；EQS – 等于；NEQ – 不等于；REG-正则；GT-大于；LT-小于。
+	Compare *string `json:"Compare,omitempty" name:"Compare"`
+
+	// 审计规则过滤条件的匹配值。sqlType条件的Value需在一下选择"alter", "changeuser", "create", "delete", "drop", "execute", "insert", "login", "logout", "other", "replace", "select", "set", "update"。
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type SecurityGroup struct {

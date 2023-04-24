@@ -1585,11 +1585,11 @@ type CreateFlowSignUrlRequestParams struct {
 	// 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
 	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
 
-	// 机构信息，暂未开放
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
-
 	// 用户信息，此结构体UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 机构信息，暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
 type CreateFlowSignUrlRequest struct {
@@ -1601,11 +1601,11 @@ type CreateFlowSignUrlRequest struct {
 	// 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
 	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
 
-	// 机构信息，暂未开放
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
-
 	// 用户信息，此结构体UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 机构信息，暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
 func (r *CreateFlowSignUrlRequest) ToJsonString() string {
@@ -1622,8 +1622,8 @@ func (r *CreateFlowSignUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FlowId")
 	delete(f, "FlowApproverInfos")
-	delete(f, "Organization")
 	delete(f, "Operator")
+	delete(f, "Organization")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowSignUrlRequest has unknown keys!", "")
 	}
@@ -4201,6 +4201,10 @@ type FlowBrief struct {
 	// 拒签或者取消的原因描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowMessage *string `json:"FlowMessage,omitempty" name:"FlowMessage"`
+
+	//  合同发起人userId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
 }
 
 type FlowCreateApprover struct {
@@ -4303,6 +4307,10 @@ type FlowDetailInfo struct {
 
 	// 合同(流程)的关注方信息列表
 	CcInfos []*FlowApproverDetail `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 合同发起人UserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
 }
 
 type FormField struct {

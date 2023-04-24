@@ -2642,6 +2642,73 @@ type PGroupRuleInfo struct {
 }
 
 // Predefined struct for user
+type ScaleUpFileSystemRequestParams struct {
+	// 文件系统Id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 扩容的目标容量
+	TargetCapacity *uint64 `json:"TargetCapacity,omitempty" name:"TargetCapacity"`
+}
+
+type ScaleUpFileSystemRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统Id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 扩容的目标容量
+	TargetCapacity *uint64 `json:"TargetCapacity,omitempty" name:"TargetCapacity"`
+}
+
+func (r *ScaleUpFileSystemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleUpFileSystemRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "TargetCapacity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleUpFileSystemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScaleUpFileSystemResponseParams struct {
+	// 文件系统Id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 扩容的目标容量
+	TargetCapacity *uint64 `json:"TargetCapacity,omitempty" name:"TargetCapacity"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ScaleUpFileSystemResponse struct {
+	*tchttp.BaseResponse
+	Response *ScaleUpFileSystemResponseParams `json:"Response"`
+}
+
+func (r *ScaleUpFileSystemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScaleUpFileSystemResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SetUserQuotaRequestParams struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`

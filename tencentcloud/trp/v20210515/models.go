@@ -1175,6 +1175,16 @@ type CreateTraceCodesRequestParams struct {
 
 	// 码
 	Codes []*CodeItem `json:"Codes,omitempty" name:"Codes"`
+
+	// 码绑定激活策略，默认  0
+	// 0: 传什么码就激活什么码
+	// 1: 层级码 + 层级子码
+	CodeType *uint64 `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 错误检查类型，默认 0
+	// 0: 没有新导入码时正常返回
+	// 1: 没有新导入码时报错，并返回没有导入成功的原因
+	CheckType *uint64 `json:"CheckType,omitempty" name:"CheckType"`
 }
 
 type CreateTraceCodesRequest struct {
@@ -1188,6 +1198,16 @@ type CreateTraceCodesRequest struct {
 
 	// 码
 	Codes []*CodeItem `json:"Codes,omitempty" name:"Codes"`
+
+	// 码绑定激活策略，默认  0
+	// 0: 传什么码就激活什么码
+	// 1: 层级码 + 层级子码
+	CodeType *uint64 `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 错误检查类型，默认 0
+	// 0: 没有新导入码时正常返回
+	// 1: 没有新导入码时报错，并返回没有导入成功的原因
+	CheckType *uint64 `json:"CheckType,omitempty" name:"CheckType"`
 }
 
 func (r *CreateTraceCodesRequest) ToJsonString() string {
@@ -1205,6 +1225,8 @@ func (r *CreateTraceCodesRequest) FromJsonString(s string) error {
 	delete(f, "BatchId")
 	delete(f, "CorpId")
 	delete(f, "Codes")
+	delete(f, "CodeType")
+	delete(f, "CheckType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTraceCodesRequest has unknown keys!", "")
 	}
@@ -4105,14 +4127,20 @@ type ModifyTraceDataRequestParams struct {
 	// 溯源阶段名称
 	PhaseName *string `json:"PhaseName,omitempty" name:"PhaseName"`
 
+	// 环节数据
+	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
+
+	// 溯源状态 0: 无效, 1: 有效
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 排序
+	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
+
 	// [无效] 类型
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// [无效] 溯源码
 	Code *string `json:"Code,omitempty" name:"Code"`
-
-	// [无效] 排序
-	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
 
 	// [无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
 	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
@@ -4134,12 +4162,6 @@ type ModifyTraceDataRequestParams struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
-
-	// 溯源状态 0: 无效, 1: 有效
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
-
-	// 环节数据
-	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
 }
 
 type ModifyTraceDataRequest struct {
@@ -4160,14 +4182,20 @@ type ModifyTraceDataRequest struct {
 	// 溯源阶段名称
 	PhaseName *string `json:"PhaseName,omitempty" name:"PhaseName"`
 
+	// 环节数据
+	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
+
+	// 溯源状态 0: 无效, 1: 有效
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 排序
+	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
+
 	// [无效] 类型
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// [无效] 溯源码
 	Code *string `json:"Code,omitempty" name:"Code"`
-
-	// [无效] 排序
-	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
 
 	// [无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
 	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
@@ -4189,12 +4217,6 @@ type ModifyTraceDataRequest struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
-
-	// 溯源状态 0: 无效, 1: 有效
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
-
-	// 环节数据
-	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
 }
 
 func (r *ModifyTraceDataRequest) ToJsonString() string {
@@ -4214,9 +4236,11 @@ func (r *ModifyTraceDataRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "TraceItems")
 	delete(f, "PhaseName")
+	delete(f, "PhaseData")
+	delete(f, "Status")
+	delete(f, "Rank")
 	delete(f, "Type")
 	delete(f, "Code")
-	delete(f, "Rank")
 	delete(f, "Phase")
 	delete(f, "TraceTime")
 	delete(f, "CreateTime")
@@ -4224,8 +4248,6 @@ func (r *ModifyTraceDataRequest) FromJsonString(s string) error {
 	delete(f, "ChainTime")
 	delete(f, "ChainData")
 	delete(f, "CorpId")
-	delete(f, "Status")
-	delete(f, "PhaseData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTraceDataRequest has unknown keys!", "")
 	}
@@ -4607,15 +4629,12 @@ type TraceCode struct {
 
 type TraceData struct {
 	// 溯源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
 	// 企业ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
 	// 码类型 0: 批次, 1: 码, 2: 生产任务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
 	// 码值，跟码类型一一对应
@@ -4623,15 +4642,12 @@ type TraceData struct {
 	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 排序，在Phase相同情况下，值越小排名靠前
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
 
 	// 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
 
 	// 溯源环节名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhaseName *string `json:"PhaseName,omitempty" name:"PhaseName"`
 
 	// 溯源时间
@@ -4639,7 +4655,6 @@ type TraceData struct {
 	TraceTime *string `json:"TraceTime,omitempty" name:"TraceTime"`
 
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceItems []*TraceItem `json:"TraceItems,omitempty" name:"TraceItems"`
 
 	// 创建时间
@@ -4663,42 +4678,43 @@ type TraceData struct {
 	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
 
 	// 溯源阶段状态 0: 无效, 1: 有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type TraceItem struct {
 	// 字段名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
 
-	// 类型 text:文本类型, longtext:长文本类型, banner:单图片类型, image:多图片类型, video:视频类型, mp:小程序类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 字段类型
+	// text:文本类型, 
+	// longtext:长文本类型, banner:单图片类型, image:多图片类型,
+	// video:视频类型,
+	// mp:小程序类型
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 只读
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
 
 	// 扫码展示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hidden *bool `json:"Hidden,omitempty" name:"Hidden"`
 
 	// 多个值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
 
 	// 类型标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 扩展字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *string `json:"Ext,omitempty" name:"Ext"`
+
+	// 额外属性
+	Attrs []*TraceItem `json:"Attrs,omitempty" name:"Attrs"`
+
+	// 子页面，只读
+	List []*TraceData `json:"List,omitempty" name:"List"`
 }
 
 type UsageQuota struct {

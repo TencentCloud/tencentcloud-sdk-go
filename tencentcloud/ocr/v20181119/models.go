@@ -7388,6 +7388,9 @@ type SmartStructuralOCRV2RequestParams struct {
 	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
 	// ItemNames=["姓名","性别"]
 	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`
+
+	// 是否开启全文字段识别
+	ReturnFullText *bool `json:"ReturnFullText,omitempty" name:"ReturnFullText"`
 }
 
 type SmartStructuralOCRV2Request struct {
@@ -7416,6 +7419,9 @@ type SmartStructuralOCRV2Request struct {
 	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
 	// ItemNames=["姓名","性别"]
 	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`
+
+	// 是否开启全文字段识别
+	ReturnFullText *bool `json:"ReturnFullText,omitempty" name:"ReturnFullText"`
 }
 
 func (r *SmartStructuralOCRV2Request) ToJsonString() string {
@@ -7435,6 +7441,7 @@ func (r *SmartStructuralOCRV2Request) FromJsonString(s string) error {
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
 	delete(f, "ItemNames")
+	delete(f, "ReturnFullText")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralOCRV2Request has unknown keys!", "")
 	}
@@ -7449,6 +7456,9 @@ type SmartStructuralOCRV2ResponseParams struct {
 
 	// 配置结构化文本信息
 	StructuralList []*GroupInfo `json:"StructuralList,omitempty" name:"StructuralList"`
+
+	// 还原文本信息
+	WordList []*WordItem `json:"WordList,omitempty" name:"WordList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10135,6 +10145,14 @@ type WaybillObj struct {
 type WordCoordPoint struct {
 	// 英文OCR识别出的每个单词在原图中的四点坐标。
 	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate"`
+}
+
+type WordItem struct {
+	// 文本块内容
+	DetectedText *string `json:"DetectedText,omitempty" name:"DetectedText"`
+
+	// 四点坐标
+	Coord *Polygon `json:"Coord,omitempty" name:"Coord"`
 }
 
 type Words struct {

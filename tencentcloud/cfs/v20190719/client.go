@@ -2041,6 +2041,76 @@ func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewScaleUpFileSystemRequest() (request *ScaleUpFileSystemRequest) {
+    request = &ScaleUpFileSystemRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "ScaleUpFileSystem")
+    
+    
+    return
+}
+
+func NewScaleUpFileSystemResponse() (response *ScaleUpFileSystemResponse) {
+    response = &ScaleUpFileSystemResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ScaleUpFileSystem
+// 该接口用于对turbo 文件系统扩容使用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_INVALIDSCALEUPTARGETCAPACITY = "InvalidParameterValue.InvalidScaleupTargetCapacity"
+//  INVALIDPARAMETERVALUE_INVALIDTURBOCAPACITY = "InvalidParameterValue.InvalidTurboCapacity"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  RESOURCENOTFOUND_FSNOTEXIST = "ResourceNotFound.FsNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_MISSINGKMSACCESSPERMISSION = "UnsupportedOperation.MissingKmsAccessPermission"
+func (c *Client) ScaleUpFileSystem(request *ScaleUpFileSystemRequest) (response *ScaleUpFileSystemResponse, err error) {
+    return c.ScaleUpFileSystemWithContext(context.Background(), request)
+}
+
+// ScaleUpFileSystem
+// 该接口用于对turbo 文件系统扩容使用
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  INVALIDPARAMETERVALUE_INVALIDSCALEUPTARGETCAPACITY = "InvalidParameterValue.InvalidScaleupTargetCapacity"
+//  INVALIDPARAMETERVALUE_INVALIDTURBOCAPACITY = "InvalidParameterValue.InvalidTurboCapacity"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  RESOURCENOTFOUND_FSNOTEXIST = "ResourceNotFound.FsNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_MISSINGKMSACCESSPERMISSION = "UnsupportedOperation.MissingKmsAccessPermission"
+func (c *Client) ScaleUpFileSystemWithContext(ctx context.Context, request *ScaleUpFileSystemRequest) (response *ScaleUpFileSystemResponse, err error) {
+    if request == nil {
+        request = NewScaleUpFileSystemRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleUpFileSystem require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScaleUpFileSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetUserQuotaRequest() (request *SetUserQuotaRequest) {
     request = &SetUserQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},

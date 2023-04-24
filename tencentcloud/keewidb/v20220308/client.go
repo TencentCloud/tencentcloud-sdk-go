@@ -447,6 +447,60 @@ func (c *Client) DescribeAutoBackupConfigWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeConnectionConfigRequest() (request *DescribeConnectionConfigRequest) {
+    request = &DescribeConnectionConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("keewidb", APIVersion, "DescribeConnectionConfig")
+    
+    
+    return
+}
+
+func NewDescribeConnectionConfigResponse() (response *DescribeConnectionConfigResponse) {
+    response = &DescribeConnectionConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeConnectionConfig
+// 本接口（DescribeConnectionConfig）用于查询实例连接配置，包括出流量和入流量带宽、最大连接数限制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_NOTSUPPORTED = "InvalidParameter.NotSupported"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeConnectionConfig(request *DescribeConnectionConfigRequest) (response *DescribeConnectionConfigResponse, err error) {
+    return c.DescribeConnectionConfigWithContext(context.Background(), request)
+}
+
+// DescribeConnectionConfig
+// 本接口（DescribeConnectionConfig）用于查询实例连接配置，包括出流量和入流量带宽、最大连接数限制。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INVALIDPARAMETER_NOTSUPPORTED = "InvalidParameter.NotSupported"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
+func (c *Client) DescribeConnectionConfigWithContext(ctx context.Context, request *DescribeConnectionConfigRequest) (response *DescribeConnectionConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeConnectionConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConnectionConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConnectionConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequest) {
     request = &DescribeDBSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

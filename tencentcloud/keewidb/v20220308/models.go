@@ -674,6 +674,69 @@ func (r *DescribeAutoBackupConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeConnectionConfigRequestParams struct {
+	// 实例 ID，如：kee-6ubh****。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeConnectionConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，如：kee-6ubh****。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeConnectionConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConnectionConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConnectionConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConnectionConfigResponseParams struct {
+	// 单分片入流量带宽限制，单位：MB。
+	InNetLimit *int64 `json:"InNetLimit,omitempty" name:"InNetLimit"`
+
+	// 单分片出流量带宽限制，单位：MB。
+	OutNetLimit *int64 `json:"OutNetLimit,omitempty" name:"OutNetLimit"`
+
+	// 单分片连接数限制。
+	ClientLimit *int64 `json:"ClientLimit,omitempty" name:"ClientLimit"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeConnectionConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConnectionConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeConnectionConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConnectionConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBSecurityGroupsRequestParams struct {
 	// 数据库引擎名称：keewidb。
 	Product *string `json:"Product,omitempty" name:"Product"`

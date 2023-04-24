@@ -1393,6 +1393,9 @@ type DescribeCallInMetricsRequestParams struct {
 
 	// 是否返回线路维度信息，默认“否”
 	EnabledNumber *bool `json:"EnabledNumber,omitempty" name:"EnabledNumber"`
+
+	// 筛选技能组列表
+	GroupIdList []*int64 `json:"GroupIdList,omitempty" name:"GroupIdList"`
 }
 
 type DescribeCallInMetricsRequest struct {
@@ -1406,6 +1409,9 @@ type DescribeCallInMetricsRequest struct {
 
 	// 是否返回线路维度信息，默认“否”
 	EnabledNumber *bool `json:"EnabledNumber,omitempty" name:"EnabledNumber"`
+
+	// 筛选技能组列表
+	GroupIdList []*int64 `json:"GroupIdList,omitempty" name:"GroupIdList"`
 }
 
 func (r *DescribeCallInMetricsRequest) ToJsonString() string {
@@ -1423,6 +1429,7 @@ func (r *DescribeCallInMetricsRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "EnabledSkillGroup")
 	delete(f, "EnabledNumber")
+	delete(f, "GroupIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallInMetricsRequest has unknown keys!", "")
 	}
@@ -2355,6 +2362,12 @@ type DescribeStaffStatusMetricsRequestParams struct {
 
 	// 筛选坐席列表，默认不传返回全部坐席信息
 	StaffList []*string `json:"StaffList,omitempty" name:"StaffList"`
+
+	// 筛选技能组ID列表
+	GroupIdList []*int64 `json:"GroupIdList,omitempty" name:"GroupIdList"`
+
+	// 筛选坐席状态列表
+	StatusList []*string `json:"StatusList,omitempty" name:"StatusList"`
 }
 
 type DescribeStaffStatusMetricsRequest struct {
@@ -2365,6 +2378,12 @@ type DescribeStaffStatusMetricsRequest struct {
 
 	// 筛选坐席列表，默认不传返回全部坐席信息
 	StaffList []*string `json:"StaffList,omitempty" name:"StaffList"`
+
+	// 筛选技能组ID列表
+	GroupIdList []*int64 `json:"GroupIdList,omitempty" name:"GroupIdList"`
+
+	// 筛选坐席状态列表
+	StatusList []*string `json:"StatusList,omitempty" name:"StatusList"`
 }
 
 func (r *DescribeStaffStatusMetricsRequest) ToJsonString() string {
@@ -2381,6 +2400,8 @@ func (r *DescribeStaffStatusMetricsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	delete(f, "StaffList")
+	delete(f, "GroupIdList")
+	delete(f, "StatusList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStaffStatusMetricsRequest has unknown keys!", "")
 	}

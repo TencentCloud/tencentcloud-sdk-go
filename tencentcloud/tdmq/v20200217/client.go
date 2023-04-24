@@ -5627,6 +5627,60 @@ func (c *Client) ModifyRocketMQGroupWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyRocketMQInstanceSpecRequest() (request *ModifyRocketMQInstanceSpecRequest) {
+    request = &ModifyRocketMQInstanceSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRocketMQInstanceSpec")
+    
+    
+    return
+}
+
+func NewModifyRocketMQInstanceSpecResponse() (response *ModifyRocketMQInstanceSpecResponse) {
+    response = &ModifyRocketMQInstanceSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRocketMQInstanceSpec
+// 本API用于修改RocketMQ专享实例配置，可以支持实例规格、节点数和存储的升配和实例规格的降配。本API发起订单并成功支付后进入实例配置变更的流程，可通过DescribeRocketMQVipInstances查询实例是否已变更完成。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLTRADE = "FailedOperation.CallTrade"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_INSTANCEDOWNGRADE = "UnsupportedOperation.InstanceDowngrade"
+func (c *Client) ModifyRocketMQInstanceSpec(request *ModifyRocketMQInstanceSpecRequest) (response *ModifyRocketMQInstanceSpecResponse, err error) {
+    return c.ModifyRocketMQInstanceSpecWithContext(context.Background(), request)
+}
+
+// ModifyRocketMQInstanceSpec
+// 本API用于修改RocketMQ专享实例配置，可以支持实例规格、节点数和存储的升配和实例规格的降配。本API发起订单并成功支付后进入实例配置变更的流程，可通过DescribeRocketMQVipInstances查询实例是否已变更完成。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLTRADE = "FailedOperation.CallTrade"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_INSTANCEDOWNGRADE = "UnsupportedOperation.InstanceDowngrade"
+func (c *Client) ModifyRocketMQInstanceSpecWithContext(ctx context.Context, request *ModifyRocketMQInstanceSpecRequest) (response *ModifyRocketMQInstanceSpecResponse, err error) {
+    if request == nil {
+        request = NewModifyRocketMQInstanceSpecRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRocketMQInstanceSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRocketMQInstanceSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRocketMQNamespaceRequest() (request *ModifyRocketMQNamespaceRequest) {
     request = &ModifyRocketMQNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},

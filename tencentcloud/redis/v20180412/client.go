@@ -4166,7 +4166,7 @@ func NewModifyAutoBackupConfigResponse() (response *ModifyAutoBackupConfigRespon
 }
 
 // ModifyAutoBackupConfig
-// 设置自动备份配置
+// 本接口（ModifyAutoBackupConfig）用于设置自动备份的配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
@@ -4183,7 +4183,7 @@ func (c *Client) ModifyAutoBackupConfig(request *ModifyAutoBackupConfigRequest) 
 }
 
 // ModifyAutoBackupConfig
-// 设置自动备份配置
+// 本接口（ModifyAutoBackupConfig）用于设置自动备份的配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"

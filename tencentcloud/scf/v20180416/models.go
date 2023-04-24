@@ -3321,8 +3321,9 @@ type ListTriggersRequestParams struct {
 	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC，默认DESC
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// * Qualifier:
-	// 函数版本，别名
+	// * Qualifier: 函数版本，别名
+	// * TriggerName: 函数触发器名称
+	// * Description: 函数触发器描述
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -3347,8 +3348,9 @@ type ListTriggersRequest struct {
 	// 以升序还是降序的方式返回结果，可选值 ASC 和 DESC，默认DESC
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// * Qualifier:
-	// 函数版本，别名
+	// * Qualifier: 函数版本，别名
+	// * TriggerName: 函数触发器名称
+	// * Description: 函数触发器描述
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -4355,6 +4357,10 @@ type TriggerInfo struct {
 
 	// 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
 	TriggerAttribute *string `json:"TriggerAttribute,omitempty" name:"TriggerAttribute"`
+
+	// 客户自定义触发器描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 // Predefined struct for user

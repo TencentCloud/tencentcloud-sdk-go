@@ -1961,6 +1961,14 @@ type AsrFullTextConfigureInfo struct {
 	// <li>srt：生成 SRT 字幕文件。</li>
 	// <font color='red'>注意：此字段已废弃，建议使用 SubtitleFormats。</font>
 	SubtitleFormat *string `json:"SubtitleFormat,omitempty" name:"SubtitleFormat"`
+
+	// 媒体源语言，取值范围：
+	// <li>zh：中文普通话；</li>
+	// <li>en：英语；</li>
+	// <li>ja：日语；</li>
+	// <li>zh-ca：粤语。</li>
+	// <font color=red>注意：</font> 填空字符串，或者不填该参数，则自动识别（效果较难保证，推荐填写原始媒体对应的语言，以提高识别的准确率）。
+	SrcLanguage *string `json:"SrcLanguage,omitempty" name:"SrcLanguage"`
 }
 
 type AsrFullTextConfigureInfoForUpdate struct {
@@ -1977,6 +1985,13 @@ type AsrFullTextConfigureInfoForUpdate struct {
 	// <li>srt：生成 SRT 字幕文件。</li>
 	// <font color='red'>注意：此字段已废弃，建议使用 SubtitleFormatsOperation。</font>
 	SubtitleFormat *string `json:"SubtitleFormat,omitempty" name:"SubtitleFormat"`
+
+	// 媒体源语言，取值范围：
+	// <li>zh：中文普通话；</li>
+	// <li>en：英语；</li>
+	// <li>ja：日语；</li>
+	// <li>zh-ca：粤语。</li>
+	SrcLanguage *string `json:"SrcLanguage,omitempty" name:"SrcLanguage"`
 }
 
 type AsrWordsConfigureInfo struct {

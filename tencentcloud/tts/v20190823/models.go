@@ -331,7 +331,7 @@ type TextToVoiceRequestParams struct {
 	// 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)
 	EmotionCategory *string `json:"EmotionCategory,omitempty" name:"EmotionCategory"`
 
-	// 控制合成音频情感程度，取值范围为[50,200],默认为100，不填写为默认值；只有EmotionCategory不为空时生效；
+	// 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitempty" name:"EmotionIntensity"`
 }
 
@@ -412,7 +412,7 @@ type TextToVoiceRequest struct {
 	// 控制合成音频的情感，仅支持多情感音色使用。取值: neutral(中性)、sad(悲伤)、happy(高兴)、angry(生气)、fear(恐惧)、news(新闻)、story(故事)、radio(广播)、poetry(诗歌)、call(客服)
 	EmotionCategory *string `json:"EmotionCategory,omitempty" name:"EmotionCategory"`
 
-	// 控制合成音频情感程度，取值范围为[50,200],默认为100，不填写为默认值；只有EmotionCategory不为空时生效；
+	// 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitempty" name:"EmotionIntensity"`
 }
 

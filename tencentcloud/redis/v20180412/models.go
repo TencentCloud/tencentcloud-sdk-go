@@ -6313,7 +6313,7 @@ func (r *ModfiyInstancePasswordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAutoBackupConfigRequestParams struct {
-	// 实例ID。
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
@@ -6322,14 +6322,14 @@ type ModifyAutoBackupConfigRequestParams struct {
 	// 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
 	TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
-	// 自动备份类型： 1 “定时回档”。
+	// 自动备份类型。目前仅能配置为：1 ，指定时备份。
 	AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 }
 
 type ModifyAutoBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
@@ -6338,7 +6338,7 @@ type ModifyAutoBackupConfigRequest struct {
 	// 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
 	TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
-	// 自动备份类型： 1 “定时回档”。
+	// 自动备份类型。目前仅能配置为：1 ，指定时备份。
 	AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 }
 
@@ -6366,13 +6366,13 @@ func (r *ModifyAutoBackupConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAutoBackupConfigResponseParams struct {
-	// 自动备份类型： 1 “定时回档”
+	// 自动备份类型。目前仅能配置为：1 ，指定时备份。
 	AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 
 	// 自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
 	WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays"`
 
-	// 自动备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+	// 自动定时备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
 	TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
 	// 全量备份文件保存天数,单位：天。

@@ -8587,6 +8587,93 @@ func (r *ModifyRocketMQGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRocketMQInstanceSpecRequestParams struct {
+	// 专享实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例规格，
+	// rocket-vip-basic-1 基础型
+	// rocket-vip-basic-2 标准型
+	// rocket-vip-basic-3 高阶Ⅰ型
+	// rocket-vip-basic-4 高阶Ⅱ型
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 存储空间，GB为单位
+	StorageSize *uint64 `json:"StorageSize,omitempty" name:"StorageSize"`
+}
+
+type ModifyRocketMQInstanceSpecRequest struct {
+	*tchttp.BaseRequest
+	
+	// 专享实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例规格，
+	// rocket-vip-basic-1 基础型
+	// rocket-vip-basic-2 标准型
+	// rocket-vip-basic-3 高阶Ⅰ型
+	// rocket-vip-basic-4 高阶Ⅱ型
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 存储空间，GB为单位
+	StorageSize *uint64 `json:"StorageSize,omitempty" name:"StorageSize"`
+}
+
+func (r *ModifyRocketMQInstanceSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRocketMQInstanceSpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Specification")
+	delete(f, "NodeCount")
+	delete(f, "StorageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQInstanceSpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRocketMQInstanceSpecResponseParams struct {
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRocketMQInstanceSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRocketMQInstanceSpecResponseParams `json:"Response"`
+}
+
+func (r *ModifyRocketMQInstanceSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRocketMQInstanceSpecResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRocketMQNamespaceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`

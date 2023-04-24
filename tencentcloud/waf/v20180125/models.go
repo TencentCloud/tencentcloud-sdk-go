@@ -160,7 +160,7 @@ type AddCustomRuleRequestParams struct {
 	// 优先级
 	SortId *string `json:"SortId,omitempty" name:"SortId"`
 
-	// 过期时间
+	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 策略详情
@@ -194,7 +194,7 @@ type AddCustomRuleRequest struct {
 	// 优先级
 	SortId *string `json:"SortId,omitempty" name:"SortId"`
 
-	// 过期时间
+	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 策略详情
@@ -1764,6 +1764,9 @@ type DescribeAttackOverviewResponseParams struct {
 	// Bot攻击总数
 	BotCount *uint64 `json:"BotCount,omitempty" name:"BotCount"`
 
+	// api资产总数
+	ApiAssetsCount *uint64 `json:"ApiAssetsCount,omitempty" name:"ApiAssetsCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1948,6 +1951,10 @@ type DescribeCustomRulesRspRuleListItem struct {
 
 	// 策略详情
 	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+
+	// 事件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
 }
 
 // Predefined struct for user
@@ -3831,7 +3838,7 @@ type InstanceInfo struct {
 	// id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// name
+	// Name
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 资源id
@@ -3908,6 +3915,25 @@ type InstanceInfo struct {
 	// 带宽峰值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxBandwidth *uint64 `json:"MaxBandwidth,omitempty" name:"MaxBandwidth"`
+
+	// api安全是否购买
+	APISecurity *uint64 `json:"APISecurity,omitempty" name:"APISecurity"`
+
+	// 购买的qps规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QpsStandard *uint64 `json:"QpsStandard,omitempty" name:"QpsStandard"`
+
+	// 购买的带宽规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthStandard *uint64 `json:"BandwidthStandard,omitempty" name:"BandwidthStandard"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例沙箱值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SandboxQps *uint64 `json:"SandboxQps,omitempty" name:"SandboxQps"`
 }
 
 type IpAccessControlData struct {
@@ -5093,15 +5119,19 @@ func (r *SearchAttackLogResponse) FromJsonString(s string) error {
 
 type Strategy struct {
 	// 匹配字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Field *string `json:"Field,omitempty" name:"Field"`
 
 	// 逻辑符号
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareFunc *string `json:"CompareFunc,omitempty" name:"CompareFunc"`
 
 	// 匹配内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitempty" name:"Content"`
 
 	// 匹配参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Arg *string `json:"Arg,omitempty" name:"Arg"`
 }
 

@@ -2140,7 +2140,17 @@ type CcnRegionBandwidthLimit struct {
 }
 
 type CcnRegionBandwidthLimitInfo struct {
+	// 源地域，例如：ap-shanghai
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceRegion *string `json:"SourceRegion,omitempty" name:"SourceRegion"`
 
+	// 目的地域， 例如：ap-shanghai
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestinationRegion *string `json:"DestinationRegion,omitempty" name:"DestinationRegion"`
+
+	// 出带宽上限，单位：Mbps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthLimit *uint64 `json:"BandwidthLimit,omitempty" name:"BandwidthLimit"`
 }
 
 type CcnRoute struct {
@@ -5683,7 +5693,7 @@ type CreateVpnConnectionRequestParams struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
 
-	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	// 对端网关ID。例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/product/215/17516)接口查询对端网关。
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
 
 	// 通道名称，可任意命名，但不得超过60个字符。
@@ -5708,13 +5718,13 @@ type CreateVpnConnectionRequestParams struct {
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 是否支持隧道内健康检查
+	// 是否支持隧道内健康检查，默认为False。
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
 
-	// 健康检查本端地址
+	// 健康检查本端地址，默认值为随机在169.254.128.0/17分配一个IP。
 	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitempty" name:"HealthCheckLocalIp"`
 
-	// 健康检查对端地址
+	// 健康检查对端地址，默认值为随机在169.254.128.0/17分配一个IP。
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
 
 	// 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
@@ -5739,7 +5749,7 @@ type CreateVpnConnectionRequest struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
 
-	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	// 对端网关ID。例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/product/215/17516)接口查询对端网关。
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
 
 	// 通道名称，可任意命名，但不得超过60个字符。
@@ -5764,13 +5774,13 @@ type CreateVpnConnectionRequest struct {
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 是否支持隧道内健康检查
+	// 是否支持隧道内健康检查，默认为False。
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
 
-	// 健康检查本端地址
+	// 健康检查本端地址，默认值为随机在169.254.128.0/17分配一个IP。
 	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitempty" name:"HealthCheckLocalIp"`
 
-	// 健康检查对端地址
+	// 健康检查对端地址，默认值为随机在169.254.128.0/17分配一个IP。
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
 
 	// 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
@@ -6678,14 +6688,14 @@ func (r *DeleteCcnResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCustomerGatewayRequestParams struct {
-	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	// 对端网关ID，例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/api/215/17516)接口查询对端网关。
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
 }
 
 type DeleteCustomerGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	// 对端网关ID，例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/api/215/17516)接口查询对端网关。
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
 }
 
@@ -18944,7 +18954,7 @@ func (r *ModifyCcnRegionBandwidthLimitsTypeResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type ModifyCustomerGatewayAttributeRequestParams struct {
-	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	// 对端网关ID，例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/api/215/17516)接口查询对端网关。
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
 
 	// 对端网关名称，可任意命名，但不得超过60个字符。
@@ -18954,7 +18964,7 @@ type ModifyCustomerGatewayAttributeRequestParams struct {
 type ModifyCustomerGatewayAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 对端网关ID，例如：cgw-2wqq41m9，可通过DescribeCustomerGateways接口查询对端网关。
+	// 对端网关ID，例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/api/215/17516)接口查询对端网关。
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
 
 	// 对端网关名称，可任意命名，但不得超过60个字符。
@@ -21269,7 +21279,7 @@ type ModifyVpnConnectionAttributeRequestParams struct {
 	// 预共享密钥。
 	PreShareKey *string `json:"PreShareKey,omitempty" name:"PreShareKey"`
 
-	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
 	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases"`
 
 	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
@@ -21278,13 +21288,13 @@ type ModifyVpnConnectionAttributeRequestParams struct {
 	// IPSec配置，腾讯云提供IPSec安全会话设置。
 	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification,omitempty" name:"IPSECOptionsSpecification"`
 
-	// 是否启用通道健康检查
+	// 是否启用通道健康检查，默认为False。
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
 
-	// 本端通道探测ip
+	// 本端通道探测IP。
 	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitempty" name:"HealthCheckLocalIp"`
 
-	// 对端通道探测ip
+	// 对端通道探测IP。
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
 
 	// 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
@@ -21298,6 +21308,9 @@ type ModifyVpnConnectionAttributeRequestParams struct {
 
 	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
 	DpdAction *string `json:"DpdAction,omitempty" name:"DpdAction"`
+
+	// 对端网关ID，4.0及以上网关下的通道支持更新。
+	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
 }
 
 type ModifyVpnConnectionAttributeRequest struct {
@@ -21312,7 +21325,7 @@ type ModifyVpnConnectionAttributeRequest struct {
 	// 预共享密钥。
 	PreShareKey *string `json:"PreShareKey,omitempty" name:"PreShareKey"`
 
-	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+	// SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
 	SecurityPolicyDatabases []*SecurityPolicyDatabase `json:"SecurityPolicyDatabases,omitempty" name:"SecurityPolicyDatabases"`
 
 	// IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
@@ -21321,13 +21334,13 @@ type ModifyVpnConnectionAttributeRequest struct {
 	// IPSec配置，腾讯云提供IPSec安全会话设置。
 	IPSECOptionsSpecification *IPSECOptionsSpecification `json:"IPSECOptionsSpecification,omitempty" name:"IPSECOptionsSpecification"`
 
-	// 是否启用通道健康检查
+	// 是否启用通道健康检查，默认为False。
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitempty" name:"EnableHealthCheck"`
 
-	// 本端通道探测ip
+	// 本端通道探测IP。
 	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitempty" name:"HealthCheckLocalIp"`
 
-	// 对端通道探测ip
+	// 对端通道探测IP。
 	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
 
 	// 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
@@ -21341,6 +21354,9 @@ type ModifyVpnConnectionAttributeRequest struct {
 
 	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
 	DpdAction *string `json:"DpdAction,omitempty" name:"DpdAction"`
+
+	// 对端网关ID，4.0及以上网关下的通道支持更新。
+	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
 }
 
 func (r *ModifyVpnConnectionAttributeRequest) ToJsonString() string {
@@ -21368,6 +21384,7 @@ func (r *ModifyVpnConnectionAttributeRequest) FromJsonString(s string) error {
 	delete(f, "DpdEnable")
 	delete(f, "DpdTimeout")
 	delete(f, "DpdAction")
+	delete(f, "CustomerGatewayId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnConnectionAttributeRequest has unknown keys!", "")
 	}

@@ -6397,6 +6397,9 @@ type ModifyLoadBalancerAttributesRequestParams struct {
 
 	// 是否开启删除保护
 	DeleteProtect *bool `json:"DeleteProtect,omitempty" name:"DeleteProtect"`
+
+	// 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换。修改后mycloud.com域名将失效。
+	ModifyClassicDomain *bool `json:"ModifyClassicDomain,omitempty" name:"ModifyClassicDomain"`
 }
 
 type ModifyLoadBalancerAttributesRequest struct {
@@ -6422,6 +6425,9 @@ type ModifyLoadBalancerAttributesRequest struct {
 
 	// 是否开启删除保护
 	DeleteProtect *bool `json:"DeleteProtect,omitempty" name:"DeleteProtect"`
+
+	// 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换。修改后mycloud.com域名将失效。
+	ModifyClassicDomain *bool `json:"ModifyClassicDomain,omitempty" name:"ModifyClassicDomain"`
 }
 
 func (r *ModifyLoadBalancerAttributesRequest) ToJsonString() string {
@@ -6443,6 +6449,7 @@ func (r *ModifyLoadBalancerAttributesRequest) FromJsonString(s string) error {
 	delete(f, "LoadBalancerPassToTarget")
 	delete(f, "SnatPro")
 	delete(f, "DeleteProtect")
+	delete(f, "ModifyClassicDomain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancerAttributesRequest has unknown keys!", "")
 	}

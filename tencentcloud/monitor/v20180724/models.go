@@ -10843,7 +10843,7 @@ type ModifyAlarmPolicyConditionRequestParams struct {
 	// 日志告警创建请求参数信息
 	LogAlarmReqInfo *LogAlarmReq `json:"LogAlarmReqInfo,omitempty" name:"LogAlarmReqInfo"`
 
-	// 模版id，专供prom使用
+	// 模板id，专供prom使用
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 
 	// 启停状态，0=停用，1=启用
@@ -10883,7 +10883,7 @@ type ModifyAlarmPolicyConditionRequest struct {
 	// 日志告警创建请求参数信息
 	LogAlarmReqInfo *LogAlarmReq `json:"LogAlarmReqInfo,omitempty" name:"LogAlarmReqInfo"`
 
-	// 模版id，专供prom使用
+	// 模板id，专供prom使用
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 
 	// 启停状态，0=停用，1=启用

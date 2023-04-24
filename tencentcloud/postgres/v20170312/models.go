@@ -2596,6 +2596,76 @@ func (r *DescribeAvailableRecoveryTimeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupDownloadRestrictionRequestParams struct {
+
+}
+
+type DescribeBackupDownloadRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBackupDownloadRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDownloadRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDownloadRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupDownloadRestrictionResponseParams struct {
+	// 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+	RestrictionType *string `json:"RestrictionType,omitempty" name:"RestrictionType"`
+
+	// vpc限制效力，ALLOW 允许；DENY 拒绝。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcRestrictionEffect *string `json:"VpcRestrictionEffect,omitempty" name:"VpcRestrictionEffect"`
+
+	// 允许或拒绝下载备份文件的vpcId列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcIdSet []*string `json:"VpcIdSet,omitempty" name:"VpcIdSet"`
+
+	// ip限制效力，ALLOW 允许；DENY 拒绝。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpRestrictionEffect *string `json:"IpRestrictionEffect,omitempty" name:"IpRestrictionEffect"`
+
+	// 允许或拒绝下载备份文件的ip列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpSet []*string `json:"IpSet,omitempty" name:"IpSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupDownloadRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupDownloadRestrictionResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupDownloadRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDownloadRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupDownloadURLRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
@@ -5821,6 +5891,88 @@ func (r *ModifyAccountRemarkResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyBackupDownloadRestrictionRequestParams struct {
+	// 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+	RestrictionType *string `json:"RestrictionType,omitempty" name:"RestrictionType"`
+
+	// vpc限制效力，ALLOW 允许；DENY 拒绝。
+	VpcRestrictionEffect *string `json:"VpcRestrictionEffect,omitempty" name:"VpcRestrictionEffect"`
+
+	// 允许或拒绝下载备份文件的vpcId列表。
+	VpcIdSet []*string `json:"VpcIdSet,omitempty" name:"VpcIdSet"`
+
+	// ip限制效力，ALLOW 允许；DENY 拒绝。
+	IpRestrictionEffect *string `json:"IpRestrictionEffect,omitempty" name:"IpRestrictionEffect"`
+
+	// 允许或拒绝下载备份文件的ip列表。
+	IpSet []*string `json:"IpSet,omitempty" name:"IpSet"`
+}
+
+type ModifyBackupDownloadRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+	RestrictionType *string `json:"RestrictionType,omitempty" name:"RestrictionType"`
+
+	// vpc限制效力，ALLOW 允许；DENY 拒绝。
+	VpcRestrictionEffect *string `json:"VpcRestrictionEffect,omitempty" name:"VpcRestrictionEffect"`
+
+	// 允许或拒绝下载备份文件的vpcId列表。
+	VpcIdSet []*string `json:"VpcIdSet,omitempty" name:"VpcIdSet"`
+
+	// ip限制效力，ALLOW 允许；DENY 拒绝。
+	IpRestrictionEffect *string `json:"IpRestrictionEffect,omitempty" name:"IpRestrictionEffect"`
+
+	// 允许或拒绝下载备份文件的ip列表。
+	IpSet []*string `json:"IpSet,omitempty" name:"IpSet"`
+}
+
+func (r *ModifyBackupDownloadRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupDownloadRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RestrictionType")
+	delete(f, "VpcRestrictionEffect")
+	delete(f, "VpcIdSet")
+	delete(f, "IpRestrictionEffect")
+	delete(f, "IpSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupDownloadRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupDownloadRestrictionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyBackupDownloadRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBackupDownloadRestrictionResponseParams `json:"Response"`
+}
+
+func (r *ModifyBackupDownloadRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupDownloadRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyBackupPlanRequestParams struct {
 	// 实例ID
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
@@ -5967,6 +6119,91 @@ func (r *ModifyBaseBackupExpireTimeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBaseBackupExpireTimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceChargeTypeRequestParams struct {
+	// 实例ID，形如postgres-6fego161
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 续费标记：0-正常续费（默认）；1-自动续费。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 是否自动使用代金券,1是,0否，默认不使用
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+}
+
+type ModifyDBInstanceChargeTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，形如postgres-6fego161
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 续费标记：0-正常续费（默认）；1-自动续费。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 是否自动使用代金券,1是,0否，默认不使用
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+}
+
+func (r *ModifyDBInstanceChargeTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceChargeTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "InstanceChargeType")
+	delete(f, "Period")
+	delete(f, "AutoRenewFlag")
+	delete(f, "AutoVoucher")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceChargeTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceChargeTypeResponseParams struct {
+	// 订单名
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceChargeTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceChargeTypeResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceChargeTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceChargeTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
