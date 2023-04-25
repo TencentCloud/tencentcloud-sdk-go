@@ -1039,6 +1039,7 @@ func NewDeleteProvisionedConcurrencyConfigResponse() (response *DeleteProvisione
 // 删除函数版本的预置并发配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
@@ -1056,6 +1057,7 @@ func (c *Client) DeleteProvisionedConcurrencyConfig(request *DeleteProvisionedCo
 // 删除函数版本的预置并发配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROVISIONEDINPROGRESS = "FailedOperation.ProvisionedInProgress"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"

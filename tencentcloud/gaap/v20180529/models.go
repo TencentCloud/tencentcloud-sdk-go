@@ -9239,6 +9239,10 @@ type RegionDetail struct {
 	// 第7个bit，支持接入段Qos加速。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *uint64 `json:"FeatureBitmap,omitempty" name:"FeatureBitmap"`
+
+	// 接入区域支持的能力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportFeature *SupportFeature `json:"SupportFeature,omitempty" name:"SupportFeature"`
 }
 
 // Predefined struct for user
@@ -9580,6 +9584,11 @@ type StatisticsDataInfo struct {
 	// 统计数据值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *float64 `json:"Data,omitempty" name:"Data"`
+}
+
+type SupportFeature struct {
+	// 接入区域支持的网络类型列表，normal表示支持常规BGP，cn2表示精品BGP，triple表示三网，secure_eip表示定制安全eip。
+	NetworkType []*string `json:"NetworkType,omitempty" name:"NetworkType"`
 }
 
 type TCPListener struct {

@@ -491,6 +491,9 @@ const (
 	// 指定的可用区不可用。
 	RESOURCEUNAVAILABLE_ZONEUNAVAILABLE = "ResourceUnavailable.ZoneUnavailable"
 
+	// 未授权弹性伸缩预设服务角色AS_QCSRole，请前往弹性伸缩控制台进行授权。
+	UNAUTHORIZEDOPERATION_AUTOSCALINGROLEUNAUTHORIZED = "UnauthorizedOperation.AutoScalingRoleUnauthorized"
+
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )

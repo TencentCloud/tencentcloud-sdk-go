@@ -229,6 +229,7 @@ func NewCreateCustomizationResponse() (response *CreateCustomizationResponse) {
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) CreateCustomization(request *CreateCustomizationRequest) (response *CreateCustomizationResponse, err error) {
     return c.CreateCustomizationWithContext(context.Background(), request)
 }
@@ -239,6 +240,7 @@ func (c *Client) CreateCustomization(request *CreateCustomizationRequest) (respo
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) CreateCustomizationWithContext(ctx context.Context, request *CreateCustomizationRequest) (response *CreateCustomizationResponse, err error) {
     if request == nil {
         request = NewCreateCustomizationRequest()
@@ -279,6 +281,7 @@ func NewCreateScanUserResponse() (response *CreateScanUserResponse) {
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
     return c.CreateScanUserWithContext(context.Background(), request)
 }
@@ -289,6 +292,7 @@ func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *Creat
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) CreateScanUserWithContext(ctx context.Context, request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
     if request == nil {
         request = NewCreateScanUserRequest()
@@ -328,6 +332,7 @@ func NewDeleteCustomizationResponse() (response *DeleteCustomizationResponse) {
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) DeleteCustomization(request *DeleteCustomizationRequest) (response *DeleteCustomizationResponse, err error) {
     return c.DeleteCustomizationWithContext(context.Background(), request)
 }
@@ -337,6 +342,7 @@ func (c *Client) DeleteCustomization(request *DeleteCustomizationRequest) (respo
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) DeleteCustomizationWithContext(ctx context.Context, request *DeleteCustomizationRequest) (response *DeleteCustomizationResponse, err error) {
     if request == nil {
         request = NewDeleteCustomizationRequest()
@@ -961,6 +967,7 @@ func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDBIZID = "InvalidParameterValue.InvalidBizId"
 //  INVALIDPARAMETERVALUE_INVALIDROOMID = "InvalidParameterValue.InvalidRoomId"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_ROOMNOTFOUND = "ResourceNotFound.RoomNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -977,6 +984,7 @@ func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *D
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDBIZID = "InvalidParameterValue.InvalidBizId"
 //  INVALIDPARAMETERVALUE_INVALIDROOMID = "InvalidParameterValue.InvalidRoomId"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_ROOMNOTFOUND = "ResourceNotFound.RoomNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1107,6 +1115,7 @@ func NewGetCustomizationListResponse() (response *GetCustomizationListResponse) 
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (response *GetCustomizationListResponse, err error) {
     return c.GetCustomizationListWithContext(context.Background(), request)
 }
@@ -1117,6 +1126,7 @@ func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (res
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) GetCustomizationListWithContext(ctx context.Context, request *GetCustomizationListRequest) (response *GetCustomizationListResponse, err error) {
     if request == nil {
         request = NewGetCustomizationListRequest()
@@ -1224,6 +1234,7 @@ func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
     return c.ModifyCustomizationWithContext(context.Background(), request)
 }
@@ -1235,6 +1246,7 @@ func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (respo
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) ModifyCustomizationWithContext(ctx context.Context, request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
     if request == nil {
         request = NewModifyCustomizationRequest()
@@ -1274,6 +1286,7 @@ func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateRe
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
     return c.ModifyCustomizationStateWithContext(context.Background(), request)
 }
@@ -1283,6 +1296,7 @@ func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateReque
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
+//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
     if request == nil {
         request = NewModifyCustomizationStateRequest()

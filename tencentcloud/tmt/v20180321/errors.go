@@ -23,6 +23,9 @@ const (
 	// 数据插入错误。
 	FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
 
+	// 暂时无法识别该语种。
+	FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
+
 	// 本月免费额度已用完，如需继续使用您可以在机器翻译控制台升级为付费使用。
 	FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 
@@ -61,6 +64,9 @@ const (
 
 	// Seq之间的间隙请不要大于2000。
 	INVALIDPARAMETER_SEQINTERVALTOOLARGE = "InvalidParameter.SeqIntervalTooLarge"
+
+	// 参数取值错误。
+	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"

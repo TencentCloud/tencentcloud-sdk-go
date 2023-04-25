@@ -6709,6 +6709,10 @@ type ProjectEntryEx struct {
 	// 设备注册总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCount *uint64 `json:"DeviceCount,omitempty" name:"DeviceCount"`
+
+	// 是否开通物联使能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableOpenState *uint64 `json:"EnableOpenState,omitempty" name:"EnableOpenState"`
 }
 
 // Predefined struct for user

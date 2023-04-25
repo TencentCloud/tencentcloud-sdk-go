@@ -2041,6 +2041,62 @@ func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewModifyFileSystemAutoScaleUpRuleRequest() (request *ModifyFileSystemAutoScaleUpRuleRequest) {
+    request = &ModifyFileSystemAutoScaleUpRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "ModifyFileSystemAutoScaleUpRule")
+    
+    
+    return
+}
+
+func NewModifyFileSystemAutoScaleUpRuleResponse() (response *ModifyFileSystemAutoScaleUpRuleResponse) {
+    response = &ModifyFileSystemAutoScaleUpRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyFileSystemAutoScaleUpRule
+// 用来设置文件系统扩容策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
+//  INVALIDPARAMETERVALUE_INVALIDAUTOSCALEUPPARAMS = "InvalidParameterValue.InvalidAutoScaleUpParams"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  RESOURCENOTFOUND_FSNOTEXIST = "ResourceNotFound.FsNotExist"
+//  RESOURCENOTFOUND_RESOURCEPACKAGENOTFOUND = "ResourceNotFound.ResourcePackageNotFound"
+func (c *Client) ModifyFileSystemAutoScaleUpRule(request *ModifyFileSystemAutoScaleUpRuleRequest) (response *ModifyFileSystemAutoScaleUpRuleResponse, err error) {
+    return c.ModifyFileSystemAutoScaleUpRuleWithContext(context.Background(), request)
+}
+
+// ModifyFileSystemAutoScaleUpRule
+// 用来设置文件系统扩容策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
+//  INVALIDPARAMETERVALUE_INVALIDAUTOSCALEUPPARAMS = "InvalidParameterValue.InvalidAutoScaleUpParams"
+//  INVALIDPARAMETERVALUE_INVALIDFSSTATUS = "InvalidParameterValue.InvalidFsStatus"
+//  RESOURCENOTFOUND_FSNOTEXIST = "ResourceNotFound.FsNotExist"
+//  RESOURCENOTFOUND_RESOURCEPACKAGENOTFOUND = "ResourceNotFound.ResourcePackageNotFound"
+func (c *Client) ModifyFileSystemAutoScaleUpRuleWithContext(ctx context.Context, request *ModifyFileSystemAutoScaleUpRuleRequest) (response *ModifyFileSystemAutoScaleUpRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyFileSystemAutoScaleUpRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFileSystemAutoScaleUpRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyFileSystemAutoScaleUpRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScaleUpFileSystemRequest() (request *ScaleUpFileSystemRequest) {
     request = &ScaleUpFileSystemRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2075,6 +2131,7 @@ func NewScaleUpFileSystemResponse() (response *ScaleUpFileSystemResponse) {
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_MISSINGKMSACCESSPERMISSION = "UnsupportedOperation.MissingKmsAccessPermission"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) ScaleUpFileSystem(request *ScaleUpFileSystemRequest) (response *ScaleUpFileSystemResponse, err error) {
     return c.ScaleUpFileSystemWithContext(context.Background(), request)
 }
@@ -2095,6 +2152,7 @@ func (c *Client) ScaleUpFileSystem(request *ScaleUpFileSystemRequest) (response 
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_MISSINGKMSACCESSPERMISSION = "UnsupportedOperation.MissingKmsAccessPermission"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
 func (c *Client) ScaleUpFileSystemWithContext(ctx context.Context, request *ScaleUpFileSystemRequest) (response *ScaleUpFileSystemResponse, err error) {
     if request == nil {
         request = NewScaleUpFileSystemRequest()

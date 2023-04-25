@@ -1901,17 +1901,17 @@ type DescribeSnapshotsRequestParams struct {
 	// (SHARED_SNAPSHOT：表示共享过来的快照 | PRIVATE_SNAPSHOT：表示自己私有快照。)
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
-	Order *string `json:"Order,omitempty" name:"Order"`
-
 	// 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
 type DescribeSnapshotsRequest struct {
@@ -1925,17 +1925,17 @@ type DescribeSnapshotsRequest struct {
 	// (SHARED_SNAPSHOT：表示共享过来的快照 | PRIVATE_SNAPSHOT：表示自己私有快照。)
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
-	Order *string `json:"Order,omitempty" name:"Order"`
-
 	// 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+	Order *string `json:"Order,omitempty" name:"Order"`
 }
 
 func (r *DescribeSnapshotsRequest) ToJsonString() string {
@@ -1952,10 +1952,10 @@ func (r *DescribeSnapshotsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SnapshotIds")
 	delete(f, "Filters")
-	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "Order")
 	delete(f, "OrderField")
+	delete(f, "Offset")
+	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotsRequest has unknown keys!", "")
 	}

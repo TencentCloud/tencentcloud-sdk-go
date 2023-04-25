@@ -398,6 +398,9 @@ const (
 	// 镜像无法用于重装当前实例。
 	INVALIDPARAMETERVALUE_INVALIDIMAGEIDFORRETSETINSTANCE = "InvalidParameterValue.InvalidImageIdForRetsetInstance"
 
+	// 指定的镜像ID为共享镜像。
+	INVALIDPARAMETERVALUE_INVALIDIMAGEIDISSHARED = "InvalidParameterValue.InvalidImageIdIsShared"
+
 	// 当前地域不支持指定镜像所包含的操作系统。
 	INVALIDPARAMETERVALUE_INVALIDIMAGEOSNAME = "InvalidParameterValue.InvalidImageOsName"
 
@@ -685,6 +688,9 @@ const (
 
 	// 实例个数超过容灾组的配额
 	RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = "ResourceInsufficient.DisasterRecoverGroupCvmQuota"
+
+	// 安全组资源配额不足。
+	RESOURCEINSUFFICIENT_INSUFFICIENTGROUPQUOTA = "ResourceInsufficient.InsufficientGroupQuota"
 
 	// 指定的实例类型库存不足。
 	RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"

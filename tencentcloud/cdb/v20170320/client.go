@@ -99,6 +99,114 @@ func (c *Client) AddTimeWindowWithContext(ctx context.Context, request *AddTimeW
     return
 }
 
+func NewAdjustCdbProxyRequest() (request *AdjustCdbProxyRequest) {
+    request = &AdjustCdbProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "AdjustCdbProxy")
+    
+    
+    return
+}
+
+func NewAdjustCdbProxyResponse() (response *AdjustCdbProxyResponse) {
+    response = &AdjustCdbProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AdjustCdbProxy
+// 调整数据库代理配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
+//  OPERATIONDENIED_PROXYNODECOUNTLIMITERROR = "OperationDenied.ProxyNodeCountLimitError"
+func (c *Client) AdjustCdbProxy(request *AdjustCdbProxyRequest) (response *AdjustCdbProxyResponse, err error) {
+    return c.AdjustCdbProxyWithContext(context.Background(), request)
+}
+
+// AdjustCdbProxy
+// 调整数据库代理配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
+//  OPERATIONDENIED_PROXYNODECOUNTLIMITERROR = "OperationDenied.ProxyNodeCountLimitError"
+func (c *Client) AdjustCdbProxyWithContext(ctx context.Context, request *AdjustCdbProxyRequest) (response *AdjustCdbProxyResponse, err error) {
+    if request == nil {
+        request = NewAdjustCdbProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AdjustCdbProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAdjustCdbProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAdjustCdbProxyAddressRequest() (request *AdjustCdbProxyAddressRequest) {
+    request = &AdjustCdbProxyAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "AdjustCdbProxyAddress")
+    
+    
+    return
+}
+
+func NewAdjustCdbProxyAddressResponse() (response *AdjustCdbProxyAddressResponse) {
+    response = &AdjustCdbProxyAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AdjustCdbProxyAddress
+// 调整数据库代理地址配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  OPERATIONDENIED_UNSUPPORTCREATEADDRESSERROR = "OperationDenied.UnsupportCreateAddressError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+func (c *Client) AdjustCdbProxyAddress(request *AdjustCdbProxyAddressRequest) (response *AdjustCdbProxyAddressResponse, err error) {
+    return c.AdjustCdbProxyAddressWithContext(context.Background(), request)
+}
+
+// AdjustCdbProxyAddress
+// 调整数据库代理地址配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  OPERATIONDENIED_UNSUPPORTCREATEADDRESSERROR = "OperationDenied.UnsupportCreateAddressError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+func (c *Client) AdjustCdbProxyAddressWithContext(ctx context.Context, request *AdjustCdbProxyAddressRequest) (response *AdjustCdbProxyAddressResponse, err error) {
+    if request == nil {
+        request = NewAdjustCdbProxyAddressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AdjustCdbProxyAddress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAdjustCdbProxyAddressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAnalyzeAuditLogsRequest() (request *AnalyzeAuditLogsRequest) {
     request = &AnalyzeAuditLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -319,6 +427,58 @@ func (c *Client) CloseCDBProxyWithContext(ctx context.Context, request *CloseCDB
     request.SetContext(ctx)
     
     response = NewCloseCDBProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCloseCdbProxyAddressRequest() (request *CloseCdbProxyAddressRequest) {
+    request = &CloseCdbProxyAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "CloseCdbProxyAddress")
+    
+    
+    return
+}
+
+func NewCloseCdbProxyAddressResponse() (response *CloseCdbProxyAddressResponse) {
+    response = &CloseCdbProxyAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CloseCdbProxyAddress
+// 请求关闭数据库代理地址
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_PROXYADDRESSLIMITERROR = "OperationDenied.ProxyAddressLimitError"
+//  OPERATIONDENIED_PROXYADDRESSNOTFUND = "OperationDenied.ProxyAddressNotFund"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
+func (c *Client) CloseCdbProxyAddress(request *CloseCdbProxyAddressRequest) (response *CloseCdbProxyAddressResponse, err error) {
+    return c.CloseCdbProxyAddressWithContext(context.Background(), request)
+}
+
+// CloseCdbProxyAddress
+// 请求关闭数据库代理地址
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_PROXYADDRESSLIMITERROR = "OperationDenied.ProxyAddressLimitError"
+//  OPERATIONDENIED_PROXYADDRESSNOTFUND = "OperationDenied.ProxyAddressNotFund"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
+func (c *Client) CloseCdbProxyAddressWithContext(ctx context.Context, request *CloseCdbProxyAddressRequest) (response *CloseCdbProxyAddressResponse, err error) {
+    if request == nil {
+        request = NewCloseCdbProxyAddressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseCdbProxyAddress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseCdbProxyAddressResponse()
     err = c.Send(request, response)
     return
 }
@@ -829,6 +989,106 @@ func (c *Client) CreateBackupWithContext(ctx context.Context, request *CreateBac
     request.SetContext(ctx)
     
     response = NewCreateBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCdbProxyRequest() (request *CreateCdbProxyRequest) {
+    request = &CreateCdbProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateCdbProxy")
+    
+    
+    return
+}
+
+func NewCreateCdbProxyResponse() (response *CreateCdbProxyResponse) {
+    response = &CreateCdbProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCdbProxy
+// 主实例创建数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REPEATCREATEPROXYERROR = "FailedOperation.RepeatCreateProxyError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) CreateCdbProxy(request *CreateCdbProxyRequest) (response *CreateCdbProxyResponse, err error) {
+    return c.CreateCdbProxyWithContext(context.Background(), request)
+}
+
+// CreateCdbProxy
+// 主实例创建数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REPEATCREATEPROXYERROR = "FailedOperation.RepeatCreateProxyError"
+//  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
+func (c *Client) CreateCdbProxyWithContext(ctx context.Context, request *CreateCdbProxyRequest) (response *CreateCdbProxyResponse, err error) {
+    if request == nil {
+        request = NewCreateCdbProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCdbProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCdbProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCdbProxyAddressRequest() (request *CreateCdbProxyAddressRequest) {
+    request = &CreateCdbProxyAddressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateCdbProxyAddress")
+    
+    
+    return
+}
+
+func NewCreateCdbProxyAddressResponse() (response *CreateCdbProxyAddressResponse) {
+    response = &CreateCdbProxyAddressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCdbProxyAddress
+// 数据库代理增加代理地址
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_PROXYADDRESSLIMITERROR = "OperationDenied.ProxyAddressLimitError"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
+func (c *Client) CreateCdbProxyAddress(request *CreateCdbProxyAddressRequest) (response *CreateCdbProxyAddressResponse, err error) {
+    return c.CreateCdbProxyAddressWithContext(context.Background(), request)
+}
+
+// CreateCdbProxyAddress
+// 数据库代理增加代理地址
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_PROXYADDRESSLIMITERROR = "OperationDenied.ProxyAddressLimitError"
+//  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
+func (c *Client) CreateCdbProxyAddressWithContext(ctx context.Context, request *CreateCdbProxyAddressRequest) (response *CreateCdbProxyAddressResponse, err error) {
+    if request == nil {
+        request = NewCreateCdbProxyAddressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCdbProxyAddress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCdbProxyAddressResponse()
     err = c.Send(request, response)
     return
 }
@@ -3149,6 +3409,62 @@ func (c *Client) DescribeCDBProxyWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeCdbProxyInfoRequest() (request *DescribeCdbProxyInfoRequest) {
+    request = &DescribeCdbProxyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeCdbProxyInfo")
+    
+    
+    return
+}
+
+func NewDescribeCdbProxyInfoResponse() (response *DescribeCdbProxyInfoResponse) {
+    response = &DescribeCdbProxyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCdbProxyInfo
+// 查询数据库代理详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+func (c *Client) DescribeCdbProxyInfo(request *DescribeCdbProxyInfoRequest) (response *DescribeCdbProxyInfoResponse, err error) {
+    return c.DescribeCdbProxyInfoWithContext(context.Background(), request)
+}
+
+// DescribeCdbProxyInfo
+// 查询数据库代理详情信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+func (c *Client) DescribeCdbProxyInfoWithContext(ctx context.Context, request *DescribeCdbProxyInfoRequest) (response *DescribeCdbProxyInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdbProxyInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCdbProxyInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCdbProxyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCdbZoneConfigRequest() (request *DescribeCdbZoneConfigRequest) {
     request = &DescribeCdbZoneConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4352,6 +4668,7 @@ func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamR
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENAMENOTFOUND = "InvalidParameter.InstanceNameNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamRecordsRequest) (response *DescribeInstanceParamRecordsResponse, err error) {
     return c.DescribeInstanceParamRecordsWithContext(context.Background(), request)
 }
@@ -4365,6 +4682,7 @@ func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamReco
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENAMENOTFOUND = "InvalidParameter.InstanceNameNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeInstanceParamRecordsWithContext(ctx context.Context, request *DescribeInstanceParamRecordsRequest) (response *DescribeInstanceParamRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceParamRecordsRequest()
@@ -4777,6 +5095,62 @@ func (c *Client) DescribeProxyCustomConfWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeProxySupportParamRequest() (request *DescribeProxySupportParamRequest) {
+    request = &DescribeProxySupportParamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeProxySupportParam")
+    
+    
+    return
+}
+
+func NewDescribeProxySupportParamResponse() (response *DescribeProxySupportParamResponse) {
+    response = &DescribeProxySupportParamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProxySupportParam
+// 查询实例支持代理版本和参数
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeProxySupportParam(request *DescribeProxySupportParamRequest) (response *DescribeProxySupportParamResponse, err error) {
+    return c.DescribeProxySupportParamWithContext(context.Background(), request)
+}
+
+// DescribeProxySupportParam
+// 查询实例支持代理版本和参数
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeProxySupportParamWithContext(ctx context.Context, request *DescribeProxySupportParamRequest) (response *DescribeProxySupportParamResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxySupportParamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxySupportParam require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxySupportParamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRemoteBackupConfigRequest() (request *DescribeRemoteBackupConfigRequest) {
     request = &DescribeRemoteBackupConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4799,7 +5173,11 @@ func NewDescribeRemoteBackupConfigResponse() (response *DescribeRemoteBackupConf
 // 本接口(DescribeRemoteBackupConfig)用于查询数据库异地备份配置信息。
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DescribeRemoteBackupConfig(request *DescribeRemoteBackupConfigRequest) (response *DescribeRemoteBackupConfigResponse, err error) {
     return c.DescribeRemoteBackupConfigWithContext(context.Background(), request)
 }
@@ -4808,7 +5186,11 @@ func (c *Client) DescribeRemoteBackupConfig(request *DescribeRemoteBackupConfigR
 // 本接口(DescribeRemoteBackupConfig)用于查询数据库异地备份配置信息。
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DescribeRemoteBackupConfigWithContext(ctx context.Context, request *DescribeRemoteBackupConfigRequest) (response *DescribeRemoteBackupConfigResponse, err error) {
     if request == nil {
         request = NewDescribeRemoteBackupConfigRequest()
@@ -6917,6 +7299,158 @@ func (c *Client) ModifyCDBProxyVipVPortWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyCdbProxyAddressDescRequest() (request *ModifyCdbProxyAddressDescRequest) {
+    request = &ModifyCdbProxyAddressDescRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCdbProxyAddressDesc")
+    
+    
+    return
+}
+
+func NewModifyCdbProxyAddressDescResponse() (response *ModifyCdbProxyAddressDescResponse) {
+    response = &ModifyCdbProxyAddressDescResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCdbProxyAddressDesc
+// 修改代理地址描述信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) ModifyCdbProxyAddressDesc(request *ModifyCdbProxyAddressDescRequest) (response *ModifyCdbProxyAddressDescResponse, err error) {
+    return c.ModifyCdbProxyAddressDescWithContext(context.Background(), request)
+}
+
+// ModifyCdbProxyAddressDesc
+// 修改代理地址描述信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+func (c *Client) ModifyCdbProxyAddressDescWithContext(ctx context.Context, request *ModifyCdbProxyAddressDescRequest) (response *ModifyCdbProxyAddressDescResponse, err error) {
+    if request == nil {
+        request = NewModifyCdbProxyAddressDescRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCdbProxyAddressDesc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCdbProxyAddressDescResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCdbProxyAddressVipAndVPortRequest() (request *ModifyCdbProxyAddressVipAndVPortRequest) {
+    request = &ModifyCdbProxyAddressVipAndVPortRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCdbProxyAddressVipAndVPort")
+    
+    
+    return
+}
+
+func NewModifyCdbProxyAddressVipAndVPortResponse() (response *ModifyCdbProxyAddressVipAndVPortResponse) {
+    response = &ModifyCdbProxyAddressVipAndVPortResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCdbProxyAddressVipAndVPort
+// 修改数据库代理地址VPC信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+func (c *Client) ModifyCdbProxyAddressVipAndVPort(request *ModifyCdbProxyAddressVipAndVPortRequest) (response *ModifyCdbProxyAddressVipAndVPortResponse, err error) {
+    return c.ModifyCdbProxyAddressVipAndVPortWithContext(context.Background(), request)
+}
+
+// ModifyCdbProxyAddressVipAndVPort
+// 修改数据库代理地址VPC信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+func (c *Client) ModifyCdbProxyAddressVipAndVPortWithContext(ctx context.Context, request *ModifyCdbProxyAddressVipAndVPortRequest) (response *ModifyCdbProxyAddressVipAndVPortResponse, err error) {
+    if request == nil {
+        request = NewModifyCdbProxyAddressVipAndVPortRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCdbProxyAddressVipAndVPort require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCdbProxyAddressVipAndVPortResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCdbProxyParamRequest() (request *ModifyCdbProxyParamRequest) {
+    request = &ModifyCdbProxyParamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCdbProxyParam")
+    
+    
+    return
+}
+
+func NewModifyCdbProxyParamResponse() (response *ModifyCdbProxyParamResponse) {
+    response = &ModifyCdbProxyParamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCdbProxyParam
+// 配置数据库代理参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+func (c *Client) ModifyCdbProxyParam(request *ModifyCdbProxyParamRequest) (response *ModifyCdbProxyParamResponse, err error) {
+    return c.ModifyCdbProxyParamWithContext(context.Background(), request)
+}
+
+// ModifyCdbProxyParam
+// 配置数据库代理参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
+//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
+func (c *Client) ModifyCdbProxyParamWithContext(ctx context.Context, request *ModifyCdbProxyParamRequest) (response *ModifyCdbProxyParamResponse, err error) {
+    if request == nil {
+        request = NewModifyCdbProxyParamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCdbProxyParam require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCdbProxyParamResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7175,6 +7709,7 @@ func NewModifyInstanceParamResponse() (response *ModifyInstanceParamResponse) {
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  CDBERROR_TASKERROR = "CdbError.TaskError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
@@ -7186,6 +7721,7 @@ func NewModifyInstanceParamResponse() (response *ModifyInstanceParamResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_INSTANCETASKSTATUSERROR = "OperationDenied.InstanceTaskStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
     return c.ModifyInstanceParamWithContext(context.Background(), request)
 }
@@ -7198,6 +7734,7 @@ func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (respo
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  CDBERROR_TASKERROR = "CdbError.TaskError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_TASKFRAMEERROR = "InternalError.TaskFrameError"
@@ -7209,6 +7746,7 @@ func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (respo
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_INSTANCETASKSTATUSERROR = "OperationDenied.InstanceTaskStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) ModifyInstanceParamWithContext(ctx context.Context, request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
     if request == nil {
         request = NewModifyInstanceParamRequest()
@@ -7640,6 +8178,7 @@ func NewModifyRoGroupInfoResponse() (response *ModifyRoGroupInfoResponse) {
 //  OPERATIONDENIED_CONFLICTSTATUS = "OperationDenied.ConflictStatus"
 //  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
 //  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) ModifyRoGroupInfo(request *ModifyRoGroupInfoRequest) (response *ModifyRoGroupInfoResponse, err error) {
     return c.ModifyRoGroupInfoWithContext(context.Background(), request)
 }
@@ -7663,6 +8202,7 @@ func (c *Client) ModifyRoGroupInfo(request *ModifyRoGroupInfoRequest) (response 
 //  OPERATIONDENIED_CONFLICTSTATUS = "OperationDenied.ConflictStatus"
 //  OPERATIONDENIED_DELAYREPLICATIONRUNNING = "OperationDenied.DelayReplicationRunning"
 //  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
+//  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 func (c *Client) ModifyRoGroupInfoWithContext(ctx context.Context, request *ModifyRoGroupInfoRequest) (response *ModifyRoGroupInfoResponse, err error) {
     if request == nil {
         request = NewModifyRoGroupInfoRequest()

@@ -41,6 +41,9 @@ const (
 	// 签署审核未通过，请先完成审核。
 	FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
 
+	// 未找到集团子企业相关用户信息，请检查用户相关参数
+	FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
+
 	// 企业经营状态与工商局信息不符。
 	FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
 

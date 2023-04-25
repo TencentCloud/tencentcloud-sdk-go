@@ -332,6 +332,7 @@ func NewCheckEidTokenStatusResponse() (response *CheckEidTokenStatusResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
@@ -347,6 +348,7 @@ func (c *Client) CheckEidTokenStatus(request *CheckEidTokenStatusRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.UnKnown"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"

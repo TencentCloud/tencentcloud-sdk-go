@@ -809,9 +809,6 @@ func (r *CreateDatasetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateModelServiceRequestParams struct {
-	// 镜像信息，配置服务运行所需的镜像地址等信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
-
 	// 新增版本时需要填写
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
 
@@ -821,7 +818,7 @@ type CreateModelServiceRequestParams struct {
 	// 模型服务的描述
 	ServiceDescription *string `json:"ServiceDescription,omitempty" name:"ServiceDescription"`
 
-	// 付费模式,有 PREPAID 、 POSTPAID_BY_HOUR 和 HYBRID_PAID 三种
+	// 付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 预付费模式下所属的资源组id，同服务组下唯一
@@ -830,10 +827,13 @@ type CreateModelServiceRequestParams struct {
 	// 模型信息，需要挂载模型时填写
 	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
 
+	// 镜像信息，配置服务运行所需的镜像地址等信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
 	// 环境变量，可选参数，用于配置容器中的环境变量
 	Env []*EnvVar `json:"Env,omitempty" name:"Env"`
 
-	// 资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+	// 资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写
 	Resources *ResourceInfo `json:"Resources,omitempty" name:"Resources"`
 
 	// 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
@@ -917,9 +917,6 @@ type CreateModelServiceRequestParams struct {
 type CreateModelServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像信息，配置服务运行所需的镜像地址等信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
-
 	// 新增版本时需要填写
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
 
@@ -929,7 +926,7 @@ type CreateModelServiceRequest struct {
 	// 模型服务的描述
 	ServiceDescription *string `json:"ServiceDescription,omitempty" name:"ServiceDescription"`
 
-	// 付费模式,有 PREPAID 、 POSTPAID_BY_HOUR 和 HYBRID_PAID 三种
+	// 付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 预付费模式下所属的资源组id，同服务组下唯一
@@ -938,10 +935,13 @@ type CreateModelServiceRequest struct {
 	// 模型信息，需要挂载模型时填写
 	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
 
+	// 镜像信息，配置服务运行所需的镜像地址等信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
 	// 环境变量，可选参数，用于配置容器中的环境变量
 	Env []*EnvVar `json:"Env,omitempty" name:"Env"`
 
-	// 资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+	// 资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写
 	Resources *ResourceInfo `json:"Resources,omitempty" name:"Resources"`
 
 	// 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
@@ -1034,13 +1034,13 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ImageInfo")
 	delete(f, "ServiceGroupId")
 	delete(f, "ServiceGroupName")
 	delete(f, "ServiceDescription")
 	delete(f, "ChargeType")
 	delete(f, "ResourceGroupId")
 	delete(f, "ModelInfo")
+	delete(f, "ImageInfo")
 	delete(f, "Env")
 	delete(f, "Resources")
 	delete(f, "InstanceType")
@@ -2882,7 +2882,7 @@ type DescribeBillingSpecsRequestParams struct {
 	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 付费模式：POSTPAID_BY_HOUR后付费、PREPAID预付费
+	// 付费模式：POSTPAID_BY_HOUR按量付费、PREPAID包年包月
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
@@ -2895,7 +2895,7 @@ type DescribeBillingSpecsRequest struct {
 	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 付费模式：POSTPAID_BY_HOUR后付费、PREPAID预付费
+	// 付费模式：POSTPAID_BY_HOUR按量付费、PREPAID包年包月
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
@@ -6313,7 +6313,7 @@ type Service struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
-	// 后付费资源组id
+	// 包年包月服务的资源组id，按量计费的服务为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
 
@@ -6399,7 +6399,7 @@ type Service struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateFailedReason *string `json:"CreateFailedReason,omitempty" name:"CreateFailedReason"`
 
-	// 预付费服务对应的资源组名字
+	// 包年包月服务对应的资源组名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
 
@@ -6624,6 +6624,27 @@ type ServiceInfo struct {
 	// Pod列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodInfos []*Pod `json:"PodInfos,omitempty" name:"PodInfos"`
+
+	// 定时伸缩策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleStrategy *string `json:"ScaleStrategy,omitempty" name:"ScaleStrategy"`
+
+	// 定时伸缩任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitempty" name:"CronScaleJobs"`
+
+	// 实例数量调节方式,默认为手动
+	// 支持：自动 - "AUTO", 手动 - "MANUAL"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleMode *string `json:"ScaleMode,omitempty" name:"ScaleMode"`
+
+	// 服务限速限流相关配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+
+	// 定时停止的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduledAction *string `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
 }
 
 type ServiceLimit struct {

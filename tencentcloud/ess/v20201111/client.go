@@ -1520,6 +1520,7 @@ func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -1536,6 +1537,7 @@ func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response 
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -3200,6 +3202,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
@@ -3229,6 +3232,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"

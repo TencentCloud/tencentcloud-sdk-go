@@ -35,6 +35,9 @@ const (
 	// 操作失败：不支持的封面类型。
 	FAILEDOPERATION_COVERTYPE = "FailedOperation.CoverType"
 
+	// 操作失败：数据库操作失败。
+	FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+
 	// 域名部署中，不能变更配置。
 	FAILEDOPERATION_DOMAINDEPLOYING = "FailedOperation.DomainDeploying"
 

@@ -452,6 +452,9 @@ const (
 	// 账号退还配额超过限制。
 	LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
 
+	// 接口请求次数超过限频。
+	LIMITEXCEEDED_ACTIONLIMITED = "LimitExceeded.ActionLimited"
+
 	// 分配IP地址数量达到上限。
 	LIMITEXCEEDED_ADDRESS = "LimitExceeded.Address"
 
@@ -707,6 +710,9 @@ const (
 	// 和用户自定义的路由形成ECMP。
 	UNSUPPORTEDOPERATION_ECMPWITHUSERROUTE = "UnsupportedOperation.EcmpWithUserRoute"
 
+	// 当前地域不支持启用组播。
+	UNSUPPORTEDOPERATION_ENABLEMULTICAST = "UnsupportedOperation.EnableMulticast"
+
 	// 终端节点服务本身不能是终端节点。
 	UNSUPPORTEDOPERATION_ENDPOINTSERVICE = "UnsupportedOperation.EndPointService"
 
@@ -856,6 +862,9 @@ const (
 
 	// 记录不存在。
 	UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
+
+	// 资源处于不可用状态，禁止操作。
+	UNSUPPORTEDOPERATION_RESOURCEISINVALIDSTATE = "UnsupportedOperation.ResourceIsInvalidState"
 
 	// 输入的资源ID与IP绑定的资源不匹配，请检查。
 	UNSUPPORTEDOPERATION_RESOURCEMISMATCH = "UnsupportedOperation.ResourceMismatch"

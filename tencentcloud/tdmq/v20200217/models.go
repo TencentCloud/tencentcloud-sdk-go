@@ -9532,6 +9532,10 @@ type RabbitMQVipInstance struct {
 	// 集群异常。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionInformation *string `json:"ExceptionInformation,omitempty" name:"ExceptionInformation"`
+
+	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+	// 为了和计费区分开，额外开启一个状态位，用于显示。
+	ClusterStatus *int64 `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
 }
 
 // Predefined struct for user
@@ -9998,6 +10002,14 @@ type RocketMQClusterInfo struct {
 	// HTTP协议VPC接入地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpVpcEndpoint *string `json:"HttpVpcEndpoint,omitempty" name:"HttpVpcEndpoint"`
+
+	// TCP内部接入地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalEndpoint *string `json:"InternalEndpoint,omitempty" name:"InternalEndpoint"`
+
+	// HTTP协议内部接入地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpInternalEndpoint *string `json:"HttpInternalEndpoint,omitempty" name:"HttpInternalEndpoint"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -10109,7 +10121,7 @@ type RocketMQNamespace struct {
 	// 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
 	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 
-	// 未消费消息的保留时间，以毫秒单位，范围60秒到15天
+	// 已废弃，未消费消息的保留时间，以毫秒单位，范围60秒到15天
 	Ttl *uint64 `json:"Ttl,omitempty" name:"Ttl"`
 
 	// 消息持久化后保留的时间，以毫秒单位
@@ -10126,6 +10138,10 @@ type RocketMQNamespace struct {
 	// VPC接入点地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcEndpoint *string `json:"VpcEndpoint,omitempty" name:"VpcEndpoint"`
+
+	// 内部接入点地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalEndpoint *string `json:"InternalEndpoint,omitempty" name:"InternalEndpoint"`
 }
 
 type RocketMQTopic struct {
@@ -10204,6 +10220,18 @@ type RocketMQVipInstance struct {
 
 	// 实例配置ID
 	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 最大可设置消息保留时间，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxRetention *int64 `json:"MaxRetention,omitempty" name:"MaxRetention"`
+
+	// 最小可设置消息保留时间，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinRetention *int64 `json:"MinRetention,omitempty" name:"MinRetention"`
+
+	// 实例消息保留时间，小时为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Retention *int64 `json:"Retention,omitempty" name:"Retention"`
 }
 
 type Role struct {

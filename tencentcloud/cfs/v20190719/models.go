@@ -2561,6 +2561,93 @@ type MigrationTaskInfo struct {
 	BucketPath *string `json:"BucketPath,omitempty" name:"BucketPath"`
 }
 
+// Predefined struct for user
+type ModifyFileSystemAutoScaleUpRuleRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 扩容阈值，范围[10-90]
+	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitempty" name:"ScaleUpThreshold"`
+
+	// 扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
+	TargetThreshold *uint64 `json:"TargetThreshold,omitempty" name:"TargetThreshold"`
+
+	// 规则状态0:关闭，1 开启
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type ModifyFileSystemAutoScaleUpRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 扩容阈值，范围[10-90]
+	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitempty" name:"ScaleUpThreshold"`
+
+	// 扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
+	TargetThreshold *uint64 `json:"TargetThreshold,omitempty" name:"TargetThreshold"`
+
+	// 规则状态0:关闭，1 开启
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyFileSystemAutoScaleUpRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFileSystemAutoScaleUpRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "ScaleUpThreshold")
+	delete(f, "TargetThreshold")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFileSystemAutoScaleUpRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyFileSystemAutoScaleUpRuleResponseParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 规则状态0:关闭，1 开启
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 扩容阈值,范围[10-90]
+	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitempty" name:"ScaleUpThreshold"`
+
+	// 扩容后达到阈值,范围[10-90]
+	TargetThreshold *uint64 `json:"TargetThreshold,omitempty" name:"TargetThreshold"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyFileSystemAutoScaleUpRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyFileSystemAutoScaleUpRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyFileSystemAutoScaleUpRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyFileSystemAutoScaleUpRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MountInfo struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`

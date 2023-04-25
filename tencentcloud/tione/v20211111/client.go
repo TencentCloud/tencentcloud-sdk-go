@@ -697,6 +697,7 @@ func NewDeleteDatasetResponse() (response *DeleteDatasetResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DCCOSCLIENTERR = "FailedOperation.DCCosClientErr"
 //  FAILEDOPERATION_DCCREATEASYNCTASKERROR = "FailedOperation.DCCreateAsyncTaskError"
 //  FAILEDOPERATION_DCCREATEUSERCOSCLIENTERR = "FailedOperation.DCCreateUserCosClientErr"
@@ -732,6 +733,7 @@ func (c *Client) DeleteDataset(request *DeleteDatasetRequest) (response *DeleteD
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DCCOSCLIENTERR = "FailedOperation.DCCosClientErr"
 //  FAILEDOPERATION_DCCREATEASYNCTASKERROR = "FailedOperation.DCCreateAsyncTaskError"
 //  FAILEDOPERATION_DCCREATEUSERCOSCLIENTERR = "FailedOperation.DCCreateUserCosClientErr"

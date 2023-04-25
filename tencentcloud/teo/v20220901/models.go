@@ -5614,7 +5614,7 @@ type DescribeTimingL7SourceDataRequestParams struct {
 	// <li>l7Flow_request_hy: 回源请求数；</li>
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 待查询的站点列表，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
 	// 查询时间粒度，取值有：
@@ -5655,7 +5655,7 @@ type DescribeTimingL7SourceDataRequest struct {
 	// <li>l7Flow_request_hy: 回源请求数；</li>
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 待查询的站点列表，此参数必填。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
 	// 查询时间粒度，取值有：

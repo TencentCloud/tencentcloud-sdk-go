@@ -66,13 +66,13 @@ type FileTranslateRequestParams struct {
 	// 数据来源，0：url，1：直接传文件编码后数据
 	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 需要翻译文件url
+	// 需要翻译文件url，文件需小于100MB。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 原始文档类型
 	BasicDocumentType *string `json:"BasicDocumentType,omitempty" name:"BasicDocumentType"`
 
-	// 回调url
+	// 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中。
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。
@@ -126,13 +126,13 @@ type FileTranslateRequest struct {
 	// 数据来源，0：url，1：直接传文件编码后数据
 	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 需要翻译文件url
+	// 需要翻译文件url，文件需小于100MB。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 原始文档类型
 	BasicDocumentType *string `json:"BasicDocumentType,omitempty" name:"BasicDocumentType"`
 
-	// 回调url
+	// 回调url，文件大于10MB，建议采用回调方式；回调时，所有内容会放入 Body 中。
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 文件数据，当SourceType 值为1时必须填写，为0可不写。要base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。数据要小于5MB。
@@ -681,7 +681,7 @@ type TextTranslateBatchRequestParams struct {
 	// 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于2000字符。
+	// 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于6000字符。
 	SourceTextList []*string `json:"SourceTextList,omitempty" name:"SourceTextList"`
 }
 
@@ -735,7 +735,7 @@ type TextTranslateBatchRequest struct {
 	// 项目ID，可以根据控制台-账号中心-项目管理中的配置填写，如无配置请填写默认项目ID:0
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于2000字符。
+	// 待翻译的文本列表，批量接口可以以数组方式在一次请求中填写多个待翻译文本。文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度总和需要低于6000字符。
 	SourceTextList []*string `json:"SourceTextList,omitempty" name:"SourceTextList"`
 }
 
@@ -763,7 +763,7 @@ func (r *TextTranslateBatchRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TextTranslateBatchResponseParams struct {
-	// 源语言，详见入参Target
+	// 源语言，详见入参Source
 	Source *string `json:"Source,omitempty" name:"Source"`
 
 	// 目标语言，详见入参Target
@@ -794,7 +794,7 @@ func (r *TextTranslateBatchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TextTranslateRequestParams struct {
-	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于2000字符。
+	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于6000字符。
 	SourceText *string `json:"SourceText,omitempty" name:"SourceText"`
 
 	// 源语言，支持：
@@ -851,7 +851,7 @@ type TextTranslateRequestParams struct {
 type TextTranslateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于2000字符。
+	// 待翻译的文本，文本统一使用utf-8格式编码，非utf-8格式编码字符会翻译失败，请传入有效文本，html标记等非常规翻译文本可能会翻译失败。单次请求的文本长度需要低于6000字符。
 	SourceText *string `json:"SourceText,omitempty" name:"SourceText"`
 
 	// 源语言，支持：

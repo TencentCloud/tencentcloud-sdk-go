@@ -1964,6 +1964,7 @@ func NewModifyStaffResponse() (response *ModifyStaffResponse) {
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
 //  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 func (c *Client) ModifyStaff(request *ModifyStaffRequest) (response *ModifyStaffResponse, err error) {
     return c.ModifyStaffWithContext(context.Background(), request)
 }
@@ -1979,6 +1980,7 @@ func (c *Client) ModifyStaff(request *ModifyStaffRequest) (response *ModifyStaff
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
 //  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 func (c *Client) ModifyStaffWithContext(ctx context.Context, request *ModifyStaffRequest) (response *ModifyStaffResponse, err error) {
     if request == nil {
         request = NewModifyStaffRequest()
@@ -2024,6 +2026,7 @@ func NewResetExtensionPasswordResponse() (response *ResetExtensionPasswordRespon
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
 //  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 func (c *Client) ResetExtensionPassword(request *ResetExtensionPasswordRequest) (response *ResetExtensionPasswordResponse, err error) {
     return c.ResetExtensionPasswordWithContext(context.Background(), request)
 }
@@ -2039,6 +2042,7 @@ func (c *Client) ResetExtensionPassword(request *ResetExtensionPasswordRequest) 
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 //  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
 //  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 func (c *Client) ResetExtensionPasswordWithContext(ctx context.Context, request *ResetExtensionPasswordRequest) (response *ResetExtensionPasswordResponse, err error) {
     if request == nil {
         request = NewResetExtensionPasswordRequest()

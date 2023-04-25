@@ -68,6 +68,9 @@ const (
 	// 变更实例套餐失败。
 	FAILEDOPERATION_MODIFYINSTANCESBUNDLEFAILED = "FailedOperation.ModifyInstancesBundleFailed"
 
+	// 变更资源属性失败，请稍后重新操作。
+	FAILEDOPERATION_MODIFYRESOURCESATTRIBUTEFAILED = "FailedOperation.ModifyResourcesAttributeFailed"
+
 	// 续费实例失败。
 	FAILEDOPERATION_RENEWINSTANCESFAILED = "FailedOperation.RenewInstancesFailed"
 

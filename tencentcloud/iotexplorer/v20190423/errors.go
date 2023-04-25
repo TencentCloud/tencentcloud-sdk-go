@@ -452,6 +452,9 @@ const (
 	// 围栏下还存在绑定的设备。
 	UNSUPPORTEDOPERATION_BINDSEXISTUNDERFENCE = "UnsupportedOperation.BindsExistUnderFence"
 
+	// 存在重复的绑定关系。
+	UNSUPPORTEDOPERATION_CANNOTREBINDFAMILY = "UnsupportedOperation.CannotReBindFamily"
+
 	// 创建的设备已经存在。
 	UNSUPPORTEDOPERATION_DEVICEDUPKEYEXIST = "UnsupportedOperation.DeviceDupKeyExist"
 

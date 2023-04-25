@@ -371,6 +371,9 @@ const (
 	// 用户UIN无效。
 	INVALIDPARAMETER_QCLOUDUININVALID = "InvalidParameter.QcloudUinInvalid"
 
+	// TXT 记录无法匹配，请确认记录值是否准确，并再次验证。
+	INVALIDPARAMETER_QUHUITXTNOTMATCH = "InvalidParameter.QuhuiTxtNotMatch"
+
 	// TXT 记录未设置或暂未生效，请稍后重试。
 	INVALIDPARAMETER_QUHUITXTRECORDWAIT = "InvalidParameter.QuhuiTxtRecordWait"
 

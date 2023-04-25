@@ -2729,6 +2729,10 @@ type Component struct {
 
 	// 关键字索引，可选参数，如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。示例[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
 	KeywordIndexes []*int64 `json:"KeywordIndexes,omitempty" name:"KeywordIndexes"`
+
+	// 填写提示的内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Placeholder *string `json:"Placeholder,omitempty" name:"Placeholder"`
 }
 
 // Predefined struct for user

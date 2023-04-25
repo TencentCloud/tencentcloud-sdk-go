@@ -131,30 +131,39 @@ type Activity struct {
 
 type ActivityPara struct {
 	// 视频转码任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTask *TranscodeTaskInput `json:"TranscodeTask,omitempty" name:"TranscodeTask"`
 
 	// 视频转动图任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnimatedGraphicTask *AnimatedGraphicTaskInput `json:"AnimatedGraphicTask,omitempty" name:"AnimatedGraphicTask"`
 
 	// 视频按时间点截图任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetTask *SnapshotByTimeOffsetTaskInput `json:"SnapshotByTimeOffsetTask,omitempty" name:"SnapshotByTimeOffsetTask"`
 
 	// 视频采样截图任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleSnapshotTask *SampleSnapshotTaskInput `json:"SampleSnapshotTask,omitempty" name:"SampleSnapshotTask"`
 
 	// 视频截雪碧图任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSpriteTask *ImageSpriteTaskInput `json:"ImageSpriteTask,omitempty" name:"ImageSpriteTask"`
 
 	// 转自适应码流任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdaptiveDynamicStreamingTask *AdaptiveDynamicStreamingTaskInput `json:"AdaptiveDynamicStreamingTask,omitempty" name:"AdaptiveDynamicStreamingTask"`
 
 	// 视频内容审核类型任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
 	// 视频内容分析类型任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
 
 	// 视频内容识别类型任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 }
 
@@ -12745,7 +12754,7 @@ type SchedulesInfo struct {
 	// Enabled：已启用，
 	// Disabled：已禁用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status []*string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 编排绑定的触发规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。

@@ -561,14 +561,7 @@ func NewBatchDescribeDocumentResponse() (response *BatchDescribeDocumentResponse
 // 批量获取文档详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) BatchDescribeDocument(request *BatchDescribeDocumentRequest) (response *BatchDescribeDocumentResponse, err error) {
     return c.BatchDescribeDocumentWithContext(context.Background(), request)
 }
@@ -577,14 +570,7 @@ func (c *Client) BatchDescribeDocument(request *BatchDescribeDocumentRequest) (r
 // 批量获取文档详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) BatchDescribeDocumentWithContext(ctx context.Context, request *BatchDescribeDocumentRequest) (response *BatchDescribeDocumentResponse, err error) {
     if request == nil {
         request = NewBatchDescribeDocumentRequest()
@@ -737,6 +723,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 // 创建房间内可以使用的文档。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
@@ -748,6 +735,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 // 创建房间内可以使用的文档。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
@@ -1777,8 +1765,7 @@ func NewDescribeDocumentsResponse() (response *DescribeDocumentsResponse) {
 // 批量获取文档信息（已废弃，替代接口BatchDescribeDocument）
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeDocuments(request *DescribeDocumentsRequest) (response *DescribeDocumentsResponse, err error) {
     return c.DescribeDocumentsWithContext(context.Background(), request)
 }
@@ -1791,8 +1778,7 @@ func (c *Client) DescribeDocuments(request *DescribeDocumentsRequest) (response 
 // 批量获取文档信息（已废弃，替代接口BatchDescribeDocument）
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeDocumentsWithContext(ctx context.Context, request *DescribeDocumentsRequest) (response *DescribeDocumentsResponse, err error) {
     if request == nil {
         request = NewDescribeDocumentsRequest()

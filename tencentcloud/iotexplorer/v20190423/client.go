@@ -3268,6 +3268,7 @@ func NewDirectBindDeviceInFamilyResponse() (response *DirectBindDeviceInFamilyRe
 //  UNAUTHORIZEDOPERATION_APPNOPERMISSION = "UnauthorizedOperation.AppNoPermission"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOFAMILY = "UnauthorizedOperation.NoPermissionToFamily"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_CANNOTREBINDFAMILY = "UnsupportedOperation.CannotReBindFamily"
 //  UNSUPPORTEDOPERATION_DEVICETYPE = "UnsupportedOperation.DeviceType"
 func (c *Client) DirectBindDeviceInFamily(request *DirectBindDeviceInFamilyRequest) (response *DirectBindDeviceInFamilyResponse, err error) {
     return c.DirectBindDeviceInFamilyWithContext(context.Background(), request)
@@ -3290,6 +3291,7 @@ func (c *Client) DirectBindDeviceInFamily(request *DirectBindDeviceInFamilyReque
 //  UNAUTHORIZEDOPERATION_APPNOPERMISSION = "UnauthorizedOperation.AppNoPermission"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOFAMILY = "UnauthorizedOperation.NoPermissionToFamily"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_CANNOTREBINDFAMILY = "UnsupportedOperation.CannotReBindFamily"
 //  UNSUPPORTEDOPERATION_DEVICETYPE = "UnsupportedOperation.DeviceType"
 func (c *Client) DirectBindDeviceInFamilyWithContext(ctx context.Context, request *DirectBindDeviceInFamilyRequest) (response *DirectBindDeviceInFamilyResponse, err error) {
     if request == nil {
@@ -4276,6 +4278,7 @@ func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
@@ -4291,6 +4294,7 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
@@ -5094,6 +5098,7 @@ func NewModifyTopicRuleResponse() (response *ModifyTopicRuleResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = "InvalidParameterValue.CheckForwardURLFail"
 //  INVALIDPARAMETERVALUE_FAILACTIONHASSAMEDEVICE = "InvalidParameterValue.FailActionHasSameDevice"
@@ -5117,6 +5122,7 @@ func (c *Client) ModifyTopicRule(request *ModifyTopicRuleRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CHECKFORWARDURLFAIL = "InvalidParameterValue.CheckForwardURLFail"
 //  INVALIDPARAMETERVALUE_FAILACTIONHASSAMEDEVICE = "InvalidParameterValue.FailActionHasSameDevice"

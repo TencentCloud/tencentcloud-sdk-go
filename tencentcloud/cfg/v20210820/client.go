@@ -72,6 +72,7 @@ func NewCreateTaskFromTemplateResponse() (response *CreateTaskFromTemplateRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTaskFromTemplate(request *CreateTaskFromTemplateRequest) (response *CreateTaskFromTemplateResponse, err error) {
@@ -87,6 +88,7 @@ func (c *Client) CreateTaskFromTemplate(request *CreateTaskFromTemplateRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateTaskFromTemplateWithContext(ctx context.Context, request *CreateTaskFromTemplateRequest) (response *CreateTaskFromTemplateResponse, err error) {

@@ -1,3 +1,219 @@
+# Release v1.0.646
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 38 次发布
+
+发布时间：2023-04-25 01:04:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ActionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ActionSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 122 次发布
+
+发布时间：2023-04-25 01:08:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AdjustCdbProxy](https://cloud.tencent.com/document/api/236/90590)
+* [AdjustCdbProxyAddress](https://cloud.tencent.com/document/api/236/90589)
+* [CloseCdbProxyAddress](https://cloud.tencent.com/document/api/236/90588)
+* [CreateCdbProxy](https://cloud.tencent.com/document/api/236/90587)
+* [CreateCdbProxyAddress](https://cloud.tencent.com/document/api/236/90586)
+* [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585)
+* [DescribeProxySupportParam](https://cloud.tencent.com/document/api/236/90584)
+* [ModifyCdbProxyAddressDesc](https://cloud.tencent.com/document/api/236/90583)
+* [ModifyCdbProxyAddressVipAndVPort](https://cloud.tencent.com/document/api/236/90582)
+* [ModifyCdbProxyParam](https://cloud.tencent.com/document/api/236/90581)
+
+新增数据结构：
+
+* [ProxyAddress](https://cloud.tencent.com/document/api/236/15878#ProxyAddress)
+* [ProxyAllocation](https://cloud.tencent.com/document/api/236/15878#ProxyAllocation)
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/236/15878#ProxyGroupInfo)
+* [ProxyInst](https://cloud.tencent.com/document/api/236/15878#ProxyInst)
+* [ProxyNode](https://cloud.tencent.com/document/api/236/15878#ProxyNode)
+* [ProxyNodeCustom](https://cloud.tencent.com/document/api/236/15878#ProxyNodeCustom)
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 19 次发布
+
+发布时间：2023-04-25 01:11:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyFileSystemAutoScaleUpRule](https://cloud.tencent.com/document/api/582/90591)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 74 次发布
+
+发布时间：2023-04-24 16:40:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：Placeholder
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 39 次发布
+
+发布时间：2023-04-25 01:27:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [SupportFeature](https://cloud.tencent.com/document/api/608/37023#SupportFeature)
+
+修改数据结构：
+
+* [RegionDetail](https://cloud.tencent.com/document/api/608/37023#RegionDetail)
+
+	* 新增成员：SupportFeature
+
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 50 次发布
+
+发布时间：2023-04-25 01:30:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProjectEntryEx](https://cloud.tencent.com/document/api/1081/34988#ProjectEntryEx)
+
+	* 新增成员：EnableOpenState
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 57 次发布
+
+发布时间：2023-04-25 01:38:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SchedulesInfo](https://cloud.tencent.com/document/api/862/37615#SchedulesInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>Status
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 54 次发布
+
+发布时间：2023-04-25 01:51:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVipInstance)
+
+	* 新增成员：ClusterStatus
+
+* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
+
+	* 新增成员：InternalEndpoint, HttpInternalEndpoint
+
+* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
+
+	* 新增成员：InternalEndpoint
+
+* [RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)
+
+	* 新增成员：MaxRetention, MinRetention, Retention
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 21 次发布
+
+发布时间：2023-04-25 01:54:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* <font color="#dd0000">**修改入参**：</font>ImageInfo
+
+
+修改数据结构：
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+
+	* 新增成员：ScaleStrategy, CronScaleJobs, ScaleMode, ServiceLimit, ScheduledAction
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
 # Release v1.0.645
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

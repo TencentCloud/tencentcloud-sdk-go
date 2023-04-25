@@ -113,6 +113,9 @@ const (
 	// 获取CLS机器组失败。
 	FAILEDOPERATION_GETCLSMACHINEGROUP = "FailedOperation.GetClsMachineGroup"
 
+	// 获取CLS日志主题失败。
+	FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
+
 	// 通过配置文件创建集群Client错误。
 	FAILEDOPERATION_KUBECLIENTCONF = "FailedOperation.KubeClientConf"
 

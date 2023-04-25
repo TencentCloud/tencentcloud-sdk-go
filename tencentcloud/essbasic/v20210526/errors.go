@@ -368,6 +368,9 @@ const (
 	// 没有API权限。
 	OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 
+	// 企业暂未开通手机号验证身份的服务，请在企业中心开通再使用
+	OPERATIONDENIED_NOAPPROVERMOBILECHECKPERMISSION = "OperationDenied.NoApproverMobileCheckPermission"
+
 	// 无权操作合同。
 	OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 
@@ -394,6 +397,9 @@ const (
 
 	// 出证计费额度不足。
 	OPERATIONDENIED_PROVENOQUOTA = "OperationDenied.ProveNoQuota"
+
+	// 必填控件未填
+	OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
 
 	// 用户不归属于当前企业，无法操作，请检查后重试。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"

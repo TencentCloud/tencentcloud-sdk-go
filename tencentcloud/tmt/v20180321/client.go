@@ -120,12 +120,13 @@ func NewGetFileTranslateResponse() (response *GetFileTranslateResponse) {
 // GetFileTranslate
 // 在调用文档翻译请求接口后，有回调和轮询两种方式获取识别结果。
 //
-// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见文档翻译结果回调 。
+// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见文档翻译结果回调。
 //
 // • 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见参数说明。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetFileTranslate(request *GetFileTranslateRequest) (response *GetFileTranslateResponse, err error) {
     return c.GetFileTranslateWithContext(context.Background(), request)
 }
@@ -133,12 +134,13 @@ func (c *Client) GetFileTranslate(request *GetFileTranslateRequest) (response *G
 // GetFileTranslate
 // 在调用文档翻译请求接口后，有回调和轮询两种方式获取识别结果。
 //
-// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见文档翻译结果回调 。
+// •当采用回调方式时，翻译完成后会将结果通过 POST 请求的形式通知到用户在请求时填写的回调 URL，具体请参见文档翻译结果回调。
 //
 // • 当采用轮询方式时，需要主动提交任务ID来轮询识别结果，共有任务成功、等待、执行中和失败四种结果，具体信息请参见参数说明。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetFileTranslateWithContext(ctx context.Context, request *GetFileTranslateRequest) (response *GetFileTranslateResponse, err error) {
     if request == nil {
         request = NewGetFileTranslateRequest()
@@ -263,15 +265,19 @@ func NewLanguageDetectResponse() (response *LanguageDetectResponse) {
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+//  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
 //  INTERNALERROR_ERRORUNKNOWN = "InternalError.ErrorUnknown"
 //  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = "LimitExceeded.LimitedAccessFrequency"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -291,15 +297,19 @@ func (c *Client) LanguageDetect(request *LanguageDetectRequest) (response *Langu
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+//  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
 //  INTERNALERROR_ERRORUNKNOWN = "InternalError.ErrorUnknown"
 //  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = "LimitExceeded.LimitedAccessFrequency"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -449,7 +459,9 @@ func NewTextTranslateResponse() (response *TextTranslateResponse) {
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+//  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
@@ -459,6 +471,7 @@ func NewTextTranslateResponse() (response *TextTranslateResponse) {
 //  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = "LimitExceeded.LimitedAccessFrequency"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -479,7 +492,9 @@ func (c *Client) TextTranslate(request *TextTranslateRequest) (response *TextTra
 // 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+//  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
@@ -489,6 +504,7 @@ func (c *Client) TextTranslate(request *TextTranslateRequest) (response *TextTra
 //  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = "LimitExceeded.LimitedAccessFrequency"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -537,15 +553,19 @@ func NewTextTranslateBatchResponse() (response *TextTranslateBatchResponse) {
 // 文本翻译的批量接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+//  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
 //  INTERNALERROR_ERRORUNKNOWN = "InternalError.ErrorUnknown"
 //  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = "LimitExceeded.LimitedAccessFrequency"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -564,15 +584,19 @@ func (c *Client) TextTranslateBatch(request *TextTranslateBatchRequest) (respons
 // 文本翻译的批量接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_LANGUAGERECOGNITIONERR = "FailedOperation.LanguageRecognitionErr"
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+//  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
 //  INTERNALERROR_ERRORUNKNOWN = "InternalError.ErrorUnknown"
 //  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_LIMITEDACCESSFREQUENCY = "LimitExceeded.LimitedAccessFrequency"
 //  MISSINGPARAMETER = "MissingParameter"
