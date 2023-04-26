@@ -7896,6 +7896,10 @@ type RecordPlanItem struct {
 	// 绑定的设备列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Devices []*DeviceItem `json:"Devices,omitempty" name:"Devices"`
+
+	// 录像存储天数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordStorageTime *int64 `json:"RecordStorageTime,omitempty" name:"RecordStorageTime"`
 }
 
 type RecordStatistic struct {

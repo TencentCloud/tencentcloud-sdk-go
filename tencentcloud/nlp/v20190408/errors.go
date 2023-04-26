@@ -29,17 +29,26 @@ const (
 	// 非法文本输入导致返回异常
 	FAILEDOPERATION_ILLEGALTEXTERROR = "FailedOperation.IllegalTextError"
 
+	// 服务内部错误，请重试。
+	FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+
 	// 暂无春联生成，请更换关键词重试。
 	FAILEDOPERATION_NOCOUPLETS = "FailedOperation.NoCouplets"
 
 	// 暂无诗词生成，请更换关键词重试。
 	FAILEDOPERATION_NOPOETRY = "FailedOperation.NoPoetry"
 
+	// 暂无结果，请更换文本重试。
+	FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+
 	// 未查询到结果。
 	FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
 
 	// 后端服务超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+
+	// 服务器繁忙，请稍后再试。
+	FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
 
 	// RPC请求失败，一般为算法微服务故障。
 	FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
@@ -71,11 +80,20 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 服务调用失败。
+	INVALIDPARAMETER_SERVICEERROR = "InvalidParameter.ServiceError"
+
+	// 文本长度超过限制。
+	INVALIDPARAMETER_TEXTTOOLONGCODE = "InvalidParameter.TextTooLongCode"
+
 	// 参数空值错误
 	INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 
 	// Genre非法，请参考Genre参数说明。
 	INVALIDPARAMETERVALUE_GENRE = "InvalidParameterValue.Genre"
+
+	// 参数不合法。
+	INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
 
 	// PoetryType非法，请参考PoetryType参数说明。
 	INVALIDPARAMETERVALUE_POETRYTYPE = "InvalidParameterValue.PoetryType"

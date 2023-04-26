@@ -454,6 +454,9 @@ type CreateTawInstanceRequestParams struct {
 
 	// 预付费资源包数量(仅预付费需要)
 	ResourcePackageNum *uint64 `json:"ResourcePackageNum,omitempty" name:"ResourcePackageNum"`
+
+	// 实例类型 1:原web相关类型 2:app端类型
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type CreateTawInstanceRequest struct {
@@ -491,6 +494,9 @@ type CreateTawInstanceRequest struct {
 
 	// 预付费资源包数量(仅预付费需要)
 	ResourcePackageNum *uint64 `json:"ResourcePackageNum,omitempty" name:"ResourcePackageNum"`
+
+	// 实例类型 1:原web相关类型 2:app端类型
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 func (r *CreateTawInstanceRequest) ToJsonString() string {
@@ -516,6 +522,7 @@ func (r *CreateTawInstanceRequest) FromJsonString(s string) error {
 	delete(f, "BuyingChannel")
 	delete(f, "ResourcePackageType")
 	delete(f, "ResourcePackageNum")
+	delete(f, "InstanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTawInstanceRequest has unknown keys!", "")
 	}
@@ -7110,6 +7117,10 @@ type RumInstanceInfo struct {
 
 	// 创建时间
 	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 实例类型 1:原web相关类型 2:app端类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type RumProject struct {

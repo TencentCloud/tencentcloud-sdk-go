@@ -3630,6 +3630,9 @@ type DomainAliasInfo struct {
 
 	// 域名别名
 	DomainAlias *string `json:"DomainAlias,omitempty" name:"DomainAlias"`
+
+	// 别名状态：1-DNS不正确；2-正常；3-封禁。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type DomainAnalyticsDetail struct {
@@ -5714,6 +5717,9 @@ type RollbackSnapshotRequestParams struct {
 
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 指定需要回滚的记录
+	RecordList []*SnapshotRecord `json:"RecordList,omitempty" name:"RecordList"`
 }
 
 type RollbackSnapshotRequest struct {
@@ -5727,6 +5733,9 @@ type RollbackSnapshotRequest struct {
 
 	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
 	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 指定需要回滚的记录
+	RecordList []*SnapshotRecord `json:"RecordList,omitempty" name:"RecordList"`
 }
 
 func (r *RollbackSnapshotRequest) ToJsonString() string {
@@ -5744,6 +5753,7 @@ func (r *RollbackSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "SnapshotId")
 	delete(f, "DomainId")
+	delete(f, "RecordList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackSnapshotRequest has unknown keys!", "")
 	}
@@ -5845,6 +5855,14 @@ type SnapshotRecord struct {
 	// MX优先级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MX *string `json:"MX,omitempty" name:"MX"`
+
+	// 权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *string `json:"Weight,omitempty" name:"Weight"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }
 
 type SubdomainAliasAnalyticsItem struct {

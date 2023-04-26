@@ -2882,7 +2882,7 @@ type DescribeBillingSpecsRequestParams struct {
 	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 付费模式：POSTPAID_BY_HOUR按量付费、PREPAID包年包月
+	// 付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
@@ -2895,7 +2895,7 @@ type DescribeBillingSpecsRequest struct {
 	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 付费模式：POSTPAID_BY_HOUR按量付费、PREPAID包年包月
+	// 付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘

@@ -275,7 +275,7 @@ const (
 	// 余额不足，创建/更新失败。
 	OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 
-	// 后付费资源售罄。
+	// 按量计费资源售罄。
 	OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 
 	// 觅影资源包余额不足，请先充值。

@@ -929,7 +929,7 @@ const (
 	// 无效的原机型。
 	UNSUPPORTEDOPERATION_ORIGINALINSTANCETYPEINVALID = "UnsupportedOperation.OriginalInstanceTypeInvalid"
 
-	// 你的账户不支持镜像预热
+	// 您的账户不支持镜像预热
 	UNSUPPORTEDOPERATION_PREHEATIMAGE = "UnsupportedOperation.PreheatImage"
 
 	// 公共镜像或市场镜像不支持导出。

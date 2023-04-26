@@ -86,6 +86,20 @@ func (r *AutoSummarizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BasicParticiple struct {
+	// 基础词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 基础词在NormalText中的起始位置。
+	BeginOffset *int64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+
+	// 基础词的长度。
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 词性。
+	Pos *string `json:"Pos,omitempty" name:"Pos"`
+}
+
 type CCIToken struct {
 	// 错别字内容
 	Word *string `json:"Word,omitempty" name:"Word"`
@@ -201,6 +215,52 @@ type ClassificationResult struct {
 
 	// 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
 	FifthClassProbability *float64 `json:"FifthClassProbability,omitempty" name:"FifthClassProbability"`
+}
+
+type CompoundParticiple struct {
+	// 基础词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 基础词在NormalText中的起始位置。
+	BeginOffset *int64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+
+	// 基础词的长度。
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 词性。
+	Pos *string `json:"Pos,omitempty" name:"Pos"`
+}
+
+type CorrectionItem struct {
+	// 纠错句子的序号。
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+
+	// 错误的起始位置，从0开始。
+	BeginOffset *int64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+
+	// 错误内容长度。
+	Len *int64 `json:"Len,omitempty" name:"Len"`
+
+	// 错误内容。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 纠错结果，当为删除类错误时，结果为null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorrectWord []*string `json:"CorrectWord,omitempty" name:"CorrectWord"`
+
+	// 纠错类型。0：替换；1：插入；2：删除。
+	CorrectionType *int64 `json:"CorrectionType,omitempty" name:"CorrectionType"`
+
+	// 纠错信息置信度。0：error；1：warning；error的置信度更高。（仅供参考）
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 纠错信息中文描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DescriptionZh *string `json:"DescriptionZh,omitempty" name:"DescriptionZh"`
+
+	// 纠错信息英文描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DescriptionEn *string `json:"DescriptionEn,omitempty" name:"DescriptionEn"`
 }
 
 // Predefined struct for user
@@ -762,6 +822,160 @@ type DpToken struct {
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
+type Embellish struct {
+	// 润色后的文本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 润色类型。类型列表
+	// expansion：扩写
+	// rewriting：改写
+	// translation_m2a：从现代文改写为古文
+	// translation_a2m：从古文改写为现代文
+	// 
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmbellishType *string `json:"EmbellishType,omitempty" name:"EmbellishType"`
+}
+
+type Entity struct {
+	// 基础词。
+	Word *string `json:"Word,omitempty" name:"Word"`
+
+	// 基础词在NormalText中的起始位置。
+	BeginOffset *int64 `json:"BeginOffset,omitempty" name:"BeginOffset"`
+
+	// 基础词的长度。
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 实体类型的标准名字。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 类型名字的自然语言表达。（中文或英文）
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+// Predefined struct for user
+type EvaluateSentenceSimilarityRequestParams struct {
+	// 待分析的句子对数组。句子对应不超过5对，支持中英文文本，原句子与目标句子均应不超过500字符。
+	SentencePairList []*SentencePair `json:"SentencePairList,omitempty" name:"SentencePairList"`
+}
+
+type EvaluateSentenceSimilarityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待分析的句子对数组。句子对应不超过5对，支持中英文文本，原句子与目标句子均应不超过500字符。
+	SentencePairList []*SentencePair `json:"SentencePairList,omitempty" name:"SentencePairList"`
+}
+
+func (r *EvaluateSentenceSimilarityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EvaluateSentenceSimilarityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SentencePairList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EvaluateSentenceSimilarityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EvaluateSentenceSimilarityResponseParams struct {
+	// 每个句子对的相似度分值。
+	ScoreList []*float64 `json:"ScoreList,omitempty" name:"ScoreList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type EvaluateSentenceSimilarityResponse struct {
+	*tchttp.BaseResponse
+	Response *EvaluateSentenceSimilarityResponseParams `json:"Response"`
+}
+
+func (r *EvaluateSentenceSimilarityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EvaluateSentenceSimilarityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EvaluateWordSimilarityRequestParams struct {
+	// 计算相似度的源词。（仅支持UTF-8格式，不超过10字符）
+	SourceWord *string `json:"SourceWord,omitempty" name:"SourceWord"`
+
+	// 计算相似度的目标词。（仅支持UTF-8格式，不超过10字符）
+	TargetWord *string `json:"TargetWord,omitempty" name:"TargetWord"`
+}
+
+type EvaluateWordSimilarityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 计算相似度的源词。（仅支持UTF-8格式，不超过10字符）
+	SourceWord *string `json:"SourceWord,omitempty" name:"SourceWord"`
+
+	// 计算相似度的目标词。（仅支持UTF-8格式，不超过10字符）
+	TargetWord *string `json:"TargetWord,omitempty" name:"TargetWord"`
+}
+
+func (r *EvaluateWordSimilarityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EvaluateWordSimilarityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceWord")
+	delete(f, "TargetWord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EvaluateWordSimilarityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EvaluateWordSimilarityResponseParams struct {
+	// 词相似度分值。
+	Similarity *float64 `json:"Similarity,omitempty" name:"Similarity"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type EvaluateWordSimilarityResponse struct {
+	*tchttp.BaseResponse
+	Response *EvaluateWordSimilarityResponseParams `json:"Response"`
+}
+
+func (r *EvaluateWordSimilarityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EvaluateWordSimilarityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type GenerateCoupletRequestParams struct {
 	// 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
@@ -829,6 +1043,85 @@ func (r *GenerateCoupletResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GenerateCoupletResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateKeywordSentenceRequestParams struct {
+	// 生成句子的关键词，关键词个数需不超过4个，中文关键词长度应不超过10字符，英文关键词长度不超过3个单词。关键词中不可包含标点符号。
+	WordList []*string `json:"WordList,omitempty" name:"WordList"`
+
+	// 返回生成句子的个数。数量需>=1且<=5。
+	// （注意实际结果可能小于指定个数）
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+
+	// 指定生成句子的领域，支持领域列表
+	// general：通用领域，支持中英文
+	// academic：学术领域，仅支持英文
+	// 默认为general（通用领域）。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+type GenerateKeywordSentenceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生成句子的关键词，关键词个数需不超过4个，中文关键词长度应不超过10字符，英文关键词长度不超过3个单词。关键词中不可包含标点符号。
+	WordList []*string `json:"WordList,omitempty" name:"WordList"`
+
+	// 返回生成句子的个数。数量需>=1且<=5。
+	// （注意实际结果可能小于指定个数）
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+
+	// 指定生成句子的领域，支持领域列表
+	// general：通用领域，支持中英文
+	// academic：学术领域，仅支持英文
+	// 默认为general（通用领域）。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
+func (r *GenerateKeywordSentenceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateKeywordSentenceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WordList")
+	delete(f, "Number")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateKeywordSentenceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateKeywordSentenceResponseParams struct {
+	// 生成的句子列表。
+	KeywordSentenceList []*KeywordSentence `json:"KeywordSentenceList,omitempty" name:"KeywordSentenceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GenerateKeywordSentenceResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateKeywordSentenceResponseParams `json:"Response"`
+}
+
+func (r *GenerateKeywordSentenceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateKeywordSentenceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -912,6 +1205,11 @@ type Keyword struct {
 
 	// 关键词
 	Word *string `json:"Word,omitempty" name:"Word"`
+}
+
+type KeywordSentence struct {
+	// 通过关键词生成的句子。
+	TargetText *string `json:"TargetText,omitempty" name:"TargetText"`
 }
 
 // Predefined struct for user
@@ -1076,6 +1374,72 @@ type NerToken struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+// Predefined struct for user
+type ParseWordsRequestParams struct {
+	// 待分析的文本（支持中英文文本，不超过500字符）
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type ParseWordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待分析的文本（支持中英文文本，不超过500字符）
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+func (r *ParseWordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseWordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ParseWordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ParseWordsResponseParams struct {
+	// 输入文本正则化的结果。（包括对英文文本中的开头和实体进行大写等）
+	NormalText *string `json:"NormalText,omitempty" name:"NormalText"`
+
+	// 基础粒度分词和词性标注的结果。（词性表请参见附录）
+	BasicParticiples []*BasicParticiple `json:"BasicParticiples,omitempty" name:"BasicParticiples"`
+
+	// 复合粒度分词和词性标注的结果。（词性表请参见附录）
+	CompoundParticiples []*CompoundParticiple `json:"CompoundParticiples,omitempty" name:"CompoundParticiples"`
+
+	// 实体识别结果。（实体类型数据请参见附录）
+	Entities []*Entity `json:"Entities,omitempty" name:"Entities"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ParseWordsResponse struct {
+	*tchttp.BaseResponse
+	Response *ParseWordsResponseParams `json:"Response"`
+}
+
+func (r *ParseWordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ParseWordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PosToken struct {
 	// 基础词
 	Word *string `json:"Word,omitempty" name:"Word"`
@@ -1088,6 +1452,70 @@ type PosToken struct {
 
 	// 词性
 	Pos *string `json:"Pos,omitempty" name:"Pos"`
+}
+
+// Predefined struct for user
+type RetrieveSimilarWordsRequestParams struct {
+	// 输入的词语。（仅支持UTF-8格式，不超过10字符）
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 召回的相似词个数，取值范围为1-20。
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+}
+
+type RetrieveSimilarWordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 输入的词语。（仅支持UTF-8格式，不超过10字符）
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 召回的相似词个数，取值范围为1-20。
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+}
+
+func (r *RetrieveSimilarWordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetrieveSimilarWordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "Number")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RetrieveSimilarWordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RetrieveSimilarWordsResponseParams struct {
+	// 召回的相似词数组。
+	WordList []*string `json:"WordList,omitempty" name:"WordList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RetrieveSimilarWordsResponse struct {
+	*tchttp.BaseResponse
+	Response *RetrieveSimilarWordsResponseParams `json:"Response"`
+}
+
+func (r *RetrieveSimilarWordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetrieveSimilarWordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SearchResult struct {
@@ -1170,6 +1598,64 @@ func (r *SearchWordItemsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type SentenceCorrectionRequestParams struct {
+	// 待纠错的句子列表。可以以数组方式在一次请求中填写多个待纠错的句子。文本统一使用utf-8格式编码，每个中文句子的长度不超过150字符，每个英文句子的长度不超过100个单词，且数组长度需小于150，即句子总数需少于150句。
+	TextList []*string `json:"TextList,omitempty" name:"TextList"`
+}
+
+type SentenceCorrectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待纠错的句子列表。可以以数组方式在一次请求中填写多个待纠错的句子。文本统一使用utf-8格式编码，每个中文句子的长度不超过150字符，每个英文句子的长度不超过100个单词，且数组长度需小于150，即句子总数需少于150句。
+	TextList []*string `json:"TextList,omitempty" name:"TextList"`
+}
+
+func (r *SentenceCorrectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SentenceCorrectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TextList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceCorrectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SentenceCorrectionResponseParams struct {
+	// 纠错结果列表。
+	// （注意仅展示错误句子的纠错结果，若句子无错则不展示，若全部待纠错句子都被认为无错，则可能返回数组为空）
+	CorrectionList []*CorrectionItem `json:"CorrectionList,omitempty" name:"CorrectionList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SentenceCorrectionResponse struct {
+	*tchttp.BaseResponse
+	Response *SentenceCorrectionResponseParams `json:"Response"`
+}
+
+func (r *SentenceCorrectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SentenceCorrectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SentenceEmbeddingRequestParams struct {
 	// 输入的文本（仅支持UTF-8格式，不超过500字）
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -1227,6 +1713,14 @@ func (r *SentenceEmbeddingResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SentenceEmbeddingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SentencePair struct {
+	// 需要与目标句子计算相似度的源句子。（仅支持UTF-8格式，不超过500字符）
+	SourceText *string `json:"SourceText,omitempty" name:"SourceText"`
+
+	// 目标句子。（仅支持UTF-8格式，不超过500字符）
+	TargetText *string `json:"TargetText,omitempty" name:"TargetText"`
 }
 
 // Predefined struct for user
@@ -1588,6 +2082,102 @@ func (r *TextCorrectionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type TextEmbellishRequestParams struct {
+	// 待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 待润色文本的语言类型，支持语言列表
+	// zh：中文
+	// en：英文
+	SourceLang *string `json:"SourceLang,omitempty" name:"SourceLang"`
+
+	// 返回润色结果的个数。数量需>=1且<=5。
+	// （注意实际结果可能小于指定个数）
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+
+	// 控制润色类型，类型列表
+	// both：同时返回改写和扩写
+	// expansion：扩写
+	// rewriting：改写
+	// m2a：从现代文改写为古文
+	// a2m：从古文改写为现代文
+	// 默认为both。
+	Style *string `json:"Style,omitempty" name:"Style"`
+}
+
+type TextEmbellishRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 待润色文本的语言类型，支持语言列表
+	// zh：中文
+	// en：英文
+	SourceLang *string `json:"SourceLang,omitempty" name:"SourceLang"`
+
+	// 返回润色结果的个数。数量需>=1且<=5。
+	// （注意实际结果可能小于指定个数）
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+
+	// 控制润色类型，类型列表
+	// both：同时返回改写和扩写
+	// expansion：扩写
+	// rewriting：改写
+	// m2a：从现代文改写为古文
+	// a2m：从古文改写为现代文
+	// 默认为both。
+	Style *string `json:"Style,omitempty" name:"Style"`
+}
+
+func (r *TextEmbellishRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextEmbellishRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "SourceLang")
+	delete(f, "Number")
+	delete(f, "Style")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextEmbellishRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextEmbellishResponseParams struct {
+	// 润色结果列表。
+	EmbellishList []*Embellish `json:"EmbellishList,omitempty" name:"EmbellishList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type TextEmbellishResponse struct {
+	*tchttp.BaseResponse
+	Response *TextEmbellishResponseParams `json:"Response"`
+}
+
+func (r *TextEmbellishResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextEmbellishResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type TextSimilarityProRequestParams struct {
 	// 需要与目标句子计算相似度的源句子（仅支持UTF-8格式，不超过128字符）
 	SrcText *string `json:"SrcText,omitempty" name:"SrcText"`
@@ -1712,6 +2302,113 @@ func (r *TextSimilarityResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TextSimilarityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextWritingRequestParams struct {
+	// 待续写的句子，文本统一使用utf-8格式编码，长度不超过200字符。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 待续写文本的语言类型，支持语言列表
+	// zh：中文
+	// en：英文
+	SourceLang *string `json:"SourceLang,omitempty" name:"SourceLang"`
+
+	// 返回续写结果的个数。数量需>=1且<=5。
+	// （注意实际结果可能小于指定个数）
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+
+	// 指定续写领域，支持领域列表
+	// general：通用领域，支持中英文补全
+	// academic：学术领域，仅支持英文补全
+	// 默认为general（通用领域）。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定续写风格，支持风格列表
+	// science_fiction：科幻
+	// military_history：军事
+	// xuanhuan_wuxia：武侠
+	// urban_officialdom：职场
+	// 默认为xuanhuan_wuxia（武侠）。
+	Style *string `json:"Style,omitempty" name:"Style"`
+}
+
+type TextWritingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待续写的句子，文本统一使用utf-8格式编码，长度不超过200字符。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 待续写文本的语言类型，支持语言列表
+	// zh：中文
+	// en：英文
+	SourceLang *string `json:"SourceLang,omitempty" name:"SourceLang"`
+
+	// 返回续写结果的个数。数量需>=1且<=5。
+	// （注意实际结果可能小于指定个数）
+	Number *int64 `json:"Number,omitempty" name:"Number"`
+
+	// 指定续写领域，支持领域列表
+	// general：通用领域，支持中英文补全
+	// academic：学术领域，仅支持英文补全
+	// 默认为general（通用领域）。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 指定续写风格，支持风格列表
+	// science_fiction：科幻
+	// military_history：军事
+	// xuanhuan_wuxia：武侠
+	// urban_officialdom：职场
+	// 默认为xuanhuan_wuxia（武侠）。
+	Style *string `json:"Style,omitempty" name:"Style"`
+}
+
+func (r *TextWritingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextWritingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "SourceLang")
+	delete(f, "Number")
+	delete(f, "Domain")
+	delete(f, "Style")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextWritingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TextWritingResponseParams struct {
+	// 续写结果列表。
+	WritingList []*Writing `json:"WritingList,omitempty" name:"WritingList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type TextWritingResponse struct {
+	*tchttp.BaseResponse
+	Response *TextWritingResponseParams `json:"Response"`
+}
+
+func (r *TextWritingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TextWritingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1916,4 +2613,12 @@ func (r *WordSimilarityResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *WordSimilarityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Writing struct {
+	// 续写的文本。
+	TargetText *string `json:"TargetText,omitempty" name:"TargetText"`
+
+	// 续写的前缀。
+	PrefixText *string `json:"PrefixText,omitempty" name:"PrefixText"`
 }

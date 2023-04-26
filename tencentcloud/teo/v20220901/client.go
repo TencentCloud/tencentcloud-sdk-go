@@ -977,6 +977,54 @@ func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleR
     return
 }
 
+func NewCreateSecurityIPGroupRequest() (request *CreateSecurityIPGroupRequest) {
+    request = &CreateSecurityIPGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateSecurityIPGroup")
+    
+    
+    return
+}
+
+func NewCreateSecurityIPGroupResponse() (response *CreateSecurityIPGroupResponse) {
+    response = &CreateSecurityIPGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSecurityIPGroup
+// 创建安全 IP 组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) CreateSecurityIPGroup(request *CreateSecurityIPGroupRequest) (response *CreateSecurityIPGroupResponse, err error) {
+    return c.CreateSecurityIPGroupWithContext(context.Background(), request)
+}
+
+// CreateSecurityIPGroup
+// 创建安全 IP 组
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) CreateSecurityIPGroupWithContext(ctx context.Context, request *CreateSecurityIPGroupRequest) (response *CreateSecurityIPGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateSecurityIPGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSecurityIPGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSecurityIPGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSpeedTestingRequest() (request *CreateSpeedTestingRequest) {
     request = &CreateSpeedTestingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1451,6 +1499,72 @@ func (c *Client) DeleteRulesWithContext(ctx context.Context, request *DeleteRule
     request.SetContext(ctx)
     
     response = NewDeleteRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSecurityIPGroupRequest() (request *DeleteSecurityIPGroupRequest) {
+    request = &DeleteSecurityIPGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteSecurityIPGroup")
+    
+    
+    return
+}
+
+func NewDeleteSecurityIPGroupResponse() (response *DeleteSecurityIPGroupResponse) {
+    response = &DeleteSecurityIPGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSecurityIPGroup
+// 删除指定 IP 组，如果有规则引用了 IP 组情况，则不允许删除。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETER_INVALIDHTTPS = "InvalidParameter.InvalidHttps"
+//  INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = "InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion"
+//  INVALIDPARAMETER_INVALIDRANGEORIGINPULL = "InvalidParameter.InvalidRangeOriginPull"
+//  INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = "InvalidParameter.InvalidRuleEngineNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DeleteSecurityIPGroup(request *DeleteSecurityIPGroupRequest) (response *DeleteSecurityIPGroupResponse, err error) {
+    return c.DeleteSecurityIPGroupWithContext(context.Background(), request)
+}
+
+// DeleteSecurityIPGroup
+// 删除指定 IP 组，如果有规则引用了 IP 组情况，则不允许删除。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CONFIGLOCKED = "InternalError.ConfigLocked"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETER_INVALIDHTTPS = "InvalidParameter.InvalidHttps"
+//  INVALIDPARAMETER_INVALIDHTTPSCIPHERSUITEANDTLSVERSION = "InvalidParameter.InvalidHttpsCipherSuiteAndTlsVersion"
+//  INVALIDPARAMETER_INVALIDRANGEORIGINPULL = "InvalidParameter.InvalidRangeOriginPull"
+//  INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = "InvalidParameter.InvalidRuleEngineNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DeleteSecurityIPGroupWithContext(ctx context.Context, request *DeleteSecurityIPGroupRequest) (response *DeleteSecurityIPGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteSecurityIPGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSecurityIPGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSecurityIPGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -4807,6 +4921,54 @@ func (c *Client) ModifyRulePriorityWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifySecurityIPGroupRequest() (request *ModifySecurityIPGroupRequest) {
+    request = &ModifySecurityIPGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifySecurityIPGroup")
+    
+    
+    return
+}
+
+func NewModifySecurityIPGroupResponse() (response *ModifySecurityIPGroupResponse) {
+    response = &ModifySecurityIPGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySecurityIPGroup
+// 修改安全 IP 组。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) ModifySecurityIPGroup(request *ModifySecurityIPGroupRequest) (response *ModifySecurityIPGroupResponse, err error) {
+    return c.ModifySecurityIPGroupWithContext(context.Background(), request)
+}
+
+// ModifySecurityIPGroup
+// 修改安全 IP 组。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) ModifySecurityIPGroupWithContext(ctx context.Context, request *ModifySecurityIPGroupRequest) (response *ModifySecurityIPGroupResponse, err error) {
+    if request == nil {
+        request = NewModifySecurityIPGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySecurityIPGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySecurityIPGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySecurityPolicyRequest() (request *ModifySecurityPolicyRequest) {
     request = &ModifySecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5035,10 +5197,12 @@ func NewModifyZoneSettingResponse() (response *ModifyZoneSettingResponse) {
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = "InvalidParameter.InvalidResourceIdBilling"
 //  INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
+//  INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
 //  INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = "ResourceNotFound.PostMaxSizeQuotaNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyZoneSetting(request *ModifyZoneSettingRequest) (response *ModifyZoneSettingResponse, err error) {
@@ -5077,10 +5241,12 @@ func (c *Client) ModifyZoneSetting(request *ModifyZoneSettingRequest) (response 
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = "InvalidParameter.InvalidResourceIdBilling"
 //  INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
+//  INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = "InvalidParameter.PostMaxSizeLimitExceeded"
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
 //  INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = "ResourceNotFound.PostMaxSizeQuotaNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyZoneSettingWithContext(ctx context.Context, request *ModifyZoneSettingRequest) (response *ModifyZoneSettingResponse, err error) {

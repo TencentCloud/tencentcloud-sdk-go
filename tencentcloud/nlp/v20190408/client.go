@@ -669,6 +669,198 @@ func (c *Client) DescribeWordItemsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewEvaluateSentenceSimilarityRequest() (request *EvaluateSentenceSimilarityRequest) {
+    request = &EvaluateSentenceSimilarityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "EvaluateSentenceSimilarity")
+    
+    
+    return
+}
+
+func NewEvaluateSentenceSimilarityResponse() (response *EvaluateSentenceSimilarityResponse) {
+    response = &EvaluateSentenceSimilarityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EvaluateSentenceSimilarity
+// 通过计算句子间的语义相似性，帮助您快速找到文本中重复或相似的句子，用于文本聚类、相似问题检索等应用场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) EvaluateSentenceSimilarity(request *EvaluateSentenceSimilarityRequest) (response *EvaluateSentenceSimilarityResponse, err error) {
+    return c.EvaluateSentenceSimilarityWithContext(context.Background(), request)
+}
+
+// EvaluateSentenceSimilarity
+// 通过计算句子间的语义相似性，帮助您快速找到文本中重复或相似的句子，用于文本聚类、相似问题检索等应用场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) EvaluateSentenceSimilarityWithContext(ctx context.Context, request *EvaluateSentenceSimilarityRequest) (response *EvaluateSentenceSimilarityResponse, err error) {
+    if request == nil {
+        request = NewEvaluateSentenceSimilarityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EvaluateSentenceSimilarity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEvaluateSentenceSimilarityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEvaluateWordSimilarityRequest() (request *EvaluateWordSimilarityRequest) {
+    request = &EvaluateWordSimilarityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "EvaluateWordSimilarity")
+    
+    
+    return
+}
+
+func NewEvaluateWordSimilarityResponse() (response *EvaluateWordSimilarityResponse) {
+    response = &EvaluateWordSimilarityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EvaluateWordSimilarity
+// 评估两个词语在语义空间的相似程度，为您的场景应用提供有力支持，如关键词过滤、热门话题挖掘等。（目前仅支持中文）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) EvaluateWordSimilarity(request *EvaluateWordSimilarityRequest) (response *EvaluateWordSimilarityResponse, err error) {
+    return c.EvaluateWordSimilarityWithContext(context.Background(), request)
+}
+
+// EvaluateWordSimilarity
+// 评估两个词语在语义空间的相似程度，为您的场景应用提供有力支持，如关键词过滤、热门话题挖掘等。（目前仅支持中文）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) EvaluateWordSimilarityWithContext(ctx context.Context, request *EvaluateWordSimilarityRequest) (response *EvaluateWordSimilarityResponse, err error) {
+    if request == nil {
+        request = NewEvaluateWordSimilarityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EvaluateWordSimilarity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEvaluateWordSimilarityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGenerateCoupletRequest() (request *GenerateCoupletRequest) {
     request = &GenerateCoupletRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -751,6 +943,102 @@ func (c *Client) GenerateCoupletWithContext(ctx context.Context, request *Genera
     request.SetContext(ctx)
     
     response = NewGenerateCoupletResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGenerateKeywordSentenceRequest() (request *GenerateKeywordSentenceRequest) {
+    request = &GenerateKeywordSentenceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "GenerateKeywordSentence")
+    
+    
+    return
+}
+
+func NewGenerateKeywordSentenceResponse() (response *GenerateKeywordSentenceResponse) {
+    response = &GenerateKeywordSentenceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GenerateKeywordSentence
+// 提取文本中的关键信息，生成简洁明了的关键句子，便于用户快速获取核心观点。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_SERVICEERROR = "InvalidParameter.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) GenerateKeywordSentence(request *GenerateKeywordSentenceRequest) (response *GenerateKeywordSentenceResponse, err error) {
+    return c.GenerateKeywordSentenceWithContext(context.Background(), request)
+}
+
+// GenerateKeywordSentence
+// 提取文本中的关键信息，生成简洁明了的关键句子，便于用户快速获取核心观点。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_SERVICEERROR = "InvalidParameter.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) GenerateKeywordSentenceWithContext(ctx context.Context, request *GenerateKeywordSentenceRequest) (response *GenerateKeywordSentenceResponse, err error) {
+    if request == nil {
+        request = NewGenerateKeywordSentenceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateKeywordSentence require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateKeywordSentenceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1013,6 +1301,198 @@ func (c *Client) LexicalAnalysisWithContext(ctx context.Context, request *Lexica
     return
 }
 
+func NewParseWordsRequest() (request *ParseWordsRequest) {
+    request = &ParseWordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "ParseWords")
+    
+    
+    return
+}
+
+func NewParseWordsResponse() (response *ParseWordsResponse) {
+    response = &ParseWordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ParseWords
+// 通过精准地对文本进行分词、词性标注、命名实体识别等功能，助您更好地理解文本内容，挖掘出潜在的价值信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) ParseWords(request *ParseWordsRequest) (response *ParseWordsResponse, err error) {
+    return c.ParseWordsWithContext(context.Background(), request)
+}
+
+// ParseWords
+// 通过精准地对文本进行分词、词性标注、命名实体识别等功能，助您更好地理解文本内容，挖掘出潜在的价值信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) ParseWordsWithContext(ctx context.Context, request *ParseWordsRequest) (response *ParseWordsResponse, err error) {
+    if request == nil {
+        request = NewParseWordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ParseWords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewParseWordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRetrieveSimilarWordsRequest() (request *RetrieveSimilarWordsRequest) {
+    request = &RetrieveSimilarWordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "RetrieveSimilarWords")
+    
+    
+    return
+}
+
+func NewRetrieveSimilarWordsResponse() (response *RetrieveSimilarWordsResponse) {
+    response = &RetrieveSimilarWordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RetrieveSimilarWords
+// 基于大数据和深度学习技术，可以快速地找到与给定词语高度相似的其他词语，有助于提高搜索和推荐的准确性。（目前仅支持中文）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) RetrieveSimilarWords(request *RetrieveSimilarWordsRequest) (response *RetrieveSimilarWordsResponse, err error) {
+    return c.RetrieveSimilarWordsWithContext(context.Background(), request)
+}
+
+// RetrieveSimilarWords
+// 基于大数据和深度学习技术，可以快速地找到与给定词语高度相似的其他词语，有助于提高搜索和推荐的准确性。（目前仅支持中文）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) RetrieveSimilarWordsWithContext(ctx context.Context, request *RetrieveSimilarWordsRequest) (response *RetrieveSimilarWordsResponse, err error) {
+    if request == nil {
+        request = NewRetrieveSimilarWordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetrieveSimilarWords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRetrieveSimilarWordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchWordItemsRequest() (request *SearchWordItemsRequest) {
     request = &SearchWordItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1067,6 +1547,102 @@ func (c *Client) SearchWordItemsWithContext(ctx context.Context, request *Search
     request.SetContext(ctx)
     
     response = NewSearchWordItemsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSentenceCorrectionRequest() (request *SentenceCorrectionRequest) {
+    request = &SentenceCorrectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "SentenceCorrection")
+    
+    
+    return
+}
+
+func NewSentenceCorrectionResponse() (response *SentenceCorrectionResponse) {
+    response = &SentenceCorrectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SentenceCorrection
+// 智能识别并纠正句子中的语法、拼写、用词等错误，确保文本的准确性和可读性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_TEXTTOOLONGCODE = "InvalidParameter.TextTooLongCode"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) SentenceCorrection(request *SentenceCorrectionRequest) (response *SentenceCorrectionResponse, err error) {
+    return c.SentenceCorrectionWithContext(context.Background(), request)
+}
+
+// SentenceCorrection
+// 智能识别并纠正句子中的语法、拼写、用词等错误，确保文本的准确性和可读性。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETER_TEXTTOOLONGCODE = "InvalidParameter.TextTooLongCode"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) SentenceCorrectionWithContext(ctx context.Context, request *SentenceCorrectionRequest) (response *SentenceCorrectionResponse, err error) {
+    if request == nil {
+        request = NewSentenceCorrectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SentenceCorrection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSentenceCorrectionResponse()
     err = c.Send(request, response)
     return
 }
@@ -1513,6 +2089,96 @@ func (c *Client) TextCorrectionProWithContext(ctx context.Context, request *Text
     return
 }
 
+func NewTextEmbellishRequest() (request *TextEmbellishRequest) {
+    request = &TextEmbellishRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "TextEmbellish")
+    
+    
+    return
+}
+
+func NewTextEmbellishResponse() (response *TextEmbellishResponse) {
+    response = &TextEmbellishResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TextEmbellish
+// 运用先进的自然语言处理技术，对原始文本进行优化润色，提升文本的通顺性、表达力和语言质量。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) TextEmbellish(request *TextEmbellishRequest) (response *TextEmbellishResponse, err error) {
+    return c.TextEmbellishWithContext(context.Background(), request)
+}
+
+// TextEmbellish
+// 运用先进的自然语言处理技术，对原始文本进行优化润色，提升文本的通顺性、表达力和语言质量。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) TextEmbellishWithContext(ctx context.Context, request *TextEmbellishRequest) (response *TextEmbellishResponse, err error) {
+    if request == nil {
+        request = NewTextEmbellishRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextEmbellish require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextEmbellishResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTextSimilarityRequest() (request *TextSimilarityRequest) {
     request = &TextSimilarityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1679,6 +2345,102 @@ func (c *Client) TextSimilarityProWithContext(ctx context.Context, request *Text
     request.SetContext(ctx)
     
     response = NewTextSimilarityProResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTextWritingRequest() (request *TextWritingRequest) {
+    request = &TextWritingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "TextWriting")
+    
+    
+    return
+}
+
+func NewTextWritingResponse() (response *TextWritingResponse) {
+    response = &TextWritingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TextWriting
+// 通过自动补全文本片段，帮助用户快速生成高质量、连贯的完整文本，提高创作效率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) TextWriting(request *TextWritingRequest) (response *TextWritingResponse, err error) {
+    return c.TextWritingWithContext(context.Background(), request)
+}
+
+// TextWriting
+// 通过自动补全文本片段，帮助用户快速生成高质量、连贯的完整文本，提高创作效率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTNUMTOOMUCH = "InvalidParameterValue.TextNumTooMuch"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) TextWritingWithContext(ctx context.Context, request *TextWritingRequest) (response *TextWritingResponse, err error) {
+    if request == nil {
+        request = NewTextWritingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TextWriting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTextWritingResponse()
     err = c.Send(request, response)
     return
 }

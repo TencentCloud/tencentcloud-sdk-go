@@ -20,6 +20,13 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AccelerateMainland struct {
+	// 是否开启中国大陆加速优化配置，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type AccelerateType struct {
 	// 加速开关。取值范围：
 	// <li> on：打开;</li>
@@ -774,7 +781,7 @@ type CacheKey struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCase *string `json:"IgnoreCase,omitempty" name:"IgnoreCase"`
 
-	// CacheKey中包含请求参数。
+	// CacheKey 中包含请求参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueryString *QueryString `json:"QueryString,omitempty" name:"QueryString"`
 }
@@ -857,7 +864,7 @@ type ClientIpCountry struct {
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 存放客户端IP所属地域信息的请求头名称，当Switch=on时有效。
+	// 存放客户端 IP 所属地域信息的请求头名称，当 Switch=on 时有效。
 	// 为空则使用默认值：EO-Client-IPCountry。
 	HeaderName *string `json:"HeaderName,omitempty" name:"HeaderName"`
 }
@@ -868,7 +875,7 @@ type ClientIpHeader struct {
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 回源时，存放客户端IP的请求头名称。
+	// 回源时，存放客户端 IP 的请求头名称。
 	// 为空则使用默认值：X-Forwarded-IP。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderName *string `json:"HeaderName,omitempty" name:"HeaderName"`
@@ -1130,11 +1137,11 @@ func (r *CreateAliasDomainResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApplicationProxyRequestParams struct {
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 当ProxyType=hostname时，表示域名或子域名；
-	// 当ProxyType=instance时，表示代理名称。
+	// 当 ProxyType=hostname 时，表示域名或子域名；
+	// 当 ProxyType=instance 时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 调度模式，取值有：
@@ -1161,23 +1168,26 @@ type CreateApplicationProxyRequestParams struct {
 	// 不填写使用默认值600。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
-	// Ipv6访问配置。
-	// 不填写表示关闭Ipv6访问。
+	// Ipv6 访问配置。
+	// 不填写表示关闭 Ipv6 访问。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
 
 	// 规则详细信息。
 	// 不填写则不创建规则。
 	ApplicationProxyRules []*ApplicationProxyRule `json:"ApplicationProxyRules,omitempty" name:"ApplicationProxyRules"`
+
+	// 中国大陆加速优化配置。不填写表示关闭中国大陆加速优化。
+	AccelerateMainland *AccelerateMainland `json:"AccelerateMainland,omitempty" name:"AccelerateMainland"`
 }
 
 type CreateApplicationProxyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 当ProxyType=hostname时，表示域名或子域名；
-	// 当ProxyType=instance时，表示代理名称。
+	// 当 ProxyType=hostname 时，表示域名或子域名；
+	// 当 ProxyType=instance 时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 调度模式，取值有：
@@ -1204,13 +1214,16 @@ type CreateApplicationProxyRequest struct {
 	// 不填写使用默认值600。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
-	// Ipv6访问配置。
-	// 不填写表示关闭Ipv6访问。
+	// Ipv6 访问配置。
+	// 不填写表示关闭 Ipv6 访问。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
 
 	// 规则详细信息。
 	// 不填写则不创建规则。
 	ApplicationProxyRules []*ApplicationProxyRule `json:"ApplicationProxyRules,omitempty" name:"ApplicationProxyRules"`
+
+	// 中国大陆加速优化配置。不填写表示关闭中国大陆加速优化。
+	AccelerateMainland *AccelerateMainland `json:"AccelerateMainland,omitempty" name:"AccelerateMainland"`
 }
 
 func (r *CreateApplicationProxyRequest) ToJsonString() string {
@@ -1234,6 +1247,7 @@ func (r *CreateApplicationProxyRequest) FromJsonString(s string) error {
 	delete(f, "SessionPersistTime")
 	delete(f, "Ipv6")
 	delete(f, "ApplicationProxyRules")
+	delete(f, "AccelerateMainland")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationProxyRequest has unknown keys!", "")
 	}
@@ -2004,6 +2018,70 @@ func (r *CreateRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSecurityIPGroupRequestParams struct {
+	// 站点 Id。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// IP 组信息。
+	IPGroup *IPGroup `json:"IPGroup,omitempty" name:"IPGroup"`
+}
+
+type CreateSecurityIPGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 Id。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// IP 组信息。
+	IPGroup *IPGroup `json:"IPGroup,omitempty" name:"IPGroup"`
+}
+
+func (r *CreateSecurityIPGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSecurityIPGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "IPGroup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSecurityIPGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSecurityIPGroupResponseParams struct {
+	// IP 组 Id。
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateSecurityIPGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSecurityIPGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateSecurityIPGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSecurityIPGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSpeedTestingRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -2652,6 +2730,67 @@ func (r *DeleteRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSecurityIPGroupRequestParams struct {
+	// 站点 Id。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// IP 组 Id。
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+type DeleteSecurityIPGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 Id。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// IP 组 Id。
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DeleteSecurityIPGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSecurityIPGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSecurityIPGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSecurityIPGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteSecurityIPGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSecurityIPGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteSecurityIPGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSecurityIPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7698,7 +7837,7 @@ type ForceRedirect struct {
 }
 
 type Grpc struct {
-	// 是否开启Grpc配置，取值有：
+	// 是否开启 Grpc 配置，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -7718,7 +7857,7 @@ type Hsts struct {
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// MaxAge数值。单位为秒，最大值为1天。
+	// MaxAge 数值。单位为秒，最大值为1天。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxAge *int64 `json:"MaxAge,omitempty" name:"MaxAge"`
 
@@ -7748,7 +7887,7 @@ type Https struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcspStapling *string `json:"OcspStapling,omitempty" name:"OcspStapling"`
 
-	// Tls版本设置，取值有：
+	// Tls 版本设置，取值有：
 	// <li>TLSv1：TLSv1版本；</li>
 	// <li>TLSV1.1：TLSv1.1版本；</li>
 	// <li>TLSV1.2：TLSv1.2版本；</li>
@@ -7776,6 +7915,17 @@ type Https struct {
 	// <li>strict-v2023：提供最高的安全性能，禁用所有含不安全隐患的加密套件，支持 TLS 1.2-1.3 密码套件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CipherSuite *string `json:"CipherSuite,omitempty" name:"CipherSuite"`
+}
+
+type IPGroup struct {
+	// 组 Id，创建时填 0 即可。
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 组名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// IP 组内容，可以填入 IP 及 IP 掩码。
+	Content []*string `json:"Content,omitempty" name:"Content"`
 }
 
 type IPWhitelist struct {
@@ -7969,7 +8119,7 @@ type IpTableRule struct {
 }
 
 type Ipv6 struct {
-	// Ipv6访问功能配置，取值有：
+	// Ipv6 访问功能配置，取值有：
 	// <li>on：开启Ipv6访问功能；</li>
 	// <li>off：关闭Ipv6访问功能。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -8360,14 +8510,14 @@ func (r *ModifyAliasDomainStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApplicationProxyRequestParams struct {
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 代理ID。
+	// 代理 ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 当ProxyType=hostname时，表示域名或子域名；
-	// 当ProxyType=instance时，表示代理名称。
+	// 当 ProxyType=hostname 时，表示域名或子域名；
+	// 当 ProxyType=instance 时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 会话保持时间，取值范围：30-3600，单位：秒。
@@ -8379,21 +8529,24 @@ type ModifyApplicationProxyRequestParams struct {
 	// <li>instance：表示实例模式。</li>不填写保持原有配置。
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 
-	// Ipv6访问配置，不填写保持原有配置。
+	// Ipv6 访问配置，不填写保持原有配置。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
+
+	// 中国大陆加速优化配置。 不填写表示保持原有配置。
+	AccelerateMainland *AccelerateMainland `json:"AccelerateMainland,omitempty" name:"AccelerateMainland"`
 }
 
 type ModifyApplicationProxyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 代理ID。
+	// 代理 ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 当ProxyType=hostname时，表示域名或子域名；
-	// 当ProxyType=instance时，表示代理名称。
+	// 当 ProxyType=hostname 时，表示域名或子域名；
+	// 当 ProxyType=instance 时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 会话保持时间，取值范围：30-3600，单位：秒。
@@ -8405,8 +8558,11 @@ type ModifyApplicationProxyRequest struct {
 	// <li>instance：表示实例模式。</li>不填写保持原有配置。
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 
-	// Ipv6访问配置，不填写保持原有配置。
+	// Ipv6 访问配置，不填写保持原有配置。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
+
+	// 中国大陆加速优化配置。 不填写表示保持原有配置。
+	AccelerateMainland *AccelerateMainland `json:"AccelerateMainland,omitempty" name:"AccelerateMainland"`
 }
 
 func (r *ModifyApplicationProxyRequest) ToJsonString() string {
@@ -8427,6 +8583,7 @@ func (r *ModifyApplicationProxyRequest) FromJsonString(s string) error {
 	delete(f, "SessionPersistTime")
 	delete(f, "ProxyType")
 	delete(f, "Ipv6")
+	delete(f, "AccelerateMainland")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationProxyRequest has unknown keys!", "")
 	}
@@ -9178,6 +9335,80 @@ func (r *ModifyRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySecurityIPGroupRequestParams struct {
+	// 站点 Id。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// IP 组配置。
+	IPGroup *IPGroup `json:"IPGroup,omitempty" name:"IPGroup"`
+
+	// 操作类型，取值有：
+	// <li> append: 向 IPGroup 中追加 Content 参数中内容；</li>
+	// <li> remove: 从 IPGroup 中删除 Content 参数中内容；</li>
+	// <li> update: 全量替换 IPGroup 内容，并可修改 IPGroup 名称。 </li>
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+}
+
+type ModifySecurityIPGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 Id。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// IP 组配置。
+	IPGroup *IPGroup `json:"IPGroup,omitempty" name:"IPGroup"`
+
+	// 操作类型，取值有：
+	// <li> append: 向 IPGroup 中追加 Content 参数中内容；</li>
+	// <li> remove: 从 IPGroup 中删除 Content 参数中内容；</li>
+	// <li> update: 全量替换 IPGroup 内容，并可修改 IPGroup 名称。 </li>
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+}
+
+func (r *ModifySecurityIPGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySecurityIPGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "IPGroup")
+	delete(f, "Mode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySecurityIPGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySecurityIPGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifySecurityIPGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySecurityIPGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifySecurityIPGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySecurityIPGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySecurityPolicyRequestParams struct {
 	// 站点Id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -9461,7 +9692,7 @@ func (r *ModifyZoneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyZoneSettingRequestParams struct {
-	// 待变更的站点ID。
+	// 待变更的站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 缓存过期时间配置。
@@ -9480,11 +9711,11 @@ type ModifyZoneSettingRequestParams struct {
 	// 不填写表示保持原有配置。
 	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
 
-	// Quic访问配置。
+	// Quic 访问配置。
 	// 不填写表示保持原有配置。
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 
-	// Post请求传输配置。
+	// Post 请求传输配置。
 	// 不填写表示保持原有配置。
 	PostMaxSize *PostMaxSize `json:"PostMaxSize,omitempty" name:"PostMaxSize"`
 
@@ -9492,15 +9723,15 @@ type ModifyZoneSettingRequestParams struct {
 	// 不填写表示保持原有配置。
 	Compression *Compression `json:"Compression,omitempty" name:"Compression"`
 
-	// Http2回源配置。
+	// Http2 回源配置。
 	// 不填写表示保持原有配置。
 	UpstreamHttp2 *UpstreamHttp2 `json:"UpstreamHttp2,omitempty" name:"UpstreamHttp2"`
 
-	// 访问协议强制Https跳转配置。
+	// 访问协议强制 Https 跳转配置。
 	// 不填写表示保持原有配置。
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
 
-	// Https加速配置。
+	// Https 加速配置。
 	// 不填写表示保持原有配置。
 	Https *Https `json:"Https,omitempty" name:"Https"`
 
@@ -9512,11 +9743,11 @@ type ModifyZoneSettingRequestParams struct {
 	// 不填写表示保持原有配置。
 	SmartRouting *SmartRouting `json:"SmartRouting,omitempty" name:"SmartRouting"`
 
-	// WebSocket配置。
+	// WebSocket 配置。
 	// 不填写表示保持原有配置。
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 
-	// 客户端IP回源请求头配置。
+	// 客户端 IP 回源请求头配置。
 	// 不填写表示保持原有配置。
 	ClientIpHeader *ClientIpHeader `json:"ClientIpHeader,omitempty" name:"ClientIpHeader"`
 
@@ -9524,23 +9755,27 @@ type ModifyZoneSettingRequestParams struct {
 	// 不填写表示保持原有配置。
 	CachePrefresh *CachePrefresh `json:"CachePrefresh,omitempty" name:"CachePrefresh"`
 
-	// Ipv6访问配置。
+	// Ipv6 访问配置。
 	// 不填写表示保持原有配置。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
 
-	// 回源时是否携带客户端IP所属地域信息的配置。
+	// 回源时是否携带客户端 IP 所属地域信息的配置。
 	// 不填写表示保持原有配置。
 	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
 
-	// Grpc协议支持配置。
+	// Grpc 协议支持配置。
 	// 不填写表示保持原有配置。
 	Grpc *Grpc `json:"Grpc,omitempty" name:"Grpc"`
+
+	// 图片优化配置。
+	// 不填写表示关闭。
+	ImageOptimize *ImageOptimize `json:"ImageOptimize,omitempty" name:"ImageOptimize"`
 }
 
 type ModifyZoneSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待变更的站点ID。
+	// 待变更的站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 缓存过期时间配置。
@@ -9559,11 +9794,11 @@ type ModifyZoneSettingRequest struct {
 	// 不填写表示保持原有配置。
 	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
 
-	// Quic访问配置。
+	// Quic 访问配置。
 	// 不填写表示保持原有配置。
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 
-	// Post请求传输配置。
+	// Post 请求传输配置。
 	// 不填写表示保持原有配置。
 	PostMaxSize *PostMaxSize `json:"PostMaxSize,omitempty" name:"PostMaxSize"`
 
@@ -9571,15 +9806,15 @@ type ModifyZoneSettingRequest struct {
 	// 不填写表示保持原有配置。
 	Compression *Compression `json:"Compression,omitempty" name:"Compression"`
 
-	// Http2回源配置。
+	// Http2 回源配置。
 	// 不填写表示保持原有配置。
 	UpstreamHttp2 *UpstreamHttp2 `json:"UpstreamHttp2,omitempty" name:"UpstreamHttp2"`
 
-	// 访问协议强制Https跳转配置。
+	// 访问协议强制 Https 跳转配置。
 	// 不填写表示保持原有配置。
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
 
-	// Https加速配置。
+	// Https 加速配置。
 	// 不填写表示保持原有配置。
 	Https *Https `json:"Https,omitempty" name:"Https"`
 
@@ -9591,11 +9826,11 @@ type ModifyZoneSettingRequest struct {
 	// 不填写表示保持原有配置。
 	SmartRouting *SmartRouting `json:"SmartRouting,omitempty" name:"SmartRouting"`
 
-	// WebSocket配置。
+	// WebSocket 配置。
 	// 不填写表示保持原有配置。
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 
-	// 客户端IP回源请求头配置。
+	// 客户端 IP 回源请求头配置。
 	// 不填写表示保持原有配置。
 	ClientIpHeader *ClientIpHeader `json:"ClientIpHeader,omitempty" name:"ClientIpHeader"`
 
@@ -9603,17 +9838,21 @@ type ModifyZoneSettingRequest struct {
 	// 不填写表示保持原有配置。
 	CachePrefresh *CachePrefresh `json:"CachePrefresh,omitempty" name:"CachePrefresh"`
 
-	// Ipv6访问配置。
+	// Ipv6 访问配置。
 	// 不填写表示保持原有配置。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
 
-	// 回源时是否携带客户端IP所属地域信息的配置。
+	// 回源时是否携带客户端 IP 所属地域信息的配置。
 	// 不填写表示保持原有配置。
 	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
 
-	// Grpc协议支持配置。
+	// Grpc 协议支持配置。
 	// 不填写表示保持原有配置。
 	Grpc *Grpc `json:"Grpc,omitempty" name:"Grpc"`
+
+	// 图片优化配置。
+	// 不填写表示关闭。
+	ImageOptimize *ImageOptimize `json:"ImageOptimize,omitempty" name:"ImageOptimize"`
 }
 
 func (r *ModifyZoneSettingRequest) ToJsonString() string {
@@ -9647,6 +9886,7 @@ func (r *ModifyZoneSettingRequest) FromJsonString(s string) error {
 	delete(f, "Ipv6")
 	delete(f, "ClientIpCountry")
 	delete(f, "Grpc")
+	delete(f, "ImageOptimize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyZoneSettingRequest has unknown keys!", "")
 	}
@@ -9795,7 +10035,7 @@ type Origin struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginPullProtocol *string `json:"OriginPullProtocol,omitempty" name:"OriginPullProtocol"`
 
-	// 源站为腾讯云COS时，是否为私有访问bucket，取值有：
+	// 源站为腾讯云 COS 时，是否为私有访问 bucket，取值有：
 	// <li>on：私有访问；</li>
 	// <li>off：公共访问。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10027,7 +10267,7 @@ type PlanInfo struct {
 }
 
 type PostMaxSize struct {
-	// 是否开启POST请求上传文件限制，平台默认为限制为32MB，取值有：
+	// 是否开启 POST 请求上传文件限制，平台默认为限制为32MB，取值有：
 	// <li>on：开启限制；</li>
 	// <li>off：关闭限制。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -10084,7 +10324,7 @@ type QueryString struct {
 }
 
 type Quic struct {
-	// 是否开启Quic配置，取值有：
+	// 是否开启 Quic 配置，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -11333,7 +11573,7 @@ func (r *UpdateOriginProtectionIPWhitelistResponse) FromJsonString(s string) err
 }
 
 type UpstreamHttp2 struct {
-	// http2回源配置开关，取值有：
+	// http2 回源配置开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`

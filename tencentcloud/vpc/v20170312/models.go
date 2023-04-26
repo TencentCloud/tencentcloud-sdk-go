@@ -17206,6 +17206,66 @@ type GatewayQos struct {
 }
 
 // Predefined struct for user
+type GenerateVpnConnectionDefaultHealthCheckIpRequestParams struct {
+	// VPN网关id， 例如：vpngw-1w9tue3d
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+}
+
+type GenerateVpnConnectionDefaultHealthCheckIpRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPN网关id， 例如：vpngw-1w9tue3d
+	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
+}
+
+func (r *GenerateVpnConnectionDefaultHealthCheckIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateVpnConnectionDefaultHealthCheckIpRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpnGatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateVpnConnectionDefaultHealthCheckIpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateVpnConnectionDefaultHealthCheckIpResponseParams struct {
+	// VPN通道健康检查本端ip
+	HealthCheckLocalIp *string `json:"HealthCheckLocalIp,omitempty" name:"HealthCheckLocalIp"`
+
+	// VPN通道健康检查对端ip
+	HealthCheckRemoteIp *string `json:"HealthCheckRemoteIp,omitempty" name:"HealthCheckRemoteIp"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GenerateVpnConnectionDefaultHealthCheckIpResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateVpnConnectionDefaultHealthCheckIpResponseParams `json:"Response"`
+}
+
+func (r *GenerateVpnConnectionDefaultHealthCheckIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateVpnConnectionDefaultHealthCheckIpResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetCcnRegionBandwidthLimitsRequestParams struct {
 	// CCN实例ID。形如：ccn-f49l6u0z。
 	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`

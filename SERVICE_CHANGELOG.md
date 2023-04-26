@@ -1,79 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 费用中心(billing) 版本：2018-07-09
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 38 次发布
+### 第 49 次发布
 
-发布时间：2023-04-25 01:04:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ActionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ActionSummaryOverviewItem)
-
-	* 新增成员：TransferPayAmount
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 122 次发布
-
-发布时间：2023-04-25 01:08:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AdjustCdbProxy](https://cloud.tencent.com/document/api/236/90590)
-* [AdjustCdbProxyAddress](https://cloud.tencent.com/document/api/236/90589)
-* [CloseCdbProxyAddress](https://cloud.tencent.com/document/api/236/90588)
-* [CreateCdbProxy](https://cloud.tencent.com/document/api/236/90587)
-* [CreateCdbProxyAddress](https://cloud.tencent.com/document/api/236/90586)
-* [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585)
-* [DescribeProxySupportParam](https://cloud.tencent.com/document/api/236/90584)
-* [ModifyCdbProxyAddressDesc](https://cloud.tencent.com/document/api/236/90583)
-* [ModifyCdbProxyAddressVipAndVPort](https://cloud.tencent.com/document/api/236/90582)
-* [ModifyCdbProxyParam](https://cloud.tencent.com/document/api/236/90581)
-
-新增数据结构：
-
-* [ProxyAddress](https://cloud.tencent.com/document/api/236/15878#ProxyAddress)
-* [ProxyAllocation](https://cloud.tencent.com/document/api/236/15878#ProxyAllocation)
-* [ProxyGroupInfo](https://cloud.tencent.com/document/api/236/15878#ProxyGroupInfo)
-* [ProxyInst](https://cloud.tencent.com/document/api/236/15878#ProxyInst)
-* [ProxyNode](https://cloud.tencent.com/document/api/236/15878#ProxyNode)
-* [ProxyNodeCustom](https://cloud.tencent.com/document/api/236/15878#ProxyNodeCustom)
-
-
-
-## 文件存储(cfs) 版本：2019-07-19
-
-### 第 19 次发布
-
-发布时间：2023-04-25 01:11:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyFileSystemAutoScaleUpRule](https://cloud.tencent.com/document/api/582/90591)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 74 次发布
-
-发布时间：2023-04-24 16:40:52
+发布时间：2023-04-26 01:07:08
 
 本次发布包含了以下内容：
 
@@ -81,114 +12,18 @@
 
 修改数据结构：
 
-* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
 
-	* 新增成员：Placeholder
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 39 次发布
-
-发布时间：2023-04-25 01:27:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [SupportFeature](https://cloud.tencent.com/document/api/608/37023#SupportFeature)
-
-修改数据结构：
-
-* [RegionDetail](https://cloud.tencent.com/document/api/608/37023#RegionDetail)
-
-	* 新增成员：SupportFeature
+	* 新增成员：BurstPerformance
 
 
 
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## DNSPod(dnspod) 版本：2021-03-23
 
-### 第 50 次发布
+### 第 16 次发布
 
-发布时间：2023-04-25 01:30:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ProjectEntryEx](https://cloud.tencent.com/document/api/1081/34988#ProjectEntryEx)
-
-	* 新增成员：EnableOpenState
-
-
-
-
-## 媒体处理(mps) 版本：2019-06-12
-
-### 第 57 次发布
-
-发布时间：2023-04-25 01:38:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SchedulesInfo](https://cloud.tencent.com/document/api/862/37615#SchedulesInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>Status
-
-
-
-
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
-
-### 第 54 次发布
-
-发布时间：2023-04-25 01:51:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVipInstance)
-
-	* 新增成员：ClusterStatus
-
-* [RocketMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RocketMQClusterInfo)
-
-	* 新增成员：InternalEndpoint, HttpInternalEndpoint
-
-* [RocketMQNamespace](https://cloud.tencent.com/document/api/1179/46089#RocketMQNamespace)
-
-	* 新增成员：InternalEndpoint
-
-* [RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)
-
-	* 新增成员：MaxRetention, MinRetention, Retention
-
-
-
-
-## TI-ONE 训练平台(tione) 版本：2021-11-11
-
-### 第 21 次发布
-
-发布时间：2023-04-25 01:54:53
+发布时间：2023-04-26 01:20:43
 
 本次发布包含了以下内容：
 
@@ -196,21 +31,192 @@
 
 修改接口：
 
-* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+* [RollbackSnapshot](https://cloud.tencent.com/document/api/1427/83174)
 
-	* <font color="#dd0000">**修改入参**：</font>ImageInfo
+	* 新增入参：RecordList
 
 
 修改数据结构：
 
-* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+* [DomainAliasInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAliasInfo)
 
-	* 新增成员：ScaleStrategy, CronScaleJobs, ScaleMode, ServiceLimit, ScheduledAction
+	* 新增成员：Status
+
+* [SnapshotRecord](https://cloud.tencent.com/document/api/1427/56185#SnapshotRecord)
+
+	* 新增成员：Weight, Reason
 
 
 
 
-## TI-ONE 训练平台(tione) 版本：2019-10-22
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 18 次发布
+
+发布时间：2023-04-26 01:30:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RecordPlanItem](https://cloud.tencent.com/document/api/1361/53754#RecordPlanItem)
+
+	* 新增成员：RecordStorageTime
+
+
+
+
+## NLP服务(nlp) 版本：2019-04-08
+
+### 第 17 次发布
+
+发布时间：2023-04-25 13:40:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [EvaluateSentenceSimilarity](https://cloud.tencent.com/document/api/271/90613)
+* [EvaluateWordSimilarity](https://cloud.tencent.com/document/api/271/90612)
+* [GenerateKeywordSentence](https://cloud.tencent.com/document/api/271/90608)
+* [ParseWords](https://cloud.tencent.com/document/api/271/90611)
+* [RetrieveSimilarWords](https://cloud.tencent.com/document/api/271/90610)
+* [SentenceCorrection](https://cloud.tencent.com/document/api/271/90607)
+* [TextEmbellish](https://cloud.tencent.com/document/api/271/90606)
+* [TextWriting](https://cloud.tencent.com/document/api/271/90605)
+
+新增数据结构：
+
+* [BasicParticiple](https://cloud.tencent.com/document/api/271/35511#BasicParticiple)
+* [CompoundParticiple](https://cloud.tencent.com/document/api/271/35511#CompoundParticiple)
+* [CorrectionItem](https://cloud.tencent.com/document/api/271/35511#CorrectionItem)
+* [Embellish](https://cloud.tencent.com/document/api/271/35511#Embellish)
+* [Entity](https://cloud.tencent.com/document/api/271/35511#Entity)
+* [KeywordSentence](https://cloud.tencent.com/document/api/271/35511#KeywordSentence)
+* [SentencePair](https://cloud.tencent.com/document/api/271/35511#SentencePair)
+* [Writing](https://cloud.tencent.com/document/api/271/35511#Writing)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 26 次发布
+
+发布时间：2023-04-26 01:43:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTawInstance](https://cloud.tencent.com/document/api/1464/69244)
+
+	* 新增入参：InstanceType
+
+
+修改数据结构：
+
+* [RumInstanceInfo](https://cloud.tencent.com/document/api/1464/61476#RumInstanceInfo)
+
+	* 新增成员：InstanceType
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 40 次发布
+
+发布时间：2023-04-26 01:54:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApplicationProxy](https://cloud.tencent.com/document/api/1552/80694)
+
+	* 新增入参：AccelerateMainland
+
+* [ModifyApplicationProxy](https://cloud.tencent.com/document/api/1552/80689)
+
+	* 新增入参：AccelerateMainland
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
+
+	* 新增入参：ImageOptimize
+
+
+新增数据结构：
+
+* [AccelerateMainland](https://cloud.tencent.com/document/api/1552/80721#AccelerateMainland)
+
+### 第 39 次发布
+
+发布时间：2023-04-25 19:50:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSecurityIPGroup](https://cloud.tencent.com/document/api/1552/90651)
+* [DeleteSecurityIPGroup](https://cloud.tencent.com/document/api/1552/90650)
+* [ModifySecurityIPGroup](https://cloud.tencent.com/document/api/1552/90649)
+
+新增数据结构：
+
+* [IPGroup](https://cloud.tencent.com/document/api/1552/80721#IPGroup)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 148 次发布
+
+发布时间：2023-04-26 01:57:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74868)
+
+	* 新增入参：TagSpecification
+
+* [DescribeTKEEdgeClusterCredential](https://cloud.tencent.com/document/api/457/74859)
+
+	* 新增出参：UnitCluster
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 151 次发布
+
+发布时间：2023-04-26 02:02:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GenerateVpnConnectionDefaultHealthCheckIp](https://cloud.tencent.com/document/api/215/90654)
 
 
 
@@ -11629,6 +11635,21 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 49 次发布
+
+发布时间：2023-04-26 01:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+
+	* 新增成员：BurstPerformance
+
+
 ### 第 48 次发布
 
 发布时间：2023-02-27 01:09:26
@@ -13458,25 +13479,25 @@
 
 新增接口：
 
-* [[AdjustCdbProxy](https://cloud.tencent.com/document/api/236/90590)](https://cloud.tencent.com/document/api/#/#)
-* [[AdjustCdbProxyAddress](https://cloud.tencent.com/document/api/236/90589)](https://cloud.tencent.com/document/api/#/#)
-* [[CloseCdbProxyAddress](https://cloud.tencent.com/document/api/236/90588)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateCdbProxy](https://cloud.tencent.com/document/api/236/90587)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateCdbProxyAddress](https://cloud.tencent.com/document/api/236/90586)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeProxySupportParam](https://cloud.tencent.com/document/api/236/90584)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCdbProxyAddressDesc](https://cloud.tencent.com/document/api/236/90583)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCdbProxyAddressVipAndVPort](https://cloud.tencent.com/document/api/236/90582)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCdbProxyParam](https://cloud.tencent.com/document/api/236/90581)](https://cloud.tencent.com/document/api/#/#)
+* [AdjustCdbProxy](https://cloud.tencent.com/document/api/236/90590)
+* [AdjustCdbProxyAddress](https://cloud.tencent.com/document/api/236/90589)
+* [CloseCdbProxyAddress](https://cloud.tencent.com/document/api/236/90588)
+* [CreateCdbProxy](https://cloud.tencent.com/document/api/236/90587)
+* [CreateCdbProxyAddress](https://cloud.tencent.com/document/api/236/90586)
+* [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585)
+* [DescribeProxySupportParam](https://cloud.tencent.com/document/api/236/90584)
+* [ModifyCdbProxyAddressDesc](https://cloud.tencent.com/document/api/236/90583)
+* [ModifyCdbProxyAddressVipAndVPort](https://cloud.tencent.com/document/api/236/90582)
+* [ModifyCdbProxyParam](https://cloud.tencent.com/document/api/236/90581)
 
 新增数据结构：
 
-* [[ProxyAddress](https://cloud.tencent.com/document/api/236/15878#ProxyAddress)](https://cloud.tencent.com/document/api/236/15878#[ProxyAddress](https://cloud.tencent.com/document/api/236/15878#ProxyAddress))
-* [[ProxyAllocation](https://cloud.tencent.com/document/api/236/15878#ProxyAllocation)](https://cloud.tencent.com/document/api/236/15878#[ProxyAllocation](https://cloud.tencent.com/document/api/236/15878#ProxyAllocation))
-* [[ProxyGroupInfo](https://cloud.tencent.com/document/api/236/15878#ProxyGroupInfo)](https://cloud.tencent.com/document/api/236/15878#[ProxyGroupInfo](https://cloud.tencent.com/document/api/236/15878#ProxyGroupInfo))
-* [[ProxyInst](https://cloud.tencent.com/document/api/236/15878#ProxyInst)](https://cloud.tencent.com/document/api/236/15878#[ProxyInst](https://cloud.tencent.com/document/api/236/15878#ProxyInst))
-* [[ProxyNode](https://cloud.tencent.com/document/api/236/15878#ProxyNode)](https://cloud.tencent.com/document/api/236/15878#[ProxyNode](https://cloud.tencent.com/document/api/236/15878#ProxyNode))
-* [[ProxyNodeCustom](https://cloud.tencent.com/document/api/236/15878#ProxyNodeCustom)](https://cloud.tencent.com/document/api/236/15878#[ProxyNodeCustom](https://cloud.tencent.com/document/api/236/15878#ProxyNodeCustom))
+* [ProxyAddress](https://cloud.tencent.com/document/api/236/15878#ProxyAddress)
+* [ProxyAllocation](https://cloud.tencent.com/document/api/236/15878#ProxyAllocation)
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/236/15878#ProxyGroupInfo)
+* [ProxyInst](https://cloud.tencent.com/document/api/236/15878#ProxyInst)
+* [ProxyNode](https://cloud.tencent.com/document/api/236/15878#ProxyNode)
+* [ProxyNodeCustom](https://cloud.tencent.com/document/api/236/15878#ProxyNodeCustom)
 
 ### 第 121 次发布
 
@@ -19119,7 +19140,7 @@
 
 新增接口：
 
-* [[ModifyFileSystemAutoScaleUpRule](https://cloud.tencent.com/document/api/582/90591)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyFileSystemAutoScaleUpRule](https://cloud.tencent.com/document/api/582/90591)
 
 ### 第 18 次发布
 
@@ -39897,6 +39918,32 @@
 
 ## DNSPod(dnspod) 版本：2021-03-23
 
+### 第 16 次发布
+
+发布时间：2023-04-26 01:20:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RollbackSnapshot](https://cloud.tencent.com/document/api/1427/83174)
+
+	* 新增入参：RecordList
+
+
+修改数据结构：
+
+* [DomainAliasInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAliasInfo)
+
+	* 新增成员：Status
+
+* [SnapshotRecord](https://cloud.tencent.com/document/api/1427/56185#SnapshotRecord)
+
+	* 新增成员：Weight, Reason
+
+
 ### 第 15 次发布
 
 发布时间：2023-04-11 01:17:18
@@ -50095,7 +50142,7 @@
 
 新增数据结构：
 
-* [[SupportFeature](https://cloud.tencent.com/document/api/608/37023#SupportFeature)](https://cloud.tencent.com/document/api/608/37023#[SupportFeature](https://cloud.tencent.com/document/api/608/37023#SupportFeature))
+* [SupportFeature](https://cloud.tencent.com/document/api/608/37023#SupportFeature)
 
 修改数据结构：
 
@@ -58202,6 +58249,21 @@
 
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 18 次发布
+
+发布时间：2023-04-26 01:30:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RecordPlanItem](https://cloud.tencent.com/document/api/1361/53754#RecordPlanItem)
+
+	* 新增成员：RecordStorageTime
+
 
 ### 第 17 次发布
 
@@ -69941,7 +70003,37 @@
 
 
 
-## 自然语言处理(nlp) 版本：2019-04-08
+## NLP服务(nlp) 版本：2019-04-08
+
+### 第 17 次发布
+
+发布时间：2023-04-25 13:40:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[EvaluateSentenceSimilarity](https://cloud.tencent.com/document/api/271/90613)](https://cloud.tencent.com/document/api/#/#)
+* [[EvaluateWordSimilarity](https://cloud.tencent.com/document/api/271/90612)](https://cloud.tencent.com/document/api/#/#)
+* [[GenerateKeywordSentence](https://cloud.tencent.com/document/api/271/90608)](https://cloud.tencent.com/document/api/#/#)
+* [[ParseWords](https://cloud.tencent.com/document/api/271/90611)](https://cloud.tencent.com/document/api/#/#)
+* [[RetrieveSimilarWords](https://cloud.tencent.com/document/api/271/90610)](https://cloud.tencent.com/document/api/#/#)
+* [[SentenceCorrection](https://cloud.tencent.com/document/api/271/90607)](https://cloud.tencent.com/document/api/#/#)
+* [[TextEmbellish](https://cloud.tencent.com/document/api/271/90606)](https://cloud.tencent.com/document/api/#/#)
+* [[TextWriting](https://cloud.tencent.com/document/api/271/90605)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BasicParticiple](https://cloud.tencent.com/document/api/271/35511#BasicParticiple)](https://cloud.tencent.com/document/api/271/35511#[BasicParticiple](https://cloud.tencent.com/document/api/271/35511#BasicParticiple))
+* [[CompoundParticiple](https://cloud.tencent.com/document/api/271/35511#CompoundParticiple)](https://cloud.tencent.com/document/api/271/35511#[CompoundParticiple](https://cloud.tencent.com/document/api/271/35511#CompoundParticiple))
+* [[CorrectionItem](https://cloud.tencent.com/document/api/271/35511#CorrectionItem)](https://cloud.tencent.com/document/api/271/35511#[CorrectionItem](https://cloud.tencent.com/document/api/271/35511#CorrectionItem))
+* [[Embellish](https://cloud.tencent.com/document/api/271/35511#Embellish)](https://cloud.tencent.com/document/api/271/35511#[Embellish](https://cloud.tencent.com/document/api/271/35511#Embellish))
+* [[Entity](https://cloud.tencent.com/document/api/271/35511#Entity)](https://cloud.tencent.com/document/api/271/35511#[Entity](https://cloud.tencent.com/document/api/271/35511#Entity))
+* [[KeywordSentence](https://cloud.tencent.com/document/api/271/35511#KeywordSentence)](https://cloud.tencent.com/document/api/271/35511#[KeywordSentence](https://cloud.tencent.com/document/api/271/35511#KeywordSentence))
+* [[SentencePair](https://cloud.tencent.com/document/api/271/35511#SentencePair)](https://cloud.tencent.com/document/api/271/35511#[SentencePair](https://cloud.tencent.com/document/api/271/35511#SentencePair))
+* [[Writing](https://cloud.tencent.com/document/api/271/35511#Writing)](https://cloud.tencent.com/document/api/271/35511#[Writing](https://cloud.tencent.com/document/api/271/35511#Writing))
 
 ### 第 16 次发布
 
@@ -76502,6 +76594,28 @@
 
 
 ## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 26 次发布
+
+发布时间：2023-04-26 01:43:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTawInstance](https://cloud.tencent.com/document/api/1464/69244)
+
+	* 新增入参：InstanceType
+
+
+修改数据结构：
+
+* [RumInstanceInfo](https://cloud.tencent.com/document/api/1464/61476#RumInstanceInfo)
+
+	* 新增成员：InstanceType
+
 
 ### 第 25 次发布
 
@@ -92398,6 +92512,51 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 40 次发布
+
+发布时间：2023-04-26 01:54:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApplicationProxy](https://cloud.tencent.com/document/api/1552/80694)
+
+	* 新增入参：AccelerateMainland
+
+* [ModifyApplicationProxy](https://cloud.tencent.com/document/api/1552/80689)
+
+	* 新增入参：AccelerateMainland
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
+
+	* 新增入参：ImageOptimize
+
+
+新增数据结构：
+
+* [[AccelerateMainland](https://cloud.tencent.com/document/api/1552/80721#AccelerateMainland)](https://cloud.tencent.com/document/api/1552/80721#[AccelerateMainland](https://cloud.tencent.com/document/api/1552/80721#AccelerateMainland))
+
+### 第 39 次发布
+
+发布时间：2023-04-25 19:50:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSecurityIPGroup](https://cloud.tencent.com/document/api/1552/90651)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSecurityIPGroup](https://cloud.tencent.com/document/api/1552/90650)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySecurityIPGroup](https://cloud.tencent.com/document/api/1552/90649)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[IPGroup](https://cloud.tencent.com/document/api/1552/80721#IPGroup)](https://cloud.tencent.com/document/api/1552/80721#[IPGroup](https://cloud.tencent.com/document/api/1552/80721#IPGroup))
+
 ### 第 38 次发布
 
 发布时间：2023-04-05 01:58:24
@@ -96715,6 +96874,25 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 148 次发布
+
+发布时间：2023-04-26 01:57:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74868)
+
+	* 新增入参：TagSpecification
+
+* [DescribeTKEEdgeClusterCredential](https://cloud.tencent.com/document/api/457/74859)
+
+	* 新增出参：UnitCluster
+
 
 ### 第 147 次发布
 
@@ -109406,6 +109584,18 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 151 次发布
+
+发布时间：2023-04-26 02:02:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GenerateVpnConnectionDefaultHealthCheckIp](https://cloud.tencent.com/document/api/215/90654)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 150 次发布
 

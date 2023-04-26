@@ -894,6 +894,7 @@ func (r *CreateSnapshotRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSnapshotResponseParams struct {
 	// 新创建的快照ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2234,6 +2235,10 @@ type Disk struct {
 	// 云硬盘最后一次操作错误提示
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorPrompt *string `json:"ErrorPrompt,omitempty" name:"ErrorPrompt"`
+
+	// 云盘是否开启性能突发
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BurstPerformance *bool `json:"BurstPerformance,omitempty" name:"BurstPerformance"`
 }
 
 type DiskBackup struct {

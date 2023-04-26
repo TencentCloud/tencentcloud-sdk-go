@@ -524,6 +524,9 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// 最大上传大小额度未配置
+	RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = "ResourceNotFound.PostMaxSizeQuotaNotFound"
+
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 

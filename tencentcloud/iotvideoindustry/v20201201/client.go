@@ -4252,7 +4252,7 @@ func NewDescribeDeviceListResponse() (response *DescribeDeviceListResponse) {
 }
 
 // DescribeDeviceList
-// 本接口(DescribeDevicesList) 用于获取设备列表，支持模糊搜索
+// 本接口(DescribeDeviceList) 用于获取设备列表，支持模糊搜索
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4323,7 +4323,7 @@ func (c *Client) DescribeDeviceList(request *DescribeDeviceListRequest) (respons
 }
 
 // DescribeDeviceList
-// 本接口(DescribeDevicesList) 用于获取设备列表，支持模糊搜索
+// 本接口(DescribeDeviceList) 用于获取设备列表，支持模糊搜索
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

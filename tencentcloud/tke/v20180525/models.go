@@ -3907,6 +3907,9 @@ type CreateTKEEdgeClusterRequestParams struct {
 
 	// 边缘组件镜像仓库前缀
 	RegistryPrefix *string `json:"RegistryPrefix,omitempty" name:"RegistryPrefix"`
+
+	// 集群绑定的云标签
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 type CreateTKEEdgeClusterRequest struct {
@@ -3953,6 +3956,9 @@ type CreateTKEEdgeClusterRequest struct {
 
 	// 边缘组件镜像仓库前缀
 	RegistryPrefix *string `json:"RegistryPrefix,omitempty" name:"RegistryPrefix"`
+
+	// 集群绑定的云标签
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 func (r *CreateTKEEdgeClusterRequest) ToJsonString() string {
@@ -3981,6 +3987,7 @@ func (r *CreateTKEEdgeClusterRequest) FromJsonString(s string) error {
 	delete(f, "ChargeType")
 	delete(f, "EdgeVersion")
 	delete(f, "RegistryPrefix")
+	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTKEEdgeClusterRequest has unknown keys!", "")
 	}
@@ -10982,6 +10989,9 @@ type DescribeTKEEdgeClusterCredentialResponseParams struct {
 
 	// 是否部署GridDaemon以支持headless service
 	GridDaemon *string `json:"GridDaemon,omitempty" name:"GridDaemon"`
+
+	// 公网访问kins集群
+	UnitCluster *string `json:"UnitCluster,omitempty" name:"UnitCluster"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -1,3 +1,225 @@
+# Release v1.0.647
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 49 次发布
+
+发布时间：2023-04-26 01:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Disk](https://cloud.tencent.com/document/api/362/15669#Disk)
+
+	* 新增成员：BurstPerformance
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 16 次发布
+
+发布时间：2023-04-26 01:20:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RollbackSnapshot](https://cloud.tencent.com/document/api/1427/83174)
+
+	* 新增入参：RecordList
+
+
+修改数据结构：
+
+* [DomainAliasInfo](https://cloud.tencent.com/document/api/1427/56185#DomainAliasInfo)
+
+	* 新增成员：Status
+
+* [SnapshotRecord](https://cloud.tencent.com/document/api/1427/56185#SnapshotRecord)
+
+	* 新增成员：Weight, Reason
+
+
+
+
+## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+
+### 第 18 次发布
+
+发布时间：2023-04-26 01:30:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RecordPlanItem](https://cloud.tencent.com/document/api/1361/53754#RecordPlanItem)
+
+	* 新增成员：RecordStorageTime
+
+
+
+
+## NLP服务(nlp) 版本：2019-04-08
+
+### 第 17 次发布
+
+发布时间：2023-04-25 13:40:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [EvaluateSentenceSimilarity](https://cloud.tencent.com/document/api/271/90613)
+* [EvaluateWordSimilarity](https://cloud.tencent.com/document/api/271/90612)
+* [GenerateKeywordSentence](https://cloud.tencent.com/document/api/271/90608)
+* [ParseWords](https://cloud.tencent.com/document/api/271/90611)
+* [RetrieveSimilarWords](https://cloud.tencent.com/document/api/271/90610)
+* [SentenceCorrection](https://cloud.tencent.com/document/api/271/90607)
+* [TextEmbellish](https://cloud.tencent.com/document/api/271/90606)
+* [TextWriting](https://cloud.tencent.com/document/api/271/90605)
+
+新增数据结构：
+
+* [BasicParticiple](https://cloud.tencent.com/document/api/271/35511#BasicParticiple)
+* [CompoundParticiple](https://cloud.tencent.com/document/api/271/35511#CompoundParticiple)
+* [CorrectionItem](https://cloud.tencent.com/document/api/271/35511#CorrectionItem)
+* [Embellish](https://cloud.tencent.com/document/api/271/35511#Embellish)
+* [Entity](https://cloud.tencent.com/document/api/271/35511#Entity)
+* [KeywordSentence](https://cloud.tencent.com/document/api/271/35511#KeywordSentence)
+* [SentencePair](https://cloud.tencent.com/document/api/271/35511#SentencePair)
+* [Writing](https://cloud.tencent.com/document/api/271/35511#Writing)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 26 次发布
+
+发布时间：2023-04-26 01:43:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTawInstance](https://cloud.tencent.com/document/api/1464/69244)
+
+	* 新增入参：InstanceType
+
+
+修改数据结构：
+
+* [RumInstanceInfo](https://cloud.tencent.com/document/api/1464/61476#RumInstanceInfo)
+
+	* 新增成员：InstanceType
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 40 次发布
+
+发布时间：2023-04-26 01:54:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApplicationProxy](https://cloud.tencent.com/document/api/1552/80694)
+
+	* 新增入参：AccelerateMainland
+
+* [ModifyApplicationProxy](https://cloud.tencent.com/document/api/1552/80689)
+
+	* 新增入参：AccelerateMainland
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
+
+	* 新增入参：ImageOptimize
+
+
+新增数据结构：
+
+* [AccelerateMainland](https://cloud.tencent.com/document/api/1552/80721#AccelerateMainland)
+
+### 第 39 次发布
+
+发布时间：2023-04-25 19:50:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSecurityIPGroup](https://cloud.tencent.com/document/api/1552/90651)
+* [DeleteSecurityIPGroup](https://cloud.tencent.com/document/api/1552/90650)
+* [ModifySecurityIPGroup](https://cloud.tencent.com/document/api/1552/90649)
+
+新增数据结构：
+
+* [IPGroup](https://cloud.tencent.com/document/api/1552/80721#IPGroup)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 148 次发布
+
+发布时间：2023-04-26 01:57:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74868)
+
+	* 新增入参：TagSpecification
+
+* [DescribeTKEEdgeClusterCredential](https://cloud.tencent.com/document/api/457/74859)
+
+	* 新增出参：UnitCluster
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 151 次发布
+
+发布时间：2023-04-26 02:02:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GenerateVpnConnectionDefaultHealthCheckIp](https://cloud.tencent.com/document/api/215/90654)
+
+
+
 # Release v1.0.646
 
 ## 费用中心(billing) 版本：2018-07-09

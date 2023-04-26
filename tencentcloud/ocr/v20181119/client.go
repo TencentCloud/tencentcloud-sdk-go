@@ -4758,7 +4758,7 @@ func NewRecognizePhilippinesSssIDOCRResponse() (response *RecognizePhilippinesSs
 }
 
 // RecognizePhilippinesSssIDOCR
-// 菲律宾SSSID识别
+// 菲律宾SSSID/UMID识别
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -4775,7 +4775,7 @@ func (c *Client) RecognizePhilippinesSssIDOCR(request *RecognizePhilippinesSssID
 }
 
 // RecognizePhilippinesSssIDOCR
-// 菲律宾SSSID识别
+// 菲律宾SSSID/UMID识别
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

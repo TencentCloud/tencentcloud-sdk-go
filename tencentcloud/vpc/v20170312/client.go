@@ -14201,6 +14201,56 @@ func (c *Client) EnableVpnGatewaySslClientCertWithContext(ctx context.Context, r
     return
 }
 
+func NewGenerateVpnConnectionDefaultHealthCheckIpRequest() (request *GenerateVpnConnectionDefaultHealthCheckIpRequest) {
+    request = &GenerateVpnConnectionDefaultHealthCheckIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "GenerateVpnConnectionDefaultHealthCheckIp")
+    
+    
+    return
+}
+
+func NewGenerateVpnConnectionDefaultHealthCheckIpResponse() (response *GenerateVpnConnectionDefaultHealthCheckIpResponse) {
+    response = &GenerateVpnConnectionDefaultHealthCheckIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GenerateVpnConnectionDefaultHealthCheckIp
+// 本接口（GenerateVpnConnectionDefaultHealthCheckIp）用于获取一对VPN通道健康检查地址。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GenerateVpnConnectionDefaultHealthCheckIp(request *GenerateVpnConnectionDefaultHealthCheckIpRequest) (response *GenerateVpnConnectionDefaultHealthCheckIpResponse, err error) {
+    return c.GenerateVpnConnectionDefaultHealthCheckIpWithContext(context.Background(), request)
+}
+
+// GenerateVpnConnectionDefaultHealthCheckIp
+// 本接口（GenerateVpnConnectionDefaultHealthCheckIp）用于获取一对VPN通道健康检查地址。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GenerateVpnConnectionDefaultHealthCheckIpWithContext(ctx context.Context, request *GenerateVpnConnectionDefaultHealthCheckIpRequest) (response *GenerateVpnConnectionDefaultHealthCheckIpResponse, err error) {
+    if request == nil {
+        request = NewGenerateVpnConnectionDefaultHealthCheckIpRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenerateVpnConnectionDefaultHealthCheckIp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenerateVpnConnectionDefaultHealthCheckIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetCcnRegionBandwidthLimitsRequest() (request *GetCcnRegionBandwidthLimitsRequest) {
     request = &GetCcnRegionBandwidthLimitsRequest{
         BaseRequest: &tchttp.BaseRequest{},
