@@ -8214,6 +8214,14 @@ type SparkJobInfo struct {
 	// 查询脚本关联id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// spark_emr_livy
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineClusterType *string `json:"DataEngineClusterType,omitempty" name:"DataEngineClusterType"`
+
+	// Spark 3.2-EMR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineImageVersion *string `json:"DataEngineImageVersion,omitempty" name:"DataEngineImageVersion"`
 }
 
 type StatementOutput struct {

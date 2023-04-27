@@ -1,3 +1,261 @@
+# Release v1.0.648
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 43 次发布
+
+发布时间：2023-04-27 01:12:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMachineGroup](https://cloud.tencent.com/document/api/614/56440)
+
+	* 新增入参：MetaTags
+
+* [ModifyMachineGroup](https://cloud.tencent.com/document/api/614/56436)
+
+	* 新增入参：MetaTags
+
+
+新增数据结构：
+
+* [MetaTagInfo](https://cloud.tencent.com/document/api/614/56471#MetaTagInfo)
+
+修改数据结构：
+
+* [ExtractRuleInfo](https://cloud.tencent.com/document/api/614/56471#ExtractRuleInfo)
+
+	* 新增成员：MetadataType, PathRegex, MetaTags
+
+* [MachineGroupInfo](https://cloud.tencent.com/document/api/614/56471#MachineGroupInfo)
+
+	* 新增成员：MetaTags
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 107 次发布
+
+发布时间：2023-04-27 01:14:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccountQuota](https://cloud.tencent.com/document/api/213/55628)
+
+	* <font color="#dd0000">**修改出参**：</font>AppId
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 17 次发布
+
+发布时间：2023-04-27 01:17:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteDBDiagReportTasks](https://cloud.tencent.com/document/api/1130/90009)
+
+	* <font color="#dd0000">**修改入参**：</font>Product
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 47 次发布
+
+发布时间：2023-04-27 01:17:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：DataEngineClusterType, DataEngineImageVersion
+
+
+
+
+## 全站加速网络(ecdn) 版本：2019-10-12
+
+### 第 12 次发布
+
+发布时间：2023-04-27 01:19:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* AddEcdnDomain
+* CreateVerifyRecord
+* DeleteEcdnDomain
+* PurgePathCache
+* StartEcdnDomain
+* StopEcdnDomain
+* UpdateDomainConfig
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 40 次发布
+
+发布时间：2023-04-27 01:21:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAuthSignature](https://cloud.tencent.com/document/api/608/90692)
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 25 次发布
+
+发布时间：2023-04-27 01:26:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：EnableDirectControl
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：EnableDirectControl
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：EnableDirectControl
+
+
+修改数据结构：
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：EnableDirectControl
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：MaxMicNumber, EnableDirectControl
+
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 65 次发布
+
+发布时间：2023-04-27 01:33:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [KillMasterGroup](https://cloud.tencent.com/document/api/239/58399)
+
+	* <font color="#dd0000">**修改入参**：</font>Password
+
+
+
+
+## 凭据管理系统(ssm) 版本：2019-09-23
+
+### 第 8 次发布
+
+发布时间：2023-04-27 01:35:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecretMetadata](https://cloud.tencent.com/document/api/1140/40530#SecretMetadata)
+
+	* 新增成员：RotationFrequency, ResourceID, RotationBeginTime
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 55 次发布
+
+发布时间：2023-04-27 01:38:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63427)
+
+	* <font color="#dd0000">**修改入参**：</font>Ttl, RetentionTime
+
+* [ModifyRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63415)
+
+	* <font color="#dd0000">**修改入参**：</font>Ttl, RetentionTime
+
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 91 次发布
+
+发布时间：2023-04-26 11:35:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeUnitRulesV2](https://cloud.tencent.com/document/api/649/90667)
+
+新增数据结构：
+
+* [TsfPageUnitRuleV2](https://cloud.tencent.com/document/api/649/36099#TsfPageUnitRuleV2)
+
+
+
 # Release v1.0.647
 
 ## 云硬盘(cbs) 版本：2017-03-12

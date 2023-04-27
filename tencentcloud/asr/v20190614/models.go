@@ -423,7 +423,7 @@ type CreateRecTaskRequestParams struct {
 	SpeakerDiarization *int64 `json:"SpeakerDiarization,omitempty" name:"SpeakerDiarization"`
 
 	// 说话人分离人数（需配合开启说话人分离使用），取值范围：0-10，0代表自动分离（目前仅支持≤6个人），1-10代表指定说话人数分离。默认值为 0。
-	// 注：话者分离目前是beta版本，请根据您的需要谨慎使用
+	// 注：此功能结果仅供参考，请根据您的需要谨慎使用。
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitempty" name:"SpeakerNumber"`
 
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。回调格式&内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
@@ -512,7 +512,7 @@ type CreateRecTaskRequest struct {
 	SpeakerDiarization *int64 `json:"SpeakerDiarization,omitempty" name:"SpeakerDiarization"`
 
 	// 说话人分离人数（需配合开启说话人分离使用），取值范围：0-10，0代表自动分离（目前仅支持≤6个人），1-10代表指定说话人数分离。默认值为 0。
-	// 注：话者分离目前是beta版本，请根据您的需要谨慎使用
+	// 注：此功能结果仅供参考，请根据您的需要谨慎使用。
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitempty" name:"SpeakerNumber"`
 
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。回调格式&内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)

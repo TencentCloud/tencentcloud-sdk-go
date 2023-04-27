@@ -1797,6 +1797,18 @@ type SecretMetadata struct {
 	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 轮转的频率，以天作为单位，在轮转开启状态下生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationFrequency *int64 `json:"RotationFrequency,omitempty" name:"RotationFrequency"`
+
+	// 云产品凭据对应的云产品实例 ID 号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
+
+	// 用户指定的轮转开始时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RotationBeginTime *string `json:"RotationBeginTime,omitempty" name:"RotationBeginTime"`
 }
 
 type Tag struct {

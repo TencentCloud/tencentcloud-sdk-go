@@ -14384,6 +14384,92 @@ func (r *DescribeUnitRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUnitRulesV2RequestParams struct {
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 根据规则名或备注内容模糊查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 启用状态, disabled: 未发布， enabled: 发布
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 翻页查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页查询每页记录数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeUnitRulesV2Request struct {
+	*tchttp.BaseRequest
+	
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 根据规则名或备注内容模糊查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 启用状态, disabled: 未发布， enabled: 发布
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 翻页查询偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页查询每页记录数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeUnitRulesV2Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUnitRulesV2Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayInstanceId")
+	delete(f, "SearchWord")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUnitRulesV2Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUnitRulesV2ResponseParams struct {
+	// 分页列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *TsfPageUnitRuleV2 `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeUnitRulesV2Response struct {
+	*tchttp.BaseResponse
+	Response *DescribeUnitRulesV2ResponseParams `json:"Response"`
+}
+
+func (r *DescribeUnitRulesV2Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUnitRulesV2Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUploadInfoRequestParams struct {
 	// 应用ID
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -21208,6 +21294,16 @@ type TsfPageUnitRule struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 记录实体列表
+	Content []*UnitRule `json:"Content,omitempty" name:"Content"`
+}
+
+type TsfPageUnitRuleV2 struct {
+	// 记录总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 记录实体列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*UnitRule `json:"Content,omitempty" name:"Content"`
 }
 

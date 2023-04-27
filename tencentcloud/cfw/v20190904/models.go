@@ -4749,14 +4749,22 @@ func (r *ModifyBlockTopResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyEnterpriseSecurityDispatchStatusRequestParams struct {
-	// 状态，0：立即下发，1：停止下发
+	// 0：打开立即下发开关；
+	// 
+	// 1：关闭立即下发开关；
+	// 
+	// 2：关闭立即下发开关下，触发开始下发
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type ModifyEnterpriseSecurityDispatchStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 状态，0：立即下发，1：停止下发
+	// 0：打开立即下发开关；
+	// 
+	// 1：关闭立即下发开关；
+	// 
+	// 2：关闭立即下发开关下，触发开始下发
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 

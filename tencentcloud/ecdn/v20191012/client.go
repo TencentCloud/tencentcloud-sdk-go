@@ -64,6 +64,10 @@ func NewAddEcdnDomainResponse() (response *AddEcdnDomainResponse) {
 }
 
 // AddEcdnDomain
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（AddEcdnDomain）用于创建加速域名。
 //
 // 
@@ -101,6 +105,10 @@ func (c *Client) AddEcdnDomain(request *AddEcdnDomainRequest) (response *AddEcdn
 }
 
 // AddEcdnDomain
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（AddEcdnDomain）用于创建加速域名。
 //
 // 
@@ -168,6 +176,10 @@ func NewCreateVerifyRecordResponse() (response *CreateVerifyRecordResponse) {
 }
 
 // CreateVerifyRecord
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权。
 //
 // 
@@ -190,6 +202,10 @@ func (c *Client) CreateVerifyRecord(request *CreateVerifyRecordRequest) (respons
 }
 
 // CreateVerifyRecord
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权。
 //
 // 
@@ -242,6 +258,10 @@ func NewDeleteEcdnDomainResponse() (response *DeleteEcdnDomainResponse) {
 }
 
 // DeleteEcdnDomain
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（DeleteEcdnDomain）用于删除指定加速域名。待删除域名必须处于已停用状态。
 //
 // 
@@ -268,6 +288,10 @@ func (c *Client) DeleteEcdnDomain(request *DeleteEcdnDomainRequest) (response *D
 }
 
 // DeleteEcdnDomain
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（DeleteEcdnDomain）用于删除指定加速域名。待删除域名必须处于已停用状态。
 //
 // 
@@ -1026,6 +1050,10 @@ func NewPurgePathCacheResponse() (response *PurgePathCacheResponse) {
 }
 
 // PurgePathCache
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
 //
 // 
@@ -1055,6 +1083,10 @@ func (c *Client) PurgePathCache(request *PurgePathCacheRequest) (response *Purge
 }
 
 // PurgePathCache
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // PurgePathCache 用于批量刷新目录缓存，一次提交将返回一个刷新任务id。
 //
 // 
@@ -1202,6 +1234,10 @@ func NewStartEcdnDomainResponse() (response *StartEcdnDomainResponse) {
 }
 
 // StartEcdnDomain
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（StartEcdnDomain）用于启用加速域名，待启用域名必须处于已下线状态。
 //
 // 
@@ -1227,6 +1263,10 @@ func (c *Client) StartEcdnDomain(request *StartEcdnDomainRequest) (response *Sta
 }
 
 // StartEcdnDomain
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（StartEcdnDomain）用于启用加速域名，待启用域名必须处于已下线状态。
 //
 // 
@@ -1282,6 +1322,10 @@ func NewStopEcdnDomainResponse() (response *StopEcdnDomainResponse) {
 }
 
 // StopEcdnDomain
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（StopCdnDomain）用于停止加速域名，待停用加速域名必须处于已上线或部署中状态。
 //
 // 
@@ -1307,6 +1351,10 @@ func (c *Client) StopEcdnDomain(request *StopEcdnDomainRequest) (response *StopE
 }
 
 // StopEcdnDomain
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（StopCdnDomain）用于停止加速域名，待停用加速域名必须处于已上线或部署中状态。
 //
 // 
@@ -1362,6 +1410,10 @@ func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
 }
 
 // UpdateDomainConfig
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（UpdateDomainConfig）用于更新ECDN加速域名配置信息。
 //
 // 注意：如果需要更新复杂类型的配置项，必须传递整个对象的所有属性，未传递的属性将使用默认值。建议通过查询接口获取配置属性后，直接修改后传递给本接口。Https配置由于证书的特殊性，更新时不用传递证书和密钥字段。
@@ -1395,6 +1447,10 @@ func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (respons
 }
 
 // UpdateDomainConfig
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 本接口（UpdateDomainConfig）用于更新ECDN加速域名配置信息。
 //
 // 注意：如果需要更新复杂类型的配置项，必须传递整个对象的所有属性，未传递的属性将使用默认值。建议通过查询接口获取配置属性后，直接修改后传递给本接口。Https配置由于证书的特殊性，更新时不用传递证书和密钥字段。

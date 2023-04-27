@@ -3964,7 +3964,7 @@ func NewKillMasterGroupResponse() (response *KillMasterGroupResponse) {
 }
 
 // KillMasterGroup
-// 模拟故障
+// 本接口（KillMasterGroup）模拟故障。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3986,7 +3986,7 @@ func (c *Client) KillMasterGroup(request *KillMasterGroupRequest) (response *Kil
 }
 
 // KillMasterGroup
-// 模拟故障
+// 本接口（KillMasterGroup）模拟故障。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

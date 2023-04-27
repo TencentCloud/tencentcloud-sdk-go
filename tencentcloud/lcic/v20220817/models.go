@@ -1072,6 +1072,9 @@ type CreateRoomRequestParams struct {
 
 	// 房间绑定的群组ID,非空时限制组成员进入
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 打开学生麦克风/摄像头的授权开关
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 }
 
 type CreateRoomRequest struct {
@@ -1141,6 +1144,9 @@ type CreateRoomRequest struct {
 
 	// 房间绑定的群组ID,非空时限制组成员进入
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 打开学生麦克风/摄像头的授权开关
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1172,6 +1178,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "AudienceType")
 	delete(f, "RecordLayout")
 	delete(f, "GroupId")
+	delete(f, "EnableDirectControl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -2683,6 +2690,9 @@ type DescribeRoomResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
+	// 打开学生麦克风/摄像头的授权开关
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -3963,6 +3973,9 @@ type ModifyRoomRequestParams struct {
 
 	// 房间绑定的群组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 打开学生麦克风/摄像头的授权开关
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 }
 
 type ModifyRoomRequest struct {
@@ -4027,6 +4040,9 @@ type ModifyRoomRequest struct {
 
 	// 房间绑定的群组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 打开学生麦克风/摄像头的授权开关
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4055,6 +4071,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "DisableRecord")
 	delete(f, "Assistants")
 	delete(f, "GroupId")
+	delete(f, "EnableDirectControl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -4298,6 +4315,9 @@ type RoomInfo struct {
 
 	// 房间绑定的群组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 打开学生麦克风/摄像头的授权开关
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 }
 
 type RoomItem struct {
@@ -4346,6 +4366,14 @@ type RoomItem struct {
 	// 录制地址（协议为https)。仅在房间结束后存在。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+
+	// 最高房间内人数（包括老师），0表示不限制，默认为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+
+	// 打开学生麦克风/摄像头的授权开关 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 }
 
 type SceneItem struct {

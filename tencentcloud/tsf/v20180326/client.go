@@ -9623,6 +9623,58 @@ func (c *Client) DescribeUnitRulesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeUnitRulesV2Request() (request *DescribeUnitRulesV2Request) {
+    request = &DescribeUnitRulesV2Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitRulesV2")
+    
+    
+    return
+}
+
+func NewDescribeUnitRulesV2Response() (response *DescribeUnitRulesV2Response) {
+    response = &DescribeUnitRulesV2Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUnitRulesV2
+// 查询单元化规则列表V2
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+func (c *Client) DescribeUnitRulesV2(request *DescribeUnitRulesV2Request) (response *DescribeUnitRulesV2Response, err error) {
+    return c.DescribeUnitRulesV2WithContext(context.Background(), request)
+}
+
+// DescribeUnitRulesV2
+// 查询单元化规则列表V2
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+func (c *Client) DescribeUnitRulesV2WithContext(ctx context.Context, request *DescribeUnitRulesV2Request) (response *DescribeUnitRulesV2Response, err error) {
+    if request == nil {
+        request = NewDescribeUnitRulesV2Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUnitRulesV2 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUnitRulesV2Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUploadInfoRequest() (request *DescribeUploadInfoRequest) {
     request = &DescribeUploadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

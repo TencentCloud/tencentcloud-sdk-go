@@ -814,10 +814,10 @@ func (r *CreateMigrateCheckJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMigrationServiceRequestParams struct {
-	// 源实例数据库类型，mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb
+	// 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitempty" name:"SrcDatabaseType"`
 
-	// 目标实例数据库类型，mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb
+	// 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
 	DstDatabaseType *string `json:"DstDatabaseType,omitempty" name:"DstDatabaseType"`
 
 	// 源实例地域，如：ap-guangzhou
@@ -842,10 +842,10 @@ type CreateMigrationServiceRequestParams struct {
 type CreateMigrationServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 源实例数据库类型，mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb
+	// 源实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitempty" name:"SrcDatabaseType"`
 
-	// 目标实例数据库类型，mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb
+	// 目标实例数据库类型，如mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb,cynosdbmysql
 	DstDatabaseType *string `json:"DstDatabaseType,omitempty" name:"DstDatabaseType"`
 
 	// 源实例地域，如：ap-guangzhou

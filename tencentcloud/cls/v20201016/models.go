@@ -1689,6 +1689,9 @@ type CreateMachineGroupRequestParams struct {
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitempty" name:"ServiceLogging"`
+
+	// 机器组元数据信息列表
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
 }
 
 type CreateMachineGroupRequest struct {
@@ -1714,6 +1717,9 @@ type CreateMachineGroupRequest struct {
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitempty" name:"ServiceLogging"`
+
+	// 机器组元数据信息列表
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
 }
 
 func (r *CreateMachineGroupRequest) ToJsonString() string {
@@ -1735,6 +1741,7 @@ func (r *CreateMachineGroupRequest) FromJsonString(s string) error {
 	delete(f, "UpdateStartTime")
 	delete(f, "UpdateEndTime")
 	delete(f, "ServiceLogging")
+	delete(f, "MetaTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMachineGroupRequest has unknown keys!", "")
 	}
@@ -4570,6 +4577,16 @@ type ExtractRuleInfo struct {
 	// 该字段适用于：创建采集规则配置、修改采集规则配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParseProtocol *string `json:"ParseProtocol,omitempty" name:"ParseProtocol"`
+
+	// 元数据类型，0: 不使用元数据信息，1:使用机器组元数据，2:使用用户自定义元数据，3:使用采集配置路径，
+	MetadataType *int64 `json:"MetadataType,omitempty" name:"MetadataType"`
+
+	// 采集配置路径正则表达式，MetadataType为1时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathRegex *string `json:"PathRegex,omitempty" name:"PathRegex"`
+
+	// 用户自定义元数据信息，MetadataType为2时必填
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
 }
 
 type Filter struct {
@@ -4930,6 +4947,9 @@ type MachineGroupInfo struct {
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceLogging *bool `json:"ServiceLogging,omitempty" name:"ServiceLogging"`
+
+	// 机器组元数据信息列表
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
 }
 
 type MachineGroupTypeInfo struct {
@@ -5028,6 +5048,14 @@ func (r *MergePartitionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *MergePartitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MetaTagInfo struct {
+	// 元数据key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 元数据value
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -5867,6 +5895,9 @@ type ModifyMachineGroupRequestParams struct {
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitempty" name:"ServiceLogging"`
+
+	// 机器组元数据信息列表
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
 }
 
 type ModifyMachineGroupRequest struct {
@@ -5895,6 +5926,9 @@ type ModifyMachineGroupRequest struct {
 
 	// 是否开启服务日志，用于记录因Loglistener 服务自身产生的log，开启后，会创建内部日志集cls_service_logging和日志主题loglistener_status,loglistener_alarm,loglistener_business，不产生计费
 	ServiceLogging *bool `json:"ServiceLogging,omitempty" name:"ServiceLogging"`
+
+	// 机器组元数据信息列表
+	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
 }
 
 func (r *ModifyMachineGroupRequest) ToJsonString() string {
@@ -5917,6 +5951,7 @@ func (r *ModifyMachineGroupRequest) FromJsonString(s string) error {
 	delete(f, "UpdateStartTime")
 	delete(f, "UpdateEndTime")
 	delete(f, "ServiceLogging")
+	delete(f, "MetaTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMachineGroupRequest has unknown keys!", "")
 	}

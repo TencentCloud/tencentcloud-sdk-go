@@ -5534,43 +5534,50 @@ func (r *InquiryPriceUpgradeInstanceResponse) FromJsonString(s string) error {
 }
 
 type InstanceClusterNode struct {
-	// 节点名称
+	// 节点名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 实例运行时节点Id
+	// 实例运行时节点 ID。
 	RunId *string `json:"RunId,omitempty" name:"RunId"`
 
-	// 集群角色：0-master；1-slave
+	// 集群角色。
+	// - 0：master。
+	// - 1：slave。
 	Role *int64 `json:"Role,omitempty" name:"Role"`
 
-	// 节点状态：0-readwrite, 1-read, 2-backup
+	// 节点状态。
+	// - 0：readwrite,。
+	// - 1：read。
+	// - 2：backup。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 服务状态：0-down；1-on
+	// 服务状态。
+	// 0-down。
+	// 1-on
 	Connected *int64 `json:"Connected,omitempty" name:"Connected"`
 
-	// 节点创建时间
+	// 节点创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 节点下线时间
+	// 节点下线时间。
 	DownTime *string `json:"DownTime,omitempty" name:"DownTime"`
 
-	// 节点slot分布
+	// 节点 Slot 分布区间。
 	Slots *string `json:"Slots,omitempty" name:"Slots"`
 
-	// 节点key分布
+	// 节点 Key分布。
 	Keys *int64 `json:"Keys,omitempty" name:"Keys"`
 
-	// 节点qps
+	// 节点 QPS。分片节点每秒执行次数。单位：次/秒。
 	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
 
-	// 节点qps倾斜度
+	// 节点 QPS 倾斜度。
 	QpsSlope *float64 `json:"QpsSlope,omitempty" name:"QpsSlope"`
 
-	// 节点存储
+	// 节点存储。
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
-	// 节点存储倾斜度
+	// 节点存储倾斜度。
 	StorageSlope *float64 `json:"StorageSlope,omitempty" name:"StorageSlope"`
 }
 
@@ -5693,10 +5700,10 @@ type InstanceMultiParam struct {
 }
 
 type InstanceNode struct {
-	// Id
+	// 实例 ID。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
-	// 节点详细信息
+	// 节点详细信息。
 	InstanceClusterNode []*InstanceClusterNode `json:"InstanceClusterNode,omitempty" name:"InstanceClusterNode"`
 }
 
@@ -5973,10 +5980,10 @@ type InstanceSlowlogDetail struct {
 }
 
 type InstanceTagInfo struct {
-	// 标签键
+	// 标签键。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 标签值
+	// 标签值。
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
@@ -6082,38 +6089,32 @@ type Instances struct {
 
 // Predefined struct for user
 type KillMasterGroupRequestParams struct {
-	// 实例ID
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 1.长度8-30位,推荐使用12位以上的密码
-	// 2.不能以"/"开头
-	// 3.至少包含两项
-	//     a.小写字母a-z
-	//     b.大写字母A-Z
-	//     c.数字0-9
-	//     d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+	// 该参数用于配置指定实例的访问密码。若为免密认证，该参数则无需配置。密码复杂度要求如下所示。
+	// - 长度8-30位,推荐使用12位以上的密码
+	// - 不能以"/"开头
+	// - 至少包含小写字母a-z、大写字母A-Z、数字0-9及其 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 单AZ实例节点信息
+	// 分片集群的分片 ID。
 	ShardIds []*int64 `json:"ShardIds,omitempty" name:"ShardIds"`
 }
 
 type KillMasterGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 1.长度8-30位,推荐使用12位以上的密码
-	// 2.不能以"/"开头
-	// 3.至少包含两项
-	//     a.小写字母a-z
-	//     b.大写字母A-Z
-	//     c.数字0-9
-	//     d.()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+	// 该参数用于配置指定实例的访问密码。若为免密认证，该参数则无需配置。密码复杂度要求如下所示。
+	// - 长度8-30位,推荐使用12位以上的密码
+	// - 不能以"/"开头
+	// - 至少包含小写字母a-z、大写字母A-Z、数字0-9及其 ()`~!@#$%^&*-+=_|{}[]:;<>,.?/中的两项。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
-	// 单AZ实例节点信息
+	// 分片集群的分片 ID。
 	ShardIds []*int64 `json:"ShardIds,omitempty" name:"ShardIds"`
 }
 
@@ -6140,7 +6141,7 @@ func (r *KillMasterGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type KillMasterGroupResponseParams struct {
-	// 异步任务ID
+	// 异步任务ID。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

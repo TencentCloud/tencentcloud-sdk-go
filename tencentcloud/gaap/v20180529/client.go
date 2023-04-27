@@ -3071,6 +3071,74 @@ func (c *Client) DescribeAccessRegionsByDestRegionWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeAuthSignatureRequest() (request *DescribeAuthSignatureRequest) {
+    request = &DescribeAuthSignatureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeAuthSignature")
+    
+    
+    return
+}
+
+func NewDescribeAuthSignatureResponse() (response *DescribeAuthSignatureResponse) {
+    response = &DescribeAuthSignatureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAuthSignature
+// 为了防止在下单、询价、后付费开通等过程中确保来源合法以及订单参数没有被篡改过，各个业务方使用下单、询价等场景需调用计费签名接口获取签名，获取签名的请求需带上签名以验证身份，本接口可以获取计费签名。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAuthSignature(request *DescribeAuthSignatureRequest) (response *DescribeAuthSignatureResponse, err error) {
+    return c.DescribeAuthSignatureWithContext(context.Background(), request)
+}
+
+// DescribeAuthSignature
+// 为了防止在下单、询价、后付费开通等过程中确保来源合法以及订单参数没有被篡改过，各个业务方使用下单、询价等场景需调用计费签名接口获取签名，获取签名的请求需带上签名以验证身份，本接口可以获取计费签名。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAuthSignatureWithContext(ctx context.Context, request *DescribeAuthSignatureRequest) (response *DescribeAuthSignatureResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuthSignatureRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuthSignature require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuthSignatureResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBlackHeaderRequest() (request *DescribeBlackHeaderRequest) {
     request = &DescribeBlackHeaderRequest{
         BaseRequest: &tchttp.BaseRequest{},

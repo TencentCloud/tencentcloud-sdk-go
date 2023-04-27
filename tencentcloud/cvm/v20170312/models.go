@@ -1848,7 +1848,7 @@ func (r *DescribeAccountQuotaRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountQuotaResponseParams struct {
 	// 用户appid
-	AppId *string `json:"AppId,omitempty" name:"AppId"`
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
 
 	// 配额数据
 	AccountQuotaOverview *AccountQuotaOverview `json:"AccountQuotaOverview,omitempty" name:"AccountQuotaOverview"`

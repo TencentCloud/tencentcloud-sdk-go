@@ -11085,7 +11085,7 @@ type DescribeTKEEdgeClustersRequestParams struct {
 	// 最大输出条数，默认20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件,当前只支持按照单个条件ClusterName进行过滤
+	// 过滤条件,当前只支持按照ClusterName和云标签进行过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -11102,7 +11102,7 @@ type DescribeTKEEdgeClustersRequest struct {
 	// 最大输出条数，默认20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件,当前只支持按照单个条件ClusterName进行过滤
+	// 过滤条件,当前只支持按照ClusterName和云标签进行过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
