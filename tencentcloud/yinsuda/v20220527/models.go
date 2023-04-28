@@ -396,6 +396,11 @@ type DescribeKTVMusicsByTagRequestParams struct {
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
 	RightFilters []*string `json:"RightFilters,omitempty" name:"RightFilters"`
+
+	// 物料过滤，取值有：
+	// <li>Lyrics：含有歌词；</li>
+	// <li>Midi：含有音高线。</li>
+	MaterialFilters []*string `json:"MaterialFilters,omitempty" name:"MaterialFilters"`
 }
 
 type DescribeKTVMusicsByTagRequest struct {
@@ -420,6 +425,11 @@ type DescribeKTVMusicsByTagRequest struct {
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
 	RightFilters []*string `json:"RightFilters,omitempty" name:"RightFilters"`
+
+	// 物料过滤，取值有：
+	// <li>Lyrics：含有歌词；</li>
+	// <li>Midi：含有音高线。</li>
+	MaterialFilters []*string `json:"MaterialFilters,omitempty" name:"MaterialFilters"`
 }
 
 func (r *DescribeKTVMusicsByTagRequest) ToJsonString() string {
@@ -440,6 +450,7 @@ func (r *DescribeKTVMusicsByTagRequest) FromJsonString(s string) error {
 	delete(f, "ScrollToken")
 	delete(f, "Limit")
 	delete(f, "RightFilters")
+	delete(f, "MaterialFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMusicsByTagRequest has unknown keys!", "")
 	}
@@ -499,6 +510,11 @@ type DescribeKTVPlaylistDetailRequestParams struct {
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
 	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
+
+	// 物料过滤，取值有：
+	// <li>Lyrics：含有歌词；</li>
+	// <li>Midi：含有音高线。</li>
+	MaterialFilters []*string `json:"MaterialFilters,omitempty" name:"MaterialFilters"`
 }
 
 type DescribeKTVPlaylistDetailRequest struct {
@@ -527,6 +543,11 @@ type DescribeKTVPlaylistDetailRequest struct {
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
 	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
+
+	// 物料过滤，取值有：
+	// <li>Lyrics：含有歌词；</li>
+	// <li>Midi：含有音高线。</li>
+	MaterialFilters []*string `json:"MaterialFilters,omitempty" name:"MaterialFilters"`
 }
 
 func (r *DescribeKTVPlaylistDetailRequest) ToJsonString() string {
@@ -548,6 +569,7 @@ func (r *DescribeKTVPlaylistDetailRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "RightFilters")
 	delete(f, "PlayScene")
+	delete(f, "MaterialFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVPlaylistDetailRequest has unknown keys!", "")
 	}
@@ -1518,6 +1540,11 @@ type SearchKTVMusicsRequestParams struct {
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
 	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
+
+	// 物料过滤，取值有：
+	// <li>Lyrics：含有歌词；</li>
+	// <li>Midi：含有音高线。</li>
+	MaterialFilters []*string `json:"MaterialFilters,omitempty" name:"MaterialFilters"`
 }
 
 type SearchKTVMusicsRequest struct {
@@ -1546,6 +1573,11 @@ type SearchKTVMusicsRequest struct {
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
 	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
+
+	// 物料过滤，取值有：
+	// <li>Lyrics：含有歌词；</li>
+	// <li>Midi：含有音高线。</li>
+	MaterialFilters []*string `json:"MaterialFilters,omitempty" name:"MaterialFilters"`
 }
 
 func (r *SearchKTVMusicsRequest) ToJsonString() string {
@@ -1567,6 +1599,7 @@ func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "RightFilters")
 	delete(f, "PlayScene")
+	delete(f, "MaterialFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchKTVMusicsRequest has unknown keys!", "")
 	}

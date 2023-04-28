@@ -11801,6 +11801,9 @@ type ProcessLiveStreamRequestParams struct {
 	// 视频内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
+	// 视频内容分析类型任务参数。
+	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
+
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
@@ -11829,6 +11832,9 @@ type ProcessLiveStreamRequest struct {
 	// 视频内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
+	// 视频内容分析类型任务参数。
+	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
+
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
@@ -11854,6 +11860,7 @@ func (r *ProcessLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "OutputDir")
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiRecognitionTask")
+	delete(f, "AiAnalysisTask")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	if len(f) > 0 {

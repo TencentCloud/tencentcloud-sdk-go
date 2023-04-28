@@ -5127,6 +5127,54 @@ func (c *Client) DescribeOfflineTaskTokenWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeOperateTasksRequest() (request *DescribeOperateTasksRequest) {
+    request = &DescribeOperateTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeOperateTasks")
+    
+    
+    return
+}
+
+func NewDescribeOperateTasksResponse() (response *DescribeOperateTasksResponse) {
+    response = &DescribeOperateTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOperateTasks
+// 任务运维列表组合条件查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeOperateTasks(request *DescribeOperateTasksRequest) (response *DescribeOperateTasksResponse, err error) {
+    return c.DescribeOperateTasksWithContext(context.Background(), request)
+}
+
+// DescribeOperateTasks
+// 任务运维列表组合条件查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeOperateTasksWithContext(ctx context.Context, request *DescribeOperateTasksRequest) (response *DescribeOperateTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeOperateTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOperateTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOperateTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationalFunctionsRequest() (request *DescribeOrganizationalFunctionsRequest) {
     request = &DescribeOrganizationalFunctionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

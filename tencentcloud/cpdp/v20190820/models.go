@@ -15986,6 +15986,10 @@ type PaymentOrderResult struct {
 	// 失败原因。当Status为FAILED时，改字段为失败的原因。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 资金账户字类型: WECHATPAY_ACCOUNT 微信零钱, BANK_ACCOUNT 银行卡
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FundingAccountSubType *string `json:"FundingAccountSubType,omitempty" name:"FundingAccountSubType"`
 }
 
 type PaymentOrderStatusResult struct {

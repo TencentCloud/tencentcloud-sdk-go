@@ -557,6 +557,10 @@ type BlockIgnoreRule struct {
 	// 国家
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
 type CfwNatDnatRule struct {
@@ -2103,10 +2107,10 @@ type DescribeBlockIgnoreListRequestParams struct {
 	// 规则类型：1封禁，2放通
 	RuleType *uint64 `json:"RuleType,omitempty" name:"RuleType"`
 
-	// 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
+	// 排序类型：desc降序，asc正序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序类型：desc降序，asc正序
+	// 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
 	By *string `json:"By,omitempty" name:"By"`
 
 	// 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
@@ -2128,10 +2132,10 @@ type DescribeBlockIgnoreListRequest struct {
 	// 规则类型：1封禁，2放通
 	RuleType *uint64 `json:"RuleType,omitempty" name:"RuleType"`
 
-	// 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
+	// 排序类型：desc降序，asc正序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序类型：desc降序，asc正序
+	// 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
 	By *string `json:"By,omitempty" name:"By"`
 
 	// 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common

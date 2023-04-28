@@ -8538,6 +8538,9 @@ type DescribeFileAttributesTask struct {
 type DescribeFileAttributesTaskOutput struct {
 	// 媒体文件的 Md5 值。
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 媒体文件的 Sha1 值。
+	Sha1 *string `json:"Sha1,omitempty" name:"Sha1"`
 }
 
 // Predefined struct for user
@@ -12202,8 +12205,9 @@ type ImageContentReviewInput struct {
 
 type ImageOperation struct {
 	// 图片处理类型。可选类型有：
-	// <li>Scale : 图片缩略处理。</li>
-	// <li>CenterCut : 图片裁剪处理。</li>
+	// <li>Scale : 图片缩略处理；</li>
+	// <li>CenterCut : 图片裁剪处理；</li>
+	// <li>Blur : 图片模糊处理。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 图片缩略处理，仅当 Type 为 Scale 时有效。

@@ -105,6 +105,10 @@ type AlarmIndicatorInfo struct {
 	// 实时任务告警需要的参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *uint64 `json:"Operator,omitempty" name:"Operator"`
+
+	// 告警指标阈值单位：ms(毫秒)、s(秒)、min(分钟)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmIndicatorUnit *string `json:"AlarmIndicatorUnit,omitempty" name:"AlarmIndicatorUnit"`
 }
 
 type AlarmInfo struct {
@@ -3939,6 +3943,10 @@ type DataSourceInfo struct {
 	// BizParams json字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizParamsString *string `json:"BizParamsString,omitempty" name:"BizParamsString"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
 }
 
 type DataSourceInfoPage struct {
@@ -5696,6 +5704,9 @@ func (r *DescribeDataTypesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatabaseInfoListRequestParams struct {
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
 	// 如果是hive这里写rpc，如果是其他类型不传
 	ConnectionType *string `json:"ConnectionType,omitempty" name:"ConnectionType"`
 }
@@ -5703,6 +5714,9 @@ type DescribeDatabaseInfoListRequestParams struct {
 type DescribeDatabaseInfoListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
 	// 如果是hive这里写rpc，如果是其他类型不传
 	ConnectionType *string `json:"ConnectionType,omitempty" name:"ConnectionType"`
 }
@@ -5719,6 +5733,7 @@ func (r *DescribeDatabaseInfoListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Filters")
 	delete(f, "ConnectionType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseInfoListRequest has unknown keys!", "")
@@ -8258,6 +8273,161 @@ func (r *DescribeOfflineTaskTokenResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeOperateTasksRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 文件夹id，多个文件夹以逗号分隔
+	FolderIdList *string `json:"FolderIdList,omitempty" name:"FolderIdList"`
+
+	// 工作流id，多个工作流id之间以英文字符逗号分隔
+	WorkFlowIdList *string `json:"WorkFlowIdList,omitempty" name:"WorkFlowIdList"`
+
+	// 工作流名称，多个工作流名称之间以英文字符逗号分隔
+	WorkFlowNameList *string `json:"WorkFlowNameList,omitempty" name:"WorkFlowNameList"`
+
+	// 任务名称，多个任务名称之间以英文字符逗号分隔
+	TaskNameList *string `json:"TaskNameList,omitempty" name:"TaskNameList"`
+
+	// 任务id，多个任务id之间以英文字符逗号分隔
+	TaskIdList *string `json:"TaskIdList,omitempty" name:"TaskIdList"`
+
+	// 页号
+	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 排序字段，支持字段为FirstSubmitTime和FirstRunTime，标识最近提交和首次执行事件
+	SortItem *string `json:"SortItem,omitempty" name:"SortItem"`
+
+	// 排序类型。两种取值 DESC、ASC
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 责任人，多个责任人之间以英文字符逗号分隔
+	InChargeList *string `json:"InChargeList,omitempty" name:"InChargeList"`
+
+	// 任务类型Id字符串，多个任务类型id之间以英文字符逗号分隔
+	TaskTypeIdList *string `json:"TaskTypeIdList,omitempty" name:"TaskTypeIdList"`
+
+	// 任务状态字符串，多个任务状态之间以英文字符逗号分隔
+	StatusList *string `json:"StatusList,omitempty" name:"StatusList"`
+
+	// 任务周期类型字符串，多个任务周期之间以英文字符逗号分隔
+	TaskCycleUnitList *string `json:"TaskCycleUnitList,omitempty" name:"TaskCycleUnitList"`
+
+	// 任务所属产品类型
+	ProductNameList *string `json:"ProductNameList,omitempty" name:"ProductNameList"`
+}
+
+type DescribeOperateTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 文件夹id，多个文件夹以逗号分隔
+	FolderIdList *string `json:"FolderIdList,omitempty" name:"FolderIdList"`
+
+	// 工作流id，多个工作流id之间以英文字符逗号分隔
+	WorkFlowIdList *string `json:"WorkFlowIdList,omitempty" name:"WorkFlowIdList"`
+
+	// 工作流名称，多个工作流名称之间以英文字符逗号分隔
+	WorkFlowNameList *string `json:"WorkFlowNameList,omitempty" name:"WorkFlowNameList"`
+
+	// 任务名称，多个任务名称之间以英文字符逗号分隔
+	TaskNameList *string `json:"TaskNameList,omitempty" name:"TaskNameList"`
+
+	// 任务id，多个任务id之间以英文字符逗号分隔
+	TaskIdList *string `json:"TaskIdList,omitempty" name:"TaskIdList"`
+
+	// 页号
+	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 排序字段，支持字段为FirstSubmitTime和FirstRunTime，标识最近提交和首次执行事件
+	SortItem *string `json:"SortItem,omitempty" name:"SortItem"`
+
+	// 排序类型。两种取值 DESC、ASC
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 责任人，多个责任人之间以英文字符逗号分隔
+	InChargeList *string `json:"InChargeList,omitempty" name:"InChargeList"`
+
+	// 任务类型Id字符串，多个任务类型id之间以英文字符逗号分隔
+	TaskTypeIdList *string `json:"TaskTypeIdList,omitempty" name:"TaskTypeIdList"`
+
+	// 任务状态字符串，多个任务状态之间以英文字符逗号分隔
+	StatusList *string `json:"StatusList,omitempty" name:"StatusList"`
+
+	// 任务周期类型字符串，多个任务周期之间以英文字符逗号分隔
+	TaskCycleUnitList *string `json:"TaskCycleUnitList,omitempty" name:"TaskCycleUnitList"`
+
+	// 任务所属产品类型
+	ProductNameList *string `json:"ProductNameList,omitempty" name:"ProductNameList"`
+}
+
+func (r *DescribeOperateTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOperateTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "FolderIdList")
+	delete(f, "WorkFlowIdList")
+	delete(f, "WorkFlowNameList")
+	delete(f, "TaskNameList")
+	delete(f, "TaskIdList")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortItem")
+	delete(f, "SortType")
+	delete(f, "InChargeList")
+	delete(f, "TaskTypeIdList")
+	delete(f, "StatusList")
+	delete(f, "TaskCycleUnitList")
+	delete(f, "ProductNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperateTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOperateTasksResponseParams struct {
+	// 任务列表信息
+	Data *TaskInfoPage `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOperateTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOperateTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeOperateTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOperateTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrganizationalFunctionsRequestParams struct {
 	// 场景类型：开发、使用
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -8733,21 +8903,33 @@ func (r *DescribeRealTimeTaskInstanceNodeInfoResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeRealTimeTaskMetricOverviewRequestParams struct {
-	// 无
+	// 要查看的实时任务的任务Id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 无
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type DescribeRealTimeTaskMetricOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// 要查看的实时任务的任务Id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 无
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeRealTimeTaskMetricOverviewRequest) ToJsonString() string {
@@ -8764,6 +8946,8 @@ func (r *DescribeRealTimeTaskMetricOverviewRequest) FromJsonString(s string) err
 	}
 	delete(f, "TaskId")
 	delete(f, "ProjectId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealTimeTaskMetricOverviewRequest has unknown keys!", "")
 	}
@@ -13051,6 +13235,9 @@ type GenHiveTableDDLSqlRequestParams struct {
 
 	// 增加的delete file数量阈值
 	AddDeleteFiles *int64 `json:"AddDeleteFiles,omitempty" name:"AddDeleteFiles"`
+
+	// 下游节点数据源ID
+	TargetDatasourceId *string `json:"TargetDatasourceId,omitempty" name:"TargetDatasourceId"`
 }
 
 type GenHiveTableDDLSqlRequest struct {
@@ -13115,6 +13302,9 @@ type GenHiveTableDDLSqlRequest struct {
 
 	// 增加的delete file数量阈值
 	AddDeleteFiles *int64 `json:"AddDeleteFiles,omitempty" name:"AddDeleteFiles"`
+
+	// 下游节点数据源ID
+	TargetDatasourceId *string `json:"TargetDatasourceId,omitempty" name:"TargetDatasourceId"`
 }
 
 func (r *GenHiveTableDDLSqlRequest) ToJsonString() string {
@@ -13149,6 +13339,7 @@ func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
 	delete(f, "AddEqualityDeletes")
 	delete(f, "AddPositionDeletes")
 	delete(f, "AddDeleteFiles")
+	delete(f, "TargetDatasourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenHiveTableDDLSqlRequest has unknown keys!", "")
 	}
@@ -19548,6 +19739,20 @@ type TaskInfoDataPage struct {
 
 	// 总页数1
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+type TaskInfoPage struct {
+	// 页号
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 工作流列表信息
+	Items []*TaskCanvasInfo `json:"Items,omitempty" name:"Items"`
+
+	// 总页数
+	TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
 }
 
 type TaskInnerInfo struct {

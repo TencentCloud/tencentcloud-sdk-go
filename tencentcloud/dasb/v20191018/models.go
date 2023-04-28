@@ -487,6 +487,50 @@ type Command struct {
 
 	// 命令执行情况，1--允许，2--拒绝，3--确认
 	Action *int64 `json:"Action,omitempty" name:"Action"`
+
+	// 会话id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 设备account
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// 设备ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// source ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FromIp *string `json:"FromIp,omitempty" name:"FromIp"`
+
+	// 该命令所属会话的会话开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessTime *string `json:"SessTime,omitempty" name:"SessTime"`
+
+	// 复核时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfirmTime *string `json:"ConfirmTime,omitempty" name:"ConfirmTime"`
+
+	// 用户部门id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDepartmentId *string `json:"UserDepartmentId,omitempty" name:"UserDepartmentId"`
+
+	// 用户部门name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDepartmentName *string `json:"UserDepartmentName,omitempty" name:"UserDepartmentName"`
+
+	// 设备部门id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceDepartmentId *string `json:"DeviceDepartmentId,omitempty" name:"DeviceDepartmentId"`
+
+	// 设备部门name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceDepartmentName *string `json:"DeviceDepartmentName,omitempty" name:"DeviceDepartmentName"`
 }
 
 // Predefined struct for user
@@ -779,6 +823,11 @@ type CreateCmdTemplateRequestParams struct {
 
 	// 命令列表，\n分隔，最大长度32768字节
 	CmdList *string `json:"CmdList,omitempty" name:"CmdList"`
+
+	// 标识cmdlist字段前端是否为base64加密传值.
+	// 0:表示非base64加密
+	// 1:表示是base64加密
+	Encoding *uint64 `json:"Encoding,omitempty" name:"Encoding"`
 }
 
 type CreateCmdTemplateRequest struct {
@@ -789,6 +838,11 @@ type CreateCmdTemplateRequest struct {
 
 	// 命令列表，\n分隔，最大长度32768字节
 	CmdList *string `json:"CmdList,omitempty" name:"CmdList"`
+
+	// 标识cmdlist字段前端是否为base64加密传值.
+	// 0:表示非base64加密
+	// 1:表示是base64加密
+	Encoding *uint64 `json:"Encoding,omitempty" name:"Encoding"`
 }
 
 func (r *CreateCmdTemplateRequest) ToJsonString() string {
@@ -805,6 +859,7 @@ func (r *CreateCmdTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "CmdList")
+	delete(f, "Encoding")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCmdTemplateRequest has unknown keys!", "")
 	}
@@ -4164,6 +4219,10 @@ type SearchCommandBySidRequestParams struct {
 	// 命令，可模糊搜索
 	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
 
+	// Cmd字段是前端传值是否进行base64.
+	// 0:否，1：是
+	Encoding *uint64 `json:"Encoding,omitempty" name:"Encoding"`
+
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -4182,6 +4241,10 @@ type SearchCommandBySidRequest struct {
 
 	// 命令，可模糊搜索
 	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+
+	// Cmd字段是前端传值是否进行base64.
+	// 0:否，1：是
+	Encoding *uint64 `json:"Encoding,omitempty" name:"Encoding"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
@@ -4207,6 +4270,7 @@ func (r *SearchCommandBySidRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Sid")
 	delete(f, "Cmd")
+	delete(f, "Encoding")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "AuditAction")
@@ -4273,6 +4337,10 @@ type SearchCommandRequestParams struct {
 	// 执行的命令
 	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
 
+	// Cmd字段是前端传值是否进行base64.
+	// 0:否，1：是
+	Encoding *uint64 `json:"Encoding,omitempty" name:"Encoding"`
+
 	// 根据拦截状态进行过滤：1 - 已执行，2 - 被阻断
 	AuditAction []*uint64 `json:"AuditAction,omitempty" name:"AuditAction"`
 
@@ -4313,6 +4381,10 @@ type SearchCommandRequest struct {
 	// 执行的命令
 	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
 
+	// Cmd字段是前端传值是否进行base64.
+	// 0:否，1：是
+	Encoding *uint64 `json:"Encoding,omitempty" name:"Encoding"`
+
 	// 根据拦截状态进行过滤：1 - 已执行，2 - 被阻断
 	AuditAction []*uint64 `json:"AuditAction,omitempty" name:"AuditAction"`
 
@@ -4344,6 +4416,7 @@ func (r *SearchCommandRequest) FromJsonString(s string) error {
 	delete(f, "PublicIp")
 	delete(f, "PrivateIp")
 	delete(f, "Cmd")
+	delete(f, "Encoding")
 	delete(f, "AuditAction")
 	delete(f, "Limit")
 	delete(f, "Offset")
@@ -4414,6 +4487,38 @@ type SearchCommandResult struct {
 
 	// 命令执行时间相对于所属会话开始时间的偏移量，单位ms
 	TimeOffset *uint64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
+
+	// 账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Account *string `json:"Account,omitempty" name:"Account"`
+
+	// source ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FromIp *string `json:"FromIp,omitempty" name:"FromIp"`
+
+	// 该命令所属会话的会话开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessTime *string `json:"SessTime,omitempty" name:"SessTime"`
+
+	// 复核时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfirmTime *string `json:"ConfirmTime,omitempty" name:"ConfirmTime"`
+
+	// 部门id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDepartmentId *string `json:"UserDepartmentId,omitempty" name:"UserDepartmentId"`
+
+	// 用户部门名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDepartmentName *string `json:"UserDepartmentName,omitempty" name:"UserDepartmentName"`
+
+	// 设备部门id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceDepartmentId *string `json:"DeviceDepartmentId,omitempty" name:"DeviceDepartmentId"`
+
+	// 设备部门名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceDepartmentName *string `json:"DeviceDepartmentName,omitempty" name:"DeviceDepartmentName"`
 }
 
 // Predefined struct for user
@@ -4746,6 +4851,10 @@ type SearchSessionCommandRequestParams struct {
 	// 默认值为20，最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
+	// Cmd字段前端是否做base64加密
+	// 0：否，1：是
+	Encoding *uint64 `json:"Encoding,omitempty" name:"Encoding"`
+
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
@@ -4764,6 +4873,10 @@ type SearchSessionCommandRequest struct {
 
 	// 默认值为20，最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// Cmd字段前端是否做base64加密
+	// 0：否，1：是
+	Encoding *uint64 `json:"Encoding,omitempty" name:"Encoding"`
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
@@ -4785,6 +4898,7 @@ func (r *SearchSessionCommandRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Encoding")
 	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchSessionCommandRequest has unknown keys!", "")

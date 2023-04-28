@@ -801,6 +801,10 @@ type BotPkg struct {
 	// 子产品code
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 续费标志	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
 type BotQPS struct {
@@ -818,6 +822,10 @@ type BotQPS struct {
 
 	// 使用qps的最大值
 	MaxBotQPS *uint64 `json:"MaxBotQPS,omitempty" name:"MaxBotQPS"`
+
+	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
 type BotStatPointItem struct {
@@ -3717,6 +3725,10 @@ type FraudPkg struct {
 	// 使用数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitempty" name:"UsedNum"`
+
+	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
 // Predefined struct for user
@@ -5345,12 +5357,12 @@ type WafRuleLimit struct {
 }
 
 type WafThreatenIntelligenceDetails struct {
-	// 封禁模组启用状态
-	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
-
 	// 封禁属性标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 封禁模组启用状态
+	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
 
 	// 最后更新时间
 	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`

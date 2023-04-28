@@ -2317,6 +2317,7 @@ func NewDescribeWafThreatenIntelligenceResponse() (response *DescribeWafThreaten
 // 描述WAF威胁情报封禁模块配置详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeWafThreatenIntelligence(request *DescribeWafThreatenIntelligenceRequest) (response *DescribeWafThreatenIntelligenceResponse, err error) {
@@ -2327,6 +2328,7 @@ func (c *Client) DescribeWafThreatenIntelligence(request *DescribeWafThreatenInt
 // 描述WAF威胁情报封禁模块配置详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeWafThreatenIntelligenceWithContext(ctx context.Context, request *DescribeWafThreatenIntelligenceRequest) (response *DescribeWafThreatenIntelligenceResponse, err error) {
@@ -2839,8 +2841,13 @@ func NewModifyWafThreatenIntelligenceResponse() (response *ModifyWafThreatenInte
 // 配置WAF威胁情报封禁模块详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyWafThreatenIntelligence(request *ModifyWafThreatenIntelligenceRequest) (response *ModifyWafThreatenIntelligenceResponse, err error) {
     return c.ModifyWafThreatenIntelligenceWithContext(context.Background(), request)
 }
@@ -2849,8 +2856,13 @@ func (c *Client) ModifyWafThreatenIntelligence(request *ModifyWafThreatenIntelli
 // 配置WAF威胁情报封禁模块详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyWafThreatenIntelligenceWithContext(ctx context.Context, request *ModifyWafThreatenIntelligenceRequest) (response *ModifyWafThreatenIntelligenceResponse, err error) {
     if request == nil {
         request = NewModifyWafThreatenIntelligenceRequest()

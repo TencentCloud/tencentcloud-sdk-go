@@ -1608,10 +1608,10 @@ type QueueConfig struct {
 	// 队列名称。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
-	// 队列中弹性节点数量最小值。取值范围0～200。
+	// 队列中弹性节点数量最小值。默认值：0。取值范围：0～200。
 	MinSize *uint64 `json:"MinSize,omitempty" name:"MinSize"`
 
-	// 队列中弹性节点数量最大值。取值范围0～200。
+	// 队列中弹性节点数量最大值。默认值：10。取值范围：0～200。
 	MaxSize *uint64 `json:"MaxSize,omitempty" name:"MaxSize"`
 
 	// 是否开启自动扩容。

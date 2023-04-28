@@ -11799,8 +11799,10 @@ type Zone struct {
 	// 是否伪站点，取值有：
 	// <li> 0：非伪站点；</li>
 	// <li> 1：伪站点。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFake *int64 `json:"IsFake,omitempty" name:"IsFake"`
+
+	// 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作。</li>
+	LockStatus *string `json:"LockStatus,omitempty" name:"LockStatus"`
 }
 
 type ZoneSetting struct {

@@ -1005,7 +1005,7 @@ type CreateLiveCallbackTemplateRequestParams struct {
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	SnapshotNotifyUrl *string `json:"SnapshotNotifyUrl,omitempty" name:"SnapshotNotifyUrl"`
 
-	// 鉴黄回调 URL，
+	// 鉴黄回调 URL ，
 	// 相关协议文档：[事件消息通知](/document/product/267/32741)。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
 
@@ -1018,6 +1018,9 @@ type CreateLiveCallbackTemplateRequestParams struct {
 
 	// 推流异常回调 URL。
 	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
+
+	// 音频审核回调 URL。
+	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitempty" name:"AudioAuditNotifyUrl"`
 }
 
 type CreateLiveCallbackTemplateRequest struct {
@@ -1049,7 +1052,7 @@ type CreateLiveCallbackTemplateRequest struct {
 	// 相关协议文档：[事件消息通知](/document/product/267/32744)。
 	SnapshotNotifyUrl *string `json:"SnapshotNotifyUrl,omitempty" name:"SnapshotNotifyUrl"`
 
-	// 鉴黄回调 URL，
+	// 鉴黄回调 URL ，
 	// 相关协议文档：[事件消息通知](/document/product/267/32741)。
 	PornCensorshipNotifyUrl *string `json:"PornCensorshipNotifyUrl,omitempty" name:"PornCensorshipNotifyUrl"`
 
@@ -1062,6 +1065,9 @@ type CreateLiveCallbackTemplateRequest struct {
 
 	// 推流异常回调 URL。
 	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
+
+	// 音频审核回调 URL。
+	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitempty" name:"AudioAuditNotifyUrl"`
 }
 
 func (r *CreateLiveCallbackTemplateRequest) ToJsonString() string {
@@ -1086,6 +1092,7 @@ func (r *CreateLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CallbackKey")
 	delete(f, "StreamMixNotifyUrl")
 	delete(f, "PushExceptionNotifyUrl")
+	delete(f, "AudioAuditNotifyUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveCallbackTemplateRequest has unknown keys!", "")
 	}

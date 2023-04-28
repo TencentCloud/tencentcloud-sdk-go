@@ -2517,6 +2517,246 @@ func (c *Client) OverwriteWhiteBoxDeviceFingerprintsWithContext(ctx context.Cont
     return
 }
 
+func NewPostQuantumCryptoDecryptRequest() (request *PostQuantumCryptoDecryptRequest) {
+    request = &PostQuantumCryptoDecryptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "PostQuantumCryptoDecrypt")
+    
+    
+    return
+}
+
+func NewPostQuantumCryptoDecryptResponse() (response *PostQuantumCryptoDecryptResponse) {
+    response = &PostQuantumCryptoDecryptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PostQuantumCryptoDecrypt
+// 本接口使用后量子密码算法密钥，解密密文，并得到明文数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = "InvalidParameterValue.InvalidCiphertext"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) PostQuantumCryptoDecrypt(request *PostQuantumCryptoDecryptRequest) (response *PostQuantumCryptoDecryptResponse, err error) {
+    return c.PostQuantumCryptoDecryptWithContext(context.Background(), request)
+}
+
+// PostQuantumCryptoDecrypt
+// 本接口使用后量子密码算法密钥，解密密文，并得到明文数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCIPHERTEXT = "InvalidParameterValue.InvalidCiphertext"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) PostQuantumCryptoDecryptWithContext(ctx context.Context, request *PostQuantumCryptoDecryptRequest) (response *PostQuantumCryptoDecryptResponse, err error) {
+    if request == nil {
+        request = NewPostQuantumCryptoDecryptRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PostQuantumCryptoDecrypt require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPostQuantumCryptoDecryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPostQuantumCryptoEncryptRequest() (request *PostQuantumCryptoEncryptRequest) {
+    request = &PostQuantumCryptoEncryptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "PostQuantumCryptoEncrypt")
+    
+    
+    return
+}
+
+func NewPostQuantumCryptoEncryptResponse() (response *PostQuantumCryptoEncryptResponse) {
+    response = &PostQuantumCryptoEncryptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PostQuantumCryptoEncrypt
+// 本接口使用后量子密码算法密钥，可加密最多为4KB任意数据，可用于加密数据库密码，RSA Key，或其它较小的敏感信息。对于应用的数据加密，使用GenerateDataKey生成的DataKey进行本地数据的加解密操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDPLAINTEXT = "InvalidParameterValue.InvalidPlaintext"
+//  RESOURCEUNAVAILABLE_CMKARCHIVED = "ResourceUnavailable.CmkArchived"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) PostQuantumCryptoEncrypt(request *PostQuantumCryptoEncryptRequest) (response *PostQuantumCryptoEncryptResponse, err error) {
+    return c.PostQuantumCryptoEncryptWithContext(context.Background(), request)
+}
+
+// PostQuantumCryptoEncrypt
+// 本接口使用后量子密码算法密钥，可加密最多为4KB任意数据，可用于加密数据库密码，RSA Key，或其它较小的敏感信息。对于应用的数据加密，使用GenerateDataKey生成的DataKey进行本地数据的加解密操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDPLAINTEXT = "InvalidParameterValue.InvalidPlaintext"
+//  RESOURCEUNAVAILABLE_CMKARCHIVED = "ResourceUnavailable.CmkArchived"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) PostQuantumCryptoEncryptWithContext(ctx context.Context, request *PostQuantumCryptoEncryptRequest) (response *PostQuantumCryptoEncryptResponse, err error) {
+    if request == nil {
+        request = NewPostQuantumCryptoEncryptRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PostQuantumCryptoEncrypt require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPostQuantumCryptoEncryptResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPostQuantumCryptoSignRequest() (request *PostQuantumCryptoSignRequest) {
+    request = &PostQuantumCryptoSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "PostQuantumCryptoSign")
+    
+    
+    return
+}
+
+func NewPostQuantumCryptoSignResponse() (response *PostQuantumCryptoSignResponse) {
+    response = &PostQuantumCryptoSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PostQuantumCryptoSign
+// 使用后量子密码算法签名验签密钥进行签名。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+func (c *Client) PostQuantumCryptoSign(request *PostQuantumCryptoSignRequest) (response *PostQuantumCryptoSignResponse, err error) {
+    return c.PostQuantumCryptoSignWithContext(context.Background(), request)
+}
+
+// PostQuantumCryptoSign
+// 使用后量子密码算法签名验签密钥进行签名。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+func (c *Client) PostQuantumCryptoSignWithContext(ctx context.Context, request *PostQuantumCryptoSignRequest) (response *PostQuantumCryptoSignResponse, err error) {
+    if request == nil {
+        request = NewPostQuantumCryptoSignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PostQuantumCryptoSign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPostQuantumCryptoSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPostQuantumCryptoVerifyRequest() (request *PostQuantumCryptoVerifyRequest) {
+    request = &PostQuantumCryptoVerifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "PostQuantumCryptoVerify")
+    
+    
+    return
+}
+
+func NewPostQuantumCryptoVerifyResponse() (response *PostQuantumCryptoVerifyResponse) {
+    response = &PostQuantumCryptoVerifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PostQuantumCryptoVerify
+// 使用后量子密码算法密钥对签名进行验证。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+func (c *Client) PostQuantumCryptoVerify(request *PostQuantumCryptoVerifyRequest) (response *PostQuantumCryptoVerifyResponse, err error) {
+    return c.PostQuantumCryptoVerifyWithContext(context.Background(), request)
+}
+
+// PostQuantumCryptoVerify
+// 使用后量子密码算法密钥对签名进行验证。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+func (c *Client) PostQuantumCryptoVerifyWithContext(ctx context.Context, request *PostQuantumCryptoVerifyRequest) (response *PostQuantumCryptoVerifyResponse, err error) {
+    if request == nil {
+        request = NewPostQuantumCryptoVerifyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PostQuantumCryptoVerify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPostQuantumCryptoVerifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReEncryptRequest() (request *ReEncryptRequest) {
     request = &ReEncryptRequest{
         BaseRequest: &tchttp.BaseRequest{},

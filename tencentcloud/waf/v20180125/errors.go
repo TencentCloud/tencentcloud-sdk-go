@@ -29,8 +29,17 @@ const (
 	// CLS内部错误。
 	FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 
+	// 操作Mysql数据库失败
+	FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+
+	// 操作Redis数据库失败
+	FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// DBErr
+	INTERNALERROR_DBERR = "InternalError.DBErr"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"

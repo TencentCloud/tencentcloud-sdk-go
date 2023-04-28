@@ -72,6 +72,9 @@ type CreateBPBrandRequestParams struct {
 	// 企业名称
 	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
 
+	// 品牌logo
+	BrandLogo *string `json:"BrandLogo,omitempty" name:"BrandLogo"`
+
 	// 联系电话
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
@@ -114,6 +117,9 @@ type CreateBPBrandRequest struct {
 
 	// 企业名称
 	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 品牌logo
+	BrandLogo *string `json:"BrandLogo,omitempty" name:"BrandLogo"`
 
 	// 联系电话
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
@@ -163,6 +169,7 @@ func (r *CreateBPBrandRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BrandName")
 	delete(f, "CompanyName")
+	delete(f, "BrandLogo")
 	delete(f, "Phone")
 	delete(f, "License")
 	delete(f, "Authorization")
@@ -1042,6 +1049,10 @@ type FakeURLData struct {
 	// 网址截图
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
+
+	// 账户资源状态：0-不可用 1-可用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccountStatus *int64 `json:"AccountStatus,omitempty" name:"AccountStatus"`
 }
 
 type Filter struct {

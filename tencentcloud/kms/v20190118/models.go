@@ -2889,6 +2889,283 @@ func (r *OverwriteWhiteBoxDeviceFingerprintsResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type PostQuantumCryptoDecryptRequestParams struct {
+	// 待解密的密文数据
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+
+	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" name:"EncryptionPublicKey"`
+
+	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" name:"EncryptionAlgorithm"`
+}
+
+type PostQuantumCryptoDecryptRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待解密的密文数据
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+
+	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" name:"EncryptionPublicKey"`
+
+	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" name:"EncryptionAlgorithm"`
+}
+
+func (r *PostQuantumCryptoDecryptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostQuantumCryptoDecryptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CiphertextBlob")
+	delete(f, "EncryptionPublicKey")
+	delete(f, "EncryptionAlgorithm")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PostQuantumCryptoDecryptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PostQuantumCryptoDecryptResponseParams struct {
+	// CMK的全局唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。
+	// 若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
+	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PostQuantumCryptoDecryptResponse struct {
+	*tchttp.BaseResponse
+	Response *PostQuantumCryptoDecryptResponseParams `json:"Response"`
+}
+
+func (r *PostQuantumCryptoDecryptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostQuantumCryptoDecryptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PostQuantumCryptoEncryptRequestParams struct {
+	// 调用CreateKey生成的CMK全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 被加密的明文数据，该字段必须使用base64编码，原文最大长度支持4K
+	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+}
+
+type PostQuantumCryptoEncryptRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用CreateKey生成的CMK全局唯一标识符
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 被加密的明文数据，该字段必须使用base64编码，原文最大长度支持4K
+	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+}
+
+func (r *PostQuantumCryptoEncryptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostQuantumCryptoEncryptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyId")
+	delete(f, "PlainText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PostQuantumCryptoEncryptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PostQuantumCryptoEncryptResponseParams struct {
+	// 加密后的密文，base64编码。注意：本字段中打包了密文和密钥的相关信息，不是对明文的直接加密结果，只有将该字段作为PostQuantumCryptoDecrypt接口的输入参数，才可以解密出原文。
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+
+	// 加密使用的CMK的全局唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PostQuantumCryptoEncryptResponse struct {
+	*tchttp.BaseResponse
+	Response *PostQuantumCryptoEncryptResponseParams `json:"Response"`
+}
+
+func (r *PostQuantumCryptoEncryptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostQuantumCryptoEncryptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PostQuantumCryptoSignRequestParams struct {
+	// Base64 编码的消息原文。消息原文的长度（Base64编码前的长度）不超过4096字节。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 密钥的唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+type PostQuantumCryptoSignRequest struct {
+	*tchttp.BaseRequest
+	
+	// Base64 编码的消息原文。消息原文的长度（Base64编码前的长度）不超过4096字节。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 密钥的唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+}
+
+func (r *PostQuantumCryptoSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostQuantumCryptoSignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Message")
+	delete(f, "KeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PostQuantumCryptoSignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PostQuantumCryptoSignResponseParams struct {
+	// 签名值，Base64编码。可使用 PostQuantumCryptoVerify接口对签名值进行验证。
+	Signature *string `json:"Signature,omitempty" name:"Signature"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PostQuantumCryptoSignResponse struct {
+	*tchttp.BaseResponse
+	Response *PostQuantumCryptoSignResponseParams `json:"Response"`
+}
+
+func (r *PostQuantumCryptoSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostQuantumCryptoSignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PostQuantumCryptoVerifyRequestParams struct {
+	// 密钥的唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 签名值，通过调用KMS PostQuantumCryptoSign签名接口生成
+	SignatureValue *string `json:"SignatureValue,omitempty" name:"SignatureValue"`
+
+	// Base64 编码的消息原文，消息原文的长度（Base64编码前的长度）不超过4096字节。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+type PostQuantumCryptoVerifyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 密钥的唯一标识
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+
+	// 签名值，通过调用KMS PostQuantumCryptoSign签名接口生成
+	SignatureValue *string `json:"SignatureValue,omitempty" name:"SignatureValue"`
+
+	// Base64 编码的消息原文，消息原文的长度（Base64编码前的长度）不超过4096字节。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+func (r *PostQuantumCryptoVerifyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostQuantumCryptoVerifyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KeyId")
+	delete(f, "SignatureValue")
+	delete(f, "Message")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PostQuantumCryptoVerifyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PostQuantumCryptoVerifyResponseParams struct {
+	// 签名是否有效。true：签名有效，false：签名无效。
+	SignatureValid *bool `json:"SignatureValid,omitempty" name:"SignatureValid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PostQuantumCryptoVerifyResponse struct {
+	*tchttp.BaseResponse
+	Response *PostQuantumCryptoVerifyResponseParams `json:"Response"`
+}
+
+func (r *PostQuantumCryptoVerifyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostQuantumCryptoVerifyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ReEncryptRequestParams struct {
 	// 需要重新加密的密文
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`

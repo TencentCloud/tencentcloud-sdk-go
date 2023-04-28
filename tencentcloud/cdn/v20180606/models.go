@@ -4885,11 +4885,18 @@ type DescribePayTypeRequestParams struct {
 	// 指定服务地域查询
 	// mainland：境内计费方式查询
 	// overseas：境外计费方式查询
-	// 未填充时默认为 mainland
+	// global：全球计费方式查询
+	// 未填充时，默认为 mainland
 	Area *string `json:"Area,omitempty" name:"Area"`
 
 	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 指定资源包查询
+	// flux：流量包
+	// https：HTTPS请求包
+	// 未填充时，默认为 flux
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type DescribePayTypeRequest struct {
@@ -4898,11 +4905,18 @@ type DescribePayTypeRequest struct {
 	// 指定服务地域查询
 	// mainland：境内计费方式查询
 	// overseas：境外计费方式查询
-	// 未填充时默认为 mainland
+	// global：全球计费方式查询
+	// 未填充时，默认为 mainland
 	Area *string `json:"Area,omitempty" name:"Area"`
 
 	// 指定查询的产品数据，可选为cdn或者ecdn，默认为cdn
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 指定资源包查询
+	// flux：流量包
+	// https：HTTPS请求包
+	// 未填充时，默认为 flux
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 func (r *DescribePayTypeRequest) ToJsonString() string {
@@ -4919,6 +4933,7 @@ func (r *DescribePayTypeRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Area")
 	delete(f, "Product")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePayTypeRequest has unknown keys!", "")
 	}
@@ -4927,7 +4942,7 @@ func (r *DescribePayTypeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePayTypeResponseParams struct {
-	// 计费类型：
+	// 计费类型
 	// flux：流量计费
 	// bandwidth：带宽计费
 	// request：请求数计费
@@ -4936,12 +4951,13 @@ type DescribePayTypeResponseParams struct {
 	// 日结计费方式切换时，若当日产生消耗，则此字段表示第二天即将生效的计费方式，若未产生消耗，则表示已经生效的计费方式。
 	PayType *string `json:"PayType,omitempty" name:"PayType"`
 
-	// 计费周期：
+	// 计费周期
 	// day：日结计费
 	// month：月结计费
 	// hour：小时结计费
 	BillingCycle *string `json:"BillingCycle,omitempty" name:"BillingCycle"`
 
+	// 统计类型
 	// monthMax：日峰值月平均，月结模式
 	// day95：日 95 带宽，月结模式
 	// month95：月95带宽，月结模式
@@ -4949,12 +4965,12 @@ type DescribePayTypeResponseParams struct {
 	// max：峰值带宽，日结模式
 	StatType *string `json:"StatType,omitempty" name:"StatType"`
 
-	// 境外计费类型：
+	// 计费区域
 	// all：全地区统一计费
 	// multiple：分地区计费
 	RegionType *string `json:"RegionType,omitempty" name:"RegionType"`
 
-	// 当前生效计费类型：
+	// 当前生效计费类型
 	// flux：流量计费
 	// bandwidth：带宽计费
 	// request：请求数计费

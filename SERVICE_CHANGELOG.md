@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 日志服务(cls) 版本：2020-10-16
+## 品牌经营管家(bma) 版本：2022-11-15
 
-### 第 43 次发布
+### 第 7 次发布
 
-发布时间：2023-04-27 01:12:13
+发布时间：2023-04-28 01:08:34
 
 本次发布包含了以下内容：
 
@@ -12,56 +12,29 @@
 
 修改接口：
 
-* [CreateMachineGroup](https://cloud.tencent.com/document/api/614/56440)
+* [CreateBPBrand](https://cloud.tencent.com/document/api/1296/86603)
 
-	* 新增入参：MetaTags
+	* 新增入参：BrandLogo
 
-* [ModifyMachineGroup](https://cloud.tencent.com/document/api/614/56436)
-
-	* 新增入参：MetaTags
-
-
-新增数据结构：
-
-* [MetaTagInfo](https://cloud.tencent.com/document/api/614/56471#MetaTagInfo)
 
 修改数据结构：
 
-* [ExtractRuleInfo](https://cloud.tencent.com/document/api/614/56471#ExtractRuleInfo)
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
 
-	* 新增成员：MetadataType, PathRegex, MetaTags
-
-* [MachineGroupInfo](https://cloud.tencent.com/document/api/614/56471#MachineGroupInfo)
-
-	* 新增成员：MetaTags
+	* 新增成员：AccountStatus
 
 
 
 
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 107 次发布
-
-发布时间：2023-04-27 01:14:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAccountQuota](https://cloud.tencent.com/document/api/213/55628)
-
-	* <font color="#dd0000">**修改出参**：</font>AppId
+## 品牌经营管家(bma) 版本：2021-06-24
 
 
 
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+### 第 120 次发布
 
-### 第 17 次发布
-
-发布时间：2023-04-27 01:17:03
+发布时间：2023-04-28 01:11:33
 
 本次发布包含了以下内容：
 
@@ -69,22 +42,18 @@
 
 修改接口：
 
-* [DeleteDBDiagReportTasks](https://cloud.tencent.com/document/api/1130/90009)
+* [DescribePayType](https://cloud.tencent.com/document/api/228/31295)
 
-	* <font color="#dd0000">**修改入参**：</font>Product
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+	* 新增入参：Type
 
 
 
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-### 第 47 次发布
+## 云防火墙(cfw) 版本：2019-09-04
 
-发布时间：2023-04-27 01:17:49
+### 第 33 次发布
+
+发布时间：2023-04-28 01:12:37
 
 本次发布包含了以下内容：
 
@@ -92,40 +61,79 @@
 
 修改数据结构：
 
-* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+* [BlockIgnoreRule](https://cloud.tencent.com/document/api/1132/49071#BlockIgnoreRule)
 
-	* 新增成员：DataEngineClusterType, DataEngineImageVersion
-
-
+	* 新增成员：Comment
 
 
-## 全站加速网络(ecdn) 版本：2019-10-12
 
-### 第 12 次发布
 
-发布时间：2023-04-27 01:19:24
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 98 次发布
+
+发布时间：2023-04-28 01:15:09
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**预下线接口**：</font>
+修改数据结构：
 
-* AddEcdnDomain
-* CreateVerifyRecord
-* DeleteEcdnDomain
-* PurgePathCache
-* StartEcdnDomain
-* StopEcdnDomain
-* UpdateDomainConfig
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+
+	* 新增成员：FundingAccountSubType
 
 
 
-## 全球应用加速(gaap) 版本：2018-05-29
 
-### 第 40 次发布
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
 
-发布时间：2023-04-27 01:21:51
+### 第 10 次发布
+
+发布时间：2023-04-28 01:18:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCmdTemplate](https://cloud.tencent.com/document/api/1025/86964)
+
+	* 新增入参：Encoding
+
+* [SearchCommand](https://cloud.tencent.com/document/api/1025/90045)
+
+	* 新增入参：Encoding
+
+* [SearchCommandBySid](https://cloud.tencent.com/document/api/1025/90044)
+
+	* 新增入参：Encoding
+
+* [SearchSessionCommand](https://cloud.tencent.com/document/api/1025/90040)
+
+	* 新增入参：Encoding
+
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1025/74416#Command)
+
+	* 新增成员：Sid, UserName, Account, InstanceId, FromIp, SessTime, ConfirmTime, UserDepartmentId, UserDepartmentName, DeviceDepartmentId, DeviceDepartmentName
+
+* [SearchCommandResult](https://cloud.tencent.com/document/api/1025/74416#SearchCommandResult)
+
+	* 新增成员：Account, FromIp, SessTime, ConfirmTime, UserDepartmentId, UserDepartmentName, DeviceDepartmentId, DeviceDepartmentName
+
+
+
+
+## 密钥管理系统(kms) 版本：2019-01-18
+
+### 第 20 次发布
+
+发布时间：2023-04-28 01:28:18
 
 本次发布包含了以下内容：
 
@@ -133,53 +141,18 @@
 
 新增接口：
 
-* [DescribeAuthSignature](https://cloud.tencent.com/document/api/608/90692)
+* [PostQuantumCryptoDecrypt](https://cloud.tencent.com/document/api/573/90742)
+* [PostQuantumCryptoEncrypt](https://cloud.tencent.com/document/api/573/90741)
+* [PostQuantumCryptoSign](https://cloud.tencent.com/document/api/573/90740)
+* [PostQuantumCryptoVerify](https://cloud.tencent.com/document/api/573/90739)
 
 
 
-## 低代码互动课堂(lcic) 版本：2022-08-17
+## 云直播CSS(live) 版本：2018-08-01
 
-### 第 25 次发布
+### 第 99 次发布
 
-发布时间：2023-04-27 01:26:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
-
-	* 新增入参：EnableDirectControl
-
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
-
-	* 新增出参：EnableDirectControl
-
-* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
-
-	* 新增入参：EnableDirectControl
-
-
-修改数据结构：
-
-* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
-
-	* 新增成员：EnableDirectControl
-
-* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
-
-	* 新增成员：MaxMicNumber, EnableDirectControl
-
-
-
-
-## 云数据库Redis(redis) 版本：2018-04-12
-
-### 第 65 次发布
-
-发布时间：2023-04-27 01:33:11
+发布时间：2023-04-28 01:29:18
 
 本次发布包含了以下内容：
 
@@ -187,18 +160,37 @@
 
 修改接口：
 
-* [KillMasterGroup](https://cloud.tencent.com/document/api/239/58399)
+* [CreateLiveCallbackTemplate](https://cloud.tencent.com/document/api/267/32637)
 
-	* <font color="#dd0000">**修改入参**：</font>Password
-
-
+	* 新增入参：AudioAuditNotifyUrl
 
 
-## 凭据管理系统(ssm) 版本：2019-09-23
 
-### 第 8 次发布
 
-发布时间：2023-04-27 01:35:41
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 58 次发布
+
+发布时间：2023-04-28 01:31:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ProcessLiveStream](https://cloud.tencent.com/document/api/862/39227)
+
+	* 新增入参：AiAnalysisTask
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 41 次发布
+
+发布时间：2023-04-28 01:40:49
 
 本次发布包含了以下内容：
 
@@ -206,18 +198,41 @@
 
 修改数据结构：
 
-* [SecretMetadata](https://cloud.tencent.com/document/api/1140/40530#SecretMetadata)
+* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
 
-	* 新增成员：RotationFrequency, ResourceID, RotationBeginTime
-
-
+	* 新增成员：LockStatus
 
 
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-### 第 55 次发布
 
-发布时间：2023-04-27 01:38:59
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 151 次发布
+
+发布时间：2023-04-28 01:46:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DescribeFileAttributesTaskOutput](https://cloud.tencent.com/document/api/266/31773#DescribeFileAttributesTaskOutput)
+
+	* 新增成员：Sha1
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 33 次发布
+
+发布时间：2023-04-28 01:48:31
 
 本次发布包含了以下内容：
 
@@ -225,22 +240,39 @@
 
 修改接口：
 
-* [CreateRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63427)
+* [ModifyWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72637)
 
-	* <font color="#dd0000">**修改入参**：</font>Ttl, RetentionTime
+	* <font color="#dd0000">**修改入参**：</font>WafThreatenIntelligenceDetails
 
-* [ModifyRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63415)
-
-	* <font color="#dd0000">**修改入参**：</font>Ttl, RetentionTime
+	* <font color="#dd0000">**修改出参**：</font>WafThreatenIntelligenceDetails
 
 
+修改数据结构：
+
+* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
+
+	* 新增成员：RenewFlag
+
+* [BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS)
+
+	* 新增成员：RenewFlag
+
+* [FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg)
+
+	* 新增成员：RenewFlag
+
+* [WafThreatenIntelligenceDetails](https://cloud.tencent.com/document/api/627/53609#WafThreatenIntelligenceDetails)
+
+	* <font color="#dd0000">**修改成员**：</font>DefenseStatus
 
 
-## 微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 91 次发布
 
-发布时间：2023-04-26 11:35:57
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 24 次发布
+
+发布时间：2023-04-27 13:15:51
 
 本次发布包含了以下内容：
 
@@ -248,11 +280,64 @@
 
 新增接口：
 
-* [DescribeUnitRulesV2](https://cloud.tencent.com/document/api/649/90667)
+* [DescribeOperateTasks](https://cloud.tencent.com/document/api/1267/90705)
+
+修改接口：
+
+* [DescribeDatabaseInfoList](https://cloud.tencent.com/document/api/1267/82545)
+
+	* 新增入参：Filters
+
+* [DescribeRealTimeTaskMetricOverview](https://cloud.tencent.com/document/api/1267/82490)
+
+	* 新增入参：StartTime, EndTime
+
+* [GenHiveTableDDLSql](https://cloud.tencent.com/document/api/1267/82483)
+
+	* 新增入参：TargetDatasourceId
+
 
 新增数据结构：
 
-* [TsfPageUnitRuleV2](https://cloud.tencent.com/document/api/649/36099#TsfPageUnitRuleV2)
+* [TaskInfoPage](https://cloud.tencent.com/document/api/1267/76336#TaskInfoPage)
+
+修改数据结构：
+
+* [AlarmIndicatorInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmIndicatorInfo)
+
+	* 新增成员：AlarmIndicatorUnit
+
+* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)
+
+	* 新增成员：ModifiedTime
+
+
+
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 14 次发布
+
+发布时间：2023-04-28 01:49:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVMusicsByTag](https://cloud.tencent.com/document/api/1592/80528)
+
+	* 新增入参：MaterialFilters
+
+* [DescribeKTVPlaylistDetail](https://cloud.tencent.com/document/api/1592/76189)
+
+	* 新增入参：MaterialFilters
+
+* [SearchKTVMusics](https://cloud.tencent.com/document/api/1592/76186)
+
+	* 新增入参：MaterialFilters
+
 
 
 
@@ -9145,6 +9230,28 @@
 
 ## 品牌经营管家(bma) 版本：2022-11-15
 
+### 第 7 次发布
+
+发布时间：2023-04-28 01:08:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBPBrand](https://cloud.tencent.com/document/api/1296/86603)
+
+	* 新增入参：BrandLogo
+
+
+修改数据结构：
+
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
+
+	* 新增成员：AccountStatus
+
+
 ### 第 6 次发布
 
 发布时间：2023-03-30 01:04:35
@@ -16152,6 +16259,21 @@
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06
 
+### 第 120 次发布
+
+发布时间：2023-04-28 01:11:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePayType](https://cloud.tencent.com/document/api/228/31295)
+
+	* 新增入参：Type
+
+
 ### 第 119 次发布
 
 发布时间：2023-04-19 01:11:05
@@ -19550,6 +19672,21 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 33 次发布
+
+发布时间：2023-04-28 01:12:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BlockIgnoreRule](https://cloud.tencent.com/document/api/1132/49071#BlockIgnoreRule)
+
+	* 新增成员：Comment
+
 
 ### 第 32 次发布
 
@@ -25026,7 +25163,7 @@
 
 新增数据结构：
 
-* [[MetaTagInfo](https://cloud.tencent.com/document/api/614/56471#MetaTagInfo)](https://cloud.tencent.com/document/api/614/56471#[MetaTagInfo](https://cloud.tencent.com/document/api/614/56471#MetaTagInfo))
+* [MetaTagInfo](https://cloud.tencent.com/document/api/614/56471#MetaTagInfo)
 
 修改数据结构：
 
@@ -27566,6 +27703,21 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 98 次发布
+
+发布时间：2023-04-28 01:15:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+
+	* 新增成员：FundingAccountSubType
+
 
 ### 第 97 次发布
 
@@ -35895,6 +36047,44 @@
 
 
 ## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 10 次发布
+
+发布时间：2023-04-28 01:18:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCmdTemplate](https://cloud.tencent.com/document/api/1025/86964)
+
+	* 新增入参：Encoding
+
+* [SearchCommand](https://cloud.tencent.com/document/api/1025/90045)
+
+	* 新增入参：Encoding
+
+* [SearchCommandBySid](https://cloud.tencent.com/document/api/1025/90044)
+
+	* 新增入参：Encoding
+
+* [SearchSessionCommand](https://cloud.tencent.com/document/api/1025/90040)
+
+	* 新增入参：Encoding
+
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1025/74416#Command)
+
+	* 新增成员：Sid, UserName, Account, InstanceId, FromIp, SessTime, ConfirmTime, UserDepartmentId, UserDepartmentName, DeviceDepartmentId, DeviceDepartmentName
+
+* [SearchCommandResult](https://cloud.tencent.com/document/api/1025/74416#SearchCommandResult)
+
+	* 新增成员：Account, FromIp, SessTime, ConfirmTime, UserDepartmentId, UserDepartmentName, DeviceDepartmentId, DeviceDepartmentName
+
 
 ### 第 9 次发布
 
@@ -50275,7 +50465,7 @@
 
 新增接口：
 
-* [[DescribeAuthSignature](https://cloud.tencent.com/document/api/608/90692)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAuthSignature](https://cloud.tencent.com/document/api/608/90692)
 
 ### 第 39 次发布
 
@@ -59337,6 +59527,21 @@
 
 ## 密钥管理系统(kms) 版本：2019-01-18
 
+### 第 20 次发布
+
+发布时间：2023-04-28 01:28:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[PostQuantumCryptoDecrypt](https://cloud.tencent.com/document/api/573/90742)](https://cloud.tencent.com/document/api/#/#)
+* [[PostQuantumCryptoEncrypt](https://cloud.tencent.com/document/api/573/90741)](https://cloud.tencent.com/document/api/#/#)
+* [[PostQuantumCryptoSign](https://cloud.tencent.com/document/api/573/90740)](https://cloud.tencent.com/document/api/#/#)
+* [[PostQuantumCryptoVerify](https://cloud.tencent.com/document/api/573/90739)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 19 次发布
 
 发布时间：2023-03-03 01:26:52
@@ -61151,6 +61356,21 @@
 
 
 ## 云直播CSS(live) 版本：2018-08-01
+
+### 第 99 次发布
+
+发布时间：2023-04-28 01:29:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLiveCallbackTemplate](https://cloud.tencent.com/document/api/267/32637)
+
+	* 新增入参：AudioAuditNotifyUrl
+
 
 ### 第 98 次发布
 
@@ -67385,6 +67605,21 @@
 
 
 ## 媒体处理(mps) 版本：2019-06-12
+
+### 第 58 次发布
+
+发布时间：2023-04-28 01:31:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ProcessLiveStream](https://cloud.tencent.com/document/api/862/39227)
+
+	* 新增入参：AiAnalysisTask
+
 
 ### 第 57 次发布
 
@@ -92740,6 +92975,21 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 41 次发布
+
+发布时间：2023-04-28 01:40:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
+
+	* 新增成员：LockStatus
+
+
 ### 第 40 次发布
 
 发布时间：2023-04-26 01:54:26
@@ -102723,11 +102973,11 @@
 
 新增接口：
 
-* [[DescribeUnitRulesV2](https://cloud.tencent.com/document/api/649/90667)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeUnitRulesV2](https://cloud.tencent.com/document/api/649/90667)
 
 新增数据结构：
 
-* [[TsfPageUnitRuleV2](https://cloud.tencent.com/document/api/649/36099#TsfPageUnitRuleV2)](https://cloud.tencent.com/document/api/649/36099#[TsfPageUnitRuleV2](https://cloud.tencent.com/document/api/649/36099#TsfPageUnitRuleV2))
+* [TsfPageUnitRuleV2](https://cloud.tencent.com/document/api/649/36099#TsfPageUnitRuleV2)
 
 ### 第 90 次发布
 
@@ -105776,6 +106026,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 151 次发布
+
+发布时间：2023-04-28 01:46:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DescribeFileAttributesTaskOutput](https://cloud.tencent.com/document/api/266/31773#DescribeFileAttributesTaskOutput)
+
+	* 新增成员：Sha1
+
 
 ### 第 150 次发布
 
@@ -113268,6 +113533,42 @@
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
+### 第 33 次发布
+
+发布时间：2023-04-28 01:48:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyWafThreatenIntelligence](https://cloud.tencent.com/document/api/627/72637)
+
+	* <font color="#dd0000">**修改入参**：</font>WafThreatenIntelligenceDetails
+
+	* <font color="#dd0000">**修改出参**：</font>WafThreatenIntelligenceDetails
+
+
+修改数据结构：
+
+* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
+
+	* 新增成员：RenewFlag
+
+* [BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS)
+
+	* 新增成员：RenewFlag
+
+* [FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg)
+
+	* 新增成员：RenewFlag
+
+* [WafThreatenIntelligenceDetails](https://cloud.tencent.com/document/api/627/53609#WafThreatenIntelligenceDetails)
+
+	* <font color="#dd0000">**修改成员**：</font>DefenseStatus
+
+
 ### 第 32 次发布
 
 发布时间：2023-04-24 01:51:56
@@ -114158,6 +114459,48 @@
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
+### 第 24 次发布
+
+发布时间：2023-04-27 13:15:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeOperateTasks](https://cloud.tencent.com/document/api/1267/90705)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeDatabaseInfoList](https://cloud.tencent.com/document/api/1267/82545)
+
+	* 新增入参：Filters
+
+* [DescribeRealTimeTaskMetricOverview](https://cloud.tencent.com/document/api/1267/82490)
+
+	* 新增入参：StartTime, EndTime
+
+* [GenHiveTableDDLSql](https://cloud.tencent.com/document/api/1267/82483)
+
+	* 新增入参：TargetDatasourceId
+
+
+新增数据结构：
+
+* [[TaskInfoPage](https://cloud.tencent.com/document/api/1267/76336#TaskInfoPage)](https://cloud.tencent.com/document/api/1267/76336#[TaskInfoPage](https://cloud.tencent.com/document/api/1267/76336#TaskInfoPage))
+
+修改数据结构：
+
+* [AlarmIndicatorInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmIndicatorInfo)
+
+	* 新增成员：AlarmIndicatorUnit
+
+* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)
+
+	* 新增成员：ModifiedTime
+
+
 ### 第 23 次发布
 
 发布时间：2023-03-31 02:11:48
@@ -114939,6 +115282,29 @@
 
 
 ## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 14 次发布
+
+发布时间：2023-04-28 01:49:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVMusicsByTag](https://cloud.tencent.com/document/api/1592/80528)
+
+	* 新增入参：MaterialFilters
+
+* [DescribeKTVPlaylistDetail](https://cloud.tencent.com/document/api/1592/76189)
+
+	* 新增入参：MaterialFilters
+
+* [SearchKTVMusics](https://cloud.tencent.com/document/api/1592/76186)
+
+	* 新增入参：MaterialFilters
+
 
 ### 第 13 次发布
 
