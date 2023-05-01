@@ -2528,7 +2528,7 @@ func NewDescribeInstanceShardsResponse() (response *DescribeInstanceShardsRespon
 }
 
 // DescribeInstanceShards
-// 获取集群版实例分片信息
+// 本接口（DescribeInstanceShards）用于获取集群架构实例的分片信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2539,7 +2539,7 @@ func (c *Client) DescribeInstanceShards(request *DescribeInstanceShardsRequest) 
 }
 
 // DescribeInstanceShards
-// 获取集群版实例分片信息
+// 本接口（DescribeInstanceShards）用于获取集群架构实例的分片信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2644,7 +2644,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 }
 
 // DescribeInstances
-// 查询Redis实例列表
+// 本接口（DescribeInstances）用于查询Redis实例列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2661,7 +2661,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 }
 
 // DescribeInstances
-// 查询Redis实例列表
+// 本接口（DescribeInstances）用于查询Redis实例列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

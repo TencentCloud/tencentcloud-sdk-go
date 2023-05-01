@@ -1003,6 +1003,9 @@ type AssignPrivateIpAddressesRequestParams struct {
 
 	// 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
+
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 }
 
 type AssignPrivateIpAddressesRequest struct {
@@ -1016,6 +1019,9 @@ type AssignPrivateIpAddressesRequest struct {
 
 	// 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
+
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 }
 
 func (r *AssignPrivateIpAddressesRequest) ToJsonString() string {
@@ -1033,6 +1039,7 @@ func (r *AssignPrivateIpAddressesRequest) FromJsonString(s string) error {
 	delete(f, "NetworkInterfaceId")
 	delete(f, "PrivateIpAddresses")
 	delete(f, "SecondaryPrivateIpAddressCount")
+	delete(f, "QosLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignPrivateIpAddressesRequest has unknown keys!", "")
 	}
@@ -2727,6 +2734,9 @@ type CreateAndAttachNetworkInterfaceRequestParams struct {
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
@@ -2761,6 +2771,9 @@ type CreateAndAttachNetworkInterfaceRequest struct {
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
@@ -2792,6 +2805,7 @@ func (r *CreateAndAttachNetworkInterfaceRequest) FromJsonString(s string) error 
 	delete(f, "InstanceId")
 	delete(f, "PrivateIpAddresses")
 	delete(f, "SecondaryPrivateIpAddressCount")
+	delete(f, "QosLevel")
 	delete(f, "SecurityGroupIds")
 	delete(f, "NetworkInterfaceDescription")
 	delete(f, "Tags")
@@ -4439,6 +4453,9 @@ type CreateNetworkInterfaceRequestParams struct {
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
@@ -4470,6 +4487,9 @@ type CreateNetworkInterfaceRequest struct {
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
 	// 指定绑定的安全组，例如：['sg-1dd51d']。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
@@ -4500,6 +4520,7 @@ func (r *CreateNetworkInterfaceRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "NetworkInterfaceDescription")
 	delete(f, "SecondaryPrivateIpAddressCount")
+	delete(f, "QosLevel")
 	delete(f, "SecurityGroupIds")
 	delete(f, "PrivateIpAddresses")
 	delete(f, "Tags")
@@ -22172,6 +22193,9 @@ type PrivateIpAddressSpecification struct {
 	// DELETING：删除中
 	// AVAILABLE：可用的
 	State *string `json:"State,omitempty" name:"State"`
+
+	// IP服务质量等级，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 }
 
 type ProductQuota struct {

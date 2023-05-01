@@ -921,6 +921,78 @@ func (c *Client) DescribeQueuesWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewModifyInitNodeScriptsRequest() (request *ModifyInitNodeScriptsRequest) {
+    request = &ModifyInitNodeScriptsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "ModifyInitNodeScripts")
+    
+    
+    return
+}
+
+func NewModifyInitNodeScriptsResponse() (response *ModifyInitNodeScriptsResponse) {
+    response = &ModifyInitNodeScriptsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInitNodeScripts
+// 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) ModifyInitNodeScripts(request *ModifyInitNodeScriptsRequest) (response *ModifyInitNodeScriptsResponse, err error) {
+    return c.ModifyInitNodeScriptsWithContext(context.Background(), request)
+}
+
+// ModifyInitNodeScripts
+// 本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
+//  INVALIDPARAMETERVALUE_TOOSHORT = "InvalidParameterValue.TooShort"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = "UnsupportedOperation.ParameterTooSmall"
+func (c *Client) ModifyInitNodeScriptsWithContext(ctx context.Context, request *ModifyInitNodeScriptsRequest) (response *ModifyInitNodeScriptsResponse, err error) {
+    if request == nil {
+        request = NewModifyInitNodeScriptsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInitNodeScripts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInitNodeScriptsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetAutoScalingConfigurationRequest() (request *SetAutoScalingConfigurationRequest) {
     request = &SetAutoScalingConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},

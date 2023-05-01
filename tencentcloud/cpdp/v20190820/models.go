@@ -1855,6 +1855,144 @@ type ApplyFlexSettlementResult struct {
 }
 
 // Predefined struct for user
+type ApplyFlexWechatPreAuthRequestParams struct {
+	// 商家核身单号
+	AuthNo *string `json:"AuthNo,omitempty" name:"AuthNo"`
+
+	// 微信用户标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 用工单位名称
+	EmployerName *string `json:"EmployerName,omitempty" name:"EmployerName"`
+
+	// 用户姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户证件号
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 用工类型
+	// LONG_TERM_EMPLOYMENT：长期用工，
+	// SHORT_TERM_EMPLOYMENT： 短期用工，
+	// COOPERATION_EMPLOYMENT：合作关系
+	EmploymentType *string `json:"EmploymentType,omitempty" name:"EmploymentType"`
+
+	// 核身类型
+	// SIGN_IN：考勤、签到打卡类型
+	// INSURANCE：投保类型
+	// CONTRACT：签约类型
+	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 环境类型
+	// test 测试
+	// release 生产
+	// sandbox 沙箱
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type ApplyFlexWechatPreAuthRequest struct {
+	*tchttp.BaseRequest
+	
+	// 商家核身单号
+	AuthNo *string `json:"AuthNo,omitempty" name:"AuthNo"`
+
+	// 微信用户标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 用工单位名称
+	EmployerName *string `json:"EmployerName,omitempty" name:"EmployerName"`
+
+	// 用户姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户证件号
+	IdNo *string `json:"IdNo,omitempty" name:"IdNo"`
+
+	// 用工类型
+	// LONG_TERM_EMPLOYMENT：长期用工，
+	// SHORT_TERM_EMPLOYMENT： 短期用工，
+	// COOPERATION_EMPLOYMENT：合作关系
+	EmploymentType *string `json:"EmploymentType,omitempty" name:"EmploymentType"`
+
+	// 核身类型
+	// SIGN_IN：考勤、签到打卡类型
+	// INSURANCE：投保类型
+	// CONTRACT：签约类型
+	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 环境类型
+	// test 测试
+	// release 生产
+	// sandbox 沙箱
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *ApplyFlexWechatPreAuthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyFlexWechatPreAuthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuthNo")
+	delete(f, "OpenId")
+	delete(f, "ProjectName")
+	delete(f, "EmployerName")
+	delete(f, "UserName")
+	delete(f, "IdNo")
+	delete(f, "EmploymentType")
+	delete(f, "AuthType")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyFlexWechatPreAuthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyFlexWechatPreAuthResponseParams struct {
+	// 错误码。SUCCESS为成功，其他为失败
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *WechatPreAuthResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ApplyFlexWechatPreAuthResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplyFlexWechatPreAuthResponseParams `json:"Response"`
+}
+
+func (r *ApplyFlexWechatPreAuthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyFlexWechatPreAuthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ApplyOpenBankOrderDetailReceiptRequestParams struct {
 	// 外部回单申请编号
 	OutApplyId *string `json:"OutApplyId,omitempty" name:"OutApplyId"`
@@ -20480,6 +20618,83 @@ func (r *QueryFlexSettlementOrderListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type QueryFlexWechatAuthResultRequestParams struct {
+	// 商户核身单号
+	AuthNo *string `json:"AuthNo,omitempty" name:"AuthNo"`
+
+	// 环境类型
+	// test 测试
+	// release 生产
+	// sandbox 沙箱
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type QueryFlexWechatAuthResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 商户核身单号
+	AuthNo *string `json:"AuthNo,omitempty" name:"AuthNo"`
+
+	// 环境类型
+	// test 测试
+	// release 生产
+	// sandbox 沙箱
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *QueryFlexWechatAuthResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexWechatAuthResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AuthNo")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexWechatAuthResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFlexWechatAuthResultResponseParams struct {
+	// 错误码。SUCCESS为成功，其他为失败
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *QueryWechatAuthResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryFlexWechatAuthResultResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryFlexWechatAuthResultResponseParams `json:"Response"`
+}
+
+func (r *QueryFlexWechatAuthResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFlexWechatAuthResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type QueryFundsTransactionDetailsRequestParams struct {
 	// 查询的交易发生时间类型。
 	// __1__：当日
@@ -26933,6 +27148,60 @@ func (r *QueryTransferResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type QueryWechatAuthResult struct {
+	// 商户核身单号
+	AuthNo *string `json:"AuthNo,omitempty" name:"AuthNo"`
+
+	// 微信用户标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 商户号
+	MchId *string `json:"MchId,omitempty" name:"MchId"`
+
+	// 子商户号
+	SubMchId *string `json:"SubMchId,omitempty" name:"SubMchId"`
+
+	// 核身渠道
+	// FROM_MINI_APP：来自小程序方式核身
+	// FROM_HARDWARE：来自硬件设备方式核身
+	AuthScene *string `json:"AuthScene,omitempty" name:"AuthScene"`
+
+	// 核身渠道标识
+	// 
+	// 用于定位渠道具体来源，如果是扫码打卡渠道标识就是具体的小程序appid，若是硬件设备，则是设备的序列号等
+	AuthSource *string `json:"AuthSource,omitempty" name:"AuthSource"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 所属单位名称
+	EmployerName *string `json:"EmployerName,omitempty" name:"EmployerName"`
+
+	// 核身时间
+	// yyyy-MM-DDTHH:mm:ss+TIMEZONE
+	// 
+	// 示例值：2015-05-20T13:29:35+08:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthTime *string `json:"AuthTime,omitempty" name:"AuthTime"`
+
+	// 核身类型
+	// 
+	// SIGN_IN：考勤、签到打卡类型
+	// INSURANCE：投保类型
+	// CONTRACT：签约类型
+	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 核身状态
+	// AUTHENTICATE_PROCESSING：核身中
+	// AUTHENTICATE_SUCCESS：核身成功
+	// AUTHENTICATE_FAILED：核身失败
+	AuthState *string `json:"AuthState,omitempty" name:"AuthState"`
+
+	// 核身失败原因描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthFailReason *string `json:"AuthFailReason,omitempty" name:"AuthFailReason"`
+}
+
 // Predefined struct for user
 type RechargeByThirdPayRequestParams struct {
 	// 请求类型 此接口固定填：MemberRechargeThirdPayReq
@@ -33233,6 +33502,26 @@ type ViewShopResult struct {
 	// 城市编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CityId *string `json:"CityId,omitempty" name:"CityId"`
+}
+
+type WechatPreAuthResult struct {
+	// 商户核身单号
+	AuthNo *string `json:"AuthNo,omitempty" name:"AuthNo"`
+
+	// 微信用户标识
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 商户号
+	MchId *string `json:"MchId,omitempty" name:"MchId"`
+
+	// 子商户号
+	SubMchId *string `json:"SubMchId,omitempty" name:"SubMchId"`
+
+	// 预核身token值
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// token有效期时间，单位：秒
+	Expire *int64 `json:"Expire,omitempty" name:"Expire"`
 }
 
 type WithdrawBill struct {

@@ -1,3 +1,107 @@
+# Release v1.0.650
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 99 次发布
+
+发布时间：2023-05-01 01:14:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyFlexWechatPreAuth](https://cloud.tencent.com/document/api/1122/90752)
+* [QueryFlexWechatAuthResult](https://cloud.tencent.com/document/api/1122/90751)
+
+新增数据结构：
+
+* [QueryWechatAuthResult](https://cloud.tencent.com/document/api/1122/40683#QueryWechatAuthResult)
+* [WechatPreAuthResult](https://cloud.tencent.com/document/api/1122/40683#WechatPreAuthResult)
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 2 次发布
+
+发布时间：2023-05-01 01:41:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyInitNodeScripts](https://cloud.tencent.com/document/api/1527/90753)
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/1527/89563)
+
+	* 新增入参：InitNodeScripts
+
+
+新增数据结构：
+
+* [NodeScript](https://cloud.tencent.com/document/api/1527/89579#NodeScript)
+
+修改数据结构：
+
+* [QueueConfig](https://cloud.tencent.com/document/api/1527/89579#QueueConfig)
+
+	* 新增成员：DesiredIdleNodeCapacity
+
+* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
+
+	* 新增成员：DesiredIdleNodeCapacity
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 152 次发布
+
+发布时间：2023-05-01 01:46:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssignPrivateIpAddresses](https://cloud.tencent.com/document/api/215/15813)
+
+	* 新增入参：QosLevel
+
+* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
+
+	* 新增入参：QosLevel
+
+* [CreateNetworkInterface](https://cloud.tencent.com/document/api/215/15818)
+
+	* 新增入参：QosLevel
+
+
+修改数据结构：
+
+* [PrivateIpAddressSpecification](https://cloud.tencent.com/document/api/215/15824#PrivateIpAddressSpecification)
+
+	* 新增成员：QosLevel
+
+
+
+
 # Release v1.0.649
 
 ## 品牌经营管家(bma) 版本：2022-11-15

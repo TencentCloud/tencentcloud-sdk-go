@@ -475,6 +475,54 @@ func (c *Client) ApplyFlexSettlementWithContext(ctx context.Context, request *Ap
     return
 }
 
+func NewApplyFlexWechatPreAuthRequest() (request *ApplyFlexWechatPreAuthRequest) {
+    request = &ApplyFlexWechatPreAuthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyFlexWechatPreAuth")
+    
+    
+    return
+}
+
+func NewApplyFlexWechatPreAuthResponse() (response *ApplyFlexWechatPreAuthResponse) {
+    response = &ApplyFlexWechatPreAuthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyFlexWechatPreAuth
+// 微工卡开通预核身接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) ApplyFlexWechatPreAuth(request *ApplyFlexWechatPreAuthRequest) (response *ApplyFlexWechatPreAuthResponse, err error) {
+    return c.ApplyFlexWechatPreAuthWithContext(context.Background(), request)
+}
+
+// ApplyFlexWechatPreAuth
+// 微工卡开通预核身接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) ApplyFlexWechatPreAuthWithContext(ctx context.Context, request *ApplyFlexWechatPreAuthRequest) (response *ApplyFlexWechatPreAuthResponse, err error) {
+    if request == nil {
+        request = NewApplyFlexWechatPreAuthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyFlexWechatPreAuth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyFlexWechatPreAuthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyOpenBankOrderDetailReceiptRequest() (request *ApplyOpenBankOrderDetailReceiptRequest) {
     request = &ApplyOpenBankOrderDetailReceiptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8177,6 +8225,54 @@ func (c *Client) QueryFlexSettlementOrderListWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewQueryFlexSettlementOrderListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexWechatAuthResultRequest() (request *QueryFlexWechatAuthResultRequest) {
+    request = &QueryFlexWechatAuthResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexWechatAuthResult")
+    
+    
+    return
+}
+
+func NewQueryFlexWechatAuthResultResponse() (response *QueryFlexWechatAuthResultResponse) {
+    response = &QueryFlexWechatAuthResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexWechatAuthResult
+// 查询微工卡核身结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryFlexWechatAuthResult(request *QueryFlexWechatAuthResultRequest) (response *QueryFlexWechatAuthResultResponse, err error) {
+    return c.QueryFlexWechatAuthResultWithContext(context.Background(), request)
+}
+
+// QueryFlexWechatAuthResult
+// 查询微工卡核身结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryFlexWechatAuthResultWithContext(ctx context.Context, request *QueryFlexWechatAuthResultRequest) (response *QueryFlexWechatAuthResultResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexWechatAuthResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexWechatAuthResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexWechatAuthResultResponse()
     err = c.Send(request, response)
     return
 }

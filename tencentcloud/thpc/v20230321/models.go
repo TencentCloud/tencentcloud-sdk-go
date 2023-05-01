@@ -543,6 +543,9 @@ type CreateClusterRequestParams struct {
 
 	// 弹性伸缩类型。默认值：THPC_AS<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
 	AutoScalingType *string `json:"AutoScalingType,omitempty" name:"AutoScalingType"`
+
+	// 节点初始化脚本信息列表。
+	InitNodeScripts []*NodeScript `json:"InitNodeScripts,omitempty" name:"InitNodeScripts"`
 }
 
 type CreateClusterRequest struct {
@@ -609,6 +612,9 @@ type CreateClusterRequest struct {
 
 	// 弹性伸缩类型。默认值：THPC_AS<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
 	AutoScalingType *string `json:"AutoScalingType,omitempty" name:"AutoScalingType"`
+
+	// 节点初始化脚本信息列表。
+	InitNodeScripts []*NodeScript `json:"InitNodeScripts,omitempty" name:"InitNodeScripts"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -642,6 +648,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "LoginNodeCount")
 	delete(f, "Tags")
 	delete(f, "AutoScalingType")
+	delete(f, "InitNodeScripts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1551,6 +1558,67 @@ type ManagerNodeOverview struct {
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 }
 
+// Predefined struct for user
+type ModifyInitNodeScriptsRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点初始化脚本信息列表。
+	InitNodeScripts []*NodeScript `json:"InitNodeScripts,omitempty" name:"InitNodeScripts"`
+}
+
+type ModifyInitNodeScriptsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 节点初始化脚本信息列表。
+	InitNodeScripts []*NodeScript `json:"InitNodeScripts,omitempty" name:"InitNodeScripts"`
+}
+
+func (r *ModifyInitNodeScriptsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInitNodeScriptsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "InitNodeScripts")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInitNodeScriptsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInitNodeScriptsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyInitNodeScriptsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInitNodeScriptsResponseParams `json:"Response"`
+}
+
+func (r *ModifyInitNodeScriptsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInitNodeScriptsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NodeActivity struct {
 	// 节点活动所在的实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1598,6 +1666,17 @@ type NodeOverview struct {
 	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 }
 
+type NodeScript struct {
+	// 节点执行脚本获取地址。
+	// 目前仅支持cos地址。地址最大长度：255。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScriptPath *string `json:"ScriptPath,omitempty" name:"ScriptPath"`
+
+	// 脚本执行超时时间（包含拉取脚本的时间）。单位秒，默认值：30。取值范围：10～1200。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+}
+
 type Placement struct {
 	// 实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1634,6 +1713,9 @@ type QueueConfig struct {
 
 	// 扩容节点配置信息。
 	ExpansionNodeConfigs []*ExpansionNodeConfig `json:"ExpansionNodeConfigs,omitempty" name:"ExpansionNodeConfigs"`
+
+	// 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
+	DesiredIdleNodeCapacity *int64 `json:"DesiredIdleNodeCapacity,omitempty" name:"DesiredIdleNodeCapacity"`
 }
 
 type QueueConfigOverview struct {
@@ -1654,6 +1736,10 @@ type QueueConfigOverview struct {
 
 	// 扩容节点配置信息。
 	ExpansionNodeConfigs []*ExpansionNodeConfigOverview `json:"ExpansionNodeConfigs,omitempty" name:"ExpansionNodeConfigs"`
+
+	// 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DesiredIdleNodeCapacity *int64 `json:"DesiredIdleNodeCapacity,omitempty" name:"DesiredIdleNodeCapacity"`
 }
 
 type QueueOverview struct {
