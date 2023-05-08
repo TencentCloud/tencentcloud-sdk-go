@@ -341,7 +341,7 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
-	// 实例挂载数据盘配额不足，无法挂载磁盘。
+	// 实例挂载数据盘配额不足，无法挂载云硬盘。
 	LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = "LimitExceeded.AttachDataDiskQuotaLimitExceeded"
 
 	// 配额不足，当前自定义镜像配额不允许创建新的自定义镜像。

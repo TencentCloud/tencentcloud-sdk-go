@@ -674,6 +674,9 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 磁盘回滚正在执行中，请稍后再试。
+	RESOURCEINUSE_DISKROLLBACKING = "ResourceInUse.DiskRollbacking"
+
 	// 高性能计算集群使用中。
 	RESOURCEINUSE_HPCCLUSTER = "ResourceInUse.HpcCluster"
 

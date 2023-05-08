@@ -4383,6 +4383,78 @@ func (c *Client) RecognizeContainerOCRWithContext(ctx context.Context, request *
     return
 }
 
+func NewRecognizeGeneralInvoiceRequest() (request *RecognizeGeneralInvoiceRequest) {
+    request = &RecognizeGeneralInvoiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeGeneralInvoice")
+    
+    
+    return
+}
+
+func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResponse) {
+    response = &RecognizeGeneralInvoiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecognizeGeneralInvoice
+// 本接口支持 单张、多张、多类型 票据的混合识别，同时支持自选需要识别的票据类型，已支持票种包括：增值税发票（专票、普票、卷票）、全电发票、非税发票、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持其他类发票的识别。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest) (response *RecognizeGeneralInvoiceResponse, err error) {
+    return c.RecognizeGeneralInvoiceWithContext(context.Background(), request)
+}
+
+// RecognizeGeneralInvoice
+// 本接口支持 单张、多张、多类型 票据的混合识别，同时支持自选需要识别的票据类型，已支持票种包括：增值税发票（专票、普票、卷票）、全电发票、非税发票、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持其他类发票的识别。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeGeneralInvoiceWithContext(ctx context.Context, request *RecognizeGeneralInvoiceRequest) (response *RecognizeGeneralInvoiceResponse, err error) {
+    if request == nil {
+        request = NewRecognizeGeneralInvoiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeGeneralInvoice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeGeneralInvoiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeHealthCodeOCRRequest() (request *RecognizeHealthCodeOCRRequest) {
     request = &RecognizeHealthCodeOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

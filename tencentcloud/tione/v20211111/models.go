@@ -1412,7 +1412,8 @@ type CreateTrainingTaskRequestParams struct {
 	// 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+	// 计费模式，eg：PREPAID 包年包月（资源组）;
+	// POSTPAID_BY_HOUR 按量计费
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
@@ -1482,7 +1483,8 @@ type CreateTrainingTaskRequest struct {
 	// 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+	// 计费模式，eg：PREPAID 包年包月（资源组）;
+	// POSTPAID_BY_HOUR 按量计费
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
@@ -1699,6 +1701,10 @@ type DataConfig struct {
 	// 来自HDFS的数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HDFSSource *HDFSConfig `json:"HDFSSource,omitempty" name:"HDFSSource"`
+
+	// 配饰GooseFS的数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GooseFSSource *GooseFS `json:"GooseFSSource,omitempty" name:"GooseFSSource"`
 }
 
 type DataPoint struct {
@@ -4991,6 +4997,12 @@ type FrameworkVersion struct {
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
+type GooseFS struct {
+	// goosefs实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
 type GpuDetail struct {
 	// GPU 显卡类型；枚举值: V100 A100 T4
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5926,6 +5938,12 @@ func (r *PushTrainingMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RDMAConfig struct {
+	// 是否开启RDMA
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+}
+
 type ResourceConfigInfo struct {
 	// 角色，eg：PS、WORKER、DRIVER、EXECUTOR
 	Role *string `json:"Role,omitempty" name:"Role"`
@@ -5984,6 +6002,10 @@ type ResourceConfigInfo struct {
 	// 40C160G T4*2 
 	// 80C32
 	InstanceTypeAlias *string `json:"InstanceTypeAlias,omitempty" name:"InstanceTypeAlias"`
+
+	// RDMA配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RDMAConfig *RDMAConfig `json:"RDMAConfig,omitempty" name:"RDMAConfig"`
 }
 
 type ResourceGroup struct {

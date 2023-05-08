@@ -1188,6 +1188,63 @@ func (r *GetCustomizationListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetModelInfoRequestParams struct {
+	// 模型id
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+}
+
+type GetModelInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型id
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+}
+
+func (r *GetModelInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetModelInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetModelInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetModelInfoResponseParams struct {
+	// 模型信息
+	Data *Model `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetModelInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *GetModelInfoResponseParams `json:"Response"`
+}
+
+func (r *GetModelInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetModelInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type HotWord struct {
 	// 热词
 	Word *string `json:"Word,omitempty" name:"Word"`

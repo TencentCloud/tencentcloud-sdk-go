@@ -1566,6 +1566,7 @@ func NewDeleteIndexResponse() (response *DeleteIndexResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_INDEXOPERATING = "LimitExceeded.IndexOperating"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
@@ -1585,6 +1586,7 @@ func (c *Client) DeleteIndex(request *DeleteIndexRequest) (response *DeleteIndex
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED_INDEXOPERATING = "LimitExceeded.IndexOperating"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
@@ -4588,7 +4590,7 @@ func NewUploadLogResponse() (response *UploadLogResponse) {
 //
 // 
 //
-// 同时云API上传日志接口也支持同步上传日志数据，如果您选继续使用此接口请参考下文。
+// 同时云API上传日志接口也支持同步上传日志数据，如果您选择继续使用此接口请参考下文。
 //
 // 
 //
@@ -4925,7 +4927,7 @@ func (c *Client) UploadLog(request *UploadLogRequest, data []byte) (response *Up
 //
 // 
 //
-// 同时云API上传日志接口也支持同步上传日志数据，如果您选继续使用此接口请参考下文。
+// 同时云API上传日志接口也支持同步上传日志数据，如果您选择继续使用此接口请参考下文。
 //
 // 
 //

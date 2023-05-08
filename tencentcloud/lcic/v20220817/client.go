@@ -2618,6 +2618,7 @@ func NewGetRoomEventResponse() (response *GetRoomEventResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 func (c *Client) GetRoomEvent(request *GetRoomEventRequest) (response *GetRoomEventResponse, err error) {
     return c.GetRoomEventWithContext(context.Background(), request)
@@ -2628,6 +2629,7 @@ func (c *Client) GetRoomEvent(request *GetRoomEventRequest) (response *GetRoomEv
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 func (c *Client) GetRoomEventWithContext(ctx context.Context, request *GetRoomEventRequest) (response *GetRoomEventResponse, err error) {
     if request == nil {

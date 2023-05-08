@@ -1285,6 +1285,7 @@ func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateRe
 // 通过该接口，用户可以修改语音消息转文本热句模型状态，上下线热句模型
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 //  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
@@ -1295,6 +1296,7 @@ func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateReque
 // 通过该接口，用户可以修改语音消息转文本热句模型状态，上下线热句模型
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
 //  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
 func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {

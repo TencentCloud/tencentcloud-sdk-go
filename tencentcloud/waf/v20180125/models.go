@@ -4405,7 +4405,7 @@ type ModifyDomainWhiteRuleRequestParams struct {
 	// 规则匹配方法
 	Function *string `json:"Function,omitempty" name:"Function"`
 
-	// 规则的开关状态
+	// 规则的开关状态，0表示关闭开关，1表示打开开关
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -4427,7 +4427,7 @@ type ModifyDomainWhiteRuleRequest struct {
 	// 规则匹配方法
 	Function *string `json:"Function,omitempty" name:"Function"`
 
-	// 规则的开关状态
+	// 规则的开关状态，0表示关闭开关，1表示打开开关
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 

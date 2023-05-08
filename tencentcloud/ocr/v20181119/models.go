@@ -107,6 +107,80 @@ type AdvertiseTextDetection struct {
 	AdvancedInfo *string `json:"AdvancedInfo,omitempty" name:"AdvancedInfo"`
 }
 
+type AirTransport struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 电子客票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 校验码
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 印刷序号
+	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 销售单位代号
+	AgentCode *string `json:"AgentCode,omitempty" name:"AgentCode"`
+
+	// 销售单位代号第一行
+	AgentCodeFirst *string `json:"AgentCodeFirst,omitempty" name:"AgentCodeFirst"`
+
+	// 销售单位代号第二行
+	AgentCodeSecond *string `json:"AgentCodeSecond,omitempty" name:"AgentCodeSecond"`
+
+	// 姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 身份证号
+	UserID *string `json:"UserID,omitempty" name:"UserID"`
+
+	// 填开单位
+	Issuer *string `json:"Issuer,omitempty" name:"Issuer"`
+
+	// 票价
+	Fare *string `json:"Fare,omitempty" name:"Fare"`
+
+	// 合计税额
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 燃油附加费
+	FuelSurcharge *string `json:"FuelSurcharge,omitempty" name:"FuelSurcharge"`
+
+	// 民航发展基金
+	AirDevelopmentFund *string `json:"AirDevelopmentFund,omitempty" name:"AirDevelopmentFund"`
+
+	// 保险费
+	Insurance *string `json:"Insurance,omitempty" name:"Insurance"`
+
+	// 合计金额（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 国内国际标签
+	DomesticInternationalTag *string `json:"DomesticInternationalTag,omitempty" name:"DomesticInternationalTag"`
+
+	// 客票生效日期
+	DateStart *string `json:"DateStart,omitempty" name:"DateStart"`
+
+	// 有效截至日期
+	DateEnd *string `json:"DateEnd,omitempty" name:"DateEnd"`
+
+	// 签注
+	Endorsement *string `json:"Endorsement,omitempty" name:"Endorsement"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 条目
+	FlightItems []*FlightItem `json:"FlightItems,omitempty" name:"FlightItems"`
+}
+
 // Predefined struct for user
 type ArithmeticOCRRequestParams struct {
 	// 图片的 Base64 值。
@@ -602,6 +676,71 @@ type BizLicenseVerifyResult struct {
 	// “-1”：不一致
 	// “”：不验真
 	Address *string `json:"Address,omitempty" name:"Address"`
+}
+
+type BusInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 乘车时间
+	TimeGetOn *string `json:"TimeGetOn,omitempty" name:"TimeGetOn"`
+
+	// 乘车日期
+	DateGetOn *string `json:"DateGetOn,omitempty" name:"DateGetOn"`
+
+	// 出发车站
+	StationGetOn *string `json:"StationGetOn,omitempty" name:"StationGetOn"`
+
+	// 到达车站
+	StationGetOff *string `json:"StationGetOff,omitempty" name:"StationGetOff"`
+
+	// 票价
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 身份证号
+	UserID *string `json:"UserID,omitempty" name:"UserID"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 乘车地点
+	PlaceGetOn *string `json:"PlaceGetOn,omitempty" name:"PlaceGetOn"`
+
+	// 检票口
+	GateNumber *string `json:"GateNumber,omitempty" name:"GateNumber"`
+
+	// 客票类型
+	TicketType *string `json:"TicketType,omitempty" name:"TicketType"`
+
+	// 车型
+	VehicleType *string `json:"VehicleType,omitempty" name:"VehicleType"`
+
+	// 座位号
+	SeatNumber *string `json:"SeatNumber,omitempty" name:"SeatNumber"`
+
+	// 车次
+	TrainNumber *string `json:"TrainNumber,omitempty" name:"TrainNumber"`
 }
 
 type BusInvoiceInfo struct {
@@ -2128,6 +2267,41 @@ func (r *FlightInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FlightItem struct {
+	// 出发航站楼
+	TerminalGetOn *string `json:"TerminalGetOn,omitempty" name:"TerminalGetOn"`
+
+	// 到达航站楼
+	TerminalGetOff *string `json:"TerminalGetOff,omitempty" name:"TerminalGetOff"`
+
+	// 承运人
+	Carrier *string `json:"Carrier,omitempty" name:"Carrier"`
+
+	// 航班号
+	FlightNumber *string `json:"FlightNumber,omitempty" name:"FlightNumber"`
+
+	// 座位等级
+	Seat *string `json:"Seat,omitempty" name:"Seat"`
+
+	// 乘机日期
+	DateGetOn *string `json:"DateGetOn,omitempty" name:"DateGetOn"`
+
+	// 乘机时间
+	TimeGetOn *string `json:"TimeGetOn,omitempty" name:"TimeGetOn"`
+
+	// 出发站
+	StationGetOn *string `json:"StationGetOn,omitempty" name:"StationGetOn"`
+
+	// 到达站
+	StationGetOff *string `json:"StationGetOff,omitempty" name:"StationGetOff"`
+
+	// 免费行李
+	Allow *string `json:"Allow,omitempty" name:"Allow"`
+
+	// 客票级别/客票类别
+	FareBasis *string `json:"FareBasis,omitempty" name:"FareBasis"`
+}
+
 // Predefined struct for user
 type FormulaOCRRequestParams struct {
 	// 图片的 Base64 值。
@@ -2759,6 +2933,32 @@ func (r *GeneralHandwritingOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GeneralHandwritingOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type GeneralMachineItem struct {
+	// 项目名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规格型号
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 单价
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 金额
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 税率
+	TaxRate *string `json:"TaxRate,omitempty" name:"TaxRate"`
+
+	// 税额
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
 }
 
 // Predefined struct for user
@@ -3688,6 +3888,55 @@ func (r *InvoiceGeneralOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InvoiceItem struct {
+	// 识别结果。
+	// OK：表示识别成功；FailedOperation.UnsupportedInvioce：表示不支持识别；
+	// FailedOperation.UnKnowError：表示识别失败；
+	// 其它错误码见各个票据接口的定义。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 识别出的图片所属的票据类型。
+	// -1：未知类型
+	// 0：出租车发票
+	// 1：定额发票
+	// 2：火车票
+	// 3：增值税发票
+	// 5：机票行程单
+	// 8：通用机打发票
+	// 9：汽车票
+	// 10：轮船票
+	// 11：增值税发票（卷票）
+	// 12：购车发票
+	// 13：过路过桥费发票
+	// 15：非税发票
+	// 16：全电发票
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 旋转后的图片四点坐标。
+	Polygon *Polygon `json:"Polygon,omitempty" name:"Polygon"`
+
+	// 识别出的图片在混贴票据图片中的旋转角度。
+	Angle *float64 `json:"Angle,omitempty" name:"Angle"`
+
+	// 识别到的内容。
+	SingleInvoiceInfos *SingleInvoiceItem `json:"SingleInvoiceInfos,omitempty" name:"SingleInvoiceInfos"`
+
+	// 发票处于识别图片或PDF文件中的页教，默认从1开始。
+	Page *int64 `json:"Page,omitempty" name:"Page"`
+
+	// 发票详细类型，详见下方 SubType 返回值说明
+	SubType *string `json:"SubType,omitempty" name:"SubType"`
+
+	// 发票类型描述，详见下方 TypeDescription  返回值说明
+	TypeDescription *string `json:"TypeDescription,omitempty" name:"TypeDescription"`
+
+	// 切割单图文件，Base64编码后的切图后的图片文件，开启 EnableCutImage 后进行返回
+	CutImage *string `json:"CutImage,omitempty" name:"CutImage"`
+
+	// 发票详细类型描述，详见下方 SubType 返回值说明
+	SubTypeDescription *string `json:"SubTypeDescription,omitempty" name:"SubTypeDescription"`
+}
+
 type ItemCoord struct {
 	// 左上角x
 	X *int64 `json:"X,omitempty" name:"X"`
@@ -4064,6 +4313,116 @@ func (r *MLIDPassportOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *MLIDPassportOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MachinePrintedInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 校验码
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 密码区
+	Ciphertext *string `json:"Ciphertext,omitempty" name:"Ciphertext"`
+
+	// 种类
+	Category *string `json:"Category,omitempty" name:"Category"`
+
+	// 税前金额
+	PretaxAmount *string `json:"PretaxAmount,omitempty" name:"PretaxAmount"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 合计税额
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 行业分类
+	IndustryClass *string `json:"IndustryClass,omitempty" name:"IndustryClass"`
+
+	// 销售方名称
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 销售方纳税人识别号
+	SellerTaxID *string `json:"SellerTaxID,omitempty" name:"SellerTaxID"`
+
+	// 销售方地址电话
+	SellerAddrTel *string `json:"SellerAddrTel,omitempty" name:"SellerAddrTel"`
+
+	// 销售方银行账号
+	SellerBankAccount *string `json:"SellerBankAccount,omitempty" name:"SellerBankAccount"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 购买方纳税人识别号
+	BuyerTaxID *string `json:"BuyerTaxID,omitempty" name:"BuyerTaxID"`
+
+	// 购买方地址电话
+	BuyerAddrTel *string `json:"BuyerAddrTel,omitempty" name:"BuyerAddrTel"`
+
+	// 购买方银行账号
+	BuyerBankAccount *string `json:"BuyerBankAccount,omitempty" name:"BuyerBankAccount"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *int64 `json:"CompanySealMark,omitempty" name:"CompanySealMark"`
+
+	// 是否为浙江/广东通用机打发票（0：没有，1：有）
+	ElectronicMark *int64 `json:"ElectronicMark,omitempty" name:"ElectronicMark"`
+
+	// 开票人
+	Issuer *string `json:"Issuer,omitempty" name:"Issuer"`
+
+	// 收款人
+	Receiptor *string `json:"Receiptor,omitempty" name:"Receiptor"`
+
+	// 复核人
+	Reviewer *string `json:"Reviewer,omitempty" name:"Reviewer"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 经办人支付信息
+	PaymentInfo *string `json:"PaymentInfo,omitempty" name:"PaymentInfo"`
+
+	// 经办人取票用户
+	TicketPickupUser *string `json:"TicketPickupUser,omitempty" name:"TicketPickupUser"`
+
+	// 经办人商户号
+	MerchantNumber *string `json:"MerchantNumber,omitempty" name:"MerchantNumber"`
+
+	// 经办人订单号
+	OrderNumber *string `json:"OrderNumber,omitempty" name:"OrderNumber"`
+
+	// 条目
+	GeneralMachineItems []*GeneralMachineItem `json:"GeneralMachineItems,omitempty" name:"GeneralMachineItems"`
 }
 
 // Predefined struct for user
@@ -4486,6 +4845,231 @@ func (r *MixedInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MotorVehicleSaleInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 税前金额
+	PretaxAmount *string `json:"PretaxAmount,omitempty" name:"PretaxAmount"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 销售方名称
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 销售方单位代码
+	SellerTaxID *string `json:"SellerTaxID,omitempty" name:"SellerTaxID"`
+
+	// 销售方电话
+	SellerTel *string `json:"SellerTel,omitempty" name:"SellerTel"`
+
+	// 销售方地址
+	SellerAddress *string `json:"SellerAddress,omitempty" name:"SellerAddress"`
+
+	// 销售方开户行
+	SellerBank *string `json:"SellerBank,omitempty" name:"SellerBank"`
+
+	// 销售方银行账号
+	SellerBankAccount *string `json:"SellerBankAccount,omitempty" name:"SellerBankAccount"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 购买方纳税人识别号
+	BuyerTaxID *string `json:"BuyerTaxID,omitempty" name:"BuyerTaxID"`
+
+	// 购买方身份证号码/组织机构代码
+	BuyerID *string `json:"BuyerID,omitempty" name:"BuyerID"`
+
+	// 主管税务机关
+	TaxAuthorities *string `json:"TaxAuthorities,omitempty" name:"TaxAuthorities"`
+
+	// 主管税务机关代码
+	TaxAuthoritiesCode *string `json:"TaxAuthoritiesCode,omitempty" name:"TaxAuthoritiesCode"`
+
+	// 车辆识别代码
+	VIN *string `json:"VIN,omitempty" name:"VIN"`
+
+	// 厂牌型号
+	VehicleModel *string `json:"VehicleModel,omitempty" name:"VehicleModel"`
+
+	// 发动机号码
+	VehicleEngineCode *string `json:"VehicleEngineCode,omitempty" name:"VehicleEngineCode"`
+
+	// 合格证号
+	CertificateNumber *string `json:"CertificateNumber,omitempty" name:"CertificateNumber"`
+
+	// 商检单号
+	InspectionNumber *string `json:"InspectionNumber,omitempty" name:"InspectionNumber"`
+
+	// 机器编号
+	MachineID *string `json:"MachineID,omitempty" name:"MachineID"`
+
+	// 车辆类型
+	VehicleType *string `json:"VehicleType,omitempty" name:"VehicleType"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 合计税额
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 税率
+	TaxRate *string `json:"TaxRate,omitempty" name:"TaxRate"`
+
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *int64 `json:"CompanySealMark,omitempty" name:"CompanySealMark"`
+
+	// 吨位
+	Tonnage *string `json:"Tonnage,omitempty" name:"Tonnage"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 发票联次
+	FormType *string `json:"FormType,omitempty" name:"FormType"`
+
+	// 发票联名
+	FormName *string `json:"FormName,omitempty" name:"FormName"`
+
+	// 开票人
+	Issuer *string `json:"Issuer,omitempty" name:"Issuer"`
+
+	// 完税凭证号码
+	TaxNum *string `json:"TaxNum,omitempty" name:"TaxNum"`
+
+	// 限乘人数
+	MaxPeopleNum *string `json:"MaxPeopleNum,omitempty" name:"MaxPeopleNum"`
+
+	// 产地
+	Origin *string `json:"Origin,omitempty" name:"Origin"`
+
+	// 机打发票代码
+	MachineCode *string `json:"MachineCode,omitempty" name:"MachineCode"`
+
+	// 机打发票号码
+	MachineNumber *string `json:"MachineNumber,omitempty" name:"MachineNumber"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+}
+
+type NonTaxIncomeBill struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 校验码
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 交款人名称
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 交款人纳税人识别号
+	BuyerTaxID *string `json:"BuyerTaxID,omitempty" name:"BuyerTaxID"`
+
+	// 收款人名称
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 收款单位名称
+	SellerCompany *string `json:"SellerCompany,omitempty" name:"SellerCompany"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 币种
+	CurrencyCode *string `json:"CurrencyCode,omitempty" name:"CurrencyCode"`
+
+	// 复核人
+	Reviewer *string `json:"Reviewer,omitempty" name:"Reviewer"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 其他信息
+	OtherInfo *string `json:"OtherInfo,omitempty" name:"OtherInfo"`
+
+	// 缴款码
+	PaymentCode *string `json:"PaymentCode,omitempty" name:"PaymentCode"`
+
+	// 执收单位编码
+	ReceiveUnitCode *string `json:"ReceiveUnitCode,omitempty" name:"ReceiveUnitCode"`
+
+	// 执收单位名称
+	Receiver *string `json:"Receiver,omitempty" name:"Receiver"`
+
+	// 经办人
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 付款人账号
+	PayerAccount *string `json:"PayerAccount,omitempty" name:"PayerAccount"`
+
+	// 付款人开户银行
+	PayerBank *string `json:"PayerBank,omitempty" name:"PayerBank"`
+
+	// 收款人账号
+	ReceiverAccount *string `json:"ReceiverAccount,omitempty" name:"ReceiverAccount"`
+
+	// 收款人开户银行
+	ReceiverBank *string `json:"ReceiverBank,omitempty" name:"ReceiverBank"`
+
+	// 条目
+	NonTaxItems []*NonTaxItem `json:"NonTaxItems,omitempty" name:"NonTaxItems"`
+}
+
+type NonTaxItem struct {
+	// 项目编码
+	ItemID *string `json:"ItemID,omitempty" name:"ItemID"`
+
+	// 项目名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 标准
+	Standard *string `json:"Standard,omitempty" name:"Standard"`
+
+	// 金额
+	Total *string `json:"Total,omitempty" name:"Total"`
+}
+
 type OnlineTaxiItineraryInfo struct {
 	// 识别出的字段名称(关键字)，支持以下字段：
 	// 发票代码、 机打代码、 发票号码、 发动机号码、 合格证号、 机打号码、 价税合计(小写)、 销货单位名称、 身份证号码/组织机构代码、 购买方名称、 销售方纳税人识别号、 购买方纳税人识别号、主管税务机关、 主管税务机关代码、 开票日期、 不含税价(小写)、 吨位、增值税税率或征收率、 车辆识别代号/车架号码、 增值税税额、 厂牌型号、 省、 市、 发票消费类型、 销售方电话、 销售方账号、 产地、 进口证明书号、 车辆类型、 机器编号、备注、开票人、限乘人数、商检单号、销售方地址、销售方开户银行、价税合计、发票类型。
@@ -4583,6 +5167,33 @@ func (r *OrgCodeCertOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OrgCodeCertOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type OtherInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 金额
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 列表
+	OtherInvoiceListItems []*OtherInvoiceItem `json:"OtherInvoiceListItems,omitempty" name:"OtherInvoiceListItems"`
+
+	// 表格
+	OtherInvoiceTableItems []*OtherInvoiceList `json:"OtherInvoiceTableItems,omitempty" name:"OtherInvoiceTableItems"`
+}
+
+type OtherInvoiceItem struct {
+	// 票面key值
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 票面value值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type OtherInvoiceList struct {
+	// 列表
+	OtherInvoiceItemList []*OtherInvoiceItem `json:"OtherInvoiceItemList,omitempty" name:"OtherInvoiceItemList"`
 }
 
 type PassInvoiceInfo struct {
@@ -5188,6 +5799,38 @@ type QuestionObj struct {
 	QuestionImageCoords []*Rect `json:"QuestionImageCoords,omitempty" name:"QuestionImageCoords"`
 }
 
+type QuotaInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *int64 `json:"CompanySealMark,omitempty" name:"CompanySealMark"`
+}
+
 // Predefined struct for user
 type QuotaInvoiceOCRRequestParams struct {
 	// 图片的 Base64 值。
@@ -5411,6 +6054,159 @@ func (r *RecognizeContainerOCRResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeContainerOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeGeneralInvoiceRequestParams struct {
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 需要识别的票据类型列表，为空或不填表示识别全部类型。
+	// 0：出租车发票
+	// 1：定额发票
+	// 2：火车票
+	// 3：增值税发票
+	// 5：机票行程单
+	// 8：通用机打发票
+	// 9：汽车票
+	// 10：轮船票
+	// 11：增值税发票（卷票 ）
+	// 12：购车发票
+	// 13：过路过桥费发票
+	// 15：非税发票
+	// 16：全电发票
+	// ----------------------
+	// -1：其他发票,（只传入此类型时，图片均采用其他票类型进行识别）
+	Types []*int64 `json:"Types,omitempty" name:"Types"`
+
+	// 是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
+	EnableOther *bool `json:"EnableOther,omitempty" name:"EnableOther"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	EnablePdf *bool `json:"EnablePdf,omitempty" name:"EnablePdf"`
+
+	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后EnablePdf和PdfPageNumber入参不进行控制。
+	EnableMultiplePage *bool `json:"EnableMultiplePage,omitempty" name:"EnableMultiplePage"`
+
+	// 是否返回切割图片base64，默认值为false。
+	EnableCutImage *bool `json:"EnableCutImage,omitempty" name:"EnableCutImage"`
+}
+
+type RecognizeGeneralInvoiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 需要识别的票据类型列表，为空或不填表示识别全部类型。
+	// 0：出租车发票
+	// 1：定额发票
+	// 2：火车票
+	// 3：增值税发票
+	// 5：机票行程单
+	// 8：通用机打发票
+	// 9：汽车票
+	// 10：轮船票
+	// 11：增值税发票（卷票 ）
+	// 12：购车发票
+	// 13：过路过桥费发票
+	// 15：非税发票
+	// 16：全电发票
+	// ----------------------
+	// -1：其他发票,（只传入此类型时，图片均采用其他票类型进行识别）
+	Types []*int64 `json:"Types,omitempty" name:"Types"`
+
+	// 是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
+	EnableOther *bool `json:"EnableOther,omitempty" name:"EnableOther"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	EnablePdf *bool `json:"EnablePdf,omitempty" name:"EnablePdf"`
+
+	// 需要识别的PDF页面的对应页码，传入时仅支持PDF单页识别，当上传文件为PDF且EnablePdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 是否开启PDF多页识别，默认值为false，开启后可同时支持多页PDF的识别返回，仅支持返回文件前30页。开启后EnablePdf和PdfPageNumber入参不进行控制。
+	EnableMultiplePage *bool `json:"EnableMultiplePage,omitempty" name:"EnableMultiplePage"`
+
+	// 是否返回切割图片base64，默认值为false。
+	EnableCutImage *bool `json:"EnableCutImage,omitempty" name:"EnableCutImage"`
+}
+
+func (r *RecognizeGeneralInvoiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeGeneralInvoiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "Types")
+	delete(f, "EnableOther")
+	delete(f, "EnablePdf")
+	delete(f, "PdfPageNumber")
+	delete(f, "EnableMultiplePage")
+	delete(f, "EnableCutImage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeGeneralInvoiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeGeneralInvoiceResponseParams struct {
+	// 混贴票据识别结果，具体内容请点击左侧链接。
+	MixedInvoiceItems []*InvoiceItem `json:"MixedInvoiceItems,omitempty" name:"MixedInvoiceItems"`
+
+	// PDF文件总页码
+	TotalPDFCount *int64 `json:"TotalPDFCount,omitempty" name:"TotalPDFCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RecognizeGeneralInvoiceResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeGeneralInvoiceResponseParams `json:"Response"`
+}
+
+func (r *RecognizeGeneralInvoiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeGeneralInvoiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7230,6 +8026,50 @@ func (r *ShipInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ShippingInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 出发车站
+	StationGetOn *string `json:"StationGetOn,omitempty" name:"StationGetOn"`
+
+	// 到达车站
+	StationGetOff *string `json:"StationGetOff,omitempty" name:"StationGetOff"`
+
+	// 票价
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 币种
+	CurrencyCode *string `json:"CurrencyCode,omitempty" name:"CurrencyCode"`
+}
+
 type SingleInvoiceInfo struct {
 	// 识别出的字段名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -7239,6 +8079,96 @@ type SingleInvoiceInfo struct {
 
 	// 字段属于第几行，用于相同字段的排版，如发票明细表格项目，普通字段使用默认值为-1，表示无列排版。
 	Row *int64 `json:"Row,omitempty" name:"Row"`
+}
+
+type SingleInvoiceItem struct {
+	// 增值税专用发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatSpecialInvoice *VatInvoiceInfo `json:"VatSpecialInvoice,omitempty" name:"VatSpecialInvoice"`
+
+	// 增值税普通发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatCommonInvoice *VatInvoiceInfo `json:"VatCommonInvoice,omitempty" name:"VatCommonInvoice"`
+
+	// 增值税电子普通发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatElectronicCommonInvoice *VatInvoiceInfo `json:"VatElectronicCommonInvoice,omitempty" name:"VatElectronicCommonInvoice"`
+
+	// 增值税电子专用发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatElectronicSpecialInvoice *VatInvoiceInfo `json:"VatElectronicSpecialInvoice,omitempty" name:"VatElectronicSpecialInvoice"`
+
+	// 区块链电子发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatElectronicInvoiceBlockchain *VatInvoiceInfo `json:"VatElectronicInvoiceBlockchain,omitempty" name:"VatElectronicInvoiceBlockchain"`
+
+	// 增值税电子普通发票(通行费)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatElectronicInvoiceToll *VatInvoiceInfo `json:"VatElectronicInvoiceToll,omitempty" name:"VatElectronicInvoiceToll"`
+
+	// 电子发票(专用发票)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatElectronicSpecialInvoiceFull *VatElectronicInfo `json:"VatElectronicSpecialInvoiceFull,omitempty" name:"VatElectronicSpecialInvoiceFull"`
+
+	// 电子发票(普通发票)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatElectronicInvoiceFull *VatElectronicInfo `json:"VatElectronicInvoiceFull,omitempty" name:"VatElectronicInvoiceFull"`
+
+	// 通用机打发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachinePrintedInvoice *MachinePrintedInvoice `json:"MachinePrintedInvoice,omitempty" name:"MachinePrintedInvoice"`
+
+	// 汽车票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusInvoice *BusInvoice `json:"BusInvoice,omitempty" name:"BusInvoice"`
+
+	// 轮船票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShippingInvoice *ShippingInvoice `json:"ShippingInvoice,omitempty" name:"ShippingInvoice"`
+
+	// 过路过桥费发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TollInvoice *TollInvoice `json:"TollInvoice,omitempty" name:"TollInvoice"`
+
+	// 其他发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherInvoice *OtherInvoice `json:"OtherInvoice,omitempty" name:"OtherInvoice"`
+
+	// 机动车销售统一发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MotorVehicleSaleInvoice *MotorVehicleSaleInvoice `json:"MotorVehicleSaleInvoice,omitempty" name:"MotorVehicleSaleInvoice"`
+
+	// 二手车销售统一发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedCarPurchaseInvoice *UsedCarPurchaseInvoice `json:"UsedCarPurchaseInvoice,omitempty" name:"UsedCarPurchaseInvoice"`
+
+	// 增值税普通发票(卷票)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatInvoiceRoll *VatInvoiceRoll `json:"VatInvoiceRoll,omitempty" name:"VatInvoiceRoll"`
+
+	// 出租车发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxiTicket *TaxiTicket `json:"TaxiTicket,omitempty" name:"TaxiTicket"`
+
+	// 定额发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuotaInvoice *QuotaInvoice `json:"QuotaInvoice,omitempty" name:"QuotaInvoice"`
+
+	// 机票行程单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AirTransport *AirTransport `json:"AirTransport,omitempty" name:"AirTransport"`
+
+	// 非税收入通用票据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NonTaxIncomeGeneralBill *NonTaxIncomeBill `json:"NonTaxIncomeGeneralBill,omitempty" name:"NonTaxIncomeGeneralBill"`
+
+	// 非税收入一般缴款书(电子)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NonTaxIncomeElectronicBill *NonTaxIncomeBill `json:"NonTaxIncomeElectronicBill,omitempty" name:"NonTaxIncomeElectronicBill"`
+
+	// 火车票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrainTicket *TrainTicket `json:"TrainTicket,omitempty" name:"TrainTicket"`
 }
 
 type SmartFormFileUrl struct {
@@ -7808,6 +8738,62 @@ func (r *TaxiInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type TaxiTicket struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 上车时间
+	TimeGetOn *string `json:"TimeGetOn,omitempty" name:"TimeGetOn"`
+
+	// 下车时间
+	TimeGetOff *string `json:"TimeGetOff,omitempty" name:"TimeGetOff"`
+
+	// 单价
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 里程
+	Mileage *string `json:"Mileage,omitempty" name:"Mileage"`
+
+	// 总金额
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 发票所在地
+	Place *string `json:"Place,omitempty" name:"Place"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 车牌号
+	LicensePlate *string `json:"LicensePlate,omitempty" name:"LicensePlate"`
+
+	// 燃油附加费
+	FuelFee *string `json:"FuelFee,omitempty" name:"FuelFee"`
+
+	// 预约叫车服务费
+	BookingCallFee *string `json:"BookingCallFee,omitempty" name:"BookingCallFee"`
+
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *int64 `json:"CompanySealMark,omitempty" name:"CompanySealMark"`
+}
+
 type TextArithmetic struct {
 	// 识别出的文本行内容
 	DetectedText *string `json:"DetectedText,omitempty" name:"DetectedText"`
@@ -8171,6 +9157,41 @@ type TextWaybill struct {
 	WaybillNum *WaybillObj `json:"WaybillNum,omitempty" name:"WaybillNum"`
 }
 
+type TollInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 入口
+	Entrance *string `json:"Entrance,omitempty" name:"Entrance"`
+
+	// 出口
+	Exit *string `json:"Exit,omitempty" name:"Exit"`
+
+	// 高速标志（0：没有，1：有）
+	HighwayMark *int64 `json:"HighwayMark,omitempty" name:"HighwayMark"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+}
+
 type TollInvoiceInfo struct {
 	// 识别出的字段名称（关键字）。支持以下字段的识别：
 	// 发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志。
@@ -8276,6 +9297,80 @@ func (r *TollInvoiceOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TollInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TrainTicket struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 乘车日期
+	DateGetOn *string `json:"DateGetOn,omitempty" name:"DateGetOn"`
+
+	// 乘车时间
+	TimeGetOn *string `json:"TimeGetOn,omitempty" name:"TimeGetOn"`
+
+	// 乘车人姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 出发车站
+	StationGetOn *string `json:"StationGetOn,omitempty" name:"StationGetOn"`
+
+	// 到达车站
+	StationGetOff *string `json:"StationGetOff,omitempty" name:"StationGetOff"`
+
+	// 座位类型
+	Seat *string `json:"Seat,omitempty" name:"Seat"`
+
+	// 总金额
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 序列号
+	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+	// 身份证号
+	UserID *string `json:"UserID,omitempty" name:"UserID"`
+
+	// 检票口
+	GateNumber *string `json:"GateNumber,omitempty" name:"GateNumber"`
+
+	// 车次
+	TrainNumber *string `json:"TrainNumber,omitempty" name:"TrainNumber"`
+
+	// 手续费
+	HandlingFee *string `json:"HandlingFee,omitempty" name:"HandlingFee"`
+
+	// 原票价
+	OriginalFare *string `json:"OriginalFare,omitempty" name:"OriginalFare"`
+
+	// 大写金额
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 座位号
+	SeatNumber *string `json:"SeatNumber,omitempty" name:"SeatNumber"`
+
+	// 取票地址
+	PickUpAddress *string `json:"PickUpAddress,omitempty" name:"PickUpAddress"`
+
+	// 是否始发改签
+	TicketChange *string `json:"TicketChange,omitempty" name:"TicketChange"`
+
+	// 加收票价
+	AdditionalFare *string `json:"AdditionalFare,omitempty" name:"AdditionalFare"`
+
+	// 收据号码
+	ReceiptNumber *string `json:"ReceiptNumber,omitempty" name:"ReceiptNumber"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 是否仅供报销使用（0：没有，1：有）
+	ReimburseOnlyMark *int64 `json:"ReimburseOnlyMark,omitempty" name:"ReimburseOnlyMark"`
 }
 
 // Predefined struct for user
@@ -8427,6 +9522,107 @@ func (r *TrainTicketOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UsedCarPurchaseInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 是否存在二维码（0：没有，1：有）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 销货单位名称
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 销售方电话
+	SellerTel *string `json:"SellerTel,omitempty" name:"SellerTel"`
+
+	// 销售方单位代码/个人身份证号
+	SellerTaxID *string `json:"SellerTaxID,omitempty" name:"SellerTaxID"`
+
+	// 销售方地址
+	SellerAddress *string `json:"SellerAddress,omitempty" name:"SellerAddress"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 购买方单位代码/个人身份证号
+	BuyerID *string `json:"BuyerID,omitempty" name:"BuyerID"`
+
+	// 购买方地址
+	BuyerAddress *string `json:"BuyerAddress,omitempty" name:"BuyerAddress"`
+
+	// 购买方电话
+	BuyerTel *string `json:"BuyerTel,omitempty" name:"BuyerTel"`
+
+	// 二手车市场
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 二手车市场纳税人识别号
+	CompanyTaxID *string `json:"CompanyTaxID,omitempty" name:"CompanyTaxID"`
+
+	// 二手车市场开户银行和账号
+	CompanyBankAccount *string `json:"CompanyBankAccount,omitempty" name:"CompanyBankAccount"`
+
+	// 二手车市场电话
+	CompanyTel *string `json:"CompanyTel,omitempty" name:"CompanyTel"`
+
+	// 二手车市场地址
+	CompanyAddress *string `json:"CompanyAddress,omitempty" name:"CompanyAddress"`
+
+	// 转入地车辆管理所名称
+	TransferAdministrationName *string `json:"TransferAdministrationName,omitempty" name:"TransferAdministrationName"`
+
+	// 车牌号
+	LicensePlate *string `json:"LicensePlate,omitempty" name:"LicensePlate"`
+
+	// 登记证号
+	RegistrationNumber *string `json:"RegistrationNumber,omitempty" name:"RegistrationNumber"`
+
+	// 车辆识别代码
+	VIN *string `json:"VIN,omitempty" name:"VIN"`
+
+	// 厂牌型号
+	VehicleModel *string `json:"VehicleModel,omitempty" name:"VehicleModel"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 车辆类型
+	VehicleType *string `json:"VehicleType,omitempty" name:"VehicleType"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 发票联次
+	FormType *string `json:"FormType,omitempty" name:"FormType"`
+
+	// 发票联名
+	FormName *string `json:"FormName,omitempty" name:"FormName"`
+
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *int64 `json:"CompanySealMark,omitempty" name:"CompanySealMark"`
+}
+
 type UsedVehicleInvoiceInfo struct {
 	// 所属税局
 	TaxBureau *string `json:"TaxBureau,omitempty" name:"TaxBureau"`
@@ -8508,6 +9704,109 @@ type Value struct {
 	// 四点坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Coord *Polygon `json:"Coord,omitempty" name:"Coord"`
+}
+
+type VatElectronicInfo struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 税前金额
+	PretaxAmount *string `json:"PretaxAmount,omitempty" name:"PretaxAmount"`
+
+	// 合计税额
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 销售方名称
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 销售方纳税人识别号
+	SellerTaxID *string `json:"SellerTaxID,omitempty" name:"SellerTaxID"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 购买方纳税人识别号
+	BuyerTaxID *string `json:"BuyerTaxID,omitempty" name:"BuyerTaxID"`
+
+	// 开票人
+	Issuer *string `json:"Issuer,omitempty" name:"Issuer"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 小计金额
+	SubTotal *string `json:"SubTotal,omitempty" name:"SubTotal"`
+
+	// 小计税额
+	SubTax *string `json:"SubTax,omitempty" name:"SubTax"`
+
+	// 电子发票详细条目信息
+	VatElectronicItems []*VatElectronicItemInfo `json:"VatElectronicItems,omitempty" name:"VatElectronicItems"`
+}
+
+type VatElectronicItemInfo struct {
+	// 项目名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 规格型号
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 单价
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 金额
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 税率
+	TaxRate *string `json:"TaxRate,omitempty" name:"TaxRate"`
+
+	// 税额
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 运输工具类型
+	VehicleType *string `json:"VehicleType,omitempty" name:"VehicleType"`
+
+	// 运输工具牌号
+	VehicleBrand *string `json:"VehicleBrand,omitempty" name:"VehicleBrand"`
+
+	// 起始地
+	DeparturePlace *string `json:"DeparturePlace,omitempty" name:"DeparturePlace"`
+
+	// 到达地
+	ArrivalPlace *string `json:"ArrivalPlace,omitempty" name:"ArrivalPlace"`
+
+	// 运输货物名称，仅货物运输服务发票返回
+	TransportItemsName *string `json:"TransportItemsName,omitempty" name:"TransportItemsName"`
+
+	// 建筑服务发生地，仅建筑发票返回
+	PlaceOfBuildingService *string `json:"PlaceOfBuildingService,omitempty" name:"PlaceOfBuildingService"`
+
+	// 建筑项目名称，仅建筑发票返回
+	BuildingName *string `json:"BuildingName,omitempty" name:"BuildingName"`
+
+	// 产权证书/不动产权证号，仅不动产经营租赁服务发票返回
+	EstateNumber *string `json:"EstateNumber,omitempty" name:"EstateNumber"`
+
+	// 面积单位，仅不动产经营租赁服务发票返回
+	AreaUnit *string `json:"AreaUnit,omitempty" name:"AreaUnit"`
 }
 
 type VatInvoice struct {
@@ -8627,6 +9926,125 @@ type VatInvoiceGoodsInfo struct {
 	TaxAmount *string `json:"TaxAmount,omitempty" name:"TaxAmount"`
 }
 
+type VatInvoiceInfo struct {
+	// 校验码
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 发票联次
+	FormType *string `json:"FormType,omitempty" name:"FormType"`
+
+	// 车船税
+	TravelTax *string `json:"TravelTax,omitempty" name:"TravelTax"`
+
+	// 购买方地址电话
+	BuyerAddrTel *string `json:"BuyerAddrTel,omitempty" name:"BuyerAddrTel"`
+
+	// 购买方银行账号
+	BuyerBankAccount *string `json:"BuyerBankAccount,omitempty" name:"BuyerBankAccount"`
+
+	// 公司印章内容
+	CompanySealContent *string `json:"CompanySealContent,omitempty" name:"CompanySealContent"`
+
+	// 税务局章内容
+	TaxSealContent *string `json:"TaxSealContent,omitempty" name:"TaxSealContent"`
+
+	// 服务类型
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 是否存在二维码（0：没有，1：有）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 是否有代开标记（0：没有，1：有）
+	AgentMark *int64 `json:"AgentMark,omitempty" name:"AgentMark"`
+
+	// 是否有通行费标记（0：没有，1：有）
+	TransitMark *int64 `json:"TransitMark,omitempty" name:"TransitMark"`
+
+	// 是否有成品油标记（0：没有，1：有）
+	OilMark *int64 `json:"OilMark,omitempty" name:"OilMark"`
+
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 机打发票号码
+	NumberConfirm *string `json:"NumberConfirm,omitempty" name:"NumberConfirm"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 税前金额
+	PretaxAmount *string `json:"PretaxAmount,omitempty" name:"PretaxAmount"`
+
+	// 合计税额
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 机器编号
+	MachineCode *string `json:"MachineCode,omitempty" name:"MachineCode"`
+
+	// 密码区
+	Ciphertext *string `json:"Ciphertext,omitempty" name:"Ciphertext"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 销售方名称
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 销售方纳税人识别号
+	SellerTaxID *string `json:"SellerTaxID,omitempty" name:"SellerTaxID"`
+
+	// 销售方地址电话
+	SellerAddrTel *string `json:"SellerAddrTel,omitempty" name:"SellerAddrTel"`
+
+	// 销售方银行账号
+	SellerBankAccount *string `json:"SellerBankAccount,omitempty" name:"SellerBankAccount"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 购买方纳税人识别号
+	BuyerTaxID *string `json:"BuyerTaxID,omitempty" name:"BuyerTaxID"`
+
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *int64 `json:"CompanySealMark,omitempty" name:"CompanySealMark"`
+
+	// 开票人
+	Issuer *string `json:"Issuer,omitempty" name:"Issuer"`
+
+	// 复核人
+	Reviewer *string `json:"Reviewer,omitempty" name:"Reviewer"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 增值税发票项目信息
+	VatInvoiceItemInfos []*VatInvoiceItemInfo `json:"VatInvoiceItemInfos,omitempty" name:"VatInvoiceItemInfos"`
+
+	// 机打发票代码
+	CodeConfirm *string `json:"CodeConfirm,omitempty" name:"CodeConfirm"`
+
+	// 收款人
+	Receiptor *string `json:"Receiptor,omitempty" name:"Receiptor"`
+}
+
 type VatInvoiceItem struct {
 	// 行号
 	LineNo *string `json:"LineNo,omitempty" name:"LineNo"`
@@ -8657,6 +10075,44 @@ type VatInvoiceItem struct {
 
 	// 税收分类编码
 	TaxClassifyCode *string `json:"TaxClassifyCode,omitempty" name:"TaxClassifyCode"`
+}
+
+type VatInvoiceItemInfo struct {
+	// 项目名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规格型号
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 单位
+	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 单价
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 金额
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 税率
+	TaxRate *string `json:"TaxRate,omitempty" name:"TaxRate"`
+
+	// 税额
+	Tax *string `json:"Tax,omitempty" name:"Tax"`
+
+	// 通行日期起
+	DateStart *string `json:"DateStart,omitempty" name:"DateStart"`
+
+	// 通行日期止
+	DateEnd *string `json:"DateEnd,omitempty" name:"DateEnd"`
+
+	// 车牌号
+	LicensePlate *string `json:"LicensePlate,omitempty" name:"LicensePlate"`
+
+	// 车辆类型
+	VehicleType *string `json:"VehicleType,omitempty" name:"VehicleType"`
 }
 
 // Predefined struct for user
@@ -8758,6 +10214,74 @@ func (r *VatInvoiceOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *VatInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VatInvoiceRoll struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 机打发票号码
+	NumberConfirm *string `json:"NumberConfirm,omitempty" name:"NumberConfirm"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 校验码
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 销售方名称
+	Seller *string `json:"Seller,omitempty" name:"Seller"`
+
+	// 销售方纳税人识别号
+	SellerTaxID *string `json:"SellerTaxID,omitempty" name:"SellerTaxID"`
+
+	// 购买方名称
+	Buyer *string `json:"Buyer,omitempty" name:"Buyer"`
+
+	// 购买方纳税人识别号
+	BuyerTaxID *string `json:"BuyerTaxID,omitempty" name:"BuyerTaxID"`
+
+	// 种类
+	Category *string `json:"Category,omitempty" name:"Category"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 发票消费类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 省
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *int64 `json:"CompanySealMark,omitempty" name:"CompanySealMark"`
+
+	// 是否存在二维码（1：有，0：无）
+	QRCodeMark *int64 `json:"QRCodeMark,omitempty" name:"QRCodeMark"`
+
+	// 服务类型
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 公司印章内容
+	CompanySealContent *string `json:"CompanySealContent,omitempty" name:"CompanySealContent"`
+
+	// 税务局章内容
+	TaxSealContent *string `json:"TaxSealContent,omitempty" name:"TaxSealContent"`
+
+	// 条目
+	VatRollItems []*VatRollItem `json:"VatRollItems,omitempty" name:"VatRollItems"`
 }
 
 type VatInvoiceUserInfo struct {
@@ -9113,6 +10637,20 @@ func (r *VatRollInvoiceOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *VatRollInvoiceOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VatRollItem struct {
+	// 项目名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 单价
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 金额
+	Total *string `json:"Total,omitempty" name:"Total"`
 }
 
 type VehicleInvoiceInfo struct {

@@ -276,7 +276,11 @@ type AttachDisksRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 续费标识。
+	// 自动续费标识。取值范围：
+	// 
+	// NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费。 DISABLE_NOTIFY_AND_AUTO_RENEW：不自动续费，且不通知。
+	// 
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云盘到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
@@ -289,7 +293,11 @@ type AttachDisksRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 续费标识。
+	// 自动续费标识。取值范围：
+	// 
+	// NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费。 DISABLE_NOTIFY_AND_AUTO_RENEW：不自动续费，且不通知。
+	// 
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云盘到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
@@ -4168,7 +4176,13 @@ type DiskChargePrepaid struct {
 	// 新购周期。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
-	// 续费标识。
+	// 自动续费标识。取值范围：
+	// 
+	// NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。
+	// NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费。
+	// DISABLE_NOTIFY_AND_AUTO_RENEW：不自动续费，且不通知。
+	// 
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云盘到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 新购单位. 默认值: "m"。

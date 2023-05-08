@@ -5743,6 +5743,9 @@ func (r *DescribeDatabaseInfoListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDatabaseInfoListResponseParams struct {
+	// 数据库列表
+	DatabaseInfo []*DatabaseInfo `json:"DatabaseInfo,omitempty" name:"DatabaseInfo"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

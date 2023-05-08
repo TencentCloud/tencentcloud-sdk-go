@@ -1588,6 +1588,9 @@ type CreateFlowSignUrlRequestParams struct {
 	// 用户信息，此结构体UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
 	// 机构信息，暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
@@ -1603,6 +1606,9 @@ type CreateFlowSignUrlRequest struct {
 
 	// 用户信息，此结构体UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 机构信息，暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
@@ -1623,6 +1629,7 @@ func (r *CreateFlowSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "FlowId")
 	delete(f, "FlowApproverInfos")
 	delete(f, "Operator")
+	delete(f, "Agent")
 	delete(f, "Organization")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowSignUrlRequest has unknown keys!", "")
@@ -4149,21 +4156,25 @@ type FlowApproverDetail struct {
 }
 
 type FlowApproverUrlInfo struct {
-	// 签署链接，注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 签署链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
 
-	// 签署人手机号
+	// 签署人类型 1-个人
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
+	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 签署人姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverName *string `json:"ApproverName,omitempty" name:"ApproverName"`
 
-	// 签署人类型 1-个人
+	// 签署人手机号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
+	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
+
+	// 签署长链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LongUrl *string `json:"LongUrl,omitempty" name:"LongUrl"`
 }
 
 type FlowBrief struct {
@@ -4265,6 +4276,9 @@ type FlowCreateApprover struct {
 
 	// 签署人个性化能力值
 	ApproverOption *ApproverOption `json:"ApproverOption,omitempty" name:"ApproverOption"`
+
+	// 签署完前端跳转的url，暂未使用
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 }
 
 type FlowDetailInfo struct {

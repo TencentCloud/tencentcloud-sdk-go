@@ -908,6 +908,10 @@ func NewDescribePurgeQuotaResponse() (response *DescribePurgeQuotaResponse) {
 }
 
 // DescribePurgeQuota
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 查询刷新接口的用量配额。
 //
 // 
@@ -929,6 +933,10 @@ func (c *Client) DescribePurgeQuota(request *DescribePurgeQuotaRequest) (respons
 }
 
 // DescribePurgeQuota
+// ECDN融合CDN后，接口都用CDN的，此接口已经废弃
+//
+// 
+//
 // 查询刷新接口的用量配额。
 //
 // 

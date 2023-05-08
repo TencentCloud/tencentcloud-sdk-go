@@ -7922,6 +7922,10 @@ type HttpsPackage struct {
 	// 2：用完续订
 	// 3：到期或用完续订
 	ExtensionMode *uint64 `json:"ExtensionMode,omitempty" name:"ExtensionMode"`
+
+	// HTTPS请求包是否自动续订
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoExtension *bool `json:"AutoExtension,omitempty" name:"AutoExtension"`
 }
 
 type HwPrivateAccess struct {

@@ -20,26 +20,6 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-type AdInfo struct {
-	// 插播广告列表
-	Spots []*PluginInfo `json:"Spots,omitempty" name:"Spots"`
-
-	// 精品推荐广告列表
-	BoutiqueRecommands []*PluginInfo `json:"BoutiqueRecommands,omitempty" name:"BoutiqueRecommands"`
-
-	// 悬浮窗广告列表
-	FloatWindowses []*PluginInfo `json:"FloatWindowses,omitempty" name:"FloatWindowses"`
-
-	// banner广告列表
-	Banners []*PluginInfo `json:"Banners,omitempty" name:"Banners"`
-
-	// 积分墙广告列表
-	IntegralWalls []*PluginInfo `json:"IntegralWalls,omitempty" name:"IntegralWalls"`
-
-	// 通知栏广告列表
-	NotifyBars []*PluginInfo `json:"NotifyBars,omitempty" name:"NotifyBars"`
-}
-
 type AppDetailInfo struct {
 	// app的名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -87,47 +67,6 @@ type AppInfo struct {
 
 	// app的名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
-}
-
-type AppScanSet struct {
-	// 任务唯一标识
-	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
-
-	// app的名称
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
-
-	// app的包名
-	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
-
-	// app的版本号
-	AppVersion *string `json:"AppVersion,omitempty" name:"AppVersion"`
-
-	// app的md5
-	AppMd5 *string `json:"AppMd5,omitempty" name:"AppMd5"`
-
-	// app的大小
-	AppSize *uint64 `json:"AppSize,omitempty" name:"AppSize"`
-
-	// 扫描结果返回码
-	ScanCode *uint64 `json:"ScanCode,omitempty" name:"ScanCode"`
-
-	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
-
-	// 提交扫描时间
-	TaskTime *uint64 `json:"TaskTime,omitempty" name:"TaskTime"`
-
-	// app的图标url
-	AppIconUrl *string `json:"AppIconUrl,omitempty" name:"AppIconUrl"`
-
-	// 标识唯一该app，主要用于删除
-	AppSid *string `json:"AppSid,omitempty" name:"AppSid"`
-
-	// 安全类型:1-安全软件，2-风险软件，3病毒软件
-	SafeType *uint64 `json:"SafeType,omitempty" name:"SafeType"`
-
-	// 漏洞个数
-	VulCount *uint64 `json:"VulCount,omitempty" name:"VulCount"`
 }
 
 type AppSetInfo struct {
@@ -430,82 +369,6 @@ func (r *CreateResourceInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type CreateScanInstancesRequestParams struct {
-	// 待扫描的app信息列表，一次最多提交20个
-	AppInfos []*AppInfo `json:"AppInfos,omitempty" name:"AppInfos"`
-
-	// 扫描信息
-	ScanInfo *ScanInfo `json:"ScanInfo,omitempty" name:"ScanInfo"`
-}
-
-type CreateScanInstancesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 待扫描的app信息列表，一次最多提交20个
-	AppInfos []*AppInfo `json:"AppInfos,omitempty" name:"AppInfos"`
-
-	// 扫描信息
-	ScanInfo *ScanInfo `json:"ScanInfo,omitempty" name:"ScanInfo"`
-}
-
-func (r *CreateScanInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateScanInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AppInfos")
-	delete(f, "ScanInfo")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScanInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateScanInstancesResponseParams struct {
-	// 任务唯一标识
-	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
-
-	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-	// 提交成功的app的md5集合
-	AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s"`
-
-	// 剩余可用次数
-	LimitCount *uint64 `json:"LimitCount,omitempty" name:"LimitCount"`
-
-	// 到期时间
-	LimitTime *uint64 `json:"LimitTime,omitempty" name:"LimitTime"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type CreateScanInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateScanInstancesResponseParams `json:"Response"`
-}
-
-func (r *CreateScanInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateScanInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CreateShieldInstanceRequestParams struct {
 	// 待加固的应用信息
 	AppInfo *AppInfo `json:"AppInfo,omitempty" name:"AppInfo"`
@@ -643,63 +506,6 @@ func (r *CreateShieldPlanInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateShieldPlanInstanceResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteScanInstancesRequestParams struct {
-	// 删除一个或多个扫描的app，最大支持20个
-	AppSids []*string `json:"AppSids,omitempty" name:"AppSids"`
-}
-
-type DeleteScanInstancesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 删除一个或多个扫描的app，最大支持20个
-	AppSids []*string `json:"AppSids,omitempty" name:"AppSids"`
-}
-
-func (r *DeleteScanInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteScanInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AppSids")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScanInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteScanInstancesResponseParams struct {
-	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DeleteScanInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteScanInstancesResponseParams `json:"Response"`
-}
-
-func (r *DeleteScanInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteScanInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -922,168 +728,6 @@ func (r *DescribeResourceInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeResourceInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeScanInstancesRequestParams struct {
-	// 支持通过app名称，app包名进行筛选
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-
-	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 数量限制，默认为20，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 可以提供ItemId数组来查询一个或者多个结果。注意不可以同时指定ItemIds和Filters。
-	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
-
-	// 按某个字段排序，目前仅支持TaskTime排序。
-	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
-
-	// 升序（asc）还是降序（desc），默认：desc。
-	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
-}
-
-type DescribeScanInstancesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 支持通过app名称，app包名进行筛选
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-
-	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 数量限制，默认为20，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 可以提供ItemId数组来查询一个或者多个结果。注意不可以同时指定ItemIds和Filters。
-	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
-
-	// 按某个字段排序，目前仅支持TaskTime排序。
-	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
-
-	// 升序（asc）还是降序（desc），默认：desc。
-	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
-}
-
-func (r *DescribeScanInstancesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeScanInstancesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Filters")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "ItemIds")
-	delete(f, "OrderField")
-	delete(f, "OrderDirection")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanInstancesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeScanInstancesResponseParams struct {
-	// 符合要求的app数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 一个关于app详细信息的结构体，主要包括app的基本信息和扫描状态信息。
-	ScanSet []*AppScanSet `json:"ScanSet,omitempty" name:"ScanSet"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeScanInstancesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeScanInstancesResponseParams `json:"Response"`
-}
-
-func (r *DescribeScanInstancesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeScanInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeScanResultsRequestParams struct {
-	// 任务唯一标识
-	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
-
-	// 批量查询一个或者多个app的扫描结果，如果不传表示查询该任务下所提交的所有app
-	AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s"`
-}
-
-type DescribeScanResultsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务唯一标识
-	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
-
-	// 批量查询一个或者多个app的扫描结果，如果不传表示查询该任务下所提交的所有app
-	AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s"`
-}
-
-func (r *DescribeScanResultsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeScanResultsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ItemId")
-	delete(f, "AppMd5s")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanResultsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeScanResultsResponseParams struct {
-	// 批量扫描的app结果集
-	ScanSet []*ScanSetInfo `json:"ScanSet,omitempty" name:"ScanSet"`
-
-	// 批量扫描结果的个数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeScanResultsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeScanResultsResponseParams `json:"Response"`
-}
-
-func (r *DescribeScanResultsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeScanResultsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1570,17 +1214,6 @@ type PlanInfo struct {
 	AntiSSL *uint64 `json:"AntiSSL,omitempty" name:"AntiSSL"`
 }
 
-type PluginInfo struct {
-	// 插件类型，分别为 1-通知栏广告，2-积分墙广告，3-banner广告，4- 悬浮窗图标广告，5-精品推荐列表广告, 6-插播广告
-	PluginType *uint64 `json:"PluginType,omitempty" name:"PluginType"`
-
-	// 插件名称
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
-
-	// 插件描述
-	PluginDesc *string `json:"PluginDesc,omitempty" name:"PluginDesc"`
-}
-
 type PluginListItem struct {
 	// 数字类型，分别为 1-通知栏广告，2-积分墙广告，3-banner广告，4- 悬浮窗图标广告，5-精品推荐列表广告, 6-插播广告
 	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
@@ -1704,75 +1337,6 @@ type ResultListItem struct {
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 }
 
-type ScanInfo struct {
-	// 任务处理完成后的反向通知回调地址,批量提交app每扫描完成一个会通知一次,通知为POST请求，post信息{ItemId:
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
-
-	// VULSCAN-漏洞扫描信息，VIRUSSCAN-返回病毒扫描信息， ADSCAN-广告扫描信息，PLUGINSCAN-插件扫描信息，PERMISSION-系统权限信息，SENSITIVE-敏感词信息，可以自由组合
-	ScanTypes []*string `json:"ScanTypes,omitempty" name:"ScanTypes"`
-}
-
-type ScanPermissionInfo struct {
-	// 系统权限
-	Permission *string `json:"Permission,omitempty" name:"Permission"`
-}
-
-type ScanPermissionList struct {
-	// 系统权限信息
-	PermissionList []*ScanPermissionInfo `json:"PermissionList,omitempty" name:"PermissionList"`
-}
-
-type ScanSensitiveInfo struct {
-	// 敏感词
-	WordList []*string `json:"WordList,omitempty" name:"WordList"`
-
-	// 敏感词对应的文件信息
-	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
-
-	// 文件sha1值
-	FileSha *string `json:"FileSha,omitempty" name:"FileSha"`
-}
-
-type ScanSensitiveList struct {
-	// 敏感词列表
-	SensitiveList []*ScanSensitiveInfo `json:"SensitiveList,omitempty" name:"SensitiveList"`
-}
-
-type ScanSetInfo struct {
-	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
-
-	// app信息
-	AppDetailInfo *AppDetailInfo `json:"AppDetailInfo,omitempty" name:"AppDetailInfo"`
-
-	// 病毒信息
-	VirusInfo *VirusInfo `json:"VirusInfo,omitempty" name:"VirusInfo"`
-
-	// 漏洞信息
-	VulInfo *VulInfo `json:"VulInfo,omitempty" name:"VulInfo"`
-
-	// 广告插件信息
-	AdInfo *AdInfo `json:"AdInfo,omitempty" name:"AdInfo"`
-
-	// 提交扫描的时间
-	TaskTime *uint64 `json:"TaskTime,omitempty" name:"TaskTime"`
-
-	// 状态码，成功返回0，失败返回错误码
-	StatusCode *uint64 `json:"StatusCode,omitempty" name:"StatusCode"`
-
-	// 状态描述
-	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
-
-	// 状态操作指引
-	StatusRef *string `json:"StatusRef,omitempty" name:"StatusRef"`
-
-	// 系统权限信息
-	PermissionInfo *ScanPermissionList `json:"PermissionInfo,omitempty" name:"PermissionInfo"`
-
-	// 敏感词列表
-	SensitiveInfo *ScanSensitiveList `json:"SensitiveInfo,omitempty" name:"SensitiveInfo"`
-}
-
 type ServiceInfo struct {
 	// 服务版本，基础版basic，专业版professional，企业版enterprise。
 	ServiceEdition *string `json:"ServiceEdition,omitempty" name:"ServiceEdition"`
@@ -1821,49 +1385,4 @@ type ShieldPlanInfo struct {
 type SoInfo struct {
 	// so文件列表
 	SoFileNames []*string `json:"SoFileNames,omitempty" name:"SoFileNames"`
-}
-
-type VirusInfo struct {
-	// 软件安全类型，分别为0-未知、 1-安全软件、2-风险软件、3-病毒软件
-	SafeType *int64 `json:"SafeType,omitempty" name:"SafeType"`
-
-	// 病毒名称， utf8编码，非病毒时值为空
-	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
-
-	// 病毒描述，utf8编码，非病毒时值为空
-	VirusDesc *string `json:"VirusDesc,omitempty" name:"VirusDesc"`
-}
-
-type VulInfo struct {
-	// 漏洞列表
-	VulList []*VulList `json:"VulList,omitempty" name:"VulList"`
-
-	// 漏洞文件评分
-	VulFileScore *uint64 `json:"VulFileScore,omitempty" name:"VulFileScore"`
-}
-
-type VulList struct {
-	// 漏洞id
-	VulId *string `json:"VulId,omitempty" name:"VulId"`
-
-	// 漏洞名称
-	VulName *string `json:"VulName,omitempty" name:"VulName"`
-
-	// 漏洞代码
-	VulCode *string `json:"VulCode,omitempty" name:"VulCode"`
-
-	// 漏洞描述
-	VulDesc *string `json:"VulDesc,omitempty" name:"VulDesc"`
-
-	// 漏洞解决方案
-	VulSolution *string `json:"VulSolution,omitempty" name:"VulSolution"`
-
-	// 漏洞来源类别，0默认自身，1第三方插件
-	VulSrcType *int64 `json:"VulSrcType,omitempty" name:"VulSrcType"`
-
-	// 漏洞位置
-	VulFilepath *string `json:"VulFilepath,omitempty" name:"VulFilepath"`
-
-	// 风险级别：1 低风险 ；2中等风险；3 高风险
-	RiskLevel *uint64 `json:"RiskLevel,omitempty" name:"RiskLevel"`
 }

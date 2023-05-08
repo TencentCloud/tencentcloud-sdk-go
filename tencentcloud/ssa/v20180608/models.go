@@ -38,6 +38,16 @@ type AlertDetail struct {
 	Detail *string `json:"Detail,omitempty" name:"Detail"`
 }
 
+type AlertListAggregations struct {
+	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type AlertListData struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -46,6 +56,10 @@ type AlertListData struct {
 	// 返回列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlertList []*AlertType `json:"AlertList,omitempty" name:"AlertList"`
+
+	// 聚合参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Aggregations *AlertListAggregations `json:"Aggregations,omitempty" name:"Aggregations"`
 }
 
 type AlertType struct {
@@ -148,6 +162,34 @@ type AlertType struct {
 	// 资产子网
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VictimAssetSub *string `json:"VictimAssetSub,omitempty" name:"VictimAssetSub"`
+
+	// 资产vpc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VictimAssetVpc *string `json:"VictimAssetVpc,omitempty" name:"VictimAssetVpc"`
+
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 资产组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetGroupName []*string `json:"AssetGroupName,omitempty" name:"AssetGroupName"`
+
+	// 资产项目名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetProjectName *string `json:"AssetProjectName,omitempty" name:"AssetProjectName"`
+
+	// 失陷资产内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VictimAssetContent []*string `json:"VictimAssetContent,omitempty" name:"VictimAssetContent"`
+
+	// 错误报告状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WrongReportStatus *int64 `json:"WrongReportStatus,omitempty" name:"WrongReportStatus"`
+
+	// 错误报告Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WrongReportConditionId *int64 `json:"WrongReportConditionId,omitempty" name:"WrongReportConditionId"`
 }
 
 type Asset struct {
@@ -427,6 +469,30 @@ type AssetDetail struct {
 	// 漏洞数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetVulNum *int64 `json:"AssetVulNum,omitempty" name:"AssetVulNum"`
+
+	// 资产事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetEventNum *int64 `json:"AssetEventNum,omitempty" name:"AssetEventNum"`
+
+	// cspm风险
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetCspmRiskNum *int64 `json:"AssetCspmRiskNum,omitempty" name:"AssetCspmRiskNum"`
+
+	// 资产删除时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaAssetDeleteTime *string `json:"SsaAssetDeleteTime,omitempty" name:"SsaAssetDeleteTime"`
+
+	// 费用类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetRegionName *string `json:"AssetRegionName,omitempty" name:"AssetRegionName"`
+
+	// vpc信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetVpcid *string `json:"AssetVpcid,omitempty" name:"AssetVpcid"`
 }
 
 type AssetList struct {
@@ -643,6 +709,110 @@ type ConcernInfo struct {
 	// 最近数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatisticsCount *int64 `json:"StatisticsCount,omitempty" name:"StatisticsCount"`
+
+	// IP国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpCountry *string `json:"IpCountry,omitempty" name:"IpCountry"`
+
+	// IP省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpProvince *string `json:"IpProvince,omitempty" name:"IpProvince"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 置信度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 服务商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpIsp *string `json:"IpIsp,omitempty" name:"IpIsp"`
+
+	// 是否基础设施
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpInfrastructure *string `json:"IpInfrastructure,omitempty" name:"IpInfrastructure"`
+
+	// 威胁类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThreatType []*string `json:"ThreatType,omitempty" name:"ThreatType"`
+
+	// 威胁团伙
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Groups []*string `json:"Groups,omitempty" name:"Groups"`
+
+	// 状态威胁情报接口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 恶意标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VictimAssetType *string `json:"VictimAssetType,omitempty" name:"VictimAssetType"`
+
+	// 资产名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VictimAssetName *string `json:"VictimAssetName,omitempty" name:"VictimAssetName"`
+
+	// 注册者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainRegistrant *string `json:"DomainRegistrant,omitempty" name:"DomainRegistrant"`
+
+	// 注册机构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainRegisteredInstitution *string `json:"DomainRegisteredInstitution,omitempty" name:"DomainRegisteredInstitution"`
+
+	// 注册时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainRegistrationTime *string `json:"DomainRegistrationTime,omitempty" name:"DomainRegistrationTime"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 病毒名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
+
+	// 文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *string `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 进程名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcName *string `json:"ProcName,omitempty" name:"ProcName"`
+
+	// 进程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pid *string `json:"Pid,omitempty" name:"Pid"`
+
+	// 进程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcPath *string `json:"ProcPath,omitempty" name:"ProcPath"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcUser *string `json:"ProcUser,omitempty" name:"ProcUser"`
+
+	// 已防御
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefendedCount *uint64 `json:"DefendedCount,omitempty" name:"DefendedCount"`
+
+	// 仅检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectedCount *uint64 `json:"DetectedCount,omitempty" name:"DetectedCount"`
 
 	// 可疑关注点字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2775,6 +2945,14 @@ type MappingResult struct {
 	// 安全防护状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityStatus []*SecurityStatus `json:"SecurityStatus,omitempty" name:"SecurityStatus"`
+
+	// 处置建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisposalRecommendation *int64 `json:"DisposalRecommendation,omitempty" name:"DisposalRecommendation"`
+
+	// 测绘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MappingType *string `json:"MappingType,omitempty" name:"MappingType"`
 }
 
 type ObjDataSaEventPub struct {
@@ -3283,7 +3461,7 @@ type Tag struct {
 	// 数据库标识
 	Fid *int64 `json:"Fid,omitempty" name:"Fid"`
 
-	// 标签名称
+	// 标签名称字段
 	Fname *string `json:"Fname,omitempty" name:"Fname"`
 }
 

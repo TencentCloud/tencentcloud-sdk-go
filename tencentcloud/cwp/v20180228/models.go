@@ -13608,6 +13608,9 @@ type DescribeLicenseGeneralResponseParams struct {
 	// 自动加购订单是否自动续费 ,true 开启, false 关闭
 	AutoRepurchaseRenewSwitch *bool `json:"AutoRepurchaseRenewSwitch,omitempty" name:"AutoRepurchaseRenewSwitch"`
 
+	// 已销毁订单数
+	DestroyOrderNum *uint64 `json:"DestroyOrderNum,omitempty" name:"DestroyOrderNum"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -22273,6 +22276,9 @@ type LoginWhiteCombinedInfo struct {
 
 	// 服务器Uuid
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 登陆地
+	Locations *string `json:"Locations,omitempty" name:"Locations"`
 }
 
 type LoginWhiteLists struct {
@@ -24228,6 +24234,22 @@ type ProtectDirInfo struct {
 
 	// 自动恢复开关 (Filters 过滤Quuid 时 返回) 默认0
 	AutoRestoreSwitchStatus *uint64 `json:"AutoRestoreSwitchStatus,omitempty" name:"AutoRestoreSwitchStatus"`
+
+	// 首次开启防护时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstProtectTime *string `json:"FirstProtectTime,omitempty" name:"FirstProtectTime"`
+
+	// 最近开启防护时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestProtectTime *string `json:"LatestProtectTime,omitempty" name:"LatestProtectTime"`
+
+	// 防护文件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectFileType *string `json:"ProtectFileType,omitempty" name:"ProtectFileType"`
+
+	// 防护文件总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectFilesCount *int64 `json:"ProtectFilesCount,omitempty" name:"ProtectFilesCount"`
 }
 
 type ProtectDirRelatedServer struct {
@@ -24306,6 +24328,10 @@ type ProtectEventLists struct {
 	// 主机额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 机器实例uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type ProtectHostConfig struct {

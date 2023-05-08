@@ -3985,6 +3985,14 @@ type DeviceUser struct {
 
 	// 用户角色 1所有者，0：其他分享者
 	Role *int64 `json:"Role,omitempty" name:"Role"`
+
+	// 家庭ID，所有者带该参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FamilyId *string `json:"FamilyId,omitempty" name:"FamilyId"`
+
+	// 家庭名称，所有者带该参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FamilyName *string `json:"FamilyName,omitempty" name:"FamilyName"`
 }
 
 type DevicesItem struct {

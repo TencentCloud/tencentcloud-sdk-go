@@ -6705,6 +6705,31 @@ type ShipperInfo struct {
 	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilenameMode *uint64 `json:"FilenameMode,omitempty" name:"FilenameMode"`
+
+	// 投递数据范围的开始时间点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 投递数据范围的结束时间点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 历史数据投递的进度（仅当用户选择的数据内中历史数据时才有效）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 历史数据全部投递完成剩余的时间（仅当用户选择的数据中有历史数据时才有效）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainTime *int64 `json:"RemainTime,omitempty" name:"RemainTime"`
+
+	// 历史任务状态：
+	// 0：实时任务
+	// 1：任务准备中
+	// 2：任务运行中
+	// 3：任务运行异常
+	// 4：任务运行结束
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HistoryStatus *int64 `json:"HistoryStatus,omitempty" name:"HistoryStatus"`
 }
 
 type ShipperTaskInfo struct {

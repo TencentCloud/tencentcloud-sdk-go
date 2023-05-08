@@ -1039,6 +1039,62 @@ func (c *Client) GetCustomizationListWithContext(ctx context.Context, request *G
     return
 }
 
+func NewGetModelInfoRequest() (request *GetModelInfoRequest) {
+    request = &GetModelInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "GetModelInfo")
+    
+    
+    return
+}
+
+func NewGetModelInfoResponse() (response *GetModelInfoResponse) {
+    response = &GetModelInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetModelInfo
+// 通过自学习模型id获取自学习模型详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_MODELID = "InvalidParameterValue.ModelId"
+func (c *Client) GetModelInfo(request *GetModelInfoRequest) (response *GetModelInfoResponse, err error) {
+    return c.GetModelInfoWithContext(context.Background(), request)
+}
+
+// GetModelInfo
+// 通过自学习模型id获取自学习模型详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_MODELID = "InvalidParameterValue.ModelId"
+func (c *Client) GetModelInfoWithContext(ctx context.Context, request *GetModelInfoRequest) (response *GetModelInfoResponse, err error) {
+    if request == nil {
+        request = NewGetModelInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetModelInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetModelInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCustomizationRequest() (request *ModifyCustomizationRequest) {
     request = &ModifyCustomizationRequest{
         BaseRequest: &tchttp.BaseRequest{},

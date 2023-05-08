@@ -932,6 +932,9 @@ const (
 	// 无效请求参数。
 	INVALIDPARAMETERVALUE_TASKPARAMETERINVALID = "InvalidParameterValue.TaskParameterInvalid"
 
+	// TSF应用性能管理业务日志搜索解析时间格式错误。
+	INVALIDPARAMETERVALUE_TSFAPMBUSILOGSEARCHPARSERSPDATEFORMATERROR = "InvalidParameterValue.TsfApmBusiLogSearchParseRspDateFormatError"
+
 	// 仅有停止状态下的部署组才可以不启动。
 	INVALIDPARAMETERVALUE_WRONGDONTSTARTVALUE = "InvalidParameterValue.WrongDontStartValue"
 

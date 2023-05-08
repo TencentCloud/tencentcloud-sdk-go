@@ -1243,6 +1243,9 @@ type DeleteSqlFiltersRequestParams struct {
 
 	// 限流任务ID列表。
 	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 type DeleteSqlFiltersRequest struct {
@@ -1256,6 +1259,9 @@ type DeleteSqlFiltersRequest struct {
 
 	// 限流任务ID列表。
 	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DeleteSqlFiltersRequest) ToJsonString() string {
@@ -1273,6 +1279,7 @@ func (r *DeleteSqlFiltersRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "SessionToken")
 	delete(f, "FilterIds")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSqlFiltersRequest has unknown keys!", "")
 	}
@@ -3437,6 +3444,9 @@ type DescribeSqlFiltersRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 type DescribeSqlFiltersRequest struct {
@@ -3456,6 +3466,9 @@ type DescribeSqlFiltersRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
 func (r *DescribeSqlFiltersRequest) ToJsonString() string {
@@ -3475,6 +3488,7 @@ func (r *DescribeSqlFiltersRequest) FromJsonString(s string) error {
 	delete(f, "Statuses")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSqlFiltersRequest has unknown keys!", "")
 	}
@@ -4325,6 +4339,9 @@ type KillMySqlThreadsRequestParams struct {
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 默认是ture, 记录下kill的记录，为了加快kill，可设置为false。
+	RecordHistory *bool `json:"RecordHistory,omitempty" name:"RecordHistory"`
 }
 
 type KillMySqlThreadsRequest struct {
@@ -4344,6 +4361,9 @@ type KillMySqlThreadsRequest struct {
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 默认是ture, 记录下kill的记录，为了加快kill，可设置为false。
+	RecordHistory *bool `json:"RecordHistory,omitempty" name:"RecordHistory"`
 }
 
 func (r *KillMySqlThreadsRequest) ToJsonString() string {
@@ -4363,6 +4383,7 @@ func (r *KillMySqlThreadsRequest) FromJsonString(s string) error {
 	delete(f, "Threads")
 	delete(f, "SqlExecId")
 	delete(f, "Product")
+	delete(f, "RecordHistory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KillMySqlThreadsRequest has unknown keys!", "")
 	}

@@ -437,6 +437,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 请联系商务开启「中国大陆网络优化(国际加速)」功能。
+	OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
+
 	// 有域名在共享cname组内，不可切换接入类型。
 	OPERATIONDENIED_DOMAININSHARECNAMEGROUP = "OperationDenied.DomainInShareCnameGroup"
 

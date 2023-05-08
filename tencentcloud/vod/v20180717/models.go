@@ -7328,6 +7328,7 @@ type DescribeCDNStatDetailsRequestParams struct {
 	// <li>Traffic：流量，单位为 Byte。</li>
 	// <li>Bandwidth：带宽，单位为 Bps。</li>
 	// <li>Requests：请求数。</li>
+	// <li>QUICRequests：QUIC 请求数。</li>
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -7417,6 +7418,7 @@ type DescribeCDNStatDetailsRequest struct {
 	// <li>Traffic：流量，单位为 Byte。</li>
 	// <li>Bandwidth：带宽，单位为 Bps。</li>
 	// <li>Requests：请求数。</li>
+	// <li>QUICRequests：QUIC 请求数。</li>
 	Metric *string `json:"Metric,omitempty" name:"Metric"`
 
 	// 起始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -21100,6 +21102,7 @@ type StatDataItem struct {
 	// <li>流量数据，单位是字节。</li>
 	// <li>带宽数据，单位是比特每秒。</li>
 	// <li>直播剪辑数据，单位是秒。</li>
+	// <li>轮播数据，单位是秒。</li>
 	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 

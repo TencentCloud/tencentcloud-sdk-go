@@ -4045,17 +4045,21 @@ type FlowApproverInfo struct {
 }
 
 type FlowApproverUrlInfo struct {
-	// 签署链接，注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 签署链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
 	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
 
-	// 签署人手机号
-	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+	// 签署人类型 PERSON-个人
+	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 签署人姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 签署人类型 PERSON-个人
-	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
+	// 签署人手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 签署长链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LongUrl *string `json:"LongUrl,omitempty" name:"LongUrl"`
 }
 
 type FlowDetailInfo struct {

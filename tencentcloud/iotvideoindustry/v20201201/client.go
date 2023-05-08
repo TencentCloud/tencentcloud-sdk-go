@@ -2404,6 +2404,7 @@ func NewDeleteTimeTemplateResponse() (response *DeleteTimeTemplateResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteTimeTemplate(request *DeleteTimeTemplateRequest) (response *DeleteTimeTemplateResponse, err error) {
     return c.DeleteTimeTemplateWithContext(context.Background(), request)
@@ -2414,6 +2415,7 @@ func (c *Client) DeleteTimeTemplate(request *DeleteTimeTemplateRequest) (respons
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteTimeTemplateWithContext(ctx context.Context, request *DeleteTimeTemplateRequest) (response *DeleteTimeTemplateResponse, err error) {
     if request == nil {
@@ -2454,6 +2456,7 @@ func NewDeleteVideoListResponse() (response *DeleteVideoListResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteVideoList(request *DeleteVideoListRequest) (response *DeleteVideoListResponse, err error) {
     return c.DeleteVideoListWithContext(context.Background(), request)
@@ -2464,6 +2467,7 @@ func (c *Client) DeleteVideoList(request *DeleteVideoListRequest) (response *Del
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteVideoListWithContext(ctx context.Context, request *DeleteVideoListRequest) (response *DeleteVideoListResponse, err error) {
     if request == nil {
@@ -2504,6 +2508,7 @@ func NewDeleteWarningResponse() (response *DeleteWarningResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteWarning(request *DeleteWarningRequest) (response *DeleteWarningResponse, err error) {
     return c.DeleteWarningWithContext(context.Background(), request)
@@ -2514,6 +2519,7 @@ func (c *Client) DeleteWarning(request *DeleteWarningRequest) (response *DeleteW
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNSUPPORTEDOPERATION_PLANEXISTUNDERTEMPLATE = "UnsupportedOperation.PlanExistUnderTemplate"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) DeleteWarningWithContext(ctx context.Context, request *DeleteWarningRequest) (response *DeleteWarningResponse, err error) {
     if request == nil {

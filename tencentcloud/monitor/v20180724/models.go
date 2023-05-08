@@ -10617,6 +10617,14 @@ type Metric struct {
 	// 集成中心产品ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 匹配运算符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operators []*Operator `json:"Operators,omitempty" name:"Operators"`
+
+	// 指标触发
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Periods []*int64 `json:"Periods,omitempty" name:"Periods"`
 }
 
 type MetricConfig struct {

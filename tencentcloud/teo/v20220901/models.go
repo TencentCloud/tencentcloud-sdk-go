@@ -11889,4 +11889,8 @@ type ZoneSetting struct {
 	// 图片优化相关配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageOptimize *ImageOptimize `json:"ImageOptimize,omitempty" name:"ImageOptimize"`
+
+	// 中国大陆加速优化配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccelerateMainland *AccelerateMainland `json:"AccelerateMainland,omitempty" name:"AccelerateMainland"`
 }

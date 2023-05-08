@@ -173,7 +173,12 @@ func NewAddDomainWhiteRuleResponse() (response *AddDomainWhiteRuleResponse) {
 // 增加域名规则白名单
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) AddDomainWhiteRule(request *AddDomainWhiteRuleRequest) (response *AddDomainWhiteRuleResponse, err error) {
     return c.AddDomainWhiteRuleWithContext(context.Background(), request)
 }
@@ -182,7 +187,12 @@ func (c *Client) AddDomainWhiteRule(request *AddDomainWhiteRuleRequest) (respons
 // 增加域名规则白名单
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) AddDomainWhiteRuleWithContext(ctx context.Context, request *AddDomainWhiteRuleRequest) (response *AddDomainWhiteRuleResponse, err error) {
     if request == nil {
         request = NewAddDomainWhiteRuleRequest()
@@ -640,10 +650,12 @@ func NewDeleteDomainWhiteRulesResponse() (response *DeleteDomainWhiteRulesRespon
 // DeleteDomainWhiteRules
 // 删除域名规则白名单
 //
-// 
-//
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) DeleteDomainWhiteRules(request *DeleteDomainWhiteRulesRequest) (response *DeleteDomainWhiteRulesResponse, err error) {
     return c.DeleteDomainWhiteRulesWithContext(context.Background(), request)
 }
@@ -651,10 +663,12 @@ func (c *Client) DeleteDomainWhiteRules(request *DeleteDomainWhiteRulesRequest) 
 // DeleteDomainWhiteRules
 // 删除域名规则白名单
 //
-// 
-//
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) DeleteDomainWhiteRulesWithContext(ctx context.Context, request *DeleteDomainWhiteRulesRequest) (response *DeleteDomainWhiteRulesResponse, err error) {
     if request == nil {
         request = NewDeleteDomainWhiteRulesRequest()
@@ -1373,7 +1387,9 @@ func NewDescribeDomainWhiteRulesResponse() (response *DescribeDomainWhiteRulesRe
 // 获取域名的规则白名单
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeDomainWhiteRules(request *DescribeDomainWhiteRulesRequest) (response *DescribeDomainWhiteRulesResponse, err error) {
     return c.DescribeDomainWhiteRulesWithContext(context.Background(), request)
 }
@@ -1382,7 +1398,9 @@ func (c *Client) DescribeDomainWhiteRules(request *DescribeDomainWhiteRulesReque
 // 获取域名的规则白名单
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeDomainWhiteRulesWithContext(ctx context.Context, request *DescribeDomainWhiteRulesRequest) (response *DescribeDomainWhiteRulesResponse, err error) {
     if request == nil {
         request = NewDescribeDomainWhiteRulesRequest()
@@ -2695,7 +2713,11 @@ func NewModifyDomainWhiteRuleResponse() (response *ModifyDomainWhiteRuleResponse
 // 更改某一条规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) ModifyDomainWhiteRule(request *ModifyDomainWhiteRuleRequest) (response *ModifyDomainWhiteRuleResponse, err error) {
     return c.ModifyDomainWhiteRuleWithContext(context.Background(), request)
 }
@@ -2704,7 +2726,11 @@ func (c *Client) ModifyDomainWhiteRule(request *ModifyDomainWhiteRuleRequest) (r
 // 更改某一条规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) ModifyDomainWhiteRuleWithContext(ctx context.Context, request *ModifyDomainWhiteRuleRequest) (response *ModifyDomainWhiteRuleResponse, err error) {
     if request == nil {
         request = NewModifyDomainWhiteRuleRequest()
@@ -3091,7 +3117,13 @@ func NewSwitchDomainRulesResponse() (response *SwitchDomainRulesResponse) {
 // 切换域名的规则开关
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) SwitchDomainRules(request *SwitchDomainRulesRequest) (response *SwitchDomainRulesResponse, err error) {
     return c.SwitchDomainRulesWithContext(context.Background(), request)
 }
@@ -3100,7 +3132,13 @@ func (c *Client) SwitchDomainRules(request *SwitchDomainRulesRequest) (response 
 // 切换域名的规则开关
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) SwitchDomainRulesWithContext(ctx context.Context, request *SwitchDomainRulesRequest) (response *SwitchDomainRulesResponse, err error) {
     if request == nil {
         request = NewSwitchDomainRulesRequest()

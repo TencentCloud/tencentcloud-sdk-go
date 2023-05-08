@@ -59,7 +59,7 @@ const (
 	// 回调地址错误。
 	INVALIDPARAMETERVALUE_INVALIDCALLBACKURL = "InvalidParameterValue.InvalidCallbackUrl"
 
-	// FileContent和FileUrl为空。
+	// FileContent和FileUrl为空或base64编码错误。
 	INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
 
 	// DataId格式错误。
