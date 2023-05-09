@@ -1522,6 +1522,7 @@ func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -1540,6 +1541,7 @@ func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response 
 //  INTERNALERROR_API = "InternalError.Api"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -2812,6 +2814,7 @@ func NewDeleteSealPoliciesResponse() (response *DeleteSealPoliciesResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2825,6 +2828,7 @@ func (c *Client) DeleteSealPolicies(request *DeleteSealPoliciesRequest) (respons
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3102,6 +3106,7 @@ func NewDescribeFlowEvidenceReportResponse() (response *DescribeFlowEvidenceRepo
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
@@ -3121,6 +3126,7 @@ func (c *Client) DescribeFlowEvidenceReport(request *DescribeFlowEvidenceReportR
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
@@ -3395,6 +3401,7 @@ func NewDescribeIntegrationMainOrganizationUserResponse() (response *DescribeInt
 // 可能返回的错误码:
 //  INTERNALERROR_DB = "InternalError.Db"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 func (c *Client) DescribeIntegrationMainOrganizationUser(request *DescribeIntegrationMainOrganizationUserRequest) (response *DescribeIntegrationMainOrganizationUserResponse, err error) {
     return c.DescribeIntegrationMainOrganizationUserWithContext(context.Background(), request)
 }
@@ -3405,6 +3412,7 @@ func (c *Client) DescribeIntegrationMainOrganizationUser(request *DescribeIntegr
 // 可能返回的错误码:
 //  INTERNALERROR_DB = "InternalError.Db"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 func (c *Client) DescribeIntegrationMainOrganizationUserWithContext(ctx context.Context, request *DescribeIntegrationMainOrganizationUserRequest) (response *DescribeIntegrationMainOrganizationUserResponse, err error) {
     if request == nil {
         request = NewDescribeIntegrationMainOrganizationUserRequest()

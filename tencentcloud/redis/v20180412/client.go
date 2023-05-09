@@ -464,7 +464,7 @@ func NewChangeReplicaToMasterResponse() (response *ChangeReplicaToMasterResponse
 }
 
 // ChangeReplicaToMaster
-// 该接口仅支持多AZ实例副本组提主和单AZ副本提主
+// 本接口（ChangeReplicaToMaster）适用于实例副本组提主或副本提主。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -482,7 +482,7 @@ func (c *Client) ChangeReplicaToMaster(request *ChangeReplicaToMasterRequest) (r
 }
 
 // ChangeReplicaToMaster
-// 该接口仅支持多AZ实例副本组提主和单AZ副本提主
+// 本接口（ChangeReplicaToMaster）适用于实例副本组提主或副本提主。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3350,7 +3350,7 @@ func NewDescribeTaskListResponse() (response *DescribeTaskListResponse) {
 }
 
 // DescribeTaskList
-// 查询任务列表信息
+// 本接口（DescribeTaskList）用于查询指定实例的任务列表信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3362,7 +3362,7 @@ func (c *Client) DescribeTaskList(request *DescribeTaskListRequest) (response *D
 }
 
 // DescribeTaskList
-// 查询任务列表信息
+// 本接口（DescribeTaskList）用于查询指定实例的任务列表信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

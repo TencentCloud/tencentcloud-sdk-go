@@ -7780,6 +7780,7 @@ func NewDescribeTemplateHistoryResponse() (response *DescribeTemplateHistoryResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 func (c *Client) DescribeTemplateHistory(request *DescribeTemplateHistoryRequest) (response *DescribeTemplateHistoryResponse, err error) {
     return c.DescribeTemplateHistoryWithContext(context.Background(), request)
 }
@@ -7789,6 +7790,7 @@ func (c *Client) DescribeTemplateHistory(request *DescribeTemplateHistoryRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"
 func (c *Client) DescribeTemplateHistoryWithContext(ctx context.Context, request *DescribeTemplateHistoryRequest) (response *DescribeTemplateHistoryResponse, err error) {
     if request == nil {
         request = NewDescribeTemplateHistoryRequest()

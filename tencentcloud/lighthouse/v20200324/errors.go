@@ -29,6 +29,9 @@ const (
 	// 创建镜像失败。
 	FAILEDOPERATION_CREATEBLUEPRINTFAILED = "FailedOperation.CreateBlueprintFailed"
 
+	// 创建云硬盘失败。
+	FAILEDOPERATION_CREATEDISKSFAILED = "FailedOperation.CreateDisksFailed"
+
 	// 创建实例失败。
 	FAILEDOPERATION_CREATEINSTANCESFAILED = "FailedOperation.CreateInstancesFailed"
 
@@ -221,6 +224,9 @@ const (
 	// 指定的云盘备份点名称不可大于最大长度。
 	INVALIDPARAMETERVALUE_DISKBACKUPNAMETOOLONG = "InvalidParameterValue.DiskBackupNameTooLong"
 
+	// 云硬盘的可用区与实例的可用区不匹配。
+	INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = "InvalidParameterValue.DiskInstanceZoneNotMatch"
+
 	// 磁盘名称长度超出限制。
 	INVALIDPARAMETERVALUE_DISKNAMETOOLONG = "InvalidParameterValue.DiskNameTooLong"
 
@@ -262,6 +268,9 @@ const (
 
 	// 参数值非法，磁盘 ID 格式非法。
 	INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+
+	// 云硬盘类型非法。
+	INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
 
 	// 设置是否使用默认密钥对登录的值不正确。
 	INVALIDPARAMETERVALUE_INVALIDINSTANCELOGINKEYPAIRPERMITLOGIN = "InvalidParameterValue.InvalidInstanceLoginKeyPairPermitLogin"
@@ -314,6 +323,12 @@ const (
 	// 参数值非法，不在合法范围内。
 	INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
 
+	// 实例操作系统不支持该文件系统。
+	INVALIDPARAMETERVALUE_PLATFORMTYPENOTSUPPORTFILESYSTEM = "InvalidParameterValue.PlatformTypeNotSupportFileSystem"
+
+	// 实例操作系统不支持指定挂载点。
+	INVALIDPARAMETERVALUE_PLATFORMTYPENOTSUPPORTMOUNTPOINT = "InvalidParameterValue.PlatformTypeNotSupportMountPoint"
+
 	// 地域不存在。
 	INVALIDPARAMETERVALUE_REGIONNOTFOUND = "InvalidParameterValue.RegionNotFound"
 
@@ -349,6 +364,9 @@ const (
 
 	// 超过磁盘备份点配额限制。
 	LIMITEXCEEDED_DISKBACKUPQUOTALIMITEXCEEDED = "LimitExceeded.DiskBackupQuotaLimitExceeded"
+
+	// 当前配额不足，无法创建新的云硬盘。
+	LIMITEXCEEDED_DISKQUOTALIMITEXCEEDED = "LimitExceeded.DiskQuotaLimitExceeded"
 
 	// 超过防火墙规则配额。
 	LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = "LimitExceeded.FirewallRulesLimitExceeded"
@@ -589,6 +607,9 @@ const (
 
 	// 系统忙。
 	UNSUPPORTEDOPERATION_SYSTEMBUSY = "UnsupportedOperation.SystemBusy"
+
+	// 实例上腾讯云助手 agent 不在线。
+	UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = "UnsupportedOperation.TatAgentNotOnline"
 
 	// Windows实例不支持绑定密钥对。
 	UNSUPPORTEDOPERATION_WINDOWSNOTALLOWTOASSOCIATEKEYPAIR = "UnsupportedOperation.WindowsNotAllowToAssociateKeyPair"

@@ -795,6 +795,8 @@ func NewQueryExternalContactDetailResponse() (response *QueryExternalContactDeta
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -812,6 +814,8 @@ func (c *Client) QueryExternalContactDetail(request *QueryExternalContactDetailR
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

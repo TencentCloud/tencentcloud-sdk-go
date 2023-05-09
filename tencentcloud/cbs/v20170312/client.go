@@ -255,6 +255,7 @@ func NewAttachDisksResponse() (response *AttachDisksResponse) {
 // * 本接口为异步接口，当挂载云盘的请求成功返回时，表示后台已发起挂载云盘的操作，可通过接口[DescribeDisks](/document/product/362/16315)来查询对应云盘的状态，如果云盘的状态由“ATTACHING”变为“ATTACHED”，则为挂载成功。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
 //  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
 //  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
@@ -288,6 +289,7 @@ func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisks
 // * 本接口为异步接口，当挂载云盘的请求成功返回时，表示后台已发起挂载云盘的操作，可通过接口[DescribeDisks](/document/product/362/16315)来查询对应云盘的状态，如果云盘的状态由“ATTACHING”变为“ATTACHED”，则为挂载成功。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
 //  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
 //  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"

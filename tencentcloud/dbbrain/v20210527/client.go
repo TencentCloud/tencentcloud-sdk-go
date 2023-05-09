@@ -2730,7 +2730,7 @@ func NewDescribeSlowLogsResponse() (response *DescribeSlowLogsResponse) {
 }
 
 // DescribeSlowLogs
-// 获取指定时间内某个sql模版的慢日志明细
+// 获取指定时间内某个sql模板的慢日志明细
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2751,7 +2751,7 @@ func (c *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (response *D
 }
 
 // DescribeSlowLogs
-// 获取指定时间内某个sql模版的慢日志明细
+// 获取指定时间内某个sql模板的慢日志明细
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

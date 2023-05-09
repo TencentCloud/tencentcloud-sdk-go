@@ -775,6 +775,54 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeInitNodeScriptsRequest() (request *DescribeInitNodeScriptsRequest) {
+    request = &DescribeInitNodeScriptsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "DescribeInitNodeScripts")
+    
+    
+    return
+}
+
+func NewDescribeInitNodeScriptsResponse() (response *DescribeInitNodeScriptsResponse) {
+    response = &DescribeInitNodeScriptsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInitNodeScripts
+// 本接口 (DescribeInitNodeScripts) 用于查询节点初始化脚本列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) DescribeInitNodeScripts(request *DescribeInitNodeScriptsRequest) (response *DescribeInitNodeScriptsResponse, err error) {
+    return c.DescribeInitNodeScriptsWithContext(context.Background(), request)
+}
+
+// DescribeInitNodeScripts
+// 本接口 (DescribeInitNodeScripts) 用于查询节点初始化脚本列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+func (c *Client) DescribeInitNodeScriptsWithContext(ctx context.Context, request *DescribeInitNodeScriptsRequest) (response *DescribeInitNodeScriptsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInitNodeScriptsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInitNodeScripts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInitNodeScriptsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNodesRequest() (request *DescribeNodesRequest) {
     request = &DescribeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

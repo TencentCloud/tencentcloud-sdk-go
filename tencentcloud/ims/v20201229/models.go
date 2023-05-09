@@ -425,6 +425,10 @@ type ObjectDetail struct {
 
 	// 该参数用于返回命中的实体二级标签。
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+
+	// 该参数用于返回命中的人脸id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectId *string `json:"ObjectId,omitempty" name:"ObjectId"`
 }
 
 type ObjectResult struct {

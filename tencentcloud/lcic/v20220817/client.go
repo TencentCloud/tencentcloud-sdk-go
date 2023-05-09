@@ -1648,7 +1648,7 @@ func NewDescribeDeveloperResponse() (response *DescribeDeveloperResponse) {
 }
 
 // DescribeDeveloper
-// 服务商信息获取
+// 开发商信息获取
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
@@ -1663,7 +1663,7 @@ func (c *Client) DescribeDeveloper(request *DescribeDeveloperRequest) (response 
 }
 
 // DescribeDeveloper
-// 服务商信息获取
+// 开发商信息获取
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"

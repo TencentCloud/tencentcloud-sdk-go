@@ -643,6 +643,76 @@ func (c *Client) CreateDiskBackupWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateDisksRequest() (request *CreateDisksRequest) {
+    request = &CreateDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CreateDisks")
+    
+    
+    return
+}
+
+func NewCreateDisksResponse() (response *CreateDisksResponse) {
+    response = &CreateDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDisks
+// 本接口(CreateDisks)用于创建一个或多个云硬盘。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEDISKSFAILED = "FailedOperation.CreateDisksFailed"
+//  INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = "InvalidParameterValue.DiskInstanceZoneNotMatch"
+//  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
+//  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+//  INVALIDPARAMETERVALUE_PLATFORMTYPENOTSUPPORTFILESYSTEM = "InvalidParameterValue.PlatformTypeNotSupportFileSystem"
+//  INVALIDPARAMETERVALUE_PLATFORMTYPENOTSUPPORTMOUNTPOINT = "InvalidParameterValue.PlatformTypeNotSupportMountPoint"
+//  LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = "LimitExceeded.AttachDataDiskQuotaLimitExceeded"
+//  LIMITEXCEEDED_DISKQUOTALIMITEXCEEDED = "LimitExceeded.DiskQuotaLimitExceeded"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = "UnsupportedOperation.TatAgentNotOnline"
+func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisksResponse, err error) {
+    return c.CreateDisksWithContext(context.Background(), request)
+}
+
+// CreateDisks
+// 本接口(CreateDisks)用于创建一个或多个云硬盘。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEDISKSFAILED = "FailedOperation.CreateDisksFailed"
+//  INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = "InvalidParameterValue.DiskInstanceZoneNotMatch"
+//  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
+//  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
+//  INVALIDPARAMETERVALUE_PLATFORMTYPENOTSUPPORTFILESYSTEM = "InvalidParameterValue.PlatformTypeNotSupportFileSystem"
+//  INVALIDPARAMETERVALUE_PLATFORMTYPENOTSUPPORTMOUNTPOINT = "InvalidParameterValue.PlatformTypeNotSupportMountPoint"
+//  LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = "LimitExceeded.AttachDataDiskQuotaLimitExceeded"
+//  LIMITEXCEEDED_DISKQUOTALIMITEXCEEDED = "LimitExceeded.DiskQuotaLimitExceeded"
+//  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = "UnsupportedOperation.TatAgentNotOnline"
+func (c *Client) CreateDisksWithContext(ctx context.Context, request *CreateDisksRequest) (response *CreateDisksResponse, err error) {
+    if request == nil {
+        request = NewCreateDisksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFirewallRulesRequest() (request *CreateFirewallRulesRequest) {
     request = &CreateFirewallRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1188,6 +1258,7 @@ func NewDeleteFirewallRulesResponse() (response *DeleteFirewallRulesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = "FailedOperation.FirewallRulesOperationFailed"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_FIREWALLRULESDUPLICATED = "InvalidParameter.FirewallRulesDuplicated"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
@@ -1226,6 +1297,7 @@ func (c *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = "FailedOperation.FirewallRulesOperationFailed"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_FIREWALLRULESDUPLICATED = "InvalidParameter.FirewallRulesDuplicated"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"

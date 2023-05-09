@@ -1107,6 +1107,7 @@ func NewGetFaceIdResultResponse() (response *GetFaceIdResultResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetFaceIdResult(request *GetFaceIdResultRequest) (response *GetFaceIdResultResponse, err error) {
     return c.GetFaceIdResultWithContext(context.Background(), request)
@@ -1120,6 +1121,7 @@ func (c *Client) GetFaceIdResult(request *GetFaceIdResultRequest) (response *Get
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) GetFaceIdResultWithContext(ctx context.Context, request *GetFaceIdResultRequest) (response *GetFaceIdResultResponse, err error) {
     if request == nil {
@@ -2225,6 +2227,7 @@ func NewParseNfcDataResponse() (response *ParseNfcDataResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) ParseNfcData(request *ParseNfcDataRequest) (response *ParseNfcDataResponse, err error) {
     return c.ParseNfcDataWithContext(context.Background(), request)
@@ -2236,6 +2239,7 @@ func (c *Client) ParseNfcData(request *ParseNfcDataRequest) (response *ParseNfcD
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.UnKnown"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 //  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) ParseNfcDataWithContext(ctx context.Context, request *ParseNfcDataRequest) (response *ParseNfcDataResponse, err error) {
     if request == nil {

@@ -1200,6 +1200,64 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInitNodeScriptsRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribeInitNodeScriptsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeInitNodeScriptsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInitNodeScriptsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInitNodeScriptsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInitNodeScriptsResponseParams struct {
+	// 节点初始化脚本列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitNodeScriptSet []*NodeScript `json:"InitNodeScriptSet,omitempty" name:"InitNodeScriptSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInitNodeScriptsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInitNodeScriptsResponseParams `json:"Response"`
+}
+
+func (r *DescribeInitNodeScriptsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInitNodeScriptsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNodesRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`

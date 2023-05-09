@@ -1421,6 +1421,7 @@ func NewAttachCcnInstancesResponse() (response *AttachCcnInstancesResponse) {
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CURRENTINSTANCEATTACHEDCCNINSTANCES = "LimitExceeded.CurrentInstanceAttachedCcnInstances"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_APPIDNOTFOUND = "UnsupportedOperation.AppIdNotFound"
@@ -1452,6 +1453,7 @@ func (c *Client) AttachCcnInstances(request *AttachCcnInstancesRequest) (respons
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CURRENTINSTANCEATTACHEDCCNINSTANCES = "LimitExceeded.CurrentInstanceAttachedCcnInstances"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_APPIDNOTFOUND = "UnsupportedOperation.AppIdNotFound"
@@ -2377,6 +2379,7 @@ func NewCreateBandwidthPackageResponse() (response *CreateBandwidthPackageRespon
 // 本接口 (CreateBandwidthPackage) 支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)和[IP带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
@@ -2399,6 +2402,7 @@ func (c *Client) CreateBandwidthPackage(request *CreateBandwidthPackageRequest) 
 // 本接口 (CreateBandwidthPackage) 支持创建[设备带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)和[IP带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"

@@ -2677,6 +2677,7 @@ func NewDeleteApplicationResponse() (response *DeleteApplicationResponse) {
 // 删除应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  INTERNALERROR_APPLICATIONREPODELETEPKG = "InternalError.ApplicationRepoDeletePkg"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"
@@ -2691,6 +2692,7 @@ func (c *Client) DeleteApplication(request *DeleteApplicationRequest) (response 
 // 删除应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  INTERNALERROR_APPLICATIONREPODELETEPKG = "InternalError.ApplicationRepoDeletePkg"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_REMOTESERVICECALLERROR = "InternalError.RemoteServiceCallError"

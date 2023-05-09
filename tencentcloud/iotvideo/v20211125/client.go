@@ -4012,6 +4012,7 @@ func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
     return c.ListFirmwaresWithContext(context.Background(), request)
 }
@@ -4023,6 +4024,7 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ListFirmwaresWithContext(ctx context.Context, request *ListFirmwaresRequest) (response *ListFirmwaresResponse, err error) {
     if request == nil {
         request = NewListFirmwaresRequest()

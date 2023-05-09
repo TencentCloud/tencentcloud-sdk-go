@@ -189,6 +189,9 @@ type CreateWorkspaceByTemplateRequestParams struct {
 
 	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 工作空间名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type CreateWorkspaceByTemplateRequest struct {
@@ -199,6 +202,9 @@ type CreateWorkspaceByTemplateRequest struct {
 
 	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 工作空间名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 func (r *CreateWorkspaceByTemplateRequest) ToJsonString() string {
@@ -215,6 +221,7 @@ func (r *CreateWorkspaceByTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CloudStudioSessionTeam")
 	delete(f, "TemplateId")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkspaceByTemplateRequest has unknown keys!", "")
 	}
@@ -1686,6 +1693,10 @@ type WorkspaceInfo struct {
 	// 工作空间标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpaceKey *string `json:"SpaceKey,omitempty" name:"SpaceKey"`
+
+	// 工作空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type WorkspaceInfoDTO struct {

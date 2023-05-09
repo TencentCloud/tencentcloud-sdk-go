@@ -90,6 +90,7 @@ import (
 	cmsv20190321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms/v20190321"
 	cpdpv20190820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp/v20190820"
 	crv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr/v20180321"
+	csipv20221121 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csip/v20221121"
 	cvmv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 	cwpv20180228 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp/v20180228"
 	cwsv20180312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws/v20180312"
@@ -1191,6 +1192,19 @@ func TestCrv20180321Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init cr_v20180321 client: %v", err)
+    }
+}
+
+func TestCsipv20221121Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := csipv20221121.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init csip_v20221121 client: %v", err)
     }
 }
 

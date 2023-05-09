@@ -1926,6 +1926,107 @@ func (r *CreateEnvironmentRoleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRabbitMQUserRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用户名，登录时使用
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 密码，登录时使用
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
+	// management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 该用户的最大连接数，不填写则不限制
+	MaxConnections *int64 `json:"MaxConnections,omitempty" name:"MaxConnections"`
+
+	// 该用户的最大channel数，不填写则不限制
+	MaxChannels *int64 `json:"MaxChannels,omitempty" name:"MaxChannels"`
+}
+
+type CreateRabbitMQUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用户名，登录时使用
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 密码，登录时使用
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
+	// management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 该用户的最大连接数，不填写则不限制
+	MaxConnections *int64 `json:"MaxConnections,omitempty" name:"MaxConnections"`
+
+	// 该用户的最大channel数，不填写则不限制
+	MaxChannels *int64 `json:"MaxChannels,omitempty" name:"MaxChannels"`
+}
+
+func (r *CreateRabbitMQUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRabbitMQUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "User")
+	delete(f, "Password")
+	delete(f, "Description")
+	delete(f, "Tags")
+	delete(f, "MaxConnections")
+	delete(f, "MaxChannels")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRabbitMQUserResponseParams struct {
+	// 用户名，登录时使用
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRabbitMQUserResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRabbitMQUserResponseParams `json:"Response"`
+}
+
+func (r *CreateRabbitMQUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRabbitMQUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateRabbitMQVipInstanceRequestParams struct {
 	// 可用区
 	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
@@ -2047,6 +2148,84 @@ func (r *CreateRabbitMQVipInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateRabbitMQVipInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRabbitMQVirtualHostRequestParams struct {
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// vhost名
+	VirtualHost *string `json:"VirtualHost,omitempty" name:"VirtualHost"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 消息轨迹开关,true打开,false关闭,默认关闭
+	TraceFlag *bool `json:"TraceFlag,omitempty" name:"TraceFlag"`
+}
+
+type CreateRabbitMQVirtualHostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// vhost名
+	VirtualHost *string `json:"VirtualHost,omitempty" name:"VirtualHost"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 消息轨迹开关,true打开,false关闭,默认关闭
+	TraceFlag *bool `json:"TraceFlag,omitempty" name:"TraceFlag"`
+}
+
+func (r *CreateRabbitMQVirtualHostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRabbitMQVirtualHostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "VirtualHost")
+	delete(f, "Description")
+	delete(f, "TraceFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQVirtualHostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRabbitMQVirtualHostResponseParams struct {
+	// vhost名
+	VirtualHost *string `json:"VirtualHost,omitempty" name:"VirtualHost"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRabbitMQVirtualHostResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRabbitMQVirtualHostResponseParams `json:"Response"`
+}
+
+func (r *CreateRabbitMQVirtualHostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRabbitMQVirtualHostResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

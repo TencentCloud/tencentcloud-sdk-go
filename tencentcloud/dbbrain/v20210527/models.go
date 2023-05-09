@@ -3323,7 +3323,7 @@ type DescribeSlowLogsRequestParams struct {
 	// 用户
 	User []*string `json:"User,omitempty" name:"User"`
 
-	// ip
+	// IP
 	Ip []*string `json:"Ip,omitempty" name:"Ip"`
 
 	// 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
@@ -3363,7 +3363,7 @@ type DescribeSlowLogsRequest struct {
 	// 用户
 	User []*string `json:"User,omitempty" name:"User"`
 
-	// ip
+	// IP
 	Ip []*string `json:"Ip,omitempty" name:"Ip"`
 
 	// 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素

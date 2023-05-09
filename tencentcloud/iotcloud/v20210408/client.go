@@ -3393,6 +3393,7 @@ func NewSetProductsForbiddenStatusResponse() (response *SetProductsForbiddenStat
 // 批量设置产品禁用状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTISOLATED = "FailedOperation.AccountIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
@@ -3404,6 +3405,7 @@ func (c *Client) SetProductsForbiddenStatus(request *SetProductsForbiddenStatusR
 // 批量设置产品禁用状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTISOLATED = "FailedOperation.AccountIsolated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"

@@ -1,3 +1,206 @@
+# Release v1.0.652
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+
+### 第 4 次发布
+
+发布时间：2023-05-09 01:09:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWorkspaceByTemplate](https://cloud.tencent.com/document/api/1039/80552)
+
+	* 新增入参：Name
+
+
+修改数据结构：
+
+* [WorkspaceInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfo)
+
+	* 新增成员：Name
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 108 次发布
+
+发布时间：2023-05-09 01:11:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DisasterRecoverGroup](https://cloud.tencent.com/document/api/213/15753#DisasterRecoverGroup)
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTime
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 83 次发布
+
+发布时间：2023-05-09 01:12:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAlarmIncidentNodes](https://cloud.tencent.com/document/api/296/89946)
+
+	* 新增入参：TableId
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 50 次发布
+
+发布时间：2023-05-09 01:13:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetAddr](https://cloud.tencent.com/document/api/1003/48097#NetAddr)
+
+	* 新增成员：InstanceGroupId
+
+
+
+
+## 图片内容安全(ims) 版本：2020-12-29
+
+### 第 6 次发布
+
+发布时间：2023-05-09 01:22:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ObjectDetail](https://cloud.tencent.com/document/api/1125/53274#ObjectDetail)
+
+	* 新增成员：ObjectId
+
+
+
+
+## 图片内容安全(ims) 版本：2020-07-13
+
+### 第 6 次发布
+
+发布时间：2023-05-09 01:22:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImageModeration](https://cloud.tencent.com/document/api/1125/49656)
+
+	* 新增出参：RecognitionResults
+
+
+新增数据结构：
+
+* [RecognitionResult](https://cloud.tencent.com/document/api/1125/49657#RecognitionResult)
+* [RecognitionTag](https://cloud.tencent.com/document/api/1125/49657#RecognitionTag)
+
+修改数据结构：
+
+* [ObjectDetail](https://cloud.tencent.com/document/api/1125/49657#ObjectDetail)
+
+	* 新增成员：GroupId, ObjectId
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 47 次发布
+
+发布时间：2023-05-09 01:27:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDisks](https://cloud.tencent.com/document/api/1207/90853)
+
+新增数据结构：
+
+* [AutoMountConfiguration](https://cloud.tencent.com/document/api/1207/47576#AutoMountConfiguration)
+
+修改数据结构：
+
+* [PolicyDetail](https://cloud.tencent.com/document/api/1207/47576#PolicyDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>UserDiscount, CommonDiscount, FinalDiscount
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 56 次发布
+
+发布时间：2023-05-09 01:43:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRabbitMQUser](https://cloud.tencent.com/document/api/1179/90855)
+* [CreateRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/90854)
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 3 次发布
+
+发布时间：2023-05-09 01:46:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInitNodeScripts](https://cloud.tencent.com/document/api/1527/90856)
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
 # Release v1.0.651
 
 ## 语音识别(asr) 版本：2019-06-14

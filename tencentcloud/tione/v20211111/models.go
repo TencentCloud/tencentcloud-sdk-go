@@ -7366,7 +7366,7 @@ type TrainingTaskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 计费金额信息，eg：2.00元/小时 (for后付费)
+	// 计费金额信息，eg：2.00元/小时 (按量计费)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
 
@@ -7450,7 +7450,7 @@ type TrainingTaskSetItem struct {
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 计费金额信息，eg：2.00元/小时 (for后付费)
+	// 计费金额信息，eg：2.00元/小时 (按量计费)
 	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
 
 	// 预付费专用资源组名称

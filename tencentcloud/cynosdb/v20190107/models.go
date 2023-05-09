@@ -6545,6 +6545,10 @@ type NetAddr struct {
 	// 外网状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanStatus *string `json:"WanStatus,omitempty" name:"WanStatus"`
+
+	// 实例组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
 }
 
 type NewAccount struct {

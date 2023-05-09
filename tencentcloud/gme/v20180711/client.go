@@ -279,9 +279,7 @@ func NewCreateScanUserResponse() (response *CreateScanUserResponse) {
 // 新增自定义送检用户
 //
 // 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
-//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
     return c.CreateScanUserWithContext(context.Background(), request)
 }
@@ -290,9 +288,7 @@ func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *Creat
 // 新增自定义送检用户
 //
 // 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNSUPPORTEDOPERATION_PTTSWITCHOFF = "UnsupportedOperation.PTTSwitchOff"
-//  UNSUPPORTEDOPERATION_SERVICENOTOPENED = "UnsupportedOperation.ServiceNotOpened"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CreateScanUserWithContext(ctx context.Context, request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
     if request == nil {
         request = NewCreateScanUserRequest()

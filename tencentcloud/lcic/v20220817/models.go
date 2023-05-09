@@ -1064,7 +1064,7 @@ type CreateRoomRequestParams struct {
 	// rtc人数。
 	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
 
-	// 观看类型。0未知，1互动，2cdn或直播。 目前仅支持互动类型
+	// 观看类型，互动直播（默认）。
 	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
 
 	// 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
@@ -1073,7 +1073,9 @@ type CreateRoomRequestParams struct {
 	// 房间绑定的群组ID,非空时限制组成员进入
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 打开学生麦克风/摄像头的授权开关
+	// 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
+	// 0 不允许直接控制（需同意，默认值）
+	// 1 允许直接控制（无需同意）
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 }
 
@@ -1136,7 +1138,7 @@ type CreateRoomRequest struct {
 	// rtc人数。
 	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
 
-	// 观看类型。0未知，1互动，2cdn或直播。 目前仅支持互动类型
+	// 观看类型，互动直播（默认）。
 	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
 
 	// 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
@@ -1145,7 +1147,9 @@ type CreateRoomRequest struct {
 	// 房间绑定的群组ID,非空时限制组成员进入
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 打开学生麦克风/摄像头的授权开关
+	// 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
+	// 0 不允许直接控制（需同意，默认值）
+	// 1 允许直接控制（无需同意）
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 }
 
@@ -1941,7 +1945,7 @@ func (r *DescribeDeveloperRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeveloperResponseParams struct {
-	// 服务商ID
+	// 开发商ID
 	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

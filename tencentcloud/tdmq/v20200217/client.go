@@ -963,6 +963,58 @@ func (c *Client) CreateEnvironmentRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateRabbitMQUserRequest() (request *CreateRabbitMQUserRequest) {
+    request = &CreateRabbitMQUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRabbitMQUser")
+    
+    
+    return
+}
+
+func NewCreateRabbitMQUserResponse() (response *CreateRabbitMQUserResponse) {
+    response = &CreateRabbitMQUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRabbitMQUser
+// 创建RabbitMQ的用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateRabbitMQUser(request *CreateRabbitMQUserRequest) (response *CreateRabbitMQUserResponse, err error) {
+    return c.CreateRabbitMQUserWithContext(context.Background(), request)
+}
+
+// CreateRabbitMQUser
+// 创建RabbitMQ的用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateRabbitMQUserWithContext(ctx context.Context, request *CreateRabbitMQUserRequest) (response *CreateRabbitMQUserResponse, err error) {
+    if request == nil {
+        request = NewCreateRabbitMQUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRabbitMQUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRabbitMQUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRabbitMQVipInstanceRequest() (request *CreateRabbitMQVipInstanceRequest) {
     request = &CreateRabbitMQVipInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1011,6 +1063,58 @@ func (c *Client) CreateRabbitMQVipInstanceWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewCreateRabbitMQVipInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRabbitMQVirtualHostRequest() (request *CreateRabbitMQVirtualHostRequest) {
+    request = &CreateRabbitMQVirtualHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRabbitMQVirtualHost")
+    
+    
+    return
+}
+
+func NewCreateRabbitMQVirtualHostResponse() (response *CreateRabbitMQVirtualHostResponse) {
+    response = &CreateRabbitMQVirtualHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRabbitMQVirtualHost
+// 创建RabbitMQ的vhost
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateRabbitMQVirtualHost(request *CreateRabbitMQVirtualHostRequest) (response *CreateRabbitMQVirtualHostResponse, err error) {
+    return c.CreateRabbitMQVirtualHostWithContext(context.Background(), request)
+}
+
+// CreateRabbitMQVirtualHost
+// 创建RabbitMQ的vhost
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateRabbitMQVirtualHostWithContext(ctx context.Context, request *CreateRabbitMQVirtualHostRequest) (response *CreateRabbitMQVirtualHostResponse, err error) {
+    if request == nil {
+        request = NewCreateRabbitMQVirtualHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRabbitMQVirtualHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRabbitMQVirtualHostResponse()
     err = c.Send(request, response)
     return
 }

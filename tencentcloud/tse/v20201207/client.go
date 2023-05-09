@@ -498,6 +498,7 @@ func NewDescribeZookeeperReplicasResponse() (response *DescribeZookeeperReplicas
 //  INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeZookeeperReplicas(request *DescribeZookeeperReplicasRequest) (response *DescribeZookeeperReplicasResponse, err error) {
@@ -511,6 +512,7 @@ func (c *Client) DescribeZookeeperReplicas(request *DescribeZookeeperReplicasReq
 //  INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeZookeeperReplicasWithContext(ctx context.Context, request *DescribeZookeeperReplicasRequest) (response *DescribeZookeeperReplicasResponse, err error) {
@@ -554,6 +556,7 @@ func NewDescribeZookeeperServerInterfacesResponse() (response *DescribeZookeeper
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeZookeeperServerInterfaces(request *DescribeZookeeperServerInterfacesRequest) (response *DescribeZookeeperServerInterfacesResponse, err error) {
     return c.DescribeZookeeperServerInterfacesWithContext(context.Background(), request)
 }
@@ -565,6 +568,7 @@ func (c *Client) DescribeZookeeperServerInterfaces(request *DescribeZookeeperSer
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeZookeeperServerInterfacesWithContext(ctx context.Context, request *DescribeZookeeperServerInterfacesRequest) (response *DescribeZookeeperServerInterfacesResponse, err error) {
     if request == nil {
         request = NewDescribeZookeeperServerInterfacesRequest()

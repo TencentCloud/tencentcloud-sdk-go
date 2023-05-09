@@ -5087,6 +5087,9 @@ type DescribeAlarmIncidentNodesRequestParams struct {
 
 	// 告警时间
 	AlarmTime *int64 `json:"AlarmTime,omitempty" name:"AlarmTime"`
+
+	// 告警来源表ID
+	TableId *int64 `json:"TableId,omitempty" name:"TableId"`
 }
 
 type DescribeAlarmIncidentNodesRequest struct {
@@ -5100,6 +5103,9 @@ type DescribeAlarmIncidentNodesRequest struct {
 
 	// 告警时间
 	AlarmTime *int64 `json:"AlarmTime,omitempty" name:"AlarmTime"`
+
+	// 告警来源表ID
+	TableId *int64 `json:"TableId,omitempty" name:"TableId"`
 }
 
 func (r *DescribeAlarmIncidentNodesRequest) ToJsonString() string {
@@ -5117,6 +5123,7 @@ func (r *DescribeAlarmIncidentNodesRequest) FromJsonString(s string) error {
 	delete(f, "Uuid")
 	delete(f, "AlarmVid")
 	delete(f, "AlarmTime")
+	delete(f, "TableId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmIncidentNodesRequest has unknown keys!", "")
 	}
