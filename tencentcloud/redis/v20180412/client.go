@@ -2276,7 +2276,7 @@ func NewDescribeInstanceNodeInfoResponse() (response *DescribeInstanceNodeInfoRe
 }
 
 // DescribeInstanceNodeInfo
-// 查询实例节点信息
+// 本接口（DescribeInstanceNodeInfo）用于查询实例节点信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2288,7 +2288,7 @@ func (c *Client) DescribeInstanceNodeInfo(request *DescribeInstanceNodeInfoReque
 }
 
 // DescribeInstanceNodeInfo
-// 查询实例节点信息
+// 本接口（DescribeInstanceNodeInfo）用于查询实例节点信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

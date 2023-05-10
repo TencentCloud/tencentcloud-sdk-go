@@ -7798,6 +7798,90 @@ func (r *DescribeLiveWatermarksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLiveXP2PDetailInfoListRequestParams struct {
+	// utc分钟粒度查询时间，查询某一分钟的用量数据，格式为：yyyy-mm-ddTHH:MM:00Z，参考https://cloud.tencent.com/document/product/266/11732#I，
+	// 例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+	// 
+	// 支持最近六个月的查询。
+	QueryTime *string `json:"QueryTime,omitempty" name:"QueryTime"`
+
+	// 类型数组，分直播live和点播vod，不传默认查全部。
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 查询流数组，不传默认查所有流。
+	StreamNames []*string `json:"StreamNames,omitempty" name:"StreamNames"`
+
+	// 查询维度，不传该参数则默认查询流维度的数据，传递该参数则只查对应维度的数据，和返回值的字段相关，目前支持AppId维度查询。
+	Dimension []*string `json:"Dimension,omitempty" name:"Dimension"`
+}
+
+type DescribeLiveXP2PDetailInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// utc分钟粒度查询时间，查询某一分钟的用量数据，格式为：yyyy-mm-ddTHH:MM:00Z，参考https://cloud.tencent.com/document/product/266/11732#I，
+	// 例如：北京时间2019-01-08 10:00:00，对应utc时间为：2019-01-08T10:00:00+08:00。
+	// 
+	// 支持最近六个月的查询。
+	QueryTime *string `json:"QueryTime,omitempty" name:"QueryTime"`
+
+	// 类型数组，分直播live和点播vod，不传默认查全部。
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 查询流数组，不传默认查所有流。
+	StreamNames []*string `json:"StreamNames,omitempty" name:"StreamNames"`
+
+	// 查询维度，不传该参数则默认查询流维度的数据，传递该参数则只查对应维度的数据，和返回值的字段相关，目前支持AppId维度查询。
+	Dimension []*string `json:"Dimension,omitempty" name:"Dimension"`
+}
+
+func (r *DescribeLiveXP2PDetailInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveXP2PDetailInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "QueryTime")
+	delete(f, "Type")
+	delete(f, "StreamNames")
+	delete(f, "Dimension")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveXP2PDetailInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveXP2PDetailInfoListResponseParams struct {
+	// P2P流统计信息。
+	DataInfoList []*XP2PDetailInfo `json:"DataInfoList,omitempty" name:"DataInfoList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveXP2PDetailInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveXP2PDetailInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveXP2PDetailInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveXP2PDetailInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLogDownloadListRequestParams struct {
 	// 开始时间，北京时间。
 	// 格式：yyyy-mm-dd HH:MM:SS。
@@ -13623,4 +13707,42 @@ type WatermarkInfo struct {
 
 	// 水印高。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
+type XP2PDetailInfo struct {
+	// CDN流量。
+	CdnBytes *int64 `json:"CdnBytes,omitempty" name:"CdnBytes"`
+
+	// P2P流量。
+	P2pBytes *int64 `json:"P2pBytes,omitempty" name:"P2pBytes"`
+
+	// 卡播人数。
+	StuckPeople *int64 `json:"StuckPeople,omitempty" name:"StuckPeople"`
+
+	// 卡播次数。
+	StuckTimes *int64 `json:"StuckTimes,omitempty" name:"StuckTimes"`
+
+	// 在线人数。
+	OnlinePeople *int64 `json:"OnlinePeople,omitempty" name:"OnlinePeople"`
+
+	// 起播请求次数
+	Request *int64 `json:"Request,omitempty" name:"Request"`
+
+	// 起播成功次数
+	RequestSuccess *int64 `json:"RequestSuccess,omitempty" name:"RequestSuccess"`
+
+	// 时间，一分钟粒度，utc格式：yyyy-mm-ddTHH:MM:SSZ，参考https://cloud.tencent.com/document/product/266/11732#I。。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 类型，分live和vod两种。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 流ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// AppId。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
 }

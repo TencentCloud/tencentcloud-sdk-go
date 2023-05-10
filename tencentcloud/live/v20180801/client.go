@@ -6857,6 +6857,68 @@ func (c *Client) DescribeLiveWatermarksWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeLiveXP2PDetailInfoListRequest() (request *DescribeLiveXP2PDetailInfoListRequest) {
+    request = &DescribeLiveXP2PDetailInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveXP2PDetailInfoList")
+    
+    
+    return
+}
+
+func NewDescribeLiveXP2PDetailInfoListResponse() (response *DescribeLiveXP2PDetailInfoListResponse) {
+    response = &DescribeLiveXP2PDetailInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLiveXP2PDetailInfoList
+// P2P流数据查询接口，用来获取流量、卡播和起播信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveXP2PDetailInfoList(request *DescribeLiveXP2PDetailInfoListRequest) (response *DescribeLiveXP2PDetailInfoListResponse, err error) {
+    return c.DescribeLiveXP2PDetailInfoListWithContext(context.Background(), request)
+}
+
+// DescribeLiveXP2PDetailInfoList
+// P2P流数据查询接口，用来获取流量、卡播和起播信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveXP2PDetailInfoListWithContext(ctx context.Context, request *DescribeLiveXP2PDetailInfoListRequest) (response *DescribeLiveXP2PDetailInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveXP2PDetailInfoListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveXP2PDetailInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveXP2PDetailInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogDownloadListRequest() (request *DescribeLogDownloadListRequest) {
     request = &DescribeLogDownloadListRequest{
         BaseRequest: &tchttp.BaseRequest{},

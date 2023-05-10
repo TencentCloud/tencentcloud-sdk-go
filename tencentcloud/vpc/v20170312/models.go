@@ -6932,7 +6932,7 @@ func (r *DeleteDirectConnectGatewayResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteFlowLogRequestParams struct {
-	// 流日志唯一ID
+	// 流日志唯一ID。
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
 
 	// 私用网络ID或者统一ID，建议使用统一ID，删除云联网流日志时，可不填，其他流日志类型必填。
@@ -6942,7 +6942,7 @@ type DeleteFlowLogRequestParams struct {
 type DeleteFlowLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 流日志唯一ID
+	// 流日志唯一ID。
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
 
 	// 私用网络ID或者统一ID，建议使用统一ID，删除云联网流日志时，可不填，其他流日志类型必填。
@@ -10559,20 +10559,20 @@ func (r *DescribeDirectConnectGatewaysResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowLogRequestParams struct {
-	// 私用网络ID或者统一ID，建议使用统一ID
+	// 私用网络ID或者统一ID，建议使用统一ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 流日志唯一ID
+	// 流日志唯一ID。
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
 }
 
 type DescribeFlowLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 私用网络ID或者统一ID，建议使用统一ID
+	// 私用网络ID或者统一ID，建议使用统一ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 流日志唯一ID
+	// 流日志唯一ID。
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
 }
 
@@ -10598,7 +10598,7 @@ func (r *DescribeFlowLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowLogResponseParams struct {
-	// 流日志信息
+	// 流日志信息。
 	FlowLog []*FlowLog `json:"FlowLog,omitempty" name:"FlowLog"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -17124,7 +17124,7 @@ type Filter struct {
 	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+	// 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。当值类型为布尔类型时，可直接取值为字符串"TRUE"或 "FALSE"。
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
@@ -19232,32 +19232,32 @@ func (r *ModifyDirectConnectGatewayAttributeResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type ModifyFlowLogAttributeRequestParams struct {
-	// 流日志唯一ID
+	// 流日志唯一ID。
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
 
 	// 私用网络ID或者统一ID，建议使用统一ID，修改云联网流日志属性时可不填，其他流日志类型必填。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 流日志实例名字
+	// 流日志实例名字。
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志实例描述
+	// 流日志实例描述。
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
 }
 
 type ModifyFlowLogAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 流日志唯一ID
+	// 流日志唯一ID。
 	FlowLogId *string `json:"FlowLogId,omitempty" name:"FlowLogId"`
 
 	// 私用网络ID或者统一ID，建议使用统一ID，修改云联网流日志属性时可不填，其他流日志类型必填。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 流日志实例名字
+	// 流日志实例名字。
 	FlowLogName *string `json:"FlowLogName,omitempty" name:"FlowLogName"`
 
-	// 流日志实例描述
+	// 流日志实例描述。
 	FlowLogDescription *string `json:"FlowLogDescription,omitempty" name:"FlowLogDescription"`
 }
 

@@ -66,11 +66,21 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 // ChannelBatchCancelFlows
 // 指定需要批量撤销的签署流程Id，批量撤销合同
 //
-// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
 //
-// 注意:
+// 
 //
-// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+// **满足撤销条件的合同会发起异步撤销流程，不满足撤销条件的合同返回失败原因。**
+//
+// 
+//
+// **合同撤销成功后，会通过合同状态为 CANCEL 的回调消息通知调用方 [具体可参考回调消息](https://qian.tencent.com/developers/scenes/partner/callback_data_types#-%E5%90%88%E5%90%8C%E7%8A%B6%E6%80%81%E9%80%9A%E7%9F%A5---flowstatuschange)**
+//
+// 
+//
+// **注意:
+//
+// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人**
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -90,11 +100,21 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 // ChannelBatchCancelFlows
 // 指定需要批量撤销的签署流程Id，批量撤销合同
 //
-// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
 //
-// 注意:
+// 
 //
-// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+// **满足撤销条件的合同会发起异步撤销流程，不满足撤销条件的合同返回失败原因。**
+//
+// 
+//
+// **合同撤销成功后，会通过合同状态为 CANCEL 的回调消息通知调用方 [具体可参考回调消息](https://qian.tencent.com/developers/scenes/partner/callback_data_types#-%E5%90%88%E5%90%8C%E7%8A%B6%E6%80%81%E9%80%9A%E7%9F%A5---flowstatuschange)**
+//
+// 
+//
+// **注意:
+//
+// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人**
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

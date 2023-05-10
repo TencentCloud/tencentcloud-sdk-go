@@ -1,3 +1,210 @@
+# Release v1.0.653
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 52 次发布
+
+发布时间：2023-05-10 01:06:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSafeAuthFlagColl](https://cloud.tencent.com/document/api/598/48602)
+
+	* 新增出参：PromptTrust
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 45 次发布
+
+发布时间：2023-05-10 01:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateShipper](https://cloud.tencent.com/document/api/614/58747)
+
+	* 新增入参：StartTime, EndTime
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 51 次发布
+
+发布时间：2023-05-10 01:18:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [OpenReadOnlyInstanceExclusiveAccess](https://cloud.tencent.com/document/api/1003/90902)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 48 次发布
+
+发布时间：2023-05-10 01:33:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [IsolateDisks](https://cloud.tencent.com/document/api/1207/90904)
+* [RenewDisks](https://cloud.tencent.com/document/api/1207/90903)
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 100 次发布
+
+发布时间：2023-05-10 01:34:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLiveXP2PDetailInfoList](https://cloud.tencent.com/document/api/267/90905)
+
+新增数据结构：
+
+* [XP2PDetailInfo](https://cloud.tencent.com/document/api/267/20474#XP2PDetailInfo)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 31 次发布
+
+发布时间：2023-05-10 01:38:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CopyJobItem](https://cloud.tencent.com/document/api/849/52010#CopyJobItem)
+
+	* 新增成员：SourceId, TargetClusterId, SourceName, TargetName, TargetFolderId, JobType
+
+* [CopyJobResult](https://cloud.tencent.com/document/api/849/52010#CopyJobResult)
+
+	* 新增成员：JobId, JobName, TargetJobName, TargetJobId, Message, Result, ClusterName, ClusterId, JobType
+
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 2 次发布
+
+发布时间：2023-05-10 01:39:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateEnvironment](https://cloud.tencent.com/document/api/1643/90909)
+* [DeleteEnvironment](https://cloud.tencent.com/document/api/1643/90908)
+* [DescribeEnvironments](https://cloud.tencent.com/document/api/1643/90907)
+
+新增数据结构：
+
+* [CVMOption](https://cloud.tencent.com/document/api/1643/89100#CVMOption)
+* [ClusterOption](https://cloud.tencent.com/document/api/1643/89100#ClusterOption)
+* [DatabaseOption](https://cloud.tencent.com/document/api/1643/89100#DatabaseOption)
+* [Environment](https://cloud.tencent.com/document/api/1643/89100#Environment)
+* [EnvironmentConfig](https://cloud.tencent.com/document/api/1643/89100#EnvironmentConfig)
+* [ResourceIds](https://cloud.tencent.com/document/api/1643/89100#ResourceIds)
+* [StorageOption](https://cloud.tencent.com/document/api/1643/89100#StorageOption)
+* [VPCOption](https://cloud.tencent.com/document/api/1643/89100#VPCOption)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 149 次发布
+
+发布时间：2023-05-10 01:54:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EdgeCluster](https://cloud.tencent.com/document/api/457/31866#EdgeCluster)
+
+	* 新增成员：TagSpecification
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 152 次发布
+
+发布时间：2023-05-10 01:59:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HeadTailTemplate](https://cloud.tencent.com/document/api/266/31773#HeadTailTemplate)
+
+	* 新增成员：CreateTime, UpdateTime
+
+* [MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskAdaptiveDynamicStreamingResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskAnimatedGraphicResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskAnimatedGraphicResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskCoverBySnapshotResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskCoverBySnapshotResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskImageSpriteResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskImageSpriteResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskSampleSnapshotResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskSampleSnapshotResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskSnapshotByTimeOffsetResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskSnapshotByTimeOffsetResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+
+
+
 # Release v1.0.652
 
 ## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24

@@ -83,8 +83,8 @@ const (
 	// 变更资源属性失败，请稍后重新操作。
 	FAILEDOPERATION_MODIFYRESOURCESATTRIBUTEFAILED = "FailedOperation.ModifyResourcesAttributeFailed"
 
-	// 续费实例失败。
-	FAILEDOPERATION_RENEWINSTANCESFAILED = "FailedOperation.RenewInstancesFailed"
+	// 续费资源失败。
+	FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
 
 	// 请求错误。
 	FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
@@ -266,6 +266,9 @@ const (
 	// 控制台显示类型不合法。
 	INVALIDPARAMETERVALUE_INVALIDCONSOLEDISPLAYTYPES = "InvalidParameterValue.InvalidConsoleDisplayTypes"
 
+	// 当前实例到期时间不能早于云硬盘到期时间。
+	INVALIDPARAMETERVALUE_INVALIDCURINSTANCEDEADLINE = "InvalidParameterValue.InvalidCurInstanceDeadline"
+
 	// 参数值非法，磁盘 ID 格式非法。
 	INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 
@@ -385,6 +388,9 @@ const (
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
+
+	// 必须传入参数Period或CurInstanceDeadline。
+	MISSINGPARAMETER_MISSINGPARAMETERPERIODCURINSTANCEDEADLINE = "MissingParameter.MissingParameterPeriodCurInstanceDeadline"
 
 	// 该实例不支持升级套餐操作。
 	OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = "OperationDenied.BundleNotSupportModify"

@@ -11876,6 +11876,10 @@ type EdgeCluster struct {
 	// 边缘集群组件的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EdgeVersion *string `json:"EdgeVersion,omitempty" name:"EdgeVersion"`
+
+	// 集群绑定的云标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 type EdgeClusterAdvancedSettings struct {

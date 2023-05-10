@@ -4355,6 +4355,64 @@ func (c *Client) OpenAuditServiceWithContext(ctx context.Context, request *OpenA
     return
 }
 
+func NewOpenReadOnlyInstanceExclusiveAccessRequest() (request *OpenReadOnlyInstanceExclusiveAccessRequest) {
+    request = &OpenReadOnlyInstanceExclusiveAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "OpenReadOnlyInstanceExclusiveAccess")
+    
+    
+    return
+}
+
+func NewOpenReadOnlyInstanceExclusiveAccessResponse() (response *OpenReadOnlyInstanceExclusiveAccessResponse) {
+    response = &OpenReadOnlyInstanceExclusiveAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// OpenReadOnlyInstanceExclusiveAccess
+// 开通只读实例独有访问接入组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) OpenReadOnlyInstanceExclusiveAccess(request *OpenReadOnlyInstanceExclusiveAccessRequest) (response *OpenReadOnlyInstanceExclusiveAccessResponse, err error) {
+    return c.OpenReadOnlyInstanceExclusiveAccessWithContext(context.Background(), request)
+}
+
+// OpenReadOnlyInstanceExclusiveAccess
+// 开通只读实例独有访问接入组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) OpenReadOnlyInstanceExclusiveAccessWithContext(ctx context.Context, request *OpenReadOnlyInstanceExclusiveAccessRequest) (response *OpenReadOnlyInstanceExclusiveAccessResponse, err error) {
+    if request == nil {
+        request = NewOpenReadOnlyInstanceExclusiveAccessRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenReadOnlyInstanceExclusiveAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenReadOnlyInstanceExclusiveAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPauseServerlessRequest() (request *PauseServerlessRequest) {
     request = &PauseServerlessRequest{
         BaseRequest: &tchttp.BaseRequest{},

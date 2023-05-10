@@ -4402,7 +4402,7 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 }
 
 // RecognizeGeneralInvoice
-// 本接口支持 PDF多页、一页中单张、多张、类型票据的混合识别，同时支持单选识别某类票据，已支持票种包括：增值税发票（专票、普票、卷票、区块链发票、通行费发票）、全电发票（专票、普票）、非税发票（通用票据、统一缴纳书）、定额发票、通用机打发票、购车发票（机动车销售发票、二手车发票）、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持非上述类型的其他发票的智能识别。
+// 本接口支持 PDF多页（最多30页）、一页中单张、多张、类型票据的混合识别，同时支持单选识别某类票据，已支持票种包括：增值税发票（专票、普票、卷票、区块链发票、通行费发票）、全电发票（专票、普票）、非税发票（通用票据、统一缴纳书）、定额发票、通用机打发票、购车发票（机动车销售发票、二手车发票）、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持非上述类型的其他发票的智能识别。
 //
 // 
 //
@@ -4412,7 +4412,7 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 // 
 //
-// 支持的细项目子票种SubType、子票种中文TypeDescription 返回说明如下列表：
+// 支持返回的细项目子票种SubType、子票种中文TypeDescription、以及对应所属大类票种Type 的说明如下列表：
 //
 // <table style="width:715px">
 //
@@ -4422,7 +4422,9 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <th style="width:200px">SubType 子票种英文</th>
 //
-//           <th >TypeDescription子票种中文</th>
+//           <th style="width:200px">TypeDescription子票种中文</th>
+//
+//           <th >Type 所属大类票种</th>
 //
 //         </tr>
 //
@@ -4436,6 +4438,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 增值税专用发票 </td>
 //
+//           <td> 3 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4443,6 +4447,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> VatCommonInvoice</td>
 //
 //           <td> 增值税普通发票 </td>
+//
+//           <td> 3 </td>
 //
 //         </tr>
 //
@@ -4452,6 +4458,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 增值税电子普通发票 </td>
 //
+//           <td> 3 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4459,6 +4467,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> VatElectronicSpecialInvoice </td>
 //
 //           <td> 增值税电子专用发票 </td>
+//
+//           <td> 3 </td>
 //
 //         </tr>
 //
@@ -4468,6 +4478,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 区块链电子发票 </td>
 //
+//           <td> 3 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4475,6 +4487,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> VatElectronicSpecialInvoiceFull</td>
 //
 //           <td> 增值税电子普通发票(通行费)</td>
+//
+//           <td> 3 </td>
 //
 //         </tr>
 //
@@ -4484,6 +4498,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 电子发票(专用发票)</td>
 //
+//           <td> 16 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4491,6 +4507,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> VatElectronicSpecialInvoiceFull</td>
 //
 //           <td> 电子发票(普通发票) </td>
+//
+//           <td> 16 </td>
 //
 //         </tr>
 //
@@ -4500,6 +4518,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 机动车销售统一发票 </td>
 //
+//           <td> 12 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4507,6 +4527,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> UsedCarPurchaseInvoice </td>
 //
 //           <td> 二手车销售统一发票 </td>
+//
+//           <td> 12 </td>
 //
 //         </tr>
 //
@@ -4516,6 +4538,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 增值税普通发票(卷票) </td>
 //
+//           <td> 11 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4523,6 +4547,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> TaxiTicket </td>
 //
 //           <td> 出租车发票 </td>
+//
+//           <td> 0 </td>
 //
 //         </tr>
 //
@@ -4532,6 +4558,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 定额发票 </td>
 //
+//           <td> 1 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4539,6 +4567,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> TrainTicket </td>
 //
 //           <td> 火车票 </td>
+//
+//           <td> 2 </td>
 //
 //         </tr>
 //
@@ -4548,6 +4578,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 机票行程单 </td>
 //
+//           <td> 5 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4555,6 +4587,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> MachinePrintedInvoice </td>
 //
 //           <td> 通用机打发票 </td>
+//
+//           <td> 8 </td>
 //
 //         </tr>
 //
@@ -4564,6 +4598,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 汽车票 </td>
 //
+//           <td> 9 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4571,6 +4607,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> ShippingInvoice </td>
 //
 //           <td> 轮船票 </td>
+//
+//           <td> 10 </td>
 //
 //         </tr>
 //
@@ -4580,6 +4618,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 非税收入通用票据 </td>
 //
+//           <td> 15 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4587,6 +4627,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> NonTaxIncomeElectronicBill </td>
 //
 //           <td> 非税收入一般缴款书(电子) </td>
+//
+//           <td> 15 </td>
 //
 //         </tr>
 //
@@ -4596,6 +4638,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //           <td> 过路过桥费发票 </td>
 //
+//           <td> 13 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4603,6 +4647,8 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //           <td> OtherInvoice </td>
 //
 //           <td> 其他发票 </td>
+//
+//           <td> -1 </td>
 //
 //         </tr>
 //
@@ -4625,7 +4671,7 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 }
 
 // RecognizeGeneralInvoice
-// 本接口支持 PDF多页、一页中单张、多张、类型票据的混合识别，同时支持单选识别某类票据，已支持票种包括：增值税发票（专票、普票、卷票、区块链发票、通行费发票）、全电发票（专票、普票）、非税发票（通用票据、统一缴纳书）、定额发票、通用机打发票、购车发票（机动车销售发票、二手车发票）、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持非上述类型的其他发票的智能识别。
+// 本接口支持 PDF多页（最多30页）、一页中单张、多张、类型票据的混合识别，同时支持单选识别某类票据，已支持票种包括：增值税发票（专票、普票、卷票、区块链发票、通行费发票）、全电发票（专票、普票）、非税发票（通用票据、统一缴纳书）、定额发票、通用机打发票、购车发票（机动车销售发票、二手车发票）、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持非上述类型的其他发票的智能识别。
 //
 // 
 //
@@ -4635,7 +4681,7 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 // 
 //
-// 支持的细项目子票种SubType、子票种中文TypeDescription 返回说明如下列表：
+// 支持返回的细项目子票种SubType、子票种中文TypeDescription、以及对应所属大类票种Type 的说明如下列表：
 //
 // <table style="width:715px">
 //
@@ -4645,7 +4691,9 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <th style="width:200px">SubType 子票种英文</th>
 //
-//           <th >TypeDescription子票种中文</th>
+//           <th style="width:200px">TypeDescription子票种中文</th>
+//
+//           <th >Type 所属大类票种</th>
 //
 //         </tr>
 //
@@ -4659,6 +4707,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 增值税专用发票 </td>
 //
+//           <td> 3 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4666,6 +4716,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> VatCommonInvoice</td>
 //
 //           <td> 增值税普通发票 </td>
+//
+//           <td> 3 </td>
 //
 //         </tr>
 //
@@ -4675,6 +4727,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 增值税电子普通发票 </td>
 //
+//           <td> 3 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4682,6 +4736,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> VatElectronicSpecialInvoice </td>
 //
 //           <td> 增值税电子专用发票 </td>
+//
+//           <td> 3 </td>
 //
 //         </tr>
 //
@@ -4691,6 +4747,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 区块链电子发票 </td>
 //
+//           <td> 3 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4698,6 +4756,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> VatElectronicSpecialInvoiceFull</td>
 //
 //           <td> 增值税电子普通发票(通行费)</td>
+//
+//           <td> 3 </td>
 //
 //         </tr>
 //
@@ -4707,6 +4767,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 电子发票(专用发票)</td>
 //
+//           <td> 16 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4714,6 +4776,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> VatElectronicSpecialInvoiceFull</td>
 //
 //           <td> 电子发票(普通发票) </td>
+//
+//           <td> 16 </td>
 //
 //         </tr>
 //
@@ -4723,6 +4787,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 机动车销售统一发票 </td>
 //
+//           <td> 12 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4730,6 +4796,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> UsedCarPurchaseInvoice </td>
 //
 //           <td> 二手车销售统一发票 </td>
+//
+//           <td> 12 </td>
 //
 //         </tr>
 //
@@ -4739,6 +4807,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 增值税普通发票(卷票) </td>
 //
+//           <td> 11 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4746,6 +4816,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> TaxiTicket </td>
 //
 //           <td> 出租车发票 </td>
+//
+//           <td> 0 </td>
 //
 //         </tr>
 //
@@ -4755,6 +4827,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 定额发票 </td>
 //
+//           <td> 1 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4762,6 +4836,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> TrainTicket </td>
 //
 //           <td> 火车票 </td>
+//
+//           <td> 2 </td>
 //
 //         </tr>
 //
@@ -4771,6 +4847,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 机票行程单 </td>
 //
+//           <td> 5 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4778,6 +4856,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> MachinePrintedInvoice </td>
 //
 //           <td> 通用机打发票 </td>
+//
+//           <td> 8 </td>
 //
 //         </tr>
 //
@@ -4787,6 +4867,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 汽车票 </td>
 //
+//           <td> 9 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4794,6 +4876,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> ShippingInvoice </td>
 //
 //           <td> 轮船票 </td>
+//
+//           <td> 10 </td>
 //
 //         </tr>
 //
@@ -4803,6 +4887,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 非税收入通用票据 </td>
 //
+//           <td> 15 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4810,6 +4896,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> NonTaxIncomeElectronicBill </td>
 //
 //           <td> 非税收入一般缴款书(电子) </td>
+//
+//           <td> 15 </td>
 //
 //         </tr>
 //
@@ -4819,6 +4907,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //
 //           <td> 过路过桥费发票 </td>
 //
+//           <td> 13 </td>
+//
 //         </tr>
 //
 //         <tr>
@@ -4826,6 +4916,8 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> OtherInvoice </td>
 //
 //           <td> 其他发票 </td>
+//
+//           <td> -1 </td>
 //
 //         </tr>
 //

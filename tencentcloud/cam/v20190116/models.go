@@ -2193,6 +2193,10 @@ type DescribeSafeAuthFlagCollResponseParams struct {
 	// 异地登录保护设置
 	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
 
+	// 是否提示信任设备1 ：提示 0: 不提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PromptTrust *int64 `json:"PromptTrust,omitempty" name:"PromptTrust"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

@@ -3299,7 +3299,7 @@ type DescribeSlowLogsRequestParams struct {
 	// 实例id。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// sql模版的md5值
+	// sql模板的md5值
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
@@ -3339,7 +3339,7 @@ type DescribeSlowLogsRequest struct {
 	// 实例id。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// sql模版的md5值
+	// sql模板的md5值
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。

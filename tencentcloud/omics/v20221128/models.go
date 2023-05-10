@@ -20,6 +20,239 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CVMOption struct {
+	// 云服务器可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 云服务器实例规格。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+}
+
+type ClusterOption struct {
+	// 计算集群可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 计算集群类型，取值范围：
+	// - KUBERNETES
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+// Predefined struct for user
+type CreateEnvironmentRequestParams struct {
+	// 环境名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 环境配置信息。
+	Config *EnvironmentConfig `json:"Config,omitempty" name:"Config"`
+
+	// 环境描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type CreateEnvironmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 环境配置信息。
+	Config *EnvironmentConfig `json:"Config,omitempty" name:"Config"`
+
+	// 环境描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateEnvironmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Config")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEnvironmentResponseParams struct {
+	// 环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 工作流UUID。
+	WorkflowUuid *string `json:"WorkflowUuid,omitempty" name:"WorkflowUuid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateEnvironmentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEnvironmentResponseParams `json:"Response"`
+}
+
+func (r *CreateEnvironmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEnvironmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DatabaseOption struct {
+	// 数据库可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+// Predefined struct for user
+type DeleteEnvironmentRequestParams struct {
+	// 环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+}
+
+type DeleteEnvironmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+}
+
+func (r *DeleteEnvironmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEnvironmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEnvironmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteEnvironmentResponseParams struct {
+	// 工作流UUID。
+	WorkflowUuid *string `json:"WorkflowUuid,omitempty" name:"WorkflowUuid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteEnvironmentResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteEnvironmentResponseParams `json:"Response"`
+}
+
+func (r *DeleteEnvironmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEnvironmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvironmentsRequestParams struct {
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤器，支持过滤字段：
+	// - EnvironmentId：环境ID
+	// - Name：名称
+	// - Status：环境状态
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeEnvironmentsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤器，支持过滤字段：
+	// - EnvironmentId：环境ID
+	// - Name：名称
+	// - Status：环境状态
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeEnvironmentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvironmentsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvironmentsResponseParams struct {
+	// 符合条件的数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 环境详情列表。
+	Environments []*Environment `json:"Environments,omitempty" name:"Environments"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEnvironmentsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnvironmentsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnvironmentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvironmentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeRunGroupsRequestParams struct {
 	// 项目ID。
@@ -194,6 +427,68 @@ func (r *DescribeRunsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeRunsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Environment struct {
+	// 环境ID。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 环境名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 环境描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 环境地域。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 环境类型，取值范围：
+	// - KUBERNETES：Kubernetes容器集群
+	// - HPC：HPC高性能计算集群
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 环境状态，取值范围：
+	// - INITIALIZING：创建中
+	// - INITIALIZATION_ERROR：创建失败
+	// - RUNNING：运行中
+	// - ERROR：异常
+	// - DELETING：正在删除
+	// - DELETE_ERROR：删除失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 环境是否可用。环境需要可用才能投递计算任务。
+	Available *bool `json:"Available,omitempty" name:"Available"`
+
+	// 环境信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 云资源ID。
+	ResourceIds *ResourceIds `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 上个工作流UUID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastWorkflowUuid *string `json:"LastWorkflowUuid,omitempty" name:"LastWorkflowUuid"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+}
+
+type EnvironmentConfig struct {
+	// 私有网络配置。
+	VPCOption *VPCOption `json:"VPCOption,omitempty" name:"VPCOption"`
+
+	// 计算集群配置。
+	ClusterOption *ClusterOption `json:"ClusterOption,omitempty" name:"ClusterOption"`
+
+	// 数据库配置。
+	DatabaseOption *DatabaseOption `json:"DatabaseOption,omitempty" name:"DatabaseOption"`
+
+	// 存储配置。
+	StorageOption *StorageOption `json:"StorageOption,omitempty" name:"StorageOption"`
+
+	// 云服务器配置。
+	CVMOption *CVMOption `json:"CVMOption,omitempty" name:"CVMOption"`
 }
 
 type ExecutionTime struct {
@@ -436,6 +731,44 @@ func (r *ImportTableFileResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ImportTableFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceIds struct {
+	// 私有网络ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VPCId *string `json:"VPCId,omitempty" name:"VPCId"`
+
+	// 子网ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 安全组ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
+
+	// TDSQL-C Mysql版数据库ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TDSQLCId *string `json:"TDSQLCId,omitempty" name:"TDSQLCId"`
+
+	// 文件存储ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CFSId *string `json:"CFSId,omitempty" name:"CFSId"`
+
+	// 文件存储类型：取值范围：
+	// - SD：通用标准型
+	// - HP：通用性能型
+	// - TB：turbo标准型
+	// - TP：turbo性能型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CFSStorageType *string `json:"CFSStorageType,omitempty" name:"CFSStorageType"`
+
+	// 云服务器ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVMId *string `json:"CVMId,omitempty" name:"CVMId"`
+
+	// 弹性容器集群ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EKSId *string `json:"EKSId,omitempty" name:"EKSId"`
 }
 
 type Run struct {
@@ -772,4 +1105,32 @@ type RunStatusCount struct {
 
 	// 数量。
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
+type StorageOption struct {
+	// 文件存储类型，取值范围：
+	// - SD：通用标准型
+	// - HP：通用性能型
+	// - TB：turbo标准型
+	// - TP：turbo性能型
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 文件存储可用区。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 文件系统容量，turbo系列必填，单位为GiB。 
+	// - turbo标准型起售40TiB，即40960GiB；扩容步长20TiB，即20480 GiB。
+	// - turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。
+	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+}
+
+type VPCOption struct {
+	// 子网可用区。
+	SubnetZone *string `json:"SubnetZone,omitempty" name:"SubnetZone"`
+
+	// 私有网络CIDR。
+	VPCCIDRBlock *string `json:"VPCCIDRBlock,omitempty" name:"VPCCIDRBlock"`
+
+	// 子网CIDR。
+	SubnetCIDRBlock *string `json:"SubnetCIDRBlock,omitempty" name:"SubnetCIDRBlock"`
 }

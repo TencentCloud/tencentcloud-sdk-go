@@ -12144,6 +12144,12 @@ type HeadTailTemplate struct {
 	// <li> black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
 	// 默认值：stretch 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type HighlightSegmentItem struct {
@@ -13294,6 +13300,12 @@ type MediaProcessTaskAdaptiveDynamicStreamingResult struct {
 
 	// 对视频转自适应码流任务的输出。
 	Output *AdaptiveDynamicStreamingInfoItem `json:"Output,omitempty" name:"Output"`
+
+	// 转自适应码流任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 转自适应码流任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskAnimatedGraphicResult struct {
@@ -13318,6 +13330,12 @@ type MediaProcessTaskAnimatedGraphicResult struct {
 
 	// 转动图任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 转动图任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 转动图任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskCoverBySnapshotResult struct {
@@ -13341,6 +13359,12 @@ type MediaProcessTaskCoverBySnapshotResult struct {
 
 	// 对视频截图做封面任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 截图做封面任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 截图做封面任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskImageSpriteResult struct {
@@ -13365,6 +13389,12 @@ type MediaProcessTaskImageSpriteResult struct {
 
 	// 对视频截雪碧图任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 截雪碧图任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 截雪碧图任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskInput struct {
@@ -13452,6 +13482,12 @@ type MediaProcessTaskSampleSnapshotResult struct {
 
 	// 对视频做采样截图任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 采样截图任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 采样截图任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskSnapshotByTimeOffsetResult struct {
@@ -13476,6 +13512,12 @@ type MediaProcessTaskSnapshotByTimeOffsetResult struct {
 
 	// 对视频按指定时间点截图任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 时间点截图任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 时间点截图任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskTranscodeResult struct {

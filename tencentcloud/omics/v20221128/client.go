@@ -45,6 +45,188 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateEnvironmentRequest() (request *CreateEnvironmentRequest) {
+    request = &CreateEnvironmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "CreateEnvironment")
+    
+    
+    return
+}
+
+func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
+    response = &CreateEnvironmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEnvironment
+// 创建组学平台计算环境。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
+    return c.CreateEnvironmentWithContext(context.Background(), request)
+}
+
+// CreateEnvironment
+// 创建组学平台计算环境。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewCreateEnvironmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEnvironment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteEnvironmentRequest() (request *DeleteEnvironmentRequest) {
+    request = &DeleteEnvironmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DeleteEnvironment")
+    
+    
+    return
+}
+
+func NewDeleteEnvironmentResponse() (response *DeleteEnvironmentResponse) {
+    response = &DeleteEnvironmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteEnvironment
+// 删除环境。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (response *DeleteEnvironmentResponse, err error) {
+    return c.DeleteEnvironmentWithContext(context.Background(), request)
+}
+
+// DeleteEnvironment
+// 删除环境。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteEnvironmentWithContext(ctx context.Context, request *DeleteEnvironmentRequest) (response *DeleteEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewDeleteEnvironmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEnvironment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
+    request = &DescribeEnvironmentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeEnvironments")
+    
+    
+    return
+}
+
+func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) {
+    response = &DescribeEnvironmentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnvironments
+// 查询环境列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
+    return c.DescribeEnvironmentsWithContext(context.Background(), request)
+}
+
+// DescribeEnvironments
+// 查询环境列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvironmentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvironments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnvironmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRunGroupsRequest() (request *DescribeRunGroupsRequest) {
     request = &DescribeRunGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},

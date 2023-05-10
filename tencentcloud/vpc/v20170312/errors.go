@@ -464,6 +464,9 @@ const (
 	// 租户申请的弹性IP超过上限。
 	LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
 
+	// 实例关联快照策略数量达到上限。
+	LIMITEXCEEDED_ATTACHEDSNAPSHOTPOLICYEXCEEDED = "LimitExceeded.AttachedSnapshotPolicyExceeded"
+
 	// 带宽包配额超过限制。
 	LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = "LimitExceeded.BandwidthPackageQuota"
 

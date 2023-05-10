@@ -6807,6 +6807,98 @@ func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type OpenReadOnlyInstanceExclusiveAccessRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要开通独有访问的只读实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 指定的vpc ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 指定的子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 端口
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 安全组
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+}
+
+type OpenReadOnlyInstanceExclusiveAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要开通独有访问的只读实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 指定的vpc ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 指定的子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 端口
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 安全组
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+}
+
+func (r *OpenReadOnlyInstanceExclusiveAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenReadOnlyInstanceExclusiveAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "InstanceId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "Port")
+	delete(f, "SecurityGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenReadOnlyInstanceExclusiveAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenReadOnlyInstanceExclusiveAccessResponseParams struct {
+	// 开通流程ID
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type OpenReadOnlyInstanceExclusiveAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenReadOnlyInstanceExclusiveAccessResponseParams `json:"Response"`
+}
+
+func (r *OpenReadOnlyInstanceExclusiveAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenReadOnlyInstanceExclusiveAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ParamInfo struct {
 	// 当前值
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`

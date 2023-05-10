@@ -4143,6 +4143,90 @@ func (c *Client) InquirePriceRenewInstancesWithContext(ctx context.Context, requ
     return
 }
 
+func NewIsolateDisksRequest() (request *IsolateDisksRequest) {
+    request = &IsolateDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "IsolateDisks")
+    
+    
+    return
+}
+
+func NewIsolateDisksResponse() (response *IsolateDisksResponse) {
+    response = &IsolateDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// IsolateDisks
+// 本接口(IsolateDisks)用于退还一个或多个轻量应用服务器云硬盘。
+//
+// 
+//
+// 只有状态为 UNATTACHED 的数据盘才可以进行此操作。
+//
+// 接口调用成功后，云硬盘会进入SHUTDOWN 状态。
+//
+// 支持批量操作。每次请求批量资源的上限为 20。
+//
+// 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。云硬盘操作结果可以通过调用 [DescribeDisks](https://cloud.tencent.com/document/product/1207/66093) 接口查询，如果云硬盘的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBERESOURCESRETURNABLEERROR = "FailedOperation.DescribeResourcesReturnableError"
+//  FAILEDOPERATION_ISOLATERESOURCESFAILED = "FailedOperation.IsolateResourcesFailed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  LIMITEXCEEDED_ISOLATERESOURCESLIMITEXCEEDED = "LimitExceeded.IsolateResourcesLimitExceeded"
+//  OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_RESOURCENOTRETURNABLE = "UnsupportedOperation.ResourceNotReturnable"
+func (c *Client) IsolateDisks(request *IsolateDisksRequest) (response *IsolateDisksResponse, err error) {
+    return c.IsolateDisksWithContext(context.Background(), request)
+}
+
+// IsolateDisks
+// 本接口(IsolateDisks)用于退还一个或多个轻量应用服务器云硬盘。
+//
+// 
+//
+// 只有状态为 UNATTACHED 的数据盘才可以进行此操作。
+//
+// 接口调用成功后，云硬盘会进入SHUTDOWN 状态。
+//
+// 支持批量操作。每次请求批量资源的上限为 20。
+//
+// 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。云硬盘操作结果可以通过调用 [DescribeDisks](https://cloud.tencent.com/document/product/1207/66093) 接口查询，如果云硬盘的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBERESOURCESRETURNABLEERROR = "FailedOperation.DescribeResourcesReturnableError"
+//  FAILEDOPERATION_ISOLATERESOURCESFAILED = "FailedOperation.IsolateResourcesFailed"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  LIMITEXCEEDED_ISOLATERESOURCESLIMITEXCEEDED = "LimitExceeded.IsolateResourcesLimitExceeded"
+//  OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_RESOURCENOTRETURNABLE = "UnsupportedOperation.ResourceNotReturnable"
+func (c *Client) IsolateDisksWithContext(ctx context.Context, request *IsolateDisksRequest) (response *IsolateDisksResponse, err error) {
+    if request == nil {
+        request = NewIsolateDisksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolateDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIsolateDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIsolateInstancesRequest() (request *IsolateInstancesRequest) {
     request = &IsolateInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5175,6 +5259,86 @@ func (c *Client) RebootInstancesWithContext(ctx context.Context, request *Reboot
     return
 }
 
+func NewRenewDisksRequest() (request *RenewDisksRequest) {
+    request = &RenewDisksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "RenewDisks")
+    
+    
+    return
+}
+
+func NewRenewDisksResponse() (response *RenewDisksResponse) {
+    response = &RenewDisksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RenewDisks
+// 本接口(RenewDisks)用于续费一个或多个轻量应用服务器云硬盘。
+//
+// 
+//
+// 只有状态为 ATTACHED，UNATTACHED 或 SHUTDOWN 的数据盘才可以进行此操作。
+//
+// 支持批量操作。每次请求批量云硬盘的上限为 50。
+//
+// 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。云硬盘操作结果可以通过调用 [DescribeDisks](https://cloud.tencent.com/document/product/1207/66093) 接口查询，如果云硬盘的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDCURINSTANCEDEADLINE = "InvalidParameterValue.InvalidCurInstanceDeadline"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  MISSINGPARAMETER_MISSINGPARAMETERPERIODCURINSTANCEDEADLINE = "MissingParameter.MissingParameterPeriodCurInstanceDeadline"
+//  OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+func (c *Client) RenewDisks(request *RenewDisksRequest) (response *RenewDisksResponse, err error) {
+    return c.RenewDisksWithContext(context.Background(), request)
+}
+
+// RenewDisks
+// 本接口(RenewDisks)用于续费一个或多个轻量应用服务器云硬盘。
+//
+// 
+//
+// 只有状态为 ATTACHED，UNATTACHED 或 SHUTDOWN 的数据盘才可以进行此操作。
+//
+// 支持批量操作。每次请求批量云硬盘的上限为 50。
+//
+// 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。云硬盘操作结果可以通过调用 [DescribeDisks](https://cloud.tencent.com/document/product/1207/66093) 接口查询，如果云硬盘的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INVALIDCURINSTANCEDEADLINE = "InvalidParameterValue.InvalidCurInstanceDeadline"
+//  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
+//  MISSINGPARAMETER_MISSINGPARAMETERPERIODCURINSTANCEDEADLINE = "MissingParameter.MissingParameterPeriodCurInstanceDeadline"
+//  OPERATIONDENIED_DISKCREATING = "OperationDenied.DiskCreating"
+//  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
+//  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
+//  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+func (c *Client) RenewDisksWithContext(ctx context.Context, request *RenewDisksRequest) (response *RenewDisksResponse, err error) {
+    if request == nil {
+        request = NewRenewDisksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewDisks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewDisksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewInstancesRequest() (request *RenewInstancesRequest) {
     request = &RenewInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5204,7 +5368,7 @@ func NewRenewInstancesResponse() (response *RenewInstancesResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_RENEWINSTANCESFAILED = "FailedOperation.RenewInstancesFailed"
+//  FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETER_INVALIDFILTERINVALIDKEY = "InvalidParameter.InvalidFilterInvalidKey"
 //  INVALIDPARAMETER_INVALIDFILTERINVALIDNAMENOTSTR = "InvalidParameter.InvalidFilterInvalidNameNotStr"
@@ -5236,7 +5400,7 @@ func (c *Client) RenewInstances(request *RenewInstancesRequest) (response *Renew
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_RENEWINSTANCESFAILED = "FailedOperation.RenewInstancesFailed"
+//  FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETER_INVALIDFILTERINVALIDKEY = "InvalidParameter.InvalidFilterInvalidKey"
 //  INVALIDPARAMETER_INVALIDFILTERINVALIDNAMENOTSTR = "InvalidParameter.InvalidFilterInvalidNameNotStr"

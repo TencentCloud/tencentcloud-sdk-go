@@ -255,11 +255,61 @@ type ClusterVersion struct {
 }
 
 type CopyJobItem struct {
+	// 需要复制的作业serial id
+	SourceId *string `json:"SourceId,omitempty" name:"SourceId"`
 
+	// 目标集群的cluster serial id
+	TargetClusterId *string `json:"TargetClusterId,omitempty" name:"TargetClusterId"`
+
+	// 需要复制的作业名称
+	SourceName *string `json:"SourceName,omitempty" name:"SourceName"`
+
+	// 新作业的名称
+	TargetName *string `json:"TargetName,omitempty" name:"TargetName"`
+
+	// 新作业的目录id
+	TargetFolderId *string `json:"TargetFolderId,omitempty" name:"TargetFolderId"`
+
+	// 源作业类型
+	JobType *int64 `json:"JobType,omitempty" name:"JobType"`
 }
 
 type CopyJobResult struct {
+	// 原作业id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
+	// 原作业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobName *string `json:"JobName,omitempty" name:"JobName"`
+
+	// 新作业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetJobName *string `json:"TargetJobName,omitempty" name:"TargetJobName"`
+
+	// 新作业id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetJobId *string `json:"TargetJobId,omitempty" name:"TargetJobId"`
+
+	// 失败时候的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 0 成功  -1 失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 目标集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 目标集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 作业类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobType *int64 `json:"JobType,omitempty" name:"JobType"`
 }
 
 // Predefined struct for user

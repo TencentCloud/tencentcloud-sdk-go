@@ -3129,26 +3129,26 @@ func (r *DescribeInstanceMonitorTopNCmdTookResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeInstanceNodeInfoRequestParams struct {
-	// 实例ID
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 列表大小
+	// 列表大小。每页输出的节点信息大小。默认为 20，最多输出1000条。该字段已不再使用，请忽略。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。该字段已不再使用，请忽略。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeInstanceNodeInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 列表大小
+	// 列表大小。每页输出的节点信息大小。默认为 20，最多输出1000条。该字段已不再使用，请忽略。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。该字段已不再使用，请忽略。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -3175,24 +3175,24 @@ func (r *DescribeInstanceNodeInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceNodeInfoResponseParams struct {
-	// proxy节点数量
+	// Proxy节点数量。
 	ProxyCount *int64 `json:"ProxyCount,omitempty" name:"ProxyCount"`
 
-	// proxy节点信息
+	// Proxy节点信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Proxy []*ProxyNodes `json:"Proxy,omitempty" name:"Proxy"`
 
-	// redis节点数量
+	// Redis节点数量。
 	RedisCount *int64 `json:"RedisCount,omitempty" name:"RedisCount"`
 
-	// redis节点信息
+	// Redis节点信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Redis []*RedisNodes `json:"Redis,omitempty" name:"Redis"`
 
-	// tendis节点数量
+	// 该参数不再使用，请忽略。
 	TendisCount *int64 `json:"TendisCount,omitempty" name:"TendisCount"`
 
-	// tendis节点信息
+	// 该参数不再使用，请忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tendis []*TendisNodes `json:"Tendis,omitempty" name:"Tendis"`
 
@@ -7668,16 +7668,16 @@ type RedisNodeInfo struct {
 }
 
 type RedisNodes struct {
-	// 节点ID
+	// 节点 ID。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 
-	// 节点角色
+	// 节点角色。
 	NodeRole *string `json:"NodeRole,omitempty" name:"NodeRole"`
 
-	// 分片ID
+	// 分片 ID。
 	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 可用区ID
+	// 可用区 ID。
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
