@@ -5476,6 +5476,63 @@ func (r *DescribeRouteResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskStatusRequestParams struct {
+	// 任务唯一标记
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+type DescribeTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务唯一标记
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *DescribeTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskStatusResponseParams struct {
+	// 返回结果
+	Result *TaskStatusResponse `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopicAttributesRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -9474,6 +9531,18 @@ type Tag struct {
 
 	// 标签的值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TaskStatusResponse struct {
+	// 任务状态:
+	// 0 成功
+	// 1 失败
+	// 2 进行中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 输出信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *string `json:"Output,omitempty" name:"Output"`
 }
 
 type TdwParam struct {

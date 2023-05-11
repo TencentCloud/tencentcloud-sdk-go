@@ -25,7 +25,7 @@ type CreateSessionRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 游戏ID
+	// 【已废弃】只在TrylockWorker时生效
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
 	// 【已废弃】只在TrylockWorker时生效
@@ -85,7 +85,7 @@ type CreateSessionRequest struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 游戏ID
+	// 【已废弃】只在TrylockWorker时生效
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
 	// 【已废弃】只在TrylockWorker时生效

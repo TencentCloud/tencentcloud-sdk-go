@@ -4796,6 +4796,10 @@ type JsonInfo struct {
 	// 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaFields []*string `json:"MetaFields,omitempty" name:"MetaFields"`
+
+	// 投递Json格式，0：字符串方式投递；1:以结构化方式投递
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonType *int64 `json:"JsonType,omitempty" name:"JsonType"`
 }
 
 type KeyRegexInfo struct {

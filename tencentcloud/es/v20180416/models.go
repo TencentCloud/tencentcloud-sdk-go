@@ -2573,6 +2573,9 @@ type InstanceLog struct {
 
 	// 日志内容
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 集群节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
 }
 
 type KeyValue struct {
@@ -2627,6 +2630,9 @@ type KibanaView struct {
 
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// ts-0noqayxu-az6-hot-03222010-0
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 }
 
 type LocalDiskInfo struct {

@@ -171,12 +171,14 @@ func (r *CreateAsrVocabResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAsyncRecognitionTaskRequestParams struct {
 	// 引擎模型类型。
-	// • 16k_zh：16k 中文普通话通用；
-	// • 16k_zh_video：16k 音视频领域；
-	// • 16k_en：16k 英语；
-	// • 16k_ca：16k 粤语；
-	// • 16k_id：16k 印度尼西亚语；
-	// • 16k_fil：16k 菲律宾语；
+	// • 16k_zh：中文普通话通用；
+	// • 16k_en：英语；
+	// • 16k_ca：粤语；
+	// • 16k_id：印度尼西亚语；
+	// • 16k_fil：菲律宾语；
+	// • 16k_th：泰语；
+	// • 16k_pt：葡萄牙语；
+	// • 16k_tr：土耳其语；
 	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -214,12 +216,14 @@ type CreateAsyncRecognitionTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 引擎模型类型。
-	// • 16k_zh：16k 中文普通话通用；
-	// • 16k_zh_video：16k 音视频领域；
-	// • 16k_en：16k 英语；
-	// • 16k_ca：16k 粤语；
-	// • 16k_id：16k 印度尼西亚语；
-	// • 16k_fil：16k 菲律宾语；
+	// • 16k_zh：中文普通话通用；
+	// • 16k_en：英语；
+	// • 16k_ca：粤语；
+	// • 16k_id：印度尼西亚语；
+	// • 16k_fil：菲律宾语；
+	// • 16k_th：泰语；
+	// • 16k_pt：葡萄牙语；
+	// • 16k_tr：土耳其语；
 	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -389,23 +393,24 @@ func (r *CreateCustomizationResponse) FromJsonString(s string) error {
 type CreateRecTaskRequestParams struct {
 	// 引擎模型类型。注意：非电话场景请务必使用16k的引擎。
 	// 电话场景：
-	// • 8k_en：电话 8k 英语；
-	// • 8k_zh：电话 8k 中文普通话通用；
+	// • 8k_zh：中文电话通用；
+	// • 8k_en：英文电话通用；
+	// 
 	// 非电话场景：
-	// • 16k_zh：16k 中文普通话通用；
-	// • 16k_zh_video：16k 音视频领域；
-	// • 16k_en：16k 英语；
-	// • 16k_ca：16k 粤语；
-	// • 16k_ja：16k 日语；
-	// • 16k_vi：16k 越南语；
-	// • 16k_ms：16k 马来语；
-	// • 16k_id：16k 印度尼西亚语；
-	// • 16k_fil：16k 菲律宾语；
-	// • 16k_zh_edu 中文教育；
-	// • 16k_en_edu 英文教育；
-	// • 16k_zh_medical  医疗；
-	// • 16k_th 泰语；
-	// • 16k_zh-PY 中英粤;
+	// • 16k_zh：中文通用；
+	// • 16k_zh-PY：中英粤;
+	// • 16k_zh_medical：中文医疗；
+	// • 16k_en：英语；
+	// • 16k_ca：粤语；
+	// • 16k_ja：日语；
+	// • 16k_ko：韩语；
+	// • 16k_vi：越南语；
+	// • 16k_ms：马来语；
+	// • 16k_id：印度尼西亚语；
+	// • 16k_fil：菲律宾语；
+	// • 16k_th：泰语；
+	// • 16k_pt：葡萄牙语；
+	// • 16k_tr：土耳其语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
@@ -478,23 +483,24 @@ type CreateRecTaskRequest struct {
 	
 	// 引擎模型类型。注意：非电话场景请务必使用16k的引擎。
 	// 电话场景：
-	// • 8k_en：电话 8k 英语；
-	// • 8k_zh：电话 8k 中文普通话通用；
+	// • 8k_zh：中文电话通用；
+	// • 8k_en：英文电话通用；
+	// 
 	// 非电话场景：
-	// • 16k_zh：16k 中文普通话通用；
-	// • 16k_zh_video：16k 音视频领域；
-	// • 16k_en：16k 英语；
-	// • 16k_ca：16k 粤语；
-	// • 16k_ja：16k 日语；
-	// • 16k_vi：16k 越南语；
-	// • 16k_ms：16k 马来语；
-	// • 16k_id：16k 印度尼西亚语；
-	// • 16k_fil：16k 菲律宾语；
-	// • 16k_zh_edu 中文教育；
-	// • 16k_en_edu 英文教育；
-	// • 16k_zh_medical  医疗；
-	// • 16k_th 泰语；
-	// • 16k_zh-PY 中英粤;
+	// • 16k_zh：中文通用；
+	// • 16k_zh-PY：中英粤;
+	// • 16k_zh_medical：中文医疗；
+	// • 16k_en：英语；
+	// • 16k_ca：粤语；
+	// • 16k_ja：日语；
+	// • 16k_ko：韩语；
+	// • 16k_vi：越南语；
+	// • 16k_ms：马来语；
+	// • 16k_id：印度尼西亚语；
+	// • 16k_fil：菲律宾语；
+	// • 16k_th：泰语；
+	// • 16k_pt：葡萄牙语；
+	// • 16k_tr：土耳其语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
@@ -1480,7 +1486,7 @@ type SentenceRecognitionRequestParams struct {
 	// 
 	// 非电话场景：
 	// • 16k_zh：中文通用；
-	// • 16k_zh-PY 中英粤;
+	// • 16k_zh-PY：中英粤;
 	// • 16k_zh_medical：中文医疗；
 	// • 16k_en：英语；
 	// • 16k_ca：粤语；
@@ -1491,6 +1497,8 @@ type SentenceRecognitionRequestParams struct {
 	// • 16k_id：印度尼西亚语；
 	// • 16k_fil：菲律宾语；
 	// • 16k_th：泰语；
+	// • 16k_pt：葡萄牙语；
+	// • 16k_tr：土耳其语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
@@ -1541,6 +1549,10 @@ type SentenceRecognitionRequestParams struct {
 
 	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”、“蜜汁”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
 	ReinforceHotword *int64 `json:"ReinforceHotword,omitempty" name:"ReinforceHotword"`
+
+	// 临时热词：用于提升识别准确率，临时热词规则：“热词|权重”，热词不超过30个字符（最多10个汉字），权重1-10，最多传入128个热词。举例："腾讯云|10,语音识别|5,ASR|10"。
+	// “临时热词”和“热词id”的区别：热词id需要先在控制台或通过接口创建热词表，得到热词表id后才可以使用热词功能，本字段可以在每次请求时直接传入热词使用，但每次请求后云端不会保留相关的热词数据，需要客户自行维护相关数据
+	HotwordList *string `json:"HotwordList,omitempty" name:"HotwordList"`
 }
 
 type SentenceRecognitionRequest struct {
@@ -1553,7 +1565,7 @@ type SentenceRecognitionRequest struct {
 	// 
 	// 非电话场景：
 	// • 16k_zh：中文通用；
-	// • 16k_zh-PY 中英粤;
+	// • 16k_zh-PY：中英粤;
 	// • 16k_zh_medical：中文医疗；
 	// • 16k_en：英语；
 	// • 16k_ca：粤语；
@@ -1564,6 +1576,8 @@ type SentenceRecognitionRequest struct {
 	// • 16k_id：印度尼西亚语；
 	// • 16k_fil：菲律宾语；
 	// • 16k_th：泰语；
+	// • 16k_pt：葡萄牙语；
+	// • 16k_tr：土耳其语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
@@ -1614,6 +1628,10 @@ type SentenceRecognitionRequest struct {
 
 	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”、“蜜汁”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
 	ReinforceHotword *int64 `json:"ReinforceHotword,omitempty" name:"ReinforceHotword"`
+
+	// 临时热词：用于提升识别准确率，临时热词规则：“热词|权重”，热词不超过30个字符（最多10个汉字），权重1-10，最多传入128个热词。举例："腾讯云|10,语音识别|5,ASR|10"。
+	// “临时热词”和“热词id”的区别：热词id需要先在控制台或通过接口创建热词表，得到热词表id后才可以使用热词功能，本字段可以在每次请求时直接传入热词使用，但每次请求后云端不会保留相关的热词数据，需要客户自行维护相关数据
+	HotwordList *string `json:"HotwordList,omitempty" name:"HotwordList"`
 }
 
 func (r *SentenceRecognitionRequest) ToJsonString() string {
@@ -1645,6 +1663,7 @@ func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "HotwordId")
 	delete(f, "CustomizationId")
 	delete(f, "ReinforceHotword")
+	delete(f, "HotwordList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceRecognitionRequest has unknown keys!", "")
 	}

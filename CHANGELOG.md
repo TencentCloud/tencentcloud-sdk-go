@@ -1,3 +1,162 @@
+# Release v1.0.654
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 26 次发布
+
+发布时间：2023-05-11 01:03:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* 新增入参：HotwordList
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 79 次发布
+
+发布时间：2023-05-11 01:11:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTaskStatus](https://cloud.tencent.com/document/api/597/90934)
+
+新增数据结构：
+
+* [TaskStatusResponse](https://cloud.tencent.com/document/api/597/40861#TaskStatusResponse)
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 46 次发布
+
+发布时间：2023-05-11 01:12:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [JsonInfo](https://cloud.tencent.com/document/api/614/56471#JsonInfo)
+
+	* 新增成员：JsonType
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 52 次发布
+
+发布时间：2023-05-11 01:17:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceErrorLogs](https://cloud.tencent.com/document/api/1003/90936)
+* [ExportInstanceErrorLogs](https://cloud.tencent.com/document/api/1003/90935)
+
+新增数据结构：
+
+* [CynosdbErrorLogItem](https://cloud.tencent.com/document/api/1003/48097#CynosdbErrorLogItem)
+* [ErrorLogItemExport](https://cloud.tencent.com/document/api/1003/48097#ErrorLogItemExport)
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 43 次发布
+
+发布时间：2023-05-11 01:24:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceLog](https://cloud.tencent.com/document/api/845/30634#InstanceLog)
+
+	* 新增成员：NodeID
+
+* [KibanaView](https://cloud.tencent.com/document/api/845/30634#KibanaView)
+
+	* 新增成员：NodeId
+
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 3 次发布
+
+发布时间：2023-05-11 01:38:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RunOption](https://cloud.tencent.com/document/api/1643/89100#RunOption)
+
+	* 新增成员：FinalWorkflowOutputsDir, UseRelativeOutputPaths
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 57 次发布
+
+发布时间：2023-05-11 01:48:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 92 次发布
+
+发布时间：2023-05-11 01:55:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteGatewayApi](https://cloud.tencent.com/document/api/649/90937)
+
+
+
 # Release v1.0.653
 
 ## 访问管理(cam) 版本：2019-01-16

@@ -3029,6 +3029,54 @@ func (c *Client) DeleteFileConfigWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteGatewayApiRequest() (request *DeleteGatewayApiRequest) {
+    request = &DeleteGatewayApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DeleteGatewayApi")
+    
+    
+    return
+}
+
+func NewDeleteGatewayApiResponse() (response *DeleteGatewayApiResponse) {
+    response = &DeleteGatewayApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteGatewayApi
+// 批量删除API
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+func (c *Client) DeleteGatewayApi(request *DeleteGatewayApiRequest) (response *DeleteGatewayApiResponse, err error) {
+    return c.DeleteGatewayApiWithContext(context.Background(), request)
+}
+
+// DeleteGatewayApi
+// 批量删除API
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+func (c *Client) DeleteGatewayApiWithContext(ctx context.Context, request *DeleteGatewayApiRequest) (response *DeleteGatewayApiResponse, err error) {
+    if request == nil {
+        request = NewDeleteGatewayApiRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGatewayApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGatewayApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
     request = &DeleteGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

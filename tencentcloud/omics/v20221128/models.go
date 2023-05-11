@@ -1097,6 +1097,14 @@ type RunOption struct {
 
 	// 是否使用错误挂起功能。
 	UseErrorOnHold *bool `json:"UseErrorOnHold,omitempty" name:"UseErrorOnHold"`
+
+	// 输出归档COS路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalWorkflowOutputsDir *string `json:"FinalWorkflowOutputsDir,omitempty" name:"FinalWorkflowOutputsDir"`
+
+	// 是否使用相对目录归档输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseRelativeOutputPaths *bool `json:"UseRelativeOutputPaths,omitempty" name:"UseRelativeOutputPaths"`
 }
 
 type RunStatusCount struct {

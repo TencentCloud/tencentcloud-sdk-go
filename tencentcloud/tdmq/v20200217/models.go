@@ -7352,6 +7352,9 @@ type DescribeTopicsRequestParams struct {
 	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 主题名模糊匹配。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
@@ -7367,9 +7370,6 @@ type DescribeTopicsRequestParams struct {
 	// 2：持久非分区主题类型；
 	// 3：持久分区主题类型；
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// * TopicName
 	// 按照主题名字查询，精确查询。
@@ -7389,6 +7389,9 @@ type DescribeTopicsRequest struct {
 	// 环境（命名空间）名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 主题名模糊匹配。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
@@ -7404,9 +7407,6 @@ type DescribeTopicsRequest struct {
 	// 2：持久非分区主题类型；
 	// 3：持久分区主题类型；
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// * TopicName
 	// 按照主题名字查询，精确查询。
@@ -7433,11 +7433,11 @@ func (r *DescribeTopicsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EnvironmentId")
+	delete(f, "ClusterId")
 	delete(f, "TopicName")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "TopicType")
-	delete(f, "ClusterId")
 	delete(f, "Filters")
 	delete(f, "TopicCreator")
 	if len(f) > 0 {

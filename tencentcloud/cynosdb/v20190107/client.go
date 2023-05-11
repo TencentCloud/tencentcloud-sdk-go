@@ -2221,6 +2221,64 @@ func (c *Client) DescribeInstanceDetailWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeInstanceErrorLogsRequest() (request *DescribeInstanceErrorLogsRequest) {
+    request = &DescribeInstanceErrorLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceErrorLogs")
+    
+    
+    return
+}
+
+func NewDescribeInstanceErrorLogsResponse() (response *DescribeInstanceErrorLogsResponse) {
+    response = &DescribeInstanceErrorLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceErrorLogs
+// 查询实例错误日志列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_VALUENOTFOUND = "InvalidParameterValue.ValueNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceErrorLogs(request *DescribeInstanceErrorLogsRequest) (response *DescribeInstanceErrorLogsResponse, err error) {
+    return c.DescribeInstanceErrorLogsWithContext(context.Background(), request)
+}
+
+// DescribeInstanceErrorLogs
+// 查询实例错误日志列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_VALUENOTFOUND = "InvalidParameterValue.ValueNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceErrorLogsWithContext(ctx context.Context, request *DescribeInstanceErrorLogsRequest) (response *DescribeInstanceErrorLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceErrorLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceErrorLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceErrorLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceSlowQueriesRequest() (request *DescribeInstanceSlowQueriesRequest) {
     request = &DescribeInstanceSlowQueriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2845,6 +2903,58 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDisassociateSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportInstanceErrorLogsRequest() (request *ExportInstanceErrorLogsRequest) {
+    request = &ExportInstanceErrorLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ExportInstanceErrorLogs")
+    
+    
+    return
+}
+
+func NewExportInstanceErrorLogsResponse() (response *ExportInstanceErrorLogsResponse) {
+    response = &ExportInstanceErrorLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportInstanceErrorLogs
+// 此接口（ExportInstanceErrorLogs）用于导出实例错误日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ExportInstanceErrorLogs(request *ExportInstanceErrorLogsRequest) (response *ExportInstanceErrorLogsResponse, err error) {
+    return c.ExportInstanceErrorLogsWithContext(context.Background(), request)
+}
+
+// ExportInstanceErrorLogs
+// 此接口（ExportInstanceErrorLogs）用于导出实例错误日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ExportInstanceErrorLogsWithContext(ctx context.Context, request *ExportInstanceErrorLogsRequest) (response *ExportInstanceErrorLogsResponse, err error) {
+    if request == nil {
+        request = NewExportInstanceErrorLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportInstanceErrorLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportInstanceErrorLogsResponse()
     err = c.Send(request, response)
     return
 }

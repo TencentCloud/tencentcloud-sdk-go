@@ -5579,6 +5579,70 @@ func (r *DeleteFileConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteGatewayApiRequestParams struct {
+	// 分组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// Api ID 数组
+	ApiList []*string `json:"ApiList,omitempty" name:"ApiList"`
+}
+
+type DeleteGatewayApiRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// Api ID 数组
+	ApiList []*string `json:"ApiList,omitempty" name:"ApiList"`
+}
+
+func (r *DeleteGatewayApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGatewayApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "ApiList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGatewayApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGatewayApiResponseParams struct {
+	// 是否成功
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteGatewayApiResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGatewayApiResponseParams `json:"Response"`
+}
+
+func (r *DeleteGatewayApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGatewayApiResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteGroupRequestParams struct {
 	// 部署组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`

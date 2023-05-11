@@ -1808,6 +1808,20 @@ type CynosdbClusterDetail struct {
 	NetworkStatus *string `json:"NetworkStatus,omitempty" name:"NetworkStatus"`
 }
 
+type CynosdbErrorLogItem struct {
+	// 日志时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 日志等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 日志内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
 type CynosdbInstance struct {
 	// 用户Uin
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
@@ -3917,6 +3931,124 @@ func (r *DescribeInstanceDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceErrorLogsRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志条数限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 日志条数偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 排序字段，有Timestamp枚举值
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序类型，有ASC,DESC枚举值
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 日志等级，有error、warning、note三种，支持多个等级同时搜索
+	LogLevels []*string `json:"LogLevels,omitempty" name:"LogLevels"`
+
+	// 关键字，支持模糊搜索
+	KeyWords []*string `json:"KeyWords,omitempty" name:"KeyWords"`
+}
+
+type DescribeInstanceErrorLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志条数限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 日志条数偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 排序字段，有Timestamp枚举值
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序类型，有ASC,DESC枚举值
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 日志等级，有error、warning、note三种，支持多个等级同时搜索
+	LogLevels []*string `json:"LogLevels,omitempty" name:"LogLevels"`
+
+	// 关键字，支持模糊搜索
+	KeyWords []*string `json:"KeyWords,omitempty" name:"KeyWords"`
+}
+
+func (r *DescribeInstanceErrorLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceErrorLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	delete(f, "LogLevels")
+	delete(f, "KeyWords")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceErrorLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceErrorLogsResponseParams struct {
+	// 日志条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 错误日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorLogs []*CynosdbErrorLogItem `json:"ErrorLogs,omitempty" name:"ErrorLogs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceErrorLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceErrorLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceErrorLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceErrorLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceSlowQueriesRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -4848,6 +4980,141 @@ func (r *DisassociateSecurityGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ErrorLogItemExport struct {
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 日志等级，可选值note, warning，error
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 日志内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+// Predefined struct for user
+type ExportInstanceErrorLogsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志最早时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 日志最晚时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 限制条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 日志等级
+	LogLevels []*string `json:"LogLevels,omitempty" name:"LogLevels"`
+
+	// 关键字
+	KeyWords []*string `json:"KeyWords,omitempty" name:"KeyWords"`
+
+	// 文件类型，可选值：csv, original
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 可选值Timestamp
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// ASC或DESC
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+type ExportInstanceErrorLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志最早时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 日志最晚时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 限制条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 日志等级
+	LogLevels []*string `json:"LogLevels,omitempty" name:"LogLevels"`
+
+	// 关键字
+	KeyWords []*string `json:"KeyWords,omitempty" name:"KeyWords"`
+
+	// 文件类型，可选值：csv, original
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 可选值Timestamp
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// ASC或DESC
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+func (r *ExportInstanceErrorLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportInstanceErrorLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "LogLevels")
+	delete(f, "KeyWords")
+	delete(f, "FileType")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportInstanceErrorLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportInstanceErrorLogsResponseParams struct {
+	// 错误日志导出内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorLogItems []*ErrorLogItemExport `json:"ErrorLogItems,omitempty" name:"ErrorLogItems"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ExportInstanceErrorLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportInstanceErrorLogsResponseParams `json:"Response"`
+}
+
+func (r *ExportInstanceErrorLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportInstanceErrorLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
