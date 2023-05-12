@@ -4021,6 +4021,66 @@ func (c *Client) DescribeTopicDetailWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeTopicFlowRankingRequest() (request *DescribeTopicFlowRankingRequest) {
+    request = &DescribeTopicFlowRankingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicFlowRanking")
+    
+    
+    return
+}
+
+func NewDescribeTopicFlowRankingResponse() (response *DescribeTopicFlowRankingResponse) {
+    response = &DescribeTopicFlowRankingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopicFlowRanking
+// 获取Topic流量排行，消费者流量排行
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeTopicFlowRanking(request *DescribeTopicFlowRankingRequest) (response *DescribeTopicFlowRankingResponse, err error) {
+    return c.DescribeTopicFlowRankingWithContext(context.Background(), request)
+}
+
+// DescribeTopicFlowRanking
+// 获取Topic流量排行，消费者流量排行
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeTopicFlowRankingWithContext(ctx context.Context, request *DescribeTopicFlowRankingRequest) (response *DescribeTopicFlowRankingResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicFlowRankingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicFlowRanking require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicFlowRankingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicProduceConnectionRequest() (request *DescribeTopicProduceConnectionRequest) {
     request = &DescribeTopicProduceConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},

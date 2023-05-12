@@ -21,27 +21,35 @@ import (
 )
 
 type Account struct {
-	// 实例ID
+	// 实例 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 账号名称（如果是主账号，名称为root）
+	// 账号名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
 
-	// 账号描述信息
+	// 账号描述信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 读写策略：r-只读，w-只写，rw-读写
+	// 读写权限策略。
+	// - r：只读。
+	// - w：只写。
+	// - rw：读写。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privilege *string `json:"Privilege,omitempty" name:"Privilege"`
 
-	// 路由策略：master-主节点，replication-从节点
+	// 只读路由策略。
+	// - master：主节点。
+	// - replication：从节点。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitempty" name:"ReadonlyPolicy"`
 
-	// 子账号状态：1-账号变更中，2-账号有效，-4-账号已删除
+	// 子账号状态.
+	// - 1：账号变更中。
+	// - 2：账号有效。
+	// - 4：账号已删除。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
@@ -2176,7 +2184,7 @@ type DescribeDBSecurityGroupsRequestParams struct {
 	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -2186,7 +2194,7 @@ type DescribeDBSecurityGroupsRequest struct {
 	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同。
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -2215,10 +2223,10 @@ type DescribeDBSecurityGroupsResponseParams struct {
 	// 安全组规则。
 	Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
 
-	// 安全组生效内网地址。
+	// 实例内网IPv4地址。
 	VIP *string `json:"VIP,omitempty" name:"VIP"`
 
-	// 安全组生效内网端口。
+	// 内网端口。
 	VPort *string `json:"VPort,omitempty" name:"VPort"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2243,26 +2251,26 @@ func (r *DescribeDBSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceAccountRequestParams struct {
-	// 实例ID
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分页大小
+	// 分页大小。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// 分页偏移量。取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeInstanceAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 分页大小
+	// 分页大小。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// 分页偏移量。取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -2289,11 +2297,11 @@ func (r *DescribeInstanceAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceAccountResponseParams struct {
-	// 账号详细信息
+	// 账号详细信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Accounts []*Account `json:"Accounts,omitempty" name:"Accounts"`
 
-	// 账号个数
+	// 账号个数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -3292,14 +3300,14 @@ func (r *DescribeInstanceParamRecordsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceParamsRequestParams struct {
-	// 实例Id
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceParamsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -3324,19 +3332,19 @@ func (r *DescribeInstanceParamsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceParamsResponseParams struct {
-	// 实例参数个数
+	// 参数列表总数量。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 实例枚举类型参数
+	// 实例枚举类型参数。
 	InstanceEnumParam []*InstanceEnumParam `json:"InstanceEnumParam,omitempty" name:"InstanceEnumParam"`
 
-	// 实例整型参数
+	// 实例整型参数。
 	InstanceIntegerParam []*InstanceIntegerParam `json:"InstanceIntegerParam,omitempty" name:"InstanceIntegerParam"`
 
-	// 实例字符型参数
+	// 实例字符型参数。
 	InstanceTextParam []*InstanceTextParam `json:"InstanceTextParam,omitempty" name:"InstanceTextParam"`
 
-	// 实例多选项型参数
+	// 实例多选项型参数。
 	InstanceMultiParam []*InstanceMultiParam `json:"InstanceMultiParam,omitempty" name:"InstanceMultiParam"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3361,14 +3369,14 @@ func (r *DescribeInstanceParamsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSecurityGroupRequestParams struct {
-	// 实例列表
+	// 实例 ID 列表。例如;["crs-f2ho5rsz\n"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 type DescribeInstanceSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例列表
+	// 实例 ID 列表。例如;["crs-f2ho5rsz\n"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
@@ -3393,7 +3401,7 @@ func (r *DescribeInstanceSecurityGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceSecurityGroupResponseParams struct {
-	// 实例安全组信息
+	// 实例安全组信息。
 	InstanceSecurityGroupsDetail []*InstanceSecurityGroupDetail `json:"InstanceSecurityGroupsDetail,omitempty" name:"InstanceSecurityGroupsDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3489,14 +3497,14 @@ func (r *DescribeInstanceShardsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceZoneInfoRequestParams struct {
-	// 实例Id，如：crs-6ubhgouj
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceZoneInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id，如：crs-6ubhgouj
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -3521,10 +3529,10 @@ func (r *DescribeInstanceZoneInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceZoneInfoResponseParams struct {
-	// 实例节点组的个数
+	// 实例节点组的个数。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 实例节点组列表
+	// 实例节点组列表。
 	ReplicaGroups []*ReplicaGroup `json:"ReplicaGroups,omitempty" name:"ReplicaGroups"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4235,44 +4243,44 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxySlowLogRequestParams struct {
-	// 实例Id
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间
+	// 慢查询的开始时间。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// 慢查询的结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 慢查询阈值（单位：毫秒）
+	// 慢查询阈值，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
-	// 页面大小
+	// 分页大小。默认为 20，取值范围[20,1000]。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 偏移量，取Limit整数倍。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeProxySlowLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间
+	// 慢查询的开始时间。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// 慢查询的结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 慢查询阈值（单位：毫秒）
+	// 慢查询阈值，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
-	// 页面大小
+	// 分页大小。默认为 20，取值范围[20,1000]。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 偏移量，取Limit整数倍。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -4302,10 +4310,10 @@ func (r *DescribeProxySlowLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxySlowLogResponseParams struct {
-	// 慢查询总数
+	// 慢查询总数。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 慢查询详情
+	// 慢查询详情。
 	InstanceProxySlowLogDetail []*InstanceProxySlowlogDetail `json:"InstanceProxySlowLogDetail,omitempty" name:"InstanceProxySlowLogDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4498,7 +4506,7 @@ type DescribeSlowLogRequestParams struct {
 	// 慢查询平均执行时间阈值，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
-	// 每个页面展示的慢查询条数，默认值为20。
+	// 每个页面展示的慢查询条数，默认值为20。取值范围：[20,1000]。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
@@ -4523,7 +4531,7 @@ type DescribeSlowLogRequest struct {
 	// 慢查询平均执行时间阈值，单位：毫秒。
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
-	// 每个页面展示的慢查询条数，默认值为20。
+	// 每个页面展示的慢查询条数，默认值为20。取值范围：[20,1000]。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 慢查询条数的偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
@@ -5687,28 +5695,32 @@ type InstanceClusterShard struct {
 }
 
 type InstanceEnumParam struct {
-	// 参数名
+	// 参数名称。
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// 参数类型：enum
+	// 参数类型，例如：Enum。
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 修改后是否需要重启：true，false
+	// 参数值修改后是否需要重启。
+	// - true：需要。
+	// - false：不需要。
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
-	// 参数默认值
+	// 参数默认值。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 
-	// 当前运行参数值
+	// 参数当前运行值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 参数说明
+	// 参数说明。
 	Tips *string `json:"Tips,omitempty" name:"Tips"`
 
-	// 参数可取值
+	// 参数可取的值。
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 
-	// 参数状态, 1: 修改中， 2：修改完成
+	// 参数修改状态。
+	// - 1: 修改中。
+	// - 2：修改完成。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -5746,28 +5758,32 @@ type InstanceIntegerParam struct {
 }
 
 type InstanceMultiParam struct {
-	// 参数名
+	// 参数名称。
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// 参数类型：multi
+	// 参数类型。例如：multi。
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 修改后是否需要重启：true，false
+	// 参数修改后是否需要重启。
+	// - true：需要。
+	// - false：不需要。
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
-	// 参数默认值
+	// 参数默认值。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 
-	// 当前运行参数值
+	// 当前运行参数值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 参数说明
+	// 参数说明。
 	Tips *string `json:"Tips,omitempty" name:"Tips"`
 
-	// 参数说明
+	// 参数说明。
 	EnumValue []*string `json:"EnumValue,omitempty" name:"EnumValue"`
 
-	// 参数状态, 1: 修改中， 2：修改完成
+	// 参数修改的状态。
+	// - 1：修改中。
+	// - 2：修改完成。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -5825,10 +5841,10 @@ type InstanceProxySlowlogDetail struct {
 }
 
 type InstanceSecurityGroupDetail struct {
-	// 实例Id
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 安全组信息
+	// 安全组信息，包括：安全组 ID、安全组名称、安全组出入站规则。
 	SecurityGroupDetails []*SecurityGroupDetail `json:"SecurityGroupDetails,omitempty" name:"SecurityGroupDetails"`
 }
 
@@ -6060,28 +6076,32 @@ type InstanceTagInfo struct {
 }
 
 type InstanceTextParam struct {
-	// 参数名
+	// 参数名称。
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
 
-	// 参数类型：text
+	// 参数类型。例如：text。
 	ValueType *string `json:"ValueType,omitempty" name:"ValueType"`
 
-	// 修改后是否需要重启：true，false
+	// 参数修改后是否需要重启。
+	// - true：需要。
+	// - false：不需要。
 	NeedRestart *string `json:"NeedRestart,omitempty" name:"NeedRestart"`
 
-	// 参数默认值
+	// 参数默认值。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 
-	// 当前运行参数值
+	// 参数当前运行值。
 	CurrentValue *string `json:"CurrentValue,omitempty" name:"CurrentValue"`
 
-	// 参数说明
+	// 参数说明。
 	Tips *string `json:"Tips,omitempty" name:"Tips"`
 
-	// 参数可取值
+	// 参数可取值。
 	TextValue []*string `json:"TextValue,omitempty" name:"TextValue"`
 
-	// 参数状态, 1: 修改中， 2：修改完成
+	// 参数修改状态。
+	// - 1: 修改中。
+	// - 2：修改完成。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -6238,26 +6258,32 @@ func (r *KillMasterGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ManualBackupInstanceRequestParams struct {
-	// 待操作的实例ID，可通过 DescribeInstance接口返回值中的 InstanceId 获取。
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份的备注信息
+	// 手动备份任务的备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 保存天数。0代表指定默认保留时间
+	// 备份数据的保存天数。
+	// - 单位：天；默认值为7天；取值范围：[0.1825]。如果超过 7天，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+	// - 如果不配置该参数，默认与自动备份的保留时间一致。
+	// - 如果未设置自动备份，默认为7天。
 	StorageDays *int64 `json:"StorageDays,omitempty" name:"StorageDays"`
 }
 
 type ManualBackupInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待操作的实例ID，可通过 DescribeInstance接口返回值中的 InstanceId 获取。
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 备份的备注信息
+	// 手动备份任务的备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 保存天数。0代表指定默认保留时间
+	// 备份数据的保存天数。
+	// - 单位：天；默认值为7天；取值范围：[0.1825]。如果超过 7天，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+	// - 如果不配置该参数，默认与自动备份的保留时间一致。
+	// - 如果未设置自动备份，默认为7天。
 	StorageDays *int64 `json:"StorageDays,omitempty" name:"StorageDays"`
 }
 
@@ -7637,19 +7663,19 @@ type RedisCommonInstanceList struct {
 }
 
 type RedisNode struct {
-	// 节点key的个数
+	// Redis 节点上 Key 的个数。
 	Keys *int64 `json:"Keys,omitempty" name:"Keys"`
 
-	// 节点slot分布
+	// Redis 节点 Slot 分布范围。例如：0-5460。
 	Slot *string `json:"Slot,omitempty" name:"Slot"`
 
-	// 节点的序列ID
+	// 节点的序列 ID。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 
-	// 节点的状态
+	// 节点的状态。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 节点角色
+	// 节点角色。
 	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
@@ -7901,10 +7927,10 @@ func (r *RenewInstanceResponse) FromJsonString(s string) error {
 }
 
 type ReplicaGroup struct {
-	// 节点组ID
+	// 节点组 ID。
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 节点组的名称，主节点为空
+	// 节点组的名称，主节点为空。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 节点的可用区ID，比如ap-guangzhou-1
@@ -8091,39 +8117,39 @@ type SecurityGroup struct {
 }
 
 type SecurityGroupDetail struct {
-	// 项目Id
+	// 项目ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 创建时间
+	// 创建安全组的时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 安全组Id
+	// 安全组 ID。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
-	// 安全组名称
+	// 安全组名称。
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" name:"SecurityGroupName"`
 
-	// 安全组标记
+	// 安全组标记。
 	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitempty" name:"SecurityGroupRemark"`
 
-	// 安全组入站规则
+	// 安全组入站规则，即控制访问数据库的来源。
 	InboundRule []*SecurityGroupsInboundAndOutbound `json:"InboundRule,omitempty" name:"InboundRule"`
 
-	// 安全组出站规则
+	// 安全组出站规则。
 	OutboundRule []*SecurityGroupsInboundAndOutbound `json:"OutboundRule,omitempty" name:"OutboundRule"`
 }
 
 type SecurityGroupsInboundAndOutbound struct {
-	// 执行动作
+	// 标识出入数据库的IP与端口是否被允许。
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// IP地址
+	// 出入数据库的IP地址
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 端口号
+	// 端口号。
 	Port *string `json:"Port,omitempty" name:"Port"`
 
-	// 协议类型
+	// 协议类型。
 	Proto *string `json:"Proto,omitempty" name:"Proto"`
 }
 

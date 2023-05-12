@@ -676,6 +676,73 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateChannelSubOrganizationModifyQrCodeRequestParams struct {
+	// 操作人
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 应用编号
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+type CreateChannelSubOrganizationModifyQrCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 应用编号
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *CreateChannelSubOrganizationModifyQrCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelSubOrganizationModifyQrCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelSubOrganizationModifyQrCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChannelSubOrganizationModifyQrCodeResponseParams struct {
+	// 二维码下载链接
+	QrCodeUrl *string `json:"QrCodeUrl,omitempty" name:"QrCodeUrl"`
+
+	// 二维码失效时间 unix 时间戳 精确到秒
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateChannelSubOrganizationModifyQrCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateChannelSubOrganizationModifyQrCodeResponseParams `json:"Response"`
+}
+
+func (r *CreateChannelSubOrganizationModifyQrCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelSubOrganizationModifyQrCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateConvertTaskApiRequestParams struct {
 	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`

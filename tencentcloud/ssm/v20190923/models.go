@@ -305,7 +305,7 @@ type CreateSecretRequestParams struct {
 	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 
-	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
+	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 
 	// 描述信息，用于详细描述用途等，最大支持2048字节。
@@ -314,11 +314,17 @@ type CreateSecretRequestParams struct {
 	// 指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
 	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
 
+	// 凭据类型，默认为自定义凭据。
+	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
+
 	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持4096字节。
 	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
 
 	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
 	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+
+	// JSON 格式字符串，用于指定特定凭据类型的额外配置。
+	AdditionalConfig *string `json:"AdditionalConfig,omitempty" name:"AdditionalConfig"`
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
@@ -330,7 +336,7 @@ type CreateSecretRequest struct {
 	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 
-	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
+	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 
 	// 描述信息，用于详细描述用途等，最大支持2048字节。
@@ -339,11 +345,17 @@ type CreateSecretRequest struct {
 	// 指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
 	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
 
+	// 凭据类型，默认为自定义凭据。
+	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
+
 	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持4096字节。
 	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
 
 	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
 	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+
+	// JSON 格式字符串，用于指定特定凭据类型的额外配置。
+	AdditionalConfig *string `json:"AdditionalConfig,omitempty" name:"AdditionalConfig"`
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
@@ -365,8 +377,10 @@ func (r *CreateSecretRequest) FromJsonString(s string) error {
 	delete(f, "VersionId")
 	delete(f, "Description")
 	delete(f, "KmsKeyId")
+	delete(f, "SecretType")
 	delete(f, "SecretBinary")
 	delete(f, "SecretString")
+	delete(f, "AdditionalConfig")
 	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSecretRequest has unknown keys!", "")
@@ -836,6 +850,10 @@ type DescribeSecretResponseParams struct {
 	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 凭据额外配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdditionalConfig *string `json:"AdditionalConfig,omitempty" name:"AdditionalConfig"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

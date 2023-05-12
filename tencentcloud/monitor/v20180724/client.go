@@ -3661,6 +3661,56 @@ func (c *Client) DescribeBindingPolicyObjectListWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeClusterAgentCreatingProgressRequest() (request *DescribeClusterAgentCreatingProgressRequest) {
+    request = &DescribeClusterAgentCreatingProgressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeClusterAgentCreatingProgress")
+    
+    
+    return
+}
+
+func NewDescribeClusterAgentCreatingProgressResponse() (response *DescribeClusterAgentCreatingProgressResponse) {
+    response = &DescribeClusterAgentCreatingProgressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterAgentCreatingProgress
+// 获取prom实例中集群详细的关联状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeClusterAgentCreatingProgress(request *DescribeClusterAgentCreatingProgressRequest) (response *DescribeClusterAgentCreatingProgressResponse, err error) {
+    return c.DescribeClusterAgentCreatingProgressWithContext(context.Background(), request)
+}
+
+// DescribeClusterAgentCreatingProgress
+// 获取prom实例中集群详细的关联状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeClusterAgentCreatingProgressWithContext(ctx context.Context, request *DescribeClusterAgentCreatingProgressRequest) (response *DescribeClusterAgentCreatingProgressResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterAgentCreatingProgressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterAgentCreatingProgress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterAgentCreatingProgressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeConditionsTemplateListRequest() (request *DescribeConditionsTemplateListRequest) {
     request = &DescribeConditionsTemplateListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -228,12 +228,27 @@ func (r *GetRuntimeResourceMonitorMetricMCResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ListDeployableRuntimesMCRequestParams struct {
+	// 应用id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
+	// 实例id
+	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 版本类型 0-pro 1-lite
+	PlanType *int64 `json:"PlanType,omitempty" name:"PlanType"`
 }
 
 type ListDeployableRuntimesMCRequest struct {
 	*tchttp.BaseRequest
 	
+	// 应用id
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 实例id
+	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 版本类型 0-pro 1-lite
+	PlanType *int64 `json:"PlanType,omitempty" name:"PlanType"`
 }
 
 func (r *ListDeployableRuntimesMCRequest) ToJsonString() string {
@@ -248,7 +263,9 @@ func (r *ListDeployableRuntimesMCRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ProjectId")
+	delete(f, "InstanceId")
+	delete(f, "PlanType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDeployableRuntimesMCRequest has unknown keys!", "")
 	}

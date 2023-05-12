@@ -586,6 +586,9 @@ type CreateAclRequestParams struct {
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
+	// 关联高危DB模版ID
+	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitempty" name:"ACTemplateIdSet"`
+
 	// 是否开启rdp磁盘映射文件上传
 	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitempty" name:"AllowDiskFileUp"`
 
@@ -667,6 +670,9 @@ type CreateAclRequest struct {
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
+	// 关联高危DB模版ID
+	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitempty" name:"ACTemplateIdSet"`
+
 	// 是否开启rdp磁盘映射文件上传
 	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitempty" name:"AllowDiskFileUp"`
 
@@ -723,6 +729,7 @@ func (r *CreateAclRequest) FromJsonString(s string) error {
 	delete(f, "DeviceGroupIdSet")
 	delete(f, "AccountSet")
 	delete(f, "CmdTemplateIdSet")
+	delete(f, "ACTemplateIdSet")
 	delete(f, "AllowDiskFileUp")
 	delete(f, "AllowDiskFileDown")
 	delete(f, "AllowShellFileUp")
@@ -3414,6 +3421,9 @@ type ModifyAclRequestParams struct {
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
+	// 关联高危DB模版ID
+	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitempty" name:"ACTemplateIdSet"`
+
 	// 是否开启 RDP 磁盘映射文件上传
 	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitempty" name:"AllowDiskFileUp"`
 
@@ -3498,6 +3508,9 @@ type ModifyAclRequest struct {
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
+	// 关联高危DB模版ID
+	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitempty" name:"ACTemplateIdSet"`
+
 	// 是否开启 RDP 磁盘映射文件上传
 	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitempty" name:"AllowDiskFileUp"`
 
@@ -3555,6 +3568,7 @@ func (r *ModifyAclRequest) FromJsonString(s string) error {
 	delete(f, "DeviceGroupIdSet")
 	delete(f, "AccountSet")
 	delete(f, "CmdTemplateIdSet")
+	delete(f, "ACTemplateIdSet")
 	delete(f, "AllowDiskFileUp")
 	delete(f, "AllowDiskFileDown")
 	delete(f, "AllowShellFileUp")

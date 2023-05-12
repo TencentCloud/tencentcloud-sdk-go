@@ -1598,7 +1598,7 @@ func NewDescribeDBSecurityGroupsResponse() (response *DescribeDBSecurityGroupsRe
 }
 
 // DescribeDBSecurityGroups
-// 本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+// 本接口（DescribeDBSecurityGroups）用于查询实例的安全组详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
@@ -1619,7 +1619,7 @@ func (c *Client) DescribeDBSecurityGroups(request *DescribeDBSecurityGroupsReque
 }
 
 // DescribeDBSecurityGroups
-// 本接口(DescribeDBSecurityGroups)用于查询实例的安全组详情。
+// 本接口（DescribeDBSecurityGroups）用于查询实例的安全组详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDINSTANCEINFOFAILED = "FailedOperation.AddInstanceInfoFailed"
@@ -1670,7 +1670,7 @@ func NewDescribeInstanceAccountResponse() (response *DescribeInstanceAccountResp
 }
 
 // DescribeInstanceAccount
-// 查看实例子账号信息
+// 本接口（DescribeInstanceAccount）用于查看实例子账号信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1683,7 +1683,7 @@ func (c *Client) DescribeInstanceAccount(request *DescribeInstanceAccountRequest
 }
 
 // DescribeInstanceAccount
-// 查看实例子账号信息
+// 本接口（DescribeInstanceAccount）用于查看实例子账号信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2394,7 +2394,7 @@ func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsRespon
 }
 
 // DescribeInstanceParams
-// 查询实例参数列表
+// 本接口（DescribeInstanceParams）用于查询实例参数列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2414,7 +2414,7 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
 }
 
 // DescribeInstanceParams
-// 查询实例参数列表
+// 本接口（DescribeInstanceParams）用于查询实例参数列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2464,7 +2464,7 @@ func NewDescribeInstanceSecurityGroupResponse() (response *DescribeInstanceSecur
 }
 
 // DescribeInstanceSecurityGroup
-// 查询实例安全组信息
+// 本接口（DescribeInstanceSecurityGroup）用于查询实例安全组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2481,7 +2481,7 @@ func (c *Client) DescribeInstanceSecurityGroup(request *DescribeInstanceSecurity
 }
 
 // DescribeInstanceSecurityGroup
-// 查询实例安全组信息
+// 本接口（DescribeInstanceSecurityGroup）用于查询实例安全组信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2580,7 +2580,7 @@ func NewDescribeInstanceZoneInfoResponse() (response *DescribeInstanceZoneInfoRe
 }
 
 // DescribeInstanceZoneInfo
-// 查询Redis节点详细信息
+// 本接口（DescribeInstanceZoneInfo）用于查询 Redis 节点详细信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2597,7 +2597,7 @@ func (c *Client) DescribeInstanceZoneInfo(request *DescribeInstanceZoneInfoReque
 }
 
 // DescribeInstanceZoneInfo
-// 查询Redis节点详细信息
+// 本接口（DescribeInstanceZoneInfo）用于查询 Redis 节点详细信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -4038,7 +4038,7 @@ func NewManualBackupInstanceResponse() (response *ManualBackupInstanceResponse) 
 }
 
 // ManualBackupInstance
-// 手动备份Redis实例
+// 本接口（ManualBackupInstance）用于手动备份Redis实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMMITFLOWERROR = "FailedOperation.CommitFlowError"
@@ -4056,7 +4056,7 @@ func (c *Client) ManualBackupInstance(request *ManualBackupInstanceRequest) (res
 }
 
 // ManualBackupInstance
-// 手动备份Redis实例
+// 本接口（ManualBackupInstance）用于手动备份Redis实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMMITFLOWERROR = "FailedOperation.CommitFlowError"

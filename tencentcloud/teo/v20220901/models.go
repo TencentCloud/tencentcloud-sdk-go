@@ -605,7 +605,6 @@ type BotConfig struct {
 type BotExtendAction struct {
 	// 处置动作，取值有：
 	// <li>monitor：观察；</li>
-	// <li>trans：放行；</li>
 	// <li>alg：JavaScript挑战；</li>
 	// <li>captcha：托管挑战；</li>
 	// <li>random：随机，按照ExtendActions分配处置动作和比例；</li>
@@ -687,6 +686,7 @@ type BotUserRule struct {
 	// <li>trans：放行；</li>
 	// <li>alg：JavaScript挑战；</li>
 	// <li>captcha：托管挑战；</li>
+	// <li>random：随机处置；</li>
 	// <li>silence：静默；</li>
 	// <li>shortdelay：短时响应；</li>
 	// <li>longdelay：长时响应。</li>
@@ -2850,7 +2850,7 @@ func (r *DeleteZoneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccelerationDomainsRequestParams struct {
-	// 加速域名所属站点ID。不填写该参数默认返回所有站点下的加速域名。
+	// 加速域名所属站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
@@ -2888,7 +2888,7 @@ type DescribeAccelerationDomainsRequestParams struct {
 type DescribeAccelerationDomainsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 加速域名所属站点ID。不填写该参数默认返回所有站点下的加速域名。
+	// 加速域名所属站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：

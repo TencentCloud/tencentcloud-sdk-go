@@ -12008,6 +12008,9 @@ type DescribeEmergencyVulListRequestParams struct {
 
 	// 排序字段 PublishDate  LastScanTime HostCount
 	By *string `json:"By,omitempty" name:"By"`
+
+	// 是否热点漏洞
+	HotspotAttack *bool `json:"HotspotAttack,omitempty" name:"HotspotAttack"`
 }
 
 type DescribeEmergencyVulListRequest struct {
@@ -12032,6 +12035,9 @@ type DescribeEmergencyVulListRequest struct {
 
 	// 排序字段 PublishDate  LastScanTime HostCount
 	By *string `json:"By,omitempty" name:"By"`
+
+	// 是否热点漏洞
+	HotspotAttack *bool `json:"HotspotAttack,omitempty" name:"HotspotAttack"`
 }
 
 func (r *DescribeEmergencyVulListRequest) ToJsonString() string {
@@ -12051,6 +12057,7 @@ func (r *DescribeEmergencyVulListRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "HotspotAttack")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEmergencyVulListRequest has unknown keys!", "")
 	}
@@ -19404,6 +19411,18 @@ type EmergencyVul struct {
 	// 已防御的攻击次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenseAttackCount *uint64 `json:"DefenseAttackCount,omitempty" name:"DefenseAttackCount"`
+
+	// 检测规则 0 - 版本比对, 1 - POC验证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *uint64 `json:"Method,omitempty" name:"Method"`
+
+	// 攻击热度级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackLevel *uint64 `json:"AttackLevel,omitempty" name:"AttackLevel"`
+
+	// 是否有漏洞主机开启漏洞防御
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefenseState *bool `json:"DefenseState,omitempty" name:"DefenseState"`
 }
 
 type EventStat struct {

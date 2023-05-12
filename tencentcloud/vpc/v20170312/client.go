@@ -14884,7 +14884,7 @@ func NewMigratePrivateIpAddressResponse() (response *MigratePrivateIpAddressResp
 }
 
 // MigratePrivateIpAddress
-//  本接口（MigratePrivateIpAddress）用于弹性网卡内网IP迁移。
+// 本接口（MigratePrivateIpAddress）用于弹性网卡内网IP迁移。
 //
 // * 该接口用于将一个内网IP从一个弹性网卡上迁移到另外一个弹性网卡，主IP地址不支持迁移。
 //
@@ -14908,7 +14908,7 @@ func (c *Client) MigratePrivateIpAddress(request *MigratePrivateIpAddressRequest
 }
 
 // MigratePrivateIpAddress
-//  本接口（MigratePrivateIpAddress）用于弹性网卡内网IP迁移。
+// 本接口（MigratePrivateIpAddress）用于弹性网卡内网IP迁移。
 //
 // * 该接口用于将一个内网IP从一个弹性网卡上迁移到另外一个弹性网卡，主IP地址不支持迁移。
 //

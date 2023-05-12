@@ -343,6 +343,122 @@ func (c *Client) DescribeRunsWithContext(ctx context.Context, request *DescribeR
     return
 }
 
+func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
+    request = &DescribeTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeTables")
+    
+    
+    return
+}
+
+func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
+    response = &DescribeTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTables
+// 查询表格。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
+    return c.DescribeTablesWithContext(context.Background(), request)
+}
+
+// DescribeTables
+// 查询表格。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTablesWithContext(ctx context.Context, request *DescribeTablesRequest) (response *DescribeTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTablesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTablesRowsRequest() (request *DescribeTablesRowsRequest) {
+    request = &DescribeTablesRowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "DescribeTablesRows")
+    
+    
+    return
+}
+
+func NewDescribeTablesRowsResponse() (response *DescribeTablesRowsResponse) {
+    response = &DescribeTablesRowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTablesRows
+// 查询表格行数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTablesRows(request *DescribeTablesRowsRequest) (response *DescribeTablesRowsResponse, err error) {
+    return c.DescribeTablesRowsWithContext(context.Background(), request)
+}
+
+// DescribeTablesRows
+// 查询表格行数据。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTablesRowsWithContext(ctx context.Context, request *DescribeTablesRowsRequest) (response *DescribeTablesRowsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTablesRowsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTablesRows require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTablesRowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRunCallsRequest() (request *GetRunCallsRequest) {
     request = &GetRunCallsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -513,6 +629,64 @@ func (c *Client) ImportTableFileWithContext(ctx context.Context, request *Import
     request.SetContext(ctx)
     
     response = NewImportTableFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRetryRunsRequest() (request *RetryRunsRequest) {
+    request = &RetryRunsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("omics", APIVersion, "RetryRuns")
+    
+    
+    return
+}
+
+func NewRetryRunsResponse() (response *RetryRunsResponse) {
+    response = &RetryRunsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RetryRuns
+// 重试任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RetryRuns(request *RetryRunsRequest) (response *RetryRunsResponse, err error) {
+    return c.RetryRunsWithContext(context.Background(), request)
+}
+
+// RetryRuns
+// 重试任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RetryRunsWithContext(ctx context.Context, request *RetryRunsRequest) (response *RetryRunsResponse, err error) {
+    if request == nil {
+        request = NewRetryRunsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetryRuns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRetryRunsResponse()
     err = c.Send(request, response)
     return
 }

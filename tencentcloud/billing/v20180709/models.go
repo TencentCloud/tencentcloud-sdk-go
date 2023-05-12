@@ -175,7 +175,7 @@ type BillDetailComponent struct {
 	// 组件原价
 	Cost *string `json:"Cost,omitempty" name:"Cost"`
 
-	// 折扣率
+	// 折扣率，本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
 	Discount *string `json:"Discount,omitempty" name:"Discount"`
 
 	// 优惠类型
@@ -201,7 +201,7 @@ type BillDetailComponent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCode *string `json:"ComponentCode,omitempty" name:"ComponentCode"`
 
-	// 合同价
+	// 组件单价
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContractPrice *string `json:"ContractPrice,omitempty" name:"ContractPrice"`
 
@@ -213,23 +213,23 @@ type BillDetailComponent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiTimeSpan *string `json:"RiTimeSpan,omitempty" name:"RiTimeSpan"`
 
-	// 按组件原价的口径换算的预留实例抵扣金额
+	// 预留实例抵扣组件原价，本产品或服务使用预留实例抵扣的组件原价金额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalCostWithRI *string `json:"OriginalCostWithRI,omitempty" name:"OriginalCostWithRI"`
 
-	// 节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
+	// 节省计划抵扣率，节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SPDeductionRate *string `json:"SPDeductionRate,omitempty" name:"SPDeductionRate"`
 
-	// 节省计划抵扣的SP包面值
+	// 节省计划抵扣金额，节省计划抵扣的SP包面值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SPDeduction *string `json:"SPDeduction,omitempty" name:"SPDeduction"`
 
-	// 按组件原价的口径换算的节省计划抵扣金额
+	// 节省计划抵扣组件原价，节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitempty" name:"OriginalCostWithSP"`
 
-	// 综合了官网折扣、预留实例抵扣、节省计划抵扣的混合折扣率。若没有预留实例抵扣、节省计划抵扣,混合折扣率等于折扣率
+	// 混合折扣率，综合各类折扣抵扣信息后的最终折扣率，混合折扣率 = 优惠后总价 / 组件原价
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlendedDiscount *string `json:"BlendedDiscount,omitempty" name:"BlendedDiscount"`
 }
@@ -964,7 +964,7 @@ func (r *DescribeAccountBalanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillDetailRequestParams struct {
-	// 偏移量
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 数量，最大值为100
@@ -973,13 +973,13 @@ type DescribeBillDetailRequestParams struct {
 	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
 	PeriodType *string `json:"PeriodType,omitempty" name:"PeriodType"`
 
-	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
+	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
 	Month *string `json:"Month,omitempty" name:"Month"`
 
-	// 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。(不支持跨月查询)
+	// 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。(不支持跨月查询)
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。（不支持跨月查询）
+	// 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。（不支持跨月查询）
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 是否需要访问列表的总记录数，用于前端分页
@@ -1030,12 +1030,15 @@ type DescribeBillDetailRequestParams struct {
 	// 产品名称代码
 	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
+	Context *string `json:"Context,omitempty" name:"Context"`
 }
 
 type DescribeBillDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 数量，最大值为100
@@ -1044,13 +1047,13 @@ type DescribeBillDetailRequest struct {
 	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
 	PeriodType *string `json:"PeriodType,omitempty" name:"PeriodType"`
 
-	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
+	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
 	Month *string `json:"Month,omitempty" name:"Month"`
 
-	// 周期开始时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。(不支持跨月查询)
+	// 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。(不支持跨月查询)
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 周期结束时间，格式为Y-m-d H:i:s，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。（不支持跨月查询）
+	// 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。（不支持跨月查询）
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 是否需要访问列表的总记录数，用于前端分页
@@ -1101,6 +1104,9 @@ type DescribeBillDetailRequest struct {
 	// 产品名称代码
 	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
+	Context *string `json:"Context,omitempty" name:"Context"`
 }
 
 func (r *DescribeBillDetailRequest) ToJsonString() string {
@@ -1128,6 +1134,7 @@ func (r *DescribeBillDetailRequest) FromJsonString(s string) error {
 	delete(f, "ActionType")
 	delete(f, "ProjectId")
 	delete(f, "BusinessCode")
+	delete(f, "Context")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillDetailRequest has unknown keys!", "")
 	}
@@ -1139,9 +1146,13 @@ type DescribeBillDetailResponseParams struct {
 	// 详情列表
 	DetailSet []*BillDetail `json:"DetailSet,omitempty" name:"DetailSet"`
 
-	// 总记录数
+	// 总记录数，24小时缓存一次，可能比实际总记录数少
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

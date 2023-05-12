@@ -7176,6 +7176,10 @@ type RumProject struct {
 	// 项目状态(1 创建中，2 运行中，3 异常，4 重启中，5 停止中，6 已停止， 7 销毁中，8 已销毁)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectStatus *int64 `json:"ProjectStatus,omitempty" name:"ProjectStatus"`
+
+	// 日志接入点，用户忽略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessPoint *string `json:"AccessPoint,omitempty" name:"AccessPoint"`
 }
 
 type RumPvInfo struct {

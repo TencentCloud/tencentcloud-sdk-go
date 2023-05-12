@@ -27846,6 +27846,10 @@ type NetworkAuditRecord struct {
 
 	// 操作人uin
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 策略id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 }
 
 type NetworkClusterInfoItem struct {

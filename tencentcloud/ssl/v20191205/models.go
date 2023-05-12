@@ -568,6 +568,14 @@ type CompanyInfo struct {
 
 	// 公司电话
 	CompanyPhone *string `json:"CompanyPhone,omitempty" name:"CompanyPhone"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdType *string `json:"IdType,omitempty" name:"IdType"`
+
+	// ID号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdNumber *string `json:"IdNumber,omitempty" name:"IdNumber"`
 }
 
 // Predefined struct for user
@@ -1294,6 +1302,18 @@ type DescribeCertificateResponseParams struct {
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
+	// CA证书的所有加密方式	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitempty" name:"CAEncryptAlgorithms"`
+
+	// CA证书的所有通用名称	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CACommonNames []*string `json:"CACommonNames,omitempty" name:"CACommonNames"`
+
+	// CA证书所有的到期时间	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CAEndTimes []*string `json:"CAEndTimes,omitempty" name:"CAEndTimes"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

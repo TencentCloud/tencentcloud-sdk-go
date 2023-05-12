@@ -429,6 +429,183 @@ func (r *DescribeRunsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTablesRequestParams struct {
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - Name：表格名称
+	// - TableId：表格ID
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeTablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - Name：表格名称
+	// - TableId：表格ID
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTablesResponseParams struct {
+	// 结果总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 表格列表。
+	Tables []*Table `json:"Tables,omitempty" name:"Tables"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTablesResponseParams `json:"Response"`
+}
+
+func (r *DescribeTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTablesRowsRequestParams struct {
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 表格ID。
+	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - Tr：表格数据，支持模糊查询
+	// - TableRowUuid：表格行UUID
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeTablesRowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 表格ID。
+	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤器，支持过滤字段：
+	// - Tr：表格数据，支持模糊查询
+	// - TableRowUuid：表格行UUID
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeTablesRowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablesRowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TableId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTablesRowsResponseParams struct {
+	// 结果总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 表格行列表。
+	Rows []*TableRow `json:"Rows,omitempty" name:"Rows"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTablesRowsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTablesRowsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTablesRowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablesRowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Environment struct {
 	// 环境ID。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
@@ -769,6 +946,67 @@ type ResourceIds struct {
 	// 弹性容器集群ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EKSId *string `json:"EKSId,omitempty" name:"EKSId"`
+}
+
+// Predefined struct for user
+type RetryRunsRequestParams struct {
+	// 关联项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务UUID。
+	RunUuids []*string `json:"RunUuids,omitempty" name:"RunUuids"`
+}
+
+type RetryRunsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关联项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务UUID。
+	RunUuids []*string `json:"RunUuids,omitempty" name:"RunUuids"`
+}
+
+func (r *RetryRunsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetryRunsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "RunUuids")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RetryRunsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RetryRunsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RetryRunsResponse struct {
+	*tchttp.BaseResponse
+	Response *RetryRunsResponseParams `json:"Response"`
+}
+
+func (r *RetryRunsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetryRunsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Run struct {
@@ -1130,6 +1368,56 @@ type StorageOption struct {
 	// - turbo标准型起售40TiB，即40960GiB；扩容步长20TiB，即20480 GiB。
 	// - turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+}
+
+type Table struct {
+	// 表格ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 关联项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 表格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 表格描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 表格列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*TableColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+}
+
+type TableColumn struct {
+	// 列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Header *string `json:"Header,omitempty" name:"Header"`
+
+	// 列数据类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataType *string `json:"DataType,omitempty" name:"DataType"`
+}
+
+type TableRow struct {
+	// 表格行UUID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableRowUuid *string `json:"TableRowUuid,omitempty" name:"TableRowUuid"`
+
+	// 表格行内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*string `json:"Content,omitempty" name:"Content"`
 }
 
 type VPCOption struct {

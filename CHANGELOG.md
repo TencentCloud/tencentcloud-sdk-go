@@ -1,3 +1,350 @@
+# Release v1.0.655
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 39 次发布
+
+发布时间：2023-05-12 01:04:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
+
+	* 新增入参：Context
+
+	* 新增出参：Context
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 80 次发布
+
+发布时间：2023-05-12 01:10:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTopicFlowRanking](https://cloud.tencent.com/document/api/597/90976)
+
+新增数据结构：
+
+* [ConsumerGroupSpeed](https://cloud.tencent.com/document/api/597/40861#ConsumerGroupSpeed)
+* [TopicFlowRanking](https://cloud.tencent.com/document/api/597/40861#TopicFlowRanking)
+* [TopicFlowRankingResult](https://cloud.tencent.com/document/api/597/40861#TopicFlowRankingResult)
+* [TopicMessageHeapRanking](https://cloud.tencent.com/document/api/597/40861#TopicMessageHeapRanking)
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 84 次发布
+
+发布时间：2023-05-12 01:15:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEmergencyVulList](https://cloud.tencent.com/document/api/296/60903)
+
+	* 新增入参：HotspotAttack
+
+
+修改数据结构：
+
+* [EmergencyVul](https://cloud.tencent.com/document/api/296/19867#EmergencyVul)
+
+	* 新增成员：Method, AttackLevel, DefenseState
+
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 11 次发布
+
+发布时间：2023-05-12 01:18:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAcl](https://cloud.tencent.com/document/api/1025/74411)
+
+	* 新增入参：ACTemplateIdSet
+
+* [ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)
+
+	* 新增入参：ACTemplateIdSet
+
+
+
+
+## 数据连接器(eis) 版本：2021-06-01
+
+### 第 6 次发布
+
+发布时间：2023-05-12 01:25:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListDeployableRuntimesMC](https://cloud.tencent.com/document/api/1270/57965)
+
+	* 新增入参：ProjectId, InstanceId, PlanType
+
+
+
+
+## 数据连接器(eis) 版本：2020-07-15
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 64 次发布
+
+发布时间：2023-05-11 17:55:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateChannelSubOrganizationModifyQrCode](https://cloud.tencent.com/document/api/1323/90975)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 14 次发布
+
+发布时间：2023-05-12 01:31:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/1131/76635#DeviceInfo)
+
+	* 新增成员：LogLevel
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 16 次发布
+
+发布时间：2023-05-12 01:31:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/1131/53113#DeviceInfo)
+
+	* 新增成员：LogLevel
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 88 次发布
+
+发布时间：2023-05-12 01:36:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClusterAgentCreatingProgress](https://cloud.tencent.com/document/api/248/90977)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 32 次发布
+
+发布时间：2023-05-12 01:39:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ClusterSession](https://cloud.tencent.com/document/api/849/52010#ClusterSession)
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+
+	* 新增成员：ClusterSessions
+
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 4 次发布
+
+发布时间：2023-05-12 01:40:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTables](https://cloud.tencent.com/document/api/1643/90980)
+* [DescribeTablesRows](https://cloud.tencent.com/document/api/1643/90979)
+* [RetryRuns](https://cloud.tencent.com/document/api/1643/90978)
+
+新增数据结构：
+
+* [Table](https://cloud.tencent.com/document/api/1643/89100#Table)
+* [TableColumn](https://cloud.tencent.com/document/api/1643/89100#TableColumn)
+* [TableRow](https://cloud.tencent.com/document/api/1643/89100#TableRow)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 27 次发布
+
+发布时间：2023-05-12 01:43:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RumProject](https://cloud.tencent.com/document/api/1464/61476#RumProject)
+
+	* 新增成员：AccessPoint
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 31 次发布
+
+发布时间：2023-05-12 01:45:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674)
+
+	* 新增出参：CAEncryptAlgorithms, CACommonNames, CAEndTimes
+
+
+修改数据结构：
+
+* [CompanyInfo](https://cloud.tencent.com/document/api/400/41679#CompanyInfo)
+
+	* 新增成员：IdType, IdNumber
+
+
+
+
+## 凭据管理系统(ssm) 版本：2019-09-23
+
+### 第 9 次发布
+
+发布时间：2023-05-12 01:46:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSecret](https://cloud.tencent.com/document/api/1140/40529)
+
+	* 新增入参：SecretType, AdditionalConfig
+
+	* <font color="#dd0000">**修改入参**：</font>VersionId
+
+* [DescribeSecret](https://cloud.tencent.com/document/api/1140/40526)
+
+	* 新增出参：AdditionalConfig
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 39 次发布
+
+发布时间：2023-05-12 01:48:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetworkAuditRecord](https://cloud.tencent.com/document/api/1285/65614#NetworkAuditRecord)
+
+	* 新增成员：PolicyId
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 153 次发布
+
+发布时间：2023-05-12 02:00:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecurityGroupLimitSet](https://cloud.tencent.com/document/api/215/15824#SecurityGroupLimitSet)
+
+	* 新增成员：SecurityGroupExtendedPolicyLimit, SecurityGroupReferedCvmAndEniLimit, SecurityGroupReferedSvcLimit
+
+
+
+
 # Release v1.0.654
 
 ## 语音识别(asr) 版本：2019-06-14

@@ -23814,6 +23814,15 @@ type SecurityGroupLimitSet struct {
 
 	// 实例关联安全组数
 	InstanceSecurityGroupLimit *uint64 `json:"InstanceSecurityGroupLimit,omitempty" name:"InstanceSecurityGroupLimit"`
+
+	// 安全组展开后的规则数限制
+	SecurityGroupExtendedPolicyLimit *uint64 `json:"SecurityGroupExtendedPolicyLimit,omitempty" name:"SecurityGroupExtendedPolicyLimit"`
+
+	// 被引用的安全组关联CVM、ENI的实例配额
+	SecurityGroupReferedCvmAndEniLimit *uint64 `json:"SecurityGroupReferedCvmAndEniLimit,omitempty" name:"SecurityGroupReferedCvmAndEniLimit"`
+
+	// 被引用的安全组关联数据库、LB等服务实例配额
+	SecurityGroupReferedSvcLimit *uint64 `json:"SecurityGroupReferedSvcLimit,omitempty" name:"SecurityGroupReferedSvcLimit"`
 }
 
 type SecurityGroupPolicy struct {
@@ -23830,7 +23839,7 @@ type SecurityGroupPolicy struct {
 	// 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
 	ServiceTemplate *ServiceTemplateSpecification `json:"ServiceTemplate,omitempty" name:"ServiceTemplate"`
 
-	// 网段或IP(互斥)。
+	// 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。
 	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 
 	// 网段或IPv6(互斥)。
@@ -23854,12 +23863,15 @@ type SecurityGroupPolicy struct {
 
 type SecurityGroupPolicySet struct {
 	// 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitempty" name:"Version"`
 
 	// 出站规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Egress []*SecurityGroupPolicy `json:"Egress,omitempty" name:"Egress"`
 
 	// 入站规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ingress []*SecurityGroupPolicy `json:"Ingress,omitempty" name:"Ingress"`
 }
 

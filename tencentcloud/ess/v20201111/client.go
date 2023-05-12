@@ -317,6 +317,66 @@ func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateChannelSubOrganizationModifyQrCodeRequest() (request *CreateChannelSubOrganizationModifyQrCodeRequest) {
+    request = &CreateChannelSubOrganizationModifyQrCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateChannelSubOrganizationModifyQrCode")
+    
+    
+    return
+}
+
+func NewCreateChannelSubOrganizationModifyQrCodeResponse() (response *CreateChannelSubOrganizationModifyQrCodeResponse) {
+    response = &CreateChannelSubOrganizationModifyQrCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateChannelSubOrganizationModifyQrCode
+// 生成子客编辑企业信息二维码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
+//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateChannelSubOrganizationModifyQrCode(request *CreateChannelSubOrganizationModifyQrCodeRequest) (response *CreateChannelSubOrganizationModifyQrCodeResponse, err error) {
+    return c.CreateChannelSubOrganizationModifyQrCodeWithContext(context.Background(), request)
+}
+
+// CreateChannelSubOrganizationModifyQrCode
+// 生成子客编辑企业信息二维码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
+//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateChannelSubOrganizationModifyQrCodeWithContext(ctx context.Context, request *CreateChannelSubOrganizationModifyQrCodeRequest) (response *CreateChannelSubOrganizationModifyQrCodeResponse, err error) {
+    if request == nil {
+        request = NewCreateChannelSubOrganizationModifyQrCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateChannelSubOrganizationModifyQrCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateChannelSubOrganizationModifyQrCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConvertTaskApiRequest() (request *CreateConvertTaskApiRequest) {
     request = &CreateConvertTaskApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
