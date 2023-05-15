@@ -423,6 +423,9 @@ func (r *ListRuntimeDeployedInstancesMCResponse) FromJsonString(s string) error 
 type ListRuntimesMCRequestParams struct {
 	// 环境运行类型：0:运行时类型、1:api类型
 	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
+
+	// 计划类型：0-pro 1-lite
+	PlanType *int64 `json:"PlanType,omitempty" name:"PlanType"`
 }
 
 type ListRuntimesMCRequest struct {
@@ -430,6 +433,9 @@ type ListRuntimesMCRequest struct {
 	
 	// 环境运行类型：0:运行时类型、1:api类型
 	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
+
+	// 计划类型：0-pro 1-lite
+	PlanType *int64 `json:"PlanType,omitempty" name:"PlanType"`
 }
 
 func (r *ListRuntimesMCRequest) ToJsonString() string {
@@ -445,6 +451,7 @@ func (r *ListRuntimesMCRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RuntimeClass")
+	delete(f, "PlanType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListRuntimesMCRequest has unknown keys!", "")
 	}

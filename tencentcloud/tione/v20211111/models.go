@@ -121,11 +121,11 @@ type BatchTaskDetail struct {
 	// 计费模式
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
-	// 预付费专用资源组id
+	// 包年包月资源组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
 
-	// 预付费专用资源组名称
+	// 包年包月资源组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
 
@@ -217,6 +217,10 @@ type BatchTaskDetail struct {
 	// 运行中的Pod的名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodList []*string `json:"PodList,omitempty" name:"PodList"`
+
+	// 模型推理代码信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInferenceCodeInfo *CosPathInfo `json:"ModelInferenceCodeInfo,omitempty" name:"ModelInferenceCodeInfo"`
 }
 
 type BatchTaskInstance struct {
@@ -259,7 +263,7 @@ type BatchTaskSetItem struct {
 	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
 	ChargeStatus *string `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
 
-	// 预付费专用资源组
+	// 包年包月资源组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
 
@@ -295,14 +299,14 @@ type BatchTaskSetItem struct {
 	// 输出
 	Outputs []*DataConfig `json:"Outputs,omitempty" name:"Outputs"`
 
-	// 预付费专用资源组名称
+	// 包年包月资源组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
 
 	// 失败原因
 	FailureReason *string `json:"FailureReason,omitempty" name:"FailureReason"`
 
-	// 计费金额信息，eg：2.00元/小时 (for后付费)
+	// 计费金额信息，eg：2.00元/小时 (for 按量计费)
 	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
 }
 
@@ -473,7 +477,7 @@ type CreateBatchTaskRequestParams struct {
 	// 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	BatchTaskName *string `json:"BatchTaskName,omitempty" name:"BatchTaskName"`
 
-	// 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+	// 计费模式，eg：PREPAID 包年包月；POSTPAID_BY_HOUR 按量计费
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 资源配置
@@ -491,7 +495,7 @@ type CreateBatchTaskRequestParams struct {
 	// 任务周期描述
 	CronInfo *CronInfo `json:"CronInfo,omitempty" name:"CronInfo"`
 
-	// 预付费专用资源组
+	// 包年包月资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
 
 	// 标签配置
@@ -534,7 +538,7 @@ type CreateBatchTaskRequest struct {
 	// 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	BatchTaskName *string `json:"BatchTaskName,omitempty" name:"BatchTaskName"`
 
-	// 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+	// 计费模式，eg：PREPAID 包年包月；POSTPAID_BY_HOUR 按量计费
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 资源配置
@@ -552,7 +556,7 @@ type CreateBatchTaskRequest struct {
 	// 任务周期描述
 	CronInfo *CronInfo `json:"CronInfo,omitempty" name:"CronInfo"`
 
-	// 预付费专用资源组
+	// 包年包月资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
 
 	// 标签配置
@@ -2609,7 +2613,7 @@ type DescribeBatchTasksRequestParams struct {
 	// Name（名称）：task1
 	// Id（task ID）：train-23091792777383936
 	// Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
-	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+	// ChargeType（计费类型）：PREPAID 包年包月 / POSTPAID_BY_HOUR 按量计费
 	// CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -2638,7 +2642,7 @@ type DescribeBatchTasksRequest struct {
 	// Name（名称）：task1
 	// Id（task ID）：train-23091792777383936
 	// Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
-	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+	// ChargeType（计费类型）：PREPAID 包年包月 / POSTPAID_BY_HOUR 按量计费
 	// CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 

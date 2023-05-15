@@ -18528,6 +18528,10 @@ type DescribeVulListRequestParams struct {
 	// <li>VulCategory- string - 是否必填：否 - 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
 	// <li>IsSupportDefense - int- 是否必填：否 - 是否支持防御 0:不支持 1:支持</li>
 	// <li>Labels- string- 是否必填：否 - 标签搜索</li>
+	// <li>IsSupportAutoFix- string- 是否必填：否 - 是否支持自动修复 0:不支持 1:支持</li>
+	// <li>CvssScore- string- 是否必填：否 - CvssScore大于多少</li>
+	// <li>AttackLevel- string- 是否必填：否 - 攻击热度大于多少</li>
+	// 
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 
 	// 可选排序字段 Level，LastTime，HostCount
@@ -18554,6 +18558,10 @@ type DescribeVulListRequest struct {
 	// <li>VulCategory- string - 是否必填：否 - 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞</li>
 	// <li>IsSupportDefense - int- 是否必填：否 - 是否支持防御 0:不支持 1:支持</li>
 	// <li>Labels- string- 是否必填：否 - 标签搜索</li>
+	// <li>IsSupportAutoFix- string- 是否必填：否 - 是否支持自动修复 0:不支持 1:支持</li>
+	// <li>CvssScore- string- 是否必填：否 - CvssScore大于多少</li>
+	// <li>AttackLevel- string- 是否必填：否 - 攻击热度大于多少</li>
+	// 
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 
 	// 可选排序字段 Level，LastTime，HostCount
@@ -26606,6 +26614,18 @@ type VulInfoList struct {
 	// 漏洞类别 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
+
+	// 攻击热度级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackLevel *uint64 `json:"AttackLevel,omitempty" name:"AttackLevel"`
+
+	// 漏洞修复后是否需要重启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixNoNeedRestart *bool `json:"FixNoNeedRestart,omitempty" name:"FixNoNeedRestart"`
+
+	// 检测方式0 - 版本比对, 1 - POC验证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *uint64 `json:"Method,omitempty" name:"Method"`
 }
 
 type VulLevelCountInfo struct {

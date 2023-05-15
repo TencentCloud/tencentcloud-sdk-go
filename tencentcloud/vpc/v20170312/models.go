@@ -23326,7 +23326,7 @@ type ResetVpnGatewayInternetMaxBandwidthRequestParams struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
 
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	// 新规格公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：Mbps。VPN网关带宽目前仅支持部分带宽范围内升降配，如【5,100】Mbps和【200,1000】Mbps，在各自带宽范围内可提升配额，跨范围提升配额和降配暂不支持。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
@@ -23336,7 +23336,7 @@ type ResetVpnGatewayInternetMaxBandwidthRequest struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
 
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps。
+	// 新规格公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：Mbps。VPN网关带宽目前仅支持部分带宽范围内升降配，如【5,100】Mbps和【200,1000】Mbps，在各自带宽范围内可提升配额，跨范围提升配额和降配暂不支持。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 }
 

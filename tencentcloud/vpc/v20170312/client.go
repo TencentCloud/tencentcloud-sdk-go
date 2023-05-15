@@ -7732,7 +7732,7 @@ func NewDeleteVpnConnectionResponse() (response *DeleteVpnConnectionResponse) {
 }
 
 // DeleteVpnConnection
-// 本接口(DeleteVpnConnection)用于删除VPN通道。
+// 本接口（DeleteVpnConnection）用于删除VPN通道。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7745,7 +7745,7 @@ func (c *Client) DeleteVpnConnection(request *DeleteVpnConnectionRequest) (respo
 }
 
 // DeleteVpnConnection
-// 本接口(DeleteVpnConnection)用于删除VPN通道。
+// 本接口（DeleteVpnConnection）用于删除VPN通道。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -12400,7 +12400,7 @@ func NewDescribeVpnConnectionsResponse() (response *DescribeVpnConnectionsRespon
 }
 
 // DescribeVpnConnections
-//  本接口（DescribeVpnConnections）查询VPN通道列表。
+// 本接口（DescribeVpnConnections）用于查询VPN通道列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
@@ -12415,7 +12415,7 @@ func (c *Client) DescribeVpnConnections(request *DescribeVpnConnectionsRequest) 
 }
 
 // DescribeVpnConnections
-//  本接口（DescribeVpnConnections）查询VPN通道列表。
+// 本接口（DescribeVpnConnections）用于查询VPN通道列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
@@ -18900,7 +18900,7 @@ func NewResetVpnConnectionResponse() (response *ResetVpnConnectionResponse) {
 }
 
 // ResetVpnConnection
-// 本接口(ResetVpnConnection)用于重置VPN通道。
+// 本接口（ResetVpnConnection）用于重置VPN通道。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -18911,7 +18911,7 @@ func (c *Client) ResetVpnConnection(request *ResetVpnConnectionRequest) (respons
 }
 
 // ResetVpnConnection
-// 本接口(ResetVpnConnection)用于重置VPN通道。
+// 本接口（ResetVpnConnection）用于重置VPN通道。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -18952,7 +18952,7 @@ func NewResetVpnGatewayInternetMaxBandwidthResponse() (response *ResetVpnGateway
 }
 
 // ResetVpnGatewayInternetMaxBandwidth
-// 本接口（ResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限。目前支持升级配置，如果是包年包月VPN网关需要在有效期内。
+// 本接口（ResetVpnGatewayInternetMaxBandwidth）用于调整VPN网关带宽上限。VPN网关带宽目前仅支持部分带宽范围内升降配，如【5,100】Mbps和【200,1000】Mbps，在各自带宽范围内可提升配额，跨范围提升配额和降配暂不支持，如果是包年包月VPN网关需要在有效期内。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -18964,7 +18964,7 @@ func (c *Client) ResetVpnGatewayInternetMaxBandwidth(request *ResetVpnGatewayInt
 }
 
 // ResetVpnGatewayInternetMaxBandwidth
-// 本接口（ResetVpnGatewayInternetMaxBandwidth）调整VPN网关带宽上限。目前支持升级配置，如果是包年包月VPN网关需要在有效期内。
+// 本接口（ResetVpnGatewayInternetMaxBandwidth）用于调整VPN网关带宽上限。VPN网关带宽目前仅支持部分带宽范围内升降配，如【5,100】Mbps和【200,1000】Mbps，在各自带宽范围内可提升配额，跨范围提升配额和降配暂不支持，如果是包年包月VPN网关需要在有效期内。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"

@@ -95,6 +95,9 @@ const (
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
+	// Broker 磁盘资源异常
+	RESOURCEUNAVAILABLE_KAFKASTORAGEERROR = "ResourceUnavailable.KafkaStorageError"
+
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 

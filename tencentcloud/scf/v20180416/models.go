@@ -702,6 +702,9 @@ type CreateTriggerRequestParams struct {
 
 	// 用户自定义参数，仅支持timer触发器
 	CustomArgument *string `json:"CustomArgument,omitempty" name:"CustomArgument"`
+
+	// 触发器描述
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type CreateTriggerRequest struct {
@@ -730,6 +733,9 @@ type CreateTriggerRequest struct {
 
 	// 用户自定义参数，仅支持timer触发器
 	CustomArgument *string `json:"CustomArgument,omitempty" name:"CustomArgument"`
+
+	// 触发器描述
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 func (r *CreateTriggerRequest) ToJsonString() string {
@@ -752,6 +758,7 @@ func (r *CreateTriggerRequest) FromJsonString(s string) error {
 	delete(f, "Qualifier")
 	delete(f, "Enable")
 	delete(f, "CustomArgument")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTriggerRequest has unknown keys!", "")
 	}
@@ -4261,6 +4268,9 @@ type Trigger struct {
 
 	// 触发器绑定的别名或版本
 	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 触发器描述
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type TriggerAction struct {

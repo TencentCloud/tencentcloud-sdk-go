@@ -5318,6 +5318,7 @@ func NewSendMessageResponse() (response *SendMessageResponse) {
 //  OPERATIONDENIED_RESOURCETASKPAUSED = "OperationDenied.ResourceTaskPaused"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_KAFKASTORAGEERROR = "ResourceUnavailable.KafkaStorageError"
 func (c *Client) SendMessage(request *SendMessageRequest) (response *SendMessageResponse, err error) {
     return c.SendMessageWithContext(context.Background(), request)
 }
@@ -5335,6 +5336,7 @@ func (c *Client) SendMessage(request *SendMessageRequest) (response *SendMessage
 //  OPERATIONDENIED_RESOURCETASKPAUSED = "OperationDenied.ResourceTaskPaused"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_KAFKASTORAGEERROR = "ResourceUnavailable.KafkaStorageError"
 func (c *Client) SendMessageWithContext(ctx context.Context, request *SendMessageRequest) (response *SendMessageResponse, err error) {
     if request == nil {
         request = NewSendMessageRequest()

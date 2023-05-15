@@ -7958,6 +7958,12 @@ func (r *DescribeRoMinScaleResponse) FromJsonString(s string) error {
 type DescribeRollbackRangeTimeRequestParams struct {
 	// 实例 ID 列表，单个实例 ID 的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 克隆实例与源实例是否在同一可用区，是:"false"，否:"true"
+	IsRemoteZone *string `json:"IsRemoteZone,omitempty" name:"IsRemoteZone"`
+
+	// 克隆实例与源实例不在同一地域时需填写克隆实例所在地域，例："ap-guangzhou"
+	BackupRegion *string `json:"BackupRegion,omitempty" name:"BackupRegion"`
 }
 
 type DescribeRollbackRangeTimeRequest struct {
@@ -7965,6 +7971,12 @@ type DescribeRollbackRangeTimeRequest struct {
 	
 	// 实例 ID 列表，单个实例 ID 的格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 克隆实例与源实例是否在同一可用区，是:"false"，否:"true"
+	IsRemoteZone *string `json:"IsRemoteZone,omitempty" name:"IsRemoteZone"`
+
+	// 克隆实例与源实例不在同一地域时需填写克隆实例所在地域，例："ap-guangzhou"
+	BackupRegion *string `json:"BackupRegion,omitempty" name:"BackupRegion"`
 }
 
 func (r *DescribeRollbackRangeTimeRequest) ToJsonString() string {
@@ -7980,6 +7992,8 @@ func (r *DescribeRollbackRangeTimeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceIds")
+	delete(f, "IsRemoteZone")
+	delete(f, "BackupRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRollbackRangeTimeRequest has unknown keys!", "")
 	}

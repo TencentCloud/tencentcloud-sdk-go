@@ -3467,7 +3467,13 @@ type DataFormat struct {
 }
 
 type DataGovernPolicy struct {
+	// 治理规则类型，Customize: 自定义；Intelligence: 智能治理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
 
+	// 治理引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GovernEngine *string `json:"GovernEngine,omitempty" name:"GovernEngine"`
 }
 
 type DatabaseInfo struct {
@@ -6898,6 +6904,9 @@ type GenerateCreateMangedTableSqlRequestParams struct {
 
 	// 表属性信息
 	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
+
+	// V2 upsert表 upsert键
+	UpsertKeys []*string `json:"UpsertKeys,omitempty" name:"UpsertKeys"`
 }
 
 type GenerateCreateMangedTableSqlRequest struct {
@@ -6914,6 +6923,9 @@ type GenerateCreateMangedTableSqlRequest struct {
 
 	// 表属性信息
 	Properties []*Property `json:"Properties,omitempty" name:"Properties"`
+
+	// V2 upsert表 upsert键
+	UpsertKeys []*string `json:"UpsertKeys,omitempty" name:"UpsertKeys"`
 }
 
 func (r *GenerateCreateMangedTableSqlRequest) ToJsonString() string {
@@ -6932,6 +6944,7 @@ func (r *GenerateCreateMangedTableSqlRequest) FromJsonString(s string) error {
 	delete(f, "Columns")
 	delete(f, "Partitions")
 	delete(f, "Properties")
+	delete(f, "UpsertKeys")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateCreateMangedTableSqlRequest has unknown keys!", "")
 	}
@@ -8491,6 +8504,10 @@ type TableBaseInfo struct {
 	// 数据治理配置项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GovernPolicy *DataGovernPolicy `json:"GovernPolicy,omitempty" name:"GovernPolicy"`
+
+	// 库数据治理是否关闭，关闭：true，开启：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbGovernPolicyIsDisable *string `json:"DbGovernPolicyIsDisable,omitempty" name:"DbGovernPolicyIsDisable"`
 }
 
 type TableInfo struct {

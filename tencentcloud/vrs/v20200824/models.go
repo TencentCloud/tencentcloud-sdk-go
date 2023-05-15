@@ -30,7 +30,7 @@ type CreateVRSTaskRequestParams struct {
 
 	// 音频采样率：
 	// 
-	// 16000：16k（默认）
+	// 16000：16k
 	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
 
 	// 音色性别:
@@ -42,7 +42,7 @@ type CreateVRSTaskRequestParams struct {
 
 	// 语言类型：
 	// 
-	// 1-中文（默认）
+	// 1-中文
 	VoiceLanguage *int64 `json:"VoiceLanguage,omitempty" name:"VoiceLanguage"`
 
 	// 音频格式，音频类型(wav,mp3,aac,m4a)
@@ -67,7 +67,7 @@ type CreateVRSTaskRequest struct {
 
 	// 音频采样率：
 	// 
-	// 16000：16k（默认）
+	// 16000：16k
 	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
 
 	// 音色性别:
@@ -79,7 +79,7 @@ type CreateVRSTaskRequest struct {
 
 	// 语言类型：
 	// 
-	// 1-中文（默认）
+	// 1-中文
 	VoiceLanguage *int64 `json:"VoiceLanguage,omitempty" name:"VoiceLanguage"`
 
 	// 音频格式，音频类型(wav,mp3,aac,m4a)
@@ -234,7 +234,7 @@ type DetectEnvAndSoundQualityRequestParams struct {
 	// 标注文本信息 ID
 	TextId *string `json:"TextId,omitempty" name:"TextId"`
 
-	// 语音数据 要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。
+	// 语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
 	AudioData *string `json:"AudioData,omitempty" name:"AudioData"`
 
 	// 音频格式，音频类型(wav,mp3,aac,m4a)
@@ -255,7 +255,7 @@ type DetectEnvAndSoundQualityRequest struct {
 	// 标注文本信息 ID
 	TextId *string `json:"TextId,omitempty" name:"TextId"`
 
-	// 语音数据 要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。
+	// 语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
 	AudioData *string `json:"AudioData,omitempty" name:"AudioData"`
 
 	// 音频格式，音频类型(wav,mp3,aac,m4a)
