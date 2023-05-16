@@ -853,6 +853,14 @@ type Task struct {
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+
+	// 关联的演练计划ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskPlanId *int64 `json:"TaskPlanId,omitempty" name:"TaskPlanId"`
+
+	// 关联的演练计划名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskPlanTitle *string `json:"TaskPlanTitle,omitempty" name:"TaskPlanTitle"`
 }
 
 type TaskConfig struct {

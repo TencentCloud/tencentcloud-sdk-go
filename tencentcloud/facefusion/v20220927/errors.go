@@ -119,6 +119,9 @@ const (
 	// 参数字段或者值有误。
 	INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
 	// 资源正在发货中。
 	RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
 

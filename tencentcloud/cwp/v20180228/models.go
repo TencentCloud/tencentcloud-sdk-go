@@ -22191,6 +22191,13 @@ type LicenseBindTaskDetail struct {
 
 	// 0 执行中, 1 成功,2失败
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 修复建议
+	FixMessage *string `json:"FixMessage,omitempty" name:"FixMessage"`
+
+	// 机器额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
 }
 
 type LicenseDetail struct {

@@ -3747,6 +3747,7 @@ func NewDescribeTaskStatusResponse() (response *DescribeTaskStatusResponse) {
 // 查询任务状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
@@ -3768,6 +3769,7 @@ func (c *Client) DescribeTaskStatus(request *DescribeTaskStatusRequest) (respons
 // 查询任务状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"

@@ -13957,6 +13957,96 @@ func (r *DescribeTrafficPackagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUsedIpAddressRequestParams struct {
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网实例ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 查询是否占用的ip列表
+	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeUsedIpAddressRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网实例ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 查询是否占用的ip列表
+	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeUsedIpAddressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsedIpAddressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "IpAddresses")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsedIpAddressRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUsedIpAddressResponseParams struct {
+	// 占用ip地址的资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpAddressStates []*IpAddressStates `json:"IpAddressStates,omitempty" name:"IpAddressStates"`
+
+	// 返回占用资源的个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeUsedIpAddressResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUsedIpAddressResponseParams `json:"Response"`
+}
+
+func (r *DescribeUsedIpAddressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUsedIpAddressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVpcEndPointRequestParams struct {
 	// 过滤条件。
 	// <li> end-point-service-id- String - （过滤条件）终端节点服务ID。</li>
@@ -17949,6 +18039,23 @@ type Ip6Translator struct {
 
 	// IPV6转换规则信息
 	IP6RuleSet []*Ip6Rule `json:"IP6RuleSet,omitempty" name:"IP6RuleSet"`
+}
+
+type IpAddressStates struct {
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网实例ID。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// IP地址。
+	IpAddress *string `json:"IpAddress,omitempty" name:"IpAddress"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 type IpField struct {
@@ -22164,7 +22271,7 @@ type Price struct {
 	// 实例价格。
 	InstancePrice *ItemPrice `json:"InstancePrice,omitempty" name:"InstancePrice"`
 
-	// 网络价格。
+	// 带宽价格。
 	BandwidthPrice *ItemPrice `json:"BandwidthPrice,omitempty" name:"BandwidthPrice"`
 }
 

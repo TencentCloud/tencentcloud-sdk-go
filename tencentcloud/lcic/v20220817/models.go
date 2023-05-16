@@ -3176,6 +3176,14 @@ type EventInfo struct {
 
 	// 事件类型,有以下值:
 	// RoomStart:房间开始 RoomEnd:房间结束 MemberJoin:成员加入 MemberQuit:成员退出 RecordFinish:录制结束
+	// Camera0n: 摄像头打开
+	// Camera0ff: 摄像头关闭
+	// MicOn: 麦克风打开
+	// MicOff: 麦克风关闭
+	// ScreenOn: 屏幕共享打开
+	// ScreenOff: 屏幕共享关闭
+	// VisibleOn: 页面可见
+	// VisibleOff: 页面不可见
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 
 	// 事件详细内容，包含房间号,成员类型事件包含用户Id。
@@ -3548,6 +3556,92 @@ type GroupInfo struct {
 	// 子群组ID列表，如有。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubGroupIds *string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+}
+
+// Predefined struct for user
+type KickUserFromRoomRequestParams struct {
+	// 房间Id。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 低代码平台的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需要踢出成员Id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 踢出类型：
+	// 1：临时踢出，可以使用Duration参数指定污点时间，污点时间间隔内用户无法进入房间。
+	// 2：永久踢出
+	KickType *uint64 `json:"KickType,omitempty" name:"KickType"`
+
+	// 污点时间(单位秒)，KickType = 1时生效，默认为0
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+}
+
+type KickUserFromRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间Id。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 低代码平台的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需要踢出成员Id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 踢出类型：
+	// 1：临时踢出，可以使用Duration参数指定污点时间，污点时间间隔内用户无法进入房间。
+	// 2：永久踢出
+	KickType *uint64 `json:"KickType,omitempty" name:"KickType"`
+
+	// 污点时间(单位秒)，KickType = 1时生效，默认为0
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+}
+
+func (r *KickUserFromRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KickUserFromRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "SdkAppId")
+	delete(f, "UserId")
+	delete(f, "KickType")
+	delete(f, "Duration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "KickUserFromRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type KickUserFromRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type KickUserFromRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *KickUserFromRoomResponseParams `json:"Response"`
+}
+
+func (r *KickUserFromRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *KickUserFromRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

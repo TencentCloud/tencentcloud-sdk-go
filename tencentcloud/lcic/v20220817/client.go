@@ -939,7 +939,9 @@ func NewCreateRoomResponse() (response *CreateRoomResponse) {
 // 创建房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
@@ -958,7 +960,9 @@ func (c *Client) CreateRoom(request *CreateRoomRequest) (response *CreateRoomRes
 // 创建房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSTOOLONG = "FailedOperation.ClassTooLong"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
@@ -2847,6 +2851,56 @@ func (c *Client) GetWatermarkWithContext(ctx context.Context, request *GetWaterm
     return
 }
 
+func NewKickUserFromRoomRequest() (request *KickUserFromRoomRequest) {
+    request = &KickUserFromRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "KickUserFromRoom")
+    
+    
+    return
+}
+
+func NewKickUserFromRoomResponse() (response *KickUserFromRoomResponse) {
+    response = &KickUserFromRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// KickUserFromRoom
+// 从房间里面踢出用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) KickUserFromRoom(request *KickUserFromRoomRequest) (response *KickUserFromRoomResponse, err error) {
+    return c.KickUserFromRoomWithContext(context.Background(), request)
+}
+
+// KickUserFromRoom
+// 从房间里面踢出用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) KickUserFromRoomWithContext(ctx context.Context, request *KickUserFromRoomRequest) (response *KickUserFromRoomResponse, err error) {
+    if request == nil {
+        request = NewKickUserFromRoomRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("KickUserFromRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewKickUserFromRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLoginOriginIdRequest() (request *LoginOriginIdRequest) {
     request = &LoginOriginIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3301,6 +3355,7 @@ func NewRegisterUserResponse() (response *RegisterUserResponse) {
 // 注册用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
@@ -3312,6 +3367,7 @@ func (c *Client) RegisterUser(request *RegisterUserRequest) (response *RegisterU
 // 注册用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
@@ -3356,6 +3412,7 @@ func NewSetAppCustomContentResponse() (response *SetAppCustomContentResponse) {
 //  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CSSORJS = "InvalidParameter.CssOrJs"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) SetAppCustomContent(request *SetAppCustomContentRequest) (response *SetAppCustomContentResponse, err error) {
     return c.SetAppCustomContentWithContext(context.Background(), request)
@@ -3368,6 +3425,7 @@ func (c *Client) SetAppCustomContent(request *SetAppCustomContentRequest) (respo
 //  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CSSORJS = "InvalidParameter.CssOrJs"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) SetAppCustomContentWithContext(ctx context.Context, request *SetAppCustomContentRequest) (response *SetAppCustomContentResponse, err error) {
     if request == nil {

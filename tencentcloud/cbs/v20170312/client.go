@@ -1707,6 +1707,7 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 // * 本接口为异步接口，当请求成功返回时，云盘并未立即从主机卸载，可通过接口[DescribeDisks](/document/product/362/16315)来查询对应云盘的状态，如果云盘的状态由“ATTACHED”变为“UNATTACHED”，则为卸载成功。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
 //  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
 //  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
@@ -1740,6 +1741,7 @@ func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisks
 // * 本接口为异步接口，当请求成功返回时，云盘并未立即从主机卸载，可通过接口[DescribeDisks](/document/product/362/16315)来查询对应云盘的状态，如果云盘的状态由“ATTACHED”变为“UNATTACHED”，则为卸载成功。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INTERNALERROR_RESOURCEOPFAILED = "InternalError.ResourceOpFailed"
 //  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
 //  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
@@ -2363,6 +2365,7 @@ func NewModifyDiskBackupQuotaResponse() (response *ModifyDiskBackupQuotaResponse
 // 此接口 (ModifyDiskBackupQuota) 用于修改云硬盘备份点配额。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
@@ -2376,6 +2379,7 @@ func (c *Client) ModifyDiskBackupQuota(request *ModifyDiskBackupQuotaRequest) (r
 // 此接口 (ModifyDiskBackupQuota) 用于修改云硬盘备份点配额。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"

@@ -1107,6 +1107,10 @@ type EnvInfo struct {
 
 	// 客户端带宽
 	ClientBandWidth *uint64 `json:"ClientBandWidth,omitempty" name:"ClientBandWidth"`
+
+	// 客户端内网开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableConfigIntranet *bool `json:"EnableConfigIntranet,omitempty" name:"EnableConfigIntranet"`
 }
 
 type Filter struct {

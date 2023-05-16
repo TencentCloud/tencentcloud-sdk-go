@@ -1733,7 +1733,9 @@ type AwsS3FileUploadTrigger struct {
 	// 绑定的 AWS S3 存储桶。
 	S3Bucket *string `json:"S3Bucket,omitempty" name:"S3Bucket"`
 
-	// 绑定的桶所在 AWS 区域。
+	// 绑定的桶所在 AWS 区域，目前支持：  
+	// us-east-1  
+	// eu-west-3
 	S3Region *string `json:"S3Region,omitempty" name:"S3Region"`
 
 	// 绑定的输入路径目录，必须为绝对路径，即以 `/` 开头和结尾。如`/movie/201907/`，不填代表根目录`/`。	
@@ -12506,7 +12508,9 @@ type S3InputInfo struct {
 	// S3 bucket。
 	S3Bucket *string `json:"S3Bucket,omitempty" name:"S3Bucket"`
 
-	// S3 bucket 对应的区域。
+	// S3 bucket 对应的区域，目前支持：  
+	// us-east-1  
+	// eu-west-3
 	S3Region *string `json:"S3Region,omitempty" name:"S3Region"`
 
 	// S3 bucket 中的媒体资源路径。

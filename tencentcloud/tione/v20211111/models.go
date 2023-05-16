@@ -121,7 +121,7 @@ type BatchTaskDetail struct {
 	// 计费模式
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
-	// 包年包月资源组id
+	// 包年包月资源组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
 
@@ -210,7 +210,7 @@ type BatchTaskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureReason *string `json:"FailureReason,omitempty" name:"FailureReason"`
 
-	// 计费金额信息，eg：2.00元/小时 (for后付费)
+	// 计费金额信息，eg：2.00元/小时 (for 按量计费)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
 
@@ -5083,6 +5083,10 @@ type HyperParameter struct {
 	// FROZEN_GRAPH、SAVED_MODEL格式在进行优化时切分子图的最小算子数目，一般无需进行改动，默认为10
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinBlockSizeTf *string `json:"MinBlockSizeTf,omitempty" name:"MinBlockSizeTf"`
+
+	// Stable Diffusion 模型优化参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PipelineArgs *string `json:"PipelineArgs,omitempty" name:"PipelineArgs"`
 }
 
 type ImageInfo struct {

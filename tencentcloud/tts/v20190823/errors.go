@@ -41,6 +41,9 @@ const (
 	// 内部错误。
 	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 
+	// 暂无资源，请稍后重试。
+	INTERNALERROR_NORESOURCE = "InternalError.NoResource"
+
 	// 请求文本含有非法字符。
 	INVALIDPARAMETER_INVALIDTEXT = "InvalidParameter.InvalidText"
 

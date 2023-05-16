@@ -86,6 +86,9 @@ const (
 	// 标签内部错误，请重试或联系客服人员解决。
 	INTERNALERROR_TAGSYSTEMERROR = "InternalError.TagSystemError"
 
+	// 内部服务错误，请联系腾讯云工程师进一步排查。
+	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

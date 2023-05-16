@@ -6838,6 +6838,118 @@ func (r *DescribeRocketMQGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQMsgRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 主题，查询死信时传groupId
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitempty" name:"MsgId"`
+
+	// pulsar消息id
+	PulsarMsgId *string `json:"PulsarMsgId,omitempty" name:"PulsarMsgId"`
+
+	// 查询死信时该值为true，只对Rocketmq有效
+	QueryDlqMsg *bool `json:"QueryDlqMsg,omitempty" name:"QueryDlqMsg"`
+}
+
+type DescribeRocketMQMsgRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 主题，查询死信时传groupId
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitempty" name:"MsgId"`
+
+	// pulsar消息id
+	PulsarMsgId *string `json:"PulsarMsgId,omitempty" name:"PulsarMsgId"`
+
+	// 查询死信时该值为true，只对Rocketmq有效
+	QueryDlqMsg *bool `json:"QueryDlqMsg,omitempty" name:"QueryDlqMsg"`
+}
+
+func (r *DescribeRocketMQMsgRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQMsgRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "EnvironmentId")
+	delete(f, "TopicName")
+	delete(f, "MsgId")
+	delete(f, "PulsarMsgId")
+	delete(f, "QueryDlqMsg")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQMsgRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQMsgResponseParams struct {
+	// 消息体
+	Body *string `json:"Body,omitempty" name:"Body"`
+
+	// 详情参数
+	Properties *string `json:"Properties,omitempty" name:"Properties"`
+
+	// 生产时间
+	ProduceTime *string `json:"ProduceTime,omitempty" name:"ProduceTime"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitempty" name:"MsgId"`
+
+	// 生产者地址
+	ProducerAddr *string `json:"ProducerAddr,omitempty" name:"ProducerAddr"`
+
+	// 消费组消费情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageTracks []*RocketMQMessageTrack `json:"MessageTracks,omitempty" name:"MessageTracks"`
+
+	// 详情页展示的topic名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShowTopicName *string `json:"ShowTopicName,omitempty" name:"ShowTopicName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQMsgResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQMsgResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQMsgResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQMsgResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQNamespacesRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -10294,6 +10406,21 @@ type RocketMQInstanceConfig struct {
 	// 每个主题最大队列数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxQueuesPerTopic *uint64 `json:"MaxQueuesPerTopic,omitempty" name:"MaxQueuesPerTopic"`
+}
+
+type RocketMQMessageTrack struct {
+	// 消费者组
+	Group *string `json:"Group,omitempty" name:"Group"`
+
+	// 消费状态
+	ConsumeStatus *string `json:"ConsumeStatus,omitempty" name:"ConsumeStatus"`
+
+	// 消息track类型
+	TrackType *string `json:"TrackType,omitempty" name:"TrackType"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExceptionDesc *string `json:"ExceptionDesc,omitempty" name:"ExceptionDesc"`
 }
 
 type RocketMQNamespace struct {

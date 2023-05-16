@@ -586,7 +586,7 @@ type CreateAclRequestParams struct {
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
-	// 关联高危DB模版ID
+	// 关联高危DB模板ID
 	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitempty" name:"ACTemplateIdSet"`
 
 	// 是否开启rdp磁盘映射文件上传
@@ -670,7 +670,7 @@ type CreateAclRequest struct {
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
-	// 关联高危DB模版ID
+	// 关联高危DB模板ID
 	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitempty" name:"ACTemplateIdSet"`
 
 	// 是否开启rdp磁盘映射文件上传
@@ -3421,7 +3421,7 @@ type ModifyAclRequestParams struct {
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
-	// 关联高危DB模版ID
+	// 关联高危DB模板ID
 	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitempty" name:"ACTemplateIdSet"`
 
 	// 是否开启 RDP 磁盘映射文件上传
@@ -3508,7 +3508,7 @@ type ModifyAclRequest struct {
 	// 关联的高危命令模板ID
 	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
 
-	// 关联高危DB模版ID
+	// 关联高危DB模板ID
 	ACTemplateIdSet []*string `json:"ACTemplateIdSet,omitempty" name:"ACTemplateIdSet"`
 
 	// 是否开启 RDP 磁盘映射文件上传

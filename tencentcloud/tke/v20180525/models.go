@@ -6508,6 +6508,83 @@ func (r *DescribeClusterEndpointsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterInspectionResultsOverviewRequestParams struct {
+	// Array of String	目标集群列表，为空查询用户所有集群
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 聚合字段信息，概览结果按照 GroupBy 信息聚合后返回，可选参数：
+	// catalogue.first：按一级分类聚合
+	// catalogue.second：按二级分类聚合
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+}
+
+type DescribeClusterInspectionResultsOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// Array of String	目标集群列表，为空查询用户所有集群
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 聚合字段信息，概览结果按照 GroupBy 信息聚合后返回，可选参数：
+	// catalogue.first：按一级分类聚合
+	// catalogue.second：按二级分类聚合
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+}
+
+func (r *DescribeClusterInspectionResultsOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterInspectionResultsOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	delete(f, "GroupBy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterInspectionResultsOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterInspectionResultsOverviewResponseParams struct {
+	// 诊断结果统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 诊断结果概览
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Diagnostics []*KubeJarvisStateDiagnosticOverview `json:"Diagnostics,omitempty" name:"Diagnostics"`
+
+	// 集群诊断结果概览
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InspectionOverview []*KubeJarvisStateInspectionOverview `json:"InspectionOverview,omitempty" name:"InspectionOverview"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterInspectionResultsOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterInspectionResultsOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterInspectionResultsOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterInspectionResultsOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeClusterInstancesRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -13458,12 +13535,316 @@ type InstanceUpgradeProgressItem struct {
 	Detail []*TaskStepInfo `json:"Detail,omitempty" name:"Detail"`
 }
 
+type KubeJarvisStateCatalogue struct {
+	// 目录级别，支持参数：
+	// first：一级目录
+	// second：二级目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogueLevel *string `json:"CatalogueLevel,omitempty" name:"CatalogueLevel"`
+
+	// 目录名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogueName *string `json:"CatalogueName,omitempty" name:"CatalogueName"`
+}
+
+type KubeJarvisStateDiagnostic struct {
+	// 诊断开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 诊断结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 诊断目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Catalogues []*KubeJarvisStateCatalogue `json:"Catalogues,omitempty" name:"Catalogues"`
+
+	// 诊断类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 诊断名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 诊断描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 诊断结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*KubeJarvisStateResultsItem `json:"Results,omitempty" name:"Results"`
+
+	// 诊断结果统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitempty" name:"Statistics"`
+}
+
+type KubeJarvisStateDiagnosticOverview struct {
+	// 诊断目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Catalogues []*KubeJarvisStateCatalogue `json:"Catalogues,omitempty" name:"Catalogues"`
+
+	// 诊断结果统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitempty" name:"Statistics"`
+}
+
+type KubeJarvisStateInspectionOverview struct {
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 诊断结果统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 诊断结果详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Diagnostics []*KubeJarvisStateDiagnosticOverview `json:"Diagnostics,omitempty" name:"Diagnostics"`
+}
+
+type KubeJarvisStateInspectionResult struct {
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 诊断开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 诊断结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 诊断结果统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitempty" name:"Statistics"`
+
+	// 诊断结果详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Diagnostics []*KubeJarvisStateDiagnostic `json:"Diagnostics,omitempty" name:"Diagnostics"`
+
+	// 查询巡检报告相关报错
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitempty" name:"Error"`
+}
+
+type KubeJarvisStateInspectionResultsItem struct {
+	// 巡检结果名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 诊断结果统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitempty" name:"Statistics"`
+}
+
+type KubeJarvisStateResultObjInfo struct {
+	// 对象属性名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PropertyName *string `json:"PropertyName,omitempty" name:"PropertyName"`
+
+	// 对象属性值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PropertyValue *string `json:"PropertyValue,omitempty" name:"PropertyValue"`
+}
+
+type KubeJarvisStateResultsItem struct {
+	// 诊断结果级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// 诊断对象名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjName *string `json:"ObjName,omitempty" name:"ObjName"`
+
+	// 诊断对象信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjInfo []*KubeJarvisStateResultObjInfo `json:"ObjInfo,omitempty" name:"ObjInfo"`
+
+	// 诊断项标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 诊断项描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 诊断建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Proposal *string `json:"Proposal,omitempty" name:"Proposal"`
+
+	// 诊断建议文档链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProposalDocUrl *string `json:"ProposalDocUrl,omitempty" name:"ProposalDocUrl"`
+
+	// 诊断建议文档名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProposalDocName *string `json:"ProposalDocName,omitempty" name:"ProposalDocName"`
+}
+
+type KubeJarvisStateStatistic struct {
+	// 诊断结果的健康水平
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthyLevel *string `json:"HealthyLevel,omitempty" name:"HealthyLevel"`
+
+	// 诊断结果的统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+}
+
 type Label struct {
 	// map表中的Name
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// map表中的Value
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type ListClusterInspectionResultsItemsRequestParams struct {
+	// 目标集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 查询历史结果的开始时间，Unix时间戳
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询历史结果的结束时间，默认当前距离开始时间3天，Unix时间戳
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type ListClusterInspectionResultsItemsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目标集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 查询历史结果的开始时间，Unix时间戳
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询历史结果的结束时间，默认当前距离开始时间3天，Unix时间戳
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *ListClusterInspectionResultsItemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListClusterInspectionResultsItemsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListClusterInspectionResultsItemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListClusterInspectionResultsItemsResponseParams struct {
+	// 巡检结果历史列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InspectionResultsItems []*KubeJarvisStateInspectionResultsItem `json:"InspectionResultsItems,omitempty" name:"InspectionResultsItems"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListClusterInspectionResultsItemsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListClusterInspectionResultsItemsResponseParams `json:"Response"`
+}
+
+func (r *ListClusterInspectionResultsItemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListClusterInspectionResultsItemsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListClusterInspectionResultsRequestParams struct {
+	// 目标集群列表，为空查询用户所有集群
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 隐藏的字段信息，为了减少无效的字段返回，隐藏字段不会在返回值中返回。可选值：results
+	Hide []*string `json:"Hide,omitempty" name:"Hide"`
+
+	// 指定查询结果的报告名称，默认查询最新的每个集群只查询最新的一条
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type ListClusterInspectionResultsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 目标集群列表，为空查询用户所有集群
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 隐藏的字段信息，为了减少无效的字段返回，隐藏字段不会在返回值中返回。可选值：results
+	Hide []*string `json:"Hide,omitempty" name:"Hide"`
+
+	// 指定查询结果的报告名称，默认查询最新的每个集群只查询最新的一条
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *ListClusterInspectionResultsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListClusterInspectionResultsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	delete(f, "Hide")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListClusterInspectionResultsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListClusterInspectionResultsResponseParams struct {
+	// 集群诊断结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InspectionResults []*KubeJarvisStateInspectionResult `json:"InspectionResults,omitempty" name:"InspectionResults"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListClusterInspectionResultsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListClusterInspectionResultsResponseParams `json:"Response"`
+}
+
+func (r *ListClusterInspectionResultsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListClusterInspectionResultsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type LivenessOrReadinessProbe struct {

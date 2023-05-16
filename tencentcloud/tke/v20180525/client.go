@@ -5103,6 +5103,60 @@ func (c *Client) DescribeClusterEndpointsWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeClusterInspectionResultsOverviewRequest() (request *DescribeClusterInspectionResultsOverviewRequest) {
+    request = &DescribeClusterInspectionResultsOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterInspectionResultsOverview")
+    
+    
+    return
+}
+
+func NewDescribeClusterInspectionResultsOverviewResponse() (response *DescribeClusterInspectionResultsOverviewResponse) {
+    response = &DescribeClusterInspectionResultsOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterInspectionResultsOverview
+// 查询用户单个Region下的所有集群巡检结果概览信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeClusterInspectionResultsOverview(request *DescribeClusterInspectionResultsOverviewRequest) (response *DescribeClusterInspectionResultsOverviewResponse, err error) {
+    return c.DescribeClusterInspectionResultsOverviewWithContext(context.Background(), request)
+}
+
+// DescribeClusterInspectionResultsOverview
+// 查询用户单个Region下的所有集群巡检结果概览信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeClusterInspectionResultsOverviewWithContext(ctx context.Context, request *DescribeClusterInspectionResultsOverviewRequest) (response *DescribeClusterInspectionResultsOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterInspectionResultsOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterInspectionResultsOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterInspectionResultsOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequest) {
     request = &DescribeClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9003,6 +9057,7 @@ func NewDescribeTKEEdgeClustersResponse() (response *DescribeTKEEdgeClustersResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -9022,6 +9077,7 @@ func (c *Client) DescribeTKEEdgeClusters(request *DescribeTKEEdgeClustersRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -10367,6 +10423,110 @@ func (c *Client) InstallLogAgentWithContext(ctx context.Context, request *Instal
     request.SetContext(ctx)
     
     response = NewInstallLogAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListClusterInspectionResultsRequest() (request *ListClusterInspectionResultsRequest) {
+    request = &ListClusterInspectionResultsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ListClusterInspectionResults")
+    
+    
+    return
+}
+
+func NewListClusterInspectionResultsResponse() (response *ListClusterInspectionResultsResponse) {
+    response = &ListClusterInspectionResultsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListClusterInspectionResults
+// 查询指定集群的巡检结果信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ListClusterInspectionResults(request *ListClusterInspectionResultsRequest) (response *ListClusterInspectionResultsResponse, err error) {
+    return c.ListClusterInspectionResultsWithContext(context.Background(), request)
+}
+
+// ListClusterInspectionResults
+// 查询指定集群的巡检结果信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ListClusterInspectionResultsWithContext(ctx context.Context, request *ListClusterInspectionResultsRequest) (response *ListClusterInspectionResultsResponse, err error) {
+    if request == nil {
+        request = NewListClusterInspectionResultsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListClusterInspectionResults require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListClusterInspectionResultsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListClusterInspectionResultsItemsRequest() (request *ListClusterInspectionResultsItemsRequest) {
+    request = &ListClusterInspectionResultsItemsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ListClusterInspectionResultsItems")
+    
+    
+    return
+}
+
+func NewListClusterInspectionResultsItemsResponse() (response *ListClusterInspectionResultsItemsResponse) {
+    response = &ListClusterInspectionResultsItemsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListClusterInspectionResultsItems
+// 查询集群巡检结果历史列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ListClusterInspectionResultsItems(request *ListClusterInspectionResultsItemsRequest) (response *ListClusterInspectionResultsItemsResponse, err error) {
+    return c.ListClusterInspectionResultsItemsWithContext(context.Background(), request)
+}
+
+// ListClusterInspectionResultsItems
+// 查询集群巡检结果历史列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) ListClusterInspectionResultsItemsWithContext(ctx context.Context, request *ListClusterInspectionResultsItemsRequest) (response *ListClusterInspectionResultsItemsResponse, err error) {
+    if request == nil {
+        request = NewListClusterInspectionResultsItemsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListClusterInspectionResultsItems require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListClusterInspectionResultsItemsResponse()
     err = c.Send(request, response)
     return
 }

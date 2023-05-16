@@ -6434,6 +6434,26 @@ type SecurityGroupListData struct {
 
 	// 是否使用端口协议模板，0：否，1：是
 	ProtocolPortType *uint64 `json:"ProtocolPortType,omitempty" name:"ProtocolPortType"`
+
+	// Uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 资产分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetGroupNameIn *string `json:"AssetGroupNameIn,omitempty" name:"AssetGroupNameIn"`
+
+	// 资产分组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetGroupNameOut *string `json:"AssetGroupNameOut,omitempty" name:"AssetGroupNameOut"`
+
+	// 模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParameterName *string `json:"ParameterName,omitempty" name:"ParameterName"`
 }
 
 type SecurityGroupOrderIndexData struct {
