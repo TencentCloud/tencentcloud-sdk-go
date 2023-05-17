@@ -187,6 +187,11 @@ type AlarmTarget struct {
 
 	// 日志集ID。
 	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 检索语法规则，默认值为0。
+	// 0：Lucene语法，1：CQL语法。
+	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
 type AlarmTargetInfo struct {

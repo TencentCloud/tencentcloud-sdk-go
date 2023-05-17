@@ -126,7 +126,7 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	// 签署流程Id数组，最多100个，超过100不处理
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 撤销理由
+	// 撤销理由,不超过200个字符
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
 
 	// 撤销理由自定义格式；选项：
@@ -149,7 +149,7 @@ type ChannelBatchCancelFlowsRequest struct {
 	// 签署流程Id数组，最多100个，超过100不处理
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 撤销理由
+	// 撤销理由,不超过200个字符
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
 
 	// 撤销理由自定义格式；选项：

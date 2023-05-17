@@ -13743,6 +13743,124 @@ func (r *DescribeLicenseListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLogStorageConfigRequestParams struct {
+
+}
+
+type DescribeLogStorageConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLogStorageConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogStorageConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogStorageConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogStorageConfigResponseParams struct {
+	// 存储类型，string数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 日志存储天数，3640表示不限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 本月Period的修改次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeriodModifyCount *int64 `json:"PeriodModifyCount,omitempty" name:"PeriodModifyCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogStorageConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogStorageConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogStorageConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogStorageConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogStorageRecordRequestParams struct {
+
+}
+
+type DescribeLogStorageRecordRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLogStorageRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogStorageRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogStorageRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogStorageRecordResponseParams struct {
+	// 存储量记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*LogStorageRecord `json:"Records,omitempty" name:"Records"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogStorageRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogStorageRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogStorageRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogStorageRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLogStorageStatisticRequestParams struct {
 
 }
@@ -22274,6 +22392,20 @@ type LicenseUnBindRsp struct {
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 }
 
+type LogStorageRecord struct {
+	// 年月份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 存储量，字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedSize *uint64 `json:"UsedSize,omitempty" name:"UsedSize"`
+
+	// 总量，字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InquireSize *uint64 `json:"InquireSize,omitempty" name:"InquireSize"`
+}
+
 type LoginWhiteCombinedInfo struct {
 	// 白名单地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -23463,6 +23595,74 @@ func (r *ModifyLicenseUnBindsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLicenseUnBindsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLogStorageConfigRequestParams struct {
+	// 是否修改有效期
+	IsModifyPeriod *bool `json:"IsModifyPeriod,omitempty" name:"IsModifyPeriod"`
+
+	// 存储类型，string数组
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 日志存储天数，3640表示不限
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
+type ModifyLogStorageConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否修改有效期
+	IsModifyPeriod *bool `json:"IsModifyPeriod,omitempty" name:"IsModifyPeriod"`
+
+	// 存储类型，string数组
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 日志存储天数，3640表示不限
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *ModifyLogStorageConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLogStorageConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IsModifyPeriod")
+	delete(f, "Type")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLogStorageConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLogStorageConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyLogStorageConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLogStorageConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyLogStorageConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLogStorageConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

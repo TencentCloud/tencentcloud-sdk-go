@@ -265,6 +265,17 @@ type CallInSkillGroupMetrics struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+type CalleeAttribute struct {
+	// 被叫号码
+	Callee *string `json:"Callee,omitempty" name:"Callee"`
+
+	// 随路数据
+	UUI *string `json:"UUI,omitempty" name:"UUI"`
+
+	// 参数
+	Variables []*Variable `json:"Variables,omitempty" name:"Variables"`
+}
+
 type CarrierPrivilegeNumberApplicant struct {
 	// 实例Id
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -323,6 +334,12 @@ type CreateAutoCalloutTaskRequestParams struct {
 
 	// 自定义变量（仅高级版支持）
 	Variables []*Variable `json:"Variables,omitempty" name:"Variables"`
+
+	// UUI
+	UUI *string `json:"UUI,omitempty" name:"UUI"`
+
+	// 被叫属性
+	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitempty" name:"CalleeAttributes"`
 }
 
 type CreateAutoCalloutTaskRequest struct {
@@ -357,6 +374,12 @@ type CreateAutoCalloutTaskRequest struct {
 
 	// 自定义变量（仅高级版支持）
 	Variables []*Variable `json:"Variables,omitempty" name:"Variables"`
+
+	// UUI
+	UUI *string `json:"UUI,omitempty" name:"UUI"`
+
+	// 被叫属性
+	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitempty" name:"CalleeAttributes"`
 }
 
 func (r *CreateAutoCalloutTaskRequest) ToJsonString() string {
@@ -381,6 +404,8 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 	delete(f, "NotAfter")
 	delete(f, "Tries")
 	delete(f, "Variables")
+	delete(f, "UUI")
+	delete(f, "CalleeAttributes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoCalloutTaskRequest has unknown keys!", "")
 	}

@@ -4633,6 +4633,70 @@ func (r *DescribeBackupDatabasesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupDecryptionKeyRequestParams struct {
+	// 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
+	BackupId *int64 `json:"BackupId,omitempty" name:"BackupId"`
+}
+
+type DescribeBackupDecryptionKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
+	BackupId *int64 `json:"BackupId,omitempty" name:"BackupId"`
+}
+
+func (r *DescribeBackupDecryptionKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDecryptionKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDecryptionKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupDecryptionKeyResponseParams struct {
+	// 备份文件解密密钥。
+	DecryptionKey *string `json:"DecryptionKey,omitempty" name:"DecryptionKey"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupDecryptionKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupDecryptionKeyResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupDecryptionKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDecryptionKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupDownloadRestrictionRequestParams struct {
 
 }
@@ -12361,6 +12425,10 @@ type ParamTemplateInfo struct {
 
 	// 参数模板类型
 	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
+
+	// 参数模板引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 type Parameter struct {

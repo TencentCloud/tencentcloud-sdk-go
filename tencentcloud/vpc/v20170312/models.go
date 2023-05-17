@@ -8077,6 +8077,60 @@ func (r *DeleteTemplateMemberResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteTrafficPackagesRequestParams struct {
+	// 待删除的流量包唯一ID数组
+	TrafficPackageIds []*string `json:"TrafficPackageIds,omitempty" name:"TrafficPackageIds"`
+}
+
+type DeleteTrafficPackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的流量包唯一ID数组
+	TrafficPackageIds []*string `json:"TrafficPackageIds,omitempty" name:"TrafficPackageIds"`
+}
+
+func (r *DeleteTrafficPackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrafficPackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficPackageIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrafficPackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrafficPackagesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteTrafficPackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTrafficPackagesResponseParams `json:"Response"`
+}
+
+func (r *DeleteTrafficPackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrafficPackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteVpcEndPointRequestParams struct {
 	// 终端节点ID。
 	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
@@ -13559,6 +13613,63 @@ func (r *DescribeSnapshotPoliciesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSnapshotPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubnetResourceDashboardRequestParams struct {
+	// Subnet实例ID，例如：subnet-f1xjkw1b。
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+}
+
+type DescribeSubnetResourceDashboardRequest struct {
+	*tchttp.BaseRequest
+	
+	// Subnet实例ID，例如：subnet-f1xjkw1b。
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+}
+
+func (r *DescribeSubnetResourceDashboardRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubnetResourceDashboardRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubnetIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubnetResourceDashboardRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSubnetResourceDashboardResponseParams struct {
+	// 资源统计结果。
+	ResourceStatisticsSet []*ResourceStatistics `json:"ResourceStatisticsSet,omitempty" name:"ResourceStatisticsSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSubnetResourceDashboardResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSubnetResourceDashboardResponseParams `json:"Response"`
+}
+
+func (r *DescribeSubnetResourceDashboardResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSubnetResourceDashboardResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -23626,6 +23737,31 @@ type ResourceDashboard struct {
 
 	// 路由表。
 	RouteTable *uint64 `json:"RouteTable,omitempty" name:"RouteTable"`
+}
+
+type ResourceStatistics struct {
+	// Vpc实例ID，例如：vpc-f1xjkw1b。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网实例ID，例如：subnet-bthucmmy。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 当前已使用的IP总数。
+	Ip *uint64 `json:"Ip,omitempty" name:"Ip"`
+
+	// 资源统计信息。
+	ResourceStatisticsItemSet []*ResourceStatisticsItem `json:"ResourceStatisticsItemSet,omitempty" name:"ResourceStatisticsItemSet"`
+}
+
+type ResourceStatisticsItem struct {
+	// 资源类型。比如，CVM，ENI等。
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源名称。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 资源个数。
+	ResourceCount *uint64 `json:"ResourceCount,omitempty" name:"ResourceCount"`
 }
 
 // Predefined struct for user

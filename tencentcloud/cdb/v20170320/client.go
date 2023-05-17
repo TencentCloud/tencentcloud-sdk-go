@@ -2867,6 +2867,56 @@ func (c *Client) DescribeBackupDatabasesWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBackupDecryptionKeyRequest() (request *DescribeBackupDecryptionKeyRequest) {
+    request = &DescribeBackupDecryptionKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupDecryptionKey")
+    
+    
+    return
+}
+
+func NewDescribeBackupDecryptionKeyResponse() (response *DescribeBackupDecryptionKeyResponse) {
+    response = &DescribeBackupDecryptionKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackupDecryptionKey
+// 本接口(DescribeBackupDecryptionKey)用于查询备份文件解密密钥。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeBackupDecryptionKey(request *DescribeBackupDecryptionKeyRequest) (response *DescribeBackupDecryptionKeyResponse, err error) {
+    return c.DescribeBackupDecryptionKeyWithContext(context.Background(), request)
+}
+
+// DescribeBackupDecryptionKey
+// 本接口(DescribeBackupDecryptionKey)用于查询备份文件解密密钥。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeBackupDecryptionKeyWithContext(ctx context.Context, request *DescribeBackupDecryptionKeyRequest) (response *DescribeBackupDecryptionKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupDecryptionKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupDecryptionKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupDecryptionKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupDownloadRestrictionRequest() (request *DescribeBackupDownloadRestrictionRequest) {
     request = &DescribeBackupDownloadRestrictionRequest{
         BaseRequest: &tchttp.BaseRequest{},

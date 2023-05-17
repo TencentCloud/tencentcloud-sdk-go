@@ -357,6 +357,10 @@ type AddEnterpriseSecurityGroupRulesResponseParams struct {
 	// 状态值，0：添加成功，非0：添加失败
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
+	// 规则uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*SecurityGroupSimplifyRule `json:"Rules,omitempty" name:"Rules"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -587,13 +591,11 @@ type CommonFilter struct {
 	// 检索的键值
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 检索的值
+	// 检索的值，各检索值间为OR关系
 	Values []*string `json:"Values,omitempty" name:"Values"`
 
-	// 枚举类型，代表name与values之间的匹配关系
+	// 枚举类型，代表Name与Values之间的匹配关系
 	// enum FilterOperatorType {
-	//     //INVALID
-	//     FILTER_OPERATOR_TYPE_INVALID = 0;
 	//     //等于
 	//     FILTER_OPERATOR_TYPE_EQUAL = 1;
 	//     //大于
@@ -606,18 +608,10 @@ type CommonFilter struct {
 	//     FILTER_OPERATOR_TYPE_LESS_EQ = 5;
 	//     //不等于
 	//     FILTER_OPERATOR_TYPE_NO_EQ = 6;
-	//     //in，数组中包含
-	//     FILTER_OPERATOR_TYPE_IN = 7;
 	//     //not in
 	//     FILTER_OPERATOR_TYPE_NOT_IN = 8;
 	//     //模糊匹配
 	//     FILTER_OPERATOR_TYPE_FUZZINESS = 9;
-	//     //存在
-	//     FILTER_OPERATOR_TYPE_EXIST = 10;
-	//     //不存在
-	//     FILTER_OPERATOR_TYPE_NOT_EXIST = 11;
-	//     //正则
-	//     FILTER_OPERATOR_TYPE_REGULAR = 12;
 	// }
 	OperatorType *int64 `json:"OperatorType,omitempty" name:"OperatorType"`
 }
@@ -2483,6 +2477,9 @@ type DescribeEnterpriseSecurityGroupRuleRequestParams struct {
 
 	// 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" name:"ServiceTemplateId"`
+
+	// 规则的uuid
+	RuleUuid *int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
 }
 
 type DescribeEnterpriseSecurityGroupRuleRequest struct {
@@ -2540,6 +2537,9 @@ type DescribeEnterpriseSecurityGroupRuleRequest struct {
 
 	// 端口协议类型参数模板id；协议端口模板id；与Protocol,Port互斥
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" name:"ServiceTemplateId"`
+
+	// 规则的uuid
+	RuleUuid *int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
 }
 
 func (r *DescribeEnterpriseSecurityGroupRuleRequest) ToJsonString() string {
@@ -2564,6 +2564,7 @@ func (r *DescribeEnterpriseSecurityGroupRuleRequest) FromJsonString(s string) er
 	delete(f, "Port")
 	delete(f, "Protocol")
 	delete(f, "ServiceTemplateId")
+	delete(f, "RuleUuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnterpriseSecurityGroupRuleRequest has unknown keys!", "")
 	}
@@ -6519,6 +6520,44 @@ type SecurityGroupRule struct {
 
 	// 规则状态，true表示启用，false表示禁用
 	Enable *string `json:"Enable,omitempty" name:"Enable"`
+}
+
+type SecurityGroupSimplifyRule struct {
+	// 访问源示例：
+	// net：IP/CIDR(192.168.0.2)
+	// template：参数模板(ipm-dyodhpby)
+	// instance：资产实例(ins-123456)
+	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
+	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// region：地域(ap-gaungzhou)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceContent *string `json:"SourceContent,omitempty" name:"SourceContent"`
+
+	// 访问目的示例：
+	// net：IP/CIDR(192.168.0.2)
+	// template：参数模板(ipm-dyodhpby)
+	// instance：资产实例(ins-123456)
+	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
+	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// region：地域(ap-gaungzhou)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DestContent *string `json:"DestContent,omitempty" name:"DestContent"`
+
+	// 协议；TCP/UDP/ICMP/ANY
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 规则对应的唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleUuid *int64 `json:"RuleUuid,omitempty" name:"RuleUuid"`
+
+	// 规则序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sequence *int64 `json:"Sequence,omitempty" name:"Sequence"`
 }
 
 type SequenceData struct {

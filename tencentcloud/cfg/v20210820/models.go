@@ -238,7 +238,7 @@ type DescribeTaskListRequestParams struct {
 	// 标签键
 	TaskTag []*string `json:"TaskTag,omitempty" name:"TaskTag"`
 
-	// 状态
+	// 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
 	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 	// 开始时间，固定格式%Y-%m-%d %H:%M:%S
@@ -266,7 +266,7 @@ type DescribeTaskListRequest struct {
 	// 标签键
 	TaskTag []*string `json:"TaskTag,omitempty" name:"TaskTag"`
 
-	// 状态
+	// 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
 	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
 	// 开始时间，固定格式%Y-%m-%d %H:%M:%S

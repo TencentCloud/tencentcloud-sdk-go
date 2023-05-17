@@ -1318,6 +1318,9 @@ func (r *CreateUserOIDCConfigResponse) FromJsonString(s string) error {
 type CreateUserSAMLConfigRequestParams struct {
 	// SAML元数据文档，需要base64 encode
 	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
+
+	// 辅助域名
+	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" name:"AuxiliaryDomain"`
 }
 
 type CreateUserSAMLConfigRequest struct {
@@ -1325,6 +1328,9 @@ type CreateUserSAMLConfigRequest struct {
 	
 	// SAML元数据文档，需要base64 encode
 	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
+
+	// 辅助域名
+	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" name:"AuxiliaryDomain"`
 }
 
 func (r *CreateUserSAMLConfigRequest) ToJsonString() string {
@@ -1340,6 +1346,7 @@ func (r *CreateUserSAMLConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SAMLMetadataDocument")
+	delete(f, "AuxiliaryDomain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserSAMLConfigRequest has unknown keys!", "")
 	}
@@ -2517,6 +2524,9 @@ type DescribeUserSAMLConfigResponseParams struct {
 
 	// 状态：0:未设置，1:已开启，2:已禁用
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 辅助域名
+	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" name:"AuxiliaryDomain"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6515,6 +6525,9 @@ type UpdateUserSAMLConfigRequestParams struct {
 
 	// 元数据文档，需要base64 encode，仅当Operate为updateSAML时需要此参数
 	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
+
+	// 辅助域名
+	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" name:"AuxiliaryDomain"`
 }
 
 type UpdateUserSAMLConfigRequest struct {
@@ -6525,6 +6538,9 @@ type UpdateUserSAMLConfigRequest struct {
 
 	// 元数据文档，需要base64 encode，仅当Operate为updateSAML时需要此参数
 	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
+
+	// 辅助域名
+	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" name:"AuxiliaryDomain"`
 }
 
 func (r *UpdateUserSAMLConfigRequest) ToJsonString() string {
@@ -6541,6 +6557,7 @@ func (r *UpdateUserSAMLConfigRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operate")
 	delete(f, "SAMLMetadataDocument")
+	delete(f, "AuxiliaryDomain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserSAMLConfigRequest has unknown keys!", "")
 	}

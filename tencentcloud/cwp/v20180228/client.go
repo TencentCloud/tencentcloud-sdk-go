@@ -7749,6 +7749,110 @@ func (c *Client) DescribeLicenseListWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeLogStorageConfigRequest() (request *DescribeLogStorageConfigRequest) {
+    request = &DescribeLogStorageConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLogStorageConfig")
+    
+    
+    return
+}
+
+func NewDescribeLogStorageConfigResponse() (response *DescribeLogStorageConfigResponse) {
+    response = &DescribeLogStorageConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLogStorageConfig
+// 获取日志存储配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLogStorageConfig(request *DescribeLogStorageConfigRequest) (response *DescribeLogStorageConfigResponse, err error) {
+    return c.DescribeLogStorageConfigWithContext(context.Background(), request)
+}
+
+// DescribeLogStorageConfig
+// 获取日志存储配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLogStorageConfigWithContext(ctx context.Context, request *DescribeLogStorageConfigRequest) (response *DescribeLogStorageConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogStorageConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogStorageConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogStorageConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogStorageRecordRequest() (request *DescribeLogStorageRecordRequest) {
+    request = &DescribeLogStorageRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLogStorageRecord")
+    
+    
+    return
+}
+
+func NewDescribeLogStorageRecordResponse() (response *DescribeLogStorageRecordResponse) {
+    response = &DescribeLogStorageRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLogStorageRecord
+// 获取日志存储量记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLogStorageRecord(request *DescribeLogStorageRecordRequest) (response *DescribeLogStorageRecordResponse, err error) {
+    return c.DescribeLogStorageRecordWithContext(context.Background(), request)
+}
+
+// DescribeLogStorageRecord
+// 获取日志存储量记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLogStorageRecordWithContext(ctx context.Context, request *DescribeLogStorageRecordRequest) (response *DescribeLogStorageRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogStorageRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogStorageRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogStorageRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogStorageStatisticRequest() (request *DescribeLogStorageStatisticRequest) {
     request = &DescribeLogStorageStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14199,6 +14303,66 @@ func (c *Client) ModifyLicenseUnBindsWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyLicenseUnBindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLogStorageConfigRequest() (request *ModifyLogStorageConfigRequest) {
+    request = &ModifyLogStorageConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyLogStorageConfig")
+    
+    
+    return
+}
+
+func NewModifyLogStorageConfigResponse() (response *ModifyLogStorageConfigResponse) {
+    response = &ModifyLogStorageConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLogStorageConfig
+// 修改日志存储配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLogStorageConfig(request *ModifyLogStorageConfigRequest) (response *ModifyLogStorageConfigResponse, err error) {
+    return c.ModifyLogStorageConfigWithContext(context.Background(), request)
+}
+
+// ModifyLogStorageConfig
+// 修改日志存储配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLogStorageConfigWithContext(ctx context.Context, request *ModifyLogStorageConfigRequest) (response *ModifyLogStorageConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyLogStorageConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLogStorageConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLogStorageConfigResponse()
     err = c.Send(request, response)
     return
 }

@@ -1489,7 +1489,7 @@ type SentenceRecognitionRequestParams struct {
 	// • 16k_zh-PY：中英粤;
 	// • 16k_zh_medical：中文医疗；
 	// • 16k_en：英语；
-	// • 16k_ca：粤语；
+	// • 16k_yue：粤语；
 	// • 16k_ja：日语；
 	// • 16k_ko：韩语；
 	// • 16k_vi：越南语；
@@ -1505,7 +1505,7 @@ type SentenceRecognitionRequestParams struct {
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
 	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
+	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac、amr。
 	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
 	// 腾讯云项目 ID，废弃参数，填写0即可。
@@ -1568,7 +1568,7 @@ type SentenceRecognitionRequest struct {
 	// • 16k_zh-PY：中英粤;
 	// • 16k_zh_medical：中文医疗；
 	// • 16k_en：英语；
-	// • 16k_ca：粤语；
+	// • 16k_yue：粤语；
 	// • 16k_ja：日语；
 	// • 16k_ko：韩语；
 	// • 16k_vi：越南语；
@@ -1584,7 +1584,7 @@ type SentenceRecognitionRequest struct {
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
 	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac。
+	// 识别音频的音频格式，支持wav、pcm、ogg-opus、speex、silk、mp3、m4a、aac、amr。
 	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
 	// 腾讯云项目 ID，废弃参数，填写0即可。

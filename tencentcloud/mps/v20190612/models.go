@@ -625,7 +625,8 @@ type AiRecognitionResult struct {
 	OcrFullTextTask *AiRecognitionTaskOcrFullTextResult `json:"OcrFullTextTask,omitempty" name:"OcrFullTextTask"`
 
 	// 翻译结果，当 Type 为
-	//  TransTextRecognition 时有效。
+	// 
+	// TransTextRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransTextTask *AiRecognitionTaskTransTextResult `json:"TransTextTask,omitempty" name:"TransTextTask"`
 }
@@ -7632,6 +7633,10 @@ type EditMediaTaskOutput struct {
 
 	// 编辑后的视频文件路径。
 	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 编辑后的视频文件元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 }
 
 // Predefined struct for user
@@ -8911,6 +8916,14 @@ type MediaAudioStreamItem struct {
 	// 音频声道数，例如 2。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channel *int64 `json:"Channel,omitempty" name:"Channel"`
+
+	// 音频Codecs。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Codecs *string `json:"Codecs,omitempty" name:"Codecs"`
+
+	// 音频响度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Loudness *float64 `json:"Loudness,omitempty" name:"Loudness"`
 }
 
 type MediaContentReviewAsrTextSegmentItem struct {
@@ -9142,6 +9155,14 @@ type MediaProcessTaskAdaptiveDynamicStreamingResult struct {
 	// 对视频转自适应码流任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AdaptiveDynamicStreamingInfoItem `json:"Output,omitempty" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskAnimatedGraphicResult struct {
@@ -9163,6 +9184,14 @@ type MediaProcessTaskAnimatedGraphicResult struct {
 	// 转动图任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaAnimatedGraphicsItem `json:"Output,omitempty" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskImageSpriteResult struct {
@@ -9184,6 +9213,14 @@ type MediaProcessTaskImageSpriteResult struct {
 	// 对视频截雪碧图任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaImageSpriteItem `json:"Output,omitempty" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskInput struct {
@@ -9261,6 +9298,14 @@ type MediaProcessTaskSampleSnapshotResult struct {
 	// 对视频做采样截图任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaSampleSnapshotItem `json:"Output,omitempty" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskSnapshotByTimeOffsetResult struct {
@@ -9282,6 +9327,14 @@ type MediaProcessTaskSnapshotByTimeOffsetResult struct {
 	// 对视频按指定时间点截图任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaSnapshotByTimeOffsetItem `json:"Output,omitempty" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type MediaProcessTaskTranscodeResult struct {
@@ -9424,6 +9477,10 @@ type MediaVideoStreamItem struct {
 	// HDR类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HdrType *string `json:"HdrType,omitempty" name:"HdrType"`
+
+	// 视频Codecs。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Codecs *string `json:"Codecs,omitempty" name:"Codecs"`
 }
 
 // Predefined struct for user
@@ -12660,6 +12717,14 @@ type ScheduleAnalysisTaskResult struct {
 	// 分析任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output []*AiAnalysisResult `json:"Output,omitempty" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type ScheduleQualityControlTaskResult struct {
@@ -12702,6 +12767,14 @@ type ScheduleRecognitionTaskResult struct {
 	// 识别任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output []*AiRecognitionResult `json:"Output,omitempty" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type ScheduleReviewTaskResult struct {
@@ -12723,6 +12796,14 @@ type ScheduleReviewTaskResult struct {
 	// 审核任务的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output []*AiContentReviewResult `json:"Output,omitempty" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type ScheduleTask struct {
@@ -13116,7 +13197,8 @@ type SvgWatermarkInputForUpdate struct {
 
 type TEHDConfig struct {
 	// 极速高清类型，可选值：
-	// <li>TEHD-100：极速高清-100。</li>
+	// <li>TEHD-100：极速高清-100（视频极速高清）。</li>
+	// <li>TEHD-200：极速高清-200（音频极速高清）。</li>
 	// 不填代表不启用极速高清。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -13127,7 +13209,8 @@ type TEHDConfig struct {
 
 type TEHDConfigForUpdate struct {
 	// 极速高清类型，可选值：
-	// <li>TEHD-100：极速高清-100。</li>
+	// <li>TEHD-100：极速高清-100（视频极速高清）。</li>
+	// <li>TEHD-200：极速高清-200（音频极速高清）。</li>
 	// 不填代表不修改。
 	Type *string `json:"Type,omitempty" name:"Type"`
 

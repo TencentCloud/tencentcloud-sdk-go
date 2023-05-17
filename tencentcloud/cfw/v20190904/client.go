@@ -206,7 +206,7 @@ func NewAddNatAcRuleResponse() (response *AddNatAcRuleResponse) {
 }
 
 // AddNatAcRule
-// 添加nat访问控制规则
+// 添加nat访问控制规则(地域必填)
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -232,7 +232,7 @@ func (c *Client) AddNatAcRule(request *AddNatAcRuleRequest) (response *AddNatAcR
 }
 
 // AddNatAcRule
-// 添加nat访问控制规则
+// 添加nat访问控制规则(地域必填)
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

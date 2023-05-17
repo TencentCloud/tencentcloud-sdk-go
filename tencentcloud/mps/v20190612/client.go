@@ -3220,7 +3220,7 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 }
 
 // DescribeTaskDetail
-// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询3天之内提交的任务）。
+// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -3233,7 +3233,7 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 }
 
 // DescribeTaskDetail
-// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询3天之内提交的任务）。
+// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"

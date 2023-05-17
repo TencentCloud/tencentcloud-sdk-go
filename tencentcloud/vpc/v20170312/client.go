@@ -7531,6 +7531,58 @@ func (c *Client) DeleteTemplateMemberWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteTrafficPackagesRequest() (request *DeleteTrafficPackagesRequest) {
+    request = &DeleteTrafficPackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteTrafficPackages")
+    
+    
+    return
+}
+
+func NewDeleteTrafficPackagesResponse() (response *DeleteTrafficPackagesResponse) {
+    response = &DeleteTrafficPackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteTrafficPackages
+// 删除共享带宽包（仅非活动状态的流量包可删除）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = "InvalidParameterValue.TrafficPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTFOUND = "InvalidParameterValue.TrafficPackageNotFound"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTSUPPORTED = "InvalidParameterValue.TrafficPackageNotSupported"
+func (c *Client) DeleteTrafficPackages(request *DeleteTrafficPackagesRequest) (response *DeleteTrafficPackagesResponse, err error) {
+    return c.DeleteTrafficPackagesWithContext(context.Background(), request)
+}
+
+// DeleteTrafficPackages
+// 删除共享带宽包（仅非活动状态的流量包可删除）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = "InvalidParameterValue.TrafficPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTFOUND = "InvalidParameterValue.TrafficPackageNotFound"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTSUPPORTED = "InvalidParameterValue.TrafficPackageNotSupported"
+func (c *Client) DeleteTrafficPackagesWithContext(ctx context.Context, request *DeleteTrafficPackagesRequest) (response *DeleteTrafficPackagesResponse, err error) {
+    if request == nil {
+        request = NewDeleteTrafficPackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTrafficPackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTrafficPackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteVpcRequest() (request *DeleteVpcRequest) {
     request = &DeleteVpcRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11435,6 +11487,58 @@ func (c *Client) DescribeSnapshotPoliciesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeSnapshotPoliciesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSubnetResourceDashboardRequest() (request *DescribeSubnetResourceDashboardRequest) {
+    request = &DescribeSubnetResourceDashboardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSubnetResourceDashboard")
+    
+    
+    return
+}
+
+func NewDescribeSubnetResourceDashboardResponse() (response *DescribeSubnetResourceDashboardResponse) {
+    response = &DescribeSubnetResourceDashboardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSubnetResourceDashboard
+// 本接口(DescribeSubnetResourceDashboard)用于查看Subnet资源信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSubnetResourceDashboard(request *DescribeSubnetResourceDashboardRequest) (response *DescribeSubnetResourceDashboardResponse, err error) {
+    return c.DescribeSubnetResourceDashboardWithContext(context.Background(), request)
+}
+
+// DescribeSubnetResourceDashboard
+// 本接口(DescribeSubnetResourceDashboard)用于查看Subnet资源信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSubnetResourceDashboardWithContext(ctx context.Context, request *DescribeSubnetResourceDashboardRequest) (response *DescribeSubnetResourceDashboardResponse, err error) {
+    if request == nil {
+        request = NewDescribeSubnetResourceDashboardRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSubnetResourceDashboard require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSubnetResourceDashboardResponse()
     err = c.Send(request, response)
     return
 }

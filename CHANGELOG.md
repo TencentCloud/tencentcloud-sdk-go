@@ -1,3 +1,227 @@
+# Release v1.0.658
+
+## 访问管理(cam) 版本：2019-01-16
+
+### 第 53 次发布
+
+发布时间：2023-05-17 01:07:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUserSAMLConfig](https://cloud.tencent.com/document/api/598/62664)
+
+	* 新增入参：AuxiliaryDomain
+
+* [DescribeUserSAMLConfig](https://cloud.tencent.com/document/api/598/62663)
+
+	* 新增出参：AuxiliaryDomain
+
+* [UpdateUserSAMLConfig](https://cloud.tencent.com/document/api/598/62662)
+
+	* 新增入参：AuxiliaryDomain
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 49 次发布
+
+发布时间：2023-05-17 01:08:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAutoCalloutTask](https://cloud.tencent.com/document/api/679/69194)
+
+	* 新增入参：UUI, CalleeAttributes
+
+
+新增数据结构：
+
+* [CalleeAttribute](https://cloud.tencent.com/document/api/679/47715#CalleeAttribute)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 125 次发布
+
+发布时间：2023-05-17 01:09:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBackupDecryptionKey](https://cloud.tencent.com/document/api/236/91083)
+
+修改数据结构：
+
+* [ParamTemplateInfo](https://cloud.tencent.com/document/api/236/15878#ParamTemplateInfo)
+
+	* 新增成员：EngineType
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 35 次发布
+
+发布时间：2023-05-17 01:12:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddEnterpriseSecurityGroupRules](https://cloud.tencent.com/document/api/1132/64234)
+
+	* 新增出参：Rules
+
+* [DescribeEnterpriseSecurityGroupRule](https://cloud.tencent.com/document/api/1132/64233)
+
+	* 新增入参：RuleUuid
+
+
+新增数据结构：
+
+* [SecurityGroupSimplifyRule](https://cloud.tencent.com/document/api/1132/49071#SecurityGroupSimplifyRule)
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 47 次发布
+
+发布时间：2023-05-17 01:17:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmTarget](https://cloud.tencent.com/document/api/614/56471#AlarmTarget)
+
+	* 新增成员：SyntaxRule
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 87 次发布
+
+发布时间：2023-05-17 01:21:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLogStorageConfig](https://cloud.tencent.com/document/api/296/91086)
+* [DescribeLogStorageRecord](https://cloud.tencent.com/document/api/296/91085)
+* [ModifyLogStorageConfig](https://cloud.tencent.com/document/api/296/91084)
+
+新增数据结构：
+
+* [LogStorageRecord](https://cloud.tencent.com/document/api/296/19867#LogStorageRecord)
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 59 次发布
+
+发布时间：2023-05-17 01:46:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EditMediaTaskOutput](https://cloud.tencent.com/document/api/862/37615#EditMediaTaskOutput)
+
+	* 新增成员：MetaData
+
+* [MediaAudioStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaAudioStreamItem)
+
+	* 新增成员：Codecs, Loudness
+
+* [MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAdaptiveDynamicStreamingResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskAnimatedGraphicResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskAnimatedGraphicResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskImageSpriteResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskImageSpriteResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskSampleSnapshotResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskSampleSnapshotResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaProcessTaskSnapshotByTimeOffsetResult](https://cloud.tencent.com/document/api/862/37615#MediaProcessTaskSnapshotByTimeOffsetResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaVideoStreamItem)
+
+	* 新增成员：Codecs
+
+* [ScheduleAnalysisTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleAnalysisTaskResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [ScheduleRecognitionTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleRecognitionTaskResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [ScheduleReviewTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleReviewTaskResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 155 次发布
+
+发布时间：2023-05-17 02:12:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteTrafficPackages](https://cloud.tencent.com/document/api/215/91087)
+* [DescribeSubnetResourceDashboard](https://cloud.tencent.com/document/api/215/91088)
+
+新增数据结构：
+
+* [ResourceStatistics](https://cloud.tencent.com/document/api/215/15824#ResourceStatistics)
+* [ResourceStatisticsItem](https://cloud.tencent.com/document/api/215/15824#ResourceStatisticsItem)
+
+
+
 # Release v1.0.657
 
 ## 混沌演练平台(cfg) 版本：2021-08-20

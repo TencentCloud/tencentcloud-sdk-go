@@ -8048,7 +8048,7 @@ func NewDescribeUploadStreamNumsResponse() (response *DescribeUploadStreamNumsRe
 }
 
 // DescribeUploadStreamNums
-// 直播上行路数查询
+// 直播上行路数查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8063,7 +8063,7 @@ func (c *Client) DescribeUploadStreamNums(request *DescribeUploadStreamNumsReque
 }
 
 // DescribeUploadStreamNums
-// 直播上行路数查询
+// 直播上行路数查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
