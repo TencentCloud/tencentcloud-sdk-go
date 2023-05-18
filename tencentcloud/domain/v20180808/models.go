@@ -144,6 +144,10 @@ type CertificateInfo struct {
 	// 证件照片地址。
 	ImgUrl *string `json:"ImgUrl,omitempty" name:"ImgUrl"`
 
+	// 原始照片地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginImgUrl *string `json:"OriginImgUrl,omitempty" name:"OriginImgUrl"`
+
 	// 联系人证件号码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistrantCertificateCode *string `json:"RegistrantCertificateCode,omitempty" name:"RegistrantCertificateCode"`

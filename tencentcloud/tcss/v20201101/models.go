@@ -15834,6 +15834,10 @@ type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
 
+	// 是否扫描最新版本镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Latest *bool `json:"Latest,omitempty" name:"Latest"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -30115,6 +30119,9 @@ type UpdateImageRegistryTimingScanTaskRequestParams struct {
 
 	// 扫描镜像Id
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 是否扫描最新版本
+	Latest *bool `json:"Latest,omitempty" name:"Latest"`
 }
 
 type UpdateImageRegistryTimingScanTaskRequest struct {
@@ -30140,6 +30147,9 @@ type UpdateImageRegistryTimingScanTaskRequest struct {
 
 	// 扫描镜像Id
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 是否扫描最新版本
+	Latest *bool `json:"Latest,omitempty" name:"Latest"`
 }
 
 func (r *UpdateImageRegistryTimingScanTaskRequest) ToJsonString() string {
@@ -30161,6 +30171,7 @@ func (r *UpdateImageRegistryTimingScanTaskRequest) FromJsonString(s string) erro
 	delete(f, "Images")
 	delete(f, "All")
 	delete(f, "Id")
+	delete(f, "Latest")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateImageRegistryTimingScanTaskRequest has unknown keys!", "")
 	}

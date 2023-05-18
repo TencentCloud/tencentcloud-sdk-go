@@ -1705,14 +1705,14 @@ func (r *DeleteReplicationInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoBackupConfigRequestParams struct {
-	// 实例ID
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeAutoBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -1737,19 +1737,19 @@ func (r *DescribeAutoBackupConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoBackupConfigResponseParams struct {
-	// 备份类型。自动备份类型： 1 “定时回档”
+	// 该参数因兼容性问题暂时保留，请忽略。
 	AutoBackupType *int64 `json:"AutoBackupType,omitempty" name:"AutoBackupType"`
 
-	// Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+	// 备份周期，默认为每天自动备份，Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
 	WeekDays []*string `json:"WeekDays,omitempty" name:"WeekDays"`
 
-	// 时间段。
+	// 备份任务发起时间段。
 	TimePeriod *string `json:"TimePeriod,omitempty" name:"TimePeriod"`
 
-	// 全量备份文件保存天数
+	// 全量备份文件保存天数。默认为7天。如需保存更多天数，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
 	BackupStorageDays *int64 `json:"BackupStorageDays,omitempty" name:"BackupStorageDays"`
 
-	// tendis binlog备份文件保存天数
+	// 该参数不再使用，请忽略。
 	BinlogStorageDays *int64 `json:"BinlogStorageDays,omitempty" name:"BinlogStorageDays"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7558,7 +7558,7 @@ type RedisBackupSet struct {
 	BackupId *string `json:"BackupId,omitempty" name:"BackupId"`
 
 	// 备份类型。
-	// - 1：凌晨系统发起的备份。
+	// - 1：凌晨系统发起的自动备份。
 	// - 0：用户发起的手动备份。
 	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
 

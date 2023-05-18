@@ -1259,7 +1259,9 @@ type BandwidthAlert struct {
 }
 
 type BotCookie struct {
-	// on|off
+	// Bot cookie策略配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 规则类型，当前只有all
@@ -1281,7 +1283,9 @@ type BotCookie struct {
 }
 
 type BotJavaScript struct {
-	// on|off
+	// Bot js策略配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 规则类型，当前只有file
@@ -8023,7 +8027,7 @@ type IpFilterPathRule struct {
 }
 
 type IpFreqLimit struct {
-	// IP 限频配置开关
+	// IP 限频配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -8058,13 +8062,17 @@ type IpStatus struct {
 }
 
 type Ipv6 struct {
-	// 域名是否开启ipv6功能，on或off。
+	// 域名开启源站ipv6配置开关，取值有：
+	// on：开启
+	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type Ipv6Access struct {
-	// 域名是否开启ipv6访问功能，on或off。
+	// 域名开启ipv6访问配置开关，取值有：
+	// on：开启
+	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
@@ -9596,7 +9604,7 @@ type MapInfo struct {
 }
 
 type MaxAge struct {
-	// 浏览器缓存配置开关
+	// 浏览器缓存配置开关，取值有：
 	// on：开启
 	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9727,7 +9735,9 @@ func (r *ModifyPurgeFetchTaskStatusResponse) FromJsonString(s string) error {
 }
 
 type OfflineCache struct {
-	// on | off, 离线缓存是否开启
+	// 离线缓存配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -9830,7 +9840,10 @@ type Origin struct {
 }
 
 type OriginAuthentication struct {
-	// 鉴权开关，on或off
+	// 回源鉴权高级配置开关，取值有：
+	// on：开启
+	// off：关闭
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -9846,7 +9859,9 @@ type OriginAuthenticationTypeA struct {
 }
 
 type OriginCombine struct {
-	// on|off 是否开启合并回源
+	// 合并回源配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -9856,7 +9871,7 @@ type OriginIp struct {
 }
 
 type OriginPullOptimization struct {
-	// 跨国回源优化配置开关
+	// 跨国回源优化配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -9879,7 +9894,9 @@ type OriginPullTimeout struct {
 }
 
 type OssPrivateAccess struct {
-	// 开关， on/off。
+	// oss回源鉴权配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 访问ID。
@@ -9900,7 +9917,9 @@ type OssPrivateAccess struct {
 }
 
 type OthersPrivateAccess struct {
-	// 开关， on/off。
+	// 其他厂商对象存储回源鉴权配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 访问ID。
@@ -10462,7 +10481,9 @@ func (r *PushUrlsCacheResponse) FromJsonString(s string) error {
 }
 
 type QnPrivateAccess struct {
-	// 开关 on/off
+	// 七牛元对象存储回源鉴权配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 访问 ID
@@ -10498,7 +10519,9 @@ type QueryStringKey struct {
 }
 
 type Quic struct {
-	// 是否启动Quic配置
+	// Quic功能配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -10517,7 +10540,7 @@ type Quota struct {
 }
 
 type RangeOriginPull struct {
-	// 分片回源配置开关
+	// 分片回源配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -10528,7 +10551,9 @@ type RangeOriginPull struct {
 }
 
 type RangeOriginPullRule struct {
-	// 分片回源配置开关
+	// 分片回源配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 规则类型：
@@ -10547,7 +10572,9 @@ type RangeOriginPullRule struct {
 }
 
 type RedirectConfig struct {
-	// 配置开关
+	// 自定义回源302 follow请求host配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 主源站follow302请求时带的自定义的host头部
@@ -10558,7 +10585,7 @@ type RedirectConfig struct {
 }
 
 type Referer struct {
-	// referer 黑白名单配置开关
+	// referer 黑白名单配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -10606,9 +10633,9 @@ type RegionMapRelation struct {
 }
 
 type RemoteAuthentication struct {
-	// 远程鉴权开关；
-	// on : 开启;
-	// off: 关闭；
+	// 远程鉴权配置开关，取值有：
+	// on：开启
+	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -10681,7 +10708,7 @@ type ReportData struct {
 }
 
 type RequestHeader struct {
-	// 自定义请求头配置开关
+	// 自定义请求头配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -10728,7 +10755,7 @@ type ResourceOriginData struct {
 }
 
 type ResponseHeader struct {
-	// 自定义响应头开关
+	// 自定义响应头配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -10739,7 +10766,7 @@ type ResponseHeader struct {
 }
 
 type ResponseHeaderCache struct {
-	// 源站头部缓存开关
+	// 源站头部缓存配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -10794,7 +10821,7 @@ type RuleCacheConfig struct {
 }
 
 type RuleEngine struct {
-	// 规则引擎配置开关
+	// 规则引擎配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -10819,7 +10846,9 @@ type RuleQueryString struct {
 }
 
 type ScdnAclConfig struct {
-	// 是否开启，on | off
+	// SCDN访问控制配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 新版本请使用AdvancedScriptData
@@ -10865,7 +10894,9 @@ type ScdnAclRule struct {
 }
 
 type ScdnBotConfig struct {
-	// on|off
+	// Scdn bot配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// Bot cookie策略

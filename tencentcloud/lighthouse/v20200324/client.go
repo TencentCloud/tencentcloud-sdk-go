@@ -3562,7 +3562,7 @@ func NewDetachCcnResponse() (response *DetachCcnResponse) {
 }
 
 // DetachCcn
-// 本接口 (AttachCcn) 用于解除与云联网的关联。
+// 本接口 (DetachCcn) 用于解除与云联网的关联。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3575,7 +3575,7 @@ func (c *Client) DetachCcn(request *DetachCcnRequest) (response *DetachCcnRespon
 }
 
 // DetachCcn
-// 本接口 (AttachCcn) 用于解除与云联网的关联。
+// 本接口 (DetachCcn) 用于解除与云联网的关联。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

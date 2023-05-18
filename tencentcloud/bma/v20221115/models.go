@@ -107,6 +107,9 @@ type CreateBPBrandRequestParams struct {
 
 	// 保护小程序
 	ProtectMiniPrograms []*string `json:"ProtectMiniPrograms,omitempty" name:"ProtectMiniPrograms"`
+
+	// 请求来源：0-反钓鱼 2-反假冒
+	APISource *int64 `json:"APISource,omitempty" name:"APISource"`
 }
 
 type CreateBPBrandRequest struct {
@@ -153,6 +156,9 @@ type CreateBPBrandRequest struct {
 
 	// 保护小程序
 	ProtectMiniPrograms []*string `json:"ProtectMiniPrograms,omitempty" name:"ProtectMiniPrograms"`
+
+	// 请求来源：0-反钓鱼 2-反假冒
+	APISource *int64 `json:"APISource,omitempty" name:"APISource"`
 }
 
 func (r *CreateBPBrandRequest) ToJsonString() string {
@@ -181,6 +187,7 @@ func (r *CreateBPBrandRequest) FromJsonString(s string) error {
 	delete(f, "ProtectAPPs")
 	delete(f, "ProtectOfficialAccounts")
 	delete(f, "ProtectMiniPrograms")
+	delete(f, "APISource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBPBrandRequest has unknown keys!", "")
 	}

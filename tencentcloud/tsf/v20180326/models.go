@@ -4939,6 +4939,71 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateUnitNamespacesRequestParams struct {
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 单元化命名空间对象列表
+	UnitNamespaceList []*UnitNamespace `json:"UnitNamespaceList,omitempty" name:"UnitNamespaceList"`
+}
+
+type CreateUnitNamespacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关实体ID
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`
+
+	// 单元化命名空间对象列表
+	UnitNamespaceList []*UnitNamespace `json:"UnitNamespaceList,omitempty" name:"UnitNamespaceList"`
+}
+
+func (r *CreateUnitNamespacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUnitNamespacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayInstanceId")
+	delete(f, "UnitNamespaceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUnitNamespacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUnitNamespacesResponseParams struct {
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateUnitNamespacesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUnitNamespacesResponseParams `json:"Response"`
+}
+
+func (r *CreateUnitNamespacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUnitNamespacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateUnitRuleRequestParams struct {
 	// 网关实体ID
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitempty" name:"GatewayInstanceId"`

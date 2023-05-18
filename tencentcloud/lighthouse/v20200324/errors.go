@@ -137,7 +137,7 @@ const (
 	// 套餐价格错误。
 	INTERNALERROR_INVALIDBUNDLEPRICE = "InternalError.InvalidBundlePrice"
 
-	// 命令 `DescribeInstanceLoginKeyPair` 无法找到。
+	// 命令无法找到。
 	INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 
 	// 请求出现错误。

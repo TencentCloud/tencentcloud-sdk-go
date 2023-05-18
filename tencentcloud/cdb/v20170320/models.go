@@ -7422,6 +7422,10 @@ type DescribeParamTemplateInfoResponseParams struct {
 	// 参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
 	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
 
+	// 参数模板引擎。支持值包括："InnoDB"，"RocksDB"。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

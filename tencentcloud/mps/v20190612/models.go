@@ -580,7 +580,7 @@ type AiContentReviewTaskInput struct {
 }
 
 type AiQualityControlTaskInput struct {
-	// 视频质检模板 ID 。
+	// 视频质检模板 ID 。暂时可以直接使用 预设模板ID 10，后面控制台支持用户配置自定义模板。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 

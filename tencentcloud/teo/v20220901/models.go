@@ -450,6 +450,9 @@ type ApplicationProxy struct {
 
 	// 规则列表。
 	ApplicationProxyRules []*ApplicationProxyRule `json:"ApplicationProxyRules,omitempty" name:"ApplicationProxyRules"`
+
+	// 中国大陆加速优化配置。
+	AccelerateMainland *AccelerateMainland `json:"AccelerateMainland,omitempty" name:"AccelerateMainland"`
 }
 
 type ApplicationProxyRule struct {

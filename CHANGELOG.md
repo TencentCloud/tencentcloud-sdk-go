@@ -1,3 +1,181 @@
+# Release v1.0.659
+
+## 品牌经营管家(bma) 版本：2022-11-15
+
+### 第 8 次发布
+
+发布时间：2023-05-18 01:05:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBPBrand](https://cloud.tencent.com/document/api/1296/86603)
+
+	* 新增入参：APISource
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 126 次发布
+
+发布时间：2023-05-18 01:08:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeParamTemplateInfo](https://cloud.tencent.com/document/api/236/32660)
+
+	* 新增出参：EngineType
+
+
+
+
+## 域名注册(domain) 版本：2018-08-08
+
+### 第 24 次发布
+
+发布时间：2023-05-18 01:23:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CertificateInfo](https://cloud.tencent.com/document/api/242/38895#CertificateInfo)
+
+	* 新增成员：OriginImgUrl
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 65 次发布
+
+发布时间：2023-05-18 01:26:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+
+	* 新增入参：AutoSignScene
+
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+
+	* 新增入参：AutoSignScene
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 77 次发布
+
+发布时间：2023-05-18 01:27:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowByFiles](https://cloud.tencent.com/document/api/1420/73068)
+
+	* 新增入参：AutoSignScene
+
+
+修改数据结构：
+
+* [FlowInfo](https://cloud.tencent.com/document/api/1420/61525#FlowInfo)
+
+	* 新增成员：AutoSignScene
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 40 次发布
+
+发布时间：2023-05-18 01:52:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeImageRegistryTimingScanTask](https://cloud.tencent.com/document/api/1285/65472)
+
+	* 新增出参：Latest
+
+* [UpdateImageRegistryTimingScanTask](https://cloud.tencent.com/document/api/1285/65457)
+
+	* 新增入参：Latest
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 43 次发布
+
+发布时间：2023-05-18 01:56:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApplicationProxy](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxy)
+
+	* 新增成员：AccelerateMainland
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 93 次发布
+
+发布时间：2023-05-18 02:02:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateUnitNamespaces](https://cloud.tencent.com/document/api/649/91139)
+
+
+
 # Release v1.0.658
 
 ## 访问管理(cam) 版本：2019-01-16

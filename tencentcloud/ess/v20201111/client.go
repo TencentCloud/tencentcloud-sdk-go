@@ -598,7 +598,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 }
 
 // CreateFlow
-// 创建签署流程
+// 通过模板创建签署流程
 //
 // 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
 //
@@ -683,7 +683,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 }
 
 // CreateFlow
-// 创建签署流程
+// 通过模板创建签署流程
 //
 // 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
 //

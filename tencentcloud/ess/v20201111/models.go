@@ -1100,6 +1100,9 @@ type CreateFlowByFilesRequestParams struct {
 
 	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
 	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
+
+	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -1175,6 +1178,9 @@ type CreateFlowByFilesRequest struct {
 
 	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
 	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
+
+	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -1208,6 +1214,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "SignBeanTag")
 	delete(f, "Agent")
 	delete(f, "CcNotifyType")
+	delete(f, "AutoSignScene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -1439,6 +1446,9 @@ type CreateFlowRequestParams struct {
 	// 被抄送人的信息列表。
 	// 注: 此功能为白名单功能，若有需要，请联系电子签客服开白使用。
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
 }
 
 type CreateFlowRequest struct {
@@ -1496,6 +1506,9 @@ type CreateFlowRequest struct {
 	// 被抄送人的信息列表。
 	// 注: 此功能为白名单功能，若有需要，请联系电子签客服开白使用。
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
 }
 
 func (r *CreateFlowRequest) ToJsonString() string {
@@ -1525,6 +1538,7 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "Agent")
 	delete(f, "CcInfos")
+	delete(f, "AutoSignScene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRequest has unknown keys!", "")
 	}

@@ -2449,6 +2449,58 @@ func (c *Client) CreateTaskFlowWithContext(ctx context.Context, request *CreateT
     return
 }
 
+func NewCreateUnitNamespacesRequest() (request *CreateUnitNamespacesRequest) {
+    request = &CreateUnitNamespacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "CreateUnitNamespaces")
+    
+    
+    return
+}
+
+func NewCreateUnitNamespacesResponse() (response *CreateUnitNamespacesResponse) {
+    response = &CreateUnitNamespacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUnitNamespaces
+// 批量创建单元化命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+func (c *Client) CreateUnitNamespaces(request *CreateUnitNamespacesRequest) (response *CreateUnitNamespacesResponse, err error) {
+    return c.CreateUnitNamespacesWithContext(context.Background(), request)
+}
+
+// CreateUnitNamespaces
+// 批量创建单元化命名空间
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
+//  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
+//  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+func (c *Client) CreateUnitNamespacesWithContext(ctx context.Context, request *CreateUnitNamespacesRequest) (response *CreateUnitNamespacesResponse, err error) {
+    if request == nil {
+        request = NewCreateUnitNamespacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUnitNamespaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUnitNamespacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUnitRuleRequest() (request *CreateUnitRuleRequest) {
     request = &CreateUnitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

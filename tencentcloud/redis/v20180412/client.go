@@ -1290,7 +1290,7 @@ func NewDescribeAutoBackupConfigResponse() (response *DescribeAutoBackupConfigRe
 }
 
 // DescribeAutoBackupConfig
-// 获取备份配置
+// 本接口（DescribeAutoBackupConfig）用于获取自动备份配置规则。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1304,7 +1304,7 @@ func (c *Client) DescribeAutoBackupConfig(request *DescribeAutoBackupConfigReque
 }
 
 // DescribeAutoBackupConfig
-// 获取备份配置
+// 本接口（DescribeAutoBackupConfig）用于获取自动备份配置规则。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
