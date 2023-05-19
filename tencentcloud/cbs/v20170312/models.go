@@ -840,7 +840,7 @@ type CreateSnapshotRequestParams struct {
 	// 快照名称，不传则新快照名称默认为“未命名”。
 	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 
-	// 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00
+	// 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00,。到期时间最小可设置为一天后的当前时间。
 	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。
@@ -859,7 +859,7 @@ type CreateSnapshotRequest struct {
 	// 快照名称，不传则新快照名称默认为“未命名”。
 	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
 
-	// 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00
+	// 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00,。到期时间最小可设置为一天后的当前时间。
 	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。

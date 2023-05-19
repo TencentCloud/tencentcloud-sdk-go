@@ -52,7 +52,7 @@ type CreateVRSTaskRequestParams struct {
 	AudioIdList []*string `json:"AudioIdList,omitempty" name:"AudioIdList"`
 
 	// 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
-	// 回调采用POST请求方式，Content-Type为application/x-www-form-urlencoded，回调数据格式如下:callback_body=checksum=&data={"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
+	// 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 
@@ -89,7 +89,7 @@ type CreateVRSTaskRequest struct {
 	AudioIdList []*string `json:"AudioIdList,omitempty" name:"AudioIdList"`
 
 	// 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
-	// 回调采用POST请求方式，Content-Type为application/x-www-form-urlencoded，回调数据格式如下:callback_body=checksum=&data={"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
+	// 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 }
 

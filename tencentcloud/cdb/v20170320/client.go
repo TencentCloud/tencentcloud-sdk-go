@@ -2818,6 +2818,10 @@ func NewDescribeBackupDatabasesResponse() (response *DescribeBackupDatabasesResp
 }
 
 // DescribeBackupDatabases
+// 接口已废弃，需要下线
+//
+// 
+//
 // 本接口(DescribeBackupDatabases)用于查询备份文件包含的库 (已废弃)。
 //
 // 旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
@@ -2837,6 +2841,10 @@ func (c *Client) DescribeBackupDatabases(request *DescribeBackupDatabasesRequest
 }
 
 // DescribeBackupDatabases
+// 接口已废弃，需要下线
+//
+// 
+//
 // 本接口(DescribeBackupDatabases)用于查询备份文件包含的库 (已废弃)。
 //
 // 旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
@@ -3158,6 +3166,10 @@ func NewDescribeBackupTablesResponse() (response *DescribeBackupTablesResponse) 
 }
 
 // DescribeBackupTables
+// 该接口已废弃，需要下线
+//
+// 
+//
 // 本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (已废弃)。
 //
 // 旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。
@@ -3177,6 +3189,10 @@ func (c *Client) DescribeBackupTables(request *DescribeBackupTablesRequest) (res
 }
 
 // DescribeBackupTables
+// 该接口已废弃，需要下线
+//
+// 
+//
 // 本接口(DescribeBackupTables)用于查询指定的数据库的备份数据表名 (已废弃)。
 //
 // 旧版本支持全量备份后，用户如果分库表下载逻辑备份文件，需要用到此接口。

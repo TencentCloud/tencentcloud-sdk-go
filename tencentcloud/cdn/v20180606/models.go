@@ -21,7 +21,9 @@ import (
 )
 
 type AccessControl struct {
-	// on | off 是否启用请求头部及请求url访问控制
+	// 启用请求头部及请求url访问控制开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 请求头部及请求url访问规则
@@ -542,7 +544,10 @@ type AdvanceHttps struct {
 }
 
 type AdvancedAuthentication struct {
-	// 防盗链配置开关，on或off，开启时必须且只能配置一种模式，其余模式为null。
+	// 防盗链配置开关，取值有：
+	// on：开启
+	// off：关闭
+	// 开启时必须且只配置一种模式，其余模式需要设置为 null
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 时间戳防盗链高级版模式A配置。
@@ -1045,7 +1050,7 @@ type AdvancedScdnAclRule struct {
 }
 
 type Authentication struct {
-	// 防盗链配置开关
+	// 防盗链配置开关，取值有：
 	// on：开启
 	// off：关闭
 	// 开启时必须且只配置一种模式，其余模式需要设置为 null
@@ -1188,13 +1193,17 @@ type AuthenticationTypeD struct {
 }
 
 type AvifAdapter struct {
-	// 开关，"on/off"
+	// 图片优化AvifAdapter配置项开关，取值有：
+	// on：开启
+	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type AwsPrivateAccess struct {
-	// 开关，on/off。
+	// s3源站回源鉴权配置项开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 访问ID。
@@ -1215,7 +1224,7 @@ type AwsPrivateAccess struct {
 }
 
 type BandwidthAlert struct {
-	// 用量封顶配置开关
+	// 用量封顶配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -1233,7 +1242,7 @@ type BandwidthAlert struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTriggerTime *string `json:"LastTriggerTime,omitempty" name:"LastTriggerTime"`
 
-	// 用量封顶提醒开关
+	// 用量封顶提醒配置开关，取值有：
 	// on：开启
 	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1498,8 +1507,9 @@ type Cache struct {
 }
 
 type CacheConfig struct {
-	// on 代表开启自定义启发式缓存时间
-	// off 代表关闭自定义启发式缓存时间
+	// 启发式自定义时间缓存配置开关，取值有：
+	// on：开启
+	// off：关闭
 	HeuristicCacheTimeSwitch *string `json:"HeuristicCacheTimeSwitch,omitempty" name:"HeuristicCacheTimeSwitch"`
 
 	// 单位 秒.
@@ -1507,7 +1517,7 @@ type CacheConfig struct {
 }
 
 type CacheConfigCache struct {
-	// 缓存配置开关
+	// 路径缓存配置开关，取值有：
 	// on：开启
 	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1541,7 +1551,7 @@ type CacheConfigCache struct {
 }
 
 type CacheConfigFollowOrigin struct {
-	// 遵循源站配置开关
+	// 路径缓存遵循源站配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -1552,7 +1562,7 @@ type CacheConfigFollowOrigin struct {
 }
 
 type CacheConfigNoCache struct {
-	// 不缓存配置开关
+	// 路径缓存不缓存配置配置开关，取值有：
 	// on：开启
 	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1612,7 +1622,9 @@ type CacheOptResult struct {
 }
 
 type CacheTagKey struct {
-	// 是否使用CacheTag作为CacheKey的一部分
+	// 使用CacheTag作为CacheKey的一部分配置开关，取值有
+	// on：开启，使用CacheTag作为CacheKey的一部分
+	// off：关闭，不使用CacheTag作为CacheKey的一部分
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -1813,7 +1825,7 @@ type Compatibility struct {
 }
 
 type Compression struct {
-	// 智能压缩配置开关
+	// 智能压缩配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -1869,7 +1881,9 @@ type CompressionRule struct {
 }
 
 type CookieKey struct {
-	// on | off 是否使用Cookie作为Cache的一部分
+	// 使用Cookie作为Cache的一部分配置开关，取值有：
+	// on：开启，使用Cookie作为Cache的一部分
+	// off：关闭，不使用Cookie作为Cache的一部分
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -7278,7 +7292,7 @@ type DomainLog struct {
 }
 
 type DownstreamCapping struct {
-	// 下行速度配置开关
+	// 下行速度配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -7525,7 +7539,7 @@ func (r *EnableClsLogTopicResponse) FromJsonString(s string) error {
 }
 
 type ErrorPage struct {
-	// 状态码重定向配置开关
+	// 状态码重定向配置开关，取值有：
 	// on：开启
 	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7569,7 +7583,7 @@ type ExtraLogset struct {
 }
 
 type FollowRedirect struct {
-	// 回源跟随开关
+	// 回源跟随配置开关，取值有：
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -7580,7 +7594,7 @@ type FollowRedirect struct {
 }
 
 type ForceRedirect struct {
-	// 访问强制跳转配置开关
+	// 访问强制跳转配置开关，取值有：
 	// on：开启
 	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7711,7 +7725,9 @@ func (r *GetDisableRecordsResponse) FromJsonString(s string) error {
 }
 
 type GuetzliAdapter struct {
-	// 开关，"on/off"
+	// 图片优化-GuetzliAdapter配置开关，取值有：
+	// on：开启
+	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
@@ -7725,7 +7741,9 @@ type HTTPHeader struct {
 }
 
 type HeaderKey struct {
-	// 是否组成Cachekey
+	// 组成Cachekey配置开关，取值有：
+	// on：开启
+	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -7735,8 +7753,9 @@ type HeaderKey struct {
 }
 
 type HeuristicCache struct {
-	// on 代表开启启发式缓存
-	// off 代表关闭启发式缓存
+	// 启发式缓存配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 自定义启发式缓存时间配置
@@ -7744,7 +7763,9 @@ type HeuristicCache struct {
 }
 
 type Hsts struct {
-	// 是否开启，on或off。
+	// HSTS 配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// MaxAge数值。
@@ -7803,7 +7824,7 @@ type HttpHeaderRule struct {
 }
 
 type Https struct {
-	// https 配置开关
+	// https 配置开关，取值有：
 	// on：开启
 	// off：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7862,7 +7883,9 @@ type Https struct {
 }
 
 type HttpsBilling struct {
-	// HTTPS服务，缺省时默认开启【会产生计费】
+	// HTTPS服务配置开关，取值有：
+	// on：开启，缺省时默认开启【会产生计费】
+	// off：关闭，拦截https请求
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -7935,7 +7958,9 @@ type HttpsPackage struct {
 }
 
 type HwPrivateAccess struct {
-	// 开关 on/off
+	//  华为云对象存储回源鉴权配置开关，取值有：
+	// on：开启
+	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 访问 ID
@@ -7970,7 +7995,7 @@ type ImageOptimization struct {
 }
 
 type IpFilter struct {
-	// IP 黑白名单配置开关
+	// IP 黑白名单配置开关，取值有
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -10773,7 +10798,10 @@ type ResponseHeaderCache struct {
 }
 
 type Revalidate struct {
-	// on | off 是否总是回源校验
+	// 总是回源校验配置开关，取值有：
+	// on：开启
+	// off：关闭
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -10832,7 +10860,10 @@ type RuleEngine struct {
 }
 
 type RuleQueryString struct {
-	// on | off CacheKey是否由QueryString组成
+	// 路径保留参数配置开关，取值有：
+	// on：开启，CacheKey由QueryString组成
+	// off：关闭，CacheKey不由QueryString组成
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 

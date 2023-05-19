@@ -542,6 +542,10 @@ type BoundIpInfo struct {
 
 	// 运营商，绑定操作为必填项，解绑操作可不填。0：电信；1：联通；2：移动；5：BGP
 	IspCode *uint64 `json:"IspCode,omitempty" name:"IspCode"`
+
+	// 域名化资产对应的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 type CCLevelPolicy struct {
@@ -899,6 +903,9 @@ type CreateBoundIPRequestParams struct {
 
 	// 已弃用，不填
 	CopyPolicy *string `json:"CopyPolicy,omitempty" name:"CopyPolicy"`
+
+	// 如果该资源实例为域名化资产则，该参数必填
+	FilterRegion *string `json:"FilterRegion,omitempty" name:"FilterRegion"`
 }
 
 type CreateBoundIPRequest struct {
@@ -918,6 +925,9 @@ type CreateBoundIPRequest struct {
 
 	// 已弃用，不填
 	CopyPolicy *string `json:"CopyPolicy,omitempty" name:"CopyPolicy"`
+
+	// 如果该资源实例为域名化资产则，该参数必填
+	FilterRegion *string `json:"FilterRegion,omitempty" name:"FilterRegion"`
 }
 
 func (r *CreateBoundIPRequest) ToJsonString() string {
@@ -937,6 +947,7 @@ func (r *CreateBoundIPRequest) FromJsonString(s string) error {
 	delete(f, "BoundDevList")
 	delete(f, "UnBoundDevList")
 	delete(f, "CopyPolicy")
+	delete(f, "FilterRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBoundIPRequest has unknown keys!", "")
 	}
@@ -3232,6 +3243,12 @@ func (r *DeleteWaterPrintKeyResponse) FromJsonString(s string) error {
 type DescribeBasicDeviceStatusRequestParams struct {
 	// IP 资源列表
 	IpList []*string `json:"IpList,omitempty" name:"IpList"`
+
+	// 域名化资源传id
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
+
+	// 地域名称
+	FilterRegion *uint64 `json:"FilterRegion,omitempty" name:"FilterRegion"`
 }
 
 type DescribeBasicDeviceStatusRequest struct {
@@ -3239,6 +3256,12 @@ type DescribeBasicDeviceStatusRequest struct {
 	
 	// IP 资源列表
 	IpList []*string `json:"IpList,omitempty" name:"IpList"`
+
+	// 域名化资源传id
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
+
+	// 地域名称
+	FilterRegion *uint64 `json:"FilterRegion,omitempty" name:"FilterRegion"`
 }
 
 func (r *DescribeBasicDeviceStatusRequest) ToJsonString() string {
@@ -3254,6 +3277,8 @@ func (r *DescribeBasicDeviceStatusRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "IpList")
+	delete(f, "IdList")
+	delete(f, "FilterRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBasicDeviceStatusRequest has unknown keys!", "")
 	}
@@ -3267,6 +3292,10 @@ type DescribeBasicDeviceStatusResponseParams struct {
 	// 2 - 正常状态
 	// 3 - 攻击状态
 	Data []*KeyValue `json:"Data,omitempty" name:"Data"`
+
+	// 域名化资产的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLBData []*KeyValue `json:"CLBData,omitempty" name:"CLBData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6314,6 +6343,9 @@ type DescribeNewL7RulesRequestParams struct {
 
 	// 高防IP实例的Cname
 	Cname *string `json:"Cname,omitempty" name:"Cname"`
+
+	// 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
+	Export *bool `json:"Export,omitempty" name:"Export"`
 }
 
 type DescribeNewL7RulesRequest struct {
@@ -6342,6 +6374,9 @@ type DescribeNewL7RulesRequest struct {
 
 	// 高防IP实例的Cname
 	Cname *string `json:"Cname,omitempty" name:"Cname"`
+
+	// 默认为false，当为true时，将不对各个规则做策略检查，直接导出所有规则
+	Export *bool `json:"Export,omitempty" name:"Export"`
 }
 
 func (r *DescribeNewL7RulesRequest) ToJsonString() string {
@@ -6364,6 +6399,7 @@ func (r *DescribeNewL7RulesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "ProtocolList")
 	delete(f, "Cname")
+	delete(f, "Export")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNewL7RulesRequest has unknown keys!", "")
 	}

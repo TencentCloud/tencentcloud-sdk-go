@@ -20,6 +20,24 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ApiGatewayInstanceDetail struct {
+	// 实例ID
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 实例名称
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 使用协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+}
+
 // Predefined struct for user
 type ApplyCertificateRequestParams struct {
 	// 验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
@@ -225,6 +243,17 @@ func (r *CancelCertificateOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CdnInstanceDetail struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 已部署证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 域名状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type CertHostingInfo struct {
 	// 证书ID
 	CertId *string `json:"CertId,omitempty" name:"CertId"`
@@ -240,6 +269,14 @@ type CertHostingInfo struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type Certificate struct {
+	// 证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 证书绑定的域名
+	DnsNames []*string `json:"DnsNames,omitempty" name:"DnsNames"`
 }
 
 type CertificateExtra struct {
@@ -487,6 +524,63 @@ func (r *CheckCertificateChainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClbInstanceDetail struct {
+	// CLB实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// CLB实例名称
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// CLB监听器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Listeners []*ClbListener `json:"Listeners,omitempty" name:"Listeners"`
+}
+
+type ClbListener struct {
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 监听器名称
+	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+
+	// 是否开启SNI，1为开启，0为关闭
+	SniSwitch *uint64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
+
+	// 监听器协议类型， HTTPS|TCP_SSL
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 监听器绑定的证书数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Certificate *Certificate `json:"Certificate,omitempty" name:"Certificate"`
+
+	// 监听器规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*ClbListenerRule `json:"Rules,omitempty" name:"Rules"`
+
+	// 不匹配域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoMatchDomains []*string `json:"NoMatchDomains,omitempty" name:"NoMatchDomains"`
+}
+
+type ClbListenerRule struct {
+	// 规则ID
+	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`
+
+	// 规则绑定的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 规则是否匹配待绑定证书的域名
+	IsMatch *bool `json:"IsMatch,omitempty" name:"IsMatch"`
+
+	// 规则已绑定的证书数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Certificate *Certificate `json:"Certificate,omitempty" name:"Certificate"`
+
+	// 不匹配域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoMatchDomains []*string `json:"NoMatchDomains,omitempty" name:"NoMatchDomains"`
+}
+
 // Predefined struct for user
 type CommitCertificateInformationRequestParams struct {
 	// 证书 ID。
@@ -635,6 +729,27 @@ func (r *CompleteCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CosInstanceDetail struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 已绑定的证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// ENABLED: 域名上线状态
+	// DISABLED:域名下线状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 存储桶名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 存储桶地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 // Predefined struct for user
 type CreateCertificateRequestParams struct {
 	// 证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
@@ -707,6 +822,24 @@ func (r *CreateCertificateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DdosInstanceDetail struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 协议类型
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 转发端口
+	VirtualPort *string `json:"VirtualPort,omitempty" name:"VirtualPort"`
 }
 
 // Predefined struct for user
@@ -821,6 +954,301 @@ func (r *DeleteManagerResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteManagerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployCertificateInstanceRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 需要部署实例列表
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
+
+	// 部署的云资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 部署云资源状态：
+	// 云直播：
+	// -1：域名未关联证书。
+	// 1： 域名https已开启。
+	// 0： 域名https已关闭。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+type DeployCertificateInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 需要部署实例列表
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
+
+	// 部署的云资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 部署云资源状态：
+	// 云直播：
+	// -1：域名未关联证书。
+	// 1： 域名https已开启。
+	// 0： 域名https已关闭。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *DeployCertificateInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployCertificateInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "InstanceIdList")
+	delete(f, "ResourceType")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployCertificateInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployCertificateInstanceResponseParams struct {
+	// 云资源部署任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployRecordId *uint64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 部署状态，1表示部署成功，0表示部署失败
+	DeployStatus *int64 `json:"DeployStatus,omitempty" name:"DeployStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeployCertificateInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployCertificateInstanceResponseParams `json:"Response"`
+}
+
+func (r *DeployCertificateInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployCertificateInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployCertificateRecordRetryRequestParams struct {
+	// 待重试部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 待重试部署记录详情ID
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitempty" name:"DeployRecordDetailId"`
+}
+
+type DeployCertificateRecordRetryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待重试部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 待重试部署记录详情ID
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitempty" name:"DeployRecordDetailId"`
+}
+
+func (r *DeployCertificateRecordRetryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployCertificateRecordRetryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	delete(f, "DeployRecordDetailId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployCertificateRecordRetryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployCertificateRecordRetryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeployCertificateRecordRetryResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployCertificateRecordRetryResponseParams `json:"Response"`
+}
+
+func (r *DeployCertificateRecordRetryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployCertificateRecordRetryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployCertificateRecordRollbackRequestParams struct {
+	// 待重试部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+}
+
+type DeployCertificateRecordRollbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待重试部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+}
+
+func (r *DeployCertificateRecordRollbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployCertificateRecordRollbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployCertificateRecordRollbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeployCertificateRecordRollbackResponseParams struct {
+	// 回滚部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeployCertificateRecordRollbackResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployCertificateRecordRollbackResponseParams `json:"Response"`
+}
+
+func (r *DeployCertificateRecordRollbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployCertificateRecordRollbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployRecordDetail struct {
+	// 部署记录详情ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 部署证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 原绑定证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldCertId *string `json:"OldCertId,omitempty" name:"OldCertId"`
+
+	// 部署实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 部署实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 部署监听器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 部署域名列表
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 部署监听器协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 部署状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 部署错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 部署记录详情创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 部署记录详情最后一次更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 部署监听器名称
+	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+
+	// 是否开启SNI
+	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
+
+	// COS存储桶名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 命名空间名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// secret名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+}
+
+type DeployRecordInfo struct {
+	// 部署记录ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 部署证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 部署地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 部署状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 部署时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最近一次更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type DeployedResources struct {
@@ -1620,6 +2048,1362 @@ func (r *DescribeDeployedResourcesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHostApiGatewayInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostApiGatewayInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostApiGatewayInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostApiGatewayInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostApiGatewayInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostApiGatewayInstanceListResponseParams struct {
+	// apiGateway实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostApiGatewayInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostApiGatewayInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostApiGatewayInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostApiGatewayInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostCdnInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 分页偏移量，从0开始。	
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。	
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeHostCdnInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 分页偏移量，从0开始。	
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。	
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeHostCdnInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostCdnInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "OldCertificateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostCdnInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostCdnInstanceListResponseParams struct {
+	// CDN实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// CDN域名总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostCdnInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostCdnInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostCdnInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostCdnInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostClbInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否异步缓存
+	AsyncCache *int64 `json:"AsyncCache,omitempty" name:"AsyncCache"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostClbInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否异步缓存
+	AsyncCache *int64 `json:"AsyncCache,omitempty" name:"AsyncCache"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostClbInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostClbInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "AsyncCache")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostClbInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostClbInstanceListResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// CLB实例监听器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 异步刷新总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitempty" name:"AsyncTotalNum"`
+
+	// 异步刷新当前执行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncOffset *int64 `json:"AsyncOffset,omitempty" name:"AsyncOffset"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostClbInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostClbInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostClbInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostClbInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostCosInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型 cos
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeHostCosInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型 cos
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeHostCosInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostCosInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostCosInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostCosInstanceListResponseParams struct {
+	// COS实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*CosInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 异步刷新总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitempty" name:"AsyncTotalNum"`
+
+	// 异步刷新当前执行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncOffset *int64 `json:"AsyncOffset,omitempty" name:"AsyncOffset"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostCosInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostCosInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostCosInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostCosInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostDdosInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostDdosInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostDdosInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostDdosInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostDdosInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostDdosInstanceListResponseParams struct {
+	// DDOS实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostDdosInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostDdosInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostDdosInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostDdosInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostDeployRecordDetailRequestParams struct {
+	// 待部署的证书ID
+	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeHostDeployRecordDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeHostDeployRecordDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostDeployRecordDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostDeployRecordDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostDeployRecordDetailResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 证书部署记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployRecordDetailList []*DeployRecordDetail `json:"DeployRecordDetailList,omitempty" name:"DeployRecordDetailList"`
+
+	// 成功总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitempty" name:"SuccessTotalCount"`
+
+	// 失败总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedTotalCount *int64 `json:"FailedTotalCount,omitempty" name:"FailedTotalCount"`
+
+	// 部署中总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningTotalCount *int64 `json:"RunningTotalCount,omitempty" name:"RunningTotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostDeployRecordDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostDeployRecordDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostDeployRecordDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostDeployRecordDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostDeployRecordRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+type DescribeHostDeployRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+func (r *DescribeHostDeployRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostDeployRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostDeployRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostDeployRecordResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 证书部署记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployRecordList []*DeployRecordInfo `json:"DeployRecordList,omitempty" name:"DeployRecordList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostDeployRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostDeployRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostDeployRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostDeployRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostLighthouseInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型 lighthouse
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeHostLighthouseInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型 lighthouse
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeHostLighthouseInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostLighthouseInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostLighthouseInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostLighthouseInstanceListResponseParams struct {
+	// Lighthouse实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*LighthouseInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostLighthouseInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostLighthouseInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostLighthouseInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostLighthouseInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostLiveInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostLiveInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostLiveInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostLiveInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostLiveInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostLiveInstanceListResponseParams struct {
+	// live实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostLiveInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostLiveInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostLiveInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostLiveInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostTeoInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostTeoInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostTeoInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostTeoInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostTeoInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostTeoInstanceListResponseParams struct {
+	// teo实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*TeoInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostTeoInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostTeoInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostTeoInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostTeoInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostTkeInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否异步缓存
+	AsyncCache *int64 `json:"AsyncCache,omitempty" name:"AsyncCache"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostTkeInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否异步缓存
+	AsyncCache *int64 `json:"AsyncCache,omitempty" name:"AsyncCache"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostTkeInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostTkeInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "AsyncCache")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostTkeInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostTkeInstanceListResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// CLB实例监听器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*TkeInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 异步刷新总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitempty" name:"AsyncTotalNum"`
+
+	// 异步刷新当前执行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncOffset *int64 `json:"AsyncOffset,omitempty" name:"AsyncOffset"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostTkeInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostTkeInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostTkeInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostTkeInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostUpdateRecordDetailRequestParams struct {
+	// 待部署的证书ID
+	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+}
+
+type DescribeHostUpdateRecordDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+}
+
+func (r *DescribeHostUpdateRecordDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostUpdateRecordDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostUpdateRecordDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostUpdateRecordDetailResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 证书部署记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordDetailList []*UpdateRecordDetails `json:"RecordDetailList,omitempty" name:"RecordDetailList"`
+
+	// 成功总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitempty" name:"SuccessTotalCount"`
+
+	// 失败总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedTotalCount *int64 `json:"FailedTotalCount,omitempty" name:"FailedTotalCount"`
+
+	// 部署中总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningTotalCount *int64 `json:"RunningTotalCount,omitempty" name:"RunningTotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostUpdateRecordDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostUpdateRecordDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostUpdateRecordDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostUpdateRecordDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostUpdateRecordRequestParams struct {
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 新证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostUpdateRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 新证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostUpdateRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostUpdateRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "CertificateId")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostUpdateRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostUpdateRecordResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 证书部署记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployRecordList []*UpdateRecordInfo `json:"DeployRecordList,omitempty" name:"DeployRecordList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostUpdateRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostUpdateRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostUpdateRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostUpdateRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostVodInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型 vod
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostVodInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型 vod
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostVodInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostVodInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostVodInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostVodInstanceListResponseParams struct {
+	// Vod实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*VodInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostVodInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostVodInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostVodInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostVodInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostWafInstanceListRequestParams struct {
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostWafInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待部署的证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
+	IsCache *uint64 `json:"IsCache,omitempty" name:"IsCache"`
+
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 已部署的证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostWafInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostWafInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "ResourceType")
+	delete(f, "IsCache")
+	delete(f, "Filters")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostWafInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostWafInstanceListResponseParams struct {
+	// WAF实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostWafInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostWafInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostWafInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostWafInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeManagerDetailRequestParams struct {
 	// 管理人ID
 	ManagerId *int64 `json:"ManagerId,omitempty" name:"ManagerId"`
@@ -2081,6 +3865,14 @@ type DvAuths struct {
 	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitempty" name:"DvAuthVerifyType"`
 }
 
+type Filter struct {
+	// 过滤参数key
+	FilterKey *string `json:"FilterKey,omitempty" name:"FilterKey"`
+
+	// 过滤参数值
+	FilterValue *string `json:"FilterValue,omitempty" name:"FilterValue"`
+}
+
 // Predefined struct for user
 type HostCertificateRequestParams struct {
 	// 证书ID
@@ -2143,6 +3935,34 @@ func (r *HostCertificateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *HostCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type LighthouseInstanceDetail struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// IP地址
+	IP []*string `json:"IP,omitempty" name:"IP"`
+
+	// 可选择域名
+	Domain []*string `json:"Domain,omitempty" name:"Domain"`
+}
+
+type LiveInstanceDetail struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 已绑定的证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// -1：域名未关联证书。
+	// 1： 域名https已开启。
+	// 0： 域名https已关闭。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type ManagerInfo struct {
@@ -2608,6 +4428,14 @@ func (r *ReplaceCertificateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ReplaceCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourceTypeRegions struct {
+	// 云资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 地域列表
+	Regions []*string `json:"Regions,omitempty" name:"Regions"`
 }
 
 // Predefined struct for user
@@ -3106,6 +4934,364 @@ type Tags struct {
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
+type TeoInstanceDetail struct {
+	// 域名
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+}
+
+type TkeIngressDetail struct {
+	// ingress名称
+	IngressName *string `json:"IngressName,omitempty" name:"IngressName"`
+
+	// tls域名列表
+	TlsDomains []*string `json:"TlsDomains,omitempty" name:"TlsDomains"`
+
+	// ingress域名列表
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+}
+
+type TkeInstanceDetail struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群命名空间列表
+	NamespaceList []*TkeNameSpaceDetail `json:"NamespaceList,omitempty" name:"NamespaceList"`
+}
+
+type TkeNameSpaceDetail struct {
+	// namespace名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// secret列表
+	SecretList []*TkeSecretDetail `json:"SecretList,omitempty" name:"SecretList"`
+}
+
+type TkeSecretDetail struct {
+	// secret名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// ingress列表
+	IngressList []*TkeIngressDetail `json:"IngressList,omitempty" name:"IngressList"`
+
+	// 和新证书不匹配的域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoMatchDomains []*string `json:"NoMatchDomains,omitempty" name:"NoMatchDomains"`
+}
+
+// Predefined struct for user
+type UpdateCertificateInstanceRequestParams struct {
+	// 一键更新新证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 一键更新原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 需要部署的资源类型
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes"`
+
+	// 需要部署的地域列表（废弃）
+	Regions []*string `json:"Regions,omitempty" name:"Regions"`
+
+	// 云资源需要部署的地域列表
+	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitempty" name:"ResourceTypesRegions"`
+}
+
+type UpdateCertificateInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 一键更新新证书ID
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 一键更新原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 需要部署的资源类型
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes"`
+
+	// 需要部署的地域列表（废弃）
+	Regions []*string `json:"Regions,omitempty" name:"Regions"`
+
+	// 云资源需要部署的地域列表
+	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitempty" name:"ResourceTypesRegions"`
+}
+
+func (r *UpdateCertificateInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCertificateInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	delete(f, "OldCertificateId")
+	delete(f, "ResourceTypes")
+	delete(f, "Regions")
+	delete(f, "ResourceTypesRegions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCertificateInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCertificateInstanceResponseParams struct {
+	// 云资源部署任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployRecordId *uint64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 部署状态，1表示部署成功，0表示部署失败
+	DeployStatus *int64 `json:"DeployStatus,omitempty" name:"DeployStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateCertificateInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCertificateInstanceResponseParams `json:"Response"`
+}
+
+func (r *UpdateCertificateInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCertificateInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCertificateRecordRetryRequestParams struct {
+	// 待重试部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 待重试部署记录详情ID
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitempty" name:"DeployRecordDetailId"`
+}
+
+type UpdateCertificateRecordRetryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待重试部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 待重试部署记录详情ID
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitempty" name:"DeployRecordDetailId"`
+}
+
+func (r *UpdateCertificateRecordRetryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCertificateRecordRetryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	delete(f, "DeployRecordDetailId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCertificateRecordRetryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCertificateRecordRetryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateCertificateRecordRetryResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCertificateRecordRetryResponseParams `json:"Response"`
+}
+
+func (r *UpdateCertificateRecordRetryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCertificateRecordRetryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCertificateRecordRollbackRequestParams struct {
+	// 待重试部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+}
+
+type UpdateCertificateRecordRollbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待重试部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+}
+
+func (r *UpdateCertificateRecordRollbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCertificateRecordRollbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCertificateRecordRollbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCertificateRecordRollbackResponseParams struct {
+	// 回滚部署记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateCertificateRecordRollbackResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCertificateRecordRollbackResponseParams `json:"Response"`
+}
+
+func (r *UpdateCertificateRecordRollbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCertificateRecordRollbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRecordDetail struct {
+	// 详情记录id
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 新证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 旧证书ID
+	OldCertId *string `json:"OldCertId,omitempty" name:"OldCertId"`
+
+	// 部署域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 部署地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 部署状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 部署错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 部署时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后一次更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 部署实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 部署实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 部署监听器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 部署监听器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+
+	// 协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 是否开启SNI
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SniSwitch *uint64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
+
+	// bucket名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+}
+
+type UpdateRecordDetails struct {
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 部署资源详情列表
+	List []*UpdateRecordDetail `json:"List,omitempty" name:"List"`
+}
+
+type UpdateRecordInfo struct {
+	// 记录ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 新证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 原证书ID
+	OldCertId *string `json:"OldCertId,omitempty" name:"OldCertId"`
+
+	// 部署资源类型列表
+	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes"`
+
+	// 部署地域列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Regions []*string `json:"Regions,omitempty" name:"Regions"`
+
+	// 部署状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 部署时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后一次更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 // Predefined struct for user
 type UploadCertificateRequestParams struct {
 	// 证书内容。
@@ -3398,4 +5584,12 @@ func (r *VerifyManagerResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *VerifyManagerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VodInstanceDetail struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 证书ID
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
 }

@@ -8000,7 +8000,7 @@ func NewDeleteVpnGatewaySslClientResponse() (response *DeleteVpnGatewaySslClient
 }
 
 // DeleteVpnGatewaySslClient
-// 删除SSL-VPN-CLIENT
+// 本接口（DeleteVpnGatewaySslClient）用于删除SSL-VPN-CLIENT。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8013,7 +8013,7 @@ func (c *Client) DeleteVpnGatewaySslClient(request *DeleteVpnGatewaySslClientReq
 }
 
 // DeleteVpnGatewaySslClient
-// 删除SSL-VPN-CLIENT
+// 本接口（DeleteVpnGatewaySslClient）用于删除SSL-VPN-CLIENT。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -14020,7 +14020,7 @@ func NewDownloadVpnGatewaySslClientCertResponse() (response *DownloadVpnGatewayS
 }
 
 // DownloadVpnGatewaySslClientCert
-// 下载SSL-VPN-CLIENT 客户端证书
+// 本接口（DownloadVpnGatewaySslClientCert）用于下载SSL-VPN-CLIENT 客户端证书。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -14031,7 +14031,7 @@ func (c *Client) DownloadVpnGatewaySslClientCert(request *DownloadVpnGatewaySslC
 }
 
 // DownloadVpnGatewaySslClientCert
-// 下载SSL-VPN-CLIENT 客户端证书
+// 本接口（DownloadVpnGatewaySslClientCert）用于下载SSL-VPN-CLIENT 客户端证书。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -14408,7 +14408,7 @@ func NewEnableVpnGatewaySslClientCertResponse() (response *EnableVpnGatewaySslCl
 }
 
 // EnableVpnGatewaySslClientCert
-// 启用SSL-VPN-CLIENT 证书
+// 本接口（EnableVpnGatewaySslClientCert）用于启用SSL-VPN-CLIENT 证书。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -14419,7 +14419,7 @@ func (c *Client) EnableVpnGatewaySslClientCert(request *EnableVpnGatewaySslClien
 }
 
 // EnableVpnGatewaySslClientCert
-// 启用SSL-VPN-CLIENT 证书
+// 本接口（EnableVpnGatewaySslClientCert）用于启用SSL-VPN-CLIENT 证书。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

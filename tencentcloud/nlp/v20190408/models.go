@@ -827,7 +827,7 @@ type Embellish struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 润色类型。类型列表
+	// 润色类型。类型如下：
 	// expansion：扩写
 	// rewriting：改写
 	// translation_m2a：从现代文改写为古文
@@ -1055,7 +1055,7 @@ type GenerateKeywordSentenceRequestParams struct {
 	// （注意实际结果可能小于指定个数）
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
-	// 指定生成句子的领域，支持领域列表
+	// 指定生成句子的领域，支持领域如下：
 	// general：通用领域，支持中英文
 	// academic：学术领域，仅支持英文
 	// 默认为general（通用领域）。
@@ -1072,7 +1072,7 @@ type GenerateKeywordSentenceRequest struct {
 	// （注意实际结果可能小于指定个数）
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
-	// 指定生成句子的领域，支持领域列表
+	// 指定生成句子的领域，支持领域如下：
 	// general：通用领域，支持中英文
 	// academic：学术领域，仅支持英文
 	// 默认为general（通用领域）。
@@ -2086,7 +2086,7 @@ type TextEmbellishRequestParams struct {
 	// 待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 待润色文本的语言类型，支持语言列表
+	// 待润色文本的语言类型，支持语言如下：
 	// zh：中文
 	// en：英文
 	SourceLang *string `json:"SourceLang,omitempty" name:"SourceLang"`
@@ -2095,7 +2095,7 @@ type TextEmbellishRequestParams struct {
 	// （注意实际结果可能小于指定个数）
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
-	// 控制润色类型，类型列表
+	// 控制润色类型，类型如下：
 	// both：同时返回改写和扩写
 	// expansion：扩写
 	// rewriting：改写
@@ -2111,7 +2111,7 @@ type TextEmbellishRequest struct {
 	// 待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 待润色文本的语言类型，支持语言列表
+	// 待润色文本的语言类型，支持语言如下：
 	// zh：中文
 	// en：英文
 	SourceLang *string `json:"SourceLang,omitempty" name:"SourceLang"`
@@ -2120,7 +2120,7 @@ type TextEmbellishRequest struct {
 	// （注意实际结果可能小于指定个数）
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
-	// 控制润色类型，类型列表
+	// 控制润色类型，类型如下：
 	// both：同时返回改写和扩写
 	// expansion：扩写
 	// rewriting：改写
@@ -2310,7 +2310,7 @@ type TextWritingRequestParams struct {
 	// 待续写的句子，文本统一使用utf-8格式编码，长度不超过200字符。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 待续写文本的语言类型，支持语言列表
+	// 待续写文本的语言类型，支持语言如下：
 	// zh：中文
 	// en：英文
 	SourceLang *string `json:"SourceLang,omitempty" name:"SourceLang"`
@@ -2319,13 +2319,13 @@ type TextWritingRequestParams struct {
 	// （注意实际结果可能小于指定个数）
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
-	// 指定续写领域，支持领域列表
+	// 指定续写领域，支持领域如下：
 	// general：通用领域，支持中英文补全
 	// academic：学术领域，仅支持英文补全
 	// 默认为general（通用领域）。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 指定续写风格，支持风格列表
+	// 指定续写风格，支持风格如下：
 	// science_fiction：科幻
 	// military_history：军事
 	// xuanhuan_wuxia：武侠
@@ -2340,7 +2340,7 @@ type TextWritingRequest struct {
 	// 待续写的句子，文本统一使用utf-8格式编码，长度不超过200字符。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
-	// 待续写文本的语言类型，支持语言列表
+	// 待续写文本的语言类型，支持语言如下：
 	// zh：中文
 	// en：英文
 	SourceLang *string `json:"SourceLang,omitempty" name:"SourceLang"`
@@ -2349,13 +2349,13 @@ type TextWritingRequest struct {
 	// （注意实际结果可能小于指定个数）
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
-	// 指定续写领域，支持领域列表
+	// 指定续写领域，支持领域如下：
 	// general：通用领域，支持中英文补全
 	// academic：学术领域，仅支持英文补全
 	// 默认为general（通用领域）。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 指定续写风格，支持风格列表
+	// 指定续写风格，支持风格如下：
 	// science_fiction：科幻
 	// military_history：军事
 	// xuanhuan_wuxia：武侠

@@ -2723,6 +2723,115 @@ func (r *DescribeIPStatusListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLogsRequestParams struct {
+	// 日志类型标识
+	// 流量日志：互联网边界防火墙netflow_border，NAT边界防火墙netflow_nat，VPC间防火墙vpcnetflow，内网流量日志netflow_fl
+	// 入侵防御日志rule_threatinfo
+	// 访问控制日志：互联网边界规则rule_acl，NAT边界规则rule_acl，内网间规则rule_vpcacl，企业安全组rule_sg
+	// 操作日志：防火墙开关-开关操作operate_switch，防火墙开关-实例配置operate_instance，资产中心操作operate_assetgroup，访问控制操作operate_acl，零信任防护操作operate_identity，入侵防御操作-入侵防御operate_ids，入侵防御操作-安全基线operate_baseline，常用工具操作operate_tool，网络蜜罐操作operate_honeypot，日志投递操作operate_logdelivery，通用设置操作operate_logstorage，登录日志operate_login
+	Index *string `json:"Index,omitempty" name:"Index"`
+
+	// 每页条数，最大支持2000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移值，最大支持60000
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 筛选开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 筛选结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 过滤条件组合，各数组元素间为AND关系，查询字段名Name参考文档https://cloud.tencent.com/document/product/1132/87894，数值类型字段不支持模糊匹配
+	Filters []*CommonFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志类型标识
+	// 流量日志：互联网边界防火墙netflow_border，NAT边界防火墙netflow_nat，VPC间防火墙vpcnetflow，内网流量日志netflow_fl
+	// 入侵防御日志rule_threatinfo
+	// 访问控制日志：互联网边界规则rule_acl，NAT边界规则rule_acl，内网间规则rule_vpcacl，企业安全组rule_sg
+	// 操作日志：防火墙开关-开关操作operate_switch，防火墙开关-实例配置operate_instance，资产中心操作operate_assetgroup，访问控制操作operate_acl，零信任防护操作operate_identity，入侵防御操作-入侵防御operate_ids，入侵防御操作-安全基线operate_baseline，常用工具操作operate_tool，网络蜜罐操作operate_honeypot，日志投递操作operate_logdelivery，通用设置操作operate_logstorage，登录日志operate_login
+	Index *string `json:"Index,omitempty" name:"Index"`
+
+	// 每页条数，最大支持2000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移值，最大支持60000
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 筛选开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 筛选结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 过滤条件组合，各数组元素间为AND关系，查询字段名Name参考文档https://cloud.tencent.com/document/product/1132/87894，数值类型字段不支持模糊匹配
+	Filters []*CommonFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Index")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogsResponseParams struct {
+	// 日志列表
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 总条数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 返回状态码 0 成功 非0不成功
+	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+	// 返回信息  success 成功 其他 不成功
+	ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNatAcRuleRequestParams struct {
 	// 每页条数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`

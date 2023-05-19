@@ -1166,10 +1166,10 @@ type IdentityPolicy struct {
 
 // Predefined struct for user
 type ListOrganizationIdentityRequestParams struct {
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50。默认值：10。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 名称搜索关键字。
@@ -1177,15 +1177,18 @@ type ListOrganizationIdentityRequestParams struct {
 
 	// 身份ID搜索。
 	IdentityId *uint64 `json:"IdentityId,omitempty" name:"IdentityId"`
+
+	// 身份类型。取值范围 1-预设, 2-自定义
+	IdentityType *uint64 `json:"IdentityType,omitempty" name:"IdentityType"`
 }
 
 type ListOrganizationIdentityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量。
+	// 偏移量。取值是limit的整数倍。默认值 : 0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目。最大50
+	// 限制数目。取值范围：1~50。默认值：10。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 名称搜索关键字。
@@ -1193,6 +1196,9 @@ type ListOrganizationIdentityRequest struct {
 
 	// 身份ID搜索。
 	IdentityId *uint64 `json:"IdentityId,omitempty" name:"IdentityId"`
+
+	// 身份类型。取值范围 1-预设, 2-自定义
+	IdentityType *uint64 `json:"IdentityType,omitempty" name:"IdentityType"`
 }
 
 func (r *ListOrganizationIdentityRequest) ToJsonString() string {
@@ -1211,6 +1217,7 @@ func (r *ListOrganizationIdentityRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SearchKey")
 	delete(f, "IdentityId")
+	delete(f, "IdentityType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrganizationIdentityRequest has unknown keys!", "")
 	}

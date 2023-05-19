@@ -2277,7 +2277,8 @@ type ChannelGetTaskResultApiResponseParams struct {
 	// 资源Id，也是FileId，用于文件发起使用
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 预览文件Url，有效期30分钟
+	// 预览文件Url，有效期30分钟 
+	// 当前字段返回为空，发起的时候，将ResourceId 放入发起即可
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 

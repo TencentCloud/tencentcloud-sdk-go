@@ -1,3 +1,509 @@
+# Release v1.0.660
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 56 次发布
+
+发布时间：2023-05-19 01:02:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBoundIP](https://cloud.tencent.com/document/api/1021/57763)
+
+	* 新增入参：FilterRegion
+
+* [DescribeBasicDeviceStatus](https://cloud.tencent.com/document/api/1021/59237)
+
+	* 新增入参：IdList, FilterRegion
+
+	* <font color="#dd0000">**修改入参**：</font>IpList
+
+	* 新增出参：CLBData
+
+* [DescribeNewL7Rules](https://cloud.tencent.com/document/api/1021/76706)
+
+	* 新增入参：Export
+
+
+修改数据结构：
+
+* [BoundIpInfo](https://cloud.tencent.com/document/api/1021/57582#BoundIpInfo)
+
+	* 新增成员：Domain
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 127 次发布
+
+发布时间：2023-05-19 01:19:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeBackupDatabases
+* DescribeBackupTables
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 36 次发布
+
+发布时间：2023-05-19 01:21:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLogs](https://cloud.tencent.com/document/api/1132/91646)
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 2 次发布
+
+发布时间：2023-05-19 01:27:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCVMAssets](https://cloud.tencent.com/document/api/664/90821)
+
+	* 新增出参：OsList
+
+
+修改数据结构：
+
+* [CVMAssetVO](https://cloud.tencent.com/document/api/664/90825#CVMAssetVO)
+
+	* 新增成员：RiskExposure
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 78 次发布
+
+发布时间：2023-05-18 11:50:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelGetTaskResultApi](https://cloud.tencent.com/document/api/1420/78773)
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 97 次发布
+
+发布时间：2023-05-19 01:50:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TextVehicleBack](https://cloud.tencent.com/document/api/866/33527#TextVehicleBack)
+
+	* 新增成员：SubPageCode
+
+
+
+
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 17 次发布
+
+发布时间：2023-05-19 01:51:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListOrganizationIdentity](https://cloud.tencent.com/document/api/850/82934)
+
+	* 新增入参：IdentityType
+
+
+
+
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 32 次发布
+
+发布时间：2023-05-19 01:55:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeployCertificateInstance](https://cloud.tencent.com/document/api/400/91667)
+* [DeployCertificateRecordRetry](https://cloud.tencent.com/document/api/400/91666)
+* [DeployCertificateRecordRollback](https://cloud.tencent.com/document/api/400/91665)
+* [DescribeHostApiGatewayInstanceList](https://cloud.tencent.com/document/api/400/91664)
+* [DescribeHostCdnInstanceList](https://cloud.tencent.com/document/api/400/91663)
+* [DescribeHostClbInstanceList](https://cloud.tencent.com/document/api/400/91662)
+* [DescribeHostCosInstanceList](https://cloud.tencent.com/document/api/400/91661)
+* [DescribeHostDdosInstanceList](https://cloud.tencent.com/document/api/400/91660)
+* [DescribeHostDeployRecord](https://cloud.tencent.com/document/api/400/91659)
+* [DescribeHostDeployRecordDetail](https://cloud.tencent.com/document/api/400/91658)
+* [DescribeHostLighthouseInstanceList](https://cloud.tencent.com/document/api/400/91657)
+* [DescribeHostLiveInstanceList](https://cloud.tencent.com/document/api/400/91656)
+* [DescribeHostTeoInstanceList](https://cloud.tencent.com/document/api/400/91655)
+* [DescribeHostTkeInstanceList](https://cloud.tencent.com/document/api/400/91654)
+* [DescribeHostUpdateRecord](https://cloud.tencent.com/document/api/400/91653)
+* [DescribeHostUpdateRecordDetail](https://cloud.tencent.com/document/api/400/91652)
+* [DescribeHostVodInstanceList](https://cloud.tencent.com/document/api/400/91651)
+* [DescribeHostWafInstanceList](https://cloud.tencent.com/document/api/400/91650)
+* [UpdateCertificateInstance](https://cloud.tencent.com/document/api/400/91649)
+* [UpdateCertificateRecordRetry](https://cloud.tencent.com/document/api/400/91648)
+* [UpdateCertificateRecordRollback](https://cloud.tencent.com/document/api/400/91647)
+
+新增数据结构：
+
+* [ApiGatewayInstanceDetail](https://cloud.tencent.com/document/api/400/41679#ApiGatewayInstanceDetail)
+* [CdnInstanceDetail](https://cloud.tencent.com/document/api/400/41679#CdnInstanceDetail)
+* [Certificate](https://cloud.tencent.com/document/api/400/41679#Certificate)
+* [ClbInstanceDetail](https://cloud.tencent.com/document/api/400/41679#ClbInstanceDetail)
+* [ClbListener](https://cloud.tencent.com/document/api/400/41679#ClbListener)
+* [ClbListenerRule](https://cloud.tencent.com/document/api/400/41679#ClbListenerRule)
+* [CosInstanceDetail](https://cloud.tencent.com/document/api/400/41679#CosInstanceDetail)
+* [DdosInstanceDetail](https://cloud.tencent.com/document/api/400/41679#DdosInstanceDetail)
+* [DeployRecordDetail](https://cloud.tencent.com/document/api/400/41679#DeployRecordDetail)
+* [DeployRecordInfo](https://cloud.tencent.com/document/api/400/41679#DeployRecordInfo)
+* [Filter](https://cloud.tencent.com/document/api/400/41679#Filter)
+* [LighthouseInstanceDetail](https://cloud.tencent.com/document/api/400/41679#LighthouseInstanceDetail)
+* [LiveInstanceDetail](https://cloud.tencent.com/document/api/400/41679#LiveInstanceDetail)
+* [ResourceTypeRegions](https://cloud.tencent.com/document/api/400/41679#ResourceTypeRegions)
+* [TeoInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TeoInstanceDetail)
+* [TkeIngressDetail](https://cloud.tencent.com/document/api/400/41679#TkeIngressDetail)
+* [TkeInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TkeInstanceDetail)
+* [TkeNameSpaceDetail](https://cloud.tencent.com/document/api/400/41679#TkeNameSpaceDetail)
+* [TkeSecretDetail](https://cloud.tencent.com/document/api/400/41679#TkeSecretDetail)
+* [UpdateRecordDetail](https://cloud.tencent.com/document/api/400/41679#UpdateRecordDetail)
+* [UpdateRecordDetails](https://cloud.tencent.com/document/api/400/41679#UpdateRecordDetails)
+* [UpdateRecordInfo](https://cloud.tencent.com/document/api/400/41679#UpdateRecordInfo)
+* [VodInstanceDetail](https://cloud.tencent.com/document/api/400/41679#VodInstanceDetail)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 41 次发布
+
+发布时间：2023-05-19 01:59:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetContainerDetail](https://cloud.tencent.com/document/api/1285/65511)
+
+	* 新增出参：NodeID, NodeName, NodeSubNetID, NodeSubNetName, NodeSubNetCIDR, PodName, PodIP, PodStatus, ClusterID, ClusterName, NodeType, NodeUniqueID, PublicIP
+
+* [DescribeAssetSummary](https://cloud.tencent.com/document/api/1285/65477)
+
+	* 新增出参：SuperNodeCnt, SuperNodeRunningCnt
+
+* [DescribeClusterSummary](https://cloud.tencent.com/document/api/1285/65447)
+
+	* 新增出参：ServerlessClusterCount
+
+* [DescribeContainerAssetSummary](https://cloud.tencent.com/document/api/1285/65475)
+
+	* 新增出参：HostSuperNodeCnt
+
+* [DescribeVirusDetail](https://cloud.tencent.com/document/api/1285/65583)
+
+	* 新增出参：NodeSubNetID, NodeSubNetName, NodeSubNetCIDR, ClusterID, PodIP, PodStatus, NodeUniqueID, NodeType, NodeID, ClusterName
+
+* [DescribeVulDefenceSetting](https://cloud.tencent.com/document/api/1285/81617)
+
+	* 新增出参：HostNodeCount, SuperScope, SuperNodeCount, SuperNodeIds, NodeTotalCount
+
+* [ModifySecLogJoinObjects](https://cloud.tencent.com/document/api/1285/81721)
+
+	* 新增入参：NodeType
+
+* [ModifyVulDefenceSetting](https://cloud.tencent.com/document/api/1285/81605)
+
+	* 新增入参：SuperScope, NodeIds
+
+
+修改数据结构：
+
+* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
+
+	* 新增成员：ClusterID, NodeType, PodName, PodIP, NodeUniqueID, PublicIP, NodeName, NodeID, HostID, HostIP, ClusterName
+
+* [AccessControlEventInfo](https://cloud.tencent.com/document/api/1285/65614#AccessControlEventInfo)
+
+	* 新增成员：NodeName, PodName, PodIP, NodeType, ClusterID, NodeUniqueID, PublicIP, NodeID, HostID, HostIP, ClusterName
+
+* [AffectedNodeItem](https://cloud.tencent.com/document/api/1285/65614#AffectedNodeItem)
+
+	* 新增成员：NodeName
+
+* [AssetClusterListItem](https://cloud.tencent.com/document/api/1285/65614#AssetClusterListItem)
+
+	* 新增成员：ClusterVersion, MemLimit, CpuLimit
+
+* [ContainerInfo](https://cloud.tencent.com/document/api/1285/65614#ContainerInfo)
+
+	* 新增成员：NodeID, PodIP, PodName, NodeType, NodeUniqueID, PodCpu, PodMem
+
+* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
+
+	* 新增成员：ClusterID, NodeType, PodIP, NodeUniqueID, PublicIP, NodeID, HostIP, ClusterName
+
+* [PortInfo](https://cloud.tencent.com/document/api/1285/65614#PortInfo)
+
+	* 新增成员：NodeID, PodIP, PodName, NodeType, NodeUniqueID
+
+* [ProcessInfo](https://cloud.tencent.com/document/api/1285/65614#ProcessInfo)
+
+	* 新增成员：NodeID, PodIP, PodName, NodeType, NodeUniqueID
+
+* [RiskSyscallEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskSyscallEventInfo)
+
+	* 新增成员：NodeType, ClusterID, PodIP, NodeUniqueID, PublicIP, NodeID, HostID, HostIP, ClusterName
+
+* [RunTimeEventBaseInfo](https://cloud.tencent.com/document/api/1285/65614#RunTimeEventBaseInfo)
+
+	* 新增成员：NodeID, NodeType, NodeSubNetID, NodeSubNetName, NodeSubNetCIDR, PodIP, PodStatus, ClusterID, ClusterName, NodeUniqueID, HostID
+
+	* <font color="#dd0000">**修改成员**：</font>EventId, FoundTime, ContainerId, ContainerName, ImageId, ImageName, NodeName, Status, EventName, EventType, EventCount, LatestFoundTime, HostIP, ClientIP, ContainerNetStatus, ContainerNetSubStatus, ContainerIsolateOperationSrc, PodName
+
+* [SecLogJoinInfo](https://cloud.tencent.com/document/api/1285/65614#SecLogJoinInfo)
+
+	* 新增成员：SuperNodeCount
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/1285/65614#ServiceInfo)
+
+	* 新增成员：NodeID, PodIP, PodName, NodeType, NodeUniqueID
+
+* [VirusInfo](https://cloud.tencent.com/document/api/1285/65614#VirusInfo)
+
+	* 新增成员：NodeID, NodeName, PodIP, PodName, ClusterID, NodeType, PublicIP, InnerIP, NodeUniqueID, HostID, ClusterName
+
+* [VirusTaskInfo](https://cloud.tencent.com/document/api/1285/65614#VirusTaskInfo)
+
+	* 新增成员：NodeType, PublicIP, NodeID
+
+* [VulAffectedContainerInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedContainerInfo)
+
+	* 新增成员：ClusterID, ClusterName, NodeType, NodeUniqueID, NodeID, NodeName
+
+* [VulDefenceEvent](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEvent)
+
+	* 新增成员：NodeType, PublicIP, NodeUniqueID, NodeID, ClusterID, ClusterName
+
+* [VulDefenceEventDetail](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEventDetail)
+
+	* 新增成员：NodeSubNetName, NodeSubNetCIDR, PodIP, NodeType, NodeID, NodeUniqueID, NodeSubNetID, ClusterID, ClusterName
+
+* [VulDefenceHost](https://cloud.tencent.com/document/api/1285/65614#VulDefenceHost)
+
+	* 新增成员：NodeType, NodeSubNetName, NodeSubNetCIDR, NodeSubNetID, NodeUniqueID, NodeID, PodIP, PodName
+
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 4 次发布
+
+发布时间：2023-05-19 02:07:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QueueConfig](https://cloud.tencent.com/document/api/1527/89579#QueueConfig)
+
+	* 新增成员：ScaleOutRatio, ScaleOutNodeThreshold
+
+* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
+
+	* 新增成员：ScaleOutRatio, ScaleOutNodeThreshold
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 153 次发布
+
+发布时间：2023-05-19 02:13:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiAnalysisTaskClassificationResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskClassificationResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiAnalysisTaskCoverResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskCoverResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiAnalysisTaskFrameTagResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskFrameTagResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiAnalysisTaskHighlightResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskHighlightResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiAnalysisTaskTagResult](https://cloud.tencent.com/document/api/266/31773#AiAnalysisTaskTagResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiRecognitionTaskAsrFullTextResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiRecognitionTaskAsrWordsResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrWordsResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiRecognitionTaskFaceResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskFaceResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiRecognitionTaskHeadTailResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskHeadTailResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskObjectResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiRecognitionTaskOcrFullTextResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskOcrFullTextResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiRecognitionTaskOcrWordsResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskOcrWordsResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiRecognitionTaskSegmentResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskSegmentResult)
+
+	* 新增成员：BeginProcessTime, FinishTime
+
+* [AiReviewTaskPoliticalOcrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPoliticalOcrResult)
+
+	* 新增成员：Progress
+
+* [ExtractTraceWatermarkTaskInput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskInput)
+
+	* 新增成员：FileId
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 156 次发布
+
+发布时间：2023-05-19 02:14:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70290)
+
+	* 新增入参：SslVpnClientNames
+
+	* <font color="#dd0000">**修改入参**：</font>SslVpnClientName
+
+* [DeleteVpnGatewaySslClient](https://cloud.tencent.com/document/api/215/70288)
+
+	* 新增入参：SslVpnClientIds
+
+	* <font color="#dd0000">**修改入参**：</font>SslVpnClientId
+
+* [DisableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70284)
+
+	* 新增入参：SslVpnClientIds
+
+	* <font color="#dd0000">**修改入参**：</font>SslVpnClientId
+
+* [DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)
+
+	* 新增入参：SslVpnClientIds
+
+	* <font color="#dd0000">**修改入参**：</font>SslVpnClientId
+
+* [EnableVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70282)
+
+	* 新增入参：SslVpnClientIds
+
+	* <font color="#dd0000">**修改入参**：</font>SslVpnClientId
+
+
+修改数据结构：
+
+* [SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig)
+
+	* 新增成员：SslVpnClientId
+
+
+
+
 # Release v1.0.659
 
 ## 品牌经营管家(bma) 版本：2022-11-15

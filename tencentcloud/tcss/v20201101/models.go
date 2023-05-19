@@ -185,6 +185,39 @@ type AbnormalProcessEventInfo struct {
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
 	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// pod 名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// 集群id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 节点公网ip
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// uuid
+	HostID *string `json:"HostID,omitempty" name:"HostID"`
+
+	// 节点内网ip
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type AbnormalProcessEventTendencyInfo struct {
@@ -419,6 +452,39 @@ type AccessControlEventInfo struct {
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
 	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+
+	// 节点名称：如果是超级节点，展示的实质上是它的node_id
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// pod名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 节点的唯一id，主要是超级节点使用
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 节点公网IP
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// uuid
+	HostID *string `json:"HostID,omitempty" name:"HostID"`
+
+	// 节点内网ip
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type AccessControlRuleInfo struct {
@@ -1740,6 +1806,9 @@ type AffectedNodeItem struct {
 
 	// 检查结果的验证信息
 	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
 }
 
 type AffectedWorkloadItem struct {
@@ -1779,9 +1848,19 @@ type AssetClusterListItem struct {
 	BindRuleName *string `json:"BindRuleName,omitempty" name:"BindRuleName"`
 
 	// 集群类型:
-	// CT_TKE: TKE集群
-	// CT_USER_CREATE: 用户自建集群
+	// CT_TKE:TKE集群;
+	// CT_USER_CREATE:用户自建集群;
+	// CT_TKE_SERVERLESS:TKE Serverless集群;
 	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群版本
+	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+
+	// 内存量
+	MemLimit *int64 `json:"MemLimit,omitempty" name:"MemLimit"`
+
+	// cpu
+	CpuLimit *int64 `json:"CpuLimit,omitempty" name:"CpuLimit"`
 }
 
 type AssetFilters struct {
@@ -2952,6 +3031,27 @@ type ContainerInfo struct {
 	// 隔离时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
+	// 超级节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// podip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 节点类型:节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 超级节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 所属Pod的CPU
+	PodCpu *int64 `json:"PodCpu,omitempty" name:"PodCpu"`
+
+	// 所属Pod的内存
+	PodMem *int64 `json:"PodMem,omitempty" name:"PodMem"`
 }
 
 type ContainerMount struct {
@@ -9349,6 +9449,45 @@ type DescribeAssetContainerDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
 
+	// 节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 节点子网ID
+	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+
+	// 节点子网名称
+	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+
+	// 节点子网网段
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+
+	// pod名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod状态
+	PodStatus *string `json:"PodStatus,omitempty" name:"PodStatus"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 节点类型:NORMAL: 普通节点(默认值) SUPER: 超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 超级节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 外网ip
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -9385,6 +9524,11 @@ type DescribeAssetContainerListRequestParams struct {
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>OrderBy - String 是否必填：否 -排序字段，支持：cpu_usage, mem_usage的动态排序 ["cpu_usage","+"]  '+'升序、'-'降序</li>
 	// <li>NetStatus - String -是否必填: 否 -  容器网络状态筛选 normal isolated isolating isolate_failed restoring restore_failed</li>
+	// <li>PodID - String -是否必填: 否 - PodID筛选</li>
+	// <li>NodeUniqueID - String -是否必填: 否 - SuperNode筛选</li>
+	// <li>PodUid - String -是否必填: 否 - Pod筛选</li>
+	// <li>PodIP - String -是否必填: 否 - PodIP筛选</li>
+	// <li>NodeType - String -是否必填: 否 - 节点类型筛选:NORMAL:普通节点;SUPER:超级节点</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -9411,6 +9555,11 @@ type DescribeAssetContainerListRequest struct {
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>OrderBy - String 是否必填：否 -排序字段，支持：cpu_usage, mem_usage的动态排序 ["cpu_usage","+"]  '+'升序、'-'降序</li>
 	// <li>NetStatus - String -是否必填: 否 -  容器网络状态筛选 normal isolated isolating isolate_failed restoring restore_failed</li>
+	// <li>PodID - String -是否必填: 否 - PodID筛选</li>
+	// <li>NodeUniqueID - String -是否必填: 否 - SuperNode筛选</li>
+	// <li>PodUid - String -是否必填: 否 - Pod筛选</li>
+	// <li>PodIP - String -是否必填: 否 - PodIP筛选</li>
+	// <li>NodeType - String -是否必填: 否 - 节点类型筛选:NORMAL:普通节点;SUPER:超级节点</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -12721,6 +12870,12 @@ type DescribeAssetSummaryResponseParams struct {
 	// 主机未安装agent数量
 	HostUnInstallCnt *uint64 `json:"HostUnInstallCnt,omitempty" name:"HostUnInstallCnt"`
 
+	// 超级节点个数
+	SuperNodeCnt *uint64 `json:"SuperNodeCnt,omitempty" name:"SuperNodeCnt"`
+
+	// 超级节点运行个数
+	SuperNodeRunningCnt *uint64 `json:"SuperNodeRunningCnt,omitempty" name:"SuperNodeRunningCnt"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -13235,6 +13390,9 @@ type DescribeClusterSummaryResponseParams struct {
 
 	// 未导入的集群数量
 	NotImportedClusterCount *uint64 `json:"NotImportedClusterCount,omitempty" name:"NotImportedClusterCount"`
+
+	// eks集群数量
+	ServerlessClusterCount *uint64 `json:"ServerlessClusterCount,omitempty" name:"ServerlessClusterCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -14145,6 +14303,9 @@ type DescribeContainerAssetSummaryResponseParams struct {
 
 	// 主机未安装agent数量
 	HostUnInstallCnt *uint64 `json:"HostUnInstallCnt,omitempty" name:"HostUnInstallCnt"`
+
+	// 超级节点个数
+	HostSuperNodeCnt *uint64 `json:"HostSuperNodeCnt,omitempty" name:"HostSuperNodeCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -21199,10 +21360,6 @@ type DescribeVirusDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
-
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
@@ -21230,6 +21387,10 @@ type DescribeVirusDetailResponseParams struct {
 	// 事件类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
 
 	// DEAL_NONE:文件待处理
 	// DEAL_IGNORE:已经忽略
@@ -21325,6 +21486,36 @@ type DescribeVirusDetailResponseParams struct {
 	// 文件修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileModifyTime *string `json:"FileModifyTime,omitempty" name:"FileModifyTime"`
+
+	// 节点子网ID
+	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+
+	// 节点子网名称
+	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+
+	// 节点子网网段
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod状态
+	PodStatus *string `json:"PodStatus,omitempty" name:"PodStatus"`
+
+	// 节点唯一ID
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -22483,7 +22674,11 @@ func (r *DescribeVulDefenceEventTendencyResponse) FromJsonString(s string) error
 type DescribeVulDefenceHostRequestParams struct {
 	// 过滤条件。
 	// <li>Status- String - 是否必填：否 - 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENCE:未防御</li>
-	// <li>KeyWords- string - 是否必填：否 - 主机名称/IP。</li>
+	// <li>HostName- String - 是否必填：否 - 主机名称/超级节点名称</li>
+	// <li>HostIP- String - 是否必填：否 - 主机IP</li>
+	// <li>NodeType- String - 是否必填：否 - 节点类型</li>
+	// <li>HostName- String - 是否必填：否 - 超级节点名称</li>
+	// <li>NodeSubNetCIDR- String - 是否必填：否 - 超级节点CIDR</li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
@@ -22504,7 +22699,11 @@ type DescribeVulDefenceHostRequest struct {
 	
 	// 过滤条件。
 	// <li>Status- String - 是否必填：否 - 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENCE:未防御</li>
-	// <li>KeyWords- string - 是否必填：否 - 主机名称/IP。</li>
+	// <li>HostName- String - 是否必填：否 - 主机名称/超级节点名称</li>
+	// <li>HostIP- String - 是否必填：否 - 主机IP</li>
+	// <li>NodeType- String - 是否必填：否 - 节点类型</li>
+	// <li>HostName- String - 是否必填：否 - 超级节点名称</li>
+	// <li>NodeSubNetCIDR- String - 是否必填：否 - 超级节点CIDR</li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
@@ -22573,7 +22772,7 @@ func (r *DescribeVulDefenceHostResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVulDefencePluginRequestParams struct {
-	// 主机HostID即quuid
+	// 主机HostID或超级节点UniqueId
 	HostID *string `json:"HostID,omitempty" name:"HostID"`
 
 	// 需要返回的数量，默认为10，最大值为100
@@ -22583,14 +22782,16 @@ type DescribeVulDefencePluginRequestParams struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Status- String - 是否必填：否 -插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT</li>
+	// <li>
+	// Status- String - 是否必填：否 -插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT
+	// </li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeVulDefencePluginRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主机HostID即quuid
+	// 主机HostID或超级节点UniqueId
 	HostID *string `json:"HostID,omitempty" name:"HostID"`
 
 	// 需要返回的数量，默认为10，最大值为100
@@ -22600,7 +22801,9 @@ type DescribeVulDefencePluginRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Status- String - 是否必填：否 -插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT</li>
+	// <li>
+	// Status- String - 是否必填：否 -插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT
+	// </li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -22708,6 +22911,21 @@ type DescribeVulDefenceSettingResponseParams struct {
 	// 支持防御的漏洞数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDefenseVulCount *int64 `json:"SupportDefenseVulCount,omitempty" name:"SupportDefenseVulCount"`
+
+	// 普通节点个数
+	HostNodeCount *int64 `json:"HostNodeCount,omitempty" name:"HostNodeCount"`
+
+	// 超级节点范围
+	SuperScope *int64 `json:"SuperScope,omitempty" name:"SuperScope"`
+
+	// 超级节点个数
+	SuperNodeCount *int64 `json:"SuperNodeCount,omitempty" name:"SuperNodeCount"`
+
+	// 超级节点Id列表
+	SuperNodeIds []*string `json:"SuperNodeIds,omitempty" name:"SuperNodeIds"`
+
+	// 开通容器安全的超级结点总数
+	NodeTotalCount *int64 `json:"NodeTotalCount,omitempty" name:"NodeTotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -24014,12 +24232,13 @@ type EscapeEventDescription struct {
 
 type EscapeEventInfo struct {
 	// 事件类型
-	//    ESCAPE_HOST_ACESS_FILE:宿主机文件访问逃逸
-	//    ESCAPE_MOUNT_NAMESPACE:MountNamespace逃逸
-	//    ESCAPE_PRIVILEDGE:程序提权逃逸
-	//    ESCAPE_PRIVILEDGE_CONTAINER_START:特权容器启动逃逸
-	//    ESCAPE_MOUNT_SENSITIVE_PTAH:敏感路径挂载
-	//    ESCAPE_SYSCALL:Syscall逃逸
+	//    ESCAPE_CGROUPS：利用cgroup机制逃逸
+	//    ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+	//    ESCAPE_DOCKER_API：访问Docker API接口逃逸
+	//    ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
+	//    PRIVILEGE_CONTAINER_START：特权容器
+	//    PRIVILEGE：程序提权逃逸
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 
 	// 容器名
@@ -24112,6 +24331,30 @@ type EscapeEventInfo struct {
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
 	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+
+	// 节点所属集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 节点公网ip
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 节点内网ip
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type EscapeEventTendencyInfo struct {
@@ -27012,6 +27255,11 @@ type ModifySecLogJoinObjectsRequestParams struct {
 
 	// 待解绑主机quuid列表
 	UnBindList []*string `json:"UnBindList,omitempty" name:"UnBindList"`
+
+	// 节点类型:
+	// NORMAL: 普通节点(默认值)
+	// SUPER: 超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 }
 
 type ModifySecLogJoinObjectsRequest struct {
@@ -27028,6 +27276,11 @@ type ModifySecLogJoinObjectsRequest struct {
 
 	// 待解绑主机quuid列表
 	UnBindList []*string `json:"UnBindList,omitempty" name:"UnBindList"`
+
+	// 节点类型:
+	// NORMAL: 普通节点(默认值)
+	// SUPER: 超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 }
 
 func (r *ModifySecLogJoinObjectsRequest) ToJsonString() string {
@@ -27045,6 +27298,7 @@ func (r *ModifySecLogJoinObjectsRequest) FromJsonString(s string) error {
 	delete(f, "LogType")
 	delete(f, "BindList")
 	delete(f, "UnBindList")
+	delete(f, "NodeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySecLogJoinObjectsRequest has unknown keys!", "")
 	}
@@ -27759,11 +28013,17 @@ type ModifyVulDefenceSettingRequestParams struct {
 	// 是否开启:0: 关闭 1:开启
 	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
 
-	// 漏洞防御主机范围:0：自选 1: 全部主机。IsEnabled为1时必填
+	// 漏洞防御主机范围:0：自选 1: 全部主机
 	Scope *int64 `json:"Scope,omitempty" name:"Scope"`
 
-	// 自选漏洞防御主机,Scope为0时必填
+	// 自选漏洞防御主机
 	HostIDs []*string `json:"HostIDs,omitempty" name:"HostIDs"`
+
+	// 漏洞防御超级节点范围:0：自选 1: 全部
+	SuperScope *int64 `json:"SuperScope,omitempty" name:"SuperScope"`
+
+	// 超级节点Id列表
+	NodeIds []*string `json:"NodeIds,omitempty" name:"NodeIds"`
 }
 
 type ModifyVulDefenceSettingRequest struct {
@@ -27772,11 +28032,17 @@ type ModifyVulDefenceSettingRequest struct {
 	// 是否开启:0: 关闭 1:开启
 	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
 
-	// 漏洞防御主机范围:0：自选 1: 全部主机。IsEnabled为1时必填
+	// 漏洞防御主机范围:0：自选 1: 全部主机
 	Scope *int64 `json:"Scope,omitempty" name:"Scope"`
 
-	// 自选漏洞防御主机,Scope为0时必填
+	// 自选漏洞防御主机
 	HostIDs []*string `json:"HostIDs,omitempty" name:"HostIDs"`
+
+	// 漏洞防御超级节点范围:0：自选 1: 全部
+	SuperScope *int64 `json:"SuperScope,omitempty" name:"SuperScope"`
+
+	// 超级节点Id列表
+	NodeIds []*string `json:"NodeIds,omitempty" name:"NodeIds"`
 }
 
 func (r *ModifyVulDefenceSettingRequest) ToJsonString() string {
@@ -27794,6 +28060,8 @@ func (r *ModifyVulDefenceSettingRequest) FromJsonString(s string) error {
 	delete(f, "IsEnabled")
 	delete(f, "Scope")
 	delete(f, "HostIDs")
+	delete(f, "SuperScope")
+	delete(f, "NodeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVulDefenceSettingRequest has unknown keys!", "")
 	}
@@ -28154,6 +28422,21 @@ type PortInfo struct {
 
 	// 外网ip
 	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// podip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 超级节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
 }
 
 type ProcessBaseInfo struct {
@@ -28259,6 +28542,21 @@ type ProcessInfo struct {
 
 	// 外网ip
 	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// podip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 超级节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
 }
 
 type ProjectInfo struct {
@@ -28733,6 +29031,33 @@ type RiskSyscallEventInfo struct {
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
 	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 集群I'D
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 节点公网ip
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// uuid
+	HostID *string `json:"HostID,omitempty" name:"HostID"`
+
+	// 节点内网ip
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type RiskSyscallWhiteListBaseInfo struct {
@@ -28821,9 +29146,6 @@ type RunTimeEventBaseInfo struct {
 	// 节点名称
 	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
 
-	// Pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
-
 	// 状态， “EVENT_UNDEAL”:事件未处理
 	//     "EVENT_DEALED":事件已经处理
 	//     "EVENT_INGNORE"：事件已经忽略
@@ -28887,6 +29209,42 @@ type RunTimeEventBaseInfo struct {
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// 节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 节点类型:NORMAL:普通节点;SUPER:超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点子网ID
+	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+
+	// 节点子网名称
+	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+
+	// 节点子网网段
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+
+	// pod名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// podIP
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod状态
+	PodStatus *string `json:"PodStatus,omitempty" name:"PodStatus"`
+
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// uuid
+	HostID *string `json:"HostID,omitempty" name:"HostID"`
 }
 
 type RunTimeFilters struct {
@@ -29256,8 +29614,11 @@ type SecLogDeliveryKafkaSettingInfo struct {
 }
 
 type SecLogJoinInfo struct {
-	// 已接入数量
+	// 已接入普通主机数量
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 已接入超级节点数量
+	SuperNodeCount *uint64 `json:"SuperNodeCount,omitempty" name:"SuperNodeCount"`
 
 	// 是否已接入(true:已接入 false:未接入)
 	IsJoined *bool `json:"IsJoined,omitempty" name:"IsJoined"`
@@ -29386,6 +29747,21 @@ type ServiceInfo struct {
 
 	// 外网ip
 	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// podip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 超级节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
 }
 
 // Predefined struct for user
@@ -30538,6 +30914,39 @@ type VirusInfo struct {
 	// 5: 威胁情报
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckPlatform []*string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
+
+	// 节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod(实例)的名字
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 节点所属集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点外网IP
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 节点内网IP
+	InnerIP *string `json:"InnerIP,omitempty" name:"InnerIP"`
+
+	// 节点唯一ID
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 普通节点ID
+	HostID *string `json:"HostID,omitempty" name:"HostID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type VirusTaskInfo struct {
@@ -30553,10 +30962,10 @@ type VirusTaskInfo struct {
 	// 镜像Id
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
-	// 主机名称
+	// 节点名
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
 
-	// 主机ip
+	// 节点内网ip
 	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
 
 	// 扫描状态：
@@ -30596,6 +31005,15 @@ type VirusTaskInfo struct {
 	// UNAUTH: 所在镜像未授权
 	// SEND_CANCEL_SUCCESSED:下发成功
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点外网IP
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
 }
 
 type VirusTendencyInfo struct {
@@ -30653,6 +31071,24 @@ type VulAffectedContainerInfo struct {
 
 	// 外网IP
 	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 超级节点唯一ID
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 超级节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 超级节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
 }
 
 type VulAffectedImageComponentInfo struct {
@@ -30773,7 +31209,7 @@ type VulDefenceEvent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
 
-	// 主机QUUID
+	// 主机QUUID/超级节点ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QUUID *string `json:"QUUID,omitempty" name:"QUUID"`
 
@@ -30781,9 +31217,27 @@ type VulDefenceEvent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
 
-	// 主机名称
+	// 主机名称/超级节点名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 外网IP
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 超级节点唯一ID
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 超级节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type VulDefenceEventDetail struct {
@@ -30829,7 +31283,7 @@ type VulDefenceEventDetail struct {
 	// 事件ID
 	EventID *int64 `json:"EventID,omitempty" name:"EventID"`
 
-	// 主机名称
+	// 主机名称/超级节点名称
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
 
 	// 主机内网IP
@@ -30878,7 +31332,7 @@ type VulDefenceEventDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerArg *string `json:"ServerArg,omitempty" name:"ServerArg"`
 
-	// 主机QUUID
+	// 主机QUUID/超级节点ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QUUID *string `json:"QUUID,omitempty" name:"QUUID"`
 
@@ -30925,6 +31379,33 @@ type VulDefenceEventDetail struct {
 	// rasp detail
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RaspDetail []*RaspInfo `json:"RaspDetail,omitempty" name:"RaspDetail"`
+
+	// 超级节点子网名称
+	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+
+	// 超级节点子网网段
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 超级节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 超级节点唯一ID
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 超级节点子网ID
+	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type VulDefenceEventTendency struct {
@@ -30936,13 +31417,13 @@ type VulDefenceEventTendency struct {
 }
 
 type VulDefenceHost struct {
-	// 主机名称
+	// 主机名称/超级节点名称
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
 
 	// 主机ip即内网ip
 	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
 
-	// 主机QUUID
+	// 主机QUUID/超级节点ID
 	HostID *string `json:"HostID,omitempty" name:"HostID"`
 
 	// 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENDED:未防御
@@ -30956,6 +31437,30 @@ type VulDefenceHost struct {
 
 	// 更新时间
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 超级节点子网名称
+	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+
+	// 超级节点子网网段
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+
+	// 超级节点子网ID
+	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+
+	// 超级节点唯一ID
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 超级节点ID
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// Pod Ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// Pod 名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
 }
 
 type VulDefencePlugin struct {

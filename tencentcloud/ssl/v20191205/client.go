@@ -571,6 +571,218 @@ func (c *Client) DeleteManagerWithContext(ctx context.Context, request *DeleteMa
     return
 }
 
+func NewDeployCertificateInstanceRequest() (request *DeployCertificateInstanceRequest) {
+    request = &DeployCertificateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DeployCertificateInstance")
+    
+    
+    return
+}
+
+func NewDeployCertificateInstanceResponse() (response *DeployCertificateInstanceResponse) {
+    response = &DeployCertificateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeployCertificateInstance
+// 证书部署到云资源实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DeployCertificateInstance(request *DeployCertificateInstanceRequest) (response *DeployCertificateInstanceResponse, err error) {
+    return c.DeployCertificateInstanceWithContext(context.Background(), request)
+}
+
+// DeployCertificateInstance
+// 证书部署到云资源实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DeployCertificateInstanceWithContext(ctx context.Context, request *DeployCertificateInstanceRequest) (response *DeployCertificateInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeployCertificateInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployCertificateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeployCertificateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeployCertificateRecordRetryRequest() (request *DeployCertificateRecordRetryRequest) {
+    request = &DeployCertificateRecordRetryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DeployCertificateRecordRetry")
+    
+    
+    return
+}
+
+func NewDeployCertificateRecordRetryResponse() (response *DeployCertificateRecordRetryResponse) {
+    response = &DeployCertificateRecordRetryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeployCertificateRecordRetry
+// 云资源部署重试部署记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DeployCertificateRecordRetry(request *DeployCertificateRecordRetryRequest) (response *DeployCertificateRecordRetryResponse, err error) {
+    return c.DeployCertificateRecordRetryWithContext(context.Background(), request)
+}
+
+// DeployCertificateRecordRetry
+// 云资源部署重试部署记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DeployCertificateRecordRetryWithContext(ctx context.Context, request *DeployCertificateRecordRetryRequest) (response *DeployCertificateRecordRetryResponse, err error) {
+    if request == nil {
+        request = NewDeployCertificateRecordRetryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployCertificateRecordRetry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeployCertificateRecordRetryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeployCertificateRecordRollbackRequest() (request *DeployCertificateRecordRollbackRequest) {
+    request = &DeployCertificateRecordRollbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DeployCertificateRecordRollback")
+    
+    
+    return
+}
+
+func NewDeployCertificateRecordRollbackResponse() (response *DeployCertificateRecordRollbackResponse) {
+    response = &DeployCertificateRecordRollbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeployCertificateRecordRollback
+// 云资源部署一键回滚
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DeployCertificateRecordRollback(request *DeployCertificateRecordRollbackRequest) (response *DeployCertificateRecordRollbackResponse, err error) {
+    return c.DeployCertificateRecordRollbackWithContext(context.Background(), request)
+}
+
+// DeployCertificateRecordRollback
+// 云资源部署一键回滚
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DeployCertificateRecordRollbackWithContext(ctx context.Context, request *DeployCertificateRecordRollbackRequest) (response *DeployCertificateRecordRollbackResponse, err error) {
+    if request == nil {
+        request = NewDeployCertificateRecordRollbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeployCertificateRecordRollback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeployCertificateRecordRollbackResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCertificateRequest() (request *DescribeCertificateRequest) {
     request = &DescribeCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -973,6 +1185,1038 @@ func (c *Client) DescribeDeployedResourcesWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeDeployedResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostApiGatewayInstanceListRequest() (request *DescribeHostApiGatewayInstanceListRequest) {
+    request = &DescribeHostApiGatewayInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostApiGatewayInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostApiGatewayInstanceListResponse() (response *DescribeHostApiGatewayInstanceListResponse) {
+    response = &DescribeHostApiGatewayInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostApiGatewayInstanceList
+// 查询证书apiGateway云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostApiGatewayInstanceList(request *DescribeHostApiGatewayInstanceListRequest) (response *DescribeHostApiGatewayInstanceListResponse, err error) {
+    return c.DescribeHostApiGatewayInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostApiGatewayInstanceList
+// 查询证书apiGateway云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostApiGatewayInstanceListWithContext(ctx context.Context, request *DescribeHostApiGatewayInstanceListRequest) (response *DescribeHostApiGatewayInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostApiGatewayInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostApiGatewayInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostApiGatewayInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostCdnInstanceListRequest() (request *DescribeHostCdnInstanceListRequest) {
+    request = &DescribeHostCdnInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostCdnInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostCdnInstanceListResponse() (response *DescribeHostCdnInstanceListResponse) {
+    response = &DescribeHostCdnInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostCdnInstanceList
+// 查询证书cdn云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostCdnInstanceList(request *DescribeHostCdnInstanceListRequest) (response *DescribeHostCdnInstanceListResponse, err error) {
+    return c.DescribeHostCdnInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostCdnInstanceList
+// 查询证书cdn云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostCdnInstanceListWithContext(ctx context.Context, request *DescribeHostCdnInstanceListRequest) (response *DescribeHostCdnInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostCdnInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostCdnInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostCdnInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostClbInstanceListRequest() (request *DescribeHostClbInstanceListRequest) {
+    request = &DescribeHostClbInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostClbInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostClbInstanceListResponse() (response *DescribeHostClbInstanceListResponse) {
+    response = &DescribeHostClbInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostClbInstanceList
+// 查询证书clb云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostClbInstanceList(request *DescribeHostClbInstanceListRequest) (response *DescribeHostClbInstanceListResponse, err error) {
+    return c.DescribeHostClbInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostClbInstanceList
+// 查询证书clb云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostClbInstanceListWithContext(ctx context.Context, request *DescribeHostClbInstanceListRequest) (response *DescribeHostClbInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostClbInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostClbInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostClbInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostCosInstanceListRequest() (request *DescribeHostCosInstanceListRequest) {
+    request = &DescribeHostCosInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostCosInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostCosInstanceListResponse() (response *DescribeHostCosInstanceListResponse) {
+    response = &DescribeHostCosInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostCosInstanceList
+// 查询证书cos云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostCosInstanceList(request *DescribeHostCosInstanceListRequest) (response *DescribeHostCosInstanceListResponse, err error) {
+    return c.DescribeHostCosInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostCosInstanceList
+// 查询证书cos云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostCosInstanceListWithContext(ctx context.Context, request *DescribeHostCosInstanceListRequest) (response *DescribeHostCosInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostCosInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostCosInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostCosInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostDdosInstanceListRequest() (request *DescribeHostDdosInstanceListRequest) {
+    request = &DescribeHostDdosInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostDdosInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostDdosInstanceListResponse() (response *DescribeHostDdosInstanceListResponse) {
+    response = &DescribeHostDdosInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostDdosInstanceList
+// 查询证书ddos云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostDdosInstanceList(request *DescribeHostDdosInstanceListRequest) (response *DescribeHostDdosInstanceListResponse, err error) {
+    return c.DescribeHostDdosInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostDdosInstanceList
+// 查询证书ddos云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostDdosInstanceListWithContext(ctx context.Context, request *DescribeHostDdosInstanceListRequest) (response *DescribeHostDdosInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostDdosInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostDdosInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostDdosInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostDeployRecordRequest() (request *DescribeHostDeployRecordRequest) {
+    request = &DescribeHostDeployRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostDeployRecord")
+    
+    
+    return
+}
+
+func NewDescribeHostDeployRecordResponse() (response *DescribeHostDeployRecordResponse) {
+    response = &DescribeHostDeployRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostDeployRecord
+// 查询证书云资源部署记录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostDeployRecord(request *DescribeHostDeployRecordRequest) (response *DescribeHostDeployRecordResponse, err error) {
+    return c.DescribeHostDeployRecordWithContext(context.Background(), request)
+}
+
+// DescribeHostDeployRecord
+// 查询证书云资源部署记录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostDeployRecordWithContext(ctx context.Context, request *DescribeHostDeployRecordRequest) (response *DescribeHostDeployRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostDeployRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostDeployRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostDeployRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostDeployRecordDetailRequest() (request *DescribeHostDeployRecordDetailRequest) {
+    request = &DescribeHostDeployRecordDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostDeployRecordDetail")
+    
+    
+    return
+}
+
+func NewDescribeHostDeployRecordDetailResponse() (response *DescribeHostDeployRecordDetailResponse) {
+    response = &DescribeHostDeployRecordDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostDeployRecordDetail
+// 查询证书云资源部署记录详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYNOTEXIST = "FailedOperation.CertificateDeployNotExist"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostDeployRecordDetail(request *DescribeHostDeployRecordDetailRequest) (response *DescribeHostDeployRecordDetailResponse, err error) {
+    return c.DescribeHostDeployRecordDetailWithContext(context.Background(), request)
+}
+
+// DescribeHostDeployRecordDetail
+// 查询证书云资源部署记录详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYNOTEXIST = "FailedOperation.CertificateDeployNotExist"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostDeployRecordDetailWithContext(ctx context.Context, request *DescribeHostDeployRecordDetailRequest) (response *DescribeHostDeployRecordDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostDeployRecordDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostDeployRecordDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostDeployRecordDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostLighthouseInstanceListRequest() (request *DescribeHostLighthouseInstanceListRequest) {
+    request = &DescribeHostLighthouseInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostLighthouseInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostLighthouseInstanceListResponse() (response *DescribeHostLighthouseInstanceListResponse) {
+    response = &DescribeHostLighthouseInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostLighthouseInstanceList
+// 查询证书Lighthouse云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostLighthouseInstanceList(request *DescribeHostLighthouseInstanceListRequest) (response *DescribeHostLighthouseInstanceListResponse, err error) {
+    return c.DescribeHostLighthouseInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostLighthouseInstanceList
+// 查询证书Lighthouse云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostLighthouseInstanceListWithContext(ctx context.Context, request *DescribeHostLighthouseInstanceListRequest) (response *DescribeHostLighthouseInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostLighthouseInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostLighthouseInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostLighthouseInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostLiveInstanceListRequest() (request *DescribeHostLiveInstanceListRequest) {
+    request = &DescribeHostLiveInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostLiveInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostLiveInstanceListResponse() (response *DescribeHostLiveInstanceListResponse) {
+    response = &DescribeHostLiveInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostLiveInstanceList
+// 查询证书live云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostLiveInstanceList(request *DescribeHostLiveInstanceListRequest) (response *DescribeHostLiveInstanceListResponse, err error) {
+    return c.DescribeHostLiveInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostLiveInstanceList
+// 查询证书live云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostLiveInstanceListWithContext(ctx context.Context, request *DescribeHostLiveInstanceListRequest) (response *DescribeHostLiveInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostLiveInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostLiveInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostLiveInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostTeoInstanceListRequest() (request *DescribeHostTeoInstanceListRequest) {
+    request = &DescribeHostTeoInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostTeoInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostTeoInstanceListResponse() (response *DescribeHostTeoInstanceListResponse) {
+    response = &DescribeHostTeoInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostTeoInstanceList
+// 查询证书EdgeOne云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostTeoInstanceList(request *DescribeHostTeoInstanceListRequest) (response *DescribeHostTeoInstanceListResponse, err error) {
+    return c.DescribeHostTeoInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostTeoInstanceList
+// 查询证书EdgeOne云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostTeoInstanceListWithContext(ctx context.Context, request *DescribeHostTeoInstanceListRequest) (response *DescribeHostTeoInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostTeoInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostTeoInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostTeoInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostTkeInstanceListRequest() (request *DescribeHostTkeInstanceListRequest) {
+    request = &DescribeHostTkeInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostTkeInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostTkeInstanceListResponse() (response *DescribeHostTkeInstanceListResponse) {
+    response = &DescribeHostTkeInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostTkeInstanceList
+// 查询证书tke云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostTkeInstanceList(request *DescribeHostTkeInstanceListRequest) (response *DescribeHostTkeInstanceListResponse, err error) {
+    return c.DescribeHostTkeInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostTkeInstanceList
+// 查询证书tke云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostTkeInstanceListWithContext(ctx context.Context, request *DescribeHostTkeInstanceListRequest) (response *DescribeHostTkeInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostTkeInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostTkeInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostTkeInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostUpdateRecordRequest() (request *DescribeHostUpdateRecordRequest) {
+    request = &DescribeHostUpdateRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostUpdateRecord")
+    
+    
+    return
+}
+
+func NewDescribeHostUpdateRecordResponse() (response *DescribeHostUpdateRecordResponse) {
+    response = &DescribeHostUpdateRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostUpdateRecord
+// 查询证书云资源更新记录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostUpdateRecord(request *DescribeHostUpdateRecordRequest) (response *DescribeHostUpdateRecordResponse, err error) {
+    return c.DescribeHostUpdateRecordWithContext(context.Background(), request)
+}
+
+// DescribeHostUpdateRecord
+// 查询证书云资源更新记录列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostUpdateRecordWithContext(ctx context.Context, request *DescribeHostUpdateRecordRequest) (response *DescribeHostUpdateRecordResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostUpdateRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostUpdateRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostUpdateRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostUpdateRecordDetailRequest() (request *DescribeHostUpdateRecordDetailRequest) {
+    request = &DescribeHostUpdateRecordDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostUpdateRecordDetail")
+    
+    
+    return
+}
+
+func NewDescribeHostUpdateRecordDetailResponse() (response *DescribeHostUpdateRecordDetailResponse) {
+    response = &DescribeHostUpdateRecordDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostUpdateRecordDetail
+// 查询证书云资源更新记录详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYNOTEXIST = "FailedOperation.CertificateDeployNotExist"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostUpdateRecordDetail(request *DescribeHostUpdateRecordDetailRequest) (response *DescribeHostUpdateRecordDetailResponse, err error) {
+    return c.DescribeHostUpdateRecordDetailWithContext(context.Background(), request)
+}
+
+// DescribeHostUpdateRecordDetail
+// 查询证书云资源更新记录详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYNOTEXIST = "FailedOperation.CertificateDeployNotExist"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostUpdateRecordDetailWithContext(ctx context.Context, request *DescribeHostUpdateRecordDetailRequest) (response *DescribeHostUpdateRecordDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostUpdateRecordDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostUpdateRecordDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostUpdateRecordDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostVodInstanceListRequest() (request *DescribeHostVodInstanceListRequest) {
+    request = &DescribeHostVodInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostVodInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostVodInstanceListResponse() (response *DescribeHostVodInstanceListResponse) {
+    response = &DescribeHostVodInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostVodInstanceList
+// 查询证书Vod云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostVodInstanceList(request *DescribeHostVodInstanceListRequest) (response *DescribeHostVodInstanceListResponse, err error) {
+    return c.DescribeHostVodInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostVodInstanceList
+// 查询证书Vod云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostVodInstanceListWithContext(ctx context.Context, request *DescribeHostVodInstanceListRequest) (response *DescribeHostVodInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostVodInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostVodInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostVodInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHostWafInstanceListRequest() (request *DescribeHostWafInstanceListRequest) {
+    request = &DescribeHostWafInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeHostWafInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeHostWafInstanceListResponse() (response *DescribeHostWafInstanceListResponse) {
+    response = &DescribeHostWafInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostWafInstanceList
+// 查询证书waf云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostWafInstanceList(request *DescribeHostWafInstanceListRequest) (response *DescribeHostWafInstanceListResponse, err error) {
+    return c.DescribeHostWafInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeHostWafInstanceList
+// 查询证书waf云资源部署实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribeHostWafInstanceListWithContext(ctx context.Context, request *DescribeHostWafInstanceListRequest) (response *DescribeHostWafInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostWafInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostWafInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostWafInstanceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1701,6 +2945,224 @@ func (c *Client) SubmitCertificateInformationWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewSubmitCertificateInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCertificateInstanceRequest() (request *UpdateCertificateInstanceRequest) {
+    request = &UpdateCertificateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "UpdateCertificateInstance")
+    
+    
+    return
+}
+
+func NewUpdateCertificateInstanceResponse() (response *UpdateCertificateInstanceResponse) {
+    response = &UpdateCertificateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateCertificateInstance
+// 一键更新旧证书资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYINSTANCEEMPTY = "FailedOperation.CertificateDeployInstanceEmpty"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) UpdateCertificateInstance(request *UpdateCertificateInstanceRequest) (response *UpdateCertificateInstanceResponse, err error) {
+    return c.UpdateCertificateInstanceWithContext(context.Background(), request)
+}
+
+// UpdateCertificateInstance
+// 一键更新旧证书资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYINSTANCEEMPTY = "FailedOperation.CertificateDeployInstanceEmpty"
+//  FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) UpdateCertificateInstanceWithContext(ctx context.Context, request *UpdateCertificateInstanceRequest) (response *UpdateCertificateInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpdateCertificateInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCertificateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCertificateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCertificateRecordRetryRequest() (request *UpdateCertificateRecordRetryRequest) {
+    request = &UpdateCertificateRecordRetryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "UpdateCertificateRecordRetry")
+    
+    
+    return
+}
+
+func NewUpdateCertificateRecordRetryResponse() (response *UpdateCertificateRecordRetryResponse) {
+    response = &UpdateCertificateRecordRetryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateCertificateRecordRetry
+// 云资源更新重试部署记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) UpdateCertificateRecordRetry(request *UpdateCertificateRecordRetryRequest) (response *UpdateCertificateRecordRetryResponse, err error) {
+    return c.UpdateCertificateRecordRetryWithContext(context.Background(), request)
+}
+
+// UpdateCertificateRecordRetry
+// 云资源更新重试部署记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) UpdateCertificateRecordRetryWithContext(ctx context.Context, request *UpdateCertificateRecordRetryRequest) (response *UpdateCertificateRecordRetryResponse, err error) {
+    if request == nil {
+        request = NewUpdateCertificateRecordRetryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCertificateRecordRetry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCertificateRecordRetryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCertificateRecordRollbackRequest() (request *UpdateCertificateRecordRollbackRequest) {
+    request = &UpdateCertificateRecordRollbackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "UpdateCertificateRecordRollback")
+    
+    
+    return
+}
+
+func NewUpdateCertificateRecordRollbackResponse() (response *UpdateCertificateRecordRollbackResponse) {
+    response = &UpdateCertificateRecordRollbackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateCertificateRecordRollback
+// 云资源更新一键回滚
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) UpdateCertificateRecordRollback(request *UpdateCertificateRecordRollbackRequest) (response *UpdateCertificateRecordRollbackResponse, err error) {
+    return c.UpdateCertificateRecordRollbackWithContext(context.Background(), request)
+}
+
+// UpdateCertificateRecordRollback
+// 云资源更新一键回滚
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
+//  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) UpdateCertificateRecordRollbackWithContext(ctx context.Context, request *UpdateCertificateRecordRollbackRequest) (response *UpdateCertificateRecordRollbackResponse, err error) {
+    if request == nil {
+        request = NewUpdateCertificateRecordRollbackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCertificateRecordRollback require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCertificateRecordRollbackResponse()
     err = c.Send(request, response)
     return
 }

@@ -44,6 +44,24 @@ const (
 	// 获取订单信息失败，请稍后重试。
 	FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
 
+	// 记录状态必须完结才可以执行该操作。
+	FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
+
+	// 证书部署有正在进行中的任务，请部署完成后再重试。
+	FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+
+	// 已选择的云资源无实例，无法更新，请重新核对后重试。
+	FAILEDOPERATION_CERTIFICATEDEPLOYINSTANCEEMPTY = "FailedOperation.CertificateDeployInstanceEmpty"
+
+	// 证书部署记录不存在。
+	FAILEDOPERATION_CERTIFICATEDEPLOYNOTEXIST = "FailedOperation.CertificateDeployNotExist"
+
+	// 记录状态必须失败才可以执行该操作。
+	FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
+
+	// 必须有部署成功的记录才可以回滚。
+	FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
+
 	// 证书已存在。
 	FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
 
@@ -53,6 +71,15 @@ const (
 	// 当前证书不允许使用一键更新的功能。
 	FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = "FailedOperation.CertificateHostDeployCanNotAllow"
 
+	// 当前为内部账号，账号涉及实例资源较多，无法使用部署功能，请联系SSL证书特殊处理。
+	FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+
+	// 当前账号下实例数量过多，无法正常加载，请您切换加载方式。切换后点击“刷新列表”等待一段时间后即可全部加载。
+	FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
+
+	// 云资源类型无效。
+	FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+
 	// 证书资源托管数量超过限制。
 	FAILEDOPERATION_CERTIFICATEHOSTINGTYPENUMBERLIMIT = "FailedOperation.CertificateHostingTypeNumberLimit"
 
@@ -61,6 +88,12 @@ const (
 
 	// 证书与私钥不对应。
 	FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+
+	// 证书不可用，请检查后再试。
+	FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
+
+	// 证书不可以部署到实例列表下。
+	FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
 
 	// 证书不存在。
 	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"

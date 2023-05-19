@@ -384,6 +384,10 @@ type CVMAssetVO struct {
 	// os全称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Os *string `json:"Os,omitempty" name:"Os"`
+
+	// 风险服务暴露
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskExposure *int64 `json:"RiskExposure,omitempty" name:"RiskExposure"`
 }
 
 type DBAssetVO struct {
@@ -653,6 +657,10 @@ type DescribeCVMAssetsResponseParams struct {
 	// 可用区列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneList []*FilterDataObject `json:"ZoneList,omitempty" name:"ZoneList"`
+
+	// os列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsList []*FilterDataObject `json:"OsList,omitempty" name:"OsList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1023,10 +1031,10 @@ type Filter struct {
 	// 查询偏移位置
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 需排序的字段
+	// 排序采用升序还是降序 升:asc 降 desc
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序采用升序还是降序 升:asc 降 desc
+	// 需排序的字段
 	By *string `json:"By,omitempty" name:"By"`
 
 	// 过滤的列及内容

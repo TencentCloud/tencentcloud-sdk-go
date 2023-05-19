@@ -313,6 +313,12 @@ type AiAnalysisTaskClassificationResult struct {
 
 	// 智能分类任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 智能分类任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 智能分类任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiAnalysisTaskCoverInput struct {
@@ -354,6 +360,12 @@ type AiAnalysisTaskCoverResult struct {
 
 	// 智能封面任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 智能封面任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 智能封面任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiAnalysisTaskFrameTagInput struct {
@@ -395,6 +407,12 @@ type AiAnalysisTaskFrameTagResult struct {
 
 	// 智能按帧标签任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 智能按帧标签任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 智能按帧标签任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiAnalysisTaskHighlightInput struct {
@@ -436,6 +454,12 @@ type AiAnalysisTaskHighlightResult struct {
 
 	// 智能精彩片段任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 智能精彩片段任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 智能精彩片段任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiAnalysisTaskInput struct {
@@ -482,6 +506,12 @@ type AiAnalysisTaskTagResult struct {
 
 	// 智能标签任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 智能标签任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 智能标签任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiContentReviewResult struct {
@@ -616,8 +646,14 @@ type AiRecognitionTaskAsrFullTextResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskAsrFullTextResultOutput `json:"Output,omitempty" name:"Output"`
 
-	// 任务进度，取值范围 [0-100] 。
+	// 语音全文识别任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 语音全文识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 语音全文识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiRecognitionTaskAsrFullTextResultInput struct {
@@ -689,6 +725,12 @@ type AiRecognitionTaskAsrWordsResult struct {
 
 	// 语音关键词识别任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 语音关键词识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 语音关键词识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiRecognitionTaskAsrWordsResultInput struct {
@@ -749,6 +791,12 @@ type AiRecognitionTaskFaceResult struct {
 
 	// 人脸识别任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 人脸识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 人脸识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiRecognitionTaskFaceResultInput struct {
@@ -820,6 +868,12 @@ type AiRecognitionTaskHeadTailResult struct {
 
 	// 视频片头片尾识别任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 视频片头片尾识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 视频片头片尾识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiRecognitionTaskHeadTailResultInput struct {
@@ -868,6 +922,12 @@ type AiRecognitionTaskObjectResult struct {
 
 	// 物体识别任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 物体识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 物体识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiRecognitionTaskObjectResultInput struct {
@@ -931,6 +991,12 @@ type AiRecognitionTaskOcrFullTextResult struct {
 
 	// 文本全文识别任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 文本全文识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 文本全文识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiRecognitionTaskOcrFullTextResultInput struct {
@@ -994,6 +1060,12 @@ type AiRecognitionTaskOcrWordsResult struct {
 
 	// 文本关键词识别任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 文本关键词识别任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 文本关键词识别任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiRecognitionTaskOcrWordsResultInput struct {
@@ -1058,6 +1130,12 @@ type AiRecognitionTaskSegmentResult struct {
 
 	// 视频拆条任务进度，取值范围 [0-100] 。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 视频拆条任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 视频拆条任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 }
 
 type AiRecognitionTaskSegmentResultInput struct {
@@ -1364,6 +1442,9 @@ type AiReviewTaskPoliticalOcrResult struct {
 	// 音视频审核 Ocr 文字涉及令人不适宜信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalOcrTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 音视频审核 Ocr 文字涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiReviewTaskPoliticalResult struct {
@@ -11872,6 +11953,9 @@ type ExtractTraceWatermarkTask struct {
 type ExtractTraceWatermarkTaskInput struct {
 	// 需要提取水印的媒体 URL。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 媒体文件 ID。Url 对应的原始媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
 }
 
 type ExtractTraceWatermarkTaskOutput struct {

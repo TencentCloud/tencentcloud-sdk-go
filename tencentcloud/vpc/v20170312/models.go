@@ -6069,8 +6069,11 @@ type CreateVpnGatewaySslClientRequestParams struct {
 	// SSL-VPN-SERVER 实例ID。
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
 
-	// name
+	// SSL-VPN-CLIENT实例Name。不可和SslVpnClientNames同时使用。
 	SslVpnClientName *string `json:"SslVpnClientName,omitempty" name:"SslVpnClientName"`
+
+	// SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。
+	SslVpnClientNames []*string `json:"SslVpnClientNames,omitempty" name:"SslVpnClientNames"`
 }
 
 type CreateVpnGatewaySslClientRequest struct {
@@ -6079,8 +6082,11 @@ type CreateVpnGatewaySslClientRequest struct {
 	// SSL-VPN-SERVER 实例ID。
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
 
-	// name
+	// SSL-VPN-CLIENT实例Name。不可和SslVpnClientNames同时使用。
 	SslVpnClientName *string `json:"SslVpnClientName,omitempty" name:"SslVpnClientName"`
+
+	// SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。
+	SslVpnClientNames []*string `json:"SslVpnClientNames,omitempty" name:"SslVpnClientNames"`
 }
 
 func (r *CreateVpnGatewaySslClientRequest) ToJsonString() string {
@@ -6097,6 +6103,7 @@ func (r *CreateVpnGatewaySslClientRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SslVpnServerId")
 	delete(f, "SslVpnClientName")
+	delete(f, "SslVpnClientNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpnGatewaySslClientRequest has unknown keys!", "")
 	}
@@ -8531,15 +8538,21 @@ func (r *DeleteVpnGatewayRoutesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteVpnGatewaySslClientRequestParams struct {
-	// SSL-VPN-CLIENT 实例ID。
+	// SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// SSL-VPN-CLIENT 实例ID列表。批量删除时使用。不可和SslVpnClientId同时使用。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 }
 
 type DeleteVpnGatewaySslClientRequest struct {
 	*tchttp.BaseRequest
 	
-	// SSL-VPN-CLIENT 实例ID。
+	// SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// SSL-VPN-CLIENT 实例ID列表。批量删除时使用。不可和SslVpnClientId同时使用。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 }
 
 func (r *DeleteVpnGatewaySslClientRequest) ToJsonString() string {
@@ -8555,6 +8568,7 @@ func (r *DeleteVpnGatewaySslClientRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SslVpnClientId")
+	delete(f, "SslVpnClientIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVpnGatewaySslClientRequest has unknown keys!", "")
 	}
@@ -16178,15 +16192,21 @@ func (r *DisableSnapshotPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableVpnGatewaySslClientCertRequestParams struct {
-	// SSL-VPN-CLIENT 实例ID。
+	// SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// SSL-VPN-CLIENT 实例ID列表。批量禁用时使用。不可和SslVpnClientId同时使用。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 }
 
 type DisableVpnGatewaySslClientCertRequest struct {
 	*tchttp.BaseRequest
 	
-	// SSL-VPN-CLIENT 实例ID。
+	// SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// SSL-VPN-CLIENT 实例ID列表。批量禁用时使用。不可和SslVpnClientId同时使用。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 }
 
 func (r *DisableVpnGatewaySslClientCertRequest) ToJsonString() string {
@@ -16202,6 +16222,7 @@ func (r *DisableVpnGatewaySslClientCertRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SslVpnClientId")
+	delete(f, "SslVpnClientIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableVpnGatewaySslClientCertRequest has unknown keys!", "")
 	}
@@ -16743,27 +16764,33 @@ func (r *DownloadCustomerGatewayConfigurationResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DownloadVpnGatewaySslClientCertRequestParams struct {
-	// SSL-VPN-CLIENT 实例ID。
+	// SSL-VPN-CLIENT 实例ID。不可以和SslVpnClientIds同时使用。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
 
-	// SAML-TOKEN
+	// SAML Token（SAML令牌）。
 	SamlToken *string `json:"SamlToken,omitempty" name:"SamlToken"`
 
-	// VPN门户网站使用。默认Flase
+	// VPN门户网站使用。默认False
 	IsVpnPortal *bool `json:"IsVpnPortal,omitempty" name:"IsVpnPortal"`
+
+	// SSL-VPN-CLIENT 实例ID列表。批量下载时使用。不可以和SslVpnClientId同时使用。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 }
 
 type DownloadVpnGatewaySslClientCertRequest struct {
 	*tchttp.BaseRequest
 	
-	// SSL-VPN-CLIENT 实例ID。
+	// SSL-VPN-CLIENT 实例ID。不可以和SslVpnClientIds同时使用。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
 
-	// SAML-TOKEN
+	// SAML Token（SAML令牌）。
 	SamlToken *string `json:"SamlToken,omitempty" name:"SamlToken"`
 
-	// VPN门户网站使用。默认Flase
+	// VPN门户网站使用。默认False
 	IsVpnPortal *bool `json:"IsVpnPortal,omitempty" name:"IsVpnPortal"`
+
+	// SSL-VPN-CLIENT 实例ID列表。批量下载时使用。不可以和SslVpnClientId同时使用。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 }
 
 func (r *DownloadVpnGatewaySslClientCertRequest) ToJsonString() string {
@@ -16781,6 +16808,7 @@ func (r *DownloadVpnGatewaySslClientCertRequest) FromJsonString(s string) error 
 	delete(f, "SslVpnClientId")
 	delete(f, "SamlToken")
 	delete(f, "IsVpnPortal")
+	delete(f, "SslVpnClientIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadVpnGatewaySslClientCertRequest has unknown keys!", "")
 	}
@@ -16789,13 +16817,13 @@ func (r *DownloadVpnGatewaySslClientCertRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DownloadVpnGatewaySslClientCertResponseParams struct {
-	// 无
+	// SSL-VPN 客户端配置。
 	SslClientConfigsSet *string `json:"SslClientConfigsSet,omitempty" name:"SslClientConfigsSet"`
 
-	// SSL-VPN client配置
+	// SSL-VPN 客户端配置。
 	SslClientConfig []*SslClientConfig `json:"SslClientConfig,omitempty" name:"SslClientConfig"`
 
-	// 是否鉴权成功 只有传入SamlToken 才生效
+	// 是否鉴权成功 只有传入SamlToken 才生效，1为成功，0为失败。
 	Authenticated *uint64 `json:"Authenticated,omitempty" name:"Authenticated"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -17187,15 +17215,21 @@ func (r *EnableVpcEndPointConnectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableVpnGatewaySslClientCertRequestParams struct {
-	// SSL-VPN-CLIENT 实例ID。
+	// SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// SSL-VPN-CLIENT 实例ID列表。批量启用时使用。不可和SslVpnClientId同时使用。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 }
 
 type EnableVpnGatewaySslClientCertRequest struct {
 	*tchttp.BaseRequest
 	
-	// SSL-VPN-CLIENT 实例ID。
+	// SSL-VPN-CLIENT 实例ID。不可和SslVpnClientIds同时使用。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// SSL-VPN-CLIENT 实例ID列表。批量启用时使用。不可和SslVpnClientId同时使用。
+	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 }
 
 func (r *EnableVpnGatewaySslClientCertRequest) ToJsonString() string {
@@ -17211,6 +17245,7 @@ func (r *EnableVpnGatewaySslClientCertRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SslVpnClientId")
+	delete(f, "SslVpnClientIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableVpnGatewaySslClientCertRequest has unknown keys!", "")
 	}
@@ -22412,7 +22447,7 @@ type PrivateIpAddressSpecification struct {
 	// AVAILABLE：可用的
 	State *string `json:"State,omitempty" name:"State"`
 
-	// IP服务质量等级，可选值：PT、AU、AG、DEFAULT，分别代表白金、金、银、默认四个等级。
+	// IP服务质量等级，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
 }
 
@@ -24429,6 +24464,9 @@ type SslClientConfig struct {
 
 	// 客户端证书
 	SslVpnCert *string `json:"SslVpnCert,omitempty" name:"SslVpnCert"`
+
+	// SSL-VPN-CLIENT 实例ID。
+	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
 }
 
 type SslVpnClient struct {

@@ -9092,6 +9092,10 @@ type TextVehicleBack struct {
 	// 准牵引总质量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalQuasiMass *string `json:"TotalQuasiMass,omitempty" name:"TotalQuasiMass"`
+
+	// 副页编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubPageCode *string `json:"SubPageCode,omitempty" name:"SubPageCode"`
 }
 
 type TextVehicleFront struct {

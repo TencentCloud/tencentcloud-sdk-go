@@ -1701,6 +1701,56 @@ func (c *Client) DescribeIPStatusListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
+    request = &DescribeLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeLogs")
+    
+    
+    return
+}
+
+func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
+    response = &DescribeLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLogs
+// 日志审计日志查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
+    return c.DescribeLogsWithContext(context.Background(), request)
+}
+
+// DescribeLogs
+// 日志审计日志查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNatAcRuleRequest() (request *DescribeNatAcRuleRequest) {
     request = &DescribeNatAcRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
