@@ -2161,7 +2161,7 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	// HONGKONG_MACAO_AND_TAIWAN 中国台湾
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
-	// 手机号码
+	// 手机号码；当需要开通自动签时，该参数必传
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 是否开通自动签，该功能需联系运营工作人员开通后使用
@@ -2194,7 +2194,7 @@ type CreatePreparedPersonalEsignRequest struct {
 	// HONGKONG_MACAO_AND_TAIWAN 中国台湾
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
-	// 手机号码
+	// 手机号码；当需要开通自动签时，该参数必传
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 是否开通自动签，该功能需联系运营工作人员开通后使用
@@ -3990,8 +3990,14 @@ func (r *DescribeUserAutoSignStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserAutoSignStatusResponseParams struct {
-	// 是否开通
+	// 是否已开通自动签
 	IsOpen *bool `json:"IsOpen,omitempty" name:"IsOpen"`
+
+	// 自动签许可生效时间。当且仅当已开通自动签时有值。
+	LicenseFrom *int64 `json:"LicenseFrom,omitempty" name:"LicenseFrom"`
+
+	// 自动签许可到期时间。当且仅当已开通自动签时有值。
+	LicenseTo *int64 `json:"LicenseTo,omitempty" name:"LicenseTo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

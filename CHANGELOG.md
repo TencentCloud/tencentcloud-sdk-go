@@ -1,3 +1,146 @@
+# Release v1.0.661
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 27 次发布
+
+发布时间：2023-05-22 01:03:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 128 次发布
+
+发布时间：2023-05-22 01:07:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeBackupTables
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* TableName
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 66 次发布
+
+发布时间：2023-05-19 20:06:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUserAutoSignStatus](https://cloud.tencent.com/document/api/1323/87786)
+
+	* 新增出参：LicenseFrom, LicenseTo
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 101 次发布
+
+发布时间：2023-05-22 01:41:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLiveCallbackTemplate](https://cloud.tencent.com/document/api/267/32631)
+
+	* 新增入参：AudioAuditNotifyUrl
+
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 89 次发布
+
+发布时间：2023-05-22 01:43:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAlarmNotices](https://cloud.tencent.com/document/api/248/51280)
+
+	* 新增入参：OnCallFormIDs
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：PromInsId, ReceiverOnCallFormIDs
+
+
+修改数据结构：
+
+* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
+
+	* 新增成员：OnCallFormIDs
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 44 次发布
+
+发布时间：2023-05-22 01:53:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCloudDBInstances](https://cloud.tencent.com/document/api/238/91710)
+* [CreateCloudReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/91709)
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 94 次发布
+
+发布时间：2023-05-22 02:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UnitRuleItem](https://cloud.tencent.com/document/api/649/36099#UnitRuleItem)
+
+	* 新增成员：ItemIndex, CreatedTime, UpdatedTime
+
+
+
+
 # Release v1.0.660
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

@@ -91,6 +91,7 @@ import (
 	cpdpv20190820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp/v20190820"
 	crv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr/v20180321"
 	csipv20221121 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csip/v20221121"
+	csxgv20230303 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csxg/v20230303"
 	cvmv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 	cwpv20180228 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp/v20180228"
 	cwsv20180312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws/v20180312"
@@ -1205,6 +1206,19 @@ func TestCsipv20221121Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init csip_v20221121 client: %v", err)
+    }
+}
+
+func TestCsxgv20230303Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := csxgv20230303.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init csxg_v20230303 client: %v", err)
     }
 }
 

@@ -4986,101 +4986,6 @@ func (r *DescribeBackupSummariesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeBackupTablesRequestParams struct {
-	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 开始时间，格式为：2017-07-12 10:29:20。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 指定的数据库名。
-	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
-
-	// 要查询的数据表名前缀。
-	SearchTable *string `json:"SearchTable,omitempty" name:"SearchTable"`
-
-	// 分页偏移。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 分页大小，最小值为1，最大值为2000。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-type DescribeBackupTablesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 开始时间，格式为：2017-07-12 10:29:20。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 指定的数据库名。
-	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
-
-	// 要查询的数据表名前缀。
-	SearchTable *string `json:"SearchTable,omitempty" name:"SearchTable"`
-
-	// 分页偏移。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 分页大小，最小值为1，最大值为2000。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-func (r *DescribeBackupTablesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBackupTablesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "StartTime")
-	delete(f, "DatabaseName")
-	delete(f, "SearchTable")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupTablesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeBackupTablesResponseParams struct {
-	// 返回的数据个数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 符合条件的数据表数组。
-	Items []*TableName `json:"Items,omitempty" name:"Items"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeBackupTablesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeBackupTablesResponseParams `json:"Response"`
-}
-
-func (r *DescribeBackupTablesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBackupTablesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeBackupsRequestParams struct {
 	// 实例ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -14176,11 +14081,6 @@ func (r *SwitchForUpgradeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SwitchForUpgradeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type TableName struct {
-	// 表名
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
 }
 
 type TablePrivilege struct {

@@ -949,7 +949,7 @@ type Condition struct {
 }
 
 type ConditionsTemp struct {
-	// 模版名称
+	// 模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
@@ -4648,6 +4648,9 @@ type DescribeAlarmNoticesRequestParams struct {
 
 	// 模板根据标签过滤
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 值班列表
+	OnCallFormIDs []*string `json:"OnCallFormIDs,omitempty" name:"OnCallFormIDs"`
 }
 
 type DescribeAlarmNoticesRequest struct {
@@ -4685,6 +4688,9 @@ type DescribeAlarmNoticesRequest struct {
 
 	// 模板根据标签过滤
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 值班列表
+	OnCallFormIDs []*string `json:"OnCallFormIDs,omitempty" name:"OnCallFormIDs"`
 }
 
 func (r *DescribeAlarmNoticesRequest) ToJsonString() string {
@@ -4710,6 +4716,7 @@ func (r *DescribeAlarmNoticesRequest) FromJsonString(s string) error {
 	delete(f, "GroupIds")
 	delete(f, "NoticeIds")
 	delete(f, "Tags")
+	delete(f, "OnCallFormIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmNoticesRequest has unknown keys!", "")
 	}
@@ -4793,7 +4800,7 @@ type DescribeAlarmPoliciesRequestParams struct {
 	// [项目管理](https://console.cloud.tencent.com/project)
 	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds"`
 
-	// 通知模版的id列表，可查询通知模版列表获取。
+	// 通知模板的id列表，可查询通知模板列表获取。
 	// 可使用 [查询通知模板列表](https://cloud.tencent.com/document/product/248/51280) 接口查询。
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 
@@ -4818,14 +4825,20 @@ type DescribeAlarmPoliciesRequestParams struct {
 	// 根据一键告警策略筛选 不传展示全部策略 ONECLICK=展示一键告警策略 NOT_ONECLICK=展示非一键告警策略
 	OneClickPolicyType []*string `json:"OneClickPolicyType,omitempty" name:"OneClickPolicyType"`
 
-	// 根据全部对象过滤，1代表需要过滤掉全部对象，0则无需过滤
+	// 返回结果过滤掉绑定全部对象的策略，1代表需要过滤，0则无需过滤
 	NotBindAll *int64 `json:"NotBindAll,omitempty" name:"NotBindAll"`
 
-	// 根据实例对象过滤，1代表需要过滤掉有实例对象，0则无需过滤
+	// 返回结果过滤掉关联实例为实例分组的策略，1代表需要过滤，0则无需过滤
 	NotInstanceGroup *int64 `json:"NotInstanceGroup,omitempty" name:"NotInstanceGroup"`
 
 	// 策略根据标签过滤
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// prom实例id，自定义指标策略时会用到
+	PromInsId *string `json:"PromInsId,omitempty" name:"PromInsId"`
+
+	// 根据排班表搜索
+	ReceiverOnCallFormIDs []*string `json:"ReceiverOnCallFormIDs,omitempty" name:"ReceiverOnCallFormIDs"`
 }
 
 type DescribeAlarmPoliciesRequest struct {
@@ -4878,7 +4891,7 @@ type DescribeAlarmPoliciesRequest struct {
 	// [项目管理](https://console.cloud.tencent.com/project)
 	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds"`
 
-	// 通知模版的id列表，可查询通知模版列表获取。
+	// 通知模板的id列表，可查询通知模板列表获取。
 	// 可使用 [查询通知模板列表](https://cloud.tencent.com/document/product/248/51280) 接口查询。
 	NoticeIds []*string `json:"NoticeIds,omitempty" name:"NoticeIds"`
 
@@ -4903,14 +4916,20 @@ type DescribeAlarmPoliciesRequest struct {
 	// 根据一键告警策略筛选 不传展示全部策略 ONECLICK=展示一键告警策略 NOT_ONECLICK=展示非一键告警策略
 	OneClickPolicyType []*string `json:"OneClickPolicyType,omitempty" name:"OneClickPolicyType"`
 
-	// 根据全部对象过滤，1代表需要过滤掉全部对象，0则无需过滤
+	// 返回结果过滤掉绑定全部对象的策略，1代表需要过滤，0则无需过滤
 	NotBindAll *int64 `json:"NotBindAll,omitempty" name:"NotBindAll"`
 
-	// 根据实例对象过滤，1代表需要过滤掉有实例对象，0则无需过滤
+	// 返回结果过滤掉关联实例为实例分组的策略，1代表需要过滤，0则无需过滤
 	NotInstanceGroup *int64 `json:"NotInstanceGroup,omitempty" name:"NotInstanceGroup"`
 
 	// 策略根据标签过滤
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// prom实例id，自定义指标策略时会用到
+	PromInsId *string `json:"PromInsId,omitempty" name:"PromInsId"`
+
+	// 根据排班表搜索
+	ReceiverOnCallFormIDs []*string `json:"ReceiverOnCallFormIDs,omitempty" name:"ReceiverOnCallFormIDs"`
 }
 
 func (r *DescribeAlarmPoliciesRequest) ToJsonString() string {
@@ -4949,6 +4968,8 @@ func (r *DescribeAlarmPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "NotBindAll")
 	delete(f, "NotInstanceGroup")
 	delete(f, "Tags")
+	delete(f, "PromInsId")
+	delete(f, "ReceiverOnCallFormIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmPoliciesRequest has unknown keys!", "")
 	}
@@ -15406,4 +15427,8 @@ type UserNotice struct {
 	// 通知周期 1-7表示周一到周日
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weekday []*int64 `json:"Weekday,omitempty" name:"Weekday"`
+
+	// 值班表id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnCallFormIDs []*string `json:"OnCallFormIDs,omitempty" name:"OnCallFormIDs"`
 }

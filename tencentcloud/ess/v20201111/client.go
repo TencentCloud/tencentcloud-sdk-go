@@ -1574,7 +1574,13 @@ func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
 }
 
 // CreateFlowSignUrl
-// 创建集成页面签署链接，请联系客户经理申请使用
+// 创建个人H5签署链接，请联系客户经理申请使用 <br/>
+//
+// 该接口用于发起合同后，生成C端签署人的签署链接 <br/>
+//
+// 注意：该接口目前签署人类型仅支持个人签署方（PERSON） <br/>
+//
+// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1593,7 +1599,13 @@ func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response 
 }
 
 // CreateFlowSignUrl
-// 创建集成页面签署链接，请联系客户经理申请使用
+// 创建个人H5签署链接，请联系客户经理申请使用 <br/>
+//
+// 该接口用于发起合同后，生成C端签署人的签署链接 <br/>
+//
+// 注意：该接口目前签署人类型仅支持个人签署方（PERSON） <br/>
+//
+// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2088,7 +2100,7 @@ func NewCreatePreparedPersonalEsignResponse() (response *CreatePreparedPersonalE
 }
 
 // CreatePreparedPersonalEsign
-// 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，在开通个人自动签之后调用，使用此接口请与客户经理确认）。
+// 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2168,7 +2180,7 @@ func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsig
 }
 
 // CreatePreparedPersonalEsign
-// 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，在开通个人自动签之后调用，使用此接口请与客户经理确认）。
+// 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

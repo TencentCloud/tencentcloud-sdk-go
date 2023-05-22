@@ -1047,9 +1047,9 @@ type CreateRoomRequestParams struct {
 	// 1 保持连麦状态
 	TurnOffMic *uint64 `json:"TurnOffMic,omitempty" name:"TurnOffMic"`
 
-	// 高音质模式。可以有以下取值：
-	// 0 不开启高音质（默认值）
-	// 1 开启高音质
+	// 声音音质。可以有以下取值：
+	// 0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。
+	// 1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
 	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
 
 	// 上课后是否禁止自动录制。可以有以下取值：
@@ -1121,9 +1121,9 @@ type CreateRoomRequest struct {
 	// 1 保持连麦状态
 	TurnOffMic *uint64 `json:"TurnOffMic,omitempty" name:"TurnOffMic"`
 
-	// 高音质模式。可以有以下取值：
-	// 0 不开启高音质（默认值）
-	// 1 开启高音质
+	// 声音音质。可以有以下取值：
+	// 0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。
+	// 1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
 	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
 
 	// 上课后是否禁止自动录制。可以有以下取值：

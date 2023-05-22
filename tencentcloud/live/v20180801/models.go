@@ -10571,6 +10571,9 @@ type ModifyLiveCallbackTemplateRequestParams struct {
 
 	// 推流异常回调 URL。
 	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
+
+	// 音频审核回调 URL。
+	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitempty" name:"AudioAuditNotifyUrl"`
 }
 
 type ModifyLiveCallbackTemplateRequest struct {
@@ -10606,6 +10609,9 @@ type ModifyLiveCallbackTemplateRequest struct {
 
 	// 推流异常回调 URL。
 	PushExceptionNotifyUrl *string `json:"PushExceptionNotifyUrl,omitempty" name:"PushExceptionNotifyUrl"`
+
+	// 音频审核回调 URL。
+	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitempty" name:"AudioAuditNotifyUrl"`
 }
 
 func (r *ModifyLiveCallbackTemplateRequest) ToJsonString() string {
@@ -10630,6 +10636,7 @@ func (r *ModifyLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "PornCensorshipNotifyUrl")
 	delete(f, "CallbackKey")
 	delete(f, "PushExceptionNotifyUrl")
+	delete(f, "AudioAuditNotifyUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveCallbackTemplateRequest has unknown keys!", "")
 	}

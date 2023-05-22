@@ -1064,13 +1064,13 @@ func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlRe
 }
 
 // ChannelCreateFlowSignUrl
-// 创建签署链接，请联系客户经理申请使用
+// 创建个人H5签署链接，请联系客户经理申请使用<br/>
 //
-// 该接口用于发起合同后，生成C端签署人的签署链接，点击跳转小程序完成签署
+// 该接口用于发起合同后，生成C端签署人的签署链接<br/>
 //
-// 注意：该接口目前签署人类型仅支持个人签署方（PERSON）
+// 注意：该接口目前签署人类型仅支持个人签署方（PERSON）<br/>
 //
-// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件
+// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1085,13 +1085,13 @@ func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlReque
 }
 
 // ChannelCreateFlowSignUrl
-// 创建签署链接，请联系客户经理申请使用
+// 创建个人H5签署链接，请联系客户经理申请使用<br/>
 //
-// 该接口用于发起合同后，生成C端签署人的签署链接，点击跳转小程序完成签署
+// 该接口用于发起合同后，生成C端签署人的签署链接<br/>
 //
-// 注意：该接口目前签署人类型仅支持个人签署方（PERSON）
+// 注意：该接口目前签署人类型仅支持个人签署方（PERSON）<br/>
 //
-// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件
+// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2168,7 +2168,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 }
 
 // CreateFlowsByTemplates
-// 接口（CreateFlowsByTemplates）用于使用多个模板批量创建签署流程。当前可批量发起合同（签署流程）数量最大为20个。
+// 接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。当前可批量发起合同（签署流程）数量为1-20个。
 //
 // 如若在模板中配置了动态表格, 上传的附件必须为A4大小
 //
@@ -2208,7 +2208,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 }
 
 // CreateFlowsByTemplates
-// 接口（CreateFlowsByTemplates）用于使用多个模板批量创建签署流程。当前可批量发起合同（签署流程）数量最大为20个。
+// 接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。当前可批量发起合同（签署流程）数量为1-20个。
 //
 // 如若在模板中配置了动态表格, 上传的附件必须为A4大小
 //

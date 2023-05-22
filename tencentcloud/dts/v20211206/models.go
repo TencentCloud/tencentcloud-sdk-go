@@ -3324,7 +3324,7 @@ func (r *ModifyMigrationJobResponse) FromJsonString(s string) error {
 }
 
 type Objects struct {
-	// 迁移对象类型 Partial(部分对象)，默认为Partial
+	// 迁移对象类型 Partial(部分对象)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
@@ -3332,7 +3332,7 @@ type Objects struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Databases []*Database `json:"Databases,omitempty" name:"Databases"`
 
-	// 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即Options.InitType字段值为Structure或Full
+	// 高级对象类型，如function、procedure，当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedObjects []*string `json:"AdvancedObjects,omitempty" name:"AdvancedObjects"`
 
@@ -4216,7 +4216,7 @@ type StepInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Warnings []*StepTip `json:"Warnings,omitempty" name:"Warnings"`
 
-	// 当前步骤进度，范围为[0-100]
+	// 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
@@ -4719,7 +4719,7 @@ type View struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
 
-	// 新view名
+	// 预留字段、目前暂时不支持view的重命名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewViewName *string `json:"NewViewName,omitempty" name:"NewViewName"`
 }

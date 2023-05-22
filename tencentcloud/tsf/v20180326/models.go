@@ -21592,6 +21592,18 @@ type UnitRuleItem struct {
 	// 规则标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitRuleTagList []*UnitRuleTag `json:"UnitRuleTagList,omitempty" name:"UnitRuleTagList"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemIndex *int64 `json:"ItemIndex,omitempty" name:"ItemIndex"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
 type UnitRuleTag struct {
