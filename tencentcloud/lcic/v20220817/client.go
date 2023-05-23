@@ -2747,6 +2747,7 @@ func NewGetRoomsResponse() (response *GetRoomsResponse) {
 // 获取房间列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
 //  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
@@ -2766,6 +2767,7 @@ func (c *Client) GetRooms(request *GetRoomsRequest) (response *GetRoomsResponse,
 // 获取房间列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLASSENDED = "FailedOperation.ClassEnded"
 //  FAILEDOPERATION_CLASSEXPIRED = "FailedOperation.ClassExpired"
 //  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"

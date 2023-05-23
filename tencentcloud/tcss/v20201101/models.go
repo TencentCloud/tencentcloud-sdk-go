@@ -24651,6 +24651,9 @@ type HostInfo struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
 }
 
 type ImageAutoAuthorizedTask struct {

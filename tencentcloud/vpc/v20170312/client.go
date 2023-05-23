@@ -17459,6 +17459,7 @@ func NewModifySubnetAttributeResponse() (response *ModifySubnetAttributeResponse
 // 本接口（ModifySubnetAttribute）用于修改子网属性。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -17470,6 +17471,7 @@ func (c *Client) ModifySubnetAttribute(request *ModifySubnetAttributeRequest) (r
 // 本接口（ModifySubnetAttribute）用于修改子网属性。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -17567,11 +17569,13 @@ func NewModifyVpcAttributeResponse() (response *ModifyVpcAttributeResponse) {
 // 本接口（ModifyVpcAttribute）用于修改私有网络（VPC）的相关属性。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_ENABLEMULTICAST = "UnsupportedOperation.EnableMulticast"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = "UnsupportedOperation.NotSupportedUpdateCcnRoutePublish"
 func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
     return c.ModifyVpcAttributeWithContext(context.Background(), request)
@@ -17581,11 +17585,13 @@ func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (respons
 // 本接口（ModifyVpcAttribute）用于修改私有网络（VPC）的相关属性。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_ENABLEMULTICAST = "UnsupportedOperation.EnableMulticast"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = "UnsupportedOperation.NotSupportedUpdateCcnRoutePublish"
 func (c *Client) ModifyVpcAttributeWithContext(ctx context.Context, request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
     if request == nil {

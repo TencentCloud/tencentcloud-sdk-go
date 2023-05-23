@@ -139,6 +139,7 @@ func NewGetRuntimeResourceMonitorMetricMCResponse() (response *GetRuntimeResourc
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INNERLOGICTIMEOUT = "FailedOperation.InnerLogicTimeOut"
+//  FAILEDOPERATION_UNSUPPORTEDOPERATIONTYPE = "FailedOperation.UnSupportedOperationType"
 //  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDRUNTIMEMETRICSEARCHCONDITION = "InvalidParameterValue.InvalidRuntimeMetricSearchCondition"
 //  INVALIDPARAMETERVALUE_NOTSUPPORTEDACTIONFORPUBLICRUNTIME = "InvalidParameterValue.NotSupportedActionForPublicRuntime"
@@ -158,6 +159,7 @@ func (c *Client) GetRuntimeResourceMonitorMetricMC(request *GetRuntimeResourceMo
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INNERLOGICTIMEOUT = "FailedOperation.InnerLogicTimeOut"
+//  FAILEDOPERATION_UNSUPPORTEDOPERATIONTYPE = "FailedOperation.UnSupportedOperationType"
 //  INTERNALERROR_CHECKRUNTIMEFAILED = "InternalError.CheckRuntimeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDRUNTIMEMETRICSEARCHCONDITION = "InvalidParameterValue.InvalidRuntimeMetricSearchCondition"
 //  INVALIDPARAMETERVALUE_NOTSUPPORTEDACTIONFORPUBLICRUNTIME = "InvalidParameterValue.NotSupportedActionForPublicRuntime"

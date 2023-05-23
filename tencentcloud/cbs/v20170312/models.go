@@ -718,6 +718,9 @@ type CreateDisksRequestParams struct {
 
 	// 指定云硬盘备份点配额。
 	DiskBackupQuota *uint64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
+
+	// 创建云盘时是否开启性能突发
+	BurstPerformance *bool `json:"BurstPerformance,omitempty" name:"BurstPerformance"`
 }
 
 type CreateDisksRequest struct {
@@ -770,6 +773,9 @@ type CreateDisksRequest struct {
 
 	// 指定云硬盘备份点配额。
 	DiskBackupQuota *uint64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
+
+	// 创建云盘时是否开启性能突发
+	BurstPerformance *bool `json:"BurstPerformance,omitempty" name:"BurstPerformance"`
 }
 
 func (r *CreateDisksRequest) ToJsonString() string {
@@ -800,6 +806,7 @@ func (r *CreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "DeleteSnapshot")
 	delete(f, "AutoMountConfiguration")
 	delete(f, "DiskBackupQuota")
+	delete(f, "BurstPerformance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisksRequest has unknown keys!", "")
 	}
@@ -2981,6 +2988,9 @@ type ModifyDiskAttributesRequestParams struct {
 
 	// 变更云盘类型时，可传入该参数，表示变更的目标类型，取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。<br>当前不支持批量变更类型，即传入DiskType时，DiskIds仅支持传入一块云盘；<br>变更云盘类型时不支持同时变更其他属性。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 开启/关闭云盘性能突发功能
+	BurstPerformanceOperation *string `json:"BurstPerformanceOperation,omitempty" name:"BurstPerformanceOperation"`
 }
 
 type ModifyDiskAttributesRequest struct {
@@ -3003,6 +3013,9 @@ type ModifyDiskAttributesRequest struct {
 
 	// 变更云盘类型时，可传入该参数，表示变更的目标类型，取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。<br>当前不支持批量变更类型，即传入DiskType时，DiskIds仅支持传入一块云盘；<br>变更云盘类型时不支持同时变更其他属性。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 开启/关闭云盘性能突发功能
+	BurstPerformanceOperation *string `json:"BurstPerformanceOperation,omitempty" name:"BurstPerformanceOperation"`
 }
 
 func (r *ModifyDiskAttributesRequest) ToJsonString() string {
@@ -3023,6 +3036,7 @@ func (r *ModifyDiskAttributesRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "DeleteWithInstance")
 	delete(f, "DiskType")
+	delete(f, "BurstPerformanceOperation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDiskAttributesRequest has unknown keys!", "")
 	}

@@ -3419,6 +3419,7 @@ func NewModifyDBInstanceNameResponse() (response *ModifyDBInstanceNameResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -3435,6 +3436,7 @@ func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -4581,6 +4583,74 @@ func (c *Client) UpgradeDBInstanceWithContext(ctx context.Context, request *Upgr
     request.SetContext(ctx)
     
     response = NewUpgradeDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeDedicatedDBInstanceRequest() (request *UpgradeDedicatedDBInstanceRequest) {
+    request = &UpgradeDedicatedDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mariadb", APIVersion, "UpgradeDedicatedDBInstance")
+    
+    
+    return
+}
+
+func NewUpgradeDedicatedDBInstanceResponse() (response *UpgradeDedicatedDBInstanceResponse) {
+    response = &UpgradeDedicatedDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeDedicatedDBInstance
+// 本接口(UpgradeDedicatedDBInstance)用于扩容独享云数据库实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) UpgradeDedicatedDBInstance(request *UpgradeDedicatedDBInstanceRequest) (response *UpgradeDedicatedDBInstanceResponse, err error) {
+    return c.UpgradeDedicatedDBInstanceWithContext(context.Background(), request)
+}
+
+// UpgradeDedicatedDBInstance
+// 本接口(UpgradeDedicatedDBInstance)用于扩容独享云数据库实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCENOTFOUND_NOINSTANCEFOUND = "ResourceNotFound.NoInstanceFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) UpgradeDedicatedDBInstanceWithContext(ctx context.Context, request *UpgradeDedicatedDBInstanceRequest) (response *UpgradeDedicatedDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpgradeDedicatedDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeDedicatedDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeDedicatedDBInstanceResponse()
     err = c.Send(request, response)
     return
 }

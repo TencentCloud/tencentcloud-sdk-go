@@ -1152,6 +1152,7 @@ func NewInquirePriceRenewEmrResponse() (response *InquirePriceRenewEmrResponse) 
 //  INVALIDPARAMETER_INVALIDTIMEUNIT = "InvalidParameter.InvalidTimeUnit"
 //  INVALIDPARAMETER_PROJECTRESOURCENOTMATCH = "InvalidParameter.ProjectResourceNotMatch"
 //  INVALIDPARAMETER_ZONERESOURCENOTMATCH = "InvalidParameter.ZoneResourceNotMatch"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) InquirePriceRenewEmr(request *InquirePriceRenewEmrRequest) (response *InquirePriceRenewEmrResponse, err error) {
@@ -1187,6 +1188,7 @@ func (c *Client) InquirePriceRenewEmr(request *InquirePriceRenewEmrRequest) (res
 //  INVALIDPARAMETER_INVALIDTIMEUNIT = "InvalidParameter.InvalidTimeUnit"
 //  INVALIDPARAMETER_PROJECTRESOURCENOTMATCH = "InvalidParameter.ProjectResourceNotMatch"
 //  INVALIDPARAMETER_ZONERESOURCENOTMATCH = "InvalidParameter.ZoneResourceNotMatch"
+//  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 func (c *Client) InquirePriceRenewEmrWithContext(ctx context.Context, request *InquirePriceRenewEmrRequest) (response *InquirePriceRenewEmrResponse, err error) {

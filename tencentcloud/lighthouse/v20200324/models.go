@@ -457,13 +457,13 @@ type Bundle struct {
 
 	// 系统盘类型。
 	// 取值范围： 
-	// <li> LOCAL_BASIC：本地硬盘</li><li> LOCAL_SSD：本地 SSD 硬盘</li><li> CLOUD_BASIC：普通云硬盘</li><li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
+	// <li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
 	SystemDiskType *string `json:"SystemDiskType,omitempty" name:"SystemDiskType"`
 
-	// 系统盘大小。
+	// 系统盘大小。单位GB。
 	SystemDiskSize *int64 `json:"SystemDiskSize,omitempty" name:"SystemDiskSize"`
 
-	// 每月网络流量，单位 Gb。
+	// 每月网络流量，单位 GB。
 	MonthlyTraffic *int64 `json:"MonthlyTraffic,omitempty" name:"MonthlyTraffic"`
 
 	// 是否支持 Linux/Unix 平台。
@@ -1791,15 +1791,15 @@ type DescribeBundlesRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// <li>support-platform-type</li>按照【系统类型】进行过滤。
-	// 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）
+	// 取值： LINUX_UNIX(Linux/Unix系统) ;WINDOWS(Windows 系统)
 	// 类型：String
 	// 必选：否
 	// <li>bundle-type</li>按照 【套餐类型进行过滤】。
-	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
+	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);
 	// 类型：String
 	// 必选：否
 	// <li>bundle-state</li>按照【套餐状态】进行过滤。
-	// 取值: ‘ONLINE’(在线); ‘OFFLINE’(下线);
+	// 取值: ONLINE(在线); OFFLINE(下线);
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
@@ -1826,15 +1826,15 @@ type DescribeBundlesRequest struct {
 	// 类型：String
 	// 必选：否
 	// <li>support-platform-type</li>按照【系统类型】进行过滤。
-	// 取值： LINUX_UNIX（Linux/Unix系统）；WINDOWS（Windows 系统）
+	// 取值： LINUX_UNIX(Linux/Unix系统) ;WINDOWS(Windows 系统)
 	// 类型：String
 	// 必选：否
 	// <li>bundle-type</li>按照 【套餐类型进行过滤】。
-	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
+	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);
 	// 类型：String
 	// 必选：否
 	// <li>bundle-state</li>按照【套餐状态】进行过滤。
-	// 取值: ‘ONLINE’(在线); ‘OFFLINE’(下线);
+	// 取值: ONLINE(在线); OFFLINE(下线);
 	// 类型：String
 	// 必选：否
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。

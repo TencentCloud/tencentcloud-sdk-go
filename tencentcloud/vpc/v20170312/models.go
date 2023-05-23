@@ -13467,7 +13467,7 @@ type DescribeSnapshotFilesRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大为200。
+	// 返回数量，默认为20，最大为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -13489,7 +13489,7 @@ type DescribeSnapshotFilesRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大为200。
+	// 返回数量，默认为20，最大为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -14262,7 +14262,7 @@ func (r *DescribeVpcEndPointResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcEndPointServiceRequestParams struct {
-	// 过滤条件。
+	// 过滤条件。不支持同时传入参数 EndPointServiceIds and Filters。
 	// <li> service-id - String - （过滤条件）终端节点服务唯一ID。</li>
 	// <li>service-name - String - （过滤条件）终端节点实例名称。</li>
 	// <li>service-instance-id - String - （过滤条件）后端服务的唯一ID，比如lb-xxx。</li>
@@ -14275,14 +14275,14 @@ type DescribeVpcEndPointServiceRequestParams struct {
 	// 单页返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 终端节点服务ID。
+	// 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
 	EndPointServiceIds []*string `json:"EndPointServiceIds,omitempty" name:"EndPointServiceIds"`
 }
 
 type DescribeVpcEndPointServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件。
+	// 过滤条件。不支持同时传入参数 EndPointServiceIds and Filters。
 	// <li> service-id - String - （过滤条件）终端节点服务唯一ID。</li>
 	// <li>service-name - String - （过滤条件）终端节点实例名称。</li>
 	// <li>service-instance-id - String - （过滤条件）后端服务的唯一ID，比如lb-xxx。</li>
@@ -14295,7 +14295,7 @@ type DescribeVpcEndPointServiceRequest struct {
 	// 单页返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 终端节点服务ID。
+	// 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
 	EndPointServiceIds []*string `json:"EndPointServiceIds,omitempty" name:"EndPointServiceIds"`
 }
 

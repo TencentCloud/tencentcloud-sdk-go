@@ -621,6 +621,80 @@ func (c *Client) CreateDCDBInstanceWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateDedicatedClusterDCDBInstanceRequest() (request *CreateDedicatedClusterDCDBInstanceRequest) {
+    request = &CreateDedicatedClusterDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "CreateDedicatedClusterDCDBInstance")
+    
+    
+    return
+}
+
+func NewCreateDedicatedClusterDCDBInstanceResponse() (response *CreateDedicatedClusterDCDBInstanceResponse) {
+    response = &CreateDedicatedClusterDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDedicatedClusterDCDBInstance
+// 创建独享集群DCDB实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_VPCNOTFOUND = "InvalidParameter.VpcNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateDedicatedClusterDCDBInstance(request *CreateDedicatedClusterDCDBInstanceRequest) (response *CreateDedicatedClusterDCDBInstanceResponse, err error) {
+    return c.CreateDedicatedClusterDCDBInstanceWithContext(context.Background(), request)
+}
+
+// CreateDedicatedClusterDCDBInstance
+// 创建独享集群DCDB实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER_VPCNOTFOUND = "InvalidParameter.VpcNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateDedicatedClusterDCDBInstanceWithContext(ctx context.Context, request *CreateDedicatedClusterDCDBInstanceRequest) (response *CreateDedicatedClusterDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateDedicatedClusterDCDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDedicatedClusterDCDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDedicatedClusterDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHourDCDBInstanceRequest() (request *CreateHourDCDBInstanceRequest) {
     request = &CreateHourDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -933,6 +1007,66 @@ func (c *Client) DescribeBackupFilesWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeBackupFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBEncryptAttributesRequest() (request *DescribeDBEncryptAttributesRequest) {
+    request = &DescribeDBEncryptAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBEncryptAttributes")
+    
+    
+    return
+}
+
+func NewDescribeDBEncryptAttributesResponse() (response *DescribeDBEncryptAttributesResponse) {
+    response = &DescribeDBEncryptAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBEncryptAttributes
+// 本接口(DescribeDBEncryptAttributes)用于查询实例数据加密状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) DescribeDBEncryptAttributes(request *DescribeDBEncryptAttributesRequest) (response *DescribeDBEncryptAttributesResponse, err error) {
+    return c.DescribeDBEncryptAttributesWithContext(context.Background(), request)
+}
+
+// DescribeDBEncryptAttributes
+// 本接口(DescribeDBEncryptAttributes)用于查询实例数据加密状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) DescribeDBEncryptAttributesWithContext(ctx context.Context, request *DescribeDBEncryptAttributesRequest) (response *DescribeDBEncryptAttributesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBEncryptAttributesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBEncryptAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBEncryptAttributesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2350,6 +2484,10 @@ func NewDescribeSqlLogsResponse() (response *DescribeSqlLogsResponse) {
 }
 
 // DescribeSqlLogs
+// 已废弃接口
+//
+// 
+//
 // 本接口（DescribeSqlLogs）用于获取实例SQL日志。
 //
 // 可能返回的错误码:
@@ -2364,6 +2502,10 @@ func (c *Client) DescribeSqlLogs(request *DescribeSqlLogsRequest) (response *Des
 }
 
 // DescribeSqlLogs
+// 已废弃接口
+//
+// 
+//
 // 本接口（DescribeSqlLogs）用于获取实例SQL日志。
 //
 // 可能返回的错误码:
@@ -4231,6 +4373,68 @@ func (c *Client) UpgradeDCDBInstanceWithContext(ctx context.Context, request *Up
     request.SetContext(ctx)
     
     response = NewUpgradeDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeDedicatedDCDBInstanceRequest() (request *UpgradeDedicatedDCDBInstanceRequest) {
+    request = &UpgradeDedicatedDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "UpgradeDedicatedDCDBInstance")
+    
+    
+    return
+}
+
+func NewUpgradeDedicatedDCDBInstanceResponse() (response *UpgradeDedicatedDCDBInstanceResponse) {
+    response = &UpgradeDedicatedDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeDedicatedDCDBInstance
+// 本接口（UpgradeDedicatedDCDBInstance）用于升级独享DCDB实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
+//  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) UpgradeDedicatedDCDBInstance(request *UpgradeDedicatedDCDBInstanceRequest) (response *UpgradeDedicatedDCDBInstanceResponse, err error) {
+    return c.UpgradeDedicatedDCDBInstanceWithContext(context.Background(), request)
+}
+
+// UpgradeDedicatedDCDBInstance
+// 本接口（UpgradeDedicatedDCDBInstance）用于升级独享DCDB实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
+//  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) UpgradeDedicatedDCDBInstanceWithContext(ctx context.Context, request *UpgradeDedicatedDCDBInstanceRequest) (response *UpgradeDedicatedDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewUpgradeDedicatedDCDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeDedicatedDCDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeDedicatedDCDBInstanceResponse()
     err = c.Send(request, response)
     return
 }

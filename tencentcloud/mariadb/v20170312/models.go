@@ -6501,6 +6501,102 @@ func (r *UpgradeDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpgradeDedicatedDBInstanceRequestParams struct {
+	// 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例获得。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 内存大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
+	//  查询实例规格获得。
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 存储空间大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
+	//  查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 错过切换时间窗口时，是否自动重试一次，0-否，1-是
+	SwitchAutoRetry *int64 `json:"SwitchAutoRetry,omitempty" name:"SwitchAutoRetry"`
+
+	// 切换时间窗口开始时间
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
+
+	// 切换时间窗口结束时间
+	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
+}
+
+type UpgradeDedicatedDBInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例获得。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 内存大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
+	//  查询实例规格获得。
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 存储空间大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
+	//  查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 错过切换时间窗口时，是否自动重试一次，0-否，1-是
+	SwitchAutoRetry *int64 `json:"SwitchAutoRetry,omitempty" name:"SwitchAutoRetry"`
+
+	// 切换时间窗口开始时间
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
+
+	// 切换时间窗口结束时间
+	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
+}
+
+func (r *UpgradeDedicatedDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDedicatedDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Memory")
+	delete(f, "Storage")
+	delete(f, "SwitchAutoRetry")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDedicatedDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeDedicatedDBInstanceResponseParams struct {
+	// 异步流程Id
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpgradeDedicatedDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeDedicatedDBInstanceResponseParams `json:"Response"`
+}
+
+func (r *UpgradeDedicatedDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDedicatedDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ViewPrivileges struct {
 	// 数据库名
 	Database *string `json:"Database,omitempty" name:"Database"`

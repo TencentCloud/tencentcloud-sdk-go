@@ -1,47 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 语音识别(asr) 版本：2019-06-14
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 27 次发布
+### 第 50 次发布
 
-发布时间：2023-05-22 01:03:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
-
-
-
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 128 次发布
-
-发布时间：2023-05-22 01:07:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeBackupTables
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* TableName
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 66 次发布
-
-发布时间：2023-05-19 20:06:02
+发布时间：2023-05-23 01:06:09
 
 本次发布包含了以下内容：
 
@@ -49,67 +12,22 @@
 
 修改接口：
 
-* [DescribeUserAutoSignStatus](https://cloud.tencent.com/document/api/1323/87786)
+* [CreateDisks](https://cloud.tencent.com/document/api/362/16312)
 
-	* 新增出参：LicenseFrom, LicenseTo
+	* 新增入参：BurstPerformance
 
+* [ModifyDiskAttributes](https://cloud.tencent.com/document/api/362/15659)
 
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 101 次发布
-
-发布时间：2023-05-22 01:41:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyLiveCallbackTemplate](https://cloud.tencent.com/document/api/267/32631)
-
-	* 新增入参：AudioAuditNotifyUrl
+	* 新增入参：BurstPerformanceOperation
 
 
 
 
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
 
-### 第 89 次发布
+### 第 56 次发布
 
-发布时间：2023-05-22 01:43:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAlarmNotices](https://cloud.tencent.com/document/api/248/51280)
-
-	* 新增入参：OnCallFormIDs
-
-* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
-
-	* 新增入参：PromInsId, ReceiverOnCallFormIDs
-
-
-修改数据结构：
-
-* [UserNotice](https://cloud.tencent.com/document/api/248/30354#UserNotice)
-
-	* 新增成员：OnCallFormIDs
-
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 44 次发布
-
-发布时间：2023-05-22 01:53:58
+发布时间：2023-05-23 01:16:58
 
 本次发布包含了以下内容：
 
@@ -117,16 +35,21 @@
 
 新增接口：
 
-* [CreateCloudDBInstances](https://cloud.tencent.com/document/api/238/91710)
-* [CreateCloudReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/91709)
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
+* [DescribeDBEncryptAttributes](https://cloud.tencent.com/document/api/557/92617)
+* [UpgradeDedicatedDCDBInstance](https://cloud.tencent.com/document/api/557/92616)
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeSqlLogs
 
 
 
-## 微服务平台 TSF(tsf) 版本：2018-03-26
+## 人脸核身(faceid) 版本：2018-03-01
 
-### 第 94 次发布
+### 第 58 次发布
 
-发布时间：2023-05-22 02:10:28
+发布时间：2023-05-23 01:21:54
 
 本次发布包含了以下内容：
 
@@ -134,9 +57,63 @@
 
 修改数据结构：
 
-* [UnitRuleItem](https://cloud.tencent.com/document/api/649/36099#UnitRuleItem)
+* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
 
-	* 新增成员：ItemIndex, CreatedTime, UpdatedTime
+	* 新增成员：IsSupportHMTResidentPermitOCR
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 54 次发布
+
+发布时间：2023-05-23 01:29:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpgradeDedicatedDBInstance](https://cloud.tencent.com/document/api/237/92618)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 98 次发布
+
+发布时间：2023-05-23 01:33:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Key](https://cloud.tencent.com/document/api/866/33527#Key)
+
+	* 新增成员：ConfigName
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 42 次发布
+
+发布时间：2023-05-23 01:40:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HostInfo](https://cloud.tencent.com/document/api/1285/65614#HostInfo)
+
+	* 新增成员：ClusterID
 
 
 
@@ -11739,6 +11716,25 @@
 
 ## 云硬盘(cbs) 版本：2017-03-12
 
+### 第 50 次发布
+
+发布时间：2023-05-23 01:06:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDisks](https://cloud.tencent.com/document/api/362/16312)
+
+	* 新增入参：BurstPerformance
+
+* [ModifyDiskAttributes](https://cloud.tencent.com/document/api/362/15659)
+
+	* 新增入参：BurstPerformanceOperation
+
+
 ### 第 49 次发布
 
 发布时间：2023-04-26 01:07:08
@@ -23012,6 +23008,21 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 89 次发布
+
+发布时间：2023-05-22 11:55:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TargetHealth](https://cloud.tencent.com/document/api/214/30694#TargetHealth)
+
+	* <font color="#dd0000">**修改成员**：</font>HealthStatusDetial
+
 
 ### 第 88 次发布
 
@@ -38692,6 +38703,24 @@
 
 ## TDSQL MySQL 版(dcdb) 版本：2018-04-11
 
+### 第 56 次发布
+
+发布时间：2023-05-23 01:16:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDBEncryptAttributes](https://cloud.tencent.com/document/api/557/92617)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeDedicatedDCDBInstance](https://cloud.tencent.com/document/api/557/92616)](https://cloud.tencent.com/document/api/#/#)
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeSqlLogs
+
 ### 第 55 次发布
 
 发布时间：2023-04-04 01:14:38
@@ -50081,6 +50110,21 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 58 次发布
+
+发布时间：2023-05-23 01:21:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
+
+	* 新增成员：IsSupportHMTResidentPermitOCR
+
 
 ### 第 57 次发布
 
@@ -64477,6 +64521,18 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 54 次发布
+
+发布时间：2023-05-23 01:29:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[UpgradeDedicatedDBInstance](https://cloud.tencent.com/document/api/237/92618)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 53 次发布
 
 发布时间：2023-03-29 03:50:31
@@ -72621,6 +72677,21 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 98 次发布
+
+发布时间：2023-05-23 01:33:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Key](https://cloud.tencent.com/document/api/866/33527#Key)
+
+	* 新增成员：ConfigName
+
 
 ### 第 97 次发布
 
@@ -81097,8 +81168,8 @@
 
 新增接口：
 
-* [[CreateCloudDBInstances](https://cloud.tencent.com/document/api/238/91710)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateCloudReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/91709)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCloudDBInstances](https://cloud.tencent.com/document/api/238/91710)
+* [CreateCloudReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/91709)
 
 ### 第 43 次发布
 
@@ -89255,6 +89326,21 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 42 次发布
+
+发布时间：2023-05-23 01:40:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HostInfo](https://cloud.tencent.com/document/api/1285/65614#HostInfo)
+
+	* 新增成员：ClusterID
+
 
 ### 第 41 次发布
 

@@ -10954,6 +10954,7 @@ func NewModifyClusterNodePoolResponse() (response *ModifyClusterNodePoolResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -10970,6 +10971,7 @@ func (c *Client) ModifyClusterNodePool(request *ModifyClusterNodePoolRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"

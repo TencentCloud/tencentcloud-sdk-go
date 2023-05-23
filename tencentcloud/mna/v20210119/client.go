@@ -525,6 +525,7 @@ func NewGetFlowStatisticResponse() (response *GetFlowStatisticResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetFlowStatistic(request *GetFlowStatisticRequest) (response *GetFlowStatisticResponse, err error) {
@@ -537,6 +538,7 @@ func (c *Client) GetFlowStatistic(request *GetFlowStatisticRequest) (response *G
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetFlowStatisticWithContext(ctx context.Context, request *GetFlowStatisticRequest) (response *GetFlowStatisticResponse, err error) {

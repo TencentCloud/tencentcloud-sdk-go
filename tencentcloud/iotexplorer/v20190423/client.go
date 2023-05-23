@@ -2400,6 +2400,7 @@ func NewDescribeFenceBindListResponse() (response *DescribeFenceBindListResponse
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) DescribeFenceBindList(request *DescribeFenceBindListRequest) (response *DescribeFenceBindListResponse, err error) {
@@ -2413,6 +2414,7 @@ func (c *Client) DescribeFenceBindList(request *DescribeFenceBindListRequest) (r
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FENCENOTEXIST = "ResourceNotFound.FenceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOFENCE = "UnauthorizedOperation.NoPermissionToStudioFence"
 func (c *Client) DescribeFenceBindListWithContext(ctx context.Context, request *DescribeFenceBindListRequest) (response *DescribeFenceBindListResponse, err error) {

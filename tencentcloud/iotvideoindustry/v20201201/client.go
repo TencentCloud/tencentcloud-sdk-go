@@ -1133,6 +1133,7 @@ func NewCreateRecordingPlanResponse() (response *CreateRecordingPlanResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 //  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
     return c.CreateRecordingPlanWithContext(context.Background(), request)
 }
@@ -1145,6 +1146,7 @@ func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (respo
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 //  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
 //  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) CreateRecordingPlanWithContext(ctx context.Context, request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
     if request == nil {
         request = NewCreateRecordingPlanRequest()

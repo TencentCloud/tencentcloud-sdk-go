@@ -38,6 +38,9 @@ const (
 	// 已授权。
 	FAILEDOPERATION_HASAUTHORIZED = "FailedOperation.HasAuthorized"
 
+	// 无角色授权，请确认数据是否存在
+	FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+
 	// 当前合同状态无法进行签署审批。
 	FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
 
@@ -394,6 +397,9 @@ const (
 
 	// 当前企业员工没有开通境外签署能力。
 	OPERATIONDENIED_OVERSEAABILITYNOTOPEN = "OperationDenied.OverseaAbilityNotOpen"
+
+	// 该用户已关闭或者未开启自动签服务
+	OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
 
 	// 出证计费额度不足。
 	OPERATIONDENIED_PROVENOQUOTA = "OperationDenied.ProveNoQuota"

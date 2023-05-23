@@ -477,6 +477,7 @@ type Component struct {
 	// BORDERLESS_ESIGN – 自动生成无边框腾讯体
 	// OCR_ESIGN -- AI智能识别手写签名
 	// ESIGN -- 个人印章类型
+	// SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
 	// 如：{“ComponentTypeLimit”: [“BORDERLESS_ESIGN”]}
 	// 
 	// ComponentType为SIGN_DATE时，支持以下参数：
@@ -3565,7 +3566,7 @@ type DescribeIntegrationRolesRequestParams struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询的关键字段:
-	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+	// Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
 	// Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -3587,7 +3588,7 @@ type DescribeIntegrationRolesRequest struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询的关键字段:
-	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+	// Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
 	// Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -4590,7 +4591,7 @@ type IntegrateRole struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
-	// 角色类型：1-系统角色，2-自定义角色
+	// 角色状态，1-启用，2-禁用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleStatus *uint64 `json:"RoleStatus,omitempty" name:"RoleStatus"`
 

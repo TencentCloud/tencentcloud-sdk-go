@@ -1080,7 +1080,7 @@ func NewDescribeSecurityGroupResponse() (response *DescribeSecurityGroupResponse
 }
 
 // DescribeSecurityGroup
-// 本就口（DescribeSecurityGroup）用于查询实例绑定的安全组。
+// 本接口（DescribeSecurityGroup）用于查询实例绑定的安全组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1092,7 +1092,7 @@ func (c *Client) DescribeSecurityGroup(request *DescribeSecurityGroupRequest) (r
 }
 
 // DescribeSecurityGroup
-// 本就口（DescribeSecurityGroup）用于查询实例绑定的安全组。
+// 本接口（DescribeSecurityGroup）用于查询实例绑定的安全组。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

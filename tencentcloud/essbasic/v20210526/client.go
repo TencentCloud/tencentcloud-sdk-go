@@ -558,6 +558,7 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     return c.ChannelCreateEmbedWebUrlWithContext(context.Background(), request)
@@ -572,6 +573,7 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ChannelCreateEmbedWebUrlWithContext(ctx context.Context, request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     if request == nil {
@@ -661,6 +663,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  OPERATIONDENIED_OVERSEAABILITYNOTOPEN = "OperationDenied.OverseaAbilityNotOpen"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
 //  OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -727,6 +730,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  OPERATIONDENIED_OVERSEAABILITYNOTOPEN = "OperationDenied.OverseaAbilityNotOpen"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
 //  OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
