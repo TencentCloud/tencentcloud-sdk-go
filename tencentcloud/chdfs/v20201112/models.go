@@ -1582,6 +1582,12 @@ type LifeCycleRule struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 生命周期规则当前路径具体存储量
+	Summary *Summary `json:"Summary,omitempty" name:"Summary"`
+
+	// Summary更新时间
+	LastSummaryTime *string `json:"LastSummaryTime,omitempty" name:"LastSummaryTime"`
 }
 
 // Predefined struct for user
@@ -2032,6 +2038,32 @@ type RestoreTask struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type Summary struct {
+	// 总存储量（单位byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CapacityUsed *uint64 `json:"CapacityUsed,omitempty" name:"CapacityUsed"`
+
+	// 标准存储量（单位byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandardCapacityUsed *uint64 `json:"StandardCapacityUsed,omitempty" name:"StandardCapacityUsed"`
+
+	// 低频存储量（单位byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DegradeCapacityUsed *uint64 `json:"DegradeCapacityUsed,omitempty" name:"DegradeCapacityUsed"`
+
+	// 归档存储量（单位byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArchiveCapacityUsed *uint64 `json:"ArchiveCapacityUsed,omitempty" name:"ArchiveCapacityUsed"`
+
+	// 深度归档存储量（单位byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeepArchiveCapacityUsed *uint64 `json:"DeepArchiveCapacityUsed,omitempty" name:"DeepArchiveCapacityUsed"`
+
+	// 智能分层存储量（单位byte）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntelligentCapacityUsed *uint64 `json:"IntelligentCapacityUsed,omitempty" name:"IntelligentCapacityUsed"`
 }
 
 type Tag struct {

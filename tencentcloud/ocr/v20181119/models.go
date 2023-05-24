@@ -1244,6 +1244,9 @@ type CreateAIFormTaskRequestParams struct {
 
 	// 备注信息2
 	SecondNotes *string `json:"SecondNotes,omitempty" name:"SecondNotes"`
+
+	// 文件类型
+	FileType *uint64 `json:"FileType,omitempty" name:"FileType"`
 }
 
 type CreateAIFormTaskRequest struct {
@@ -1257,6 +1260,9 @@ type CreateAIFormTaskRequest struct {
 
 	// 备注信息2
 	SecondNotes *string `json:"SecondNotes,omitempty" name:"SecondNotes"`
+
+	// 文件类型
+	FileType *uint64 `json:"FileType,omitempty" name:"FileType"`
 }
 
 func (r *CreateAIFormTaskRequest) ToJsonString() string {
@@ -1274,6 +1280,7 @@ func (r *CreateAIFormTaskRequest) FromJsonString(s string) error {
 	delete(f, "FileList")
 	delete(f, "FirstNotes")
 	delete(f, "SecondNotes")
+	delete(f, "FileType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIFormTaskRequest has unknown keys!", "")
 	}
@@ -6066,12 +6073,14 @@ type RecognizeGeneralInvoiceRequestParams struct {
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -6119,12 +6128,14 @@ type RecognizeGeneralInvoiceRequest struct {
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`

@@ -1397,6 +1397,10 @@ func (r *CreateCosRechargeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCosRechargeResponseParams struct {
+	// cos_recharge记录id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

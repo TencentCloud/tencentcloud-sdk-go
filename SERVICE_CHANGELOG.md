@@ -1,10 +1,83 @@
 # 本版本更新包含以下内容：
 
-## 云硬盘(cbs) 版本：2017-03-12
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 50 次发布
+### 第 40 次发布
 
-发布时间：2023-05-23 01:06:09
+发布时间：2023-05-24 01:04:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BillDetailComponent](https://cloud.tencent.com/document/api/555/19183#BillDetailComponent)
+
+	* 新增成员：TransferPayAmount
+
+	* <font color="#dd0000">**修改成员**：</font>SpecifiedPrice, SPDeduction
+
+* [BillResourceSummary](https://cloud.tencent.com/document/api/555/19183#BillResourceSummary)
+
+	* 新增成员：TransferPayAmount
+
+	* <font color="#dd0000">**修改成员**：</font>SPDeduction
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 20 次发布
+
+发布时间：2023-05-24 01:10:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SnapshotInfo](https://cloud.tencent.com/document/api/582/38175#SnapshotInfo)
+
+	* 新增成员：SnapshotType
+
+
+
+
+## 云 HDFS(chdfs) 版本：2020-11-12
+
+### 第 6 次发布
+
+发布时间：2023-05-24 01:11:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Summary](https://cloud.tencent.com/document/api/1105/51158#Summary)
+
+修改数据结构：
+
+* [LifeCycleRule](https://cloud.tencent.com/document/api/1105/51158#LifeCycleRule)
+
+	* 新增成员：Summary, LastSummaryTime
+
+
+
+
+## 云 HDFS(chdfs) 版本：2019-07-18
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 48 次发布
+
+发布时间：2023-05-24 01:13:13
 
 本次发布包含了以下内容：
 
@@ -12,79 +85,37 @@
 
 修改接口：
 
-* [CreateDisks](https://cloud.tencent.com/document/api/362/16312)
+* [CreateCosRecharge](https://cloud.tencent.com/document/api/614/88100)
 
-	* 新增入参：BurstPerformance
+	* 新增出参：Id
 
-* [ModifyDiskAttributes](https://cloud.tencent.com/document/api/362/15659)
-
-	* 新增入参：BurstPerformanceOperation
-
-
-
-
-## TDSQL MySQL 版(dcdb) 版本：2018-04-11
-
-### 第 56 次发布
-
-发布时间：2023-05-23 01:16:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
-* [DescribeDBEncryptAttributes](https://cloud.tencent.com/document/api/557/92617)
-* [UpgradeDedicatedDCDBInstance](https://cloud.tencent.com/document/api/557/92616)
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* DescribeSqlLogs
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 58 次发布
-
-发布时间：2023-05-23 01:21:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
-
-	* 新增成员：IsSupportHMTResidentPermitOCR
-
-
-
-
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
-
-### 第 54 次发布
-
-发布时间：2023-05-23 01:29:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [UpgradeDedicatedDBInstance](https://cloud.tencent.com/document/api/237/92618)
 
 
 
 ## 文字识别(ocr) 版本：2018-11-19
 
-### 第 98 次发布
+### 第 99 次发布
 
-发布时间：2023-05-23 01:33:15
+发布时间：2023-05-24 01:38:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAIFormTask](https://cloud.tencent.com/document/api/866/86724)
+
+	* 新增入参：FileType
+
+
+
+
+## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 17 次发布
+
+发布时间：2023-05-24 01:44:57
 
 本次发布包含了以下内容：
 
@@ -92,18 +123,18 @@
 
 修改数据结构：
 
-* [Key](https://cloud.tencent.com/document/api/866/33527#Key)
+* [OutputRecognizeTargetAudienceValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudienceValue)
 
-	* 新增成员：ConfigName
-
-
+	* 新增成员：ModelType, Uid
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
 
-### 第 42 次发布
 
-发布时间：2023-05-23 01:40:44
+## 云点播(vod) 版本：2018-07-17
+
+### 第 154 次发布
+
+发布时间：2023-05-24 02:03:42
 
 本次发布包含了以下内容：
 
@@ -111,9 +142,63 @@
 
 修改数据结构：
 
-* [HostInfo](https://cloud.tencent.com/document/api/1285/65614#HostInfo)
+* [EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream)
 
-	* 新增成员：ClusterID
+	* 新增成员：Fps
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 27 次发布
+
+发布时间：2023-05-24 02:08:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CommitRuleGroupTask](https://cloud.tencent.com/document/api/1267/82838)
+
+	* 新增入参：EngineType
+
+* [CreateRule](https://cloud.tencent.com/document/api/1267/82837)
+
+	* 新增入参：SourceEngineTypes
+
+* [DescribeRules](https://cloud.tencent.com/document/api/1267/82803)
+
+	* 新增入参：EngineType
+
+* [ModifyExecStrategy](https://cloud.tencent.com/document/api/1267/82794)
+
+	* 新增入参：ExecEngineType
+
+* [ModifyRule](https://cloud.tencent.com/document/api/1267/82792)
+
+	* 新增入参：SourceEngineTypes
+
+
+修改数据结构：
+
+* [Rule](https://cloud.tencent.com/document/api/1267/76336#Rule)
+
+	* 新增成员：SourceEngineTypes
+
+* [RuleExecConfig](https://cloud.tencent.com/document/api/1267/76336#RuleExecConfig)
+
+	* 新增成员：EngineType
+
+* [RuleGroupExecResult](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecResult)
+
+	* 新增成员：EngineType
+
+* [RuleGroupExecStrategy](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecStrategy)
+
+	* 新增成员：ExecEngineType, ExecPlan
 
 
 
@@ -7469,6 +7554,29 @@
 
 
 ## 费用中心(billing) 版本：2018-07-09
+
+### 第 40 次发布
+
+发布时间：2023-05-24 01:04:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BillDetailComponent](https://cloud.tencent.com/document/api/555/19183#BillDetailComponent)
+
+	* 新增成员：TransferPayAmount
+
+	* <font color="#dd0000">**修改成员**：</font>SpecifiedPrice, SPDeduction
+
+* [BillResourceSummary](https://cloud.tencent.com/document/api/555/19183#BillResourceSummary)
+
+	* 新增成员：TransferPayAmount
+
+	* <font color="#dd0000">**修改成员**：</font>SPDeduction
+
 
 ### 第 39 次发布
 
@@ -19402,6 +19510,21 @@
 
 ## 文件存储(cfs) 版本：2019-07-19
 
+### 第 20 次发布
+
+发布时间：2023-05-24 01:10:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SnapshotInfo](https://cloud.tencent.com/document/api/582/38175#SnapshotInfo)
+
+	* 新增成员：SnapshotType
+
+
 ### 第 19 次发布
 
 发布时间：2023-04-25 01:11:04
@@ -20613,6 +20736,25 @@
 
 
 ## 云 HDFS(chdfs) 版本：2020-11-12
+
+### 第 6 次发布
+
+发布时间：2023-05-24 01:11:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Summary](https://cloud.tencent.com/document/api/1105/51158#Summary)](https://cloud.tencent.com/document/api/1105/51158#[Summary](https://cloud.tencent.com/document/api/1105/51158#Summary))
+
+修改数据结构：
+
+* [LifeCycleRule](https://cloud.tencent.com/document/api/1105/51158#LifeCycleRule)
+
+	* 新增成员：Summary, LastSummaryTime
+
 
 ### 第 5 次发布
 
@@ -25377,6 +25519,21 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 48 次发布
+
+发布时间：2023-05-24 01:13:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCosRecharge](https://cloud.tencent.com/document/api/614/88100)
+
+	* 新增出参：Id
+
 
 ### 第 47 次发布
 
@@ -38713,9 +38870,9 @@
 
 新增接口：
 
-* [[CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDBEncryptAttributes](https://cloud.tencent.com/document/api/557/92617)](https://cloud.tencent.com/document/api/#/#)
-* [[UpgradeDedicatedDCDBInstance](https://cloud.tencent.com/document/api/557/92616)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
+* [DescribeDBEncryptAttributes](https://cloud.tencent.com/document/api/557/92617)
+* [UpgradeDedicatedDCDBInstance](https://cloud.tencent.com/document/api/557/92616)
 
 <font color="#dd0000">**预下线接口**：</font>
 
@@ -64531,7 +64688,7 @@
 
 新增接口：
 
-* [[UpgradeDedicatedDBInstance](https://cloud.tencent.com/document/api/237/92618)](https://cloud.tencent.com/document/api/#/#)
+* [UpgradeDedicatedDBInstance](https://cloud.tencent.com/document/api/237/92618)
 
 ### 第 53 次发布
 
@@ -72677,6 +72834,21 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 99 次发布
+
+发布时间：2023-05-24 01:38:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAIFormTask](https://cloud.tencent.com/document/api/866/86724)
+
+	* 新增入参：FileType
+
 
 ### 第 98 次发布
 
@@ -83647,6 +83819,21 @@
 
 
 ## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 17 次发布
+
+发布时间：2023-05-24 01:44:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OutputRecognizeTargetAudienceValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudienceValue)
+
+	* 新增成员：ModelType, Uid
+
 
 ### 第 16 次发布
 
@@ -108107,6 +108294,21 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 154 次发布
+
+发布时间：2023-05-24 02:03:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream)
+
+	* 新增成员：Fps
+
+
 ### 第 153 次发布
 
 发布时间：2023-05-19 02:13:12
@@ -116813,6 +117015,56 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 27 次发布
+
+发布时间：2023-05-24 02:08:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CommitRuleGroupTask](https://cloud.tencent.com/document/api/1267/82838)
+
+	* 新增入参：EngineType
+
+* [CreateRule](https://cloud.tencent.com/document/api/1267/82837)
+
+	* 新增入参：SourceEngineTypes
+
+* [DescribeRules](https://cloud.tencent.com/document/api/1267/82803)
+
+	* 新增入参：EngineType
+
+* [ModifyExecStrategy](https://cloud.tencent.com/document/api/1267/82794)
+
+	* 新增入参：ExecEngineType
+
+* [ModifyRule](https://cloud.tencent.com/document/api/1267/82792)
+
+	* 新增入参：SourceEngineTypes
+
+
+修改数据结构：
+
+* [Rule](https://cloud.tencent.com/document/api/1267/76336#Rule)
+
+	* 新增成员：SourceEngineTypes
+
+* [RuleExecConfig](https://cloud.tencent.com/document/api/1267/76336#RuleExecConfig)
+
+	* 新增成员：EngineType
+
+* [RuleGroupExecResult](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecResult)
+
+	* 新增成员：EngineType
+
+* [RuleGroupExecStrategy](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecStrategy)
+
+	* 新增成员：ExecEngineType, ExecPlan
+
 
 ### 第 26 次发布
 

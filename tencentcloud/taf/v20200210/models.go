@@ -179,6 +179,14 @@ type OutputRecognizeTargetAudienceValue struct {
 	// 返回分值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 模型类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelType *uint64 `json:"ModelType,omitempty" name:"ModelType"`
+
+	// 入参Uid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
 }
 
 // Predefined struct for user

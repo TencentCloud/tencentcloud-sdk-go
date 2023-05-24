@@ -11604,6 +11604,11 @@ type EditMediaVideoStream struct {
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 	// 默认值：0。
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 视频帧率，取值范围：[0, 100]，单位：Hz。
+	// 当取值为0，将自动为视频设置帧率。
+	// 默认值为 0。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
 
 type EmptyTrackItem struct {

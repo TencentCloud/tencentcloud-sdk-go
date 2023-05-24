@@ -6140,80 +6140,80 @@ func (r *CreateVpnGatewaySslClientResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpnGatewaySslServerRequestParams struct {
-	// VPN实例ID
+	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
 
-	// SSL_VPN_SERVER 实例名
+	// SSL-VPN-SERVER 实例名称，长度不超过60个字节。
 	SslVpnServerName *string `json:"SslVpnServerName,omitempty" name:"SslVpnServerName"`
 
-	// 本端地址网段
+	// 云端地址（CIDR）列表。
 	LocalAddress []*string `json:"LocalAddress,omitempty" name:"LocalAddress"`
 
-	// 客户端地址网段
+	// 客户端地址网段。
 	RemoteAddress *string `json:"RemoteAddress,omitempty" name:"RemoteAddress"`
 
-	// SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+	// SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。
 	SslVpnProtocol *string `json:"SslVpnProtocol,omitempty" name:"SslVpnProtocol"`
 
-	// SSL VPN服务端监听协议端口。默认1194。
+	// SSL VPN服务端监听协议端口，默认1194。
 	SslVpnPort *int64 `json:"SslVpnPort,omitempty" name:"SslVpnPort"`
 
-	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+	// 认证算法。可选 'SHA1', 'MD5', 'NONE'，默认NONE。
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitempty" name:"IntegrityAlgorithm"`
 
-	// 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" name:"EncryptAlgorithm"`
 
-	// 是否支持压缩。当前仅支持不支持压缩。默认False
+	// 是否支持压缩。当前仅支持不支持压缩，默认False。
 	Compress *bool `json:"Compress,omitempty" name:"Compress"`
 
-	// 是否开启SSO认证
+	// 是否开启SSO认证。默认为False
 	SsoEnabled *bool `json:"SsoEnabled,omitempty" name:"SsoEnabled"`
 
-	// 是否开启策略访问控制
+	// 是否开启策略访问控制。默认为False
 	AccessPolicyEnabled *bool `json:"AccessPolicyEnabled,omitempty" name:"AccessPolicyEnabled"`
 
-	// SAML-DATA
+	// SAML-DATA，开启SSO时传。
 	SamlData *string `json:"SamlData,omitempty" name:"SamlData"`
 }
 
 type CreateVpnGatewaySslServerRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPN实例ID
+	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitempty" name:"VpnGatewayId"`
 
-	// SSL_VPN_SERVER 实例名
+	// SSL-VPN-SERVER 实例名称，长度不超过60个字节。
 	SslVpnServerName *string `json:"SslVpnServerName,omitempty" name:"SslVpnServerName"`
 
-	// 本端地址网段
+	// 云端地址（CIDR）列表。
 	LocalAddress []*string `json:"LocalAddress,omitempty" name:"LocalAddress"`
 
-	// 客户端地址网段
+	// 客户端地址网段。
 	RemoteAddress *string `json:"RemoteAddress,omitempty" name:"RemoteAddress"`
 
-	// SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+	// SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。
 	SslVpnProtocol *string `json:"SslVpnProtocol,omitempty" name:"SslVpnProtocol"`
 
-	// SSL VPN服务端监听协议端口。默认1194。
+	// SSL VPN服务端监听协议端口，默认1194。
 	SslVpnPort *int64 `json:"SslVpnPort,omitempty" name:"SslVpnPort"`
 
-	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+	// 认证算法。可选 'SHA1', 'MD5', 'NONE'，默认NONE。
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitempty" name:"IntegrityAlgorithm"`
 
-	// 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" name:"EncryptAlgorithm"`
 
-	// 是否支持压缩。当前仅支持不支持压缩。默认False
+	// 是否支持压缩。当前仅支持不支持压缩，默认False。
 	Compress *bool `json:"Compress,omitempty" name:"Compress"`
 
-	// 是否开启SSO认证
+	// 是否开启SSO认证。默认为False
 	SsoEnabled *bool `json:"SsoEnabled,omitempty" name:"SsoEnabled"`
 
-	// 是否开启策略访问控制
+	// 是否开启策略访问控制。默认为False
 	AccessPolicyEnabled *bool `json:"AccessPolicyEnabled,omitempty" name:"AccessPolicyEnabled"`
 
-	// SAML-DATA
+	// SAML-DATA，开启SSO时传。
 	SamlData *string `json:"SamlData,omitempty" name:"SamlData"`
 }
 
@@ -6249,10 +6249,10 @@ func (r *CreateVpnGatewaySslServerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpnGatewaySslServerResponseParams struct {
-	// 创建SSL-VPN server 异步任务ID
+	// 创建SSL-VPN server 异步任务ID。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
-	// SSL-VPN server 唯一ID
+	// SSL-VPN-SERVER 唯一ID。
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -10127,7 +10127,7 @@ type DescribeCrossBorderFlowMonitorRequestParams struct {
 	// 云联网所属账号。
 	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
 
-	// 时间粒度。
+	// 时间粒度。单位为:秒，如60为60s的时间粒度
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 开始时间。
@@ -10152,7 +10152,7 @@ type DescribeCrossBorderFlowMonitorRequest struct {
 	// 云联网所属账号。
 	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
 
-	// 时间粒度。
+	// 时间粒度。单位为:秒，如60为60s的时间粒度
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
 	// 开始时间。

@@ -2021,6 +2021,9 @@ type CommitRuleGroupTaskRequestParams struct {
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 type CommitRuleGroupTaskRequest struct {
@@ -2040,6 +2043,9 @@ type CommitRuleGroupTaskRequest struct {
 
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 func (r *CommitRuleGroupTaskRequest) ToJsonString() string {
@@ -2059,6 +2065,7 @@ func (r *CommitRuleGroupTaskRequest) FromJsonString(s string) error {
 	delete(f, "ExecRuleConfig")
 	delete(f, "ExecConfig")
 	delete(f, "ProjectId")
+	delete(f, "EngineType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitRuleGroupTaskRequest has unknown keys!", "")
 	}
@@ -3302,6 +3309,9 @@ type CreateRuleRequestParams struct {
 
 	// 目标字段名称  CITY
 	TargetObjectValue *string `json:"TargetObjectValue,omitempty" name:"TargetObjectValue"`
+
+	// 该规则支持的执行引擎列表
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitempty" name:"SourceEngineTypes"`
 }
 
 type CreateRuleRequest struct {
@@ -3375,6 +3385,9 @@ type CreateRuleRequest struct {
 
 	// 目标字段名称  CITY
 	TargetObjectValue *string `json:"TargetObjectValue,omitempty" name:"TargetObjectValue"`
+
+	// 该规则支持的执行引擎列表
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitempty" name:"SourceEngineTypes"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -3412,6 +3425,7 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 	delete(f, "RelConditionExpr")
 	delete(f, "FieldConfig")
 	delete(f, "TargetObjectValue")
+	delete(f, "SourceEngineTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuleRequest has unknown keys!", "")
 	}
@@ -10916,6 +10930,9 @@ type DescribeRulesRequestParams struct {
 
 	// 规则组id
 	RuleGroupId *uint64 `json:"RuleGroupId,omitempty" name:"RuleGroupId"`
+
+	// 该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 type DescribeRulesRequest struct {
@@ -10926,6 +10943,9 @@ type DescribeRulesRequest struct {
 
 	// 规则组id
 	RuleGroupId *uint64 `json:"RuleGroupId,omitempty" name:"RuleGroupId"`
+
+	// 该规则运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 func (r *DescribeRulesRequest) ToJsonString() string {
@@ -10942,6 +10962,7 @@ func (r *DescribeRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ProjectId")
 	delete(f, "RuleGroupId")
+	delete(f, "EngineType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRulesRequest has unknown keys!", "")
 	}
@@ -14767,6 +14788,9 @@ type ModifyExecStrategyRequestParams struct {
 
 	// 数据表Id
 	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	ExecEngineType *string `json:"ExecEngineType,omitempty" name:"ExecEngineType"`
 }
 
 type ModifyExecStrategyRequest struct {
@@ -14824,6 +14848,9 @@ type ModifyExecStrategyRequest struct {
 
 	// 数据表Id
 	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	ExecEngineType *string `json:"ExecEngineType,omitempty" name:"ExecEngineType"`
 }
 
 func (r *ModifyExecStrategyRequest) ToJsonString() string {
@@ -14854,6 +14881,7 @@ func (r *ModifyExecStrategyRequest) FromJsonString(s string) error {
 	delete(f, "DatabaseId")
 	delete(f, "DatasourceId")
 	delete(f, "TableId")
+	delete(f, "ExecEngineType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyExecStrategyRequest has unknown keys!", "")
 	}
@@ -15363,6 +15391,9 @@ type ModifyRuleRequestParams struct {
 
 	// 目标字段名称  CITY
 	TargetObjectValue *string `json:"TargetObjectValue,omitempty" name:"TargetObjectValue"`
+
+	// 该规则适配的执行引擎
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitempty" name:"SourceEngineTypes"`
 }
 
 type ModifyRuleRequest struct {
@@ -15433,6 +15464,9 @@ type ModifyRuleRequest struct {
 
 	// 目标字段名称  CITY
 	TargetObjectValue *string `json:"TargetObjectValue,omitempty" name:"TargetObjectValue"`
+
+	// 该规则适配的执行引擎
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitempty" name:"SourceEngineTypes"`
 }
 
 func (r *ModifyRuleRequest) ToJsonString() string {
@@ -15469,6 +15503,7 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 	delete(f, "RelConditionExpr")
 	delete(f, "FieldConfig")
 	delete(f, "TargetObjectValue")
+	delete(f, "SourceEngineTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleRequest has unknown keys!", "")
 	}
@@ -17538,6 +17573,10 @@ type Rule struct {
 	// 目标字段名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetObjectValue *string `json:"TargetObjectValue,omitempty" name:"TargetObjectValue"`
+
+	// 源端对应的引擎类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceEngineTypes []*uint64 `json:"SourceEngineTypes,omitempty" name:"SourceEngineTypes"`
 }
 
 type RuleConfig struct {
@@ -17582,6 +17621,10 @@ type RuleExecConfig struct {
 	// 执行资源组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+
+	// 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 type RuleExecDateStat struct {
@@ -17934,6 +17977,10 @@ type RuleGroupExecResult struct {
 	// 执行详情，调度计划或者关联生产任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecDetail *string `json:"ExecDetail,omitempty" name:"ExecDetail"`
+
+	// 实际执行引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 type RuleGroupExecResultPage struct {
@@ -17994,6 +18041,14 @@ type RuleGroupExecStrategy struct {
 	// 时间指定
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAction *string `json:"TaskAction,omitempty" name:"TaskAction"`
+
+	// 运行的执行引擎，不传时会请求该数据源下默认的执行引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecEngineType *string `json:"ExecEngineType,omitempty" name:"ExecEngineType"`
+
+	// 执行计划
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecPlan *string `json:"ExecPlan,omitempty" name:"ExecPlan"`
 }
 
 type RuleGroupMonitor struct {

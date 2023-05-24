@@ -292,16 +292,16 @@ type CreateCfsFileSystemRequestParams struct {
 	// 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 网络类型，可选值为 VPC，BASIC，CCN；其中 VPC 为私有网络，BASIC 为基础网络, CCN 为云联网，Turbo系列当前必须选择云联网。目前基础网络已逐渐淘汰，不推荐使用。
+	// 网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
 	NetInterface *string `json:"NetInterface,omitempty" name:"NetInterface"`
 
-	// 权限组 ID，通用标准型和性能型必填，turbo系列请填写pgroupbasic
+	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
 	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择turbo，不支持NFS、CIFS
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
+	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
 	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
@@ -338,16 +338,16 @@ type CreateCfsFileSystemRequest struct {
 	// 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 网络类型，可选值为 VPC，BASIC，CCN；其中 VPC 为私有网络，BASIC 为基础网络, CCN 为云联网，Turbo系列当前必须选择云联网。目前基础网络已逐渐淘汰，不推荐使用。
+	// 网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
 	NetInterface *string `json:"NetInterface,omitempty" name:"NetInterface"`
 
-	// 权限组 ID，通用标准型和性能型必填，turbo系列请填写pgroupbasic
+	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
 	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择turbo，不支持NFS、CIFS
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
+	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
 	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
@@ -2970,6 +2970,10 @@ type SnapshotInfo struct {
 
 	// 快照标签
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+
+	// 快照类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotType *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
 }
 
 type SnapshotOperateLog struct {

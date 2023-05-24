@@ -21,36 +21,36 @@ import (
 )
 
 type ActionSummaryOverviewItem struct {
-	// 交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型
+	// 交易类型编码
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
-	// 交易类型名称
+	// 交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
 	ActionTypeName *string `json:"ActionTypeName,omitempty" name:"ActionTypeName"`
-
-	// 实际花费
-	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 
-	// 现金金额
+	// 优惠后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 现金账户支出：通过现金账户支付的金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
-	// 赠送金金额
+	// 赠送账户支出：使用赠送金支付的金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 代金券金额
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 分成金账户支出：通过分成金账户支付的金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 
 	// 账单月份，格式2019-08
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
-
-	// 分成金金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 }
 
 type ApplicableProducts struct {
@@ -62,81 +62,81 @@ type ApplicableProducts struct {
 }
 
 type BillDetail struct {
-	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
+	// 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
 
-	// 子产品名称：云产品子类，如云服务器CVM-标准型S1
+	// 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
 	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
 
-	// 计费模式：包年包月和按量计费
+	// 计费模式：资源的计费模式，区分为包年包月和按量计费
 	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
 
-	// 项目:资源所属项目
+	// 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 
-	// 区域：资源所属地域，如华南地区（广州）
+	// 地域：资源所属地域，如华南地区（广州）
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 
 	// 可用区：资源所属可用区，如广州三区
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 资源实例ID
+	// 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 实例名称
+	// 资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 交易类型
+	// 交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
 	ActionTypeName *string `json:"ActionTypeName,omitempty" name:"ActionTypeName"`
 
-	// 订单ID
+	// 订单ID：包年包月计费模式下订购的订单号
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
-	// 交易ID
+	// 交易ID：结算扣费单号
 	BillId *string `json:"BillId,omitempty" name:"BillId"`
 
-	// 扣费时间
+	// 扣费时间：结算扣费时间
 	PayTime *string `json:"PayTime,omitempty" name:"PayTime"`
 
-	// 开始使用时间
+	// 开始使用时间：产品服务开始使用时间
 	FeeBeginTime *string `json:"FeeBeginTime,omitempty" name:"FeeBeginTime"`
 
-	// 结束使用时间
+	// 结束使用时间：产品服务结束使用时间
 	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
 
 	// 组件列表
 	ComponentSet []*BillDetailComponent `json:"ComponentSet,omitempty" name:"ComponentSet"`
 
-	// 支付者UIN
+	// 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 
-	// 使用者UIN
+	// 使用者UIN：实际使用资源的账号 ID
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
-	// 操作者UIN
+	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
 	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
 
-	// Tag 信息
+	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags"`
 
-	// 产品名称代码
+	// 产品编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
-	// 子产品名称代码
+	// 子产品编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
-	// 交易类型代码
+	// 交易类型编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
-	// 区域ID
+	// 地域ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
 
-	// 项目ID:资源所属项目ID
+	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 价格属性
@@ -145,215 +145,214 @@ type BillDetail struct {
 }
 
 type BillDetailComponent struct {
-	// 组件类型:资源组件类型的名称，如内存、硬盘等
+	// 组件类型：用户购买的产品或服务对应的组件大类，例如：云服务器 CVM 的组件：CPU、内存等
 	ComponentCodeName *string `json:"ComponentCodeName,omitempty" name:"ComponentCodeName"`
 
-	// 组件名称:资源组件的名称，如云数据库MySQL-内存等
+	// 组件名称：用户购买的产品或服务，所包含的具体组件
 	ItemCodeName *string `json:"ItemCodeName,omitempty" name:"ItemCodeName"`
 
-	// 组件刊例价:资源组件的原始价格，保持原始粒度
+	// 组件刊例价：组件的官网原始单价（如果客户享受一口价/合同价则默认不展示）
 	SinglePrice *string `json:"SinglePrice,omitempty" name:"SinglePrice"`
 
-	// 组件指定价
+	// 组件指定价（已废弃）
 	SpecifiedPrice *string `json:"SpecifiedPrice,omitempty" name:"SpecifiedPrice"`
 
-	// 价格单位
+	// 组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
 	PriceUnit *string `json:"PriceUnit,omitempty" name:"PriceUnit"`
 
-	// 组件用量
+	// 组件用量：该组件实际结算用量，组件用量 = 组件原始用量 - 抵扣用量（含资源包
 	UsedAmount *string `json:"UsedAmount,omitempty" name:"UsedAmount"`
 
-	// 组件用量单位
+	// 组件用量单位：组件用量对应的单位
 	UsedAmountUnit *string `json:"UsedAmountUnit,omitempty" name:"UsedAmountUnit"`
 
-	// 使用时长
+	// 使用时长：资源使用的时长
 	TimeSpan *string `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
-	// 时长单位
+	// 时长单位：资源使用时长的单位
 	TimeUnitName *string `json:"TimeUnitName,omitempty" name:"TimeUnitName"`
 
-	// 组件原价
+	// 组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
 	Cost *string `json:"Cost,omitempty" name:"Cost"`
 
-	// 折扣率，本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+	// 折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+	Discount *string `json:"Discount,omitempty" name:"Discount"`
+
+	// 优惠类型
+	ReduceType *string `json:"ReduceType,omitempty" name:"ReduceType"`
+
+	// 优惠后总价：优惠后总价=（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+	RealCost *string `json:"RealCost,omitempty" name:"RealCost"`
+
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 现金账户支出：通过现金账户支付的金额
+	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 赠送账户支出：使用赠送金支付的金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
+
+	// 分成金账户支出：通过分成金账户支付的金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
+
+	// 组件类型编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemCode *string `json:"ItemCode,omitempty" name:"ItemCode"`
+
+	// 组件名称编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentCode *string `json:"ComponentCode,omitempty" name:"ComponentCode"`
+
+	// 组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContractPrice *string `json:"ContractPrice,omitempty" name:"ContractPrice"`
+
+	// 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 预留实例抵扣的使用时长：本产品或服务使用预留实例抵扣的使用时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiTimeSpan *string `json:"RiTimeSpan,omitempty" name:"RiTimeSpan"`
+
+	// 预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalCostWithRI *string `json:"OriginalCostWithRI,omitempty" name:"OriginalCostWithRI"`
+
+	// 节省计划抵扣率：节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeductionRate *string `json:"SPDeductionRate,omitempty" name:"SPDeductionRate"`
+
+	// 节省计划抵扣金额（已废弃）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SPDeduction *string `json:"SPDeduction,omitempty" name:"SPDeduction"`
+
+	// 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitempty" name:"OriginalCostWithSP"`
+
+	// 混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率 = 优惠后总价 / 组件原价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlendedDiscount *string `json:"BlendedDiscount,omitempty" name:"BlendedDiscount"`
+}
+
+type BillResourceSummary struct {
+	// 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
+
+	// 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
+
+	// 计费模式：资源的计费模式，区分为包年包月和按量计费
+	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
+
+	// 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 地域：资源所属地域，如华南地区（广州）
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 可用区：资源所属可用区，如广州三区
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID	
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
+	ActionTypeName *string `json:"ActionTypeName,omitempty" name:"ActionTypeName"`
+
+	// 订单ID：包年包月计费模式下订购的订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 扣费时间：结算扣费时间
+	PayTime *string `json:"PayTime,omitempty" name:"PayTime"`
+
+	// 开始使用时间：产品服务开始使用时间
+	FeeBeginTime *string `json:"FeeBeginTime,omitempty" name:"FeeBeginTime"`
+
+	// 结束使用时间：产品服务结束使用时间
+	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
+
+	// 配置描述：该资源下的计费项名称和用量合并展示，仅在资源账单体现
+	ConfigDesc *string `json:"ConfigDesc,omitempty" name:"ConfigDesc"`
+
+	// 扩展字段1：产品对应的扩展属性信息，仅在资源账单体现
+	ExtendField1 *string `json:"ExtendField1,omitempty" name:"ExtendField1"`
+
+	// 扩展字段2：产品对应的扩展属性信息，仅在资源账单体现
+	ExtendField2 *string `json:"ExtendField2,omitempty" name:"ExtendField2"`
+
+	// 原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
 	Discount *string `json:"Discount,omitempty" name:"Discount"`
 
 	// 优惠类型
 	ReduceType *string `json:"ReduceType,omitempty" name:"ReduceType"`
 
 	// 优惠后总价
-	RealCost *string `json:"RealCost,omitempty" name:"RealCost"`
-
-	// 代金券支付金额
-	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
-
-	// 现金支付金额
-	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
-
-	// 赠送账户支付金额
-	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
-
-	// 组件类型代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemCode *string `json:"ItemCode,omitempty" name:"ItemCode"`
-
-	// 组件名称代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComponentCode *string `json:"ComponentCode,omitempty" name:"ComponentCode"`
-
-	// 组件单价
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContractPrice *string `json:"ContractPrice,omitempty" name:"ContractPrice"`
-
-	// 资源包、预留实例、节省计划、竞价实例这四类特殊实例本身的扣费行为，此字段体现对应的实例类型。枚举值如下：
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
-
-	// 预留实例抵扣的使用时长，时长单位与被抵扣的时长单位保持一致
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiTimeSpan *string `json:"RiTimeSpan,omitempty" name:"RiTimeSpan"`
-
-	// 预留实例抵扣组件原价，本产品或服务使用预留实例抵扣的组件原价金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalCostWithRI *string `json:"OriginalCostWithRI,omitempty" name:"OriginalCostWithRI"`
-
-	// 节省计划抵扣率，节省计划可用余额额度范围内，节省计划对于此组件打的折扣率
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SPDeductionRate *string `json:"SPDeductionRate,omitempty" name:"SPDeductionRate"`
-
-	// 节省计划抵扣金额，节省计划抵扣的SP包面值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SPDeduction *string `json:"SPDeduction,omitempty" name:"SPDeduction"`
-
-	// 节省计划抵扣组件原价，节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitempty" name:"OriginalCostWithSP"`
-
-	// 混合折扣率，综合各类折扣抵扣信息后的最终折扣率，混合折扣率 = 优惠后总价 / 组件原价
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlendedDiscount *string `json:"BlendedDiscount,omitempty" name:"BlendedDiscount"`
-}
-
-type BillResourceSummary struct {
-	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
-	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
-
-	// 子产品名称：云产品子类，如云服务器CVM-标准型S1， 当没有获取到子产品名称时，返回"-"
-	ProductCodeName *string `json:"ProductCodeName,omitempty" name:"ProductCodeName"`
-
-	// 计费模式：包年包月和按量计费
-	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
-
-	// 项目
-	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
-
-	// 地域
-	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
-
-	// 可用区
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
-
-	// 资源实例ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
-
-	// 资源实例名称
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
-
-	// 交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型
-	ActionTypeName *string `json:"ActionTypeName,omitempty" name:"ActionTypeName"`
-
-	// 订单ID
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
-
-	// 扣费时间
-	PayTime *string `json:"PayTime,omitempty" name:"PayTime"`
-
-	// 开始使用时间
-	FeeBeginTime *string `json:"FeeBeginTime,omitempty" name:"FeeBeginTime"`
-
-	// 结束使用时间
-	FeeEndTime *string `json:"FeeEndTime,omitempty" name:"FeeEndTime"`
-
-	// 配置描述
-	ConfigDesc *string `json:"ConfigDesc,omitempty" name:"ConfigDesc"`
-
-	// 扩展字段1
-	ExtendField1 *string `json:"ExtendField1,omitempty" name:"ExtendField1"`
-
-	// 扩展字段2
-	ExtendField2 *string `json:"ExtendField2,omitempty" name:"ExtendField2"`
-
-	// 原价，单位为元
-	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
-
-	// 折扣率
-	// 当聚合之后折扣不唯一或者合同价的情况下，返回“-”
-	Discount *string `json:"Discount,omitempty" name:"Discount"`
-
-	// 优惠类型
-	ReduceType *string `json:"ReduceType,omitempty" name:"ReduceType"`
-
-	// 优惠后总价，单位为元
 	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
-	// 代金券支付金额，单位为元
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
 
-	// 现金账户支付金额，单位为元
+	// 现金账户支出：通过现金账户支付的金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
-	// 赠送账户支付金额，单位为元
+	// 赠送账户支出：使用赠送金支付的金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 扩展字段3
+	// 分成金账户支出：通过分成金账户支付的金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
+
+	// 扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
 	ExtendField3 *string `json:"ExtendField3,omitempty" name:"ExtendField3"`
 
-	// 扩展字段4
+	// 扩展字段4：产品对应的扩展属性信息，仅在资源账单体现
 	ExtendField4 *string `json:"ExtendField4,omitempty" name:"ExtendField4"`
 
-	// 扩展字段5
+	// 扩展字段5：产品对应的扩展属性信息，仅在资源账单体现
 	ExtendField5 *string `json:"ExtendField5,omitempty" name:"ExtendField5"`
 
-	// Tag 信息
+	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*BillTagInfo `json:"Tags,omitempty" name:"Tags"`
 
-	// 付款方uin
+	// 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 
-	// 资源所有者uin,无值则返回"-"
+	// 使用者UIN：实际使用资源的账号 ID
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
-	// 操作者uin,无值则返回"-"
+	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
 	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
 
-	// 产品名称代码
+	// 产品编码
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
-	// 子产品名称代码
+	// 子产品编码
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 
-	// 区域ID
+	// 地域ID
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
-	// 资源包、预留实例、节省计划、竞价实例这四类特殊实例本身的扣费行为，此字段体现对应的实例类型。枚举值如下：
-	// 
-	// ri=Standard RI
-	// 
-	// svp=Savings Plan
-	// 
-	// si=Spot Instances
-	// 
-	// rp=Resource Pack
+	// 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// 按组件原价的口径换算的预留实例抵扣金额
+	// 预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额	
 	OriginalCostWithRI *string `json:"OriginalCostWithRI,omitempty" name:"OriginalCostWithRI"`
 
-	// 节省计划抵扣的SP包面值
+	// 节省计划抵扣金额（已废弃）
 	SPDeduction *string `json:"SPDeduction,omitempty" name:"SPDeduction"`
 
-	// 按组件原价的口径换算的节省计划抵扣金额
+	// 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
 	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitempty" name:"OriginalCostWithSP"`
 }
 
@@ -401,56 +400,56 @@ type BillTransactionInfo struct {
 }
 
 type BusinessSummaryOverviewItem struct {
-	// 产品名称代码
+	// 产品编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitempty" name:"BusinessCode"`
 
-	// 产品名称：云产品大类，如云服务器CVM、云数据库MySQL
+	// 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
 	BusinessCodeName *string `json:"BusinessCodeName,omitempty" name:"BusinessCodeName"`
-
-	// 实际花费
-	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 
-	// 现金金额
+	// 优惠后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 现金账户支出：通过现金账户支付的金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
-	// 赠送金金额
+	// 赠送账户支出：使用赠送金支付的金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 代金券金额
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 分成金账户支出：通过分成金账户支付的金额
+	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 
 	// 账单月份，格式2019-08
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
-
-	// 分成金金额
-	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 }
 
 type BusinessSummaryTotal struct {
-	// 总花费
+	// 优惠后总价
 	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
-	// 代金券金额
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
 
-	// 赠送金金额
+	// 赠送账户支出：使用赠送金支付的金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 现金金额
+	// 现金账户支出：通过现金账户支付的金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
+
+	// 分成金账户支出：通过分成金账户支付的金额
+	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
-
-	// 分成金金额
-	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 }
 
 type ConditionBusiness struct {
@@ -1354,13 +1353,13 @@ func (r *DescribeBillListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillResourceSummaryRequestParams struct {
-	// 偏移量
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 月份，格式为yyyy-mm。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
+	// 月份，格式为yyyy-mm。不能早于开通账单2.0的月份
 	Month *string `json:"Month,omitempty" name:"Month"`
 
 	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
@@ -1370,33 +1369,35 @@ type DescribeBillResourceSummaryRequestParams struct {
 	// 1-表示需要， 0-表示不需要
 	NeedRecordNum *int64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 
-	// 查询交易类型，如下：
+	// 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
 	// 包年包月新购
 	// 包年包月续费
 	// 包年包月配置变更
-	// 包年包月退款
-	// 按量计费扣费
-	// 按量计费小时结
-	// 按量计费日结
-	// 按量计费月结
-	// 线下项目扣费
-	// 线下产品扣费
-	// 调账扣费
-	// 调账补偿
-	// 竞价实例小时结
-	// 线下项目调账补偿
-	// 线下产品调账补偿
-	// 优惠扣费
-	// 优惠补偿
-	// 按量计费迁入资源
-	// 按量计费迁出资源
-	// 包年包月迁入资源
-	// 包年包月迁出资源
-	// 预付费用
-	// 小时费用
-	// 预留实例退款
-	// 按量计费冲正
-	// 包年包月转按量
+	// 包年包月退款 
+	// 按量计费扣费 
+	// 线下项目扣费 
+	// 线下产品扣费 
+	// 调账扣费 
+	// 调账补偿 
+	// 按量计费小时结 
+	// 按量计费日结 
+	// 按量计费月结 
+	// 竞价实例小时结 
+	// 线下项目调账补偿 
+	// 线下产品调账补偿 
+	// 优惠扣费 
+	// 优惠补偿 
+	// 按量计费迁入资源 
+	// 按量计费迁出资源 
+	// 包年包月迁入资源 
+	// 包年包月迁出资源 
+	// 预付费用 
+	// 小时费用 
+	// 预留实例退款 
+	// 按量计费冲正 
+	// 包年包月转按量 
+	// 保底扣款 
+	// 节省计划小时费用
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 查询指定资源信息
@@ -1413,13 +1414,13 @@ type DescribeBillResourceSummaryRequestParams struct {
 type DescribeBillResourceSummaryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 月份，格式为yyyy-mm。不能早于开通账单2.0的月份，最多可拉取24个月内的数据。
+	// 月份，格式为yyyy-mm。不能早于开通账单2.0的月份
 	Month *string `json:"Month,omitempty" name:"Month"`
 
 	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
@@ -1429,33 +1430,35 @@ type DescribeBillResourceSummaryRequest struct {
 	// 1-表示需要， 0-表示不需要
 	NeedRecordNum *int64 `json:"NeedRecordNum,omitempty" name:"NeedRecordNum"`
 
-	// 查询交易类型，如下：
+	// 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
 	// 包年包月新购
 	// 包年包月续费
 	// 包年包月配置变更
-	// 包年包月退款
-	// 按量计费扣费
-	// 按量计费小时结
-	// 按量计费日结
-	// 按量计费月结
-	// 线下项目扣费
-	// 线下产品扣费
-	// 调账扣费
-	// 调账补偿
-	// 竞价实例小时结
-	// 线下项目调账补偿
-	// 线下产品调账补偿
-	// 优惠扣费
-	// 优惠补偿
-	// 按量计费迁入资源
-	// 按量计费迁出资源
-	// 包年包月迁入资源
-	// 包年包月迁出资源
-	// 预付费用
-	// 小时费用
-	// 预留实例退款
-	// 按量计费冲正
-	// 包年包月转按量
+	// 包年包月退款 
+	// 按量计费扣费 
+	// 线下项目扣费 
+	// 线下产品扣费 
+	// 调账扣费 
+	// 调账补偿 
+	// 按量计费小时结 
+	// 按量计费日结 
+	// 按量计费月结 
+	// 竞价实例小时结 
+	// 线下项目调账补偿 
+	// 线下产品调账补偿 
+	// 优惠扣费 
+	// 优惠补偿 
+	// 按量计费迁入资源 
+	// 按量计费迁出资源 
+	// 包年包月迁入资源 
+	// 包年包月迁出资源 
+	// 预付费用 
+	// 小时费用 
+	// 预留实例退款 
+	// 按量计费冲正 
+	// 包年包月转按量 
+	// 保底扣款 
+	// 节省计划小时费用
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 查询指定资源信息
@@ -1501,7 +1504,7 @@ type DescribeBillResourceSummaryResponseParams struct {
 	// 资源汇总列表
 	ResourceSummarySet []*BillResourceSummary `json:"ResourceSummarySet,omitempty" name:"ResourceSummarySet"`
 
-	// 资源汇总列表总数
+	// 资源汇总列表总数，入参NeedRecordNum为0时不返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
@@ -1573,7 +1576,8 @@ func (r *DescribeBillSummaryByPayModeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillSummaryByPayModeResponseParams struct {
-	// 数据是否准备好，0未准备好，1准备好
+	// 数据是否准备好，0未准备好，1准备好。
+	// Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
 	Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
 
 	// 各付费模式花费分布详情
@@ -1665,7 +1669,8 @@ func (r *DescribeBillSummaryByProductRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBillSummaryByProductResponseParams struct {
-	// 数据是否准备好，0未准备好，1准备好
+	// 数据是否准备好，0未准备好，1准备好。
+	// Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
 	Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
 
 	// 总花费详情
@@ -1745,6 +1750,7 @@ func (r *DescribeBillSummaryByProjectRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBillSummaryByProjectResponseParams struct {
 	// 数据是否准备好，0未准备好，1准备好
+	// Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
 	Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
 
 	// 各项目花费分布详情
@@ -1820,6 +1826,7 @@ func (r *DescribeBillSummaryByRegionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBillSummaryByRegionResponseParams struct {
 	// 数据是否准备好，0未准备好，1准备好
+	// Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
 	Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
 
 	// 各地域花费分布详情
@@ -1909,6 +1916,7 @@ func (r *DescribeBillSummaryByTagRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBillSummaryByTagResponseParams struct {
 	// 数据是否准备好，0未准备好，1准备好
+	// Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟，请于10分钟后重试
 	Ready *uint64 `json:"Ready,omitempty" name:"Ready"`
 
 	// 各标签值花费分布详情
@@ -3187,35 +3195,35 @@ func (r *PayDealsResponse) FromJsonString(s string) error {
 }
 
 type PayModeSummaryOverviewItem struct {
-	// 付费模式
+	// 计费模式编码
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 付费模式名称
+	// 计费模式：区分为包年包月和按量计费
 	PayModeName *string `json:"PayModeName,omitempty" name:"PayModeName"`
-
-	// 实际花费
-	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 
-	// 按交易类型：包年包月新购/续费/升降配/退款、按量计费扣费、调账补偿/扣费等类型汇总消费详情
-	Detail []*ActionSummaryOverviewItem `json:"Detail,omitempty" name:"Detail"`
+	// 优惠后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
-	// 现金金额
+	// 现金账户支出：通过现金账户支付的金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
-	// 赠送金金额
+	// 赠送账户支出：使用赠送金支付的金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 代金券金额
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 分成金账户支出：通过分成金账户支付的金额
+	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 
-	// 分成金金额
-	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
+	// 按交易类型汇总消费详情
+	Detail []*ActionSummaryOverviewItem `json:"Detail,omitempty" name:"Detail"`
 }
 
 type ProductInfo struct {
@@ -3230,32 +3238,32 @@ type ProjectSummaryOverviewItem struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 项目名称
+	// 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
-
-	// 实际花费
-	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 
-	// 现金金额
+	// 优惠后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 现金账户支出：通过现金账户支付的金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
-	// 赠送金金额
+	// 赠送账户支出：使用赠送金支付的金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 代金券金额
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 分成金账户支出：通过分成金账户支付的金额
+	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 
 	// 账单月份，格式2019-08
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
-
-	// 分成金金额
-	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 }
 
 type RegionSummaryOverviewItem struct {
@@ -3263,36 +3271,36 @@ type RegionSummaryOverviewItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
 
-	// 地域名称
+	// 地域名称：资源所属地域，例如华南地区（广州）
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
-
-	// 实际花费
-	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
 	// 费用所占百分比，两位小数
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 
-	// 现金金额
+	// 优惠后总价
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 现金账户支出：通过现金账户支付的金额
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
-	// 赠送金金额
+	// 赠送账户支出：使用赠送金支付的金额
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 代金券金额
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
+
+	// 分成金账户支出：通过分成金账户支付的金额
+	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 
 	// 账单月份，格式2019-08
 	BillMonth *string `json:"BillMonth,omitempty" name:"BillMonth"`
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
-
-	// 分成金金额
-	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
 }
 
 type SummaryTotal struct {
-	// 总数
+	// 优惠后总价
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
@@ -3306,33 +3314,33 @@ type TagSummaryOverviewItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 
-	// 实际花费
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
-
 	// 费用所占百分比，两位小数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitempty" name:"RealTotalCostRatio"`
 
-	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	// 优惠后总价
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
+	RealTotalCost *string `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
-	// 现金金额
+	// 现金账户支出：通过现金账户支付的金额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CashPayAmount *string `json:"CashPayAmount,omitempty" name:"CashPayAmount"`
 
-	// 赠送金金额
+	// 赠送账户支出：使用赠送金支付的金额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitempty" name:"IncentivePayAmount"`
 
-	// 代金券金额
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitempty" name:"VoucherPayAmount"`
 
-	// 分成金金额
+	// 分成金账户支出：通过分成金账户支付的金额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitempty" name:"TransferPayAmount"`
+
+	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
 }
 
 type UsageDetails struct {

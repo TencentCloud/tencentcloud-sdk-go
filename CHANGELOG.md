@@ -1,3 +1,208 @@
+# Release v1.0.663
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 40 次发布
+
+发布时间：2023-05-24 01:04:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BillDetailComponent](https://cloud.tencent.com/document/api/555/19183#BillDetailComponent)
+
+	* 新增成员：TransferPayAmount
+
+	* <font color="#dd0000">**修改成员**：</font>SpecifiedPrice, SPDeduction
+
+* [BillResourceSummary](https://cloud.tencent.com/document/api/555/19183#BillResourceSummary)
+
+	* 新增成员：TransferPayAmount
+
+	* <font color="#dd0000">**修改成员**：</font>SPDeduction
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 20 次发布
+
+发布时间：2023-05-24 01:10:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SnapshotInfo](https://cloud.tencent.com/document/api/582/38175#SnapshotInfo)
+
+	* 新增成员：SnapshotType
+
+
+
+
+## 云 HDFS(chdfs) 版本：2020-11-12
+
+### 第 6 次发布
+
+发布时间：2023-05-24 01:11:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Summary](https://cloud.tencent.com/document/api/1105/51158#Summary)
+
+修改数据结构：
+
+* [LifeCycleRule](https://cloud.tencent.com/document/api/1105/51158#LifeCycleRule)
+
+	* 新增成员：Summary, LastSummaryTime
+
+
+
+
+## 云 HDFS(chdfs) 版本：2019-07-18
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 48 次发布
+
+发布时间：2023-05-24 01:13:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCosRecharge](https://cloud.tencent.com/document/api/614/88100)
+
+	* 新增出参：Id
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 99 次发布
+
+发布时间：2023-05-24 01:38:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAIFormTask](https://cloud.tencent.com/document/api/866/86724)
+
+	* 新增入参：FileType
+
+
+
+
+## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 17 次发布
+
+发布时间：2023-05-24 01:44:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OutputRecognizeTargetAudienceValue](https://cloud.tencent.com/document/api/1031/43310#OutputRecognizeTargetAudienceValue)
+
+	* 新增成员：ModelType, Uid
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 154 次发布
+
+发布时间：2023-05-24 02:03:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EditMediaVideoStream](https://cloud.tencent.com/document/api/266/31773#EditMediaVideoStream)
+
+	* 新增成员：Fps
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 27 次发布
+
+发布时间：2023-05-24 02:08:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CommitRuleGroupTask](https://cloud.tencent.com/document/api/1267/82838)
+
+	* 新增入参：EngineType
+
+* [CreateRule](https://cloud.tencent.com/document/api/1267/82837)
+
+	* 新增入参：SourceEngineTypes
+
+* [DescribeRules](https://cloud.tencent.com/document/api/1267/82803)
+
+	* 新增入参：EngineType
+
+* [ModifyExecStrategy](https://cloud.tencent.com/document/api/1267/82794)
+
+	* 新增入参：ExecEngineType
+
+* [ModifyRule](https://cloud.tencent.com/document/api/1267/82792)
+
+	* 新增入参：SourceEngineTypes
+
+
+修改数据结构：
+
+* [Rule](https://cloud.tencent.com/document/api/1267/76336#Rule)
+
+	* 新增成员：SourceEngineTypes
+
+* [RuleExecConfig](https://cloud.tencent.com/document/api/1267/76336#RuleExecConfig)
+
+	* 新增成员：EngineType
+
+* [RuleGroupExecResult](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecResult)
+
+	* 新增成员：EngineType
+
+* [RuleGroupExecStrategy](https://cloud.tencent.com/document/api/1267/76336#RuleGroupExecStrategy)
+
+	* 新增成员：ExecEngineType, ExecPlan
+
+
+
+
 # Release v1.0.662
 
 ## 云硬盘(cbs) 版本：2017-03-12

@@ -1780,7 +1780,7 @@ type QueueConfig struct {
 	ScaleOutRatio *int64 `json:"ScaleOutRatio,omitempty" name:"ScaleOutRatio"`
 
 	// 比例扩容阈值。默认值：0。取值范围：0～200。
-	// 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
+	// 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
 	// 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
 	ScaleOutNodeThreshold *int64 `json:"ScaleOutNodeThreshold,omitempty" name:"ScaleOutNodeThreshold"`
 }

@@ -300,7 +300,7 @@ func NewDescribeBillSummaryByPayModeResponse() (response *DescribeBillSummaryByP
 }
 
 // DescribeBillSummaryByPayMode
-// 获取按付费模式汇总费用分布
+// 获取按计费模式汇总费用分布
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -312,7 +312,7 @@ func (c *Client) DescribeBillSummaryByPayMode(request *DescribeBillSummaryByPayM
 }
 
 // DescribeBillSummaryByPayMode
-// 获取按付费模式汇总费用分布
+// 获取按计费模式汇总费用分布
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
