@@ -99,6 +99,9 @@ type BaseFlowInfo struct {
 
 	// 抄送人信息
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 是否需要发起前审核，当指定NeedCreateReview=true，则发起后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
+	NeedCreateReview *bool `json:"NeedCreateReview,omitempty" name:"NeedCreateReview"`
 }
 
 type CcInfo struct {
@@ -2110,13 +2113,13 @@ type ChannelDescribeRolesRequestParams struct {
 	// 查询数量，最大200
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 查询的关键字段:
-	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+	// Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelDescribeRolesRequest struct {
@@ -2131,13 +2134,13 @@ type ChannelDescribeRolesRequest struct {
 	// 查询数量，最大200
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 查询的关键字段:
-	// Key:"RoleType",Vales:["1"]查询系统角色，Values:["2]查询自定义角色
+	// Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDescribeRolesRequest) ToJsonString() string {
@@ -2155,8 +2158,8 @@ func (r *ChannelDescribeRolesRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "Operator")
 	delete(f, "Filters")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeRolesRequest has unknown keys!", "")
 	}
@@ -4113,6 +4116,9 @@ type FlowDetailInfo struct {
 
 	// 合同(流程)关注方信息列表
 	CcInfos []*FlowApproverDetail `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 是否需要发起前审批，当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程
+	NeedCreateReview *bool `json:"NeedCreateReview,omitempty" name:"NeedCreateReview"`
 }
 
 type FlowFileInfo struct {

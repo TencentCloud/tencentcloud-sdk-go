@@ -15190,18 +15190,19 @@ type DescribeVpnGatewaySslClientsRequestParams struct {
 	// 过滤条件，参数不支持同时指定SslVpnClientIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
-	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
-	// <li>ssl-vpn-client-id - String - （过滤条件）SSL-VPN-CLIENT实例ID形如：vpngwSslClient-123456。</li>
+	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpns-1j2w6xpx。</li>
+	// <li>ssl-vpn-client-id - String - （过滤条件）SSL-VPN-CLIENT实例ID形如：vpnc-3rlxp4nd。</li>
 	// <li>ssl-vpn-client-name - String - （过滤条件）SSL-VPN-CLIENT实例名称。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量
+	// 偏移量，默认值0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 请求对象个数
+	// 请求对象个数，默认值20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// SSL-VPN-CLIENT实例ID。形如：vpngwSslClient-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定SslVpnClientIds和Filters。
+	// SSL-VPN-CLIENT实例ID。形如：	
+	// vpns-1jww3xpx。每次请求的实例的上限为100。参数不支持同时指定SslVpnClientIds和Filters。
 	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 
 	// VPN门户网站使用。默认是False。
@@ -15214,18 +15215,19 @@ type DescribeVpnGatewaySslClientsRequest struct {
 	// 过滤条件，参数不支持同时指定SslVpnClientIds和Filters。
 	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
 	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
-	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
-	// <li>ssl-vpn-client-id - String - （过滤条件）SSL-VPN-CLIENT实例ID形如：vpngwSslClient-123456。</li>
+	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpns-1j2w6xpx。</li>
+	// <li>ssl-vpn-client-id - String - （过滤条件）SSL-VPN-CLIENT实例ID形如：vpnc-3rlxp4nd。</li>
 	// <li>ssl-vpn-client-name - String - （过滤条件）SSL-VPN-CLIENT实例名称。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量
+	// 偏移量，默认值0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 请求对象个数
+	// 请求对象个数，默认值20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// SSL-VPN-CLIENT实例ID。形如：vpngwSslClient-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定SslVpnClientIds和Filters。
+	// SSL-VPN-CLIENT实例ID。形如：	
+	// vpns-1jww3xpx。每次请求的实例的上限为100。参数不支持同时指定SslVpnClientIds和Filters。
 	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
 
 	// VPN门户网站使用。默认是False。
@@ -15260,7 +15262,7 @@ type DescribeVpnGatewaySslClientsResponseParams struct {
 	// 符合条件的实例数量。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 符合条件的实例个数。
+	// SSL-VPN-CLIENT 实例列表。
 	SslVpnClientSet []*SslVpnClient `json:"SslVpnClientSet,omitempty" name:"SslVpnClientSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -24470,13 +24472,13 @@ type SslClientConfig struct {
 }
 
 type SslVpnClient struct {
-	// VPC实例ID
+	// VPC实例ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// SSL-VPN-SERVER 实例ID
+	// SSL-VPN-SERVER 实例ID。
 	SslVpnServerId *string `json:"SslVpnServerId,omitempty" name:"SslVpnServerId"`
 
-	// 证书状态. 
+	// 证书状态。
 	// 0:创建中
 	// 1:正常
 	// 2:已停用
@@ -24484,16 +24486,16 @@ type SslVpnClient struct {
 	// 4.创建出错
 	CertStatus *uint64 `json:"CertStatus,omitempty" name:"CertStatus"`
 
-	// SSL-VPN-CLIENT 实例ID
+	// SSL-VPN-CLIENT 实例ID。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
 
-	// 证书开始时间
+	// 证书开始时间。
 	CertBeginTime *string `json:"CertBeginTime,omitempty" name:"CertBeginTime"`
 
-	// 证书到期时间
+	// 证书到期时间。
 	CertEndTime *string `json:"CertEndTime,omitempty" name:"CertEndTime"`
 
-	// CLIENT NAME
+	// CLIENT NAME。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 创建CLIENT 状态。

@@ -1,3 +1,204 @@
+# Release v1.0.664
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 109 次发布
+
+发布时间：2023-05-25 01:20:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceTypeConfig](https://cloud.tencent.com/document/api/213/15753#InstanceTypeConfig)
+
+	* 新增成员：GpuCount
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 53 次发布
+
+发布时间：2023-05-25 01:27:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92724)
+* [CloseWan](https://cloud.tencent.com/document/api/1003/92737)
+* [CopyClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92723)
+* [CreateClusterDatabase](https://cloud.tencent.com/document/api/1003/92736)
+* [CreateParamTemplate](https://cloud.tencent.com/document/api/1003/92731)
+* [DeleteAccounts](https://cloud.tencent.com/document/api/1003/92718)
+* [DeleteClusterDatabase](https://cloud.tencent.com/document/api/1003/92735)
+* [DeleteParamTemplate](https://cloud.tencent.com/document/api/1003/92730)
+* [DescribeAccountPrivileges](https://cloud.tencent.com/document/api/1003/92717)
+* [DescribeClusterDetailDatabases](https://cloud.tencent.com/document/api/1003/92734)
+* [DescribeClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92722)
+* [DescribeInstanceParams](https://cloud.tencent.com/document/api/1003/92729)
+* [DescribeParamTemplateDetail](https://cloud.tencent.com/document/api/1003/92728)
+* [ModifyAccountDescription](https://cloud.tencent.com/document/api/1003/92716)
+* [ModifyAccountHost](https://cloud.tencent.com/document/api/1003/92715)
+* [ModifyAccountPrivileges](https://cloud.tencent.com/document/api/1003/92714)
+* [ModifyBinlogSaveDays](https://cloud.tencent.com/document/api/1003/92725)
+* [ModifyClusterDatabase](https://cloud.tencent.com/document/api/1003/92733)
+* [ModifyClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92721)
+* [ModifyInstanceParam](https://cloud.tencent.com/document/api/1003/92727)
+* [ModifyParamTemplate](https://cloud.tencent.com/document/api/1003/92726)
+* [OpenClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92720)
+* [OpenWan](https://cloud.tencent.com/document/api/1003/92732)
+* [UpgradeClusterVersion](https://cloud.tencent.com/document/api/1003/92719)
+
+新增数据结构：
+
+* [DbInfo](https://cloud.tencent.com/document/api/1003/48097#DbInfo)
+* [InstanceParamItem](https://cloud.tencent.com/document/api/1003/48097#InstanceParamItem)
+* [ParamDetail](https://cloud.tencent.com/document/api/1003/48097#ParamDetail)
+* [ParamItemDetail](https://cloud.tencent.com/document/api/1003/48097#ParamItemDetail)
+* [UserHostPrivilege](https://cloud.tencent.com/document/api/1003/48097#UserHostPrivilege)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 67 次发布
+
+发布时间：2023-05-25 01:35:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)
+
+	* 新增入参：ExpiredTime
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 79 次发布
+
+发布时间：2023-05-25 01:36:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateUserRoles](https://cloud.tencent.com/document/api/1420/89389)
+
+	* <font color="#dd0000">**修改入参**：</font>Operator
+
+* [ChannelDeleteRoleUsers](https://cloud.tencent.com/document/api/1420/89388)
+
+	* <font color="#dd0000">**修改入参**：</font>Operator
+
+* [ChannelDescribeRoles](https://cloud.tencent.com/document/api/1420/89387)
+
+	* <font color="#dd0000">**修改入参**：</font>Operator
+
+
+修改数据结构：
+
+* [BaseFlowInfo](https://cloud.tencent.com/document/api/1420/61525#BaseFlowInfo)
+
+	* 新增成员：NeedCreateReview
+
+* [FlowDetailInfo](https://cloud.tencent.com/document/api/1420/61525#FlowDetailInfo)
+
+	* 新增成员：NeedCreateReview
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 100 次发布
+
+发布时间：2023-05-25 01:49:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
+
+	* 新增成员：VehicleType, VehicleBrand, DeparturePlace, ArrivalPlace, TransportItemsName, ConstructionPlace, ConstructionName
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 155 次发布
+
+发布时间：2023-05-25 02:08:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoundPlay](https://cloud.tencent.com/document/api/266/86175)
+
+	* 新增入参：PlayBackMode
+
+* [ModifyRoundPlay](https://cloud.tencent.com/document/api/266/86172)
+
+	* 新增入参：Status, PlayBackMode
+
+
+修改数据结构：
+
+* [RoundPlayInfo](https://cloud.tencent.com/document/api/266/31773#RoundPlayInfo)
+
+	* 新增成员：Status, PlayBackMode, Url
+
+
+
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 15 次发布
+
+发布时间：2023-05-25 02:13:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BatchDescribeKTVMusicDetails](https://cloud.tencent.com/document/api/1592/76190)
+
+	* 新增入参：GuestUserId, RoomId
+
+* [RechargeLiveVip](https://cloud.tencent.com/document/api/1592/88705)
+
+	* 新增入参：GiveType, PlayScene
+
+
+
+
 # Release v1.0.663
 
 ## 费用中心(billing) 版本：2018-07-09

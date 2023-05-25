@@ -891,13 +891,13 @@ type GetFlowStatisticResponseParams struct {
 	// 流量详细信息
 	NetDetails []*NetDetails `json:"NetDetails,omitempty" name:"NetDetails"`
 
-	// 查找时间段流量使用最大值（单位：bit）
+	// 查找时间段流量使用最大值（单位：byte）
 	MaxValue *float64 `json:"MaxValue,omitempty" name:"MaxValue"`
 
-	// 查找时间段流量使用平均值（单位：bit）
+	// 查找时间段流量使用平均值（单位：byte）
 	AvgValue *float64 `json:"AvgValue,omitempty" name:"AvgValue"`
 
-	// 查找时间段流量使用总量（单位：bit）
+	// 查找时间段流量使用总量（单位：byte）
 	TotalValue *float64 `json:"TotalValue,omitempty" name:"TotalValue"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

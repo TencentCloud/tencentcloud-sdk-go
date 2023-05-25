@@ -1316,6 +1316,7 @@ type Function struct {
 	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
 
 	// 运行时
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
 
 	// 函数名称
@@ -2001,6 +2002,7 @@ type GetFunctionResponseParams struct {
 	MemorySize *int64 `json:"MemorySize,omitempty" name:"MemorySize"`
 
 	// 函数的运行环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
 
 	// 函数的名称
@@ -3786,6 +3788,7 @@ type PublishVersionResponseParams struct {
 	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 
 	// 函数的运行环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
 
 	// 函数的命名空间

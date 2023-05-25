@@ -4506,6 +4506,12 @@ type CreateRoundPlayRequestParams struct {
 
 	// 轮播播单描述信息，长度限制：256 个字符。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 播放模式，可选值：
+	// <li>Loop：循环播放播单；</li>
+	// <li>Linear：单次播放，播单播放完停止播放。</li>
+	// 默认值：Loop。
+	PlayBackMode *string `json:"PlayBackMode,omitempty" name:"PlayBackMode"`
 }
 
 type CreateRoundPlayRequest struct {
@@ -4526,6 +4532,12 @@ type CreateRoundPlayRequest struct {
 
 	// 轮播播单描述信息，长度限制：256 个字符。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 播放模式，可选值：
+	// <li>Loop：循环播放播单；</li>
+	// <li>Linear：单次播放，播单播放完停止播放。</li>
+	// 默认值：Loop。
+	PlayBackMode *string `json:"PlayBackMode,omitempty" name:"PlayBackMode"`
 }
 
 func (r *CreateRoundPlayRequest) ToJsonString() string {
@@ -4545,6 +4557,7 @@ func (r *CreateRoundPlayRequest) FromJsonString(s string) error {
 	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "Desc")
+	delete(f, "PlayBackMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoundPlayRequest has unknown keys!", "")
 	}
@@ -15662,6 +15675,15 @@ type ModifyRoundPlayRequestParams struct {
 
 	// 轮播播单描述信息，长度限制：256 个字符。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 播放状态，可选值：
+	// <li>Disabled：结束播放，结束后轮播任务不能再次启动。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 播放模式，可选值：
+	// <li>Loop：循环播放播单；</li>
+	// <li>Linear：单次播放，播单播放完停止播放。</li>
+	PlayBackMode *string `json:"PlayBackMode,omitempty" name:"PlayBackMode"`
 }
 
 type ModifyRoundPlayRequest struct {
@@ -15685,6 +15707,15 @@ type ModifyRoundPlayRequest struct {
 
 	// 轮播播单描述信息，长度限制：256 个字符。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 播放状态，可选值：
+	// <li>Disabled：结束播放，结束后轮播任务不能再次启动。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 播放模式，可选值：
+	// <li>Loop：循环播放播单；</li>
+	// <li>Linear：单次播放，播单播放完停止播放。</li>
+	PlayBackMode *string `json:"PlayBackMode,omitempty" name:"PlayBackMode"`
 }
 
 func (r *ModifyRoundPlayRequest) ToJsonString() string {
@@ -15705,6 +15736,8 @@ func (r *ModifyRoundPlayRequest) FromJsonString(s string) error {
 	delete(f, "RoundPlaylist")
 	delete(f, "Name")
 	delete(f, "Desc")
+	delete(f, "Status")
+	delete(f, "PlayBackMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoundPlayRequest has unknown keys!", "")
 	}
@@ -20185,6 +20218,21 @@ type RoundPlayInfo struct {
 
 	// 轮播播单描述信息，长度限制：256 个字符。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 播放状态，可选值：
+	// <li>Enabled：启动状态；</li>
+	// <li>Disabled：停止状态。</li>
+	// 默认值：Enabled。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 播放模式，可选值：
+	// <li>Loop：循环播放播单；</li>
+	// <li>Linear：单次播放，播单播放完停止播放。</li>
+	// 默认值：Loop。
+	PlayBackMode *string `json:"PlayBackMode,omitempty" name:"PlayBackMode"`
+
+	// 轮播播放地址。
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 type RoundPlayListItemInfo struct {

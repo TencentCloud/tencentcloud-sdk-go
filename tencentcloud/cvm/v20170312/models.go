@@ -6028,6 +6028,9 @@ type InstanceTypeConfig struct {
 
 	// FPGA核数，单位：核。
 	FPGA *int64 `json:"FPGA,omitempty" name:"FPGA"`
+
+	// 实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。
+	GpuCount *float64 `json:"GpuCount,omitempty" name:"GpuCount"`
 }
 
 type InstanceTypeConfigStatus struct {
@@ -6757,7 +6760,7 @@ type ModifyImageAttributeRequestParams struct {
 	// 镜像ID，形如`img-gvbnzy6f`。镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取。<br><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
-	// 设置新的镜像名称；必须满足下列限制：<br> <li> 不得超过20个字符。<br> <li> 镜像名称不能与已有镜像重复。
+	// 设置新的镜像名称；必须满足下列限制：<br> <li> 不得超过60个字符。<br> <li> 镜像名称不能与已有镜像重复。
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 
 	// 设置新的镜像描述；必须满足下列限制：<br> <li> 不得超过60个字符。
@@ -6770,7 +6773,7 @@ type ModifyImageAttributeRequest struct {
 	// 镜像ID，形如`img-gvbnzy6f`。镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取。<br><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
-	// 设置新的镜像名称；必须满足下列限制：<br> <li> 不得超过20个字符。<br> <li> 镜像名称不能与已有镜像重复。
+	// 设置新的镜像名称；必须满足下列限制：<br> <li> 不得超过60个字符。<br> <li> 镜像名称不能与已有镜像重复。
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 
 	// 设置新的镜像描述；必须满足下列限制：<br> <li> 不得超过60个字符。

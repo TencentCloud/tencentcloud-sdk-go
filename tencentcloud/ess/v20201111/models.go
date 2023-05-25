@@ -720,7 +720,7 @@ type CreateChannelSubOrganizationModifyQrCodeResponseParams struct {
 	// 二维码下载链接
 	QrCodeUrl *string `json:"QrCodeUrl,omitempty" name:"QrCodeUrl"`
 
-	// 二维码失效时间 unix 时间戳 精确到秒
+	// 二维码失效时间 UNIX 时间戳 精确到秒
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2583,6 +2583,9 @@ type CreateUserAutoSignEnableUrlRequestParams struct {
 
 	// 若上方填写为 SMS，则此处为手机号
 	NotifyAddress *string `json:"NotifyAddress,omitempty" name:"NotifyAddress"`
+
+	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 }
 
 type CreateUserAutoSignEnableUrlRequest struct {
@@ -2606,6 +2609,9 @@ type CreateUserAutoSignEnableUrlRequest struct {
 
 	// 若上方填写为 SMS，则此处为手机号
 	NotifyAddress *string `json:"NotifyAddress,omitempty" name:"NotifyAddress"`
+
+	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 }
 
 func (r *CreateUserAutoSignEnableUrlRequest) ToJsonString() string {
@@ -2626,6 +2632,7 @@ func (r *CreateUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
 	delete(f, "UrlType")
 	delete(f, "NotifyType")
 	delete(f, "NotifyAddress")
+	delete(f, "ExpiredTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserAutoSignEnableUrlRequest has unknown keys!", "")
 	}

@@ -7120,12 +7120,15 @@ func (r *RecognizePhilippinesVoteIDOCRResponse) FromJsonString(s string) error {
 type RecognizeTableAccurateOCRRequestParams struct {
 	// 图片/PDF的 Base64 值。
 	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片支持的像素范围：需介于20-10000px之间。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片/PDF的 Url 地址。
 	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片支持的像素范围：需介于20-10000px之间。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定
+	// 性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
@@ -7137,12 +7140,15 @@ type RecognizeTableAccurateOCRRequest struct {
 	
 	// 图片/PDF的 Base64 值。
 	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
+	// 图片支持的像素范围：需介于20-10000px之间。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片/PDF的 Url 地址。
 	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片支持的像素范围：需介于20-10000px之间。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定
+	// 性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
@@ -10100,6 +10106,27 @@ type VatInvoiceItem struct {
 
 	// 税收分类编码
 	TaxClassifyCode *string `json:"TaxClassifyCode,omitempty" name:"TaxClassifyCode"`
+
+	// 运输工具类型
+	VehicleType *string `json:"VehicleType,omitempty" name:"VehicleType"`
+
+	// 运输工具牌号
+	VehicleBrand *string `json:"VehicleBrand,omitempty" name:"VehicleBrand"`
+
+	// 起始地
+	DeparturePlace *string `json:"DeparturePlace,omitempty" name:"DeparturePlace"`
+
+	// 到达地
+	ArrivalPlace *string `json:"ArrivalPlace,omitempty" name:"ArrivalPlace"`
+
+	// 运输货物名称
+	TransportItemsName *string `json:"TransportItemsName,omitempty" name:"TransportItemsName"`
+
+	// 建筑服务发生地
+	ConstructionPlace *string `json:"ConstructionPlace,omitempty" name:"ConstructionPlace"`
+
+	// 建筑项目名称
+	ConstructionName *string `json:"ConstructionName,omitempty" name:"ConstructionName"`
 }
 
 type VatInvoiceItemInfo struct {
@@ -10145,12 +10172,14 @@ type VatInvoiceOCRRequestParams struct {
 	// 图片/PDF的 Base64 值。
 	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片/PDF大小：所下载文件经Base64编码后不超过 7M。文件下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片/PDF的 Url 地址。
 	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 7M。文件下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -10168,12 +10197,14 @@ type VatInvoiceOCRRequest struct {
 	// 图片/PDF的 Base64 值。
 	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片/PDF大小：所下载文件经Base64编码后不超过 7M。文件下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 输入参数 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片/PDF的 Url 地址。
 	// 支持的文件格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片/PDF大小：所下载文件经 Base64 编码后不超过 7M。文件下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`

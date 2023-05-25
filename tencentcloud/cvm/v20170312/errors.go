@@ -263,7 +263,7 @@ const (
 	// 本地数据盘不支持创建实例镜像。
 	INVALIDPARAMETER_LOCALDATADISKNOTSUPPORT = "InvalidParameter.LocalDataDiskNotSupport"
 
-	// 不支持同时指定密钥登陆和保持镜像登陆方式。
+	// 不支持同时指定密钥登录和保持镜像登录方式。
 	INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 
 	// 不支持设置登录密码。

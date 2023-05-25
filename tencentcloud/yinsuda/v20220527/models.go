@@ -137,6 +137,12 @@ type BatchDescribeKTVMusicDetailsRequestParams struct {
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
 	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
+
+	// 玩家用户标识
+	GuestUserId *string `json:"GuestUserId,omitempty" name:"GuestUserId"`
+
+	// 房间Id
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
 type BatchDescribeKTVMusicDetailsRequest struct {
@@ -154,6 +160,12 @@ type BatchDescribeKTVMusicDetailsRequest struct {
 	// 播放场景。默认为Chat
 	// <li>Live：直播</li><li>Chat：语聊</li>
 	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
+
+	// 玩家用户标识
+	GuestUserId *string `json:"GuestUserId,omitempty" name:"GuestUserId"`
+
+	// 房间Id
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
 func (r *BatchDescribeKTVMusicDetailsRequest) ToJsonString() string {
@@ -172,6 +184,8 @@ func (r *BatchDescribeKTVMusicDetailsRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "MusicIds")
 	delete(f, "PlayScene")
+	delete(f, "GuestUserId")
+	delete(f, "RoomId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDescribeKTVMusicDetailsRequest has unknown keys!", "")
 	}
@@ -1441,6 +1455,13 @@ type RechargeLiveVipRequestParams struct {
 	// <li>186</li>
 	// <li>372</li>
 	VipDays *int64 `json:"VipDays,omitempty" name:"VipDays"`
+
+	// 充值分类。取值有：room_card-包月房卡; 其他-保留。
+	GiveType *string `json:"GiveType,omitempty" name:"GiveType"`
+
+	// 播放场景。默认为Live
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
 }
 
 type RechargeLiveVipRequest struct {
@@ -1465,6 +1486,13 @@ type RechargeLiveVipRequest struct {
 	// <li>186</li>
 	// <li>372</li>
 	VipDays *int64 `json:"VipDays,omitempty" name:"VipDays"`
+
+	// 充值分类。取值有：room_card-包月房卡; 其他-保留。
+	GiveType *string `json:"GiveType,omitempty" name:"GiveType"`
+
+	// 播放场景。默认为Live
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
 }
 
 func (r *RechargeLiveVipRequest) ToJsonString() string {
@@ -1484,6 +1512,8 @@ func (r *RechargeLiveVipRequest) FromJsonString(s string) error {
 	delete(f, "TradeSerialNo")
 	delete(f, "RoomId")
 	delete(f, "VipDays")
+	delete(f, "GiveType")
+	delete(f, "PlayScene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RechargeLiveVipRequest has unknown keys!", "")
 	}
