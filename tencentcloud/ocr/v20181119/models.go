@@ -642,6 +642,12 @@ type BizLicenseOCRResponseParams struct {
 	// 注：告警信息可以同时存在多个
 	RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
 
+	// 是否为副本。1为是，-1为不是。
+	IsDuplication *int64 `json:"IsDuplication,omitempty" name:"IsDuplication"`
+
+	// 登记日期
+	RegistrationDate *string `json:"RegistrationDate,omitempty" name:"RegistrationDate"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

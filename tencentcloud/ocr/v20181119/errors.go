@@ -47,6 +47,9 @@ const (
 	// 身份证信息不合法（身份证号、姓名字段校验非法等）。
 	FAILEDOPERATION_IDCARDINFOILLEGAL = "FailedOperation.IdCardInfoIllegal"
 
+	// 图片分辨率过小或身份证在原图中的占比过小
+	FAILEDOPERATION_IDCARDTOOSMALL = "FailedOperation.IdCardTooSmall"
+
 	// 银行卡信息非法。
 	FAILEDOPERATION_ILLEGALBANKCARDERROR = "FailedOperation.IllegalBankCardError"
 

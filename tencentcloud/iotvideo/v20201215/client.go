@@ -326,7 +326,7 @@ func NewCheckForwardAuthResponse() (response *CheckForwardAuthResponse) {
 }
 
 // CheckForwardAuth
-// 判断是否开启的转发的权限
+// 判断是否开启转发的权限
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -337,7 +337,7 @@ func (c *Client) CheckForwardAuth(request *CheckForwardAuthRequest) (response *C
 }
 
 // CheckForwardAuth
-// 判断是否开启的转发的权限
+// 判断是否开启转发的权限
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

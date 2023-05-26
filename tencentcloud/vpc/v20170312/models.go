@@ -96,6 +96,10 @@ type AccessPolicy struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// Remark
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type AccountAttribute struct {
@@ -15287,21 +15291,21 @@ func (r *DescribeVpnGatewaySslClientsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpnGatewaySslServersRequestParams struct {
-	// 偏移量
+	// 偏移量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 请求对象个数
+	// 请求对象个数。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// SSL-VPN-SERVER实例ID。形如：vpngwSslServer-12345678。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
 	SslVpnServerIds []*string `json:"SslVpnServerIds,omitempty" name:"SslVpnServerIds"`
 
 	// 过滤条件，参数不支持同时指定SslVpnServerIds和Filters。
-	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
-	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID，形如：vpngw-5aluhh9t。</li>
 	// <li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
 	// <li>ssl-vpn-server-name - String - （过滤条件）SSL-VPN-SERVER实例名称。</li>
-	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
+	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID，形如：vpns-xxx。</li>
 	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters"`
 
 	// vpn门户使用。 默认Flase
@@ -15311,21 +15315,21 @@ type DescribeVpnGatewaySslServersRequestParams struct {
 type DescribeVpnGatewaySslServersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移量
+	// 偏移量。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 请求对象个数
+	// 请求对象个数。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// SSL-VPN-SERVER实例ID。形如：vpngwSslServer-12345678。每次请求的实例的上限为100。参数不支持同时指定SslVpnServerIds和Filters。
 	SslVpnServerIds []*string `json:"SslVpnServerIds,omitempty" name:"SslVpnServerIds"`
 
 	// 过滤条件，参数不支持同时指定SslVpnServerIds和Filters。
-	// <li>vpc-id - String - （过滤条件）VPC实例ID形如：vpc-f49l6u0z。</li>
-	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID形如：vpngw-5aluhh9t。</li>
+	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+	// <li>vpn-gateway-id - String - （过滤条件）VPN实例ID，形如：vpngw-5aluhh9t。</li>
 	// <li>vpn-gateway-name - String - （过滤条件）VPN实例名称。</li>
 	// <li>ssl-vpn-server-name - String - （过滤条件）SSL-VPN-SERVER实例名称。</li>
-	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
+	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID，形如：vpns-xxx。</li>
 	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters"`
 
 	// vpn门户使用。 默认Flase

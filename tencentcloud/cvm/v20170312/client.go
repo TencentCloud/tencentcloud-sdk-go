@@ -2454,7 +2454,7 @@ func NewDescribeInstanceTypeConfigsResponse() (response *DescribeInstanceTypeCon
 //
 // 
 //
-// * 可以根据`zone`、`instance-family`来查询实例机型配置。过滤条件详见过滤器[`Filter`](https://cloud.tencent.com/document/api/213/15753#Filter)。
+// * 可以根据`zone`、`instance-family`、`instance-type`来查询实例机型配置。过滤条件详见过滤器[`Filter`](https://cloud.tencent.com/document/api/213/15753#Filter)。
 //
 // * 如果参数为空，返回指定地域的所有实例机型配置。
 //
@@ -2478,7 +2478,7 @@ func (c *Client) DescribeInstanceTypeConfigs(request *DescribeInstanceTypeConfig
 //
 // 
 //
-// * 可以根据`zone`、`instance-family`来查询实例机型配置。过滤条件详见过滤器[`Filter`](https://cloud.tencent.com/document/api/213/15753#Filter)。
+// * 可以根据`zone`、`instance-family`、`instance-type`来查询实例机型配置。过滤条件详见过滤器[`Filter`](https://cloud.tencent.com/document/api/213/15753#Filter)。
 //
 // * 如果参数为空，返回指定地域的所有实例机型配置。
 //
@@ -4358,6 +4358,7 @@ func NewInquiryPriceRenewInstancesResponse() (response *InquiryPriceRenewInstanc
 //  INVALIDPERIOD = "InvalidPeriod"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
+//  UNSUPPORTEDOPERATION_INSTANCEMIXEDZONETYPE = "UnsupportedOperation.InstanceMixedZoneType"
 //  UNSUPPORTEDOPERATION_INVALIDDISKBACKUPQUOTA = "UnsupportedOperation.InvalidDiskBackupQuota"
 func (c *Client) InquiryPriceRenewInstances(request *InquiryPriceRenewInstancesRequest) (response *InquiryPriceRenewInstancesResponse, err error) {
     return c.InquiryPriceRenewInstancesWithContext(context.Background(), request)
@@ -4386,6 +4387,7 @@ func (c *Client) InquiryPriceRenewInstances(request *InquiryPriceRenewInstancesR
 //  INVALIDPERIOD = "InvalidPeriod"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = "ResourceInsufficient.CloudDiskUnavailable"
+//  UNSUPPORTEDOPERATION_INSTANCEMIXEDZONETYPE = "UnsupportedOperation.InstanceMixedZoneType"
 //  UNSUPPORTEDOPERATION_INVALIDDISKBACKUPQUOTA = "UnsupportedOperation.InvalidDiskBackupQuota"
 func (c *Client) InquiryPriceRenewInstancesWithContext(ctx context.Context, request *InquiryPriceRenewInstancesRequest) (response *InquiryPriceRenewInstancesResponse, err error) {
     if request == nil {

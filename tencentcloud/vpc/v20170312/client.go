@@ -12846,7 +12846,7 @@ func NewDescribeVpnGatewaySslServersResponse() (response *DescribeVpnGatewaySslS
 }
 
 // DescribeVpnGatewaySslServers
-// 查询SSL-VPN SERVER 列表信息
+// 本接口（DescribeVpnGatewaySslServers）用于查询SSL-VPN SERVER 列表信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -12860,7 +12860,7 @@ func (c *Client) DescribeVpnGatewaySslServers(request *DescribeVpnGatewaySslServ
 }
 
 // DescribeVpnGatewaySslServers
-// 查询SSL-VPN SERVER 列表信息
+// 本接口（DescribeVpnGatewaySslServers）用于查询SSL-VPN SERVER 列表信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

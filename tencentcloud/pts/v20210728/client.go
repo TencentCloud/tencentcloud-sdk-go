@@ -1454,7 +1454,7 @@ func NewDescribeNormalLogsResponse() (response *DescribeNormalLogsResponse) {
 }
 
 // DescribeNormalLogs
-// 压测过程日志日志包括引擎输出日志及用户输出日志
+// 压测过程日志包括引擎输出日志及用户输出日志
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1468,7 +1468,7 @@ func (c *Client) DescribeNormalLogs(request *DescribeNormalLogsRequest) (respons
 }
 
 // DescribeNormalLogs
-// 压测过程日志日志包括引擎输出日志及用户输出日志
+// 压测过程日志包括引擎输出日志及用户输出日志
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

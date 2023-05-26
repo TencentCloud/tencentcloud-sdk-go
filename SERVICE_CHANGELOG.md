@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
+## 正版曲库直通车(ame) 版本：2019-09-16
 
-### 第 109 次发布
+### 第 36 次发布
 
-发布时间：2023-05-25 01:20:37
+发布时间：2023-05-26 01:01:42
 
 本次发布包含了以下内容：
 
@@ -12,18 +12,94 @@
 
 修改数据结构：
 
-* [InstanceTypeConfig](https://cloud.tencent.com/document/api/213/15753#InstanceTypeConfig)
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)
 
-	* 新增成员：GpuCount
-
-
+	* 新增成员：RoomIdType
 
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 53 次发布
 
-发布时间：2023-05-25 01:27:43
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 68 次发布
+
+发布时间：2023-05-25 11:31:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief)
+
+	* 新增成员：Deadline
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 101 次发布
+
+发布时间：2023-05-26 01:45:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+
+	* 新增出参：IsDuplication, RegistrationDate
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 45 次发布
+
+发布时间：2023-05-26 01:49:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBusinessDBInstances](https://cloud.tencent.com/document/api/238/80332)
+
+	* 新增出参：FlowId, InstanceIdSet
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 33 次发布
+
+发布时间：2023-05-26 01:50:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TeoInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TeoInstanceDetail)
+
+	* 新增成员：ZoneId, Status
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 156 次发布
+
+发布时间：2023-05-26 02:04:20
 
 本次发布包含了以下内容：
 
@@ -31,107 +107,19 @@
 
 新增接口：
 
-* [CloseClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92724)
-* [CloseWan](https://cloud.tencent.com/document/api/1003/92737)
-* [CopyClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92723)
-* [CreateClusterDatabase](https://cloud.tencent.com/document/api/1003/92736)
-* [CreateParamTemplate](https://cloud.tencent.com/document/api/1003/92731)
-* [DeleteAccounts](https://cloud.tencent.com/document/api/1003/92718)
-* [DeleteClusterDatabase](https://cloud.tencent.com/document/api/1003/92735)
-* [DeleteParamTemplate](https://cloud.tencent.com/document/api/1003/92730)
-* [DescribeAccountPrivileges](https://cloud.tencent.com/document/api/1003/92717)
-* [DescribeClusterDetailDatabases](https://cloud.tencent.com/document/api/1003/92734)
-* [DescribeClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92722)
-* [DescribeInstanceParams](https://cloud.tencent.com/document/api/1003/92729)
-* [DescribeParamTemplateDetail](https://cloud.tencent.com/document/api/1003/92728)
-* [ModifyAccountDescription](https://cloud.tencent.com/document/api/1003/92716)
-* [ModifyAccountHost](https://cloud.tencent.com/document/api/1003/92715)
-* [ModifyAccountPrivileges](https://cloud.tencent.com/document/api/1003/92714)
-* [ModifyBinlogSaveDays](https://cloud.tencent.com/document/api/1003/92725)
-* [ModifyClusterDatabase](https://cloud.tencent.com/document/api/1003/92733)
-* [ModifyClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92721)
-* [ModifyInstanceParam](https://cloud.tencent.com/document/api/1003/92727)
-* [ModifyParamTemplate](https://cloud.tencent.com/document/api/1003/92726)
-* [OpenClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92720)
-* [OpenWan](https://cloud.tencent.com/document/api/1003/92732)
-* [UpgradeClusterVersion](https://cloud.tencent.com/document/api/1003/92719)
-
-新增数据结构：
-
-* [DbInfo](https://cloud.tencent.com/document/api/1003/48097#DbInfo)
-* [InstanceParamItem](https://cloud.tencent.com/document/api/1003/48097#InstanceParamItem)
-* [ParamDetail](https://cloud.tencent.com/document/api/1003/48097#ParamDetail)
-* [ParamItemDetail](https://cloud.tencent.com/document/api/1003/48097#ParamItemDetail)
-* [UserHostPrivilege](https://cloud.tencent.com/document/api/1003/48097#UserHostPrivilege)
+* [CreateEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89805)
+* [DeleteEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89804)
+* [DescribeEnhanceMediaTemplates](https://cloud.tencent.com/document/api/266/89803)
+* [EnhanceMediaByTemplate](https://cloud.tencent.com/document/api/266/89801)
+* [ModifyEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89802)
 
 
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## 私有网络(vpc) 版本：2017-03-12
 
-### 第 67 次发布
+### 第 157 次发布
 
-发布时间：2023-05-25 01:35:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/87787)
-
-	* 新增入参：ExpiredTime
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 79 次发布
-
-发布时间：2023-05-25 01:36:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ChannelCreateUserRoles](https://cloud.tencent.com/document/api/1420/89389)
-
-	* <font color="#dd0000">**修改入参**：</font>Operator
-
-* [ChannelDeleteRoleUsers](https://cloud.tencent.com/document/api/1420/89388)
-
-	* <font color="#dd0000">**修改入参**：</font>Operator
-
-* [ChannelDescribeRoles](https://cloud.tencent.com/document/api/1420/89387)
-
-	* <font color="#dd0000">**修改入参**：</font>Operator
-
-
-修改数据结构：
-
-* [BaseFlowInfo](https://cloud.tencent.com/document/api/1420/61525#BaseFlowInfo)
-
-	* 新增成员：NeedCreateReview
-
-* [FlowDetailInfo](https://cloud.tencent.com/document/api/1420/61525#FlowDetailInfo)
-
-	* 新增成员：NeedCreateReview
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 100 次发布
-
-发布时间：2023-05-25 01:49:38
+发布时间：2023-05-26 02:10:55
 
 本次发布包含了以下内容：
 
@@ -139,62 +127,9 @@
 
 修改数据结构：
 
-* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
+* [AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)
 
-	* 新增成员：VehicleType, VehicleBrand, DeparturePlace, ArrivalPlace, TransportItemsName, ConstructionPlace, ConstructionName
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 155 次发布
-
-发布时间：2023-05-25 02:08:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRoundPlay](https://cloud.tencent.com/document/api/266/86175)
-
-	* 新增入参：PlayBackMode
-
-* [ModifyRoundPlay](https://cloud.tencent.com/document/api/266/86172)
-
-	* 新增入参：Status, PlayBackMode
-
-
-修改数据结构：
-
-* [RoundPlayInfo](https://cloud.tencent.com/document/api/266/31773#RoundPlayInfo)
-
-	* 新增成员：Status, PlayBackMode, Url
-
-
-
-
-## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
-
-### 第 15 次发布
-
-发布时间：2023-05-25 02:13:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [BatchDescribeKTVMusicDetails](https://cloud.tencent.com/document/api/1592/76190)
-
-	* 新增入参：GuestUserId, RoomId
-
-* [RechargeLiveVip](https://cloud.tencent.com/document/api/1592/88705)
-
-	* 新增入参：GiveType, PlayScene
+	* 新增成员：Remark
 
 
 
@@ -811,6 +746,21 @@
 
 
 ## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 36 次发布
+
+发布时间：2023-05-26 01:01:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)
+
+	* 新增成员：RoomIdType
+
 
 ### 第 35 次发布
 
@@ -35732,38 +35682,38 @@
 
 新增接口：
 
-* [[CloseClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92724)](https://cloud.tencent.com/document/api/#/#)
-* [[CloseWan](https://cloud.tencent.com/document/api/1003/92737)](https://cloud.tencent.com/document/api/#/#)
-* [[CopyClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92723)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateClusterDatabase](https://cloud.tencent.com/document/api/1003/92736)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateParamTemplate](https://cloud.tencent.com/document/api/1003/92731)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAccounts](https://cloud.tencent.com/document/api/1003/92718)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteClusterDatabase](https://cloud.tencent.com/document/api/1003/92735)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteParamTemplate](https://cloud.tencent.com/document/api/1003/92730)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAccountPrivileges](https://cloud.tencent.com/document/api/1003/92717)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusterDetailDatabases](https://cloud.tencent.com/document/api/1003/92734)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92722)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstanceParams](https://cloud.tencent.com/document/api/1003/92729)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeParamTemplateDetail](https://cloud.tencent.com/document/api/1003/92728)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAccountDescription](https://cloud.tencent.com/document/api/1003/92716)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAccountHost](https://cloud.tencent.com/document/api/1003/92715)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAccountPrivileges](https://cloud.tencent.com/document/api/1003/92714)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBinlogSaveDays](https://cloud.tencent.com/document/api/1003/92725)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyClusterDatabase](https://cloud.tencent.com/document/api/1003/92733)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92721)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyInstanceParam](https://cloud.tencent.com/document/api/1003/92727)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyParamTemplate](https://cloud.tencent.com/document/api/1003/92726)](https://cloud.tencent.com/document/api/#/#)
-* [[OpenClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92720)](https://cloud.tencent.com/document/api/#/#)
-* [[OpenWan](https://cloud.tencent.com/document/api/1003/92732)](https://cloud.tencent.com/document/api/#/#)
-* [[UpgradeClusterVersion](https://cloud.tencent.com/document/api/1003/92719)](https://cloud.tencent.com/document/api/#/#)
+* [CloseClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92724)
+* [CloseWan](https://cloud.tencent.com/document/api/1003/92737)
+* [CopyClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92723)
+* [CreateClusterDatabase](https://cloud.tencent.com/document/api/1003/92736)
+* [CreateParamTemplate](https://cloud.tencent.com/document/api/1003/92731)
+* [DeleteAccounts](https://cloud.tencent.com/document/api/1003/92718)
+* [DeleteClusterDatabase](https://cloud.tencent.com/document/api/1003/92735)
+* [DeleteParamTemplate](https://cloud.tencent.com/document/api/1003/92730)
+* [DescribeAccountPrivileges](https://cloud.tencent.com/document/api/1003/92717)
+* [DescribeClusterDetailDatabases](https://cloud.tencent.com/document/api/1003/92734)
+* [DescribeClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92722)
+* [DescribeInstanceParams](https://cloud.tencent.com/document/api/1003/92729)
+* [DescribeParamTemplateDetail](https://cloud.tencent.com/document/api/1003/92728)
+* [ModifyAccountDescription](https://cloud.tencent.com/document/api/1003/92716)
+* [ModifyAccountHost](https://cloud.tencent.com/document/api/1003/92715)
+* [ModifyAccountPrivileges](https://cloud.tencent.com/document/api/1003/92714)
+* [ModifyBinlogSaveDays](https://cloud.tencent.com/document/api/1003/92725)
+* [ModifyClusterDatabase](https://cloud.tencent.com/document/api/1003/92733)
+* [ModifyClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92721)
+* [ModifyInstanceParam](https://cloud.tencent.com/document/api/1003/92727)
+* [ModifyParamTemplate](https://cloud.tencent.com/document/api/1003/92726)
+* [OpenClusterPasswordComplexity](https://cloud.tencent.com/document/api/1003/92720)
+* [OpenWan](https://cloud.tencent.com/document/api/1003/92732)
+* [UpgradeClusterVersion](https://cloud.tencent.com/document/api/1003/92719)
 
 新增数据结构：
 
-* [[DbInfo](https://cloud.tencent.com/document/api/1003/48097#DbInfo)](https://cloud.tencent.com/document/api/1003/48097#[DbInfo](https://cloud.tencent.com/document/api/1003/48097#DbInfo))
-* [[InstanceParamItem](https://cloud.tencent.com/document/api/1003/48097#InstanceParamItem)](https://cloud.tencent.com/document/api/1003/48097#[InstanceParamItem](https://cloud.tencent.com/document/api/1003/48097#InstanceParamItem))
-* [[ParamDetail](https://cloud.tencent.com/document/api/1003/48097#ParamDetail)](https://cloud.tencent.com/document/api/1003/48097#[ParamDetail](https://cloud.tencent.com/document/api/1003/48097#ParamDetail))
-* [[ParamItemDetail](https://cloud.tencent.com/document/api/1003/48097#ParamItemDetail)](https://cloud.tencent.com/document/api/1003/48097#[ParamItemDetail](https://cloud.tencent.com/document/api/1003/48097#ParamItemDetail))
-* [[UserHostPrivilege](https://cloud.tencent.com/document/api/1003/48097#UserHostPrivilege)](https://cloud.tencent.com/document/api/1003/48097#[UserHostPrivilege](https://cloud.tencent.com/document/api/1003/48097#UserHostPrivilege))
+* [DbInfo](https://cloud.tencent.com/document/api/1003/48097#DbInfo)
+* [InstanceParamItem](https://cloud.tencent.com/document/api/1003/48097#InstanceParamItem)
+* [ParamDetail](https://cloud.tencent.com/document/api/1003/48097#ParamDetail)
+* [ParamItemDetail](https://cloud.tencent.com/document/api/1003/48097#ParamItemDetail)
+* [UserHostPrivilege](https://cloud.tencent.com/document/api/1003/48097#UserHostPrivilege)
 
 ### 第 52 次发布
 
@@ -47512,6 +47462,21 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 68 次发布
+
+发布时间：2023-05-25 11:31:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief)
+
+	* 新增成员：Deadline
+
 
 ### 第 67 次发布
 
@@ -72938,6 +72903,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 101 次发布
+
+发布时间：2023-05-26 01:45:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+
+	* 新增出参：IsDuplication, RegistrationDate
+
+
 ### 第 100 次发布
 
 发布时间：2023-05-25 01:49:38
@@ -81448,6 +81428,21 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 45 次发布
+
+发布时间：2023-05-26 01:49:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBusinessDBInstances](https://cloud.tencent.com/document/api/238/80332)
+
+	* 新增出参：FlowId, InstanceIdSet
+
+
 ### 第 44 次发布
 
 发布时间：2023-05-22 01:53:58
@@ -82869,6 +82864,21 @@
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 33 次发布
+
+发布时间：2023-05-26 01:50:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TeoInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TeoInstanceDetail)
+
+	* 新增成员：ZoneId, Status
+
 
 ### 第 32 次发布
 
@@ -108412,6 +108422,22 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 156 次发布
+
+发布时间：2023-05-26 02:04:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89805)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89804)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeEnhanceMediaTemplates](https://cloud.tencent.com/document/api/266/89803)](https://cloud.tencent.com/document/api/#/#)
+* [[EnhanceMediaByTemplate](https://cloud.tencent.com/document/api/266/89801)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89802)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 155 次发布
 
 发布时间：2023-05-25 02:08:29
@@ -112629,6 +112655,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 157 次发布
+
+发布时间：2023-05-26 02:10:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)
+
+	* 新增成员：Remark
+
 
 ### 第 156 次发布
 

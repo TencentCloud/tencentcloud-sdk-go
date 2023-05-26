@@ -4940,6 +4940,13 @@ type TeoInstanceDetail struct {
 
 	// 证书ID
 	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 区域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 域名状态
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type TkeIngressDetail struct {

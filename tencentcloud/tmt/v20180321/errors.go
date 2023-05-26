@@ -89,7 +89,7 @@ const (
 	// 音频分片长度超过限制，请保证分片长度小于8s。
 	UNSUPPORTEDOPERATION_AUDIODURATIONEXCEED = "UnsupportedOperation.AudioDurationExceed"
 
-	// 单次请求text超过长度限制，请保证单次请求⻓度低于2000。
+	// 单次请求text超过长度限制。
 	UNSUPPORTEDOPERATION_TEXTTOOLONG = "UnsupportedOperation.TextTooLong"
 
 	// 不支持的目标语言，请参照语言列表。

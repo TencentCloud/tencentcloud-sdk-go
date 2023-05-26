@@ -1,3 +1,139 @@
+# Release v1.0.665
+
+## 正版曲库直通车(ame) 版本：2019-09-16
+
+### 第 36 次发布
+
+发布时间：2023-05-26 01:01:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1155/40113#TRTCJoinRoomInput)
+
+	* 新增成员：RoomIdType
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 68 次发布
+
+发布时间：2023-05-25 11:31:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief)
+
+	* 新增成员：Deadline
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 101 次发布
+
+发布时间：2023-05-26 01:45:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+
+	* 新增出参：IsDuplication, RegistrationDate
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 45 次发布
+
+发布时间：2023-05-26 01:49:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBusinessDBInstances](https://cloud.tencent.com/document/api/238/80332)
+
+	* 新增出参：FlowId, InstanceIdSet
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 33 次发布
+
+发布时间：2023-05-26 01:50:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TeoInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TeoInstanceDetail)
+
+	* 新增成员：ZoneId, Status
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 156 次发布
+
+发布时间：2023-05-26 02:04:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89805)
+* [DeleteEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89804)
+* [DescribeEnhanceMediaTemplates](https://cloud.tencent.com/document/api/266/89803)
+* [EnhanceMediaByTemplate](https://cloud.tencent.com/document/api/266/89801)
+* [ModifyEnhanceMediaTemplate](https://cloud.tencent.com/document/api/266/89802)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 157 次发布
+
+发布时间：2023-05-26 02:10:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)
+
+	* 新增成员：Remark
+
+
+
+
 # Release v1.0.664
 
 ## 云服务器(cvm) 版本：2017-03-12

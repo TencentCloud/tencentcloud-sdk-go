@@ -2993,6 +2993,12 @@ type TRTCJoinRoomInput struct {
 	// <li>anchor：主播</li>
 	// <li>audience：观众</li>
 	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// TRTC房间号的类型：
+	// <li>Integer：数字类型</li>
+	// <li> String：字符串类型</li>
+	// 默认为：Integer 。
+	RoomIdType *string `json:"RoomIdType,omitempty" name:"RoomIdType"`
 }
 
 type TakeMusicOffShelves struct {

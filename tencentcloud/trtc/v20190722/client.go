@@ -66,7 +66,7 @@ func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) 
 // CreateCloudRecording
 // 接口说明：
 //
-// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制有或者多路视频画面混流一路。
+// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制又或者多路视频画面混流一路。
 //
 // 
 //
@@ -122,7 +122,7 @@ func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (res
 // CreateCloudRecording
 // 接口说明：
 //
-// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制有或者多路视频画面混流一路。
+// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制又或者多路视频画面混流一路。
 //
 // 
 //

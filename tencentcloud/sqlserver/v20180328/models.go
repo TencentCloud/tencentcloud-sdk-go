@@ -1112,6 +1112,14 @@ type CreateBusinessDBInstancesResponseParams struct {
 	// 订单名称
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
 
+	// 流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 实例ID集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

@@ -4312,6 +4312,10 @@ type FlowBrief struct {
 	//  合同发起人userId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 合同过期时间，时间戳，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 }
 
 type FlowCreateApprover struct {

@@ -865,6 +865,80 @@ func (c *Client) CreateContentReviewTemplateWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateEnhanceMediaTemplateRequest() (request *CreateEnhanceMediaTemplateRequest) {
+    request = &CreateEnhanceMediaTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateEnhanceMediaTemplate")
+    
+    
+    return
+}
+
+func NewCreateEnhanceMediaTemplateResponse() (response *CreateEnhanceMediaTemplateResponse) {
+    response = &CreateEnhanceMediaTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEnhanceMediaTemplate
+// 创建音画质重生模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = "InvalidParameterValue.ReviewConfidence"
+//  INVALIDPARAMETERVALUE_REVIEWWALLSWITCH = "InvalidParameterValue.ReviewWallSwitch"
+//  INVALIDPARAMETERVALUE_SCREENSHOTINTERVAL = "InvalidParameterValue.ScreenshotInterval"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateEnhanceMediaTemplate(request *CreateEnhanceMediaTemplateRequest) (response *CreateEnhanceMediaTemplateResponse, err error) {
+    return c.CreateEnhanceMediaTemplateWithContext(context.Background(), request)
+}
+
+// CreateEnhanceMediaTemplate
+// 创建音画质重生模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
+//  INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = "InvalidParameterValue.ReviewConfidence"
+//  INVALIDPARAMETERVALUE_REVIEWWALLSWITCH = "InvalidParameterValue.ReviewWallSwitch"
+//  INVALIDPARAMETERVALUE_SCREENSHOTINTERVAL = "InvalidParameterValue.ScreenshotInterval"
+//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateEnhanceMediaTemplateWithContext(ctx context.Context, request *CreateEnhanceMediaTemplateRequest) (response *CreateEnhanceMediaTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateEnhanceMediaTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEnhanceMediaTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEnhanceMediaTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHeadTailTemplateRequest() (request *CreateHeadTailTemplateRequest) {
     request = &CreateHeadTailTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2357,6 +2431,62 @@ func (c *Client) DeleteContentReviewTemplateWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDeleteContentReviewTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteEnhanceMediaTemplateRequest() (request *DeleteEnhanceMediaTemplateRequest) {
+    request = &DeleteEnhanceMediaTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteEnhanceMediaTemplate")
+    
+    
+    return
+}
+
+func NewDeleteEnhanceMediaTemplateResponse() (response *DeleteEnhanceMediaTemplateResponse) {
+    response = &DeleteEnhanceMediaTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteEnhanceMediaTemplate
+// 删除音画质重生模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteEnhanceMediaTemplate(request *DeleteEnhanceMediaTemplateRequest) (response *DeleteEnhanceMediaTemplateResponse, err error) {
+    return c.DeleteEnhanceMediaTemplateWithContext(context.Background(), request)
+}
+
+// DeleteEnhanceMediaTemplate
+// 删除音画质重生模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteEnhanceMediaTemplateWithContext(ctx context.Context, request *DeleteEnhanceMediaTemplateRequest) (response *DeleteEnhanceMediaTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteEnhanceMediaTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteEnhanceMediaTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteEnhanceMediaTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -4269,6 +4399,54 @@ func (c *Client) DescribeDrmKeyProviderInfoWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeDrmKeyProviderInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEnhanceMediaTemplatesRequest() (request *DescribeEnhanceMediaTemplatesRequest) {
+    request = &DescribeEnhanceMediaTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeEnhanceMediaTemplates")
+    
+    
+    return
+}
+
+func NewDescribeEnhanceMediaTemplatesResponse() (response *DescribeEnhanceMediaTemplatesResponse) {
+    response = &DescribeEnhanceMediaTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnhanceMediaTemplates
+// 获取音画质重生模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeEnhanceMediaTemplates(request *DescribeEnhanceMediaTemplatesRequest) (response *DescribeEnhanceMediaTemplatesResponse, err error) {
+    return c.DescribeEnhanceMediaTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeEnhanceMediaTemplates
+// 获取音画质重生模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeEnhanceMediaTemplatesWithContext(ctx context.Context, request *DescribeEnhanceMediaTemplatesRequest) (response *DescribeEnhanceMediaTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnhanceMediaTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnhanceMediaTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnhanceMediaTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -6371,6 +6549,70 @@ func (c *Client) EditMediaWithContext(ctx context.Context, request *EditMediaReq
     return
 }
 
+func NewEnhanceMediaByTemplateRequest() (request *EnhanceMediaByTemplateRequest) {
+    request = &EnhanceMediaByTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "EnhanceMediaByTemplate")
+    
+    
+    return
+}
+
+func NewEnhanceMediaByTemplateResponse() (response *EnhanceMediaByTemplateResponse) {
+    response = &EnhanceMediaByTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnhanceMediaByTemplate
+// 使用模板发起音画质重生。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) EnhanceMediaByTemplate(request *EnhanceMediaByTemplateRequest) (response *EnhanceMediaByTemplateResponse, err error) {
+    return c.EnhanceMediaByTemplateWithContext(context.Background(), request)
+}
+
+// EnhanceMediaByTemplate
+// 使用模板发起音画质重生。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) EnhanceMediaByTemplateWithContext(ctx context.Context, request *EnhanceMediaByTemplateRequest) (response *EnhanceMediaByTemplateResponse, err error) {
+    if request == nil {
+        request = NewEnhanceMediaByTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnhanceMediaByTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnhanceMediaByTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExecuteFunctionRequest() (request *ExecuteFunctionRequest) {
     request = &ExecuteFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7283,6 +7525,66 @@ func (c *Client) ModifyDefaultStorageRegionWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyDefaultStorageRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEnhanceMediaTemplateRequest() (request *ModifyEnhanceMediaTemplateRequest) {
+    request = &ModifyEnhanceMediaTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyEnhanceMediaTemplate")
+    
+    
+    return
+}
+
+func NewModifyEnhanceMediaTemplateResponse() (response *ModifyEnhanceMediaTemplateResponse) {
+    response = &ModifyEnhanceMediaTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEnhanceMediaTemplate
+// 修改音画质重生模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_STORAGEREGION = "InvalidParameterValue.StorageRegion"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyEnhanceMediaTemplate(request *ModifyEnhanceMediaTemplateRequest) (response *ModifyEnhanceMediaTemplateResponse, err error) {
+    return c.ModifyEnhanceMediaTemplateWithContext(context.Background(), request)
+}
+
+// ModifyEnhanceMediaTemplate
+// 修改音画质重生模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_STORAGEREGION = "InvalidParameterValue.StorageRegion"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyEnhanceMediaTemplateWithContext(ctx context.Context, request *ModifyEnhanceMediaTemplateRequest) (response *ModifyEnhanceMediaTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyEnhanceMediaTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEnhanceMediaTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEnhanceMediaTemplateResponse()
     err = c.Send(request, response)
     return
 }
