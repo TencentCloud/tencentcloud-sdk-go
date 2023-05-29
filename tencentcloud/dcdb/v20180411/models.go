@@ -684,7 +684,7 @@ type CreateDCDBInstanceRequestParams struct {
 	// 实例名称， 可以通过该字段自主的设置实例的名字
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 是否支持IPv6
+	// 是否支持IPv6，0:不支持，1:支持
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
@@ -699,7 +699,7 @@ type CreateDCDBInstanceRequestParams struct {
 	// DCN源实例ID
 	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
 
-	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
+	// 自动续费标记，0:默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1:自动续费，2:明确不自动续费(用户设置)。若业务无续费概念或无需自动续费，需要设置为0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
 	// 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
@@ -758,7 +758,7 @@ type CreateDCDBInstanceRequest struct {
 	// 实例名称， 可以通过该字段自主的设置实例的名字
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 是否支持IPv6
+	// 是否支持IPv6，0:不支持，1:支持
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
@@ -773,7 +773,7 @@ type CreateDCDBInstanceRequest struct {
 	// DCN源实例ID
 	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
 
-	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
+	// 自动续费标记，0:默认状态(用户未设置，即初始状态即手动续费，用户开通了预付费不停服特权也会进行自动续费)， 1:自动续费，2:明确不自动续费(用户设置)。若业务无续费概念或无需自动续费，需要设置为0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
 	// 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
@@ -1138,7 +1138,7 @@ type CreateHourDCDBInstanceRequestParams struct {
 	// 实例名称， 可以通过该字段自主的设置实例的名字
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 是否支持IPv6
+	// 是否支持IPv6，0:不支持，1:支持
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
@@ -1156,7 +1156,7 @@ type CreateHourDCDBInstanceRequestParams struct {
 	// 需要回档的源实例ID
 	RollbackInstanceId *string `json:"RollbackInstanceId,omitempty" name:"RollbackInstanceId"`
 
-	// 回档时间
+	// 回档时间，例如“2021-11-22 00:00:00”
 	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
 
 	// 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
@@ -1209,7 +1209,7 @@ type CreateHourDCDBInstanceRequest struct {
 	// 实例名称， 可以通过该字段自主的设置实例的名字
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 是否支持IPv6
+	// 是否支持IPv6，0:不支持，1:支持
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
@@ -1227,7 +1227,7 @@ type CreateHourDCDBInstanceRequest struct {
 	// 需要回档的源实例ID
 	RollbackInstanceId *string `json:"RollbackInstanceId,omitempty" name:"RollbackInstanceId"`
 
-	// 回档时间
+	// 回档时间，例如“2021-11-22 00:00:00”
 	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
 
 	// 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
@@ -1305,6 +1305,70 @@ func (r *CreateHourDCDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTmpDCDBInstanceRequestParams struct {
+	// 回档实例的ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 回档时间点
+	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
+}
+
+type CreateTmpDCDBInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 回档实例的ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 回档时间点
+	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
+}
+
+func (r *CreateTmpDCDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTmpDCDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "RollbackTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTmpDCDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTmpDCDBInstanceResponseParams struct {
+	// 任务流ID
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateTmpDCDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTmpDCDBInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateTmpDCDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTmpDCDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DBAccount struct {
 	// 用户名
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
@@ -1330,6 +1394,9 @@ type DBAccount struct {
 
 	// 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
 	SlaveConst *int64 `json:"SlaveConst,omitempty" name:"SlaveConst"`
+
+	// 用户最大连接数，0代表无限制	
+	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
 type DBParamValue struct {
@@ -2729,6 +2796,9 @@ type DescribeDCDBInstanceDetailResponseParams struct {
 	// VPC就近访问
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RsAccessStrategy *int64 `json:"RsAccessStrategy,omitempty" name:"RsAccessStrategy"`
+
+	// 尚未回收的网络资源
+	ReservedNetResources []*ReservedNetResource `json:"ReservedNetResources,omitempty" name:"ReservedNetResources"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4837,14 +4907,14 @@ func (r *IsolateDedicatedDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type IsolateHourDCDBInstanceRequestParams struct {
-	// 实例uuid列表
+	// 待升级的实例ID列表。形如：["dcdbt-ow728lmc"]，可以通过 DescribeDCDBInstances 查询实例详情获得。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 type IsolateHourDCDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例uuid列表
+	// 待升级的实例ID列表。形如：["dcdbt-ow728lmc"]，可以通过 DescribeDCDBInstances 查询实例详情获得。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
@@ -6097,6 +6167,23 @@ func (r *RenewDCDBInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RenewDCDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReservedNetResource struct {
+	// 私有网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// VpcId,SubnetId下保留的内网ip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// Vip下的端口
+	Vports []*int64 `json:"Vports,omitempty" name:"Vports"`
+
+	// Vip的回收时间	
+	RecycleTime *string `json:"RecycleTime,omitempty" name:"RecycleTime"`
 }
 
 // Predefined struct for user

@@ -268,7 +268,7 @@ func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlRe
 }
 
 // CreateBatchCancelFlowUrl
-// 注：此接口建会废弃，请使用撤销单个签署流程（CancelFlow）接口。
+// 注：此接口将会废弃，请使用撤销单个签署流程（CancelFlow）接口。
 //
 // 指定需要批量撤回的签署流程Id，获取批量撤销链接。
 //
@@ -287,7 +287,7 @@ func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlReque
 }
 
 // CreateBatchCancelFlowUrl
-// 注：此接口建会废弃，请使用撤销单个签署流程（CancelFlow）接口。
+// 注：此接口将会废弃，请使用撤销单个签署流程（CancelFlow）接口。
 //
 // 指定需要批量撤回的签署流程Id，获取批量撤销链接。
 //

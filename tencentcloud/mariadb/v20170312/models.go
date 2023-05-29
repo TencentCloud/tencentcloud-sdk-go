@@ -659,7 +659,7 @@ type CreateDBInstanceRequestParams struct {
 	// 自动续费标志，1:自动续费，2:不自动续费
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 是否支持IPv6
+	// 是否支持IPv6，0:不支持，1:支持
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
@@ -726,7 +726,7 @@ type CreateDBInstanceRequest struct {
 	// 自动续费标志，1:自动续费，2:不自动续费
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 是否支持IPv6
+	// 是否支持IPv6，0:不支持，1:支持
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
@@ -1073,7 +1073,7 @@ type CreateHourDBInstanceRequestParams struct {
 	// 安全组ID，不传表示不绑定安全组
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
-	// 是否支持IPv6
+	// 是否支持IPv6，0:不支持，1:支持
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
@@ -1090,7 +1090,7 @@ type CreateHourDBInstanceRequestParams struct {
 	// innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化，默认为强同步可退化）。
 	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams"`
 
-	// 回档源实例ID
+	// 回档源实例ID，例如“2021-11-22 00:00:00”
 	RollbackInstanceId *string `json:"RollbackInstanceId,omitempty" name:"RollbackInstanceId"`
 
 	// 回档时间
@@ -1133,7 +1133,7 @@ type CreateHourDBInstanceRequest struct {
 	// 安全组ID，不传表示不绑定安全组
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
-	// 是否支持IPv6
+	// 是否支持IPv6，0:不支持，1:支持
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 
 	// 标签键值对数组
@@ -1150,7 +1150,7 @@ type CreateHourDBInstanceRequest struct {
 	// innodb_page_size（innodb数据页，默认16K），sync_mode（同步模式：0 - 异步； 1 - 强同步；2 - 强同步可退化，默认为强同步可退化）。
 	InitParams []*DBParamValue `json:"InitParams,omitempty" name:"InitParams"`
 
-	// 回档源实例ID
+	// 回档源实例ID，例如“2021-11-22 00:00:00”
 	RollbackInstanceId *string `json:"RollbackInstanceId,omitempty" name:"RollbackInstanceId"`
 
 	// 回档时间
@@ -1316,6 +1316,9 @@ type DBAccount struct {
 
 	// 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
 	SlaveConst *int64 `json:"SlaveConst,omitempty" name:"SlaveConst"`
+
+	// 用户最大连接数，0代表无限制
+	MaxUserConnections *int64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
 type DBBackupTimeConfig struct {
@@ -2345,6 +2348,9 @@ type DescribeDBInstanceDetailResponseParams struct {
 	// VPC就近访问
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RsAccessStrategy *int64 `json:"RsAccessStrategy,omitempty" name:"RsAccessStrategy"`
+
+	// 尚未回收的网络资源
+	ReservedNetResources []*ReservedNetResource `json:"ReservedNetResources,omitempty" name:"ReservedNetResources"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5989,6 +5995,23 @@ func (r *RenewDBInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RenewDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReservedNetResource struct {
+	// 私有网络
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// VpcId,SubnetId下保留的内网ip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// Vip下的端口
+	Vports []*int64 `json:"Vports,omitempty" name:"Vports"`
+
+	// vip的回收时间
+	RecycleTime *string `json:"RecycleTime,omitempty" name:"RecycleTime"`
 }
 
 // Predefined struct for user

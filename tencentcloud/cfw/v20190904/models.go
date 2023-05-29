@@ -4717,7 +4717,7 @@ type ModifyBlockIgnoreListRequestParams struct {
 	// 1封禁列表 2 放通列表
 	RuleType *int64 `json:"RuleType,omitempty" name:"RuleType"`
 
-	// IP、Domain二选一，不能同时为空
+	// IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空
 	IOC []*IocListData `json:"IOC,omitempty" name:"IOC"`
 
 	// 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
@@ -4736,7 +4736,7 @@ type ModifyBlockIgnoreListRequest struct {
 	// 1封禁列表 2 放通列表
 	RuleType *int64 `json:"RuleType,omitempty" name:"RuleType"`
 
-	// IP、Domain二选一，不能同时为空
+	// IP、Domain二选一（注：封禁列表，只能填写IP），不能同时为空
 	IOC []*IocListData `json:"IOC,omitempty" name:"IOC"`
 
 	// 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效

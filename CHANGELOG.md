@@ -1,3 +1,183 @@
+# Release v1.0.666
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 49 次发布
+
+发布时间：2023-05-29 01:15:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogHistogram](https://cloud.tencent.com/document/api/614/71726)
+
+	* 新增入参：SyntaxRule
+
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 57 次发布
+
+发布时间：2023-05-29 01:20:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateTmpDCDBInstance](https://cloud.tencent.com/document/api/557/92836)
+
+修改接口：
+
+* [DescribeDCDBInstanceDetail](https://cloud.tencent.com/document/api/557/89385)
+
+	* 新增出参：ReservedNetResources
+
+
+新增数据结构：
+
+* [ReservedNetResource](https://cloud.tencent.com/document/api/557/16142#ReservedNetResource)
+
+修改数据结构：
+
+* [DBAccount](https://cloud.tencent.com/document/api/557/16142#DBAccount)
+
+	* 新增成员：MaxUserConnections
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 49 次发布
+
+发布时间：2023-05-29 01:21:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/92839)
+* [CreateSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/92838)
+* [DescribeSparkSessionBatchSqlLog](https://cloud.tencent.com/document/api/1342/92837)
+
+新增数据结构：
+
+* [SparkSessionBatchLog](https://cloud.tencent.com/document/api/1342/53778#SparkSessionBatchLog)
+* [SparkSessionBatchLogOperate](https://cloud.tencent.com/document/api/1342/53778#SparkSessionBatchLogOperate)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 80 次发布
+
+发布时间：2023-05-26 14:30:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowSignReview](https://cloud.tencent.com/document/api/1420/78953)
+
+	* 新增入参：OperateType
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 55 次发布
+
+发布时间：2023-05-29 01:31:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstanceDetail](https://cloud.tencent.com/document/api/237/89390)
+
+	* 新增出参：ReservedNetResources
+
+
+新增数据结构：
+
+* [ReservedNetResource](https://cloud.tencent.com/document/api/237/16191#ReservedNetResource)
+
+修改数据结构：
+
+* [DBAccount](https://cloud.tencent.com/document/api/237/16191#DBAccount)
+
+	* 新增成员：MaxUserConnections
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 33 次发布
+
+发布时间：2023-05-29 01:34:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJob](https://cloud.tencent.com/document/api/849/52009)
+
+	* 新增入参：Tags
+
+
+修改数据结构：
+
+* [JobV1](https://cloud.tencent.com/document/api/849/52010#JobV1)
+
+	* 新增成员：Tags
+
+* [TreeResourceItem](https://cloud.tencent.com/document/api/849/52010#TreeResourceItem)
+
+	* 新增成员：RefJobStatusCountSet
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 43 次发布
+
+发布时间：2023-05-29 01:41:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetworkClusterInfoItem](https://cloud.tencent.com/document/api/1285/65614#NetworkClusterInfoItem)
+
+	* 新增成员：ClusterNetworkSettings
+
+
+
+
 # Release v1.0.665
 
 ## 正版曲库直通车(ame) 版本：2019-09-16

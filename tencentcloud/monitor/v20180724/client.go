@@ -7096,7 +7096,7 @@ func NewModifyAlarmPolicyNoticeResponse() (response *ModifyAlarmPolicyNoticeResp
 }
 
 // ModifyAlarmPolicyNotice
-// 告警修改告警策略绑定的告警通知模板
+// 修改告警策略绑定的告警通知模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7110,7 +7110,7 @@ func (c *Client) ModifyAlarmPolicyNotice(request *ModifyAlarmPolicyNoticeRequest
 }
 
 // ModifyAlarmPolicyNotice
-// 告警修改告警策略绑定的告警通知模板
+// 修改告警策略绑定的告警通知模板
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

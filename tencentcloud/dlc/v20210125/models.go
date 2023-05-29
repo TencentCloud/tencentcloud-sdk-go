@@ -829,6 +829,60 @@ func (r *CancelNotebookSessionStatementResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type CancelSparkSessionBatchSQLRequestParams struct {
+	// 批任务唯一标识
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+type CancelSparkSessionBatchSQLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批任务唯一标识
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *CancelSparkSessionBatchSQLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelSparkSessionBatchSQLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelSparkSessionBatchSQLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelSparkSessionBatchSQLResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CancelSparkSessionBatchSQLResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelSparkSessionBatchSQLResponseParams `json:"Response"`
+}
+
+func (r *CancelSparkSessionBatchSQLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelSparkSessionBatchSQLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CancelTaskRequestParams struct {
 	// 任务Id，全局唯一
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -2543,6 +2597,126 @@ func (r *CreateSparkAppTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSparkAppTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSparkSessionBatchSQLRequestParams struct {
+	// DLC Spark作业引擎名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// 运行sql
+	ExecuteSQL *string `json:"ExecuteSQL,omitempty" name:"ExecuteSQL"`
+
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	DriverSize *string `json:"DriverSize,omitempty" name:"DriverSize"`
+
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	ExecutorSize *string `json:"ExecutorSize,omitempty" name:"ExecutorSize"`
+
+	// 指定的Executor数量，默认为1
+	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitempty" name:"ExecutorNumbers"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+
+	// 指定的Session超时时间，单位秒，默认3600秒
+	TimeoutInSecond *int64 `json:"TimeoutInSecond,omitempty" name:"TimeoutInSecond"`
+
+	// Session唯一标识，当指定sessionid，则使用该session运行任务。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 指定要创建的session名称
+	SessionName *string `json:"SessionName,omitempty" name:"SessionName"`
+
+	// Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
+}
+
+type CreateSparkSessionBatchSQLRequest struct {
+	*tchttp.BaseRequest
+	
+	// DLC Spark作业引擎名称
+	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
+
+	// 运行sql
+	ExecuteSQL *string `json:"ExecuteSQL,omitempty" name:"ExecuteSQL"`
+
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	DriverSize *string `json:"DriverSize,omitempty" name:"DriverSize"`
+
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
+	ExecutorSize *string `json:"ExecutorSize,omitempty" name:"ExecutorSize"`
+
+	// 指定的Executor数量，默认为1
+	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitempty" name:"ExecutorNumbers"`
+
+	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+
+	// 指定的Session超时时间，单位秒，默认3600秒
+	TimeoutInSecond *int64 `json:"TimeoutInSecond,omitempty" name:"TimeoutInSecond"`
+
+	// Session唯一标识，当指定sessionid，则使用该session运行任务。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 指定要创建的session名称
+	SessionName *string `json:"SessionName,omitempty" name:"SessionName"`
+
+	// Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
+}
+
+func (r *CreateSparkSessionBatchSQLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSparkSessionBatchSQLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineName")
+	delete(f, "ExecuteSQL")
+	delete(f, "DriverSize")
+	delete(f, "ExecutorSize")
+	delete(f, "ExecutorNumbers")
+	delete(f, "ExecutorMaxNumbers")
+	delete(f, "TimeoutInSecond")
+	delete(f, "SessionId")
+	delete(f, "SessionName")
+	delete(f, "Arguments")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkSessionBatchSQLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSparkSessionBatchSQLResponseParams struct {
+	// 批任务唯一标识
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateSparkSessionBatchSQLResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSparkSessionBatchSQLResponseParams `json:"Response"`
+}
+
+func (r *CreateSparkSessionBatchSQLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSparkSessionBatchSQLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5757,6 +5931,67 @@ func (r *DescribeSparkAppTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSparkSessionBatchSqlLogRequestParams struct {
+	// SparkSQL唯一标识
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+type DescribeSparkSessionBatchSqlLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// SparkSQL唯一标识
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
+func (r *DescribeSparkSessionBatchSqlLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkSessionBatchSqlLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkSessionBatchSqlLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSparkSessionBatchSqlLogResponseParams struct {
+	// 状态：0：初始化、1：成功、2：失败、3：取消、4：异常；
+	State *uint64 `json:"State,omitempty" name:"State"`
+
+	// 日志信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSet []*SparkSessionBatchLog `json:"LogSet,omitempty" name:"LogSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSparkSessionBatchSqlLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSparkSessionBatchSqlLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeSparkSessionBatchSqlLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkSessionBatchSqlLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeStoreLocationRequestParams struct {
 
 }
@@ -8235,6 +8470,38 @@ type SparkJobInfo struct {
 	// Spark 3.2-EMR
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineImageVersion *string `json:"DataEngineImageVersion,omitempty" name:"DataEngineImageVersion"`
+}
+
+type SparkSessionBatchLog struct {
+	// 日志步骤：BEG/CS/DS/DSS/DSF/FINF/RTO/CANCEL/CT/DT/DTS/DTF/FINT/EXCE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Step *string `json:"Step,omitempty" name:"Step"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 日志提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 日志操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operate []*SparkSessionBatchLogOperate `json:"Operate,omitempty" name:"Operate"`
+}
+
+type SparkSessionBatchLogOperate struct {
+	// 操作提示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 操作类型：COPY、LOG、UI、RESULT、List、TAB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operate *string `json:"Operate,omitempty" name:"Operate"`
+
+	// 补充信息：如：taskid、sessionid、sparkui等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Supplement []*KVPair `json:"Supplement,omitempty" name:"Supplement"`
 }
 
 type StatementOutput struct {

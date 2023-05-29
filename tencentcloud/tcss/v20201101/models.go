@@ -28164,6 +28164,10 @@ type NetworkClusterInfoItem struct {
 	// 集群网络插件错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkPolicyPluginError *string `json:"NetworkPolicyPluginError,omitempty" name:"NetworkPolicyPluginError"`
+
+	// 容器网络插件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterNetworkSettings *string `json:"ClusterNetworkSettings,omitempty" name:"ClusterNetworkSettings"`
 }
 
 type NetworkClusterNamespaceInfo struct {

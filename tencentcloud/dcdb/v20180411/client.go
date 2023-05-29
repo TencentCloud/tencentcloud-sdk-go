@@ -64,7 +64,7 @@ func NewActiveHourDCDBInstanceResponse() (response *ActiveHourDCDBInstanceRespon
 }
 
 // ActiveHourDCDBInstance
-// 解隔离DCDB后付费实例
+// 解隔离TDSQL按量计费实例
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -76,7 +76,7 @@ func (c *Client) ActiveHourDCDBInstance(request *ActiveHourDCDBInstanceRequest) 
 }
 
 // ActiveHourDCDBInstance
-// 解隔离DCDB后付费实例
+// 解隔离TDSQL按量计费实例
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -558,7 +558,7 @@ func NewCreateDCDBInstanceResponse() (response *CreateDCDBInstanceResponse) {
 }
 
 // CreateDCDBInstance
-// 本接口（CreateDCDBInstance）用于创建包年包月的云数据库实例，可通过传入实例规格、数据库版本号、购买时长等信息创建云数据库实例。
+// 本接口（CreateDCDBInstance）用于创建包年包月的TDSQL实例，可通过传入实例规格、数据库版本号、购买时长等信息创建云数据库实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -584,7 +584,7 @@ func (c *Client) CreateDCDBInstance(request *CreateDCDBInstanceRequest) (respons
 }
 
 // CreateDCDBInstance
-// 本接口（CreateDCDBInstance）用于创建包年包月的云数据库实例，可通过传入实例规格、数据库版本号、购买时长等信息创建云数据库实例。
+// 本接口（CreateDCDBInstance）用于创建包年包月的TDSQL实例，可通过传入实例规格、数据库版本号、购买时长等信息创建云数据库实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -640,7 +640,7 @@ func NewCreateDedicatedClusterDCDBInstanceResponse() (response *CreateDedicatedC
 }
 
 // CreateDedicatedClusterDCDBInstance
-// 创建独享集群DCDB实例
+// 创建TDSQL独享集群实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
@@ -662,7 +662,7 @@ func (c *Client) CreateDedicatedClusterDCDBInstance(request *CreateDedicatedClus
 }
 
 // CreateDedicatedClusterDCDBInstance
-// 创建独享集群DCDB实例
+// 创建TDSQL独享集群实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
@@ -714,7 +714,7 @@ func NewCreateHourDCDBInstanceResponse() (response *CreateHourDCDBInstanceRespon
 }
 
 // CreateHourDCDBInstance
-// 创建DCDB后付费实例
+// 创建TDSQL按量计费实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -739,7 +739,7 @@ func (c *Client) CreateHourDCDBInstance(request *CreateHourDCDBInstanceRequest) 
 }
 
 // CreateHourDCDBInstance
-// 创建DCDB后付费实例
+// 创建TDSQL按量计费实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -771,6 +771,68 @@ func (c *Client) CreateHourDCDBInstanceWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewCreateHourDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTmpDCDBInstanceRequest() (request *CreateTmpDCDBInstanceRequest) {
+    request = &CreateTmpDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "CreateTmpDCDBInstance")
+    
+    
+    return
+}
+
+func NewCreateTmpDCDBInstanceResponse() (response *CreateTmpDCDBInstanceResponse) {
+    response = &CreateTmpDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTmpDCDBInstance
+// 回档TDSQL实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_RETREATETIME = "InternalError.RetreateTime"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_NOTSUPPORTEDPAYMODE = "InvalidParameter.NotSupportedPayMode"
+//  RESOURCEINUSE_TEMPINSTANCEEXIST = "ResourceInUse.TempInstanceExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateTmpDCDBInstance(request *CreateTmpDCDBInstanceRequest) (response *CreateTmpDCDBInstanceResponse, err error) {
+    return c.CreateTmpDCDBInstanceWithContext(context.Background(), request)
+}
+
+// CreateTmpDCDBInstance
+// 回档TDSQL实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_RETREATETIME = "InternalError.RetreateTime"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_NOTSUPPORTEDPAYMODE = "InvalidParameter.NotSupportedPayMode"
+//  RESOURCEINUSE_TEMPINSTANCEEXIST = "ResourceInUse.TempInstanceExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateTmpDCDBInstanceWithContext(ctx context.Context, request *CreateTmpDCDBInstanceRequest) (response *CreateTmpDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateTmpDCDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTmpDCDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTmpDCDBInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1434,7 +1496,7 @@ func NewDescribeDCDBInstanceDetailResponse() (response *DescribeDCDBInstanceDeta
 }
 
 // DescribeDCDBInstanceDetail
-// 本接口（DescribeDCDBInstanceDetail）用于获取DCDB实例详情
+// 本接口（DescribeDCDBInstanceDetail）用于获取TDSQL实例详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
@@ -1448,7 +1510,7 @@ func (c *Client) DescribeDCDBInstanceDetail(request *DescribeDCDBInstanceDetailR
 }
 
 // DescribeDCDBInstanceDetail
-// 本接口（DescribeDCDBInstanceDetail）用于获取DCDB实例详情
+// 本接口（DescribeDCDBInstanceDetail）用于获取TDSQL实例详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
@@ -2600,7 +2662,7 @@ func NewDestroyDCDBInstanceResponse() (response *DestroyDCDBInstanceResponse) {
 }
 
 // DestroyDCDBInstance
-// 本接口(DestroyDCDBInstance)用于销毁已隔离的包年包月实例。
+// 本接口(DestroyDCDBInstance)用于销毁已隔离的TDSQL包年包月实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2615,7 +2677,7 @@ func (c *Client) DestroyDCDBInstance(request *DestroyDCDBInstanceRequest) (respo
 }
 
 // DestroyDCDBInstance
-// 本接口(DestroyDCDBInstance)用于销毁已隔离的包年包月实例。
+// 本接口(DestroyDCDBInstance)用于销毁已隔离的TDSQL包年包月实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2660,7 +2722,7 @@ func NewDestroyHourDCDBInstanceResponse() (response *DestroyHourDCDBInstanceResp
 }
 
 // DestroyHourDCDBInstance
-// 本接口（DestroyHourDCDBInstance）用于销毁按量计费实例。
+// 本接口（DestroyHourDCDBInstance）用于TDSQL销毁按量计费实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2675,7 +2737,7 @@ func (c *Client) DestroyHourDCDBInstance(request *DestroyHourDCDBInstanceRequest
 }
 
 // DestroyHourDCDBInstance
-// 本接口（DestroyHourDCDBInstance）用于销毁按量计费实例。
+// 本接口（DestroyHourDCDBInstance）用于TDSQL销毁按量计费实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3066,7 +3128,7 @@ func NewIsolateHourDCDBInstanceResponse() (response *IsolateHourDCDBInstanceResp
 }
 
 // IsolateHourDCDBInstance
-// 隔离DCDB后付费实例
+// 隔离TDSQL按量计费实例
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3078,7 +3140,7 @@ func (c *Client) IsolateHourDCDBInstance(request *IsolateHourDCDBInstanceRequest
 }
 
 // IsolateHourDCDBInstance
-// 隔离DCDB后付费实例
+// 隔离TDSQL按量计费实例
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4396,7 +4458,7 @@ func NewUpgradeDedicatedDCDBInstanceResponse() (response *UpgradeDedicatedDCDBIn
 }
 
 // UpgradeDedicatedDCDBInstance
-// 本接口（UpgradeDedicatedDCDBInstance）用于升级独享DCDB实例
+// 本接口（UpgradeDedicatedDCDBInstance）用于升级TDSQL独享集群实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
@@ -4412,7 +4474,7 @@ func (c *Client) UpgradeDedicatedDCDBInstance(request *UpgradeDedicatedDCDBInsta
 }
 
 // UpgradeDedicatedDCDBInstance
-// 本接口（UpgradeDedicatedDCDBInstance）用于升级独享DCDB实例
+// 本接口（UpgradeDedicatedDCDBInstance）用于升级TDSQL独享集群实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
@@ -4458,7 +4520,7 @@ func NewUpgradeHourDCDBInstanceResponse() (response *UpgradeHourDCDBInstanceResp
 }
 
 // UpgradeHourDCDBInstance
-// 本接口（UpgradeHourDCDBInstance）用于升级后付费分布式数据库实例。
+// 本接口（UpgradeHourDCDBInstance）用于升级分布式数据库TDSQL按量计费实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
@@ -4475,7 +4537,7 @@ func (c *Client) UpgradeHourDCDBInstance(request *UpgradeHourDCDBInstanceRequest
 }
 
 // UpgradeHourDCDBInstance
-// 本接口（UpgradeHourDCDBInstance）用于升级后付费分布式数据库实例。
+// 本接口（UpgradeHourDCDBInstance）用于升级分布式数据库TDSQL按量计费实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"

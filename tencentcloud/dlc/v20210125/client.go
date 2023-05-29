@@ -619,6 +619,62 @@ func (c *Client) CancelNotebookSessionStatementBatchWithContext(ctx context.Cont
     return
 }
 
+func NewCancelSparkSessionBatchSQLRequest() (request *CancelSparkSessionBatchSQLRequest) {
+    request = &CancelSparkSessionBatchSQLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CancelSparkSessionBatchSQL")
+    
+    
+    return
+}
+
+func NewCancelSparkSessionBatchSQLResponse() (response *CancelSparkSessionBatchSQLResponse) {
+    response = &CancelSparkSessionBatchSQLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelSparkSessionBatchSQL
+// 本接口（CancelSparkSessionBatchSQL）用于取消Spark SQL批任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CancelSparkSessionBatchSQL(request *CancelSparkSessionBatchSQLRequest) (response *CancelSparkSessionBatchSQLResponse, err error) {
+    return c.CancelSparkSessionBatchSQLWithContext(context.Background(), request)
+}
+
+// CancelSparkSessionBatchSQL
+// 本接口（CancelSparkSessionBatchSQL）用于取消Spark SQL批任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CancelSparkSessionBatchSQLWithContext(ctx context.Context, request *CancelSparkSessionBatchSQLRequest) (response *CancelSparkSessionBatchSQLResponse, err error) {
+    if request == nil {
+        request = NewCancelSparkSessionBatchSQLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelSparkSessionBatchSQL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelSparkSessionBatchSQLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1561,6 +1617,68 @@ func (c *Client) CreateSparkAppTaskWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateSparkAppTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSparkSessionBatchSQLRequest() (request *CreateSparkSessionBatchSQLRequest) {
+    request = &CreateSparkSessionBatchSQLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateSparkSessionBatchSQL")
+    
+    
+    return
+}
+
+func NewCreateSparkSessionBatchSQLResponse() (response *CreateSparkSessionBatchSQLResponse) {
+    response = &CreateSparkSessionBatchSQLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSparkSessionBatchSQL
+// 本接口（CreateSparkSessionBatchSQL）用于提交Spark SQL批任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.ResourceNotFoundCode_SessionInsufficientResources"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CreateSparkSessionBatchSQL(request *CreateSparkSessionBatchSQLRequest) (response *CreateSparkSessionBatchSQLResponse, err error) {
+    return c.CreateSparkSessionBatchSQLWithContext(context.Background(), request)
+}
+
+// CreateSparkSessionBatchSQL
+// 本接口（CreateSparkSessionBatchSQL）用于提交Spark SQL批任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.ResourceNotFoundCode_SessionInsufficientResources"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
+func (c *Client) CreateSparkSessionBatchSQLWithContext(ctx context.Context, request *CreateSparkSessionBatchSQLRequest) (response *CreateSparkSessionBatchSQLResponse, err error) {
+    if request == nil {
+        request = NewCreateSparkSessionBatchSQLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSparkSessionBatchSQL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSparkSessionBatchSQLResponse()
     err = c.Send(request, response)
     return
 }
@@ -3509,6 +3627,62 @@ func (c *Client) DescribeSparkAppTasksWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeSparkAppTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSparkSessionBatchSqlLogRequest() (request *DescribeSparkSessionBatchSqlLogRequest) {
+    request = &DescribeSparkSessionBatchSqlLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkSessionBatchSqlLog")
+    
+    
+    return
+}
+
+func NewDescribeSparkSessionBatchSqlLogResponse() (response *DescribeSparkSessionBatchSqlLogResponse) {
+    response = &DescribeSparkSessionBatchSqlLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSparkSessionBatchSqlLog
+// 本接口（DescribeSparkSessionBatchSqlLog）用于获取SparkSQL批任务日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSparkSessionBatchSqlLog(request *DescribeSparkSessionBatchSqlLogRequest) (response *DescribeSparkSessionBatchSqlLogResponse, err error) {
+    return c.DescribeSparkSessionBatchSqlLogWithContext(context.Background(), request)
+}
+
+// DescribeSparkSessionBatchSqlLog
+// 本接口（DescribeSparkSessionBatchSqlLog）用于获取SparkSQL批任务日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSparkSessionBatchSqlLogWithContext(ctx context.Context, request *DescribeSparkSessionBatchSqlLogRequest) (response *DescribeSparkSessionBatchSqlLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeSparkSessionBatchSqlLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSparkSessionBatchSqlLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSparkSessionBatchSqlLogResponse()
     err = c.Send(request, response)
     return
 }

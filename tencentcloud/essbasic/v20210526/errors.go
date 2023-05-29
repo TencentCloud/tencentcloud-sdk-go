@@ -239,6 +239,9 @@ const (
 	// 资源类型错误。
 	INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
 
+	// 角色ID不正确
+	INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+
 	// 文件内容敏感信息。
 	INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
 
@@ -385,6 +388,9 @@ const (
 
 	// 未通过个人实名。
 	OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+
+	// 无权限进行操作
+	OPERATIONDENIED_NOPERMISSIONUSERESOURCE = "OperationDenied.NoPermissionUseResource"
 
 	// 流程配额不足。
 	OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"

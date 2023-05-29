@@ -682,6 +682,9 @@ type CreateJobRequestParams struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 作业标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CreateJobRequest struct {
@@ -713,6 +716,9 @@ type CreateJobRequest struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 作业标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -736,6 +742,7 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "FolderId")
 	delete(f, "FlinkVersion")
 	delete(f, "WorkSpaceId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}
@@ -2347,6 +2354,10 @@ type JobV1 struct {
 	// 工作空间名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkSpaceName *string `json:"WorkSpaceName,omitempty" name:"WorkSpaceName"`
+
+	// 作业标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user
@@ -2878,6 +2889,10 @@ type TreeResourceItem struct {
 	// 目录ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
+
+	// 分状态统计关联作业数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefJobStatusCountSet []*RefJobStatusCountItem `json:"RefJobStatusCountSet,omitempty" name:"RefJobStatusCountSet"`
 }
 
 // Predefined struct for user

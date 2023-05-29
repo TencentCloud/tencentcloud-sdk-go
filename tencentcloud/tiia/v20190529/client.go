@@ -210,10 +210,9 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 //
 // - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
 //
-// 
-//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_GROUPCOUNTEXCEEDED = "FailedOperation.GroupCountExceeded"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_PARAMETEREMPTY = "FailedOperation.ParameterEmpty"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
@@ -292,10 +291,9 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
 //
 // - 可前往 [图像搜索](https://cloud.tencent.com/document/product/1589) 产品文档中查看更多产品信息。
 //
-// 
-//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_GROUPCOUNTEXCEEDED = "FailedOperation.GroupCountExceeded"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_PARAMETEREMPTY = "FailedOperation.ParameterEmpty"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"

@@ -29,6 +29,9 @@ const (
 	// 图片内容为空。
 	FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
 
+	// 图库数量超出限制。
+	FAILEDOPERATION_GROUPCOUNTEXCEEDED = "FailedOperation.GroupCountExceeded"
+
 	// 图片解码失败。
 	FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 

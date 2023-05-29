@@ -1066,6 +1066,12 @@ type ChannelCreateFlowSignReviewRequestParams struct {
 
 	// 签署节点审核时需要指定
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 操作类型，默认：SignReview；SignReview:签署审核，CreateReview：发起审核
+	// 注：接口通过该字段区分操作类型
+	// 该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
+	// 若想使用发起审核，请指定该字段为：CreateReview
+	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 }
 
 type ChannelCreateFlowSignReviewRequest struct {
@@ -1089,6 +1095,12 @@ type ChannelCreateFlowSignReviewRequest struct {
 
 	// 签署节点审核时需要指定
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 操作类型，默认：SignReview；SignReview:签署审核，CreateReview：发起审核
+	// 注：接口通过该字段区分操作类型
+	// 该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
+	// 若想使用发起审核，请指定该字段为：CreateReview
+	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 }
 
 func (r *ChannelCreateFlowSignReviewRequest) ToJsonString() string {
@@ -1108,6 +1120,7 @@ func (r *ChannelCreateFlowSignReviewRequest) FromJsonString(s string) error {
 	delete(f, "ReviewType")
 	delete(f, "ReviewMessage")
 	delete(f, "RecipientId")
+	delete(f, "OperateType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowSignReviewRequest has unknown keys!", "")
 	}
@@ -1370,7 +1383,7 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 合同流程配置信息
 	FlowOption *CreateFlowOption `json:"FlowOption,omitempty" name:"FlowOption"`
 
-	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+	// 通过flowid快速获得之前成功通过页面发起的合同生成链接
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
@@ -1404,7 +1417,7 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 合同流程配置信息
 	FlowOption *CreateFlowOption `json:"FlowOption,omitempty" name:"FlowOption"`
 
-	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+	// 通过flowid快速获得之前成功通过页面发起的合同生成链接
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
@@ -1740,7 +1753,7 @@ type ChannelDeleteRoleUsersRequestParams struct {
 	// 代理信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 角色Id
+	// 角色Id（非超管或法人角色Id）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
 	// 用户列表
@@ -1756,7 +1769,7 @@ type ChannelDeleteRoleUsersRequest struct {
 	// 代理信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 角色Id
+	// 角色Id（非超管或法人角色Id）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
 	// 用户列表
