@@ -649,6 +649,7 @@ func NewCreateCmqQueueResponse() (response *CreateCmqQueueResponse) {
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
     return c.CreateCmqQueueWithContext(context.Background(), request)
 }
@@ -669,6 +670,7 @@ func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *Creat
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCmqQueueWithContext(ctx context.Context, request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
     if request == nil {
         request = NewCreateCmqQueueRequest()
@@ -3916,6 +3918,7 @@ func NewDescribeNamespaceBundlesOptResponse() (response *DescribeNamespaceBundle
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PULSARADMINERROR = "FailedOperation.PulsarAdminError"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 func (c *Client) DescribeNamespaceBundlesOpt(request *DescribeNamespaceBundlesOptRequest) (response *DescribeNamespaceBundlesOptResponse, err error) {
     return c.DescribeNamespaceBundlesOptWithContext(context.Background(), request)
 }
@@ -3925,6 +3928,7 @@ func (c *Client) DescribeNamespaceBundlesOpt(request *DescribeNamespaceBundlesOp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PULSARADMINERROR = "FailedOperation.PulsarAdminError"
+//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
 func (c *Client) DescribeNamespaceBundlesOptWithContext(ctx context.Context, request *DescribeNamespaceBundlesOptRequest) (response *DescribeNamespaceBundlesOptResponse, err error) {
     if request == nil {
         request = NewDescribeNamespaceBundlesOptRequest()

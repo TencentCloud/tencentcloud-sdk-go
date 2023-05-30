@@ -920,6 +920,60 @@ func (r *CreateMigrationServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateModifyCheckSyncJobRequestParams struct {
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+type CreateModifyCheckSyncJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *CreateModifyCheckSyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModifyCheckSyncJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModifyCheckSyncJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModifyCheckSyncJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateModifyCheckSyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModifyCheckSyncJobResponseParams `json:"Response"`
+}
+
+func (r *CreateModifyCheckSyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModifyCheckSyncJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSyncJobRequestParams struct {
 	// 付款类型, 如：PrePay(表示包年包月)、PostPay(表示按时按量)
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
@@ -2194,6 +2248,79 @@ func (r *DescribeMigrationJobsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeModifyCheckSyncJobResultRequestParams struct {
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+type DescribeModifyCheckSyncJobResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *DescribeModifyCheckSyncJobResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModifyCheckSyncJobResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModifyCheckSyncJobResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModifyCheckSyncJobResultResponseParams struct {
+	// 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 校验的步骤总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepCount *uint64 `json:"StepCount,omitempty" name:"StepCount"`
+
+	// 当前所在步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepCur *uint64 `json:"StepCur,omitempty" name:"StepCur"`
+
+	// 总体进度，范围为[0,100]	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 步骤详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepInfos []*StepInfo `json:"StepInfos,omitempty" name:"StepInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModifyCheckSyncJobResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModifyCheckSyncJobResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeModifyCheckSyncJobResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModifyCheckSyncJobResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSyncJobsRequestParams struct {
 	// 同步任务id，如sync-werwfs23
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
@@ -2517,6 +2644,24 @@ type DifferenceItem struct {
 	// 完成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedAt *string `json:"FinishedAt,omitempty" name:"FinishedAt"`
+}
+
+type DynamicOptions struct {
+	// 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)，PartialDDL(自定义,和DdlOptions一起起作用 )；必填、dts会用该值覆盖原有的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpTypes []*string `json:"OpTypes,omitempty" name:"OpTypes"`
+
+	// DDL同步选项，具体描述要同步那些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DdlOptions []*DdlOption `json:"DdlOptions,omitempty" name:"DdlOptions"`
+
+	// 冲突处理选项，ReportError(报错)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖); 目前目标端为kafka的链路不支持修改该配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConflictHandleType *string `json:"ConflictHandleType,omitempty" name:"ConflictHandleType"`
+
+	// 冲突处理的详细选项，如条件覆盖中的条件行和条件操作；不能部分更新该选项的内部字段；有更新时、需要全量更新该字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConflictHandleOption *ConflictHandleOption `json:"ConflictHandleOption,omitempty" name:"ConflictHandleOption"`
 }
 
 type Endpoint struct {
@@ -3323,6 +3468,74 @@ func (r *ModifyMigrationJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySyncJobConfigRequestParams struct {
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 修改后的同步对象
+	DynamicObjects *Objects `json:"DynamicObjects,omitempty" name:"DynamicObjects"`
+
+	// 修改后的同步任务选项
+	DynamicOptions *DynamicOptions `json:"DynamicOptions,omitempty" name:"DynamicOptions"`
+}
+
+type ModifySyncJobConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 修改后的同步对象
+	DynamicObjects *Objects `json:"DynamicObjects,omitempty" name:"DynamicObjects"`
+
+	// 修改后的同步任务选项
+	DynamicOptions *DynamicOptions `json:"DynamicOptions,omitempty" name:"DynamicOptions"`
+}
+
+func (r *ModifySyncJobConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySyncJobConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "DynamicObjects")
+	delete(f, "DynamicOptions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySyncJobConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySyncJobConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifySyncJobConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySyncJobConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifySyncJobConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySyncJobConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Objects struct {
 	// 同步对象类型 Partial(部分对象)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4092,6 +4305,60 @@ func (r *StartMigrateJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartMigrateJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartModifySyncJobRequestParams struct {
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+type StartModifySyncJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步任务id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+}
+
+func (r *StartModifySyncJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartModifySyncJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartModifySyncJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartModifySyncJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartModifySyncJobResponse struct {
+	*tchttp.BaseResponse
+	Response *StartModifySyncJobResponseParams `json:"Response"`
+}
+
+func (r *StartModifySyncJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartModifySyncJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

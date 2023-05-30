@@ -444,6 +444,9 @@ type ClusterOverview struct {
 	// 登录节点数量。
 	LoginNodeCount *int64 `json:"LoginNodeCount,omitempty" name:"LoginNodeCount"`
 
+	// 弹性伸缩类型。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。
+	AutoScalingType *string `json:"AutoScalingType,omitempty" name:"AutoScalingType"`
+
 	// 集群所属私有网络ID。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }

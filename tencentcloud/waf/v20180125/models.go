@@ -4780,6 +4780,9 @@ type PostAttackDownloadTaskRequestParams struct {
 
 	// 默认为desc，可以取值desc和asc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 下载的日志条数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type PostAttackDownloadTaskRequest struct {
@@ -4802,6 +4805,9 @@ type PostAttackDownloadTaskRequest struct {
 
 	// 默认为desc，可以取值desc和asc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 下载的日志条数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 func (r *PostAttackDownloadTaskRequest) ToJsonString() string {
@@ -4822,6 +4828,7 @@ func (r *PostAttackDownloadTaskRequest) FromJsonString(s string) error {
 	delete(f, "QueryString")
 	delete(f, "TaskName")
 	delete(f, "Sort")
+	delete(f, "Count")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PostAttackDownloadTaskRequest has unknown keys!", "")
 	}
@@ -4868,6 +4875,9 @@ type QPSPackageNew struct {
 
 	// 套餐购买地域，clb-waf暂时没有用到
 	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 计费项
+	BillingItem *string `json:"BillingItem,omitempty" name:"BillingItem"`
 }
 
 type ResponseCode struct {
@@ -4900,7 +4910,7 @@ type RuleList struct {
 
 // Predefined struct for user
 type SearchAccessLogRequestParams struct {
-	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
+	// 客户要查询的日志主题ID，每个客户都有对应的一个主题，新版本此字段填空字符串
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
@@ -4915,17 +4925,21 @@ type SearchAccessLogRequestParams struct {
 	// 单次查询返回的日志条数，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。
+	// 新版本此字段填空填
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 第几页，从0开始。新版本接口字段
+	Page *int64 `json:"Page,omitempty" name:"Page"`
 }
 
 type SearchAccessLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
+	// 客户要查询的日志主题ID，每个客户都有对应的一个主题，新版本此字段填空字符串
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
@@ -4940,11 +4954,15 @@ type SearchAccessLogRequest struct {
 	// 单次查询返回的日志条数，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。
+	// 新版本此字段填空填
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 第几页，从0开始。新版本接口字段
+	Page *int64 `json:"Page,omitempty" name:"Page"`
 }
 
 func (r *SearchAccessLogRequest) ToJsonString() string {
@@ -4966,6 +4984,7 @@ func (r *SearchAccessLogRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Context")
 	delete(f, "Sort")
+	delete(f, "Page")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchAccessLogRequest has unknown keys!", "")
 	}
@@ -5040,6 +5059,9 @@ type SearchAttackLogRequestParams struct {
 
 	// 默认为desc，可以取值desc和asc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 第几页，从0开始
+	Page *int64 `json:"Page,omitempty" name:"Page"`
 }
 
 type SearchAttackLogRequest struct {
@@ -5065,6 +5087,9 @@ type SearchAttackLogRequest struct {
 
 	// 默认为desc，可以取值desc和asc
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 第几页，从0开始
+	Page *int64 `json:"Page,omitempty" name:"Page"`
 }
 
 func (r *SearchAttackLogRequest) ToJsonString() string {
@@ -5086,6 +5111,7 @@ func (r *SearchAttackLogRequest) FromJsonString(s string) error {
 	delete(f, "QueryString")
 	delete(f, "Count")
 	delete(f, "Sort")
+	delete(f, "Page")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchAttackLogRequest has unknown keys!", "")
 	}

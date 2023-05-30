@@ -3068,6 +3068,7 @@ func NewSearchAttackLogResponse() (response *SearchAttackLogResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchAttackLog(request *SearchAttackLogRequest) (response *SearchAttackLogResponse, err error) {
     return c.SearchAttackLogWithContext(context.Background(), request)
 }
@@ -3079,6 +3080,7 @@ func (c *Client) SearchAttackLog(request *SearchAttackLogRequest) (response *Sea
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchAttackLogWithContext(ctx context.Context, request *SearchAttackLogRequest) (response *SearchAttackLogResponse, err error) {
     if request == nil {
         request = NewSearchAttackLogRequest()

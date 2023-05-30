@@ -2894,6 +2894,22 @@ type ComponentsInfo struct {
 	// 组件版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 可修复版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixedVersion *string `json:"FixedVersion,omitempty" name:"FixedVersion"`
+
+	// 路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 组件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 // Predefined struct for user

@@ -7364,6 +7364,32 @@ func (r *DescribeWorkflowsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiagnoseResult struct {
+	// 诊断出的异常类别。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitempty" name:"Category"`
+
+	// 诊断出的具体异常类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 诊断出异常开始的PTS时间戳。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *float64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 诊断出的异常描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 诊断到异常的北京时间，采用 ISO 日期格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DateTime *string `json:"DateTime,omitempty" name:"DateTime"`
+
+	// 诊断出的异常级别。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SeverityLevel *string `json:"SeverityLevel,omitempty" name:"SeverityLevel"`
+}
+
 // Predefined struct for user
 type DisableScheduleRequestParams struct {
 	// 编排唯一表示。
@@ -8378,6 +8404,33 @@ type InputAddress struct {
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
+type LiveStreamAiAnalysisResultInfo struct {
+	// 直播分析子任务结果，暂时只支持直播拆条。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultSet []*LiveStreamAiAnalysisResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
+}
+
+type LiveStreamAiAnalysisResultItem struct {
+	// 结果的类型，取值范围：
+	// <li>SegmentRecognition：拆条。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 拆条结果，当 Type 为
+	// SegmentRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentResultSet []*SegmentRecognitionItem `json:"SegmentResultSet,omitempty" name:"SegmentResultSet"`
+}
+
+type LiveStreamAiQualityControlResultInfo struct {
+	// 质检结果列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityControlResults []*QualityControlResult `json:"QualityControlResults,omitempty" name:"QualityControlResults"`
+
+	// 格式诊断结果列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnoseResults []*DiagnoseResult `json:"DiagnoseResults,omitempty" name:"DiagnoseResults"`
+}
+
 type LiveStreamAiRecognitionResultInfo struct {
 	// 内容识别结果列表。
 	ResultSet []*LiveStreamAiRecognitionResultItem `json:"ResultSet,omitempty" name:"ResultSet"`
@@ -8577,6 +8630,18 @@ type LiveStreamAsrFullTextRecognitionResult struct {
 
 	// 识别片段置信度。取值：0~100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别开始UTC时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 识别结束UTC时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 稳态标记。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SteadyState *bool `json:"SteadyState,omitempty" name:"SteadyState"`
 }
 
 type LiveStreamAsrWordsRecognitionResult struct {
@@ -8717,6 +8782,18 @@ type LiveStreamTransTextRecognitionResult struct {
 
 	// 翻译文本。
 	Trans *string `json:"Trans,omitempty" name:"Trans"`
+
+	// 翻译开始UTC时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 翻译结束UTC时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 稳态标记。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SteadyState *bool `json:"SteadyState,omitempty" name:"SteadyState"`
 }
 
 type LowLightEnhanceConfig struct {
@@ -11500,6 +11577,14 @@ type ParseLiveStreamProcessNotificationResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiRecognitionResultInfo *LiveStreamAiRecognitionResultInfo `json:"AiRecognitionResultInfo,omitempty" name:"AiRecognitionResultInfo"`
 
+	// 内容分析结果，当 NotificationType 为 AiAnalysisResult 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiAnalysisResultInfo *LiveStreamAiAnalysisResultInfo `json:"AiAnalysisResultInfo,omitempty" name:"AiAnalysisResultInfo"`
+
+	// 媒体质检结果，当 NotificationType 为 AiQualityControlResult 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiQualityControlResultInfo *LiveStreamAiQualityControlResultInfo `json:"AiQualityControlResultInfo,omitempty" name:"AiQualityControlResultInfo"`
+
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
@@ -12888,6 +12973,21 @@ type ScratchRepairConfig struct {
 	// 默认：0.0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
+}
+
+type SegmentRecognitionItem struct {
+	// 置信度。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 片段起始时间偏移。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 片段结束时间偏移。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 拆条片段URL。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentUrl *string `json:"SegmentUrl,omitempty" name:"SegmentUrl"`
 }
 
 type SharpEnhanceConfig struct {

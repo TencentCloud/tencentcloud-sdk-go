@@ -38,6 +38,9 @@ const (
 	// 流程未找到关联的电子文件信息，请检查操作步骤，检查参数，并在修改后重试。
 	FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 
+	// 当前无可用的许可
+	FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+
 	// 签署审核未通过，请先完成审核。
 	FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
 
@@ -265,6 +268,9 @@ const (
 
 	// 不支持的通知类型，请检查并联系客服处理。
 	INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+
+	// 参数Offset不正确
+	INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
 
 	// 不合法的企业名称，请修改后重试。
 	INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"

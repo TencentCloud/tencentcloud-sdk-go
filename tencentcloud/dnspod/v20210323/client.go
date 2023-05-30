@@ -1246,6 +1246,7 @@ func NewDeleteDomainBatchResponse() (response *DeleteDomainBatchResponse) {
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 //  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
 func (c *Client) DeleteDomainBatch(request *DeleteDomainBatchRequest) (response *DeleteDomainBatchResponse, err error) {
     return c.DeleteDomainBatchWithContext(context.Background(), request)
 }
@@ -1263,6 +1264,7 @@ func (c *Client) DeleteDomainBatch(request *DeleteDomainBatchRequest) (response 
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 //  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
 func (c *Client) DeleteDomainBatchWithContext(ctx context.Context, request *DeleteDomainBatchRequest) (response *DeleteDomainBatchResponse, err error) {
     if request == nil {
         request = NewDeleteDomainBatchRequest()
@@ -1978,6 +1980,7 @@ func NewDescribeDomainLogListResponse() (response *DescribeDomainLogListResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
@@ -1993,6 +1996,7 @@ func (c *Client) DescribeDomainLogList(request *DescribeDomainLogListRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
@@ -3435,6 +3439,7 @@ func NewDownloadSnapshotResponse() (response *DownloadSnapshotResponse) {
 // 下载快照
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
@@ -3450,6 +3455,7 @@ func (c *Client) DownloadSnapshot(request *DownloadSnapshotRequest) (response *D
 // 下载快照
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"

@@ -553,6 +553,7 @@ func NewDeleteTemplateResponse() (response *DeleteTemplateResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) DeleteTemplate(request *DeleteTemplateRequest) (response *DeleteTemplateResponse, err error) {
     return c.DeleteTemplateWithContext(context.Background(), request)
 }
@@ -567,6 +568,7 @@ func (c *Client) DeleteTemplate(request *DeleteTemplateRequest) (response *Delet
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER_TEMPLATEIDISEMPTY = "MissingParameter.TemplateIdIsEmpty"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) DeleteTemplateWithContext(ctx context.Context, request *DeleteTemplateRequest) (response *DeleteTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteTemplateRequest()

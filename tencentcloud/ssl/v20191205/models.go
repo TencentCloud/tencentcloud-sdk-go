@@ -585,6 +585,9 @@ type ClbListenerRule struct {
 type CommitCertificateInformationRequestParams struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 域名验证方式
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 }
 
 type CommitCertificateInformationRequest struct {
@@ -592,6 +595,9 @@ type CommitCertificateInformationRequest struct {
 	
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 域名验证方式
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
 }
 
 func (r *CommitCertificateInformationRequest) ToJsonString() string {
@@ -607,6 +613,7 @@ func (r *CommitCertificateInformationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "CertificateId")
+	delete(f, "VerifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitCertificateInformationRequest has unknown keys!", "")
 	}

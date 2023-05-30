@@ -1726,6 +1726,7 @@ func NewCreateIntegrationUserRolesResponse() (response *CreateIntegrationUserRol
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
@@ -1739,6 +1740,7 @@ func (c *Client) CreateIntegrationUserRoles(request *CreateIntegrationUserRolesR
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
@@ -2107,78 +2109,7 @@ func NewCreatePreparedPersonalEsignResponse() (response *CreatePreparedPersonalE
 // 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
-//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
-//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
-//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
-//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
-//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
-//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
-//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
-//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
-//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
-//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
-//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
-//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
-//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
-//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
-//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
-//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
-//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
-//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
-//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
-//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
-//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
-//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
-//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
-//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
-//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
-//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
-//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
-//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
-//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
-//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
-//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
-//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
-//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
-//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
-//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
-//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
-//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
-//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
-//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
-//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
-//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
-//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
-//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
-//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
-//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
-//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
-//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
 func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsignRequest) (response *CreatePreparedPersonalEsignResponse, err error) {
     return c.CreatePreparedPersonalEsignWithContext(context.Background(), request)
 }
@@ -2187,78 +2118,7 @@ func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsig
 // 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
-//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
-//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
-//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
-//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
-//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
-//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
-//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
-//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
-//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
-//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
-//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
-//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
-//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
-//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
-//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
-//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
-//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
-//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
-//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
-//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
-//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
-//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
-//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
-//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
-//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
-//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
-//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
-//  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
-//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
-//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
-//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
-//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
-//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
-//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
-//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
-//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
-//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
-//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
-//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
-//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
-//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
-//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
-//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
-//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
-//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
-//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
-//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
-//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
 func (c *Client) CreatePreparedPersonalEsignWithContext(ctx context.Context, request *CreatePreparedPersonalEsignRequest) (response *CreatePreparedPersonalEsignResponse, err error) {
     if request == nil {
         request = NewCreatePreparedPersonalEsignRequest()
@@ -2832,13 +2692,7 @@ func NewDeleteIntegrationRoleUsersResponse() (response *DeleteIntegrationRoleUse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
-//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
-//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
     return c.DeleteIntegrationRoleUsersWithContext(context.Background(), request)
 }
@@ -2848,13 +2702,7 @@ func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
-//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
-//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 func (c *Client) DeleteIntegrationRoleUsersWithContext(ctx context.Context, request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
     if request == nil {
         request = NewDeleteIntegrationRoleUsersRequest()
@@ -3340,6 +3188,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -3370,6 +3219,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -3541,7 +3391,9 @@ func NewDescribeIntegrationRolesResponse() (response *DescribeIntegrationRolesRe
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesRequest) (response *DescribeIntegrationRolesResponse, err error) {
@@ -3556,7 +3408,9 @@ func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesReque
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
+//  INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationRolesWithContext(ctx context.Context, request *DescribeIntegrationRolesRequest) (response *DescribeIntegrationRolesResponse, err error) {
@@ -4043,6 +3897,7 @@ func NewModifyApplicationCallbackInfoResponse() (response *ModifyApplicationCall
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ModifyApplicationCallbackInfo(request *ModifyApplicationCallbackInfoRequest) (response *ModifyApplicationCallbackInfoResponse, err error) {
@@ -4059,6 +3914,7 @@ func (c *Client) ModifyApplicationCallbackInfo(request *ModifyApplicationCallbac
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ModifyApplicationCallbackInfoWithContext(ctx context.Context, request *ModifyApplicationCallbackInfoRequest) (response *ModifyApplicationCallbackInfoResponse, err error) {
@@ -4235,6 +4091,7 @@ func NewUnbindEmployeeUserIdWithClientOpenIdResponse() (response *UnbindEmployee
 // 将存在绑定关系的电子签系统员工userId与客户系统员工openId进行解绑
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4248,6 +4105,7 @@ func (c *Client) UnbindEmployeeUserIdWithClientOpenId(request *UnbindEmployeeUse
 // 将存在绑定关系的电子签系统员工userId与客户系统员工openId进行解绑
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4291,11 +4149,9 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 // 更新员工信息(姓名，手机号，邮件)，用户实名后无法更改姓名与手机号
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
     return c.UpdateIntegrationEmployeesWithContext(context.Background(), request)
 }
@@ -4304,11 +4160,9 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 // 更新员工信息(姓名，手机号，邮件)，用户实名后无法更改姓名与手机号
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) UpdateIntegrationEmployeesWithContext(ctx context.Context, request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
     if request == nil {
         request = NewUpdateIntegrationEmployeesRequest()

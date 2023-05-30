@@ -862,6 +862,7 @@ func NewLookUpEventsResponse() (response *LookUpEventsResponse) {
 //  INVALIDPARAMETERVALUE_MAXRESULT = "InvalidParameterValue.MaxResult"
 //  INVALIDPARAMETERVALUE_TIME = "InvalidParameterValue.Time"
 //  INVALIDPARAMETERVALUE_ATTRIBUTEKEY = "InvalidParameterValue.attributeKey"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 //  LIMITEXCEEDED_OVERTIME = "LimitExceeded.OverTime"
 func (c *Client) LookUpEvents(request *LookUpEventsRequest) (response *LookUpEventsResponse, err error) {
     return c.LookUpEventsWithContext(context.Background(), request)
@@ -876,6 +877,7 @@ func (c *Client) LookUpEvents(request *LookUpEventsRequest) (response *LookUpEve
 //  INVALIDPARAMETERVALUE_MAXRESULT = "InvalidParameterValue.MaxResult"
 //  INVALIDPARAMETERVALUE_TIME = "InvalidParameterValue.Time"
 //  INVALIDPARAMETERVALUE_ATTRIBUTEKEY = "InvalidParameterValue.attributeKey"
+//  LIMITEXCEEDED_OVERAMOUNT = "LimitExceeded.OverAmount"
 //  LIMITEXCEEDED_OVERTIME = "LimitExceeded.OverTime"
 func (c *Client) LookUpEventsWithContext(ctx context.Context, request *LookUpEventsRequest) (response *LookUpEventsResponse, err error) {
     if request == nil {

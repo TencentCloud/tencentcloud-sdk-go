@@ -253,6 +253,12 @@ type AddLiveWatermarkRequestParams struct {
 
 	// 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 背景水印宽度。默认宽度1920。
+	BackgroundWidth *int64 `json:"BackgroundWidth,omitempty" name:"BackgroundWidth"`
+
+	// 背景水印高度。默认高度1080。
+	BackgroundHeight *int64 `json:"BackgroundHeight,omitempty" name:"BackgroundHeight"`
 }
 
 type AddLiveWatermarkRequest struct {
@@ -278,6 +284,12 @@ type AddLiveWatermarkRequest struct {
 
 	// 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 背景水印宽度。默认宽度1920。
+	BackgroundWidth *int64 `json:"BackgroundWidth,omitempty" name:"BackgroundWidth"`
+
+	// 背景水印高度。默认高度1080。
+	BackgroundHeight *int64 `json:"BackgroundHeight,omitempty" name:"BackgroundHeight"`
 }
 
 func (r *AddLiveWatermarkRequest) ToJsonString() string {
@@ -298,6 +310,8 @@ func (r *AddLiveWatermarkRequest) FromJsonString(s string) error {
 	delete(f, "YPosition")
 	delete(f, "Width")
 	delete(f, "Height")
+	delete(f, "BackgroundWidth")
+	delete(f, "BackgroundHeight")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddLiveWatermarkRequest has unknown keys!", "")
 	}
@@ -13692,6 +13706,12 @@ type UpdateLiveWatermarkRequestParams struct {
 
 	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 背景水印宽度。默认宽度1920。
+	BackgroundWidth *int64 `json:"BackgroundWidth,omitempty" name:"BackgroundWidth"`
+
+	// 背景水印高度。默认高度1080。
+	BackgroundHeight *int64 `json:"BackgroundHeight,omitempty" name:"BackgroundHeight"`
 }
 
 type UpdateLiveWatermarkRequest struct {
@@ -13721,6 +13741,12 @@ type UpdateLiveWatermarkRequest struct {
 
 	// 水印高度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 背景水印宽度。默认宽度1920。
+	BackgroundWidth *int64 `json:"BackgroundWidth,omitempty" name:"BackgroundWidth"`
+
+	// 背景水印高度。默认高度1080。
+	BackgroundHeight *int64 `json:"BackgroundHeight,omitempty" name:"BackgroundHeight"`
 }
 
 func (r *UpdateLiveWatermarkRequest) ToJsonString() string {
@@ -13742,6 +13768,8 @@ func (r *UpdateLiveWatermarkRequest) FromJsonString(s string) error {
 	delete(f, "WatermarkName")
 	delete(f, "Width")
 	delete(f, "Height")
+	delete(f, "BackgroundWidth")
+	delete(f, "BackgroundHeight")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLiveWatermarkRequest has unknown keys!", "")
 	}
@@ -13798,6 +13826,12 @@ type WatermarkInfo struct {
 
 	// 水印高。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 背景水印宽。
+	BackgroundWidth *int64 `json:"BackgroundWidth,omitempty" name:"BackgroundWidth"`
+
+	// 背景水印高。
+	BackgroundHeight *int64 `json:"BackgroundHeight,omitempty" name:"BackgroundHeight"`
 }
 
 type XP2PDetailInfo struct {

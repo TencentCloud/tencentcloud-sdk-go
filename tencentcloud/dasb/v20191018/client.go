@@ -1963,6 +1963,7 @@ func NewDescribeOperationEventResponse() (response *DescribeOperationEventRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeOperationEvent(request *DescribeOperationEventRequest) (response *DescribeOperationEventResponse, err error) {
     return c.DescribeOperationEventWithContext(context.Background(), request)
 }
@@ -1975,6 +1976,7 @@ func (c *Client) DescribeOperationEvent(request *DescribeOperationEventRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeOperationEventWithContext(ctx context.Context, request *DescribeOperationEventRequest) (response *DescribeOperationEventResponse, err error) {
     if request == nil {
         request = NewDescribeOperationEventRequest()

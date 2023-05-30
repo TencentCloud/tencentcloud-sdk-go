@@ -951,6 +951,7 @@ func NewCreateRoomResponse() (response *CreateRoomResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
 //  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 func (c *Client) CreateRoom(request *CreateRoomRequest) (response *CreateRoomResponse, err error) {
     return c.CreateRoomWithContext(context.Background(), request)
@@ -972,6 +973,7 @@ func (c *Client) CreateRoom(request *CreateRoomRequest) (response *CreateRoomRes
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
 //  RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
+//  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 func (c *Client) CreateRoomWithContext(ctx context.Context, request *CreateRoomRequest) (response *CreateRoomResponse, err error) {
     if request == nil {

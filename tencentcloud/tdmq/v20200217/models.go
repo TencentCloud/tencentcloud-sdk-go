@@ -9521,6 +9521,10 @@ type PulsarProClusterInfo struct {
 
 	// 最大储存容量，单位：MB
 	MaxStorage *uint64 `json:"MaxStorage,omitempty" name:"MaxStorage"`
+
+	// 是否可以修改路由
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanEditRoute *bool `json:"CanEditRoute,omitempty" name:"CanEditRoute"`
 }
 
 type PulsarProClusterSpecInfo struct {

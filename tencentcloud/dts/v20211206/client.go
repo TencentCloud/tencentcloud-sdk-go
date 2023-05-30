@@ -683,6 +683,92 @@ func (c *Client) CreateMigrationServiceWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateModifyCheckSyncJobRequest() (request *CreateModifyCheckSyncJobRequest) {
+    request = &CreateModifyCheckSyncJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "CreateModifyCheckSyncJob")
+    
+    
+    return
+}
+
+func NewCreateModifyCheckSyncJobResponse() (response *CreateModifyCheckSyncJobResponse) {
+    response = &CreateModifyCheckSyncJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateModifyCheckSyncJob
+// 在修改同步任务的配置后、通过该接口校验当前任务是否支持修改对象操作
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
+//  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
+//  MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
+//  RESOURCEINUSE_RESOURCEINUSEERROR = "ResourceInUse.ResourceInUseError"
+//  RESOURCEINSUFFICIENT_RESOURCEINSUFFICIENTERROR = "ResourceInsufficient.ResourceInsufficientError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLEERROR = "ResourceUnavailable.ResourceUnavailableError"
+//  RESOURCESSOLDOUT_RESOURCESSOLDOUTERROR = "ResourcesSoldOut.ResourcesSoldOutError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONERROR = "UnauthorizedOperation.UnauthorizedOperationError"
+//  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
+func (c *Client) CreateModifyCheckSyncJob(request *CreateModifyCheckSyncJobRequest) (response *CreateModifyCheckSyncJobResponse, err error) {
+    return c.CreateModifyCheckSyncJobWithContext(context.Background(), request)
+}
+
+// CreateModifyCheckSyncJob
+// 在修改同步任务的配置后、通过该接口校验当前任务是否支持修改对象操作
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
+//  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
+//  MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
+//  RESOURCEINUSE_RESOURCEINUSEERROR = "ResourceInUse.ResourceInUseError"
+//  RESOURCEINSUFFICIENT_RESOURCEINSUFFICIENTERROR = "ResourceInsufficient.ResourceInsufficientError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLEERROR = "ResourceUnavailable.ResourceUnavailableError"
+//  RESOURCESSOLDOUT_RESOURCESSOLDOUTERROR = "ResourcesSoldOut.ResourcesSoldOutError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONERROR = "UnauthorizedOperation.UnauthorizedOperationError"
+//  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
+func (c *Client) CreateModifyCheckSyncJobWithContext(ctx context.Context, request *CreateModifyCheckSyncJobRequest) (response *CreateModifyCheckSyncJobResponse, err error) {
+    if request == nil {
+        request = NewCreateModifyCheckSyncJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModifyCheckSyncJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModifyCheckSyncJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSyncJobRequest() (request *CreateSyncJobRequest) {
     request = &CreateSyncJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1413,6 +1499,54 @@ func (c *Client) DescribeMigrationJobsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeMigrationJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModifyCheckSyncJobResultRequest() (request *DescribeModifyCheckSyncJobResultRequest) {
+    request = &DescribeModifyCheckSyncJobResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "DescribeModifyCheckSyncJobResult")
+    
+    
+    return
+}
+
+func NewDescribeModifyCheckSyncJobResultResponse() (response *DescribeModifyCheckSyncJobResultResponse) {
+    response = &DescribeModifyCheckSyncJobResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeModifyCheckSyncJobResult
+// 在创建修改对象的校验任务后、通过该接口查看校验任务的结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+func (c *Client) DescribeModifyCheckSyncJobResult(request *DescribeModifyCheckSyncJobResultRequest) (response *DescribeModifyCheckSyncJobResultResponse, err error) {
+    return c.DescribeModifyCheckSyncJobResultWithContext(context.Background(), request)
+}
+
+// DescribeModifyCheckSyncJobResult
+// 在创建修改对象的校验任务后、通过该接口查看校验任务的结果
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+func (c *Client) DescribeModifyCheckSyncJobResultWithContext(ctx context.Context, request *DescribeModifyCheckSyncJobResultRequest) (response *DescribeModifyCheckSyncJobResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeModifyCheckSyncJobResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModifyCheckSyncJobResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModifyCheckSyncJobResultResponse()
     err = c.Send(request, response)
     return
 }
@@ -2169,6 +2303,60 @@ func (c *Client) ModifyMigrationJobWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifySyncJobConfigRequest() (request *ModifySyncJobConfigRequest) {
+    request = &ModifySyncJobConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "ModifySyncJobConfig")
+    
+    
+    return
+}
+
+func NewModifySyncJobConfigResponse() (response *ModifySyncJobConfigResponse) {
+    response = &ModifySyncJobConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySyncJobConfig
+// 该接口支持在同步任务启动后修改任务的配置
+//
+// 修改同步配置的完整流程：修改同步任务配置->创建修改同步任务配置的校验任务->查询修改配置的校验任务的结果->启动修改配置任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+func (c *Client) ModifySyncJobConfig(request *ModifySyncJobConfigRequest) (response *ModifySyncJobConfigResponse, err error) {
+    return c.ModifySyncJobConfigWithContext(context.Background(), request)
+}
+
+// ModifySyncJobConfig
+// 该接口支持在同步任务启动后修改任务的配置
+//
+// 修改同步配置的完整流程：修改同步任务配置->创建修改同步任务配置的校验任务->查询修改配置的校验任务的结果->启动修改配置任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+func (c *Client) ModifySyncJobConfigWithContext(ctx context.Context, request *ModifySyncJobConfigRequest) (response *ModifySyncJobConfigResponse, err error) {
+    if request == nil {
+        request = NewModifySyncJobConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySyncJobConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySyncJobConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPauseMigrateJobRequest() (request *PauseMigrateJobRequest) {
     request = &PauseMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2919,6 +3107,56 @@ func (c *Client) StartMigrateJobWithContext(ctx context.Context, request *StartM
     request.SetContext(ctx)
     
     response = NewStartMigrateJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartModifySyncJobRequest() (request *StartModifySyncJobRequest) {
+    request = &StartModifySyncJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "StartModifySyncJob")
+    
+    
+    return
+}
+
+func NewStartModifySyncJobResponse() (response *StartModifySyncJobResponse) {
+    response = &StartModifySyncJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartModifySyncJob
+// 在查询修改对象的校验任务的结果中的status为success后、通过该接口开始修改配置流程
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) StartModifySyncJob(request *StartModifySyncJobRequest) (response *StartModifySyncJobResponse, err error) {
+    return c.StartModifySyncJobWithContext(context.Background(), request)
+}
+
+// StartModifySyncJob
+// 在查询修改对象的校验任务的结果中的status为success后、通过该接口开始修改配置流程
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+func (c *Client) StartModifySyncJobWithContext(ctx context.Context, request *StartModifySyncJobRequest) (response *StartModifySyncJobResponse, err error) {
+    if request == nil {
+        request = NewStartModifySyncJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartModifySyncJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartModifySyncJobResponse()
     err = c.Send(request, response)
     return
 }

@@ -215,6 +215,9 @@ const (
 	// 最多指定一个参数。
 	INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 
+	// 不支持参数CdcId。
+	INVALIDPARAMETER_CDCNOTSUPPORTED = "InvalidParameter.CdcNotSupported"
+
 	// DataDiskIds不应该传入RootDisk的Id。
 	INVALIDPARAMETER_DATADISKIDCONTAINSROOTDISK = "InvalidParameter.DataDiskIdContainsRootDisk"
 

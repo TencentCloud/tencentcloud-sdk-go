@@ -1124,6 +1124,13 @@ type DetectInfoText struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
 
+	// 用户认证时使用的证件号码类型：
+	// 0：二代身份证的证件号码
+	// 1：港澳台居住证的证件号码
+	// 2：其他（核验使用的证件号码非合法身份号码）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseIDType *uint64 `json:"UseIDType,omitempty" name:"UseIDType"`
+
 	// 本次验证使用的姓名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`

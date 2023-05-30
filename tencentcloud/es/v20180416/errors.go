@@ -48,13 +48,13 @@ const (
 	FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 
 	// 不支持在滚动重启扩容计算资源同时扩容磁盘数量。
-	FAILEDOPERATION_UNSUPPORTRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportResetNodeTypeAndScaleoutDisk"
+	FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
 
 	// 不支持在滚动重启缩容计算资源同时修改磁盘大小
-	FAILEDOPERATION_UNSUPPORTRESETSCALEDOWNANDMODIFYDISK = "FailedOperation.UnsupportResetScaledownAndModifyDisk"
+	FAILEDOPERATION_UNSUPPORTEDRESTSCALEDOWNANDMODIFYDISK = "FailedOperation.UnsupportedRestScaleDownAndModifyDisk"
 
 	// 不支持反向调节节点配置和磁盘容量。
-	FAILEDOPERATION_UNSUPPORTREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportReverseRegulationNodeTypeAndDisk"
+	FAILEDOPERATION_UNSUPPORTEDREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportedReverseRegulationNodeTypeAndDisk"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
