@@ -182,6 +182,9 @@ const (
 	// 数据不存在。
 	INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 
+	// 部门用户Id不正确
+	INVALIDPARAMETER_DEPARTUSERID = "InvalidParameter.DepartUserId"
+
 	// 参数为空，请检查参数修改后重试。
 	INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 
@@ -284,14 +287,17 @@ const (
 	// 不合法的阅读时长限制，请联系客服了解阅读时长设置规则，修改后重试。
 	INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
 
-	// 签署二维码的有效期不合法，请联系客服了解规则，并修稿后重试。
+	// 签署二维码的有效期不合法，请联系客服了解规则，并修改后重试。
 	INVALIDPARAMETER_QREFFECTDAY = "InvalidParameter.QrEffectDay"
 
-	// 二维码合同的有效期不合法，请联系客服了解规则，并修稿后重试。
+	// 二维码合同的有效期不合法，请联系客服了解规则，并修改后重试。
 	INVALIDPARAMETER_QRFLOWEFFECTDAY = "InvalidParameter.QrFlowEffectDay"
 
 	// 不合法的资源类型，请联系客服了解，并在修改后重试。
 	INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+
+	// 角色ID不正确
+	INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
 
 	// 不合法的印章id，请检查印章id是够正确，并在修改后重试。
 	INVALIDPARAMETER_SEALID = "InvalidParameter.SealId"
@@ -313,6 +319,9 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 无效的手机号
+	INVALIDPARAMETERVALUE_INVALIDMOBILE = "InvalidParameterValue.InvalidMobile"
 
 	// 需要屏蔽的告警。
 	INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"

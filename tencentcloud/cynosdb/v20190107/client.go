@@ -323,6 +323,68 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     return
 }
 
+func NewBindClusterResourcePackagesRequest() (request *BindClusterResourcePackagesRequest) {
+    request = &BindClusterResourcePackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "BindClusterResourcePackages")
+    
+    
+    return
+}
+
+func NewBindClusterResourcePackagesResponse() (response *BindClusterResourcePackagesResponse) {
+    response = &BindClusterResourcePackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindClusterResourcePackages
+// 为集群绑定资源包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) BindClusterResourcePackages(request *BindClusterResourcePackagesRequest) (response *BindClusterResourcePackagesResponse, err error) {
+    return c.BindClusterResourcePackagesWithContext(context.Background(), request)
+}
+
+// BindClusterResourcePackages
+// 为集群绑定资源包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) BindClusterResourcePackagesWithContext(ctx context.Context, request *BindClusterResourcePackagesRequest) (response *BindClusterResourcePackagesResponse, err error) {
+    if request == nil {
+        request = NewBindClusterResourcePackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindClusterResourcePackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindClusterResourcePackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseAuditServiceRequest() (request *CloseAuditServiceRequest) {
     request = &CloseAuditServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1031,6 +1093,62 @@ func (c *Client) CreateParamTemplateWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateResourcePackageRequest() (request *CreateResourcePackageRequest) {
+    request = &CreateResourcePackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CreateResourcePackage")
+    
+    
+    return
+}
+
+func NewCreateResourcePackageResponse() (response *CreateResourcePackageResponse) {
+    response = &CreateResourcePackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateResourcePackage
+// 新购资源包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATESOURCEPACKAGEERROR = "FailedOperation.CreateSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateResourcePackage(request *CreateResourcePackageRequest) (response *CreateResourcePackageResponse, err error) {
+    return c.CreateResourcePackageWithContext(context.Background(), request)
+}
+
+// CreateResourcePackage
+// 新购资源包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATESOURCEPACKAGEERROR = "FailedOperation.CreateSourcePackageError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateResourcePackageWithContext(ctx context.Context, request *CreateResourcePackageRequest) (response *CreateResourcePackageResponse, err error) {
+    if request == nil {
+        request = NewCreateResourcePackageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateResourcePackage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateResourcePackageResponse()
     err = c.Send(request, response)
     return
 }
@@ -3407,6 +3525,172 @@ func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeResourcePackageDetailRequest() (request *DescribeResourcePackageDetailRequest) {
+    request = &DescribeResourcePackageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeResourcePackageDetail")
+    
+    
+    return
+}
+
+func NewDescribeResourcePackageDetailResponse() (response *DescribeResourcePackageDetailResponse) {
+    response = &DescribeResourcePackageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourcePackageDetail
+// 查询资源包使用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = "FailedOperation.QuerySourcePackageDetailError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeResourcePackageDetail(request *DescribeResourcePackageDetailRequest) (response *DescribeResourcePackageDetailResponse, err error) {
+    return c.DescribeResourcePackageDetailWithContext(context.Background(), request)
+}
+
+// DescribeResourcePackageDetail
+// 查询资源包使用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEDETAILERROR = "FailedOperation.QuerySourcePackageDetailError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeResourcePackageDetailWithContext(ctx context.Context, request *DescribeResourcePackageDetailRequest) (response *DescribeResourcePackageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcePackageDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcePackageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcePackageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourcePackageListRequest() (request *DescribeResourcePackageListRequest) {
+    request = &DescribeResourcePackageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeResourcePackageList")
+    
+    
+    return
+}
+
+func NewDescribeResourcePackageListResponse() (response *DescribeResourcePackageListResponse) {
+    response = &DescribeResourcePackageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourcePackageList
+// 查询资源包列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeResourcePackageList(request *DescribeResourcePackageListRequest) (response *DescribeResourcePackageListResponse, err error) {
+    return c.DescribeResourcePackageListWithContext(context.Background(), request)
+}
+
+// DescribeResourcePackageList
+// 查询资源包列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeResourcePackageListWithContext(ctx context.Context, request *DescribeResourcePackageListRequest) (response *DescribeResourcePackageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcePackageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcePackageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcePackageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourcePackageSaleSpecRequest() (request *DescribeResourcePackageSaleSpecRequest) {
+    request = &DescribeResourcePackageSaleSpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeResourcePackageSaleSpec")
+    
+    
+    return
+}
+
+func NewDescribeResourcePackageSaleSpecResponse() (response *DescribeResourcePackageSaleSpecResponse) {
+    response = &DescribeResourcePackageSaleSpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourcePackageSaleSpec
+// 查询资源包规格
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_UNSUPPORTSALESPECERROR = "OperationDenied.UnSupportSaleSpecError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeResourcePackageSaleSpec(request *DescribeResourcePackageSaleSpecRequest) (response *DescribeResourcePackageSaleSpecResponse, err error) {
+    return c.DescribeResourcePackageSaleSpecWithContext(context.Background(), request)
+}
+
+// DescribeResourcePackageSaleSpec
+// 查询资源包规格
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_UNSUPPORTSALESPECERROR = "OperationDenied.UnSupportSaleSpecError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeResourcePackageSaleSpecWithContext(ctx context.Context, request *DescribeResourcePackageSaleSpecRequest) (response *DescribeResourcePackageSaleSpecResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourcePackageSaleSpecRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourcePackageSaleSpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourcePackageSaleSpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourcesByDealNameRequest() (request *DescribeResourcesByDealNameRequest) {
     request = &DescribeResourcesByDealNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5519,6 +5803,130 @@ func (c *Client) ModifyParamTemplateWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyResourcePackageClustersRequest() (request *ModifyResourcePackageClustersRequest) {
+    request = &ModifyResourcePackageClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyResourcePackageClusters")
+    
+    
+    return
+}
+
+func NewModifyResourcePackageClustersResponse() (response *ModifyResourcePackageClustersResponse) {
+    response = &ModifyResourcePackageClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyResourcePackageClusters
+// 给资源包绑定集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = "FailedOperation.UnBindSourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyResourcePackageClusters(request *ModifyResourcePackageClustersRequest) (response *ModifyResourcePackageClustersResponse, err error) {
+    return c.ModifyResourcePackageClustersWithContext(context.Background(), request)
+}
+
+// ModifyResourcePackageClusters
+// 给资源包绑定集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = "FailedOperation.UnBindSourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyResourcePackageClustersWithContext(ctx context.Context, request *ModifyResourcePackageClustersRequest) (response *ModifyResourcePackageClustersResponse, err error) {
+    if request == nil {
+        request = NewModifyResourcePackageClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourcePackageClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourcePackageClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyResourcePackageNameRequest() (request *ModifyResourcePackageNameRequest) {
+    request = &ModifyResourcePackageNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyResourcePackageName")
+    
+    
+    return
+}
+
+func NewModifyResourcePackageNameResponse() (response *ModifyResourcePackageNameResponse) {
+    response = &ModifyResourcePackageNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyResourcePackageName
+// 修改资源包名称
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = "FailedOperation.UnBindSourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyResourcePackageName(request *ModifyResourcePackageNameRequest) (response *ModifyResourcePackageNameResponse, err error) {
+    return c.ModifyResourcePackageNameWithContext(context.Background(), request)
+}
+
+// ModifyResourcePackageName
+// 修改资源包名称
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BINDSOURCEPACKAGEERROR = "FailedOperation.BindSourcePackageError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = "FailedOperation.UnBindSourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyResourcePackageNameWithContext(ctx context.Context, request *ModifyResourcePackageNameRequest) (response *ModifyResourcePackageNameResponse, err error) {
+    if request == nil {
+        request = NewModifyResourcePackageNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourcePackageName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourcePackageNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyVipVportRequest() (request *ModifyVipVportRequest) {
     request = &ModifyVipVportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6007,6 +6415,60 @@ func (c *Client) PauseServerlessWithContext(ctx context.Context, request *PauseS
     request.SetContext(ctx)
     
     response = NewPauseServerlessResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRefundResourcePackageRequest() (request *RefundResourcePackageRequest) {
+    request = &RefundResourcePackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "RefundResourcePackage")
+    
+    
+    return
+}
+
+func NewRefundResourcePackageResponse() (response *RefundResourcePackageResponse) {
+    response = &RefundResourcePackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RefundResourcePackage
+// 退款资源包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = "FailedOperation.RefundSourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) RefundResourcePackage(request *RefundResourcePackageRequest) (response *RefundResourcePackageResponse, err error) {
+    return c.RefundResourcePackageWithContext(context.Background(), request)
+}
+
+// RefundResourcePackage
+// 退款资源包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REFUNDSOURCEPACKAGEERROR = "FailedOperation.RefundSourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) RefundResourcePackageWithContext(ctx context.Context, request *RefundResourcePackageRequest) (response *RefundResourcePackageResponse, err error) {
+    if request == nil {
+        request = NewRefundResourcePackageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefundResourcePackage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRefundResourcePackageResponse()
     err = c.Send(request, response)
     return
 }
@@ -6867,6 +7329,64 @@ func (c *Client) SwitchProxyVpcWithContext(ctx context.Context, request *SwitchP
     request.SetContext(ctx)
     
     response = NewSwitchProxyVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindClusterResourcePackagesRequest() (request *UnbindClusterResourcePackagesRequest) {
+    request = &UnbindClusterResourcePackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "UnbindClusterResourcePackages")
+    
+    
+    return
+}
+
+func NewUnbindClusterResourcePackagesResponse() (response *UnbindClusterResourcePackagesResponse) {
+    response = &UnbindClusterResourcePackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindClusterResourcePackages
+// cynos解绑资源包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = "FailedOperation.UnBindSourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) UnbindClusterResourcePackages(request *UnbindClusterResourcePackagesRequest) (response *UnbindClusterResourcePackagesResponse, err error) {
+    return c.UnbindClusterResourcePackagesWithContext(context.Background(), request)
+}
+
+// UnbindClusterResourcePackages
+// cynos解绑资源包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYSOURCEPACKAGEERROR = "FailedOperation.QuerySourcePackageError"
+//  FAILEDOPERATION_UNBINDSOURCEPACKAGEERROR = "FailedOperation.UnBindSourcePackageError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) UnbindClusterResourcePackagesWithContext(ctx context.Context, request *UnbindClusterResourcePackagesRequest) (response *UnbindClusterResourcePackagesResponse, err error) {
+    if request == nil {
+        request = NewUnbindClusterResourcePackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindClusterResourcePackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindClusterResourcePackagesResponse()
     err = c.Send(request, response)
     return
 }

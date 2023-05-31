@@ -631,6 +631,81 @@ type BillingResourceInfo struct {
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
 }
 
+// Predefined struct for user
+type BindClusterResourcePackagesRequestParams struct {
+	// 资源包唯一ID
+	PackageIds []*string `json:"PackageIds,omitempty" name:"PackageIds"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type BindClusterResourcePackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源包唯一ID
+	PackageIds []*string `json:"PackageIds,omitempty" name:"PackageIds"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *BindClusterResourcePackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindClusterResourcePackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageIds")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindClusterResourcePackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindClusterResourcePackagesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BindClusterResourcePackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *BindClusterResourcePackagesResponseParams `json:"Response"`
+}
+
+func (r *BindClusterResourcePackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindClusterResourcePackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BindInstanceInfo struct {
+	// 绑定的实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 绑定的实例所在的地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceRegion *string `json:"InstanceRegion,omitempty" name:"InstanceRegion"`
+
+	// 绑定的实例类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+}
+
 type BinlogItem struct {
 	// Binlog文件名称
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
@@ -1828,6 +1903,123 @@ func (r *CreateParamTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateResourcePackageRequestParams struct {
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 资源包使用地域
+	// china-中国内地通用，overseas-港澳台及海外通用
+	PackageRegion *string `json:"PackageRegion,omitempty" name:"PackageRegion"`
+
+	// 资源包类型
+	// 
+	// 资源包类型：CCU-计算资源包，DISK-存储资源包
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 资源包版本
+	// base-基础版本，common-通用版本，enterprise-企业版本
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// 资源包大小，计算资源单位：万个；存储资源：GB
+	PackageSpec *float64 `json:"PackageSpec,omitempty" name:"PackageSpec"`
+
+	// 资源包有效期，单位:天
+	ExpireDay *int64 `json:"ExpireDay,omitempty" name:"ExpireDay"`
+
+	// 购买资源包个数
+	PackageCount *int64 `json:"PackageCount,omitempty" name:"PackageCount"`
+
+	// 资源包名称
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+}
+
+type CreateResourcePackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 资源包使用地域
+	// china-中国内地通用，overseas-港澳台及海外通用
+	PackageRegion *string `json:"PackageRegion,omitempty" name:"PackageRegion"`
+
+	// 资源包类型
+	// 
+	// 资源包类型：CCU-计算资源包，DISK-存储资源包
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 资源包版本
+	// base-基础版本，common-通用版本，enterprise-企业版本
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// 资源包大小，计算资源单位：万个；存储资源：GB
+	PackageSpec *float64 `json:"PackageSpec,omitempty" name:"PackageSpec"`
+
+	// 资源包有效期，单位:天
+	ExpireDay *int64 `json:"ExpireDay,omitempty" name:"ExpireDay"`
+
+	// 购买资源包个数
+	PackageCount *int64 `json:"PackageCount,omitempty" name:"PackageCount"`
+
+	// 资源包名称
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+}
+
+func (r *CreateResourcePackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResourcePackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "PackageRegion")
+	delete(f, "PackageType")
+	delete(f, "PackageVersion")
+	delete(f, "PackageSpec")
+	delete(f, "ExpireDay")
+	delete(f, "PackageCount")
+	delete(f, "PackageName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourcePackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateResourcePackageResponseParams struct {
+	// 付费总订单号
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
+
+	// 每个物品对应一个dealName，业务需要根据dealName保证发货接口幂等
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateResourcePackageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateResourcePackageResponseParams `json:"Response"`
+}
+
+func (r *CreateResourcePackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResourcePackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CynosdbCluster struct {
 	// 集群状态， 可选值如下:
 	// creating: 创建中
@@ -1999,6 +2191,10 @@ type CynosdbCluster struct {
 	// 能力
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ability *Ability `json:"Ability,omitempty" name:"Ability"`
+
+	// 实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePackages []*ResourcePackage `json:"ResourcePackages,omitempty" name:"ResourcePackages"`
 }
 
 type CynosdbClusterDetail struct {
@@ -2011,11 +2207,45 @@ type CynosdbClusterDetail struct {
 	// 地域
 	Region *string `json:"Region,omitempty" name:"Region"`
 
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 物理可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalZone *string `json:"PhysicalZone,omitempty" name:"PhysicalZone"`
+
 	// 状态
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 状态描述
 	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 当Db类型为SERVERLESS时，serverless集群状态，可选值:
+	// resume
+	// resuming
+	// pause
+	// pausing
+	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
+
+	// 存储Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
+
+	// 存储大小，单位为G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 最大存储规格，单位为G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxStorageSize *int64 `json:"MaxStorageSize,omitempty" name:"MaxStorageSize"`
+
+	// 最小存储规格，单位为G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinStorageSize *int64 `json:"MinStorageSize,omitempty" name:"MinStorageSize"`
+
+	// 存储付费类型，1为包年包月，0为按量计费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
 
 	// VPC名称
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
@@ -2038,23 +2268,19 @@ type CynosdbClusterDetail struct {
 	// 数据库类型
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
 
+	// 数据库类型，normal，serverless
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
+
 	// 数据库版本
 	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
 
+	// 存储空间上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
+
 	// 使用容量
 	UsedStorage *int64 `json:"UsedStorage,omitempty" name:"UsedStorage"`
-
-	// 读写分离Vport
-	RoAddr []*Addr `json:"RoAddr,omitempty" name:"RoAddr"`
-
-	// 实例信息
-	InstanceSet []*ClusterInstanceDetail `json:"InstanceSet,omitempty" name:"InstanceSet"`
-
-	// 付费模式
-	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
-
-	// 到期时间
-	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
 
 	// vip地址
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
@@ -2062,61 +2288,8 @@ type CynosdbClusterDetail struct {
 	// vport端口
 	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
 
-	// 项目id
-	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
-
-	// 可用区
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
-
-	// 实例绑定的tag数组信息
-	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags"`
-
-	// 当Db类型为SERVERLESS时，serverless集群状态，可选值:
-	// resume
-	// resuming
-	// pause
-	// pausing
-	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
-
-	// binlog开关，可选值：ON, OFF
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogBin *string `json:"LogBin,omitempty" name:"LogBin"`
-
-	// pitr类型，可选值：normal, redo_pitr
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PitrType *string `json:"PitrType,omitempty" name:"PitrType"`
-
-	// 物理可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PhysicalZone *string `json:"PhysicalZone,omitempty" name:"PhysicalZone"`
-
-	// 存储Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
-
-	// 存储大小，单位为G
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
-
-	// 最大存储规格，单位为G
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxStorageSize *int64 `json:"MaxStorageSize,omitempty" name:"MaxStorageSize"`
-
-	// 最小存储规格，单位为G
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MinStorageSize *int64 `json:"MinStorageSize,omitempty" name:"MinStorageSize"`
-
-	// 存储付费类型，1为包年包月，0为按量计费
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StoragePayMode *int64 `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
-
-	// 数据库类型，normal，serverless
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
-
-	// 存储空间上限
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
+	// 读写分离Vport
+	RoAddr []*Addr `json:"RoAddr,omitempty" name:"RoAddr"`
 
 	// 集群支持的功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2150,13 +2323,36 @@ type CynosdbClusterDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZones []*string `json:"SlaveZones,omitempty" name:"SlaveZones"`
 
+	// 实例信息
+	InstanceSet []*ClusterInstanceDetail `json:"InstanceSet,omitempty" name:"InstanceSet"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 到期时间
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 项目id
+	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+
+	// 实例绑定的tag数组信息
+	ResourceTags []*Tag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
 	// Proxy状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyStatus *string `json:"ProxyStatus,omitempty" name:"ProxyStatus"`
 
+	// binlog开关，可选值：ON, OFF
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogBin *string `json:"LogBin,omitempty" name:"LogBin"`
+
 	// 是否跳过交易
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSkipTrade *string `json:"IsSkipTrade,omitempty" name:"IsSkipTrade"`
+
+	// pitr类型，可选值：normal, redo_pitr
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PitrType *string `json:"PitrType,omitempty" name:"PitrType"`
 
 	// 是否打开密码复杂度
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2165,6 +2361,10 @@ type CynosdbClusterDetail struct {
 	// 网络类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkStatus *string `json:"NetworkStatus,omitempty" name:"NetworkStatus"`
+
+	// 集群绑定的资源包信息	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePackages []*ResourcePackage `json:"ResourcePackages,omitempty" name:"ResourcePackages"`
 }
 
 type CynosdbErrorLogItem struct {
@@ -2214,6 +2414,9 @@ type CynosdbInstance struct {
 
 	// 实例状态中文描述
 	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 实例形态，是否为serverless实例
+	DbMode *string `json:"DbMode,omitempty" name:"DbMode"`
 
 	// 数据库类型
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
@@ -2341,6 +2544,10 @@ type CynosdbInstance struct {
 	// 实例网络信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNetInfo []*InstanceNetInfo `json:"InstanceNetInfo,omitempty" name:"InstanceNetInfo"`
+
+	// 实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePackages []*ResourcePackage `json:"ResourcePackages,omitempty" name:"ResourcePackages"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -5622,6 +5829,333 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeResourcePackageDetailRequestParams struct {
+	// 资源包唯一ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 实例ID
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 偏移量
+	Offset *string `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制
+	Limit *string `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeResourcePackageDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源包唯一ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 实例ID
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 偏移量
+	Offset *string `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制
+	Limit *string `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeResourcePackageDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePackageDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageId")
+	delete(f, "ClusterIds")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcePackageDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePackageDetailResponseParams struct {
+	// 总使用明细数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 资源包明细说明
+	Detail []*PackageDetail `json:"Detail,omitempty" name:"Detail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeResourcePackageDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourcePackageDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourcePackageDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePackageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePackageListRequestParams struct {
+	// 资源包唯一ID
+	PackageId []*string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 资源包名称
+	PackageName []*string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 资源包类型
+	// CCU-计算资源包，DISK-存储资源包
+	PackageType []*string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 资源包使用地域
+	// china-中国内地通用，overseas-港澳台及海外通用
+	PackageRegion []*string `json:"PackageRegion,omitempty" name:"PackageRegion"`
+
+	// 资源包状态
+	// creating-创建中；
+	// using-使用中；
+	// expired-已过期；
+	// normal_finish-使用完；
+	// apply_refund-申请退费中；
+	// refund-已退费。
+	Status []*string `json:"Status,omitempty" name:"Status"`
+
+	// 排序条件，支持排序条件:startTime-生效时间，
+	// expireTime-过期时间，packageUsedSpec-使用容量，packageTotalSpec-总存储量。
+	// 按照数组顺序排列；
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，DESC-降序，ASC-升序
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeResourcePackageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源包唯一ID
+	PackageId []*string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 资源包名称
+	PackageName []*string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 资源包类型
+	// CCU-计算资源包，DISK-存储资源包
+	PackageType []*string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 资源包使用地域
+	// china-中国内地通用，overseas-港澳台及海外通用
+	PackageRegion []*string `json:"PackageRegion,omitempty" name:"PackageRegion"`
+
+	// 资源包状态
+	// creating-创建中；
+	// using-使用中；
+	// expired-已过期；
+	// normal_finish-使用完；
+	// apply_refund-申请退费中；
+	// refund-已退费。
+	Status []*string `json:"Status,omitempty" name:"Status"`
+
+	// 排序条件，支持排序条件:startTime-生效时间，
+	// expireTime-过期时间，packageUsedSpec-使用容量，packageTotalSpec-总存储量。
+	// 按照数组顺序排列；
+	OrderBy []*string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，DESC-降序，ASC-升序
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeResourcePackageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePackageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageId")
+	delete(f, "PackageName")
+	delete(f, "PackageType")
+	delete(f, "PackageRegion")
+	delete(f, "Status")
+	delete(f, "OrderBy")
+	delete(f, "OrderDirection")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcePackageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePackageListResponseParams struct {
+	// 总配置数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 资源包明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail []*Package `json:"Detail,omitempty" name:"Detail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeResourcePackageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourcePackageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourcePackageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePackageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePackageSaleSpecRequestParams struct {
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 资源包使用地域
+	// china-中国内地通用，overseas-港澳台及海外通用
+	PackageRegion *string `json:"PackageRegion,omitempty" name:"PackageRegion"`
+
+	// 资源包类型
+	// CCU-计算资源包
+	// DISK-存储资源包
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeResourcePackageSaleSpecRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 资源包使用地域
+	// china-中国内地通用，overseas-港澳台及海外通用
+	PackageRegion *string `json:"PackageRegion,omitempty" name:"PackageRegion"`
+
+	// 资源包类型
+	// CCU-计算资源包
+	// DISK-存储资源包
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeResourcePackageSaleSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePackageSaleSpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceType")
+	delete(f, "PackageRegion")
+	delete(f, "PackageType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcePackageSaleSpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourcePackageSaleSpecResponseParams struct {
+	// 可售卖资源包规格总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 资源包明细说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail []*SalePackageSpec `json:"Detail,omitempty" name:"Detail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeResourcePackageSaleSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourcePackageSaleSpecResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourcePackageSaleSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourcePackageSaleSpecResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourcesByDealNameRequestParams struct {
 	// 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
@@ -8285,6 +8819,135 @@ func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyResourcePackageClustersRequestParams struct {
+	// 资源包唯一ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 需要建立绑定关系的集群ID
+	BindClusterIds []*string `json:"BindClusterIds,omitempty" name:"BindClusterIds"`
+
+	// 需要解除绑定关系的集群ID
+	UnbindClusterIds []*string `json:"UnbindClusterIds,omitempty" name:"UnbindClusterIds"`
+}
+
+type ModifyResourcePackageClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源包唯一ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 需要建立绑定关系的集群ID
+	BindClusterIds []*string `json:"BindClusterIds,omitempty" name:"BindClusterIds"`
+
+	// 需要解除绑定关系的集群ID
+	UnbindClusterIds []*string `json:"UnbindClusterIds,omitempty" name:"UnbindClusterIds"`
+}
+
+func (r *ModifyResourcePackageClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePackageClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageId")
+	delete(f, "BindClusterIds")
+	delete(f, "UnbindClusterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourcePackageClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourcePackageClustersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyResourcePackageClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyResourcePackageClustersResponseParams `json:"Response"`
+}
+
+func (r *ModifyResourcePackageClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePackageClustersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourcePackageNameRequestParams struct {
+	// 资源包唯一ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 自定义的资源包名称，最长支持120个字符
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+}
+
+type ModifyResourcePackageNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源包唯一ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 自定义的资源包名称，最长支持120个字符
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+}
+
+func (r *ModifyResourcePackageNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePackageNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageId")
+	delete(f, "PackageName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourcePackageNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourcePackageNameResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyResourcePackageNameResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyResourcePackageNameResponseParams `json:"Response"`
+}
+
+func (r *ModifyResourcePackageNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcePackageNameResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyVipVportRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -8936,6 +9599,98 @@ func (r *OpenWanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Package struct {
+	// AppID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 资源包唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 资源包名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 资源包类型
+	// CCU-计算资源包，DISK-存储资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 资源包使用地域
+	// china-中国内地通用，overseas-港澳台及海外通用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageRegion *string `json:"PackageRegion,omitempty" name:"PackageRegion"`
+
+	// 资源包状态
+	// creating-创建中；
+	// using-使用中；
+	// expired-已过期；
+	// normal_finish-使用完；
+	// apply_refund-申请退费中；
+	// refund-已退费。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 资源包总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageTotalSpec *float64 `json:"PackageTotalSpec,omitempty" name:"PackageTotalSpec"`
+
+	// 资源包已使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageUsedSpec *float64 `json:"PackageUsedSpec,omitempty" name:"PackageUsedSpec"`
+
+	// 资源包已使用量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasQuota *bool `json:"HasQuota,omitempty" name:"HasQuota"`
+
+	// 绑定实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindInstanceInfos []*BindInstanceInfo `json:"BindInstanceInfos,omitempty" name:"BindInstanceInfos"`
+
+	// 生效时间：2022-07-01 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 失效时间：2022-08-01 00:00:00
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+type PackageDetail struct {
+	// AppId账户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 资源包唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 成功抵扣容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessDeductSpec *float64 `json:"SuccessDeductSpec,omitempty" name:"SuccessDeductSpec"`
+
+	// 截止当前，资源包已使用的容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageTotalUsedSpec *float64 `json:"PackageTotalUsedSpec,omitempty" name:"PackageTotalUsedSpec"`
+
+	// 抵扣开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 抵扣结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtendInfo *string `json:"ExtendInfo,omitempty" name:"ExtendInfo"`
+}
+
 type ParamDetail struct {
 	// 参数名称
 	ParamName *string `json:"ParamName,omitempty" name:"ParamName"`
@@ -9222,6 +9977,63 @@ type QueryFilter struct {
 }
 
 // Predefined struct for user
+type RefundResourcePackageRequestParams struct {
+	// 资源包唯一ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+}
+
+type RefundResourcePackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源包唯一ID
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+}
+
+func (r *RefundResourcePackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundResourcePackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundResourcePackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RefundResourcePackageResponseParams struct {
+	// 每个物品对应一个dealName，业务需要根据dealName保证发货接口幂等
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RefundResourcePackageResponse struct {
+	*tchttp.BaseResponse
+	Response *RefundResourcePackageResponseParams `json:"Response"`
+}
+
+func (r *RefundResourcePackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundResourcePackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RemoveClusterSlaveZoneRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -9358,6 +10170,17 @@ func (r *ResetAccountPasswordResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResetAccountPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResourcePackage struct {
+	// 资源包的唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 资源包类型：CCU：计算资源包
+	// DISK：存储资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 // Predefined struct for user
@@ -9696,6 +10519,35 @@ type RuleFilters struct {
 
 	// 审计规则过滤条件的匹配值。
 	Value []*string `json:"Value,omitempty" name:"Value"`
+}
+
+type SalePackageSpec struct {
+	// 资源包使用地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageRegion *string `json:"PackageRegion,omitempty" name:"PackageRegion"`
+
+	// 资源包类型
+	// CCU-计算资源包
+	// DISK-存储资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 资源包版本
+	// base-基础版本，common-通用版本，enterprise-企业版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// 当前版本资源包最小资源数，计算资源单位：个；存储资源：GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinPackageSpec *float64 `json:"MinPackageSpec,omitempty" name:"MinPackageSpec"`
+
+	// 当前版本资源包最大资源数，计算资源单位：个；存储资源：GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxPackageSpec *float64 `json:"MaxPackageSpec,omitempty" name:"MaxPackageSpec"`
+
+	// 资源包有效期，单位:天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireDay *int64 `json:"ExpireDay,omitempty" name:"ExpireDay"`
 }
 
 type SaleRegion struct {
@@ -10346,6 +11198,67 @@ type TradePrice struct {
 
 	// 计费价格单位
 	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
+}
+
+// Predefined struct for user
+type UnbindClusterResourcePackagesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 资源包唯一ID,如果不传，解绑该实例绑定的所有资源包
+	PackageIds []*string `json:"PackageIds,omitempty" name:"PackageIds"`
+}
+
+type UnbindClusterResourcePackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 资源包唯一ID,如果不传，解绑该实例绑定的所有资源包
+	PackageIds []*string `json:"PackageIds,omitempty" name:"PackageIds"`
+}
+
+func (r *UnbindClusterResourcePackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindClusterResourcePackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "PackageIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindClusterResourcePackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindClusterResourcePackagesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnbindClusterResourcePackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindClusterResourcePackagesResponseParams `json:"Response"`
+}
+
+func (r *UnbindClusterResourcePackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindClusterResourcePackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -8339,6 +8339,21 @@ type DescribeOperateTasksRequestParams struct {
 
 	// 任务所属产品类型
 	ProductNameList *string `json:"ProductNameList,omitempty" name:"ProductNameList"`
+
+	// 数据源id或（仅针对离线同步任务）来源数据源id
+	SourceServiceId *string `json:"SourceServiceId,omitempty" name:"SourceServiceId"`
+
+	// 数据源类型或（仅针对离线同步任务）来源数据源类型
+	SourceServiceType *string `json:"SourceServiceType,omitempty" name:"SourceServiceType"`
+
+	// （仅针对离线同步任务）目标数据源id
+	TargetServiceId *string `json:"TargetServiceId,omitempty" name:"TargetServiceId"`
+
+	// （仅针对离线同步任务）目标数据源类型
+	TargetServiceType *string `json:"TargetServiceType,omitempty" name:"TargetServiceType"`
+
+	// 告警类型，多个类型以逗号分隔
+	AlarmType *string `json:"AlarmType,omitempty" name:"AlarmType"`
 }
 
 type DescribeOperateTasksRequest struct {
@@ -8388,6 +8403,21 @@ type DescribeOperateTasksRequest struct {
 
 	// 任务所属产品类型
 	ProductNameList *string `json:"ProductNameList,omitempty" name:"ProductNameList"`
+
+	// 数据源id或（仅针对离线同步任务）来源数据源id
+	SourceServiceId *string `json:"SourceServiceId,omitempty" name:"SourceServiceId"`
+
+	// 数据源类型或（仅针对离线同步任务）来源数据源类型
+	SourceServiceType *string `json:"SourceServiceType,omitempty" name:"SourceServiceType"`
+
+	// （仅针对离线同步任务）目标数据源id
+	TargetServiceId *string `json:"TargetServiceId,omitempty" name:"TargetServiceId"`
+
+	// （仅针对离线同步任务）目标数据源类型
+	TargetServiceType *string `json:"TargetServiceType,omitempty" name:"TargetServiceType"`
+
+	// 告警类型，多个类型以逗号分隔
+	AlarmType *string `json:"AlarmType,omitempty" name:"AlarmType"`
 }
 
 func (r *DescribeOperateTasksRequest) ToJsonString() string {
@@ -8417,6 +8447,11 @@ func (r *DescribeOperateTasksRequest) FromJsonString(s string) error {
 	delete(f, "StatusList")
 	delete(f, "TaskCycleUnitList")
 	delete(f, "ProductNameList")
+	delete(f, "SourceServiceId")
+	delete(f, "SourceServiceType")
+	delete(f, "TargetServiceId")
+	delete(f, "TargetServiceType")
+	delete(f, "AlarmType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperateTasksRequest has unknown keys!", "")
 	}
@@ -19553,6 +19588,42 @@ type TaskCanvasInfo struct {
 	// 延迟时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayTime *uint64 `json:"DelayTime,omitempty" name:"DelayTime"`
+
+	// 执行开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" name:"ExecutionStartTime"`
+
+	// 执行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionEndTime *string `json:"ExecutionEndTime,omitempty" name:"ExecutionEndTime"`
+
+	// 层级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Layer *string `json:"Layer,omitempty" name:"Layer"`
+
+	// 来源数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceServiceId *string `json:"SourceServiceId,omitempty" name:"SourceServiceId"`
+
+	// 来源数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceServiceType *string `json:"SourceServiceType,omitempty" name:"SourceServiceType"`
+
+	// 目标数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServiceId *string `json:"TargetServiceId,omitempty" name:"TargetServiceId"`
+
+	// 目标数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetServiceType *string `json:"TargetServiceType,omitempty" name:"TargetServiceType"`
+
+	// 任务告警类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmType *string `json:"AlarmType,omitempty" name:"AlarmType"`
+
+	// 任务创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type TaskExtInfo struct {
@@ -19815,6 +19886,12 @@ type TaskInfoPage struct {
 
 	// 总页数
 	TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+	// 页数
+	PageCount *uint64 `json:"PageCount,omitempty" name:"PageCount"`
+
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
 type TaskInnerInfo struct {

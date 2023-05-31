@@ -145,6 +145,9 @@ type AddNodesRequestParams struct {
 
 	// 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
 	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type AddNodesRequest struct {
@@ -212,6 +215,9 @@ type AddNodesRequest struct {
 
 	// 添加节点类型。默认取值：STATIC。<li>STATIC：静态节点，不会参与弹性伸缩流程。<li>DYNAMIC：弹性节点，会被弹性缩容的节点。管控节点和登录节点不支持此参数。
 	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *AddNodesRequest) ToJsonString() string {
@@ -245,6 +251,7 @@ func (r *AddNodesRequest) FromJsonString(s string) error {
 	delete(f, "NodeRole")
 	delete(f, "DryRun")
 	delete(f, "NodeType")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddNodesRequest has unknown keys!", "")
 	}
@@ -475,6 +482,9 @@ type ComputeNode struct {
 	// 不指定节点显示名称则默认显示‘未命名’。
 	// 最多支持60个字符。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type ComputeNodeOverview struct {
@@ -1431,6 +1441,9 @@ type ExpansionNodeConfig struct {
 
 	// 私有网络相关信息配置。
 	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
+
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type ExpansionNodeConfigOverview struct {
@@ -1573,6 +1586,9 @@ type LoginNode struct {
 	// 不指定节点显示名称则默认显示‘未命名’。
 	// 最多支持60个字符。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type LoginNodeOverview struct {
@@ -1611,6 +1627,9 @@ type ManagerNode struct {
 	// 购买多个节点，如果不指定模式串，则在节点显示名称添加后缀`1、2...n`，其中`n`表示购买节点的数量，例如`server_`，购买2个时，节点显示名称分别为`server_1`，`server_2`。</li><li>
 	// 最多支持60个字符（包含模式串）。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type ManagerNodeOverview struct {

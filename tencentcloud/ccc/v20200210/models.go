@@ -760,7 +760,7 @@ type CreateSDKLoginTokenRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 坐席账号。
+	// 座席账号。
 	SeatUserId *string `json:"SeatUserId,omitempty" name:"SeatUserId"`
 }
 
@@ -770,7 +770,7 @@ type CreateSDKLoginTokenRequest struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 坐席账号。
+	// 座席账号。
 	SeatUserId *string `json:"SeatUserId,omitempty" name:"SeatUserId"`
 }
 
@@ -3087,16 +3087,16 @@ type ModifyStaffRequestParams struct {
 	// 应用ID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 坐席账户
+	// 座席账户
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 坐席名称
+	// 座席名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 坐席手机号（带0086前缀,示例：008618011111111）
+	// 座席手机号（带0086前缀,示例：008618011111111）
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// 坐席昵称
+	// 座席昵称
 	Nick *string `json:"Nick,omitempty" name:"Nick"`
 
 	// 绑定技能组ID列表
@@ -3115,16 +3115,16 @@ type ModifyStaffRequest struct {
 	// 应用ID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 坐席账户
+	// 座席账户
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 坐席名称
+	// 座席名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 坐席手机号（带0086前缀,示例：008618011111111）
+	// 座席手机号（带0086前缀,示例：008618011111111）
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// 坐席昵称
+	// 座席昵称
 	Nick *string `json:"Nick,omitempty" name:"Nick"`
 
 	// 绑定技能组ID列表

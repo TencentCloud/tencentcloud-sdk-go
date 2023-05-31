@@ -1,3 +1,283 @@
+# Release v1.0.668
+
+## 应用云渲染(car) 版本：2022-01-10
+
+### 第 7 次发布
+
+发布时间：2023-05-31 01:09:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSession](https://cloud.tencent.com/document/api/1547/72826)
+
+	* 新增入参：ApplicationParameters
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 88 次发布
+
+发布时间：2023-05-31 01:16:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeSaveOrUpdateWarnings
+
+修改接口：
+
+* [DescribeAssetSystemPackageList](https://cloud.tencent.com/document/api/296/61933)
+
+	* <font color="#dd0000">**修改入参**：</font>Uuid, Quuid
+
+
+修改数据结构：
+
+* [AssetSystemPackageInfo](https://cloud.tencent.com/document/api/296/19867#AssetSystemPackageInfo)
+
+	* 新增成员：MachineExtraInfo, Quuid, Uuid
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 54 次发布
+
+发布时间：2023-05-31 01:18:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindClusterResourcePackages](https://cloud.tencent.com/document/api/1003/93014)
+* [CreateResourcePackage](https://cloud.tencent.com/document/api/1003/93013)
+* [DescribeResourcePackageDetail](https://cloud.tencent.com/document/api/1003/93012)
+* [DescribeResourcePackageList](https://cloud.tencent.com/document/api/1003/93011)
+* [DescribeResourcePackageSaleSpec](https://cloud.tencent.com/document/api/1003/93010)
+* [ModifyResourcePackageClusters](https://cloud.tencent.com/document/api/1003/93009)
+* [ModifyResourcePackageName](https://cloud.tencent.com/document/api/1003/93008)
+* [RefundResourcePackage](https://cloud.tencent.com/document/api/1003/93007)
+* [UnbindClusterResourcePackages](https://cloud.tencent.com/document/api/1003/93006)
+
+新增数据结构：
+
+* [BindInstanceInfo](https://cloud.tencent.com/document/api/1003/48097#BindInstanceInfo)
+* [Package](https://cloud.tencent.com/document/api/1003/48097#Package)
+* [PackageDetail](https://cloud.tencent.com/document/api/1003/48097#PackageDetail)
+* [ResourcePackage](https://cloud.tencent.com/document/api/1003/48097#ResourcePackage)
+* [SalePackageSpec](https://cloud.tencent.com/document/api/1003/48097#SalePackageSpec)
+
+修改数据结构：
+
+* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+
+	* 新增成员：ResourcePackages
+
+* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
+
+	* 新增成员：ResourcePackages
+
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
+
+	* 新增成员：DbMode, ResourcePackages
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 70 次发布
+
+发布时间：2023-05-31 01:25:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1323/89386)
+
+	* 新增入参：SealImageCompress, SealColor, ProcessSeal
+
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1323/70369#TemplateInfo)
+
+	* 新增成员：TemplateType
+
+
+### 第 69 次发布
+
+发布时间：2023-05-30 17:10:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Agent](https://cloud.tencent.com/document/api/1323/70369#Agent)
+
+
+
+
+## 人脸融合(facefusion) 版本：2022-09-27
+
+### 第 4 次发布
+
+发布时间：2023-05-31 01:26:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PublicMaterialInfos](https://cloud.tencent.com/document/api/670/85619#PublicMaterialInfos)
+
+	* 新增成员：AuditResult
+
+
+
+
+## 人脸融合(facefusion) 版本：2018-12-01
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 54 次发布
+
+发布时间：2023-05-31 01:38:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Trigger](https://cloud.tencent.com/document/api/583/17244#Trigger)
+
+	* <font color="#dd0000">**修改成员**：</font>ResourceId, BindStatus, TriggerAttribute
+
+* [TriggerInfo](https://cloud.tencent.com/document/api/583/17244#TriggerInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>ResourceId, BindStatus, TriggerAttribute
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 55 次发布
+
+发布时间：2023-05-31 01:41:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteSecurityPolicy](https://cloud.tencent.com/document/api/1141/53907)
+
+	* 新增入参：CidrBlock
+
+	* <font color="#dd0000">**修改入参**：</font>PolicyIndex, PolicyVersion
+
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 6 次发布
+
+发布时间：2023-05-31 01:45:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddNodes](https://cloud.tencent.com/document/api/1527/89571)
+
+	* 新增入参：ProjectId
+
+
+修改数据结构：
+
+* [ComputeNode](https://cloud.tencent.com/document/api/1527/89579#ComputeNode)
+
+	* 新增成员：ProjectId
+
+* [ExpansionNodeConfig](https://cloud.tencent.com/document/api/1527/89579#ExpansionNodeConfig)
+
+	* 新增成员：ProjectId
+
+* [LoginNode](https://cloud.tencent.com/document/api/1527/89579#LoginNode)
+
+	* 新增成员：ProjectId
+
+* [ManagerNode](https://cloud.tencent.com/document/api/1527/89579#ManagerNode)
+
+	* 新增成员：ProjectId
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 28 次发布
+
+发布时间：2023-05-31 01:52:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOperateTasks](https://cloud.tencent.com/document/api/1267/90705)
+
+	* 新增入参：SourceServiceId, SourceServiceType, TargetServiceId, TargetServiceType, AlarmType
+
+
+修改数据结构：
+
+* [TaskCanvasInfo](https://cloud.tencent.com/document/api/1267/76336#TaskCanvasInfo)
+
+	* 新增成员：ExecutionStartTime, ExecutionEndTime, Layer, SourceServiceId, SourceServiceType, TargetServiceId, TargetServiceType, AlarmType, CreateTime
+
+* [TaskInfoPage](https://cloud.tencent.com/document/api/1267/76336#TaskInfoPage)
+
+	* 新增成员：PageCount, TotalCount
+
+
+
+
 # Release v1.0.667
 
 ## 数据传输服务(dts) 版本：2021-12-06

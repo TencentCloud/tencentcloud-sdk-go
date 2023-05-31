@@ -3127,6 +3127,9 @@ type DeleteSecurityPolicyRequestParams struct {
 
 	// 白名单版本
 	PolicyVersion *string `json:"PolicyVersion,omitempty" name:"PolicyVersion"`
+
+	// 网段或IP(互斥)
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 }
 
 type DeleteSecurityPolicyRequest struct {
@@ -3140,6 +3143,9 @@ type DeleteSecurityPolicyRequest struct {
 
 	// 白名单版本
 	PolicyVersion *string `json:"PolicyVersion,omitempty" name:"PolicyVersion"`
+
+	// 网段或IP(互斥)
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
 }
 
 func (r *DeleteSecurityPolicyRequest) ToJsonString() string {
@@ -3157,6 +3163,7 @@ func (r *DeleteSecurityPolicyRequest) FromJsonString(s string) error {
 	delete(f, "RegistryId")
 	delete(f, "PolicyIndex")
 	delete(f, "PolicyVersion")
+	delete(f, "CidrBlock")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSecurityPolicyRequest has unknown keys!", "")
 	}

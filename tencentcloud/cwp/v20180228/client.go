@@ -9740,6 +9740,10 @@ func NewDescribeSaveOrUpdateWarningsResponse() (response *DescribeSaveOrUpdateWa
 }
 
 // DescribeSaveOrUpdateWarnings
+// 下线
+//
+// 
+//
 // 更新或者插入用户告警设置(该接口废弃,请调用 ModifyWarningSetting )
 //
 // 可能返回的错误码:
@@ -9755,6 +9759,10 @@ func (c *Client) DescribeSaveOrUpdateWarnings(request *DescribeSaveOrUpdateWarni
 }
 
 // DescribeSaveOrUpdateWarnings
+// 下线
+//
+// 
+//
 // 更新或者插入用户告警设置(该接口废弃,请调用 ModifyWarningSetting )
 //
 // 可能返回的错误码:

@@ -2848,6 +2848,10 @@ func NewDeleteSecurityPolicyResponse() (response *DeleteSecurityPolicyResponse) 
 // DeleteSecurityPolicy
 // 删除实例公网访问白名单策略
 //
+// 
+//
+// 注意：当PolicyIndex和CidrBlock同时存在时，CidrBlock优先级更高
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -2863,6 +2867,10 @@ func (c *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (res
 
 // DeleteSecurityPolicy
 // 删除实例公网访问白名单策略
+//
+// 
+//
+// 注意：当PolicyIndex和CidrBlock同时存在时，CidrBlock优先级更高
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

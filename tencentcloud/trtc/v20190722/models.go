@@ -99,9 +99,11 @@ type CloudStorage struct {
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 
 	// 第三方存储的access_key账号信息。
+	// 若存储至腾讯云COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建
 	AccessKey *string `json:"AccessKey,omitempty" name:"AccessKey"`
 
 	// 第三方存储的secret_key账号信息。
+	// 若存储至腾讯云COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
 
 	// 第三方云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围a~z,A~Z,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。

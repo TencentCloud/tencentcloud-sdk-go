@@ -2110,6 +2110,8 @@ func NewCreatePreparedPersonalEsignResponse() (response *CreatePreparedPersonalE
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDMOBILE = "InvalidParameterValue.InvalidMobile"
 func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsignRequest) (response *CreatePreparedPersonalEsignResponse, err error) {
     return c.CreatePreparedPersonalEsignWithContext(context.Background(), request)
 }
@@ -2119,6 +2121,8 @@ func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsig
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDMOBILE = "InvalidParameterValue.InvalidMobile"
 func (c *Client) CreatePreparedPersonalEsignWithContext(ctx context.Context, request *CreatePreparedPersonalEsignRequest) (response *CreatePreparedPersonalEsignResponse, err error) {
     if request == nil {
         request = NewCreatePreparedPersonalEsignRequest()
@@ -2692,7 +2696,12 @@ func NewDeleteIntegrationRoleUsersResponse() (response *DeleteIntegrationRoleUse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DEPARTUSERID = "InvalidParameter.DepartUserId"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
     return c.DeleteIntegrationRoleUsersWithContext(context.Background(), request)
 }
@@ -2702,7 +2711,12 @@ func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DEPARTUSERID = "InvalidParameter.DepartUserId"
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DeleteIntegrationRoleUsersWithContext(ctx context.Context, request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
     if request == nil {
         request = NewDeleteIntegrationRoleUsersRequest()

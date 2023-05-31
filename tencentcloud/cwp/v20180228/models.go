@@ -1088,6 +1088,15 @@ type AssetSystemPackageInfo struct {
 
 	// 是否新增[0:否|1:是]
 	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 附加信息
+	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 主机Id
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// Agent Id
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 }
 
 type AssetUserBaseInfo struct {

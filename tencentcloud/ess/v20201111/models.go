@@ -52,34 +52,34 @@ type ApproverInfo struct {
 	// 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
 	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
-	// 本环节需要操作人的名字
+	// 签署人的姓名
 	ApproverName *string `json:"ApproverName,omitempty" name:"ApproverName"`
 
-	// 本环节需要操作人的手机号
+	// 签署人的手机号，11位数字
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
-	// 本环节操作人签署控件配置
+	// 签署人的签署控件列表
 	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
-	// 如果是企业,则为企业的名字
+	// 如果签署方是企业签署方，则为企业名
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
-	// 身份证号
+	// 签署人的身份证号
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitempty" name:"ApproverIdCardNumber"`
 
-	// 证件类型 
+	// 签署人的身份证件类型 
 	// ID_CARD 身份证
 	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
 	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitempty" name:"ApproverIdCardType"`
 
-	// sms--短信，none--不通知
+	// 签署通知类型：sms--短信，none--不通知
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
-	// 1--收款人、2--开具人、3--见证人
+	// 签署人角色类型：1--收款人、2--开具人、3--见证人
 	ApproverRole *int64 `json:"ApproverRole,omitempty" name:"ApproverRole"`
 
-	// 签署意愿确认渠道,WEIXINAPP:人脸识别
+	// 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 	VerifyChannel []*string `json:"VerifyChannel,omitempty" name:"VerifyChannel"`
 
 	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
@@ -88,7 +88,7 @@ type ApproverInfo struct {
 	// 签署人userId，传此字段则不用传姓名、手机号
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 签署人用户来源,企微侧用户请传入：WEWORKAPP
+	// 签署人用户来源，企微侧用户请传入：WEWORKAPP
 	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
 
 	// 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
@@ -120,18 +120,18 @@ type ApproverRestriction struct {
 	// 指定签署人名字
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 指定签署人手机号
+	// 指定签署人手机号，11位数字
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 指定签署人证件类型
+	// 指定签署人证件类型，ID_CARD-身份证
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
-	// 指定签署人证件号码
+	// 指定签署人证件号码，字母大写
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 }
 
 type AuthorizedUser struct {
-	// 用户id
+	// 电子签系统中的用户id
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
@@ -139,16 +139,16 @@ type AutoSignConfig struct {
 	// 自动签开通个人用户的三要素
 	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
 
-	// 回调链接
+	// 接受自动签开启的回调地址。需要保证post返回200
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 是否回调证书信息
+	// 是否回调证书信息，默认false-不需要
 	CertInfoCallback *bool `json:"CertInfoCallback,omitempty" name:"CertInfoCallback"`
 
-	// 是否支持用户自定义签名印章
+	// 是否支持用户自定义签名印章，默认false-不需要
 	UserDefineSeal *bool `json:"UserDefineSeal,omitempty" name:"UserDefineSeal"`
 
-	// 是否需要回调的时候返回印章(签名) 图片的 base64
+	// 是否需要回调的时候返回印章(签名) 图片的 base64，默认false-不需要
 	SealImgCallback *bool `json:"SealImgCallback,omitempty" name:"SealImgCallback"`
 
 	// 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
@@ -392,7 +392,7 @@ func (r *CancelMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 }
 
 type CcInfo struct {
-	// 被抄送人手机号
+	// 被抄送人手机号，11位数字
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 被抄送人姓名
@@ -410,7 +410,7 @@ type CcInfo struct {
 }
 
 type Component struct {
-	// 如果是Component控件类型，则可选的字段为：
+	// 如果是Component填写控件类型，则可选的字段为：
 	// TEXT - 普通文本控件，输入文本字符串；
 	// MULTI_LINE_TEXT - 多行文本控件，输入文本字符串；
 	// CHECK_BOX - 勾选框控件，若选中填写ComponentValue 填写 true或者 false 字符串；
@@ -421,7 +421,7 @@ type Component struct {
 	// DATE - 日期控件；默认是格式化为xxxx年xx月xx日字符串；
 	// DISTRICT - 省市区行政区控件，ComponentValue填写省市区行政区字符串内容；
 	// 
-	// 如果是SignComponent控件类型，则可选的字段为
+	// 如果是SignComponent签署控件类型，则可选的字段为
 	// SIGN_SEAL - 签署印章控件；
 	// SIGN_DATE - 签署日期控件；
 	// SIGN_SIGNATURE - 用户签名控件；
@@ -433,7 +433,7 @@ type Component struct {
 	// 表单域的控件不能作为印章和签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
 
-	// 控件所属文件的序号（模板中的resourceId排列序号，取值为：0-N）
+	// 控件所属文件的序号（取值为：0-N）。目前单文件的情况下，值是0
 	FileIndex *int64 `json:"FileIndex,omitempty" name:"FileIndex"`
 
 	// 参数控件高度，单位pt
@@ -451,10 +451,10 @@ type Component struct {
 	// 参数控件Y位置，单位pt
 	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
 
-	// GenerateMode==KEYWORD 指定关键字
+	// 查询时返回控件唯一Id。使用文件发起合同时用于GenerateMode==KEYWORD 指定关键字
 	ComponentId *string `json:"ComponentId,omitempty" name:"ComponentId"`
 
-	// GenerateMode==FIELD 指定表单域名称
+	// 查询时返回控件名。使用文件发起合同时用于GenerateMode==FIELD 指定表单域名称
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 
 	// 是否必选，默认为false
@@ -491,7 +491,7 @@ type Component struct {
 	// 参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}",
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
-	// 是否是表单域类型，默认不存在
+	// 是否是表单域类型，默认不false-不是
 	IsFormType *bool `json:"IsFormType,omitempty" name:"IsFormType"`
 
 	// 控件填充vaule，ComponentType和传入值类型对应关系：
@@ -580,7 +580,7 @@ type Component struct {
 	// 日期签署控件的字号，默认为 12
 	ComponentDateFontSize *int64 `json:"ComponentDateFontSize,omitempty" name:"ComponentDateFontSize"`
 
-	// 平台模板控件 id 标识
+	// 第三方应用集成平台模板控件 id 标识
 	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
 
 	// 指定关键字时横坐标偏移量，单位pt
@@ -589,7 +589,7 @@ type Component struct {
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
 
-	// //子客控件来源。0-平台指定；1-用户自定义
+	// 第三方应用集成中子客企业控件来源。0-平台指定；1-用户自定义
 	ChannelComponentSource *uint64 `json:"ChannelComponentSource,omitempty" name:"ChannelComponentSource"`
 
 	// 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
@@ -2139,17 +2139,17 @@ func (r *CreatePrepareFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePreparedPersonalEsignRequestParams struct {
-	// 个人用户名称
+	// 个人用户姓名
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 身份证件号码
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 
-	// 印章图片的base64
-	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
-
 	// 印章名称
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 印章图片的base64，最大不超过 8M
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2162,27 +2162,44 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	// HONGKONG_MACAO_AND_TAIWAN 中国台湾
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
+	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+	SealImageCompress *bool `json:"SealImageCompress,omitempty" name:"SealImageCompress"`
+
 	// 手机号码；当需要开通自动签时，该参数必传
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 是否开通自动签，该功能需联系运营工作人员开通后使用
 	EnableAutoSign *bool `json:"EnableAutoSign,omitempty" name:"EnableAutoSign"`
+
+	// 印章颜色（参数ProcessSeal=true时生效）
+	// 默认值：BLACK黑色
+	// 取值: 
+	// BLACK 黑色,
+	// RED 红色,
+	// BLUE 蓝色。
+	SealColor *string `json:"SealColor,omitempty" name:"SealColor"`
+
+	// 是否处理印章
+	// 默认不做印章处理。
+	// 取值：false：不做任何处理；
+	// true：做透明化处理和颜色增强。
+	ProcessSeal *bool `json:"ProcessSeal,omitempty" name:"ProcessSeal"`
 }
 
 type CreatePreparedPersonalEsignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 个人用户名称
+	// 个人用户姓名
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 身份证件号码
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 
-	// 印章图片的base64
-	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
-
 	// 印章名称
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 印章图片的base64，最大不超过 8M
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2195,11 +2212,28 @@ type CreatePreparedPersonalEsignRequest struct {
 	// HONGKONG_MACAO_AND_TAIWAN 中国台湾
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
+	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+	SealImageCompress *bool `json:"SealImageCompress,omitempty" name:"SealImageCompress"`
+
 	// 手机号码；当需要开通自动签时，该参数必传
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 是否开通自动签，该功能需联系运营工作人员开通后使用
 	EnableAutoSign *bool `json:"EnableAutoSign,omitempty" name:"EnableAutoSign"`
+
+	// 印章颜色（参数ProcessSeal=true时生效）
+	// 默认值：BLACK黑色
+	// 取值: 
+	// BLACK 黑色,
+	// RED 红色,
+	// BLUE 蓝色。
+	SealColor *string `json:"SealColor,omitempty" name:"SealColor"`
+
+	// 是否处理印章
+	// 默认不做印章处理。
+	// 取值：false：不做任何处理；
+	// true：做透明化处理和颜色增强。
+	ProcessSeal *bool `json:"ProcessSeal,omitempty" name:"ProcessSeal"`
 }
 
 func (r *CreatePreparedPersonalEsignRequest) ToJsonString() string {
@@ -2216,12 +2250,15 @@ func (r *CreatePreparedPersonalEsignRequest) FromJsonString(s string) error {
 	}
 	delete(f, "UserName")
 	delete(f, "IdCardNumber")
-	delete(f, "SealImage")
 	delete(f, "SealName")
+	delete(f, "SealImage")
 	delete(f, "Operator")
 	delete(f, "IdCardType")
+	delete(f, "SealImageCompress")
 	delete(f, "Mobile")
 	delete(f, "EnableAutoSign")
+	delete(f, "SealColor")
+	delete(f, "ProcessSeal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreparedPersonalEsignRequest has unknown keys!", "")
 	}
@@ -4144,7 +4181,7 @@ type FailedUpdateStaffData struct {
 	// 用户Id
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 用户OpenId
+	// 员工在第三方平台的openId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
@@ -5123,6 +5160,12 @@ type TemplateInfo struct {
 
 	// 发起人角色信息
 	Promoter *Recipient `json:"Promoter,omitempty" name:"Promoter"`
+
+	// 模板类型
+	// 取值：
+	// 1  静默签,
+	// 3  普通模板
+	TemplateType *int64 `json:"TemplateType,omitempty" name:"TemplateType"`
 
 	// 模板可用状态，取值：1启用（默认），2停用
 	Available *int64 `json:"Available,omitempty" name:"Available"`

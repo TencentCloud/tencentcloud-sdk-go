@@ -9078,7 +9078,7 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 //
 // 4. 对视频采样截图；
 //
-// 5. 对视频截图雪碧图；
+// 5. 对视频截取雪碧图；
 //
 // 6. 对视频截取一张图做封面；
 //
@@ -9126,7 +9126,7 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 //
 // 4. 对视频采样截图；
 //
-// 5. 对视频截图雪碧图；
+// 5. 对视频截取雪碧图；
 //
 // 6. 对视频截取一张图做封面；
 //
