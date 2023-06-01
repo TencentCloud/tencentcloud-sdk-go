@@ -1139,6 +1139,15 @@ type DeleteUserManagerUserListRequestParams struct {
 
 	// 集群用户名列表
 	UserNameList []*string `json:"UserNameList,omitempty" name:"UserNameList"`
+
+	// tke/eks集群id，容器集群传
+	TkeClusterId *string `json:"TkeClusterId,omitempty" name:"TkeClusterId"`
+
+	// 默认空，容器版传"native"
+	DisplayStrategy *string `json:"DisplayStrategy,omitempty" name:"DisplayStrategy"`
+
+	// 用户组
+	UserGroupList []*UserAndGroup `json:"UserGroupList,omitempty" name:"UserGroupList"`
 }
 
 type DeleteUserManagerUserListRequest struct {
@@ -1149,6 +1158,15 @@ type DeleteUserManagerUserListRequest struct {
 
 	// 集群用户名列表
 	UserNameList []*string `json:"UserNameList,omitempty" name:"UserNameList"`
+
+	// tke/eks集群id，容器集群传
+	TkeClusterId *string `json:"TkeClusterId,omitempty" name:"TkeClusterId"`
+
+	// 默认空，容器版传"native"
+	DisplayStrategy *string `json:"DisplayStrategy,omitempty" name:"DisplayStrategy"`
+
+	// 用户组
+	UserGroupList []*UserAndGroup `json:"UserGroupList,omitempty" name:"UserGroupList"`
 }
 
 func (r *DeleteUserManagerUserListRequest) ToJsonString() string {
@@ -1165,6 +1183,9 @@ func (r *DeleteUserManagerUserListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "UserNameList")
+	delete(f, "TkeClusterId")
+	delete(f, "DisplayStrategy")
+	delete(f, "UserGroupList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserManagerUserListRequest has unknown keys!", "")
 	}
@@ -5553,6 +5574,16 @@ type UpdateInstanceSettings struct {
 
 	// 变配机器规格
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+}
+
+type UserAndGroup struct {
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserGroup *string `json:"UserGroup,omitempty" name:"UserGroup"`
 }
 
 type UserInfoForUserManager struct {

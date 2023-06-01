@@ -1,3 +1,139 @@
+# Release v1.0.669
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 129 次发布
+
+发布时间：2023-06-01 09:45:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBinlogs](https://cloud.tencent.com/document/api/236/15843)
+
+	* 新增入参：MinStartTime, MaxStartTime
+
+
+
+
+## 内容安全(cms) 版本：2019-03-21
+
+### 第 16 次发布
+
+发布时间：2023-05-31 21:26:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateKeywordsSamples](https://cloud.tencent.com/document/api/669/93038)
+* [DeleteLibSamples](https://cloud.tencent.com/document/api/669/93037)
+* [DescribeKeywordsLibs](https://cloud.tencent.com/document/api/669/93036)
+* [DescribeLibSamples](https://cloud.tencent.com/document/api/669/93035)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateFileSample
+* CreateTextSample
+* DeleteFileSample
+* DeleteTextSample
+* DescribeFileSample
+* DescribeTextSample
+* ManualReview
+
+新增数据结构：
+
+* [DeleteSampleDetails](https://cloud.tencent.com/document/api/669/34506#DeleteSampleDetails)
+* [Filters](https://cloud.tencent.com/document/api/669/34506#Filters)
+* [InvalidSample](https://cloud.tencent.com/document/api/669/34506#InvalidSample)
+* [KeywordsLibInfo](https://cloud.tencent.com/document/api/669/34506#KeywordsLibInfo)
+* [UserKeyword](https://cloud.tencent.com/document/api/669/34506#UserKeyword)
+* [UserKeywordInfo](https://cloud.tencent.com/document/api/669/34506#UserKeywordInfo)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* FileSample
+* FileSampleInfo
+* Filter
+* ManualReviewContent
+* ManualReviewData
+* TextSample
+
+修改数据结构：
+
+* [CodeDetail](https://cloud.tencent.com/document/api/669/34506#CodeDetail)
+
+	* 新增成员：StrCharset, QrCodePosition, StrQrCodeText, Uint32QrCodeType
+
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 58 次发布
+
+发布时间：2023-06-01 09:49:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyAccountConfig](https://cloud.tencent.com/document/api/557/93041)
+
+新增数据结构：
+
+* [ConfigValue](https://cloud.tencent.com/document/api/557/16142#ConfigValue)
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 46 次发布
+
+发布时间：2023-06-01 09:50:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteUserManagerUserList](https://cloud.tencent.com/document/api/589/83729)
+
+	* 新增入参：TkeClusterId, DisplayStrategy, UserGroupList
+
+	* <font color="#dd0000">**修改入参**：</font>UserNameList
+
+
+新增数据结构：
+
+* [UserAndGroup](https://cloud.tencent.com/document/api/589/33981#UserAndGroup)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 102 次发布
+
+发布时间：2023-06-01 09:54:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RecognizePhilippinesUMIDOCR](https://cloud.tencent.com/document/api/866/93042)
+
+
+
 # Release v1.0.668
 
 ## 应用云渲染(car) 版本：2022-01-10

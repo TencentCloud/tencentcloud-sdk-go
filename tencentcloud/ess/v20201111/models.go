@@ -32,15 +32,21 @@ type Admin struct {
 
 type Agent struct {
 	// 代理机构的应用编号,32位字符串，一般不用传
+	//
+	// Deprecated: AppId is deprecated.
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
 	// 被代理机构的应用号，一般不用传
+	//
+	// Deprecated: ProxyAppId is deprecated.
 	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
 
 	// 被代理机构在电子签平台的机构编号，集团代理下场景必传
 	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitempty" name:"ProxyOrganizationId"`
 
 	// 被代理机构的经办人，一般不用传
+	//
+	// Deprecated: ProxyOperator is deprecated.
 	ProxyOperator *string `json:"ProxyOperator,omitempty" name:"ProxyOperator"`
 }
 

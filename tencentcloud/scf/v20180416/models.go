@@ -4261,12 +4261,18 @@ type Trigger struct {
 	AvailableStatus *string `json:"AvailableStatus,omitempty" name:"AvailableStatus"`
 
 	// 触发器最小资源ID
+	//
+	// Deprecated: ResourceId is deprecated.
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 触发器和云函数绑定状态
+	//
+	// Deprecated: BindStatus is deprecated.
 	BindStatus *string `json:"BindStatus,omitempty" name:"BindStatus"`
 
 	// 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
+	//
+	// Deprecated: TriggerAttribute is deprecated.
 	TriggerAttribute *string `json:"TriggerAttribute,omitempty" name:"TriggerAttribute"`
 
 	// 触发器绑定的别名或版本
@@ -4363,12 +4369,18 @@ type TriggerInfo struct {
 	ModTime *string `json:"ModTime,omitempty" name:"ModTime"`
 
 	// 触发器最小资源ID
+	//
+	// Deprecated: ResourceId is deprecated.
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 触发器和云函数绑定状态
+	//
+	// Deprecated: BindStatus is deprecated.
 	BindStatus *string `json:"BindStatus,omitempty" name:"BindStatus"`
 
 	// 触发器类型，双向表示两侧控制台均可操作，单向表示SCF控制台单向创建
+	//
+	// Deprecated: TriggerAttribute is deprecated.
 	TriggerAttribute *string `json:"TriggerAttribute,omitempty" name:"TriggerAttribute"`
 
 	// 客户自定义触发器描述

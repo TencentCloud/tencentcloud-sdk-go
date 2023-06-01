@@ -155,6 +155,8 @@ type BillDetailComponent struct {
 	SinglePrice *string `json:"SinglePrice,omitempty" name:"SinglePrice"`
 
 	// 组件指定价（已废弃）
+	//
+	// Deprecated: SpecifiedPrice is deprecated.
 	SpecifiedPrice *string `json:"SpecifiedPrice,omitempty" name:"SpecifiedPrice"`
 
 	// 组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
@@ -227,6 +229,8 @@ type BillDetailComponent struct {
 
 	// 节省计划抵扣金额（已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SPDeduction is deprecated.
 	SPDeduction *string `json:"SPDeduction,omitempty" name:"SPDeduction"`
 
 	// 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率
@@ -350,6 +354,8 @@ type BillResourceSummary struct {
 	OriginalCostWithRI *string `json:"OriginalCostWithRI,omitempty" name:"OriginalCostWithRI"`
 
 	// 节省计划抵扣金额（已废弃）
+	//
+	// Deprecated: SPDeduction is deprecated.
 	SPDeduction *string `json:"SPDeduction,omitempty" name:"SPDeduction"`
 
 	// 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	

@@ -3217,6 +3217,60 @@ func (c *Client) KillSessionWithContext(ctx context.Context, request *KillSessio
     return
 }
 
+func NewModifyAccountConfigRequest() (request *ModifyAccountConfigRequest) {
+    request = &ModifyAccountConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "ModifyAccountConfig")
+    
+    
+    return
+}
+
+func NewModifyAccountConfigResponse() (response *ModifyAccountConfigResponse) {
+    response = &ModifyAccountConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAccountConfig
+// 修改账号的一些配置，比如 max_user_connections
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MODIFYUSERCONFIGFAILED = "FailedOperation.ModifyUserConfigFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+func (c *Client) ModifyAccountConfig(request *ModifyAccountConfigRequest) (response *ModifyAccountConfigResponse, err error) {
+    return c.ModifyAccountConfigWithContext(context.Background(), request)
+}
+
+// ModifyAccountConfig
+// 修改账号的一些配置，比如 max_user_connections
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MODIFYUSERCONFIGFAILED = "FailedOperation.ModifyUserConfigFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+func (c *Client) ModifyAccountConfigWithContext(ctx context.Context, request *ModifyAccountConfigRequest) (response *ModifyAccountConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyAccountConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAccountConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAccountConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccountDescriptionRequest() (request *ModifyAccountDescriptionRequest) {
     request = &ModifyAccountDescriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},

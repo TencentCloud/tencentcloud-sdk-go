@@ -405,6 +405,14 @@ type ColumnPrivilege struct {
 	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
+type ConfigValue struct {
+	// 配置项的名称，支持填写max_user_connections
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 配置值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type ConstraintRange struct {
 	// 约束类型为section时的最小值
 	Min *string `json:"Min,omitempty" name:"Min"`
@@ -5055,6 +5063,81 @@ type LogFileInfo struct {
 
 	// 文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
+}
+
+// Predefined struct for user
+type ModifyAccountConfigRequestParams struct {
+	// 实例 ID，格式如：tdsqlshard-kpkvq5oj，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 账号的名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 账号的域名
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 配置列表，每一个元素是Config和Value的组合
+	Configs []*ConfigValue `json:"Configs,omitempty" name:"Configs"`
+}
+
+type ModifyAccountConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：tdsqlshard-kpkvq5oj，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 账号的名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 账号的域名
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 配置列表，每一个元素是Config和Value的组合
+	Configs []*ConfigValue `json:"Configs,omitempty" name:"Configs"`
+}
+
+func (r *ModifyAccountConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "Host")
+	delete(f, "Configs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAccountConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAccountConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAccountConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAccountConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyAccountConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAccountConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

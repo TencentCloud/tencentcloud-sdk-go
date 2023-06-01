@@ -1509,15 +1509,21 @@ type SentenceRecognitionRequestParams struct {
 	VoiceFormat *string `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
 
 	// 腾讯云项目 ID，废弃参数，填写0即可。
+	//
+	// Deprecated: ProjectId is deprecated.
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 子服务类型。2： 一句话识别。
+	//
+	// Deprecated: SubServiceType is deprecated.
 	SubServiceType *uint64 `json:"SubServiceType,omitempty" name:"SubServiceType"`
 
 	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 废弃参数，填写任意字符串即可。
+	//
+	// Deprecated: UsrAudioKey is deprecated.
 	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
 	// 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。

@@ -45,338 +45,306 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
-func NewCreateFileSampleRequest() (request *CreateFileSampleRequest) {
-    request = &CreateFileSampleRequest{
+func NewCreateKeywordsSamplesRequest() (request *CreateKeywordsSamplesRequest) {
+    request = &CreateKeywordsSamplesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("cms", APIVersion, "CreateFileSample")
+    request.Init().WithApiInfo("cms", APIVersion, "CreateKeywordsSamples")
     
     
     return
 }
 
-func NewCreateFileSampleResponse() (response *CreateFileSampleResponse) {
-    response = &CreateFileSampleResponse{
+func NewCreateKeywordsSamplesResponse() (response *CreateKeywordsSamplesResponse) {
+    response = &CreateKeywordsSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// CreateFileSample
-// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 通过该接口可以将图片新增到样本库。
+// CreateKeywordsSamples
+// 创建关键词接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-func (c *Client) CreateFileSample(request *CreateFileSampleRequest) (response *CreateFileSampleResponse, err error) {
-    return c.CreateFileSampleWithContext(context.Background(), request)
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateKeywordsSamples(request *CreateKeywordsSamplesRequest) (response *CreateKeywordsSamplesResponse, err error) {
+    return c.CreateKeywordsSamplesWithContext(context.Background(), request)
 }
 
-// CreateFileSample
-// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 通过该接口可以将图片新增到样本库。
+// CreateKeywordsSamples
+// 创建关键词接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-func (c *Client) CreateFileSampleWithContext(ctx context.Context, request *CreateFileSampleRequest) (response *CreateFileSampleResponse, err error) {
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateKeywordsSamplesWithContext(ctx context.Context, request *CreateKeywordsSamplesRequest) (response *CreateKeywordsSamplesResponse, err error) {
     if request == nil {
-        request = NewCreateFileSampleRequest()
+        request = NewCreateKeywordsSamplesRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("CreateFileSample require credential")
+        return nil, errors.New("CreateKeywordsSamples require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewCreateFileSampleResponse()
+    response = NewCreateKeywordsSamplesResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewCreateTextSampleRequest() (request *CreateTextSampleRequest) {
-    request = &CreateTextSampleRequest{
+func NewDeleteLibSamplesRequest() (request *DeleteLibSamplesRequest) {
+    request = &DeleteLibSamplesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("cms", APIVersion, "CreateTextSample")
+    request.Init().WithApiInfo("cms", APIVersion, "DeleteLibSamples")
     
     
     return
 }
 
-func NewCreateTextSampleResponse() (response *CreateTextSampleResponse) {
-    response = &CreateTextSampleResponse{
+func NewDeleteLibSamplesResponse() (response *DeleteLibSamplesResponse) {
+    response = &DeleteLibSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// CreateTextSample
-// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 通过该接口可以将文本新增到样本库。
+// DeleteLibSamples
+// 删除关键词接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-func (c *Client) CreateTextSample(request *CreateTextSampleRequest) (response *CreateTextSampleResponse, err error) {
-    return c.CreateTextSampleWithContext(context.Background(), request)
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteLibSamples(request *DeleteLibSamplesRequest) (response *DeleteLibSamplesResponse, err error) {
+    return c.DeleteLibSamplesWithContext(context.Background(), request)
 }
 
-// CreateTextSample
-// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 通过该接口可以将文本新增到样本库。
+// DeleteLibSamples
+// 删除关键词接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-func (c *Client) CreateTextSampleWithContext(ctx context.Context, request *CreateTextSampleRequest) (response *CreateTextSampleResponse, err error) {
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteLibSamplesWithContext(ctx context.Context, request *DeleteLibSamplesRequest) (response *DeleteLibSamplesResponse, err error) {
     if request == nil {
-        request = NewCreateTextSampleRequest()
+        request = NewDeleteLibSamplesRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("CreateTextSample require credential")
+        return nil, errors.New("DeleteLibSamples require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewCreateTextSampleResponse()
+    response = NewDeleteLibSamplesResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewDeleteFileSampleRequest() (request *DeleteFileSampleRequest) {
-    request = &DeleteFileSampleRequest{
+func NewDescribeKeywordsLibsRequest() (request *DescribeKeywordsLibsRequest) {
+    request = &DescribeKeywordsLibsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("cms", APIVersion, "DeleteFileSample")
+    request.Init().WithApiInfo("cms", APIVersion, "DescribeKeywordsLibs")
     
     
     return
 }
 
-func NewDeleteFileSampleResponse() (response *DeleteFileSampleResponse) {
-    response = &DeleteFileSampleResponse{
+func NewDescribeKeywordsLibsResponse() (response *DescribeKeywordsLibsResponse) {
+    response = &DescribeKeywordsLibsResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// DeleteFileSample
-// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 删除图片样本库，支持批量删除，一次提交不超过20个。
+// DescribeKeywordsLibs
+// 获取用户词库列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-func (c *Client) DeleteFileSample(request *DeleteFileSampleRequest) (response *DeleteFileSampleResponse, err error) {
-    return c.DeleteFileSampleWithContext(context.Background(), request)
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKeywordsLibs(request *DescribeKeywordsLibsRequest) (response *DescribeKeywordsLibsResponse, err error) {
+    return c.DescribeKeywordsLibsWithContext(context.Background(), request)
 }
 
-// DeleteFileSample
-// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 删除图片样本库，支持批量删除，一次提交不超过20个。
+// DescribeKeywordsLibs
+// 获取用户词库列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-func (c *Client) DeleteFileSampleWithContext(ctx context.Context, request *DeleteFileSampleRequest) (response *DeleteFileSampleResponse, err error) {
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeKeywordsLibsWithContext(ctx context.Context, request *DescribeKeywordsLibsRequest) (response *DescribeKeywordsLibsResponse, err error) {
     if request == nil {
-        request = NewDeleteFileSampleRequest()
+        request = NewDescribeKeywordsLibsRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("DeleteFileSample require credential")
+        return nil, errors.New("DescribeKeywordsLibs require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewDeleteFileSampleResponse()
+    response = NewDescribeKeywordsLibsResponse()
     err = c.Send(request, response)
     return
 }
 
-func NewDeleteTextSampleRequest() (request *DeleteTextSampleRequest) {
-    request = &DeleteTextSampleRequest{
+func NewDescribeLibSamplesRequest() (request *DescribeLibSamplesRequest) {
+    request = &DescribeLibSamplesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("cms", APIVersion, "DeleteTextSample")
+    request.Init().WithApiInfo("cms", APIVersion, "DescribeLibSamples")
     
     
     return
 }
 
-func NewDeleteTextSampleResponse() (response *DeleteTextSampleResponse) {
-    response = &DeleteTextSampleResponse{
+func NewDescribeLibSamplesResponse() (response *DescribeLibSamplesResponse) {
+    response = &DescribeLibSamplesResponse{
         BaseResponse: &tchttp.BaseResponse{},
     }
     return
 }
 
-// DeleteTextSample
-// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 删除文本样本库，暂时只支持单个删除。
+// DescribeLibSamples
+// 获取关键词接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-func (c *Client) DeleteTextSample(request *DeleteTextSampleRequest) (response *DeleteTextSampleResponse, err error) {
-    return c.DeleteTextSampleWithContext(context.Background(), request)
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLibSamples(request *DescribeLibSamplesRequest) (response *DescribeLibSamplesResponse, err error) {
+    return c.DescribeLibSamplesWithContext(context.Background(), request)
 }
 
-// DeleteTextSample
-// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 删除文本样本库，暂时只支持单个删除。
+// DescribeLibSamples
+// 获取关键词接口
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-func (c *Client) DeleteTextSampleWithContext(ctx context.Context, request *DeleteTextSampleRequest) (response *DeleteTextSampleResponse, err error) {
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLibSamplesWithContext(ctx context.Context, request *DescribeLibSamplesRequest) (response *DescribeLibSamplesResponse, err error) {
     if request == nil {
-        request = NewDeleteTextSampleRequest()
+        request = NewDescribeLibSamplesRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("DeleteTextSample require credential")
+        return nil, errors.New("DescribeLibSamples require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewDeleteTextSampleResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeFileSampleRequest() (request *DescribeFileSampleRequest) {
-    request = &DescribeFileSampleRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cms", APIVersion, "DescribeFileSample")
-    
-    
-    return
-}
-
-func NewDescribeFileSampleResponse() (response *DescribeFileSampleResponse) {
-    response = &DescribeFileSampleResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeFileSample
-// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 查询图片样本库，支持批量查询。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeFileSample(request *DescribeFileSampleRequest) (response *DescribeFileSampleResponse, err error) {
-    return c.DescribeFileSampleWithContext(context.Background(), request)
-}
-
-// DescribeFileSample
-// 本文档适用于图片内容安全、视频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 查询图片样本库，支持批量查询。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeFileSampleWithContext(ctx context.Context, request *DescribeFileSampleRequest) (response *DescribeFileSampleResponse, err error) {
-    if request == nil {
-        request = NewDescribeFileSampleRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeFileSample require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeFileSampleResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeTextSampleRequest() (request *DescribeTextSampleRequest) {
-    request = &DescribeTextSampleRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cms", APIVersion, "DescribeTextSample")
-    
-    
-    return
-}
-
-func NewDescribeTextSampleResponse() (response *DescribeTextSampleResponse) {
-    response = &DescribeTextSampleResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeTextSample
-// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 支持批量查询文本样本库。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeTextSample(request *DescribeTextSampleRequest) (response *DescribeTextSampleResponse, err error) {
-    return c.DescribeTextSampleWithContext(context.Background(), request)
-}
-
-// DescribeTextSample
-// 本文档适用于文本内容安全、音频内容安全自定义识别库的管理。
-//
-// <br>
-//
-// 支持批量查询文本样本库。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeTextSampleWithContext(ctx context.Context, request *DescribeTextSampleRequest) (response *DescribeTextSampleResponse, err error) {
-    if request == nil {
-        request = NewDescribeTextSampleRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeTextSample require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeTextSampleResponse()
+    response = NewDescribeLibSamplesResponse()
     err = c.Send(request, response)
     return
 }
@@ -404,15 +372,25 @@ func NewImageModerationResponse() (response *ImageModerationResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_IMAGEASPECTRATIOTOOLARGE = "InvalidParameter.ImageAspectRatioTooLarge"
+//  INVALIDPARAMETER_IMAGEDATATOOSMALL = "InvalidParameter.ImageDataTooSmall"
+//  INVALIDPARAMETER_IMAGESIZETOOSMALL = "InvalidParameter.ImageSizeTooSmall"
+//  INVALIDPARAMETER_INVALIDIMAGECONTENT = "InvalidParameter.InvalidImageContent"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  INVALIDPARAMETERVALUE_ERRFILECONTENT = "InvalidParameterValue.ErrFileContent"
+//  INVALIDPARAMETERVALUE_ERRIMAGESIZE = "InvalidParameterValue.ErrImageSize"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDFILECONTENTSIZE = "InvalidParameterValue.InvalidFileContentSize"
 //  INVALIDPARAMETERVALUE_INVALIDIMAGECONTENT = "InvalidParameterValue.InvalidImageContent"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
 //  MISSINGPARAMETER_ERRFILEURL = "MissingParameter.ErrFileUrl"
 //  RESOURCENOTFOUND_ERRDOWDOWNINTERNALERROR = "ResourceNotFound.ErrDowdownInternalError"
 //  RESOURCENOTFOUND_ERRDOWDOWNPARAMSERROR = "ResourceNotFound.ErrDowdownParamsError"
 //  RESOURCENOTFOUND_ERRDOWDOWNSOURCEERROR = "ResourceNotFound.ErrDowdownSourceError"
 //  RESOURCENOTFOUND_ERRDOWDOWNTIMEOUT = "ResourceNotFound.ErrDowdownTimeOut"
 //  RESOURCEUNAVAILABLE_ERRIMAGETIMEOUT = "ResourceUnavailable.ErrImageTimeOut"
+//  RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = "ResourceUnavailable.ImageDownloadError"
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) ImageModeration(request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
@@ -424,15 +402,25 @@ func (c *Client) ImageModeration(request *ImageModerationRequest) (response *Ima
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETER_IMAGEASPECTRATIOTOOLARGE = "InvalidParameter.ImageAspectRatioTooLarge"
+//  INVALIDPARAMETER_IMAGEDATATOOSMALL = "InvalidParameter.ImageDataTooSmall"
+//  INVALIDPARAMETER_IMAGESIZETOOSMALL = "InvalidParameter.ImageSizeTooSmall"
+//  INVALIDPARAMETER_INVALIDIMAGECONTENT = "InvalidParameter.InvalidImageContent"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  INVALIDPARAMETERVALUE_ERRFILECONTENT = "InvalidParameterValue.ErrFileContent"
+//  INVALIDPARAMETERVALUE_ERRIMAGESIZE = "InvalidParameterValue.ErrImageSize"
+//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
+//  INVALIDPARAMETERVALUE_INVALIDFILECONTENTSIZE = "InvalidParameterValue.InvalidFileContentSize"
 //  INVALIDPARAMETERVALUE_INVALIDIMAGECONTENT = "InvalidParameterValue.InvalidImageContent"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
 //  MISSINGPARAMETER_ERRFILEURL = "MissingParameter.ErrFileUrl"
 //  RESOURCENOTFOUND_ERRDOWDOWNINTERNALERROR = "ResourceNotFound.ErrDowdownInternalError"
 //  RESOURCENOTFOUND_ERRDOWDOWNPARAMSERROR = "ResourceNotFound.ErrDowdownParamsError"
 //  RESOURCENOTFOUND_ERRDOWDOWNSOURCEERROR = "ResourceNotFound.ErrDowdownSourceError"
 //  RESOURCENOTFOUND_ERRDOWDOWNTIMEOUT = "ResourceNotFound.ErrDowdownTimeOut"
 //  RESOURCEUNAVAILABLE_ERRIMAGETIMEOUT = "ResourceUnavailable.ErrImageTimeOut"
+//  RESOURCEUNAVAILABLE_IMAGEDOWNLOADERROR = "ResourceUnavailable.ImageDownloadError"
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageModerationRequest) (response *ImageModerationResponse, err error) {
@@ -447,84 +435,6 @@ func (c *Client) ImageModerationWithContext(ctx context.Context, request *ImageM
     request.SetContext(ctx)
     
     response = NewImageModerationResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewManualReviewRequest() (request *ManualReviewRequest) {
-    request = &ManualReviewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cms", APIVersion, "ManualReview")
-    
-    
-    return
-}
-
-func NewManualReviewResponse() (response *ManualReviewResponse) {
-    response = &ManualReviewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ManualReview
-// 人工审核对外接口
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_CUSTOMAPPID = "InvalidParameterValue.CustomAppId"
-//  INVALIDPARAMETERVALUE_DUPLICATECONTENTID = "InvalidParameterValue.DuplicateContentID"
-//  INVALIDPARAMETERVALUE_ERRACTION = "InvalidParameterValue.ErrAction"
-//  INVALIDPARAMETERVALUE_ERRAPPID = "InvalidParameterValue.ErrAppId"
-//  INVALIDPARAMETERVALUE_ERRREQUESTID = "InvalidParameterValue.ErrRequestID"
-//  INVALIDPARAMETERVALUE_ERRREQUESTSOURCE = "InvalidParameterValue.ErrRequestSource"
-//  INVALIDPARAMETERVALUE_ERRUIN = "InvalidParameterValue.ErrUin"
-//  INVALIDPARAMETERVALUE_INVALIDBATCHID = "InvalidParameterValue.InvalidBatchId"
-//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
-//  INVALIDPARAMETERVALUE_INVALIDCONTENTID = "InvalidParameterValue.InvalidContentID"
-//  INVALIDPARAMETERVALUE_INVALIDCONTENTTYPE = "InvalidParameterValue.InvalidContentType"
-//  INVALIDPARAMETERVALUE_INVALIDCUSTOMAPPID = "InvalidParameterValue.InvalidCustomAppId"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
-//  INVALIDPARAMETERVALUE_INVALIDTITLE = "InvalidParameterValue.InvalidTitle"
-//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
-func (c *Client) ManualReview(request *ManualReviewRequest) (response *ManualReviewResponse, err error) {
-    return c.ManualReviewWithContext(context.Background(), request)
-}
-
-// ManualReview
-// 人工审核对外接口
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_CUSTOMAPPID = "InvalidParameterValue.CustomAppId"
-//  INVALIDPARAMETERVALUE_DUPLICATECONTENTID = "InvalidParameterValue.DuplicateContentID"
-//  INVALIDPARAMETERVALUE_ERRACTION = "InvalidParameterValue.ErrAction"
-//  INVALIDPARAMETERVALUE_ERRAPPID = "InvalidParameterValue.ErrAppId"
-//  INVALIDPARAMETERVALUE_ERRREQUESTID = "InvalidParameterValue.ErrRequestID"
-//  INVALIDPARAMETERVALUE_ERRREQUESTSOURCE = "InvalidParameterValue.ErrRequestSource"
-//  INVALIDPARAMETERVALUE_ERRUIN = "InvalidParameterValue.ErrUin"
-//  INVALIDPARAMETERVALUE_INVALIDBATCHID = "InvalidParameterValue.InvalidBatchId"
-//  INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
-//  INVALIDPARAMETERVALUE_INVALIDCONTENTID = "InvalidParameterValue.InvalidContentID"
-//  INVALIDPARAMETERVALUE_INVALIDCONTENTTYPE = "InvalidParameterValue.InvalidContentType"
-//  INVALIDPARAMETERVALUE_INVALIDCUSTOMAPPID = "InvalidParameterValue.InvalidCustomAppId"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDPRIORITY = "InvalidParameterValue.InvalidPriority"
-//  INVALIDPARAMETERVALUE_INVALIDTITLE = "InvalidParameterValue.InvalidTitle"
-//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
-func (c *Client) ManualReviewWithContext(ctx context.Context, request *ManualReviewRequest) (response *ManualReviewResponse, err error) {
-    if request == nil {
-        request = NewManualReviewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ManualReview require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewManualReviewResponse()
     err = c.Send(request, response)
     return
 }
@@ -553,6 +463,8 @@ func NewTextModerationResponse() (response *TextModerationResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE_ERRFILECONTENT = "InvalidParameterValue.ErrFileContent"
+//  INVALIDPARAMETERVALUE_ERRTEXTCONTENTLEN = "InvalidParameterValue.ErrTextContentLen"
 //  INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
 //  RESOURCEUNAVAILABLE_ERRTEXTTIMEOUT = "ResourceUnavailable.ErrTextTimeOut"
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
@@ -567,6 +479,8 @@ func (c *Client) TextModeration(request *TextModerationRequest) (response *TextM
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE_ERRFILECONTENT = "InvalidParameterValue.ErrFileContent"
+//  INVALIDPARAMETERVALUE_ERRTEXTCONTENTLEN = "InvalidParameterValue.ErrTextContentLen"
 //  INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
 //  RESOURCEUNAVAILABLE_ERRTEXTTIMEOUT = "ResourceUnavailable.ErrTextTimeOut"
 //  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
