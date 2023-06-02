@@ -179,6 +179,9 @@ const (
 	// 系统错误。
 	FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 
+	// 计费中心错误。
+	FAILEDOPERATION_TRADEERROR = "FailedOperation.TradeError"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -200,8 +203,29 @@ const (
 	// 包含无效的证书ID。
 	INVALIDPARAMETER_CONTAINSINVALIDCERTIFICATEID = "InvalidParameter.ContainsInvalidCertificateId"
 
+	// 域名数量无效。
+	INVALIDPARAMETER_DOMAINCOUNTINVALID = "InvalidParameter.DomainCountInvalid"
+
+	// 域名无效，请重新输入。
+	INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+
 	// 权益点ID列表无效。
 	INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"
+
+	// 证书期限无效。
+	INVALIDPARAMETER_PERIODINVALID = "InvalidParameter.PeriodInvalid"
+
+	// 产品PID无效。
+	INVALIDPARAMETER_PRODUCTPIDINVALID = "InvalidParameter.ProductPidInvalid"
+
+	// 算法无效。
+	INVALIDPARAMETER_RENEWALGORITHMINVALID = "InvalidParameter.RenewAlgorithmInvalid"
+
+	// CSR无效。
+	INVALIDPARAMETER_RENEWCSRINVALID = "InvalidParameter.RenewCsrInvalid"
+
+	// 生成CSR方式无效。
+	INVALIDPARAMETER_RENEWGENCSRMETHODINVALID = "InvalidParameter.RenewGenCsrMethodInvalid"
 
 	// 参数有误。
 	INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"

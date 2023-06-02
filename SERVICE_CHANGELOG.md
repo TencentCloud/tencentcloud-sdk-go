@@ -1,103 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 129 次发布
+### 第 37 次发布
 
-发布时间：2023-06-01 09:45:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBinlogs](https://cloud.tencent.com/document/api/236/15843)
-
-	* 新增入参：MinStartTime, MaxStartTime
-
-
-
-
-## 内容安全(cms) 版本：2019-03-21
-
-### 第 16 次发布
-
-发布时间：2023-05-31 21:26:41
+发布时间：2023-06-02 01:13:34
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [CreateKeywordsSamples](https://cloud.tencent.com/document/api/669/93038)
-* [DeleteLibSamples](https://cloud.tencent.com/document/api/669/93037)
-* [DescribeKeywordsLibs](https://cloud.tencent.com/document/api/669/93036)
-* [DescribeLibSamples](https://cloud.tencent.com/document/api/669/93035)
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CreateFileSample
-* CreateTextSample
-* DeleteFileSample
-* DeleteTextSample
-* DescribeFileSample
-* DescribeTextSample
-* ManualReview
-
-新增数据结构：
-
-* [DeleteSampleDetails](https://cloud.tencent.com/document/api/669/34506#DeleteSampleDetails)
-* [Filters](https://cloud.tencent.com/document/api/669/34506#Filters)
-* [InvalidSample](https://cloud.tencent.com/document/api/669/34506#InvalidSample)
-* [KeywordsLibInfo](https://cloud.tencent.com/document/api/669/34506#KeywordsLibInfo)
-* [UserKeyword](https://cloud.tencent.com/document/api/669/34506#UserKeyword)
-* [UserKeywordInfo](https://cloud.tencent.com/document/api/669/34506#UserKeywordInfo)
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* FileSample
-* FileSampleInfo
-* Filter
-* ManualReviewContent
-* ManualReviewData
-* TextSample
 
 修改数据结构：
 
-* [CodeDetail](https://cloud.tencent.com/document/api/669/34506#CodeDetail)
+* [AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)
 
-	* 新增成员：StrCharset, QrCodePosition, StrQrCodeText, Uint32QrCodeType
+	* 新增成员：SecurityGroupRuleCount, CdbId
 
+* [InstanceInfo](https://cloud.tencent.com/document/api/1132/49071#InstanceInfo)
 
-
-
-## TDSQL MySQL 版(dcdb) 版本：2018-04-11
-
-### 第 58 次发布
-
-发布时间：2023-06-01 09:49:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyAccountConfig](https://cloud.tencent.com/document/api/557/93041)
-
-新增数据结构：
-
-* [ConfigValue](https://cloud.tencent.com/document/api/557/16142#ConfigValue)
+	* 新增成员：Server
 
 
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 46 次发布
+## 负载均衡(clb) 版本：2018-03-17
 
-发布时间：2023-06-01 09:50:15
+### 第 90 次发布
+
+发布时间：2023-06-02 01:14:55
 
 本次发布包含了以下内容：
 
@@ -105,24 +35,84 @@
 
 修改接口：
 
-* [DeleteUserManagerUserList](https://cloud.tencent.com/document/api/589/83729)
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
 
-	* 新增入参：TkeClusterId, DisplayStrategy, UserGroupList
-
-	* <font color="#dd0000">**修改入参**：</font>UserNameList
+	* 新增入参：DynamicVip
 
 
 新增数据结构：
 
-* [UserAndGroup](https://cloud.tencent.com/document/api/589/33981#UserAndGroup)
+* [SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability)
+* [TypeInfo](https://cloud.tencent.com/document/api/214/30694#TypeInfo)
+
+修改数据结构：
+
+* [Resource](https://cloud.tencent.com/document/api/214/30694#Resource)
+
+	* 新增成员：TypeSet
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
 
-### 第 102 次发布
+## 主机安全(cwp) 版本：2018-02-28
 
-发布时间：2023-06-01 09:54:24
+### 第 89 次发布
+
+发布时间：2023-06-02 01:19:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AssetWebFrameBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebFrameBaseInfo)
+
+	* 新增成员：Path
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 71 次发布
+
+发布时间：2023-06-02 01:26:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Caller](https://cloud.tencent.com/document/api/1323/70369#Caller)
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 27 次发布
+
+发布时间：2023-06-02 01:39:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeClientBalance
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 35 次发布
+
+发布时间：2023-06-02 01:43:30
 
 本次发布包含了以下内容：
 
@@ -130,7 +120,27 @@
 
 新增接口：
 
-* [RecognizePhilippinesUMIDOCR](https://cloud.tencent.com/document/api/866/93042)
+* [CreateCertificateByPackage](https://cloud.tencent.com/document/api/400/93094)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 45 次发布
+
+发布时间：2023-06-02 01:46:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeVulRegistryImageList](https://cloud.tencent.com/document/api/1285/93095)
+
+新增数据结构：
+
+* [VulAffectedRegistryImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedRegistryImageInfo)
 
 
 
@@ -19886,6 +19896,25 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 37 次发布
+
+发布时间：2023-06-02 01:13:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)
+
+	* 新增成员：SecurityGroupRuleCount, CdbId
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1132/49071#InstanceInfo)
+
+	* 新增成员：Server
+
+
 ### 第 36 次发布
 
 发布时间：2023-05-19 01:21:55
@@ -23126,6 +23155,33 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 90 次发布
+
+发布时间：2023-06-02 01:14:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增入参：DynamicVip
+
+
+新增数据结构：
+
+* [[SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability)](https://cloud.tencent.com/document/api/214/30694#[SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability))
+* [[TypeInfo](https://cloud.tencent.com/document/api/214/30694#TypeInfo)](https://cloud.tencent.com/document/api/214/30694#[TypeInfo](https://cloud.tencent.com/document/api/214/30694#TypeInfo))
+
+修改数据结构：
+
+* [Resource](https://cloud.tencent.com/document/api/214/30694#Resource)
+
+	* 新增成员：TypeSet
+
 
 ### 第 89 次发布
 
@@ -27781,10 +27837,10 @@
 
 新增接口：
 
-* [[CreateKeywordsSamples](https://cloud.tencent.com/document/api/669/93038)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteLibSamples](https://cloud.tencent.com/document/api/669/93037)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeKeywordsLibs](https://cloud.tencent.com/document/api/669/93036)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLibSamples](https://cloud.tencent.com/document/api/669/93035)](https://cloud.tencent.com/document/api/#/#)
+* [CreateKeywordsSamples](https://cloud.tencent.com/document/api/669/93038)
+* [DeleteLibSamples](https://cloud.tencent.com/document/api/669/93037)
+* [DescribeKeywordsLibs](https://cloud.tencent.com/document/api/669/93036)
+* [DescribeLibSamples](https://cloud.tencent.com/document/api/669/93035)
 
 <font color="#dd0000">**删除接口**：</font>
 
@@ -27798,12 +27854,12 @@
 
 新增数据结构：
 
-* [[DeleteSampleDetails](https://cloud.tencent.com/document/api/669/34506#DeleteSampleDetails)](https://cloud.tencent.com/document/api/669/34506#[DeleteSampleDetails](https://cloud.tencent.com/document/api/669/34506#DeleteSampleDetails))
-* [[Filters](https://cloud.tencent.com/document/api/669/34506#Filters)](https://cloud.tencent.com/document/api/669/34506#[Filters](https://cloud.tencent.com/document/api/669/34506#Filters))
-* [[InvalidSample](https://cloud.tencent.com/document/api/669/34506#InvalidSample)](https://cloud.tencent.com/document/api/669/34506#[InvalidSample](https://cloud.tencent.com/document/api/669/34506#InvalidSample))
-* [[KeywordsLibInfo](https://cloud.tencent.com/document/api/669/34506#KeywordsLibInfo)](https://cloud.tencent.com/document/api/669/34506#[KeywordsLibInfo](https://cloud.tencent.com/document/api/669/34506#KeywordsLibInfo))
-* [[UserKeyword](https://cloud.tencent.com/document/api/669/34506#UserKeyword)](https://cloud.tencent.com/document/api/669/34506#[UserKeyword](https://cloud.tencent.com/document/api/669/34506#UserKeyword))
-* [[UserKeywordInfo](https://cloud.tencent.com/document/api/669/34506#UserKeywordInfo)](https://cloud.tencent.com/document/api/669/34506#[UserKeywordInfo](https://cloud.tencent.com/document/api/669/34506#UserKeywordInfo))
+* [DeleteSampleDetails](https://cloud.tencent.com/document/api/669/34506#DeleteSampleDetails)
+* [Filters](https://cloud.tencent.com/document/api/669/34506#Filters)
+* [InvalidSample](https://cloud.tencent.com/document/api/669/34506#InvalidSample)
+* [KeywordsLibInfo](https://cloud.tencent.com/document/api/669/34506#KeywordsLibInfo)
+* [UserKeyword](https://cloud.tencent.com/document/api/669/34506#UserKeyword)
+* [UserKeywordInfo](https://cloud.tencent.com/document/api/669/34506#UserKeywordInfo)
 
 <font color="#dd0000">**删除数据结构**：</font>
 
@@ -33049,6 +33105,21 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 89 次发布
+
+发布时间：2023-06-02 01:19:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AssetWebFrameBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebFrameBaseInfo)
+
+	* 新增成员：Path
+
 
 ### 第 88 次发布
 
@@ -39038,11 +39109,11 @@
 
 新增接口：
 
-* [[ModifyAccountConfig](https://cloud.tencent.com/document/api/557/93041)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyAccountConfig](https://cloud.tencent.com/document/api/557/93041)
 
 新增数据结构：
 
-* [[ConfigValue](https://cloud.tencent.com/document/api/557/16142#ConfigValue)](https://cloud.tencent.com/document/api/557/16142#[ConfigValue](https://cloud.tencent.com/document/api/557/16142#ConfigValue))
+* [ConfigValue](https://cloud.tencent.com/document/api/557/16142#ConfigValue)
 
 ### 第 57 次发布
 
@@ -45642,7 +45713,7 @@
 
 新增数据结构：
 
-* [[UserAndGroup](https://cloud.tencent.com/document/api/589/33981#UserAndGroup)](https://cloud.tencent.com/document/api/589/33981#[UserAndGroup](https://cloud.tencent.com/document/api/589/33981#UserAndGroup))
+* [UserAndGroup](https://cloud.tencent.com/document/api/589/33981#UserAndGroup)
 
 ### 第 45 次发布
 
@@ -47731,6 +47802,21 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 71 次发布
+
+发布时间：2023-06-02 01:26:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Caller](https://cloud.tencent.com/document/api/1323/70369#Caller)
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
 
 ### 第 70 次发布
 
@@ -73374,7 +73460,7 @@
 
 新增接口：
 
-* [[RecognizePhilippinesUMIDOCR](https://cloud.tencent.com/document/api/866/93042)](https://cloud.tencent.com/document/api/#/#)
+* [RecognizePhilippinesUMIDOCR](https://cloud.tencent.com/document/api/866/93042)
 
 ### 第 101 次发布
 
@@ -75774,6 +75860,18 @@
 
 
 ## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 27 次发布
+
+发布时间：2023-06-02 01:39:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeClientBalance
 
 ### 第 26 次发布
 
@@ -83357,6 +83455,18 @@
 
 ## SSL 证书(ssl) 版本：2019-12-05
 
+### 第 35 次发布
+
+发布时间：2023-06-02 01:43:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCertificateByPackage](https://cloud.tencent.com/document/api/400/93094)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 34 次发布
 
 发布时间：2023-05-29 14:59:54
@@ -90165,6 +90275,22 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 45 次发布
+
+发布时间：2023-06-02 01:46:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeVulRegistryImageList](https://cloud.tencent.com/document/api/1285/93095)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VulAffectedRegistryImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedRegistryImageInfo)](https://cloud.tencent.com/document/api/1285/65614#[VulAffectedRegistryImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedRegistryImageInfo))
 
 ### 第 44 次发布
 

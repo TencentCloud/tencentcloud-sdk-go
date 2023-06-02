@@ -485,6 +485,14 @@ type AssociatedInstanceInfo struct {
 	// 关联安全组数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupCount *uint64 `json:"SecurityGroupCount,omitempty" name:"SecurityGroupCount"`
+
+	// 关联安全组规则数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupRuleCount *uint64 `json:"SecurityGroupRuleCount,omitempty" name:"SecurityGroupRuleCount"`
+
+	// 关联数据库代理Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdbId *string `json:"CdbId,omitempty" name:"CdbId"`
 }
 
 type BetaInfoByACL struct {
@@ -4300,6 +4308,10 @@ type InstanceInfo struct {
 	// [a,b]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourcePath []*string `json:"ResourcePath,omitempty" name:"ResourcePath"`
+
+	// 扫描结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Server []*string `json:"Server,omitempty" name:"Server"`
 }
 
 type IocListData struct {

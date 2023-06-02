@@ -427,6 +427,72 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateCertificateByPackageRequest() (request *CreateCertificateByPackageRequest) {
+    request = &CreateCertificateByPackageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "CreateCertificateByPackage")
+    
+    
+    return
+}
+
+func NewCreateCertificateByPackageResponse() (response *CreateCertificateByPackageResponse) {
+    response = &CreateCertificateByPackageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCertificateByPackage
+// 使用权益点创建证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRADEERROR = "FailedOperation.TradeError"
+//  INVALIDPARAMETER_DOMAINCOUNTINVALID = "InvalidParameter.DomainCountInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"
+//  INVALIDPARAMETER_PERIODINVALID = "InvalidParameter.PeriodInvalid"
+//  INVALIDPARAMETER_PRODUCTPIDINVALID = "InvalidParameter.ProductPidInvalid"
+//  INVALIDPARAMETER_RENEWALGORITHMINVALID = "InvalidParameter.RenewAlgorithmInvalid"
+//  INVALIDPARAMETER_RENEWCSRINVALID = "InvalidParameter.RenewCsrInvalid"
+//  INVALIDPARAMETER_RENEWGENCSRMETHODINVALID = "InvalidParameter.RenewGenCsrMethodInvalid"
+func (c *Client) CreateCertificateByPackage(request *CreateCertificateByPackageRequest) (response *CreateCertificateByPackageResponse, err error) {
+    return c.CreateCertificateByPackageWithContext(context.Background(), request)
+}
+
+// CreateCertificateByPackage
+// 使用权益点创建证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRADEERROR = "FailedOperation.TradeError"
+//  INVALIDPARAMETER_DOMAINCOUNTINVALID = "InvalidParameter.DomainCountInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"
+//  INVALIDPARAMETER_PERIODINVALID = "InvalidParameter.PeriodInvalid"
+//  INVALIDPARAMETER_PRODUCTPIDINVALID = "InvalidParameter.ProductPidInvalid"
+//  INVALIDPARAMETER_RENEWALGORITHMINVALID = "InvalidParameter.RenewAlgorithmInvalid"
+//  INVALIDPARAMETER_RENEWCSRINVALID = "InvalidParameter.RenewCsrInvalid"
+//  INVALIDPARAMETER_RENEWGENCSRMETHODINVALID = "InvalidParameter.RenewGenCsrMethodInvalid"
+func (c *Client) CreateCertificateByPackageWithContext(ctx context.Context, request *CreateCertificateByPackageRequest) (response *CreateCertificateByPackageResponse, err error) {
+    if request == nil {
+        request = NewCreateCertificateByPackageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCertificateByPackage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCertificateByPackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCertificateRequest() (request *DeleteCertificateRequest) {
     request = &DeleteCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},

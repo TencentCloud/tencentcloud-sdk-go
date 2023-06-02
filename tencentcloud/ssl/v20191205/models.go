@@ -758,6 +758,178 @@ type CosInstanceDetail struct {
 }
 
 // Predefined struct for user
+type CreateCertificateByPackageRequestParams struct {
+	// 证书产品PID。
+	ProductPid *uint64 `json:"ProductPid,omitempty" name:"ProductPid"`
+
+	// 要消耗的权益包ID。
+	PackageIds []*string `json:"PackageIds,omitempty" name:"PackageIds"`
+
+	// 证书域名数量。
+	DomainCount *string `json:"DomainCount,omitempty" name:"DomainCount"`
+
+	// 多年期证书年限。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 要续费的原证书ID（续费时填写）。
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 续费时CSR生成方式（original、upload、online）。
+	RenewGenCsrMethod *string `json:"RenewGenCsrMethod,omitempty" name:"RenewGenCsrMethod"`
+
+	// 续费时选择上传CSR时填写CSR。
+	RenewCsr *string `json:"RenewCsr,omitempty" name:"RenewCsr"`
+
+	// 续费证书CSR的算法类型。
+	RenewAlgorithmType *string `json:"RenewAlgorithmType,omitempty" name:"RenewAlgorithmType"`
+
+	// 续费证书CSR的算法参数。
+	RenewAlgorithmParam *string `json:"RenewAlgorithmParam,omitempty" name:"RenewAlgorithmParam"`
+
+	// 项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标签。
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
+	// 续费证书的私钥密码。
+	RenewKeyPass *string `json:"RenewKeyPass,omitempty" name:"RenewKeyPass"`
+
+	// 批量购买证书时预填写的域名。
+	DomainNames *string `json:"DomainNames,omitempty" name:"DomainNames"`
+
+	// 批量购买证书数量。
+	CertificateCount *uint64 `json:"CertificateCount,omitempty" name:"CertificateCount"`
+
+	// 预填写的管理人ID。
+	ManagerId *uint64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// 预填写的公司ID。
+	CompanyId *uint64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+	// 验证方式
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+}
+
+type CreateCertificateByPackageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证书产品PID。
+	ProductPid *uint64 `json:"ProductPid,omitempty" name:"ProductPid"`
+
+	// 要消耗的权益包ID。
+	PackageIds []*string `json:"PackageIds,omitempty" name:"PackageIds"`
+
+	// 证书域名数量。
+	DomainCount *string `json:"DomainCount,omitempty" name:"DomainCount"`
+
+	// 多年期证书年限。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 要续费的原证书ID（续费时填写）。
+	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 续费时CSR生成方式（original、upload、online）。
+	RenewGenCsrMethod *string `json:"RenewGenCsrMethod,omitempty" name:"RenewGenCsrMethod"`
+
+	// 续费时选择上传CSR时填写CSR。
+	RenewCsr *string `json:"RenewCsr,omitempty" name:"RenewCsr"`
+
+	// 续费证书CSR的算法类型。
+	RenewAlgorithmType *string `json:"RenewAlgorithmType,omitempty" name:"RenewAlgorithmType"`
+
+	// 续费证书CSR的算法参数。
+	RenewAlgorithmParam *string `json:"RenewAlgorithmParam,omitempty" name:"RenewAlgorithmParam"`
+
+	// 项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标签。
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
+	// 续费证书的私钥密码。
+	RenewKeyPass *string `json:"RenewKeyPass,omitempty" name:"RenewKeyPass"`
+
+	// 批量购买证书时预填写的域名。
+	DomainNames *string `json:"DomainNames,omitempty" name:"DomainNames"`
+
+	// 批量购买证书数量。
+	CertificateCount *uint64 `json:"CertificateCount,omitempty" name:"CertificateCount"`
+
+	// 预填写的管理人ID。
+	ManagerId *uint64 `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// 预填写的公司ID。
+	CompanyId *uint64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+	// 验证方式
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+}
+
+func (r *CreateCertificateByPackageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCertificateByPackageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductPid")
+	delete(f, "PackageIds")
+	delete(f, "DomainCount")
+	delete(f, "Period")
+	delete(f, "OldCertificateId")
+	delete(f, "RenewGenCsrMethod")
+	delete(f, "RenewCsr")
+	delete(f, "RenewAlgorithmType")
+	delete(f, "RenewAlgorithmParam")
+	delete(f, "ProjectId")
+	delete(f, "Tags")
+	delete(f, "RenewKeyPass")
+	delete(f, "DomainNames")
+	delete(f, "CertificateCount")
+	delete(f, "ManagerId")
+	delete(f, "CompanyId")
+	delete(f, "VerifyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCertificateByPackageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCertificateByPackageResponseParams struct {
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+
+	// 批量购买证书时返回多个证书ID。
+	CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCertificateByPackageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCertificateByPackageResponseParams `json:"Response"`
+}
+
+func (r *CreateCertificateByPackageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCertificateByPackageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCertificateRequestParams struct {
 	// 证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
 	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`

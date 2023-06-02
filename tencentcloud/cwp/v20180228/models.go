@@ -1414,7 +1414,6 @@ type AssetWebFrameBaseInfo struct {
 	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
 
 	// 数据更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 首次采集时间
@@ -1426,6 +1425,9 @@ type AssetWebFrameBaseInfo struct {
 	//  附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitempty" name:"MachineExtraInfo"`
+
+	// 应用路径
+	Path *string `json:"Path,omitempty" name:"Path"`
 }
 
 type AssetWebLocationBaseInfo struct {

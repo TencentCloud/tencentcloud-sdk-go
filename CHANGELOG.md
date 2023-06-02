@@ -1,3 +1,149 @@
+# Release v1.0.670
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 37 次发布
+
+发布时间：2023-06-02 01:13:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)
+
+	* 新增成员：SecurityGroupRuleCount, CdbId
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1132/49071#InstanceInfo)
+
+	* 新增成员：Server
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 90 次发布
+
+发布时间：2023-06-02 01:14:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增入参：DynamicVip
+
+
+新增数据结构：
+
+* [SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability)
+* [TypeInfo](https://cloud.tencent.com/document/api/214/30694#TypeInfo)
+
+修改数据结构：
+
+* [Resource](https://cloud.tencent.com/document/api/214/30694#Resource)
+
+	* 新增成员：TypeSet
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 89 次发布
+
+发布时间：2023-06-02 01:19:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AssetWebFrameBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebFrameBaseInfo)
+
+	* 新增成员：Path
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 71 次发布
+
+发布时间：2023-06-02 01:26:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Caller](https://cloud.tencent.com/document/api/1323/70369#Caller)
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 27 次发布
+
+发布时间：2023-06-02 01:39:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeClientBalance
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 35 次发布
+
+发布时间：2023-06-02 01:43:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCertificateByPackage](https://cloud.tencent.com/document/api/400/93094)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 45 次发布
+
+发布时间：2023-06-02 01:46:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeVulRegistryImageList](https://cloud.tencent.com/document/api/1285/93095)
+
+新增数据结构：
+
+* [VulAffectedRegistryImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedRegistryImageInfo)
+
+
+
 # Release v1.0.669
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

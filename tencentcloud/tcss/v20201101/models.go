@@ -23521,6 +23521,117 @@ func (r *DescribeVulLevelSummaryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVulRegistryImageListRequestParams struct {
+	// 漏洞ID
+	PocID *string `json:"PocID,omitempty" name:"PocID"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// OnlyAffectedNewestImage bool 是否影响最新镜像
+	// ImageDigest 镜像Digest，支持模糊查询
+	// ImageId 镜像ID，支持模糊查询
+	// Namespace 命名空间，支持模糊查询
+	// ImageTag 镜像版本，支持模糊查询
+	// InstanceName 实例名称，支持模糊查询
+	// ImageName 镜像名，支持模糊查询
+	// ImageRepoAddress 镜像地址，支持模糊查询
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeVulRegistryImageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 漏洞ID
+	PocID *string `json:"PocID,omitempty" name:"PocID"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// OnlyAffectedNewestImage bool 是否影响最新镜像
+	// ImageDigest 镜像Digest，支持模糊查询
+	// ImageId 镜像ID，支持模糊查询
+	// Namespace 命名空间，支持模糊查询
+	// ImageTag 镜像版本，支持模糊查询
+	// InstanceName 实例名称，支持模糊查询
+	// ImageName 镜像名，支持模糊查询
+	// ImageRepoAddress 镜像地址，支持模糊查询
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeVulRegistryImageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulRegistryImageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PocID")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulRegistryImageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulRegistryImageListResponseParams struct {
+	// 镜像总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 仓库镜像列表
+	List []*VulAffectedRegistryImageInfo `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeVulRegistryImageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulRegistryImageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulRegistryImageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulRegistryImageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVulScanAuthorizedImageSummaryRequestParams struct {
 
 }
@@ -31149,6 +31260,32 @@ type VulAffectedImageInfo struct {
 
 	// 组件列表
 	ComponentList []*VulAffectedImageComponentInfo `json:"ComponentList,omitempty" name:"ComponentList"`
+}
+
+type VulAffectedRegistryImageInfo struct {
+	// 镜像ID
+	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 镜像版本
+	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+
+	// 镜像命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 镜像地址
+	ImageRepoAddress *string `json:"ImageRepoAddress,omitempty" name:"ImageRepoAddress"`
+
+	// 组件列表
+	ComponentList []*VulAffectedImageComponentInfo `json:"ComponentList,omitempty" name:"ComponentList"`
+
+	// 是否为镜像的最新版本
+	IsLatestImage *bool `json:"IsLatestImage,omitempty" name:"IsLatestImage"`
+
+	// 内部镜像资产ID
+	ImageAssetId *int64 `json:"ImageAssetId,omitempty" name:"ImageAssetId"`
 }
 
 type VulDefenceEvent struct {

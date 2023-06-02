@@ -4292,8 +4292,6 @@ func NewModifyLoadBalancerSlaResponse() (response *ModifyLoadBalancerSlaResponse
 //
 // - 升级为性能容量型实例后，不支持再回退到共享型实例。
 //
-// - 目前性能容量型实例处于内测中，如需升级为性能容量型实例，请提交 [内测申请](https://cloud.tencent.com/apply/p/hf45esx99lf)。
-//
 // - 传统型负载均衡实例不支持升级为性能容量型实例。
 //
 // 可能返回的错误码:
@@ -4317,8 +4315,6 @@ func (c *Client) ModifyLoadBalancerSla(request *ModifyLoadBalancerSlaRequest) (r
 // - 本接口只支持升级按量计费的CLB实例，包年包月的CLB实例升级请通过控制台进行升级。
 //
 // - 升级为性能容量型实例后，不支持再回退到共享型实例。
-//
-// - 目前性能容量型实例处于内测中，如需升级为性能容量型实例，请提交 [内测申请](https://cloud.tencent.com/apply/p/hf45esx99lf)。
 //
 // - 传统型负载均衡实例不支持升级为性能容量型实例。
 //

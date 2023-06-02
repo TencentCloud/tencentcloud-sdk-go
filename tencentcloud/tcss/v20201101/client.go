@@ -15475,6 +15475,68 @@ func (c *Client) DescribeVulLevelSummaryWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeVulRegistryImageListRequest() (request *DescribeVulRegistryImageListRequest) {
+    request = &DescribeVulRegistryImageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeVulRegistryImageList")
+    
+    
+    return
+}
+
+func NewDescribeVulRegistryImageListResponse() (response *DescribeVulRegistryImageListResponse) {
+    response = &DescribeVulRegistryImageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVulRegistryImageList
+// 查询漏洞影响的仓库镜像列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVulRegistryImageList(request *DescribeVulRegistryImageListRequest) (response *DescribeVulRegistryImageListResponse, err error) {
+    return c.DescribeVulRegistryImageListWithContext(context.Background(), request)
+}
+
+// DescribeVulRegistryImageList
+// 查询漏洞影响的仓库镜像列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVulRegistryImageListWithContext(ctx context.Context, request *DescribeVulRegistryImageListRequest) (response *DescribeVulRegistryImageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulRegistryImageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulRegistryImageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulRegistryImageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVulScanAuthorizedImageSummaryRequest() (request *DescribeVulScanAuthorizedImageSummaryRequest) {
     request = &DescribeVulScanAuthorizedImageSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
