@@ -550,7 +550,7 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 }
 
 // ChannelCreateEmbedWebUrl
-// 本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
+// 本接口（ChannelCreateEmbedWebUrl）用于创建常规模块嵌入web的链接
 //
 // 本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接
 //
@@ -565,7 +565,7 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 }
 
 // ChannelCreateEmbedWebUrl
-// 本接口（ChannelCreateEmbedWebUrl）用于创建嵌入web的链接
+// 本接口（ChannelCreateEmbedWebUrl）用于创建常规模块嵌入web的链接
 //
 // 本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接
 //
@@ -1078,7 +1078,7 @@ func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlRe
 }
 
 // ChannelCreateFlowSignUrl
-// 创建个人H5签署链接，请联系客户经理申请使用<br/>
+// 创建个人签署H5签署链接，请联系客户经理申请使用<br/>
 //
 // 该接口用于发起合同后，生成C端签署人的签署链接<br/>
 //
@@ -1101,7 +1101,7 @@ func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlReque
 }
 
 // ChannelCreateFlowSignUrl
-// 创建个人H5签署链接，请联系客户经理申请使用<br/>
+// 创建个人签署H5签署链接，请联系客户经理申请使用<br/>
 //
 // 该接口用于发起合同后，生成C端签署人的签署链接<br/>
 //

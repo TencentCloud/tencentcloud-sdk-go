@@ -269,6 +269,9 @@ const (
 	// 不合法的用户名称，请修改后重试。
 	INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 
+	// 手机号为空或者非法的手机号。
+	INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
+
 	// 不支持的通知类型，请检查并联系客服处理。
 	INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
 

@@ -9853,6 +9853,10 @@ type Origin struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathBasedOrigin []*PathBasedOriginRule `json:"PathBasedOrigin,omitempty" name:"PathBasedOrigin"`
 
+	// HTTPS回源SNI配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sni *OriginSni `json:"Sni,omitempty" name:"Sni"`
+
 	// HTTPS回源高级配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvanceHttps *AdvanceHttps `json:"AdvanceHttps,omitempty" name:"AdvanceHttps"`
@@ -9919,6 +9923,17 @@ type OriginPullTimeout struct {
 	// 回源接收超时时间，单位为秒，要求10 ~ 300之间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveTimeout *uint64 `json:"ReceiveTimeout,omitempty" name:"ReceiveTimeout"`
+}
+
+type OriginSni struct {
+	// 是否开启HTTPS回源SNI。
+	// 开启：on，
+	// 关闭：off
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 回源域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
 }
 
 type OssPrivateAccess struct {

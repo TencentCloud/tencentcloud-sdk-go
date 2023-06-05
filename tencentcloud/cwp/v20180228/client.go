@@ -9721,74 +9721,6 @@ func (c *Client) DescribeRiskDnsListWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDescribeSaveOrUpdateWarningsRequest() (request *DescribeSaveOrUpdateWarningsRequest) {
-    request = &DescribeSaveOrUpdateWarningsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSaveOrUpdateWarnings")
-    
-    
-    return
-}
-
-func NewDescribeSaveOrUpdateWarningsResponse() (response *DescribeSaveOrUpdateWarningsResponse) {
-    response = &DescribeSaveOrUpdateWarningsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeSaveOrUpdateWarnings
-// 下线
-//
-// 
-//
-// 更新或者插入用户告警设置(该接口废弃,请调用 ModifyWarningSetting )
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeSaveOrUpdateWarnings(request *DescribeSaveOrUpdateWarningsRequest) (response *DescribeSaveOrUpdateWarningsResponse, err error) {
-    return c.DescribeSaveOrUpdateWarningsWithContext(context.Background(), request)
-}
-
-// DescribeSaveOrUpdateWarnings
-// 下线
-//
-// 
-//
-// 更新或者插入用户告警设置(该接口废弃,请调用 ModifyWarningSetting )
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeSaveOrUpdateWarningsWithContext(ctx context.Context, request *DescribeSaveOrUpdateWarningsRequest) (response *DescribeSaveOrUpdateWarningsResponse, err error) {
-    if request == nil {
-        request = NewDescribeSaveOrUpdateWarningsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeSaveOrUpdateWarnings require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeSaveOrUpdateWarningsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeScanMalwareScheduleRequest() (request *DescribeScanMalwareScheduleRequest) {
     request = &DescribeScanMalwareScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11441,6 +11373,56 @@ func (c *Client) DescribeVulListWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeVulListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulStoreListRequest() (request *DescribeVulStoreListRequest) {
+    request = &DescribeVulStoreListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulStoreList")
+    
+    
+    return
+}
+
+func NewDescribeVulStoreListResponse() (response *DescribeVulStoreListResponse) {
+    response = &DescribeVulStoreListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVulStoreList
+// 获取漏洞库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeVulStoreList(request *DescribeVulStoreListRequest) (response *DescribeVulStoreListResponse, err error) {
+    return c.DescribeVulStoreListWithContext(context.Background(), request)
+}
+
+// DescribeVulStoreList
+// 获取漏洞库列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeVulStoreListWithContext(ctx context.Context, request *DescribeVulStoreListRequest) (response *DescribeVulStoreListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulStoreListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulStoreList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulStoreListResponse()
     err = c.Send(request, response)
     return
 }

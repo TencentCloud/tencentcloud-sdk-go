@@ -163,7 +163,7 @@ type AutoSignConfig struct {
 
 // Predefined struct for user
 type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
-	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
+	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定。（参数参考示例）
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 电子签系统员工UserId
@@ -176,7 +176,7 @@ type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
 type BindEmployeeUserIdWithClientOpenIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定
+	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定。（参数参考示例）
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 电子签系统员工UserId
@@ -236,8 +236,16 @@ type CallbackInfo struct {
 	// 回调url
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 回调加密token
+	// 回调加密key，已废弃
+	//
+	// Deprecated: Token is deprecated.
 	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// 回调加密key
+	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+
+	// 回调验签token
+	CallbackToken *string `json:"CallbackToken,omitempty" name:"CallbackToken"`
 }
 
 type Caller struct {
@@ -271,7 +279,7 @@ type CancelFlowRequestParams struct {
 	// 撤销原因，最长200个字符；
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -287,7 +295,7 @@ type CancelFlowRequest struct {
 	// 撤销原因，最长200个字符；
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -337,26 +345,26 @@ func (r *CancelFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CancelMultiFlowSignQRCodeRequestParams struct {
-	// 用户信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 二维码id
 	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
 
-	// 应用信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CancelMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 二维码id
 	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
 
-	// 应用信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -690,7 +698,7 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateChannelSubOrganizationModifyQrCodeRequestParams struct {
-	// 操作人
+	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用编号
@@ -700,7 +708,7 @@ type CreateChannelSubOrganizationModifyQrCodeRequestParams struct {
 type CreateChannelSubOrganizationModifyQrCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人
+	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用编号
@@ -770,9 +778,13 @@ type CreateConvertTaskApiRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用号信息
+	//
+	// Deprecated: Agent is deprecated.
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
@@ -1423,6 +1435,8 @@ type CreateFlowRequestParams struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 暂未开放
+	//
+	// Deprecated: RelatedFlowId is deprecated.
 	RelatedFlowId *string `json:"RelatedFlowId,omitempty" name:"RelatedFlowId"`
 
 	// 签署流程的签署截止时间。
@@ -1451,6 +1465,8 @@ type CreateFlowRequestParams struct {
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
 	// 暂未开放
+	//
+	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -1600,7 +1616,7 @@ type CreateFlowSignReviewRequestParams struct {
 	// 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
 	ReviewMessage *string `json:"ReviewMessage,omitempty" name:"ReviewMessage"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -1622,7 +1638,7 @@ type CreateFlowSignReviewRequest struct {
 	// 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
 	ReviewMessage *string `json:"ReviewMessage,omitempty" name:"ReviewMessage"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -1686,6 +1702,8 @@ type CreateFlowSignUrlRequestParams struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 机构信息，暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
@@ -1829,7 +1847,7 @@ func (r *CreateIntegrationEmployeesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateIntegrationUserRolesRequestParams struct {
-	// 操作人信息
+	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 绑定角色的用户id列表
@@ -1845,7 +1863,7 @@ type CreateIntegrationUserRolesRequestParams struct {
 type CreateIntegrationUserRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 绑定角色的用户id列表
@@ -1907,7 +1925,7 @@ func (r *CreateIntegrationUserRolesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMultiFlowSignQRCodeRequestParams struct {
-	// 用户信息
+	// 用户信息，其中UserId为必填参数
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 模板ID
@@ -1938,16 +1956,20 @@ type CreateMultiFlowSignQRCodeRequestParams struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 应用信息
+	//
+	// Deprecated: Agent is deprecated.
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 限制二维码用户条件（已弃用）
+	//
+	// Deprecated: ApproverRestrictions is deprecated.
 	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
 }
 
 type CreateMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户信息
+	// 用户信息，其中UserId为必填参数
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 模板ID
@@ -2126,7 +2148,7 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrepareFlowResponseParams struct {
-	// 快速发起预览链接
+	// 快速发起预览链接，有效期5分钟
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2160,9 +2182,6 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	// 印章名称
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
 
-	// 印章图片的base64，最大不超过 8M
-	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
-
 	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
@@ -2173,6 +2192,11 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	// FOREIGN_ID_CARD 境外身份
 	// HONGKONG_MACAO_AND_TAIWAN 中国台湾
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 印章图片的base64
+	// 注：已废弃
+	// 请先通过UploadFiles接口上传文件，获取 FileId
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
 	SealImageCompress *bool `json:"SealImageCompress,omitempty" name:"SealImageCompress"`
@@ -2196,6 +2220,11 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	// 取值：false：不做任何处理；
 	// true：做透明化处理和颜色增强。
 	ProcessSeal *bool `json:"ProcessSeal,omitempty" name:"ProcessSeal"`
+
+	// 印章图片文件 id
+	// 取值：
+	// 填写的FileId通过UploadFiles接口上传文件获取。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
 }
 
 type CreatePreparedPersonalEsignRequest struct {
@@ -2210,9 +2239,6 @@ type CreatePreparedPersonalEsignRequest struct {
 	// 印章名称
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
 
-	// 印章图片的base64，最大不超过 8M
-	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
-
 	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
@@ -2223,6 +2249,11 @@ type CreatePreparedPersonalEsignRequest struct {
 	// FOREIGN_ID_CARD 境外身份
 	// HONGKONG_MACAO_AND_TAIWAN 中国台湾
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 印章图片的base64
+	// 注：已废弃
+	// 请先通过UploadFiles接口上传文件，获取 FileId
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
 	SealImageCompress *bool `json:"SealImageCompress,omitempty" name:"SealImageCompress"`
@@ -2246,6 +2277,11 @@ type CreatePreparedPersonalEsignRequest struct {
 	// 取值：false：不做任何处理；
 	// true：做透明化处理和颜色增强。
 	ProcessSeal *bool `json:"ProcessSeal,omitempty" name:"ProcessSeal"`
+
+	// 印章图片文件 id
+	// 取值：
+	// 填写的FileId通过UploadFiles接口上传文件获取。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
 }
 
 func (r *CreatePreparedPersonalEsignRequest) ToJsonString() string {
@@ -2263,14 +2299,15 @@ func (r *CreatePreparedPersonalEsignRequest) FromJsonString(s string) error {
 	delete(f, "UserName")
 	delete(f, "IdCardNumber")
 	delete(f, "SealName")
-	delete(f, "SealImage")
 	delete(f, "Operator")
 	delete(f, "IdCardType")
+	delete(f, "SealImage")
 	delete(f, "SealImageCompress")
 	delete(f, "Mobile")
 	delete(f, "EnableAutoSign")
 	delete(f, "SealColor")
 	delete(f, "ProcessSeal")
+	delete(f, "FileId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreparedPersonalEsignRequest has unknown keys!", "")
 	}
@@ -2480,7 +2517,7 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSchemeUrlResponseParams struct {
-	// 小程序链接地址
+	// 小程序链接地址，有效期5分钟
 	SchemeUrl *string `json:"SchemeUrl,omitempty" name:"SchemeUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2505,7 +2542,7 @@ func (r *CreateSchemeUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSealPolicyRequestParams struct {
-	// 授权发起人在平台信息，具体参考UserInfo结构体
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
@@ -2517,20 +2554,20 @@ type CreateSealPolicyRequestParams struct {
 	// 授权有效期。时间戳秒级
 	Expired *int64 `json:"Expired,omitempty" name:"Expired"`
 
+	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
 	// 印章授权内容
 	Policy *string `json:"Policy,omitempty" name:"Policy"`
 
-	// 应用相关
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 }
 
 type CreateSealPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 授权发起人在平台信息，具体参考UserInfo结构体
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 用户在电子文件签署平台标识信息，具体参考UserInfo结构体。可跟下面的UserIds可叠加起作用
@@ -2542,14 +2579,14 @@ type CreateSealPolicyRequest struct {
 	// 授权有效期。时间戳秒级
 	Expired *int64 `json:"Expired,omitempty" name:"Expired"`
 
+	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
 	// 印章授权内容
 	Policy *string `json:"Policy,omitempty" name:"Policy"`
 
-	// 应用相关
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 需要授权的用户UserId集合。跟上面的SealId参数配合使用。选填，跟上面的Users同时起作用
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 }
 
 func (r *CreateSealPolicyRequest) ToJsonString() string {
@@ -2568,9 +2605,9 @@ func (r *CreateSealPolicyRequest) FromJsonString(s string) error {
 	delete(f, "Users")
 	delete(f, "SealId")
 	delete(f, "Expired")
+	delete(f, "UserIds")
 	delete(f, "Policy")
 	delete(f, "Agent")
-	delete(f, "UserIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealPolicyRequest has unknown keys!", "")
 	}
@@ -2614,7 +2651,7 @@ type CreateStaffResult struct {
 
 // Predefined struct for user
 type CreateUserAutoSignEnableUrlRequestParams struct {
-	// 操作人信息
+	// 操作人信息,UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 自动签场景:
@@ -2640,7 +2677,7 @@ type CreateUserAutoSignEnableUrlRequestParams struct {
 type CreateUserAutoSignEnableUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// 操作人信息,UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 自动签场景:
@@ -2801,7 +2838,7 @@ func (r *DeleteIntegrationEmployeesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIntegrationRoleUsersRequestParams struct {
-	// 操作人
+	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 角色id
@@ -2810,14 +2847,14 @@ type DeleteIntegrationRoleUsersRequestParams struct {
 	// 用户信息
 	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
 
-	// 代理信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DeleteIntegrationRoleUsersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人
+	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 角色id
@@ -2826,7 +2863,7 @@ type DeleteIntegrationRoleUsersRequest struct {
 	// 用户信息
 	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
 
-	// 代理信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -2879,39 +2916,39 @@ func (r *DeleteIntegrationRoleUsersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSealPoliciesRequestParams struct {
-	// 操作撤销的用户信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 印章授权编码数组。这个参数跟下面的SealId其中一个必填，另外一个可选填
 	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
-
-	// 应用相关
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 印章ID。这个参数跟上面的PolicyIds其中一个必填，另外一个可选填
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
 	// 待授权的员工ID
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DeleteSealPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作撤销的用户信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 印章授权编码数组。这个参数跟下面的SealId其中一个必填，另外一个可选填
 	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
-
-	// 应用相关
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 印章ID。这个参数跟上面的PolicyIds其中一个必填，另外一个可选填
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
 	// 待授权的员工ID
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DeleteSealPoliciesRequest) ToJsonString() string {
@@ -2928,9 +2965,9 @@ func (r *DeleteSealPoliciesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "PolicyIds")
-	delete(f, "Agent")
 	delete(f, "SealId")
 	delete(f, "UserIds")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSealPoliciesRequest has unknown keys!", "")
 	}
@@ -3009,12 +3046,18 @@ type DescribeFileUrlsRequestParams struct {
 	UrlTtl *int64 `json:"UrlTtl,omitempty" name:"UrlTtl"`
 
 	// 暂不开放
+	//
+	// Deprecated: CcToken is deprecated.
 	CcToken *string `json:"CcToken,omitempty" name:"CcToken"`
 
 	// 暂不开放
+	//
+	// Deprecated: Scene is deprecated.
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
 	// 应用相关信息
+	//
+	// Deprecated: Agent is deprecated.
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -3123,10 +3166,10 @@ type DescribeFlowBriefsRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 需要查询的流程ID列表，限制最大20个
+	// 需要查询的流程ID列表，限制最大100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -3136,10 +3179,10 @@ type DescribeFlowBriefsRequest struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 需要查询的流程ID列表，限制最大20个
+	// 需要查询的流程ID列表，限制最大100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -3264,7 +3307,7 @@ type DescribeFlowInfoRequestParams struct {
 	// 需要查询的流程ID列表，限制最大100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 调用方用户信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -3277,7 +3320,7 @@ type DescribeFlowInfoRequest struct {
 	// 需要查询的流程ID列表，限制最大100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 调用方用户信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -3338,14 +3381,17 @@ type DescribeFlowTemplatesRequestParams struct {
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
 	// 查询偏移位置，默认0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询个数，默认20，最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 这个参数跟下面的IsChannel参数配合使用。
 	// IsChannel=false时，ApplicationId参数不起任何作用。
@@ -3357,13 +3403,14 @@ type DescribeFlowTemplatesRequestParams struct {
 	// 为true，查询第三方应用集成平台企业模板库管理列表
 	IsChannel *bool `json:"IsChannel,omitempty" name:"IsChannel"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
-
 	// 暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
 	// 暂未开放
+	//
+	// Deprecated: GenerateSource is deprecated.
 	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
 }
 
@@ -3376,14 +3423,17 @@ type DescribeFlowTemplatesRequest struct {
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
 	// 查询偏移位置，默认0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询个数，默认20，最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 这个参数跟下面的IsChannel参数配合使用。
 	// IsChannel=false时，ApplicationId参数不起任何作用。
@@ -3394,9 +3444,6 @@ type DescribeFlowTemplatesRequest struct {
 	// 默认为false，查询SaaS模板库列表；
 	// 为true，查询第三方应用集成平台企业模板库管理列表
 	IsChannel *bool `json:"IsChannel,omitempty" name:"IsChannel"`
-
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
 	// 暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
@@ -3419,12 +3466,12 @@ func (r *DescribeFlowTemplatesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "Agent")
+	delete(f, "ContentType")
+	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "Filters")
 	delete(f, "ApplicationId")
 	delete(f, "IsChannel")
-	delete(f, "ContentType")
 	delete(f, "Organization")
 	delete(f, "GenerateSource")
 	if len(f) > 0 {
@@ -3438,7 +3485,7 @@ type DescribeFlowTemplatesResponseParams struct {
 	// 模板详情列表
 	Templates []*TemplateInfo `json:"Templates,omitempty" name:"Templates"`
 
-	// 查询到的总个数
+	// 查询到的总数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3469,6 +3516,9 @@ type DescribeIntegrationEmployeesRequestParams struct {
 	// 返回最大数量，最大为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
 	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -3485,6 +3535,9 @@ type DescribeIntegrationEmployeesRequest struct {
 
 	// 返回最大数量，最大为20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
@@ -3508,6 +3561,7 @@ func (r *DescribeIntegrationEmployeesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "Limit")
+	delete(f, "Agent")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	if len(f) > 0 {
@@ -3999,7 +4053,7 @@ func (r *DescribeThirdPartyAuthCodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserAutoSignStatusRequestParams struct {
-	// 操作人信息
+	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 自动签场景:
@@ -4013,7 +4067,7 @@ type DescribeUserAutoSignStatusRequestParams struct {
 type DescribeUserAutoSignStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 自动签场景:
@@ -4078,7 +4132,7 @@ func (r *DescribeUserAutoSignStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisableUserAutoSignRequestParams struct {
-	// 操作人信息
+	// 操作人信息,UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 自动签场景:
@@ -4092,7 +4146,7 @@ type DisableUserAutoSignRequestParams struct {
 type DisableUserAutoSignRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// 操作人信息,UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 自动签场景:
@@ -4505,13 +4559,17 @@ type GetTaskResultApiRequestParams struct {
 	// 任务Id，通过CreateConvertTaskApi得到
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 操作人信息
+	// 操作人信息,UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用号信息
+	//
+	// Deprecated: Agent is deprecated.
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
@@ -4521,7 +4579,7 @@ type GetTaskResultApiRequest struct {
 	// 任务Id，通过CreateConvertTaskApi得到
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 操作人信息
+	// 操作人信息,UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用号信息
@@ -4612,7 +4670,7 @@ type GroupOrganization struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
 
-	// 更新时间
+	// 更新时间，时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
@@ -4636,15 +4694,15 @@ type GroupOrganization struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	License *string `json:"License,omitempty" name:"License"`
 
-	// 企业许可证过期时间
+	// 企业许可证过期时间，时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseExpireTime *uint64 `json:"LicenseExpireTime,omitempty" name:"LicenseExpireTime"`
 
-	// 成员企业加入集团时间
+	// 成员企业加入集团时间，时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinTime *uint64 `json:"JoinTime,omitempty" name:"JoinTime"`
 
-	// 是否可以使用审批流引擎
+	// 是否使用审批流引擎，true-是，false-否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowEngineEnable *bool `json:"FlowEngineEnable,omitempty" name:"FlowEngineEnable"`
 }
@@ -4662,7 +4720,7 @@ type IntegrateRole struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleStatus *uint64 `json:"RoleStatus,omitempty" name:"RoleStatus"`
 
-	// 是否是集团角色
+	// 是否是集团角色，true-是，false-否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsGroupRole *bool `json:"IsGroupRole,omitempty" name:"IsGroupRole"`
 
@@ -4760,10 +4818,10 @@ type OccupiedSeal struct {
 	// 电子印章名称
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
 
-	// 电子印章授权时间戳
+	// 电子印章授权时间戳，单位秒
 	CreateOn *int64 `json:"CreateOn,omitempty" name:"CreateOn"`
 
-	// 电子印章授权人
+	// 电子印章授权人的UserId
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
 	// 电子印章策略Id
@@ -4779,10 +4837,10 @@ type OccupiedSeal struct {
 	// 印章图片url，5分钟内有效
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 印章类型
+	// 印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章
 	SealType *string `json:"SealType,omitempty" name:"SealType"`
 
-	// 用印申请是否为永久授权
+	// 用印申请是否为永久授权，true-是，false-否
 	IsAllTime *bool `json:"IsAllTime,omitempty" name:"IsAllTime"`
 
 	// 授权人列表
@@ -4792,18 +4850,28 @@ type OccupiedSeal struct {
 
 type OrganizationInfo struct {
 	// 机构在平台的编号，内部字段，暂未开放
+	//
+	// Deprecated: OrganizationId is deprecated.
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
 
 	// 用户渠道，内部字段，暂未开放
+	//
+	// Deprecated: Channel is deprecated.
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 用户在渠道的机构编号，内部字段，暂未开放
+	//
+	// Deprecated: OrganizationOpenId is deprecated.
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
 	// 用户真实的IP，内部字段，暂未开放
+	//
+	// Deprecated: ClientIp is deprecated.
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
 	// 机构的代理IP，内部字段，暂未开放
+	//
+	// Deprecated: ProxyIp is deprecated.
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
 }
 
@@ -4817,7 +4885,7 @@ type PdfVerifyResult struct {
 	// 签署人名称
 	SignerName *string `json:"SignerName,omitempty" name:"SignerName"`
 
-	// 签署时间
+	// 签署时间戳，单位秒
 	SignTime *int64 `json:"SignTime,omitempty" name:"SignTime"`
 
 	// 签名算法
@@ -4826,25 +4894,25 @@ type PdfVerifyResult struct {
 	// 签名证书序列号
 	CertSn *string `json:"CertSn,omitempty" name:"CertSn"`
 
-	// 证书起始时间
+	// 证书起始时间戳，单位秒
 	CertNotBefore *int64 `json:"CertNotBefore,omitempty" name:"CertNotBefore"`
 
-	// 证书过期时间
+	// 证书过期时间戳，单位秒
 	CertNotAfter *int64 `json:"CertNotAfter,omitempty" name:"CertNotAfter"`
 
-	// 签名域横坐标
+	// 签名域横坐标，单位pt
 	ComponentPosX *float64 `json:"ComponentPosX,omitempty" name:"ComponentPosX"`
 
-	// 签名域纵坐标
+	// 签名域纵坐标，单位pt
 	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
 
-	// 签名域宽度
+	// 签名域宽度，单位pt
 	ComponentWidth *float64 `json:"ComponentWidth,omitempty" name:"ComponentWidth"`
 
-	// 签名域高度
+	// 签名域高度，单位pt
 	ComponentHeight *float64 `json:"ComponentHeight,omitempty" name:"ComponentHeight"`
 
-	// 签名域所在页码
+	// 签名域所在页码，1～N
 	ComponentPage *int64 `json:"ComponentPage,omitempty" name:"ComponentPage"`
 }
 
@@ -4867,7 +4935,7 @@ type Recipient struct {
 	// 是否需要签署，默认为true
 	RequireSign *bool `json:"RequireSign,omitempty" name:"RequireSign"`
 
-	// 添加序列
+	// 添加序列，0～N
 	RoutingOrder *int64 `json:"RoutingOrder,omitempty" name:"RoutingOrder"`
 
 	// 是否需要发送，默认为true
@@ -4926,13 +4994,13 @@ type RelieveInfo struct {
 }
 
 type RemindFlowRecords struct {
-	// 是否能够催办
+	// 是否能够催办，true-是，false-否
 	CanRemind *bool `json:"CanRemind,omitempty" name:"CanRemind"`
 
 	// 合同id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 催办详情
+	// 催办详情信息
 	RemindMessage *string `json:"RemindMessage,omitempty" name:"RemindMessage"`
 }
 
@@ -4943,7 +5011,7 @@ type SignQrCode struct {
 	// 二维码url
 	QrCodeUrl *string `json:"QrCodeUrl,omitempty" name:"QrCodeUrl"`
 
-	// 二维码过期时间
+	// 二维码过期时间戳，单位秒
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 }
 
@@ -4987,10 +5055,10 @@ type Staff struct {
 	// 员工是否实名
 	Verified *bool `json:"Verified,omitempty" name:"Verified"`
 
-	// 员工创建时间戳
+	// 员工创建时间戳，单位秒
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
-	// 员工实名时间戳
+	// 员工实名时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifiedOn *int64 `json:"VerifiedOn,omitempty" name:"VerifiedOn"`
 
@@ -5147,13 +5215,13 @@ type TemplateInfo struct {
 	// 模板描述信息
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 模板关联的资源IDs
+	// 模板关联的资源ID列表
 	DocumentResourceIds []*string `json:"DocumentResourceIds,omitempty" name:"DocumentResourceIds"`
 
 	// 返回的文件信息结构
 	FileInfos []*FileInfo `json:"FileInfos,omitempty" name:"FileInfos"`
 
-	// 附件关联的资源ID是
+	// 附件关联的资源ID
 	AttachmentResourceIds []*string `json:"AttachmentResourceIds,omitempty" name:"AttachmentResourceIds"`
 
 	// 签署顺序
@@ -5171,10 +5239,10 @@ type TemplateInfo struct {
 	// 模板状态(-1:不可用；0:草稿态；1:正式态)
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 模板的创建人
+	// 模板的创建人UserId
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
-	// 模板创建的时间戳（精确到秒）
+	// 模板创建的时间戳，单位秒
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
 	// 发起人角色信息
@@ -5189,10 +5257,10 @@ type TemplateInfo struct {
 	// 模板可用状态，取值：1启用（默认），2停用
 	Available *int64 `json:"Available,omitempty" name:"Available"`
 
-	// 模板创建组织id
+	// 创建模板的机构id
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
 
-	// 模板预览链接
+	// 模板预览链接，有效时间5分钟
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 
@@ -5385,6 +5453,8 @@ type UploadFilesRequestParams struct {
 	CustomIds []*string `json:"CustomIds,omitempty" name:"CustomIds"`
 
 	// 不再使用，上传文件链接数组，最多支持20个URL
+	//
+	// Deprecated: FileUrls is deprecated.
 	FileUrls *string `json:"FileUrls,omitempty" name:"FileUrls"`
 }
 
@@ -5477,15 +5547,23 @@ type UserInfo struct {
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 用户的来源渠道，一般不用传，特定场景根据接口说明传值
+	//
+	// Deprecated: Channel is deprecated.
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 用户在渠道的编号，一般不用传，特定场景根据接口说明传值
+	//
+	// Deprecated: OpenId is deprecated.
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// 用户真实IP，内部字段，暂未开放
+	//
+	// Deprecated: ClientIp is deprecated.
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
 	// 用户代理IP，内部字段，暂未开放
+	//
+	// Deprecated: ProxyIp is deprecated.
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
 }
 

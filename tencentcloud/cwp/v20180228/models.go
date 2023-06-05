@@ -16433,60 +16433,6 @@ func (r *DescribeRiskDnsListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeSaveOrUpdateWarningsRequestParams struct {
-	// 告警设置的修改内容
-	WarningObjects []*WarningObject `json:"WarningObjects,omitempty" name:"WarningObjects"`
-}
-
-type DescribeSaveOrUpdateWarningsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 告警设置的修改内容
-	WarningObjects []*WarningObject `json:"WarningObjects,omitempty" name:"WarningObjects"`
-}
-
-func (r *DescribeSaveOrUpdateWarningsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSaveOrUpdateWarningsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "WarningObjects")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSaveOrUpdateWarningsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeSaveOrUpdateWarningsResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeSaveOrUpdateWarningsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeSaveOrUpdateWarningsResponseParams `json:"Response"`
-}
-
-func (r *DescribeSaveOrUpdateWarningsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSaveOrUpdateWarningsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeScanMalwareScheduleRequestParams struct {
 
 }
@@ -18754,6 +18700,113 @@ func (r *DescribeVulListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVulListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulStoreListRequestParams struct {
+	// 
+	// <li>VulName- string - 是否必填：否 - 漏洞名称</li>
+	// <li>CveId- string - 是否必填：否 - cveid</li>
+	// <li>VulCategory- string - 是否必填：否 - 漏洞分类  1 Web-CMS漏洞 ,2 应用漏洞 ,4 Linux软件漏洞,5 Windows系统漏洞</li>
+	// <li>Method- string - 是否必填：否 - 检测方法 0版本对比,1 poc检测 </li>
+	// <li>SupportDefense- string - 是否必填：否 - 是否支持防御 0不支持,1支持</li>
+	// <li>FixSwitch- string - 是否必填：否 - 是否支持自动修复 0不支持,1支持</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10,最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式: [ASC:升序|DESC:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序列: [PublishDate]
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeVulStoreListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 
+	// <li>VulName- string - 是否必填：否 - 漏洞名称</li>
+	// <li>CveId- string - 是否必填：否 - cveid</li>
+	// <li>VulCategory- string - 是否必填：否 - 漏洞分类  1 Web-CMS漏洞 ,2 应用漏洞 ,4 Linux软件漏洞,5 Windows系统漏洞</li>
+	// <li>Method- string - 是否必填：否 - 检测方法 0版本对比,1 poc检测 </li>
+	// <li>SupportDefense- string - 是否必填：否 - 是否支持防御 0不支持,1支持</li>
+	// <li>FixSwitch- string - 是否必填：否 - 是否支持自动修复 0不支持,1支持</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10,最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式: [ASC:升序|DESC:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序列: [PublishDate]
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeVulStoreListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulStoreListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulStoreListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVulStoreListResponseParams struct {
+	// 漏洞信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*VulStoreListInfo `json:"List,omitempty" name:"List"`
+
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 今日剩余搜索此时
+	Remaining *uint64 `json:"Remaining,omitempty" name:"Remaining"`
+
+	// 免费搜索次数
+	FreeSearchTimes *uint64 `json:"FreeSearchTimes,omitempty" name:"FreeSearchTimes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeVulStoreListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVulStoreListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVulStoreListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVulStoreListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -26860,6 +26913,40 @@ type VulLevelInfo struct {
 
 	// 数量
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
+type VulStoreListInfo struct {
+	// 漏洞ID
+	VulId *uint64 `json:"VulId,omitempty" name:"VulId"`
+
+	// 漏洞级别
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 漏洞名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// cve编号
+	CveId *string `json:"CveId,omitempty" name:"CveId"`
+
+	// 1: web-cms漏洞 2:应用漏洞  4: Linux软件漏洞 5: Windows系统漏洞 0= 应急漏洞
+	VulCategory *uint64 `json:"VulCategory,omitempty" name:"VulCategory"`
+
+	// 发布时间
+	PublishDate *string `json:"PublishDate,omitempty" name:"PublishDate"`
+
+	// 漏洞检测方法 0 - 版本比对, 1 - POC验证
+	Method *uint64 `json:"Method,omitempty" name:"Method"`
+
+	// 漏洞攻击热度
+	AttackLevel *uint64 `json:"AttackLevel,omitempty" name:"AttackLevel"`
+
+	// 漏洞是否支持自动修复
+	// 0-windows/linux均关闭; 1-windows/linux均打开; 2-仅linux; 3-仅windows
+	FixSwitch *uint64 `json:"FixSwitch,omitempty" name:"FixSwitch"`
+
+	// 漏洞是否支持防御
+	// 0:不支持 1:支持
+	SupportDefense *uint64 `json:"SupportDefense,omitempty" name:"SupportDefense"`
 }
 
 type VulTopInfo struct {

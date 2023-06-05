@@ -1,33 +1,57 @@
 # 本版本更新包含以下内容：
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
 
-### 第 37 次发布
+### 第 122 次发布
 
-发布时间：2023-06-02 01:13:34
+发布时间：2023-06-05 01:12:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增数据结构：
+
+* [OriginSni](https://cloud.tencent.com/document/api/228/30987#OriginSni)
+
 修改数据结构：
 
-* [AssociatedInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#AssociatedInstanceInfo)
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
 
-	* 新增成员：SecurityGroupRuleCount, CdbId
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/1132/49071#InstanceInfo)
-
-	* 新增成员：Server
+	* 新增成员：Sni
 
 
 
 
-## 负载均衡(clb) 版本：2018-03-17
+## 主机安全(cwp) 版本：2018-02-28
 
 ### 第 90 次发布
 
-发布时间：2023-06-02 01:14:55
+发布时间：2023-06-05 01:20:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeVulStoreList](https://cloud.tencent.com/document/api/296/93137)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeSaveOrUpdateWarnings
+
+新增数据结构：
+
+* [VulStoreListInfo](https://cloud.tencent.com/document/api/296/19867#VulStoreListInfo)
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 59 次发布
+
+发布时间：2023-06-05 01:24:19
 
 本次发布包含了以下内容：
 
@@ -35,112 +59,137 @@
 
 修改接口：
 
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
 
-	* 新增入参：DynamicVip
-
-
-新增数据结构：
-
-* [SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability)
-* [TypeInfo](https://cloud.tencent.com/document/api/214/30694#TypeInfo)
-
-修改数据结构：
-
-* [Resource](https://cloud.tencent.com/document/api/214/30694#Resource)
-
-	* 新增成员：TypeSet
+	* 新增出参：InstanceIds, FlowId
 
 
 
 
-## 主机安全(cwp) 版本：2018-02-28
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-### 第 89 次发布
+### 第 50 次发布
 
-发布时间：2023-06-02 01:19:01
+发布时间：2023-06-05 01:24:50
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [CreateDataEngine](https://cloud.tencent.com/document/api/1342/87875)
+
+	* 新增入参：SessionResourceTemplate
+
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+
+	* 新增入参：IsInherit
+
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+
+	* 新增入参：IsInherit
+
+
+新增数据结构：
+
+* [SessionResourceTemplate](https://cloud.tencent.com/document/api/1342/53778#SessionResourceTemplate)
+
 修改数据结构：
 
-* [AssetWebFrameBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebFrameBaseInfo)
+* [DataEngineInfo](https://cloud.tencent.com/document/api/1342/53778#DataEngineInfo)
 
-	* 新增成员：Path
+	* 新增成员：DefaultHouse, MaxConcurrency, TolerableQueueTime, UserAppId, UserUin, SessionResourceTemplate
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：IsInherit
+
+* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
+
+	* 新增成员：MapMaterializedViewName
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：ImageVersion, DriverSize, ExecutorSize, ExecutorNums, ExecutorMaxNumbers
 
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 71 次发布
+### 第 72 次发布
 
-发布时间：2023-06-02 01:26:15
+发布时间：2023-06-02 15:55:45
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+修改接口：
+
+* [CreateConvertTaskApi](https://cloud.tencent.com/document/api/1323/78149)
+
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+
+* [CreateFlowSignUrl](https://cloud.tencent.com/document/api/1323/85818)
+
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
+
+* [CreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1323/89386)
+
+	* 新增入参：FileId
+
+	* <font color="#dd0000">**修改入参**：</font>SealImage
+
+* [DescribeFileUrls](https://cloud.tencent.com/document/api/1323/70366)
+
+* [DescribeFlowTemplates](https://cloud.tencent.com/document/api/1323/74803)
+
+* [DescribeIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81115)
+
+	* 新增入参：Agent
+
+* [GetTaskResultApi](https://cloud.tencent.com/document/api/1323/78148)
+
+* [UploadFiles](https://cloud.tencent.com/document/api/1323/73066)
+
 
 修改数据结构：
 
-* [Caller](https://cloud.tencent.com/document/api/1323/70369#Caller)
+* [CallbackInfo](https://cloud.tencent.com/document/api/1323/70369#CallbackInfo)
 
-* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+	* 新增成员：CallbackKey, CallbackToken
 
+	* <font color="#dd0000">**修改成员**：</font>Token
 
+* [OrganizationInfo](https://cloud.tencent.com/document/api/1323/70369#OrganizationInfo)
 
-
-## 渠道合作伙伴(partners) 版本：2018-03-21
-
-### 第 27 次发布
-
-发布时间：2023-06-02 01:39:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* DescribeClientBalance
+* [UserInfo](https://cloud.tencent.com/document/api/1323/70369#UserInfo)
 
 
 
-## SSL 证书(ssl) 版本：2019-12-05
 
-### 第 35 次发布
+## 腾讯智能对话平台(tbp) 版本：2019-06-27
 
-发布时间：2023-06-02 01:43:30
+### 第 3 次发布
+
+发布时间：2023-06-05 01:49:22
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateCertificateByPackage](https://cloud.tencent.com/document/api/400/93094)
+* [TextReset](https://cloud.tencent.com/document/api/1060/37437)
+
+	* 新增出参：ResponseText
 
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
 
-### 第 45 次发布
-
-发布时间：2023-06-02 01:46:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeVulRegistryImageList](https://cloud.tencent.com/document/api/1285/93095)
-
-新增数据结构：
-
-* [VulAffectedRegistryImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedRegistryImageInfo)
+## 腾讯智能对话平台(tbp) 版本：2019-03-11
 
 
 
@@ -16437,6 +16486,25 @@
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06
 
+### 第 122 次发布
+
+发布时间：2023-06-05 01:12:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[OriginSni](https://cloud.tencent.com/document/api/228/30987#OriginSni)](https://cloud.tencent.com/document/api/228/30987#[OriginSni](https://cloud.tencent.com/document/api/228/30987#OriginSni))
+
+修改数据结构：
+
+* [Origin](https://cloud.tencent.com/document/api/228/30987#Origin)
+
+	* 新增成员：Sni
+
+
 ### 第 121 次发布
 
 发布时间：2023-05-08 01:12:20
@@ -23173,8 +23241,8 @@
 
 新增数据结构：
 
-* [[SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability)](https://cloud.tencent.com/document/api/214/30694#[SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability))
-* [[TypeInfo](https://cloud.tencent.com/document/api/214/30694#TypeInfo)](https://cloud.tencent.com/document/api/214/30694#[TypeInfo](https://cloud.tencent.com/document/api/214/30694#TypeInfo))
+* [SpecAvailability](https://cloud.tencent.com/document/api/214/30694#SpecAvailability)
+* [TypeInfo](https://cloud.tencent.com/document/api/214/30694#TypeInfo)
 
 修改数据结构：
 
@@ -33106,6 +33174,26 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 90 次发布
+
+发布时间：2023-06-05 01:20:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeVulStoreList](https://cloud.tencent.com/document/api/296/93137)](https://cloud.tencent.com/document/api/#/#)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeSaveOrUpdateWarnings
+
+新增数据结构：
+
+* [[VulStoreListInfo](https://cloud.tencent.com/document/api/296/19867#VulStoreListInfo)](https://cloud.tencent.com/document/api/296/19867#[VulStoreListInfo](https://cloud.tencent.com/document/api/296/19867#VulStoreListInfo))
+
 ### 第 89 次发布
 
 发布时间：2023-06-02 01:19:01
@@ -39099,6 +39187,21 @@
 
 ## TDSQL MySQL 版(dcdb) 版本：2018-04-11
 
+### 第 59 次发布
+
+发布时间：2023-06-05 01:24:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
+
+	* 新增出参：InstanceIds, FlowId
+
+
 ### 第 58 次发布
 
 发布时间：2023-06-01 09:49:03
@@ -40197,6 +40300,52 @@
 
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 50 次发布
+
+发布时间：2023-06-05 01:24:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDataEngine](https://cloud.tencent.com/document/api/1342/87875)
+
+	* 新增入参：SessionResourceTemplate
+
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+
+	* 新增入参：IsInherit
+
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+
+	* 新增入参：IsInherit
+
+
+新增数据结构：
+
+* [[SessionResourceTemplate](https://cloud.tencent.com/document/api/1342/53778#SessionResourceTemplate)](https://cloud.tencent.com/document/api/1342/53778#[SessionResourceTemplate](https://cloud.tencent.com/document/api/1342/53778#SessionResourceTemplate))
+
+修改数据结构：
+
+* [DataEngineInfo](https://cloud.tencent.com/document/api/1342/53778#DataEngineInfo)
+
+	* 新增成员：DefaultHouse, MaxConcurrency, TolerableQueueTime, UserAppId, UserUin, SessionResourceTemplate
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：IsInherit
+
+* [TableResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TableResponseInfo)
+
+	* 新增成员：MapMaterializedViewName
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：ImageVersion, DriverSize, ExecutorSize, ExecutorNums, ExecutorMaxNumbers
+
 
 ### 第 49 次发布
 
@@ -47802,6 +47951,56 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 72 次发布
+
+发布时间：2023-06-02 15:55:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConvertTaskApi](https://cloud.tencent.com/document/api/1323/78149)
+
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+
+* [CreateFlowSignUrl](https://cloud.tencent.com/document/api/1323/85818)
+
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
+
+* [CreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1323/89386)
+
+	* 新增入参：FileId
+
+	* <font color="#dd0000">**修改入参**：</font>SealImage
+
+* [DescribeFileUrls](https://cloud.tencent.com/document/api/1323/70366)
+
+* [DescribeFlowTemplates](https://cloud.tencent.com/document/api/1323/74803)
+
+* [DescribeIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81115)
+
+	* 新增入参：Agent
+
+* [GetTaskResultApi](https://cloud.tencent.com/document/api/1323/78148)
+
+* [UploadFiles](https://cloud.tencent.com/document/api/1323/73066)
+
+
+修改数据结构：
+
+* [CallbackInfo](https://cloud.tencent.com/document/api/1323/70369#CallbackInfo)
+
+	* 新增成员：CallbackKey, CallbackToken
+
+	* <font color="#dd0000">**修改成员**：</font>Token
+
+* [OrganizationInfo](https://cloud.tencent.com/document/api/1323/70369#OrganizationInfo)
+
+* [UserInfo](https://cloud.tencent.com/document/api/1323/70369#UserInfo)
+
 
 ### 第 71 次发布
 
@@ -83465,7 +83664,7 @@
 
 新增接口：
 
-* [[CreateCertificateByPackage](https://cloud.tencent.com/document/api/400/93094)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCertificateByPackage](https://cloud.tencent.com/document/api/400/93094)
 
 ### 第 34 次发布
 
@@ -85928,6 +86127,21 @@
 
 
 ## 腾讯智能对话平台(tbp) 版本：2019-06-27
+
+### 第 3 次发布
+
+发布时间：2023-06-05 01:49:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextReset](https://cloud.tencent.com/document/api/1060/37437)
+
+	* 新增出参：ResponseText
+
 
 ### 第 2 次发布
 
@@ -90286,11 +90500,11 @@
 
 新增接口：
 
-* [[DescribeVulRegistryImageList](https://cloud.tencent.com/document/api/1285/93095)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeVulRegistryImageList](https://cloud.tencent.com/document/api/1285/93095)
 
 新增数据结构：
 
-* [[VulAffectedRegistryImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedRegistryImageInfo)](https://cloud.tencent.com/document/api/1285/65614#[VulAffectedRegistryImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedRegistryImageInfo))
+* [VulAffectedRegistryImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedRegistryImageInfo)
 
 ### 第 44 次发布
 

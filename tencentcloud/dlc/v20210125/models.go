@@ -1380,6 +1380,9 @@ type CreateDataEngineRequestParams struct {
 
 	// spark jar 包年包月集群弹性上限
 	ElasticLimit *int64 `json:"ElasticLimit,omitempty" name:"ElasticLimit"`
+
+	// spark作业集群session资源配置模板
+	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitempty" name:"SessionResourceTemplate"`
 }
 
 type CreateDataEngineRequest struct {
@@ -1471,6 +1474,9 @@ type CreateDataEngineRequest struct {
 
 	// spark jar 包年包月集群弹性上限
 	ElasticLimit *int64 `json:"ElasticLimit,omitempty" name:"ElasticLimit"`
+
+	// spark作业集群session资源配置模板
+	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitempty" name:"SessionResourceTemplate"`
 }
 
 func (r *CreateDataEngineRequest) ToJsonString() string {
@@ -1514,6 +1520,7 @@ func (r *CreateDataEngineRequest) FromJsonString(s string) error {
 	delete(f, "MainClusterName")
 	delete(f, "ElasticSwitch")
 	delete(f, "ElasticLimit")
+	delete(f, "SessionResourceTemplate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDataEngineRequest has unknown keys!", "")
 	}
@@ -2375,6 +2382,9 @@ type CreateSparkAppRequestParams struct {
 
 	// 关联dlc查询脚本id
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 type CreateSparkAppRequest struct {
@@ -2460,6 +2470,9 @@ type CreateSparkAppRequest struct {
 
 	// 关联dlc查询脚本id
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 func (r *CreateSparkAppRequest) ToJsonString() string {
@@ -2501,6 +2514,7 @@ func (r *CreateSparkAppRequest) FromJsonString(s string) error {
 	delete(f, "SparkImageVersion")
 	delete(f, "AppExecutorMaxNumbers")
 	delete(f, "SessionId")
+	delete(f, "IsInherit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppRequest has unknown keys!", "")
 	}
@@ -3612,6 +3626,30 @@ type DataEngineInfo struct {
 	// spark jar 包年包月集群弹性上限
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticLimit *int64 `json:"ElasticLimit,omitempty" name:"ElasticLimit"`
+
+	// 是否为默认引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultHouse *bool `json:"DefaultHouse,omitempty" name:"DefaultHouse"`
+
+	// 单个集群任务最大并发数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+
+	// 任务排队上限时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TolerableQueueTime *int64 `json:"TolerableQueueTime,omitempty" name:"TolerableQueueTime"`
+
+	// 用户appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAppId *int64 `json:"UserAppId,omitempty" name:"UserAppId"`
+
+	// 用户uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserUin *string `json:"UserUin,omitempty" name:"UserUin"`
+
+	// SessionResourceTemplate
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitempty" name:"SessionResourceTemplate"`
 }
 
 type DataFormat struct {
@@ -3703,7 +3741,7 @@ type DatabaseResponseInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GovernPolicy *DataGovernPolicy `json:"GovernPolicy,omitempty" name:"GovernPolicy"`
 
-	// 数据库ID
+	// 数据库ID（无效字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseId *string `json:"DatabaseId,omitempty" name:"DatabaseId"`
 }
@@ -7612,6 +7650,9 @@ type ModifySparkAppRequestParams struct {
 
 	// 关联dlc查询脚本
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 任务资源配置是否继承集群配置模板：0（默认）不继承、1：继承
+	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 type ModifySparkAppRequest struct {
@@ -7700,6 +7741,9 @@ type ModifySparkAppRequest struct {
 
 	// 关联dlc查询脚本
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 任务资源配置是否继承集群配置模板：0（默认）不继承、1：继承
+	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 func (r *ModifySparkAppRequest) ToJsonString() string {
@@ -7742,6 +7786,7 @@ func (r *ModifySparkAppRequest) FromJsonString(s string) error {
 	delete(f, "SparkImageVersion")
 	delete(f, "AppExecutorMaxNumbers")
 	delete(f, "SessionId")
+	delete(f, "IsInherit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySparkAppRequest has unknown keys!", "")
 	}
@@ -8338,6 +8383,24 @@ type Script struct {
 	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type SessionResourceTemplate struct {
+	// driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DriverSize *string `json:"DriverSize,omitempty" name:"DriverSize"`
+
+	// executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorSize *string `json:"ExecutorSize,omitempty" name:"ExecutorSize"`
+
+	// 指定executor数量，最小值为1，最大值小于集群规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorNums *uint64 `json:"ExecutorNums,omitempty" name:"ExecutorNums"`
+
+	// 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+}
+
 type SparkJobInfo struct {
 	// spark作业ID
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
@@ -8470,6 +8533,10 @@ type SparkJobInfo struct {
 	// Spark 3.2-EMR
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineImageVersion *string `json:"DataEngineImageVersion,omitempty" name:"DataEngineImageVersion"`
+
+	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 type SparkSessionBatchLog struct {
@@ -8833,6 +8900,10 @@ type TableResponseInfo struct {
 	// 数据表行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// xxxx
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MapMaterializedViewName *string `json:"MapMaterializedViewName,omitempty" name:"MapMaterializedViewName"`
 }
 
 type TagInfo struct {
@@ -8966,6 +9037,26 @@ type TaskResponseInfo struct {
 	// spark app job执行task的程序入口参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
+
+	// 集群镜像大版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+
+	// driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DriverSize *string `json:"DriverSize,omitempty" name:"DriverSize"`
+
+	// executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorSize *string `json:"ExecutorSize,omitempty" name:"ExecutorSize"`
+
+	// 指定executor数量，最小值为1，最大值小于集群规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorNums *uint64 `json:"ExecutorNums,omitempty" name:"ExecutorNums"`
+
+	// 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
 }
 
 type TaskResultInfo struct {

@@ -67,6 +67,7 @@ func NewBindEmployeeUserIdWithClientOpenIdResponse() (response *BindEmployeeUser
 // 将电子签系统员工userId与客户系统员工openId进行绑定
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -78,6 +79,7 @@ func (c *Client) BindEmployeeUserIdWithClientOpenId(request *BindEmployeeUserIdW
 // 将电子签系统员工userId与客户系统员工openId进行绑定
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -340,12 +342,7 @@ func NewCreateChannelSubOrganizationModifyQrCodeResponse() (response *CreateChan
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
-//  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
-//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) CreateChannelSubOrganizationModifyQrCode(request *CreateChannelSubOrganizationModifyQrCodeRequest) (response *CreateChannelSubOrganizationModifyQrCodeResponse, err error) {
     return c.CreateChannelSubOrganizationModifyQrCodeWithContext(context.Background(), request)
 }
@@ -355,12 +352,7 @@ func (c *Client) CreateChannelSubOrganizationModifyQrCode(request *CreateChannel
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
-//  OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
-//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) CreateChannelSubOrganizationModifyQrCodeWithContext(ctx context.Context, request *CreateChannelSubOrganizationModifyQrCodeRequest) (response *CreateChannelSubOrganizationModifyQrCodeResponse, err error) {
     if request == nil {
         request = NewCreateChannelSubOrganizationModifyQrCodeRequest()
@@ -598,11 +590,13 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 }
 
 // CreateFlow
-// 通过模板创建签署流程
+// 通过模板创建签署流程<br/>
 //
-// 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
+// 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。<br/>
 //
-// 注：该接口是通过模板生成合同流程的前置接口，先创建一个不包含签署文件的流程。配合“创建电子文档”接口和“发起流程”接口使用。
+// 注：该接口是通过模板生成合同流程的前置接口，先创建一个不包含签署文件的流程。<br/>
+//
+// 配合“创建电子文档”接口和“发起流程”接口使用。<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -683,11 +677,13 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 }
 
 // CreateFlow
-// 通过模板创建签署流程
+// 通过模板创建签署流程<br/>
 //
-// 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。
+// 适用场景：在标准制式的合同场景中，可通过提前预制好模板文件，每次调用模板文件的id，补充合同内容信息及签署信息生成电子合同。<br/>
 //
-// 注：该接口是通过模板生成合同流程的前置接口，先创建一个不包含签署文件的流程。配合“创建电子文档”接口和“发起流程”接口使用。
+// 注：该接口是通过模板生成合同流程的前置接口，先创建一个不包含签署文件的流程。<br/>
+//
+// 配合“创建电子文档”接口和“发起流程”接口使用。<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1000,13 +996,13 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 }
 
 // CreateFlowByFiles
-// 此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建待签署的合同流程。
+// 此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建待签署的合同流程。<br/>
 //
-// 适用场景1：适用非制式的合同文件签署。一般开发者自己有完整的签署文件，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。
+// 适用场景1：适用非制式的合同文件签署。一般开发者自己有完整的签署文件，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。<br/>
 //
-// 适用场景2：可通过该接口传入制式合同文件，同时在指定位置添加签署控件。可以起到接口创建临时模板的效果。如果是标准的制式文件，建议使用模板功能生成模板ID进行合同流程的生成。
+// 适用场景2：可通过该接口传入制式合同文件，同时在指定位置添加签署控件。可以起到接口创建临时模板的效果。如果是标准的制式文件，建议使用模板功能生成模板ID进行合同流程的生成。<br/>
 //
-// 注意事项：该接口需要依赖“多文件上传”接口生成pdf资源编号（FileIds）进行使用。
+// 注意事项：该接口需要依赖“多文件上传”接口生成pdf资源编号（FileIds）进行使用。<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1147,13 +1143,13 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 }
 
 // CreateFlowByFiles
-// 此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建待签署的合同流程。
+// 此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建待签署的合同流程。<br/>
 //
-// 适用场景1：适用非制式的合同文件签署。一般开发者自己有完整的签署文件，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。
+// 适用场景1：适用非制式的合同文件签署。一般开发者自己有完整的签署文件，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。<br/>
 //
-// 适用场景2：可通过该接口传入制式合同文件，同时在指定位置添加签署控件。可以起到接口创建临时模板的效果。如果是标准的制式文件，建议使用模板功能生成模板ID进行合同流程的生成。
+// 适用场景2：可通过该接口传入制式合同文件，同时在指定位置添加签署控件。可以起到接口创建临时模板的效果。如果是标准的制式文件，建议使用模板功能生成模板ID进行合同流程的生成。<br/>
 //
-// 注意事项：该接口需要依赖“多文件上传”接口生成pdf资源编号（FileIds）进行使用。
+// 注意事项：该接口需要依赖“多文件上传”接口生成pdf资源编号（FileIds）进行使用。<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1667,6 +1663,7 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -1684,6 +1681,7 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -1728,8 +1726,11 @@ func NewCreateIntegrationUserRolesResponse() (response *CreateIntegrationUserRol
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOPERMISSIONUSERESOURCE = "OperationDenied.NoPermissionUseResource"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateIntegrationUserRoles(request *CreateIntegrationUserRolesRequest) (response *CreateIntegrationUserRolesResponse, err error) {
     return c.CreateIntegrationUserRolesWithContext(context.Background(), request)
@@ -1742,8 +1743,11 @@ func (c *Client) CreateIntegrationUserRoles(request *CreateIntegrationUserRolesR
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOPERMISSIONUSERESOURCE = "OperationDenied.NoPermissionUseResource"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateIntegrationUserRolesWithContext(ctx context.Context, request *CreateIntegrationUserRolesRequest) (response *CreateIntegrationUserRolesResponse, err error) {
     if request == nil {
@@ -2195,6 +2199,7 @@ func NewCreateReleaseFlowResponse() (response *CreateReleaseFlowResponse) {
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
 //  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -2275,6 +2280,7 @@ func (c *Client) CreateReleaseFlow(request *CreateReleaseFlowRequest) (response 
 //  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
 //  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
 //  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -2701,6 +2707,7 @@ func NewDeleteIntegrationRoleUsersResponse() (response *DeleteIntegrationRoleUse
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
     return c.DeleteIntegrationRoleUsersWithContext(context.Background(), request)
@@ -2716,6 +2723,7 @@ func (c *Client) DeleteIntegrationRoleUsers(request *DeleteIntegrationRoleUsersR
 //  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DeleteIntegrationRoleUsersWithContext(ctx context.Context, request *DeleteIntegrationRoleUsersRequest) (response *DeleteIntegrationRoleUsersResponse, err error) {
     if request == nil {
@@ -2810,7 +2818,7 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 }
 
 // DescribeFileUrls
-// 查询文件下载URL
+// 查询文件下载URL。
 //
 // 适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
 //
@@ -2844,7 +2852,7 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
 }
 
 // DescribeFileUrls
-// 查询文件下载URL
+// 查询文件下载URL。
 //
 // 适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
 //
@@ -3180,7 +3188,9 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 }
 
 // DescribeFlowTemplates
-// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。该接口常用来配合“创建电子文档”接口作为前置的接口使用。
+// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。<br/>
+//
+// 该接口常用来配合“创建电子文档”接口作为前置的接口使用。<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3211,7 +3221,9 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 }
 
 // DescribeFlowTemplates
-// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。该接口常用来配合“创建电子文档”接口作为前置的接口使用。
+// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。<br/>
+//
+// 该接口常用来配合“创建电子文档”接口作为前置的接口使用。<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3844,7 +3856,9 @@ func NewGetTaskResultApiResponse() (response *GetTaskResultApiResponse) {
 }
 
 // GetTaskResultApi
-// 通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
+// 通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。<br/>
+//
+// 大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3858,7 +3872,9 @@ func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *G
 }
 
 // GetTaskResultApi
-// 通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
+// 通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。<br/>
+//
+// 大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -4212,13 +4228,19 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 }
 
 // UploadFiles
-// 此接口（UploadFiles）用于文件上传。
+// 此接口（UploadFiles）用于文件上传。<br/>
 //
-// 适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。
+// 适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。<br/>
 //
-// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。
+// 
 //
-// 调用时需要设置Domain/接口请求域名为 file.ess.tencent.cn，并设置参数Version/版本号为2020-12-22
+// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。<br/>
+//
+// 调用时需要设置Domain/接口请求域名为 file.ess.tencent.cn,代码示例：<br/>
+//
+// HttpProfile httpProfile = new HttpProfile();<br/>
+//
+// httpProfile.setEndpoint("file.test.ess.tencent.cn");<br/>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4234,13 +4256,19 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 }
 
 // UploadFiles
-// 此接口（UploadFiles）用于文件上传。
+// 此接口（UploadFiles）用于文件上传。<br/>
 //
-// 适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。
+// 适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。<br/>
 //
-// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。
+// 
 //
-// 调用时需要设置Domain/接口请求域名为 file.ess.tencent.cn，并设置参数Version/版本号为2020-12-22
+// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。<br/>
+//
+// 调用时需要设置Domain/接口请求域名为 file.ess.tencent.cn,代码示例：<br/>
+//
+// HttpProfile httpProfile = new HttpProfile();<br/>
+//
+// httpProfile.setEndpoint("file.test.ess.tencent.cn");<br/>
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
