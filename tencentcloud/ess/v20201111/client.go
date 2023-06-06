@@ -463,6 +463,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //  FAILEDOPERATION_PREVIEWURLFAIL = "FailedOperation.PreViewUrlFail"
 //  FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
@@ -518,6 +519,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //  FAILEDOPERATION_PREVIEWURLFAIL = "FailedOperation.PreViewUrlFail"
 //  FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
@@ -671,6 +673,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowResponse, err error) {
     return c.CreateFlowWithContext(context.Background(), request)
@@ -758,6 +761,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 //  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 //  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowWithContext(ctx context.Context, request *CreateFlowRequest) (response *CreateFlowResponse, err error) {
     if request == nil {
@@ -1820,6 +1824,7 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 //  INVALIDPARAMETER_TEMPLATEID = "InvalidParameter.TemplateId"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
@@ -1869,6 +1874,7 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 //  INVALIDPARAMETER_TEMPLATEID = "InvalidParameter.TemplateId"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
@@ -2113,7 +2119,9 @@ func NewCreatePreparedPersonalEsignResponse() (response *CreatePreparedPersonalE
 // 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDMOBILE = "InvalidParameterValue.InvalidMobile"
 func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsignRequest) (response *CreatePreparedPersonalEsignResponse, err error) {
@@ -2124,7 +2132,9 @@ func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsig
 // 本接口（CreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDMOBILE = "InvalidParameterValue.InvalidMobile"
 func (c *Client) CreatePreparedPersonalEsignWithContext(ctx context.Context, request *CreatePreparedPersonalEsignRequest) (response *CreatePreparedPersonalEsignResponse, err error) {
@@ -2396,6 +2406,7 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //  OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *CreateSchemeUrlResponse, err error) {
     return c.CreateSchemeUrlWithContext(context.Background(), request)
@@ -2444,6 +2455,7 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 //  OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateSchemeUrlWithContext(ctx context.Context, request *CreateSchemeUrlRequest) (response *CreateSchemeUrlResponse, err error) {
     if request == nil {
@@ -3196,6 +3208,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3229,6 +3242,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3992,6 +4006,7 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 //  FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
+//  FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
@@ -4045,6 +4060,7 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 //  FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
+//  FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"

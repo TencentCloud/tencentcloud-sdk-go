@@ -302,7 +302,7 @@ const (
 	// 角色ID不正确
 	INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
 
-	// 不合法的印章id，请检查印章id是够正确，并在修改后重试。
+	// 不合法的印章id，请检查印章id是否正确，并在修改后重试。
 	INVALIDPARAMETER_SEALID = "InvalidParameter.SealId"
 
 	// 参数包含有敏感词

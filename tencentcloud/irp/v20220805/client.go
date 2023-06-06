@@ -70,6 +70,7 @@ func NewDescribeGoodsRecommendResponse() (response *DescribeGoodsRecommendRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeGoodsRecommend(request *DescribeGoodsRecommendRequest) (response *DescribeGoodsRecommendResponse, err error) {
@@ -83,6 +84,7 @@ func (c *Client) DescribeGoodsRecommend(request *DescribeGoodsRecommendRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeGoodsRecommendWithContext(ctx context.Context, request *DescribeGoodsRecommendRequest) (response *DescribeGoodsRecommendResponse, err error) {

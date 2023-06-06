@@ -1,3 +1,297 @@
+# Release v1.0.672
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 34 次发布
+
+发布时间：2023-06-06 01:02:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindSubDomain](https://cloud.tencent.com/document/api/628/45188)
+
+	* <font color="#dd0000">**删除出参**：</font>Result
+
+* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+* [DescribeApisStatus](https://cloud.tencent.com/document/api/628/45239)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+* [DescribeExclusiveInstances](https://cloud.tencent.com/document/api/628/63805)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+* [ModifyUpstream](https://cloud.tencent.com/document/api/628/70410)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+
+新增数据结构：
+
+* [CreateApiResultInfo](https://cloud.tencent.com/document/api/628/45244#CreateApiResultInfo)
+* [DescribeApiResultServiceParametersInfo](https://cloud.tencent.com/document/api/628/45244#DescribeApiResultServiceParametersInfo)
+* [DescribeApisStatusResultInfo](https://cloud.tencent.com/document/api/628/45244#DescribeApisStatusResultInfo)
+* [DescribeExclusiveInstancesResult](https://cloud.tencent.com/document/api/628/45244#DescribeExclusiveInstancesResult)
+* [DescribeServiceReleaseVersionResultVersionListInfo](https://cloud.tencent.com/document/api/628/45244#DescribeServiceReleaseVersionResultVersionListInfo)
+* [ModifyUpstreamResultInfo](https://cloud.tencent.com/document/api/628/45244#ModifyUpstreamResultInfo)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ApisStatus
+
+修改数据结构：
+
+* [ApiInfo](https://cloud.tencent.com/document/api/628/45244#ApiInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>ServiceParameters
+
+* [EnvironmentStrategy](https://cloud.tencent.com/document/api/628/45244#EnvironmentStrategy)
+
+	* <font color="#dd0000">**删除成员**：</font>MaxQuota
+
+* [ServiceReleaseVersion](https://cloud.tencent.com/document/api/628/45244#ServiceReleaseVersion)
+
+	* <font color="#dd0000">**修改成员**：</font>VersionList
+
+* [UsagePlanInfo](https://cloud.tencent.com/document/api/628/45244#UsagePlanInfo)
+
+	* <font color="#dd0000">**删除成员**：</font>InitQuota, IsHide
+
+
+
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 41 次发布
+
+发布时间：2023-06-06 01:05:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBillSummary](https://cloud.tencent.com/document/api/555/93162)
+
+新增数据结构：
+
+* [BusinessSummaryInfo](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryInfo)
+* [SummaryDetail](https://cloud.tencent.com/document/api/555/19183#SummaryDetail)
+
+修改数据结构：
+
+* [ConsumptionBusinessSummaryDataItem](https://cloud.tencent.com/document/api/555/19183#ConsumptionBusinessSummaryDataItem)
+
+	* 新增成员：CashPayAmount, IncentivePayAmount, VoucherPayAmount, TransferPayAmount
+
+* [ConsumptionProjectSummaryDataItem](https://cloud.tencent.com/document/api/555/19183#ConsumptionProjectSummaryDataItem)
+
+	* 新增成员：CashPayAmount, IncentivePayAmount, VoucherPayAmount, TransferPayAmount
+
+* [ConsumptionResourceSummaryDataItem](https://cloud.tencent.com/document/api/555/19183#ConsumptionResourceSummaryDataItem)
+
+	* 新增成员：RealCost, FeeBeginTime, FeeEndTime, DayDiff, DailyTotalCost, OrderId, VoucherPayAmount, IncentivePayAmount, TransferPayAmount
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 21 次发布
+
+发布时间：2023-06-06 01:12:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TieringDetailInfo](https://cloud.tencent.com/document/api/582/38175#TieringDetailInfo)
+
+	* 新增成员：TieringSizeInBytes
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 65 次发布
+
+发布时间：2023-06-06 01:28:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DiskInfo](https://cloud.tencent.com/document/api/1108/42574#DiskInfo)
+
+	* 新增成员：DeleteWithInstance, SnapshotId
+
+* [Module](https://cloud.tencent.com/document/api/1108/42574#Module)
+
+	* 新增成员：DisableWanIp
+
+* [Node](https://cloud.tencent.com/document/api/1108/42574#Node)
+
+	* 新增成员：LBSupported
+
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 18 次发布
+
+发布时间：2023-06-06 01:51:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SendEmail](https://cloud.tencent.com/document/api/1288/51034)
+
+	* 新增入参：Cc, Bcc
+
+
+
+
+## 腾讯智能对话平台(tbp) 版本：2019-06-27
+
+### 第 4 次发布
+
+发布时间：2023-06-06 01:55:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextProcess](https://cloud.tencent.com/document/api/1060/37438)
+
+	* 新增出参：ResponseText
+
+
+
+
+## 腾讯智能对话平台(tbp) 版本：2019-03-11
+
+### 第 5 次发布
+
+发布时间：2023-06-06 01:54:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextProcess](https://cloud.tencent.com/document/api/1060/34557)
+
+	* 新增出参：ResponseMessage, ResultType
+
+
+新增数据结构：
+
+* [Group](https://cloud.tencent.com/document/api/1060/34559#Group)
+* [ResponseMessage](https://cloud.tencent.com/document/api/1060/34559#ResponseMessage)
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 60 次发布
+
+发布时间：2023-06-06 01:59:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeNamespaceBundlesOpt](https://cloud.tencent.com/document/api/1179/59039)
+
+	* 新增入参：Bundle, OwnerBroker
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 29 次发布
+
+发布时间：2023-06-06 02:12:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CheckAlarmRegularNameExist](https://cloud.tencent.com/document/api/1267/82530)
+
+	* 新增入参：TaskType
+
+	* <font color="#dd0000">**修改入参**：</font>TaskId
+
+* [DescribeInstanceList](https://cloud.tencent.com/document/api/1267/82505)
+
+	* 新增出参：InstanceList, TotalCount
+
+* [DescribeInstanceLog](https://cloud.tencent.com/document/api/1267/82504)
+
+	* 新增出参：InstanceLogInfo
+
+* [DescribeInstanceLogList](https://cloud.tencent.com/document/api/1267/82503)
+
+	* 新增出参：InstanceLogList
+
+* [DescribeIntegrationTasks](https://cloud.tencent.com/document/api/1267/82494)
+
+	* 新增出参：TotalCount
+
+* [DescribeTaskAlarmRegulations](https://cloud.tencent.com/document/api/1267/82486)
+
+	* <font color="#dd0000">**修改入参**：</font>TaskId, TaskType
+
+
+新增数据结构：
+
+* [InstanceList](https://cloud.tencent.com/document/api/1267/76336#InstanceList)
+* [InstanceLogList](https://cloud.tencent.com/document/api/1267/76336#InstanceLogList)
+* [IntegrationInstanceLog](https://cloud.tencent.com/document/api/1267/76336#IntegrationInstanceLog)
+
+修改数据结构：
+
+* [AlarmEventInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmEventInfo)
+
+	* 新增成员：RegularId
+
+* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
+
+	* 新增成员：InputDatasourceType, OutputDatasourceType, NumRecordsIn, NumRecordsOut, ReaderDelay, NumRestarts, CreateTime, UpdateTime, LastRunTime, StopTime, HasVersion, Locked, Locker, RunningCu, TaskAlarmRegularList
+
+* [TaskAlarmInfo](https://cloud.tencent.com/document/api/1267/76336#TaskAlarmInfo)
+
+	* 新增成员：UpdateTime, OperatorUin, TaskCount, MonitorType, MonitorObjectIds, LatestAlarmInstanceId, LatestAlarmTime, Description
+
+
+
+
 # Release v1.0.671
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06

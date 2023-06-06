@@ -87,6 +87,19 @@ func (r *CreateBotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Group struct {
+	// 消息类型参考互联网MIME类型标准，当前仅支持"text/plain"。	
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 返回内容以链接形式提供。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 普通文本。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
 // Predefined struct for user
 type ResetRequestParams struct {
 	// 机器人标识
@@ -197,6 +210,12 @@ func (r *ResetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResponseMessage struct {
+	// 消息组列表。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupList *Group `json:"GroupList,omitempty" name:"GroupList"`
+}
+
 type SlotInfo struct {
 	// 槽位名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -296,6 +315,14 @@ type TextProcessResponseParams struct {
 	// 机器人对话的应答文本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseText *string `json:"ResponseText,omitempty" name:"ResponseText"`
+
+	// 机器人应答。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseMessage *ResponseMessage `json:"ResponseMessage,omitempty" name:"ResponseMessage"`
+
+	// 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultType *string `json:"ResultType,omitempty" name:"ResultType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

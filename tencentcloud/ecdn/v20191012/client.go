@@ -357,6 +357,7 @@ func NewDescribeDomainsResponse() (response *DescribeDomainsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNQUERYSYSTEMERROR = "InternalError.EcdnQuerySystemError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -381,6 +382,7 @@ func (c *Client) DescribeDomains(request *DescribeDomainsRequest) (response *Des
 // 可能返回的错误码:
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNQUERYSYSTEMERROR = "InternalError.EcdnQuerySystemError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -437,6 +439,7 @@ func NewDescribeDomainsConfigResponse() (response *DescribeDomainsConfigResponse
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNQUERYSYSTEMERROR = "InternalError.EcdnQuerySystemError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INVALIDPARAMETER_ECDNCERTNOCERTINFO = "InvalidParameter.EcdnCertNoCertInfo"
@@ -463,6 +466,7 @@ func (c *Client) DescribeDomainsConfig(request *DescribeDomainsConfigRequest) (r
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_ECDNCONFIGERROR = "InternalError.EcdnConfigError"
 //  INTERNALERROR_ECDNDBERROR = "InternalError.EcdnDbError"
+//  INTERNALERROR_ECDNQUERYSYSTEMERROR = "InternalError.EcdnQuerySystemError"
 //  INTERNALERROR_ECDNSYSTEMERROR = "InternalError.EcdnSystemError"
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INVALIDPARAMETER_ECDNCERTNOCERTINFO = "InvalidParameter.EcdnCertNoCertInfo"

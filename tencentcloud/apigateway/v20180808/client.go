@@ -1208,7 +1208,7 @@ func NewCreateUpstreamResponse() (response *CreateUpstreamResponse) {
 }
 
 // CreateUpstream
-// 用于创建创建后端通道
+// 用于创建后端通道
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1236,7 +1236,7 @@ func (c *Client) CreateUpstream(request *CreateUpstreamRequest) (response *Creat
 }
 
 // CreateUpstream
-// 用于创建创建后端通道
+// 用于创建后端通道
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2914,7 +2914,7 @@ func NewDescribeExclusiveInstancesResponse() (response *DescribeExclusiveInstanc
 }
 
 // DescribeExclusiveInstances
-// 本接口（DescribeExclusiveInstances）用于查询独享实例列表信息。​
+// 本接口（DescribeExclusiveInstances）用于查询独享实例列表信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2934,7 +2934,7 @@ func (c *Client) DescribeExclusiveInstances(request *DescribeExclusiveInstancesR
 }
 
 // DescribeExclusiveInstances
-// 本接口（DescribeExclusiveInstances）用于查询独享实例列表信息。​
+// 本接口（DescribeExclusiveInstances）用于查询独享实例列表信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6200,6 +6200,7 @@ func NewUpdateApiKeyResponse() (response *UpdateApiKeyResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  UNSUPPORTEDOPERATION_UINNOTINWHITELIST = "UnsupportedOperation.UinNotInWhiteList"
 func (c *Client) UpdateApiKey(request *UpdateApiKeyRequest) (response *UpdateApiKeyResponse, err error) {
@@ -6211,6 +6212,7 @@ func (c *Client) UpdateApiKey(request *UpdateApiKeyRequest) (response *UpdateApi
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  UNSUPPORTEDOPERATION_UINNOTINWHITELIST = "UnsupportedOperation.UinNotInWhiteList"
 func (c *Client) UpdateApiKeyWithContext(ctx context.Context, request *UpdateApiKeyRequest) (response *UpdateApiKeyResponse, err error) {
@@ -6248,7 +6250,7 @@ func NewUpdateServiceResponse() (response *UpdateServiceResponse) {
 }
 
 // UpdateService
-// 本接口（UpdateService）用于从服务发布的环境中运行版本切换到特定版本。用户在使用 API 网关创建服务并发布服务到某个环境后，多因为开发过程会产生多个版本，此时可调用本接口。
+// 本接口（UpdateService）用于从服务发布的环境中运行版本切换到特定版本。用户在使用 API 网关创建服务并发布服务到某个环境后，多因开发过程会产生多个版本，此时可调用本接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
@@ -6263,7 +6265,7 @@ func (c *Client) UpdateService(request *UpdateServiceRequest) (response *UpdateS
 }
 
 // UpdateService
-// 本接口（UpdateService）用于从服务发布的环境中运行版本切换到特定版本。用户在使用 API 网关创建服务并发布服务到某个环境后，多因为开发过程会产生多个版本，此时可调用本接口。
+// 本接口（UpdateService）用于从服务发布的环境中运行版本切换到特定版本。用户在使用 API 网关创建服务并发布服务到某个环境后，多因开发过程会产生多个版本，此时可调用本接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"

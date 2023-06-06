@@ -365,6 +365,9 @@ const (
 	// 无法找到该实例。
 	RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 
+	// 无法找到指定的CVM实例。
+	RESOURCENOTFOUND_CVMINSTANCENOTFOUND = "ResourceNotFound.CvmInstanceNotFound"
+
 	// 无法找到硬件信息。
 	RESOURCENOTFOUND_HARDWAREINFONOTFOUND = "ResourceNotFound.HardwareInfoNotFound"
 

@@ -329,6 +329,12 @@ const (
 	// 赠送的腾讯云域名已过期。
 	INVALIDPARAMETER_CLOUDDOMAINISSTOP = "InvalidParameter.CloudDomainIsStop"
 
+	// 模版使用中。
+	INVALIDPARAMETER_CONFINUSED = "InvalidParameter.ConfInUsed"
+
+	// 配置没有找到。
+	INVALIDPARAMETER_CONFNOTFOUND = "InvalidParameter.ConfNotFound"
+
 	// 证书使用中。
 	INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
 
@@ -424,6 +430,12 @@ const (
 
 	// 其他错误。
 	INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
+
+	// 转码模板已存在。
+	INVALIDPARAMETER_PROCESSORALREADYEXIST = "InvalidParameter.ProcessorAlreadyExist"
+
+	// 规则没有找到。
+	INVALIDPARAMETER_RULENOTFOUND = "InvalidParameter.RuleNotFound"
 
 	// 同一会话输出流发生变化。
 	INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"

@@ -6762,6 +6762,13 @@ type DiskInfo struct {
 
 	// 磁盘大小（GB）
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 是否随实例删除。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+
+	// 快照ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
 
 type EipQuota struct {
@@ -9616,6 +9623,9 @@ type Module struct {
 
 	// 数据盘信息。
 	DataDisks []*DataDisk `json:"DataDisks,omitempty" name:"DataDisks"`
+
+	// 是否禁止外网ip
+	DisableWanIp *int64 `json:"DisableWanIp,omitempty" name:"DisableWanIp"`
 }
 
 type ModuleCounter struct {
@@ -9837,6 +9847,9 @@ type Node struct {
 
 	// 运营商数量。
 	ISPNum *int64 `json:"ISPNum,omitempty" name:"ISPNum"`
+
+	// 节点是否支持LB
+	LBSupported *bool `json:"LBSupported,omitempty" name:"LBSupported"`
 }
 
 type NodeInstanceNum struct {

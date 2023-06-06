@@ -580,6 +580,7 @@ func NewDescribeAvailableCvmInstanceTypesResponse() (response *DescribeAvailable
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLCAM = "InternalError.CallCam"
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -596,6 +597,7 @@ func (c *Client) DescribeAvailableCvmInstanceTypes(request *DescribeAvailableCvm
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLCAM = "InternalError.CallCam"
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

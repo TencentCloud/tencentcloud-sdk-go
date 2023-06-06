@@ -3073,7 +3073,9 @@ type TagInfo struct {
 }
 
 type TieringDetailInfo struct {
-
+	// 低频存储容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TieringSizeInBytes *int64 `json:"TieringSizeInBytes,omitempty" name:"TieringSizeInBytes"`
 }
 
 // Predefined struct for user

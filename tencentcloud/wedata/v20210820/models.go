@@ -79,6 +79,10 @@ type AlarmEventInfo struct {
 	// 阈值计算算子，1 : 大于 2 ：小于
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *int64 `json:"Operator,omitempty" name:"Operator"`
+
+	// 告警规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegularId *string `json:"RegularId,omitempty" name:"RegularId"`
 }
 
 type AlarmIndicatorInfo struct {
@@ -1308,14 +1312,19 @@ type CheckAlarmRegularNameExistRequestParams struct {
 	// 项目名称
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
 	// 规则名称
 	AlarmRegularName *string `json:"AlarmRegularName,omitempty" name:"AlarmRegularName"`
 
+	// 任务ID
+	//
+	// Deprecated: TaskId is deprecated.
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 	// 主键ID
 	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 任务类型:201.实时,202.离线
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 }
 
 type CheckAlarmRegularNameExistRequest struct {
@@ -1324,14 +1333,17 @@ type CheckAlarmRegularNameExistRequest struct {
 	// 项目名称
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
 	// 规则名称
 	AlarmRegularName *string `json:"AlarmRegularName,omitempty" name:"AlarmRegularName"`
 
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
 	// 主键ID
 	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 任务类型:201.实时,202.离线
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 }
 
 func (r *CheckAlarmRegularNameExistRequest) ToJsonString() string {
@@ -1347,9 +1359,10 @@ func (r *CheckAlarmRegularNameExistRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProjectId")
-	delete(f, "TaskId")
 	delete(f, "AlarmRegularName")
+	delete(f, "TaskId")
 	delete(f, "Id")
+	delete(f, "TaskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAlarmRegularNameExistRequest has unknown keys!", "")
 	}
@@ -3069,13 +3082,13 @@ func (r *CreateOfflineTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrUpdateResourceRequestParams struct {
-	// 项目ID
+	// 项目ID，必填项
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 文件名
+	// 文件名，必填项
 	Files []*string `json:"Files,omitempty" name:"Files"`
 
-	// 文件所属路径，资源管理根路径为 /datastudio/resouce
+	// 必填项，文件所属路径，资源管理根路径为 /datastudio/resource/项目ID/文件夹名
 	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
 
 	// cos存储桶名字
@@ -3087,20 +3100,20 @@ type CreateOrUpdateResourceRequestParams struct {
 	// 是否为新文件，新增为 true，更新为 false
 	NewFile *bool `json:"NewFile,omitempty" name:"NewFile"`
 
-	// 文件大小
+	// 必填项，文件大小，与 Files 字段对应
 	FilesSize []*string `json:"FilesSize,omitempty" name:"FilesSize"`
 }
 
 type CreateOrUpdateResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 项目ID
+	// 项目ID，必填项
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 文件名
+	// 文件名，必填项
 	Files []*string `json:"Files,omitempty" name:"Files"`
 
-	// 文件所属路径，资源管理根路径为 /datastudio/resouce
+	// 必填项，文件所属路径，资源管理根路径为 /datastudio/resource/项目ID/文件夹名
 	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
 
 	// cos存储桶名字
@@ -3112,7 +3125,7 @@ type CreateOrUpdateResourceRequest struct {
 	// 是否为新文件，新增为 true，更新为 false
 	NewFile *bool `json:"NewFile,omitempty" name:"NewFile"`
 
-	// 文件大小
+	// 必填项，文件大小，与 Files 字段对应
 	FilesSize []*string `json:"FilesSize,omitempty" name:"FilesSize"`
 }
 
@@ -6930,6 +6943,14 @@ type DescribeInstanceListResponseParams struct {
 	// 结果
 	Data *string `json:"Data,omitempty" name:"Data"`
 
+	// 实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*InstanceList `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -6993,6 +7014,10 @@ func (r *DescribeInstanceLogListRequest) FromJsonString(s string) error {
 type DescribeInstanceLogListResponseParams struct {
 	// 日志列表
 	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceLogList []*InstanceLogList `json:"InstanceLogList,omitempty" name:"InstanceLogList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7071,6 +7096,10 @@ func (r *DescribeInstanceLogRequest) FromJsonString(s string) error {
 type DescribeInstanceLogResponseParams struct {
 	// 返回结果
 	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceLogInfo *IntegrationInstanceLog `json:"InstanceLogInfo,omitempty" name:"InstanceLogInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7981,6 +8010,10 @@ type DescribeIntegrationTasksResponseParams struct {
 	// 任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskInfoSet []*IntegrationTaskInfo `json:"TaskInfoSet,omitempty" name:"TaskInfoSet"`
+
+	// 任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -11559,14 +11592,8 @@ func (r *DescribeTableScoreTrendResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskAlarmRegulationsRequestParams struct {
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
-
-	// 任务类型(201代表实时任务，202代表离线任务)
-	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 当前页
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
@@ -11579,19 +11606,19 @@ type DescribeTaskAlarmRegulationsRequestParams struct {
 
 	// 排序条件(RegularId)
 	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务类型(201代表实时任务，202代表离线任务)
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 }
 
 type DescribeTaskAlarmRegulationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
-
-	// 任务类型(201代表实时任务，202代表离线任务)
-	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 当前页
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
@@ -11604,6 +11631,12 @@ type DescribeTaskAlarmRegulationsRequest struct {
 
 	// 排序条件(RegularId)
 	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务类型(201代表实时任务，202代表离线任务)
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 }
 
 func (r *DescribeTaskAlarmRegulationsRequest) ToJsonString() string {
@@ -11618,13 +11651,13 @@ func (r *DescribeTaskAlarmRegulationsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TaskId")
 	delete(f, "ProjectId")
-	delete(f, "TaskType")
 	delete(f, "PageNumber")
 	delete(f, "PageSize")
 	delete(f, "Filters")
 	delete(f, "OrderFields")
+	delete(f, "TaskId")
+	delete(f, "TaskType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskAlarmRegulationsRequest has unknown keys!", "")
 	}
@@ -11633,7 +11666,7 @@ func (r *DescribeTaskAlarmRegulationsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskAlarmRegulationsResponseParams struct {
-	// 任务告警规则信息
+	// 告警规则信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAlarmInfos []*TaskAlarmInfo `json:"TaskAlarmInfos,omitempty" name:"TaskAlarmInfos"`
 
@@ -13769,6 +13802,56 @@ type InstanceInfo struct {
 	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
 }
 
+type InstanceList struct {
+	// 耗费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostTime *string `json:"CostTime,omitempty" name:"CostTime"`
+
+	// 数据时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 周期类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *string `json:"CycleType,omitempty" name:"CycleType"`
+
+	// 是否补录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DoFlag *int64 `json:"DoFlag,omitempty" name:"DoFlag"`
+
+	// 责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
+
+	// 日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastLog *string `json:"LastLog,omitempty" name:"LastLog"`
+
+	// 调度计划
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerDesc *string `json:"SchedulerDesc,omitempty" name:"SchedulerDesc"`
+
+	// 开始启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 尝试运行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TryLimit *int64 `json:"TryLimit,omitempty" name:"TryLimit"`
+}
+
 type InstanceLog struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -13798,6 +13881,52 @@ type InstanceLog struct {
 
 	// 运行耗时
 	CostTime *float64 `json:"CostTime,omitempty" name:"CostTime"`
+}
+
+type InstanceLogList struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tries *string `json:"Tries,omitempty" name:"Tries"`
+
+	// 最后更新事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdate *string `json:"LastUpdate,omitempty" name:"LastUpdate"`
+
+	// 节点ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerIp *string `json:"BrokerIp,omitempty" name:"BrokerIp"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *string `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 原始文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginFileName *string `json:"OriginFileName,omitempty" name:"OriginFileName"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例日志类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceLogType *string `json:"InstanceLogType,omitempty" name:"InstanceLogType"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 耗费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostTime *string `json:"CostTime,omitempty" name:"CostTime"`
 }
 
 type InstanceNodeInfo struct {
@@ -13893,6 +14022,12 @@ type InstanceReportWriteNode struct {
 
 	// 脏数据条数
 	TotalErrorRecords *uint64 `json:"TotalErrorRecords,omitempty" name:"TotalErrorRecords"`
+}
+
+type IntegrationInstanceLog struct {
+	// 任务日志信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogInfo *string `json:"LogInfo,omitempty" name:"LogInfo"`
 }
 
 type IntegrationNodeDetail struct {
@@ -14178,6 +14313,66 @@ type IntegrationTaskInfo struct {
 	// 任务版本是否已提交运维
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Submit *bool `json:"Submit,omitempty" name:"Submit"`
+
+	// MYSQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputDatasourceType *string `json:"InputDatasourceType,omitempty" name:"InputDatasourceType"`
+
+	// DLC
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputDatasourceType *string `json:"OutputDatasourceType,omitempty" name:"OutputDatasourceType"`
+
+	// 读取条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRecordsIn *int64 `json:"NumRecordsIn,omitempty" name:"NumRecordsIn"`
+
+	// 写入条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRecordsOut *int64 `json:"NumRecordsOut,omitempty" name:"NumRecordsOut"`
+
+	// 读取延迟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReaderDelay *float64 `json:"ReaderDelay,omitempty" name:"ReaderDelay"`
+
+	// 重启次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRestarts *int64 `json:"NumRestarts,omitempty" name:"NumRestarts"`
+
+	// 任务创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 任务最后一次运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastRunTime *string `json:"LastRunTime,omitempty" name:"LastRunTime"`
+
+	// 任务停止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StopTime *string `json:"StopTime,omitempty" name:"StopTime"`
+
+	// 作业是否已提交
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasVersion *bool `json:"HasVersion,omitempty" name:"HasVersion"`
+
+	// 任务是否被锁定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Locked *bool `json:"Locked,omitempty" name:"Locked"`
+
+	// 任务锁定人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Locker *string `json:"Locker,omitempty" name:"Locker"`
+
+	// 耗费资源量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningCu *float64 `json:"RunningCu,omitempty" name:"RunningCu"`
+
+	// 该任务关联的告警规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskAlarmRegularList []*string `json:"TaskAlarmRegularList,omitempty" name:"TaskAlarmRegularList"`
 }
 
 // Predefined struct for user
@@ -19448,6 +19643,38 @@ type TaskAlarmInfo struct {
 	// 企业微信群Hook地址，多个hook地址使用,隔开
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WeComHook *string `json:"WeComHook,omitempty" name:"WeComHook"`
+
+	// 最近操作时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 最近操作人Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUin *string `json:"OperatorUin,omitempty" name:"OperatorUin"`
+
+	// 关联任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskCount *int64 `json:"TaskCount,omitempty" name:"TaskCount"`
+
+	// 监控对象类型,1:所有任务,2:指定任务,3:指定责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorType *int64 `json:"MonitorType,omitempty" name:"MonitorType"`
+
+	// 监控对象列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorObjectIds []*string `json:"MonitorObjectIds,omitempty" name:"MonitorObjectIds"`
+
+	// 最近一次告警的实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestAlarmInstanceId *string `json:"LatestAlarmInstanceId,omitempty" name:"LatestAlarmInstanceId"`
+
+	// 最近一次告警时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestAlarmTime *string `json:"LatestAlarmTime,omitempty" name:"LatestAlarmTime"`
+
+	// 告警规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type TaskCanvasInfo struct {

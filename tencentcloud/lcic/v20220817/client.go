@@ -667,6 +667,7 @@ func NewBindDocumentToRoomResponse() (response *BindDocumentToRoomResponse) {
 // 绑定文档到房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
@@ -680,6 +681,7 @@ func (c *Client) BindDocumentToRoom(request *BindDocumentToRoomRequest) (respons
 // 绑定文档到房间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"

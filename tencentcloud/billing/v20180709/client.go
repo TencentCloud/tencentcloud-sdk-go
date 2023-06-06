@@ -281,6 +281,62 @@ func (c *Client) DescribeBillResourceSummaryWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeBillSummaryRequest() (request *DescribeBillSummaryRequest) {
+    request = &DescribeBillSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummary")
+    
+    
+    return
+}
+
+func NewDescribeBillSummaryResponse() (response *DescribeBillSummaryResponse) {
+    response = &DescribeBillSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBillSummary
+// 该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBillSummary(request *DescribeBillSummaryRequest) (response *DescribeBillSummaryResponse, err error) {
+    return c.DescribeBillSummaryWithContext(context.Background(), request)
+}
+
+// DescribeBillSummary
+// 该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBillSummaryWithContext(ctx context.Context, request *DescribeBillSummaryRequest) (response *DescribeBillSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillSummaryByPayModeRequest() (request *DescribeBillSummaryByPayModeRequest) {
     request = &DescribeBillSummaryByPayModeRequest{
         BaseRequest: &tchttp.BaseRequest{},

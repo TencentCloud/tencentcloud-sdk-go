@@ -1661,6 +1661,12 @@ type SendEmailRequestParams struct {
 	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
 
+	// 抄送人邮箱地址，最多支持抄送20人。
+	Cc []*string `json:"Cc,omitempty" name:"Cc"`
+
+	// 密送人邮箱地址，最多支持抄送20人。
+	Bcc []*string `json:"Bcc,omitempty" name:"Bcc"`
+
 	// 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
 	Template *Template `json:"Template,omitempty" name:"Template"`
 
@@ -1694,6 +1700,12 @@ type SendEmailRequest struct {
 	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
 
+	// 抄送人邮箱地址，最多支持抄送20人。
+	Cc []*string `json:"Cc,omitempty" name:"Cc"`
+
+	// 密送人邮箱地址，最多支持抄送20人。
+	Bcc []*string `json:"Bcc,omitempty" name:"Bcc"`
+
 	// 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
 	Template *Template `json:"Template,omitempty" name:"Template"`
 
@@ -1726,6 +1738,8 @@ func (r *SendEmailRequest) FromJsonString(s string) error {
 	delete(f, "Destination")
 	delete(f, "Subject")
 	delete(f, "ReplyToAddresses")
+	delete(f, "Cc")
+	delete(f, "Bcc")
 	delete(f, "Template")
 	delete(f, "Simple")
 	delete(f, "Attachments")

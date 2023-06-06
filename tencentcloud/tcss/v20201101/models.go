@@ -491,7 +491,7 @@ type AccessControlRuleInfo struct {
 	// 开关,true:开启，false:禁用
 	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
 
-	// 生效惊现id，空数组代表全部镜像
+	// 生效镜像id，空数组代表全部镜像
 	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
 
 	// 用户策略的子策略数组

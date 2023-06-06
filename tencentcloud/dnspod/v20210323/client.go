@@ -2977,6 +2977,7 @@ func NewDescribeSnapshotConfigResponse() (response *DescribeSnapshotConfigRespon
 // 查询解析快照配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
@@ -2992,6 +2993,7 @@ func (c *Client) DescribeSnapshotConfig(request *DescribeSnapshotConfigRequest) 
 // 查询解析快照配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
@@ -3223,6 +3225,7 @@ func NewDescribeSubdomainAnalyticsResponse() (response *DescribeSubdomainAnalyti
 //  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
@@ -3240,6 +3243,7 @@ func (c *Client) DescribeSubdomainAnalytics(request *DescribeSubdomainAnalyticsR
 //  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
 //  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"

@@ -5821,6 +5821,12 @@ type DescribeNamespaceBundlesOptRequestParams struct {
 
 	// 查询偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤的 bundle
+	Bundle *string `json:"Bundle,omitempty" name:"Bundle"`
+
+	// bundle 所属的 broker ip 地址，支持模糊查询
+	OwnerBroker *string `json:"OwnerBroker,omitempty" name:"OwnerBroker"`
 }
 
 type DescribeNamespaceBundlesOptRequest struct {
@@ -5843,6 +5849,12 @@ type DescribeNamespaceBundlesOptRequest struct {
 
 	// 查询偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤的 bundle
+	Bundle *string `json:"Bundle,omitempty" name:"Bundle"`
+
+	// bundle 所属的 broker ip 地址，支持模糊查询
+	OwnerBroker *string `json:"OwnerBroker,omitempty" name:"OwnerBroker"`
 }
 
 func (r *DescribeNamespaceBundlesOptRequest) ToJsonString() string {
@@ -5863,6 +5875,8 @@ func (r *DescribeNamespaceBundlesOptRequest) FromJsonString(s string) error {
 	delete(f, "NeedMetrics")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Bundle")
+	delete(f, "OwnerBroker")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNamespaceBundlesOptRequest has unknown keys!", "")
 	}

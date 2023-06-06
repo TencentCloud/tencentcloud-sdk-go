@@ -23,6 +23,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 调用CAM API返回错误。
+	INTERNALERROR_CALLCAM = "InternalError.CallCam"
+
 	// 调用Cpm API返回错误。
 	INTERNALERROR_CALLCPMAPI = "InternalError.CallCpmAPI"
 

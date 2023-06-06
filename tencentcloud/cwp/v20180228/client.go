@@ -14319,13 +14319,7 @@ func NewModifyLogStorageConfigResponse() (response *ModifyLogStorageConfigRespon
 // 修改日志存储配置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLogStorageConfig(request *ModifyLogStorageConfigRequest) (response *ModifyLogStorageConfigResponse, err error) {
     return c.ModifyLogStorageConfigWithContext(context.Background(), request)
 }
@@ -14334,13 +14328,7 @@ func (c *Client) ModifyLogStorageConfig(request *ModifyLogStorageConfigRequest) 
 // 修改日志存储配置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyLogStorageConfigWithContext(ctx context.Context, request *ModifyLogStorageConfigRequest) (response *ModifyLogStorageConfigResponse, err error) {
     if request == nil {
         request = NewModifyLogStorageConfigRequest()
