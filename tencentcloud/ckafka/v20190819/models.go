@@ -1898,13 +1898,13 @@ type CreateInstancePreRequestParams struct {
 	// 实例类型: [标准版实例]填写 standard(默认), [专业版实例]填写 profession
 	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
 
-	// 磁盘大小,专业版不填写默认最小磁盘,填写后根据磁盘带宽分区数弹性计算
+	// 磁盘大小，专业版不填写默认最小磁盘，如果跟控制台规格配比不相符，则无法创建成功
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-	// 带宽,专业版不填写默认最小带宽,填写后根据磁盘带宽分区数弹性计算
+	// 带宽，专业版不填写默认最小带宽，如果跟控制台规格配比不相符，则无法创建成功
 	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
 
-	// 分区大小,专业版不填写默认最小分区数,填写后根据磁盘带宽分区数弹性计算
+	// 分区大小，专业版不填写默认最小分区数，如果跟控制台规格配比不相符，则无法创建成功
 	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
 
 	// 标签
@@ -1957,13 +1957,13 @@ type CreateInstancePreRequest struct {
 	// 实例类型: [标准版实例]填写 standard(默认), [专业版实例]填写 profession
 	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
 
-	// 磁盘大小,专业版不填写默认最小磁盘,填写后根据磁盘带宽分区数弹性计算
+	// 磁盘大小，专业版不填写默认最小磁盘，如果跟控制台规格配比不相符，则无法创建成功
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-	// 带宽,专业版不填写默认最小带宽,填写后根据磁盘带宽分区数弹性计算
+	// 带宽，专业版不填写默认最小带宽，如果跟控制台规格配比不相符，则无法创建成功
 	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
 
-	// 分区大小,专业版不填写默认最小分区数,填写后根据磁盘带宽分区数弹性计算
+	// 分区大小，专业版不填写默认最小分区数，如果跟控制台规格配比不相符，则无法创建成功
 	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
 
 	// 标签
@@ -5430,6 +5430,9 @@ func (r *DescribeRegionResponse) FromJsonString(s string) error {
 type DescribeRouteRequestParams struct {
 	// 实例唯一id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 路由id
+	RouteId *int64 `json:"RouteId,omitempty" name:"RouteId"`
 }
 
 type DescribeRouteRequest struct {
@@ -5437,6 +5440,9 @@ type DescribeRouteRequest struct {
 	
 	// 实例唯一id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 路由id
+	RouteId *int64 `json:"RouteId,omitempty" name:"RouteId"`
 }
 
 func (r *DescribeRouteRequest) ToJsonString() string {
@@ -5452,6 +5458,7 @@ func (r *DescribeRouteRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "RouteId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRouteRequest has unknown keys!", "")
 	}

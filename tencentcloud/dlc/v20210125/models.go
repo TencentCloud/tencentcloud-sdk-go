@@ -7566,6 +7566,102 @@ func (r *ModifyGovernEventRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySparkAppBatchRequestParams struct {
+	// 需要批量修改的Spark作业任务ID列表
+	SparkAppId []*string `json:"SparkAppId,omitempty" name:"SparkAppId"`
+
+	// 引擎ID
+	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
+
+	// driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	AppDriverSize *string `json:"AppDriverSize,omitempty" name:"AppDriverSize"`
+
+	// executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	AppExecutorSize *string `json:"AppExecutorSize,omitempty" name:"AppExecutorSize"`
+
+	// 指定executor数量，最小值为1，最大值小于集群规格
+	AppExecutorNums *uint64 `json:"AppExecutorNums,omitempty" name:"AppExecutorNums"`
+
+	// 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+	AppExecutorMaxNumbers *uint64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
+
+	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
+}
+
+type ModifySparkAppBatchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要批量修改的Spark作业任务ID列表
+	SparkAppId []*string `json:"SparkAppId,omitempty" name:"SparkAppId"`
+
+	// 引擎ID
+	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
+
+	// driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	AppDriverSize *string `json:"AppDriverSize,omitempty" name:"AppDriverSize"`
+
+	// executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+	AppExecutorSize *string `json:"AppExecutorSize,omitempty" name:"AppExecutorSize"`
+
+	// 指定executor数量，最小值为1，最大值小于集群规格
+	AppExecutorNums *uint64 `json:"AppExecutorNums,omitempty" name:"AppExecutorNums"`
+
+	// 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+	AppExecutorMaxNumbers *uint64 `json:"AppExecutorMaxNumbers,omitempty" name:"AppExecutorMaxNumbers"`
+
+	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
+}
+
+func (r *ModifySparkAppBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySparkAppBatchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SparkAppId")
+	delete(f, "DataEngine")
+	delete(f, "AppDriverSize")
+	delete(f, "AppExecutorSize")
+	delete(f, "AppExecutorNums")
+	delete(f, "AppExecutorMaxNumbers")
+	delete(f, "IsInherit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySparkAppBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySparkAppBatchResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifySparkAppBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySparkAppBatchResponseParams `json:"Response"`
+}
+
+func (r *ModifySparkAppBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySparkAppBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySparkAppRequestParams struct {
 	// spark应用名
 	AppName *string `json:"AppName,omitempty" name:"AppName"`

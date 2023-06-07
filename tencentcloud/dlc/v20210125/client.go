@@ -4707,6 +4707,62 @@ func (c *Client) ModifySparkAppWithContext(ctx context.Context, request *ModifyS
     return
 }
 
+func NewModifySparkAppBatchRequest() (request *ModifySparkAppBatchRequest) {
+    request = &ModifySparkAppBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "ModifySparkAppBatch")
+    
+    
+    return
+}
+
+func NewModifySparkAppBatchResponse() (response *ModifySparkAppBatchResponse) {
+    response = &ModifySparkAppBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySparkAppBatch
+// 本接口（ModifySparkAppBatch）用于批量修改Spark作业参数配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySparkAppBatch(request *ModifySparkAppBatchRequest) (response *ModifySparkAppBatchResponse, err error) {
+    return c.ModifySparkAppBatchWithContext(context.Background(), request)
+}
+
+// ModifySparkAppBatch
+// 本接口（ModifySparkAppBatch）用于批量修改Spark作业参数配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifySparkAppBatchWithContext(ctx context.Context, request *ModifySparkAppBatchRequest) (response *ModifySparkAppBatchResponse, err error) {
+    if request == nil {
+        request = NewModifySparkAppBatchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySparkAppBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySparkAppBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserRequest() (request *ModifyUserRequest) {
     request = &ModifyUserRequest{
         BaseRequest: &tchttp.BaseRequest{},

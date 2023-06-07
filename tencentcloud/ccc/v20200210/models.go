@@ -3301,7 +3301,7 @@ type PackageBuyInfo struct {
 	// 购买时间戳
 	BuyTime *int64 `json:"BuyTime,omitempty" name:"BuyTime"`
 
-	// 截至时间戳
+	// 截止时间戳
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -3318,7 +3318,7 @@ type PhoneNumBuyInfo struct {
 	// 购买时间戳
 	BuyTime *int64 `json:"BuyTime,omitempty" name:"BuyTime"`
 
-	// 截至时间戳
+	// 截止时间戳
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 号码状态，1正常|2欠费停用|4管理员停用|5违规停用

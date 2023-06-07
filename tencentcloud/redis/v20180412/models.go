@@ -7683,7 +7683,7 @@ type RedisNodeInfo struct {
 	// 节点类型。<ul><li>0：为主节点。</li><li>1：为副本节点。</li></ul>
 	NodeType *int64 `json:"NodeType,omitempty" name:"NodeType"`
 
-	// 主节点或者副本节点的 ID。<ul><li>该参数用于创建 Redis 实例接口[CreateInstances](https://cloud.tencent.com/document/product/239/20026) 并不需要设置，而用于变更实例配置的接口 [UpgradeInstance](https://cloud.tencent.com/document/product/239/20013) 则需要设置。</li><li>该参数可使用接口 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 获取Integer类型的节点 ID。</li></ul>
+	// 主节点或者副本节点的 ID。<ul><li>该参数用于创建 Redis 实例接口[CreateInstances](https://cloud.tencent.com/document/product/239/20026) 并不需要设置，而用于变更实例配置的接口 [UpgradeInstance]删除副本(https://cloud.tencent.com/document/product/239/20013) 时才需要设置。</li><li>该参数可使用接口 [DescribeInstances](https://cloud.tencent.com/document/product/239/20018) 获取Integer类型的节点 ID。</li></ul>
 	NodeId *int64 `json:"NodeId,omitempty" name:"NodeId"`
 
 	// 主节点或者副本节点的可用区 ID。

@@ -2080,6 +2080,45 @@ type ContainerGroupDetail struct {
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
 }
 
+type ContainerGroupOther struct {
+	// 实例总数
+	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 已启动实例总数
+	CurrentNum *int64 `json:"CurrentNum,omitempty" name:"CurrentNum"`
+
+	// 负载均衡ip
+	LbIp *string `json:"LbIp,omitempty" name:"LbIp"`
+
+	// Service ip
+	ClusterIp *string `json:"ClusterIp,omitempty" name:"ClusterIp"`
+
+	// 服务状态，请参考后面的的状态定义
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 服务状态，请参考后面的的状态定义
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 环境变量
+	Envs []*Env `json:"Envs,omitempty" name:"Envs"`
+
+	// Service NodePort
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodePort *uint64 `json:"NodePort,omitempty" name:"NodePort"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 健康检查相关字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckSettings []*HealthCheckSetting `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
+
+	// 服务配置信息是否匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNotEqualServiceConfig *bool `json:"IsNotEqualServiceConfig,omitempty" name:"IsNotEqualServiceConfig"`
+}
+
 // Predefined struct for user
 type ContinueRunFailedTaskBatchRequestParams struct {
 	// 批次ID。
@@ -8916,6 +8955,63 @@ func (r *DescribeContainerEventsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeContainerEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContainerGroupAttributeRequestParams struct {
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+type DescribeContainerGroupAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 部署组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
+func (r *DescribeContainerGroupAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContainerGroupAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContainerGroupAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContainerGroupAttributeResponseParams struct {
+	// 部署组列表-其它字段
+	Result *ContainerGroupOther `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeContainerGroupAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContainerGroupAttributeResponseParams `json:"Response"`
+}
+
+func (r *DescribeContainerGroupAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContainerGroupAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

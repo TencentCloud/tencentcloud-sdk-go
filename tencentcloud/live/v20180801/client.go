@@ -773,6 +773,8 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDCALLBACKURL = "InvalidParameter.InvalidCallbackUrl"
+//  INVALIDPARAMETER_INVALIDMIXINPUTPARAM = "InvalidParameter.InvalidMixInputParam"
+//  INVALIDPARAMETER_INVALIDOUTPUTPARAM = "InvalidParameter.InvalidOutputParam"
 //  INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
 //  INVALIDPARAMETER_INVALIDTASKTIME = "InvalidParameter.InvalidTaskTime"
 //  INVALIDPARAMETER_INVALIDTOURL = "InvalidParameter.InvalidToUrl"
@@ -812,6 +814,8 @@ func (c *Client) CreateLivePullStreamTask(request *CreateLivePullStreamTaskReque
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDCALLBACKURL = "InvalidParameter.InvalidCallbackUrl"
+//  INVALIDPARAMETER_INVALIDMIXINPUTPARAM = "InvalidParameter.InvalidMixInputParam"
+//  INVALIDPARAMETER_INVALIDOUTPUTPARAM = "InvalidParameter.InvalidOutputParam"
 //  INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
 //  INVALIDPARAMETER_INVALIDTASKTIME = "InvalidParameter.InvalidTaskTime"
 //  INVALIDPARAMETER_INVALIDTOURL = "InvalidParameter.InvalidToUrl"
@@ -7692,8 +7696,6 @@ func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoLi
 // DescribeStreamPlayInfoList
 // 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据，数据延迟4分钟左右。
 //
-// 注意：按AppName查询请先联系工单申请，开通后配置生效预计需要5个工作日左右，具体时间以最终回复为准。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -7710,8 +7712,6 @@ func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListR
 
 // DescribeStreamPlayInfoList
 // 查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据，数据延迟4分钟左右。
-//
-// 注意：按AppName查询请先联系工单申请，开通后配置生效预计需要5个工作日左右，具体时间以最终回复为准。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

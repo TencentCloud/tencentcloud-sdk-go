@@ -395,6 +395,12 @@ const (
 	// 图层参数错误。
 	INVALIDPARAMETER_INVALIDLAYERPARAM = "InvalidParameter.InvalidLayerParam"
 
+	// 混流输入参数无效。
+	INVALIDPARAMETER_INVALIDMIXINPUTPARAM = "InvalidParameter.InvalidMixInputParam"
+
+	// 输出流参数无效。
+	INVALIDPARAMETER_INVALIDOUTPUTPARAM = "InvalidParameter.InvalidOutputParam"
+
 	// 输出流 ID 被占用。
 	INVALIDPARAMETER_INVALIDOUTPUTSTREAMID = "InvalidParameter.InvalidOutputStreamID"
 

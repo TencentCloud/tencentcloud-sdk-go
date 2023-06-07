@@ -2498,7 +2498,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// 购买按量计费实例该字段无意义。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 实例名称。一次购买多个实例命名会用后缀数字区分，例instnaceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
+	// 实例名称。一次购买多个实例命名会用后缀数字区分，例instanceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 实例标签信息。
@@ -2516,7 +2516,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// 参数模板id。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 
-	// 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
+	// 告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。
 	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList"`
 
 	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
@@ -2613,7 +2613,7 @@ type CreateDBInstanceHourRequest struct {
 	// 购买按量计费实例该字段无意义。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 实例名称。一次购买多个实例命名会用后缀数字区分，例instnaceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
+	// 实例名称。一次购买多个实例命名会用后缀数字区分，例instanceName=db，goodsNum=3，实例命名分别为db1，db2，db3。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 实例标签信息。
@@ -2631,7 +2631,7 @@ type CreateDBInstanceHourRequest struct {
 	// 参数模板id。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 
-	// 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
+	// 告警策略id数组。腾讯云可观测平台DescribeAlarmPolicy接口返回的OriginId。
 	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList"`
 
 	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
@@ -7782,7 +7782,7 @@ func (r *DescribeRemoteBackupConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRemoteBackupConfigResponseParams struct {
-	// 异地备份保留天时间，单位为天
+	// 异地备份保留时间，单位为天
 	ExpireDays *int64 `json:"ExpireDays,omitempty" name:"ExpireDays"`
 
 	// 异地数据备份开关，off - 关闭异地备份，on-开启异地备份
@@ -9054,6 +9054,9 @@ type Inbound struct {
 
 	// 规则限定的方向，进站规则为 INPUT
 	Dir *string `json:"Dir,omitempty" name:"Dir"`
+
+	// 地址模块
+	AddressModule *string `json:"AddressModule,omitempty" name:"AddressModule"`
 
 	// 规则描述
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
@@ -12301,6 +12304,9 @@ type Outbound struct {
 	// 规则限定的方向，进站规则为 OUTPUT
 	Dir *string `json:"Dir,omitempty" name:"Dir"`
 
+	// 地址模块
+	AddressModule *string `json:"AddressModule,omitempty" name:"AddressModule"`
+
 	// 规则描述
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
@@ -13419,7 +13425,7 @@ type RuleFilters struct {
 	// 审计规则过滤条件的匹配类型。可选值：INC – 包含；EXC – 不包含；EQS – 等于；NEQ – 不等于；REG-正则；GT-大于；LT-小于。
 	Compare *string `json:"Compare,omitempty" name:"Compare"`
 
-	// 审计规则过滤条件的匹配值。sqlType条件的Value需在一下选择"alter", "changeuser", "create", "delete", "drop", "execute", "insert", "login", "logout", "other", "replace", "select", "set", "update"。
+	// 审计规则过滤条件的匹配值。sqlType条件的Value需在以下选择"alter", "changeuser", "create", "delete", "drop", "execute", "insert", "login", "logout", "other", "replace", "select", "set", "update"。
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
@@ -14298,7 +14304,7 @@ type UpgradeDBInstanceEngineVersionRequestParams struct {
 	// 主实例数据库引擎版本，支持值包括：5.6 和 5.7。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
+	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
 	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
 
 	// 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。
@@ -14317,7 +14323,7 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	// 主实例数据库引擎版本，支持值包括：5.6 和 5.7。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
+	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
 	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
 
 	// 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。
@@ -14398,7 +14404,7 @@ type UpgradeDBInstanceRequestParams struct {
 	// 主实例数据库引擎版本，支持值包括：5.5、5.6 和 5.7。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
+	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
 	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
 
 	// 备库 2 的可用区信息，默认为空，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。
@@ -14453,7 +14459,7 @@ type UpgradeDBInstanceRequest struct {
 	// 主实例数据库引擎版本，支持值包括：5.5、5.6 和 5.7。
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级中过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
+	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
 	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
 
 	// 备库 2 的可用区信息，默认为空，升级主实例时可指定该参数，升级只读实例或者灾备实例时指定该参数无意义。

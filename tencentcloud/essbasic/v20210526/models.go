@@ -43,29 +43,29 @@ type ApproverOption struct {
 }
 
 type ApproverRestriction struct {
-	// 指定签署人名字
+	// 指定签署人姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 指定签署人手机号
+	// 指定签署人手机号，11位数字
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 指定签署人证件类型
+	// 指定签署人证件类型，ID_CARD-身份证，HONGKONG_AND_MACAO-港澳居民来往内地通行证，HONGKONG_MACAO_AND_TAIWAN-港澳台居民居住证
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
 
-	// 指定签署人证件号码
+	// 指定签署人证件号码，其中字母大写
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 }
 
 type AuthFailMessage struct {
-	// 合作企业Id
+	// 第三方应用平台的子客企业OpenId
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
-	// 出错信息
+	// 错误信息
 	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
 type AuthorizedUser struct {
-	// 用户openid
+	// 第三方应用平台的用户openid
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
@@ -79,19 +79,19 @@ type BaseFlowInfo struct {
 	// 合同流程描述信息
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
-	// 合同流程截止时间，unix时间戳
+	// 合同流程截止时间，unix时间戳，单位秒
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 是否顺序签署(true:无序签,false:顺序签)
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
-	// 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+	// 是否打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
 	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
 
 	// 填写控件内容
 	FormFields []*FormField `json:"FormFields,omitempty" name:"FormFields"`
 
-	// 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批
+	// 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批。使用ChannelCreateFlowSignReview接口提交审批结果，才能继续完成签署
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
 	// 用户流程自定义数据参数
@@ -2987,7 +2987,7 @@ func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
 }
 
 type CreateFlowOption struct {
-	// 是否允许修改合同信息
+	// 是否允许修改合同信息，true-是，false-否
 	CanEditFlow *bool `json:"CanEditFlow,omitempty" name:"CanEditFlow"`
 }
 
@@ -3908,7 +3908,7 @@ type ExtentServiceAuthInfo struct {
 	//   OVERSEA_SIGN          企业与港澳台居民*签署合同
 	//   MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
 	//   PAGING_SEAL           骑缝章
-	//   DOWNLOAD_FLOW         授权渠道下载合同 
+	//   DOWNLOAD_FLOW         授权平台企业下载合同 
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 扩展服务名称 
@@ -3919,11 +3919,11 @@ type ExtentServiceAuthInfo struct {
 	// DISABLE 关闭
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 最近操作人openid（经办人openid）
+	// 最近操作人第三方应用平台的用户openid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorOpenId *string `json:"OperatorOpenId,omitempty" name:"OperatorOpenId"`
 
-	// 最近操作时间
+	// 最近操作时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateOn *int64 `json:"OperateOn,omitempty" name:"OperateOn"`
 }
@@ -3992,7 +3992,7 @@ type FlowApproverDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveMessage *string `json:"ApproveMessage,omitempty" name:"ApproveMessage"`
 
-	// 签署人签署时间
+	// 签署人签署时间戳，单位秒
 	ApproveTime *int64 `json:"ApproveTime,omitempty" name:"ApproveTime"`
 
 	// 参与者类型 (ORGANIZATION企业/PERSON个人)
@@ -4040,10 +4040,12 @@ type FlowApproverInfo struct {
 	// 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
-	// 签署截止时间，默认一年
+	// 签署截止时间戳，默认一年
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 签署完回调url，最大长度1000个字符
+	//
+	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 使用PDF文件直接发起合同时，签署人指定的签署控件
@@ -4056,7 +4058,7 @@ type FlowApproverInfo struct {
 	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
 	PreReadTime *int64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
 
-	// 签署完前端跳转的url，暂未使用
+	// 签署完前端跳转的url，此字段的用法场景请联系客户经理确认
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
 	// 签署人个性化能力值
@@ -4117,10 +4119,10 @@ type FlowDetailInfo struct {
 	// 合同(流程)的信息
 	FlowMessage *string `json:"FlowMessage,omitempty" name:"FlowMessage"`
 
-	// 合同(流程)的创建时间戳
+	// 合同(流程)的创建时间戳，单位秒
 	CreateOn *int64 `json:"CreateOn,omitempty" name:"CreateOn"`
 
-	// 合同(流程)的签署截止时间戳
+	// 合同(流程)的签署截止时间戳，单位秒
 	DeadLine *int64 `json:"DeadLine,omitempty" name:"DeadLine"`
 
 	// 用户自定义数据
@@ -4235,7 +4237,7 @@ type FormField struct {
 	// CHECK_BOX - true/false
 	// FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
 	// SELECTOR - 选项值
-	// DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
+	// DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo
 	ComponentValue *string `json:"ComponentValue,omitempty" name:"ComponentValue"`
 
 	// 表单域或控件的ID，跟ComponentName二选一，不能全为空；
@@ -4419,10 +4421,10 @@ type OccupiedSeal struct {
 	// 电子印章名称
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
 
-	// 电子印章授权时间戳
+	// 电子印章授权时间戳，单位秒
 	CreateOn *int64 `json:"CreateOn,omitempty" name:"CreateOn"`
 
-	// 电子印章授权人
+	// 电子印章授权人，电子签的UserId
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
 	// 电子印章策略Id
@@ -4438,7 +4440,7 @@ type OccupiedSeal struct {
 	// 印章图片url，5分钟内有效
 	Url *string `json:"Url,omitempty" name:"Url"`
 
-	// 印章类型
+	// 印章类型，OFFICIAL-企业公章，CONTRACT-合同专用章，LEGAL_PERSON_SEAL-法人章
 	SealType *string `json:"SealType,omitempty" name:"SealType"`
 
 	// 用印申请是否为永久授权
@@ -4565,17 +4567,21 @@ type OrganizationInfo struct {
 	// 用户在渠道的机构编号
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
-	// 用户真实的IP
-	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
-
-	// 机构的代理IP
-	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
-
 	// 机构在平台的编号
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
 
 	// 用户渠道
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 用户真实的IP
+	//
+	// Deprecated: ClientIp is deprecated.
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 机构的代理IP
+	//
+	// Deprecated: ProxyIp is deprecated.
+	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
 }
 
 type PdfVerifyResult struct {
@@ -4588,7 +4594,7 @@ type PdfVerifyResult struct {
 	// 签署人名称
 	SignerName *string `json:"SignerName,omitempty" name:"SignerName"`
 
-	// 签署时间
+	// 签署时间戳，单位秒
 	SignTime *int64 `json:"SignTime,omitempty" name:"SignTime"`
 
 	// 签名算法
@@ -4597,28 +4603,28 @@ type PdfVerifyResult struct {
 	// 签名证书序列号
 	CertSn *string `json:"CertSn,omitempty" name:"CertSn"`
 
-	// 证书起始时间
+	// 证书起始时间戳，单位秒
 	CertNotBefore *int64 `json:"CertNotBefore,omitempty" name:"CertNotBefore"`
 
-	// 证书过期时间
+	// 证书过期时间戳，单位秒
 	CertNotAfter *int64 `json:"CertNotAfter,omitempty" name:"CertNotAfter"`
 
 	// 签名类型
 	SignType *int64 `json:"SignType,omitempty" name:"SignType"`
 
-	// 签名域横坐标
+	// 签名域横坐标，单位px
 	ComponentPosX *float64 `json:"ComponentPosX,omitempty" name:"ComponentPosX"`
 
-	// 签名域纵坐标
+	// 签名域纵坐标，单位px
 	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
 
-	// 签名域宽度
+	// 签名域宽度，单位px
 	ComponentWidth *float64 `json:"ComponentWidth,omitempty" name:"ComponentWidth"`
 
-	// 签名域高度
+	// 签名域高度，单位px
 	ComponentHeight *float64 `json:"ComponentHeight,omitempty" name:"ComponentHeight"`
 
-	// 签名域所在页码
+	// 签名域所在页码，1～N
 	ComponentPage *int64 `json:"ComponentPage,omitempty" name:"ComponentPage"`
 }
 
@@ -4727,7 +4733,7 @@ type ProxyOrganizationOperator struct {
 }
 
 type Recipient struct {
-	// 签署人唯一标识
+	// 签署人唯一标识，在通过模板发起合同的时候对应签署方Id
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
 	// 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
@@ -4736,13 +4742,13 @@ type Recipient struct {
 	// 描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 签署方备注信息
+	// 签署方备注角色名
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
-	// 是否需要校验
+	// 是否需要校验，true-是，false-否
 	RequireValidation *bool `json:"RequireValidation,omitempty" name:"RequireValidation"`
 
-	// 是否必须填写
+	// 是否必须填写，true-是，false-否
 	RequireSign *bool `json:"RequireSign,omitempty" name:"RequireSign"`
 
 	// 签署类型
@@ -4764,6 +4770,7 @@ type ReleasedApprover struct {
 
 	// 签署人类型，目前仅支持
 	// ORGANIZATION-企业
+	// ENTERPRISESERVER-企业静默签
 	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 签署人姓名，最大长度50个字符
@@ -4807,13 +4814,13 @@ type RelieveInfo struct {
 }
 
 type RemindFlowRecords struct {
-	// 是否能够催办
+	// 是否能够催办，true-是，false-否
 	CanRemind *bool `json:"CanRemind,omitempty" name:"CanRemind"`
 
 	// 合同id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 催办详情
+	// 催办详情信息
 	RemindMessage *string `json:"RemindMessage,omitempty" name:"RemindMessage"`
 }
 
@@ -4858,7 +4865,7 @@ type SignUrlInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
 
-	// 合同过期时间
+	// 合同过期时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
@@ -4872,6 +4879,8 @@ type SignUrlInfo struct {
 
 	// 自定义用户编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: CustomUserId is deprecated.
 	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
 
 	// 用户姓名
@@ -4910,7 +4919,7 @@ type SignUrlInfo struct {
 }
 
 type Staff struct {
-	// 员工在电子签平台的id
+	// 员工在电子签平台的用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 显示的员工名
@@ -4923,7 +4932,7 @@ type Staff struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitempty" name:"Email"`
 
-	// 员工在第三方平台id
+	// 员工在第三方应用平台的用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
@@ -4938,10 +4947,10 @@ type Staff struct {
 	// 员工是否实名
 	Verified *bool `json:"Verified,omitempty" name:"Verified"`
 
-	// 员工创建时间戳
+	// 员工创建时间戳，单位秒
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
-	// 员工实名时间戳
+	// 员工实名时间戳，单位秒
 	VerifiedOn *int64 `json:"VerifiedOn,omitempty" name:"VerifiedOn"`
 
 	// 员工是否离职：0-未离职，1-离职
@@ -4959,7 +4968,7 @@ type StaffRole struct {
 }
 
 type SyncFailReason struct {
-	// 经办人Id
+	// 对应Agent-ProxyOperator-OpenId。第三方应用平台自定义，对子客企业员的唯一标识。一个OpenId在一个子客企业内唯一对应一个真实员工，不可在其他子客企业内重复使用。（例如，可以使用经办人企业名+员工身份证的hash值，需要第三方应用平台保存），最大64位字符串
 	Id *string `json:"Id,omitempty" name:"Id"`
 
 	// 失败原因
@@ -5164,39 +5173,41 @@ type TemplateInfo struct {
 	// 模板描述信息
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 模板控件信息结构
+	// 模板的填充控件信息结构
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
 	// 模板中的流程参与人信息
 	Recipients []*Recipient `json:"Recipients,omitempty" name:"Recipients"`
 
-	// 签署区模板信息结构
+	// 模板中的签署控件信息结构
 	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
 	// 模板类型：1-静默签；3-普通模板
 	TemplateType *int64 `json:"TemplateType,omitempty" name:"TemplateType"`
 
 	// 是否是发起人 ,已弃用
+	//
+	// Deprecated: IsPromoter is deprecated.
 	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
 
-	// 模板的创建者信息
+	// 模板的创建者信息，电子签系统用户ID
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
-	// 模板创建的时间戳（精确到秒）
+	// 模板创建的时间戳，单位秒
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
-	// 模板的H5预览链接,可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+	// 模板的H5预览链接,可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。请求参数WithPreviewUrl=true时返回，有效期5分钟。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 
-	// 第三方应用集成-模板PDF文件链接
+	// 第三方应用集成-模板PDF文件链接。请求参数WithPdfUrl=true时返回（此功能开放需要联系客户经理），有效期5分钟。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PdfUrl *string `json:"PdfUrl,omitempty" name:"PdfUrl"`
 
-	// 关联的平台企业模板ID
+	// 关联的第三方应用平台企业模板ID
 	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
 
-	// 关联的平台企业模板名称
+	// 关联的三方应用平台平台企业模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelTemplateName *string `json:"ChannelTemplateName,omitempty" name:"ChannelTemplateName"`
 
@@ -5338,14 +5349,22 @@ type UserInfo struct {
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// 内部参数，暂未开放使用
+	//
+	// Deprecated: Channel is deprecated.
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
 
 	// 内部参数，暂未开放使用
+	//
+	// Deprecated: CustomUserId is deprecated.
 	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
 
 	// 内部参数，暂未开放使用
+	//
+	// Deprecated: ClientIp is deprecated.
 	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
 
 	// 内部参数，暂未开放使用
+	//
+	// Deprecated: ProxyIp is deprecated.
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
 }

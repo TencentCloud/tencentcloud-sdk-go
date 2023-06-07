@@ -2259,6 +2259,14 @@ type ClusterCreateComponentItem struct {
 	ClusterRegion *string `json:"ClusterRegion,omitempty" name:"ClusterRegion"`
 }
 
+type ClusterCustomParameters struct {
+	// 参数名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
 type ClusterInfoItem struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -8920,6 +8928,9 @@ type DescribeAgentDaemonSetCmdRequestParams struct {
 
 	// 命令有效期，非腾讯云时必填
 	ExpireDate *string `json:"ExpireDate,omitempty" name:"ExpireDate"`
+
+	// 集群自定义参数
+	ClusterCustomParameters []*ClusterCustomParameters `json:"ClusterCustomParameters,omitempty" name:"ClusterCustomParameters"`
 }
 
 type DescribeAgentDaemonSetCmdRequest struct {
@@ -8939,6 +8950,9 @@ type DescribeAgentDaemonSetCmdRequest struct {
 
 	// 命令有效期，非腾讯云时必填
 	ExpireDate *string `json:"ExpireDate,omitempty" name:"ExpireDate"`
+
+	// 集群自定义参数
+	ClusterCustomParameters []*ClusterCustomParameters `json:"ClusterCustomParameters,omitempty" name:"ClusterCustomParameters"`
 }
 
 func (r *DescribeAgentDaemonSetCmdRequest) ToJsonString() string {
@@ -8958,6 +8972,7 @@ func (r *DescribeAgentDaemonSetCmdRequest) FromJsonString(s string) error {
 	delete(f, "RegionCode")
 	delete(f, "VpcId")
 	delete(f, "ExpireDate")
+	delete(f, "ClusterCustomParameters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentDaemonSetCmdRequest has unknown keys!", "")
 	}

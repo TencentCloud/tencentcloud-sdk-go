@@ -1154,7 +1154,7 @@ func (r *CreateLiveCallbackTemplateResponse) FromJsonString(s string) error {
 type CreateLivePullStreamTaskRequestParams struct {
 	// 拉流源的类型：
 	// PullLivePushLive -直播，
-	// PullVodPushLive -点播。
+	// PullVodPushLive -点播，
 	// PullPicPushLive -图片。
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
@@ -1287,7 +1287,7 @@ type CreateLivePullStreamTaskRequest struct {
 	
 	// 拉流源的类型：
 	// PullLivePushLive -直播，
-	// PullVodPushLive -点播。
+	// PullVodPushLive -点播，
 	// PullPicPushLive -图片。
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
@@ -3049,7 +3049,10 @@ func (r *CreateScreenshotTaskResponse) FromJsonString(s string) error {
 }
 
 type DayStreamPlayInfo struct {
-	// 数据时间点，格式：yyyy-mm-dd HH:MM:SS。
+	// 数据时间点，接口返回支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
+	// 接口返回的时间格式和查询请求传入的时间格式一致。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 带宽（单位Mbps）。
@@ -9173,11 +9176,16 @@ func (r *DescribeStreamDayPlayInfoListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStreamPlayInfoListRequestParams struct {
-	// 开始时间，北京时间，格式为yyyy-mm-dd HH:MM:SS
+	// 起始时间点，接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
+	// 开始时间和结束时间的格式需要保持一致。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
-	// 结束时间 和 开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
+	// 结束时间点，接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
+	// 开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名，
@@ -9190,7 +9198,6 @@ type DescribeStreamPlayInfoListRequestParams struct {
 
 	// 推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
 	// 若不填，则为查询总体播放数据。
-	// 注意：按AppName查询请先联系工单申请，开通后配置生效预计需要5个工作日左右，具体时间以最终回复为准。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
@@ -9200,11 +9207,16 @@ type DescribeStreamPlayInfoListRequestParams struct {
 type DescribeStreamPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 开始时间，北京时间，格式为yyyy-mm-dd HH:MM:SS
+	// 起始时间点，接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
+	// 开始时间和结束时间的格式需要保持一致。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
-	// 结束时间 和 开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
+	// 结束时间点，接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
+	// 2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
+	// 开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名，
@@ -9217,7 +9229,6 @@ type DescribeStreamPlayInfoListRequest struct {
 
 	// 推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
 	// 若不填，则为查询总体播放数据。
-	// 注意：按AppName查询请先联系工单申请，开通后配置生效预计需要5个工作日左右，具体时间以最终回复为准。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
@@ -12563,6 +12574,10 @@ type PullStreamTaskInfo struct {
 	// 1 - 启用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VodLocalMode *int64 `json:"VodLocalMode,omitempty" name:"VodLocalMode"`
+
+	// 录制模板 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordTemplateId *string `json:"RecordTemplateId,omitempty" name:"RecordTemplateId"`
 }
 
 type PushAuthKeyInfo struct {

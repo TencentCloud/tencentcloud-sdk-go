@@ -3354,6 +3354,70 @@ func (r *CreateStreamLinkFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateStreamLinkInputRequestParams struct {
+	// 媒体传输流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 流的输入组。
+	InputGroup []*CreateInput `json:"InputGroup,omitempty" name:"InputGroup"`
+}
+
+type CreateStreamLinkInputRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体传输流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 流的输入组。
+	InputGroup []*CreateInput `json:"InputGroup,omitempty" name:"InputGroup"`
+}
+
+func (r *CreateStreamLinkInputRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkInputRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "InputGroup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamLinkInputRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamLinkInputResponseParams struct {
+	// 创建的Flow信息。
+	Info *DescribeFlow `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateStreamLinkInputResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamLinkInputResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamLinkInputResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkInputResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateStreamLinkOutputInfoRequestParams struct {
 	// 传输流Id。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
@@ -11948,6 +12012,9 @@ type ProcessLiveStreamRequestParams struct {
 	// 视频内容分析类型任务参数。
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
 
+	// 视频内容质检类型任务参数。
+	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitempty" name:"AiQualityControlTask"`
+
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
@@ -11979,6 +12046,9 @@ type ProcessLiveStreamRequest struct {
 	// 视频内容分析类型任务参数。
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
 
+	// 视频内容质检类型任务参数。
+	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitempty" name:"AiQualityControlTask"`
+
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
@@ -12005,6 +12075,7 @@ func (r *ProcessLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiRecognitionTask")
 	delete(f, "AiAnalysisTask")
+	delete(f, "AiQualityControlTask")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	if len(f) > 0 {

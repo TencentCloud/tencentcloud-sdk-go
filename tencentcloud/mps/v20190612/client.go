@@ -829,6 +829,64 @@ func (c *Client) CreateStreamLinkFlowWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateStreamLinkInputRequest() (request *CreateStreamLinkInputRequest) {
+    request = &CreateStreamLinkInputRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateStreamLinkInput")
+    
+    
+    return
+}
+
+func NewCreateStreamLinkInputResponse() (response *CreateStreamLinkInputResponse) {
+    response = &CreateStreamLinkInputResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateStreamLinkInput
+// 创建媒体传输的输入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+//  INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+func (c *Client) CreateStreamLinkInput(request *CreateStreamLinkInputRequest) (response *CreateStreamLinkInputResponse, err error) {
+    return c.CreateStreamLinkInputWithContext(context.Background(), request)
+}
+
+// CreateStreamLinkInput
+// 创建媒体传输的输入配置。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+//  INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+func (c *Client) CreateStreamLinkInputWithContext(ctx context.Context, request *CreateStreamLinkInputRequest) (response *CreateStreamLinkInputResponse, err error) {
+    if request == nil {
+        request = NewCreateStreamLinkInputRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStreamLinkInput require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStreamLinkInputResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateStreamLinkOutputInfoRequest() (request *CreateStreamLinkOutputInfoRequest) {
     request = &CreateStreamLinkOutputInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

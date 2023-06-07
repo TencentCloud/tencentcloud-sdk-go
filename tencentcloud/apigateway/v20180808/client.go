@@ -6250,7 +6250,7 @@ func NewUpdateServiceResponse() (response *UpdateServiceResponse) {
 }
 
 // UpdateService
-// 本接口（UpdateService）用于从服务发布的环境中运行版本切换到特定版本。用户在使用 API 网关创建服务并发布服务到某个环境后，多因开发过程会产生多个版本，此时可调用本接口。
+// 本接口（UpdateService）用于从服务已发布的环境中将运行版本切换到特定版本。用户在使用 API 网关创建服务并发布服务到某个环境后，如在开发过程产生多个版本需要切换，此时可调用本接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
@@ -6265,7 +6265,7 @@ func (c *Client) UpdateService(request *UpdateServiceRequest) (response *UpdateS
 }
 
 // UpdateService
-// 本接口（UpdateService）用于从服务发布的环境中运行版本切换到特定版本。用户在使用 API 网关创建服务并发布服务到某个环境后，多因开发过程会产生多个版本，此时可调用本接口。
+// 本接口（UpdateService）用于从服务已发布的环境中将运行版本切换到特定版本。用户在使用 API 网关创建服务并发布服务到某个环境后，如在开发过程产生多个版本需要切换，此时可调用本接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"

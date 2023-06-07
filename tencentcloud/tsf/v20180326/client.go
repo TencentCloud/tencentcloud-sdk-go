@@ -5699,6 +5699,80 @@ func (c *Client) DescribeContainerEventsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeContainerGroupAttributeRequest() (request *DescribeContainerGroupAttributeRequest) {
+    request = &DescribeContainerGroupAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeContainerGroupAttribute")
+    
+    
+    return
+}
+
+func NewDescribeContainerGroupAttributeResponse() (response *DescribeContainerGroupAttributeResponse) {
+    response = &DescribeContainerGroupAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeContainerGroupAttribute
+// 获取部署组其他字段-用于前端并发调用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
+//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeContainerGroupAttribute(request *DescribeContainerGroupAttributeRequest) (response *DescribeContainerGroupAttributeResponse, err error) {
+    return c.DescribeContainerGroupAttributeWithContext(context.Background(), request)
+}
+
+// DescribeContainerGroupAttribute
+// 获取部署组其他字段-用于前端并发调用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONQUERYFAILED = "FailedOperation.ApplicationQueryFailed"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETECONNECTERROR = "FailedOperation.ContainergroupKuberneteConnectError"
+//  FAILEDOPERATION_CONTAINERGROUPKUBERNETESCONNECTERROR = "FailedOperation.ContainergroupKubernetesConnectError"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CONTAINERGROUPKUBERNETECONNECTERROR = "InternalError.ContainergroupKuberneteConnectError"
+//  INTERNALERROR_CONTAINERGROUPSQLFAILED = "InternalError.ContainergroupSqlFailed"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  RESOURCENOTFOUND_CLUSTERNOTEXIST = "ResourceNotFound.ClusterNotExist"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNAMESPACECLUSTERNOTFOUND = "ResourceNotFound.ContainergroupGroupNamespaceClusterNotFound"
+//  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
+//  RESOURCENOTFOUND_GROUPAPPLICATIONNOTEXIST = "ResourceNotFound.GroupApplicationNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeContainerGroupAttributeWithContext(ctx context.Context, request *DescribeContainerGroupAttributeRequest) (response *DescribeContainerGroupAttributeResponse, err error) {
+    if request == nil {
+        request = NewDescribeContainerGroupAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContainerGroupAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContainerGroupAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContainerGroupDeployInfoRequest() (request *DescribeContainerGroupDeployInfoRequest) {
     request = &DescribeContainerGroupDeployInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

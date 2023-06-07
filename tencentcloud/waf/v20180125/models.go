@@ -4881,7 +4881,7 @@ type QPSPackageNew struct {
 }
 
 type ResponseCode struct {
-	// 如果成功则返回Success，失败则返回yunapi定义的错误码
+	// 如果成功则返回Success，失败则返回云api定义的错误码
 	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 如果成功则返回Success，失败则返回WAF定义的二级错误码

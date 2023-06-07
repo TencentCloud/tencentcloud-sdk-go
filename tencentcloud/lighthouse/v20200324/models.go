@@ -5245,8 +5245,8 @@ type LoginConfiguration struct {
 	// <li>"NO"代表选择自定义密码，这时要指定Password字段。</li>
 	AutoGeneratePassword *string `json:"AutoGeneratePassword,omitempty" name:"AutoGeneratePassword"`
 
-	// 实例登录密码。具体按照操作系统的复杂度要求。
-	// WINDOWS 实例密码必须 12-30 位，不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符
+	// 实例登录密码。具体按照操作系统的复杂度要求。 
+	// WINDOWS 实例密码必须 12-30 位，不能以“/”开头且不包括用户名, 至少包含以下字符中的三种不同字符 
 	// <li>小写字母：[a-z]</li>
 	// <li>大写字母：[A-Z]</li>
 	// <li>数字： 0-9</li>

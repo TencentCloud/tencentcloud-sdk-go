@@ -1,3 +1,232 @@
+# Release v1.0.673
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 130 次发布
+
+发布时间：2023-06-07 01:07:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Inbound](https://cloud.tencent.com/document/api/236/15878#Inbound)
+
+	* 新增成员：AddressModule
+
+* [Outbound](https://cloud.tencent.com/document/api/236/15878#Outbound)
+
+	* 新增成员：AddressModule
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 81 次发布
+
+发布时间：2023-06-07 01:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRoute](https://cloud.tencent.com/document/api/597/45484)
+
+	* 新增入参：RouteId
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 51 次发布
+
+发布时间：2023-06-07 01:20:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifySparkAppBatch](https://cloud.tencent.com/document/api/1342/93213)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 73 次发布
+
+发布时间：2023-06-06 15:06:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1323/70369#ReleasedApprover)
+
+	* 新增成员：ApproverType
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 81 次发布
+
+发布时间：2023-06-07 01:25:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+* [OrganizationInfo](https://cloud.tencent.com/document/api/1420/61525#OrganizationInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>ClientIp, ProxyIp
+
+* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CustomUserId
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>IsPromoter
+
+* [UserInfo](https://cloud.tencent.com/document/api/1420/61525#UserInfo)
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 103 次发布
+
+发布时间：2023-06-07 01:33:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PullStreamTaskInfo](https://cloud.tencent.com/document/api/267/20474#PullStreamTaskInfo)
+
+	* 新增成员：RecordTemplateId
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 62 次发布
+
+发布时间：2023-06-07 01:36:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateStreamLinkInput](https://cloud.tencent.com/document/api/862/93215)
+
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 28 次发布
+
+发布时间：2023-06-07 01:39:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeAgentDealsCache
+* DescribeAgentPayDeals
+* DescribeAgentSelfPayDeals
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 46 次发布
+
+发布时间：2023-06-07 01:46:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAgentDaemonSetCmd](https://cloud.tencent.com/document/api/1285/81685)
+
+	* 新增入参：ClusterCustomParameters
+
+
+新增数据结构：
+
+* [ClusterCustomParameters](https://cloud.tencent.com/document/api/1285/65614#ClusterCustomParameters)
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 95 次发布
+
+发布时间：2023-06-07 01:54:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeContainerGroupAttribute](https://cloud.tencent.com/document/api/649/93216)
+
+新增数据结构：
+
+* [ContainerGroupOther](https://cloud.tencent.com/document/api/649/36099#ContainerGroupOther)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 30 次发布
+
+发布时间：2023-06-07 02:00:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteTaskAlarmRegular](https://cloud.tencent.com/document/api/1267/82514)
+
+	* <font color="#dd0000">**修改入参**：</font>TaskId, TaskType
+
+
+
+
 # Release v1.0.672
 
 ## API 网关(apigateway) 版本：2018-08-08
