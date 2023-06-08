@@ -14,7 +14,7 @@
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2022-04-04 06:05:36 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2022-04-04 06:05:40 |
 | api | [云 API](https://cloud.tencent.com/document/product/1278) | 2023-01-05 01:02:52 |
-| apigateway | [API 网关](https://cloud.tencent.com/document/product/628) | 2023-06-07 01:02:16 |
+| apigateway | [API 网关](https://cloud.tencent.com/document/product/628) | 2023-06-08 16:31:03 |
 | apm | [应用性能监控](https://cloud.tencent.com/document/product/1463) | 2023-05-18 01:03:20 |
 | as | [弹性伸缩](https://cloud.tencent.com/document/product/377) | 2023-05-18 01:03:25 |
 | asr | [语音识别](https://cloud.tencent.com/document/product/1093) | 2023-05-26 01:03:52 |
@@ -93,8 +93,8 @@
 | eis | [数据连接器](https://cloud.tencent.com/document/product/1270) | 2023-05-18 01:25:58 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2023-06-01 09:50:15 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2023-05-18 01:26:23 |
-| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2023-06-08 01:28:55 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2023-06-08 01:29:22 |
+| ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2023-06-08 11:16:02 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2023-06-08 11:23:08 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2023-05-31 01:26:29 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2023-05-31 01:26:34 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2023-05-24 14:30:55 |

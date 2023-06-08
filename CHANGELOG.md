@@ -1,3 +1,52 @@
+# Release v1.0.675
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 35 次发布
+
+发布时间：2023-06-08 16:31:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ApigatewayTags](https://cloud.tencent.com/document/api/628/45244#ApigatewayTags)
+* [DescribeApisStatusResultApiIdStatusSetInfo](https://cloud.tencent.com/document/api/628/45244#DescribeApisStatusResultApiIdStatusSetInfo)
+
+修改数据结构：
+
+* [DescribeApisStatusResultInfo](https://cloud.tencent.com/document/api/628/45244#DescribeApisStatusResultInfo)
+
+	* 新增成员：ApiIdStatusSet
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 75 次发布
+
+发布时间：2023-06-08 11:16:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateIntegrationDepartment](https://cloud.tencent.com/document/api/1323/93289)
+* [DeleteIntegrationDepartment](https://cloud.tencent.com/document/api/1323/93288)
+* [DescribeIntegrationDepartments](https://cloud.tencent.com/document/api/1323/93287)
+* [ModifyIntegrationDepartment](https://cloud.tencent.com/document/api/1323/93286)
+
+新增数据结构：
+
+* [IntegrationDepartment](https://cloud.tencent.com/document/api/1323/70369#IntegrationDepartment)
+
+
+
 # Release v1.0.674
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

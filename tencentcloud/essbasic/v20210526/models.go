@@ -1632,6 +1632,7 @@ type ChannelCreateSealPolicyRequestParams struct {
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
 	// 指定待授权的用户ID数组,电子签的用户ID
+	// 可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 操作人（用户）信息，不用传
@@ -1655,6 +1656,7 @@ type ChannelCreateSealPolicyRequest struct {
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
 	// 指定待授权的用户ID数组,电子签的用户ID
+	// 可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 操作人（用户）信息，不用传
@@ -1689,7 +1691,8 @@ func (r *ChannelCreateSealPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateSealPolicyResponseParams struct {
-	// 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的
+	// 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的。
+	// 请求参数填写OpenId时，返回授权成功的 Openid。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1881,6 +1884,7 @@ type ChannelDeleteSealPoliciesRequestParams struct {
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
 	// 指定用户ID数组，电子签系统用户ID
+	// 可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权取消。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 组织机构信息，不用传
@@ -1904,6 +1908,7 @@ type ChannelDeleteSealPoliciesRequest struct {
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
 	// 指定用户ID数组，电子签系统用户ID
+	// 可以填写OpenId，系统会通过组织+渠道+OpenId查询得到UserId进行授权取消。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 组织机构信息，不用传
@@ -4541,7 +4546,7 @@ type OccupiedSeal struct {
 
 // Predefined struct for user
 type OperateChannelTemplateRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.AppId必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
@@ -4565,7 +4570,7 @@ type OperateChannelTemplateRequestParams struct {
 type OperateChannelTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	// 应用相关信息。 此接口Agent.AppId必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"

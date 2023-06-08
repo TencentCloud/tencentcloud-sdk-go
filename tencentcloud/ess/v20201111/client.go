@@ -1639,6 +1639,66 @@ func (c *Client) CreateFlowSignUrlWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateIntegrationDepartmentRequest() (request *CreateIntegrationDepartmentRequest) {
+    request = &CreateIntegrationDepartmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateIntegrationDepartment")
+    
+    
+    return
+}
+
+func NewCreateIntegrationDepartmentResponse() (response *CreateIntegrationDepartmentResponse) {
+    response = &CreateIntegrationDepartmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateIntegrationDepartment
+// 通过此接口，创建企业的部门，支持绑定客户系统部门ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_DATAEXISTS = "InvalidParameter.DataExists"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateIntegrationDepartment(request *CreateIntegrationDepartmentRequest) (response *CreateIntegrationDepartmentResponse, err error) {
+    return c.CreateIntegrationDepartmentWithContext(context.Background(), request)
+}
+
+// CreateIntegrationDepartment
+// 通过此接口，创建企业的部门，支持绑定客户系统部门ID。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_DATAEXISTS = "InvalidParameter.DataExists"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateIntegrationDepartmentWithContext(ctx context.Context, request *CreateIntegrationDepartmentRequest) (response *CreateIntegrationDepartmentResponse, err error) {
+    if request == nil {
+        request = NewCreateIntegrationDepartmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIntegrationDepartment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIntegrationDepartmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateIntegrationEmployeesRequest() (request *CreateIntegrationEmployeesRequest) {
     request = &CreateIntegrationEmployeesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2629,6 +2689,60 @@ func (c *Client) CreateUserAutoSignEnableUrlWithContext(ctx context.Context, req
     return
 }
 
+func NewDeleteIntegrationDepartmentRequest() (request *DeleteIntegrationDepartmentRequest) {
+    request = &DeleteIntegrationDepartmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DeleteIntegrationDepartment")
+    
+    
+    return
+}
+
+func NewDeleteIntegrationDepartmentResponse() (response *DeleteIntegrationDepartmentResponse) {
+    response = &DeleteIntegrationDepartmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteIntegrationDepartment
+// 通过此接口，删除企业的部门。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteIntegrationDepartment(request *DeleteIntegrationDepartmentRequest) (response *DeleteIntegrationDepartmentResponse, err error) {
+    return c.DeleteIntegrationDepartmentWithContext(context.Background(), request)
+}
+
+// DeleteIntegrationDepartment
+// 通过此接口，删除企业的部门。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteIntegrationDepartmentWithContext(ctx context.Context, request *DeleteIntegrationDepartmentRequest) (response *DeleteIntegrationDepartmentResponse, err error) {
+    if request == nil {
+        request = NewDeleteIntegrationDepartmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIntegrationDepartment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIntegrationDepartmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIntegrationEmployeesRequest() (request *DeleteIntegrationEmployeesRequest) {
     request = &DeleteIntegrationEmployeesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3275,6 +3389,60 @@ func (c *Client) DescribeFlowTemplatesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeFlowTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIntegrationDepartmentsRequest() (request *DescribeIntegrationDepartmentsRequest) {
+    request = &DescribeIntegrationDepartmentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeIntegrationDepartments")
+    
+    
+    return
+}
+
+func NewDescribeIntegrationDepartmentsResponse() (response *DescribeIntegrationDepartmentsResponse) {
+    response = &DescribeIntegrationDepartmentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIntegrationDepartments
+// 通过此接口，查询企业的部门，支持查询单个部门节点或单个部门节点及一级子节点部门列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeIntegrationDepartments(request *DescribeIntegrationDepartmentsRequest) (response *DescribeIntegrationDepartmentsResponse, err error) {
+    return c.DescribeIntegrationDepartmentsWithContext(context.Background(), request)
+}
+
+// DescribeIntegrationDepartments
+// 通过此接口，查询企业的部门，支持查询单个部门节点或单个部门节点及一级子节点部门列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeIntegrationDepartmentsWithContext(ctx context.Context, request *DescribeIntegrationDepartmentsRequest) (response *DescribeIntegrationDepartmentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIntegrationDepartmentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIntegrationDepartments require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIntegrationDepartmentsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3973,6 +4141,64 @@ func (c *Client) ModifyApplicationCallbackInfoWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewModifyApplicationCallbackInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyIntegrationDepartmentRequest() (request *ModifyIntegrationDepartmentRequest) {
+    request = &ModifyIntegrationDepartmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ModifyIntegrationDepartment")
+    
+    
+    return
+}
+
+func NewModifyIntegrationDepartmentResponse() (response *ModifyIntegrationDepartmentResponse) {
+    response = &ModifyIntegrationDepartmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyIntegrationDepartment
+// 通过此接口，更新企业的部门信息，支持更新部门名、客户系统部门ID、部门序列号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DATAEXISTS = "InvalidParameter.DataExists"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyIntegrationDepartment(request *ModifyIntegrationDepartmentRequest) (response *ModifyIntegrationDepartmentResponse, err error) {
+    return c.ModifyIntegrationDepartmentWithContext(context.Background(), request)
+}
+
+// ModifyIntegrationDepartment
+// 通过此接口，更新企业的部门信息，支持更新部门名、客户系统部门ID、部门序列号。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DATAEXISTS = "InvalidParameter.DataExists"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyIntegrationDepartmentWithContext(ctx context.Context, request *ModifyIntegrationDepartmentRequest) (response *ModifyIntegrationDepartmentResponse, err error) {
+    if request == nil {
+        request = NewModifyIntegrationDepartmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIntegrationDepartment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIntegrationDepartmentResponse()
     err = c.Send(request, response)
     return
 }

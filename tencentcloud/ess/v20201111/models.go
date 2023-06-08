@@ -1775,6 +1775,98 @@ func (r *CreateFlowSignUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateIntegrationDepartmentRequestParams struct {
+	// 操作人信息，UserId必填且需拥有组织架构管理权限
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 部门名称，不超过50个字符
+	DeptName *string `json:"DeptName,omitempty" name:"DeptName"`
+
+	// 电子签父部门ID，与ParentDeptOpenId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+	ParentDeptId *string `json:"ParentDeptId,omitempty" name:"ParentDeptId"`
+
+	// 第三方平台中父部门ID,与ParentDeptId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+	ParentDeptOpenId *string `json:"ParentDeptOpenId,omitempty" name:"ParentDeptOpenId"`
+
+	// 客户系统部门ID，不超过64个字符
+	DeptOpenId *string `json:"DeptOpenId,omitempty" name:"DeptOpenId"`
+
+	// 排序号,1~30000范围内
+	OrderNo *uint64 `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+type CreateIntegrationDepartmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息，UserId必填且需拥有组织架构管理权限
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 部门名称，不超过50个字符
+	DeptName *string `json:"DeptName,omitempty" name:"DeptName"`
+
+	// 电子签父部门ID，与ParentDeptOpenId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+	ParentDeptId *string `json:"ParentDeptId,omitempty" name:"ParentDeptId"`
+
+	// 第三方平台中父部门ID,与ParentDeptId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+	ParentDeptOpenId *string `json:"ParentDeptOpenId,omitempty" name:"ParentDeptOpenId"`
+
+	// 客户系统部门ID，不超过64个字符
+	DeptOpenId *string `json:"DeptOpenId,omitempty" name:"DeptOpenId"`
+
+	// 排序号,1~30000范围内
+	OrderNo *uint64 `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *CreateIntegrationDepartmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationDepartmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "DeptName")
+	delete(f, "ParentDeptId")
+	delete(f, "ParentDeptOpenId")
+	delete(f, "DeptOpenId")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntegrationDepartmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntegrationDepartmentResponseParams struct {
+	// 电子签部门ID
+	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateIntegrationDepartmentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIntegrationDepartmentResponseParams `json:"Response"`
+}
+
+func (r *CreateIntegrationDepartmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationDepartmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateIntegrationEmployeesRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2766,6 +2858,74 @@ func (r *CreateUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteIntegrationDepartmentRequestParams struct {
+	// 操作人信息，UserId必填且需拥有组织架构管理权限
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签中的部门id
+	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
+
+	// 交接部门ID。待删除部门中的合同、印章和模版数据，交接至该部门ID下，未填写交接至公司根部门。
+	ReceiveDeptId *string `json:"ReceiveDeptId,omitempty" name:"ReceiveDeptId"`
+}
+
+type DeleteIntegrationDepartmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息，UserId必填且需拥有组织架构管理权限
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签中的部门id
+	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
+
+	// 交接部门ID。待删除部门中的合同、印章和模版数据，交接至该部门ID下，未填写交接至公司根部门。
+	ReceiveDeptId *string `json:"ReceiveDeptId,omitempty" name:"ReceiveDeptId"`
+}
+
+func (r *DeleteIntegrationDepartmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntegrationDepartmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "DeptId")
+	delete(f, "ReceiveDeptId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIntegrationDepartmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIntegrationDepartmentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteIntegrationDepartmentResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteIntegrationDepartmentResponseParams `json:"Response"`
+}
+
+func (r *DeleteIntegrationDepartmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntegrationDepartmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteIntegrationEmployeesRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -3505,6 +3665,84 @@ func (r *DescribeFlowTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeFlowTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationDepartmentsRequestParams struct {
+	// 操作人信息，UserId必填且需拥有组织架构管理权限
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 查询类型 0-查询单个部门节点 1-单个部门节点及一级子节点部门列表
+	QueryType *uint64 `json:"QueryType,omitempty" name:"QueryType"`
+
+	// 部门ID,与DeptOpenId二选一,优先DeptId,都为空时获取根节点数据
+	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
+
+	// 客户系统部门ID,与DeptId二选一,优先DeptId,都为空时获取根节点数据
+	DeptOpenId *string `json:"DeptOpenId,omitempty" name:"DeptOpenId"`
+}
+
+type DescribeIntegrationDepartmentsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息，UserId必填且需拥有组织架构管理权限
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 查询类型 0-查询单个部门节点 1-单个部门节点及一级子节点部门列表
+	QueryType *uint64 `json:"QueryType,omitempty" name:"QueryType"`
+
+	// 部门ID,与DeptOpenId二选一,优先DeptId,都为空时获取根节点数据
+	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
+
+	// 客户系统部门ID,与DeptId二选一,优先DeptId,都为空时获取根节点数据
+	DeptOpenId *string `json:"DeptOpenId,omitempty" name:"DeptOpenId"`
+}
+
+func (r *DescribeIntegrationDepartmentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationDepartmentsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "QueryType")
+	delete(f, "DeptId")
+	delete(f, "DeptOpenId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationDepartmentsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationDepartmentsResponseParams struct {
+	// 部门列表
+	Departments []*IntegrationDepartment `json:"Departments,omitempty" name:"Departments"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationDepartmentsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationDepartmentsResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationDepartmentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationDepartmentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4734,6 +4972,28 @@ type IntegrateRole struct {
 	SubOrgIdList []*string `json:"SubOrgIdList,omitempty" name:"SubOrgIdList"`
 }
 
+type IntegrationDepartment struct {
+	// 部门ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
+
+	// 部门名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeptName *string `json:"DeptName,omitempty" name:"DeptName"`
+
+	// 父部门ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentDeptId *string `json:"ParentDeptId,omitempty" name:"ParentDeptId"`
+
+	// 客户系统部门ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeptOpenId *string `json:"DeptOpenId,omitempty" name:"DeptOpenId"`
+
+	// 序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderNo *uint64 `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
 type IntegrationMainOrganizationUser struct {
 	// 主企业id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4813,6 +5073,95 @@ func (r *ModifyApplicationCallbackInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApplicationCallbackInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntegrationDepartmentRequestParams struct {
+	// 操作人信息，UserId必填且需拥有组织架构管理权限
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签部门ID
+	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
+
+	// 电子签父部门ID
+	ParentDeptId *string `json:"ParentDeptId,omitempty" name:"ParentDeptId"`
+
+	// 部门名称，不超过50个字符
+	DeptName *string `json:"DeptName,omitempty" name:"DeptName"`
+
+	// 客户系统部门ID，不超过64个字符
+	DeptOpenId *string `json:"DeptOpenId,omitempty" name:"DeptOpenId"`
+
+	// 排序号,1~30000范围内
+	OrderNo *uint64 `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+type ModifyIntegrationDepartmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息，UserId必填且需拥有组织架构管理权限
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签部门ID
+	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
+
+	// 电子签父部门ID
+	ParentDeptId *string `json:"ParentDeptId,omitempty" name:"ParentDeptId"`
+
+	// 部门名称，不超过50个字符
+	DeptName *string `json:"DeptName,omitempty" name:"DeptName"`
+
+	// 客户系统部门ID，不超过64个字符
+	DeptOpenId *string `json:"DeptOpenId,omitempty" name:"DeptOpenId"`
+
+	// 排序号,1~30000范围内
+	OrderNo *uint64 `json:"OrderNo,omitempty" name:"OrderNo"`
+}
+
+func (r *ModifyIntegrationDepartmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntegrationDepartmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "DeptId")
+	delete(f, "ParentDeptId")
+	delete(f, "DeptName")
+	delete(f, "DeptOpenId")
+	delete(f, "OrderNo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIntegrationDepartmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntegrationDepartmentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyIntegrationDepartmentResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIntegrationDepartmentResponseParams `json:"Response"`
+}
+
+func (r *ModifyIntegrationDepartmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntegrationDepartmentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

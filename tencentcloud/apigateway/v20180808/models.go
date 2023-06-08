@@ -585,6 +585,10 @@ type ApiUsagePlanSet struct {
 	ApiUsagePlanList []*ApiUsagePlan `json:"ApiUsagePlanList,omitempty" name:"ApiUsagePlanList"`
 }
 
+type ApigatewayTags struct {
+
+}
+
 // Predefined struct for user
 type AttachPluginRequestParams struct {
 	// 绑定的API网关插件ID。
@@ -4325,9 +4329,88 @@ func (r *DescribeApisStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeApisStatusResultApiIdStatusSetInfo struct {
+	// 服务唯一ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// API唯一ID。
+	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+
+	// 用户自定义的 API 接口描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+
+	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// API 接口的名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+
+	// VPCID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
+
+	// VPC唯一ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// API类型。取值为NORMAL（普通API）和TSF（微服务API）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+
+	// API协议。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 是否买后调试。（云市场预留字段）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+
+	// API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、EIAM。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+
+	// OAUTH API的类型。当AuthType 为 OAUTH时该字段有效， 取值为NORMAL（业务API）和 OAUTH（授权API）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+
+	// 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+
+	// OAUTH 配置信息。当AuthType是OAUTH时生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+
+	// 授权API关联的业务API列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
+
+	// API关联的标签信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*ApigatewayTags `json:"Tags,omitempty" name:"Tags"`
+
+	// API 的路径，如 /path。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// API 的请求方法，如 GET。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Method *string `json:"Method,omitempty" name:"Method"`
+}
+
 type DescribeApisStatusResultInfo struct {
 	// 符合条件的 API 接口数量。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// API 接口列表。
+	ApiIdStatusSet []*DescribeApisStatusResultApiIdStatusSetInfo `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
 }
 
 // Predefined struct for user
