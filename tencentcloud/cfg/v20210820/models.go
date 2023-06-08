@@ -914,6 +914,17 @@ type TaskGroup struct {
 
 	// 执行模式。1 --- 顺序执行，2 --- 阶段执行
 	TaskGroupMode *int64 `json:"TaskGroupMode,omitempty" name:"TaskGroupMode"`
+
+	// 不参演的实例列表
+	TaskGroupDiscardInstanceList []*string `json:"TaskGroupDiscardInstanceList,omitempty" name:"TaskGroupDiscardInstanceList"`
+
+	// 参演实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskGroupSelectedInstanceList []*string `json:"TaskGroupSelectedInstanceList,omitempty" name:"TaskGroupSelectedInstanceList"`
+
+	// 机器选取规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskGroupInstancesExecuteRule []*TaskGroupInstancesExecuteRules `json:"TaskGroupInstancesExecuteRule,omitempty" name:"TaskGroupInstancesExecuteRule"`
 }
 
 type TaskGroupAction struct {
@@ -1056,6 +1067,20 @@ type TaskGroupInstance struct {
 	// 动作实例执行时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstanceExecuteTime *int64 `json:"TaskGroupInstanceExecuteTime,omitempty" name:"TaskGroupInstanceExecuteTime"`
+}
+
+type TaskGroupInstancesExecuteRules struct {
+	// 实例选取模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskGroupInstancesExecuteMode *int64 `json:"TaskGroupInstancesExecuteMode,omitempty" name:"TaskGroupInstancesExecuteMode"`
+
+	// 按比例选取模式下选取比例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskGroupInstancesExecutePercent *int64 `json:"TaskGroupInstancesExecutePercent,omitempty" name:"TaskGroupInstancesExecutePercent"`
+
+	// 按数量选取模式下选取数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskGroupInstancesExecuteNum *int64 `json:"TaskGroupInstancesExecuteNum,omitempty" name:"TaskGroupInstancesExecuteNum"`
 }
 
 type TaskListItem struct {

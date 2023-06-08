@@ -11000,3 +11000,61 @@ func (c *Client) UpdateInLongAgentWithContext(ctx context.Context, request *Upda
     err = c.Send(request, response)
     return
 }
+
+func NewUploadContentRequest() (request *UploadContentRequest) {
+    request = &UploadContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "UploadContent")
+    
+    
+    return
+}
+
+func NewUploadContentResponse() (response *UploadContentResponse) {
+    response = &UploadContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UploadContent
+// 保存任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UploadContent(request *UploadContentRequest) (response *UploadContentResponse, err error) {
+    return c.UploadContentWithContext(context.Background(), request)
+}
+
+// UploadContent
+// 保存任务信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UploadContentWithContext(ctx context.Context, request *UploadContentRequest) (response *UploadContentResponse, err error) {
+    if request == nil {
+        request = NewUploadContentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadContentResponse()
+    err = c.Send(request, response)
+    return
+}

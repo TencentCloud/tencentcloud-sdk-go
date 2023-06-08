@@ -1821,6 +1821,82 @@ func (c *Client) DescribeDomainAnalyticsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDomainFilterListRequest() (request *DescribeDomainFilterListRequest) {
+    request = &DescribeDomainFilterListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainFilterList")
+    
+    
+    return
+}
+
+func NewDescribeDomainFilterListResponse() (response *DescribeDomainFilterListResponse) {
+    response = &DescribeDomainFilterListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainFilterList
+// 获取域名筛选列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPIDINVALID = "InvalidParameter.GroupIdInvalid"
+//  INVALIDPARAMETER_OFFSETINVALID = "InvalidParameter.OffsetInvalid"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_RESULTMORETHAN500 = "InvalidParameter.ResultMoreThan500"
+//  INVALIDPARAMETERVALUE_LIMITINVALID = "InvalidParameterValue.LimitInvalid"
+//  OPERATIONDENIED_ACCESSDENIED = "OperationDenied.AccessDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDomainFilterList(request *DescribeDomainFilterListRequest) (response *DescribeDomainFilterListResponse, err error) {
+    return c.DescribeDomainFilterListWithContext(context.Background(), request)
+}
+
+// DescribeDomainFilterList
+// 获取域名筛选列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_GROUPIDINVALID = "InvalidParameter.GroupIdInvalid"
+//  INVALIDPARAMETER_OFFSETINVALID = "InvalidParameter.OffsetInvalid"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_RESULTMORETHAN500 = "InvalidParameter.ResultMoreThan500"
+//  INVALIDPARAMETERVALUE_LIMITINVALID = "InvalidParameterValue.LimitInvalid"
+//  OPERATIONDENIED_ACCESSDENIED = "OperationDenied.AccessDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDED = "RequestLimitExceeded.RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDomainFilterListWithContext(ctx context.Context, request *DescribeDomainFilterListRequest) (response *DescribeDomainFilterListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainFilterListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainFilterList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainFilterListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainGroupListRequest() (request *DescribeDomainGroupListRequest) {
     request = &DescribeDomainGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},

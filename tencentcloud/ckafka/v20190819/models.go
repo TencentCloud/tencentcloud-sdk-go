@@ -1754,23 +1754,56 @@ type CreateInstancePostRequestParams struct {
 	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 实例带宽
+	// 实例内网峰值带宽。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格。
 	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
 
-	// vpcId，不填默认基础网络
+	// 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网id，vpc网络需要传该参数，基础网络可以不传
+	// 子网id。创建实例默认接入点所在的子网对应的子网 id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+	// 实例规格。当创建标准版实例时必填，创建专业版实例时不需要填写。1：入门型；2：标准型；3：进阶型；4：容量型；5：高阶型1；6：高阶性2；7：高阶型3；8：高阶型4；9 ：独占型
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitempty" name:"MsgRetentionTime"`
 
-	// 可用区
+	// 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
+	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.2","2.8.1"
+	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+
+	// 实例类型。"standard"：标准版，"profession"：专业版
+	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
+
+	// 实例硬盘类型，"CLOUD_BASIC"：云硬盘，"CLOUD_SSD"：高速云硬盘。不传默认为 "CLOUD_BASIC"
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 实例硬盘大小，需要满足当前实例的计费规格
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 实例最大分区数量，需要满足当前实例的计费规格
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 实例最大 topic 数量，需要满足当前实例的计费规格
+	TopicNum *int64 `json:"TopicNum,omitempty" name:"TopicNum"`
+
+	// 实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在的子网
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 创建实例时可以选择集群Id, 该入参表示集群Id
-	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
+	// 当前实例是否为多可用区实例。
+	MultiZoneFlag *bool `json:"MultiZoneFlag,omitempty" name:"MultiZoneFlag"`
+
+	// 当实例为多可用区实例时，多可用区 id 列表。注意参数 ZoneId 对应的多可用区需要包含在该参数数组中
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1
+	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
 }
 
 type CreateInstancePostRequest struct {
@@ -1779,23 +1812,56 @@ type CreateInstancePostRequest struct {
 	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 实例带宽
+	// 实例内网峰值带宽。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格。
 	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
 
-	// vpcId，不填默认基础网络
+	// 创建的实例默认接入点所在的 vpc 对应 vpcId。目前不支持创建基础网络实例，因此该参数必填
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网id，vpc网络需要传该参数，基础网络可以不传
+	// 子网id。创建实例默认接入点所在的子网对应的子网 id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
+	// 实例规格。当创建标准版实例时必填，创建专业版实例时不需要填写。1：入门型；2：标准型；3：进阶型；4：容量型；5：高阶型1；6：高阶性2；7：高阶型3；8：高阶型4；9 ：独占型
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
 	MsgRetentionTime *int64 `json:"MsgRetentionTime,omitempty" name:"MsgRetentionTime"`
 
-	// 可用区
+	// 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
+	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.2","2.8.1"
+	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+
+	// 实例类型。"standard"：标准版，"profession"：专业版
+	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
+
+	// 实例硬盘类型，"CLOUD_BASIC"：云硬盘，"CLOUD_SSD"：高速云硬盘。不传默认为 "CLOUD_BASIC"
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 实例硬盘大小，需要满足当前实例的计费规格
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 实例最大分区数量，需要满足当前实例的计费规格
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 实例最大 topic 数量，需要满足当前实例的计费规格
+	TopicNum *int64 `json:"TopicNum,omitempty" name:"TopicNum"`
+
+	// 实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在的子网
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 创建实例时可以选择集群Id, 该入参表示集群Id
-	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
+	// 当前实例是否为多可用区实例。
+	MultiZoneFlag *bool `json:"MultiZoneFlag,omitempty" name:"MultiZoneFlag"`
+
+	// 当实例为多可用区实例时，多可用区 id 列表。注意参数 ZoneId 对应的多可用区需要包含在该参数数组中
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1
+	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
 }
 
 func (r *CreateInstancePostRequest) ToJsonString() string {
@@ -1814,9 +1880,20 @@ func (r *CreateInstancePostRequest) FromJsonString(s string) error {
 	delete(f, "BandWidth")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
+	delete(f, "InstanceType")
 	delete(f, "MsgRetentionTime")
-	delete(f, "ZoneId")
 	delete(f, "ClusterId")
+	delete(f, "KafkaVersion")
+	delete(f, "SpecificationsType")
+	delete(f, "DiskType")
+	delete(f, "DiskSize")
+	delete(f, "Partition")
+	delete(f, "TopicNum")
+	delete(f, "ZoneId")
+	delete(f, "MultiZoneFlag")
+	delete(f, "ZoneIds")
+	delete(f, "InstanceNum")
+	delete(f, "PublicNetworkMonthly")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePostRequest has unknown keys!", "")
 	}
@@ -9020,6 +9097,10 @@ type OperateResponseData struct {
 	// FlowId11
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// RouteIdDto
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteDTO *RouteDTO `json:"RouteDTO,omitempty" name:"RouteDTO"`
 }
 
 type Partition struct {
@@ -9348,6 +9429,12 @@ type Route struct {
 	// 时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteTimestamp *string `json:"DeleteTimestamp,omitempty" name:"DeleteTimestamp"`
+}
+
+type RouteDTO struct {
+	// RouteId11
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteId *int64 `json:"RouteId,omitempty" name:"RouteId"`
 }
 
 type RouteResponse struct {

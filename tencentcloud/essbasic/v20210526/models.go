@@ -34,6 +34,8 @@ type Agent struct {
 	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
 
 	// 内部参数，暂未开放使用
+	//
+	// Deprecated: ProxyOrganizationId is deprecated.
 	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitempty" name:"ProxyOrganizationId"`
 }
 
@@ -140,6 +142,8 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -233,6 +237,8 @@ type ChannelCancelFlowRequestParams struct {
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -313,6 +319,8 @@ type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
 	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -381,6 +389,8 @@ type ChannelCreateBatchCancelFlowUrlRequestParams struct {
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -459,6 +469,8 @@ type ChannelCreateBoundFlowsRequestParams struct {
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -534,9 +546,13 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 调用方用户信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
@@ -613,39 +629,41 @@ func (r *ChannelCreateConvertTaskApiResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateEmbedWebUrlRequestParams struct {
-	// WEB嵌入资源类型，取值范围：CREATE_SEAL创建印章，CREATE_TEMPLATE创建模板，MODIFY_TEMPLATE修改模板，PREVIEW_TEMPLATE预览模板，PREVIEW_FLOW预览流程
-	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
-
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 渠道操作者信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+	// WEB嵌入资源类型，取值范围：CREATE_SEAL创建印章，CREATE_TEMPLATE创建模板，MODIFY_TEMPLATE修改模板，PREVIEW_TEMPLATE预览模板，PREVIEW_FLOW预览流程
+	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID，EmbedType取值MODIFY_TEMPLATE或PREVIEW_TEMPLATE或 PREVIEW_FLOW时BusinessId必填
 	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
 	HiddenComponents *bool `json:"HiddenComponents,omitempty" name:"HiddenComponents"`
+
+	// 渠道操作者信息
+	//
+	// Deprecated: Operator is deprecated.
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCreateEmbedWebUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// WEB嵌入资源类型，取值范围：CREATE_SEAL创建印章，CREATE_TEMPLATE创建模板，MODIFY_TEMPLATE修改模板，PREVIEW_TEMPLATE预览模板，PREVIEW_FLOW预览流程
-	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
-
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 渠道操作者信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+	// WEB嵌入资源类型，取值范围：CREATE_SEAL创建印章，CREATE_TEMPLATE创建模板，MODIFY_TEMPLATE修改模板，PREVIEW_TEMPLATE预览模板，PREVIEW_FLOW预览流程
+	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID，EmbedType取值MODIFY_TEMPLATE或PREVIEW_TEMPLATE或 PREVIEW_FLOW时BusinessId必填
 	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
 	HiddenComponents *bool `json:"HiddenComponents,omitempty" name:"HiddenComponents"`
+
+	// 渠道操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateEmbedWebUrlRequest) ToJsonString() string {
@@ -660,11 +678,11 @@ func (r *ChannelCreateEmbedWebUrlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "EmbedType")
 	delete(f, "Agent")
-	delete(f, "Operator")
+	delete(f, "EmbedType")
 	delete(f, "BusinessId")
 	delete(f, "HiddenComponents")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateEmbedWebUrlRequest has unknown keys!", "")
 	}
@@ -746,9 +764,6 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
 	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
 
-	// 操作者的信息，不用传
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 被抄送人信息列表
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 
@@ -757,6 +772,11 @@ type ChannelCreateFlowByFilesRequestParams struct {
 
 	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
+
+	// 操作者的信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelCreateFlowByFilesRequest struct {
@@ -810,9 +830,6 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
 	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
 
-	// 操作者的信息，不用传
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 被抄送人信息列表
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 
@@ -821,6 +838,9 @@ type ChannelCreateFlowByFilesRequest struct {
 
 	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
+
+	// 操作者的信息，不用传
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
@@ -850,10 +870,10 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "NeedSignReview")
 	delete(f, "ApproverVerifyType")
 	delete(f, "SignBeanTag")
-	delete(f, "Operator")
 	delete(f, "CcInfos")
 	delete(f, "CcNotifyType")
 	delete(f, "AutoSignScene")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -904,6 +924,8 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 
 	// 操作者的信息，此参数不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1161,9 +1183,13 @@ type ChannelCreateFlowSignUrlRequestParams struct {
 	FlowApproverInfos []*FlowApproverInfo `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
 
 	// 用户信息，暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 机构信息，暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
@@ -1264,9 +1290,13 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 限制二维码用户条件（已弃用）
+	//
+	// Deprecated: ApproverRestrictions is deprecated.
 	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1390,9 +1420,13 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
 	// 企业机构信息，不用传
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
 	// 操作人（用户）信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1504,9 +1538,13 @@ type ChannelCreateReleaseFlowRequestParams struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1593,14 +1631,18 @@ type ChannelCreateSealPolicyRequestParams struct {
 	// 指定印章ID
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
-	// 指定待授权的用户ID数组
+	// 指定待授权的用户ID数组,电子签的用户ID
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 企业机构信息，不用传
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
-
 	// 操作人（用户）信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 企业机构信息，不用传
+	//
+	// Deprecated: Organization is deprecated.
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
 type ChannelCreateSealPolicyRequest struct {
@@ -1612,14 +1654,14 @@ type ChannelCreateSealPolicyRequest struct {
 	// 指定印章ID
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
-	// 指定待授权的用户ID数组
+	// 指定待授权的用户ID数组,电子签的用户ID
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
-
-	// 企业机构信息，不用传
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
 	// 操作人（用户）信息，不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 企业机构信息，不用传
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
 func (r *ChannelCreateSealPolicyRequest) ToJsonString() string {
@@ -1637,8 +1679,8 @@ func (r *ChannelCreateSealPolicyRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "SealId")
 	delete(f, "UserIds")
-	delete(f, "Organization")
 	delete(f, "Operator")
+	delete(f, "Organization")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateSealPolicyRequest has unknown keys!", "")
 	}
@@ -1647,7 +1689,7 @@ func (r *ChannelCreateSealPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateSealPolicyResponseParams struct {
-	// 最终授权成功的用户ID数组。其他的跳过的是已经授权了的
+	// 最终授权成功的电子签系统用户ID数组。其他的跳过的是已经授权了的
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1675,13 +1717,15 @@ type ChannelCreateUserRolesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 绑定角色的员工id列表
+	// 绑定角色的员工id列表，电子签的UserId
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 绑定角色的角色id列表
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
 
 	// 操作者信息
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1691,7 +1735,7 @@ type ChannelCreateUserRolesRequest struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 绑定角色的员工id列表
+	// 绑定角色的员工id列表，电子签的UserId
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 绑定角色的角色id列表
@@ -1756,10 +1800,12 @@ type ChannelDeleteRoleUsersRequestParams struct {
 	// 角色Id（非超管或法人角色Id）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 用户列表
+	// 用户列表，电子签系统的UserId
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 操作人信息
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1772,7 +1818,7 @@ type ChannelDeleteRoleUsersRequest struct {
 	// 角色Id（非超管或法人角色Id）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 用户列表
+	// 用户列表，电子签系统的UserId
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 操作人信息
@@ -1834,13 +1880,17 @@ type ChannelDeleteSealPoliciesRequestParams struct {
 	// 指定印章ID
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
-	// 指定用户ID数组
+	// 指定用户ID数组，电子签系统用户ID
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 组织机构信息，不用传
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
 	// 操作人（用户）信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -1853,7 +1903,7 @@ type ChannelDeleteSealPoliciesRequest struct {
 	// 指定印章ID
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
-	// 指定用户ID数组
+	// 指定用户ID数组，电子签系统用户ID
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 组织机构信息，不用传
@@ -1925,6 +1975,8 @@ type ChannelDescribeEmployeesRequestParams struct {
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2132,6 +2184,8 @@ type ChannelDescribeRolesRequestParams struct {
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 操作人信息
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2223,9 +2277,13 @@ type ChannelGetTaskResultApiRequestParams struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 操作者的信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 暂未开放
+	//
+	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
@@ -2345,11 +2403,13 @@ type ChannelUpdateSealStatusRequestParams struct {
 	// 印章ID
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 更新印章状态原因说明
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 操作者的信息
+	//
+	// Deprecated: Operator is deprecated.
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelUpdateSealStatusRequest struct {
@@ -2364,11 +2424,11 @@ type ChannelUpdateSealStatusRequest struct {
 	// 印章ID
 	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 更新印章状态原因说明
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelUpdateSealStatusRequest) ToJsonString() string {
@@ -2386,8 +2446,8 @@ func (r *ChannelUpdateSealStatusRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "Status")
 	delete(f, "SealId")
-	delete(f, "Operator")
 	delete(f, "Reason")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelUpdateSealStatusRequest has unknown keys!", "")
 	}
@@ -2425,6 +2485,8 @@ type ChannelVerifyPdfRequestParams struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2505,7 +2567,7 @@ type CommonFlowApprover struct {
 	// 企业id
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
 
-	// 企业OpenId，第三方应用集成非静默签子客企业签署人发起合同毕传
+	// 企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
 	// 企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
@@ -2774,6 +2836,8 @@ type CreateChannelFlowEvidenceReportRequestParams struct {
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2880,6 +2944,8 @@ type CreateConsoleLoginUrlRequestParams struct {
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitempty" name:"AuthorizationTypes"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2960,7 +3026,7 @@ type CreateConsoleLoginUrlResponseParams struct {
 	// 5. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
 	ConsoleUrl *string `json:"ConsoleUrl,omitempty" name:"ConsoleUrl"`
 
-	// 子客企业是否已开通腾讯电子签
+	// 子客企业是否已开通腾讯电子签，true-是，false-否
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
 
 	// 当前经办人是否已认证（false:未认证 true:已认证）
@@ -3008,6 +3074,8 @@ type CreateFlowsByTemplatesRequestParams struct {
 	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
 
 	// 操作者的信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3106,6 +3174,8 @@ type CreateSealByImageRequestParams struct {
 	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 操作者的信息
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3217,6 +3287,8 @@ type CreateSignUrlsRequestParams struct {
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3347,6 +3419,8 @@ type DescribeChannelFlowEvidenceReportRequestParams struct {
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3490,6 +3564,8 @@ type DescribeFlowDetailInfoRequestParams struct {
 	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3582,6 +3658,8 @@ type DescribeResourceUrlsByFlowsRequestParams struct {
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 操作者的信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3672,17 +3750,19 @@ type DescribeTemplatesRequestParams struct {
 	// 模糊搜索模板名称，最大长度200
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 是否获取模板预览链接
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
 
 	// 是否获取模板的PDF文件链接- 第三方应用集成需要开启白名单时才能使用。
 	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
 
-	// 模板ID
+	// 对应第三方应用平台企业的模板ID
 	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
+
+	// 操作者的信息
+	//
+	// Deprecated: Operator is deprecated.
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type DescribeTemplatesRequest struct {
@@ -3709,17 +3789,17 @@ type DescribeTemplatesRequest struct {
 	// 模糊搜索模板名称，最大长度200
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 是否获取模板预览链接
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
 
 	// 是否获取模板的PDF文件链接- 第三方应用集成需要开启白名单时才能使用。
 	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
 
-	// 模板ID
+	// 对应第三方应用平台企业的模板ID
 	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -3741,10 +3821,10 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "QueryAllComponents")
 	delete(f, "TemplateName")
-	delete(f, "Operator")
 	delete(f, "WithPreviewUrl")
 	delete(f, "WithPdfUrl")
 	delete(f, "ChannelTemplateId")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}
@@ -3809,6 +3889,8 @@ type DescribeUsageRequestParams struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4074,6 +4156,11 @@ type FlowApproverInfo struct {
 	// 签署人签署合同时的认证方式
 	// 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitempty" name:"ApproverSignTypes"`
+
+	// 签署ID
+	// - 发起流程时系统自动补充
+	// - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
+	SignId *string `json:"SignId,omitempty" name:"SignId"`
 }
 
 type FlowApproverUrlInfo struct {
@@ -4259,6 +4346,8 @@ type GetDownloadFlowUrlRequestParams struct {
 	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitempty" name:"DownLoadFlows"`
 
 	// 操作者的信息，不用传
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4468,6 +4557,8 @@ type OperateChannelTemplateRequestParams struct {
 	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4640,6 +4731,8 @@ type PrepareFlowsRequestParams struct {
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4989,6 +5082,8 @@ type SyncProxyOrganizationOperatorsRequestParams struct {
 	ProxyOrganizationOperators []*ProxyOrganizationOperator `json:"ProxyOrganizationOperators,omitempty" name:"ProxyOrganizationOperators"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -5081,6 +5176,8 @@ type SyncProxyOrganizationRequestParams struct {
 	ProxyLegalName *string `json:"ProxyLegalName,omitempty" name:"ProxyLegalName"`
 
 	// 暂未开放
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -5246,6 +5343,8 @@ type UploadFilesRequestParams struct {
 	FileInfos []*UploadFile `json:"FileInfos,omitempty" name:"FileInfos"`
 
 	// 操作者的信息
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 

@@ -219,6 +219,7 @@ func NewAddIp6RulesResponse() (response *AddIp6RulesResponse) {
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_IPV6RULEIDEXISTED = "InvalidParameterValue.IPv6RuleIdExisted"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) AddIp6Rules(request *AddIp6RulesRequest) (response *AddIp6RulesResponse, err error) {
     return c.AddIp6RulesWithContext(context.Background(), request)
@@ -234,6 +235,7 @@ func (c *Client) AddIp6Rules(request *AddIp6RulesRequest) (response *AddIp6Rules
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_IPV6RULEIDEXISTED = "InvalidParameterValue.IPv6RuleIdExisted"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) AddIp6RulesWithContext(ctx context.Context, request *AddIp6RulesRequest) (response *AddIp6RulesResponse, err error) {
     if request == nil {
@@ -7442,7 +7444,7 @@ func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
 }
 
 // DeleteSubnet
-// 本接口（DeleteSubnet）用于用于删除子网（Subnet）。
+// 本接口（DeleteSubnet）用于删除子网（Subnet）。
 //
 // * 删除子网前，请清理该子网下所有资源，包括云服务器、负载均衡、云数据、NoSQL、弹性网卡等资源。
 //
@@ -7457,7 +7459,7 @@ func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSub
 }
 
 // DeleteSubnet
-// 本接口（DeleteSubnet）用于用于删除子网（Subnet）。
+// 本接口（DeleteSubnet）用于删除子网（Subnet）。
 //
 // * 删除子网前，请清理该子网下所有资源，包括云服务器、负载均衡、云数据、NoSQL、弹性网卡等资源。
 //
@@ -10866,7 +10868,7 @@ func NewDescribeRouteTablesResponse() (response *DescribeRouteTablesResponse) {
 }
 
 // DescribeRouteTables
-//  本接口（DescribeRouteTables）用于查询路由表。
+// 本接口（DescribeRouteTables）用于查询路由表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
@@ -10883,7 +10885,7 @@ func (c *Client) DescribeRouteTables(request *DescribeRouteTablesRequest) (respo
 }
 
 // DescribeRouteTables
-//  本接口（DescribeRouteTables）用于查询路由表。
+// 本接口（DescribeRouteTables）用于查询路由表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
@@ -11876,7 +11878,7 @@ func NewDescribeUsedIpAddressResponse() (response *DescribeUsedIpAddressResponse
 // DescribeUsedIpAddress
 // 本接口(DescribeUsedIpAddress)用于查询Subnet或者Vpc内的ip的使用情况，
 //
-// 如被ip被占用，返回占用ip的资源类别与id；如未被占用，返回空值
+// 如ip被占用，返回占用ip的资源类别与id；如未被占用，返回空值
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -11888,7 +11890,7 @@ func (c *Client) DescribeUsedIpAddress(request *DescribeUsedIpAddressRequest) (r
 // DescribeUsedIpAddress
 // 本接口(DescribeUsedIpAddress)用于查询Subnet或者Vpc内的ip的使用情况，
 //
-// 如被ip被占用，返回占用ip的资源类别与id；如未被占用，返回空值
+// 如ip被占用，返回占用ip的资源类别与id；如未被占用，返回空值
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"

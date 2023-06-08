@@ -390,6 +390,63 @@ type CVMAssetVO struct {
 	RiskExposure *int64 `json:"RiskExposure,omitempty" name:"RiskExposure"`
 }
 
+// Predefined struct for user
+type CreateDomainAndIpRequestParams struct {
+	// -
+	Content []*string `json:"Content,omitempty" name:"Content"`
+}
+
+type CreateDomainAndIpRequest struct {
+	*tchttp.BaseRequest
+	
+	// -
+	Content []*string `json:"Content,omitempty" name:"Content"`
+}
+
+func (r *CreateDomainAndIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainAndIpRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainAndIpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDomainAndIpResponseParams struct {
+	// 返回创建成功的数量
+	Data *int64 `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDomainAndIpResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDomainAndIpResponseParams `json:"Response"`
+}
+
+func (r *CreateDomainAndIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainAndIpResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DBAssetVO struct {
 	// 资产id
 	// 注意：此字段可能返回 null，表示取不到有效值。

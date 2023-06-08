@@ -2112,7 +2112,7 @@ type ContainerGroupOther struct {
 
 	// 健康检查相关字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HealthCheckSettings []*HealthCheckSetting `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitempty" name:"HealthCheckSettings"`
 
 	// 服务配置信息是否匹配
 	// 注意：此字段可能返回 null，表示取不到有效值。

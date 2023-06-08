@@ -4978,7 +4978,8 @@ type HealthCheck struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOut *int64 `json:"TimeOut,omitempty" name:"TimeOut"`
 
-	// 健康检查探测间隔时间，默认值：5，可选值：5~300，单位：秒。
+	// 健康检查探测间隔时间，默认值：5，IPv4 CLB实例的取值范围为：2-300，IPv6 CLB 实例的取值范围为：5-300。单位：秒。
+	// 说明：部分老旧 IPv4 CLB实例的取值范围为：5-300。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntervalTime *int64 `json:"IntervalTime,omitempty" name:"IntervalTime"`
 

@@ -1771,6 +1771,9 @@ type CreateEnvironmentRequestParams struct {
 
 	// 消息保留策略
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
+
+	// 是否开启自动创建订阅
+	AutoSubscriptionCreation *bool `json:"AutoSubscriptionCreation,omitempty" name:"AutoSubscriptionCreation"`
 }
 
 type CreateEnvironmentRequest struct {
@@ -1790,6 +1793,9 @@ type CreateEnvironmentRequest struct {
 
 	// 消息保留策略
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
+
+	// 是否开启自动创建订阅
+	AutoSubscriptionCreation *bool `json:"AutoSubscriptionCreation,omitempty" name:"AutoSubscriptionCreation"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -1809,6 +1815,7 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "ClusterId")
 	delete(f, "RetentionPolicy")
+	delete(f, "AutoSubscriptionCreation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
 	}
@@ -7629,6 +7636,10 @@ type Environment struct {
 	// 消息保留策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
+
+	// 是否自动创建订阅
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoSubscriptionCreation *bool `json:"AutoSubscriptionCreation,omitempty" name:"AutoSubscriptionCreation"`
 }
 
 type EnvironmentRole struct {
@@ -8500,6 +8511,9 @@ type ModifyEnvironmentAttributesRequestParams struct {
 
 	// 消息保留策略
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
+
+	// 是否开启自动创建订阅
+	AutoSubscriptionCreation *bool `json:"AutoSubscriptionCreation,omitempty" name:"AutoSubscriptionCreation"`
 }
 
 type ModifyEnvironmentAttributesRequest struct {
@@ -8519,6 +8533,9 @@ type ModifyEnvironmentAttributesRequest struct {
 
 	// 消息保留策略
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
+
+	// 是否开启自动创建订阅
+	AutoSubscriptionCreation *bool `json:"AutoSubscriptionCreation,omitempty" name:"AutoSubscriptionCreation"`
 }
 
 func (r *ModifyEnvironmentAttributesRequest) ToJsonString() string {
@@ -8538,6 +8555,7 @@ func (r *ModifyEnvironmentAttributesRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "ClusterId")
 	delete(f, "RetentionPolicy")
+	delete(f, "AutoSubscriptionCreation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEnvironmentAttributesRequest has unknown keys!", "")
 	}

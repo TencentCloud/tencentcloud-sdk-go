@@ -87,6 +87,54 @@ func (c *Client) AddNewBindRoleUserWithContext(ctx context.Context, request *Add
     return
 }
 
+func NewCreateDomainAndIpRequest() (request *CreateDomainAndIpRequest) {
+    request = &CreateDomainAndIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "CreateDomainAndIp")
+    
+    
+    return
+}
+
+func NewCreateDomainAndIpResponse() (response *CreateDomainAndIpResponse) {
+    response = &CreateDomainAndIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDomainAndIp
+// 创建域名、ip相关信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDomainAndIp(request *CreateDomainAndIpRequest) (response *CreateDomainAndIpResponse, err error) {
+    return c.CreateDomainAndIpWithContext(context.Background(), request)
+}
+
+// CreateDomainAndIp
+// 创建域名、ip相关信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDomainAndIpWithContext(ctx context.Context, request *CreateDomainAndIpRequest) (response *CreateDomainAndIpResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainAndIpRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainAndIp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDomainAndIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCVMAssetInfoRequest() (request *DescribeCVMAssetInfoRequest) {
     request = &DescribeCVMAssetInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,12 +155,18 @@ func NewDescribeCVMAssetInfoResponse() (response *DescribeCVMAssetInfoResponse) 
 
 // DescribeCVMAssetInfo
 // cvm详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCVMAssetInfo(request *DescribeCVMAssetInfoRequest) (response *DescribeCVMAssetInfoResponse, err error) {
     return c.DescribeCVMAssetInfoWithContext(context.Background(), request)
 }
 
 // DescribeCVMAssetInfo
 // cvm详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCVMAssetInfoWithContext(ctx context.Context, request *DescribeCVMAssetInfoRequest) (response *DescribeCVMAssetInfoResponse, err error) {
     if request == nil {
         request = NewDescribeCVMAssetInfoRequest()
@@ -149,12 +203,18 @@ func NewDescribeCVMAssetsResponse() (response *DescribeCVMAssetsResponse) {
 
 // DescribeCVMAssets
 // cvm列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCVMAssets(request *DescribeCVMAssetsRequest) (response *DescribeCVMAssetsResponse, err error) {
     return c.DescribeCVMAssetsWithContext(context.Background(), request)
 }
 
 // DescribeCVMAssets
 // cvm列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCVMAssetsWithContext(ctx context.Context, request *DescribeCVMAssetsRequest) (response *DescribeCVMAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeCVMAssetsRequest()
@@ -191,12 +251,18 @@ func NewDescribeDbAssetInfoResponse() (response *DescribeDbAssetInfoResponse) {
 
 // DescribeDbAssetInfo
 // db资产详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDbAssetInfo(request *DescribeDbAssetInfoRequest) (response *DescribeDbAssetInfoResponse, err error) {
     return c.DescribeDbAssetInfoWithContext(context.Background(), request)
 }
 
 // DescribeDbAssetInfo
 // db资产详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDbAssetInfoWithContext(ctx context.Context, request *DescribeDbAssetInfoRequest) (response *DescribeDbAssetInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDbAssetInfoRequest()
@@ -233,12 +299,18 @@ func NewDescribeDbAssetsResponse() (response *DescribeDbAssetsResponse) {
 
 // DescribeDbAssets
 // 资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDbAssets(request *DescribeDbAssetsRequest) (response *DescribeDbAssetsResponse, err error) {
     return c.DescribeDbAssetsWithContext(context.Background(), request)
 }
 
 // DescribeDbAssets
 // 资产列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDbAssetsWithContext(ctx context.Context, request *DescribeDbAssetsRequest) (response *DescribeDbAssetsResponse, err error) {
     if request == nil {
         request = NewDescribeDbAssetsRequest()

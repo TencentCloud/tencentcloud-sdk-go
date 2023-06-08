@@ -6608,6 +6608,8 @@ func NewSendMessagesResponse() (response *SendMessagesResponse) {
 // SendMessages
 // 发送单条消息
 //
+// 不支持持久topic
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"
 //  FAILEDOPERATION_CREATEPULSARCLIENTERROR = "FailedOperation.CreatePulsarClientError"
@@ -6626,6 +6628,8 @@ func (c *Client) SendMessages(request *SendMessagesRequest) (response *SendMessa
 
 // SendMessages
 // 发送单条消息
+//
+// 不支持持久topic
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEPRODUCERERROR = "FailedOperation.CreateProducerError"

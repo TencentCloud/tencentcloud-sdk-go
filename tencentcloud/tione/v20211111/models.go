@@ -4685,6 +4685,9 @@ type DescribeTrainingTaskPodsResponseParams struct {
 	// 数量
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
+	// pod详细信息
+	PodInfoList *PodInfo `json:"PodInfoList,omitempty" name:"PodInfoList"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -5894,6 +5897,16 @@ type Pod struct {
 	// 容器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerInfos []*Container `json:"ContainerInfos,omitempty" name:"ContainerInfos"`
+}
+
+type PodInfo struct {
+	// pod名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// pod的IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IP *string `json:"IP,omitempty" name:"IP"`
 }
 
 type PointInfo struct {

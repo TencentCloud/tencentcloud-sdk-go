@@ -18836,6 +18836,110 @@ type SchemaDetail struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+type ScriptInfoResponse struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 脚本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件扩展名类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileExtensionType *string `json:"FileExtensionType,omitempty" name:"FileExtensionType"`
+
+	// 文件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// md5值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5Value *string `json:"Md5Value,omitempty" name:"Md5Value"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *float64 `json:"Size,omitempty" name:"Size"`
+
+	// 本地路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
+
+	// 远程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
+
+	// 用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerName *string `json:"OwnerName,omitempty" name:"OwnerName"`
+
+	// 用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 路径深度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathDepth *int64 `json:"PathDepth,omitempty" name:"PathDepth"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
+
+	// 本地临时文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalTempPath *string `json:"LocalTempPath,omitempty" name:"LocalTempPath"`
+
+	// 本地压缩文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZipPath *string `json:"ZipPath,omitempty" name:"ZipPath"`
+
+	// cos桶名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// cos地区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type ScriptRequestInfo struct {
+	// 脚本路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 脚本版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 操作类型
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 额外信息
+	ExtraInfo *string `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
+
+	// 桶名称
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 所属地区
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 文件扩展类型
+	FileExtensionType *string `json:"FileExtensionType,omitempty" name:"FileExtensionType"`
+}
+
 type SearchCondition struct {
 	// 查询框架，必选
 	Instance *SearchConditionInstance `json:"Instance,omitempty" name:"Instance"`
@@ -20718,6 +20822,64 @@ func (r *UpdateInLongAgentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateInLongAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadContentRequestParams struct {
+	// 脚本上传信息
+	ScriptRequestInfo *ScriptRequestInfo `json:"ScriptRequestInfo,omitempty" name:"ScriptRequestInfo"`
+}
+
+type UploadContentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 脚本上传信息
+	ScriptRequestInfo *ScriptRequestInfo `json:"ScriptRequestInfo,omitempty" name:"ScriptRequestInfo"`
+}
+
+func (r *UploadContentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadContentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ScriptRequestInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadContentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadContentResponseParams struct {
+	// 脚本信息响应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScriptInfo *ScriptInfoResponse `json:"ScriptInfo,omitempty" name:"ScriptInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UploadContentResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadContentResponseParams `json:"Response"`
+}
+
+func (r *UploadContentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadContentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

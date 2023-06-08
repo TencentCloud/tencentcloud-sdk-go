@@ -528,8 +528,11 @@ type CreateCallOutSessionRequestParams struct {
 	// 被叫号码，须带 0086 前缀
 	Callee *string `json:"Callee,omitempty" name:"Callee"`
 
-	// 主叫号码，须带 0086 前缀
+	// 主叫号码（废弃，使用Callers），须带 0086 前缀
 	Caller *string `json:"Caller,omitempty" name:"Caller"`
+
+	// 指定主叫号码列表，如果前面的号码失败了会自动换成下一个号码，须带 0086 前缀
+	Callers []*string `json:"Callers,omitempty" name:"Callers"`
 
 	// 是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单
 	IsForceUseMobile *bool `json:"IsForceUseMobile,omitempty" name:"IsForceUseMobile"`
@@ -550,8 +553,11 @@ type CreateCallOutSessionRequest struct {
 	// 被叫号码，须带 0086 前缀
 	Callee *string `json:"Callee,omitempty" name:"Callee"`
 
-	// 主叫号码，须带 0086 前缀
+	// 主叫号码（废弃，使用Callers），须带 0086 前缀
 	Caller *string `json:"Caller,omitempty" name:"Caller"`
+
+	// 指定主叫号码列表，如果前面的号码失败了会自动换成下一个号码，须带 0086 前缀
+	Callers []*string `json:"Callers,omitempty" name:"Callers"`
 
 	// 是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单
 	IsForceUseMobile *bool `json:"IsForceUseMobile,omitempty" name:"IsForceUseMobile"`
@@ -576,6 +582,7 @@ func (r *CreateCallOutSessionRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "Callee")
 	delete(f, "Caller")
+	delete(f, "Callers")
 	delete(f, "IsForceUseMobile")
 	delete(f, "Uui")
 	if len(f) > 0 {

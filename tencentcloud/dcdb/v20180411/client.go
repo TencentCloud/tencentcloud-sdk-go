@@ -3047,6 +3047,70 @@ func (c *Client) InitDCDBInstancesWithContext(ctx context.Context, request *Init
     return
 }
 
+func NewIsolateDCDBInstanceRequest() (request *IsolateDCDBInstanceRequest) {
+    request = &IsolateDCDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "IsolateDCDBInstance")
+    
+    
+    return
+}
+
+func NewIsolateDCDBInstanceResponse() (response *IsolateDCDBInstanceResponse) {
+    response = &IsolateDCDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// IsolateDCDBInstance
+// 本接口(IsolateDCDBInstance)用于隔离分布式数据库TDSQL实例（包年包月），隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_INSTANCECANNOTRETURN = "FailedOperation.InstanceCanNotReturn"
+//  FAILEDOPERATION_INSTANCERETURNFAILED = "FailedOperation.InstanceReturnFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) IsolateDCDBInstance(request *IsolateDCDBInstanceRequest) (response *IsolateDCDBInstanceResponse, err error) {
+    return c.IsolateDCDBInstanceWithContext(context.Background(), request)
+}
+
+// IsolateDCDBInstance
+// 本接口(IsolateDCDBInstance)用于隔离分布式数据库TDSQL实例（包年包月），隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_INSTANCECANNOTRETURN = "FailedOperation.InstanceCanNotReturn"
+//  FAILEDOPERATION_INSTANCERETURNFAILED = "FailedOperation.InstanceReturnFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) IsolateDCDBInstanceWithContext(ctx context.Context, request *IsolateDCDBInstanceRequest) (response *IsolateDCDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateDCDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolateDCDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIsolateDCDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIsolateDedicatedDBInstanceRequest() (request *IsolateDedicatedDBInstanceRequest) {
     request = &IsolateDedicatedDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
