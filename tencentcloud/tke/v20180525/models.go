@@ -1197,6 +1197,9 @@ type ClusterLevelChangeRecord struct {
 	// 变配触发类型：manual 手动,auto 自动
 	TriggerType *string `json:"TriggerType,omitempty" name:"TriggerType"`
 
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
 	// 开始时间
 	StartedAt *string `json:"StartedAt,omitempty" name:"StartedAt"`
 

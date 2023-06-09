@@ -1466,7 +1466,7 @@ func NewChannelCreateUserRolesResponse() (response *ChannelCreateUserRolesRespon
 }
 
 // ChannelCreateUserRoles
-// 绑定员工角色
+// 通过此接口，绑定员工角色，支持以电子签userId、客户系统userId两种方式调用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1481,7 +1481,7 @@ func (c *Client) ChannelCreateUserRoles(request *ChannelCreateUserRolesRequest) 
 }
 
 // ChannelCreateUserRoles
-// 绑定员工角色
+// 通过此接口，绑定员工角色，支持以电子签userId、客户系统userId两种方式调用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1526,7 +1526,7 @@ func NewChannelDeleteRoleUsersResponse() (response *ChannelDeleteRoleUsersRespon
 }
 
 // ChannelDeleteRoleUsers
-// 删除员工绑定角色
+// 通过此接口，删除员工绑定的角色，支持以电子签userId、客户系统userId两种方式调用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1540,7 +1540,7 @@ func (c *Client) ChannelDeleteRoleUsers(request *ChannelDeleteRoleUsersRequest) 
 }
 
 // ChannelDeleteRoleUsers
-// 删除员工绑定角色
+// 通过此接口，删除员工绑定的角色，支持以电子签userId、客户系统userId两种方式调用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -3972,6 +3972,34 @@ type DomainInfo struct {
 	// 域名所有者的账户昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerNick *string `json:"OwnerNick,omitempty" name:"OwnerNick"`
+
+	// 是否在付费套餐宽限期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsGracePeriod *string `json:"IsGracePeriod,omitempty" name:"IsGracePeriod"`
+
+	// 是否在付费套餐缓冲期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipBuffered *string `json:"VipBuffered,omitempty" name:"VipBuffered"`
+
+	// VIP套餐有效期开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipStartAt *string `json:"VipStartAt,omitempty" name:"VipStartAt"`
+
+	// VIP套餐有效期结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipEndAt *string `json:"VipEndAt,omitempty" name:"VipEndAt"`
+
+	// VIP套餐自动续费标识。可能的值为：default-默认；no-不自动续费；yes-自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipAutoRenew *string `json:"VipAutoRenew,omitempty" name:"VipAutoRenew"`
+
+	// VIP套餐资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipResourceId *string `json:"VipResourceId,omitempty" name:"VipResourceId"`
+
+	// 是否是子域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSubDomain *bool `json:"IsSubDomain,omitempty" name:"IsSubDomain"`
 }
 
 type DomainListItem struct {

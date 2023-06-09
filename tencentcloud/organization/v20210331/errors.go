@@ -17,11 +17,26 @@ package v20210331
 const (
 	// 此产品的特有错误码
 
+	// 该帐号已被注册。
+	FAILEDOPERATION_ACCOUNTALREADYREGISTER = "FailedOperation.AccountAlreadyRegister"
+
 	// 用户未实名。
 	FAILEDOPERATION_AUTHINFOEMPTY = "FailedOperation.AuthInfoEmpty"
 
 	// 用户非企业实名。
 	FAILEDOPERATION_AUTHNOTENTERPRISE = "FailedOperation.AuthNotEnterprise"
+
+	// 绑定邮箱链接过期。
+	FAILEDOPERATION_BINDEMAILLINKEXPIRED = "FailedOperation.BindEmailLinkExpired"
+
+	// 绑定邮箱链接无效。
+	FAILEDOPERATION_BINDEMAILLINKINVALID = "FailedOperation.BindEmailLinkInvalid"
+
+	// 检查手机绑定上限失败。
+	FAILEDOPERATION_CHECKACCOUNTPHONEBINDLIMIT = "FailedOperation.CheckAccountPhoneBindLimit"
+
+	// 检查邮箱绑定状态失败。
+	FAILEDOPERATION_CHECKMAILACCOUNT = "FailedOperation.CheckMailAccount"
 
 	// 创建成员异常。
 	FAILEDOPERATION_CREATEACCOUNT = "FailedOperation.CreateAccount"
@@ -47,8 +62,23 @@ const (
 	// 不能退出自己创建的企业组织。
 	FAILEDOPERATION_DISABLEQUITSELFCREATEDORGANIZATION = "FailedOperation.DisableQuitSelfCreatedOrganization"
 
+	// 邮箱已经被使用。
+	FAILEDOPERATION_EMAILALREADYUSED = "FailedOperation.EmailAlreadyUsed"
+
+	// 邮箱绑定已经失效。
+	FAILEDOPERATION_EMAILBINDRECORDINVALID = "FailedOperation.EmailBindRecordInvalid"
+
 	// 查询实名信息出错。
 	FAILEDOPERATION_GETAUTHINFO = "FailedOperation.GetAuthInfo"
+
+	// 邮箱绑定失败。
+	FAILEDOPERATION_MEMBERBINDEMAILERROR = "FailedOperation.MemberBindEmailError"
+
+	// 安全手机绑定失败。
+	FAILEDOPERATION_MEMBERBINDPHONEERROR = "FailedOperation.MemberBindPhoneError"
+
+	// 成员存在邮箱。
+	FAILEDOPERATION_MEMBEREMAILEXIST = "FailedOperation.MemberEmailExist"
 
 	// 成员存在代付者,不允许删除。
 	FAILEDOPERATION_MEMBEREXISTDELEGATEPAYERNOTALLOWDELETE = "FailedOperation.MemberExistDelegatePayerNotAllowDelete"
@@ -122,8 +152,23 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 手机验证码错误。
+	INVALIDPARAMETER_CODEERROR = "InvalidParameter.CodeError"
+
+	// 手机验证码已过期。
+	INVALIDPARAMETER_CODEEXPIRED = "InvalidParameter.CodeExpired"
+
+	// 无效的邮箱。
+	INVALIDPARAMETER_INVALIDEMAIL = "InvalidParameter.InvalidEmail"
+
+	// 密码不合法。
+	INVALIDPARAMETER_PASSWORDILLEGAL = "InvalidParameter.PasswordIllegal"
+
 	// 创建成员超过上限。
 	LIMITEXCEEDED_CREATEMEMBEROVERLIMIT = "LimitExceeded.CreateMemberOverLimit"
+
+	// 配置邮箱超过当日上限。
+	LIMITEXCEEDED_EMAILBINDOVERLIMIT = "LimitExceeded.EmailBindOverLimit"
 
 	// 企业组织单元层级太多。
 	LIMITEXCEEDED_NODEDEPTHEXCEEDLIMIT = "LimitExceeded.NodeDepthExceedLimit"
@@ -133,6 +178,15 @@ const (
 
 	// 成员超过上限。
 	LIMITEXCEEDED_ORGANIZATIONMEMBEROVERLIMIT = "LimitExceeded.OrganizationMemberOverLimit"
+
+	// 手机超过绑定上限。
+	LIMITEXCEEDED_PHONENUMBOUND = "LimitExceeded.PhoneNumBound"
+
+	// 修改成员绑定信息超过限制。
+	LIMITEXCEEDED_UPDATEEMAILBINDOVERLIMIT = "LimitExceeded.UpdateEmailBindOverLimit"
+
+	// 邮箱绑定记录不存在。
+	RESOURCENOTFOUND_EMAILBINDRECORDNOTEXIST = "ResourceNotFound.EmailBindRecordNotExist"
 
 	// 成员可授权身份不存在。
 	RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = "ResourceNotFound.MemberIdentityNotExist"
@@ -154,6 +208,9 @@ const (
 
 	// 集团服务不存在。
 	RESOURCENOTFOUND_ORGANIZATIONSERVICENOTEXIST = "ResourceNotFound.OrganizationServiceNotExist"
+
+	// 用户不存在。
+	RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"

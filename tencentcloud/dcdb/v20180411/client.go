@@ -3424,7 +3424,7 @@ func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResp
 //
 // - 只读账号授予读写权限会报错
 //
-// - 不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组
+// - 不传权限参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3449,7 +3449,7 @@ func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest
 //
 // - 只读账号授予读写权限会报错
 //
-// - 不传该参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组
+// - 不传权限参数表示保留现有权限，如需清除，请在复杂类型Privileges字段传空数组
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

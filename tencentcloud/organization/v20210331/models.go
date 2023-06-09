@@ -21,6 +21,81 @@ import (
 )
 
 // Predefined struct for user
+type AddOrganizationMemberEmailRequestParams struct {
+	// 成员Uin
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 邮箱地址
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 国际区号
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+}
+
+type AddOrganizationMemberEmailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员Uin
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 邮箱地址
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 国际区号
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+}
+
+func (r *AddOrganizationMemberEmailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddOrganizationMemberEmailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	delete(f, "Email")
+	delete(f, "CountryCode")
+	delete(f, "Phone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddOrganizationMemberEmailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddOrganizationMemberEmailResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddOrganizationMemberEmailResponse struct {
+	*tchttp.BaseResponse
+	Response *AddOrganizationMemberEmailResponseParams `json:"Response"`
+}
+
+func (r *AddOrganizationMemberEmailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddOrganizationMemberEmailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddOrganizationNodeRequestParams struct {
 	// 父节点ID。可以调用DescribeOrganizationNodes获取
 	ParentNodeId *uint64 `json:"ParentNodeId,omitempty" name:"ParentNodeId"`
@@ -781,6 +856,96 @@ func (r *DescribeOrganizationMemberAuthIdentitiesResponse) ToJsonString() string
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeOrganizationMemberAuthIdentitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationMemberEmailBindRequestParams struct {
+	// 成员Uin
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+}
+
+type DescribeOrganizationMemberEmailBindRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员Uin
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+}
+
+func (r *DescribeOrganizationMemberEmailBindRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationMemberEmailBindRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationMemberEmailBindRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationMemberEmailBindResponseParams struct {
+	// 绑定ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindId *uint64 `json:"BindId,omitempty" name:"BindId"`
+
+	// 申请时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyTime *string `json:"ApplyTime,omitempty" name:"ApplyTime"`
+
+	// 邮箱地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 手机号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 绑定状态    未绑定：Unbound，待激活：Valid，绑定成功：Success，绑定失败：Failed
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindStatus *string `json:"BindStatus,omitempty" name:"BindStatus"`
+
+	// 绑定时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindTime *string `json:"BindTime,omitempty" name:"BindTime"`
+
+	// 失败说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 安全手机绑定状态  未绑定：0，已绑定：1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhoneBind *uint64 `json:"PhoneBind,omitempty" name:"PhoneBind"`
+
+	// 国际区号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationMemberEmailBindResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationMemberEmailBindResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationMemberEmailBindResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationMemberEmailBindResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1565,6 +1730,88 @@ type OrgPermission struct {
 
 	// 权限名
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+// Predefined struct for user
+type UpdateOrganizationMemberEmailBindRequestParams struct {
+	// 成员Uin
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 绑定ID
+	BindId *int64 `json:"BindId,omitempty" name:"BindId"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 国际区号
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+}
+
+type UpdateOrganizationMemberEmailBindRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员Uin
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 绑定ID
+	BindId *int64 `json:"BindId,omitempty" name:"BindId"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 国际区号
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+}
+
+func (r *UpdateOrganizationMemberEmailBindRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOrganizationMemberEmailBindRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	delete(f, "BindId")
+	delete(f, "Email")
+	delete(f, "CountryCode")
+	delete(f, "Phone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOrganizationMemberEmailBindRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOrganizationMemberEmailBindResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateOrganizationMemberEmailBindResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateOrganizationMemberEmailBindResponseParams `json:"Response"`
+}
+
+func (r *UpdateOrganizationMemberEmailBindResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOrganizationMemberEmailBindResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

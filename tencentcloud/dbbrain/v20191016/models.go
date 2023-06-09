@@ -2841,6 +2841,9 @@ type SlowLogTopSqlItem struct {
 
 	// 平均扫描行数
 	RowsExaminedAvg *float64 `json:"RowsExaminedAvg,omitempty" name:"RowsExaminedAvg"`
+
+	// SOL模板的MD5值
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
 type TableSpaceData struct {

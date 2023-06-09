@@ -670,6 +670,12 @@ type BindingPolicyTagRequestParams struct {
 
 	// 批量绑定标签
 	BatchTag []*PolicyTag `json:"BatchTag,omitempty" name:"BatchTag"`
+
+	// 是否同步eb
+	EbEventFlag *int64 `json:"EbEventFlag,omitempty" name:"EbEventFlag"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
 }
 
 type BindingPolicyTagRequest struct {
@@ -695,6 +701,12 @@ type BindingPolicyTagRequest struct {
 
 	// 批量绑定标签
 	BatchTag []*PolicyTag `json:"BatchTag,omitempty" name:"BatchTag"`
+
+	// 是否同步eb
+	EbEventFlag *int64 `json:"EbEventFlag,omitempty" name:"EbEventFlag"`
+
+	// 事件配置的告警
+	EbSubject *string `json:"EbSubject,omitempty" name:"EbSubject"`
 }
 
 func (r *BindingPolicyTagRequest) ToJsonString() string {
@@ -716,6 +728,8 @@ func (r *BindingPolicyTagRequest) FromJsonString(s string) error {
 	delete(f, "Tag")
 	delete(f, "InstanceGroupId")
 	delete(f, "BatchTag")
+	delete(f, "EbEventFlag")
+	delete(f, "EbSubject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindingPolicyTagRequest has unknown keys!", "")
 	}

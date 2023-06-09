@@ -1617,6 +1617,9 @@ type AsrFullTextConfigureInfo struct {
 	// 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
 	// <li>vtt：生成 WebVTT 字幕文件。</li>
 	SubtitleFormat *string `json:"SubtitleFormat,omitempty" name:"SubtitleFormat"`
+
+	// 视频源语言。
+	SourceLanguage *string `json:"SourceLanguage,omitempty" name:"SourceLanguage"`
 }
 
 type AsrFullTextConfigureInfoForUpdate struct {
@@ -1628,6 +1631,9 @@ type AsrFullTextConfigureInfoForUpdate struct {
 	// 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
 	// <li>vtt：生成 WebVTT 字幕文件。</li>
 	SubtitleFormat *string `json:"SubtitleFormat,omitempty" name:"SubtitleFormat"`
+
+	// 视频源语言。
+	SourceLanguage *string `json:"SourceLanguage,omitempty" name:"SourceLanguage"`
 }
 
 type AsrWordsConfigureInfo struct {
@@ -2009,6 +2015,9 @@ type CreateAIRecognitionTemplateRequestParams struct {
 
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
+
+	// 语音翻译控制参数。
+	TranslateConfigure *TranslateConfigureInfo `json:"TranslateConfigure,omitempty" name:"TranslateConfigure"`
 }
 
 type CreateAIRecognitionTemplateRequest struct {
@@ -2034,6 +2043,9 @@ type CreateAIRecognitionTemplateRequest struct {
 
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
+
+	// 语音翻译控制参数。
+	TranslateConfigure *TranslateConfigureInfo `json:"TranslateConfigure,omitempty" name:"TranslateConfigure"`
 }
 
 func (r *CreateAIRecognitionTemplateRequest) ToJsonString() string {
@@ -2055,6 +2067,7 @@ func (r *CreateAIRecognitionTemplateRequest) FromJsonString(s string) error {
 	delete(f, "OcrWordsConfigure")
 	delete(f, "AsrFullTextConfigure")
 	delete(f, "AsrWordsConfigure")
+	delete(f, "TranslateConfigure")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIRecognitionTemplateRequest has unknown keys!", "")
 	}
@@ -7039,7 +7052,7 @@ type DescribeTranscodeTemplatesRequestParams struct {
 	// <li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
 	ContainerType *string `json:"ContainerType,omitempty" name:"ContainerType"`
 
-	// 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+	// （建议使用TranscodeType代替）极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
 	// <li>Common：普通转码模板；</li>
 	// <li>TEHD：极速高清模板。</li>
 	TEHDType *string `json:"TEHDType,omitempty" name:"TEHDType"`
@@ -7052,7 +7065,9 @@ type DescribeTranscodeTemplatesRequestParams struct {
 
 	// 模板类型（替换旧版本 TEHDType），可选值：
 	// <li>Common：普通转码模板；</li>
-	// <li>TEHD：极速高清模板。</li>
+	// <li>TEHD：视频极速高清，老的类型（建议使用 TEHD-100） 。</li>
+	// <li>TEHD-100：视频极速高清</li>
+	// <li>TEHD-200：音频极速高清</li>
 	// <li>Enhance：音视频增强模板。</li>
 	// 默认空，不限制类型。
 	TranscodeType *string `json:"TranscodeType,omitempty" name:"TranscodeType"`
@@ -7074,7 +7089,7 @@ type DescribeTranscodeTemplatesRequest struct {
 	// <li>PureAudio：纯音频格式，只能包含音频流的封装格式。</li>
 	ContainerType *string `json:"ContainerType,omitempty" name:"ContainerType"`
 
-	// 极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
+	// （建议使用TranscodeType代替）极速高清过滤条件，用于过滤普通转码或极速高清转码模板，可选值：
 	// <li>Common：普通转码模板；</li>
 	// <li>TEHD：极速高清模板。</li>
 	TEHDType *string `json:"TEHDType,omitempty" name:"TEHDType"`
@@ -7087,7 +7102,9 @@ type DescribeTranscodeTemplatesRequest struct {
 
 	// 模板类型（替换旧版本 TEHDType），可选值：
 	// <li>Common：普通转码模板；</li>
-	// <li>TEHD：极速高清模板。</li>
+	// <li>TEHD：视频极速高清，老的类型（建议使用 TEHD-100） 。</li>
+	// <li>TEHD-100：视频极速高清</li>
+	// <li>TEHD-200：音频极速高清</li>
 	// <li>Enhance：音视频增强模板。</li>
 	// 默认空，不限制类型。
 	TranscodeType *string `json:"TranscodeType,omitempty" name:"TranscodeType"`
@@ -9745,6 +9762,9 @@ type ModifyAIRecognitionTemplateRequestParams struct {
 
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfoForUpdate `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
+
+	// 语音翻译控制参数。
+	TranslateConfigure *TranslateConfigureInfoForUpdate `json:"TranslateConfigure,omitempty" name:"TranslateConfigure"`
 }
 
 type ModifyAIRecognitionTemplateRequest struct {
@@ -9773,6 +9793,9 @@ type ModifyAIRecognitionTemplateRequest struct {
 
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfoForUpdate `json:"AsrWordsConfigure,omitempty" name:"AsrWordsConfigure"`
+
+	// 语音翻译控制参数。
+	TranslateConfigure *TranslateConfigureInfoForUpdate `json:"TranslateConfigure,omitempty" name:"TranslateConfigure"`
 }
 
 func (r *ModifyAIRecognitionTemplateRequest) ToJsonString() string {
@@ -9795,6 +9818,7 @@ func (r *ModifyAIRecognitionTemplateRequest) FromJsonString(s string) error {
 	delete(f, "OcrWordsConfigure")
 	delete(f, "AsrFullTextConfigure")
 	delete(f, "AsrWordsConfigure")
+	delete(f, "TranslateConfigure")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAIRecognitionTemplateRequest has unknown keys!", "")
 	}
@@ -13709,6 +13733,32 @@ type TranscodeTemplate struct {
 	// 音视频增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitempty" name:"EnhanceConfig"`
+}
+
+type TranslateConfigureInfo struct {
+	// 语音翻译任务开关，可选值：
+	// <li>ON：开启智能语音翻译任务；</li>
+	// <li>OFF：关闭智能语音翻译任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 视频源语言。
+	SourceLanguage *string `json:"SourceLanguage,omitempty" name:"SourceLanguage"`
+
+	// 翻译目标语言。
+	DestinationLanguage *string `json:"DestinationLanguage,omitempty" name:"DestinationLanguage"`
+}
+
+type TranslateConfigureInfoForUpdate struct {
+	// 语音翻译任务开关，可选值：
+	// <li>ON：开启智能语音翻译任务；</li>
+	// <li>OFF：关闭智能语音翻译任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 视频源语言。
+	SourceLanguage *string `json:"SourceLanguage,omitempty" name:"SourceLanguage"`
+
+	// 翻译目标语言。
+	DestinationLanguage *string `json:"DestinationLanguage,omitempty" name:"DestinationLanguage"`
 }
 
 type UrlInputInfo struct {

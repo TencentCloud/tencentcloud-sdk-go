@@ -74,6 +74,12 @@ const (
 	// 模板无资源信息。
 	FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 
+	// 无法撤销，用户已开通自动签。
+	FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
+
+	// 无法撤销，用户未生成开通链接。
+	FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
+
 	// 用户信息不匹配，请检查后重试。
 	FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
 

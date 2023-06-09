@@ -601,6 +601,9 @@ func (r *CreateBaseBackupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBaseBackupResponseParams struct {
+	// 基础备份集ID
+	BaseBackupId *string `json:"BaseBackupId,omitempty" name:"BaseBackupId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1844,7 +1847,7 @@ type DBInstance struct {
 	// 实例名称
 	DBInstanceName *string `json:"DBInstanceName,omitempty" name:"DBInstanceName"`
 
-	// 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolated（已隔离）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、network changing（网络变更中）、upgrading（内核版本升级中）
+	// 实例状态，分别为：applying（申请中）、init(待初始化)、initing(初始化中)、running(运行中)、limited run（受限运行）、isolating（隔离中）、isolated（已隔离）、recycling（回收中）、recycled（已回收）、job running（任务执行中）、offline（下线）、migrating（迁移中）、expanding（扩容中）、waitSwitch（等待切换）、switching（切换中）、readonly（只读）、restarting（重启中）、network changing（网络变更中）、upgrading（内核版本升级中）
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" name:"DBInstanceStatus"`
 
 	// 实例分配的内存大小，单位：GB
@@ -2991,6 +2994,7 @@ type DescribeBaseBackupsRequestParams struct {
 	// db-instance-id：按照实例ID过滤，类型为string。
 	// db-instance-name：按照实例名过滤，类型为string。
 	// db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
+	// base-backup-id：按照备份集ID过滤，类型为string。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
@@ -3019,6 +3023,7 @@ type DescribeBaseBackupsRequest struct {
 	// db-instance-id：按照实例ID过滤，类型为string。
 	// db-instance-name：按照实例名过滤，类型为string。
 	// db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
+	// base-backup-id：按照备份集ID过滤，类型为string。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
@@ -4623,7 +4628,9 @@ func (r *DescribeProductConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReadOnlyGroupsRequestParams struct {
-	// 过滤条件，必须传入主实例ID进行过滤，否则返回值将为空，过滤参数为：db-master-instance-id
+	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+	// db-master-instance-id：按照主实例过滤，类型为string。
+	// read-only-group-id：按照只读组ID过滤，类型为string。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询每一页的条数，默认为10
@@ -4642,7 +4649,9 @@ type DescribeReadOnlyGroupsRequestParams struct {
 type DescribeReadOnlyGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，必须传入主实例ID进行过滤，否则返回值将为空，过滤参数为：db-master-instance-id
+	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
+	// db-master-instance-id：按照主实例过滤，类型为string。
+	// read-only-group-id：按照只读组ID过滤，类型为string。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 查询每一页的条数，默认为10

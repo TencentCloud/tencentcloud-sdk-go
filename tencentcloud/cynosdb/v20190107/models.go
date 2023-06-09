@@ -2365,6 +2365,10 @@ type CynosdbClusterDetail struct {
 	// 集群绑定的资源包信息	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourcePackages []*ResourcePackage `json:"ResourcePackages,omitempty" name:"ResourcePackages"`
+
+	// 自动续费标识，1为自动续费，0为到期不续
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
 type CynosdbErrorLogItem struct {
@@ -5544,14 +5548,14 @@ func (r *DescribeMaintainPeriodResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeParamTemplateDetailRequestParams struct {
-	// 参数模版ID
+	// 参数模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type DescribeParamTemplateDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模版ID
+	// 参数模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -5576,13 +5580,13 @@ func (r *DescribeParamTemplateDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeParamTemplateDetailResponseParams struct {
-	// 参数模版ID
+	// 参数模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 参数模版名称
+	// 参数模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 参数模版描述
+	// 参数模板描述
 	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
 
 	// 引擎版本

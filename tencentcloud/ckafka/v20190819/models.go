@@ -1934,9 +1934,13 @@ type CreateInstancePreData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 
-	// 实例Id
+	// 实例Id，当购买多个实例时，默认返回购买的第一个实例 id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 订单和购买实例对应映射列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNameInstanceIdMapping []*DealInstanceDTO `json:"DealNameInstanceIdMapping,omitempty" name:"DealNameInstanceIdMapping"`
 }
 
 // Predefined struct for user
@@ -1995,6 +1999,9 @@ type CreateInstancePreRequestParams struct {
 
 	// 可用区列表，购买多可用区实例时为必填项
 	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1。默认值为 0
+	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
 }
 
 type CreateInstancePreRequest struct {
@@ -2054,6 +2061,9 @@ type CreateInstancePreRequest struct {
 
 	// 可用区列表，购买多可用区实例时为必填项
 	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1。默认值为 0
+	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
 }
 
 func (r *CreateInstancePreRequest) ToJsonString() string {
@@ -2086,6 +2096,7 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	delete(f, "DiskType")
 	delete(f, "MultiZoneFlag")
 	delete(f, "ZoneIds")
+	delete(f, "PublicNetworkMonthly")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePreRequest has unknown keys!", "")
 	}
@@ -2103,8 +2114,10 @@ type CreateInstancePreResp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CreateInstancePreData `json:"Data,omitempty" name:"Data"`
 
-	// 删除是时间
+	// 删除时间。目前该参数字段已废弃，将会在未来被删除
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DeleteRouteTimestamp is deprecated.
 	DeleteRouteTimestamp *string `json:"DeleteRouteTimestamp,omitempty" name:"DeleteRouteTimestamp"`
 }
 
@@ -2922,6 +2935,16 @@ type DateParam struct {
 	// 时区，默认GMT+8
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
+}
+
+type DealInstanceDTO struct {
+	// 订单流水
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 订单流水对应购买的 CKafka 实例 id 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 }
 
 // Predefined struct for user

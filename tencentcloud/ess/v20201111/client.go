@@ -251,6 +251,64 @@ func (c *Client) CancelMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     return
 }
 
+func NewCancelUserAutoSignEnableUrlRequest() (request *CancelUserAutoSignEnableUrlRequest) {
+    request = &CancelUserAutoSignEnableUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CancelUserAutoSignEnableUrl")
+    
+    
+    return
+}
+
+func NewCancelUserAutoSignEnableUrlResponse() (response *CancelUserAutoSignEnableUrlResponse) {
+    response = &CancelUserAutoSignEnableUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelUserAutoSignEnableUrl
+// 此接口（CancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
+//  FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CancelUserAutoSignEnableUrl(request *CancelUserAutoSignEnableUrlRequest) (response *CancelUserAutoSignEnableUrlResponse, err error) {
+    return c.CancelUserAutoSignEnableUrlWithContext(context.Background(), request)
+}
+
+// CancelUserAutoSignEnableUrl
+// 此接口（CancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
+//  FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CancelUserAutoSignEnableUrlWithContext(ctx context.Context, request *CancelUserAutoSignEnableUrlRequest) (response *CancelUserAutoSignEnableUrlResponse, err error) {
+    if request == nil {
+        request = NewCancelUserAutoSignEnableUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelUserAutoSignEnableUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelUserAutoSignEnableUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchCancelFlowUrlRequest() (request *CreateBatchCancelFlowUrlRequest) {
     request = &CreateBatchCancelFlowUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -388,7 +446,7 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 }
 
 // CreateConvertTaskApi
-// 上传了word、excel文件后，通过该接口发起文件转换任务，将word、excel文件转换为pdf文件。
+// 上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -404,7 +462,7 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 }
 
 // CreateConvertTaskApi
-// 上传了word、excel文件后，通过该接口发起文件转换任务，将word、excel文件转换为pdf文件。
+// 上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"

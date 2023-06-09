@@ -573,6 +573,54 @@ func (c *Client) DescribeInstanceStateWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeInstancesNewRequest() (request *DescribeInstancesNewRequest) {
+    request = &DescribeInstancesNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeInstancesNew")
+    
+    
+    return
+}
+
+func NewDescribeInstancesNewResponse() (response *DescribeInstancesNewResponse) {
+    response = &DescribeInstancesNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstancesNew
+// 获取实例列表，供外部sdk使用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstancesNew(request *DescribeInstancesNewRequest) (response *DescribeInstancesNewResponse, err error) {
+    return c.DescribeInstancesNewWithContext(context.Background(), request)
+}
+
+// DescribeInstancesNew
+// 获取实例列表，供外部sdk使用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeInstancesNewWithContext(ctx context.Context, request *DescribeInstancesNewRequest) (response *DescribeInstancesNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancesNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSpecRequest() (request *DescribeSpecRequest) {
     request = &DescribeSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},

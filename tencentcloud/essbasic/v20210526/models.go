@@ -1720,11 +1720,14 @@ type ChannelCreateUserRolesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 绑定角色的员工id列表，电子签的UserId
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
-
 	// 绑定角色的角色id列表
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+
+	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+	OpenIds []*string `json:"OpenIds,omitempty" name:"OpenIds"`
 
 	// 操作者信息
 	//
@@ -1738,11 +1741,14 @@ type ChannelCreateUserRolesRequest struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 绑定角色的员工id列表，电子签的UserId
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
-
 	// 绑定角色的角色id列表
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
+
+	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+	OpenIds []*string `json:"OpenIds,omitempty" name:"OpenIds"`
 
 	// 操作者信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -1761,8 +1767,9 @@ func (r *ChannelCreateUserRolesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Agent")
-	delete(f, "UserIds")
 	delete(f, "RoleIds")
+	delete(f, "UserIds")
+	delete(f, "OpenIds")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateUserRolesRequest has unknown keys!", "")
@@ -1803,13 +1810,16 @@ type ChannelDeleteRoleUsersRequestParams struct {
 	// 角色Id（非超管或法人角色Id）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 用户列表，电子签系统的UserId
+	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 操作人信息
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+	OpenIds []*string `json:"OpenIds,omitempty" name:"OpenIds"`
 }
 
 type ChannelDeleteRoleUsersRequest struct {
@@ -1821,11 +1831,14 @@ type ChannelDeleteRoleUsersRequest struct {
 	// 角色Id（非超管或法人角色Id）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 用户列表，电子签系统的UserId
+	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+	OpenIds []*string `json:"OpenIds,omitempty" name:"OpenIds"`
 }
 
 func (r *ChannelDeleteRoleUsersRequest) ToJsonString() string {
@@ -1844,6 +1857,7 @@ func (r *ChannelDeleteRoleUsersRequest) FromJsonString(s string) error {
 	delete(f, "RoleId")
 	delete(f, "UserIds")
 	delete(f, "Operator")
+	delete(f, "OpenIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDeleteRoleUsersRequest has unknown keys!", "")
 	}

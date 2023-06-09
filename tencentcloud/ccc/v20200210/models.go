@@ -3564,7 +3564,7 @@ type StaffBuyInfo struct {
 	// 购买时间戳
 	BuyTime *int64 `json:"BuyTime,omitempty" name:"BuyTime"`
 
-	// 截至时间戳
+	// 截止时间戳
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 

@@ -411,6 +411,74 @@ func (r *CancelMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CancelUserAutoSignEnableUrlRequestParams struct {
+	// 操作人信息，UseId必填	
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 指定撤销链接的用户指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+}
+
+type CancelUserAutoSignEnableUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息，UseId必填	
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 指定撤销链接的用户指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+}
+
+func (r *CancelUserAutoSignEnableUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelUserAutoSignEnableUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelUserAutoSignEnableUrlResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CancelUserAutoSignEnableUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelUserAutoSignEnableUrlResponseParams `json:"Response"`
+}
+
+func (r *CancelUserAutoSignEnableUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CcInfo struct {
 	// 被抄送人手机号，11位数字
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
@@ -765,7 +833,7 @@ func (r *CreateChannelSubOrganizationModifyQrCodeResponse) FromJsonString(s stri
 
 // Predefined struct for user
 type CreateConvertTaskApiRequestParams struct {
-	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
+	// 资源类型 支持doc,docx,html,xls,xlsx,jpg,jpeg,png,bmp文件类型
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -791,7 +859,7 @@ type CreateConvertTaskApiRequestParams struct {
 type CreateConvertTaskApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
+	// 资源类型 支持doc,docx,html,xls,xlsx,jpg,jpeg,png,bmp文件类型
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符

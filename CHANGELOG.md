@@ -1,3 +1,307 @@
+# Release v1.0.676
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 123 次发布
+
+发布时间：2023-06-09 01:07:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Authentication](https://cloud.tencent.com/document/api/228/30987#Authentication)
+
+	* 新增成员：AuthAlgorithm
+
+
+
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 11 次发布
+
+发布时间：2023-06-09 01:07:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstancesNew](https://cloud.tencent.com/document/api/1299/93328)
+
+新增数据结构：
+
+* [SearchTags](https://cloud.tencent.com/document/api/1299/83429#SearchTags)
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 83 次发布
+
+发布时间：2023-06-09 01:09:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+
+	* 新增入参：PublicNetworkMonthly
+
+
+新增数据结构：
+
+* [DealInstanceDTO](https://cloud.tencent.com/document/api/597/40861#DealInstanceDTO)
+
+修改数据结构：
+
+* [CreateInstancePreData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreData)
+
+	* 新增成员：DealNameInstanceIdMapping
+
+* [CreateInstancePreResp](https://cloud.tencent.com/document/api/597/40861#CreateInstancePreResp)
+
+	* <font color="#dd0000">**修改成员**：</font>DeleteRouteTimestamp
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 55 次发布
+
+发布时间：2023-06-09 01:14:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CynosdbClusterDetail](https://cloud.tencent.com/document/api/1003/48097#CynosdbClusterDetail)
+
+	* 新增成员：RenewFlag
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+### 第 13 次发布
+
+发布时间：2023-06-09 01:15:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SlowLogTopSqlItem](https://cloud.tencent.com/document/api/1130/39561#SlowLogTopSqlItem)
+
+	* 新增成员：Md5
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 18 次发布
+
+发布时间：2023-06-09 01:17:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)
+
+	* 新增成员：IsGracePeriod, VipBuffered, VipStartAt, VipEndAt, VipAutoRenew, VipResourceId, IsSubDomain
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 84 次发布
+
+发布时间：2023-06-09 01:20:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateUserRoles](https://cloud.tencent.com/document/api/1420/89389)
+
+	* 新增入参：OpenIds
+
+	* <font color="#dd0000">**修改入参**：</font>UserIds
+
+* [ChannelDeleteRoleUsers](https://cloud.tencent.com/document/api/1420/89388)
+
+	* 新增入参：OpenIds
+
+	* <font color="#dd0000">**修改入参**：</font>UserIds
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 90 次发布
+
+发布时间：2023-06-09 01:29:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
+
+	* 新增入参：EbEventFlag, EbSubject
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 63 次发布
+
+发布时间：2023-06-09 01:30:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAIRecognitionTemplate](https://cloud.tencent.com/document/api/862/39436)
+
+	* 新增入参：TranslateConfigure
+
+* [ModifyAIRecognitionTemplate](https://cloud.tencent.com/document/api/862/39430)
+
+	* 新增入参：TranslateConfigure
+
+
+新增数据结构：
+
+* [TranslateConfigureInfo](https://cloud.tencent.com/document/api/862/37615#TranslateConfigureInfo)
+* [TranslateConfigureInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#TranslateConfigureInfoForUpdate)
+
+修改数据结构：
+
+* [AsrFullTextConfigureInfo](https://cloud.tencent.com/document/api/862/37615#AsrFullTextConfigureInfo)
+
+	* 新增成员：SourceLanguage
+
+* [AsrFullTextConfigureInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#AsrFullTextConfigureInfoForUpdate)
+
+	* 新增成员：SourceLanguage
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 103 次发布
+
+发布时间：2023-06-09 01:31:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+
+	* 新增入参：EnableCopyWarn
+
+
+
+
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 18 次发布
+
+发布时间：2023-06-09 01:35:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddOrganizationMemberEmail](https://cloud.tencent.com/document/api/850/93333)
+* [DescribeOrganizationMemberEmailBind](https://cloud.tencent.com/document/api/850/93332)
+* [UpdateOrganizationMemberEmailBind](https://cloud.tencent.com/document/api/850/93331)
+
+
+
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 36 次发布
+
+发布时间：2023-06-09 01:35:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBaseBackup](https://cloud.tencent.com/document/api/409/89028)
+
+	* 新增出参：BaseBackupId
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 151 次发布
+
+发布时间：2023-06-09 01:45:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterLevelChangeRecord](https://cloud.tencent.com/document/api/457/31866#ClusterLevelChangeRecord)
+
+	* 新增成员：CreatedAt
+
+
+
+
 # Release v1.0.675
 
 ## API 网关(apigateway) 版本：2018-08-08
