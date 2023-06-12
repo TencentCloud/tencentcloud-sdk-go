@@ -1779,6 +1779,189 @@ type AwsSQS struct {
 	S3SecretKey *string `json:"S3SecretKey,omitempty" name:"S3SecretKey"`
 }
 
+// Predefined struct for user
+type BatchDeleteStreamLinkFlowRequestParams struct {
+	// EventId。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// Event关联的流Id数组，如果不传默认删除Event下面的所有媒体传输流。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+type BatchDeleteStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// EventId。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// Event关联的流Id数组，如果不传默认删除Event下面的所有媒体传输流。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+func (r *BatchDeleteStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	delete(f, "FlowIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteStreamLinkFlowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchDeleteStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDeleteStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *BatchDeleteStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchStartStreamLinkFlowRequestParams struct {
+	// EventId。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// Event关联的流Id数组，如果不传默认启动Event下面的所有媒体传输流。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+type BatchStartStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// EventId。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// Event关联的流Id数组，如果不传默认启动Event下面的所有媒体传输流。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+func (r *BatchStartStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchStartStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	delete(f, "FlowIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStartStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchStartStreamLinkFlowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchStartStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchStartStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *BatchStartStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchStartStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchStopStreamLinkFlowRequestParams struct {
+	// EventId。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 流Id，如果不传默认停止Event下所有的媒体传输流。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+type BatchStopStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// EventId。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 流Id，如果不传默认停止Event下所有的媒体传输流。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+func (r *BatchStopStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchStopStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	delete(f, "FlowIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStopStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchStopStreamLinkFlowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchStopStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchStopStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *BatchStopStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchStopStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ClassificationConfigureInfo struct {
 	// 智能分类任务开关，可选值：
 	// <li>ON：开启智能分类任务；</li>
@@ -3289,6 +3472,70 @@ func (r *CreateSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type CreateStreamLinkEventRequestParams struct {
+	// 事件名称。
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// 事件描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type CreateStreamLinkEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件名称。
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// 事件描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateStreamLinkEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamLinkEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamLinkEventResponseParams struct {
+	// 创建的Event信息。
+	Info *DescribeEvent `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateStreamLinkEventResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamLinkEventResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamLinkEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateStreamLinkFlowRequestParams struct {
 	// 流名称。
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
@@ -4503,6 +4750,60 @@ func (r *DeleteSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type DeleteStreamLinkEventRequestParams struct {
+	// 媒体传输事件Id，删除前需要保证该Event关联的所有Flow都已经删除。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
+type DeleteStreamLinkEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体传输事件Id，删除前需要保证该Event关联的所有Flow都已经删除。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
+func (r *DeleteStreamLinkEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamLinkEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamLinkEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamLinkEventResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamLinkEventResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamLinkEventResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamLinkEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamLinkEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteStreamLinkFlowRequestParams struct {
 	// 传输流Id。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
@@ -5258,6 +5559,29 @@ func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeEvent struct {
+	// Event的名称。
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// Event的Id，唯一标识一个event。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// Event创建时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// Event的描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// Event的状态信息
+	// 0：未运行
+	// 1：运行中
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// Event关联的Flow列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttachedFlowGroup []*DescribeFlowId `json:"AttachedFlowGroup,omitempty" name:"AttachedFlowGroup"`
+}
+
 type DescribeFlow struct {
 	// 流Id。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
@@ -5282,6 +5606,14 @@ type DescribeFlow struct {
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 
 	// 媒体传输输入流所属的区域，取值和InputRegion相同。
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type DescribeFlowId struct {
+	// FlowId，唯一标识一个flow。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// flow所在的区域名称。
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
@@ -6157,6 +6489,213 @@ func (r *DescribeStreamLinkActivateStateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeStreamLinkActivateStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkEventAttachedFlowsRequestParams struct {
+	// EventId。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 当前页数，默认1。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小，默认10。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+type DescribeStreamLinkEventAttachedFlowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// EventId。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 当前页数，默认1。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小，默认10。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeStreamLinkEventAttachedFlowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkEventAttachedFlowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkEventAttachedFlowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkEventAttachedFlowsResponseParams struct {
+	// 流的配置信息列表。
+	Infos []*DescribeFlow `json:"Infos,omitempty" name:"Infos"`
+
+	// 总数量。
+	TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkEventAttachedFlowsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkEventAttachedFlowsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkEventAttachedFlowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkEventAttachedFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkEventRequestParams struct {
+	// 媒体传输事件ID。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
+type DescribeStreamLinkEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体传输事件ID。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
+func (r *DescribeStreamLinkEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkEventResponseParams struct {
+	// 媒体传输事件的配置信息。
+	Info *DescribeEvent `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkEventResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkEventResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkEventsRequestParams struct {
+	// 当前页数，默认1。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小，默认10。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+type DescribeStreamLinkEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 当前页数，默认1。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小，默认10。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeStreamLinkEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkEventsResponseParams struct {
+	// 媒体传输事件的配置信息列表。
+	Infos []*DescribeEvent `json:"Infos,omitempty" name:"Infos"`
+
+	// 当前页数。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总数量。
+	TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 总页数。
+	TotalPage *int64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10943,6 +11482,74 @@ func (r *ModifySnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkEventRequestParams struct {
+	// 媒体传输事件Event Id。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 需要修改的事件名称。
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// Event的描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type ModifyStreamLinkEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体传输事件Event Id。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 需要修改的事件名称。
+	EventName *string `json:"EventName,omitempty" name:"EventName"`
+
+	// Event的描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *ModifyStreamLinkEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	delete(f, "EventName")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamLinkEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkEventResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamLinkEventResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamLinkEventResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamLinkEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

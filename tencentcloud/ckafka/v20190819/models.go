@@ -1790,7 +1790,7 @@ type CreateInstancePostRequestParams struct {
 	// 实例最大 topic 数量，需要满足当前实例的计费规格
 	TopicNum *int64 `json:"TopicNum,omitempty" name:"TopicNum"`
 
-	// 实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在的子网
+	// 实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在子网的可用区 id
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 当前实例是否为多可用区实例。
@@ -1848,7 +1848,7 @@ type CreateInstancePostRequest struct {
 	// 实例最大 topic 数量，需要满足当前实例的计费规格
 	TopicNum *int64 `json:"TopicNum,omitempty" name:"TopicNum"`
 
-	// 实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在的子网
+	// 实例所在的可用区。当创建多可用区实例时，该参数为创建的默认接入点所在子网的可用区 id
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 当前实例是否为多可用区实例。

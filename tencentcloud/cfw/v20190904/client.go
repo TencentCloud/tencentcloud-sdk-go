@@ -1487,6 +1487,88 @@ func (c *Client) DescribeDefenseSwitchWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeEnterpriseSGRuleProgressRequest() (request *DescribeEnterpriseSGRuleProgressRequest) {
+    request = &DescribeEnterpriseSGRuleProgressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeEnterpriseSGRuleProgress")
+    
+    
+    return
+}
+
+func NewDescribeEnterpriseSGRuleProgressResponse() (response *DescribeEnterpriseSGRuleProgressResponse) {
+    response = &DescribeEnterpriseSGRuleProgressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnterpriseSGRuleProgress
+// 查询新版安全组下发进度
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEnterpriseSGRuleProgress(request *DescribeEnterpriseSGRuleProgressRequest) (response *DescribeEnterpriseSGRuleProgressResponse, err error) {
+    return c.DescribeEnterpriseSGRuleProgressWithContext(context.Background(), request)
+}
+
+// DescribeEnterpriseSGRuleProgress
+// 查询新版安全组下发进度
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEnterpriseSGRuleProgressWithContext(ctx context.Context, request *DescribeEnterpriseSGRuleProgressRequest) (response *DescribeEnterpriseSGRuleProgressResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnterpriseSGRuleProgressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnterpriseSGRuleProgress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnterpriseSGRuleProgressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnterpriseSecurityGroupRuleRequest() (request *DescribeEnterpriseSecurityGroupRuleRequest) {
     request = &DescribeEnterpriseSecurityGroupRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

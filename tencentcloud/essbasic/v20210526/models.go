@@ -536,7 +536,7 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
+	// 资源类型 支持doc,docx,html,xls,xlsx,jpg,jpeg,png,bmp文件类型
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -562,7 +562,7 @@ type ChannelCreateConvertTaskApiRequest struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 资源类型 取值范围doc,docx,html,xls,xlsx之一
+	// 资源类型 支持doc,docx,html,xls,xlsx,jpg,jpeg,png,bmp文件类型
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符

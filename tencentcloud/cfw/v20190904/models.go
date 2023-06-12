@@ -2432,6 +2432,60 @@ func (r *DescribeDefenseSwitchResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEnterpriseSGRuleProgressRequestParams struct {
+
+}
+
+type DescribeEnterpriseSGRuleProgressRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeEnterpriseSGRuleProgressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnterpriseSGRuleProgressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnterpriseSGRuleProgressRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnterpriseSGRuleProgressResponseParams struct {
+	// 0-100，代表下发进度百分比
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEnterpriseSGRuleProgressResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnterpriseSGRuleProgressResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnterpriseSGRuleProgressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnterpriseSGRuleProgressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEnterpriseSecurityGroupRuleRequestParams struct {
 	// 分页查询时，显示的当前页的页码。
 	// 

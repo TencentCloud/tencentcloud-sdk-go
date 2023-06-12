@@ -8133,11 +8133,11 @@ type TargetGroupAssociation struct {
 	// 负载均衡ID
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
-	// 监听器ID
-	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
-
 	// 目标组ID
 	TargetGroupId *string `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
+
+	// 监听器ID
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
 	// 转发规则ID
 	LocationId *string `json:"LocationId,omitempty" name:"LocationId"`

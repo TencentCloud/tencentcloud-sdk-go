@@ -1798,6 +1798,12 @@ type DescribeSlowLogUserHostStatsResponseParams struct {
 	// 各来源地址的慢日志占比详情列表。
 	Items []*SlowLogHost `json:"Items,omitempty" name:"Items"`
 
+	// 各来源用户名的慢日志占比详情列表。
+	UserNameItems []*SlowLogUser `json:"UserNameItems,omitempty" name:"UserNameItems"`
+
+	// 来源用户数目。
+	UserTotalCount *int64 `json:"UserTotalCount,omitempty" name:"UserTotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2409,6 +2415,10 @@ type InstanceConfs struct {
 
 	// 实例概览开关，Yes/No。
 	OverviewDisplay *string `json:"OverviewDisplay,omitempty" name:"OverviewDisplay"`
+
+	// redis大key分析的自定义分割符，仅redis使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyDelimiters []*string `json:"KeyDelimiters,omitempty" name:"KeyDelimiters"`
 }
 
 type InstanceInfo struct {
@@ -2495,6 +2505,25 @@ type InstanceInfo struct {
 
 	// 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
 	AuditRunningStatus *string `json:"AuditRunningStatus,omitempty" name:"AuditRunningStatus"`
+
+	// 内网vip。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalVip *string `json:"InternalVip,omitempty" name:"InternalVip"`
+
+	// 内网port。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalVport *int64 `json:"InternalVport,omitempty" name:"InternalVport"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type IssueTypeInfo struct {
@@ -2844,6 +2873,17 @@ type SlowLogTopSqlItem struct {
 
 	// SOL模板的MD5值
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+}
+
+type SlowLogUser struct {
+	// 来源用户名。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 该来源用户名的慢日志数目占总数目的比例，单位%。
+	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
+
+	// 该来源用户名的慢日志数目。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type TableSpaceData struct {

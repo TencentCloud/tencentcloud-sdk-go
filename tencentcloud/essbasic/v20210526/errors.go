@@ -260,6 +260,9 @@ const (
 	// 状态异常。
 	INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 
+	// 统一社会信用代码不符合要求
+	INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
+
 	// 参数错误，不合法的签署顺序，请检查后重试。
 	INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
 

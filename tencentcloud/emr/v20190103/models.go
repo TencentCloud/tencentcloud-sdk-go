@@ -5171,10 +5171,14 @@ type StartStopServiceOrMonitorRequestParams struct {
 	// <li>StopService：停止服务</li>
 	// <li>StartMonitor：退出维护</li>
 	// <li>StopMonitor：进入维护</li>
+	// <li>RestartService：重启服务</li>
 	OpType *string `json:"OpType,omitempty" name:"OpType"`
 
 	// 操作范围
 	OpScope *OpScope `json:"OpScope,omitempty" name:"OpScope"`
+
+	// 操作策略
+	StrategyConfig *StrategyConfig `json:"StrategyConfig,omitempty" name:"StrategyConfig"`
 }
 
 type StartStopServiceOrMonitorRequest struct {
@@ -5188,10 +5192,14 @@ type StartStopServiceOrMonitorRequest struct {
 	// <li>StopService：停止服务</li>
 	// <li>StartMonitor：退出维护</li>
 	// <li>StopMonitor：进入维护</li>
+	// <li>RestartService：重启服务</li>
 	OpType *string `json:"OpType,omitempty" name:"OpType"`
 
 	// 操作范围
 	OpScope *OpScope `json:"OpScope,omitempty" name:"OpScope"`
+
+	// 操作策略
+	StrategyConfig *StrategyConfig `json:"StrategyConfig,omitempty" name:"StrategyConfig"`
 }
 
 func (r *StartStopServiceOrMonitorRequest) ToJsonString() string {
@@ -5209,6 +5217,7 @@ func (r *StartStopServiceOrMonitorRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "OpType")
 	delete(f, "OpScope")
+	delete(f, "StrategyConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStopServiceOrMonitorRequest has unknown keys!", "")
 	}
@@ -5251,6 +5260,25 @@ type Step struct {
 
 	// 指定执行Step时的用户名，非必须，默认为hadoop。
 	User *string `json:"User,omitempty" name:"User"`
+}
+
+type StrategyConfig struct {
+	// 0:关闭滚动重启
+	// 1:开启滚动启动
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RollingRestartSwitch *int64 `json:"RollingRestartSwitch,omitempty" name:"RollingRestartSwitch"`
+
+	// 滚动重启每批次的重启数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchSize *int64 `json:"BatchSize,omitempty" name:"BatchSize"`
+
+	// 滚动重启每批停止等待时间 ,最大重启台数为 99999 台，最大间隔为 5 分钟 单位是秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeWait *int64 `json:"TimeWait,omitempty" name:"TimeWait"`
+
+	// 操作失败处理策略，0:失败阻塞, 1:失败自动跳过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealOnFail *int64 `json:"DealOnFail,omitempty" name:"DealOnFail"`
 }
 
 type SubnetInfo struct {

@@ -490,7 +490,7 @@ func NewChannelCreateConvertTaskApiResponse() (response *ChannelCreateConvertTas
 }
 
 // ChannelCreateConvertTaskApi
-// 上传了word、excel文件后，通过该接口发起文件转换任务，将word、excel文件转换为pdf文件。
+// 上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -505,7 +505,7 @@ func (c *Client) ChannelCreateConvertTaskApi(request *ChannelCreateConvertTaskAp
 }
 
 // ChannelCreateConvertTaskApi
-// 上传了word、excel文件后，通过该接口发起文件转换任务，将word、excel文件转换为pdf文件。
+// 上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -3466,6 +3466,7 @@ func NewSyncProxyOrganizationResponse() (response *SyncProxyOrganizationResponse
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
 //  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -3497,6 +3498,7 @@ func (c *Client) SyncProxyOrganization(request *SyncProxyOrganizationRequest) (r
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
 //  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"

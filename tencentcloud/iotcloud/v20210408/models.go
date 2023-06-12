@@ -4475,6 +4475,12 @@ type ProductInfo struct {
 type ProductMetadata struct {
 	// 产品创建时间
 	CreationDate *uint64 `json:"CreationDate,omitempty" name:"CreationDate"`
+
+	// 创建者 Uin
+	CreateUserId *uint64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
+
+	// 账号 Uin
+	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
 }
 
 type ProductProperties struct {
@@ -4512,7 +4518,7 @@ type ProductProperties struct {
 	// 动态注册类型 0-关闭, 1-预定义设备名 2-动态定义设备名
 	RegisterType *uint64 `json:"RegisterType,omitempty" name:"RegisterType"`
 
-	// 动态注册产品秘钥
+	// 动态注册产品密钥
 	ProductSecret *string `json:"ProductSecret,omitempty" name:"ProductSecret"`
 
 	// RegisterType为2时，设备动态创建的限制数量
@@ -4526,6 +4532,12 @@ type ProductProperties struct {
 
 	// 划归的产品，展示为源用户ID，其余为空
 	OriginUserId *uint64 `json:"OriginUserId,omitempty" name:"OriginUserId"`
+
+	// 设备限制
+	DeviceLimit *uint64 `json:"DeviceLimit,omitempty" name:"DeviceLimit"`
+
+	// 产品禁用状态
+	ForbiddenStatus *uint64 `json:"ForbiddenStatus,omitempty" name:"ForbiddenStatus"`
 }
 
 type ProductResourceInfo struct {

@@ -740,6 +740,9 @@ const (
 	// 终端节点服务本身不能是终端节点。
 	UNSUPPORTEDOPERATION_ENDPOINTSERVICE = "UnsupportedOperation.EndPointService"
 
+	// 指定ResourceId对应的流日志已经创建
+	UNSUPPORTEDOPERATION_FLOWLOGINSTANCEEXISTED = "UnsupportedOperation.FlowLogInstanceExisted"
+
 	// 不支持创建流日志：当前弹性网卡绑定的是KO机型。
 	UNSUPPORTEDOPERATION_FLOWLOGSNOTSUPPORTKOINSTANCEENI = "UnsupportedOperation.FlowLogsNotSupportKoInstanceEni"
 

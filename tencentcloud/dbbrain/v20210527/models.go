@@ -3271,6 +3271,12 @@ type DescribeSlowLogUserHostStatsResponseParams struct {
 	// 各来源地址的慢日志占比详情列表。
 	Items []*SlowLogHost `json:"Items,omitempty" name:"Items"`
 
+	// 各来源用户名的慢日志占比详情列表。
+	UserNameItems []*SlowLogUser `json:"UserNameItems,omitempty" name:"UserNameItems"`
+
+	// 来源用户数目。
+	UserTotalCount *int64 `json:"UserTotalCount,omitempty" name:"UserTotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4300,16 +4306,24 @@ type InstanceInfo struct {
 	// 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
 	AuditRunningStatus *string `json:"AuditRunningStatus,omitempty" name:"AuditRunningStatus"`
 
-	// 内网vip
+	// 内网vip。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalVip *string `json:"InternalVip,omitempty" name:"InternalVip"`
 
-	// 内网port
+	// 内网port。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalVport *int64 `json:"InternalVport,omitempty" name:"InternalVport"`
 
-	// 创建时间
+	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type IssueTypeInfo struct {
@@ -4699,6 +4713,12 @@ type RedisKeySpaceData struct {
 
 	// 最大元素长度。
 	MaxElementSize *int64 `json:"MaxElementSize,omitempty" name:"MaxElementSize"`
+
+	// 平均元素长度。
+	AveElementSize *int64 `json:"AveElementSize,omitempty" name:"AveElementSize"`
+
+	// 所属分片序号。
+	ShardId *string `json:"ShardId,omitempty" name:"ShardId"`
 }
 
 type RedisPreKeySpaceData struct {
@@ -4997,6 +5017,17 @@ type SlowLogTopSqlItem struct {
 
 	// SOL模板的MD5值
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+}
+
+type SlowLogUser struct {
+	// 来源用户名。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 该来源用户名的慢日志数目占总数目的比例，单位%。
+	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
+
+	// 该来源用户名的慢日志数目。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type Table struct {

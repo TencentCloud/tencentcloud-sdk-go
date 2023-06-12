@@ -1805,6 +1805,9 @@ type QueueConfig struct {
 	// 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
 	// 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
 	ScaleOutNodeThreshold *int64 `json:"ScaleOutNodeThreshold,omitempty" name:"ScaleOutNodeThreshold"`
+
+	// 每轮扩容最大节点个数。默认值：100。取值范围：1～100。
+	MaxNodesPerCycle *int64 `json:"MaxNodesPerCycle,omitempty" name:"MaxNodesPerCycle"`
 }
 
 type QueueConfigOverview struct {
@@ -1840,6 +1843,10 @@ type QueueConfigOverview struct {
 	// 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleOutNodeThreshold *int64 `json:"ScaleOutNodeThreshold,omitempty" name:"ScaleOutNodeThreshold"`
+
+	// 每轮扩容最大节点个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxNodesPerCycle *int64 `json:"MaxNodesPerCycle,omitempty" name:"MaxNodesPerCycle"`
 }
 
 type QueueOverview struct {

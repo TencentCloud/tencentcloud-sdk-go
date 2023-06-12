@@ -2337,6 +2337,9 @@ type DescribeHostCdnInstanceListRequestParams struct {
 
 	// 每页数量，默认10。	
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否异步
+	AsyncCache *int64 `json:"AsyncCache,omitempty" name:"AsyncCache"`
 }
 
 type DescribeHostCdnInstanceListRequest struct {
@@ -2362,6 +2365,9 @@ type DescribeHostCdnInstanceListRequest struct {
 
 	// 每页数量，默认10。	
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否异步
+	AsyncCache *int64 `json:"AsyncCache,omitempty" name:"AsyncCache"`
 }
 
 func (r *DescribeHostCdnInstanceListRequest) ToJsonString() string {
@@ -2383,6 +2389,7 @@ func (r *DescribeHostCdnInstanceListRequest) FromJsonString(s string) error {
 	delete(f, "OldCertificateId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "AsyncCache")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostCdnInstanceListRequest has unknown keys!", "")
 	}
@@ -2398,6 +2405,18 @@ type DescribeHostCdnInstanceListResponseParams struct {
 	// CDN域名总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 异步刷新总数	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitempty" name:"AsyncTotalNum"`
+
+	// 异步刷新当前执行数	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncOffset *int64 `json:"AsyncOffset,omitempty" name:"AsyncOffset"`
+
+	// 当前缓存读取时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncCacheTime *string `json:"AsyncCacheTime,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2511,6 +2530,10 @@ type DescribeHostClbInstanceListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitempty" name:"AsyncOffset"`
 
+	// 当前缓存读取时间	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncCacheTime *string `json:"AsyncCacheTime,omitempty" name:"AsyncCacheTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2601,6 +2624,10 @@ type DescribeHostCosInstanceListResponseParams struct {
 	// 异步刷新当前执行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitempty" name:"AsyncOffset"`
+
+	// 当前缓存读取时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncCacheTime *string `json:"AsyncCacheTime,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3228,6 +3255,10 @@ type DescribeHostTkeInstanceListResponseParams struct {
 	// 异步刷新当前执行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitempty" name:"AsyncOffset"`
+
+	// 当前缓存读取时间	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncCacheTime *string `json:"AsyncCacheTime,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

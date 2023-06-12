@@ -9777,11 +9777,12 @@ type OfflineCache struct {
 
 type Origin struct {
 	// 主源站列表
-	// 修改源站时，需要同时填充对应的 OriginType
+	// <font color=red>修改源站时，需要同时填充对应的 OriginType</font>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Origins []*string `json:"Origins,omitempty" name:"Origins"`
 
 	// 主源站类型
+	// <font color=red>当源站列表 Origins 不为空时必填</font>
 	// 入参支持以下几种类型：
 	// domain：域名类型
 	// domainv6：域名解析V6类型
@@ -9809,8 +9810,9 @@ type Origin struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
-	// 当源站类型为cos或者第三方存储加速时,ServerName字段必填
-	// 回主源站时 Host 头部，不填充则默认为加速域名
+	// 回主源站时 Host 头部
+	// <font color=red>当源站类型为cos或者第三方存储加速时,ServerName字段必填</font>
+	// 不填充则默认为加速域名
 	// 若接入的是泛域名，则回源 Host 默认为访问时的子域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
@@ -9828,14 +9830,15 @@ type Origin struct {
 	OriginPullProtocol *string `json:"OriginPullProtocol,omitempty" name:"OriginPullProtocol"`
 
 	// 备源站列表
-	// 修改备源站时，需要同时填充对应的 BackupOriginType
+	// <font color=red>修改备源站时，需要同时填充对应的 BackupOriginType</font>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupOrigins []*string `json:"BackupOrigins,omitempty" name:"BackupOrigins"`
 
-	// 备源站类型，支持以下类型：
+	// 备源站类型
+	// <font color=red>备源站列表BackupOrigins 不为空时必填</font>
+	// 支持以下类型：
 	// domain：域名类型
 	// ip：IP 列表作为源站
-	// 修改 BackupOrigins 时需要同时填充对应的 BackupOriginType
 	// 以下备源源站类型尚未全量支持，需要申请试用：
 	// ipv6_domain: 源站列表为多个 IPv6 地址以及域名
 	// ip_ipv6：源站列表为多个 IPv4 地址和IPv6 地址
@@ -9868,7 +9871,9 @@ type Origin struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvanceHttps *AdvanceHttps `json:"AdvanceHttps,omitempty" name:"AdvanceHttps"`
 
-	// 对象存储回源厂商，当源站类型为第三方存储源站(third_party)时必填，可选值包括以下:
+	// 对象存储回源厂商
+	// <font color=red>当源站类型为第三方存储源站(third_party)时必填</font>
+	// 可选值包括以下:
 	// aws_s3: AWS S3
 	// ali_oss: 阿里云 OSS
 	// hw_obs: 华为 OBS

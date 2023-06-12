@@ -45,6 +45,166 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBatchDeleteStreamLinkFlowRequest() (request *BatchDeleteStreamLinkFlowRequest) {
+    request = &BatchDeleteStreamLinkFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "BatchDeleteStreamLinkFlow")
+    
+    
+    return
+}
+
+func NewBatchDeleteStreamLinkFlowResponse() (response *BatchDeleteStreamLinkFlowResponse) {
+    response = &BatchDeleteStreamLinkFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchDeleteStreamLinkFlow
+// 批量删除媒体传输流。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_OUTPUTGROUPS = "InvalidParameter.OutputGroups"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) BatchDeleteStreamLinkFlow(request *BatchDeleteStreamLinkFlowRequest) (response *BatchDeleteStreamLinkFlowResponse, err error) {
+    return c.BatchDeleteStreamLinkFlowWithContext(context.Background(), request)
+}
+
+// BatchDeleteStreamLinkFlow
+// 批量删除媒体传输流。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_OUTPUTGROUPS = "InvalidParameter.OutputGroups"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) BatchDeleteStreamLinkFlowWithContext(ctx context.Context, request *BatchDeleteStreamLinkFlowRequest) (response *BatchDeleteStreamLinkFlowResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteStreamLinkFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteStreamLinkFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDeleteStreamLinkFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchStartStreamLinkFlowRequest() (request *BatchStartStreamLinkFlowRequest) {
+    request = &BatchStartStreamLinkFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "BatchStartStreamLinkFlow")
+    
+    
+    return
+}
+
+func NewBatchStartStreamLinkFlowResponse() (response *BatchStartStreamLinkFlowResponse) {
+    response = &BatchStartStreamLinkFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchStartStreamLinkFlow
+// 批量启动媒体传输流。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_OUTPUTGROUPS = "InvalidParameter.OutputGroups"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) BatchStartStreamLinkFlow(request *BatchStartStreamLinkFlowRequest) (response *BatchStartStreamLinkFlowResponse, err error) {
+    return c.BatchStartStreamLinkFlowWithContext(context.Background(), request)
+}
+
+// BatchStartStreamLinkFlow
+// 批量启动媒体传输流。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_OUTPUTGROUPS = "InvalidParameter.OutputGroups"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) BatchStartStreamLinkFlowWithContext(ctx context.Context, request *BatchStartStreamLinkFlowRequest) (response *BatchStartStreamLinkFlowResponse, err error) {
+    if request == nil {
+        request = NewBatchStartStreamLinkFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchStartStreamLinkFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchStartStreamLinkFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewBatchStopStreamLinkFlowRequest() (request *BatchStopStreamLinkFlowRequest) {
+    request = &BatchStopStreamLinkFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "BatchStopStreamLinkFlow")
+    
+    
+    return
+}
+
+func NewBatchStopStreamLinkFlowResponse() (response *BatchStopStreamLinkFlowResponse) {
+    response = &BatchStopStreamLinkFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchStopStreamLinkFlow
+// 批量停止媒体传输流。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) BatchStopStreamLinkFlow(request *BatchStopStreamLinkFlowRequest) (response *BatchStopStreamLinkFlowResponse, err error) {
+    return c.BatchStopStreamLinkFlowWithContext(context.Background(), request)
+}
+
+// BatchStopStreamLinkFlow
+// 批量停止媒体传输流。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) BatchStopStreamLinkFlowWithContext(ctx context.Context, request *BatchStopStreamLinkFlowRequest) (response *BatchStopStreamLinkFlowResponse, err error) {
+    if request == nil {
+        request = NewBatchStopStreamLinkFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchStopStreamLinkFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchStopStreamLinkFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAIAnalysisTemplateRequest() (request *CreateAIAnalysisTemplateRequest) {
     request = &CreateAIAnalysisTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -765,6 +925,64 @@ func (c *Client) CreateSnapshotByTimeOffsetTemplateWithContext(ctx context.Conte
     request.SetContext(ctx)
     
     response = NewCreateSnapshotByTimeOffsetTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateStreamLinkEventRequest() (request *CreateStreamLinkEventRequest) {
+    request = &CreateStreamLinkEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateStreamLinkEvent")
+    
+    
+    return
+}
+
+func NewCreateStreamLinkEventResponse() (response *CreateStreamLinkEventResponse) {
+    response = &CreateStreamLinkEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateStreamLinkEvent
+// 创建媒体传输的事件Event。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+//  INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+func (c *Client) CreateStreamLinkEvent(request *CreateStreamLinkEventRequest) (response *CreateStreamLinkEventResponse, err error) {
+    return c.CreateStreamLinkEventWithContext(context.Background(), request)
+}
+
+// CreateStreamLinkEvent
+// 创建媒体传输的事件Event。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+//  INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+func (c *Client) CreateStreamLinkEventWithContext(ctx context.Context, request *CreateStreamLinkEventRequest) (response *CreateStreamLinkEventResponse, err error) {
+    if request == nil {
+        request = NewCreateStreamLinkEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStreamLinkEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStreamLinkEventResponse()
     err = c.Send(request, response)
     return
 }
@@ -1817,6 +2035,56 @@ func (c *Client) DeleteSnapshotByTimeOffsetTemplateWithContext(ctx context.Conte
     return
 }
 
+func NewDeleteStreamLinkEventRequest() (request *DeleteStreamLinkEventRequest) {
+    request = &DeleteStreamLinkEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamLinkEvent")
+    
+    
+    return
+}
+
+func NewDeleteStreamLinkEventResponse() (response *DeleteStreamLinkEventResponse) {
+    response = &DeleteStreamLinkEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteStreamLinkEvent
+// 删除媒体传输的事件配置。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) DeleteStreamLinkEvent(request *DeleteStreamLinkEventRequest) (response *DeleteStreamLinkEventResponse, err error) {
+    return c.DeleteStreamLinkEventWithContext(context.Background(), request)
+}
+
+// DeleteStreamLinkEvent
+// 删除媒体传输的事件配置。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) DeleteStreamLinkEventWithContext(ctx context.Context, request *DeleteStreamLinkEventRequest) (response *DeleteStreamLinkEventResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamLinkEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamLinkEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamLinkEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteStreamLinkFlowRequest() (request *DeleteStreamLinkFlowRequest) {
     request = &DeleteStreamLinkFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2793,6 +3061,168 @@ func (c *Client) DescribeStreamLinkActivateStateWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeStreamLinkActivateStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamLinkEventRequest() (request *DescribeStreamLinkEventRequest) {
+    request = &DescribeStreamLinkEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamLinkEvent")
+    
+    
+    return
+}
+
+func NewDescribeStreamLinkEventResponse() (response *DescribeStreamLinkEventResponse) {
+    response = &DescribeStreamLinkEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStreamLinkEvent
+// 查询媒体传输事件的配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+func (c *Client) DescribeStreamLinkEvent(request *DescribeStreamLinkEventRequest) (response *DescribeStreamLinkEventResponse, err error) {
+    return c.DescribeStreamLinkEventWithContext(context.Background(), request)
+}
+
+// DescribeStreamLinkEvent
+// 查询媒体传输事件的配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+func (c *Client) DescribeStreamLinkEventWithContext(ctx context.Context, request *DescribeStreamLinkEventRequest) (response *DescribeStreamLinkEventResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamLinkEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamLinkEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamLinkEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamLinkEventAttachedFlowsRequest() (request *DescribeStreamLinkEventAttachedFlowsRequest) {
+    request = &DescribeStreamLinkEventAttachedFlowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamLinkEventAttachedFlows")
+    
+    
+    return
+}
+
+func NewDescribeStreamLinkEventAttachedFlowsResponse() (response *DescribeStreamLinkEventAttachedFlowsResponse) {
+    response = &DescribeStreamLinkEventAttachedFlowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStreamLinkEventAttachedFlows
+// 查询媒体传输事件关联的所有媒体输入流的配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+func (c *Client) DescribeStreamLinkEventAttachedFlows(request *DescribeStreamLinkEventAttachedFlowsRequest) (response *DescribeStreamLinkEventAttachedFlowsResponse, err error) {
+    return c.DescribeStreamLinkEventAttachedFlowsWithContext(context.Background(), request)
+}
+
+// DescribeStreamLinkEventAttachedFlows
+// 查询媒体传输事件关联的所有媒体输入流的配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+func (c *Client) DescribeStreamLinkEventAttachedFlowsWithContext(ctx context.Context, request *DescribeStreamLinkEventAttachedFlowsRequest) (response *DescribeStreamLinkEventAttachedFlowsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamLinkEventAttachedFlowsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamLinkEventAttachedFlows require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamLinkEventAttachedFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeStreamLinkEventsRequest() (request *DescribeStreamLinkEventsRequest) {
+    request = &DescribeStreamLinkEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamLinkEvents")
+    
+    
+    return
+}
+
+func NewDescribeStreamLinkEventsResponse() (response *DescribeStreamLinkEventsResponse) {
+    response = &DescribeStreamLinkEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeStreamLinkEvents
+// 批量查询媒体传输事件的配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+func (c *Client) DescribeStreamLinkEvents(request *DescribeStreamLinkEventsRequest) (response *DescribeStreamLinkEventsResponse, err error) {
+    return c.DescribeStreamLinkEventsWithContext(context.Background(), request)
+}
+
+// DescribeStreamLinkEvents
+// 批量查询媒体传输事件的配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+func (c *Client) DescribeStreamLinkEventsWithContext(ctx context.Context, request *DescribeStreamLinkEventsRequest) (response *DescribeStreamLinkEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamLinkEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamLinkEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamLinkEventsResponse()
     err = c.Send(request, response)
     return
 }
@@ -4745,6 +5175,60 @@ func (c *Client) ModifySnapshotByTimeOffsetTemplateWithContext(ctx context.Conte
     request.SetContext(ctx)
     
     response = NewModifySnapshotByTimeOffsetTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyStreamLinkEventRequest() (request *ModifyStreamLinkEventRequest) {
+    request = &ModifyStreamLinkEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyStreamLinkEvent")
+    
+    
+    return
+}
+
+func NewModifyStreamLinkEventResponse() (response *ModifyStreamLinkEventResponse) {
+    response = &ModifyStreamLinkEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyStreamLinkEvent
+// 修改媒体传输的事件配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) ModifyStreamLinkEvent(request *ModifyStreamLinkEventRequest) (response *ModifyStreamLinkEventResponse, err error) {
+    return c.ModifyStreamLinkEventWithContext(context.Background(), request)
+}
+
+// ModifyStreamLinkEvent
+// 修改媒体传输的事件配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_STATE = "InvalidParameter.State"
+func (c *Client) ModifyStreamLinkEventWithContext(ctx context.Context, request *ModifyStreamLinkEventRequest) (response *ModifyStreamLinkEventResponse, err error) {
+    if request == nil {
+        request = NewModifyStreamLinkEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStreamLinkEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStreamLinkEventResponse()
     err = c.Send(request, response)
     return
 }
