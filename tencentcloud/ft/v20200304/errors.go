@@ -116,6 +116,9 @@ const (
 	// 图片数据太大。
 	INVALIDPARAMETERVALUE_IMAGESIZEEXCEED = "InvalidParameterValue.ImageSizeExceed"
 
+	// 图片尺寸不对。
+	INVALIDPARAMETERVALUE_LUTIMAGESIZEINVALID = "InvalidParameterValue.LutImageSizeInvalid"
+
 	// 图片中没有人脸。
 	INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
 

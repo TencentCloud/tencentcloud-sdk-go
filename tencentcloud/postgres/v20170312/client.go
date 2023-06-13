@@ -510,7 +510,7 @@ func NewCreateDBInstanceNetworkAccessResponse() (response *CreateDBInstanceNetwo
 }
 
 // CreateDBInstanceNetworkAccess
-// 可对实例进行网络的添加操作。
+// 本接口（CreateDBInstanceNetworkAccess）用于创建实例网络。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -540,7 +540,7 @@ func (c *Client) CreateDBInstanceNetworkAccess(request *CreateDBInstanceNetworkA
 }
 
 // CreateDBInstanceNetworkAccess
-// 可对实例进行网络的添加操作。
+// 本接口（CreateDBInstanceNetworkAccess）用于创建实例网络。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -600,7 +600,7 @@ func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
 }
 
 // CreateDBInstances
-// 本接口 (CreateDBInstances) 用于创建一个或者多个PostgreSQL实例,仅发货实例不会进行初始化。
+// 本接口（CreateDBInstances）用于创建一个或者多个PostgreSQL实例,仅发货实例不会进行初始化。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -679,7 +679,7 @@ func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response 
 }
 
 // CreateDBInstances
-// 本接口 (CreateDBInstances) 用于创建一个或者多个PostgreSQL实例,仅发货实例不会进行初始化。
+// 本接口（CreateDBInstances）用于创建一个或者多个PostgreSQL实例,仅发货实例不会进行初始化。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -1334,7 +1334,7 @@ func NewCreateReadOnlyGroupNetworkAccessResponse() (response *CreateReadOnlyGrou
 }
 
 // CreateReadOnlyGroupNetworkAccess
-// 可对RO组进行网络的添加操作。
+// 本接口（CreateReadOnlyGroupNetworkAccess）用于创建RO组的网络。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1359,7 +1359,7 @@ func (c *Client) CreateReadOnlyGroupNetworkAccess(request *CreateReadOnlyGroupNe
 }
 
 // CreateReadOnlyGroupNetworkAccess
-// 可对RO组进行网络的添加操作。
+// 本接口（CreateReadOnlyGroupNetworkAccess）用于创建RO组的网络。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2438,7 +2438,7 @@ func NewDescribeBaseBackupsResponse() (response *DescribeBaseBackupsResponse) {
 }
 
 // DescribeBaseBackups
-// 本接口 (DescribeBaseBackups) 用于查询基础备份列表。
+// 本接口（DescribeBaseBackups）用于查询基础备份列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2450,7 +2450,7 @@ func (c *Client) DescribeBaseBackups(request *DescribeBaseBackupsRequest) (respo
 }
 
 // DescribeBaseBackups
-// 本接口 (DescribeBaseBackups) 用于查询基础备份列表。
+// 本接口（DescribeBaseBackups）用于查询基础备份列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2498,6 +2498,7 @@ func NewDescribeClassesResponse() (response *DescribeClassesResponse) {
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
 //  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
 //  FAILEDOPERATION_WHITELISTCONNECTERROR = "FailedOperation.WhitelistConnectError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
 //  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
@@ -2512,6 +2513,7 @@ func (c *Client) DescribeClasses(request *DescribeClassesRequest) (response *Des
 //  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
 //  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
 //  FAILEDOPERATION_WHITELISTCONNECTERROR = "FailedOperation.WhitelistConnectError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
 //  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
@@ -2614,7 +2616,7 @@ func NewDescribeDBBackupsResponse() (response *DescribeDBBackupsResponse) {
 }
 
 // DescribeDBBackups
-// 本接口（DescribeDBBackups）用于查询实例备份列表。
+// 本接口（DescribeDBBackups）用于查询实例备份列表。本接口已废弃，推荐使用接口[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2643,7 +2645,7 @@ func (c *Client) DescribeDBBackups(request *DescribeDBBackupsRequest) (response 
 }
 
 // DescribeDBBackups
-// 本接口（DescribeDBBackups）用于查询实例备份列表。
+// 本接口（DescribeDBBackups）用于查询实例备份列表。本接口已废弃，推荐使用接口[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2702,7 +2704,7 @@ func NewDescribeDBErrlogsResponse() (response *DescribeDBErrlogsResponse) {
 }
 
 // DescribeDBErrlogs
-// 本接口（DescribeDBErrlogs）用于获取错误日志。
+// 本接口（DescribeDBErrlogs）用于查询错误日志。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2728,7 +2730,7 @@ func (c *Client) DescribeDBErrlogs(request *DescribeDBErrlogsRequest) (response 
 }
 
 // DescribeDBErrlogs
-// 本接口（DescribeDBErrlogs）用于获取错误日志。
+// 本接口（DescribeDBErrlogs）用于查询错误日志。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3096,7 +3098,7 @@ func NewDescribeDBSlowlogsResponse() (response *DescribeDBSlowlogsResponse) {
 }
 
 // DescribeDBSlowlogs
-// 本接口（DescribeDBSlowlogs）用于获取慢查询日志。已于2021.09.01日正式废弃，后续此接口将不再返回任何数据，新接口为DescribeSlowQueryList，详细请查看：https://cloud.tencent.com/document/product/409/60540
+// 本接口（DescribeDBSlowlogs）用于获取慢查询日志。本接口已于2021.09.01日废弃，后续此接口将不再返回任何数据，推荐使用接口[DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3120,7 +3122,7 @@ func (c *Client) DescribeDBSlowlogs(request *DescribeDBSlowlogsRequest) (respons
 }
 
 // DescribeDBSlowlogs
-// 本接口（DescribeDBSlowlogs）用于获取慢查询日志。已于2021.09.01日正式废弃，后续此接口将不再返回任何数据，新接口为DescribeSlowQueryList，详细请查看：https://cloud.tencent.com/document/product/409/60540
+// 本接口（DescribeDBSlowlogs）用于获取慢查询日志。本接口已于2021.09.01日废弃，后续此接口将不再返回任何数据，推荐使用接口[DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3228,7 +3230,7 @@ func NewDescribeDBXlogsResponse() (response *DescribeDBXlogsResponse) {
 }
 
 // DescribeDBXlogs
-// 本接口（DescribeDBXlogs）用于获取实例Xlog列表。
+// 本接口（DescribeDBXlogs）用于获取实例Xlog列表。本接口已废弃，推荐使用接口[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3257,7 +3259,7 @@ func (c *Client) DescribeDBXlogs(request *DescribeDBXlogsRequest) (response *Des
 }
 
 // DescribeDBXlogs
-// 本接口（DescribeDBXlogs）用于获取实例Xlog列表。
+// 本接口（DescribeDBXlogs）用于获取实例Xlog列表。本接口已废弃，推荐使用接口[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3514,7 +3516,7 @@ func NewDescribeLogBackupsResponse() (response *DescribeLogBackupsResponse) {
 }
 
 // DescribeLogBackups
-// 本接口 (DescribeLogBackups) 用于查询日志备份列表。
+// 本接口（DescribeLogBackups）用于查询日志备份列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3526,7 +3528,7 @@ func (c *Client) DescribeLogBackups(request *DescribeLogBackupsRequest) (respons
 }
 
 // DescribeLogBackups
-// 本接口 (DescribeLogBackups) 用于查询日志备份列表。
+// 本接口（DescribeLogBackups）用于查询日志备份列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3568,7 +3570,7 @@ func NewDescribeOrdersResponse() (response *DescribeOrdersResponse) {
 }
 
 // DescribeOrders
-// 本接口（DescribeOrders）用于获取订单信息。
+// 本接口（DescribeOrders）用于查询订单信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3590,7 +3592,7 @@ func (c *Client) DescribeOrders(request *DescribeOrdersRequest) (response *Descr
 }
 
 // DescribeOrders
-// 本接口（DescribeOrders）用于获取订单信息。
+// 本接口（DescribeOrders）用于查询订单信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3742,7 +3744,7 @@ func NewDescribeParamsEventResponse() (response *DescribeParamsEventResponse) {
 }
 
 // DescribeParamsEvent
-// 获取参数修改事件详情
+// 本接口 (DescribeParamsEvent) 用于查询参数修改事件详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
@@ -3758,7 +3760,7 @@ func (c *Client) DescribeParamsEvent(request *DescribeParamsEventRequest) (respo
 }
 
 // DescribeParamsEvent
-// 获取参数修改事件详情
+// 本接口 (DescribeParamsEvent) 用于查询参数修改事件详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
@@ -3804,7 +3806,7 @@ func NewDescribeProductConfigResponse() (response *DescribeProductConfigResponse
 }
 
 // DescribeProductConfig
-// 本接口 (DescribeProductConfig) 用于查询售卖规格配置。
+// 本接口（DescribeProductConfig）用于查询售卖规格配置。本接口已废弃，推荐使用新接口[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3827,7 +3829,7 @@ func (c *Client) DescribeProductConfig(request *DescribeProductConfigRequest) (r
 }
 
 // DescribeProductConfig
-// 本接口 (DescribeProductConfig) 用于查询售卖规格配置。
+// 本接口（DescribeProductConfig）用于查询售卖规格配置。本接口已废弃，推荐使用新接口[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -4564,7 +4566,7 @@ func NewInitDBInstancesResponse() (response *InitDBInstancesResponse) {
 }
 
 // InitDBInstances
-// 本接口 (InitDBInstances) 用于初始化云数据库PostgreSQL实例。
+// 本接口（InitDBInstances）用于初始化云数据库PostgreSQL实例。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -4599,7 +4601,7 @@ func (c *Client) InitDBInstances(request *InitDBInstancesRequest) (response *Ini
 }
 
 // InitDBInstances
-// 本接口 (InitDBInstances) 用于初始化云数据库PostgreSQL实例。
+// 本接口（InitDBInstances）用于初始化云数据库PostgreSQL实例。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -5254,7 +5256,7 @@ func NewModifyBaseBackupExpireTimeResponse() (response *ModifyBaseBackupExpireTi
 }
 
 // ModifyBaseBackupExpireTime
-// 本接口（DeleteBaseBackup）用于修改实例指定全量备份的过期时间。
+// 本接口（ModifyBaseBackupExpireTime）用于修改实例指定全量备份的过期时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
@@ -5265,7 +5267,7 @@ func (c *Client) ModifyBaseBackupExpireTime(request *ModifyBaseBackupExpireTimeR
 }
 
 // ModifyBaseBackupExpireTime
-// 本接口（DeleteBaseBackup）用于修改实例指定全量备份的过期时间。
+// 本接口（ModifyBaseBackupExpireTime）用于修改实例指定全量备份的过期时间。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
@@ -6826,7 +6828,7 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
 }
 
 // UpgradeDBInstance
-// 本接口（UpgradeDBInstance）用于升级实例配置。
+// 本接口（UpgradeDBInstance）用于升级实例配置。本接口已废弃，推荐使用接口[ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -6862,7 +6864,7 @@ func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response 
 }
 
 // UpgradeDBInstance
-// 本接口（UpgradeDBInstance）用于升级实例配置。
+// 本接口（UpgradeDBInstance）用于升级实例配置。本接口已废弃，推荐使用接口[ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)替代。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"

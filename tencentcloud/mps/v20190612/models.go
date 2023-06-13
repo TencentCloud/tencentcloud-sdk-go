@@ -6500,7 +6500,7 @@ type DescribeStreamLinkEventAttachedFlowsRequestParams struct {
 	// 当前页数，默认1。
 	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
 
-	// 每页大小，默认10。
+	// 每页大小，默认1000。
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
@@ -6513,7 +6513,7 @@ type DescribeStreamLinkEventAttachedFlowsRequest struct {
 	// 当前页数，默认1。
 	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
 
-	// 每页大小，默认10。
+	// 每页大小，默认1000。
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 

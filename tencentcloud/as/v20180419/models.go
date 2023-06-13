@@ -98,6 +98,11 @@ type Advice struct {
 
 	// 建议解决方案。
 	Solution *string `json:"Solution,omitempty" name:"Solution"`
+
+	// 伸缩建议警告级别。取值范围：<br>
+	// <li>WARNING：警告级别<br>
+	// <li>CRITICAL：严重级别<br>
+	Level *string `json:"Level,omitempty" name:"Level"`
 }
 
 // Predefined struct for user

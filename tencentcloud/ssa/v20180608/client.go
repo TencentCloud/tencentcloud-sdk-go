@@ -579,6 +579,58 @@ func (c *Client) DescribeConfigListWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeDomainListRequest() (request *DescribeDomainListRequest) {
+    request = &DescribeDomainListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssa", APIVersion, "DescribeDomainList")
+    
+    
+    return
+}
+
+func NewDescribeDomainListResponse() (response *DescribeDomainListResponse) {
+    response = &DescribeDomainListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainList
+// 域名列表信息啊
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDomainList(request *DescribeDomainListRequest) (response *DescribeDomainListResponse, err error) {
+    return c.DescribeDomainListWithContext(context.Background(), request)
+}
+
+// DescribeDomainList
+// 域名列表信息啊
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDomainListWithContext(ctx context.Context, request *DescribeDomainListRequest) (response *DescribeDomainListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventDetailRequest() (request *DescribeEventDetailRequest) {
     request = &DescribeEventDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

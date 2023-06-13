@@ -1848,6 +1848,143 @@ func (r *DescribeConfigListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDomainListRequestParams struct {
+	// -
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// -
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// -
+	AssetBasicType *uint64 `json:"AssetBasicType,omitempty" name:"AssetBasicType"`
+
+	// -
+	Filter []*QueryFilterV3 `json:"Filter,omitempty" name:"Filter"`
+
+	// -
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// -
+	By *string `json:"By,omitempty" name:"By"`
+
+	// -
+	Field []*string `json:"Field,omitempty" name:"Field"`
+
+	// -
+	TimeRange *uint64 `json:"TimeRange,omitempty" name:"TimeRange"`
+
+	// -
+	Logic *uint64 `json:"Logic,omitempty" name:"Logic"`
+
+	// -
+	GroupByField *string `json:"GroupByField,omitempty" name:"GroupByField"`
+
+	// -
+	Task *string `json:"Task,omitempty" name:"Task"`
+
+	// -
+	RequestFrom *uint64 `json:"RequestFrom,omitempty" name:"RequestFrom"`
+}
+
+type DescribeDomainListRequest struct {
+	*tchttp.BaseRequest
+	
+	// -
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// -
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// -
+	AssetBasicType *uint64 `json:"AssetBasicType,omitempty" name:"AssetBasicType"`
+
+	// -
+	Filter []*QueryFilterV3 `json:"Filter,omitempty" name:"Filter"`
+
+	// -
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// -
+	By *string `json:"By,omitempty" name:"By"`
+
+	// -
+	Field []*string `json:"Field,omitempty" name:"Field"`
+
+	// -
+	TimeRange *uint64 `json:"TimeRange,omitempty" name:"TimeRange"`
+
+	// -
+	Logic *uint64 `json:"Logic,omitempty" name:"Logic"`
+
+	// -
+	GroupByField *string `json:"GroupByField,omitempty" name:"GroupByField"`
+
+	// -
+	Task *string `json:"Task,omitempty" name:"Task"`
+
+	// -
+	RequestFrom *uint64 `json:"RequestFrom,omitempty" name:"RequestFrom"`
+}
+
+func (r *DescribeDomainListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "AssetBasicType")
+	delete(f, "Filter")
+	delete(f, "Order")
+	delete(f, "By")
+	delete(f, "Field")
+	delete(f, "TimeRange")
+	delete(f, "Logic")
+	delete(f, "GroupByField")
+	delete(f, "Task")
+	delete(f, "RequestFrom")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainListResponseParams struct {
+	// 无
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 无
+	DomainInfoCollection []*DomainInfo `json:"DomainInfoCollection,omitempty" name:"DomainInfoCollection"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEventDetailRequestParams struct {
 	// 事件索引名
 	Index *string `json:"Index,omitempty" name:"Index"`
@@ -2827,6 +2964,58 @@ func (r *DescribeVulListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DomainInfo struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 解析地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResolveAddr []*string `json:"ResolveAddr,omitempty" name:"ResolveAddr"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region []*string `json:"Region,omitempty" name:"Region"`
+
+	// 资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType []*string `json:"AssetType,omitempty" name:"AssetType"`
+
+	// 漏洞风险
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskVulCount *uint64 `json:"RiskVulCount,omitempty" name:"RiskVulCount"`
+
+	// 敏感内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SensitiveCount *uint64 `json:"SensitiveCount,omitempty" name:"SensitiveCount"`
+
+	// 挂马暗链
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HorseLinkCount *uint64 `json:"HorseLinkCount,omitempty" name:"HorseLinkCount"`
+
+	// 网页篡改
+	WebModifyCount *uint64 `json:"WebModifyCount,omitempty" name:"WebModifyCount"`
+
+	// 上次扫描时间
+	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+
+	// 最近发现时间
+	DiscoverTime *string `json:"DiscoverTime,omitempty" name:"DiscoverTime"`
+
+	// 扫描次数
+	ScanTaskCount *uint64 `json:"ScanTaskCount,omitempty" name:"ScanTaskCount"`
+
+	// 端口
+	PortRisk *uint64 `json:"PortRisk,omitempty" name:"PortRisk"`
+
+	// 弱口令
+	WeekPwdCount *uint64 `json:"WeekPwdCount,omitempty" name:"WeekPwdCount"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetLocation *string `json:"AssetLocation,omitempty" name:"AssetLocation"`
+}
+
 type Filter struct {
 	// 过滤键的名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2972,6 +3161,20 @@ type QueryFilter struct {
 
 	// 过滤value
 	FilterValue *string `json:"FilterValue,omitempty" name:"FilterValue"`
+}
+
+type QueryFilterV3 struct {
+	// 过滤条件
+	Filter *QueryFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 有无子条件
+	HasSub *bool `json:"HasSub,omitempty" name:"HasSub"`
+
+	// 查询条件
+	SubFilters []*QueryFilter `json:"SubFilters,omitempty" name:"SubFilters"`
+
+	// 逻辑操作(只支持32位)
+	Logic *uint64 `json:"Logic,omitempty" name:"Logic"`
 }
 
 type QuerySort struct {

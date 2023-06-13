@@ -1073,7 +1073,9 @@ func NewSetAutoScalingConfigurationResponse() (response *SetAutoScalingConfigura
 //  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
 //  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
 //  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
 func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfigurationRequest) (response *SetAutoScalingConfigurationResponse, err error) {
     return c.SetAutoScalingConfigurationWithContext(context.Background(), request)
@@ -1091,7 +1093,9 @@ func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfiguratio
 //  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
 //  RESOURCENOTFOUND_QUEUE = "ResourceNotFound.Queue"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
+//  UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = "UnsupportedOperation.ClusterAcceptOtherRequest"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = "UnsupportedOperation.ParameterTooLarge"
 //  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
 func (c *Client) SetAutoScalingConfigurationWithContext(ctx context.Context, request *SetAutoScalingConfigurationRequest) (response *SetAutoScalingConfigurationResponse, err error) {
     if request == nil {

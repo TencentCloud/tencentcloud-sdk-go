@@ -1,26 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 38 次发布
+### 第 63 次发布
 
-发布时间：2023-06-12 01:07:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeEnterpriseSGRuleProgress](https://cloud.tencent.com/document/api/1132/93416)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 91 次发布
-
-发布时间：2023-06-12 01:09:11
+发布时间：2023-06-13 01:02:52
 
 本次发布包含了以下内容：
 
@@ -28,22 +12,37 @@
 
 修改数据结构：
 
-* [TargetGroupAssociation](https://cloud.tencent.com/document/api/214/30694#TargetGroupAssociation)
+* [Advice](https://cloud.tencent.com/document/api/377/20453#Advice)
 
-	* <font color="#dd0000">**修改成员**：</font>ListenerId
+	* 新增成员：Level
 
-* [TargetGroupInstance](https://cloud.tencent.com/document/api/214/30694#TargetGroupInstance)
 
-	* <font color="#dd0000">**修改成员**：</font>Port
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 50 次发布
+
+发布时间：2023-06-13 01:10:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConfig](https://cloud.tencent.com/document/api/614/58620)
+
+	* 新增入参：AdvancedConfig
 
 
 
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
 
-### 第 19 次发布
+### 第 20 次发布
 
-发布时间：2023-06-12 01:16:06
+发布时间：2023-06-13 01:16:02
 
 本次发布包含了以下内容：
 
@@ -51,67 +50,30 @@
 
 修改接口：
 
-* [DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1130/57783)
+* [CreateSqlFilter](https://cloud.tencent.com/document/api/1130/72835)
 
-	* 新增出参：UserNameItems, UserTotalCount
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
 
+* [DeleteSqlFilters](https://cloud.tencent.com/document/api/1130/72834)
 
-新增数据结构：
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
 
-* [SlowLogUser](https://cloud.tencent.com/document/api/1130/57812#SlowLogUser)
+* [ModifySqlFilters](https://cloud.tencent.com/document/api/1130/72829)
 
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/1130/57812#InstanceInfo)
-
-	* 新增成员：ClusterId, ClusterName
-
-* [RedisKeySpaceData](https://cloud.tencent.com/document/api/1130/57812#RedisKeySpaceData)
-
-	* 新增成员：AveElementSize, ShardId
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
 
 
 
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
-### 第 14 次发布
-
-发布时间：2023-06-12 01:14:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeSlowLogUserHostStats](https://cloud.tencent.com/document/api/1130/54870)
-
-	* 新增出参：UserNameItems, UserTotalCount
 
 
-新增数据结构：
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
 
-* [SlowLogUser](https://cloud.tencent.com/document/api/1130/39561#SlowLogUser)
+### 第 61 次发布
 
-修改数据结构：
-
-* [InstanceConfs](https://cloud.tencent.com/document/api/1130/39561#InstanceConfs)
-
-	* 新增成员：KeyDelimiters
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/1130/39561#InstanceInfo)
-
-	* 新增成员：InternalVip, InternalVport, CreateTime, ClusterId, ClusterName
-
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 47 次发布
-
-发布时间：2023-06-12 01:20:35
+发布时间：2023-06-13 01:16:36
 
 本次发布包含了以下内容：
 
@@ -119,49 +81,83 @@
 
 修改接口：
 
-* [StartStopServiceOrMonitor](https://cloud.tencent.com/document/api/589/90011)
+* [DescribeDCDBInstanceDetail](https://cloud.tencent.com/document/api/557/89385)
 
-	* 新增入参：StrategyConfig
-
-
-新增数据结构：
-
-* [StrategyConfig](https://cloud.tencent.com/document/api/589/33981#StrategyConfig)
+	* 新增出参：IsPhysicalReplicationSupported
 
 
 
-## 物联网通信(iotcloud) 版本：2021-04-08
 
-### 第 7 次发布
+## 云直播CSS(live) 版本：2018-08-01
 
-发布时间：2023-06-12 01:24:01
+### 第 104 次发布
+
+发布时间：2023-06-13 01:26:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
+
+	* 新增入参：RecordTemplateId
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 56 次发布
+
+发布时间：2023-06-13 01:27:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstanceDetail](https://cloud.tencent.com/document/api/237/89390)
+
+	* 新增出参：IsPhysicalReplicationSupported
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 104 次发布
+
+发布时间：2023-06-13 01:30:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MedicalInvoice](https://cloud.tencent.com/document/api/866/33527#MedicalInvoice)
+
 修改数据结构：
 
-* [ProductMetadata](https://cloud.tencent.com/document/api/634/71973#ProductMetadata)
+* [SingleInvoiceItem](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceItem)
 
-	* 新增成员：CreateUserId, UserId
+	* 新增成员：MedicalOutpatientInvoice, MedicalHospitalizedInvoice
 
-* [ProductProperties](https://cloud.tencent.com/document/api/634/71973#ProductProperties)
+* [VatInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceInfo)
 
-	* 新增成员：DeviceLimit, ForbiddenStatus
-
-
-
-
-## 物联网通信(iotcloud) 版本：2018-06-14
+	* 新增成员：ElectronicFullMark, ElectronicFullNumber, FormName
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
 
-### 第 64 次发布
+## 安全运营中心(ssa) 版本：2018-06-08
 
-发布时间：2023-06-12 01:29:43
+### 第 16 次发布
+
+发布时间：2023-06-13 01:37:42
 
 本次发布包含了以下内容：
 
@@ -169,28 +165,20 @@
 
 新增接口：
 
-* [BatchDeleteStreamLinkFlow](https://cloud.tencent.com/document/api/862/93426)
-* [BatchStartStreamLinkFlow](https://cloud.tencent.com/document/api/862/93425)
-* [BatchStopStreamLinkFlow](https://cloud.tencent.com/document/api/862/93424)
-* [CreateStreamLinkEvent](https://cloud.tencent.com/document/api/862/93422)
-* [DeleteStreamLinkEvent](https://cloud.tencent.com/document/api/862/93421)
-* [DescribeStreamLinkEvent](https://cloud.tencent.com/document/api/862/93420)
-* [DescribeStreamLinkEventAttachedFlows](https://cloud.tencent.com/document/api/862/93423)
-* [DescribeStreamLinkEvents](https://cloud.tencent.com/document/api/862/93419)
-* [ModifyStreamLinkEvent](https://cloud.tencent.com/document/api/862/93418)
+* [DescribeDomainList](https://cloud.tencent.com/document/api/664/93451)
 
 新增数据结构：
 
-* [DescribeEvent](https://cloud.tencent.com/document/api/862/37615#DescribeEvent)
-* [DescribeFlowId](https://cloud.tencent.com/document/api/862/37615#DescribeFlowId)
+* [DomainInfo](https://cloud.tencent.com/document/api/664/51406#DomainInfo)
+* [QueryFilterV3](https://cloud.tencent.com/document/api/664/51406#QueryFilterV3)
 
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
 
-### 第 36 次发布
+### 第 37 次发布
 
-发布时间：2023-06-12 01:35:30
+发布时间：2023-06-13 01:37:56
 
 本次发布包含了以下内容：
 
@@ -198,55 +186,50 @@
 
 修改接口：
 
-* [DescribeHostCdnInstanceList](https://cloud.tencent.com/document/api/400/91663)
+* [DescribeHostUpdateRecordDetail](https://cloud.tencent.com/document/api/400/91652)
 
-	* 新增入参：AsyncCache
+	* 新增入参：Limit, Offset
 
-	* 新增出参：AsyncTotalNum, AsyncOffset, AsyncCacheTime
 
-* [DescribeHostClbInstanceList](https://cloud.tencent.com/document/api/400/91662)
+修改数据结构：
 
-	* 新增出参：AsyncCacheTime
+* [UpdateRecordDetail](https://cloud.tencent.com/document/api/400/41679#UpdateRecordDetail)
 
-* [DescribeHostCosInstanceList](https://cloud.tencent.com/document/api/400/91661)
+	* 新增成员：Port, Namespace, SecretName
 
-	* 新增出参：AsyncCacheTime
+* [UpdateRecordDetails](https://cloud.tencent.com/document/api/400/41679#UpdateRecordDetails)
 
-* [DescribeHostTkeInstanceList](https://cloud.tencent.com/document/api/400/91654)
-
-	* 新增出参：AsyncCacheTime
+	* 新增成员：TotalCount
 
 
 
 
-## 高性能计算平台(thpc) 版本：2023-03-21
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-### 第 7 次发布
+### 第 62 次发布
 
-发布时间：2023-06-12 01:40:28
+发布时间：2023-06-13 01:41:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [QueueConfig](https://cloud.tencent.com/document/api/1527/89579#QueueConfig)
+* [DeleteRabbitMQUser](https://cloud.tencent.com/document/api/1179/93458)
+* [DeleteRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93457)
+* [DescribeRabbitMQUser](https://cloud.tencent.com/document/api/1179/93456)
+* [DescribeRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93455)
+* [DescribeRabbitMQVirtualHostList](https://cloud.tencent.com/document/api/1179/93452)
+* [ModifyRabbitMQUser](https://cloud.tencent.com/document/api/1179/93454)
+* [ModifyRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93453)
 
-	* 新增成员：MaxNodesPerCycle
+新增数据结构：
 
-* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
-
-	* 新增成员：MaxNodesPerCycle
-
-
-
-
-## 高性能计算平台(thpc) 版本：2022-04-01
-
-
-
-## 高性能计算平台(thpc) 版本：2021-11-09
+* [RabbitMQPrivateVirtualHost](https://cloud.tencent.com/document/api/1179/46089#RabbitMQPrivateVirtualHost)
+* [RabbitMQUser](https://cloud.tencent.com/document/api/1179/46089#RabbitMQUser)
+* [RabbitMQVirtualHostInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostInfo)
+* [RabbitMQVirtualHostStatistics](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostStatistics)
 
 
 
@@ -4445,6 +4428,21 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 63 次发布
+
+发布时间：2023-06-13 01:02:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Advice](https://cloud.tencent.com/document/api/377/20453#Advice)
+
+	* 新增成员：Level
+
 
 ### 第 62 次发布
 
@@ -20260,7 +20258,7 @@
 
 新增接口：
 
-* [[DescribeEnterpriseSGRuleProgress](https://cloud.tencent.com/document/api/1132/93416)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEnterpriseSGRuleProgress](https://cloud.tencent.com/document/api/1132/93416)
 
 ### 第 37 次发布
 
@@ -26007,6 +26005,21 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 50 次发布
+
+发布时间：2023-06-13 01:10:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConfig](https://cloud.tencent.com/document/api/614/58620)
+
+	* 新增入参：AdvancedConfig
+
 
 ### 第 49 次发布
 
@@ -38397,7 +38410,7 @@
 
 新增数据结构：
 
-* [[SlowLogUser](https://cloud.tencent.com/document/api/1130/39561#SlowLogUser)](https://cloud.tencent.com/document/api/1130/39561#[SlowLogUser](https://cloud.tencent.com/document/api/1130/39561#SlowLogUser))
+* [SlowLogUser](https://cloud.tencent.com/document/api/1130/39561#SlowLogUser)
 
 修改数据结构：
 
@@ -38751,6 +38764,29 @@
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
 
+### 第 20 次发布
+
+发布时间：2023-06-13 01:16:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSqlFilter](https://cloud.tencent.com/document/api/1130/72835)
+
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
+
+* [DeleteSqlFilters](https://cloud.tencent.com/document/api/1130/72834)
+
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
+
+* [ModifySqlFilters](https://cloud.tencent.com/document/api/1130/72829)
+
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
+
+
 ### 第 19 次发布
 
 发布时间：2023-06-12 01:16:06
@@ -38768,7 +38804,7 @@
 
 新增数据结构：
 
-* [[SlowLogUser](https://cloud.tencent.com/document/api/1130/57812#SlowLogUser)](https://cloud.tencent.com/document/api/1130/57812#[SlowLogUser](https://cloud.tencent.com/document/api/1130/57812#SlowLogUser))
+* [SlowLogUser](https://cloud.tencent.com/document/api/1130/57812#SlowLogUser)
 
 修改数据结构：
 
@@ -39676,6 +39712,21 @@
 
 
 ## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 61 次发布
+
+发布时间：2023-06-13 01:16:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDCDBInstanceDetail](https://cloud.tencent.com/document/api/557/89385)
+
+	* 新增出参：IsPhysicalReplicationSupported
+
 
 ### 第 60 次发布
 
@@ -46424,7 +46475,7 @@
 
 新增数据结构：
 
-* [[StrategyConfig](https://cloud.tencent.com/document/api/589/33981#StrategyConfig)](https://cloud.tencent.com/document/api/589/33981#[StrategyConfig](https://cloud.tencent.com/document/api/589/33981#StrategyConfig))
+* [StrategyConfig](https://cloud.tencent.com/document/api/589/33981#StrategyConfig)
 
 ### 第 46 次发布
 
@@ -64068,6 +64119,21 @@
 
 ## 云直播CSS(live) 版本：2018-08-01
 
+### 第 104 次发布
+
+发布时间：2023-06-13 01:26:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
+
+	* 新增入参：RecordTemplateId
+
+
 ### 第 103 次发布
 
 发布时间：2023-06-07 01:33:34
@@ -66240,6 +66306,21 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 56 次发布
+
+发布时间：2023-06-13 01:27:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstanceDetail](https://cloud.tencent.com/document/api/237/89390)
+
+	* 新增出参：IsPhysicalReplicationSupported
+
 
 ### 第 55 次发布
 
@@ -70505,20 +70586,20 @@
 
 新增接口：
 
-* [[BatchDeleteStreamLinkFlow](https://cloud.tencent.com/document/api/862/93426)](https://cloud.tencent.com/document/api/#/#)
-* [[BatchStartStreamLinkFlow](https://cloud.tencent.com/document/api/862/93425)](https://cloud.tencent.com/document/api/#/#)
-* [[BatchStopStreamLinkFlow](https://cloud.tencent.com/document/api/862/93424)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateStreamLinkEvent](https://cloud.tencent.com/document/api/862/93422)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteStreamLinkEvent](https://cloud.tencent.com/document/api/862/93421)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStreamLinkEvent](https://cloud.tencent.com/document/api/862/93420)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStreamLinkEventAttachedFlows](https://cloud.tencent.com/document/api/862/93423)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeStreamLinkEvents](https://cloud.tencent.com/document/api/862/93419)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyStreamLinkEvent](https://cloud.tencent.com/document/api/862/93418)](https://cloud.tencent.com/document/api/#/#)
+* [BatchDeleteStreamLinkFlow](https://cloud.tencent.com/document/api/862/93426)
+* [BatchStartStreamLinkFlow](https://cloud.tencent.com/document/api/862/93425)
+* [BatchStopStreamLinkFlow](https://cloud.tencent.com/document/api/862/93424)
+* [CreateStreamLinkEvent](https://cloud.tencent.com/document/api/862/93422)
+* [DeleteStreamLinkEvent](https://cloud.tencent.com/document/api/862/93421)
+* [DescribeStreamLinkEvent](https://cloud.tencent.com/document/api/862/93420)
+* [DescribeStreamLinkEventAttachedFlows](https://cloud.tencent.com/document/api/862/93423)
+* [DescribeStreamLinkEvents](https://cloud.tencent.com/document/api/862/93419)
+* [ModifyStreamLinkEvent](https://cloud.tencent.com/document/api/862/93418)
 
 新增数据结构：
 
-* [[DescribeEvent](https://cloud.tencent.com/document/api/862/37615#DescribeEvent)](https://cloud.tencent.com/document/api/862/37615#[DescribeEvent](https://cloud.tencent.com/document/api/862/37615#DescribeEvent))
-* [[DescribeFlowId](https://cloud.tencent.com/document/api/862/37615#DescribeFlowId)](https://cloud.tencent.com/document/api/862/37615#[DescribeFlowId](https://cloud.tencent.com/document/api/862/37615#DescribeFlowId))
+* [DescribeEvent](https://cloud.tencent.com/document/api/862/37615#DescribeEvent)
+* [DescribeFlowId](https://cloud.tencent.com/document/api/862/37615#DescribeFlowId)
 
 ### 第 63 次发布
 
@@ -74585,6 +74666,29 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 104 次发布
+
+发布时间：2023-06-13 01:30:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[MedicalInvoice](https://cloud.tencent.com/document/api/866/33527#MedicalInvoice)](https://cloud.tencent.com/document/api/866/33527#[MedicalInvoice](https://cloud.tencent.com/document/api/866/33527#MedicalInvoice))
+
+修改数据结构：
+
+* [SingleInvoiceItem](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceItem)
+
+	* 新增成员：MedicalOutpatientInvoice, MedicalHospitalizedInvoice
+
+* [VatInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceInfo)
+
+	* 新增成员：ElectronicFullMark, ElectronicFullNumber, FormName
+
 
 ### 第 103 次发布
 
@@ -84348,6 +84452,23 @@
 
 ## 安全运营中心(ssa) 版本：2018-06-08
 
+### 第 16 次发布
+
+发布时间：2023-06-13 01:37:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDomainList](https://cloud.tencent.com/document/api/664/93451)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DomainInfo](https://cloud.tencent.com/document/api/664/51406#DomainInfo)](https://cloud.tencent.com/document/api/664/51406#[DomainInfo](https://cloud.tencent.com/document/api/664/51406#DomainInfo))
+* [[QueryFilterV3](https://cloud.tencent.com/document/api/664/51406#QueryFilterV3)](https://cloud.tencent.com/document/api/664/51406#[QueryFilterV3](https://cloud.tencent.com/document/api/664/51406#QueryFilterV3))
+
 ### 第 15 次发布
 
 发布时间：2023-05-08 01:50:08
@@ -84678,6 +84799,32 @@
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 37 次发布
+
+发布时间：2023-06-13 01:37:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeHostUpdateRecordDetail](https://cloud.tencent.com/document/api/400/91652)
+
+	* 新增入参：Limit, Offset
+
+
+修改数据结构：
+
+* [UpdateRecordDetail](https://cloud.tencent.com/document/api/400/41679#UpdateRecordDetail)
+
+	* 新增成员：Port, Namespace, SecretName
+
+* [UpdateRecordDetails](https://cloud.tencent.com/document/api/400/41679#UpdateRecordDetails)
+
+	* 新增成员：TotalCount
+
 
 ### 第 36 次发布
 
@@ -93524,6 +93671,31 @@
 
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 62 次发布
+
+发布时间：2023-06-13 01:41:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteRabbitMQUser](https://cloud.tencent.com/document/api/1179/93458)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93457)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRabbitMQUser](https://cloud.tencent.com/document/api/1179/93456)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93455)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRabbitMQVirtualHostList](https://cloud.tencent.com/document/api/1179/93452)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRabbitMQUser](https://cloud.tencent.com/document/api/1179/93454)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93453)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RabbitMQPrivateVirtualHost](https://cloud.tencent.com/document/api/1179/46089#RabbitMQPrivateVirtualHost)](https://cloud.tencent.com/document/api/1179/46089#[RabbitMQPrivateVirtualHost](https://cloud.tencent.com/document/api/1179/46089#RabbitMQPrivateVirtualHost))
+* [[RabbitMQUser](https://cloud.tencent.com/document/api/1179/46089#RabbitMQUser)](https://cloud.tencent.com/document/api/1179/46089#[RabbitMQUser](https://cloud.tencent.com/document/api/1179/46089#RabbitMQUser))
+* [[RabbitMQVirtualHostInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostInfo)](https://cloud.tencent.com/document/api/1179/46089#[RabbitMQVirtualHostInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostInfo))
+* [[RabbitMQVirtualHostStatistics](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostStatistics)](https://cloud.tencent.com/document/api/1179/46089#[RabbitMQVirtualHostStatistics](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostStatistics))
 
 ### 第 61 次发布
 

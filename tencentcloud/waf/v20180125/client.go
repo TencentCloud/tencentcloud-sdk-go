@@ -2933,6 +2933,7 @@ func NewPostAttackDownloadTaskResponse() (response *PostAttackDownloadTaskRespon
 // 创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
 //  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2944,6 +2945,7 @@ func (c *Client) PostAttackDownloadTask(request *PostAttackDownloadTaskRequest) 
 // 创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
 //  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

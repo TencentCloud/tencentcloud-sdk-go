@@ -2281,6 +2281,110 @@ func (c *Client) DeleteEnvironmentsWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteRabbitMQUserRequest() (request *DeleteRabbitMQUserRequest) {
+    request = &DeleteRabbitMQUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRabbitMQUser")
+    
+    
+    return
+}
+
+func NewDeleteRabbitMQUserResponse() (response *DeleteRabbitMQUserResponse) {
+    response = &DeleteRabbitMQUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRabbitMQUser
+// 删除RabbitMQ的用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRabbitMQUser(request *DeleteRabbitMQUserRequest) (response *DeleteRabbitMQUserResponse, err error) {
+    return c.DeleteRabbitMQUserWithContext(context.Background(), request)
+}
+
+// DeleteRabbitMQUser
+// 删除RabbitMQ的用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRabbitMQUserWithContext(ctx context.Context, request *DeleteRabbitMQUserRequest) (response *DeleteRabbitMQUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteRabbitMQUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRabbitMQUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRabbitMQUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRabbitMQVirtualHostRequest() (request *DeleteRabbitMQVirtualHostRequest) {
+    request = &DeleteRabbitMQVirtualHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRabbitMQVirtualHost")
+    
+    
+    return
+}
+
+func NewDeleteRabbitMQVirtualHostResponse() (response *DeleteRabbitMQVirtualHostResponse) {
+    response = &DeleteRabbitMQVirtualHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRabbitMQVirtualHost
+// 删除RabbitMQ的vhost
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRabbitMQVirtualHost(request *DeleteRabbitMQVirtualHostRequest) (response *DeleteRabbitMQVirtualHostResponse, err error) {
+    return c.DeleteRabbitMQVirtualHostWithContext(context.Background(), request)
+}
+
+// DeleteRabbitMQVirtualHost
+// 删除RabbitMQ的vhost
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRabbitMQVirtualHostWithContext(ctx context.Context, request *DeleteRabbitMQVirtualHostRequest) (response *DeleteRabbitMQVirtualHostResponse, err error) {
+    if request == nil {
+        request = NewDeleteRabbitMQVirtualHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRabbitMQVirtualHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRabbitMQVirtualHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRocketMQClusterRequest() (request *DeleteRocketMQClusterRequest) {
     request = &DeleteRocketMQClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4253,6 +4357,60 @@ func (c *Client) DescribeRabbitMQNodeListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRabbitMQUserRequest() (request *DescribeRabbitMQUserRequest) {
+    request = &DescribeRabbitMQUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQUser")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQUserResponse() (response *DescribeRabbitMQUserResponse) {
+    response = &DescribeRabbitMQUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRabbitMQUser
+// 查询RabbitMQ用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRabbitMQUser(request *DescribeRabbitMQUserRequest) (response *DescribeRabbitMQUserResponse, err error) {
+    return c.DescribeRabbitMQUserWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQUser
+// 查询RabbitMQ用户列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRabbitMQUserWithContext(ctx context.Context, request *DescribeRabbitMQUserRequest) (response *DescribeRabbitMQUserResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRabbitMQVipInstanceRequest() (request *DescribeRabbitMQVipInstanceRequest) {
     request = &DescribeRabbitMQVipInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4361,6 +4519,108 @@ func (c *Client) DescribeRabbitMQVipInstancesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeRabbitMQVipInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRabbitMQVirtualHostRequest() (request *DescribeRabbitMQVirtualHostRequest) {
+    request = &DescribeRabbitMQVirtualHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQVirtualHost")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQVirtualHostResponse() (response *DescribeRabbitMQVirtualHostResponse) {
+    response = &DescribeRabbitMQVirtualHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRabbitMQVirtualHost
+// 查询RabbitMQ vhost列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRabbitMQVirtualHost(request *DescribeRabbitMQVirtualHostRequest) (response *DescribeRabbitMQVirtualHostResponse, err error) {
+    return c.DescribeRabbitMQVirtualHostWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQVirtualHost
+// 查询RabbitMQ vhost列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRabbitMQVirtualHostWithContext(ctx context.Context, request *DescribeRabbitMQVirtualHostRequest) (response *DescribeRabbitMQVirtualHostResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQVirtualHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQVirtualHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQVirtualHostResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRabbitMQVirtualHostListRequest() (request *DescribeRabbitMQVirtualHostListRequest) {
+    request = &DescribeRabbitMQVirtualHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQVirtualHostList")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQVirtualHostListResponse() (response *DescribeRabbitMQVirtualHostListResponse) {
+    response = &DescribeRabbitMQVirtualHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRabbitMQVirtualHostList
+// RabbitMQ专享版查询虚拟主机列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRabbitMQVirtualHostList(request *DescribeRabbitMQVirtualHostListRequest) (response *DescribeRabbitMQVirtualHostListResponse, err error) {
+    return c.DescribeRabbitMQVirtualHostListWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQVirtualHostList
+// RabbitMQ专享版查询虚拟主机列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRabbitMQVirtualHostListWithContext(ctx context.Context, request *DescribeRabbitMQVirtualHostListRequest) (response *DescribeRabbitMQVirtualHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQVirtualHostListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQVirtualHostList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQVirtualHostListResponse()
     err = c.Send(request, response)
     return
 }
@@ -5617,6 +5877,58 @@ func (c *Client) ModifyEnvironmentRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyRabbitMQUserRequest() (request *ModifyRabbitMQUserRequest) {
+    request = &ModifyRabbitMQUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRabbitMQUser")
+    
+    
+    return
+}
+
+func NewModifyRabbitMQUserResponse() (response *ModifyRabbitMQUserResponse) {
+    response = &ModifyRabbitMQUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRabbitMQUser
+// 修改RabbitMQ的用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRabbitMQUser(request *ModifyRabbitMQUserRequest) (response *ModifyRabbitMQUserResponse, err error) {
+    return c.ModifyRabbitMQUserWithContext(context.Background(), request)
+}
+
+// ModifyRabbitMQUser
+// 修改RabbitMQ的用户
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRabbitMQUserWithContext(ctx context.Context, request *ModifyRabbitMQUserRequest) (response *ModifyRabbitMQUserResponse, err error) {
+    if request == nil {
+        request = NewModifyRabbitMQUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRabbitMQUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRabbitMQUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRabbitMQVipInstanceRequest() (request *ModifyRabbitMQVipInstanceRequest) {
     request = &ModifyRabbitMQVipInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5665,6 +5977,58 @@ func (c *Client) ModifyRabbitMQVipInstanceWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyRabbitMQVipInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRabbitMQVirtualHostRequest() (request *ModifyRabbitMQVirtualHostRequest) {
+    request = &ModifyRabbitMQVirtualHostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyRabbitMQVirtualHost")
+    
+    
+    return
+}
+
+func NewModifyRabbitMQVirtualHostResponse() (response *ModifyRabbitMQVirtualHostResponse) {
+    response = &ModifyRabbitMQVirtualHostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRabbitMQVirtualHost
+// 修改RabbitMQ的vhost
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRabbitMQVirtualHost(request *ModifyRabbitMQVirtualHostRequest) (response *ModifyRabbitMQVirtualHostResponse, err error) {
+    return c.ModifyRabbitMQVirtualHostWithContext(context.Background(), request)
+}
+
+// ModifyRabbitMQVirtualHost
+// 修改RabbitMQ的vhost
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyRabbitMQVirtualHostWithContext(ctx context.Context, request *ModifyRabbitMQVirtualHostRequest) (response *ModifyRabbitMQVirtualHostResponse, err error) {
+    if request == nil {
+        request = NewModifyRabbitMQVirtualHostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRabbitMQVirtualHost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRabbitMQVirtualHostResponse()
     err = c.Send(request, response)
     return
 }

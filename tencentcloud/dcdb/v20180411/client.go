@@ -3307,6 +3307,7 @@ func NewModifyAccountConfigResponse() (response *ModifyAccountConfigResponse) {
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyAccountConfig(request *ModifyAccountConfigRequest) (response *ModifyAccountConfigResponse, err error) {
     return c.ModifyAccountConfigWithContext(context.Background(), request)
 }
@@ -3319,6 +3320,7 @@ func (c *Client) ModifyAccountConfig(request *ModifyAccountConfigRequest) (respo
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEUNAVAILABLE_INSTANCEHASBEENLOCKED = "ResourceUnavailable.InstanceHasBeenLocked"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyAccountConfigWithContext(ctx context.Context, request *ModifyAccountConfigRequest) (response *ModifyAccountConfigResponse, err error) {
     if request == nil {
         request = NewModifyAccountConfigRequest()
@@ -3832,6 +3834,7 @@ func NewModifyDBSyncModeResponse() (response *ModifyDBSyncModeResponse) {
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_GETINSTANCEINFOFAILED = "InternalError.GetInstanceInfoFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_BADSYNCMODE = "InvalidParameterValue.BadSyncMode"
@@ -3852,6 +3855,7 @@ func (c *Client) ModifyDBSyncMode(request *ModifyDBSyncModeRequest) (response *M
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_GETINSTANCEINFOFAILED = "InternalError.GetInstanceInfoFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_BADSYNCMODE = "InvalidParameterValue.BadSyncMode"
@@ -4391,6 +4395,7 @@ func NewSwitchDBInstanceHAResponse() (response *SwitchDBInstanceHAResponse) {
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_ZONEIDILLEGAL = "InvalidParameter.ZoneIdIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -4406,6 +4411,7 @@ func (c *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (respons
 //  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETER_ZONEIDILLEGAL = "InvalidParameter.ZoneIdIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"

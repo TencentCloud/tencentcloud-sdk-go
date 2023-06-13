@@ -882,6 +882,7 @@ func NewCreateMultipleSecurityPolicyResponse() (response *CreateMultipleSecurity
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
@@ -901,6 +902,7 @@ func (c *Client) CreateMultipleSecurityPolicy(request *CreateMultipleSecurityPol
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"

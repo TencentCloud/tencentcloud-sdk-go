@@ -169,6 +169,7 @@ func NewAttachLoadBalancersResponse() (response *AttachLoadBalancersResponse) {
 //  INVALIDPARAMETERVALUE_FORWARDLB = "InvalidParameterValue.ForwardLb"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDCLBREGION = "InvalidParameterValue.InvalidClbRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = "InvalidParameterValue.TargetPortDuplicated"
 //  LIMITEXCEEDED_AFTERATTACHLBLIMITEXCEEDED = "LimitExceeded.AfterAttachLbLimitExceeded"
@@ -202,6 +203,7 @@ func (c *Client) AttachLoadBalancers(request *AttachLoadBalancersRequest) (respo
 //  INVALIDPARAMETERVALUE_FORWARDLB = "InvalidParameterValue.ForwardLb"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDCLBREGION = "InvalidParameterValue.InvalidClbRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = "InvalidParameterValue.TargetPortDuplicated"
 //  LIMITEXCEEDED_AFTERATTACHLBLIMITEXCEEDED = "LimitExceeded.AfterAttachLbLimitExceeded"
@@ -3137,6 +3139,7 @@ func NewModifyLoadBalancerTargetAttributesResponse() (response *ModifyLoadBalanc
 //  INVALIDPARAMETERVALUE_FORWARDLB = "InvalidParameterValue.ForwardLb"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDCLBREGION = "InvalidParameterValue.InvalidClbRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = "InvalidParameterValue.TargetPortDuplicated"
 //  LIMITEXCEEDED_AFTERATTACHLBLIMITEXCEEDED = "LimitExceeded.AfterAttachLbLimitExceeded"
@@ -3169,6 +3172,7 @@ func (c *Client) ModifyLoadBalancerTargetAttributes(request *ModifyLoadBalancerT
 //  INVALIDPARAMETERVALUE_FORWARDLB = "InvalidParameterValue.ForwardLb"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDCLBREGION = "InvalidParameterValue.InvalidClbRegion"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = "InvalidParameterValue.TargetPortDuplicated"
 //  LIMITEXCEEDED_AFTERATTACHLBLIMITEXCEEDED = "LimitExceeded.AfterAttachLbLimitExceeded"
@@ -3714,6 +3718,8 @@ func NewScaleOutInstancesResponse() (response *ScaleOutInstancesResponse) {
 //
 // * 扩容如果失败或者部分成功，最后期望实例数只会增加实际成功的实例数量
 //
+// * 竞价混合模式中一次扩容可能触发多个伸缩活动，该接口仅返回第一个伸缩活动的 ActivityId
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
@@ -3736,6 +3742,8 @@ func (c *Client) ScaleOutInstances(request *ScaleOutInstancesRequest) (response 
 // * 接口会增加期望实例数，新的期望实例数需要小于等于最大实例数
 //
 // * 扩容如果失败或者部分成功，最后期望实例数只会增加实际成功的实例数量
+//
+// * 竞价混合模式中一次扩容可能触发多个伸缩活动，该接口仅返回第一个伸缩活动的 ActivityId
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"

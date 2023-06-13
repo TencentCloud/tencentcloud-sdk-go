@@ -3926,6 +3926,7 @@ type InvoiceItem struct {
 	// 13：过路过桥费发票
 	// 15：非税发票
 	// 16：全电发票
+	// 17：医疗发票
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 旋转后的图片四点坐标。
@@ -4558,6 +4559,35 @@ func (r *MainlandPermitOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *MainlandPermitOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MedicalInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 发票代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 发票号码
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 价税合计（小写）
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 价税合计（大写）
+	TotalCn *string `json:"TotalCn,omitempty" name:"TotalCn"`
+
+	// 开票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 校验码
+	CheckCode *string `json:"CheckCode,omitempty" name:"CheckCode"`
+
+	// 发票属地
+	Place *string `json:"Place,omitempty" name:"Place"`
+
+	// 复核人
+	Reviewer *string `json:"Reviewer,omitempty" name:"Reviewer"`
 }
 
 type MedicalInvoiceInfo struct {
@@ -6082,19 +6112,20 @@ type RecognizeGeneralInvoiceRequestParams struct {
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 支持的图片像素：需介于20-10000px之间。
+	// 支持的图片像素：单边介于20-10000px之间。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 支持的图片像素：需介于20-10000px之间。
+	// 支持的图片像素：单边介于20-10000px之间。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 需要识别的票据类型列表，为空或不填表示识别全部类型。
+	// 需要识别的票据类型列表，为空或不填表示识别全部类型。当传入单个类型时，图片均采用该票类型进行处理。
+	// 暂不支持多个参数进行局部控制。
 	// 0：出租车发票
 	// 1：定额发票
 	// 2：火车票
@@ -6108,11 +6139,8 @@ type RecognizeGeneralInvoiceRequestParams struct {
 	// 13：过路过桥费发票
 	// 15：非税发票
 	// 16：全电发票
+	// 17：医疗发票
 	// -1：其他发票
-	// 
-	// 默认为空，识别所有类型发票。
-	// 当传入单个类型时，图片均采用该票类型进行处理。
-	// 暂不支持多个参数进行局部控制。
 	Types []*int64 `json:"Types,omitempty" name:"Types"`
 
 	// 是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
@@ -6137,19 +6165,20 @@ type RecognizeGeneralInvoiceRequest struct {
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 支持的图片像素：需介于20-10000px之间。
+	// 支持的图片像素：单边介于20-10000px之间。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-	// 支持的图片像素：需介于20-10000px之间。
+	// 支持的图片像素：单边介于20-10000px之间。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 需要识别的票据类型列表，为空或不填表示识别全部类型。
+	// 需要识别的票据类型列表，为空或不填表示识别全部类型。当传入单个类型时，图片均采用该票类型进行处理。
+	// 暂不支持多个参数进行局部控制。
 	// 0：出租车发票
 	// 1：定额发票
 	// 2：火车票
@@ -6163,11 +6192,8 @@ type RecognizeGeneralInvoiceRequest struct {
 	// 13：过路过桥费发票
 	// 15：非税发票
 	// 16：全电发票
+	// 17：医疗发票
 	// -1：其他发票
-	// 
-	// 默认为空，识别所有类型发票。
-	// 当传入单个类型时，图片均采用该票类型进行处理。
-	// 暂不支持多个参数进行局部控制。
 	Types []*int64 `json:"Types,omitempty" name:"Types"`
 
 	// 是否开启其他票识别，默认值为true，开启后可支持其他发票的智能识别。	
@@ -8297,6 +8323,14 @@ type SingleInvoiceItem struct {
 	// 火车票
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrainTicket *TrainTicket `json:"TrainTicket,omitempty" name:"TrainTicket"`
+
+	// 医疗门诊收费票据（电子）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedicalOutpatientInvoice *MedicalInvoice `json:"MedicalOutpatientInvoice,omitempty" name:"MedicalOutpatientInvoice"`
+
+	// 医疗住院收费票据（电子）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedicalHospitalizedInvoice *MedicalInvoice `json:"MedicalHospitalizedInvoice,omitempty" name:"MedicalHospitalizedInvoice"`
 }
 
 type SmartFormFileUrl struct {
@@ -10175,6 +10209,15 @@ type VatInvoiceInfo struct {
 
 	// 收款人
 	Receiptor *string `json:"Receiptor,omitempty" name:"Receiptor"`
+
+	// 是否有全电纸质票（0：没有，1：有）
+	ElectronicFullMark *int64 `json:"ElectronicFullMark,omitempty" name:"ElectronicFullMark"`
+
+	// 全电号码
+	ElectronicFullNumber *string `json:"ElectronicFullNumber,omitempty" name:"ElectronicFullNumber"`
+
+	// 发票联名
+	FormName *string `json:"FormName,omitempty" name:"FormName"`
 }
 
 type VatInvoiceItem struct {

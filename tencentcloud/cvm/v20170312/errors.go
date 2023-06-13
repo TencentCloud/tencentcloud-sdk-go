@@ -347,6 +347,9 @@ const (
 	// 非GPU实例不允许转为GPU实例。
 	INVALIDPARAMETERVALUE_GPUINSTANCEFAMILY = "InvalidParameterValue.GPUInstanceFamily"
 
+	// 您的高性能计算集群已经绑定其他可用区，不能购买当前可用区机器。
+	INVALIDPARAMETERVALUE_HPCCLUSTERIDZONEIDNOTMATCH = "InvalidParameterValue.HpcClusterIdZoneIdNotMatch"
+
 	// IP格式非法。
 	INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
 

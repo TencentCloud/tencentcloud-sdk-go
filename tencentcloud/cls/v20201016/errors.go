@@ -218,6 +218,9 @@ const (
 	// topic绑定了函数投递。
 	OPERATIONDENIED_TOPICHASDELIVERFUNCTION = "OperationDenied.TopicHasDeliverFunction"
 
+	// topic配置有外部数据源配置，不能删除
+	OPERATIONDENIED_TOPICHASEXTERNALDATASOURCECONFIG = "OperationDenied.TopicHasExternalDatasourceConfig"
+
 	// topic绑定了scheduleSql任务。
 	OPERATIONDENIED_TOPICHASSCHEDULESQLTASK = "OperationDenied.TopicHasScheduleSqlTask"
 

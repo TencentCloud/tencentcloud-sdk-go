@@ -7224,6 +7224,7 @@ func NewDescribeTaskAlarmRegulationsResponse() (response *DescribeTaskAlarmRegul
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTaskAlarmRegulations(request *DescribeTaskAlarmRegulationsRequest) (response *DescribeTaskAlarmRegulationsResponse, err error) {
     return c.DescribeTaskAlarmRegulationsWithContext(context.Background(), request)
 }
@@ -7241,6 +7242,7 @@ func (c *Client) DescribeTaskAlarmRegulations(request *DescribeTaskAlarmRegulati
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTaskAlarmRegulationsWithContext(ctx context.Context, request *DescribeTaskAlarmRegulationsRequest) (response *DescribeTaskAlarmRegulationsResponse, err error) {
     if request == nil {
         request = NewDescribeTaskAlarmRegulationsRequest()

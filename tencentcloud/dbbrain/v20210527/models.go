@@ -925,9 +925,6 @@ type CreateSqlFilterRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
-
 	// SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
 	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
 
@@ -939,6 +936,9 @@ type CreateSqlFilterRequestParams struct {
 
 	// 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
@@ -950,9 +950,6 @@ type CreateSqlFilterRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
-
 	// SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
 	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
 
@@ -964,6 +961,9 @@ type CreateSqlFilterRequest struct {
 
 	// 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
@@ -982,11 +982,11 @@ func (r *CreateSqlFilterRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "SessionToken")
 	delete(f, "SqlType")
 	delete(f, "FilterKey")
 	delete(f, "MaxConcurrency")
 	delete(f, "Duration")
+	delete(f, "SessionToken")
 	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSqlFilterRequest has unknown keys!", "")
@@ -1238,11 +1238,11 @@ type DeleteSqlFiltersRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
-
 	// 限流任务ID列表。
 	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
@@ -1254,11 +1254,11 @@ type DeleteSqlFiltersRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
-
 	// 限流任务ID列表。
 	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
@@ -1277,8 +1277,8 @@ func (r *DeleteSqlFiltersRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "SessionToken")
 	delete(f, "FilterIds")
+	delete(f, "SessionToken")
 	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSqlFiltersRequest has unknown keys!", "")
@@ -4530,14 +4530,14 @@ type ModifySqlFiltersRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
-
 	// SQL限流任务ID列表。
 	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
 
 	// 限流任务状态，取值支持TERMINATED - 终止。
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
@@ -4549,14 +4549,14 @@ type ModifySqlFiltersRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
-
 	// SQL限流任务ID列表。
 	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
 
 	// 限流任务状态，取值支持TERMINATED - 终止。
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
+	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
@@ -4575,9 +4575,9 @@ func (r *ModifySqlFiltersRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "SessionToken")
 	delete(f, "FilterIds")
 	delete(f, "Status")
+	delete(f, "SessionToken")
 	delete(f, "Product")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySqlFiltersRequest has unknown keys!", "")

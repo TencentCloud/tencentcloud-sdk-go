@@ -61,10 +61,10 @@ type ApplyCertificateRequestParams struct {
 	// 有效期，默认12个月，目前仅支持12个月。
 	ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
 
-	// 加密算法，仅支持 RSA。
+	// 加密算法，支持 RSA及ECC。
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitempty" name:"CsrEncryptAlgo"`
 
-	// 密钥对参数，仅支持2048。
+	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitempty" name:"CsrKeyParameter"`
 
 	// CSR 的加密密码。
@@ -107,10 +107,10 @@ type ApplyCertificateRequest struct {
 	// 有效期，默认12个月，目前仅支持12个月。
 	ValidityPeriod *string `json:"ValidityPeriod,omitempty" name:"ValidityPeriod"`
 
-	// 加密算法，仅支持 RSA。
+	// 加密算法，支持 RSA及ECC。
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitempty" name:"CsrEncryptAlgo"`
 
-	// 密钥对参数，仅支持2048。
+	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitempty" name:"CsrKeyParameter"`
 
 	// CSR 的加密密码。
@@ -3284,6 +3284,12 @@ func (r *DescribeHostTkeInstanceListResponse) FromJsonString(s string) error {
 type DescribeHostUpdateRecordDetailRequestParams struct {
 	// 待部署的证书ID
 	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 每页数量，默认10。
+	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量，从0开始。
+	Offset *string `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeHostUpdateRecordDetailRequest struct {
@@ -3291,6 +3297,12 @@ type DescribeHostUpdateRecordDetailRequest struct {
 	
 	// 待部署的证书ID
 	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
+
+	// 每页数量，默认10。
+	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量，从0开始。
+	Offset *string `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeHostUpdateRecordDetailRequest) ToJsonString() string {
@@ -3306,6 +3318,8 @@ func (r *DescribeHostUpdateRecordDetailRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DeployRecordId")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostUpdateRecordDetailRequest has unknown keys!", "")
 	}
@@ -5453,11 +5467,11 @@ type UpdateRecordDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 部署监听器ID
+	// 部署监听器ID（CLB专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
 
-	// 部署监听器名称
+	// 部署监听器名称（CLB专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
@@ -5465,13 +5479,25 @@ type UpdateRecordDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 是否开启SNI
+	// 是否开启SNI（CLB专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SniSwitch *uint64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
 
-	// bucket名称
+	// bucket名称（COS专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 命名空间（TKE专用）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// secret名称（TKE专用）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 }
 
 type UpdateRecordDetails struct {
@@ -5480,6 +5506,9 @@ type UpdateRecordDetails struct {
 
 	// 部署资源详情列表
 	List []*UpdateRecordDetail `json:"List,omitempty" name:"List"`
+
+	// 该部署资源总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
 type UpdateRecordInfo struct {

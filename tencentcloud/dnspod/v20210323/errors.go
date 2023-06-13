@@ -293,6 +293,9 @@ const (
 	// 该订单存在冲突或参数有误，无法完成支付，请重新购买。
 	INVALIDPARAMETER_ILLEGALNEWDEAL = "InvalidParameter.IllegalNewDeal"
 
+	// 任务不存在。
+	INVALIDPARAMETER_INNERTASKNOTEXIST = "InvalidParameter.InnerTaskNotExist"
+
 	// 礼券代码无效。
 	INVALIDPARAMETER_INVALIDCOUPON = "InvalidParameter.InvalidCoupon"
 

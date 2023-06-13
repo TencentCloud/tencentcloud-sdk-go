@@ -4183,7 +4183,7 @@ type FlowApproverInfo struct {
 }
 
 type FlowApproverUrlInfo struct {
-	// 签署链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 签署短链接，不支持小程序嵌入，只支持移动端浏览器打开。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
 	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
 
 	// 签署人类型 PERSON-个人
@@ -4195,7 +4195,7 @@ type FlowApproverUrlInfo struct {
 	// 签署人手机号
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 签署长链接。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
+	// 签署长链接，支持小程序嵌入。注意该链接有效期为30分钟，同时需要注意保密，不要外泄给无关用户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LongUrl *string `json:"LongUrl,omitempty" name:"LongUrl"`
 }

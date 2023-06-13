@@ -712,7 +712,7 @@ func (r *CreateDBInstanceNetworkAccessResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDBInstancesRequestParams struct {
-	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+	// 售卖规格ID。该参数可以通过调用DescribeClasses的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 实例容量大小，单位：GB。
@@ -733,7 +733,7 @@ type CreateDBInstancesRequestParams struct {
 	// PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBMajorVersion、DBKernelVersion至少需要传递一个。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
-	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 是否自动使用代金券。1（是），0（否），默认不使用。
@@ -776,7 +776,7 @@ type CreateDBInstancesRequestParams struct {
 type CreateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+	// 售卖规格ID。该参数可以通过调用DescribeClasses的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 实例容量大小，单位：GB。
@@ -797,7 +797,7 @@ type CreateDBInstancesRequest struct {
 	// PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBMajorVersion、DBKernelVersion至少需要传递一个。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
-	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 是否自动使用代金券。1（是），0（否），默认不使用。
@@ -908,7 +908,7 @@ func (r *CreateDBInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateInstancesRequestParams struct {
-	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+	// 售卖规格ID。该参数可以通过调用DescribeClasses的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 实例容量大小，单位：GB。
@@ -938,7 +938,7 @@ type CreateInstancesRequestParams struct {
 	// PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBMajorVersion、DBKernelVersion至少需要传递一个。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
-	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 是否自动使用代金券。1（是），0（否），默认不使用。
@@ -1011,7 +1011,7 @@ type CreateInstancesRequestParams struct {
 type CreateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
+	// 售卖规格ID。该参数可以通过调用DescribeClasses的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 实例容量大小，单位：GB。
@@ -1041,7 +1041,7 @@ type CreateInstancesRequest struct {
 	// PostgreSQL版本。当输入该参数时，会基于此版本创建对应的最新内核版本号实例。该参数和DBMajorVersion、DBKernelVersion至少需要传递一个。
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
-	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 是否自动使用代金券。1（是），0（否），默认不使用。
@@ -3338,50 +3338,50 @@ func (r *DescribeDBBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBErrlogsRequestParams struct {
-	// 实例ID，形如postgres-5bq3wfjd
+	// 实例ID。	
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
-	// 查询起始时间，形如2018-01-01 00:00:00，起始时间不得小于7天以前
+	// 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。	
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，形如2018-01-01 00:00:00
+	// 查询结束时间，形如2018-01-01 00:00:00。	
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 数据库名字
+	// 数据库名字。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
-	// 搜索关键字
+	// 搜索关键字。
 	SearchKeys []*string `json:"SearchKeys,omitempty" name:"SearchKeys"`
 
-	// 分页返回，每页返回的最大数量。取值为1-100
+	// 每页显示数量，取值范围为1-100。默认值为50。	
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页返回，返回第几页的数据，从第0页开始计数
+	// 数据偏移量，从0开始。默认值为0。	
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeDBErrlogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，形如postgres-5bq3wfjd
+	// 实例ID。	
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
-	// 查询起始时间，形如2018-01-01 00:00:00，起始时间不得小于7天以前
+	// 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。	
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，形如2018-01-01 00:00:00
+	// 查询结束时间，形如2018-01-01 00:00:00。	
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 数据库名字
+	// 数据库名字。
 	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
 
-	// 搜索关键字
+	// 搜索关键字。
 	SearchKeys []*string `json:"SearchKeys,omitempty" name:"SearchKeys"`
 
-	// 分页返回，每页返回的最大数量。取值为1-100
+	// 每页显示数量，取值范围为1-100。默认值为50。	
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页返回，返回第几页的数据，从第0页开始计数
+	// 数据偏移量，从0开始。默认值为0。	
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -3412,10 +3412,10 @@ func (r *DescribeDBErrlogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBErrlogsResponseParams struct {
-	// 本次调用返回了多少条数据
+	// 查询到的日志数量，最大值为10000条。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 错误日志列表
+	// 错误日志详细信息集合。
 	Details []*ErrLogDetail `json:"Details,omitempty" name:"Details"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5469,7 +5469,7 @@ type InquiryPriceCreateDBInstancesRequestParams struct {
 	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 规格ID。该参数可以通过调用DescribeProductConfig接口的返回值中的SpecCode字段来获取。
+	// 规格ID。该参数可以通过调用DescribeClasses接口的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 存储容量大小，单位：GB。
@@ -5504,7 +5504,7 @@ type InquiryPriceCreateDBInstancesRequest struct {
 	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 规格ID。该参数可以通过调用DescribeProductConfig接口的返回值中的SpecCode字段来获取。
+	// 规格ID。该参数可以通过调用DescribeClasses接口的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 存储容量大小，单位：GB。

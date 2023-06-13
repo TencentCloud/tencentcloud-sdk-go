@@ -8123,6 +8123,7 @@ func NewModifyRemoteBackupConfigResponse() (response *ModifyRemoteBackupConfigRe
 // 本接口(ModifyRemoteBackupConfig)用于修改数据库异地备份配置信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -8134,6 +8135,7 @@ func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigReque
 // 本接口(ModifyRemoteBackupConfig)用于修改数据库异地备份配置信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"

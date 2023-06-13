@@ -1146,6 +1146,9 @@ type CreateConfigRequestParams struct {
 
 	// 用户自定义采集规则，Json格式序列化的字符串
 	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
+
+	// 高级采集配置
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 type CreateConfigRequest struct {
@@ -1171,6 +1174,9 @@ type CreateConfigRequest struct {
 
 	// 用户自定义采集规则，Json格式序列化的字符串
 	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
+
+	// 高级采集配置
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *CreateConfigRequest) ToJsonString() string {
@@ -1192,6 +1198,7 @@ func (r *CreateConfigRequest) FromJsonString(s string) error {
 	delete(f, "ExtractRule")
 	delete(f, "ExcludePaths")
 	delete(f, "UserDefineRule")
+	delete(f, "AdvancedConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigRequest has unknown keys!", "")
 	}

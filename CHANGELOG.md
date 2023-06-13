@@ -1,3 +1,238 @@
+# Release v1.0.678
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 63 次发布
+
+发布时间：2023-06-13 01:02:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Advice](https://cloud.tencent.com/document/api/377/20453#Advice)
+
+	* 新增成员：Level
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 50 次发布
+
+发布时间：2023-06-13 01:10:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConfig](https://cloud.tencent.com/document/api/614/58620)
+
+	* 新增入参：AdvancedConfig
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 20 次发布
+
+发布时间：2023-06-13 01:16:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSqlFilter](https://cloud.tencent.com/document/api/1130/72835)
+
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
+
+* [DeleteSqlFilters](https://cloud.tencent.com/document/api/1130/72834)
+
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
+
+* [ModifySqlFilters](https://cloud.tencent.com/document/api/1130/72829)
+
+	* <font color="#dd0000">**修改入参**：</font>SessionToken
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 61 次发布
+
+发布时间：2023-06-13 01:16:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDCDBInstanceDetail](https://cloud.tencent.com/document/api/557/89385)
+
+	* 新增出参：IsPhysicalReplicationSupported
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 104 次发布
+
+发布时间：2023-06-13 01:26:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
+
+	* 新增入参：RecordTemplateId
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 56 次发布
+
+发布时间：2023-06-13 01:27:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstanceDetail](https://cloud.tencent.com/document/api/237/89390)
+
+	* 新增出参：IsPhysicalReplicationSupported
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 104 次发布
+
+发布时间：2023-06-13 01:30:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MedicalInvoice](https://cloud.tencent.com/document/api/866/33527#MedicalInvoice)
+
+修改数据结构：
+
+* [SingleInvoiceItem](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceItem)
+
+	* 新增成员：MedicalOutpatientInvoice, MedicalHospitalizedInvoice
+
+* [VatInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceInfo)
+
+	* 新增成员：ElectronicFullMark, ElectronicFullNumber, FormName
+
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 16 次发布
+
+发布时间：2023-06-13 01:37:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDomainList](https://cloud.tencent.com/document/api/664/93451)
+
+新增数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/664/51406#DomainInfo)
+* [QueryFilterV3](https://cloud.tencent.com/document/api/664/51406#QueryFilterV3)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 37 次发布
+
+发布时间：2023-06-13 01:37:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeHostUpdateRecordDetail](https://cloud.tencent.com/document/api/400/91652)
+
+	* 新增入参：Limit, Offset
+
+
+修改数据结构：
+
+* [UpdateRecordDetail](https://cloud.tencent.com/document/api/400/41679#UpdateRecordDetail)
+
+	* 新增成员：Port, Namespace, SecretName
+
+* [UpdateRecordDetails](https://cloud.tencent.com/document/api/400/41679#UpdateRecordDetails)
+
+	* 新增成员：TotalCount
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 62 次发布
+
+发布时间：2023-06-13 01:41:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteRabbitMQUser](https://cloud.tencent.com/document/api/1179/93458)
+* [DeleteRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93457)
+* [DescribeRabbitMQUser](https://cloud.tencent.com/document/api/1179/93456)
+* [DescribeRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93455)
+* [DescribeRabbitMQVirtualHostList](https://cloud.tencent.com/document/api/1179/93452)
+* [ModifyRabbitMQUser](https://cloud.tencent.com/document/api/1179/93454)
+* [ModifyRabbitMQVirtualHost](https://cloud.tencent.com/document/api/1179/93453)
+
+新增数据结构：
+
+* [RabbitMQPrivateVirtualHost](https://cloud.tencent.com/document/api/1179/46089#RabbitMQPrivateVirtualHost)
+* [RabbitMQUser](https://cloud.tencent.com/document/api/1179/46089#RabbitMQUser)
+* [RabbitMQVirtualHostInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostInfo)
+* [RabbitMQVirtualHostStatistics](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVirtualHostStatistics)
+
+
+
 # Release v1.0.677
 
 ## 云防火墙(cfw) 版本：2019-09-04

@@ -2352,6 +2352,9 @@ type DescribeDBInstanceDetailResponseParams struct {
 	// 尚未回收的网络资源
 	ReservedNetResources []*ReservedNetResource `json:"ReservedNetResources,omitempty" name:"ReservedNetResources"`
 
+	// 是否支持物理复制
+	IsPhysicalReplicationSupported *bool `json:"IsPhysicalReplicationSupported,omitempty" name:"IsPhysicalReplicationSupported"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

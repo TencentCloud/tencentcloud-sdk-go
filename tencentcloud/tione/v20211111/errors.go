@@ -98,6 +98,9 @@ const (
 	// 名称重复。
 	FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
 
+	// 训练任务名称已存在，请更换名称
+	FAILEDOPERATION_DUPLICATENAMETASKISCREATING = "FailedOperation.DuplicateNameTaskIsCreating"
+
 	// 数据库执行错误。
 	FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
 
@@ -173,6 +176,15 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 绑定标签失败
+	INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+
+	// 创建JOB失败
+	INTERNALERROR_CREATEJOBINSTANCEFAILED = "InternalError.CreateJobInstanceFailed"
+
+	// 创建TCR镜像仓库长期访问凭证失败
+	INTERNALERROR_CREATETCRINSTANCETOKENFAILED = "InternalError.CreateTcrInstanceTokenFailed"
+
 	// 冻结失败。
 	INTERNALERROR_FREEZEBILLFAILED = "InternalError.FreezeBillFailed"
 
@@ -202,6 +214,9 @@ const (
 
 	// 停止任务失败。
 	INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
+
+	// 未提交状态禁止停止
+	INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
@@ -263,6 +278,9 @@ const (
 	// 训练框架对应的版本不支持，请阅读文档查看TIONE目前支持的框架和版本。
 	INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
 
+	// 获取CFS的挂载IP失败
+	INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+
 	// 训练任务镜像不存在。
 	INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
 
@@ -274,6 +292,12 @@ const (
 
 	// 操作不允许。
 	INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
+
+	// 分页查询limit超出限制
+	INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
+
+	// RDMA配置不合法
+	INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
 
 	// 资源配置不合法
 	INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
@@ -293,6 +317,9 @@ const (
 	// 余额不足，创建/更新失败。
 	OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 
+	// 计费平台出错
+	OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
+
 	// 按量计费资源售罄。
 	OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 
@@ -301,6 +328,9 @@ const (
 
 	// 网段不合法。
 	OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
+
+	// 操作不允许
+	OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 
 	// 预付费资源组余量不足。
 	OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"

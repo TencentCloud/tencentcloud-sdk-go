@@ -756,7 +756,7 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 //
 // 注意：
 //
-// 1. 默认支持任务数上限20个，如有特殊需求，可通过提单到售后进行评估增加上限。
+// 1. 默认支持任务数上限200个，如有特殊需求，可通过提单到售后进行评估增加上限。
 //
 // 2. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
 //
@@ -797,7 +797,7 @@ func (c *Client) CreateLivePullStreamTask(request *CreateLivePullStreamTaskReque
 //
 // 注意：
 //
-// 1. 默认支持任务数上限20个，如有特殊需求，可通过提单到售后进行评估增加上限。
+// 1. 默认支持任务数上限200个，如有特殊需求，可通过提单到售后进行评估增加上限。
 //
 // 2. 源流视频编码目前只支持: H264, H265。其他编码格式建议先进行转码处理。
 //
@@ -2249,6 +2249,7 @@ func NewDeleteLiveDomainResponse() (response *DeleteLiveDomainResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER_DOMAINALREADYEXIST = "InvalidParameter.DomainAlreadyExist"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETER_DOMAINISLIMITED = "InvalidParameter.DomainIsLimited"
@@ -2273,6 +2274,7 @@ func (c *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (response *D
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER_DOMAINALREADYEXIST = "InvalidParameter.DomainAlreadyExist"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETER_DOMAINISLIMITED = "InvalidParameter.DomainIsLimited"

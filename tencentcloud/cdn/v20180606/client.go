@@ -6925,6 +6925,7 @@ func NewVerifyDomainRecordResponse() (response *VerifyDomainRecordResponse) {
 // 具体流程可参考：[使用API接口进行域名归属校验](https://cloud.tencent.com/document/product/228/61702#.E6.96.B9.E6.B3.95.E4.B8.89.EF.BC.9Aapi-.E6.8E.A5.E5.8F.A3.E6.93.8D.E4.BD.9C)
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INVALIDPARAMETER_CDNCONFIGINVALIDHOST = "InvalidParameter.CdnConfigInvalidHost"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
@@ -6942,6 +6943,7 @@ func (c *Client) VerifyDomainRecord(request *VerifyDomainRecordRequest) (respons
 // 具体流程可参考：[使用API接口进行域名归属校验](https://cloud.tencent.com/document/product/228/61702#.E6.96.B9.E6.B3.95.E4.B8.89.EF.BC.9Aapi-.E6.8E.A5.E5.8F.A3.E6.93.8D.E4.BD.9C)
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INVALIDPARAMETER_CDNCONFIGINVALIDHOST = "InvalidParameter.CdnConfigInvalidHost"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
 //  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"

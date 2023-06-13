@@ -560,6 +560,7 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     return c.ChannelCreateEmbedWebUrlWithContext(context.Background(), request)
 }
@@ -575,6 +576,7 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 func (c *Client) ChannelCreateEmbedWebUrlWithContext(ctx context.Context, request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     if request == nil {
         request = NewChannelCreateEmbedWebUrlRequest()
@@ -1098,6 +1100,7 @@ func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlRequest) (response *ChannelCreateFlowSignUrlResponse, err error) {
@@ -1121,6 +1124,7 @@ func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlReque
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateFlowSignUrlWithContext(ctx context.Context, request *ChannelCreateFlowSignUrlRequest) (response *ChannelCreateFlowSignUrlResponse, err error) {
@@ -1278,6 +1282,7 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowRequest) (response *ChannelCreatePrepareFlowResponse, err error) {
     return c.ChannelCreatePrepareFlowWithContext(context.Background(), request)
@@ -1300,6 +1305,7 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreatePrepareFlowWithContext(ctx context.Context, request *ChannelCreatePrepareFlowRequest) (response *ChannelCreatePrepareFlowResponse, err error) {
     if request == nil {
@@ -1345,7 +1351,9 @@ func NewChannelCreateReleaseFlowResponse() (response *ChannelCreateReleaseFlowRe
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
 //  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
@@ -1370,7 +1378,9 @@ func (c *Client) ChannelCreateReleaseFlow(request *ChannelCreateReleaseFlowReque
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
 //  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
@@ -2718,6 +2728,7 @@ func NewDescribeFlowDetailInfoResponse() (response *DescribeFlowDetailInfoRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
 //  INVALIDPARAMETER_FLOWIDS = "InvalidParameter.FlowIds"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_FFOWIDS = "InvalidParameter.fFowIds"
 //  LIMITEXCEEDED_FLOWIDS = "LimitExceeded.FlowIds"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2728,6 +2739,7 @@ func NewDescribeFlowDetailInfoResponse() (response *DescribeFlowDetailInfoRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOWAPPROVERS = "ResourceNotFound.FlowApprovers"
+//  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2746,6 +2758,7 @@ func (c *Client) DescribeFlowDetailInfo(request *DescribeFlowDetailInfoRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
 //  INVALIDPARAMETER_FLOWIDS = "InvalidParameter.FlowIds"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_FFOWIDS = "InvalidParameter.fFowIds"
 //  LIMITEXCEEDED_FLOWIDS = "LimitExceeded.FlowIds"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2756,6 +2769,7 @@ func (c *Client) DescribeFlowDetailInfo(request *DescribeFlowDetailInfoRequest) 
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOWAPPROVERS = "ResourceNotFound.FlowApprovers"
+//  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
