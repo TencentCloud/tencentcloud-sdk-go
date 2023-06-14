@@ -1849,80 +1849,80 @@ func (r *DescribeConfigListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainListRequestParams struct {
-	// -
+	// 起始，从0开始(只支持32位)
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// -
+	// limit,最大值200(只支持32位)
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// -
+	// 资产大类，根据此字段时返回不同的子结构,AssetBasicType(只支持32位)
 	AssetBasicType *uint64 `json:"AssetBasicType,omitempty" name:"AssetBasicType"`
 
-	// -
+	// 过滤条件
 	Filter []*QueryFilterV3 `json:"Filter,omitempty" name:"Filter"`
 
-	// -
+	// 排序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// -
+	// 排序字段
 	By *string `json:"By,omitempty" name:"By"`
 
-	// -
+	// 导出字段
 	Field []*string `json:"Field,omitempty" name:"Field"`
 
-	// -
+	// 时间范围(只支持32位)
 	TimeRange *uint64 `json:"TimeRange,omitempty" name:"TimeRange"`
 
-	// -
+	// 逻辑字段(只支持32位)
 	Logic *uint64 `json:"Logic,omitempty" name:"Logic"`
 
-	// -
+	// 聚合字段  
 	GroupByField *string `json:"GroupByField,omitempty" name:"GroupByField"`
 
 	// -
 	Task *string `json:"Task,omitempty" name:"Task"`
 
-	// -
+	// 0:cfw 1:vss 2.soc 3.waf 4.cwp
 	RequestFrom *uint64 `json:"RequestFrom,omitempty" name:"RequestFrom"`
 }
 
 type DescribeDomainListRequest struct {
 	*tchttp.BaseRequest
 	
-	// -
+	// 起始，从0开始(只支持32位)
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// -
+	// limit,最大值200(只支持32位)
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// -
+	// 资产大类，根据此字段时返回不同的子结构,AssetBasicType(只支持32位)
 	AssetBasicType *uint64 `json:"AssetBasicType,omitempty" name:"AssetBasicType"`
 
-	// -
+	// 过滤条件
 	Filter []*QueryFilterV3 `json:"Filter,omitempty" name:"Filter"`
 
-	// -
+	// 排序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// -
+	// 排序字段
 	By *string `json:"By,omitempty" name:"By"`
 
-	// -
+	// 导出字段
 	Field []*string `json:"Field,omitempty" name:"Field"`
 
-	// -
+	// 时间范围(只支持32位)
 	TimeRange *uint64 `json:"TimeRange,omitempty" name:"TimeRange"`
 
-	// -
+	// 逻辑字段(只支持32位)
 	Logic *uint64 `json:"Logic,omitempty" name:"Logic"`
 
-	// -
+	// 聚合字段  
 	GroupByField *string `json:"GroupByField,omitempty" name:"GroupByField"`
 
 	// -
 	Task *string `json:"Task,omitempty" name:"Task"`
 
-	// -
+	// 0:cfw 1:vss 2.soc 3.waf 4.cwp
 	RequestFrom *uint64 `json:"RequestFrom,omitempty" name:"RequestFrom"`
 }
 
@@ -3011,9 +3011,58 @@ type DomainInfo struct {
 	// 弱口令
 	WeekPwdCount *uint64 `json:"WeekPwdCount,omitempty" name:"WeekPwdCount"`
 
-	// -
+	// 资产归属
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetLocation *string `json:"AssetLocation,omitempty" name:"AssetLocation"`
+
+	// 网络风险
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkRisk *uint64 `json:"NetworkRisk,omitempty" name:"NetworkRisk"`
+
+	// 网络攻击
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkAttack *uint64 `json:"NetworkAttack,omitempty" name:"NetworkAttack"`
+
+	// bot访问
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotVisit *uint64 `json:"BotVisit,omitempty" name:"BotVisit"`
+
+	// 网络访问
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkAccess *uint64 `json:"NetworkAccess,omitempty" name:"NetworkAccess"`
+
+	// 资产创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// waf状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WafStatus *uint64 `json:"WafStatus,omitempty" name:"WafStatus"`
+
+	// 最近扫描时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastScanTime *string `json:"LastScanTime,omitempty" name:"LastScanTime"`
+
+	// 资产id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetId []*string `json:"AssetId,omitempty" name:"AssetId"`
+
+	// 资产名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetName []*string `json:"AssetName,omitempty" name:"AssetName"`
+
+	// 类别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 是否核心资产
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNotCore *uint64 `json:"IsNotCore,omitempty" name:"IsNotCore"`
+
+	// 是否云外资产
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCloud *uint64 `json:"IsCloud,omitempty" name:"IsCloud"`
 }
 
 type Filter struct {

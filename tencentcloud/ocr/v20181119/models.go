@@ -3906,7 +3906,7 @@ func (r *InvoiceGeneralOCRResponse) FromJsonString(s string) error {
 
 type InvoiceItem struct {
 	// 识别结果。
-	// OK：表示识别成功；FailedOperation.UnsupportedInvioce：表示不支持识别；
+	// OK：表示识别成功；FailedOperation.UnsupportedInvoice：表示不支持识别；
 	// FailedOperation.UnKnowError：表示识别失败；
 	// 其它错误码见各个票据接口的定义。
 	Code *string `json:"Code,omitempty" name:"Code"`
@@ -3941,16 +3941,16 @@ type InvoiceItem struct {
 	// 发票处于识别图片或PDF文件中的页教，默认从1开始。
 	Page *int64 `json:"Page,omitempty" name:"Page"`
 
-	// 发票详细类型，详见下方 SubType 返回值说明
+	// 发票详细类型，详见上方 SubType 返回值说明
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
-	// 发票类型描述，详见下方 TypeDescription  返回值说明
+	// 发票类型描述，详见上方 TypeDescription  返回值说明
 	TypeDescription *string `json:"TypeDescription,omitempty" name:"TypeDescription"`
 
 	// 切割单图文件，Base64编码后的切图后的图片文件，开启 EnableCutImage 后进行返回
 	CutImage *string `json:"CutImage,omitempty" name:"CutImage"`
 
-	// 发票详细类型描述，详见下方 SubType 返回值说明
+	// 发票详细类型描述，详见上方 SubType 返回值说明
 	SubTypeDescription *string `json:"SubTypeDescription,omitempty" name:"SubTypeDescription"`
 }
 
@@ -7511,10 +7511,10 @@ type RecognizeThaiIDCardOCRResponseParams struct {
 	// 出生日期
 	Birthday *string `json:"Birthday,omitempty" name:"Birthday"`
 
-	// 首次领用日期
+	// 签发日期
 	IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
 
-	// 签发日期
+	// 到期日期
 	ExpirationDate *string `json:"ExpirationDate,omitempty" name:"ExpirationDate"`
 
 	// 英文姓名

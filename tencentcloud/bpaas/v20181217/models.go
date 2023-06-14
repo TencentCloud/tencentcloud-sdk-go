@@ -137,6 +137,10 @@ type GetBpaasApproveDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApprovingNodeId *string `json:"ApprovingNodeId,omitempty" name:"ApprovingNodeId"`
 
+	// 更新时间，时间格式：2021-12-12 10:12:10	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -336,4 +340,12 @@ type StatusNode struct {
 	// 并行节点 3-4
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParallelNodes *string `json:"ParallelNodes,omitempty" name:"ParallelNodes"`
+
+	// scf拒绝时返回信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RejectedCloudFunctionMsg *string `json:"RejectedCloudFunctionMsg,omitempty" name:"RejectedCloudFunctionMsg"`
+
+	// 上一个节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrevNode *string `json:"PrevNode,omitempty" name:"PrevNode"`
 }

@@ -47,6 +47,9 @@ const (
 	// 记录删除失败。
 	FAILEDOPERATION_DELETERECORDFAILED = "FailedOperation.DeleteRecordFailed"
 
+	// 删除终端节点失败。
+	FAILEDOPERATION_DELETEVPCENDPOINTFAILED = "FailedOperation.DeleteVpcEndPointFailed"
+
 	// 解析域删除失败。
 	FAILEDOPERATION_DELETEZONEFAILED = "FailedOperation.DeleteZoneFailed"
 
@@ -67,6 +70,12 @@ const (
 
 	// 已经存在绑定的账号。
 	INVALIDPARAMETER_ACCOUNTEXIST = "InvalidParameter.AccountExist"
+
+	// 终端节点已经绑定了转发规则。
+	INVALIDPARAMETER_ENDPOINTBINDFORWARDRULE = "InvalidParameter.EndPointBindForwardRule"
+
+	// 终端节点不存在。
+	INVALIDPARAMETER_ENDPOINTNOTEXISTS = "InvalidParameter.EndPointNotExists"
 
 	// 非法CIDR。
 	INVALIDPARAMETER_ILLEGALCIDR = "InvalidParameter.IllegalCidr"

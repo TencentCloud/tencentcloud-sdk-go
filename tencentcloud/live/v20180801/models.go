@@ -12886,6 +12886,67 @@ type RefererAuthConfig struct {
 }
 
 // Predefined struct for user
+type RestartLivePullStreamTaskRequestParams struct {
+	// 任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作人备注名称。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+type RestartLivePullStreamTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作人备注名称。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *RestartLivePullStreamTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartLivePullStreamTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartLivePullStreamTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartLivePullStreamTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RestartLivePullStreamTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartLivePullStreamTaskResponseParams `json:"Response"`
+}
+
+func (r *RestartLivePullStreamTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartLivePullStreamTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResumeDelayLiveStreamRequestParams struct {
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为live。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`

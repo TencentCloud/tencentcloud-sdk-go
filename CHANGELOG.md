@@ -1,3 +1,251 @@
+# Release v1.0.679
+
+## 商业流程服务(bpaas) 版本：2018-12-17
+
+### 第 5 次发布
+
+发布时间：2023-06-14 01:09:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetBpaasApproveDetail](https://cloud.tencent.com/document/api/1083/80916)
+
+	* 新增出参：ModifyTime
+
+
+修改数据结构：
+
+* [StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)
+
+	* 新增成员：RejectedCloudFunctionMsg, PrevNode
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 77 次发布
+
+发布时间：2023-06-14 01:22:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeExtendedServiceAuthInfos](https://cloud.tencent.com/document/api/1323/93477)
+
+修改接口：
+
+* [CreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1323/89386)
+
+* [DescribeFlowTemplates](https://cloud.tencent.com/document/api/1323/74803)
+
+
+新增数据结构：
+
+* [ExtendAuthInfo](https://cloud.tencent.com/document/api/1323/70369#ExtendAuthInfo)
+* [HasAuthUser](https://cloud.tencent.com/document/api/1323/70369#HasAuthUser)
+* [SealInfo](https://cloud.tencent.com/document/api/1323/70369#SealInfo)
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1323/70369#TemplateInfo)
+
+	* 新增成员：TemplateSeals, Seals
+
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 34 次发布
+
+发布时间：2023-06-14 01:25:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServiceStatus](https://cloud.tencent.com/document/api/607/35375#ServiceStatus)
+
+	* 新增成员：TextTranslate
+
+
+
+
+## 物联网通信(iotcloud) 版本：2021-04-08
+
+### 第 8 次发布
+
+发布时间：2023-06-14 01:27:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DeviceInfo](https://cloud.tencent.com/document/api/634/71973#DeviceInfo)
+
+	* 新增成员：CreateUserId
+
+* [FirmwareInfo](https://cloud.tencent.com/document/api/634/71973#FirmwareInfo)
+
+	* 新增成员：FwType, CreateUserId
+
+
+
+
+## 物联网通信(iotcloud) 版本：2018-06-14
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 105 次发布
+
+发布时间：2023-06-14 01:30:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RestartLivePullStreamTask](https://cloud.tencent.com/document/api/267/93478)
+
+
+
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 19 次发布
+
+发布时间：2023-06-14 01:34:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeOrganizationFinancialByMember](https://cloud.tencent.com/document/api/850/93482)
+* [DescribeOrganizationFinancialByMonth](https://cloud.tencent.com/document/api/850/93481)
+* [DescribeOrganizationFinancialByProduct](https://cloud.tencent.com/document/api/850/93480)
+
+新增数据结构：
+
+* [OrgFinancialByMonth](https://cloud.tencent.com/document/api/850/67060#OrgFinancialByMonth)
+* [OrgMemberFinancial](https://cloud.tencent.com/document/api/850/67060#OrgMemberFinancial)
+* [OrgProductFinancial](https://cloud.tencent.com/document/api/850/67060#OrgProductFinancial)
+
+
+
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 29 次发布
+
+发布时间：2023-06-14 01:35:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeAgentDealsCache
+* DescribeAgentPayDeals
+* DescribeAgentSelfPayDeals
+* DescribeClientBalance
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AgentDealElem
+* DealGoodsPriceElem
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 37 次发布
+
+发布时间：2023-06-14 01:35:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
+
+	* 新增入参：SyncMode
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 13 次发布
+
+发布时间：2023-06-14 01:36:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteEndPoint](https://cloud.tencent.com/document/api/1338/93483)
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 17 次发布
+
+发布时间：2023-06-14 01:38:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/664/51406#DomainInfo)
+
+	* 新增成员：NetworkRisk, NetworkAttack, BotVisit, NetworkAccess, CreateTime, WafStatus, LastScanTime, AssetId, AssetName, SourceType, IsNotCore, IsCloud
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 63 次发布
+
+发布时间：2023-06-14 01:42:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyAMQPVHost
+
+
+
 # Release v1.0.678
 
 ## 弹性伸缩(as) 版本：2018-04-19

@@ -9567,6 +9567,80 @@ func (c *Client) ModifyPullStreamStatusWithContext(ctx context.Context, request 
     return
 }
 
+func NewRestartLivePullStreamTaskRequest() (request *RestartLivePullStreamTaskRequest) {
+    request = &RestartLivePullStreamTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "RestartLivePullStreamTask")
+    
+    
+    return
+}
+
+func NewRestartLivePullStreamTaskResponse() (response *RestartLivePullStreamTaskResponse) {
+    response = &RestartLivePullStreamTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RestartLivePullStreamTask
+// 将正在运行的拉流转推任务进行重启。
+//
+// 注意：
+//
+// 1. 重启任务会造成推流中断。
+//
+// 2. 点播源任务的重启，会根据VodRefreshType决定是续播还是从头开始播。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) RestartLivePullStreamTask(request *RestartLivePullStreamTaskRequest) (response *RestartLivePullStreamTaskResponse, err error) {
+    return c.RestartLivePullStreamTaskWithContext(context.Background(), request)
+}
+
+// RestartLivePullStreamTask
+// 将正在运行的拉流转推任务进行重启。
+//
+// 注意：
+//
+// 1. 重启任务会造成推流中断。
+//
+// 2. 点播源任务的重启，会根据VodRefreshType决定是续播还是从头开始播。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) RestartLivePullStreamTaskWithContext(ctx context.Context, request *RestartLivePullStreamTaskRequest) (response *RestartLivePullStreamTaskResponse, err error) {
+    if request == nil {
+        request = NewRestartLivePullStreamTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartLivePullStreamTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartLivePullStreamTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeDelayLiveStreamRequest() (request *ResumeDelayLiveStreamRequest) {
     request = &ResumeDelayLiveStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},

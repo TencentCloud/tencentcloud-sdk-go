@@ -701,6 +701,287 @@ func (r *DescribeOrganizationAuthNodeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeOrganizationFinancialByMemberRequestParams struct {
+	// 查询开始月份。格式：yyyy-mm，例如：2021-01。
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 限制数目。取值范围：1~50，默认值：10	
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询结束月份。格式：yyyy-mm，例如：2021-01,默认值为查询开始月份。
+	EndMonth *string `json:"EndMonth,omitempty" name:"EndMonth"`
+
+	// 查询成员列表。 最大100个
+	MemberUins []*int64 `json:"MemberUins,omitempty" name:"MemberUins"`
+
+	// 查询产品列表。 最大100个
+	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes"`
+}
+
+type DescribeOrganizationFinancialByMemberRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始月份。格式：yyyy-mm，例如：2021-01。
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 限制数目。取值范围：1~50，默认值：10	
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询结束月份。格式：yyyy-mm，例如：2021-01,默认值为查询开始月份。
+	EndMonth *string `json:"EndMonth,omitempty" name:"EndMonth"`
+
+	// 查询成员列表。 最大100个
+	MemberUins []*int64 `json:"MemberUins,omitempty" name:"MemberUins"`
+
+	// 查询产品列表。 最大100个
+	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes"`
+}
+
+func (r *DescribeOrganizationFinancialByMemberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationFinancialByMemberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Month")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "EndMonth")
+	delete(f, "MemberUins")
+	delete(f, "ProductCodes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationFinancialByMemberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationFinancialByMemberResponseParams struct {
+	// 当月总消耗。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 成员消耗详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OrgMemberFinancial `json:"Items,omitempty" name:"Items"`
+
+	// 总数目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationFinancialByMemberResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationFinancialByMemberResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationFinancialByMemberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationFinancialByMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationFinancialByMonthRequestParams struct {
+	// 查询月数。取值范围：1~6，默认值：6
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询结束月份。格式：yyyy-mm，例如：2021-01
+	EndMonth *string `json:"EndMonth,omitempty" name:"EndMonth"`
+
+	// 查询成员列表。 最大100个
+	MemberUins []*int64 `json:"MemberUins,omitempty" name:"MemberUins"`
+
+	// 查询产品列表。 最大100个
+	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes"`
+}
+
+type DescribeOrganizationFinancialByMonthRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询月数。取值范围：1~6，默认值：6
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询结束月份。格式：yyyy-mm，例如：2021-01
+	EndMonth *string `json:"EndMonth,omitempty" name:"EndMonth"`
+
+	// 查询成员列表。 最大100个
+	MemberUins []*int64 `json:"MemberUins,omitempty" name:"MemberUins"`
+
+	// 查询产品列表。 最大100个
+	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes"`
+}
+
+func (r *DescribeOrganizationFinancialByMonthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationFinancialByMonthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "EndMonth")
+	delete(f, "MemberUins")
+	delete(f, "ProductCodes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationFinancialByMonthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationFinancialByMonthResponseParams struct {
+	// 产品消耗详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OrgFinancialByMonth `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationFinancialByMonthResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationFinancialByMonthResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationFinancialByMonthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationFinancialByMonthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationFinancialByProductRequestParams struct {
+	// 查询开始月份。格式：yyyy-mm，例如：2021-01
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 限制数目。取值范围：1~50，默认值：10	
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询结束月份。格式：yyyy-mm，例如：2021-01,默认值为查询开始月份
+	EndMonth *string `json:"EndMonth,omitempty" name:"EndMonth"`
+
+	// 查询成员列表。 最大100个
+	MemberUins []*int64 `json:"MemberUins,omitempty" name:"MemberUins"`
+
+	// 查询产品列表。 最大100个
+	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes"`
+}
+
+type DescribeOrganizationFinancialByProductRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始月份。格式：yyyy-mm，例如：2021-01
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 限制数目。取值范围：1~50，默认值：10	
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量。取值是limit的整数倍，默认值 : 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询结束月份。格式：yyyy-mm，例如：2021-01,默认值为查询开始月份
+	EndMonth *string `json:"EndMonth,omitempty" name:"EndMonth"`
+
+	// 查询成员列表。 最大100个
+	MemberUins []*int64 `json:"MemberUins,omitempty" name:"MemberUins"`
+
+	// 查询产品列表。 最大100个
+	ProductCodes []*string `json:"ProductCodes,omitempty" name:"ProductCodes"`
+}
+
+func (r *DescribeOrganizationFinancialByProductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationFinancialByProductRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Month")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "EndMonth")
+	delete(f, "MemberUins")
+	delete(f, "ProductCodes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationFinancialByProductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationFinancialByProductResponseParams struct {
+	// 当月总消耗。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 产品消耗详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*OrgProductFinancial `json:"Items,omitempty" name:"Items"`
+
+	// 总数目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationFinancialByProductResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationFinancialByProductResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationFinancialByProductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationFinancialByProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrganizationMemberAuthAccountsRequestParams struct {
 	// 偏移量。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
@@ -1500,6 +1781,24 @@ func (r *MoveOrganizationNodeMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OrgFinancialByMonth struct {
+	// 记录ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 月份，格式：yyyy-mm，示例：2021-01。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Month *string `json:"Month,omitempty" name:"Month"`
+
+	// 消耗金额，单元：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 比上月增长率%。正数增长，负数下降，空值无法统计。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrowthRate *string `json:"GrowthRate,omitempty" name:"GrowthRate"`
+}
+
 type OrgIdentity struct {
 	// 身份ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1664,6 +1963,24 @@ type OrgMemberAuthIdentity struct {
 	IdentityType *uint64 `json:"IdentityType,omitempty" name:"IdentityType"`
 }
 
+type OrgMemberFinancial struct {
+	// 成员Uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 成员名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberName *string `json:"MemberName,omitempty" name:"MemberName"`
+
+	// 消耗金额，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 占比%。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ratio *string `json:"Ratio,omitempty" name:"Ratio"`
+}
+
 type OrgMemberPolicy struct {
 	// 策略ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1730,6 +2047,24 @@ type OrgPermission struct {
 
 	// 权限名
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type OrgProductFinancial struct {
+	// 产品Code。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+
+	// 产品消耗，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 占比%。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ratio *string `json:"Ratio,omitempty" name:"Ratio"`
 }
 
 // Predefined struct for user

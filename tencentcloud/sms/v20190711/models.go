@@ -696,10 +696,7 @@ type DescribeTemplateListStatus struct {
 	// 1：表示国际/港澳台短信。
 	International *uint64 `json:"International,omitempty" name:"International"`
 
-	// 申请签名状态。其中：
-	// 0：表示审核通过。
-	// 1：表示审核中。
-	// -1：表示审核未通过或审核失败。
+	// 申请模板状态，其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。
 	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
 
 	// 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。

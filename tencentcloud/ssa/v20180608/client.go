@@ -598,7 +598,7 @@ func NewDescribeDomainListResponse() (response *DescribeDomainListResponse) {
 }
 
 // DescribeDomainList
-// 域名列表信息啊
+// 域名列表信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"
@@ -609,7 +609,7 @@ func (c *Client) DescribeDomainList(request *DescribeDomainListRequest) (respons
 }
 
 // DescribeDomainList
-// 域名列表信息啊
+// 域名列表信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHMODULEFAILED = "AuthFailure.AuthModuleFailed"

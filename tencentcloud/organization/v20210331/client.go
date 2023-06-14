@@ -719,6 +719,156 @@ func (c *Client) DescribeOrganizationAuthNodeWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeOrganizationFinancialByMemberRequest() (request *DescribeOrganizationFinancialByMemberRequest) {
+    request = &DescribeOrganizationFinancialByMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeOrganizationFinancialByMember")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationFinancialByMemberResponse() (response *DescribeOrganizationFinancialByMemberResponse) {
+    response = &DescribeOrganizationFinancialByMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrganizationFinancialByMember
+// 以成员维度获取组织财务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeOrganizationFinancialByMember(request *DescribeOrganizationFinancialByMemberRequest) (response *DescribeOrganizationFinancialByMemberResponse, err error) {
+    return c.DescribeOrganizationFinancialByMemberWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationFinancialByMember
+// 以成员维度获取组织财务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeOrganizationFinancialByMemberWithContext(ctx context.Context, request *DescribeOrganizationFinancialByMemberRequest) (response *DescribeOrganizationFinancialByMemberResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationFinancialByMemberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationFinancialByMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationFinancialByMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOrganizationFinancialByMonthRequest() (request *DescribeOrganizationFinancialByMonthRequest) {
+    request = &DescribeOrganizationFinancialByMonthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeOrganizationFinancialByMonth")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationFinancialByMonthResponse() (response *DescribeOrganizationFinancialByMonthResponse) {
+    response = &DescribeOrganizationFinancialByMonthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrganizationFinancialByMonth
+// 以月维度获取组织财务信息趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeOrganizationFinancialByMonth(request *DescribeOrganizationFinancialByMonthRequest) (response *DescribeOrganizationFinancialByMonthResponse, err error) {
+    return c.DescribeOrganizationFinancialByMonthWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationFinancialByMonth
+// 以月维度获取组织财务信息趋势
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeOrganizationFinancialByMonthWithContext(ctx context.Context, request *DescribeOrganizationFinancialByMonthRequest) (response *DescribeOrganizationFinancialByMonthResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationFinancialByMonthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationFinancialByMonth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationFinancialByMonthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOrganizationFinancialByProductRequest() (request *DescribeOrganizationFinancialByProductRequest) {
+    request = &DescribeOrganizationFinancialByProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DescribeOrganizationFinancialByProduct")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationFinancialByProductResponse() (response *DescribeOrganizationFinancialByProductResponse) {
+    response = &DescribeOrganizationFinancialByProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrganizationFinancialByProduct
+// 以产品维度获取组织财务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeOrganizationFinancialByProduct(request *DescribeOrganizationFinancialByProductRequest) (response *DescribeOrganizationFinancialByProductResponse, err error) {
+    return c.DescribeOrganizationFinancialByProductWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationFinancialByProduct
+// 以产品维度获取组织财务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeOrganizationFinancialByProductWithContext(ctx context.Context, request *DescribeOrganizationFinancialByProductRequest) (response *DescribeOrganizationFinancialByProductResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationFinancialByProductRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationFinancialByProduct require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationFinancialByProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrganizationMemberAuthAccountsRequest() (request *DescribeOrganizationMemberAuthAccountsRequest) {
     request = &DescribeOrganizationMemberAuthAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -3217,7 +3217,7 @@ type DescribeSlowLogUserHostStatsRequestParams struct {
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// SOL模板的MD5值
+	// SQL模板的MD5值
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
@@ -3236,7 +3236,7 @@ type DescribeSlowLogUserHostStatsRequest struct {
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// SOL模板的MD5值
+	// SQL模板的MD5值
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
@@ -5015,7 +5015,7 @@ type SlowLogTopSqlItem struct {
 	// 平均扫描行数
 	RowsExaminedAvg *float64 `json:"RowsExaminedAvg,omitempty" name:"RowsExaminedAvg"`
 
-	// SOL模板的MD5值
+	// SQL模板的MD5值
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 

@@ -3420,6 +3420,10 @@ type DeviceInfo struct {
 	// ota最后更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirmwareUpdateTime *uint64 `json:"FirmwareUpdateTime,omitempty" name:"FirmwareUpdateTime"`
+
+	// 创建者 Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserId *uint64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
 }
 
 type DeviceLabel struct {
@@ -3785,6 +3789,14 @@ type FirmwareInfo struct {
 	// 产品ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 固件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
+
+	// 创建者 Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserId *uint64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
 }
 
 type FirmwareTaskInfo struct {

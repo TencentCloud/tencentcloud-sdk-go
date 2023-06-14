@@ -358,6 +358,60 @@ type DatePoint struct {
 }
 
 // Predefined struct for user
+type DeleteEndPointRequestParams struct {
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+}
+
+type DeleteEndPointRequest struct {
+	*tchttp.BaseRequest
+	
+	// 终端节点ID
+	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+}
+
+func (r *DeleteEndPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEndPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EndPointId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteEndPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteEndPointResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteEndPointResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteEndPointResponseParams `json:"Response"`
+}
+
+func (r *DeleteEndPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteEndPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeletePrivateDNSAccountRequestParams struct {
 	// 私有域解析账号
 	Account *PrivateDNSAccount `json:"Account,omitempty" name:"Account"`
