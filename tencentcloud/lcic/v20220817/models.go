@@ -1011,10 +1011,10 @@ type CreateRoomRequestParams struct {
 	// 房间名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 预定的房间开始时间，unix时间戳。
+	// 预定的房间开始时间，unix时间戳（秒）。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳。
+	// 预定的房间结束时间，unix时间戳（秒）。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 低代码互动课堂的SdkAppId。
@@ -1085,10 +1085,10 @@ type CreateRoomRequest struct {
 	// 房间名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 预定的房间开始时间，unix时间戳。
+	// 预定的房间开始时间，unix时间戳（秒）。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳。
+	// 预定的房间结束时间，unix时间戳（秒）。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 低代码互动课堂的SdkAppId。
@@ -2636,10 +2636,10 @@ type DescribeRoomResponseParams struct {
 	// 房间名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 预定的房间开始时间，unix时间戳。
+	// 预定的房间开始时间，unix时间戳（秒）。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳。
+	// 预定的房间结束时间，unix时间戳（秒）。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 老师的UserId。
@@ -4018,10 +4018,10 @@ type ModifyRoomRequestParams struct {
 	// 低代码互动课堂的SdkAppId
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 预定的房间开始时间，unix时间戳。直播开始后不允许修改。
+	// 预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳。直播开始后不允许修改。
+	// 预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 老师ID。直播开始后不允许修改。
@@ -4085,10 +4085,10 @@ type ModifyRoomRequest struct {
 	// 低代码互动课堂的SdkAppId
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 预定的房间开始时间，unix时间戳。直播开始后不允许修改。
+	// 预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳。直播开始后不允许修改。
+	// 预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 老师ID。直播开始后不允许修改。

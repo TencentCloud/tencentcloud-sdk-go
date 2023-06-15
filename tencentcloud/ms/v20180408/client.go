@@ -127,9 +127,11 @@ func NewCreateCosSecKeyInstanceResponse() (response *CreateCosSecKeyInstanceResp
 // 获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性，请保管好临时密钥。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 func (c *Client) CreateCosSecKeyInstance(request *CreateCosSecKeyInstanceRequest) (response *CreateCosSecKeyInstanceResponse, err error) {
     return c.CreateCosSecKeyInstanceWithContext(context.Background(), request)
 }
@@ -138,9 +140,11 @@ func (c *Client) CreateCosSecKeyInstance(request *CreateCosSecKeyInstanceRequest
 // 获取云COS文件存储临时密钥，密钥仅限于临时上传文件，有访问限制和时效性，请保管好临时密钥。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
 func (c *Client) CreateCosSecKeyInstanceWithContext(ctx context.Context, request *CreateCosSecKeyInstanceRequest) (response *CreateCosSecKeyInstanceResponse, err error) {
     if request == nil {
         request = NewCreateCosSecKeyInstanceRequest()

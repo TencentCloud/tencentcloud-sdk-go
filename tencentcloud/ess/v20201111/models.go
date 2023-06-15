@@ -579,6 +579,7 @@ type Component struct {
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
 	// 是否是表单域类型，默认不false-不是
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFormType *bool `json:"IsFormType,omitempty" name:"IsFormType"`
 
 	// 控件填充vaule，ComponentType和传入值类型对应关系：
@@ -671,9 +672,11 @@ type Component struct {
 	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
 
 	// 指定关键字时横坐标偏移量，单位pt
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetX *float64 `json:"OffsetX,omitempty" name:"OffsetX"`
 
 	// 指定关键字时纵坐标偏移量，单位pt
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
 
 	// 第三方应用集成中子客企业控件来源。0-平台指定；1-用户自定义
@@ -1938,7 +1941,8 @@ type CreateIntegrationEmployeesRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 待创建员工的信息，Mobile和DisplayName必填,OpenId和Email选填，其他字段暂不支持
+	// 待创建员工的信息，不超过20个。
+	// Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -1951,7 +1955,8 @@ type CreateIntegrationEmployeesRequest struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 待创建员工的信息，Mobile和DisplayName必填,OpenId和Email选填，其他字段暂不支持
+	// 待创建员工的信息，不超过20个。
+	// Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -4052,7 +4057,7 @@ func (r *DescribeIntegrationMainOrganizationUserResponse) FromJsonString(s strin
 
 // Predefined struct for user
 type DescribeIntegrationRolesRequestParams struct {
-	// 操作人信息
+	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 返回最大数量，最大为200
@@ -4074,7 +4079,7 @@ type DescribeIntegrationRolesRequestParams struct {
 type DescribeIntegrationRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 返回最大数量，最大为200
@@ -5911,7 +5916,9 @@ type UpdateIntegrationEmployeesRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 员工信息，OpenId和UserId必填一个,Email、DisplayName和Email选填，其他字段暂不支持
+	// 员工信息，不超过100个。
+	// 根据UserId或OpenId更新员工，必填一个，优先UserId。
+	// 可更新Mobile、DisplayName、Email和Department.DepartmentId字段，其他字段暂不支持
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
@@ -5924,7 +5931,9 @@ type UpdateIntegrationEmployeesRequest struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 员工信息，OpenId和UserId必填一个,Email、DisplayName和Email选填，其他字段暂不支持
+	// 员工信息，不超过100个。
+	// 根据UserId或OpenId更新员工，必填一个，优先UserId。
+	// 可更新Mobile、DisplayName、Email和Department.DepartmentId字段，其他字段暂不支持
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id

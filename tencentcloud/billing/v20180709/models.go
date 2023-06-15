@@ -878,7 +878,7 @@ type Deal struct {
 	// 订单号
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
-	// 订单状态
+	// 订单的状态 1：未支付 2：已支付3：发货中 4：已发货 5：发货失败 6：已退款 7：已关单 8：订单过期 9：订单已失效 10：产品已失效 11：代付拒绝 12：支付中
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 支付者

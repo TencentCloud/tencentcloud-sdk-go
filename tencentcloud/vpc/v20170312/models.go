@@ -1238,26 +1238,26 @@ func (r *AssociateDhcpIpWithAddressIpResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateDirectConnectGatewayNatGatewayRequestParams struct {
-	// 专线网关ID。
+	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// NAT网关ID。
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// 专线网关ID。
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
 }
 
 type AssociateDirectConnectGatewayNatGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专线网关ID。
+	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// NAT网关ID。
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// 专线网关ID。
 	DirectConnectGatewayId *string `json:"DirectConnectGatewayId,omitempty" name:"DirectConnectGatewayId"`
 }
 
@@ -22033,6 +22033,10 @@ type NatGateway struct {
 	// NAT网关是否被封禁。“NORMAL”：未被封禁，“RESTRICTED”：已被封禁。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestrictState *string `json:"RestrictState,omitempty" name:"RestrictState"`
+
+	// NAT网关大版本号，传统型=1，标准型=2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatProductVersion *uint64 `json:"NatProductVersion,omitempty" name:"NatProductVersion"`
 }
 
 type NatGatewayAddress struct {
@@ -24428,10 +24432,10 @@ type SnapshotPolicy struct {
 }
 
 type SourceIpTranslationNatRule struct {
-	// 资源ID
+	// 资源ID，如果ResourceType为USERDEFINED，可以为空
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 资源类型，目前包含SUBNET、NETWORKINTERFACE
+	// 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 

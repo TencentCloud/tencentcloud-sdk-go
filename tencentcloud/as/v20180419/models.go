@@ -3190,6 +3190,8 @@ type EnhancedService struct {
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
 
 	// 该参数已废弃，查询时会返回空值，请勿使用。
+	//
+	// Deprecated: AutomationService is deprecated.
 	AutomationService []*RunAutomationServiceEnabled `json:"AutomationService,omitempty" name:"AutomationService"`
 
 	// 开启自动化助手服务。若不指定该参数，则默认逻辑与CVM保持一致。注意：此字段可能返回 null，表示取不到有效值。

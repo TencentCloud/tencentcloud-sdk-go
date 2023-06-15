@@ -146,11 +146,15 @@ type AdaptiveDynamicStreamingInfoItem struct {
 
 	// 数字水印类型。可选值：
 	// <li>Trace 表示经过溯源水印处理；</li>
+	// <li>CopyRight 表示经过版权水印处理；</li>
 	// <li>None 表示没有经过数字水印处理。</li>
 	DigitalWatermarkType *string `json:"DigitalWatermarkType,omitempty" name:"DigitalWatermarkType"`
 
 	// 子流信息列表。
 	SubStreamSet []*MediaSubStreamInfoItem `json:"SubStreamSet,omitempty" name:"SubStreamSet"`
+
+	// 版权信息。
+	CopyRightWatermarkText *string `json:"CopyRightWatermarkText,omitempty" name:"CopyRightWatermarkText"`
 }
 
 type AdaptiveDynamicStreamingTaskInput struct {
@@ -162,6 +166,9 @@ type AdaptiveDynamicStreamingTaskInput struct {
 
 	// 溯源水印。
 	TraceWatermark *TraceWatermarkInput `json:"TraceWatermark,omitempty" name:"TraceWatermark"`
+
+	// 版权水印。
+	CopyRightWatermark *CopyRightWatermarkInput `json:"CopyRightWatermark,omitempty" name:"CopyRightWatermark"`
 
 	// 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
 	SubtitleSet []*string `json:"SubtitleSet,omitempty" name:"SubtitleSet"`
@@ -2335,11 +2342,11 @@ type Canvas struct {
 	// 默认值：Black。
 	Color *string `json:"Color,omitempty" name:"Color"`
 
-	// 画布宽度，即输出视频的宽度，取值范围：0~ 4096，单位：px。
+	// 画布宽度，即输出视频的宽度，取值范围：0~ 3840，单位：px。
 	// 默认值：0，表示和第一个视频轨的第一个视频片段的视频宽度一致。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 画布高度，即输出视频的高度（或长边），取值范围：0~ 4096，单位：px。
+	// 画布高度，即输出视频的高度（或长边），取值范围：0~ 3840，单位：px。
 	// 默认值：0，表示和第一个视频轨的第一个视频片段的视频高度一致。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
@@ -2886,6 +2893,11 @@ type ContentReviewTemplateItem struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type CopyRightWatermarkInput struct {
+	// 版权信息，最大长度为 200 个字符。
+	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
 type CoverBySnapshotTaskInput struct {
@@ -10908,7 +10920,8 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>DescribeFileAttributesTask：获取文件属性任务；</li>
 	// <li>RebuildMedia：音画质重生任务；</li>
 	// <li>ReviewAudioVideo：音视频审核任务；</li>
-	// <li>ExtractTraceWatermark：提取溯源水印任务。</li>
+	// <li>ExtractTraceWatermark：提取溯源水印任务；</li>
+	// <li>ExtractCopyRightWatermark：提取版权水印任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -10985,6 +10998,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 提取溯源水印任务信息，仅当 TaskType 为 ExtractTraceWatermark，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtractTraceWatermarkTask *ExtractTraceWatermarkTask `json:"ExtractTraceWatermarkTask,omitempty" name:"ExtractTraceWatermarkTask"`
+
+	// 提取版权水印任务信息，仅当 TaskType 为 ExtractCopyRightWatermark，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtractCopyRightWatermarkTask *ExtractCopyRightWatermarkTask `json:"ExtractCopyRightWatermarkTask,omitempty" name:"ExtractCopyRightWatermarkTask"`
 
 	// 音视频审核任务信息，仅当 TaskType 为 ReviewAudioVideo，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12052,6 +12069,7 @@ type EventContent struct {
 	// <li>RebuildMediaComplete：音画质重生完成事件。</li>
 	// <li>ReviewAudioVideoComplete：音视频审核完成；</li>
 	// <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
+	// <li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li>
 	// <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
 	// <b>兼容 2017 版的事件类型：</b>
 	// <li>TranscodeComplete：视频转码完成；</li>
@@ -12132,6 +12150,10 @@ type EventContent struct {
 	// 溯源水印提取完成事件，当事件类型为 ExtractTraceWatermarkComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtractTraceWatermarkCompleteEvent *ExtractTraceWatermarkTask `json:"ExtractTraceWatermarkCompleteEvent,omitempty" name:"ExtractTraceWatermarkCompleteEvent"`
+
+	// 版权水印提取完成事件，当事件类型为 ExtractCopyRightWatermarkComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtractCopyRightWatermarkCompleteEvent *ExtractCopyRightWatermarkTask `json:"ExtractCopyRightWatermarkCompleteEvent,omitempty" name:"ExtractCopyRightWatermarkCompleteEvent"`
 
 	// 音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12236,6 +12258,52 @@ func (r *ExecuteFunctionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExecuteFunctionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExtractCopyRightWatermarkTask struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 提取版权水印任务输入信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *ExtractCopyRightWatermarkTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 提取版权水印任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *ExtractCopyRightWatermarkTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+type ExtractCopyRightWatermarkTaskInput struct {
+	// 需要提取水印的媒体 URL。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type ExtractCopyRightWatermarkTaskOutput struct {
+	// 版权信息。
+	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
 // Predefined struct for user
@@ -14276,8 +14344,12 @@ type MediaTranscodeItem struct {
 
 	// 数字水印类型。可选值：
 	// <li>Trace 表示经过溯源水印处理；</li>
+	// <li>CopyRight 表示经过版权水印处理；</li>
 	// <li>None 表示没有经过数字水印处理。</li>
 	DigitalWatermarkType *string `json:"DigitalWatermarkType,omitempty" name:"DigitalWatermarkType"`
+
+	// 版权信息。
+	CopyRightWatermarkText *string `json:"CopyRightWatermarkText,omitempty" name:"CopyRightWatermarkText"`
 }
 
 type MediaTransitionItem struct {
@@ -22434,6 +22506,9 @@ type TranscodeTaskInput struct {
 
 	// 溯源水印。
 	TraceWatermark *TraceWatermarkInput `json:"TraceWatermark,omitempty" name:"TraceWatermark"`
+
+	// 版权水印。
+	CopyRightWatermark *CopyRightWatermarkInput `json:"CopyRightWatermark,omitempty" name:"CopyRightWatermark"`
 
 	// 马赛克列表，最大可支持 10 张。
 	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet"`

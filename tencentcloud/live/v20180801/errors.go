@@ -17,6 +17,9 @@ package v20180801
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 	DRYRUNOPERATION = "DryRunOperation"
 
@@ -65,6 +68,9 @@ const (
 	// 下发CDN平台失败。
 	FAILEDOPERATION_CONFIGCDNFAILED = "FailedOperation.ConfigCDNFailed"
 
+	// 任务接口执行冲突。
+	FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+
 	// Cos bucket 不存在。
 	FAILEDOPERATION_COSBUCKETNOTEXIST = "FailedOperation.CosBucketNotExist"
 
@@ -73,6 +79,9 @@ const (
 
 	// Cos 角色不存在，请前往 控制台 -> 功能配置 -> 直播截图&鉴黄 页面进行授权。
 	FAILEDOPERATION_COSROLENOTEXISTS = "FailedOperation.CosRoleNotExists"
+
+	// 数据库访问异常。
+	FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
 
 	// 2天内有产生流量，域名处于锁定期间，2天内无流量产生才允许删除域名。
 	FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
@@ -104,6 +113,9 @@ const (
 	// 域名数量超过限制(100个）。
 	FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
 
+	// 禁止监播c流。
+	FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+
 	// 证书状态不正确。
 	FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
 
@@ -118,6 +130,15 @@ const (
 
 	// 计费平台返回余额不足。
 	FAILEDOPERATION_JIFEINOENOUGHFUND = "FailedOperation.JiFeiNoEnoughFund"
+
+	// 监播任务处于启动状态。
+	FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+
+	// 监播任务超出限制。
+	FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+
+	// 监播任务不存在。
+	FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
 
 	// 当前 CA 机构访问繁忙，请稍后重试。
 	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
@@ -140,11 +161,23 @@ const (
 	// 查询 upload 信息失败。
 	FAILEDOPERATION_QUERYUPLOADINFOFAILED = "FailedOperation.QueryUploadInfoFailed"
 
+	// 关联服务无法访问。
+	FAILEDOPERATION_RELATESERVERNOTACCESSIBLE = "FailedOperation.RelateServerNotAccessible"
+
+	// 输入关联的运行中的监播任务超出限制。
+	FAILEDOPERATION_RELATEDRUNNINGMONITORLIMITEXCEEDED = "FailedOperation.RelatedRunningMonitorLimitExceeded"
+
 	// 规则已经存在。
 	FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
 
 	// 用户没有有效的流量套餐包。
 	FAILEDOPERATION_SDKNOPACKAGE = "FailedOperation.SdkNoPackage"
+
+	// 启动监播任务失败。
+	FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+
+	// 停止监播任务失败。
+	FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
 
 	// 流不存在。
 	FAILEDOPERATION_STREAMNOTEXIST = "FailedOperation.StreamNotExist"
@@ -433,6 +466,9 @@ const (
 
 	// 小程序插件没有授权。
 	INVALIDPARAMETER_MPPLUGINNOUSE = "InvalidParameter.MpPluginNoUse"
+
+	// 该APPID未开通LVB服务。
+	INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
 
 	// 其他错误。
 	INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"

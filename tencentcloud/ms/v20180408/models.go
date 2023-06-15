@@ -265,10 +265,15 @@ type CreateCosSecKeyInstanceResponseParams struct {
 	CosKey *string `json:"CosKey,omitempty" name:"CosKey"`
 
 	// 密钥TOCKEN信息
+	//
+	// Deprecated: CosTocken is deprecated.
 	CosTocken *string `json:"CosTocken,omitempty" name:"CosTocken"`
 
 	// 密钥可访问的文件前缀人。例如：CosPrefix=test/123/666，则该密钥只能操作test/123/666为前缀的文件，例如test/123/666/1.txt
 	CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
+
+	// 密钥TOCKEN信息
+	CosToken *string `json:"CosToken,omitempty" name:"CosToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

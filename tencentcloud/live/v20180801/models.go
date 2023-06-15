@@ -1151,6 +1151,195 @@ func (r *CreateLiveCallbackTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLivePadRuleRequestParams struct {
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 模板 ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+}
+
+type CreateLivePadRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 模板 ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 注：如果本参数设置为非空字符串，规则将只对此推流起作用。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+}
+
+func (r *CreateLivePadRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLivePadRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "TemplateId")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLivePadRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLivePadRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateLivePadRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLivePadRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateLivePadRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLivePadRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLivePadTemplateRequestParams struct {
+	// 模板名称。
+	// 长度上限：255字节。
+	// 仅支持中文、英文、数字、_、-。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 垫片内容。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 描述信息。
+	// 长度上限：1024字节。
+	// 仅支持中文、英文、数字、_、-。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 断流等待时间。
+	// 取值范围：0-30000。
+	// 单位：ms。
+	WaitDuration *uint64 `json:"WaitDuration,omitempty" name:"WaitDuration"`
+
+	// 最大垫片时长。
+	// 取值范围：0 - 正无穷。
+	// 单位：ms。
+	MaxDuration *uint64 `json:"MaxDuration,omitempty" name:"MaxDuration"`
+
+	// 垫片内容类型：
+	// 1：图片，2：视频。
+	// 默认值：1。
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
+type CreateLivePadTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名称。
+	// 长度上限：255字节。
+	// 仅支持中文、英文、数字、_、-。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 垫片内容。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 描述信息。
+	// 长度上限：1024字节。
+	// 仅支持中文、英文、数字、_、-。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 断流等待时间。
+	// 取值范围：0-30000。
+	// 单位：ms。
+	WaitDuration *uint64 `json:"WaitDuration,omitempty" name:"WaitDuration"`
+
+	// 最大垫片时长。
+	// 取值范围：0 - 正无穷。
+	// 单位：ms。
+	MaxDuration *uint64 `json:"MaxDuration,omitempty" name:"MaxDuration"`
+
+	// 垫片内容类型：
+	// 1：图片，2：视频。
+	// 默认值：1。
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *CreateLivePadTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLivePadTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateName")
+	delete(f, "Url")
+	delete(f, "Description")
+	delete(f, "WaitDuration")
+	delete(f, "MaxDuration")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLivePadTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLivePadTemplateResponseParams struct {
+	// 模板Id。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateLivePadTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLivePadTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateLivePadTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLivePadTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLivePullStreamTaskRequestParams struct {
 	// 拉流源的类型：
 	// PullLivePushLive -直播，
@@ -2076,6 +2265,144 @@ func (r *CreateLiveSnapshotTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateLiveSnapshotTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveStreamMonitorRequestParams struct {
+	// 监播任务的输出信息。
+	OutputInfo *LiveStreamMonitorOutputInfo `json:"OutputInfo,omitempty" name:"OutputInfo"`
+
+	// 待监播的输入流信息列表。
+	InputList []*LiveStreamMonitorInputInfo `json:"InputList,omitempty" name:"InputList"`
+
+	// 监播任务名称。字段长度小于128字节（一个汉字两个字节）。
+	MonitorName *string `json:"MonitorName,omitempty" name:"MonitorName"`
+
+	// 监播事件通知策略。
+	// 不填默认为没有任何通知。
+	NotifyPolicy *LiveStreamMonitorNotifyPolicy `json:"NotifyPolicy,omitempty" name:"NotifyPolicy"`
+
+	// 智能语音识别语种设置：
+	// 0 关闭 1 中文 2 英文 3 日文 4 韩文。
+	AsrLanguage *uint64 `json:"AsrLanguage,omitempty" name:"AsrLanguage"`
+
+	// 智能文字识别语种设置：
+	// 0 关闭 1 中、英文。
+	OcrLanguage *uint64 `json:"OcrLanguage,omitempty" name:"OcrLanguage"`
+
+	// 智能语音识别的输入列表，若开启语音识别则必填。
+	// （第1条输入流index为1）
+	AiAsrInputIndexList []*uint64 `json:"AiAsrInputIndexList,omitempty" name:"AiAsrInputIndexList"`
+
+	// 智能文字识别的输入列表，若开启文字识别则必填。
+	// （第1条输入流index为1）
+	AiOcrInputIndexList []*uint64 `json:"AiOcrInputIndexList,omitempty" name:"AiOcrInputIndexList"`
+
+	// 是否开启断流检测。
+	CheckStreamBroken *uint64 `json:"CheckStreamBroken,omitempty" name:"CheckStreamBroken"`
+
+	// 是否开启低帧率检测。
+	CheckStreamLowFrameRate *uint64 `json:"CheckStreamLowFrameRate,omitempty" name:"CheckStreamLowFrameRate"`
+
+	// 是否存储监播事件到监播报告，以及是否允许查询监播报告。
+	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+}
+
+type CreateLiveStreamMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监播任务的输出信息。
+	OutputInfo *LiveStreamMonitorOutputInfo `json:"OutputInfo,omitempty" name:"OutputInfo"`
+
+	// 待监播的输入流信息列表。
+	InputList []*LiveStreamMonitorInputInfo `json:"InputList,omitempty" name:"InputList"`
+
+	// 监播任务名称。字段长度小于128字节（一个汉字两个字节）。
+	MonitorName *string `json:"MonitorName,omitempty" name:"MonitorName"`
+
+	// 监播事件通知策略。
+	// 不填默认为没有任何通知。
+	NotifyPolicy *LiveStreamMonitorNotifyPolicy `json:"NotifyPolicy,omitempty" name:"NotifyPolicy"`
+
+	// 智能语音识别语种设置：
+	// 0 关闭 1 中文 2 英文 3 日文 4 韩文。
+	AsrLanguage *uint64 `json:"AsrLanguage,omitempty" name:"AsrLanguage"`
+
+	// 智能文字识别语种设置：
+	// 0 关闭 1 中、英文。
+	OcrLanguage *uint64 `json:"OcrLanguage,omitempty" name:"OcrLanguage"`
+
+	// 智能语音识别的输入列表，若开启语音识别则必填。
+	// （第1条输入流index为1）
+	AiAsrInputIndexList []*uint64 `json:"AiAsrInputIndexList,omitempty" name:"AiAsrInputIndexList"`
+
+	// 智能文字识别的输入列表，若开启文字识别则必填。
+	// （第1条输入流index为1）
+	AiOcrInputIndexList []*uint64 `json:"AiOcrInputIndexList,omitempty" name:"AiOcrInputIndexList"`
+
+	// 是否开启断流检测。
+	CheckStreamBroken *uint64 `json:"CheckStreamBroken,omitempty" name:"CheckStreamBroken"`
+
+	// 是否开启低帧率检测。
+	CheckStreamLowFrameRate *uint64 `json:"CheckStreamLowFrameRate,omitempty" name:"CheckStreamLowFrameRate"`
+
+	// 是否存储监播事件到监播报告，以及是否允许查询监播报告。
+	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+}
+
+func (r *CreateLiveStreamMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveStreamMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OutputInfo")
+	delete(f, "InputList")
+	delete(f, "MonitorName")
+	delete(f, "NotifyPolicy")
+	delete(f, "AsrLanguage")
+	delete(f, "OcrLanguage")
+	delete(f, "AiAsrInputIndexList")
+	delete(f, "AiOcrInputIndexList")
+	delete(f, "CheckStreamBroken")
+	delete(f, "CheckStreamLowFrameRate")
+	delete(f, "AllowMonitorReport")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveStreamMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLiveStreamMonitorResponseParams struct {
+	// 监播任务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateLiveStreamMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLiveStreamMonitorResponseParams `json:"Response"`
+}
+
+func (r *CreateLiveStreamMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLiveStreamMonitorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3286,6 +3613,141 @@ func (r *DeleteLiveDomainResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteLivePadRuleRequestParams struct {
+	// 推流域名。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 直播垫片模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DeleteLivePadRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流域名。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 流名称。
+	// 域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。
+	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
+
+	// 直播垫片模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteLivePadRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLivePadRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "AppName")
+	delete(f, "StreamName")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLivePadRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLivePadRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteLivePadRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLivePadRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteLivePadRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLivePadRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLivePadTemplateRequestParams struct {
+	// 模板 ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DeleteLivePadTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板 ID。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteLivePadTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLivePadTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLivePadTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLivePadTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteLivePadTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLivePadTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteLivePadTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLivePadTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteLivePullStreamTaskRequestParams struct {
 	// 任务 Id。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -3658,6 +4120,60 @@ func (r *DeleteLiveSnapshotTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLiveSnapshotTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveStreamMonitorRequestParams struct {
+	// 监播任务ID
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
+type DeleteLiveStreamMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监播任务ID
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
+func (r *DeleteLiveStreamMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveStreamMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLiveStreamMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLiveStreamMonitorResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteLiveStreamMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLiveStreamMonitorResponseParams `json:"Response"`
+}
+
+func (r *DeleteLiveStreamMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLiveStreamMonitorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6005,6 +6521,171 @@ func (r *DescribeLivePackageInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLivePadRulesRequestParams struct {
+
+}
+
+type DescribeLivePadRulesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLivePadRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePadRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePadRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLivePadRulesResponseParams struct {
+	// 规则信息列表。
+	Rules []*RuleInfo `json:"Rules,omitempty" name:"Rules"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLivePadRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLivePadRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLivePadRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePadRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLivePadTemplateRequestParams struct {
+	// 模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DescribeLivePadTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeLivePadTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePadTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePadTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLivePadTemplateResponseParams struct {
+	// 直播垫片模板信息。
+	Template *PadTemplate `json:"Template,omitempty" name:"Template"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLivePadTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLivePadTemplateResponseParams `json:"Response"`
+}
+
+func (r *DescribeLivePadTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePadTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLivePadTemplatesRequestParams struct {
+
+}
+
+type DescribeLivePadTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLivePadTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePadTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePadTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLivePadTemplatesResponseParams struct {
+	// 直播垫片模板信息。
+	Templates []*PadTemplate `json:"Templates,omitempty" name:"Templates"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLivePadTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLivePadTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLivePadTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePadTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLivePlayAuthKeyRequestParams struct {
 	// 域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
@@ -6714,6 +7395,133 @@ func (r *DescribeLiveStreamEventListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLiveStreamEventListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveStreamMonitorListRequestParams struct {
+	// 查询列表时的起始偏移。
+	Index *uint64 `json:"Index,omitempty" name:"Index"`
+
+	// 本次查询的记录个数。最小值为1。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
+type DescribeLiveStreamMonitorListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询列表时的起始偏移。
+	Index *uint64 `json:"Index,omitempty" name:"Index"`
+
+	// 本次查询的记录个数。最小值为1。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
+func (r *DescribeLiveStreamMonitorListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveStreamMonitorListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Index")
+	delete(f, "Count")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveStreamMonitorListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveStreamMonitorListResponseParams struct {
+	// 账号下的直播流监播任务个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 直播流监播任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveStreamMonitors []*LiveStreamMonitorInfo `json:"LiveStreamMonitors,omitempty" name:"LiveStreamMonitors"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveStreamMonitorListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveStreamMonitorListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveStreamMonitorListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveStreamMonitorListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveStreamMonitorRequestParams struct {
+	// 监播任务ID。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
+type DescribeLiveStreamMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监播任务ID。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
+func (r *DescribeLiveStreamMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveStreamMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveStreamMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveStreamMonitorResponseParams struct {
+	// 直播监播任务相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveStreamMonitor *LiveStreamMonitorInfo `json:"LiveStreamMonitor,omitempty" name:"LiveStreamMonitor"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveStreamMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveStreamMonitorResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveStreamMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveStreamMonitorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8055,6 +8863,68 @@ func (r *DescribeLogDownloadListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLogDownloadListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMonitorReportRequestParams struct {
+	// 监播任务ID。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
+type DescribeMonitorReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监播任务ID。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
+func (r *DescribeMonitorReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMonitorReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMonitorReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMonitorReportResponseParams struct {
+	// 媒体处理结果信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MPSResult *MPSResult `json:"MPSResult,omitempty" name:"MPSResult"`
+
+	// 媒体诊断结果信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnoseResult *DiagnoseResult `json:"DiagnoseResult,omitempty" name:"DiagnoseResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeMonitorReportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMonitorReportResponseParams `json:"Response"`
+}
+
+func (r *DescribeMonitorReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMonitorReportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9997,6 +10867,16 @@ func (r *DescribeVisitTopSumInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiagnoseResult struct {
+	// 断流信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamBrokenResults []*string `json:"StreamBrokenResults,omitempty" name:"StreamBrokenResults"`
+
+	// 低帧率信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowFrameRateResults []*string `json:"LowFrameRateResults,omitempty" name:"LowFrameRateResults"`
+}
+
 type DomainCertInfo struct {
 	// 证书Id。
 	CertId *int64 `json:"CertId,omitempty" name:"CertId"`
@@ -10568,6 +11448,143 @@ type LivePackageInfo struct {
 	RenewalResult *int64 `json:"RenewalResult,omitempty" name:"RenewalResult"`
 }
 
+type LiveStreamMonitorInfo struct {
+	// 监播任务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 监播任务名称。128字节以内。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorName *string `json:"MonitorName,omitempty" name:"MonitorName"`
+
+	// 监播任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputInfo *LiveStreamMonitorOutputInfo `json:"OutputInfo,omitempty" name:"OutputInfo"`
+
+	// 待监播的输入流信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputList []*LiveStreamMonitorInputInfo `json:"InputList,omitempty" name:"InputList"`
+
+	// 监播任务状态。
+	// 0： 代表空闲
+	// 1： 代表监播中。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 上一次的启动时间，unix时间戳。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 上一次的停止时间，unix时间戳。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StopTime *uint64 `json:"StopTime,omitempty" name:"StopTime"`
+
+	// 监播任务创建时间，unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 监播任务更新时间，unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 监播事件通知策略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyPolicy *LiveStreamMonitorNotifyPolicy `json:"NotifyPolicy,omitempty" name:"NotifyPolicy"`
+
+	// 输出音频的输入Index列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudibleInputIndexList []*uint64 `json:"AudibleInputIndexList,omitempty" name:"AudibleInputIndexList"`
+
+	// 开启智能语音识别的输入Index列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiAsrInputIndexList []*uint64 `json:"AiAsrInputIndexList,omitempty" name:"AiAsrInputIndexList"`
+
+	// 是否开启断流检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckStreamBroken *uint64 `json:"CheckStreamBroken,omitempty" name:"CheckStreamBroken"`
+
+	// 是否开启低帧率检测
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckStreamLowFrameRate *uint64 `json:"CheckStreamLowFrameRate,omitempty" name:"CheckStreamLowFrameRate"`
+
+	// 智能语音识别语种：
+	// 0 关闭 1 中文 2 英文 3日文 4 韩文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrLanguage *uint64 `json:"AsrLanguage,omitempty" name:"AsrLanguage"`
+
+	// 智能文字识别语种：
+	// 0 关闭 1 中、英文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrLanguage *uint64 `json:"OcrLanguage,omitempty" name:"OcrLanguage"`
+
+	// 开启智能文字识别的输入Index列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiOcrInputIndexList []*uint64 `json:"AiOcrInputIndexList,omitempty" name:"AiOcrInputIndexList"`
+
+	// 是否存储监播事件到监播报告，以及是否允许查询监播报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+}
+
+type LiveStreamMonitorInputInfo struct {
+	// 待监播的输入流名称。256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputStreamName *string `json:"InputStreamName,omitempty" name:"InputStreamName"`
+
+	// 待监播的输入流推流域名。128字节以内，只允许填处于启用状态的推流域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputDomain *string `json:"InputDomain,omitempty" name:"InputDomain"`
+
+	// 待监播的输入流推流路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputApp *string `json:"InputApp,omitempty" name:"InputApp"`
+
+	// 待监播的输入流推流url。一般场景下，无需该参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputUrl *string `json:"InputUrl,omitempty" name:"InputUrl"`
+
+	// 描述。256字节以内。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type LiveStreamMonitorNotifyPolicy struct {
+	// 通知策略类型：范围[0,1]
+	// 0:代表不使用任何通知策略
+	// 1:代表使用全局回调策略，所有事件通知到CallbackUrl。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyPolicyType *uint64 `json:"NotifyPolicyType,omitempty" name:"NotifyPolicyType"`
+
+	// 回调URL：长度[0,512]
+	// 只支持http和https类型的url。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+}
+
+type LiveStreamMonitorOutputInfo struct {
+	// 监播任务输出流宽度像素。范围[1,1920]。建议至少大于100像素。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStreamWidth *uint64 `json:"OutputStreamWidth,omitempty" name:"OutputStreamWidth"`
+
+	// 监播任务输出流长度像素。范围[1,1080]，建议至少大于100像素。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStreamHeight *uint64 `json:"OutputStreamHeight,omitempty" name:"OutputStreamHeight"`
+
+	// 监播任务输出流名称。
+	// 不填时，系统会自动生成。
+	// 256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStreamName *string `json:"OutputStreamName,omitempty" name:"OutputStreamName"`
+
+	// 监播任务播放域名。128字节以内，只允许填处于启用状态的播放域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputDomain *string `json:"OutputDomain,omitempty" name:"OutputDomain"`
+
+	// 监播任务播放路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputApp *string `json:"OutputApp,omitempty" name:"OutputApp"`
+}
+
 type LogInfo struct {
 	// 日志名称。
 	LogName *string `json:"LogName,omitempty" name:"LogName"`
@@ -10581,6 +11598,16 @@ type LogInfo struct {
 
 	// 文件大小。
 	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+}
+
+type MPSResult struct {
+	// 智能语音识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiAsrResults []*string `json:"AiAsrResults,omitempty" name:"AiAsrResults"`
+
+	// 智能文字识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiOcrResults []*string `json:"AiOcrResults,omitempty" name:"AiOcrResults"`
 }
 
 // Predefined struct for user
@@ -10885,6 +11912,118 @@ func (r *ModifyLiveDomainRefererResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLiveDomainRefererResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLivePadTemplateRequestParams struct {
+	// 模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 垫片内容。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 断流等待时间。
+	// 取值范围：0-30000。
+	// 单位：ms。
+	WaitDuration *uint64 `json:"WaitDuration,omitempty" name:"WaitDuration"`
+
+	// 最大垫片时长。
+	// 取值范围：0 - 正无穷。
+	// 单位：ms。
+	MaxDuration *uint64 `json:"MaxDuration,omitempty" name:"MaxDuration"`
+
+	// 模板名称。
+	// 长度上限：255字节。
+	// 仅支持中文、英文、数字、_、-。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 描述信息。
+	// 长度上限：1024字节。
+	// 仅支持中文、英文、数字、_、-。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 垫片内容类型： 1：图片，2：视频。 默认值：1。
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
+type ModifyLivePadTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 垫片内容。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 断流等待时间。
+	// 取值范围：0-30000。
+	// 单位：ms。
+	WaitDuration *uint64 `json:"WaitDuration,omitempty" name:"WaitDuration"`
+
+	// 最大垫片时长。
+	// 取值范围：0 - 正无穷。
+	// 单位：ms。
+	MaxDuration *uint64 `json:"MaxDuration,omitempty" name:"MaxDuration"`
+
+	// 模板名称。
+	// 长度上限：255字节。
+	// 仅支持中文、英文、数字、_、-。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 描述信息。
+	// 长度上限：1024字节。
+	// 仅支持中文、英文、数字、_、-。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 垫片内容类型： 1：图片，2：视频。 默认值：1。
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *ModifyLivePadTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLivePadTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateId")
+	delete(f, "Url")
+	delete(f, "WaitDuration")
+	delete(f, "MaxDuration")
+	delete(f, "TemplateName")
+	delete(f, "Description")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePadTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLivePadTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyLivePadTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLivePadTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyLivePadTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLivePadTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11663,6 +12802,141 @@ func (r *ModifyLiveSnapshotTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLiveStreamMonitorRequestParams struct {
+	// 监播任务ID。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 监播任务的名称。长度128字节以内（一个汉字两个字节）。
+	MonitorName *string `json:"MonitorName,omitempty" name:"MonitorName"`
+
+	// 监播任务输出信息。
+	OutputInfo *LiveStreamMonitorOutputInfo `json:"OutputInfo,omitempty" name:"OutputInfo"`
+
+	// 待监播的输入流信息。
+	InputList []*LiveStreamMonitorInputInfo `json:"InputList,omitempty" name:"InputList"`
+
+	// 监播事件通知策略。
+	NotifyPolicy *LiveStreamMonitorNotifyPolicy `json:"NotifyPolicy,omitempty" name:"NotifyPolicy"`
+
+	// 智能语音识别语种：
+	// 0 关闭 1 中文 2 英文 3 日文 4 韩文。
+	AsrLanguage *uint64 `json:"AsrLanguage,omitempty" name:"AsrLanguage"`
+
+	// 智能文字识别语种：
+	// 0 关闭 1 中、英文。
+	OcrLanguage *uint64 `json:"OcrLanguage,omitempty" name:"OcrLanguage"`
+
+	// 语音识别输入流列表，1代表第一条输入流。
+	AiAsrInputIndexList []*uint64 `json:"AiAsrInputIndexList,omitempty" name:"AiAsrInputIndexList"`
+
+	// 文字识别输入流列表，1代表第一条输入流。
+	AiOcrInputIndexList []*uint64 `json:"AiOcrInputIndexList,omitempty" name:"AiOcrInputIndexList"`
+
+	// 是否开启断流检测。
+	CheckStreamBroken *uint64 `json:"CheckStreamBroken,omitempty" name:"CheckStreamBroken"`
+
+	// 是否开启低帧率检测。
+	CheckStreamLowFrameRate *uint64 `json:"CheckStreamLowFrameRate,omitempty" name:"CheckStreamLowFrameRate"`
+
+	// 是否存储监播事件到监播报告，以及是否允许查询监播报告。
+	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+}
+
+type ModifyLiveStreamMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监播任务ID。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 监播任务的名称。长度128字节以内（一个汉字两个字节）。
+	MonitorName *string `json:"MonitorName,omitempty" name:"MonitorName"`
+
+	// 监播任务输出信息。
+	OutputInfo *LiveStreamMonitorOutputInfo `json:"OutputInfo,omitempty" name:"OutputInfo"`
+
+	// 待监播的输入流信息。
+	InputList []*LiveStreamMonitorInputInfo `json:"InputList,omitempty" name:"InputList"`
+
+	// 监播事件通知策略。
+	NotifyPolicy *LiveStreamMonitorNotifyPolicy `json:"NotifyPolicy,omitempty" name:"NotifyPolicy"`
+
+	// 智能语音识别语种：
+	// 0 关闭 1 中文 2 英文 3 日文 4 韩文。
+	AsrLanguage *uint64 `json:"AsrLanguage,omitempty" name:"AsrLanguage"`
+
+	// 智能文字识别语种：
+	// 0 关闭 1 中、英文。
+	OcrLanguage *uint64 `json:"OcrLanguage,omitempty" name:"OcrLanguage"`
+
+	// 语音识别输入流列表，1代表第一条输入流。
+	AiAsrInputIndexList []*uint64 `json:"AiAsrInputIndexList,omitempty" name:"AiAsrInputIndexList"`
+
+	// 文字识别输入流列表，1代表第一条输入流。
+	AiOcrInputIndexList []*uint64 `json:"AiOcrInputIndexList,omitempty" name:"AiOcrInputIndexList"`
+
+	// 是否开启断流检测。
+	CheckStreamBroken *uint64 `json:"CheckStreamBroken,omitempty" name:"CheckStreamBroken"`
+
+	// 是否开启低帧率检测。
+	CheckStreamLowFrameRate *uint64 `json:"CheckStreamLowFrameRate,omitempty" name:"CheckStreamLowFrameRate"`
+
+	// 是否存储监播事件到监播报告，以及是否允许查询监播报告。
+	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+}
+
+func (r *ModifyLiveStreamMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveStreamMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorId")
+	delete(f, "MonitorName")
+	delete(f, "OutputInfo")
+	delete(f, "InputList")
+	delete(f, "NotifyPolicy")
+	delete(f, "AsrLanguage")
+	delete(f, "OcrLanguage")
+	delete(f, "AiAsrInputIndexList")
+	delete(f, "AiOcrInputIndexList")
+	delete(f, "CheckStreamBroken")
+	delete(f, "CheckStreamLowFrameRate")
+	delete(f, "AllowMonitorReport")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveStreamMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveStreamMonitorResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyLiveStreamMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLiveStreamMonitorResponseParams `json:"Response"`
+}
+
+func (r *ModifyLiveStreamMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveStreamMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyLiveTimeShiftTemplateRequestParams struct {
 	// 时移模板id。
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
@@ -12269,6 +13543,39 @@ type MonitorStreamPlayInfo struct {
 
 	// 请求数。
 	Request *uint64 `json:"Request,omitempty" name:"Request"`
+}
+
+type PadTemplate struct {
+	// 模板id。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名称。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 垫片内容。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 模板创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板修改时间。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 模板描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 断流等待时间。
+	// 取值范围：0-30000。
+	// 单位：ms。
+	WaitDuration *uint64 `json:"WaitDuration,omitempty" name:"WaitDuration"`
+
+	// 最大垫片时长。
+	// 取值范围：0 - 正无穷。
+	// 单位：ms。
+	MaxDuration *uint64 `json:"MaxDuration,omitempty" name:"MaxDuration"`
+
+	// 垫片内容类型： 1：图片，2：视频。 默认值：1。
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
 
 type PlayAuthKeyInfo struct {
@@ -13173,6 +14480,71 @@ type SnapshotTemplateInfo struct {
 }
 
 // Predefined struct for user
+type StartLiveStreamMonitorRequestParams struct {
+	// 监播ID。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 监播画面声音InputIndex,支持多个输入声音。
+	// 取值范围 InputIndex必须已经存在。
+	// 不填默认无声音输出。
+	AudibleInputIndexList []*uint64 `json:"AudibleInputIndexList,omitempty" name:"AudibleInputIndexList"`
+}
+
+type StartLiveStreamMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监播ID。
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 监播画面声音InputIndex,支持多个输入声音。
+	// 取值范围 InputIndex必须已经存在。
+	// 不填默认无声音输出。
+	AudibleInputIndexList []*uint64 `json:"AudibleInputIndexList,omitempty" name:"AudibleInputIndexList"`
+}
+
+func (r *StartLiveStreamMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartLiveStreamMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorId")
+	delete(f, "AudibleInputIndexList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartLiveStreamMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartLiveStreamMonitorResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartLiveStreamMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *StartLiveStreamMonitorResponseParams `json:"Response"`
+}
+
+func (r *StartLiveStreamMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartLiveStreamMonitorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopLiveRecordRequestParams struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
@@ -13230,6 +14602,60 @@ func (r *StopLiveRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopLiveRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLiveStreamMonitorRequestParams struct {
+	// 监播ID
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
+type StopLiveStreamMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 监播ID
+	MonitorId *string `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
+func (r *StopLiveStreamMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLiveStreamMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MonitorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopLiveStreamMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLiveStreamMonitorResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopLiveStreamMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *StopLiveStreamMonitorResponseParams `json:"Response"`
+}
+
+func (r *StopLiveStreamMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLiveStreamMonitorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

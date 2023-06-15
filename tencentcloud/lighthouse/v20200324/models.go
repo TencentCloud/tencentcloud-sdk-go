@@ -345,7 +345,7 @@ func (r *AttachDisksResponse) FromJsonString(s string) error {
 }
 
 type AutoMountConfiguration struct {
-	// 待挂载的实例ID。指定的实例必须处于“运行中”状态。
+	// 待挂载的实例ID。指定的实例必须与指定的数据盘处于同一可用区，实例状态必须处于“运行中”状态，且实例必须支持[自动化助手](https://cloud.tencent.com/document/product/1340/50752)。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 实例内的挂载点。仅Linux操作系统的实例可传入该参数, 不传则默认挂载在“/data/disk”路径下。

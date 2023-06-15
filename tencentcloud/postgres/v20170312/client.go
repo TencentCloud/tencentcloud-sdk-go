@@ -2872,7 +2872,7 @@ func NewDescribeDBInstanceParametersResponse() (response *DescribeDBInstancePara
 }
 
 // DescribeDBInstanceParameters
-// 获取实例可修改参数列表
+// 本接口（DescribeDBInstanceAttribute）用于查询实例的参数信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
@@ -2889,7 +2889,7 @@ func (c *Client) DescribeDBInstanceParameters(request *DescribeDBInstanceParamet
 }
 
 // DescribeDBInstanceParameters
-// 获取实例可修改参数列表
+// 本接口（DescribeDBInstanceAttribute）用于查询实例的参数信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"

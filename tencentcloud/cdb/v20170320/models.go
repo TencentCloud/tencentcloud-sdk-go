@@ -1925,6 +1925,9 @@ type CreateCdbProxyAddressRequestParams struct {
 
 	// 安全组
 	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
+
+	// 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool为true时生效。
+	ConnectionPoolType *string `json:"ConnectionPoolType,omitempty" name:"ConnectionPoolType"`
 }
 
 type CreateCdbProxyAddressRequest struct {
@@ -1981,6 +1984,9 @@ type CreateCdbProxyAddressRequest struct {
 
 	// 安全组
 	SecurityGroup []*string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
+
+	// 连接池类型。可选值 transaction（事务级别连接池），connection（会话级别连接池），ConnectionPool为true时生效。
+	ConnectionPoolType *string `json:"ConnectionPoolType,omitempty" name:"ConnectionPoolType"`
 }
 
 func (r *CreateCdbProxyAddressRequest) ToJsonString() string {
@@ -2012,6 +2018,7 @@ func (r *CreateCdbProxyAddressRequest) FromJsonString(s string) error {
 	delete(f, "Vip")
 	delete(f, "VPort")
 	delete(f, "SecurityGroup")
+	delete(f, "ConnectionPoolType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCdbProxyAddressRequest has unknown keys!", "")
 	}

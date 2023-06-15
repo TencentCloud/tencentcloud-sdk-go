@@ -733,6 +733,166 @@ func (c *Client) CreateLiveCallbackTemplateWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateLivePadRuleRequest() (request *CreateLivePadRuleRequest) {
+    request = &CreateLivePadRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateLivePadRule")
+    
+    
+    return
+}
+
+func NewCreateLivePadRuleResponse() (response *CreateLivePadRuleResponse) {
+    response = &CreateLivePadRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateLivePadRule
+// 创建直播垫片规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLivePadRule(request *CreateLivePadRuleRequest) (response *CreateLivePadRuleResponse, err error) {
+    return c.CreateLivePadRuleWithContext(context.Background(), request)
+}
+
+// CreateLivePadRule
+// 创建直播垫片规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  FAILEDOPERATION_RULEALREADYEXIST = "FailedOperation.RuleAlreadyExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLivePadRuleWithContext(ctx context.Context, request *CreateLivePadRuleRequest) (response *CreateLivePadRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateLivePadRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLivePadRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLivePadRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLivePadTemplateRequest() (request *CreateLivePadTemplateRequest) {
+    request = &CreateLivePadTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateLivePadTemplate")
+    
+    
+    return
+}
+
+func NewCreateLivePadTemplateResponse() (response *CreateLivePadTemplateResponse) {
+    response = &CreateLivePadTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateLivePadTemplate
+// 创建直播垫片模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLivePadTemplate(request *CreateLivePadTemplateRequest) (response *CreateLivePadTemplateResponse, err error) {
+    return c.CreateLivePadTemplateWithContext(context.Background(), request)
+}
+
+// CreateLivePadTemplate
+// 创建直播垫片模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) CreateLivePadTemplateWithContext(ctx context.Context, request *CreateLivePadTemplateRequest) (response *CreateLivePadTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateLivePadTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLivePadTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLivePadTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLivePullStreamTaskRequest() (request *CreateLivePullStreamTaskRequest) {
     request = &CreateLivePullStreamTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1339,6 +1499,88 @@ func (c *Client) CreateLiveSnapshotTemplateWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewCreateLiveSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateLiveStreamMonitorRequest() (request *CreateLiveStreamMonitorRequest) {
+    request = &CreateLiveStreamMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateLiveStreamMonitor")
+    
+    
+    return
+}
+
+func NewCreateLiveStreamMonitorResponse() (response *CreateLiveStreamMonitorResponse) {
+    response = &CreateLiveStreamMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateLiveStreamMonitor
+// 该接口用来创建直播流监播任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_RELATESERVERNOTACCESSIBLE = "FailedOperation.RelateServerNotAccessible"
+//  FAILEDOPERATION_RELATEDRUNNINGMONITORLIMITEXCEEDED = "FailedOperation.RelatedRunningMonitorLimitExceeded"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLiveStreamMonitor(request *CreateLiveStreamMonitorRequest) (response *CreateLiveStreamMonitorResponse, err error) {
+    return c.CreateLiveStreamMonitorWithContext(context.Background(), request)
+}
+
+// CreateLiveStreamMonitor
+// 该接口用来创建直播流监播任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_RELATESERVERNOTACCESSIBLE = "FailedOperation.RelateServerNotAccessible"
+//  FAILEDOPERATION_RELATEDRUNNINGMONITORLIMITEXCEEDED = "FailedOperation.RelatedRunningMonitorLimitExceeded"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) CreateLiveStreamMonitorWithContext(ctx context.Context, request *CreateLiveStreamMonitorRequest) (response *CreateLiveStreamMonitorResponse, err error) {
+    if request == nil {
+        request = NewCreateLiveStreamMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLiveStreamMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLiveStreamMonitorResponse()
     err = c.Send(request, response)
     return
 }
@@ -2299,6 +2541,172 @@ func (c *Client) DeleteLiveDomainWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteLivePadRuleRequest() (request *DeleteLivePadRuleRequest) {
+    request = &DeleteLivePadRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLivePadRule")
+    
+    
+    return
+}
+
+func NewDeleteLivePadRuleResponse() (response *DeleteLivePadRuleResponse) {
+    response = &DeleteLivePadRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteLivePadRule
+// 删除直播垫片规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLivePadRule(request *DeleteLivePadRuleRequest) (response *DeleteLivePadRuleResponse, err error) {
+    return c.DeleteLivePadRuleWithContext(context.Background(), request)
+}
+
+// DeleteLivePadRule
+// 删除直播垫片规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLivePadRuleWithContext(ctx context.Context, request *DeleteLivePadRuleRequest) (response *DeleteLivePadRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteLivePadRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLivePadRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLivePadRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLivePadTemplateRequest() (request *DeleteLivePadTemplateRequest) {
+    request = &DeleteLivePadTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLivePadTemplate")
+    
+    
+    return
+}
+
+func NewDeleteLivePadTemplateResponse() (response *DeleteLivePadTemplateResponse) {
+    response = &DeleteLivePadTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteLivePadTemplate
+// 删除直播垫片模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AITRANSCODEOPTIONFAIL = "FailedOperation.AiTranscodeOptionFail"
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLivePadTemplate(request *DeleteLivePadTemplateRequest) (response *DeleteLivePadTemplateResponse, err error) {
+    return c.DeleteLivePadTemplateWithContext(context.Background(), request)
+}
+
+// DeleteLivePadTemplate
+// 删除直播垫片模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AITRANSCODEOPTIONFAIL = "FailedOperation.AiTranscodeOptionFail"
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLivePadTemplateWithContext(ctx context.Context, request *DeleteLivePadTemplateRequest) (response *DeleteLivePadTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteLivePadTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLivePadTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLivePadTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteLivePullStreamTaskRequest() (request *DeleteLivePullStreamTaskRequest) {
     request = &DeleteLivePullStreamTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2769,6 +3177,82 @@ func (c *Client) DeleteLiveSnapshotTemplateWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteLiveSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLiveStreamMonitorRequest() (request *DeleteLiveStreamMonitorRequest) {
+    request = &DeleteLiveStreamMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteLiveStreamMonitor")
+    
+    
+    return
+}
+
+func NewDeleteLiveStreamMonitorResponse() (response *DeleteLiveStreamMonitorResponse) {
+    response = &DeleteLiveStreamMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteLiveStreamMonitor
+// 该接口用来删除直播流监播任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLiveStreamMonitor(request *DeleteLiveStreamMonitorRequest) (response *DeleteLiveStreamMonitorResponse, err error) {
+    return c.DeleteLiveStreamMonitorWithContext(context.Background(), request)
+}
+
+// DeleteLiveStreamMonitor
+// 该接口用来删除直播流监播任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DeleteLiveStreamMonitorWithContext(ctx context.Context, request *DeleteLiveStreamMonitorRequest) (response *DeleteLiveStreamMonitorResponse, err error) {
+    if request == nil {
+        request = NewDeleteLiveStreamMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLiveStreamMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLiveStreamMonitorResponse()
     err = c.Send(request, response)
     return
 }
@@ -4927,6 +5411,252 @@ func (c *Client) DescribeLivePackageInfoWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeLivePadRulesRequest() (request *DescribeLivePadRulesRequest) {
+    request = &DescribeLivePadRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLivePadRules")
+    
+    
+    return
+}
+
+func NewDescribeLivePadRulesResponse() (response *DescribeLivePadRulesResponse) {
+    response = &DescribeLivePadRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLivePadRules
+// 获取直播垫片规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLivePadRules(request *DescribeLivePadRulesRequest) (response *DescribeLivePadRulesResponse, err error) {
+    return c.DescribeLivePadRulesWithContext(context.Background(), request)
+}
+
+// DescribeLivePadRules
+// 获取直播垫片规则列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLivePadRulesWithContext(ctx context.Context, request *DescribeLivePadRulesRequest) (response *DescribeLivePadRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePadRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLivePadRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLivePadRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLivePadTemplateRequest() (request *DescribeLivePadTemplateRequest) {
+    request = &DescribeLivePadTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLivePadTemplate")
+    
+    
+    return
+}
+
+func NewDescribeLivePadTemplateResponse() (response *DescribeLivePadTemplateResponse) {
+    response = &DescribeLivePadTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLivePadTemplate
+// 获取单个直播垫片模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLivePadTemplate(request *DescribeLivePadTemplateRequest) (response *DescribeLivePadTemplateResponse, err error) {
+    return c.DescribeLivePadTemplateWithContext(context.Background(), request)
+}
+
+// DescribeLivePadTemplate
+// 获取单个直播垫片模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLivePadTemplateWithContext(ctx context.Context, request *DescribeLivePadTemplateRequest) (response *DescribeLivePadTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePadTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLivePadTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLivePadTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLivePadTemplatesRequest() (request *DescribeLivePadTemplatesRequest) {
+    request = &DescribeLivePadTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLivePadTemplates")
+    
+    
+    return
+}
+
+func NewDescribeLivePadTemplatesResponse() (response *DescribeLivePadTemplatesResponse) {
+    response = &DescribeLivePadTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLivePadTemplates
+// 获取直播垫片模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLivePadTemplates(request *DescribeLivePadTemplatesRequest) (response *DescribeLivePadTemplatesResponse, err error) {
+    return c.DescribeLivePadTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeLivePadTemplates
+// 获取直播垫片模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INTERNALERROR_RULEOUTLIMIT = "InternalError.RuleOutLimit"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) DescribeLivePadTemplatesWithContext(ctx context.Context, request *DescribeLivePadTemplatesRequest) (response *DescribeLivePadTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePadTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLivePadTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLivePadTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLivePlayAuthKeyRequest() (request *DescribeLivePlayAuthKeyRequest) {
     request = &DescribeLivePlayAuthKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5691,6 +6421,138 @@ func (c *Client) DescribeLiveStreamEventListWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeLiveStreamEventListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveStreamMonitorRequest() (request *DescribeLiveStreamMonitorRequest) {
+    request = &DescribeLiveStreamMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveStreamMonitor")
+    
+    
+    return
+}
+
+func NewDescribeLiveStreamMonitorResponse() (response *DescribeLiveStreamMonitorResponse) {
+    response = &DescribeLiveStreamMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLiveStreamMonitor
+// 该接口用来查询某个特定监播任务的配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveStreamMonitor(request *DescribeLiveStreamMonitorRequest) (response *DescribeLiveStreamMonitorResponse, err error) {
+    return c.DescribeLiveStreamMonitorWithContext(context.Background(), request)
+}
+
+// DescribeLiveStreamMonitor
+// 该接口用来查询某个特定监播任务的配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveStreamMonitorWithContext(ctx context.Context, request *DescribeLiveStreamMonitorRequest) (response *DescribeLiveStreamMonitorResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStreamMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveStreamMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLiveStreamMonitorListRequest() (request *DescribeLiveStreamMonitorListRequest) {
+    request = &DescribeLiveStreamMonitorListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveStreamMonitorList")
+    
+    
+    return
+}
+
+func NewDescribeLiveStreamMonitorListResponse() (response *DescribeLiveStreamMonitorListResponse) {
+    response = &DescribeLiveStreamMonitorListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLiveStreamMonitorList
+// 该接口用来查询直播流监播任务配置的列表信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveStreamMonitorList(request *DescribeLiveStreamMonitorListRequest) (response *DescribeLiveStreamMonitorListResponse, err error) {
+    return c.DescribeLiveStreamMonitorListWithContext(context.Background(), request)
+}
+
+// DescribeLiveStreamMonitorList
+// 该接口用来查询直播流监播任务配置的列表信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveStreamMonitorListWithContext(ctx context.Context, request *DescribeLiveStreamMonitorListRequest) (response *DescribeLiveStreamMonitorListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveStreamMonitorListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveStreamMonitorList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveStreamMonitorListResponse()
     err = c.Send(request, response)
     return
 }
@@ -7005,6 +7867,74 @@ func (c *Client) DescribeLogDownloadListWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeLogDownloadListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMonitorReportRequest() (request *DescribeMonitorReportRequest) {
+    request = &DescribeMonitorReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeMonitorReport")
+    
+    
+    return
+}
+
+func NewDescribeMonitorReportResponse() (response *DescribeMonitorReportResponse) {
+    response = &DescribeMonitorReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMonitorReport
+// 用来查询监播场次7天内的智能识别、断流、低帧率等信息的汇总报告。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeMonitorReport(request *DescribeMonitorReportRequest) (response *DescribeMonitorReportResponse, err error) {
+    return c.DescribeMonitorReportWithContext(context.Background(), request)
+}
+
+// DescribeMonitorReport
+// 用来查询监播场次7天内的智能识别、断流、低帧率等信息的汇总报告。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeMonitorReportWithContext(ctx context.Context, request *DescribeMonitorReportRequest) (response *DescribeMonitorReportResponse, err error) {
+    if request == nil {
+        request = NewDescribeMonitorReportRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMonitorReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMonitorReportResponse()
     err = c.Send(request, response)
     return
 }
@@ -8787,6 +9717,94 @@ func (c *Client) ModifyLiveDomainRefererWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyLivePadTemplateRequest() (request *ModifyLivePadTemplateRequest) {
+    request = &ModifyLivePadTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLivePadTemplate")
+    
+    
+    return
+}
+
+func NewModifyLivePadTemplateResponse() (response *ModifyLivePadTemplateResponse) {
+    response = &ModifyLivePadTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLivePadTemplate
+// 修改直播垫片模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) ModifyLivePadTemplate(request *ModifyLivePadTemplateRequest) (response *ModifyLivePadTemplateResponse, err error) {
+    return c.ModifyLivePadTemplateWithContext(context.Background(), request)
+}
+
+// ModifyLivePadTemplate
+// 修改直播垫片模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
+//  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
+//  INTERNALERROR_CONFNOTFOUND = "InternalError.ConfNotFound"
+//  INTERNALERROR_CONFOUTLIMIT = "InternalError.ConfOutLimit"
+//  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
+//  INTERNALERROR_NOTFOUND = "InternalError.NotFound"
+//  INTERNALERROR_RULEALREADYEXIST = "InternalError.RuleAlreadyExist"
+//  INTERNALERROR_RULEINUSING = "InternalError.RuleInUsing"
+//  INTERNALERROR_RULENOTFOUND = "InternalError.RuleNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COSCUSTOMFILENAMEERROR = "InvalidParameter.COSCustomFileNameError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
+func (c *Client) ModifyLivePadTemplateWithContext(ctx context.Context, request *ModifyLivePadTemplateRequest) (response *ModifyLivePadTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyLivePadTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLivePadTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLivePadTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLivePlayAuthKeyRequest() (request *ModifyLivePlayAuthKeyRequest) {
     request = &ModifyLivePlayAuthKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9253,6 +10271,86 @@ func (c *Client) ModifyLiveSnapshotTemplateWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyLiveSnapshotTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLiveStreamMonitorRequest() (request *ModifyLiveStreamMonitorRequest) {
+    request = &ModifyLiveStreamMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLiveStreamMonitor")
+    
+    
+    return
+}
+
+func NewModifyLiveStreamMonitorResponse() (response *ModifyLiveStreamMonitorResponse) {
+    response = &ModifyLiveStreamMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLiveStreamMonitor
+// 该接口用来修改直播流监播任务的配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_RELATEDRUNNINGMONITORLIMITEXCEEDED = "FailedOperation.RelatedRunningMonitorLimitExceeded"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) ModifyLiveStreamMonitor(request *ModifyLiveStreamMonitorRequest) (response *ModifyLiveStreamMonitorResponse, err error) {
+    return c.ModifyLiveStreamMonitorWithContext(context.Background(), request)
+}
+
+// ModifyLiveStreamMonitor
+// 该接口用来修改直播流监播任务的配置。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_RELATEDRUNNINGMONITORLIMITEXCEEDED = "FailedOperation.RelatedRunningMonitorLimitExceeded"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) ModifyLiveStreamMonitorWithContext(ctx context.Context, request *ModifyLiveStreamMonitorRequest) (response *ModifyLiveStreamMonitorResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveStreamMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveStreamMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveStreamMonitorResponse()
     err = c.Send(request, response)
     return
 }
@@ -9827,6 +10925,84 @@ func (c *Client) ResumeLiveStreamWithContext(ctx context.Context, request *Resum
     return
 }
 
+func NewStartLiveStreamMonitorRequest() (request *StartLiveStreamMonitorRequest) {
+    request = &StartLiveStreamMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "StartLiveStreamMonitor")
+    
+    
+    return
+}
+
+func NewStartLiveStreamMonitorResponse() (response *StartLiveStreamMonitorResponse) {
+    response = &StartLiveStreamMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartLiveStreamMonitor
+// 该接口用来启动直播流监播任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) StartLiveStreamMonitor(request *StartLiveStreamMonitorRequest) (response *StartLiveStreamMonitorResponse, err error) {
+    return c.StartLiveStreamMonitorWithContext(context.Background(), request)
+}
+
+// StartLiveStreamMonitor
+// 该接口用来启动直播流监播任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_INPUTSTREAMMIXTYPENOTACCESSIBLE = "FailedOperation.InputStreamMixTypeNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) StartLiveStreamMonitorWithContext(ctx context.Context, request *StartLiveStreamMonitorRequest) (response *StartLiveStreamMonitorResponse, err error) {
+    if request == nil {
+        request = NewStartLiveStreamMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartLiveStreamMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartLiveStreamMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopLiveRecordRequest() (request *StopLiveRecordRequest) {
     request = &StopLiveRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9893,6 +11069,82 @@ func (c *Client) StopLiveRecordWithContext(ctx context.Context, request *StopLiv
     request.SetContext(ctx)
     
     response = NewStopLiveRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopLiveStreamMonitorRequest() (request *StopLiveStreamMonitorRequest) {
+    request = &StopLiveStreamMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "StopLiveStreamMonitor")
+    
+    
+    return
+}
+
+func NewStopLiveStreamMonitorResponse() (response *StopLiveStreamMonitorResponse) {
+    response = &StopLiveStreamMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopLiveStreamMonitor
+// 该接口用来停止直播流监播任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) StopLiveStreamMonitor(request *StopLiveStreamMonitorRequest) (response *StopLiveStreamMonitorResponse, err error) {
+    return c.StopLiveStreamMonitorWithContext(context.Background(), request)
+}
+
+// StopLiveStreamMonitor
+// 该接口用来停止直播流监播任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTACTION = "FailedOperation.ConflictAction"
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
+//  FAILEDOPERATION_MONITORISACTIVE = "FailedOperation.MonitorIsActive"
+//  FAILEDOPERATION_MONITORLIMITEXCEEDED = "FailedOperation.MonitorLimitExceeded"
+//  FAILEDOPERATION_MONITORNOTEXIST = "FailedOperation.MonitorNotExist"
+//  FAILEDOPERATION_STARTTASKFAILED = "FailedOperation.StartTaskFailed"
+//  FAILEDOPERATION_STOPTASKFAILED = "FailedOperation.StopTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) StopLiveStreamMonitorWithContext(ctx context.Context, request *StopLiveStreamMonitorRequest) (response *StopLiveStreamMonitorResponse, err error) {
+    if request == nil {
+        request = NewStopLiveStreamMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopLiveStreamMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopLiveStreamMonitorResponse()
     err = c.Send(request, response)
     return
 }

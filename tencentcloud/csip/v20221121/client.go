@@ -231,6 +231,54 @@ func (c *Client) DescribeCVMAssetsWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeClusterPodAssetsRequest() (request *DescribeClusterPodAssetsRequest) {
+    request = &DescribeClusterPodAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeClusterPodAssets")
+    
+    
+    return
+}
+
+func NewDescribeClusterPodAssetsResponse() (response *DescribeClusterPodAssetsResponse) {
+    response = &DescribeClusterPodAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterPodAssets
+// 集群pod列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeClusterPodAssets(request *DescribeClusterPodAssetsRequest) (response *DescribeClusterPodAssetsResponse, err error) {
+    return c.DescribeClusterPodAssetsWithContext(context.Background(), request)
+}
+
+// DescribeClusterPodAssets
+// 集群pod列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeClusterPodAssetsWithContext(ctx context.Context, request *DescribeClusterPodAssetsRequest) (response *DescribeClusterPodAssetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterPodAssetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterPodAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterPodAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDbAssetInfoRequest() (request *DescribeDbAssetInfoRequest) {
     request = &DescribeDbAssetInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -323,6 +371,198 @@ func (c *Client) DescribeDbAssetsWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeDbAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDomainAssetsRequest() (request *DescribeDomainAssetsRequest) {
+    request = &DescribeDomainAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeDomainAssets")
+    
+    
+    return
+}
+
+func NewDescribeDomainAssetsResponse() (response *DescribeDomainAssetsResponse) {
+    response = &DescribeDomainAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainAssets
+// 域名列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDomainAssets(request *DescribeDomainAssetsRequest) (response *DescribeDomainAssetsResponse, err error) {
+    return c.DescribeDomainAssetsWithContext(context.Background(), request)
+}
+
+// DescribeDomainAssets
+// 域名列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDomainAssetsWithContext(ctx context.Context, request *DescribeDomainAssetsRequest) (response *DescribeDomainAssetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainAssetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePublicIpAssetsRequest() (request *DescribePublicIpAssetsRequest) {
+    request = &DescribePublicIpAssetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribePublicIpAssets")
+    
+    
+    return
+}
+
+func NewDescribePublicIpAssetsResponse() (response *DescribePublicIpAssetsResponse) {
+    response = &DescribePublicIpAssetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePublicIpAssets
+// ip公网列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribePublicIpAssets(request *DescribePublicIpAssetsRequest) (response *DescribePublicIpAssetsResponse, err error) {
+    return c.DescribePublicIpAssetsWithContext(context.Background(), request)
+}
+
+// DescribePublicIpAssets
+// ip公网列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribePublicIpAssetsWithContext(ctx context.Context, request *DescribePublicIpAssetsRequest) (response *DescribePublicIpAssetsResponse, err error) {
+    if request == nil {
+        request = NewDescribePublicIpAssetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePublicIpAssets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePublicIpAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRiskCenterAssetViewPortRiskListRequest() (request *DescribeRiskCenterAssetViewPortRiskListRequest) {
+    request = &DescribeRiskCenterAssetViewPortRiskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeRiskCenterAssetViewPortRiskList")
+    
+    
+    return
+}
+
+func NewDescribeRiskCenterAssetViewPortRiskListResponse() (response *DescribeRiskCenterAssetViewPortRiskListResponse) {
+    response = &DescribeRiskCenterAssetViewPortRiskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRiskCenterAssetViewPortRiskList
+// 获取资产视角的端口风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeRiskCenterAssetViewPortRiskList(request *DescribeRiskCenterAssetViewPortRiskListRequest) (response *DescribeRiskCenterAssetViewPortRiskListResponse, err error) {
+    return c.DescribeRiskCenterAssetViewPortRiskListWithContext(context.Background(), request)
+}
+
+// DescribeRiskCenterAssetViewPortRiskList
+// 获取资产视角的端口风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeRiskCenterAssetViewPortRiskListWithContext(ctx context.Context, request *DescribeRiskCenterAssetViewPortRiskListRequest) (response *DescribeRiskCenterAssetViewPortRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskCenterAssetViewPortRiskListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskCenterAssetViewPortRiskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskCenterAssetViewPortRiskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRiskCenterAssetViewVULRiskListRequest() (request *DescribeRiskCenterAssetViewVULRiskListRequest) {
+    request = &DescribeRiskCenterAssetViewVULRiskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeRiskCenterAssetViewVULRiskList")
+    
+    
+    return
+}
+
+func NewDescribeRiskCenterAssetViewVULRiskListResponse() (response *DescribeRiskCenterAssetViewVULRiskListResponse) {
+    response = &DescribeRiskCenterAssetViewVULRiskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRiskCenterAssetViewVULRiskList
+// 获取资产视角的漏洞风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeRiskCenterAssetViewVULRiskList(request *DescribeRiskCenterAssetViewVULRiskListRequest) (response *DescribeRiskCenterAssetViewVULRiskListResponse, err error) {
+    return c.DescribeRiskCenterAssetViewVULRiskListWithContext(context.Background(), request)
+}
+
+// DescribeRiskCenterAssetViewVULRiskList
+// 获取资产视角的漏洞风险列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeRiskCenterAssetViewVULRiskListWithContext(ctx context.Context, request *DescribeRiskCenterAssetViewVULRiskListRequest) (response *DescribeRiskCenterAssetViewVULRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskCenterAssetViewVULRiskListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskCenterAssetViewVULRiskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskCenterAssetViewVULRiskListResponse()
     err = c.Send(request, response)
     return
 }

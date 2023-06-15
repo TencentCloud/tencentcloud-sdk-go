@@ -1,3 +1,235 @@
+# Release v1.0.680
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 64 次发布
+
+发布时间：2023-06-15 01:02:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnhancedService](https://cloud.tencent.com/document/api/377/20453#EnhancedService)
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 132 次发布
+
+发布时间：2023-06-15 01:05:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCdbProxyAddress](https://cloud.tencent.com/document/api/236/90586)
+
+	* 新增入参：ConnectionPoolType
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 4 次发布
+
+发布时间：2023-06-15 01:11:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClusterPodAssets](https://cloud.tencent.com/document/api/664/93512)
+* [DescribeDomainAssets](https://cloud.tencent.com/document/api/664/93511)
+* [DescribePublicIpAssets](https://cloud.tencent.com/document/api/664/93510)
+* [DescribeRiskCenterAssetViewPortRiskList](https://cloud.tencent.com/document/api/664/93509)
+* [DescribeRiskCenterAssetViewVULRiskList](https://cloud.tencent.com/document/api/664/93508)
+
+新增数据结构：
+
+* [AssetClusterPod](https://cloud.tencent.com/document/api/664/90825#AssetClusterPod)
+* [AssetViewPortRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewPortRisk)
+* [AssetViewVULRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewVULRisk)
+* [DomainAssetVO](https://cloud.tencent.com/document/api/664/90825#DomainAssetVO)
+* [IpAssetListVO](https://cloud.tencent.com/document/api/664/90825#IpAssetListVO)
+
+修改数据结构：
+
+* [CVMAssetVO](https://cloud.tencent.com/document/api/664/90825#CVMAssetVO)
+
+	* 新增成员：BASAgentStatus
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 106 次发布
+
+发布时间：2023-06-15 01:25:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateLivePadRule](https://cloud.tencent.com/document/api/267/93530)
+* [CreateLivePadTemplate](https://cloud.tencent.com/document/api/267/93529)
+* [CreateLiveStreamMonitor](https://cloud.tencent.com/document/api/267/93521)
+* [DeleteLivePadRule](https://cloud.tencent.com/document/api/267/93528)
+* [DeleteLivePadTemplate](https://cloud.tencent.com/document/api/267/93527)
+* [DeleteLiveStreamMonitor](https://cloud.tencent.com/document/api/267/93520)
+* [DescribeLivePadRules](https://cloud.tencent.com/document/api/267/93526)
+* [DescribeLivePadTemplate](https://cloud.tencent.com/document/api/267/93525)
+* [DescribeLivePadTemplates](https://cloud.tencent.com/document/api/267/93524)
+* [DescribeLiveStreamMonitor](https://cloud.tencent.com/document/api/267/93519)
+* [DescribeLiveStreamMonitorList](https://cloud.tencent.com/document/api/267/93518)
+* [DescribeMonitorReport](https://cloud.tencent.com/document/api/267/93517)
+* [ModifyLivePadTemplate](https://cloud.tencent.com/document/api/267/93523)
+* [ModifyLiveStreamMonitor](https://cloud.tencent.com/document/api/267/93516)
+* [StartLiveStreamMonitor](https://cloud.tencent.com/document/api/267/93515)
+* [StopLiveStreamMonitor](https://cloud.tencent.com/document/api/267/93514)
+
+新增数据结构：
+
+* [DiagnoseResult](https://cloud.tencent.com/document/api/267/20474#DiagnoseResult)
+* [LiveStreamMonitorInfo](https://cloud.tencent.com/document/api/267/20474#LiveStreamMonitorInfo)
+* [LiveStreamMonitorInputInfo](https://cloud.tencent.com/document/api/267/20474#LiveStreamMonitorInputInfo)
+* [LiveStreamMonitorNotifyPolicy](https://cloud.tencent.com/document/api/267/20474#LiveStreamMonitorNotifyPolicy)
+* [LiveStreamMonitorOutputInfo](https://cloud.tencent.com/document/api/267/20474#LiveStreamMonitorOutputInfo)
+* [MPSResult](https://cloud.tencent.com/document/api/267/20474#MPSResult)
+* [PadTemplate](https://cloud.tencent.com/document/api/267/20474#PadTemplate)
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 14 次发布
+
+发布时间：2023-06-15 01:29:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCosSecKeyInstance](https://cloud.tencent.com/document/api/283/30640)
+
+	* 新增出参：CosToken
+
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 8 次发布
+
+发布时间：2023-06-15 01:38:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CFSOption](https://cloud.tencent.com/document/api/1527/89579#CFSOption)
+
+	* 新增成员：MountOption
+
+* [CFSOptionOverview](https://cloud.tencent.com/document/api/1527/89579#CFSOptionOverview)
+
+	* 新增成员：MountOption
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 157 次发布
+
+发布时间：2023-06-15 01:42:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+
+	* 新增出参：ExtractCopyRightWatermarkTask
+
+
+新增数据结构：
+
+* [CopyRightWatermarkInput](https://cloud.tencent.com/document/api/266/31773#CopyRightWatermarkInput)
+* [ExtractCopyRightWatermarkTask](https://cloud.tencent.com/document/api/266/31773#ExtractCopyRightWatermarkTask)
+* [ExtractCopyRightWatermarkTaskInput](https://cloud.tencent.com/document/api/266/31773#ExtractCopyRightWatermarkTaskInput)
+* [ExtractCopyRightWatermarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#ExtractCopyRightWatermarkTaskOutput)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingInfoItem)
+
+	* 新增成员：CopyRightWatermarkText
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：CopyRightWatermark
+
+* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+
+	* 新增成员：ExtractCopyRightWatermarkCompleteEvent
+
+* [MediaTranscodeItem](https://cloud.tencent.com/document/api/266/31773#MediaTranscodeItem)
+
+	* 新增成员：CopyRightWatermarkText
+
+* [TranscodeTaskInput](https://cloud.tencent.com/document/api/266/31773#TranscodeTaskInput)
+
+	* 新增成员：CopyRightWatermark
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 158 次发布
+
+发布时间：2023-06-15 01:43:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：NatProductVersion
+
+
+
+
 # Release v1.0.679
 
 ## 商业流程服务(bpaas) 版本：2018-12-17
