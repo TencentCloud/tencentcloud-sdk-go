@@ -1908,10 +1908,6 @@ type WorkspaceTemplateInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PluginFile *string `json:"PluginFile,omitempty" name:"PluginFile"`
 
-	// xxx
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrebuildFile *string `json:"PrebuildFile,omitempty" name:"PrebuildFile"`
-
 	// 是否标记
 	Marked *bool `json:"Marked,omitempty" name:"Marked"`
 

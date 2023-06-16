@@ -5171,7 +5171,7 @@ type StartStopServiceOrMonitorRequestParams struct {
 	// <li>StopService：停止服务</li>
 	// <li>StartMonitor：退出维护</li>
 	// <li>StopMonitor：进入维护</li>
-	// <li>RestartService：重启服务</li>
+	// <li>RestartService：重启服务 如果操作类型选择重启服务 StrategyConfig操作策略则是必填项</li>
 	OpType *string `json:"OpType,omitempty" name:"OpType"`
 
 	// 操作范围
@@ -5192,7 +5192,7 @@ type StartStopServiceOrMonitorRequest struct {
 	// <li>StopService：停止服务</li>
 	// <li>StartMonitor：退出维护</li>
 	// <li>StopMonitor：进入维护</li>
-	// <li>RestartService：重启服务</li>
+	// <li>RestartService：重启服务 如果操作类型选择重启服务 StrategyConfig操作策略则是必填项</li>
 	OpType *string `json:"OpType,omitempty" name:"OpType"`
 
 	// 操作范围

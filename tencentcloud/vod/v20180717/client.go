@@ -6673,6 +6673,66 @@ func (c *Client) ExecuteFunctionWithContext(ctx context.Context, request *Execut
     return
 }
 
+func NewExtractCopyRightWatermarkRequest() (request *ExtractCopyRightWatermarkRequest) {
+    request = &ExtractCopyRightWatermarkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ExtractCopyRightWatermark")
+    
+    
+    return
+}
+
+func NewExtractCopyRightWatermarkResponse() (response *ExtractCopyRightWatermarkResponse) {
+    response = &ExtractCopyRightWatermarkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExtractCopyRightWatermark
+// 提取版权水印信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ExtractCopyRightWatermark(request *ExtractCopyRightWatermarkRequest) (response *ExtractCopyRightWatermarkResponse, err error) {
+    return c.ExtractCopyRightWatermarkWithContext(context.Background(), request)
+}
+
+// ExtractCopyRightWatermark
+// 提取版权水印信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ExtractCopyRightWatermarkWithContext(ctx context.Context, request *ExtractCopyRightWatermarkRequest) (response *ExtractCopyRightWatermarkResponse, err error) {
+    if request == nil {
+        request = NewExtractCopyRightWatermarkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExtractCopyRightWatermark require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExtractCopyRightWatermarkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExtractTraceWatermarkRequest() (request *ExtractTraceWatermarkRequest) {
     request = &ExtractTraceWatermarkRequest{
         BaseRequest: &tchttp.BaseRequest{},

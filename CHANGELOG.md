@@ -1,3 +1,81 @@
+# Release v1.0.681
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+
+### 第 5 次发布
+
+发布时间：2023-06-16 01:14:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo)
+
+	* <font color="#dd0000">**删除成员**：</font>PrebuildFile
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 78 次发布
+
+发布时间：2023-06-16 01:23:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+
+	* 新增入参：RemindedOn
+
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+
+	* 新增入参：RemindedOn
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 152 次发布
+
+发布时间：2023-06-16 01:44:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEncryptionStatus](https://cloud.tencent.com/document/api/457/94085)
+* [DisableEncryptionProtection](https://cloud.tencent.com/document/api/457/94084)
+* [EnableEncryptionProtection](https://cloud.tencent.com/document/api/457/94083)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 158 次发布
+
+发布时间：2023-06-16 01:48:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ExtractCopyRightWatermark](https://cloud.tencent.com/document/api/266/94086)
+
+
+
 # Release v1.0.680
 
 ## 弹性伸缩(as) 版本：2018-04-19

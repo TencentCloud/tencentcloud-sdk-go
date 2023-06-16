@@ -7185,6 +7185,58 @@ func (c *Client) DescribeEnableVpcCniProgressWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeEncryptionStatusRequest() (request *DescribeEncryptionStatusRequest) {
+    request = &DescribeEncryptionStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeEncryptionStatus")
+    
+    
+    return
+}
+
+func NewDescribeEncryptionStatusResponse() (response *DescribeEncryptionStatusResponse) {
+    response = &DescribeEncryptionStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEncryptionStatus
+// 查询etcd数据是否进行加密
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeEncryptionStatus(request *DescribeEncryptionStatusRequest) (response *DescribeEncryptionStatusResponse, err error) {
+    return c.DescribeEncryptionStatusWithContext(context.Background(), request)
+}
+
+// DescribeEncryptionStatus
+// 查询etcd数据是否进行加密
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeEncryptionStatusWithContext(ctx context.Context, request *DescribeEncryptionStatusRequest) (response *DescribeEncryptionStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeEncryptionStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEncryptionStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEncryptionStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExistedInstancesRequest() (request *DescribeExistedInstancesRequest) {
     request = &DescribeExistedInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9509,6 +9561,54 @@ func (c *Client) DisableClusterDeletionProtectionWithContext(ctx context.Context
     return
 }
 
+func NewDisableEncryptionProtectionRequest() (request *DisableEncryptionProtectionRequest) {
+    request = &DisableEncryptionProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DisableEncryptionProtection")
+    
+    
+    return
+}
+
+func NewDisableEncryptionProtectionResponse() (response *DisableEncryptionProtectionResponse) {
+    response = &DisableEncryptionProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableEncryptionProtection
+// 关闭加密信息保护
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DisableEncryptionProtection(request *DisableEncryptionProtectionRequest) (response *DisableEncryptionProtectionResponse, err error) {
+    return c.DisableEncryptionProtectionWithContext(context.Background(), request)
+}
+
+// DisableEncryptionProtection
+// 关闭加密信息保护
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DisableEncryptionProtectionWithContext(ctx context.Context, request *DisableEncryptionProtectionRequest) (response *DisableEncryptionProtectionResponse, err error) {
+    if request == nil {
+        request = NewDisableEncryptionProtectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableEncryptionProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableEncryptionProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableEventPersistenceRequest() (request *DisableEventPersistenceRequest) {
     request = &DisableEventPersistenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9815,6 +9915,54 @@ func (c *Client) EnableClusterDeletionProtectionWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewEnableClusterDeletionProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableEncryptionProtectionRequest() (request *EnableEncryptionProtectionRequest) {
+    request = &EnableEncryptionProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "EnableEncryptionProtection")
+    
+    
+    return
+}
+
+func NewEnableEncryptionProtectionResponse() (response *EnableEncryptionProtectionResponse) {
+    response = &EnableEncryptionProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableEncryptionProtection
+// 开启加密数据保护
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) EnableEncryptionProtection(request *EnableEncryptionProtectionRequest) (response *EnableEncryptionProtectionResponse, err error) {
+    return c.EnableEncryptionProtectionWithContext(context.Background(), request)
+}
+
+// EnableEncryptionProtection
+// 开启加密数据保护
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) EnableEncryptionProtectionWithContext(ctx context.Context, request *EnableEncryptionProtectionRequest) (response *EnableEncryptionProtectionResponse, err error) {
+    if request == nil {
+        request = NewEnableEncryptionProtectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableEncryptionProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableEncryptionProtectionResponse()
     err = c.Send(request, response)
     return
 }

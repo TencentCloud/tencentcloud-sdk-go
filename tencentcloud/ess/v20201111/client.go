@@ -3158,7 +3158,7 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 日调用量默认10W
+// 日调用量限制：10W
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -3213,7 +3213,7 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 日调用量默认10W
+// 日调用量限制：10W
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"

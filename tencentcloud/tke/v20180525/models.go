@@ -9042,6 +9042,57 @@ func (r *DescribeEnableVpcCniProgressResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEncryptionStatusRequestParams struct {
+
+}
+
+type DescribeEncryptionStatusRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeEncryptionStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEncryptionStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEncryptionStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEncryptionStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEncryptionStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEncryptionStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeEncryptionStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEncryptionStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExistedInstancesRequestParams struct {
 	// 集群 ID，请填写查询集群列表 接口中返回的 ClusterId 字段（仅通过ClusterId获取需要过滤条件中的VPCID。节点状态比较时会使用该地域下所有集群中的节点进行比较。参数不支持同时指定InstanceIds和ClusterId。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -11639,6 +11690,57 @@ func (r *DisableClusterDeletionProtectionResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type DisableEncryptionProtectionRequestParams struct {
+
+}
+
+type DisableEncryptionProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DisableEncryptionProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableEncryptionProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableEncryptionProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableEncryptionProtectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DisableEncryptionProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableEncryptionProtectionResponseParams `json:"Response"`
+}
+
+func (r *DisableEncryptionProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableEncryptionProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisableEventPersistenceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -12311,6 +12413,57 @@ func (r *EnableClusterDeletionProtectionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *EnableClusterDeletionProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableEncryptionProtectionRequestParams struct {
+
+}
+
+type EnableEncryptionProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *EnableEncryptionProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableEncryptionProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableEncryptionProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableEncryptionProtectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type EnableEncryptionProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableEncryptionProtectionResponseParams `json:"Response"`
+}
+
+func (r *EnableEncryptionProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableEncryptionProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
