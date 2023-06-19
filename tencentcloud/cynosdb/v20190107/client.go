@@ -493,6 +493,66 @@ func (c *Client) CloseClusterPasswordComplexityWithContext(ctx context.Context, 
     return
 }
 
+func NewCloseProxyRequest() (request *CloseProxyRequest) {
+    request = &CloseProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CloseProxy")
+    
+    
+    return
+}
+
+func NewCloseProxyResponse() (response *CloseProxyResponse) {
+    response = &CloseProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CloseProxy
+// 关闭数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CloseProxy(request *CloseProxyRequest) (response *CloseProxyResponse, err error) {
+    return c.CloseProxyWithContext(context.Background(), request)
+}
+
+// CloseProxy
+// 关闭数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CloseProxyWithContext(ctx context.Context, request *CloseProxyRequest) (response *CloseProxyResponse, err error) {
+    if request == nil {
+        request = NewCloseProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseWanRequest() (request *CloseWanRequest) {
     request = &CloseWanRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1095,6 +1155,130 @@ func (c *Client) CreateParamTemplateWithContext(ctx context.Context, request *Cr
     request.SetContext(ctx)
     
     response = NewCreateParamTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateProxyRequest() (request *CreateProxyRequest) {
+    request = &CreateProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CreateProxy")
+    
+    
+    return
+}
+
+func NewCreateProxyResponse() (response *CreateProxyResponse) {
+    response = &CreateProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateProxy
+// 创建数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateProxy(request *CreateProxyRequest) (response *CreateProxyResponse, err error) {
+    return c.CreateProxyWithContext(context.Background(), request)
+}
+
+// CreateProxy
+// 创建数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateProxyWithContext(ctx context.Context, request *CreateProxyRequest) (response *CreateProxyResponse, err error) {
+    if request == nil {
+        request = NewCreateProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateProxyEndPointRequest() (request *CreateProxyEndPointRequest) {
+    request = &CreateProxyEndPointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "CreateProxyEndPoint")
+    
+    
+    return
+}
+
+func NewCreateProxyEndPointResponse() (response *CreateProxyEndPointResponse) {
+    response = &CreateProxyEndPointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateProxyEndPoint
+// 创建数据库代理连接点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateProxyEndPoint(request *CreateProxyEndPointRequest) (response *CreateProxyEndPointResponse, err error) {
+    return c.CreateProxyEndPointWithContext(context.Background(), request)
+}
+
+// CreateProxyEndPoint
+// 创建数据库代理连接点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateProxyEndPointWithContext(ctx context.Context, request *CreateProxyEndPointRequest) (response *CreateProxyEndPointResponse, err error) {
+    if request == nil {
+        request = NewCreateProxyEndPointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProxyEndPoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProxyEndPointResponse()
     err = c.Send(request, response)
     return
 }
@@ -3537,6 +3721,118 @@ func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeProxiesRequest() (request *DescribeProxiesRequest) {
+    request = &DescribeProxiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeProxies")
+    
+    
+    return
+}
+
+func NewDescribeProxiesResponse() (response *DescribeProxiesResponse) {
+    response = &DescribeProxiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProxies
+// 查询数据库代理列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALORDERBY = "InvalidParameterValue.IllegalOrderBy"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = "InvalidParameterValue.ParamBothSetError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeProxies(request *DescribeProxiesRequest) (response *DescribeProxiesResponse, err error) {
+    return c.DescribeProxiesWithContext(context.Background(), request)
+}
+
+// DescribeProxies
+// 查询数据库代理列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMCHECKRESOURCEERROR = "FailedOperation.CamCheckResourceError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_ILLEGALORDERBY = "InvalidParameterValue.IllegalOrderBy"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMBOTHSETERROR = "InvalidParameterValue.ParamBothSetError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeProxiesWithContext(ctx context.Context, request *DescribeProxiesRequest) (response *DescribeProxiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxiesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeProxyNodesRequest() (request *DescribeProxyNodesRequest) {
+    request = &DescribeProxyNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeProxyNodes")
+    
+    
+    return
+}
+
+func NewDescribeProxyNodesResponse() (response *DescribeProxyNodesResponse) {
+    response = &DescribeProxyNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProxyNodes
+// 本接口（DescribeProxyNodes）用于查询代理接口列表。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeProxyNodes(request *DescribeProxyNodesRequest) (response *DescribeProxyNodesResponse, err error) {
+    return c.DescribeProxyNodesWithContext(context.Background(), request)
+}
+
+// DescribeProxyNodes
+// 本接口（DescribeProxyNodes）用于查询代理接口列表。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeProxyNodesWithContext(ctx context.Context, request *DescribeProxyNodesRequest) (response *DescribeProxyNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxyNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxyNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxyNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourcePackageDetailRequest() (request *DescribeResourcePackageDetailRequest) {
     request = &DescribeResourcePackageDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5817,6 +6113,116 @@ func (c *Client) ModifyParamTemplateWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyProxyDescRequest() (request *ModifyProxyDescRequest) {
+    request = &ModifyProxyDescRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyProxyDesc")
+    
+    
+    return
+}
+
+func NewModifyProxyDescResponse() (response *ModifyProxyDescResponse) {
+    response = &ModifyProxyDescResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyProxyDesc
+// 修改数据库代理描述
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyProxyDesc(request *ModifyProxyDescRequest) (response *ModifyProxyDescResponse, err error) {
+    return c.ModifyProxyDescWithContext(context.Background(), request)
+}
+
+// ModifyProxyDesc
+// 修改数据库代理描述
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyProxyDescWithContext(ctx context.Context, request *ModifyProxyDescRequest) (response *ModifyProxyDescResponse, err error) {
+    if request == nil {
+        request = NewModifyProxyDescRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProxyDesc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProxyDescResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyProxyRwSplitRequest() (request *ModifyProxyRwSplitRequest) {
+    request = &ModifyProxyRwSplitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyProxyRwSplit")
+    
+    
+    return
+}
+
+func NewModifyProxyRwSplitResponse() (response *ModifyProxyRwSplitResponse) {
+    response = &ModifyProxyRwSplitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyProxyRwSplit
+// 配置数据库代理读写分离
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyProxyRwSplit(request *ModifyProxyRwSplitRequest) (response *ModifyProxyRwSplitResponse, err error) {
+    return c.ModifyProxyRwSplitWithContext(context.Background(), request)
+}
+
+// ModifyProxyRwSplit
+// 配置数据库代理读写分离
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyProxyRwSplitWithContext(ctx context.Context, request *ModifyProxyRwSplitRequest) (response *ModifyProxyRwSplitResponse, err error) {
+    if request == nil {
+        request = NewModifyProxyRwSplitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProxyRwSplit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProxyRwSplitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyResourcePackageClustersRequest() (request *ModifyResourcePackageClustersRequest) {
     request = &ModifyResourcePackageClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6489,6 +6895,56 @@ func (c *Client) RefundResourcePackageWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewRefundResourcePackageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReloadBalanceProxyNodeRequest() (request *ReloadBalanceProxyNodeRequest) {
+    request = &ReloadBalanceProxyNodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ReloadBalanceProxyNode")
+    
+    
+    return
+}
+
+func NewReloadBalanceProxyNodeResponse() (response *ReloadBalanceProxyNodeResponse) {
+    response = &ReloadBalanceProxyNodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReloadBalanceProxyNode
+// 负载均衡数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+func (c *Client) ReloadBalanceProxyNode(request *ReloadBalanceProxyNodeRequest) (response *ReloadBalanceProxyNodeResponse, err error) {
+    return c.ReloadBalanceProxyNodeWithContext(context.Background(), request)
+}
+
+// ReloadBalanceProxyNode
+// 负载均衡数据库代理
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+func (c *Client) ReloadBalanceProxyNodeWithContext(ctx context.Context, request *ReloadBalanceProxyNodeRequest) (response *ReloadBalanceProxyNodeResponse, err error) {
+    if request == nil {
+        request = NewReloadBalanceProxyNodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReloadBalanceProxyNode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReloadBalanceProxyNodeResponse()
     err = c.Send(request, response)
     return
 }
@@ -7603,6 +8059,110 @@ func (c *Client) UpgradeInstanceWithContext(ctx context.Context, request *Upgrad
     request.SetContext(ctx)
     
     response = NewUpgradeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeProxyRequest() (request *UpgradeProxyRequest) {
+    request = &UpgradeProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "UpgradeProxy")
+    
+    
+    return
+}
+
+func NewUpgradeProxyResponse() (response *UpgradeProxyResponse) {
+    response = &UpgradeProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeProxy
+// 升级数据库代理配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+func (c *Client) UpgradeProxy(request *UpgradeProxyRequest) (response *UpgradeProxyResponse, err error) {
+    return c.UpgradeProxyWithContext(context.Background(), request)
+}
+
+// UpgradeProxy
+// 升级数据库代理配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+func (c *Client) UpgradeProxyWithContext(ctx context.Context, request *UpgradeProxyRequest) (response *UpgradeProxyResponse, err error) {
+    if request == nil {
+        request = NewUpgradeProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeProxyVersionRequest() (request *UpgradeProxyVersionRequest) {
+    request = &UpgradeProxyVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "UpgradeProxyVersion")
+    
+    
+    return
+}
+
+func NewUpgradeProxyVersionResponse() (response *UpgradeProxyVersionResponse) {
+    response = &UpgradeProxyVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeProxyVersion
+// 升级数据库代理版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+func (c *Client) UpgradeProxyVersion(request *UpgradeProxyVersionRequest) (response *UpgradeProxyVersionResponse, err error) {
+    return c.UpgradeProxyVersionWithContext(context.Background(), request)
+}
+
+// UpgradeProxyVersion
+// 升级数据库代理版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+func (c *Client) UpgradeProxyVersionWithContext(ctx context.Context, request *UpgradeProxyVersionRequest) (response *UpgradeProxyVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeProxyVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeProxyVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeProxyVersionResponse()
     err = c.Send(request, response)
     return
 }

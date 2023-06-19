@@ -6285,6 +6285,14 @@ type MonitorTime struct {
 	Time *int64 `json:"Time,omitempty" name:"Time"`
 }
 
+type MultiTopicSearchInformation struct {
+	// 要检索分析的日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+	Context *string `json:"Context,omitempty" name:"Context"`
+}
+
 type NoticeReceiver struct {
 	// 接受者类型。可选值：
 	// <br><li> Uin - 用户ID
@@ -6522,7 +6530,8 @@ type SearchLogRequestParams struct {
 	// 使用*或空字符串可查询所有日志
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 要检索分析的日志主题ID
+	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
+	// - 如需同时检索多个日志主题，请使用Topics参数。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
@@ -6560,6 +6569,11 @@ type SearchLogRequestParams struct {
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
+
+	// - 要检索分析的日志主题列表，最大支持20个日志主题。
+	// - 检索单个日志主题时请使用TopicId。
+	// - 不能同时使用TopicId和Topics。
+	Topics []*MultiTopicSearchInformation `json:"Topics,omitempty" name:"Topics"`
 }
 
 type SearchLogRequest struct {
@@ -6576,7 +6590,8 @@ type SearchLogRequest struct {
 	// 使用*或空字符串可查询所有日志
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 要检索分析的日志主题ID
+	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
+	// - 如需同时检索多个日志主题，请使用Topics参数。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
@@ -6614,6 +6629,11 @@ type SearchLogRequest struct {
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
+
+	// - 要检索分析的日志主题列表，最大支持20个日志主题。
+	// - 检索单个日志主题时请使用TopicId。
+	// - 不能同时使用TopicId和Topics。
+	Topics []*MultiTopicSearchInformation `json:"Topics,omitempty" name:"Topics"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -6638,6 +6658,7 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	delete(f, "UseNewAnalysis")
 	delete(f, "SamplingRate")
 	delete(f, "SyntaxRule")
+	delete(f, "Topics")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
 	}

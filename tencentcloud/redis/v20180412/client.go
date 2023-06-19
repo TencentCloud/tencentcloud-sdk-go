@@ -5502,7 +5502,7 @@ func NewUpgradeInstanceVersionResponse() (response *UpgradeInstanceVersionRespon
 }
 
 // UpgradeInstanceVersion
-// 将原本实例升级到高版本实例，或者将主从版实例升级到集群版实例
+// 将当前实例升级到更高版本，或者将当前标准架构升级至集群架构。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -5515,7 +5515,7 @@ func (c *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) 
 }
 
 // UpgradeInstanceVersion
-// 将原本实例升级到高版本实例，或者将主从版实例升级到集群版实例
+// 将当前实例升级到更高版本，或者将当前标准架构升级至集群架构。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

@@ -248,6 +248,65 @@ type Cluster struct {
 	ClusterSessions []*ClusterSession `json:"ClusterSessions,omitempty" name:"ClusterSessions"`
 }
 
+type ClusterGroupSetItem struct {
+	// clusterGroup 的 SerialId
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 账号 APPID
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账号 UIN
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 创建账号 UIN
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// CU 数量
+	CuNum *int64 `json:"CuNum,omitempty" name:"CuNum"`
+
+	// CU 内存规格
+	CuMem *int64 `json:"CuMem,omitempty" name:"CuMem"`
+
+	// 集群状态, 1 未初始化,，3 初始化中，2 运行中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 集群创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后一次操作集群的时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 描述
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 网络
+	NetEnvironmentType *int64 `json:"NetEnvironmentType,omitempty" name:"NetEnvironmentType"`
+
+	// 空闲 CU
+	FreeCuNum *int64 `json:"FreeCuNum,omitempty" name:"FreeCuNum"`
+
+	// 细粒度资源下的空闲CU
+	FreeCu *float64 `json:"FreeCu,omitempty" name:"FreeCu"`
+
+	// 运行中CU
+	RunningCu *float64 `json:"RunningCu,omitempty" name:"RunningCu"`
+
+	// 付费模式
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+}
+
 type ClusterSession struct {
 
 }
@@ -2139,6 +2198,88 @@ type DescribeTreeResourcesRsp struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
+// Predefined struct for user
+type DescribeWorkSpacesRequestParams struct {
+	// 偏移量，默认 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 1 按照创建时间降序排序(默认) 2.按照创建时间升序排序，3. 按照状态降序排序 4. 按照状态升序排序 默认为0
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 请求的集群数量，默认 20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤规则
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeWorkSpacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 1 按照创建时间降序排序(默认) 2.按照创建时间升序排序，3. 按照状态降序排序 4. 按照状态升序排序 默认为0
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 请求的集群数量，默认 20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤规则
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeWorkSpacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkSpacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "OrderType")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkSpacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkSpacesResponseParams struct {
+	// 空间详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceSetItem []*WorkSpaceSetItem `json:"WorkSpaceSetItem,omitempty" name:"WorkSpaceSetItem"`
+
+	// 空间总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkSpacesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkSpacesResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkSpacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkSpacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 要过滤的字段
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2626,6 +2767,47 @@ type ResourceRefJobInfo struct {
 	ResourceVersion *int64 `json:"ResourceVersion,omitempty" name:"ResourceVersion"`
 }
 
+type RoleAuth struct {
+	// 用户 AppID
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 工作空间 SerialId
+	WorkSpaceSerialId *string `json:"WorkSpaceSerialId,omitempty" name:"WorkSpaceSerialId"`
+
+	// 主账号 UIN
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 创建者 UIN
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 绑定授权的 UIN
+	AuthSubAccountUin *string `json:"AuthSubAccountUin,omitempty" name:"AuthSubAccountUin"`
+
+	// 对应 role表的id
+	Permission *int64 `json:"Permission,omitempty" name:"Permission"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后一次操作时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 2 启用 1 停用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 工作空间id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkSpaceId *int64 `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 权限名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type RunJobDescription struct {
 	// 作业Id
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
@@ -3003,4 +3185,52 @@ type WorkSpaceClusterItem struct {
 	// 项目ID string类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectIdStr *string `json:"ProjectIdStr,omitempty" name:"ProjectIdStr"`
+}
+
+type WorkSpaceSetItem struct {
+	// 工作空间 SerialId
+	SerialId *string `json:"SerialId,omitempty" name:"SerialId"`
+
+	// 用户 APPID
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账号 UIN
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 创建者 UIN
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 工作空间名称
+	WorkSpaceName *string `json:"WorkSpaceName,omitempty" name:"WorkSpaceName"`
+
+	// 区域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 1 未初始化 2 可用  -1 已删除
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 工作空间描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 工作空间包含集群信息
+	ClusterGroupSetItem []*ClusterGroupSetItem `json:"ClusterGroupSetItem,omitempty" name:"ClusterGroupSetItem"`
+
+	// 工作空间角色的信息
+	RoleAuth []*RoleAuth `json:"RoleAuth,omitempty" name:"RoleAuth"`
+
+	// 工作空间成员数量
+	RoleAuthCount *int64 `json:"RoleAuthCount,omitempty" name:"RoleAuthCount"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobsCount *int64 `json:"JobsCount,omitempty" name:"JobsCount"`
 }

@@ -15915,6 +15915,30 @@ type PayeeAccountBalanceResult struct {
 	// 累计结算金额
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SumSettlementAmount *string `json:"SumSettlementAmount,omitempty" name:"SumSettlementAmount"`
+
+	// 已缴个税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaidIncomeTax *string `json:"PaidIncomeTax,omitempty" name:"PaidIncomeTax"`
+
+	// 提现中个税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InPayIncomeTax *string `json:"InPayIncomeTax,omitempty" name:"InPayIncomeTax"`
+
+	// 已缴增值税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaidValueAddedTax *string `json:"PaidValueAddedTax,omitempty" name:"PaidValueAddedTax"`
+
+	// 提现中增值税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InPayValueAddedTax *string `json:"InPayValueAddedTax,omitempty" name:"InPayValueAddedTax"`
+
+	// 已缴附加税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaidAttachTax *string `json:"PaidAttachTax,omitempty" name:"PaidAttachTax"`
+
+	// 提现中附加税
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InPayAttachTax *string `json:"InPayAttachTax,omitempty" name:"InPayAttachTax"`
 }
 
 type PayeeAccountInfoResult struct {

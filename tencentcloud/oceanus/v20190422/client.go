@@ -1427,6 +1427,62 @@ func (c *Client) DescribeTreeResourcesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeWorkSpacesRequest() (request *DescribeWorkSpacesRequest) {
+    request = &DescribeWorkSpacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeWorkSpaces")
+    
+    
+    return
+}
+
+func NewDescribeWorkSpacesResponse() (response *DescribeWorkSpacesResponse) {
+    response = &DescribeWorkSpacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWorkSpaces
+// 授权工作空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWorkSpaces(request *DescribeWorkSpacesRequest) (response *DescribeWorkSpacesResponse, err error) {
+    return c.DescribeWorkSpacesWithContext(context.Background(), request)
+}
+
+// DescribeWorkSpaces
+// 授权工作空间列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWorkSpacesWithContext(ctx context.Context, request *DescribeWorkSpacesRequest) (response *DescribeWorkSpacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkSpacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkSpaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkSpacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyJobRequest() (request *ModifyJobRequest) {
     request = &ModifyJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

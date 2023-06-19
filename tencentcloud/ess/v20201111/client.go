@@ -2595,6 +2595,70 @@ func (c *Client) CreateSchemeUrlWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateSealRequest() (request *CreateSealRequest) {
+    request = &CreateSealRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateSeal")
+    
+    
+    return
+}
+
+func NewCreateSealResponse() (response *CreateSealResponse) {
+    response = &CreateSealResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateSeal
+// 创建电子印章
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealResponse, err error) {
+    return c.CreateSealWithContext(context.Background(), request)
+}
+
+// CreateSeal
+// 创建电子印章
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) CreateSealWithContext(ctx context.Context, request *CreateSealRequest) (response *CreateSealResponse, err error) {
+    if request == nil {
+        request = NewCreateSealRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSeal require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSealResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSealPolicyRequest() (request *CreateSealPolicyRequest) {
     request = &CreateSealPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

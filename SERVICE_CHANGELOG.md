@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 5 次发布
+### 第 51 次发布
 
-发布时间：2023-06-16 01:14:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo)
-
-	* <font color="#dd0000">**删除成员**：</font>PrebuildFile
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 78 次发布
-
-发布时间：2023-06-16 01:23:31
+发布时间：2023-06-19 01:10:34
 
 本次发布包含了以下内容：
 
@@ -31,22 +12,41 @@
 
 修改接口：
 
-* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
 
-	* 新增入参：RemindedOn
-
-* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
-
-	* 新增入参：RemindedOn
+	* 新增入参：Topics
 
 
+新增数据结构：
+
+* [MultiTopicSearchInformation](https://cloud.tencent.com/document/api/614/56471#MultiTopicSearchInformation)
 
 
-## 容器服务(tke) 版本：2018-05-25
 
-### 第 152 次发布
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-发布时间：2023-06-16 01:44:43
+### 第 100 次发布
+
+发布时间：2023-06-19 01:11:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PayeeAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountBalanceResult)
+
+	* 新增成员：PaidIncomeTax, InPayIncomeTax, PaidValueAddedTax, InPayValueAddedTax, PaidAttachTax, InPayAttachTax
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 56 次发布
+
+发布时间：2023-06-19 01:14:27
 
 本次发布包含了以下内容：
 
@@ -54,17 +54,35 @@
 
 新增接口：
 
-* [DescribeEncryptionStatus](https://cloud.tencent.com/document/api/457/94085)
-* [DisableEncryptionProtection](https://cloud.tencent.com/document/api/457/94084)
-* [EnableEncryptionProtection](https://cloud.tencent.com/document/api/457/94083)
+* [CloseProxy](https://cloud.tencent.com/document/api/1003/94135)
+* [CreateProxy](https://cloud.tencent.com/document/api/1003/94134)
+* [CreateProxyEndPoint](https://cloud.tencent.com/document/api/1003/94133)
+* [DescribeProxies](https://cloud.tencent.com/document/api/1003/94132)
+* [DescribeProxyNodes](https://cloud.tencent.com/document/api/1003/94131)
+* [ModifyProxyDesc](https://cloud.tencent.com/document/api/1003/94130)
+* [ModifyProxyRwSplit](https://cloud.tencent.com/document/api/1003/94129)
+* [ReloadBalanceProxyNode](https://cloud.tencent.com/document/api/1003/94128)
+* [UpgradeProxy](https://cloud.tencent.com/document/api/1003/94127)
+* [UpgradeProxyVersion](https://cloud.tencent.com/document/api/1003/94126)
+
+新增数据结构：
+
+* [ProxyConnectionPoolInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyConnectionPoolInfo)
+* [ProxyGroup](https://cloud.tencent.com/document/api/1003/48097#ProxyGroup)
+* [ProxyGroupInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyGroupInfo)
+* [ProxyGroupRwInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyGroupRwInfo)
+* [ProxyInstanceWeight](https://cloud.tencent.com/document/api/1003/48097#ProxyInstanceWeight)
+* [ProxyNodeInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyNodeInfo)
+* [ProxyZone](https://cloud.tencent.com/document/api/1003/48097#ProxyZone)
+* [QueryParamFilter](https://cloud.tencent.com/document/api/1003/48097#QueryParamFilter)
 
 
 
-## 云点播(vod) 版本：2018-07-17
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 158 次发布
+### 第 79 次发布
 
-发布时间：2023-06-16 01:48:04
+发布时间：2023-06-19 01:20:19
 
 本次发布包含了以下内容：
 
@@ -72,7 +90,29 @@
 
 新增接口：
 
-* [ExtractCopyRightWatermark](https://cloud.tencent.com/document/api/266/94086)
+* [CreateSeal](https://cloud.tencent.com/document/api/1323/94136)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 34 次发布
+
+发布时间：2023-06-19 01:30:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeWorkSpaces](https://cloud.tencent.com/document/api/849/94138)
+
+新增数据结构：
+
+* [ClusterGroupSetItem](https://cloud.tencent.com/document/api/849/52010#ClusterGroupSetItem)
+* [RoleAuth](https://cloud.tencent.com/document/api/849/52010#RoleAuth)
+* [WorkSpaceSetItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceSetItem)
 
 
 
@@ -25911,8 +25951,71 @@
 
 
 
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2023-05-08
+
+### 第 2 次发布
+
+发布时间：2023-06-16 10:55:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeConfig](https://cloud.tencent.com/document/api/1039/94111)
+
+### 第 1 次发布
+
+发布时间：2023-06-16 10:50:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateWorkspace](https://cloud.tencent.com/document/api/1039/94096)
+* [CreateWorkspaceToken](https://cloud.tencent.com/document/api/1039/94095)
+* [DescribeImages](https://cloud.tencent.com/document/api/1039/94094)
+* [DescribeWorkspaces](https://cloud.tencent.com/document/api/1039/94093)
+* [ModifyWorkspace](https://cloud.tencent.com/document/api/1039/94092)
+* [RemoveWorkspace](https://cloud.tencent.com/document/api/1039/94091)
+* [RunWorkspace](https://cloud.tencent.com/document/api/1039/94090)
+* [StopWorkspace](https://cloud.tencent.com/document/api/1039/94089)
+
+新增数据结构：
+
+* [Env](https://cloud.tencent.com/document/api/1039/94097#Env)
+* [GitRepository](https://cloud.tencent.com/document/api/1039/94097#GitRepository)
+* [Image](https://cloud.tencent.com/document/api/1039/94097#Image)
+* [LifeCycle](https://cloud.tencent.com/document/api/1039/94097#LifeCycle)
+* [LifeCycleCommand](https://cloud.tencent.com/document/api/1039/94097#LifeCycleCommand)
+* [WorkspaceStatusInfo](https://cloud.tencent.com/document/api/1039/94097#WorkspaceStatusInfo)
+
+
+
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 51 次发布
+
+发布时间：2023-06-19 01:10:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* 新增入参：Topics
+
+
+新增数据结构：
+
+* [[MultiTopicSearchInformation](https://cloud.tencent.com/document/api/614/56471#MultiTopicSearchInformation)](https://cloud.tencent.com/document/api/614/56471#[MultiTopicSearchInformation](https://cloud.tencent.com/document/api/614/56471#MultiTopicSearchInformation))
 
 ### 第 50 次发布
 
@@ -28630,6 +28733,21 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 100 次发布
+
+发布时间：2023-06-19 01:11:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PayeeAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountBalanceResult)
+
+	* 新增成员：PaidIncomeTax, InPayIncomeTax, PaidValueAddedTax, InPayValueAddedTax, PaidAttachTax, InPayAttachTax
+
 
 ### 第 99 次发布
 
@@ -36303,6 +36421,38 @@
 
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 56 次发布
+
+发布时间：2023-06-19 01:14:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CloseProxy](https://cloud.tencent.com/document/api/1003/94135)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateProxy](https://cloud.tencent.com/document/api/1003/94134)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateProxyEndPoint](https://cloud.tencent.com/document/api/1003/94133)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProxies](https://cloud.tencent.com/document/api/1003/94132)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeProxyNodes](https://cloud.tencent.com/document/api/1003/94131)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyProxyDesc](https://cloud.tencent.com/document/api/1003/94130)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyProxyRwSplit](https://cloud.tencent.com/document/api/1003/94129)](https://cloud.tencent.com/document/api/#/#)
+* [[ReloadBalanceProxyNode](https://cloud.tencent.com/document/api/1003/94128)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeProxy](https://cloud.tencent.com/document/api/1003/94127)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeProxyVersion](https://cloud.tencent.com/document/api/1003/94126)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ProxyConnectionPoolInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyConnectionPoolInfo)](https://cloud.tencent.com/document/api/1003/48097#[ProxyConnectionPoolInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyConnectionPoolInfo))
+* [[ProxyGroup](https://cloud.tencent.com/document/api/1003/48097#ProxyGroup)](https://cloud.tencent.com/document/api/1003/48097#[ProxyGroup](https://cloud.tencent.com/document/api/1003/48097#ProxyGroup))
+* [[ProxyGroupInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyGroupInfo)](https://cloud.tencent.com/document/api/1003/48097#[ProxyGroupInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyGroupInfo))
+* [[ProxyGroupRwInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyGroupRwInfo)](https://cloud.tencent.com/document/api/1003/48097#[ProxyGroupRwInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyGroupRwInfo))
+* [[ProxyInstanceWeight](https://cloud.tencent.com/document/api/1003/48097#ProxyInstanceWeight)](https://cloud.tencent.com/document/api/1003/48097#[ProxyInstanceWeight](https://cloud.tencent.com/document/api/1003/48097#ProxyInstanceWeight))
+* [[ProxyNodeInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyNodeInfo)](https://cloud.tencent.com/document/api/1003/48097#[ProxyNodeInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyNodeInfo))
+* [[ProxyZone](https://cloud.tencent.com/document/api/1003/48097#ProxyZone)](https://cloud.tencent.com/document/api/1003/48097#[ProxyZone](https://cloud.tencent.com/document/api/1003/48097#ProxyZone))
+* [[QueryParamFilter](https://cloud.tencent.com/document/api/1003/48097#QueryParamFilter)](https://cloud.tencent.com/document/api/1003/48097#[QueryParamFilter](https://cloud.tencent.com/document/api/1003/48097#QueryParamFilter))
 
 ### 第 55 次发布
 
@@ -48524,6 +48674,18 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 79 次发布
+
+发布时间：2023-06-19 01:20:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateSeal](https://cloud.tencent.com/document/api/1323/94136)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 78 次发布
 
@@ -74076,6 +74238,24 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 34 次发布
+
+发布时间：2023-06-19 01:30:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeWorkSpaces](https://cloud.tencent.com/document/api/849/94138)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ClusterGroupSetItem](https://cloud.tencent.com/document/api/849/52010#ClusterGroupSetItem)](https://cloud.tencent.com/document/api/849/52010#[ClusterGroupSetItem](https://cloud.tencent.com/document/api/849/52010#ClusterGroupSetItem))
+* [[RoleAuth](https://cloud.tencent.com/document/api/849/52010#RoleAuth)](https://cloud.tencent.com/document/api/849/52010#[RoleAuth](https://cloud.tencent.com/document/api/849/52010#RoleAuth))
+* [[WorkSpaceSetItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceSetItem)](https://cloud.tencent.com/document/api/849/52010#[WorkSpaceSetItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceSetItem))
 
 ### 第 33 次发布
 
@@ -102204,9 +102384,9 @@
 
 新增接口：
 
-* [[DescribeEncryptionStatus](https://cloud.tencent.com/document/api/457/94085)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableEncryptionProtection](https://cloud.tencent.com/document/api/457/94084)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableEncryptionProtection](https://cloud.tencent.com/document/api/457/94083)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEncryptionStatus](https://cloud.tencent.com/document/api/457/94085)
+* [DisableEncryptionProtection](https://cloud.tencent.com/document/api/457/94084)
+* [EnableEncryptionProtection](https://cloud.tencent.com/document/api/457/94083)
 
 ### 第 151 次发布
 
@@ -111033,7 +111213,7 @@
 
 新增接口：
 
-* [[ExtractCopyRightWatermark](https://cloud.tencent.com/document/api/266/94086)](https://cloud.tencent.com/document/api/#/#)
+* [ExtractCopyRightWatermark](https://cloud.tencent.com/document/api/266/94086)
 
 ### 第 157 次发布
 

@@ -504,7 +504,7 @@ type Component struct {
 	// CHECK_BOX - 勾选框控件，若选中填写ComponentValue 填写 true或者 false 字符串；
 	// FILL_IMAGE - 图片控件，ComponentValue 填写图片的资源 ID；
 	// DYNAMIC_TABLE - 动态表格控件；
-	// ATTACHMENT - 附件控件,ComponentValue 填写附件图片的资源 ID列表，以逗号分割；
+	// ATTACHMENT - 附件控件,ComponentValue 填写附件图片的资源 ID列表，以逗号分隔；
 	// SELECTOR - 选择器控件，ComponentValue填写选择的字符串内容；
 	// DATE - 日期控件；默认是格式化为xxxx年xx月xx日字符串；
 	// DISTRICT - 省市区行政区控件，ComponentValue填写省市区行政区字符串内容；
@@ -572,7 +572,7 @@ type Component struct {
 	// 2 FontSize： 数字类型，范围6-72，默认值为12
 	// 3 FontAlign： 字符串类型，可取Left/Right/Center，对应左对齐/居中/右对齐
 	// 4 Format： 字符串类型，日期格式，必须是以下五种之一 “yyyy m d”，”yyyy年m月d日”，”yyyy/m/d”，”yyyy-m-d”，”yyyy.m.d”。
-	// 5 Gaps:： 字符串类型，仅在Format为“yyyy m d”时起作用，格式为用逗号分开的两个整数，例如”2,2”，两个数字分别是日期格式的前后两个空隙钟的空格个数
+	// 5 Gaps:： 字符串类型，仅在Format为“yyyy m d”时起作用，格式为用逗号分开的两个整数，例如”2,2”，两个数字分别是日期格式的前后两个空隙中的空格个数
 	// 如果extra参数为空，默认为”yyyy年m月d日”格式的居中日期
 	// 特别地，如果extra中Format字段为空或无法被识别，则extra参数会被当作默认值处理（Font，FontSize，Gaps和FontAlign都不会起效）
 	// 参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}",
@@ -2819,6 +2819,170 @@ func (r *CreateSealPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSealRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子印章名字
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 电子印章类型，PERSONAL-个人私章,OFFICIAL-公章,SPECIAL_FINANCIAL-财务专用章,CONTRACT-合同专用章,LEGAL_REPRESENTATIVE-法定代表人章,SPECIAL_NATIONWIDE_INVOICE-发票专用章
+	SealType *string `json:"SealType,omitempty" name:"SealType"`
+
+	// 电子印章图片文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 电子印章图片base64编码
+	// 参数Image,FileToken或GenerateSource=SealGenerateSourceSystem三选一。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 电子印章宽度,单位px
+	// 参数不再启用，系统会设置印章大小为标准尺寸。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 电子印章高度,单位px
+	// 参数不再启用，系统会设置印章大小为标准尺寸。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 电子印章印章颜色(默认红色RED),RED-红色
+	// 
+	// 系统目前只支持红色印章创建。
+	Color *string `json:"Color,omitempty" name:"Color"`
+
+	// 电子印章生成时的横向文字。
+	SealHorizontalText *string `json:"SealHorizontalText,omitempty" name:"SealHorizontalText"`
+
+	// 电子印章下弦文字
+	SealChordText *string `json:"SealChordText,omitempty" name:"SealChordText"`
+
+	// 电子印章中心图案类型,STAR-圆形有五角星,NONE-圆形无五角星
+	// 系统生成的印章只支持STAR
+	SealCentralType *string `json:"SealCentralType,omitempty" name:"SealCentralType"`
+
+	// 通过文件上传时，服务端生成的电子印章上传图片的token
+	FileToken *string `json:"FileToken,omitempty" name:"FileToken"`
+
+	// 印章生成来源方式
+	// 取值：
+	// SealGenerateSourceSystem 表示系统生成企业印章
+	GenerateSource *string `json:"GenerateSource,omitempty" name:"GenerateSource"`
+}
+
+type CreateSealRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子印章名字
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 电子印章类型，PERSONAL-个人私章,OFFICIAL-公章,SPECIAL_FINANCIAL-财务专用章,CONTRACT-合同专用章,LEGAL_REPRESENTATIVE-法定代表人章,SPECIAL_NATIONWIDE_INVOICE-发票专用章
+	SealType *string `json:"SealType,omitempty" name:"SealType"`
+
+	// 电子印章图片文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 电子印章图片base64编码
+	// 参数Image,FileToken或GenerateSource=SealGenerateSourceSystem三选一。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 电子印章宽度,单位px
+	// 参数不再启用，系统会设置印章大小为标准尺寸。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 电子印章高度,单位px
+	// 参数不再启用，系统会设置印章大小为标准尺寸。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 电子印章印章颜色(默认红色RED),RED-红色
+	// 
+	// 系统目前只支持红色印章创建。
+	Color *string `json:"Color,omitempty" name:"Color"`
+
+	// 电子印章生成时的横向文字。
+	SealHorizontalText *string `json:"SealHorizontalText,omitempty" name:"SealHorizontalText"`
+
+	// 电子印章下弦文字
+	SealChordText *string `json:"SealChordText,omitempty" name:"SealChordText"`
+
+	// 电子印章中心图案类型,STAR-圆形有五角星,NONE-圆形无五角星
+	// 系统生成的印章只支持STAR
+	SealCentralType *string `json:"SealCentralType,omitempty" name:"SealCentralType"`
+
+	// 通过文件上传时，服务端生成的电子印章上传图片的token
+	FileToken *string `json:"FileToken,omitempty" name:"FileToken"`
+
+	// 印章生成来源方式
+	// 取值：
+	// SealGenerateSourceSystem 表示系统生成企业印章
+	GenerateSource *string `json:"GenerateSource,omitempty" name:"GenerateSource"`
+}
+
+func (r *CreateSealRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSealRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SealName")
+	delete(f, "Agent")
+	delete(f, "SealType")
+	delete(f, "FileName")
+	delete(f, "Image")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "Color")
+	delete(f, "SealHorizontalText")
+	delete(f, "SealChordText")
+	delete(f, "SealCentralType")
+	delete(f, "FileToken")
+	delete(f, "GenerateSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSealResponseParams struct {
+	// 电子印章编号
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateSealResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSealResponseParams `json:"Response"`
+}
+
+func (r *CreateSealResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSealResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CreateStaffResult struct {
 	// 创建员工的成功列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2953,7 +3117,7 @@ type DeleteIntegrationDepartmentRequestParams struct {
 	// 电子签中的部门id
 	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
 
-	// 交接部门ID。待删除部门中的合同、印章和模版数据，交接至该部门ID下，未填写交接至公司根部门。
+	// 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
 	ReceiveDeptId *string `json:"ReceiveDeptId,omitempty" name:"ReceiveDeptId"`
 }
 
@@ -2966,7 +3130,7 @@ type DeleteIntegrationDepartmentRequest struct {
 	// 电子签中的部门id
 	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
 
-	// 交接部门ID。待删除部门中的合同、印章和模版数据，交接至该部门ID下，未填写交接至公司根部门。
+	// 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
 	ReceiveDeptId *string `json:"ReceiveDeptId,omitempty" name:"ReceiveDeptId"`
 }
 
@@ -5749,7 +5913,7 @@ type SuccessCreateStaffData struct {
 	// 员工在电子签平台的id
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 提示，当创建已存在未实名用户时，改字段有值
+	// 提示，当创建已存在未实名用户时，该字段有值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitempty" name:"Note"`
 }

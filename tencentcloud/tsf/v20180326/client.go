@@ -7390,7 +7390,7 @@ func NewDescribeInovcationIndicatorsResponse() (response *DescribeInovcationIndi
 }
 
 // DescribeInovcationIndicators
-// 查询调用监控指标
+// 废弃
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
@@ -7404,7 +7404,7 @@ func (c *Client) DescribeInovcationIndicators(request *DescribeInovcationIndicat
 }
 
 // DescribeInovcationIndicators
-// 查询调用监控指标
+// 废弃
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"

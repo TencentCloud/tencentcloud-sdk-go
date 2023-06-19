@@ -84,6 +84,7 @@ import (
 	cloudauditv20190319 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit/v20190319"
 	cloudhsmv20191112 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm/v20191112"
 	cloudstudiov20210524 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio/v20210524"
+	cloudstudiov20230508 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio/v20230508"
 	clsv20201016 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls/v20201016"
 	cmev20191029 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme/v20191029"
 	cmqv20190304 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq/v20190304"
@@ -1115,6 +1116,19 @@ func TestCloudstudiov20210524Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init cloudstudio_v20210524 client: %v", err)
+    }
+}
+
+func TestCloudstudiov20230508Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := cloudstudiov20230508.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init cloudstudio_v20230508 client: %v", err)
     }
 }
 
