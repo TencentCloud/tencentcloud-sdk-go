@@ -1363,6 +1363,7 @@ func NewInquiryPriceRenewInstanceResponse() (response *InquiryPriceRenewInstance
 // 续费询价。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -1399,6 +1400,7 @@ func (c *Client) InquiryPriceRenewInstance(request *InquiryPriceRenewInstanceReq
 // 续费询价。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"

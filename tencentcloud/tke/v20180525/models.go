@@ -429,6 +429,26 @@ func (r *AddVpcCniSubnetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Addon struct {
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+
+	// addon的版本
+	AddonVersion *string `json:"AddonVersion,omitempty" name:"AddonVersion"`
+
+	// addon的参数，是一个json格式的base64转码后的字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawValues *string `json:"RawValues,omitempty" name:"RawValues"`
+
+	// addon的状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Phase *string `json:"Phase,omitempty" name:"Phase"`
+
+	// addon失败的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+}
+
 type AppChart struct {
 	// chart名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -4079,6 +4099,67 @@ type DataDisk struct {
 }
 
 // Predefined struct for user
+type DeleteAddonRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+}
+
+type DeleteAddonRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+}
+
+func (r *DeleteAddonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAddonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "AddonName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAddonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAddonResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAddonResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAddonResponseParams `json:"Response"`
+}
+
+func (r *DeleteAddonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAddonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteBackupStorageLocationRequestParams struct {
 	// 备份仓库名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -5769,6 +5850,137 @@ func (r *DeleteTKEEdgeClusterResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTKEEdgeClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddonRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称（不传时会返回集群下全部的addon）
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+}
+
+type DescribeAddonRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称（不传时会返回集群下全部的addon）
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+}
+
+func (r *DescribeAddonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "AddonName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddonResponseParams struct {
+	// addon列表
+	Addons []*Addon `json:"Addons,omitempty" name:"Addons"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAddonResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAddonResponseParams `json:"Response"`
+}
+
+func (r *DescribeAddonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddonValuesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+}
+
+type DescribeAddonValuesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+}
+
+func (r *DescribeAddonValuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddonValuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "AddonName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddonValuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddonValuesResponseParams struct {
+	// 参数列表，如果addon已安装，会使用已设置的的参数做渲染，是一个json格式的字符串
+	Values *string `json:"Values,omitempty" name:"Values"`
+
+	// addon支持的参数列表，使用默认值，是一个json格式的字符串
+	DefaultValues *string `json:"DefaultValues,omitempty" name:"DefaultValues"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAddonValuesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAddonValuesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAddonValuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddonValuesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13409,6 +13621,81 @@ type ImageRegistryCredential struct {
 }
 
 // Predefined struct for user
+type InstallAddonRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+
+	// addon版本（不传默认安装最新版本）
+	AddonVersion *string `json:"AddonVersion,omitempty" name:"AddonVersion"`
+
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+	RawValues *string `json:"RawValues,omitempty" name:"RawValues"`
+}
+
+type InstallAddonRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+
+	// addon版本（不传默认安装最新版本）
+	AddonVersion *string `json:"AddonVersion,omitempty" name:"AddonVersion"`
+
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+	RawValues *string `json:"RawValues,omitempty" name:"RawValues"`
+}
+
+func (r *InstallAddonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstallAddonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "AddonName")
+	delete(f, "AddonVersion")
+	delete(f, "RawValues")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallAddonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InstallAddonResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type InstallAddonResponse struct {
+	*tchttp.BaseResponse
+	Response *InstallAddonResponseParams `json:"Response"`
+}
+
+func (r *InstallAddonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstallAddonResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InstallEdgeLogAgentRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -17468,6 +17755,81 @@ func (r *UninstallLogAgentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UninstallLogAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAddonRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+
+	// addon版本（不传默认不更新）
+	AddonVersion *string `json:"AddonVersion,omitempty" name:"AddonVersion"`
+
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+	RawValues *string `json:"RawValues,omitempty" name:"RawValues"`
+}
+
+type UpdateAddonRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// addon名称
+	AddonName *string `json:"AddonName,omitempty" name:"AddonName"`
+
+	// addon版本（不传默认不更新）
+	AddonVersion *string `json:"AddonVersion,omitempty" name:"AddonVersion"`
+
+	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+	RawValues *string `json:"RawValues,omitempty" name:"RawValues"`
+}
+
+func (r *UpdateAddonRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAddonRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "AddonName")
+	delete(f, "AddonVersion")
+	delete(f, "RawValues")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAddonRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAddonResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateAddonResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAddonResponseParams `json:"Response"`
+}
+
+func (r *UpdateAddonResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAddonResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -304,6 +304,10 @@ func NewDeployDynamicBcosContractResponse() (response *DeployDynamicBcosContract
 }
 
 // DeployDynamicBcosContract
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // 动态部署并发布Bcos合约
 //
 // 可能返回的错误码:
@@ -353,6 +357,10 @@ func (c *Client) DeployDynamicBcosContract(request *DeployDynamicBcosContractReq
 }
 
 // DeployDynamicBcosContract
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // 动态部署并发布Bcos合约
 //
 // 可能返回的错误码:
@@ -520,6 +528,10 @@ func NewGetBcosBlockByNumberResponse() (response *GetBcosBlockByNumberResponse) 
 }
 
 // GetBcosBlockByNumber
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // 使用块高查询Bcos区块信息
 //
 // 可能返回的错误码:
@@ -567,6 +579,10 @@ func (c *Client) GetBcosBlockByNumber(request *GetBcosBlockByNumberRequest) (res
 }
 
 // GetBcosBlockByNumber
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // 使用块高查询Bcos区块信息
 //
 // 可能返回的错误码:
@@ -644,6 +660,10 @@ func NewGetBcosBlockListResponse() (response *GetBcosBlockListResponse) {
 }
 
 // GetBcosBlockList
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // Bcos分页查询当前群组下的区块列表
 //
 // 可能返回的错误码:
@@ -692,6 +712,10 @@ func (c *Client) GetBcosBlockList(request *GetBcosBlockListRequest) (response *G
 }
 
 // GetBcosBlockList
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // Bcos分页查询当前群组下的区块列表
 //
 // 可能返回的错误码:
@@ -770,6 +794,10 @@ func NewGetBcosTransByHashResponse() (response *GetBcosTransByHashResponse) {
 }
 
 // GetBcosTransByHash
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // Bcos根据交易哈希查看交易详细信息
 //
 // 可能返回的错误码:
@@ -818,6 +846,10 @@ func (c *Client) GetBcosTransByHash(request *GetBcosTransByHashRequest) (respons
 }
 
 // GetBcosTransByHash
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // Bcos根据交易哈希查看交易详细信息
 //
 // 可能返回的错误码:
@@ -896,6 +928,10 @@ func NewGetBcosTransListResponse() (response *GetBcosTransListResponse) {
 }
 
 // GetBcosTransList
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // Bcos分页查询当前群组的交易信息列表
 //
 // 可能返回的错误码:
@@ -945,6 +981,10 @@ func (c *Client) GetBcosTransList(request *GetBcosTransListRequest) (response *G
 }
 
 // GetBcosTransList
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // Bcos分页查询当前群组的交易信息列表
 //
 // 可能返回的错误码:
@@ -1752,7 +1792,7 @@ func NewGetLatesdTransactionListResponse() (response *GetLatesdTransactionListRe
 }
 
 // GetLatesdTransactionList
-// 获取最新交易列表
+// 获取最新交易列表（已废弃）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -1773,7 +1813,7 @@ func (c *Client) GetLatesdTransactionList(request *GetLatesdTransactionListReque
 }
 
 // GetLatesdTransactionList
-// 获取最新交易列表
+// 获取最新交易列表（已废弃）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -1801,6 +1841,78 @@ func (c *Client) GetLatesdTransactionListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewGetLatesdTransactionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetLatestTransactionListRequest() (request *GetLatestTransactionListRequest) {
+    request = &GetLatestTransactionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tbaas", APIVersion, "GetLatestTransactionList")
+    
+    
+    return
+}
+
+func NewGetLatestTransactionListResponse() (response *GetLatestTransactionListResponse) {
+    response = &GetLatestTransactionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetLatestTransactionList
+// 获取fabric最新交易列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_FABRICBLOCKDETAIL = "FailedOperation.FabricBlockDetail"
+//  FAILEDOPERATION_FABRICTRANSACTIONQUERY = "FailedOperation.FabricTransactionQuery"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
+func (c *Client) GetLatestTransactionList(request *GetLatestTransactionListRequest) (response *GetLatestTransactionListResponse, err error) {
+    return c.GetLatestTransactionListWithContext(context.Background(), request)
+}
+
+// GetLatestTransactionList
+// 获取fabric最新交易列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_FABRICBLOCKDETAIL = "FailedOperation.FabricBlockDetail"
+//  FAILEDOPERATION_FABRICTRANSACTIONQUERY = "FailedOperation.FabricTransactionQuery"
+//  FAILEDOPERATION_GROUPILLEGAL = "FailedOperation.GroupIllegal"
+//  FAILEDOPERATION_NOCHANNELGROUP = "FailedOperation.NoChannelGroup"
+//  FAILEDOPERATION_NOCHANNELPEER = "FailedOperation.NoChannelPeer"
+//  FAILEDOPERATION_NOOBJECT = "FailedOperation.NoObject"
+//  INTERNALERROR_FLASKEXCEPTION = "InternalError.FlaskException"
+//  INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
+//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
+//  INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
+//  INVALIDPARAMETERVALUE_PARAMETEREMPTY = "InvalidParameterValue.ParameterEmpty"
+func (c *Client) GetLatestTransactionListWithContext(ctx context.Context, request *GetLatestTransactionListRequest) (response *GetLatestTransactionListResponse, err error) {
+    if request == nil {
+        request = NewGetLatestTransactionListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetLatestTransactionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetLatestTransactionListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2170,6 +2282,10 @@ func NewInvokeBcosTransResponse() (response *InvokeBcosTransResponse) {
 }
 
 // InvokeBcosTrans
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // 执行Bcos交易，支持动态部署的合约
 //
 // 可能返回的错误码:
@@ -2219,6 +2335,10 @@ func (c *Client) InvokeBcosTrans(request *InvokeBcosTransRequest) (response *Inv
 }
 
 // InvokeBcosTrans
+// Bcos区块链引擎已下线，请选用其他区块链引擎
+//
+// 
+//
 // 执行Bcos交易，支持动态部署的合约
 //
 // 可能返回的错误码:

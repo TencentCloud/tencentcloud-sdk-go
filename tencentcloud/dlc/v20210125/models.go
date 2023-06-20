@@ -1058,6 +1058,52 @@ type Column struct {
 	IsPartition *bool `json:"IsPartition,omitempty" name:"IsPartition"`
 }
 
+type CommonMetrics struct {
+	// 创建任务时长，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTaskTime *float64 `json:"CreateTaskTime,omitempty" name:"CreateTaskTime"`
+
+	// 预处理总时长，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessTime *float64 `json:"ProcessTime,omitempty" name:"ProcessTime"`
+
+	// 排队时长，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueTime *float64 `json:"QueueTime,omitempty" name:"QueueTime"`
+
+	// 执行时长，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionTime *float64 `json:"ExecutionTime,omitempty" name:"ExecutionTime"`
+
+	// 是否命中结果缓存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsResultCacheHit *bool `json:"IsResultCacheHit,omitempty" name:"IsResultCacheHit"`
+
+	// 匹配物化视图数据量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchedMVBytes *int64 `json:"MatchedMVBytes,omitempty" name:"MatchedMVBytes"`
+
+	// 匹配物化视图列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchedMVs *string `json:"MatchedMVs,omitempty" name:"MatchedMVs"`
+
+	// 结果数据量，单位：byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectedBytes *string `json:"AffectedBytes,omitempty" name:"AffectedBytes"`
+
+	// 	结果行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectedRows *int64 `json:"AffectedRows,omitempty" name:"AffectedRows"`
+
+	// 扫描数据量，单位：byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessedBytes *int64 `json:"ProcessedBytes,omitempty" name:"ProcessedBytes"`
+
+	// 	扫描行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessedRows *int64 `json:"ProcessedRows,omitempty" name:"ProcessedRows"`
+}
+
 // Predefined struct for user
 type CreateDMSDatabaseRequestParams struct {
 	// 基础元数据对象
@@ -1351,7 +1397,7 @@ type CreateDataEngineRequestParams struct {
 	// 定时启停策略，复杂类型：包含启停时间、挂起集群策略
 	CrontabResumeSuspendStrategy *CrontabResumeSuspendStrategy `json:"CrontabResumeSuspendStrategy,omitempty" name:"CrontabResumeSuspendStrategy"`
 
-	// 引擎执行任务类型，默认为SQL
+	// 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
 	EngineExecType *string `json:"EngineExecType,omitempty" name:"EngineExecType"`
 
 	// 单个集群最大并发任务数，默认5
@@ -1445,7 +1491,7 @@ type CreateDataEngineRequest struct {
 	// 定时启停策略，复杂类型：包含启停时间、挂起集群策略
 	CrontabResumeSuspendStrategy *CrontabResumeSuspendStrategy `json:"CrontabResumeSuspendStrategy,omitempty" name:"CrontabResumeSuspendStrategy"`
 
-	// 引擎执行任务类型，默认为SQL
+	// 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
 	EngineExecType *string `json:"EngineExecType,omitempty" name:"EngineExecType"`
 
 	// 单个集群最大并发任务数，默认5
@@ -2084,7 +2130,7 @@ type CreateNotebookSessionStatementSupportBatchSQLRequestParams struct {
 	// 执行的代码
 	Code *string `json:"Code,omitempty" name:"Code"`
 
-	// 类型，当前支持：spark、pyspark、sparkr、sql
+	// 类型，当前支持：sql
 	Kind *string `json:"Kind,omitempty" name:"Kind"`
 
 	// 是否保存运行结果
@@ -2100,7 +2146,7 @@ type CreateNotebookSessionStatementSupportBatchSQLRequest struct {
 	// 执行的代码
 	Code *string `json:"Code,omitempty" name:"Code"`
 
-	// 类型，当前支持：spark、pyspark、sparkr、sql
+	// 类型，当前支持：sql
 	Kind *string `json:"Kind,omitempty" name:"Kind"`
 
 	// 是否保存运行结果
@@ -2302,25 +2348,25 @@ func (r *CreateScriptResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSparkAppRequestParams struct {
-	// spark应用名
+	// spark作业名
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 1代表spark jar应用，2代表spark streaming应用
+	// spark作业类型，1代表spark jar作业，2代表spark streaming作业
 	AppType *int64 `json:"AppType,omitempty" name:"AppType"`
 
-	// 执行spark作业的数据引擎
+	// 执行spark作业的数据引擎名称
 	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
 
-	// spark应用的执行入口
+	// spark作业程序包文件路径
 	AppFile *string `json:"AppFile,omitempty" name:"AppFile"`
 
-	// 执行spark作业的角色ID
+	// 数据访问策略，CAM Role arn
 	RoleArn *int64 `json:"RoleArn,omitempty" name:"RoleArn"`
 
-	// spark作业driver资源规格大小, 可取small,medium,large,xlarge
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
 	AppDriverSize *string `json:"AppDriverSize,omitempty" name:"AppDriverSize"`
 
-	// spark作业executor资源规格大小, 可取small,medium,large,xlarge
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
 	AppExecutorSize *string `json:"AppExecutorSize,omitempty" name:"AppExecutorSize"`
 
 	// spark作业executor个数
@@ -2329,49 +2375,49 @@ type CreateSparkAppRequestParams struct {
 	// 该字段已下线，请使用字段Datasource
 	Eni *string `json:"Eni,omitempty" name:"Eni"`
 
-	// 是否本地上传，可去cos,lakefs
+	// spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocal *string `json:"IsLocal,omitempty" name:"IsLocal"`
 
-	// spark jar作业时的主类
+	// spark作业主类
 	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
 
 	// spark配置，以换行符分隔
 	AppConf *string `json:"AppConf,omitempty" name:"AppConf"`
 
-	// 是否本地上传，包含cos,lakefs
+	// spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalJars *string `json:"IsLocalJars,omitempty" name:"IsLocalJars"`
 
-	// spark jar作业依赖jars，以逗号分隔
+	// spark 作业依赖jar包（--jars），以逗号分隔
 	AppJars *string `json:"AppJars,omitempty" name:"AppJars"`
 
-	// 是否本地上传，包含cos,lakefs
+	// spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalFiles *string `json:"IsLocalFiles,omitempty" name:"IsLocalFiles"`
 
-	// spark作业依赖资源，以逗号分隔
+	// spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
 	AppFiles *string `json:"AppFiles,omitempty" name:"AppFiles"`
 
-	// spark作业命令行参数
+	// spark作业程序入参，空格分割
 	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
 
-	// 只对spark流任务生效
+	// 最大重试次数，只对spark流任务生效
 	MaxRetries *int64 `json:"MaxRetries,omitempty" name:"MaxRetries"`
 
-	// 数据源名
+	// 数据源名称
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 
-	// pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitempty" name:"IsLocalPythonFiles"`
 
-	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	// pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
 	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
 
-	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
 
-	// archives：依赖资源
+	// spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
 	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
 
-	// Spark Image 版本
+	// Spark Image 版本号
 	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
 
 	// Spark Image 版本名称
@@ -2390,25 +2436,25 @@ type CreateSparkAppRequestParams struct {
 type CreateSparkAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// spark应用名
+	// spark作业名
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 1代表spark jar应用，2代表spark streaming应用
+	// spark作业类型，1代表spark jar作业，2代表spark streaming作业
 	AppType *int64 `json:"AppType,omitempty" name:"AppType"`
 
-	// 执行spark作业的数据引擎
+	// 执行spark作业的数据引擎名称
 	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
 
-	// spark应用的执行入口
+	// spark作业程序包文件路径
 	AppFile *string `json:"AppFile,omitempty" name:"AppFile"`
 
-	// 执行spark作业的角色ID
+	// 数据访问策略，CAM Role arn
 	RoleArn *int64 `json:"RoleArn,omitempty" name:"RoleArn"`
 
-	// spark作业driver资源规格大小, 可取small,medium,large,xlarge
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
 	AppDriverSize *string `json:"AppDriverSize,omitempty" name:"AppDriverSize"`
 
-	// spark作业executor资源规格大小, 可取small,medium,large,xlarge
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
 	AppExecutorSize *string `json:"AppExecutorSize,omitempty" name:"AppExecutorSize"`
 
 	// spark作业executor个数
@@ -2417,49 +2463,49 @@ type CreateSparkAppRequest struct {
 	// 该字段已下线，请使用字段Datasource
 	Eni *string `json:"Eni,omitempty" name:"Eni"`
 
-	// 是否本地上传，可去cos,lakefs
+	// spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocal *string `json:"IsLocal,omitempty" name:"IsLocal"`
 
-	// spark jar作业时的主类
+	// spark作业主类
 	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
 
 	// spark配置，以换行符分隔
 	AppConf *string `json:"AppConf,omitempty" name:"AppConf"`
 
-	// 是否本地上传，包含cos,lakefs
+	// spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalJars *string `json:"IsLocalJars,omitempty" name:"IsLocalJars"`
 
-	// spark jar作业依赖jars，以逗号分隔
+	// spark 作业依赖jar包（--jars），以逗号分隔
 	AppJars *string `json:"AppJars,omitempty" name:"AppJars"`
 
-	// 是否本地上传，包含cos,lakefs
+	// spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalFiles *string `json:"IsLocalFiles,omitempty" name:"IsLocalFiles"`
 
-	// spark作业依赖资源，以逗号分隔
+	// spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
 	AppFiles *string `json:"AppFiles,omitempty" name:"AppFiles"`
 
-	// spark作业命令行参数
+	// spark作业程序入参，空格分割
 	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
 
-	// 只对spark流任务生效
+	// 最大重试次数，只对spark流任务生效
 	MaxRetries *int64 `json:"MaxRetries,omitempty" name:"MaxRetries"`
 
-	// 数据源名
+	// 数据源名称
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 
-	// pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitempty" name:"IsLocalPythonFiles"`
 
-	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	// pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
 	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
 
-	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
 
-	// archives：依赖资源
+	// spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
 	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
 
-	// Spark Image 版本
+	// Spark Image 版本号
 	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
 
 	// Spark Image 版本名称
@@ -2552,7 +2598,7 @@ type CreateSparkAppTaskRequestParams struct {
 	// spark作业名
 	JobName *string `json:"JobName,omitempty" name:"JobName"`
 
-	// spark作业的命令行参数，以空格分隔；一般用于周期性调用使用
+	// spark作业程序入参，以空格分隔；一般用于周期性调用使用
 	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
 }
 
@@ -2562,7 +2608,7 @@ type CreateSparkAppTaskRequest struct {
 	// spark作业名
 	JobName *string `json:"JobName,omitempty" name:"JobName"`
 
-	// spark作业的命令行参数，以空格分隔；一般用于周期性调用使用
+	// spark作业程序入参，以空格分隔；一般用于周期性调用使用
 	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
 }
 
@@ -3859,14 +3905,14 @@ func (r *DeleteScriptResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSparkAppRequestParams struct {
-	// spark应用名
+	// spark作业名
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
 type DeleteSparkAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// spark应用名
+	// spark作业名
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
@@ -4613,13 +4659,7 @@ type DescribeDataEnginesRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 滤类型，传参Name应为以下其中一个,
-	// data-engine-name - String 
-	// engine-type - String
-	// state - String 
-	// mode - String 
-	// create-time - String 
-	// message - String
+	// 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH）
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段，支持如下字段类型，create-time
@@ -4640,7 +4680,7 @@ type DescribeDataEnginesRequestParams struct {
 	// 参数应该为引擎权限类型，有效类型："USE", "MODIFY", "OPERATE", "MONITOR", "DELETE"
 	AccessTypes []*string `json:"AccessTypes,omitempty" name:"AccessTypes"`
 
-	// 引擎执行任务类型，有效值：SQL/BATCH
+	// 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
 	EngineExecType *string `json:"EngineExecType,omitempty" name:"EngineExecType"`
 
 	// 引擎类型，有效值：spark/presto
@@ -4656,13 +4696,7 @@ type DescribeDataEnginesRequest struct {
 	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 滤类型，传参Name应为以下其中一个,
-	// data-engine-name - String 
-	// engine-type - String
-	// state - String 
-	// mode - String 
-	// create-time - String 
-	// message - String
+	// 过滤类型，支持如下的过滤类型，传参Name应为以下其中一个, data-engine-name - String（数据引擎名称）：engine-type - String（引擎类型：spark：spark 引擎，presto：presto引擎），state - String (数据引擎状态 -2已删除 -1失败 0初始化中 1挂起 2运行中 3准备删除 4删除中) ， mode - String（计费模式 0共享模式 1按量计费 2包年包月） ， create-time - String（创建时间，10位时间戳） message - String （描述信息），cluster-type - String (集群资源类型 spark_private/presto_private/presto_cu/spark_cu)，engine-id - String（数据引擎ID），key-word - String（数据引擎名称或集群资源类型或描述信息模糊搜索），engine-exec-type - String（引擎执行任务类型，SQL/BATCH）
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段，支持如下字段类型，create-time
@@ -4683,7 +4717,7 @@ type DescribeDataEnginesRequest struct {
 	// 参数应该为引擎权限类型，有效类型："USE", "MODIFY", "OPERATE", "MONITOR", "DELETE"
 	AccessTypes []*string `json:"AccessTypes,omitempty" name:"AccessTypes"`
 
-	// 引擎执行任务类型，有效值：SQL/BATCH
+	// 引擎执行任务类型，有效值：SQL/BATCH，默认为SQL
 	EngineExecType *string `json:"EngineExecType,omitempty" name:"EngineExecType"`
 
 	// 引擎类型，有效值：spark/presto
@@ -4766,7 +4800,7 @@ type DescribeDatabasesRequestParams struct {
 	// 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为DataLakeCatalog
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 
-	// 排序字段，当前版本仅支持按库名排序
+	// 排序字段，CreateTime：创建时间，Name：数据库名称
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
 	// 排序类型：false：降序（默认）、true：升序
@@ -4788,7 +4822,7 @@ type DescribeDatabasesRequest struct {
 	// 数据源唯名称，该名称可以通过DescribeDatasourceConnection接口查询到。默认为DataLakeCatalog
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 
-	// 排序字段，当前版本仅支持按库名排序
+	// 排序字段，CreateTime：创建时间，Name：数据库名称
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
 	// 排序类型：false：降序（默认）、true：升序
@@ -4849,14 +4883,14 @@ func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEngineUsageInfoRequestParams struct {
-	// House Id
+	// 数据引擎ID
 	DataEngineId *string `json:"DataEngineId,omitempty" name:"DataEngineId"`
 }
 
 type DescribeEngineUsageInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// House Id
+	// 数据引擎ID
 	DataEngineId *string `json:"DataEngineId,omitempty" name:"DataEngineId"`
 }
 
@@ -5431,10 +5465,10 @@ type DescribeNotebookSessionsRequestParams struct {
 	// 排序字段：true：升序、false：降序（默认）
 	Asc *bool `json:"Asc,omitempty" name:"Asc"`
 
-	// 分页字段
+	// 分页参数，默认10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页字段
+	// 分页参数，默认0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5453,10 +5487,10 @@ type DescribeNotebookSessionsRequest struct {
 	// 排序字段：true：升序、false：降序（默认）
 	Asc *bool `json:"Asc,omitempty" name:"Asc"`
 
-	// 分页字段
+	// 分页参数，默认10
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页字段
+	// 分页参数，默认0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5693,7 +5727,7 @@ func (r *DescribeScriptsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSparkAppJobRequestParams struct {
-	// spark作业Id，与JobName同时存在时，JobName无效
+	// spark作业Id，与JobName同时存在时，JobName无效，JobId与JobName至少存在一个
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// spark作业名
@@ -5703,7 +5737,7 @@ type DescribeSparkAppJobRequestParams struct {
 type DescribeSparkAppJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// spark作业Id，与JobName同时存在时，JobName无效
+	// spark作业Id，与JobName同时存在时，JobName无效，JobId与JobName至少存在一个
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
 
 	// spark作业名
@@ -5767,7 +5801,7 @@ type DescribeSparkAppJobsRequestParams struct {
 	// 正序或者倒序，例如：desc
 	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
 
-	// 按照该参数过滤,支持spark-job-name
+	// 过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
@@ -5792,7 +5826,7 @@ type DescribeSparkAppJobsRequest struct {
 	// 正序或者倒序，例如：desc
 	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
 
-	// 按照该参数过滤,支持spark-job-name
+	// 过滤条件，如下支持的过滤类型，传参Name应为其一:spark-job-name（作业名称），spark-job-id（作业id），spark-app-type（作业类型，1：批任务，2：流任务，4：SQL作业），user-name（创建人），key-word（作业名称或ID关键词模糊搜索）
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
@@ -5875,10 +5909,10 @@ type DescribeSparkAppTasksRequestParams struct {
 	// 执行实例id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 更新时间起始点
+	// 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 更新时间截止点
+	// 更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 按照该参数过滤,支持task-state
@@ -5900,10 +5934,10 @@ type DescribeSparkAppTasksRequest struct {
 	// 执行实例id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 更新时间起始点
+	// 更新时间起始点，支持格式：yyyy-MM-dd HH:mm:ss
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 更新时间截止点
+	// 更新时间截止点，支持格式：yyyy-MM-dd HH:mm:ss
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 按照该参数过滤,支持task-state
@@ -6174,13 +6208,13 @@ type DescribeTablesRequestParams struct {
 	// 指定查询的数据源名称，默认为DataLakeCatalog
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 
-	// 起始时间：用于对更新时间的筛选
+	// 起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 终止时间：用于对更新时间的筛选
+	// 终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 排序字段，支持：CreateTime、UpdateTime、StorageSize、RecordCount、Name（不传则默认按name升序）
+	// 排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
 	// 排序字段，false：降序（默认）；true：升序
@@ -6213,13 +6247,13 @@ type DescribeTablesRequest struct {
 	// 指定查询的数据源名称，默认为DataLakeCatalog
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
 
-	// 起始时间：用于对更新时间的筛选
+	// 起始时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 终止时间：用于对更新时间的筛选
+	// 终止时间：用于对更新时间的筛选，格式为yyyy-mm-dd HH:MM:SS
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 排序字段，支持：CreateTime、UpdateTime、StorageSize、RecordCount、Name（不传则默认按name升序）
+	// 排序字段，支持：CreateTime（创建时间）、UpdateTime（更新时间）、StorageSize（存储空间）、RecordCount（行数）、Name（表名称）（不传则默认按name升序）
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
 	// 排序字段，false：降序（默认）；true：升序
@@ -6389,7 +6423,7 @@ type DescribeTasksRequestParams struct {
 	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 支持计算资源名字筛选
+	// 数据引擎名称，用于筛选
 	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
 }
 
@@ -6422,7 +6456,7 @@ type DescribeTasksRequest struct {
 	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 支持计算资源名字筛选
+	// 数据引擎名称，用于筛选
 	DataEngineName *string `json:"DataEngineName,omitempty" name:"DataEngineName"`
 }
 
@@ -7663,79 +7697,79 @@ func (r *ModifySparkAppBatchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySparkAppRequestParams struct {
-	// spark应用名
+	// spark作业名
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 1代表spark jar应用，2代表spark streaming应用
+	// spark作业类型，1代表spark jar作业，2代表spark streaming作业
 	AppType *int64 `json:"AppType,omitempty" name:"AppType"`
 
-	// 执行spark作业的数据引擎
+	// 执行spark作业的数据引擎名称
 	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
 
-	// spark应用的执行入口
+	// spark作业程序包文件路径
 	AppFile *string `json:"AppFile,omitempty" name:"AppFile"`
 
-	// 执行spark作业的角色ID
+	// 数据访问策略，CAM Role arn
 	RoleArn *int64 `json:"RoleArn,omitempty" name:"RoleArn"`
 
-	// spark作业driver资源规格大小, 可取small,medium,large,xlarge
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
 	AppDriverSize *string `json:"AppDriverSize,omitempty" name:"AppDriverSize"`
 
-	// spark作业executor资源规格大小, 可取small,medium,large,xlarge
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
 	AppExecutorSize *string `json:"AppExecutorSize,omitempty" name:"AppExecutorSize"`
 
 	// spark作业executor个数
 	AppExecutorNums *int64 `json:"AppExecutorNums,omitempty" name:"AppExecutorNums"`
 
-	// spark应用Id
+	// spark作业Id
 	SparkAppId *string `json:"SparkAppId,omitempty" name:"SparkAppId"`
 
 	// 该字段已下线，请使用字段Datasource
 	Eni *string `json:"Eni,omitempty" name:"Eni"`
 
-	// 是否本地上传，可取cos,lakefs
+	// spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocal *string `json:"IsLocal,omitempty" name:"IsLocal"`
 
-	// spark jar作业时的主类
+	// spark作业主类
 	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
 
 	// spark配置，以换行符分隔
 	AppConf *string `json:"AppConf,omitempty" name:"AppConf"`
 
-	// jar资源依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalJars *string `json:"IsLocalJars,omitempty" name:"IsLocalJars"`
 
-	// spark jar作业依赖jars，以逗号分隔
+	// spark 作业依赖jar包（--jars），以逗号分隔
 	AppJars *string `json:"AppJars,omitempty" name:"AppJars"`
 
-	// file资源依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalFiles *string `json:"IsLocalFiles,omitempty" name:"IsLocalFiles"`
 
-	// spark作业依赖资源，以逗号分隔
+	// spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
 	AppFiles *string `json:"AppFiles,omitempty" name:"AppFiles"`
 
-	// pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitempty" name:"IsLocalPythonFiles"`
 
-	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	// pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
 	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
 
-	// spark作业命令行参数
+	// spark作业程序入参
 	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
 
-	// 只对spark流任务生效
+	// 最大重试次数，只对spark流任务生效
 	MaxRetries *int64 `json:"MaxRetries,omitempty" name:"MaxRetries"`
 
 	// 数据源名
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 
-	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
 
-	// archives：依赖资源
+	// spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
 	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
 
-	// Spark Image 版本
+	// Spark Image 版本号
 	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
 
 	// Spark Image 版本名称
@@ -7754,79 +7788,79 @@ type ModifySparkAppRequestParams struct {
 type ModifySparkAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// spark应用名
+	// spark作业名
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 1代表spark jar应用，2代表spark streaming应用
+	// spark作业类型，1代表spark jar作业，2代表spark streaming作业
 	AppType *int64 `json:"AppType,omitempty" name:"AppType"`
 
-	// 执行spark作业的数据引擎
+	// 执行spark作业的数据引擎名称
 	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
 
-	// spark应用的执行入口
+	// spark作业程序包文件路径
 	AppFile *string `json:"AppFile,omitempty" name:"AppFile"`
 
-	// 执行spark作业的角色ID
+	// 数据访问策略，CAM Role arn
 	RoleArn *int64 `json:"RoleArn,omitempty" name:"RoleArn"`
 
-	// spark作业driver资源规格大小, 可取small,medium,large,xlarge
+	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
 	AppDriverSize *string `json:"AppDriverSize,omitempty" name:"AppDriverSize"`
 
-	// spark作业executor资源规格大小, 可取small,medium,large,xlarge
+	// 指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
 	AppExecutorSize *string `json:"AppExecutorSize,omitempty" name:"AppExecutorSize"`
 
 	// spark作业executor个数
 	AppExecutorNums *int64 `json:"AppExecutorNums,omitempty" name:"AppExecutorNums"`
 
-	// spark应用Id
+	// spark作业Id
 	SparkAppId *string `json:"SparkAppId,omitempty" name:"SparkAppId"`
 
 	// 该字段已下线，请使用字段Datasource
 	Eni *string `json:"Eni,omitempty" name:"Eni"`
 
-	// 是否本地上传，可取cos,lakefs
+	// spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocal *string `json:"IsLocal,omitempty" name:"IsLocal"`
 
-	// spark jar作业时的主类
+	// spark作业主类
 	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
 
 	// spark配置，以换行符分隔
 	AppConf *string `json:"AppConf,omitempty" name:"AppConf"`
 
-	// jar资源依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalJars *string `json:"IsLocalJars,omitempty" name:"IsLocalJars"`
 
-	// spark jar作业依赖jars，以逗号分隔
+	// spark 作业依赖jar包（--jars），以逗号分隔
 	AppJars *string `json:"AppJars,omitempty" name:"AppJars"`
 
-	// file资源依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalFiles *string `json:"IsLocalFiles,omitempty" name:"IsLocalFiles"`
 
-	// spark作业依赖资源，以逗号分隔
+	// spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔
 	AppFiles *string `json:"AppFiles,omitempty" name:"AppFiles"`
 
-	// pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitempty" name:"IsLocalPythonFiles"`
 
-	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	// pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔
 	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
 
-	// spark作业命令行参数
+	// spark作业程序入参
 	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
 
-	// 只对spark流任务生效
+	// 最大重试次数，只对spark流任务生效
 	MaxRetries *int64 `json:"MaxRetries,omitempty" name:"MaxRetries"`
 
 	// 数据源名
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 
-	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）
 	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
 
-	// archives：依赖资源
+	// spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔
 	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
 
-	// Spark Image 版本
+	// Spark Image 版本号
 	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
 
 	// Spark Image 版本名称
@@ -8369,6 +8403,16 @@ type Policy struct {
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 }
 
+type PrestoMonitorMetrics struct {
+	// 	Alluxio本地缓存命中率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalCacheHitRate *float64 `json:"LocalCacheHitRate,omitempty" name:"LocalCacheHitRate"`
+
+	// Fragment缓存命中率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FragmentCacheHitRate *float64 `json:"FragmentCacheHitRate,omitempty" name:"FragmentCacheHitRate"`
+}
+
 type Property struct {
 	// 属性key名称。
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -8633,6 +8677,16 @@ type SparkJobInfo struct {
 	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
+}
+
+type SparkMonitorMetrics struct {
+	// shuffle写溢出到COS数据量，单位：byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShuffleWriteBytesCos *int64 `json:"ShuffleWriteBytesCos,omitempty" name:"ShuffleWriteBytesCos"`
+
+	// shuffle写数据量，单位：byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShuffleWriteBytesTotal *int64 `json:"ShuffleWriteBytesTotal,omitempty" name:"ShuffleWriteBytesTotal"`
 }
 
 type SparkSessionBatchLog struct {
@@ -9153,6 +9207,18 @@ type TaskResponseInfo struct {
 	// 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+
+	// 任务公共指标数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommonMetrics *CommonMetrics `json:"CommonMetrics,omitempty" name:"CommonMetrics"`
+
+	// spark任务指标数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SparkMonitorMetrics *SparkMonitorMetrics `json:"SparkMonitorMetrics,omitempty" name:"SparkMonitorMetrics"`
+
+	// presto任务指标数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrestoMonitorMetrics *PrestoMonitorMetrics `json:"PrestoMonitorMetrics,omitempty" name:"PrestoMonitorMetrics"`
 }
 
 type TaskResultInfo struct {

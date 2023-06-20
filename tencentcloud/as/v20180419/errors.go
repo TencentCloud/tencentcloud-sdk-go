@@ -239,6 +239,9 @@ const (
 	// 取值超出限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 
+	// 不支持目标组类型的监听器。
+	INVALIDPARAMETERVALUE_LISTENERTARGETTYPENOTSUPPORTED = "InvalidParameterValue.ListenerTargetTypeNotSupported"
+
 	// 当前账户在带宽包模式中必须填写带宽包ID参数。
 	INVALIDPARAMETERVALUE_MISSINGBANDWIDTHPACKAGEID = "InvalidParameterValue.MissingBandwidthPackageId"
 

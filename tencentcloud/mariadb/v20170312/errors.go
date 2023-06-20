@@ -413,6 +413,9 @@ const (
 	// 没有权限操作该接口或资源。
 	UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 
+	// 不支持该数据库版本。
+	UNSUPPORTEDOPERATION_DBVERSIONNOTSUPPORTED = "UnsupportedOperation.DbVersionNotSupported"
+
 	// 不支持的无效操作。
 	UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
 

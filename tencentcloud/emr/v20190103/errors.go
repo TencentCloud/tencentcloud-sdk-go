@@ -32,6 +32,9 @@ const (
 	// 调用cam服务失败。
 	FAILEDOPERATION_GETCAMSERVERFAILED = "FailedOperation.GetCamServerFailed"
 
+	// 调用cvm服务失败。
+	FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
+
 	// 操作失败，不支持pod。
 	FAILEDOPERATION_NOTSUPPORTPOD = "FailedOperation.NotSupportPod"
 

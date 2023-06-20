@@ -1547,7 +1547,7 @@ type SendSmsRequestParams struct {
 	// 短信码号扩展号，默认未开通，如需开通请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	ExtendCode *string `json:"ExtendCode,omitempty" name:"ExtendCode"`
 
-	// 用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。
+	// 用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。注意长度需小于512字节。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 国内短信无需填写该项；国际/港澳台短信已申请独立 SenderId 需要填写该字段，默认使用公共 SenderId，无需填写该字段。
@@ -1580,7 +1580,7 @@ type SendSmsRequest struct {
 	// 短信码号扩展号，默认未开通，如需开通请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	ExtendCode *string `json:"ExtendCode,omitempty" name:"ExtendCode"`
 
-	// 用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。
+	// 用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。注意长度需小于512字节。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 国内短信无需填写该项；国际/港澳台短信已申请独立 SenderId 需要填写该字段，默认使用公共 SenderId，无需填写该字段。

@@ -67,6 +67,9 @@ type AutoSnapshotPolicyInfo struct {
 	// 快照定期间隔天数，1-365 天；该参数与DayOfMonth,DayOfWeek互斥
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntervalDays *uint64 `json:"IntervalDays,omitempty" name:"IntervalDays"`
+
+	// 跨地域复制的快照保留时间
+	CrossRegionsAliveDays *uint64 `json:"CrossRegionsAliveDays,omitempty" name:"CrossRegionsAliveDays"`
 }
 
 type AvailableProtoStatus struct {

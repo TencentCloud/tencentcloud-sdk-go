@@ -2355,7 +2355,7 @@ type DescribeTablesRequestParams struct {
 	// 待查询表格所属表格组ID列表
 	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds"`
 
-	// 待查询表格信息列表
+	// 待查询表格信息列表，用户不用关注，过滤请使用filter
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// 过滤条件，本接口支持：TableName，TableInstanceId
@@ -2377,7 +2377,7 @@ type DescribeTablesRequest struct {
 	// 待查询表格所属表格组ID列表
 	TableGroupIds []*string `json:"TableGroupIds,omitempty" name:"TableGroupIds"`
 
-	// 待查询表格信息列表
+	// 待查询表格信息列表，用户不用关注，过滤请使用filter
 	SelectedTables []*SelectedTableInfoNew `json:"SelectedTables,omitempty" name:"SelectedTables"`
 
 	// 过滤条件，本接口支持：TableName，TableInstanceId
@@ -2864,6 +2864,10 @@ type ImportSnapshotsResponseParams struct {
 	// TaskId由 AppInstanceId-taskId 组成，以区分不同集群的任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// ApplicationId由 AppInstanceId-applicationId 组成，以区分不同集群的申请
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

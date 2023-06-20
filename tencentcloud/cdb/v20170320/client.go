@@ -123,6 +123,7 @@ func NewAdjustCdbProxyResponse() (response *AdjustCdbProxyResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_PROXYNODECOUNTLIMITERROR = "OperationDenied.ProxyNodeCountLimitError"
 func (c *Client) AdjustCdbProxy(request *AdjustCdbProxyRequest) (response *AdjustCdbProxyResponse, err error) {
     return c.AdjustCdbProxyWithContext(context.Background(), request)
@@ -134,6 +135,7 @@ func (c *Client) AdjustCdbProxy(request *AdjustCdbProxyRequest) (response *Adjus
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_PROXYNODECOUNTLIMITERROR = "OperationDenied.ProxyNodeCountLimitError"
 func (c *Client) AdjustCdbProxyWithContext(ctx context.Context, request *AdjustCdbProxyRequest) (response *AdjustCdbProxyResponse, err error) {
     if request == nil {
@@ -175,7 +177,9 @@ func NewAdjustCdbProxyAddressResponse() (response *AdjustCdbProxyAddressResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_UNSUPPORTCREATEADDRESSERROR = "OperationDenied.UnsupportCreateAddressError"
 //  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) AdjustCdbProxyAddress(request *AdjustCdbProxyAddressRequest) (response *AdjustCdbProxyAddressResponse, err error) {
@@ -188,7 +192,9 @@ func (c *Client) AdjustCdbProxyAddress(request *AdjustCdbProxyAddressRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_UNSUPPORTCREATEADDRESSERROR = "OperationDenied.UnsupportCreateAddressError"
 //  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) AdjustCdbProxyAddressWithContext(ctx context.Context, request *AdjustCdbProxyAddressRequest) (response *AdjustCdbProxyAddressResponse, err error) {
@@ -455,6 +461,7 @@ func NewCloseCdbProxyAddressResponse() (response *CloseCdbProxyAddressResponse) 
 // 请求关闭数据库代理地址
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_PROXYADDRESSLIMITERROR = "OperationDenied.ProxyAddressLimitError"
 //  OPERATIONDENIED_PROXYADDRESSNOTFUND = "OperationDenied.ProxyAddressNotFund"
 //  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
@@ -466,6 +473,7 @@ func (c *Client) CloseCdbProxyAddress(request *CloseCdbProxyAddressRequest) (res
 // 请求关闭数据库代理地址
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_PROXYADDRESSLIMITERROR = "OperationDenied.ProxyAddressLimitError"
 //  OPERATIONDENIED_PROXYADDRESSNOTFUND = "OperationDenied.ProxyAddressNotFund"
 //  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
@@ -1020,6 +1028,7 @@ func NewCreateCdbProxyResponse() (response *CreateCdbProxyResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REPEATCREATEPROXYERROR = "FailedOperation.RepeatCreateProxyError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
 //  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) CreateCdbProxy(request *CreateCdbProxyRequest) (response *CreateCdbProxyResponse, err error) {
@@ -1031,6 +1040,7 @@ func (c *Client) CreateCdbProxy(request *CreateCdbProxyRequest) (response *Creat
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REPEATCREATEPROXYERROR = "FailedOperation.RepeatCreateProxyError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
 //  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) CreateCdbProxyWithContext(ctx context.Context, request *CreateCdbProxyRequest) (response *CreateCdbProxyResponse, err error) {
@@ -1072,6 +1082,8 @@ func NewCreateCdbProxyAddressResponse() (response *CreateCdbProxyAddressResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  OPERATIONDENIED_PROXYADDRESSLIMITERROR = "OperationDenied.ProxyAddressLimitError"
 //  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
 func (c *Client) CreateCdbProxyAddress(request *CreateCdbProxyAddressRequest) (response *CreateCdbProxyAddressResponse, err error) {
@@ -1083,6 +1095,8 @@ func (c *Client) CreateCdbProxyAddress(request *CreateCdbProxyAddressRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  OPERATIONDENIED_PROXYADDRESSLIMITERROR = "OperationDenied.ProxyAddressLimitError"
 //  OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
 func (c *Client) CreateCdbProxyAddressWithContext(ctx context.Context, request *CreateCdbProxyAddressRequest) (response *CreateCdbProxyAddressResponse, err error) {
@@ -5079,6 +5093,7 @@ func NewDescribeProxyCustomConfResponse() (response *DescribeProxyCustomConfResp
 // 查询代理规格配置
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DescribeProxyCustomConf(request *DescribeProxyCustomConfRequest) (response *DescribeProxyCustomConfResponse, err error) {
     return c.DescribeProxyCustomConfWithContext(context.Background(), request)
@@ -5088,6 +5103,7 @@ func (c *Client) DescribeProxyCustomConf(request *DescribeProxyCustomConfRequest
 // 查询代理规格配置
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
 func (c *Client) DescribeProxyCustomConfWithContext(ctx context.Context, request *DescribeProxyCustomConfRequest) (response *DescribeProxyCustomConfResponse, err error) {
     if request == nil {
@@ -7325,9 +7341,7 @@ func NewModifyCdbProxyAddressDescResponse() (response *ModifyCdbProxyAddressDesc
 // 修改代理地址描述信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyCdbProxyAddressDesc(request *ModifyCdbProxyAddressDescRequest) (response *ModifyCdbProxyAddressDescResponse, err error) {
     return c.ModifyCdbProxyAddressDescWithContext(context.Background(), request)
 }
@@ -7336,9 +7350,7 @@ func (c *Client) ModifyCdbProxyAddressDesc(request *ModifyCdbProxyAddressDescReq
 // 修改代理地址描述信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyCdbProxyAddressDescWithContext(ctx context.Context, request *ModifyCdbProxyAddressDescRequest) (response *ModifyCdbProxyAddressDescResponse, err error) {
     if request == nil {
         request = NewModifyCdbProxyAddressDescRequest()
@@ -7379,6 +7391,7 @@ func NewModifyCdbProxyAddressVipAndVPortResponse() (response *ModifyCdbProxyAddr
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyCdbProxyAddressVipAndVPort(request *ModifyCdbProxyAddressVipAndVPortRequest) (response *ModifyCdbProxyAddressVipAndVPortResponse, err error) {
@@ -7391,6 +7404,7 @@ func (c *Client) ModifyCdbProxyAddressVipAndVPort(request *ModifyCdbProxyAddress
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyCdbProxyAddressVipAndVPortWithContext(ctx context.Context, request *ModifyCdbProxyAddressVipAndVPortRequest) (response *ModifyCdbProxyAddressVipAndVPortResponse, err error) {
@@ -7431,10 +7445,7 @@ func NewModifyCdbProxyParamResponse() (response *ModifyCdbProxyParamResponse) {
 // 配置数据库代理参数
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
-//  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
-//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ModifyCdbProxyParam(request *ModifyCdbProxyParamRequest) (response *ModifyCdbProxyParamResponse, err error) {
     return c.ModifyCdbProxyParamWithContext(context.Background(), request)
 }
@@ -7443,10 +7454,7 @@ func (c *Client) ModifyCdbProxyParam(request *ModifyCdbProxyParamRequest) (respo
 // 配置数据库代理参数
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
-//  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
-//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ModifyCdbProxyParamWithContext(ctx context.Context, request *ModifyCdbProxyParamRequest) (response *ModifyCdbProxyParamResponse, err error) {
     if request == nil {
         request = NewModifyCdbProxyParamRequest()
@@ -7952,6 +7960,7 @@ func NewModifyLocalBinlogConfigResponse() (response *ModifyLocalBinlogConfigResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = "OperationDenied.InstanceUnsupportedOperateError"
@@ -7964,6 +7973,7 @@ func (c *Client) ModifyLocalBinlogConfig(request *ModifyLocalBinlogConfigRequest
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = "OperationDenied.InstanceUnsupportedOperateError"
@@ -8125,6 +8135,7 @@ func NewModifyRemoteBackupConfigResponse() (response *ModifyRemoteBackupConfigRe
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigRequest) (response *ModifyRemoteBackupConfigResponse, err error) {
@@ -8137,6 +8148,7 @@ func (c *Client) ModifyRemoteBackupConfig(request *ModifyRemoteBackupConfigReque
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyRemoteBackupConfigWithContext(ctx context.Context, request *ModifyRemoteBackupConfigRequest) (response *ModifyRemoteBackupConfigResponse, err error) {
@@ -8809,6 +8821,7 @@ func NewReloadBalanceProxyNodeResponse() (response *ReloadBalanceProxyNodeRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ReloadBalanceProxyNode(request *ReloadBalanceProxyNodeRequest) (response *ReloadBalanceProxyNodeResponse, err error) {
     return c.ReloadBalanceProxyNodeWithContext(context.Background(), request)
 }
@@ -8819,6 +8832,7 @@ func (c *Client) ReloadBalanceProxyNode(request *ReloadBalanceProxyNodeRequest) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) ReloadBalanceProxyNodeWithContext(ctx context.Context, request *ReloadBalanceProxyNodeRequest) (response *ReloadBalanceProxyNodeResponse, err error) {
     if request == nil {
         request = NewReloadBalanceProxyNodeRequest()
@@ -9055,6 +9069,7 @@ func NewStartBatchRollbackResponse() (response *StartBatchRollbackResponse) {
 //  CDBERROR_TASKERROR = "CdbError.TaskError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
@@ -9072,6 +9087,7 @@ func (c *Client) StartBatchRollback(request *StartBatchRollbackRequest) (respons
 //  CDBERROR_TASKERROR = "CdbError.TaskError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
@@ -9581,6 +9597,7 @@ func NewUpgradeCDBProxyVersionResponse() (response *UpgradeCDBProxyVersionRespon
 // 升级数据库代理版本
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) UpgradeCDBProxyVersion(request *UpgradeCDBProxyVersionRequest) (response *UpgradeCDBProxyVersionResponse, err error) {
@@ -9591,6 +9608,7 @@ func (c *Client) UpgradeCDBProxyVersion(request *UpgradeCDBProxyVersionRequest) 
 // 升级数据库代理版本
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) UpgradeCDBProxyVersionWithContext(ctx context.Context, request *UpgradeCDBProxyVersionRequest) (response *UpgradeCDBProxyVersionResponse, err error) {

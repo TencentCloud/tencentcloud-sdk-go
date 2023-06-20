@@ -17,6 +17,9 @@ package v20210524
 const (
 	// 此产品的特有错误码
 
+	// 工作空间名称重复
+	FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
+
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 )

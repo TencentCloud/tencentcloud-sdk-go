@@ -559,6 +559,7 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
@@ -575,6 +576,7 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 func (c *Client) ChannelCreateEmbedWebUrlWithContext(ctx context.Context, request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
@@ -1283,6 +1285,7 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowRequest) (response *ChannelCreatePrepareFlowResponse, err error) {
     return c.ChannelCreatePrepareFlowWithContext(context.Background(), request)
@@ -1306,6 +1309,7 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreatePrepareFlowWithContext(ctx context.Context, request *ChannelCreatePrepareFlowRequest) (response *ChannelCreatePrepareFlowResponse, err error) {
     if request == nil {
@@ -2113,10 +2117,12 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
 //  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
 //  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_COMPANYACTIVEINFO = "MissingParameter.CompanyActiveInfo"
@@ -2162,10 +2168,12 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
 //  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
 //  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_COMPANYACTIVEINFO = "MissingParameter.CompanyActiveInfo"

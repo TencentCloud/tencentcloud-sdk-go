@@ -522,7 +522,7 @@ func NewCancelNotebookSessionStatementResponse() (response *CancelNotebookSessio
 }
 
 // CancelNotebookSessionStatement
-// 本接口（CancelNotebookSessionStatement）用于取消session statement
+// 本接口（CancelNotebookSessionStatement）用于取消session中执行的任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -536,7 +536,7 @@ func (c *Client) CancelNotebookSessionStatement(request *CancelNotebookSessionSt
 }
 
 // CancelNotebookSessionStatement
-// 本接口（CancelNotebookSessionStatement）用于取消session statement
+// 本接口（CancelNotebookSessionStatement）用于取消session中执行的任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -580,7 +580,7 @@ func NewCancelNotebookSessionStatementBatchResponse() (response *CancelNotebookS
 }
 
 // CancelNotebookSessionStatementBatch
-// 本接口（CancelNotebookSessionStatementBatch）用于按批取消Session statement。
+// 本接口（CancelNotebookSessionStatementBatch）用于批量取消Session 中执行的任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -594,7 +594,7 @@ func (c *Client) CancelNotebookSessionStatementBatch(request *CancelNotebookSess
 }
 
 // CancelNotebookSessionStatementBatch
-// 本接口（CancelNotebookSessionStatementBatch）用于按批取消Session statement。
+// 本接口（CancelNotebookSessionStatementBatch）用于批量取消Session 中执行的任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -694,7 +694,7 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
 }
 
 // CancelTask
-// 本接口（CancelTask），用于取消任务执行
+// 本接口（CancelTask），用于取消任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -708,7 +708,7 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
 }
 
 // CancelTask
-// 本接口（CancelTask），用于取消任务执行
+// 本接口（CancelTask），用于取消任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1256,7 +1256,7 @@ func NewCreateNotebookSessionResponse() (response *CreateNotebookSessionResponse
 }
 
 // CreateNotebookSession
-// 本接口（CreateNotebookSession）用于创建notebook livy session
+// 本接口（CreateNotebookSession）用于创建交互式session（notebook）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1270,7 +1270,7 @@ func (c *Client) CreateNotebookSession(request *CreateNotebookSessionRequest) (r
 }
 
 // CreateNotebookSession
-// 本接口（CreateNotebookSession）用于创建notebook livy session
+// 本接口（CreateNotebookSession）用于创建交互式session（notebook）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1314,7 +1314,7 @@ func NewCreateNotebookSessionStatementResponse() (response *CreateNotebookSessio
 }
 
 // CreateNotebookSessionStatement
-// 本接口（CreateNotebookSessionStatement）用于创建session statement
+// 本接口（CreateNotebookSessionStatement）用于在session中执行代码片段
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1329,7 +1329,7 @@ func (c *Client) CreateNotebookSessionStatement(request *CreateNotebookSessionSt
 }
 
 // CreateNotebookSessionStatement
-// 本接口（CreateNotebookSessionStatement）用于创建session statement
+// 本接口（CreateNotebookSessionStatement）用于在session中执行代码片段
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1374,7 +1374,7 @@ func NewCreateNotebookSessionStatementSupportBatchSQLResponse() (response *Creat
 }
 
 // CreateNotebookSessionStatementSupportBatchSQL
-// 本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建Statement批量运行SQL任务。
+// 本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建交互式session并执行SQL任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1389,7 +1389,7 @@ func (c *Client) CreateNotebookSessionStatementSupportBatchSQL(request *CreateNo
 }
 
 // CreateNotebookSessionStatementSupportBatchSQL
-// 本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建Statement批量运行SQL任务。
+// 本接口（CreateNotebookSessionStatementSupportBatchSQL）用于创建交互式session并执行SQL任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1536,7 +1536,7 @@ func NewCreateSparkAppResponse() (response *CreateSparkAppResponse) {
 }
 
 // CreateSparkApp
-// 创建spark应用
+// 创建spark作业
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1546,7 +1546,7 @@ func (c *Client) CreateSparkApp(request *CreateSparkAppRequest) (response *Creat
 }
 
 // CreateSparkApp
-// 创建spark应用
+// 创建spark作业
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1586,7 +1586,7 @@ func NewCreateSparkAppTaskResponse() (response *CreateSparkAppTaskResponse) {
 }
 
 // CreateSparkAppTask
-// 创建spark任务
+// 启动Spark作业
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1598,7 +1598,7 @@ func (c *Client) CreateSparkAppTask(request *CreateSparkAppTaskRequest) (respons
 }
 
 // CreateSparkAppTask
-// 创建spark任务
+// 启动Spark作业
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1806,7 +1806,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 }
 
 // CreateTask
-// 本接口（CreateTask）用于创建sql查询任务。（推荐使用CreateTasks接口）
+// 本接口（CreateTask）用于创建并执行SQL任务。（推荐使用CreateTasks接口）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1825,7 +1825,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 }
 
 // CreateTask
-// 本接口（CreateTask）用于创建sql查询任务。（推荐使用CreateTasks接口）
+// 本接口（CreateTask）用于创建并执行SQL任务。（推荐使用CreateTasks接口）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1874,7 +1874,7 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 }
 
 // CreateTasks
-// 本接口（CreateTasks），用于批量创建任务
+// 本接口（CreateTasks），用于批量创建并执行SQL任务
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1895,7 +1895,7 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
 }
 
 // CreateTasks
-// 本接口（CreateTasks），用于批量创建任务
+// 本接口（CreateTasks），用于批量创建并执行SQL任务
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2254,7 +2254,7 @@ func NewDeleteSparkAppResponse() (response *DeleteSparkAppResponse) {
 }
 
 // DeleteSparkApp
-// 删除spark应用
+// 删除spark作业
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2264,7 +2264,7 @@ func (c *Client) DeleteSparkApp(request *DeleteSparkAppRequest) (response *Delet
 }
 
 // DeleteSparkApp
-// 删除spark应用
+// 删除spark作业
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2688,7 +2688,7 @@ func NewDescribeDataEnginesResponse() (response *DescribeDataEnginesResponse) {
 }
 
 // DescribeDataEngines
-// 本接口（DescribeDataEngines）用于获取DataEngines信息列表
+// 本接口（DescribeDataEngines）用于查询DataEngines信息列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
@@ -2702,7 +2702,7 @@ func (c *Client) DescribeDataEngines(request *DescribeDataEnginesRequest) (respo
 }
 
 // DescribeDataEngines
-// 本接口（DescribeDataEngines）用于获取DataEngines信息列表
+// 本接口（DescribeDataEngines）用于查询DataEngines信息列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
@@ -2802,7 +2802,7 @@ func NewDescribeEngineUsageInfoResponse() (response *DescribeEngineUsageInfoResp
 }
 
 // DescribeEngineUsageInfo
-// 本接口根据引擎ID获取数据引擎资源使用情况
+// 本接口根据引擎ID查询数据引擎资源使用情况
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2813,7 +2813,7 @@ func (c *Client) DescribeEngineUsageInfo(request *DescribeEngineUsageInfoRequest
 }
 
 // DescribeEngineUsageInfo
-// 本接口根据引擎ID获取数据引擎资源使用情况
+// 本接口根据引擎ID查询数据引擎资源使用情况
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2854,7 +2854,7 @@ func NewDescribeForbiddenTableProResponse() (response *DescribeForbiddenTablePro
 }
 
 // DescribeForbiddenTablePro
-// 本接口（DescribeForbiddenTablePro）用于获取被禁用的表属性列表
+// 本接口（DescribeForbiddenTablePro）用于查询被禁用的表属性列表（新）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2867,7 +2867,7 @@ func (c *Client) DescribeForbiddenTablePro(request *DescribeForbiddenTableProReq
 }
 
 // DescribeForbiddenTablePro
-// 本接口（DescribeForbiddenTablePro）用于获取被禁用的表属性列表
+// 本接口（DescribeForbiddenTablePro）用于查询被禁用的表属性列表（新）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3036,7 +3036,7 @@ func NewDescribeNotebookSessionResponse() (response *DescribeNotebookSessionResp
 }
 
 // DescribeNotebookSession
-// 本接口（DescribeNotebookSession）用于获取notebook livy session详情信息
+// 本接口（DescribeNotebookSession）用于查询交互式 session详情信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3051,7 +3051,7 @@ func (c *Client) DescribeNotebookSession(request *DescribeNotebookSessionRequest
 }
 
 // DescribeNotebookSession
-// 本接口（DescribeNotebookSession）用于获取notebook livy session详情信息
+// 本接口（DescribeNotebookSession）用于查询交互式 session详情信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3096,7 +3096,7 @@ func NewDescribeNotebookSessionLogResponse() (response *DescribeNotebookSessionL
 }
 
 // DescribeNotebookSessionLog
-// 本接口（DescribeNotebookSessionLog）用于获取notebook livy session日志
+// 本接口（DescribeNotebookSessionLog）用于查询交互式 session日志
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3111,7 +3111,7 @@ func (c *Client) DescribeNotebookSessionLog(request *DescribeNotebookSessionLogR
 }
 
 // DescribeNotebookSessionLog
-// 本接口（DescribeNotebookSessionLog）用于获取notebook livy session日志
+// 本接口（DescribeNotebookSessionLog）用于查询交互式 session日志
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3156,7 +3156,7 @@ func NewDescribeNotebookSessionStatementResponse() (response *DescribeNotebookSe
 }
 
 // DescribeNotebookSessionStatement
-// 本接口（DescribeNotebookSessionStatement）用于获取session statement信息
+// 本接口（DescribeNotebookSessionStatement）用于查询session 中执行任务的详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3171,7 +3171,7 @@ func (c *Client) DescribeNotebookSessionStatement(request *DescribeNotebookSessi
 }
 
 // DescribeNotebookSessionStatement
-// 本接口（DescribeNotebookSessionStatement）用于获取session statement信息
+// 本接口（DescribeNotebookSessionStatement）用于查询session 中执行任务的详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3270,7 +3270,7 @@ func NewDescribeNotebookSessionStatementsResponse() (response *DescribeNotebookS
 }
 
 // DescribeNotebookSessionStatements
-// 本接口（DescribeNotebookSessionStatements）用于获取Session Statement列表。
+// 本接口（DescribeNotebookSessionStatements）用于查询Session中执行的任务列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3285,7 +3285,7 @@ func (c *Client) DescribeNotebookSessionStatements(request *DescribeNotebookSess
 }
 
 // DescribeNotebookSessionStatements
-// 本接口（DescribeNotebookSessionStatements）用于获取Session Statement列表。
+// 本接口（DescribeNotebookSessionStatements）用于查询Session中执行的任务列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3330,7 +3330,7 @@ func NewDescribeNotebookSessionsResponse() (response *DescribeNotebookSessionsRe
 }
 
 // DescribeNotebookSessions
-// 本接口（DescribeNotebookSessions）用于获取notebook livy session列表
+// 本接口（DescribeNotebookSessions）用于查询交互式 session列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3343,7 +3343,7 @@ func (c *Client) DescribeNotebookSessions(request *DescribeNotebookSessionsReque
 }
 
 // DescribeNotebookSessions
-// 本接口（DescribeNotebookSessions）用于获取notebook livy session列表
+// 本接口（DescribeNotebookSessions）用于查询交互式 session列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3442,7 +3442,7 @@ func NewDescribeScriptsResponse() (response *DescribeScriptsResponse) {
 }
 
 // DescribeScripts
-// 该接口（DescribeScripts）用于获取所有SQL查询。
+// 该接口（DescribeScripts）用于查询SQL脚本列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3453,7 +3453,7 @@ func (c *Client) DescribeScripts(request *DescribeScriptsRequest) (response *Des
 }
 
 // DescribeScripts
-// 该接口（DescribeScripts）用于获取所有SQL查询。
+// 该接口（DescribeScripts）用于查询SQL脚本列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3494,7 +3494,7 @@ func NewDescribeSparkAppJobResponse() (response *DescribeSparkAppJobResponse) {
 }
 
 // DescribeSparkAppJob
-// 查询具体的spark应用
+// 查询spark作业信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3505,7 +3505,7 @@ func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (respo
 }
 
 // DescribeSparkAppJob
-// 查询具体的spark应用
+// 查询spark作业信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3546,7 +3546,7 @@ func NewDescribeSparkAppJobsResponse() (response *DescribeSparkAppJobsResponse) 
 }
 
 // DescribeSparkAppJobs
-// 获取spark应用列表。
+// 查询spark作业列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3559,7 +3559,7 @@ func (c *Client) DescribeSparkAppJobs(request *DescribeSparkAppJobsRequest) (res
 }
 
 // DescribeSparkAppJobs
-// 获取spark应用列表。
+// 查询spark作业列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3602,7 +3602,7 @@ func NewDescribeSparkAppTasksResponse() (response *DescribeSparkAppTasksResponse
 }
 
 // DescribeSparkAppTasks
-// 查询spark应用的运行任务实例列表
+// 查询Spark作业的运行任务列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3611,7 +3611,7 @@ func (c *Client) DescribeSparkAppTasks(request *DescribeSparkAppTasksRequest) (r
 }
 
 // DescribeSparkAppTasks
-// 查询spark应用的运行任务实例列表
+// 查询Spark作业的运行任务列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4508,7 +4508,7 @@ func NewListTaskJobLogDetailResponse() (response *ListTaskJobLogDetailResponse) 
 }
 
 // ListTaskJobLogDetail
-// 本接口（ListTaskJobLogDetail）用于获取spark-jar日志列表
+// 本接口（ListTaskJobLogDetail）用于获取spark 作业任务日志详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4520,7 +4520,7 @@ func (c *Client) ListTaskJobLogDetail(request *ListTaskJobLogDetailRequest) (res
 }
 
 // ListTaskJobLogDetail
-// 本接口（ListTaskJobLogDetail）用于获取spark-jar日志列表
+// 本接口（ListTaskJobLogDetail）用于获取spark 作业任务日志详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4676,7 +4676,7 @@ func NewModifySparkAppResponse() (response *ModifySparkAppResponse) {
 }
 
 // ModifySparkApp
-// 更新spark应用
+// 更新spark作业
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4686,7 +4686,7 @@ func (c *Client) ModifySparkApp(request *ModifySparkAppRequest) (response *Modif
 }
 
 // ModifySparkApp
-// 更新spark应用
+// 更新spark作业
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4934,7 +4934,7 @@ func NewSuspendResumeDataEngineResponse() (response *SuspendResumeDataEngineResp
 }
 
 // SuspendResumeDataEngine
-// 本接口用于控制暂停或恢复数据引擎
+// 本接口用于控制挂起或启动数据引擎
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4946,7 +4946,7 @@ func (c *Client) SuspendResumeDataEngine(request *SuspendResumeDataEngineRequest
 }
 
 // SuspendResumeDataEngine
-// 本接口用于控制暂停或恢复数据引擎
+// 本接口用于控制挂起或启动数据引擎
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

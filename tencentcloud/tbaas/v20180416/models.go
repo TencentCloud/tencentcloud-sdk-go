@@ -2094,6 +2094,129 @@ func (r *GetLatesdTransactionListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetLatestTransactionListRequestParams struct {
+	// 模块名称，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名称，固定字段：latest_transaction_list
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 组织ID，固定字段：0
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 通道ID，固定字段：0
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 获取的最新交易的区块数量，取值范围1~5
+	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitempty" name:"LatestBlockNumber"`
+
+	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 需要查询的通道名称，可在通道详情或列表中获取
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要获取的起始交易偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要获取的交易数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type GetLatestTransactionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模块名称，固定字段：transaction
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名称，固定字段：latest_transaction_list
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 组织ID，固定字段：0
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 通道ID，固定字段：0
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 获取的最新交易的区块数量，取值范围1~5
+	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitempty" name:"LatestBlockNumber"`
+
+	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 需要查询的通道名称，可在通道详情或列表中获取
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 区块链网络ID，可在区块链网络详情或列表中获取
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要获取的起始交易偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要获取的交易数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *GetLatestTransactionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLatestTransactionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "Operation")
+	delete(f, "GroupId")
+	delete(f, "ChannelId")
+	delete(f, "LatestBlockNumber")
+	delete(f, "GroupName")
+	delete(f, "ChannelName")
+	delete(f, "ClusterId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetLatestTransactionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetLatestTransactionListResponseParams struct {
+	// 交易总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 交易列表
+	TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetLatestTransactionListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetLatestTransactionListResponseParams `json:"Response"`
+}
+
+func (r *GetLatestTransactionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetLatestTransactionListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetPeerLogForUserRequestParams struct {
 	// 模块名，本接口取值：peer_mng
 	Module *string `json:"Module,omitempty" name:"Module"`

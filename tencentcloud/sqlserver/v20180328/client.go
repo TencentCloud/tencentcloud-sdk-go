@@ -473,6 +473,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 // 本接口(CreateBackup)用于创建备份。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
@@ -496,6 +497,7 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBac
 // 本接口(CreateBackup)用于创建备份。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
@@ -2805,6 +2807,7 @@ func NewDescribeDBsNormalResponse() (response *DescribeDBsNormalResponse) {
 // 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
@@ -2821,6 +2824,7 @@ func (c *Client) DescribeDBsNormal(request *DescribeDBsNormalRequest) (response 
 // 本接口(DescribeDBsNormal)用于查询数据库配置信息，此接口不包含数据库的关联账号
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"

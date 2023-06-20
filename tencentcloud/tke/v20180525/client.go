@@ -2571,6 +2571,74 @@ func (c *Client) CreateTKEEdgeClusterWithContext(ctx context.Context, request *C
     return
 }
 
+func NewDeleteAddonRequest() (request *DeleteAddonRequest) {
+    request = &DeleteAddonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteAddon")
+    
+    
+    return
+}
+
+func NewDeleteAddonResponse() (response *DeleteAddonResponse) {
+    response = &DeleteAddonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAddon
+// 删除一个addon
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAddon(request *DeleteAddonRequest) (response *DeleteAddonResponse, err error) {
+    return c.DeleteAddonWithContext(context.Background(), request)
+}
+
+// DeleteAddon
+// 删除一个addon
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAddonWithContext(ctx context.Context, request *DeleteAddonRequest) (response *DeleteAddonResponse, err error) {
+    if request == nil {
+        request = NewDeleteAddonRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAddon require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAddonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBackupStorageLocationRequest() (request *DeleteBackupStorageLocationRequest) {
     request = &DeleteBackupStorageLocationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4337,6 +4405,142 @@ func (c *Client) DeleteTKEEdgeClusterWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteTKEEdgeClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAddonRequest() (request *DescribeAddonRequest) {
+    request = &DescribeAddonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeAddon")
+    
+    
+    return
+}
+
+func NewDescribeAddonResponse() (response *DescribeAddonResponse) {
+    response = &DescribeAddonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAddon
+// 获取addon列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAddon(request *DescribeAddonRequest) (response *DescribeAddonResponse, err error) {
+    return c.DescribeAddonWithContext(context.Background(), request)
+}
+
+// DescribeAddon
+// 获取addon列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAddonWithContext(ctx context.Context, request *DescribeAddonRequest) (response *DescribeAddonResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddonRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddon require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAddonResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAddonValuesRequest() (request *DescribeAddonValuesRequest) {
+    request = &DescribeAddonValuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeAddonValues")
+    
+    
+    return
+}
+
+func NewDescribeAddonValuesResponse() (response *DescribeAddonValuesResponse) {
+    response = &DescribeAddonValuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAddonValues
+// 获取一个addon的参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAddonValues(request *DescribeAddonValuesRequest) (response *DescribeAddonValuesResponse, err error) {
+    return c.DescribeAddonValuesWithContext(context.Background(), request)
+}
+
+// DescribeAddonValues
+// 获取一个addon的参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAddonValuesWithContext(ctx context.Context, request *DescribeAddonValuesRequest) (response *DescribeAddonValuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddonValuesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddonValues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAddonValuesResponse()
     err = c.Send(request, response)
     return
 }
@@ -10471,6 +10675,58 @@ func (c *Client) GetUpgradeInstanceProgressWithContext(ctx context.Context, requ
     return
 }
 
+func NewInstallAddonRequest() (request *InstallAddonRequest) {
+    request = &InstallAddonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "InstallAddon")
+    
+    
+    return
+}
+
+func NewInstallAddonResponse() (response *InstallAddonResponse) {
+    response = &InstallAddonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InstallAddon
+// 为目标集群安装一个addon
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) InstallAddon(request *InstallAddonRequest) (response *InstallAddonResponse, err error) {
+    return c.InstallAddonWithContext(context.Background(), request)
+}
+
+// InstallAddon
+// 为目标集群安装一个addon
+//
+// 可能返回的错误码:
+//  INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) InstallAddonWithContext(ctx context.Context, request *InstallAddonRequest) (response *InstallAddonResponse, err error) {
+    if request == nil {
+        request = NewInstallAddonRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallAddon require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstallAddonResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInstallEdgeLogAgentRequest() (request *InstallEdgeLogAgentRequest) {
     request = &InstallEdgeLogAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12559,6 +12815,66 @@ func (c *Client) UninstallLogAgentWithContext(ctx context.Context, request *Unin
     request.SetContext(ctx)
     
     response = NewUninstallLogAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAddonRequest() (request *UpdateAddonRequest) {
+    request = &UpdateAddonRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "UpdateAddon")
+    
+    
+    return
+}
+
+func NewUpdateAddonResponse() (response *UpdateAddonResponse) {
+    response = &UpdateAddonResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateAddon
+// 更新一个addon的参数和版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) UpdateAddon(request *UpdateAddonRequest) (response *UpdateAddonResponse, err error) {
+    return c.UpdateAddonWithContext(context.Background(), request)
+}
+
+// UpdateAddon
+// 更新一个addon的参数和版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
+//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) UpdateAddonWithContext(ctx context.Context, request *UpdateAddonRequest) (response *UpdateAddonResponse, err error) {
+    if request == nil {
+        request = NewUpdateAddonRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAddon require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateAddonResponse()
     err = c.Send(request, response)
     return
 }

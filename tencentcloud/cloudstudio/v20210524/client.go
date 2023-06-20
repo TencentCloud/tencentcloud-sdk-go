@@ -149,12 +149,18 @@ func NewCreateWorkspaceByTemplateResponse() (response *CreateWorkspaceByTemplate
 
 // CreateWorkspaceByTemplate
 // 快速开始, 基于模板创建工作空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
 func (c *Client) CreateWorkspaceByTemplate(request *CreateWorkspaceByTemplateRequest) (response *CreateWorkspaceByTemplateResponse, err error) {
     return c.CreateWorkspaceByTemplateWithContext(context.Background(), request)
 }
 
 // CreateWorkspaceByTemplate
 // 快速开始, 基于模板创建工作空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
 func (c *Client) CreateWorkspaceByTemplateWithContext(ctx context.Context, request *CreateWorkspaceByTemplateRequest) (response *CreateWorkspaceByTemplateResponse, err error) {
     if request == nil {
         request = NewCreateWorkspaceByTemplateRequest()
@@ -191,12 +197,18 @@ func NewCreateWorkspaceByVersionControlResponse() (response *CreateWorkspaceByVe
 
 // CreateWorkspaceByVersionControl
 // 根据模板创建工作空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
 func (c *Client) CreateWorkspaceByVersionControl(request *CreateWorkspaceByVersionControlRequest) (response *CreateWorkspaceByVersionControlResponse, err error) {
     return c.CreateWorkspaceByVersionControlWithContext(context.Background(), request)
 }
 
 // CreateWorkspaceByVersionControl
 // 根据模板创建工作空间
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
 func (c *Client) CreateWorkspaceByVersionControlWithContext(ctx context.Context, request *CreateWorkspaceByVersionControlRequest) (response *CreateWorkspaceByVersionControlResponse, err error) {
     if request == nil {
         request = NewCreateWorkspaceByVersionControlRequest()

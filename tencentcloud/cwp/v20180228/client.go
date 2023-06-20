@@ -5735,6 +5735,7 @@ func NewDescribeBaselineRuleListResponse() (response *DescribeBaselineRuleListRe
 // 获取基线规则列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineRuleList(request *DescribeBaselineRuleListRequest) (response *DescribeBaselineRuleListResponse, err error) {
@@ -5745,6 +5746,7 @@ func (c *Client) DescribeBaselineRuleList(request *DescribeBaselineRuleListReque
 // 获取基线规则列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineRuleListWithContext(ctx context.Context, request *DescribeBaselineRuleListRequest) (response *DescribeBaselineRuleListResponse, err error) {
@@ -11758,6 +11760,7 @@ func NewDestroyOrderResponse() (response *DestroyOrderResponse) {
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DestroyOrder(request *DestroyOrderRequest) (response *DestroyOrderResponse, err error) {
     return c.DestroyOrderWithContext(context.Background(), request)
 }
@@ -11767,6 +11770,7 @@ func (c *Client) DestroyOrder(request *DestroyOrderRequest) (response *DestroyOr
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DestroyOrderWithContext(ctx context.Context, request *DestroyOrderRequest) (response *DestroyOrderResponse, err error) {
     if request == nil {
         request = NewDestroyOrderRequest()

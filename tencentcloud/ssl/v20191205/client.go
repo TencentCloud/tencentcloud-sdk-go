@@ -222,6 +222,7 @@ func NewCheckCertificateChainResponse() (response *CheckCertificateChainResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) CheckCertificateChain(request *CheckCertificateChainRequest) (response *CheckCertificateChainResponse, err error) {
     return c.CheckCertificateChainWithContext(context.Background(), request)
 }
@@ -231,6 +232,7 @@ func (c *Client) CheckCertificateChain(request *CheckCertificateChainRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) CheckCertificateChainWithContext(ctx context.Context, request *CheckCertificateChainRequest) (response *CheckCertificateChainResponse, err error) {
     if request == nil {
         request = NewCheckCertificateChainRequest()
@@ -803,6 +805,7 @@ func NewDeployCertificateRecordRollbackResponse() (response *DeployCertificateRe
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYNOTEXIST = "FailedOperation.CertificateDeployNotExist"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
 //  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
@@ -824,6 +827,7 @@ func (c *Client) DeployCertificateRecordRollback(request *DeployCertificateRecor
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployDetailRollbackStatusInvalid"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = "FailedOperation.CertificateDeployHasPendingRecord"
+//  FAILEDOPERATION_CERTIFICATEDEPLOYNOTEXIST = "FailedOperation.CertificateDeployNotExist"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = "FailedOperation.CertificateDeployRetryStatusInvalid"
 //  FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = "FailedOperation.CertificateDeployRollbackStatusInvalid"
 //  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"

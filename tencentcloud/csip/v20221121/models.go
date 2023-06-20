@@ -689,6 +689,119 @@ func (r *CreateDomainAndIpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRiskCenterScanTaskRequestParams struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
+	ScanAssetType *int64 `json:"ScanAssetType,omitempty" name:"ScanAssetType"`
+
+	// 扫描项目；port/poc/weakpass/webcontent/configrisk
+	ScanItem []*string `json:"ScanItem,omitempty" name:"ScanItem"`
+
+	// 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
+	ScanPlanType *int64 `json:"ScanPlanType,omitempty" name:"ScanPlanType"`
+
+	// 扫描资产信息列表
+	Assets []*TaskAssetObject `json:"Assets,omitempty" name:"Assets"`
+
+	// 扫描计划详情
+	ScanPlanContent *string `json:"ScanPlanContent,omitempty" name:"ScanPlanContent"`
+
+	// ip/域名/url数组
+	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitempty" name:"SelfDefiningAssets"`
+
+	// 高级配置
+	TaskAdvanceCFG *TaskAdvanceCFG `json:"TaskAdvanceCFG,omitempty" name:"TaskAdvanceCFG"`
+
+	// 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
+	TaskMode *int64 `json:"TaskMode,omitempty" name:"TaskMode"`
+}
+
+type CreateRiskCenterScanTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 0-全扫，1-指定资产扫，2-排除资产扫，3-手动填写扫；1和2则Assets字段必填，3则SelfDefiningAssets必填
+	ScanAssetType *int64 `json:"ScanAssetType,omitempty" name:"ScanAssetType"`
+
+	// 扫描项目；port/poc/weakpass/webcontent/configrisk
+	ScanItem []*string `json:"ScanItem,omitempty" name:"ScanItem"`
+
+	// 0-周期任务,1-立即扫描,2-定时扫描,3-自定义；0,2,3则ScanPlanContent必填
+	ScanPlanType *int64 `json:"ScanPlanType,omitempty" name:"ScanPlanType"`
+
+	// 扫描资产信息列表
+	Assets []*TaskAssetObject `json:"Assets,omitempty" name:"Assets"`
+
+	// 扫描计划详情
+	ScanPlanContent *string `json:"ScanPlanContent,omitempty" name:"ScanPlanContent"`
+
+	// ip/域名/url数组
+	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitempty" name:"SelfDefiningAssets"`
+
+	// 高级配置
+	TaskAdvanceCFG *TaskAdvanceCFG `json:"TaskAdvanceCFG,omitempty" name:"TaskAdvanceCFG"`
+
+	// 体检模式，0-标准模式，1-快速模式，2-高级模式，默认标准模式
+	TaskMode *int64 `json:"TaskMode,omitempty" name:"TaskMode"`
+}
+
+func (r *CreateRiskCenterScanTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRiskCenterScanTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "ScanAssetType")
+	delete(f, "ScanItem")
+	delete(f, "ScanPlanType")
+	delete(f, "Assets")
+	delete(f, "ScanPlanContent")
+	delete(f, "SelfDefiningAssets")
+	delete(f, "TaskAdvanceCFG")
+	delete(f, "TaskMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRiskCenterScanTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRiskCenterScanTaskResponseParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRiskCenterScanTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRiskCenterScanTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateRiskCenterScanTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRiskCenterScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DBAssetVO struct {
 	// 资产id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2121,6 +2234,65 @@ type Tag struct {
 
 	// 标签内容
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TaskAdvanceCFG struct {
+	// 漏洞风险高级配置
+	VulRisk []*TaskCenterVulRiskInputParam `json:"VulRisk,omitempty" name:"VulRisk"`
+
+	// 弱口令风险高级配置
+	WeakPwdRisk []*TaskCenterWeakPwdRiskInputParam `json:"WeakPwdRisk,omitempty" name:"WeakPwdRisk"`
+
+	// 配置风险高级配置
+	CFGRisk []*TaskCenterCFGRiskInputParam `json:"CFGRisk,omitempty" name:"CFGRisk"`
+}
+
+type TaskAssetObject struct {
+	// 资产名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+
+	// 	资产类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 资产分类
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+
+	// ip/域名/资产id，数据库id等
+	Asset *string `json:"Asset,omitempty" name:"Asset"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type TaskCenterCFGRiskInputParam struct {
+	// 检测项ID
+	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 是否开启，0-不开启，1-开启
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+type TaskCenterVulRiskInputParam struct {
+	// 风险ID
+	RiskId *string `json:"RiskId,omitempty" name:"RiskId"`
+
+	// 是否开启，0-不开启，1-开启
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+}
+
+type TaskCenterWeakPwdRiskInputParam struct {
+	// 检测项ID
+	CheckItemId *int64 `json:"CheckItemId,omitempty" name:"CheckItemId"`
+
+	// 是否开启，0-不开启，1-开启
+	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
 }
 
 type Vpc struct {

@@ -11518,6 +11518,102 @@ func (r *SendMsgResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendRocketMQMessageRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 信息内容
+	MsgBody *string `json:"MsgBody,omitempty" name:"MsgBody"`
+
+	// 消息key信息
+	MsgKey *string `json:"MsgKey,omitempty" name:"MsgKey"`
+
+	// 消息tag信息
+	MsgTag *string `json:"MsgTag,omitempty" name:"MsgTag"`
+}
+
+type SendRocketMQMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 命名空间
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 信息内容
+	MsgBody *string `json:"MsgBody,omitempty" name:"MsgBody"`
+
+	// 消息key信息
+	MsgKey *string `json:"MsgKey,omitempty" name:"MsgKey"`
+
+	// 消息tag信息
+	MsgTag *string `json:"MsgTag,omitempty" name:"MsgTag"`
+}
+
+func (r *SendRocketMQMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendRocketMQMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NamespaceId")
+	delete(f, "TopicName")
+	delete(f, "MsgBody")
+	delete(f, "MsgKey")
+	delete(f, "MsgTag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendRocketMQMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendRocketMQMessageResponseParams struct {
+	// 发送结果
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 消息ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgId *string `json:"MsgId,omitempty" name:"MsgId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SendRocketMQMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *SendRocketMQMessageResponseParams `json:"Response"`
+}
+
+func (r *SendRocketMQMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendRocketMQMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Sort struct {
 	// 排序字段
 	Name *string `json:"Name,omitempty" name:"Name"`
