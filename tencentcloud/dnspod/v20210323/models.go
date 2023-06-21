@@ -103,6 +103,10 @@ type BatchRecordInfo struct {
 	// 记录权重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 // Predefined struct for user

@@ -396,6 +396,9 @@ type DescribeApmInstancesRequestParams struct {
 
 	// 是否查询官方demo实例
 	DemoInstanceFlag *int64 `json:"DemoInstanceFlag,omitempty" name:"DemoInstanceFlag"`
+
+	// 是否查询全地域实例
+	AllRegionsFlag *int64 `json:"AllRegionsFlag,omitempty" name:"AllRegionsFlag"`
 }
 
 type DescribeApmInstancesRequest struct {
@@ -412,6 +415,9 @@ type DescribeApmInstancesRequest struct {
 
 	// 是否查询官方demo实例
 	DemoInstanceFlag *int64 `json:"DemoInstanceFlag,omitempty" name:"DemoInstanceFlag"`
+
+	// 是否查询全地域实例
+	AllRegionsFlag *int64 `json:"AllRegionsFlag,omitempty" name:"AllRegionsFlag"`
 }
 
 func (r *DescribeApmInstancesRequest) ToJsonString() string {
@@ -430,6 +436,7 @@ func (r *DescribeApmInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceName")
 	delete(f, "InstanceIds")
 	delete(f, "DemoInstanceFlag")
+	delete(f, "AllRegionsFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApmInstancesRequest has unknown keys!", "")
 	}

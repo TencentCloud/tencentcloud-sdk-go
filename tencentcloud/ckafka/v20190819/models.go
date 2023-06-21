@@ -521,6 +521,20 @@ type BatchModifyTopicResultDTO struct {
 	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
+type BrokerTopicData struct {
+	// 主题名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 主题占用Broker 容量大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSize *uint64 `json:"DataSize,omitempty" name:"DataSize"`
+}
+
 // Predefined struct for user
 type CancelAuthorizationTokenRequestParams struct {
 	// 实例ID
@@ -5809,6 +5823,9 @@ type DescribeTopicFlowRankingRequestParams struct {
 
 	// 排行结束日期
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// Broker IP 地址
+	BrokerIp *string `json:"BrokerIp,omitempty" name:"BrokerIp"`
 }
 
 type DescribeTopicFlowRankingRequest struct {
@@ -5825,6 +5842,9 @@ type DescribeTopicFlowRankingRequest struct {
 
 	// 排行结束日期
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// Broker IP 地址
+	BrokerIp *string `json:"BrokerIp,omitempty" name:"BrokerIp"`
 }
 
 func (r *DescribeTopicFlowRankingRequest) ToJsonString() string {
@@ -5843,6 +5863,7 @@ func (r *DescribeTopicFlowRankingRequest) FromJsonString(s string) error {
 	delete(f, "RankingType")
 	delete(f, "BeginDate")
 	delete(f, "EndDate")
+	delete(f, "BrokerIp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicFlowRankingRequest has unknown keys!", "")
 	}
@@ -9912,6 +9933,14 @@ type TopicFlowRankingResult struct {
 	// Topic 消息堆积/占用磁盘排行
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicMessageHeap []*TopicMessageHeapRanking `json:"TopicMessageHeap,omitempty" name:"TopicMessageHeap"`
+
+	// Broker Ip 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerIp []*string `json:"BrokerIp,omitempty" name:"BrokerIp"`
+
+	// 单个broker 节点 Topic占用的数据大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerTopicData []*BrokerTopicData `json:"BrokerTopicData,omitempty" name:"BrokerTopicData"`
 }
 
 type TopicInSyncReplicaInfo struct {

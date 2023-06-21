@@ -44,7 +44,7 @@ type AssumeRoleRequestParams struct {
 	// 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@_-。 正则为：[\w+=,.@_-]*
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
-	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+	// 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 
 	// 策略描述
@@ -79,7 +79,7 @@ type AssumeRoleRequest struct {
 	// 长度在2到128之间，可包含大小写字符，数字以及特殊字符：=,.@_-。 正则为：[\w+=,.@_-]*
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
-	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+	// 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 
 	// 策略描述
@@ -127,13 +127,13 @@ func (r *AssumeRoleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssumeRoleResponseParams struct {
-	// 临时安全证书
+	// 临时访问凭证
 	Credentials *Credentials `json:"Credentials,omitempty" name:"Credentials"`
 
-	// 证书无效的时间，返回 Unix 时间戳，精确到秒
+	// 临时访问凭证的过期时间，返回 Unix 时间戳，精确到秒
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
-	// 证书无效的时间，以 iso8601 格式的 UTC 时间表示
+	// 临时访问凭证的过期时间，以 iso8601 格式的 UTC 时间表示
 	Expiration *string `json:"Expiration,omitempty" name:"Expiration"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -170,7 +170,7 @@ type AssumeRoleWithSAMLRequestParams struct {
 	// 会话名称
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
-	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+	// 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 
@@ -189,7 +189,7 @@ type AssumeRoleWithSAMLRequest struct {
 	// 会话名称
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
-	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+	// 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
 	DurationSeconds *uint64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 
@@ -221,10 +221,10 @@ type AssumeRoleWithSAMLResponseParams struct {
 	// 对象里面包含 Token，TmpSecretId，TmpSecretKey 三元组
 	Credentials *Credentials `json:"Credentials,omitempty" name:"Credentials"`
 
-	// 证书无效的时间，返回 Unix 时间戳，精确到秒
+	// 临时访问凭证的过期时间，返回 Unix 时间戳，精确到秒
 	ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
-	// 证书无效的时间，以 ISO8601 格式的 UTC 时间表示
+	// 临时访问凭证的过期时间，以 ISO8601 格式的 UTC 时间表示
 	Expiration *string `json:"Expiration,omitempty" name:"Expiration"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -261,7 +261,7 @@ type AssumeRoleWithWebIdentityRequestParams struct {
 	// 会话名称
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
-	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+	// 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
 	DurationSeconds *int64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 
@@ -280,7 +280,7 @@ type AssumeRoleWithWebIdentityRequest struct {
 	// 会话名称
 	RoleSessionName *string `json:"RoleSessionName,omitempty" name:"RoleSessionName"`
 
-	// 指定临时证书的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
+	// 指定临时访问凭证的有效期，单位：秒，默认 7200 秒，最长可设定有效期为 43200 秒
 	DurationSeconds *int64 `json:"DurationSeconds,omitempty" name:"DurationSeconds"`
 }
 
@@ -309,13 +309,13 @@ func (r *AssumeRoleWithWebIdentityRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssumeRoleWithWebIdentityResponseParams struct {
-	// 临时密钥过期时间(时间戳)
+	// 临时访问凭证过期时间(时间戳)
 	ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
-	// 临时密钥过期时间
+	// 临时访问凭证过期时间
 	Expiration *string `json:"Expiration,omitempty" name:"Expiration"`
 
-	// 临时密钥
+	// 临时访问凭证
 	Credentials *Credentials `json:"Credentials,omitempty" name:"Credentials"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -425,7 +425,7 @@ type GetFederationTokenRequestParams struct {
 	// 您可以自定义调用方英文名称，由字母组成。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 授予该临时证书权限的CAM策略
+	// 授予该临时访问凭证权限的CAM策略
 	// 注意：
 	// 1、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 	// 2、策略中不能包含 principal 元素。
@@ -442,7 +442,7 @@ type GetFederationTokenRequest struct {
 	// 您可以自定义调用方英文名称，由字母组成。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 授予该临时证书权限的CAM策略
+	// 授予该临时访问凭证权限的CAM策略
 	// 注意：
 	// 1、策略语法参照[ CAM 策略语法](https://cloud.tencent.com/document/product/598/10603)。
 	// 2、策略中不能包含 principal 元素。
@@ -476,13 +476,13 @@ func (r *GetFederationTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFederationTokenResponseParams struct {
-	// 临时证书
+	// 临时访问凭证
 	Credentials *Credentials `json:"Credentials,omitempty" name:"Credentials"`
 
-	// 临时证书有效的时间，返回 Unix 时间戳，精确到秒
+	// 临时访问凭证有效的时间，返回 Unix 时间戳，精确到秒
 	ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
-	// 证书有效的时间，以 iso8601 格式的 UTC 时间表示
+	// 临时访问凭证有效的时间，以 iso8601 格式的 UTC 时间表示
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expiration *string `json:"Expiration,omitempty" name:"Expiration"`
 

@@ -5727,6 +5727,62 @@ func (c *Client) DescribeLivePlayAuthKeyWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeLivePullStreamTaskStatusRequest() (request *DescribeLivePullStreamTaskStatusRequest) {
+    request = &DescribeLivePullStreamTaskStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLivePullStreamTaskStatus")
+    
+    
+    return
+}
+
+func NewDescribeLivePullStreamTaskStatusResponse() (response *DescribeLivePullStreamTaskStatusResponse) {
+    response = &DescribeLivePullStreamTaskStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLivePullStreamTaskStatus
+// 查询直播拉流任务状态信息。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLivePullStreamTaskStatus(request *DescribeLivePullStreamTaskStatusRequest) (response *DescribeLivePullStreamTaskStatusResponse, err error) {
+    return c.DescribeLivePullStreamTaskStatusWithContext(context.Background(), request)
+}
+
+// DescribeLivePullStreamTaskStatus
+// 查询直播拉流任务状态信息。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) DescribeLivePullStreamTaskStatusWithContext(ctx context.Context, request *DescribeLivePullStreamTaskStatusRequest) (response *DescribeLivePullStreamTaskStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeLivePullStreamTaskStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLivePullStreamTaskStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLivePullStreamTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLivePullStreamTasksRequest() (request *DescribeLivePullStreamTasksRequest) {
     request = &DescribeLivePullStreamTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

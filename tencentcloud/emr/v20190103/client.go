@@ -2180,7 +2180,7 @@ func NewStartStopServiceOrMonitorResponse() (response *StartStopServiceOrMonitor
 }
 
 // StartStopServiceOrMonitor
-// 用于启动或停止监控或服务
+// 用于启停服务 重启服务等功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2197,7 +2197,7 @@ func (c *Client) StartStopServiceOrMonitor(request *StartStopServiceOrMonitorReq
 }
 
 // StartStopServiceOrMonitor
-// 用于启动或停止监控或服务
+// 用于启停服务 重启服务等功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

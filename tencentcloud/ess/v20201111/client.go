@@ -3341,6 +3341,60 @@ func (c *Client) DescribeFlowBriefsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeFlowComponentsRequest() (request *DescribeFlowComponentsRequest) {
+    request = &DescribeFlowComponentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeFlowComponents")
+    
+    
+    return
+}
+
+func NewDescribeFlowComponentsResponse() (response *DescribeFlowComponentsResponse) {
+    response = &DescribeFlowComponentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFlowComponents
+// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+func (c *Client) DescribeFlowComponents(request *DescribeFlowComponentsRequest) (response *DescribeFlowComponentsResponse, err error) {
+    return c.DescribeFlowComponentsWithContext(context.Background(), request)
+}
+
+// DescribeFlowComponents
+// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+func (c *Client) DescribeFlowComponentsWithContext(ctx context.Context, request *DescribeFlowComponentsRequest) (response *DescribeFlowComponentsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowComponentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowComponents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlowComponentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlowEvidenceReportRequest() (request *DescribeFlowEvidenceReportRequest) {
     request = &DescribeFlowEvidenceReportRequest{
         BaseRequest: &tchttp.BaseRequest{},

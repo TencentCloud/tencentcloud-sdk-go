@@ -2611,6 +2611,63 @@ func (r *DescribeDBSyncModeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBTmpInstancesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeDBTmpInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBTmpInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBTmpInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBTmpInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBTmpInstancesResponseParams struct {
+	// 临时实例列表
+	TmpInstances []*TmpInstance `json:"TmpInstances,omitempty" name:"TmpInstances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDBTmpInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBTmpInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBTmpInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBTmpInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDCDBInstanceDetailRequestParams struct {
 	// 实例ID，形如dcdbt-7oaxtcb7
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -6825,6 +6882,68 @@ func (r *TerminateDedicatedDBInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TerminateDedicatedDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TmpInstance struct {
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceRemark *string `json:"InstanceRemark,omitempty" name:"InstanceRemark"`
+
+	// 0:非临时实例 ,1:无效临时实例, 2:回档成功的有效临时实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TempType *int64 `json:"TempType,omitempty" name:"TempType"`
+
+	// 实例状态,0:待初始化,1:流程处理中,2:有效状态,-1:已隔离，-2：已下线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例 ID，形如：tdsql-ow728lmc。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例虚IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 实例虚端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+
+	// 有效期结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 源实例 ID，形如：tdsql-ow728lmc。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcInstanceId *string `json:"SrcInstanceId,omitempty" name:"SrcInstanceId"`
+
+	// 实例状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 实例所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例虚IPv6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vipv6 *string `json:"Vipv6,omitempty" name:"Vipv6"`
+
+	// 实例IPv6标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6Flag *uint64 `json:"Ipv6Flag,omitempty" name:"Ipv6Flag"`
 }
 
 // Predefined struct for user

@@ -575,7 +575,11 @@ type Component struct {
 	// 5 Gaps:： 字符串类型，仅在Format为“yyyy m d”时起作用，格式为用逗号分开的两个整数，例如”2,2”，两个数字分别是日期格式的前后两个空隙中的空格个数
 	// 如果extra参数为空，默认为”yyyy年m月d日”格式的居中日期
 	// 特别地，如果extra中Format字段为空或无法被识别，则extra参数会被当作默认值处理（Font，FontSize，Gaps和FontAlign都不会起效）
-	// 参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}",
+	// 参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}"
+	// 
+	// ComponentType为SIGN_SEAL类型时，支持以下参数：
+	// 1.PageRanges：PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）
+	// 参数样例： "ComponentExtra":"{\"PageRanges\":[\"PageRange\":{\"BeginPage\":1,\"EndPage\":-1}]}"
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
 	// 是否是表单域类型，默认不false-不是
@@ -3726,6 +3730,78 @@ func (r *DescribeFlowBriefsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFlowComponentsRequestParams struct {
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签流程的Id
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+type DescribeFlowComponentsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 电子签流程的Id
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+func (r *DescribeFlowComponentsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowComponentsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowComponentsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlowComponentsResponseParams struct {
+	// 流程关联的填写控件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitempty" name:"RecipientComponentInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFlowComponentsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlowComponentsResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlowComponentsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowComponentsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFlowEvidenceReportRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -4885,6 +4961,32 @@ type FillApproverInfo struct {
 	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
 }
 
+type FilledComponent struct {
+	// 控件Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentId *string `json:"ComponentId,omitempty" name:"ComponentId"`
+
+	// 控件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
+
+	// 控件填写状态；0-未填写；1-已填写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentFillStatus *string `json:"ComponentFillStatus,omitempty" name:"ComponentFillStatus"`
+
+	// 控件填写内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentValue *string `json:"ComponentValue,omitempty" name:"ComponentValue"`
+
+	// 控件所属参与方Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentRecipientId *string `json:"ComponentRecipientId,omitempty" name:"ComponentRecipientId"`
+
+	// 图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+}
+
 type Filter struct {
 	// 查询过滤条件的Key
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -5681,6 +5783,24 @@ type Recipient struct {
 
 	// 附属信息
 	RecipientExtra *string `json:"RecipientExtra,omitempty" name:"RecipientExtra"`
+}
+
+type RecipientComponentInfo struct {
+	// 参与方Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 参与方填写状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecipientFillStatus *string `json:"RecipientFillStatus,omitempty" name:"RecipientFillStatus"`
+
+	// 是否发起方
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
+
+	// 填写控件内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Components []*FilledComponent `json:"Components,omitempty" name:"Components"`
 }
 
 type RegisterInfo struct {

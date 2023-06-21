@@ -2144,7 +2144,7 @@ func NewDeleteNotebookSessionResponse() (response *DeleteNotebookSessionResponse
 }
 
 // DeleteNotebookSession
-// 本接口（DeleteNotebookSession）用于删除notebook livy session
+// 本接口（DeleteNotebookSession）用于删除交互式session（notebook）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2159,7 +2159,7 @@ func (c *Client) DeleteNotebookSession(request *DeleteNotebookSessionRequest) (r
 }
 
 // DeleteNotebookSession
-// 本接口（DeleteNotebookSession）用于删除notebook livy session
+// 本接口（DeleteNotebookSession）用于删除交互式session（notebook）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

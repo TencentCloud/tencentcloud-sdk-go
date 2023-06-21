@@ -1711,6 +1711,60 @@ func (c *Client) ChannelDescribeEmployeesWithContext(ctx context.Context, reques
     return
 }
 
+func NewChannelDescribeFlowComponentsRequest() (request *ChannelDescribeFlowComponentsRequest) {
+    request = &ChannelDescribeFlowComponentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDescribeFlowComponents")
+    
+    
+    return
+}
+
+func NewChannelDescribeFlowComponentsResponse() (response *ChannelDescribeFlowComponentsResponse) {
+    response = &ChannelDescribeFlowComponentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDescribeFlowComponents
+// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+func (c *Client) ChannelDescribeFlowComponents(request *ChannelDescribeFlowComponentsRequest) (response *ChannelDescribeFlowComponentsResponse, err error) {
+    return c.ChannelDescribeFlowComponentsWithContext(context.Background(), request)
+}
+
+// ChannelDescribeFlowComponents
+// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+func (c *Client) ChannelDescribeFlowComponentsWithContext(ctx context.Context, request *ChannelDescribeFlowComponentsRequest) (response *ChannelDescribeFlowComponentsResponse, err error) {
+    if request == nil {
+        request = NewChannelDescribeFlowComponentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDescribeFlowComponents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDescribeFlowComponentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelDescribeOrganizationSealsRequest() (request *ChannelDescribeOrganizationSealsRequest) {
     request = &ChannelDescribeOrganizationSealsRequest{
         BaseRequest: &tchttp.BaseRequest{},

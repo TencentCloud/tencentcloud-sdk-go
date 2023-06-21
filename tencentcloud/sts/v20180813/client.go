@@ -64,7 +64,7 @@ func NewAssumeRoleResponse() (response *AssumeRoleResponse) {
 }
 
 // AssumeRole
-// 申请扮演角色
+// 申请扮演角色临时访问凭证。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -95,7 +95,7 @@ func (c *Client) AssumeRole(request *AssumeRoleRequest) (response *AssumeRoleRes
 }
 
 // AssumeRole
-// 申请扮演角色
+// 申请扮演角色临时访问凭证。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -156,7 +156,11 @@ func NewAssumeRoleWithSAMLResponse() (response *AssumeRoleWithSAMLResponse) {
 }
 
 // AssumeRoleWithSAML
-// 本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时凭证。
+// 本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时访问凭证。
+//
+// 
+//
+// 注意：当使用签名方法 V3 调用本接口时，请求头无须传入 X-TC-Token, 但 Authorization 需要传入值 SKIP。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -171,6 +175,7 @@ func NewAssumeRoleWithSAMLResponse() (response *AssumeRoleWithSAMLResponse) {
 //  INVALIDPARAMETER_ACCOUNTNOTAVALIABLE = "InvalidParameter.AccountNotAvaliable"
 //  INVALIDPARAMETER_EXTENDSTRATEGYOVERSIZE = "InvalidParameter.ExtendStrategyOverSize"
 //  INVALIDPARAMETER_GRANTOTHERRESOURCE = "InvalidParameter.GrantOtherResource"
+//  INVALIDPARAMETER_OVERLIMIT = "InvalidParameter.OverLimit"
 //  INVALIDPARAMETER_OVERTIMEERROR = "InvalidParameter.OverTimeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYTOOLONG = "InvalidParameter.PolicyTooLong"
@@ -178,6 +183,7 @@ func NewAssumeRoleWithSAMLResponse() (response *AssumeRoleWithSAMLResponse) {
 //  INVALIDPARAMETER_STRATEGYFORMATERROR = "InvalidParameter.StrategyFormatError"
 //  INVALIDPARAMETER_STRATEGYINVALID = "InvalidParameter.StrategyInvalid"
 //  INVALIDPARAMETER_TEMPCODENOTAVALIABLE = "InvalidParameter.TempCodeNotAvaliable"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (response *AssumeRoleWithSAMLResponse, err error) {
@@ -185,7 +191,11 @@ func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (respons
 }
 
 // AssumeRoleWithSAML
-// 本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时凭证。
+// 本接口（AssumeRoleWithSAML）用于根据 SAML 断言申请角色临时访问凭证。
+//
+// 
+//
+// 注意：当使用签名方法 V3 调用本接口时，请求头无须传入 X-TC-Token, 但 Authorization 需要传入值 SKIP。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -200,6 +210,7 @@ func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (respons
 //  INVALIDPARAMETER_ACCOUNTNOTAVALIABLE = "InvalidParameter.AccountNotAvaliable"
 //  INVALIDPARAMETER_EXTENDSTRATEGYOVERSIZE = "InvalidParameter.ExtendStrategyOverSize"
 //  INVALIDPARAMETER_GRANTOTHERRESOURCE = "InvalidParameter.GrantOtherResource"
+//  INVALIDPARAMETER_OVERLIMIT = "InvalidParameter.OverLimit"
 //  INVALIDPARAMETER_OVERTIMEERROR = "InvalidParameter.OverTimeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYTOOLONG = "InvalidParameter.PolicyTooLong"
@@ -207,6 +218,7 @@ func (c *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (respons
 //  INVALIDPARAMETER_STRATEGYFORMATERROR = "InvalidParameter.StrategyFormatError"
 //  INVALIDPARAMETER_STRATEGYINVALID = "InvalidParameter.StrategyInvalid"
 //  INVALIDPARAMETER_TEMPCODENOTAVALIABLE = "InvalidParameter.TempCodeNotAvaliable"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) AssumeRoleWithSAMLWithContext(ctx context.Context, request *AssumeRoleWithSAMLRequest) (response *AssumeRoleWithSAMLResponse, err error) {
@@ -240,7 +252,11 @@ func NewAssumeRoleWithWebIdentityResponse() (response *AssumeRoleWithWebIdentity
 }
 
 // AssumeRoleWithWebIdentity
-// 申请OIDC角色临时密钥
+// 申请OIDC角色临时访问凭证。
+//
+// 
+//
+// 注意：当使用签名方法 V3 调用本接口时，请求头无须传入 X-TC-Token, 但 Authorization 需要传入值 SKIP。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
@@ -256,7 +272,11 @@ func (c *Client) AssumeRoleWithWebIdentity(request *AssumeRoleWithWebIdentityReq
 }
 
 // AssumeRoleWithWebIdentity
-// 申请OIDC角色临时密钥
+// 申请OIDC角色临时访问凭证。
+//
+// 
+//
+// 注意：当使用签名方法 V3 调用本接口时，请求头无须传入 X-TC-Token, 但 Authorization 需要传入值 SKIP。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
@@ -300,7 +320,9 @@ func NewGetCallerIdentityResponse() (response *GetCallerIdentityResponse) {
 // GetCallerIdentity
 // 获取当前调用者的身份信息。
 //
-// 接口支持主账号，子账号长期密钥以及AssumeRole，GetFederationToken生成的临时凭据的身份获取。
+// 
+//
+// 接口支持主账号，子账号长期密钥以及AssumeRole，GetFederationToken生成的临时访问凭证身份获取。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSKEYILLEGAL = "AuthFailure.AccessKeyIllegal"
@@ -313,7 +335,9 @@ func (c *Client) GetCallerIdentity(request *GetCallerIdentityRequest) (response 
 // GetCallerIdentity
 // 获取当前调用者的身份信息。
 //
-// 接口支持主账号，子账号长期密钥以及AssumeRole，GetFederationToken生成的临时凭据的身份获取。
+// 
+//
+// 接口支持主账号，子账号长期密钥以及AssumeRole，GetFederationToken生成的临时访问凭证身份获取。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSKEYILLEGAL = "AuthFailure.AccessKeyIllegal"
@@ -354,7 +378,23 @@ func NewGetFederationTokenResponse() (response *GetFederationTokenResponse) {
 }
 
 // GetFederationToken
-// 获取联合身份临时访问凭证
+// **使用说明**
+//
+// 
+//
+// 返回一组临时访问凭证，典型的应用场景是代理应用程序集中申请临时访问凭证，下发给企业网络内其他分布式终端应用，比如终端应用上传文件到COS场景，本接口仅支持永久密钥调用。
+//
+// 
+//
+// **最佳实践**
+//
+// 
+//
+// 1. 临时访问凭据在有效期内都可以使用，建议在有效期内重复使用，以避免业务请求速率上升后被限频
+//
+// 2. 授予临时访问凭证权限的CAM策略，建议按权限最小化原则
+//
+// 3. 调用接口的永久密钥，建议不要使用主账号
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -379,7 +419,23 @@ func (c *Client) GetFederationToken(request *GetFederationTokenRequest) (respons
 }
 
 // GetFederationToken
-// 获取联合身份临时访问凭证
+// **使用说明**
+//
+// 
+//
+// 返回一组临时访问凭证，典型的应用场景是代理应用程序集中申请临时访问凭证，下发给企业网络内其他分布式终端应用，比如终端应用上传文件到COS场景，本接口仅支持永久密钥调用。
+//
+// 
+//
+// **最佳实践**
+//
+// 
+//
+// 1. 临时访问凭据在有效期内都可以使用，建议在有效期内重复使用，以避免业务请求速率上升后被限频
+//
+// 2. 授予临时访问凭证权限的CAM策略，建议按权限最小化原则
+//
+// 3. 调用接口的永久密钥，建议不要使用主账号
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DbError"

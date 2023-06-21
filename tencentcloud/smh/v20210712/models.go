@@ -25,17 +25,17 @@ type CreateLibraryRequestParams struct {
 	// 媒体库名称，最多 50 个字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 存储桶全名，新建后不可更改
+	// 备注，最多 250 个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 存储桶全名，新建后不可更改。当前版本不再支持指定存储桶。
 	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
 
-	// 存储桶所在地域，新建后不可更改
+	// 存储桶所在地域，新建后不可更改。当前版本不再支持指定存储桶所在地域。
 	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
 
 	// 媒体库配置项，部分参数新建后不可更改
 	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitempty" name:"LibraryExtension"`
-
-	// 备注，最多 250 个字符
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type CreateLibraryRequest struct {
@@ -44,17 +44,17 @@ type CreateLibraryRequest struct {
 	// 媒体库名称，最多 50 个字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 存储桶全名，新建后不可更改
+	// 备注，最多 250 个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 存储桶全名，新建后不可更改。当前版本不再支持指定存储桶。
 	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
 
-	// 存储桶所在地域，新建后不可更改
+	// 存储桶所在地域，新建后不可更改。当前版本不再支持指定存储桶所在地域。
 	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
 
 	// 媒体库配置项，部分参数新建后不可更改
 	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitempty" name:"LibraryExtension"`
-
-	// 备注，最多 250 个字符
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 func (r *CreateLibraryRequest) ToJsonString() string {
@@ -70,10 +70,10 @@ func (r *CreateLibraryRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "Remark")
 	delete(f, "BucketName")
 	delete(f, "BucketRegion")
 	delete(f, "LibraryExtension")
-	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLibraryRequest has unknown keys!", "")
 	}

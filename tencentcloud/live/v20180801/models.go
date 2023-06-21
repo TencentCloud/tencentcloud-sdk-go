@@ -6743,6 +6743,63 @@ func (r *DescribeLivePlayAuthKeyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLivePullStreamTaskStatusRequestParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DescribeLivePullStreamTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeLivePullStreamTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePullStreamTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePullStreamTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLivePullStreamTaskStatusResponseParams struct {
+	// 任务状态信息。
+	TaskStatusInfo *TaskStatusInfo `json:"TaskStatusInfo,omitempty" name:"TaskStatusInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLivePullStreamTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLivePullStreamTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeLivePullStreamTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePullStreamTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLivePullStreamTasksRequestParams struct {
 	// 任务 ID。 
 	// 来源：调用 CreateLivePullStreamTask 接口时返回。
@@ -14842,6 +14899,39 @@ type StreamOnlineInfo struct {
 
 	// 推流域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 流是否推送到延播。
+	// 0 - 无延播，
+	// 1 - 有延播。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PushToDelay *int64 `json:"PushToDelay,omitempty" name:"PushToDelay"`
+}
+
+type TaskStatusInfo struct {
+	// 当前使用的源 URL。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 点播源任务的轮播次数。
+	LoopedTimes *int64 `json:"LoopedTimes,omitempty" name:"LoopedTimes"`
+
+	// 点播源的播放偏移，单位：秒。
+	OffsetTime *int64 `json:"OffsetTime,omitempty" name:"OffsetTime"`
+
+	// 最新心跳上报时间。UTC时间，例如：
+	// 2022-02-11T10:00:00Z。
+	// 注意：UTC时间与北京时间相差八小时。
+	ReportTime *string `json:"ReportTime,omitempty" name:"ReportTime"`
+
+	// 实际运行状态：
+	// active - 活跃，
+	// inactive - 不活跃。
+	RunStatus *string `json:"RunStatus,omitempty" name:"RunStatus"`
+
+	// 点播源的文件时长，单位：秒。
+	FileDuration *int64 `json:"FileDuration,omitempty" name:"FileDuration"`
+
+	// 下一进度点播文件 URL。
+	NextFileUrl *string `json:"NextFileUrl,omitempty" name:"NextFileUrl"`
 }
 
 type TemplateInfo struct {

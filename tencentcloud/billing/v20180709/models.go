@@ -1100,29 +1100,31 @@ type DescribeBillDetailRequestParams struct {
 	// 包年包月新购
 	// 包年包月续费
 	// 包年包月配置变更
-	// 包年包月退款
-	// 按量计费扣费
-	// 按量计费小时结
-	// 按量计费日结
-	// 按量计费月结
-	// 线下项目扣费
-	// 线下产品扣费
-	// 调账扣费
-	// 调账补偿
-	// 竞价实例小时结
-	// 线下项目调账补偿
-	// 线下产品调账补偿
-	// 优惠扣费
-	// 优惠补偿
-	// 按量计费迁入资源
-	// 按量计费迁出资源
-	// 包年包月迁入资源
-	// 包年包月迁出资源
-	// 预付费用
-	// 小时费用
-	// 预留实例退款
-	// 按量计费冲正
-	// 包年包月转按量
+	// 包年包月退款 
+	// 按量计费扣费 
+	// 线下项目扣费 
+	// 线下产品扣费 
+	// 调账扣费 
+	// 调账补偿 
+	// 按量计费小时结 
+	// 按量计费日结 
+	// 按量计费月结 
+	// 竞价实例小时结 
+	// 线下项目调账补偿 
+	// 线下产品调账补偿 
+	// 优惠扣费 
+	// 优惠补偿 
+	// 按量计费迁入资源 
+	// 按量计费迁出资源 
+	// 包年包月迁入资源 
+	// 包年包月迁出资源 
+	// 预付费用 
+	// 小时费用 
+	// 预留实例退款 
+	// 按量计费冲正 
+	// 包年包月转按量 
+	// 保底扣款 
+	// 节省计划小时费用
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 项目ID:资源所属项目ID
@@ -1134,6 +1136,9 @@ type DescribeBillDetailRequestParams struct {
 
 	// 上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
 	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
 type DescribeBillDetailRequest struct {
@@ -1174,29 +1179,31 @@ type DescribeBillDetailRequest struct {
 	// 包年包月新购
 	// 包年包月续费
 	// 包年包月配置变更
-	// 包年包月退款
-	// 按量计费扣费
-	// 按量计费小时结
-	// 按量计费日结
-	// 按量计费月结
-	// 线下项目扣费
-	// 线下产品扣费
-	// 调账扣费
-	// 调账补偿
-	// 竞价实例小时结
-	// 线下项目调账补偿
-	// 线下产品调账补偿
-	// 优惠扣费
-	// 优惠补偿
-	// 按量计费迁入资源
-	// 按量计费迁出资源
-	// 包年包月迁入资源
-	// 包年包月迁出资源
-	// 预付费用
-	// 小时费用
-	// 预留实例退款
-	// 按量计费冲正
-	// 包年包月转按量
+	// 包年包月退款 
+	// 按量计费扣费 
+	// 线下项目扣费 
+	// 线下产品扣费 
+	// 调账扣费 
+	// 调账补偿 
+	// 按量计费小时结 
+	// 按量计费日结 
+	// 按量计费月结 
+	// 竞价实例小时结 
+	// 线下项目调账补偿 
+	// 线下产品调账补偿 
+	// 优惠扣费 
+	// 优惠补偿 
+	// 按量计费迁入资源 
+	// 按量计费迁出资源 
+	// 包年包月迁入资源 
+	// 包年包月迁出资源 
+	// 预付费用 
+	// 小时费用 
+	// 预留实例退款 
+	// 按量计费冲正 
+	// 包年包月转按量 
+	// 保底扣款 
+	// 节省计划小时费用
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
 	// 项目ID:资源所属项目ID
@@ -1208,6 +1215,9 @@ type DescribeBillDetailRequest struct {
 
 	// 上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
 	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
 }
 
 func (r *DescribeBillDetailRequest) ToJsonString() string {
@@ -1236,6 +1246,7 @@ func (r *DescribeBillDetailRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "BusinessCode")
 	delete(f, "Context")
+	delete(f, "PayerUin")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillDetailRequest has unknown keys!", "")
 	}

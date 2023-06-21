@@ -1681,6 +1681,60 @@ func (c *Client) DescribeDBSlowLogsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeDBTmpInstancesRequest() (request *DescribeDBTmpInstancesRequest) {
+    request = &DescribeDBTmpInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mariadb", APIVersion, "DescribeDBTmpInstances")
+    
+    
+    return
+}
+
+func NewDescribeDBTmpInstancesResponse() (response *DescribeDBTmpInstancesResponse) {
+    response = &DescribeDBTmpInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBTmpInstances
+// 本接口（DescribeDBTmpInstances）用于获取实例回档生成的临时实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDBTmpInstances(request *DescribeDBTmpInstancesRequest) (response *DescribeDBTmpInstancesResponse, err error) {
+    return c.DescribeDBTmpInstancesWithContext(context.Background(), request)
+}
+
+// DescribeDBTmpInstances
+// 本接口（DescribeDBTmpInstances）用于获取实例回档生成的临时实例
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDBTmpInstancesWithContext(ctx context.Context, request *DescribeDBTmpInstancesRequest) (response *DescribeDBTmpInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBTmpInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBTmpInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBTmpInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatabaseObjectsRequest() (request *DescribeDatabaseObjectsRequest) {
     request = &DescribeDatabaseObjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
