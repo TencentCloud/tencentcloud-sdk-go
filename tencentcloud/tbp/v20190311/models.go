@@ -213,7 +213,7 @@ func (r *ResetResponse) FromJsonString(s string) error {
 type ResponseMessage struct {
 	// 消息组列表。	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupList *Group `json:"GroupList,omitempty" name:"GroupList"`
+	GroupList []*Group `json:"GroupList,omitempty" name:"GroupList"`
 }
 
 type SlotInfo struct {
@@ -316,13 +316,13 @@ type TextProcessResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseText *string `json:"ResponseText,omitempty" name:"ResponseText"`
 
-	// 机器人应答。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseMessage *ResponseMessage `json:"ResponseMessage,omitempty" name:"ResponseMessage"`
-
 	// 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultType *string `json:"ResultType,omitempty" name:"ResultType"`
+
+	// 机器人应答。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseMessage *ResponseMessage `json:"ResponseMessage,omitempty" name:"ResponseMessage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

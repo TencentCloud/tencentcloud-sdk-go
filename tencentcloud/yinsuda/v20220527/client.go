@@ -259,6 +259,58 @@ func (c *Client) DescribeKTVMatchMusicsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeKTVMusicAccompanySegmentUrlRequest() (request *DescribeKTVMusicAccompanySegmentUrlRequest) {
+    request = &DescribeKTVMusicAccompanySegmentUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeKTVMusicAccompanySegmentUrl")
+    
+    
+    return
+}
+
+func NewDescribeKTVMusicAccompanySegmentUrlResponse() (response *DescribeKTVMusicAccompanySegmentUrlResponse) {
+    response = &DescribeKTVMusicAccompanySegmentUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVMusicAccompanySegmentUrl
+// 获取歌曲伴奏片段链接，可用于抢唱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+//  FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
+func (c *Client) DescribeKTVMusicAccompanySegmentUrl(request *DescribeKTVMusicAccompanySegmentUrlRequest) (response *DescribeKTVMusicAccompanySegmentUrlResponse, err error) {
+    return c.DescribeKTVMusicAccompanySegmentUrlWithContext(context.Background(), request)
+}
+
+// DescribeKTVMusicAccompanySegmentUrl
+// 获取歌曲伴奏片段链接，可用于抢唱
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+//  FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
+func (c *Client) DescribeKTVMusicAccompanySegmentUrlWithContext(ctx context.Context, request *DescribeKTVMusicAccompanySegmentUrlRequest) (response *DescribeKTVMusicAccompanySegmentUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVMusicAccompanySegmentUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVMusicAccompanySegmentUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVMusicAccompanySegmentUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKTVMusicsByTagRequest() (request *DescribeKTVMusicsByTagRequest) {
     request = &DescribeKTVMusicsByTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -281,13 +333,9 @@ func NewDescribeKTVMusicsByTagResponse() (response *DescribeKTVMusicsByTagRespon
 // 通过标签过滤歌曲列表。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+//  FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
 func (c *Client) DescribeKTVMusicsByTag(request *DescribeKTVMusicsByTagRequest) (response *DescribeKTVMusicsByTagResponse, err error) {
     return c.DescribeKTVMusicsByTagWithContext(context.Background(), request)
 }
@@ -296,13 +344,9 @@ func (c *Client) DescribeKTVMusicsByTag(request *DescribeKTVMusicsByTagRequest) 
 // 通过标签过滤歌曲列表。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  FAILEDOPERATION_USERLIVEVIPTIMEEXPIRE = "FailedOperation.UserLiveVipTimeExpire"
+//  FAILEDOPERATION_USERNOTLIVEVIP = "FailedOperation.UserNotLiveVip"
 func (c *Client) DescribeKTVMusicsByTagWithContext(ctx context.Context, request *DescribeKTVMusicsByTagRequest) (response *DescribeKTVMusicsByTagResponse, err error) {
     if request == nil {
         request = NewDescribeKTVMusicsByTagRequest()

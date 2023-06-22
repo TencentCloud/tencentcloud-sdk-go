@@ -3072,6 +3072,74 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDatabaseRequestParams struct {
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库名称。
+	DBName *string `json:"DBName,omitempty" name:"DBName"`
+
+	// 字符集，可选值：utf8，gbk，latin1，utf8mb4。
+	CharacterSetName *string `json:"CharacterSetName,omitempty" name:"CharacterSetName"`
+}
+
+type CreateDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 数据库名称。
+	DBName *string `json:"DBName,omitempty" name:"DBName"`
+
+	// 字符集，可选值：utf8，gbk，latin1，utf8mb4。
+	CharacterSetName *string `json:"CharacterSetName,omitempty" name:"CharacterSetName"`
+}
+
+func (r *CreateDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DBName")
+	delete(f, "CharacterSetName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDatabaseResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDatabaseResponseParams `json:"Response"`
+}
+
+func (r *CreateDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDatabaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDeployGroupRequestParams struct {
 	// 置放群组名称，最长不能超过60个字符。
 	DeployGroupName *string `json:"DeployGroupName,omitempty" name:"DeployGroupName"`

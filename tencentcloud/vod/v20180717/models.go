@@ -108,6 +108,20 @@ type AIRecognitionTemplateItem struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type AbnormalLightingConfigureInfo struct {
+	// 视频画面低光、过曝检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type AbnormalLightingConfigureInfoForUpdate struct {
+	// 视频画面低光、过曝检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type AccelerateAreaInfo struct {
 	// 加速地区，可选值：
 	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
@@ -2335,6 +2349,34 @@ type AudioVolumeParam struct {
 	Gain *float64 `json:"Gain,omitempty" name:"Gain"`
 }
 
+type BlackWhiteEdgeConfigureInfo struct {
+	// 视频画面黑边、白边、黑屏、白屏检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type BlackWhiteEdgeConfigureInfoForUpdate struct {
+	// 视频画面黑边、白边、黑屏、白屏检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type BlurConfigureInfo struct {
+	// 视频画面模糊检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type BlurConfigureInfoForUpdate struct {
+	// 视频画面模糊检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type Canvas struct {
 	// 背景颜色，取值有：
 	// <li>Black：黑色背景</li>
@@ -2934,6 +2976,20 @@ type CoverConfigureInfoForUpdate struct {
 	// 智能封面任务开关，可选值：
 	// <li>ON：开启智能封面任务；</li>
 	// <li>OFF：关闭智能封面任务。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type CrashScreenConfigureInfo struct {
+	// 视频画面花屏检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type CrashScreenConfigureInfoForUpdate struct {
+	// 视频画面花屏检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -4406,6 +4462,154 @@ func (r *CreateProcedureTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateProcedureTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateQualityInspectTemplateRequestParams struct {
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 音画质检测模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 音画质检测模板描述。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。
+	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
+
+	// 视频画面抖动重影检测的控制参数。
+	JitterConfigure *JitterConfigureInfo `json:"JitterConfigure,omitempty" name:"JitterConfigure"`
+
+	// 视频画面模糊检测的控制参数。
+	BlurConfigure *BlurConfigureInfo `json:"BlurConfigure,omitempty" name:"BlurConfigure"`
+
+	// 视频画面低光、过曝检测的控制参数。
+	AbnormalLightingConfigure *AbnormalLightingConfigureInfo `json:"AbnormalLightingConfigure,omitempty" name:"AbnormalLightingConfigure"`
+
+	// 视频画面花屏检测的控制参数。
+	CrashScreenConfigure *CrashScreenConfigureInfo `json:"CrashScreenConfigure,omitempty" name:"CrashScreenConfigure"`
+
+	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfo `json:"BlackWhiteEdgeConfigure,omitempty" name:"BlackWhiteEdgeConfigure"`
+
+	// 视频画面噪点检测的控制参数。
+	NoiseConfigure *NoiseConfigureInfo `json:"NoiseConfigure,omitempty" name:"NoiseConfigure"`
+
+	// 视频画面马赛克检测的控制参数。
+	MosaicConfigure *MosaicConfigureInfo `json:"MosaicConfigure,omitempty" name:"MosaicConfigure"`
+
+	// 视频画面二维码检测的控制参数。
+	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
+
+	// 音频（静音、低音、爆音）检测的控制参数。
+	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+}
+
+type CreateQualityInspectTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 音画质检测模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 音画质检测模板描述。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。
+	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
+
+	// 视频画面抖动重影检测的控制参数。
+	JitterConfigure *JitterConfigureInfo `json:"JitterConfigure,omitempty" name:"JitterConfigure"`
+
+	// 视频画面模糊检测的控制参数。
+	BlurConfigure *BlurConfigureInfo `json:"BlurConfigure,omitempty" name:"BlurConfigure"`
+
+	// 视频画面低光、过曝检测的控制参数。
+	AbnormalLightingConfigure *AbnormalLightingConfigureInfo `json:"AbnormalLightingConfigure,omitempty" name:"AbnormalLightingConfigure"`
+
+	// 视频画面花屏检测的控制参数。
+	CrashScreenConfigure *CrashScreenConfigureInfo `json:"CrashScreenConfigure,omitempty" name:"CrashScreenConfigure"`
+
+	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfo `json:"BlackWhiteEdgeConfigure,omitempty" name:"BlackWhiteEdgeConfigure"`
+
+	// 视频画面噪点检测的控制参数。
+	NoiseConfigure *NoiseConfigureInfo `json:"NoiseConfigure,omitempty" name:"NoiseConfigure"`
+
+	// 视频画面马赛克检测的控制参数。
+	MosaicConfigure *MosaicConfigureInfo `json:"MosaicConfigure,omitempty" name:"MosaicConfigure"`
+
+	// 视频画面二维码检测的控制参数。
+	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
+
+	// 音频（静音、低音、爆音）检测的控制参数。
+	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+}
+
+func (r *CreateQualityInspectTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateQualityInspectTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "ScreenshotInterval")
+	delete(f, "JitterConfigure")
+	delete(f, "BlurConfigure")
+	delete(f, "AbnormalLightingConfigure")
+	delete(f, "CrashScreenConfigure")
+	delete(f, "BlackWhiteEdgeConfigure")
+	delete(f, "NoiseConfigure")
+	delete(f, "MosaicConfigure")
+	delete(f, "QRCodeConfigure")
+	delete(f, "QualityEvaluationConfigure")
+	delete(f, "VoiceConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityInspectTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateQualityInspectTemplateResponseParams struct {
+	// 音画质检测模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateQualityInspectTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateQualityInspectTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateQualityInspectTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateQualityInspectTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6604,6 +6808,67 @@ func (r *DeleteProcedureTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteProcedureTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteQualityInspectTemplateRequestParams struct {
+	// 音画质检测模板号。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+type DeleteQualityInspectTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音画质检测模板号。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+}
+
+func (r *DeleteQualityInspectTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQualityInspectTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQualityInspectTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteQualityInspectTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteQualityInspectTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteQualityInspectTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteQualityInspectTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteQualityInspectTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9902,6 +10167,98 @@ func (r *DescribeProcedureTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeQualityInspectTemplatesRequestParams struct {
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 音画质检测模板列表。长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeQualityInspectTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 音画质检测模板列表。长度限制：100。
+	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
+
+	// 模板类型过滤条件，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeQualityInspectTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQualityInspectTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SubAppId")
+	delete(f, "Definitions")
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityInspectTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQualityInspectTemplatesResponseParams struct {
+	// 符合过滤条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 音画质检测模板详情列表。
+	QualityInspectTemplateSet []*QualityInspectTemplateItem `json:"QualityInspectTemplateSet,omitempty" name:"QualityInspectTemplateSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeQualityInspectTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQualityInspectTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeQualityInspectTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQualityInspectTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRebuildMediaTemplatesRequestParams struct {
 	// 音画质重生模板列表。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
@@ -10921,7 +11278,8 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>RebuildMedia：音画质重生任务；</li>
 	// <li>ReviewAudioVideo：音视频审核任务；</li>
 	// <li>ExtractTraceWatermark：提取溯源水印任务；</li>
-	// <li>ExtractCopyRightWatermark：提取版权水印任务。</li>
+	// <li>ExtractCopyRightWatermark：提取版权水印任务；</li>
+	// <li>QualityInspect：音画质检测任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -11014,6 +11372,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 获取文件属性任务信息，仅当 TaskType 为 DescribeFileAttributes，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescribeFileAttributesTask *DescribeFileAttributesTask `json:"DescribeFileAttributesTask,omitempty" name:"DescribeFileAttributesTask"`
+
+	// 音画质检测任务信息，仅当 TaskType 为 QualityInspect 时该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityInspectTask *QualityInspectTask `json:"QualityInspectTask,omitempty" name:"QualityInspectTask"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -12071,6 +12433,7 @@ type EventContent struct {
 	// <li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li>
 	// <li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li>
 	// <li>DescribeFileAttributesComplete：获取文件属性完成；</li>
+	// <li>QualityInspectComplete：音画质检测完成。</li>
 	// <b>兼容 2017 版的事件类型：</b>
 	// <li>TranscodeComplete：视频转码完成；</li>
 	// <li>ConcatComplete：视频拼接完成；</li>
@@ -12166,6 +12529,10 @@ type EventContent struct {
 	// 获取文件属性完成事件，当事件类型为 DescribeFileAttributesComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescribeFileAttributesCompleteEvent *DescribeFileAttributesTask `json:"DescribeFileAttributesCompleteEvent,omitempty" name:"DescribeFileAttributesCompleteEvent"`
+
+	// 音画质检测完成事件，当事件类型为 QualityInspectComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityInspectCompleteEvent *QualityInspectTask `json:"QualityInspectCompleteEvent,omitempty" name:"QualityInspectCompleteEvent"`
 }
 
 // Predefined struct for user
@@ -13114,6 +13481,119 @@ type ImageWatermarkTemplate struct {
 	// <li>0：完全不透明</li>
 	// <li>100：完全透明。</li>
 	Transparency *int64 `json:"Transparency,omitempty" name:"Transparency"`
+}
+
+// Predefined struct for user
+type InspectMediaQualityRequestParams struct {
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 音画质检测模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 来源上下文，用于透传用户请求信息，音画质检测完成回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+}
+
+type InspectMediaQualityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 音画质检测模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 来源上下文，用于透传用户请求信息，音画质检测完成回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+}
+
+func (r *InspectMediaQualityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InspectMediaQualityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	delete(f, "TasksPriority")
+	delete(f, "SessionContext")
+	delete(f, "SessionId")
+	delete(f, "ExtInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InspectMediaQualityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InspectMediaQualityResponseParams struct {
+	// 音画质检测任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type InspectMediaQualityResponse struct {
+	*tchttp.BaseResponse
+	Response *InspectMediaQualityResponseParams `json:"Response"`
+}
+
+func (r *InspectMediaQualityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InspectMediaQualityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type JitterConfigureInfo struct {
+	// 视频画面抖动重影检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type JitterConfigureInfoForUpdate struct {
+	// 视频画面抖动重影检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type LicenseUsageDataItem struct {
@@ -16129,6 +16609,158 @@ func (r *ModifyPersonSampleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyQualityInspectTemplateRequestParams struct {
+	// 模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 截帧间隔，单位为秒，最小值为 1。
+	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
+
+	// 视频画面抖动重影检测的控制参数。
+	JitterConfigure *JitterConfigureInfoForUpdate `json:"JitterConfigure,omitempty" name:"JitterConfigure"`
+
+	// 视频画面模糊检测的控制参数。
+	BlurConfigure *BlurConfigureInfoForUpdate `json:"BlurConfigure,omitempty" name:"BlurConfigure"`
+
+	// 视频画面低光、过曝检测的控制参数。
+	AbnormalLightingConfigure *AbnormalLightingConfigureInfoForUpdate `json:"AbnormalLightingConfigure,omitempty" name:"AbnormalLightingConfigure"`
+
+	// 视频画面花屏检测的控制参数。
+	CrashScreenConfigure *CrashScreenConfigureInfoForUpdate `json:"CrashScreenConfigure,omitempty" name:"CrashScreenConfigure"`
+
+	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfoForUpdate `json:"BlackWhiteEdgeConfigure,omitempty" name:"BlackWhiteEdgeConfigure"`
+
+	// 视频画面噪点检测的控制参数。
+	NoiseConfigure *NoiseConfigureInfoForUpdate `json:"NoiseConfigure,omitempty" name:"NoiseConfigure"`
+
+	// 视频画面马赛克检测的控制参数。
+	MosaicConfigure *MosaicConfigureInfoForUpdate `json:"MosaicConfigure,omitempty" name:"MosaicConfigure"`
+
+	// 视频画面二维码检测的控制参数。
+	QRCodeConfigure *QRCodeConfigureInfoForUpdate `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfoForUpdate `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
+
+	// 音频（静音、低音、爆音）检测的控制参数。
+	VoiceConfigure *VoiceConfigureInfoForUpdate `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+}
+
+type ModifyQualityInspectTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 模板名称，长度限制：64 个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述信息，长度限制：256 个字符。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 截帧间隔，单位为秒，最小值为 1。
+	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
+
+	// 视频画面抖动重影检测的控制参数。
+	JitterConfigure *JitterConfigureInfoForUpdate `json:"JitterConfigure,omitempty" name:"JitterConfigure"`
+
+	// 视频画面模糊检测的控制参数。
+	BlurConfigure *BlurConfigureInfoForUpdate `json:"BlurConfigure,omitempty" name:"BlurConfigure"`
+
+	// 视频画面低光、过曝检测的控制参数。
+	AbnormalLightingConfigure *AbnormalLightingConfigureInfoForUpdate `json:"AbnormalLightingConfigure,omitempty" name:"AbnormalLightingConfigure"`
+
+	// 视频画面花屏检测的控制参数。
+	CrashScreenConfigure *CrashScreenConfigureInfoForUpdate `json:"CrashScreenConfigure,omitempty" name:"CrashScreenConfigure"`
+
+	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfoForUpdate `json:"BlackWhiteEdgeConfigure,omitempty" name:"BlackWhiteEdgeConfigure"`
+
+	// 视频画面噪点检测的控制参数。
+	NoiseConfigure *NoiseConfigureInfoForUpdate `json:"NoiseConfigure,omitempty" name:"NoiseConfigure"`
+
+	// 视频画面马赛克检测的控制参数。
+	MosaicConfigure *MosaicConfigureInfoForUpdate `json:"MosaicConfigure,omitempty" name:"MosaicConfigure"`
+
+	// 视频画面二维码检测的控制参数。
+	QRCodeConfigure *QRCodeConfigureInfoForUpdate `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfoForUpdate `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
+
+	// 音频（静音、低音、爆音）检测的控制参数。
+	VoiceConfigure *VoiceConfigureInfoForUpdate `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+}
+
+func (r *ModifyQualityInspectTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyQualityInspectTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Definition")
+	delete(f, "SubAppId")
+	delete(f, "Name")
+	delete(f, "Comment")
+	delete(f, "ScreenshotInterval")
+	delete(f, "JitterConfigure")
+	delete(f, "BlurConfigure")
+	delete(f, "AbnormalLightingConfigure")
+	delete(f, "CrashScreenConfigure")
+	delete(f, "BlackWhiteEdgeConfigure")
+	delete(f, "NoiseConfigure")
+	delete(f, "MosaicConfigure")
+	delete(f, "QRCodeConfigure")
+	delete(f, "QualityEvaluationConfigure")
+	delete(f, "VoiceConfigure")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQualityInspectTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyQualityInspectTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyQualityInspectTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyQualityInspectTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyQualityInspectTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyQualityInspectTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRebuildMediaTemplateRequestParams struct {
 	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
@@ -17601,6 +18233,20 @@ func (r *ModifyWordSampleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MosaicConfigureInfo struct {
+	// 视频画面马赛克检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type MosaicConfigureInfoForUpdate struct {
+	// 视频画面马赛克检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type MosaicInput struct {
 	// 原点位置，目前仅支持：
 	// <li>TopLeft：表示坐标原点位于视频图像左上角，马赛克原点为图片或文字的左上角。</li>
@@ -17642,6 +18288,20 @@ type MosaicInput struct {
 	// <li>当数值大于0时（假设为 n），表示马赛克持续到第 n 秒时消失；</li>
 	// <li>当数值小于0时（假设为 -n），表示马赛克持续到离画面结束 n 秒前消失。</li>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+}
+
+type NoiseConfigureInfo struct {
+	// 视频画面噪点检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type NoiseConfigureInfoForUpdate struct {
+	// 视频画面噪点检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type ObjectConfigureInfo struct {
@@ -19196,6 +19856,221 @@ func (r *PushUrlCacheResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PushUrlCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type QRCodeConfigureInfo struct {
+	// 视频画面二维码检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type QRCodeConfigureInfoForUpdate struct {
+	// 视频画面二维码检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type QualityEvaluationConfigureInfo struct {
+	// 视频画面质量评价检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 视频画面质量评价过滤阈值，结果只返回低于该值的时间段，默认值为 60。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+}
+
+type QualityEvaluationConfigureInfoForUpdate struct {
+	// 视频画面质量评价开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 视频画面质量评价过滤阈值，结果只返回低于该值的时间段。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+}
+
+type QualityInspectItem struct {
+	// 置信度，取值范围：[0, 100]。
+	// <font color=red>注意：</font> 仅当 Type 取值为下列之一时，本字段取值有效：
+	// <li>Mosaic：马赛克；</li>
+	// <li>QRCode：二维码；</li>
+	// <li>AppletCode：小程序码；</li>
+	// <li>BarCode：条形码。</li>
+	Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 异常片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 异常片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 检测出异常的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	// <font color=red>注意：</font> 仅当 Type 取值为下列之一时，本字段取值有效：
+	// <li>BlackWhiteEdge：黑白边；</li>
+	// <li>Mosaic：马赛克；</li>
+	// <li>QRCode：二维码；</li>
+	// <li>AppletCode：小程序码；</li>
+	// <li>BarCode：条形码。</li>
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
+}
+
+type QualityInspectResultItem struct {
+	// 异常类型，取值范围：
+	// <li>Jitter：抖动；</li>
+	// <li>Blur：模糊；</li>
+	// <li>LowLighting：低光照；</li>
+	// <li>HighLighting：过曝；</li>
+	// <li>CrashScreen：花屏；</li>
+	// <li>BlackWhiteEdge：黑白边；</li>
+	// <li>SolidColorScreen：纯色屏；</li>
+	// <li>Noise：噪点；</li>
+	// <li>Mosaic：马赛克；</li>
+	// <li>QRCode：二维码；</li>
+	// <li>AppletCode：小程序码；</li>
+	// <li>BarCode：条形码；</li>
+	// <li>LowVoice：低音；</li>
+	// <li>HighVoice：爆音；</li>
+	// <li>NoVoice：静音；</li>
+	// <li>LowEvaluation：无参考打分低于阈值。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 异常片段列表。
+	// <font color=red>注意：</font> 该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
+	SegmentSet []*QualityInspectItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
+
+	// 异常片段列表文件 URL。文件 内容 为  JSON，数据结构与 SegmentSet 字段一致。（文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
+
+	// 异常片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
+}
+
+type QualityInspectTask struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 音画质检测输入音视频的元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
+	// 音画质检测任务输入。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *QualityInspectTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 音画质检测任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *QualityInspectTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，音画质检测完成回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+type QualityInspectTaskInput struct {
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 音画质检测模板 ID。
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type QualityInspectTaskOutput struct {
+	// 媒体文件是否无音频轨，取值范围：
+	// <li>0：否，即有音频轨；</li>
+	// <li>1：是，即无音频轨。</li>
+	NoAudio *int64 `json:"NoAudio,omitempty" name:"NoAudio"`
+
+	// 媒体文件是否无视频轨，取值范围：
+	// <li>0：否，即有视频轨；</li>
+	// <li>1：是，即无视频轨。</li>
+	NoVideo *int64 `json:"NoVideo,omitempty" name:"NoVideo"`
+
+	// 视频画面质量评分，取值范围：[0, 100]。
+	QualityEvaluationScore *uint64 `json:"QualityEvaluationScore,omitempty" name:"QualityEvaluationScore"`
+
+	// 音画质检测出的异常项列表。
+	QualityInspectResultSet []*QualityInspectResultItem `json:"QualityInspectResultSet,omitempty" name:"QualityInspectResultSet"`
+}
+
+type QualityInspectTemplateItem struct {
+	// 模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 模板类型，可选值：
+	// <li>Preset：系统预置模板；</li>
+	// <li>Custom：用户自定义模板。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 模板名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 截帧间隔，单位为秒。
+	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
+
+	// 视频画面抖动重影检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JitterConfigure *JitterConfigureInfo `json:"JitterConfigure,omitempty" name:"JitterConfigure"`
+
+	// 视频画面模糊检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlurConfigure *BlurConfigureInfo `json:"BlurConfigure,omitempty" name:"BlurConfigure"`
+
+	// 视频画面低光、过曝检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AbnormalLightingConfigure *AbnormalLightingConfigureInfo `json:"AbnormalLightingConfigure,omitempty" name:"AbnormalLightingConfigure"`
+
+	// 视频画面花屏检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrashScreenConfigure *CrashScreenConfigureInfo `json:"CrashScreenConfigure,omitempty" name:"CrashScreenConfigure"`
+
+	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfo `json:"BlackWhiteEdgeConfigure,omitempty" name:"BlackWhiteEdgeConfigure"`
+
+	// 视频画面噪点检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoiseConfigure *NoiseConfigureInfo `json:"NoiseConfigure,omitempty" name:"NoiseConfigure"`
+
+	// 视频画面马赛克检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MosaicConfigure *MosaicConfigureInfo `json:"MosaicConfigure,omitempty" name:"MosaicConfigure"`
+
+	// 视频画面二维码检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
+
+	// 音频（静音、低音、爆音）检测的控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+
+	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type RebuildAudioInfo struct {
@@ -23097,6 +23972,20 @@ type VideoTrackItem struct {
 
 	// 对图像进行的操作，如图像旋转等。
 	ImageOperations []*ImageTransform `json:"ImageOperations,omitempty" name:"ImageOperations"`
+}
+
+type VoiceConfigureInfo struct {
+	// 音频（静音、低音、爆音）检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type VoiceConfigureInfoForUpdate struct {
+	// 音频（静音、低音、爆音）检测开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type WatermarkCycleConfigForUpdate struct {

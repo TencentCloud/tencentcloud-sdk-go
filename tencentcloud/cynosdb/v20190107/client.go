@@ -3833,6 +3833,56 @@ func (c *Client) DescribeProxyNodesWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeProxySpecsRequest() (request *DescribeProxySpecsRequest) {
+    request = &DescribeProxySpecsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeProxySpecs")
+    
+    
+    return
+}
+
+func NewDescribeProxySpecsResponse() (response *DescribeProxySpecsResponse) {
+    response = &DescribeProxySpecsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProxySpecs
+// 查询数据库代理规格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+func (c *Client) DescribeProxySpecs(request *DescribeProxySpecsRequest) (response *DescribeProxySpecsResponse, err error) {
+    return c.DescribeProxySpecsWithContext(context.Background(), request)
+}
+
+// DescribeProxySpecs
+// 查询数据库代理规格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+func (c *Client) DescribeProxySpecsWithContext(ctx context.Context, request *DescribeProxySpecsRequest) (response *DescribeProxySpecsResponse, err error) {
+    if request == nil {
+        request = NewDescribeProxySpecsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProxySpecs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProxySpecsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourcePackageDetailRequest() (request *DescribeResourcePackageDetailRequest) {
     request = &DescribeResourcePackageDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

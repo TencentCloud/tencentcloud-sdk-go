@@ -1493,6 +1493,78 @@ func (c *Client) CreateDBInstanceHourWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateDatabaseRequest() (request *CreateDatabaseRequest) {
+    request = &CreateDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "CreateDatabase")
+    
+    
+    return
+}
+
+func NewCreateDatabaseResponse() (response *CreateDatabaseResponse) {
+    response = &CreateDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDatabase
+// 本接口(CreateDatabase)用于在云数据库实例中创建数据库。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
+//  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateDatabase(request *CreateDatabaseRequest) (response *CreateDatabaseResponse, err error) {
+    return c.CreateDatabaseWithContext(context.Background(), request)
+}
+
+// CreateDatabase
+// 本接口(CreateDatabase)用于在云数据库实例中创建数据库。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  CDBERROR = "CdbError"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
+//  INTERNALERROR_INTERNALSERVICEERRORERR = "InternalError.InternalServiceErrorErr"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateDatabaseWithContext(ctx context.Context, request *CreateDatabaseRequest) (response *CreateDatabaseResponse, err error) {
+    if request == nil {
+        request = NewCreateDatabaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeployGroupRequest() (request *CreateDeployGroupRequest) {
     request = &CreateDeployGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

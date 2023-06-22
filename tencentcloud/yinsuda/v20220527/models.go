@@ -390,6 +390,117 @@ func (r *DescribeKTVMatchMusicsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeKTVMusicAccompanySegmentUrlRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 歌曲 Id 。
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 播放场景。默认为Chat
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
+
+	// 房间Id
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+type DescribeKTVMusicAccompanySegmentUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 歌曲 Id 。
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 播放场景。默认为Chat
+	// <li>Live：直播</li><li>Chat：语聊</li>
+	PlayScene *string `json:"PlayScene,omitempty" name:"PlayScene"`
+
+	// 房间Id
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeKTVMusicAccompanySegmentUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicAccompanySegmentUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "MusicId")
+	delete(f, "PlayScene")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMusicAccompanySegmentUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKTVMusicAccompanySegmentUrlResponseParams struct {
+	// 歌曲状态。
+	// 0：可用
+	// 1：下线
+	// 2：没权限
+	// 3：没伴奏
+	// 当返回2时，其他参数有可能全部为空
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 伴奏链接
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 伴奏类型，如mkv，mp3等
+	ExtName *string `json:"ExtName,omitempty" name:"ExtName"`
+
+	// 高潮开始时间
+	SegmentBegin *int64 `json:"SegmentBegin,omitempty" name:"SegmentBegin"`
+
+	// 高潮结束时间
+	SegmentEnd *int64 `json:"SegmentEnd,omitempty" name:"SegmentEnd"`
+
+	// 链接文件大小 单位 字节
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 其它片段时间（可用于抢唱）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherSegments []*KTVOtherSegments `json:"OtherSegments,omitempty" name:"OtherSegments"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeKTVMusicAccompanySegmentUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKTVMusicAccompanySegmentUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeKTVMusicAccompanySegmentUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicAccompanySegmentUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKTVMusicsByTagRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -1300,6 +1411,16 @@ type KTVMusicDetailInfo struct {
 	// 节拍信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BPMInfo *KTVBPMInfo `json:"BPMInfo,omitempty" name:"BPMInfo"`
+}
+
+type KTVOtherSegments struct {
+	// 片段开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentBegin *int64 `json:"SegmentBegin,omitempty" name:"SegmentBegin"`
+
+	// 片段结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SegmentEnd *int64 `json:"SegmentEnd,omitempty" name:"SegmentEnd"`
 }
 
 type KTVPlaylistBaseInfo struct {

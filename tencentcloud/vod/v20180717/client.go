@@ -1267,6 +1267,58 @@ func (c *Client) CreateProcedureTemplateWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateQualityInspectTemplateRequest() (request *CreateQualityInspectTemplateRequest) {
+    request = &CreateQualityInspectTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateQualityInspectTemplate")
+    
+    
+    return
+}
+
+func NewCreateQualityInspectTemplateResponse() (response *CreateQualityInspectTemplateResponse) {
+    response = &CreateQualityInspectTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateQualityInspectTemplate
+// 创建音画质检测模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateQualityInspectTemplate(request *CreateQualityInspectTemplateRequest) (response *CreateQualityInspectTemplateResponse, err error) {
+    return c.CreateQualityInspectTemplateWithContext(context.Background(), request)
+}
+
+// CreateQualityInspectTemplate
+// 创建音画质检测模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+func (c *Client) CreateQualityInspectTemplateWithContext(ctx context.Context, request *CreateQualityInspectTemplateRequest) (response *CreateQualityInspectTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateQualityInspectTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateQualityInspectTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateQualityInspectTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRebuildMediaTemplateRequest() (request *CreateRebuildMediaTemplateRequest) {
     request = &CreateRebuildMediaTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2839,6 +2891,56 @@ func (c *Client) DeleteProcedureTemplateWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteQualityInspectTemplateRequest() (request *DeleteQualityInspectTemplateRequest) {
+    request = &DeleteQualityInspectTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DeleteQualityInspectTemplate")
+    
+    
+    return
+}
+
+func NewDeleteQualityInspectTemplateResponse() (response *DeleteQualityInspectTemplateResponse) {
+    response = &DeleteQualityInspectTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteQualityInspectTemplate
+// 删除音画质检测模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteQualityInspectTemplate(request *DeleteQualityInspectTemplateRequest) (response *DeleteQualityInspectTemplateResponse, err error) {
+    return c.DeleteQualityInspectTemplateWithContext(context.Background(), request)
+}
+
+// DeleteQualityInspectTemplate
+// 删除音画质检测模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteQualityInspectTemplateWithContext(ctx context.Context, request *DeleteQualityInspectTemplateRequest) (response *DeleteQualityInspectTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteQualityInspectTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteQualityInspectTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteQualityInspectTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRebuildMediaTemplateRequest() (request *DeleteRebuildMediaTemplateRequest) {
     request = &DeleteRebuildMediaTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2861,12 +2963,8 @@ func NewDeleteRebuildMediaTemplateResponse() (response *DeleteRebuildMediaTempla
 // 删除音画质重生模板。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteRebuildMediaTemplate(request *DeleteRebuildMediaTemplateRequest) (response *DeleteRebuildMediaTemplateResponse, err error) {
     return c.DeleteRebuildMediaTemplateWithContext(context.Background(), request)
 }
@@ -2875,12 +2973,8 @@ func (c *Client) DeleteRebuildMediaTemplate(request *DeleteRebuildMediaTemplateR
 // 删除音画质重生模板。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteRebuildMediaTemplateWithContext(ctx context.Context, request *DeleteRebuildMediaTemplateRequest) (response *DeleteRebuildMediaTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteRebuildMediaTemplateRequest()
@@ -5379,6 +5473,58 @@ func (c *Client) DescribeProcedureTemplatesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeQualityInspectTemplatesRequest() (request *DescribeQualityInspectTemplatesRequest) {
+    request = &DescribeQualityInspectTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeQualityInspectTemplates")
+    
+    
+    return
+}
+
+func NewDescribeQualityInspectTemplatesResponse() (response *DescribeQualityInspectTemplatesResponse) {
+    response = &DescribeQualityInspectTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQualityInspectTemplates
+// 获取音画质检测模板列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeQualityInspectTemplates(request *DescribeQualityInspectTemplatesRequest) (response *DescribeQualityInspectTemplatesResponse, err error) {
+    return c.DescribeQualityInspectTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeQualityInspectTemplates
+// 获取音画质检测模板列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeQualityInspectTemplatesWithContext(ctx context.Context, request *DescribeQualityInspectTemplatesRequest) (response *DescribeQualityInspectTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeQualityInspectTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQualityInspectTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQualityInspectTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRebuildMediaTemplatesRequest() (request *DescribeRebuildMediaTemplatesRequest) {
     request = &DescribeRebuildMediaTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5401,13 +5547,9 @@ func NewDescribeRebuildMediaTemplatesResponse() (response *DescribeRebuildMediaT
 // 获取音画质重生模板列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
-//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
-//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRebuildMediaTemplates(request *DescribeRebuildMediaTemplatesRequest) (response *DescribeRebuildMediaTemplatesResponse, err error) {
     return c.DescribeRebuildMediaTemplatesWithContext(context.Background(), request)
 }
@@ -5416,13 +5558,9 @@ func (c *Client) DescribeRebuildMediaTemplates(request *DescribeRebuildMediaTemp
 // 获取音画质重生模板列表。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
-//  INVALIDPARAMETERVALUE_NAMES = "InvalidParameterValue.Names"
-//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRebuildMediaTemplatesWithContext(ctx context.Context, request *DescribeRebuildMediaTemplatesRequest) (response *DescribeRebuildMediaTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeRebuildMediaTemplatesRequest()
@@ -6859,6 +6997,64 @@ func (c *Client) ForbidMediaDistributionWithContext(ctx context.Context, request
     return
 }
 
+func NewInspectMediaQualityRequest() (request *InspectMediaQualityRequest) {
+    request = &InspectMediaQualityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "InspectMediaQuality")
+    
+    
+    return
+}
+
+func NewInspectMediaQualityResponse() (response *InspectMediaQualityResponse) {
+    response = &InspectMediaQualityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InspectMediaQuality
+// 对点播中的音视频媒体发起音画质检测任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) InspectMediaQuality(request *InspectMediaQualityRequest) (response *InspectMediaQualityResponse, err error) {
+    return c.InspectMediaQualityWithContext(context.Background(), request)
+}
+
+// InspectMediaQuality
+// 对点播中的音视频媒体发起音画质检测任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) InspectMediaQualityWithContext(ctx context.Context, request *InspectMediaQualityRequest) (response *InspectMediaQualityResponse, err error) {
+    if request == nil {
+        request = NewInspectMediaQualityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InspectMediaQuality require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInspectMediaQualityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLiveRealTimeClipRequest() (request *LiveRealTimeClipRequest) {
     request = &LiveRealTimeClipRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8129,6 +8325,58 @@ func (c *Client) ModifyPersonSampleWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyQualityInspectTemplateRequest() (request *ModifyQualityInspectTemplateRequest) {
+    request = &ModifyQualityInspectTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "ModifyQualityInspectTemplate")
+    
+    
+    return
+}
+
+func NewModifyQualityInspectTemplateResponse() (response *ModifyQualityInspectTemplateResponse) {
+    response = &ModifyQualityInspectTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyQualityInspectTemplate
+// 修改音画质检测模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyQualityInspectTemplate(request *ModifyQualityInspectTemplateRequest) (response *ModifyQualityInspectTemplateResponse, err error) {
+    return c.ModifyQualityInspectTemplateWithContext(context.Background(), request)
+}
+
+// ModifyQualityInspectTemplate
+// 修改音画质检测模板。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifyQualityInspectTemplateWithContext(ctx context.Context, request *ModifyQualityInspectTemplateRequest) (response *ModifyQualityInspectTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyQualityInspectTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyQualityInspectTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyQualityInspectTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRebuildMediaTemplateRequest() (request *ModifyRebuildMediaTemplateRequest) {
     request = &ModifyRebuildMediaTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8151,13 +8399,9 @@ func NewModifyRebuildMediaTemplateResponse() (response *ModifyRebuildMediaTempla
 // 修改音画质重生模板。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_FACEDUPLICATE = "InvalidParameterValue.FaceDuplicate"
-//  INVALIDPARAMETERVALUE_PICFORMATERROR = "InvalidParameterValue.PicFormatError"
-//  RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyRebuildMediaTemplate(request *ModifyRebuildMediaTemplateRequest) (response *ModifyRebuildMediaTemplateResponse, err error) {
     return c.ModifyRebuildMediaTemplateWithContext(context.Background(), request)
 }
@@ -8166,13 +8410,9 @@ func (c *Client) ModifyRebuildMediaTemplate(request *ModifyRebuildMediaTemplateR
 // 修改音画质重生模板。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_FACEDUPLICATE = "InvalidParameterValue.FaceDuplicate"
-//  INVALIDPARAMETERVALUE_PICFORMATERROR = "InvalidParameterValue.PicFormatError"
-//  RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) ModifyRebuildMediaTemplateWithContext(ctx context.Context, request *ModifyRebuildMediaTemplateRequest) (response *ModifyRebuildMediaTemplateResponse, err error) {
     if request == nil {
         request = NewModifyRebuildMediaTemplateRequest()
