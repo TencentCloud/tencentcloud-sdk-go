@@ -20,6 +20,36 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AttrItem struct {
+	// 字段名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 字段类型
+	// text:文本类型, 
+	// longtext:长文本类型, banner:单图片类型, image:多图片类型,
+	// video:视频类型,
+	// mp:小程序类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 只读
+	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
+
+	// 扫码展示
+	Hidden *bool `json:"Hidden,omitempty" name:"Hidden"`
+
+	// 多个值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 类型标识
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 扩展字段
+	Ext *string `json:"Ext,omitempty" name:"Ext"`
+}
+
 // Predefined struct for user
 type AuthorizedTransferRequestParams struct {
 	// 业务加密入参。
@@ -159,6 +189,17 @@ type CodeBatch struct {
 	// 调度任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Job *Job `json:"Job,omitempty" name:"Job"`
+
+	// 生产日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductionDate *string `json:"ProductionDate,omitempty" name:"ProductionDate"`
+
+	// 有效期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+	// 扩展属性
+	Attrs []*AttrItem `json:"Attrs,omitempty" name:"Attrs"`
 }
 
 type CodeItem struct {
@@ -311,6 +352,12 @@ type CreateCodeBatchRequestParams struct {
 
 	// 批次编号，业务字段不判断唯一性
 	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
+
+	// 有效期
+	ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+	// 生产日期
+	ProductionDate *string `json:"ProductionDate,omitempty" name:"ProductionDate"`
 }
 
 type CreateCodeBatchRequest struct {
@@ -342,6 +389,12 @@ type CreateCodeBatchRequest struct {
 
 	// 批次编号，业务字段不判断唯一性
 	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
+
+	// 有效期
+	ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+	// 生产日期
+	ProductionDate *string `json:"ProductionDate,omitempty" name:"ProductionDate"`
 }
 
 func (r *CreateCodeBatchRequest) ToJsonString() string {
@@ -365,6 +418,8 @@ func (r *CreateCodeBatchRequest) FromJsonString(s string) error {
 	delete(f, "MpTpl")
 	delete(f, "CloneId")
 	delete(f, "BatchCode")
+	delete(f, "ValidDate")
+	delete(f, "ProductionDate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodeBatchRequest has unknown keys!", "")
 	}
@@ -2765,21 +2820,39 @@ func (r *DescribeProductsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanLogsRequestParams struct {
-	// 码
-	Code *string `json:"Code,omitempty" name:"Code"`
-
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 分页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前分页
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 安心码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 小程序用户ID
+	Openid *string `json:"Openid,omitempty" name:"Openid"`
 }
 
 type DescribeScanLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 码
-	Code *string `json:"Code,omitempty" name:"Code"`
-
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 分页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前分页
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 安心码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 小程序用户ID
+	Openid *string `json:"Openid,omitempty" name:"Openid"`
 }
 
 func (r *DescribeScanLogsRequest) ToJsonString() string {
@@ -2794,8 +2867,11 @@ func (r *DescribeScanLogsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Code")
 	delete(f, "CorpId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "Code")
+	delete(f, "Openid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanLogsRequest has unknown keys!", "")
 	}
@@ -2805,7 +2881,8 @@ func (r *DescribeScanLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanLogsResponseParams struct {
 	// 【弃用】
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Products is deprecated.
 	Products []*ScanLog `json:"Products,omitempty" name:"Products"`
 
 	// 条数
@@ -3034,6 +3111,9 @@ func (r *DescribeTraceCodeByIdRequest) FromJsonString(s string) error {
 type DescribeTraceCodeByIdResponseParams struct {
 	// 无
 	TraceCode *TraceCode `json:"TraceCode,omitempty" name:"TraceCode"`
+
+	// 码路径，如level是2，则为 [1级, 2级]
+	CodePath []*string `json:"CodePath,omitempty" name:"CodePath"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3454,6 +3534,12 @@ type ModifyCodeBatchRequestParams struct {
 
 	// 批次编码，业务字段不判断唯一性
 	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
+
+	// 有效期
+	ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+	// 生产日期
+	ProductionDate *string `json:"ProductionDate,omitempty" name:"ProductionDate"`
 }
 
 type ModifyCodeBatchRequest struct {
@@ -3482,6 +3568,12 @@ type ModifyCodeBatchRequest struct {
 
 	// 批次编码，业务字段不判断唯一性
 	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
+
+	// 有效期
+	ValidDate *string `json:"ValidDate,omitempty" name:"ValidDate"`
+
+	// 生产日期
+	ProductionDate *string `json:"ProductionDate,omitempty" name:"ProductionDate"`
 }
 
 func (r *ModifyCodeBatchRequest) ToJsonString() string {
@@ -3504,6 +3596,8 @@ func (r *ModifyCodeBatchRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "Remark")
 	delete(f, "BatchCode")
+	delete(f, "ValidDate")
+	delete(f, "ProductionDate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCodeBatchRequest has unknown keys!", "")
 	}
@@ -4333,20 +4427,20 @@ type PhaseData struct {
 }
 
 type Product struct {
+	// 商户标识码
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 商品名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
 	// 商品id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
 	// 企业id
 	CorpId *int64 `json:"CorpId,omitempty" name:"CorpId"`
 
-	// 商户标识码
-	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
-
 	// 商品编号
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
-
-	// 商品名称
-	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 商品规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4487,7 +4581,6 @@ func (r *ReportBatchCallbackStatusResponse) FromJsonString(s string) error {
 
 type ScanLog struct {
 	// 行ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogId *int64 `json:"LogId,omitempty" name:"LogId"`
 
 	// 微信openid
@@ -4549,6 +4642,17 @@ type ScanLog struct {
 	// 批次ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 扫码类型 0:无效扫码 1: 小程序扫码 2: 商家扫码
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 商户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 }
 
 type ScanStat struct {
@@ -4654,9 +4758,6 @@ type TraceData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceTime *string `json:"TraceTime,omitempty" name:"TraceTime"`
 
-	// 无
-	TraceItems []*TraceItem `json:"TraceItems,omitempty" name:"TraceItems"`
-
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -4679,6 +4780,9 @@ type TraceData struct {
 
 	// 溯源阶段状态 0: 无效, 1: 有效
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 无
+	TraceItems []*TraceItem `json:"TraceItems,omitempty" name:"TraceItems"`
 }
 
 type TraceItem struct {
@@ -4695,14 +4799,14 @@ type TraceItem struct {
 	// mp:小程序类型
 	Type *string `json:"Type,omitempty" name:"Type"`
 
+	// 多个值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
 	// 只读
 	ReadOnly *bool `json:"ReadOnly,omitempty" name:"ReadOnly"`
 
 	// 扫码展示
 	Hidden *bool `json:"Hidden,omitempty" name:"Hidden"`
-
-	// 多个值
-	Values []*string `json:"Values,omitempty" name:"Values"`
 
 	// 类型标识
 	Key *string `json:"Key,omitempty" name:"Key"`

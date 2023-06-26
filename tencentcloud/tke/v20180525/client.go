@@ -972,7 +972,7 @@ func NewCreateClusterEndpointVipResponse() (response *CreateClusterEndpointVipRe
 }
 
 // CreateClusterEndpointVip
-// 创建托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+// 创建托管集群外网访问端口（不再维护，准备下线）请使用新接口：CreateClusterEndpoint
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -999,7 +999,7 @@ func (c *Client) CreateClusterEndpointVip(request *CreateClusterEndpointVipReque
 }
 
 // CreateClusterEndpointVip
-// 创建托管集群外网访问端口（老的方式，仅支持托管集群外网端口）
+// 创建托管集群外网访问端口（不再维护，准备下线）请使用新接口：CreateClusterEndpoint
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

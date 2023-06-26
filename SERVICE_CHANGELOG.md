@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
 
-### 第 133 次发布
+### 第 124 次发布
 
-发布时间：2023-06-22 01:12:14
+发布时间：2023-06-26 01:13:28
 
 本次发布包含了以下内容：
 
@@ -12,58 +12,36 @@
 
 新增接口：
 
-* [CreateDatabase](https://cloud.tencent.com/document/api/236/94238)
+* [ModifyDomainConfig](https://cloud.tencent.com/document/api/228/94258)
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 85 次发布
+
+发布时间：2023-06-26 01:15:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePostPaidInstance](https://cloud.tencent.com/document/api/597/94259)
+
+新增数据结构：
+
+* [CreateInstancePostData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePostData)
+* [CreateInstancePostResp](https://cloud.tencent.com/document/api/597/40861#CreateInstancePostResp)
 
 
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 57 次发布
+### 第 58 次发布
 
-发布时间：2023-06-22 01:22:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeProxySpecs](https://cloud.tencent.com/document/api/1003/94241)
-
-新增数据结构：
-
-* [ProxySpec](https://cloud.tencent.com/document/api/1003/48097#ProxySpec)
-
-
-
-## 腾讯智能对话平台(tbp) 版本：2019-06-27
-
-
-
-## 腾讯智能对话平台(tbp) 版本：2019-03-11
-
-### 第 6 次发布
-
-发布时间：2023-06-22 01:50:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ResponseMessage](https://cloud.tencent.com/document/api/1060/34559#ResponseMessage)
-
-	* <font color="#dd0000">**修改成员**：</font>GroupList
-
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 159 次发布
-
-发布时间：2023-06-22 02:01:05
+发布时间：2023-06-26 01:22:36
 
 本次发布包含了以下内容：
 
@@ -71,74 +49,206 @@
 
 新增接口：
 
-* [CreateQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94246)
-* [DeleteQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94245)
-* [DescribeQualityInspectTemplates](https://cloud.tencent.com/document/api/266/94244)
-* [InspectMediaQuality](https://cloud.tencent.com/document/api/266/94242)
-* [ModifyQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94243)
+* [DescribeSupportProxyVersion](https://cloud.tencent.com/document/api/1003/94260)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 46 次发布
+
+发布时间：2023-06-26 01:49:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+* [DescribeDBInstancesAttribute](https://cloud.tencent.com/document/api/238/90299)
 
-	* 新增出参：QualityInspectTask
+	* 新增出参：TDEConfig
+
+* [DescribeDBs](https://cloud.tencent.com/document/api/238/19968)
+
+	* 新增入参：Encryption
 
 
 新增数据结构：
 
-* [AbnormalLightingConfigureInfo](https://cloud.tencent.com/document/api/266/31773#AbnormalLightingConfigureInfo)
-* [AbnormalLightingConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#AbnormalLightingConfigureInfoForUpdate)
-* [BlackWhiteEdgeConfigureInfo](https://cloud.tencent.com/document/api/266/31773#BlackWhiteEdgeConfigureInfo)
-* [BlackWhiteEdgeConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#BlackWhiteEdgeConfigureInfoForUpdate)
-* [BlurConfigureInfo](https://cloud.tencent.com/document/api/266/31773#BlurConfigureInfo)
-* [BlurConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#BlurConfigureInfoForUpdate)
-* [CrashScreenConfigureInfo](https://cloud.tencent.com/document/api/266/31773#CrashScreenConfigureInfo)
-* [CrashScreenConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#CrashScreenConfigureInfoForUpdate)
-* [JitterConfigureInfo](https://cloud.tencent.com/document/api/266/31773#JitterConfigureInfo)
-* [JitterConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#JitterConfigureInfoForUpdate)
-* [MosaicConfigureInfo](https://cloud.tencent.com/document/api/266/31773#MosaicConfigureInfo)
-* [MosaicConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#MosaicConfigureInfoForUpdate)
-* [NoiseConfigureInfo](https://cloud.tencent.com/document/api/266/31773#NoiseConfigureInfo)
-* [NoiseConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#NoiseConfigureInfoForUpdate)
-* [QRCodeConfigureInfo](https://cloud.tencent.com/document/api/266/31773#QRCodeConfigureInfo)
-* [QRCodeConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#QRCodeConfigureInfoForUpdate)
-* [QualityEvaluationConfigureInfo](https://cloud.tencent.com/document/api/266/31773#QualityEvaluationConfigureInfo)
-* [QualityEvaluationConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#QualityEvaluationConfigureInfoForUpdate)
-* [QualityInspectItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectItem)
-* [QualityInspectResultItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectResultItem)
-* [QualityInspectTask](https://cloud.tencent.com/document/api/266/31773#QualityInspectTask)
-* [QualityInspectTaskInput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskInput)
-* [QualityInspectTaskOutput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskOutput)
-* [QualityInspectTemplateItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectTemplateItem)
-* [VoiceConfigureInfo](https://cloud.tencent.com/document/api/266/31773#VoiceConfigureInfo)
-* [VoiceConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VoiceConfigureInfoForUpdate)
+* [TDEConfigAttribute](https://cloud.tencent.com/document/api/238/19976#TDEConfigAttribute)
 
 修改数据结构：
 
-* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+* [DBDetail](https://cloud.tencent.com/document/api/238/19976#DBDetail)
 
-	* 新增成员：QualityInspectCompleteEvent
-
-
+	* 新增成员：Encryption
 
 
-## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+
+## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
 
 ### 第 16 次发布
 
-发布时间：2023-06-22 02:06:43
+发布时间：2023-06-26 01:51:21
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [DescribeKTVMusicAccompanySegmentUrl](https://cloud.tencent.com/document/api/1592/94247)
+* DeployDynamicBcosContract
+* GetBcosBlockByNumber
+* GetBcosBlockList
+* GetBcosTransByHash
+* GetBcosTransList
+* InvokeBcosTrans
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BcosBlockObj
+* BcosTransInfo
+
+
+
+## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 7 次发布
+
+发布时间：2023-06-26 01:54:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CancelAuthorityIssuer
+* CheckDidDeploy
+* CreateDidService
+* CreateLabel
+* DeployByName
+* DownCpt
+* EnableHash
+* GetAuthoritiesList
+* GetCptList
+* GetCredentialIssueRank
+* GetCredentialIssueTrend
+* GetDataPanel
+* GetDeployInfo
+* GetDeployList
+* GetDidDetail
+* GetDidList
+* GetDidRegisterTrend
+* GetDidServiceDetail
+* GetDidServiceList
+* GetGroupList
+* GetLabelList
+* GetPolicyList
+* GetPublicKey
+* QueryPolicy
+* RecognizeAuthorityIssuer
+* RegisterClaimPolicy
+* RegisterIssuer
+* RemoveHash
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Authority
+* Contract
+* CptListData
+* DidData
+* DidServiceInfo
+* Group
+* Label
+* Policy
+* Task
+* Trend
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 27 次发布
+
+发布时间：2023-06-26 01:57:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CFSConfig](https://cloud.tencent.com/document/api/851/75051#CFSConfig)
+
+	* 新增成员：MountType, Protocol
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 22 次发布
+
+发布时间：2023-06-26 02:00:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+
+	* 新增入参：ValidDate, ProductionDate
+
+* [DescribeScanLogs](https://cloud.tencent.com/document/api/1458/85943)
+
+	* 新增入参：PageSize, PageNumber, Openid
+
+	* <font color="#dd0000">**修改入参**：</font>Code
+
+* [DescribeTraceCodeById](https://cloud.tencent.com/document/api/1458/75010)
+
+	* 新增出参：CodePath
+
+* [ModifyCodeBatch](https://cloud.tencent.com/document/api/1458/75007)
+
+	* 新增入参：ValidDate, ProductionDate
+
 
 新增数据结构：
 
-* [KTVOtherSegments](https://cloud.tencent.com/document/api/1592/76191#KTVOtherSegments)
+* [AttrItem](https://cloud.tencent.com/document/api/1458/75030#AttrItem)
+
+修改数据结构：
+
+* [CodeBatch](https://cloud.tencent.com/document/api/1458/75030#CodeBatch)
+
+	* 新增成员：ProductionDate, ValidDate, Attrs
+
+* [Product](https://cloud.tencent.com/document/api/1458/75030#Product)
+
+	* <font color="#dd0000">**修改成员**：</font>ProductId, CorpId, ProductCode, Specification, Remark, Logo, CreateTime, UpdateTime, Ext, MerchantName
+
+* [ScanLog](https://cloud.tencent.com/document/api/1458/75030#ScanLog)
+
+	* 新增成员：Type, MerchantName, ProductName
+
+* [TraceData](https://cloud.tencent.com/document/api/1458/75030#TraceData)
+
+	* <font color="#dd0000">**修改成员**：</font>TraceItems
+
+* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
+
+	* <font color="#dd0000">**修改成员**：</font>ReadOnly, Hidden, Key, Ext
+
 
 
 
@@ -13900,7 +14010,7 @@
 
 新增接口：
 
-* [[CreateDatabase](https://cloud.tencent.com/document/api/236/94238)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDatabase](https://cloud.tencent.com/document/api/236/94238)
 
 ### 第 132 次发布
 
@@ -16705,6 +16815,18 @@
 
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 124 次发布
+
+发布时间：2023-06-26 01:13:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyDomainConfig](https://cloud.tencent.com/document/api/228/94258)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 123 次发布
 
@@ -21800,6 +21922,23 @@
 
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 85 次发布
+
+发布时间：2023-06-26 01:15:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePostPaidInstance](https://cloud.tencent.com/document/api/597/94259)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CreateInstancePostData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePostData)](https://cloud.tencent.com/document/api/597/40861#[CreateInstancePostData](https://cloud.tencent.com/document/api/597/40861#CreateInstancePostData))
+* [[CreateInstancePostResp](https://cloud.tencent.com/document/api/597/40861#CreateInstancePostResp)](https://cloud.tencent.com/document/api/597/40861#[CreateInstancePostResp](https://cloud.tencent.com/document/api/597/40861#CreateInstancePostResp))
 
 ### 第 84 次发布
 
@@ -36551,6 +36690,18 @@
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 58 次发布
+
+发布时间：2023-06-26 01:22:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSupportProxyVersion](https://cloud.tencent.com/document/api/1003/94260)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 57 次发布
 
 发布时间：2023-06-22 01:22:32
@@ -36561,11 +36712,11 @@
 
 新增接口：
 
-* [[DescribeProxySpecs](https://cloud.tencent.com/document/api/1003/94241)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeProxySpecs](https://cloud.tencent.com/document/api/1003/94241)
 
 新增数据结构：
 
-* [[ProxySpec](https://cloud.tencent.com/document/api/1003/48097#ProxySpec)](https://cloud.tencent.com/document/api/1003/48097#[ProxySpec](https://cloud.tencent.com/document/api/1003/48097#ProxySpec))
+* [ProxySpec](https://cloud.tencent.com/document/api/1003/48097#ProxySpec)
 
 ### 第 56 次发布
 
@@ -83981,6 +84132,36 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 46 次发布
+
+发布时间：2023-06-26 01:49:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstancesAttribute](https://cloud.tencent.com/document/api/238/90299)
+
+	* 新增出参：TDEConfig
+
+* [DescribeDBs](https://cloud.tencent.com/document/api/238/19968)
+
+	* 新增入参：Encryption
+
+
+新增数据结构：
+
+* [[TDEConfigAttribute](https://cloud.tencent.com/document/api/238/19976#TDEConfigAttribute)](https://cloud.tencent.com/document/api/238/19976#[TDEConfigAttribute](https://cloud.tencent.com/document/api/238/19976#TDEConfigAttribute))
+
+修改数据结构：
+
+* [DBDetail](https://cloud.tencent.com/document/api/238/19976#DBDetail)
+
+	* 新增成员：Encryption
+
+
 ### 第 45 次发布
 
 发布时间：2023-05-26 01:49:53
@@ -87591,6 +87772,28 @@
 
 
 ## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
+
+### 第 16 次发布
+
+发布时间：2023-06-26 01:51:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DeployDynamicBcosContract
+* GetBcosBlockByNumber
+* GetBcosBlockList
+* GetBcosTransByHash
+* GetBcosTransList
+* InvokeBcosTrans
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BcosBlockObj
+* BcosTransInfo
 
 ### 第 15 次发布
 
@@ -94181,6 +94384,58 @@
 
 
 ## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 7 次发布
+
+发布时间：2023-06-26 01:54:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CancelAuthorityIssuer
+* CheckDidDeploy
+* CreateDidService
+* CreateLabel
+* DeployByName
+* DownCpt
+* EnableHash
+* GetAuthoritiesList
+* GetCptList
+* GetCredentialIssueRank
+* GetCredentialIssueTrend
+* GetDataPanel
+* GetDeployInfo
+* GetDeployList
+* GetDidDetail
+* GetDidList
+* GetDidRegisterTrend
+* GetDidServiceDetail
+* GetDidServiceList
+* GetGroupList
+* GetLabelList
+* GetPolicyList
+* GetPublicKey
+* QueryPolicy
+* RecognizeAuthorityIssuer
+* RegisterClaimPolicy
+* RegisterIssuer
+* RemoveHash
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Authority
+* Contract
+* CptListData
+* DidData
+* DidServiceInfo
+* Group
+* Label
+* Policy
+* Task
+* Trend
 
 ### 第 6 次发布
 
@@ -101416,6 +101671,21 @@
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
 
+### 第 27 次发布
+
+发布时间：2023-06-26 01:57:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CFSConfig](https://cloud.tencent.com/document/api/851/75051#CFSConfig)
+
+	* 新增成员：MountType, Protocol
+
+
 ### 第 26 次发布
 
 发布时间：2023-06-08 02:02:11
@@ -106213,6 +106483,62 @@
 
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 22 次发布
+
+发布时间：2023-06-26 02:00:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+
+	* 新增入参：ValidDate, ProductionDate
+
+* [DescribeScanLogs](https://cloud.tencent.com/document/api/1458/85943)
+
+	* 新增入参：PageSize, PageNumber, Openid
+
+	* <font color="#dd0000">**修改入参**：</font>Code
+
+* [DescribeTraceCodeById](https://cloud.tencent.com/document/api/1458/75010)
+
+	* 新增出参：CodePath
+
+* [ModifyCodeBatch](https://cloud.tencent.com/document/api/1458/75007)
+
+	* 新增入参：ValidDate, ProductionDate
+
+
+新增数据结构：
+
+* [[AttrItem](https://cloud.tencent.com/document/api/1458/75030#AttrItem)](https://cloud.tencent.com/document/api/1458/75030#[AttrItem](https://cloud.tencent.com/document/api/1458/75030#AttrItem))
+
+修改数据结构：
+
+* [CodeBatch](https://cloud.tencent.com/document/api/1458/75030#CodeBatch)
+
+	* 新增成员：ProductionDate, ValidDate, Attrs
+
+* [Product](https://cloud.tencent.com/document/api/1458/75030#Product)
+
+	* <font color="#dd0000">**修改成员**：</font>ProductId, CorpId, ProductCode, Specification, Remark, Logo, CreateTime, UpdateTime, Ext, MerchantName
+
+* [ScanLog](https://cloud.tencent.com/document/api/1458/75030#ScanLog)
+
+	* 新增成员：Type, MerchantName, ProductName
+
+* [TraceData](https://cloud.tencent.com/document/api/1458/75030#TraceData)
+
+	* <font color="#dd0000">**修改成员**：</font>TraceItems
+
+* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
+
+	* <font color="#dd0000">**修改成员**：</font>ReadOnly, Hidden, Key, Ext
+
 
 ### 第 21 次发布
 
@@ -111596,11 +111922,11 @@
 
 新增接口：
 
-* [[CreateQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94246)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94245)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeQualityInspectTemplates](https://cloud.tencent.com/document/api/266/94244)](https://cloud.tencent.com/document/api/#/#)
-* [[InspectMediaQuality](https://cloud.tencent.com/document/api/266/94242)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94243)](https://cloud.tencent.com/document/api/#/#)
+* [CreateQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94246)
+* [DeleteQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94245)
+* [DescribeQualityInspectTemplates](https://cloud.tencent.com/document/api/266/94244)
+* [InspectMediaQuality](https://cloud.tencent.com/document/api/266/94242)
+* [ModifyQualityInspectTemplate](https://cloud.tencent.com/document/api/266/94243)
 
 修改接口：
 
@@ -111611,32 +111937,32 @@
 
 新增数据结构：
 
-* [[AbnormalLightingConfigureInfo](https://cloud.tencent.com/document/api/266/31773#AbnormalLightingConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[AbnormalLightingConfigureInfo](https://cloud.tencent.com/document/api/266/31773#AbnormalLightingConfigureInfo))
-* [[AbnormalLightingConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#AbnormalLightingConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[AbnormalLightingConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#AbnormalLightingConfigureInfoForUpdate))
-* [[BlackWhiteEdgeConfigureInfo](https://cloud.tencent.com/document/api/266/31773#BlackWhiteEdgeConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[BlackWhiteEdgeConfigureInfo](https://cloud.tencent.com/document/api/266/31773#BlackWhiteEdgeConfigureInfo))
-* [[BlackWhiteEdgeConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#BlackWhiteEdgeConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[BlackWhiteEdgeConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#BlackWhiteEdgeConfigureInfoForUpdate))
-* [[BlurConfigureInfo](https://cloud.tencent.com/document/api/266/31773#BlurConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[BlurConfigureInfo](https://cloud.tencent.com/document/api/266/31773#BlurConfigureInfo))
-* [[BlurConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#BlurConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[BlurConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#BlurConfigureInfoForUpdate))
-* [[CrashScreenConfigureInfo](https://cloud.tencent.com/document/api/266/31773#CrashScreenConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[CrashScreenConfigureInfo](https://cloud.tencent.com/document/api/266/31773#CrashScreenConfigureInfo))
-* [[CrashScreenConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#CrashScreenConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[CrashScreenConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#CrashScreenConfigureInfoForUpdate))
-* [[JitterConfigureInfo](https://cloud.tencent.com/document/api/266/31773#JitterConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[JitterConfigureInfo](https://cloud.tencent.com/document/api/266/31773#JitterConfigureInfo))
-* [[JitterConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#JitterConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[JitterConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#JitterConfigureInfoForUpdate))
-* [[MosaicConfigureInfo](https://cloud.tencent.com/document/api/266/31773#MosaicConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[MosaicConfigureInfo](https://cloud.tencent.com/document/api/266/31773#MosaicConfigureInfo))
-* [[MosaicConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#MosaicConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[MosaicConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#MosaicConfigureInfoForUpdate))
-* [[NoiseConfigureInfo](https://cloud.tencent.com/document/api/266/31773#NoiseConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[NoiseConfigureInfo](https://cloud.tencent.com/document/api/266/31773#NoiseConfigureInfo))
-* [[NoiseConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#NoiseConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[NoiseConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#NoiseConfigureInfoForUpdate))
-* [[QRCodeConfigureInfo](https://cloud.tencent.com/document/api/266/31773#QRCodeConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[QRCodeConfigureInfo](https://cloud.tencent.com/document/api/266/31773#QRCodeConfigureInfo))
-* [[QRCodeConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#QRCodeConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[QRCodeConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#QRCodeConfigureInfoForUpdate))
-* [[QualityEvaluationConfigureInfo](https://cloud.tencent.com/document/api/266/31773#QualityEvaluationConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[QualityEvaluationConfigureInfo](https://cloud.tencent.com/document/api/266/31773#QualityEvaluationConfigureInfo))
-* [[QualityEvaluationConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#QualityEvaluationConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[QualityEvaluationConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#QualityEvaluationConfigureInfoForUpdate))
-* [[QualityInspectItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectItem)](https://cloud.tencent.com/document/api/266/31773#[QualityInspectItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectItem))
-* [[QualityInspectResultItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectResultItem)](https://cloud.tencent.com/document/api/266/31773#[QualityInspectResultItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectResultItem))
-* [[QualityInspectTask](https://cloud.tencent.com/document/api/266/31773#QualityInspectTask)](https://cloud.tencent.com/document/api/266/31773#[QualityInspectTask](https://cloud.tencent.com/document/api/266/31773#QualityInspectTask))
-* [[QualityInspectTaskInput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskInput)](https://cloud.tencent.com/document/api/266/31773#[QualityInspectTaskInput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskInput))
-* [[QualityInspectTaskOutput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskOutput)](https://cloud.tencent.com/document/api/266/31773#[QualityInspectTaskOutput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskOutput))
-* [[QualityInspectTemplateItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectTemplateItem)](https://cloud.tencent.com/document/api/266/31773#[QualityInspectTemplateItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectTemplateItem))
-* [[VoiceConfigureInfo](https://cloud.tencent.com/document/api/266/31773#VoiceConfigureInfo)](https://cloud.tencent.com/document/api/266/31773#[VoiceConfigureInfo](https://cloud.tencent.com/document/api/266/31773#VoiceConfigureInfo))
-* [[VoiceConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VoiceConfigureInfoForUpdate)](https://cloud.tencent.com/document/api/266/31773#[VoiceConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VoiceConfigureInfoForUpdate))
+* [AbnormalLightingConfigureInfo](https://cloud.tencent.com/document/api/266/31773#AbnormalLightingConfigureInfo)
+* [AbnormalLightingConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#AbnormalLightingConfigureInfoForUpdate)
+* [BlackWhiteEdgeConfigureInfo](https://cloud.tencent.com/document/api/266/31773#BlackWhiteEdgeConfigureInfo)
+* [BlackWhiteEdgeConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#BlackWhiteEdgeConfigureInfoForUpdate)
+* [BlurConfigureInfo](https://cloud.tencent.com/document/api/266/31773#BlurConfigureInfo)
+* [BlurConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#BlurConfigureInfoForUpdate)
+* [CrashScreenConfigureInfo](https://cloud.tencent.com/document/api/266/31773#CrashScreenConfigureInfo)
+* [CrashScreenConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#CrashScreenConfigureInfoForUpdate)
+* [JitterConfigureInfo](https://cloud.tencent.com/document/api/266/31773#JitterConfigureInfo)
+* [JitterConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#JitterConfigureInfoForUpdate)
+* [MosaicConfigureInfo](https://cloud.tencent.com/document/api/266/31773#MosaicConfigureInfo)
+* [MosaicConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#MosaicConfigureInfoForUpdate)
+* [NoiseConfigureInfo](https://cloud.tencent.com/document/api/266/31773#NoiseConfigureInfo)
+* [NoiseConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#NoiseConfigureInfoForUpdate)
+* [QRCodeConfigureInfo](https://cloud.tencent.com/document/api/266/31773#QRCodeConfigureInfo)
+* [QRCodeConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#QRCodeConfigureInfoForUpdate)
+* [QualityEvaluationConfigureInfo](https://cloud.tencent.com/document/api/266/31773#QualityEvaluationConfigureInfo)
+* [QualityEvaluationConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#QualityEvaluationConfigureInfoForUpdate)
+* [QualityInspectItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectItem)
+* [QualityInspectResultItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectResultItem)
+* [QualityInspectTask](https://cloud.tencent.com/document/api/266/31773#QualityInspectTask)
+* [QualityInspectTaskInput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskInput)
+* [QualityInspectTaskOutput](https://cloud.tencent.com/document/api/266/31773#QualityInspectTaskOutput)
+* [QualityInspectTemplateItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectTemplateItem)
+* [VoiceConfigureInfo](https://cloud.tencent.com/document/api/266/31773#VoiceConfigureInfo)
+* [VoiceConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VoiceConfigureInfoForUpdate)
 
 修改数据结构：
 
@@ -121556,11 +121882,11 @@
 
 新增接口：
 
-* [[DescribeKTVMusicAccompanySegmentUrl](https://cloud.tencent.com/document/api/1592/94247)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeKTVMusicAccompanySegmentUrl](https://cloud.tencent.com/document/api/1592/94247)
 
 新增数据结构：
 
-* [[KTVOtherSegments](https://cloud.tencent.com/document/api/1592/76191#KTVOtherSegments)](https://cloud.tencent.com/document/api/1592/76191#[KTVOtherSegments](https://cloud.tencent.com/document/api/1592/76191#KTVOtherSegments))
+* [KTVOtherSegments](https://cloud.tencent.com/document/api/1592/76191#KTVOtherSegments)
 
 ### 第 15 次发布
 

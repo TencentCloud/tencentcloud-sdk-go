@@ -1390,7 +1390,7 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCmqQueueRequestParams struct {
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
 	// 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
@@ -1445,7 +1445,7 @@ type CreateCmqQueueRequestParams struct {
 type CreateCmqQueueRequest struct {
 	*tchttp.BaseRequest
 	
-	// 队列名字，在单个地域同一帐号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
+	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
 	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
 
 	// 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。

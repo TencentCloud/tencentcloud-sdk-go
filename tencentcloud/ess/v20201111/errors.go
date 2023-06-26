@@ -44,6 +44,9 @@ const (
 	// 签署审核未通过，请先完成审核。
 	FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
 
+	// 此合同流程不支持审批
+	FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
+
 	// 未找到集团子企业相关用户信息，请检查用户相关参数
 	FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 

@@ -5663,6 +5663,170 @@ func (c *Client) ManageClsTopicDomainsWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyDomainConfigRequest() (request *ModifyDomainConfigRequest) {
+    request = &ModifyDomainConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdn", APIVersion, "ModifyDomainConfig")
+    
+    
+    return
+}
+
+func NewModifyDomainConfigResponse() (response *ModifyDomainConfigResponse) {
+    response = &ModifyDomainConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDomainConfig
+// ModifyDomainConfig 用于修改内容分发网络加速域名配置信息
+//
+// 注意：
+//
+// Route 字段，使用点分隔，最后一段称为叶子节点，非叶子节点配置保持不变；
+//
+// Value 字段，使用 json 进行序列化，其中固定 update 作为 key，配置路径值参考 https://cloud.tencent.com/document/product/228/41116 接口各配置项复杂类型，为配置路径对应复杂类型下的节点。
+//
+// 云审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到云审计。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
+//  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNQUERYSYSTEMERROR = "InternalError.CdnQuerySystemError"
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_ERROR = "InternalError.Error"
+//  INTERNALERROR_INVALIDERRORCODE = "InternalError.InvalidErrorCode"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_ACCESSPORTOPENEDHTTPS = "InvalidParameter.AccessPortOpenedHttps"
+//  INVALIDPARAMETER_BANDLIMITREQUIREDMAINLAND = "InvalidParameter.BandLimitRequiredMainland"
+//  INVALIDPARAMETER_BANDWIDTHALERTCOUNTERMEASURECONFLICTORIGINTYPE = "InvalidParameter.BandwidthAlertCounterMeasureConflictOriginType"
+//  INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = "InvalidParameter.CDNStatusInvalidDomain"
+//  INVALIDPARAMETER_CDNCERTINFONOTFOUND = "InvalidParameter.CdnCertInfoNotFound"
+//  INVALIDPARAMETER_CDNCONFIGINVALIDCACHE = "InvalidParameter.CdnConfigInvalidCache"
+//  INVALIDPARAMETER_CDNHOSTINVALIDMIDDLECONFIG = "InvalidParameter.CdnHostInvalidMiddleConfig"
+//  INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = "InvalidParameter.CdnHostInvalidStatus"
+//  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
+//  INVALIDPARAMETER_CDNINVALIDPARAMSERVICETYPE = "InvalidParameter.CdnInvalidParamServiceType"
+//  INVALIDPARAMETER_CDNKEYRULESEXCLUDECUSTOMREQUIRESFULLLEGO = "InvalidParameter.CdnKeyRulesExcludeCustomRequiresFullLego"
+//  INVALIDPARAMETER_CDNKEYRULESINVALIDQUERYSTRINGVALUE = "InvalidParameter.CdnKeyRulesInvalidQueryStringValue"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  INVALIDPARAMETER_CDNSTATINVALIDPROJECTID = "InvalidParameter.CdnStatInvalidProjectId"
+//  INVALIDPARAMETER_CDNSTATTOOMANYDOMAINS = "InvalidParameter.CdnStatTooManyDomains"
+//  INVALIDPARAMETER_PATHREGEXTOOMANYSUBPATTERN = "InvalidParameter.PathRegexTooManySubPattern"
+//  INVALIDPARAMETER_REMOTEAUTHINVALIDPLATFORM = "InvalidParameter.RemoteAuthInvalidPlatform"
+//  INVALIDPARAMETER_REMOTEAUTHINVALIDPROTOCOL = "InvalidParameter.RemoteAuthInvalidProtocol"
+//  LIMITEXCEEDED_CDNCONFIGTOOMANYCACHERULES = "LimitExceeded.CdnConfigTooManyCacheRules"
+//  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
+//  RESOURCEINUSE_CDNHOSTEXISTS = "ResourceInUse.CdnHostExists"
+//  RESOURCEINUSE_CDNOPINPROGRESS = "ResourceInUse.CdnOpInProgress"
+//  RESOURCENOTFOUND_CDNHOSTNOTEXISTS = "ResourceNotFound.CdnHostNotExists"
+//  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINMAINLAND = "ResourceUnavailable.CdnHostBelongsToOthersInMainland"
+//  RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINOVERSEAS = "ResourceUnavailable.CdnHostBelongsToOthersInOverseas"
+//  RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = "ResourceUnavailable.CdnHostIsLocked"
+//  RESOURCEUNAVAILABLE_CDNHOSTISNOTOFFLINE = "ResourceUnavailable.CdnHostIsNotOffline"
+//  RESOURCEUNAVAILABLE_CDNHOSTNOICP = "ResourceUnavailable.CdnHostNoIcp"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNHOSTINICPBLACKLIST = "UnauthorizedOperation.CdnHostInIcpBlacklist"
+//  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNTAGUNAUTHORIZED = "UnauthorizedOperation.CdnTagUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNUSERAUTHFAIL = "UnauthorizedOperation.CdnUserAuthFail"
+//  UNAUTHORIZEDOPERATION_CDNUSERAUTHWAIT = "UnauthorizedOperation.CdnUserAuthWait"
+//  UNAUTHORIZEDOPERATION_CDNUSERISISOLATED = "UnauthorizedOperation.CdnUserIsIsolated"
+//  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
+//  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
+//  UNAUTHORIZEDOPERATION_OPNOAUTH = "UnauthorizedOperation.OpNoAuth"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
+func (c *Client) ModifyDomainConfig(request *ModifyDomainConfigRequest) (response *ModifyDomainConfigResponse, err error) {
+    return c.ModifyDomainConfigWithContext(context.Background(), request)
+}
+
+// ModifyDomainConfig
+// ModifyDomainConfig 用于修改内容分发网络加速域名配置信息
+//
+// 注意：
+//
+// Route 字段，使用点分隔，最后一段称为叶子节点，非叶子节点配置保持不变；
+//
+// Value 字段，使用 json 进行序列化，其中固定 update 作为 key，配置路径值参考 https://cloud.tencent.com/document/product/228/41116 接口各配置项复杂类型，为配置路径对应复杂类型下的节点。
+//
+// 云审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到云审计。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
+//  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
+//  INTERNALERROR_CDNQUERYSYSTEMERROR = "InternalError.CdnQuerySystemError"
+//  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_ERROR = "InternalError.Error"
+//  INTERNALERROR_INVALIDERRORCODE = "InternalError.InvalidErrorCode"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_ACCESSPORTOPENEDHTTPS = "InvalidParameter.AccessPortOpenedHttps"
+//  INVALIDPARAMETER_BANDLIMITREQUIREDMAINLAND = "InvalidParameter.BandLimitRequiredMainland"
+//  INVALIDPARAMETER_BANDWIDTHALERTCOUNTERMEASURECONFLICTORIGINTYPE = "InvalidParameter.BandwidthAlertCounterMeasureConflictOriginType"
+//  INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = "InvalidParameter.CDNStatusInvalidDomain"
+//  INVALIDPARAMETER_CDNCERTINFONOTFOUND = "InvalidParameter.CdnCertInfoNotFound"
+//  INVALIDPARAMETER_CDNCONFIGINVALIDCACHE = "InvalidParameter.CdnConfigInvalidCache"
+//  INVALIDPARAMETER_CDNHOSTINVALIDMIDDLECONFIG = "InvalidParameter.CdnHostInvalidMiddleConfig"
+//  INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = "InvalidParameter.CdnHostInvalidStatus"
+//  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
+//  INVALIDPARAMETER_CDNINVALIDPARAMSERVICETYPE = "InvalidParameter.CdnInvalidParamServiceType"
+//  INVALIDPARAMETER_CDNKEYRULESEXCLUDECUSTOMREQUIRESFULLLEGO = "InvalidParameter.CdnKeyRulesExcludeCustomRequiresFullLego"
+//  INVALIDPARAMETER_CDNKEYRULESINVALIDQUERYSTRINGVALUE = "InvalidParameter.CdnKeyRulesInvalidQueryStringValue"
+//  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
+//  INVALIDPARAMETER_CDNSTATINVALIDPROJECTID = "InvalidParameter.CdnStatInvalidProjectId"
+//  INVALIDPARAMETER_CDNSTATTOOMANYDOMAINS = "InvalidParameter.CdnStatTooManyDomains"
+//  INVALIDPARAMETER_PATHREGEXTOOMANYSUBPATTERN = "InvalidParameter.PathRegexTooManySubPattern"
+//  INVALIDPARAMETER_REMOTEAUTHINVALIDPLATFORM = "InvalidParameter.RemoteAuthInvalidPlatform"
+//  INVALIDPARAMETER_REMOTEAUTHINVALIDPROTOCOL = "InvalidParameter.RemoteAuthInvalidProtocol"
+//  LIMITEXCEEDED_CDNCONFIGTOOMANYCACHERULES = "LimitExceeded.CdnConfigTooManyCacheRules"
+//  LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
+//  RESOURCEINUSE_CDNHOSTEXISTS = "ResourceInUse.CdnHostExists"
+//  RESOURCEINUSE_CDNOPINPROGRESS = "ResourceInUse.CdnOpInProgress"
+//  RESOURCENOTFOUND_CDNHOSTNOTEXISTS = "ResourceNotFound.CdnHostNotExists"
+//  RESOURCENOTFOUND_CDNUSERNOTEXISTS = "ResourceNotFound.CdnUserNotExists"
+//  RESOURCENOTFOUND_ECDNDOMAINNOTEXISTS = "ResourceNotFound.EcdnDomainNotExists"
+//  RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINMAINLAND = "ResourceUnavailable.CdnHostBelongsToOthersInMainland"
+//  RESOURCEUNAVAILABLE_CDNHOSTBELONGSTOOTHERSINOVERSEAS = "ResourceUnavailable.CdnHostBelongsToOthersInOverseas"
+//  RESOURCEUNAVAILABLE_CDNHOSTISLOCKED = "ResourceUnavailable.CdnHostIsLocked"
+//  RESOURCEUNAVAILABLE_CDNHOSTISNOTOFFLINE = "ResourceUnavailable.CdnHostIsNotOffline"
+//  RESOURCEUNAVAILABLE_CDNHOSTNOICP = "ResourceUnavailable.CdnHostNoIcp"
+//  UNAUTHORIZEDOPERATION_CDNCAMUNAUTHORIZED = "UnauthorizedOperation.CdnCamUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNHOSTINICPBLACKLIST = "UnauthorizedOperation.CdnHostInIcpBlacklist"
+//  UNAUTHORIZEDOPERATION_CDNHOSTUNAUTHORIZED = "UnauthorizedOperation.CdnHostUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNPROJECTUNAUTHORIZED = "UnauthorizedOperation.CdnProjectUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNTAGUNAUTHORIZED = "UnauthorizedOperation.CdnTagUnauthorized"
+//  UNAUTHORIZEDOPERATION_CDNUSERAUTHFAIL = "UnauthorizedOperation.CdnUserAuthFail"
+//  UNAUTHORIZEDOPERATION_CDNUSERAUTHWAIT = "UnauthorizedOperation.CdnUserAuthWait"
+//  UNAUTHORIZEDOPERATION_CDNUSERISISOLATED = "UnauthorizedOperation.CdnUserIsIsolated"
+//  UNAUTHORIZEDOPERATION_CDNUSERISSUSPENDED = "UnauthorizedOperation.CdnUserIsSuspended"
+//  UNAUTHORIZEDOPERATION_CDNUSERNOWHITELIST = "UnauthorizedOperation.CdnUserNoWhitelist"
+//  UNAUTHORIZEDOPERATION_OPNOAUTH = "UnauthorizedOperation.OpNoAuth"
+//  UNAUTHORIZEDOPERATION_OPERATIONTOOOFTEN = "UnauthorizedOperation.OperationTooOften"
+func (c *Client) ModifyDomainConfigWithContext(ctx context.Context, request *ModifyDomainConfigRequest) (response *ModifyDomainConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyDomainConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDomainConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDomainConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyPurgeFetchTaskStatusRequest() (request *ModifyPurgeFetchTaskStatusRequest) {
     request = &ModifyPurgeFetchTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

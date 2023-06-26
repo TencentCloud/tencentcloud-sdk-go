@@ -218,9 +218,6 @@ const (
 	// 交易执行超时，请稍后再试。
 	FAILEDOPERATION_TRANSACTIONTIMEOUT = "FailedOperation.TransactionTimeout"
 
-	// Bcos更新已部署合约。
-	FAILEDOPERATION_UPDATEDEPLOYEDCONTRACT = "FailedOperation.UpdateDeployedContract"
-
 	// 获取用户认证类型出错。
 	FAILEDOPERATION_USERAUTHTYPE = "FailedOperation.UserAuthType"
 

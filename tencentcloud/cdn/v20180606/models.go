@@ -9690,6 +9690,74 @@ type MaxAgeRule struct {
 }
 
 // Predefined struct for user
+type ModifyDomainConfigRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 配置路径
+	Route *string `json:"Route,omitempty" name:"Route"`
+
+	// 配置路径值，使用 json 进行序列化，其中固定 update 作为 key
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type ModifyDomainConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 配置路径
+	Route *string `json:"Route,omitempty" name:"Route"`
+
+	// 配置路径值，使用 json 进行序列化，其中固定 update 作为 key
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+func (r *ModifyDomainConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Route")
+	delete(f, "Value")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDomainConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDomainConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDomainConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyDomainConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDomainConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyPurgeFetchTaskStatusRequestParams struct {
 	// 执行时间
 	ExecutionTime *string `json:"ExecutionTime,omitempty" name:"ExecutionTime"`

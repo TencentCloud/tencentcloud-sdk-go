@@ -579,7 +579,7 @@ type Component struct {
 	// 
 	// ComponentType为SIGN_SEAL类型时，支持以下参数：
 	// 1.PageRanges：PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）
-	// 参数样例： "ComponentExtra":"{\"PageRanges\":[\"PageRange\":{\"BeginPage\":1,\"EndPage\":-1}]}"
+	// 参数样例："ComponentExtra":"{\"PageRanges\":[{\"BeginPage\":1,\"EndPage\":-1}]}"
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
 	// 是否是表单域类型，默认不false-不是

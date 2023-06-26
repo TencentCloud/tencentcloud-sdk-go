@@ -2431,6 +2431,9 @@ type DBDetail struct {
 
 	// 内部状态。ONLINE表示运行中
 	InternalStatus *string `json:"InternalStatus,omitempty" name:"InternalStatus"`
+
+	// 是否已开启TDE加密，enable-已加密，disable-未加密
+	Encryption *string `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 type DBInstance struct {
@@ -4333,6 +4336,9 @@ type DescribeDBInstancesAttributeResponseParams struct {
 	// 慢SQL、阻塞、死锁扩展事件文件保留时长
 	EventSaveDays *int64 `json:"EventSaveDays,omitempty" name:"EventSaveDays"`
 
+	// TDE透明数据加密配置
+	TDEConfig *TDEConfigAttribute `json:"TDEConfig,omitempty" name:"TDEConfig"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4675,6 +4681,9 @@ type DescribeDBsRequestParams struct {
 
 	// 排序规则（desc-降序，asc-升序），默认desc
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 是否已开启TDE加密，enable-已加密，disable-未加密
+	Encryption *string `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 type DescribeDBsRequest struct {
@@ -4694,6 +4703,9 @@ type DescribeDBsRequest struct {
 
 	// 排序规则（desc-降序，asc-升序），默认desc
 	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 是否已开启TDE加密，enable-已加密，disable-未加密
+	Encryption *string `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *DescribeDBsRequest) ToJsonString() string {
@@ -4713,6 +4725,7 @@ func (r *DescribeDBsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Name")
 	delete(f, "OrderByType")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBsRequest has unknown keys!", "")
 	}
@@ -10245,6 +10258,18 @@ func (r *StopMigrationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopMigrationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TDEConfigAttribute struct {
+	// 是否已开通TDE加密，enable-已开通，disable-未开通
+	Encryption *string `json:"Encryption,omitempty" name:"Encryption"`
+
+	// 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，none-表示没有证书
+	CertificateAttribution *string `json:"CertificateAttribution,omitempty" name:"CertificateAttribution"`
+
+	// 开通TDE加密时引用的其他主账号ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuoteUin *string `json:"QuoteUin,omitempty" name:"QuoteUin"`
 }
 
 // Predefined struct for user

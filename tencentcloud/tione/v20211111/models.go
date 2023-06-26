@@ -316,6 +316,14 @@ type CFSConfig struct {
 
 	// 存储的路径
 	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountType *string `json:"MountType,omitempty" name:"MountType"`
+
+	// 协议 1: NFS, 2: TURBO
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
 type CFSTurbo struct {

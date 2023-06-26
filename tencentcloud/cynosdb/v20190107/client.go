@@ -4227,6 +4227,68 @@ func (c *Client) DescribeRollbackTimeValidityWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeSupportProxyVersionRequest() (request *DescribeSupportProxyVersionRequest) {
+    request = &DescribeSupportProxyVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeSupportProxyVersion")
+    
+    
+    return
+}
+
+func NewDescribeSupportProxyVersionResponse() (response *DescribeSupportProxyVersionResponse) {
+    response = &DescribeSupportProxyVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSupportProxyVersion
+// 查询支持的数据库代理版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSupportProxyVersion(request *DescribeSupportProxyVersionRequest) (response *DescribeSupportProxyVersionResponse, err error) {
+    return c.DescribeSupportProxyVersionWithContext(context.Background(), request)
+}
+
+// DescribeSupportProxyVersion
+// 查询支持的数据库代理版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeSupportProxyVersionWithContext(ctx context.Context, request *DescribeSupportProxyVersionRequest) (response *DescribeSupportProxyVersionResponse, err error) {
+    if request == nil {
+        request = NewDescribeSupportProxyVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSupportProxyVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSupportProxyVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
     request = &DescribeZonesRequest{
         BaseRequest: &tchttp.BaseRequest{},

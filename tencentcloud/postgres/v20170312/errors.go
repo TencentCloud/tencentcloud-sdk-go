@@ -137,6 +137,9 @@ const (
 	// 按量计费实例账户解冻结失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_POSTPAIDUNBLOCKERROR = "FailedOperation.PostPaidUnblockError"
 
+	// 操作预检查失败。
+	FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+
 	// 获取预签名授权URL错误。
 	FAILEDOPERATION_PRESIGNEDURLGETERROR = "FailedOperation.PresignedURLGetError"
 
