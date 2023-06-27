@@ -4478,6 +4478,277 @@ func (r *ModifyDomainWhiteRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifySpartaProtectionRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
+	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+
+	// CertType=1时，需要填次参数，表示证书内容
+	Cert *string `json:"Cert,omitempty" name:"Cert"`
+
+	// CertType=1时，需要填次参数，表示证书的私钥
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+	// CertType=2时，需要填次参数，表示证书的ID
+	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+
+	// 表示是否开启了CDN代理
+	IsCdn *int64 `json:"IsCdn,omitempty" name:"IsCdn"`
+
+	// HTTPS回源协议
+	UpstreamScheme *string `json:"UpstreamScheme,omitempty" name:"UpstreamScheme"`
+
+	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitempty" name:"HttpsUpstreamPort"`
+
+	// 表示是否强制跳转到HTTPS，1表示开启，0表示不开启
+	HttpsRewrite *uint64 `json:"HttpsRewrite,omitempty" name:"HttpsRewrite"`
+
+	// 回源类型，0表示通过IP回源,1 表示通过域名回源
+	UpstreamType *int64 `json:"UpstreamType,omitempty" name:"UpstreamType"`
+
+	// UpstreamType=1时，填次字段表示回源域名
+	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
+
+	// UpstreamType=0时，填次字段表示回源ip
+	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
+
+	// 是否开启HTTP2，1表示开启，0表示不开启http2。开启HTTP2需要HTTPS支持
+	IsHttp2 *int64 `json:"IsHttp2,omitempty" name:"IsHttp2"`
+
+	// 是否开启WebSocket， 1：开启WebSocket，0：不开启WebSocket
+	IsWebsocket *int64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
+
+	// 负载均衡策略，0表示轮徇，1表示IP hash
+	LoadBalance *int64 `json:"LoadBalance,omitempty" name:"LoadBalance"`
+
+	// 是否灰度
+	IsGray *int64 `json:"IsGray,omitempty" name:"IsGray"`
+
+	// WAF版本
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// 端口信息
+	Ports []*SpartaProtectionPort `json:"Ports,omitempty" name:"Ports"`
+
+	// 长短连接标志，仅IP回源时有效
+	IsKeepAlive *string `json:"IsKeepAlive,omitempty" name:"IsKeepAlive"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 是否为Anycast ip类型：1 Anycast 0 普通ip
+	Anycast *int64 `json:"Anycast,omitempty" name:"Anycast"`
+
+	// src的权重
+	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
+
+	// 是否开启源站的主动健康检测，1表示开启，0表示不开启
+	ActiveCheck *int64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+
+	// TLS版本信息
+	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+
+	// 加密套件信息
+	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+
+	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+
+	// 300s
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+
+	// 300s
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+
+	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+
+	// SniType=3时，需要填此参数，表示自定义的host；
+	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+
+	// IsCdn=3时，需要填此参数，表示自定义header
+	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+}
+
+type ModifySpartaProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
+	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+
+	// CertType=1时，需要填次参数，表示证书内容
+	Cert *string `json:"Cert,omitempty" name:"Cert"`
+
+	// CertType=1时，需要填次参数，表示证书的私钥
+	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+
+	// CertType=2时，需要填次参数，表示证书的ID
+	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+
+	// 表示是否开启了CDN代理
+	IsCdn *int64 `json:"IsCdn,omitempty" name:"IsCdn"`
+
+	// HTTPS回源协议
+	UpstreamScheme *string `json:"UpstreamScheme,omitempty" name:"UpstreamScheme"`
+
+	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitempty" name:"HttpsUpstreamPort"`
+
+	// 表示是否强制跳转到HTTPS，1表示开启，0表示不开启
+	HttpsRewrite *uint64 `json:"HttpsRewrite,omitempty" name:"HttpsRewrite"`
+
+	// 回源类型，0表示通过IP回源,1 表示通过域名回源
+	UpstreamType *int64 `json:"UpstreamType,omitempty" name:"UpstreamType"`
+
+	// UpstreamType=1时，填次字段表示回源域名
+	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
+
+	// UpstreamType=0时，填次字段表示回源ip
+	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
+
+	// 是否开启HTTP2，1表示开启，0表示不开启http2。开启HTTP2需要HTTPS支持
+	IsHttp2 *int64 `json:"IsHttp2,omitempty" name:"IsHttp2"`
+
+	// 是否开启WebSocket， 1：开启WebSocket，0：不开启WebSocket
+	IsWebsocket *int64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
+
+	// 负载均衡策略，0表示轮徇，1表示IP hash
+	LoadBalance *int64 `json:"LoadBalance,omitempty" name:"LoadBalance"`
+
+	// 是否灰度
+	IsGray *int64 `json:"IsGray,omitempty" name:"IsGray"`
+
+	// WAF版本
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// 端口信息
+	Ports []*SpartaProtectionPort `json:"Ports,omitempty" name:"Ports"`
+
+	// 长短连接标志，仅IP回源时有效
+	IsKeepAlive *string `json:"IsKeepAlive,omitempty" name:"IsKeepAlive"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 是否为Anycast ip类型：1 Anycast 0 普通ip
+	Anycast *int64 `json:"Anycast,omitempty" name:"Anycast"`
+
+	// src的权重
+	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
+
+	// 是否开启源站的主动健康检测，1表示开启，0表示不开启
+	ActiveCheck *int64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+
+	// TLS版本信息
+	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+
+	// 加密套件信息
+	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+
+	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+
+	// 300s
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+
+	// 300s
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+
+	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+
+	// SniType=3时，需要填此参数，表示自定义的host；
+	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+
+	// IsCdn=3时，需要填此参数，表示自定义header
+	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+}
+
+func (r *ModifySpartaProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	delete(f, "CertType")
+	delete(f, "Cert")
+	delete(f, "PrivateKey")
+	delete(f, "SSLId")
+	delete(f, "IsCdn")
+	delete(f, "UpstreamScheme")
+	delete(f, "HttpsUpstreamPort")
+	delete(f, "HttpsRewrite")
+	delete(f, "UpstreamType")
+	delete(f, "UpstreamDomain")
+	delete(f, "SrcList")
+	delete(f, "IsHttp2")
+	delete(f, "IsWebsocket")
+	delete(f, "LoadBalance")
+	delete(f, "IsGray")
+	delete(f, "Edition")
+	delete(f, "Ports")
+	delete(f, "IsKeepAlive")
+	delete(f, "InstanceID")
+	delete(f, "Anycast")
+	delete(f, "Weights")
+	delete(f, "ActiveCheck")
+	delete(f, "TLSVersion")
+	delete(f, "Ciphers")
+	delete(f, "CipherTemplate")
+	delete(f, "ProxyReadTimeout")
+	delete(f, "ProxySendTimeout")
+	delete(f, "SniType")
+	delete(f, "SniHost")
+	delete(f, "IpHeaders")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySpartaProtectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifySpartaProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySpartaProtectionResponseParams `json:"Response"`
+}
+
+func (r *ModifySpartaProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySpartaProtectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyWafAutoDenyRulesRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -5153,6 +5424,23 @@ func (r *SearchAttackLogResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SearchAttackLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SpartaProtectionPort struct {
+	// nginx Id
+	NginxServerId *uint64 `json:"NginxServerId,omitempty" name:"NginxServerId"`
+
+	// 端口
+	Port *string `json:"Port,omitempty" name:"Port"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 后端端口
+	UpstreamPort *string `json:"UpstreamPort,omitempty" name:"UpstreamPort"`
+
+	// 后端协议
+	UpstreamProtocol *string `json:"UpstreamProtocol,omitempty" name:"UpstreamProtocol"`
 }
 
 type Strategy struct {

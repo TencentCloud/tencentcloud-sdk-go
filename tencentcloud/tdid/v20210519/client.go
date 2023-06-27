@@ -146,6 +146,10 @@ func NewCheckChainResponse() (response *CheckChainResponse) {
 }
 
 // CheckChain
+// 该接口不再使用
+//
+// 
+//
 // 检查区块链信息
 //
 // 可能返回的错误码:
@@ -167,6 +171,10 @@ func (c *Client) CheckChain(request *CheckChainRequest) (response *CheckChainRes
 }
 
 // CheckChain
+// 该接口不再使用
+//
+// 
+//
 // 检查区块链信息
 //
 // 可能返回的错误码:
@@ -218,6 +226,10 @@ func NewCreateCredentialResponse() (response *CreateCredentialResponse) {
 }
 
 // CreateCredential
+// 该接口不再使用
+//
+// 
+//
 // 创建凭证
 //
 // 可能返回的错误码:
@@ -233,6 +245,10 @@ func (c *Client) CreateCredential(request *CreateCredentialRequest) (response *C
 }
 
 // CreateCredential
+// 该接口不再使用
+//
+// 
+//
 // 创建凭证
 //
 // 可能返回的错误码:
@@ -278,6 +294,10 @@ func NewCreateSelectiveCredentialResponse() (response *CreateSelectiveCredential
 }
 
 // CreateSelectiveCredential
+// 该接口不再使用
+//
+// 
+//
 // 创建选择性批露凭证
 //
 // 可能返回的错误码:
@@ -299,6 +319,10 @@ func (c *Client) CreateSelectiveCredential(request *CreateSelectiveCredentialReq
 }
 
 // CreateSelectiveCredential
+// 该接口不再使用
+//
+// 
+//
 // 创建选择性批露凭证
 //
 // 可能返回的错误码:
@@ -350,6 +374,10 @@ func NewCreateTDidResponse() (response *CreateTDidResponse) {
 }
 
 // CreateTDid
+// 该接口不再使用
+//
+// 
+//
 // 创建机构DID
 //
 // 可能返回的错误码:
@@ -369,6 +397,10 @@ func (c *Client) CreateTDid(request *CreateTDidRequest) (response *CreateTDidRes
 }
 
 // CreateTDid
+// 该接口不再使用
+//
+// 
+//
 // 创建机构DID
 //
 // 可能返回的错误码:
@@ -418,6 +450,10 @@ func NewCreateTDidByPrivateKeyResponse() (response *CreateTDidByPrivateKeyRespon
 }
 
 // CreateTDidByPrivateKey
+// 该接口不再使用
+//
+// 
+//
 // 新建DID根据私钥生成Tdid
 //
 // 可能返回的错误码:
@@ -439,6 +475,10 @@ func (c *Client) CreateTDidByPrivateKey(request *CreateTDidByPrivateKeyRequest) 
 }
 
 // CreateTDidByPrivateKey
+// 该接口不再使用
+//
+// 
+//
 // 新建DID根据私钥生成Tdid
 //
 // 可能返回的错误码:
@@ -490,6 +530,10 @@ func NewCreateTDidByPublicKeyResponse() (response *CreateTDidByPublicKeyResponse
 }
 
 // CreateTDidByPublicKey
+// 该接口不再使用
+//
+// 
+//
 //  新建DID根据公钥生成Tdid
 //
 // 可能返回的错误码:
@@ -511,6 +555,10 @@ func (c *Client) CreateTDidByPublicKey(request *CreateTDidByPublicKeyRequest) (r
 }
 
 // CreateTDidByPublicKey
+// 该接口不再使用
+//
+// 
+//
 //  新建DID根据公钥生成Tdid
 //
 // 可能返回的错误码:
@@ -642,6 +690,10 @@ func NewGetAuthorityIssuerResponse() (response *GetAuthorityIssuerResponse) {
 }
 
 // GetAuthorityIssuer
+// 该接口不再使用
+//
+// 
+//
 // 获取权威机构信息
 //
 // 可能返回的错误码:
@@ -663,6 +715,10 @@ func (c *Client) GetAuthorityIssuer(request *GetAuthorityIssuerRequest) (respons
 }
 
 // GetAuthorityIssuer
+// 该接口不再使用
+//
+// 
+//
 // 获取权威机构信息
 //
 // 可能返回的错误码:
@@ -874,6 +930,10 @@ func NewGetCptInfoResponse() (response *GetCptInfoResponse) {
 }
 
 // GetCptInfo
+// 该接口不再使用
+//
+// 
+//
 // 凭证模版详情
 //
 // 可能返回的错误码:
@@ -895,6 +955,10 @@ func (c *Client) GetCptInfo(request *GetCptInfoRequest) (response *GetCptInfoRes
 }
 
 // GetCptInfo
+// 该接口不再使用
+//
+// 
+//
 // 凭证模版详情
 //
 // 可能返回的错误码:
@@ -1026,6 +1090,10 @@ func NewGetCredentialStatusResponse() (response *GetCredentialStatusResponse) {
 }
 
 // GetCredentialStatus
+// 该接口不再使用
+//
+// 
+//
 // 获取凭证链上状态信息
 //
 // 可能返回的错误码:
@@ -1047,6 +1115,10 @@ func (c *Client) GetCredentialStatus(request *GetCredentialStatusRequest) (respo
 }
 
 // GetCredentialStatus
+// 该接口不再使用
+//
+// 
+//
 // 获取凭证链上状态信息
 //
 // 可能返回的错误码:
@@ -1079,166 +1151,6 @@ func (c *Client) GetCredentialStatusWithContext(ctx context.Context, request *Ge
     return
 }
 
-func NewGetDidClusterDetailRequest() (request *GetDidClusterDetailRequest) {
-    request = &GetDidClusterDetailRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdid", APIVersion, "GetDidClusterDetail")
-    
-    
-    return
-}
-
-func NewGetDidClusterDetailResponse() (response *GetDidClusterDetailResponse) {
-    response = &GetDidClusterDetailResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// GetDidClusterDetail
-// 下线已有内测接口，待上线正式版本的接口
-//
-// 
-//
-// 获取DID区块链网络详情
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetDidClusterDetail(request *GetDidClusterDetailRequest) (response *GetDidClusterDetailResponse, err error) {
-    return c.GetDidClusterDetailWithContext(context.Background(), request)
-}
-
-// GetDidClusterDetail
-// 下线已有内测接口，待上线正式版本的接口
-//
-// 
-//
-// 获取DID区块链网络详情
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetDidClusterDetailWithContext(ctx context.Context, request *GetDidClusterDetailRequest) (response *GetDidClusterDetailResponse, err error) {
-    if request == nil {
-        request = NewGetDidClusterDetailRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetDidClusterDetail require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetDidClusterDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewGetDidClusterListRequest() (request *GetDidClusterListRequest) {
-    request = &GetDidClusterListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdid", APIVersion, "GetDidClusterList")
-    
-    
-    return
-}
-
-func NewGetDidClusterListResponse() (response *GetDidClusterListResponse) {
-    response = &GetDidClusterListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// GetDidClusterList
-// 下线已有内测接口，待上线正式版本的接口
-//
-// 
-//
-// 获取用户的DID网络列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetDidClusterList(request *GetDidClusterListRequest) (response *GetDidClusterListResponse, err error) {
-    return c.GetDidClusterListWithContext(context.Background(), request)
-}
-
-// GetDidClusterList
-// 下线已有内测接口，待上线正式版本的接口
-//
-// 
-//
-// 获取用户的DID网络列表
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION_INVALIDAUTH = "FailedOperation.InvalidAuth"
-//  FAILEDOPERATION_OPERATIONEXCEPTION = "FailedOperation.OperationException"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_SERVEREXCEPTION = "InternalError.ServerException"
-//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
-//  INTERNALERROR_SERVICEPANIC = "InternalError.ServicePanic"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetDidClusterListWithContext(ctx context.Context, request *GetDidClusterListRequest) (response *GetDidClusterListResponse, err error) {
-    if request == nil {
-        request = NewGetDidClusterListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetDidClusterList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetDidClusterListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewGetDidDocumentRequest() (request *GetDidDocumentRequest) {
     request = &GetDidDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1258,6 +1170,10 @@ func NewGetDidDocumentResponse() (response *GetDidDocumentResponse) {
 }
 
 // GetDidDocument
+// 该接口不再使用
+//
+// 
+//
 // 查看DID文档
 //
 // 可能返回的错误码:
@@ -1279,6 +1195,10 @@ func (c *Client) GetDidDocument(request *GetDidDocumentRequest) (response *GetDi
 }
 
 // GetDidDocument
+// 该接口不再使用
+//
+// 
+//
 // 查看DID文档
 //
 // 可能返回的错误码:
@@ -1330,6 +1250,10 @@ func NewRegisterCptResponse() (response *RegisterCptResponse) {
 }
 
 // RegisterCpt
+// 该接口不再使用
+//
+// 
+//
 // 凭证模版新建
 //
 // 可能返回的错误码:
@@ -1351,6 +1275,10 @@ func (c *Client) RegisterCpt(request *RegisterCptRequest) (response *RegisterCpt
 }
 
 // RegisterCpt
+// 该接口不再使用
+//
+// 
+//
 // 凭证模版新建
 //
 // 可能返回的错误码:
@@ -1402,6 +1330,10 @@ func NewSetCredentialStatusResponse() (response *SetCredentialStatusResponse) {
 }
 
 // SetCredentialStatus
+// 该接口不再使用
+//
+// 
+//
 // 设置凭证链上状态
 //
 // 可能返回的错误码:
@@ -1423,6 +1355,10 @@ func (c *Client) SetCredentialStatus(request *SetCredentialStatusRequest) (respo
 }
 
 // SetCredentialStatus
+// 该接口不再使用
+//
+// 
+//
 // 设置凭证链上状态
 //
 // 可能返回的错误码:
@@ -1474,6 +1410,10 @@ func NewVerifyCredentialResponse() (response *VerifyCredentialResponse) {
 }
 
 // VerifyCredential
+// 该接口不再使用
+//
+// 
+//
 // 验证凭证
 //
 // 可能返回的错误码:
@@ -1495,6 +1435,10 @@ func (c *Client) VerifyCredential(request *VerifyCredentialRequest) (response *V
 }
 
 // VerifyCredential
+// 该接口不再使用
+//
+// 
+//
 // 验证凭证
 //
 // 可能返回的错误码:

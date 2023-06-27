@@ -1814,7 +1814,7 @@ func NewDeleteShipperResponse() (response *DeleteShipperResponse) {
 }
 
 // DeleteShipper
-// 删除投递规则
+// 删除投递COS任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1834,7 +1834,7 @@ func (c *Client) DeleteShipper(request *DeleteShipperRequest) (response *DeleteS
 }
 
 // DeleteShipper
-// 删除投递规则
+// 删除投递COS任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

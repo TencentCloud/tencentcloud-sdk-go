@@ -44,6 +44,9 @@ const (
 	// 数据库访问失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 
+	// 修改账号权限失败。
+	FAILEDOPERATION_DESCRIBEACCOUNTPRIVILEGESERROR = "FailedOperation.DescribeAccountPrivilegesError"
+
 	// 创建流程失败，请稍后重试。如果持续不成功，请联系客服进行处理。
 	FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
 
@@ -97,6 +100,9 @@ const (
 
 	// 获取VPC失败。
 	INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+
+	// 网络错误
+	INTERNALERROR_HTTPERROR = "InternalError.HttpError"
 
 	// http请求执行异常。
 	INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"

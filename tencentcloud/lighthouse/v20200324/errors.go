@@ -92,7 +92,7 @@ const (
 	// 快照操作失败。
 	FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = "FailedOperation.SnapshotOperationFailed"
 
-	// 调用计费网关服务失败，请稍后重新操作操作。
+	// 调用计费网关服务失败，请稍后重新操作。
 	FAILEDOPERATION_TRADECALLBILLINGGATEWAYFAILED = "FailedOperation.TradeCallBillingGatewayFailed"
 
 	// 计费询价失败。

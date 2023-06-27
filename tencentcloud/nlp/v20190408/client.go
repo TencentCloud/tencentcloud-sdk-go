@@ -45,6 +45,100 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAnalyzeSentimentRequest() (request *AnalyzeSentimentRequest) {
+    request = &AnalyzeSentimentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "AnalyzeSentiment")
+    
+    
+    return
+}
+
+func NewAnalyzeSentimentResponse() (response *AnalyzeSentimentResponse) {
+    response = &AnalyzeSentimentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AnalyzeSentiment
+// 情感分析接口能够对带有情感色彩的主观性文本进行分析、处理、归纳和推理，识别出用户的情感倾向，是积极、中性还是消极，并且提供各自概率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+//  INTERNALERROR_TEXTPARSINGERROR = "InternalError.TextParsingError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) AnalyzeSentiment(request *AnalyzeSentimentRequest) (response *AnalyzeSentimentResponse, err error) {
+    return c.AnalyzeSentimentWithContext(context.Background(), request)
+}
+
+// AnalyzeSentiment
+// 情感分析接口能够对带有情感色彩的主观性文本进行分析、处理、归纳和推理，识别出用户的情感倾向，是积极、中性还是消极，并且提供各自概率。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+//  INTERNALERROR_TEXTPARSINGERROR = "InternalError.TextParsingError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) AnalyzeSentimentWithContext(ctx context.Context, request *AnalyzeSentimentRequest) (response *AnalyzeSentimentResponse, err error) {
+    if request == nil {
+        request = NewAnalyzeSentimentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AnalyzeSentiment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAnalyzeSentimentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAutoSummarizationRequest() (request *AutoSummarizationRequest) {
     request = &AutoSummarizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -195,6 +289,278 @@ func (c *Client) ChatBotWithContext(ctx context.Context, request *ChatBotRequest
     request.SetContext(ctx)
     
     response = NewChatBotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewClassifyContentRequest() (request *ClassifyContentRequest) {
+    request = &ClassifyContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "ClassifyContent")
+    
+    
+    return
+}
+
+func NewClassifyContentResponse() (response *ClassifyContentResponse) {
+    response = &ClassifyContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ClassifyContent
+// 文本分类接口能够对用户输入的文章进行自动分类，将其映射到具体的类目上，用户只需要提供待分类的文本，而无需关注具体实现。该功能定义了一套较为完备的[三级分类体系](https://cloud.tencent.com/document/product/271/94286)，积累了数百万的语料，经过多轮迭代优化打造了较先进的深度学习模型，以保证效果不断提升。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+//  INTERNALERROR_TEXTPARSINGERROR = "InternalError.TextParsingError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) ClassifyContent(request *ClassifyContentRequest) (response *ClassifyContentResponse, err error) {
+    return c.ClassifyContentWithContext(context.Background(), request)
+}
+
+// ClassifyContent
+// 文本分类接口能够对用户输入的文章进行自动分类，将其映射到具体的类目上，用户只需要提供待分类的文本，而无需关注具体实现。该功能定义了一套较为完备的[三级分类体系](https://cloud.tencent.com/document/product/271/94286)，积累了数百万的语料，经过多轮迭代优化打造了较先进的深度学习模型，以保证效果不断提升。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+//  FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RESOURCEBUSY = "FailedOperation.ResourceBusy"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+//  INTERNALERROR_TEXTPARSINGERROR = "InternalError.TextParsingError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) ClassifyContentWithContext(ctx context.Context, request *ClassifyContentRequest) (response *ClassifyContentResponse, err error) {
+    if request == nil {
+        request = NewClassifyContentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ClassifyContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewClassifyContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewComposeCoupletRequest() (request *ComposeCoupletRequest) {
+    request = &ComposeCoupletRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "ComposeCouplet")
+    
+    
+    return
+}
+
+func NewComposeCoupletResponse() (response *ComposeCoupletResponse) {
+    response = &ComposeCoupletResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ComposeCouplet
+// 对联生成接口根据用户输入的命题关键词，智能生成一副完整的春联，包括上联、下联和横批。该接口利用先进的自然语言处理技术，确保生成的春联既符合传统对仗、对韵、对义的要求，又具有新意和创意，为用户提供独特的春节祝福。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_NOCOUPLETS = "FailedOperation.NoCouplets"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TARGETTYPE = "InvalidParameterValue.TargetType"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) ComposeCouplet(request *ComposeCoupletRequest) (response *ComposeCoupletResponse, err error) {
+    return c.ComposeCoupletWithContext(context.Background(), request)
+}
+
+// ComposeCouplet
+// 对联生成接口根据用户输入的命题关键词，智能生成一副完整的春联，包括上联、下联和横批。该接口利用先进的自然语言处理技术，确保生成的春联既符合传统对仗、对韵、对义的要求，又具有新意和创意，为用户提供独特的春节祝福。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_NOCOUPLETS = "FailedOperation.NoCouplets"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
+//  INVALIDPARAMETERVALUE_TARGETTYPE = "InvalidParameterValue.TargetType"
+//  INVALIDPARAMETERVALUE_TEXT = "InvalidParameterValue.Text"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) ComposeCoupletWithContext(ctx context.Context, request *ComposeCoupletRequest) (response *ComposeCoupletResponse, err error) {
+    if request == nil {
+        request = NewComposeCoupletRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ComposeCouplet require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewComposeCoupletResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewComposePoetryRequest() (request *ComposePoetryRequest) {
+    request = &ComposePoetryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("nlp", APIVersion, "ComposePoetry")
+    
+    
+    return
+}
+
+func NewComposePoetryResponse() (response *ComposePoetryResponse) {
+    response = &ComposePoetryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ComposePoetry
+// 诗词生成接口利用现代的自然语言处理和深度学习技术，模仿了古代著名诗人的风格，为用户产生独特的诗词。用户只需输入的命题关键词，接口就能自动生成一首七言律诗或五言律诗。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_NOPOETRY = "FailedOperation.NoPoetry"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_GENRE = "InvalidParameterValue.Genre"
+//  INVALIDPARAMETERVALUE_POETRYTYPE = "InvalidParameterValue.PoetryType"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) ComposePoetry(request *ComposePoetryRequest) (response *ComposePoetryResponse, err error) {
+    return c.ComposePoetryWithContext(context.Background(), request)
+}
+
+// ComposePoetry
+// 诗词生成接口利用现代的自然语言处理和深度学习技术，模仿了古代著名诗人的风格，为用户产生独特的诗词。用户只需输入的命题关键词，接口就能自动生成一首七言律诗或五言律诗。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+//  FAILEDOPERATION_NOPOETRY = "FailedOperation.NoPoetry"
+//  FAILEDOPERATION_NOTFOUNDDATA = "FailedOperation.NotFoundData"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SERVICECALLERROR = "InternalError.ServiceCallError"
+//  INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
+//  INVALIDPARAMETERVALUE_GENRE = "InvalidParameterValue.Genre"
+//  INVALIDPARAMETERVALUE_POETRYTYPE = "InvalidParameterValue.PoetryType"
+//  LIMITEXCEEDED_RESOURCEREACHEDLIMIT = "LimitExceeded.ResourceReachedLimit"
+//  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
+//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
+func (c *Client) ComposePoetryWithContext(ctx context.Context, request *ComposePoetryRequest) (response *ComposePoetryResponse, err error) {
+    if request == nil {
+        request = NewComposePoetryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ComposePoetry require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewComposePoetryResponse()
     err = c.Send(request, response)
     return
 }

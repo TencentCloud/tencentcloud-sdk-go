@@ -247,6 +247,8 @@ type ApiIdStatus struct {
 
 	// 授权API关联的业务API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: RelationBuniessApiIds is deprecated.
 	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
 
 	// oauth配置信息。
@@ -3286,6 +3288,8 @@ type DesApisStatus struct {
 
 	// 授权API关联的业务API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: RelationBuniessApiIds is deprecated.
 	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
 
 	// API关联的标签信息。
@@ -4390,6 +4394,8 @@ type DescribeApisStatusResultApiIdStatusSetInfo struct {
 
 	// 授权API关联的业务API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: RelationBuniessApiIds is deprecated.
 	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
 
 	// API关联的标签信息。
@@ -8915,6 +8921,8 @@ type ParameterInfo struct {
 	Maximum *int64 `json:"Maximum,omitempty" name:"Maximum"`
 
 	// 修改时间
+	//
+	// Deprecated: ModifedTime is deprecated.
 	ModifedTime *string `json:"ModifedTime,omitempty" name:"ModifedTime"`
 
 	// 字符类型的值，当Type为string时才有意义

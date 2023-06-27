@@ -557,6 +557,7 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *CreateDocumentResponse, err error) {
@@ -613,6 +614,7 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateDocumentRequest) (response *CreateDocumentResponse, err error) {
@@ -3258,6 +3260,7 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -3313,6 +3316,7 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -3964,6 +3968,7 @@ func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSeals
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
@@ -3982,6 +3987,7 @@ func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsReq
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
@@ -4664,6 +4670,7 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
     return c.UpdateIntegrationEmployeesWithContext(context.Background(), request)
 }
@@ -4675,6 +4682,7 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 func (c *Client) UpdateIntegrationEmployeesWithContext(ctx context.Context, request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
     if request == nil {
         request = NewUpdateIntegrationEmployeesRequest()

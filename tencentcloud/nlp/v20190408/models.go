@@ -21,6 +21,75 @@ import (
 )
 
 // Predefined struct for user
+type AnalyzeSentimentRequestParams struct {
+	// 待分析的文本（仅支持UTF-8格式，不超过200字）。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type AnalyzeSentimentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待分析的文本（仅支持UTF-8格式，不超过200字）。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+func (r *AnalyzeSentimentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AnalyzeSentimentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AnalyzeSentimentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AnalyzeSentimentResponseParams struct {
+	// 正面情感概率。
+	Positive *float64 `json:"Positive,omitempty" name:"Positive"`
+
+	// 中性情感概率。
+	Neutral *float64 `json:"Neutral,omitempty" name:"Neutral"`
+
+	// 负面情感概率。
+	Negative *float64 `json:"Negative,omitempty" name:"Negative"`
+
+	// 情感分类结果：
+	// positive：正面情感
+	// negative：负面情感
+	// neutral：中性、无情感
+	Sentiment *string `json:"Sentiment,omitempty" name:"Sentiment"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AnalyzeSentimentResponse struct {
+	*tchttp.BaseResponse
+	Response *AnalyzeSentimentResponseParams `json:"Response"`
+}
+
+func (r *AnalyzeSentimentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AnalyzeSentimentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AutoSummarizationRequestParams struct {
 	// 待处理的文本（仅支持UTF-8格式，不超过2000字）
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -109,6 +178,24 @@ type CCIToken struct {
 
 	// 错别字纠错结果
 	CorrectWord *string `json:"CorrectWord,omitempty" name:"CorrectWord"`
+}
+
+type Category struct {
+	// 分类id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 分类英文名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 分类中文名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分类置信度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *float64 `json:"Score,omitempty" name:"Score"`
 }
 
 // Predefined struct for user
@@ -215,6 +302,221 @@ type ClassificationResult struct {
 
 	// 五级分类概率，仅有当新闻领域五分类可能出现，详情见文本分类文档
 	FifthClassProbability *float64 `json:"FifthClassProbability,omitempty" name:"FifthClassProbability"`
+}
+
+// Predefined struct for user
+type ClassifyContentRequestParams struct {
+	// 待分类的文章的标题（仅支持UTF-8格式，不超过100字符）。
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 待分类文章的内容, 每个元素对应一个段落。（仅支持UTF-8格式，文章内容长度总和不超过2000字符）
+	Content []*string `json:"Content,omitempty" name:"Content"`
+}
+
+type ClassifyContentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待分类的文章的标题（仅支持UTF-8格式，不超过100字符）。
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 待分类文章的内容, 每个元素对应一个段落。（仅支持UTF-8格式，文章内容长度总和不超过2000字符）
+	Content []*string `json:"Content,omitempty" name:"Content"`
+}
+
+func (r *ClassifyContentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ClassifyContentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Title")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClassifyContentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ClassifyContentResponseParams struct {
+	// 一级分类。分类详情见附录-三级分类体系表。
+	FirstClassification *Category `json:"FirstClassification,omitempty" name:"FirstClassification"`
+
+	// 二级分类。分类详情见附录-三级分类体系表。
+	SecondClassification *Category `json:"SecondClassification,omitempty" name:"SecondClassification"`
+
+	// 三级分类。分类详情见附录-三级分类体系表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThirdClassification *Category `json:"ThirdClassification,omitempty" name:"ThirdClassification"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ClassifyContentResponse struct {
+	*tchttp.BaseResponse
+	Response *ClassifyContentResponseParams `json:"Response"`
+}
+
+func (r *ClassifyContentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ClassifyContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ComposeCoupletRequestParams struct {
+	// 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+	TargetType *int64 `json:"TargetType,omitempty" name:"TargetType"`
+}
+
+type ComposeCoupletRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生成对联的关键词。长度需>=2，当长度>2时，自动截取前两个字作为关键字。内容需为常用汉字（不含有数字、英文、韩语、日语、符号等等其他）。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 返回的文本结果为繁体还是简体。0：简体；1：繁体。默认为0。
+	TargetType *int64 `json:"TargetType,omitempty" name:"TargetType"`
+}
+
+func (r *ComposeCoupletRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ComposeCoupletRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "TargetType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ComposeCoupletRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ComposeCoupletResponseParams struct {
+	// 横批。
+	TopScroll *string `json:"TopScroll,omitempty" name:"TopScroll"`
+
+	// 上联与下联。
+	Content []*string `json:"Content,omitempty" name:"Content"`
+
+	// 当对联随机生成时，展示随机生成原因。
+	RandomCause *string `json:"RandomCause,omitempty" name:"RandomCause"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ComposeCoupletResponse struct {
+	*tchttp.BaseResponse
+	Response *ComposeCoupletResponseParams `json:"Response"`
+}
+
+func (r *ComposeCoupletResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ComposeCoupletResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ComposePoetryRequestParams struct {
+	// 生成诗词的关键词。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+	PoetryType *int64 `json:"PoetryType,omitempty" name:"PoetryType"`
+
+	// 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+	Genre *int64 `json:"Genre,omitempty" name:"Genre"`
+}
+
+type ComposePoetryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 生成诗词的关键词。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 生成诗词的类型。0：藏头或藏身；1：藏头；2：藏身。默认为0。
+	PoetryType *int64 `json:"PoetryType,omitempty" name:"PoetryType"`
+
+	// 诗的体裁。0：五言律诗或七言律诗；5：五言律诗；7：七言律诗。默认为0。
+	Genre *int64 `json:"Genre,omitempty" name:"Genre"`
+}
+
+func (r *ComposePoetryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ComposePoetryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Text")
+	delete(f, "PoetryType")
+	delete(f, "Genre")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ComposePoetryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ComposePoetryResponseParams struct {
+	// 诗题，即输入的生成诗词的关键词。
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 诗的内容。
+	Content []*string `json:"Content,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ComposePoetryResponse struct {
+	*tchttp.BaseResponse
+	Response *ComposePoetryResponseParams `json:"Response"`
+}
+
+func (r *ComposePoetryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ComposePoetryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CompoundParticiple struct {

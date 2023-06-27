@@ -80,6 +80,9 @@ const (
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
+	// 同时处理的任务数过多，请稍后重试。
+	REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+
 	// 资源正在发货中。
 	RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
 

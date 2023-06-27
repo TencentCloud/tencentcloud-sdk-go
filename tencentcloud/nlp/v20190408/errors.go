@@ -77,6 +77,12 @@ const (
 	// 内部服务调用失败。
 	INTERNALERROR_SERVICEERROR = "InternalError.ServiceError"
 
+	// 文本分类异常。
+	INTERNALERROR_TEXTCLASSIFYERROR = "InternalError.TextClassifyError"
+
+	// 文本解析异常。
+	INTERNALERROR_TEXTPARSINGERROR = "InternalError.TextParsingError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

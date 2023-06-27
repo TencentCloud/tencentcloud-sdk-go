@@ -1,3 +1,257 @@
+# Release v1.0.688
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 57 次发布
+
+发布时间：2023-06-27 01:01:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
+
+	* 新增入参：FilterBasicPlusFlag
+
+
+修改数据结构：
+
+* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
+
+	* 新增成员：BasicPlusFlag
+
+
+
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 36 次发布
+
+发布时间：2023-06-27 01:02:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApiIdStatus](https://cloud.tencent.com/document/api/628/45244#ApiIdStatus)
+
+	* <font color="#dd0000">**修改成员**：</font>RelationBuniessApiIds
+
+* [DesApisStatus](https://cloud.tencent.com/document/api/628/45244#DesApisStatus)
+
+	* <font color="#dd0000">**修改成员**：</font>RelationBuniessApiIds
+
+* [DescribeApisStatusResultApiIdStatusSetInfo](https://cloud.tencent.com/document/api/628/45244#DescribeApisStatusResultApiIdStatusSetInfo)
+
+* [ParameterInfo](https://cloud.tencent.com/document/api/628/45244#ParameterInfo)
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 134 次发布
+
+发布时间：2023-06-27 01:06:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyInst](https://cloud.tencent.com/document/api/236/15878#ProxyInst)
+
+	* <font color="#dd0000">**修改成员**：</font>InstanceType
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 86 次发布
+
+发布时间：2023-06-27 01:10:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+
+	* 新增入参：InstanceNum
+
+
+
+
+## NLP 服务(nlp) 版本：2019-04-08
+
+### 第 19 次发布
+
+发布时间：2023-06-26 15:51:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AnalyzeSentiment](https://cloud.tencent.com/document/api/271/94294)
+* [ClassifyContent](https://cloud.tencent.com/document/api/271/94293)
+* [ComposeCouplet](https://cloud.tencent.com/document/api/271/94292)
+* [ComposePoetry](https://cloud.tencent.com/document/api/271/94291)
+
+新增数据结构：
+
+* [Category](https://cloud.tencent.com/document/api/271/35511#Category)
+
+
+
+## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
+
+### 第 17 次发布
+
+发布时间：2023-06-27 01:39:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateChaincodeAndInstallForUser
+* GetChaincodeCompileLogForUser
+* GetChaincodeInitializeResultForUser
+* GetChaincodeLogForUser
+* GetChannelListForUser
+* GetClusterListForUser
+* GetPeerLogForUser
+* InitializeChaincodeForUser
+
+
+
+## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 8 次发布
+
+发布时间：2023-06-27 01:43:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* GetDidClusterDetail
+* GetDidClusterList
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CheckChain
+* CreateCredential
+* CreateSelectiveCredential
+* CreateTDid
+* CreateTDidByPrivateKey
+* CreateTDidByPublicKey
+* GetAuthorityIssuer
+* GetCptInfo
+* GetCredentialStatus
+* GetDidDocument
+* RegisterCpt
+* SetCredentialStatus
+* VerifyCredential
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* DidCluster
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 36 次发布
+
+发布时间：2023-06-27 01:53:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifySpartaProtection](https://cloud.tencent.com/document/api/627/94309)
+
+新增数据结构：
+
+* [SpartaProtectionPort](https://cloud.tencent.com/document/api/627/53609#SpartaProtectionPort)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 32 次发布
+
+发布时间：2023-06-27 01:54:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDimensionScore](https://cloud.tencent.com/document/api/1267/82830)
+
+	* 新增入参：Filters
+
+* [DescribeQualityScore](https://cloud.tencent.com/document/api/1267/82825)
+
+	* 新增入参：ScoreType, Filters
+
+* [DescribeQualityScoreTrend](https://cloud.tencent.com/document/api/1267/82824)
+
+	* 新增入参：ScoreType, Filters
+
+* [DescribeTableQualityDetails](https://cloud.tencent.com/document/api/1267/82801)
+
+	* 新增入参：ScoreType
+
+* [DescribeTableScoreTrend](https://cloud.tencent.com/document/api/1267/82800)
+
+	* 新增入参：ScoreType
+
+
+修改数据结构：
+
+* [DimensionCount](https://cloud.tencent.com/document/api/1267/76336#DimensionCount)
+
+	* 新增成员：QualityDim
+
+* [RuleExecResult](https://cloud.tencent.com/document/api/1267/76336#RuleExecResult)
+
+	* 新增成员：StartTime, AlarmLevel
+
+* [RuleExecResultDetail](https://cloud.tencent.com/document/api/1267/76336#RuleExecResultDetail)
+
+	* 新增成员：DatasourceType
+
+* [RuleGroup](https://cloud.tencent.com/document/api/1267/76336#RuleGroup)
+
+	* 新增成员：InstanceId
+
+* [SourceObject](https://cloud.tencent.com/document/api/1267/76336#SourceObject)
+
+	* 新增成员：ObjectDataTypeName, ObjectValue, ObjectType
+
+
+
+
 # Release v1.0.687
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06

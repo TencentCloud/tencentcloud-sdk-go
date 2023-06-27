@@ -218,6 +218,10 @@ func NewCreateChaincodeAndInstallForUserResponse() (response *CreateChaincodeAnd
 }
 
 // CreateChaincodeAndInstallForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 创建并安装合约
 //
 // 可能返回的错误码:
@@ -246,6 +250,10 @@ func (c *Client) CreateChaincodeAndInstallForUser(request *CreateChaincodeAndIns
 }
 
 // CreateChaincodeAndInstallForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 创建并安装合约
 //
 // 可能返回的错误码:
@@ -546,6 +554,10 @@ func NewGetChaincodeCompileLogForUserResponse() (response *GetChaincodeCompileLo
 }
 
 // GetChaincodeCompileLogForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取合约编译日志
 //
 // 可能返回的错误码:
@@ -574,6 +586,10 @@ func (c *Client) GetChaincodeCompileLogForUser(request *GetChaincodeCompileLogFo
 }
 
 // GetChaincodeCompileLogForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取合约编译日志
 //
 // 可能返回的错误码:
@@ -632,6 +648,10 @@ func NewGetChaincodeInitializeResultForUserResponse() (response *GetChaincodeIni
 }
 
 // GetChaincodeInitializeResultForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 实例化结果查询
 //
 // 可能返回的错误码:
@@ -660,6 +680,10 @@ func (c *Client) GetChaincodeInitializeResultForUser(request *GetChaincodeInitia
 }
 
 // GetChaincodeInitializeResultForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 实例化结果查询
 //
 // 可能返回的错误码:
@@ -718,6 +742,10 @@ func NewGetChaincodeLogForUserResponse() (response *GetChaincodeLogForUserRespon
 }
 
 // GetChaincodeLogForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取合约容器日志
 //
 // 可能返回的错误码:
@@ -746,6 +774,10 @@ func (c *Client) GetChaincodeLogForUser(request *GetChaincodeLogForUserRequest) 
 }
 
 // GetChaincodeLogForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取合约容器日志
 //
 // 可能返回的错误码:
@@ -804,6 +836,10 @@ func NewGetChannelListForUserResponse() (response *GetChannelListForUserResponse
 }
 
 // GetChannelListForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取通道列表
 //
 // 可能返回的错误码:
@@ -832,6 +868,10 @@ func (c *Client) GetChannelListForUser(request *GetChannelListForUserRequest) (r
 }
 
 // GetChannelListForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取通道列表
 //
 // 可能返回的错误码:
@@ -890,6 +930,10 @@ func NewGetClusterListForUserResponse() (response *GetClusterListForUserResponse
 }
 
 // GetClusterListForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
 //
 // 可能返回的错误码:
@@ -918,6 +962,10 @@ func (c *Client) GetClusterListForUser(request *GetClusterListForUserRequest) (r
 }
 
 // GetClusterListForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取该用户的网络列表。网络信息中包含组织信息，但仅包含该用户所在组织的信息。
 //
 // 可能返回的错误码:
@@ -1264,6 +1312,10 @@ func NewGetPeerLogForUserResponse() (response *GetPeerLogForUserResponse) {
 }
 
 // GetPeerLogForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取节点日志
 //
 // 可能返回的错误码:
@@ -1292,6 +1344,10 @@ func (c *Client) GetPeerLogForUser(request *GetPeerLogForUserRequest) (response 
 }
 
 // GetPeerLogForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 获取节点日志
 //
 // 可能返回的错误码:
@@ -1426,6 +1482,10 @@ func NewInitializeChaincodeForUserResponse() (response *InitializeChaincodeForUs
 }
 
 // InitializeChaincodeForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 实例化合约
 //
 // 可能返回的错误码:
@@ -1454,6 +1514,10 @@ func (c *Client) InitializeChaincodeForUser(request *InitializeChaincodeForUserR
 }
 
 // InitializeChaincodeForUser
+// 接口已废弃，请通过控制台查询或操作
+//
+// 
+//
 // 实例化合约
 //
 // 可能返回的错误码:

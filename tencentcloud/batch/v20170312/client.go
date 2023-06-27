@@ -1713,6 +1713,7 @@ func NewSubmitJobResponse() (response *SubmitJobResponse) {
 // 可能返回的错误码:
 //  ALLOWEDONEATTRIBUTEINENVIDANDCOMPUTEENV = "AllowedOneAttributeInEnvIdAndComputeEnv"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLCAM = "InternalError.CallCam"
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INTERNALERROR_CALLTAGAPI = "InternalError.CallTagAPI"
 //  INVALIDPARAMETER_CVMPARAMETERS = "InvalidParameter.CvmParameters"
@@ -1754,6 +1755,7 @@ func (c *Client) SubmitJob(request *SubmitJobRequest) (response *SubmitJobRespon
 // 可能返回的错误码:
 //  ALLOWEDONEATTRIBUTEINENVIDANDCOMPUTEENV = "AllowedOneAttributeInEnvIdAndComputeEnv"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLCAM = "InternalError.CallCam"
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INTERNALERROR_CALLTAGAPI = "InternalError.CallTagAPI"
 //  INVALIDPARAMETER_CVMPARAMETERS = "InvalidParameter.CvmParameters"

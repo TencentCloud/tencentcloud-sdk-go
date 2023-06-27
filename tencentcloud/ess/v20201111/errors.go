@@ -464,6 +464,9 @@ const (
 	// 资源id超过使用上限限制，请联系客服了解规则，并在修改后重试。
 	OPERATIONDENIED_MANYRESOURCEID = "OperationDenied.ManyResourceId"
 
+	// 没有API权限。
+	OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
+
 	// 无权限操作签署流程，请联系客服了解权限，并在修改后重试。
 	OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 

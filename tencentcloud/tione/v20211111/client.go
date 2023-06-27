@@ -574,6 +574,7 @@ func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
 //  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (response *CreateTrainingTaskResponse, err error) {
@@ -615,6 +616,7 @@ func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (respons
 //  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
 //  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
 //  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingTaskWithContext(ctx context.Context, request *CreateTrainingTaskRequest) (response *CreateTrainingTaskResponse, err error) {

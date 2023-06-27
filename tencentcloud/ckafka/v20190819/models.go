@@ -1804,7 +1804,7 @@ type CreateInstancePostRequestParams struct {
 	// 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
 	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.2","2.8.1"
+	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
 	// 实例类型。"standard"：标准版，"profession"：专业版
@@ -1834,7 +1834,7 @@ type CreateInstancePostRequestParams struct {
 	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
 	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
 }
 
@@ -1862,7 +1862,7 @@ type CreateInstancePostRequest struct {
 	// 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
 	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.2","2.8.1"
+	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
 	// 实例类型。"standard"：标准版，"profession"：专业版
@@ -1892,7 +1892,7 @@ type CreateInstancePostRequest struct {
 	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
 	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
 }
 
@@ -2002,7 +2002,7 @@ type CreateInstancePreRequestParams struct {
 	// 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶性2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// vpcId，不填默认基础网络
+	// vpcId必填
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网id，vpc网络需要传该参数，基础网络可以不传
@@ -2017,7 +2017,7 @@ type CreateInstancePreRequestParams struct {
 	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// CKafka版本号[0.10.2、1.1.1、2.4.1], 默认是1.1.1
+	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
 	// 实例类型: [标准版实例]填写 standard(默认), [专业版实例]填写 profession
@@ -2044,8 +2044,11 @@ type CreateInstancePreRequestParams struct {
 	// 可用区列表，购买多可用区实例时为必填项
 	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1。默认值为 0
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。默认值为 0。需要保证传入参数为 3 的整数倍
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
+
+	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
 }
 
 type CreateInstancePreRequest struct {
@@ -2064,7 +2067,7 @@ type CreateInstancePreRequest struct {
 	// 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶性2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// vpcId，不填默认基础网络
+	// vpcId必填
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
 	// 子网id，vpc网络需要传该参数，基础网络可以不传
@@ -2079,7 +2082,7 @@ type CreateInstancePreRequest struct {
 	// 预付费自动续费标记，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// CKafka版本号[0.10.2、1.1.1、2.4.1], 默认是1.1.1
+	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
 	// 实例类型: [标准版实例]填写 standard(默认), [专业版实例]填写 profession
@@ -2106,8 +2109,11 @@ type CreateInstancePreRequest struct {
 	// 可用区列表，购买多可用区实例时为必填项
 	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1。默认值为 0
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。默认值为 0。需要保证传入参数为 3 的整数倍
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
+
+	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
+	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
 }
 
 func (r *CreateInstancePreRequest) ToJsonString() string {
@@ -2141,6 +2147,7 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	delete(f, "MultiZoneFlag")
 	delete(f, "ZoneIds")
 	delete(f, "PublicNetworkMonthly")
+	delete(f, "InstanceNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePreRequest has unknown keys!", "")
 	}
@@ -2281,7 +2288,7 @@ type CreatePostPaidInstanceRequestParams struct {
 	// 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
 	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.2","2.8.1"
+	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
 	// 实例类型。"standard"：标准版，"profession"：专业版
@@ -2314,7 +2321,7 @@ type CreatePostPaidInstanceRequestParams struct {
 	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
 	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
 }
 
@@ -2339,7 +2346,7 @@ type CreatePostPaidInstanceRequest struct {
 	// 创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数
 	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.2","2.8.1"
+	// 实例版本。目前支持 "0.10.2","1.1.1","2.4.1","2.4.2","2.8.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
 	// 实例类型。"standard"：标准版，"profession"：专业版
@@ -2372,7 +2379,7 @@ type CreatePostPaidInstanceRequest struct {
 	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
 	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
 
-	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 4Mbps 公网带宽，此处传 1
+	// 公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍
 	PublicNetworkMonthly *int64 `json:"PublicNetworkMonthly,omitempty" name:"PublicNetworkMonthly"`
 }
 

@@ -32,8 +32,14 @@ const (
 	// 调用cam服务失败。
 	FAILEDOPERATION_GETCAMSERVERFAILED = "FailedOperation.GetCamServerFailed"
 
+	// 获取cvm 规格信息失败。
+	FAILEDOPERATION_GETCVMCONFIGQUOTAFAILED = "FailedOperation.GetCvmConfigQuotaFailed"
+
 	// 调用cvm服务失败。
 	FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
+
+	// 调去询价中心服务失败
+	FAILEDOPERATION_GETTRADESERVERFAILED = "FailedOperation.GetTradeServerFailed"
 
 	// 操作失败，不支持pod。
 	FAILEDOPERATION_NOTSUPPORTPOD = "FailedOperation.NotSupportPod"

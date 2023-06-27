@@ -5950,6 +5950,9 @@ type DescribeDimensionScoreRequestParams struct {
 
 	// 数据来源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeDimensionScoreRequest struct {
@@ -5963,6 +5966,9 @@ type DescribeDimensionScoreRequest struct {
 
 	// 数据来源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDimensionScoreRequest) ToJsonString() string {
@@ -5980,6 +5986,7 @@ func (r *DescribeDimensionScoreRequest) FromJsonString(s string) error {
 	delete(f, "StatisticsDate")
 	delete(f, "ProjectId")
 	delete(f, "DatasourceId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDimensionScoreRequest has unknown keys!", "")
 	}
@@ -8784,6 +8791,12 @@ type DescribeQualityScoreRequestParams struct {
 
 	// 数据来源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+	ScoreType *string `json:"ScoreType,omitempty" name:"ScoreType"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeQualityScoreRequest struct {
@@ -8797,6 +8810,12 @@ type DescribeQualityScoreRequest struct {
 
 	// 数据来源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+	ScoreType *string `json:"ScoreType,omitempty" name:"ScoreType"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeQualityScoreRequest) ToJsonString() string {
@@ -8814,6 +8833,8 @@ func (r *DescribeQualityScoreRequest) FromJsonString(s string) error {
 	delete(f, "StatisticsDate")
 	delete(f, "ProjectId")
 	delete(f, "DatasourceId")
+	delete(f, "ScoreType")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityScoreRequest has unknown keys!", "")
 	}
@@ -8859,6 +8880,12 @@ type DescribeQualityScoreTrendRequestParams struct {
 
 	// 数据来源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+	ScoreType *string `json:"ScoreType,omitempty" name:"ScoreType"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeQualityScoreTrendRequest struct {
@@ -8875,6 +8902,12 @@ type DescribeQualityScoreTrendRequest struct {
 
 	// 数据来源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+	ScoreType *string `json:"ScoreType,omitempty" name:"ScoreType"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeQualityScoreTrendRequest) ToJsonString() string {
@@ -8893,6 +8926,8 @@ func (r *DescribeQualityScoreTrendRequest) FromJsonString(s string) error {
 	delete(f, "StatisticsEndDate")
 	delete(f, "ProjectId")
 	delete(f, "DatasourceId")
+	delete(f, "ScoreType")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQualityScoreTrendRequest has unknown keys!", "")
 	}
@@ -11340,6 +11375,9 @@ type DescribeTableQualityDetailsRequestParams struct {
 
 	// 数据来源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+	ScoreType *string `json:"ScoreType,omitempty" name:"ScoreType"`
 }
 
 type DescribeTableQualityDetailsRequest struct {
@@ -11365,6 +11403,9 @@ type DescribeTableQualityDetailsRequest struct {
 
 	// 数据来源id
 	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+	ScoreType *string `json:"ScoreType,omitempty" name:"ScoreType"`
 }
 
 func (r *DescribeTableQualityDetailsRequest) ToJsonString() string {
@@ -11386,6 +11427,7 @@ func (r *DescribeTableQualityDetailsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "OrderFields")
 	delete(f, "DatasourceId")
+	delete(f, "ScoreType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableQualityDetailsRequest has unknown keys!", "")
 	}
@@ -11524,6 +11566,9 @@ type DescribeTableScoreTrendRequestParams struct {
 
 	// 表id
 	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+	ScoreType *string `json:"ScoreType,omitempty" name:"ScoreType"`
 }
 
 type DescribeTableScoreTrendRequest struct {
@@ -11540,6 +11585,9 @@ type DescribeTableScoreTrendRequest struct {
 
 	// 表id
 	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 1:按全维度权重计算,2:按已配置维度权重计算,3:不按维度权重计算,默认1
+	ScoreType *string `json:"ScoreType,omitempty" name:"ScoreType"`
 }
 
 func (r *DescribeTableScoreTrendRequest) ToJsonString() string {
@@ -11558,6 +11606,7 @@ func (r *DescribeTableScoreTrendRequest) FromJsonString(s string) error {
 	delete(f, "StatisticsStartDate")
 	delete(f, "StatisticsEndDate")
 	delete(f, "TableId")
+	delete(f, "ScoreType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableScoreTrendRequest has unknown keys!", "")
 	}
@@ -12820,11 +12869,17 @@ func (r *DescribeTrendStatResponse) FromJsonString(s string) error {
 type DimensionCount struct {
 	// 维度类型1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DimType is deprecated.
 	DimType *uint64 `json:"DimType,omitempty" name:"DimType"`
 
 	// 统计值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 维度类型1：准确性，2：唯一性，3：完整性，4：一致性，5：及时性，6：有效性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityDim *uint64 `json:"QualityDim,omitempty" name:"QualityDim"`
 }
 
 type DimensionScore struct {
@@ -17964,6 +18019,14 @@ type RuleExecResult struct {
 	// 源字段与目标字段关联条件on表达式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelConditionExpr *string `json:"RelConditionExpr,omitempty" name:"RelConditionExpr"`
+
+	// 执行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 1/2/3:低/中/高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
 }
 
 type RuleExecResultDetail struct {
@@ -18002,6 +18065,10 @@ type RuleExecResultDetail struct {
 	// 表负责人userId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableOwnerUserId *uint64 `json:"TableOwnerUserId,omitempty" name:"TableOwnerUserId"`
+
+	// 2.HIVE 3.DLC
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *uint64 `json:"DatasourceType,omitempty" name:"DatasourceType"`
 }
 
 type RuleExecResultPage struct {
@@ -18149,6 +18216,10 @@ type RuleGroup struct {
 	// 表负责人UserId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableOwnerUserId *uint64 `json:"TableOwnerUserId,omitempty" name:"TableOwnerUserId"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type RuleGroupExecResult struct {
@@ -19076,11 +19147,27 @@ type SourceFieldInfo struct {
 type SourceObject struct {
 	// 源字段详细类型，int、string
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SourceObjectDataTypeName is deprecated.
 	SourceObjectDataTypeName *string `json:"SourceObjectDataTypeName,omitempty" name:"SourceObjectDataTypeName"`
 
 	// 源字段名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SourceObjectValue is deprecated.
 	SourceObjectValue *string `json:"SourceObjectValue,omitempty" name:"SourceObjectValue"`
+
+	// 源字段详细类型，int、string
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectDataTypeName *string `json:"ObjectDataTypeName,omitempty" name:"ObjectDataTypeName"`
+
+	// 源字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectValue *string `json:"ObjectValue,omitempty" name:"ObjectValue"`
+
+	// 对象类型 1.常量  2.离线表级   3.离线字段级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectType *uint64 `json:"ObjectType,omitempty" name:"ObjectType"`
 }
 
 type SpeedValue struct {

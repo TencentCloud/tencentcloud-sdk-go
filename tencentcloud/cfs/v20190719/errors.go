@@ -128,6 +128,9 @@ const (
 	// 用于保证请求幂等性的字符串错误。
 	INVALIDPARAMETERVALUE_INVALIDCLIENTTOKEN = "InvalidParameterValue.InvalidClientToken"
 
+	// 快照跨地域复制参数不支持该地域
+	INVALIDPARAMETERVALUE_INVALIDDESTINATIONREGIONS = "InvalidParameterValue.InvalidDestinationRegions"
+
 	// 加密参数错误。
 	INVALIDPARAMETERVALUE_INVALIDENCRYPTED = "InvalidParameterValue.InvalidEncrypted"
 

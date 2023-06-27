@@ -1408,6 +1408,7 @@ func NewModifyUserMicStatusResponse() (response *ModifyUserMicStatusResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyUserMicStatus(request *ModifyUserMicStatusRequest) (response *ModifyUserMicStatusResponse, err error) {
     return c.ModifyUserMicStatusWithContext(context.Background(), request)
 }
@@ -1421,6 +1422,7 @@ func (c *Client) ModifyUserMicStatus(request *ModifyUserMicStatusRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyUserMicStatusWithContext(ctx context.Context, request *ModifyUserMicStatusRequest) (response *ModifyUserMicStatusResponse, err error) {
     if request == nil {
         request = NewModifyUserMicStatusRequest()

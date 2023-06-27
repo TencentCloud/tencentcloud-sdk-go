@@ -452,6 +452,10 @@ type BGPInstance struct {
 	// 修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 是否是基础防护加强版 0: 不是 1: 是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasicPlusFlag *uint64 `json:"BasicPlusFlag,omitempty" name:"BasicPlusFlag"`
 }
 
 type BGPInstanceSpecification struct {
@@ -5145,6 +5149,9 @@ type DescribeListBGPInstancesRequestParams struct {
 
 	// 资产IP数组
 	FilterAssetIpList []*string `json:"FilterAssetIpList,omitempty" name:"FilterAssetIpList"`
+
+	// 是否包含基础防护增强版 0: 不包含 1: 包含
+	FilterBasicPlusFlag *uint64 `json:"FilterBasicPlusFlag,omitempty" name:"FilterBasicPlusFlag"`
 }
 
 type DescribeListBGPInstancesRequest struct {
@@ -5203,6 +5210,9 @@ type DescribeListBGPInstancesRequest struct {
 
 	// 资产IP数组
 	FilterAssetIpList []*string `json:"FilterAssetIpList,omitempty" name:"FilterAssetIpList"`
+
+	// 是否包含基础防护增强版 0: 不包含 1: 包含
+	FilterBasicPlusFlag *uint64 `json:"FilterBasicPlusFlag,omitempty" name:"FilterBasicPlusFlag"`
 }
 
 func (r *DescribeListBGPInstancesRequest) ToJsonString() string {
@@ -5235,6 +5245,7 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterConvoy")
 	delete(f, "ExcludeAdvancedInfo")
 	delete(f, "FilterAssetIpList")
+	delete(f, "FilterBasicPlusFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")
 	}
