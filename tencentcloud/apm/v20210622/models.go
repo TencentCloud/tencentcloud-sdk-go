@@ -663,6 +663,9 @@ type DescribeMetricRecordsRequestParams struct {
 
 	// 页长
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// Or过滤条件
+	OrFilters []*Filter `json:"OrFilters,omitempty" name:"OrFilters"`
 }
 
 type DescribeMetricRecordsRequest struct {
@@ -703,6 +706,9 @@ type DescribeMetricRecordsRequest struct {
 
 	// 页长
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// Or过滤条件
+	OrFilters []*Filter `json:"OrFilters,omitempty" name:"OrFilters"`
 }
 
 func (r *DescribeMetricRecordsRequest) ToJsonString() string {
@@ -729,6 +735,7 @@ func (r *DescribeMetricRecordsRequest) FromJsonString(s string) error {
 	delete(f, "BusinessName")
 	delete(f, "PageIndex")
 	delete(f, "PageSize")
+	delete(f, "OrFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricRecordsRequest has unknown keys!", "")
 	}

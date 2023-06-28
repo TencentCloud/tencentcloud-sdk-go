@@ -365,6 +365,66 @@ func (c *Client) CreateApplicationTriggerPersonalWithContext(ctx context.Context
     return
 }
 
+func NewCreateCustomAccountRequest() (request *CreateCustomAccountRequest) {
+    request = &CreateCustomAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateCustomAccount")
+    
+    
+    return
+}
+
+func NewCreateCustomAccountResponse() (response *CreateCustomAccountResponse) {
+    response = &CreateCustomAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomAccount
+// 创建自定义账户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_QUOTAOVERLIMIT = "OperationDenied.QuotaOverLimit"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCustomAccount(request *CreateCustomAccountRequest) (response *CreateCustomAccountResponse, err error) {
+    return c.CreateCustomAccountWithContext(context.Background(), request)
+}
+
+// CreateCustomAccount
+// 创建自定义账户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_QUOTAOVERLIMIT = "OperationDenied.QuotaOverLimit"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCustomAccountWithContext(ctx context.Context, request *CreateCustomAccountRequest) (response *CreateCustomAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateImageAccelerationServiceRequest() (request *CreateImageAccelerationServiceRequest) {
     request = &CreateImageAccelerationServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1759,6 +1819,62 @@ func (c *Client) DeleteApplicationTriggerPersonalWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDeleteApplicationTriggerPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomAccountRequest() (request *DeleteCustomAccountRequest) {
+    request = &DeleteCustomAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteCustomAccount")
+    
+    
+    return
+}
+
+func NewDeleteCustomAccountResponse() (response *DeleteCustomAccountResponse) {
+    response = &DeleteCustomAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCustomAccount
+// 删除自定义账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteCustomAccount(request *DeleteCustomAccountRequest) (response *DeleteCustomAccountResponse, err error) {
+    return c.DeleteCustomAccountWithContext(context.Background(), request)
+}
+
+// DeleteCustomAccount
+// 删除自定义账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteCustomAccountWithContext(ctx context.Context, request *DeleteCustomAccountRequest) (response *DeleteCustomAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -3263,6 +3379,64 @@ func (c *Client) DescribeChartDownloadInfoWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeChartDownloadInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomAccountsRequest() (request *DescribeCustomAccountsRequest) {
+    request = &DescribeCustomAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeCustomAccounts")
+    
+    
+    return
+}
+
+func NewDescribeCustomAccountsResponse() (response *DescribeCustomAccountsResponse) {
+    response = &DescribeCustomAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomAccounts
+// 查询自定义账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCustomAccounts(request *DescribeCustomAccountsRequest) (response *DescribeCustomAccountsResponse, err error) {
+    return c.DescribeCustomAccountsWithContext(context.Background(), request)
+}
+
+// DescribeCustomAccounts
+// 查询自定义账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCustomAccountsWithContext(ctx context.Context, request *DescribeCustomAccountsRequest) (response *DescribeCustomAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomAccountsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomAccountsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5855,6 +6029,62 @@ func (c *Client) ModifyApplicationTriggerPersonalWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewModifyApplicationTriggerPersonalResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomAccountRequest() (request *ModifyCustomAccountRequest) {
+    request = &ModifyCustomAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyCustomAccount")
+    
+    
+    return
+}
+
+func NewModifyCustomAccountResponse() (response *ModifyCustomAccountResponse) {
+    response = &ModifyCustomAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCustomAccount
+// 更新自定义账户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyCustomAccount(request *ModifyCustomAccountRequest) (response *ModifyCustomAccountResponse, err error) {
+    return c.ModifyCustomAccountWithContext(context.Background(), request)
+}
+
+// ModifyCustomAccount
+// 更新自定义账户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyCustomAccountWithContext(ctx context.Context, request *ModifyCustomAccountRequest) (response *ModifyCustomAccountResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomAccountResponse()
     err = c.Send(request, response)
     return
 }

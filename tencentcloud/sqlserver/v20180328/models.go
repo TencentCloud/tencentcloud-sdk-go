@@ -2642,6 +2642,14 @@ type DBRenameRes struct {
 	OldName *string `json:"OldName,omitempty" name:"OldName"`
 }
 
+type DBTDEEncrypt struct {
+	// 数据库名称
+	DBName *string `json:"DBName,omitempty" name:"DBName"`
+
+	// enable-开启加密，disable-关闭加密
+	Encryption *string `json:"Encryption,omitempty" name:"Encryption"`
+}
+
 type DatabaseTuple struct {
 	// 发布数据库名称
 	PublishDatabase *string `json:"PublishDatabase,omitempty" name:"PublishDatabase"`
@@ -7559,6 +7567,70 @@ func (r *ModifyBackupStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBEncryptAttributesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开启、关闭数据库TDE加密
+	DBTDEEncrypt []*DBTDEEncrypt `json:"DBTDEEncrypt,omitempty" name:"DBTDEEncrypt"`
+}
+
+type ModifyDBEncryptAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开启、关闭数据库TDE加密
+	DBTDEEncrypt []*DBTDEEncrypt `json:"DBTDEEncrypt,omitempty" name:"DBTDEEncrypt"`
+}
+
+func (r *ModifyDBEncryptAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBEncryptAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DBTDEEncrypt")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBEncryptAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBEncryptAttributesResponseParams struct {
+	// 任务流ID
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDBEncryptAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBEncryptAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBEncryptAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBEncryptAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceNameRequestParams struct {
 	// 数据库实例ID，形如mssql-njj2mtpl
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -8313,6 +8385,77 @@ func (r *ModifyIncrementalMigrationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyIncrementalMigrationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceEncryptAttributesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认self。
+	CertificateAttribution *string `json:"CertificateAttribution,omitempty" name:"CertificateAttribution"`
+
+	// 引用的其他主账号ID，当CertificateAttribution 为others时必填。
+	QuoteUin *string `json:"QuoteUin,omitempty" name:"QuoteUin"`
+}
+
+type ModifyInstanceEncryptAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 证书归属。self-表示使用该账号自身的证书，others-表示引用其他账号的证书，默认self。
+	CertificateAttribution *string `json:"CertificateAttribution,omitempty" name:"CertificateAttribution"`
+
+	// 引用的其他主账号ID，当CertificateAttribution 为others时必填。
+	QuoteUin *string `json:"QuoteUin,omitempty" name:"QuoteUin"`
+}
+
+func (r *ModifyInstanceEncryptAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceEncryptAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CertificateAttribution")
+	delete(f, "QuoteUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceEncryptAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceEncryptAttributesResponseParams struct {
+	// 任务流ID
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceEncryptAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceEncryptAttributesResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceEncryptAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceEncryptAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

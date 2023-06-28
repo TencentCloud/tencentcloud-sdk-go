@@ -1,3 +1,168 @@
+# Release v1.0.689
+
+## 应用性能监控(apm) 版本：2021-06-22
+
+### 第 18 次发布
+
+发布时间：2023-06-28 01:02:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMetricRecords](https://cloud.tencent.com/document/api/1463/68254)
+
+	* 新增入参：OrFilters
+
+
+
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 43 次发布
+
+发布时间：2023-06-28 01:03:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* 新增入参：PayerUin
+
+
+
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 125 次发布
+
+发布时间：2023-06-28 01:06:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DetailDomain](https://cloud.tencent.com/document/api/228/30987#DetailDomain)
+
+	* <font color="#dd0000">**修改成员**：</font>OthersPrivateAccess
+
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 63 次发布
+
+发布时间：2023-06-28 01:18:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
+
+	* 新增入参：SecurityGroupIds
+
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 66 次发布
+
+发布时间：2023-06-28 01:36:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChangeMasterInstance](https://cloud.tencent.com/document/api/239/77862)
+
+	* 新增入参：ForceSwitch
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 47 次发布
+
+发布时间：2023-06-28 01:38:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyDBEncryptAttributes](https://cloud.tencent.com/document/api/238/94327)
+* [ModifyInstanceEncryptAttributes](https://cloud.tencent.com/document/api/238/94328)
+
+新增数据结构：
+
+* [DBTDEEncrypt](https://cloud.tencent.com/document/api/238/19976#DBTDEEncrypt)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 56 次发布
+
+发布时间：2023-06-28 01:40:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCustomAccount](https://cloud.tencent.com/document/api/1141/94333)
+* [DeleteCustomAccount](https://cloud.tencent.com/document/api/1141/94332)
+* [DescribeCustomAccounts](https://cloud.tencent.com/document/api/1141/94331)
+* [ModifyCustomAccount](https://cloud.tencent.com/document/api/1141/94330)
+
+新增数据结构：
+
+* [CustomAccount](https://cloud.tencent.com/document/api/1141/41603#CustomAccount)
+* [Permission](https://cloud.tencent.com/document/api/1141/41603#Permission)
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 65 次发布
+
+发布时间：2023-06-28 01:43:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyRocketMQCluster](https://cloud.tencent.com/document/api/1179/63417)
+
+	* 新增入参：PublicAccessEnabled
+
+* [ModifyRocketMQNamespace](https://cloud.tencent.com/document/api/1179/63415)
+
+	* 新增入参：PublicAccessEnabled
+
+
+
+
 # Release v1.0.688
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

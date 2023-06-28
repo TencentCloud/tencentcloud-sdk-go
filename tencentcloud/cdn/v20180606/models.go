@@ -12173,7 +12173,7 @@ type UpdateDomainConfigRequestParams struct {
 	// 错误码重定向配置（功能灰度中，尚未全量）
 	ErrorPage *ErrorPage `json:"ErrorPage,omitempty" name:"ErrorPage"`
 
-	// 请求头部配置
+	// 回源请求头部配置
 	RequestHeader *RequestHeader `json:"RequestHeader,omitempty" name:"RequestHeader"`
 
 	// 响应头部配置
@@ -12332,7 +12332,7 @@ type UpdateDomainConfigRequest struct {
 	// 错误码重定向配置（功能灰度中，尚未全量）
 	ErrorPage *ErrorPage `json:"ErrorPage,omitempty" name:"ErrorPage"`
 
-	// 请求头部配置
+	// 回源请求头部配置
 	RequestHeader *RequestHeader `json:"RequestHeader,omitempty" name:"RequestHeader"`
 
 	// 响应头部配置

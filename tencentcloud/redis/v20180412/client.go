@@ -398,7 +398,7 @@ func NewChangeMasterInstanceResponse() (response *ChangeMasterInstanceResponse) 
 }
 
 // ChangeMasterInstance
-// 复制组实例切主
+// 该接口（ChangeMasterInstance）用于将复制组内只读实例设置为主实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -416,7 +416,7 @@ func (c *Client) ChangeMasterInstance(request *ChangeMasterInstanceRequest) (res
 }
 
 // ChangeMasterInstance
-// 复制组实例切主
+// 该接口（ChangeMasterInstance）用于将复制组内只读实例设置为主实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1040,7 +1040,7 @@ func NewCreateReplicationGroupResponse() (response *CreateReplicationGroupRespon
 }
 
 // CreateReplicationGroup
-// 创建复制组
+// 该接口（CreateReplicationGroup）用于创建复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1055,13 +1055,14 @@ func NewCreateReplicationGroupResponse() (response *CreateReplicationGroupRespon
 //  LIMITEXCEEDED_INSTANCENOTEMPTY = "LimitExceeded.InstanceNotEmpty"
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNSUPPORTEDOPERATION_LIMITPROXYVERSION = "UnsupportedOperation.LimitProxyVersion"
 func (c *Client) CreateReplicationGroup(request *CreateReplicationGroupRequest) (response *CreateReplicationGroupResponse, err error) {
     return c.CreateReplicationGroupWithContext(context.Background(), request)
 }
 
 // CreateReplicationGroup
-// 创建复制组
+// 该接口（CreateReplicationGroup）用于创建复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1076,6 +1077,7 @@ func (c *Client) CreateReplicationGroup(request *CreateReplicationGroupRequest) 
 //  LIMITEXCEEDED_INSTANCENOTEMPTY = "LimitExceeded.InstanceNotEmpty"
 //  RESOURCENOTFOUND_INSTANCENOTEXISTS = "ResourceNotFound.InstanceNotExists"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
 //  UNSUPPORTEDOPERATION_LIMITPROXYVERSION = "UnsupportedOperation.LimitProxyVersion"
 func (c *Client) CreateReplicationGroupWithContext(ctx context.Context, request *CreateReplicationGroupRequest) (response *CreateReplicationGroupResponse, err error) {
     if request == nil {
@@ -3126,7 +3128,7 @@ func NewDescribeReplicationGroupResponse() (response *DescribeReplicationGroupRe
 }
 
 // DescribeReplicationGroup
-// 本接口（DescribeReplicationGroup）查询复制组。
+// 本接口（DescribeReplicationGroup）用于查询复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3136,7 +3138,7 @@ func (c *Client) DescribeReplicationGroup(request *DescribeReplicationGroupReque
 }
 
 // DescribeReplicationGroup
-// 本接口（DescribeReplicationGroup）查询复制组。
+// 本接口（DescribeReplicationGroup）用于查询复制组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3298,7 +3300,7 @@ func NewDescribeTaskInfoResponse() (response *DescribeTaskInfoResponse) {
 }
 
 // DescribeTaskInfo
-// 用于查询任务结果
+// 本接口（DescribeTaskInfo）用于获取指定任务的执行情况。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3309,7 +3311,7 @@ func (c *Client) DescribeTaskInfo(request *DescribeTaskInfoRequest) (response *D
 }
 
 // DescribeTaskInfo
-// 用于查询任务结果
+// 本接口（DescribeTaskInfo）用于获取指定任务的执行情况。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

@@ -359,6 +359,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 所选目标域名与当前域名平台不一致，请重新选择或联系腾讯云技术支持
+	OPERATIONDENIED_SHARECACHEAREADNSNOTMATCH = "OperationDenied.ShareCacheAreaDnsNotMatch"
+
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 

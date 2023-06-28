@@ -9231,6 +9231,9 @@ type ModifyRocketMQClusterRequestParams struct {
 
 	// 说明信息，不超过128个字符
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 是否开启HTTP公网访问
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" name:"PublicAccessEnabled"`
 }
 
 type ModifyRocketMQClusterRequest struct {
@@ -9244,6 +9247,9 @@ type ModifyRocketMQClusterRequest struct {
 
 	// 说明信息，不超过128个字符
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 是否开启HTTP公网访问
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" name:"PublicAccessEnabled"`
 }
 
 func (r *ModifyRocketMQClusterRequest) ToJsonString() string {
@@ -9261,6 +9267,7 @@ func (r *ModifyRocketMQClusterRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "ClusterName")
 	delete(f, "Remark")
+	delete(f, "PublicAccessEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQClusterRequest has unknown keys!", "")
 	}
@@ -9488,6 +9495,9 @@ type ModifyRocketMQNamespaceRequestParams struct {
 
 	// 说明，最大128个字符
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 是否开启公网访问
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" name:"PublicAccessEnabled"`
 }
 
 type ModifyRocketMQNamespaceRequest struct {
@@ -9507,6 +9517,9 @@ type ModifyRocketMQNamespaceRequest struct {
 
 	// 说明，最大128个字符
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 是否开启公网访问
+	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitempty" name:"PublicAccessEnabled"`
 }
 
 func (r *ModifyRocketMQNamespaceRequest) ToJsonString() string {
@@ -9526,6 +9539,7 @@ func (r *ModifyRocketMQNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "Ttl")
 	delete(f, "RetentionTime")
 	delete(f, "Remark")
+	delete(f, "PublicAccessEnabled")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQNamespaceRequest has unknown keys!", "")
 	}

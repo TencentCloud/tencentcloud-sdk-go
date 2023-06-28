@@ -4793,6 +4793,66 @@ func (c *Client) ModifyBackupStrategyWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyDBEncryptAttributesRequest() (request *ModifyDBEncryptAttributesRequest) {
+    request = &ModifyDBEncryptAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyDBEncryptAttributes")
+    
+    
+    return
+}
+
+func NewModifyDBEncryptAttributesResponse() (response *ModifyDBEncryptAttributesResponse) {
+    response = &ModifyDBEncryptAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDBEncryptAttributes
+// 本接口（ModifyDBEncryptAttributes）用于开启、关闭数据库的TDE加密功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
+func (c *Client) ModifyDBEncryptAttributes(request *ModifyDBEncryptAttributesRequest) (response *ModifyDBEncryptAttributesResponse, err error) {
+    return c.ModifyDBEncryptAttributesWithContext(context.Background(), request)
+}
+
+// ModifyDBEncryptAttributes
+// 本接口（ModifyDBEncryptAttributes）用于开启、关闭数据库的TDE加密功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
+func (c *Client) ModifyDBEncryptAttributesWithContext(ctx context.Context, request *ModifyDBEncryptAttributesRequest) (response *ModifyDBEncryptAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyDBEncryptAttributesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBEncryptAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBEncryptAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5513,6 +5573,74 @@ func (c *Client) ModifyIncrementalMigrationWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyIncrementalMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceEncryptAttributesRequest() (request *ModifyInstanceEncryptAttributesRequest) {
+    request = &ModifyInstanceEncryptAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "ModifyInstanceEncryptAttributes")
+    
+    
+    return
+}
+
+func NewModifyInstanceEncryptAttributesResponse() (response *ModifyInstanceEncryptAttributesResponse) {
+    response = &ModifyInstanceEncryptAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceEncryptAttributes
+// 本接口（ModifyInstanceEncryptAttributes）用于开通实例的TDE加密功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MIGRATIONLOCKERROR = "FailedOperation.MigrationLockError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_BACKUPNAMEISILLEGAL = "InvalidParameterValue.BackupNameIsIllegal"
+//  INVALIDPARAMETERVALUE_MIGRATIONNAMEISILLEGAL = "InvalidParameterValue.MigrationNameIsIllegal"
+//  RESOURCENOTFOUND_FULLBACKUPMIGRATIONNOTEXIST = "ResourceNotFound.FullBackupMigrationNotExist"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_COSSTATUSERR = "ResourceUnavailable.CosStatusErr"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceEncryptAttributes(request *ModifyInstanceEncryptAttributesRequest) (response *ModifyInstanceEncryptAttributesResponse, err error) {
+    return c.ModifyInstanceEncryptAttributesWithContext(context.Background(), request)
+}
+
+// ModifyInstanceEncryptAttributes
+// 本接口（ModifyInstanceEncryptAttributes）用于开通实例的TDE加密功能。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MIGRATIONLOCKERROR = "FailedOperation.MigrationLockError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETERVALUE_BACKUPNAMEISILLEGAL = "InvalidParameterValue.BackupNameIsIllegal"
+//  INVALIDPARAMETERVALUE_MIGRATIONNAMEISILLEGAL = "InvalidParameterValue.MigrationNameIsIllegal"
+//  RESOURCENOTFOUND_FULLBACKUPMIGRATIONNOTEXIST = "ResourceNotFound.FullBackupMigrationNotExist"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_COSSTATUSERR = "ResourceUnavailable.CosStatusErr"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceEncryptAttributesWithContext(ctx context.Context, request *ModifyInstanceEncryptAttributesRequest) (response *ModifyInstanceEncryptAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceEncryptAttributesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceEncryptAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceEncryptAttributesResponse()
     err = c.Send(request, response)
     return
 }

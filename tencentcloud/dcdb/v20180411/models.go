@@ -911,6 +911,9 @@ type CreateDedicatedClusterDCDBInstanceRequestParams struct {
 	// 安全组ID
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
 	// DCN源实例ID
 	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
 
@@ -999,6 +1002,9 @@ type CreateDedicatedClusterDCDBInstanceRequest struct {
 	// 安全组ID
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
 	// DCN源实例ID
 	DcnInstanceId *string `json:"DcnInstanceId,omitempty" name:"DcnInstanceId"`
 
@@ -1062,6 +1068,7 @@ func (r *CreateDedicatedClusterDCDBInstanceRequest) FromJsonString(s string) err
 	delete(f, "ShardNodeStorage")
 	delete(f, "DbVersionId")
 	delete(f, "SecurityGroupId")
+	delete(f, "SecurityGroupIds")
 	delete(f, "DcnInstanceId")
 	delete(f, "DcnRegion")
 	delete(f, "InstanceName")

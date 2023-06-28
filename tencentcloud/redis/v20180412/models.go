@@ -443,21 +443,33 @@ func (r *ChangeInstanceRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChangeMasterInstanceRequestParams struct {
-	// 复制组ID
+	// 复制组ID。创建复制组时，系统自动分配的 ID，是复制组的唯一标识。例如：crs-rpl-m3zt****，请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 实例ID
+	// 指定待提升为主实例的只读实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// 
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 标识是否强制提主。
+	// - true：强制提主。
+	// - false：不强制提主。
+	ForceSwitch *bool `json:"ForceSwitch,omitempty" name:"ForceSwitch"`
 }
 
 type ChangeMasterInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 复制组ID
+	// 复制组ID。创建复制组时，系统自动分配的 ID，是复制组的唯一标识。例如：crs-rpl-m3zt****，请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 实例ID
+	// 指定待提升为主实例的只读实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+	// 
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 标识是否强制提主。
+	// - true：强制提主。
+	// - false：不强制提主。
+	ForceSwitch *bool `json:"ForceSwitch,omitempty" name:"ForceSwitch"`
 }
 
 func (r *ChangeMasterInstanceRequest) ToJsonString() string {
@@ -474,6 +486,7 @@ func (r *ChangeMasterInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "GroupId")
 	delete(f, "InstanceId")
+	delete(f, "ForceSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeMasterInstanceRequest has unknown keys!", "")
 	}
@@ -482,7 +495,7 @@ func (r *ChangeMasterInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChangeMasterInstanceResponseParams struct {
-	// 异步流程ID
+	// 异步流程ID。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1431,7 +1444,7 @@ type CreateReplicationGroupRequestParams struct {
 	// 指定复制组中的主实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 复制组名称。
+	// 复制组名称。名称只支持长度为2-64个字符的中文、英文、数字、下划线_、分隔符-。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 备注信息。
@@ -1444,7 +1457,7 @@ type CreateReplicationGroupRequest struct {
 	// 指定复制组中的主实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 复制组名称。
+	// 复制组名称。名称只支持长度为2-64个字符的中文、英文、数字、下划线_、分隔符-。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
 	// 备注信息。
@@ -4344,10 +4357,10 @@ type DescribeReplicationGroupRequestParams struct {
 	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 复制组ID。
+	// 指定复制组 ID。例如：crs-rpl-m3zt****。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 模糊查询的关键字，可以设置为复制组ID或复制组名称进行模糊查询。
+	// 模糊查询的关键字，可以设置为复制组ID或复制组名称进行模糊查询。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID及名称。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
@@ -4360,10 +4373,10 @@ type DescribeReplicationGroupRequest struct {
 	// 分页偏移量，取Limit整数倍。计算公式：offset=limit*(页码-1)。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 复制组ID。
+	// 指定复制组 ID。例如：crs-rpl-m3zt****。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 模糊查询的关键字，可以设置为复制组ID或复制组名称进行模糊查询。
+	// 模糊查询的关键字，可以设置为复制组ID或复制组名称进行模糊查询。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID及名称。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
@@ -4596,14 +4609,14 @@ func (r *DescribeSlowLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskInfoRequestParams struct {
-	// 任务ID
+	// 任务 ID。
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 type DescribeTaskInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID
+	// 任务 ID。
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
@@ -4628,19 +4641,24 @@ func (r *DescribeTaskInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskInfoResponseParams struct {
-	// 任务状态preparing:待执行，running：执行中，succeed：成功，failed：失败，error 执行出错
+	// 任务状态。
+	// - preparing：待执行。
+	// - running：执行中。
+	// - succeed：成功。
+	// - failed：失败。
+	// - error：执行出错。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 任务开始时间
+	// 任务开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 任务类型
+	// 任务类型。常见的类型包含：新建类型、配置变更、关闭实例、清空实例、重置密码、版本升级、备份实例、改变网络类型、实例可用区迁移、手动提主等。
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 实例的ID
+	// 实例的 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 任务信息，错误时显示错误信息。执行中与成功则为空
+	// 任务执行返回的信息，执行错误时显示错误信息。执行中或执行成功则为空。
 	TaskMessage *string `json:"TaskMessage,omitempty" name:"TaskMessage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5271,7 +5289,6 @@ type Groups struct {
 	// - 21：印度 
 	// - 22：美东（弗吉尼亚）
 	// - 23：泰国 
-	// - 24：俄罗斯 
 	// - 25：日本
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
@@ -6130,7 +6147,7 @@ type Instances struct {
 	// 分片内存大小。
 	RedisShardSize *int64 `json:"RedisShardSize,omitempty" name:"RedisShardSize"`
 
-	// 实例的磁盘大小
+	// 实例的磁盘大小。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
