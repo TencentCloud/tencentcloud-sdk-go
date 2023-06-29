@@ -1106,7 +1106,7 @@ func NewCreateServiceResponse() (response *CreateServiceResponse) {
 // CreateService
 // 本接口（CreateService）用于创建服务。
 //
-// API 网关使用的最大单元为服务，每个服务中可创建多个 API 接口。每个服务有一个默认域名供客户调用，用户也可绑定自定义域名到此服务中。 
+// API 网关使用的最大单元为服务，每个服务中可创建多个 API 接口。每个服务有一个默认域名供客户调用，用户也可绑定自定义域名到此服务中。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1143,7 +1143,7 @@ func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateS
 // CreateService
 // 本接口（CreateService）用于创建服务。
 //
-// API 网关使用的最大单元为服务，每个服务中可创建多个 API 接口。每个服务有一个默认域名供客户调用，用户也可绑定自定义域名到此服务中。 
+// API 网关使用的最大单元为服务，每个服务中可创建多个 API 接口。每个服务有一个默认域名供客户调用，用户也可绑定自定义域名到此服务中。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2848,7 +2848,7 @@ func NewDescribeExclusiveInstanceDetailResponse() (response *DescribeExclusiveIn
 }
 
 // DescribeExclusiveInstanceDetail
-// 本接口（DescribeExclusiveInstanceDetail）用于查询独享实例详情信息。​
+// 本接口（DescribeExclusiveInstanceDetail）用于查询独享实例详情信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2866,7 +2866,7 @@ func (c *Client) DescribeExclusiveInstanceDetail(request *DescribeExclusiveInsta
 }
 
 // DescribeExclusiveInstanceDetail
-// 本接口（DescribeExclusiveInstanceDetail）用于查询独享实例详情信息。​
+// 本接口（DescribeExclusiveInstanceDetail）用于查询独享实例详情信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

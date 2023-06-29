@@ -13033,7 +13033,7 @@ func (r *ReloadBalanceProxyNodeResponse) FromJsonString(s string) error {
 
 type RemoteBackupInfo struct {
 	// 异地备份子任务的ID
-	SubBackupId []*int64 `json:"SubBackupId,omitempty" name:"SubBackupId"`
+	SubBackupId *int64 `json:"SubBackupId,omitempty" name:"SubBackupId"`
 
 	// 异地备份所在地域
 	Region *string `json:"Region,omitempty" name:"Region"`

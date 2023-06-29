@@ -1,3 +1,250 @@
+# Release v1.0.690
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 37 次发布
+
+发布时间：2023-06-29 01:02:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateService](https://cloud.tencent.com/document/api/628/45201)
+
+	* <font color="#dd0000">**删除入参**：</font>ExclusiveSetName
+
+* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
+
+	* <font color="#dd0000">**删除出参**：</font>ExclusiveSetName
+
+* [DescribeServiceForApiApp](https://cloud.tencent.com/document/api/628/58632)
+
+	* <font color="#dd0000">**删除出参**：</font>ExclusiveSetName
+
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/628/45244#InstanceDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>Zones
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 135 次发布
+
+发布时间：2023-06-29 01:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RemoteBackupInfo](https://cloud.tencent.com/document/api/236/15878#RemoteBackupInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>SubBackupId
+
+
+
+
+## 混沌演练平台(cfg) 版本：2021-08-20
+
+### 第 8 次发布
+
+发布时间：2023-06-29 01:09:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTemplateList](https://cloud.tencent.com/document/api/1500/71773)
+
+	* 新增入参：TemplateSource, TemplateIdList
+
+
+修改数据结构：
+
+* [TaskListItem](https://cloud.tencent.com/document/api/1500/71784#TaskListItem)
+
+	* 新增成员：TaskExpect
+
+* [Template](https://cloud.tencent.com/document/api/1500/71784#Template)
+
+	* 新增成员：TemplateSource
+
+* [TemplateListItem](https://cloud.tencent.com/document/api/1500/71784#TemplateListItem)
+
+	* 新增成员：TemplateSource
+
+
+
+
+## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 54 次发布
+
+发布时间：2023-06-29 01:11:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaCastPlaySetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastPlaySetting)
+
+	* 新增成员：AutoStartTime
+
+* [MediaCastSourceInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInfo)
+
+	* 新增成员：Offset, Duration, Url
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 81 次发布
+
+发布时间：2023-06-29 01:21:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+
+	* 新增成员：ApproverNeedSignReview
+
+* [CcInfo](https://cloud.tencent.com/document/api/1323/70369#CcInfo)
+
+	* 新增成员：NotifyType
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：ApproverNeedSignReview
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 86 次发布
+
+发布时间：2023-06-29 01:22:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 27 次发布
+
+发布时间：2023-06-29 01:28:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：InteractionMode, VideoOrientation
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：InteractionMode, VideoOrientation
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：InteractionMode, VideoOrientation
+
+
+修改数据结构：
+
+* [MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord)
+
+	* 新增成员：CurrentState
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：InteractionMode, VideoOrientation
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 154 次发布
+
+发布时间：2023-06-29 01:44:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeEncryptionStatus](https://cloud.tencent.com/document/api/457/94085)
+
+	* 新增入参：ClusterId
+
+	* 新增出参：Status, ErrorMsg
+
+* [DisableEncryptionProtection](https://cloud.tencent.com/document/api/457/94084)
+
+	* 新增入参：ClusterId
+
+* [EnableEncryptionProtection](https://cloud.tencent.com/document/api/457/94083)
+
+	* 新增入参：ClusterId, KMSConfiguration
+
+
+新增数据结构：
+
+* [KMSConfiguration](https://cloud.tencent.com/document/api/457/31866#KMSConfiguration)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 23 次发布
+
+发布时间：2023-06-29 01:45:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAgentCorps](https://cloud.tencent.com/document/api/1458/94378)
+
+
+
 # Release v1.0.689
 
 ## 应用性能监控(apm) 版本：2021-06-22

@@ -607,7 +607,7 @@ type CreateProjectRequestParams struct {
 	// 录制回放项目输入信息，仅当项目类型为 RECORD_REPLAY 时必填。
 	RecordReplayProjectInput *RecordReplayProjectInput `json:"RecordReplayProjectInput,omitempty" name:"RecordReplayProjectInput"`
 
-	// 点播转直播项目输入信息，仅当项目类型为 MEDIA_CAST 时必填。
+	// 媒体转推项目输入信息，仅当项目类型为 MEDIA_CAST 时必填。
 	MediaCastProjectInput *MediaCastProjectInput `json:"MediaCastProjectInput,omitempty" name:"MediaCastProjectInput"`
 }
 
@@ -667,7 +667,7 @@ type CreateProjectRequest struct {
 	// 录制回放项目输入信息，仅当项目类型为 RECORD_REPLAY 时必填。
 	RecordReplayProjectInput *RecordReplayProjectInput `json:"RecordReplayProjectInput,omitempty" name:"RecordReplayProjectInput"`
 
-	// 点播转直播项目输入信息，仅当项目类型为 MEDIA_CAST 时必填。
+	// 媒体转推项目输入信息，仅当项目类型为 MEDIA_CAST 时必填。
 	MediaCastProjectInput *MediaCastProjectInput `json:"MediaCastProjectInput,omitempty" name:"MediaCastProjectInput"`
 }
 
@@ -3507,7 +3507,7 @@ type HandleMediaCastProjectRequestParams struct {
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 点播转直播项目 Id 。
+	// 媒体转推项目 Id 。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 请参考 [操作类型](#Operation)。
@@ -3533,7 +3533,7 @@ type HandleMediaCastProjectRequestParams struct {
 	// 当 Operation 为 AddSource 时必填。
 	Position *int64 `json:"Position,omitempty" name:"Position"`
 
-	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有点播转直播项目。如果指定操作者，则操作者必须为项目所有者。
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有媒体转推项目。如果指定操作者，则操作者必须为项目所有者。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3543,7 +3543,7 @@ type HandleMediaCastProjectRequest struct {
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
-	// 点播转直播项目 Id 。
+	// 媒体转推项目 Id 。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 请参考 [操作类型](#Operation)。
@@ -3569,7 +3569,7 @@ type HandleMediaCastProjectRequest struct {
 	// 当 Operation 为 AddSource 时必填。
 	Position *int64 `json:"Position,omitempty" name:"Position"`
 
-	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有点播转直播项目。如果指定操作者，则操作者必须为项目所有者。
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有媒体转推项目。如果指定操作者，则操作者必须为项目所有者。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4430,6 +4430,9 @@ type MediaCastPlaySetting struct {
 
 	// 结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 自动启动时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	AutoStartTime *string `json:"AutoStartTime,omitempty" name:"AutoStartTime"`
 }
 
 type MediaCastProjectInfo struct {
@@ -4479,6 +4482,7 @@ type MediaCastSourceInfo struct {
 	// 输入源的媒体类型，取值有：
 	// <li>CME：多媒体创作引擎的媒体文件；</li>
 	// <li>VOD：云点播的媒资文件。</li>
+	// <li>EXTERNAL：非多媒体创建引擎或者云点播的媒资文件。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 云点播媒体文件 ID。当 Type = VOD 时必填。
@@ -4486,6 +4490,15 @@ type MediaCastSourceInfo struct {
 
 	// 多媒体创作引擎的媒体 ID。当 Type = CME  时必填。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 文件播放的的起始位置，单位：秒。默认为0，从文件头开始播放。当 Type = CME  或者 VOD 时有效。
+	Offset *float64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 播放时长，单位：秒。默认播放整个文件。当 Type = CME  或者 VOD 时有效。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 外部文件的 Url， Type=EXTERNAL 时必填，可以是点播文件或者直播文件，支持的 Scheme 包括HTTP、HTTPS、RTMP。
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 type MediaCastSourceInterruptInfo struct {

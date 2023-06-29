@@ -1218,13 +1218,13 @@ type CreateForwardRuleResponseParams struct {
 	// 队列区
 	QueueRegion *string `json:"QueueRegion,omitempty" name:"QueueRegion"`
 
-	// 消息队列的类型。 0：CMQ，1：CKafaka
+	// 消息队列的类型。 0：CMQ，1：Ckafka
 	QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 
-	// 实例id， 目前只有Ckafaka会用到
+	// 实例id， 目前只有Ckafka会用到
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例名称，目前只有Ckafaka会用到
+	// 实例名称，目前只有Ckafka会用到
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 错误消息
@@ -4323,10 +4323,10 @@ type DescribeForwardRuleResponseParams struct {
 	// 队列类型，0：CMQ，1：Ckafka
 	QueueType *uint64 `json:"QueueType,omitempty" name:"QueueType"`
 
-	// 实例id， 目前只有Ckafaka会用到
+	// 实例id， 目前只有Ckafka会用到
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例名称，目前只有Ckafaka会用到
+	// 实例名称，目前只有Ckafka会用到
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
 	// 错误消息

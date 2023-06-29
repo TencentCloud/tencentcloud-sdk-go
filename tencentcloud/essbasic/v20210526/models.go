@@ -2704,6 +2704,8 @@ type CommonFlowApprover struct {
 	IsFullText *bool `json:"IsFullText,omitempty" name:"IsFullText"`
 
 	// 通知类型：SMS（短信） NONE（不做通知）, 不传 默认SMS
+	//
+	// Deprecated: NotifyType is deprecated.
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
 	// 签署人配置

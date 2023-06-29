@@ -332,9 +332,9 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //
 // <li>录制回放项目：用于直播录制回放；</li>
 //
-// <li>云转推项目：用于直播云转推。</li>
+// <li>云转推项目：用于直播云转推<font color=red>（废弃，可使用媒体转推项目替代）</font>；</li>
 //
-// <li>点播转直播项目：用于点播文件转直播输出。</li>
+// <li>媒体转推项目：用于媒体文件转直播输出。</li>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATERECORDTASK = "FailedOperation.CreateRecordTask"
@@ -374,9 +374,9 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
 //
 // <li>录制回放项目：用于直播录制回放；</li>
 //
-// <li>云转推项目：用于直播云转推。</li>
+// <li>云转推项目：用于直播云转推<font color=red>（废弃，可使用媒体转推项目替代）</font>；</li>
 //
-// <li>点播转直播项目：用于点播文件转直播输出。</li>
+// <li>媒体转推项目：用于媒体文件转直播输出。</li>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATERECORDTASK = "FailedOperation.CreateRecordTask"
@@ -2340,7 +2340,7 @@ func NewHandleMediaCastProjectResponse() (response *HandleMediaCastProjectRespon
 }
 
 // HandleMediaCastProject
-// 对点播转直播项目进行操作。
+// 对媒体转推项目进行操作。
 //
 // ### 操作类型<a id="Operation"></a>
 //
@@ -2360,9 +2360,11 @@ func NewHandleMediaCastProjectResponse() (response *HandleMediaCastProjectRespon
 //
 // - `ModifyDestination`（修改输出源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B2-.E4.BF.AE.E6.94.B9.E8.BE.93.E5.87.BA.E6.BA.90)；
 //
-// - `Start`（启动点播转直播），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B9-.E5.90.AF.E5.8A.A8.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
+// - `Start`（启动媒体转推），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B9-.E5.90.AF.E5.8A.A8.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)。发起 Start 请求成功后，媒体转推项目开始启动，30秒内还需要再进行一次 Confirm操作进行确认；
 //
-// - `Stop`（停止点播转直播），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B4-.E5.81.9C.E6.AD.A2.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
+// - `Confirm`（确认媒体转推项目启动），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B14-.E7.A1.AE.E8.AE.A4.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD.E9.A1.B9.E7.9B.AE.E5.90.AF.E5.8A.A8)；
+//
+// - `Stop`（停止媒体转推），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B4-.E5.81.9C.E6.AD.A2.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
 //
 // - `ModifyOutputMediaSetting`（修改媒体输出配置），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B3-.E4.BF.AE.E6.94.B9.E8.BE.93.E5.87.BA.E7.9A.84.E5.AA.92.E4.BD.93.E9.85.8D.E7.BD.AE)；
 //
@@ -2389,7 +2391,7 @@ func (c *Client) HandleMediaCastProject(request *HandleMediaCastProjectRequest) 
 }
 
 // HandleMediaCastProject
-// 对点播转直播项目进行操作。
+// 对媒体转推项目进行操作。
 //
 // ### 操作类型<a id="Operation"></a>
 //
@@ -2409,9 +2411,11 @@ func (c *Client) HandleMediaCastProject(request *HandleMediaCastProjectRequest) 
 //
 // - `ModifyDestination`（修改输出源），项目状态为 Idle、Working 时均可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B2-.E4.BF.AE.E6.94.B9.E8.BE.93.E5.87.BA.E6.BA.90)；
 //
-// - `Start`（启动点播转直播），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B9-.E5.90.AF.E5.8A.A8.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
+// - `Start`（启动媒体转推），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B9-.E5.90.AF.E5.8A.A8.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)。发起 Start 请求成功后，媒体转推项目开始启动，30秒内还需要再进行一次 Confirm操作进行确认；
 //
-// - `Stop`（停止点播转直播），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B4-.E5.81.9C.E6.AD.A2.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
+// - `Confirm`（确认媒体转推项目启动），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B14-.E7.A1.AE.E8.AE.A4.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD.E9.A1.B9.E7.9B.AE.E5.90.AF.E5.8A.A8)；
+//
+// - `Stop`（停止媒体转推），项目状态为 Working 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B4-.E5.81.9C.E6.AD.A2.E7.82.B9.E6.92.AD.E8.BD.AC.E7.9B.B4.E6.92.AD)；
 //
 // - `ModifyOutputMediaSetting`（修改媒体输出配置），项目状态为 Idle 时可以操作。参见 [示例](#.E7.A4.BA.E4.BE.8B3-.E4.BF.AE.E6.94.B9.E8.BE.93.E5.87.BA.E7.9A.84.E5.AA.92.E4.BD.93.E9.85.8D.E7.BD.AE)；
 //
@@ -2468,7 +2472,9 @@ func NewHandleStreamConnectProjectResponse() (response *HandleStreamConnectProje
 }
 
 // HandleStreamConnectProject
-// 对云转推项目进行操作。
+// <font color=red>本接口废弃，可创建媒体转推项目替代，操作媒体转推项目可使用 <b>[HandleMediaCastProject 接口](/document/product/1156/87841) </b>实现。</font>
+//
+// 
 //
 // ### 操作类型<a id="Operation"></a>
 //
@@ -2525,7 +2531,9 @@ func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectR
 }
 
 // HandleStreamConnectProject
-// 对云转推项目进行操作。
+// <font color=red>本接口废弃，可创建媒体转推项目替代，操作媒体转推项目可使用 <b>[HandleMediaCastProject 接口](/document/product/1156/87841) </b>实现。</font>
+//
+// 
 //
 // ### 操作类型<a id="Operation"></a>
 //

@@ -2310,8 +2310,6 @@ type CreateResourcePackageRequestParams struct {
 	// china-中国内地通用，overseas-港澳台及海外通用
 	PackageRegion *string `json:"PackageRegion,omitempty" name:"PackageRegion"`
 
-	// 资源包类型
-	// 
 	// 资源包类型：CCU-计算资源包，DISK-存储资源包
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -2342,8 +2340,6 @@ type CreateResourcePackageRequest struct {
 	// china-中国内地通用，overseas-港澳台及海外通用
 	PackageRegion *string `json:"PackageRegion,omitempty" name:"PackageRegion"`
 
-	// 资源包类型
-	// 
 	// 资源包类型：CCU-计算资源包，DISK-存储资源包
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -3154,7 +3150,7 @@ type DbInfo struct {
 	// 数据库状态
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 拍讯规则
+	// 排序规则
 	CollateRule *string `json:"CollateRule,omitempty" name:"CollateRule"`
 
 	// 数据库备注

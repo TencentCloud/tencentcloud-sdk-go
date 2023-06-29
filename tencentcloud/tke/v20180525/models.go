@@ -9255,12 +9255,15 @@ func (r *DescribeEnableVpcCniProgressResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEncryptionStatusRequestParams struct {
-
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 type DescribeEncryptionStatusRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeEncryptionStatusRequest) ToJsonString() string {
@@ -9275,7 +9278,7 @@ func (r *DescribeEncryptionStatusRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEncryptionStatusRequest has unknown keys!", "")
 	}
@@ -9284,6 +9287,12 @@ func (r *DescribeEncryptionStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEncryptionStatusResponseParams struct {
+	// 加密状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 加密错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -11903,12 +11912,15 @@ func (r *DisableClusterDeletionProtectionResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DisableEncryptionProtectionRequestParams struct {
-
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 type DisableEncryptionProtectionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DisableEncryptionProtectionRequest) ToJsonString() string {
@@ -11923,7 +11935,7 @@ func (r *DisableEncryptionProtectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableEncryptionProtectionRequest has unknown keys!", "")
 	}
@@ -12630,12 +12642,21 @@ func (r *EnableClusterDeletionProtectionResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type EnableEncryptionProtectionRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
+	// kms加密配置
+	KMSConfiguration *KMSConfiguration `json:"KMSConfiguration,omitempty" name:"KMSConfiguration"`
 }
 
 type EnableEncryptionProtectionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// kms加密配置
+	KMSConfiguration *KMSConfiguration `json:"KMSConfiguration,omitempty" name:"KMSConfiguration"`
 }
 
 func (r *EnableEncryptionProtectionRequest) ToJsonString() string {
@@ -12650,7 +12671,8 @@ func (r *EnableEncryptionProtectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
+	delete(f, "KMSConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableEncryptionProtectionRequest has unknown keys!", "")
 	}
@@ -13976,6 +13998,10 @@ type InstanceUpgradeProgressItem struct {
 
 	// 升级步骤详情
 	Detail []*TaskStepInfo `json:"Detail,omitempty" name:"Detail"`
+}
+
+type KMSConfiguration struct {
+
 }
 
 type KubeJarvisStateCatalogue struct {

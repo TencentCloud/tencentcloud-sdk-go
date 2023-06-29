@@ -7168,7 +7168,7 @@ func NewModifyBackupEncryptionStatusResponse() (response *ModifyBackupEncryption
 }
 
 // ModifyBackupEncryptionStatus
-// 本接口(ModifyBackupEncryptionStatus)用于设置实例备份文件是否加密。 
+// 本接口(ModifyBackupEncryptionStatus)用于设置实例备份文件是否加密。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -7188,7 +7188,7 @@ func (c *Client) ModifyBackupEncryptionStatus(request *ModifyBackupEncryptionSta
 }
 
 // ModifyBackupEncryptionStatus
-// 本接口(ModifyBackupEncryptionStatus)用于设置实例备份文件是否加密。 
+// 本接口(ModifyBackupEncryptionStatus)用于设置实例备份文件是否加密。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -1738,6 +1738,81 @@ func (r *DeleteTraceDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAgentCorpsRequestParams struct {
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 渠道ID
+	AgentId *uint64 `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+type DescribeAgentCorpsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 渠道ID
+	AgentId *uint64 `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+func (r *DescribeAgentCorpsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentCorpsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "AgentId")
+	delete(f, "CorpId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentCorpsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentCorpsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAgentCorpsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgentCorpsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAgentCorpsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentCorpsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCodeBatchByIdRequestParams struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`

@@ -1064,7 +1064,7 @@ type CreateRoomRequestParams struct {
 	// rtc人数。
 	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
 
-	// 观看类型，互动直播（默认）。
+	// 观看类型。互动观看 （默认）
 	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
 
 	// 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
@@ -1077,6 +1077,14 @@ type CreateRoomRequestParams struct {
 	// 0 不允许直接控制（需同意，默认值）
 	// 1 允许直接控制（无需同意）
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+
+	// 开启专注模式。
+	// 0 收看全部角色音视频(默认)
+	// 1 只看老师和助教
+	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+
+	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
 }
 
 type CreateRoomRequest struct {
@@ -1138,7 +1146,7 @@ type CreateRoomRequest struct {
 	// rtc人数。
 	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
 
-	// 观看类型，互动直播（默认）。
+	// 观看类型。互动观看 （默认）
 	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
 
 	// 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
@@ -1151,6 +1159,14 @@ type CreateRoomRequest struct {
 	// 0 不允许直接控制（需同意，默认值）
 	// 1 允许直接控制（无需同意）
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+
+	// 开启专注模式。
+	// 0 收看全部角色音视频(默认)
+	// 1 只看老师和助教
+	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+
+	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1183,6 +1199,8 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "RecordLayout")
 	delete(f, "GroupId")
 	delete(f, "EnableDirectControl")
+	delete(f, "InteractionMode")
+	delete(f, "VideoOrientation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -2697,6 +2715,14 @@ type DescribeRoomResponseParams struct {
 	// 打开学生麦克风/摄像头的授权开关
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
 
+	// 开启专注模式。
+	// 0 收看全部角色音视频(默认)
+	// 1 只看老师和助教
+	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+
+	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -3833,6 +3859,10 @@ type MemberRecord struct {
 	// 用户的上台状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stage *int64 `json:"Stage,omitempty" name:"Stage"`
+
+	// 用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentState *uint64 `json:"CurrentState,omitempty" name:"CurrentState"`
 }
 
 type MessageItem struct {
@@ -4056,7 +4086,6 @@ type ModifyRoomRequestParams struct {
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
-	// coteaching 双师
 	// 直播开始后不允许修改。
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
@@ -4069,11 +4098,19 @@ type ModifyRoomRequestParams struct {
 	// 助教Id列表。直播开始后不允许修改。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
-	// 房间绑定的群组ID
+	// 房间绑定的群组ID。直播开始后不允许修改。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 打开学生麦克风/摄像头的授权开关
+	// 打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+
+	// 开启专注模式。
+	// 0 收看全部角色音视频(默认)
+	// 1 只看老师和助教
+	InteractionMode *uint64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+
+	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
 }
 
 type ModifyRoomRequest struct {
@@ -4123,7 +4160,6 @@ type ModifyRoomRequest struct {
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
-	// coteaching 双师
 	// 直播开始后不允许修改。
 	SubType *string `json:"SubType,omitempty" name:"SubType"`
 
@@ -4136,11 +4172,19 @@ type ModifyRoomRequest struct {
 	// 助教Id列表。直播开始后不允许修改。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
-	// 房间绑定的群组ID
+	// 房间绑定的群组ID。直播开始后不允许修改。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 打开学生麦克风/摄像头的授权开关
+	// 打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+
+	// 开启专注模式。
+	// 0 收看全部角色音视频(默认)
+	// 1 只看老师和助教
+	InteractionMode *uint64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+
+	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4170,6 +4214,8 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "Assistants")
 	delete(f, "GroupId")
 	delete(f, "EnableDirectControl")
+	delete(f, "InteractionMode")
+	delete(f, "VideoOrientation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -4416,6 +4462,12 @@ type RoomInfo struct {
 
 	// 打开学生麦克风/摄像头的授权开关
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+
+	// 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
+	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+
+	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	VideoOrientation *int64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
 }
 
 type RoomItem struct {

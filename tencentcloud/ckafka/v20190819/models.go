@@ -31,7 +31,7 @@ type Acl struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Principal *string `json:"Principal,omitempty" name:"Principal"`
 
-	// 默认为*，表示任何host都可以访问，当前ckafka不支持host为*，但是后面开源kafka的产品化会直接支持
+	// 默认为：*，表示任何host都可以访问，当前ckafka不支持host为：*，但是后面开源kafka的产品化会直接支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitempty" name:"Host"`
 
@@ -112,7 +112,7 @@ type AclRuleInfo struct {
 	// 权限类型，(Deny，Allow)
 	PermissionType *string `json:"PermissionType,omitempty" name:"PermissionType"`
 
-	// 默认为*，表示任何host都可以访问，当前ckafka不支持host为*和ip网段
+	// 默认为：*，表示任何host都可以访问，当前ckafka不支持host为：* 和 ip网段
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。
@@ -1999,7 +1999,7 @@ type CreateInstancePreRequestParams struct {
 	Period *string `json:"Period,omitempty" name:"Period"`
 
 	// 实例规格说明 专业版实例[所有规格]填写1.
-	// 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶性2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
+	// 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶型2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// vpcId必填
@@ -2064,7 +2064,7 @@ type CreateInstancePreRequest struct {
 	Period *string `json:"Period,omitempty" name:"Period"`
 
 	// 实例规格说明 专业版实例[所有规格]填写1.
-	// 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶性2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
+	// 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶型2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// vpcId必填
@@ -7832,7 +7832,7 @@ type InstanceDetail struct {
 	// 实例状态信息
 	HealthyMessage *string `json:"HealthyMessage,omitempty" name:"HealthyMessage"`
 
-	// 实例创建时间时间
+	// 实例创建时间
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 实例过期时间
@@ -8642,7 +8642,7 @@ type ModifyInstanceAttributesConfig struct {
 	// 可选，如果auto.create.topic.enable设置为true没有设置该值时，默认设置为3
 	DefaultNumPartitions *int64 `json:"DefaultNumPartitions,omitempty" name:"DefaultNumPartitions"`
 
-	// 如歌auto.create.topic.enable设置为true没有指定该值时默认设置为2
+	// 如果auto.create.topic.enable设置为true没有指定该值时默认设置为2
 	DefaultReplicationFactor *int64 `json:"DefaultReplicationFactor,omitempty" name:"DefaultReplicationFactor"`
 }
 
@@ -8663,7 +8663,7 @@ type ModifyInstanceAttributesRequestParams struct {
 	// 动态消息保留策略配置
 	DynamicRetentionConfig *DynamicRetentionTime `json:"DynamicRetentionConfig,omitempty" name:"DynamicRetentionConfig"`
 
-	// 修改升配置rebalance时间
+	// 升配Rebalance时间
 	RebalanceTime *int64 `json:"RebalanceTime,omitempty" name:"RebalanceTime"`
 
 	// 公网带宽
@@ -8694,7 +8694,7 @@ type ModifyInstanceAttributesRequest struct {
 	// 动态消息保留策略配置
 	DynamicRetentionConfig *DynamicRetentionTime `json:"DynamicRetentionConfig,omitempty" name:"DynamicRetentionConfig"`
 
-	// 修改升配置rebalance时间
+	// 升配Rebalance时间
 	RebalanceTime *int64 `json:"RebalanceTime,omitempty" name:"RebalanceTime"`
 
 	// 公网带宽

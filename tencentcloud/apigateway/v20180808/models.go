@@ -425,7 +425,7 @@ type ApiInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitempty" name:"ServiceWebsocketTransportFunctionQualifier"`
 
-	// API绑定微服务服务列表。
+	// API绑定微服务列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroServices []*MicroService `json:"MicroServices,omitempty" name:"MicroServices"`
 
@@ -1582,7 +1582,7 @@ type CreateApiRequestParams struct {
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
 	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
 
-	// API绑定微服务服务列表。
+	// API绑定微服务列表。
 	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
@@ -1745,7 +1745,7 @@ type CreateApiRequest struct {
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
 	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
 
-	// API绑定微服务服务列表。
+	// API绑定微服务列表。
 	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
@@ -2191,16 +2191,13 @@ type CreateServiceRequestParams struct {
 	// 用户自定义的服务描述。
 	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
 
-	// 独立集群名称，用于指定创建服务所在的独立集群。
-	ExclusiveSetName *string `json:"ExclusiveSetName,omitempty" name:"ExclusiveSetName"`
-
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
 	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
 
 	// IP版本号，支持IPv4和IPv6，默认为IPv4。
 	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
 
-	// 集群名称。保留字段，tsf serverlss类型使用。
+	// 集群名称。保留字段，tsf serverless类型使用。
 	SetServerName *string `json:"SetServerName,omitempty" name:"SetServerName"`
 
 	// 用户类型。保留类型，serverless用户使用。
@@ -2228,16 +2225,13 @@ type CreateServiceRequest struct {
 	// 用户自定义的服务描述。
 	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
 
-	// 独立集群名称，用于指定创建服务所在的独立集群。
-	ExclusiveSetName *string `json:"ExclusiveSetName,omitempty" name:"ExclusiveSetName"`
-
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
 	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
 
 	// IP版本号，支持IPv4和IPv6，默认为IPv4。
 	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
 
-	// 集群名称。保留字段，tsf serverlss类型使用。
+	// 集群名称。保留字段，tsf serverless类型使用。
 	SetServerName *string `json:"SetServerName,omitempty" name:"SetServerName"`
 
 	// 用户类型。保留类型，serverless用户使用。
@@ -2268,7 +2262,6 @@ func (r *CreateServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceName")
 	delete(f, "Protocol")
 	delete(f, "ServiceDesc")
-	delete(f, "ExclusiveSetName")
 	delete(f, "NetTypes")
 	delete(f, "IpVersion")
 	delete(f, "SetServerName")
@@ -5648,10 +5641,6 @@ type DescribeServiceForApiAppResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
 
-	// 独立集群名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExclusiveSetName *string `json:"ExclusiveSetName,omitempty" name:"ExclusiveSetName"`
-
 	// 网络类型列表，INNER为内网访问，OUTER为外网访问。
 	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
 
@@ -5856,9 +5845,6 @@ type DescribeServiceResponseParams struct {
 
 	// 服务修改时间。
 	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
-
-	// 独立集群名称。
-	ExclusiveSetName *string `json:"ExclusiveSetName,omitempty" name:"ExclusiveSetName"`
 
 	// 网络类型列表，INNER为内网访问，OUTER为外网访问。
 	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
@@ -6394,7 +6380,7 @@ type DescribeUsagePlanEnvironmentsRequestParams struct {
 	// 待查询的使用计划唯一 ID。
 	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
 
-	// 定类型，取值为 API、SERVICE，默认值为 SERVICE。
+	// 定义类型，取值为 API、SERVICE，默认值为 SERVICE。
 	BindType *string `json:"BindType,omitempty" name:"BindType"`
 
 	// 返回数量，默认为 20，最大值为 100。
@@ -6410,7 +6396,7 @@ type DescribeUsagePlanEnvironmentsRequest struct {
 	// 待查询的使用计划唯一 ID。
 	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
 
-	// 定类型，取值为 API、SERVICE，默认值为 SERVICE。
+	// 定义类型，取值为 API、SERVICE，默认值为 SERVICE。
 	BindType *string `json:"BindType,omitempty" name:"BindType"`
 
 	// 返回数量，默认为 20，最大值为 100。
@@ -7259,7 +7245,7 @@ type InstanceDetail struct {
 
 	// 可用区列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Zones *string `json:"Zones,omitempty" name:"Zones"`
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 }
 
 type InstanceInfo struct {
@@ -7742,7 +7728,7 @@ type ModifyApiRequestParams struct {
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
 	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
 
-	// API绑定微服务服务列表。
+	// API绑定微服务列表。
 	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
@@ -7908,7 +7894,7 @@ type ModifyApiRequest struct {
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
 	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
 
-	// API绑定微服务服务列表。
+	// API绑定微服务列表。
 	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。

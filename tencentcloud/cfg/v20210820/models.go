@@ -413,6 +413,12 @@ type DescribeTemplateListRequestParams struct {
 
 	// 标签对
 	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+
+	// 经验来源 0-自建 1-专家推荐
+	TemplateSource *int64 `json:"TemplateSource,omitempty" name:"TemplateSource"`
+
+	// 经验ID
+	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" name:"TemplateIdList"`
 }
 
 type DescribeTemplateListRequest struct {
@@ -435,6 +441,12 @@ type DescribeTemplateListRequest struct {
 
 	// 标签对
 	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+
+	// 经验来源 0-自建 1-专家推荐
+	TemplateSource *int64 `json:"TemplateSource,omitempty" name:"TemplateSource"`
+
+	// 经验ID
+	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" name:"TemplateIdList"`
 }
 
 func (r *DescribeTemplateListRequest) ToJsonString() string {
@@ -455,6 +467,8 @@ func (r *DescribeTemplateListRequest) FromJsonString(s string) error {
 	delete(f, "Tag")
 	delete(f, "IsUsed")
 	delete(f, "Tags")
+	delete(f, "TemplateSource")
+	delete(f, "TemplateIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplateListRequest has unknown keys!", "")
 	}
@@ -1113,6 +1127,10 @@ type TaskListItem struct {
 	// 环境检查是否通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskPreCheckSuccess *bool `json:"TaskPreCheckSuccess,omitempty" name:"TaskPreCheckSuccess"`
+
+	// 演练是否符合预期 1-符合预期 2-不符合预期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskExpect *int64 `json:"TaskExpect,omitempty" name:"TaskExpect"`
 }
 
 type TaskMonitor struct {
@@ -1207,6 +1225,10 @@ type Template struct {
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+
+	// 经验来源 0-自建 1-专家推荐
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateSource *int64 `json:"TemplateSource,omitempty" name:"TemplateSource"`
 }
 
 type TemplateGroup struct {
@@ -1316,6 +1338,10 @@ type TemplateListItem struct {
 
 	// 经验库关联的任务数量
 	TemplateUsedNum *int64 `json:"TemplateUsedNum,omitempty" name:"TemplateUsedNum"`
+
+	// 经验库来源 0-自建经验 1-专家推荐
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateSource *int64 `json:"TemplateSource,omitempty" name:"TemplateSource"`
 }
 
 type TemplateMonitor struct {

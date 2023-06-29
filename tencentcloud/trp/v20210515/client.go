@@ -863,6 +863,58 @@ func (c *Client) DeleteTraceDataWithContext(ctx context.Context, request *Delete
     return
 }
 
+func NewDescribeAgentCorpsRequest() (request *DescribeAgentCorpsRequest) {
+    request = &DescribeAgentCorpsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeAgentCorps")
+    
+    
+    return
+}
+
+func NewDescribeAgentCorpsResponse() (response *DescribeAgentCorpsResponse) {
+    response = &DescribeAgentCorpsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAgentCorps
+// 查询渠道企业列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAgentCorps(request *DescribeAgentCorpsRequest) (response *DescribeAgentCorpsResponse, err error) {
+    return c.DescribeAgentCorpsWithContext(context.Background(), request)
+}
+
+// DescribeAgentCorps
+// 查询渠道企业列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAgentCorpsWithContext(ctx context.Context, request *DescribeAgentCorpsRequest) (response *DescribeAgentCorpsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentCorpsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentCorps require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentCorpsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCodeBatchByIdRequest() (request *DescribeCodeBatchByIdRequest) {
     request = &DescribeCodeBatchByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -112,6 +112,9 @@ type ApproverInfo struct {
 	// 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 	// 合同签署认证方式的优先级 verifyChannel>approverSignTypes
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitempty" name:"ApproverSignTypes"`
+
+	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
+	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitempty" name:"ApproverNeedSignReview"`
 }
 
 type ApproverOption struct {
@@ -495,6 +498,9 @@ type CcInfo struct {
 	// 0--可查看
 	// 1--可查看也可下载
 	CcPermission *int64 `json:"CcPermission,omitempty" name:"CcPermission"`
+
+	// 关注方通知类型：sms--短信，none--不通知
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 }
 
 type Component struct {
@@ -5192,6 +5198,9 @@ type FlowCreateApprover struct {
 	// - 发起流程时系统自动补充
 	// - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
 	SignId *string `json:"SignId,omitempty" name:"SignId"`
+
+	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。
+	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitempty" name:"ApproverNeedSignReview"`
 }
 
 type FlowDetailInfo struct {
