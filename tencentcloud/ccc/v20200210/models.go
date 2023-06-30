@@ -704,6 +704,12 @@ type CreateExtensionRequestParams struct {
 
 	// 分机名称
 	ExtensionName *string `json:"ExtensionName,omitempty" name:"ExtensionName"`
+
+	// 绑定的技能组列表
+	SkillGroupIds []*uint64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+
+	// 绑定的坐席邮箱
+	Relation *string `json:"Relation,omitempty" name:"Relation"`
 }
 
 type CreateExtensionRequest struct {
@@ -717,6 +723,12 @@ type CreateExtensionRequest struct {
 
 	// 分机名称
 	ExtensionName *string `json:"ExtensionName,omitempty" name:"ExtensionName"`
+
+	// 绑定的技能组列表
+	SkillGroupIds []*uint64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+
+	// 绑定的坐席邮箱
+	Relation *string `json:"Relation,omitempty" name:"Relation"`
 }
 
 func (r *CreateExtensionRequest) ToJsonString() string {
@@ -734,6 +746,8 @@ func (r *CreateExtensionRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "ExtensionId")
 	delete(f, "ExtensionName")
+	delete(f, "SkillGroupIds")
+	delete(f, "Relation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExtensionRequest has unknown keys!", "")
 	}
@@ -3922,6 +3936,10 @@ type TelCdrInfo struct {
 	// 通话中语音留言录音URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoicemailRecordURL []*string `json:"VoicemailRecordURL,omitempty" name:"VoicemailRecordURL"`
+
+	// 通话中语音留言ASR文本信息地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoicemailAsrURL []*string `json:"VoicemailAsrURL,omitempty" name:"VoicemailAsrURL"`
 }
 
 // Predefined struct for user

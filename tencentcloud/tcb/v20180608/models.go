@@ -139,6 +139,20 @@ type BackendServiceInfo struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+type BanConfig struct {
+	// ip白名单，支持ipv4、ipv6，支持CIDR
+	IpWhiteList []*string `json:"IpWhiteList,omitempty" name:"IpWhiteList"`
+
+	// ip黑名单，支持ipv4、ipv6，支持CIDR
+	IpBlackList []*string `json:"IpBlackList,omitempty" name:"IpBlackList"`
+
+	// 地域白名单（国家英文名）
+	CountryWhiteList []*string `json:"CountryWhiteList,omitempty" name:"CountryWhiteList"`
+
+	// 地域黑名单（国家英文名）
+	CountryBlackList []*string `json:"CountryBlackList,omitempty" name:"CountryBlackList"`
+}
+
 // Predefined struct for user
 type BindEnvGatewayRequestParams struct {
 	// 子环境id
@@ -191,6 +205,34 @@ func (r *BindEnvGatewayResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *BindEnvGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CbrPackageInfo struct {
+	// 代码包名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 代码包版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+}
+
+type CbrRepoInfo struct {
+	// 仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Repo *string `json:"Repo,omitempty" name:"Repo"`
+
+	// 仓库平台
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoType *string `json:"RepoType,omitempty" name:"RepoType"`
+
+	// 仓库语言
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoLanguage *string `json:"RepoLanguage,omitempty" name:"RepoLanguage"`
+
+	// 分支名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Branch *string `json:"Branch,omitempty" name:"Branch"`
 }
 
 // Predefined struct for user
@@ -1729,7 +1771,7 @@ type CreatePostpayPackageRequestParams struct {
 	// <li>qcloud</li>
 	Source *string `json:"Source,omitempty" name:"Source"`
 
-	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，表示不享受免费额度。
 	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
 
 	// 环境创建来源，取值：
@@ -1776,7 +1818,7 @@ type CreatePostpayPackageRequest struct {
 	// <li>qcloud</li>
 	Source *string `json:"Source,omitempty" name:"Source"`
 
-	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，表示不享受免费额度。
 	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
 
 	// 环境创建来源，取值：
@@ -2230,6 +2272,26 @@ func (r *CreateWxCloudBaseRunServerDBClusterResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomLogConfig struct {
+	// 是否需要请求体
+	NeedReqBodyLog *bool `json:"NeedReqBodyLog,omitempty" name:"NeedReqBodyLog"`
+
+	// 是否需要请求头
+	NeedReqHeaderLog *bool `json:"NeedReqHeaderLog,omitempty" name:"NeedReqHeaderLog"`
+
+	// 是否需要回包体
+	NeedRspBodyLog *bool `json:"NeedRspBodyLog,omitempty" name:"NeedRspBodyLog"`
+
+	// 是否需要回包头部信息
+	NeedRspHeaderLog *bool `json:"NeedRspHeaderLog,omitempty" name:"NeedRspHeaderLog"`
+
+	// cls set信息
+	LogSetId *string `json:"LogSetId,omitempty" name:"LogSetId"`
+
+	// cls topicId
+	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
+}
+
 type DatabasesInfo struct {
 	// 数据库唯一标识
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -2469,6 +2531,105 @@ func (r *DeleteEndUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteEndUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGatewayVersionRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 是否删除服务
+	IsDeleteServer *bool `json:"IsDeleteServer,omitempty" name:"IsDeleteServer"`
+
+	// 是否删除镜像
+	IsDeleteImage *bool `json:"IsDeleteImage,omitempty" name:"IsDeleteImage"`
+
+	// 是否强制删除
+	IsForce *bool `json:"IsForce,omitempty" name:"IsForce"`
+
+	// 操作记录
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+type DeleteGatewayVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 是否删除服务
+	IsDeleteServer *bool `json:"IsDeleteServer,omitempty" name:"IsDeleteServer"`
+
+	// 是否删除镜像
+	IsDeleteImage *bool `json:"IsDeleteImage,omitempty" name:"IsDeleteImage"`
+
+	// 是否强制删除
+	IsForce *bool `json:"IsForce,omitempty" name:"IsForce"`
+
+	// 操作记录
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+func (r *DeleteGatewayVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGatewayVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayId")
+	delete(f, "VersionName")
+	delete(f, "IsDeleteServer")
+	delete(f, "IsDeleteImage")
+	delete(f, "IsForce")
+	delete(f, "OperatorRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGatewayVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGatewayVersionResponseParams struct {
+	// 删除结果
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteGatewayVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGatewayVersionResponseParams `json:"Response"`
+}
+
+func (r *DeleteGatewayVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGatewayVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2716,7 +2877,7 @@ func (r *DescribeAuthDomainsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuthDomainsResponseParams struct {
-	// 安全域名列表列表
+	// 安全域名列表
 	Domains []*AuthDomain `json:"Domains,omitempty" name:"Domains"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2854,6 +3015,248 @@ func (r *DescribeBaasPackageListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBaasPackageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingInfoRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+type DescribeBillingInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
+func (r *DescribeBillingInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingInfoResponseParams struct {
+	// 环境计费信息列表
+	EnvBillingInfoList []*EnvBillingInfoItem `json:"EnvBillingInfoList,omitempty" name:"EnvBillingInfoList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBillingInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillingInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillingInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCbrServerVersionRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+}
+
+type DescribeCbrServerVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+}
+
+func (r *DescribeCbrServerVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCbrServerVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "VersionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCbrServerVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCbrServerVersionResponseParams struct {
+	// 版本名称
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// Dockefile的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DockerfilePath *string `json:"DockerfilePath,omitempty" name:"DockerfilePath"`
+
+	// DockerBuild的目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildDir *string `json:"BuildDir,omitempty" name:"BuildDir"`
+
+	// Cpu大小
+	Cpu *float64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// Mem大小
+	Mem *float64 `json:"Mem,omitempty" name:"Mem"`
+
+	// 副本最小值
+	MinNum *int64 `json:"MinNum,omitempty" name:"MinNum"`
+
+	// 副本最大值
+	MaxNum *int64 `json:"MaxNum,omitempty" name:"MaxNum"`
+
+	// 环境变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvParams *string `json:"EnvParams,omitempty" name:"EnvParams"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 更新时间
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// 版本的IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionIP *string `json:"VersionIP,omitempty" name:"VersionIP"`
+
+	// 版本的端口号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionPort *int64 `json:"VersionPort,omitempty" name:"VersionPort"`
+
+	// 版本状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 枚举（package/repository/image)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UploadType *string `json:"UploadType,omitempty" name:"UploadType"`
+
+	// 服务名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 是否对于外网开放
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 日志采集路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomLogs *string `json:"CustomLogs,omitempty" name:"CustomLogs"`
+
+	// 监听端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerPort *int64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+
+	// 延迟多长时间开始健康检查（单位s）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+
+	// 镜像地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否有Dockerfile：0-default has, 1-has, 2-has not
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasDockerfile *int64 `json:"HasDockerfile,omitempty" name:"HasDockerfile"`
+
+	// 基础镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseImage *string `json:"BaseImage,omitempty" name:"BaseImage"`
+
+	// 容器启动入口命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EntryPoint *string `json:"EntryPoint,omitempty" name:"EntryPoint"`
+
+	// 自动扩缩容策略组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitempty" name:"PolicyDetail"`
+
+	// Tke集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TkeClusterInfo *TkeClusterInfo `json:"TkeClusterInfo,omitempty" name:"TkeClusterInfo"`
+
+	// 版本工作负载类型；deployment/deamonset
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TkeWorkloadType *string `json:"TkeWorkloadType,omitempty" name:"TkeWorkloadType"`
+
+	// 代码包信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageInfo *CbrPackageInfo `json:"PackageInfo,omitempty" name:"PackageInfo"`
+
+	// 仓库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoInfo *CbrRepoInfo `json:"RepoInfo,omitempty" name:"RepoInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCbrServerVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCbrServerVersionResponseParams `json:"Response"`
+}
+
+func (r *DescribeCbrServerVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCbrServerVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5601,6 +6004,231 @@ func (r *DescribeGatewayCurveDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGatewayVersionsRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+}
+
+type DescribeGatewayVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+}
+
+func (r *DescribeGatewayVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatewayVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayId")
+	delete(f, "VersionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewayVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGatewayVersionsResponseParams struct {
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 版本总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 版本信息详情
+	GatewayVersionItems []*GatewayVersionItem `json:"GatewayVersionItems,omitempty" name:"GatewayVersionItems"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGatewayVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGatewayVersionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGatewayVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatewayVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGraphDataRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 指标名: 
+	// StorageRead: 存储读请求次数 
+	// StorageWrite: 存储写请求次数 
+	// StorageCdnOriginFlux: CDN回源流量, 单位字节 
+	// CDNFlux: CDN回源流量, 单位字节 
+	// FunctionInvocation: 云函数调用次数 
+	// FunctionGBs: 云函数资源使用量, 单位Mb*Ms 
+	// FunctionFlux: 云函数流量, 单位千字节(KB) 
+	// FunctionError: 云函数调用错误次数 
+	// FunctionDuration: 云函数运行时间, 单位毫秒 
+	// DbRead: 数据库读请求数 
+	// DbWrite: 数据库写请求数 
+	// DbCostTime10ms: 数据库耗时在10ms~50ms请求数 
+	// DbCostTime50ms: 数据库耗时在50ms~100ms请求数 
+	// DbCostTime100ms: 数据库耗时在100ms以上请求数 
+	// TkeCpuRatio: 容器CPU占用率 
+	// TkeMemRatio: 容器内存占用率 
+	// TkeCpuUsed: 容器CPU使用量 
+	// TkeMemUsed: 容器内存使用量 
+	// TkeInvokeNum: 调用量 
+	// FunctionConcurrentExecutions: 云函数并发执行个数
+	// FunctionIdleProvisioned: 云函数预置并发闲置量 
+	// FunctionConcurrencyMemoryMB: 云函数并发执行内存量 
+	// FunctionThrottle: 云函数受限次数 
+	// FunctionProvisionedConcurrency: 云函数预置并发 
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟).
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)..
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocation, FunctionGBs, FunctionFlux, FunctionError, FunctionDuration)、容器托管（服务名称）, 如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传.如果想查询数据库某个集合相关信息，传入集合名称
+	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
+}
+
+type DescribeGraphDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 指标名: 
+	// StorageRead: 存储读请求次数 
+	// StorageWrite: 存储写请求次数 
+	// StorageCdnOriginFlux: CDN回源流量, 单位字节 
+	// CDNFlux: CDN回源流量, 单位字节 
+	// FunctionInvocation: 云函数调用次数 
+	// FunctionGBs: 云函数资源使用量, 单位Mb*Ms 
+	// FunctionFlux: 云函数流量, 单位千字节(KB) 
+	// FunctionError: 云函数调用错误次数 
+	// FunctionDuration: 云函数运行时间, 单位毫秒 
+	// DbRead: 数据库读请求数 
+	// DbWrite: 数据库写请求数 
+	// DbCostTime10ms: 数据库耗时在10ms~50ms请求数 
+	// DbCostTime50ms: 数据库耗时在50ms~100ms请求数 
+	// DbCostTime100ms: 数据库耗时在100ms以上请求数 
+	// TkeCpuRatio: 容器CPU占用率 
+	// TkeMemRatio: 容器内存占用率 
+	// TkeCpuUsed: 容器CPU使用量 
+	// TkeMemUsed: 容器内存使用量 
+	// TkeInvokeNum: 调用量 
+	// FunctionConcurrentExecutions: 云函数并发执行个数
+	// FunctionIdleProvisioned: 云函数预置并发闲置量 
+	// FunctionConcurrencyMemoryMB: 云函数并发执行内存量 
+	// FunctionThrottle: 云函数受限次数 
+	// FunctionProvisionedConcurrency: 云函数预置并发 
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟).
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)..
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源ID, 目前仅对云函数、容器托管相关的指标有意义。云函数(FunctionInvocation, FunctionGBs, FunctionFlux, FunctionError, FunctionDuration)、容器托管（服务名称）, 如果想查询某个云函数的指标则在ResourceId中传入函数名; 如果只想查询整个namespace的指标, 则留空或不传.如果想查询数据库某个集合相关信息，传入集合名称
+	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
+}
+
+func (r *DescribeGraphDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGraphDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "MetricName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ResourceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGraphDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGraphDataResponseParams struct {
+	// 开始时间, 会根据数据的统计周期进行取整.
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间, 会根据数据的统计周期进行取整.
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标名
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天.
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
+	Values []*float64 `json:"Values,omitempty" name:"Values"`
+
+	// 时间数据, 标识监控数据Values中的点是哪个时间段上报的.
+	Time []*int64 `json:"Time,omitempty" name:"Time"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGraphDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGraphDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeGraphDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGraphDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHostingDomainTaskRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
@@ -6403,6 +7031,172 @@ func (r *DescribeWxCloudBaseRunSubNetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeWxGatewayRoutesRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关名称
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关路由名称
+	GatewayRouteName *string `json:"GatewayRouteName,omitempty" name:"GatewayRouteName"`
+
+	// 网关版本名
+	GatewayVersion *string `json:"GatewayVersion,omitempty" name:"GatewayVersion"`
+}
+
+type DescribeWxGatewayRoutesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关名称
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关路由名称
+	GatewayRouteName *string `json:"GatewayRouteName,omitempty" name:"GatewayRouteName"`
+
+	// 网关版本名
+	GatewayVersion *string `json:"GatewayVersion,omitempty" name:"GatewayVersion"`
+}
+
+func (r *DescribeWxGatewayRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWxGatewayRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayId")
+	delete(f, "GatewayRouteName")
+	delete(f, "GatewayVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWxGatewayRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWxGatewayRoutesResponseParams struct {
+	// 返回的服务个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 返回的服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WxGatewayRouteSet []*WxGatewayRountItem `json:"WxGatewayRouteSet,omitempty" name:"WxGatewayRouteSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeWxGatewayRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWxGatewayRoutesResponseParams `json:"Response"`
+}
+
+func (r *DescribeWxGatewayRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWxGatewayRoutesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWxGatewaysRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称，精确匹配
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeWxGatewaysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名称，精确匹配
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeWxGatewaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWxGatewaysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWxGatewaysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWxGatewaysResponseParams struct {
+	// 返回的服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gateways []*GatewayItem `json:"Gateways,omitempty" name:"Gateways"`
+
+	// 网关总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeWxGatewaysResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWxGatewaysResponseParams `json:"Response"`
+}
+
+func (r *DescribeWxGatewaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWxGatewaysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroyEnvRequestParams struct {
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
@@ -6797,6 +7591,14 @@ type EnvInfo struct {
 	// 套餐类型:空\baas\tcbr
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 架构类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArchitectureType *string `json:"ArchitectureType,omitempty" name:"ArchitectureType"`
+
+	// 回收标志，默认为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Recycle *string `json:"Recycle,omitempty" name:"Recycle"`
 }
 
 // Predefined struct for user
@@ -7126,7 +7928,7 @@ func (r *FreezeCloudBaseRunServersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type FreezeCloudBaseRunServersResponseParams struct {
-	// 批量状态状态
+	// 批量状态
 	// 成功：succ
 	// 失败：fail
 	// 部分：partial（部分成功、部分失败）
@@ -7159,6 +7961,14 @@ func (r *FreezeCloudBaseRunServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FrequencyLimitConfig struct {
+	// 限额对象 "ConnectionsLimit" 或 "QPSLimit"
+	LimitObject *string `json:"LimitObject,omitempty" name:"LimitObject"`
+
+	// 限额配置
+	LimitConfig *string `json:"LimitConfig,omitempty" name:"LimitConfig"`
+}
+
 type FunctionInfo struct {
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
@@ -7166,6 +7976,119 @@ type FunctionInfo struct {
 	// 所属地域。
 	// 当前支持ap-shanghai
 	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+type GatewayItem struct {
+	// 用户uin
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 用户appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 环境id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// Gateway唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// Gateway名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// Gateway类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayType *string `json:"GatewayType,omitempty" name:"GatewayType"`
+
+	// Gateway描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayDesc *string `json:"GatewayDesc,omitempty" name:"GatewayDesc"`
+
+	// 套餐版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+
+	// 套餐唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageId *uint64 `json:"PackageId,omitempty" name:"PackageId"`
+
+	// vpc唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 网关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// l5地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	L5Addr *string `json:"L5Addr,omitempty" name:"L5Addr"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 隔离时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
+	// 到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 变更时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 允许未登录访问
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowUncertified *int64 `json:"AllowUncertified,omitempty" name:"AllowUncertified"`
+
+	// 网关版本限额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionNumLimit *int64 `json:"VersionNumLimit,omitempty" name:"VersionNumLimit"`
+}
+
+type GatewayVersionItem struct {
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 版本流量权重
+	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 创建状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 更新时间
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+
+	// 构建ID
+	BuildId *uint64 `json:"BuildId,omitempty" name:"BuildId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 优先级
+	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 是否默认版本
+	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 网关版本自定义配置
+	CustomConfig *WxGatewayCustomConfig `json:"CustomConfig,omitempty" name:"CustomConfig"`
 }
 
 type HpaPolicy struct {
@@ -7622,7 +8545,7 @@ type ModifyEndUserRequestParams struct {
 	// C端用户端的唯一ID
 	UUId *string `json:"UUId,omitempty" name:"UUId"`
 
-	// 帐号的状态
+	// 账号的状态
 	// <li>ENABLE</li>
 	// <li>DISABLE</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -7637,7 +8560,7 @@ type ModifyEndUserRequest struct {
 	// C端用户端的唯一ID
 	UUId *string `json:"UUId,omitempty" name:"UUId"`
 
-	// 帐号的状态
+	// 账号的状态
 	// <li>ENABLE</li>
 	// <li>DISABLE</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -7744,6 +8667,74 @@ func (r *ModifyEnvResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyEnvResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGatewayVersionTrafficRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关版本流量比例信息
+	VersionsWeight []*GatewayVersionItem `json:"VersionsWeight,omitempty" name:"VersionsWeight"`
+}
+
+type ModifyGatewayVersionTrafficRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 网关id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关版本流量比例信息
+	VersionsWeight []*GatewayVersionItem `json:"VersionsWeight,omitempty" name:"VersionsWeight"`
+}
+
+func (r *ModifyGatewayVersionTrafficRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGatewayVersionTrafficRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "GatewayId")
+	delete(f, "VersionsWeight")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGatewayVersionTrafficRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGatewayVersionTrafficResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyGatewayVersionTrafficResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGatewayVersionTrafficResponseParams `json:"Response"`
+}
+
+func (r *ModifyGatewayVersionTrafficResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGatewayVersionTrafficResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8824,4 +9815,73 @@ func (r *UnfreezeCloudBaseRunServersResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UnfreezeCloudBaseRunServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WxGatewayCustomConfig struct {
+	// 是否开启x-real-ip
+	IsOpenXRealIp *bool `json:"IsOpenXRealIp,omitempty" name:"IsOpenXRealIp"`
+
+	// 封禁配置
+	BanConfig *BanConfig `json:"BanConfig,omitempty" name:"BanConfig"`
+
+	// 获取源ip方式，PPV1(Proxy Protocol V1)、PPV2(Proxy Protocol V2)、TOA(tcp option address)
+	SourceIpType *string `json:"SourceIpType,omitempty" name:"SourceIpType"`
+
+	// 日志信息
+	LogConfig *CustomLogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// 是否开启http1.0
+	IsAcceptHttpOne *bool `json:"IsAcceptHttpOne,omitempty" name:"IsAcceptHttpOne"`
+}
+
+type WxGatewayRountItem struct {
+	// 安全网关路由名称
+	GatewayRouteName *string `json:"GatewayRouteName,omitempty" name:"GatewayRouteName"`
+
+	// 安全网关路由协议
+	GatewayRouteProtocol *string `json:"GatewayRouteProtocol,omitempty" name:"GatewayRouteProtocol"`
+
+	// 安全网关路由地址
+	GatewayRouteAddr *string `json:"GatewayRouteAddr,omitempty" name:"GatewayRouteAddr"`
+
+	// 安全网关路由描述
+	GatewayRouteDesc *string `json:"GatewayRouteDesc,omitempty" name:"GatewayRouteDesc"`
+
+	// 安全网关后端集群id，如果是外网服务，该id与GatewayRountName相同
+	GatewayRouteClusterId *string `json:"GatewayRouteClusterId,omitempty" name:"GatewayRouteClusterId"`
+
+	// 安全网关创建时间
+	GatewayRouteCreateTime *string `json:"GatewayRouteCreateTime,omitempty" name:"GatewayRouteCreateTime"`
+
+	// 安全网关路由限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrequencyLimitConfig []*FrequencyLimitConfig `json:"FrequencyLimitConfig,omitempty" name:"FrequencyLimitConfig"`
+
+	// ip代表绑定后端ip。cbr代表云托管服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayRouteServerType *string `json:"GatewayRouteServerType,omitempty" name:"GatewayRouteServerType"`
+
+	// 服务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayRouteServerName *string `json:"GatewayRouteServerName,omitempty" name:"GatewayRouteServerName"`
+
+	// ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayRewriteHost *string `json:"GatewayRewriteHost,omitempty" name:"GatewayRewriteHost"`
+
+	// 网关版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayVersion *string `json:"GatewayVersion,omitempty" name:"GatewayVersion"`
+
+	// 请求路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayRoutePath *string `json:"GatewayRoutePath,omitempty" name:"GatewayRoutePath"`
+
+	// 请求模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayRouteMethod *string `json:"GatewayRouteMethod,omitempty" name:"GatewayRouteMethod"`
+
+	// 4层端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayRoutePort *int64 `json:"GatewayRoutePort,omitempty" name:"GatewayRoutePort"`
 }

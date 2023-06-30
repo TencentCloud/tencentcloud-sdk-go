@@ -31,7 +31,7 @@ type Acl struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Principal *string `json:"Principal,omitempty" name:"Principal"`
 
-	// 默认为：*，表示任何host都可以访问，当前ckafka不支持host为：*，但是后面开源kafka的产品化会直接支持
+	// 默认\*,表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitempty" name:"Host"`
 
@@ -112,7 +112,7 @@ type AclRuleInfo struct {
 	// 权限类型，(Deny，Allow)
 	PermissionType *string `json:"PermissionType,omitempty" name:"PermissionType"`
 
-	// 默认为：*，表示任何host都可以访问，当前ckafka不支持host为：* 和 ip网段
+	// 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\* 和 ip网段
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入格式需要带【User:】前缀。例如用户A，传入为User:A。

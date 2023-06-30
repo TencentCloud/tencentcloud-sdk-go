@@ -713,6 +713,9 @@ type CreateBatchCancelFlowUrlRequestParams struct {
 
 	// 需要执行撤回的签署流程id数组，最多100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateBatchCancelFlowUrlRequest struct {
@@ -723,6 +726,9 @@ type CreateBatchCancelFlowUrlRequest struct {
 
 	// 需要执行撤回的签署流程id数组，最多100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateBatchCancelFlowUrlRequest) ToJsonString() string {
@@ -739,6 +745,7 @@ func (r *CreateBatchCancelFlowUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "FlowIds")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchCancelFlowUrlRequest has unknown keys!", "")
 	}
@@ -1373,6 +1380,9 @@ type CreateFlowEvidenceReportRequestParams struct {
 
 	// 签署流程编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateFlowEvidenceReportRequest struct {
@@ -1383,6 +1393,9 @@ type CreateFlowEvidenceReportRequest struct {
 
 	// 签署流程编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateFlowEvidenceReportRequest) ToJsonString() string {
@@ -1399,6 +1412,7 @@ func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "FlowId")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowEvidenceReportRequest has unknown keys!", "")
 	}
@@ -1447,6 +1461,9 @@ type CreateFlowRemindsRequestParams struct {
 
 	// 需要执行催办的签署流程id数组，最多100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateFlowRemindsRequest struct {
@@ -1457,6 +1474,9 @@ type CreateFlowRemindsRequest struct {
 
 	// 需要执行催办的签署流程id数组，最多100个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateFlowRemindsRequest) ToJsonString() string {
@@ -1473,6 +1493,7 @@ func (r *CreateFlowRemindsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "FlowIds")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRemindsRequest has unknown keys!", "")
 	}
@@ -3814,6 +3835,9 @@ type DescribeFlowEvidenceReportRequestParams struct {
 
 	// 出证报告编号
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DescribeFlowEvidenceReportRequest struct {
@@ -3824,6 +3848,9 @@ type DescribeFlowEvidenceReportRequest struct {
 
 	// 出证报告编号
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DescribeFlowEvidenceReportRequest) ToJsonString() string {
@@ -3840,6 +3867,7 @@ func (r *DescribeFlowEvidenceReportRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Operator")
 	delete(f, "ReportId")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowEvidenceReportRequest has unknown keys!", "")
 	}

@@ -23,10 +23,10 @@ const (
 	// 语音内容中含有敏感词，请[联系我们](https://cloud.tencent.com/document/product/1128/37720)沟通解决。
 	FAILEDOPERATION_CONTAINSENSITIVEWORD = "FailedOperation.ContainSensitiveWord"
 
-	// 后端请求包解析失败，通常由于没有遵守 API 接口说明规范导致的，请参见[1004错误详解](https://cloud.tencent.com/document/product/1128/38004#Q7)。
+	// 后端请求包解析失败，通常由于没有遵守 API 接口说明规范导致的，请参见[1004错误详解](https://cloud.tencent.com/document/product/1128/38004#Q5)。
 	FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 
-	// 套餐包余量不足，请及时[购买语音套餐包](https://cloud.tencent.com/document/product/1128#buyPackage)。
+	// 套餐包余量不足，请及时[购买语音套餐包](https://cloud.tencent.com/document/product/1128/90745)。
 	FAILEDOPERATION_INSUFFICIENTBALANCEINVOICEPACKAGE = "FailedOperation.InsufficientBalanceInVoicePackage"
 
 	// 无效 JSON，请核查发送的请求是否为标准的 JSON 格式。
@@ -41,10 +41,10 @@ const (
 	// 语音未知错误，请[联系我们](https://cloud.tencent.com/document/product/1128/37720)沟通解决。
 	FAILEDOPERATION_PARAMETERSOTHERERROR = "FailedOperation.ParametersOtherError"
 
-	// 未申请号码或申请的号码资源已过期，请及时支付月功能费用和信息服务费用，具体操作请参见[购买指南](https://cloud.tencent.com/document/product/1128)。
+	// 未申请号码或申请的号码资源已过期，请及时支付月功能费用和信息服务费用，具体操作请参见[购买指南](https://cloud.tencent.com/document/product/1128/90745)。
 	FAILEDOPERATION_PHONENUMBERUNAPPLIEDOREXPIRED = "FailedOperation.PhonenumberUnappliedOrExpired"
 
-	// 模板未审核或请求的内容与审核通过的模板内容不匹配，请参见[1014错误详解](https://cloud.tencent.com/document/product/1128/38004
+	// 模板未审核或请求的内容与审核通过的模板内容不匹配，请参见[1014错误详解](https://cloud.tencent.com/document/product/1128/38004#Q7)
 	FAILEDOPERATION_TEMPLATEINCORRECTORUNAPPROVED = "FailedOperation.TemplateIncorrectOrUnapproved"
 
 	// 访问上游超时网络，请稍后重试。

@@ -2183,6 +2183,9 @@ type DescribeBlockIgnoreListResponseParams struct {
 	// 状态信息，success：查询成功，fail：查询失败
 	ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
 
+	// 安全事件来源下拉框
+	SourceList []*string `json:"SourceList,omitempty" name:"SourceList"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4366,6 +4369,10 @@ type InstanceInfo struct {
 	// 扫描结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Server []*string `json:"Server,omitempty" name:"Server"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionKey *string `json:"RegionKey,omitempty" name:"RegionKey"`
 }
 
 type IocListData struct {

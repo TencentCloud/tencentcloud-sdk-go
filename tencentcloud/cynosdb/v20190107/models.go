@@ -2144,6 +2144,9 @@ type CreateProxyEndPointResponseParams struct {
 	// 异步任务ID
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
+	// 数据库代理组ID
+	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2280,6 +2283,9 @@ type CreateProxyResponseParams struct {
 
 	// 异步任务ID
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据库代理组ID
+	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

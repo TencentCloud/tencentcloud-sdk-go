@@ -487,68 +487,6 @@ func (c *Client) CreateImageAccelerationServiceWithContext(ctx context.Context, 
     return
 }
 
-func NewCreateImageLifecyclePersonalRequest() (request *CreateImageLifecyclePersonalRequest) {
-    request = &CreateImageLifecyclePersonalRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcr", APIVersion, "CreateImageLifecyclePersonal")
-    
-    
-    return
-}
-
-func NewCreateImageLifecyclePersonalResponse() (response *CreateImageLifecyclePersonalResponse) {
-    response = &CreateImageLifecyclePersonalResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateImageLifecyclePersonal
-// 前端与现有逻辑均不再使用，可下线
-//
-// 
-//
-// 用于在个人版中创建清理策略
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
-func (c *Client) CreateImageLifecyclePersonal(request *CreateImageLifecyclePersonalRequest) (response *CreateImageLifecyclePersonalResponse, err error) {
-    return c.CreateImageLifecyclePersonalWithContext(context.Background(), request)
-}
-
-// CreateImageLifecyclePersonal
-// 前端与现有逻辑均不再使用，可下线
-//
-// 
-//
-// 用于在个人版中创建清理策略
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ERRUNAUTHORIZED = "InternalError.ErrUnauthorized"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
-func (c *Client) CreateImageLifecyclePersonalWithContext(ctx context.Context, request *CreateImageLifecyclePersonalRequest) (response *CreateImageLifecyclePersonalResponse, err error) {
-    if request == nil {
-        request = NewCreateImageLifecyclePersonalRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateImageLifecyclePersonal require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateImageLifecyclePersonalResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateImmutableTagRulesRequest() (request *CreateImmutableTagRulesRequest) {
     request = &CreateImmutableTagRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2051,66 +1989,6 @@ func (c *Client) DeleteImageLifecycleGlobalPersonalWithContext(ctx context.Conte
     request.SetContext(ctx)
     
     response = NewDeleteImageLifecycleGlobalPersonalResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDeleteImageLifecyclePersonalRequest() (request *DeleteImageLifecyclePersonalRequest) {
-    request = &DeleteImageLifecyclePersonalRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcr", APIVersion, "DeleteImageLifecyclePersonal")
-    
-    
-    return
-}
-
-func NewDeleteImageLifecyclePersonalResponse() (response *DeleteImageLifecyclePersonalResponse) {
-    response = &DeleteImageLifecyclePersonalResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DeleteImageLifecyclePersonal
-// 前端与后端目前现有逻辑均不再使用，可下线
-//
-// 
-//
-// 用于在个人版镜像仓库中删除仓库Tag自动清理策略
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
-func (c *Client) DeleteImageLifecyclePersonal(request *DeleteImageLifecyclePersonalRequest) (response *DeleteImageLifecyclePersonalResponse, err error) {
-    return c.DeleteImageLifecyclePersonalWithContext(context.Background(), request)
-}
-
-// DeleteImageLifecyclePersonal
-// 前端与后端目前现有逻辑均不再使用，可下线
-//
-// 
-//
-// 用于在个人版镜像仓库中删除仓库Tag自动清理策略
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND_ERRNOREPO = "ResourceNotFound.ErrNoRepo"
-func (c *Client) DeleteImageLifecyclePersonalWithContext(ctx context.Context, request *DeleteImageLifecyclePersonalRequest) (response *DeleteImageLifecyclePersonalResponse, err error) {
-    if request == nil {
-        request = NewDeleteImageLifecyclePersonalRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteImageLifecyclePersonal require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteImageLifecyclePersonalResponse()
     err = c.Send(request, response)
     return
 }

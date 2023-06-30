@@ -409,6 +409,7 @@ func NewCreateCloudBaseRunServerVersionResponse() (response *CreateCloudBaseRunS
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateCloudBaseRunServerVersion(request *CreateCloudBaseRunServerVersionRequest) (response *CreateCloudBaseRunServerVersionResponse, err error) {
     return c.CreateCloudBaseRunServerVersionWithContext(context.Background(), request)
 }
@@ -423,6 +424,7 @@ func (c *Client) CreateCloudBaseRunServerVersion(request *CreateCloudBaseRunServ
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateCloudBaseRunServerVersionWithContext(ctx context.Context, request *CreateCloudBaseRunServerVersionRequest) (response *CreateCloudBaseRunServerVersionResponse, err error) {
     if request == nil {
         request = NewCreateCloudBaseRunServerVersionRequest()
@@ -971,6 +973,64 @@ func (c *Client) DeleteEndUserWithContext(ctx context.Context, request *DeleteEn
     return
 }
 
+func NewDeleteGatewayVersionRequest() (request *DeleteGatewayVersionRequest) {
+    request = &DeleteGatewayVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DeleteGatewayVersion")
+    
+    
+    return
+}
+
+func NewDeleteGatewayVersionResponse() (response *DeleteGatewayVersionResponse) {
+    response = &DeleteGatewayVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteGatewayVersion
+// 删除网关某版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteGatewayVersion(request *DeleteGatewayVersionRequest) (response *DeleteGatewayVersionResponse, err error) {
+    return c.DeleteGatewayVersionWithContext(context.Background(), request)
+}
+
+// DeleteGatewayVersion
+// 删除网关某版本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteGatewayVersionWithContext(ctx context.Context, request *DeleteGatewayVersionRequest) (response *DeleteGatewayVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteGatewayVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGatewayVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGatewayVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteWxGatewayRouteRequest() (request *DeleteWxGatewayRouteRequest) {
     request = &DeleteWxGatewayRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1245,6 +1305,120 @@ func (c *Client) DescribeBaasPackageListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBillingInfoRequest() (request *DescribeBillingInfoRequest) {
+    request = &DescribeBillingInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeBillingInfo")
+    
+    
+    return
+}
+
+func NewDescribeBillingInfoResponse() (response *DescribeBillingInfoResponse) {
+    response = &DescribeBillingInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBillingInfo
+// 获取计费相关信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBillingInfo(request *DescribeBillingInfoRequest) (response *DescribeBillingInfoResponse, err error) {
+    return c.DescribeBillingInfoWithContext(context.Background(), request)
+}
+
+// DescribeBillingInfo
+// 获取计费相关信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBillingInfoWithContext(ctx context.Context, request *DescribeBillingInfoRequest) (response *DescribeBillingInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillingInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCbrServerVersionRequest() (request *DescribeCbrServerVersionRequest) {
+    request = &DescribeCbrServerVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeCbrServerVersion")
+    
+    
+    return
+}
+
+func NewDescribeCbrServerVersionResponse() (response *DescribeCbrServerVersionResponse) {
+    response = &DescribeCbrServerVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCbrServerVersion
+// 查询服务版本的详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCbrServerVersion(request *DescribeCbrServerVersionRequest) (response *DescribeCbrServerVersionResponse, err error) {
+    return c.DescribeCbrServerVersionWithContext(context.Background(), request)
+}
+
+// DescribeCbrServerVersion
+// 查询服务版本的详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
+//  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
+//  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCbrServerVersionWithContext(ctx context.Context, request *DescribeCbrServerVersionRequest) (response *DescribeCbrServerVersionResponse, err error) {
+    if request == nil {
+        request = NewDescribeCbrServerVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCbrServerVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCbrServerVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseBuildServiceRequest() (request *DescribeCloudBaseBuildServiceRequest) {
     request = &DescribeCloudBaseBuildServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1269,6 +1443,7 @@ func NewDescribeCloudBaseBuildServiceResponse() (response *DescribeCloudBaseBuil
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseBuildService(request *DescribeCloudBaseBuildServiceRequest) (response *DescribeCloudBaseBuildServiceResponse, err error) {
     return c.DescribeCloudBaseBuildServiceWithContext(context.Background(), request)
@@ -1280,6 +1455,7 @@ func (c *Client) DescribeCloudBaseBuildService(request *DescribeCloudBaseBuildSe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseBuildServiceWithContext(ctx context.Context, request *DescribeCloudBaseBuildServiceRequest) (response *DescribeCloudBaseBuildServiceResponse, err error) {
     if request == nil {
@@ -2907,6 +3083,126 @@ func (c *Client) DescribeGatewayCurveDataWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeGatewayVersionsRequest() (request *DescribeGatewayVersionsRequest) {
+    request = &DescribeGatewayVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeGatewayVersions")
+    
+    
+    return
+}
+
+func NewDescribeGatewayVersionsResponse() (response *DescribeGatewayVersionsResponse) {
+    response = &DescribeGatewayVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGatewayVersions
+// 查询网关版本信息
+//
+// 暂不鉴权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeGatewayVersions(request *DescribeGatewayVersionsRequest) (response *DescribeGatewayVersionsResponse, err error) {
+    return c.DescribeGatewayVersionsWithContext(context.Background(), request)
+}
+
+// DescribeGatewayVersions
+// 查询网关版本信息
+//
+// 暂不鉴权
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeGatewayVersionsWithContext(ctx context.Context, request *DescribeGatewayVersionsRequest) (response *DescribeGatewayVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatewayVersionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatewayVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatewayVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGraphDataRequest() (request *DescribeGraphDataRequest) {
+    request = &DescribeGraphDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeGraphData")
+    
+    
+    return
+}
+
+func NewDescribeGraphDataResponse() (response *DescribeGraphDataResponse) {
+    response = &DescribeGraphDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGraphData
+// 根据用户传入的指标, 拉取一段时间内的监控数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeGraphData(request *DescribeGraphDataRequest) (response *DescribeGraphDataResponse, err error) {
+    return c.DescribeGraphDataWithContext(context.Background(), request)
+}
+
+// DescribeGraphData
+// 根据用户传入的指标, 拉取一段时间内的监控数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeGraphDataWithContext(ctx context.Context, request *DescribeGraphDataRequest) (response *DescribeGraphDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeGraphDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGraphData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGraphDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHostingDomainTaskRequest() (request *DescribeHostingDomainTaskRequest) {
     request = &DescribeHostingDomainTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3569,6 +3865,108 @@ func (c *Client) DescribeWxCloudBaseRunSubNetsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeWxCloudBaseRunSubNetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWxGatewayRoutesRequest() (request *DescribeWxGatewayRoutesRequest) {
+    request = &DescribeWxGatewayRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeWxGatewayRoutes")
+    
+    
+    return
+}
+
+func NewDescribeWxGatewayRoutesResponse() (response *DescribeWxGatewayRoutesResponse) {
+    response = &DescribeWxGatewayRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWxGatewayRoutes
+// 查看安全网关路由
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWxGatewayRoutes(request *DescribeWxGatewayRoutesRequest) (response *DescribeWxGatewayRoutesResponse, err error) {
+    return c.DescribeWxGatewayRoutesWithContext(context.Background(), request)
+}
+
+// DescribeWxGatewayRoutes
+// 查看安全网关路由
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWxGatewayRoutesWithContext(ctx context.Context, request *DescribeWxGatewayRoutesRequest) (response *DescribeWxGatewayRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWxGatewayRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWxGatewayRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWxGatewayRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWxGatewaysRequest() (request *DescribeWxGatewaysRequest) {
+    request = &DescribeWxGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeWxGateways")
+    
+    
+    return
+}
+
+func NewDescribeWxGatewaysResponse() (response *DescribeWxGatewaysResponse) {
+    response = &DescribeWxGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeWxGateways
+// 查看安全网关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWxGateways(request *DescribeWxGatewaysRequest) (response *DescribeWxGatewaysResponse, err error) {
+    return c.DescribeWxGatewaysWithContext(context.Background(), request)
+}
+
+// DescribeWxGateways
+// 查看安全网关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeWxGatewaysWithContext(ctx context.Context, request *DescribeWxGatewaysRequest) (response *DescribeWxGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeWxGatewaysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWxGateways require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWxGatewaysResponse()
     err = c.Send(request, response)
     return
 }
@@ -4255,6 +4653,60 @@ func (c *Client) ModifyEnvWithContext(ctx context.Context, request *ModifyEnvReq
     return
 }
 
+func NewModifyGatewayVersionTrafficRequest() (request *ModifyGatewayVersionTrafficRequest) {
+    request = &ModifyGatewayVersionTrafficRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyGatewayVersionTraffic")
+    
+    
+    return
+}
+
+func NewModifyGatewayVersionTrafficResponse() (response *ModifyGatewayVersionTrafficResponse) {
+    response = &ModifyGatewayVersionTrafficResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyGatewayVersionTraffic
+// 设置网关版本的流量比例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyGatewayVersionTraffic(request *ModifyGatewayVersionTrafficRequest) (response *ModifyGatewayVersionTrafficResponse, err error) {
+    return c.ModifyGatewayVersionTrafficWithContext(context.Background(), request)
+}
+
+// ModifyGatewayVersionTraffic
+// 设置网关版本的流量比例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyGatewayVersionTrafficWithContext(ctx context.Context, request *ModifyGatewayVersionTrafficRequest) (response *ModifyGatewayVersionTrafficResponse, err error) {
+    if request == nil {
+        request = NewModifyGatewayVersionTrafficRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGatewayVersionTraffic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGatewayVersionTrafficResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReinstateEnvRequest() (request *ReinstateEnvRequest) {
     request = &ReinstateEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4440,7 +4892,7 @@ func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
 }
 
 // SearchClsLog
-// 搜索CLS日志，TCB角色秘钥访问
+// 搜索CLS日志，TCB角色密钥访问
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4452,7 +4904,7 @@ func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchCls
 }
 
 // SearchClsLog
-// 搜索CLS日志，TCB角色秘钥访问
+// 搜索CLS日志，TCB角色密钥访问
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

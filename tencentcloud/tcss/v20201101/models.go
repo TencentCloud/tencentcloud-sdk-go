@@ -2695,6 +2695,10 @@ type ComplianceHostDetailInfo struct {
 	// 主机上的K8S的版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	K8SVersion *string `json:"K8SVersion,omitempty" name:"K8SVersion"`
+
+	// 主机上Containerd版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerdVersion *string `json:"ContainerdVersion,omitempty" name:"ContainerdVersion"`
 }
 
 type ComplianceImageDetailInfo struct {

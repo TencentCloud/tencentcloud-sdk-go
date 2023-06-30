@@ -14001,7 +14001,11 @@ type InstanceUpgradeProgressItem struct {
 }
 
 type KMSConfiguration struct {
+	// kms id
+	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
 
+	// kms 地域
+	KmsRegion *string `json:"KmsRegion,omitempty" name:"KmsRegion"`
 }
 
 type KubeJarvisStateCatalogue struct {

@@ -1767,7 +1767,10 @@ func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNSUPPORTEDOPERATION_APILISTNOTEMPTY = "UnsupportedOperation.ApiListNotEmpty"
+//  UNSUPPORTEDOPERATION_EXISTINGONLINEENVIRONMENT = "UnsupportedOperation.ExistingOnlineEnvironment"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_TAGSNOTEMPTY = "UnsupportedOperation.TagsNotEmpty"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETESERVICE = "UnsupportedOperation.UnsupportedDeleteService"
 func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
     return c.DeleteServiceWithContext(context.Background(), request)
@@ -1783,7 +1786,10 @@ func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteS
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNSUPPORTEDOPERATION_APILISTNOTEMPTY = "UnsupportedOperation.ApiListNotEmpty"
+//  UNSUPPORTEDOPERATION_EXISTINGONLINEENVIRONMENT = "UnsupportedOperation.ExistingOnlineEnvironment"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_TAGSNOTEMPTY = "UnsupportedOperation.TagsNotEmpty"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDDELETESERVICE = "UnsupportedOperation.UnsupportedDeleteService"
 func (c *Client) DeleteServiceWithContext(ctx context.Context, request *DeleteServiceRequest) (response *DeleteServiceResponse, err error) {
     if request == nil {
@@ -5331,6 +5337,7 @@ func NewModifyServiceResponse() (response *ModifyServiceResponse) {
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_MODIFYNETTYPE = "UnsupportedOperation.ModifyNetType"
 //  UNSUPPORTEDOPERATION_REDUCENETTYPES = "UnsupportedOperation.ReduceNetTypes"
+//  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
 func (c *Client) ModifyService(request *ModifyServiceRequest) (response *ModifyServiceResponse, err error) {
     return c.ModifyServiceWithContext(context.Background(), request)
 }
@@ -5347,6 +5354,7 @@ func (c *Client) ModifyService(request *ModifyServiceRequest) (response *ModifyS
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_MODIFYNETTYPE = "UnsupportedOperation.ModifyNetType"
 //  UNSUPPORTEDOPERATION_REDUCENETTYPES = "UnsupportedOperation.ReduceNetTypes"
+//  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
 func (c *Client) ModifyServiceWithContext(ctx context.Context, request *ModifyServiceRequest) (response *ModifyServiceResponse, err error) {
     if request == nil {
         request = NewModifyServiceRequest()
@@ -5936,6 +5944,7 @@ func NewUnBindSubDomainResponse() (response *UnBindSubDomainResponse) {
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDSTATUS = "UnsupportedOperation.InvalidStatus"
+//  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
 func (c *Client) UnBindSubDomain(request *UnBindSubDomainRequest) (response *UnBindSubDomainResponse, err error) {
     return c.UnBindSubDomainWithContext(context.Background(), request)
 }
@@ -5955,6 +5964,7 @@ func (c *Client) UnBindSubDomain(request *UnBindSubDomainRequest) (response *UnB
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_INVALIDSTATUS = "UnsupportedOperation.InvalidStatus"
+//  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
 func (c *Client) UnBindSubDomainWithContext(ctx context.Context, request *UnBindSubDomainRequest) (response *UnBindSubDomainResponse, err error) {
     if request == nil {
         request = NewUnBindSubDomainRequest()

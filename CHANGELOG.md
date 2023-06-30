@@ -1,3 +1,294 @@
+# Release v1.0.691
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 51 次发布
+
+发布时间：2023-06-30 01:11:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateExtension](https://cloud.tencent.com/document/api/679/82130)
+
+	* 新增入参：SkillGroupIds, Relation
+
+
+修改数据结构：
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：VoicemailAsrURL
+
+	* <font color="#dd0000">**修改成员**：</font>Caller, Callee, Time, Direction, Duration, RecordURL, SeatUser, EndStatus, SkillGroup, CallerLocation, IVRDuration, RingTimestamp, AcceptTimestamp, EndedTimestamp, IVRKeyPressed, HungUpSide, ServeParticipants, SkillGroupId, EndStatusString, StartTimestamp, QueuedTimestamp, PostIVRKeyPressed, QueuedSkillGroupId, SessionId, ProtectedCaller, ProtectedCallee, Uui, IVRKeyPressedEx, AsrUrl, CustomRecordURL, Remark, QueuedSkillGroupName, VoicemailRecordURL
+
+
+
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 12 次发布
+
+发布时间：2023-06-30 01:12:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackUpSchedule](https://cloud.tencent.com/document/api/1299/86155)
+
+	* 新增出参：ErrorMsg
+
+* [DescribeInstancesNew](https://cloud.tencent.com/document/api/1299/93328)
+
+	* 新增入参：IsSimple
+
+
+修改数据结构：
+
+* [BackupTableContent](https://cloud.tencent.com/document/api/1299/83429#BackupTableContent)
+
+	* 新增成员：ZooPath, Rip
+
+* [ScheduleStrategy](https://cloud.tencent.com/document/api/1299/83429#ScheduleStrategy)
+
+	* 新增成员：NextBackupTime
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 39 次发布
+
+发布时间：2023-06-30 01:13:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBlockIgnoreList](https://cloud.tencent.com/document/api/1132/86691)
+
+	* 新增出参：SourceList
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1132/49071#InstanceInfo)
+
+	* 新增成员：RegionKey
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 60 次发布
+
+发布时间：2023-06-29 14:25:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProxyEndPoint](https://cloud.tencent.com/document/api/1003/94133)
+
+	* 新增出参：ProxyGroupId
+
+
+### 第 59 次发布
+
+发布时间：2023-06-29 11:34:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProxy](https://cloud.tencent.com/document/api/1003/94134)
+
+	* 新增出参：ProxyGroupId
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 82 次发布
+
+发布时间：2023-06-30 01:25:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1323/78262)
+
+	* 新增入参：Agent
+
+* [CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)
+
+	* 新增入参：Agent
+
+* [CreateFlowReminds](https://cloud.tencent.com/document/api/1323/86002)
+
+	* 新增入参：Agent
+
+* [DescribeFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/83441)
+
+	* 新增入参：Agent
+
+
+
+
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 20 次发布
+
+发布时间：2023-06-30 01:38:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateOrganizationMember](https://cloud.tencent.com/document/api/850/94392)
+
+
+
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 56 次发布
+
+发布时间：2023-06-30 01:40:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+
+	* 新增入参：AutoDeployClsTopicIndex, AutoCreateClsTopic
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 96 次发布
+
+发布时间：2023-06-29 18:45:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteGatewayVersion](https://cloud.tencent.com/document/api/876/94391)
+* [DescribeBillingInfo](https://cloud.tencent.com/document/api/876/94390)
+* [DescribeCbrServerVersion](https://cloud.tencent.com/document/api/876/94389)
+* [DescribeGatewayVersions](https://cloud.tencent.com/document/api/876/94388)
+* [DescribeGraphData](https://cloud.tencent.com/document/api/876/59512)
+* [DescribeWxGatewayRoutes](https://cloud.tencent.com/document/api/876/94387)
+* [DescribeWxGateways](https://cloud.tencent.com/document/api/876/94386)
+* [ModifyGatewayVersionTraffic](https://cloud.tencent.com/document/api/876/94385)
+
+新增数据结构：
+
+* [BanConfig](https://cloud.tencent.com/document/api/876/34822#BanConfig)
+* [CbrPackageInfo](https://cloud.tencent.com/document/api/876/34822#CbrPackageInfo)
+* [CbrRepoInfo](https://cloud.tencent.com/document/api/876/34822#CbrRepoInfo)
+* [CustomLogConfig](https://cloud.tencent.com/document/api/876/34822#CustomLogConfig)
+* [FrequencyLimitConfig](https://cloud.tencent.com/document/api/876/34822#FrequencyLimitConfig)
+* [GatewayItem](https://cloud.tencent.com/document/api/876/34822#GatewayItem)
+* [GatewayVersionItem](https://cloud.tencent.com/document/api/876/34822#GatewayVersionItem)
+* [WxGatewayCustomConfig](https://cloud.tencent.com/document/api/876/34822#WxGatewayCustomConfig)
+* [WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem)
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
+
+	* 新增成员：ArchitectureType, Recycle
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 57 次发布
+
+发布时间：2023-06-30 01:44:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateImageLifecyclePersonal
+* DeleteImageLifecyclePersonal
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 47 次发布
+
+发布时间：2023-06-30 01:45:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ComplianceHostDetailInfo](https://cloud.tencent.com/document/api/1285/65614#ComplianceHostDetailInfo)
+
+	* 新增成员：ContainerdVersion
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 155 次发布
+
+发布时间：2023-06-30 01:49:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KMSConfiguration](https://cloud.tencent.com/document/api/457/31866#KMSConfiguration)
+
+	* 新增成员：KeyId, KmsRegion
+
+
+
+
 # Release v1.0.690
 
 ## API 网关(apigateway) 版本：2018-08-08
