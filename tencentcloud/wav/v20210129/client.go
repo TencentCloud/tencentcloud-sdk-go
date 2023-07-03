@@ -379,6 +379,70 @@ func (c *Client) QueryActivityLiveCodeListWithContext(ctx context.Context, reque
     return
 }
 
+func NewQueryArrivalListRequest() (request *QueryArrivalListRequest) {
+    request = &QueryArrivalListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wav", APIVersion, "QueryArrivalList")
+    
+    
+    return
+}
+
+func NewQueryArrivalListResponse() (response *QueryArrivalListResponse) {
+    response = &QueryArrivalListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryArrivalList
+// 查询指定时间范围内发生过到店的潜客到店信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) QueryArrivalList(request *QueryArrivalListRequest) (response *QueryArrivalListResponse, err error) {
+    return c.QueryArrivalListWithContext(context.Background(), request)
+}
+
+// QueryArrivalList
+// 查询指定时间范围内发生过到店的潜客到店信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) QueryArrivalListWithContext(ctx context.Context, request *QueryArrivalListRequest) (response *QueryArrivalListResponse, err error) {
+    if request == nil {
+        request = NewQueryArrivalListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryArrivalList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryArrivalListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryChannelCodeListRequest() (request *QueryChannelCodeListRequest) {
     request = &QueryChannelCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1077,6 +1141,70 @@ func (c *Client) QueryExternalUserMappingInfoWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewQueryExternalUserMappingInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFollowListRequest() (request *QueryFollowListRequest) {
+    request = &QueryFollowListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wav", APIVersion, "QueryFollowList")
+    
+    
+    return
+}
+
+func NewQueryFollowListResponse() (response *QueryFollowListResponse) {
+    response = &QueryFollowListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFollowList
+// 查询指定时间范围内发生过跟进的潜客信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) QueryFollowList(request *QueryFollowListRequest) (response *QueryFollowListResponse, err error) {
+    return c.QueryFollowListWithContext(context.Background(), request)
+}
+
+// QueryFollowList
+// 查询指定时间范围内发生过跟进的潜客信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) QueryFollowListWithContext(ctx context.Context, request *QueryFollowListRequest) (response *QueryFollowListResponse, err error) {
+    if request == nil {
+        request = NewQueryFollowListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFollowList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFollowListResponse()
     err = c.Send(request, response)
     return
 }

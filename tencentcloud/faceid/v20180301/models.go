@@ -243,7 +243,7 @@ type BankCardVerificationRequestParams struct {
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
 
 	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
-	// 目前默认：0 身份证，其他证件类型需求可以添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行确认。
+	// 目前默认：0 身份证，其他证件类型暂不支持。
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
 
 	// 敏感数据加密信息。对传入信息（姓名、身份证号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。
@@ -263,7 +263,7 @@ type BankCardVerificationRequest struct {
 	BankCard *string `json:"BankCard,omitempty" name:"BankCard"`
 
 	// 证件类型，请确认该证件为开户时使用的证件类型，未用于开户的证件信息不支持验证。
-	// 目前默认：0 身份证，其他证件类型需求可以添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行确认。
+	// 目前默认：0 身份证，其他证件类型暂不支持。
 	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
 
 	// 敏感数据加密信息。对传入信息（姓名、身份证号、银行卡号）有加密需求的用户可使用此参数，详情请点击左侧链接。

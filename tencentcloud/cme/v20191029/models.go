@@ -571,7 +571,7 @@ type CreateProjectRequestParams struct {
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
 	// <li>RECORD_REPLAY：录制回放。</li>
-	// <li>MEDIA_CAST：点播转直播。</li>
+	// <li>MEDIA_CAST：媒体转推。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 项目模式，一个项目可以有多种模式并相互切换。
@@ -631,7 +631,7 @@ type CreateProjectRequest struct {
 	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
 	// <li>STREAM_CONNECT：云转推。</li>
 	// <li>RECORD_REPLAY：录制回放。</li>
-	// <li>MEDIA_CAST：点播转直播。</li>
+	// <li>MEDIA_CAST：媒体转推。</li>
 	Category *string `json:"Category,omitempty" name:"Category"`
 
 	// 项目模式，一个项目可以有多种模式并相互切换。
@@ -4491,7 +4491,7 @@ type MediaCastSourceInfo struct {
 	// 多媒体创作引擎的媒体 ID。当 Type = CME  时必填。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
-	// 文件播放的的起始位置，单位：秒。默认为0，从文件头开始播放。当 Type = CME  或者 VOD 时有效。
+	// 文件播放的起始位置，单位：秒。默认为0，从文件头开始播放。当 Type = CME  或者 VOD 时有效。
 	Offset *float64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 播放时长，单位：秒。默认播放整个文件。当 Type = CME  或者 VOD 时有效。

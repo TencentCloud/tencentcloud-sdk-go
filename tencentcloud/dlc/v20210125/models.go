@@ -1361,7 +1361,9 @@ type CreateDataEngineRequestParams struct {
 	// 最大资源
 	MaxClusters *int64 `json:"MaxClusters,omitempty" name:"MaxClusters"`
 
-	// 是否为默虚拟集群
+	// 是否为默认虚拟集群
+	//
+	// Deprecated: DefaultDataEngine is deprecated.
 	DefaultDataEngine *bool `json:"DefaultDataEngine,omitempty" name:"DefaultDataEngine"`
 
 	// VPC网段
@@ -1418,7 +1420,7 @@ type CreateDataEngineRequestParams struct {
 	// 集群镜像版本名字。如SuperSQL-P 1.1;SuperSQL-S 3.2等,不传，默认创建最新镜像版本的集群
 	ImageVersionName *string `json:"ImageVersionName,omitempty" name:"ImageVersionName"`
 
-	// 主集群名称
+	// 主集群名称，创建容灾集群时指定
 	MainClusterName *string `json:"MainClusterName,omitempty" name:"MainClusterName"`
 
 	// spark jar 包年包月集群是否开启弹性
@@ -1455,7 +1457,7 @@ type CreateDataEngineRequest struct {
 	// 最大资源
 	MaxClusters *int64 `json:"MaxClusters,omitempty" name:"MaxClusters"`
 
-	// 是否为默虚拟集群
+	// 是否为默认虚拟集群
 	DefaultDataEngine *bool `json:"DefaultDataEngine,omitempty" name:"DefaultDataEngine"`
 
 	// VPC网段
@@ -1512,7 +1514,7 @@ type CreateDataEngineRequest struct {
 	// 集群镜像版本名字。如SuperSQL-P 1.1;SuperSQL-S 3.2等,不传，默认创建最新镜像版本的集群
 	ImageVersionName *string `json:"ImageVersionName,omitempty" name:"ImageVersionName"`
 
-	// 主集群名称
+	// 主集群名称，创建容灾集群时指定
 	MainClusterName *string `json:"MainClusterName,omitempty" name:"MainClusterName"`
 
 	// spark jar 包年包月集群是否开启弹性

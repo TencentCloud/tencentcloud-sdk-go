@@ -128,6 +128,36 @@ type ActivityJoinDetail struct {
 	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type ArrivalInfo struct {
+	// 线索id
+	ClueId *uint64 `json:"ClueId,omitempty" name:"ClueId"`
+
+	// 客户id
+	CustomerId *uint64 `json:"CustomerId,omitempty" name:"CustomerId"`
+
+	// 客户姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 客户的手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 是否首次到店，0否，1是
+	FirstArrival *int64 `json:"FirstArrival,omitempty" name:"FirstArrival"`
+
+	// 到店时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArrivalTime *uint64 `json:"ArrivalTime,omitempty" name:"ArrivalTime"`
+
+	// 发生事件
+	EventType *int64 `json:"EventType,omitempty" name:"EventType"`
+
+	// 发生事件名称
+	EventTypeName *string `json:"EventTypeName,omitempty" name:"EventTypeName"`
+
+	// 跟进记录
+	FollowRecord *string `json:"FollowRecord,omitempty" name:"FollowRecord"`
+}
+
 type ChannelCodeInnerDetail struct {
 	// 渠道活码id
 	Id *int64 `json:"Id,omitempty" name:"Id"`
@@ -242,7 +272,7 @@ type ClueInfoDetail struct {
 	// 线索id，线索唯一识别编码
 	ClueId *string `json:"ClueId,omitempty" name:"ClueId"`
 
-	// 接待客户经销商顾问所属组织id,多个组织使用逗号分割
+	// 接待客户经销商顾问所属经销商code
 	DealerId *string `json:"DealerId,omitempty" name:"DealerId"`
 
 	// 线索获取时间，用户添加企业微信时间，单位是秒
@@ -323,6 +353,83 @@ type ClueInfoDetail struct {
 
 	// 获取线索的时间戳，单位：秒
 	CreateAtTime *uint64 `json:"CreateAtTime,omitempty" name:"CreateAtTime"`
+
+	// 客户微信id
+	WxId *string `json:"WxId,omitempty" name:"WxId"`
+
+	// 意向车型对应品牌code
+	BrandCode *string `json:"BrandCode,omitempty" name:"BrandCode"`
+
+	// 建档时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BuildTime *uint64 `json:"BuildTime,omitempty" name:"BuildTime"`
+
+	// 下订时间，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderTime *uint64 `json:"OrderTime,omitempty" name:"OrderTime"`
+
+	// 到店时间，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArrivalTime *uint64 `json:"ArrivalTime,omitempty" name:"ArrivalTime"`
+
+	// 交车时间，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeliveryTime *uint64 `json:"DeliveryTime,omitempty" name:"DeliveryTime"`
+
+	// 上次跟进时间，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FollowTime *uint64 `json:"FollowTime,omitempty" name:"FollowTime"`
+
+	// 下次跟进时间，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextFollowTime *uint64 `json:"NextFollowTime,omitempty" name:"NextFollowTime"`
+
+	// 线索所属组织id
+	OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
+
+	// 线索所属组织名称
+	OrgName *string `json:"OrgName,omitempty" name:"OrgName"`
+
+	// 介绍人姓名
+	Introducer *string `json:"Introducer,omitempty" name:"Introducer"`
+
+	// 介绍人电话
+	IntroducerPhone *string `json:"IntroducerPhone,omitempty" name:"IntroducerPhone"`
+
+	// 是否关联微信 1 是 0 否
+	IsBindWx *int64 `json:"IsBindWx,omitempty" name:"IsBindWx"`
+
+	// 是否经过合并 1 是 0 否
+	IsMerge *int64 `json:"IsMerge,omitempty" name:"IsMerge"`
+
+	// 是否无效  1 是 0 否
+	IsInvalid *int64 `json:"IsInvalid,omitempty" name:"IsInvalid"`
+
+	// 无效类型
+	InvalidType *string `json:"InvalidType,omitempty" name:"InvalidType"`
+
+	// 无效类型枚举：
+	// 无意向购买、空错号、未接听、其他
+	InvalidTypeName *string `json:"InvalidTypeName,omitempty" name:"InvalidTypeName"`
+
+	// 由顾问手动输入的无效原因文字
+	InvalidRemark *string `json:"InvalidRemark,omitempty" name:"InvalidRemark"`
+
+	// 无效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvalidTime *uint64 `json:"InvalidTime,omitempty" name:"InvalidTime"`
+
+	// 经销商名称
+	DealerName *string `json:"DealerName,omitempty" name:"DealerName"`
+
+	// 经销商下级门店ID
+	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+
+	// 经销商下级门店名称
+	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+
+	// 职位
+	Position *string `json:"Position,omitempty" name:"Position"`
 }
 
 type CorpUserInfo struct {
@@ -363,6 +470,10 @@ type CorpUserInfo struct {
 
 	// 激活状态: 0=已激活，1=已禁用，-1=退出企业"
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 工号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobNumber *string `json:"JobNumber,omitempty" name:"JobNumber"`
 }
 
 // Predefined struct for user
@@ -1031,6 +1142,50 @@ type ExternalUserMappingInfo struct {
 	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
 }
 
+type FollowInfo struct {
+	// 线索id
+	ClueId *uint64 `json:"ClueId,omitempty" name:"ClueId"`
+
+	// 客户档案id
+	CustomerId *uint64 `json:"CustomerId,omitempty" name:"CustomerId"`
+
+	// 客户姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 客户的手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 是否逾期
+	IsOverdue *int64 `json:"IsOverdue,omitempty" name:"IsOverdue"`
+
+	// 逾期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverdueTime *uint64 `json:"OverdueTime,omitempty" name:"OverdueTime"`
+
+	// 发生事件
+	EventType *int64 `json:"EventType,omitempty" name:"EventType"`
+
+	// 发生事件名称
+	EventTypeName *string `json:"EventTypeName,omitempty" name:"EventTypeName"`
+
+	// 跟进方式
+	FollowWayType *string `json:"FollowWayType,omitempty" name:"FollowWayType"`
+
+	// 跟进方式名称
+	FollowWayName *string `json:"FollowWayName,omitempty" name:"FollowWayName"`
+
+	// 本次跟进时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FollowTime *uint64 `json:"FollowTime,omitempty" name:"FollowTime"`
+
+	// 下次跟进时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextFollowTime *uint64 `json:"NextFollowTime,omitempty" name:"NextFollowTime"`
+
+	// 跟进记录
+	FollowRecord *string `json:"FollowRecord,omitempty" name:"FollowRecord"`
+}
+
 type FollowUser struct {
 	// 添加了此外部联系人的企业成员userid
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
@@ -1408,6 +1563,93 @@ func (r *QueryActivityLiveCodeListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryActivityLiveCodeListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryArrivalListRequestParams struct {
+	// 分页，预期请求的数据量，取值范围 1 ~ 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+}
+
+type QueryArrivalListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页，预期请求的数据量，取值范围 1 ~ 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+}
+
+func (r *QueryArrivalListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryArrivalListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Cursor")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryArrivalListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryArrivalListResponseParams struct {
+	// 分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 潜客客户存档信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*ArrivalInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 是否还有更多数据。0-否；1-是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryArrivalListResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryArrivalListResponseParams `json:"Response"`
+}
+
+func (r *QueryArrivalListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryArrivalListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2341,6 +2583,93 @@ func (r *QueryExternalUserMappingInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryExternalUserMappingInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFollowListRequestParams struct {
+	// 分页，预期请求的数据量，取值范围 1 ~ 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+}
+
+type QueryFollowListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页，预期请求的数据量，取值范围 1 ~ 1000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+}
+
+func (r *QueryFollowListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFollowListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Cursor")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFollowListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFollowListResponseParams struct {
+	// 分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 潜客客户存档信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*FollowInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 是否还有更多数据。0-否；1-是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryFollowListResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryFollowListResponseParams `json:"Response"`
+}
+
+func (r *QueryFollowListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFollowListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

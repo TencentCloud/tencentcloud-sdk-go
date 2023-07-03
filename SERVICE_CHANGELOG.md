@@ -1,72 +1,31 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 51 次发布
+### 第 44 次发布
 
-发布时间：2023-06-30 01:11:07
+发布时间：2023-07-03 01:04:02
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [CreateExtension](https://cloud.tencent.com/document/api/679/82130)
-
-	* 新增入参：SkillGroupIds, Relation
-
 
 修改数据结构：
 
-* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+* [BillDetailComponent](https://cloud.tencent.com/document/api/555/19183#BillDetailComponent)
 
-	* 新增成员：VoicemailAsrURL
+	* 新增成员：RealTotalMeasure, DeductedMeasure
 
-	* <font color="#dd0000">**修改成员**：</font>Caller, Callee, Time, Direction, Duration, RecordURL, SeatUser, EndStatus, SkillGroup, CallerLocation, IVRDuration, RingTimestamp, AcceptTimestamp, EndedTimestamp, IVRKeyPressed, HungUpSide, ServeParticipants, SkillGroupId, EndStatusString, StartTimestamp, QueuedTimestamp, PostIVRKeyPressed, QueuedSkillGroupId, SessionId, ProtectedCaller, ProtectedCallee, Uui, IVRKeyPressedEx, AsrUrl, CustomRecordURL, Remark, QueuedSkillGroupName, VoicemailRecordURL
-
-
-
-
-## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
-
-### 第 12 次发布
-
-发布时间：2023-06-30 01:12:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBackUpSchedule](https://cloud.tencent.com/document/api/1299/86155)
-
-	* 新增出参：ErrorMsg
-
-* [DescribeInstancesNew](https://cloud.tencent.com/document/api/1299/93328)
-
-	* 新增入参：IsSimple
-
-
-修改数据结构：
-
-* [BackupTableContent](https://cloud.tencent.com/document/api/1299/83429#BackupTableContent)
-
-	* 新增成员：ZooPath, Rip
-
-* [ScheduleStrategy](https://cloud.tencent.com/document/api/1299/83429#ScheduleStrategy)
-
-	* 新增成员：NextBackupTime
+	* <font color="#dd0000">**修改成员**：</font>SpecifiedPrice, TransferPayAmount, SPDeduction
 
 
 
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
-### 第 39 次发布
+### 第 53 次发布
 
-发布时间：2023-06-30 01:13:38
+发布时间：2023-07-03 01:18:43
 
 本次发布包含了以下内容：
 
@@ -74,110 +33,36 @@
 
 修改接口：
 
-* [DescribeBlockIgnoreList](https://cloud.tencent.com/document/api/1132/86691)
-
-	* 新增出参：SourceList
-
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/1132/49071#InstanceInfo)
-
-	* 新增成员：RegionKey
+* [CreateDataEngine](https://cloud.tencent.com/document/api/1342/87875)
 
 
 
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+## DNSPod(dnspod) 版本：2021-03-23
 
-### 第 60 次发布
+### 第 20 次发布
 
-发布时间：2023-06-29 14:25:48
+发布时间：2023-07-03 01:19:17
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateProxyEndPoint](https://cloud.tencent.com/document/api/1003/94133)
+* [DeleteRecordBatch](https://cloud.tencent.com/document/api/1427/94422)
 
-	* 新增出参：ProxyGroupId
+新增数据结构：
 
-
-### 第 59 次发布
-
-发布时间：2023-06-29 11:34:47
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateProxy](https://cloud.tencent.com/document/api/1003/94134)
-
-	* 新增出参：ProxyGroupId
-
+* [DeleteRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#DeleteRecordBatchDetail)
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 82 次发布
+### 第 83 次发布
 
-发布时间：2023-06-30 01:25:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1323/78262)
-
-	* 新增入参：Agent
-
-* [CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)
-
-	* 新增入参：Agent
-
-* [CreateFlowReminds](https://cloud.tencent.com/document/api/1323/86002)
-
-	* 新增入参：Agent
-
-* [DescribeFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/83441)
-
-	* 新增入参：Agent
-
-
-
-
-## 集团账号管理(organization) 版本：2021-03-31
-
-### 第 20 次发布
-
-发布时间：2023-06-30 01:38:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [UpdateOrganizationMember](https://cloud.tencent.com/document/api/850/94392)
-
-
-
-## 集团账号管理(organization) 版本：2018-12-25
-
-
-
-## 云函数(scf) 版本：2018-04-16
-
-### 第 56 次发布
-
-发布时间：2023-06-30 01:40:45
+发布时间：2023-06-30 18:46:08
 
 本次发布包含了以下内容：
 
@@ -185,18 +70,55 @@
 
 修改接口：
 
-* [CreateFunction](https://cloud.tencent.com/document/api/583/18586)
+* [CreateReleaseFlow](https://cloud.tencent.com/document/api/1323/88045)
 
-	* 新增入参：AutoDeployClsTopicIndex, AutoCreateClsTopic
-
-
+	* 新增入参：Deadline
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+修改数据结构：
 
-### 第 96 次发布
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1323/70369#ReleasedApprover)
 
-发布时间：2023-06-29 18:45:40
+	* 新增成员：ApproverSignComponentType, ApproverSignRole
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 87 次发布
+
+发布时间：2023-06-30 17:26:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateReleaseFlow](https://cloud.tencent.com/document/api/1420/83461)
+
+	* 新增入参：Deadline
+
+
+修改数据结构：
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1420/61525#ReleasedApprover)
+
+	* 新增成员：ApproverSignComponentType, ApproverSignRole
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 14 次发布
+
+发布时间：2023-06-30 12:15:39
 
 本次发布包含了以下内容：
 
@@ -204,87 +126,25 @@
 
 新增接口：
 
-* [DeleteGatewayVersion](https://cloud.tencent.com/document/api/876/94391)
-* [DescribeBillingInfo](https://cloud.tencent.com/document/api/876/94390)
-* [DescribeCbrServerVersion](https://cloud.tencent.com/document/api/876/94389)
-* [DescribeGatewayVersions](https://cloud.tencent.com/document/api/876/94388)
-* [DescribeGraphData](https://cloud.tencent.com/document/api/876/59512)
-* [DescribeWxGatewayRoutes](https://cloud.tencent.com/document/api/876/94387)
-* [DescribeWxGateways](https://cloud.tencent.com/document/api/876/94386)
-* [ModifyGatewayVersionTraffic](https://cloud.tencent.com/document/api/876/94385)
+* [QueryArrivalList](https://cloud.tencent.com/document/api/1318/94396)
+* [QueryFollowList](https://cloud.tencent.com/document/api/1318/94395)
 
 新增数据结构：
 
-* [BanConfig](https://cloud.tencent.com/document/api/876/34822#BanConfig)
-* [CbrPackageInfo](https://cloud.tencent.com/document/api/876/34822#CbrPackageInfo)
-* [CbrRepoInfo](https://cloud.tencent.com/document/api/876/34822#CbrRepoInfo)
-* [CustomLogConfig](https://cloud.tencent.com/document/api/876/34822#CustomLogConfig)
-* [FrequencyLimitConfig](https://cloud.tencent.com/document/api/876/34822#FrequencyLimitConfig)
-* [GatewayItem](https://cloud.tencent.com/document/api/876/34822#GatewayItem)
-* [GatewayVersionItem](https://cloud.tencent.com/document/api/876/34822#GatewayVersionItem)
-* [WxGatewayCustomConfig](https://cloud.tencent.com/document/api/876/34822#WxGatewayCustomConfig)
-* [WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem)
+* [ArrivalInfo](https://cloud.tencent.com/document/api/1318/56791#ArrivalInfo)
+* [FollowInfo](https://cloud.tencent.com/document/api/1318/56791#FollowInfo)
 
 修改数据结构：
 
-* [EnvInfo](https://cloud.tencent.com/document/api/876/34822#EnvInfo)
+* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
 
-	* 新增成员：ArchitectureType, Recycle
+	* 新增成员：WxId, BrandCode, BuildTime, OrderTime, ArrivalTime, DeliveryTime, FollowTime, NextFollowTime, OrgId, OrgName, Introducer, IntroducerPhone, IsBindWx, IsMerge, IsInvalid, InvalidType, InvalidTypeName, InvalidRemark, InvalidTime, DealerName, ShopId, ShopName, Position
 
+	* <font color="#dd0000">**修改成员**：</font>LeadUserType, LeadType, ChannelId, ChannelName, SourceChannelName, Gender, CreateTime, LeadStatus, LevelCode, ImportAtTime, DistributeTime, CreateAtTime
 
+* [CorpUserInfo](https://cloud.tencent.com/document/api/1318/56791#CorpUserInfo)
 
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 57 次发布
-
-发布时间：2023-06-30 01:44:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CreateImageLifecyclePersonal
-* DeleteImageLifecyclePersonal
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 47 次发布
-
-发布时间：2023-06-30 01:45:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ComplianceHostDetailInfo](https://cloud.tencent.com/document/api/1285/65614#ComplianceHostDetailInfo)
-
-	* 新增成员：ContainerdVersion
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 155 次发布
-
-发布时间：2023-06-30 01:49:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [KMSConfiguration](https://cloud.tencent.com/document/api/457/31866#KMSConfiguration)
-
-	* 新增成员：KeyId, KmsRegion
+	* 新增成员：JobNumber
 
 
 
@@ -7871,6 +7731,23 @@
 
 
 ## 费用中心(billing) 版本：2018-07-09
+
+### 第 44 次发布
+
+发布时间：2023-07-03 01:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BillDetailComponent](https://cloud.tencent.com/document/api/555/19183#BillDetailComponent)
+
+	* 新增成员：RealTotalMeasure, DeductedMeasure
+
+	* <font color="#dd0000">**修改成员**：</font>SpecifiedPrice, TransferPayAmount, SPDeduction
+
 
 ### 第 43 次发布
 
@@ -41627,6 +41504,19 @@
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
 
+### 第 53 次发布
+
+发布时间：2023-07-03 01:18:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDataEngine](https://cloud.tencent.com/document/api/1342/87875)
+
+
 ### 第 52 次发布
 
 发布时间：2023-06-20 01:28:13
@@ -42849,6 +42739,22 @@
 
 
 ## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 20 次发布
+
+发布时间：2023-07-03 01:19:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteRecordBatch](https://cloud.tencent.com/document/api/1427/94422)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeleteRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#DeleteRecordBatchDetail)](https://cloud.tencent.com/document/api/1427/56185#[DeleteRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#DeleteRecordBatchDetail))
 
 ### 第 19 次发布
 
@@ -49395,6 +49301,28 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 83 次发布
+
+发布时间：2023-06-30 18:46:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateReleaseFlow](https://cloud.tencent.com/document/api/1323/88045)
+
+	* 新增入参：Deadline
+
+
+修改数据结构：
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1323/70369#ReleasedApprover)
+
+	* 新增成员：ApproverSignComponentType, ApproverSignRole
+
+
 ### 第 82 次发布
 
 发布时间：2023-06-30 01:25:52
@@ -50984,6 +50912,28 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 87 次发布
+
+发布时间：2023-06-30 17:26:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateReleaseFlow](https://cloud.tencent.com/document/api/1420/83461)
+
+	* 新增入参：Deadline
+
+
+修改数据结构：
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1420/61525#ReleasedApprover)
+
+	* 新增成员：ApproverSignComponentType, ApproverSignRole
+
 
 ### 第 86 次发布
 
@@ -78003,7 +77953,7 @@
 
 新增接口：
 
-* [[UpdateOrganizationMember](https://cloud.tencent.com/document/api/850/94392)](https://cloud.tencent.com/document/api/#/#)
+* [UpdateOrganizationMember](https://cloud.tencent.com/document/api/850/94392)
 
 ### 第 19 次发布
 
@@ -89545,26 +89495,26 @@
 
 新增接口：
 
-* [[DeleteGatewayVersion](https://cloud.tencent.com/document/api/876/94391)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBillingInfo](https://cloud.tencent.com/document/api/876/94390)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCbrServerVersion](https://cloud.tencent.com/document/api/876/94389)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGatewayVersions](https://cloud.tencent.com/document/api/876/94388)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGraphData](https://cloud.tencent.com/document/api/876/59512)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWxGatewayRoutes](https://cloud.tencent.com/document/api/876/94387)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWxGateways](https://cloud.tencent.com/document/api/876/94386)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyGatewayVersionTraffic](https://cloud.tencent.com/document/api/876/94385)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteGatewayVersion](https://cloud.tencent.com/document/api/876/94391)
+* [DescribeBillingInfo](https://cloud.tencent.com/document/api/876/94390)
+* [DescribeCbrServerVersion](https://cloud.tencent.com/document/api/876/94389)
+* [DescribeGatewayVersions](https://cloud.tencent.com/document/api/876/94388)
+* [DescribeGraphData](https://cloud.tencent.com/document/api/876/59512)
+* [DescribeWxGatewayRoutes](https://cloud.tencent.com/document/api/876/94387)
+* [DescribeWxGateways](https://cloud.tencent.com/document/api/876/94386)
+* [ModifyGatewayVersionTraffic](https://cloud.tencent.com/document/api/876/94385)
 
 新增数据结构：
 
-* [[BanConfig](https://cloud.tencent.com/document/api/876/34822#BanConfig)](https://cloud.tencent.com/document/api/876/34822#[BanConfig](https://cloud.tencent.com/document/api/876/34822#BanConfig))
-* [[CbrPackageInfo](https://cloud.tencent.com/document/api/876/34822#CbrPackageInfo)](https://cloud.tencent.com/document/api/876/34822#[CbrPackageInfo](https://cloud.tencent.com/document/api/876/34822#CbrPackageInfo))
-* [[CbrRepoInfo](https://cloud.tencent.com/document/api/876/34822#CbrRepoInfo)](https://cloud.tencent.com/document/api/876/34822#[CbrRepoInfo](https://cloud.tencent.com/document/api/876/34822#CbrRepoInfo))
-* [[CustomLogConfig](https://cloud.tencent.com/document/api/876/34822#CustomLogConfig)](https://cloud.tencent.com/document/api/876/34822#[CustomLogConfig](https://cloud.tencent.com/document/api/876/34822#CustomLogConfig))
-* [[FrequencyLimitConfig](https://cloud.tencent.com/document/api/876/34822#FrequencyLimitConfig)](https://cloud.tencent.com/document/api/876/34822#[FrequencyLimitConfig](https://cloud.tencent.com/document/api/876/34822#FrequencyLimitConfig))
-* [[GatewayItem](https://cloud.tencent.com/document/api/876/34822#GatewayItem)](https://cloud.tencent.com/document/api/876/34822#[GatewayItem](https://cloud.tencent.com/document/api/876/34822#GatewayItem))
-* [[GatewayVersionItem](https://cloud.tencent.com/document/api/876/34822#GatewayVersionItem)](https://cloud.tencent.com/document/api/876/34822#[GatewayVersionItem](https://cloud.tencent.com/document/api/876/34822#GatewayVersionItem))
-* [[WxGatewayCustomConfig](https://cloud.tencent.com/document/api/876/34822#WxGatewayCustomConfig)](https://cloud.tencent.com/document/api/876/34822#[WxGatewayCustomConfig](https://cloud.tencent.com/document/api/876/34822#WxGatewayCustomConfig))
-* [[WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem)](https://cloud.tencent.com/document/api/876/34822#[WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem))
+* [BanConfig](https://cloud.tencent.com/document/api/876/34822#BanConfig)
+* [CbrPackageInfo](https://cloud.tencent.com/document/api/876/34822#CbrPackageInfo)
+* [CbrRepoInfo](https://cloud.tencent.com/document/api/876/34822#CbrRepoInfo)
+* [CustomLogConfig](https://cloud.tencent.com/document/api/876/34822#CustomLogConfig)
+* [FrequencyLimitConfig](https://cloud.tencent.com/document/api/876/34822#FrequencyLimitConfig)
+* [GatewayItem](https://cloud.tencent.com/document/api/876/34822#GatewayItem)
+* [GatewayVersionItem](https://cloud.tencent.com/document/api/876/34822#GatewayVersionItem)
+* [WxGatewayCustomConfig](https://cloud.tencent.com/document/api/876/34822#WxGatewayCustomConfig)
+* [WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem)
 
 修改数据结构：
 
@@ -121363,6 +121313,37 @@
 
 
 ## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 14 次发布
+
+发布时间：2023-06-30 12:15:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[QueryArrivalList](https://cloud.tencent.com/document/api/1318/94396)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryFollowList](https://cloud.tencent.com/document/api/1318/94395)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ArrivalInfo](https://cloud.tencent.com/document/api/1318/56791#ArrivalInfo)](https://cloud.tencent.com/document/api/1318/56791#[ArrivalInfo](https://cloud.tencent.com/document/api/1318/56791#ArrivalInfo))
+* [[FollowInfo](https://cloud.tencent.com/document/api/1318/56791#FollowInfo)](https://cloud.tencent.com/document/api/1318/56791#[FollowInfo](https://cloud.tencent.com/document/api/1318/56791#FollowInfo))
+
+修改数据结构：
+
+* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
+
+	* 新增成员：WxId, BrandCode, BuildTime, OrderTime, ArrivalTime, DeliveryTime, FollowTime, NextFollowTime, OrgId, OrgName, Introducer, IntroducerPhone, IsBindWx, IsMerge, IsInvalid, InvalidType, InvalidTypeName, InvalidRemark, InvalidTime, DealerName, ShopId, ShopName, Position
+
+	* <font color="#dd0000">**修改成员**：</font>LeadUserType, LeadType, ChannelId, ChannelName, SourceChannelName, Gender, CreateTime, LeadStatus, LevelCode, ImportAtTime, DistributeTime, CreateAtTime
+
+* [CorpUserInfo](https://cloud.tencent.com/document/api/1318/56791#CorpUserInfo)
+
+	* 新增成员：JobNumber
+
 
 ### 第 13 次发布
 

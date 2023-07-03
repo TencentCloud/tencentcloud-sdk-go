@@ -1,3 +1,154 @@
+# Release v1.0.692
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 44 次发布
+
+发布时间：2023-07-03 01:04:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BillDetailComponent](https://cloud.tencent.com/document/api/555/19183#BillDetailComponent)
+
+	* 新增成员：RealTotalMeasure, DeductedMeasure
+
+	* <font color="#dd0000">**修改成员**：</font>SpecifiedPrice, TransferPayAmount, SPDeduction
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 53 次发布
+
+发布时间：2023-07-03 01:18:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDataEngine](https://cloud.tencent.com/document/api/1342/87875)
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 20 次发布
+
+发布时间：2023-07-03 01:19:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteRecordBatch](https://cloud.tencent.com/document/api/1427/94422)
+
+新增数据结构：
+
+* [DeleteRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#DeleteRecordBatchDetail)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 83 次发布
+
+发布时间：2023-06-30 18:46:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateReleaseFlow](https://cloud.tencent.com/document/api/1323/88045)
+
+	* 新增入参：Deadline
+
+
+修改数据结构：
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1323/70369#ReleasedApprover)
+
+	* 新增成员：ApproverSignComponentType, ApproverSignRole
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 87 次发布
+
+发布时间：2023-06-30 17:26:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateReleaseFlow](https://cloud.tencent.com/document/api/1420/83461)
+
+	* 新增入参：Deadline
+
+
+修改数据结构：
+
+* [ReleasedApprover](https://cloud.tencent.com/document/api/1420/61525#ReleasedApprover)
+
+	* 新增成员：ApproverSignComponentType, ApproverSignRole
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 14 次发布
+
+发布时间：2023-06-30 12:15:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryArrivalList](https://cloud.tencent.com/document/api/1318/94396)
+* [QueryFollowList](https://cloud.tencent.com/document/api/1318/94395)
+
+新增数据结构：
+
+* [ArrivalInfo](https://cloud.tencent.com/document/api/1318/56791#ArrivalInfo)
+* [FollowInfo](https://cloud.tencent.com/document/api/1318/56791#FollowInfo)
+
+修改数据结构：
+
+* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
+
+	* 新增成员：WxId, BrandCode, BuildTime, OrderTime, ArrivalTime, DeliveryTime, FollowTime, NextFollowTime, OrgId, OrgName, Introducer, IntroducerPhone, IsBindWx, IsMerge, IsInvalid, InvalidType, InvalidTypeName, InvalidRemark, InvalidTime, DealerName, ShopId, ShopName, Position
+
+	* <font color="#dd0000">**修改成员**：</font>LeadUserType, LeadType, ChannelId, ChannelName, SourceChannelName, Gender, CreateTime, LeadStatus, LevelCode, ImportAtTime, DistributeTime, CreateAtTime
+
+* [CorpUserInfo](https://cloud.tencent.com/document/api/1318/56791#CorpUserInfo)
+
+	* 新增成员：JobNumber
+
+
+
+
 # Release v1.0.691
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

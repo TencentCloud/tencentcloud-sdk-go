@@ -1368,6 +1368,87 @@ func (r *DeleteDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeleteRecordBatchDetail struct {
+	// 域名 ID
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *string `json:"Error,omitempty" name:"Error"`
+
+	// 删除状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 操作
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 解析记录列表，json 序列化之后的字符串形式
+	RecordList *string `json:"RecordList,omitempty" name:"RecordList"`
+}
+
+// Predefined struct for user
+type DeleteRecordBatchRequestParams struct {
+	// 解析记录 ID 数组
+	RecordIdList []*uint64 `json:"RecordIdList,omitempty" name:"RecordIdList"`
+}
+
+type DeleteRecordBatchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 解析记录 ID 数组
+	RecordIdList []*uint64 `json:"RecordIdList,omitempty" name:"RecordIdList"`
+}
+
+func (r *DeleteRecordBatchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordBatchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RecordIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRecordBatchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecordBatchResponseParams struct {
+	// 批量任务 ID
+	JobId *uint64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 任务详情
+	DetailList []*DeleteRecordBatchDetail `json:"DetailList,omitempty" name:"DetailList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRecordBatchResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRecordBatchResponseParams `json:"Response"`
+}
+
+func (r *DeleteRecordBatchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordBatchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DeleteRecordGroupRequestParams struct {
 	// 域名

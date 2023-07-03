@@ -168,6 +168,14 @@ type BillDetailComponent struct {
 	// 组件用量单位：组件用量对应的单位
 	UsedAmountUnit *string `json:"UsedAmountUnit,omitempty" name:"UsedAmountUnit"`
 
+	// 原始用量/时长：组件被资源包抵扣前的原始用量/时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealTotalMeasure *string `json:"RealTotalMeasure,omitempty" name:"RealTotalMeasure"`
+
+	// 抵扣用量/时长（含资源包）：组件被资源包抵扣的用量/时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeductedMeasure *string `json:"DeductedMeasure,omitempty" name:"DeductedMeasure"`
+
 	// 使用时长：资源使用的时长
 	TimeSpan *string `json:"TimeSpan,omitempty" name:"TimeSpan"`
 

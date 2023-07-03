@@ -1381,6 +1381,70 @@ func (c *Client) DeleteRecordWithContext(ctx context.Context, request *DeleteRec
     return
 }
 
+func NewDeleteRecordBatchRequest() (request *DeleteRecordBatchRequest) {
+    request = &DeleteRecordBatchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DeleteRecordBatch")
+    
+    
+    return
+}
+
+func NewDeleteRecordBatchResponse() (response *DeleteRecordBatchResponse) {
+    response = &DeleteRecordBatchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRecordBatch
+// 批量删除解析记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+func (c *Client) DeleteRecordBatch(request *DeleteRecordBatchRequest) (response *DeleteRecordBatchResponse, err error) {
+    return c.DeleteRecordBatchWithContext(context.Background(), request)
+}
+
+// DeleteRecordBatch
+// 批量删除解析记录
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+func (c *Client) DeleteRecordBatchWithContext(ctx context.Context, request *DeleteRecordBatchRequest) (response *DeleteRecordBatchResponse, err error) {
+    if request == nil {
+        request = NewDeleteRecordBatchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRecordBatch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRecordBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRecordGroupRequest() (request *DeleteRecordGroupRequest) {
     request = &DeleteRecordGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

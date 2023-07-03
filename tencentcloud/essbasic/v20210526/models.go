@@ -1570,6 +1570,9 @@ type ChannelCreateReleaseFlowRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 }
 
 type ChannelCreateReleaseFlowRequest struct {
@@ -1595,6 +1598,9 @@ type ChannelCreateReleaseFlowRequest struct {
 
 	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 }
 
 func (r *ChannelCreateReleaseFlowRequest) ToJsonString() string {
@@ -1616,6 +1622,7 @@ func (r *ChannelCreateReleaseFlowRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "Organization")
 	delete(f, "Operator")
+	delete(f, "Deadline")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateReleaseFlowRequest has unknown keys!", "")
 	}
@@ -5040,6 +5047,14 @@ type ReleasedApprover struct {
 	// 用户侧第三方id，最大长度64个字符
 	// 当签署方为同一第三方应用下的员工时，该字必传
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 签署控件类型，支持自定义企业签署方的签署控件为“印章”或“签名”
+	// - SIGN_SEAL-默认为印章控件类型
+	// - SIGN_SIGNATURE-手写签名控件类型
+	ApproverSignComponentType *string `json:"ApproverSignComponentType,omitempty" name:"ApproverSignComponentType"`
+
+	// 签署方自定义控件别名，最大长度20个字符
+	ApproverSignRole *string `json:"ApproverSignRole,omitempty" name:"ApproverSignRole"`
 }
 
 type RelieveInfo struct {
@@ -5484,7 +5499,7 @@ type UploadFile struct {
 
 // Predefined struct for user
 type UploadFilesRequestParams struct {
-	// 应用相关信息，若是第三方应用集成调用 appid 和proxyappid 必填
+	// 应用相关信息，若是第三方应用集成调用 若是第三方应用集成调用,Agent.AppId 和 Agent.ProxyOrganizationOpenId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 文件对应业务类型
@@ -5504,7 +5519,7 @@ type UploadFilesRequestParams struct {
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息，若是第三方应用集成调用 appid 和proxyappid 必填
+	// 应用相关信息，若是第三方应用集成调用 若是第三方应用集成调用,Agent.AppId 和 Agent.ProxyOrganizationOpenId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 文件对应业务类型
@@ -5543,11 +5558,11 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UploadFilesResponseParams struct {
-	// 文件id数组，有效期一个小时；有效期内此文件id可以反复使用
-	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
-
 	// 上传成功文件数量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 文件id数组，有效期一个小时；有效期内此文件id可以反复使用
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// 文件Url
 	FileUrls []*string `json:"FileUrls,omitempty" name:"FileUrls"`

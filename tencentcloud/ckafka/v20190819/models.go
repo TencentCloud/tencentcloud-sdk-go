@@ -1795,7 +1795,7 @@ type CreateInstancePostRequestParams struct {
 	// 子网id。创建实例默认接入点所在的子网对应的子网 id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例规格。当创建标准版实例时必填，创建专业版实例时不需要填写。1：入门型；2：标准型；3：进阶型；4：容量型；5：高阶型1；6：高阶性2；7：高阶型3；8：高阶型4；9 ：独占型
+	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
@@ -1810,7 +1810,7 @@ type CreateInstancePostRequestParams struct {
 	// 实例类型。"standard"：标准版，"profession"：专业版
 	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
 
-	// 实例硬盘类型，"CLOUD_BASIC"：云硬盘，"CLOUD_SSD"：高速云硬盘。不传默认为 "CLOUD_BASIC"
+	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 实例硬盘大小，需要满足当前实例的计费规格
@@ -1853,7 +1853,7 @@ type CreateInstancePostRequest struct {
 	// 子网id。创建实例默认接入点所在的子网对应的子网 id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例规格。当创建标准版实例时必填，创建专业版实例时不需要填写。1：入门型；2：标准型；3：进阶型；4：容量型；5：高阶型1；6：高阶性2；7：高阶型3；8：高阶型4；9 ：独占型
+	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
@@ -1868,7 +1868,7 @@ type CreateInstancePostRequest struct {
 	// 实例类型。"standard"：标准版，"profession"：专业版
 	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
 
-	// 实例硬盘类型，"CLOUD_BASIC"：云硬盘，"CLOUD_SSD"：高速云硬盘。不传默认为 "CLOUD_BASIC"
+	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 实例硬盘大小，需要满足当前实例的计费规格
@@ -1992,20 +1992,19 @@ type CreateInstancePreRequestParams struct {
 	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 可用区，购买多可用区实例时，填写ZoneIds.N字段中的任意一个值
+	// 可用区。当购买多可用区实例时，当前参数为主可用区。需要保证传入的参数和 SubnetId 所在子网属于同一个可用区
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 预付费购买时长，例如 "1m",就是一个月
 	Period *string `json:"Period,omitempty" name:"Period"`
 
-	// 实例规格说明 专业版实例[所有规格]填写1.
-	// 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶型2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
+	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// vpcId必填
+	// vpcId，必填
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网id，vpc网络需要传该参数，基础网络可以不传
+	// 子网id，必填
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
@@ -2020,25 +2019,25 @@ type CreateInstancePreRequestParams struct {
 	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
-	// 实例类型: [标准版实例]填写 standard(默认), [专业版实例]填写 profession
+	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession"
 	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
 
-	// 磁盘大小，专业版不填写默认最小磁盘，如果跟控制台规格配比不相符，则无法创建成功
+	// 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-	// 带宽，专业版不填写默认最小带宽，如果跟控制台规格配比不相符，则无法创建成功
+	// 带宽，如果跟控制台规格配比不相符，则无法创建成功
 	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
 
-	// 分区大小，专业版不填写默认最小分区数，如果跟控制台规格配比不相符，则无法创建成功
+	// 分区大小，如果跟控制台规格配比不相符，则无法创建成功
 	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 磁盘类型（ssd填写CLOUD_SSD，sata填写CLOUD_BASIC）
+	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
-	// 跨可用区，zoneIds必填
+	// 是否创建跨可用区实例，当前参数为 true 时，zoneIds必填
 	MultiZoneFlag *bool `json:"MultiZoneFlag,omitempty" name:"MultiZoneFlag"`
 
 	// 可用区列表，购买多可用区实例时为必填项
@@ -2057,20 +2056,19 @@ type CreateInstancePreRequest struct {
 	// 实例名称，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
-	// 可用区，购买多可用区实例时，填写ZoneIds.N字段中的任意一个值
+	// 可用区。当购买多可用区实例时，当前参数为主可用区。需要保证传入的参数和 SubnetId 所在子网属于同一个可用区
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 预付费购买时长，例如 "1m",就是一个月
 	Period *string `json:"Period,omitempty" name:"Period"`
 
-	// 实例规格说明 专业版实例[所有规格]填写1.
-	// 标准版实例 ([入门型(general)]填写1，[标准型(standard)]填写2，[进阶型(advanced)]填写3，[容量型(capacity)]填写4，[高阶型1(specialized-1)]填写5，[高阶型2(specialized-2)]填写6,[高阶型3(specialized-3)]填写7,[高阶型4(specialized-4)]填写8，[独占型(exclusive)]填写9。
+	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
-	// vpcId必填
+	// vpcId，必填
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 子网id，vpc网络需要传该参数，基础网络可以不传
+	// 子网id，必填
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
 	// 可选。实例日志的最长保留时间，单位分钟，默认为10080（7天），最大30天，不填默认0，代表不开启日志保留时间回收策略
@@ -2085,25 +2083,25 @@ type CreateInstancePreRequest struct {
 	// CKafka版本号[0.10.2、1.1.1、2.4.1、2.4.2、2.8.1], 默认是1.1.1。2.4.1 与 2.4.2 属于同一个版本，传任意一个均可。
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
 
-	// 实例类型: [标准版实例]填写 standard(默认), [专业版实例]填写 profession
+	// 实例类型: [标准版实例]填写 "standard" (默认), [专业版实例]填写 "profession"
 	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
 
-	// 磁盘大小，专业版不填写默认最小磁盘，如果跟控制台规格配比不相符，则无法创建成功
+	// 磁盘大小，如果跟控制台规格配比不相符，则无法创建成功
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
-	// 带宽，专业版不填写默认最小带宽，如果跟控制台规格配比不相符，则无法创建成功
+	// 带宽，如果跟控制台规格配比不相符，则无法创建成功
 	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
 
-	// 分区大小，专业版不填写默认最小分区数，如果跟控制台规格配比不相符，则无法创建成功
+	// 分区大小，如果跟控制台规格配比不相符，则无法创建成功
 	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
 
 	// 标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 磁盘类型（ssd填写CLOUD_SSD，sata填写CLOUD_BASIC）
+	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认为 "CLOUD_BASIC"
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
-	// 跨可用区，zoneIds必填
+	// 是否创建跨可用区实例，当前参数为 true 时，zoneIds必填
 	MultiZoneFlag *bool `json:"MultiZoneFlag,omitempty" name:"MultiZoneFlag"`
 
 	// 可用区列表，购买多可用区实例时为必填项
@@ -2279,7 +2277,7 @@ type CreatePostPaidInstanceRequestParams struct {
 	// 子网id。创建实例默认接入点所在的子网对应的子网 id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例规格。当创建标准版实例时必填，创建专业版实例时不需要填写。1：入门型；2：标准型；3：进阶型；4：容量型；5：高阶型1；6：高阶性2；7：高阶型3；8：高阶型4；9 ：独占型
+	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
@@ -2294,7 +2292,7 @@ type CreatePostPaidInstanceRequestParams struct {
 	// 实例类型。"standard"：标准版，"profession"：专业版
 	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
 
-	// 实例硬盘类型，"CLOUD_BASIC"：云硬盘，"CLOUD_SSD"：高速云硬盘。不传默认为 "CLOUD_BASIC"
+	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 实例内网峰值带宽。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格。
@@ -2337,7 +2335,7 @@ type CreatePostPaidInstanceRequest struct {
 	// 子网id。创建实例默认接入点所在的子网对应的子网 id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 实例规格。当创建标准版实例时必填，创建专业版实例时不需要填写。1：入门型；2：标准型；3：进阶型；4：容量型；5：高阶型1；6：高阶性2；7：高阶型3；8：高阶型4；9 ：独占型
+	// 国际站标准版实例规格。目前只有国际站标准版使用当前字段区分规格，国内站标准版使用峰值带宽区分规格。除了国际站标准版外的所有实例填写 1 即可。国际站标准版实例：入门型(general)]填写1；[标准型(standard)]填写2；[进阶型(advanced)]填写3；[容量型(capacity)]填写4；[高阶型1(specialized-1)]填写5；[高阶型2(specialized-2)]填写6；[高阶型3(specialized-3)]填写7；[高阶型4(specialized-4)]填写8。
 	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
 
 	// 实例日志的默认最长保留时间，单位分钟。不传入该参数时默认为 1440 分钟（1天），最大30天。当 topic 显式设置消息保留时间时，以 topic 保留时间为准
@@ -2352,7 +2350,7 @@ type CreatePostPaidInstanceRequest struct {
 	// 实例类型。"standard"：标准版，"profession"：专业版
 	SpecificationsType *string `json:"SpecificationsType,omitempty" name:"SpecificationsType"`
 
-	// 实例硬盘类型，"CLOUD_BASIC"：云硬盘，"CLOUD_SSD"：高速云硬盘。不传默认为 "CLOUD_BASIC"
+	// 专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 实例内网峰值带宽。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格。

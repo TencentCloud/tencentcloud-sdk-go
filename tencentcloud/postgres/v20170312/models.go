@@ -6005,7 +6005,7 @@ type ModifyBackupPlanRequestParams struct {
 	// 实例最晚开始备份时间
 	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitempty" name:"MaxBackupStartTime"`
 
-	// 实例备份保留时长，取值范围为3-7，单位是天
+	// 实例备份保留时长，取值范围为7-1830，单位是天
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitempty" name:"BaseBackupRetentionPeriod"`
 
 	// 实例备份周期，按照星期维度，格式为小写星期英文单词
@@ -6024,7 +6024,7 @@ type ModifyBackupPlanRequest struct {
 	// 实例最晚开始备份时间
 	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitempty" name:"MaxBackupStartTime"`
 
-	// 实例备份保留时长，取值范围为3-7，单位是天
+	// 实例备份保留时长，取值范围为7-1830，单位是天
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitempty" name:"BaseBackupRetentionPeriod"`
 
 	// 实例备份周期，按照星期维度，格式为小写星期英文单词
