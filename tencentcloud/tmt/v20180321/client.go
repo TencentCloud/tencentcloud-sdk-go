@@ -71,6 +71,7 @@ func NewFileTranslateResponse() (response *FileTranslateResponse) {
 //  FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
     return c.FileTranslateWithContext(context.Background(), request)
@@ -84,6 +85,7 @@ func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTra
 //  FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
 //  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 func (c *Client) FileTranslateWithContext(ctx context.Context, request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
     if request == nil {
@@ -185,6 +187,7 @@ func NewImageTranslateResponse() (response *ImageTranslateResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
@@ -212,6 +215,7 @@ func (c *Client) ImageTranslate(request *ImageTranslateRequest) (response *Image
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"

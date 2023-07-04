@@ -32,6 +32,12 @@ const (
 	// 用户属性格式异常。
 	FAILEDOPERATION_ATTRIBUTEFORMATERROR = "FailedOperation.AttributeFormatError"
 
+	// 认证源名称已存在。
+	FAILEDOPERATION_AUTHSOURCENAMEALREADYEXISTS = "FailedOperation.AuthSourceNameAlreadyExists"
+
+	// 认证源不存在。
+	FAILEDOPERATION_AUTHSOURCENOTFOUND = "FailedOperation.AuthSourceNotFound"
+
 	// 已存在2个有效的任务，请等待其中一部分完成后重试。
 	FAILEDOPERATION_DATAFLOWTOOMANYREQUESTS = "FailedOperation.DataFlowTooManyRequests"
 
@@ -83,6 +89,9 @@ const (
 	// 从用户不存在。
 	FAILEDOPERATION_SECONDARYUSERNOTFOUND = "FailedOperation.SecondaryUserNotFound"
 
+	// 用户组名称已存在。
+	FAILEDOPERATION_USERGROUPNAMEALREADYEXISTS = "FailedOperation.UserGroupNameAlreadyExists"
+
 	// 用户组不存在。
 	FAILEDOPERATION_USERGROUPNOTFOUND = "FailedOperation.UserGroupNotFound"
 
@@ -98,14 +107,38 @@ const (
 	// 用户不存在。
 	FAILEDOPERATION_USERNOTFOUND = "FailedOperation.UserNotFound"
 
+	// 属性标识已存在。
+	FAILEDOPERATION_USERPROPERTYCODEALREADYEXISTS = "FailedOperation.UserPropertyCodeAlreadyExists"
+
+	// 用户属性不存在。
+	FAILEDOPERATION_USERPROPERTYNOTFOUND = "FailedOperation.UserPropertyNotFound"
+
 	// 更新状态必传。
 	FAILEDOPERATION_USERSTATUSREQUIRED = "FailedOperation.UserStatusRequired"
+
+	// 已存在相同用户目录名。
+	FAILEDOPERATION_USERSTOREALREADYEXISTS = "FailedOperation.UserStoreAlreadyExists"
+
+	// 已存在相同域名。
+	FAILEDOPERATION_USERSTOREDOMAINALREADYEXISTS = "FailedOperation.UserStoreDomainAlreadyExists"
+
+	// 用户目录不存在。
+	FAILEDOPERATION_USERSTORENOTEXIST = "FailedOperation.UserStoreNotExist"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 判断存在用户内部请求错误，请稍后重试。
+	INTERNALERROR_JUDGEUSEREXISTEXCEPTION = "InternalError.JudgeUserExistException"
+
 	// 未知错误。
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+
+	// 创建用户目录时创建秘钥失败。
+	INTERNALERROR_USERSTORECREATESECRETFAIL = "InternalError.UserStoreCreateSecretFail"
+
+	// 删除用户目录时删除用户失败。
+	INTERNALERROR_USERSTOREDELETEUSERFAIL = "InternalError.UserStoreDeleteUserFail"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
@@ -160,4 +193,34 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
+	// 认证源已启用，不允许删除。
+	UNSUPPORTEDOPERATION_ENABLEDAUTHSOURCECANNOTBEDELETED = "UnsupportedOperation.EnabledAuthSourceCanNotBeDeleted"
+
+	// 认证源已启用，不允许更新。
+	UNSUPPORTEDOPERATION_ENABLEDAUTHSOURCECANNOTBEUPDATED = "UnsupportedOperation.EnabledAuthSourceCanNotBeUpdated"
+
+	// 内置属性不支持该操作。
+	UNSUPPORTEDOPERATION_INTERNALUSERPROPERTY = "UnsupportedOperation.InternalUserProperty"
+
+	// 属性被应用关联，不允许删除。
+	UNSUPPORTEDOPERATION_LINKEDAPPUSERPROPERTYCANNOTBEDELETED = "UnsupportedOperation.LinkedAppUserPropertyCanNotBeDeleted"
+
+	// 认证源被应用关联，不允许关闭。
+	UNSUPPORTEDOPERATION_LINKEDAUTHSOURCECANNOTBECLOSED = "UnsupportedOperation.LinkedAuthSourceCanNotBeClosed"
+
+	// 认证源被应用关联，不允许删除。
+	UNSUPPORTEDOPERATION_LINKEDAUTHSOURCECANNOTBEDELETED = "UnsupportedOperation.LinkedAuthSourceCanNotBeDeleted"
+
+	// 属性被认证源关联，不允许删除。
+	UNSUPPORTEDOPERATION_LINKEDAUTHSOURCEUSERPROPERTYCANNOTBEDELETED = "UnsupportedOperation.LinkedAuthSourceUserPropertyCanNotBeDeleted"
+
+	// 属性被其它模块关联，不允许删除。
+	UNSUPPORTEDOPERATION_LINKEDUSERPROPERTYCANNOTBEDELETED = "UnsupportedOperation.LinkedUserPropertyCanNotBeDeleted"
+
+	// 不允许使用平台域名后缀作为自有域名后缀。
+	UNSUPPORTEDOPERATION_PLATFORMDOMAINSUFFIXCANNOTBEUSED = "UnsupportedOperation.PlatformDomainSuffixCanNotBeUsed"
+
+	// 用户池下已存在用户，用户属性不允许被删除。
+	UNSUPPORTEDOPERATION_WHENUSEREXISTUSERPROPERTYCANNOTBEDELETED = "UnsupportedOperation.WhenUserExistUserPropertyCanNotBeDeleted"
 )

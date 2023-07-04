@@ -562,6 +562,7 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     return c.ChannelCreateEmbedWebUrlWithContext(context.Background(), request)
 }
@@ -579,6 +580,7 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 func (c *Client) ChannelCreateEmbedWebUrlWithContext(ctx context.Context, request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     if request == nil {
         request = NewChannelCreateEmbedWebUrlRequest()
@@ -1435,6 +1437,7 @@ func NewChannelCreateSealPolicyResponse() (response *ChannelCreateSealPolicyResp
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelCreateSealPolicy(request *ChannelCreateSealPolicyRequest) (response *ChannelCreateSealPolicyResponse, err error) {
     return c.ChannelCreateSealPolicyWithContext(context.Background(), request)
 }
@@ -1445,6 +1448,7 @@ func (c *Client) ChannelCreateSealPolicy(request *ChannelCreateSealPolicyRequest
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelCreateSealPolicyWithContext(ctx context.Context, request *ChannelCreateSealPolicyRequest) (response *ChannelCreateSealPolicyResponse, err error) {
     if request == nil {
         request = NewChannelCreateSealPolicyRequest()
@@ -1603,6 +1607,7 @@ func NewChannelDeleteSealPoliciesResponse() (response *ChannelDeleteSealPolicies
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelDeleteSealPolicies(request *ChannelDeleteSealPoliciesRequest) (response *ChannelDeleteSealPoliciesResponse, err error) {
     return c.ChannelDeleteSealPoliciesWithContext(context.Background(), request)
 }
@@ -1613,6 +1618,7 @@ func (c *Client) ChannelDeleteSealPolicies(request *ChannelDeleteSealPoliciesReq
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelDeleteSealPoliciesWithContext(ctx context.Context, request *ChannelDeleteSealPoliciesRequest) (response *ChannelDeleteSealPoliciesResponse, err error) {
     if request == nil {
         request = NewChannelDeleteSealPoliciesRequest()
@@ -2527,6 +2533,7 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FLOWIDS = "InvalidParameter.FlowIds"
 //  INVALIDPARAMETER_GENERATETYPE = "InvalidParameter.GenerateType"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2600,6 +2607,7 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FLOWIDS = "InvalidParameter.FlowIds"
 //  INVALIDPARAMETER_GENERATETYPE = "InvalidParameter.GenerateType"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

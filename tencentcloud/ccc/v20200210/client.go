@@ -65,12 +65,18 @@ func NewBindNumberCallOutSkillGroupResponse() (response *BindNumberCallOutSkillG
 
 // BindNumberCallOutSkillGroup
 // 绑定号码外呼技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 func (c *Client) BindNumberCallOutSkillGroup(request *BindNumberCallOutSkillGroupRequest) (response *BindNumberCallOutSkillGroupResponse, err error) {
     return c.BindNumberCallOutSkillGroupWithContext(context.Background(), request)
 }
 
 // BindNumberCallOutSkillGroup
 // 绑定号码外呼技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 func (c *Client) BindNumberCallOutSkillGroupWithContext(ctx context.Context, request *BindNumberCallOutSkillGroupRequest) (response *BindNumberCallOutSkillGroupResponse, err error) {
     if request == nil {
         request = NewBindNumberCallOutSkillGroupRequest()
@@ -409,17 +415,7 @@ func NewCreateExtensionResponse() (response *CreateExtensionResponse) {
 // 创建话机账号
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
-//  FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
-//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
-//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
-//  FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
-//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateExtension(request *CreateExtensionRequest) (response *CreateExtensionResponse, err error) {
     return c.CreateExtensionWithContext(context.Background(), request)
 }
@@ -428,17 +424,7 @@ func (c *Client) CreateExtension(request *CreateExtensionRequest) (response *Cre
 // 创建话机账号
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
-//  FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
-//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
-//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
-//  FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
-//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateExtensionWithContext(ctx context.Context, request *CreateExtensionRequest) (response *CreateExtensionResponse, err error) {
     if request == nil {
         request = NewCreateExtensionRequest()
@@ -1345,6 +1331,7 @@ func NewDescribePSTNActiveSessionListResponse() (response *DescribePSTNActiveSes
 // 获取当前正在通话的会话列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
 func (c *Client) DescribePSTNActiveSessionList(request *DescribePSTNActiveSessionListRequest) (response *DescribePSTNActiveSessionListResponse, err error) {
@@ -1355,6 +1342,7 @@ func (c *Client) DescribePSTNActiveSessionList(request *DescribePSTNActiveSessio
 // 获取当前正在通话的会话列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
 //  INTERNALERROR = "InternalError"
 //  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
 func (c *Client) DescribePSTNActiveSessionListWithContext(ctx context.Context, request *DescribePSTNActiveSessionListRequest) (response *DescribePSTNActiveSessionListResponse, err error) {

@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 账户余额不足。
+	FAILEDOPERATION_ACCOUNTINSUFFICIENT = "FailedOperation.AccountInsufficient"
+
 	// API网关触发器创建失败。
 	FAILEDOPERATION_APIGATEWAY = "FailedOperation.ApiGateway"
 
@@ -110,6 +113,9 @@ const (
 	// 当前账号或命名空间处于欠费状态，请在可用时重试。
 	FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 
+	// 本地域资源售罄。
+	FAILEDOPERATION_INSUFFICIENTRESOURCES = "FailedOperation.InsufficientResources"
+
 	// 调用函数失败。
 	FAILEDOPERATION_INVOKEFUNCTION = "FailedOperation.InvokeFunction"
 
@@ -145,6 +151,9 @@ const (
 
 	// 角色不存在。
 	FAILEDOPERATION_QCSROLENOTFOUND = "FailedOperation.QcsRoleNotFound"
+
+	// 查询失败。
+	FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
 
 	// ReservedExceedTotal 总保留超限。
 	FAILEDOPERATION_RESERVEDEXCEEDTOTAL = "FailedOperation.ReservedExceedTotal"
@@ -442,6 +451,9 @@ const (
 
 	// 参数超出长度限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+
+	// 日志格式不正确。
+	INVALIDPARAMETERVALUE_LOGFORMAT = "InvalidParameterValue.LogFormat"
 
 	// MaxConcurrency 参数传入错误。
 	INVALIDPARAMETERVALUE_MAXCONCURRENCY = "InvalidParameterValue.MaxConcurrency"

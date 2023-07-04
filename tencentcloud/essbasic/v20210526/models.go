@@ -40,7 +40,7 @@ type Agent struct {
 }
 
 type ApproverOption struct {
-	// 是否隐藏一键签署 false-不隐藏,默认 true-隐藏
+	// 是否隐藏一键签署 默认false-不隐藏true-隐藏
 	HideOneKeySign *bool `json:"HideOneKeySign,omitempty" name:"HideOneKeySign"`
 }
 

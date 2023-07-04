@@ -1,3 +1,81 @@
+# Release v1.0.693
+
+## 账号风控平台(ciam) 版本：2022-03-31
+
+### 第 9 次发布
+
+发布时间：2023-07-04 01:14:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateUserGroup](https://cloud.tencent.com/document/api/1441/94455)
+* [CreateUserStore](https://cloud.tencent.com/document/api/1441/94460)
+* [DeleteUserGroups](https://cloud.tencent.com/document/api/1441/94454)
+* [DeleteUserStore](https://cloud.tencent.com/document/api/1441/94459)
+* [ListUserGroups](https://cloud.tencent.com/document/api/1441/94453)
+* [ListUserStore](https://cloud.tencent.com/document/api/1441/94458)
+* [UpdateUserGroup](https://cloud.tencent.com/document/api/1441/94452)
+* [UpdateUserStore](https://cloud.tencent.com/document/api/1441/94457)
+
+新增数据结构：
+
+* [AppAssociatedUserGroupIds](https://cloud.tencent.com/document/api/1441/75643#AppAssociatedUserGroupIds)
+* [UserGroup](https://cloud.tencent.com/document/api/1441/75643#UserGroup)
+* [UserGroupDeleteResp](https://cloud.tencent.com/document/api/1441/75643#UserGroupDeleteResp)
+* [UserStore](https://cloud.tencent.com/document/api/1441/75643#UserStore)
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 53 次发布
+
+发布时间：2023-07-03 17:15:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)
+
+	* 新增入参：ConsumerContent
+
+
+新增数据结构：
+
+* [KafkaConsumerContent](https://cloud.tencent.com/document/api/614/56471#KafkaConsumerContent)
+
+### 第 52 次发布
+
+发布时间：2023-07-03 16:20:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckRechargeKafkaServer](https://cloud.tencent.com/document/api/614/94449)
+* [CreateKafkaRecharge](https://cloud.tencent.com/document/api/614/94448)
+* [DeleteKafkaRecharge](https://cloud.tencent.com/document/api/614/94447)
+* [DescribeKafkaRecharges](https://cloud.tencent.com/document/api/614/94446)
+* [ModifyKafkaRecharge](https://cloud.tencent.com/document/api/614/94445)
+* [PreviewKafkaRecharge](https://cloud.tencent.com/document/api/614/94444)
+
+新增数据结构：
+
+* [KafkaProtocolInfo](https://cloud.tencent.com/document/api/614/56471#KafkaProtocolInfo)
+* [KafkaRechargeInfo](https://cloud.tencent.com/document/api/614/56471#KafkaRechargeInfo)
+* [LogRechargeRuleInfo](https://cloud.tencent.com/document/api/614/56471#LogRechargeRuleInfo)
+
+
+
 # Release v1.0.692
 
 ## 费用中心(billing) 版本：2018-07-09

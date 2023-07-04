@@ -370,6 +370,92 @@ type CallBackInfo struct {
 	Headers []*string `json:"Headers,omitempty" name:"Headers"`
 }
 
+// Predefined struct for user
+type CheckRechargeKafkaServerRequestParams struct {
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+type CheckRechargeKafkaServerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+}
+
+func (r *CheckRechargeKafkaServerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckRechargeKafkaServerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KafkaType")
+	delete(f, "KafkaInstance")
+	delete(f, "ServerAddr")
+	delete(f, "IsEncryptionAddr")
+	delete(f, "Protocol")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckRechargeKafkaServerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckRechargeKafkaServerResponseParams struct {
+	// Kafka集群可访问状态，0：可正常访问 ...
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckRechargeKafkaServerResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckRechargeKafkaServerResponseParams `json:"Response"`
+}
+
+func (r *CheckRechargeKafkaServerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckRechargeKafkaServerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Ckafka struct {
 	// Ckafka 的 Vip
 	Vip *string `json:"Vip,omitempty" name:"Vip"`
@@ -1620,6 +1706,133 @@ func (r *CreateIndexResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateKafkaRechargeRequestParams struct {
+	// 导入CLS目标topic ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// Kafka导入配置名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitempty" name:"UserKafkaTopics"`
+
+	// 导入数据位置，-2:最早（默认），-1：最晚
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址，KafkaType为1时必填
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接，KafkaType为1时必填
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 用户Kafka消费组名称
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" name:"ConsumerGroupName"`
+
+	// 日志导入规则
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitempty" name:"LogRechargeRule"`
+}
+
+type CreateKafkaRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 导入CLS目标topic ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// Kafka导入配置名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitempty" name:"UserKafkaTopics"`
+
+	// 导入数据位置，-2:最早（默认），-1：最晚
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址，KafkaType为1时必填
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接，KafkaType为1时必填
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 用户Kafka消费组名称
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" name:"ConsumerGroupName"`
+
+	// 日志导入规则
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitempty" name:"LogRechargeRule"`
+}
+
+func (r *CreateKafkaRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKafkaRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "KafkaType")
+	delete(f, "UserKafkaTopics")
+	delete(f, "Offset")
+	delete(f, "KafkaInstance")
+	delete(f, "ServerAddr")
+	delete(f, "IsEncryptionAddr")
+	delete(f, "Protocol")
+	delete(f, "ConsumerGroupName")
+	delete(f, "LogRechargeRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKafkaRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateKafkaRechargeResponseParams struct {
+	// Kafka导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateKafkaRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateKafkaRechargeResponseParams `json:"Response"`
+}
+
+func (r *CreateKafkaRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKafkaRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLogsetRequestParams struct {
 	// 日志集名字，不能重名
 	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
@@ -2513,6 +2726,67 @@ func (r *DeleteIndexResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteKafkaRechargeRequestParams struct {
+	// Kafka导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 导入CLS目标topic ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+}
+
+type DeleteKafkaRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// Kafka导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 导入CLS目标topic ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+}
+
+func (r *DeleteKafkaRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKafkaRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "TopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteKafkaRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteKafkaRechargeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteKafkaRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteKafkaRechargeResponseParams `json:"Response"`
+}
+
+func (r *DeleteKafkaRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKafkaRechargeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3654,6 +3928,80 @@ func (r *DescribeIndexResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeKafkaRechargesRequestParams struct {
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 状态   status 1: 运行中, 2: 暂停...
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type DescribeKafkaRechargesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 状态   status 1: 运行中, 2: 暂停...
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *DescribeKafkaRechargesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaRechargesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Id")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaRechargesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaRechargesResponseParams struct {
+	// KafkaRechargeInfo 信息列表
+	Infos []*KafkaRechargeInfo `json:"Infos,omitempty" name:"Infos"`
+
+	// Kafka导入信息总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeKafkaRechargesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKafkaRechargesResponseParams `json:"Response"`
+}
+
+func (r *DescribeKafkaRechargesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaRechargesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLogContextRequestParams struct {
 	// 要查询的日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
@@ -4574,7 +4922,7 @@ type ExtractRuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginRegex *string `json:"BeginRegex,omitempty" name:"BeginRegex"`
 
-	// 取的每个字段的key名字，为空的key代表丢弃这个字段，只有log_type为delimiter_log时有效，json_log的日志使用json本身的key
+	// 取的每个字段的key名字，为空的key代表丢弃这个字段，只有log_type为delimiter_log时有效，json_log的日志使用json本身的key。限制100个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*string `json:"Keys,omitempty" name:"Keys"`
 
@@ -4829,6 +5177,110 @@ type JsonInfo struct {
 	JsonType *int64 `json:"JsonType,omitempty" name:"JsonType"`
 }
 
+type KafkaConsumerContent struct {
+	// 消费格式 0:全文；1:json
+	Format *int64 `json:"Format,omitempty" name:"Format"`
+
+	// 是否投递 TAG 信息
+	// Format为0时，此字段不需要赋值
+	EnableTag *bool `json:"EnableTag,omitempty" name:"EnableTag"`
+
+	// 元数据信息列表, 可选值为：\_\_SOURCE\_\_、\_\_FILENAME\_\_
+	// 、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKGID\_\_
+	// Format为0时，此字段不需要赋值
+	MetaFields []*string `json:"MetaFields,omitempty" name:"MetaFields"`
+
+	// tag数据处理方式：
+	// 1:不平铺（默认值）
+	// 2:平铺
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagTransaction *int64 `json:"TagTransaction,omitempty" name:"TagTransaction"`
+
+	// 消费数据Json格式：
+	// 1：不转义（默认格式）
+	// 2：转义
+	JsonType *int64 `json:"JsonType,omitempty" name:"JsonType"`
+}
+
+type KafkaProtocolInfo struct {
+	// 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mechanism *string `json:"Mechanism,omitempty" name:"Mechanism"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+type KafkaRechargeInfo struct {
+	// 主键ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// Kafka导入任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitempty" name:"UserKafkaTopics"`
+
+	// 用户Kafka消费组名称	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" name:"ConsumerGroupName"`
+
+	// 状态   status 1: 运行中, 2: 暂停 ...
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 导入数据位置，-1:最早（默认），-2：最晚，大于等于0: 指定offset
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 日志导入规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitempty" name:"LogRechargeRule"`
+}
+
 type KeyRegexInfo struct {
 	// 需要过滤日志的key
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -4933,6 +5385,60 @@ type LogItem struct {
 type LogItems struct {
 	// 分析结果返回的KV数据对
 	Data []*LogItem `json:"Data,omitempty" name:"Data"`
+}
+
+type LogRechargeRuleInfo struct {
+	// 导入类型，支持json_log：json格式日志，minimalist_log: 单行全文，fullregex_log: 单行完全正则
+	RechargeType *string `json:"RechargeType,omitempty" name:"RechargeType"`
+
+	// 解析编码格式，0: UTF-8（默认值），1: GBK
+	EncodingFormat *uint64 `json:"EncodingFormat,omitempty" name:"EncodingFormat"`
+
+	// 使用默认时间，true：开启（默认值）， flase：关闭
+	DefaultTimeSwitch *bool `json:"DefaultTimeSwitch,omitempty" name:"DefaultTimeSwitch"`
+
+	// 整条日志匹配规则，只有RechargeType为fullregex_log时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogRegex *string `json:"LogRegex,omitempty" name:"LogRegex"`
+
+	// 解析失败日志是否上传，true表示上传，false表示不上传
+	UnMatchLogSwitch *bool `json:"UnMatchLogSwitch,omitempty" name:"UnMatchLogSwitch"`
+
+	// 解析失败日志的键名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnMatchLogKey *string `json:"UnMatchLogKey,omitempty" name:"UnMatchLogKey"`
+
+	// 解析失败日志时间来源，0: 系统当前时间，1: Kafka消息时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnMatchLogTimeSrc *uint64 `json:"UnMatchLogTimeSrc,omitempty" name:"UnMatchLogTimeSrc"`
+
+	// 默认时间来源，0: 系统当前时间，1: Kafka消息时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultTimeSrc *uint64 `json:"DefaultTimeSrc,omitempty" name:"DefaultTimeSrc"`
+
+	// 时间字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
+
+	// 时间提取正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeRegex *string `json:"TimeRegex,omitempty" name:"TimeRegex"`
+
+	// 时间字段格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
+
+	// 时间字段时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
+
+	// 元数据信息，Kafka导入支持kafka_topic,kafka_partition,kafka_offset,kafka_timestamp
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadata []*string `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 日志Key列表，RechargeType为full_regex_log时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keys []*string `json:"Keys,omitempty" name:"Keys"`
 }
 
 type LogsetInfo struct {
@@ -5848,6 +6354,137 @@ func (r *ModifyIndexResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyKafkaRechargeRequestParams struct {
+	// Kafka导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 导入CLS目标topic ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// Kafka导入配置名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitempty" name:"UserKafkaTopics"`
+
+	// 用户Kafka消费组名称
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" name:"ConsumerGroupName"`
+
+	// 日志导入规则
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitempty" name:"LogRechargeRule"`
+
+	// 导入控制，1：暂停，2：继续
+	StatusControl *uint64 `json:"StatusControl,omitempty" name:"StatusControl"`
+}
+
+type ModifyKafkaRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// Kafka导入配置ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 导入CLS目标topic ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// Kafka导入配置名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitempty" name:"UserKafkaTopics"`
+
+	// 用户Kafka消费组名称
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" name:"ConsumerGroupName"`
+
+	// 日志导入规则
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitempty" name:"LogRechargeRule"`
+
+	// 导入控制，1：暂停，2：继续
+	StatusControl *uint64 `json:"StatusControl,omitempty" name:"StatusControl"`
+}
+
+func (r *ModifyKafkaRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKafkaRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "TopicId")
+	delete(f, "Name")
+	delete(f, "KafkaType")
+	delete(f, "KafkaInstance")
+	delete(f, "ServerAddr")
+	delete(f, "IsEncryptionAddr")
+	delete(f, "Protocol")
+	delete(f, "UserKafkaTopics")
+	delete(f, "ConsumerGroupName")
+	delete(f, "LogRechargeRule")
+	delete(f, "StatusControl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKafkaRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKafkaRechargeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyKafkaRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyKafkaRechargeResponseParams `json:"Response"`
+}
+
+func (r *ModifyKafkaRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKafkaRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyLogsetRequestParams struct {
 	// 日志集ID
 	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
@@ -6327,6 +6964,9 @@ type OpenKafkaConsumerRequestParams struct {
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
 	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
+
+	// kafka协议消费数据格式
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitempty" name:"ConsumerContent"`
 }
 
 type OpenKafkaConsumerRequest struct {
@@ -6337,6 +6977,9 @@ type OpenKafkaConsumerRequest struct {
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
 	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
+
+	// kafka协议消费数据格式
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitempty" name:"ConsumerContent"`
 }
 
 func (r *OpenKafkaConsumerRequest) ToJsonString() string {
@@ -6353,6 +6996,7 @@ func (r *OpenKafkaConsumerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FromTopicId")
 	delete(f, "Compression")
+	delete(f, "ConsumerContent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenKafkaConsumerRequest has unknown keys!", "")
 	}
@@ -6420,6 +7064,130 @@ type PartitionInfo struct {
 	// 只读分区数据停止写入时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastWriteTime *string `json:"LastWriteTime,omitempty" name:"LastWriteTime"`
+}
+
+// Predefined struct for user
+type PreviewKafkaRechargeRequestParams struct {
+	// 预览类型，1:源数据预览，2:导出结果预览
+	PreviewType *uint64 `json:"PreviewType,omitempty" name:"PreviewType"`
+
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitempty" name:"UserKafkaTopics"`
+
+	// 导入数据位置，-2:最早（默认），-1：最晚
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 用户Kafka消费组
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" name:"ConsumerGroupName"`
+
+	// 日志导入规则
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitempty" name:"LogRechargeRule"`
+}
+
+type PreviewKafkaRechargeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预览类型，1:源数据预览，2:导出结果预览
+	PreviewType *uint64 `json:"PreviewType,omitempty" name:"PreviewType"`
+
+	// 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+	KafkaType *uint64 `json:"KafkaType,omitempty" name:"KafkaType"`
+
+	// 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+	UserKafkaTopics *string `json:"UserKafkaTopics,omitempty" name:"UserKafkaTopics"`
+
+	// 导入数据位置，-2:最早（默认），-1：最晚
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 腾讯云CKafka实例ID，KafkaType为0时必填
+	KafkaInstance *string `json:"KafkaInstance,omitempty" name:"KafkaInstance"`
+
+	// 服务地址
+	ServerAddr *string `json:"ServerAddr,omitempty" name:"ServerAddr"`
+
+	// ServerAddr是否为加密连接
+	IsEncryptionAddr *bool `json:"IsEncryptionAddr,omitempty" name:"IsEncryptionAddr"`
+
+	// 加密访问协议，IsEncryptionAddr参数为true时必填
+	Protocol *KafkaProtocolInfo `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 用户Kafka消费组
+	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" name:"ConsumerGroupName"`
+
+	// 日志导入规则
+	LogRechargeRule *LogRechargeRuleInfo `json:"LogRechargeRule,omitempty" name:"LogRechargeRule"`
+}
+
+func (r *PreviewKafkaRechargeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PreviewKafkaRechargeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PreviewType")
+	delete(f, "KafkaType")
+	delete(f, "UserKafkaTopics")
+	delete(f, "Offset")
+	delete(f, "KafkaInstance")
+	delete(f, "ServerAddr")
+	delete(f, "IsEncryptionAddr")
+	delete(f, "Protocol")
+	delete(f, "ConsumerGroupName")
+	delete(f, "LogRechargeRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PreviewKafkaRechargeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PreviewKafkaRechargeResponseParams struct {
+	// 日志样例，PreviewType为2时返回
+	LogSample *string `json:"LogSample,omitempty" name:"LogSample"`
+
+	// 日志预览结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogData *string `json:"LogData,omitempty" name:"LogData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PreviewKafkaRechargeResponse struct {
+	*tchttp.BaseResponse
+	Response *PreviewKafkaRechargeResponseParams `json:"Response"`
+}
+
+func (r *PreviewKafkaRechargeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PreviewKafkaRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

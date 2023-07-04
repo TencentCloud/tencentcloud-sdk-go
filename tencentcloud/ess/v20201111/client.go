@@ -3027,6 +3027,7 @@ func NewDeleteSealPoliciesResponse() (response *DeleteSealPoliciesResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSealPolicies(request *DeleteSealPoliciesRequest) (response *DeleteSealPoliciesResponse, err error) {
     return c.DeleteSealPoliciesWithContext(context.Background(), request)
 }
@@ -3041,6 +3042,7 @@ func (c *Client) DeleteSealPolicies(request *DeleteSealPoliciesRequest) (respons
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteSealPoliciesWithContext(ctx context.Context, request *DeleteSealPoliciesRequest) (response *DeleteSealPoliciesResponse, err error) {
     if request == nil {
         request = NewDeleteSealPoliciesRequest()

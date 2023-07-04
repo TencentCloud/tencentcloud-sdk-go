@@ -44,14 +44,23 @@ const (
 	// DBErr
 	INTERNALERROR_DBERR = "InternalError.DBErr"
 
+	// 存在内部错误，请联系我们
+	INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
 	// 证书内容非法。
 	INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 
+	// 逻辑错误：SQL检索语句中的逻辑错误也可能导致错误。例如，使用错误的运算符、使用错误的条件等
+	INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+
 	// 根据ID查询证书失败。
 	INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+
+	// 语法错误：逻辑表达式语法解析出错
+	INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

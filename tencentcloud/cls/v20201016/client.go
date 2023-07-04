@@ -163,6 +163,64 @@ func (c *Client) ApplyConfigToMachineGroupWithContext(ctx context.Context, reque
     return
 }
 
+func NewCheckRechargeKafkaServerRequest() (request *CheckRechargeKafkaServerRequest) {
+    request = &CheckRechargeKafkaServerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CheckRechargeKafkaServer")
+    
+    
+    return
+}
+
+func NewCheckRechargeKafkaServerResponse() (response *CheckRechargeKafkaServerResponse) {
+    response = &CheckRechargeKafkaServerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckRechargeKafkaServer
+// 本接口用于校验Kafka服务集群是否可以正常访问
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckRechargeKafkaServer(request *CheckRechargeKafkaServerRequest) (response *CheckRechargeKafkaServerResponse, err error) {
+    return c.CheckRechargeKafkaServerWithContext(context.Background(), request)
+}
+
+// CheckRechargeKafkaServer
+// 本接口用于校验Kafka服务集群是否可以正常访问
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CheckRechargeKafkaServerWithContext(ctx context.Context, request *CheckRechargeKafkaServerRequest) (response *CheckRechargeKafkaServerResponse, err error) {
+    if request == nil {
+        request = NewCheckRechargeKafkaServerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckRechargeKafkaServer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckRechargeKafkaServerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloseKafkaConsumerRequest() (request *CloseKafkaConsumerRequest) {
     request = &CloseKafkaConsumerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -781,6 +839,70 @@ func (c *Client) CreateIndexWithContext(ctx context.Context, request *CreateInde
     request.SetContext(ctx)
     
     response = NewCreateIndexResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateKafkaRechargeRequest() (request *CreateKafkaRechargeRequest) {
+    request = &CreateKafkaRechargeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateKafkaRecharge")
+    
+    
+    return
+}
+
+func NewCreateKafkaRechargeResponse() (response *CreateKafkaRechargeResponse) {
+    response = &CreateKafkaRechargeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateKafkaRecharge
+// 本接口用于创建Kafka数据订阅任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateKafkaRecharge(request *CreateKafkaRechargeRequest) (response *CreateKafkaRechargeResponse, err error) {
+    return c.CreateKafkaRechargeWithContext(context.Background(), request)
+}
+
+// CreateKafkaRecharge
+// 本接口用于创建Kafka数据订阅任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) CreateKafkaRechargeWithContext(ctx context.Context, request *CreateKafkaRechargeRequest) (response *CreateKafkaRechargeResponse, err error) {
+    if request == nil {
+        request = NewCreateKafkaRechargeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateKafkaRecharge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateKafkaRechargeResponse()
     err = c.Send(request, response)
     return
 }
@@ -1607,6 +1729,70 @@ func (c *Client) DeleteIndexWithContext(ctx context.Context, request *DeleteInde
     request.SetContext(ctx)
     
     response = NewDeleteIndexResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteKafkaRechargeRequest() (request *DeleteKafkaRechargeRequest) {
+    request = &DeleteKafkaRechargeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteKafkaRecharge")
+    
+    
+    return
+}
+
+func NewDeleteKafkaRechargeResponse() (response *DeleteKafkaRechargeResponse) {
+    response = &DeleteKafkaRechargeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteKafkaRecharge
+// 本接口用于删除Kafka数据订阅任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteKafkaRecharge(request *DeleteKafkaRechargeRequest) (response *DeleteKafkaRechargeResponse, err error) {
+    return c.DeleteKafkaRechargeWithContext(context.Background(), request)
+}
+
+// DeleteKafkaRecharge
+// 本接口用于删除Kafka数据订阅任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteKafkaRechargeWithContext(ctx context.Context, request *DeleteKafkaRechargeRequest) (response *DeleteKafkaRechargeResponse, err error) {
+    if request == nil {
+        request = NewDeleteKafkaRechargeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteKafkaRecharge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteKafkaRechargeResponse()
     err = c.Send(request, response)
     return
 }
@@ -2597,6 +2783,76 @@ func (c *Client) DescribeIndexWithContext(ctx context.Context, request *Describe
     request.SetContext(ctx)
     
     response = NewDescribeIndexResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKafkaRechargesRequest() (request *DescribeKafkaRechargesRequest) {
+    request = &DescribeKafkaRechargesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeKafkaRecharges")
+    
+    
+    return
+}
+
+func NewDescribeKafkaRechargesResponse() (response *DescribeKafkaRechargesResponse) {
+    response = &DescribeKafkaRechargesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKafkaRecharges
+// 本接口用于获取Kafka数据订阅任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TOPICCONFLICT = "InvalidParameter.TopicConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaRecharges(request *DescribeKafkaRechargesRequest) (response *DescribeKafkaRechargesResponse, err error) {
+    return c.DescribeKafkaRechargesWithContext(context.Background(), request)
+}
+
+// DescribeKafkaRecharges
+// 本接口用于获取Kafka数据订阅任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TOPICCONFLICT = "InvalidParameter.TopicConflict"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DescribeKafkaRechargesWithContext(ctx context.Context, request *DescribeKafkaRechargesRequest) (response *DescribeKafkaRechargesResponse, err error) {
+    if request == nil {
+        request = NewDescribeKafkaRechargesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKafkaRecharges require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKafkaRechargesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3967,6 +4223,68 @@ func (c *Client) ModifyIndexWithContext(ctx context.Context, request *ModifyInde
     return
 }
 
+func NewModifyKafkaRechargeRequest() (request *ModifyKafkaRechargeRequest) {
+    request = &ModifyKafkaRechargeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "ModifyKafkaRecharge")
+    
+    
+    return
+}
+
+func NewModifyKafkaRechargeResponse() (response *ModifyKafkaRechargeResponse) {
+    response = &ModifyKafkaRechargeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyKafkaRecharge
+// 本接口用于修改Kafka数据订阅任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyKafkaRecharge(request *ModifyKafkaRechargeRequest) (response *ModifyKafkaRechargeResponse, err error) {
+    return c.ModifyKafkaRechargeWithContext(context.Background(), request)
+}
+
+// ModifyKafkaRecharge
+// 本接口用于修改Kafka数据订阅任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) ModifyKafkaRechargeWithContext(ctx context.Context, request *ModifyKafkaRechargeRequest) (response *ModifyKafkaRechargeResponse, err error) {
+    if request == nil {
+        request = NewModifyKafkaRechargeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyKafkaRecharge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyKafkaRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyLogsetRequest() (request *ModifyLogsetRequest) {
     request = &ModifyLogsetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4327,6 +4645,70 @@ func (c *Client) OpenKafkaConsumerWithContext(ctx context.Context, request *Open
     request.SetContext(ctx)
     
     response = NewOpenKafkaConsumerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewPreviewKafkaRechargeRequest() (request *PreviewKafkaRechargeRequest) {
+    request = &PreviewKafkaRechargeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "PreviewKafkaRecharge")
+    
+    
+    return
+}
+
+func NewPreviewKafkaRechargeResponse() (response *PreviewKafkaRechargeResponse) {
+    response = &PreviewKafkaRechargeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PreviewKafkaRecharge
+// 本接口用于预览Kafka数据订阅任务客户日志信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) PreviewKafkaRecharge(request *PreviewKafkaRechargeRequest) (response *PreviewKafkaRechargeResponse, err error) {
+    return c.PreviewKafkaRechargeWithContext(context.Background(), request)
+}
+
+// PreviewKafkaRecharge
+// 本接口用于预览Kafka数据订阅任务客户日志信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) PreviewKafkaRechargeWithContext(ctx context.Context, request *PreviewKafkaRechargeRequest) (response *PreviewKafkaRechargeResponse, err error) {
+    if request == nil {
+        request = NewPreviewKafkaRechargeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PreviewKafkaRecharge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPreviewKafkaRechargeResponse()
     err = c.Send(request, response)
     return
 }

@@ -170,6 +170,9 @@ const (
 	// API网关内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 	INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 
+	// CAM内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
+	INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
+
 	// CAuth内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 	INTERNALERROR_CAUTHEXCEPTION = "InternalError.CauthException"
 

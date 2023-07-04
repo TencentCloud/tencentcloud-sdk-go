@@ -1,31 +1,40 @@
 # 本版本更新包含以下内容：
 
-## 费用中心(billing) 版本：2018-07-09
+## 账号风控平台(ciam) 版本：2022-03-31
 
-### 第 44 次发布
+### 第 9 次发布
 
-发布时间：2023-07-03 01:04:02
+发布时间：2023-07-04 01:14:49
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [BillDetailComponent](https://cloud.tencent.com/document/api/555/19183#BillDetailComponent)
+* [CreateUserGroup](https://cloud.tencent.com/document/api/1441/94455)
+* [CreateUserStore](https://cloud.tencent.com/document/api/1441/94460)
+* [DeleteUserGroups](https://cloud.tencent.com/document/api/1441/94454)
+* [DeleteUserStore](https://cloud.tencent.com/document/api/1441/94459)
+* [ListUserGroups](https://cloud.tencent.com/document/api/1441/94453)
+* [ListUserStore](https://cloud.tencent.com/document/api/1441/94458)
+* [UpdateUserGroup](https://cloud.tencent.com/document/api/1441/94452)
+* [UpdateUserStore](https://cloud.tencent.com/document/api/1441/94457)
 
-	* 新增成员：RealTotalMeasure, DeductedMeasure
+新增数据结构：
 
-	* <font color="#dd0000">**修改成员**：</font>SpecifiedPrice, TransferPayAmount, SPDeduction
+* [AppAssociatedUserGroupIds](https://cloud.tencent.com/document/api/1441/75643#AppAssociatedUserGroupIds)
+* [UserGroup](https://cloud.tencent.com/document/api/1441/75643#UserGroup)
+* [UserGroupDeleteResp](https://cloud.tencent.com/document/api/1441/75643#UserGroupDeleteResp)
+* [UserStore](https://cloud.tencent.com/document/api/1441/75643#UserStore)
 
 
 
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
+## 日志服务(cls) 版本：2020-10-16
 
 ### 第 53 次发布
 
-发布时间：2023-07-03 01:18:43
+发布时间：2023-07-03 17:15:42
 
 本次发布包含了以下内容：
 
@@ -33,16 +42,18 @@
 
 修改接口：
 
-* [CreateDataEngine](https://cloud.tencent.com/document/api/1342/87875)
+* [OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)
+
+	* 新增入参：ConsumerContent
 
 
+新增数据结构：
 
+* [KafkaConsumerContent](https://cloud.tencent.com/document/api/614/56471#KafkaConsumerContent)
 
-## DNSPod(dnspod) 版本：2021-03-23
+### 第 52 次发布
 
-### 第 20 次发布
-
-发布时间：2023-07-03 01:19:17
+发布时间：2023-07-03 16:20:49
 
 本次发布包含了以下内容：
 
@@ -50,102 +61,18 @@
 
 新增接口：
 
-* [DeleteRecordBatch](https://cloud.tencent.com/document/api/1427/94422)
+* [CheckRechargeKafkaServer](https://cloud.tencent.com/document/api/614/94449)
+* [CreateKafkaRecharge](https://cloud.tencent.com/document/api/614/94448)
+* [DeleteKafkaRecharge](https://cloud.tencent.com/document/api/614/94447)
+* [DescribeKafkaRecharges](https://cloud.tencent.com/document/api/614/94446)
+* [ModifyKafkaRecharge](https://cloud.tencent.com/document/api/614/94445)
+* [PreviewKafkaRecharge](https://cloud.tencent.com/document/api/614/94444)
 
 新增数据结构：
 
-* [DeleteRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#DeleteRecordBatchDetail)
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 83 次发布
-
-发布时间：2023-06-30 18:46:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateReleaseFlow](https://cloud.tencent.com/document/api/1323/88045)
-
-	* 新增入参：Deadline
-
-
-修改数据结构：
-
-* [ReleasedApprover](https://cloud.tencent.com/document/api/1323/70369#ReleasedApprover)
-
-	* 新增成员：ApproverSignComponentType, ApproverSignRole
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 87 次发布
-
-发布时间：2023-06-30 17:26:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ChannelCreateReleaseFlow](https://cloud.tencent.com/document/api/1420/83461)
-
-	* 新增入参：Deadline
-
-
-修改数据结构：
-
-* [ReleasedApprover](https://cloud.tencent.com/document/api/1420/61525#ReleasedApprover)
-
-	* 新增成员：ApproverSignComponentType, ApproverSignRole
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 企业微信汽车行业版(wav) 版本：2021-01-29
-
-### 第 14 次发布
-
-发布时间：2023-06-30 12:15:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [QueryArrivalList](https://cloud.tencent.com/document/api/1318/94396)
-* [QueryFollowList](https://cloud.tencent.com/document/api/1318/94395)
-
-新增数据结构：
-
-* [ArrivalInfo](https://cloud.tencent.com/document/api/1318/56791#ArrivalInfo)
-* [FollowInfo](https://cloud.tencent.com/document/api/1318/56791#FollowInfo)
-
-修改数据结构：
-
-* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
-
-	* 新增成员：WxId, BrandCode, BuildTime, OrderTime, ArrivalTime, DeliveryTime, FollowTime, NextFollowTime, OrgId, OrgName, Introducer, IntroducerPhone, IsBindWx, IsMerge, IsInvalid, InvalidType, InvalidTypeName, InvalidRemark, InvalidTime, DealerName, ShopId, ShopName, Position
-
-	* <font color="#dd0000">**修改成员**：</font>LeadUserType, LeadType, ChannelId, ChannelName, SourceChannelName, Gender, CreateTime, LeadStatus, LevelCode, ImportAtTime, DistributeTime, CreateAtTime
-
-* [CorpUserInfo](https://cloud.tencent.com/document/api/1318/56791#CorpUserInfo)
-
-	* 新增成员：JobNumber
-
+* [KafkaProtocolInfo](https://cloud.tencent.com/document/api/614/56471#KafkaProtocolInfo)
+* [KafkaRechargeInfo](https://cloud.tencent.com/document/api/614/56471#KafkaRechargeInfo)
+* [LogRechargeRuleInfo](https://cloud.tencent.com/document/api/614/56471#LogRechargeRuleInfo)
 
 
 
@@ -21567,6 +21494,32 @@
 
 ## 账号风控平台(ciam) 版本：2022-03-31
 
+### 第 9 次发布
+
+发布时间：2023-07-04 01:14:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateUserGroup](https://cloud.tencent.com/document/api/1441/94455)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateUserStore](https://cloud.tencent.com/document/api/1441/94460)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUserGroups](https://cloud.tencent.com/document/api/1441/94454)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUserStore](https://cloud.tencent.com/document/api/1441/94459)](https://cloud.tencent.com/document/api/#/#)
+* [[ListUserGroups](https://cloud.tencent.com/document/api/1441/94453)](https://cloud.tencent.com/document/api/#/#)
+* [[ListUserStore](https://cloud.tencent.com/document/api/1441/94458)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateUserGroup](https://cloud.tencent.com/document/api/1441/94452)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateUserStore](https://cloud.tencent.com/document/api/1441/94457)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AppAssociatedUserGroupIds](https://cloud.tencent.com/document/api/1441/75643#AppAssociatedUserGroupIds)](https://cloud.tencent.com/document/api/1441/75643#[AppAssociatedUserGroupIds](https://cloud.tencent.com/document/api/1441/75643#AppAssociatedUserGroupIds))
+* [[UserGroup](https://cloud.tencent.com/document/api/1441/75643#UserGroup)](https://cloud.tencent.com/document/api/1441/75643#[UserGroup](https://cloud.tencent.com/document/api/1441/75643#UserGroup))
+* [[UserGroupDeleteResp](https://cloud.tencent.com/document/api/1441/75643#UserGroupDeleteResp)](https://cloud.tencent.com/document/api/1441/75643#[UserGroupDeleteResp](https://cloud.tencent.com/document/api/1441/75643#UserGroupDeleteResp))
+* [[UserStore](https://cloud.tencent.com/document/api/1441/75643#UserStore)](https://cloud.tencent.com/document/api/1441/75643#[UserStore](https://cloud.tencent.com/document/api/1441/75643#UserStore))
+
 ### 第 8 次发布
 
 发布时间：2022-09-27 06:14:52
@@ -26430,6 +26383,48 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 53 次发布
+
+发布时间：2023-07-03 17:15:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)
+
+	* 新增入参：ConsumerContent
+
+
+新增数据结构：
+
+* [[KafkaConsumerContent](https://cloud.tencent.com/document/api/614/56471#KafkaConsumerContent)](https://cloud.tencent.com/document/api/614/56471#[KafkaConsumerContent](https://cloud.tencent.com/document/api/614/56471#KafkaConsumerContent))
+
+### 第 52 次发布
+
+发布时间：2023-07-03 16:20:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckRechargeKafkaServer](https://cloud.tencent.com/document/api/614/94449)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateKafkaRecharge](https://cloud.tencent.com/document/api/614/94448)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteKafkaRecharge](https://cloud.tencent.com/document/api/614/94447)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeKafkaRecharges](https://cloud.tencent.com/document/api/614/94446)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyKafkaRecharge](https://cloud.tencent.com/document/api/614/94445)](https://cloud.tencent.com/document/api/#/#)
+* [[PreviewKafkaRecharge](https://cloud.tencent.com/document/api/614/94444)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KafkaProtocolInfo](https://cloud.tencent.com/document/api/614/56471#KafkaProtocolInfo)](https://cloud.tencent.com/document/api/614/56471#[KafkaProtocolInfo](https://cloud.tencent.com/document/api/614/56471#KafkaProtocolInfo))
+* [[KafkaRechargeInfo](https://cloud.tencent.com/document/api/614/56471#KafkaRechargeInfo)](https://cloud.tencent.com/document/api/614/56471#[KafkaRechargeInfo](https://cloud.tencent.com/document/api/614/56471#KafkaRechargeInfo))
+* [[LogRechargeRuleInfo](https://cloud.tencent.com/document/api/614/56471#LogRechargeRuleInfo)](https://cloud.tencent.com/document/api/614/56471#[LogRechargeRuleInfo](https://cloud.tencent.com/document/api/614/56471#LogRechargeRuleInfo))
 
 ### 第 51 次发布
 
@@ -42750,11 +42745,11 @@
 
 新增接口：
 
-* [[DeleteRecordBatch](https://cloud.tencent.com/document/api/1427/94422)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteRecordBatch](https://cloud.tencent.com/document/api/1427/94422)
 
 新增数据结构：
 
-* [[DeleteRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#DeleteRecordBatchDetail)](https://cloud.tencent.com/document/api/1427/56185#[DeleteRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#DeleteRecordBatchDetail))
+* [DeleteRecordBatchDetail](https://cloud.tencent.com/document/api/1427/56185#DeleteRecordBatchDetail)
 
 ### 第 19 次发布
 
@@ -121324,13 +121319,13 @@
 
 新增接口：
 
-* [[QueryArrivalList](https://cloud.tencent.com/document/api/1318/94396)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryFollowList](https://cloud.tencent.com/document/api/1318/94395)](https://cloud.tencent.com/document/api/#/#)
+* [QueryArrivalList](https://cloud.tencent.com/document/api/1318/94396)
+* [QueryFollowList](https://cloud.tencent.com/document/api/1318/94395)
 
 新增数据结构：
 
-* [[ArrivalInfo](https://cloud.tencent.com/document/api/1318/56791#ArrivalInfo)](https://cloud.tencent.com/document/api/1318/56791#[ArrivalInfo](https://cloud.tencent.com/document/api/1318/56791#ArrivalInfo))
-* [[FollowInfo](https://cloud.tencent.com/document/api/1318/56791#FollowInfo)](https://cloud.tencent.com/document/api/1318/56791#[FollowInfo](https://cloud.tencent.com/document/api/1318/56791#FollowInfo))
+* [ArrivalInfo](https://cloud.tencent.com/document/api/1318/56791#ArrivalInfo)
+* [FollowInfo](https://cloud.tencent.com/document/api/1318/56791#FollowInfo)
 
 修改数据结构：
 

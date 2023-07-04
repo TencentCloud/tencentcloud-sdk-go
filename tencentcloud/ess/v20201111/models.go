@@ -118,10 +118,10 @@ type ApproverInfo struct {
 }
 
 type ApproverOption struct {
-	// 是否可以拒签 false-可以拒签,默认 true-不可以拒签
+	// 是否可以拒签 默认false-可以拒签 true-不可以拒签
 	NoRefuse *bool `json:"NoRefuse,omitempty" name:"NoRefuse"`
 
-	// 是否可以转发 false-可以转发,默认 true-不可以转发
+	// 是否可以转发 默认false-可以转发 true-不可以转发
 	NoTransfer *bool `json:"NoTransfer,omitempty" name:"NoTransfer"`
 }
 

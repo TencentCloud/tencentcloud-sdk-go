@@ -6581,6 +6581,7 @@ func NewDescribeLiveStreamMonitorListResponse() (response *DescribeLiveStreamMon
 // 该接口用来查询直播流监播任务配置的列表信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
 //  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
 //  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
@@ -6594,6 +6595,7 @@ func (c *Client) DescribeLiveStreamMonitorList(request *DescribeLiveStreamMonito
 // 该接口用来查询直播流监播任务配置的列表信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATABASENOTACCESSIBLE = "FailedOperation.DatabaseNotAccessible"
 //  INVALIDPARAMETER_NOTALLOWUSELVB = "InvalidParameter.NotAllowUseLVB"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
 //  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
@@ -9888,6 +9890,7 @@ func NewModifyLivePlayAuthKeyResponse() (response *ModifyLivePlayAuthKeyResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_PLAYDOMAINNORECORD = "InternalError.PlayDomainNoRecord"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -9906,6 +9909,7 @@ func (c *Client) ModifyLivePlayAuthKey(request *ModifyLivePlayAuthKeyRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_PLAYDOMAINNORECORD = "InternalError.PlayDomainNoRecord"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

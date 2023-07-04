@@ -2771,6 +2771,7 @@ func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
 // 本接口（DescribeFirmware）用于查询固件信息
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
     return c.DescribeFirmwareWithContext(context.Background(), request)
@@ -2780,6 +2781,7 @@ func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *D
 // 本接口（DescribeFirmware）用于查询固件信息
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) DescribeFirmwareWithContext(ctx context.Context, request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
     if request == nil {
@@ -2974,6 +2976,7 @@ func NewDescribeFirmwareTaskStatisticsResponse() (response *DescribeFirmwareTask
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
     return c.DescribeFirmwareTaskStatisticsWithContext(context.Background(), request)
 }
@@ -2985,6 +2988,7 @@ func (c *Client) DescribeFirmwareTaskStatistics(request *DescribeFirmwareTaskSta
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFirmwareTaskStatisticsWithContext(ctx context.Context, request *DescribeFirmwareTaskStatisticsRequest) (response *DescribeFirmwareTaskStatisticsResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTaskStatisticsRequest()
@@ -3026,6 +3030,7 @@ func NewDescribeFirmwareTasksResponse() (response *DescribeFirmwareTasksResponse
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
     return c.DescribeFirmwareTasksWithContext(context.Background(), request)
 }
@@ -3037,6 +3042,7 @@ func (c *Client) DescribeFirmwareTasks(request *DescribeFirmwareTasksRequest) (r
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFirmwareTasksWithContext(ctx context.Context, request *DescribeFirmwareTasksRequest) (response *DescribeFirmwareTasksResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareTasksRequest()
@@ -4900,6 +4906,7 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
 func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {
@@ -4911,6 +4918,7 @@ func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *Uploa
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FIRMWAREALREADYEXIST = "InvalidParameterValue.FirmwareAlreadyExist"
 func (c *Client) UploadFirmwareWithContext(ctx context.Context, request *UploadFirmwareRequest) (response *UploadFirmwareResponse, err error) {

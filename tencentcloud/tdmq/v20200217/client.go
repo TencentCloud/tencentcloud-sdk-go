@@ -7047,6 +7047,7 @@ func NewSendRocketMQMessageResponse() (response *SendRocketMQMessageResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) SendRocketMQMessage(request *SendRocketMQMessageRequest) (response *SendRocketMQMessageResponse, err error) {
     return c.SendRocketMQMessageWithContext(context.Background(), request)
 }
@@ -7057,6 +7058,7 @@ func (c *Client) SendRocketMQMessage(request *SendRocketMQMessageRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) SendRocketMQMessageWithContext(ctx context.Context, request *SendRocketMQMessageRequest) (response *SendRocketMQMessageResponse, err error) {
     if request == nil {
         request = NewSendRocketMQMessageRequest()

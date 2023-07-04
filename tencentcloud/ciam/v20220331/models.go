@@ -20,6 +20,20 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AppAssociatedUserGroupIds struct {
+	// 用户组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
+	// 应用id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+}
+
 // Predefined struct for user
 type CreateApiImportUserJobRequestParams struct {
 	// 用户目录ID
@@ -171,6 +185,74 @@ func (r *CreateFileExportUserJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateFileExportUserJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserGroupRequestParams struct {
+	// 用户组名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户组描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type CreateUserGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户组名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户组描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *CreateUserGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DisplayName")
+	delete(f, "UserStoreId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateUserGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateUserGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -327,6 +409,193 @@ func (r *CreateUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserStoreRequestParams struct {
+	// 用户池名字
+	UserPoolName *string `json:"UserPoolName,omitempty" name:"UserPoolName"`
+
+	// 用户池描述
+	UserPoolDesc *string `json:"UserPoolDesc,omitempty" name:"UserPoolDesc"`
+
+	// 用户池logo
+	UserPoolLogo *string `json:"UserPoolLogo,omitempty" name:"UserPoolLogo"`
+}
+
+type CreateUserStoreRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户池名字
+	UserPoolName *string `json:"UserPoolName,omitempty" name:"UserPoolName"`
+
+	// 用户池描述
+	UserPoolDesc *string `json:"UserPoolDesc,omitempty" name:"UserPoolDesc"`
+
+	// 用户池logo
+	UserPoolLogo *string `json:"UserPoolLogo,omitempty" name:"UserPoolLogo"`
+}
+
+func (r *CreateUserStoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserStoreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserPoolName")
+	delete(f, "UserPoolDesc")
+	delete(f, "UserPoolLogo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserStoreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserStoreResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateUserStoreResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserStoreResponseParams `json:"Response"`
+}
+
+func (r *CreateUserStoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserStoreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserGroupsRequestParams struct {
+	// 用户组ID数组
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" name:"UserGroupIds"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+}
+
+type DeleteUserGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户组ID数组
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" name:"UserGroupIds"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+}
+
+func (r *DeleteUserGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserGroupIds")
+	delete(f, "UserStoreId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserGroupsResponseParams struct {
+	// 删除的用户组关联的应用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserGroupDeletedInfo *UserGroupDeleteResp `json:"UserGroupDeletedInfo,omitempty" name:"UserGroupDeletedInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteUserGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserGroupsResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserStoreRequestParams struct {
+	// 用户池ID
+	UserPoolId *string `json:"UserPoolId,omitempty" name:"UserPoolId"`
+}
+
+type DeleteUserStoreRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户池ID
+	UserPoolId *string `json:"UserPoolId,omitempty" name:"UserPoolId"`
+}
+
+func (r *DeleteUserStoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserStoreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserPoolId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserStoreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserStoreResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteUserStoreResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserStoreResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserStoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserStoreResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1058,6 +1327,90 @@ func (r *ListUserByPropertyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListUserGroupsRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 分页数据
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// Key可选值为condition
+	// 
+	// <li> **condition** </li>	Values = 查询条件，用户组ID或用户组名称
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type ListUserGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 分页数据
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// Key可选值为condition
+	// 
+	// <li> **condition** </li>	Values = 查询条件，用户组ID或用户组名称
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *ListUserGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUserGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserStoreId")
+	delete(f, "Pageable")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUserGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListUserGroupsResponseParams struct {
+	// 用户组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*UserGroup `json:"Content,omitempty" name:"Content"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 分页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListUserGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListUserGroupsResponseParams `json:"Response"`
+}
+
+func (r *ListUserGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUserGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListUserRequestParams struct {
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
@@ -1147,6 +1500,61 @@ func (r *ListUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListUserStoreRequestParams struct {
+
+}
+
+type ListUserStoreRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ListUserStoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUserStoreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUserStoreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListUserStoreResponseParams struct {
+	// 用户目录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserStoreSet []*UserStore `json:"UserStoreSet,omitempty" name:"UserStoreSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListUserStoreResponse struct {
+	*tchttp.BaseResponse
+	Response *ListUserStoreResponseParams `json:"Response"`
+}
+
+func (r *ListUserStoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListUserStoreResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1418,6 +1826,81 @@ type Sort struct {
 }
 
 // Predefined struct for user
+type UpdateUserGroupRequestParams struct {
+	// 用户组ID
+	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
+	// 用户组名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户组描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type UpdateUserGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户组ID
+	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
+	// 用户组名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户组描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+func (r *UpdateUserGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserGroupId")
+	delete(f, "DisplayName")
+	delete(f, "UserStoreId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateUserGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateUserGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateUserGroupResponseParams `json:"Response"`
+}
+
+func (r *UpdateUserGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateUserRequestParams struct {
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
@@ -1649,6 +2132,81 @@ func (r *UpdateUserStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserStoreRequestParams struct {
+	// 用户池ID
+	UserPoolId *string `json:"UserPoolId,omitempty" name:"UserPoolId"`
+
+	// 用户池名字
+	UserPoolName *string `json:"UserPoolName,omitempty" name:"UserPoolName"`
+
+	// 用户池描述
+	UserPoolDesc *string `json:"UserPoolDesc,omitempty" name:"UserPoolDesc"`
+
+	// 用户池logo
+	UserPoolLogo *string `json:"UserPoolLogo,omitempty" name:"UserPoolLogo"`
+}
+
+type UpdateUserStoreRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户池ID
+	UserPoolId *string `json:"UserPoolId,omitempty" name:"UserPoolId"`
+
+	// 用户池名字
+	UserPoolName *string `json:"UserPoolName,omitempty" name:"UserPoolName"`
+
+	// 用户池描述
+	UserPoolDesc *string `json:"UserPoolDesc,omitempty" name:"UserPoolDesc"`
+
+	// 用户池logo
+	UserPoolLogo *string `json:"UserPoolLogo,omitempty" name:"UserPoolLogo"`
+}
+
+func (r *UpdateUserStoreRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserStoreRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserPoolId")
+	delete(f, "UserPoolName")
+	delete(f, "UserPoolDesc")
+	delete(f, "UserPoolLogo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserStoreRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateUserStoreResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateUserStoreResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateUserStoreResponseParams `json:"Response"`
+}
+
+func (r *UpdateUserStoreResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserStoreResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type User struct {
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
@@ -1809,4 +2367,83 @@ type User struct {
 	// 索引字段5
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedAttribute5 *string `json:"IndexedAttribute5,omitempty" name:"IndexedAttribute5"`
+}
+
+type UserGroup struct {
+	// 用户组ID
+	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
+	// 用户组名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 用户组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 租户ID
+	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+
+	// 创建时间
+	CreatedDate *int64 `json:"CreatedDate,omitempty" name:"CreatedDate"`
+
+	// 最近更新时间
+	LastModifyDate *int64 `json:"LastModifyDate,omitempty" name:"LastModifyDate"`
+}
+
+type UserGroupDeleteResp struct {
+	// 错误详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 用户组关联的应用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppAssociatedUserGroupIds []*AppAssociatedUserGroupIds `json:"AppAssociatedUserGroupIds,omitempty" name:"AppAssociatedUserGroupIds"`
+}
+
+type UserStore struct {
+	// 租户ID
+	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+
+	// 用户池logo
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserStoreLogo *string `json:"UserStoreLogo,omitempty" name:"UserStoreLogo"`
+
+	// 用户池描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserStoreDesc *string `json:"UserStoreDesc,omitempty" name:"UserStoreDesc"`
+
+	// 用户池名称
+	UserStoreName *string `json:"UserStoreName,omitempty" name:"UserStoreName"`
+
+	// 用户数量
+	UserNum *int64 `json:"UserNum,omitempty" name:"UserNum"`
+
+	// 用户池ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 应用数量
+	AppNum *int64 `json:"AppNum,omitempty" name:"AppNum"`
+
+	// 上次切换的用户池
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastStatus *bool `json:"LastStatus,omitempty" name:"LastStatus"`
+
+	// 默认用户池
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultStatus *bool `json:"DefaultStatus,omitempty" name:"DefaultStatus"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateDate *int64 `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 上次切换时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastStatusTime *int64 `json:"LastStatusTime,omitempty" name:"LastStatusTime"`
+
+	// 用户目录域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserStoreProtocolHost *string `json:"UserStoreProtocolHost,omitempty" name:"UserStoreProtocolHost"`
 }
