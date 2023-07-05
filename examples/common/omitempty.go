@@ -11,6 +11,9 @@ import (
 )
 
 func main() {
+	//SDK 使用 `omitempty` 标签来序列化你的 request 对象, 因为这样可以避免上报空数组/对象.
+	//但对有的接口而言, 长度为0的数组 和 nil数组 是有区别的, 如果你希望在请求中携带空数组, 需要使用Common Client 来发送请求.
+
 	// 错误的做法
 	wrongWay()
 
