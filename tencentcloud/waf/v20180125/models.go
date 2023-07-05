@@ -3426,7 +3426,7 @@ type DomainInfo struct {
 	// cname地址
 	Cname *string `json:"Cname,omitempty" name:"Cname"`
 
-	// 实例类型
+	// 实例类型,sparta-waf表示saaswaf实例域名,clb-waf表示clbwaf实例域名,cdc-clb-waf表示CDC环境下clbwaf实例域名,cdn-waf表示cdnwaf实例域名
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
 
 	// 地域
@@ -3438,16 +3438,16 @@ type DomainInfo struct {
 	// 日志包
 	ClsStatus *uint64 `json:"ClsStatus,omitempty" name:"ClsStatus"`
 
-	// clb模式
+	// clbwaf使用模式,0镜像模式 1清洗模式
 	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
 
-	// waf开关
+	// waf开关,0关闭 1开启
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 防御模式
+	// 规则防御模式,0观察模式 1拦截模式
 	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
 
-	// AI防御模式
+	// AI防御模式,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
 	Engine *uint64 `json:"Engine,omitempty" name:"Engine"`
 
 	// CC列表
@@ -3465,30 +3465,46 @@ type DomainInfo struct {
 	// 用户id
 	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
 
-	// clb状态
+	// clbwaf域名监听器状态,0操作成功 4正在绑定LB 6正在解绑LB 7解绑LB失败 8绑定LB失败 10内部错误
 	State *int64 `json:"State,omitempty" name:"State"`
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 0关闭 1开启
+	// Ipv6开关状态,0关闭 1开启
 	Ipv6Status *int64 `json:"Ipv6Status,omitempty" name:"Ipv6Status"`
 
-	// 0关闭 1开启
+	// BOT开关状态,0关闭 1开启
 	BotStatus *int64 `json:"BotStatus,omitempty" name:"BotStatus"`
 
 	// 版本信息
 	Level *int64 `json:"Level,omitempty" name:"Level"`
 
-	// 是否开启投递CLS功能
+	// 是否开启投递CLS功能,0关闭 1开启
 	PostCLSStatus *int64 `json:"PostCLSStatus,omitempty" name:"PostCLSStatus"`
 
-	// 是否开启投递CKafka功能
+	// 是否开启投递CKafka功能,0关闭 1开启
 	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitempty" name:"PostCKafkaStatus"`
 
-	// 应用型负载均衡类型: clb或者apisix，默认clb
+	// cdc实例域名接入的集群信息,非cdc实例忽略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcClusters *string `json:"CdcClusters,omitempty" name:"CdcClusters"`
+
+	// api安全开关状态,0关闭 1开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiStatus *int64 `json:"ApiStatus,omitempty" name:"ApiStatus"`
+
+	// 应用型负载均衡类型,clb或者apisix，默认clb
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+
+	// 安全组状态,0不展示 1非腾讯云源站 2安全组绑定失败 3安全组发生变更
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SgState *int64 `json:"SgState,omitempty" name:"SgState"`
+
+	// 安全组状态的详细解释
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SgDetail *string `json:"SgDetail,omitempty" name:"SgDetail"`
 }
 
 type DomainPackageNew struct {

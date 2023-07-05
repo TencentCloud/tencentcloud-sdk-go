@@ -1930,7 +1930,10 @@ type CreateNotebookSessionRequestParams struct {
 	// 指定的Executor数量，默认为1
 	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitempty" name:"ExecutorNumbers"`
 
-	// Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+	// Session相关配置，当前支持：
+	// 1. dlc.eni: 用户配置的eni网关信息，可以通过该字段设置；
+	// 2. dlc.role.arn: 用户配置的roleArn鉴权策略配置信息，可以通过该字段设置；
+	// 3. dlc.sql.set.config: 用户配置的集群配置信息，可以通过该字段设置；
 	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
 
 	// 代理用户，默认为root
@@ -1941,6 +1944,9 @@ type CreateNotebookSessionRequestParams struct {
 
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
 	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+
+	// 指定spark版本名称，当前任务使用该spark镜像运行
+	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
 }
 
 type CreateNotebookSessionRequest struct {
@@ -1976,7 +1982,10 @@ type CreateNotebookSessionRequest struct {
 	// 指定的Executor数量，默认为1
 	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitempty" name:"ExecutorNumbers"`
 
-	// Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+	// Session相关配置，当前支持：
+	// 1. dlc.eni: 用户配置的eni网关信息，可以通过该字段设置；
+	// 2. dlc.role.arn: 用户配置的roleArn鉴权策略配置信息，可以通过该字段设置；
+	// 3. dlc.sql.set.config: 用户配置的集群配置信息，可以通过该字段设置；
 	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
 
 	// 代理用户，默认为root
@@ -1987,6 +1996,9 @@ type CreateNotebookSessionRequest struct {
 
 	// 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于ExecutorNumbers
 	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitempty" name:"ExecutorMaxNumbers"`
+
+	// 指定spark版本名称，当前任务使用该spark镜像运行
+	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
 }
 
 func (r *CreateNotebookSessionRequest) ToJsonString() string {
@@ -2015,6 +2027,7 @@ func (r *CreateNotebookSessionRequest) FromJsonString(s string) error {
 	delete(f, "ProxyUser")
 	delete(f, "TimeoutInSecond")
 	delete(f, "ExecutorMaxNumbers")
+	delete(f, "SparkImage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookSessionRequest has unknown keys!", "")
 	}
@@ -2433,6 +2446,9 @@ type CreateSparkAppRequestParams struct {
 
 	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
 	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
+
+	// 是否使用session脚本的sql运行任务：false：否，true：是
+	IsSessionStarted *bool `json:"IsSessionStarted,omitempty" name:"IsSessionStarted"`
 }
 
 type CreateSparkAppRequest struct {
@@ -2521,6 +2537,9 @@ type CreateSparkAppRequest struct {
 
 	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
 	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
+
+	// 是否使用session脚本的sql运行任务：false：否，true：是
+	IsSessionStarted *bool `json:"IsSessionStarted,omitempty" name:"IsSessionStarted"`
 }
 
 func (r *CreateSparkAppRequest) ToJsonString() string {
@@ -2563,6 +2582,7 @@ func (r *CreateSparkAppRequest) FromJsonString(s string) error {
 	delete(f, "AppExecutorMaxNumbers")
 	delete(f, "SessionId")
 	delete(f, "IsInherit")
+	delete(f, "IsSessionStarted")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppRequest has unknown keys!", "")
 	}
@@ -2691,7 +2711,9 @@ type CreateSparkSessionBatchSQLRequestParams struct {
 	// 指定要创建的session名称
 	SessionName *string `json:"SessionName,omitempty" name:"SessionName"`
 
-	// Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+	// Session相关配置，当前支持：1.dlc.eni：用户配置的eni网关信息，可以用过该字段设置；
+	// 2.dlc.role.arn：用户配置的roleArn鉴权策略配置信息，可以用过该字段设置；
+	// 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
 	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
 }
 
@@ -2725,7 +2747,9 @@ type CreateSparkSessionBatchSQLRequest struct {
 	// 指定要创建的session名称
 	SessionName *string `json:"SessionName,omitempty" name:"SessionName"`
 
-	// Session相关配置，当前支持：dlc.eni、dlc.role.arn、dlc.sql.set.config以及用户指定的配置，注：roleArn必填；
+	// Session相关配置，当前支持：1.dlc.eni：用户配置的eni网关信息，可以用过该字段设置；
+	// 2.dlc.role.arn：用户配置的roleArn鉴权策略配置信息，可以用过该字段设置；
+	// 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
 	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
 }
 
@@ -7785,6 +7809,9 @@ type ModifySparkAppRequestParams struct {
 
 	// 任务资源配置是否继承集群配置模板：0（默认）不继承、1：继承
 	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
+
+	// 是否使用session脚本的sql运行任务：false：否，true：是
+	IsSessionStarted *bool `json:"IsSessionStarted,omitempty" name:"IsSessionStarted"`
 }
 
 type ModifySparkAppRequest struct {
@@ -7876,6 +7903,9 @@ type ModifySparkAppRequest struct {
 
 	// 任务资源配置是否继承集群配置模板：0（默认）不继承、1：继承
 	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
+
+	// 是否使用session脚本的sql运行任务：false：否，true：是
+	IsSessionStarted *bool `json:"IsSessionStarted,omitempty" name:"IsSessionStarted"`
 }
 
 func (r *ModifySparkAppRequest) ToJsonString() string {
@@ -7919,6 +7949,7 @@ func (r *ModifySparkAppRequest) FromJsonString(s string) error {
 	delete(f, "AppExecutorMaxNumbers")
 	delete(f, "SessionId")
 	delete(f, "IsInherit")
+	delete(f, "IsSessionStarted")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySparkAppRequest has unknown keys!", "")
 	}

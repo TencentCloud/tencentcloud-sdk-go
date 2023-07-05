@@ -1651,6 +1651,58 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeRawScanLogsRequest() (request *DescribeRawScanLogsRequest) {
+    request = &DescribeRawScanLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeRawScanLogs")
+    
+    
+    return
+}
+
+func NewDescribeRawScanLogsResponse() (response *DescribeRawScanLogsResponse) {
+    response = &DescribeRawScanLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRawScanLogs
+// 支持增量查询扫码日志，通常提供给数据同步使用，调用时需要指定从哪一行开始查询数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRawScanLogs(request *DescribeRawScanLogsRequest) (response *DescribeRawScanLogsResponse, err error) {
+    return c.DescribeRawScanLogsWithContext(context.Background(), request)
+}
+
+// DescribeRawScanLogs
+// 支持增量查询扫码日志，通常提供给数据同步使用，调用时需要指定从哪一行开始查询数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRawScanLogsWithContext(ctx context.Context, request *DescribeRawScanLogsRequest) (response *DescribeRawScanLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRawScanLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRawScanLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRawScanLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeScanLogsRequest() (request *DescribeScanLogsRequest) {
     request = &DescribeScanLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -2894,6 +2894,88 @@ func (r *DescribeProductsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRawScanLogsRequestParams struct {
+	// 企业ID, 默认为当前企业
+	// 如果有渠道权限，可以传 0 会查渠道下所有的企业
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 分页数量，默认为 100，最大为 1000
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前分页，默认为 1
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 从哪个日志后查询
+	// 即: LogId > $AfterLogId
+	AfterLogId *uint64 `json:"AfterLogId,omitempty" name:"AfterLogId"`
+}
+
+type DescribeRawScanLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业ID, 默认为当前企业
+	// 如果有渠道权限，可以传 0 会查渠道下所有的企业
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 分页数量，默认为 100，最大为 1000
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 当前分页，默认为 1
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 从哪个日志后查询
+	// 即: LogId > $AfterLogId
+	AfterLogId *uint64 `json:"AfterLogId,omitempty" name:"AfterLogId"`
+}
+
+func (r *DescribeRawScanLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRawScanLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "AfterLogId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRawScanLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRawScanLogsResponseParams struct {
+	// 原始扫码日志
+	ScanLogs []*RawScanLog `json:"ScanLogs,omitempty" name:"ScanLogs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRawScanLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRawScanLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRawScanLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRawScanLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeScanLogsRequestParams struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
@@ -4595,6 +4677,48 @@ type Quota struct {
 	// 开通版本 lite:轻量版, basic:基础版, standard:标准版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitempty" name:"Version"`
+}
+
+type RawScanLog struct {
+	// 日志ID
+	LogId *int64 `json:"LogId,omitempty" name:"LogId"`
+
+	// 微信小程序openid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Openid *string `json:"Openid,omitempty" name:"Openid"`
+
+	// 扫码时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 溯源码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 商户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 商品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 批次ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 地市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 区/县
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	District *string `json:"District,omitempty" name:"District"`
 }
 
 // Predefined struct for user

@@ -1640,7 +1640,7 @@ func NewCreateSparkSessionBatchSQLResponse() (response *CreateSparkSessionBatchS
 }
 
 // CreateSparkSessionBatchSQL
-// 本接口（CreateSparkSessionBatchSQL）用于提交Spark SQL批任务。
+// 本接口（CreateSparkSessionBatchSQL）用于向Spark作业引擎提交Spark SQL批任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1656,7 +1656,7 @@ func (c *Client) CreateSparkSessionBatchSQL(request *CreateSparkSessionBatchSQLR
 }
 
 // CreateSparkSessionBatchSQL
-// 本接口（CreateSparkSessionBatchSQL）用于提交Spark SQL批任务。
+// 本接口（CreateSparkSessionBatchSQL）用于向Spark作业引擎提交Spark SQL批任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

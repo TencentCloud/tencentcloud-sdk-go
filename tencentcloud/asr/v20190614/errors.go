@@ -44,6 +44,9 @@ const (
 	// 错误的TaskId。
 	FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
 
+	// 不存在的说话人id
+	FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+
 	// 账号因为欠费停止服务，请在腾讯云账户充值。
 	FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 
@@ -89,8 +92,26 @@ const (
 	// 访问Redis失败。
 	INTERNALERROR_FAILACCESSREDIS = "InternalError.FailAccessRedis"
 
+	// 说话人注册接口失败
+	INTERNALERROR_FAILEDVOICEPRINTENROLL = "InternalError.FailedVoicePrintEnroll"
+
+	// 说话人验证接口失败
+	INTERNALERROR_FAILEDVOICEPRINTVERIFY = "InternalError.FailedVoicePrintVerify"
+
 	// 请求标签接口出错
 	INTERNALERROR_TAGREQUESTERROR = "InternalError.TagRequestError"
+
+	// 说话人音频处理失败
+	INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+
+	// 传入音频解码失败
+	INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+
+	// 说话人ID注册失败
+	INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+
+	// 说话人验证失败
+	INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
@@ -184,6 +205,9 @@ const (
 
 	// 热词表数量已到账号限制。
 	LIMITEXCEEDED_VOCABFULL = "LimitExceeded.VocabFull"
+
+	// 说话人ID创建数量达到上限
+	LIMITEXCEEDED_VOICEPRINTFULL = "LimitExceeded.VoicePrintFull"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"

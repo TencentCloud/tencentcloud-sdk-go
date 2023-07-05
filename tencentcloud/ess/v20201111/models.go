@@ -1733,6 +1733,16 @@ type CreateFlowSignReviewRequestParams struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 审核签署节点使用 非必填 如果填写则审核该签署节点。给个人审核时必填。
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 操作类型：
+	// 操作类型，默认：SignReview；SignReview:签署审核
+	// 注：接口通过该字段区分操作类型
+	// 该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
+	// 若发起个人审核，则指定该字段为：SignReview（注意，给个人审核时，需联系客户经理开白使用）
+	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 }
 
 type CreateFlowSignReviewRequest struct {
@@ -1755,6 +1765,16 @@ type CreateFlowSignReviewRequest struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 审核签署节点使用 非必填 如果填写则审核该签署节点。给个人审核时必填。
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 操作类型：
+	// 操作类型，默认：SignReview；SignReview:签署审核
+	// 注：接口通过该字段区分操作类型
+	// 该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
+	// 若发起个人审核，则指定该字段为：SignReview（注意，给个人审核时，需联系客户经理开白使用）
+	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 }
 
 func (r *CreateFlowSignReviewRequest) ToJsonString() string {
@@ -1774,6 +1794,8 @@ func (r *CreateFlowSignReviewRequest) FromJsonString(s string) error {
 	delete(f, "ReviewType")
 	delete(f, "ReviewMessage")
 	delete(f, "Agent")
+	delete(f, "RecipientId")
+	delete(f, "OperateType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowSignReviewRequest has unknown keys!", "")
 	}
@@ -1987,7 +2009,8 @@ type CreateIntegrationEmployeesRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 待创建员工的信息，不超过20个。
-	// Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
+	// 所有类型的企业支持的入参：Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
+	// 企微类型的企业特有支持的入参：WeworkOpenId，传入此字段无需在传入其他信息
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -2001,7 +2024,8 @@ type CreateIntegrationEmployeesRequest struct {
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 待创建员工的信息，不超过20个。
-	// Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
+	// 所有类型的企业支持的入参：Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
+	// 企微类型的企业特有支持的入参：WeworkOpenId，传入此字段无需在传入其他信息
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -4932,6 +4956,9 @@ type FailedCreateStaffData struct {
 	// 员工手机号
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
+	// 传入的企微账号id
+	WeworkOpenId *string `json:"WeworkOpenId,omitempty" name:"WeworkOpenId"`
+
 	// 失败原因
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }
@@ -5935,6 +5962,7 @@ type SignUrl struct {
 
 type Staff struct {
 	// 用户在电子签平台的id
+	// 注：创建和更新场景无需填写
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 显示的用户名/昵称
@@ -5952,6 +5980,7 @@ type Staff struct {
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// 员工角色
+	// 注：创建和更新场景无需填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Roles []*StaffRole `json:"Roles,omitempty" name:"Roles"`
 
@@ -5960,24 +5989,35 @@ type Staff struct {
 	Department *Department `json:"Department,omitempty" name:"Department"`
 
 	// 员工是否实名
+	// 注：创建和更新场景无需填写
 	Verified *bool `json:"Verified,omitempty" name:"Verified"`
 
 	// 员工创建时间戳，单位秒
+	// 注：创建和更新场景无需填写
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
 	// 员工实名时间戳，单位秒
+	// 注：创建和更新场景无需填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifiedOn *int64 `json:"VerifiedOn,omitempty" name:"VerifiedOn"`
 
 	// 员工是否离职：0-未离职，1-离职
+	// 注：创建和更新场景无需填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuiteJob *int64 `json:"QuiteJob,omitempty" name:"QuiteJob"`
 
 	// 员工离职交接人用户id
+	// 注：创建和更新场景无需填写
 	ReceiveUserId *string `json:"ReceiveUserId,omitempty" name:"ReceiveUserId"`
 
 	// 员工离职交接人用户OpenId
+	// 注：创建和更新场景无需填写
 	ReceiveOpenId *string `json:"ReceiveOpenId,omitempty" name:"ReceiveOpenId"`
+
+	// 企业微信用户账号ID
+	// 注：仅企微类型的企业创建员工接口支持该字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeworkOpenId *string `json:"WeworkOpenId,omitempty" name:"WeworkOpenId"`
 }
 
 type StaffRole struct {
@@ -6088,6 +6128,9 @@ type SuccessCreateStaffData struct {
 	// 提示，当创建已存在未实名用户时，该字段有值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 传入的企微账号id
+	WeworkOpenId *string `json:"WeworkOpenId,omitempty" name:"WeworkOpenId"`
 }
 
 type SuccessDeleteStaffData struct {

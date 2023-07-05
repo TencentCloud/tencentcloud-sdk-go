@@ -113,6 +113,15 @@ type AlarmIndicatorInfo struct {
 	// 告警指标阈值单位：ms(毫秒)、s(秒)、min(分钟)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmIndicatorUnit *string `json:"AlarmIndicatorUnit,omitempty" name:"AlarmIndicatorUnit"`
+
+	// 告警周期
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 告警周期单位
+	DurationUnit *string `json:"DurationUnit,omitempty" name:"DurationUnit"`
+
+	// 周期内最多告警次数
+	MaxTimes *int64 `json:"MaxTimes,omitempty" name:"MaxTimes"`
 }
 
 type AlarmInfo struct {
@@ -1874,6 +1883,9 @@ type CommitIntegrationTaskRequestParams struct {
 
 	// 实时任务 201   离线任务 202  默认实时任务
 	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 额外参数
+	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
 }
 
 type CommitIntegrationTaskRequest struct {
@@ -1890,6 +1902,9 @@ type CommitIntegrationTaskRequest struct {
 
 	// 实时任务 201   离线任务 202  默认实时任务
 	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 额外参数
+	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
 }
 
 func (r *CommitIntegrationTaskRequest) ToJsonString() string {
@@ -1908,6 +1923,7 @@ func (r *CommitIntegrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "CommitType")
 	delete(f, "TaskType")
+	delete(f, "ExtConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -12916,6 +12932,120 @@ type DimensionScoreInfo struct {
 	Score *float64 `json:"Score,omitempty" name:"Score"`
 }
 
+type DlcDataGovernPolicy struct {
+	// 数据排布治理项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteDataPolicy *DlcRewriteDataInfo `json:"RewriteDataPolicy,omitempty" name:"RewriteDataPolicy"`
+
+	// 快照过期治理项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredSnapshotsPolicy *DlcExpiredSnapshotsInfo `json:"ExpiredSnapshotsPolicy,omitempty" name:"ExpiredSnapshotsPolicy"`
+
+	// 移除孤立文件治理项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoveOrphanFilesPolicy *DlcRemoveOrphanFilesInfo `json:"RemoveOrphanFilesPolicy,omitempty" name:"RemoveOrphanFilesPolicy"`
+
+	// 合并元数据Manifests治理项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MergeManifestsPolicy *DlcMergeManifestsInfo `json:"MergeManifestsPolicy,omitempty" name:"MergeManifestsPolicy"`
+
+	// 是否集成库规则：default（默认继承）、none（不继承）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InheritDataBase *string `json:"InheritDataBase,omitempty" name:"InheritDataBase"`
+
+	// 治理规则类型，Customize: 自定义；Intelligence: 智能治理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 治理引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GovernEngine *string `json:"GovernEngine,omitempty" name:"GovernEngine"`
+}
+
+type DlcExpiredSnapshotsInfo struct {
+	// 是否启用快照过期治理项：enable、none
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredSnapshotsEnable *string `json:"ExpiredSnapshotsEnable,omitempty" name:"ExpiredSnapshotsEnable"`
+
+	// 用于运行快照过期治理项的引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+
+	// 需要保留的最近快照个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RetainLast *uint64 `json:"RetainLast,omitempty" name:"RetainLast"`
+
+	// 过期指定天前的快照
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeforeDays *uint64 `json:"BeforeDays,omitempty" name:"BeforeDays"`
+
+	// 清理过期快照的并行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConcurrentDeletes *uint64 `json:"MaxConcurrentDeletes,omitempty" name:"MaxConcurrentDeletes"`
+
+	// 快照过期治理运行周期，单位为分钟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalMin *uint64 `json:"IntervalMin,omitempty" name:"IntervalMin"`
+}
+
+type DlcMergeManifestsInfo struct {
+	// 是否启用合并元数据Manifests文件治理项：enable、none
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MergeManifestsEnable *string `json:"MergeManifestsEnable,omitempty" name:"MergeManifestsEnable"`
+
+	// 用于运行合并元数据Manifests文件治理项的引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+
+	// 合并元数据Manifests文件治理运行周期，单位为分钟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalMin *uint64 `json:"IntervalMin,omitempty" name:"IntervalMin"`
+}
+
+type DlcRemoveOrphanFilesInfo struct {
+	// 是否启用移除孤立文件治理项：enable、none
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoveOrphanFilesEnable *string `json:"RemoveOrphanFilesEnable,omitempty" name:"RemoveOrphanFilesEnable"`
+
+	// 用于运行移除孤立文件治理项的引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+
+	// 移除指定天前的孤立文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeforeDays *uint64 `json:"BeforeDays,omitempty" name:"BeforeDays"`
+
+	// 移除孤立文件的并行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxConcurrentDeletes *uint64 `json:"MaxConcurrentDeletes,omitempty" name:"MaxConcurrentDeletes"`
+
+	// 移除孤立文件治理运行周期，单位为分钟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalMin *uint64 `json:"IntervalMin,omitempty" name:"IntervalMin"`
+}
+
+type DlcRewriteDataInfo struct {
+	// 是否启用数据重排布治理项：enable（启动）、disable（不启用，默认）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteDataEnable *string `json:"RewriteDataEnable,omitempty" name:"RewriteDataEnable"`
+
+	// 用于运行数据重排布治理项的引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+
+	// 重排布任务执行的文件个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinInputFiles *uint64 `json:"MinInputFiles,omitempty" name:"MinInputFiles"`
+
+	// 数据重排布写后的数据文件大小，单位为字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetFileSizeBytes *uint64 `json:"TargetFileSizeBytes,omitempty" name:"TargetFileSizeBytes"`
+
+	// 数据重排布治理运行周期，单位为分钟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntervalMin *uint64 `json:"IntervalMin,omitempty" name:"IntervalMin"`
+}
+
 // Predefined struct for user
 type DryRunDIOfflineTaskRequestParams struct {
 	// 任务Id
@@ -13389,6 +13519,12 @@ type GenHiveTableDDLSqlRequestParams struct {
 
 	// 下游节点数据源ID
 	TargetDatasourceId *string `json:"TargetDatasourceId,omitempty" name:"TargetDatasourceId"`
+
+	// dlc upsert主键
+	UpsertKeys []*string `json:"UpsertKeys,omitempty" name:"UpsertKeys"`
+
+	// dlc表治理信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitempty" name:"TableBaseInfo"`
 }
 
 type GenHiveTableDDLSqlRequest struct {
@@ -13456,6 +13592,12 @@ type GenHiveTableDDLSqlRequest struct {
 
 	// 下游节点数据源ID
 	TargetDatasourceId *string `json:"TargetDatasourceId,omitempty" name:"TargetDatasourceId"`
+
+	// dlc upsert主键
+	UpsertKeys []*string `json:"UpsertKeys,omitempty" name:"UpsertKeys"`
+
+	// dlc表治理信息
+	TableBaseInfo *TableBaseInfo `json:"TableBaseInfo,omitempty" name:"TableBaseInfo"`
 }
 
 func (r *GenHiveTableDDLSqlRequest) ToJsonString() string {
@@ -13491,6 +13633,8 @@ func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
 	delete(f, "AddPositionDeletes")
 	delete(f, "AddDeleteFiles")
 	delete(f, "TargetDatasourceId")
+	delete(f, "UpsertKeys")
+	delete(f, "TableBaseInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenHiveTableDDLSqlRequest has unknown keys!", "")
 	}
@@ -17586,6 +17730,12 @@ type ResumeIntegrationTaskRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 事件类型(START, STOP, SUSPEND, RESUME, COMMIT, TIMESTAMP)
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// 额外参数
+	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
 }
 
 type ResumeIntegrationTaskRequest struct {
@@ -17596,6 +17746,12 @@ type ResumeIntegrationTaskRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 事件类型(START, STOP, SUSPEND, RESUME, COMMIT, TIMESTAMP)
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// 额外参数
+	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
 }
 
 func (r *ResumeIntegrationTaskRequest) ToJsonString() string {
@@ -17612,6 +17768,8 @@ func (r *ResumeIntegrationTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	delete(f, "ProjectId")
+	delete(f, "Event")
+	delete(f, "ExtConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -19142,6 +19300,10 @@ type SourceFieldInfo struct {
 
 	// 字段别名
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 字段描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
 type SourceObject struct {
@@ -19187,6 +19349,12 @@ type StartIntegrationTaskRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 事件类型(START, STOP, SUSPEND, RESUME, COMMIT, TIMESTAMP)
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// 额外参数
+	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
 }
 
 type StartIntegrationTaskRequest struct {
@@ -19197,6 +19365,12 @@ type StartIntegrationTaskRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 事件类型(START, STOP, SUSPEND, RESUME, COMMIT, TIMESTAMP)
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// 额外参数
+	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
 }
 
 func (r *StartIntegrationTaskRequest) ToJsonString() string {
@@ -19213,6 +19387,8 @@ func (r *StartIntegrationTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	delete(f, "ProjectId")
+	delete(f, "Event")
+	delete(f, "ExtConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -19646,6 +19822,48 @@ func (r *SuspendIntegrationTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SuspendIntegrationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TableBaseInfo struct {
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 数据表所属数据源名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 表备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableComment *string `json:"TableComment,omitempty" name:"TableComment"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据格式类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableFormat *string `json:"TableFormat,omitempty" name:"TableFormat"`
+
+	// 用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
+
+	// 建表用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSubUin *string `json:"UserSubUin,omitempty" name:"UserSubUin"`
+
+	// 数据治理配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GovernPolicy *DlcDataGovernPolicy `json:"GovernPolicy,omitempty" name:"GovernPolicy"`
+
+	// 库数据治理是否关闭，关闭：true，开启：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbGovernPolicyIsDisable *string `json:"DbGovernPolicyIsDisable,omitempty" name:"DbGovernPolicyIsDisable"`
 }
 
 type TableConfig struct {

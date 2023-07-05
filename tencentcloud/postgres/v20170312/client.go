@@ -4946,7 +4946,7 @@ func NewIsolateDBInstancesResponse() (response *IsolateDBInstancesResponse) {
 }
 
 // IsolateDBInstances
-// 本接口（IsolateDBInstances）用于隔离实例
+// 本接口（IsolateDBInstances）用于隔离实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4990,7 +4990,7 @@ func (c *Client) IsolateDBInstances(request *IsolateDBInstancesRequest) (respons
 }
 
 // IsolateDBInstances
-// 本接口（IsolateDBInstances）用于隔离实例
+// 本接口（IsolateDBInstances）用于隔离实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

@@ -402,6 +402,9 @@ type Address struct {
 	// EIP绑定的实例类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.
+	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitempty" name:"AntiDDoSPackageId"`
 }
 
 type AddressChargePrepaid struct {
@@ -607,6 +610,12 @@ type AllocateAddressesRequestParams struct {
 
 	// 网络出口，默认是：center_egress1
 	Egress *string `json:"Egress,omitempty" name:"Egress"`
+
+	// 高防包ID， 申请高防IP时，该字段必传。
+	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitempty" name:"AntiDDoSPackageId"`
+
+	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 type AllocateAddressesRequest struct {
@@ -668,6 +677,12 @@ type AllocateAddressesRequest struct {
 
 	// 网络出口，默认是：center_egress1
 	Egress *string `json:"Egress,omitempty" name:"Egress"`
+
+	// 高防包ID， 申请高防IP时，该字段必传。
+	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitempty" name:"AntiDDoSPackageId"`
+
+	// 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *AllocateAddressesRequest) ToJsonString() string {
@@ -694,6 +709,8 @@ func (r *AllocateAddressesRequest) FromJsonString(s string) error {
 	delete(f, "BandwidthPackageId")
 	delete(f, "AddressName")
 	delete(f, "Egress")
+	delete(f, "AntiDDoSPackageId")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AllocateAddressesRequest has unknown keys!", "")
 	}
@@ -9433,7 +9450,7 @@ type DescribeCcnAttachedInstancesRequestParams struct {
 	// <li>ccn-id - String -（过滤条件）CCN实例ID。</li>
 	// <li>instance-type - String -（过滤条件）关联实例类型。</li>
 	// <li>instance-region - String -（过滤条件）关联实例所属地域。</li>
-	// <li>instance-id - String -（过滤条件）关联实例实例ID。</li>
+	// <li>instance-id - String -（过滤条件）关联实例ID。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 云联网实例ID
@@ -9459,7 +9476,7 @@ type DescribeCcnAttachedInstancesRequest struct {
 	// <li>ccn-id - String -（过滤条件）CCN实例ID。</li>
 	// <li>instance-type - String -（过滤条件）关联实例类型。</li>
 	// <li>instance-region - String -（过滤条件）关联实例所属地域。</li>
-	// <li>instance-id - String -（过滤条件）关联实例实例ID。</li>
+	// <li>instance-id - String -（过滤条件）关联实例ID。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 云联网实例ID

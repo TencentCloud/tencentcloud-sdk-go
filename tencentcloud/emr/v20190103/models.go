@@ -1573,6 +1573,182 @@ func (r *DescribeEmrApplicationStaticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHiveQueriesRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间秒
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间秒，EndTime-StartTime不得超过31天秒数31*24*3600
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始偏移，从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，合法范围[1,100]
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeHiveQueriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间秒
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间秒，EndTime-StartTime不得超过31天秒数31*24*3600
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始偏移，从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，合法范围[1,100]
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeHiveQueriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHiveQueriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHiveQueriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHiveQueriesResponseParams struct {
+	// 总条数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 结果列表
+	Results []*HiveQuery `json:"Results,omitempty" name:"Results"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHiveQueriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHiveQueriesResponseParams `json:"Response"`
+}
+
+func (r *DescribeHiveQueriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHiveQueriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImpalaQueriesRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始偏移，从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，合法范围[1,100]
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeImpalaQueriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始偏移，从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，合法范围[1,100]
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeImpalaQueriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImpalaQueriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImpalaQueriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImpalaQueriesResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 结果列表
+	Results []*ImpalaQuery `json:"Results,omitempty" name:"Results"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeImpalaQueriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImpalaQueriesResponseParams `json:"Response"`
+}
+
+func (r *DescribeImpalaQueriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImpalaQueriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceRenewNodesRequestParams struct {
 	// 集群实例ID,实例ID形如: emr-xxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -2081,6 +2257,94 @@ func (r *DescribeUsersForUserManagerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeYarnApplicationsRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始偏移，从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，合法范围[1,100]
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeYarnApplicationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始偏移，从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，合法范围[1,100]
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeYarnApplicationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeYarnApplicationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeYarnApplicationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeYarnApplicationsResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 结果列表
+	Results []*YarnApplication `json:"Results,omitempty" name:"Results"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeYarnApplicationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeYarnApplicationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeYarnApplicationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeYarnApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DiskGroup struct {
 	// 磁盘规格。
 	Spec *DiskSpec `json:"Spec,omitempty" name:"Spec"`
@@ -2391,10 +2655,138 @@ type Filters struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+type HiveQuery struct {
+	// 查询语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statement *string `json:"Statement,omitempty" name:"Statement"`
+
+	// 执行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
+
+	// 开始时间毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// appId列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobIds []*string `json:"JobIds,omitempty" name:"JobIds"`
+
+	// 执行引擎
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionEngine *string `json:"ExecutionEngine,omitempty" name:"ExecutionEngine"`
+
+	// 查询ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
 type HostVolumeContext struct {
 	// Pod挂载宿主机的目录。资源对宿主机的挂载点，指定的挂载点对应了宿主机的路径，该挂载点在Pod中作为数据存储目录使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumePath *string `json:"VolumePath,omitempty" name:"VolumePath"`
+}
+
+type ImpalaQuery struct {
+	// 执行语句
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Statement *string `json:"Statement,omitempty" name:"Statement"`
+
+	// 查询ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *string `json:"Duration,omitempty" name:"Duration"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 执行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 获取行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowsFetched *int64 `json:"RowsFetched,omitempty" name:"RowsFetched"`
+
+	// 用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 默认DB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultDB *string `json:"DefaultDB,omitempty" name:"DefaultDB"`
+
+	// 执行的Coordinator节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Coordinator *string `json:"Coordinator,omitempty" name:"Coordinator"`
+
+	// 单节点内存峰值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxNodePeakMemoryUsage *string `json:"MaxNodePeakMemoryUsage,omitempty" name:"MaxNodePeakMemoryUsage"`
+
+	// 查询类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
+
+	// 扫描的HDFS行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanHDFSRows *int64 `json:"ScanHDFSRows,omitempty" name:"ScanHDFSRows"`
+
+	// 扫描的Kudu行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanKUDURows *int64 `json:"ScanKUDURows,omitempty" name:"ScanKUDURows"`
+
+	// 扫描的总行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanRowsTotal *int64 `json:"ScanRowsTotal,omitempty" name:"ScanRowsTotal"`
+
+	// 读取的总字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalBytesRead *int64 `json:"TotalBytesRead,omitempty" name:"TotalBytesRead"`
+
+	// 发送的总字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalBytesSent *int64 `json:"TotalBytesSent,omitempty" name:"TotalBytesSent"`
+
+	// CPU总时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCpuTime *int64 `json:"TotalCpuTime,omitempty" name:"TotalCpuTime"`
+
+	// 内部数据发送总量(Bytes)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalInnerBytesSent *int64 `json:"TotalInnerBytesSent,omitempty" name:"TotalInnerBytesSent"`
+
+	// 内部扫描数据发送总量(Bytes)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalScanBytesSent *int64 `json:"TotalScanBytesSent,omitempty" name:"TotalScanBytesSent"`
+
+	// 预估单节点内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EstimatedPerHostMemBytes *int64 `json:"EstimatedPerHostMemBytes,omitempty" name:"EstimatedPerHostMemBytes"`
+
+	// 从缓存中获取的数据行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumRowsFetchedFromCache *int64 `json:"NumRowsFetchedFromCache,omitempty" name:"NumRowsFetchedFromCache"`
 }
 
 // Predefined struct for user
@@ -5670,6 +6062,204 @@ type VirtualPrivateCloud struct {
 
 	// Subnet ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type YarnApplication struct {
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 应用名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Queue *string `json:"Queue,omitempty" name:"Queue"`
+
+	// 应用类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// 运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElapsedTime *string `json:"ElapsedTime,omitempty" name:"ElapsedTime"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 最终状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalStatus *string `json:"FinalStatus,omitempty" name:"FinalStatus"`
+
+	// 进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 开始时间毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartedTime *int64 `json:"StartedTime,omitempty" name:"StartedTime"`
+
+	// 结束时间毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishedTime *int64 `json:"FinishedTime,omitempty" name:"FinishedTime"`
+
+	// 申请内存MB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllocatedMB *int64 `json:"AllocatedMB,omitempty" name:"AllocatedMB"`
+
+	// 申请VCores
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllocatedVCores *int64 `json:"AllocatedVCores,omitempty" name:"AllocatedVCores"`
+
+	// 运行的Containers数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningContainers *int64 `json:"RunningContainers,omitempty" name:"RunningContainers"`
+
+	// 内存MB*时间秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemorySeconds *int64 `json:"MemorySeconds,omitempty" name:"MemorySeconds"`
+
+	// VCores*时间秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VCoreSeconds *int64 `json:"VCoreSeconds,omitempty" name:"VCoreSeconds"`
+
+	// 队列资源占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueUsagePercentage *float64 `json:"QueueUsagePercentage,omitempty" name:"QueueUsagePercentage"`
+
+	// 集群资源占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterUsagePercentage *float64 `json:"ClusterUsagePercentage,omitempty" name:"ClusterUsagePercentage"`
+
+	// 预占用的内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreemptedResourceMB *int64 `json:"PreemptedResourceMB,omitempty" name:"PreemptedResourceMB"`
+
+	// 预占用的VCore
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreemptedResourceVCores *int64 `json:"PreemptedResourceVCores,omitempty" name:"PreemptedResourceVCores"`
+
+	// 预占的非应用程序主节点容器数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumNonAMContainerPreempted *int64 `json:"NumNonAMContainerPreempted,omitempty" name:"NumNonAMContainerPreempted"`
+
+	// AM预占用的容器数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumAMContainerPreempted *int64 `json:"NumAMContainerPreempted,omitempty" name:"NumAMContainerPreempted"`
+
+	// Map总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MapsTotal *int64 `json:"MapsTotal,omitempty" name:"MapsTotal"`
+
+	// 完成的Map数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MapsCompleted *int64 `json:"MapsCompleted,omitempty" name:"MapsCompleted"`
+
+	// Reduce总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReducesTotal *int64 `json:"ReducesTotal,omitempty" name:"ReducesTotal"`
+
+	// 完成的Reduce数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReducesCompleted *int64 `json:"ReducesCompleted,omitempty" name:"ReducesCompleted"`
+
+	// 平均Map时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgMapTime *int64 `json:"AvgMapTime,omitempty" name:"AvgMapTime"`
+
+	// 平均Reduce时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgReduceTime *int64 `json:"AvgReduceTime,omitempty" name:"AvgReduceTime"`
+
+	// 平均Shuffle时间毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgShuffleTime *int64 `json:"AvgShuffleTime,omitempty" name:"AvgShuffleTime"`
+
+	// 平均Merge时间毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvgMergeTime *int64 `json:"AvgMergeTime,omitempty" name:"AvgMergeTime"`
+
+	// 失败的Reduce执行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedReduceAttempts *int64 `json:"FailedReduceAttempts,omitempty" name:"FailedReduceAttempts"`
+
+	// Kill的Reduce执行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KilledReduceAttempts *int64 `json:"KilledReduceAttempts,omitempty" name:"KilledReduceAttempts"`
+
+	// 成功的Reduce执行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessfulReduceAttempts *int64 `json:"SuccessfulReduceAttempts,omitempty" name:"SuccessfulReduceAttempts"`
+
+	// 失败的Map执行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedMapAttempts *int64 `json:"FailedMapAttempts,omitempty" name:"FailedMapAttempts"`
+
+	// Kill的Map执行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KilledMapAttempts *int64 `json:"KilledMapAttempts,omitempty" name:"KilledMapAttempts"`
+
+	// 成功的Map执行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessfulMapAttempts *int64 `json:"SuccessfulMapAttempts,omitempty" name:"SuccessfulMapAttempts"`
+
+	// GC毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GcTimeMillis *int64 `json:"GcTimeMillis,omitempty" name:"GcTimeMillis"`
+
+	// Map使用的VCore毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VCoreMillisMaps *int64 `json:"VCoreMillisMaps,omitempty" name:"VCoreMillisMaps"`
+
+	// Map使用的内存毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MbMillisMaps *int64 `json:"MbMillisMaps,omitempty" name:"MbMillisMaps"`
+
+	// Reduce使用的VCore毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VCoreMillisReduces *int64 `json:"VCoreMillisReduces,omitempty" name:"VCoreMillisReduces"`
+
+	// Reduce使用的内存毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MbMillisReduces *int64 `json:"MbMillisReduces,omitempty" name:"MbMillisReduces"`
+
+	// 启动Map的总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalLaunchedMaps *int64 `json:"TotalLaunchedMaps,omitempty" name:"TotalLaunchedMaps"`
+
+	// 启动Reduce的总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalLaunchedReduces *int64 `json:"TotalLaunchedReduces,omitempty" name:"TotalLaunchedReduces"`
+
+	// Map输入记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MapInputRecords *int64 `json:"MapInputRecords,omitempty" name:"MapInputRecords"`
+
+	// Map输出记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MapOutputRecords *int64 `json:"MapOutputRecords,omitempty" name:"MapOutputRecords"`
+
+	// Reduce输入记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReduceInputRecords *int64 `json:"ReduceInputRecords,omitempty" name:"ReduceInputRecords"`
+
+	// Reduce输出记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReduceOutputRecords *int64 `json:"ReduceOutputRecords,omitempty" name:"ReduceOutputRecords"`
+
+	// HDFS写入字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HDFSBytesWritten *int64 `json:"HDFSBytesWritten,omitempty" name:"HDFSBytesWritten"`
+
+	// HDFS读取字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HDFSBytesRead *int64 `json:"HDFSBytesRead,omitempty" name:"HDFSBytesRead"`
 }
 
 type ZoneDetailPriceResult struct {

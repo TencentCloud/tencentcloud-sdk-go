@@ -645,6 +645,110 @@ func (c *Client) DescribeEmrApplicationStaticsWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeHiveQueriesRequest() (request *DescribeHiveQueriesRequest) {
+    request = &DescribeHiveQueriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeHiveQueries")
+    
+    
+    return
+}
+
+func NewDescribeHiveQueriesResponse() (response *DescribeHiveQueriesResponse) {
+    response = &DescribeHiveQueriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHiveQueries
+// 获取hive查询信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeHiveQueries(request *DescribeHiveQueriesRequest) (response *DescribeHiveQueriesResponse, err error) {
+    return c.DescribeHiveQueriesWithContext(context.Background(), request)
+}
+
+// DescribeHiveQueries
+// 获取hive查询信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeHiveQueriesWithContext(ctx context.Context, request *DescribeHiveQueriesRequest) (response *DescribeHiveQueriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeHiveQueriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHiveQueries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHiveQueriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImpalaQueriesRequest() (request *DescribeImpalaQueriesRequest) {
+    request = &DescribeImpalaQueriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeImpalaQueries")
+    
+    
+    return
+}
+
+func NewDescribeImpalaQueriesResponse() (response *DescribeImpalaQueriesResponse) {
+    response = &DescribeImpalaQueriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeImpalaQueries
+// DescribeImpalaQueries
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeImpalaQueries(request *DescribeImpalaQueriesRequest) (response *DescribeImpalaQueriesResponse, err error) {
+    return c.DescribeImpalaQueriesWithContext(context.Background(), request)
+}
+
+// DescribeImpalaQueries
+// DescribeImpalaQueries
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeImpalaQueriesWithContext(ctx context.Context, request *DescribeImpalaQueriesRequest) (response *DescribeImpalaQueriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeImpalaQueriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImpalaQueries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImpalaQueriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRenewNodesRequest() (request *DescribeInstanceRenewNodesRequest) {
     request = &DescribeInstanceRenewNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1105,6 +1209,58 @@ func (c *Client) DescribeUsersForUserManagerWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeUsersForUserManagerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeYarnApplicationsRequest() (request *DescribeYarnApplicationsRequest) {
+    request = &DescribeYarnApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeYarnApplications")
+    
+    
+    return
+}
+
+func NewDescribeYarnApplicationsResponse() (response *DescribeYarnApplicationsResponse) {
+    response = &DescribeYarnApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeYarnApplications
+// DescribeYarnApplications
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeYarnApplications(request *DescribeYarnApplicationsRequest) (response *DescribeYarnApplicationsResponse, err error) {
+    return c.DescribeYarnApplicationsWithContext(context.Background(), request)
+}
+
+// DescribeYarnApplications
+// DescribeYarnApplications
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeYarnApplicationsWithContext(ctx context.Context, request *DescribeYarnApplicationsRequest) (response *DescribeYarnApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeYarnApplicationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeYarnApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeYarnApplicationsResponse()
     err = c.Send(request, response)
     return
 }

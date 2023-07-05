@@ -173,7 +173,7 @@ type CreateAsyncRecognitionTaskRequestParams struct {
 	// 引擎模型类型。
 	// • 16k_zh：中文普通话通用；
 	// • 16k_en：英语；
-	// • 16k_ca：粤语；
+	// • 16k_yue：粤语；
 	// • 16k_id：印度尼西亚语；
 	// • 16k_fil：菲律宾语；
 	// • 16k_th：泰语；
@@ -218,7 +218,7 @@ type CreateAsyncRecognitionTaskRequest struct {
 	// 引擎模型类型。
 	// • 16k_zh：中文普通话通用；
 	// • 16k_en：英语；
-	// • 16k_ca：粤语；
+	// • 16k_yue：粤语；
 	// • 16k_id：印度尼西亚语；
 	// • 16k_fil：菲律宾语；
 	// • 16k_th：泰语；
@@ -401,7 +401,7 @@ type CreateRecTaskRequestParams struct {
 	// • 16k_zh-PY：中英粤;
 	// • 16k_zh_medical：中文医疗；
 	// • 16k_en：英语；
-	// • 16k_ca：粤语；
+	// • 16k_yue：粤语；
 	// • 16k_ja：日语；
 	// • 16k_ko：韩语；
 	// • 16k_vi：越南语；
@@ -417,7 +417,7 @@ type CreateRecTaskRequestParams struct {
 	// 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
 	ChannelNum *uint64 `json:"ChannelNum,omitempty" name:"ChannelNum"`
 
-	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）；3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）。
+	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）；3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）。4：【付费功能】将对ASR结果按照语义分段，并展示词级别粒度的详细识别结果（注意：如果开启后付费，将[自动计费](https://cloud.tencent.com/document/product/1093/35686)）
 	ResTextFormat *uint64 `json:"ResTextFormat,omitempty" name:"ResTextFormat"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
@@ -491,7 +491,7 @@ type CreateRecTaskRequest struct {
 	// • 16k_zh-PY：中英粤;
 	// • 16k_zh_medical：中文医疗；
 	// • 16k_en：英语；
-	// • 16k_ca：粤语；
+	// • 16k_yue：粤语；
 	// • 16k_ja：日语；
 	// • 16k_ko：韩语；
 	// • 16k_vi：越南语；
@@ -507,7 +507,7 @@ type CreateRecTaskRequest struct {
 	// 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
 	ChannelNum *uint64 `json:"ChannelNum,omitempty" name:"ChannelNum"`
 
-	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）；3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）。
+	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）；3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）。4：【付费功能】将对ASR结果按照语义分段，并展示词级别粒度的详细识别结果（注意：如果开启后付费，将[自动计费](https://cloud.tencent.com/document/product/1093/35686)）
 	ResTextFormat *uint64 `json:"ResTextFormat,omitempty" name:"ResTextFormat"`
 
 	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
@@ -1943,4 +1943,326 @@ type Vocab struct {
 	// 标签数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInfos []*string `json:"TagInfos,omitempty" name:"TagInfos"`
+}
+
+type VoicePrintBaseData struct {
+	// 说话人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoicePrintId *string `json:"VoicePrintId,omitempty" name:"VoicePrintId"`
+
+	// 说话人昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpeakerNick *string `json:"SpeakerNick,omitempty" name:"SpeakerNick"`
+}
+
+// Predefined struct for user
+type VoicePrintDeleteRequestParams struct {
+	// 说话人id，说话人唯一标识
+	VoicePrintId *string `json:"VoicePrintId,omitempty" name:"VoicePrintId"`
+}
+
+type VoicePrintDeleteRequest struct {
+	*tchttp.BaseRequest
+	
+	// 说话人id，说话人唯一标识
+	VoicePrintId *string `json:"VoicePrintId,omitempty" name:"VoicePrintId"`
+}
+
+func (r *VoicePrintDeleteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintDeleteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoicePrintId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintDeleteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintDeleteResponseParams struct {
+	// 说话人基本信息
+	Data *VoicePrintBaseData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type VoicePrintDeleteResponse struct {
+	*tchttp.BaseResponse
+	Response *VoicePrintDeleteResponseParams `json:"Response"`
+}
+
+func (r *VoicePrintDeleteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintDeleteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintEnrollRequestParams struct {
+	// 音频格式 0: pcm, 1: wav
+	VoiceFormat *int64 `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
+
+	// 音频采样率，目前支持16000，单位：Hz，必填
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 说话人昵称  不超过32字节
+	SpeakerNick *string `json:"SpeakerNick,omitempty" name:"SpeakerNick"`
+}
+
+type VoicePrintEnrollRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音频格式 0: pcm, 1: wav
+	VoiceFormat *int64 `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
+
+	// 音频采样率，目前支持16000，单位：Hz，必填
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 说话人昵称  不超过32字节
+	SpeakerNick *string `json:"SpeakerNick,omitempty" name:"SpeakerNick"`
+}
+
+func (r *VoicePrintEnrollRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintEnrollRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceFormat")
+	delete(f, "SampleRate")
+	delete(f, "Data")
+	delete(f, "SpeakerNick")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintEnrollRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintEnrollResponseParams struct {
+	// 说话人基本数据
+	Data *VoicePrintBaseData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type VoicePrintEnrollResponse struct {
+	*tchttp.BaseResponse
+	Response *VoicePrintEnrollResponseParams `json:"Response"`
+}
+
+func (r *VoicePrintEnrollResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintEnrollResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintUpdateRequestParams struct {
+	// 音频格式 0: pcm, 1: wav
+	VoiceFormat *int64 `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
+
+	// 音频采样率 目前仅支持16000 单位Hz
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 说话人id， 说话人唯一标识
+	VoicePrintId *string `json:"VoicePrintId,omitempty" name:"VoicePrintId"`
+
+	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 说话人昵称  不超过32字节
+	SpeakerNick *string `json:"SpeakerNick,omitempty" name:"SpeakerNick"`
+}
+
+type VoicePrintUpdateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音频格式 0: pcm, 1: wav
+	VoiceFormat *int64 `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
+
+	// 音频采样率 目前仅支持16000 单位Hz
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 说话人id， 说话人唯一标识
+	VoicePrintId *string `json:"VoicePrintId,omitempty" name:"VoicePrintId"`
+
+	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 说话人昵称  不超过32字节
+	SpeakerNick *string `json:"SpeakerNick,omitempty" name:"SpeakerNick"`
+}
+
+func (r *VoicePrintUpdateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintUpdateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceFormat")
+	delete(f, "SampleRate")
+	delete(f, "VoicePrintId")
+	delete(f, "Data")
+	delete(f, "SpeakerNick")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintUpdateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintUpdateResponseParams struct {
+	// 说话人基础数据
+	Data *VoicePrintBaseData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type VoicePrintUpdateResponse struct {
+	*tchttp.BaseResponse
+	Response *VoicePrintUpdateResponseParams `json:"Response"`
+}
+
+func (r *VoicePrintUpdateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintUpdateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VoicePrintVerifyData struct {
+	// 说话人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoicePrintId *string `json:"VoicePrintId,omitempty" name:"VoicePrintId"`
+
+	// 匹配度 取值范围(0.0 - 100.0)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *string `json:"Score,omitempty" name:"Score"`
+
+	// 验证结果 0: 未通过 1: 通过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Decision *int64 `json:"Decision,omitempty" name:"Decision"`
+}
+
+// Predefined struct for user
+type VoicePrintVerifyRequestParams struct {
+	// 音频格式 0: pcm, 1: wav
+	VoiceFormat *int64 `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
+
+	// 音频采样率，目前支持16000，单位：Hz，必填
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 说话人id, 说话人唯一标识
+	VoicePrintId *string `json:"VoicePrintId,omitempty" name:"VoicePrintId"`
+
+	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+type VoicePrintVerifyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 音频格式 0: pcm, 1: wav
+	VoiceFormat *int64 `json:"VoiceFormat,omitempty" name:"VoiceFormat"`
+
+	// 音频采样率，目前支持16000，单位：Hz，必填
+	SampleRate *int64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 说话人id, 说话人唯一标识
+	VoicePrintId *string `json:"VoicePrintId,omitempty" name:"VoicePrintId"`
+
+	// 音频数据, base64 编码, 音频时长不能超过30s，数据大小不超过2M	
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
+func (r *VoicePrintVerifyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintVerifyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoiceFormat")
+	delete(f, "SampleRate")
+	delete(f, "VoicePrintId")
+	delete(f, "Data")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintVerifyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintVerifyResponseParams struct {
+	// 说话人验证数据
+	Data *VoicePrintVerifyData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type VoicePrintVerifyResponse struct {
+	*tchttp.BaseResponse
+	Response *VoicePrintVerifyResponseParams `json:"Response"`
+}
+
+func (r *VoicePrintVerifyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintVerifyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

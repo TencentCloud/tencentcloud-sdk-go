@@ -1466,3 +1466,309 @@ func (c *Client) UpdateAsrVocabWithContext(ctx context.Context, request *UpdateA
     err = c.Send(request, response)
     return
 }
+
+func NewVoicePrintDeleteRequest() (request *VoicePrintDeleteRequest) {
+    request = &VoicePrintDeleteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "VoicePrintDelete")
+    
+    
+    return
+}
+
+func NewVoicePrintDeleteResponse() (response *VoicePrintDeleteResponse) {
+    response = &VoicePrintDeleteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VoicePrintDelete
+// 本接口用于以删除已经注册的说话人信息（删除之后，原有的说话人ID和说话人音频数据都会失效）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_ERRORRECOGNIZE = "InternalError.ErrorRecognize"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) VoicePrintDelete(request *VoicePrintDeleteRequest) (response *VoicePrintDeleteResponse, err error) {
+    return c.VoicePrintDeleteWithContext(context.Background(), request)
+}
+
+// VoicePrintDelete
+// 本接口用于以删除已经注册的说话人信息（删除之后，原有的说话人ID和说话人音频数据都会失效）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_ERRORRECOGNIZE = "InternalError.ErrorRecognize"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) VoicePrintDeleteWithContext(ctx context.Context, request *VoicePrintDeleteRequest) (response *VoicePrintDeleteResponse, err error) {
+    if request == nil {
+        request = NewVoicePrintDeleteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoicePrintDelete require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoicePrintDeleteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVoicePrintEnrollRequest() (request *VoicePrintEnrollRequest) {
+    request = &VoicePrintEnrollRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "VoicePrintEnroll")
+    
+    
+    return
+}
+
+func NewVoicePrintEnrollResponse() (response *VoicePrintEnrollResponse) {
+    response = &VoicePrintEnrollResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VoicePrintEnroll
+// 说话人注册接口用于注册一个指定音频，生成一个唯一的说话人id，后续可通过说话人验证接口验证其它音频和已有的说话人ID匹配度，注册时可指定说话人昵称，方便标识说话人ID，  说话人昵称可重复配置。 
+//
+// （注: 一个appid最多可以注册1000个说话人ID，一个说话人ID仅支持一条音频注册，后续可通过更新接口进行更新）
+//
+// 
+//
+// 使用须知
+//
+// 支持的输入格式：编码文件(PCM, WAV)、16 bit采样位数、单声道（mono）。
+//
+// 
+//
+// 支持的音频采样率：16000 Hz。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORRECOGNIZE = "InternalError.ErrorRecognize"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_FAILEDVOICEPRINTENROLL = "InternalError.FailedVoicePrintEnroll"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  LIMITEXCEEDED_VOICEPRINTFULL = "LimitExceeded.VoicePrintFull"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) VoicePrintEnroll(request *VoicePrintEnrollRequest) (response *VoicePrintEnrollResponse, err error) {
+    return c.VoicePrintEnrollWithContext(context.Background(), request)
+}
+
+// VoicePrintEnroll
+// 说话人注册接口用于注册一个指定音频，生成一个唯一的说话人id，后续可通过说话人验证接口验证其它音频和已有的说话人ID匹配度，注册时可指定说话人昵称，方便标识说话人ID，  说话人昵称可重复配置。 
+//
+// （注: 一个appid最多可以注册1000个说话人ID，一个说话人ID仅支持一条音频注册，后续可通过更新接口进行更新）
+//
+// 
+//
+// 使用须知
+//
+// 支持的输入格式：编码文件(PCM, WAV)、16 bit采样位数、单声道（mono）。
+//
+// 
+//
+// 支持的音频采样率：16000 Hz。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORRECOGNIZE = "InternalError.ErrorRecognize"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_FAILEDVOICEPRINTENROLL = "InternalError.FailedVoicePrintEnroll"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  LIMITEXCEEDED_VOICEPRINTFULL = "LimitExceeded.VoicePrintFull"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) VoicePrintEnrollWithContext(ctx context.Context, request *VoicePrintEnrollRequest) (response *VoicePrintEnrollResponse, err error) {
+    if request == nil {
+        request = NewVoicePrintEnrollRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoicePrintEnroll require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoicePrintEnrollResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVoicePrintUpdateRequest() (request *VoicePrintUpdateRequest) {
+    request = &VoicePrintUpdateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "VoicePrintUpdate")
+    
+    
+    return
+}
+
+func NewVoicePrintUpdateResponse() (response *VoicePrintUpdateResponse) {
+    response = &VoicePrintUpdateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VoicePrintUpdate
+// 本接口用于更新和覆盖已注册的音频数据和说话人昵称，更新后原有的音频数据将失效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_ERRORRECOGNIZE = "InternalError.ErrorRecognize"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) VoicePrintUpdate(request *VoicePrintUpdateRequest) (response *VoicePrintUpdateResponse, err error) {
+    return c.VoicePrintUpdateWithContext(context.Background(), request)
+}
+
+// VoicePrintUpdate
+// 本接口用于更新和覆盖已注册的音频数据和说话人昵称，更新后原有的音频数据将失效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_ERRORRECOGNIZE = "InternalError.ErrorRecognize"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) VoicePrintUpdateWithContext(ctx context.Context, request *VoicePrintUpdateRequest) (response *VoicePrintUpdateResponse, err error) {
+    if request == nil {
+        request = NewVoicePrintUpdateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoicePrintUpdate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoicePrintUpdateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVoicePrintVerifyRequest() (request *VoicePrintVerifyRequest) {
+    request = &VoicePrintVerifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "VoicePrintVerify")
+    
+    
+    return
+}
+
+func NewVoicePrintVerifyResponse() (response *VoicePrintVerifyResponse) {
+    response = &VoicePrintVerifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VoicePrintVerify
+// 本接口用于校验传入音频与已注册音频的匹配程度，通过指定说话人ID（VoicePrintId）和一段音频进行音频和说话人的匹配度判断
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_ERRORRECOGNIZE = "InternalError.ErrorRecognize"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_FAILEDVOICEPRINTVERIFY = "InternalError.FailedVoicePrintVerify"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+func (c *Client) VoicePrintVerify(request *VoicePrintVerifyRequest) (response *VoicePrintVerifyResponse, err error) {
+    return c.VoicePrintVerifyWithContext(context.Background(), request)
+}
+
+// VoicePrintVerify
+// 本接口用于校验传入音频与已注册音频的匹配程度，通过指定说话人ID（VoicePrintId）和一段音频进行音频和说话人的匹配度判断
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXISTENTVOICEPRINTID = "FailedOperation.NotExistentVoicePrintId"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
+//  INTERNALERROR_ERRORRECOGNIZE = "InternalError.ErrorRecognize"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INTERNALERROR_FAILEDVOICEPRINTVERIFY = "InternalError.FailedVoicePrintVerify"
+//  INTERNALERROR_VOICEPRINTAUDIOFAILED = "InternalError.VoicePrintAudioFailed"
+//  INTERNALERROR_VOICEPRINTDECODEFAILED = "InternalError.VoicePrintDecodeFailed"
+//  INTERNALERROR_VOICEPRINTENROLLFAILED = "InternalError.VoicePrintEnrollFailed"
+//  INTERNALERROR_VOICEPRINTVERIFYFAILED = "InternalError.VoicePrintVerifyFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ERRORVOICEDATATOOLONG = "InvalidParameterValue.ErrorVoicedataTooLong"
+func (c *Client) VoicePrintVerifyWithContext(ctx context.Context, request *VoicePrintVerifyRequest) (response *VoicePrintVerifyResponse, err error) {
+    if request == nil {
+        request = NewVoicePrintVerifyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoicePrintVerify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoicePrintVerifyResponse()
+    err = c.Send(request, response)
+    return
+}

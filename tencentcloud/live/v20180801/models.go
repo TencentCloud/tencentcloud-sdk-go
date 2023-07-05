@@ -2307,6 +2307,9 @@ type CreateLiveStreamMonitorRequestParams struct {
 
 	// 是否存储监播事件到监播报告，以及是否允许查询监播报告。
 	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+
+	// 是否开启格式诊断。
+	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitempty" name:"AiFormatDiagnose"`
 }
 
 type CreateLiveStreamMonitorRequest struct {
@@ -2349,6 +2352,9 @@ type CreateLiveStreamMonitorRequest struct {
 
 	// 是否存储监播事件到监播报告，以及是否允许查询监播报告。
 	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+
+	// 是否开启格式诊断。
+	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitempty" name:"AiFormatDiagnose"`
 }
 
 func (r *CreateLiveStreamMonitorRequest) ToJsonString() string {
@@ -2374,6 +2380,7 @@ func (r *CreateLiveStreamMonitorRequest) FromJsonString(s string) error {
 	delete(f, "CheckStreamBroken")
 	delete(f, "CheckStreamLowFrameRate")
 	delete(f, "AllowMonitorReport")
+	delete(f, "AiFormatDiagnose")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveStreamMonitorRequest has unknown keys!", "")
 	}
@@ -10932,6 +10939,10 @@ type DiagnoseResult struct {
 	// 低帧率信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LowFrameRateResults []*string `json:"LowFrameRateResults,omitempty" name:"LowFrameRateResults"`
+
+	// 流格式诊断信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamFormatResults []*string `json:"StreamFormatResults,omitempty" name:"StreamFormatResults"`
 }
 
 type DomainCertInfo struct {
@@ -11581,6 +11592,10 @@ type LiveStreamMonitorInfo struct {
 	// 是否存储监播事件到监播报告，以及是否允许查询监播报告
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+
+	// 是否开启格式诊断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitempty" name:"AiFormatDiagnose"`
 }
 
 type LiveStreamMonitorInputInfo struct {
@@ -12897,6 +12912,9 @@ type ModifyLiveStreamMonitorRequestParams struct {
 
 	// 是否存储监播事件到监播报告，以及是否允许查询监播报告。
 	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+
+	// 是否开启格式诊断。
+	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitempty" name:"AiFormatDiagnose"`
 }
 
 type ModifyLiveStreamMonitorRequest struct {
@@ -12939,6 +12957,9 @@ type ModifyLiveStreamMonitorRequest struct {
 
 	// 是否存储监播事件到监播报告，以及是否允许查询监播报告。
 	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitempty" name:"AllowMonitorReport"`
+
+	// 是否开启格式诊断。
+	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitempty" name:"AiFormatDiagnose"`
 }
 
 func (r *ModifyLiveStreamMonitorRequest) ToJsonString() string {
@@ -12965,6 +12986,7 @@ func (r *ModifyLiveStreamMonitorRequest) FromJsonString(s string) error {
 	delete(f, "CheckStreamBroken")
 	delete(f, "CheckStreamLowFrameRate")
 	delete(f, "AllowMonitorReport")
+	delete(f, "AiFormatDiagnose")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveStreamMonitorRequest has unknown keys!", "")
 	}

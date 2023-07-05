@@ -4940,7 +4940,7 @@ type ModifyEnterpriseSecurityDispatchStatusRequestParams struct {
 	// 
 	// 1：关闭立即下发开关；
 	// 
-	// 2：关闭立即下发开关下，触发开始下发
+	// 2：关闭立即下发开关情况下，触发开始下发
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -4951,7 +4951,7 @@ type ModifyEnterpriseSecurityDispatchStatusRequest struct {
 	// 
 	// 1：关闭立即下发开关；
 	// 
-	// 2：关闭立即下发开关下，触发开始下发
+	// 2：关闭立即下发开关情况下，触发开始下发
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
