@@ -1906,6 +1906,7 @@ func NewModifyRecordsStatusResponse() (response *ModifyRecordsStatusResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MODIFYRECORDFAILED = "FailedOperation.ModifyRecordFailed"
+//  FAILEDOPERATION_UPDATERECORDFAILED = "FailedOperation.UpdateRecordFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1923,6 +1924,7 @@ func (c *Client) ModifyRecordsStatus(request *ModifyRecordsStatusRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_MODIFYRECORDFAILED = "FailedOperation.ModifyRecordFailed"
+//  FAILEDOPERATION_UPDATERECORDFAILED = "FailedOperation.UpdateRecordFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
 //  INVALIDPARAMETER = "InvalidParameter"

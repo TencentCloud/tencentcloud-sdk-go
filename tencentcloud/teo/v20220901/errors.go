@@ -17,9 +17,6 @@ package v20220901
 const (
 	// 此产品的特有错误码
 
-	// CAM签名/鉴权错误。
-	AUTHFAILURE = "AuthFailure"
-
 	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 	DRYRUNOPERATION = "DryRunOperation"
 
@@ -28,6 +25,9 @@ const (
 
 	// 证书不存在。
 	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+
+	// 账户余额不足
+	FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = "FailedOperation.InsufficientAccountBalance"
 
 	// 站点状态不正确。
 	FAILEDOPERATION_INVALIDZONESTATUS = "FailedOperation.InvalidZoneStatus"
@@ -65,44 +65,23 @@ const (
 	// 内部错误-系统错误。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 
+	// 未知错误。
+	INTERNALERROR_UNKNOWERROR = "InternalError.UnknowError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
 	// 操作频繁，请稍后重试。
 	INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 
+	// 别称域名不支持配置国密证书。
+	INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTSMCERT = "InvalidParameter.AliasDomainNotSupportSMCert"
+
 	// 查询字符串规则超过了限制。
 	INVALIDPARAMETER_CACHEKEYQUERYSTRINGTOOMANYVALUE = "InvalidParameter.CacheKeyQueryStringTooManyValue"
 
-	// HTTPS证书链错误。
-	INVALIDPARAMETER_CERTCHAINERROR = "InvalidParameter.CertChainError"
-
-	// 证书错误。
-	INVALIDPARAMETER_CERTCHECKERROR = "InvalidParameter.CertCheckError"
-
-	// 证书错误。
-	INVALIDPARAMETER_CERTCOMPLETEERROR = "InvalidParameter.CertCompleteError"
-
-	// 证书错误。
-	INVALIDPARAMETER_CERTFORMATERROR = "InvalidParameter.CertFormatError"
-
-	// HTTPS证书已过期。
-	INVALIDPARAMETER_CERTISEXPIRED = "InvalidParameter.CertIsExpired"
-
-	// 证书错误。
-	INVALIDPARAMETER_CERTNOCN = "InvalidParameter.CertNoCn"
-
-	// 无效的HTTPS证书。
-	INVALIDPARAMETER_CERTNOINFO = "InvalidParameter.CertNoInfo"
-
 	// HTTPS证书和域名不匹配。
 	INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
-
-	// HTTPS证书和密钥不匹配。
-	INVALIDPARAMETER_CERTNOTMATCHKEY = "InvalidParameter.CertNotMatchKey"
-
-	// 证书错误。
-	INVALIDPARAMETER_CERTNOTPEM = "InvalidParameter.CertNotPem"
 
 	// 内部错误。
 	INVALIDPARAMETER_CERTSYSTEMERROR = "InvalidParameter.CertSystemError"
@@ -112,9 +91,6 @@ const (
 
 	// 证书错误。
 	INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = "InvalidParameter.CertTooShortKeySize"
-
-	// 证书错误。
-	INVALIDPARAMETER_CERTUNSUPPORTEDTYPE = "InvalidParameter.CertUnsupportedType"
 
 	// IPv6 访问与客户端 IP 地理位置功能冲突。
 	INVALIDPARAMETER_CLIENTIPCOUNTRYCONFLICTSWITHIPV6 = "InvalidParameter.ClientIpCountryConflictsWithIpv6"
@@ -215,6 +191,9 @@ const (
 	// 无效的token鉴权参数。
 	INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = "InvalidParameter.InvalidAuthenticationTypeSignParam"
 
+	// 无效的第三方对象存储。
+	INVALIDPARAMETER_INVALIDAWSPRIVATEACCESS = "InvalidParameter.InvalidAwsPrivateAccess"
+
 	// 无效的备源回源Host。
 	INVALIDPARAMETER_INVALIDBACKUPSERVERNAME = "InvalidParameter.InvalidBackupServerName"
 
@@ -284,6 +263,9 @@ const (
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 
+	// 不支持填写内网IP/回环地址作为源站地址
+	INVALIDPARAMETER_INVALIDORIGINIP = "InvalidParameter.InvalidOriginIp"
+
 	// 参数错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
@@ -292,6 +274,9 @@ const (
 
 	// 无效的最大上传大小。
 	INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = "InvalidParameter.InvalidPostSizeValue"
+
+	// 请填写AccessKeyId、SecretAccessKey作为第三方对象存储私有访问参数。
+	INVALIDPARAMETER_INVALIDPRIVATEACCESSPARAMS = "InvalidParameter.InvalidPrivateAccessParams"
 
 	// 套餐包不支持Quic配置。
 	INVALIDPARAMETER_INVALIDQUICBILLING = "InvalidParameter.InvalidQuicBilling"
@@ -316,9 +301,6 @@ const (
 
 	// 无效的响应头header。
 	INVALIDPARAMETER_INVALIDRESPONSEHEADERVALUE = "InvalidParameter.InvalidResponseHeaderValue"
-
-	// 无效的规则引擎配置。
-	INVALIDPARAMETER_INVALIDRULEENGINE = "InvalidParameter.InvalidRuleEngine"
 
 	// 无效的规则引擎操作。
 	INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
@@ -404,6 +386,9 @@ const (
 	// DNS 记录与 DNSSEC 功能冲突。
 	INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 
+	// DNS 记录与 NS 记录冲突。
+	INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
+
 	// 主机记录与记录值不能取值相同。
 	INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = "InvalidParameterValue.ContentSameAsName"
 
@@ -431,6 +416,9 @@ const (
 	// 当天提交的资源数超过上限。
 	LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
 
+	// 计费套餐不支持。
+	LIMITEXCEEDED_PACKNOTALLOW = "LimitExceeded.PackNotAllow"
+
 	// 查询时间范围超出限制。
 	LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
 
@@ -443,6 +431,9 @@ const (
 	// 请联系商务开启「中国大陆网络优化(国际加速)」功能。
 	OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
 
+	// 站点停用未完毕，请稍后再试。
+	OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"
+
 	// 有域名在共享cname组内，不可切换接入类型。
 	OPERATIONDENIED_DOMAININSHARECNAMEGROUP = "OperationDenied.DomainInShareCnameGroup"
 
@@ -452,14 +443,29 @@ const (
 	// 域名尚未备案。
 	OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
 
+	// 站点处于停用状态，请开启后重试。
+	OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"
+
+	// 开启高防时必须保证安全是开启状态。
+	OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = "OperationDenied.InvalidAdvancedDefenseSecurityType"
+
+	// 开启高防必须保证站点加速区域是国内。
+	OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = "OperationDenied.InvalidAdvancedDefenseZoneArea"
+
 	// 4层代理资源处于封禁中，禁止操作。
 	OPERATIONDENIED_L4PROXYINBANNEDSTATUS = "OperationDenied.L4ProxyInBannedStatus"
+
+	// 存在四层代理实例处于部署中状态，暂不支持停用站点。
+	OPERATIONDENIED_L4PROXYINPROGRESSSTATUS = "OperationDenied.L4ProxyInProgressStatus"
+
+	// 存在四层代理实例处于停用中状态，暂不支持停用站点。
+	OPERATIONDENIED_L4PROXYINSTOPPINGSTATUS = "OperationDenied.L4ProxyInStoppingStatus"
 
 	// 绑定4层实例有处于非运行中的状态，禁止操作。
 	OPERATIONDENIED_L4STATUSNOTINONLINE = "OperationDenied.L4StatusNotInOnline"
 
-	// 回源白名单已经是最新版本，无需更新。
-	OPERATIONDENIED_LATESTVERSIONNOW = "OperationDenied.LatestVersionNow"
+	// 存在加速域名处于部署中状态，暂不支持停用站点。
+	OPERATIONDENIED_L7HOSTINPROCESSSTATUS = "OperationDenied.L7HostInProcessStatus"
 
 	// 已存在多个Cname接入站点，不允许切换至NS。
 	OPERATIONDENIED_MULTIPLECNAMEZONE = "OperationDenied.MultipleCnameZone"
@@ -547,9 +553,6 @@ const (
 
 	// 域名不存在或未开启代理。
 	RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"
-
-	// 未拉取到已开启代理的zone信息。
-	RESOURCEUNAVAILABLE_PROXYZONENOTFOUND = "ResourceUnavailable.ProxyZoneNotFound"
 
 	// 站点不存在或不属于该账号。
 	RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"

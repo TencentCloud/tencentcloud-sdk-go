@@ -1,3 +1,198 @@
+# Release v1.0.695
+
+## 账号风控平台(ciam) 版本：2022-03-31
+
+### 第 10 次发布
+
+发布时间：2023-07-06 01:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUserGroup](https://cloud.tencent.com/document/api/1441/94455)
+
+	* 新增出参：UserGroupId
+
+* [CreateUserStore](https://cloud.tencent.com/document/api/1441/94460)
+
+	* 新增出参：UserStoreId
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 58 次发布
+
+发布时间：2023-07-06 01:44:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：DeletionProtection
+
+* [ModifyInstance](https://cloud.tencent.com/document/api/1141/60996)
+
+	* 新增入参：DeletionProtection
+
+	* <font color="#dd0000">**修改入参**：</font>RegistryType
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 45 次发布
+
+发布时间：2023-07-06 01:59:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
+
+	* 新增入参：StandardDebug
+
+
+新增数据结构：
+
+* [StandardDebug](https://cloud.tencent.com/document/api/1552/80721#StandardDebug)
+
+修改数据结构：
+
+* [ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting)
+
+	* 新增成员：StandardDebug
+
+	* <font color="#dd0000">**修改成员**：</font>AccelerateMainland
+
+
+### 第 44 次发布
+
+发布时间：2023-07-05 11:45:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckCnameStatus](https://cloud.tencent.com/document/api/1552/94491)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckCertificate
+* CreateCredential
+* CreateReplayTask
+* CreateSpeedTesting
+* DescribeAddableEntityList
+* DescribeClientRuleList
+* DescribeDnsData
+* DescribeLogSets
+* DescribeLogTopicTasks
+* DescribeSingleL7AnalysisData
+* DescribeSpeedTestingDetails
+* DescribeSpeedTestingMetricData
+* DescribeSpeedTestingQuota
+* DescribeTimingL7SourceData
+* DescribeWebManagedRulesData
+* DescribeWebManagedRulesHitRuleDetail
+* DescribeWebManagedRulesLog
+* DescribeWebProtectionClientIpList
+* DescribeWebProtectionData
+* DescribeWebProtectionHitRuleDetail
+* DescribeWebProtectionTopData
+* ModifyDefaultCertificate
+* ModifyRulePriority
+* ModifySecurityWafGroupPolicy
+* ReclaimAliasDomain
+* ReclaimZone
+* UpdateOriginProtectionIPWhitelist
+
+修改接口：
+
+* [CreateApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80693)
+
+	* 新增入参：SessionPersistTime
+
+* [CreatePurgeTask](https://cloud.tencent.com/document/api/1552/80703)
+
+	* 新增入参：Method
+
+* [CreateZone](https://cloud.tencent.com/document/api/1552/80719)
+
+	* <font color="#dd0000">**修改入参**：</font>ZoneName
+
+* [ModifyApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80688)
+
+	* 新增入参：SessionPersistTime
+
+* [ModifyZone](https://cloud.tencent.com/document/api/1552/80709)
+
+	* 新增入参：Area, ZoneName
+
+
+新增数据结构：
+
+* [CnameStatus](https://cloud.tencent.com/document/api/1552/80721#CnameStatus)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ClientRule
+* ClsLogTopicInfo
+* DistrictStatistics
+* DnsData
+* LogSetInfo
+* OptimizeAction
+* SecClientIp
+* SecHitRuleInfo
+* SecRuleRelatedInfo
+* SingleDataRecord
+* SingleTypeValue
+* SpeedTestingConfig
+* SpeedTestingDetailData
+* SpeedTestingInfo
+* SpeedTestingMetricData
+* SpeedTestingQuota
+* SpeedTestingStatistics
+* SpeedTestingStatus
+* WafGroup
+* WebLogs
+
+修改数据结构：
+
+* [ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule)
+
+	* 新增成员：SessionPersistTime
+
+* [Cache](https://cloud.tencent.com/document/api/1552/80721#Cache)
+
+* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
+
+	* 新增成员：Group, ZoneNumber
+
+* [Sv](https://cloud.tencent.com/document/api/1552/80721#Sv)
+
+	* 新增成员：Pack, InstanceId, ProtectionSpecs
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.694
 
 ## API 网关(apigateway) 版本：2018-08-08

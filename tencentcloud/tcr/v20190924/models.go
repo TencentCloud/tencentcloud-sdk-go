@@ -783,6 +783,9 @@ type CreateInstanceRequestParams struct {
 
 	// 是否开启Cos桶多AZ特性
 	EnableCosMAZ *bool `json:"EnableCosMAZ,omitempty" name:"EnableCosMAZ"`
+
+	// 是否开启实例删除保护
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 type CreateInstanceRequest struct {
@@ -808,6 +811,9 @@ type CreateInstanceRequest struct {
 
 	// 是否开启Cos桶多AZ特性
 	EnableCosMAZ *bool `json:"EnableCosMAZ,omitempty" name:"EnableCosMAZ"`
+
+	// 是否开启实例删除保护
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -829,6 +835,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RegistryChargePrepaid")
 	delete(f, "SyncTag")
 	delete(f, "EnableCosMAZ")
+	delete(f, "DeletionProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -7260,8 +7267,14 @@ type ModifyInstanceRequestParams struct {
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
-	// 实例的规格
+	// 实例的规格,
+	// 基础版：basic
+	// 标准版：standard
+	// 高级版：premium
 	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+
+	// 实例删除保护，false为关闭
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 type ModifyInstanceRequest struct {
@@ -7270,8 +7283,14 @@ type ModifyInstanceRequest struct {
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
-	// 实例的规格
+	// 实例的规格,
+	// 基础版：basic
+	// 标准版：standard
+	// 高级版：premium
 	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+
+	// 实例删除保护，false为关闭
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 func (r *ModifyInstanceRequest) ToJsonString() string {
@@ -7288,6 +7307,7 @@ func (r *ModifyInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "RegistryId")
 	delete(f, "RegistryType")
+	delete(f, "DeletionProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceRequest has unknown keys!", "")
 	}

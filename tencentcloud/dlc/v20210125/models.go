@@ -8044,7 +8044,7 @@ type ModifyWorkGroupRequestParams struct {
 	// 工作组Id
 	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
 
-	// 工作组描述
+	// 工作组描述，最大字符数限制50
 	WorkGroupDescription *string `json:"WorkGroupDescription,omitempty" name:"WorkGroupDescription"`
 }
 
@@ -8054,7 +8054,7 @@ type ModifyWorkGroupRequest struct {
 	// 工作组Id
 	WorkGroupId *int64 `json:"WorkGroupId,omitempty" name:"WorkGroupId"`
 
-	// 工作组描述
+	// 工作组描述，最大字符数限制50
 	WorkGroupDescription *string `json:"WorkGroupDescription,omitempty" name:"WorkGroupDescription"`
 }
 

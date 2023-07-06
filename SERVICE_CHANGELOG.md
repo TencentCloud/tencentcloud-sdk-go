@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## API 网关(apigateway) 版本：2018-08-08
+## 账号风控平台(ciam) 版本：2022-03-31
 
-### 第 38 次发布
+### 第 10 次发布
 
-发布时间：2023-07-05 01:06:51
+发布时间：2023-07-06 01:13:25
 
 本次发布包含了以下内容：
 
@@ -12,18 +12,75 @@
 
 修改接口：
 
-* [DescribeServiceEnvironmentReleaseHistory](https://cloud.tencent.com/document/api/628/45197)
+* [CreateUserGroup](https://cloud.tencent.com/document/api/1441/94455)
 
-	* <font color="#dd0000">**修改入参**：</font>EnvironmentName
+	* 新增出参：UserGroupId
+
+* [CreateUserStore](https://cloud.tencent.com/document/api/1441/94460)
+
+	* 新增出参：UserStoreId
 
 
 
 
-## 语音识别(asr) 版本：2019-06-14
+## 容器镜像服务(tcr) 版本：2019-09-24
 
-### 第 28 次发布
+### 第 58 次发布
 
-发布时间：2023-07-05 01:07:50
+发布时间：2023-07-06 01:44:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：DeletionProtection
+
+* [ModifyInstance](https://cloud.tencent.com/document/api/1141/60996)
+
+	* 新增入参：DeletionProtection
+
+	* <font color="#dd0000">**修改入参**：</font>RegistryType
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 45 次发布
+
+发布时间：2023-07-06 01:59:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
+
+	* 新增入参：StandardDebug
+
+
+新增数据结构：
+
+* [StandardDebug](https://cloud.tencent.com/document/api/1552/80721#StandardDebug)
+
+修改数据结构：
+
+* [ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting)
+
+	* 新增成员：StandardDebug
+
+	* <font color="#dd0000">**修改成员**：</font>AccelerateMainland
+
+
+### 第 44 次发布
+
+发布时间：2023-07-05 11:45:45
 
 本次发布包含了以下内容：
 
@@ -31,284 +88,108 @@
 
 新增接口：
 
-* [VoicePrintDelete](https://cloud.tencent.com/document/api/1093/94484)
-* [VoicePrintEnroll](https://cloud.tencent.com/document/api/1093/94483)
-* [VoicePrintUpdate](https://cloud.tencent.com/document/api/1093/94482)
-* [VoicePrintVerify](https://cloud.tencent.com/document/api/1093/94481)
+* [CheckCnameStatus](https://cloud.tencent.com/document/api/1552/94491)
 
-新增数据结构：
+<font color="#dd0000">**删除接口**：</font>
 
-* [VoicePrintBaseData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintBaseData)
-* [VoicePrintVerifyData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintVerifyData)
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 54 次发布
-
-发布时间：2023-07-05 01:15:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeTopics](https://cloud.tencent.com/document/api/614/56454)
-
-	* 新增入参：PreciseSearch, BizType
-
-
-
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
-
-### 第 54 次发布
-
-发布时间：2023-07-05 01:21:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* CheckCertificate
+* CreateCredential
+* CreateReplayTask
+* CreateSpeedTesting
+* DescribeAddableEntityList
+* DescribeClientRuleList
+* DescribeDnsData
+* DescribeLogSets
+* DescribeLogTopicTasks
+* DescribeSingleL7AnalysisData
+* DescribeSpeedTestingDetails
+* DescribeSpeedTestingMetricData
+* DescribeSpeedTestingQuota
+* DescribeTimingL7SourceData
+* DescribeWebManagedRulesData
+* DescribeWebManagedRulesHitRuleDetail
+* DescribeWebManagedRulesLog
+* DescribeWebProtectionClientIpList
+* DescribeWebProtectionData
+* DescribeWebProtectionHitRuleDetail
+* DescribeWebProtectionTopData
+* ModifyDefaultCertificate
+* ModifyRulePriority
+* ModifySecurityWafGroupPolicy
+* ReclaimAliasDomain
+* ReclaimZone
+* UpdateOriginProtectionIPWhitelist
 
 修改接口：
 
-* [CreateNotebookSession](https://cloud.tencent.com/document/api/1342/86113)
+* [CreateApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80693)
 
-	* 新增入参：SparkImage
+	* 新增入参：SessionPersistTime
 
-* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+* [CreatePurgeTask](https://cloud.tencent.com/document/api/1552/80703)
 
-	* 新增入参：IsSessionStarted
+	* 新增入参：Method
 
-* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+* [CreateZone](https://cloud.tencent.com/document/api/1552/80719)
 
-	* 新增入参：IsSessionStarted
+	* <font color="#dd0000">**修改入参**：</font>ZoneName
 
+* [ModifyApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80688)
 
+	* 新增入参：SessionPersistTime
 
+* [ModifyZone](https://cloud.tencent.com/document/api/1552/80709)
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 48 次发布
-
-发布时间：2023-07-05 01:26:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeHiveQueries](https://cloud.tencent.com/document/api/589/94487)
-* [DescribeImpalaQueries](https://cloud.tencent.com/document/api/589/94486)
-* [DescribeYarnApplications](https://cloud.tencent.com/document/api/589/94485)
-
-新增数据结构：
-
-* [HiveQuery](https://cloud.tencent.com/document/api/589/33981#HiveQuery)
-* [ImpalaQuery](https://cloud.tencent.com/document/api/589/33981#ImpalaQuery)
-* [YarnApplication](https://cloud.tencent.com/document/api/589/33981#YarnApplication)
-
-修改数据结构：
-
-* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>AppId, SerialNo, OrderNo, WanIp, Flag, Spec, CpuNum, MemSize, MemDesc, RegionId, ZoneId, ApplyTime, FreeTime, DiskSize, NameTag, Services, StorageType, RootSize, ChargeType, CdbIp, CdbPort, HwDiskSize, HwDiskSizeDesc, HwMemSize, HwMemSizeDesc, ExpireTime, EmrResourceId, IsAutoRenew, DeviceClass, Mutable, MCMultiDisk, CdbNodeInfo, Ip, Destroyable, Tags, AutoFlag, HardwareResourceType, IsDynamicSpec, DynamicPodSpec, SupportModifyPayMode, RootStorageType, Zone, SubnetInfo, Clients, CurrentTime, IsFederation, DeviceName, ServiceClient, DisableApiTermination, TradeVersion
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 84 次发布
-
-发布时间：2023-07-05 01:27:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateFlowSignReview](https://cloud.tencent.com/document/api/1323/78980)
-
-	* 新增入参：RecipientId, OperateType
-
-
-修改数据结构：
-
-* [FailedCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedCreateStaffData)
-
-	* 新增成员：WeworkOpenId
-
-* [Staff](https://cloud.tencent.com/document/api/1323/70369#Staff)
-
-	* 新增成员：WeworkOpenId
-
-* [SuccessCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessCreateStaffData)
-
-	* 新增成员：WeworkOpenId
-
-	* <font color="#dd0000">**修改成员**：</font>Note
-
-
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 108 次发布
-
-发布时间：2023-07-05 01:34:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLiveStreamMonitor](https://cloud.tencent.com/document/api/267/93521)
-
-	* 新增入参：AiFormatDiagnose
-
-* [ModifyLiveStreamMonitor](https://cloud.tencent.com/document/api/267/93516)
-
-	* 新增入参：AiFormatDiagnose
-
-
-修改数据结构：
-
-* [DiagnoseResult](https://cloud.tencent.com/document/api/267/20474#DiagnoseResult)
-
-	* 新增成员：StreamFormatResults
-
-* [LiveStreamMonitorInfo](https://cloud.tencent.com/document/api/267/20474#LiveStreamMonitorInfo)
-
-	* 新增成员：AiFormatDiagnose
-
-
-
-
-## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
-
-### 第 24 次发布
-
-发布时间：2023-07-05 01:50:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeRawScanLogs](https://cloud.tencent.com/document/api/1458/94488)
-
-新增数据结构：
-
-* [RawScanLog](https://cloud.tencent.com/document/api/1458/75030#RawScanLog)
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 159 次发布
-
-发布时间：2023-07-05 01:54:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AllocateAddresses](https://cloud.tencent.com/document/api/215/16699)
-
-	* 新增入参：AntiDDoSPackageId, ClientToken
-
-
-修改数据结构：
-
-* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
-
-	* 新增成员：AntiDDoSPackageId
-
-	* <font color="#dd0000">**修改成员**：</font>AddressId, AddressName, AddressStatus, AddressIp, InstanceId, CreatedTime
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 37 次发布
-
-发布时间：2023-07-05 01:56:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo)
-
-	* 新增成员：CdcClusters, ApiStatus, SgState, SgDetail
-
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 33 次发布
-
-发布时间：2023-07-05 01:56:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CommitIntegrationTask](https://cloud.tencent.com/document/api/1267/82526)
-
-	* 新增入参：ExtConfig
-
-* [GenHiveTableDDLSql](https://cloud.tencent.com/document/api/1267/82483)
-
-	* 新增入参：UpsertKeys, TableBaseInfo
-
-* [ResumeIntegrationTask](https://cloud.tencent.com/document/api/1267/82473)
-
-	* 新增入参：Event, ExtConfig
-
-* [StartIntegrationTask](https://cloud.tencent.com/document/api/1267/82471)
-
-	* 新增入参：Event, ExtConfig
+	* 新增入参：Area, ZoneName
 
 
 新增数据结构：
 
-* [DlcDataGovernPolicy](https://cloud.tencent.com/document/api/1267/76336#DlcDataGovernPolicy)
-* [DlcExpiredSnapshotsInfo](https://cloud.tencent.com/document/api/1267/76336#DlcExpiredSnapshotsInfo)
-* [DlcMergeManifestsInfo](https://cloud.tencent.com/document/api/1267/76336#DlcMergeManifestsInfo)
-* [DlcRemoveOrphanFilesInfo](https://cloud.tencent.com/document/api/1267/76336#DlcRemoveOrphanFilesInfo)
-* [DlcRewriteDataInfo](https://cloud.tencent.com/document/api/1267/76336#DlcRewriteDataInfo)
-* [TableBaseInfo](https://cloud.tencent.com/document/api/1267/76336#TableBaseInfo)
+* [CnameStatus](https://cloud.tencent.com/document/api/1552/80721#CnameStatus)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ClientRule
+* ClsLogTopicInfo
+* DistrictStatistics
+* DnsData
+* LogSetInfo
+* OptimizeAction
+* SecClientIp
+* SecHitRuleInfo
+* SecRuleRelatedInfo
+* SingleDataRecord
+* SingleTypeValue
+* SpeedTestingConfig
+* SpeedTestingDetailData
+* SpeedTestingInfo
+* SpeedTestingMetricData
+* SpeedTestingQuota
+* SpeedTestingStatistics
+* SpeedTestingStatus
+* WafGroup
+* WebLogs
 
 修改数据结构：
 
-* [AlarmIndicatorInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmIndicatorInfo)
+* [ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule)
 
-	* 新增成员：Duration, DurationUnit, MaxTimes
+	* 新增成员：SessionPersistTime
 
-* [RecordField](https://cloud.tencent.com/document/api/1267/76336#RecordField)
+* [Cache](https://cloud.tencent.com/document/api/1552/80721#Cache)
 
-	* <font color="#dd0000">**修改成员**：</font>Name, Value
+* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
 
-* [SourceFieldInfo](https://cloud.tencent.com/document/api/1267/76336#SourceFieldInfo)
+	* 新增成员：Group, ZoneNumber
 
-	* 新增成员：Comment
+* [Sv](https://cloud.tencent.com/document/api/1552/80721#Sv)
 
+	* 新增成员：Pack, InstanceId, ProtectionSpecs
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
 
 
@@ -6069,15 +5950,15 @@
 
 新增接口：
 
-* [[VoicePrintDelete](https://cloud.tencent.com/document/api/1093/94484)](https://cloud.tencent.com/document/api/#/#)
-* [[VoicePrintEnroll](https://cloud.tencent.com/document/api/1093/94483)](https://cloud.tencent.com/document/api/#/#)
-* [[VoicePrintUpdate](https://cloud.tencent.com/document/api/1093/94482)](https://cloud.tencent.com/document/api/#/#)
-* [[VoicePrintVerify](https://cloud.tencent.com/document/api/1093/94481)](https://cloud.tencent.com/document/api/#/#)
+* [VoicePrintDelete](https://cloud.tencent.com/document/api/1093/94484)
+* [VoicePrintEnroll](https://cloud.tencent.com/document/api/1093/94483)
+* [VoicePrintUpdate](https://cloud.tencent.com/document/api/1093/94482)
+* [VoicePrintVerify](https://cloud.tencent.com/document/api/1093/94481)
 
 新增数据结构：
 
-* [[VoicePrintBaseData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintBaseData)](https://cloud.tencent.com/document/api/1093/37824#[VoicePrintBaseData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintBaseData))
-* [[VoicePrintVerifyData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintVerifyData)](https://cloud.tencent.com/document/api/1093/37824#[VoicePrintVerifyData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintVerifyData))
+* [VoicePrintBaseData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintBaseData)
+* [VoicePrintVerifyData](https://cloud.tencent.com/document/api/1093/37824#VoicePrintVerifyData)
 
 ### 第 27 次发布
 
@@ -21764,6 +21645,25 @@
 
 
 ## 账号风控平台(ciam) 版本：2022-03-31
+
+### 第 10 次发布
+
+发布时间：2023-07-06 01:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUserGroup](https://cloud.tencent.com/document/api/1441/94455)
+
+	* 新增出参：UserGroupId
+
+* [CreateUserStore](https://cloud.tencent.com/document/api/1441/94460)
+
+	* 新增出参：UserStoreId
+
 
 ### 第 9 次发布
 
@@ -47487,15 +47387,15 @@
 
 新增接口：
 
-* [[DescribeHiveQueries](https://cloud.tencent.com/document/api/589/94487)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeImpalaQueries](https://cloud.tencent.com/document/api/589/94486)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeYarnApplications](https://cloud.tencent.com/document/api/589/94485)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeHiveQueries](https://cloud.tencent.com/document/api/589/94487)
+* [DescribeImpalaQueries](https://cloud.tencent.com/document/api/589/94486)
+* [DescribeYarnApplications](https://cloud.tencent.com/document/api/589/94485)
 
 新增数据结构：
 
-* [[HiveQuery](https://cloud.tencent.com/document/api/589/33981#HiveQuery)](https://cloud.tencent.com/document/api/589/33981#[HiveQuery](https://cloud.tencent.com/document/api/589/33981#HiveQuery))
-* [[ImpalaQuery](https://cloud.tencent.com/document/api/589/33981#ImpalaQuery)](https://cloud.tencent.com/document/api/589/33981#[ImpalaQuery](https://cloud.tencent.com/document/api/589/33981#ImpalaQuery))
-* [[YarnApplication](https://cloud.tencent.com/document/api/589/33981#YarnApplication)](https://cloud.tencent.com/document/api/589/33981#[YarnApplication](https://cloud.tencent.com/document/api/589/33981#YarnApplication))
+* [HiveQuery](https://cloud.tencent.com/document/api/589/33981#HiveQuery)
+* [ImpalaQuery](https://cloud.tencent.com/document/api/589/33981#ImpalaQuery)
+* [YarnApplication](https://cloud.tencent.com/document/api/589/33981#YarnApplication)
 
 修改数据结构：
 
@@ -92526,6 +92426,27 @@
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
 
+### 第 58 次发布
+
+发布时间：2023-07-06 01:44:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1141/41572)
+
+	* 新增入参：DeletionProtection
+
+* [ModifyInstance](https://cloud.tencent.com/document/api/1141/60996)
+
+	* 新增入参：DeletionProtection
+
+	* <font color="#dd0000">**修改入参**：</font>RegistryType
+
+
 ### 第 57 次发布
 
 发布时间：2023-06-30 01:44:37
@@ -99386,6 +99307,143 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 45 次发布
+
+发布时间：2023-07-06 01:59:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
+
+	* 新增入参：StandardDebug
+
+
+新增数据结构：
+
+* [[StandardDebug](https://cloud.tencent.com/document/api/1552/80721#StandardDebug)](https://cloud.tencent.com/document/api/1552/80721#[StandardDebug](https://cloud.tencent.com/document/api/1552/80721#StandardDebug))
+
+修改数据结构：
+
+* [ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting)
+
+	* 新增成员：StandardDebug
+
+	* <font color="#dd0000">**修改成员**：</font>AccelerateMainland
+
+
+### 第 44 次发布
+
+发布时间：2023-07-05 11:45:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckCnameStatus](https://cloud.tencent.com/document/api/1552/94491)](https://cloud.tencent.com/document/api/#/#)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CheckCertificate
+* CreateCredential
+* CreateReplayTask
+* CreateSpeedTesting
+* DescribeAddableEntityList
+* DescribeClientRuleList
+* DescribeDnsData
+* DescribeLogSets
+* DescribeLogTopicTasks
+* DescribeSingleL7AnalysisData
+* DescribeSpeedTestingDetails
+* DescribeSpeedTestingMetricData
+* DescribeSpeedTestingQuota
+* DescribeTimingL7SourceData
+* DescribeWebManagedRulesData
+* DescribeWebManagedRulesHitRuleDetail
+* DescribeWebManagedRulesLog
+* DescribeWebProtectionClientIpList
+* DescribeWebProtectionData
+* DescribeWebProtectionHitRuleDetail
+* DescribeWebProtectionTopData
+* ModifyDefaultCertificate
+* ModifyRulePriority
+* ModifySecurityWafGroupPolicy
+* ReclaimAliasDomain
+* ReclaimZone
+* UpdateOriginProtectionIPWhitelist
+
+修改接口：
+
+* [CreateApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80693)
+
+	* 新增入参：SessionPersistTime
+
+* [CreatePurgeTask](https://cloud.tencent.com/document/api/1552/80703)
+
+	* 新增入参：Method
+
+* [CreateZone](https://cloud.tencent.com/document/api/1552/80719)
+
+	* <font color="#dd0000">**修改入参**：</font>ZoneName
+
+* [ModifyApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80688)
+
+	* 新增入参：SessionPersistTime
+
+* [ModifyZone](https://cloud.tencent.com/document/api/1552/80709)
+
+	* 新增入参：Area, ZoneName
+
+
+新增数据结构：
+
+* [[CnameStatus](https://cloud.tencent.com/document/api/1552/80721#CnameStatus)](https://cloud.tencent.com/document/api/1552/80721#[CnameStatus](https://cloud.tencent.com/document/api/1552/80721#CnameStatus))
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ClientRule
+* ClsLogTopicInfo
+* DistrictStatistics
+* DnsData
+* LogSetInfo
+* OptimizeAction
+* SecClientIp
+* SecHitRuleInfo
+* SecRuleRelatedInfo
+* SingleDataRecord
+* SingleTypeValue
+* SpeedTestingConfig
+* SpeedTestingDetailData
+* SpeedTestingInfo
+* SpeedTestingMetricData
+* SpeedTestingQuota
+* SpeedTestingStatistics
+* SpeedTestingStatus
+* WafGroup
+* WebLogs
+
+修改数据结构：
+
+* [ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule)
+
+	* 新增成员：SessionPersistTime
+
+* [Cache](https://cloud.tencent.com/document/api/1552/80721#Cache)
+
+* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
+
+	* 新增成员：Group, ZoneNumber
+
+* [Sv](https://cloud.tencent.com/document/api/1552/80721#Sv)
+
+	* 新增成员：Pack, InstanceId, ProtectionSpecs
+
 
 ### 第 43 次发布
 
@@ -107585,11 +107643,11 @@
 
 新增接口：
 
-* [[DescribeRawScanLogs](https://cloud.tencent.com/document/api/1458/94488)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRawScanLogs](https://cloud.tencent.com/document/api/1458/94488)
 
 新增数据结构：
 
-* [[RawScanLog](https://cloud.tencent.com/document/api/1458/75030#RawScanLog)](https://cloud.tencent.com/document/api/1458/75030#[RawScanLog](https://cloud.tencent.com/document/api/1458/75030#RawScanLog))
+* [RawScanLog](https://cloud.tencent.com/document/api/1458/75030#RawScanLog)
 
 ### 第 23 次发布
 
@@ -122086,12 +122144,12 @@
 
 新增数据结构：
 
-* [[DlcDataGovernPolicy](https://cloud.tencent.com/document/api/1267/76336#DlcDataGovernPolicy)](https://cloud.tencent.com/document/api/1267/76336#[DlcDataGovernPolicy](https://cloud.tencent.com/document/api/1267/76336#DlcDataGovernPolicy))
-* [[DlcExpiredSnapshotsInfo](https://cloud.tencent.com/document/api/1267/76336#DlcExpiredSnapshotsInfo)](https://cloud.tencent.com/document/api/1267/76336#[DlcExpiredSnapshotsInfo](https://cloud.tencent.com/document/api/1267/76336#DlcExpiredSnapshotsInfo))
-* [[DlcMergeManifestsInfo](https://cloud.tencent.com/document/api/1267/76336#DlcMergeManifestsInfo)](https://cloud.tencent.com/document/api/1267/76336#[DlcMergeManifestsInfo](https://cloud.tencent.com/document/api/1267/76336#DlcMergeManifestsInfo))
-* [[DlcRemoveOrphanFilesInfo](https://cloud.tencent.com/document/api/1267/76336#DlcRemoveOrphanFilesInfo)](https://cloud.tencent.com/document/api/1267/76336#[DlcRemoveOrphanFilesInfo](https://cloud.tencent.com/document/api/1267/76336#DlcRemoveOrphanFilesInfo))
-* [[DlcRewriteDataInfo](https://cloud.tencent.com/document/api/1267/76336#DlcRewriteDataInfo)](https://cloud.tencent.com/document/api/1267/76336#[DlcRewriteDataInfo](https://cloud.tencent.com/document/api/1267/76336#DlcRewriteDataInfo))
-* [[TableBaseInfo](https://cloud.tencent.com/document/api/1267/76336#TableBaseInfo)](https://cloud.tencent.com/document/api/1267/76336#[TableBaseInfo](https://cloud.tencent.com/document/api/1267/76336#TableBaseInfo))
+* [DlcDataGovernPolicy](https://cloud.tencent.com/document/api/1267/76336#DlcDataGovernPolicy)
+* [DlcExpiredSnapshotsInfo](https://cloud.tencent.com/document/api/1267/76336#DlcExpiredSnapshotsInfo)
+* [DlcMergeManifestsInfo](https://cloud.tencent.com/document/api/1267/76336#DlcMergeManifestsInfo)
+* [DlcRemoveOrphanFilesInfo](https://cloud.tencent.com/document/api/1267/76336#DlcRemoveOrphanFilesInfo)
+* [DlcRewriteDataInfo](https://cloud.tencent.com/document/api/1267/76336#DlcRewriteDataInfo)
+* [TableBaseInfo](https://cloud.tencent.com/document/api/1267/76336#TableBaseInfo)
 
 修改数据结构：
 

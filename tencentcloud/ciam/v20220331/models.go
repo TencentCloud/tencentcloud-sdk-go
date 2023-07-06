@@ -236,6 +236,9 @@ func (r *CreateUserGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserGroupResponseParams struct {
+	// 用户组ID
+	UserGroupId *string `json:"UserGroupId,omitempty" name:"UserGroupId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -460,6 +463,9 @@ func (r *CreateUserStoreRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserStoreResponseParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

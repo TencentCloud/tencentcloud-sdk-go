@@ -1500,6 +1500,8 @@ func NewCreateHiveTableByDDLResponse() (response *CreateHiveTableByDDLResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHiveTableByDDL(request *CreateHiveTableByDDLRequest) (response *CreateHiveTableByDDLResponse, err error) {
     return c.CreateHiveTableByDDLWithContext(context.Background(), request)
 }
@@ -1509,6 +1511,8 @@ func (c *Client) CreateHiveTableByDDL(request *CreateHiveTableByDDLRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateHiveTableByDDLWithContext(ctx context.Context, request *CreateHiveTableByDDLRequest) (response *CreateHiveTableByDDLResponse, err error) {
     if request == nil {
         request = NewCreateHiveTableByDDLRequest()
