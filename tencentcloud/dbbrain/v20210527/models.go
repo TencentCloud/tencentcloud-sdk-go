@@ -754,6 +754,86 @@ func (r *CreateProxySessionKillTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRedisBigKeyAnalysisTaskRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 分片节点序号列表。当列表为空时，选择所有分片节点。
+	ShardIds []*int64 `json:"ShardIds,omitempty" name:"ShardIds"`
+
+	// Top Key前缀的分隔符列表。
+	// 目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
+	KeyDelimiterList []*string `json:"KeyDelimiterList,omitempty" name:"KeyDelimiterList"`
+}
+
+type CreateRedisBigKeyAnalysisTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 分片节点序号列表。当列表为空时，选择所有分片节点。
+	ShardIds []*int64 `json:"ShardIds,omitempty" name:"ShardIds"`
+
+	// Top Key前缀的分隔符列表。
+	// 目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
+	KeyDelimiterList []*string `json:"KeyDelimiterList,omitempty" name:"KeyDelimiterList"`
+}
+
+func (r *CreateRedisBigKeyAnalysisTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRedisBigKeyAnalysisTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "ShardIds")
+	delete(f, "KeyDelimiterList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRedisBigKeyAnalysisTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRedisBigKeyAnalysisTaskResponseParams struct {
+	// 异步任务ID。
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRedisBigKeyAnalysisTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRedisBigKeyAnalysisTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateRedisBigKeyAnalysisTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRedisBigKeyAnalysisTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSchedulerMailProfileRequestParams struct {
 	// 取值范围1-7，分别代表周一至周日。
 	WeekConfiguration []*int64 `json:"WeekConfiguration,omitempty" name:"WeekConfiguration"`

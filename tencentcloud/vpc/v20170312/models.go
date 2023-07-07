@@ -2501,7 +2501,7 @@ type ClassicLinkInstance struct {
 
 // Predefined struct for user
 type CloneSecurityGroupRequestParams struct {
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组名称，可任意命名，但不得超过60个字符。未提供参数时，克隆后的安全组名称和SecurityGroupId对应的安全组名称相同。
@@ -2510,7 +2510,7 @@ type CloneSecurityGroupRequestParams struct {
 	// 安全组备注，最多100个字符。未提供参数时，克隆后的安全组备注和SecurityGroupId对应的安全组备注相同。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 源Region,跨地域克隆安全组时，需要传入源安全组所属地域信息，例如：克隆广州的安全组到上海，则这里需要传入广州安全的地域信息：ap-guangzhou。
@@ -2520,7 +2520,7 @@ type CloneSecurityGroupRequestParams struct {
 type CloneSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组名称，可任意命名，但不得超过60个字符。未提供参数时，克隆后的安全组名称和SecurityGroupId对应的安全组名称相同。
@@ -2529,7 +2529,7 @@ type CloneSecurityGroupRequest struct {
 	// 安全组备注，最多100个字符。未提供参数时，克隆后的安全组备注和SecurityGroupId对应的安全组备注相同。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 源Region,跨地域克隆安全组时，需要传入源安全组所属地域信息，例如：克隆广州的安全组到上海，则这里需要传入广州安全的地域信息：ap-guangzhou。
@@ -4866,7 +4866,7 @@ type CreateSecurityGroupWithPoliciesRequestParams struct {
 	// 安全组备注，最多100个字符。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 安全组规则集合。
@@ -4882,7 +4882,7 @@ type CreateSecurityGroupWithPoliciesRequest struct {
 	// 安全组备注，最多100个字符。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 安全组规则集合。
@@ -13482,7 +13482,7 @@ type DescribeSnapshotFilesRequestParams struct {
 	// 业务类型，目前支持安全组：securitygroup。
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
-	// 实例Id。
+	// 业务实例Id，和BusinessType对应。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 开始日期，格式%Y-%m-%d %H:%M:%S。
@@ -13504,7 +13504,7 @@ type DescribeSnapshotFilesRequest struct {
 	// 业务类型，目前支持安全组：securitygroup。
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
-	// 实例Id。
+	// 业务实例Id，和BusinessType对应。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 开始日期，格式%Y-%m-%d %H:%M:%S。
@@ -14116,13 +14116,13 @@ type DescribeUsedIpAddressRequestParams struct {
 	// 子网实例ID。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 查询是否占用的ip列表
+	// 查询是否占用的ip列表，ip需要在vpc或子网内。最多允许一次查询100个IP。
 	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses"`
 
-	// 偏移量。
+	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 请求对象个数。
+	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -14135,13 +14135,13 @@ type DescribeUsedIpAddressRequest struct {
 	// 子网实例ID。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 查询是否占用的ip列表
+	// 查询是否占用的ip列表，ip需要在vpc或子网内。最多允许一次查询100个IP。
 	IpAddresses []*string `json:"IpAddresses,omitempty" name:"IpAddresses"`
 
-	// 偏移量。
+	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 请求对象个数。
+	// 返回数量，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -21347,6 +21347,9 @@ type ModifyVpcAttributeRequestParams struct {
 
 	// 域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
+	EnableCdcPublish *bool `json:"EnableCdcPublish,omitempty" name:"EnableCdcPublish"`
 }
 
 type ModifyVpcAttributeRequest struct {
@@ -21366,6 +21369,9 @@ type ModifyVpcAttributeRequest struct {
 
 	// 域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 发布cdc 子网到云联网的开关。true: 发布, false: 不发布。
+	EnableCdcPublish *bool `json:"EnableCdcPublish,omitempty" name:"EnableCdcPublish"`
 }
 
 func (r *ModifyVpcAttributeRequest) ToJsonString() string {
@@ -21385,6 +21391,7 @@ func (r *ModifyVpcAttributeRequest) FromJsonString(s string) error {
 	delete(f, "EnableMulticast")
 	delete(f, "DnsServers")
 	delete(f, "DomainName")
+	delete(f, "EnableCdcPublish")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcAttributeRequest has unknown keys!", "")
 	}

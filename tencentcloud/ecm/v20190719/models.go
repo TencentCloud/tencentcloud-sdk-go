@@ -238,6 +238,15 @@ type AssignIpv6AddressesRequestParams struct {
 	// CTCC：中国电信
 	// CUCC：中国联通
 	// CMCC：中国移动
+	ISPType *string `json:"ISPType,omitempty" name:"ISPType"`
+
+	// 是否跳过校验一个网卡只能分配一个IPv6 CIDR。该字段通常为true（用于兼容存量子机只有一个地址的情形）。
+	SkipCheckIPv6Address *bool `json:"SkipCheckIPv6Address,omitempty" name:"SkipCheckIPv6Address"`
+
+	// 是否跳过自动开通公网带宽。通常为true(根据运营系统的用户配置来决定是否自动开通，以支持当前子机购买时的行为）。
+	SkipAllocateBandwidth *bool `json:"SkipAllocateBandwidth,omitempty" name:"SkipAllocateBandwidth"`
+
+	// 该字段没有使用（已过期）。
 	Ipv6ISP *string `json:"Ipv6ISP,omitempty" name:"Ipv6ISP"`
 }
 
@@ -260,6 +269,15 @@ type AssignIpv6AddressesRequest struct {
 	// CTCC：中国电信
 	// CUCC：中国联通
 	// CMCC：中国移动
+	ISPType *string `json:"ISPType,omitempty" name:"ISPType"`
+
+	// 是否跳过校验一个网卡只能分配一个IPv6 CIDR。该字段通常为true（用于兼容存量子机只有一个地址的情形）。
+	SkipCheckIPv6Address *bool `json:"SkipCheckIPv6Address,omitempty" name:"SkipCheckIPv6Address"`
+
+	// 是否跳过自动开通公网带宽。通常为true(根据运营系统的用户配置来决定是否自动开通，以支持当前子机购买时的行为）。
+	SkipAllocateBandwidth *bool `json:"SkipAllocateBandwidth,omitempty" name:"SkipAllocateBandwidth"`
+
+	// 该字段没有使用（已过期）。
 	Ipv6ISP *string `json:"Ipv6ISP,omitempty" name:"Ipv6ISP"`
 }
 
@@ -279,6 +297,9 @@ func (r *AssignIpv6AddressesRequest) FromJsonString(s string) error {
 	delete(f, "NetworkInterfaceId")
 	delete(f, "Ipv6Addresses")
 	delete(f, "Ipv6AddressCount")
+	delete(f, "ISPType")
+	delete(f, "SkipCheckIPv6Address")
+	delete(f, "SkipAllocateBandwidth")
 	delete(f, "Ipv6ISP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignIpv6AddressesRequest has unknown keys!", "")
@@ -5729,7 +5750,8 @@ type DescribeSubnetsRequestParams struct {
 	// region - String - ECM地域
 	// zone - String - 可用区。
 	// tag-key - String -是否必填：否- 按照标签键进行过滤。
-	// tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
+	// ipv6-cidr-block- String - 是否必填：否 - 按照IPv6 CIDR进行过滤。
+	// isp-type - String - 是否必填：否 - 按照运营商类型( 如CMCC，CUCC， CTCC)进行过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
@@ -5760,7 +5782,8 @@ type DescribeSubnetsRequest struct {
 	// region - String - ECM地域
 	// zone - String - 可用区。
 	// tag-key - String -是否必填：否- 按照标签键进行过滤。
-	// tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
+	// ipv6-cidr-block- String - 是否必填：否 - 按照IPv6 CIDR进行过滤。
+	// isp-type - String - 是否必填：否 - 按照运营商类型( 如CMCC，CUCC， CTCC)进行过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
@@ -6102,6 +6125,8 @@ type DescribeVpcsRequestParams struct {
 	// region - String - vpc的region。
 	// tag-key - String -是否必填：否- 按照标签键进行过滤。
 	// tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
+	// ipv6-cidr-block - String - 是否必填：否 - 按照IPv6 CIDR block进行过滤。
+	// isp-type - String - 是否必填：否 - 按照运营商（如CMCC, CUCC, CTCC）进行过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
@@ -6130,6 +6155,8 @@ type DescribeVpcsRequest struct {
 	// region - String - vpc的region。
 	// tag-key - String -是否必填：否- 按照标签键进行过滤。
 	// tag:tag-key - String - 是否必填：否 - 按照标签键值对进行过滤。
+	// ipv6-cidr-block - String - 是否必填：否 - 按照IPv6 CIDR block进行过滤。
+	// isp-type - String - 是否必填：否 - 按照运营商（如CMCC, CUCC, CTCC）进行过滤。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量
@@ -6964,6 +6991,16 @@ type ISPCounter struct {
 
 	// Zone实例信息结构体数组
 	ZoneInstanceInfoSet []*ZoneInstanceInfo `json:"ZoneInstanceInfoSet,omitempty" name:"ZoneInstanceInfoSet"`
+}
+
+type ISPIPv6CidrBlock struct {
+	// IPv6 CIdr Block。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPv6CidrBlock *string `json:"IPv6CidrBlock,omitempty" name:"IPv6CidrBlock"`
+
+	// 网络运营商类型 取值范围:'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ISPType *string `json:"ISPType,omitempty" name:"ISPType"`
 }
 
 type Image struct {
@@ -11782,6 +11819,10 @@ type Subnet struct {
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 运营商类型。'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ISPType *string `json:"ISPType,omitempty" name:"ISPType"`
 }
 
 type SystemDisk struct {
@@ -12110,6 +12151,14 @@ type VpcInfo struct {
 
 	// 包含实例数量
 	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// ipv6运营商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6ISP *string `json:"Ipv6ISP,omitempty" name:"Ipv6ISP"`
+
+	// 多运营商IPv6 Cidr Block。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6CidrBlockSet []*ISPIPv6CidrBlock `json:"Ipv6CidrBlockSet,omitempty" name:"Ipv6CidrBlockSet"`
 }
 
 type ZoneInfo struct {

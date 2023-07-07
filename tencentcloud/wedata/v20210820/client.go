@@ -2945,6 +2945,56 @@ func (c *Client) DescribeAlarmReceiverWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeBatchOperateTaskRequest() (request *DescribeBatchOperateTaskRequest) {
+    request = &DescribeBatchOperateTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBatchOperateTask")
+    
+    
+    return
+}
+
+func NewDescribeBatchOperateTaskResponse() (response *DescribeBatchOperateTaskResponse) {
+    response = &DescribeBatchOperateTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBatchOperateTask
+// 批量操作任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeBatchOperateTask(request *DescribeBatchOperateTaskRequest) (response *DescribeBatchOperateTaskResponse, err error) {
+    return c.DescribeBatchOperateTaskWithContext(context.Background(), request)
+}
+
+// DescribeBatchOperateTask
+// 批量操作任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeBatchOperateTaskWithContext(ctx context.Context, request *DescribeBatchOperateTaskRequest) (response *DescribeBatchOperateTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchOperateTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchOperateTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchOperateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterNamespaceListRequest() (request *DescribeClusterNamespaceListRequest) {
     request = &DescribeClusterNamespaceListRequest{
         BaseRequest: &tchttp.BaseRequest{},

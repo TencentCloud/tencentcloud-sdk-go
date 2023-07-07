@@ -5152,6 +5152,271 @@ func (r *DescribeAlarmReceiverResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeBatchOperateTaskDTO struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 工作流Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitempty" name:"WorkflowId"`
+
+	// 工作流名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitempty" name:"WorkflowName"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *uint64 `json:"TaskTypeId,omitempty" name:"TaskTypeId"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeDesc *string `json:"TaskTypeDesc,omitempty" name:"TaskTypeDesc"`
+
+	// 文件夹名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderName *string `json:"FolderName,omitempty" name:"FolderName"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
+
+	// 负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
+
+	// 是否提交
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Submit *uint64 `json:"Submit,omitempty" name:"Submit"`
+
+	// 引擎：
+	// presto\SparkJob\SparkSql
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngine *string `json:"DataEngine,omitempty" name:"DataEngine"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 创造时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type DescribeBatchOperateTaskPage struct {
+	// 总页码数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageCount *uint64 `json:"PageCount,omitempty" name:"PageCount"`
+
+	// 内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeBatchOperateTaskDTO `json:"Items,omitempty" name:"Items"`
+
+	// 总个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+// Predefined struct for user
+type DescribeBatchOperateTaskRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码
+	Page *string `json:"Page,omitempty" name:"Page"`
+
+	// 页号
+	Size *string `json:"Size,omitempty" name:"Size"`
+
+	// 状态列表
+	// 草稿：'NS'，'N','P','R'
+	// 运行：''Y'
+	// 停止：'F'
+	// 冻结：'O'
+	// 停止中：'T'
+	StatusList []*string `json:"StatusList,omitempty" name:"StatusList"`
+
+	// 责任人名列表
+	OwnerNameList []*string `json:"OwnerNameList,omitempty" name:"OwnerNameList"`
+
+	// 工作流列表
+	WorkflowIdList []*string `json:"WorkflowIdList,omitempty" name:"WorkflowIdList"`
+
+	// 任务名称搜索
+	TaskNameFilter *string `json:"TaskNameFilter,omitempty" name:"TaskNameFilter"`
+
+	// 任务类型列表
+	TaskTypeList []*string `json:"TaskTypeList,omitempty" name:"TaskTypeList"`
+
+	// 文件夹列表
+	FordIdList []*string `json:"FordIdList,omitempty" name:"FordIdList"`
+
+	// 任务Id搜索
+	TaskIdFilter *string `json:"TaskIdFilter,omitempty" name:"TaskIdFilter"`
+
+	// 责任人搜索
+	OwnerNameFilter *string `json:"OwnerNameFilter,omitempty" name:"OwnerNameFilter"`
+
+	// 排序字段：
+	// UpdateTime
+	// CreateTime
+	SortItem *string `json:"SortItem,omitempty" name:"SortItem"`
+
+	// asc:升序
+	// desc:降序
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 引擎类型列表：三种
+	// SparkJob
+	// SparkSql
+	// presto
+	DataEngineList []*string `json:"DataEngineList,omitempty" name:"DataEngineList"`
+
+	// 操作人名
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 1
+	OwnerId *string `json:"OwnerId,omitempty" name:"OwnerId"`
+
+	// 1
+	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+}
+
+type DescribeBatchOperateTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码
+	Page *string `json:"Page,omitempty" name:"Page"`
+
+	// 页号
+	Size *string `json:"Size,omitempty" name:"Size"`
+
+	// 状态列表
+	// 草稿：'NS'，'N','P','R'
+	// 运行：''Y'
+	// 停止：'F'
+	// 冻结：'O'
+	// 停止中：'T'
+	StatusList []*string `json:"StatusList,omitempty" name:"StatusList"`
+
+	// 责任人名列表
+	OwnerNameList []*string `json:"OwnerNameList,omitempty" name:"OwnerNameList"`
+
+	// 工作流列表
+	WorkflowIdList []*string `json:"WorkflowIdList,omitempty" name:"WorkflowIdList"`
+
+	// 任务名称搜索
+	TaskNameFilter *string `json:"TaskNameFilter,omitempty" name:"TaskNameFilter"`
+
+	// 任务类型列表
+	TaskTypeList []*string `json:"TaskTypeList,omitempty" name:"TaskTypeList"`
+
+	// 文件夹列表
+	FordIdList []*string `json:"FordIdList,omitempty" name:"FordIdList"`
+
+	// 任务Id搜索
+	TaskIdFilter *string `json:"TaskIdFilter,omitempty" name:"TaskIdFilter"`
+
+	// 责任人搜索
+	OwnerNameFilter *string `json:"OwnerNameFilter,omitempty" name:"OwnerNameFilter"`
+
+	// 排序字段：
+	// UpdateTime
+	// CreateTime
+	SortItem *string `json:"SortItem,omitempty" name:"SortItem"`
+
+	// asc:升序
+	// desc:降序
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 引擎类型列表：三种
+	// SparkJob
+	// SparkSql
+	// presto
+	DataEngineList []*string `json:"DataEngineList,omitempty" name:"DataEngineList"`
+
+	// 操作人名
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 1
+	OwnerId *string `json:"OwnerId,omitempty" name:"OwnerId"`
+
+	// 1
+	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+}
+
+func (r *DescribeBatchOperateTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchOperateTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Page")
+	delete(f, "Size")
+	delete(f, "StatusList")
+	delete(f, "OwnerNameList")
+	delete(f, "WorkflowIdList")
+	delete(f, "TaskNameFilter")
+	delete(f, "TaskTypeList")
+	delete(f, "FordIdList")
+	delete(f, "TaskIdFilter")
+	delete(f, "OwnerNameFilter")
+	delete(f, "SortItem")
+	delete(f, "SortType")
+	delete(f, "DataEngineList")
+	delete(f, "UserId")
+	delete(f, "OwnerId")
+	delete(f, "TenantId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchOperateTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchOperateTaskResponseParams struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeBatchOperateTaskPage `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchOperateTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchOperateTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchOperateTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchOperateTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeClusterNamespaceListRequestParams struct {
 	// 集群ID

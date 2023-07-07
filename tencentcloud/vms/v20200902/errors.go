@@ -26,7 +26,7 @@ const (
 	// 后端请求包解析失败，通常由于没有遵守 API 接口说明规范导致的，请参见[1004错误详解](https://cloud.tencent.com/document/product/1128/38004#Q5)。
 	FAILEDOPERATION_FAILRESOLVEPACKET = "FailedOperation.FailResolvePacket"
 
-	// 套餐包余量不足，请及时[购买语音套餐包](https://cloud.tencent.com/document/product/1128/90745)。
+	// 套餐包余量不足，请及时[购买语音套餐包](https://buy.cloud.tencent.com/voice)。
 	FAILEDOPERATION_INSUFFICIENTBALANCEINVOICEPACKAGE = "FailedOperation.InsufficientBalanceInVoicePackage"
 
 	// 无效 JSON，请核查发送的请求是否为标准的 JSON 格式。

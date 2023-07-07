@@ -3085,6 +3085,9 @@ type DescribeUsersRequestParams struct {
 	// 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
+	// 邮箱，精确查询
+	Email *string `json:"Email,omitempty" name:"Email"`
+
 	// 查询具有指定资产ID访问权限的用户
 	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitempty" name:"AuthorizedDeviceIdSet"`
 
@@ -3117,6 +3120,9 @@ type DescribeUsersRequest struct {
 	// 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
+	// 邮箱，精确查询
+	Email *string `json:"Email,omitempty" name:"Email"`
+
 	// 查询具有指定资产ID访问权限的用户
 	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitempty" name:"AuthorizedDeviceIdSet"`
 
@@ -3145,6 +3151,7 @@ func (r *DescribeUsersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "UserName")
 	delete(f, "Phone")
+	delete(f, "Email")
 	delete(f, "AuthorizedDeviceIdSet")
 	delete(f, "AuthTypeSet")
 	delete(f, "DepartmentId")
@@ -5208,11 +5215,11 @@ type User struct {
 	// 用户姓名， 最大20个字符，不能包含空白字符
 	RealName *string `json:"RealName,omitempty" name:"RealName"`
 
-	// 手机号码， 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
-	Phone *string `json:"Phone,omitempty" name:"Phone"`
-
 	// 用户ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 手机号码， 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
 	// 电子邮件
 	Email *string `json:"Email,omitempty" name:"Email"`

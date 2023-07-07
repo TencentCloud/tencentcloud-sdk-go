@@ -1,3 +1,235 @@
+# Release v1.0.696
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 12 次发布
+
+发布时间：2023-07-07 01:21:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUser](https://cloud.tencent.com/document/api/1025/74406)
+
+	* <font color="#dd0000">**修改入参**：</font>Phone
+
+* [DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)
+
+	* 新增入参：Email
+
+* [ModifyUser](https://cloud.tencent.com/document/api/1025/74403)
+
+	* <font color="#dd0000">**修改入参**：</font>Phone, Email
+
+
+修改数据结构：
+
+* [User](https://cloud.tencent.com/document/api/1025/74416#User)
+
+	* <font color="#dd0000">**修改成员**：</font>Phone
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 21 次发布
+
+发布时间：2023-07-07 01:22:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRedisBigKeyAnalysisTask](https://cloud.tencent.com/document/api/1130/94604)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 66 次发布
+
+发布时间：2023-07-07 01:25:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssignIpv6Addresses](https://cloud.tencent.com/document/api/1108/51094)
+
+	* 新增入参：ISPType, SkipCheckIPv6Address, SkipAllocateBandwidth
+
+
+新增数据结构：
+
+* [ISPIPv6CidrBlock](https://cloud.tencent.com/document/api/1108/42574#ISPIPv6CidrBlock)
+
+修改数据结构：
+
+* [Subnet](https://cloud.tencent.com/document/api/1108/42574#Subnet)
+
+	* 新增成员：ISPType
+
+* [VpcInfo](https://cloud.tencent.com/document/api/1108/42574#VpcInfo)
+
+	* 新增成员：Ipv6ISP, Ipv6CidrBlockSet
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 88 次发布
+
+发布时间：2023-07-07 01:34:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [OperateChannelTemplate](https://cloud.tencent.com/document/api/1420/66367)
+
+	* 新增入参：Available
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 59 次发布
+
+发布时间：2023-07-07 01:50:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateServiceAccount](https://cloud.tencent.com/document/api/1141/94608)
+* [DeleteServiceAccount](https://cloud.tencent.com/document/api/1141/94607)
+* [DescribeServiceAccounts](https://cloud.tencent.com/document/api/1141/94606)
+* [ModifyServiceAccount](https://cloud.tencent.com/document/api/1141/94605)
+
+新增数据结构：
+
+* [ServiceAccount](https://cloud.tencent.com/document/api/1141/41603#ServiceAccount)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 156 次发布
+
+发布时间：2023-07-07 01:54:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeResourceUsage](https://cloud.tencent.com/document/api/457/72005)
+
+	* 新增出参：RSUsage
+
+* [ModifyClusterVirtualNodePool](https://cloud.tencent.com/document/api/457/85348)
+
+	* 新增入参：SecurityGroupIds
+
+
+修改数据结构：
+
+* [ClusterLevelAttribute](https://cloud.tencent.com/document/api/457/31866#ClusterLevelAttribute)
+
+	* 新增成员：RSCount
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 160 次发布
+
+发布时间：2023-07-06 20:35:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaTranscodeItem](https://cloud.tencent.com/document/api/266/31773#MediaTranscodeItem)
+
+	* <font color="#dd0000">**修改成员**：</font>CopyRightWatermarkText
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 160 次发布
+
+发布时间：2023-07-07 01:59:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyVpcAttribute](https://cloud.tencent.com/document/api/215/15773)
+
+	* 新增入参：EnableCdcPublish
+
+
+修改数据结构：
+
+* [Vpc](https://cloud.tencent.com/document/api/215/15824#Vpc)
+
+	* <font color="#dd0000">**修改成员**：</font>IsDefault, CreatedTime
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 34 次发布
+
+发布时间：2023-07-07 02:01:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBatchOperateTask](https://cloud.tencent.com/document/api/1267/94610)
+
+新增数据结构：
+
+* [DescribeBatchOperateTaskDTO](https://cloud.tencent.com/document/api/1267/76336#DescribeBatchOperateTaskDTO)
+* [DescribeBatchOperateTaskPage](https://cloud.tencent.com/document/api/1267/76336#DescribeBatchOperateTaskPage)
+
+
+
 # Release v1.0.695
 
 ## 账号风控平台(ciam) 版本：2022-03-31

@@ -5411,7 +5411,7 @@ type CreateSuperPlayerConfigRequestParams struct {
 	// 允许输出的雪碧图模板 ID。
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
 
-	// 播放器对不于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
+	// 播放器对于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
 	// <li>MinEdgeLength：240，Name：流畅；</li>
 	// <li>MinEdgeLength：480，Name：标清；</li>
 	// <li>MinEdgeLength：720，Name：高清；</li>
@@ -5474,7 +5474,7 @@ type CreateSuperPlayerConfigRequest struct {
 	// 允许输出的雪碧图模板 ID。
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
 
-	// 播放器对不于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
+	// 播放器对于不同分辨率的子流展示名字，不填或者填空数组则使用默认配置：
 	// <li>MinEdgeLength：240，Name：流畅；</li>
 	// <li>MinEdgeLength：480，Name：标清；</li>
 	// <li>MinEdgeLength：720，Name：高清；</li>
@@ -11629,7 +11629,7 @@ func (r *DescribeTranscodeTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVodDomainsRequestParams struct {
-	// 域名列表。当该字段不填时，则默认列出所有域名信息。本字段字段限制如下：
+	// 域名列表。当该字段不填时，则默认列出所有域名信息。本字段限制如下：
 	// <li>域名个数度最大为 20。</li>
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
@@ -11646,7 +11646,7 @@ type DescribeVodDomainsRequestParams struct {
 type DescribeVodDomainsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名列表。当该字段不填时，则默认列出所有域名信息。本字段字段限制如下：
+	// 域名列表。当该字段不填时，则默认列出所有域名信息。本字段限制如下：
 	// <li>域名个数度最大为 20。</li>
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
@@ -17587,7 +17587,7 @@ type ModifySuperPlayerConfigRequestParams struct {
 	// 允许输出的雪碧图模板 ID。
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
 
-	// 播放器对不于不同分辨率的子流展示名字。
+	// 播放器对于不同分辨率的子流展示名字。
 	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames"`
 
 	// 播放时使用的域名。填 Default 表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。
@@ -17635,7 +17635,7 @@ type ModifySuperPlayerConfigRequest struct {
 	// 允许输出的雪碧图模板 ID。
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`
 
-	// 播放器对不于不同分辨率的子流展示名字。
+	// 播放器对于不同分辨率的子流展示名字。
 	ResolutionNames []*ResolutionNameInfo `json:"ResolutionNames,omitempty" name:"ResolutionNames"`
 
 	// 播放时使用的域名。填 Default 表示使用[默认分发配置](https://cloud.tencent.com/document/product/266/33373)中的域名。

@@ -1333,6 +1333,66 @@ func (c *Client) CreateSecurityPolicyWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateServiceAccountRequest() (request *CreateServiceAccountRequest) {
+    request = &CreateServiceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "CreateServiceAccount")
+    
+    
+    return
+}
+
+func NewCreateServiceAccountResponse() (response *CreateServiceAccountResponse) {
+    response = &CreateServiceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateServiceAccount
+// 创建自定义账户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_QUOTAOVERLIMIT = "OperationDenied.QuotaOverLimit"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateServiceAccount(request *CreateServiceAccountRequest) (response *CreateServiceAccountResponse, err error) {
+    return c.CreateServiceAccountWithContext(context.Background(), request)
+}
+
+// CreateServiceAccount
+// 创建自定义账户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_QUOTAOVERLIMIT = "OperationDenied.QuotaOverLimit"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateServiceAccountWithContext(ctx context.Context, request *CreateServiceAccountRequest) (response *CreateServiceAccountResponse, err error) {
+    if request == nil {
+        request = NewCreateServiceAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateServiceAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateServiceAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSignatureRequest() (request *CreateSignatureRequest) {
     request = &CreateSignatureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2889,6 +2949,62 @@ func (c *Client) DeleteSecurityPolicyWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteSecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteServiceAccountRequest() (request *DeleteServiceAccountRequest) {
+    request = &DeleteServiceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DeleteServiceAccount")
+    
+    
+    return
+}
+
+func NewDeleteServiceAccountResponse() (response *DeleteServiceAccountResponse) {
+    response = &DeleteServiceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteServiceAccount
+// 删除服务级账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteServiceAccount(request *DeleteServiceAccountRequest) (response *DeleteServiceAccountResponse, err error) {
+    return c.DeleteServiceAccountWithContext(context.Background(), request)
+}
+
+// DeleteServiceAccount
+// 删除服务级账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteServiceAccountWithContext(ctx context.Context, request *DeleteServiceAccountRequest) (response *DeleteServiceAccountResponse, err error) {
+    if request == nil {
+        request = NewDeleteServiceAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteServiceAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteServiceAccountResponse()
     err = c.Send(request, response)
     return
 }
@@ -5107,6 +5223,64 @@ func (c *Client) DescribeSecurityPoliciesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeServiceAccountsRequest() (request *DescribeServiceAccountsRequest) {
+    request = &DescribeServiceAccountsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "DescribeServiceAccounts")
+    
+    
+    return
+}
+
+func NewDescribeServiceAccountsResponse() (response *DescribeServiceAccountsResponse) {
+    response = &DescribeServiceAccountsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeServiceAccounts
+// 查询服务级账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeServiceAccounts(request *DescribeServiceAccountsRequest) (response *DescribeServiceAccountsResponse, err error) {
+    return c.DescribeServiceAccountsWithContext(context.Background(), request)
+}
+
+// DescribeServiceAccounts
+// 查询服务级账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeServiceAccountsWithContext(ctx context.Context, request *DescribeServiceAccountsRequest) (response *DescribeServiceAccountsResponse, err error) {
+    if request == nil {
+        request = NewDescribeServiceAccountsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServiceAccounts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServiceAccountsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTagRetentionExecutionRequest() (request *DescribeTagRetentionExecutionRequest) {
     request = &DescribeTagRetentionExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6451,6 +6625,62 @@ func (c *Client) ModifySecurityPolicyWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifySecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyServiceAccountRequest() (request *ModifyServiceAccountRequest) {
+    request = &ModifyServiceAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcr", APIVersion, "ModifyServiceAccount")
+    
+    
+    return
+}
+
+func NewModifyServiceAccountResponse() (response *ModifyServiceAccountResponse) {
+    response = &ModifyServiceAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyServiceAccount
+// 更新服务级账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyServiceAccount(request *ModifyServiceAccountRequest) (response *ModifyServiceAccountResponse, err error) {
+    return c.ModifyServiceAccountWithContext(context.Background(), request)
+}
+
+// ModifyServiceAccount
+// 更新服务级账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyServiceAccountWithContext(ctx context.Context, request *ModifyServiceAccountRequest) (response *ModifyServiceAccountResponse, err error) {
+    if request == nil {
+        request = NewModifyServiceAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyServiceAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyServiceAccountResponse()
     err = c.Send(request, response)
     return
 }

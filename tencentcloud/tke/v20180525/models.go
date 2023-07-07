@@ -1184,6 +1184,9 @@ type ClusterLevelAttribute struct {
 	// Configmap数量
 	ConfigMapCount *uint64 `json:"ConfigMapCount,omitempty" name:"ConfigMapCount"`
 
+	// ReplicaSets数量
+	RSCount *uint64 `json:"RSCount,omitempty" name:"RSCount"`
+
 	// CRD数量
 	CRDCount *uint64 `json:"CRDCount,omitempty" name:"CRDCount"`
 
@@ -11189,6 +11192,9 @@ type DescribeResourceUsageResponseParams struct {
 	// Pod使用量
 	PodUsage *uint64 `json:"PodUsage,omitempty" name:"PodUsage"`
 
+	// ReplicaSet使用量
+	RSUsage *uint64 `json:"RSUsage,omitempty" name:"RSUsage"`
+
 	// ConfigMap使用量
 	ConfigMapUsage *uint64 `json:"ConfigMapUsage,omitempty" name:"ConfigMapUsage"`
 
@@ -14928,6 +14934,9 @@ type ModifyClusterVirtualNodePoolRequestParams struct {
 	// 节点池名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
 	// 虚拟节点label
 	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
 
@@ -14949,6 +14958,9 @@ type ModifyClusterVirtualNodePoolRequest struct {
 
 	// 节点池名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 安全组ID列表
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 虚拟节点label
 	Labels []*Label `json:"Labels,omitempty" name:"Labels"`
@@ -14975,6 +14987,7 @@ func (r *ModifyClusterVirtualNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "NodePoolId")
 	delete(f, "Name")
+	delete(f, "SecurityGroupIds")
 	delete(f, "Labels")
 	delete(f, "Taints")
 	delete(f, "DeletionProtection")

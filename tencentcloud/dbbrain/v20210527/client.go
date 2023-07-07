@@ -601,6 +601,66 @@ func (c *Client) CreateProxySessionKillTaskWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateRedisBigKeyAnalysisTaskRequest() (request *CreateRedisBigKeyAnalysisTaskRequest) {
+    request = &CreateRedisBigKeyAnalysisTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateRedisBigKeyAnalysisTask")
+    
+    
+    return
+}
+
+func NewCreateRedisBigKeyAnalysisTaskResponse() (response *CreateRedisBigKeyAnalysisTaskResponse) {
+    response = &CreateRedisBigKeyAnalysisTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRedisBigKeyAnalysisTask
+// 即时创建redis实例大key分析任务，限制正在运行的即时分析任务数量默认为5。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateRedisBigKeyAnalysisTask(request *CreateRedisBigKeyAnalysisTaskRequest) (response *CreateRedisBigKeyAnalysisTaskResponse, err error) {
+    return c.CreateRedisBigKeyAnalysisTaskWithContext(context.Background(), request)
+}
+
+// CreateRedisBigKeyAnalysisTask
+// 即时创建redis实例大key分析任务，限制正在运行的即时分析任务数量默认为5。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateRedisBigKeyAnalysisTaskWithContext(ctx context.Context, request *CreateRedisBigKeyAnalysisTaskRequest) (response *CreateRedisBigKeyAnalysisTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateRedisBigKeyAnalysisTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRedisBigKeyAnalysisTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRedisBigKeyAnalysisTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSchedulerMailProfileRequest() (request *CreateSchedulerMailProfileRequest) {
     request = &CreateSchedulerMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
