@@ -453,6 +453,20 @@ type SentenceInfo struct {
 	UnKeyWordHits []*float64 `json:"UnKeyWordHits,omitempty" name:"UnKeyWordHits"`
 }
 
+type Tone struct {
+	// 检测结果是否有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Valid *bool `json:"Valid,omitempty" name:"Valid"`
+
+	// 文本标准声调，数值范围[-1,1,2,3,4]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefTone *int64 `json:"RefTone,omitempty" name:"RefTone"`
+
+	// 实际发音声调，数值范围[-1,1,2,3,4]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HypothesisTone *int64 `json:"HypothesisTone,omitempty" name:"HypothesisTone"`
+}
+
 // Predefined struct for user
 type TransmitOralProcessRequestParams struct {
 	// 流式数据包的序号，从1开始，当IsEnd字段为1后后续序号无意义，当IsLongLifeSession不为1且为非流式模式时无意义。
@@ -938,4 +952,8 @@ type WordRsp struct {
 	// 主题词命中标志，0表示没命中，1表示命中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeywordTag *int64 `json:"KeywordTag,omitempty" name:"KeywordTag"`
+
+	// 声调检测结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tone *Tone `json:"Tone,omitempty" name:"Tone"`
 }

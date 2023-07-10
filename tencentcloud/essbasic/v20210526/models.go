@@ -30,7 +30,7 @@ type Agent struct {
 	// 第三方平台子客企业中的员工/经办人，通过第三方应用平台进入电子签完成实名、且被赋予相关权限后，可以参与到企业资源的管理或签署流程中。
 	ProxyOperator *UserInfo `json:"ProxyOperator,omitempty" name:"ProxyOperator"`
 
-	// 在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
+	// 非必需参数，在第三方平台子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权，在子客开通的回调中获取。
 	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
 
 	// 内部参数，暂未开放使用
@@ -1433,16 +1433,18 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 合同签署人信息
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitempty" name:"FlowApproverList"`
 
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 合同流程配置信息
+	// 合同流程配置信息，用于配置发起合同时定制化
 	FlowOption *CreateFlowOption `json:"FlowOption,omitempty" name:"FlowOption"`
 
 	// 通过flowid快速获得之前成功通过页面发起的合同生成链接
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 该参数不可用，请通过获取 web 可嵌入接口获取合同流程预览 URL
+	//
+	// Deprecated: NeedPreview is deprecated.
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
 	// 企业机构信息，不用传
@@ -1471,10 +1473,10 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 合同签署人信息
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitempty" name:"FlowApproverList"`
 
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 合同流程配置信息
+	// 合同流程配置信息，用于配置发起合同时定制化
 	FlowOption *CreateFlowOption `json:"FlowOption,omitempty" name:"FlowOption"`
 
 	// 通过flowid快速获得之前成功通过页面发起的合同生成链接

@@ -23,6 +23,21 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 操作失败。
+	FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+
+	// 操作失败，内部错误。
+	FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+
+	// 获取临时密钥失败
+	FAILEDOPERATION_ROLE = "FailedOperation.Role"
+
+	// 调用VPC服务失败
+	FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
 	// 创建内部错误。
 	INTERNALERROR_CREATEERROR = "InternalError.CreateError"
 
@@ -80,14 +95,32 @@ const (
 	// 无效请求参数，查询失败。
 	INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 
+	// 无效的Region。
+	INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+
+	// 资源已经存在。
+	INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+
+	// 网关规格参数内容错误
+	INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+
+	// 网关类型参数内容错误
+	INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+
 	// 无效请求参数导致更新失败。
 	INVALIDPARAMETERVALUE_UPDATEERROR = "InvalidParameterValue.UpdateError"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
 	// 缺失参数导致创建失败。
 	MISSINGPARAMETER_CREATEERROR = "MissingParameter.CreateError"
+
+	// 缺少参数。
+	MISSINGPARAMETER_MISSPARAMETER = "MissingParameter.MissParameter"
 
 	// 缺失参数导致更新失败。
 	MISSINGPARAMETER_UPDATEERROR = "MissingParameter.UpdateError"
@@ -112,4 +145,10 @@ const (
 
 	// 子账号缺少passRole权限。
 	UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+
+	// Uin未授权
+	UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+
+	// 未授权的操作。
+	UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 )

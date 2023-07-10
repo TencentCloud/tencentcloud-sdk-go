@@ -4602,6 +4602,10 @@ func NewGenerateApiDocumentResponse() (response *GenerateApiDocumentResponse) {
 }
 
 // GenerateApiDocument
+// 接口已废弃
+//
+// 
+//
 // 本接口（GenerateApiDocument）用于自动生成 API 文档和 SDK，一个服务的一个环境生成一份文档和 SDK。
 //
 // 可能返回的错误码:
@@ -4614,6 +4618,10 @@ func (c *Client) GenerateApiDocument(request *GenerateApiDocumentRequest) (respo
 }
 
 // GenerateApiDocument
+// 接口已废弃
+//
+// 
+//
 // 本接口（GenerateApiDocument）用于自动生成 API 文档和 SDK，一个服务的一个环境生成一份文档和 SDK。
 //
 // 可能返回的错误码:

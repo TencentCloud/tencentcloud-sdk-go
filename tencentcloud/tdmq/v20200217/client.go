@@ -2333,6 +2333,58 @@ func (c *Client) DeleteRabbitMQUserWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDeleteRabbitMQVipInstanceRequest() (request *DeleteRabbitMQVipInstanceRequest) {
+    request = &DeleteRabbitMQVipInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRabbitMQVipInstance")
+    
+    
+    return
+}
+
+func NewDeleteRabbitMQVipInstanceResponse() (response *DeleteRabbitMQVipInstanceResponse) {
+    response = &DeleteRabbitMQVipInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRabbitMQVipInstance
+// 删除RabbitMQ专享版实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRabbitMQVipInstance(request *DeleteRabbitMQVipInstanceRequest) (response *DeleteRabbitMQVipInstanceResponse, err error) {
+    return c.DeleteRabbitMQVipInstanceWithContext(context.Background(), request)
+}
+
+// DeleteRabbitMQVipInstance
+// 删除RabbitMQ专享版实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteRabbitMQVipInstanceWithContext(ctx context.Context, request *DeleteRabbitMQVipInstanceRequest) (response *DeleteRabbitMQVipInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteRabbitMQVipInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRabbitMQVipInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRabbitMQVipInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRabbitMQVirtualHostRequest() (request *DeleteRabbitMQVirtualHostRequest) {
     request = &DeleteRabbitMQVirtualHostRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -688,6 +688,12 @@ type CreateDomainRequestParams struct {
 
 	// 是否星标域名，”yes”、”no” 分别代表是和否。
 	IsMark *string `json:"IsMark,omitempty" name:"IsMark"`
+
+	// 添加子域名时，是否迁移相关父域名的解析记录。不传默认为 true
+	TransferSubDomain *bool `json:"TransferSubDomain,omitempty" name:"TransferSubDomain"`
+
+	// 域名绑定的标签
+	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CreateDomainRequest struct {
@@ -701,6 +707,12 @@ type CreateDomainRequest struct {
 
 	// 是否星标域名，”yes”、”no” 分别代表是和否。
 	IsMark *string `json:"IsMark,omitempty" name:"IsMark"`
+
+	// 添加子域名时，是否迁移相关父域名的解析记录。不传默认为 true
+	TransferSubDomain *bool `json:"TransferSubDomain,omitempty" name:"TransferSubDomain"`
+
+	// 域名绑定的标签
+	Tags []*TagItem `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateDomainRequest) ToJsonString() string {
@@ -718,6 +730,8 @@ func (r *CreateDomainRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "GroupId")
 	delete(f, "IsMark")
+	delete(f, "TransferSubDomain")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainRequest has unknown keys!", "")
 	}
@@ -2040,6 +2054,9 @@ type DescribeDomainFilterListRequestParams struct {
 
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标签过滤
+	Tags []*TagItemFilter `json:"Tags,omitempty" name:"Tags"`
 }
 
 type DescribeDomainFilterListRequest struct {
@@ -2102,6 +2119,9 @@ type DescribeDomainFilterListRequest struct {
 
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标签过滤
+	Tags []*TagItemFilter `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeDomainFilterListRequest) ToJsonString() string {
@@ -2131,6 +2151,7 @@ func (r *DescribeDomainFilterListRequest) FromJsonString(s string) error {
 	delete(f, "RecordCountBegin")
 	delete(f, "RecordCountEnd")
 	delete(f, "ProjectId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainFilterListRequest has unknown keys!", "")
 	}
@@ -2235,6 +2256,9 @@ type DescribeDomainListRequestParams struct {
 
 	// 根据关键字搜索域名
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 标签过滤
+	Tags []*TagItemFilter `json:"Tags,omitempty" name:"Tags"`
 }
 
 type DescribeDomainListRequest struct {
@@ -2254,6 +2278,9 @@ type DescribeDomainListRequest struct {
 
 	// 根据关键字搜索域名
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 标签过滤
+	Tags []*TagItemFilter `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *DescribeDomainListRequest) ToJsonString() string {
@@ -2273,6 +2300,7 @@ func (r *DescribeDomainListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "GroupId")
 	delete(f, "Keyword")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainListRequest has unknown keys!", "")
 	}
@@ -4085,6 +4113,10 @@ type DomainInfo struct {
 	// 是否是子域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSubDomain *bool `json:"IsSubDomain,omitempty" name:"IsSubDomain"`
+
+	// 域名关联的标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagItem `json:"TagList,omitempty" name:"TagList"`
 }
 
 type DomainListItem struct {
@@ -4153,6 +4185,10 @@ type DomainListItem struct {
 
 	// 域名所属账号
 	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 域名关联的标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagList []*TagItem `json:"TagList,omitempty" name:"TagList"`
 }
 
 type DomainShareInfo struct {
@@ -6188,6 +6224,23 @@ type SubdomainAnalyticsInfo struct {
 
 	// 当前统计的子域名
 	Subdomain *string `json:"Subdomain,omitempty" name:"Subdomain"`
+}
+
+type TagItem struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TagItemFilter struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签键
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type UserInfo struct {

@@ -5246,11 +5246,8 @@ type LoginConfiguration struct {
 	AutoGeneratePassword *string `json:"AutoGeneratePassword,omitempty" name:"AutoGeneratePassword"`
 
 	// 实例登录密码。具体按照操作系统的复杂度要求。 
-	// WINDOWS 实例密码必须 12-30 位，不能以“/”开头且不包括用户名, 至少包含以下字符中的三种不同字符 
-	// <li>小写字母：[a-z]</li>
-	// <li>大写字母：[A-Z]</li>
-	// <li>数字： 0-9</li>
-	// <li>特殊字符：()`~!@#$%^&*-+=_|{}[]:;' <>,.?/</li>
+	// `LINUX_UNIX` 实例密码必须 8-30 位，推荐使用 12 位以上密码，不能包含空格, 不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字：0-9<br><li>特殊字符： ()\`\~!@#$%^&\*-+=\_|{}[]:;' <>,.?/</li>
+	// `WINDOWS` 实例密码必须 12-30 位，不能包含空格, 不能以“/”开头且不包括用户名，至少包含以下字符中的三种不同字符<br><li>小写字母：[a-z]<br><li>大写字母：[A-Z]<br><li>数字： 0-9<br><li>特殊字符：()\`~!@#$%^&\*-+=\_|{}[]:;' <>,.?/
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 

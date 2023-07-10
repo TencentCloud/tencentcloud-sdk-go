@@ -3410,6 +3410,9 @@ type GetRoomsRequestParams struct {
 
 	// 默认是10条
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 课堂状态。默认展示所有课堂，0为未开始，1为正在上课，2为已结束，3为已过期
+	Status []*uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 type GetRoomsRequest struct {
@@ -3429,6 +3432,9 @@ type GetRoomsRequest struct {
 
 	// 默认是10条
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 课堂状态。默认展示所有课堂，0为未开始，1为正在上课，2为已结束，3为已过期
+	Status []*uint64 `json:"Status,omitempty" name:"Status"`
 }
 
 func (r *GetRoomsRequest) ToJsonString() string {
@@ -3448,6 +3454,7 @@ func (r *GetRoomsRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Page")
 	delete(f, "Limit")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRoomsRequest has unknown keys!", "")
 	}
@@ -4524,6 +4531,14 @@ type RoomItem struct {
 	// 打开学生麦克风/摄像头的授权开关 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+
+	// 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+
+	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoOrientation *int64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
 }
 
 type SceneItem struct {

@@ -4986,7 +4986,7 @@ func NewMigrateOrderRefundResponse() (response *MigrateOrderRefundResponse) {
 }
 
 // MigrateOrderRefund
-// 山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。
+// 山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHANNELDENY = "FailedOperation.ChannelDeny"
@@ -5012,7 +5012,7 @@ func (c *Client) MigrateOrderRefund(request *MigrateOrderRefundRequest) (respons
 }
 
 // MigrateOrderRefund
-// 山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付帐号。
+// 山姆聚合支付项目-存量订单退款接口。可以通过本接口将支付款全部或部分退还给付款方，在收到用户退款请求并且验证成功之后，按照退款规则将支付款按原路退回到支付账号。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CHANNELDENY = "FailedOperation.ChannelDeny"

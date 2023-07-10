@@ -1,3 +1,271 @@
+# Release v1.0.697
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 39 次发布
+
+发布时间：2023-07-10 01:06:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* GenerateApiDocument
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 55 次发布
+
+发布时间：2023-07-10 01:15:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDataTransform](https://cloud.tencent.com/document/api/614/72184)
+* [DeleteDataTransform](https://cloud.tencent.com/document/api/614/72183)
+* [DescribeDataTransformInfo](https://cloud.tencent.com/document/api/614/72182)
+* [ModifyDataTransform](https://cloud.tencent.com/document/api/614/72181)
+
+新增数据结构：
+
+* [DataTransformResouceInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformResouceInfo)
+* [DataTransformTaskInfo](https://cloud.tencent.com/document/api/614/56471#DataTransformTaskInfo)
+* [PreviewLogStatistic](https://cloud.tencent.com/document/api/614/56471#PreviewLogStatistic)
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 21 次发布
+
+发布时间：2023-07-10 01:22:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDomain](https://cloud.tencent.com/document/api/1427/56184)
+
+	* 新增入参：TransferSubDomain, Tags
+
+* [DescribeDomainFilterList](https://cloud.tencent.com/document/api/1427/93276)
+
+	* 新增入参：Tags
+
+* [DescribeDomainList](https://cloud.tencent.com/document/api/1427/56172)
+
+	* 新增入参：Tags
+
+
+新增数据结构：
+
+* [TagItem](https://cloud.tencent.com/document/api/1427/56185#TagItem)
+* [TagItemFilter](https://cloud.tencent.com/document/api/1427/56185#TagItemFilter)
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)
+
+	* 新增成员：TagList
+
+* [DomainListItem](https://cloud.tencent.com/document/api/1427/56185#DomainListItem)
+
+	* 新增成员：TagList
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 89 次发布
+
+发布时间：2023-07-10 01:25:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 28 次发布
+
+发布时间：2023-07-10 01:31:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetRooms](https://cloud.tencent.com/document/api/1639/90012)
+
+	* 新增入参：Status
+
+
+修改数据结构：
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：InteractionMode, VideoOrientation
+
+	* <font color="#dd0000">**修改成员**：</font>Name, RoomId, Status, StartTime, EndTime, RealStartTime, RealEndTime, Resolution, MaxRTCMember, ReplayUrl, RecordUrl, MaxMicNumber, EnableDirectControl
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 49 次发布
+
+发布时间：2023-07-10 01:32:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LoginConfiguration](https://cloud.tencent.com/document/api/1207/47576#LoginConfiguration)
+
+	* <font color="#dd0000">**修改成员**：</font>AutoGeneratePassword
+
+
+
+
+## 智聆口语评测(soe) 版本：2018-07-24
+
+### 第 14 次发布
+
+发布时间：2023-07-10 01:39:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Tone](https://cloud.tencent.com/document/api/884/19320#Tone)
+
+修改数据结构：
+
+* [WordRsp](https://cloud.tencent.com/document/api/884/19320#WordRsp)
+
+	* 新增成员：Tone
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 66 次发布
+
+发布时间：2023-07-10 01:45:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteRabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/94833)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 25 次发布
+
+发布时间：2023-07-10 01:51:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRawScanLogs](https://cloud.tencent.com/document/api/1458/94488)
+
+	* 新增入参：StartTime, EndTime
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 35 次发布
+
+发布时间：2023-07-10 01:52:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCloudNativeAPIGatewayCanaryRule](https://cloud.tencent.com/document/api/1364/94854)
+* [CreateCloudNativeAPIGatewayRoute](https://cloud.tencent.com/document/api/1364/94853)
+* [CreateCloudNativeAPIGatewayRouteRateLimit](https://cloud.tencent.com/document/api/1364/94852)
+* [CreateCloudNativeAPIGatewayService](https://cloud.tencent.com/document/api/1364/94851)
+* [CreateCloudNativeAPIGatewayServiceRateLimit](https://cloud.tencent.com/document/api/1364/94850)
+* [DeleteCloudNativeAPIGatewayCanaryRule](https://cloud.tencent.com/document/api/1364/94849)
+* [DeleteCloudNativeAPIGatewayRoute](https://cloud.tencent.com/document/api/1364/94848)
+* [DeleteCloudNativeAPIGatewayRouteRateLimit](https://cloud.tencent.com/document/api/1364/94847)
+* [DeleteCloudNativeAPIGatewayService](https://cloud.tencent.com/document/api/1364/94846)
+* [DeleteCloudNativeAPIGatewayServiceRateLimit](https://cloud.tencent.com/document/api/1364/94845)
+* [DescribeCloudNativeAPIGatewayCanaryRules](https://cloud.tencent.com/document/api/1364/94844)
+* [DescribeCloudNativeAPIGatewayRouteRateLimit](https://cloud.tencent.com/document/api/1364/94843)
+* [DescribeCloudNativeAPIGatewayRoutes](https://cloud.tencent.com/document/api/1364/94842)
+* [DescribeCloudNativeAPIGatewayServiceRateLimit](https://cloud.tencent.com/document/api/1364/94841)
+* [DescribeCloudNativeAPIGatewayServices](https://cloud.tencent.com/document/api/1364/94840)
+* [DescribeOneCloudNativeAPIGatewayService](https://cloud.tencent.com/document/api/1364/94839)
+* [ModifyCloudNativeAPIGatewayCanaryRule](https://cloud.tencent.com/document/api/1364/94838)
+* [ModifyCloudNativeAPIGatewayRoute](https://cloud.tencent.com/document/api/1364/94837)
+* [ModifyCloudNativeAPIGatewayRouteRateLimit](https://cloud.tencent.com/document/api/1364/94836)
+* [ModifyCloudNativeAPIGatewayService](https://cloud.tencent.com/document/api/1364/94835)
+* [ModifyCloudNativeAPIGatewayServiceRateLimit](https://cloud.tencent.com/document/api/1364/94834)
+
+新增数据结构：
+
+* [CloudAPIGatewayCanaryRuleList](https://cloud.tencent.com/document/api/1364/54942#CloudAPIGatewayCanaryRuleList)
+* [CloudNativeAPIGatewayBalancedService](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayBalancedService)
+* [CloudNativeAPIGatewayCanaryRule](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayCanaryRule)
+* [CloudNativeAPIGatewayCanaryRuleCondition](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayCanaryRuleCondition)
+* [CloudNativeAPIGatewayRateLimitDetail](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayRateLimitDetail)
+* [ExternalRedis](https://cloud.tencent.com/document/api/1364/54942#ExternalRedis)
+* [KVMapping](https://cloud.tencent.com/document/api/1364/54942#KVMapping)
+* [KongRoutePreview](https://cloud.tencent.com/document/api/1364/54942#KongRoutePreview)
+* [KongServiceDetail](https://cloud.tencent.com/document/api/1364/54942#KongServiceDetail)
+* [KongServicePreview](https://cloud.tencent.com/document/api/1364/54942#KongServicePreview)
+* [KongServiceRouteList](https://cloud.tencent.com/document/api/1364/54942#KongServiceRouteList)
+* [KongServices](https://cloud.tencent.com/document/api/1364/54942#KongServices)
+* [KongTarget](https://cloud.tencent.com/document/api/1364/54942#KongTarget)
+* [KongUpstreamInfo](https://cloud.tencent.com/document/api/1364/54942#KongUpstreamInfo)
+* [ListFilter](https://cloud.tencent.com/document/api/1364/54942#ListFilter)
+* [QpsThreshold](https://cloud.tencent.com/document/api/1364/54942#QpsThreshold)
+* [RateLimitResponse](https://cloud.tencent.com/document/api/1364/54942#RateLimitResponse)
+
+
+
 # Release v1.0.696
 
 ## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18

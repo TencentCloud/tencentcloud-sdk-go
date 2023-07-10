@@ -2899,7 +2899,7 @@ type DescribeRawScanLogsRequestParams struct {
 	// 如果有渠道权限，可以传 0 会查渠道下所有的企业
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
-	// 分页数量，默认为 100，最大为 1000
+	// 分页数量，默认为 20，最大为 1000
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
 	// 当前分页，默认为 1
@@ -2908,6 +2908,12 @@ type DescribeRawScanLogsRequestParams struct {
 	// 从哪个日志后查询
 	// 即: LogId > $AfterLogId
 	AfterLogId *uint64 `json:"AfterLogId,omitempty" name:"AfterLogId"`
+
+	// 开始时间 >= StartTime
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间 < EndTime
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type DescribeRawScanLogsRequest struct {
@@ -2917,7 +2923,7 @@ type DescribeRawScanLogsRequest struct {
 	// 如果有渠道权限，可以传 0 会查渠道下所有的企业
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
-	// 分页数量，默认为 100，最大为 1000
+	// 分页数量，默认为 20，最大为 1000
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
 	// 当前分页，默认为 1
@@ -2926,6 +2932,12 @@ type DescribeRawScanLogsRequest struct {
 	// 从哪个日志后查询
 	// 即: LogId > $AfterLogId
 	AfterLogId *uint64 `json:"AfterLogId,omitempty" name:"AfterLogId"`
+
+	// 开始时间 >= StartTime
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间 < EndTime
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeRawScanLogsRequest) ToJsonString() string {
@@ -2944,6 +2956,8 @@ func (r *DescribeRawScanLogsRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
 	delete(f, "AfterLogId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRawScanLogsRequest has unknown keys!", "")
 	}
