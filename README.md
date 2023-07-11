@@ -3,17 +3,33 @@
 </p>
 <h1 align="center">Tencent Cloud SDK for Go</h1>
 
+# 目录
+1. [简介](#简介)
+2. [安装](#获取安装)
+3. [快速开始](#快速开始)
+4. [相关配置](#相关配置)
+5. [功能介绍](#功能介绍)
+   - [凭证管理](#凭证管理)
+   - [错误处理](#错误处理)
+   - [Common Client](#Common-Client)
+   - [自定义Header](#自定义-header)
+   - [http代理](#http-代理)
+   - [请求重试](#请求重试)
+   - [空数组和omitempty](#空数组和omitempty)
+
+
 # 简介
 
 欢迎使用腾讯云开发者工具套件（SDK），此 SDK 是云 API 3.0 平台的配套开发工具。
 
-# 依赖环境
+# 获取安装
+
+## 依赖环境
 
 1. Go 1.9 版本及以上（如使用 go mod 需要 Go 1.14）。
 2. 部分产品需要在腾讯云控制台开通后，才能正常调用此产品的接口。
 3. 在腾讯云控制台 [访问管理](https://console.cloud.tencent.com/cam/capi) 页面获取密钥 SecretID 和 SecretKey，请务必妥善保管，或者使用更安全的临时安全凭证。
 
-# 获取安装
 
 ## 通过go get安装（推荐）
 
@@ -31,7 +47,7 @@
     set GOPROXY=https://mirrors.tencent.com/go/
     ```
 
-### 按需安装（推荐）
+## 按需安装（推荐）
 
 注意：此安装方式仅支持使用 **Go Modules** 模式进行依赖管理，即环境变量 `GO111MODULE=auto`或者`GO111MODULE=on`, 并且在您的项目中执行了 `go mod init xxx`.
 
@@ -327,7 +343,9 @@ import "crypto/tls"
 
 **再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
 
-# 凭证管理
+# 功能介绍
+
+## 凭证管理
 
 从版本 `v1.0.217` 开始，腾讯云 GO SDK 支持以下几种方式进行凭证管理：
 
@@ -418,7 +436,7 @@ import "crypto/tls"
 
     更详细的使用方式请参考示例：[使用ProviderChain](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/testing/integration/provider_chain_test.go)
 
-# 错误处理
+## 错误处理
 
 从 `v1.0.181` 开始，腾讯云 GO SDK 会将各个产品的返回的错误码定义为常量，您可以直接调用处理，无需手动定义。如果您使用 IDE (如 Goland )进行开发，可以使用他们的代码提示功能直接选择。例如：
 
@@ -483,7 +501,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 }
 ```
 
-# Common Client
+## Common Client
 
 从 `v1.0.189`开始，腾讯云 GO SDK 支持使用 `泛用型的API调用方式(Common Client)` 进行请求。您只需安装 `common` 包, 即可向任何产品发起调用。
 
@@ -521,9 +539,9 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
     clientProfile.HttpProfile.Proxy = "http://127.0.0.1:1080"
 ```
 
-# 请求重试
+## 请求重试
 
-## 网络错误重试
+### 网络错误重试
 
 当发生临时网络错误或超时时，SDK可以被配置为自动重试。默认不开启。
 通过 `ClientProfile` 配置重试次数和重试间隔时间。
@@ -554,7 +572,7 @@ func main() {
 
 更多用法参考[测试文件](https://github.com/TencentCloud/tencentcloud-sdk-go/tree/master/tencentcloud/common/netretry_test.go)
 
-## 限频重试
+### 限频重试
 
 当发生API限频时，SDK可以被配置为自动重试。默认不开启。
 通过 `ClientProfile` 配置重试次数和重试间隔时间。
@@ -581,12 +599,19 @@ func main() {
 }
 ```
 
-## 幂等标识符
+### 幂等标识符
 
 当网络超时重试或限频重试开启时，会自动向请求中注入 `ClientToken` 参数（如果请求存在`ClientToken`字段且为空）。
 当用户手动指定 `ClientToken` 时，会跳过注入流程。
 
 > 注入的 `ClientToken` 在 `100000/s` 并发量以下提供全局唯一性。
+
+## 空数组和omitempty
+SDK 使用 `omitempty` 标签来序列化你的 request 对象, 因为这样可以避免上报空数组/对象. 
+
+但对有的接口而言, 长度为0的数组 和 nil数组 是有区别的, 如果你希望在请求中携带空数组, 需要使用Common Client 来发送请求.
+
+参考[示例](examples/common/omitempty.go)
 
 # 支持产品列表
 
