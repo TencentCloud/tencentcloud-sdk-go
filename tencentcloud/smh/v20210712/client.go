@@ -68,6 +68,8 @@ func NewCreateLibraryResponse() (response *CreateLibraryResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BALANCELESS = "InternalError.BalanceLess"
+//  INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
 //  INVALIDPARAMETERVALUE_BUCKETNAMENOTBELONGYOU = "InvalidParameterValue.BucketNameNotBelongYou"
@@ -87,6 +89,8 @@ func (c *Client) CreateLibrary(request *CreateLibraryRequest) (response *CreateL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BALANCELESS = "InternalError.BalanceLess"
+//  INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_BUCKETNAMEINVALID = "InvalidParameterValue.BucketNameInvalid"
 //  INVALIDPARAMETERVALUE_BUCKETNAMENOTBELONGYOU = "InvalidParameterValue.BucketNameNotBelongYou"
@@ -136,6 +140,7 @@ func NewDeleteLibraryResponse() (response *DeleteLibraryResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODIFYRESOURCESTATUSFAIL = "InternalError.ModifyResourceStatusFail"
 //  RESOURCEINUSE_MULTISPACE = "ResourceInUse.MultiSpace"
 //  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
 func (c *Client) DeleteLibrary(request *DeleteLibraryRequest) (response *DeleteLibraryResponse, err error) {
@@ -147,6 +152,7 @@ func (c *Client) DeleteLibrary(request *DeleteLibraryRequest) (response *DeleteL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MODIFYRESOURCESTATUSFAIL = "InternalError.ModifyResourceStatusFail"
 //  RESOURCEINUSE_MULTISPACE = "ResourceInUse.MultiSpace"
 //  RESOURCENOTFOUND_LIBRARY = "ResourceNotFound.Library"
 func (c *Client) DeleteLibraryWithContext(ctx context.Context, request *DeleteLibraryRequest) (response *DeleteLibraryResponse, err error) {

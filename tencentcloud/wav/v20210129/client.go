@@ -403,6 +403,7 @@ func NewQueryArrivalListResponse() (response *QueryArrivalListResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -420,6 +421,7 @@ func (c *Client) QueryArrivalList(request *QueryArrivalListRequest) (response *Q
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_INVALIDAUTHORIZATIONCODE = "AuthFailure.InvalidAuthorizationCode"
+//  FAILEDOPERATION_OPENPLATFORMERROR = "FailedOperation.OpenPlatformError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

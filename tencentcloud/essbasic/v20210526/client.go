@@ -180,6 +180,7 @@ func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -208,6 +209,7 @@ func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response 
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -909,6 +911,112 @@ func (c *Client) ChannelCreateFlowGroupByFilesWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewChannelCreateFlowGroupByFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelCreateFlowGroupByTemplatesRequest() (request *ChannelCreateFlowGroupByTemplatesRequest) {
+    request = &ChannelCreateFlowGroupByTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateFlowGroupByTemplates")
+    
+    
+    return
+}
+
+func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlowGroupByTemplatesResponse) {
+    response = &ChannelCreateFlowGroupByTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateFlowGroupByTemplates
+// 接口（ChannelCreateFlowGroupByTemplates）用于通过多模板创建合同组签署流程。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_FLOWINFOS = "InvalidParameter.FlowInfos"
+//  INVALIDPARAMETER_MISSINGREQUIREDPARAMETERVALUE = "InvalidParameter.MissingRequiredParameterValue"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CREATEFLOWNUM = "LimitExceeded.CreateFlowNum"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGroupByTemplatesRequest) (response *ChannelCreateFlowGroupByTemplatesResponse, err error) {
+    return c.ChannelCreateFlowGroupByTemplatesWithContext(context.Background(), request)
+}
+
+// ChannelCreateFlowGroupByTemplates
+// 接口（ChannelCreateFlowGroupByTemplates）用于通过多模板创建合同组签署流程。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_FLOWINFOS = "InvalidParameter.FlowInfos"
+//  INVALIDPARAMETER_MISSINGREQUIREDPARAMETERVALUE = "InvalidParameter.MissingRequiredParameterValue"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CREATEFLOWNUM = "LimitExceeded.CreateFlowNum"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreateFlowGroupByTemplatesWithContext(ctx context.Context, request *ChannelCreateFlowGroupByTemplatesRequest) (response *ChannelCreateFlowGroupByTemplatesResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateFlowGroupByTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateFlowGroupByTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateFlowGroupByTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1856,7 +1964,7 @@ func NewChannelDescribeRolesResponse() (response *ChannelDescribeRolesResponse) 
 }
 
 // ChannelDescribeRoles
-// 查询用户角色
+// 查询角色列表，支持根据类型和状态过滤角色列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1875,7 +1983,7 @@ func (c *Client) ChannelDescribeRoles(request *ChannelDescribeRolesRequest) (res
 }
 
 // ChannelDescribeRoles
-// 查询用户角色
+// 查询角色列表，支持根据类型和状态过滤角色列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2541,6 +2649,7 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 //  MISSINGPARAMETER_FLOWIDSORFLOWGROUPID = "MissingParameter.FlowIdsOrFlowGroupId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
@@ -2615,6 +2724,7 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 //  MISSINGPARAMETER_FLOWIDSORFLOWGROUPID = "MissingParameter.FlowIdsOrFlowGroupId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"

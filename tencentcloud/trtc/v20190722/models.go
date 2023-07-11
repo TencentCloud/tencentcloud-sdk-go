@@ -697,83 +697,6 @@ func (r *DescribeCloudRecordingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeExternalTrtcMeasureRequestParams struct {
-	// 查询开始日期。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束日期。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 对应的应用。如果没有这个参数，表示获取用户名下全部实时音视频应用的汇总。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
-}
-
-type DescribeExternalTrtcMeasureRequest struct {
-	*tchttp.BaseRequest
-	
-	// 查询开始日期。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束日期。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 对应的应用。如果没有这个参数，表示获取用户名下全部实时音视频应用的汇总。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
-}
-
-func (r *DescribeExternalTrtcMeasureRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeExternalTrtcMeasureRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "SdkAppId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExternalTrtcMeasureRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeExternalTrtcMeasureResponseParams struct {
-	// 每个SdkAppId的时长使用信息
-	SdkAppIdTrtrTimeUsages []*SdkAppIdNewTrtcTimeUsage `json:"SdkAppIdTrtrTimeUsages,omitempty" name:"SdkAppIdTrtrTimeUsages"`
-
-	// 主播的用量统计方式。取值"InRoomTime":房间时长,"SubscribeTime":"订阅时长","Bandwidth":带宽
-	AnchorUsageMode *string `json:"AnchorUsageMode,omitempty" name:"AnchorUsageMode"`
-
-	// 观众的用量统计方式。取值"InRoomTime":在房间时长,"SubscribeTime":"订阅时长","Bandwidth":带宽,"MergeWithAnchor":"不区分麦上麦下"
-	AudienceUsageMode *string `json:"AudienceUsageMode,omitempty" name:"AudienceUsageMode"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeExternalTrtcMeasureResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeExternalTrtcMeasureResponseParams `json:"Response"`
-}
-
-func (r *DescribeExternalTrtcMeasureResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeExternalTrtcMeasureResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeMixTranscodingUsageRequestParams struct {
 	// 查询开始时间，格式为YYYY-MM-DD。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -3249,17 +3172,6 @@ type ScaleInfomation struct {
 	RoomNumbers *uint64 `json:"RoomNumbers,omitempty" name:"RoomNumbers"`
 }
 
-type SdkAppIdNewTrtcTimeUsage struct {
-	// SdkAppId的值。
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 统计的时间点数据。
-	TrtcTimeUsages []*TrtcTimeNewUsage `json:"TrtcTimeUsages,omitempty" name:"TrtcTimeUsages"`
-
-	// 统计的麦下用量的时间点数据。
-	AudienceTrtcTimeUsages []*TrtcTimeNewUsage `json:"AudienceTrtcTimeUsages,omitempty" name:"AudienceTrtcTimeUsages"`
-}
-
 type SdkAppIdRecordUsage struct {
 	// SdkAppId的值。
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -3905,38 +3817,6 @@ type TimeValue struct {
 
 	// 当前时间返回参数取值，如（bigvCapFps在1590065877取值为0，则Value：0 ）
 	Value *float64 `json:"Value,omitempty" name:"Value"`
-}
-
-type TrtcTimeNewUsage struct {
-	// 时间点。
-	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
-
-	// 通话人数。仅供参考。在线人数以仪表盘查询结果为准。
-	VoiceUserNum *uint64 `json:"VoiceUserNum,omitempty" name:"VoiceUserNum"`
-
-	// 音视频通话收费时长。单位：秒。
-	VideoTime *uint64 `json:"VideoTime,omitempty" name:"VideoTime"`
-
-	// 标清视频通话收费时长。单位：秒。
-	Class1VideoTime *uint64 `json:"Class1VideoTime,omitempty" name:"Class1VideoTime"`
-
-	// 高清视频通话收费时长。单位：秒。
-	Class2VideoTime *uint64 `json:"Class2VideoTime,omitempty" name:"Class2VideoTime"`
-
-	// 超高清视频通话收费时长。单位：秒。
-	Class3VideoTime *uint64 `json:"Class3VideoTime,omitempty" name:"Class3VideoTime"`
-
-	// 音频通话收费时长。单位：秒。
-	AudioTime *uint64 `json:"AudioTime,omitempty" name:"AudioTime"`
-
-	// 带宽。单位：Mbps。
-	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
-
-	// 2k视频通话收费时长。单位：秒。
-	Video2KTime *uint64 `json:"Video2KTime,omitempty" name:"Video2KTime"`
-
-	// 4k视频通话收费时长。单位：秒。
-	Video4KTime *uint64 `json:"Video4KTime,omitempty" name:"Video4KTime"`
 }
 
 type TrtcUsage struct {

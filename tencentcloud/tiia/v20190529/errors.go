@@ -122,6 +122,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
+	// 图片不可为纯色图。
+	INVALIDPARAMETER_PICTURESOLIDCOLORERROR = "InvalidParameter.PictureSolidColorError"
+
 	// 图库简介过长。
 	INVALIDPARAMETERVALUE_BRIEFTOOLONG = "InvalidParameterValue.BriefTooLong"
 

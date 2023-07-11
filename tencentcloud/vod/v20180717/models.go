@@ -4722,7 +4722,7 @@ func (r *CreateRebuildMediaTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRebuildMediaTemplateResponseParams struct {
-	// 音画质重生模板 ID。
+	// 视频重生模板 ID。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6874,7 +6874,7 @@ func (r *DeleteQualityInspectTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRebuildMediaTemplateRequestParams struct {
-	// 音画质重生模板号。
+	// 视频重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -6884,7 +6884,7 @@ type DeleteRebuildMediaTemplateRequestParams struct {
 type DeleteRebuildMediaTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音画质重生模板号。
+	// 视频重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>

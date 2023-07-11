@@ -4036,6 +4036,7 @@ func NewGetProjectListResponse() (response *GetProjectListResponse) {
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOVERIFIED = "UnauthorizedOperation.NoVerified"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
 func (c *Client) GetProjectList(request *GetProjectListRequest) (response *GetProjectListResponse, err error) {
@@ -4053,6 +4054,7 @@ func (c *Client) GetProjectList(request *GetProjectListRequest) (response *GetPr
 //  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOVERIFIED = "UnauthorizedOperation.NoVerified"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 //  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
 func (c *Client) GetProjectListWithContext(ctx context.Context, request *GetProjectListRequest) (response *GetProjectListResponse, err error) {

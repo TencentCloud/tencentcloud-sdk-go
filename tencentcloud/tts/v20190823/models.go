@@ -274,7 +274,10 @@ type TextToVoiceRequestParams struct {
 	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitempty" name:"PrimaryLanguage"`
 
-	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
+	// 音频采样率：
+	// <li>24000：24k（部分音色支持，请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)）</li>
+	// <li>16000：16k（默认）</li>
+	// <li>8000：8k</li>
 	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
 
 	// 返回音频格式，可取值：wav（默认），mp3，pcm
@@ -321,7 +324,10 @@ type TextToVoiceRequest struct {
 	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitempty" name:"PrimaryLanguage"`
 
-	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
+	// 音频采样率：
+	// <li>24000：24k（部分音色支持，请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)）</li>
+	// <li>16000：16k（默认）</li>
+	// <li>8000：8k</li>
 	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
 
 	// 返回音频格式，可取值：wav（默认），mp3，pcm

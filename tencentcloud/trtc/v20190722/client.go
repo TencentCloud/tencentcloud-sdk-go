@@ -559,66 +559,6 @@ func (c *Client) DescribeCloudRecordingWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeExternalTrtcMeasureRequest() (request *DescribeExternalTrtcMeasureRequest) {
-    request = &DescribeExternalTrtcMeasureRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeExternalTrtcMeasure")
-    
-    
-    return
-}
-
-func NewDescribeExternalTrtcMeasureResponse() (response *DescribeExternalTrtcMeasureResponse) {
-    response = &DescribeExternalTrtcMeasureResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeExternalTrtcMeasure
-// 接口内部调用计量接口，计量接口迁通用集群后不可用。目前已有新的对外接口可以供用户使用。
-//
-// 
-//
-// 获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据。
-//
-// 当前接口已不再更新维护，请使用新版音视频用量接口：DescribeTrtcUsage （https://cloud.tencent.com/document/product/647/81425）
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-func (c *Client) DescribeExternalTrtcMeasure(request *DescribeExternalTrtcMeasureRequest) (response *DescribeExternalTrtcMeasureResponse, err error) {
-    return c.DescribeExternalTrtcMeasureWithContext(context.Background(), request)
-}
-
-// DescribeExternalTrtcMeasure
-// 接口内部调用计量接口，计量接口迁通用集群后不可用。目前已有新的对外接口可以供用户使用。
-//
-// 
-//
-// 获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据。
-//
-// 当前接口已不再更新维护，请使用新版音视频用量接口：DescribeTrtcUsage （https://cloud.tencent.com/document/product/647/81425）
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-func (c *Client) DescribeExternalTrtcMeasureWithContext(ctx context.Context, request *DescribeExternalTrtcMeasureRequest) (response *DescribeExternalTrtcMeasureResponse, err error) {
-    if request == nil {
-        request = NewDescribeExternalTrtcMeasureRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeExternalTrtcMeasure require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeExternalTrtcMeasureResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeMixTranscodingUsageRequest() (request *DescribeMixTranscodingUsageRequest) {
     request = &DescribeMixTranscodingUsageRequest{
         BaseRequest: &tchttp.BaseRequest{},

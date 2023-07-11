@@ -20,6 +20,15 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 账户余额不足
+	INTERNALERROR_BALANCELESS = "InternalError.BalanceLess"
+
+	// 媒体库资源删除失败
+	INTERNALERROR_MODIFYRESOURCESTATUSFAIL = "InternalError.ModifyResourceStatusFail"
+
+	// 后付费开通失败
+	INTERNALERROR_POSTPAIDFAIL = "InternalError.PostpaidFail"
+
 	// 发送短信验证码时发生错误。
 	INTERNALERROR_SENDSMS = "InternalError.SendSms"
 

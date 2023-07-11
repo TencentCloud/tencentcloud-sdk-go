@@ -1,3 +1,255 @@
+# Release v1.0.698
+
+## 内容安全(cms) 版本：2019-03-21
+
+### 第 17 次发布
+
+发布时间：2023-07-11 01:11:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKeywordsSamples](https://cloud.tencent.com/document/api/669/93038)
+
+	* 新增出参：SuccessInfos
+
+* [DeleteLibSamples](https://cloud.tencent.com/document/api/669/93037)
+
+	* 新增入参：SampleContents
+
+* [DescribeLibSamples](https://cloud.tencent.com/document/api/669/93035)
+
+	* 新增入参：SampleIDs
+
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 67 次发布
+
+发布时间：2023-07-11 01:20:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AllocateIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94901)
+* [AssignIpv6CidrBlock](https://cloud.tencent.com/document/api/1108/94896)
+* [AssignIpv6CidrBlocks](https://cloud.tencent.com/document/api/1108/94895)
+* [AssignIpv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/94903)
+* [DescribeRegionIpv6Addresses](https://cloud.tencent.com/document/api/1108/94900)
+* [ModifyIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94899)
+* [QueryVpcTaskResult](https://cloud.tencent.com/document/api/1108/94894)
+* [ReleaseIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94898)
+* [UnassignIpv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/94902)
+
+新增数据结构：
+
+* [ISPTypeItem](https://cloud.tencent.com/document/api/1108/42574#ISPTypeItem)
+* [Ipv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/42574#Ipv6SubnetCidrBlock)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 86 次发布
+
+发布时间：2023-07-10 14:56:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1323/94888)
+* [CreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1323/94887)
+
+新增数据结构：
+
+* [FlowGroupInfo](https://cloud.tencent.com/document/api/1323/70369#FlowGroupInfo)
+* [FlowGroupOptions](https://cloud.tencent.com/document/api/1323/70369#FlowGroupOptions)
+
+### 第 85 次发布
+
+发布时间：2023-07-10 11:31:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
+
+	* 新增入参：FlowGroupId
+
+* [DescribeFlowInfo](https://cloud.tencent.com/document/api/1323/80032)
+
+	* 新增入参：FlowGroupId
+
+	* <font color="#dd0000">**修改入参**：</font>FlowIds
+
+	* 新增出参：FlowGroupId, FlowGroupName
+
+
+修改数据结构：
+
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>SignComponents
+
+* [FlowApproverDetail](https://cloud.tencent.com/document/api/1323/70369#FlowApproverDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>ApproveMessage
+
+* [FlowDetailInfo](https://cloud.tencent.com/document/api/1323/70369#FlowDetailInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CcInfos, Creator
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 91 次发布
+
+发布时间：2023-07-10 14:50:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1420/94886)
+
+### 第 90 次发布
+
+发布时间：2023-07-10 11:31:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowFileInfo](https://cloud.tencent.com/document/api/1420/61525#FlowFileInfo)
+
+	* 新增成员：Components
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 97 次发布
+
+发布时间：2023-07-11 01:40:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem)
+
+	* 新增成员：GatewayRouteEnvId
+
+
+
+
+## 腾讯云健康看板(tchd) 版本：2023-03-06
+
+### 第 1 次发布
+
+发布时间：2023-07-10 10:40:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEvents](https://cloud.tencent.com/document/api/1688/94858)
+
+新增数据结构：
+
+* [EventDetail](https://cloud.tencent.com/document/api/1688/94859#EventDetail)
+* [ProductEventList](https://cloud.tencent.com/document/api/1688/94859#ProductEventList)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 157 次发布
+
+发布时间：2023-07-11 01:47:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterAsGroupOption](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroupOption)
+
+	* <font color="#dd0000">**修改成员**：</font>IsScaleDownEnabled, Expander, MaxEmptyBulkDelete, ScaleDownDelay, ScaleDownUnneededTime, ScaleDownUtilizationThreshold, SkipNodesWithLocalStorage, SkipNodesWithSystemPods, IgnoreDaemonSetsUtilization
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 55 次发布
+
+发布时间：2023-07-11 01:48:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeExternalTrtcMeasure
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* SdkAppIdNewTrtcTimeUsage
+* TrtcTimeNewUsage
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 15 次发布
+
+发布时间：2023-07-11 01:55:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
+
+	* 新增成员：CorpShopId
+
+
+
+
 # Release v1.0.697
 
 ## API 网关(apigateway) 版本：2018-08-08

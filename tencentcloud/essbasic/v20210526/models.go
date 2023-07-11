@@ -932,7 +932,7 @@ func (r *ChannelCreateFlowByFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowGroupByFilesRequestParams struct {
-	// 每个子合同的发起所需的信息，数量限制2-100
+	// 每个子合同的发起所需的信息，数量限制2-50
 	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitempty" name:"FlowFileInfos"`
 
 	// 合同组名称，长度不超过200个字符
@@ -956,7 +956,7 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 type ChannelCreateFlowGroupByFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 每个子合同的发起所需的信息，数量限制2-100
+	// 每个子合同的发起所需的信息，数量限制2-50
 	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitempty" name:"FlowFileInfos"`
 
 	// 合同组名称，长度不超过200个字符
@@ -1025,6 +1025,84 @@ func (r *ChannelCreateFlowGroupByFilesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelCreateFlowGroupByFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateFlowGroupByTemplatesRequestParams struct {
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 每个子合同的发起所需的信息，数量限制2-50（合同组暂不支持抄送功能）
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
+
+	// 合同组名称，长度不超过200个字符
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
+}
+
+type ChannelCreateFlowGroupByTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 每个子合同的发起所需的信息，数量限制2-50（合同组暂不支持抄送功能）
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
+
+	// 合同组名称，长度不超过200个字符
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
+}
+
+func (r *ChannelCreateFlowGroupByTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowGroupByTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowInfos")
+	delete(f, "FlowGroupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowGroupByTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateFlowGroupByTemplatesResponseParams struct {
+	// 合同组ID
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 子合同ID列表
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
+	// 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
+	TaskInfos []*TaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateFlowGroupByTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateFlowGroupByTemplatesResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateFlowGroupByTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowGroupByTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4398,6 +4476,9 @@ type FlowFileInfo struct {
 
 	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 签署文件中的发起方的填写控件，需要在发起的时候进行填充
+	Components []*Component `json:"Components,omitempty" name:"Components"`
 
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`

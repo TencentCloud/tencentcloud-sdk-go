@@ -1289,6 +1289,7 @@ func NewCreateQualityInspectTemplateResponse() (response *CreateQualityInspectTe
 // 创建音画质检测模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
@@ -1300,6 +1301,7 @@ func (c *Client) CreateQualityInspectTemplate(request *CreateQualityInspectTempl
 // 创建音画质检测模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
@@ -1338,7 +1340,7 @@ func NewCreateRebuildMediaTemplateResponse() (response *CreateRebuildMediaTempla
 }
 
 // CreateRebuildMediaTemplate
-// 创建音画质重生模板。
+// 创建视频重生模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1348,7 +1350,7 @@ func (c *Client) CreateRebuildMediaTemplate(request *CreateRebuildMediaTemplateR
 }
 
 // CreateRebuildMediaTemplate
-// 创建音画质重生模板。
+// 创建视频重生模板。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2960,7 +2962,7 @@ func NewDeleteRebuildMediaTemplateResponse() (response *DeleteRebuildMediaTempla
 }
 
 // DeleteRebuildMediaTemplate
-// 删除音画质重生模板。
+// 删除视频重生模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2970,7 +2972,7 @@ func (c *Client) DeleteRebuildMediaTemplate(request *DeleteRebuildMediaTemplateR
 }
 
 // DeleteRebuildMediaTemplate
-// 删除音画质重生模板。
+// 删除视频重生模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3356,6 +3358,7 @@ func NewDeleteVodDomainResponse() (response *DeleteVodDomainResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteVodDomain(request *DeleteVodDomainRequest) (response *DeleteVodDomainResponse, err error) {
     return c.DeleteVodDomainWithContext(context.Background(), request)
@@ -3368,6 +3371,7 @@ func (c *Client) DeleteVodDomain(request *DeleteVodDomainRequest) (response *Del
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteVodDomainWithContext(ctx context.Context, request *DeleteVodDomainRequest) (response *DeleteVodDomainResponse, err error) {
     if request == nil {

@@ -7963,9 +7963,11 @@ func (r *FreezeCloudBaseRunServersResponse) FromJsonString(s string) error {
 
 type FrequencyLimitConfig struct {
 	// 限额对象 "ConnectionsLimit" 或 "QPSLimit"
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitObject *string `json:"LimitObject,omitempty" name:"LimitObject"`
 
 	// 限额配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitConfig *string `json:"LimitConfig,omitempty" name:"LimitConfig"`
 }
 
@@ -9884,4 +9886,8 @@ type WxGatewayRountItem struct {
 	// 4层端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRoutePort *int64 `json:"GatewayRoutePort,omitempty" name:"GatewayRoutePort"`
+
+	// 路由环境ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayRouteEnvId *string `json:"GatewayRouteEnvId,omitempty" name:"GatewayRouteEnvId"`
 }

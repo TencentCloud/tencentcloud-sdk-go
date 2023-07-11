@@ -3108,6 +3108,7 @@ func NewTerminateAsyncEventResponse() (response *TerminateAsyncEventResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
@@ -3120,6 +3121,7 @@ func (c *Client) TerminateAsyncEvent(request *TerminateAsyncEventRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"

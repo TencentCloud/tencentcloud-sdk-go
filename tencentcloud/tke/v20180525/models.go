@@ -1017,11 +1017,11 @@ type ClusterAsGroupOption struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleDownUtilizationThreshold *int64 `json:"ScaleDownUtilizationThreshold,omitempty" name:"ScaleDownUtilizationThreshold"`
 
-	// 含有本地存储Pod的节点是否不缩容(默认： FALSE)
+	// 含有本地存储Pod的节点是否不缩容(默认： true)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkipNodesWithLocalStorage *bool `json:"SkipNodesWithLocalStorage,omitempty" name:"SkipNodesWithLocalStorage"`
 
-	// 含有kube-system namespace下非DaemonSet管理的Pod的节点是否不缩容 (默认： FALSE)
+	// 含有kube-system namespace下非DaemonSet管理的Pod的节点是否不缩容 (默认： true)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkipNodesWithSystemPods *bool `json:"SkipNodesWithSystemPods,omitempty" name:"SkipNodesWithSystemPods"`
 

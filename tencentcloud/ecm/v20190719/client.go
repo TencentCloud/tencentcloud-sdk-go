@@ -141,6 +141,76 @@ func (c *Client) AllocateAddressesWithContext(ctx context.Context, request *Allo
     return
 }
 
+func NewAllocateIpv6AddressesBandwidthRequest() (request *AllocateIpv6AddressesBandwidthRequest) {
+    request = &AllocateIpv6AddressesBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "AllocateIpv6AddressesBandwidth")
+    
+    
+    return
+}
+
+func NewAllocateIpv6AddressesBandwidthResponse() (response *AllocateIpv6AddressesBandwidthResponse) {
+    response = &AllocateIpv6AddressesBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AllocateIpv6AddressesBandwidth
+// 本接口用于给IPv6地址分配公网带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) AllocateIpv6AddressesBandwidth(request *AllocateIpv6AddressesBandwidthRequest) (response *AllocateIpv6AddressesBandwidthResponse, err error) {
+    return c.AllocateIpv6AddressesBandwidthWithContext(context.Background(), request)
+}
+
+// AllocateIpv6AddressesBandwidth
+// 本接口用于给IPv6地址分配公网带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) AllocateIpv6AddressesBandwidthWithContext(ctx context.Context, request *AllocateIpv6AddressesBandwidthRequest) (response *AllocateIpv6AddressesBandwidthResponse, err error) {
+    if request == nil {
+        request = NewAllocateIpv6AddressesBandwidthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AllocateIpv6AddressesBandwidth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAllocateIpv6AddressesBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssignIpv6AddressesRequest() (request *AssignIpv6AddressesRequest) {
     request = &AssignIpv6AddressesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -213,6 +283,208 @@ func (c *Client) AssignIpv6AddressesWithContext(ctx context.Context, request *As
     request.SetContext(ctx)
     
     response = NewAssignIpv6AddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssignIpv6CidrBlockRequest() (request *AssignIpv6CidrBlockRequest) {
+    request = &AssignIpv6CidrBlockRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "AssignIpv6CidrBlock")
+    
+    
+    return
+}
+
+func NewAssignIpv6CidrBlockResponse() (response *AssignIpv6CidrBlockResponse) {
+    response = &AssignIpv6CidrBlockResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AssignIpv6CidrBlock
+// 本接口（AssignIpv6CidrBlock）用于分配IPv6网段。
+//
+// 
+//
+// 使用本接口前，您需要已有VPC实例，如果没有可通过接口CreateVpc创建。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED_CIDRBLOCK = "LimitExceeded.CidrBlock"
+//  RESOURCEINSUFFICIENT_CIDRBLOCK = "ResourceInsufficient.CidrBlock"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssignIpv6CidrBlock(request *AssignIpv6CidrBlockRequest) (response *AssignIpv6CidrBlockResponse, err error) {
+    return c.AssignIpv6CidrBlockWithContext(context.Background(), request)
+}
+
+// AssignIpv6CidrBlock
+// 本接口（AssignIpv6CidrBlock）用于分配IPv6网段。
+//
+// 
+//
+// 使用本接口前，您需要已有VPC实例，如果没有可通过接口CreateVpc创建。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED_CIDRBLOCK = "LimitExceeded.CidrBlock"
+//  RESOURCEINSUFFICIENT_CIDRBLOCK = "ResourceInsufficient.CidrBlock"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssignIpv6CidrBlockWithContext(ctx context.Context, request *AssignIpv6CidrBlockRequest) (response *AssignIpv6CidrBlockResponse, err error) {
+    if request == nil {
+        request = NewAssignIpv6CidrBlockRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssignIpv6CidrBlock require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssignIpv6CidrBlockResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssignIpv6CidrBlocksRequest() (request *AssignIpv6CidrBlocksRequest) {
+    request = &AssignIpv6CidrBlocksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "AssignIpv6CidrBlocks")
+    
+    
+    return
+}
+
+func NewAssignIpv6CidrBlocksResponse() (response *AssignIpv6CidrBlocksResponse) {
+    response = &AssignIpv6CidrBlocksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AssignIpv6CidrBlocks
+// 本接口（AssignIpv6CidrBlocks）用于分配IPv6网段。
+//
+// 
+//
+// 使用本接口前，您需要已有VPC实例，如果没有可通过接口CreateVpc创建。
+//
+// 每个VPC 可以同时支持运营商网络('CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调)。本接口可以同时申请不同类型的IPv6网段
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED_CIDRBLOCK = "LimitExceeded.CidrBlock"
+//  RESOURCEINSUFFICIENT_CIDRBLOCK = "ResourceInsufficient.CidrBlock"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssignIpv6CidrBlocks(request *AssignIpv6CidrBlocksRequest) (response *AssignIpv6CidrBlocksResponse, err error) {
+    return c.AssignIpv6CidrBlocksWithContext(context.Background(), request)
+}
+
+// AssignIpv6CidrBlocks
+// 本接口（AssignIpv6CidrBlocks）用于分配IPv6网段。
+//
+// 
+//
+// 使用本接口前，您需要已有VPC实例，如果没有可通过接口CreateVpc创建。
+//
+// 每个VPC 可以同时支持运营商网络('CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调)。本接口可以同时申请不同类型的IPv6网段
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED_CIDRBLOCK = "LimitExceeded.CidrBlock"
+//  RESOURCEINSUFFICIENT_CIDRBLOCK = "ResourceInsufficient.CidrBlock"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AssignIpv6CidrBlocksWithContext(ctx context.Context, request *AssignIpv6CidrBlocksRequest) (response *AssignIpv6CidrBlocksResponse, err error) {
+    if request == nil {
+        request = NewAssignIpv6CidrBlocksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssignIpv6CidrBlocks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssignIpv6CidrBlocksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssignIpv6SubnetCidrBlockRequest() (request *AssignIpv6SubnetCidrBlockRequest) {
+    request = &AssignIpv6SubnetCidrBlockRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "AssignIpv6SubnetCidrBlock")
+    
+    
+    return
+}
+
+func NewAssignIpv6SubnetCidrBlockResponse() (response *AssignIpv6SubnetCidrBlockResponse) {
+    response = &AssignIpv6SubnetCidrBlockResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AssignIpv6SubnetCidrBlock
+// 本接口（AssignIpv6SubnetCidrBlock）用于分配IPv6子网段。
+//
+// 
+//
+// 给子网分配 IPv6 网段，要求子网所属 VPC 已获得 IPv6 网段。如果尚未分配，请先通过接口 AssignIpv6CidrBlock 给子网所属 VPC 分配一个 IPv6 网段。否则无法分配 IPv6 子网段。
+//
+// 每个子网只能分配一个IPv6网段。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AssignIpv6SubnetCidrBlock(request *AssignIpv6SubnetCidrBlockRequest) (response *AssignIpv6SubnetCidrBlockResponse, err error) {
+    return c.AssignIpv6SubnetCidrBlockWithContext(context.Background(), request)
+}
+
+// AssignIpv6SubnetCidrBlock
+// 本接口（AssignIpv6SubnetCidrBlock）用于分配IPv6子网段。
+//
+// 
+//
+// 给子网分配 IPv6 网段，要求子网所属 VPC 已获得 IPv6 网段。如果尚未分配，请先通过接口 AssignIpv6CidrBlock 给子网所属 VPC 分配一个 IPv6 网段。否则无法分配 IPv6 子网段。
+//
+// 每个子网只能分配一个IPv6网段。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AssignIpv6SubnetCidrBlockWithContext(ctx context.Context, request *AssignIpv6SubnetCidrBlockRequest) (response *AssignIpv6SubnetCidrBlockResponse, err error) {
+    if request == nil {
+        request = NewAssignIpv6SubnetCidrBlockRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssignIpv6SubnetCidrBlock require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssignIpv6SubnetCidrBlockResponse()
     err = c.Send(request, response)
     return
 }
@@ -4335,6 +4607,74 @@ func (c *Client) DescribePriceRunInstanceWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRegionIpv6AddressesRequest() (request *DescribeRegionIpv6AddressesRequest) {
+    request = &DescribeRegionIpv6AddressesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "DescribeRegionIpv6Addresses")
+    
+    
+    return
+}
+
+func NewDescribeRegionIpv6AddressesResponse() (response *DescribeRegionIpv6AddressesResponse) {
+    response = &DescribeRegionIpv6AddressesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRegionIpv6Addresses
+// 该接口（DescribeRegionIpv6Addresses）用于查询ECM地域之下的IPV6地址信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) DescribeRegionIpv6Addresses(request *DescribeRegionIpv6AddressesRequest) (response *DescribeRegionIpv6AddressesResponse, err error) {
+    return c.DescribeRegionIpv6AddressesWithContext(context.Background(), request)
+}
+
+// DescribeRegionIpv6Addresses
+// 该接口（DescribeRegionIpv6Addresses）用于查询ECM地域之下的IPV6地址信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) DescribeRegionIpv6AddressesWithContext(ctx context.Context, request *DescribeRegionIpv6AddressesRequest) (response *DescribeRegionIpv6AddressesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegionIpv6AddressesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegionIpv6Addresses require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegionIpv6AddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRouteConflictsRequest() (request *DescribeRouteConflictsRequest) {
     request = &DescribeRouteConflictsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6315,6 +6655,72 @@ func (c *Client) ModifyIpv6AddressesAttributeWithContext(ctx context.Context, re
     return
 }
 
+func NewModifyIpv6AddressesBandwidthRequest() (request *ModifyIpv6AddressesBandwidthRequest) {
+    request = &ModifyIpv6AddressesBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "ModifyIpv6AddressesBandwidth")
+    
+    
+    return
+}
+
+func NewModifyIpv6AddressesBandwidthResponse() (response *ModifyIpv6AddressesBandwidthResponse) {
+    response = &ModifyIpv6AddressesBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyIpv6AddressesBandwidth
+// 该接口(ModifyIpv6AddressesBandwidth)用于修改IPV6地址访问internet的带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) ModifyIpv6AddressesBandwidth(request *ModifyIpv6AddressesBandwidthRequest) (response *ModifyIpv6AddressesBandwidthResponse, err error) {
+    return c.ModifyIpv6AddressesBandwidthWithContext(context.Background(), request)
+}
+
+// ModifyIpv6AddressesBandwidth
+// 该接口(ModifyIpv6AddressesBandwidth)用于修改IPV6地址访问internet的带宽
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) ModifyIpv6AddressesBandwidthWithContext(ctx context.Context, request *ModifyIpv6AddressesBandwidthRequest) (response *ModifyIpv6AddressesBandwidthResponse, err error) {
+    if request == nil {
+        request = NewModifyIpv6AddressesBandwidthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyIpv6AddressesBandwidth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyIpv6AddressesBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyListenerRequest() (request *ModifyListenerRequest) {
     request = &ModifyListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7351,6 +7757,56 @@ func (c *Client) ModifyVpcAttributeWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewQueryVpcTaskResultRequest() (request *QueryVpcTaskResultRequest) {
+    request = &QueryVpcTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "QueryVpcTaskResult")
+    
+    
+    return
+}
+
+func NewQueryVpcTaskResultResponse() (response *QueryVpcTaskResultResponse) {
+    response = &QueryVpcTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryVpcTaskResult
+// 查询私有网络下Vpc、子网、havip等异步任务请求结果
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryVpcTaskResult(request *QueryVpcTaskResultRequest) (response *QueryVpcTaskResultResponse, err error) {
+    return c.QueryVpcTaskResultWithContext(context.Background(), request)
+}
+
+// QueryVpcTaskResult
+// 查询私有网络下Vpc、子网、havip等异步任务请求结果
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) QueryVpcTaskResultWithContext(ctx context.Context, request *QueryVpcTaskResultRequest) (response *QueryVpcTaskResultResponse, err error) {
+    if request == nil {
+        request = NewQueryVpcTaskResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryVpcTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryVpcTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRebootInstancesRequest() (request *RebootInstancesRequest) {
     request = &RebootInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7551,6 +8007,76 @@ func (c *Client) ReleaseIpv6AddressesWithContext(ctx context.Context, request *R
     request.SetContext(ctx)
     
     response = NewReleaseIpv6AddressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseIpv6AddressesBandwidthRequest() (request *ReleaseIpv6AddressesBandwidthRequest) {
+    request = &ReleaseIpv6AddressesBandwidthRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "ReleaseIpv6AddressesBandwidth")
+    
+    
+    return
+}
+
+func NewReleaseIpv6AddressesBandwidthResponse() (response *ReleaseIpv6AddressesBandwidthResponse) {
+    response = &ReleaseIpv6AddressesBandwidthResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReleaseIpv6AddressesBandwidth
+// 该接口用于给弹性公网IPv6地址释放带宽。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) ReleaseIpv6AddressesBandwidth(request *ReleaseIpv6AddressesBandwidthRequest) (response *ReleaseIpv6AddressesBandwidthResponse, err error) {
+    return c.ReleaseIpv6AddressesBandwidthWithContext(context.Background(), request)
+}
+
+// ReleaseIpv6AddressesBandwidth
+// 该接口用于给弹性公网IPv6地址释放带宽。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  INVALIDPARAMETER_INVALIDDATAFORMAT = "InvalidParameter.InvalidDataFormat"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDECMREGION = "InvalidParameterValue.InvalidEcmRegion"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDREGION = "InvalidParameterValue.UnsupportedRegion"
+//  INVALIDPARAMETERVALUE_USERNOTSUPPORTIPV6 = "InvalidParameterValue.UserNotSupportIPv6"
+//  LIMITEXCEEDED_ADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.AddressQuotaLimitExceeded"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_FORBIDDENOPERATION = "UnauthorizedOperation.ForbiddenOperation"
+func (c *Client) ReleaseIpv6AddressesBandwidthWithContext(ctx context.Context, request *ReleaseIpv6AddressesBandwidthRequest) (response *ReleaseIpv6AddressesBandwidthResponse, err error) {
+    if request == nil {
+        request = NewReleaseIpv6AddressesBandwidthRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseIpv6AddressesBandwidth require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReleaseIpv6AddressesBandwidthResponse()
     err = c.Send(request, response)
     return
 }
@@ -8655,6 +9181,64 @@ func (c *Client) TerminateInstancesWithContext(ctx context.Context, request *Ter
     request.SetContext(ctx)
     
     response = NewTerminateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnassignIpv6SubnetCidrBlockRequest() (request *UnassignIpv6SubnetCidrBlockRequest) {
+    request = &UnassignIpv6SubnetCidrBlockRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ecm", APIVersion, "UnassignIpv6SubnetCidrBlock")
+    
+    
+    return
+}
+
+func NewUnassignIpv6SubnetCidrBlockResponse() (response *UnassignIpv6SubnetCidrBlockResponse) {
+    response = &UnassignIpv6SubnetCidrBlockResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnassignIpv6SubnetCidrBlock
+// 本接口（UnassignIpv6SubnetCidrBlock）用于释放IPv6子网段。
+//
+// 子网段如果还有IP占用且未回收，则子网段无法释放。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UnassignIpv6SubnetCidrBlock(request *UnassignIpv6SubnetCidrBlockRequest) (response *UnassignIpv6SubnetCidrBlockResponse, err error) {
+    return c.UnassignIpv6SubnetCidrBlockWithContext(context.Background(), request)
+}
+
+// UnassignIpv6SubnetCidrBlock
+// 本接口（UnassignIpv6SubnetCidrBlock）用于释放IPv6子网段。
+//
+// 子网段如果还有IP占用且未回收，则子网段无法释放。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UnassignIpv6SubnetCidrBlockWithContext(ctx context.Context, request *UnassignIpv6SubnetCidrBlockRequest) (response *UnassignIpv6SubnetCidrBlockResponse, err error) {
+    if request == nil {
+        request = NewUnassignIpv6SubnetCidrBlockRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnassignIpv6SubnetCidrBlock require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnassignIpv6SubnetCidrBlockResponse()
     err = c.Send(request, response)
     return
 }

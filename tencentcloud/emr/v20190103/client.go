@@ -667,9 +667,7 @@ func NewDescribeHiveQueriesResponse() (response *DescribeHiveQueriesResponse) {
 // 获取hive查询信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
-//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeHiveQueries(request *DescribeHiveQueriesRequest) (response *DescribeHiveQueriesResponse, err error) {
     return c.DescribeHiveQueriesWithContext(context.Background(), request)
 }
@@ -678,9 +676,7 @@ func (c *Client) DescribeHiveQueries(request *DescribeHiveQueriesRequest) (respo
 // 获取hive查询信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
-//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeHiveQueriesWithContext(ctx context.Context, request *DescribeHiveQueriesRequest) (response *DescribeHiveQueriesResponse, err error) {
     if request == nil {
         request = NewDescribeHiveQueriesRequest()
@@ -719,9 +715,7 @@ func NewDescribeImpalaQueriesResponse() (response *DescribeImpalaQueriesResponse
 // DescribeImpalaQueries
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
-//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeImpalaQueries(request *DescribeImpalaQueriesRequest) (response *DescribeImpalaQueriesResponse, err error) {
     return c.DescribeImpalaQueriesWithContext(context.Background(), request)
 }
@@ -730,9 +724,7 @@ func (c *Client) DescribeImpalaQueries(request *DescribeImpalaQueriesRequest) (r
 // DescribeImpalaQueries
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
-//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeImpalaQueriesWithContext(ctx context.Context, request *DescribeImpalaQueriesRequest) (response *DescribeImpalaQueriesResponse, err error) {
     if request == nil {
         request = NewDescribeImpalaQueriesRequest()

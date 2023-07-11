@@ -234,7 +234,7 @@ type AddInstancesRequestParams struct {
 	// 交易模式 0-下单并支付 1-下单
 	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
 
-	// 参数模版ID
+	// 参数模板ID
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 
 	// 参数列表，ParamTemplateId 传入时InstanceParams才有效
@@ -287,7 +287,7 @@ type AddInstancesRequest struct {
 	// 交易模式 0-下单并支付 1-下单
 	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
 
-	// 参数模版ID
+	// 参数模板ID
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 
 	// 参数列表，ParamTemplateId 传入时InstanceParams才有效
@@ -1887,16 +1887,16 @@ func (r *CreateClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateParamTemplateRequestParams struct {
-	// 模版名称
+	// 模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
 	// mysql版本号
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 模版描述
+	// 模板描述
 	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
 
-	// 可选参数，需要复制的模版ID
+	// 可选参数，需要复制的模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 数据库类型，可选值：NORMAL（默认值），SERVERLESS
@@ -1909,16 +1909,16 @@ type CreateParamTemplateRequestParams struct {
 type CreateParamTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模版名称
+	// 模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
 	// mysql版本号
 	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 
-	// 模版描述
+	// 模板描述
 	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
 
-	// 可选参数，需要复制的模版ID
+	// 可选参数，需要复制的模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 数据库类型，可选值：NORMAL（默认值），SERVERLESS
@@ -1954,7 +1954,7 @@ func (r *CreateParamTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateParamTemplateResponseParams struct {
-	// 模版ID
+	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1994,7 +1994,7 @@ type CreateProxyEndPointRequestParams struct {
 	// 是否开启连接池,yes-开启，no-不开启
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池阀值：单位（秒）
+	// 连接池阈值：单位（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitempty" name:"ConnectionPoolTimeOut"`
 
 	// 安全组ID数组
@@ -2056,7 +2056,7 @@ type CreateProxyEndPointRequest struct {
 	// 是否开启连接池,yes-开启，no-不开启
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池阀值：单位（秒）
+	// 连接池阈值：单位（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitempty" name:"ConnectionPoolTimeOut"`
 
 	// 安全组ID数组
@@ -2193,7 +2193,7 @@ type CreateProxyRequestParams struct {
 	// 是否开启连接池,yes-开启，no-不开启
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池阀值：单位（秒）
+	// 连接池阈值：单位（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitempty" name:"ConnectionPoolTimeOut"`
 
 	// 安全组ID数组
@@ -2233,7 +2233,7 @@ type CreateProxyRequest struct {
 	// 是否开启连接池,yes-开启，no-不开启
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池阀值：单位（秒）
+	// 连接池阈值：单位（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitempty" name:"ConnectionPoolTimeOut"`
 
 	// 安全组ID数组
@@ -3507,14 +3507,14 @@ func (r *DeleteClusterDatabaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteParamTemplateRequestParams struct {
-	// 参数模版ID
+	// 参数模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type DeleteParamTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模版ID
+	// 参数模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -6026,10 +6026,10 @@ type DescribeParamTemplatesRequestParams struct {
 	// 数据库引擎版本号
 	EngineVersions []*string `json:"EngineVersions,omitempty" name:"EngineVersions"`
 
-	// 模版名称
+	// 模板名称
 	TemplateNames []*string `json:"TemplateNames,omitempty" name:"TemplateNames"`
 
-	// 模版ID
+	// 模板ID
 	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds"`
 
 	// 数据库类型，可选值：NORMAL，SERVERLESS
@@ -6044,7 +6044,7 @@ type DescribeParamTemplatesRequestParams struct {
 	// 查询的模板对应的产品类型
 	Products []*string `json:"Products,omitempty" name:"Products"`
 
-	// 模版类型
+	// 模板类型
 	TemplateTypes []*string `json:"TemplateTypes,omitempty" name:"TemplateTypes"`
 
 	// 版本类型
@@ -6063,10 +6063,10 @@ type DescribeParamTemplatesRequest struct {
 	// 数据库引擎版本号
 	EngineVersions []*string `json:"EngineVersions,omitempty" name:"EngineVersions"`
 
-	// 模版名称
+	// 模板名称
 	TemplateNames []*string `json:"TemplateNames,omitempty" name:"TemplateNames"`
 
-	// 模版ID
+	// 模板ID
 	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds"`
 
 	// 数据库类型，可选值：NORMAL，SERVERLESS
@@ -6081,7 +6081,7 @@ type DescribeParamTemplatesRequest struct {
 	// 查询的模板对应的产品类型
 	Products []*string `json:"Products,omitempty" name:"Products"`
 
-	// 模版类型
+	// 模板类型
 	TemplateTypes []*string `json:"TemplateTypes,omitempty" name:"TemplateTypes"`
 
 	// 版本类型
@@ -9476,13 +9476,13 @@ type ModifyParamItem struct {
 
 // Predefined struct for user
 type ModifyParamTemplateRequestParams struct {
-	// 模版ID
+	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 模版名
+	// 模板名
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 模版描述
+	// 模板描述
 	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
 
 	// 参数列表
@@ -9492,13 +9492,13 @@ type ModifyParamTemplateRequestParams struct {
 type ModifyParamTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模版ID
+	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 模版名
+	// 模板名
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 模版描述
+	// 模板描述
 	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
 
 	// 参数列表
@@ -10902,7 +10902,7 @@ type PolicyRule struct {
 	// 策略，ACCEPT或者DROP
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 来源Ip或Ip段，例如192.168.0.0/16
+	// 来源IP或IP段，例如192.168.0.0/16
 	CidrIp *string `json:"CidrIp,omitempty" name:"CidrIp"`
 
 	// 端口
@@ -10933,7 +10933,7 @@ type ProxyConnectionPoolInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池类型：SessionConnectionPool（会话级别连接池
+	// 连接池类型：SessionConnectionPool（会话级别连接池）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitempty" name:"ConnectionPoolType"`
 }
@@ -12081,7 +12081,7 @@ type SlowQueriesItem struct {
 	// 返回行数
 	RowsSent *int64 `json:"RowsSent,omitempty" name:"RowsSent"`
 
-	// sql模版
+	// sql模板
 	SqlTemplate *string `json:"SqlTemplate,omitempty" name:"SqlTemplate"`
 
 	// sql语句md5

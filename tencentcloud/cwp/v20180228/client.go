@@ -385,6 +385,7 @@ func NewCreateLicenseOrderResponse() (response *CreateLicenseOrderResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateLicenseOrder(request *CreateLicenseOrderRequest) (response *CreateLicenseOrderResponse, err error) {
     return c.CreateLicenseOrderWithContext(context.Background(), request)
 }
@@ -405,6 +406,7 @@ func (c *Client) CreateLicenseOrder(request *CreateLicenseOrderRequest) (respons
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateLicenseOrderWithContext(ctx context.Context, request *CreateLicenseOrderRequest) (response *CreateLicenseOrderResponse, err error) {
     if request == nil {
         request = NewCreateLicenseOrderRequest()

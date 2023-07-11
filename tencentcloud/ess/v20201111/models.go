@@ -64,11 +64,11 @@ type ApproverInfo struct {
 	// 签署人的手机号，11位数字
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
-	// 签署人的签署控件列表
-	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
-
 	// 如果签署方是企业签署方，则为企业名
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 签署人的签署控件列表
+	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
 	// 签署人的身份证号
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitempty" name:"ApproverIdCardNumber"`
@@ -1455,6 +1455,186 @@ func (r *CreateFlowEvidenceReportResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlowGroupByFilesRequestParams struct {
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同（流程）组名称,最大长度200个字符
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
+
+	// 合同（流程）组的子合同信息，支持2-50个子合同
+	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitempty" name:"FlowGroupInfos"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 合同（流程）组的配置项信息。包括是否通知本企业签署方，是否通知其他签署方
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitempty" name:"FlowGroupOptions"`
+}
+
+type CreateFlowGroupByFilesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同（流程）组名称,最大长度200个字符
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
+
+	// 合同（流程）组的子合同信息，支持2-50个子合同
+	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitempty" name:"FlowGroupInfos"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 合同（流程）组的配置项信息。包括是否通知本企业签署方，是否通知其他签署方
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitempty" name:"FlowGroupOptions"`
+}
+
+func (r *CreateFlowGroupByFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupByFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowGroupName")
+	delete(f, "FlowGroupInfos")
+	delete(f, "Agent")
+	delete(f, "FlowGroupOptions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowGroupByFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowGroupByFilesResponseParams struct {
+	// 合同(流程)组的合同组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 合同(流程)组中子合同列表.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFlowGroupByFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowGroupByFilesResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowGroupByFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupByFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowGroupByTemplatesRequestParams struct {
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同组名称,最大长度200个字符
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
+
+	// 合同组的子合同信息，支持2-50个子合同
+	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitempty" name:"FlowGroupInfos"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 合同组的配置信息。包括是否通知本企业签署方，是否通知其他签署方
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitempty" name:"FlowGroupOptions"`
+}
+
+type CreateFlowGroupByTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同组名称,最大长度200个字符
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
+
+	// 合同组的子合同信息，支持2-50个子合同
+	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitempty" name:"FlowGroupInfos"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 合同组的配置信息。包括是否通知本企业签署方，是否通知其他签署方
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitempty" name:"FlowGroupOptions"`
+}
+
+func (r *CreateFlowGroupByTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupByTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowGroupName")
+	delete(f, "FlowGroupInfos")
+	delete(f, "Agent")
+	delete(f, "FlowGroupOptions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowGroupByTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowGroupByTemplatesResponseParams struct {
+	// 合同(流程)组的合同组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 合同(流程)组中子合同列表.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFlowGroupByTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowGroupByTemplatesResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowGroupByTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowGroupByTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowRemindsRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2686,6 +2866,9 @@ type CreateSchemeUrlRequestParams struct {
 	// 签署流程编号 (PathType=1时必传)
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
+	// 合同组ID
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
 	// 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
 	PathType *uint64 `json:"PathType,omitempty" name:"PathType"`
 
@@ -2720,6 +2903,9 @@ type CreateSchemeUrlRequest struct {
 	// 签署流程编号 (PathType=1时必传)
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
+	// 合同组ID
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
 	// 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
 	PathType *uint64 `json:"PathType,omitempty" name:"PathType"`
 
@@ -2748,6 +2934,7 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 	delete(f, "Mobile")
 	delete(f, "EndPoint")
 	delete(f, "FlowId")
+	delete(f, "FlowGroupId")
 	delete(f, "PathType")
 	delete(f, "AutoJumpBack")
 	delete(f, "Agent")
@@ -3938,27 +4125,33 @@ func (r *DescribeFlowEvidenceReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowInfoRequestParams struct {
-	// 需要查询的流程ID列表，限制最大100个
-	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
-
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
+	// 需要查询的流程ID列表，限制最大100个
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 合同组ID
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 type DescribeFlowInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的流程ID列表，限制最大100个
-	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
-
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
+	// 需要查询的流程ID列表，限制最大100个
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 合同组ID
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 func (r *DescribeFlowInfoRequest) ToJsonString() string {
@@ -3973,9 +4166,10 @@ func (r *DescribeFlowInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FlowIds")
 	delete(f, "Operator")
+	delete(f, "FlowIds")
 	delete(f, "Agent")
+	delete(f, "FlowGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowInfoRequest has unknown keys!", "")
 	}
@@ -3986,6 +4180,12 @@ func (r *DescribeFlowInfoRequest) FromJsonString(s string) error {
 type DescribeFlowInfoResponseParams struct {
 	// 签署流程信息
 	FlowDetailInfos []*FlowDetailInfo `json:"FlowDetailInfos,omitempty" name:"FlowDetailInfos"`
+
+	// 合同组ID
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 合同组名称
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5311,6 +5511,63 @@ type FlowDetailInfo struct {
 	// 合同发起人UserId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
+}
+
+type FlowGroupInfo struct {
+	// 合同（流程）的名称
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 合同（流程）的签署方信息
+	Approvers []*ApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
+
+	// 发起合同（流程）的资源Id,此资源必须是PDF文件,来自UploadFiles,使用文件发起合同(流程)组时必传
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+	// 发起合同（流程）的模板Id,用模板发起合同（流程）组时必填
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 合同（流程）的类型
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
+
+	// 合同（流程）的描述
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
+	// 合同（流程）的截止时间戳，单位秒。默认是一年
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 合同（流程）的回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 第三方平台传递过来的信息, 限制1024字符 格式必须是base64的
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 合同（流程）的签署是否是无序签, true - 无序。 false - 有序, 默认 
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 合同（流程）发起方的填写控件，用户
+	Components []*Component `json:"Components,omitempty" name:"Components"`
+
+	// 本企业（发起方）是否需要签署审批，若需要审批则只允许查看不允许签署，需要您调用接口CreateFlowSignReview提交审批结果。
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
+
+	// 本企业（发起方）自动签署，需要您在发起合同时给印章控件指定自动签的印章。
+	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
+}
+
+type FlowGroupOptions struct {
+	// 发起合同（流程）组的合同（流程）签署人校验方式
+	// VerifyCheck: 人脸识别（默认）
+	// MobileCheck：手机号验证
+	// 参数说明：此参数仅在合同组文件发起有效，可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
+
+	// 发起合同（流程）组本方企业经办人通知方式
+	// 签署通知类型：sms--短信，none--不通知
+	SelfOrganizationApproverNotifyType *string `json:"SelfOrganizationApproverNotifyType,omitempty" name:"SelfOrganizationApproverNotifyType"`
+
+	// 发起合同（流程）组他方经办人通知方式
+	// 签署通知类型：sms--短信，none--不通知
+	OtherApproverNotifyType *string `json:"OtherApproverNotifyType,omitempty" name:"OtherApproverNotifyType"`
 }
 
 type FormField struct {

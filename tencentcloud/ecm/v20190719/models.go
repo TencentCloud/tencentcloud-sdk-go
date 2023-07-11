@@ -212,6 +212,88 @@ func (r *AllocateAddressesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AllocateIpv6AddressesBandwidthRequestParams struct {
+	// ECM 地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 需要开通公网访问能力的IPV6地址。
+	Ipv6Addresses []*string `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
+
+	// 带宽，单位Mbps，默认是1Mbps。
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 网络计费模式，当前支持 BANDWIDTH_PACKAGE。
+	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
+}
+
+type AllocateIpv6AddressesBandwidthRequest struct {
+	*tchttp.BaseRequest
+	
+	// ECM 地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 需要开通公网访问能力的IPV6地址。
+	Ipv6Addresses []*string `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
+
+	// 带宽，单位Mbps，默认是1Mbps。
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 网络计费模式，当前支持 BANDWIDTH_PACKAGE。
+	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
+}
+
+func (r *AllocateIpv6AddressesBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AllocateIpv6AddressesBandwidthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EcmRegion")
+	delete(f, "Ipv6Addresses")
+	delete(f, "InternetMaxBandwidthOut")
+	delete(f, "InternetChargeType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AllocateIpv6AddressesBandwidthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AllocateIpv6AddressesBandwidthResponseParams struct {
+	// 弹性公网 IPV6 的唯一 ID 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressSet []*string `json:"AddressSet,omitempty" name:"AddressSet"`
+
+	// 异步任务TaskId。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AllocateIpv6AddressesBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *AllocateIpv6AddressesBandwidthResponseParams `json:"Response"`
+}
+
+func (r *AllocateIpv6AddressesBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AllocateIpv6AddressesBandwidthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Area struct {
 	// 区域ID
 	AreaId *string `json:"AreaId,omitempty" name:"AreaId"`
@@ -329,6 +411,219 @@ func (r *AssignIpv6AddressesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AssignIpv6AddressesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignIpv6CidrBlockRequestParams struct {
+	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。	
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 网络运营商类型 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+	ISPType *string `json:"ISPType,omitempty" name:"ISPType"`
+
+	// ECM地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+type AssignIpv6CidrBlockRequest struct {
+	*tchttp.BaseRequest
+	
+	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。	
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 网络运营商类型 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+	ISPType *string `json:"ISPType,omitempty" name:"ISPType"`
+
+	// ECM地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+func (r *AssignIpv6CidrBlockRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignIpv6CidrBlockRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "ISPType")
+	delete(f, "EcmRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignIpv6CidrBlockRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignIpv6CidrBlockResponseParams struct {
+	// 分配的 `IPv6` 网段。形如：`3402:4e00:20:1000::/56`。	
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AssignIpv6CidrBlockResponse struct {
+	*tchttp.BaseResponse
+	Response *AssignIpv6CidrBlockResponseParams `json:"Response"`
+}
+
+func (r *AssignIpv6CidrBlockResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignIpv6CidrBlockResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignIpv6CidrBlocksRequestParams struct {
+	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。	
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 网络运营商类型 取值范围:'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+	ISPTypes []*ISPTypeItem `json:"ISPTypes,omitempty" name:"ISPTypes"`
+
+	// ECM地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+type AssignIpv6CidrBlocksRequest struct {
+	*tchttp.BaseRequest
+	
+	// `VPC`实例`ID`，形如：`vpc-f49l6u0z`。	
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 网络运营商类型 取值范围:'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+	ISPTypes []*ISPTypeItem `json:"ISPTypes,omitempty" name:"ISPTypes"`
+
+	// ECM地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+func (r *AssignIpv6CidrBlocksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignIpv6CidrBlocksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "ISPTypes")
+	delete(f, "EcmRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignIpv6CidrBlocksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignIpv6CidrBlocksResponseParams struct {
+	// IPv6网段和所属运营商。	
+	IPv6CidrBlockSet []*ISPIPv6CidrBlock `json:"IPv6CidrBlockSet,omitempty" name:"IPv6CidrBlockSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AssignIpv6CidrBlocksResponse struct {
+	*tchttp.BaseResponse
+	Response *AssignIpv6CidrBlocksResponseParams `json:"Response"`
+}
+
+func (r *AssignIpv6CidrBlocksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignIpv6CidrBlocksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignIpv6SubnetCidrBlockRequestParams struct {
+	// 子网所在私有网络`ID`。形如：`vpc-f49l6u0z`。	
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 分配 `IPv6` 子网段列表。
+	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks"`
+
+	// ECM地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+type AssignIpv6SubnetCidrBlockRequest struct {
+	*tchttp.BaseRequest
+	
+	// 子网所在私有网络`ID`。形如：`vpc-f49l6u0z`。	
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 分配 `IPv6` 子网段列表。
+	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks"`
+
+	// ECM地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+func (r *AssignIpv6SubnetCidrBlockRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignIpv6SubnetCidrBlockRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "Ipv6SubnetCidrBlocks")
+	delete(f, "EcmRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignIpv6SubnetCidrBlockRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssignIpv6SubnetCidrBlockResponseParams struct {
+	// 分配 `IPv6` 子网段列表。	
+	Ipv6SubnetCidrBlockSet []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlockSet,omitempty" name:"Ipv6SubnetCidrBlockSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AssignIpv6SubnetCidrBlockResponse struct {
+	*tchttp.BaseResponse
+	Response *AssignIpv6SubnetCidrBlockResponseParams `json:"Response"`
+}
+
+func (r *AssignIpv6SubnetCidrBlockResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssignIpv6SubnetCidrBlockResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5219,6 +5514,101 @@ func (r *DescribePriceRunInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRegionIpv6AddressesRequestParams struct {
+	// ECM 地域，为空时返回所有地域的IPv6地址。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 详细的过滤条件如下：
+	// address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的 ID 过滤。
+	// address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。
+	// network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。
+	// instance-id - String - 是否必填：否 - （过滤条件）按照 EIP 所绑定的实例 ID 过滤。
+	// vpc-id - String - 是否必填：否 - （过滤条件）按照 EIP 所在 VPC 的 ID 进行过滤。
+	// address-isp - String - 是否必填：否 - （过滤条件）按照 EIP 的运营商进行过滤。
+	// address-status  - String - 是否必填：否 - （过滤条件）按照 EIP  的状态信息进行过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRegionIpv6AddressesRequest struct {
+	*tchttp.BaseRequest
+	
+	// ECM 地域，为空时返回所有地域的IPv6地址。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 详细的过滤条件如下：
+	// address-id - String - 是否必填：否 - （过滤条件）按照 EIP 的 ID 过滤。
+	// address-ip - String - 是否必填：否 - （过滤条件）按照 EIP 的 IP 地址过滤。
+	// network-interface-id - String - 是否必填：否 - （过滤条件）按照弹性网卡的唯一ID过滤。
+	// instance-id - String - 是否必填：否 - （过滤条件）按照 EIP 所绑定的实例 ID 过滤。
+	// vpc-id - String - 是否必填：否 - （过滤条件）按照 EIP 所在 VPC 的 ID 进行过滤。
+	// address-isp - String - 是否必填：否 - （过滤条件）按照 EIP 的运营商进行过滤。
+	// address-status  - String - 是否必填：否 - （过滤条件）按照 EIP  的状态信息进行过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRegionIpv6AddressesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegionIpv6AddressesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EcmRegion")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegionIpv6AddressesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRegionIpv6AddressesResponseParams struct {
+	// 符合条件的 IPV6 数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// IPV6 详细信息列表。
+	AddressSet []*Address `json:"AddressSet,omitempty" name:"AddressSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRegionIpv6AddressesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRegionIpv6AddressesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRegionIpv6AddressesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegionIpv6AddressesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRouteConflictsRequestParams struct {
 	// 路由表实例ID，例如：rtb-azd4dt1c。
 	RouteTableId *string `json:"RouteTableId,omitempty" name:"RouteTableId"`
@@ -7003,6 +7393,14 @@ type ISPIPv6CidrBlock struct {
 	ISPType *string `json:"ISPType,omitempty" name:"ISPType"`
 }
 
+type ISPTypeItem struct {
+	// IPv6 Cidr所属运营商类型，支持的类型有 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调。作为入参数时为必选。
+	ISPType *string `json:"ISPType,omitempty" name:"ISPType"`
+
+	// 申请IPv6 Cidr Block的个数。作为入参数时为必选。
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+}
+
 type Image struct {
 	// 镜像ID
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
@@ -7551,6 +7949,16 @@ type Ipv6Address struct {
 	// DELETING：删除中
 	// AVAILABLE：可用的
 	State *string `json:"State,omitempty" name:"State"`
+}
+
+type Ipv6SubnetCidrBlock struct {
+	// 子网实例`ID`。形如：`subnet-pxir56ns`。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// `IPv6`子网段。形如：`3402:4e00:20:1001::/64`	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" name:"Ipv6CidrBlock"`
 }
 
 type KeyPair struct {
@@ -8394,6 +8802,81 @@ func (r *ModifyIpv6AddressesAttributeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyIpv6AddressesAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIpv6AddressesBandwidthRequestParams struct {
+	// ECM 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 修改的目标带宽，单位Mbps
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// IPV6地址。Ipv6Addresses和Ipv6AddressId必须且只能传一个
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
+
+	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ipv6Addresses和Ipv6AddressId必须且只能传一个
+	Ipv6AddressIds []*string `json:"Ipv6AddressIds,omitempty" name:"Ipv6AddressIds"`
+}
+
+type ModifyIpv6AddressesBandwidthRequest struct {
+	*tchttp.BaseRequest
+	
+	// ECM 地域
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// 修改的目标带宽，单位Mbps
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// IPV6地址。Ipv6Addresses和Ipv6AddressId必须且只能传一个
+	Ipv6Addresses []*Ipv6Address `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
+
+	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ipv6Addresses和Ipv6AddressId必须且只能传一个
+	Ipv6AddressIds []*string `json:"Ipv6AddressIds,omitempty" name:"Ipv6AddressIds"`
+}
+
+func (r *ModifyIpv6AddressesBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIpv6AddressesBandwidthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EcmRegion")
+	delete(f, "InternetMaxBandwidthOut")
+	delete(f, "Ipv6Addresses")
+	delete(f, "Ipv6AddressIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIpv6AddressesBandwidthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIpv6AddressesBandwidthResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyIpv6AddressesBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIpv6AddressesBandwidthResponseParams `json:"Response"`
+}
+
+func (r *ModifyIpv6AddressesBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIpv6AddressesBandwidthResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10116,6 +10599,66 @@ type PublicIPAddressInfo struct {
 }
 
 // Predefined struct for user
+type QueryVpcTaskResultRequestParams struct {
+	// 无
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type QueryVpcTaskResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 无
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *QueryVpcTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryVpcTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryVpcTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryVpcTaskResultResponseParams struct {
+	// 执行结果，包括"SUCCESS", "FAILED", "RUNNING"
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 异步任务执行输出。
+	Output *string `json:"Output,omitempty" name:"Output"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryVpcTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryVpcTaskResultResponseParams `json:"Response"`
+}
+
+func (r *QueryVpcTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryVpcTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RebootInstancesRequestParams struct {
 	// 待重启的实例ID列表。在单次请求的过程中，单个region下的请求实例数上限为100。
 	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
@@ -10271,6 +10814,77 @@ func (r *ReleaseAddressesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ReleaseAddressesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReleaseIpv6AddressesBandwidthRequestParams struct {
+	// ECM 地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// IPV6地址。Ipv6Addresses和Ipv6AddressIds必须且只能传一个。
+	Ipv6Addresses []*string `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
+
+	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ipv6Addresses和Ipv6AddressIds必须且只能传一个。
+	Ipv6AddressIds []*string `json:"Ipv6AddressIds,omitempty" name:"Ipv6AddressIds"`
+}
+
+type ReleaseIpv6AddressesBandwidthRequest struct {
+	*tchttp.BaseRequest
+	
+	// ECM 地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+
+	// IPV6地址。Ipv6Addresses和Ipv6AddressIds必须且只能传一个。
+	Ipv6Addresses []*string `json:"Ipv6Addresses,omitempty" name:"Ipv6Addresses"`
+
+	// IPV6地址对应的唯一ID，形如eip-xxxxxxxx。Ipv6Addresses和Ipv6AddressIds必须且只能传一个。
+	Ipv6AddressIds []*string `json:"Ipv6AddressIds,omitempty" name:"Ipv6AddressIds"`
+}
+
+func (r *ReleaseIpv6AddressesBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseIpv6AddressesBandwidthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EcmRegion")
+	delete(f, "Ipv6Addresses")
+	delete(f, "Ipv6AddressIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReleaseIpv6AddressesBandwidthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReleaseIpv6AddressesBandwidthResponseParams struct {
+	// 异步任务TaskId。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ReleaseIpv6AddressesBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *ReleaseIpv6AddressesBandwidthResponseParams `json:"Response"`
+}
+
+func (r *ReleaseIpv6AddressesBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseIpv6AddressesBandwidthResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12073,6 +12687,74 @@ func (r *TerminateInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UnassignIpv6SubnetCidrBlockRequestParams struct {
+	// 子网所在私有网络`ID`。形如：`vpc-f49l6u0z`。	
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// `IPv6` 子网段列表。	
+	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks"`
+
+	// ECM地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+type UnassignIpv6SubnetCidrBlockRequest struct {
+	*tchttp.BaseRequest
+	
+	// 子网所在私有网络`ID`。形如：`vpc-f49l6u0z`。	
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// `IPv6` 子网段列表。	
+	Ipv6SubnetCidrBlocks []*Ipv6SubnetCidrBlock `json:"Ipv6SubnetCidrBlocks,omitempty" name:"Ipv6SubnetCidrBlocks"`
+
+	// ECM地域。
+	EcmRegion *string `json:"EcmRegion,omitempty" name:"EcmRegion"`
+}
+
+func (r *UnassignIpv6SubnetCidrBlockRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnassignIpv6SubnetCidrBlockRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "Ipv6SubnetCidrBlocks")
+	delete(f, "EcmRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnassignIpv6SubnetCidrBlockRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnassignIpv6SubnetCidrBlockResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnassignIpv6SubnetCidrBlockResponse struct {
+	*tchttp.BaseResponse
+	Response *UnassignIpv6SubnetCidrBlockResponseParams `json:"Response"`
+}
+
+func (r *UnassignIpv6SubnetCidrBlockResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnassignIpv6SubnetCidrBlockResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type VirtualPrivateCloud struct {
 	// 私有网络ID，形如vpc-xxx。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -12176,7 +12858,7 @@ type ZoneInstanceCountISP struct {
 	// 创建实例的可用区。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 在当前可用区欲创建的实例数目。
+	// 在当前可用区创建的实例数目。
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
 	// 运营商如下：

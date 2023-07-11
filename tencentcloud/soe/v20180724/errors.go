@@ -254,6 +254,9 @@ const (
 	// BASE64解码错误。
 	INVALIDPARAMETERVALUE_BASEDECODEFAILED = "InvalidParameterValue.BASEDecodeFailed"
 
+	// 该评测功能暂不支持，请参考API文档检查评测参数。
+	INVALIDPARAMETERVALUE_FUNCTIONNOTSUPPORT = "InvalidParameterValue.FunctionNotSupport"
+
 	// 分片序号错误。
 	INVALIDPARAMETERVALUE_INVALIDSEQID = "InvalidParameterValue.InvalidSeqId"
 

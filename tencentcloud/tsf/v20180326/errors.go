@@ -206,6 +206,9 @@ const (
 	// TKE 集群查询失败。
 	FAILEDOPERATION_TKECLUSTERQUERYFAILED = "FailedOperation.TkeClusterQueryFailed"
 
+	// TOKEN查询失败。
+	FAILEDOPERATION_TOKENQUERYFAILED = "FailedOperation.TokenQueryFailed"
+
 	// TSF应用性能管理任务数据库查询失败。
 	FAILEDOPERATION_TSFAPMAGENTTASKQUERYERROR = "FailedOperation.TsfApmAgentTaskQueryError"
 
@@ -649,6 +652,9 @@ const (
 
 	// 集群 CPU 资源不足。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPCPULIMITOVER = "InvalidParameterValue.ContainergroupCpulimitOver"
+
+	// 容器 Env 的 Value 和 ValueFrom 至少要有一个。
+	INVALIDPARAMETERVALUE_CONTAINERGROUPENVVALUENOTSET = "InvalidParameterValue.ContainergroupEnvValueNotSet"
 
 	// 部署组ID不能为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"

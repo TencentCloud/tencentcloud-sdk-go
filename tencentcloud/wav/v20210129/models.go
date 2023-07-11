@@ -430,6 +430,9 @@ type ClueInfoDetail struct {
 
 	// 职位
 	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 自定义的门店id
+	CorpShopId *string `json:"CorpShopId,omitempty" name:"CorpShopId"`
 }
 
 type CorpUserInfo struct {

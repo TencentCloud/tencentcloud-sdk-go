@@ -7733,6 +7733,8 @@ type RuleInfo struct {
 	Tag *RuleTagInfo `json:"Tag,omitempty" name:"Tag"`
 
 	// 动态索引配置，如果为空时代表未开启动态段索引
+	// 
+	// 注意：该功能尚处于内测阶段，如需使用请联系技术支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DynamicIndex *DynamicIndex `json:"DynamicIndex,omitempty" name:"DynamicIndex"`
 }

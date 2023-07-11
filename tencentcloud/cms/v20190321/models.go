@@ -137,6 +137,9 @@ type CreateKeywordsSamplesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleIDs []*string `json:"SampleIDs,omitempty" name:"SampleIDs"`
 
+	// 成功入库关键词列表
+	SuccessInfos []*UserKeywordInfo `json:"SuccessInfos,omitempty" name:"SuccessInfos"`
+
 	// 重复关键词列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DupInfos []*UserKeywordInfo `json:"DupInfos,omitempty" name:"DupInfos"`
@@ -181,21 +184,27 @@ type CustomResult struct {
 
 // Predefined struct for user
 type DeleteLibSamplesRequestParams struct {
-	// 关键词ID
+	// 关键词ID列表
 	SampleIDs []*string `json:"SampleIDs,omitempty" name:"SampleIDs"`
 
 	// 词库ID
 	LibID *string `json:"LibID,omitempty" name:"LibID"`
+
+	// 关键词内容列表
+	SampleContents []*string `json:"SampleContents,omitempty" name:"SampleContents"`
 }
 
 type DeleteLibSamplesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关键词ID
+	// 关键词ID列表
 	SampleIDs []*string `json:"SampleIDs,omitempty" name:"SampleIDs"`
 
 	// 词库ID
 	LibID *string `json:"LibID,omitempty" name:"LibID"`
+
+	// 关键词内容列表
+	SampleContents []*string `json:"SampleContents,omitempty" name:"SampleContents"`
 }
 
 func (r *DeleteLibSamplesRequest) ToJsonString() string {
@@ -212,6 +221,7 @@ func (r *DeleteLibSamplesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SampleIDs")
 	delete(f, "LibID")
+	delete(f, "SampleContents")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLibSamplesRequest has unknown keys!", "")
 	}
@@ -350,6 +360,9 @@ type DescribeLibSamplesRequestParams struct {
 
 	// 违规类型列表过滤
 	EvilTypeList []*int64 `json:"EvilTypeList,omitempty" name:"EvilTypeList"`
+
+	// 样本词ID列表过滤
+	SampleIDs []*string `json:"SampleIDs,omitempty" name:"SampleIDs"`
 }
 
 type DescribeLibSamplesRequest struct {
@@ -369,6 +382,9 @@ type DescribeLibSamplesRequest struct {
 
 	// 违规类型列表过滤
 	EvilTypeList []*int64 `json:"EvilTypeList,omitempty" name:"EvilTypeList"`
+
+	// 样本词ID列表过滤
+	SampleIDs []*string `json:"SampleIDs,omitempty" name:"SampleIDs"`
 }
 
 func (r *DescribeLibSamplesRequest) ToJsonString() string {
@@ -388,6 +404,7 @@ func (r *DescribeLibSamplesRequest) FromJsonString(s string) error {
 	delete(f, "LibID")
 	delete(f, "Content")
 	delete(f, "EvilTypeList")
+	delete(f, "SampleIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLibSamplesRequest has unknown keys!", "")
 	}
