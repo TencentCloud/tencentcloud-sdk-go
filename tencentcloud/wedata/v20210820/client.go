@@ -3045,6 +3045,62 @@ func (c *Client) DescribeClusterNamespaceListWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeColumnLineageRequest() (request *DescribeColumnLineageRequest) {
+    request = &DescribeColumnLineageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeColumnLineage")
+    
+    
+    return
+}
+
+func NewDescribeColumnLineageResponse() (response *DescribeColumnLineageResponse) {
+    response = &DescribeColumnLineageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeColumnLineage
+// 列出字段血缘信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeColumnLineage(request *DescribeColumnLineageRequest) (response *DescribeColumnLineageResponse, err error) {
+    return c.DescribeColumnLineageWithContext(context.Background(), request)
+}
+
+// DescribeColumnLineage
+// 列出字段血缘信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeColumnLineageWithContext(ctx context.Context, request *DescribeColumnLineageRequest) (response *DescribeColumnLineageResponse, err error) {
+    if request == nil {
+        request = NewDescribeColumnLineageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeColumnLineage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeColumnLineageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataBasesRequest() (request *DescribeDataBasesRequest) {
     request = &DescribeDataBasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7071,6 +7127,62 @@ func (c *Client) DescribeTableInfoListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeTableInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTableLineageRequest() (request *DescribeTableLineageRequest) {
+    request = &DescribeTableLineageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTableLineage")
+    
+    
+    return
+}
+
+func NewDescribeTableLineageResponse() (response *DescribeTableLineageResponse) {
+    response = &DescribeTableLineageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTableLineage
+// 列出表血缘信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTableLineage(request *DescribeTableLineageRequest) (response *DescribeTableLineageResponse, err error) {
+    return c.DescribeTableLineageWithContext(context.Background(), request)
+}
+
+// DescribeTableLineage
+// 列出表血缘信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeTableLineageWithContext(ctx context.Context, request *DescribeTableLineageRequest) (response *DescribeTableLineageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTableLineageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTableLineage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTableLineageResponse()
     err = c.Send(request, response)
     return
 }

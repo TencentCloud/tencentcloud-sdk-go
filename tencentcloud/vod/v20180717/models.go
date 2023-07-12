@@ -1739,7 +1739,7 @@ type AiSampleFaceOperation struct {
 	// 人脸 ID 集合，当 Type为delete 时，该字段必填。
 	FaceIds []*string `json:"FaceIds,omitempty" name:"FaceIds"`
 
-	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合。
+	// 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合，仅支持 jpeg、png 图片格式。
 	// <li>当 Type为add 或 reset 时，该字段必填；</li>
 	// <li>数组长度限制：5 张图片。</li>
 	// 注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
@@ -10262,7 +10262,7 @@ func (r *DescribeQualityInspectTemplatesResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeRebuildMediaTemplatesRequestParams struct {
-	// 音画质重生模板列表。
+	// 视频重生模板列表。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -10283,7 +10283,7 @@ type DescribeRebuildMediaTemplatesRequestParams struct {
 type DescribeRebuildMediaTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音画质重生模板列表。
+	// 视频重生模板列表。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -10329,7 +10329,7 @@ type DescribeRebuildMediaTemplatesResponseParams struct {
 	// 符合过滤条件的记录总数。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 音画质重生模板详情列表。
+	// 视频重生模板详情列表。
 	RebuildMediaTemplateSet []*RebuildMediaTemplate `json:"RebuildMediaTemplateSet,omitempty" name:"RebuildMediaTemplateSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -10434,7 +10434,7 @@ type DescribeReviewTemplatesRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *int64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 审核模版唯一标识过滤条件，数组长度限制：100。
+	// 审核模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 模板类型过滤条件，可选值：
@@ -10455,7 +10455,7 @@ type DescribeReviewTemplatesRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *int64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 审核模版唯一标识过滤条件，数组长度限制：100。
+	// 审核模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 模板类型过滤条件，可选值：
@@ -16764,22 +16764,22 @@ func (r *ModifyQualityInspectTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRebuildMediaTemplateRequestParams struct {
-	// 音画质重生模板号。
+	// 视频重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 音画质重生模板名称。
+	// 视频重生模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 音画质重生模板描述。
+	// 视频重生模板描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 音画质重生视频控制信息。
+	// 视频重生视频控制信息。
 	RebuildVideoInfo *RebuildVideoInfo `json:"RebuildVideoInfo,omitempty" name:"RebuildVideoInfo"`
 
-	// 音画质重生音频控制信息。
+	// 视频重生音频控制信息。
 	RebuildAudioInfo *RebuildAudioInfo `json:"RebuildAudioInfo,omitempty" name:"RebuildAudioInfo"`
 
 	// 输出目标视频控制信息。
@@ -16805,22 +16805,22 @@ type ModifyRebuildMediaTemplateRequestParams struct {
 type ModifyRebuildMediaTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 音画质重生模板号。
+	// 视频重生模板号。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *string `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 音画质重生模板名称。
+	// 视频重生模板名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 音画质重生模板描述。
+	// 视频重生模板描述。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
-	// 音画质重生视频控制信息。
+	// 视频重生视频控制信息。
 	RebuildVideoInfo *RebuildVideoInfo `json:"RebuildVideoInfo,omitempty" name:"RebuildVideoInfo"`
 
-	// 音画质重生音频控制信息。
+	// 视频重生音频控制信息。
 	RebuildAudioInfo *RebuildAudioInfo `json:"RebuildAudioInfo,omitempty" name:"RebuildAudioInfo"`
 
 	// 输出目标视频控制信息。
@@ -20086,7 +20086,7 @@ type RebuildMediaByTemplateRequestParams struct {
 	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 音画质重生模板 ID。
+	// 视频重生模板 ID。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -20098,7 +20098,7 @@ type RebuildMediaByTemplateRequestParams struct {
 	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
-	// 音画质重生后的文件配置。
+	// 视频重生后的文件配置。
 	OutputConfig *RebuildMediaOutputConfig `json:"OutputConfig,omitempty" name:"OutputConfig"`
 
 	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -20120,7 +20120,7 @@ type RebuildMediaByTemplateRequest struct {
 	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 音画质重生模板 ID。
+	// 视频重生模板 ID。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -20132,7 +20132,7 @@ type RebuildMediaByTemplateRequest struct {
 	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
-	// 音画质重生后的文件配置。
+	// 视频重生后的文件配置。
 	OutputConfig *RebuildMediaOutputConfig `json:"OutputConfig,omitempty" name:"OutputConfig"`
 
 	// 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -20178,7 +20178,7 @@ func (r *RebuildMediaByTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RebuildMediaByTemplateResponseParams struct {
-	// 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
+	// 视频重生的任务 ID，可以通过该 ID 查询视频重生任务的状态。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -20387,7 +20387,7 @@ func (r *RebuildMediaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RebuildMediaResponseParams struct {
-	// 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
+	// 视频重生的任务 ID，可以通过该 ID 查询视频重生任务的状态。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 内容安全(cms) 版本：2019-03-21
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
 
-### 第 17 次发布
+### 第 126 次发布
 
-发布时间：2023-07-11 01:11:56
+发布时间：2023-07-12 01:11:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HttpsPackage](https://cloud.tencent.com/document/api/228/30987#HttpsPackage)
+
+	* <font color="#dd0000">**修改成员**：</font>AutoExtension
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 23 次发布
+
+发布时间：2023-07-12 01:12:32
 
 本次发布包含了以下内容：
 
@@ -12,127 +31,43 @@
 
 修改接口：
 
-* [CreateKeywordsSamples](https://cloud.tencent.com/document/api/669/93038)
+* [CreateCfsFileSystem](https://cloud.tencent.com/document/api/582/38174)
 
-	* 新增出参：SuccessInfos
-
-* [DeleteLibSamples](https://cloud.tencent.com/document/api/669/93037)
-
-	* 新增入参：SampleContents
-
-* [DescribeLibSamples](https://cloud.tencent.com/document/api/669/93035)
-
-	* 新增入参：SampleIDs
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 67 次发布
-
-发布时间：2023-07-11 01:20:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AllocateIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94901)
-* [AssignIpv6CidrBlock](https://cloud.tencent.com/document/api/1108/94896)
-* [AssignIpv6CidrBlocks](https://cloud.tencent.com/document/api/1108/94895)
-* [AssignIpv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/94903)
-* [DescribeRegionIpv6Addresses](https://cloud.tencent.com/document/api/1108/94900)
-* [ModifyIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94899)
-* [QueryVpcTaskResult](https://cloud.tencent.com/document/api/1108/94894)
-* [ReleaseIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94898)
-* [UnassignIpv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/94902)
-
-新增数据结构：
-
-* [ISPTypeItem](https://cloud.tencent.com/document/api/1108/42574#ISPTypeItem)
-* [Ipv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/42574#Ipv6SubnetCidrBlock)
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 86 次发布
-
-发布时间：2023-07-10 14:56:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1323/94888)
-* [CreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1323/94887)
-
-新增数据结构：
-
-* [FlowGroupInfo](https://cloud.tencent.com/document/api/1323/70369#FlowGroupInfo)
-* [FlowGroupOptions](https://cloud.tencent.com/document/api/1323/70369#FlowGroupOptions)
-
-### 第 85 次发布
-
-发布时间：2023-07-10 11:31:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
-
-	* 新增入参：FlowGroupId
-
-* [DescribeFlowInfo](https://cloud.tencent.com/document/api/1323/80032)
-
-	* 新增入参：FlowGroupId
-
-	* <font color="#dd0000">**修改入参**：</font>FlowIds
-
-	* 新增出参：FlowGroupId, FlowGroupName
+	* 新增入参：SnapshotId, AutoSnapshotPolicyId, EnableAutoScaleUp
 
 
 修改数据结构：
 
-* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+* [SnapshotInfo](https://cloud.tencent.com/document/api/582/38175#SnapshotInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>SignComponents
+	* 新增成员：SnapshotTime
 
-* [FlowApproverDetail](https://cloud.tencent.com/document/api/1323/70369#FlowApproverDetail)
+	* <font color="#dd0000">**修改成员**：</font>SnapshotType
 
-	* <font color="#dd0000">**修改成员**：</font>ApproveMessage
 
-* [FlowDetailInfo](https://cloud.tencent.com/document/api/1323/70369#FlowDetailInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>CcInfos, Creator
 
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 44 次发布
+
+发布时间：2023-07-12 01:24:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyEsVipSecurityGroup](https://cloud.tencent.com/document/api/845/94985)
 
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 91 次发布
+### 第 92 次发布
 
-发布时间：2023-07-10 14:50:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ChannelCreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1420/94886)
-
-### 第 90 次发布
-
-发布时间：2023-07-10 11:31:03
+发布时间：2023-07-12 01:24:43
 
 本次发布包含了以下内容：
 
@@ -140,9 +75,9 @@
 
 修改数据结构：
 
-* [FlowFileInfo](https://cloud.tencent.com/document/api/1420/61525#FlowFileInfo)
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
 
-	* 新增成员：Components
+	* 新增成员：NotifyType
 
 
 
@@ -151,51 +86,30 @@
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+## 低代码互动课堂(lcic) 版本：2022-08-17
 
-### 第 97 次发布
+### 第 29 次发布
 
-发布时间：2023-07-11 01:40:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem)
-
-	* 新增成员：GatewayRouteEnvId
-
-
-
-
-## 腾讯云健康看板(tchd) 版本：2023-03-06
-
-### 第 1 次发布
-
-发布时间：2023-07-10 10:40:45
+发布时间：2023-07-12 01:30:32
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DescribeEvents](https://cloud.tencent.com/document/api/1688/94858)
+* [DescribeDocument](https://cloud.tencent.com/document/api/1639/86321)
 
-新增数据结构：
+	* 新增出参：Pages
 
-* [EventDetail](https://cloud.tencent.com/document/api/1688/94859#EventDetail)
-* [ProductEventList](https://cloud.tencent.com/document/api/1688/94859#ProductEventList)
 
 
 
 ## 容器服务(tke) 版本：2018-05-25
 
-### 第 157 次发布
+### 第 158 次发布
 
-发布时间：2023-07-11 01:47:07
+发布时间：2023-07-12 01:46:09
 
 本次发布包含了以下内容：
 
@@ -205,48 +119,52 @@
 
 * [ClusterAsGroupOption](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroupOption)
 
-	* <font color="#dd0000">**修改成员**：</font>IsScaleDownEnabled, Expander, MaxEmptyBulkDelete, ScaleDownDelay, ScaleDownUnneededTime, ScaleDownUtilizationThreshold, SkipNodesWithLocalStorage, SkipNodesWithSystemPods, IgnoreDaemonSetsUtilization
+	* <font color="#dd0000">**修改成员**：</font>IsScaleDownEnabled, Expander, MaxEmptyBulkDelete, ScaleDownDelay, ScaleDownUnneededTime, ScaleDownUtilizationThreshold, SkipNodesWithLocalStorage, SkipNodesWithSystemPods, IgnoreDaemonSetsUtilization, OkTotalUnreadyCount, MaxTotalUnreadyPercentage, ScaleDownUnreadyTime, UnregisteredNodeRemovalTime
 
 
 
 
-## 实时音视频(trtc) 版本：2019-07-22
+## 私有网络(vpc) 版本：2017-03-12
 
-### 第 55 次发布
+### 第 161 次发布
 
-发布时间：2023-07-11 01:48:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeExternalTrtcMeasure
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* SdkAppIdNewTrtcTimeUsage
-* TrtcTimeNewUsage
-
-
-
-## 企业微信汽车行业版(wav) 版本：2021-01-29
-
-### 第 15 次发布
-
-发布时间：2023-07-11 01:55:43
+发布时间：2023-07-12 01:51:01
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
+* [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)
 
-	* 新增成员：CorpShopId
+	* 新增入参：OrderField, OrderDirection
 
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 35 次发布
+
+发布时间：2023-07-12 01:53:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeColumnLineage](https://cloud.tencent.com/document/api/1267/94988)
+* [DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)
+
+新增数据结构：
+
+* [ColumnAggregationLineage](https://cloud.tencent.com/document/api/1267/76336#ColumnAggregationLineage)
+* [ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)
+* [LineageParamRecord](https://cloud.tencent.com/document/api/1267/76336#LineageParamRecord)
+* [SimpleColumnInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleColumnInfo)
+* [TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)
 
 
 
@@ -17037,6 +16955,21 @@
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06
 
+### 第 126 次发布
+
+发布时间：2023-07-12 01:11:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HttpsPackage](https://cloud.tencent.com/document/api/228/30987#HttpsPackage)
+
+	* <font color="#dd0000">**修改成员**：</font>AutoExtension
+
+
 ### 第 125 次发布
 
 发布时间：2023-06-28 01:06:57
@@ -20251,6 +20184,30 @@
 
 
 ## 文件存储(cfs) 版本：2019-07-19
+
+### 第 23 次发布
+
+发布时间：2023-07-12 01:12:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCfsFileSystem](https://cloud.tencent.com/document/api/582/38174)
+
+	* 新增入参：SnapshotId, AutoSnapshotPolicyId, EnableAutoScaleUp
+
+
+修改数据结构：
+
+* [SnapshotInfo](https://cloud.tencent.com/document/api/582/38175#SnapshotInfo)
+
+	* 新增成员：SnapshotTime
+
+	* <font color="#dd0000">**修改成员**：</font>SnapshotType
+
 
 ### 第 22 次发布
 
@@ -45588,20 +45545,20 @@
 
 新增接口：
 
-* [[AllocateIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94901)](https://cloud.tencent.com/document/api/#/#)
-* [[AssignIpv6CidrBlock](https://cloud.tencent.com/document/api/1108/94896)](https://cloud.tencent.com/document/api/#/#)
-* [[AssignIpv6CidrBlocks](https://cloud.tencent.com/document/api/1108/94895)](https://cloud.tencent.com/document/api/#/#)
-* [[AssignIpv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/94903)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRegionIpv6Addresses](https://cloud.tencent.com/document/api/1108/94900)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94899)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryVpcTaskResult](https://cloud.tencent.com/document/api/1108/94894)](https://cloud.tencent.com/document/api/#/#)
-* [[ReleaseIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94898)](https://cloud.tencent.com/document/api/#/#)
-* [[UnassignIpv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/94902)](https://cloud.tencent.com/document/api/#/#)
+* [AllocateIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94901)
+* [AssignIpv6CidrBlock](https://cloud.tencent.com/document/api/1108/94896)
+* [AssignIpv6CidrBlocks](https://cloud.tencent.com/document/api/1108/94895)
+* [AssignIpv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/94903)
+* [DescribeRegionIpv6Addresses](https://cloud.tencent.com/document/api/1108/94900)
+* [ModifyIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94899)
+* [QueryVpcTaskResult](https://cloud.tencent.com/document/api/1108/94894)
+* [ReleaseIpv6AddressesBandwidth](https://cloud.tencent.com/document/api/1108/94898)
+* [UnassignIpv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/94902)
 
 新增数据结构：
 
-* [[ISPTypeItem](https://cloud.tencent.com/document/api/1108/42574#ISPTypeItem)](https://cloud.tencent.com/document/api/1108/42574#[ISPTypeItem](https://cloud.tencent.com/document/api/1108/42574#ISPTypeItem))
-* [[Ipv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/42574#Ipv6SubnetCidrBlock)](https://cloud.tencent.com/document/api/1108/42574#[Ipv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/42574#Ipv6SubnetCidrBlock))
+* [ISPTypeItem](https://cloud.tencent.com/document/api/1108/42574#ISPTypeItem)
+* [Ipv6SubnetCidrBlock](https://cloud.tencent.com/document/api/1108/42574#Ipv6SubnetCidrBlock)
 
 ### 第 66 次发布
 
@@ -48805,6 +48762,18 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 44 次发布
+
+发布时间：2023-07-12 01:24:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyEsVipSecurityGroup](https://cloud.tencent.com/document/api/845/94985)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 43 次发布
 
 发布时间：2023-05-11 01:24:36
@@ -49791,13 +49760,13 @@
 
 新增接口：
 
-* [[CreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1323/94888)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1323/94887)](https://cloud.tencent.com/document/api/#/#)
+* [CreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1323/94888)
+* [CreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1323/94887)
 
 新增数据结构：
 
-* [[FlowGroupInfo](https://cloud.tencent.com/document/api/1323/70369#FlowGroupInfo)](https://cloud.tencent.com/document/api/1323/70369#[FlowGroupInfo](https://cloud.tencent.com/document/api/1323/70369#FlowGroupInfo))
-* [[FlowGroupOptions](https://cloud.tencent.com/document/api/1323/70369#FlowGroupOptions)](https://cloud.tencent.com/document/api/1323/70369#[FlowGroupOptions](https://cloud.tencent.com/document/api/1323/70369#FlowGroupOptions))
+* [FlowGroupInfo](https://cloud.tencent.com/document/api/1323/70369#FlowGroupInfo)
+* [FlowGroupOptions](https://cloud.tencent.com/document/api/1323/70369#FlowGroupOptions)
 
 ### 第 85 次发布
 
@@ -51481,6 +51450,21 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 92 次发布
+
+发布时间：2023-07-12 01:24:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：NotifyType
+
+
 ### 第 91 次发布
 
 发布时间：2023-07-10 14:50:55
@@ -51491,7 +51475,7 @@
 
 新增接口：
 
-* [[ChannelCreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1420/94886)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCreateFlowGroupByTemplates](https://cloud.tencent.com/document/api/1420/94886)
 
 ### 第 90 次发布
 
@@ -64243,6 +64227,21 @@
 
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 29 次发布
+
+发布时间：2023-07-12 01:30:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDocument](https://cloud.tencent.com/document/api/1639/86321)
+
+	* 新增出参：Pages
+
 
 ### 第 28 次发布
 
@@ -92134,12 +92133,12 @@
 
 新增接口：
 
-* [[DescribeEvents](https://cloud.tencent.com/document/api/1688/94858)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEvents](https://cloud.tencent.com/document/api/1688/94858)
 
 新增数据结构：
 
-* [[EventDetail](https://cloud.tencent.com/document/api/1688/94859#EventDetail)](https://cloud.tencent.com/document/api/1688/94859#[EventDetail](https://cloud.tencent.com/document/api/1688/94859#EventDetail))
-* [[ProductEventList](https://cloud.tencent.com/document/api/1688/94859#ProductEventList)](https://cloud.tencent.com/document/api/1688/94859#[ProductEventList](https://cloud.tencent.com/document/api/1688/94859#ProductEventList))
+* [EventDetail](https://cloud.tencent.com/document/api/1688/94859#EventDetail)
+* [ProductEventList](https://cloud.tencent.com/document/api/1688/94859#ProductEventList)
 
 
 
@@ -104597,6 +104596,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 158 次发布
+
+发布时间：2023-07-12 01:46:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterAsGroupOption](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroupOption)
+
+	* <font color="#dd0000">**修改成员**：</font>IsScaleDownEnabled, Expander, MaxEmptyBulkDelete, ScaleDownDelay, ScaleDownUnneededTime, ScaleDownUtilizationThreshold, SkipNodesWithLocalStorage, SkipNodesWithSystemPods, IgnoreDaemonSetsUtilization, OkTotalUnreadyCount, MaxTotalUnreadyPercentage, ScaleDownUnreadyTime, UnregisteredNodeRemovalTime
+
 
 ### 第 157 次发布
 
@@ -118065,6 +118079,21 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 161 次发布
+
+发布时间：2023-07-12 01:51:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)
+
+	* 新增入参：OrderField, OrderDirection
+
+
 ### 第 160 次发布
 
 发布时间：2023-07-07 01:59:12
@@ -122777,6 +122806,27 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 35 次发布
+
+发布时间：2023-07-12 01:53:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeColumnLineage](https://cloud.tencent.com/document/api/1267/94988)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ColumnAggregationLineage](https://cloud.tencent.com/document/api/1267/76336#ColumnAggregationLineage)](https://cloud.tencent.com/document/api/1267/76336#[ColumnAggregationLineage](https://cloud.tencent.com/document/api/1267/76336#ColumnAggregationLineage))
+* [[ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)](https://cloud.tencent.com/document/api/1267/76336#[ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo))
+* [[LineageParamRecord](https://cloud.tencent.com/document/api/1267/76336#LineageParamRecord)](https://cloud.tencent.com/document/api/1267/76336#[LineageParamRecord](https://cloud.tencent.com/document/api/1267/76336#LineageParamRecord))
+* [[SimpleColumnInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleColumnInfo)](https://cloud.tencent.com/document/api/1267/76336#[SimpleColumnInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleColumnInfo))
+* [[TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)](https://cloud.tencent.com/document/api/1267/76336#[TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo))
 
 ### 第 34 次发布
 

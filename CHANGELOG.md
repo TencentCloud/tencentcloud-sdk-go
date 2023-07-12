@@ -1,3 +1,173 @@
+# Release v1.0.699
+
+## 内容分发网络 CDN(cdn) 版本：2018-06-06
+
+### 第 126 次发布
+
+发布时间：2023-07-12 01:11:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HttpsPackage](https://cloud.tencent.com/document/api/228/30987#HttpsPackage)
+
+	* <font color="#dd0000">**修改成员**：</font>AutoExtension
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 23 次发布
+
+发布时间：2023-07-12 01:12:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCfsFileSystem](https://cloud.tencent.com/document/api/582/38174)
+
+	* 新增入参：SnapshotId, AutoSnapshotPolicyId, EnableAutoScaleUp
+
+
+修改数据结构：
+
+* [SnapshotInfo](https://cloud.tencent.com/document/api/582/38175#SnapshotInfo)
+
+	* 新增成员：SnapshotTime
+
+	* <font color="#dd0000">**修改成员**：</font>SnapshotType
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 44 次发布
+
+发布时间：2023-07-12 01:24:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyEsVipSecurityGroup](https://cloud.tencent.com/document/api/845/94985)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 92 次发布
+
+发布时间：2023-07-12 01:24:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：NotifyType
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 29 次发布
+
+发布时间：2023-07-12 01:30:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDocument](https://cloud.tencent.com/document/api/1639/86321)
+
+	* 新增出参：Pages
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 158 次发布
+
+发布时间：2023-07-12 01:46:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterAsGroupOption](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroupOption)
+
+	* <font color="#dd0000">**修改成员**：</font>IsScaleDownEnabled, Expander, MaxEmptyBulkDelete, ScaleDownDelay, ScaleDownUnneededTime, ScaleDownUtilizationThreshold, SkipNodesWithLocalStorage, SkipNodesWithSystemPods, IgnoreDaemonSetsUtilization, OkTotalUnreadyCount, MaxTotalUnreadyPercentage, ScaleDownUnreadyTime, UnregisteredNodeRemovalTime
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 161 次发布
+
+发布时间：2023-07-12 01:51:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)
+
+	* 新增入参：OrderField, OrderDirection
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 35 次发布
+
+发布时间：2023-07-12 01:53:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeColumnLineage](https://cloud.tencent.com/document/api/1267/94988)
+* [DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)
+
+新增数据结构：
+
+* [ColumnAggregationLineage](https://cloud.tencent.com/document/api/1267/76336#ColumnAggregationLineage)
+* [ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)
+* [LineageParamRecord](https://cloud.tencent.com/document/api/1267/76336#LineageParamRecord)
+* [SimpleColumnInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleColumnInfo)
+* [TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)
+
+
+
 # Release v1.0.698
 
 ## 内容安全(cms) 版本：2019-03-21

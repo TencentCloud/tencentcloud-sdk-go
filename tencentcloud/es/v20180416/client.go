@@ -1157,6 +1157,64 @@ func (c *Client) GetRequestTargetNodeTypesWithContext(ctx context.Context, reque
     return
 }
 
+func NewModifyEsVipSecurityGroupRequest() (request *ModifyEsVipSecurityGroupRequest) {
+    request = &ModifyEsVipSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("es", APIVersion, "ModifyEsVipSecurityGroup")
+    
+    
+    return
+}
+
+func NewModifyEsVipSecurityGroupResponse() (response *ModifyEsVipSecurityGroupResponse) {
+    response = &ModifyEsVipSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEsVipSecurityGroup
+// 修改绑定VIP的安全组，传安全组id列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDSECURITYGROUPIDS = "InvalidParameter.InvalidSecurityGroupIds"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_SECURITYGROUPNOTFOUND = "ResourceNotFound.SecurityGroupNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) ModifyEsVipSecurityGroup(request *ModifyEsVipSecurityGroupRequest) (response *ModifyEsVipSecurityGroupResponse, err error) {
+    return c.ModifyEsVipSecurityGroupWithContext(context.Background(), request)
+}
+
+// ModifyEsVipSecurityGroup
+// 修改绑定VIP的安全组，传安全组id列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  INVALIDPARAMETER_INVALIDSECURITYGROUPIDS = "InvalidParameter.InvalidSecurityGroupIds"
+//  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
+//  RESOURCENOTFOUND_SECURITYGROUPNOTFOUND = "ResourceNotFound.SecurityGroupNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
+func (c *Client) ModifyEsVipSecurityGroupWithContext(ctx context.Context, request *ModifyEsVipSecurityGroupRequest) (response *ModifyEsVipSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyEsVipSecurityGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEsVipSecurityGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEsVipSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
     request = &RestartInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

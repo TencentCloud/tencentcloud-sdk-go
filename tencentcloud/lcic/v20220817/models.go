@@ -2062,6 +2062,9 @@ type DescribeDocumentResponseParams struct {
 	// 更新的UNIX时间戳
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
+	// 课件页数
+	Pages *uint64 `json:"Pages,omitempty" name:"Pages"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

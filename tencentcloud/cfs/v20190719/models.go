@@ -333,6 +333,15 @@ type CreateCfsFileSystemRequestParams struct {
 
 	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售40TiB，即40960 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+
+	// 文件系统快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 定期快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 是否开启默认扩容，仅Turbo类型文件存储支持
+	EnableAutoScaleUp *bool `json:"EnableAutoScaleUp,omitempty" name:"EnableAutoScaleUp"`
 }
 
 type CreateCfsFileSystemRequest struct {
@@ -379,6 +388,15 @@ type CreateCfsFileSystemRequest struct {
 
 	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售40TiB，即40960 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+
+	// 文件系统快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 定期快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 是否开启默认扩容，仅Turbo类型文件存储支持
+	EnableAutoScaleUp *bool `json:"EnableAutoScaleUp,omitempty" name:"EnableAutoScaleUp"`
 }
 
 func (r *CreateCfsFileSystemRequest) ToJsonString() string {
@@ -407,6 +425,9 @@ func (r *CreateCfsFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "CcnId")
 	delete(f, "CidrBlock")
 	delete(f, "Capacity")
+	delete(f, "SnapshotId")
+	delete(f, "AutoSnapshotPolicyId")
+	delete(f, "EnableAutoScaleUp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCfsFileSystemRequest has unknown keys!", "")
 	}
@@ -2977,6 +2998,10 @@ type SnapshotInfo struct {
 	// 快照类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotType *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
+
+	// 实际快照时间，这里主要是为了标识跨地域复制快照的时间快照时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotTime *string `json:"SnapshotTime,omitempty" name:"SnapshotTime"`
 }
 
 type SnapshotOperateLog struct {
@@ -3457,7 +3482,7 @@ type UpdateCfsPGroupRequestParams struct {
 	// 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 权限组描述信息，1-255个字符
+	// 权限组描述信息，1-255个字符。 Name和Descinfo不能同时为空
 	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
 }
 
@@ -3470,7 +3495,7 @@ type UpdateCfsPGroupRequest struct {
 	// 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 权限组描述信息，1-255个字符
+	// 权限组描述信息，1-255个字符。 Name和Descinfo不能同时为空
 	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
 }
 

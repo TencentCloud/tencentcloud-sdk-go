@@ -2754,7 +2754,7 @@ type KongUpstreamInfo struct {
 	// 服务来源ID
 	SourceID *string `json:"SourceID,omitempty" name:"SourceID"`
 
-	// 名字空间
+	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
 	// 服务（注册中心或Kubernetes中的服务）名字

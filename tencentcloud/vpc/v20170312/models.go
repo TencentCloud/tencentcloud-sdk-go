@@ -13053,7 +13053,7 @@ func (r *DescribeSecurityGroupReferencesResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeSecurityGroupsRequestParams struct {
-	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
+	// 安全组实例ID，例如：sg-33ocnj9n。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
@@ -13069,12 +13069,18 @@ type DescribeSecurityGroupsRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段。支持：`CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。默认值：`ASC`
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 type DescribeSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
+	// 安全组实例ID，例如：sg-33ocnj9n。每次请求的实例的上限为100。参数不支持同时指定SecurityGroupIds和Filters。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
 	// 过滤条件，参数不支持同时指定SecurityGroupIds和Filters。
@@ -13090,6 +13096,12 @@ type DescribeSecurityGroupsRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段。支持：`CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。默认值：`ASC`
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
 func (r *DescribeSecurityGroupsRequest) ToJsonString() string {
@@ -13108,6 +13120,8 @@ func (r *DescribeSecurityGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityGroupsRequest has unknown keys!", "")
 	}

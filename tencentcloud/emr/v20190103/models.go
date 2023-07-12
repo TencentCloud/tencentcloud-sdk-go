@@ -3137,7 +3137,7 @@ func (r *InquiryPriceCreateInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceRenewInstanceRequestParams struct {
-	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
+	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
@@ -3164,7 +3164,7 @@ type InquiryPriceRenewInstanceRequestParams struct {
 type InquiryPriceRenewInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
+	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。

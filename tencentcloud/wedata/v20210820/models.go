@@ -1784,6 +1784,126 @@ func (r *CheckTaskNameExistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ColumnAggregationLineage struct {
+	// 表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 父节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *string `json:"ParentId,omitempty" name:"ParentId"`
+
+	// 元数据类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreType *string `json:"MetastoreType,omitempty" name:"MetastoreType"`
+
+	// 字符串类型的父节点集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSet *string `json:"ParentSet,omitempty" name:"ParentSet"`
+
+	// 字符串类型的子节点集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildSet *string `json:"ChildSet,omitempty" name:"ChildSet"`
+
+	// 列信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnInfoSet []*SimpleColumnInfo `json:"ColumnInfoSet,omitempty" name:"ColumnInfoSet"`
+}
+
+type ColumnLineageInfo struct {
+	// 血缘id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 由中心节点出发的路径信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrefixPath *string `json:"PrefixPath,omitempty" name:"PrefixPath"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 表ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 字段名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnName *string `json:"ColumnName,omitempty" name:"ColumnName"`
+
+	// 字段中文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnNameCn *string `json:"ColumnNameCn,omitempty" name:"ColumnNameCn"`
+
+	// 字段类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnType *string `json:"ColumnType,omitempty" name:"ColumnType"`
+
+	// 关系参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelationParams *string `json:"RelationParams,omitempty" name:"RelationParams"`
+
+	// 参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params *string `json:"Params,omitempty" name:"Params"`
+
+	// 父id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *string `json:"ParentId,omitempty" name:"ParentId"`
+
+	// 元数据类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreType *string `json:"MetastoreType,omitempty" name:"MetastoreType"`
+
+	// 元数据类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreTypeName *string `json:"MetastoreTypeName,omitempty" name:"MetastoreTypeName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 字段全名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualifiedName *string `json:"QualifiedName,omitempty" name:"QualifiedName"`
+
+	// 下游节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownStreamCount *int64 `json:"DownStreamCount,omitempty" name:"DownStreamCount"`
+
+	// 上游节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpStreamCount *int64 `json:"UpStreamCount,omitempty" name:"UpStreamCount"`
+
+	// 描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 任务id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*string `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 父节点列表字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSet *string `json:"ParentSet,omitempty" name:"ParentSet"`
+
+	// 子节点列表字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildSet *string `json:"ChildSet,omitempty" name:"ChildSet"`
+
+	// 额外参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtParams []*LineageParamRecord `json:"ExtParams,omitempty" name:"ExtParams"`
+}
+
 // Predefined struct for user
 type CommitExportTaskRequestParams struct {
 	// 项目id
@@ -5478,6 +5598,99 @@ func (r *DescribeClusterNamespaceListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterNamespaceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeColumnLineageRequestParams struct {
+	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 字段信息
+	Data *ColumnLineageInfo `json:"Data,omitempty" name:"Data"`
+
+	// 单次查询入度
+	InputDepth *int64 `json:"InputDepth,omitempty" name:"InputDepth"`
+
+	// 单次查询出度
+	OutputDepth *int64 `json:"OutputDepth,omitempty" name:"OutputDepth"`
+
+	// 额外参数（传递调用方信息）
+	ExtParams []*RecordField `json:"ExtParams,omitempty" name:"ExtParams"`
+
+	// 是否过滤临时表 默认值为true
+	IgnoreTemp *bool `json:"IgnoreTemp,omitempty" name:"IgnoreTemp"`
+}
+
+type DescribeColumnLineageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 字段信息
+	Data *ColumnLineageInfo `json:"Data,omitempty" name:"Data"`
+
+	// 单次查询入度
+	InputDepth *int64 `json:"InputDepth,omitempty" name:"InputDepth"`
+
+	// 单次查询出度
+	OutputDepth *int64 `json:"OutputDepth,omitempty" name:"OutputDepth"`
+
+	// 额外参数（传递调用方信息）
+	ExtParams []*RecordField `json:"ExtParams,omitempty" name:"ExtParams"`
+
+	// 是否过滤临时表 默认值为true
+	IgnoreTemp *bool `json:"IgnoreTemp,omitempty" name:"IgnoreTemp"`
+}
+
+func (r *DescribeColumnLineageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeColumnLineageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Direction")
+	delete(f, "Data")
+	delete(f, "InputDepth")
+	delete(f, "OutputDepth")
+	delete(f, "ExtParams")
+	delete(f, "IgnoreTemp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeColumnLineageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeColumnLineageResponseParams struct {
+	// 字段血缘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnAggregationLineage *ColumnAggregationLineage `json:"ColumnAggregationLineage,omitempty" name:"ColumnAggregationLineage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeColumnLineageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeColumnLineageResponseParams `json:"Response"`
+}
+
+func (r *DescribeColumnLineageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeColumnLineageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11635,6 +11848,99 @@ func (r *DescribeTableInfoListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTableLineageRequestParams struct {
+	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 表信息
+	Data *TableLineageInfo `json:"Data,omitempty" name:"Data"`
+
+	// 单次查询入度,默认 1
+	InputDepth *int64 `json:"InputDepth,omitempty" name:"InputDepth"`
+
+	// 单次查询出度,默认 1
+	OutputDepth *int64 `json:"OutputDepth,omitempty" name:"OutputDepth"`
+
+	// 额外参数（传递调用方信息）
+	ExtParams []*LineageParamRecord `json:"ExtParams,omitempty" name:"ExtParams"`
+
+	// 是否过滤临时表,默认true
+	IgnoreTemp *bool `json:"IgnoreTemp,omitempty" name:"IgnoreTemp"`
+}
+
+type DescribeTableLineageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	Direction *string `json:"Direction,omitempty" name:"Direction"`
+
+	// 表信息
+	Data *TableLineageInfo `json:"Data,omitempty" name:"Data"`
+
+	// 单次查询入度,默认 1
+	InputDepth *int64 `json:"InputDepth,omitempty" name:"InputDepth"`
+
+	// 单次查询出度,默认 1
+	OutputDepth *int64 `json:"OutputDepth,omitempty" name:"OutputDepth"`
+
+	// 额外参数（传递调用方信息）
+	ExtParams []*LineageParamRecord `json:"ExtParams,omitempty" name:"ExtParams"`
+
+	// 是否过滤临时表,默认true
+	IgnoreTemp *bool `json:"IgnoreTemp,omitempty" name:"IgnoreTemp"`
+}
+
+func (r *DescribeTableLineageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableLineageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Direction")
+	delete(f, "Data")
+	delete(f, "InputDepth")
+	delete(f, "OutputDepth")
+	delete(f, "ExtParams")
+	delete(f, "IgnoreTemp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableLineageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableLineageResponseParams struct {
+	// 表血缘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableLineage *TableLineageInfo `json:"TableLineage,omitempty" name:"TableLineage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTableLineageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableLineageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableLineageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableLineageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTableQualityDetailsRequestParams struct {
 	// 统计日期
 	StatisticsDate *int64 `json:"StatisticsDate,omitempty" name:"StatisticsDate"`
@@ -14909,6 +15215,15 @@ type Label struct {
 
 	// 类型名称。
 	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type LineageParamRecord struct {
+	// 字段名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 字段值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -19548,6 +19863,68 @@ func (r *SetTaskAlarmNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SimpleColumnInfo struct {
+	// 列ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 限定名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualifiedName *string `json:"QualifiedName,omitempty" name:"QualifiedName"`
+
+	// 列名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnName *string `json:"ColumnName,omitempty" name:"ColumnName"`
+
+	// 列中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnNameCn *string `json:"ColumnNameCn,omitempty" name:"ColumnNameCn"`
+
+	// 列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnType *string `json:"ColumnType,omitempty" name:"ColumnType"`
+
+	// 列描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 前缀路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrefixPath *string `json:"PrefixPath,omitempty" name:"PrefixPath"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 下游数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownStreamCount *int64 `json:"DownStreamCount,omitempty" name:"DownStreamCount"`
+
+	// 上游数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpStreamCount *int64 `json:"UpStreamCount,omitempty" name:"UpStreamCount"`
+
+	// 关系参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelationParams *string `json:"RelationParams,omitempty" name:"RelationParams"`
+
+	// 参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params *string `json:"Params,omitempty" name:"Params"`
+
+	// 任务集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*string `json:"Tasks,omitempty" name:"Tasks"`
+}
+
 type SimpleTaskInfo struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -20173,6 +20550,84 @@ type TableInfo struct {
 	// 表schemaName
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginSchemaName *string `json:"OriginSchemaName,omitempty" name:"OriginSchemaName"`
+}
+
+type TableLineageInfo struct {
+	// 元数据类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreType *string `json:"MetastoreType,omitempty" name:"MetastoreType"`
+
+	// 由中心节点到该节点的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrefixPath *string `json:"PrefixPath,omitempty" name:"PrefixPath"`
+
+	// 空间id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 表id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 表血缘参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params []*LineageParamRecord `json:"Params,omitempty" name:"Params"`
+
+	// 父节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentSet *string `json:"ParentSet,omitempty" name:"ParentSet"`
+
+	// 子节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildSet *string `json:"ChildSet,omitempty" name:"ChildSet"`
+
+	// 额外参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtParams []*RecordField `json:"ExtParams,omitempty" name:"ExtParams"`
+
+	// 血缘id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 元数据类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetastoreTypeName *string `json:"MetastoreTypeName,omitempty" name:"MetastoreTypeName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 表全称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualifiedName *string `json:"QualifiedName,omitempty" name:"QualifiedName"`
+
+	// 血缘下游节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownStreamCount *int64 `json:"DownStreamCount,omitempty" name:"DownStreamCount"`
+
+	// 血缘上游节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpStreamCount *int64 `json:"UpStreamCount,omitempty" name:"UpStreamCount"`
+
+	// 血缘描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 血缘创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 血缘更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 修改血缘的任务id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*string `json:"Tasks,omitempty" name:"Tasks"`
 }
 
 type TableQualityDetail struct {

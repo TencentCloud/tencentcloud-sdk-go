@@ -5548,7 +5548,7 @@ func NewDescribeRebuildMediaTemplatesResponse() (response *DescribeRebuildMediaT
 }
 
 // DescribeRebuildMediaTemplates
-// 获取音画质重生模板列表。
+// 获取视频重生模板列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5559,7 +5559,7 @@ func (c *Client) DescribeRebuildMediaTemplates(request *DescribeRebuildMediaTemp
 }
 
 // DescribeRebuildMediaTemplates
-// 获取音画质重生模板列表。
+// 获取视频重生模板列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8400,7 +8400,7 @@ func NewModifyRebuildMediaTemplateResponse() (response *ModifyRebuildMediaTempla
 }
 
 // ModifyRebuildMediaTemplate
-// 修改音画质重生模板。
+// 修改视频重生模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8411,7 +8411,7 @@ func (c *Client) ModifyRebuildMediaTemplate(request *ModifyRebuildMediaTemplateR
 }
 
 // ModifyRebuildMediaTemplate
-// 修改音画质重生模板。
+// 修改视频重生模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -9890,7 +9890,7 @@ func NewRebuildMediaResponse() (response *RebuildMediaResponse) {
 }
 
 // RebuildMedia
-// 发起音画质重生
+// 发起视频重生
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9900,7 +9900,7 @@ func (c *Client) RebuildMedia(request *RebuildMediaRequest) (response *RebuildMe
 }
 
 // RebuildMedia
-// 发起音画质重生
+// 发起视频重生
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9940,7 +9940,7 @@ func NewRebuildMediaByTemplateResponse() (response *RebuildMediaByTemplateRespon
 }
 
 // RebuildMediaByTemplate
-// 使用模板发起音画质重生。
+// 使用模板发起视频重生。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9950,7 +9950,7 @@ func (c *Client) RebuildMediaByTemplate(request *RebuildMediaByTemplateRequest) 
 }
 
 // RebuildMediaByTemplate
-// 使用模板发起音画质重生。
+// 使用模板发起视频重生。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

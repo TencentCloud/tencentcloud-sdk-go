@@ -1443,14 +1443,12 @@ type DriverLicenseOCRResponseParams struct {
 	// Code 告警码列表和释义：
 	// -9102  复印件告警
 	// -9103  翻拍件告警
-	// -9106  ps告警
 	// 注：告警码可以同时存在多个
 	RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode"`
 
 	// 告警码说明：
 	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
-	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
 	RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
 
