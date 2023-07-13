@@ -431,8 +431,11 @@ type AnalyzeAuditLogsRequestParams struct {
 	// 聚合维度的排序条件。
 	AggregationConditions []*AggregationCondition `json:"AggregationConditions,omitempty" name:"AggregationConditions"`
 
-	// 该过滤条件下的审计日志结果集作为分析日志。
+	// 已废弃。该过滤条件下的审计日志结果集作为分析日志。
 	AuditLogFilter *AuditLogFilter `json:"AuditLogFilter,omitempty" name:"AuditLogFilter"`
+
+	// 该过滤条件下的审计日志结果集作为分析日志。
+	LogFilter []*InstanceAuditLogFilters `json:"LogFilter,omitempty" name:"LogFilter"`
 }
 
 type AnalyzeAuditLogsRequest struct {
@@ -450,8 +453,11 @@ type AnalyzeAuditLogsRequest struct {
 	// 聚合维度的排序条件。
 	AggregationConditions []*AggregationCondition `json:"AggregationConditions,omitempty" name:"AggregationConditions"`
 
-	// 该过滤条件下的审计日志结果集作为分析日志。
+	// 已废弃。该过滤条件下的审计日志结果集作为分析日志。
 	AuditLogFilter *AuditLogFilter `json:"AuditLogFilter,omitempty" name:"AuditLogFilter"`
+
+	// 该过滤条件下的审计日志结果集作为分析日志。
+	LogFilter []*InstanceAuditLogFilters `json:"LogFilter,omitempty" name:"LogFilter"`
 }
 
 func (r *AnalyzeAuditLogsRequest) ToJsonString() string {
@@ -471,6 +477,7 @@ func (r *AnalyzeAuditLogsRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "AggregationConditions")
 	delete(f, "AuditLogFilter")
+	delete(f, "LogFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AnalyzeAuditLogsRequest has unknown keys!", "")
 	}
@@ -1526,13 +1533,13 @@ func (r *CreateAccountsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAuditLogFileRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间，格式为："2017-07-12 10:29:20"。
+	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，格式为："2017-07-12 10:29:20"。
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
@@ -1544,20 +1551,23 @@ type CreateAuditLogFileRequestParams struct {
 	// "execTime" - 执行时间。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 过滤条件。可按设置的过滤条件过滤日志。
+	// 已废弃。
 	Filter *AuditLogFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 过滤条件。可按设置的过滤条件过滤日志。
+	LogFilter []*InstanceAuditLogFilters `json:"LogFilter,omitempty" name:"LogFilter"`
 }
 
 type CreateAuditLogFileRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间，格式为："2017-07-12 10:29:20"。
+	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，格式为："2017-07-12 10:29:20"。
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
@@ -1569,8 +1579,11 @@ type CreateAuditLogFileRequest struct {
 	// "execTime" - 执行时间。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
-	// 过滤条件。可按设置的过滤条件过滤日志。
+	// 已废弃。
 	Filter *AuditLogFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 过滤条件。可按设置的过滤条件过滤日志。
+	LogFilter []*InstanceAuditLogFilters `json:"LogFilter,omitempty" name:"LogFilter"`
 }
 
 func (r *CreateAuditLogFileRequest) ToJsonString() string {
@@ -1591,6 +1604,7 @@ func (r *CreateAuditLogFileRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "OrderBy")
 	delete(f, "Filter")
+	delete(f, "LogFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditLogFileRequest has unknown keys!", "")
 	}
@@ -9315,6 +9329,45 @@ func (r *InquiryPriceUpgradeInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *InquiryPriceUpgradeInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceAuditLogFilters struct {
+	// 过滤项。目前支持以下搜索条件：
+	// 
+	// 分词搜索：
+	// sql - SQL语句；
+	// 
+	// 等于、不等于、包含、不包含：
+	// host - 客户端地址；
+	// user - 用户名；
+	// dbName - 数据库名称；
+	// 
+	// 等于、不等于：
+	// sqlType - SQL类型；
+	// errCode - 错误码；
+	// threadId - 线程ID；
+	// 
+	// 范围搜索（时间类型统一为微妙）：
+	// execTime - 执行时间；
+	// lockWaitTime - 执行时间；
+	// ioWaitTime - IO等待时间；
+	// trxLivingTime - 事物持续时间；
+	// cpuTime - cpu时间；
+	// checkRows - 扫描行数；
+	// affectRows - 影响行数；
+	// sentRows - 返回行数。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 过滤条件。支持以下条件：
+	// INC - 包含,
+	// EXC - 不包含,
+	// EQS - 等于,
+	// NEQ - 不等于,
+	// RA - 范围。
+	Compare *string `json:"Compare,omitempty" name:"Compare"`
+
+	// 过滤的值。
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type InstanceInfo struct {

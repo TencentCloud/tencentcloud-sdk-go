@@ -4903,6 +4903,8 @@ type DescribeLogSearchRequestParams struct {
 	// 
 	// 说明：
 	// “:”表示包含，“!=”表示不等于，字段含义见输出参数的LogSet说明
+	//
+	// Deprecated: LogQuerys is deprecated.
 	LogQuerys []*LogQuery `json:"LogQuerys,omitempty" name:"LogQuerys"`
 }
 

@@ -101,7 +101,7 @@ type AvailableType struct {
 	// 协议与售卖详情
 	Protocols []*AvailableProtoStatus `json:"Protocols,omitempty" name:"Protocols"`
 
-	// 存储类型。返回值中 SD 为标准型存储、HP 为性能型存储
+	// 存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 是否支持预付费。返回值中 true 为支持、false 为不支持
@@ -2757,7 +2757,7 @@ type ScaleUpFileSystemRequestParams struct {
 	// 文件系统Id
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
-	// 扩容的目标容量
+	// 扩容的目标容量（单位GiB）
 	TargetCapacity *uint64 `json:"TargetCapacity,omitempty" name:"TargetCapacity"`
 }
 
@@ -2767,7 +2767,7 @@ type ScaleUpFileSystemRequest struct {
 	// 文件系统Id
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
-	// 扩容的目标容量
+	// 扩容的目标容量（单位GiB）
 	TargetCapacity *uint64 `json:"TargetCapacity,omitempty" name:"TargetCapacity"`
 }
 
@@ -2796,7 +2796,7 @@ type ScaleUpFileSystemResponseParams struct {
 	// 文件系统Id
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
-	// 扩容的目标容量
+	// 扩容的目标容量（单位GiB）
 	TargetCapacity *uint64 `json:"TargetCapacity,omitempty" name:"TargetCapacity"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

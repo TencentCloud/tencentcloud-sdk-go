@@ -191,6 +191,76 @@ func (c *Client) CancelKillTaskWithContext(ctx context.Context, request *CancelK
     return
 }
 
+func NewCloseAuditServiceRequest() (request *CloseAuditServiceRequest) {
+    request = &CloseAuditServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CloseAuditService")
+    
+    
+    return
+}
+
+func NewCloseAuditServiceResponse() (response *CloseAuditServiceResponse) {
+    response = &CloseAuditServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CloseAuditService
+// 不用审计日志时，关闭数据库审计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CloseAuditService(request *CloseAuditServiceRequest) (response *CloseAuditServiceResponse, err error) {
+    return c.CloseAuditServiceWithContext(context.Background(), request)
+}
+
+// CloseAuditService
+// 不用审计日志时，关闭数据库审计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CloseAuditServiceWithContext(ctx context.Context, request *CloseAuditServiceRequest) (response *CloseAuditServiceResponse, err error) {
+    if request == nil {
+        request = NewCloseAuditServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseAuditService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseAuditServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAuditLogFileRequest() (request *CreateAuditLogFileRequest) {
     request = &CreateAuditLogFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1309,6 +1379,78 @@ func (c *Client) DescribeAllUserGroupWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeAllUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditInstanceListRequest() (request *DescribeAuditInstanceListRequest) {
+    request = &DescribeAuditInstanceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeAuditInstanceList")
+    
+    
+    return
+}
+
+func NewDescribeAuditInstanceListResponse() (response *DescribeAuditInstanceListResponse) {
+    response = &DescribeAuditInstanceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAuditInstanceList
+// 查询实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAuditInstanceList(request *DescribeAuditInstanceListRequest) (response *DescribeAuditInstanceListResponse, err error) {
+    return c.DescribeAuditInstanceListWithContext(context.Background(), request)
+}
+
+// DescribeAuditInstanceList
+// 查询实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAuditInstanceListWithContext(ctx context.Context, request *DescribeAuditInstanceListRequest) (response *DescribeAuditInstanceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditInstanceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditInstanceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditInstanceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3421,6 +3563,76 @@ func (c *Client) KillMySqlThreadsWithContext(ctx context.Context, request *KillM
     return
 }
 
+func NewModifyAuditServiceRequest() (request *ModifyAuditServiceRequest) {
+    request = &ModifyAuditServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "ModifyAuditService")
+    
+    
+    return
+}
+
+func NewModifyAuditServiceResponse() (response *ModifyAuditServiceResponse) {
+    response = &ModifyAuditServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAuditService
+// 修改审计配置相关信息，如高频存储时长等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyAuditService(request *ModifyAuditServiceRequest) (response *ModifyAuditServiceResponse, err error) {
+    return c.ModifyAuditServiceWithContext(context.Background(), request)
+}
+
+// ModifyAuditService
+// 修改审计配置相关信息，如高频存储时长等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyAuditServiceWithContext(ctx context.Context, request *ModifyAuditServiceRequest) (response *ModifyAuditServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyAuditServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAuditService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAuditServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDiagDBInstanceConfRequest() (request *ModifyDiagDBInstanceConfRequest) {
     request = &ModifyDiagDBInstanceConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3561,6 +3773,78 @@ func (c *Client) ModifySqlFiltersWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifySqlFiltersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenAuditServiceRequest() (request *OpenAuditServiceRequest) {
+    request = &OpenAuditServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "OpenAuditService")
+    
+    
+    return
+}
+
+func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
+    response = &OpenAuditServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// OpenAuditService
+// 开启数据库审计服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *OpenAuditServiceResponse, err error) {
+    return c.OpenAuditServiceWithContext(context.Background(), request)
+}
+
+// OpenAuditService
+// 开启数据库审计服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) OpenAuditServiceWithContext(ctx context.Context, request *OpenAuditServiceRequest) (response *OpenAuditServiceResponse, err error) {
+    if request == nil {
+        request = NewOpenAuditServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenAuditService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenAuditServiceResponse()
     err = c.Send(request, response)
     return
 }

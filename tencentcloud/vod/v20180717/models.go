@@ -14223,7 +14223,10 @@ type MediaDeleteItem struct {
 	// <li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）；</li>
 	// <li>TranscodeFiles（删除转码文件）；</li>
 	// <li>AdaptiveDynamicStreamingFiles（删除转自适应码流文件）；</li>
-	// <li>WechatPublishFiles（删除微信发布文件）。</li>
+	// <li>WechatPublishFiles（删除微信发布文件）；</li>
+	// <li>WechatMiniProgramPublishFiles（删除微信小程序发布文件）。</li>
+	// <font color=red>注意：</font> <li>取值为OriginalFiles时，文件上传时携带的封面文件会被删除；</li>
+	// <li>取值为TranscodeFiles时，媒体处理产生的封面文件会被删除。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
@@ -21986,32 +21989,6 @@ type SearchMediaRequestParams struct {
 	// <li>包含所指定的头尾时间点。</li>
 	ExpireTime *TimeRange `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 排序方式。
-	// <li>Sort.Field 可选 CreateTime 。</li>
-	// <li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
-	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
-
-	// <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
-	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
-	// <li>basicInfo（视频基础信息）。</li>
-	// <li>metaData（视频元信息）。</li>
-	// <li>transcodeInfo（视频转码结果信息）。</li>
-	// <li>animatedGraphicsInfo（视频转动图结果信息）。</li>
-	// <li>imageSpriteInfo（视频雪碧图信息）。</li>
-	// <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
-	// <li>sampleSnapshotInfo（采样截图信息）。</li>
-	// <li>keyFrameDescInfo（打点信息）。</li>
-	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
-	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
-	Filters []*string `json:"Filters,omitempty" name:"Filters"`
-
 	// 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
 	// <li>单个存储地区长度限制：20个字符。</li>
 	// <li>数组长度限制：20。</li>
@@ -22049,6 +22026,32 @@ type SearchMediaRequestParams struct {
 	// <li>单个房间 ID 长度限制：64个字符；</li>
 	// <li>数组长度限制：10。</li>
 	TrtcRoomIds []*string `json:"TrtcRoomIds,omitempty" name:"TrtcRoomIds"`
+
+	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
+	// <li>basicInfo（视频基础信息）。</li>
+	// <li>metaData（视频元信息）。</li>
+	// <li>transcodeInfo（视频转码结果信息）。</li>
+	// <li>animatedGraphicsInfo（视频转动图结果信息）。</li>
+	// <li>imageSpriteInfo（视频雪碧图信息）。</li>
+	// <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
+	// <li>sampleSnapshotInfo（采样截图信息）。</li>
+	// <li>keyFrameDescInfo（打点信息）。</li>
+	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
+	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式。
+	// <li>Sort.Field 可选 CreateTime 。</li>
+	// <li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
+	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
 	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
@@ -22140,32 +22143,6 @@ type SearchMediaRequest struct {
 	// <li>包含所指定的头尾时间点。</li>
 	ExpireTime *TimeRange `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 排序方式。
-	// <li>Sort.Field 可选 CreateTime 。</li>
-	// <li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
-	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
-
-	// <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
-	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
-	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
-	// <li>basicInfo（视频基础信息）。</li>
-	// <li>metaData（视频元信息）。</li>
-	// <li>transcodeInfo（视频转码结果信息）。</li>
-	// <li>animatedGraphicsInfo（视频转动图结果信息）。</li>
-	// <li>imageSpriteInfo（视频雪碧图信息）。</li>
-	// <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
-	// <li>sampleSnapshotInfo（采样截图信息）。</li>
-	// <li>keyFrameDescInfo（打点信息）。</li>
-	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
-	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
-	Filters []*string `json:"Filters,omitempty" name:"Filters"`
-
 	// 媒体文件存储地区，如 ap-chongqing，参见[地域列表](https://cloud.tencent.com/document/product/266/9760#.E5.B7.B2.E6.94.AF.E6.8C.81.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8)。
 	// <li>单个存储地区长度限制：20个字符。</li>
 	// <li>数组长度限制：20。</li>
@@ -22203,6 +22180,32 @@ type SearchMediaRequest struct {
 	// <li>单个房间 ID 长度限制：64个字符；</li>
 	// <li>数组长度限制：10。</li>
 	TrtcRoomIds []*string `json:"TrtcRoomIds,omitempty" name:"TrtcRoomIds"`
+
+	// 指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：
+	// <li>basicInfo（视频基础信息）。</li>
+	// <li>metaData（视频元信息）。</li>
+	// <li>transcodeInfo（视频转码结果信息）。</li>
+	// <li>animatedGraphicsInfo（视频转动图结果信息）。</li>
+	// <li>imageSpriteInfo（视频雪碧图信息）。</li>
+	// <li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li>
+	// <li>sampleSnapshotInfo（采样截图信息）。</li>
+	// <li>keyFrameDescInfo（打点信息）。</li>
+	// <li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li>
+	// <li>miniProgramReviewInfo（小程序审核信息）。</li>
+	Filters []*string `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式。
+	// <li>Sort.Field 可选 CreateTime 。</li>
+	// <li>当 Text、 Names 或 Descriptions 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// <div id="p_offset">分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// <div id="p_limit">分页返回的记录条数，默认值：10。将返回第 Offset 到第 Offset+Limit-1 条。
+	// <li>取值范围：Offset + Limit 不超过5000。（参见：<a href="#maxResultsDesc">接口返回结果数限制</a>）</li></div>
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）
 	// 搜索文本，模糊匹配媒体文件名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：64个字符。
@@ -22261,10 +22264,6 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	delete(f, "StreamIds")
 	delete(f, "CreateTime")
 	delete(f, "ExpireTime")
-	delete(f, "Sort")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "Filters")
 	delete(f, "StorageRegions")
 	delete(f, "StorageClasses")
 	delete(f, "MediaTypes")
@@ -22272,6 +22271,10 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	delete(f, "ReviewResults")
 	delete(f, "TrtcSdkAppIds")
 	delete(f, "TrtcRoomIds")
+	delete(f, "Filters")
+	delete(f, "Sort")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "Text")
 	delete(f, "SourceType")
 	delete(f, "StreamId")

@@ -2772,7 +2772,7 @@ type ExportVideoByEditorTrackDataRequestParams struct {
 	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
 	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
 
-	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使的媒资该操作者需要拥有使用权限。
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使用的媒资该操作者需要拥有使用权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -2810,7 +2810,7 @@ type ExportVideoByEditorTrackDataRequest struct {
 	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
 	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
 
-	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使的媒资该操作者需要拥有使用权限。
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使用的媒资该操作者需要拥有使用权限。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -3871,7 +3871,7 @@ type ImportMaterialResponseParams struct {
 	// 媒体 Id。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
-	// 媒体文预处理任务 ID，如果未指定发起预处理任务则为空。
+	// 媒体文件预处理任务 ID，如果未指定发起预处理任务则为空。
 	PreProcessTaskId *string `json:"PreProcessTaskId,omitempty" name:"PreProcessTaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4456,7 +4456,7 @@ type MediaCastProjectInfo struct {
 	// 项目启动时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 项目结束时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如果项目还在运行中，改字段为空。
+	// 项目结束时间。采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。如果项目还在运行中，该字段为空。
 	StopTime *string `json:"StopTime,omitempty" name:"StopTime"`
 }
 
@@ -4851,7 +4851,7 @@ type ModifyTeamMemberRequestParams struct {
 	// <li>Member：普通成员。</li>
 	Role *string `json:"Role,omitempty" name:"Role"`
 
-	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以个改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
@@ -4875,7 +4875,7 @@ type ModifyTeamMemberRequest struct {
 	// <li>Member：普通成员。</li>
 	Role *string `json:"Role,omitempty" name:"Role"`
 
-	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以个改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 

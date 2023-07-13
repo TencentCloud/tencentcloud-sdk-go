@@ -9684,6 +9684,18 @@ type Route struct {
 	// 时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteTimestamp *string `json:"DeleteTimestamp,omitempty" name:"DeleteTimestamp"`
+
+	// 子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subnet *string `json:"Subnet,omitempty" name:"Subnet"`
+
+	// 虚拟IP列表(1对1 broker节点)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerVipList []*VipEntity `json:"BrokerVipList,omitempty" name:"BrokerVipList"`
+
+	// vpc信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 type RouteDTO struct {

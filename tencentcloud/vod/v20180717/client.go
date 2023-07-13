@@ -10446,21 +10446,11 @@ func NewSearchMediaResponse() (response *SearchMediaResponse) {
 //
 // - 指定 TRTC 房间 ID 集合筛选媒体。
 //
-// - （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）指定单个文本 Text 对媒体文件名或描述信息进行模糊搜索。
-//
-// - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
-//
-// - （不推荐：应使用 StreamIds 替代）指定单个推流直播码 StreamId 进行搜索。
-//
-// - （不推荐：应使用 CreateTime 替代）指定单个起始创建时间 StartTime 进行搜索。
-//
-// - （不推荐：应使用 CreateTime 替代）指定单个结尾创建时间 EndTime 进行搜索。
+// 
 //
 // - 以上参数之间可以任意组合进行检索。例如：筛选创建时间在2018年12月1日12:00:00到2018年12月8日12:00:00之间、分类为电影或电视剧、带有宫斗和悬疑标签的媒体。注意，任何支持数组输入的参数，其元素之间的搜索逻辑为‘或’。所有参数之间的逻辑关系为‘与’。
 //
 // 
-//
-// - 允许对结果根据创建时间进行排序并分页返回，通过 Offset 和 Limit （见输入参数）来控制分页。
 //
 // - 允许通过 Filters 控制返回的媒体信息种类（默认返回所有信息）。可选输入包括：
 //
@@ -10484,11 +10474,29 @@ func NewSearchMediaResponse() (response *SearchMediaResponse) {
 //
 // 
 //
+// - 允许对结果根据创建时间进行排序并分页返回，通过 Offset 和 Limit （见输入参数）来控制分页。
+//
+// 
+//
 // <div id="maxResultsDesc">接口返回结果数限制：</div>
 //
 // - <b><a href="#p_offset">Offset</a> 和 <a href="#p_limit">Limit</a> 两个参数影响单次分页查询结果数。特别注意：当这2个值都缺省时，本接口最多只返回10条查询结果。</b>
 //
 // - <b>最大支持返回5000条搜索结果，超出部分不再支持查询。如果搜索结果量太大，建议使用更精细的筛选条件来减少搜索结果。</b>
+//
+// 
+//
+// <br>不推荐使用的条件筛选：
+//
+// - （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）指定单个文本 Text 对媒体文件名或描述信息进行模糊搜索。
+//
+// - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
+//
+// - （不推荐：应使用 StreamIds 替代）指定单个推流直播码 StreamId 进行搜索。
+//
+// - （不推荐：应使用 CreateTime 替代）指定单个起始创建时间 StartTime 进行搜索。
+//
+// - （不推荐：应使用 CreateTime 替代）指定单个结尾创建时间 EndTime 进行搜索。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10550,21 +10558,11 @@ func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMedia
 //
 // - 指定 TRTC 房间 ID 集合筛选媒体。
 //
-// - （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）指定单个文本 Text 对媒体文件名或描述信息进行模糊搜索。
-//
-// - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
-//
-// - （不推荐：应使用 StreamIds 替代）指定单个推流直播码 StreamId 进行搜索。
-//
-// - （不推荐：应使用 CreateTime 替代）指定单个起始创建时间 StartTime 进行搜索。
-//
-// - （不推荐：应使用 CreateTime 替代）指定单个结尾创建时间 EndTime 进行搜索。
+// 
 //
 // - 以上参数之间可以任意组合进行检索。例如：筛选创建时间在2018年12月1日12:00:00到2018年12月8日12:00:00之间、分类为电影或电视剧、带有宫斗和悬疑标签的媒体。注意，任何支持数组输入的参数，其元素之间的搜索逻辑为‘或’。所有参数之间的逻辑关系为‘与’。
 //
 // 
-//
-// - 允许对结果根据创建时间进行排序并分页返回，通过 Offset 和 Limit （见输入参数）来控制分页。
 //
 // - 允许通过 Filters 控制返回的媒体信息种类（默认返回所有信息）。可选输入包括：
 //
@@ -10588,11 +10586,29 @@ func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMedia
 //
 // 
 //
+// - 允许对结果根据创建时间进行排序并分页返回，通过 Offset 和 Limit （见输入参数）来控制分页。
+//
+// 
+//
 // <div id="maxResultsDesc">接口返回结果数限制：</div>
 //
 // - <b><a href="#p_offset">Offset</a> 和 <a href="#p_limit">Limit</a> 两个参数影响单次分页查询结果数。特别注意：当这2个值都缺省时，本接口最多只返回10条查询结果。</b>
 //
 // - <b>最大支持返回5000条搜索结果，超出部分不再支持查询。如果搜索结果量太大，建议使用更精细的筛选条件来减少搜索结果。</b>
+//
+// 
+//
+// <br>不推荐使用的条件筛选：
+//
+// - （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）指定单个文本 Text 对媒体文件名或描述信息进行模糊搜索。
+//
+// - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
+//
+// - （不推荐：应使用 StreamIds 替代）指定单个推流直播码 StreamId 进行搜索。
+//
+// - （不推荐：应使用 CreateTime 替代）指定单个起始创建时间 StartTime 进行搜索。
+//
+// - （不推荐：应使用 CreateTime 替代）指定单个结尾创建时间 EndTime 进行搜索。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -3257,6 +3257,21 @@ func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
 type CreateFlowOption struct {
 	// 是否允许修改合同信息，true-是，false-否
 	CanEditFlow *bool `json:"CanEditFlow,omitempty" name:"CanEditFlow"`
+
+	// 是否允许发起合同弹窗隐藏合同名称
+	HideShowFlowName *bool `json:"HideShowFlowName,omitempty" name:"HideShowFlowName"`
+
+	// 是否允许发起合同弹窗隐藏合同类型
+	HideShowFlowType *bool `json:"HideShowFlowType,omitempty" name:"HideShowFlowType"`
+
+	// 是否允许发起合同弹窗隐藏合同到期时间
+	HideShowDeadline *bool `json:"HideShowDeadline,omitempty" name:"HideShowDeadline"`
+
+	// 是否允许发起合同步骤跳过指定签署方步骤
+	CanSkipAddApprover *bool `json:"CanSkipAddApprover,omitempty" name:"CanSkipAddApprover"`
+
+	// 定制化发起合同页合同描述信息
+	CustomCreateFlowDescription *string `json:"CustomCreateFlowDescription,omitempty" name:"CustomCreateFlowDescription"`
 }
 
 // Predefined struct for user
@@ -4566,6 +4581,10 @@ type FormField struct {
 	// 控件的名字，跟ComponentId二选一，不能全为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
+
+	// 是否锁定模版控件值，锁定后无法修改（用于嵌入式发起合同）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockComponentValue *bool `json:"LockComponentValue,omitempty" name:"LockComponentValue"`
 }
 
 // Predefined struct for user

@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络 CDN(cdn) 版本：2018-06-06
+## API 网关(apigateway) 版本：2018-08-08
 
-### 第 126 次发布
+### 第 40 次发布
 
-发布时间：2023-07-12 01:11:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [HttpsPackage](https://cloud.tencent.com/document/api/228/30987#HttpsPackage)
-
-	* <font color="#dd0000">**修改成员**：</font>AutoExtension
-
-
-
-
-## 文件存储(cfs) 版本：2019-07-19
-
-### 第 23 次发布
-
-发布时间：2023-07-12 01:12:32
+发布时间：2023-07-13 01:02:00
 
 本次发布包含了以下内容：
 
@@ -31,27 +12,111 @@
 
 修改接口：
 
-* [CreateCfsFileSystem](https://cloud.tencent.com/document/api/582/38174)
+* [DescribeLogSearch](https://cloud.tencent.com/document/api/628/45203)
 
-	* 新增入参：SnapshotId, AutoSnapshotPolicyId, EnableAutoScaleUp
 
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 136 次发布
+
+发布时间：2023-07-13 01:06:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AnalyzeAuditLogs](https://cloud.tencent.com/document/api/236/89112)
+
+	* 新增入参：LogFilter
+
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)
+
+	* 新增入参：LogFilter
+
+
+新增数据结构：
+
+* [InstanceAuditLogFilters](https://cloud.tencent.com/document/api/236/15878#InstanceAuditLogFilters)
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 88 次发布
+
+发布时间：2023-07-12 19:20:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [SnapshotInfo](https://cloud.tencent.com/document/api/582/38175#SnapshotInfo)
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
 
-	* 新增成员：SnapshotTime
-
-	* <font color="#dd0000">**修改成员**：</font>SnapshotType
+	* 新增成员：BrokerVipList
 
 
+### 第 87 次发布
+
+发布时间：2023-07-12 17:31:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+
+	* 新增成员：Subnet, VpcId
 
 
-## Elasticsearch Service(es) 版本：2018-04-16
 
-### 第 44 次发布
 
-发布时间：2023-07-12 01:24:00
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 61 次发布
+
+发布时间：2023-07-13 01:13:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/1003/81440)
+
+	* 新增入参：LogFilter
+
+* [DescribeAuditLogs](https://cloud.tencent.com/document/api/1003/81437)
+
+	* 新增入参：LogFilter
+
+
+新增数据结构：
+
+* [InstanceAuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditLogFilter)
+
+修改数据结构：
+
+* [AuditLog](https://cloud.tencent.com/document/api/1003/48097#AuditLog)
+
+	* 新增成员：CheckRows, CpuTime, IoWaitTime, LockWaitTime, TrxLivingTime, NsTime
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 22 次发布
+
+发布时间：2023-07-13 01:15:30
 
 本次发布包含了以下内容：
 
@@ -59,15 +124,28 @@
 
 新增接口：
 
-* [ModifyEsVipSecurityGroup](https://cloud.tencent.com/document/api/845/94985)
+* [CloseAuditService](https://cloud.tencent.com/document/api/1130/95014)
+* [DescribeAuditInstanceList](https://cloud.tencent.com/document/api/1130/95013)
+* [ModifyAuditService](https://cloud.tencent.com/document/api/1130/95012)
+* [OpenAuditService](https://cloud.tencent.com/document/api/1130/95011)
+
+新增数据结构：
+
+* [AuditInstance](https://cloud.tencent.com/document/api/1130/57812#AuditInstance)
+* [AuditInstanceFilter](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceFilter)
+* [AuditInstanceInfo](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceInfo)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 92 次发布
+### 第 93 次发布
 
-发布时间：2023-07-12 01:24:43
+发布时间：2023-07-13 01:20:20
 
 本次发布包含了以下内容：
 
@@ -75,9 +153,13 @@
 
 修改数据结构：
 
-* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
 
-	* 新增成员：NotifyType
+	* 新增成员：HideShowFlowName, HideShowFlowType, HideShowDeadline, CanSkipAddApprover, CustomCreateFlowDescription
+
+* [FormField](https://cloud.tencent.com/document/api/1420/61525#FormField)
+
+	* 新增成员：LockComponentValue
 
 
 
@@ -86,49 +168,11 @@
 
 
 
-## 低代码互动课堂(lcic) 版本：2022-08-17
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-### 第 29 次发布
+### 第 67 次发布
 
-发布时间：2023-07-12 01:30:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDocument](https://cloud.tencent.com/document/api/1639/86321)
-
-	* 新增出参：Pages
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 158 次发布
-
-发布时间：2023-07-12 01:46:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ClusterAsGroupOption](https://cloud.tencent.com/document/api/457/31866#ClusterAsGroupOption)
-
-	* <font color="#dd0000">**修改成员**：</font>IsScaleDownEnabled, Expander, MaxEmptyBulkDelete, ScaleDownDelay, ScaleDownUnneededTime, ScaleDownUtilizationThreshold, SkipNodesWithLocalStorage, SkipNodesWithSystemPods, IgnoreDaemonSetsUtilization, OkTotalUnreadyCount, MaxTotalUnreadyPercentage, ScaleDownUnreadyTime, UnregisteredNodeRemovalTime
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 161 次发布
-
-发布时间：2023-07-12 01:51:01
+发布时间：2023-07-13 01:38:37
 
 本次发布包含了以下内容：
 
@@ -136,35 +180,14 @@
 
 修改接口：
 
-* [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)
+* [CreateRole](https://cloud.tencent.com/document/api/1179/62401)
 
-	* 新增入参：OrderField, OrderDirection
+	* 新增出参：EnvironmentRoleSets
 
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 35 次发布
-
-发布时间：2023-07-12 01:53:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeColumnLineage](https://cloud.tencent.com/document/api/1267/94988)
-* [DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)
 
 新增数据结构：
 
-* [ColumnAggregationLineage](https://cloud.tencent.com/document/api/1267/76336#ColumnAggregationLineage)
-* [ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)
-* [LineageParamRecord](https://cloud.tencent.com/document/api/1267/76336#LineageParamRecord)
-* [SimpleColumnInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleColumnInfo)
-* [TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)
+* [EnvironmentRoleSet](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRoleSet)
 
 
 
@@ -3281,6 +3304,19 @@
 
 
 ## API 网关(apigateway) 版本：2018-08-08
+
+### 第 40 次发布
+
+发布时间：2023-07-13 01:02:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogSearch](https://cloud.tencent.com/document/api/628/45203)
+
 
 ### 第 39 次发布
 
@@ -14109,6 +14145,29 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 136 次发布
+
+发布时间：2023-07-13 01:06:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AnalyzeAuditLogs](https://cloud.tencent.com/document/api/236/89112)
+
+	* 新增入参：LogFilter
+
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)
+
+	* 新增入参：LogFilter
+
+
+新增数据结构：
+
+* [[InstanceAuditLogFilters](https://cloud.tencent.com/document/api/236/15878#InstanceAuditLogFilters)](https://cloud.tencent.com/document/api/236/15878#[InstanceAuditLogFilters](https://cloud.tencent.com/document/api/236/15878#InstanceAuditLogFilters))
+
 ### 第 135 次发布
 
 发布时间：2023-06-29 01:07:08
@@ -22242,6 +22301,36 @@
 
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 88 次发布
+
+发布时间：2023-07-12 19:20:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+
+	* 新增成员：BrokerVipList
+
+
+### 第 87 次发布
+
+发布时间：2023-07-12 17:31:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+
+	* 新增成员：Subnet, VpcId
+
 
 ### 第 86 次发布
 
@@ -37145,6 +37234,36 @@
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 61 次发布
+
+发布时间：2023-07-13 01:13:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/1003/81440)
+
+	* 新增入参：LogFilter
+
+* [DescribeAuditLogs](https://cloud.tencent.com/document/api/1003/81437)
+
+	* 新增入参：LogFilter
+
+
+新增数据结构：
+
+* [[InstanceAuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditLogFilter)](https://cloud.tencent.com/document/api/1003/48097#[InstanceAuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditLogFilter))
+
+修改数据结构：
+
+* [AuditLog](https://cloud.tencent.com/document/api/1003/48097#AuditLog)
+
+	* 新增成员：CheckRows, CpuTime, IoWaitTime, LockWaitTime, TrxLivingTime, NsTime
+
+
 ### 第 60 次发布
 
 发布时间：2023-06-29 14:25:48
@@ -39663,6 +39782,27 @@
 
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 22 次发布
+
+发布时间：2023-07-13 01:15:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CloseAuditService](https://cloud.tencent.com/document/api/1130/95014)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAuditInstanceList](https://cloud.tencent.com/document/api/1130/95013)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAuditService](https://cloud.tencent.com/document/api/1130/95012)](https://cloud.tencent.com/document/api/#/#)
+* [[OpenAuditService](https://cloud.tencent.com/document/api/1130/95011)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AuditInstance](https://cloud.tencent.com/document/api/1130/57812#AuditInstance)](https://cloud.tencent.com/document/api/1130/57812#[AuditInstance](https://cloud.tencent.com/document/api/1130/57812#AuditInstance))
+* [[AuditInstanceFilter](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceFilter)](https://cloud.tencent.com/document/api/1130/57812#[AuditInstanceFilter](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceFilter))
+* [[AuditInstanceInfo](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceInfo)](https://cloud.tencent.com/document/api/1130/57812#[AuditInstanceInfo](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceInfo))
 
 ### 第 21 次发布
 
@@ -48772,7 +48912,7 @@
 
 新增接口：
 
-* [[ModifyEsVipSecurityGroup](https://cloud.tencent.com/document/api/845/94985)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyEsVipSecurityGroup](https://cloud.tencent.com/document/api/845/94985)
 
 ### 第 43 次发布
 
@@ -51449,6 +51589,25 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 93 次发布
+
+发布时间：2023-07-13 01:20:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+
+	* 新增成员：HideShowFlowName, HideShowFlowType, HideShowDeadline, CanSkipAddApprover, CustomCreateFlowDescription
+
+* [FormField](https://cloud.tencent.com/document/api/1420/61525#FormField)
+
+	* 新增成员：LockComponentValue
+
 
 ### 第 92 次发布
 
@@ -96050,6 +96209,25 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 67 次发布
+
+发布时间：2023-07-13 01:38:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRole](https://cloud.tencent.com/document/api/1179/62401)
+
+	* 新增出参：EnvironmentRoleSets
+
+
+新增数据结构：
+
+* [[EnvironmentRoleSet](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRoleSet)](https://cloud.tencent.com/document/api/1179/46089#[EnvironmentRoleSet](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRoleSet))
+
 ### 第 66 次发布
 
 发布时间：2023-07-10 01:45:08
@@ -122817,16 +122995,16 @@
 
 新增接口：
 
-* [[DescribeColumnLineage](https://cloud.tencent.com/document/api/1267/94988)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeColumnLineage](https://cloud.tencent.com/document/api/1267/94988)
+* [DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)
 
 新增数据结构：
 
-* [[ColumnAggregationLineage](https://cloud.tencent.com/document/api/1267/76336#ColumnAggregationLineage)](https://cloud.tencent.com/document/api/1267/76336#[ColumnAggregationLineage](https://cloud.tencent.com/document/api/1267/76336#ColumnAggregationLineage))
-* [[ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)](https://cloud.tencent.com/document/api/1267/76336#[ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo))
-* [[LineageParamRecord](https://cloud.tencent.com/document/api/1267/76336#LineageParamRecord)](https://cloud.tencent.com/document/api/1267/76336#[LineageParamRecord](https://cloud.tencent.com/document/api/1267/76336#LineageParamRecord))
-* [[SimpleColumnInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleColumnInfo)](https://cloud.tencent.com/document/api/1267/76336#[SimpleColumnInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleColumnInfo))
-* [[TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)](https://cloud.tencent.com/document/api/1267/76336#[TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo))
+* [ColumnAggregationLineage](https://cloud.tencent.com/document/api/1267/76336#ColumnAggregationLineage)
+* [ColumnLineageInfo](https://cloud.tencent.com/document/api/1267/76336#ColumnLineageInfo)
+* [LineageParamRecord](https://cloud.tencent.com/document/api/1267/76336#LineageParamRecord)
+* [SimpleColumnInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleColumnInfo)
+* [TableLineageInfo](https://cloud.tencent.com/document/api/1267/76336#TableLineageInfo)
 
 ### 第 34 次发布
 

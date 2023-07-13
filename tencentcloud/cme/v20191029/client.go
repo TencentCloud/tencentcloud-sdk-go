@@ -248,7 +248,7 @@ func NewCreateLinkResponse() (response *CreateLinkResponse) {
 }
 
 // CreateLink
-// 创建媒体链接或分类路径链接，将源资源信息链接到目标。
+// 创建媒体链接或分类路径链接，将资源信息链接到目标。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -269,7 +269,7 @@ func (c *Client) CreateLink(request *CreateLinkRequest) (response *CreateLinkRes
 }
 
 // CreateLink
-// 创建媒体链接或分类路径链接，将源资源信息链接到目标。
+// 创建媒体链接或分类路径链接，将资源信息链接到目标。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

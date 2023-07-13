@@ -1,3 +1,196 @@
+# Release v1.0.700
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 40 次发布
+
+发布时间：2023-07-13 01:02:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogSearch](https://cloud.tencent.com/document/api/628/45203)
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 136 次发布
+
+发布时间：2023-07-13 01:06:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AnalyzeAuditLogs](https://cloud.tencent.com/document/api/236/89112)
+
+	* 新增入参：LogFilter
+
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)
+
+	* 新增入参：LogFilter
+
+
+新增数据结构：
+
+* [InstanceAuditLogFilters](https://cloud.tencent.com/document/api/236/15878#InstanceAuditLogFilters)
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 88 次发布
+
+发布时间：2023-07-12 19:20:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+
+	* 新增成员：BrokerVipList
+
+
+### 第 87 次发布
+
+发布时间：2023-07-12 17:31:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
+
+	* 新增成员：Subnet, VpcId
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 61 次发布
+
+发布时间：2023-07-13 01:13:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/1003/81440)
+
+	* 新增入参：LogFilter
+
+* [DescribeAuditLogs](https://cloud.tencent.com/document/api/1003/81437)
+
+	* 新增入参：LogFilter
+
+
+新增数据结构：
+
+* [InstanceAuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditLogFilter)
+
+修改数据结构：
+
+* [AuditLog](https://cloud.tencent.com/document/api/1003/48097#AuditLog)
+
+	* 新增成员：CheckRows, CpuTime, IoWaitTime, LockWaitTime, TrxLivingTime, NsTime
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 22 次发布
+
+发布时间：2023-07-13 01:15:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseAuditService](https://cloud.tencent.com/document/api/1130/95014)
+* [DescribeAuditInstanceList](https://cloud.tencent.com/document/api/1130/95013)
+* [ModifyAuditService](https://cloud.tencent.com/document/api/1130/95012)
+* [OpenAuditService](https://cloud.tencent.com/document/api/1130/95011)
+
+新增数据结构：
+
+* [AuditInstance](https://cloud.tencent.com/document/api/1130/57812#AuditInstance)
+* [AuditInstanceFilter](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceFilter)
+* [AuditInstanceInfo](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceInfo)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 93 次发布
+
+发布时间：2023-07-13 01:20:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+
+	* 新增成员：HideShowFlowName, HideShowFlowType, HideShowDeadline, CanSkipAddApprover, CustomCreateFlowDescription
+
+* [FormField](https://cloud.tencent.com/document/api/1420/61525#FormField)
+
+	* 新增成员：LockComponentValue
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 67 次发布
+
+发布时间：2023-07-13 01:38:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRole](https://cloud.tencent.com/document/api/1179/62401)
+
+	* 新增出参：EnvironmentRoleSets
+
+
+新增数据结构：
+
+* [EnvironmentRoleSet](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRoleSet)
+
+
+
 # Release v1.0.699
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06

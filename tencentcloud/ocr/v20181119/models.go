@@ -3153,10 +3153,9 @@ type HKIDCardOCRResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadImage *string `json:"HeadImage,omitempty" name:"HeadImage"`
 
-	// 多重告警码，当身份证是翻拍、复印、PS件时返回对应告警码。
+	// 多重告警码，当身份证是翻拍、复印件时返回对应告警码。
 	// -9102：证照复印件告警
 	// -9103：证照翻拍告警
-	// -9104：证照PS告警
 	WarningCode []*int64 `json:"WarningCode,omitempty" name:"WarningCode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -10979,14 +10978,12 @@ type VehicleLicenseOCRResponseParams struct {
 	// Code 告警码列表和释义：
 	// -9102 复印件告警
 	// -9103 翻拍件告警
-	// -9106 ps告警
 	// 注：告警码可以同时存在多个
 	RecognizeWarnCode []*int64 `json:"RecognizeWarnCode,omitempty" name:"RecognizeWarnCode"`
 
 	// 告警码说明：
 	// WARN_DRIVER_LICENSE_COPY_CARD 复印件告警
 	// WARN_DRIVER_LICENSE_SCREENED_CARD 翻拍件告警
-	// WARN_DRIVER_LICENSE_PS_CARD ps告警
 	// 注：告警信息可以同时存在多个
 	RecognizeWarnMsg []*string `json:"RecognizeWarnMsg,omitempty" name:"RecognizeWarnMsg"`
 

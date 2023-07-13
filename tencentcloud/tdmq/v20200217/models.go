@@ -2632,6 +2632,10 @@ type CreateRoleResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
+	// 批量绑定名字空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentRoleSets []*EnvironmentRoleSet `json:"EnvironmentRoleSets,omitempty" name:"EnvironmentRoleSets"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -8102,6 +8106,17 @@ type EnvironmentRole struct {
 
 	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type EnvironmentRoleSet struct {
+	// 需要绑定的命名空间Id，不重复且存在资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 名字空间需要绑定的权限，枚举为 "consume" "produce" 组合，但是不为空
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions"`
 }
 
 type ExchangeQuota struct {

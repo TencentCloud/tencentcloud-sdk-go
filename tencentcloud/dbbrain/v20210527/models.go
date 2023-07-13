@@ -91,6 +91,73 @@ func (r *AddUserContactResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AuditInstance struct {
+	// 审计状态，已开通审计为：YES，未开通审计为：ON。
+	AuditStatus *string `json:"AuditStatus,omitempty" name:"AuditStatus"`
+
+	// 审计日志大小，为兼容老版本用。
+	BillingAmount *int64 `json:"BillingAmount,omitempty" name:"BillingAmount"`
+
+	// 计费确认状态，0-未确认；1-已确认。
+	BillingConfirmed *int64 `json:"BillingConfirmed,omitempty" name:"BillingConfirmed"`
+
+	// 低频存储时长。
+	ColdLogExpireDay *int64 `json:"ColdLogExpireDay,omitempty" name:"ColdLogExpireDay"`
+
+	// 低频日志存储量单位MB。
+	ColdLogSize *int64 `json:"ColdLogSize,omitempty" name:"ColdLogSize"`
+
+	// 高频日志存储天数。
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+
+	// 高频日志存储量，单位MB。
+	HotLogSize *int64 `json:"HotLogSize,omitempty" name:"HotLogSize"`
+
+	// 实例Id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志保存总天数，为高频存储时长+低频存储时长。
+	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+	// 实例创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例详细信息。
+	InstanceInfo *AuditInstanceInfo `json:"InstanceInfo,omitempty" name:"InstanceInfo"`
+}
+
+type AuditInstanceFilter struct {
+	// 搜索条件名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 要搜索的条件的值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type AuditInstanceInfo struct {
+	// appId。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 审计状态，0-未开通审计；1-已开通审计。
+	AuditStatus *int64 `json:"AuditStatus,omitempty" name:"AuditStatus"`
+
+	// 实例Id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 项目Id。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 实例所在地域。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 资源Tags。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceTags []*string `json:"ResourceTags,omitempty" name:"ResourceTags"`
+}
+
 type AuditLogFile struct {
 	// 审计日志文件生成异步任务ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -207,6 +274,77 @@ func (r *CancelKillTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CancelKillTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseAuditServiceRequestParams struct {
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例Id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type CloseAuditServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例Id。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *CloseAuditServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseAuditServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "NodeRequestType")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseAuditServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseAuditServiceResponseParams struct {
+	// 0-关闭审计成功，非0关闭审计失败。
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CloseAuditServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseAuditServiceResponseParams `json:"Response"`
+}
+
+func (r *CloseAuditServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1521,6 +1659,102 @@ func (r *DescribeAllUserGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAllUserGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditInstanceListRequestParams struct {
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 审计状态标识，0-未开通审计；1-已开通审计，默认为0。
+	AuditSwitch *int64 `json:"AuditSwitch,omitempty" name:"AuditSwitch"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数目，默认为20，最大为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询实例的搜索条件。
+	Filters []*AuditInstanceFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeAuditInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 审计状态标识，0-未开通审计；1-已开通审计，默认为0。
+	AuditSwitch *int64 `json:"AuditSwitch,omitempty" name:"AuditSwitch"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数目，默认为20，最大为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询实例的搜索条件。
+	Filters []*AuditInstanceFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAuditInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "NodeRequestType")
+	delete(f, "AuditSwitch")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditInstanceListResponseParams struct {
+	// 符合条件的实例个数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 实例详情。
+	Items []*AuditInstance `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4531,6 +4765,91 @@ type MailConfiguration struct {
 }
 
 // Predefined struct for user
+type ModifyAuditServiceRequestParams struct {
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志保存总时长，只能是7,30,90,180,365,1095,1825
+	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+}
+
+type ModifyAuditServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志保存总时长，只能是7,30,90,180,365,1095,1825
+	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+}
+
+func (r *ModifyAuditServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "NodeRequestType")
+	delete(f, "InstanceId")
+	delete(f, "LogExpireDay")
+	delete(f, "HotLogExpireDay")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuditServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAuditServiceResponseParams struct {
+	// 审计配置修改结果，0-修改成功,非0-修改失败。
+	Success *int64 `json:"Success,omitempty" name:"Success"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAuditServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAuditServiceResponseParams `json:"Response"`
+}
+
+func (r *ModifyAuditServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAuditServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDiagDBInstanceConfRequestParams struct {
 	// 实例配置，包括巡检、概览开关等。
 	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitempty" name:"InstanceConfs"`
@@ -4751,6 +5070,91 @@ type MySqlProcess struct {
 
 	// 线程的操作语句。
 	Info *string `json:"Info,omitempty" name:"Info"`
+}
+
+// Predefined struct for user
+type OpenAuditServiceRequestParams struct {
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志保存总时长，只能是7,30,90,180,365,1095,1825
+	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+}
+
+type OpenAuditServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志保存总时长，只能是7,30,90,180,365,1095,1825
+	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+}
+
+func (r *OpenAuditServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenAuditServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "NodeRequestType")
+	delete(f, "InstanceId")
+	delete(f, "LogExpireDay")
+	delete(f, "HotLogExpireDay")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenAuditServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenAuditServiceResponseParams struct {
+	// taskId 为0表示开通审计成功，否则开通失败
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type OpenAuditServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenAuditServiceResponseParams `json:"Response"`
+}
+
+func (r *OpenAuditServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ProcessStatistic struct {
