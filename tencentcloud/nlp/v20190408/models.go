@@ -345,13 +345,13 @@ func (r *ClassifyContentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ClassifyContentResponseParams struct {
-	// 一级分类。分类详情见附录-三级分类体系表。
+	// 一级分类。（请参见附录[三级分类体系表](https://cloud.tencent.com/document/product/271/94286)）
 	FirstClassification *Category `json:"FirstClassification,omitempty" name:"FirstClassification"`
 
-	// 二级分类。分类详情见附录-三级分类体系表。
+	// 二级分类。（请参见附录[三级分类体系表](https://cloud.tencent.com/document/product/271/94286)）
 	SecondClassification *Category `json:"SecondClassification,omitempty" name:"SecondClassification"`
 
-	// 三级分类。分类详情见附录-三级分类体系表。
+	// 三级分类。（请参见附录[三级分类体系表](https://cloud.tencent.com/document/product/271/94286)）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThirdClassification *Category `json:"ThirdClassification,omitempty" name:"ThirdClassification"`
 
@@ -1713,13 +1713,13 @@ type ParseWordsResponseParams struct {
 	// 输入文本正则化的结果。（包括对英文文本中的开头和实体进行大写等）
 	NormalText *string `json:"NormalText,omitempty" name:"NormalText"`
 
-	// 基础粒度分词和词性标注的结果。（词性表请参见附录）
+	// 基础粒度分词和词性标注的结果。（请参见附录[词性表](https://cloud.tencent.com/document/product/271/36460)）
 	BasicParticiples []*BasicParticiple `json:"BasicParticiples,omitempty" name:"BasicParticiples"`
 
-	// 复合粒度分词和词性标注的结果。（词性表请参见附录）
+	// 复合粒度分词和词性标注的结果。（请参见附录[词性表](https://cloud.tencent.com/document/product/271/36460)）
 	CompoundParticiples []*CompoundParticiple `json:"CompoundParticiples,omitempty" name:"CompoundParticiples"`
 
-	// 实体识别结果。（实体类型数据请参见附录）
+	// 实体识别结果。（请参见附录[实体类型数据](https://cloud.tencent.com/document/product/271/90592)）
 	Entities []*Entity `json:"Entities,omitempty" name:"Entities"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

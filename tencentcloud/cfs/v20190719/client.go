@@ -1986,7 +1986,7 @@ func NewDescribeUserQuotaResponse() (response *DescribeUserQuotaResponse) {
 }
 
 // DescribeUserQuota
-// 查询文件系统配额
+// 查询文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
@@ -1996,7 +1996,7 @@ func (c *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (response 
 }
 
 // DescribeUserQuota
-// 查询文件系统配额
+// 查询文件系统配额（仅部分Turbo实例能使用，若需要调用请提交工单与我们联系）
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"

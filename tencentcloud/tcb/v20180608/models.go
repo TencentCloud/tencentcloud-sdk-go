@@ -4362,10 +4362,10 @@ type DescribeCloudBaseRunServerVersionResponseParams struct {
 	BuildDir *string `json:"BuildDir,omitempty" name:"BuildDir"`
 
 	// 请使用CPUSize
-	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+	Cpu *float64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 请使用MemSize
-	Mem *int64 `json:"Mem,omitempty" name:"Mem"`
+	Mem *float64 `json:"Mem,omitempty" name:"Mem"`
 
 	// 副本最小值
 	MinNum *int64 `json:"MinNum,omitempty" name:"MinNum"`
@@ -4979,7 +4979,7 @@ type DescribeCurveDataResponseParams struct {
 	Time []*int64 `json:"Time,omitempty" name:"Time"`
 
 	// 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到.
-	NewValues *float64 `json:"NewValues,omitempty" name:"NewValues"`
+	NewValues []*float64 `json:"NewValues,omitempty" name:"NewValues"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

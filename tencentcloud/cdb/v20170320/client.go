@@ -2707,6 +2707,84 @@ func (c *Client) DescribeAuditLogFilesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeAuditLogsRequest() (request *DescribeAuditLogsRequest) {
+    request = &DescribeAuditLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeAuditLogs")
+    
+    
+    return
+}
+
+func NewDescribeAuditLogsResponse() (response *DescribeAuditLogsResponse) {
+    response = &DescribeAuditLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAuditLogs
+// 本接口(DescribeAuditLogs)用于查询数据库审计日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYAUDITTASKFAILERROR = "FailedOperation.QueryAuditTaskFailError"
+//  INTERNALERROR_AUDITDESCRIBELOGERROR = "InternalError.AuditDescribeLogError"
+//  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_QUERYAUDITLOGSERROR = "OperationDenied.QueryAuditLogsError"
+//  OPERATIONDENIED_RESOURCENOTFOUNDERROR = "OperationDenied.ResourceNotFoundError"
+//  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAuditLogs(request *DescribeAuditLogsRequest) (response *DescribeAuditLogsResponse, err error) {
+    return c.DescribeAuditLogsWithContext(context.Background(), request)
+}
+
+// DescribeAuditLogs
+// 本接口(DescribeAuditLogs)用于查询数据库审计日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYAUDITTASKFAILERROR = "FailedOperation.QueryAuditTaskFailError"
+//  INTERNALERROR_AUDITDESCRIBELOGERROR = "InternalError.AuditDescribeLogError"
+//  INTERNALERROR_AUDITERROR = "InternalError.AuditError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_QUERYAUDITLOGSERROR = "OperationDenied.QueryAuditLogsError"
+//  OPERATIONDENIED_RESOURCENOTFOUNDERROR = "OperationDenied.ResourceNotFoundError"
+//  OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAuditLogsWithContext(ctx context.Context, request *DescribeAuditLogsRequest) (response *DescribeAuditLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAuditPoliciesRequest() (request *DescribeAuditPoliciesRequest) {
     request = &DescribeAuditPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},

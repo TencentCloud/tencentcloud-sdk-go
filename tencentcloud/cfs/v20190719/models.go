@@ -39,13 +39,13 @@ type AutoSnapshotPolicyInfo struct {
 	// 快照定期备份在一天的哪一小时
 	Hour *string `json:"Hour,omitempty" name:"Hour"`
 
-	// 是否激活定期快照功能
+	// 是否激活定期快照功能,1代表已激活，0代表未激活
 	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
 
 	// 下一次触发快照时间
 	NextActiveTime *string `json:"NextActiveTime,omitempty" name:"NextActiveTime"`
 
-	// 快照策略状态
+	// 快照策略状态，1代表快照策略状态正常。这里只有一种状态
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 帐号ID
@@ -68,7 +68,7 @@ type AutoSnapshotPolicyInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntervalDays *uint64 `json:"IntervalDays,omitempty" name:"IntervalDays"`
 
-	// 跨地域复制的快照保留时间
+	// 跨地域复制的快照保留时间，单位天
 	CrossRegionsAliveDays *uint64 `json:"CrossRegionsAliveDays,omitempty" name:"CrossRegionsAliveDays"`
 }
 
@@ -200,16 +200,16 @@ type BucketInfo struct {
 
 // Predefined struct for user
 type CreateAutoSnapshotPolicyRequestParams struct {
-	// 快照重复时间点
+	// 快照重复时间点,0-23
 	Hour *string `json:"Hour,omitempty" name:"Hour"`
 
 	// 策略名称
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 
-	// 快照重复日期，星期一到星期日
+	// 快照重复日期，星期一到星期日。 1代表星期一、7代表星期天
 	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
 
-	// 快照保留时长
+	// 快照保留时长，单位天
 	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
 
 	// 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。
@@ -222,16 +222,16 @@ type CreateAutoSnapshotPolicyRequestParams struct {
 type CreateAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 快照重复时间点
+	// 快照重复时间点,0-23
 	Hour *string `json:"Hour,omitempty" name:"Hour"`
 
 	// 策略名称
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 
-	// 快照重复日期，星期一到星期日
+	// 快照重复日期，星期一到星期日。 1代表星期一、7代表星期天
 	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
 
-	// 快照保留时长
+	// 快照保留时长，单位天
 	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
 
 	// 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。
@@ -2294,7 +2294,7 @@ type DescribeUserQuotaRequestParams struct {
 	// Offset 分页码
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// Limit 页面大小
+	// Limit 页面大小，可填范围为大于0的整数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -2312,7 +2312,7 @@ type DescribeUserQuotaRequest struct {
 	// Offset 分页码
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// Limit 页面大小
+	// Limit 页面大小，可填范围为大于0的整数
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -2373,13 +2373,13 @@ type FileSystemByPolicy struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
-	// 文件系统大小
+	// 文件系统大小，单位Byte
 	SizeByte *uint64 `json:"SizeByte,omitempty" name:"SizeByte"`
 
-	// 存储类型
+	// 存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
-	// 快照总大小
+	// 快照总大小，单位GiB
 	TotalSnapshotSize *uint64 `json:"TotalSnapshotSize,omitempty" name:"TotalSnapshotSize"`
 
 	// 文件系统创建时间
@@ -2428,10 +2428,10 @@ type FileSystemInfo struct {
 	// - upgrading:升级中
 	LifeCycleState *string `json:"LifeCycleState,omitempty" name:"LifeCycleState"`
 
-	// 文件系统已使用容量
+	// 文件系统已使用容量,单位Byte
 	SizeByte *uint64 `json:"SizeByte,omitempty" name:"SizeByte"`
 
-	// 文件系统最大空间限制
+	// 文件系统最大空间限制,GiB
 	SizeLimit *uint64 `json:"SizeLimit,omitempty" name:"SizeLimit"`
 
 	// 区域 ID
@@ -2440,10 +2440,10 @@ type FileSystemInfo struct {
 	// 区域名称
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 文件系统协议类型
+	// 文件系统协议类型, 支持 NFS,CIFS,TURBO
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 文件系统存储类型
+	// 存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
 	// 文件系统绑定的预付费存储包
@@ -2458,7 +2458,7 @@ type FileSystemInfo struct {
 	// 用户自定义名称
 	FsName *string `json:"FsName,omitempty" name:"FsName"`
 
-	// 文件系统是否加密
+	// 文件系统是否加密,true：代表加密，false：非加密
 	Encrypted *bool `json:"Encrypted,omitempty" name:"Encrypted"`
 
 	// 加密所使用的密钥，可以为密钥的 ID 或者 ARN
@@ -2467,7 +2467,7 @@ type FileSystemInfo struct {
 	// 应用ID
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
-	// 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定
+	// 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
 	BandwidthLimit *float64 `json:"BandwidthLimit,omitempty" name:"BandwidthLimit"`
 
 	// 文件系统总容量
@@ -2477,6 +2477,8 @@ type FileSystemInfo struct {
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
 	// 文件系统生命周期管理状态
+	// NotAvailable：不可用
+	// Available:可用
 	TieringState *string `json:"TieringState,omitempty" name:"TieringState"`
 
 	// 分层存储详情
@@ -2965,7 +2967,7 @@ type SnapshotInfo struct {
 	// 快照ID
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
-	// 快照状态
+	// 快照状态，createing-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 地域名称
@@ -2980,7 +2982,7 @@ type SnapshotInfo struct {
 	// 保留时长天
 	AliveDay *uint64 `json:"AliveDay,omitempty" name:"AliveDay"`
 
-	// 快照进度
+	// 快照进度百分比，1表示1%
 	Percent *uint64 `json:"Percent,omitempty" name:"Percent"`
 
 	// 帐号ID
@@ -2995,29 +2997,37 @@ type SnapshotInfo struct {
 	// 快照标签
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
-	// 快照类型
+	// 快照类型, general为通用系列快照，turbo为Turbo系列快照
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotType *string `json:"SnapshotType,omitempty" name:"SnapshotType"`
 
-	// 实际快照时间，这里主要是为了标识跨地域复制快照的时间快照时间
+	// 实际快照时间，反应快照对应文件系统某个时刻的数据。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotTime *string `json:"SnapshotTime,omitempty" name:"SnapshotTime"`
 }
 
 type SnapshotOperateLog struct {
 	// 操作类型
+	// CreateCfsSnapshot：创建快照
+	// DeleteCfsSnapshot：删除快照
+	// CreateCfsFileSystem：创建文件系统
+	// UpdateCfsSnapshotAttribute：更新快照
 	Action *string `json:"Action,omitempty" name:"Action"`
 
 	// 操作时间
 	ActionTime *string `json:"ActionTime,omitempty" name:"ActionTime"`
 
 	// 操作名称
+	// CreateCfsSnapshot
+	// DeleteCfsSnapshot
+	// CreateCfsFileSystem
+	// UpdateCfsSnapshotAttribute
 	ActionName *string `json:"ActionName,omitempty" name:"ActionName"`
 
-	// 操作者
+	// 操作者uin
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
-	// 结果
+	// 1-任务进行中；2-任务成功；3-任务失败
 	Result *uint64 `json:"Result,omitempty" name:"Result"`
 }
 
@@ -3178,7 +3188,7 @@ type UpdateAutoSnapshotPolicyRequestParams struct {
 	// 快照策略名称
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 
-	// 快照定期备份在一星期哪一天
+	// 快照定期备份，按照星期一到星期日。 1代表星期一，7代表星期日
 	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
 
 	// 快照定期备份在一天的哪一小时
@@ -3187,7 +3197,7 @@ type UpdateAutoSnapshotPolicyRequestParams struct {
 	// 快照保留日期
 	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
 
-	// 是否激活定期快照功能
+	// 是否激活定期快照功能；1代表激活，0代表未激活
 	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
 
 	// 定期快照在每月的第几天创建快照，该参数与DayOfWeek互斥
@@ -3206,7 +3216,7 @@ type UpdateAutoSnapshotPolicyRequest struct {
 	// 快照策略名称
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 
-	// 快照定期备份在一星期哪一天
+	// 快照定期备份，按照星期一到星期日。 1代表星期一，7代表星期日
 	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
 
 	// 快照定期备份在一天的哪一小时
@@ -3215,7 +3225,7 @@ type UpdateAutoSnapshotPolicyRequest struct {
 	// 快照保留日期
 	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
 
-	// 是否激活定期快照功能
+	// 是否激活定期快照功能；1代表激活，0代表未激活
 	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
 
 	// 定期快照在每月的第几天创建快照，该参数与DayOfWeek互斥

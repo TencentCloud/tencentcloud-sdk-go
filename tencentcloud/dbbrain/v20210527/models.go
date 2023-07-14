@@ -279,7 +279,7 @@ func (r *CancelKillTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CloseAuditServiceRequestParams struct {
-	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
@@ -292,7 +292,7 @@ type CloseAuditServiceRequestParams struct {
 type CloseAuditServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
@@ -1664,7 +1664,7 @@ func (r *DescribeAllUserGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditInstanceListRequestParams struct {
-	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
@@ -1686,7 +1686,7 @@ type DescribeAuditInstanceListRequestParams struct {
 type DescribeAuditInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
@@ -4766,7 +4766,7 @@ type MailConfiguration struct {
 
 // Predefined struct for user
 type ModifyAuditServiceRequestParams struct {
-	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
@@ -4775,17 +4775,17 @@ type ModifyAuditServiceRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 日志保存总时长，只能是7,30,90,180,365,1095,1825
+	// 日志保存总时长，只能是7,30,90,180,365,1095,1825。
 	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
 
-	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
 	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
 }
 
 type ModifyAuditServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
@@ -4794,10 +4794,10 @@ type ModifyAuditServiceRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 日志保存总时长，只能是7,30,90,180,365,1095,1825
+	// 日志保存总时长，只能是7,30,90,180,365,1095,1825。
 	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
 
-	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
 	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
 }
 
@@ -5074,38 +5074,38 @@ type MySqlProcess struct {
 
 // Predefined struct for user
 type OpenAuditServiceRequestParams struct {
-	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
 	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
 
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 日志保存总时长，只能是7,30,90,180,365,1095,1825
+	// 日志保存总时长，只能是7,30,90,180,365,1095,1825。
 	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
 
-	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
 	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
 }
 
 type OpenAuditServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 与Product保持一致。如："dcdb" ,"mariadb"。
+	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
 	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
 
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 日志保存总时长，只能是7,30,90,180,365,1095,1825
+	// 日志保存总时长，只能是7,30,90,180,365,1095,1825。
 	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
 
-	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825
+	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
 	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
 }
 

@@ -180,7 +180,7 @@ type ApiEnvironmentStrategy struct {
 	EnvironmentStrategySet []*EnvironmentStrategy `json:"EnvironmentStrategySet,omitempty" name:"EnvironmentStrategySet"`
 }
 
-type ApiEnvironmentStrategyStataus struct {
+type ApiEnvironmentStrategyStatus struct {
 	// API绑定的限流策略数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -3863,7 +3863,7 @@ func (r *DescribeApiEnvironmentStrategyRequest) FromJsonString(s string) error {
 type DescribeApiEnvironmentStrategyResponseParams struct {
 	// api绑定策略详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiEnvironmentStrategyStataus `json:"Result,omitempty" name:"Result"`
+	Result *ApiEnvironmentStrategyStatus `json:"Result,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4844,7 +4844,7 @@ func (r *DescribeIPStrategysStatusRequest) FromJsonString(s string) error {
 type DescribeIPStrategysStatusResponseParams struct {
 	// 符合条件的策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *IPStrategysStatus `json:"Result,omitempty" name:"Result"`
+	Result *IPStrategiesStatus `json:"Result,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7035,6 +7035,16 @@ type HealthCheckConf struct {
 	ErrorThresholdPercentage *int64 `json:"ErrorThresholdPercentage,omitempty" name:"ErrorThresholdPercentage"`
 }
 
+type IPStrategiesStatus struct {
+	// 策略数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 策略列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategySet []*IPStrategy `json:"StrategySet,omitempty" name:"StrategySet"`
+}
+
 type IPStrategy struct {
 	// 策略唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7104,16 +7114,6 @@ type IPStrategyApiStatus struct {
 	// 环境绑定API详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiIdStatusSet []*IPStrategyApi `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
-}
-
-type IPStrategysStatus struct {
-	// 策略数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 策略列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategySet []*IPStrategy `json:"StrategySet,omitempty" name:"StrategySet"`
 }
 
 // Predefined struct for user

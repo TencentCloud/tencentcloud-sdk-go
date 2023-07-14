@@ -2,9 +2,9 @@
 
 ## API 网关(apigateway) 版本：2018-08-08
 
-### 第 40 次发布
+### 第 41 次发布
 
-发布时间：2023-07-13 01:02:00
+发布时间：2023-07-14 01:02:00
 
 本次发布包含了以下内容：
 
@@ -12,111 +12,32 @@
 
 修改接口：
 
-* [DescribeLogSearch](https://cloud.tencent.com/document/api/628/45203)
+* [DescribeApiEnvironmentStrategy](https://cloud.tencent.com/document/api/628/45181)
 
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+* [DescribeIPStrategysStatus](https://cloud.tencent.com/document/api/628/45230)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+
+新增数据结构：
+
+* [ApiEnvironmentStrategyStatus](https://cloud.tencent.com/document/api/628/45244#ApiEnvironmentStrategyStatus)
+* [IPStrategiesStatus](https://cloud.tencent.com/document/api/628/45244#IPStrategiesStatus)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ApiEnvironmentStrategyStataus
+* IPStrategysStatus
 
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 136 次发布
+### 第 137 次发布
 
-发布时间：2023-07-13 01:06:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AnalyzeAuditLogs](https://cloud.tencent.com/document/api/236/89112)
-
-	* 新增入参：LogFilter
-
-* [CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)
-
-	* 新增入参：LogFilter
-
-
-新增数据结构：
-
-* [InstanceAuditLogFilters](https://cloud.tencent.com/document/api/236/15878#InstanceAuditLogFilters)
-
-
-
-## 消息队列 CKafka(ckafka) 版本：2019-08-19
-
-### 第 88 次发布
-
-发布时间：2023-07-12 19:20:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
-
-	* 新增成员：BrokerVipList
-
-
-### 第 87 次发布
-
-发布时间：2023-07-12 17:31:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Route](https://cloud.tencent.com/document/api/597/40861#Route)
-
-	* 新增成员：Subnet, VpcId
-
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 61 次发布
-
-发布时间：2023-07-13 01:13:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAuditLogFile](https://cloud.tencent.com/document/api/1003/81440)
-
-	* 新增入参：LogFilter
-
-* [DescribeAuditLogs](https://cloud.tencent.com/document/api/1003/81437)
-
-	* 新增入参：LogFilter
-
-
-新增数据结构：
-
-* [InstanceAuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditLogFilter)
-
-修改数据结构：
-
-* [AuditLog](https://cloud.tencent.com/document/api/1003/48097#AuditLog)
-
-	* 新增成员：CheckRows, CpuTime, IoWaitTime, LockWaitTime, TrxLivingTime, NsTime
-
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
-
-### 第 22 次发布
-
-发布时间：2023-07-13 01:15:30
+发布时间：2023-07-14 01:06:10
 
 本次发布包含了以下内容：
 
@@ -124,28 +45,19 @@
 
 新增接口：
 
-* [CloseAuditService](https://cloud.tencent.com/document/api/1130/95014)
-* [DescribeAuditInstanceList](https://cloud.tencent.com/document/api/1130/95013)
-* [ModifyAuditService](https://cloud.tencent.com/document/api/1130/95012)
-* [OpenAuditService](https://cloud.tencent.com/document/api/1130/95011)
+* [DescribeAuditLogs](https://cloud.tencent.com/document/api/236/95032)
 
 新增数据结构：
 
-* [AuditInstance](https://cloud.tencent.com/document/api/1130/57812#AuditInstance)
-* [AuditInstanceFilter](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceFilter)
-* [AuditInstanceInfo](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceInfo)
+* [AuditLog](https://cloud.tencent.com/document/api/236/15878#AuditLog)
 
 
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+## 文件存储(cfs) 版本：2019-07-19
 
+### 第 24 次发布
 
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 93 次发布
-
-发布时间：2023-07-13 01:20:20
+发布时间：2023-07-14 01:07:56
 
 本次发布包含了以下内容：
 
@@ -153,26 +65,35 @@
 
 修改数据结构：
 
-* [CreateFlowOption](https://cloud.tencent.com/document/api/1420/61525#CreateFlowOption)
+* [AutoSnapshotPolicyInfo](https://cloud.tencent.com/document/api/582/38175#AutoSnapshotPolicyInfo)
 
-	* 新增成员：HideShowFlowName, HideShowFlowType, HideShowDeadline, CanSkipAddApprover, CustomCreateFlowDescription
-
-* [FormField](https://cloud.tencent.com/document/api/1420/61525#FormField)
-
-	* 新增成员：LockComponentValue
+	* <font color="#dd0000">**修改成员**：</font>DayOfMonth, IntervalDays, CrossRegionsAliveDays
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 40 次发布
+
+发布时间：2023-07-14 01:08:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAddressTemplate](https://cloud.tencent.com/document/api/1132/95034)
+* [DeleteAddressTemplate](https://cloud.tencent.com/document/api/1132/95033)
 
 
 
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+## 低代码互动课堂(lcic) 版本：2022-08-17
 
-### 第 67 次发布
+### 第 30 次发布
 
-发布时间：2023-07-13 01:38:37
+发布时间：2023-07-14 01:25:31
 
 本次发布包含了以下内容：
 
@@ -180,14 +101,73 @@
 
 修改接口：
 
-* [CreateRole](https://cloud.tencent.com/document/api/1179/62401)
+* [DescribeDocument](https://cloud.tencent.com/document/api/1639/86321)
 
-	* 新增出参：EnvironmentRoleSets
+	* 新增出参：Preview
 
 
-新增数据结构：
 
-* [EnvironmentRoleSet](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRoleSet)
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 98 次发布
+
+发布时间：2023-07-14 01:35:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
+
+	* <font color="#dd0000">**修改出参**：</font>Cpu, Mem
+
+* [DescribeCurveData](https://cloud.tencent.com/document/api/876/59512)
+
+	* <font color="#dd0000">**修改出参**：</font>NewValues
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 159 次发布
+
+发布时间：2023-07-14 01:40:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/457/31866#DataDisk)
+
+	* <font color="#dd0000">**修改成员**：</font>MountTarget
+
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 16 次发布
+
+发布时间：2023-07-14 01:46:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CustomerProfile](https://cloud.tencent.com/document/api/1318/56791#CustomerProfile)
+
+	* 新增成员：LeadId, WxId, Position, IsBindWx, IsInvalid, InvalidType, InvalidTypeName, InvalidTime, InvalidRemark, IsLose, LoseType, LoseTypeName, LoseRemark
+
+	* <font color="#dd0000">**修改成员**：</font>CustomerId, DealerCode, UnionId, CreateTime, UserName, Gender, Phone, AgeRangeName, JobTypeName, Address, LeadsProcessStatus, LeadType, SourceName, LeadsLevelCode, VehicleBrandCode, VehicleSeriesCode, VehicleTypeCode, VehiclePurpose, PurchaseConcern, SalesName, SalesPhone, RealArrivalTime, CompleteTestDriveTime, OrderTime, DeliveryTime, InvoiceTime, LoseTime, CreatedAtTime, ImportAtTime, DistributeTime, LeadCreateTime, Nickname, OrgIdList, Introducer, IntroducerPhone, FollowTime, NextFollowTime, EnterpriseTags, ChannelTags
+
 
 
 
@@ -3304,6 +3284,35 @@
 
 
 ## API 网关(apigateway) 版本：2018-08-08
+
+### 第 41 次发布
+
+发布时间：2023-07-14 01:02:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeApiEnvironmentStrategy](https://cloud.tencent.com/document/api/628/45181)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+* [DescribeIPStrategysStatus](https://cloud.tencent.com/document/api/628/45230)
+
+	* <font color="#dd0000">**修改出参**：</font>Result
+
+
+新增数据结构：
+
+* [[ApiEnvironmentStrategyStatus](https://cloud.tencent.com/document/api/628/45244#ApiEnvironmentStrategyStatus)](https://cloud.tencent.com/document/api/628/45244#[ApiEnvironmentStrategyStatus](https://cloud.tencent.com/document/api/628/45244#ApiEnvironmentStrategyStatus))
+* [[IPStrategiesStatus](https://cloud.tencent.com/document/api/628/45244#IPStrategiesStatus)](https://cloud.tencent.com/document/api/628/45244#[IPStrategiesStatus](https://cloud.tencent.com/document/api/628/45244#IPStrategiesStatus))
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ApiEnvironmentStrategyStataus
+* IPStrategysStatus
 
 ### 第 40 次发布
 
@@ -14145,6 +14154,22 @@
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
 
+### 第 137 次发布
+
+发布时间：2023-07-14 01:06:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAuditLogs](https://cloud.tencent.com/document/api/236/95032)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AuditLog](https://cloud.tencent.com/document/api/236/15878#AuditLog)](https://cloud.tencent.com/document/api/236/15878#[AuditLog](https://cloud.tencent.com/document/api/236/15878#AuditLog))
+
 ### 第 136 次发布
 
 发布时间：2023-07-13 01:06:06
@@ -14166,7 +14191,7 @@
 
 新增数据结构：
 
-* [[InstanceAuditLogFilters](https://cloud.tencent.com/document/api/236/15878#InstanceAuditLogFilters)](https://cloud.tencent.com/document/api/236/15878#[InstanceAuditLogFilters](https://cloud.tencent.com/document/api/236/15878#InstanceAuditLogFilters))
+* [InstanceAuditLogFilters](https://cloud.tencent.com/document/api/236/15878#InstanceAuditLogFilters)
 
 ### 第 135 次发布
 
@@ -20244,6 +20269,21 @@
 
 ## 文件存储(cfs) 版本：2019-07-19
 
+### 第 24 次发布
+
+发布时间：2023-07-14 01:07:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutoSnapshotPolicyInfo](https://cloud.tencent.com/document/api/582/38175#AutoSnapshotPolicyInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>DayOfMonth, IntervalDays, CrossRegionsAliveDays
+
+
 ### 第 23 次发布
 
 发布时间：2023-07-12 01:12:32
@@ -20697,6 +20737,19 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 40 次发布
+
+发布时间：2023-07-14 01:08:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAddressTemplate](https://cloud.tencent.com/document/api/1132/95034)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAddressTemplate](https://cloud.tencent.com/document/api/1132/95033)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 39 次发布
 
@@ -37255,7 +37308,7 @@
 
 新增数据结构：
 
-* [[InstanceAuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditLogFilter)](https://cloud.tencent.com/document/api/1003/48097#[InstanceAuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditLogFilter))
+* [InstanceAuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditLogFilter)
 
 修改数据结构：
 
@@ -39793,16 +39846,16 @@
 
 新增接口：
 
-* [[CloseAuditService](https://cloud.tencent.com/document/api/1130/95014)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAuditInstanceList](https://cloud.tencent.com/document/api/1130/95013)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAuditService](https://cloud.tencent.com/document/api/1130/95012)](https://cloud.tencent.com/document/api/#/#)
-* [[OpenAuditService](https://cloud.tencent.com/document/api/1130/95011)](https://cloud.tencent.com/document/api/#/#)
+* [CloseAuditService](https://cloud.tencent.com/document/api/1130/95014)
+* [DescribeAuditInstanceList](https://cloud.tencent.com/document/api/1130/95013)
+* [ModifyAuditService](https://cloud.tencent.com/document/api/1130/95012)
+* [OpenAuditService](https://cloud.tencent.com/document/api/1130/95011)
 
 新增数据结构：
 
-* [[AuditInstance](https://cloud.tencent.com/document/api/1130/57812#AuditInstance)](https://cloud.tencent.com/document/api/1130/57812#[AuditInstance](https://cloud.tencent.com/document/api/1130/57812#AuditInstance))
-* [[AuditInstanceFilter](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceFilter)](https://cloud.tencent.com/document/api/1130/57812#[AuditInstanceFilter](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceFilter))
-* [[AuditInstanceInfo](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceInfo)](https://cloud.tencent.com/document/api/1130/57812#[AuditInstanceInfo](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceInfo))
+* [AuditInstance](https://cloud.tencent.com/document/api/1130/57812#AuditInstance)
+* [AuditInstanceFilter](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceFilter)
+* [AuditInstanceInfo](https://cloud.tencent.com/document/api/1130/57812#AuditInstanceInfo)
 
 ### 第 21 次发布
 
@@ -64386,6 +64439,21 @@
 
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 30 次发布
+
+发布时间：2023-07-14 01:25:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDocument](https://cloud.tencent.com/document/api/1639/86321)
+
+	* 新增出参：Preview
+
 
 ### 第 29 次发布
 
@@ -90354,6 +90422,25 @@
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
 
+### 第 98 次发布
+
+发布时间：2023-07-14 01:35:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
+
+	* <font color="#dd0000">**修改出参**：</font>Cpu, Mem
+
+* [DescribeCurveData](https://cloud.tencent.com/document/api/876/59512)
+
+	* <font color="#dd0000">**修改出参**：</font>NewValues
+
+
 ### 第 97 次发布
 
 发布时间：2023-07-11 01:40:42
@@ -96226,7 +96313,7 @@
 
 新增数据结构：
 
-* [[EnvironmentRoleSet](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRoleSet)](https://cloud.tencent.com/document/api/1179/46089#[EnvironmentRoleSet](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRoleSet))
+* [EnvironmentRoleSet](https://cloud.tencent.com/document/api/1179/46089#EnvironmentRoleSet)
 
 ### 第 66 次发布
 
@@ -104774,6 +104861,21 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 159 次发布
+
+发布时间：2023-07-14 01:40:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataDisk](https://cloud.tencent.com/document/api/457/31866#DataDisk)
+
+	* <font color="#dd0000">**修改成员**：</font>MountTarget
+
 
 ### 第 158 次发布
 
@@ -122674,6 +122776,23 @@
 
 
 ## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 16 次发布
+
+发布时间：2023-07-14 01:46:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CustomerProfile](https://cloud.tencent.com/document/api/1318/56791#CustomerProfile)
+
+	* 新增成员：LeadId, WxId, Position, IsBindWx, IsInvalid, InvalidType, InvalidTypeName, InvalidTime, InvalidRemark, IsLose, LoseType, LoseTypeName, LoseRemark
+
+	* <font color="#dd0000">**修改成员**：</font>CustomerId, DealerCode, UnionId, CreateTime, UserName, Gender, Phone, AgeRangeName, JobTypeName, Address, LeadsProcessStatus, LeadType, SourceName, LeadsLevelCode, VehicleBrandCode, VehicleSeriesCode, VehicleTypeCode, VehiclePurpose, PurchaseConcern, SalesName, SalesPhone, RealArrivalTime, CompleteTestDriveTime, OrderTime, DeliveryTime, InvoiceTime, LoseTime, CreatedAtTime, ImportAtTime, DistributeTime, LeadCreateTime, Nickname, OrgIdList, Introducer, IntroducerPhone, FollowTime, NextFollowTime, EnterpriseTags, ChannelTags
+
 
 ### 第 15 次发布
 

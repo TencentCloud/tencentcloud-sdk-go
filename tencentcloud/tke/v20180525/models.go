@@ -2054,11 +2054,11 @@ func (r *CreateClusterReleaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateClusterRequestParams struct {
-	// 集群容器网络配置信息
-	ClusterCIDRSettings *ClusterCIDRSettings `json:"ClusterCIDRSettings,omitempty" name:"ClusterCIDRSettings"`
-
 	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
 	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群容器网络配置信息
+	ClusterCIDRSettings *ClusterCIDRSettings `json:"ClusterCIDRSettings,omitempty" name:"ClusterCIDRSettings"`
 
 	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
 	RunInstancesForNode []*RunInstancesForNode `json:"RunInstancesForNode,omitempty" name:"RunInstancesForNode"`
@@ -2085,11 +2085,11 @@ type CreateClusterRequestParams struct {
 type CreateClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群容器网络配置信息
-	ClusterCIDRSettings *ClusterCIDRSettings `json:"ClusterCIDRSettings,omitempty" name:"ClusterCIDRSettings"`
-
 	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
 	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群容器网络配置信息
+	ClusterCIDRSettings *ClusterCIDRSettings `json:"ClusterCIDRSettings,omitempty" name:"ClusterCIDRSettings"`
 
 	// CVM创建透传参数，json化字符串格式，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。总机型(包括地域)数量不超过10个，相同机型(地域)购买多台机器可以通过设置参数中RunInstances中InstanceCount来实现。
 	RunInstancesForNode []*RunInstancesForNode `json:"RunInstancesForNode,omitempty" name:"RunInstancesForNode"`
@@ -2125,8 +2125,8 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ClusterCIDRSettings")
 	delete(f, "ClusterType")
+	delete(f, "ClusterCIDRSettings")
 	delete(f, "RunInstancesForNode")
 	delete(f, "ClusterBasicSettings")
 	delete(f, "ClusterAdvancedSettings")

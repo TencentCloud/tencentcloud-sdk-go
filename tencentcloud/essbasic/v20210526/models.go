@@ -634,9 +634,9 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 
 	// WEB嵌入资源类型。
 	// CREATE_SEAL: 创建印章
-	// CREATE_TEMPLATE：创建模版
-	// MODIFY_TEMPLATE：修改模版
-	// PREVIEW_TEMPLATE：预览模版
+	// CREATE_TEMPLATE：创建模板
+	// MODIFY_TEMPLATE：修改模板
+	// PREVIEW_TEMPLATE：预览模板
 	// PREVIEW_FLOW：预览合同文档
 	// PREVIEW_FLOW_DETAIL：预览合同详情
 	// PREVIEW_SEAL_LIST：预览印章列表
@@ -645,7 +645,7 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
-	// EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模版id
+	// EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模板id
 	// PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时必填，取值为合同id
 	// PREVIEW_SEAL_DETAIL，必填，取值为印章id
 	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
@@ -667,9 +667,9 @@ type ChannelCreateEmbedWebUrlRequest struct {
 
 	// WEB嵌入资源类型。
 	// CREATE_SEAL: 创建印章
-	// CREATE_TEMPLATE：创建模版
-	// MODIFY_TEMPLATE：修改模版
-	// PREVIEW_TEMPLATE：预览模版
+	// CREATE_TEMPLATE：创建模板
+	// MODIFY_TEMPLATE：修改模板
+	// PREVIEW_TEMPLATE：预览模板
 	// PREVIEW_FLOW：预览合同文档
 	// PREVIEW_FLOW_DETAIL：预览合同详情
 	// PREVIEW_SEAL_LIST：预览印章列表
@@ -678,7 +678,7 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
-	// EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模版id
+	// EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模板id
 	// PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时必填，取值为合同id
 	// PREVIEW_SEAL_DETAIL，必填，取值为印章id
 	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
@@ -3258,19 +3258,19 @@ type CreateFlowOption struct {
 	// 是否允许修改合同信息，true-是，false-否
 	CanEditFlow *bool `json:"CanEditFlow,omitempty" name:"CanEditFlow"`
 
-	// 是否允许发起合同弹窗隐藏合同名称
+	// 是否允许发起合同弹窗隐藏合同名称，true-允许，false-不允许
 	HideShowFlowName *bool `json:"HideShowFlowName,omitempty" name:"HideShowFlowName"`
 
-	// 是否允许发起合同弹窗隐藏合同类型
+	// 是否允许发起合同弹窗隐藏合同类型，true-允许，false-不允许
 	HideShowFlowType *bool `json:"HideShowFlowType,omitempty" name:"HideShowFlowType"`
 
-	// 是否允许发起合同弹窗隐藏合同到期时间
+	// 是否允许发起合同弹窗隐藏合同到期时间，true-允许，false-不允许
 	HideShowDeadline *bool `json:"HideShowDeadline,omitempty" name:"HideShowDeadline"`
 
-	// 是否允许发起合同步骤跳过指定签署方步骤
+	// 是否允许发起合同步骤跳过指定签署方步骤，true-允许，false-不允许
 	CanSkipAddApprover *bool `json:"CanSkipAddApprover,omitempty" name:"CanSkipAddApprover"`
 
-	// 定制化发起合同页合同描述信息
+	// 定制化发起合同弹窗的描述信息，描述信息最长500
 	CustomCreateFlowDescription *string `json:"CustomCreateFlowDescription,omitempty" name:"CustomCreateFlowDescription"`
 }
 
@@ -4401,8 +4401,8 @@ type FlowApproverInfo struct {
 	// - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
 	SignId *string `json:"SignId,omitempty" name:"SignId"`
 
-	// SMS: 短信; NONE: 不发信息
-	// 默认为SMS(该字段对子客无效)
+	// SMS: 短信(需确保“电子签短信通知签署方”功能是开启状态才能生效); NONE: 不发信息
+	// 默认为SMS(签署方为子客时该字段不生效)
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 }
 
@@ -4582,7 +4582,7 @@ type FormField struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 
-	// 是否锁定模版控件值，锁定后无法修改（用于嵌入式发起合同）
+	// 是否锁定模版控件值，锁定后无法修改（用于嵌入式发起合同），true-锁定，false-不锁定
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockComponentValue *bool `json:"LockComponentValue,omitempty" name:"LockComponentValue"`
 }
@@ -4877,7 +4877,7 @@ type OperateChannelTemplateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 描述模版可见性更改的结果，和参数中Available无关，全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示。
+	// 描述模板可见性更改的结果，和参数中Available无关，全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateResult *string `json:"OperateResult,omitempty" name:"OperateResult"`
 

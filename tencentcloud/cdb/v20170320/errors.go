@@ -101,6 +101,9 @@ const (
 	// 数据库代理状态异常。
 	FAILEDOPERATION_PROXYGROUPSTATUSERROR = "FailedOperation.ProxyGroupStatusError"
 
+	// 查询审计任务失败。
+	FAILEDOPERATION_QUERYAUDITTASKFAILERROR = "FailedOperation.QueryAuditTaskFailError"
+
 	// 查询日志失败。
 	FAILEDOPERATION_QUERYLOGERROR = "FailedOperation.QueryLogError"
 
@@ -145,6 +148,9 @@ const (
 
 	// 审计内部服务错误。
 	INTERNALERROR_AUDITDELETEPOLICYERROR = "InternalError.AuditDeletePolicyError"
+
+	// 查询审计日志错误。
+	INTERNALERROR_AUDITDESCRIBELOGERROR = "InternalError.AuditDescribeLogError"
 
 	// 审计内部服务错误。
 	INTERNALERROR_AUDITERROR = "InternalError.AuditError"
@@ -493,6 +499,15 @@ const (
 
 	// 数据库代理升级任务中，不允许该操作。
 	OPERATIONDENIED_PROXYUPGRADETASKSTATUSERROR = "OperationDenied.ProxyUpgradeTaskStatusError"
+
+	// 查询审计日志失败。
+	OPERATIONDENIED_QUERYAUDITLOGSERROR = "OperationDenied.QueryAuditLogsError"
+
+	// 资源未找到。
+	OPERATIONDENIED_RESOURCENOTFOUNDERROR = "OperationDenied.ResourceNotFoundError"
+
+	// 资源未找到。
+	OPERATIONDENIED_RESOURCENOTFUNDERROR = "OperationDenied.ResourceNotFundError"
 
 	// 结果集超过限制，请缩小检索范围。
 	OPERATIONDENIED_RESULTOVERLIMIT = "OperationDenied.ResultOverLimit"

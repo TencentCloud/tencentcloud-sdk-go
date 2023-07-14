@@ -1021,6 +1021,46 @@ type CustomerProfile struct {
 	// 已为该客户添加的渠道标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelTags []*ChannelTag `json:"ChannelTags,omitempty" name:"ChannelTags"`
+
+	// 关联线索id
+	LeadId *uint64 `json:"LeadId,omitempty" name:"LeadId"`
+
+	// 客户微信id
+	WxId *string `json:"WxId,omitempty" name:"WxId"`
+
+	// 顾问职位
+	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 是否关联微信 1 是 0 否
+	IsBindWx *int64 `json:"IsBindWx,omitempty" name:"IsBindWx"`
+
+	// 是否无效
+	IsInvalid *int64 `json:"IsInvalid,omitempty" name:"IsInvalid"`
+
+	// 无效类型
+	InvalidType *string `json:"InvalidType,omitempty" name:"InvalidType"`
+
+	// 无效类型名称
+	InvalidTypeName *string `json:"InvalidTypeName,omitempty" name:"InvalidTypeName"`
+
+	// 无效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvalidTime *uint64 `json:"InvalidTime,omitempty" name:"InvalidTime"`
+
+	// 由顾问手动输入的无效原因文字
+	InvalidRemark *string `json:"InvalidRemark,omitempty" name:"InvalidRemark"`
+
+	// 线索是否战败
+	IsLose *int64 `json:"IsLose,omitempty" name:"IsLose"`
+
+	// 战败类型
+	LoseType *string `json:"LoseType,omitempty" name:"LoseType"`
+
+	// 战败类型名称
+	LoseTypeName *string `json:"LoseTypeName,omitempty" name:"LoseTypeName"`
+
+	// 战败申请原因
+	LoseRemark *string `json:"LoseRemark,omitempty" name:"LoseRemark"`
 }
 
 type DealerInfo struct {

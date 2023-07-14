@@ -321,6 +321,60 @@ func (c *Client) CreateAcRulesWithContext(ctx context.Context, request *CreateAc
     return
 }
 
+func NewCreateAddressTemplateRequest() (request *CreateAddressTemplateRequest) {
+    request = &CreateAddressTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateAddressTemplate")
+    
+    
+    return
+}
+
+func NewCreateAddressTemplateResponse() (response *CreateAddressTemplateResponse) {
+    response = &CreateAddressTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAddressTemplate
+// 创建地址模板规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAddressTemplate(request *CreateAddressTemplateRequest) (response *CreateAddressTemplateResponse, err error) {
+    return c.CreateAddressTemplateWithContext(context.Background(), request)
+}
+
+// CreateAddressTemplate
+// 创建地址模板规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAddressTemplateWithContext(ctx context.Context, request *CreateAddressTemplateRequest) (response *CreateAddressTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateAddressTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAddressTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAddressTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateChooseVpcsRequest() (request *CreateChooseVpcsRequest) {
     request = &CreateChooseVpcsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -699,6 +753,60 @@ func (c *Client) DeleteAcRuleWithContext(ctx context.Context, request *DeleteAcR
     request.SetContext(ctx)
     
     response = NewDeleteAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAddressTemplateRequest() (request *DeleteAddressTemplateRequest) {
+    request = &DeleteAddressTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteAddressTemplate")
+    
+    
+    return
+}
+
+func NewDeleteAddressTemplateResponse() (response *DeleteAddressTemplateResponse) {
+    response = &DeleteAddressTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAddressTemplate
+// 删除地址模板规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAddressTemplate(request *DeleteAddressTemplateRequest) (response *DeleteAddressTemplateResponse, err error) {
+    return c.DeleteAddressTemplateWithContext(context.Background(), request)
+}
+
+// DeleteAddressTemplate
+// 删除地址模板规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteAddressTemplateWithContext(ctx context.Context, request *DeleteAddressTemplateRequest) (response *DeleteAddressTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteAddressTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAddressTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAddressTemplateResponse()
     err = c.Send(request, response)
     return
 }

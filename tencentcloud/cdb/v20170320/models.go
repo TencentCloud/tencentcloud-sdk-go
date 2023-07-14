@@ -600,6 +600,68 @@ type AuditFilter struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type AuditLog struct {
+	// 影响行数。
+	AffectRows *int64 `json:"AffectRows,omitempty" name:"AffectRows"`
+
+	// 错误码。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// SQL 类型。
+	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+
+	// 审计策略名称，逐步下线。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 数据库名称。
+	DBName *string `json:"DBName,omitempty" name:"DBName"`
+
+	// SQL 语句。
+	Sql *string `json:"Sql,omitempty" name:"Sql"`
+
+	// 客户端地址。
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 用户名。
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 执行时间，微秒。
+	ExecTime *int64 `json:"ExecTime,omitempty" name:"ExecTime"`
+
+	// 时间。
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 返回行数。
+	SentRows *int64 `json:"SentRows,omitempty" name:"SentRows"`
+
+	// 线程ID。
+	ThreadId *int64 `json:"ThreadId,omitempty" name:"ThreadId"`
+
+	// 扫描行数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckRows *int64 `json:"CheckRows,omitempty" name:"CheckRows"`
+
+	// cpu执行时间，微秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuTime *float64 `json:"CpuTime,omitempty" name:"CpuTime"`
+
+	// IO等待时间，微秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IoWaitTime *uint64 `json:"IoWaitTime,omitempty" name:"IoWaitTime"`
+
+	// 锁等待时间，微秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockWaitTime *uint64 `json:"LockWaitTime,omitempty" name:"LockWaitTime"`
+
+	// 开始时间，与timestamp构成一个精确到纳秒的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NsTime *uint64 `json:"NsTime,omitempty" name:"NsTime"`
+
+	// 事物持续时间，微秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrxLivingTime *uint64 `json:"TrxLivingTime,omitempty" name:"TrxLivingTime"`
+}
+
 type AuditLogAggregationResult struct {
 	// 聚合维度
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4332,6 +4394,122 @@ func (r *DescribeAuditLogFilesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditLogsRequestParams struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数，单次返回的数据条数。默认值为100，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段。支持值包括：
+	// "timestamp" - 时间戳；
+	// "affectRows" - 影响行数；
+	// "execTime" - 执行时间。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 过滤条件。可按设置的过滤条件过滤日志。
+	LogFilter []*InstanceAuditLogFilters `json:"LogFilter,omitempty" name:"LogFilter"`
+}
+
+type DescribeAuditLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数，单次返回的数据条数。默认值为100，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段。支持值包括：
+	// "timestamp" - 时间戳；
+	// "affectRows" - 影响行数；
+	// "execTime" - 执行时间。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 过滤条件。可按设置的过滤条件过滤日志。
+	LogFilter []*InstanceAuditLogFilters `json:"LogFilter,omitempty" name:"LogFilter"`
+}
+
+func (r *DescribeAuditLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "OrderBy")
+	delete(f, "LogFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditLogsResponseParams struct {
+	// 符合条件的审计日志条数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 审计日志详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*AuditLog `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

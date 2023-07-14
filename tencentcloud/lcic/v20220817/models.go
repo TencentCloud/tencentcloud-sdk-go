@@ -2065,6 +2065,9 @@ type DescribeDocumentResponseParams struct {
 	// 课件页数
 	Pages *uint64 `json:"Pages,omitempty" name:"Pages"`
 
+	// 课件预览地址
+	Preview *string `json:"Preview,omitempty" name:"Preview"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

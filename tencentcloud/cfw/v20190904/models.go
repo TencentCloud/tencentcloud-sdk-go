@@ -735,6 +735,88 @@ func (r *CreateAcRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAddressTemplateRequestParams struct {
+	// 模板名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// Type为1，ip模板eg：1.1.1.1,2.2.2.2；
+	// Type为5，域名模板eg：www.qq.com,www.tencent.com
+	IpString *string `json:"IpString,omitempty" name:"IpString"`
+
+	// 1 ip模板
+	// 5 域名模板
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+type CreateAddressTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 模板描述
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
+
+	// Type为1，ip模板eg：1.1.1.1,2.2.2.2；
+	// Type为5，域名模板eg：www.qq.com,www.tencent.com
+	IpString *string `json:"IpString,omitempty" name:"IpString"`
+
+	// 1 ip模板
+	// 5 域名模板
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *CreateAddressTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAddressTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Detail")
+	delete(f, "IpString")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAddressTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAddressTemplateResponseParams struct {
+	// 创建结果,0成功
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAddressTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAddressTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateAddressTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAddressTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateChooseVpcsRequestParams struct {
 	// vpc列表
 	VpcList []*string `json:"VpcList,omitempty" name:"VpcList"`
@@ -1329,6 +1411,63 @@ func (r *DeleteAcRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAcRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAddressTemplateRequestParams struct {
+	// 模板id
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+}
+
+type DeleteAddressTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板id
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+}
+
+func (r *DeleteAddressTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAddressTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Uuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAddressTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAddressTemplateResponseParams struct {
+	// 删除结果,0成功
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAddressTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAddressTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteAddressTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAddressTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
