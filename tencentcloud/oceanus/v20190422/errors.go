@@ -95,6 +95,9 @@ const (
 	// 非法的 MaxParallelism 参数。
 	INVALIDPARAMETER_ILLEGALMAXPARALLELISM = "InvalidParameter.IllegalMaxParallelism"
 
+	// 非法的搜索字符串。
+	INVALIDPARAMETER_ILLEGALSEARCHKEYWORD = "InvalidParameter.IllegalSearchKeyword"
+
 	// appid错误。
 	INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 
@@ -137,8 +140,14 @@ const (
 	// CU内存规格不匹配。
 	INVALIDPARAMETERVALUE_CUMEM = "InvalidParameterValue.CuMem"
 
+	// 无效限制错误。
+	INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+
 	// 无效启动模式。
 	INVALIDPARAMETERVALUE_INVALIDSTARTMODE = "InvalidParameterValue.InvalidStartMode"
+
+	// 无效时间错误。
+	INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
 
 	// 作业id的参数无效。
 	INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
@@ -212,6 +221,9 @@ const (
 	// 找不到作业。
 	RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
 
+	// 找不到日志。
+	RESOURCENOTFOUND_LOGTOPIC = "ResourceNotFound.LogTopic"
+
 	// 程序包不存在。
 	RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 
@@ -265,6 +277,9 @@ const (
 
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
+
+	// Cls Sql未启用。
+	UNSUPPORTEDOPERATION_CLSSQLNOTENABLED = "UnsupportedOperation.ClsSqlNotEnabled"
 
 	// Checkpoint 时间间隔，错误。
 	UNSUPPORTEDOPERATION_INVALIDCHECKPOINTINTERVALERROR = "UnsupportedOperation.InvalidCheckpointIntervalError"

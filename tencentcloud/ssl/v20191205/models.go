@@ -1643,6 +1643,10 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" name:"EncryptAlgorithm"`
 
+	// DV证书吊销验证值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvRevokeAuthDetail []*DvAuths `json:"DvRevokeAuthDetail,omitempty" name:"DvRevokeAuthDetail"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1921,6 +1925,10 @@ type DescribeCertificateResponseParams struct {
 	// CA证书所有的到期时间	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEndTimes []*string `json:"CAEndTimes,omitempty" name:"CAEndTimes"`
+
+	// DV证书吊销验证值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DvRevokeAuthDetail []*DvAuths `json:"DvRevokeAuthDetail,omitempty" name:"DvRevokeAuthDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

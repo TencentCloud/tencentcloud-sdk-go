@@ -4280,7 +4280,7 @@ func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
 }
 
 // ListFirmwares
-// 本接口（ListFirmwares）用于获取固件列表 
+// 本接口（ListFirmwares）用于获取固件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4296,7 +4296,7 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
 }
 
 // ListFirmwares
-// 本接口（ListFirmwares）用于获取固件列表 
+// 本接口（ListFirmwares）用于获取固件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

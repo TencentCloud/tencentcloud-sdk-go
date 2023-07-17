@@ -5936,6 +5936,10 @@ type Instance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RdmaIpAddresses []*string `json:"RdmaIpAddresses,omitempty" name:"RdmaIpAddresses"`
 
+	// 实例所在的专用集群`ID`。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+
 	// 实例隔离类型。取值范围：<br><li>ARREAR：表示欠费隔离<br></li><li>EXPIRE：表示到期隔离<br></li><li>MANMADE：表示主动退还隔离<br></li><li>NOTISOLATED：表示未隔离<br></li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolatedSource *string `json:"IsolatedSource,omitempty" name:"IsolatedSource"`

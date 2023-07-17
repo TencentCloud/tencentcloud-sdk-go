@@ -3043,6 +3043,14 @@ type DescribeFirmwareTaskResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalVersion *string `json:"OriginalVersion,omitempty" name:"OriginalVersion"`
 
+	// 创建账号ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUserId *uint64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
+
+	// 创建账号ID昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

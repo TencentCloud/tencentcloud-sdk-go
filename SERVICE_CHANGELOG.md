@@ -1,10 +1,72 @@
 # 本版本更新包含以下内容：
 
-## API 网关(apigateway) 版本：2018-08-08
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 41 次发布
+### 第 110 次发布
 
-发布时间：2023-07-14 01:02:00
+发布时间：2023-07-17 01:12:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+
+	* 新增成员：DedicatedClusterId
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 87 次发布
+
+发布时间：2023-07-17 01:19:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateChannelSubOrganizationModifyQrCode
+
+修改数据结构：
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：SignComponents, Components, ComponentLimitType
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 94 次发布
+
+发布时间：2023-07-17 01:19:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateOrganizationModifyQrCode](https://cloud.tencent.com/document/api/1420/95067)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸试妆(fmu) 版本：2019-12-13
+
+### 第 7 次发布
+
+发布时间：2023-07-14 14:55:45
 
 本次发布包含了以下内容：
 
@@ -12,88 +74,177 @@
 
 修改接口：
 
-* [DescribeApiEnvironmentStrategy](https://cloud.tencent.com/document/api/628/45181)
+* [QueryBeautifyVideoJob](https://cloud.tencent.com/document/api/1172/47792)
 
-	* <font color="#dd0000">**修改出参**：</font>Result
+	* 新增出参：JobStatusCode
 
-* [DescribeIPStrategysStatus](https://cloud.tencent.com/document/api/628/45230)
 
-	* <font color="#dd0000">**修改出参**：</font>Result
 
+
+## 加速物联网套件(iot) 版本：2018-01-23
+
+### 第 7 次发布
+
+发布时间：2023-07-17 01:22:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* UnassociateSubDeviceFromGatewayProduct
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 52 次发布
+
+发布时间：2023-07-17 01:23:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeFirmwareTask](https://cloud.tencent.com/document/api/1081/53875)
+
+	* 新增出参：CreateUserId, CreatorNickName
+
+
+
+
+## 商场客留通(mall) 版本：2023-05-18
+
+### 第 1 次发布
+
+发布时间：2023-07-14 16:30:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDrawResourceList](https://cloud.tencent.com/document/api/1707/95048)
 
 新增数据结构：
 
-* [ApiEnvironmentStrategyStatus](https://cloud.tencent.com/document/api/628/45244#ApiEnvironmentStrategyStatus)
-* [IPStrategiesStatus](https://cloud.tencent.com/document/api/628/45244#IPStrategiesStatus)
+* [ResourceDrawListType](https://cloud.tencent.com/document/api/1707/95049#ResourceDrawListType)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 35 次发布
+
+发布时间：2023-07-17 01:29:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeJobSubmissionLog](https://cloud.tencent.com/document/api/849/95069)
+
+新增数据结构：
+
+* [JobInstanceForSubmissionLog](https://cloud.tencent.com/document/api/849/52010#JobInstanceForSubmissionLog)
+* [LogContent](https://cloud.tencent.com/document/api/849/52010#LogContent)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 105 次发布
+
+发布时间：2023-07-17 01:30:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InvoiceItem](https://cloud.tencent.com/document/api/866/33527#InvoiceItem)
+
+	* <font color="#dd0000">**修改成员**：</font>Page, SubType, TypeDescription, CutImage, SubTypeDescription
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 38 次发布
+
+发布时间：2023-07-17 01:34:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674)
+
+	* 新增出参：DvRevokeAuthDetail
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：DvRevokeAuthDetail
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 68 次发布
+
+发布时间：2023-07-17 01:38:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateAMQPCluster
+* CreateAMQPExchange
+* CreateAMQPQueue
+* CreateAMQPRouteRelation
+* CreateAMQPVHost
+* DeleteAMQPCluster
+* DeleteAMQPExchange
+* DeleteAMQPQueue
+* DeleteAMQPRouteRelation
+* DeleteAMQPVHost
+* DescribeAMQPCluster
+* DescribeAMQPCreateQuota
+* DescribeAMQPExchanges
+* DescribeAMQPQueues
+* DescribeAMQPRouteRelations
+* DescribeAMQPVHosts
+* ModifyAMQPExchange
+* ModifyAMQPQueue
 
 <font color="#dd0000">**删除数据结构**：</font>
 
-* ApiEnvironmentStrategyStataus
-* IPStrategysStatus
+* AMQPClusterRecentStats
+* AMQPExchange
+* AMQPQueueDetail
+* AMQPRouteRelation
+* AMQPVHost
 
 
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 137 次发布
+### 第 28 次发布
 
-发布时间：2023-07-14 01:06:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAuditLogs](https://cloud.tencent.com/document/api/236/95032)
-
-新增数据结构：
-
-* [AuditLog](https://cloud.tencent.com/document/api/236/15878#AuditLog)
-
-
-
-## 文件存储(cfs) 版本：2019-07-19
-
-### 第 24 次发布
-
-发布时间：2023-07-14 01:07:56
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AutoSnapshotPolicyInfo](https://cloud.tencent.com/document/api/582/38175#AutoSnapshotPolicyInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>DayOfMonth, IntervalDays, CrossRegionsAliveDays
-
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 40 次发布
-
-发布时间：2023-07-14 01:08:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAddressTemplate](https://cloud.tencent.com/document/api/1132/95034)
-* [DeleteAddressTemplate](https://cloud.tencent.com/document/api/1132/95033)
-
-
-
-## 低代码互动课堂(lcic) 版本：2022-08-17
-
-### 第 30 次发布
-
-发布时间：2023-07-14 01:25:31
+发布时间：2023-07-17 01:40:19
 
 本次发布包含了以下内容：
 
@@ -101,73 +252,45 @@
 
 修改接口：
 
-* [DescribeDocument](https://cloud.tencent.com/document/api/1639/86321)
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
 
-	* 新增出参：Preview
+	* 新增入参：ModelTurboEnable, ServiceCategory
 
+* [DescribeModelServiceHotUpdated](https://cloud.tencent.com/document/api/851/82282)
 
+	* 新增出参：ModelTurboFlag
 
+* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
+	* 新增入参：ModelTurboEnable
 
-### 第 98 次发布
-
-发布时间：2023-07-14 01:35:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCloudBaseRunServerVersion](https://cloud.tencent.com/document/api/876/49739)
-
-	* <font color="#dd0000">**修改出参**：</font>Cpu, Mem
-
-* [DescribeCurveData](https://cloud.tencent.com/document/api/876/59512)
-
-	* <font color="#dd0000">**修改出参**：</font>NewValues
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 159 次发布
-
-发布时间：2023-07-14 01:40:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 修改数据结构：
 
-* [DataDisk](https://cloud.tencent.com/document/api/457/31866#DataDisk)
+* [GpuDetail](https://cloud.tencent.com/document/api/851/75051#GpuDetail)
 
-	* <font color="#dd0000">**修改成员**：</font>MountTarget
+	* <font color="#dd0000">**修改成员**：</font>Name, Value
+
+* [HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter)
+
+	* 新增成员：LoraScale
+
+* [ModelInfo](https://cloud.tencent.com/document/api/851/75051#ModelInfo)
+
+	* 新增成员：ModelFormat
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+
+	* 新增成员：ModelTurboEnable
+
+* [WorkloadStatus](https://cloud.tencent.com/document/api/851/75051#WorkloadStatus)
+
+	* 新增成员：Reason
 
 
 
 
-## 企业微信汽车行业版(wav) 版本：2021-01-29
-
-### 第 16 次发布
-
-发布时间：2023-07-14 01:46:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CustomerProfile](https://cloud.tencent.com/document/api/1318/56791#CustomerProfile)
-
-	* 新增成员：LeadId, WxId, Position, IsBindWx, IsInvalid, InvalidType, InvalidTypeName, InvalidTime, InvalidRemark, IsLose, LoseType, LoseTypeName, LoseRemark
-
-	* <font color="#dd0000">**修改成员**：</font>CustomerId, DealerCode, UnionId, CreateTime, UserName, Gender, Phone, AgeRangeName, JobTypeName, Address, LeadsProcessStatus, LeadType, SourceName, LeadsLevelCode, VehicleBrandCode, VehicleSeriesCode, VehicleTypeCode, VehiclePurpose, PurchaseConcern, SalesName, SalesPhone, RealArrivalTime, CompleteTestDriveTime, OrderTime, DeliveryTime, InvoiceTime, LoseTime, CreatedAtTime, ImportAtTime, DistributeTime, LeadCreateTime, Nickname, OrgIdList, Introducer, IntroducerPhone, FollowTime, NextFollowTime, EnterpriseTags, ChannelTags
-
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 
@@ -3306,8 +3429,8 @@
 
 新增数据结构：
 
-* [[ApiEnvironmentStrategyStatus](https://cloud.tencent.com/document/api/628/45244#ApiEnvironmentStrategyStatus)](https://cloud.tencent.com/document/api/628/45244#[ApiEnvironmentStrategyStatus](https://cloud.tencent.com/document/api/628/45244#ApiEnvironmentStrategyStatus))
-* [[IPStrategiesStatus](https://cloud.tencent.com/document/api/628/45244#IPStrategiesStatus)](https://cloud.tencent.com/document/api/628/45244#[IPStrategiesStatus](https://cloud.tencent.com/document/api/628/45244#IPStrategiesStatus))
+* [ApiEnvironmentStrategyStatus](https://cloud.tencent.com/document/api/628/45244#ApiEnvironmentStrategyStatus)
+* [IPStrategiesStatus](https://cloud.tencent.com/document/api/628/45244#IPStrategiesStatus)
 
 <font color="#dd0000">**删除数据结构**：</font>
 
@@ -14164,11 +14287,11 @@
 
 新增接口：
 
-* [[DescribeAuditLogs](https://cloud.tencent.com/document/api/236/95032)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAuditLogs](https://cloud.tencent.com/document/api/236/95032)
 
 新增数据结构：
 
-* [[AuditLog](https://cloud.tencent.com/document/api/236/15878#AuditLog)](https://cloud.tencent.com/document/api/236/15878#[AuditLog](https://cloud.tencent.com/document/api/236/15878#AuditLog))
+* [AuditLog](https://cloud.tencent.com/document/api/236/15878#AuditLog)
 
 ### 第 136 次发布
 
@@ -20748,8 +20871,8 @@
 
 新增接口：
 
-* [[CreateAddressTemplate](https://cloud.tencent.com/document/api/1132/95034)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAddressTemplate](https://cloud.tencent.com/document/api/1132/95033)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAddressTemplate](https://cloud.tencent.com/document/api/1132/95034)
+* [DeleteAddressTemplate](https://cloud.tencent.com/document/api/1132/95033)
 
 ### 第 39 次发布
 
@@ -32455,6 +32578,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 110 次发布
+
+发布时间：2023-07-17 01:12:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+
+	* 新增成员：DedicatedClusterId
+
 
 ### 第 109 次发布
 
@@ -49943,6 +50081,25 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 87 次发布
+
+发布时间：2023-07-17 01:19:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateChannelSubOrganizationModifyQrCode
+
+修改数据结构：
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：SignComponents, Components, ComponentLimitType
+
+
 ### 第 86 次发布
 
 发布时间：2023-07-10 14:56:45
@@ -51642,6 +51799,18 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 94 次发布
+
+发布时间：2023-07-17 01:19:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChannelCreateOrganizationModifyQrCode](https://cloud.tencent.com/document/api/1420/95067)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 93 次发布
 
@@ -54583,6 +54752,21 @@
 
 
 ## 人脸试妆(fmu) 版本：2019-12-13
+
+### 第 7 次发布
+
+发布时间：2023-07-14 14:55:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [QueryBeautifyVideoJob](https://cloud.tencent.com/document/api/1172/47792)
+
+	* 新增出参：JobStatusCode
+
 
 ### 第 6 次发布
 
@@ -59632,6 +59816,18 @@
 
 ## 加速物联网套件(iot) 版本：2018-01-23
 
+### 第 7 次发布
+
+发布时间：2023-07-17 01:22:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* UnassociateSubDeviceFromGatewayProduct
+
 ### 第 6 次发布
 
 发布时间：2020-03-16 08:11:55
@@ -60806,6 +61002,21 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 52 次发布
+
+发布时间：2023-07-17 01:23:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeFirmwareTask](https://cloud.tencent.com/document/api/1081/53875)
+
+	* 新增出参：CreateUserId, CreatorNickName
+
 
 ### 第 51 次发布
 
@@ -68278,6 +68489,27 @@
 新增接口：
 
 * [QueryLoginProtection](https://cloud.tencent.com/document/api/1190/43989)
+
+
+
+
+## 商场客留通(mall) 版本：2023-05-18
+
+### 第 1 次发布
+
+发布时间：2023-07-14 16:30:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDrawResourceList](https://cloud.tencent.com/document/api/1707/95048)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ResourceDrawListType](https://cloud.tencent.com/document/api/1707/95049#ResourceDrawListType)](https://cloud.tencent.com/document/api/1707/95049#[ResourceDrawListType](https://cloud.tencent.com/document/api/1707/95049#ResourceDrawListType))
 
 
 
@@ -76016,6 +76248,23 @@
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
+### 第 35 次发布
+
+发布时间：2023-07-17 01:29:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeJobSubmissionLog](https://cloud.tencent.com/document/api/849/95069)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[JobInstanceForSubmissionLog](https://cloud.tencent.com/document/api/849/52010#JobInstanceForSubmissionLog)](https://cloud.tencent.com/document/api/849/52010#[JobInstanceForSubmissionLog](https://cloud.tencent.com/document/api/849/52010#JobInstanceForSubmissionLog))
+* [[LogContent](https://cloud.tencent.com/document/api/849/52010#LogContent)](https://cloud.tencent.com/document/api/849/52010#[LogContent](https://cloud.tencent.com/document/api/849/52010#LogContent))
+
 ### 第 34 次发布
 
 发布时间：2023-06-19 01:30:56
@@ -76711,6 +76960,21 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 105 次发布
+
+发布时间：2023-07-17 01:30:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InvoiceItem](https://cloud.tencent.com/document/api/866/33527#InvoiceItem)
+
+	* <font color="#dd0000">**修改成员**：</font>Page, SubType, TypeDescription, CutImage, SubTypeDescription
+
 
 ### 第 104 次发布
 
@@ -87065,6 +87329,25 @@
 
 ## SSL 证书(ssl) 版本：2019-12-05
 
+### 第 38 次发布
+
+发布时间：2023-07-17 01:34:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674)
+
+	* 新增出参：DvRevokeAuthDetail
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：DvRevokeAuthDetail
+
+
 ### 第 37 次发布
 
 发布时间：2023-06-13 01:37:56
@@ -96296,6 +96579,43 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 68 次发布
+
+发布时间：2023-07-17 01:38:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateAMQPCluster
+* CreateAMQPExchange
+* CreateAMQPQueue
+* CreateAMQPRouteRelation
+* CreateAMQPVHost
+* DeleteAMQPCluster
+* DeleteAMQPExchange
+* DeleteAMQPQueue
+* DeleteAMQPRouteRelation
+* DeleteAMQPVHost
+* DescribeAMQPCluster
+* DescribeAMQPCreateQuota
+* DescribeAMQPExchanges
+* DescribeAMQPQueues
+* DescribeAMQPRouteRelations
+* DescribeAMQPVHosts
+* ModifyAMQPExchange
+* ModifyAMQPQueue
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AMQPClusterRecentStats
+* AMQPExchange
+* AMQPQueueDetail
+* AMQPRouteRelation
+* AMQPVHost
+
 ### 第 67 次发布
 
 发布时间：2023-07-13 01:38:37
@@ -103525,6 +103845,52 @@
 
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 28 次发布
+
+发布时间：2023-07-17 01:40:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* 新增入参：ModelTurboEnable, ServiceCategory
+
+* [DescribeModelServiceHotUpdated](https://cloud.tencent.com/document/api/851/82282)
+
+	* 新增出参：ModelTurboFlag
+
+* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
+
+	* 新增入参：ModelTurboEnable
+
+
+修改数据结构：
+
+* [GpuDetail](https://cloud.tencent.com/document/api/851/75051#GpuDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Value
+
+* [HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter)
+
+	* 新增成员：LoraScale
+
+* [ModelInfo](https://cloud.tencent.com/document/api/851/75051#ModelInfo)
+
+	* 新增成员：ModelFormat
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+
+	* 新增成员：ModelTurboEnable
+
+* [WorkloadStatus](https://cloud.tencent.com/document/api/851/75051#WorkloadStatus)
+
+	* 新增成员：Reason
+
 
 ### 第 27 次发布
 

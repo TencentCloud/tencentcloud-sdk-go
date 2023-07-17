@@ -104,7 +104,7 @@ const (
 	// 密码校验出错，密码错误。
 	INVALIDPARAMETERVALUE_PASSWORDERROR = "InvalidParameterValue.PasswordError"
 
-	// 腾讯集团内部账号禁止使用免密实例。
+	// 该账号禁止使用免密实例。
 	INVALIDPARAMETERVALUE_PASSWORDFREEDENIED = "InvalidParameterValue.PasswordFreeDenied"
 
 	// 设置密码时，MC 传入的 old password 与先前设定密码不同。

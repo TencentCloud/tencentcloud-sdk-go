@@ -1574,6 +1574,131 @@ func (r *DescribeJobSavepointResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeJobSubmissionLogRequestParams struct {
+	// 作业ID，例如：cql-6v1jkxrn
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 起始时间，unix时间戳，毫秒级，例如：1611754219108
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间戳，毫秒级，例如：1611754219108
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志
+	RunningOrderId *int64 `json:"RunningOrderId,omitempty" name:"RunningOrderId"`
+
+	// 日志搜索的关键词，默认为空
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 日志搜索的游标，可透传上次返回的值，默认为空
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 时间戳排序规则，asc - 升序，desc - 降序。默认为升序
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 搜索的日志条数上限值，最大为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeJobSubmissionLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业ID，例如：cql-6v1jkxrn
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 起始时间，unix时间戳，毫秒级，例如：1611754219108
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间戳，毫秒级，例如：1611754219108
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 作业运行的实例ID, 例如：1,2,3。默认为0，表示未选中任何实例，搜索该时间段内最近的一个实例的日志
+	RunningOrderId *int64 `json:"RunningOrderId,omitempty" name:"RunningOrderId"`
+
+	// 日志搜索的关键词，默认为空
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 日志搜索的游标，可透传上次返回的值，默认为空
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 时间戳排序规则，asc - 升序，desc - 降序。默认为升序
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 搜索的日志条数上限值，最大为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeJobSubmissionLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobSubmissionLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "RunningOrderId")
+	delete(f, "Keyword")
+	delete(f, "Cursor")
+	delete(f, "OrderType")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobSubmissionLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobSubmissionLogResponseParams struct {
+	// 日志搜索的游标，需要搜索更多时透传这个值
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 是否返回了所有的日志记录
+	ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+
+	// 作业启动的requestId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobRequestId *string `json:"JobRequestId,omitempty" name:"JobRequestId"`
+
+	// 该时间段内符合关键字的所有的作业实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobInstanceList []*JobInstanceForSubmissionLog `json:"JobInstanceList,omitempty" name:"JobInstanceList"`
+
+	// 废弃，请使用LogContentList
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogList []*string `json:"LogList,omitempty" name:"LogList"`
+
+	// 日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogContentList []*LogContent `json:"LogContentList,omitempty" name:"LogContentList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeJobSubmissionLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobSubmissionLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobSubmissionLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobSubmissionLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeJobsRequestParams struct {
 	// 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
 	JobIds []*string `json:"JobIds,omitempty" name:"JobIds"`
@@ -2371,6 +2496,17 @@ type JobConfig struct {
 	LogLevel *string `json:"LogLevel,omitempty" name:"LogLevel"`
 }
 
+type JobInstanceForSubmissionLog struct {
+	// 实例的Id, 按照启动的时间顺序，从1开始
+	RunningOrderId *int64 `json:"RunningOrderId,omitempty" name:"RunningOrderId"`
+
+	// 作业实例的启动时间
+	JobInstanceStartTime *string `json:"JobInstanceStartTime,omitempty" name:"JobInstanceStartTime"`
+
+	// 作业实例启动的时间（毫秒）
+	StartingMillis *int64 `json:"StartingMillis,omitempty" name:"StartingMillis"`
+}
+
 type JobV1 struct {
 	// 作业ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2499,6 +2635,27 @@ type JobV1 struct {
 	// 作业标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type LogContent struct {
+	// 日志内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Log *string `json:"Log,omitempty" name:"Log"`
+
+	// 毫秒级时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *int64 `json:"Time,omitempty" name:"Time"`
+
+	// 日志组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 日志Id，在日志组范围里唯一
+	PkgLogId *int64 `json:"PkgLogId,omitempty" name:"PkgLogId"`
+
+	// 日志所属的容器名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
 }
 
 // Predefined struct for user

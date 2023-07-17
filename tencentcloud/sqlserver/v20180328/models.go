@@ -107,7 +107,7 @@ type AccountPrivilegeModifyInfo struct {
 	// 账号权限变更信息
 	DBPrivileges []*DBPrivilegeModifyInfo `json:"DBPrivileges,omitempty" name:"DBPrivileges"`
 
-	// 是否为管理员账户,当值为true 等价于基础版AccountType=L0，高可用AccountType=L1，当值为false时，表示删除管理员权限，默认false
+	// 表示是否为管理员账户，当值为true，表示是 管理员。若实例 是 单节点，则管理员所在的 账号类型为超级权限账号 ，即AccountType=L0；若实例 是 双节点，则管理员所在的 账号类型为高级权限账号，即AccountType=L1；当值为false，表示 不是管理员，则账号类型为普通账号，即AccountType=L3
 	IsAdmin *bool `json:"IsAdmin,omitempty" name:"IsAdmin"`
 
 	// 账号类型，IsAdmin字段的扩展字段。 L0-超级权限(基础版独有),L1-高级权限,L2-特殊权限,L3-普通权限，默认L3
@@ -703,7 +703,7 @@ type CreateBackupRequestParams struct {
 	// 需要备份库名的列表(多库备份才填写)
 	DBNames []*string `json:"DBNames,omitempty" name:"DBNames"`
 
-	// 实例ID，形如mssql-i1z41iwd
+	// 实例ID（必填），形如mssql-i1z41iwd
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
@@ -719,7 +719,7 @@ type CreateBackupRequest struct {
 	// 需要备份库名的列表(多库备份才填写)
 	DBNames []*string `json:"DBNames,omitempty" name:"DBNames"`
 
-	// 实例ID，形如mssql-i1z41iwd
+	// 实例ID（必填），形如mssql-i1z41iwd
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
@@ -3530,7 +3530,7 @@ type DescribeBackupFilesRequestParams struct {
 	// 实例ID，形如mssql-njj2mtpl
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 聚合ID, 可通过接口DescribeBackups获取
+	// 单库备份的聚合ID, 可通过接口DescribeBackups获取（不支持查询打包备份记录）
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 分页返回，每页返回的数目，取值为1-100，默认值为20
@@ -3552,7 +3552,7 @@ type DescribeBackupFilesRequest struct {
 	// 实例ID，形如mssql-njj2mtpl
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 聚合ID, 可通过接口DescribeBackups获取
+	// 单库备份的聚合ID, 可通过接口DescribeBackups获取（不支持查询打包备份记录）
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 分页返回，每页返回的数目，取值为1-100，默认值为20

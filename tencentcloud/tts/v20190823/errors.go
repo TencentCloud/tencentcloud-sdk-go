@@ -62,7 +62,7 @@ const (
 	// Codec非法，请参考Codec参数说明。
 	INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
 
-	// ssml的say-as标签属性为cardinal、currency、address时，数字部分非有效常数，仅允许包含数字、“,”、“.”和空格。
+	// ssml的say-as标签属性为cardinal、currency、address时，数字部分非有效参数，仅允许包含数字、“,”、“.”和空格。
 	INVALIDPARAMETERVALUE_ERRORCARDINALFORMAT = "InvalidParameterValue.ErrorCardinalFormat"
 
 	// 请求文本含有非法字符，或请求文本没有有效字符。

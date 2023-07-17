@@ -1498,6 +1498,66 @@ func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type ChannelCreateOrganizationModifyQrCodeRequestParams struct {
+	// 应用相关信息。 此接口Agent.AppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+type ChannelCreateOrganizationModifyQrCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用相关信息。 此接口Agent.AppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+func (r *ChannelCreateOrganizationModifyQrCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateOrganizationModifyQrCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateOrganizationModifyQrCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateOrganizationModifyQrCodeResponseParams struct {
+	// 二维码下载链接
+	QrCodeUrl *string `json:"QrCodeUrl,omitempty" name:"QrCodeUrl"`
+
+	// 二维码失效时间 UNIX 时间戳 精确到秒
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateOrganizationModifyQrCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateOrganizationModifyQrCodeResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateOrganizationModifyQrCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateOrganizationModifyQrCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreatePrepareFlowRequestParams struct {
 	// 资源id，与ResourceType对应
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
@@ -4372,8 +4432,11 @@ type FlowApproverInfo struct {
 	// 使用PDF文件直接发起合同时，签署人指定的签署控件
 	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
-	// 个人签署方指定签署控件类型，目前支持：OCR_ESIGN -AI智慧手写签名
-	// HANDWRITE -手写签名
+	// 	签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
+	// 	HANDWRITE – 手写签名
+	// 	OCR_ESIGN -- AI智能识别手写签名
+	// 	ESIGN -- 个人印章类型
+	// 	SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
 	ComponentLimitType []*string `json:"ComponentLimitType,omitempty" name:"ComponentLimitType"`
 
 	// 合同的强制预览时间：3~300s，未指定则按合同页数计算

@@ -1359,6 +1359,54 @@ func (c *Client) ChannelCreateMultiFlowSignQRCodeWithContext(ctx context.Context
     return
 }
 
+func NewChannelCreateOrganizationModifyQrCodeRequest() (request *ChannelCreateOrganizationModifyQrCodeRequest) {
+    request = &ChannelCreateOrganizationModifyQrCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateOrganizationModifyQrCode")
+    
+    
+    return
+}
+
+func NewChannelCreateOrganizationModifyQrCodeResponse() (response *ChannelCreateOrganizationModifyQrCodeResponse) {
+    response = &ChannelCreateOrganizationModifyQrCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateOrganizationModifyQrCode
+// 生成渠道子客编辑企业信息二维码
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ChannelCreateOrganizationModifyQrCode(request *ChannelCreateOrganizationModifyQrCodeRequest) (response *ChannelCreateOrganizationModifyQrCodeResponse, err error) {
+    return c.ChannelCreateOrganizationModifyQrCodeWithContext(context.Background(), request)
+}
+
+// ChannelCreateOrganizationModifyQrCode
+// 生成渠道子客编辑企业信息二维码
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ChannelCreateOrganizationModifyQrCodeWithContext(ctx context.Context, request *ChannelCreateOrganizationModifyQrCodeRequest) (response *ChannelCreateOrganizationModifyQrCodeResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateOrganizationModifyQrCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateOrganizationModifyQrCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateOrganizationModifyQrCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreatePrepareFlowRequest() (request *ChannelCreatePrepareFlowRequest) {
     request = &ChannelCreatePrepareFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

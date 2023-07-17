@@ -934,6 +934,12 @@ type CreateModelServiceRequestParams struct {
 
 	// 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+	ModelTurboEnable *bool `json:"ModelTurboEnable,omitempty" name:"ModelTurboEnable"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1042,6 +1048,12 @@ type CreateModelServiceRequest struct {
 
 	// 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+	ModelTurboEnable *bool `json:"ModelTurboEnable,omitempty" name:"ModelTurboEnable"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1083,6 +1095,8 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "VolumeMount")
 	delete(f, "ServiceLimit")
 	delete(f, "CallbackUrl")
+	delete(f, "ModelTurboEnable")
+	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -4102,6 +4116,9 @@ func (r *DescribeModelServiceHotUpdatedRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeModelServiceHotUpdatedResponseParams struct {
+	// 模型加速标志位.Allowed 允许模型加速. Forbidden 禁止模型加速
+	ModelTurboFlag *string `json:"ModelTurboFlag,omitempty" name:"ModelTurboFlag"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -5112,6 +5129,10 @@ type HyperParameter struct {
 	// Stable Diffusion 模型优化参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PipelineArgs *string `json:"PipelineArgs,omitempty" name:"PipelineArgs"`
+
+	// Stable Diffusion 模型优化参数，控制Lora模型的影响效果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoraScale *string `json:"LoraScale,omitempty" name:"LoraScale"`
 }
 
 type ImageInfo struct {
@@ -5443,6 +5464,10 @@ type ModelInfo struct {
 	// 默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelType *string `json:"ModelType,omitempty" name:"ModelType"`
+
+	// 模型格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelFormat *string `json:"ModelFormat,omitempty" name:"ModelFormat"`
 }
 
 type ModelInputInfo struct {
@@ -5612,6 +5637,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// 挂载配置，目前只支持CFS
 	VolumeMount *VolumeMount `json:"VolumeMount,omitempty" name:"VolumeMount"`
+
+	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
+	ModelTurboEnable *bool `json:"ModelTurboEnable,omitempty" name:"ModelTurboEnable"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -5699,6 +5727,9 @@ type ModifyModelServiceRequest struct {
 
 	// 挂载配置，目前只支持CFS
 	VolumeMount *VolumeMount `json:"VolumeMount,omitempty" name:"VolumeMount"`
+
+	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
+	ModelTurboEnable *bool `json:"ModelTurboEnable,omitempty" name:"ModelTurboEnable"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -5733,6 +5764,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "ScheduledAction")
 	delete(f, "ServiceLimit")
 	delete(f, "VolumeMount")
+	delete(f, "ModelTurboEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -6360,6 +6392,10 @@ type Service struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceDescription *string `json:"ServiceDescription,omitempty" name:"ServiceDescription"`
 
+	// 服务的详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceInfo *ServiceInfo `json:"ServiceInfo,omitempty" name:"ServiceInfo"`
+
 	// 集群id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -6379,6 +6415,18 @@ type Service struct {
 	// 包年包月服务的资源组id，按量计费的服务为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 包年包月服务对应的资源组名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
+
+	// 服务的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 服务所在的 ingress 的 name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IngressName *string `json:"IngressName,omitempty" name:"IngressName"`
 
 	// 创建者
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6404,31 +6452,21 @@ type Service struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 
-	// 版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version *string `json:"Version,omitempty" name:"Version"`
-
-	// 服务组下服务的最高版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LatestVersion *string `json:"LatestVersion,omitempty" name:"LatestVersion"`
-
-	// 服务的详细信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceInfo *ServiceInfo `json:"ServiceInfo,omitempty" name:"ServiceInfo"`
-
 	// 服务的业务状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessStatus *string `json:"BusinessStatus,omitempty" name:"BusinessStatus"`
 
-	// 服务的创建来源
-	// AUTO_ML: 来自自动学习的一键发布
-	// DEFAULT: 其他来源
+	// 已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateSource *string `json:"CreateSource,omitempty" name:"CreateSource"`
+	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
 
-	// 费用信息
+	// 已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
+	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
+
+	// 服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateFailedReason *string `json:"CreateFailedReason,omitempty" name:"CreateFailedReason"`
 
 	// 服务状态
 	// CREATING 创建中
@@ -6442,33 +6480,27 @@ type Service struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
+	// 费用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
+
 	// 模型权重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 
-	// 服务所在的 ingress 的 name
+	// 服务的创建来源
+	// AUTO_ML: 来自自动学习的一键发布
+	// DEFAULT: 其他来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IngressName *string `json:"IngressName,omitempty" name:"IngressName"`
+	CreateSource *string `json:"CreateSource,omitempty" name:"CreateSource"`
 
-	// 服务限速限流相关配置
+	// 版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+	Version *string `json:"Version,omitempty" name:"Version"`
 
-	// 定时停止的配置
+	// 服务组下服务的最高版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
-
-	// 服务创建失败的原因，创建成功后该字段为默认值 CREATE_SUCCEED
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateFailedReason *string `json:"CreateFailedReason,omitempty" name:"CreateFailedReason"`
-
-	// 包年包月服务对应的资源组名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
-
-	// 服务的标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	LatestVersion *string `json:"LatestVersion,omitempty" name:"LatestVersion"`
 }
 
 type ServiceCallInfo struct {
@@ -6680,6 +6712,23 @@ type ServiceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitempty" name:"ModelHotUpdateEnable"`
 
+	// 实例数量调节方式,默认为手动
+	// 支持：自动 - "AUTO", 手动 - "MANUAL"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleMode *string `json:"ScaleMode,omitempty" name:"ScaleMode"`
+
+	// 定时伸缩任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitempty" name:"CronScaleJobs"`
+
+	// 定时伸缩策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleStrategy *string `json:"ScaleStrategy,omitempty" name:"ScaleStrategy"`
+
+	// 定时停止的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduledAction *string `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
+
 	// Pod列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pods *Pod `json:"Pods,omitempty" name:"Pods"`
@@ -6688,26 +6737,13 @@ type ServiceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodInfos []*Pod `json:"PodInfos,omitempty" name:"PodInfos"`
 
-	// 定时伸缩策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScaleStrategy *string `json:"ScaleStrategy,omitempty" name:"ScaleStrategy"`
-
-	// 定时伸缩任务
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitempty" name:"CronScaleJobs"`
-
-	// 实例数量调节方式,默认为手动
-	// 支持：自动 - "AUTO", 手动 - "MANUAL"
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScaleMode *string `json:"ScaleMode,omitempty" name:"ScaleMode"`
-
 	// 服务限速限流相关配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
 
-	// 定时停止的配置
+	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScheduledAction *string `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
+	ModelTurboEnable *bool `json:"ModelTurboEnable,omitempty" name:"ModelTurboEnable"`
 }
 
 type ServiceLimit struct {
@@ -7559,4 +7595,8 @@ type WorkloadStatus struct {
 
 	// 工作负载历史的状况信息
 	Conditions []*StatefulSetCondition `json:"Conditions,omitempty" name:"Conditions"`
+
+	// 状态异常时，展示原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
 }

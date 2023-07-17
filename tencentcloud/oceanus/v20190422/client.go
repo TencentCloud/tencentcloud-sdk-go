@@ -985,6 +985,76 @@ func (c *Client) DescribeJobSavepointWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeJobSubmissionLogRequest() (request *DescribeJobSubmissionLogRequest) {
+    request = &DescribeJobSubmissionLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobSubmissionLog")
+    
+    
+    return
+}
+
+func NewDescribeJobSubmissionLogResponse() (response *DescribeJobSubmissionLogResponse) {
+    response = &DescribeJobSubmissionLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeJobSubmissionLog
+// 查询作业实例启动日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETER_ILLEGALSEARCHKEYWORD = "InvalidParameter.IllegalSearchKeyword"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_LOGTOPIC = "ResourceNotFound.LogTopic"
+//  UNSUPPORTEDOPERATION_CLSSQLNOTENABLED = "UnsupportedOperation.ClsSqlNotEnabled"
+func (c *Client) DescribeJobSubmissionLog(request *DescribeJobSubmissionLogRequest) (response *DescribeJobSubmissionLogResponse, err error) {
+    return c.DescribeJobSubmissionLogWithContext(context.Background(), request)
+}
+
+// DescribeJobSubmissionLog
+// 查询作业实例启动日志
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETER_ILLEGALSEARCHKEYWORD = "InvalidParameter.IllegalSearchKeyword"
+//  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
+//  INVALIDPARAMETERVALUE_INVALIDTIME = "InvalidParameterValue.InvalidTime"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_LOGTOPIC = "ResourceNotFound.LogTopic"
+//  UNSUPPORTEDOPERATION_CLSSQLNOTENABLED = "UnsupportedOperation.ClsSqlNotEnabled"
+func (c *Client) DescribeJobSubmissionLogWithContext(ctx context.Context, request *DescribeJobSubmissionLogRequest) (response *DescribeJobSubmissionLogResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobSubmissionLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobSubmissionLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobSubmissionLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
     request = &DescribeJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},

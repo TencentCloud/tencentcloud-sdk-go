@@ -167,6 +167,7 @@ import (
 	livev20180801 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live/v20180801"
 	lowcodev20210108 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode/v20210108"
 	lpv20200224 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lp/v20200224"
+	mallv20230518 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall/v20230518"
 	mariadbv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb/v20170312"
 	marketv20191010 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market/v20191010"
 	memcachedv20190318 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/memcached/v20190318"
@@ -2196,6 +2197,19 @@ func TestLpv20200224Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init lp_v20200224 client: %v", err)
+    }
+}
+
+func TestMallv20230518Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := mallv20230518.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init mall_v20230518 client: %v", err)
     }
 }
 

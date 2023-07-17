@@ -178,7 +178,7 @@ func NewBeautifyVideoResponse() (response *BeautifyVideoResponse) {
 }
 
 // BeautifyVideo
-// 视频美颜
+// 视频美颜(此接口目前已下线)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EFFECTINNERERROR = "FailedOperation.EffectInnerError"
@@ -196,7 +196,7 @@ func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *Beautif
 }
 
 // BeautifyVideo
-// 视频美颜
+// 视频美颜(此接口目前已下线)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_EFFECTINNERERROR = "FailedOperation.EffectInnerError"

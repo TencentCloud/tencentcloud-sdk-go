@@ -3926,7 +3926,7 @@ type InvoiceItem struct {
 	// 17：医疗发票
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 旋转后的图片四点坐标。
+	// 该发票在原图片中的四点坐标。
 	Polygon *Polygon `json:"Polygon,omitempty" name:"Polygon"`
 
 	// 识别出的图片在混贴票据图片中的旋转角度。

@@ -1827,7 +1827,7 @@ type DescribeInstancesListRequestParams struct {
 	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
+	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
 	Asc *int64 `json:"Asc,omitempty" name:"Asc"`
 
 	// 自定义查询
@@ -1849,7 +1849,7 @@ type DescribeInstancesListRequest struct {
 	// 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
+	// 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示降序。</li><li>1：表示升序。</li>默认值为0。
 	Asc *int64 `json:"Asc,omitempty" name:"Asc"`
 
 	// 自定义查询
@@ -1927,7 +1927,7 @@ type DescribeInstancesRequestParams struct {
 
 	// 建议必填-1，表示拉取所有项目下的集群。
 	// 不填默认值为0，表示拉取默认项目下的集群。
-	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的 projectId 字段来获取。
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProjects](https://cloud.tencent.com/document/product/651/78725) 的返回值中的 projectId 字段来获取。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 排序字段。取值范围：
@@ -1938,7 +1938,7 @@ type DescribeInstancesRequestParams struct {
 
 	// 按照OrderField升序或者降序进行排序。取值范围：
 	// <li>0：表示降序。</li>
-	// <li>1：表示升序。</li>默认值为0。
+	// <li>1：表示升序。</li>默认值为0。
 	Asc *int64 `json:"Asc,omitempty" name:"Asc"`
 }
 
@@ -1962,7 +1962,7 @@ type DescribeInstancesRequest struct {
 
 	// 建议必填-1，表示拉取所有项目下的集群。
 	// 不填默认值为0，表示拉取默认项目下的集群。
-	// 实例所属项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/378/4400) 的返回值中的 projectId 字段来获取。
+	// 实例所属项目ID。该参数可以通过调用 [DescribeProjects](https://cloud.tencent.com/document/product/651/78725) 的返回值中的 projectId 字段来获取。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 排序字段。取值范围：
@@ -1973,7 +1973,7 @@ type DescribeInstancesRequest struct {
 
 	// 按照OrderField升序或者降序进行排序。取值范围：
 	// <li>0：表示降序。</li>
-	// <li>1：表示升序。</li>默认值为0。
+	// <li>1：表示升序。</li>默认值为0。
 	Asc *int64 `json:"Asc,omitempty" name:"Asc"`
 }
 
@@ -2808,7 +2808,7 @@ type InquirePriceRenewEmrRequestParams struct {
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 货币种类。取值范围：
-	// <li>CNY：表示人民币。</li>
+	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
 }
 
@@ -2832,7 +2832,7 @@ type InquirePriceRenewEmrRequest struct {
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 货币种类。取值范围：
-	// <li>CNY：表示人民币。</li>
+	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
 }
 
@@ -2871,7 +2871,7 @@ type InquirePriceRenewEmrResponseParams struct {
 	DiscountCost *float64 `json:"DiscountCost,omitempty" name:"DiscountCost"`
 
 	// 实例续费的时间单位。取值范围：
-	// <li>m：表示月份。</li>
+	// <li>m：表示月份。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
@@ -2912,7 +2912,7 @@ type InquiryPriceCreateInstanceRequestParams struct {
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 货币种类。取值范围：
-	// <li>CNY：表示人民币。</li>
+	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 	// 实例计费模式。取值范围：
@@ -2991,7 +2991,7 @@ type InquiryPriceCreateInstanceRequest struct {
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 货币种类。取值范围：
-	// <li>CNY：表示人民币。</li>
+	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 	// 实例计费模式。取值范围：
@@ -3103,7 +3103,7 @@ type InquiryPriceCreateInstanceResponseParams struct {
 
 	// 购买实例的时间单位。取值范围：
 	// <li>s：表示秒。</li>
-	// <li>m：表示月份。</li>
+	// <li>m：表示月份。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
@@ -3140,7 +3140,7 @@ type InquiryPriceRenewInstanceRequestParams struct {
 	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
-	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
+	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
@@ -3154,7 +3154,7 @@ type InquiryPriceRenewInstanceRequestParams struct {
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 货币种类。取值范围：
-	// <li>CNY：表示人民币。</li>
+	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 	// 是否按量转包年包月。0：否，1：是。
@@ -3167,7 +3167,7 @@ type InquiryPriceRenewInstanceRequest struct {
 	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
-	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
+	// 待续费节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
@@ -3181,7 +3181,7 @@ type InquiryPriceRenewInstanceRequest struct {
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
 	// 货币种类。取值范围：
-	// <li>CNY：表示人民币。</li>
+	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 	// 是否按量转包年包月。0：否，1：是。
@@ -3224,7 +3224,7 @@ type InquiryPriceRenewInstanceResponseParams struct {
 	DiscountCost *float64 `json:"DiscountCost,omitempty" name:"DiscountCost"`
 
 	// 实例续费的时间单位。取值范围：
-	// <li>m：表示月份。</li>
+	// <li>m：表示月份。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
@@ -3282,7 +3282,7 @@ type InquiryPriceScaleOutInstanceRequestParams struct {
 	TaskCount *uint64 `json:"TaskCount,omitempty" name:"TaskCount"`
 
 	// 货币种类。取值范围：
-	// <li>CNY：表示人民币。</li>
+	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 	// 扩容的Router节点数量。
@@ -3323,7 +3323,7 @@ type InquiryPriceScaleOutInstanceRequest struct {
 	TaskCount *uint64 `json:"TaskCount,omitempty" name:"TaskCount"`
 
 	// 货币种类。取值范围：
-	// <li>CNY：表示人民币。</li>
+	// <li>CNY：表示人民币。</li>
 	Currency *string `json:"Currency,omitempty" name:"Currency"`
 
 	// 扩容的Router节点数量。
@@ -3373,7 +3373,7 @@ type InquiryPriceScaleOutInstanceResponseParams struct {
 
 	// 扩容的时间单位。取值范围：
 	// <li>s：表示秒。</li>
-	// <li>m：表示月份。</li>
+	// <li>m：表示月份。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
 
@@ -3856,12 +3856,15 @@ type MultiDisk struct {
 	// <li>CLOUD_SSD：表示云SSD。</li>
 	// <li>CLOUD_PREMIUM：表示高效云盘。</li>
 	// <li>CLOUD_HSSD：表示增强型SSD云硬盘。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 云盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
 
 	// 该类型云盘个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
@@ -5908,7 +5911,7 @@ type TerminateTasksRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
+	// 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 }
 
@@ -5918,7 +5921,7 @@ type TerminateTasksRequest struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr/static/hardware)查询。
+	// 待销毁节点的资源ID列表。资源ID形如：emr-vm-xxxxxxxx。有效的资源ID可通过登录[控制台](https://console.cloud.tencent.com/emr)查询。
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 }
 
