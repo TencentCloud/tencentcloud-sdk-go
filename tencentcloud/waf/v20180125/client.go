@@ -1258,6 +1258,7 @@ func NewDescribeCustomWhiteRuleResponse() (response *DescribeCustomWhiteRuleResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCustomWhiteRule(request *DescribeCustomWhiteRuleRequest) (response *DescribeCustomWhiteRuleResponse, err error) {
@@ -1269,6 +1270,7 @@ func (c *Client) DescribeCustomWhiteRule(request *DescribeCustomWhiteRuleRequest
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCustomWhiteRuleWithContext(ctx context.Context, request *DescribeCustomWhiteRuleRequest) (response *DescribeCustomWhiteRuleResponse, err error) {
@@ -3126,6 +3128,7 @@ func NewSearchAttackLogResponse() (response *SearchAttackLogResponse) {
 //  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
 //  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchAttackLog(request *SearchAttackLogRequest) (response *SearchAttackLogResponse, err error) {
     return c.SearchAttackLogWithContext(context.Background(), request)
@@ -3142,6 +3145,7 @@ func (c *Client) SearchAttackLog(request *SearchAttackLogRequest) (response *Sea
 //  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
 //  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SearchAttackLogWithContext(ctx context.Context, request *SearchAttackLogRequest) (response *SearchAttackLogResponse, err error) {
     if request == nil {

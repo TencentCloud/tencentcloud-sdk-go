@@ -16914,66 +16914,6 @@ func (r *DescribeScanVulSettingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeSearchExportListRequestParams struct {
-	// ES查询条件JSON
-	Query *string `json:"Query,omitempty" name:"Query"`
-}
-
-type DescribeSearchExportListRequest struct {
-	*tchttp.BaseRequest
-	
-	// ES查询条件JSON
-	Query *string `json:"Query,omitempty" name:"Query"`
-}
-
-func (r *DescribeSearchExportListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSearchExportListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Query")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSearchExportListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeSearchExportListResponseParams struct {
-	// 任务ID,需要到接口“异步导出任务”ExportTasks获取DownloadUrl下载地址
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 该参数作废
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeSearchExportListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeSearchExportListResponseParams `json:"Response"`
-}
-
-func (r *DescribeSearchExportListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSearchExportListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeSearchLogsRequestParams struct {
 
 }

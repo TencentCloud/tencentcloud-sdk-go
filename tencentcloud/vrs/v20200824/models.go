@@ -21,6 +21,67 @@ import (
 )
 
 // Predefined struct for user
+type CancelVRSTaskRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type CancelVRSTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *CancelVRSTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelVRSTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelVRSTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelVRSTaskResponseParams struct {
+	// 任务ID
+	Data *CancelVRSTaskRsp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CancelVRSTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelVRSTaskResponseParams `json:"Response"`
+}
+
+func (r *CancelVRSTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelVRSTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CancelVRSTaskRsp struct {
+
+}
+
+// Predefined struct for user
 type CreateVRSTaskRequestParams struct {
 	// 唯一请求 ID
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
@@ -54,6 +115,9 @@ type CreateVRSTaskRequestParams struct {
 	// 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
 	// 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 任务类型 1:在线 2:离线  默认为1
+	ModelType *int64 `json:"ModelType,omitempty" name:"ModelType"`
 }
 
 type CreateVRSTaskRequest struct {
@@ -91,6 +155,9 @@ type CreateVRSTaskRequest struct {
 	// 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。
 	// 回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 任务类型 1:在线 2:离线  默认为1
+	ModelType *int64 `json:"ModelType,omitempty" name:"ModelType"`
 }
 
 func (r *CreateVRSTaskRequest) ToJsonString() string {
@@ -113,6 +180,7 @@ func (r *CreateVRSTaskRequest) FromJsonString(s string) error {
 	delete(f, "Codec")
 	delete(f, "AudioIdList")
 	delete(f, "CallbackUrl")
+	delete(f, "ModelType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVRSTaskRequest has unknown keys!", "")
 	}
@@ -339,6 +407,87 @@ type DetectionEnvAndSoundQualityRespData struct {
 	// 检测提示信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectionTip []*Words `json:"DetectionTip,omitempty" name:"DetectionTip"`
+}
+
+// Predefined struct for user
+type DownloadVRSModelRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DownloadVRSModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DownloadVRSModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadVRSModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadVRSModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DownloadVRSModelResponseParams struct {
+	// 响应
+	Data *DownloadVRSModelRsp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DownloadVRSModelResponse struct {
+	*tchttp.BaseResponse
+	Response *DownloadVRSModelResponseParams `json:"Response"`
+}
+
+func (r *DownloadVRSModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadVRSModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DownloadVRSModelRsp struct {
+	// 模型cos地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 音色名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceName *string `json:"VoiceName,omitempty" name:"VoiceName"`
+
+	// 音色性别:
+	// 1-male
+	// 2-female
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceGender *int64 `json:"VoiceGender,omitempty" name:"VoiceGender"`
+
+	// 语言类型：
+	// 1-中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceLanguage *int64 `json:"VoiceLanguage,omitempty" name:"VoiceLanguage"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
 
 // Predefined struct for user

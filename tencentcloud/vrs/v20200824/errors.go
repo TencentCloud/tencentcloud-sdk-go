@@ -17,6 +17,9 @@ package v20200824
 const (
 	// 此产品的特有错误码
 
+	// 任务状态错误。
+	FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+
 	// 任务不存在。
 	FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
 
@@ -26,14 +29,23 @@ const (
 	// 音频质量差。
 	FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
 
+	// 内部错误。
+	INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
 	// 音频数据错误。
 	INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
 
+	// 音频时长超限，时长不可超过15s
+	INVALIDPARAMETERVALUE_AUDIODURATIONEXCEEDSLIMIT = "InvalidParameterValue.AudioDurationExceedsLimit"
+
 	// Codec非法，请参考Codec参数说明。
 	INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
+
+	// 无效TaskId。
+	INVALIDPARAMETERVALUE_ERRORINVALIDTASKID = "InvalidParameterValue.ErrorInvalidTaskId"
 
 	// SampleRate非法，请参考SampleRate参数说明。
 	INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"

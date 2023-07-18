@@ -1953,6 +1953,10 @@ type DomainAssetVO struct {
 	// web攻击
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebAttack *int64 `json:"WebAttack,omitempty" name:"WebAttack"`
+
+	// 风险服务暴露数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceRisk *uint64 `json:"ServiceRisk,omitempty" name:"ServiceRisk"`
 }
 
 type Filter struct {

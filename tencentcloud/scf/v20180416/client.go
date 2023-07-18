@@ -1915,6 +1915,7 @@ func NewGetRequestStatusResponse() (response *GetRequestStatusResponse) {
 //  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
 //  INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 func (c *Client) GetRequestStatus(request *GetRequestStatusRequest) (response *GetRequestStatusResponse, err error) {
@@ -1939,6 +1940,7 @@ func (c *Client) GetRequestStatus(request *GetRequestStatusRequest) (response *G
 //  INVALIDPARAMETERVALUE_STARTTIME = "InvalidParameterValue.StartTime"
 //  INVALIDPARAMETERVALUE_STARTTIMEORENDTIME = "InvalidParameterValue.StartTimeOrEndTime"
 //  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 func (c *Client) GetRequestStatusWithContext(ctx context.Context, request *GetRequestStatusRequest) (response *GetRequestStatusResponse, err error) {
@@ -2778,6 +2780,7 @@ func NewPublishVersionResponse() (response *PublishVersionResponse) {
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PUBLISHVERSION = "UnsupportedOperation.PublishVersion"
 func (c *Client) PublishVersion(request *PublishVersionRequest) (response *PublishVersionResponse, err error) {
     return c.PublishVersionWithContext(context.Background(), request)
 }
@@ -2801,6 +2804,7 @@ func (c *Client) PublishVersion(request *PublishVersionRequest) (response *Publi
 //  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PUBLISHVERSION = "UnsupportedOperation.PublishVersion"
 func (c *Client) PublishVersionWithContext(ctx context.Context, request *PublishVersionRequest) (response *PublishVersionResponse, err error) {
     if request == nil {
         request = NewPublishVersionRequest()

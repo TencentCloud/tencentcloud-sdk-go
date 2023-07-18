@@ -6829,6 +6829,20 @@ type EsParam struct {
 
 	// 死信队列
 	DropDlq *FailureParam `json:"DropDlq,omitempty" name:"DropDlq"`
+
+	// 使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配
+	RecordMappingList []*EsRecordMapping `json:"RecordMappingList,omitempty" name:"RecordMappingList"`
+
+	// 消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
+	DateField *string `json:"DateField,omitempty" name:"DateField"`
+}
+
+type EsRecordMapping struct {
+	// es 索引成员名称
+	ColumnName *string `json:"ColumnName,omitempty" name:"ColumnName"`
+
+	// 消息字段名称
+	JsonKey *string `json:"JsonKey,omitempty" name:"JsonKey"`
 }
 
 type EventBusParam struct {

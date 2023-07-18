@@ -106,11 +106,13 @@ type ApproverInfo struct {
 	// 签署人查看合同时认证方式, 
 	// 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 	// 如果不传默认为1
+	// 模板发起的时候,认证方式以模版配置为主
 	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitempty" name:"ApproverVerifyTypes"`
 
 	// 签署人签署合同时的认证方式
 	// 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 	// 合同签署认证方式的优先级 verifyChannel>approverSignTypes
+	// 模板发起的时候,认证方式以模版配置为主
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitempty" name:"ApproverSignTypes"`
 
 	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
@@ -2030,6 +2032,9 @@ type CreateFlowSignUrlRequestParams struct {
 	//
 	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 }
 
 type CreateFlowSignUrlRequest struct {
@@ -2049,6 +2054,9 @@ type CreateFlowSignUrlRequest struct {
 
 	// 机构信息，暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 }
 
 func (r *CreateFlowSignUrlRequest) ToJsonString() string {
@@ -2068,6 +2076,7 @@ func (r *CreateFlowSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "Agent")
 	delete(f, "Organization")
+	delete(f, "JumpUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowSignUrlRequest has unknown keys!", "")
 	}

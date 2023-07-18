@@ -1295,6 +1295,9 @@ type ChannelCreateFlowSignUrlRequestParams struct {
 	//
 	// Deprecated: Organization is deprecated.
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 }
 
 type ChannelCreateFlowSignUrlRequest struct {
@@ -1314,6 +1317,9 @@ type ChannelCreateFlowSignUrlRequest struct {
 
 	// 机构信息，暂未开放
 	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 签署完之后的H5页面的跳转链接，此链接支持http://和https://，最大长度1000个字符。
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 }
 
 func (r *ChannelCreateFlowSignUrlRequest) ToJsonString() string {
@@ -1333,6 +1339,7 @@ func (r *ChannelCreateFlowSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "FlowApproverInfos")
 	delete(f, "Operator")
 	delete(f, "Organization")
+	delete(f, "JumpUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowSignUrlRequest has unknown keys!", "")
 	}

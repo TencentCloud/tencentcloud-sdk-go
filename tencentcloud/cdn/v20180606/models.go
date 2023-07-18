@@ -10738,7 +10738,7 @@ type RefererRule struct {
 	// blacklist：黑名单
 	RefererType *string `json:"RefererType,omitempty" name:"RefererType"`
 
-	// referer 内容列表列表
+	// referer 内容列表
 	Referers []*string `json:"Referers,omitempty" name:"Referers"`
 
 	// 是否允许空 referer
@@ -12950,7 +12950,7 @@ type ViolationUrl struct {
 	// forbid：已封禁
 	// release：已解封
 	// delay ： 延迟处理
-	// reject ：申诉驳回，状态仍为封禁态
+	// reject ：申诉驳回，状态仍为封禁状态
 	// complain：申诉进行中
 	UrlStatus *string `json:"UrlStatus,omitempty" name:"UrlStatus"`
 

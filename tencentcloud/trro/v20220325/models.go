@@ -1964,6 +1964,54 @@ type SessionDeviceDetail struct {
 
 	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// sdk版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ver *string `json:"Ver,omitempty" name:"Ver"`
+
+	// 模式(p2p/server)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SdkMode *string `json:"SdkMode,omitempty" name:"SdkMode"`
+
+	// 解码耗时，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DecodeCost []*int64 `json:"DecodeCost,omitempty" name:"DecodeCost"`
+
+	// 渲染耗时，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenderConst []*int64 `json:"RenderConst,omitempty" name:"RenderConst"`
+
+	// 卡顿k100
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	K100 []*float64 `json:"K100,omitempty" name:"K100"`
+
+	// 卡顿k150
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	K150 []*float64 `json:"K150,omitempty" name:"K150"`
+
+	// nack请求数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NACK []*int64 `json:"NACK,omitempty" name:"NACK"`
+
+	// 服务端调控码率,单位：kbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BitRateEstimate []*int64 `json:"BitRateEstimate,omitempty" name:"BitRateEstimate"`
+
+	// 宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 编码耗时，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncodeCost []*int64 `json:"EncodeCost,omitempty" name:"EncodeCost"`
+
+	// 采集耗时，单位：ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaptureCost []*int64 `json:"CaptureCost,omitempty" name:"CaptureCost"`
 }
 
 type SessionInfo struct {

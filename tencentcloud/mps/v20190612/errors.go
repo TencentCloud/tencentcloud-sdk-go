@@ -170,6 +170,9 @@ const (
 	// 参数值错误：不允许删除默认模板。
 	INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
 
+	// DestinationLanguage参数错误
+	INVALIDPARAMETERVALUE_DESTINATIONLANGUAGE = "InvalidParameterValue.DestinationLanguage"
+
 	// 无效的禁止码率低转高开关值。
 	INVALIDPARAMETERVALUE_DISABLEHIGHERVIDEOBITRATE = "InvalidParameterValue.DisableHigherVideoBitrate"
 
@@ -292,6 +295,9 @@ const (
 
 	// 参数错误：音频通道方式。
 	INVALIDPARAMETERVALUE_SOUNDSYSTEM = "InvalidParameterValue.SoundSystem"
+
+	// SourceLanguage参数错误
+	INVALIDPARAMETERVALUE_SOURCELANGUAGE = "InvalidParameterValue.SourceLanguage"
 
 	// 源文件错误。
 	INVALIDPARAMETERVALUE_SRCFILE = "InvalidParameterValue.SrcFile"

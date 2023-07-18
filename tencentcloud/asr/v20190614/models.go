@@ -179,6 +179,7 @@ type CreateAsyncRecognitionTaskRequestParams struct {
 	// • 16k_th：泰语；
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
+	// • 16k_ar：阿拉伯语；
 	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -224,6 +225,7 @@ type CreateAsyncRecognitionTaskRequest struct {
 	// • 16k_th：泰语；
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
+	// • 16k_ar：阿拉伯语；
 	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -411,6 +413,7 @@ type CreateRecTaskRequestParams struct {
 	// • 16k_th：泰语；
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
+	// • 16k_ar：阿拉伯语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
@@ -501,6 +504,7 @@ type CreateRecTaskRequest struct {
 	// • 16k_th：泰语；
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
+	// • 16k_ar：阿拉伯语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
@@ -1499,6 +1503,7 @@ type SentenceRecognitionRequestParams struct {
 	// • 16k_th：泰语；
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
+	// • 16k_ar：阿拉伯语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
@@ -1559,6 +1564,9 @@ type SentenceRecognitionRequestParams struct {
 	// 临时热词：用于提升识别准确率，临时热词规则：“热词|权重”，热词不超过30个字符（最多10个汉字），权重1-10，最多传入128个热词。举例："腾讯云|10,语音识别|5,ASR|10"。
 	// “临时热词”和“热词id”的区别：热词id需要先在控制台或通过接口创建热词表，得到热词表id后才可以使用热词功能，本字段可以在每次请求时直接传入热词使用，但每次请求后云端不会保留相关的热词数据，需要客户自行维护相关数据
 	HotwordList *string `json:"HotwordList,omitempty" name:"HotwordList"`
+
+	// 支持pcm格式的8k音频在与引擎采样率不匹配的情况下升采样到16k后识别，能有效提升识别准确率。仅支持：8000。如：传入 8000 ，则pcm音频采样率为8k，当引擎选用16k_zh， 那么该8k采样率的pcm音频可以在16k_zh引擎下正常识别。 注：此参数仅适用于pcm格式音频，不传入值将维持默认状态，即默认调用的引擎采样率等于pcm音频采样率。
+	InputSampleRate *int64 `json:"InputSampleRate,omitempty" name:"InputSampleRate"`
 }
 
 type SentenceRecognitionRequest struct {
@@ -1584,6 +1592,7 @@ type SentenceRecognitionRequest struct {
 	// • 16k_th：泰语；
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
+	// • 16k_ar：阿拉伯语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
@@ -1638,6 +1647,9 @@ type SentenceRecognitionRequest struct {
 	// 临时热词：用于提升识别准确率，临时热词规则：“热词|权重”，热词不超过30个字符（最多10个汉字），权重1-10，最多传入128个热词。举例："腾讯云|10,语音识别|5,ASR|10"。
 	// “临时热词”和“热词id”的区别：热词id需要先在控制台或通过接口创建热词表，得到热词表id后才可以使用热词功能，本字段可以在每次请求时直接传入热词使用，但每次请求后云端不会保留相关的热词数据，需要客户自行维护相关数据
 	HotwordList *string `json:"HotwordList,omitempty" name:"HotwordList"`
+
+	// 支持pcm格式的8k音频在与引擎采样率不匹配的情况下升采样到16k后识别，能有效提升识别准确率。仅支持：8000。如：传入 8000 ，则pcm音频采样率为8k，当引擎选用16k_zh， 那么该8k采样率的pcm音频可以在16k_zh引擎下正常识别。 注：此参数仅适用于pcm格式音频，不传入值将维持默认状态，即默认调用的引擎采样率等于pcm音频采样率。
+	InputSampleRate *int64 `json:"InputSampleRate,omitempty" name:"InputSampleRate"`
 }
 
 func (r *SentenceRecognitionRequest) ToJsonString() string {
@@ -1670,6 +1682,7 @@ func (r *SentenceRecognitionRequest) FromJsonString(s string) error {
 	delete(f, "CustomizationId")
 	delete(f, "ReinforceHotword")
 	delete(f, "HotwordList")
+	delete(f, "InputSampleRate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SentenceRecognitionRequest has unknown keys!", "")
 	}

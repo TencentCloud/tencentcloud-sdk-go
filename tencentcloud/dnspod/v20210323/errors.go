@@ -44,6 +44,9 @@ const (
 	// 该域名已在您的列表中，无需重复添加。
 	FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 
+	// 该域名属于企业邮用户
+	FAILEDOPERATION_DOMAININENTERPRISEMAILACCOUNT = "FailedOperation.DomainInEnterpriseMailAccount"
+
 	// 该域名为腾讯云 DNSPod 重点保护资源，为了避免误操作造成的业务影响，域名禁止自行操作删除。如果您确认需要删除域名，请先联系您的客户经理，我们将竭诚为您提供技术支持。
 	FAILEDOPERATION_DOMAINISKEYDOMAIN = "FailedOperation.DomainIsKeyDomain"
 
@@ -209,6 +212,9 @@ const (
 	// 域名编号不正确。
 	INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 
+	// 该域名涉及违法违规黑名单，无法进行该操作
+	INVALIDPARAMETER_DOMAININBLACKLIST = "InvalidParameter.DomainInBlackList"
+
 	// 不允许操作生效中或失效中的域名。
 	INVALIDPARAMETER_DOMAININEFFECTORINVALIDATED = "InvalidParameter.DomainInEffectOrInvalidated"
 
@@ -220,6 +226,9 @@ const (
 
 	// 该域名已有同类型操作未完成，无法执行该操作。
 	INVALIDPARAMETER_DOMAINISMODIFYINGDNS = "InvalidParameter.DomainIsModifyingDns"
+
+	// 此域名是自己域名的别名
+	INVALIDPARAMETER_DOMAINISMYALIAS = "InvalidParameter.DomainIsMyAlias"
 
 	// 域名没有锁定。
 	INVALIDPARAMETER_DOMAINISNOTLOCKED = "InvalidParameter.DomainIsNotlocked"

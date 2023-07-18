@@ -1,3 +1,357 @@
+# Release v1.0.703
+
+## 借贷反欺诈(af) 版本：2020-02-26
+
+### 第 6 次发布
+
+发布时间：2023-07-18 01:05:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SimpleKindRiskDetail](https://cloud.tencent.com/document/api/668/44002#SimpleKindRiskDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>RiskCode, RiskCodeValue
+
+
+
+
+## 定制建模(afc) 版本：2020-02-26
+
+### 第 4 次发布
+
+发布时间：2023-07-18 01:05:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SimpleKindRiskDetail](https://cloud.tencent.com/document/api/1029/44018#SimpleKindRiskDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>RiskCode, RiskCodeValue
+
+
+
+
+## 应用性能监控(apm) 版本：2021-06-22
+
+### 第 19 次发布
+
+发布时间：2023-07-18 01:07:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyApmInstance](https://cloud.tencent.com/document/api/1463/89002)
+
+	* 新增入参：CustomShowTags
+
+
+修改数据结构：
+
+* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+
+	* 新增成员：CustomShowTags
+
+
+
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 29 次发布
+
+发布时间：2023-07-18 01:07:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* 新增入参：InputSampleRate
+
+
+
+
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 46 次发布
+
+发布时间：2023-07-18 01:08:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ItemPrice](https://cloud.tencent.com/document/api/599/15912#ItemPrice)
+
+	* <font color="#dd0000">**修改成员**：</font>UnitPrice, ChargeUnit, OriginalPrice, DiscountPrice, Discount, UnitPriceDiscount, UnitPriceSecondStep, UnitPriceDiscountSecondStep, UnitPriceThirdStep, UnitPriceDiscountThirdStep, OriginalPriceThreeYear, DiscountPriceThreeYear, DiscountThreeYear, OriginalPriceFiveYear, DiscountPriceFiveYear, DiscountFiveYear, OriginalPriceOneYear, DiscountPriceOneYear, DiscountOneYear
+
+
+
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 89 次发布
+
+发布时间：2023-07-18 01:18:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [EsRecordMapping](https://cloud.tencent.com/document/api/597/40861#EsRecordMapping)
+
+修改数据结构：
+
+* [EsParam](https://cloud.tencent.com/document/api/597/40861#EsParam)
+
+	* 新增成员：RecordMappingList, DateField
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 6 次发布
+
+发布时间：2023-07-18 01:21:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainAssetVO](https://cloud.tencent.com/document/api/664/90825#DomainAssetVO)
+
+	* 新增成员：ServiceRisk
+
+	* <font color="#dd0000">**修改成员**：</font>AssetId, AssetName, AssetType, Region, WAFStatus, AssetCreateTime, AppId, Uin, NickName, IsCore, IsCloud, Attack, Access, Intercept, InBandwidth, OutBandwidth, InFlow, OutFlow, LastScanTime, PortRisk, VulnerabilityRisk, ConfigurationRisk, ScanTask, SubDomain, SeverIp, BotCount, WeakPassword, WebContentRisk, Tag, SourceType, MemberId, CCAttack, WebAttack
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 111 次发布
+
+发布时间：2023-07-18 01:21:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ItemPrice](https://cloud.tencent.com/document/api/213/15753#ItemPrice)
+
+	* <font color="#dd0000">**修改成员**：</font>UnitPrice, ChargeUnit, OriginalPrice, DiscountPrice, Discount, UnitPriceDiscount, UnitPriceSecondStep, UnitPriceDiscountSecondStep, UnitPriceThirdStep, UnitPriceDiscountThirdStep, OriginalPriceThreeYear, DiscountPriceThreeYear, DiscountThreeYear, OriginalPriceFiveYear, DiscountPriceFiveYear, DiscountFiveYear, OriginalPriceOneYear, DiscountPriceOneYear, DiscountOneYear
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 91 次发布
+
+发布时间：2023-07-18 01:22:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeSearchExportList
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 55 次发布
+
+发布时间：2023-07-18 01:26:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>DriverSize, ExecutorSize, ExecutorNums, ExecutorMaxNumbers, CommonMetrics, SparkMonitorMetrics, PrestoMonitorMetrics
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 88 次发布
+
+发布时间：2023-07-18 01:29:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowSignUrl](https://cloud.tencent.com/document/api/1323/85818)
+
+	* 新增入参：JumpUrl
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 95 次发布
+
+发布时间：2023-07-18 01:30:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowSignUrl](https://cloud.tencent.com/document/api/1420/85819)
+
+	* 新增入参：JumpUrl
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
+
+### 第 4 次发布
+
+发布时间：2023-07-18 01:31:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClusterClientToken](https://cloud.tencent.com/document/api/1424/95075)
+* [DescribeClusterRoleToken](https://cloud.tencent.com/document/api/1424/95074)
+* [DescribeClusterRoles](https://cloud.tencent.com/document/api/1424/95073)
+
+新增数据结构：
+
+* [ClientToken](https://cloud.tencent.com/document/api/1424/95076#ClientToken)
+* [ClusterRole](https://cloud.tencent.com/document/api/1424/95076#ClusterRole)
+* [RoleToken](https://cloud.tencent.com/document/api/1424/95076#RoleToken)
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 67 次发布
+
+发布时间：2023-07-18 01:42:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BackupDownloadInfo](https://cloud.tencent.com/document/api/239/20022#BackupDownloadInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>FileSize
+
+
+
+
+## 远程实时操控(trro) 版本：2022-03-25
+
+### 第 3 次发布
+
+发布时间：2023-07-18 01:53:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SessionDeviceDetail](https://cloud.tencent.com/document/api/1584/89828#SessionDeviceDetail)
+
+	* 新增成员：Ver, SdkMode, DecodeCost, RenderConst, K100, K150, NACK, BitRateEstimate, Width, Height, EncodeCost, CaptureCost
+
+
+
+
+## 声音复刻(vrs) 版本：2020-08-24
+
+### 第 2 次发布
+
+发布时间：2023-07-18 01:58:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelVRSTask](https://cloud.tencent.com/document/api/1283/95078)
+* [DownloadVRSModel](https://cloud.tencent.com/document/api/1283/95077)
+
+修改接口：
+
+* [CreateVRSTask](https://cloud.tencent.com/document/api/1283/90064)
+
+	* 新增入参：ModelType
+
+
+新增数据结构：
+
+* [CancelVRSTaskRsp](https://cloud.tencent.com/document/api/1283/90065#CancelVRSTaskRsp)
+* [DownloadVRSModelRsp](https://cloud.tencent.com/document/api/1283/90065#DownloadVRSModelRsp)
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 17 次发布
+
+发布时间：2023-07-18 01:59:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
+
+	* 新增成员：UpdateTime
+
+
+
+
 # Release v1.0.702
 
 ## 云服务器(cvm) 版本：2017-03-12

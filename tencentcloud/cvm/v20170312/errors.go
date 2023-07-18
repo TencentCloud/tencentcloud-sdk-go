@@ -890,6 +890,9 @@ const (
 	// 不支持带有云硬盘备份点。
 	UNSUPPORTEDOPERATION_INVALIDDISKBACKUPQUOTA = "UnsupportedOperation.InvalidDiskBackupQuota"
 
+	// 不支持极速回滚。
+	UNSUPPORTEDOPERATION_INVALIDDISKFASTROLLBACK = "UnsupportedOperation.InvalidDiskFastRollback"
+
 	// 镜像许可类型与实例不符，请选择其他镜像。
 	UNSUPPORTEDOPERATION_INVALIDIMAGELICENSETYPEFORRESET = "UnsupportedOperation.InvalidImageLicenseTypeForReset"
 

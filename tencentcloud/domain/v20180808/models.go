@@ -1633,6 +1633,8 @@ type DomainSimpleInfo struct {
 	// clientTransferProhibited：注册商禁止转移
 	// clientUpdateProhibited：注册商禁止更新
 	// clientDeleteProhibited：注册商禁止删除
+	// serverRenewProhibited: 注册局禁止续费
+	// clientRenewProhobited: 注册商禁止续费
 	DomainStatus []*string `json:"DomainStatus,omitempty" name:"DomainStatus"`
 
 	// 域名购买状态。
@@ -2031,7 +2033,7 @@ func (r *SendPhoneEmailCodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetDomainAutoRenewRequestParams struct {
-	// 域名ID。
+	// 域名ID 例如：domain-123abc
 	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
 
 	// AutoRenew 有三个可选值：
@@ -2044,7 +2046,7 @@ type SetDomainAutoRenewRequestParams struct {
 type SetDomainAutoRenewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名ID。
+	// 域名ID 例如：domain-123abc
 	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
 
 	// AutoRenew 有三个可选值：

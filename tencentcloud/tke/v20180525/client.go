@@ -3881,6 +3881,7 @@ func NewDeletePrometheusAlertRuleResponse() (response *DeletePrometheusAlertRule
 // 删除告警规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3893,6 +3894,7 @@ func (c *Client) DeletePrometheusAlertRule(request *DeletePrometheusAlertRuleReq
 // 删除告警规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -9047,6 +9049,7 @@ func NewDescribeResourceUsageResponse() (response *DescribeResourceUsageResponse
 // 获取集群资源使用量
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
@@ -9061,6 +9064,7 @@ func (c *Client) DescribeResourceUsage(request *DescribeResourceUsageRequest) (r
 // 获取集群资源使用量
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
@@ -9776,6 +9780,7 @@ func NewDisableEncryptionProtectionResponse() (response *DisableEncryptionProtec
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DisableEncryptionProtection(request *DisableEncryptionProtectionRequest) (response *DisableEncryptionProtectionResponse, err error) {
     return c.DisableEncryptionProtectionWithContext(context.Background(), request)
 }
@@ -9785,6 +9790,7 @@ func (c *Client) DisableEncryptionProtection(request *DisableEncryptionProtectio
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 func (c *Client) DisableEncryptionProtectionWithContext(ctx context.Context, request *DisableEncryptionProtectionRequest) (response *DisableEncryptionProtectionResponse, err error) {
     if request == nil {
         request = NewDisableEncryptionProtectionRequest()
@@ -10134,6 +10140,7 @@ func NewEnableEncryptionProtectionResponse() (response *EnableEncryptionProtecti
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) EnableEncryptionProtection(request *EnableEncryptionProtectionRequest) (response *EnableEncryptionProtectionResponse, err error) {
     return c.EnableEncryptionProtectionWithContext(context.Background(), request)
 }
@@ -10143,6 +10150,7 @@ func (c *Client) EnableEncryptionProtection(request *EnableEncryptionProtectionR
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) EnableEncryptionProtectionWithContext(ctx context.Context, request *EnableEncryptionProtectionRequest) (response *EnableEncryptionProtectionResponse, err error) {
     if request == nil {
         request = NewEnableEncryptionProtectionRequest()
@@ -12288,6 +12296,7 @@ func NewRunPrometheusInstanceResponse() (response *RunPrometheusInstanceResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
@@ -12300,6 +12309,7 @@ func (c *Client) RunPrometheusInstance(request *RunPrometheusInstanceRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"

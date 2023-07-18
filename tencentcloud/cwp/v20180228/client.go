@@ -10085,68 +10085,6 @@ func (c *Client) DescribeScanVulSettingWithContext(ctx context.Context, request 
     return
 }
 
-func NewDescribeSearchExportListRequest() (request *DescribeSearchExportListRequest) {
-    request = &DescribeSearchExportListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchExportList")
-    
-    
-    return
-}
-
-func NewDescribeSearchExportListResponse() (response *DescribeSearchExportListResponse) {
-    response = &DescribeSearchExportListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeSearchExportList
-// 旧版日志下载接口下线
-//
-// 
-//
-// 导出ES查询文档列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeSearchExportList(request *DescribeSearchExportListRequest) (response *DescribeSearchExportListResponse, err error) {
-    return c.DescribeSearchExportListWithContext(context.Background(), request)
-}
-
-// DescribeSearchExportList
-// 旧版日志下载接口下线
-//
-// 
-//
-// 导出ES查询文档列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeSearchExportListWithContext(ctx context.Context, request *DescribeSearchExportListRequest) (response *DescribeSearchExportListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSearchExportListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeSearchExportList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeSearchExportListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeSearchLogsRequest() (request *DescribeSearchLogsRequest) {
     request = &DescribeSearchLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},

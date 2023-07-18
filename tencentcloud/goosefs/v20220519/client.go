@@ -87,6 +87,132 @@ func (c *Client) CreateDataRepositoryTaskWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeClusterClientTokenRequest() (request *DescribeClusterClientTokenRequest) {
+    request = &DescribeClusterClientTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeClusterClientToken")
+    
+    
+    return
+}
+
+func NewDescribeClusterClientTokenResponse() (response *DescribeClusterClientTokenResponse) {
+    response = &DescribeClusterClientTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterClientToken
+// 查询GooseFS集群客户端凭证
+func (c *Client) DescribeClusterClientToken(request *DescribeClusterClientTokenRequest) (response *DescribeClusterClientTokenResponse, err error) {
+    return c.DescribeClusterClientTokenWithContext(context.Background(), request)
+}
+
+// DescribeClusterClientToken
+// 查询GooseFS集群客户端凭证
+func (c *Client) DescribeClusterClientTokenWithContext(ctx context.Context, request *DescribeClusterClientTokenRequest) (response *DescribeClusterClientTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterClientTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterClientToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterClientTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterRoleTokenRequest() (request *DescribeClusterRoleTokenRequest) {
+    request = &DescribeClusterRoleTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeClusterRoleToken")
+    
+    
+    return
+}
+
+func NewDescribeClusterRoleTokenResponse() (response *DescribeClusterRoleTokenResponse) {
+    response = &DescribeClusterRoleTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterRoleToken
+// 查询GooseFS集群角色凭证
+func (c *Client) DescribeClusterRoleToken(request *DescribeClusterRoleTokenRequest) (response *DescribeClusterRoleTokenResponse, err error) {
+    return c.DescribeClusterRoleTokenWithContext(context.Background(), request)
+}
+
+// DescribeClusterRoleToken
+// 查询GooseFS集群角色凭证
+func (c *Client) DescribeClusterRoleTokenWithContext(ctx context.Context, request *DescribeClusterRoleTokenRequest) (response *DescribeClusterRoleTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterRoleTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterRoleToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterRoleTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterRolesRequest() (request *DescribeClusterRolesRequest) {
+    request = &DescribeClusterRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeClusterRoles")
+    
+    
+    return
+}
+
+func NewDescribeClusterRolesResponse() (response *DescribeClusterRolesResponse) {
+    response = &DescribeClusterRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterRoles
+// 查询GooseFS集群角色
+func (c *Client) DescribeClusterRoles(request *DescribeClusterRolesRequest) (response *DescribeClusterRolesResponse, err error) {
+    return c.DescribeClusterRolesWithContext(context.Background(), request)
+}
+
+// DescribeClusterRoles
+// 查询GooseFS集群角色
+func (c *Client) DescribeClusterRolesWithContext(ctx context.Context, request *DescribeClusterRolesRequest) (response *DescribeClusterRolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataRepositoryTaskStatusRequest() (request *DescribeDataRepositoryTaskStatusRequest) {
     request = &DescribeDataRepositoryTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

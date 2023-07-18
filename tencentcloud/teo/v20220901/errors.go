@@ -194,6 +194,9 @@ const (
 	// 无效的token鉴权时间格式。
 	INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPETIMEFORMAT = "InvalidParameter.InvalidAuthenticationTypeTimeFormat"
 
+	// 无效的token鉴权时间参数。
+	INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPETIMEPARAM = "InvalidParameter.InvalidAuthenticationTypeTimeParam"
+
 	// 无效的第三方对象存储。
 	INVALIDPARAMETER_INVALIDAWSPRIVATEACCESS = "InvalidParameter.InvalidAwsPrivateAccess"
 
@@ -329,6 +332,9 @@ const (
 	// 无效的客户端ip或ip段。
 	INVALIDPARAMETER_INVALIDSTANDARDDEBUGCLIENTIP = "InvalidParameter.InvalidStandardDebugClientIp"
 
+	// 有效期超过限制。
+	INVALIDPARAMETER_INVALIDSTANDARDDEBUGEXPIRETIMELIMIT = "InvalidParameter.InvalidStandardDebugExpireTimeLimit"
+
 	// 无效的回源请求参数设置-无效查询字符串值。
 	INVALIDPARAMETER_INVALIDUPSTREAMREQUESTQUERYSTRINGVALUE = "InvalidParameter.InvalidUpstreamRequestQueryStringValue"
 
@@ -346,6 +352,9 @@ const (
 
 	// 参数长度超过限制。
 	INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = "InvalidParameter.LengthExceedsLimit"
+
+	// 不支持智能路由
+	INVALIDPARAMETER_MULTIPLYLAYERNOTSUPPORTSMARTROUTING = "InvalidParameter.MultiplyLayerNotSupportSmartRouting"
 
 	// 源站是内网IP。
 	INVALIDPARAMETER_ORIGINISINNERIP = "InvalidParameter.OriginIsInnerIp"
@@ -439,6 +448,9 @@ const (
 
 	// 功能内测中，请联系商务开启「中国大陆网络优化(国际加速)」功能。
 	OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = "OperationDenied.AccelerateMainlandDisable"
+
+	// 中国大陆加速与IPv6冲突，不能同时配置。
+	OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = "OperationDenied.AccelerateMainlandIpv6Conflict"
 
 	// 站点停用未完毕，请稍后再试。
 	OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"

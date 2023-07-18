@@ -41,6 +41,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 【多人互动】对应的角色人数超过限制。
+	LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 

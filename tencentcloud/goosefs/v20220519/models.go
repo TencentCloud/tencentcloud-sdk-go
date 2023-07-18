@@ -20,6 +20,26 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ClientToken struct {
+	// 挂载点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalDirectory *string `json:"LocalDirectory,omitempty" name:"LocalDirectory"`
+}
+
+type ClusterRole struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 角色名
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 目录列表
+	DirectoryList []*string `json:"DirectoryList,omitempty" name:"DirectoryList"`
+}
+
 // Predefined struct for user
 type CreateDataRepositoryTaskRequestParams struct {
 	// 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
@@ -120,6 +140,184 @@ func (r *CreateDataRepositoryTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterClientTokenRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribeClusterClientTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterClientTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterClientTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterClientTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterClientTokenResponseParams struct {
+	// 客户端凭证
+	ClientTokens []*ClientToken `json:"ClientTokens,omitempty" name:"ClientTokens"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterClientTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterClientTokenResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterClientTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterClientTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterRoleTokenRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 角色名
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+type DescribeClusterRoleTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 角色名
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
+func (r *DescribeClusterRoleTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterRoleTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "RoleName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterRoleTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterRoleTokenResponseParams struct {
+	// 角色凭证
+	RoleTokens []*RoleToken `json:"RoleTokens,omitempty" name:"RoleTokens"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterRoleTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterRoleTokenResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterRoleTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterRoleTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterRolesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DescribeClusterRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DescribeClusterRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterRolesResponseParams struct {
+	// 集群角色
+	ClusterRoles []*ClusterRole `json:"ClusterRoles,omitempty" name:"ClusterRoles"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterRolesResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDataRepositoryTaskStatusRequestParams struct {
 	// task id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -190,4 +388,13 @@ func (r *DescribeDataRepositoryTaskStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeDataRepositoryTaskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RoleToken struct {
+	// 角色名
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 用于goosefs client/sdk等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Token *string `json:"Token,omitempty" name:"Token"`
 }

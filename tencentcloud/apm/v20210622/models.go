@@ -193,6 +193,10 @@ type ApmInstanceDetail struct {
 	// Metric数据保存时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricDuration *int64 `json:"MetricDuration,omitempty" name:"MetricDuration"`
+
+	// 用户自定义展示标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomShowTags []*string `json:"CustomShowTags,omitempty" name:"CustomShowTags"`
 }
 
 type ApmMetricRecord struct {
@@ -973,6 +977,9 @@ type ModifyApmInstanceRequestParams struct {
 
 	// CLS | ES
 	LogSource *string `json:"LogSource,omitempty" name:"LogSource"`
+
+	// 用户自定义展示标签列表
+	CustomShowTags []*string `json:"CustomShowTags,omitempty" name:"CustomShowTags"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -1025,6 +1032,9 @@ type ModifyApmInstanceRequest struct {
 
 	// CLS | ES
 	LogSource *string `json:"LogSource,omitempty" name:"LogSource"`
+
+	// 用户自定义展示标签列表
+	CustomShowTags []*string `json:"CustomShowTags,omitempty" name:"CustomShowTags"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -1055,6 +1065,7 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "LogTopicID")
 	delete(f, "LogSet")
 	delete(f, "LogSource")
+	delete(f, "CustomShowTags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

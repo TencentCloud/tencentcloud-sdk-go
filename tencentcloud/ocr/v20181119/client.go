@@ -2934,9 +2934,9 @@ func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
 //
 //         </tr>
 //
-//           <tr>
+//          <tr>
 //
-//           <td>身份证 PS 告警</td>
+//           <td>身份证疑似存在PS痕迹告警</td>
 //
 //         </tr>
 //
@@ -3053,9 +3053,9 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
 //
 //         </tr>
 //
-//           <tr>
+//          <tr>
 //
-//           <td>身份证 PS 告警</td>
+//           <td>身份证疑似存在PS痕迹告警</td>
 //
 //         </tr>
 //

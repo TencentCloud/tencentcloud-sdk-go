@@ -3252,7 +3252,7 @@ type StartMCUMixTranscodeByStrRoomIdRequestParams struct {
 	// 混流输出布局参数。
 	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
 
-	// 第三方CDN转推参数。
+	// 第三方CDN转推参数。如需转推至腾讯云云直播，此参数无需填写，会默认转推
 	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 }
 
@@ -3274,7 +3274,7 @@ type StartMCUMixTranscodeByStrRoomIdRequest struct {
 	// 混流输出布局参数。
 	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
 
-	// 第三方CDN转推参数。
+	// 第三方CDN转推参数。如需转推至腾讯云云直播，此参数无需填写，会默认转推
 	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 }
 
@@ -3341,7 +3341,7 @@ type StartMCUMixTranscodeRequestParams struct {
 	// 混流输出布局参数。
 	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
 
-	// 第三方CDN转推参数。
+	// 第三方CDN转推参数。如需转推至腾讯云云直播，此参数无需填写，会默认转推
 	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 }
 
@@ -3363,7 +3363,7 @@ type StartMCUMixTranscodeRequest struct {
 	// 混流输出布局参数。
 	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
 
-	// 第三方CDN转推参数。
+	// 第三方CDN转推参数。如需转推至腾讯云云直播，此参数无需填写，会默认转推
 	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
 }
 

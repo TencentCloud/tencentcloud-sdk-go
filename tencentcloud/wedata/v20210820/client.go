@@ -6682,6 +6682,7 @@ func NewDescribeRuleTablesByPageResponse() (response *DescribeRuleTablesByPageRe
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleTablesByPage(request *DescribeRuleTablesByPageRequest) (response *DescribeRuleTablesByPageResponse, err error) {
     return c.DescribeRuleTablesByPageWithContext(context.Background(), request)
 }
@@ -6691,6 +6692,7 @@ func (c *Client) DescribeRuleTablesByPage(request *DescribeRuleTablesByPageReque
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRuleTablesByPageWithContext(ctx context.Context, request *DescribeRuleTablesByPageRequest) (response *DescribeRuleTablesByPageResponse, err error) {
     if request == nil {
         request = NewDescribeRuleTablesByPageRequest()
@@ -6884,6 +6886,7 @@ func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
     return c.DescribeRulesWithContext(context.Background(), request)
 }
@@ -6893,6 +6896,7 @@ func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeRulesWithContext(ctx context.Context, request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
     if request == nil {
         request = NewDescribeRulesRequest()

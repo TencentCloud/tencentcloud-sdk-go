@@ -318,16 +318,16 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 type BackupDownloadInfo struct {
-	// 备份文件名称
+	// 备份文件名称。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// 备份文件大小，单位B，如果为0，表示无效
-	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+	// 备份文件大小，单位B，如果为0，表示无效。
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 
-	// 备份文件外网下载地址（6小时）
+	// 备份文件外网下载地址。下载地址的有效时长为6小时，过期后请重新获取。
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
-	// 备份文件内网下载地址（6小时）
+	// 备份文件内网下载地址。下载地址的有效时长为6小时，过期后请重新获取。
 	InnerDownloadUrl *string `json:"InnerDownloadUrl,omitempty" name:"InnerDownloadUrl"`
 }
 

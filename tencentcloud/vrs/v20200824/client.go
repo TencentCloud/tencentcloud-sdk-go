@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCancelVRSTaskRequest() (request *CancelVRSTaskRequest) {
+    request = &CancelVRSTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vrs", APIVersion, "CancelVRSTask")
+    
+    
+    return
+}
+
+func NewCancelVRSTaskResponse() (response *CancelVRSTaskResponse) {
+    response = &CancelVRSTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelVRSTask
+// 声音复刻取消任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+func (c *Client) CancelVRSTask(request *CancelVRSTaskRequest) (response *CancelVRSTaskResponse, err error) {
+    return c.CancelVRSTaskWithContext(context.Background(), request)
+}
+
+// CancelVRSTask
+// 声音复刻取消任务接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+func (c *Client) CancelVRSTaskWithContext(ctx context.Context, request *CancelVRSTaskRequest) (response *CancelVRSTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelVRSTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelVRSTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelVRSTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVRSTaskRequest() (request *CreateVRSTaskRequest) {
     request = &CreateVRSTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -206,6 +258,7 @@ func NewDetectEnvAndSoundQualityResponse() (response *DetectEnvAndSoundQualityRe
 //  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
 //  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
 //  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
+//  INVALIDPARAMETERVALUE_AUDIODURATIONEXCEEDSLIMIT = "InvalidParameterValue.AudioDurationExceedsLimit"
 //  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
 //  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
 func (c *Client) DetectEnvAndSoundQuality(request *DetectEnvAndSoundQualityRequest) (response *DetectEnvAndSoundQualityResponse, err error) {
@@ -223,6 +276,7 @@ func (c *Client) DetectEnvAndSoundQuality(request *DetectEnvAndSoundQualityReque
 //  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
 //  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
 //  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
+//  INVALIDPARAMETERVALUE_AUDIODURATIONEXCEEDSLIMIT = "InvalidParameterValue.AudioDurationExceedsLimit"
 //  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
 //  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
 func (c *Client) DetectEnvAndSoundQualityWithContext(ctx context.Context, request *DetectEnvAndSoundQualityRequest) (response *DetectEnvAndSoundQualityResponse, err error) {
@@ -237,6 +291,60 @@ func (c *Client) DetectEnvAndSoundQualityWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDetectEnvAndSoundQualityResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadVRSModelRequest() (request *DownloadVRSModelRequest) {
+    request = &DownloadVRSModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vrs", APIVersion, "DownloadVRSModel")
+    
+    
+    return
+}
+
+func NewDownloadVRSModelResponse() (response *DownloadVRSModelResponse) {
+    response = &DownloadVRSModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DownloadVRSModel
+// 下载声音复刻离线模型
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDTASKID = "InvalidParameterValue.ErrorInvalidTaskId"
+func (c *Client) DownloadVRSModel(request *DownloadVRSModelRequest) (response *DownloadVRSModelResponse, err error) {
+    return c.DownloadVRSModelWithContext(context.Background(), request)
+}
+
+// DownloadVRSModel
+// 下载声音复刻离线模型
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDTASKID = "InvalidParameterValue.ErrorInvalidTaskId"
+func (c *Client) DownloadVRSModelWithContext(ctx context.Context, request *DownloadVRSModelRequest) (response *DownloadVRSModelResponse, err error) {
+    if request == nil {
+        request = NewDownloadVRSModelRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadVRSModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadVRSModelResponse()
     err = c.Send(request, response)
     return
 }
@@ -267,11 +375,10 @@ func NewGetTrainingTextResponse() (response *GetTrainingTextResponse) {
 // • 签名方法参考 公共参数 中签名方法v3。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
-//  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
-//  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
-//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
-//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDTASKID = "InvalidParameterValue.ErrorInvalidTaskId"
 func (c *Client) GetTrainingText(request *GetTrainingTextRequest) (response *GetTrainingTextResponse, err error) {
     return c.GetTrainingTextWithContext(context.Background(), request)
 }
@@ -284,11 +391,10 @@ func (c *Client) GetTrainingText(request *GetTrainingTextRequest) (response *Get
 // • 签名方法参考 公共参数 中签名方法v3。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_VOICEEVALUATEFAILED = "FailedOperation.VoiceEvaluateFailed"
-//  FAILEDOPERATION_VOICENOTQUALIFIED = "FailedOperation.VoiceNotQualified"
-//  INVALIDPARAMETERVALUE_AUDIODATA = "InvalidParameterValue.AudioData"
-//  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
-//  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
+//  FAILEDOPERATION_ERRORINVALIDTASKSTATUS = "FailedOperation.ErrorInvalidTaskStatus"
+//  FAILEDOPERATION_NOSUCHTASK = "FailedOperation.NoSuchTask"
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
+//  INVALIDPARAMETERVALUE_ERRORINVALIDTASKID = "InvalidParameterValue.ErrorInvalidTaskId"
 func (c *Client) GetTrainingTextWithContext(ctx context.Context, request *GetTrainingTextRequest) (response *GetTrainingTextResponse, err error) {
     if request == nil {
         request = NewGetTrainingTextRequest()
