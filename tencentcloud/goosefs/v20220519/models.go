@@ -21,9 +21,21 @@ import (
 )
 
 type ClientToken struct {
+	// 节点 IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+
 	// 挂载点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalDirectory *string `json:"LocalDirectory,omitempty" name:"LocalDirectory"`
+
+	// 可以访问的 GooseFS 目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GooseFSDirectory *string `json:"GooseFSDirectory,omitempty" name:"GooseFSDirectory"`
+
+	// token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Token *string `json:"Token,omitempty" name:"Token"`
 }
 
 type ClusterRole struct {
@@ -264,6 +276,9 @@ func (r *DescribeClusterRoleTokenResponse) FromJsonString(s string) error {
 type DescribeClusterRolesRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 角色名
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
 
 type DescribeClusterRolesRequest struct {
@@ -271,6 +286,9 @@ type DescribeClusterRolesRequest struct {
 	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 角色名
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
 
 func (r *DescribeClusterRolesRequest) ToJsonString() string {
@@ -286,6 +304,7 @@ func (r *DescribeClusterRolesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
+	delete(f, "RoleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterRolesRequest has unknown keys!", "")
 	}

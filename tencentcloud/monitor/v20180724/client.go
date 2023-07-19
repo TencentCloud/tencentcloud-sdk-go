@@ -7889,118 +7889,6 @@ func (c *Client) ModifyPrometheusTempWithContext(ctx context.Context, request *M
     return
 }
 
-func NewPutMonitorDataRequest() (request *PutMonitorDataRequest) {
-    request = &PutMonitorDataRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("monitor", APIVersion, "PutMonitorData")
-    
-    
-    return
-}
-
-func NewPutMonitorDataResponse() (response *PutMonitorDataResponse) {
-    response = &PutMonitorDataResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// PutMonitorData
-// 对应的功能控制台及后端服务已于2年前下线，剩余该API接口未下线。
-//
-// 
-//
-// 默认接口请求频率限制：50次/秒。
-//
-// 默认单租户指标上限：100个。
-//
-// 单次上报最多 30 个指标/值对，请求返回错误时，请求中所有的指标/值均不会被保存。
-//
-// 
-//
-// 上报的时间戳为期望保存的时间戳，建议构造整数分钟时刻的时间戳。
-//
-// 时间戳时间范围必须为当前时间到 300 秒前之间。
-//
-// 同一 IP 指标对的数据需按分钟先后顺序上报。
-//
-// 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_EXETIMEOUT = "InternalError.ExeTimeout"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  LIMITEXCEEDED_METRICQUOTAEXCEEDED = "LimitExceeded.MetricQuotaExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) PutMonitorData(request *PutMonitorDataRequest) (response *PutMonitorDataResponse, err error) {
-    return c.PutMonitorDataWithContext(context.Background(), request)
-}
-
-// PutMonitorData
-// 对应的功能控制台及后端服务已于2年前下线，剩余该API接口未下线。
-//
-// 
-//
-// 默认接口请求频率限制：50次/秒。
-//
-// 默认单租户指标上限：100个。
-//
-// 单次上报最多 30 个指标/值对，请求返回错误时，请求中所有的指标/值均不会被保存。
-//
-// 
-//
-// 上报的时间戳为期望保存的时间戳，建议构造整数分钟时刻的时间戳。
-//
-// 时间戳时间范围必须为当前时间到 300 秒前之间。
-//
-// 同一 IP 指标对的数据需按分钟先后顺序上报。
-//
-// 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_EXETIMEOUT = "InternalError.ExeTimeout"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  LIMITEXCEEDED_METRICQUOTAEXCEEDED = "LimitExceeded.MetricQuotaExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) PutMonitorDataWithContext(ctx context.Context, request *PutMonitorDataRequest) (response *PutMonitorDataResponse, err error) {
-    if request == nil {
-        request = NewPutMonitorDataRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("PutMonitorData require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewPutMonitorDataResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewResumeGrafanaInstanceRequest() (request *ResumeGrafanaInstanceRequest) {
     request = &ResumeGrafanaInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8023,23 +7911,12 @@ func NewResumeGrafanaInstanceResponse() (response *ResumeGrafanaInstanceResponse
 // 本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_EXETIMEOUT = "InternalError.ExeTimeout"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  LIMITEXCEEDED_METRICQUOTAEXCEEDED = "LimitExceeded.MetricQuotaExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ResumeGrafanaInstance(request *ResumeGrafanaInstanceRequest) (response *ResumeGrafanaInstanceResponse, err error) {
     return c.ResumeGrafanaInstanceWithContext(context.Background(), request)
 }
@@ -8048,23 +7925,12 @@ func (c *Client) ResumeGrafanaInstance(request *ResumeGrafanaInstanceRequest) (r
 // 本接口（ResumeGrafanaInstance）用于 Grafana 包年包月实例的停服续费，调用后按原版本续费一个月。仍在运行中的实例无法使用该接口进行续费。
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_SERVICENOTENABLED = "FailedOperation.ServiceNotEnabled"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_EXETIMEOUT = "InternalError.ExeTimeout"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  LIMITEXCEEDED_METRICQUOTAEXCEEDED = "LimitExceeded.MetricQuotaExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ResumeGrafanaInstanceWithContext(ctx context.Context, request *ResumeGrafanaInstanceRequest) (response *ResumeGrafanaInstanceResponse, err error) {
     if request == nil {
         request = NewResumeGrafanaInstanceRequest()

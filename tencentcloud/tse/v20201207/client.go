@@ -1235,6 +1235,62 @@ func (c *Client) DescribeCloudNativeAPIGatewayNodesWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeCloudNativeAPIGatewayPortsRequest() (request *DescribeCloudNativeAPIGatewayPortsRequest) {
+    request = &DescribeCloudNativeAPIGatewayPortsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeCloudNativeAPIGatewayPorts")
+    
+    
+    return
+}
+
+func NewDescribeCloudNativeAPIGatewayPortsResponse() (response *DescribeCloudNativeAPIGatewayPortsResponse) {
+    response = &DescribeCloudNativeAPIGatewayPortsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudNativeAPIGatewayPorts
+// 获取云原生API网关实例端口信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+func (c *Client) DescribeCloudNativeAPIGatewayPorts(request *DescribeCloudNativeAPIGatewayPortsRequest) (response *DescribeCloudNativeAPIGatewayPortsResponse, err error) {
+    return c.DescribeCloudNativeAPIGatewayPortsWithContext(context.Background(), request)
+}
+
+// DescribeCloudNativeAPIGatewayPorts
+// 获取云原生API网关实例端口信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+func (c *Client) DescribeCloudNativeAPIGatewayPortsWithContext(ctx context.Context, request *DescribeCloudNativeAPIGatewayPortsRequest) (response *DescribeCloudNativeAPIGatewayPortsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudNativeAPIGatewayPortsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudNativeAPIGatewayPorts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudNativeAPIGatewayPortsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudNativeAPIGatewayRouteRateLimitRequest() (request *DescribeCloudNativeAPIGatewayRouteRateLimitRequest) {
     request = &DescribeCloudNativeAPIGatewayRouteRateLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},

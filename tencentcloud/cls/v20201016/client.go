@@ -1129,6 +1129,78 @@ func (c *Client) CreateMachineGroupWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateScheduledSqlRequest() (request *CreateScheduledSqlRequest) {
+    request = &CreateScheduledSqlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "CreateScheduledSql")
+    
+    
+    return
+}
+
+func NewCreateScheduledSqlResponse() (response *CreateScheduledSqlResponse) {
+    response = &CreateScheduledSqlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateScheduledSql
+// 本接口用于创建ScheduledSql任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
+//  INVALIDPARAMETER_INVALIDETLCONTENT = "InvalidParameter.InvalidEtlContent"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateScheduledSql(request *CreateScheduledSqlRequest) (response *CreateScheduledSqlResponse, err error) {
+    return c.CreateScheduledSqlWithContext(context.Background(), request)
+}
+
+// CreateScheduledSql
+// 本接口用于创建ScheduledSql任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
+//  INVALIDPARAMETER_INVALIDETLCONTENT = "InvalidParameter.InvalidEtlContent"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) CreateScheduledSqlWithContext(ctx context.Context, request *CreateScheduledSqlRequest) (response *CreateScheduledSqlResponse, err error) {
+    if request == nil {
+        request = NewCreateScheduledSqlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateScheduledSql require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateScheduledSqlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateShipperRequest() (request *CreateShipperRequest) {
     request = &CreateShipperRequest{
         BaseRequest: &tchttp.BaseRequest{},

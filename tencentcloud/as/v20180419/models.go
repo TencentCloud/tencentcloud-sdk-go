@@ -61,7 +61,9 @@ type Activity struct {
 	// 伸缩活动创建时间。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// 伸缩活动相关实例信息集合。
+	// 该参数已废弃，请勿使用。
+	//
+	// Deprecated: ActivityRelatedInstanceSet is deprecated.
 	ActivityRelatedInstanceSet []*ActivtyRelatedInstance `json:"ActivityRelatedInstanceSet,omitempty" name:"ActivityRelatedInstanceSet"`
 
 	// 伸缩活动状态简要描述。
@@ -75,6 +77,9 @@ type Activity struct {
 
 	// 执行命令结果。
 	InvocationResultSet []*InvocationResult `json:"InvocationResultSet,omitempty" name:"InvocationResultSet"`
+
+	// 伸缩活动相关实例信息集合。
+	RelatedInstanceSet []*RelatedInstance `json:"RelatedInstanceSet,omitempty" name:"RelatedInstanceSet"`
 }
 
 type ActivtyRelatedInstance struct {
@@ -4886,6 +4891,18 @@ type NotificationTarget struct {
 
 	// 主题名称，如果`TargetType`取值为`CMQ_TOPIC` 或 `TDMQ_CMQ_TOPIC`，则本字段必填。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
+type RelatedInstance struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例在伸缩活动中的状态。取值如下：
+	// INIT：初始化中
+	// RUNNING：实例操作中
+	// SUCCESSFUL：活动成功
+	// FAILED：活动失败
+	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
 }
 
 // Predefined struct for user

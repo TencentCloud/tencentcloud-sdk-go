@@ -2641,10 +2641,15 @@ type GeneralBasicOCRResponseParams struct {
 	Language *string `json:"Language,omitempty" name:"Language"`
 
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+	//
+	// Deprecated: Angel is deprecated.
 	Angel *float64 `json:"Angel,omitempty" name:"Angel"`
 
 	// 图片为PDF时，返回PDF的总页数，默认为0
 	PdfPageSize *int64 `json:"PdfPageSize,omitempty" name:"PdfPageSize"`
+
+	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+	Angle *float64 `json:"Angle,omitempty" name:"Angle"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7987,11 +7992,11 @@ type SealInfo struct {
 
 // Predefined struct for user
 type SealOCRRequestParams struct {
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
@@ -7999,11 +8004,11 @@ type SealOCRRequestParams struct {
 type SealOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 }
@@ -8457,6 +8462,7 @@ type SmartStructuralOCRV2RequestParams struct {
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -8464,6 +8470,7 @@ type SmartStructuralOCRV2RequestParams struct {
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
@@ -8480,6 +8487,15 @@ type SmartStructuralOCRV2RequestParams struct {
 
 	// 是否开启全文字段识别
 	ReturnFullText *bool `json:"ReturnFullText,omitempty" name:"ReturnFullText"`
+
+	// 配置id支持：
+	// General -- 通用场景
+	// OnlineTaxiItinerary -- 网约车行程单
+	// RideHailingDriverLicense -- 网约车驾驶证
+	// RideHailingTransportLicense -- 网约车运输证
+	// WayBill -- 快递运单
+	// AccountOpeningPermit -- 银行开户许可证
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 }
 
 type SmartStructuralOCRV2Request struct {
@@ -8488,6 +8504,7 @@ type SmartStructuralOCRV2Request struct {
 	// 图片的 Url 地址。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -8495,6 +8512,7 @@ type SmartStructuralOCRV2Request struct {
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 支持的图片像素：需介于20-10000px之间。
 	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
@@ -8511,6 +8529,15 @@ type SmartStructuralOCRV2Request struct {
 
 	// 是否开启全文字段识别
 	ReturnFullText *bool `json:"ReturnFullText,omitempty" name:"ReturnFullText"`
+
+	// 配置id支持：
+	// General -- 通用场景
+	// OnlineTaxiItinerary -- 网约车行程单
+	// RideHailingDriverLicense -- 网约车驾驶证
+	// RideHailingTransportLicense -- 网约车运输证
+	// WayBill -- 快递运单
+	// AccountOpeningPermit -- 银行开户许可证
+	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
 }
 
 func (r *SmartStructuralOCRV2Request) ToJsonString() string {
@@ -8531,6 +8558,7 @@ func (r *SmartStructuralOCRV2Request) FromJsonString(s string) error {
 	delete(f, "PdfPageNumber")
 	delete(f, "ItemNames")
 	delete(f, "ReturnFullText")
+	delete(f, "ConfigId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralOCRV2Request has unknown keys!", "")
 	}

@@ -4392,6 +4392,9 @@ type DockerContainerConfiguration struct {
 
 	// 运行的命令
 	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 容器重启策略
+	RestartPolicy *string `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
 }
 
 type DockerContainerPublishPort struct {

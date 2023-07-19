@@ -10740,14 +10740,6 @@ type MetricDataPoint struct {
 	Values []*Point `json:"Values,omitempty" name:"Values"`
 }
 
-type MetricDatum struct {
-	// 指标名称
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
-
-	// 指标的值
-	Value *uint64 `json:"Value,omitempty" name:"Value"`
-}
-
 type MetricObjectMeaning struct {
 	// 指标英文解释
 	En *string `json:"En,omitempty" name:"En"`
@@ -13036,81 +13028,6 @@ type PrometheusZoneItem struct {
 
 	// 可用区名（目前为中文）
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
-}
-
-// Predefined struct for user
-type PutMonitorDataRequestParams struct {
-	// 一组指标和数据
-	Metrics []*MetricDatum `json:"Metrics,omitempty" name:"Metrics"`
-
-	// 上报时自行指定的 IP
-	AnnounceIp *string `json:"AnnounceIp,omitempty" name:"AnnounceIp"`
-
-	// 上报时自行指定的时间戳
-	AnnounceTimestamp *uint64 `json:"AnnounceTimestamp,omitempty" name:"AnnounceTimestamp"`
-
-	// 上报时自行指定的 IP 或 产品实例ID
-	AnnounceInstance *string `json:"AnnounceInstance,omitempty" name:"AnnounceInstance"`
-}
-
-type PutMonitorDataRequest struct {
-	*tchttp.BaseRequest
-	
-	// 一组指标和数据
-	Metrics []*MetricDatum `json:"Metrics,omitempty" name:"Metrics"`
-
-	// 上报时自行指定的 IP
-	AnnounceIp *string `json:"AnnounceIp,omitempty" name:"AnnounceIp"`
-
-	// 上报时自行指定的时间戳
-	AnnounceTimestamp *uint64 `json:"AnnounceTimestamp,omitempty" name:"AnnounceTimestamp"`
-
-	// 上报时自行指定的 IP 或 产品实例ID
-	AnnounceInstance *string `json:"AnnounceInstance,omitempty" name:"AnnounceInstance"`
-}
-
-func (r *PutMonitorDataRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *PutMonitorDataRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Metrics")
-	delete(f, "AnnounceIp")
-	delete(f, "AnnounceTimestamp")
-	delete(f, "AnnounceInstance")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PutMonitorDataRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type PutMonitorDataResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type PutMonitorDataResponse struct {
-	*tchttp.BaseResponse
-	Response *PutMonitorDataResponseParams `json:"Response"`
-}
-
-func (r *PutMonitorDataResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *PutMonitorDataResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type ReceiverInfo struct {

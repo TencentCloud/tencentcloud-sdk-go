@@ -2789,6 +2789,9 @@ type CreateReleaseFlowRequestParams struct {
 
 	// 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateReleaseFlowRequest struct {
@@ -2810,6 +2813,9 @@ type CreateReleaseFlowRequest struct {
 
 	// 签署流程的签署截止时间。 值为unix时间戳,精确到秒,不传默认为当前时间七天后
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateReleaseFlowRequest) ToJsonString() string {
@@ -2829,6 +2835,7 @@ func (r *CreateReleaseFlowRequest) FromJsonString(s string) error {
 	delete(f, "ReliveInfo")
 	delete(f, "ReleasedApprovers")
 	delete(f, "Deadline")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReleaseFlowRequest has unknown keys!", "")
 	}

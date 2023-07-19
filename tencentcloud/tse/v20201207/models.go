@@ -1537,6 +1537,64 @@ type DescribeCloudNativeAPIGatewayNodesResult struct {
 }
 
 // Predefined struct for user
+type DescribeCloudNativeAPIGatewayPortsRequestParams struct {
+	// 云原生API网关实例ID
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+}
+
+type DescribeCloudNativeAPIGatewayPortsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayPortsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayPortsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayPortsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayPortsResponseParams struct {
+	// 云原生API网关实例协议端口列表响应结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DescribeGatewayInstancePortResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayPortsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayPortsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayPortsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayPortsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewayRouteRateLimitRequestParams struct {
 	// 网关Id
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
@@ -1836,6 +1894,16 @@ func (r *DescribeCloudNativeAPIGatewayServicesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeCloudNativeAPIGatewayServicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGatewayInstancePortResult struct {
+	// 云原生API网关ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关实例协议端口列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayInstancePortList []*GatewayInstanceSchemeAndPorts `json:"GatewayInstancePortList,omitempty" name:"GatewayInstancePortList"`
 }
 
 type DescribeInstanceRegionInfo struct {
@@ -2538,6 +2606,16 @@ type Filter struct {
 
 	// 过滤参数值
 	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type GatewayInstanceSchemeAndPorts struct {
+	// 端口协议，可选HTTP、HTTPS、TCP和UDP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+
+	// 端口列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PortList []*uint64 `json:"PortList,omitempty" name:"PortList"`
 }
 
 type InstanceTagInfo struct {

@@ -143,6 +143,56 @@ func (c *Client) BatchDeleteIntegrationTasksWithContext(ctx context.Context, req
     return
 }
 
+func NewBatchDeleteTasksDsRequest() (request *BatchDeleteTasksDsRequest) {
+    request = &BatchDeleteTasksDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "BatchDeleteTasksDs")
+    
+    
+    return
+}
+
+func NewBatchDeleteTasksDsResponse() (response *BatchDeleteTasksDsResponse) {
+    response = &BatchDeleteTasksDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchDeleteTasksDs
+// Ds批量删除任务，仅对任务状态为”已停止“有效；
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) BatchDeleteTasksDs(request *BatchDeleteTasksDsRequest) (response *BatchDeleteTasksDsResponse, err error) {
+    return c.BatchDeleteTasksDsWithContext(context.Background(), request)
+}
+
+// BatchDeleteTasksDs
+// Ds批量删除任务，仅对任务状态为”已停止“有效；
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) BatchDeleteTasksDsWithContext(ctx context.Context, request *BatchDeleteTasksDsRequest) (response *BatchDeleteTasksDsResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteTasksDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteTasksDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDeleteTasksDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchDeleteTasksNewRequest() (request *BatchDeleteTasksNewRequest) {
     request = &BatchDeleteTasksNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2237,6 +2287,54 @@ func (c *Client) DeleteDataSourcesWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteFilePathRequest() (request *DeleteFilePathRequest) {
+    request = &DeleteFilePathRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteFilePath")
+    
+    
+    return
+}
+
+func NewDeleteFilePathResponse() (response *DeleteFilePathResponse) {
+    response = &DeleteFilePathResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteFilePath
+// 开发空间-批量删除目录和文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteFilePath(request *DeleteFilePathRequest) (response *DeleteFilePathResponse, err error) {
+    return c.DeleteFilePathWithContext(context.Background(), request)
+}
+
+// DeleteFilePath
+// 开发空间-批量删除目录和文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteFilePathWithContext(ctx context.Context, request *DeleteFilePathRequest) (response *DeleteFilePathResponse, err error) {
+    if request == nil {
+        request = NewDeleteFilePathRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFilePath require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFilePathResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteFolderRequest() (request *DeleteFolderRequest) {
     request = &DeleteFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2545,6 +2643,58 @@ func (c *Client) DeleteOfflineTaskWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteProjectParamDsRequest() (request *DeleteProjectParamDsRequest) {
+    request = &DeleteProjectParamDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteProjectParamDs")
+    
+    
+    return
+}
+
+func NewDeleteProjectParamDsResponse() (response *DeleteProjectParamDsResponse) {
+    response = &DeleteProjectParamDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteProjectParamDs
+// 删除项目参数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteProjectParamDs(request *DeleteProjectParamDsRequest) (response *DeleteProjectParamDsResponse, err error) {
+    return c.DeleteProjectParamDsWithContext(context.Background(), request)
+}
+
+// DeleteProjectParamDs
+// 删除项目参数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteProjectParamDsWithContext(ctx context.Context, request *DeleteProjectParamDsRequest) (response *DeleteProjectParamDsResponse, err error) {
+    if request == nil {
+        request = NewDeleteProjectParamDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteProjectParamDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteProjectParamDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteResourceRequest() (request *DeleteResourceRequest) {
     request = &DeleteResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2589,6 +2739,54 @@ func (c *Client) DeleteResourceWithContext(ctx context.Context, request *DeleteR
     request.SetContext(ctx)
     
     response = NewDeleteResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteResourceFilesRequest() (request *DeleteResourceFilesRequest) {
+    request = &DeleteResourceFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteResourceFiles")
+    
+    
+    return
+}
+
+func NewDeleteResourceFilesResponse() (response *DeleteResourceFilesResponse) {
+    response = &DeleteResourceFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteResourceFiles
+// 资源管理-批量删除资源文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteResourceFiles(request *DeleteResourceFilesRequest) (response *DeleteResourceFilesResponse, err error) {
+    return c.DeleteResourceFilesWithContext(context.Background(), request)
+}
+
+// DeleteResourceFiles
+// 资源管理-批量删除资源文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteResourceFilesWithContext(ctx context.Context, request *DeleteResourceFilesRequest) (response *DeleteResourceFilesResponse, err error) {
+    if request == nil {
+        request = NewDeleteResourceFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteResourceFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteResourceFilesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2759,6 +2957,68 @@ func (c *Client) DeleteTaskAlarmRegularWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteTaskAlarmRegularResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTaskDsRequest() (request *DeleteTaskDsRequest) {
+    request = &DeleteTaskDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteTaskDs")
+    
+    
+    return
+}
+
+func NewDeleteTaskDsResponse() (response *DeleteTaskDsResponse) {
+    response = &DeleteTaskDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteTaskDs
+// 删除任务Ds
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTaskDs(request *DeleteTaskDsRequest) (response *DeleteTaskDsResponse, err error) {
+    return c.DeleteTaskDsWithContext(context.Background(), request)
+}
+
+// DeleteTaskDs
+// 删除任务Ds
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteTaskDsWithContext(ctx context.Context, request *DeleteTaskDsRequest) (response *DeleteTaskDsResponse, err error) {
+    if request == nil {
+        request = NewDeleteTaskDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTaskDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTaskDsResponse()
     err = c.Send(request, response)
     return
 }
@@ -10033,6 +10293,54 @@ func (c *Client) RegisterEventListenerWithContext(ctx context.Context, request *
     return
 }
 
+func NewRemoveWorkflowDsRequest() (request *RemoveWorkflowDsRequest) {
+    request = &RemoveWorkflowDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RemoveWorkflowDs")
+    
+    
+    return
+}
+
+func NewRemoveWorkflowDsResponse() (response *RemoveWorkflowDsResponse) {
+    response = &RemoveWorkflowDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveWorkflowDs
+// 删除编排空间工作流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RemoveWorkflowDs(request *RemoveWorkflowDsRequest) (response *RemoveWorkflowDsResponse, err error) {
+    return c.RemoveWorkflowDsWithContext(context.Background(), request)
+}
+
+// RemoveWorkflowDs
+// 删除编排空间工作流
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RemoveWorkflowDsWithContext(ctx context.Context, request *RemoveWorkflowDsRequest) (response *RemoveWorkflowDsResponse, err error) {
+    if request == nil {
+        request = NewRemoveWorkflowDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveWorkflowDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveWorkflowDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRerunInstancesRequest() (request *RerunInstancesRequest) {
     request = &RerunInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10661,6 +10969,100 @@ func (c *Client) SubmitCustomFunctionWithContext(ctx context.Context, request *S
     return
 }
 
+func NewSubmitSqlTaskRequest() (request *SubmitSqlTaskRequest) {
+    request = &SubmitSqlTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "SubmitSqlTask")
+    
+    
+    return
+}
+
+func NewSubmitSqlTaskResponse() (response *SubmitSqlTaskResponse) {
+    response = &SubmitSqlTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SubmitSqlTask
+// 即席分析提交SQL任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETER_WEDATAROLENOTEXISTS = "InvalidParameter.WeDataRoleNotExists"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SubmitSqlTask(request *SubmitSqlTaskRequest) (response *SubmitSqlTaskResponse, err error) {
+    return c.SubmitSqlTaskWithContext(context.Background(), request)
+}
+
+// SubmitSqlTask
+// 即席分析提交SQL任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETER_WEDATAROLENOTEXISTS = "InvalidParameter.WeDataRoleNotExists"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SubmitSqlTaskWithContext(ctx context.Context, request *SubmitSqlTaskRequest) (response *SubmitSqlTaskResponse, err error) {
+    if request == nil {
+        request = NewSubmitSqlTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitSqlTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitSqlTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubmitTaskRequest() (request *SubmitTaskRequest) {
     request = &SubmitTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10687,9 +11089,15 @@ func NewSubmitTaskResponse() (response *SubmitTaskResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETER_WEDATAROLENOTEXISTS = "InvalidParameter.WeDataRoleNotExists"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -10699,6 +11107,7 @@ func NewSubmitTaskResponse() (response *SubmitTaskResponse) {
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -10714,9 +11123,15 @@ func (c *Client) SubmitTask(request *SubmitTaskRequest) (response *SubmitTaskRes
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETER_WEDATAROLENOTEXISTS = "InvalidParameter.WeDataRoleNotExists"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -10726,6 +11141,7 @@ func (c *Client) SubmitTask(request *SubmitTaskRequest) (response *SubmitTaskRes
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -10741,6 +11157,54 @@ func (c *Client) SubmitTaskWithContext(ctx context.Context, request *SubmitTaskR
     request.SetContext(ctx)
     
     response = NewSubmitTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitTaskTestRunRequest() (request *SubmitTaskTestRunRequest) {
+    request = &SubmitTaskTestRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "SubmitTaskTestRun")
+    
+    
+    return
+}
+
+func NewSubmitTaskTestRunResponse() (response *SubmitTaskTestRunResponse) {
+    response = &SubmitTaskTestRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SubmitTaskTestRun
+// 无
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SubmitTaskTestRun(request *SubmitTaskTestRunRequest) (response *SubmitTaskTestRunResponse, err error) {
+    return c.SubmitTaskTestRunWithContext(context.Background(), request)
+}
+
+// SubmitTaskTestRun
+// 无
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SubmitTaskTestRunWithContext(ctx context.Context, request *SubmitTaskTestRunRequest) (response *SubmitTaskTestRunResponse, err error) {
+    if request == nil {
+        request = NewSubmitTaskTestRunRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitTaskTestRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitTaskTestRunResponse()
     err = c.Send(request, response)
     return
 }
@@ -10769,23 +11233,7 @@ func NewSubmitWorkflowResponse() (response *SubmitWorkflowResponse) {
 // 提交工作流
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *SubmitWorkflowResponse, err error) {
     return c.SubmitWorkflowWithContext(context.Background(), request)
 }
@@ -10796,23 +11244,7 @@ func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *Submi
 // 提交工作流
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SubmitWorkflowWithContext(ctx context.Context, request *SubmitWorkflowRequest) (response *SubmitWorkflowResponse, err error) {
     if request == nil {
         request = NewSubmitWorkflowRequest()

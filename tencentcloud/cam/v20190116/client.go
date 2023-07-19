@@ -2462,7 +2462,7 @@ func NewGetAccountSummaryResponse() (response *GetAccountSummaryResponse) {
 }
 
 // GetAccountSummary
-// 查询账户摘要 
+// 查询账户摘要
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2471,7 +2471,7 @@ func (c *Client) GetAccountSummary(request *GetAccountSummaryRequest) (response 
 }
 
 // GetAccountSummary
-// 查询账户摘要 
+// 查询账户摘要
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"

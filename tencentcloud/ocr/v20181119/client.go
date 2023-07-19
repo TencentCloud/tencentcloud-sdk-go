@@ -6166,7 +6166,7 @@ func NewSealOCRResponse() (response *SealOCRResponse) {
 }
 
 // SealOCR
-// 本接口支持各类印章识别，包括发票章，财务章等，适用于公文，票据等场景。
+// 本接口支持各类印章主体内容、印章其他内容及形状识别，支持单图多印章识别，包括发票章、财务章等，适用于公文票据等场景。
 //
 // 
 //
@@ -6187,7 +6187,7 @@ func (c *Client) SealOCR(request *SealOCRRequest) (response *SealOCRResponse, er
 }
 
 // SealOCR
-// 本接口支持各类印章识别，包括发票章，财务章等，适用于公文，票据等场景。
+// 本接口支持各类印章主体内容、印章其他内容及形状识别，支持单图多印章识别，包括发票章、财务章等，适用于公文票据等场景。
 //
 // 
 //
@@ -6378,7 +6378,7 @@ func NewSmartStructuralOCRV2Response() (response *SmartStructuralOCRV2Response) 
 }
 
 // SmartStructuralOCRV2
-// 本接口支持识别并提取各类证照、票据、表单、合同等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。
+// 本接口支持智能提取各类证照、票据、表单、合同等结构化场景的key:value字段信息，并支持提取表格信息的key:value组的结构化，灵活高效，适用于各类非标准材料的信息录入场景，点击[立即体验](https://cloud.tencent.com/product/smart-ocr)。
 //
 // 
 //
@@ -6398,7 +6398,7 @@ func (c *Client) SmartStructuralOCRV2(request *SmartStructuralOCRV2Request) (res
 }
 
 // SmartStructuralOCRV2
-// 本接口支持识别并提取各类证照、票据、表单、合同等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。
+// 本接口支持智能提取各类证照、票据、表单、合同等结构化场景的key:value字段信息，并支持提取表格信息的key:value组的结构化，灵活高效，适用于各类非标准材料的信息录入场景，点击[立即体验](https://cloud.tencent.com/product/smart-ocr)。
 //
 // 
 //

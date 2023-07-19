@@ -2109,6 +2109,147 @@ func (r *CreateMachineGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateScheduledSqlRequestParams struct {
+	// 源日志主题
+	SrcTopicId *string `json:"SrcTopicId,omitempty" name:"SrcTopicId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务启动状态.  1正常开启,  2关闭
+	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
+
+	// 加工任务目的topic_id以及别名
+	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitempty" name:"DstResource"`
+
+	// ScheduledSQL语句
+	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitempty" name:"ScheduledSqlContent"`
+
+	// 调度开始时间,Unix时间戳，单位ms
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitempty" name:"ProcessStartTime"`
+
+	// 调度类型，1:持续运行 2:指定调度结束时间
+	ProcessType *int64 `json:"ProcessType,omitempty" name:"ProcessType"`
+
+	// 调度周期(分钟)
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitempty" name:"ProcessPeriod"`
+
+	// 调度时间窗口
+	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitempty" name:"ProcessTimeWindow"`
+
+	// 执行延迟(秒)
+	ProcessDelay *int64 `json:"ProcessDelay,omitempty" name:"ProcessDelay"`
+
+	// 源topicId的地域信息
+	SrcTopicRegion *string `json:"SrcTopicRegion,omitempty" name:"SrcTopicRegion"`
+
+	// 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
+	ProcessEndTime *uint64 `json:"ProcessEndTime,omitempty" name:"ProcessEndTime"`
+
+	// 语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
+}
+
+type CreateScheduledSqlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源日志主题
+	SrcTopicId *string `json:"SrcTopicId,omitempty" name:"SrcTopicId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务启动状态.  1正常开启,  2关闭
+	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
+
+	// 加工任务目的topic_id以及别名
+	DstResource *ScheduledSqlResouceInfo `json:"DstResource,omitempty" name:"DstResource"`
+
+	// ScheduledSQL语句
+	ScheduledSqlContent *string `json:"ScheduledSqlContent,omitempty" name:"ScheduledSqlContent"`
+
+	// 调度开始时间,Unix时间戳，单位ms
+	ProcessStartTime *uint64 `json:"ProcessStartTime,omitempty" name:"ProcessStartTime"`
+
+	// 调度类型，1:持续运行 2:指定调度结束时间
+	ProcessType *int64 `json:"ProcessType,omitempty" name:"ProcessType"`
+
+	// 调度周期(分钟)
+	ProcessPeriod *int64 `json:"ProcessPeriod,omitempty" name:"ProcessPeriod"`
+
+	// 调度时间窗口
+	ProcessTimeWindow *string `json:"ProcessTimeWindow,omitempty" name:"ProcessTimeWindow"`
+
+	// 执行延迟(秒)
+	ProcessDelay *int64 `json:"ProcessDelay,omitempty" name:"ProcessDelay"`
+
+	// 源topicId的地域信息
+	SrcTopicRegion *string `json:"SrcTopicRegion,omitempty" name:"SrcTopicRegion"`
+
+	// 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
+	ProcessEndTime *uint64 `json:"ProcessEndTime,omitempty" name:"ProcessEndTime"`
+
+	// 语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
+}
+
+func (r *CreateScheduledSqlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScheduledSqlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SrcTopicId")
+	delete(f, "Name")
+	delete(f, "EnableFlag")
+	delete(f, "DstResource")
+	delete(f, "ScheduledSqlContent")
+	delete(f, "ProcessStartTime")
+	delete(f, "ProcessType")
+	delete(f, "ProcessPeriod")
+	delete(f, "ProcessTimeWindow")
+	delete(f, "ProcessDelay")
+	delete(f, "SrcTopicRegion")
+	delete(f, "ProcessEndTime")
+	delete(f, "SyntaxRule")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScheduledSqlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateScheduledSqlResponseParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateScheduledSqlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateScheduledSqlResponseParams `json:"Response"`
+}
+
+func (r *CreateScheduledSqlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateScheduledSqlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateShipperRequestParams struct {
 	// 创建的投递规则所属的日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
@@ -7753,6 +7894,14 @@ type RuleTagInfo struct {
 
 	// 元字段索引配置中的字段信息
 	KeyValues []*KeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues"`
+}
+
+type ScheduledSqlResouceInfo struct {
+	// 目标主题id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// topic的地域信息
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 // Predefined struct for user

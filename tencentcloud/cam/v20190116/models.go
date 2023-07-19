@@ -2834,6 +2834,8 @@ type GetAccountSummaryResponseParams struct {
 	Roles *uint64 `json:"Roles,omitempty" name:"Roles"`
 
 	// 身份提供商数
+	//
+	// Deprecated: Idps is deprecated.
 	Idps *uint64 `json:"Idps,omitempty" name:"Idps"`
 
 	// 子账户数
@@ -2844,6 +2846,9 @@ type GetAccountSummaryResponseParams struct {
 
 	// 分组用户总数
 	Member *uint64 `json:"Member,omitempty" name:"Member"`
+
+	// 身份提供商数。
+	IdentityProviders *uint64 `json:"IdentityProviders,omitempty" name:"IdentityProviders"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

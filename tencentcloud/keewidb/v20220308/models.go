@@ -413,9 +413,6 @@ type CreateInstancesRequestParams struct {
 	// 副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。
 	ReplicasNum *int64 `json:"ReplicasNum,omitempty" name:"ReplicasNum"`
 
-	// 计算cpu核心数。
-	MachineCpu *int64 `json:"MachineCpu,omitempty" name:"MachineCpu"`
-
 	// 实例内存容量，单位：GB。
 	// KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
 	MachineMemory *int64 `json:"MachineMemory,omitempty" name:"MachineMemory"`
@@ -457,8 +454,14 @@ type CreateInstancesRequestParams struct {
 	// 每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
+	// 计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+	MachineCpu *int64 `json:"MachineCpu,omitempty" name:"MachineCpu"`
+
 	// 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li>
+	Compression *string `json:"Compression,omitempty" name:"Compression"`
 }
 
 type CreateInstancesRequest struct {
@@ -491,9 +494,6 @@ type CreateInstancesRequest struct {
 	// 副本数。当前仅支持设置1个副本节点，即每一个分片仅包含1个主节点与1个副本节点，数据主从实时热备。
 	ReplicasNum *int64 `json:"ReplicasNum,omitempty" name:"ReplicasNum"`
 
-	// 计算cpu核心数。
-	MachineCpu *int64 `json:"MachineCpu,omitempty" name:"MachineCpu"`
-
 	// 实例内存容量，单位：GB。
 	// KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
 	MachineMemory *int64 `json:"MachineMemory,omitempty" name:"MachineMemory"`
@@ -535,8 +535,14 @@ type CreateInstancesRequest struct {
 	// 每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
+	// 计算 CPU 核数，可忽略不传。CPU 核数与内存为固定搭配，具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
+	MachineCpu *int64 `json:"MachineCpu,omitempty" name:"MachineCpu"`
+
 	// 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li>
+	Compression *string `json:"Compression,omitempty" name:"Compression"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -559,7 +565,6 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Period")
 	delete(f, "ShardNum")
 	delete(f, "ReplicasNum")
-	delete(f, "MachineCpu")
 	delete(f, "MachineMemory")
 	delete(f, "ZoneId")
 	delete(f, "ZoneName")
@@ -572,7 +577,9 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "MemSize")
 	delete(f, "DiskSize")
+	delete(f, "MachineCpu")
 	delete(f, "ProjectId")
+	delete(f, "Compression")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -3701,7 +3708,7 @@ type UpgradeInstanceRequestParams struct {
 	// <ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// CPU 核数。
+	// CPU 核数，可忽略不传
 	MachineCpu *int64 `json:"MachineCpu,omitempty" name:"MachineCpu"`
 
 	// 实例内存容量，单位：GB。
@@ -3727,7 +3734,7 @@ type UpgradeInstanceRequest struct {
 	// <ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
 	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
 
-	// CPU 核数。
+	// CPU 核数，可忽略不传
 	MachineCpu *int64 `json:"MachineCpu,omitempty" name:"MachineCpu"`
 
 	// 实例内存容量，单位：GB。
